@@ -1,0 +1,10 @@
+.idea
+out/*
+*.iml
+target
+
+settings.xml
+
+.gradle/
+build/
+out/

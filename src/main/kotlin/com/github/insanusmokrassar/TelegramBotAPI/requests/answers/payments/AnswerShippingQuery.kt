@@ -1,0 +1,49 @@
+package com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments
+
+import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments.abstracts.AnswerShippingQuery
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingOption
+import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
+import kotlinx.serialization.*
+import kotlinx.serialization.internal.ArrayListSerializer
+
+@Serializable
+data class AnswerShippingQueryOk(
+    @SerialName(shippingQueryIdField)
+    override val shippingQueryId: ShippingQueryIdentifier,
+    @Serializable(ShippingOptionsSerializer::class)
+    @SerialName(shippingOptionsField)
+    val shippingOptions: List<ShippingOption>
+) : AnswerShippingQuery {
+    @SerialName(okField)
+    override val isOk: Boolean = true
+}
+
+object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ArrayListSerializer(
+    ShippingOption.serializer()
+)
+
+@Serializable
+data class AnswerShippingQueryError(
+    @SerialName(shippingQueryIdField)
+    override val shippingQueryId: ShippingQueryIdentifier,
+    @SerialName(errorMessageField)
+    val error: String
+) : AnswerShippingQuery {
+    @SerialName(okField)
+    override val isOk: Boolean = false
+}
+
+fun ShippingQuery.createAnswerOk(
+    shippingOptions: List<ShippingOption>
+): AnswerShippingQueryOk = AnswerShippingQueryOk(
+    id,
+    shippingOptions
+)
+
+fun ShippingQuery.createAnswerError(
+    error: String
+): AnswerShippingQueryError = AnswerShippingQueryError(
+    id,
+    error
+)
