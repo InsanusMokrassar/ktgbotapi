@@ -1,0 +1,24 @@
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    pkg {
+        repo = 'StandardRepository'
+        name = "${project.name}"
+        vcsUrl = "https://github.com/InsanusMokrassar/${project.name}"
+        licenses = ['Apache-2.0']
+        version {
+            name = "${project.version}"
+            released = new Date()
+            vcsTag = name
+            gpg {
+                sign = true
+                passphrase = System.getenv('SIGN_PASSPHRASE')
+            }
+        }
+        publications = ["maven"]
+    }
+}
+
+apply from: "maven.publish.gradle"
