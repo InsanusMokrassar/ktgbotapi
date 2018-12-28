@@ -1,0 +1,33 @@
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+    projectBintrayDir = "${project.group}/".replace(".", "/") + "${project.name}/${project.version}"
+}
+
+bintray {
+    user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
+    publications = ["maven"]
+    filesSpec {
+        into "$projectBintrayDir"
+        from("build/libs") {
+            include "**/*.asc"
+        }
+        from("build/publications/maven") {
+            rename 'pom-default.xml(.*)', "${project.name}-${project.version}.pom\$1"
+        }
+    }
+    pkg {
+        repo = 'StandardRepository'
+        name = "${project.name}"
+        vcsUrl = "https://github.com/InsanusMokrassar/${project.name}"
+        licenses = ['Apache-2.0']
+        version {
+            name = "${project.version}"
+            released = new Date()
+            vcsTag = name
+        }
+    }
+}
+
+apply from: "maven.publish.gradle"

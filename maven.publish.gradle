@@ -1,0 +1,58 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            name "Ovsiannikov Aleksei"
+            email "ovsyannikov.alexey95@gmail.com"
+        }
+    }
+
+    scm {
+        url "https://github.com/InsanusMokrassar/${project.name}"
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    classifier = 'javadoc'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            groupId "${project.group}"
+            artifactId "${project.name}"
+            version "${project.version}"
+
+            artifact sourcesJar
+            artifact javadocJar
+            
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'It is one more project which wish to be useful and full Telegram Bots API bridge for Kotlin')
+                root.appendNode('name', 'Telegram Bot API')
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign publishing.publications.maven
+}
