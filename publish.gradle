@@ -1,8 +1,22 @@
 apply plugin: 'com.jfrog.bintray'
 
+ext {
+    projectBintrayDir = "${project.group}/".replace(".", "/") + "${project.name}/${project.version}"
+}
+
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
+    publications = ["maven"]
+    filesSpec {
+        into "$projectBintrayDir"
+        from("build/libs") {
+            include "**/*.asc"
+        }
+        from("build/publications/maven") {
+            rename 'pom-default.xml(.*)', "${project.name}-${project.version}.pom\$1"
+        }
+    }
     pkg {
         repo = 'StandardRepository'
         name = "${project.name}"
@@ -12,12 +26,7 @@ bintray {
             name = "${project.version}"
             released = new Date()
             vcsTag = name
-            gpg {
-                sign = true
-                passphrase = System.getenv('SIGN_PASSPHRASE')
-            }
         }
-        publications = ["maven"]
     }
 }
 
