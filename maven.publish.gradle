@@ -43,10 +43,35 @@ publishing {
             artifact javadocJar
             
             pom.withXml {
-                def root = asNode()
-                root.appendNode('description', 'It is one more project which wish to be useful and full Telegram Bots API bridge for Kotlin')
-                root.appendNode('name', 'Telegram Bot API')
-                root.children().last() + pomConfig
+                asNode().children().last() + {
+                    resolveStrategy = Closure.DELEGATE_FIRST
+                    name 'Telegram Bot API'
+                    description 'It is one more project which wish to be useful and full Telegram Bots API bridge for Kotlin'
+                    url "https://insanusmokrassar.github.io/${project.name}"
+
+                    scm {
+                        connection "scm:git:git://github.com/insanusmokrassar/${project.name}.git"
+                        developerConnection "scm:git:[fetch=]https://github.com/insanusmokrassar/${project.name}.git[push=]ssh:git@github.com:insanusmokrassar/${project.name}.git"
+                        url "https://github.com/insanusmokrassar/${project.name}"
+
+                    }
+
+                    developers {
+                        developer {
+                            id "InsanusMokrassar"
+                            name "Ovsyannikov Alexey"
+                            email "ovsyannikov.alexey95@gmail.com"
+                        }
+                    }
+
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/LICENSE'
+                            distribution 'repo'
+                        }
+                    }
+                }
             }
         }
     }
