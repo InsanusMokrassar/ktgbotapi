@@ -207,7 +207,19 @@ data class RawMessage(
             }
         } ?: content ?.let {
             content ->
-            when (chat) {
+            media_group_id ?.let {
+                MediaGroupMessage(
+                    messageId,
+                    chat,
+                    date.asDate,
+                    it,
+                    when (content) {
+                        is PhotoContent -> content
+                        is VideoContent -> content
+                        else -> throw IllegalStateException("Unsupported content for media group")
+                    }
+                )
+            } ?: when (chat) {
                 is ChannelChat -> ChannelMessage(
                     messageId,
                     chat,

@@ -1,1 +1,8 @@
 # TelegramBotAPI changelog
+
+## 0.8.1
+
+* Update `MediaGroupMessage` interface
+* Add implementation of `MediaGroupMessage`
+* Add generating of `MediaGroupMessage` in `RawMessage`
+
