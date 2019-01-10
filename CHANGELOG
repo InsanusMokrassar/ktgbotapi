@@ -6,3 +6,9 @@
 * Add implementation of `MediaGroupMessage`
 * Add generating of `MediaGroupMessage` in `RawMessage`
 
+## 0.8.2
+
+* Add `FromUserMessage` which must be implemented in all messages realisations which have `user` field
+* Add `CommonMediaGroupMessage` which in fact extension of `MediaGroupMessage` with implementation of `FromUserMessage`
+* `CommonMessageImpl` now implementing `FromUserMessage`
+
