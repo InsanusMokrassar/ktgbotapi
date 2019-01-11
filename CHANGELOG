@@ -12,3 +12,6 @@
 * Add `CommonMediaGroupMessage` which in fact extension of `MediaGroupMessage` with implementation of `FromUserMessage`
 * `CommonMessageImpl` now implementing `FromUserMessage`
 
+## 0.8.3
+
+* Now `ForwardedMessage` contains nullable `from`
