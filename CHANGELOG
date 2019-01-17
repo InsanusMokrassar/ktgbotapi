@@ -28,3 +28,4 @@
     * Video
     * VideoNote
     * Voice
+* `MessageContent` now is `ResendableContent`
