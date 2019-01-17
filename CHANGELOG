@@ -15,3 +15,5 @@
 ## 0.8.3
 
 * Now `ForwardedMessage` contains nullable `from`
+
+## 0.8.4
