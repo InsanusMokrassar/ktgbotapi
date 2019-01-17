@@ -17,3 +17,5 @@
 * Now `ForwardedMessage` contains nullable `from`
 
 ## 0.8.4
+
+* Added `createMarkdownText` and extensions for `CaptionedMediaContent` and `TextContent`
