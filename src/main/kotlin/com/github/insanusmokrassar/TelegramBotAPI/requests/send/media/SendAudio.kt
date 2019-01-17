@@ -17,7 +17,7 @@ fun SendAudio(
     thumb: InputFile?,
     caption: String? = null,
     parseMode: ParseMode? = null,
-    duration: Int? = null,
+    duration: Long? = null,
     performer: String? = null,
     title: String? = null,
     disableNotification: Boolean = false,
@@ -71,7 +71,7 @@ data class SendAudioData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(durationField)
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @SerialName(performerField)
     @Optional
     val performer: String? = null,

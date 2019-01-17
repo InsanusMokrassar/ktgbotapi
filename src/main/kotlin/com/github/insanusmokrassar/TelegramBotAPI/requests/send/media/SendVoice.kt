@@ -17,7 +17,7 @@ fun SendVoice(
     thumb: InputFile?,
     caption: String? = null,
     parseMode: ParseMode? = null,
-    duration: Int? = null,
+    duration: Long? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -67,7 +67,7 @@ data class SendVoiceData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(durationField)
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @SerialName(disableNotificationField)
     @Optional
     override val disableNotification: Boolean = false,

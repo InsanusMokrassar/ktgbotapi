@@ -17,7 +17,7 @@ fun SendVideoNote(
     thumb: InputFile?,
     caption: String? = null,
     parseMode: ParseMode? = null,
-    duration: Int? = null,
+    duration: Long? = null,
     size: Int? = null, // in documentation - length (size of video side)
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -69,7 +69,7 @@ data class SendVideoNoteData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(durationField)
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @SerialName(lengthField)
     @Optional
     override val width: Int? = null,

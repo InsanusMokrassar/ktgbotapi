@@ -17,7 +17,7 @@ fun SendVideo(
     thumb: InputFile?,
     caption: String? = null,
     parseMode: ParseMode? = null,
-    duration: Int? = null,
+    duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
     supportStreaming: Boolean? = null,
@@ -73,7 +73,7 @@ data class SendVideoData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(durationField)
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @SerialName(widthField)
     @Optional
     override val width: Int? = null,

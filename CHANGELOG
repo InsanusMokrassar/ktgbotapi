@@ -19,3 +19,12 @@
 ## 0.8.4
 
 * Added `createMarkdownText` and extensions for `CaptionedMediaContent` and `TextContent`
+* Added `ResendableContent` and realize in different contents
+    * Animation
+    * Audio
+    * Document
+    * Photo
+    * Sticker
+    * Video
+    * VideoNote
+    * Voice
