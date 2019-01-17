@@ -1,13 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
 import kotlinx.serialization.*
 
 fun SendPhoto(

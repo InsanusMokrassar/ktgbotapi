@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.ResponseParameters
-import com.github.insanusmokrassar.TelegramBotAPI.utils.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonObject
 

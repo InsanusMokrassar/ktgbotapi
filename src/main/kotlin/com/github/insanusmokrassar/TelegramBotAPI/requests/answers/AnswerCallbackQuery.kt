@@ -1,8 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.answers
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQuery.CallbackQuery
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 

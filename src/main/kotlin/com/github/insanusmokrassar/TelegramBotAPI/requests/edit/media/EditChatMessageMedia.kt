@@ -1,13 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
 import kotlinx.serialization.*
-import java.lang.IllegalArgumentException
 
 const val editMessageMediaMethod = "editMessageMedia"
 

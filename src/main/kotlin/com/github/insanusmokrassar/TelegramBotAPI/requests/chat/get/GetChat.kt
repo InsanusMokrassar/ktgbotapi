@@ -6,8 +6,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.RawChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
-import kotlinx.serialization.internal.StringSerializer
 
 @Serializable
 data class GetChat(

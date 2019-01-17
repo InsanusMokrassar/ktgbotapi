@@ -1,8 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendChatMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.actions.BotAction
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendChatMessageRequest
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
