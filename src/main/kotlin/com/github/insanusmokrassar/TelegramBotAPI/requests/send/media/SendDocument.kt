@@ -14,7 +14,7 @@ import kotlinx.serialization.*
 fun SendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
-    thumb: InputFile?,
+    thumb: InputFile? = null,
     caption: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,

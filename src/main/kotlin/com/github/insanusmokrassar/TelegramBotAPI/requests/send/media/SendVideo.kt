@@ -14,7 +14,7 @@ import kotlinx.serialization.*
 fun SendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
-    thumb: InputFile?,
+    thumb: InputFile? = null,
     caption: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,

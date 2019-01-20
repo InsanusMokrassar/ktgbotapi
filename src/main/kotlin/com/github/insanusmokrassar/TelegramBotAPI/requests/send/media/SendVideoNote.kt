@@ -14,7 +14,7 @@ import kotlinx.serialization.*
 fun SendVideoNote(
     chatId: ChatIdentifier,
     videoNote: InputFile,
-    thumb: InputFile?,
+    thumb: InputFile? = null,
     caption: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,

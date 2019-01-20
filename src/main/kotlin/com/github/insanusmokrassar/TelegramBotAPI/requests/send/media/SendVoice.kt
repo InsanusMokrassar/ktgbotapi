@@ -14,7 +14,7 @@ import kotlinx.serialization.*
 fun SendVoice(
     chatId: ChatIdentifier,
     voice: InputFile,
-    thumb: InputFile?,
+    thumb: InputFile? = null,
     caption: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
