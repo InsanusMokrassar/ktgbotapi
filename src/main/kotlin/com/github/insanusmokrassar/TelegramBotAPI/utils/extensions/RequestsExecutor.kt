@@ -4,15 +4,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
-import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQuery.CallbackQuery
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.ChosenInlineResult
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InlineQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.ResponseParameters
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery
-import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
