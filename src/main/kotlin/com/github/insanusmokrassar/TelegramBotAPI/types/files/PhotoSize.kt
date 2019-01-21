@@ -7,14 +7,8 @@ import kotlinx.serialization.internal.ArrayListSerializer
 
 typealias Photo = List<PhotoSize>
 
-fun Photo.biggest(): PhotoSize? {
-    var biggest: PhotoSize = firstOrNull() ?: return null
-    forEach {
-        if (it.resolution > biggest.resolution) {
-            biggest = it
-        }
-    }
-    return biggest
+fun Photo.biggest(): PhotoSize? = maxBy {
+    it.resolution
 }
 
 object PhotoSerializer : KSerializer<Photo> by ArrayListSerializer(

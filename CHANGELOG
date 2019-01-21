@@ -31,3 +31,4 @@
 * `MessageContent` now is `ResendableContent`
 * Now all media sending factories which contains `thumb` have default `null` value
 * `ChatIdentifier` classes now are `data` classes
+* Now `MediaGroupContent` interface contains `toMediaGroupMemberInputMedia` method for easily creating mirror input media

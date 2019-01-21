@@ -20,7 +20,7 @@ data class InputMediaAnimation(
     @Optional
     override val height: Int? = null,
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @Transient
     override val thumb: InputFile? = null
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, CaptionedInputMedia {

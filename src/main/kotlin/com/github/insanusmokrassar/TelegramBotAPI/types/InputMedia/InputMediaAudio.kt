@@ -16,7 +16,7 @@ data class InputMediaAudio(
     @Optional
     override val parseMode: ParseMode? = null,
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @Optional
     val performer: String? = null,
     @Optional

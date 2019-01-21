@@ -3,6 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendPhoto
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMediaPhoto
+import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.MediaGroupMemberInputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.MarkdownParseMode
@@ -31,5 +33,11 @@ data class PhotoContent(
         disableNotification,
         replyToMessageId,
         replyMarkup
+    )
+
+    override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = InputMediaPhoto(
+        media.biggest() ?.fileId ?: throw IllegalStateException("Can't locate any photo size for this content"),
+        toMarkdownCaption(),
+        MarkdownParseMode
     )
 }
