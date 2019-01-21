@@ -7,4 +7,4 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 data class InlineQueryUpdate(
     override val updateId: UpdateIdentifier,
     override val data: InlineQuery
-) : Update<InlineQuery>
+) : Update

@@ -9,20 +9,22 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InlineQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.ResponseParameters
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import kotlinx.coroutines.*
 
-typealias UpdateReceiver<T> = suspend Update<T>.() -> Unit
+typealias UpdateReceiver<T> = suspend (T) -> Unit
 
 fun RequestsExecutor.startGettingOfUpdates(
     requestsDelayMillis: Long = 1000,
     scope: CoroutineScope = GlobalScope,
     allowedUpdates: List<String>? = null,
-    block: UpdateReceiver<*>
+    block: UpdateReceiver<Any>
 ): Job {
     return scope.launch {
         var lastHandledUpdate: UpdateIdentifier = 0L
@@ -36,11 +38,57 @@ fun RequestsExecutor.startGettingOfUpdates(
                     )
                 )
 
-                for (rawUpdate in updates) {
+                val adaptedUpdates = mutableListOf<Any>()
+                var mediaGroup: MutableList<Update>? = null
+
+                fun pushMediaGroup() {
+                    mediaGroup ?.also {
+                        adaptedUpdates.add(it)
+                        mediaGroup = null
+                    }
+                }
+
+                updates.map {
+                    it.asUpdate
+                }.forEach { update ->
+                    val data = update.data
+                    if (data is MediaGroupMessage) {
+                        mediaGroup ?.let {
+                            val message = it.first().data as MediaGroupMessage
+                            if (message.mediaGroupId == data.mediaGroupId) {
+                                it.add(update)
+                            } else {
+                                null
+                            }
+                        } ?: data.also {
+                            pushMediaGroup()
+                            mediaGroup = mutableListOf()
+                            mediaGroup ?.add(update)
+                        }
+                    } else {
+                        pushMediaGroup()
+                        adaptedUpdates.add(update)
+                    }
+                }
+
+                mediaGroup ?.also {
+                    adaptedUpdates.add(it)
+                    mediaGroup = null
+                }
+
+                for (update in adaptedUpdates) {
+
                     try {
-                        val update = rawUpdate.asUpdate
                         block(update)
-                        lastHandledUpdate = update.updateId
+                        lastHandledUpdate = when (update) {
+                            is Update -> update.updateId
+                            is List<*> -> (update.last() as? Update) ?.updateId ?: throw IllegalStateException(
+                                "Found non-updates oriented list"
+                            )
+                            else -> throw IllegalStateException(
+                                "Unknown type of data"
+                            )
+                        }
                     } catch (e: Exception) {
                         // TODO:: add exception handling
                         e.printStackTrace()
@@ -56,15 +104,16 @@ fun RequestsExecutor.startGettingOfUpdates(
 }
 
 fun RequestsExecutor.startGettingOfUpdates(
-    messageCallback: UpdateReceiver<Message>? = null,
-    editedMessageCallback: UpdateReceiver<Message>? = null,
-    channelPostCallback: UpdateReceiver<Message>? = null,
-    editedChannelPostCallback: UpdateReceiver<Message>? = null,
-    chosenInlineResultCallback: UpdateReceiver<ChosenInlineResult>? = null,
-    inlineQueryCallback: UpdateReceiver<InlineQuery>? = null,
-    callbackQueryCallback: UpdateReceiver<CallbackQuery>? = null,
-    shippingQueryCallback: UpdateReceiver<ShippingQuery>? = null,
-    preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQuery>? = null,
+    messageCallback: UpdateReceiver<MessageUpdate>? = null,
+    mediaGroupCallback: UpdateReceiver<List<BaseMessageUpdate>>? = null,
+    editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
+    channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
+    editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,
+    chosenInlineResultCallback: UpdateReceiver<ChosenInlineResultUpdate>? = null,
+    inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
+    callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
+    shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
+    preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     requestsDelayMillis: Long = 1000,
     scope: CoroutineScope = GlobalScope
 ): Job {
@@ -83,16 +132,21 @@ fun RequestsExecutor.startGettingOfUpdates(
             preCheckoutQueryCallback ?.let { UPDATE_PRE_CHECKOUT_QUERY }
         )
     ) {
-        when (this) {
-            is MessageUpdate -> messageCallback ?.invoke(this)
-            is EditMessageUpdate -> editedMessageCallback ?.invoke(this)
-            is ChannelPostUpdate -> channelPostCallback ?.invoke(this)
-            is EditChannelPostUpdate -> editedChannelPostCallback ?.invoke(this)
-            is ChosenInlineResultUpdate -> chosenInlineResultCallback ?.invoke(this)
-            is InlineQueryUpdate -> inlineQueryCallback ?.invoke(this)
-            is CallbackQueryUpdate -> callbackQueryCallback ?.invoke(this)
-            is ShippingQueryUpdate -> shippingQueryCallback ?.invoke(this)
-            is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(this)
+        when (it) {
+            is MessageUpdate -> messageCallback ?.invoke(it)
+            is List<*> -> mediaGroupCallback ?.invoke(
+                it.mapNotNull {
+                    it as? BaseMessageUpdate
+                }
+            )
+            is EditMessageUpdate -> editedMessageCallback ?.invoke(it)
+            is ChannelPostUpdate -> channelPostCallback ?.invoke(it)
+            is EditChannelPostUpdate -> editedChannelPostCallback ?.invoke(it)
+            is ChosenInlineResultUpdate -> chosenInlineResultCallback ?.invoke(it)
+            is InlineQueryUpdate -> inlineQueryCallback ?.invoke(it)
+            is CallbackQueryUpdate -> callbackQueryCallback ?.invoke(it)
+            is ShippingQueryUpdate -> shippingQueryCallback ?.invoke(it)
+            is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(it)
         }
     }
 }

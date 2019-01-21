@@ -32,3 +32,6 @@
 * Now all media sending factories which contains `thumb` have default `null` value
 * `ChatIdentifier` classes now are `data` classes
 * Now `MediaGroupContent` interface contains `toMediaGroupMemberInputMedia` method for easily creating mirror input media
+* Change signature of `Update`
+    * Now `Update` is untyped and data is `Any`
+* Media groups now are separated type of updates and you can subscribe on that receiving directly

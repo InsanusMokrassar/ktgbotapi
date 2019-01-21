@@ -7,4 +7,4 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 data class PreCheckoutQueryUpdate(
     override val updateId: UpdateIdentifier,
     override val data: PreCheckoutQuery
-) : Update<PreCheckoutQuery>
+) : Update
