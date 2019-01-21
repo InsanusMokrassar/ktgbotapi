@@ -1,8 +1,21 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message.content
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.Contact
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendContact
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 
 data class ContactContent(
     val contact: Contact
-) : MessageContent
+) : MessageContent {
+    override fun createResend(
+        chatId: ChatIdentifier,
+        disableNotification: Boolean,
+        replyToMessageId: MessageIdentifier?,
+        replyMarkup: KeyboardMarkup?
+    ): Request<RawMessage> = SendContact(
+        chatId, contact, disableNotification, replyToMessageId, replyMarkup
+    )
+}

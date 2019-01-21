@@ -1,10 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.ReplyMarkup
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditChatMessage
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditReplyMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditChatMessage
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditReplyMessage
 import kotlinx.serialization.*
 
 const val editMessageReplyMarkupMethod = "editMessageReplyMarkup"

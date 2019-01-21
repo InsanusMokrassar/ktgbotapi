@@ -7,4 +7,4 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 data class CallbackQueryUpdate(
     override val updateId: UpdateIdentifier,
     override val data: CallbackQuery
-) : Update<CallbackQuery>
+) : Update

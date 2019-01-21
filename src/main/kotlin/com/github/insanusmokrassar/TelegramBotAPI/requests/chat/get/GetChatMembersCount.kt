@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.types.ChatR
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.*
+import kotlinx.serialization.internal.IntSerializer
 
 @Serializable
 data class GetChatMembersCount(

@@ -9,7 +9,7 @@ sealed class ChatIdentifier
  * Also used as User Identifier
  */
 @Serializable(ChatIdentifierSerializer::class)
-class ChatId(
+data class ChatId(
     val chatId: Identifier
 ) : ChatIdentifier()
 
@@ -18,7 +18,7 @@ typealias UserId = ChatId
 fun Identifier.toChatId(): ChatId = ChatId(this)
 
 @Serializable(ChatIdentifierSerializer::class)
-class Username(
+data class Username(
     val username: String
 ) : ChatIdentifier() {
     init {

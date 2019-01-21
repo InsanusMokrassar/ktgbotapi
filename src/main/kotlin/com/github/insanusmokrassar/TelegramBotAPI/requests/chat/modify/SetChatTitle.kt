@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.modify
 
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.types.ChatRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*

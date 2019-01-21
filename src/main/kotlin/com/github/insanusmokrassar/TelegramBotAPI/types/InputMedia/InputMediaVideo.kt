@@ -1,9 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import kotlinx.serialization.*
 
 @Serializable
@@ -20,7 +20,7 @@ data class InputMediaVideo(
     @Optional
     override val height: Int? = null,
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @Transient
     override val thumb: InputFile? = null
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, CaptionedInputMedia, MediaGroupMemberInputMedia {

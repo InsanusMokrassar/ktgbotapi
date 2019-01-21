@@ -4,5 +4,5 @@ interface DuratedSendMessageRequest<T: Any>: SendMessageRequest<T> {
     /**
      * Duration of media, usually in seconds
      */
-    val duration: Int?
+    val duration: Long?
 }

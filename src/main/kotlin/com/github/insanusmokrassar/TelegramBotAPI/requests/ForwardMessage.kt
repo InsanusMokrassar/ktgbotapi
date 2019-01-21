@@ -1,8 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import kotlinx.serialization.*
 
 @Serializable

@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode
 
 import kotlinx.serialization.*
-import java.lang.IllegalArgumentException
 
 internal const val parseModeField = "parse_mode"
 

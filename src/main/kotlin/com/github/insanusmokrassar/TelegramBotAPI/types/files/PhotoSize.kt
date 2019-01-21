@@ -1,20 +1,14 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.files
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.*
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer
 
 typealias Photo = List<PhotoSize>
 
-fun Photo.biggest(): PhotoSize? {
-    var biggest: PhotoSize = firstOrNull() ?: return null
-    forEach {
-        if (it.resolution > biggest.resolution) {
-            biggest = it
-        }
-    }
-    return biggest
+fun Photo.biggest(): PhotoSize? = maxBy {
+    it.resolution
 }
 
 object PhotoSerializer : KSerializer<Photo> by ArrayListSerializer(

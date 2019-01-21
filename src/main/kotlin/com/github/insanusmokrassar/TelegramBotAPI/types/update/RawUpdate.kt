@@ -28,7 +28,7 @@ data class RawUpdate constructor(
     @Optional private val pre_checkout_query: PreCheckoutQuery? = null
 ) {
     @Transient
-    val asUpdate: Update<*> by lazy {
+    val asUpdate: Update by lazy {
         when {
             message != null -> MessageUpdate(updateId, message.asMessage)
             edited_message != null -> EditMessageUpdate(updateId, edited_message.asMessage)

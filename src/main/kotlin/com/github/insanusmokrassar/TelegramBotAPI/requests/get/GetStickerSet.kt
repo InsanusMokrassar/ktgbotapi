@@ -3,9 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.get
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickerSetNameField
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.StickerSet
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class GetStickerSet(

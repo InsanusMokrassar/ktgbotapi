@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.payments
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.amountField
+import com.github.insanusmokrassar.TelegramBotAPI.types.labelField
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts.Amounted
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

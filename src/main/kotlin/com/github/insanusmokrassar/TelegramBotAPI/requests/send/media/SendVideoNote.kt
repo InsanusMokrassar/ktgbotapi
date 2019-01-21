@@ -1,23 +1,23 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mapOfNotNull
 import kotlinx.serialization.*
 
 fun SendVideoNote(
     chatId: ChatIdentifier,
     videoNote: InputFile,
-    thumb: InputFile?,
+    thumb: InputFile? = null,
     caption: String? = null,
     parseMode: ParseMode? = null,
-    duration: Int? = null,
+    duration: Long? = null,
     size: Int? = null, // in documentation - length (size of video side)
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -69,7 +69,7 @@ data class SendVideoNoteData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(durationField)
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @SerialName(lengthField)
     @Optional
     override val width: Int? = null,

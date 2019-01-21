@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 

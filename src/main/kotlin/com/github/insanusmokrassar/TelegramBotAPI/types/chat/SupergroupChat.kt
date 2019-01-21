@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatId
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatPhoto
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 
 data class SupergroupChat(

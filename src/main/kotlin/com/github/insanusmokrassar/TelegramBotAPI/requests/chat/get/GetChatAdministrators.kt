@@ -4,10 +4,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleReque
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.types.ChatRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.RawChatMember
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.RawChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.*
+import kotlinx.serialization.internal.ArrayListSerializer
 
 @Serializable
 data class GetChatAdministrators(

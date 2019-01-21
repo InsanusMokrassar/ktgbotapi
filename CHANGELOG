@@ -15,3 +15,24 @@
 ## 0.8.3
 
 * Now `ForwardedMessage` contains nullable `from`
+
+## 0.8.4
+
+* Added `createMarkdownText` and extensions for `CaptionedMediaContent` and `TextContent`
+* Added `ResendableContent` and realize in different contents
+    * Animation
+    * Audio
+    * Document
+    * Photo
+    * Sticker
+    * Video
+    * VideoNote
+    * Voice
+* `MessageContent` now is `ResendableContent`
+* Now all media sending factories which contains `thumb` have default `null` value
+* `ChatIdentifier` classes now are `data` classes
+* Now `MediaGroupContent` interface contains `toMediaGroupMemberInputMedia` method for easily creating mirror input media
+* Change signature of `Update`
+    * Now `Update` is untyped and data is `Any`
+* Media groups now are separated type of updates and you can subscribe on that receiving directly
+* Now `AdministratorChatMember` is interface and `CreatorChatMember` implement it

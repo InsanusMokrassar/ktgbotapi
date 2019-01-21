@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntitiesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.games.Game

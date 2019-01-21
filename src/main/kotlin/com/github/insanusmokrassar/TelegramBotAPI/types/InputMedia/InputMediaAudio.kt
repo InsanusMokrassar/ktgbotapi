@@ -1,9 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import kotlinx.serialization.*
 
 @Serializable
@@ -16,7 +16,7 @@ data class InputMediaAudio(
     @Optional
     override val parseMode: ParseMode? = null,
     @Optional
-    override val duration: Int? = null,
+    override val duration: Long? = null,
     @Optional
     val performer: String? = null,
     @Optional
