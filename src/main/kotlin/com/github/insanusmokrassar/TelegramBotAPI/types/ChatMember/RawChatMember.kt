@@ -53,7 +53,7 @@ data class RawChatMember(
     val asChatMember: ChatMember by lazy {
         when (status) {
             "creator" -> CreatorChatMember(user)
-            "administrator" -> AdministratorChatMember(
+            "administrator" -> AdministratorChatMemberImpl(
                 user,
                 canBeEdited,
                 canChangeInfo,

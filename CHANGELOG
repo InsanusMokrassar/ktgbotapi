@@ -35,3 +35,4 @@
 * Change signature of `Update`
     * Now `Update` is untyped and data is `Any`
 * Media groups now are separated type of updates and you can subscribe on that receiving directly
+* Now `AdministratorChatMember` is interface and `CreatorChatMember` implement it
