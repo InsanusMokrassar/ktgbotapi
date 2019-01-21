@@ -46,7 +46,7 @@ data class SendContact(
         replyMarkup
     )
 
-    override fun method(): String = "sendVenue"
+    override fun method(): String = "sendContact"
     override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
 }
 
