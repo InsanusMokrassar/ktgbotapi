@@ -1,22 +1,22 @@
 # TelegramBotAPI changelog
 
-## 0.8.1
+### 0.8.1
 
 * Update `MediaGroupMessage` interface
 * Add implementation of `MediaGroupMessage`
 * Add generating of `MediaGroupMessage` in `RawMessage`
 
-## 0.8.2
+### 0.8.2
 
 * Add `FromUserMessage` which must be implemented in all messages realisations which have `user` field
 * Add `CommonMediaGroupMessage` which in fact extension of `MediaGroupMessage` with implementation of `FromUserMessage`
 * `CommonMessageImpl` now implementing `FromUserMessage`
 
-## 0.8.3
+### 0.8.3
 
 * Now `ForwardedMessage` contains nullable `from`
 
-## 0.8.4
+### 0.8.4
 
 * Added `createMarkdownText` and extensions for `CaptionedMediaContent` and `TextContent`
 * Added `ResendableContent` and realize in different contents
@@ -36,3 +36,9 @@
     * Now `Update` is untyped and data is `Any`
 * Media groups now are separated type of updates and you can subscribe on that receiving directly
 * Now `AdministratorChatMember` is interface and `CreatorChatMember` implement it
+
+### 0.8.5
+
+* Add extension `String#toMarkdown`
+* Fix of inserting of text when create Markdown-adapted text from text and text entities
+* Fix default realisation of MessageEntity#asMarkdownSource
