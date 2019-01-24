@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.bot
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.useWith
+import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.ProxySettings
 import okhttp3.OkHttpClient
 
 @Deprecated(

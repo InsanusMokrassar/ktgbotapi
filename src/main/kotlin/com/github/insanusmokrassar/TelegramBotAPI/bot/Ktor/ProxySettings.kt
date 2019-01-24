@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.ProxySettings
+import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.ProxySettings
+import io.ktor.http.HttpHeaders
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import java.net.InetSocketAddress
@@ -22,7 +23,7 @@ fun OkHttpClient.Builder.useWith(proxySettings: ProxySettings) {
             _, response ->
             response.request().newBuilder().apply {
                 addHeader(
-                    "Proxy-Authorization",
+                    HttpHeaders.ProxyAuthorization,
                     Credentials.basic(proxySettings.username ?: "", password)
                 )
             }.build()

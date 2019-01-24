@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.serialization.Optional
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import java.util.concurrent.Executors
 import kotlin.coroutines.*
 
@@ -24,10 +25,13 @@ data class PowLimiter(
     @Optional
     private val powK: Double = 0.0016
 ) : RequestLimiter {
+    @Transient
     private val scope = CoroutineScope(
         Executors.newFixedThreadPool(3).asCoroutineDispatcher()
     )
+    @Transient
     private val eventsChannel = Channel<RequestEvent>(Channel.UNLIMITED)
+    @Transient
     private val awaitTimeRange = minAwaitTime .. maxAwaitTime
 
     init {
