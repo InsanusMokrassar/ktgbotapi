@@ -50,3 +50,4 @@
 * Replace `ProxySettings` data class in `settings` package, deprecate old link
 * `BaseRequestsExecutor` now have no it's own scope
 * Add `RequestLimiter` and base realisations
+* Now `KtorRequestsExecutor` can receive as one of parameters `RequestLimiter` (by default - `EmptyLimiter`)

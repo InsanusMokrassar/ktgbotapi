@@ -4,6 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base.MultipartRequestCallFactory
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base.SimpleRequestCallFactory
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException
+import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLimiter
+import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.types.ResponseParameters
 import io.ktor.client.HttpClient
@@ -19,7 +21,8 @@ class KtorRequestsExecutor(
     private val client: HttpClient = HttpClient(OkHttp),
     hostUrl: String = "https://api.telegram.org",
     callsFactories: List<KtorCallFactory> = emptyList(),
-    excludeDefaultFactories: Boolean = false
+    excludeDefaultFactories: Boolean = false,
+    private val requestsLimiter: RequestLimiter = EmptyLimiter
 ) : BaseRequestsExecutor(token, hostUrl) {
     constructor(
         token: String,
@@ -40,30 +43,32 @@ class KtorRequestsExecutor(
     }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
-        var call: HttpClientCall? = null
-        for (factory in callsFactories) {
-            call = factory.prepareCall(
-                client,
-                baseUrl,
-                request
-            )
-            if (call != null) {
-                break
+        return requestsLimiter.limit {
+            var call: HttpClientCall? = null
+            for (factory in callsFactories) {
+                call = factory.prepareCall(
+                    client,
+                    baseUrl,
+                    request
+                )
+                if (call != null) {
+                    break
+                }
             }
-        }
-        if (call == null) {
-            throw IllegalArgumentException("Can't execute request: $request")
-        }
-        val content = call.response.content.toByteArray().toString(Charset.defaultCharset())
-        val responseObject = JSON.parse(
-            ResponseParameters.serializer(request.resultSerializer()),
-            content
-        )
-        return responseObject.result ?: call.let {
-            throw RequestException(
-                responseObject,
-                "Can't get result object"
+            if (call == null) {
+                throw IllegalArgumentException("Can't execute request: $request")
+            }
+            val content = call.response.content.toByteArray().toString(Charset.defaultCharset())
+            val responseObject = JSON.parse(
+                ResponseParameters.serializer(request.resultSerializer()),
+                content
             )
+            responseObject.result ?: call.let {
+                throw RequestException(
+                    responseObject,
+                    "Can't get result object"
+                )
+            }
         }
     }
 }
