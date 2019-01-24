@@ -3,12 +3,11 @@ package com.github.insanusmokrassar.TelegramBotAPI.bot
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.useWith
 import okhttp3.OkHttpClient
 
-data class ProxySettings(
-    val host: String = "localhost",
-    val port: Int = 1080,
-    val username: String? = null,
-    val password: String? = null
+@Deprecated(
+    "Replaced in settings package",
+    ReplaceWith("ProxySettings", "com.github.insanusmokrassar.TelegramBotAPI.bot.settings.ProxySettings")
 )
+typealias ProxySettings = com.github.insanusmokrassar.TelegramBotAPI.bot.settings.ProxySettings
 
 
 @Deprecated(

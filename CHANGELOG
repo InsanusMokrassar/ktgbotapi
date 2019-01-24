@@ -47,3 +47,4 @@
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
 `com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor` package
+* Replace `ProxySettings` data class in `settings` package, deprecate old link
