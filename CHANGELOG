@@ -49,3 +49,4 @@
 `com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor` package
 * Replace `ProxySettings` data class in `settings` package, deprecate old link
 * `BaseRequestsExecutor` now have no it's own scope
+* Add `RequestLimiter` and base realisations
