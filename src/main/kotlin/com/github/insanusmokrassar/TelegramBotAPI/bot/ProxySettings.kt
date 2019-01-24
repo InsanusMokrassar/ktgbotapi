@@ -1,9 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.bot
 
-import okhttp3.Credentials
+import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.useWith
 import okhttp3.OkHttpClient
-import java.net.InetSocketAddress
-import java.net.Proxy
 
 data class ProxySettings(
     val host: String = "localhost",
@@ -12,26 +10,9 @@ data class ProxySettings(
     val password: String? = null
 )
 
-fun OkHttpClient.Builder.useWith(proxySettings: ProxySettings) {
-    proxy(
-        Proxy(
-            Proxy.Type.SOCKS,
-            InetSocketAddress(
-                proxySettings.host,
-                proxySettings.port
-            )
-        )
-    )
-    proxySettings.password ?.let {
-        password ->
-        proxyAuthenticator {
-            _, response ->
-            response.request().newBuilder().apply {
-                addHeader(
-                    "Proxy-Authorization",
-                    Credentials.basic(proxySettings.username ?: "", password)
-                )
-            }.build()
-        }
-    }
-}
+
+@Deprecated(
+    "Replaced in Ktor package",
+    ReplaceWith("useWith", "com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.useWith")
+)
+fun OkHttpClient.Builder.useWith(proxySettings: ProxySettings) = useWith(proxySettings)
