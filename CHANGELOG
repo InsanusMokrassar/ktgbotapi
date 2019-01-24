@@ -42,3 +42,5 @@
 * Add extension `String#toMarkdown`
 * Fix of inserting of text when create Markdown-adapted text from text and text entities
 * Fix default realisation of MessageEntity#asMarkdownSource
+
+### 0.9.0
