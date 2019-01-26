@@ -1,20 +1,20 @@
 # TelegramBotAPI changelog
 
-### 0.8.1
 
-* Update `MediaGroupMessage` interface
-* Add implementation of `MediaGroupMessage`
-* Add generating of `MediaGroupMessage` in `RawMessage`
+## 0.9.0
 
-### 0.8.2
+* Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
+`com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor` package
+* Replace `ProxySettings` data class in `settings` package, deprecate old link
+* `BaseRequestsExecutor` now have no it's own scope
+* Add `RequestLimiter` and base realisations
+* Now `KtorRequestsExecutor` can receive as one of parameters `RequestLimiter` (by default - `EmptyLimiter`)
 
-* Add `FromUserMessage` which must be implemented in all messages realisations which have `user` field
-* Add `CommonMediaGroupMessage` which in fact extension of `MediaGroupMessage` with implementation of `FromUserMessage`
-* `CommonMessageImpl` now implementing `FromUserMessage`
+### 0.8.5
 
-### 0.8.3
-
-* Now `ForwardedMessage` contains nullable `from`
+* Add extension `String#toMarkdown`
+* Fix of inserting of text when create Markdown-adapted text from text and text entities
+* Fix default realisation of MessageEntity#asMarkdownSource
 
 ### 0.8.4
 
@@ -37,17 +37,18 @@
 * Media groups now are separated type of updates and you can subscribe on that receiving directly
 * Now `AdministratorChatMember` is interface and `CreatorChatMember` implement it
 
-### 0.8.5
+### 0.8.3
 
-* Add extension `String#toMarkdown`
-* Fix of inserting of text when create Markdown-adapted text from text and text entities
-* Fix default realisation of MessageEntity#asMarkdownSource
+* Now `ForwardedMessage` contains nullable `from`
 
-### 0.9.0
+### 0.8.2
 
-* Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
-`com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor` package
-* Replace `ProxySettings` data class in `settings` package, deprecate old link
-* `BaseRequestsExecutor` now have no it's own scope
-* Add `RequestLimiter` and base realisations
-* Now `KtorRequestsExecutor` can receive as one of parameters `RequestLimiter` (by default - `EmptyLimiter`)
+* Add `FromUserMessage` which must be implemented in all messages realisations which have `user` field
+* Add `CommonMediaGroupMessage` which in fact extension of `MediaGroupMessage` with implementation of `FromUserMessage`
+* `CommonMessageImpl` now implementing `FromUserMessage`
+
+### 0.8.1
+
+* Update `MediaGroupMessage` interface
+* Add implementation of `MediaGroupMessage`
+* Add generating of `MediaGroupMessage` in `RawMessage`
