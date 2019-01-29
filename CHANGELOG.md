@@ -10,6 +10,8 @@
 * Add `RequestLimiter` and base realisations
 * Now `KtorRequestsExecutor` can receive as one of parameters `RequestLimiter` (by default - `EmptyLimiter`)
 
+### 0.9.1
+
 ### 0.8.5
 
 * Add extension `String#toMarkdown`
