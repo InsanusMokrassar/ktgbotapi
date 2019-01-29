@@ -19,6 +19,8 @@
 must be regular text
 * Change signature of `createMarkdownText`: now it will return list of strings
 * Deprecate old signatures of `createMarkdownText`, `toMarkdownCaption`, `toMarkdownText`
+* Add `ResendableContent#createResends` which create adapted list of resends for content
+* Add `TextContent` own `createResends` realisation
 
 ### 0.8.5
 

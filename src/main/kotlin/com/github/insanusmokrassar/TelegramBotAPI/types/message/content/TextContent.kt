@@ -10,6 +10,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownText
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownTexts
 
 data class TextContent(
     val text: String,
@@ -29,4 +30,21 @@ data class TextContent(
         replyToMessageId,
         replyMarkup
     )
+
+    override fun createResends(
+        chatId: ChatIdentifier,
+        disableNotification: Boolean,
+        replyToMessageId: MessageIdentifier?,
+        replyMarkup: KeyboardMarkup?
+    ): List<Request<RawMessage>> = toMarkdownTexts().map {
+        SendMessage(
+            chatId,
+            it,
+            MarkdownParseMode,
+            false,
+            disableNotification,
+            replyToMessageId,
+            replyMarkup
+        )
+    }
 }
