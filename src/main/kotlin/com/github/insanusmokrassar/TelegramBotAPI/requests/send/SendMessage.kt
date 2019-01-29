@@ -35,6 +35,11 @@ data class SendMessage(
     TextableSendMessageRequest<RawMessage>,
     DisableWebPagePreview
 {
+    init {
+        if (text.length !in textLength) {
+            throw IllegalArgumentException("Text must be in $textLength range")
+        }
+    }
 
     override fun method(): String = "sendMessage"
     override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()

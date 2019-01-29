@@ -95,6 +95,13 @@ data class SendAudioData internal constructor(
     TitledSendMessageRequest<RawMessage>,
     DuratedSendMessageRequest<RawMessage>
 {
+    init {
+        text ?.let {
+            if (it.length !in captionLength) {
+                throw IllegalArgumentException("Caption must be in $captionLength range")
+            }
+        }
+    }
 
     override fun method(): String = "sendAudio"
     override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()

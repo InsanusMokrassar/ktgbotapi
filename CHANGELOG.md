@@ -13,6 +13,7 @@
 ### 0.9.1
 
 * Updated built-in lengths restrictions
+* Apply restrictions of text limit for sending messages
 
 ### 0.8.5
 
