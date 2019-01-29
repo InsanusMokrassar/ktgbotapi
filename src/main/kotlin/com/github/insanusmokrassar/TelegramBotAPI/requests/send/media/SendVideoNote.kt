@@ -94,6 +94,13 @@ data class SendVideoNoteData internal constructor(
     override val height: Int?
         get() = width
 
+    init {
+        text ?.let {
+            if (it.length !in captionLength) {
+                throw IllegalArgumentException("Caption must be in $captionLength range")
+            }
+        }
+    }
 
     override fun method(): String = "sendVideoNote"
     override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()

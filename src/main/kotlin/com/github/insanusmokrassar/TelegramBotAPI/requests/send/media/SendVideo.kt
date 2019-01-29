@@ -100,6 +100,13 @@ data class SendVideoData internal constructor(
     DuratedSendMessageRequest<RawMessage>,
     SizedSendMessageRequest<RawMessage>
 {
+    init {
+        text ?.let {
+            if (it.length !in captionLength) {
+                throw IllegalArgumentException("Caption must be in $captionLength range")
+            }
+        }
+    }
 
     override fun method(): String = "sendVideo"
     override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()

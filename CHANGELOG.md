@@ -10,6 +10,18 @@
 * Add `RequestLimiter` and base realisations
 * Now `KtorRequestsExecutor` can receive as one of parameters `RequestLimiter` (by default - `EmptyLimiter`)
 
+### 0.9.1
+
+* Updated built-in lengths restrictions
+* Apply restrictions of text limit for sending messages
+* Add `RegularTextMessageEntity` which is useful for representing regular text message entity
+* Add `convertToFullMessageEntityList` which create list of entities with `RegularTextMessageEntity` on places where
+must be regular text
+* Change signature of `createMarkdownText`: now it will return list of strings
+* Deprecate old signatures of `createMarkdownText`, `toMarkdownCaption`, `toMarkdownText`
+* Add `ResendableContent#createResends` which create adapted list of resends for content
+* Add `TextContent` own `createResends` realisation
+
 ### 0.8.5
 
 * Add extension `String#toMarkdown`

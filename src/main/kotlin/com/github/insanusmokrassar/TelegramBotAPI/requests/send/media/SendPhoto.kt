@@ -63,6 +63,14 @@ data class SendPhotoData internal constructor(
     ReplyingMarkupSendMessageRequest<RawMessage>,
     TextableSendMessageRequest<RawMessage>
 {
+    init {
+        text ?.let {
+            if (it.length !in captionLength) {
+                throw IllegalArgumentException("Caption must be in $captionLength range")
+            }
+        }
+    }
+
     override fun method(): String = "sendPhoto"
     override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
 }

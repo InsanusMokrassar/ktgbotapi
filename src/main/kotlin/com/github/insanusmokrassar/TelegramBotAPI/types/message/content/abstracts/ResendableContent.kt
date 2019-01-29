@@ -13,4 +13,11 @@ interface ResendableContent {
         replyToMessageId: MessageIdentifier? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<RawMessage>
+
+    fun createResends(
+        chatId: ChatIdentifier,
+        disableNotification: Boolean = false,
+        replyToMessageId: MessageIdentifier? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ): List<Request<RawMessage>> = listOf(createResend(chatId, disableNotification, replyToMessageId, replyMarkup))
 }
