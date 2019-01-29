@@ -17,6 +17,8 @@
 * Add `RegularTextMessageEntity` which is useful for representing regular text message entity
 * Add `convertToFullMessageEntityList` which create list of entities with `RegularTextMessageEntity` on places where
 must be regular text
+* Change signature of `createMarkdownText`: now it will return list of strings
+* Deprecate old signatures of `createMarkdownText`, `toMarkdownCaption`, `toMarkdownText`
 
 ### 0.8.5
 
