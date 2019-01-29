@@ -12,6 +12,8 @@
 
 ### 0.9.1
 
+* Updated built-in lengths restrictions
+
 ### 0.8.5
 
 * Add extension `String#toMarkdown`

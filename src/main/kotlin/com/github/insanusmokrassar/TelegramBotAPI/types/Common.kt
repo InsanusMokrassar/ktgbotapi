@@ -16,17 +16,17 @@ typealias ShippingOptionIdentifier = String
 typealias StartParameter = String
 typealias InlineMessageIdentifier = String
 
-val callbackQueryAnswerLength = 0 .. 200
-val captionLength = 0 .. 1024
-val textLength = 0 .. 4096
+val callbackQueryAnswerLength = 0 until 200
+val captionLength = 0 until 1024
+val textLength = 0 until 4096
 val userProfilePhotosRequestLimit = 0 .. 100
-val chatTitleLength = 1 .. 255
-val chatDescriptionLength = 0 .. 255
-val inlineResultQueryIdLingth = 1 .. 64
+val chatTitleLength = 1 until 255
+val chatDescriptionLength = 0 until 256
+val inlineResultQueryIdLingth = 1 until 64
 
-val invoiceTitleLimit = 1 .. 32
-val invoiceDescriptionLimit = 1 .. 255
-val invoicePayloadBytesLimit = 1 .. 128
+val invoiceTitleLimit = 1 until 32
+val invoiceDescriptionLimit = 1 until 256
+val invoicePayloadBytesLimit = 1 until 128
 
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
