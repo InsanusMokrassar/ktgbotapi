@@ -14,6 +14,9 @@
 
 * Updated built-in lengths restrictions
 * Apply restrictions of text limit for sending messages
+* Add `RegularTextMessageEntity` which is useful for representing regular text message entity
+* Add `convertToFullMessageEntityList` which create list of entities with `RegularTextMessageEntity` on places where
+must be regular text
 
 ### 0.8.5
 
