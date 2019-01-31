@@ -169,11 +169,18 @@ fun <T: Any> RequestsExecutor.executeAsync(
 }
 
 suspend fun <T: Any> RequestsExecutor.executeUnsafe(
-    request: Request<T>
+    request: Request<T>,
+    retries: Int = 0,
+    retriesDelay: Long = 1000L
 ): T? {
     return try {
         execute(request)
     } catch (e: RequestException) {
-        null
+        if (retries > 0) {
+            delay(retriesDelay)
+            executeUnsafe(request, retries - 1, retriesDelay)
+        } else {
+            null
+        }
     }
 }

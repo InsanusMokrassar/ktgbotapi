@@ -25,6 +25,7 @@ must be regular text
 ### 0.9.2
 
 * `RequestsExecutor#executeAsync(Request, CoroutineScope)` now will return `Deferred` for cases when you need result
+* `RequestsExecutor#executeUnsafe` will automatically retry request if it was unsuccessful and retries > 0
 
 ### 0.8.5
 
