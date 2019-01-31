@@ -164,16 +164,23 @@ fun <T: Any> RequestsExecutor.executeAsync(
 fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
     scope: CoroutineScope = GlobalScope
-): Job {
+): Deferred<T> {
     return scope.async { execute(request) }
 }
 
 suspend fun <T: Any> RequestsExecutor.executeUnsafe(
-    request: Request<T>
+    request: Request<T>,
+    retries: Int = 0,
+    retriesDelay: Long = 1000L
 ): T? {
     return try {
         execute(request)
     } catch (e: RequestException) {
-        null
+        if (retries > 0) {
+            delay(retriesDelay)
+            executeUnsafe(request, retries - 1, retriesDelay)
+        } else {
+            null
+        }
     }
 }
