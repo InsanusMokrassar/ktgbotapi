@@ -22,6 +22,8 @@ must be regular text
 * Add `ResendableContent#createResends` which create adapted list of resends for content
 * Add `TextContent` own `createResends` realisation
 
+### 0.9.2
+
 ### 0.8.5
 
 * Add extension `String#toMarkdown`
