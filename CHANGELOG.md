@@ -24,6 +24,8 @@ must be regular text
 
 ### 0.9.2
 
+* `RequestsExecutor#executeAsync(Request, CoroutineScope)` now will return `Deferred` for cases when you need result
+
 ### 0.8.5
 
 * Add extension `String#toMarkdown`

@@ -164,7 +164,7 @@ fun <T: Any> RequestsExecutor.executeAsync(
 fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
     scope: CoroutineScope = GlobalScope
-): Job {
+): Deferred<T> {
     return scope.async { execute(request) }
 }
 
