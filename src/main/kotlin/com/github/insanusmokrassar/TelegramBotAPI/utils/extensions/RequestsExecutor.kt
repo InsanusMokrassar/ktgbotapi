@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
-import com.github.insanusmokrassar.TelegramBotAPI.types.ResponseParameters
+import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
@@ -147,7 +147,7 @@ fun RequestsExecutor.startGettingOfUpdates(
 
 fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
-    onFail: (suspend (ResponseParameters<*>) -> Unit)? = null,
+    onFail: (suspend (Response<*>) -> Unit)? = null,
     scope: CoroutineScope = GlobalScope,
     onSuccess: (suspend (T) -> Unit)? = null
 ): Job {
