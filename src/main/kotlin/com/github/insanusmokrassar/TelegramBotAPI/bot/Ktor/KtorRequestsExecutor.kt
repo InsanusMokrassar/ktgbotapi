@@ -22,7 +22,8 @@ class KtorRequestsExecutor(
     hostUrl: String = "https://api.telegram.org",
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
-    private val requestsLimiter: RequestLimiter = EmptyLimiter
+    private val requestsLimiter: RequestLimiter = EmptyLimiter,
+    private val jsonFormatter: JSON = JSON.nonstrict
 ) : BaseRequestsExecutor(token, hostUrl) {
     constructor(
         token: String,
@@ -59,7 +60,7 @@ class KtorRequestsExecutor(
                 throw IllegalArgumentException("Can't execute request: $request")
             }
             val content = call.response.content.toByteArray().toString(Charset.defaultCharset())
-            val responseObject = JSON.parse(
+            val responseObject = jsonFormatter.parse(
                 ResponseParameters.serializer(request.resultSerializer()),
                 content
             )

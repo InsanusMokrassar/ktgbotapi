@@ -29,6 +29,8 @@ must be regular text
 
 ### 0.9.3
 
+* `KtorRequestsExecutor` now can use custom `JSON` string formatter (by default - non strict)
+
 ### 0.8.5
 
 * Add extension `String#toMarkdown`
