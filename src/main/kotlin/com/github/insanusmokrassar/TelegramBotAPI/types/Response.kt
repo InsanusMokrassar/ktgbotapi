@@ -4,8 +4,14 @@ import kotlinx.serialization.*
 import org.joda.time.DateTime
 import java.util.concurrent.TimeUnit
 
+@Deprecated(
+    "Deprecated because incorrect name",
+    ReplaceWith("Response")
+)
+typealias ResponseParameters<T> = Response<T>
+
 @Serializable
-data class ResponseParameters<T : Any>(
+data class Response<T : Any>(
     val ok: Boolean = false,
     @Optional
     val description: String? = null,

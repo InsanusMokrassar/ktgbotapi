@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
-import com.github.insanusmokrassar.TelegramBotAPI.types.ResponseParameters
+import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall
 import io.ktor.client.engine.HttpClientEngine
@@ -61,7 +61,7 @@ class KtorRequestsExecutor(
             }
             val content = call.response.content.toByteArray().toString(Charset.defaultCharset())
             val responseObject = jsonFormatter.parse(
-                ResponseParameters.serializer(request.resultSerializer()),
+                Response.serializer(request.resultSerializer()),
                 content
             )
             responseObject.result ?: call.let {

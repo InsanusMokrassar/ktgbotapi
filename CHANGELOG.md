@@ -30,6 +30,7 @@ must be regular text
 ### 0.9.3
 
 * `KtorRequestsExecutor` now can use custom `JSON` string formatter (by default - non strict)
+* `ResponseParameters` renamed to `Response`
 
 ### 0.8.5
 
