@@ -29,6 +29,8 @@ must be regular text
 * Add `RequestError` sealed class and described in documentation known errors
 * Add `ResponseParametersRaw` which can create error based on input parameters
 * Add `parameters` field in `Response` and remove useless fields from `Response`
+* Add `leftToRetry` parameter in `RetryAfterError`
+* Add handling of `RetryAfterError` in `KtorRequestsExecutor`
 
 ### 0.9.3
 

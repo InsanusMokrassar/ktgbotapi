@@ -8,11 +8,13 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLim
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
+import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.util.cio.toByteArray
+import kotlinx.coroutines.delay
 import kotlinx.io.charsets.Charset
 import kotlinx.serialization.json.JSON
 
@@ -64,7 +66,15 @@ class KtorRequestsExecutor(
                 Response.serializer(request.resultSerializer()),
                 content
             )
-            responseObject.result ?: call.let {
+            responseObject.result ?: responseObject.parameters ?.let {
+                val error = it.error
+                if (error is RetryAfterError) {
+                    delay(error.leftToRetry)
+                    execute(request)
+                } else {
+                    null
+                }
+            } ?: call.let {
                 throw RequestException(
                     responseObject,
                     "Can't get result object"

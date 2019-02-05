@@ -9,6 +9,8 @@ data class RetryAfterError(
     val startCountingMillis: Long
 ) : RequestError() {
     val canContinue = TimeUnit.SECONDS.toMillis(seconds) + startCountingMillis
+    val leftToRetry: Long
+        get() = canContinue - System.currentTimeMillis()
 }
 
 data class MigrateChatId(
