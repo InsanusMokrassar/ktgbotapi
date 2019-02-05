@@ -27,6 +27,8 @@ must be regular text
 * `RequestsExecutor#executeAsync(Request, CoroutineScope)` now will return `Deferred` for cases when you need result
 * `RequestsExecutor#executeUnsafe` will automatically retry request if it was unsuccessful and retries > 0
 
+### 0.9.3
+
 ### 0.8.5
 
 * Add extension `String#toMarkdown`
