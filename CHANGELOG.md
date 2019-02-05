@@ -26,6 +26,9 @@ must be regular text
 
 * `RequestsExecutor#executeAsync(Request, CoroutineScope)` now will return `Deferred` for cases when you need result
 * `RequestsExecutor#executeUnsafe` will automatically retry request if it was unsuccessful and retries > 0
+* Add `RequestError` sealed class and described in documentation known errors
+* Add `ResponseParametersRaw` which can create error based on input parameters
+* Add `parameters` field in `Response` and remove useless fields from `Response`
 
 ### 0.9.3
 
