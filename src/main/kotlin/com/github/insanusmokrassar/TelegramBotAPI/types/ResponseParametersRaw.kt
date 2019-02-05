@@ -13,7 +13,7 @@ data class ResponseParametersRaw(
 ) {
     @Transient
     private val createTime: Long = System.currentTimeMillis()
-
+    @Transient
     val error: RequestError? by lazy {
         when {
             migrateToChatId != null -> MigrateChatId(migrateToChatId);
