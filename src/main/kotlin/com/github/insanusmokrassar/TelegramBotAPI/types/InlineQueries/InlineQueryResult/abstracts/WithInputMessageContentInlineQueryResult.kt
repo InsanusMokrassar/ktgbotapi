@@ -3,5 +3,5 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQue
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 
 interface WithInputMessageContentInlineQueryResult : InlineQueryResult {
-    val inputMessageContent: InputMessageContent
+    val inputMessageContent: InputMessageContent?
 }
