@@ -4,22 +4,17 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudio
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.mimeTypeField
 import kotlinx.serialization.Optional
 import kotlinx.serialization.SerialName
 
-data class InlineQueryResultAudioImpl(
+data class InlineQueryResultVoiceImpl(
     @SerialName(idField)
     override val id: String,
-    @SerialName(audioUrlField)
+    @SerialName(voiceUrlField)
     override val url: String,
-    @SerialName(performerField)
-    @Optional
-    override val performer: String? = null,
-    @SerialName(audioDurationField)
+    @SerialName(voiceDurationField)
     @Optional
     override val duration: Int? = null,
     @SerialName(titleField)
@@ -37,4 +32,4 @@ data class InlineQueryResultAudioImpl(
     @SerialName(inputMessageContentField)
     @Optional
     override val inputMessageContent: InputMessageContent? = null
-) : InlineQueryResultAudio
+) : InlineQueryResultVoice

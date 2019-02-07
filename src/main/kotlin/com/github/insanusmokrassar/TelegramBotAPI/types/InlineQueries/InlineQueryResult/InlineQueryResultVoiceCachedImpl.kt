@@ -1,27 +1,21 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudio
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoice
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCached
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.mimeTypeField
 import kotlinx.serialization.Optional
 import kotlinx.serialization.SerialName
 
-data class InlineQueryResultAudioImpl(
+data class InlineQueryResultVoiceCachedImpl(
     @SerialName(idField)
     override val id: String,
-    @SerialName(audioUrlField)
-    override val url: String,
-    @SerialName(performerField)
-    @Optional
-    override val performer: String? = null,
-    @SerialName(audioDurationField)
-    @Optional
-    override val duration: Int? = null,
+    @SerialName(voiceFileIdField)
+    override val fileId: FileId,
     @SerialName(titleField)
     @Optional
     override val title: String? = null,
@@ -37,4 +31,4 @@ data class InlineQueryResultAudioImpl(
     @SerialName(inputMessageContentField)
     @Optional
     override val inputMessageContent: InputMessageContent? = null
-) : InlineQueryResultAudio
+) : InlineQueryResultVoiceCached
