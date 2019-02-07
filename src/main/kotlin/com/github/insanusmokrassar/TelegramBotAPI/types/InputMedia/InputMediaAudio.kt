@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Performerable
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
@@ -18,11 +19,11 @@ data class InputMediaAudio(
     @Optional
     override val duration: Long? = null,
     @Optional
-    val performer: String? = null,
+    override val performer: String? = null,
     @Optional
     override val title: String? = null,
     override val thumb: InputFile? = null
-) : InputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, CaptionedInputMedia {
+) : InputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, CaptionedInputMedia, Performerable {
     override val type: String = "audio"
 
     @SerialName(mediaField)

@@ -85,6 +85,10 @@ const val videoWidthField = "video_width"
 const val videoHeightField = "video_height"
 const val videoDurationField = "video_duration"
 
+const val audioUrlField = "audio_url"
+const val audioFileIdField = "audio_file_id"
+const val audioDurationField = "audio_duration"
+
 const val gameShortNameField = "game_short_name"
 
 const val thumbUrlField = "thumb_url"
