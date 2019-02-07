@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.answers
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InlineQuery
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -30,3 +31,20 @@ data class AnswerInlineQuery(
     override fun method(): String = "answerInlineQuery"
     override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
 }
+
+fun InlineQuery.createAnswer(
+    results: List<InlineQueryResult> = emptyList(),
+    cachedTime: Int? = null,
+    isPersonal: Boolean? = null,
+    nextOffset: String? = null,
+    switchPmText: String? = null,
+    switchPmParameter: String? = null
+) = AnswerInlineQuery(
+    id,
+    results,
+    cachedTime,
+    isPersonal,
+    nextOffset,
+    switchPmText,
+    switchPmParameter
+)

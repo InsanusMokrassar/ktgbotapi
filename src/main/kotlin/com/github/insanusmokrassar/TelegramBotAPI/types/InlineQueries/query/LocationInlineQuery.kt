@@ -9,8 +9,4 @@ data class LocationInlineQuery(
     override val query: String,
     override val offset: Long,
     val location: Location
-) : InlineQuery {
-    override fun answerQuery() {
-        TODO()
-    }
-}
+) : InlineQuery

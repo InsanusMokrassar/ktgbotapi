@@ -8,6 +8,4 @@ interface InlineQuery {
     val from: User
     val query: String
     val offset: Long
-
-    fun answerQuery()
 }
