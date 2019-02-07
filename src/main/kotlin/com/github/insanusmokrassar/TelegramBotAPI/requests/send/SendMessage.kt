@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send
 
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.types.DisableWebPagePreview
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.DisableWebPagePreview
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode

@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.payments
 
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup

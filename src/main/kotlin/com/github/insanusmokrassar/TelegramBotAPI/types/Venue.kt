@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CommonVenueData
 import kotlinx.serialization.*
 
 @Serializable
@@ -7,13 +8,13 @@ data class Venue(
     @SerialName(locationField)
     val location: Location,
     @SerialName(titleField)
-    val title: String,
+    override val title: String,
     @SerialName(addressField)
-    val address: String,
+    override val address: String,
     @SerialName(foursquareIdField)
     @Optional
-    val foursquareId: String? = null,
+    override val foursquareId: String? = null,
     @SerialName(foursquareTypeField)
     @Optional
-    val foursquareType: String? = null // TODO:: Rewrite with enum or interface
-)
+    override val foursquareType: String? = null
+) : CommonVenueData

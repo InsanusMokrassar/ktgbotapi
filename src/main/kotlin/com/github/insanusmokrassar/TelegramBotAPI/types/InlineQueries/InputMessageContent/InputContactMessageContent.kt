@@ -1,10 +1,12 @@
-package com.github.insanusmokrassar.TelegramBotAPI.types
+package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InputMessageContent
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CommonContactData
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 import kotlinx.serialization.*
 
 @Serializable
-data class Contact(
+data class InputContactMessageContent(
     @SerialName(phoneNumberField)
     override val phoneNumber: String,
     @SerialName(firstNameField)
@@ -12,9 +14,6 @@ data class Contact(
     @SerialName(lastNameField)
     @Optional
     override val lastName: String? = null,
-    @SerialName(userIdField)
-    @Optional
-    val userId: UserId? = null,
     @Optional
     override val vcard: String? = null
-) : CommonContactData
+) : CommonContactData, InputMessageContent
