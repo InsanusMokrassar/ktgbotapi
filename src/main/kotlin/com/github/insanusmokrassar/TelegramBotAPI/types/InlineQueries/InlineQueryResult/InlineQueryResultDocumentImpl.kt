@@ -4,30 +4,29 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocument
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.mimeTypeField
 import kotlinx.serialization.Optional
 import kotlinx.serialization.SerialName
 
-data class InlineQueryResultVideoImpl(
+data class InlineQueryResultDocumentImpl(
     @SerialName(idField)
     override val id: String,
-    @SerialName(videoUrlField)
+    @SerialName(documentUrlField)
     override val url: String,
     @SerialName(thumbUrlField)
-    override val thumbUrl: String,
+    @Optional
+    override val thumbUrl: String? = null,
+    @SerialName(thumbWidthField)
+    @Optional
+    override val thumbWidth: Int? = null,
+    @SerialName(thumbHeightField)
+    @Optional
+    override val thumbHeight: Int? = null,
     @SerialName(mimeTypeField)
     override val mimeType: String? = null,
-    @SerialName(videoWidthField)
-    @Optional
-    override val width: Int? = null,
-    @SerialName(videoHeightField)
-    @Optional
-    override val height: Int? = null,
-    @SerialName(videoDurationField)
-    @Optional
-    override val duration: Int? = null,
     @SerialName(titleField)
     @Optional
     override val title: String? = null,
@@ -46,4 +45,4 @@ data class InlineQueryResultVideoImpl(
     @SerialName(inputMessageContentField)
     @Optional
     override val inputMessageContent: InputMessageContent? = null
-) : InlineQueryResultVideo
+) : InlineQueryResultDocument
