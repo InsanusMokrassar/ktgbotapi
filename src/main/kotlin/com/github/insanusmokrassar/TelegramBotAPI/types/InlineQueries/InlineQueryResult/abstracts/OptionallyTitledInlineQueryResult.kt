@@ -1,7 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts
 
-interface OptionallyTitledInlineQueryResult : InlineQueryResult {
-    val title: String?
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Titled
 
-
-}
+interface OptionallyTitledInlineQueryResult : InlineQueryResult, Titled

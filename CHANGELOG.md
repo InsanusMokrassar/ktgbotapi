@@ -2,6 +2,13 @@
 
 ## 0.10.0
 
+* Most part of abstractions was replaced from `requests` and `types` on more high level
+* Added abstraction `CommonVenueData`
+* Added abstraction `CommonContactData`
+* Added `InputMessageContent`
+* Update some types and requests according to abstractions replacing
+* Add all `InlineQueryResult`, `InputMessageContent` and other inline mode types
+
 ## 0.9.0
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in

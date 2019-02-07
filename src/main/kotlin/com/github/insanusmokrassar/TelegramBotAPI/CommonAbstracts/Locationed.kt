@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.types.abstracts
+package com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts
 
 interface Locationed {
     val latitude: Double

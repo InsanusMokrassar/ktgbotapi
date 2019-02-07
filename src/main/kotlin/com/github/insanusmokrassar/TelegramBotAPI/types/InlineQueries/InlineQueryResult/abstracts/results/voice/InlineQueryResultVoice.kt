@@ -1,0 +1,6 @@
+package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.voice
+
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Performerable
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.*
+
+interface InlineQueryResultVoice : InlineQueryResultVoiceCommon, UrlInlineQueryResult, DuratedInlineResultQuery

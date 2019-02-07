@@ -1,0 +1,5 @@
+package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.video
+
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.*
+
+interface InlineQueryResultVideoCached : InlineQueryResultVideoCommon, WithFileIdInlineQueryResult

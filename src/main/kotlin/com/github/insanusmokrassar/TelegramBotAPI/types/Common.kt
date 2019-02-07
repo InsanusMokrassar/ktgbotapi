@@ -28,6 +28,10 @@ val invoiceTitleLimit = 1 until 32
 val invoiceDescriptionLimit = 1 until 256
 val invoicePayloadBytesLimit = 1 until 128
 
+val livePeriodLimit = 60 .. 86400
+
+val inlineQueryAnswerResultsLimit = 0 .. 50
+
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
 const val updateIdField = "update_id"
@@ -52,29 +56,66 @@ const val resultIdField = "result_id"
 const val inlineMessageIdField = "inline_message_id"
 const val callbackDataField = "callback_data"
 const val callbackQueryIdField = "callback_query_id"
+const val inlineQueryIdField = "inline_query_id"
 const val showAlertField = "show_alert"
 const val cachedTimeField = "cached_time"
 const val foursquareIdField = "foursquare_id"
 const val foursquareTypeField = "foursquare_type"
 const val untilDateField = "until_date"
 const val errorMessageField = "error_message"
+const val messageTextField = "message_text"
+const val isPersonalField = "is_personal"
+const val nextOffsetField = "next_offset"
+const val switchPmTextField = "switch_pm_text"
+const val switchPmParameterField = "switch_pm_parameter"
+
 
 const val photoUrlField = "photo_url"
 const val photoSizeField = "photo_size"
 const val photoFileIdField = "photo_file_id"
-const val gifUrlField = "gif_url"
-const val gifFileIdField = "gif_file_id"
-const val thumbUrlField = "thumb_url"
-const val thumbWidthField = "thumb_width"
-const val thumbHeightField = "thumb_height"
 const val photoWidthField = "photo_width"
 const val photoHeightField = "photo_height"
+
+const val gifUrlField = "gif_url"
+const val gifFileIdField = "gif_file_id"
 const val gifWidthField = "gif_width"
 const val gifHeightField = "gif_height"
 const val gifDurationField = "gif_duration"
+
+const val mpeg4GifUrlField = "mpeg4_url"
+const val mpeg4GifFileIdField = "mpeg4_file_id"
+const val mpeg4GifWidthField = "mpeg4_width"
+const val mpeg4GifHeightField = "mpeg4_height"
+const val mpeg4GifDurationField = "mpeg4_duration"
+
+const val videoUrlField = "video_url"
+const val videoFileIdField = "video_file_id"
+const val videoWidthField = "video_width"
+const val videoHeightField = "video_height"
+const val videoDurationField = "video_duration"
+
+const val audioUrlField = "audio_url"
+const val audioFileIdField = "audio_file_id"
+const val audioDurationField = "audio_duration"
+
+const val voiceUrlField = "voice_url"
+const val voiceFileIdField = "voice_file_id"
+const val voiceDurationField = "voice_duration"
+
+const val documentUrlField = "document_url"
+const val documentFileIdField = "document_file_id"
+
+const val stickerFileIdField = "sticker_file_id"
+
+const val gameShortNameField = "game_short_name"
+
+const val thumbUrlField = "thumb_url"
+const val thumbWidthField = "thumb_width"
+const val thumbHeightField = "thumb_height"
+
 const val inputMessageContentField = "input_message_content"
 const val hideUrlField = "hide_url"
-const val gameShortNameField = "game_short_name"
+
 
 const val canSendMessagesField = "can_send_messages"
 const val canSendMediaMessagesField = "can_send_media_messages"
@@ -129,6 +170,8 @@ const val labelField = "label"
 const val amountField = "amount"
 const val pricesField = "prices"
 const val payloadField = "payload"
+const val vcardField = "vcard"
+const val resultsField = "results"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
