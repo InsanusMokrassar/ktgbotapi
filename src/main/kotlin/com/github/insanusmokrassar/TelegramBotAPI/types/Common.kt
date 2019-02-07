@@ -89,6 +89,10 @@ const val audioUrlField = "audio_url"
 const val audioFileIdField = "audio_file_id"
 const val audioDurationField = "audio_duration"
 
+const val voiceUrlField = "voice_url"
+const val voiceFileIdField = "voice_file_id"
+const val voiceDurationField = "voice_duration"
+
 const val gameShortNameField = "game_short_name"
 
 const val thumbUrlField = "thumb_url"
