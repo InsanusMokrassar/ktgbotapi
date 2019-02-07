@@ -9,6 +9,7 @@ import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer
 import kotlinx.serialization.internal.BooleanSerializer
 
+@Serializable
 data class AnswerInlineQuery(
     @SerialName(inlineQueryIdField)
     val inlineQueryID: InlineQueryIdentifier,
