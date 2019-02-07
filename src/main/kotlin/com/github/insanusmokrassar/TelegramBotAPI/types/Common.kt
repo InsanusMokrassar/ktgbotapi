@@ -30,6 +30,8 @@ val invoicePayloadBytesLimit = 1 until 128
 
 val livePeriodLimit = 60 .. 86400
 
+val inlineQueryAnswerResultsLimit = 0 .. 50
+
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
 const val updateIdField = "update_id"
@@ -54,6 +56,7 @@ const val resultIdField = "result_id"
 const val inlineMessageIdField = "inline_message_id"
 const val callbackDataField = "callback_data"
 const val callbackQueryIdField = "callback_query_id"
+const val inlineQueryIdField = "inline_query_id"
 const val showAlertField = "show_alert"
 const val cachedTimeField = "cached_time"
 const val foursquareIdField = "foursquare_id"
@@ -61,6 +64,10 @@ const val foursquareTypeField = "foursquare_type"
 const val untilDateField = "until_date"
 const val errorMessageField = "error_message"
 const val messageTextField = "message_text"
+const val isPersonalField = "is_personal"
+const val nextOffsetField = "next_offset"
+const val switchPmTextField = "switch_pm_text"
+const val switchPmParameterField = "switch_pm_parameter"
 
 
 const val photoUrlField = "photo_url"
@@ -164,6 +171,7 @@ const val amountField = "amount"
 const val pricesField = "prices"
 const val payloadField = "payload"
 const val vcardField = "vcard"
+const val resultsField = "results"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
