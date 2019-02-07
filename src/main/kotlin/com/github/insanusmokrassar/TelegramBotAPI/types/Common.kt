@@ -98,6 +98,8 @@ const val voiceDurationField = "voice_duration"
 const val documentUrlField = "document_url"
 const val documentFileIdField = "document_file_id"
 
+const val stickerFileIdField = "sticker_file_id"
+
 const val gameShortNameField = "game_short_name"
 
 const val thumbUrlField = "thumb_url"
