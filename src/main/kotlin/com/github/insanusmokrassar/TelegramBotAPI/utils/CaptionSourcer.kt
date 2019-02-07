@@ -6,7 +6,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.captionLength
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.textLength
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.toMarkdown
 
 @Deprecated(
     "Deprecated because old version have problem with long texts, but new one must return list of strings"

@@ -2,7 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQue
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.serializers.InlineQueryResultSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import kotlinx.serialization.*
+import kotlinx.serialization.Serializable
 
 @Serializable(InlineQueryResultSerializer::class)
 interface InlineQueryResult {

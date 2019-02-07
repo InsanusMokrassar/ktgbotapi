@@ -1,10 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InputMessageContent
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Captioned
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.DisableWebPagePreview
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Captioned
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.disableWebPagePreviewField
 import com.github.insanusmokrassar.TelegramBotAPI.types.messageTextField
 import kotlinx.serialization.*

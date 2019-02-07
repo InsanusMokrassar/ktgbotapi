@@ -1,8 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
 import kotlinx.serialization.*
-import org.joda.time.DateTime
-import java.util.concurrent.TimeUnit
 
 @Deprecated(
     "Deprecated because incorrect name",

@@ -3,9 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
 
 @Serializable
 data class EditInlineMessageLiveLocation(
