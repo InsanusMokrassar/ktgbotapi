@@ -14,12 +14,11 @@ data class InlineQueryResultVoiceImpl(
     override val id: String,
     @SerialName(voiceUrlField)
     override val url: String,
+    @SerialName(titleField)
+    override val title: String,
     @SerialName(voiceDurationField)
     @Optional
     override val duration: Int? = null,
-    @SerialName(titleField)
-    @Optional
-    override val title: String? = null,
     @SerialName(captionField)
     @Optional
     override val caption: String? = null,

@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Captioned
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.*
 
 interface InlineQueryResultPhotoCommon : InlineQueryResult,
-    TitledInlineQueryResult,
+    OptionallyTitledInlineQueryResult,
     DescribedInlineQueryResult,
     Captioned,
     WithInputMessageContentInlineQueryResult

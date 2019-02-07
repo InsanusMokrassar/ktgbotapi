@@ -17,8 +17,7 @@ data class InlineQueryResultVoiceCachedImpl(
     @SerialName(voiceFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)
-    @Optional
-    override val title: String? = null,
+    override val title: String,
     @SerialName(captionField)
     @Optional
     override val caption: String? = null,

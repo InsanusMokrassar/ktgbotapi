@@ -16,15 +16,14 @@ data class InlineQueryResultAudioImpl(
     override val id: String,
     @SerialName(audioUrlField)
     override val url: String,
+    @SerialName(titleField)
+    override val title: String,
     @SerialName(performerField)
     @Optional
     override val performer: String? = null,
     @SerialName(audioDurationField)
     @Optional
     override val duration: Int? = null,
-    @SerialName(titleField)
-    @Optional
-    override val title: String? = null,
     @SerialName(captionField)
     @Optional
     override val caption: String? = null,

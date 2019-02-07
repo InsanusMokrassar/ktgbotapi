@@ -20,6 +20,8 @@ data class InlineQueryResultLocation(
     override val latitude: Double,
     @SerialName(longitudeField)
     override val longitude: Double,
+    @SerialName(titleField)
+    override val title: String,
     @SerialName(livePeriodField)
     @Optional
     override val livePeriod: Int? = null,
@@ -32,9 +34,6 @@ data class InlineQueryResultLocation(
     @SerialName(thumbHeightField)
     @Optional
     override val thumbHeight: Int? = null,
-    @SerialName(titleField)
-    @Optional
-    override val title: String? = null,
     @SerialName(replyMarkupField)
     @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
