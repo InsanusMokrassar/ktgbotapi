@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Performerable
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
@@ -74,7 +75,7 @@ data class SendAudioData internal constructor(
     override val duration: Long? = null,
     @SerialName(performerField)
     @Optional
-    val performer: String? = null,
+    override val performer: String? = null,
     @SerialName(titleField)
     @Optional
     override val title: String? = null,
@@ -93,7 +94,8 @@ data class SendAudioData internal constructor(
     TextableSendMessageRequest<RawMessage>,
     ThumbedSendMessageRequest<RawMessage>,
     TitledSendMessageRequest<RawMessage>,
-    DuratedSendMessageRequest<RawMessage>
+    DuratedSendMessageRequest<RawMessage>,
+    Performerable
 {
     init {
         text ?.let {
