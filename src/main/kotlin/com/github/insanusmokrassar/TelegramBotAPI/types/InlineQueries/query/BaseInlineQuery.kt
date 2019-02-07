@@ -8,5 +8,5 @@ data class BaseInlineQuery(
     override val id: InlineQueryIdentifier,
     override val from: User,
     override val query: String,
-    override val offset: Long
+    override val offset: String
 ) : InlineQuery
