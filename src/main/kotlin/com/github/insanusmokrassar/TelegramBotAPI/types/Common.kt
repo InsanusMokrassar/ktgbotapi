@@ -161,6 +161,7 @@ const val labelField = "label"
 const val amountField = "amount"
 const val pricesField = "prices"
 const val payloadField = "payload"
+const val vcardField = "vcard"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
