@@ -18,8 +18,7 @@ data class InlineQueryResultVideoCachedImpl(
     @SerialName(videoFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)
-    @Optional
-    override val title: String? = null,
+    override val title: String,
     @SerialName(descriptionField)
     @Optional
     override val description: String? = null,

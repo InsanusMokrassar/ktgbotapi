@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Captioned
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.*
 
 interface InlineQueryResultMpeg4GifCommon : InlineQueryResult,
-    TitledInlineQueryResult,
+    OptionallyTitledInlineQueryResult,
     Captioned,
     WithInputMessageContentInlineQueryResult
 {

@@ -19,6 +19,8 @@ data class InlineQueryResultVideoImpl(
     override val thumbUrl: String,
     @SerialName(mimeTypeField)
     override val mimeType: String? = null,
+    @SerialName(titleField)
+    override val title: String,
     @SerialName(videoWidthField)
     @Optional
     override val width: Int? = null,
@@ -28,9 +30,6 @@ data class InlineQueryResultVideoImpl(
     @SerialName(videoDurationField)
     @Optional
     override val duration: Int? = null,
-    @SerialName(titleField)
-    @Optional
-    override val title: String? = null,
     @SerialName(descriptionField)
     @Optional
     override val description: String? = null,
