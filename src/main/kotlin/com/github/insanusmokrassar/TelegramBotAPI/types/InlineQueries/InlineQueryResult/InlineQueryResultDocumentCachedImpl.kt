@@ -5,8 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocument
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCached
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.document.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.mimeTypeField
@@ -37,4 +36,6 @@ data class InlineQueryResultDocumentCachedImpl(
     @SerialName(inputMessageContentField)
     @Optional
     override val inputMessageContent: InputMessageContent? = null
-) : InlineQueryResultDocumentCached
+) : InlineQueryResultDocumentCached {
+    override val type: String = inlineQueryResultDocumentType
+}

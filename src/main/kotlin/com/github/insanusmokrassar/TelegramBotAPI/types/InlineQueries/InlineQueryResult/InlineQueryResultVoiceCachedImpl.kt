@@ -5,8 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoice
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCached
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.voice.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import kotlinx.serialization.Optional
 import kotlinx.serialization.SerialName
@@ -32,4 +31,6 @@ data class InlineQueryResultVoiceCachedImpl(
     @SerialName(inputMessageContentField)
     @Optional
     override val inputMessageContent: InputMessageContent? = null
-) : InlineQueryResultVoiceCached
+) : InlineQueryResultVoiceCached {
+    override val type: String = inlineQueryResultVoiceType
+}

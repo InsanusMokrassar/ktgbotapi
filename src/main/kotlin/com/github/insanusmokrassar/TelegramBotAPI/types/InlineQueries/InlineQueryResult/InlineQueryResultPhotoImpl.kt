@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQue
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhoto
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.photo.inlineQueryResultPhotoType
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
@@ -40,4 +41,6 @@ data class InlineQueryResultPhotoImpl(
     @SerialName(inputMessageContentField)
     @Optional
     override val inputMessageContent: InputMessageContent? = null
-) : InlineQueryResultPhoto
+) : InlineQueryResultPhoto {
+    override val type: String = inlineQueryResultPhotoType
+}

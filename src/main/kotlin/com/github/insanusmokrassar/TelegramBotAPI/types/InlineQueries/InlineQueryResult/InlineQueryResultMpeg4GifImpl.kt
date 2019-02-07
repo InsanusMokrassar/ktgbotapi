@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4Gif
+import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.inlineQueryResultMpeg4GifType
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import kotlinx.serialization.Optional
 import kotlinx.serialization.SerialName
@@ -42,4 +43,6 @@ data class InlineQueryResultMpeg4GifImpl(
     @SerialName(inputMessageContentField)
     @Optional
     override val inputMessageContent: InputMessageContent? = null
-) : InlineQueryResultMpeg4Gif
+) : InlineQueryResultMpeg4Gif {
+    override val type: String = inlineQueryResultMpeg4GifType
+}
