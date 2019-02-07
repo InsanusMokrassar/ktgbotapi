@@ -58,6 +58,7 @@ const val foursquareIdField = "foursquare_id"
 const val foursquareTypeField = "foursquare_type"
 const val untilDateField = "until_date"
 const val errorMessageField = "error_message"
+const val messageTextField = "message_text"
 
 const val photoUrlField = "photo_url"
 const val photoSizeField = "photo_size"

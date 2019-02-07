@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.members
 
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.types.UntilDate
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.UntilDate
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*

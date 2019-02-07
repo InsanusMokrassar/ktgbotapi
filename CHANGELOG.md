@@ -80,3 +80,13 @@ must be regular text
 * Update `MediaGroupMessage` interface
 * Add implementation of `MediaGroupMessage`
 * Add generating of `MediaGroupMessage` in `RawMessage`
+
+#### Inline mode changes
+
+// It is temporal block of changes which will be replaced before complete merge
+
+* Most part of abstractions was replaced from `requests` and `types` on more high level
+* Added abstraction `CommonVenueData`
+* Added abstraction `CommonContactData`
+* Added `InputMessageContent`
+* Update some types and requests according to abstractions replacing

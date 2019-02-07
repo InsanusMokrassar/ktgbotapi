@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.types.abstracts
+package com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 
