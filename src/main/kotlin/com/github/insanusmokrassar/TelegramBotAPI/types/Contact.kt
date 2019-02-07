@@ -15,6 +15,7 @@ data class Contact(
     @SerialName(userIdField)
     @Optional
     val userId: UserId? = null,
+    @SerialName(vcardField)
     @Optional
     override val vcard: String? = null
 ) : CommonContactData
