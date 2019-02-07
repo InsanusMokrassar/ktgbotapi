@@ -10,5 +10,5 @@ interface InlineQueryResultVoiceCommon : InlineQueryResult,
     TitledInlineQueryResult
 {
     override val type: String
-        get() = "audio"
+        get() = "voice"
 }
