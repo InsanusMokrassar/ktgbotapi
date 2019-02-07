@@ -7,7 +7,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMa
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import kotlinx.serialization.*
 
-// TODO:: Replace return type by RawMessage or Boolean (as in documentation)
 @Serializable
 data class StopInlineMessageLiveLocation(
     @SerialName(inlineMessageIdField)
@@ -17,5 +16,4 @@ data class StopInlineMessageLiveLocation(
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditReplyMessage {
     override fun method(): String = "stopMessageLiveLocation"
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
 }

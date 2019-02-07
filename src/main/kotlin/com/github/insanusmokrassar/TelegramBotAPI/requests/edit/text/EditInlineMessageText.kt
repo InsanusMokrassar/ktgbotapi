@@ -25,7 +25,5 @@ data class EditInlineMessageText(
     @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
-
     override fun method(): String = editMessageMediaMethod
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
 }

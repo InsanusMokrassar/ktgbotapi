@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.text
+package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
@@ -27,5 +27,4 @@ data class EditInlineMessageMedia(
     }
 
     override fun method(): String = editMessageMediaMethod
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
 }

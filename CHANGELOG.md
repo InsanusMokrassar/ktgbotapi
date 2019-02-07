@@ -8,6 +8,7 @@
 * Added `InputMessageContent`
 * Update some types and requests according to abstractions replacing
 * Add all `InlineQueryResult`, `InputMessageContent` and other inline mode types
+* Fixes in edition of inline messages and their result types
 
 ## 0.9.0
 

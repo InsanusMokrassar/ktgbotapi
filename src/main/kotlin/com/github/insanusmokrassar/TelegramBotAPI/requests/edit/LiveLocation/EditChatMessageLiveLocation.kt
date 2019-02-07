@@ -6,7 +6,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMa
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import kotlinx.serialization.*
 
-// TODO:: Replace return type by RawMessage or Boolean (as in documentation)
 @Serializable
 data class EditChatMessageLiveLocation(
     @SerialName(chatIdField)
