@@ -8,7 +8,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQuer
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import kotlinx.serialization.Optional
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class InlineQueryResultMpeg4GifImpl(
     @SerialName(idField)
     override val id: String,

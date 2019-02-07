@@ -12,7 +12,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.mimeTypeField
 import kotlinx.serialization.Optional
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class InlineQueryResultDocumentCachedImpl(
     @SerialName(idField)
     override val id: String,
