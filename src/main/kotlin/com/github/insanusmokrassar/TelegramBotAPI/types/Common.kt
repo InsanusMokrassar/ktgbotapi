@@ -60,27 +60,40 @@ const val untilDateField = "until_date"
 const val errorMessageField = "error_message"
 const val messageTextField = "message_text"
 
+
 const val photoUrlField = "photo_url"
 const val photoSizeField = "photo_size"
 const val photoFileIdField = "photo_file_id"
+const val photoWidthField = "photo_width"
+const val photoHeightField = "photo_height"
+
 const val gifUrlField = "gif_url"
 const val gifFileIdField = "gif_file_id"
 const val gifWidthField = "gif_width"
 const val gifHeightField = "gif_height"
 const val gifDurationField = "gif_duration"
+
 const val mpeg4GifUrlField = "mpeg4_url"
 const val mpeg4GifFileIdField = "mpeg4_file_id"
 const val mpeg4GifWidthField = "mpeg4_width"
 const val mpeg4GifHeightField = "mpeg4_height"
 const val mpeg4GifDurationField = "mpeg4_duration"
+
+const val videoUrlField = "video_url"
+const val videoFileIdField = "video_file_id"
+const val videoWidthField = "video_width"
+const val videoHeightField = "video_height"
+const val videoDurationField = "video_duration"
+
+const val gameShortNameField = "game_short_name"
+
 const val thumbUrlField = "thumb_url"
 const val thumbWidthField = "thumb_width"
 const val thumbHeightField = "thumb_height"
-const val photoWidthField = "photo_width"
-const val photoHeightField = "photo_height"
+
 const val inputMessageContentField = "input_message_content"
 const val hideUrlField = "hide_url"
-const val gameShortNameField = "game_short_name"
+
 
 const val canSendMessagesField = "can_send_messages"
 const val canSendMediaMessagesField = "can_send_media_messages"
