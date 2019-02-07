@@ -28,6 +28,8 @@ val invoiceTitleLimit = 1 until 32
 val invoiceDescriptionLimit = 1 until 256
 val invoicePayloadBytesLimit = 1 until 128
 
+val livePeriodLimit = 60 .. 86400
+
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
 const val updateIdField = "update_id"
