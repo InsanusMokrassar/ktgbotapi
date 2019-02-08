@@ -18,6 +18,8 @@ data class InlineQueryResultDocumentImpl(
     override val url: String,
     @SerialName(titleField)
     override val title: String,
+    @SerialName(mimeTypeField)
+    override val mimeType: String,
     @SerialName(thumbUrlField)
     @Optional
     override val thumbUrl: String? = null,
@@ -27,8 +29,6 @@ data class InlineQueryResultDocumentImpl(
     @SerialName(thumbHeightField)
     @Optional
     override val thumbHeight: Int? = null,
-    @SerialName(mimeTypeField)
-    override val mimeType: String? = null,
     @SerialName(descriptionField)
     @Optional
     override val description: String? = null,
