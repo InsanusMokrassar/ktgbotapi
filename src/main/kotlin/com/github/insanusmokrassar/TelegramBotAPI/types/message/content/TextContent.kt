@@ -23,7 +23,7 @@ data class TextContent(
         replyMarkup: KeyboardMarkup?
     ): Request<RawMessage> = SendMessage(
         chatId,
-        toMarkdownText(),
+        toMarkdownTexts().first(),
         MarkdownParseMode,
         false,
         disableNotification,
