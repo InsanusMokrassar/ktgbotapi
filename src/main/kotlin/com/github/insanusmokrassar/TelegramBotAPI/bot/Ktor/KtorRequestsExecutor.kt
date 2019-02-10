@@ -3,7 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor
 import com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base.MultipartRequestCallFactory
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base.SimpleRequestCallFactory
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException
+import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestException
+import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.newRequestException
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
@@ -75,7 +76,7 @@ class KtorRequestsExecutor(
                     null
                 }
             } ?: call.let {
-                throw RequestException(
+                throw newRequestException(
                     responseObject,
                     "Can't get result object"
                 )

@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException
+import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestException
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
