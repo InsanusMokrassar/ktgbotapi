@@ -1,8 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.modify
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartRequest
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.types.ChatRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer

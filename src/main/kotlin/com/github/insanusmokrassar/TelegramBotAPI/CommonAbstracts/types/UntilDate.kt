@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.types
+package com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.TelegramDate
 

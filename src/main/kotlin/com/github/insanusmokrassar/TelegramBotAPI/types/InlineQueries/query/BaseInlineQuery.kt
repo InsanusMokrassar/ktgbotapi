@@ -8,9 +8,5 @@ data class BaseInlineQuery(
     override val id: InlineQueryIdentifier,
     override val from: User,
     override val query: String,
-    override val offset: Long
-) : InlineQuery {
-    override fun answerQuery() {
-        TODO()
-    }
-}
+    override val offset: String
+) : InlineQuery

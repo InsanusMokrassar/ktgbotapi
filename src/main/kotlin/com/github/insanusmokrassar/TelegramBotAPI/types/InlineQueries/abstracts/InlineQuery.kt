@@ -7,7 +7,5 @@ interface InlineQuery {
     val id: InlineQueryIdentifier
     val from: User
     val query: String
-    val offset: Long
-
-    fun answerQuery()
+    val offset: String
 }

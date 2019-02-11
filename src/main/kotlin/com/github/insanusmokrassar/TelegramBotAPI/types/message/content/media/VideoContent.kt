@@ -12,7 +12,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaption
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions
 
 data class VideoContent(
     override val media: VideoFile,
@@ -28,7 +28,7 @@ data class VideoContent(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        toMarkdownCaption(),
+        toMarkdownCaptions().firstOrNull(),
         MarkdownParseMode,
         media.duration,
         media.width,
@@ -41,7 +41,7 @@ data class VideoContent(
 
     override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = InputMediaVideo(
         media.fileId,
-        toMarkdownCaption(),
+        toMarkdownCaptions().firstOrNull(),
         MarkdownParseMode,
         media.width,
         media.height,

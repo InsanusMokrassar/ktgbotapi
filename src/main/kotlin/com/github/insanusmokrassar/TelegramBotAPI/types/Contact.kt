@@ -1,19 +1,21 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CommonContactData
 import kotlinx.serialization.*
 
 @Serializable
 data class Contact(
     @SerialName(phoneNumberField)
-    val phoneNumber: String,
+    override val phoneNumber: String,
     @SerialName(firstNameField)
-    val firstName: String,
+    override val firstName: String,
     @SerialName(lastNameField)
     @Optional
-    val lastName: String? = null,
+    override val lastName: String? = null,
     @SerialName(userIdField)
     @Optional
     val userId: UserId? = null,
+    @SerialName(vcardField)
     @Optional
-    val vcard: String? = null
-)
+    override val vcard: String? = null
+) : CommonContactData

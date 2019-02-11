@@ -6,7 +6,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.captionLength
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.textLength
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.toMarkdown
 
 @Deprecated(
     "Deprecated because old version have problem with long texts, but new one must return list of strings"
@@ -56,7 +55,11 @@ fun createMarkdownText(
 }
 
 @Deprecated(
-    "Deprecated because old version have problem with long texts, but new one must return list of strings"
+    "Deprecated because old version have problem with long texts, but new one must return list of strings",
+    ReplaceWith(
+        "toMarkdownCaptions().firstOrNull()",
+        "com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions"
+    )
 )
 fun CaptionedMediaContent.toMarkdownCaption(): String? = toMarkdownCaptions().firstOrNull()
 
@@ -70,7 +73,11 @@ fun CaptionedMediaContent.fullEntitiesList(): List<MessageEntity> = caption ?.le
 } ?: emptyList()
 
 @Deprecated(
-    "Deprecated because old version have problem with long texts, but new one must return list of strings"
+    "Deprecated because old version have problem with long texts, but new one must return list of strings",
+    ReplaceWith(
+        "toMarkdownTexts().first()",
+        "com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownTexts"
+    )
 )
 fun TextContent.toMarkdownText(): String = toMarkdownTexts().first()
 

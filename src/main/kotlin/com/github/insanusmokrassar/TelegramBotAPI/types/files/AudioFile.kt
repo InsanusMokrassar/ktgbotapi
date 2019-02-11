@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.files
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Performerable
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.*
 import kotlinx.serialization.*
@@ -11,7 +12,7 @@ data class AudioFile(
     @Optional
     override val duration: Long? = null,
     @Optional
-    val performer: String? = null,
+    override val performer: String? = null,
     @Optional
     override val title: String? = null,
     @SerialName(mimeTypeField)
@@ -22,4 +23,4 @@ data class AudioFile(
     override val fileSize: Long? = null,
     @Optional
     override val thumb: PhotoSize? = null
-) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, TitledMediaFile
+) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, TitledMediaFile, Performerable

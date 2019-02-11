@@ -7,10 +7,6 @@ data class LocationInlineQuery(
     override val id: InlineQueryIdentifier,
     override val from: User,
     override val query: String,
-    override val offset: Long,
+    override val offset: String,
     val location: Location
-) : InlineQuery {
-    override fun answerQuery() {
-        TODO()
-    }
-}
+) : InlineQuery

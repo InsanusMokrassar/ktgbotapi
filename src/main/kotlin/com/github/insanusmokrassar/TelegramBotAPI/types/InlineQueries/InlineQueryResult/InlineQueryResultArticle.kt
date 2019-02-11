@@ -18,7 +18,7 @@ class InlineQueryResultArticle(
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(urlField)
     @Optional
-    val url: String? = null,
+    override val url: String? = null,
     @SerialName(hideUrlField)
     @Optional
     val hideUrl: Boolean? = null,
@@ -38,6 +38,7 @@ class InlineQueryResultArticle(
     ThumbSizedInlineQueryResult,
     TitledInlineQueryResult,
     DescribedInlineQueryResult,
-    WithInputMessageContentInlineQueryResult {
+    WithInputMessageContentInlineQueryResult,
+    UrlInlineQueryResult {
     override val type: String = "article"
 }

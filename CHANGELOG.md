@@ -1,5 +1,15 @@
 # TelegramBotAPI changelog
 
+## 0.10.0
+
+* Most part of abstractions was replaced from `requests` and `types` on more high level
+* Added abstraction `CommonVenueData`
+* Added abstraction `CommonContactData`
+* Added `InputMessageContent`
+* Update some types and requests according to abstractions replacing
+* Add all `InlineQueryResult`, `InputMessageContent` and other inline mode types
+* Fixes in edition of inline messages and their result types
+* Replace basic exception and add `ReplyMessageNotFound` exception
 
 ## 0.9.0
 

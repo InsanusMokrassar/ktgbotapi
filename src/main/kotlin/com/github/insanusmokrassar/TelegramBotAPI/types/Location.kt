@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.abstracts.Locationed
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Locationed
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

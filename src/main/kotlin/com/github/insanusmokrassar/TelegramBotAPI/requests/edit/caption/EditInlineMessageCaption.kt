@@ -5,7 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import kotlinx.serialization.*
 
 @Serializable
@@ -21,7 +20,5 @@ data class EditInlineMessageCaption(
     @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditTextChatMessage, EditReplyMessage {
-
     override fun method(): String = editMessageCaptionMethod
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
 }

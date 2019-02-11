@@ -12,7 +12,7 @@ data class RawInlineQuery(
     @SerialName(queryField)
     val query: String,
     @SerialName(offsetField)
-    val offset: Long,
+    val offset: String,
     @SerialName(locationField)
     @Optional
     val location: Location? = null

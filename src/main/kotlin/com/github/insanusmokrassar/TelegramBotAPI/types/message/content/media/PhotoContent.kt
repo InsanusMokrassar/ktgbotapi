@@ -13,7 +13,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.biggest
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaption
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions
 
 data class PhotoContent(
     override val media: List<PhotoSize>,
@@ -28,7 +28,7 @@ data class PhotoContent(
     ): Request<RawMessage> = SendPhoto(
         chatId,
         media.biggest() ?.fileId ?: throw IllegalStateException("Empty list of media"),
-        toMarkdownCaption(),
+        toMarkdownCaptions().firstOrNull(),
         MarkdownParseMode,
         disableNotification,
         replyToMessageId,
@@ -37,7 +37,7 @@ data class PhotoContent(
 
     override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = InputMediaPhoto(
         media.biggest() ?.fileId ?: throw IllegalStateException("Can't locate any photo size for this content"),
-        toMarkdownCaption(),
+        toMarkdownCaptions().firstOrNull(),
         MarkdownParseMode
     )
 }

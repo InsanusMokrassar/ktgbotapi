@@ -11,7 +11,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.files.DocumentFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaption
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions
 
 data class DocumentContent(
     override val media: DocumentFile,
@@ -27,7 +27,7 @@ data class DocumentContent(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        toMarkdownCaption(),
+        toMarkdownCaptions().firstOrNull(),
         MarkdownParseMode,
         disableNotification,
         replyToMessageId,

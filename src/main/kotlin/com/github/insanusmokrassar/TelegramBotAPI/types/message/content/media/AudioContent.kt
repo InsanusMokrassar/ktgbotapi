@@ -11,7 +11,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.files.AudioFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaption
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions
 
 data class AudioContent(
     override val media: AudioFile,
@@ -27,7 +27,7 @@ data class AudioContent(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        toMarkdownCaption(),
+        toMarkdownCaptions().firstOrNull(),
         MarkdownParseMode,
         media.duration,
         media.performer,
