@@ -11,6 +11,8 @@
 * Fixes in edition of inline messages and their result types
 * Replace basic exception and add `ReplyMessageNotFound` exception
 
+### 0.10.1
+
 ## 0.9.0
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
