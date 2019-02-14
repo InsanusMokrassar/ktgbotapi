@@ -173,14 +173,17 @@ suspend fun <T: Any> RequestsExecutor.executeUnsafe(
     retries: Int = 0,
     retriesDelay: Long = 1000L
 ): T? {
-    return try {
-        execute(request)
-    } catch (e: RequestException) {
-        if (retries > 0) {
-            delay(retriesDelay)
-            executeUnsafe(request, retries - 1, retriesDelay)
-        } else {
-            null
+    var leftRetries = retries
+    while(true) {
+        try {
+            return execute(request)
+        } catch (e: RequestException) {
+            if (leftRetries > 0) {
+                leftRetries--
+                delay(retriesDelay)
+            } else {
+                return null
+            }
         }
     }
 }

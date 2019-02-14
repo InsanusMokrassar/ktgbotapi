@@ -13,6 +13,8 @@
 
 ### 0.10.1
 
+* Change algorithm of `executeUnsafe`: now it use loop instead of recursive calling
+
 ## 0.9.0
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
