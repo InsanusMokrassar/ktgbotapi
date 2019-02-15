@@ -15,8 +15,7 @@ buildscript {
     }
 }
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
+apply plugin: 'kotlin-multiplatform'
 apply plugin: 'kotlinx-serialization'
 
 apply from: "publish.gradle"
@@ -27,16 +26,34 @@ repositories {
     mavenCentral()
     maven { url "https://kotlin.bintray.com/kotlinx" }
     maven { url "https://dl.bintray.com/kotlin/ktor" }
+    maven { url "https://dl.bintray.com/soywiz/soywiz" }
+}
+
+kotlin {
+    targets {
+        fromPreset(presets.jvm, 'jvm8')
+    }
+    sourceSets {
+        commonMain {}
+        jvm8Main {}
+    }
+
+    compileKotlinJvm8 {
+        kotlinOptions {
+            freeCompilerArgs += [ disableImplicitReflectionSerializerAnnotation ]
+        }
+    }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
-    implementation "joda-time:joda-time:$joda_time_version"
-    implementation "io.ktor:ktor-client-core:$ktor_version"
-    implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+    commonMainImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+    commonMainImplementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialisation_runtime_version"
+    commonMainImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    commonMainImplementation "io.ktor:ktor-client-core:$ktor_version"
+    commonMainApi "com.soywiz:klock-metadata:$klock_version"
 
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    jvm8MainImplementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
+    jvm8MainImplementation "joda-time:joda-time:$joda_time_version"
+    jvm8MainImplementation "io.ktor:ktor-client-okhttp:$ktor_version"
+    jvm8MainApi "com.soywiz:klock-jvm:$klock_version"
 }

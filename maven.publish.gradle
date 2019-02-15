@@ -22,26 +22,28 @@ def pomConfig = {
 }
 
 task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
+    sourceSets.forEach {
+        from it.allSource
+    }
     classifier = 'sources'
 }
 
 task javadocJar(type: Jar) {
-    from javadoc
+//    from javadoc
     classifier = 'javadoc'
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
-            from components.java
+            from components.kotlin
             groupId "${project.group}"
             artifactId "${project.name}"
             version "${project.version}"
 
             artifact sourcesJar
             artifact javadocJar
-            
+
             pom.withXml {
                 asNode().children().last() + {
                     resolveStrategy = Closure.DELEGATE_FIRST
@@ -80,4 +82,7 @@ publishing {
 signing {
     useGpgCmd()
     sign publishing.publications.maven
+//    file("${getBuildDir().canonicalPath}/libs").eachFile {
+//        sign(it)
+//    }
 }
