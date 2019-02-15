@@ -14,6 +14,7 @@
 ### 0.10.1
 
 * Change algorithm of `executeUnsafe`: now it use loop instead of recursive calling
+* Add additional `startGettingUpdates` with better management of received updates for media groups
 
 ## 0.9.0
 
