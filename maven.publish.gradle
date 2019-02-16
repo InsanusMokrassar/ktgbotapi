@@ -21,28 +21,23 @@ def pomConfig = {
     }
 }
 
-task sourcesJar(type: Jar) {
-    sourceSets.forEach {
-        from it.allSource
+kotlin {
+    jvm("jvm8") {
+        mavenPublication {}
     }
-    classifier = 'sources'
 }
-
 task javadocJar(type: Jar) {
-//    from javadoc
-    classifier = 'javadoc'
+    archiveClassifier.set 'javadoc'
 }
 
 publishing {
     publications {
-        maven(MavenPublication) {
-            from components.kotlin
+        jvm8 {
             groupId "${project.group}"
             artifactId "${project.name}"
             version "${project.version}"
 
-            artifact sourcesJar
-            artifact javadocJar
+            artifact(javadocJar)
 
             pom.withXml {
                 asNode().children().last() + {
@@ -81,8 +76,5 @@ publishing {
 
 signing {
     useGpgCmd()
-    sign publishing.publications.maven
-//    file("${getBuildDir().canonicalPath}/libs").eachFile {
-//        sign(it)
-//    }
+    sign publishing.publications.jvm8
 }
