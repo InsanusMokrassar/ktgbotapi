@@ -7,14 +7,12 @@ ext {
 bintray {
     user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
     key = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
-    publications = ["maven"]
+    publications = ["jvm8"]
     filesSpec {
         into "$projectBintrayDir"
-        from("build/libs") {
+        from("$destinationDir/libs") {
+            rename "(.+)-jvm8-(.+)\\.asc", "\$1-\$2.asc"
             include "**/*.asc"
-        }
-        from("build/publications/maven") {
-            rename 'pom-default.xml(.*)', "${project.name}-${project.version}.pom\$1"
         }
     }
     pkg {
