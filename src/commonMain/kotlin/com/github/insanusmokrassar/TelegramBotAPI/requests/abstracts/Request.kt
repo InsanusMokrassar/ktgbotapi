@@ -8,7 +8,6 @@ import kotlinx.serialization.json.JsonObject
 interface Request<T: Any> {
     fun method(): String
     fun resultSerializer(): KSerializer<T>
-    @ImplicitReflectionSerializer
     fun json(): JsonObject = toJsonWithoutNulls()
 }
 

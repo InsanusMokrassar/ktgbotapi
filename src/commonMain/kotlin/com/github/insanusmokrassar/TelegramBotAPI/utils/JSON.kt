@@ -2,9 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils
 
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
-import kotlinx.serialization.json.Json.Companion
 
-@ImplicitReflectionSerializer
 inline fun <reified T: Any> T.toJsonWithoutNulls(): JsonObject = Json.nonstrict.toJson(
     this
 ).jsonObject.withoutNulls()

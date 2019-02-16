@@ -70,8 +70,7 @@ data class SendMediaGroupData internal constructor(
 ) : Data<List<RawMessage>>,
     SendMessageRequest<List<RawMessage>>
 {
-    // TODO:: fix this nail when kotlin serialisation will support 
-    @ImplicitReflectionSerializer
+    // TODO:: fix this nail when kotlin serialisation will support
     @SerialName(mediaField)
     private val convertedMedia: String
         get() = jsonArray {
