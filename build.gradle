@@ -48,7 +48,6 @@ kotlin {
         jvm8Main {
             dependencies {
                 implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
-                implementation "joda-time:joda-time:$joda_time_version"
                 implementation "io.ktor:ktor-client-okhttp:$ktor_version"
                 api "com.soywiz:klock-jvm:$klock_version"
             }
