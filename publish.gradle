@@ -4,16 +4,17 @@ ext {
     projectBintrayDir = "${project.group}/".replace(".", "/") + "${project.name}/${project.version}"
 }
 
+apply from: "maven.publish.gradle"
+
 bintray {
     user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
     key = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
     publications = ["jvm8"]
     filesSpec {
-        into "$projectBintrayDir"
-        from("$destinationDir/libs") {
-            rename "(.+)-jvm8-(.+)\\.asc", "\$1-\$2.asc"
-            include "**/*.asc"
-        }
+        into projectBintrayDir
+        from signJvm8Publication
+        rename "pom.*\\.xml(.*)", "${project.name}-${project.version}.pom\$1"
+        rename "(.*)jvm8-(.*)", "\$1\$2"
     }
     pkg {
         repo = 'StandardRepository'
@@ -27,5 +28,3 @@ bintray {
         }
     }
 }
-
-apply from: "maven.publish.gradle"

@@ -1,24 +1,25 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-kotlin {
-    jvm("jvm8") {
-        mavenPublication {}
-    }
-}
 task javadocJar(type: Jar) {
     archiveClassifier.set 'javadoc'
 }
 
-publishing {
-    publications {
-        jvm8 {
+kotlin {
+    jvm("jvm8") {
+        mavenPublication {
             groupId "${project.group}"
             artifactId "${project.name}"
             version "${project.version}"
 
             artifact(javadocJar)
+        }
+    }
+}
 
+publishing {
+    publications {
+        jvm8 {
             pom.withXml {
                 asNode().children().last() + {
                     resolveStrategy = Closure.DELEGATE_FIRST
