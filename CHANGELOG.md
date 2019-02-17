@@ -18,6 +18,7 @@
 * Now `MediaGroupMessage` is `CommonMessage` with `MediaGroupContent` content
 * Added extensions `replyTo`, `forwarded` and `chat` for `List<BaseMessageUpdated>` for comfortable
 work with media groups lists
+* Fix `parseMode` of `InputTextMessageContent`
 
 ## 0.9.0
 
