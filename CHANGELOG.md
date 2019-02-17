@@ -16,6 +16,8 @@
 * Change algorithm of `executeUnsafe`: now it use loop instead of recursive calling
 * Add additional `startGettingUpdates` with better management of received updates for media groups
 * Now `MediaGroupMessage` is `CommonMessage` with `MediaGroupContent` content
+* Added extensions `replyTo`, `forwarded` and `chat` for `List<BaseMessageUpdated` for comfortable
+work with media groups
 
 ## 0.9.0
 
