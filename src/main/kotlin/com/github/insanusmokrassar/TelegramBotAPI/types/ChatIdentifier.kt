@@ -19,12 +19,19 @@ fun Identifier.toChatId(): ChatId = ChatId(this)
 
 @Serializable(ChatIdentifierSerializer::class)
 data class Username(
-    val username: String
+    private val baseUsername: String
 ) : ChatIdentifier() {
-    init {
-        if (!username.startsWith("@")) {
-            throw IllegalArgumentException("Username must starts with `@`")
-        }
+    @Transient
+    val username: String = if (!baseUsername.startsWith("@")) {
+        "@$baseUsername"
+    } else {
+        baseUsername
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other) || other ?.let {
+            super.equals("@$it")
+        } ?: false
     }
 }
 

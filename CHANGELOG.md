@@ -22,6 +22,10 @@ work with media groups lists
 
 ### 0.10.2
 
+* Fixes in `Username`
+    * Now you can create username object using string which is not starting with `@`
+    * Now `Username` correctly comparing with strings, which are not starting with `@`
+
 ## 0.9.0
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
