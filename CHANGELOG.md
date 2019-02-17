@@ -11,6 +11,15 @@
 * Fixes in edition of inline messages and their result types
 * Replace basic exception and add `ReplyMessageNotFound` exception
 
+### 0.10.1
+
+* Change algorithm of `executeUnsafe`: now it use loop instead of recursive calling
+* Add additional `startGettingUpdates` with better management of received updates for media groups
+* Now `MediaGroupMessage` is `CommonMessage` with `MediaGroupContent` content
+* Added extensions `replyTo`, `forwarded` and `chat` for `List<BaseMessageUpdated>` for comfortable
+work with media groups lists
+* Fix `parseMode` of `InputTextMessageContent`
+
 ## 0.9.0
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in

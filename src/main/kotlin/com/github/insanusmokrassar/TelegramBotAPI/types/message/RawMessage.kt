@@ -219,7 +219,10 @@ data class RawMessage(
                             is PhotoContent -> content
                             is VideoContent -> content
                             else -> throw IllegalStateException("Unsupported content for media group")
-                        }
+                        },
+                        edit_date ?.asDate,
+                        forwarded,
+                        reply_to_message ?.asMessage
                     )
                     else -> CommonMediaGroupMessage(
                         messageId,
@@ -231,7 +234,10 @@ data class RawMessage(
                             is PhotoContent -> content
                             is VideoContent -> content
                             else -> throw IllegalStateException("Unsupported content for media group")
-                        }
+                        },
+                        edit_date ?.asDate,
+                        forwarded,
+                        reply_to_message ?.asMessage
                     )
                 }
             } ?: when (chat) {

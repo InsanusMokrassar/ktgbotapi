@@ -99,10 +99,13 @@ fun RequestsExecutor.startGettingOfUpdates(
 
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
-    mediaGroupCallback: UpdateReceiver<List<BaseMessageUpdate>>? = null,
+    messageMediaGroupCallback: UpdateReceiver<List<MessageUpdate>>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
+    editedMessageMediaGroupCallback: UpdateReceiver<List<EditMessageUpdate>>? = null,
     channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
+    channelPostMediaGroupCallback: UpdateReceiver<List<ChannelPostUpdate>>? = null,
     editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,
+    editedChannelPostMediaGroupCallback: UpdateReceiver<List<EditChannelPostUpdate>>? = null,
     chosenInlineResultCallback: UpdateReceiver<ChosenInlineResultUpdate>? = null,
     inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
     callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
@@ -115,35 +118,91 @@ fun RequestsExecutor.startGettingOfUpdates(
         requestsDelayMillis,
         scope,
         listOfNotNull(
-            messageCallback ?.let { UPDATE_MESSAGE },
-            editedMessageCallback ?.let { UPDATE_EDITED_MESSAGE },
-            channelPostCallback ?.let { UPDATE_CHANNEL_POST },
-            editedChannelPostCallback ?.let { UPDATE_EDITED_CHANNEL_POST },
+            (messageCallback ?: messageMediaGroupCallback) ?.let { UPDATE_MESSAGE },
+            (editedMessageCallback ?: editedMessageMediaGroupCallback) ?.let { UPDATE_EDITED_MESSAGE },
+            (channelPostCallback ?: channelPostMediaGroupCallback) ?.let { UPDATE_CHANNEL_POST },
+            (editedChannelPostCallback ?: editedChannelPostMediaGroupCallback) ?.let { UPDATE_EDITED_CHANNEL_POST },
             chosenInlineResultCallback ?.let { UPDATE_CHOSEN_INLINE_RESULT },
             inlineQueryCallback ?.let { UPDATE_INLINE_QUERY },
             callbackQueryCallback ?.let { UPDATE_CALLBACK_QUERY },
             shippingQueryCallback ?.let { UPDATE_SHIPPING_QUERY },
             preCheckoutQueryCallback ?.let { UPDATE_PRE_CHECKOUT_QUERY }
         )
-    ) {
-        when (it) {
-            is MessageUpdate -> messageCallback ?.invoke(it)
-            is List<*> -> mediaGroupCallback ?.invoke(
-                it.mapNotNull {
-                    it as? BaseMessageUpdate
+    ) { update ->
+        when (update) {
+            is MessageUpdate -> messageCallback ?.invoke(update)
+            is List<*> -> when (update.firstOrNull()) {
+                is MessageUpdate -> update.mapNotNull { it as? MessageUpdate }.let { mappedList ->
+                    messageMediaGroupCallback ?.also { receiver ->
+                        receiver(mappedList)
+                    } ?: messageCallback ?.also { receiver ->
+                        mappedList.forEach { receiver(it) }
+                    }
                 }
-            )
-            is EditMessageUpdate -> editedMessageCallback ?.invoke(it)
-            is ChannelPostUpdate -> channelPostCallback ?.invoke(it)
-            is EditChannelPostUpdate -> editedChannelPostCallback ?.invoke(it)
-            is ChosenInlineResultUpdate -> chosenInlineResultCallback ?.invoke(it)
-            is InlineQueryUpdate -> inlineQueryCallback ?.invoke(it)
-            is CallbackQueryUpdate -> callbackQueryCallback ?.invoke(it)
-            is ShippingQueryUpdate -> shippingQueryCallback ?.invoke(it)
-            is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(it)
+                is EditMessageUpdate -> update.mapNotNull { it as? EditMessageUpdate }.let { mappedList ->
+                    editedMessageMediaGroupCallback ?.also { receiver ->
+                        receiver(mappedList)
+                    } ?: editedMessageCallback ?.also { receiver ->
+                        mappedList.forEach { receiver(it) }
+                    }
+                }
+                is ChannelPostUpdate -> update.mapNotNull { it as? ChannelPostUpdate }.let { mappedList ->
+                    channelPostMediaGroupCallback ?.also { receiver ->
+                        receiver(mappedList)
+                    } ?: channelPostCallback ?.also { receiver ->
+                        mappedList.forEach { receiver(it) }
+                    }
+                }
+                is EditChannelPostUpdate -> update.mapNotNull { it as? EditChannelPostUpdate }.let { mappedList ->
+                    editedChannelPostMediaGroupCallback ?.also { receiver ->
+                        receiver(mappedList)
+                    } ?: editedChannelPostCallback ?.also { receiver ->
+                        mappedList.forEach { receiver(it) }
+                    }
+                }
+            }
+            is EditMessageUpdate -> editedMessageCallback ?.invoke(update)
+            is ChannelPostUpdate -> channelPostCallback ?.invoke(update)
+            is EditChannelPostUpdate -> editedChannelPostCallback ?.invoke(update)
+            is ChosenInlineResultUpdate -> chosenInlineResultCallback ?.invoke(update)
+            is InlineQueryUpdate -> inlineQueryCallback ?.invoke(update)
+            is CallbackQueryUpdate -> callbackQueryCallback ?.invoke(update)
+            is ShippingQueryUpdate -> shippingQueryCallback ?.invoke(update)
+            is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(update)
         }
     }
 }
+
+fun RequestsExecutor.startGettingOfUpdates(
+    messageCallback: UpdateReceiver<MessageUpdate>? = null,
+    mediaGroupCallback: UpdateReceiver<List<BaseMessageUpdate>>? = null,
+    editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
+    channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
+    editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,
+    chosenInlineResultCallback: UpdateReceiver<ChosenInlineResultUpdate>? = null,
+    inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
+    callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
+    shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
+    preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
+    requestsDelayMillis: Long = 1000,
+    scope: CoroutineScope = GlobalScope
+): Job = startGettingOfUpdates(
+    messageCallback = messageCallback,
+    messageMediaGroupCallback = mediaGroupCallback,
+    editedMessageCallback = editedMessageCallback,
+    editedMessageMediaGroupCallback = mediaGroupCallback,
+    channelPostCallback = channelPostCallback,
+    channelPostMediaGroupCallback = mediaGroupCallback,
+    editedChannelPostCallback = editedChannelPostCallback,
+    editedChannelPostMediaGroupCallback = mediaGroupCallback,
+    chosenInlineResultCallback = chosenInlineResultCallback,
+    inlineQueryCallback = inlineQueryCallback,
+    callbackQueryCallback = callbackQueryCallback,
+    shippingQueryCallback = shippingQueryCallback,
+    preCheckoutQueryCallback = preCheckoutQueryCallback,
+    requestsDelayMillis = requestsDelayMillis,
+    scope = scope
+)
 
 fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
@@ -173,14 +232,17 @@ suspend fun <T: Any> RequestsExecutor.executeUnsafe(
     retries: Int = 0,
     retriesDelay: Long = 1000L
 ): T? {
-    return try {
-        execute(request)
-    } catch (e: RequestException) {
-        if (retries > 0) {
-            delay(retriesDelay)
-            executeUnsafe(request, retries - 1, retriesDelay)
-        } else {
-            null
+    var leftRetries = retries
+    while(true) {
+        try {
+            return execute(request)
+        } catch (e: RequestException) {
+            if (leftRetries > 0) {
+                leftRetries--
+                delay(retriesDelay)
+            } else {
+                return null
+            }
         }
     }
 }

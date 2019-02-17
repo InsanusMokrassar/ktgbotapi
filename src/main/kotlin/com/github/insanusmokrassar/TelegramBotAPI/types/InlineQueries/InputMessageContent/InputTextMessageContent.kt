@@ -14,7 +14,8 @@ data class InputTextMessageContent(
     @SerialName(messageTextField)
     override val caption: String,
     @SerialName(parseModeField)
-    override val parseMode: ParseMode,
+    @Optional
+    override val parseMode: ParseMode? = null,
     @SerialName(disableWebPagePreviewField)
     @Optional
     override val disableWebPagePreview: Boolean? = null
