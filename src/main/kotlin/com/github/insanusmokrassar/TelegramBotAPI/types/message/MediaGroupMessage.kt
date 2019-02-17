@@ -13,5 +13,8 @@ data class MediaGroupMessage(
     override val chat: Chat,
     override val date: DateTime,
     override val mediaGroupId: MediaGroupIdentifier,
-    override val content: MediaGroupContent
+    override val content: MediaGroupContent,
+    override val editDate: DateTime?,
+    override val forwarded: ForwardedMessage?,
+    override val replyTo: Message?
 ) : Message, MediaGroupMessage
