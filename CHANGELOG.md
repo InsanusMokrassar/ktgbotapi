@@ -20,6 +20,8 @@
 work with media groups lists
 * Fix `parseMode` of `InputTextMessageContent`
 
+### 0.10.2
+
 ## 0.9.0
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
