@@ -15,6 +15,7 @@ class InlineQueryResultArticle(
     @SerialName(inputMessageContentField)
     override val inputMessageContent: InputMessageContent,
     @SerialName(replyMarkupField)
+    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(urlField)
     @Optional

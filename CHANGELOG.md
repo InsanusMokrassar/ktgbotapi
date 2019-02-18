@@ -26,6 +26,7 @@ work with media groups lists
     * Now you can create username object using string which is not starting with `@`
     * Now `Username` correctly comparing with strings, which are not starting with `@`
 * Now most part of usernames in library have type `Username`
+* Fix `replyMarkup` in `InlineQueryResultArticle`
 
 ## 0.9.0
 
