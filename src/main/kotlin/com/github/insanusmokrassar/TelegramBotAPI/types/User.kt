@@ -17,7 +17,7 @@ data class User(
     val lastName: String? = null,
     @SerialName(usernameField)
     @Optional
-    val username: String? = null,
+    val username: Username? = null,
     @SerialName(languageCodeField)
     @Optional
     private val languageCode: String? = null

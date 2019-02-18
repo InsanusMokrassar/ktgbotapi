@@ -1,13 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatId
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatPhoto
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 
 data class SupergroupChat(
     override val id: ChatId,
     override val title: String? = null,
-    val username: String? = null,
+    val username: Username? = null,
     val description: String? = null,
     override val allMembersAreAdmins: Boolean,
     override val inviteLink: String? = null,
