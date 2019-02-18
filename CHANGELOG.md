@@ -28,6 +28,10 @@ work with media groups lists
 * Now most part of usernames in library have type `Username`
 * Fix `replyMarkup` in `InlineQueryResultArticle`
 
+### 0.10.3
+
+* Hotfix for username data class
+
 ## 0.9.0
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
