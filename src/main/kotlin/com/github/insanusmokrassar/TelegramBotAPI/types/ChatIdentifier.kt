@@ -19,19 +19,11 @@ fun Identifier.toChatId(): ChatId = ChatId(this)
 
 @Serializable(ChatIdentifierSerializer::class)
 data class Username(
-    private val baseUsername: String
+    val username: String
 ) : ChatIdentifier() {
-    @Transient
-    val username: String = if (!baseUsername.startsWith("@")) {
-        "@$baseUsername"
-    } else {
-        baseUsername
-    }
-
-    override fun equals(other: Any?): Boolean {
-        return super.equals(other) || when (other) {
-            is String -> super.equals("@$other")
-            else -> false
+    init {
+        if (!username.startsWith("@")) {
+            throw IllegalArgumentException("Username must starts with `@`")
         }
     }
 }
@@ -44,7 +36,11 @@ internal class ChatIdentifierSerializer: KSerializer<ChatIdentifier> {
         val id = input.decodeString()
         return id.toLongOrNull() ?.let {
             ChatId(it)
-        } ?: Username(id)
+        } ?: if (!id.startsWith("@")) {
+            Username("@$id")
+        } else {
+            Username(id)
+        }
     }
 
     override fun serialize(output: Encoder, obj: ChatIdentifier) {
