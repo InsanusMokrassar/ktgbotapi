@@ -29,9 +29,10 @@ data class Username(
     }
 
     override fun equals(other: Any?): Boolean {
-        return super.equals(other) || other ?.let {
-            super.equals("@$it")
-        } ?: false
+        return super.equals(other) || when (other) {
+            is String -> super.equals("@$other")
+            else -> false
+        }
     }
 }
 
