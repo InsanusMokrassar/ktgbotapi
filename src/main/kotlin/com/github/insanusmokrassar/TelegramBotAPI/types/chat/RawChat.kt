@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatId
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatPhoto
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import kotlinx.serialization.*
 
@@ -10,7 +9,7 @@ data class RawChat(
     override val id: ChatId,
     private val type: String,
     @Optional private val title: String? = null,
-    @Optional private val username: String? = null,
+    @Optional private val username: Username? = null,
     @Optional private val first_name: String? = null,
     @Optional private val last_name: String? = null,
     @Optional private val all_members_are_administrators: Boolean? = null,
