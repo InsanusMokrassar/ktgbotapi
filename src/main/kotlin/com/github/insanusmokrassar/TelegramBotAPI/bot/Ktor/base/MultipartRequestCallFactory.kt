@@ -33,7 +33,7 @@ class MultipartRequestCallFactory : KtorCallFactory {
                         when (value) {
                             is MultipartFile -> append(
                                 key,
-                                value.file.inputStream().asInput(),
+                                value.file.asInput(),
                                 Headers.build {
                                     append(HttpHeaders.ContentType, value.mimeType)
                                     append(HttpHeaders.ContentDisposition, "filename=${value.fileId}")

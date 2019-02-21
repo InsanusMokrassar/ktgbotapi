@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
+import com.github.insanusmokrassar.TelegramBotAPI.utils.StorageFile
 import kotlinx.serialization.*
 import java.io.File
 import java.nio.file.Files
@@ -30,16 +31,15 @@ object FileIdSerializer : KSerializer<FileId> {
 /**
  * Contains info about file for sending
  */
+@Serializable
 data class MultipartFile (
-    val file: File,
-    val mimeType: String = Files.probeContentType(file.toPath()),
-    val filename: String = file.name
+    val file: StorageFile,
+    val mimeType: String = file.contentType,
+    val filename: String = file.fileName
 ) : InputFile() {
-    override val fileId: String by lazy {
-        "${UUID.randomUUID()}.${file.extension}"
-    }
+    override val fileId: String = file.generateCustomName()
 }
 
 fun File.toInputFile(): InputFile = MultipartFile(
-    this
+    StorageFile(this)
 )
