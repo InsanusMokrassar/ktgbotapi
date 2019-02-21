@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.11.0
+
 ## 0.10.0
 
 * Most part of abstractions was replaced from `requests` and `types` on more high level
