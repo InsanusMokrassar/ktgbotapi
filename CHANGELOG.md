@@ -2,6 +2,11 @@
 
 ## 0.11.0
 
+* Kotlin `1.3.11` -> `1.3.21`
+* Kotlin coroutines `1.1.0` -> `1.1.1`
+* Kotlin serialization `0.9.1` -> `0.10.0`
+* Ktor `1.1.1` -> `1.1.2`
+
 ## 0.10.0
 
 * Most part of abstractions was replaced from `requests` and `types` on more high level
