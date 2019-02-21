@@ -25,8 +25,8 @@ object HTMLParseMode : ParseMode() {
 
 @Serializer(ParseMode::class)
 internal class ParseModeSerializerObject: KSerializer<ParseMode> {
-    override fun deserialize(input: Decoder): ParseMode {
-        val mode = input.decodeString()
+    override fun deserialize(decoder: Decoder): ParseMode {
+        val mode = decoder.decodeString()
         return when (mode) {
             MarkdownParseMode.parseModeName -> MarkdownParseMode
             HTMLParseMode.parseModeName -> HTMLParseMode
@@ -34,7 +34,7 @@ internal class ParseModeSerializerObject: KSerializer<ParseMode> {
         }
     }
 
-    override fun serialize(output: Encoder, obj: ParseMode) {
-        output.encodeString(obj.parseModeName)
+    override fun serialize(encoder: Encoder, obj: ParseMode) {
+        encoder.encodeString(obj.parseModeName)
     }
 }

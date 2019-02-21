@@ -22,15 +22,15 @@ fun DateTime.toTelegramDate(): TelegramDate = TelegramDate(this)
 
 @Serializer(TelegramDate::class)
 internal class TelegramDateSerializer: KSerializer<TelegramDate> {
-    override fun serialize(output: Encoder, obj: TelegramDate) {
-        output.encodeLong(
+    override fun serialize(encoder: Encoder, obj: TelegramDate) {
+        encoder.encodeLong(
             TimeUnit.MILLISECONDS.toSeconds(obj.asDate.millis)
         )
     }
 
-    override fun deserialize(input: Decoder): TelegramDate {
+    override fun deserialize(decoder: Decoder): TelegramDate {
         return TelegramDate(
-            input.decodeLong()
+            decoder.decodeLong()
         )
     }
 }

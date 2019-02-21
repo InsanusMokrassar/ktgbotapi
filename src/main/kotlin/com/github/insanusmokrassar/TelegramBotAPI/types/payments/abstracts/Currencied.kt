@@ -9,12 +9,12 @@ interface Currencied {
 
 @Serializer(Currency::class)
 object CurrencySerializer : KSerializer<Currency> {
-    override fun serialize(output: Encoder, obj: Currency) {
-        output.encodeString(obj.currencyCode)
+    override fun serialize(encoder: Encoder, obj: Currency) {
+        encoder.encodeString(obj.currencyCode)
     }
 
-    override fun deserialize(input: Decoder): Currency {
-        return input.decodeString().let {
+    override fun deserialize(decoder: Decoder): Currency {
+        return decoder.decodeString().let {
             Currency.getInstance(it)
         }
     }
