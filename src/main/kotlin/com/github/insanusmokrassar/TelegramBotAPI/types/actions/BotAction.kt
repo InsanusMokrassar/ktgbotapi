@@ -20,12 +20,12 @@ sealed class BotAction {
 
 @Serializer(BotAction::class)
 class BotActionSerializer: KSerializer<BotAction> {
-    override fun serialize(output: Encoder, obj: BotAction) {
-        output.encodeString(obj.actionName)
+    override fun serialize(encoder: Encoder, obj: BotAction) {
+        encoder.encodeString(obj.actionName)
     }
 
-    override fun deserialize(input: Decoder): BotAction {
-        val actionName = input.decodeString()
+    override fun deserialize(decoder: Decoder): BotAction {
+        val actionName = decoder.decodeString()
         return actions.firstOrNull { it.actionName == actionName } ?: throw IllegalStateException("Unknown action type: $actionName")
     }
 }

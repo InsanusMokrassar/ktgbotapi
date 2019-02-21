@@ -4,13 +4,15 @@ import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
 @ImplicitReflectionSerializer
-inline fun <reified T: Any> T.toJsonWithoutNulls(): JsonObject = toJson(serializerByValue(this)).withoutNulls()
+inline fun <reified T: Any> T.toJsonWithoutNulls(): JsonObject = Json.nonstrict.toJson(
+    this
+).jsonObject.withoutNulls()
 
 inline fun <reified T: Any> T.toJsonWithoutNulls(serializer: KSerializer<T>): JsonObject = toJson(serializer).withoutNulls()
 
-inline fun <reified T: Any> T.toJson(serializer: KSerializer<T>): JsonObject = JsonTreeMapper().writeTree(
-    this,
-    serializer
+inline fun <reified T: Any> T.toJson(serializer: KSerializer<T>): JsonObject = Json.nonstrict.toJson(
+    serializer,
+    this
 ).jsonObject
 
 fun JsonArray.withoutNulls(): JsonArray {

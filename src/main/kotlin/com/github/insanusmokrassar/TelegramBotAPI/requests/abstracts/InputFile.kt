@@ -23,8 +23,8 @@ fun String.toInputFile(): InputFile = FileId(this)
 
 @Serializer(FileId::class)
 object FileIdSerializer : KSerializer<FileId> {
-    override fun serialize(output: Encoder, obj: FileId) = output.encodeString(obj.fileId)
-    override fun deserialize(input: Decoder): FileId = FileId(input.decodeString())
+    override fun serialize(encoder: Encoder, obj: FileId) = encoder.encodeString(obj.fileId)
+    override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString())
 }
 
 // TODO:: add checks for files size

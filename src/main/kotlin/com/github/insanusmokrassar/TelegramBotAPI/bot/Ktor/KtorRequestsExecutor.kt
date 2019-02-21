@@ -16,7 +16,7 @@ import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.util.cio.toByteArray
 import kotlinx.coroutines.delay
 import kotlinx.io.charsets.Charset
-import kotlinx.serialization.json.JSON
+import kotlinx.serialization.json.Json
 
 class KtorRequestsExecutor(
     token: String,
@@ -25,7 +25,7 @@ class KtorRequestsExecutor(
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
     private val requestsLimiter: RequestLimiter = EmptyLimiter,
-    private val jsonFormatter: JSON = JSON.nonstrict
+    private val jsonFormatter: Json = Json.nonstrict
 ) : BaseRequestsExecutor(token, hostUrl) {
     constructor(
         token: String,

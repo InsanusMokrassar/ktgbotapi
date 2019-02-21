@@ -32,8 +32,8 @@ fun String.asUsername(): Username = Username(this)
 
 @Serializer(ChatIdentifier::class)
 internal class ChatIdentifierSerializer: KSerializer<ChatIdentifier> {
-    override fun deserialize(input: Decoder): ChatIdentifier {
-        val id = input.decodeString()
+    override fun deserialize(decoder: Decoder): ChatIdentifier {
+        val id = decoder.decodeString()
         return id.toLongOrNull() ?.let {
             ChatId(it)
         } ?: if (!id.startsWith("@")) {
@@ -43,10 +43,10 @@ internal class ChatIdentifierSerializer: KSerializer<ChatIdentifier> {
         }
     }
 
-    override fun serialize(output: Encoder, obj: ChatIdentifier) {
+    override fun serialize(encoder: Encoder, obj: ChatIdentifier) {
         when (obj) {
-            is ChatId -> output.encodeString(obj.chatId.toString())
-            is Username -> output.encodeString(obj.username)
+            is ChatId -> encoder.encodeString(obj.chatId.toString())
+            is Username -> encoder.encodeString(obj.username)
         }
     }
 }
