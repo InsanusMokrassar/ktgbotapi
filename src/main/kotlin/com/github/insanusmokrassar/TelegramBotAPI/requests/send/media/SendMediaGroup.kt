@@ -5,8 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.MediaGroupMemberInputMedia
-import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.ThumbedInputMedia
+import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
@@ -70,13 +69,11 @@ data class SendMediaGroupData internal constructor(
 ) : Data<List<RawMessage>>,
     SendMessageRequest<List<RawMessage>>
 {
-    // TODO:: fix this nail when kotlin serialisation will support 
-    @ImplicitReflectionSerializer
     @SerialName(mediaField)
     private val convertedMedia: String
         get() = jsonArray {
             media.forEach {
-                +it.toJsonWithoutNulls()
+                +it.toJsonWithoutNulls(MediaGroupMemberInputMediaSerializer)
             }
         }.toString()
 
