@@ -114,63 +114,27 @@ fun RequestsExecutor.startGettingOfUpdates(
     requestsDelayMillis: Long = 1000,
     scope: CoroutineScope = GlobalScope
 ): Job {
+    val filter = UpdatesFilter(
+        messageCallback,
+        messageMediaGroupCallback,
+        editedMessageCallback,
+        editedMessageMediaGroupCallback,
+        channelPostCallback,
+        channelPostMediaGroupCallback,
+        editedChannelPostCallback,
+        editedChannelPostMediaGroupCallback,
+        chosenInlineResultCallback,
+        inlineQueryCallback,
+        callbackQueryCallback,
+        shippingQueryCallback,
+        preCheckoutQueryCallback
+    )
     return startGettingOfUpdates(
         requestsDelayMillis,
         scope,
-        listOfNotNull(
-            (messageCallback ?: messageMediaGroupCallback) ?.let { UPDATE_MESSAGE },
-            (editedMessageCallback ?: editedMessageMediaGroupCallback) ?.let { UPDATE_EDITED_MESSAGE },
-            (channelPostCallback ?: channelPostMediaGroupCallback) ?.let { UPDATE_CHANNEL_POST },
-            (editedChannelPostCallback ?: editedChannelPostMediaGroupCallback) ?.let { UPDATE_EDITED_CHANNEL_POST },
-            chosenInlineResultCallback ?.let { UPDATE_CHOSEN_INLINE_RESULT },
-            inlineQueryCallback ?.let { UPDATE_INLINE_QUERY },
-            callbackQueryCallback ?.let { UPDATE_CALLBACK_QUERY },
-            shippingQueryCallback ?.let { UPDATE_SHIPPING_QUERY },
-            preCheckoutQueryCallback ?.let { UPDATE_PRE_CHECKOUT_QUERY }
-        )
-    ) { update ->
-        when (update) {
-            is MessageUpdate -> messageCallback ?.invoke(update)
-            is List<*> -> when (update.firstOrNull()) {
-                is MessageUpdate -> update.mapNotNull { it as? MessageUpdate }.let { mappedList ->
-                    messageMediaGroupCallback ?.also { receiver ->
-                        receiver(mappedList)
-                    } ?: messageCallback ?.also { receiver ->
-                        mappedList.forEach { receiver(it) }
-                    }
-                }
-                is EditMessageUpdate -> update.mapNotNull { it as? EditMessageUpdate }.let { mappedList ->
-                    editedMessageMediaGroupCallback ?.also { receiver ->
-                        receiver(mappedList)
-                    } ?: editedMessageCallback ?.also { receiver ->
-                        mappedList.forEach { receiver(it) }
-                    }
-                }
-                is ChannelPostUpdate -> update.mapNotNull { it as? ChannelPostUpdate }.let { mappedList ->
-                    channelPostMediaGroupCallback ?.also { receiver ->
-                        receiver(mappedList)
-                    } ?: channelPostCallback ?.also { receiver ->
-                        mappedList.forEach { receiver(it) }
-                    }
-                }
-                is EditChannelPostUpdate -> update.mapNotNull { it as? EditChannelPostUpdate }.let { mappedList ->
-                    editedChannelPostMediaGroupCallback ?.also { receiver ->
-                        receiver(mappedList)
-                    } ?: editedChannelPostCallback ?.also { receiver ->
-                        mappedList.forEach { receiver(it) }
-                    }
-                }
-            }
-            is EditMessageUpdate -> editedMessageCallback ?.invoke(update)
-            is ChannelPostUpdate -> channelPostCallback ?.invoke(update)
-            is EditChannelPostUpdate -> editedChannelPostCallback ?.invoke(update)
-            is ChosenInlineResultUpdate -> chosenInlineResultCallback ?.invoke(update)
-            is InlineQueryUpdate -> inlineQueryCallback ?.invoke(update)
-            is CallbackQueryUpdate -> callbackQueryCallback ?.invoke(update)
-            is ShippingQueryUpdate -> shippingQueryCallback ?.invoke(update)
-            is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(update)
-        }
-    }
+        filter.allowedUpdates,
+        filter.asUpdateReceiver
+    )
 }
 
 fun RequestsExecutor.startGettingOfUpdates(

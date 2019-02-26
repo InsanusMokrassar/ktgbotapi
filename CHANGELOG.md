@@ -1,11 +1,14 @@
 # TelegramBotAPI changelog
 
-## 0.12.0
+## 0.12.0 Webhooks
 
 * Added `DataRequest` interface which replace `Data` interface
 * `MultipartRequestImpl` now use `DataRequest`
 * All requests which implements `Data` now implement `DataRequest`
 * Added class `SetWebhook` and its factory
+* Added class `UpdatesFilter` which can help to filter updates by categories
+* Added function `accumulateByKey` which work as debounce for keys and send list of received values
+* Added webhooks functions and workaround for `Reverse Proxy` mode
 
 ## 0.11.0
 
