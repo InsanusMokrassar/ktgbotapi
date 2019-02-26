@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.12.0
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
