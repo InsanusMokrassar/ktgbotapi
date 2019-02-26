@@ -2,6 +2,11 @@
 
 ## 0.12.0
 
+* Added `DataRequest` interface which replace `Data` interface
+* `MultipartRequestImpl` now use `DataRequest`
+* All requests which implements `Data` now implement `DataRequest`
+* Added class `SetWebhook` and its factory
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`

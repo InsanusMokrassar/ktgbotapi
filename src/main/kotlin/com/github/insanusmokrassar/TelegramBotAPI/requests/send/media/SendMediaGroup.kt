@@ -66,7 +66,7 @@ data class SendMediaGroupData internal constructor(
     @SerialName(replyToMessageIdField)
     @Optional
     override val replyToMessageId: MessageIdentifier? = null
-) : Data<List<RawMessage>>,
+) : DataRequest<List<RawMessage>>,
     SendMessageRequest<List<RawMessage>>
 {
     @SerialName(mediaField)

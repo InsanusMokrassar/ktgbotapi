@@ -9,7 +9,7 @@ import kotlinx.serialization.json.JsonObject
 /**
  * Will be used as SimpleRequest if
  */
-class MultipartRequestImpl<D: Data<R>, F: Files, R: Any>(
+class MultipartRequestImpl<D: DataRequest<R>, F: Files, R: Any>(
     val data: D,
     val files: F
 ) : MultipartRequest<R> {

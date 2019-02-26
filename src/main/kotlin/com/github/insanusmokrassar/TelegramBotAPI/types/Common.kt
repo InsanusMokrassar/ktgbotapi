@@ -23,6 +23,7 @@ val userProfilePhotosRequestLimit = 0 .. 100
 val chatTitleLength = 1 until 255
 val chatDescriptionLength = 0 until 256
 val inlineResultQueryIdLingth = 1 until 64
+val allowedConnectionsLength = 1 .. 100
 
 val invoiceTitleLimit = 1 until 32
 val invoiceDescriptionLimit = 1 until 256
@@ -68,6 +69,8 @@ const val isPersonalField = "is_personal"
 const val nextOffsetField = "next_offset"
 const val switchPmTextField = "switch_pm_text"
 const val switchPmParameterField = "switch_pm_parameter"
+const val maxAllowedConnectionsField = "max_connections"
+const val allowedUpdatesField = "allowed_updates"
 
 
 const val photoUrlField = "photo_url"
@@ -172,6 +175,7 @@ const val pricesField = "prices"
 const val payloadField = "payload"
 const val vcardField = "vcard"
 const val resultsField = "results"
+const val certificateField = "certificate"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
