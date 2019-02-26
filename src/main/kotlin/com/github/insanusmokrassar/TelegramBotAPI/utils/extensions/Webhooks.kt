@@ -111,10 +111,10 @@ suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
     certificate: InputFile,
+    filter: UpdatesFilter,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     maxAllowedConnections: Int? = null,
-    engineFactory: ApplicationEngineFactory<*, *> = Netty,
-    filter: UpdatesFilter
+    engineFactory: ApplicationEngineFactory<*, *> = Netty
 ): Job = setWebhook(
     url,
     port,
