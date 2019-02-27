@@ -3,16 +3,17 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 import com.github.insanusmokrassar.TelegramBotAPI.requests.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate
 
 data class UpdatesFilter(
     private val messageCallback: UpdateReceiver<MessageUpdate>? = null,
-    private val messageMediaGroupCallback: UpdateReceiver<List<MessageUpdate>>? = null,
+    private val messageMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
     private val editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
-    private val editedMessageMediaGroupCallback: UpdateReceiver<List<EditMessageUpdate>>? = null,
+    private val editedMessageMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
     private val channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
-    private val channelPostMediaGroupCallback: UpdateReceiver<List<ChannelPostUpdate>>? = null,
+    private val channelPostMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
     private val editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,
-    private val editedChannelPostMediaGroupCallback: UpdateReceiver<List<EditChannelPostUpdate>>? = null,
+    private val editedChannelPostMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
     private val chosenInlineResultCallback: UpdateReceiver<ChosenInlineResultUpdate>? = null,
     private val inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
     private val callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
@@ -38,28 +39,28 @@ data class UpdatesFilter(
             is List<*> -> when (update.firstOrNull()) {
                 is MessageUpdate -> update.mapNotNull { it as? MessageUpdate }.let { mappedList ->
                     messageMediaGroupCallback ?.also { receiver ->
-                        receiver(mappedList)
+                        receiver(mappedList.mapNotNull { it.toMediaGroupUpdate() })
                     } ?: messageCallback ?.also { receiver ->
                         mappedList.forEach { receiver(it) }
                     }
                 }
                 is EditMessageUpdate -> update.mapNotNull { it as? EditMessageUpdate }.let { mappedList ->
                     editedMessageMediaGroupCallback ?.also { receiver ->
-                        receiver(mappedList)
+                        receiver(mappedList.mapNotNull { it.toMediaGroupUpdate() })
                     } ?: editedMessageCallback ?.also { receiver ->
                         mappedList.forEach { receiver(it) }
                     }
                 }
                 is ChannelPostUpdate -> update.mapNotNull { it as? ChannelPostUpdate }.let { mappedList ->
                     channelPostMediaGroupCallback ?.also { receiver ->
-                        receiver(mappedList)
+                        receiver(mappedList.mapNotNull { it.toMediaGroupUpdate() })
                     } ?: channelPostCallback ?.also { receiver ->
                         mappedList.forEach { receiver(it) }
                     }
                 }
                 is EditChannelPostUpdate -> update.mapNotNull { it as? EditChannelPostUpdate }.let { mappedList ->
                     editedChannelPostMediaGroupCallback ?.also { receiver ->
-                        receiver(mappedList)
+                        receiver(mappedList.mapNotNull { it.toMediaGroupUpdate() })
                     } ?: editedChannelPostCallback ?.also { receiver ->
                         mappedList.forEach { receiver(it) }
                     }

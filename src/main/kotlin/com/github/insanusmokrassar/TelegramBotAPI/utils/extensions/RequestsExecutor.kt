@@ -99,13 +99,13 @@ fun RequestsExecutor.startGettingOfUpdates(
 
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
-    messageMediaGroupCallback: UpdateReceiver<List<MessageUpdate>>? = null,
+    messageMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
-    editedMessageMediaGroupCallback: UpdateReceiver<List<EditMessageUpdate>>? = null,
+    editedMessageMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
     channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
-    channelPostMediaGroupCallback: UpdateReceiver<List<ChannelPostUpdate>>? = null,
+    channelPostMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
     editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,
-    editedChannelPostMediaGroupCallback: UpdateReceiver<List<EditChannelPostUpdate>>? = null,
+    editedChannelPostMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
     chosenInlineResultCallback: UpdateReceiver<ChosenInlineResultUpdate>? = null,
     inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
     callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,

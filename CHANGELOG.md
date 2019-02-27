@@ -9,6 +9,8 @@
 * Added class `UpdatesFilter` which can help to filter updates by categories
 * Added function `accumulateByKey` which work as debounce for keys and send list of received values
 * Added webhooks functions and workaround for `Reverse Proxy` mode
+* Added new type of updates `MediaGroupUpdate`, which can be received only from filters
+* `UpdatesFilter` now use new type of updates for mediagroups
 
 ## 0.11.0
 
