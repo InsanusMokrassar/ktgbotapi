@@ -51,10 +51,10 @@ If you wish to use webhook method, you will need:
 
 * White IP - your IP address or host, which available for calling. [TelegramBotAPI](https://core.telegram.org/bots/api#setwebhook)
 recommend to use some unique address for each bot which you are using
-* SSL certificate. You can obtain address using your provider, [Let'sEncrypt](https://letsencrypt.org/) or [create it](https://core.telegram.org/bots/self-signed)
+* SSL certificate. Usually you can obtain the certificate using your domain provider, [Let'sEncrypt](https://letsencrypt.org/) or [create it](https://core.telegram.org/bots/self-signed)
 * Nginx or something like this
 
-Template for Nginx server config you can find in [this gist](https://gist.github.com/InsanusMokrassar/fcc6e09cebd07e46e8f0fdec234750c4#file-nginxssl-conf)
+Template for Nginx server config you can find in [this gist](https://gist.github.com/InsanusMokrassar/fcc6e09cebd07e46e8f0fdec234750c4#file-nginxssl-conf).
 
 For webhook you must provide `File` with public part of certificate, `URL` where bot placed and inner `PORT` which
 will be used to start receiving of updates.
