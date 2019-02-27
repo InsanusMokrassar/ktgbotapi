@@ -71,6 +71,10 @@ const val switchPmTextField = "switch_pm_text"
 const val switchPmParameterField = "switch_pm_parameter"
 const val maxAllowedConnectionsField = "max_connections"
 const val allowedUpdatesField = "allowed_updates"
+const val hasCustomCertificateField = "has_custom_certificate"
+const val pendingUpdateCountField = "pending_update_count"
+const val lastErrorDateField = "last_error_date"
+const val lastErrorMessageField = "last_error_message"
 
 
 const val photoUrlField = "photo_url"

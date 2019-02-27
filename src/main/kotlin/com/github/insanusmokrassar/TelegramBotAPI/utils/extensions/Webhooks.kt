@@ -1,8 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.requests.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
+import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.MediaGroupIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*

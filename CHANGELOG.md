@@ -11,6 +11,8 @@
 * Added webhooks functions and workaround for `Reverse Proxy` mode
 * Added new type of updates `MediaGroupUpdate`, which can be received only from filters
 * `UpdatesFilter` now use new type of updates for mediagroups
+* Add `GetWebhookInfo` request and `WebhookInfo` type
+* Replace updates types into separated place in types
 
 ## 0.11.0
 

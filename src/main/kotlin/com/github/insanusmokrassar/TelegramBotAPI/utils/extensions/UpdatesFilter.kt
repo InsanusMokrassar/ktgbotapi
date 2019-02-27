@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
-import com.github.insanusmokrassar.TelegramBotAPI.requests.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate

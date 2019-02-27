@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.requests
+package com.github.insanusmokrassar.TelegramBotAPI.requests.webhook
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
