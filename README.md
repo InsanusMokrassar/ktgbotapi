@@ -8,6 +8,12 @@
 It is one more project which wish to be useful and full Telegram Bots API bridge for Kotlin. Most part of some specific
 solves or unuseful moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
 
+## Compatibility
+
+This version compatible with [July 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#july-26-2018). That means that
+most part of API has been implemented (according to last [August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#august-27-2018))
+except the Passport API which will be included as soon as possible.
+
 ## How to work with library?
 
 By default in any documentation will be meaning that you have variable in scope with names
