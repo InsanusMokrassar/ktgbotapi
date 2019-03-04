@@ -27,6 +27,17 @@ fun SetWebhook(
     }
 }
 
+fun SetWebhook(
+    url: String,
+    maxAllowedConnections: Int? = null,
+    allowedUpdates: List<String>? = null
+) : Request<Boolean> = SetWebhook(
+    url,
+    null,
+    maxAllowedConnections,
+    allowedUpdates
+)
+
 @Serializable
 data class SetWebhook internal constructor(
     @SerialName(urlField)
