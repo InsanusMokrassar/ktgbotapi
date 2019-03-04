@@ -32,17 +32,25 @@ import java.util.concurrent.TimeUnit
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
-    certificate: InputFile,
+    certificate: InputFile? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
     maxAllowedConnections: Int? = null,
     engineFactory: ApplicationEngineFactory<*, *> = Netty,
     block: UpdateReceiver<Any>
 ): Job {
-    val executeDeferred = executeAsync(
+    val executeDeferred = certificate ?.let {
+        executeAsync(
+            SetWebhook(
+                url,
+                certificate,
+                maxAllowedConnections,
+                allowedUpdates
+            )
+        )
+    } ?: executeAsync(
         SetWebhook(
             url,
-            certificate,
             maxAllowedConnections,
             allowedUpdates
         )
@@ -57,7 +65,7 @@ suspend fun RequestsExecutor.setWebhook(
         module {
             fun Application.main() {
                 routing {
-                    post("/") {
+                    post {
                         val deserialized = call.receiveText()
                         val update = Json.nonstrict.parse(
                             RawUpdate.serializer(),
@@ -71,7 +79,7 @@ suspend fun RequestsExecutor.setWebhook(
             main()
         }
         connector {
-            host = "0.0.0.0"
+            host = "localhost"
             this.port = port
         }
     }

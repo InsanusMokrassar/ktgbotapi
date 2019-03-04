@@ -14,7 +14,7 @@ fun SetWebhook(
 ) : Request<Boolean> {
     val data = SetWebhook(
         url,
-        certificate.fileId,
+        (certificate as? FileId) ?.fileId,
         maxAllowedConnections,
         allowedUpdates
     )
