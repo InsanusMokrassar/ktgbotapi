@@ -77,7 +77,8 @@ class KtorRequestsExecutor(
             } ?: call.let {
                 throw newRequestException(
                     responseObject,
-                    "Can't get result object"
+                    content,
+                    "Can't get result object from $content"
                 )
             }
         }

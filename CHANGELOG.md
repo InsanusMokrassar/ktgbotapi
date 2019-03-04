@@ -13,6 +13,7 @@
 * `UpdatesFilter` now use new type of updates for mediagroups
 * Add `GetWebhookInfo` request and `WebhookInfo` type
 * Replace updates types into separated place in types
+* Now default `RequestException` will contain plain answer from telegram
 
 ## 0.11.0
 
