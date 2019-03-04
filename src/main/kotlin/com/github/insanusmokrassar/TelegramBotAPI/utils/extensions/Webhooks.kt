@@ -79,7 +79,7 @@ suspend fun RequestsExecutor.setWebhook(
             main()
         }
         connector {
-            host = "localhost"
+            host = "0.0.0.0"
             this.port = port
         }
     }
@@ -118,8 +118,8 @@ suspend fun RequestsExecutor.setWebhook(
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
-    certificate: InputFile,
     filter: UpdatesFilter,
+    certificate: InputFile? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     maxAllowedConnections: Int? = null,
     engineFactory: ApplicationEngineFactory<*, *> = Netty
