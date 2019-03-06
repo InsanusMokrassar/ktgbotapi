@@ -14,6 +14,9 @@
 * Add `GetWebhookInfo` request and `WebhookInfo` type
 * Replace updates types into separated place in types
 * Now default `RequestException` will contain plain answer from telegram
+* Added `UnauthorizedException`
+* `RequestException` now is sealed
+* Rename `ReplyMessageNotFound` to `ReplyMessageNotFoundException`
 
 ## 0.11.0
 
