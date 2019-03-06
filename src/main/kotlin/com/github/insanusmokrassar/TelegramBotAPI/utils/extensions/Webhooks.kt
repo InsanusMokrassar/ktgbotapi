@@ -17,8 +17,12 @@ import io.ktor.server.netty.Netty
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.serialization.json.Json
+import java.io.FileInputStream
+import java.security.KeyStore
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+
+
 
 /**
  * Reverse proxy webhook.
@@ -33,6 +37,7 @@ suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
     certificate: InputFile? = null,
+    privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
     maxAllowedConnections: Int? = null,
@@ -62,6 +67,7 @@ suspend fun RequestsExecutor.setWebhook(
         scope = scope
     )
     val env = applicationEngineEnvironment {
+
         module {
             fun Application.main() {
                 routing {
@@ -78,10 +84,21 @@ suspend fun RequestsExecutor.setWebhook(
             }
             main()
         }
-        connector {
-            host = "0.0.0.0"
+        privateKeyConfig ?.let {
+            sslConnector(
+                privateKeyConfig.keyStore,
+                privateKeyConfig.aliasName,
+                privateKeyConfig::keyStorePassword,
+                privateKeyConfig::aliasPassword
+            ) {
+                host = "0.0.0.0"
+                this.port = port
+            }
+        } ?: connector {
+            host = "localhost"
             this.port = port
         }
+
     }
     val engine = embeddedServer(engineFactory, env)
 
@@ -120,6 +137,7 @@ suspend fun RequestsExecutor.setWebhook(
     port: Int,
     filter: UpdatesFilter,
     certificate: InputFile? = null,
+    privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     maxAllowedConnections: Int? = null,
     engineFactory: ApplicationEngineFactory<*, *> = Netty
@@ -127,6 +145,7 @@ suspend fun RequestsExecutor.setWebhook(
     url,
     port,
     certificate,
+    privateKeyConfig,
     scope,
     filter.allowedUpdates,
     maxAllowedConnections,
