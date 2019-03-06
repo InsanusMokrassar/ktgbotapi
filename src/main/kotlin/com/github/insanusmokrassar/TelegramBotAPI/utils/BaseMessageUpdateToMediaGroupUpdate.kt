@@ -4,6 +4,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaG
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 
-fun BaseMessageUpdate.toMediaGroupUpdate(): MediaGroupUpdate? = (data as? MediaGroupMessage) ?.let {
+fun BaseMessageUpdate.toMediaGroupUpdate(): MediaGroupUpdate? = (this as? MediaGroupUpdate) ?: ((data as? MediaGroupMessage) ?.let {
     MediaGroupUpdate(updateId, it)
-}
+})

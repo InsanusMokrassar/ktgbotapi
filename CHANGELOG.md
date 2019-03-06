@@ -17,6 +17,11 @@
 * Added `UnauthorizedException`
 * `RequestException` now is sealed
 * Rename `ReplyMessageNotFound` to `ReplyMessageNotFoundException`
+* Added `List<BaseMessageUpdate>#mediaGroupId` extension
+* Added utility `T#asReference(): WeakReference(T)` extension
+* Added `UpdatesPoller` class which can be instantiated for manage updates polling
+* Separated execute extensions (now they are in file `Executes`) and poller creating extensions
+* `BaseMessageUpdate#toMediaGroupUpdate()` will also check condition when update-receiver already is `MediaGroupUpdate`
 
 ## 0.11.0
 
