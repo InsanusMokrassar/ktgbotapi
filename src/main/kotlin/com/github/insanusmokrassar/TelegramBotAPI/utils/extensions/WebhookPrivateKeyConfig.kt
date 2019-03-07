@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import java.io.FileInputStream
@@ -8,7 +7,6 @@ import java.security.KeyStore
 
 @Serializable
 data class WebhookPrivateKeyConfig(
-    @SerialName("keyStore")
     private val keyStorePath: String,
     private val keyStorePassword: String,
     val aliasName: String,
