@@ -11,16 +11,13 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 
-private val updatesPollerRequestExecutorCollectedException = IllegalStateException("RequestsExecutor was collected by GC. Can't continue getting updates by polling")
-
 class UpdatesPoller(
-    requestsExecutor: RequestsExecutor,
+    private val executor: RequestsExecutor,
     private val requestsDelayMillis: Long = 1000,
     private val scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     private val allowedUpdates: List<String>? = null,
     private val block: UpdateReceiver<Any>
 ) {
-    private val executor = requestsExecutor.asReference()
     private var lastHandledUpdate: UpdateIdentifier = 0L
     private val mediaGroup: MutableList<MediaGroupUpdate> = mutableListOf()
 
@@ -51,14 +48,14 @@ class UpdatesPoller(
     }
 
     private suspend fun getUpdates(): List<Update> {
-        return executor.get() ?.execute(
+        return executor.execute(
             GetUpdates(
                 lastHandledUpdate + 1, // incremented because offset counted from 1 when updates id from 0
                 allowed_updates = allowedUpdates
             )
         ) ?.map {
             it.asUpdate
-        } ?: throw updatesPollerRequestExecutorCollectedException
+        }
     }
 
     private suspend fun handleUpdates(updates: List<Update>) {
@@ -82,9 +79,6 @@ class UpdatesPoller(
                 try {
                     handleUpdates(getUpdates())
                 } catch (e: Exception) {
-                    if (e == updatesPollerRequestExecutorCollectedException) {
-                        throw IllegalArgumentException(e.message)
-                    }
                     e.printStackTrace()
                 }
             }
