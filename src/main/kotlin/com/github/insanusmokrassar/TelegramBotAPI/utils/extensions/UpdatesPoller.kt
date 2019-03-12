@@ -53,7 +53,7 @@ class UpdatesPoller(
                 lastHandledUpdate + 1, // incremented because offset counted from 1 when updates id from 0
                 allowed_updates = allowedUpdates
             )
-        ) ?.map {
+        ).map {
             it.asUpdate
         }
     }
@@ -77,7 +77,8 @@ class UpdatesPoller(
             while (isActive) {
                 delay(requestsDelayMillis)
                 try {
-                    handleUpdates(getUpdates())
+                    val updates = getUpdates()
+                    handleUpdates(updates)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
