@@ -1,5 +1,28 @@
 # TelegramBotAPI changelog
 
+## 0.12.0 Webhooks
+
+* Added `DataRequest` interface which replace `Data` interface
+* `MultipartRequestImpl` now use `DataRequest`
+* All requests which implements `Data` now implement `DataRequest`
+* Added class `SetWebhook` and its factory
+* Added class `UpdatesFilter` which can help to filter updates by categories
+* Added function `accumulateByKey` which work as debounce for keys and send list of received values
+* Added webhooks functions and workaround for `Reverse Proxy` mode
+* Added new type of updates `MediaGroupUpdate`, which can be received only from filters
+* `UpdatesFilter` now use new type of updates for mediagroups
+* Add `GetWebhookInfo` request and `WebhookInfo` type
+* Replace updates types into separated place in types
+* Now default `RequestException` will contain plain answer from telegram
+* Added `UnauthorizedException`
+* `RequestException` now is sealed
+* Rename `ReplyMessageNotFound` to `ReplyMessageNotFoundException`
+* Added `List<BaseMessageUpdate>#mediaGroupId` extension
+* Added utility `T#asReference(): WeakReference(T)` extension
+* Added `UpdatesPoller` class which can be instantiated for manage updates polling
+* Separated execute extensions (now they are in file `Executes`) and poller creating extensions
+* `BaseMessageUpdate#toMediaGroupUpdate()` will also check condition when update-receiver already is `MediaGroupUpdate`
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`

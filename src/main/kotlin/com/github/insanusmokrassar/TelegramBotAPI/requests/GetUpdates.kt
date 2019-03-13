@@ -2,27 +2,30 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer
 
-const val UPDATE_MESSAGE = "message"
-const val UPDATE_EDITED_MESSAGE = "edited_message"
-const val UPDATE_CHANNEL_POST = "channel_post"
-const val UPDATE_EDITED_CHANNEL_POST = "edited_channel_post"
-const val UPDATE_CHOSEN_INLINE_RESULT = "chosen_inline_result"
-const val UPDATE_INLINE_QUERY = "inline_query"
-const val UPDATE_CALLBACK_QUERY = "callback_query"
-const val UPDATE_SHIPPING_QUERY = "shipping_query"
-const val UPDATE_PRE_CHECKOUT_QUERY = "pre_checkout_query"
-/*
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_MESSAGE", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_MESSAGE"))
+const val UPDATE_MESSAGE = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_MESSAGE
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_EDITED_MESSAGE", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_EDITED_MESSAGE"))
+const val UPDATE_EDITED_MESSAGE = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_EDITED_MESSAGE
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_CHANNEL_POST", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_CHANNEL_POST"))
+const val UPDATE_CHANNEL_POST = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_CHANNEL_POST
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_EDITED_CHANNEL_POST", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_EDITED_CHANNEL_POST"))
+const val UPDATE_EDITED_CHANNEL_POST = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_EDITED_CHANNEL_POST
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_CHOSEN_INLINE_RESULT", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_CHOSEN_INLINE_RESULT"))
+const val UPDATE_CHOSEN_INLINE_RESULT = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_CHOSEN_INLINE_RESULT
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_INLINE_QUERY", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_INLINE_QUERY"))
+const val UPDATE_INLINE_QUERY = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_INLINE_QUERY
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_CALLBACK_QUERY", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_CALLBACK_QUERY"))
+const val UPDATE_CALLBACK_QUERY = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_CALLBACK_QUERY
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_SHIPPING_QUERY", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_SHIPPING_QUERY"))
+const val UPDATE_SHIPPING_QUERY = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_SHIPPING_QUERY
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_PRE_CHECKOUT_QUERY", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_PRE_CHECKOUT_QUERY"))
+const val UPDATE_PRE_CHECKOUT_QUERY = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_PRE_CHECKOUT_QUERY
 
-    @Optional private val inline_query: RawInlineQuery? = null,
-    @Optional private val chosen_inline_result: Unit? = null,
-    @Optional private val callback_query: RawCallbackQuery? = null,
-    @Optional private val shipping_query: Unit? = null,
-    @Optional private val pre_checkout_query: Unit? = null
- */
 @Serializable
 data class GetUpdates(
     @Optional
@@ -32,17 +35,7 @@ data class GetUpdates(
     @Optional
     val timeout: Int? = null,
     @Optional
-    val allowed_updates: List<String>? = listOf(
-        UPDATE_MESSAGE,
-        UPDATE_EDITED_MESSAGE,
-        UPDATE_CHANNEL_POST,
-        UPDATE_EDITED_CHANNEL_POST,
-        UPDATE_CHOSEN_INLINE_RESULT,
-        UPDATE_INLINE_QUERY,
-        UPDATE_CALLBACK_QUERY,
-        UPDATE_SHIPPING_QUERY,
-        UPDATE_PRE_CHECKOUT_QUERY
-    )
+    val allowed_updates: List<String>? = ALL_UPDATES_LIST
 ): SimpleRequest<List<RawUpdate>> {
     override fun method(): String = "getUpdates"
 

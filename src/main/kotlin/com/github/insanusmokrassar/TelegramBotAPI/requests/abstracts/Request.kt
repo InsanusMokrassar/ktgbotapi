@@ -5,12 +5,13 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonObject
 
+@Serializable(RequestSerializer::class)
 interface Request<T: Any> {
     fun method(): String
     fun resultSerializer(): KSerializer<T>
-    @ImplicitReflectionSerializer
-    fun json(): JsonObject = toJsonWithoutNulls()
+    fun json(): JsonObject = toJsonWithoutNulls(RequestSerializer)
 }
+object RequestSerializer : KSerializer<Request<*>> by ContextSerializer(Request::class)
 
 fun <T : Any> StringFormat.extractResult(
     from: String,
