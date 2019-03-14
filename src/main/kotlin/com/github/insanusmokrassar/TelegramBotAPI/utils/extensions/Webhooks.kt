@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.MediaGroupIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import io.ktor.application.Application
 import io.ktor.application.call
@@ -17,8 +18,6 @@ import io.ktor.server.netty.Netty
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.serialization.json.Json
-import java.io.FileInputStream
-import java.security.KeyStore
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
@@ -121,7 +120,7 @@ suspend fun RequestsExecutor.setWebhook(
         }
         launch {
             for (mediaGroupUpdate in mediaGroupAccumulatedChannel) {
-                block(mediaGroupUpdate.second)
+                block(mediaGroupUpdate.second.mapNotNull { (it as? BaseMessageUpdate) })
             }
         }
         engine.start(false)

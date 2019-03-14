@@ -38,28 +38,28 @@ data class UpdatesFilter(
         when (update) {
             is MessageUpdate -> messageCallback ?.invoke(update)
             is List<*> -> when (update.firstOrNull()) {
-                is MessageUpdate, is MessageMediaGroupUpdate -> update.mapNotNull { it as? MessageUpdate }.let { mappedList ->
+                is MessageUpdate -> update.mapNotNull { it as? MessageUpdate }.let { mappedList ->
                     messageMediaGroupCallback ?.also { receiver ->
                         receiver(mappedList.mapNotNull { it.toMediaGroupUpdate() })
                     } ?: messageCallback ?.also { receiver ->
                         mappedList.forEach { receiver(it) }
                     }
                 }
-                is EditMessageUpdate, is EditMessageMediaGroupUpdate -> update.mapNotNull { it as? EditMessageUpdate }.let { mappedList ->
+                is EditMessageUpdate -> update.mapNotNull { it as? EditMessageUpdate }.let { mappedList ->
                     editedMessageMediaGroupCallback ?.also { receiver ->
                         receiver(mappedList.mapNotNull { it.toMediaGroupUpdate() })
                     } ?: editedMessageCallback ?.also { receiver ->
                         mappedList.forEach { receiver(it) }
                     }
                 }
-                is ChannelPostUpdate, is ChannelPostMediaGroupUpdate -> update.mapNotNull { it as? ChannelPostUpdate }.let { mappedList ->
+                is ChannelPostUpdate -> update.mapNotNull { it as? ChannelPostUpdate }.let { mappedList ->
                     channelPostMediaGroupCallback ?.also { receiver ->
                         receiver(mappedList.mapNotNull { it.toMediaGroupUpdate() })
                     } ?: channelPostCallback ?.also { receiver ->
                         mappedList.forEach { receiver(it) }
                     }
                 }
-                is EditChannelPostUpdate, is EditChannelPostMediaGroupUpdate -> update.mapNotNull { it as? EditChannelPostUpdate }.let { mappedList ->
+                is EditChannelPostUpdate -> update.mapNotNull { it as? EditChannelPostUpdate }.let { mappedList ->
                     editedChannelPostMediaGroupCallback ?.also { receiver ->
                         receiver(mappedList.mapNotNull { it.toMediaGroupUpdate() })
                     } ?: editedChannelPostCallback ?.also { receiver ->
