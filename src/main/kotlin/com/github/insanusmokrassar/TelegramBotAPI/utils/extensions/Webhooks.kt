@@ -8,6 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaG
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.request.receiveText
@@ -41,7 +42,7 @@ suspend fun RequestsExecutor.setWebhook(
     allowedUpdates: List<String>? = null,
     maxAllowedConnections: Int? = null,
     engineFactory: ApplicationEngineFactory<*, *> = Netty,
-    block: UpdateReceiver<Any>
+    block: UpdateReceiver<Update>
 ): Job {
     val executeDeferred = certificate ?.let {
         executeAsync(
@@ -60,7 +61,7 @@ suspend fun RequestsExecutor.setWebhook(
         )
     )
     val updatesChannel = Channel<Update>(Channel.UNLIMITED)
-    val mediaGroupChannel = Channel<Pair<MediaGroupIdentifier, Update>>(Channel.UNLIMITED)
+    val mediaGroupChannel = Channel<Pair<MediaGroupIdentifier, BaseMessageUpdate>>(Channel.UNLIMITED)
     val mediaGroupAccumulatedChannel = mediaGroupChannel.accumulateByKey(
         1000L,
         scope = scope
@@ -113,14 +114,18 @@ suspend fun RequestsExecutor.setWebhook(
             for (update in updatesChannel) {
                 val data = update.data
                 when (data) {
-                    is MediaGroupMessage -> mediaGroupChannel.send(data.mediaGroupId to update)
+                    is MediaGroupMessage -> mediaGroupChannel.send(data.mediaGroupId to update as BaseMessageUpdate)
                     else -> block(update)
                 }
             }
         }
         launch {
             for (mediaGroupUpdate in mediaGroupAccumulatedChannel) {
-                block(mediaGroupUpdate.second.mapNotNull { (it as? BaseMessageUpdate) })
+                mediaGroupUpdate.second.toMediaGroupUpdate() ?.let {
+                    block(it)
+                } ?: mediaGroupUpdate.second.forEach {
+                    block(it)
+                }
             }
         }
         engine.start(false)
