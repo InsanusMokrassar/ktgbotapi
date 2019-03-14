@@ -28,6 +28,8 @@
 * Added additional media group types (like `MessageMediaGroupUpdate`)
 * Fixed handling of media group updates in `UpdatesFilter`
 
+### 0.12.2
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
