@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors

@@ -23,6 +23,11 @@
 * Separated execute extensions (now they are in file `Executes`) and poller creating extensions
 * `BaseMessageUpdate#toMediaGroupUpdate()` will also check condition when update-receiver already is `MediaGroupUpdate`
 
+### 0.12.1 Hotfix for media groups
+
+* Added additional media group types (like `MessageMediaGroupUpdate`)
+* Fixed handling of media group updates in `UpdatesFilter`
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`

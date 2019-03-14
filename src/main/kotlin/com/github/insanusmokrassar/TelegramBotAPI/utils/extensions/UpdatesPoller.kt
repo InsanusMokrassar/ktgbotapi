@@ -3,7 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.GetUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mediaGroupId
