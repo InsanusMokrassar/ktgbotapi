@@ -35,15 +35,15 @@ class UpdatesPoller(
         }
     }
 
-    private suspend fun pushMediaGroupUpdate(mediaGroupUpdate: BaseMessageUpdate? = null) {
-        val inputMediaGroupId = (mediaGroupUpdate ?.data as? MediaGroupMessage) ?.mediaGroupId
+    private suspend fun pushMediaGroupUpdate(update: BaseMessageUpdate? = null) {
+        val inputMediaGroupId = (update ?.data as? MediaGroupMessage) ?.mediaGroupId
         if (mediaGroup.isNotEmpty() && inputMediaGroupId ?.equals(mediaGroup.mediaGroupId) != true) {
             sendToBlock(listOf(*mediaGroup.toTypedArray()))
             mediaGroup.clear()
         }
         inputMediaGroupId ?.let {
-            mediaGroup.add(mediaGroupUpdate)
-        }
+            mediaGroup.add(update)
+        } ?: sendToBlock(update ?: return)
     }
 
     private suspend fun getUpdates(): List<Update> {
