@@ -30,6 +30,14 @@
 
 ### 0.12.2
 
+* New in `MediaGroupUpdate`:
+    * It is subtype of `Update` and can be use as regular update with list of messages
+    * Data now is list with `MediaGroupMessage`
+    * Added field `origins` which represent origin updates for `MediaGroupMessage`
+    * `updateId` now represent LAST id of origins updates
+* `UpdatesFilter` and other objects now work with `UpdateReceiver<Update>` as common supertype
+for receivers.
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
