@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaG
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mediaGroupId
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 
@@ -15,30 +16,26 @@ class UpdatesPoller(
     private val requestsDelayMillis: Long = 1000,
     private val scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     private val allowedUpdates: List<String>? = null,
-    private val block: UpdateReceiver<Any>
+    private val block: UpdateReceiver<Update>
 ) {
     private var lastHandledUpdate: UpdateIdentifier = 0L
     private val mediaGroup: MutableList<BaseMessageUpdate> = mutableListOf()
 
     private var pollerJob: Job? = null
 
-    private suspend fun sendToBlock(data: Any) {
+    private suspend fun sendToBlock(data: Update) {
         block(data)
-        lastHandledUpdate = when (data) {
-            is Update -> data.updateId
-            is List<*> -> (data.last() as? Update) ?.updateId ?: throw IllegalStateException(
-                "Found non-updates oriented list"
-            )
-            else -> throw IllegalStateException(
-                "Unknown type of data"
-            )
-        }
+        lastHandledUpdate = data.updateId
     }
 
     private suspend fun pushMediaGroupUpdate(update: BaseMessageUpdate? = null) {
         val inputMediaGroupId = (update ?.data as? MediaGroupMessage) ?.mediaGroupId
         if (mediaGroup.isNotEmpty() && inputMediaGroupId ?.equals(mediaGroup.mediaGroupId) != true) {
-            sendToBlock(listOf(*mediaGroup.toTypedArray()))
+            listOf(*mediaGroup.toTypedArray()).toMediaGroupUpdate() ?.let {
+                sendToBlock(it)
+            } ?: mediaGroup.forEach {
+                sendToBlock(it)
+            }
             mediaGroup.clear()
         }
         inputMediaGroupId ?.let {

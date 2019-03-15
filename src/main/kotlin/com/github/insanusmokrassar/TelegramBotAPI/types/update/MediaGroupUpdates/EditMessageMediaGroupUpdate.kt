@@ -2,15 +2,11 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdate
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.EditMessageUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MessageUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 
 data class EditMessageMediaGroupUpdate(
-    override val updateId: UpdateIdentifier,
-    override val data: MediaGroupMessage
+    override val origins: List<BaseMessageUpdate>
 ) : MediaGroupUpdate {
-    constructor(sourceUpdate: EditMessageUpdate) : this(
-        sourceUpdate.updateId,
-        sourceUpdate.data as MediaGroupMessage
-    )
+    override val updateId: UpdateIdentifier = origins.last().updateId
+    override val data: List<MediaGroupMessage> = origins.mapNotNull { it.data as? MediaGroupMessage }
 }

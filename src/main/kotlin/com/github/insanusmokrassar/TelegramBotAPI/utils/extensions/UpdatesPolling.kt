@@ -2,8 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 
@@ -13,20 +13,20 @@ fun RequestsExecutor.startGettingOfUpdates(
     requestsDelayMillis: Long = 1000,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
-    block: UpdateReceiver<Any>
+    block: UpdateReceiver<Update>
 ): Job {
     return UpdatesPoller(this, requestsDelayMillis, scope, allowedUpdates, block).start()
 }
 
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
-    messageMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
+    messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
-    editedMessageMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
+    editedMessageMediaGroupCallback: UpdateReceiver<EditMessageMediaGroupUpdate>? = null,
     channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
-    channelPostMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
+    channelPostMediaGroupCallback: UpdateReceiver<ChannelPostMediaGroupUpdate>? = null,
     editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,
-    editedChannelPostMediaGroupCallback: UpdateReceiver<List<MediaGroupUpdate>>? = null,
+    editedChannelPostMediaGroupCallback: UpdateReceiver<EditChannelPostMediaGroupUpdate>? = null,
     chosenInlineResultCallback: UpdateReceiver<ChosenInlineResultUpdate>? = null,
     inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
     callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
@@ -60,7 +60,7 @@ fun RequestsExecutor.startGettingOfUpdates(
 
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
-    mediaGroupCallback: UpdateReceiver<List<BaseMessageUpdate>>? = null,
+    mediaGroupCallback: UpdateReceiver<MediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
     channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
     editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,

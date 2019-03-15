@@ -1,8 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
-import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
+import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer
