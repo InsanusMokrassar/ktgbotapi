@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.webhook
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.DataRequest
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.MultipartRequestImpl
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer

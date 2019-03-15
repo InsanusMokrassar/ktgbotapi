@@ -3,8 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 import com.github.insanusmokrassar.TelegramBotAPI.utils.StorageFile
 import kotlinx.serialization.*
 import java.io.File
-import java.nio.file.Files
-import java.util.*
 
 sealed class InputFile {
     abstract val fileId: String

@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
-import kotlinx.serialization.*
+import kotlinx.serialization.ImplicitReflectionSerializer
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.*
 
 @Deprecated("This method can throw exceptions")

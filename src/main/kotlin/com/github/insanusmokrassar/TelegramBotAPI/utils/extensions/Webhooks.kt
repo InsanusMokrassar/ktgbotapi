@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.MediaGroupIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate
@@ -13,7 +13,8 @@ import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.request.receiveText
 import io.ktor.response.respond
-import io.ktor.routing.*
+import io.ktor.routing.post
+import io.ktor.routing.routing
 import io.ktor.server.engine.*
 import io.ktor.server.netty.Netty
 import kotlinx.coroutines.*
@@ -21,7 +22,6 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.serialization.json.Json
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
-
 
 
 /**

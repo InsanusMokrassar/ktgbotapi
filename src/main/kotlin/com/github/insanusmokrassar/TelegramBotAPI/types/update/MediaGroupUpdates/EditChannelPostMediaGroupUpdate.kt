@@ -2,7 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdate
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 
 data class EditChannelPostMediaGroupUpdate(
