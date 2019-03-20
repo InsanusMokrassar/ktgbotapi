@@ -14,7 +14,6 @@ import io.ktor.http.*
 import kotlinx.serialization.ImplicitReflectionSerializer
 
 class MultipartRequestCallFactory : KtorCallFactory {
-    @ImplicitReflectionSerializer
     override suspend fun <T: Any> prepareCall(
         client: HttpClient,
         baseUrl: String,

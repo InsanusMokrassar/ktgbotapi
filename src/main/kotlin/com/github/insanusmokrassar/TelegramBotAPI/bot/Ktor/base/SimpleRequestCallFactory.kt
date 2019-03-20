@@ -14,7 +14,6 @@ import io.ktor.http.content.TextContent
 import kotlinx.serialization.ImplicitReflectionSerializer
 
 class SimpleRequestCallFactory : KtorCallFactory {
-    @ImplicitReflectionSerializer
     override suspend fun <T: Any> prepareCall(
         client: HttpClient,
         baseUrl: String,
