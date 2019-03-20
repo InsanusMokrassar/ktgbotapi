@@ -40,6 +40,8 @@ for receivers.
 
 ### 0.12.3 Cleaning
 
+* Refactor, optimizing and cleaning of code
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
