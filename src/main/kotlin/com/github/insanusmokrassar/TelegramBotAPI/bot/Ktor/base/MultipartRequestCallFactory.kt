@@ -11,7 +11,6 @@ import io.ktor.client.request.forms.MultiPartFormDataContent
 import io.ktor.client.request.forms.formData
 import io.ktor.client.request.url
 import io.ktor.http.*
-import kotlinx.serialization.ImplicitReflectionSerializer
 
 class MultipartRequestCallFactory : KtorCallFactory {
     override suspend fun <T: Any> prepareCall(

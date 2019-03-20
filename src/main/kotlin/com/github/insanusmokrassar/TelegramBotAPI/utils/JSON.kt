@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
-import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.*
 

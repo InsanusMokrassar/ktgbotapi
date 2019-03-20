@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.common
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
-import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.json.JsonObject
 
 data class CommonMultipartFileRequest<T: Any>(
