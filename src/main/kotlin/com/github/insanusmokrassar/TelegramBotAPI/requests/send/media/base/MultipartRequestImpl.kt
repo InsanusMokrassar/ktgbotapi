@@ -15,7 +15,6 @@ class MultipartRequestImpl<D: DataRequest<R>, F: Files, R: Any>(
 ) : MultipartRequest<R> {
     override fun method(): String = data.method()
     override fun resultSerializer(): KSerializer<R> = data.resultSerializer()
-    @ImplicitReflectionSerializer
     override val paramsJson: JsonObject = data.json()
     override val mediaMap: Map<String, MultipartFile> = files
 }

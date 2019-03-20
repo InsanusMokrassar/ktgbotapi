@@ -8,6 +8,5 @@ data class CommonMultipartFileRequest<T: Any>(
     val data: Request<T>,
     override val mediaMap: Map<String, MultipartFile>
 ) : MultipartRequest<T>, Request<T> by data {
-    @ImplicitReflectionSerializer
     override val paramsJson: JsonObject = data.json()
 }

@@ -41,6 +41,7 @@ for receivers.
 ### 0.12.3 Cleaning
 
 * Refactor, optimizing and cleaning of code
+* Removed deprecated method `T#toJsonWithoutNulls()`
 
 ## 0.11.0
 
