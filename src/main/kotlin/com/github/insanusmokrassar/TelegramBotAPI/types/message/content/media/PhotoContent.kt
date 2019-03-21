@@ -16,10 +16,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstract
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions
 
 data class PhotoContent(
-    override val media: List<PhotoSize>,
+    override val mediaCollection: List<PhotoSize>,
     override val caption: String? = null,
     override val captionEntities: List<MessageEntity> = emptyList()
 ) : MediaCollectionContent<PhotoSize>, CaptionedMediaContent, MediaGroupContent {
+    override val media: PhotoSize = mediaCollection.biggest() ?: throw IllegalStateException("Can't locate any photo size for this content")
+
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
@@ -27,7 +29,7 @@ data class PhotoContent(
         replyMarkup: KeyboardMarkup?
     ): Request<RawMessage> = SendPhoto(
         chatId,
-        media.biggest() ?.fileId ?: throw IllegalStateException("Empty list of media"),
+        media.fileId,
         toMarkdownCaptions().firstOrNull(),
         MarkdownParseMode,
         disableNotification,
@@ -36,7 +38,7 @@ data class PhotoContent(
     )
 
     override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = InputMediaPhoto(
-        media.biggest() ?.fileId ?: throw IllegalStateException("Can't locate any photo size for this content"),
+        media.fileId,
         toMarkdownCaptions().firstOrNull(),
         MarkdownParseMode
     )

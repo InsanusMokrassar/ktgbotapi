@@ -44,6 +44,9 @@ for receivers.
 * Removed deprecated method `T#toJsonWithoutNulls()`
 * Renamed instances of `MediaGroupMessage`s and refactored their interfaces. `ChannelMediaGroupMessage`
 will not contain `user` field (but `CommonMediaGroupMessage` will have)
+* Now `MediaCollectionContent` is `MediaContent` (classes of this interface must choose best
+media for present out)
+    * `PhotoContent` now choose biggest photo size from its collection as `media`
 
 ## 0.11.0
 
