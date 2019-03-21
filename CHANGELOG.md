@@ -42,6 +42,8 @@ for receivers.
 
 * Refactor, optimizing and cleaning of code
 * Removed deprecated method `T#toJsonWithoutNulls()`
+* Renamed instances of `MediaGroupMessage`s and refactored their interfaces. `ChannelMediaGroupMessage`
+will not contain `user` field (but `CommonMediaGroupMessage` will have)
 
 ## 0.11.0
 

@@ -8,7 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Messag
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaGroupContent
 import org.joda.time.DateTime
 
-data class MediaGroupMessage(
+data class ChannelMediaGroupMessage(
     override val messageId: MessageIdentifier,
     override val chat: Chat,
     override val date: DateTime,
@@ -17,4 +17,4 @@ data class MediaGroupMessage(
     override val editDate: DateTime?,
     override val forwarded: ForwardedMessage?,
     override val replyTo: Message?
-) : Message, MediaGroupMessage
+) : MediaGroupMessage

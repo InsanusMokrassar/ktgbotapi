@@ -17,4 +17,4 @@ data class CommonMediaGroupMessage(
     override val editDate: DateTime?,
     override val forwarded: ForwardedMessage?,
     override val replyTo: Message?
-) : Message, MediaGroupMessage, FromUserMessage
+) : MediaGroupMessage, FromUserMessage
