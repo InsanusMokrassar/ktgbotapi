@@ -47,6 +47,7 @@ will not contain `user` field (but `CommonMediaGroupMessage` will have)
 * Now `MediaCollectionContent` is `MediaContent` (classes of this interface must choose best
 media for present out)
     * `PhotoContent` now choose biggest photo size from its collection as `media`
+* Fix in order of media group messages which was received by webhooks
 
 ## 0.11.0
 
