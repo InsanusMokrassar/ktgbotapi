@@ -1,26 +1,6 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-def pomConfig = {
-    licenses {
-        license {
-            name "The Apache Software License, Version 2.0"
-            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            distribution "repo"
-        }
-    }
-    developers {
-        developer {
-            name "Ovsiannikov Aleksei"
-            email "ovsyannikov.alexey95@gmail.com"
-        }
-    }
-
-    scm {
-        url "https://github.com/InsanusMokrassar/${project.name}"
-    }
-}
-
 task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
     classifier = 'sources'
@@ -45,8 +25,8 @@ publishing {
             pom.withXml {
                 asNode().children().last() + {
                     resolveStrategy = Closure.DELEGATE_FIRST
-                    name 'Telegram Bot API'
-                    description 'It is one more project which wish to be useful and full Telegram Bots API bridge for Kotlin'
+                    name "${project_public_name}"
+                    description "${project_public_description}"
                     url "https://insanusmokrassar.github.io/${project.name}"
 
                     scm {

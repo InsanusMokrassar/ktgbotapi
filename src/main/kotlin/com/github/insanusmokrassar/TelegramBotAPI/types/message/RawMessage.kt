@@ -210,7 +210,7 @@ data class RawMessage(
             content ->
             media_group_id ?.let {
                 when (from) {
-                    null -> MediaGroupMessage(
+                    null -> ChannelMediaGroupMessage(
                         messageId,
                         chat,
                         date.asDate,

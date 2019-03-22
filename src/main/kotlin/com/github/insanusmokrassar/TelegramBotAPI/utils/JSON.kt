@@ -1,14 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
-import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.*
-
-@Deprecated("This method can throw exceptions")
-@ImplicitReflectionSerializer
-inline fun <reified T: Any> T.toJsonWithoutNulls(): JsonObject = Json.nonstrict.toJson(
-    this
-).jsonObject.withoutNulls()
 
 inline fun <reified T: Any> T.toJsonWithoutNulls(serializer: KSerializer<T>): JsonObject = toJson(serializer).withoutNulls()
 
