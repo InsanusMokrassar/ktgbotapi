@@ -56,9 +56,13 @@ class UpdatesPoller(
     }
 
     private suspend fun handleUpdates(updates: List<Update>) {
-        updates.forEach { update ->
+        for (update in updates) {
             (update as? BaseMessageUpdate) ?.let {
-                pushMediaGroupUpdate(it)
+                if (it.data is MediaGroupMessage) {
+                    pushMediaGroupUpdate(it)
+                } else {
+                    null
+                }
             } ?:let {
                 pushMediaGroupUpdate()
                 sendToBlock(update)
