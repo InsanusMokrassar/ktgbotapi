@@ -49,6 +49,8 @@ media for present out)
     * `PhotoContent` now choose biggest photo size from its collection as `media`
 * Fix in order of media group messages which was received by webhooks
 
+### 0.12.4 UpdatesPoller optimisations
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
