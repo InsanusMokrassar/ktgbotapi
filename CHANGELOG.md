@@ -51,6 +51,8 @@ media for present out)
 
 ### 0.12.4 UpdatesPoller optimisations
 
+* Optimized preparing of media group in `UpdatesPoller`
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
