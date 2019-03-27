@@ -5,5 +5,6 @@ data class PreTextMessageEntity(
     override val length: Int,
     override val sourceString: String
 ) : TextMessageEntity() {
-    override val formatSymbol: String = "```"
+    override val markdownFormatSymbol: String = "```"
+    override val htmlFormatTagname: String = "pre"
 }

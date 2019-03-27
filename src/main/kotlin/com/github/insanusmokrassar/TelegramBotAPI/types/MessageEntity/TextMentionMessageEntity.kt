@@ -7,8 +7,7 @@ class TextMentionMessageEntity(
     override val length: Int,
     override val sourceString: String,
     val user: User
-) : MessageEntity {
-    override val asMarkdownSource: String by lazy {
-        "[$sourceString](tg://user?id=${user.id})"
-    }
-}
+) : LinkMessageEntity(
+    sourceString,
+    "tg://user?id=${user.id})"
+)

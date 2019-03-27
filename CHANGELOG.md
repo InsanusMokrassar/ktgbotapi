@@ -49,10 +49,11 @@ media for present out)
     * `PhotoContent` now choose biggest photo size from its collection as `media`
 * Fix in order of media group messages which was received by webhooks
 
-### 0.12.4 UpdatesPoller optimisations
+### 0.12.4
 
 * Optimized preparing of media group in `UpdatesPoller`
 * Add `CommonLimiter`
+* Add `MessageEntity#asHtmlSource` and `String#toHtml`
 
 ## 0.11.0
 

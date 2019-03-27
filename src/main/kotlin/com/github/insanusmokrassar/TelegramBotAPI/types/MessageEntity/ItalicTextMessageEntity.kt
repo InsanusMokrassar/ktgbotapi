@@ -5,5 +5,6 @@ data class ItalicTextMessageEntity(
     override val length: Int,
     override val sourceString: String
 ) : TextMessageEntity() {
-    override val formatSymbol: String = "_"
+    override val markdownFormatSymbol: String = "_"
+    override val htmlFormatTagname: String = "i"
 }
