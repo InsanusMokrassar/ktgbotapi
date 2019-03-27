@@ -54,6 +54,7 @@ media for present out)
 * Optimized preparing of media group in `UpdatesPoller`
 * Add `CommonLimiter`
 * Add `MessageEntity#asHtmlSource` and `String#toHtml`
+* Add tools for work with html captions and texts
 
 ## 0.11.0
 
