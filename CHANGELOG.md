@@ -52,6 +52,7 @@ media for present out)
 ### 0.12.4 UpdatesPoller optimisations
 
 * Optimized preparing of media group in `UpdatesPoller`
+* Add `CommonLimiter`
 
 ## 0.11.0
 
