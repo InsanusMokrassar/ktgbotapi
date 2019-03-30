@@ -5,10 +5,11 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.MarkdownParseMode
+import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlTexts
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownTexts
 
 data class TextContent(
@@ -22,8 +23,8 @@ data class TextContent(
         replyMarkup: KeyboardMarkup?
     ): Request<RawMessage> = SendMessage(
         chatId,
-        toMarkdownTexts().first(),
-        MarkdownParseMode,
+        toHtmlTexts().first(),
+        HTMLParseMode,
         false,
         disableNotification,
         replyToMessageId,
@@ -35,11 +36,28 @@ data class TextContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): List<Request<RawMessage>> = toMarkdownTexts().map {
+    ): List<Request<RawMessage>> = createResends(
+        chatId,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup,
+        HTMLParseMode
+    )
+
+    fun createResends(
+        chatId: ChatIdentifier,
+        disableNotification: Boolean,
+        replyToMessageId: MessageIdentifier?,
+        replyMarkup: KeyboardMarkup?,
+        parseMode: ParseMode = HTMLParseMode
+    ): List<Request<RawMessage>> = when (parseMode) {
+        is MarkdownParseMode -> toMarkdownTexts()
+        is HTMLParseMode -> toHtmlTexts()
+    }.map {
         SendMessage(
             chatId,
             it,
-            MarkdownParseMode,
+            parseMode,
             false,
             disableNotification,
             replyToMessageId,

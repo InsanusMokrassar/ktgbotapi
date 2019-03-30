@@ -55,6 +55,8 @@ media for present out)
 * Add `CommonLimiter`
 * Add `MessageEntity#asHtmlSource` and `String#toHtml`
 * Add tools for work with html captions and texts
+* `MessageContent` which using captions or text now have default parse mode `HTMLParseMode` due to issue with escaping
+of `]` in links titles
 
 ## 0.11.0
 
