@@ -133,4 +133,7 @@ infix fun String.phone(parseMode: ParseMode): String = when (parseMode) {
     is Markdown -> phoneMarkdown()
 }
 
-infix fun String.command(parseMode: ParseMode): String = command()
+infix fun String.command(parseMode: ParseMode): String = when (parseMode) {
+    is HTML -> commandHTML()
+    is Markdown -> commandMarkdown()
+}
