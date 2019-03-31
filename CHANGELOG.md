@@ -57,6 +57,7 @@ media for present out)
 * Add tools for work with html captions and texts
 * `MessageContent` which using captions or text now have default parse mode `HTMLParseMode` due to issue with escaping
 of `]` in links titles
+* Added `Markdown` and `HTML` type aliases which actually means `MarkdownParseMode` and `HTMLParseMode`
 
 ## 0.11.0
 

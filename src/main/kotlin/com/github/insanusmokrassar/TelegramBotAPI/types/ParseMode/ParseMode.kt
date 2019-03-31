@@ -23,6 +23,9 @@ object HTMLParseMode : ParseMode() {
     override val parseModeName: String = "HTML"
 }
 
+typealias Markdown = MarkdownParseMode
+typealias HTML = HTMLParseMode
+
 @Serializer(ParseMode::class)
 internal class ParseModeSerializerObject: KSerializer<ParseMode> {
     override fun deserialize(decoder: Decoder): ParseMode {
