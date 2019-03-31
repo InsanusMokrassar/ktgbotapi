@@ -8,14 +8,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.MediaGroupMem
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.HTMLParseMode
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.MarkdownParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.biggest
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlCaptions
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions
 
 data class PhotoContent(
     override val mediaCollection: List<PhotoSize>,

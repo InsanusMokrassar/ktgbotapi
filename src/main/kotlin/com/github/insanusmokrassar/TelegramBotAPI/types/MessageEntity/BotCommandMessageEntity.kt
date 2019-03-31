@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
-import com.github.insanusmokrassar.TelegramBotAPI.utils.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.commandHTML
+import com.github.insanusmokrassar.TelegramBotAPI.utils.commandMarkdown
 
 data class BotCommandMessageEntity(
     override val offset: Int,
