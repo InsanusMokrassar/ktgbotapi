@@ -60,6 +60,7 @@ of `]` in links titles
 * Added `Markdown` and `HTML` type aliases which actually means `MarkdownParseMode` and `HTMLParseMode`
 * `ChatId` now have extension `link` which will automatically create link like `tg://user?id=<chatId>`
 * Created a few of methods for all supported formats of text like bold, italic, links and others
+* Rewritten `MessageEntities` to use new formatting options
 
 ## 0.11.0
 

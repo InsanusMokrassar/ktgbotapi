@@ -1,10 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
+import com.github.insanusmokrassar.TelegramBotAPI.utils.preHTML
+import com.github.insanusmokrassar.TelegramBotAPI.utils.preMarkdown
+
 data class PreTextMessageEntity(
     override val offset: Int,
     override val length: Int,
     override val sourceString: String
-) : TextMessageEntity() {
-    override val markdownFormatSymbol: String = "```"
-    override val htmlFormatTagname: String = "pre"
+) : MessageEntity {
+    override val asMarkdownSource: String = sourceString.preMarkdown()
+    override val asHtmlSource: String = sourceString.preHTML()
 }

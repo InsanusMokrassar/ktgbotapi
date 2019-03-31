@@ -78,6 +78,9 @@ fun String.command(): String = if (startsWith("/")) {
     "/$this"
 }
 
+fun String.commandMarkdown(): String = command()
+fun String.commandHTML(): String = command()
+
 
 infix fun String.bold(parseMode: ParseMode): String = when (parseMode) {
     is HTML -> boldHTML()
