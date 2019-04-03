@@ -13,6 +13,10 @@ data class ChatId(
     val chatId: Identifier
 ) : ChatIdentifier()
 
+
+val ChatId.link: String
+    get() = "tg://user?id=$chatId"
+
 typealias UserId = ChatId
 
 fun Identifier.toChatId(): ChatId = ChatId(this)

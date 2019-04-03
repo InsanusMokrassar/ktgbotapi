@@ -62,5 +62,6 @@ recommend to use some unique address for each bot which you are using
 
 Template for Nginx server config you can find in [this gist](https://gist.github.com/InsanusMokrassar/fcc6e09cebd07e46e8f0fdec234750c4#file-nginxssl-conf).
 
-For webhook you must provide `File` with public part of certificate, `URL` where bot placed and inner `PORT` which
-will be used to start receiving of updates.
+For webhook you can provide `File` with public part of certificate, `URL` where bot will be available and inner `PORT` which
+will be used to start receiving of updates. Actually, you can skip passing of `File` when you have something like
+nginx for proxy forwarding.

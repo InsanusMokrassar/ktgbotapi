@@ -7,12 +7,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMediaVid
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.MediaGroupMemberInputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.MarkdownParseMode
+import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.HTMLParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlCaptions
 
 data class VideoContent(
     override val media: VideoFile,
@@ -28,8 +28,8 @@ data class VideoContent(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        toMarkdownCaptions().firstOrNull(),
-        MarkdownParseMode,
+        toHtmlCaptions().firstOrNull(),
+        HTMLParseMode,
         media.duration,
         media.width,
         media.height,
@@ -41,8 +41,8 @@ data class VideoContent(
 
     override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = InputMediaVideo(
         media.fileId,
-        toMarkdownCaptions().firstOrNull(),
-        MarkdownParseMode,
+        toHtmlCaptions().firstOrNull(),
+        HTMLParseMode,
         media.width,
         media.height,
         media.duration,

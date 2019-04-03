@@ -49,6 +49,19 @@ media for present out)
     * `PhotoContent` now choose biggest photo size from its collection as `media`
 * Fix in order of media group messages which was received by webhooks
 
+### 0.12.4
+
+* Optimized preparing of media group in `UpdatesPoller`
+* Add `CommonLimiter`
+* Add `MessageEntity#asHtmlSource` and `String#toHtml`
+* Add tools for work with html captions and texts
+* `MessageContent` which using captions or text now have default parse mode `HTMLParseMode` due to issue with escaping
+of `]` in links titles
+* Added `Markdown` and `HTML` type aliases which actually means `MarkdownParseMode` and `HTMLParseMode`
+* `ChatId` now have extension `link` which will automatically create link like `tg://user?id=<chatId>`
+* Created a few of methods for all supported formats of text like bold, italic, links and others
+* Rewritten `MessageEntities` to use new formatting options
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`

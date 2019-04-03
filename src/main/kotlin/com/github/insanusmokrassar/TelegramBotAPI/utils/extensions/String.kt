@@ -9,3 +9,17 @@ fun String.toMarkdown(): String {
         "\\_"
     )
 }
+
+fun String.toHtml(): String = replace(
+    "<",
+    "&lt;"
+).replace(
+    ">",
+    "&gt;"
+).replace(
+    "&",
+    "&amp;"
+).replace(
+    "\"",
+    "&quot;"
+)

@@ -31,7 +31,8 @@ class UpdatesPoller(
     private suspend fun pushMediaGroupUpdate(update: BaseMessageUpdate? = null) {
         val inputMediaGroupId = (update ?.data as? MediaGroupMessage) ?.mediaGroupId
         if (mediaGroup.isNotEmpty() && inputMediaGroupId ?.equals(mediaGroup.mediaGroupId) != true) {
-            listOf(*mediaGroup.toTypedArray()).toMediaGroupUpdate() ?.let {
+            mediaGroup.sortBy { it.updateId }
+            mediaGroup.toMediaGroupUpdate() ?.let {
                 sendToBlock(it)
             } ?: mediaGroup.forEach {
                 sendToBlock(it)
@@ -55,9 +56,13 @@ class UpdatesPoller(
     }
 
     private suspend fun handleUpdates(updates: List<Update>) {
-        updates.forEach { update ->
+        for (update in updates) {
             (update as? BaseMessageUpdate) ?.let {
-                pushMediaGroupUpdate(it)
+                if (it.data is MediaGroupMessage) {
+                    pushMediaGroupUpdate(it)
+                } else {
+                    null
+                }
             } ?:let {
                 pushMediaGroupUpdate()
                 sendToBlock(update)
