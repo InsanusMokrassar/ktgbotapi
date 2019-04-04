@@ -62,6 +62,8 @@ of `]` in links titles
 * Created a few of methods for all supported formats of text like bold, italic, links and others
 * Rewritten `MessageEntities` to use new formatting options
 
+### 0.12.5
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
