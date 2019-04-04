@@ -17,7 +17,7 @@ data class DocumentContent(
     override val media: DocumentFile,
     override val caption: String? = null,
     override val captionEntities: List<MessageEntity> = emptyList()
-) : MediaContent<DocumentFile>, CaptionedMediaContent {
+) : MediaContent, CaptionedMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

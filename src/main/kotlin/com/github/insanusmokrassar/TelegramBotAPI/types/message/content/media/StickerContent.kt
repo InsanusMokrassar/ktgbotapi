@@ -11,7 +11,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstract
 
 data class StickerContent(
     override val media: Sticker
-) : MediaContent<Sticker> {
+) : MediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

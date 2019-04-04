@@ -19,7 +19,7 @@ data class PhotoContent(
     override val mediaCollection: List<PhotoSize>,
     override val caption: String? = null,
     override val captionEntities: List<MessageEntity> = emptyList()
-) : MediaCollectionContent<PhotoSize>, CaptionedMediaContent, MediaGroupContent<PhotoSize> {
+) : MediaCollectionContent<PhotoSize>, CaptionedMediaContent, MediaGroupContent {
     override val media: PhotoSize = mediaCollection.biggest() ?: throw IllegalStateException("Can't locate any photo size for this content")
 
     override fun createResend(

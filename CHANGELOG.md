@@ -65,6 +65,7 @@ of `]` in links titles
 ### 0.12.5
 
 * Now `MediaGroupContent` is `MediaContent`
+* All `MedaContent` now have no generics and have basic `TelegramMediaFile` media field
 
 ## 0.11.0
 
