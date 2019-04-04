@@ -18,7 +18,7 @@ data class VideoContent(
     override val media: VideoFile,
     override val caption: String? = null,
     override val captionEntities: List<MessageEntity> = emptyList()
-) : MediaContent<VideoFile>, CaptionedMediaContent, MediaGroupContent {
+) : CaptionedMediaContent, MediaGroupContent<VideoFile> {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

@@ -64,6 +64,8 @@ of `]` in links titles
 
 ### 0.12.5
 
+* Now `MediaGroupContent` is `MediaContent`
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
