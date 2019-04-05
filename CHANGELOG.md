@@ -62,7 +62,7 @@ of `]` in links titles
 * Created a few of methods for all supported formats of text like bold, italic, links and others
 * Rewritten `MessageEntities` to use new formatting options
 
-### 0.12.5
+### 0.12.5 `MediaContent` improvements
 
 * Now `MediaGroupContent` is `MediaContent`
 * All `MedaContent` now have no generics and have basic `TelegramMediaFile` media field
