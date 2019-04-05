@@ -11,7 +11,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.HTMLParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaGroupContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlCaptions
 
 data class VideoContent(
