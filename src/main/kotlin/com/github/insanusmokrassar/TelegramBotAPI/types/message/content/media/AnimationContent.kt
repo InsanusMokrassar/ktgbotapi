@@ -14,7 +14,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstract
 data class AnimationContent(
     override val media: AnimationFile,
     val includedDocument: DocumentFile?
-) : MediaContent<AnimationFile> {
+) : MediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

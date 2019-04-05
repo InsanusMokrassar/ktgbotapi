@@ -12,7 +12,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstract
 
 data class VideoNoteContent(
     override val media: VideoNoteFile
-) : MediaContent<VideoNoteFile> {
+) : MediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

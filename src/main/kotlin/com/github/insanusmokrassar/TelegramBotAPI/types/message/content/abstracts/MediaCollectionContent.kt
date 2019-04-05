@@ -2,6 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstrac
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.TelegramMediaFile
 
-interface MediaCollectionContent<T: TelegramMediaFile>: MessageContent, MediaContent<T> {
+interface MediaCollectionContent<T: TelegramMediaFile>: MessageContent, MediaContent {
     val mediaCollection: List<T>
 }

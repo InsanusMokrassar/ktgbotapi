@@ -11,14 +11,15 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.HTMLParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaGroupContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlCaptions
 
 data class VideoContent(
     override val media: VideoFile,
     override val caption: String? = null,
     override val captionEntities: List<MessageEntity> = emptyList()
-) : MediaContent<VideoFile>, CaptionedMediaContent, MediaGroupContent {
+) : CaptionedMediaContent, MediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

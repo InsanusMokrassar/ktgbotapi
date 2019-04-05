@@ -2,6 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstrac
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.MediaGroupMemberInputMedia
 
-interface MediaGroupContent : MessageContent {
+interface MediaGroupContent : MediaContent {
     fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia
 }
