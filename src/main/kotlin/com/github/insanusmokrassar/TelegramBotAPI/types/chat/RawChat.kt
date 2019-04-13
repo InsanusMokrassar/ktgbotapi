@@ -8,18 +8,18 @@ import kotlinx.serialization.*
 data class RawChat(
     override val id: ChatId,
     private val type: String,
-    @Optional private val title: String? = null,
-    @Optional private val username: Username? = null,
-    @Optional private val first_name: String? = null,
-    @Optional private val last_name: String? = null,
-    @Optional private val all_members_are_administrators: Boolean? = null,
-    @Optional private val description: String? = null,
-    @Optional private val invite_link: String? = null,
-    @Optional private val pinned_message: RawMessage? = null,
-    @Optional private val sticker_set_name: String? = null,
-    @Optional private val can_set_sticker_set: Boolean? = null,
+    private val title: String? = null,
+    private val username: Username? = null,
+    private val first_name: String? = null,
+    private val last_name: String? = null,
+    private val all_members_are_administrators: Boolean? = null,
+    private val description: String? = null,
+    private val invite_link: String? = null,
+    private val pinned_message: RawMessage? = null,
+    private val sticker_set_name: String? = null,
+    private val can_set_sticker_set: Boolean? = null,
     @SerialName("photo")
-    @Optional override val chatPhoto: ChatPhoto? = null
+    override val chatPhoto: ChatPhoto? = null
 ) : Chat {
     fun extractChat(): Chat {
         return when (type) {
