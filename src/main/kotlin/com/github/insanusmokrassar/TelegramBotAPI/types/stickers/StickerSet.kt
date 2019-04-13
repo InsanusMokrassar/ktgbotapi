@@ -13,6 +13,5 @@ data class StickerSet(
     @SerialName(stickersField)
     val stickers: List<Sticker>,
     @SerialName(containsMasksField)
-    @Optional
     val containsMasks: Boolean = false
 )

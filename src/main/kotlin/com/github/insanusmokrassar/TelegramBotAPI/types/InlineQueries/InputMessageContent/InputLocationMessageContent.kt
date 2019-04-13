@@ -13,6 +13,5 @@ data class InputLocationMessageContent(
     @SerialName(longitudeField)
     override val longitude: Double,
     @SerialName(livePeriodField)
-    @Optional
     override val livePeriod: Int? = null
 ) : Locationed, Livable, InputMessageContent

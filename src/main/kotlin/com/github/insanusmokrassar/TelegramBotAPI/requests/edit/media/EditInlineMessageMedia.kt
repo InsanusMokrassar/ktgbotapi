@@ -14,7 +14,6 @@ data class EditInlineMessageMedia(
     @SerialName(mediaField)
     override val media: InputMedia,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditReplyMessage, EditMediaMessage {
 

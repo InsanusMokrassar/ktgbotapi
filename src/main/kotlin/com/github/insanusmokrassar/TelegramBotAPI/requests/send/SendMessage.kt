@@ -16,19 +16,14 @@ data class SendMessage(
     @SerialName(textField)
     override val text: String,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(disableWebPagePreviewField)
-    @Optional
     override val disableWebPagePreview: Boolean? = null,
     @SerialName(disableNotificationField)
-    @Optional
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
-    @Optional
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<RawMessage>,
     ReplyingMarkupSendMessageRequest<RawMessage>,

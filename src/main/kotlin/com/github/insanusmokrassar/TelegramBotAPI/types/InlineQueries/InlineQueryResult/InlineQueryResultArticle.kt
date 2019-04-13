@@ -15,25 +15,18 @@ class InlineQueryResultArticle(
     @SerialName(inputMessageContentField)
     override val inputMessageContent: InputMessageContent,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(urlField)
-    @Optional
     override val url: String? = null,
     @SerialName(hideUrlField)
-    @Optional
     val hideUrl: Boolean? = null,
     @SerialName(descriptionField)
-    @Optional
     override val description: String? = null,
     @SerialName(thumbUrlField)
-    @Optional
     override val thumbUrl: String? = null,
     @SerialName(thumbWidthField)
-    @Optional
     override val thumbWidth: Int? = null,
     @SerialName(thumbHeightField)
-    @Optional
     override val thumbHeight: Int? = null
 ) : InlineQueryResult,
     ThumbSizedInlineQueryResult,

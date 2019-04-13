@@ -16,25 +16,18 @@ data class InlineQueryResultContact(
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
-    @Optional
     override val lastName: String? = null,
     @SerialName(vcardField)
-    @Optional
     override val vcard: String? = null,
     @SerialName(thumbUrlField)
-    @Optional
     override val thumbUrl: String? = null,
     @SerialName(thumbWidthField)
-    @Optional
     override val thumbWidth: Int? = null,
     @SerialName(thumbHeightField)
-    @Optional
     override val thumbHeight: Int? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResult,
     CommonContactData,

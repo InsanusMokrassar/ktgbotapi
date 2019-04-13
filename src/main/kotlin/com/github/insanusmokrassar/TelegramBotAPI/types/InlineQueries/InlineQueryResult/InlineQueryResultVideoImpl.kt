@@ -23,28 +23,20 @@ data class InlineQueryResultVideoImpl(
     @SerialName(titleField)
     override val title: String,
     @SerialName(videoWidthField)
-    @Optional
     override val width: Int? = null,
     @SerialName(videoHeightField)
-    @Optional
     override val height: Int? = null,
     @SerialName(videoDurationField)
-    @Optional
     override val duration: Int? = null,
     @SerialName(descriptionField)
-    @Optional
     override val description: String? = null,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultVideo {
     override val type: String = inlineQueryResultVideoType

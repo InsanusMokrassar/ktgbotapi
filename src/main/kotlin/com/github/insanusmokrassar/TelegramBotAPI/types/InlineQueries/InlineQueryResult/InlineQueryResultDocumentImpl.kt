@@ -21,28 +21,20 @@ data class InlineQueryResultDocumentImpl(
     @SerialName(mimeTypeField)
     override val mimeType: String,
     @SerialName(thumbUrlField)
-    @Optional
     override val thumbUrl: String? = null,
     @SerialName(thumbWidthField)
-    @Optional
     override val thumbWidth: Int? = null,
     @SerialName(thumbHeightField)
-    @Optional
     override val thumbHeight: Int? = null,
     @SerialName(descriptionField)
-    @Optional
     override val description: String? = null,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultDocument {
     override val type: String = inlineQueryResultDocumentType

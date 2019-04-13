@@ -14,7 +14,6 @@ data class RawInlineQuery(
     @SerialName(offsetField)
     val offset: String,
     @SerialName(locationField)
-    @Optional
     val location: Location? = null
 ) {
     @Transient

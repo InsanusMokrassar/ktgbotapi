@@ -4,7 +4,6 @@ import kotlinx.serialization.*
 
 @Serializable
 data class ReplyKeyboardRemove(
-    @Optional
     val selective: Boolean? = null
 ) : KeyboardMarkup {
     @SerialName("remove_keyboard")

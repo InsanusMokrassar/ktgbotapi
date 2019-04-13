@@ -30,7 +30,6 @@ data class RawMessage(
     @SerialName(chatField)
     private val chat: RawChat,
     @SerialName(fromField)
-    @Optional
     private val from: User? = null,
     @Optional private val forward_from: User? = null,
     @Optional private val forward_from_chat: RawChat? = null,

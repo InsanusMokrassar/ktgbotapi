@@ -16,16 +16,12 @@ data class SendLocation(
     @SerialName(longitudeField)
     override val longitude: Double,
     @SerialName(livePeriodField)
-    @Optional
     val livePeriod: Long? = null,
     @SerialName(disableNotificationField)
-    @Optional
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
-    @Optional
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<RawMessage>,
     ReplyingMarkupSendMessageRequest<RawMessage>,

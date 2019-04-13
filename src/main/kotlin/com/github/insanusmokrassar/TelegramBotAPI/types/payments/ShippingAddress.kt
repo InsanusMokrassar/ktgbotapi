@@ -14,9 +14,7 @@ data class ShippingAddress(
     @SerialName(secondStreetLineField)
     val secondStreetLine: String,
     @SerialName(stateField)
-    @Optional
     val state: String = "",
     @SerialName(postCodeField)
-    @Optional
     val postCode: String = ""
 )

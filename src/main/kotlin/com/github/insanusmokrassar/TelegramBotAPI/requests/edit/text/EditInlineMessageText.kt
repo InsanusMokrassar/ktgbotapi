@@ -15,13 +15,10 @@ data class EditInlineMessageText(
     @SerialName(textField)
     override val text: String,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(disableWebPagePreviewField)
-    @Optional
     override val disableWebPagePreview: Boolean? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
     override fun method(): String = editMessageMediaMethod

@@ -18,28 +18,20 @@ data class InlineQueryResultPhotoImpl(
     @SerialName(thumbUrlField)
     override val thumbUrl: String,
     @SerialName(photoWidthField)
-    @Optional
     override val width: Int? = null,
     @SerialName(photoHeightField)
-    @Optional
     override val height: Int? = null,
     @SerialName(titleField)
-    @Optional
     override val title: String? = null,
     @SerialName(descriptionField)
-    @Optional
     override val description: String? = null,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultPhoto {
     override val type: String = inlineQueryResultPhotoType

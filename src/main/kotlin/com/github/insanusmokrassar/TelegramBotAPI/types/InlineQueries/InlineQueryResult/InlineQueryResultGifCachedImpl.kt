@@ -17,19 +17,14 @@ data class InlineQueryResultGifCachedImpl(
     @SerialName(gifFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)
-    @Optional
     override val title: String? = null,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultGifCached {
     override val type: String = inlineQueryResultGifType

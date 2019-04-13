@@ -19,16 +19,12 @@ data class SendVenue(
     @SerialName(addressField)
     val address: String,
     @SerialName(foursquareIdField)
-    @Optional
     val foursquareId: String? = null,
     @SerialName(disableNotificationField)
-    @Optional
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
-    @Optional
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<RawMessage>,
     PositionedSendMessageRequest<RawMessage>,

@@ -8,12 +8,9 @@ import kotlinx.serialization.*
 data class VoiceFile(
     @SerialName(fileIdField)
     override val fileId: FileId,
-    @Optional
     override val duration: Long? = null,
     @SerialName(mimeTypeField)
-    @Optional
     override val mimeType: String? = null,
     @SerialName(fileSizeField)
-    @Optional
     override val fileSize: Long? = null
 ) : TelegramMediaFile, MimedMediaFile, PlayableMediaFile

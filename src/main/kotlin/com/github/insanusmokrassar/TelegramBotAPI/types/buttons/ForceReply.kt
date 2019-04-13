@@ -4,7 +4,6 @@ import kotlinx.serialization.*
 
 @Serializable
 data class ForceReply(
-    @Optional
     val selective: Boolean? = null
 ) : KeyboardMarkup {
     @SerialName("force_reply")

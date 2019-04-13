@@ -9,9 +9,7 @@ data class RawMessageEntity(
     val type: String,
     val offset: Int,
     val length: Int,
-    @Optional
     val url: String? = null,
-    @Optional
     val user: User? = null
 ) {
     fun asMessageEntity(source: String): MessageEntity {

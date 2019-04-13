@@ -14,9 +14,7 @@ data class SetGameScoreByInlineMessageId (
     @SerialName(inlineMessageIdField)
     override val inlineMessageId: InlineMessageIdentifier,
     @SerialName(forceField)
-    @Optional
     override val force: Boolean = false,
     @SerialName(disableEditMessageField)
-    @Optional
     override val disableEditMessage: Boolean = false
 ) : SetGameScore, ByInlineMessageId

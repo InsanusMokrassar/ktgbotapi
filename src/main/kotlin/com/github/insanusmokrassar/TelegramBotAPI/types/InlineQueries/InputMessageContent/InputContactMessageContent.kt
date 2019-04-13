@@ -12,9 +12,7 @@ data class InputContactMessageContent(
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
-    @Optional
     override val lastName: String? = null,
     @SerialName(vcardField)
-    @Optional
     override val vcard: String? = null
 ) : CommonContactData, InputMessageContent

@@ -12,9 +12,7 @@ data class Venue(
     @SerialName(addressField)
     override val address: String,
     @SerialName(foursquareIdField)
-    @Optional
     override val foursquareId: String? = null,
     @SerialName(foursquareTypeField)
-    @Optional
     override val foursquareType: String? = null
 ) : CommonVenueData

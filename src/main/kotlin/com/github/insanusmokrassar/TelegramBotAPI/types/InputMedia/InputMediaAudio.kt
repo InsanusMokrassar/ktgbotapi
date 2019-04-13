@@ -11,16 +11,11 @@ import kotlinx.serialization.*
 data class InputMediaAudio(
     @Transient
     override val file: InputFile = throw IllegalStateException("Must be created with file"),
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
-    @Optional
     override val duration: Long? = null,
-    @Optional
     override val performer: String? = null,
-    @Optional
     override val title: String? = null,
     override val thumb: InputFile? = null
 ) : InputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, CaptionedInputMedia, Performerable {

@@ -10,17 +10,13 @@ data class RawCallbackQuery(
     val id: CallbackQueryIdentifier,
     @SerialName(fromField)
     val from: User,
-    @Optional
     val message: RawMessage? = null,
     @SerialName(inlineMessageIdField)
-    @Optional
     val inlineMessageId: InlineMessageIdentifier? = null,
     @SerialName("chat_instance")
     val chatInstance: String,
-    @Optional
     val data: String? = null,
     @SerialName("game_short_name")
-    @Optional
     val gameShortName: String? = null
 ) {
     @Transient

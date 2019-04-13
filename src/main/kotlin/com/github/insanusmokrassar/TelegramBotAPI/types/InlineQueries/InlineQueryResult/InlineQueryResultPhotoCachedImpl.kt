@@ -17,22 +17,16 @@ data class InlineQueryResultPhotoCachedImpl(
     @SerialName(photoFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)
-    @Optional
     override val title: String? = null,
     @SerialName(descriptionField)
-    @Optional
     override val description: String? = null,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultPhotoCached {
     override val type: String = inlineQueryResultPhotoType

@@ -10,14 +10,10 @@ data class VideoFile(
     override val fileId: FileId,
     override val width: Int,
     override val height: Int,
-    @Optional
     override val duration: Long? = null,
-    @Optional
     override val thumb: PhotoSize? = null,
     @SerialName(mimeTypeField)
-    @Optional
     override val mimeType: String? = null,
     @SerialName(fileSizeField)
-    @Optional
     override val fileSize: Long? = null
 ) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile

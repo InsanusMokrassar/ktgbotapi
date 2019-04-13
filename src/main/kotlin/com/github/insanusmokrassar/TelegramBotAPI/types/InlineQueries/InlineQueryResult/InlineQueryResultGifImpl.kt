@@ -18,28 +18,20 @@ data class InlineQueryResultGifImpl(
     @SerialName(thumbUrlField)
     override val thumbUrl: String,
     @SerialName(gifWidthField)
-    @Optional
     override val width: Int? = null,
     @SerialName(gifHeightField)
-    @Optional
     override val height: Int? = null,
     @SerialName(gifDurationField)
-    @Optional
     override val duration: Int? = null,
     @SerialName(titleField)
-    @Optional
     override val title: String? = null,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultGif {
     override val type: String = inlineQueryResultGifType

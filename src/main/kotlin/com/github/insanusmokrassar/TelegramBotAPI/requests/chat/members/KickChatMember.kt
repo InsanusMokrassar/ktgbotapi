@@ -13,7 +13,6 @@ data class KickChatMember(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(untilDateField)
-    @Optional
     override val untilDate: TelegramDate? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "kickChatMember"

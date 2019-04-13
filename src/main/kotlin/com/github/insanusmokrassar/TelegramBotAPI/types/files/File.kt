@@ -9,6 +9,5 @@ data class File(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileSizeField)
-    @Optional
     override val fileSize: Long? = null
 ): TelegramMediaFile

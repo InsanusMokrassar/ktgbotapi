@@ -18,19 +18,14 @@ data class InlineQueryResultVoiceImpl(
     @SerialName(titleField)
     override val title: String,
     @SerialName(voiceDurationField)
-    @Optional
     override val duration: Int? = null,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultVoice {
     override val type: String = inlineQueryResultVoiceType

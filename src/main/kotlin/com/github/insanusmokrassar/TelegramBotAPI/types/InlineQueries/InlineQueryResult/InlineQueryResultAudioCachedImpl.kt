@@ -17,16 +17,12 @@ data class InlineQueryResultAudioCachedImpl(
     @SerialName(audioFileIdField)
     override val fileId: FileId,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultAudioCached {
     override val type: String = inlineQueryResultAudioType

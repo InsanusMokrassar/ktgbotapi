@@ -9,7 +9,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.payments.LabeledPrice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.LabeledPricesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts.*
 import kotlinx.serialization.*
-import kotlinx.serialization.Optional
 import java.util.*
 
 /**
@@ -36,37 +35,26 @@ data class SendInvoice(
     @SerialName(pricesField)
     override val prices: List<LabeledPrice>,
     @SerialName(providerDataField)
-    @Optional
     val providerData: String? = null,
     @SerialName(requireNameField)
-    @Optional
     val requireName: Boolean = false,
     @SerialName(requirePhoneNumberField)
-    @Optional
     val requirePhoneNumber: Boolean = false,
     @SerialName(requireEmailField)
-    @Optional
     val requireEmail: Boolean = false,
     @SerialName(requireShippingAddressField)
-    @Optional
     val requireShippingAddress: Boolean = false,
     @SerialName(shouldSendPhoneNumberToProviderField)
-    @Optional
     val shouldSendPhoneNumberToProvider: Boolean = false,
     @SerialName(shouldSendEmailToProviderField)
-    @Optional
     val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
-    @Optional
     val priceDependOnShipAddress: Boolean = false,
     @SerialName(disableNotificationField)
-    @Optional
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
-    @Optional
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : Currencied,
     Priced,

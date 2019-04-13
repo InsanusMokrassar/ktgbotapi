@@ -14,7 +14,6 @@ data class ForwardMessage(
     @SerialName(messageIdField)
     val messageId: MessageIdentifier,
     @SerialName(disableNotificationField)
-    @Optional
     val disableNotification: Boolean = false
 ): SimpleRequest<RawMessage> {
     override fun method(): String = "forwardMessage"

@@ -14,7 +14,6 @@ data class EditInlineMessageLiveLocation(
     @SerialName(longitudeField)
     override val longitude: Double,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditReplyMessage, EditLocationMessage {
     override fun method(): String = "editMessageLiveLocation"

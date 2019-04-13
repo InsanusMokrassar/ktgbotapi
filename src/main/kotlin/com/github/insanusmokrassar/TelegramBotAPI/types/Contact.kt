@@ -10,12 +10,9 @@ data class Contact(
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
-    @Optional
     override val lastName: String? = null,
     @SerialName(userIdField)
-    @Optional
     val userId: UserId? = null,
     @SerialName(vcardField)
-    @Optional
     override val vcard: String? = null
 ) : CommonContactData

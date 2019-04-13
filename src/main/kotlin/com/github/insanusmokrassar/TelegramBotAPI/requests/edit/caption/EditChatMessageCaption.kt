@@ -19,10 +19,8 @@ data class EditChatMessageCaption(
     @SerialName(captionField)
     override val text: String,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage, EditTextChatMessage, EditReplyMessage {
 

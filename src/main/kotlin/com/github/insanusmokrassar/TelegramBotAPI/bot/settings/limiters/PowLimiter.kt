@@ -14,13 +14,9 @@ private object CompleteRequest : RequestEvent()
 
 @Serializable
 data class PowLimiter(
-    @Optional
     private val minAwaitTime: Long = 0L,
-    @Optional
     private val maxAwaitTime: Long = 10000L,
-    @Optional
     private val powValue: Double = 4.0,
-    @Optional
     private val powK: Double = 0.0016
 ) : RequestLimiter {
     @Transient

@@ -34,13 +34,10 @@ data class CreateNewStickerSet internal constructor(
     @SerialName(emojisField)
     override val emojis: String,
     @SerialName(pngStickerField)
-    @Optional
     val sticker: FileId? = null,
     @SerialName(containsMasksField)
-    @Optional
     val containsMasks: Boolean? = null,
     @SerialName(maskPositionField)
-    @Optional
     override val maskPosition: MaskPosition? = null
 ) : StickerSetAction {
     init {

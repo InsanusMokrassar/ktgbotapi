@@ -11,7 +11,6 @@ data class PathedFile(
     @SerialName(filePathField)
     val filePath: String,
     @SerialName(fileSizeField)
-    @Optional
     override val fileSize: Long? = null
 ): TelegramMediaFile
 

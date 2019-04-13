@@ -11,16 +11,12 @@ data class AnswerCallbackQuery(
     @SerialName(callbackQueryIdField)
     val callbackQueryId: CallbackQueryIdentifier,
     @SerialName(textField)
-    @Optional
     val text: String? = null,
     @SerialName(showAlertField)
-    @Optional
     val showAlert: Boolean? = null,
     @SerialName(urlField)
-    @Optional
     val url: String? = null,
     @SerialName(cachedTimeField)
-    @Optional
     val cachedTimeSeconds: Int? = null
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "answerCallbackQuery"

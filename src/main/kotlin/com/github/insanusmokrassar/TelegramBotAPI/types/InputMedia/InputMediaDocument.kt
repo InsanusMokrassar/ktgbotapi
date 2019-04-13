@@ -10,10 +10,8 @@ import kotlinx.serialization.*
 data class InputMediaDocument(
     @Transient
     override val file: InputFile = throw IllegalStateException("Must be created with file"),
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @Transient
     override val thumb: InputFile? = null

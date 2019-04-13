@@ -17,19 +17,14 @@ data class InlineQueryResultMpeg4GifCachedImpl(
     @SerialName(mpeg4GifFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)
-    @Optional
     override val title: String? = null,
     @SerialName(captionField)
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultMpeg4GifCached {
     override val type: String = inlineQueryResultMpeg4GifType

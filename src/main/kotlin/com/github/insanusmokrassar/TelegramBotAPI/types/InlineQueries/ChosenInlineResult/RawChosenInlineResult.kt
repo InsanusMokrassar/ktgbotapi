@@ -13,10 +13,8 @@ data class RawChosenInlineResult(
     @SerialName(queryField)
     val query: String,
     @SerialName(locationField)
-    @Optional
     val location: Location? = null,
     @SerialName(inlineMessageIdField)
-    @Optional
     val inlineMessageId: InlineMessageIdentifier? = null
 ) {
     @Transient

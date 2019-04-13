@@ -33,10 +33,8 @@ data class AddStickerToSet internal constructor(
     @SerialName(emojisField)
     override val emojis: String,
     @SerialName(pngStickerField)
-    @Optional
     val sticker: FileId? = null,
     @SerialName(maskPositionField)
-    @Optional
     override val maskPosition: MaskPosition? = null
 ) : StickerSetAction {
     init {

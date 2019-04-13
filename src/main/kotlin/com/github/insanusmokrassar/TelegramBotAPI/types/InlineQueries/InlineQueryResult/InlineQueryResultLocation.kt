@@ -19,22 +19,16 @@ data class InlineQueryResultLocation(
     @SerialName(titleField)
     override val title: String,
     @SerialName(livePeriodField)
-    @Optional
     override val livePeriod: Int? = null,
     @SerialName(thumbUrlField)
-    @Optional
     override val thumbUrl: String? = null,
     @SerialName(thumbWidthField)
-    @Optional
     override val thumbWidth: Int? = null,
     @SerialName(thumbHeightField)
-    @Optional
     override val thumbHeight: Int? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)
-    @Optional
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResult,
     Locationed,

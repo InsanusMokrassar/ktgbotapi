@@ -28,13 +28,9 @@ const val UPDATE_PRE_CHECKOUT_QUERY = com.github.insanusmokrassar.TelegramBotAPI
 
 @Serializable
 data class GetUpdates(
-    @Optional
     val offset: UpdateIdentifier? = null,// set `last update id + 1` to receive next part of updates
-    @Optional
     val limit: Int? = null,
-    @Optional
     val timeout: Int? = null,
-    @Optional
     val allowed_updates: List<String>? = ALL_UPDATES_LIST
 ): SimpleRequest<List<RawUpdate>> {
     override fun method(): String = "getUpdates"
