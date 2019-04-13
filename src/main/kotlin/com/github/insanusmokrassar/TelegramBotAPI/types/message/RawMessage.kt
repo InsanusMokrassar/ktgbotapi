@@ -59,7 +59,7 @@ data class RawMessage(
     private val contact: Contact? = null,
     private val location: Location? = null,
     private val venue: Venue? = null,
-    private val new_chat_members: Array<User>? = null,
+    private val new_chat_members: List<User>? = null,
     private val left_chat_member: User? = null,
     private val new_chat_title: String? = null,
     @Serializable(PhotoSerializer::class)
@@ -82,7 +82,7 @@ data class RawMessage(
 ) {
     @Transient
     private val content: MessageContent? by lazy {
-        val adaptedCaptionEntities = caption ?.let { _ ->
+        val adaptedCaptionEntities = caption ?.let {
             caption_entities ?.map {
                 it.asMessageEntity(caption)
             }
