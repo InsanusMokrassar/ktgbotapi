@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Deprecated(
     "Deprecated because incorrect name",

@@ -2,7 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.payments
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts.*
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import java.util.*
 
 // TODO:: separate to normal classes hierarchy

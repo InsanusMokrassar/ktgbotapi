@@ -2,7 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.stickers
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class StickerSet(

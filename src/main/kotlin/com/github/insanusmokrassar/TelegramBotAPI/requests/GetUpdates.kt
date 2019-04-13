@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleReque
 import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
-import kotlinx.serialization.*
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.internal.ArrayListSerializer
 
 @Deprecated("Replaced to other package", ReplaceWith("UPDATE_MESSAGE", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_MESSAGE"))

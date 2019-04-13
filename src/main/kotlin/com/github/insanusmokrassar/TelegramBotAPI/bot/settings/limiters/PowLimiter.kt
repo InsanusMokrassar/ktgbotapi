@@ -2,7 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlinx.serialization.*
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import java.util.concurrent.Executors
 import kotlin.coroutines.*
 

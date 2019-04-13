@@ -5,7 +5,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.common.CommonMultipar
 import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts.StickerSetAction
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 fun AddStickerToSet(
     userId: UserId,

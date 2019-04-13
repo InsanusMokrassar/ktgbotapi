@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class Sticker(

@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
-import kotlinx.serialization.*
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.internal.ArrayListSerializer
 
 @Serializable

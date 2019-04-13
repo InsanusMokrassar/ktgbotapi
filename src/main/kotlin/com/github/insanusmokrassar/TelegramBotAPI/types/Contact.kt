@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CommonContactData
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class Contact(
