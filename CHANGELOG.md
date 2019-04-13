@@ -67,6 +67,8 @@ of `]` in links titles
 * Now `MediaGroupContent` is `MediaContent`
 * All `MedaContent` now have no generics and have basic `TelegramMediaFile` media field
 
+### 0.12.6 Libraries updates
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
