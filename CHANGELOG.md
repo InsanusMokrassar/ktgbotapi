@@ -69,6 +69,11 @@ of `]` in links titles
 
 ### 0.12.6 Libraries updates
 
+* `kotlin` version `1.3.21` -> `1.3.30`
+* `kotlin coroutines` version `1.1.1` -> `1.2.0`
+* `kotlin serialization` version `0.10.0` -> `0.11.0`
+* `ktor` version `1.1.2` -> `1.1.3`
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
