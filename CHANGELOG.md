@@ -73,6 +73,7 @@ of `]` in links titles
 * `kotlin coroutines` version `1.1.1` -> `1.2.0`
 * `kotlin serialization` version `0.10.0` -> `0.11.0`
 * `ktor` version `1.1.2` -> `1.1.3`
+* Added `DeleteWebhook` request
 
 ## 0.11.0
 
