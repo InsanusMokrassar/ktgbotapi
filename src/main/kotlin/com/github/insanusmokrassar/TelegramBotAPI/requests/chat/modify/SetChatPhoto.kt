@@ -13,11 +13,10 @@ import kotlinx.serialization.json.JsonObject
 data class SetChatPhoto (
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
-    @Transient
     val photo: MultipartFile = throw IllegalArgumentException("Unfortunately, this type of objects can't be parsed automatically")
 ): ChatRequest, MultipartRequest<Boolean> {
     override fun method(): String = "setChatPhoto"
     override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
     override val mediaMap: Map<String, MultipartFile> = mapOf(photoField to photo)
-    override val paramsJson: JsonObject = this.toJson(serializer())
+    override val paramsJson: JsonObject = toJson(serializer())
 }
