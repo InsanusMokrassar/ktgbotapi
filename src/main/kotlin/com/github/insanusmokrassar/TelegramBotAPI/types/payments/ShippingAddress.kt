@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.payments
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class ShippingAddress(
@@ -14,9 +15,7 @@ data class ShippingAddress(
     @SerialName(secondStreetLineField)
     val secondStreetLine: String,
     @SerialName(stateField)
-    @Optional
     val state: String = "",
     @SerialName(postCodeField)
-    @Optional
     val postCode: String = ""
 )

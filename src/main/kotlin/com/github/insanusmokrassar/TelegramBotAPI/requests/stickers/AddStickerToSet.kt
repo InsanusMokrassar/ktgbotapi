@@ -5,7 +5,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.common.CommonMultipar
 import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts.StickerSetAction
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 fun AddStickerToSet(
     userId: UserId,
@@ -33,10 +34,8 @@ data class AddStickerToSet internal constructor(
     @SerialName(emojisField)
     override val emojis: String,
     @SerialName(pngStickerField)
-    @Optional
     val sticker: FileId? = null,
     @SerialName(maskPositionField)
-    @Optional
     override val maskPosition: MaskPosition? = null
 ) : StickerSetAction {
     init {

@@ -3,7 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InputMess
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CommonContactData
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class InputContactMessageContent(
@@ -12,9 +13,7 @@ data class InputContactMessageContent(
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
-    @Optional
     override val lastName: String? = null,
     @SerialName(vcardField)
-    @Optional
     override val vcard: String? = null
 ) : CommonContactData, InputMessageContent

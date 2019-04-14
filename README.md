@@ -12,7 +12,39 @@ solves or unuseful moments are describing by official [Telegram Bot API](https:/
 
 This version compatible with [July 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#july-26-2018). That means that
 most part of API has been implemented (according to last [August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#august-27-2018))
-except the Passport API which will be included as soon as possible.
+except the Passport API which will be included as soon as possible. All included and supported API
+can be found on [wiki](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Included-API).
+
+## How to implement library?
+
+Common ways to implement this library are presented here. In some cases it will require additional steps
+like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
+`telegrambotapi.version`, which must be set up by developer. Available versions are presented on
+[bintray](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI), next version is last published:
+
+[![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI/_latestVersion)
+
+### Maven
+
+```xml
+<dependency>
+  <groupId>com.github.insanusmokrassar</groupId>
+  <artifactId>TelegramBotAPI</artifactId>
+  <version>${telegrambotapi.version}</version>
+</dependency>
+```
+
+### Gradle
+
+```groovy
+implementation "com.github.insanusmokrassar:TelegramBotAPI:${telegrambotapi.version}"
+```
+
+### Gradle (old)
+
+```groovy
+compile "com.github.insanusmokrassar:TelegramBotAPI:${telegrambotapi.version}"
+```
 
 ## How to work with library?
 

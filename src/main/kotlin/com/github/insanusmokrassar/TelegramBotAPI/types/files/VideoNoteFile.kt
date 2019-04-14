@@ -2,7 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.files
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.*
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class VideoNoteFile(
@@ -10,12 +11,9 @@ data class VideoNoteFile(
     override val fileId: FileId,
     @SerialName("length")
     override val width: Int,
-    @Optional
     override val duration: Long? = null,
-    @Optional
     override val thumb: PhotoSize? = null,
     @SerialName(fileSizeField)
-    @Optional
     override val fileSize: Long? = null
 ) : TelegramMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile {
     override val height: Int

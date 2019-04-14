@@ -61,10 +61,8 @@ data class SendMediaGroupData internal constructor(
     @Transient
     val media: List<MediaGroupMemberInputMedia> = emptyList(),
     @SerialName(disableNotificationField)
-    @Optional
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
-    @Optional
     override val replyToMessageId: MessageIdentifier? = null
 ) : DataRequest<List<RawMessage>>,
     SendMessageRequest<List<RawMessage>>

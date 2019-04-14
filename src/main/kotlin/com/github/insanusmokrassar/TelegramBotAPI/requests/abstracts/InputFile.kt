@@ -2,8 +2,10 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
 import com.github.insanusmokrassar.TelegramBotAPI.utils.StorageFile
 import kotlinx.serialization.*
+import kotlinx.serialization.internal.StringDescriptor
 import java.io.File
 
+@Serializable(InputFileSerializer::class)
 sealed class InputFile {
     abstract val fileId: String
 }
@@ -12,16 +14,17 @@ sealed class InputFile {
 /**
  * Contains file id or file url
  */
-@Serializable(FileIdSerializer::class)
+@Serializable(InputFileSerializer::class)
 data class FileId(
     override val fileId: String
 ) : InputFile()
 
 fun String.toInputFile(): InputFile = FileId(this)
 
-@Serializer(FileId::class)
-object FileIdSerializer : KSerializer<FileId> {
-    override fun serialize(encoder: Encoder, obj: FileId) = encoder.encodeString(obj.fileId)
+@Serializer(InputFile::class)
+object InputFileSerializer : KSerializer<InputFile> {
+    override val descriptor: SerialDescriptor = StringDescriptor.withName(FileId::class.toString())
+    override fun serialize(encoder: Encoder, obj: InputFile) = encoder.encodeString(obj.fileId)
     override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString())
 }
 
@@ -29,7 +32,7 @@ object FileIdSerializer : KSerializer<FileId> {
 /**
  * Contains info about file for sending
  */
-@Serializable
+@Serializable(InputFileSerializer::class)
 data class MultipartFile (
     val file: StorageFile,
     val mimeType: String = file.contentType,

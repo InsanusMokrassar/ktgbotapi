@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
-import kotlinx.serialization.*
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.internal.ArrayListSerializer
 
 @Serializable
@@ -9,9 +10,7 @@ data class RawMessageEntity(
     val type: String,
     val offset: Int,
     val length: Int,
-    @Optional
     val url: String? = null,
-    @Optional
     val user: User? = null
 ) {
     fun asMessageEntity(source: String): MessageEntity {

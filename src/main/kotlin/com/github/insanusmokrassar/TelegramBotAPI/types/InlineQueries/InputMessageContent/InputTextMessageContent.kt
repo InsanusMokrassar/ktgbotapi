@@ -7,16 +7,15 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.disableWebPagePreviewField
 import com.github.insanusmokrassar.TelegramBotAPI.types.messageTextField
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class InputTextMessageContent(
     @SerialName(messageTextField)
     override val caption: String,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(disableWebPagePreviewField)
-    @Optional
     override val disableWebPagePreview: Boolean? = null
 ) : Captioned, DisableWebPagePreview, InputMessageContent

@@ -2,7 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.files
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.*
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class PathedFile(
@@ -11,7 +12,6 @@ data class PathedFile(
     @SerialName(filePathField)
     val filePath: String,
     @SerialName(fileSizeField)
-    @Optional
     override val fileSize: Long? = null
 ): TelegramMediaFile
 

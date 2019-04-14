@@ -30,60 +30,59 @@ data class RawMessage(
     @SerialName(chatField)
     private val chat: RawChat,
     @SerialName(fromField)
-    @Optional
     private val from: User? = null,
-    @Optional private val forward_from: User? = null,
-    @Optional private val forward_from_chat: RawChat? = null,
-    @Optional private val forward_from_message_id: MessageIdentifier? = null,
-    @Optional private val forward_signature: ForwardSignature? = null,
-    @Optional private val forward_date: TelegramDate? = null,
-    @Optional private val reply_to_message: RawMessage? = null,
-    @Optional private val edit_date: TelegramDate? = null,
-    @Optional private val media_group_id: MediaGroupIdentifier? = null,
-    @Optional private val author_signature: AuthorSignature? = null,
-    @Optional private val text: String? = null,
+    private val forward_from: User? = null,
+    private val forward_from_chat: RawChat? = null,
+    private val forward_from_message_id: MessageIdentifier? = null,
+    private val forward_signature: ForwardSignature? = null,
+    private val forward_date: TelegramDate? = null,
+    private val reply_to_message: RawMessage? = null,
+    private val edit_date: TelegramDate? = null,
+    private val media_group_id: MediaGroupIdentifier? = null,
+    private val author_signature: AuthorSignature? = null,
+    private val text: String? = null,
     @Serializable(RawMessageEntitiesSerializer::class)
-    @Optional private val entities: RawMessageEntities? = null,
-    @Optional private val caption: String? = null,
+    private val entities: RawMessageEntities? = null,
+    private val caption: String? = null,
     @Serializable(RawMessageEntitiesSerializer::class)
-    @Optional private val caption_entities: RawMessageEntities? = null,
-    @Optional private val audio: AudioFile? = null,
-    @Optional private val document: DocumentFile? = null,
-    @Optional private val animation: AnimationFile? = null,
-    @Optional private val game: Game? = null,
+    private val caption_entities: RawMessageEntities? = null,
+    private val audio: AudioFile? = null,
+    private val document: DocumentFile? = null,
+    private val animation: AnimationFile? = null,
+    private val game: Game? = null,
     @Serializable(PhotoSerializer::class)
-    @Optional private val photo: Photo? = null,
-    @Optional private val sticker: Sticker? = null,
-    @Optional private val video: VideoFile? = null,
-    @Optional private val voice: VoiceFile? = null,
-    @Optional private val video_note: VideoNoteFile? = null,
-    @Optional private val contact: Contact? = null,
-    @Optional private val location: Location? = null,
-    @Optional private val venue: Venue? = null,
-    @Optional private val new_chat_members: Array<User>? = null,
-    @Optional private val left_chat_member: User? = null,
-    @Optional private val new_chat_title: String? = null,
+    private val photo: Photo? = null,
+    private val sticker: Sticker? = null,
+    private val video: VideoFile? = null,
+    private val voice: VoiceFile? = null,
+    private val video_note: VideoNoteFile? = null,
+    private val contact: Contact? = null,
+    private val location: Location? = null,
+    private val venue: Venue? = null,
+    private val new_chat_members: List<User>? = null,
+    private val left_chat_member: User? = null,
+    private val new_chat_title: String? = null,
     @Serializable(PhotoSerializer::class)
-    @Optional private val new_chat_photo: Photo? = null,
-    @Optional private val delete_chat_photo: Boolean = false,
-    @Optional private val group_chat_created: Boolean = false,
-    @Optional private val supergroup_chat_created: Boolean = false,
-    @Optional private val channel_chat_created: Boolean = false,
-    @Optional private val migrate_to_chat_id: ChatIdentifier? = null,
-    @Optional private val migrate_from_chat_id: ChatIdentifier? = null,
-    @Optional private val pinned_message: RawMessage? = null,
-    @Optional private val invoice: Invoice? = null,
-    @Optional private val successful_payment: SuccessfulPayment? = null,
+    private val new_chat_photo: Photo? = null,
+    private val delete_chat_photo: Boolean = false,
+    private val group_chat_created: Boolean = false,
+    private val supergroup_chat_created: Boolean = false,
+    private val channel_chat_created: Boolean = false,
+    private val migrate_to_chat_id: ChatIdentifier? = null,
+    private val migrate_from_chat_id: ChatIdentifier? = null,
+    private val pinned_message: RawMessage? = null,
+    private val invoice: Invoice? = null,
+    private val successful_payment: SuccessfulPayment? = null,
 
     // login property
-    @Optional private val connected_website: String? = null,
+    private val connected_website: String? = null,
 
     // passport property
-    @Optional private val passport_data: Unit? = null
+    private val passport_data: Unit? = null
 ) {
     @Transient
     private val content: MessageContent? by lazy {
-        val adaptedCaptionEntities = caption ?.let { _ ->
+        val adaptedCaptionEntities = caption ?.let {
             caption_entities ?.map {
                 it.asMessageEntity(caption)
             }

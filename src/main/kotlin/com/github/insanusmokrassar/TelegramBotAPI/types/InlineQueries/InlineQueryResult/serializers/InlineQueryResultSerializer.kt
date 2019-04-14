@@ -3,11 +3,12 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQue
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import kotlinx.serialization.*
+import kotlinx.serialization.internal.StringDescriptor
 import sun.reflect.generics.reflectiveObjects.NotImplementedException
 
 @Serializer(InlineQueryResult::class)
-object InlineQueryResultSerializer :
-    KSerializer<InlineQueryResult> {
+object InlineQueryResultSerializer : KSerializer<InlineQueryResult> {
+    override val descriptor: SerialDescriptor = StringDescriptor.withName(InlineQueryResult::class.toString())
     override fun serialize(encoder: Encoder, obj: InlineQueryResult) {
         when(obj) {
             is InlineQueryResultArticle -> InlineQueryResultArticle.serializer().serialize(encoder, obj)

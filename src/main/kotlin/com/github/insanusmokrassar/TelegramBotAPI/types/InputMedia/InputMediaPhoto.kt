@@ -11,10 +11,8 @@ import kotlinx.serialization.*
 data class InputMediaPhoto(
     @Transient
     override val file: InputFile = throw IllegalStateException("Must be created with file"),
-    @Optional
     override val caption: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null
 ) : InputMedia, CaptionedInputMedia, MediaGroupMemberInputMedia {
     override val type: String = "photo"

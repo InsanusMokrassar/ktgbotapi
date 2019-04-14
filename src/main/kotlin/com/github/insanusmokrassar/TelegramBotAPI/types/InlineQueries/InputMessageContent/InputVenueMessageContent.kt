@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CommonVenueDat
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Locationed
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class InputVenueMessageContent(
@@ -17,9 +18,7 @@ data class InputVenueMessageContent(
     @SerialName(addressField)
     override val address: String,
     @SerialName(foursquareIdField)
-    @Optional
     override val foursquareId: String? = null,
     @SerialName(foursquareTypeField)
-    @Optional
     override val foursquareType: String? = null
 ) : Locationed, CommonVenueData, InputMessageContent

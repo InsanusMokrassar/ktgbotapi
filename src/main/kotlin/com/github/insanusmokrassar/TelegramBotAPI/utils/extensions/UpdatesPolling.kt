@@ -9,7 +9,7 @@ import java.util.concurrent.Executors
 
 typealias UpdateReceiver<T> = suspend (T) -> Unit
 
-fun RequestsExecutor.startGettingOfUpdates(
+suspend fun RequestsExecutor.startGettingOfUpdates(
     requestsDelayMillis: Long = 1000,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
@@ -18,7 +18,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     return UpdatesPoller(this, requestsDelayMillis, scope, allowedUpdates, block).start()
 }
 
-fun RequestsExecutor.startGettingOfUpdates(
+suspend fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
@@ -58,7 +58,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     )
 }
 
-fun RequestsExecutor.startGettingOfUpdates(
+suspend fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     mediaGroupCallback: UpdateReceiver<MediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,

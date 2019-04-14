@@ -59,34 +59,24 @@ data class SendAudioData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(audioField)
-    @Optional
     val audio: String? = null,
     @SerialName(thumbField)
-    @Optional
     override val thumb: String? = null,
     @SerialName(captionField)
-    @Optional
     override val text: String? = null,
     @SerialName(parseModeField)
-    @Optional
     override val parseMode: ParseMode? = null,
     @SerialName(durationField)
-    @Optional
     override val duration: Long? = null,
     @SerialName(performerField)
-    @Optional
     override val performer: String? = null,
     @SerialName(titleField)
-    @Optional
     override val title: String? = null,
     @SerialName(disableNotificationField)
-    @Optional
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
-    @Optional
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<RawMessage>,
     SendMessageRequest<RawMessage>,

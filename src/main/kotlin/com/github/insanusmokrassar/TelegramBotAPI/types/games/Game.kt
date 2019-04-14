@@ -15,14 +15,11 @@ data class Game(
     @SerialName(photoField)
     val photo: Photo,
     @SerialName(textField)
-    @Optional
     val text: String? = null,
     @Serializable(RawMessageEntitiesSerializer::class)
     @SerialName(textEntitiesField)
-    @Optional
     private val textEntitiesRaw: RawMessageEntities? = null,
     @SerialName(animationField)
-    @Optional
     val animation: AnimationFile? = null
 ) {
     @Transient

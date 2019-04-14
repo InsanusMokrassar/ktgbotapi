@@ -17,7 +17,6 @@ data class EditChatMessageLiveLocation(
     @SerialName(longitudeField)
     override val longitude: Double,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage, EditReplyMessage, EditLocationMessage {
     override fun method(): String = "editMessageLiveLocation"

@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleReque
 import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
-import kotlinx.serialization.*
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.internal.ArrayListSerializer
 
 @Deprecated("Replaced to other package", ReplaceWith("UPDATE_MESSAGE", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_MESSAGE"))
@@ -28,13 +29,9 @@ const val UPDATE_PRE_CHECKOUT_QUERY = com.github.insanusmokrassar.TelegramBotAPI
 
 @Serializable
 data class GetUpdates(
-    @Optional
     val offset: UpdateIdentifier? = null,// set `last update id + 1` to receive next part of updates
-    @Optional
     val limit: Int? = null,
-    @Optional
     val timeout: Int? = null,
-    @Optional
     val allowed_updates: List<String>? = ALL_UPDATES_LIST
 ): SimpleRequest<List<RawUpdate>> {
     override fun method(): String = "getUpdates"

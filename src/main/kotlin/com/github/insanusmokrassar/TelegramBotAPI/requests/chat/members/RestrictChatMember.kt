@@ -13,19 +13,14 @@ data class RestrictChatMember(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(untilDateField)
-    @Optional
     override val untilDate: TelegramDate? = null,
     @SerialName(canSendMessagesField)
-    @Optional
     private val canSendMessages: Boolean? = null,
     @SerialName(canSendMediaMessagesField)
-    @Optional
     private val canSendMediaMessages: Boolean? = null,
     @SerialName(canSendOtherMessagesField)
-    @Optional
     private val canSendOtherMessages: Boolean? = null,
     @SerialName(canAddWebPagePreviewsField)
-    @Optional
     private val canAddWebPagePreviews: Boolean? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "restrictChatMember"

@@ -44,13 +44,10 @@ data class SetWebhook internal constructor(
     @SerialName(urlField)
     val url: String,
     @SerialName(certificateField)
-    @Optional
     val certificateFile: String? = null,
     @SerialName(maxAllowedConnectionsField)
-    @Optional
     val maxAllowedConnections: Int? = null,
     @SerialName(allowedUpdatesField)
-    @Optional
     val allowedUpdates: List<String>? = null
 ) : DataRequest<Boolean> {
     override fun method(): String = "setWebhook"

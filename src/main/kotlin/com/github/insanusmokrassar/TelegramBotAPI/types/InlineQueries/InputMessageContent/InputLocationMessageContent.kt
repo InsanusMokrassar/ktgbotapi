@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Livable
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Locationed
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class InputLocationMessageContent(
@@ -13,6 +14,5 @@ data class InputLocationMessageContent(
     @SerialName(longitudeField)
     override val longitude: Double,
     @SerialName(livePeriodField)
-    @Optional
     override val livePeriod: Int? = null
 ) : Locationed, Livable, InputMessageContent

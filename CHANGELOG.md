@@ -67,6 +67,16 @@ of `]` in links titles
 * Now `MediaGroupContent` is `MediaContent`
 * All `MedaContent` now have no generics and have basic `TelegramMediaFile` media field
 
+### 0.12.6 Libraries updates
+
+* `kotlin` version `1.3.21` -> `1.3.30`
+* `kotlin coroutines` version `1.1.1` -> `1.2.0`
+* `kotlin serialization` version `0.10.0` -> `0.11.0`
+* `ktor` version `1.1.2` -> `1.1.3`
+* Added `DeleteWebhook` request
+* All default `startGettingOfUpdates` (in fact - method `start` of `UpdatesPoller`) are suspend and
+will try to delete webhook
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`

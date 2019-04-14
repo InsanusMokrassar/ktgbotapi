@@ -20,7 +20,6 @@ data class PhotoSize(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileSizeField)
-    @Optional
     override val fileSize: Long? = null,
     override val width: Int,
     override val height: Int

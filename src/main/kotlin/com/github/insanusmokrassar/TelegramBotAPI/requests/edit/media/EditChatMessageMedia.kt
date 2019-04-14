@@ -19,7 +19,6 @@ data class EditChatMessageMedia(
     @SerialName(mediaField)
     override val media: InputMedia,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage, EditReplyMessage, EditMediaMessage {
 

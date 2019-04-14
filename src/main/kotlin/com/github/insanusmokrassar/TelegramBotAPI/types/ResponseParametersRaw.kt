@@ -5,10 +5,8 @@ import kotlinx.serialization.*
 @Serializable
 data class ResponseParametersRaw(
     @SerialName("migrate_to_chat_id")
-    @Optional
     private val migrateToChatId: ChatId? = null,
     @SerialName("retry_after")
-    @Optional
     private val retryAfter: Long? = null
 ) {
     @Transient

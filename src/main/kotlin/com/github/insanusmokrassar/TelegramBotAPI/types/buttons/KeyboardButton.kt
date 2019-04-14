@@ -1,14 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.buttons
 
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class KeyboardButton(
     val text: String,
     @SerialName("request_contact")
-    @Optional
     val requestContact: Boolean? = null,
     @SerialName("request_location")
-    @Optional
     val requestLocation: Boolean? = null
 )

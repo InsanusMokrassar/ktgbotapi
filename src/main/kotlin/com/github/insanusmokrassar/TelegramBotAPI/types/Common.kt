@@ -184,7 +184,7 @@ const val certificateField = "certificate"
 const val pointField = "point"
 const val xShiftField = "x_shift"
 const val yShiftField = "y_shift"
-const val scaleField = "y_shift"
+const val scaleField = "scale"
 
 
 const val currencyField = "currency"

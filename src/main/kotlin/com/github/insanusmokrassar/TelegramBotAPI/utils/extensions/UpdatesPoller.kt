@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.GetUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.DeleteWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
@@ -72,7 +73,8 @@ class UpdatesPoller(
         pushMediaGroupUpdate()
     }
 
-    fun start(): Job {
+    suspend fun start(): Job {
+        executor.executeUnsafe(DeleteWebhook())
         return pollerJob ?: scope.launch {
             while (isActive) {
                 delay(requestsDelayMillis)

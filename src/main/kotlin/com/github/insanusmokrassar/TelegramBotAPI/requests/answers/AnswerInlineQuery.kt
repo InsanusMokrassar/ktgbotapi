@@ -17,19 +17,14 @@ data class AnswerInlineQuery(
     @SerialName(resultsField)
     val results: List<InlineQueryResult> = emptyList(),
     @SerialName(cachedTimeField)
-    @Optional
     val cachedTime: Int? = null,
     @SerialName(isPersonalField)
-    @Optional
     val isPersonal: Boolean? = null,
     @SerialName(nextOffsetField)
-    @Optional
     val nextOffset: String? = null,
     @SerialName(switchPmTextField)
-    @Optional
     val switchPmText: String? = null,
     @SerialName(switchPmParameterField)
-    @Optional
     val switchPmParameter: String? = null
 ): SimpleRequest<Boolean> {
     override fun method(): String = "answerInlineQuery"

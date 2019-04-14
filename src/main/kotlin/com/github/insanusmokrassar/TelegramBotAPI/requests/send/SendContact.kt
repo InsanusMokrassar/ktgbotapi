@@ -16,16 +16,12 @@ data class SendContact(
     @SerialName(firstNameField)
     val firstName: String,
     @SerialName(lastNameField)
-    @Optional
     val lastName: String? = null,
     @SerialName(disableNotificationField)
-    @Optional
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
-    @Optional
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<RawMessage>,
     ReplyingMarkupSendMessageRequest<RawMessage>

@@ -14,7 +14,6 @@ data class StopChatMessageLiveLocation(
     @SerialName(messageIdField)
     override val messageId: MessageIdentifier,
     @SerialName(replyMarkupField)
-    @Optional
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage, EditReplyMessage {
     override fun method(): String = "stopMessageLiveLocation"
