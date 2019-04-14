@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.13.0 Telegram Polls
+
 ## 0.12.0 Webhooks
 
 * Added `DataRequest` interface which replace `Data` interface
