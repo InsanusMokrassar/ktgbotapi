@@ -9,8 +9,7 @@ import kotlinx.serialization.*
 
 @Serializable
 data class InputMediaPhoto(
-    @Transient
-    override val file: InputFile = throw IllegalStateException("Must be created with file"),
+    override val file: InputFile,
     override val caption: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null
@@ -19,17 +18,14 @@ data class InputMediaPhoto(
 
     override fun serialize(format: StringFormat): String = format.stringify(serializer(), this)
 
+    @SerialName(mediaField)
+    val media: String = when (file) {
+        is FileId -> file.fileId
+        is MultipartFile -> inputMediaFileAttachmentNameTemplate.format(file.fileId)
+    }
+
     @Transient
     override val arguments: Map<String, Any?> = Mapper.mapNullable(serializer(), this)
-
-    @SerialName(mediaField)
-    val media: String
-        get() = file.let {
-            when (it) {
-                is FileId -> it.fileId
-                is MultipartFile -> inputMediaFileAttachmentNameTemplate.format(it.fileId)
-            }
-        }
 }
 
 fun PhotoSize.toInputMediaPhoto(

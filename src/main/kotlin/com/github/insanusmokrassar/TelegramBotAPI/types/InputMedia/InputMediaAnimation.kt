@@ -8,15 +8,13 @@ import kotlinx.serialization.*
 
 @Serializable
 data class InputMediaAnimation(
-    @Transient
-    override val file: InputFile = throw IllegalStateException("Must be created with file"),
+    override val file: InputFile,
     override val caption: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
     override val width: Int? = null,
     override val height: Int? = null,
     override val duration: Long? = null,
-    @Transient
     override val thumb: InputFile? = null
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, CaptionedInputMedia {
     override val type: String = "animation"
