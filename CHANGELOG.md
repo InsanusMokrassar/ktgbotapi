@@ -79,6 +79,8 @@ will try to delete webhook
 
 ### 0.12.7 Hotfix version
 
+* Now temporary all requests of input media will contains `file` field
+
 ## 0.11.0
 
 * Kotlin `1.3.11` -> `1.3.21`
