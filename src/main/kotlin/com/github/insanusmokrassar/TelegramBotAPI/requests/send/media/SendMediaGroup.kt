@@ -58,7 +58,6 @@ private val serializer = ArrayListSerializer(RawMessage.serializer())
 data class SendMediaGroupData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
-    @Transient
     val media: List<MediaGroupMemberInputMedia> = emptyList(),
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
