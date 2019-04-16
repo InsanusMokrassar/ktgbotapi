@@ -10,9 +10,7 @@ solves or unuseful moments are describing by official [Telegram Bot API](https:/
 
 ## Compatibility
 
-This version compatible with [July 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#july-26-2018). That means that
-most part of API has been implemented (according to last [August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#august-27-2018))
-except the Passport API which will be included as soon as possible. All included and supported API
+This version compatible with [14th of April 2019 update of TelegramBotAPI](https://core.telegram.org/bots/api#april-14-2019). There is one exception of implemented functionality. It is Telegram Passport API, which was presented in [August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#august-27-2018)). It will be implemented as soon as possible. All included and supported API
 can be found on [wiki](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Included-API).
 
 ## How to implement library?
