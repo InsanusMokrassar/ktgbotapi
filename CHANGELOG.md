@@ -7,6 +7,11 @@
 * Type `PollUpdate` added and implemented in `RawUpdate`. Now `PollUpdate` can be retrieved from `RawUpdate`
 * Type `PollContent` added - now it can be a value of `ContentMessage#content`
 * Request `SendPoll` added and `PollContent#createResend` now use it
+* `ByInlineMessageId` is deprecated (use `InlineMessageAction` instead)
+* `ByMessageId` is deprecated (use `MessageAction` instead)
+* Most part of requests which are working with identifiers of messages now implement `MessageAction` directly or
+by their parents
+* `StopPoll` implemented
 
 ## 0.12.0 Webhooks
 
