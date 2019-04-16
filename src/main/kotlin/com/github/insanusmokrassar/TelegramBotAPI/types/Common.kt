@@ -15,6 +15,7 @@ typealias InvoicePayload = String
 typealias ShippingOptionIdentifier = String
 typealias StartParameter = String
 typealias InlineMessageIdentifier = String
+typealias PollIdentifier = String
 
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024
@@ -28,6 +29,9 @@ val allowedConnectionsLength = 1 .. 100
 val invoiceTitleLimit = 1 until 32
 val invoiceDescriptionLimit = 1 until 256
 val invoicePayloadBytesLimit = 1 until 128
+
+val pollOptionTextLength = 1 .. 100
+val pollQuectionTextLength = 1 until 256
 
 val livePeriodLimit = 60 .. 86400
 
@@ -76,6 +80,7 @@ const val pendingUpdateCountField = "pending_update_count"
 const val lastErrorDateField = "last_error_date"
 const val lastErrorMessageField = "last_error_message"
 const val votesCountField = "voter_count"
+const val isClosedField = "is_closed"
 
 
 const val photoUrlField = "photo_url"
@@ -181,6 +186,8 @@ const val payloadField = "payload"
 const val vcardField = "vcard"
 const val resultsField = "results"
 const val certificateField = "certificate"
+const val questionField = "question"
+const val optionsField = "options"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"

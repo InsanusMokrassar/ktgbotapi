@@ -2,7 +2,8 @@
 
 ## 0.13.0 Telegram Polls
 
-* `PollOption` added
+* Type `PollOption` and `AnonymousPollOption` added
+* Type `Poll` added
 
 ## 0.12.0 Webhooks
 
