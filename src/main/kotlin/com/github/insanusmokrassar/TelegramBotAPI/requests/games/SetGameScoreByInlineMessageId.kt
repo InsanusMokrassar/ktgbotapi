@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ByInlineMessageId
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.InlineMessageAction
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.abstracts.SetGameScore
 import com.github.insanusmokrassar.TelegramBotAPI.types.*

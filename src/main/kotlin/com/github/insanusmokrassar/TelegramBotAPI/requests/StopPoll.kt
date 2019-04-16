@@ -1,12 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.MessageAction
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ReplyMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendChatMessageRequest
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
 import kotlinx.serialization.*
 
