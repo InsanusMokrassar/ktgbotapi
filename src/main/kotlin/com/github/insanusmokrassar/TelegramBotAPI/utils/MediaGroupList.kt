@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.MediaGroupIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ForwardedMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate

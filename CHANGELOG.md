@@ -12,6 +12,9 @@
 * Most part of requests which are working with identifiers of messages now implement `MessageAction` directly or
 by their parents
 * `StopPoll` implemented
+* All current `Chat` abstractions are deprecated and rewritten as typealiases. Use `Chat` abstractions from
+`com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts` package
+* Common Groups now may have pinned message
 
 ## 0.12.0 Webhooks
 

@@ -1,9 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatId
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatPhoto
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 
-interface Chat {
-    val id: ChatId
-    val chatPhoto: ChatPhoto?
-}
+@Deprecated(
+    "Replaced into another package",
+    ReplaceWith("Chat", "com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat")
+)
+typealias Chat = Chat

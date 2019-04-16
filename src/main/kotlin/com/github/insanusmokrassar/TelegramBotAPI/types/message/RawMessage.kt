@@ -4,6 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntitiesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.GroupChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.games.Game
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.*
