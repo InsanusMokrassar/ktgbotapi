@@ -5,7 +5,8 @@
 * Type `PollOption` and `AnonymousPollOption` added
 * Type `Poll` added
 * Type `PollUpdate` added and implemented in `RawUpdate`. Now `PollUpdate` can be retrieved from `RawUpdate`
-* type `PollContent` added - now it can be a value of `ContentMessage#content`
+* Type `PollContent` added - now it can be a value of `ContentMessage#content`
+* Request `SendPoll` added and `PollContent#createResend` now use it
 
 ## 0.12.0 Webhooks
 

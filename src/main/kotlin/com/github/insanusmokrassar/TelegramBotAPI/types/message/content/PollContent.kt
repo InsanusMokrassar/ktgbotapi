@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message.content
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendMessage
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendPoll
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
@@ -21,5 +22,12 @@ data class PollContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): Request<RawMessage> = TODO()
+    ): Request<RawMessage> = SendPoll(
+        chatId,
+        poll.question,
+        poll.options.map { it.text },
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
 }
