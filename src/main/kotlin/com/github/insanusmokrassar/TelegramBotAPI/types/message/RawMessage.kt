@@ -17,6 +17,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.Success
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.abstracts.PaymentInfo
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.Invoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.SuccessfulPayment
+import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
 import kotlinx.serialization.*
 import kotlin.reflect.KClass
 
@@ -59,6 +60,7 @@ data class RawMessage(
     private val contact: Contact? = null,
     private val location: Location? = null,
     private val venue: Venue? = null,
+    private val poll: Poll? = null,
     private val new_chat_members: List<User>? = null,
     private val left_chat_member: User? = null,
     private val new_chat_title: String? = null,
@@ -122,6 +124,7 @@ data class RawMessage(
             contact != null -> ContactContent(contact)
             location != null -> LocationContent(location)
             venue != null -> VenueContent(venue)
+            poll != null -> PollContent(poll)
             else -> null
         }
     }
