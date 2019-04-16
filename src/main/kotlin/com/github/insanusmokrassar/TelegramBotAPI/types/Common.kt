@@ -6,6 +6,7 @@ typealias InlineQueryIdentifier = String
 typealias UpdateIdentifier = Long
 typealias MediaGroupIdentifier = String
 typealias ForwardSignature = String
+typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature
 typealias CallbackQueryIdentifier = String
 typealias PaymentQueryIdentifier = String

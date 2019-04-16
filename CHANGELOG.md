@@ -16,6 +16,8 @@ by their parents
 `com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts` package
 * Common Groups now may have pinned message
 * `is_member` field added into `RestrictedChatMember`
+* **BREAK CHANGES** Now `ForwardedMessages` can be `AnonymousForwardedMessage` and `PublicForwardedMessage`. Old
+implementations now extend `PublicForwardedMessage`
 
 ## 0.12.0 Webhooks
 
