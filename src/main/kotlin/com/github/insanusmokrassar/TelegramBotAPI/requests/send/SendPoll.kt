@@ -25,8 +25,8 @@ data class SendPoll(
     ReplyingMarkupSendMessageRequest<RawMessage> {
 
     init {
-        if (question.length !in pollQuectionTextLength) {
-            throw IllegalArgumentException("The length of questions for polls must be in $pollQuectionTextLength range, but was ${question.length}")
+        if (question.length !in pollQuestionTextLength) {
+            throw IllegalArgumentException("The length of questions for polls must be in $pollQuestionTextLength range, but was ${question.length}")
         }
         options.forEach {
             if (it.length !in pollOptionTextLength) {
