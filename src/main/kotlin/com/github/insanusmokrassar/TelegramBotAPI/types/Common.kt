@@ -75,6 +75,7 @@ const val hasCustomCertificateField = "has_custom_certificate"
 const val pendingUpdateCountField = "pending_update_count"
 const val lastErrorDateField = "last_error_date"
 const val lastErrorMessageField = "last_error_message"
+const val votesCountField = "voter_count"
 
 
 const val photoUrlField = "photo_url"
