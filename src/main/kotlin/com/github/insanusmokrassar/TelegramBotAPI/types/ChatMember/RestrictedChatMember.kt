@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.User
 data class RestrictedChatMember(
     override val user: User,
     override val untilDate: TelegramDate?,
+    val isMember: Boolean,
     val canSendMessages: Boolean,
     val canSendMediaMessages: Boolean,
     val canSendOtherMessages: Boolean,

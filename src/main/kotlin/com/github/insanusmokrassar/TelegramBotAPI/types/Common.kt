@@ -131,6 +131,7 @@ const val inputMessageContentField = "input_message_content"
 const val hideUrlField = "hide_url"
 
 
+const val isMemberField = "is_member"
 const val canSendMessagesField = "can_send_messages"
 const val canSendMediaMessagesField = "can_send_media_messages"
 const val canSendOtherMessagesField = "can_send_other_messages"
