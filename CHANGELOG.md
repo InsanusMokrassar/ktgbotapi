@@ -4,6 +4,7 @@
 
 * Type `PollOption` and `AnonymousPollOption` added
 * Type `Poll` added
+* Type `PollUpdate` added and implemented in `RawUpdate`. Now `PollUpdate` can be retrieved from `RawUpdate`
 
 ## 0.12.0 Webhooks
 
