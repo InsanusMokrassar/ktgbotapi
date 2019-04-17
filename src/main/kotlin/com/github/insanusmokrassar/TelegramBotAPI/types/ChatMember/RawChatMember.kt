@@ -26,6 +26,8 @@ data class RawChatMember(
     private val canPinMessages: Boolean = false,
     @SerialName(canPromoteMembersField)
     private val canPromoteMembers: Boolean = false,
+    @SerialName(isMemberField)
+    private val isMember: Boolean = false,
     @SerialName(canSendMessagesField)
     private val canSendMessages: Boolean = false,
     @SerialName(canSendMediaMessagesField)
@@ -55,6 +57,7 @@ data class RawChatMember(
             "restricted" -> RestrictedChatMember(
                 user,
                 until_date,
+                isMember,
                 canSendMessages,
                 canSendMediaMessages,
                 canSendOtherMessages,

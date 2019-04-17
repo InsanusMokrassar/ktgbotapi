@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ByMessageId
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.MessageAction
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.abstracts.SetGameScore
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.SerialName
@@ -20,4 +20,4 @@ data class SetGameScoreByChatId (
     override val force: Boolean = false,
     @SerialName(disableEditMessageField)
     override val disableEditMessage: Boolean = false
-) : SetGameScore, ByMessageId
+) : SetGameScore, MessageAction

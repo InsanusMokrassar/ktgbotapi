@@ -1,5 +1,24 @@
 # TelegramBotAPI changelog
 
+## 0.13.0 Telegram Polls
+
+* Type `PollOption` and `AnonymousPollOption` added
+* Type `Poll` added
+* Type `PollUpdate` added and implemented in `RawUpdate`. Now `PollUpdate` can be retrieved from `RawUpdate`
+* Type `PollContent` added - now it can be a value of `ContentMessage#content`
+* Request `SendPoll` added and `PollContent#createResend` now use it
+* `ByInlineMessageId` is deprecated (use `InlineMessageAction` instead)
+* `ByMessageId` is deprecated (use `MessageAction` instead)
+* Most part of requests which are working with identifiers of messages now implement `MessageAction` directly or
+by their parents
+* `StopPoll` implemented
+* All current `Chat` abstractions are deprecated and rewritten as typealiases. Use `Chat` abstractions from
+`com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts` package
+* Common Groups now may have pinned message
+* `is_member` field added into `RestrictedChatMember`
+* **BREAK CHANGES** Now `ForwardedMessages` can be `AnonymousForwardedMessage` and `PublicForwardedMessage`. Old
+implementations now extend `PublicForwardedMessage`
+
 ## 0.12.0 Webhooks
 
 * Added `DataRequest` interface which replace `Data` interface

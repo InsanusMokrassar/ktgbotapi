@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
+import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.updateIdField
 import kotlinx.serialization.*
@@ -25,7 +26,8 @@ data class RawUpdate constructor(
     private val chosen_inline_result: RawChosenInlineResult? = null,
     private val callback_query: RawCallbackQuery? = null,
     private val shipping_query: ShippingQuery? = null,
-    private val pre_checkout_query: PreCheckoutQuery? = null
+    private val pre_checkout_query: PreCheckoutQuery? = null,
+    private val poll: Poll? = null
 ) {
     @Transient
     val asUpdate: Update by lazy {
@@ -40,6 +42,7 @@ data class RawUpdate constructor(
             callback_query != null -> CallbackQueryUpdate(updateId, callback_query.asCallbackQuery)
             shipping_query != null -> ShippingQueryUpdate(updateId, shipping_query)
             pre_checkout_query != null -> PreCheckoutQueryUpdate(updateId, pre_checkout_query)
+            poll != null -> PollUpdate(updateId, poll)
             else -> throw IllegalArgumentException("Unsupported type of update")
         }
     }

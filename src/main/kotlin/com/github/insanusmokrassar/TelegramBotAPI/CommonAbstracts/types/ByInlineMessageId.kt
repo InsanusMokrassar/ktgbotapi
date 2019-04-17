@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineMessageIdentifier
-
-interface ByInlineMessageId {
-    val inlineMessageId: InlineMessageIdentifier
-}
+@Deprecated(
+    "Deprecated for the reason of creating of more obvious type interface",
+    ReplaceWith("InlineMessageAction", "com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.InlineMessageAction")
+)
+typealias ByInlineMessageId = InlineMessageAction

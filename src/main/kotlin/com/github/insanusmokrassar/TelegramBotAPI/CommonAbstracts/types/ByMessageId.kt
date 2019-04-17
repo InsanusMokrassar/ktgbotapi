@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
+@Deprecated(
+    "Deprecated for the reason of creating of more obvious type interface",
+    ReplaceWith("MessageAction", "com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.MessageAction")
 
-interface ByMessageId : ChatRequest {
-    val messageId: MessageIdentifier
-}
+)
+typealias ByMessageId = MessageAction

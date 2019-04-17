@@ -4,6 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntitiesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.GroupChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.games.Game
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.*
@@ -17,6 +18,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.Success
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.abstracts.PaymentInfo
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.Invoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.SuccessfulPayment
+import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
 import kotlinx.serialization.*
 import kotlin.reflect.KClass
 
@@ -35,6 +37,7 @@ data class RawMessage(
     private val forward_from_chat: RawChat? = null,
     private val forward_from_message_id: MessageIdentifier? = null,
     private val forward_signature: ForwardSignature? = null,
+    private val forward_sender_name: ForwardSenderName? = null,
     private val forward_date: TelegramDate? = null,
     private val reply_to_message: RawMessage? = null,
     private val edit_date: TelegramDate? = null,
@@ -59,6 +62,7 @@ data class RawMessage(
     private val contact: Contact? = null,
     private val location: Location? = null,
     private val venue: Venue? = null,
+    private val poll: Poll? = null,
     private val new_chat_members: List<User>? = null,
     private val left_chat_member: User? = null,
     private val new_chat_title: String? = null,
@@ -122,14 +126,16 @@ data class RawMessage(
             contact != null -> ContactContent(contact)
             location != null -> LocationContent(location)
             venue != null -> VenueContent(venue)
+            poll != null -> PollContent(poll)
             else -> null
         }
     }
 
     @Transient
     private val forwarded: ForwardedMessage? by lazy {
+        forward_date ?: return@lazy null // According to the documentation, now any forwarded message contains this field
         forward_from_message_id ?.let {
-            forward_date ?: throw IllegalStateException("For forwarded messages date of original message declared as set up required")
+            forward_from ?: throw IllegalStateException("For common forwarded messages author of original message declared as set up required")
             forward_from_chat ?.let {
                 ForwardedFromChannelMessage(
                     forward_from_message_id,
@@ -142,7 +148,11 @@ data class RawMessage(
                 forward_from_message_id,
                 forward_date,
                 forward_from
-                    ?: throw IllegalStateException("For common forwarded messages author of original message declared as set up required")
+            )
+        } ?: forward_sender_name ?.let {
+            AnonymousForwardedMessage(
+                forward_date,
+                forward_sender_name
             )
         }
     }

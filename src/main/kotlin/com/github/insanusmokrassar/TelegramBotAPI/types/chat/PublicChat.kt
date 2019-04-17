@@ -1,6 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
-interface PublicChat : Chat {
-    val title: String?
-    val inviteLink: String?
-}
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
+
+@Deprecated(
+    "Replaced into another package",
+    ReplaceWith("PublicChat", "com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat")
+)
+typealias PublicChat = PublicChat
