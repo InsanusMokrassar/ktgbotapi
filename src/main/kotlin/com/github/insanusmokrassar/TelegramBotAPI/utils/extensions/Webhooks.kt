@@ -16,7 +16,6 @@ import io.ktor.response.respond
 import io.ktor.routing.post
 import io.ktor.routing.routing
 import io.ktor.server.engine.*
-import io.ktor.server.netty.Netty
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.serialization.json.Json
@@ -36,12 +35,12 @@ import java.util.concurrent.TimeUnit
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
+    engineFactory: ApplicationEngineFactory<*, *>,
     certificate: InputFile? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
     maxAllowedConnections: Int? = null,
-    engineFactory: ApplicationEngineFactory<*, *> = Netty,
     block: UpdateReceiver<Update>
 ): Job {
     val executeDeferred = certificate ?.let {
@@ -69,20 +68,17 @@ suspend fun RequestsExecutor.setWebhook(
     val env = applicationEngineEnvironment {
 
         module {
-            fun Application.main() {
-                routing {
-                    post {
-                        val deserialized = call.receiveText()
-                        val update = Json.nonstrict.parse(
-                            RawUpdate.serializer(),
-                            deserialized
-                        )
-                        updatesChannel.send(update.asUpdate)
-                        call.respond("Ok")
-                    }
+            routing {
+                post {
+                    val deserialized = call.receiveText()
+                    val update = Json.nonstrict.parse(
+                        RawUpdate.serializer(),
+                        deserialized
+                    )
+                    updatesChannel.send(update.asUpdate)
+                    call.respond("Ok")
                 }
             }
-            main()
         }
         privateKeyConfig ?.let {
             sslConnector(
@@ -140,19 +136,19 @@ suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
     filter: UpdatesFilter,
+    engineFactory: ApplicationEngineFactory<*, *>,
     certificate: InputFile? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    maxAllowedConnections: Int? = null,
-    engineFactory: ApplicationEngineFactory<*, *> = Netty
+    maxAllowedConnections: Int? = null
 ): Job = setWebhook(
     url,
     port,
+    engineFactory,
     certificate,
     privateKeyConfig,
     scope,
     filter.allowedUpdates,
     maxAllowedConnections,
-    engineFactory,
     filter.asUpdateReceiver
 )
