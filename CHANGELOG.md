@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.14.0
+
 ## 0.13.0 Telegram Polls
 
 * Type `PollOption` and `AnonymousPollOption` added
