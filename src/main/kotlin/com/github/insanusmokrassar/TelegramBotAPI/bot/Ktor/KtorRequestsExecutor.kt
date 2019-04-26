@@ -60,7 +60,9 @@ class KtorRequestsExecutor(
             if (call == null) {
                 throw IllegalArgumentException("Can't execute request: $request")
             }
-            val content = call.response.content.toByteArray().toString(Charsets.UTF_8)
+            val content = call.response.use {
+                it.content.toByteArray().toString(Charsets.UTF_8)
+            }
             val responseObject = jsonFormatter.parse(
                 Response.serializer(request.resultSerializer()),
                 content
