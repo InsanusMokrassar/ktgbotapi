@@ -6,6 +6,7 @@
 some default library
 * All proxy help methods was removed . They are will be replaced in separated project
 * `Ktor` version `1.1.3` -> `1.1.4`
+* Requests results now always decoding as `UTF-8`
 
 ## 0.13.0 Telegram Polls
 
