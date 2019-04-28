@@ -10,6 +10,7 @@ some default library
 * `AbstractRequestCallFactory` was added with cache of methods urls to avoid memory leaks
 * Small refactoring of work with response in `KtorRequestsExecutor`
 * Kotlin version `1.3.30` -> `1.3.31`
+* Kotlin coroutines `1.2.0` -> `1.2.1`
 
 ## 0.13.0 Telegram Polls
 
