@@ -134,8 +134,12 @@ data class RawMessage(
     @Transient
     private val forwarded: ForwardedMessage? by lazy {
         forward_date ?: return@lazy null // According to the documentation, now any forwarded message contains this field
-        forward_from ?.let {
-            forward_from_message_id ?: throw IllegalStateException("For common forwarded messages message id of the original message declared as set up required")
+        forward_sender_name ?.let {
+            AnonymousForwardedMessage(
+                forward_date,
+                forward_sender_name
+            )
+        } ?: forward_from_message_id ?.let {
             forward_from_chat ?.let {
                 ForwardedFromChannelMessage(
                     forward_from_message_id,
@@ -147,12 +151,7 @@ data class RawMessage(
             } ?: CommonForwardedMessage(
                 forward_from_message_id,
                 forward_date,
-                forward_from
-            )
-        } ?: forward_sender_name ?.let {
-            AnonymousForwardedMessage(
-                forward_date,
-                forward_sender_name
+                forward_from ?: throw IllegalStateException("For common forwarded messages author of original message declared as set up required")
             )
         }
     }
