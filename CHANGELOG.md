@@ -11,6 +11,12 @@ some default library
 * Small refactoring of work with response in `KtorRequestsExecutor`
 * Kotlin version `1.3.30` -> `1.3.31`
 * Kotlin coroutines `1.2.0` -> `1.2.1`
+* `CommonForwardedMessage` was renamed to `UserForwardedMessage`
+* All forwarded messages are now just childs of `ForwardedMessage`:
+    * `AnonymousForwardedMessage` - for messages without forwarded info
+    * `UserForwardedMessage` - for messages from users and groups (contains not message id)
+    * `ForwardedFromChannelMessage` - for messages from channels
+* Changed logic of forwarded messages preparing
 
 ## 0.13.0 Telegram Polls
 

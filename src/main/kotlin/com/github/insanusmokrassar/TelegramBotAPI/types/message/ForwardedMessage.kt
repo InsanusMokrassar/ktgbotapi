@@ -12,21 +12,20 @@ data class AnonymousForwardedMessage(
     val senderName: String
 ) : ForwardedMessage()
 
-sealed class PublicForwardedMessage : ForwardedMessage() {
-    abstract val messageId: MessageIdentifier
-    abstract val from: User?
-}
-
-data class CommonForwardedMessage(
-    override val messageId: MessageIdentifier,
+data class UserForwardedMessage(
     override val dateOfOriginal: TelegramDate,
-    override val from: User
-) : PublicForwardedMessage()
+    val from: User
+) : ForwardedMessage()
+
+@Deprecated(
+    "Renamed according to correct meaning",
+    ReplaceWith("UserForwardedMessage", "com.github.insanusmokrassar.TelegramBotAPI.types.message.UserForwardedMessage")
+)
+typealias CommonForwardedMessage = UserForwardedMessage
 
 data class ForwardedFromChannelMessage(
-    override val messageId: MessageIdentifier,
     override val dateOfOriginal: TelegramDate,
-    override val from: User?,
+    val messageId: MessageIdentifier,
     val channelChat: Chat,
     val signature: String? = null
-) : PublicForwardedMessage()
+) : ForwardedMessage()
