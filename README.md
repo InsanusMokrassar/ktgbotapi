@@ -46,23 +46,82 @@ compile "com.github.insanusmokrassar:TelegramBotAPI:${telegrambotapi.version}"
 
 ## How to work with library?
 
-By default in any documentation will be meaning that you have variable in scope with names
+For now, this library have no some API god-object. Instead of this, this library has several
+important objects:
 
-| Name of variable | Description | Where to get? (Examples) |
-|:----------------:|:-----------:|:------------------------:|
-| executor | [RequestsExecutor](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/bot/RequestsExecutor.kt) | [Ktor RequestExecutor realisation](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/bot/Ktor/KtorRequestsExecutor.kt) |
+* [RequestsExecutor](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/bot/RequestsExecutor.kt)
+* [Requests](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests)
+* [Types](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types)
 
-## Requests Examples
+### Types
 
-### Get Me
+Types declare different objects representation. For example, `Chat` for now represented as
+interface and has several realisations:
+
+* PrivateChat
+* GroupChat
+* SupergroupChat
+* ChannelChat
+
+Instead of common garbage with all information as in original [Chat](https://core.telegram.org/bots/api#chat),
+here it was separated for more obvious difference between chats types and their possible content.
+
+The same principle work with a lot of others things in this Telegram bot API. 
+
+### Requests
+
+Requests usually are very simple objects, but some of them are using their own
+build factories. For example, the next code show, how to get information about bot:
 
 ```kotlin
-executor.execute(GetMe())
+val requestsExecutor: RequestsExecutor = ...
+requestsExecutor.execute(GetMe())
+``` 
+
+The result type of [GetMe](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe) request is
+[User](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User). In fact, in this result must contain
+`isBot` equal to `true` always.
+
+
+### RequestsExecutor
+
+It is base object which can be used to execute requests in API. For now by default included Ktor
+realisation of `RequestsExecutor`, but it is possible, that in future it will be extracted in separated
+project. How to create `RequestsExecutor`:
+
+```kotlin
+val requestsExecutor = KtorRequestsExecutor(TOKEN)
 ```
 
-As a result you will receive `User` object. This object used as is now (as in API documentation), but it is possible
-that this class will be renamed to `RawUser` and you will be able to get real realisation of this object like `Bot` (in
-cases when `isBot` == `true`) or `User` (otherwise)
+Here `KtorRequestsExecutor` - default realisation with Ktor. `TOKEN` is just a token of bot which was retrieved
+according to [instruction](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
+
+Besides, for correct usage of this, you must implement in your project both one of engines for client and server
+Ktor libraries:
+
+```groovy
+dependencies {
+    // ...
+    implementation "io.ktor:ktor-server-cio:$ktor_version"
+    implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+    // ...
+}
+```
+
+It is able to avoid using of `server` dependency in case if will not be used `Webhook`s. In this case,
+dependencies list will be simplify:
+
+```groovy
+dependencies {
+    // ...
+    implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+    // ...
+}
+```
+
+Here was used `okhttp` realisation of client, but there are several others engines for Ktor. More information
+available on ktor.io site for [client](https://ktor.io/clients/http-client/engines.html) and [server](https://ktor.io/quickstart/artifacts.html)
+engines.
 
 ## Getting updates
 
@@ -95,3 +154,22 @@ Template for Nginx server config you can find in [this gist](https://gist.github
 For webhook you can provide `File` with public part of certificate, `URL` where bot will be available and inner `PORT` which
 will be used to start receiving of updates. Actually, you can skip passing of `File` when you have something like
 nginx for proxy forwarding.
+
+In case of using `nginx` with reverse-proxy config, setting up of Webhook will look like:
+
+```kotlin
+requestsExecutor.setWebhook(
+    WEBHOOK_URL,
+    INTERNAL_PORT,
+    filter,
+    ENGINE_FACTORY
+)
+``` 
+
+Here:
+
+* `WEBHOOK_URL` - the url which will be used by Telegram system to send updates
+* `INTERNAL_PORT` - the port which will be used in bot for listening of updates
+* `filter` - instance of [UpdatesFilter](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/utils/extensions/UpdatesFilter.kt),
+which will be used to filter incoming updates
+* `ENGINE_FACTORY` - used factory name, for example, `CIO` in case of usage `io.ktor:ktor-server-cio` as server engine
