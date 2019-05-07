@@ -1,5 +1,23 @@
 # TelegramBotAPI changelog
 
+## 0.14.0
+
+* Now library have no default engine for both webhooks and requests executor. It is required for clients to set
+some default library
+* All proxy help methods was removed . They are will be replaced in separated project
+* `Ktor` version `1.1.3` -> `1.1.4`
+* Requests results now always decoding as `UTF-8`
+* `AbstractRequestCallFactory` was added with cache of methods urls to avoid memory leaks
+* Small refactoring of work with response in `KtorRequestsExecutor`
+* Kotlin version `1.3.30` -> `1.3.31`
+* Kotlin coroutines `1.2.0` -> `1.2.1`
+* `CommonForwardedMessage` was renamed to `UserForwardedMessage`
+* All forwarded messages are now just childs of `ForwardedMessage`:
+    * `AnonymousForwardedMessage` - for messages without forwarded info
+    * `UserForwardedMessage` - for messages from users and groups (contains not message id)
+    * `ForwardedFromChannelMessage` - for messages from channels
+* Changed logic of forwarded messages preparing
+
 ## 0.13.0 Telegram Polls
 
 * Type `PollOption` and `AnonymousPollOption` added

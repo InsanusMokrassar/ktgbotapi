@@ -12,7 +12,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall
 import io.ktor.client.engine.HttpClientEngine
-import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.util.cio.toByteArray
 import kotlinx.coroutines.delay
 import kotlinx.io.charsets.Charset
@@ -20,7 +19,7 @@ import kotlinx.serialization.json.Json
 
 class KtorRequestsExecutor(
     token: String,
-    private val client: HttpClient = HttpClient(OkHttp),
+    private val client: HttpClient = HttpClient(),
     hostUrl: String = "https://api.telegram.org",
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
@@ -29,11 +28,11 @@ class KtorRequestsExecutor(
 ) : BaseRequestsExecutor(token, hostUrl) {
     constructor(
         token: String,
-        engine: HttpClientEngine = OkHttp.create(),
+        engine: HttpClientEngine? = null,
         hostUrl: String = "https://api.telegram.org"
     ) : this(
         token,
-        HttpClient(engine),
+        engine ?.let { HttpClient(engine) } ?: HttpClient(),
         hostUrl
     )
 
@@ -61,7 +60,9 @@ class KtorRequestsExecutor(
             if (call == null) {
                 throw IllegalArgumentException("Can't execute request: $request")
             }
-            val content = call.response.content.toByteArray().toString(Charset.defaultCharset())
+            val content = call.response.use {
+                it.content.toByteArray().toString(Charsets.UTF_8)
+            }
             val responseObject = jsonFormatter.parse(
                 Response.serializer(request.resultSerializer()),
                 content

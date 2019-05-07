@@ -1,4 +1,4 @@
-project.version = "0.13.0"
+project.version = "0.14.0"
 project.group = "com.github.insanusmokrassar"
 
 buildscript {
@@ -26,7 +26,6 @@ repositories {
     jcenter()
     mavenCentral()
     maven { url "https://kotlin.bintray.com/kotlinx" }
-    maven { url "https://dl.bintray.com/kotlin/ktor" }
 }
 
 dependencies {
@@ -35,14 +34,10 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
     implementation "joda-time:joda-time:$joda_time_version"
 
-    implementation "io.ktor:ktor-client-core:$ktor_version"
-    implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+    implementation "io.ktor:ktor-client:$ktor_version"
 
-    implementation "io.ktor:ktor-server-core:$ktor_version"
-    implementation "io.ktor:ktor-server-netty:$ktor_version"
-
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    implementation "io.ktor:ktor-server:$ktor_version"
+    implementation "io.ktor:ktor-server-host-common:$ktor_version"
 }
 
 compileKotlin {
