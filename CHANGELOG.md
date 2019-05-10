@@ -24,6 +24,7 @@ some default library
 * Replace `WebhookPrivateKeyConfig`
 * Added `FlowsUpdatesFilter`
 * `UpdatesFilter` now have additional callback for polls
+* `StopPoll#replyMarkup` now is optional
 
 ## 0.13.0 Telegram Polls
 
