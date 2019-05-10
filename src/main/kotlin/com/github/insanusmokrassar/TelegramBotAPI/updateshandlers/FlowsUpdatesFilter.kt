@@ -2,7 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
@@ -41,8 +40,6 @@ class FlowsUpdatesFilter {
         shippingQueryChannel.createUpdateReceiver(),
         preCheckoutQueryChannel.createUpdateReceiver()
     )
-
-    val asUpdateReceiver: UpdateReceiver<Update> = filter.asUpdateReceiver
 
     val messageChannelFlow: Flow<MessageUpdate> = messageChannel.asFlow()
     val messageMediaGroupChannelFlow: Flow<MessageMediaGroupUpdate> = messageMediaGroupChannel.asFlow()
