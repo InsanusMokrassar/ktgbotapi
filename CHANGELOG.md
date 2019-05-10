@@ -18,6 +18,8 @@ some default library
     * `ForwardedFromChannelMessage` - for messages from channels
 * Changed logic of forwarded messages preparing
 
+### 0.14.1
+
 ## 0.13.0 Telegram Polls
 
 * Type `PollOption` and `AnonymousPollOption` added
