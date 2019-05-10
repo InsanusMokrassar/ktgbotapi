@@ -23,6 +23,7 @@ some default library
 * Replace `UpdatesFilter` and `UpdatesPoller` into another package
 * Replace `WebhookPrivateKeyConfig`
 * Added `FlowsUpdatesFilter`
+* `UpdatesFilter` now have additional callback for polls
 
 ## 0.13.0 Telegram Polls
 

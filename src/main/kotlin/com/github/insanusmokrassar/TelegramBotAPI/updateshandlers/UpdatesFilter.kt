@@ -19,7 +19,8 @@ data class UpdatesFilter(
     private val inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
     private val callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
     private val shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
-    private val preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null
+    private val preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
+    private val pollUpdateCallback: UpdateReceiver<PollUpdate>? = null
 ) {
     val asUpdateReceiver: UpdateReceiver<Update> = this::invoke
     val allowedUpdates = listOfNotNull(
@@ -31,7 +32,8 @@ data class UpdatesFilter(
         inlineQueryCallback ?.let { UPDATE_INLINE_QUERY },
         callbackQueryCallback ?.let { UPDATE_CALLBACK_QUERY },
         shippingQueryCallback ?.let { UPDATE_SHIPPING_QUERY },
-        preCheckoutQueryCallback ?.let { UPDATE_PRE_CHECKOUT_QUERY }
+        preCheckoutQueryCallback ?.let { UPDATE_PRE_CHECKOUT_QUERY },
+        pollUpdateCallback ?.let { UPDATE_POLL }
     )
 
     suspend fun invoke(update: Update) {
@@ -73,6 +75,7 @@ data class UpdatesFilter(
             is CallbackQueryUpdate -> callbackQueryCallback ?.invoke(update)
             is ShippingQueryUpdate -> shippingQueryCallback ?.invoke(update)
             is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(update)
+            is PollUpdate -> pollUpdateCallback ?.invoke(update)
         }
     }
 }
@@ -87,7 +90,8 @@ fun createSimpleUpdateFilter(
     inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
     callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
-    preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null
+    preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
+    pollCallback: UpdateReceiver<PollUpdate>? = null
 ): UpdatesFilter = UpdatesFilter(
     messageCallback = messageCallback,
     messageMediaGroupCallback = mediaGroupCallback,
@@ -101,5 +105,6 @@ fun createSimpleUpdateFilter(
     inlineQueryCallback = inlineQueryCallback,
     callbackQueryCallback = callbackQueryCallback,
     shippingQueryCallback = shippingQueryCallback,
-    preCheckoutQueryCallback = preCheckoutQueryCallback
+    preCheckoutQueryCallback = preCheckoutQueryCallback,
+    pollUpdateCallback = pollCallback
 )

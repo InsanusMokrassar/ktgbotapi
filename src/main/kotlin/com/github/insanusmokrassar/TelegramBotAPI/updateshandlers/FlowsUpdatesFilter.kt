@@ -24,6 +24,7 @@ class FlowsUpdatesFilter {
     private val callbackQueryChannel: BroadcastChannel<CallbackQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
     private val shippingQueryChannel: BroadcastChannel<ShippingQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
     private val preCheckoutQueryChannel: BroadcastChannel<PreCheckoutQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
+    private val pollChannel: BroadcastChannel<PollUpdate> = BroadcastChannel(Channel.CONFLATED)
 
     val filter = UpdatesFilter(
         messageChannel.createUpdateReceiver(),
@@ -54,4 +55,5 @@ class FlowsUpdatesFilter {
     val callbackQueryFlow: Flow<CallbackQueryUpdate> = callbackQueryChannel.asFlow()
     val shippingQueryFlow: Flow<ShippingQueryUpdate> = shippingQueryChannel.asFlow()
     val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = preCheckoutQueryChannel.asFlow()
+    val pollFlow: Flow<PollUpdate> = pollChannel.asFlow()
 }
