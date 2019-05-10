@@ -4,6 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesPoller
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 

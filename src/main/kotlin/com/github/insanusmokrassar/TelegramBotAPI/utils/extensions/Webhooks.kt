@@ -8,8 +8,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaG
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate
-import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.request.receiveText
 import io.ktor.response.respond
