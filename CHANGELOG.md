@@ -21,6 +21,7 @@ some default library
 ### 0.14.1
 
 * Replace `UpdatesFilter` and `UpdatesPoller` into another package
+* Replace `WebhookPrivateKeyConfig`
 
 ## 0.13.0 Telegram Polls
 
