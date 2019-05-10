@@ -21,7 +21,7 @@ class FlowsUpdatesFilter {
     private val editedChannelPostMediaGroupChannel: BroadcastChannel<EditChannelPostMediaGroupUpdate> = BroadcastChannel(Channel.CONFLATED)
     private val chosenInlineResultChannel: BroadcastChannel<ChosenInlineResultUpdate> = BroadcastChannel(Channel.CONFLATED)
     private val inlineQueryChannel: BroadcastChannel<InlineQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val channelQueryChannel: BroadcastChannel<CallbackQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
+    private val callbackQueryChannel: BroadcastChannel<CallbackQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
     private val shippingQueryChannel: BroadcastChannel<ShippingQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
     private val preCheckoutQueryChannel: BroadcastChannel<PreCheckoutQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
 
@@ -36,22 +36,22 @@ class FlowsUpdatesFilter {
         editedChannelPostMediaGroupChannel.createUpdateReceiver(),
         chosenInlineResultChannel.createUpdateReceiver(),
         inlineQueryChannel.createUpdateReceiver(),
-        channelQueryChannel.createUpdateReceiver(),
+        callbackQueryChannel.createUpdateReceiver(),
         shippingQueryChannel.createUpdateReceiver(),
         preCheckoutQueryChannel.createUpdateReceiver()
     )
 
-    val messageChannelFlow: Flow<MessageUpdate> = messageChannel.asFlow()
-    val messageMediaGroupChannelFlow: Flow<MessageMediaGroupUpdate> = messageMediaGroupChannel.asFlow()
-    val editedMessageChannelFlow: Flow<EditMessageUpdate> = editedMessageChannel.asFlow()
-    val editedMessageMediaGroupChannelFlow: Flow<EditMessageMediaGroupUpdate> = editedMessageMediaGroupChannel.asFlow()
-    val channelPostChannelFlow: Flow<ChannelPostUpdate> = channelPostChannel.asFlow()
-    val channelPostMediaGroupChannelFlow: Flow<ChannelPostMediaGroupUpdate> = channelPostMediaGroupChannel.asFlow()
-    val editedChannelPostChannelFlow: Flow<EditChannelPostUpdate> = editedChannelPostChannel.asFlow()
-    val editedChannelPostMediaGroupChannelFlow: Flow<EditChannelPostMediaGroupUpdate> = editedChannelPostMediaGroupChannel.asFlow()
-    val chosenInlineResultChannelFlow: Flow<ChosenInlineResultUpdate> = chosenInlineResultChannel.asFlow()
-    val inlineQueryChannelFlow: Flow<InlineQueryUpdate> = inlineQueryChannel.asFlow()
-    val channelQueryChannelFlow: Flow<CallbackQueryUpdate> = channelQueryChannel.asFlow()
-    val shippingQueryChannelFlow: Flow<ShippingQueryUpdate> = shippingQueryChannel.asFlow()
-    val preCheckoutQueryChannelFlow: Flow<PreCheckoutQueryUpdate> = preCheckoutQueryChannel.asFlow()
+    val messageFlow: Flow<MessageUpdate> = messageChannel.asFlow()
+    val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate> = messageMediaGroupChannel.asFlow()
+    val editedMessageFlow: Flow<EditMessageUpdate> = editedMessageChannel.asFlow()
+    val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate> = editedMessageMediaGroupChannel.asFlow()
+    val channelPostFlow: Flow<ChannelPostUpdate> = channelPostChannel.asFlow()
+    val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate> = channelPostMediaGroupChannel.asFlow()
+    val editedChannelPostFlow: Flow<EditChannelPostUpdate> = editedChannelPostChannel.asFlow()
+    val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate> = editedChannelPostMediaGroupChannel.asFlow()
+    val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate> = chosenInlineResultChannel.asFlow()
+    val inlineQueryFlow: Flow<InlineQueryUpdate> = inlineQueryChannel.asFlow()
+    val callbackQueryFlow: Flow<CallbackQueryUpdate> = callbackQueryChannel.asFlow()
+    val shippingQueryFlow: Flow<ShippingQueryUpdate> = shippingQueryChannel.asFlow()
+    val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = preCheckoutQueryChannel.asFlow()
 }
