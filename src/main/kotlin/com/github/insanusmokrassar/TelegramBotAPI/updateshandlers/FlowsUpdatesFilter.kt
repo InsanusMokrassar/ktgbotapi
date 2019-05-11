@@ -39,7 +39,8 @@ class FlowsUpdatesFilter {
         inlineQueryChannel.createUpdateReceiver(),
         callbackQueryChannel.createUpdateReceiver(),
         shippingQueryChannel.createUpdateReceiver(),
-        preCheckoutQueryChannel.createUpdateReceiver()
+        preCheckoutQueryChannel.createUpdateReceiver(),
+        pollChannel.createUpdateReceiver()
     )
 
     val messageFlow: Flow<MessageUpdate> = messageChannel.asFlow()
