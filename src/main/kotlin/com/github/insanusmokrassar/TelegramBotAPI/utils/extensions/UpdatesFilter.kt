@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
 
 @Deprecated(

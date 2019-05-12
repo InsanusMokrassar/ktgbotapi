@@ -14,7 +14,6 @@ import io.ktor.client.call.HttpClientCall
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.util.cio.toByteArray
 import kotlinx.coroutines.delay
-import kotlinx.io.charsets.Charset
 import kotlinx.serialization.json.Json
 
 class KtorRequestsExecutor(

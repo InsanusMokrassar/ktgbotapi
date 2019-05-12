@@ -5,7 +5,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.mapWithCommonValues
 import io.ktor.client.HttpClient
 import io.ktor.client.request.forms.MultiPartFormDataContent
 import io.ktor.client.request.forms.formData
-import io.ktor.http.*
+import io.ktor.http.Headers
+import io.ktor.http.HttpHeaders
 
 class MultipartRequestCallFactory : AbstractRequestCallFactory() {
 
