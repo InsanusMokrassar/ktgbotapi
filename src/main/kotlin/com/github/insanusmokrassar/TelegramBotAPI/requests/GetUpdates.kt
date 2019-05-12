@@ -26,6 +26,8 @@ const val UPDATE_CALLBACK_QUERY = com.github.insanusmokrassar.TelegramBotAPI.typ
 const val UPDATE_SHIPPING_QUERY = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_SHIPPING_QUERY
 @Deprecated("Replaced to other package", ReplaceWith("UPDATE_PRE_CHECKOUT_QUERY", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_PRE_CHECKOUT_QUERY"))
 const val UPDATE_PRE_CHECKOUT_QUERY = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_PRE_CHECKOUT_QUERY
+@Deprecated("Replaced to other package", ReplaceWith("UPDATE_POLL", "com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_POLL"))
+const val UPDATE_POLL = com.github.insanusmokrassar.TelegramBotAPI.types.UPDATE_POLL
 
 @Serializable
 data class GetUpdates(

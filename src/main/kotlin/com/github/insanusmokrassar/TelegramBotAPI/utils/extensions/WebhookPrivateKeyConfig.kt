@@ -1,23 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
-import java.io.FileInputStream
-import java.security.KeyStore
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
 
-@Serializable
-data class WebhookPrivateKeyConfig(
-    private val keyStorePath: String,
-    private val keyStorePassword: String,
-    val aliasName: String,
-    private val aliasPassword: String
-) {
-    @Transient
-    val keyStore = KeyStore.getInstance("JKS").apply {
-        load(FileInputStream(keyStorePath), keyStorePassword())
-    }
-
-    fun keyStorePassword(): CharArray = keyStorePassword.toCharArray()
-
-    fun aliasPassword(): CharArray = aliasPassword.toCharArray()
-}
+@Deprecated(
+    "Replaced in separated package",
+    ReplaceWith(
+        "WebhookPrivateKeyConfig",
+        "com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig"
+    )
+)
+typealias WebhookPrivateKeyConfig = WebhookPrivateKeyConfig

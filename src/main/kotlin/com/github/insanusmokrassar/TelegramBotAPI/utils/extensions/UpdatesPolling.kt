@@ -4,6 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesPoller
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 
@@ -32,6 +34,7 @@ suspend fun RequestsExecutor.startGettingOfUpdates(
     callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
+    pollCallback: UpdateReceiver<PollUpdate>? = null,
     requestsDelayMillis: Long = 1000,
     scope: CoroutineScope = GlobalScope
 ): Job {
@@ -48,7 +51,8 @@ suspend fun RequestsExecutor.startGettingOfUpdates(
         inlineQueryCallback,
         callbackQueryCallback,
         shippingQueryCallback,
-        preCheckoutQueryCallback
+        preCheckoutQueryCallback,
+        pollCallback
     )
     return startGettingOfUpdates(
         requestsDelayMillis,
@@ -69,6 +73,7 @@ suspend fun RequestsExecutor.startGettingOfUpdates(
     callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
+    pollCallback: UpdateReceiver<PollUpdate>? = null,
     requestsDelayMillis: Long = 1000,
     scope: CoroutineScope = GlobalScope
 ): Job = startGettingOfUpdates(
@@ -85,6 +90,7 @@ suspend fun RequestsExecutor.startGettingOfUpdates(
     callbackQueryCallback = callbackQueryCallback,
     shippingQueryCallback = shippingQueryCallback,
     preCheckoutQueryCallback = preCheckoutQueryCallback,
+    pollCallback = pollCallback,
     requestsDelayMillis = requestsDelayMillis,
     scope = scope
 )

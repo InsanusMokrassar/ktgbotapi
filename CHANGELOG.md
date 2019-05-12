@@ -18,6 +18,14 @@ some default library
     * `ForwardedFromChannelMessage` - for messages from channels
 * Changed logic of forwarded messages preparing
 
+### 0.14.1
+
+* Replace `UpdatesFilter` and `UpdatesPoller` into another package
+* Replace `WebhookPrivateKeyConfig`
+* Added `FlowsUpdatesFilter`
+* `UpdatesFilter` now have additional callback for polls
+* `StopPoll#replyMarkup` now is optional
+
 ## 0.13.0 Telegram Polls
 
 * Type `PollOption` and `AnonymousPollOption` added
