@@ -18,10 +18,10 @@ import kotlinx.serialization.*
 data class RawUpdate constructor(
     @SerialName(updateIdField)
     val updateId: UpdateIdentifier,
-    private val message: RawMessage? = null,
     private val edited_message: RawMessage? = null,
-    private val channel_post: RawMessage? = null,
+    private val message: RawMessage? = null,
     private val edited_channel_post: RawMessage? = null,
+    private val channel_post: RawMessage? = null,
     private val inline_query: RawInlineQuery? = null,
     private val chosen_inline_result: RawChosenInlineResult? = null,
     private val callback_query: RawCallbackQuery? = null,
@@ -32,10 +32,10 @@ data class RawUpdate constructor(
     @Transient
     val asUpdate: Update by lazy {
         when {
-            message != null -> MessageUpdate(updateId, message.asMessage)
             edited_message != null -> EditMessageUpdate(updateId, edited_message.asMessage)
-            channel_post != null -> ChannelPostUpdate(updateId, channel_post.asMessage)
+            message != null -> MessageUpdate(updateId, message.asMessage)
             edited_channel_post != null -> EditChannelPostUpdate(updateId, edited_channel_post.asMessage)
+            channel_post != null -> ChannelPostUpdate(updateId, channel_post.asMessage)
 
             chosen_inline_result != null -> ChosenInlineResultUpdate(updateId, chosen_inline_result.asChosenInlineResult)
             inline_query != null -> InlineQueryUpdate(updateId, inline_query.asInlineQuery)
