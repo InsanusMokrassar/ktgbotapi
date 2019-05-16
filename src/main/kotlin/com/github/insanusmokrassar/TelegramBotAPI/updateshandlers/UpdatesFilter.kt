@@ -50,9 +50,7 @@ data class UpdatesFilter(
             is EditMessageMediaGroupUpdate -> editedMessageMediaGroupCallback ?.also { receiver ->
                 receiver(update)
             } ?: editedMessageCallback ?.also { receiver ->
-                update.origins.mapNotNull { it as? EditMessageUpdate }.forEach {
-                    receiver(it)
-                }
+                receiver(update.origin)
             }
             is ChannelPostUpdate -> channelPostCallback ?.invoke(update)
             is ChannelPostMediaGroupUpdate -> channelPostMediaGroupCallback ?.also { receiver ->
@@ -66,9 +64,7 @@ data class UpdatesFilter(
             is EditChannelPostMediaGroupUpdate -> editedChannelPostMediaGroupCallback ?.also { receiver ->
                 receiver(update)
             } ?: editedChannelPostCallback ?.also { receiver ->
-                update.origins.mapNotNull { it as? EditChannelPostUpdate }.forEach {
-                    receiver(it)
-                }
+                receiver(update.origin)
             }
             is ChosenInlineResultUpdate -> chosenInlineResultCallback ?.invoke(update)
             is InlineQueryUpdate -> inlineQueryCallback ?.invoke(update)

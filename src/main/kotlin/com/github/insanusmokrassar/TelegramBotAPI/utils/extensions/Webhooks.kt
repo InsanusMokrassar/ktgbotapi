@@ -3,14 +3,15 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
-import com.github.insanusmokrassar.TelegramBotAPI.types.MediaGroupIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.utils.convertWithMediaGroupUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toSentMediaGroupUpdate
 import io.ktor.application.call
 import io.ktor.request.receiveText
 import io.ktor.response.respond
@@ -61,7 +62,7 @@ suspend fun RequestsExecutor.setWebhook(
         )
     )
     val updatesChannel = Channel<Update>(Channel.UNLIMITED)
-    val mediaGroupChannel = Channel<Pair<MediaGroupIdentifier, BaseMessageUpdate>>(Channel.UNLIMITED)
+    val mediaGroupChannel = Channel<Pair<String, BaseMessageUpdate>>(Channel.UNLIMITED)
     val mediaGroupAccumulatedChannel = mediaGroupChannel.accumulateByKey(
         1000L,
         scope = scope
@@ -110,17 +111,20 @@ suspend fun RequestsExecutor.setWebhook(
         launch {
             for (update in updatesChannel) {
                 val data = update.data
+                if (data is MediaGroupUpdate) {
+
+                } else {
+
+                }
                 when (data) {
-                    is MediaGroupMessage -> mediaGroupChannel.send(data.mediaGroupId to update as BaseMessageUpdate)
+                    is MediaGroupMessage -> mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
                     else -> block(update)
                 }
             }
         }
         launch {
-            for (mediaGroupUpdate in mediaGroupAccumulatedChannel) {
-                mediaGroupUpdate.second.toMediaGroupUpdate() ?.let {
-                    block(it)
-                } ?: mediaGroupUpdate.second.forEach {
+            for ((_, mediaGroup) in mediaGroupAccumulatedChannel) {
+                mediaGroup.convertWithMediaGroupUpdates().forEach {
                     block(it)
                 }
             }

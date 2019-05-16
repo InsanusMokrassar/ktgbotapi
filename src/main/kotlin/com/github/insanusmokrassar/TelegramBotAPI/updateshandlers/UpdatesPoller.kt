@@ -7,10 +7,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.executeUnsafe
-import com.github.insanusmokrassar.TelegramBotAPI.utils.mediaGroupId
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toMediaGroupUpdate
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 
@@ -35,9 +34,7 @@ class UpdatesPoller(
         val inputMediaGroupId = (update ?.data as? MediaGroupMessage) ?.mediaGroupId
         if (mediaGroup.isNotEmpty() && inputMediaGroupId ?.equals(mediaGroup.mediaGroupId) != true) {
             mediaGroup.sortBy { it.updateId }
-            mediaGroup.toMediaGroupUpdate() ?.let {
-                sendToBlock(it)
-            } ?: mediaGroup.forEach {
+            mediaGroup.convertWithMediaGroupUpdates().forEach {
                 sendToBlock(it)
             }
             mediaGroup.clear()

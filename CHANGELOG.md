@@ -26,6 +26,12 @@ some default library
 * `UpdatesFilter` now have additional callback for polls
 * `StopPoll#replyMarkup` now is optional
 
+### 0.14.2 MediaGroups edit hotfixes
+
+* `convertWithMediaGroupUpdates` extension added
+* All media group converting extensions are internal for now
+* Fixes according to updates in converting of updates to media group updates
+
 ## 0.13.0 Telegram Polls
 
 * Type `PollOption` and `AnonymousPollOption` added

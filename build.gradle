@@ -1,4 +1,4 @@
-project.version = "0.14.1"
+project.version = "0.14.2"
 project.group = "com.github.insanusmokrassar"
 
 buildscript {

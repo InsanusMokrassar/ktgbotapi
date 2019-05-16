@@ -6,7 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMes
 
 data class ChannelPostMediaGroupUpdate(
     override val origins: List<BaseMessageUpdate>
-) : MediaGroupUpdate {
+) : SentMediaGroupUpdate {
     override val updateId: UpdateIdentifier = origins.last().updateId
     override val data: List<MediaGroupMessage> = origins.mapNotNull { it.data as? MediaGroupMessage }
 }
