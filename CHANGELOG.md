@@ -10,6 +10,7 @@
     * They are not `suspend` for now
     * They are return `UpdatesPoller`
     * They are using `timeoutMillis` instead of `requestsDelayMillis`
+* Added `CIO` ktor client engine as lightweight default engine for long-polling
 
 ## 0.14.0
 
