@@ -42,9 +42,9 @@ fun KtorUpdatesPoller(
 
     return KtorUpdatesPoller(
         executor,
-        allowedUpdates,
         timeoutSeconds,
         oneTimeUpdatesLimit,
+        allowedUpdates,
         exceptionsHandler,
         updatesReceiver
     )
@@ -52,9 +52,9 @@ fun KtorUpdatesPoller(
 
 class KtorUpdatesPoller(
     private val executor: RequestsExecutor,
-    private val allowedUpdates: List<String> = ALL_UPDATES_LIST,
     private val timeoutSeconds: Int? = null,
     private val oneTimeUpdatesLimit: Int? = null,
+    private val allowedUpdates: List<String> = ALL_UPDATES_LIST,
     private val exceptionsHandler: (Exception) -> Boolean = { it.printStackTrace(); true },
     private val updatesReceiver: UpdateReceiver<Update>
 ) : UpdatesPoller {
