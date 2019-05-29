@@ -21,8 +21,8 @@ fun RequestsExecutor.startGettingOfUpdates(
 ): UpdatesPoller {
     return KtorUpdatesPoller(
         this,
-        allowedUpdates ?: ALL_UPDATES_LIST,
         timeoutMillis.toInt() / 1000,
+        allowedUpdates = allowedUpdates ?: ALL_UPDATES_LIST,
         updatesReceiver = block
     ).also {
         it.start(scope)
