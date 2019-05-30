@@ -1,8 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.UpdatesPoller
 import com.github.insanusmokrassar.TelegramBotAPI.requests.GetUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.DeleteWebhook
+import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
@@ -10,23 +13,58 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.executeUnsafe
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
 import kotlinx.coroutines.*
-import java.util.concurrent.Executors
 
-class UpdatesPoller(
+fun KtorUpdatesPoller(
+    token: String,
+    timeoutSeconds: Int? = null,
+    oneTimeUpdatesLimit: Int? = null,
+    allowedUpdates: List<String> = ALL_UPDATES_LIST,
+    exceptionsHandler: (Exception) -> Boolean = { true },
+    updatesReceiver: UpdateReceiver<Update>
+): KtorUpdatesPoller {
+    val executor = KtorRequestsExecutor(
+        token,
+        HttpClient(
+            CIO.create {
+                timeoutSeconds ?.let { _ ->
+                    val timeout = timeoutSeconds.toLong() * 1000
+                    endpoint.apply {
+                        keepAliveTime = timeout
+                        connectTimeout = 1000
+                    }
+                }
+            }
+        )
+    )
+
+    return KtorUpdatesPoller(
+        executor,
+        timeoutSeconds,
+        oneTimeUpdatesLimit,
+        allowedUpdates,
+        exceptionsHandler,
+        updatesReceiver
+    )
+}
+
+class KtorUpdatesPoller(
     private val executor: RequestsExecutor,
-    private val requestsDelayMillis: Long = 1000,
-    private val scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    private val allowedUpdates: List<String>? = null,
-    private val block: UpdateReceiver<Update>
-) {
+    private val timeoutSeconds: Int? = null,
+    private val oneTimeUpdatesLimit: Int? = null,
+    private val allowedUpdates: List<String> = ALL_UPDATES_LIST,
+    private val exceptionsHandler: (Exception) -> Boolean = { it.printStackTrace(); true },
+    private val updatesReceiver: UpdateReceiver<Update>
+) : UpdatesPoller {
     private var lastHandledUpdate: UpdateIdentifier = 0L
     private val mediaGroup: MutableList<BaseMessageUpdate> = mutableListOf()
 
     private var pollerJob: Job? = null
 
     private suspend fun sendToBlock(data: Update) {
-        block(data)
+        updatesReceiver(data)
         lastHandledUpdate = data.updateId
     }
 
@@ -48,7 +86,9 @@ class UpdatesPoller(
         return executor.execute(
             GetUpdates(
                 lastHandledUpdate + 1, // incremented because offset counted from 1 when updates id from 0
-                allowed_updates = allowedUpdates
+                oneTimeUpdatesLimit,
+                timeoutSeconds,
+                allowedUpdates
             )
         ).map {
             it.asUpdate
@@ -72,16 +112,21 @@ class UpdatesPoller(
         pushMediaGroupUpdate()
     }
 
-    suspend fun start(): Job {
-        executor.executeUnsafe(DeleteWebhook())
-        return pollerJob ?: scope.launch {
+    @Synchronized
+    override fun start(scope: CoroutineScope) {
+        pollerJob ?: scope.launch {
+            executor.executeUnsafe(DeleteWebhook())
             while (isActive) {
-                delay(requestsDelayMillis)
                 try {
                     val updates = getUpdates()
                     handleUpdates(updates)
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    if (exceptionsHandler(e)) {
+                        continue
+                    } else {
+                        close()
+                        break
+                    }
                 }
             }
         }.also {
@@ -89,7 +134,8 @@ class UpdatesPoller(
         }
     }
 
-    suspend fun stop() {
-        pollerJob ?.cancelAndJoin()
+    @Synchronized
+    override fun close() {
+        pollerJob ?.cancel()
     }
 }

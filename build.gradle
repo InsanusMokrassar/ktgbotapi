@@ -1,4 +1,4 @@
-project.version = "0.14.2"
+project.version = "0.15.0"
 project.group = "com.github.insanusmokrassar"
 
 buildscript {
@@ -35,6 +35,7 @@ dependencies {
     implementation "joda-time:joda-time:$joda_time_version"
 
     implementation "io.ktor:ktor-client:$ktor_version"
+    implementation "io.ktor:ktor-client-cio:$ktor_version"
 
     implementation "io.ktor:ktor-server:$ktor_version"
     implementation "io.ktor:ktor-server-host-common:$ktor_version"

@@ -1,5 +1,17 @@
 # TelegramBotAPI changelog
 
+## 0.15.0
+
+* Old `UpdatesPoller` removed (was deprecated)
+* `UpdatesPoller` renamed to `KtorUpdatesPoller`
+* Now `KtorUpdatesPoller` do not use additional delay between requests and await answer from Telegram all timeout time
+* Added abstraction `UpdatesPoller`
+* Changed signature of the most count of `startGettingOfUpdates`:
+    * They are not `suspend` for now
+    * They are return `UpdatesPoller`
+    * They are using `timeoutMillis` instead of `requestsDelayMillis`
+* Added `CIO` ktor client engine as lightweight default engine for long-polling
+
 ## 0.14.0
 
 * Now library have no default engine for both webhooks and requests executor. It is required for clients to set

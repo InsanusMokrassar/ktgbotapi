@@ -1,26 +1,35 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.UpdatesPoller
+import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesPoller
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.KtorUpdatesPoller
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 
 typealias UpdateReceiver<T> = suspend (T) -> Unit
 
-suspend fun RequestsExecutor.startGettingOfUpdates(
-    requestsDelayMillis: Long = 1000,
+fun RequestsExecutor.startGettingOfUpdates(
+    timeoutMillis: Long = 30 * 1000,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
     block: UpdateReceiver<Update>
-): Job {
-    return UpdatesPoller(this, requestsDelayMillis, scope, allowedUpdates, block).start()
+): UpdatesPoller {
+    return KtorUpdatesPoller(
+        this,
+        timeoutMillis.toInt() / 1000,
+        allowedUpdates = allowedUpdates ?: ALL_UPDATES_LIST,
+        updatesReceiver = block
+    ).also {
+        it.start(scope)
+    }
 }
 
-suspend fun RequestsExecutor.startGettingOfUpdates(
+fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
@@ -35,9 +44,9 @@ suspend fun RequestsExecutor.startGettingOfUpdates(
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
-    requestsDelayMillis: Long = 1000,
+    timeoutMillis: Long = 30 * 1000,
     scope: CoroutineScope = GlobalScope
-): Job {
+): UpdatesPoller {
     val filter = UpdatesFilter(
         messageCallback,
         messageMediaGroupCallback,
@@ -55,14 +64,14 @@ suspend fun RequestsExecutor.startGettingOfUpdates(
         pollCallback
     )
     return startGettingOfUpdates(
-        requestsDelayMillis,
+        timeoutMillis,
         scope,
         filter.allowedUpdates,
         filter.asUpdateReceiver
     )
 }
 
-suspend fun RequestsExecutor.startGettingOfUpdates(
+fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     mediaGroupCallback: UpdateReceiver<MediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
@@ -74,9 +83,9 @@ suspend fun RequestsExecutor.startGettingOfUpdates(
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
-    requestsDelayMillis: Long = 1000,
+    timeoutMillis: Long = 30 * 1000,
     scope: CoroutineScope = GlobalScope
-): Job = startGettingOfUpdates(
+): UpdatesPoller = startGettingOfUpdates(
     messageCallback = messageCallback,
     messageMediaGroupCallback = mediaGroupCallback,
     editedMessageCallback = editedMessageCallback,
@@ -91,6 +100,6 @@ suspend fun RequestsExecutor.startGettingOfUpdates(
     shippingQueryCallback = shippingQueryCallback,
     preCheckoutQueryCallback = preCheckoutQueryCallback,
     pollCallback = pollCallback,
-    requestsDelayMillis = requestsDelayMillis,
+    timeoutMillis = timeoutMillis,
     scope = scope
 )
