@@ -2,6 +2,8 @@
 
 ## 0.16.0 Bot API 4.3
 
+* `LoginURL` and `LoginURLInlineKeyboardButton` has been added
+
 ## 0.15.0
 
 * Old `UpdatesPoller` removed (was deprecated)

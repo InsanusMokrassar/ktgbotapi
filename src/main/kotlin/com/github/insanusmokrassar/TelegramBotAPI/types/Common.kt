@@ -84,6 +84,12 @@ const val lastErrorDateField = "last_error_date"
 const val lastErrorMessageField = "last_error_message"
 const val votesCountField = "voter_count"
 const val isClosedField = "is_closed"
+const val loginUrlField = "login_url"
+const val forwardTextField = "forward_text"
+const val botUsernameField = "bot_username"
+
+
+const val requestWriteAccessField = "request_write_access"
 
 
 const val photoUrlField = "photo_url"
