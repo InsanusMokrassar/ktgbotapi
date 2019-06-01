@@ -87,6 +87,7 @@ const val isClosedField = "is_closed"
 const val loginUrlField = "login_url"
 const val forwardTextField = "forward_text"
 const val botUsernameField = "bot_username"
+const val switchInlineQueryCurrentChatField = "switch_inline_query_current_chat"
 
 
 const val requestWriteAccessField = "request_write_access"
