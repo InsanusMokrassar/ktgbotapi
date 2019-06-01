@@ -3,6 +3,7 @@
 ## 0.16.0 Bot API 4.3
 
 * `LoginURL` and `LoginURLInlineKeyboardButton` has been added
+* `replyMarkup` field was added to the `CommonMessage` objects via `AbleToBeMarkedUp` interface
 
 ## 0.15.0
 

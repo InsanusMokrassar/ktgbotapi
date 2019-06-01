@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntitiesSerializer
+import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.GroupChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
@@ -82,7 +83,9 @@ data class RawMessage(
     private val connected_website: String? = null,
 
     // passport property
-    private val passport_data: Unit? = null
+    private val passport_data: Unit? = null,
+
+    private val reply_markup: InlineKeyboardMarkup? = null
 ) {
     @Transient
     private val content: MessageContent? by lazy {
@@ -227,7 +230,8 @@ data class RawMessage(
                         },
                         edit_date ?.asDate,
                         forwarded,
-                        reply_to_message ?.asMessage
+                        reply_to_message ?.asMessage,
+                        reply_markup
                     )
                     else -> CommonMediaGroupMessage(
                         messageId,
@@ -242,7 +246,8 @@ data class RawMessage(
                         },
                         edit_date ?.asDate,
                         forwarded,
-                        reply_to_message ?.asMessage
+                        reply_to_message ?.asMessage,
+                        reply_markup
                     )
                 }
             } ?: when (chat) {
@@ -254,6 +259,7 @@ data class RawMessage(
                     edit_date ?.asDate,
                     forwarded,
                     reply_to_message ?.asMessage,
+                    reply_markup,
                     author_signature
                 )
                 else -> CommonMessageImpl(
@@ -265,6 +271,7 @@ data class RawMessage(
                     edit_date ?.asDate,
                     forwarded,
                     reply_to_message ?.asMessage,
+                    reply_markup,
                     paymentInfo
                 )
             }

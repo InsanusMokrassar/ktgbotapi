@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.MediaGroupIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
@@ -16,5 +17,6 @@ data class ChannelMediaGroupMessage(
     override val content: MediaGroupContent,
     override val editDate: DateTime?,
     override val forwarded: ForwardedMessage?,
-    override val replyTo: Message?
+    override val replyTo: Message?,
+    override val replyMarkup: InlineKeyboardMarkup?
 ) : MediaGroupMessage
