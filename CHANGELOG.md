@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.16.0 Bot API 4.3
+
 ## 0.15.0
 
 * Old `UpdatesPoller` removed (was deprecated)
