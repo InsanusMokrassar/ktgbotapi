@@ -5,6 +5,7 @@
 * `LoginURL` and `LoginURLInlineKeyboardButton` has been added
 * `replyMarkup` field was added to the `CommonMessage` objects via `AbleToBeMarkedUp` interface
 * `SwitchInlineQueryCurrentChatInlineKeyboardButton#switchInlineQueryCurrentChat` field fixed
+* `InlineKeyboardButton` now is sealed class and all its possible realisations are inside of its class file
 
 ## 0.15.0
 

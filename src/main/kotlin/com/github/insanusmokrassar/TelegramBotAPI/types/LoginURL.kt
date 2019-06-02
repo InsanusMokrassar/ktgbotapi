@@ -1,15 +1,7 @@
-package com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardButtons
+package com.github.insanusmokrassar.TelegramBotAPI.types
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-
-@Serializable
-data class LoginURLInlineKeyboardButton(
-    override val text: String,
-    @SerialName(loginUrlField)
-    val loginUrl: LoginURL
-) : InlineKeyboardButton
 
 @Serializable
 data class LoginURL(
