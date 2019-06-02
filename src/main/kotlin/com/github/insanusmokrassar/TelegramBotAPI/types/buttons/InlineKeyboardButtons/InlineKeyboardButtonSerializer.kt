@@ -1,34 +1,29 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardButtons
 
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonElementSerializer
+import kotlinx.serialization.json.*
 
 object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardButtons.InlineKeyboardButton")
 
-    private val serializers = listOf(
-        CallbackDataInlineKeyboardButton.serializer(),
-        LoginURLInlineKeyboardButton.serializer(),
-        PayInlineKeyboardButton.serializer(),
-        SwitchInlineQueryInlineKeyboardButton.serializer(),
-        SwitchInlineQueryCurrentChatInlineKeyboardButton.serializer(),
-        URLInlineKeyboardButton.serializer()
-    )
+    private fun resolveSerializer(json: JsonObject): KSerializer<out InlineKeyboardButton> {
+        return when {
+            json[callbackDataField] != null -> CallbackDataInlineKeyboardButton.serializer()
+            json[loginUrlField] != null -> LoginURLInlineKeyboardButton.serializer()
+            json[payField] != null -> PayInlineKeyboardButton.serializer()
+            json[switchInlineQueryField] != null -> SwitchInlineQueryInlineKeyboardButton.serializer()
+            json[switchInlineQueryCurrentChatField] != null -> SwitchInlineQueryCurrentChatInlineKeyboardButton.serializer()
+            json[urlField] != null -> URLInlineKeyboardButton.serializer()
+            else -> throw IllegalArgumentException("Can't find correct serializer for inline button serialized as $json")
+        }
+    }
 
     override fun deserialize(decoder: Decoder): InlineKeyboardButton {
         val json = JsonElementSerializer.deserialize(decoder)
 
-        serializers.forEach {
-            try {
-                return Json.nonstrict.fromJson(it, json)
-            } catch (e: SerializationException) {
-                e
-            }
-        }
-
-        throw IllegalArgumentException("There is no known type of serializer for \"$json\" as inline button")
+        return Json.nonstrict.fromJson(resolveSerializer(json.jsonObject), json)
     }
 
     override fun serialize(encoder: Encoder, obj: InlineKeyboardButton) {

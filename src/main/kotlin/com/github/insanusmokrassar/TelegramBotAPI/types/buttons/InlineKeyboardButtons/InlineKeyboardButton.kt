@@ -12,6 +12,7 @@ sealed class InlineKeyboardButton {
 @Serializable
 data class PayInlineKeyboardButton(
     override val text: String,
+    @SerialName(payField)
     val pay: Boolean
 ) : InlineKeyboardButton()
 
@@ -40,12 +41,13 @@ data class SwitchInlineQueryCurrentChatInlineKeyboardButton(
 @Serializable
 data class SwitchInlineQueryInlineKeyboardButton(
     override val text: String,
-    @SerialName("switch_inline_query")
+    @SerialName(switchInlineQueryField)
     val switchInlineQuery: String
 ) : InlineKeyboardButton()
 
 @Serializable
 data class URLInlineKeyboardButton(
     override val text: String,
+    @SerialName(urlField)
     val url: String
 ) : InlineKeyboardButton()
