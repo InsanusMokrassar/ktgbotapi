@@ -84,6 +84,14 @@ const val lastErrorDateField = "last_error_date"
 const val lastErrorMessageField = "last_error_message"
 const val votesCountField = "voter_count"
 const val isClosedField = "is_closed"
+const val loginUrlField = "login_url"
+const val forwardTextField = "forward_text"
+const val botUsernameField = "bot_username"
+const val switchInlineQueryCurrentChatField = "switch_inline_query_current_chat"
+const val switchInlineQueryField = "switch_inline_query"
+
+
+const val requestWriteAccessField = "request_write_access"
 
 
 const val photoUrlField = "photo_url"
@@ -192,6 +200,7 @@ const val resultsField = "results"
 const val certificateField = "certificate"
 const val questionField = "question"
 const val optionsField = "options"
+const val payField = "pay"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"

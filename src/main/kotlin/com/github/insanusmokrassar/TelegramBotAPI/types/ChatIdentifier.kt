@@ -20,6 +20,8 @@ val ChatId.link: String
 typealias UserId = ChatId
 
 fun Identifier.toChatId(): ChatId = ChatId(this)
+fun Int.toChatId(): ChatId = toLong().toChatId()
+fun Byte.toChatId(): ChatId = toLong().toChatId()
 
 @Serializable(ChatIdentifierSerializer::class)
 data class Username(
@@ -32,7 +34,7 @@ data class Username(
     }
 }
 
-fun String.asUsername(): Username = Username(this)
+fun String.toUsername(): Username = Username(this)
 
 @Serializer(ChatIdentifier::class)
 internal class ChatIdentifierSerializer: KSerializer<ChatIdentifier> {

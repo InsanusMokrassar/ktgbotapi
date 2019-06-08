@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 0.16.0 Bot API 4.3
+
+* `LoginURL` and `LoginURLInlineKeyboardButton` has been added
+* `replyMarkup` field was added to the `CommonMessage` objects via `AbleToBeMarkedUp` interface
+* `SwitchInlineQueryCurrentChatInlineKeyboardButton#switchInlineQueryCurrentChat` field fixed
+* `InlineKeyboardButton` now is sealed class and all its possible realisations are inside of its class file
+* `String#asUsername` method renamed to `String#toUsername`
+* Several `toChatId` extensions added
+
 ## 0.15.0
 
 * Old `UpdatesPoller` removed (was deprecated)

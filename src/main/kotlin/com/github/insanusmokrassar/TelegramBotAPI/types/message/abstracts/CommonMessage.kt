@@ -6,4 +6,5 @@ interface CommonMessage<T: MessageContent> : Message,
     AbleToBeForwardedMessage,
     AbleToBeEditedMessage,
     AbleToReplyMessage,
+    AbleToBeMarkedUp,
     ContentMessage<T>
