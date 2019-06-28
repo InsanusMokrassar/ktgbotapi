@@ -1,12 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RegularTextMessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent
 
-fun CaptionedMediaContent.fullEntitiesList(): List<MessageEntity> = caption ?.let {
+fun CaptionedInput.fullEntitiesList(): List<MessageEntity> = caption ?.let {
     convertToFullMessageEntityList(it, captionEntities)
 } ?: emptyList()
 

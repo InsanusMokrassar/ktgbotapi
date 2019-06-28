@@ -9,6 +9,12 @@
 * `String#asUsername` method renamed to `String#toUsername`
 * Several `toChatId` extensions added
 
+### 0.16.1
+
+* Now old uncommon `CaptionedMediaContent` and `CaptionedInputMedia` are replaced by almost the same
+interfaces `CaptionedInput` and `CaptionedOutput`. They are both implementing `Captioned` interface
+* `AnimationContent` now is `CaptionedInput`
+
 ## 0.15.0
 
 * Old `UpdatesPoller` removed (was deprecated)

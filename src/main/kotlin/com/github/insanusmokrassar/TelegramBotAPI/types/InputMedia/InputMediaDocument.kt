@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
@@ -14,7 +15,7 @@ data class InputMediaDocument(
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
     override val thumb: InputFile? = null
-) : InputMedia, ThumbedInputMedia, CaptionedInputMedia {
+) : InputMedia, ThumbedInputMedia, CaptionedOutput {
     override val type: String = "document"
 
     @SerialName(mediaField)

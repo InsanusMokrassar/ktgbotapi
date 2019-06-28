@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
@@ -17,7 +18,7 @@ data class InputMediaAnimation(
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, CaptionedInputMedia {
+) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, CaptionedOutput {
     override val type: String = "animation"
 
     @SerialName(mediaField)

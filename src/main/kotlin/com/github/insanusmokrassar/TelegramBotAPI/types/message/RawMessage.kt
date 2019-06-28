@@ -122,7 +122,12 @@ data class RawMessage(
                 caption,
                 adaptedCaptionEntities
             )
-            animation != null -> AnimationContent(animation, document)
+            animation != null -> AnimationContent(
+                animation,
+                document,
+                caption,
+                adaptedCaptionEntities
+            )
             sticker != null -> StickerContent(sticker)
             game != null -> GameContent(game)
             video_note != null -> VideoNoteContent(video_note)

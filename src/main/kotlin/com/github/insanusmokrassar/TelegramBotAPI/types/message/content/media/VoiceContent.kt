@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendVoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
@@ -17,7 +18,7 @@ data class VoiceContent(
     override val media: VoiceFile,
     override val caption: String? = null,
     override val captionEntities: List<MessageEntity> = emptyList()
-) : MediaContent, CaptionedMediaContent {
+) : MediaContent, CaptionedInput {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

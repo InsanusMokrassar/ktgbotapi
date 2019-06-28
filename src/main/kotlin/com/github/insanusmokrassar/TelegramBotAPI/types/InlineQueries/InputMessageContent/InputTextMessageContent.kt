@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InputMessageContent
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Captioned
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.DisableWebPagePreview
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
@@ -18,4 +18,4 @@ data class InputTextMessageContent(
     override val parseMode: ParseMode? = null,
     @SerialName(disableWebPagePreviewField)
     override val disableWebPagePreview: Boolean? = null
-) : Captioned, DisableWebPagePreview, InputMessageContent
+) : CaptionedOutput, DisableWebPagePreview, InputMessageContent

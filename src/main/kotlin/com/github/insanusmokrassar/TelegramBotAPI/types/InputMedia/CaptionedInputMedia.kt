@@ -1,8 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput
 
-interface CaptionedInputMedia: InputMedia {
-    val caption: String?
-    val parseMode: ParseMode?
-}
+@Deprecated(
+    "Deprecated due to replace by common type CaptionedOutput",
+    ReplaceWith("CaptionedOutput", "com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput")
+)
+typealias CaptionedInputMedia = CaptionedOutput
