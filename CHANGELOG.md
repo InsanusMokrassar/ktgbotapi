@@ -9,6 +9,8 @@
 * `String#asUsername` method renamed to `String#toUsername`
 * Several `toChatId` extensions added
 
+### 0.16.1
+
 ## 0.15.0
 
 * Old `UpdatesPoller` removed (was deprecated)
