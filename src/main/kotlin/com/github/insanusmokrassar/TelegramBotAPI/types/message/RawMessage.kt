@@ -107,6 +107,12 @@ data class RawMessage(
                 caption,
                 adaptedCaptionEntities
             )
+            animation != null -> AnimationContent(
+                animation,
+                document,
+                caption,
+                adaptedCaptionEntities
+            )
             document != null -> DocumentContent(
                 document,
                 caption,
@@ -119,12 +125,6 @@ data class RawMessage(
             )
             photo != null -> PhotoContent(
                 photo.toList(),
-                caption,
-                adaptedCaptionEntities
-            )
-            animation != null -> AnimationContent(
-                animation,
-                document,
                 caption,
                 adaptedCaptionEntities
             )
