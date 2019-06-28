@@ -13,6 +13,7 @@
 
 * Now old uncommon `CaptionedMediaContent` and `CaptionedInputMedia` are replaced by almost the same
 interfaces `CaptionedInput` and `CaptionedOutput`. They are both implementing `Captioned` interface
+* `AnimationContent` now is `CaptionedInput`
 
 ## 0.15.0
 
