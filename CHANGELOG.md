@@ -11,6 +11,9 @@
 
 ### 0.16.1
 
+* Now old uncommon `CaptionedMediaContent` and `CaptionedInputMedia` are replaced by almost the same
+interfaces `CaptionedInput` and `CaptionedOutput`. They are both implementing `Captioned` interface
+
 ## 0.15.0
 
 * Old `UpdatesPoller` removed (was deprecated)

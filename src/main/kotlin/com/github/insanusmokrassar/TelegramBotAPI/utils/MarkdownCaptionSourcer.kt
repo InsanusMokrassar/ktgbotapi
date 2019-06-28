@@ -1,10 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.MarkdownParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.captionLength
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.textLength
 
 @Deprecated(
@@ -31,9 +31,9 @@ fun createMarkdownText(
         "com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaptions"
     )
 )
-fun CaptionedMediaContent.toMarkdownCaption(): String? = toMarkdownCaptions().firstOrNull()
+fun CaptionedInput.toMarkdownCaption(): String? = toMarkdownCaptions().firstOrNull()
 
-fun CaptionedMediaContent.toMarkdownCaptions(): List<String> = createMarkdownText(
+fun CaptionedInput.toMarkdownCaptions(): List<String> = createMarkdownText(
     fullEntitiesList(),
     captionLength.endInclusive + 1
 )
