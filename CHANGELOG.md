@@ -8,6 +8,8 @@
 * Joda Time version `2.10.1` -> `2.10.3`
 * Ktor version `1.1.4` -> `1.2.2`
 
+* `RequestsExecutor` now is `Closeable`
+
 ## 0.16.0 Bot API 4.3
 
 * `LoginURL` and `LoginURLInlineKeyboardButton` has been added
