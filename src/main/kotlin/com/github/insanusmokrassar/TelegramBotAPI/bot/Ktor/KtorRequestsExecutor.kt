@@ -83,4 +83,8 @@ class KtorRequestsExecutor(
             }
         }
     }
+
+    override fun close() {
+        client.close()
+    }
 }
