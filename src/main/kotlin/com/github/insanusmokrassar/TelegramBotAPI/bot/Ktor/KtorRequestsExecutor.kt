@@ -9,6 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestL
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
+import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall
 import io.ktor.client.engine.HttpClientEngine
@@ -17,22 +18,33 @@ import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 
 class KtorRequestsExecutor(
-    token: String,
+    telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     private val client: HttpClient = HttpClient(),
-    hostUrl: String = "https://api.telegram.org",
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
     private val requestsLimiter: RequestLimiter = EmptyLimiter,
     private val jsonFormatter: Json = Json.nonstrict
-) : BaseRequestsExecutor(token, hostUrl) {
+) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
+
+    @Deprecated("Deprecated due to new TelegramAPIUrlKeeper API")
+    constructor(
+        token: String,
+        client: HttpClient = HttpClient(),
+        hostUrl: String = "https://api.telegram.org",
+        callsFactories: List<KtorCallFactory> = emptyList(),
+        excludeDefaultFactories: Boolean = false,
+        requestsLimiter: RequestLimiter = EmptyLimiter,
+        jsonFormatter: Json = Json.nonstrict
+    ) : this(TelegramAPIUrlsKeeper(token, hostUrl), client, callsFactories, excludeDefaultFactories, requestsLimiter, jsonFormatter)
+
+    @Deprecated("Deprecated due to new TelegramAPIUrlKeeper API")
     constructor(
         token: String,
         engine: HttpClientEngine? = null,
         hostUrl: String = "https://api.telegram.org"
     ) : this(
-        token,
-        engine ?.let { HttpClient(engine) } ?: HttpClient(),
-        hostUrl
+        TelegramAPIUrlsKeeper(token, hostUrl),
+        engine ?.let { HttpClient(engine) } ?: HttpClient()
     )
 
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
@@ -49,7 +61,7 @@ class KtorRequestsExecutor(
             for (factory in callsFactories) {
                 call = factory.prepareCall(
                     client,
-                    baseUrl,
+                    telegramAPIUrlsKeeper.commonAPIUrl,
                     request
                 )
                 if (call != null) {

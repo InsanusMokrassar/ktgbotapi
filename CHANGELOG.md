@@ -9,6 +9,8 @@
 * Ktor version `1.1.4` -> `1.2.2`
 
 * `RequestsExecutor` now is `Closeable`
+* `TelegramAPIUrlsKeeper` was added to provide more comfortable work with file urls and other things
+like this
 
 ## 0.16.0 Bot API 4.3
 

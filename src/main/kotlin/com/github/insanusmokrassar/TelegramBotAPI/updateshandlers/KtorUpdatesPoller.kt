@@ -18,7 +18,7 @@ import io.ktor.client.engine.cio.CIO
 import kotlinx.coroutines.*
 
 fun KtorUpdatesPoller(
-    token: String,
+    telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     timeoutSeconds: Int? = null,
     oneTimeUpdatesLimit: Int? = null,
     allowedUpdates: List<String> = ALL_UPDATES_LIST,
@@ -26,7 +26,7 @@ fun KtorUpdatesPoller(
     updatesReceiver: UpdateReceiver<Update>
 ): KtorUpdatesPoller {
     val executor = KtorRequestsExecutor(
-        token,
+        telegramAPIUrlsKeeper,
         HttpClient(
             CIO.create {
                 timeoutSeconds ?.let { _ ->
@@ -42,6 +42,25 @@ fun KtorUpdatesPoller(
 
     return KtorUpdatesPoller(
         executor,
+        timeoutSeconds,
+        oneTimeUpdatesLimit,
+        allowedUpdates,
+        exceptionsHandler,
+        updatesReceiver
+    )
+}
+
+@Deprecated("Deprecated due to new TelegramAPIUrlsKeeper")
+fun KtorUpdatesPoller(
+    token: String,
+    timeoutSeconds: Int? = null,
+    oneTimeUpdatesLimit: Int? = null,
+    allowedUpdates: List<String> = ALL_UPDATES_LIST,
+    exceptionsHandler: (Exception) -> Boolean = { true },
+    updatesReceiver: UpdateReceiver<Update>
+): KtorUpdatesPoller {
+    return KtorUpdatesPoller(
+        TelegramAPIUrlsKeeper(token),
         timeoutSeconds,
         oneTimeUpdatesLimit,
         allowedUpdates,
