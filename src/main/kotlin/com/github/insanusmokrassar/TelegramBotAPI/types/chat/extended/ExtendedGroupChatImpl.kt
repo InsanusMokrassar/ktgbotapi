@@ -14,7 +14,7 @@ data class ExtendedGroupChatImpl(
     @SerialName(titleField)
     override val title: String,
     @SerialName(photoField)
-    override val chatPhoto: ChatPhoto,
+    override val chatPhoto: ChatPhoto? = null,
     @SerialName(permissionsField)
     override val permissions: ChatPermissions,
     @SerialName(descriptionField)

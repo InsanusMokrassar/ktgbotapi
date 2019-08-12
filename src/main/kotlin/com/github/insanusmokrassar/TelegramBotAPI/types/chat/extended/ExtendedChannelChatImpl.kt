@@ -15,7 +15,7 @@ data class ExtendedChannelChatImpl(
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(photoField)
-    override val chatPhoto: ChatPhoto,
+    override val chatPhoto: ChatPhoto? = null,
     @SerialName(descriptionField)
     override val description: String = "",
     @SerialName(inviteLinkField)

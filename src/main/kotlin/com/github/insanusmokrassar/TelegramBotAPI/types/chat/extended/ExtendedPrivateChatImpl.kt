@@ -10,7 +10,7 @@ data class ExtendedPrivateChatImpl(
     @SerialName(idField)
     override val id: ChatId,
     @SerialName(photoField)
-    override val chatPhoto: ChatPhoto,
+    override val chatPhoto: ChatPhoto? = null,
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(firstNameField)

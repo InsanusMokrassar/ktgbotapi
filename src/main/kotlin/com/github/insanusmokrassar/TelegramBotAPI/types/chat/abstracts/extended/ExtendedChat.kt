@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable(ExtendedChatSerializer::class)
 interface ExtendedChat : Chat {
-    val chatPhoto: ChatPhoto
+    val chatPhoto: ChatPhoto?
 }
