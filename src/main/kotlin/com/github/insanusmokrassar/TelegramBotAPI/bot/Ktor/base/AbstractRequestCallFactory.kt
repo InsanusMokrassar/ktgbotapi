@@ -29,7 +29,6 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
             accept(ContentType.Application.Json)
 
             body = preparedBody
-            build()
         }
     }
 
