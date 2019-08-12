@@ -1,9 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.extended.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.typeField
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
 import kotlinx.serialization.json.Json

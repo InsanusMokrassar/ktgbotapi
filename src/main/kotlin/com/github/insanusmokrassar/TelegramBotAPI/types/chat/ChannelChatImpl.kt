@@ -1,9 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.ChannelChat
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
