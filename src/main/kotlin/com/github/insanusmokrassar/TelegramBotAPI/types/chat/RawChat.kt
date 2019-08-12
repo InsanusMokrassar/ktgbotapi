@@ -29,6 +29,7 @@ data class RawChat(
             "group" -> GroupChatImpl(
                 id,
                 title,
+                description,
                 invite_link,
                 chatPhoto,
                 pinned_message,

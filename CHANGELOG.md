@@ -20,6 +20,7 @@ Changes according to [July 29, 2019 Telegram Bot API update](https://core.telegr
 * `SpecialRightsChatMember` was added for administrators and restricted members rights union, chat members abstractions
 was replaced into `abstracts` package and available permissions was updated
 * `RestrictChatMember` request now accept `permissions` object instead of separated permissions
+* All `GroupChat` instances have description
 
 ## 0.16.0 Bot API 4.3
 

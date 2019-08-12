@@ -16,4 +16,4 @@ data class SupergroupChat(
     val stickerSetName: String? = null,
     val canSetStickerSet: Boolean = false,
     override val permissions: ChatPermissions? = null
-) : GroupChat, UsernameChat, DescriptionChat
+) : GroupChat, UsernameChat
