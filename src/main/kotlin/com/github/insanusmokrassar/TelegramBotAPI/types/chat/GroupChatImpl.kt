@@ -11,5 +11,6 @@ data class GroupChatImpl(
     override val allMembersAreAdmins: Boolean,
     override val inviteLink: String? = null,
     override val chatPhoto: ChatPhoto? = null,
-    override val pinnedMessage: RawMessage? = null
+    override val pinnedMessage: RawMessage? = null,
+    override val permissions: ChatPermissions? = null
 ) : GroupChat

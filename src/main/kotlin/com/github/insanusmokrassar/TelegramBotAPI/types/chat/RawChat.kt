@@ -21,7 +21,8 @@ data class RawChat(
     private val sticker_set_name: String? = null,
     private val can_set_sticker_set: Boolean? = null,
     @SerialName("photo")
-    override val chatPhoto: ChatPhoto? = null
+    override val chatPhoto: ChatPhoto? = null,
+    private val permissions: ChatPermissions? = null
 ) : Chat {
     fun extractChat(): Chat {
         return when (type) {
@@ -31,7 +32,9 @@ data class RawChat(
                 title,
                 all_members_are_administrators ?: false,
                 invite_link,
-                chatPhoto
+                chatPhoto,
+                pinned_message,
+                permissions
             )
             "supergroup" -> SupergroupChat(
                 id,
@@ -43,7 +46,8 @@ data class RawChat(
                 chatPhoto,
                 pinned_message,
                 sticker_set_name,
-                can_set_sticker_set ?: false
+                can_set_sticker_set ?: false,
+                permissions
             )
             "channel" -> ChannelChat(
                 id,

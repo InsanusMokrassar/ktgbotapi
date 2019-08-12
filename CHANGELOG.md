@@ -15,6 +15,7 @@ like this
 Changes according to [July 29, 2019 Telegram Bot API update](https://core.telegram.org/bots/api#july-29-2019):
 
 * `Sticker` and `StickerSet` now have field `isAnimated`
+* `ChatPermissions` object was added, `GroupChat` interface got `permissions` field, request `SetChatPermissions` was added
 
 ## 0.16.0 Bot API 4.3
 
