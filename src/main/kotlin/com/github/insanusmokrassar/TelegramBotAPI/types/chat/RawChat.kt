@@ -14,7 +14,6 @@ data class RawChat(
     private val username: Username? = null,
     private val first_name: String? = null,
     private val last_name: String? = null,
-    private val all_members_are_administrators: Boolean? = null,
     private val description: String? = null,
     private val invite_link: String? = null,
     private val pinned_message: RawMessage? = null,
@@ -30,7 +29,6 @@ data class RawChat(
             "group" -> GroupChatImpl(
                 id,
                 title,
-                all_members_are_administrators ?: false,
                 invite_link,
                 chatPhoto,
                 pinned_message,
@@ -41,7 +39,6 @@ data class RawChat(
                 title,
                 username,
                 description,
-                all_members_are_administrators ?: false,
                 invite_link,
                 chatPhoto,
                 pinned_message,

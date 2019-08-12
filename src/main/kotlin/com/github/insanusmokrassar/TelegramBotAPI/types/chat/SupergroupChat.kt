@@ -10,7 +10,6 @@ data class SupergroupChat(
     override val title: String? = null,
     override val username: Username? = null,
     override val description: String? = null,
-    override val allMembersAreAdmins: Boolean,
     override val inviteLink: String? = null,
     override val chatPhoto: ChatPhoto? = null,
     override val pinnedMessage: RawMessage? = null,
