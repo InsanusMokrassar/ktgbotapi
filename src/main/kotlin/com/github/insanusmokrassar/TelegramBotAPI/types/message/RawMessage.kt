@@ -31,11 +31,11 @@ data class RawMessage(
     @SerialName(dateField)
     val date: TelegramDate,
     @SerialName(chatField)
-    private val chat: RawChat,
+    private val chat: Chat,
     @SerialName(fromField)
     private val from: User? = null,
     private val forward_from: User? = null,
-    private val forward_from_chat: RawChat? = null,
+    private val forward_from_chat: Chat? = null,
     private val forward_from_message_id: MessageIdentifier? = null,
     private val forward_signature: ForwardSignature? = null,
     private val forward_sender_name: ForwardSenderName? = null,
@@ -150,7 +150,7 @@ data class RawMessage(
             forward_from_chat != null -> ForwardedFromChannelMessage(
                 forward_date,
                 forward_from_message_id ?: throw IllegalStateException("Channel forwarded message must contain message id, but was not"),
-                forward_from_chat.extractChat(),
+                forward_from_chat,
                 forward_signature
             )
             forward_from != null -> UserForwardedMessage(
@@ -194,8 +194,6 @@ data class RawMessage(
 
     @Transient
     val asMessage: Message by lazy {
-        val chat = chat.extractChat()
-
         chatEvent ?.let {
             chatEvent ->
             when (chat) {

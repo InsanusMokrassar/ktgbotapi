@@ -23,6 +23,7 @@ was replaced into `abstracts` package and available permissions was updated
 Other important changes:
 
 * Totally reworked chats hierarchy. `Extended` abstractions was added for cases when called `GetChat` request
+* `RawChat` boilerplate was removed and replaced by serializers
 * `RequestsExecutor` now is `Closeable`
 * `TelegramAPIUrlsKeeper` was added to provide more comfortable work with file urls and other things
 like this
