@@ -17,6 +17,9 @@ Changes according to [July 29, 2019 Telegram Bot API update](https://core.telegr
 * `Sticker` and `StickerSet` now have field `isAnimated`
 * `ChatPermissions` object was added, `GroupChat` interface got `permissions` field, request `SetChatPermissions` was added
 * `GroupChat` object now have no field `allMembersAreAdmins`
+* `SpecialRightsChatMember` was added for administrators and restricted members rights union, chat members abstractions
+was replaced into `abstracts` package and available permissions was updated
+* `RestrictChatMember` request now accept `permissions` object instead of separated permissions
 
 ## 0.16.0 Bot API 4.3
 

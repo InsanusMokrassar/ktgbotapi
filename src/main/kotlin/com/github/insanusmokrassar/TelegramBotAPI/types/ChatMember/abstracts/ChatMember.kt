@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember
+package com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
 
