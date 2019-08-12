@@ -17,6 +17,7 @@ typealias ShippingOptionIdentifier = String
 typealias StartParameter = String
 typealias InlineMessageIdentifier = String
 typealias PollIdentifier = String
+typealias StickerSetName = String
 
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024

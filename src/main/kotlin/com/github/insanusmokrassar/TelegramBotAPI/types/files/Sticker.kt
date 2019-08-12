@@ -20,7 +20,7 @@ data class Sticker(
     @SerialName(emojiField)
     val emoji: String? = null,
     @SerialName(stickerSetNameField)
-    val stickerSetName: String? = null,
+    val stickerSetName: StickerSetName? = null,
     @SerialName(isAnimatedField)
     val isAnimated: Boolean = false,
     @SerialName(maskPositionField)

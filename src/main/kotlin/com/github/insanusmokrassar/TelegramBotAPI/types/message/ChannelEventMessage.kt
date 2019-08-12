@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChannelChat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChannelChatImpl
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.ChannelChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.abstracts.ChannelEvent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ChatEventMessage
 import org.joda.time.DateTime

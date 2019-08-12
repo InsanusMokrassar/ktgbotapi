@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntitiesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.GroupChat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.games.Game
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.*
@@ -199,16 +199,16 @@ data class RawMessage(
         chatEvent ?.let {
             chatEvent ->
             when (chat) {
-                is GroupChat -> GroupEventMessage(
-                    messageId,
-                    chat,
-                    chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
-                    date.asDate
-                )
                 is SupergroupChat -> SupergroupEventMessage(
                     messageId,
                     chat,
                     chatEvent as? SupergroupEvent ?: throwWrongChatEvent(SupergroupEvent::class, chatEvent),
+                    date.asDate
+                )
+                is GroupChat -> GroupEventMessage(
+                    messageId,
+                    chat,
+                    chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
                     date.asDate
                 )
                 is ChannelChat -> ChannelEventMessage(

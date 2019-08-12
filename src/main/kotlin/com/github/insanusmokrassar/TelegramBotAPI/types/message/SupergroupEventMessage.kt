@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.SupergroupChat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.SupergroupChatImpl
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.SupergroupChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.abstracts.SupergroupEvent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ChatEventMessage
 import org.joda.time.DateTime

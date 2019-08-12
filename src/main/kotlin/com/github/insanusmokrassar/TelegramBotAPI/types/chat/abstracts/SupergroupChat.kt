@@ -1,3 +1,3 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts
 
-interface GroupChat : PublicChat
+interface SupergroupChat : GroupChat, SuperPublicChat

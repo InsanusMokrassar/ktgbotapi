@@ -1,7 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.IllegalChatRawObjectException
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedChat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.extended.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -20,43 +23,75 @@ data class RawChat(
     private val sticker_set_name: String? = null,
     private val can_set_sticker_set: Boolean? = null,
     @SerialName("photo")
-    override val chatPhoto: ChatPhoto? = null,
+    private val chatPhoto: ChatPhoto? = null,
     private val permissions: ChatPermissions? = null
 ) : Chat {
-    fun extractChat(): Chat {
+    private fun extractExtendedChat(): ExtendedChat {
         return when (type) {
-            "private" -> PrivateChat(id, username, first_name, last_name, chatPhoto)
-            "group" -> GroupChatImpl(
+            "private" -> ExtendedPrivateChatImpl(id, username, first_name ?: "", last_name ?: "", chatPhoto!!)
+            "group" -> ExtendedGroupChatImpl(
                 id,
-                title,
-                description,
+                title!!,
+                chatPhoto!!,
+                description ?: "",
                 invite_link,
-                chatPhoto,
-                pinned_message,
-                permissions
+                permissions!!,
+                pinned_message
             )
-            "supergroup" -> SupergroupChat(
+            "supergroup" -> ExtendedSupergroupChatImpl(
                 id,
-                title,
+                title!!,
                 username,
-                description,
+                chatPhoto!!,
+                description ?: "",
                 invite_link,
-                chatPhoto,
+                permissions!!,
                 pinned_message,
                 sticker_set_name,
-                can_set_sticker_set ?: false,
-                permissions
+                can_set_sticker_set ?: false
             )
-            "channel" -> ChannelChat(
+            "channel" -> ExtendedChannelChatImpl(
                 id,
-                title,
+                title!!,
                 username,
-                description,
+                chatPhoto!!,
+                description ?: "",
                 invite_link,
-                chatPhoto,
                 pinned_message
             )
             else -> throw IllegalArgumentException("Unknown type of chat")
+        }
+    }
+
+    private fun extractPreviewChat(): Chat {
+        return when (type) {
+            "private" -> PrivateChatImpl(id, username, first_name ?: "", last_name ?: "")
+            "group" -> GroupChatImpl(
+                id,
+                title!!
+            )
+            "supergroup" -> SupergroupChatImpl(
+                id,
+                title!!,
+                username
+            )
+            "channel" -> ChannelChatImpl(
+                id,
+                title!!,
+                username
+            )
+            else -> throw IllegalArgumentException("Unknown type of chat")
+        }
+    }
+
+    fun extractChat(): Chat {
+        return try {
+            when (chatPhoto) {
+                null -> extractPreviewChat()
+                else -> extractExtendedChat()
+            }
+        } catch (e: NullPointerException) {
+            throw IllegalChatRawObjectException(this)
         }
     }
 }

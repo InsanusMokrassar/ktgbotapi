@@ -5,5 +5,4 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ChatPhoto
 
 interface Chat {
     val id: ChatId
-    val chatPhoto: ChatPhoto?
 }
