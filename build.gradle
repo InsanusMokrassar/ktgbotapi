@@ -1,4 +1,4 @@
-project.version = "0.16.1"
+project.version = "0.17.0"
 project.group = "com.github.insanusmokrassar"
 
 buildscript {
@@ -30,15 +30,15 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
-    implementation "joda-time:joda-time:$joda_time_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+    api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
+    api "joda-time:joda-time:$joda_time_version"
 
-    implementation "io.ktor:ktor-client:$ktor_version"
-    implementation "io.ktor:ktor-client-cio:$ktor_version"
+    api "io.ktor:ktor-client:$ktor_version"
+    api "io.ktor:ktor-client-cio:$ktor_version"
 
-    implementation "io.ktor:ktor-server:$ktor_version"
-    implementation "io.ktor:ktor-server-host-common:$ktor_version"
+    api "io.ktor:ktor-server:$ktor_version"
+    api "io.ktor:ktor-server-host-common:$ktor_version"
 }
 
 compileKotlin {

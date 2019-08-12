@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.ChatMember
 import kotlinx.serialization.*
 
 @Serializable
@@ -32,6 +33,8 @@ data class RawChatMember(
     private val canSendMessages: Boolean = false,
     @SerialName(canSendMediaMessagesField)
     private val canSendMediaMessages: Boolean = false,
+    @SerialName(canSendPollsField)
+    private val canSendPolls: Boolean = false,
     @SerialName(canSendOtherMessagesField)
     private val canSendOtherMessages: Boolean = false,
     @SerialName(canAddWebPagePreviewsField)
@@ -60,8 +63,12 @@ data class RawChatMember(
                 isMember,
                 canSendMessages,
                 canSendMediaMessages,
+                canSendPolls,
                 canSendOtherMessages,
-                canAddWebPagePreviews
+                canAddWebPagePreviews,
+                canChangeInfo,
+                canInviteUsers,
+                canPinMessages
             )
             "left" -> LeftChatMember(user)
             "kicked" -> KickedChatMember(

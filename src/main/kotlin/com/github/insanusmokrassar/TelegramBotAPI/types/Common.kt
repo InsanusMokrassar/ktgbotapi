@@ -17,6 +17,7 @@ typealias ShippingOptionIdentifier = String
 typealias StartParameter = String
 typealias InlineMessageIdentifier = String
 typealias PollIdentifier = String
+typealias StickerSetName = String
 
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024
@@ -55,6 +56,7 @@ const val lastNameField = "last_name"
 const val languageCodeField = "language_code"
 const val textEntitiesField = "text_entities"
 const val stickerSetNameField = "set_name"
+const val stickerSetNameFullField = "sticker_set_name"
 const val maskPositionField = "mask_position"
 const val phoneNumberField = "phone_number"
 const val userIdField = "user_id"
@@ -89,6 +91,9 @@ const val forwardTextField = "forward_text"
 const val botUsernameField = "bot_username"
 const val switchInlineQueryCurrentChatField = "switch_inline_query_current_chat"
 const val switchInlineQueryField = "switch_inline_query"
+const val isAnimatedField = "is_animated"
+const val inviteLinkField = "invite_link"
+const val pinnedMessageField = "pinned_message"
 
 
 const val requestWriteAccessField = "request_write_access"
@@ -145,7 +150,9 @@ const val isMemberField = "is_member"
 const val canSendMessagesField = "can_send_messages"
 const val canSendMediaMessagesField = "can_send_media_messages"
 const val canSendOtherMessagesField = "can_send_other_messages"
+const val canSendPollsField = "can_send_polls"
 const val canAddWebPagePreviewsField = "can_add_web_page_previews"
+const val canSetStickerSetField = "can_set_sticker_set"
 
 const val canBeEditedField = "can_be_edited"
 const val canChangeInfoField = "can_change_info"
@@ -201,6 +208,8 @@ const val certificateField = "certificate"
 const val questionField = "question"
 const val optionsField = "options"
 const val payField = "pay"
+const val permissionsField = "permissions"
+const val typeField = "type"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"

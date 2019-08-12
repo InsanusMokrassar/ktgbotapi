@@ -3,6 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.utils.commandHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.commandMarkdown
 
+private val commandRegex = Regex("[/!][^@\\s]*")
+
 data class BotCommandMessageEntity(
     override val offset: Int,
     override val length: Int,
@@ -12,6 +14,6 @@ data class BotCommandMessageEntity(
     override val asHtmlSource: String = sourceString.commandHTML()
 
     val command: String by lazy {
-        sourceString.substring(1)// skip first symbol like "/" or "!"
+        commandRegex.find(sourceString) ?.value ?.substring(1) ?: sourceString.substring(1)// skip first symbol like "/" or "!"
     }
 }

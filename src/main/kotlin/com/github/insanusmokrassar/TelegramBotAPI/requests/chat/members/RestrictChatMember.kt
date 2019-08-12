@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.members
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.UntilDate
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChatPermissions
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -14,14 +15,8 @@ data class RestrictChatMember(
     override val userId: UserId,
     @SerialName(untilDateField)
     override val untilDate: TelegramDate? = null,
-    @SerialName(canSendMessagesField)
-    private val canSendMessages: Boolean? = null,
-    @SerialName(canSendMediaMessagesField)
-    private val canSendMediaMessages: Boolean? = null,
-    @SerialName(canSendOtherMessagesField)
-    private val canSendOtherMessages: Boolean? = null,
-    @SerialName(canAddWebPagePreviewsField)
-    private val canAddWebPagePreviews: Boolean? = null
+    @SerialName(permissionsField)
+    val permissions: ChatPermissions
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "restrictChatMember"
     override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer

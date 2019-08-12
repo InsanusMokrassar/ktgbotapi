@@ -4,8 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntitiesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.GroupChat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.games.Game
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.*
@@ -31,11 +30,11 @@ data class RawMessage(
     @SerialName(dateField)
     val date: TelegramDate,
     @SerialName(chatField)
-    private val chat: RawChat,
+    private val chat: Chat,
     @SerialName(fromField)
     private val from: User? = null,
     private val forward_from: User? = null,
-    private val forward_from_chat: RawChat? = null,
+    private val forward_from_chat: Chat? = null,
     private val forward_from_message_id: MessageIdentifier? = null,
     private val forward_signature: ForwardSignature? = null,
     private val forward_sender_name: ForwardSenderName? = null,
@@ -150,7 +149,7 @@ data class RawMessage(
             forward_from_chat != null -> ForwardedFromChannelMessage(
                 forward_date,
                 forward_from_message_id ?: throw IllegalStateException("Channel forwarded message must contain message id, but was not"),
-                forward_from_chat.extractChat(),
+                forward_from_chat,
                 forward_signature
             )
             forward_from != null -> UserForwardedMessage(
@@ -194,21 +193,19 @@ data class RawMessage(
 
     @Transient
     val asMessage: Message by lazy {
-        val chat = chat.extractChat()
-
         chatEvent ?.let {
             chatEvent ->
             when (chat) {
-                is GroupChat -> GroupEventMessage(
-                    messageId,
-                    chat,
-                    chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
-                    date.asDate
-                )
                 is SupergroupChat -> SupergroupEventMessage(
                     messageId,
                     chat,
                     chatEvent as? SupergroupEvent ?: throwWrongChatEvent(SupergroupEvent::class, chatEvent),
+                    date.asDate
+                )
+                is GroupChat -> GroupEventMessage(
+                    messageId,
+                    chat,
+                    chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
                     date.asDate
                 )
                 is ChannelChat -> ChannelEventMessage(

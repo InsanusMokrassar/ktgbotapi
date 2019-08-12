@@ -1,5 +1,35 @@
 # TelegramBotAPI changelog
 
+## 0.17.0
+
+Libraries updates:
+
+* Kotlin version `1.3.31` -> `1.3.41`
+* Kotlin Coroutines version `1.2.1` -> `1.2.2`
+* Kotlin Serialization version `0.11.0` -> `0.11.1`
+* Joda Time version `2.10.1` -> `2.10.3`
+* ktor version `1.1.4` -> `1.2.3`
+
+Changes according to [July 29, 2019 Telegram Bot API update](https://core.telegram.org/bots/api#july-29-2019):
+
+* `Sticker` and `StickerSet` now have field `isAnimated`
+* `ChatPermissions` object was added, `GroupChat` interface got `permissions` field, request `SetChatPermissions` was added
+* `GroupChat` object now have no field `allMembersAreAdmins`
+* `SpecialRightsChatMember` was added for administrators and restricted members rights union, chat members abstractions
+was replaced into `abstracts` package and available permissions was updated
+* `RestrictChatMember` request now accept `permissions` object instead of separated permissions
+* All `GroupChat` instances have description
+
+Other important changes:
+
+* Totally reworked chats hierarchy. `Extended` abstractions was added for cases when called `GetChat` request
+* `RawChat` boilerplate was removed and replaced by serializers
+* `BotCommandMessageEntity#command` will not contain `/`/`!` parts and also will cut outside of command begin token (`/`
+or `!`) and username token (`@`) or end of command (any space character)
+* `RequestsExecutor` now is `Closeable`
+* `TelegramAPIUrlsKeeper` was added to provide more comfortable work with file urls and other things
+like this
+
 ## 0.16.0 Bot API 4.3
 
 * `LoginURL` and `LoginURLInlineKeyboardButton` has been added

@@ -1,8 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember
 
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.AdministratorChatMember
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
 
-data class CreatorChatMember(override val user: User) : AdministratorChatMember {
+data class CreatorChatMember(override val user: User) :
+    AdministratorChatMember {
     override val canBeEdited: Boolean = true
     override val canChangeInfo: Boolean = true
     override val canPostMessages: Boolean = true
