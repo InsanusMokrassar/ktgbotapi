@@ -13,6 +13,8 @@ data class StickerSet(
     val title: String,
     @SerialName(stickersField)
     val stickers: List<Sticker>,
+    @SerialName(isAnimatedField)
+    val isAnimated: Boolean = false,
     @SerialName(containsMasksField)
     val containsMasks: Boolean = false
 )

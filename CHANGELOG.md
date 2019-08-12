@@ -12,6 +12,10 @@
 * `TelegramAPIUrlsKeeper` was added to provide more comfortable work with file urls and other things
 like this
 
+Changes according to [July 29, 2019 Telegram Bot API update](https://core.telegram.org/bots/api#july-29-2019):
+
+* `Sticker` and `StickerSet` now have field `isAnimated`
+
 ## 0.16.0 Bot API 4.3
 
 * `LoginURL` and `LoginURLInlineKeyboardButton` has been added

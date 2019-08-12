@@ -89,6 +89,7 @@ const val forwardTextField = "forward_text"
 const val botUsernameField = "bot_username"
 const val switchInlineQueryCurrentChatField = "switch_inline_query_current_chat"
 const val switchInlineQueryField = "switch_inline_query"
+const val isAnimatedField = "is_animated"
 
 
 const val requestWriteAccessField = "request_write_access"
