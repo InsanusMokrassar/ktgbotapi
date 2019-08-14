@@ -13,8 +13,8 @@ solves or unuseful moments are describing by official [Telegram Bot API](https:/
 This version compatible with [29th of July 2019 update of TelegramBotAPI](https://core.telegram.org/bots/api#july-29-2019).
 There is Telegram Passport API exception of implemented functionality, which was presented in
 [August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#august-27-2018) update. It will be implemented
-as soon as possible. All included and supported API can be found on
-[wiki](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Included-API).
+as soon as possible. All APIs that are not included are presented
+[wiki](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Not-included-API).
 
 ## How to implement library?
 
