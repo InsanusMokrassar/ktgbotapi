@@ -8,7 +8,8 @@
     incoming messages
     * `TelegramBotAPIMessageDeserializeOnlySerializer` was created. It **MUST NOT** be used to serialize messages
 * Update of description
-* `RawUpdate` not is internal and not available outside of library
+* `RawUpdate` now is internal and not available outside of library
+* `RawChatMember` now is internal and not available outside of library
 
 ## 0.17.0
 

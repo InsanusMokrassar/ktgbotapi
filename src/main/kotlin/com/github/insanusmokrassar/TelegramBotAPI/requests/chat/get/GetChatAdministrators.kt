@@ -4,6 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequ
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.RawChatMember
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.ChatMember
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.ChatMemberSerializerWithoutDeserialization
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer
@@ -12,7 +14,9 @@ import kotlinx.serialization.internal.ArrayListSerializer
 data class GetChatAdministrators(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier
-): ChatRequest, SimpleRequest<List<RawChatMember>> {
+): ChatRequest, SimpleRequest<List<ChatMember>> {
     override fun method(): String = "getChatAdministrators"
-    override fun resultDeserializer(): KSerializer<List<RawChatMember>> = ArrayListSerializer(RawChatMember.serializer())
+    override fun resultDeserializer(): KSerializer<List<ChatMember>> = ArrayListSerializer(
+        ChatMemberSerializerWithoutDeserialization
+    )
 }
