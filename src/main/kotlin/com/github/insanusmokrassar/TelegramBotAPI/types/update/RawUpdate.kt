@@ -14,10 +14,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.updateIdField
 import kotlinx.serialization.*
 
-// TODO:: add ShippingQuery type
-// TODO:: add PreCheckoutQuery type
 @Serializable
-data class RawUpdate constructor(
+internal data class RawUpdate constructor(
     @SerialName(updateIdField)
     val updateId: UpdateIdentifier,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)

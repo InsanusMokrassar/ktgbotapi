@@ -109,9 +109,7 @@ class KtorUpdatesPoller(
                 timeoutSeconds,
                 allowedUpdates
             )
-        ).map {
-            it.asUpdate
-        }
+        )
     }
 
     private suspend fun handleUpdates(updates: List<Update>) {
