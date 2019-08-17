@@ -2,19 +2,21 @@
 
 ## 0.18.0
 
-* `RawMessage` now is internal class
-* All `RawMessage` usages was replaced with `Message` interface
+* Made internal and not available outside of library:
+    * `RawMessage`
+    * `RawUpdate`
+    * `RawChatMember`
+    * `RawMessageEntity`
+    * `RawInlineQuery`
+    * `RawCallbackQuery`
+    * `RawChosenInlineResult`
+
+* All `RawMessage` usages was replaced with `Message` interface (with some of other raw classes was made the same things)
     * `TelegramBotAPIMessageDeserializationStrategy` was created. It was used for deserialization of Telegram Bot API
     incoming messages
     * `TelegramBotAPIMessageDeserializeOnlySerializer` was created. It **MUST NOT** be used to serialize messages
 * Update of description
-* `RawUpdate` now is internal and not available outside of library
-* `RawChatMember` now is internal and not available outside of library
 * Make `Game` object a little bit more standartizated
-* `RawMessageEntity` now is internal
-* `RawInlineQuery` now is internal
-* `RawCallbackQuery` now is internal
-* `RawChosenInlineResult` now is internal
 
 ## 0.17.0
 
