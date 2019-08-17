@@ -13,5 +13,5 @@ data class LeaveChat(
     override val chatId: ChatIdentifier
 ): ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "leaveChat"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

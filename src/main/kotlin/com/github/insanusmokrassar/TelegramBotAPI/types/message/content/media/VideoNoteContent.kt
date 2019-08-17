@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoNoteFile
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
 
 data class VideoNoteContent(
@@ -18,7 +18,7 @@ data class VideoNoteContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): Request<RawMessage> = createResend(chatId, null, null, disableNotification, replyToMessageId, replyMarkup)
+    ): Request<Message> = createResend(chatId, null, null, disableNotification, replyToMessageId, replyMarkup)
 
     fun createResend(
         chatId: ChatIdentifier,
@@ -27,7 +27,7 @@ data class VideoNoteContent(
         disableNotification: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): Request<RawMessage> = SendVideoNote(
+    ): Request<Message> = SendVideoNote(
         chatId,
         media.fileId,
         media.thumb ?.fileId,

@@ -9,7 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.HTMLParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.AudioFile
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlCaptions
 
@@ -23,7 +23,7 @@ data class AudioContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): Request<RawMessage> = SendAudio(
+    ): Request<Message> = SendAudio(
         chatId,
         media.fileId,
         media.thumb ?.fileId,

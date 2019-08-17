@@ -7,7 +7,7 @@ import kotlinx.serialization.serializer
 
 interface AnswerShippingQuery : SimpleRequest<Boolean> {
     override fun method(): String = "answerShippingQuery"
-    override fun resultSerializer(): KSerializer<Boolean> = Boolean.serializer()
+    override fun resultDeserializer(): KSerializer<Boolean> = Boolean.serializer()
 
     val shippingQueryId: ShippingQueryIdentifier
     val isOk: Boolean

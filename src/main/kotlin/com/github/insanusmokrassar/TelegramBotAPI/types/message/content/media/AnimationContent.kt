@@ -11,7 +11,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.AnimationFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.DocumentFile
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlCaptions
 
@@ -26,22 +26,12 @@ data class AnimationContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): Request<RawMessage> = createResend(chatId, toHtmlCaptions().firstOrNull(), HTMLParseMode, disableNotification, replyToMessageId, replyMarkup)
-
-    @Deprecated("Will be fully replaced by default method")
-    fun createResend(
-        chatId: ChatIdentifier,
-        caption: String?,
-        parseMode: ParseMode? = null,
-        disableNotification: Boolean = false,
-        replyToMessageId: MessageIdentifier? = null,
-        replyMarkup: KeyboardMarkup? = null
-    ): Request<RawMessage> = SendAnimation(
+    ): Request<Message> = SendAnimation(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        caption,
-        parseMode,
+        toHtmlCaptions().firstOrNull(),
+        HTMLParseMode,
         media.duration,
         media.width,
         media.height,

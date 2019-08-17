@@ -24,7 +24,7 @@ import kotlin.reflect.KClass
 
 // TODO:: add PassportData type
 @Serializable
-data class RawMessage(
+internal data class RawMessage(
     @SerialName(messageIdField)
     val messageId: MessageIdentifier,
     @SerialName(dateField)

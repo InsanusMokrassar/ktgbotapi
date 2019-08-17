@@ -5,7 +5,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.Replyi
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonObject
@@ -16,7 +17,7 @@ fun SendSticker(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<RawMessage> = SendStickerByFileId(
+): Request<Message> = SendStickerByFileId(
     chatId,
     sticker as? FileId,
     disableNotification,
@@ -41,16 +42,16 @@ data class SendStickerByFileId internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<RawMessage>, ReplyingMarkupSendMessageRequest<RawMessage> {
+) : SendMessageRequest<Message>, ReplyingMarkupSendMessageRequest<Message> {
     override fun method(): String = "sendSticker"
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }
 
 data class SendStickerByFile internal constructor(
     @Transient
     private val sendStickerByFileId: SendStickerByFileId,
     val sticker: MultipartFile
-) : MultipartRequest<RawMessage>, Request<RawMessage> by sendStickerByFileId {
+) : MultipartRequest<Message>, Request<Message> by sendStickerByFileId {
     override val mediaMap: Map<String, MultipartFile> = mapOf(stickerField to sticker)
     override val paramsJson: JsonObject = sendStickerByFileId.toJsonWithoutNulls(SendStickerByFileId.serializer())
 }

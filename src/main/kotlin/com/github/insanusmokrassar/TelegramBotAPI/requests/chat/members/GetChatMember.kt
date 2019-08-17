@@ -13,5 +13,5 @@ data class GetChatMember(
     override val userId: UserId
 ) : ChatMemberRequest<RawChatMember> {
     override fun method(): String = "getChatMember"
-    override fun resultSerializer(): KSerializer<RawChatMember> = RawChatMember.serializer()
+    override fun resultDeserializer(): KSerializer<RawChatMember> = RawChatMember.serializer()
 }

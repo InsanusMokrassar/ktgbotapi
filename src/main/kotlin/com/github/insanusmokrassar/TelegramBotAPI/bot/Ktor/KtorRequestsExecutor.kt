@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.newRequestExcep
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.extractResult
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
@@ -16,6 +17,7 @@ import io.ktor.client.engine.HttpClientEngine
 import io.ktor.util.cio.toByteArray
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElementSerializer
 
 class KtorRequestsExecutor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
@@ -74,11 +76,11 @@ class KtorRequestsExecutor(
             val content = call.response.use {
                 it.content.toByteArray().toString(Charsets.UTF_8)
             }
-            val responseObject = jsonFormatter.parse(
-                Response.serializer(request.resultSerializer()),
-                content
-            )
-            responseObject.result ?: responseObject.parameters ?.let {
+            val responseObject = jsonFormatter.extractResult(content)
+
+            val result = responseObject.result ?.let {
+                jsonFormatter.fromJson(request.resultDeserializer(), it)
+            } ?: responseObject.parameters ?.let {
                 val error = it.error
                 if (error is RetryAfterError) {
                     delay(error.leftToRetry)
@@ -93,6 +95,7 @@ class KtorRequestsExecutor(
                     "Can't get result object from $content"
                 )
             }
+            result
         }
     }
 

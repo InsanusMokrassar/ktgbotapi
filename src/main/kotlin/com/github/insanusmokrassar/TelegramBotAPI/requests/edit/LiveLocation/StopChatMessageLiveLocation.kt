@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditCh
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditReplyMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import kotlinx.serialization.*
 
 @Serializable
@@ -17,5 +18,5 @@ data class StopChatMessageLiveLocation(
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage, EditReplyMessage {
     override fun method(): String = "stopMessageLiveLocation"
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }

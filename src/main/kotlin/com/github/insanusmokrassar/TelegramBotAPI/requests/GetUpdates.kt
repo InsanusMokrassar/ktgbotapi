@@ -38,5 +38,5 @@ data class GetUpdates(
 ): SimpleRequest<List<RawUpdate>> {
     override fun method(): String = "getUpdates"
 
-    override fun resultSerializer(): KSerializer<List<RawUpdate>> = ArrayListSerializer(RawUpdate.serializer())
+    override fun resultDeserializer(): KSerializer<List<RawUpdate>> = ArrayListSerializer(RawUpdate.serializer())
 }

@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEnt
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlTexts
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownTexts
@@ -21,7 +21,7 @@ data class TextContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): Request<RawMessage> = SendMessage(
+    ): Request<Message> = SendMessage(
         chatId,
         toHtmlTexts().first(),
         HTMLParseMode,
@@ -36,7 +36,7 @@ data class TextContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): List<Request<RawMessage>> = createResends(
+    ): List<Request<Message>> = createResends(
         chatId,
         disableNotification,
         replyToMessageId,
@@ -50,7 +50,7 @@ data class TextContent(
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?,
         parseMode: ParseMode = HTMLParseMode
-    ): List<Request<RawMessage>> = when (parseMode) {
+    ): List<Request<Message>> = when (parseMode) {
         is MarkdownParseMode -> toMarkdownTexts()
         is HTMLParseMode -> toHtmlTexts()
     }.map {

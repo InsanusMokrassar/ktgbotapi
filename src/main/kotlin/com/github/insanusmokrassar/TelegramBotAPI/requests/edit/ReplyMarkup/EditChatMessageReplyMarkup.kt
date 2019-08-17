@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditCh
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditReplyMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import kotlinx.serialization.*
 
 const val editMessageReplyMarkupMethod = "editMessageReplyMarkup"
@@ -20,5 +21,5 @@ data class EditChatMessageReplyMarkup(
 ) : EditChatMessage, EditReplyMessage {
 
     override fun method(): String = editMessageReplyMarkupMethod
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }

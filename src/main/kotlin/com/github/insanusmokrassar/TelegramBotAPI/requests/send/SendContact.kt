@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.Replyi
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import kotlinx.serialization.*
 
 @Serializable
@@ -23,8 +24,8 @@ data class SendContact(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<RawMessage>,
-    ReplyingMarkupSendMessageRequest<RawMessage>
+) : SendMessageRequest<Message>,
+    ReplyingMarkupSendMessageRequest<Message>
 {
     constructor(
         chatId: ChatIdentifier,
@@ -43,7 +44,7 @@ data class SendContact(
     )
 
     override fun method(): String = "sendContact"
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }
 
 fun Contact.toRequest(

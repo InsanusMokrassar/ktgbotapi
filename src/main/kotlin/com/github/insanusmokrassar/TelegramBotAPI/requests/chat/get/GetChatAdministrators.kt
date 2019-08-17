@@ -14,5 +14,5 @@ data class GetChatAdministrators(
     override val chatId: ChatIdentifier
 ): ChatRequest, SimpleRequest<List<RawChatMember>> {
     override fun method(): String = "getChatAdministrators"
-    override fun resultSerializer(): KSerializer<List<RawChatMember>> = ArrayListSerializer(RawChatMember.serializer())
+    override fun resultDeserializer(): KSerializer<List<RawChatMember>> = ArrayListSerializer(RawChatMember.serializer())
 }

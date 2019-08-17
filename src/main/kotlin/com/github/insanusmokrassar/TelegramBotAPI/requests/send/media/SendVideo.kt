@@ -7,7 +7,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mapOfNotNull
 import kotlinx.serialization.*
 
@@ -24,7 +25,7 @@ fun SendVideo(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<RawMessage> {
+): Request<Message> {
     val videoAsFileId = (video as? FileId) ?.fileId
     val videoAsFile = video as? MultipartFile
     val thumbAsFileId = (thumb as? FileId) ?.fileId
@@ -81,13 +82,13 @@ data class SendVideoData internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<RawMessage>,
-    SendMessageRequest<RawMessage>,
-    ReplyingMarkupSendMessageRequest<RawMessage>,
-    TextableSendMessageRequest<RawMessage>,
-    ThumbedSendMessageRequest<RawMessage>,
-    DuratedSendMessageRequest<RawMessage>,
-    SizedSendMessageRequest<RawMessage>
+) : DataRequest<Message>,
+    SendMessageRequest<Message>,
+    ReplyingMarkupSendMessageRequest<Message>,
+    TextableSendMessageRequest<Message>,
+    ThumbedSendMessageRequest<Message>,
+    DuratedSendMessageRequest<Message>,
+    SizedSendMessageRequest<Message>
 {
     init {
         text ?.let {
@@ -98,7 +99,7 @@ data class SendVideoData internal constructor(
     }
 
     override fun method(): String = "sendVideo"
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }
 
 data class SendVideoFiles internal constructor(

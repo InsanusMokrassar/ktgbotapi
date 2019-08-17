@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 class GetMe : SimpleRequest<User> {
     override fun method(): String = "getMe"
-    override fun resultSerializer(): KSerializer<User> = User.serializer()
+    override fun resultDeserializer(): KSerializer<User> = User.serializer()
 }

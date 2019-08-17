@@ -21,5 +21,5 @@ data class SetStickerPositionInSet(
     }
 
     override fun method(): String = "setStickerPositionInSet"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

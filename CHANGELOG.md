@@ -2,6 +2,12 @@
 
 ## 0.18.0
 
+* `RawMessage` now is internal class
+* All `RawMessage` usages was replaced with `Message` interface
+    * `TelegramBotAPIMessageDeserializationStrategy` was created. It was used for deserialization of Telegram Bot API
+    incoming messages
+    * `TelegramBotAPIMessageDeserializeOnlySerializer` was created. It **MUST NOT** be used to serialize messages
+
 ## 0.17.0
 
 Libraries updates:

@@ -9,5 +9,5 @@ import kotlinx.serialization.internal.BooleanSerializer
 class DeleteWebhook : SimpleRequest<Boolean> {
     override fun method(): String = "deleteWebhook"
 
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

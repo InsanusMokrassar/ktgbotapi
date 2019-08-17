@@ -13,5 +13,5 @@ data class GetChatMembersCount(
     override val chatId: ChatIdentifier
 ): ChatRequest, SimpleRequest<Int> {
     override fun method(): String = "getChatMembersCount"
-    override fun resultSerializer(): KSerializer<Int> = IntSerializer
+    override fun resultDeserializer(): KSerializer<Int> = IntSerializer
 }

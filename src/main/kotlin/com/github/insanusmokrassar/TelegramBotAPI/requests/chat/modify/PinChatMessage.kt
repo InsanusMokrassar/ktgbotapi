@@ -16,5 +16,5 @@ data class PinChatMessage (
     override val disableNotification: Boolean = false
 ): ChatRequest, SimpleRequest<Boolean>, MessageAction, DisableNotification {
     override fun method(): String = "pinChatMessage"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

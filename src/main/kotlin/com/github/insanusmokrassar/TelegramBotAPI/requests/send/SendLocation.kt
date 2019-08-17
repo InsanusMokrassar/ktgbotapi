@@ -3,7 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.send
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import kotlinx.serialization.*
 
 // TODO:: Add location tracker for tracking location
@@ -23,11 +24,11 @@ data class SendLocation(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<RawMessage>,
-    ReplyingMarkupSendMessageRequest<RawMessage>,
-    PositionedSendMessageRequest<RawMessage>
+) : SendMessageRequest<Message>,
+    ReplyingMarkupSendMessageRequest<Message>,
+    PositionedSendMessageRequest<Message>
 {
 
     override fun method(): String = "sendLocation"
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }

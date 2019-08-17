@@ -8,14 +8,13 @@ import kotlinx.serialization.json.JsonObject
 @Serializable(RequestSerializer::class)
 interface Request<T: Any> {
     fun method(): String
-    fun resultSerializer(): KSerializer<T>
+    fun resultDeserializer(): DeserializationStrategy<T>
     fun json(): JsonObject = toJsonWithoutNulls(RequestSerializer)
 }
 object RequestSerializer : KSerializer<Request<*>> by ContextSerializer(Request::class)
 
-fun <T : Any> StringFormat.extractResult(
-    from: String,
-    dataSerializer: KSerializer<T>
-): Response<T> {
-    return parse(Response.serializer(dataSerializer), from)
+fun StringFormat.extractResult(
+    from: String
+): Response {
+    return parse(Response.serializer(), from)
 }

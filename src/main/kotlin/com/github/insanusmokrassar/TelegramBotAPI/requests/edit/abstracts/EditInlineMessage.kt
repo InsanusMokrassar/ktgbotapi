@@ -7,5 +7,5 @@ import kotlinx.serialization.internal.BooleanSerializer
 
 interface EditInlineMessage : SimpleRequest<Boolean> {
     val inlineMessageId: InlineMessageIdentifier
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }
