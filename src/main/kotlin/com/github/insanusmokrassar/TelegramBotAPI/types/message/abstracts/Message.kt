@@ -13,7 +13,7 @@ interface Message {
     val date: DateTime
 }
 
-object TelegramBotAPIMessageDeserializationStrategy : DeserializationStrategy<Message> {
+internal object TelegramBotAPIMessageDeserializationStrategy : DeserializationStrategy<Message> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("TelegramBotAPIMessageSerializer")
 
     override fun patch(decoder: Decoder, old: Message): Message = throw UpdateNotSupportedException(descriptor.name)
@@ -22,7 +22,7 @@ object TelegramBotAPIMessageDeserializationStrategy : DeserializationStrategy<Me
     }
 }
 
-object TelegramBotAPIMessageDeserializeOnlySerializer : KSerializer<Message> {
+internal object TelegramBotAPIMessageDeserializeOnlySerializer : KSerializer<Message> {
     override val descriptor: SerialDescriptor
         get() = TelegramBotAPIMessageDeserializationStrategy.descriptor
 

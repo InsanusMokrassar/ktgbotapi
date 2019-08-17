@@ -10,7 +10,7 @@ interface Update {
     val data: Any
 }
 
-object UpdateSerializerWithoutDeserialization : KSerializer<Update> {
+internal object UpdateSerializerWithoutDeserialization : KSerializer<Update> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("UpdateSerializerWithoutDeserialization")
 
     override fun deserialize(decoder: Decoder): Update = UpdateDeserializationStrategy.deserialize(decoder)
@@ -18,7 +18,7 @@ object UpdateSerializerWithoutDeserialization : KSerializer<Update> {
     override fun serialize(encoder: Encoder, obj: Update) = throw UnsupportedOperationException()
 }
 
-object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
+internal object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("UpdateDeserializationStrategy")
 
     override fun patch(decoder: Decoder, old: Update): Update = throw UpdateNotSupportedException(descriptor.name)
