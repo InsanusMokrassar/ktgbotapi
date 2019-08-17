@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.internal.ArrayListSerializer
 
 @Serializable
-data class RawMessageEntity(
+internal data class RawMessageEntity(
     val type: String,
     val offset: Int,
     val length: Int,
@@ -34,8 +34,8 @@ data class RawMessageEntity(
     }
 }
 
-typealias RawMessageEntities = List<RawMessageEntity>
+internal typealias RawMessageEntities = List<RawMessageEntity>
 
-object RawMessageEntitiesSerializer : KSerializer<List<RawMessageEntity>> by ArrayListSerializer(
+internal object RawMessageEntitiesSerializer : KSerializer<List<RawMessageEntity>> by ArrayListSerializer(
     RawMessageEntity.serializer()
 )

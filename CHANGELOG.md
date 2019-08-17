@@ -10,6 +10,8 @@
 * Update of description
 * `RawUpdate` now is internal and not available outside of library
 * `RawChatMember` now is internal and not available outside of library
+* Make `Game` object a little bit more standartizated
+* `RawMessageEntity` now is internal
 
 ## 0.17.0
 
