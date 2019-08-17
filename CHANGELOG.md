@@ -7,6 +7,7 @@
     * `TelegramBotAPIMessageDeserializationStrategy` was created. It was used for deserialization of Telegram Bot API
     incoming messages
     * `TelegramBotAPIMessageDeserializeOnlySerializer` was created. It **MUST NOT** be used to serialize messages
+* Update of description
 
 ## 0.17.0
 
