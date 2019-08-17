@@ -5,9 +5,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import kotlinx.serialization.*
+import kotlinx.serialization.internal.StringDescriptor
+import kotlinx.serialization.json.*
+import java.lang.UnsupportedOperationException
 
-@Serializable
-data class Game internal constructor(
+@Serializable(GameSerializer::class)
+data class Game(
     @SerialName(titleField)
     override val title: String,
     @SerialName(descriptionField)
@@ -17,18 +20,11 @@ data class Game internal constructor(
     val photo: Photo,
     @SerialName(textField)
     override val caption: String? = null,
-    @Serializable(RawMessageEntitiesSerializer::class)
     @SerialName(textEntitiesField)
-    private val rawEntities: RawMessageEntities? = null,
+    override val captionEntities: List<MessageEntity> = emptyList(),
     @SerialName(animationField)
     val animation: AnimationFile? = null
 ) : Titled, CaptionedInput {
-    @Transient
-    override val captionEntities: List<MessageEntity> = caption ?.let {
-        rawEntities ?.map {
-            it.asMessageEntity(caption)
-        }
-    } ?: emptyList()
 
     @Deprecated(
         "Missinterfaced field",
@@ -45,4 +41,44 @@ data class Game internal constructor(
     @Transient
     val textEntities: List<MessageEntity>?
         get() = captionEntities
+}
+
+internal object GameSerializer : KSerializer<Game> {
+    override val descriptor: SerialDescriptor = StringDescriptor.withName("GameSerializer")
+
+    override fun deserialize(decoder: Decoder): Game {
+        val json = JsonObjectSerializer.deserialize(decoder)
+
+        val text = json.getPrimitiveOrNull(textField) ?.content
+
+        return Game(
+            json.getPrimitive(titleField).content,
+            json.getPrimitive(descriptionField).content,
+            Json.nonstrict.fromJson(
+                PhotoSerializer,
+                json.getObject(photoField)
+            ),
+            text,
+            text ?.let {
+                Json.nonstrict.fromJson(
+                    RawMessageEntitiesSerializer,
+                    json.getArray(textEntitiesField)
+                ).map {
+                    it.asMessageEntity(text)
+                }
+            } ?: emptyList(),
+            json.getObjectOrNull(
+                animationField
+            ) ?.let { animatedFileJson ->
+                Json.nonstrict.fromJson(
+                    AnimationFile.serializer(),
+                    animatedFileJson
+                )
+            }
+        )
+    }
+
+    override fun serialize(encoder: Encoder, obj: Game) = throw UnsupportedOperationException(
+        "Objects of class Game can't be serialized for now"
+    )
 }
