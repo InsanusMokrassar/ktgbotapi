@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Telegr
 import kotlinx.serialization.*
 
 @Serializable
-data class RawCallbackQuery(
+internal data class RawCallbackQuery(
     @SerialName(idField)
     val id: CallbackQueryIdentifier,
     @SerialName(fromField)
