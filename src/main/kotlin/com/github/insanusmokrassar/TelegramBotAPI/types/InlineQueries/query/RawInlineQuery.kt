@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 
 @Serializable
-data class RawInlineQuery(
+internal data class RawInlineQuery(
     @SerialName(idField)
     val id: InlineQueryIdentifier,
     @SerialName(fromField)
