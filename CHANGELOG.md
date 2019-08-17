@@ -14,6 +14,7 @@
 * `RawMessageEntity` now is internal
 * `RawInlineQuery` now is internal
 * `RawCallbackQuery` now is internal
+* `RawChosenInlineResult` now is internal
 
 ## 0.17.0
 

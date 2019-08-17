@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.
 import kotlinx.serialization.*
 
 @Serializable
-data class RawChosenInlineResult(
+internal data class RawChosenInlineResult(
     @SerialName(resultIdField)
     val resultId: InlineQueryIdentifier, //chosen temporary, can be changed
     @SerialName(fromField)
