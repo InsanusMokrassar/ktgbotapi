@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateSerializerWithoutDeserialization
 import kotlinx.serialization.KSerializer

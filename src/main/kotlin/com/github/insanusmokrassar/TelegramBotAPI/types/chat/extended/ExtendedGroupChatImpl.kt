@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.chat.extended
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChatPermissions
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedGroupChat
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import kotlinx.serialization.SerialName

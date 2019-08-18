@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartRequest
 import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.JsonObject
 
 /**

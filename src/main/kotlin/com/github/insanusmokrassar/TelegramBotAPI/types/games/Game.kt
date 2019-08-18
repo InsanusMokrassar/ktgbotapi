@@ -1,13 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
-import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
-import kotlinx.serialization.json.*
-import java.lang.UnsupportedOperationException
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Titled
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.AnimationFile
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.Photo
+import kotlinx.serialization.Transient
 
 data class Game(
     override val title: String,

@@ -8,7 +8,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLim
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.extractResult
-import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
@@ -17,7 +16,6 @@ import io.ktor.client.engine.HttpClientEngine
 import io.ktor.util.cio.toByteArray
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonElementSerializer
 
 class KtorRequestsExecutor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,

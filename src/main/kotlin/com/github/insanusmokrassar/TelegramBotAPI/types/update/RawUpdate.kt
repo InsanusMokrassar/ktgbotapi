@@ -4,7 +4,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQuery.RawCallbac
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.ChosenInlineResult.RawChosenInlineResult
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.query.RawInlineQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery

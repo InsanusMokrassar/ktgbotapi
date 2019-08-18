@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.get
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.RawChatMember
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.ChatMember
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.ChatMemberSerializerWithoutDeserialization
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField

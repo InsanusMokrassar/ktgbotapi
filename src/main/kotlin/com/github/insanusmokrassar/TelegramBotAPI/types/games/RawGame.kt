@@ -1,11 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.games
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
+import kotlinx.serialization.*
 
 @Serializable
 internal data class RawGame(
