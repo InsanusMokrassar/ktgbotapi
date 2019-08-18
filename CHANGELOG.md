@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 0.18.0
+## 0.18.0 Raws cleaning
 
 * Made internal and not available outside of library:
     * `RawMessage`
@@ -17,8 +17,9 @@
     * `TelegramBotAPIMessageDeserializeOnlySerializer` was created. It **MUST NOT** be used to serialize messages
 * Update of description
 * Make `Game` object a little bit more standartizated
+* `Game` now is not serializable and have no additional trash, related to serialization
 
-## 0.17.0
+## 0.17.0 July 29, 2019 API Update
 
 Libraries updates:
 
