@@ -18,6 +18,7 @@
 * Update of description
 * Make `Game` object a little bit more standartizated
 * `Game` now is not serializable and have no additional trash, related to serialization
+* `TelegramFile` was removed
 
 ## 0.17.0 July 29, 2019 API Update
 
