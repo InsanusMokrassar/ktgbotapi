@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonObject
@@ -12,9 +11,3 @@ interface Request<T: Any> {
     fun json(): JsonObject = toJsonWithoutNulls(RequestSerializer)
 }
 object RequestSerializer : KSerializer<Request<*>> by ContextSerializer(Request::class)
-
-fun StringFormat.extractResult(
-    from: String
-): Response {
-    return parse(Response.serializer(), from)
-}
