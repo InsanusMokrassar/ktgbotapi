@@ -31,6 +31,6 @@ internal object TelegramBotAPIMessageDeserializeOnlySerializer : KSerializer<Mes
     }
 
     override fun serialize(encoder: Encoder, obj: Message) {
-        throw IllegalStateException("Currently, Message objects can't be serialized y this serializer")
+        throw UnsupportedOperationException("Currently, Message objects can't be serialized y this serializer")
     }
 }
