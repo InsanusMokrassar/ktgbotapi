@@ -51,7 +51,7 @@ data class SetWebhook internal constructor(
     val allowedUpdates: List<String>? = null
 ) : DataRequest<Boolean> {
     override fun method(): String = "setWebhook"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 
     init {
         maxAllowedConnections ?.let {

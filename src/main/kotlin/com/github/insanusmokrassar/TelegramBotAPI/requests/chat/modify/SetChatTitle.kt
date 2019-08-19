@@ -20,5 +20,5 @@ data class SetChatTitle (
     }
 
     override fun method(): String = "setChatTitle"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

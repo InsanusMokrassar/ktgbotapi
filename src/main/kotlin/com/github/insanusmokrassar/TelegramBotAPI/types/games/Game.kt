@@ -1,31 +1,33 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
-import kotlinx.serialization.*
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Titled
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.AnimationFile
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.Photo
+import kotlinx.serialization.Transient
 
-@Serializable
 data class Game(
-    @SerialName(titleField)
-    val title: String,
-    @SerialName(descriptionField)
+    override val title: String,
     val description: String,
-    @Serializable(PhotoSerializer::class)
-    @SerialName(photoField)
     val photo: Photo,
-    @SerialName(textField)
-    val text: String? = null,
-    @Serializable(RawMessageEntitiesSerializer::class)
-    @SerialName(textEntitiesField)
-    private val textEntitiesRaw: RawMessageEntities? = null,
-    @SerialName(animationField)
+    override val caption: String? = null,
+    override val captionEntities: List<MessageEntity> = emptyList(),
     val animation: AnimationFile? = null
-) {
+) : Titled, CaptionedInput {
+    @Deprecated(
+        "Missinterfaced field",
+        ReplaceWith("caption")
+    )
     @Transient
-    val textEntities: List<MessageEntity>? = text ?.let {
-        textEntitiesRaw ?.map {
-            it.asMessageEntity(text)
-        }
-    }
+    val text: String?
+        get() = caption
+
+    @Deprecated(
+        "Missinterfaced field",
+        ReplaceWith("captionEntities")
+    )
+    @Transient
+    val textEntities: List<MessageEntity>?
+        get() = captionEntities
 }

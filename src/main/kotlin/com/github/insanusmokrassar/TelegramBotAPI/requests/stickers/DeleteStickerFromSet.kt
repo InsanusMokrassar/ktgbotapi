@@ -12,5 +12,5 @@ data class DeleteStickerFromSet(
     val sticker: FileId
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "deleteStickerFromSet"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

@@ -2,11 +2,10 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntitiesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.games.Game
+import com.github.insanusmokrassar.TelegramBotAPI.types.games.RawGame
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
@@ -24,7 +23,7 @@ import kotlin.reflect.KClass
 
 // TODO:: add PassportData type
 @Serializable
-data class RawMessage(
+internal data class RawMessage(
     @SerialName(messageIdField)
     val messageId: MessageIdentifier,
     @SerialName(dateField)
@@ -44,15 +43,13 @@ data class RawMessage(
     private val media_group_id: MediaGroupIdentifier? = null,
     private val author_signature: AuthorSignature? = null,
     private val text: String? = null,
-    @Serializable(RawMessageEntitiesSerializer::class)
     private val entities: RawMessageEntities? = null,
     private val caption: String? = null,
-    @Serializable(RawMessageEntitiesSerializer::class)
     private val caption_entities: RawMessageEntities? = null,
     private val audio: AudioFile? = null,
     private val document: DocumentFile? = null,
     private val animation: AnimationFile? = null,
-    private val game: Game? = null,
+    private val game: RawGame? = null,
     @Serializable(PhotoSerializer::class)
     private val photo: Photo? = null,
     private val sticker: Sticker? = null,
@@ -128,7 +125,7 @@ data class RawMessage(
                 adaptedCaptionEntities
             )
             sticker != null -> StickerContent(sticker)
-            game != null -> GameContent(game)
+            game != null -> GameContent(game.asGame)
             video_note != null -> VideoNoteContent(video_note)
             contact != null -> ContactContent(contact)
             location != null -> LocationContent(location)

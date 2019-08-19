@@ -14,5 +14,5 @@ data class SetChatStickerSet(
     val stickerSetName: StickerSetName
 ): ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "setChatStickerSet"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

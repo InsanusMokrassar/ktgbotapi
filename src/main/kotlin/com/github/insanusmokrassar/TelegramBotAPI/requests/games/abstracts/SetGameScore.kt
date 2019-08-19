@@ -12,5 +12,5 @@ interface SetGameScore : SimpleRequest<Boolean> {
     val disableEditMessage: Boolean
 
     override fun method(): String = "setGameScore"
-    override fun resultSerializer(): KSerializer<Boolean> = Boolean.serializer()
+    override fun resultDeserializer(): KSerializer<Boolean> = Boolean.serializer()
 }

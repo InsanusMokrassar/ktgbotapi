@@ -20,5 +20,5 @@ data class SetChatDescription (
     }
 
     override fun method(): String = "setChatDescription"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

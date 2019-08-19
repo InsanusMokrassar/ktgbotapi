@@ -5,8 +5,8 @@
 
 ## What is it?
 
-It is one more project which wish to be useful and full Telegram Bots API bridge for Kotlin. Most part of some specific
-solves or unuseful moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
+Library for Object-Oriented and type-safe work with Telegram Bot API. Most part of some specific solves or unuseful
+moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Compatibility
 

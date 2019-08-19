@@ -11,5 +11,5 @@ data class GetStickerSet(
     val name: String
 ): SimpleRequest<StickerSet> {
     override fun method(): String = "getStickerSet"
-    override fun resultSerializer(): KSerializer<StickerSet> = StickerSet.serializer()
+    override fun resultDeserializer(): KSerializer<StickerSet> = StickerSet.serializer()
 }

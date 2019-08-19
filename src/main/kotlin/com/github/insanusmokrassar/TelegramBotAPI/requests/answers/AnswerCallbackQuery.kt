@@ -20,7 +20,7 @@ data class AnswerCallbackQuery(
     val cachedTimeSeconds: Int? = null
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "answerCallbackQuery"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }
 
 fun CallbackQuery.createAnswer(

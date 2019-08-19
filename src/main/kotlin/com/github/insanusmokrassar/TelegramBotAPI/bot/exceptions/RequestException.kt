@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import java.io.IOException
 
 fun newRequestException(
-    response: Response<*>,
+    response: Response,
     plainAnswer: String,
     message: String? = null,
     cause: Throwable? = null
@@ -15,7 +15,7 @@ fun newRequestException(
 }
 
 sealed class RequestException constructor(
-    val response: Response<*>,
+    val response: Response,
     val plainAnswer: String,
     message: String? = null,
     cause: Throwable? = null
@@ -24,13 +24,13 @@ sealed class RequestException constructor(
     cause
 )
 
-class CommonRequestException(response: Response<*>, plainAnswer: String, message: String?, cause: Throwable?) :
+class CommonRequestException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause)
 
-class UnauthorizedException(response: Response<*>, plainAnswer: String, message: String?, cause: Throwable?) :
+class UnauthorizedException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause)
 
-class ReplyMessageNotFoundException(response: Response<*>, plainAnswer: String, message: String?, cause: Throwable?) :
+class ReplyMessageNotFoundException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause)
 
 @Deprecated(

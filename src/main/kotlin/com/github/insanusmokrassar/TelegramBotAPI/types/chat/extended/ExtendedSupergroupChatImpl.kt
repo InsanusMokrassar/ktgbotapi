@@ -3,7 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.chat.extended
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChatPermissions
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedSupergroupChat
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -24,7 +25,8 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(inviteLinkField)
     override val inviteLink: String? = null,
     @SerialName(pinnedMessageField)
-    override val pinnedMessage: RawMessage? = null,
+    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
+    override val pinnedMessage: Message? = null,
     @SerialName(stickerSetNameFullField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(canSetStickerSetField)

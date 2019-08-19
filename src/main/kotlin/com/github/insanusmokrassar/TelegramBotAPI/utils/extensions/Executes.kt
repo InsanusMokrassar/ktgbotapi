@@ -9,7 +9,7 @@ import kotlinx.coroutines.*
 
 fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
-    onFail: (suspend (Response<*>) -> Unit)? = null,
+    onFail: (suspend (Response) -> Unit)? = null,
     scope: CoroutineScope = GlobalScope,
     onSuccess: (suspend (T) -> Unit)? = null
 ): Job {

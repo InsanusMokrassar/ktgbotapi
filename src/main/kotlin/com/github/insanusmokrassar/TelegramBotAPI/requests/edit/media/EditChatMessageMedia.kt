@@ -5,7 +5,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import kotlinx.serialization.*
 
 const val editMessageMediaMethod = "editMessageMedia"
@@ -29,5 +30,5 @@ data class EditChatMessageMedia(
     }
 
     override fun method(): String = editMessageMediaMethod
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }

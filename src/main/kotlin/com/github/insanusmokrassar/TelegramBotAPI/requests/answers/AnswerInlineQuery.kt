@@ -28,7 +28,7 @@ data class AnswerInlineQuery(
     val switchPmParameter: String? = null
 ): SimpleRequest<Boolean> {
     override fun method(): String = "answerInlineQuery"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }
 
 fun InlineQuery.createAnswer(

@@ -15,5 +15,5 @@ data class DeleteMessage(
 ) : SimpleRequest<Boolean>, MessageAction {
     override fun method(): String = "deleteMessage"
 
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

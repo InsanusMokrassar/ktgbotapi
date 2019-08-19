@@ -10,7 +10,7 @@ interface GetGameHighScores : SimpleRequest<List<GameHighScore>> {
     val userId: UserId
 
     override fun method(): String = "getGameHighScores"
-    override fun resultSerializer(): KSerializer<List<GameHighScore>> = GameHighScoresSerializer
+    override fun resultDeserializer(): KSerializer<List<GameHighScore>> = GameHighScoresSerializer
 }
 
 object GameHighScoresSerializer : KSerializer<List<GameHighScore>> by ArrayListSerializer(GameHighScore.serializer())

@@ -3,9 +3,11 @@ package com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mapWithCommonValues
 import io.ktor.client.HttpClient
-import io.ktor.client.request.forms.*
+import io.ktor.client.request.forms.MultiPartFormDataContent
+import io.ktor.client.request.forms.formData
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
+import kotlinx.io.core.readBytes
 
 class MultipartRequestCallFactory : AbstractRequestCallFactory() {
 
@@ -21,9 +23,7 @@ class MultipartRequestCallFactory : AbstractRequestCallFactory() {
                     when (value) {
                         is MultipartFile -> append(
                             key,
-                            InputProvider {
-                                value.file.asInput()
-                            },
+                            value.file.asInput().readBytes(),
                             Headers.build {
                                 append(HttpHeaders.ContentType, value.mimeType)
                                 append(HttpHeaders.ContentDisposition, "filename=${value.fileId}")

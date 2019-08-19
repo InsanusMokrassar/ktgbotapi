@@ -17,5 +17,5 @@ data class SendAction(
     val action: BotAction
 ): SendChatMessageRequest<Boolean> {
     override fun method(): String = "sendChatAction"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

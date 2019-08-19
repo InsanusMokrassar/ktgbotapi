@@ -10,7 +10,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.HTMLParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoFile
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaGroupContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toHtmlCaptions
 
@@ -24,7 +24,7 @@ data class VideoContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): Request<RawMessage> = SendVideo(
+    ): Request<Message> = SendVideo(
         chatId,
         media.fileId,
         media.thumb ?.fileId,

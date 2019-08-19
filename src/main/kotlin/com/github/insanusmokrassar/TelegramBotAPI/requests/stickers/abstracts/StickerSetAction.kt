@@ -12,5 +12,5 @@ interface StickerSetAction : SimpleRequest<Boolean> {
     val emojis: String // must be more than one
     val maskPosition: MaskPosition?
 
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

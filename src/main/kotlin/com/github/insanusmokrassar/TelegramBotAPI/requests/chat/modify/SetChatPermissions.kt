@@ -15,5 +15,5 @@ data class SetChatPermissions (
     val permissions: ChatPermissions
 ): ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "setChatPermissions"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

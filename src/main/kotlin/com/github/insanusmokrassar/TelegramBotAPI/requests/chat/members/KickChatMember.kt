@@ -16,5 +16,5 @@ data class KickChatMember(
     override val untilDate: TelegramDate? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "kickChatMember"
-    override fun resultSerializer(): KSerializer<Boolean> = BooleanSerializer
+    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
 }

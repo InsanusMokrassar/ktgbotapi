@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.Cha
 import kotlinx.serialization.*
 
 @Serializable
-data class RawChatMember(
+internal data class RawChatMember(
     val user: User,
     private val status: String,
     private val until_date: TelegramDate? = null,

@@ -9,5 +9,5 @@ import kotlinx.serialization.Serializable
 class GetWebhookInfo : SimpleRequest<WebhookInfo> {
     override fun method(): String = "getWebhookInfo"
 
-    override fun resultSerializer(): KSerializer<WebhookInfo> = WebhookInfo.serializer()
+    override fun resultDeserializer(): KSerializer<WebhookInfo> = WebhookInfo.serializer()
 }

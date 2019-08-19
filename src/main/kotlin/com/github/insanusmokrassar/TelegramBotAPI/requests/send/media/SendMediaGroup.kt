@@ -6,7 +6,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMe
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer
@@ -19,7 +20,7 @@ fun SendMediaGroup(
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null
-): Request<List<RawMessage>> {
+): Request<List<Message>> {
     if (media.size !in membersCountInMediaGroup) {
         throw IllegalArgumentException("Count of members for media group must be in $membersCountInMediaGroup range")
     }
@@ -52,7 +53,7 @@ fun SendMediaGroup(
     }
 }
 
-private val serializer = ArrayListSerializer(RawMessage.serializer())
+private val serializer = ArrayListSerializer(TelegramBotAPIMessageDeserializeOnlySerializer)
 
 @Serializable
 data class SendMediaGroupData internal constructor(
@@ -63,8 +64,8 @@ data class SendMediaGroupData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null
-) : DataRequest<List<RawMessage>>,
-    SendMessageRequest<List<RawMessage>>
+) : DataRequest<List<Message>>,
+    SendMessageRequest<List<Message>>
 {
     @SerialName(mediaField)
     private val convertedMedia: String
@@ -76,7 +77,7 @@ data class SendMediaGroupData internal constructor(
 
 
     override fun method(): String = "sendMediaGroup"
-    override fun resultSerializer(): KSerializer<List<RawMessage>> = serializer
+    override fun resultDeserializer(): DeserializationStrategy<List<Message>> = serializer
 }
 
 data class SendMediaGroupFiles internal constructor(

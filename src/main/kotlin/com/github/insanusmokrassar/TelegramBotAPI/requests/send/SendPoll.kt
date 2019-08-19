@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.Replyi
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import kotlinx.serialization.*
 
 @Serializable
@@ -21,8 +22,8 @@ data class SendPoll(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<RawMessage>,
-    ReplyingMarkupSendMessageRequest<RawMessage> {
+) : SendMessageRequest<Message>,
+    ReplyingMarkupSendMessageRequest<Message> {
 
     init {
         if (question.length !in pollQuestionTextLength) {
@@ -39,5 +40,5 @@ data class SendPoll(
     }
 
     override fun method(): String = "sendPoll"
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }

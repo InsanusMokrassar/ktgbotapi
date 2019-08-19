@@ -18,5 +18,5 @@ data class StopPoll(
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : MessageAction, SimpleRequest<Poll>, ReplyMarkup {
     override fun method(): String = "stopPoll"
-    override fun resultSerializer(): KSerializer<Poll> = Poll.serializer()
+    override fun resultDeserializer(): KSerializer<Poll> = Poll.serializer()
 }

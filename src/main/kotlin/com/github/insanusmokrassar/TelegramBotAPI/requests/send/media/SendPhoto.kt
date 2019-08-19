@@ -7,7 +7,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import kotlinx.serialization.*
 
 fun SendPhoto(
@@ -18,7 +19,7 @@ fun SendPhoto(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<RawMessage> {
+): Request<Message> {
     val data = SendPhotoData(
         chatId,
         (photo as? FileId) ?.fileId,
@@ -52,10 +53,10 @@ data class SendPhotoData internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<RawMessage>,
-    SendMessageRequest<RawMessage>,
-    ReplyingMarkupSendMessageRequest<RawMessage>,
-    TextableSendMessageRequest<RawMessage>
+) : DataRequest<Message>,
+    SendMessageRequest<Message>,
+    ReplyingMarkupSendMessageRequest<Message>,
+    TextableSendMessageRequest<Message>
 {
     init {
         text ?.let {
@@ -66,7 +67,7 @@ data class SendPhotoData internal constructor(
     }
 
     override fun method(): String = "sendPhoto"
-    override fun resultSerializer(): KSerializer<RawMessage> = RawMessage.serializer()
+    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
 }
 
 data class SendPhotoFiles internal constructor(

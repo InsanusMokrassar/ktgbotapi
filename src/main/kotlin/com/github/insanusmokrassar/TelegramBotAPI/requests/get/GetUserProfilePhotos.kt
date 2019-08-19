@@ -23,5 +23,5 @@ data class GetUserProfilePhotos(
     }
 
     override fun method(): String = "getUserProfilePhotos"
-    override fun resultSerializer(): KSerializer<UserProfilePhotos> = UserProfilePhotos.serializer()
+    override fun resultDeserializer(): KSerializer<UserProfilePhotos> = UserProfilePhotos.serializer()
 }

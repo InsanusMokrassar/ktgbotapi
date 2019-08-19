@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.newRequestExcep
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.extractResult
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
@@ -74,11 +75,11 @@ class KtorRequestsExecutor(
             val content = call.response.use {
                 it.content.toByteArray().toString(Charsets.UTF_8)
             }
-            val responseObject = jsonFormatter.parse(
-                Response.serializer(request.resultSerializer()),
-                content
-            )
-            responseObject.result ?: responseObject.parameters ?.let {
+            val responseObject = jsonFormatter.parse(Response.serializer(), content)
+
+            (responseObject.result ?.let {
+                jsonFormatter.fromJson(request.resultDeserializer(), it)
+            } ?: responseObject.parameters ?.let {
                 val error = it.error
                 if (error is RetryAfterError) {
                     delay(error.leftToRetry)
@@ -92,7 +93,7 @@ class KtorRequestsExecutor(
                     content,
                     "Can't get result object from $content"
                 )
-            }
+            })
         }
     }
 
