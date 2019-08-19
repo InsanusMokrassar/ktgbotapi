@@ -76,7 +76,7 @@ class KtorRequestsExecutor(
             }
             val responseObject = jsonFormatter.extractResult(content)
 
-            val result = responseObject.result ?.let {
+            (responseObject.result ?.let {
                 jsonFormatter.fromJson(request.resultDeserializer(), it)
             } ?: responseObject.parameters ?.let {
                 val error = it.error
@@ -92,8 +92,7 @@ class KtorRequestsExecutor(
                     content,
                     "Can't get result object from $content"
                 )
-            }
-            result
+            })
         }
     }
 
