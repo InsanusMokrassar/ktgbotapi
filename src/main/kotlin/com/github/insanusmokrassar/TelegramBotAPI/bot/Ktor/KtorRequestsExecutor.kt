@@ -7,7 +7,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.newRequestExcep
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.extractResult
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
