@@ -19,7 +19,7 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 apply plugin: 'kotlinx-serialization'
 
-apply from: "publish.gradle"
+// apply from: "publish.gradle"
 
 repositories {
     mavenLocal()
