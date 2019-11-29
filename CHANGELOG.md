@@ -27,7 +27,7 @@
     * `kotlin coroutines`: 1.2.2 -> 1.3.2
     * `kotlin serialization`: 0.11.1 -> 0.14.0
     * `joda time`: 2.10.3 -> 2.10.5
-    * `ktor`: 1.2.3 -> 1.2.5
+    * `ktor`: 1.2.3 -> 1.2.6
 * `BotAction` now will be deserialized in a little bit other way
     * `BotActionSerializer` now is internal
 * Most part of serializers now are objects (instead of classes as was previously)
