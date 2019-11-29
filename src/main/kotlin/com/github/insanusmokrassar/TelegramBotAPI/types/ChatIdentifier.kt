@@ -37,7 +37,7 @@ data class Username(
 fun String.toUsername(): Username = Username(this)
 
 @Serializer(ChatIdentifier::class)
-internal class ChatIdentifierSerializer: KSerializer<ChatIdentifier> {
+internal object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     override fun deserialize(decoder: Decoder): ChatIdentifier {
         val id = decoder.decodeString()
         return id.toLongOrNull() ?.let {

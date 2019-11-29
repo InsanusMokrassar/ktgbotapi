@@ -2,31 +2,29 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.actions
 
 import kotlinx.serialization.*
 
-private val actions = listOf(
-    TypingAction,
-    UploadPhotoAction,
-    RecordVideoAction,
-    UploadVideoAction,
-    RecordAudioAction,
-    UploadAudioAction,
-    UploadDocumentAction,
-    FindLocationAction
-)
-
 @Serializable(BotActionSerializer::class)
 sealed class BotAction {
     abstract val actionName: String
 }
 
 @Serializer(BotAction::class)
-class BotActionSerializer: KSerializer<BotAction> {
+internal object BotActionSerializer: KSerializer<BotAction> {
     override fun serialize(encoder: Encoder, obj: BotAction) {
         encoder.encodeString(obj.actionName)
     }
 
     override fun deserialize(decoder: Decoder): BotAction {
-        val actionName = decoder.decodeString()
-        return actions.firstOrNull { it.actionName == actionName } ?: throw IllegalStateException("Unknown action type: $actionName")
+        return when (val actionName = decoder.decodeString()) {
+            TypingAction.actionName -> TypingAction
+            UploadPhotoAction.actionName -> UploadPhotoAction
+            RecordVideoAction.actionName -> RecordVideoAction
+            UploadVideoAction.actionName -> UploadVideoAction
+            RecordAudioAction.actionName -> RecordAudioAction
+            UploadAudioAction.actionName -> UploadAudioAction
+            UploadDocumentAction.actionName -> UploadDocumentAction
+            FindLocationAction.actionName -> FindLocationAction
+            else -> throw IllegalStateException("Unknown action type: $actionName")
+        }
     }
 }
 
