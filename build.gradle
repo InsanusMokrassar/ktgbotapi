@@ -39,6 +39,8 @@ dependencies {
 
     api "io.ktor:ktor-server:$ktor_version"
     api "io.ktor:ktor-server-host-common:$ktor_version"
+
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 
 compileKotlin {
