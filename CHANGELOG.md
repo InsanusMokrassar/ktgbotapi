@@ -5,7 +5,13 @@
 * Total rework of serialization for requests. Now all `SimpleRequest` children have:
     * `requestSerializer` - field, which must provide serializer of current type
     * `resultDeserializer` - field, which must provide opportunity to deserializer result. Previously it was a function
-
+* Removed deprecations:
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.WebhookPrivateKeyConfig`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesFilter`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.createSimpleUpdateFilter`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.createMarkdownText`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaption`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownText`
 
 ## 0.18.0 Raws cleaning
 
