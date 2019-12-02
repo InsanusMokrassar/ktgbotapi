@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.19.0 ImplicitReflection removing
+
 ## 0.18.0 Raws cleaning
 
 * Made internal and not available outside of library:
