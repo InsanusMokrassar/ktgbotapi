@@ -32,9 +32,3 @@ class UnauthorizedException(response: Response, plainAnswer: String, message: St
 
 class ReplyMessageNotFoundException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause)
-
-@Deprecated(
-    "Replaced by ReplyMessageNotFoundException",
-    ReplaceWith("ReplyMessageNotFoundException", "com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.ReplyMessageNotFoundException")
-)
-typealias ReplyMessageNotFound = ReplyMessageNotFoundException

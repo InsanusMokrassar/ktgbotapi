@@ -21,6 +21,14 @@
     * `com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFileKt.makeFileUrl`
     * `com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFileKt.downloadingFilesBaseUrl`
     * `com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.Data`
+    * `com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ByInlineMessageId`
+    * `com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ByMessageId`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.ReplyMessageNotFound`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor#baseUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor#constructor(token, hostUrl)`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor#constructor(token, client, hostUrl, callsFactories, excludeDefaultFactories, requestsLimiter, jsonFormatter)`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor#constructor(token, engine, hostUrl)`
 
 ## 0.18.0 Raws cleaning
 
