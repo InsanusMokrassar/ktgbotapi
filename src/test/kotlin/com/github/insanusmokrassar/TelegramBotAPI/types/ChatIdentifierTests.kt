@@ -55,7 +55,7 @@ class ChatIdentifierTests {
 
         Example(chatIdentifierChatId.toChatId()).let { withChatId ->
             val stringified = Json.plain.stringify(Example.serializer(), withChatId)
-            assertEquals(stringified, "{\"identifier\":\"$chatIdentifierChatId\"}")
+            assertEquals(stringified, "{\"identifier\":$chatIdentifierChatId}")
             val deserialized = Json.plain.parse(Example.serializer(), stringified)
             assertEquals(withChatId, deserialized)
         }

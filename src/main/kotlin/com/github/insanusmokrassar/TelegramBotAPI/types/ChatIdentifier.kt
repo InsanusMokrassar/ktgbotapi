@@ -51,7 +51,7 @@ internal object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
 
     override fun serialize(encoder: Encoder, obj: ChatIdentifier) {
         when (obj) {
-            is ChatId -> encoder.encodeString(obj.chatId.toString())
+            is ChatId -> encoder.encodeLong(obj.chatId)
             is Username -> encoder.encodeString(obj.username)
         }
     }

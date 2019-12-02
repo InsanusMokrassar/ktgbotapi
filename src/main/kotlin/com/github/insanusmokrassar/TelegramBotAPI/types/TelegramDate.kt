@@ -5,7 +5,10 @@ import org.joda.time.DateTime
 import java.util.concurrent.TimeUnit
 
 @Serializable(TelegramDateSerializer::class)
-class TelegramDate(
+data class TelegramDate(
+    /**
+     * Contains UNIX time (seconds)
+     */
     private val date: Long
 ) {
     constructor(dateTime: DateTime) : this(
