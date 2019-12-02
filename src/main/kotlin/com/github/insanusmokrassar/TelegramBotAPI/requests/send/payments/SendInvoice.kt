@@ -65,7 +65,10 @@ data class SendInvoice(
     ReplyMarkup,
     SendMessageRequest<Message> {
     override fun method(): String = "sendInvoice"
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 
     @SerialName(photoUrlField)
     var photoUrl: String? = null

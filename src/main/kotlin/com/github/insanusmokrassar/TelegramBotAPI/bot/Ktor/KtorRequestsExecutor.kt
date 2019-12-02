@@ -77,7 +77,7 @@ class KtorRequestsExecutor(
             val responseObject = jsonFormatter.parse(Response.serializer(), content)
 
             (responseObject.result ?.let {
-                jsonFormatter.fromJson(request.resultDeserializer(), it)
+                jsonFormatter.fromJson(request.resultDeserializer, it)
             } ?: responseObject.parameters ?.let {
                 val error = it.error
                 if (error is RetryAfterError) {

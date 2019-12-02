@@ -1,8 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
-import kotlinx.serialization.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
+import kotlinx.serialization.SerializationStrategy
+import kotlinx.serialization.json.JsonObject
 
-@Serializable(SimpleRequestSerializer::class)
-interface SimpleRequest<T: Any> : Request<T>
+interface SimpleRequest<T: Any> : Request<T> {
+    val requestSerializer: SerializationStrategy<*>
+}
 
-object SimpleRequestSerializer : KSerializer<SimpleRequest<*>> by ContextSerializer(SimpleRequest::class)
+@Suppress("UNCHECKED_CAST")
+inline fun <T: Any, K: SimpleRequest<T>> K.json(): JsonObject = toJsonWithoutNulls(requestSerializer as SerializationStrategy<K>)

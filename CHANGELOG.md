@@ -2,6 +2,11 @@
 
 ## 0.19.0 ImplicitReflection removing
 
+* Total rework of serialization for requests. Now all `SimpleRequest` children have:
+    * `requestSerializer` - field, which must provide serializer of current type
+    * `resultDeserializer` - field, which must provide opportunity to deserializer result. Previously it was a function
+
+
 ## 0.18.0 Raws cleaning
 
 * Made internal and not available outside of library:

@@ -3,8 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.games
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.InlineMessageAction
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.abstracts.GetGameHighScores
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class GetGameHighScoresByInlineMessageId (
@@ -12,4 +11,7 @@ data class GetGameHighScoresByInlineMessageId (
     override val userId: UserId,
     @SerialName(inlineMessageIdField)
     override val inlineMessageId: InlineMessageIdentifier
-) : GetGameHighScores, InlineMessageAction
+) : GetGameHighScores, InlineMessageAction {
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+}

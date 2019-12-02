@@ -13,5 +13,8 @@ data class UnbanChatMember(
     override val userId: UserId
 ) : ChatMemberRequest<Boolean> {
     override fun method(): String = "unbanChatMember"
-    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
+    override val resultDeserializer: DeserializationStrategy<Boolean>
+        get() = BooleanSerializer
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

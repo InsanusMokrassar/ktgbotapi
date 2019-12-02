@@ -1,12 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.EditInlineMessageLiveLocation
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class EditInlineMessageMedia(
@@ -23,6 +23,8 @@ data class EditInlineMessageMedia(
             throw IllegalArgumentException("For editing of media messages you MUST use file id (according to documentation)")
         }
     }
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 
     override fun method(): String = editMessageMediaMethod
 }

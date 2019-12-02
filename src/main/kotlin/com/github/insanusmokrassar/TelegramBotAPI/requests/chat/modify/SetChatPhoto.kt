@@ -16,7 +16,8 @@ data class SetChatPhoto (
     val photo: MultipartFile = throw IllegalArgumentException("Unfortunately, this type of objects can't be parsed automatically")
 ): ChatRequest, MultipartRequest<Boolean> {
     override fun method(): String = "setChatPhoto"
-    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
+    override val resultDeserializer: DeserializationStrategy<Boolean>
+        get() = BooleanSerializer
     override val mediaMap: Map<String, MultipartFile> = mapOf(photoField to photo)
     override val paramsJson: JsonObject = toJson(serializer())
 }

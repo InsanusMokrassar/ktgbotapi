@@ -3,8 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.games
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.MessageAction
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.abstracts.SetGameScore
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class SetGameScoreByChatId (
@@ -20,4 +19,7 @@ data class SetGameScoreByChatId (
     override val force: Boolean = false,
     @SerialName(disableEditMessageField)
     override val disableEditMessage: Boolean = false
-) : SetGameScore, MessageAction
+) : SetGameScore, MessageAction {
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+}

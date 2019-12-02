@@ -1,11 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
-import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.json.*
 
-inline fun <reified T: Any> T.toJsonWithoutNulls(serializer: KSerializer<T>): JsonObject = toJson(serializer).withoutNulls()
+inline fun <T: Any> T.toJsonWithoutNulls(serializer: SerializationStrategy<T>): JsonObject = toJson(serializer).withoutNulls()
 
-inline fun <reified T: Any> T.toJson(serializer: KSerializer<T>): JsonObject = Json.nonstrict.toJson(
+inline fun <T: Any> T.toJson(serializer: SerializationStrategy<T>): JsonObject = Json.nonstrict.toJson(
     serializer,
     this
 ).jsonObject

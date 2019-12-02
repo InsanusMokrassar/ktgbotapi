@@ -32,7 +32,6 @@ internal data class RawUpdate constructor(
     private val pre_checkout_query: PreCheckoutQuery? = null,
     private val poll: Poll? = null
 ) {
-    @Transient
     val asUpdate: Update by lazy {
         when {
             edited_message != null -> EditMessageUpdate(updateId, edited_message)

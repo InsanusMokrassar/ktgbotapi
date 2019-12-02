@@ -24,5 +24,6 @@ data class UploadStickerFile(
     override val mediaMap: Map<String, MultipartFile> = mapOf(pngStickerField to sticker)
     @Transient
     override val paramsJson: JsonObject = toJsonWithoutNulls(serializer())
-    override fun resultDeserializer(): KSerializer<File> = File.serializer()
+    override val resultDeserializer: DeserializationStrategy<File>
+        get() = File.serializer()
 }

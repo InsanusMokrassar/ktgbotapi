@@ -17,7 +17,6 @@ data class User(
     @SerialName(languageCodeField)
     private val languageCode: String? = null
 ) {
-    @Transient
     val userLocale: Locale? by lazy {
         languageCode ?.let {
             Locale.forLanguageTag(it)

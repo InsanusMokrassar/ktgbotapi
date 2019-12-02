@@ -17,7 +17,6 @@ internal data class RawChosenInlineResult(
     @SerialName(inlineMessageIdField)
     val inlineMessageId: InlineMessageIdentifier? = null
 ) {
-    @Transient
     val asChosenInlineResult: ChosenInlineResult by lazy {
         location ?.let {
             LocationChosenInlineResult(resultId, user, location, inlineMessageId, query)

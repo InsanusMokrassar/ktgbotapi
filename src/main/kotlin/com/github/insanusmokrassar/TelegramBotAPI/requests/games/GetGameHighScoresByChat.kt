@@ -3,8 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.games
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.MessageAction
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.abstracts.GetGameHighScores
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class GetGameHighScoresByChat (
@@ -14,4 +13,7 @@ data class GetGameHighScoresByChat (
     override val chatId: ChatId,
     @SerialName(messageIdField)
     override val messageId: MessageIdentifier
-) : GetGameHighScores, MessageAction
+) : GetGameHighScores, MessageAction {
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+}

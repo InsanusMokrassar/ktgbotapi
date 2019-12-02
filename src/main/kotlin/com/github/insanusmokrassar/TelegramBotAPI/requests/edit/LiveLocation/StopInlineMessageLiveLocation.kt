@@ -4,8 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditIn
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditReplyMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class StopInlineMessageLiveLocation(
@@ -15,4 +14,6 @@ data class StopInlineMessageLiveLocation(
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditReplyMessage {
     override fun method(): String = "stopMessageLiveLocation"
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

@@ -51,7 +51,10 @@ data class SendVenue(
     )
 
     override fun method(): String = "sendVenue"
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
 
 fun Venue.toRequest(

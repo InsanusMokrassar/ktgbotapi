@@ -21,7 +21,6 @@ internal data class RawCallbackQuery(
     @SerialName("game_short_name")
     val gameShortName: String? = null
 ) {
-    @Transient
     val asCallbackQuery: CallbackQuery by lazy {
         when {
             message != null && data != null -> MessageDataCallbackQuery(id, from, chatInstance, message, data)
