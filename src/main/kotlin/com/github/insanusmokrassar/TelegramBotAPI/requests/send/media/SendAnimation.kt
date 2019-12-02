@@ -95,7 +95,10 @@ data class SendAnimationData internal constructor(
     }
 
     override fun method(): String = "sendAnimation"
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
 
 data class SendAnimationFiles internal constructor(

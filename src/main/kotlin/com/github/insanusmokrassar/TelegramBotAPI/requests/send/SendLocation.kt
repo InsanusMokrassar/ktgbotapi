@@ -30,5 +30,8 @@ data class SendLocation(
 {
 
     override fun method(): String = "sendLocation"
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

@@ -25,28 +25,6 @@ class KtorRequestsExecutor(
     private val requestsLimiter: RequestLimiter = EmptyLimiter,
     private val jsonFormatter: Json = Json.nonstrict
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
-
-    @Deprecated("Deprecated due to new TelegramAPIUrlKeeper API")
-    constructor(
-        token: String,
-        client: HttpClient = HttpClient(),
-        hostUrl: String = "https://api.telegram.org",
-        callsFactories: List<KtorCallFactory> = emptyList(),
-        excludeDefaultFactories: Boolean = false,
-        requestsLimiter: RequestLimiter = EmptyLimiter,
-        jsonFormatter: Json = Json.nonstrict
-    ) : this(TelegramAPIUrlsKeeper(token, hostUrl), client, callsFactories, excludeDefaultFactories, requestsLimiter, jsonFormatter)
-
-    @Deprecated("Deprecated due to new TelegramAPIUrlKeeper API")
-    constructor(
-        token: String,
-        engine: HttpClientEngine? = null,
-        hostUrl: String = "https://api.telegram.org"
-    ) : this(
-        TelegramAPIUrlsKeeper(token, hostUrl),
-        engine ?.let { HttpClient(engine) } ?: HttpClient()
-    )
-
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
             asSequence().plus(SimpleRequestCallFactory()).plus(MultipartRequestCallFactory()).toList()
@@ -77,7 +55,7 @@ class KtorRequestsExecutor(
             val responseObject = jsonFormatter.parse(Response.serializer(), content)
 
             (responseObject.result ?.let {
-                jsonFormatter.fromJson(request.resultDeserializer(), it)
+                jsonFormatter.fromJson(request.resultDeserializer, it)
             } ?: responseObject.parameters ?.let {
                 val error = it.error
                 if (error is RetryAfterError) {

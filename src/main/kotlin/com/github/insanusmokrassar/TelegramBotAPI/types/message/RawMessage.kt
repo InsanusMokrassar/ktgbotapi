@@ -83,7 +83,6 @@ internal data class RawMessage(
 
     private val reply_markup: InlineKeyboardMarkup? = null
 ) {
-    @Transient
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
             caption_entities ?.map {
@@ -157,7 +156,6 @@ internal data class RawMessage(
         }
     }
 
-    @Transient
     private val chatEvent: ChatEvent? by lazy {
         when {
             new_chat_members != null -> NewChatMembers(new_chat_members.toList())
@@ -177,7 +175,6 @@ internal data class RawMessage(
         }
     }
 
-    @Transient
     private val paymentInfo: PaymentInfo? by lazy {
         when {
             invoice != null -> InvoiceOfPayment(invoice)
@@ -187,8 +184,6 @@ internal data class RawMessage(
     }
 
 
-
-    @Transient
     val asMessage: Message by lazy {
         chatEvent ?.let {
             chatEvent ->

@@ -17,12 +17,6 @@ data class UserForwardedMessage(
     val from: User
 ) : ForwardedMessage()
 
-@Deprecated(
-    "Renamed according to correct meaning",
-    ReplaceWith("UserForwardedMessage", "com.github.insanusmokrassar.TelegramBotAPI.types.message.UserForwardedMessage")
-)
-typealias CommonForwardedMessage = UserForwardedMessage
-
 data class ForwardedFromChannelMessage(
     override val dateOfOriginal: TelegramDate,
     val messageId: MessageIdentifier,

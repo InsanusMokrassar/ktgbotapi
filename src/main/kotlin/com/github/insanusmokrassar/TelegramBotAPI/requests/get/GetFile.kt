@@ -12,5 +12,8 @@ data class GetFile(
     val fileId: FileId
 ): SimpleRequest<PathedFile> {
     override fun method(): String = "getFile"
-    override fun resultDeserializer(): KSerializer<PathedFile> = PathedFile.serializer()
+    override val resultDeserializer: DeserializationStrategy<PathedFile>
+        get() = PathedFile.serializer()
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

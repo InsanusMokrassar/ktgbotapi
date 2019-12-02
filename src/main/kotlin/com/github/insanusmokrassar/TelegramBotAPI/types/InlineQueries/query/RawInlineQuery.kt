@@ -16,7 +16,6 @@ internal data class RawInlineQuery(
     @SerialName(locationField)
     val location: Location? = null
 ) {
-    @Transient
     val asInlineQuery by lazy {
         location ?.let {
             LocationInlineQuery(id, from, query, offset, location)

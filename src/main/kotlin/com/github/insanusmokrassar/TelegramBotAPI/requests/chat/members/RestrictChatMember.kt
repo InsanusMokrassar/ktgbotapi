@@ -19,5 +19,8 @@ data class RestrictChatMember(
     val permissions: ChatPermissions
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "restrictChatMember"
-    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
+    override val resultDeserializer: DeserializationStrategy<Boolean>
+        get() = BooleanSerializer
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

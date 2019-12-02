@@ -9,6 +9,8 @@ import kotlinx.serialization.internal.StringDescriptor
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObjectSerializer
 
+private val formatter = Json.nonstrict
+
 object PreviewChatSerializer : KSerializer<Chat> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("PreviewChatSerializer")
 
@@ -18,10 +20,10 @@ object PreviewChatSerializer : KSerializer<Chat> {
         val type = decodedJson.getPrimitive(typeField).content
 
         return when (type) {
-            "private" -> Json.nonstrict.fromJson(PrivateChatImpl.serializer(), decodedJson)
-            "group" -> Json.nonstrict.fromJson(GroupChatImpl.serializer(), decodedJson)
-            "supergroup" -> Json.nonstrict.fromJson(SupergroupChatImpl.serializer(), decodedJson)
-            "channel" -> Json.nonstrict.fromJson(ChannelChatImpl.serializer(), decodedJson)
+            "private" -> formatter.fromJson(PrivateChatImpl.serializer(), decodedJson)
+            "group" -> formatter.fromJson(GroupChatImpl.serializer(), decodedJson)
+            "supergroup" -> formatter.fromJson(SupergroupChatImpl.serializer(), decodedJson)
+            "channel" -> formatter.fromJson(ChannelChatImpl.serializer(), decodedJson)
             else -> throw IllegalArgumentException("Unknown type of chat")
         }
     }
@@ -46,10 +48,10 @@ object ExtendedChatSerializer : KSerializer<ExtendedChat> {
         val type = decodedJson.getPrimitive(typeField).content
 
         return when (type) {
-            "private" -> Json.nonstrict.fromJson(ExtendedPrivateChatImpl.serializer(), decodedJson)
-            "group" -> Json.nonstrict.fromJson(ExtendedGroupChatImpl.serializer(), decodedJson)
-            "supergroup" -> Json.nonstrict.fromJson(ExtendedSupergroupChatImpl.serializer(), decodedJson)
-            "channel" -> Json.nonstrict.fromJson(ExtendedChannelChatImpl.serializer(), decodedJson)
+            "private" -> formatter.fromJson(ExtendedPrivateChatImpl.serializer(), decodedJson)
+            "group" -> formatter.fromJson(ExtendedGroupChatImpl.serializer(), decodedJson)
+            "supergroup" -> formatter.fromJson(ExtendedSupergroupChatImpl.serializer(), decodedJson)
+            "channel" -> formatter.fromJson(ExtendedChannelChatImpl.serializer(), decodedJson)
             else -> throw IllegalArgumentException("Unknown type of chat")
         }
     }

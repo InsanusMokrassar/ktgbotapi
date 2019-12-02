@@ -17,6 +17,8 @@ data class AnswerShippingQueryOk(
 ) : AnswerShippingQuery {
     @SerialName(okField)
     override val isOk: Boolean = true
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
 
 object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ArrayListSerializer(
@@ -32,6 +34,8 @@ data class AnswerShippingQueryError(
 ) : AnswerShippingQuery {
     @SerialName(okField)
     override val isOk: Boolean = false
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
 
 fun ShippingQuery.createAnswerOk(

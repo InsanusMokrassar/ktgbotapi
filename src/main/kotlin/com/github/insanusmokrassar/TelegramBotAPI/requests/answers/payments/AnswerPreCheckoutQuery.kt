@@ -3,8 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments
 import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments.abstracts.AnswerPreCheckoutQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class AnswerPreCheckoutQueryOk(
@@ -13,6 +12,8 @@ data class AnswerPreCheckoutQueryOk(
 ) : AnswerPreCheckoutQuery {
     @SerialName(okField)
     override val isOk: Boolean = true
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
 
 
@@ -25,6 +26,8 @@ data class AnswerPreCheckoutQueryError(
 ) : AnswerPreCheckoutQuery {
     @SerialName(okField)
     override val isOk: Boolean = false
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
 
 fun PreCheckoutQuery.createAnswerOk(): AnswerPreCheckoutQueryOk = AnswerPreCheckoutQueryOk(

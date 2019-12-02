@@ -23,5 +23,8 @@ data class GetUserProfilePhotos(
     }
 
     override fun method(): String = "getUserProfilePhotos"
-    override fun resultDeserializer(): KSerializer<UserProfilePhotos> = UserProfilePhotos.serializer()
+    override val resultDeserializer: DeserializationStrategy<UserProfilePhotos>
+        get() = UserProfilePhotos.serializer()
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

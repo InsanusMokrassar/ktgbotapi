@@ -1,5 +1,35 @@
 # TelegramBotAPI changelog
 
+## 0.19.0 ImplicitReflection removing
+
+* Total rework of serialization for requests. Now all `SimpleRequest` children have:
+    * `requestSerializer` - field, which must provide serializer of current type
+    * `resultDeserializer` - field, which must provide opportunity to deserializer result. Previously it was a function
+* Removed deprecations:
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.WebhookPrivateKeyConfig`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesFilter`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.createSimpleUpdateFilter`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.createMarkdownText`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaption`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownText`
+    * `com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.KtorUpdatesPoller`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.message.CommonForwardedMessage`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.CaptionedInputMedia`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.games.Game#text`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.games.Game#textEntities`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFileKt.makeFileUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFileKt.downloadingFilesBaseUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.Data`
+    * `com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ByInlineMessageId`
+    * `com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ByMessageId`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.ReplyMessageNotFound`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor#baseUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor#constructor(token, hostUrl)`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor#constructor(token, client, hostUrl, callsFactories, excludeDefaultFactories, requestsLimiter, jsonFormatter)`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor#constructor(token, engine, hostUrl)`
+
 ## 0.18.0 Raws cleaning
 
 * Made internal and not available outside of library:

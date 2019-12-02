@@ -5,8 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.common.CommonMultipar
 import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts.StickerSetAction
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 fun CreateNewStickerSet(
     userId: UserId,
@@ -46,6 +45,9 @@ data class CreateNewStickerSet internal constructor(
             throw IllegalArgumentException("Emojis must not be empty")
         }
     }
+
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 
     override fun method(): String = "createNewStickerSet"
 }

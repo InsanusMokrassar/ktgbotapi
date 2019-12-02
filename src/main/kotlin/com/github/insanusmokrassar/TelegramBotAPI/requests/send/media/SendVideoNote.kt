@@ -82,7 +82,6 @@ data class SendVideoNoteData internal constructor(
     DuratedSendMessageRequest<Message>,
     SizedSendMessageRequest<Message>
 {
-    @Transient
     override val height: Int?
         get() = width
 
@@ -95,7 +94,10 @@ data class SendVideoNoteData internal constructor(
     }
 
     override fun method(): String = "sendVideoNote"
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
 
 data class SendVideoNoteFiles internal constructor(

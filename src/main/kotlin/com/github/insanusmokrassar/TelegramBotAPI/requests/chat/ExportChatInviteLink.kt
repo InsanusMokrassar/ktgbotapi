@@ -13,5 +13,8 @@ data class ExportChatInviteLink(
     override val chatId: ChatIdentifier
 ): ChatRequest, SimpleRequest<String> {
     override fun method(): String = "exportChatInviteLink"
-    override fun resultDeserializer(): KSerializer<String> = StringSerializer
+    override val resultDeserializer: DeserializationStrategy<String>
+        get() = StringSerializer
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

@@ -13,5 +13,8 @@ data class UnpinChatMessage(
     override val chatId: ChatIdentifier
 ): ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "unpinChatMessage"
-    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
+    override val resultDeserializer: DeserializationStrategy<Boolean>
+        get() = BooleanSerializer
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

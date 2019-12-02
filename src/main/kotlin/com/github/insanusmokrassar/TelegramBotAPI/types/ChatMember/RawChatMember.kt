@@ -40,7 +40,6 @@ internal data class RawChatMember(
     @SerialName(canAddWebPagePreviewsField)
     private val canAddWebPagePreviews: Boolean = false
 ) {
-    @Transient
     val asChatMember: ChatMember by lazy {
         when (status) {
             "creator" -> CreatorChatMember(user)

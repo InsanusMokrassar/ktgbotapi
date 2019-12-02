@@ -14,5 +14,8 @@ data class GetChatMember(
     override val userId: UserId
 ) : ChatMemberRequest<ChatMember> {
     override fun method(): String = "getChatMember"
-    override fun resultDeserializer(): DeserializationStrategy<ChatMember> = ChatMemberDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ChatMember>
+        get() = ChatMemberDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

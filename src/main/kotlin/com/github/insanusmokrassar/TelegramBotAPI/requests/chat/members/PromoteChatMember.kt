@@ -32,5 +32,8 @@ data class PromoteChatMember(
     private val canPromoteMembers: Boolean? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "promoteChatMember"
-    override fun resultDeserializer(): KSerializer<Boolean> = BooleanSerializer
+    override val resultDeserializer: DeserializationStrategy<Boolean>
+        get() = BooleanSerializer
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

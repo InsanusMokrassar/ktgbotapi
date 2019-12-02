@@ -14,5 +14,8 @@ data class GetChat(
     override val chatId: ChatIdentifier
 ): ChatRequest, SimpleRequest<ExtendedChat> {
     override fun method(): String = "getChat"
-    override fun resultDeserializer(): KSerializer<ExtendedChat> = ExtendedChatSerializer
+    override val resultDeserializer: DeserializationStrategy<ExtendedChat>
+        get() = ExtendedChatSerializer
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

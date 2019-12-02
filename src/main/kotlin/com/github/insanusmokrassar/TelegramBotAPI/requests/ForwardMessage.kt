@@ -24,5 +24,8 @@ data class ForwardMessage(
 
     override fun method(): String = "forwardMessage"
 
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

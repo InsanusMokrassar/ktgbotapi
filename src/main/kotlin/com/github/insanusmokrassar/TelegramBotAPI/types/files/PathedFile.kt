@@ -18,15 +18,3 @@ data class PathedFile(
 
 fun TelegramAPIUrlsKeeper.resolveFileURL(file: PathedFile): String = "$fileBaseUrl/${file.filePath}"
 inline fun PathedFile.fullUrl(keeper: TelegramAPIUrlsKeeper): String = keeper.resolveFileURL(this)
-
-@Deprecated("Deprecated due to old API", ReplaceWith("fullUrl(telegramApiUrlsKeeper)"))
-fun PathedFile.makeFileUrl(
-    botToken: String,
-    apiHost: String = "https://api.telegram.org"
-) = "${downloadingFilesBaseUrl(botToken, apiHost)}/$filePath"
-
-@Deprecated("Deprecated due to old API", ReplaceWith("telegramApiUrlsKeeper.fileBaseUrl"))
-fun downloadingFilesBaseUrl(
-    botToken: String,
-    apiHost: String
-) = "$apiHost/file/bot$botToken"

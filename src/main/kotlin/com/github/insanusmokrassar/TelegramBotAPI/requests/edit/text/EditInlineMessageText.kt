@@ -1,13 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.text
 
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.EditInlineMessageLiveLocation
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media.editMessageMediaMethod
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class EditInlineMessageText(
@@ -23,4 +23,6 @@ data class EditInlineMessageText(
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
     override fun method(): String = editMessageMediaMethod
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

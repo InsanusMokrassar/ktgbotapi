@@ -44,7 +44,10 @@ data class SendStickerByFileId internal constructor(
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<Message>, ReplyingMarkupSendMessageRequest<Message> {
     override fun method(): String = "sendSticker"
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
 
 data class SendStickerByFile internal constructor(

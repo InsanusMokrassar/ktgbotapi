@@ -21,5 +21,8 @@ data class EditChatMessageLiveLocation(
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage, EditReplyMessage, EditLocationMessage {
     override fun method(): String = "editMessageLiveLocation"
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }

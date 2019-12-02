@@ -53,7 +53,7 @@ fun SendMediaGroup(
     }
 }
 
-private val serializer = ArrayListSerializer(TelegramBotAPIMessageDeserializeOnlySerializer)
+private val messagesListSerializer = ArrayListSerializer(TelegramBotAPIMessageDeserializeOnlySerializer)
 
 @Serializable
 data class SendMediaGroupData internal constructor(
@@ -64,9 +64,7 @@ data class SendMediaGroupData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null
-) : DataRequest<List<Message>>,
-    SendMessageRequest<List<Message>>
-{
+) : DataRequest<List<Message>>, SendMessageRequest<List<Message>> {
     @SerialName(mediaField)
     private val convertedMedia: String
         get() = jsonArray {
@@ -77,7 +75,10 @@ data class SendMediaGroupData internal constructor(
 
 
     override fun method(): String = "sendMediaGroup"
-    override fun resultDeserializer(): DeserializationStrategy<List<Message>> = serializer
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+    override val resultDeserializer: DeserializationStrategy<List<Message>>
+        get() = messagesListSerializer
 }
 
 data class SendMediaGroupFiles internal constructor(

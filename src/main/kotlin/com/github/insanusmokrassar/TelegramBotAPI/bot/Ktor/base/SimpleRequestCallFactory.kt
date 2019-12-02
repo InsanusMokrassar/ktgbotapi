@@ -12,12 +12,11 @@ class SimpleRequestCallFactory : AbstractRequestCallFactory() {
         baseUrl: String,
         request: Request<T>
     ): Any? = (request as? SimpleRequest<T>) ?.let { _ ->
-        val content = request.toJsonWithoutNulls(SimpleRequestSerializer).toString()
+        val content = request.json().toString()
 
         TextContent(
             content,
             ContentType.Application.Json
         )
     }
-
 }

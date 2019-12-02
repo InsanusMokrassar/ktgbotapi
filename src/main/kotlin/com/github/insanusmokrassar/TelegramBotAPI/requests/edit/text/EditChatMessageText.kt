@@ -28,5 +28,8 @@ data class EditChatMessageText(
 ) : EditChatMessage, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
 
     override fun method(): String = editMessageTextMethod
-    override fun resultDeserializer(): DeserializationStrategy<Message> = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<Message>
+        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
 }
