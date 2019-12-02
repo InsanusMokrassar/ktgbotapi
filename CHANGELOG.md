@@ -12,6 +12,15 @@
     * `com.github.insanusmokrassar.TelegramBotAPI.utils.createMarkdownText`
     * `com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaption`
     * `com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownText`
+    * `com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.KtorUpdatesPoller`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.message.CommonForwardedMessage`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.CaptionedInputMedia`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.games.Game#text`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.games.Game#textEntities`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFileKt.makeFileUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFileKt.downloadingFilesBaseUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.Data`
 
 ## 0.18.0 Raws cleaning
 

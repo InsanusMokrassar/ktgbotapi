@@ -50,25 +50,6 @@ fun KtorUpdatesPoller(
     )
 }
 
-@Deprecated("Deprecated due to new TelegramAPIUrlsKeeper")
-fun KtorUpdatesPoller(
-    token: String,
-    timeoutSeconds: Int? = null,
-    oneTimeUpdatesLimit: Int? = null,
-    allowedUpdates: List<String> = ALL_UPDATES_LIST,
-    exceptionsHandler: (Exception) -> Boolean = { true },
-    updatesReceiver: UpdateReceiver<Update>
-): KtorUpdatesPoller {
-    return KtorUpdatesPoller(
-        TelegramAPIUrlsKeeper(token),
-        timeoutSeconds,
-        oneTimeUpdatesLimit,
-        allowedUpdates,
-        exceptionsHandler,
-        updatesReceiver
-    )
-}
-
 class KtorUpdatesPoller(
     private val executor: RequestsExecutor,
     private val timeoutSeconds: Int? = null,

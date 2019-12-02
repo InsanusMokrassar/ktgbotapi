@@ -14,20 +14,4 @@ data class Game(
     override val caption: String? = null,
     override val captionEntities: List<MessageEntity> = emptyList(),
     val animation: AnimationFile? = null
-) : Titled, CaptionedInput {
-    @Deprecated(
-        "Missinterfaced field",
-        ReplaceWith("caption")
-    )
-    @Transient
-    val text: String?
-        get() = caption
-
-    @Deprecated(
-        "Missinterfaced field",
-        ReplaceWith("captionEntities")
-    )
-    @Transient
-    val textEntities: List<MessageEntity>?
-        get() = captionEntities
-}
+) : Titled, CaptionedInput
