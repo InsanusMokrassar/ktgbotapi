@@ -71,7 +71,7 @@ class ChatIdentifierTests {
         // username without starting @ symbol
         Example(testUsername.toUsername()).let { withUsername ->
             val stringified = Json.plain.stringify(Example.serializer(), withUsername).replace("@", "")
-            assertEquals(stringified, "{\"identifier\":\"${testUsername.replace("@", "")}\"}")
+            assertEquals("{\"identifier\":\"${testUsername.replace("@", "")}\"}", stringified)
             val deserialized = Json.plain.parse(Example.serializer(), stringified)
             assertEquals(withUsername, deserialized)
         }
