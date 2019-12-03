@@ -1,6 +1,3 @@
-project.version = "0.19.0"
-project.group = "com.github.insanusmokrassar"
-
 buildscript {
     repositories {
         mavenLocal()
@@ -15,9 +12,13 @@ buildscript {
     }
 }
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'kotlinx-serialization'
+plugins {
+    id "org.jetbrains.kotlin.multiplatform" version "$kotlin_version"
+    id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version"
+}
+
+project.version = "0.19.0-kmpp-migration"
+project.group = "com.github.insanusmokrassar"
 
 apply from: "publish.gradle"
 
@@ -28,17 +29,49 @@ repositories {
     maven { url "https://kotlin.bintray.com/kotlinx" }
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-    api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
-    api "joda-time:joda-time:$joda_time_version"
+kotlin {
+    jvm()
+//    js()
 
-    api "io.ktor:ktor-client:$ktor_version"
-    api "io.ktor:ktor-client-cio:$ktor_version"
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib')
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialisation_runtime_version"
+                api "com.soywiz.korlibs.klock:klock:$klock_version"
 
-    api "io.ktor:ktor-server:$ktor_version"
-    api "io.ktor:ktor-server-host-common:$ktor_version"
+                api "io.ktor:ktor-client-core:$ktor_version"
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation kotlin('test-common')
+                implementation kotlin('test-annotations-common')
+            }
+        }
 
-    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+        jvmMain {
+            dependencies {
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
+
+                api "io.ktor:ktor-client:$ktor_version"
+                api "io.ktor:ktor-server:$ktor_version"
+
+                api "io.ktor:ktor-server-host-common:$ktor_version"
+                api "io.ktor:ktor-client-cio:$ktor_version"
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation kotlin('test-junit')
+            }
+        }
+
+//        jsMain {
+//            dependencies {
+//                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$kotlin_serialisation_runtime_version"
+//            }
+//        }
+    }
 }

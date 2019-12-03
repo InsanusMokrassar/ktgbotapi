@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 0.20.0 MPP Migration
+
+* Time library change: `joda-time` -> `com.soywiz.korlibs.klock:klock`
+* `Currencied` now using as `currency` value with type `String`
+    * For `Java` there is `Currencied#javaCurrency` extension function, which will give an old currency work way
+* `User` now have no field `userLocale`
+    * For `Java` there is `User#javaLocale` extension function, which will give an old locale work way
+
 ## 0.19.0 ImplicitReflection removing
 
 * Total rework of serialization for requests. Now all `SimpleRequest` children have:
