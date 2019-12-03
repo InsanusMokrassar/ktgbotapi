@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
 import kotlinx.serialization.*
-import org.joda.time.DateTime
+import com.soywiz.klock.DateTime
 import java.util.concurrent.TimeUnit
 
 @Serializable(TelegramDateSerializer::class)
@@ -12,7 +12,7 @@ data class TelegramDate(
     private val date: Long
 ) {
     constructor(dateTime: DateTime) : this(
-        TimeUnit.MILLISECONDS.toSeconds(dateTime.millis)
+        TimeUnit.MILLISECONDS.toSeconds(dateTime.unixMillisLong)
     )
 
     @Transient
@@ -27,7 +27,7 @@ fun DateTime.toTelegramDate(): TelegramDate = TelegramDate(this)
 internal object TelegramDateSerializer : KSerializer<TelegramDate> {
     override fun serialize(encoder: Encoder, obj: TelegramDate) {
         encoder.encodeLong(
-            TimeUnit.MILLISECONDS.toSeconds(obj.asDate.millis)
+            TimeUnit.MILLISECONDS.toSeconds(obj.asDate.unixMillisLong)
         )
     }
 

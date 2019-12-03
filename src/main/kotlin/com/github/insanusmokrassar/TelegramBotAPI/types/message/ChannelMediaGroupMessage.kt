@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaGroupContent
-import org.joda.time.DateTime
+import com.soywiz.klock.DateTime
 
 data class ChannelMediaGroupMessage(
     override val messageId: MessageIdentifier,

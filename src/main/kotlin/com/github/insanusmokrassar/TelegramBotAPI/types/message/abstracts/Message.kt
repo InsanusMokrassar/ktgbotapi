@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
-import org.joda.time.DateTime
+import com.soywiz.klock.DateTime
 
 interface Message {
     val messageId: MessageIdentifier

@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMa
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaGroupContent
-import org.joda.time.DateTime
+import com.soywiz.klock.DateTime
 
 data class CommonMediaGroupMessage(
     override val messageId: MessageIdentifier,

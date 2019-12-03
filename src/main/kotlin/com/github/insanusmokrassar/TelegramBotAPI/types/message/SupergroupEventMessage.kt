@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.SupergroupChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.abstracts.SupergroupEvent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ChatEventMessage
-import org.joda.time.DateTime
+import com.soywiz.klock.DateTime
 
 data class SupergroupEventMessage(
     override val messageId: MessageIdentifier,

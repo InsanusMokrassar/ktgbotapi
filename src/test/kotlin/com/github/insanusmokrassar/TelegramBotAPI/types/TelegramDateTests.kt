@@ -1,9 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
+import com.soywiz.klock.DateTime
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import org.joda.time.DateTime
 import java.util.concurrent.TimeUnit
 import kotlin.test.Test
 import kotlin.test.assertEquals
