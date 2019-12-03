@@ -31,15 +31,17 @@ repositories {
 
 kotlin {
     jvm()
-//    js()
+    js()
 
     sourceSets {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
-                api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$kotlin_coroutines_version"
                 api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialisation_runtime_version"
+
                 api "com.soywiz.korlibs.klock:klock:$klock_version"
+                api "com.benasher44:uuid:$uuid_version"
 
                 api "io.ktor:ktor-client-core:$ktor_version"
             }
@@ -68,10 +70,12 @@ kotlin {
             }
         }
 
-//        jsMain {
-//            dependencies {
-//                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$kotlin_serialisation_runtime_version"
-//            }
-//        }
+        jsMain {
+            dependencies {
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$kotlin_serialisation_runtime_version"
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$kotlin_coroutines_version"
+                api "io.ktor:ktor-client-js:$ktor_version"
+            }
+        }
     }
 }

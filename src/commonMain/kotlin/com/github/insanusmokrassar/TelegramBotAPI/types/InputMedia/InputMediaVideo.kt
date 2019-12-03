@@ -4,7 +4,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
-import com.github.insanusmokrassar.TelegramBotAPI.utils.format
 import kotlinx.serialization.*
 
 @Serializable
@@ -25,7 +24,7 @@ data class InputMediaVideo(
     @SerialName(mediaField)
     val media: String = when (file) {
         is FileId -> file.fileId
-        is MultipartFile -> inputMediaFileAttachmentNameTemplate.format(file.fileId)
+        is MultipartFile -> file.fileId.toInputMediaFileAttachmentName()
     }
 
     @Transient

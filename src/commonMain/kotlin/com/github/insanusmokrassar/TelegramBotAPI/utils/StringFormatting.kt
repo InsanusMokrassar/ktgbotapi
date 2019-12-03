@@ -137,5 +137,3 @@ infix fun String.command(parseMode: ParseMode): String = when (parseMode) {
     is HTML -> commandHTML()
     is Markdown -> commandMarkdown()
 }
-
-expect fun String.format(vararg args: Any?): String

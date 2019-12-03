@@ -6,7 +6,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
-import com.github.insanusmokrassar.TelegramBotAPI.utils.format
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -28,7 +27,7 @@ data class InputMediaAudio(
         get() = file.let {
             when (it) {
                 is FileId -> it.fileId
-                is MultipartFile -> inputMediaFileAttachmentNameTemplate.format(it.fileId)
+                is MultipartFile -> it.fileId.toInputMediaFileAttachmentName()
             }
         }
 }
