@@ -25,7 +25,29 @@ like inserting of additional libraries (like `kotlin stdlib`). In the examples w
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI/_latestVersion)
 
+Currently, last versions of library are not included into the Maven repository (for the reason difficult in publishing
+of signed artifacts in Bintray). You can:
+
+* Use earlier version (available version you can find
+[here](https://mvnrepository.com/artifact/com.github.insanusmokrassar/TelegramBotAPI))
+* Add `jCenter` repository in build config
+
 ### Maven
+
+To use last versions you will need to add several lines in repositories block of your pom.xml:
+
+```xml
+<repository>
+    <snapshots>
+        <enabled>false</enabled>
+    </snapshots>
+    <id>central</id>
+    <name>bintray</name>
+    <url>http://jcenter.bintray.com</url>
+</repository>
+```
+
+Dependency config presented here:
 
 ```xml
 <dependency>
@@ -37,14 +59,22 @@ like inserting of additional libraries (like `kotlin stdlib`). In the examples w
 
 ### Gradle
 
+To use last versions you will need to add one line in repositories block of your build.gradle:
+
 ```groovy
-implementation "com.github.insanusmokrassar:TelegramBotAPI:${telegrambotapi.version}"
+jcenter()
 ```
 
-### Gradle (old)
+And add next line to your dependencies block:
 
 ```groovy
-compile "com.github.insanusmokrassar:TelegramBotAPI:${telegrambotapi.version}"
+implementation "com.github.insanusmokrassar:TelegramBotAPI:$telegrambotapi_version"
+```
+
+or for old gradle:
+
+```groovy
+compile "com.github.insanusmokrassar:TelegramBotAPI:$telegrambotapi_version"
 ```
 
 ## How to work with library?
