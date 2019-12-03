@@ -21,14 +21,15 @@ class MultipartRequestCallFactory : AbstractRequestCallFactory() {
                 val params = castedRequest.paramsJson.mapWithCommonValues()
                 for ((key, value) in castedRequest.mediaMap + params) {
                     when (value) {
-                        is MultipartFile -> append(
+                        is MultipartFile -> appendInput(
                             key,
-                            value.file.asInput().readBytes(),
                             Headers.build {
                                 append(HttpHeaders.ContentType, value.mimeType)
                                 append(HttpHeaders.ContentDisposition, "filename=${value.fileId}")
                             }
-                        )
+                        ) {
+                            value.file.asInput()
+                        }
                         is FileId -> append(key, value.fileId)
                         else -> append(key, value.toString())
                     }

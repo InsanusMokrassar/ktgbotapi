@@ -5,10 +5,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall
 import io.ktor.client.call.call
-import io.ktor.client.request.accept
-import io.ktor.client.request.url
-import io.ktor.http.ContentType
-import io.ktor.http.HttpMethod
+import io.ktor.client.request.*
+import io.ktor.http.*
 
 abstract class AbstractRequestCallFactory : KtorCallFactory {
     private val methodsCache: MutableMap<String, String> = mutableMapOf()
