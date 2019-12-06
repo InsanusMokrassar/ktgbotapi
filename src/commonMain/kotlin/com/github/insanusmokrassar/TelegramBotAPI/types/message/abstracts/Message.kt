@@ -3,9 +3,9 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
+import com.soywiz.klock.DateTime
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
-import com.soywiz.klock.DateTime
 
 interface Message {
     val messageId: MessageIdentifier

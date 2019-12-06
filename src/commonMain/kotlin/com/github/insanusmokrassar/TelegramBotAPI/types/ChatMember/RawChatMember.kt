@@ -2,7 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.ChatMember
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class RawChatMember(

@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import io.ktor.client.HttpClient
 import io.ktor.http.ContentType
 import io.ktor.http.content.TextContent

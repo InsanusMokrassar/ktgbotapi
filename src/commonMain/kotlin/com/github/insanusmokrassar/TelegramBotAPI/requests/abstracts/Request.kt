@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
-import kotlinx.serialization.*
+import kotlinx.serialization.DeserializationStrategy
 
 interface Request<T: Any> {
     fun method(): String

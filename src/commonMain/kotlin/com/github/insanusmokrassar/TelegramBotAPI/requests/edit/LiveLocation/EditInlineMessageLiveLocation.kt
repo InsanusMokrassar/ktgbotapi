@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.caption.EditInlineMessageCaption
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import kotlinx.serialization.*

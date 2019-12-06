@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.query
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class RawInlineQuery(

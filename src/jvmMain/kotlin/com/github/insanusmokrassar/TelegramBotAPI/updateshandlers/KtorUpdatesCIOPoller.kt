@@ -3,7 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import com.github.insanusmokrassar.TelegramBotAPI.utils.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO

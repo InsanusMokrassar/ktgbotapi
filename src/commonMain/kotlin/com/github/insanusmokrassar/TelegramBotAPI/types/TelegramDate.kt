@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
-import kotlinx.serialization.*
 import com.soywiz.klock.DateTime
+import kotlinx.serialization.*
 
 @Serializable(TelegramDateSerializer::class)
 data class TelegramDate(

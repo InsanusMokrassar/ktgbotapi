@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
-import kotlinx.serialization.*
+import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.json.JsonObject
 
 /**

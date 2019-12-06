@@ -4,7 +4,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleReque
 import com.github.insanusmokrassar.TelegramBotAPI.types.PreCheckoutQueryId
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.internal.BooleanSerializer
-import kotlinx.serialization.serializer
 
 interface AnswerPreCheckoutQuery : SimpleRequest<Boolean> {
     override fun method(): String = "answerPreCheckoutQuery"

@@ -5,7 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Titled
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.AnimationFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.Photo
-import kotlinx.serialization.Transient
 
 data class Game(
     override val title: String,
