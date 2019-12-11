@@ -8,6 +8,8 @@
 * `User` now have no field `userLocale`
     * For `Java` there is `User#javaLocale` extension function, which will give an old locale work way
 
+### 0.20.1
+
 ## 0.19.0 ImplicitReflection removing
 
 * Total rework of serialization for requests. Now all `SimpleRequest` children have:
