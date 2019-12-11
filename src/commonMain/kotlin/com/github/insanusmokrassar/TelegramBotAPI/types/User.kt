@@ -1,19 +1,20 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class User(
-    val id: ChatId,
+    override val id: ChatId,
     @SerialName(isBotField)
     val isBot: Boolean = false,
     @SerialName(firstNameField)
-    val firstName: String,
+    override val firstName: String,
     @SerialName(lastNameField)
-    val lastName: String? = null,
+    override val lastName: String = "",
     @SerialName(usernameField)
-    val username: Username? = null,
+    override val username: Username? = null,
     @SerialName(languageCodeField)
     val languageCode: String? = null
-)
+) : PrivateChat

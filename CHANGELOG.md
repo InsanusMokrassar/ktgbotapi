@@ -10,6 +10,10 @@
 
 ### 0.20.1
 
+* `User` now implement `PrivateChat`
+* `TextMentionMessageEntity` now accept `PrivateChat` instead of `User` in main constructor
+    * `TextMentionMessageEntity` now contains not user, but contains `PrivateChat`
+
 ## 0.19.0 ImplicitReflection removing
 
 * Total rework of serialization for requests. Now all `SimpleRequest` children have:

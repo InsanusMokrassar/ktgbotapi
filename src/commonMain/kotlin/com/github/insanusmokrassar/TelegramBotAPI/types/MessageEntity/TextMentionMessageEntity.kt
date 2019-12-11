@@ -1,14 +1,23 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionMarkdown
 
 class TextMentionMessageEntity(
     override val offset: Int,
     override val length: Int,
     override val sourceString: String,
-    val user: User
+    val privateChat: PrivateChat
 ) : MessageEntity {
-    override val asMarkdownSource: String = sourceString.mentionMarkdown(user.id)
-    override val asHtmlSource: String = sourceString.mentionMarkdown(user.id)
+    @Deprecated("Deprecated due to the fact that there is more common constructor")
+    constructor(
+        offset: Int,
+        length: Int,
+        sourceString: String,
+        user: User
+    ) : this(offset, length, sourceString, user as PrivateChat)
+
+    override val asMarkdownSource: String = sourceString.mentionMarkdown(privateChat.id)
+    override val asHtmlSource: String = sourceString.mentionMarkdown(privateChat.id)
 }
