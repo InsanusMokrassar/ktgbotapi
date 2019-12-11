@@ -13,7 +13,7 @@
 * `User` now implement `PrivateChat`
 * `TextMentionMessageEntity` now accept `PrivateChat` instead of `User` in main constructor
     * `TextMentionMessageEntity` now contains not user, but contains `PrivateChat`
-    * Fixeed: `TextMentionMessageEntity#asHtmlSource` previously worked incorrect
+    * Fixed: `TextMentionMessageEntity#asHtmlSource` previously worked incorrect
 * Abstraction `TextSource`
     * `MessageEntity` now extends `TextSource`
     * `createFormattedText` method now accept `List<TextSource>`
