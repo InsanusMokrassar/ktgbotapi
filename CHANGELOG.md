@@ -14,6 +14,11 @@
 * `TextMentionMessageEntity` now accept `PrivateChat` instead of `User` in main constructor
     * `TextMentionMessageEntity` now contains not user, but contains `PrivateChat`
     * Fixeed: `TextMentionMessageEntity#asHtmlSource` previously worked incorrect
+* Abstraction `TextSource`
+    * `MessageEntity` now extends `TextSource`
+    * `createFormattedText` method now accept `List<TextSource>`
+    * `createHtmlText` method now accept `List<TextSource>`
+    * `createMarkdownText` method now accept `List<TextSource>`
 
 ## 0.19.0 ImplicitReflection removing
 

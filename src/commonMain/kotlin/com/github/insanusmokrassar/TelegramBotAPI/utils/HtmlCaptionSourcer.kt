@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.HTMLParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.captionLength
@@ -8,7 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextCont
 import com.github.insanusmokrassar.TelegramBotAPI.types.textLength
 
 fun createHtmlText(
-    entities: List<MessageEntity>,
+    entities: List<TextSource>,
     partLength: Int = 4096
 ): List<String> = createFormattedText(entities, partLength, HTMLParseMode)
 

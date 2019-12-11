@@ -1,10 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
-interface MessageEntity {
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
+
+interface MessageEntity : TextSource {
     val offset: Int
     val length: Int
     val sourceString: String
-    
-    val asMarkdownSource: String
-    val asHtmlSource: String
 }
