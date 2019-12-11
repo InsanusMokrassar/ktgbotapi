@@ -19,6 +19,8 @@
     * `createFormattedText` method now accept `List<TextSource>`
     * `createHtmlText` method now accept `List<TextSource>`
     * `createMarkdownText` method now accept `List<TextSource>`
+    * A lot of `TextSource` implementors was added. More info [here](src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/MessageEntity/textsources/)
+        * All `MessageEntity` implementations now are using new `TextSource` analogues as delegates
 
 ## 0.19.0 ImplicitReflection removing
 

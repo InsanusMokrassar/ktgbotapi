@@ -1,5 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.TextMentionTextSource
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionHTML
@@ -10,7 +12,7 @@ class TextMentionMessageEntity(
     override val length: Int,
     override val sourceString: String,
     val privateChat: PrivateChat
-) : MessageEntity {
+) : MessageEntity, TextSource by TextMentionTextSource(sourceString, privateChat) {
     @Deprecated("Deprecated due to the fact that there is more common constructor")
     constructor(
         offset: Int,
@@ -18,7 +20,4 @@ class TextMentionMessageEntity(
         sourceString: String,
         user: User
     ) : this(offset, length, sourceString, user as PrivateChat)
-
-    override val asMarkdownSource: String = sourceString.mentionMarkdown(privateChat.id)
-    override val asHtmlSource: String = sourceString.mentionHTML(privateChat.id)
 }
