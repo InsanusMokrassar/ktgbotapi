@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
+import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionMarkdown
 
 class TextMentionMessageEntity(
@@ -19,5 +20,5 @@ class TextMentionMessageEntity(
     ) : this(offset, length, sourceString, user as PrivateChat)
 
     override val asMarkdownSource: String = sourceString.mentionMarkdown(privateChat.id)
-    override val asHtmlSource: String = sourceString.mentionMarkdown(privateChat.id)
+    override val asHtmlSource: String = sourceString.mentionHTML(privateChat.id)
 }
