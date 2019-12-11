@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RegularTextMessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
@@ -37,7 +38,7 @@ fun convertToFullMessageEntityList(
 }
 
 fun createFormattedText(
-    entities: List<MessageEntity>,
+    entities: List<TextSource>,
     partLength: Int = 4096,
     mode: ParseMode = MarkdownParseMode
 ): List<String> {

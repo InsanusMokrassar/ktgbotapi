@@ -1,5 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.TextLinkTextSource
 import com.github.insanusmokrassar.TelegramBotAPI.utils.linkHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.linkMarkdown
 
@@ -8,7 +10,4 @@ data class TextLinkMessageEntity(
     override val length: Int,
     override val sourceString: String,
     val url: String
-) : MessageEntity {
-    override val asMarkdownSource: String = sourceString.linkMarkdown(url)
-    override val asHtmlSource: String = sourceString.linkHTML(url)
-}
+) : MessageEntity, TextSource by TextLinkTextSource(sourceString, url)

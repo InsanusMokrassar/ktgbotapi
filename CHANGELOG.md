@@ -8,6 +8,20 @@
 * `User` now have no field `userLocale`
     * For `Java` there is `User#javaLocale` extension function, which will give an old locale work way
 
+### 0.20.1
+
+* `User` now implement `PrivateChat`
+* `TextMentionMessageEntity` now accept `PrivateChat` instead of `User` in main constructor
+    * `TextMentionMessageEntity` now contains not user, but contains `PrivateChat`
+    * Fixeed: `TextMentionMessageEntity#asHtmlSource` previously worked incorrect
+* Abstraction `TextSource`
+    * `MessageEntity` now extends `TextSource`
+    * `createFormattedText` method now accept `List<TextSource>`
+    * `createHtmlText` method now accept `List<TextSource>`
+    * `createMarkdownText` method now accept `List<TextSource>`
+    * A lot of `TextSource` implementors was added. More info [here](src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/MessageEntity/textsources/)
+        * All `MessageEntity` implementations now are using new `TextSource` analogues as delegates
+
 ## 0.19.0 ImplicitReflection removing
 
 * Total rework of serialization for requests. Now all `SimpleRequest` children have:
