@@ -13,6 +13,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall
 import io.ktor.client.call.receive
+import io.ktor.client.features.ClientRequestException
+import io.ktor.client.response.readText
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 
@@ -48,26 +50,36 @@ class KtorRequestsExecutor(
             if (call == null) {
                 throw IllegalArgumentException("Can't execute request: $request")
             }
-            val content = call.response.receive<String>()
-            val responseObject = jsonFormatter.parse(Response.serializer(), content)
+            try {
+                val content = call.response.receive<String>()
+                val responseObject = jsonFormatter.parse(Response.serializer(), content)
 
-            (responseObject.result ?.let {
-                jsonFormatter.fromJson(request.resultDeserializer, it)
-            } ?: responseObject.parameters ?.let {
-                val error = it.error
-                if (error is RetryAfterError) {
-                    delay(error.leftToRetry)
-                    execute(request)
-                } else {
-                    null
-                }
-            } ?: call.let {
+                (responseObject.result?.let {
+                    jsonFormatter.fromJson(request.resultDeserializer, it)
+                } ?: responseObject.parameters?.let {
+                    val error = it.error
+                    if (error is RetryAfterError) {
+                        delay(error.leftToRetry)
+                        execute(request)
+                    } else {
+                        null
+                    }
+                } ?: call.let {
+                    throw newRequestException(
+                        responseObject,
+                        content,
+                        "Can't get result object from $content"
+                    )
+                })
+            } catch (e: ClientRequestException) {
+                val content = e.response.readText()
+                val responseObject = jsonFormatter.parse(Response.serializer(), content)
                 throw newRequestException(
                     responseObject,
                     content,
                     "Can't get result object from $content"
                 )
-            })
+            }
         }
     }
 

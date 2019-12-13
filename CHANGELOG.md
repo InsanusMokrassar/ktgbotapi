@@ -25,6 +25,7 @@
 ### 0.20.2
 
 * New exception type `MessageIsNotModifierException` was added
+* Now exceptions in requests will be caught correctly
 
 ## 0.19.0 ImplicitReflection removing
 
