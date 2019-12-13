@@ -1,7 +1,7 @@
 # TelegramBotAPI
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI/_latestVersion)
-[![Build Status](https://jenkins.insanusmokrassar.space/buildStatus/icon?job=TelegramBotAPI_master__publishing)](https://jenkins.insanusmokrassar.space/job/TelegramBotAPI_master__publishing/)
+[![Build Status](https://jenkins.insanusmokrassar.com/buildStatus/icon?job=TelegramBotAPI_master__publishing)](https://jenkins.insanusmokrassar.com/job/TelegramBotAPI_master__publishing/)
 
 ## What is it?
 
