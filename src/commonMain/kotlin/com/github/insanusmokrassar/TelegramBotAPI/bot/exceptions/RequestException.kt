@@ -8,11 +8,14 @@ fun newRequestException(
     plainAnswer: String,
     message: String? = null,
     cause: Throwable? = null
-) = when (response.description) {
-    "Bad Request: reply message not found" -> ReplyMessageNotFoundException(response, plainAnswer, message, cause)
-    "Unauthorized" -> UnauthorizedException(response, plainAnswer, message, cause)
-    else -> CommonRequestException(response, plainAnswer, message, cause)
-}
+) = response.description ?.let { description ->
+    when {
+        description == "Bad Request: reply message not found" -> ReplyMessageNotFoundException(response, plainAnswer, message, cause)
+        description.contains("Bad Request: message is not modified") -> MessageIsNotModifierException(response, plainAnswer, message, cause)
+        description == "Unauthorized" -> UnauthorizedException(response, plainAnswer, message, cause)
+        else -> null
+    }
+} ?: CommonRequestException(response, plainAnswer, message, cause)
 
 sealed class RequestException constructor(
     val response: Response,
@@ -31,4 +34,7 @@ class UnauthorizedException(response: Response, plainAnswer: String, message: St
     RequestException(response, plainAnswer, message, cause)
 
 class ReplyMessageNotFoundException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
+    RequestException(response, plainAnswer, message, cause)
+
+class MessageIsNotModifierException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause)

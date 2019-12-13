@@ -22,6 +22,10 @@
     * A lot of `TextSource` implementors was added. More info [here](src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/MessageEntity/textsources/)
         * All `MessageEntity` implementations now are using new `TextSource` analogues as delegates
 
+### 0.20.2
+
+* New exception type `MessageIsNotModifierException` was added
+
 ## 0.19.0 ImplicitReflection removing
 
 * Total rework of serialization for requests. Now all `SimpleRequest` children have:
