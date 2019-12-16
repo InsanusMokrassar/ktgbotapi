@@ -28,6 +28,10 @@
 * New exception type `MessageToEditNotFoundException` was added
 * Now exceptions in requests will be caught correctly
 
+### 0.20.3
+
+* Now `LeftChatMamber` is a `CommonEvent`
+
 ## 0.19.0 ImplicitReflection removing
 
 * Total rework of serialization for requests. Now all `SimpleRequest` children have:
