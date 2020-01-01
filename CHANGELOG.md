@@ -32,6 +32,10 @@
 
 * Now `LeftChatMamber` is a `CommonEvent`
 
+### 0.20.4
+
+* Now `setWebhook` supports setting up of path for listening
+
 ## 0.19.0 ImplicitReflection removing
 
 * Total rework of serialization for requests. Now all `SimpleRequest` children have:
