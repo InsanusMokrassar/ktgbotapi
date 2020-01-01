@@ -23,7 +23,6 @@ import kotlinx.serialization.json.Json
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-
 /**
  * Reverse proxy webhook.
  *
@@ -36,6 +35,7 @@ import java.util.concurrent.TimeUnit
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
+    listenAddress: String,
     engineFactory: ApplicationEngineFactory<*, *>,
     certificate: InputFile? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
@@ -70,7 +70,7 @@ suspend fun RequestsExecutor.setWebhook(
 
         module {
             routing {
-                post {
+                post(listenAddress) {
                     val deserialized = call.receiveText()
                     val update = Json.nonstrict.parse(
                         RawUpdate.serializer(),
@@ -139,15 +139,40 @@ suspend fun RequestsExecutor.setWebhook(
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
+    engineFactory: ApplicationEngineFactory<*, *>,
+    certificate: InputFile? = null,
+    privateKeyConfig: WebhookPrivateKeyConfig? = null,
+    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
+    allowedUpdates: List<String>? = null,
+    maxAllowedConnections: Int? = null,
+    block: UpdateReceiver<Update>
+) = setWebhook(
+    url,
+    port,
+    "/",
+    engineFactory,
+    certificate,
+    privateKeyConfig,
+    scope,
+    allowedUpdates,
+    maxAllowedConnections,
+    block
+)
+
+suspend fun RequestsExecutor.setWebhook(
+    url: String,
+    port: Int,
     filter: UpdatesFilter,
     engineFactory: ApplicationEngineFactory<*, *>,
     certificate: InputFile? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    maxAllowedConnections: Int? = null
+    maxAllowedConnections: Int? = null,
+    listenAddress: String = ""
 ): Job = setWebhook(
     url,
     port,
+    listenAddress,
     engineFactory,
     certificate,
     privateKeyConfig,
