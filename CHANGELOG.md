@@ -2,6 +2,7 @@
 
 ## 0.21.0 TelegramBotAPI 4.5
 
+* All `TelegramMediaFile` instances now have field `fileUniqueId`, which represents `file_unique_id` field from API
 * Now `ChatPhoto` have two additional fields: `smallFileUniqueId` and `bigFileUniqueId`
 * Now any administrator object instance have `customTitle` nullable field
 * Added the new request `SetChatAdministratorCustomTitle` to manage the custom titles of administrators promoted by the

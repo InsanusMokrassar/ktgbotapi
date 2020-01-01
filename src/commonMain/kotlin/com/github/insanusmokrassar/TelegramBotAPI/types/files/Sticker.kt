@@ -11,6 +11,8 @@ import kotlinx.serialization.Serializable
 data class Sticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
+    @SerialName(fileUniqueIdField)
+    override val fileUniqueId: FileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)

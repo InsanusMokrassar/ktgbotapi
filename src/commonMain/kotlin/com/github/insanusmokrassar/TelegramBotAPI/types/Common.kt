@@ -227,6 +227,8 @@ const val bigFileIdField = "big_file_id"
 const val smallFileUniqueIdField = "small_file_unique_id"
 const val bigFileUniqueIdField = "big_file_unique_id"
 
+const val fileUniqueIdField = "file_unique_id"
+
 
 const val currencyField = "currency"
 const val startParameterField = "start_parameter"
