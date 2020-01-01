@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit
  *
  * @param url URL of webhook WITHOUT including of [port]
  * @param port port which will be listen by bot
+ * @param listenAddress address to listen by bot
  * @param certificate [com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile] or [com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId]
  * which will be used by telegram to send encrypted messages
  * @param scope Scope which will be used for
@@ -35,8 +36,8 @@ import java.util.concurrent.TimeUnit
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
-    listenAddress: String,
     engineFactory: ApplicationEngineFactory<*, *>,
+    listenAddress: String = "/",
     certificate: InputFile? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
@@ -149,8 +150,8 @@ suspend fun RequestsExecutor.setWebhook(
 ) = setWebhook(
     url,
     port,
-    "/",
     engineFactory,
+    "/",
     certificate,
     privateKeyConfig,
     scope,
@@ -168,12 +169,12 @@ suspend fun RequestsExecutor.setWebhook(
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     maxAllowedConnections: Int? = null,
-    listenAddress: String = ""
+    listenAddress: String = "/"
 ): Job = setWebhook(
     url,
     port,
-    listenAddress,
     engineFactory,
+    listenAddress,
     certificate,
     privateKeyConfig,
     scope,
