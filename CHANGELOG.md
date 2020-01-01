@@ -35,6 +35,7 @@
 ### 0.20.4
 
 * Now `setWebhook` supports setting up of path for listening
+* Now `setWebhook` supports custom listen address even if certificate was not provided
 
 ## 0.19.0 ImplicitReflection removing
 

@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit
  *
  * @param url URL of webhook WITHOUT including of [port]
  * @param port port which will be listen by bot
- * @param listenAddress address to listen by bot
+ * @param listenRoute address to listen by bot
  * @param certificate [com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile] or [com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId]
  * which will be used by telegram to send encrypted messages
  * @param scope Scope which will be used for
@@ -37,7 +37,8 @@ suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
     engineFactory: ApplicationEngineFactory<*, *>,
-    listenAddress: String = "/",
+    listenHost: String = "0.0.0.0",
+    listenRoute: String = "/",
     certificate: InputFile? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
@@ -71,7 +72,7 @@ suspend fun RequestsExecutor.setWebhook(
 
         module {
             routing {
-                post(listenAddress) {
+                post(listenRoute) {
                     val deserialized = call.receiveText()
                     val update = Json.nonstrict.parse(
                         RawUpdate.serializer(),
@@ -89,11 +90,11 @@ suspend fun RequestsExecutor.setWebhook(
                 privateKeyConfig::keyStorePassword,
                 privateKeyConfig::aliasPassword
             ) {
-                host = "0.0.0.0"
+                host = listenHost
                 this.port = port
             }
         } ?: connector {
-            host = "localhost"
+            host = listenHost
             this.port = port
         }
 
@@ -151,6 +152,7 @@ suspend fun RequestsExecutor.setWebhook(
     url,
     port,
     engineFactory,
+    certificate ?.let { "0.0.0.0" } ?: "localhost",
     "/",
     certificate,
     privateKeyConfig,
@@ -169,12 +171,14 @@ suspend fun RequestsExecutor.setWebhook(
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     maxAllowedConnections: Int? = null,
-    listenAddress: String = "/"
+    listenHost: String = certificate ?.let { "0.0.0.0" } ?: "localhost",
+    listenRoute: String = "/"
 ): Job = setWebhook(
     url,
     port,
     engineFactory,
-    listenAddress,
+    listenHost,
+    listenRoute,
     certificate,
     privateKeyConfig,
     scope,
