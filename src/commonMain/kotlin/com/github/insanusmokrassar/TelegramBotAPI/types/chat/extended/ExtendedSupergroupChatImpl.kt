@@ -29,6 +29,8 @@ data class ExtendedSupergroupChatImpl(
     override val pinnedMessage: Message? = null,
     @SerialName(stickerSetNameFullField)
     override val stickerSetName: StickerSetName? = null,
+    @SerialName(slowModeDelayField)
+    override val slowModeDelay: Long? = null,
     @SerialName(canSetStickerSetField)
     override val canSetStickerSet: Boolean = false
 ) : ExtendedSupergroupChat

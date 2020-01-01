@@ -2,6 +2,8 @@
 
 ## 0.21.0 TelegramBotAPI 4.5
 
+* Added the field `slowModeDelay` to the `ExtendedSupergroupChat` objects.
+
 ## 0.20.0 MPP Migration
 
 * Time library change: `joda-time` -> `com.soywiz.korlibs.klock:klock`
