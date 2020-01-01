@@ -40,6 +40,8 @@ val livePeriodLimit = 60 .. 86400
 
 val inlineQueryAnswerResultsLimit = 0 .. 50
 
+val customTitleLength = 0 .. 16
+
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
 const val updateIdField = "update_id"
