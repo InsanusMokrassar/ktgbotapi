@@ -18,6 +18,7 @@ typealias StartParameter = String
 typealias InlineMessageIdentifier = String
 typealias PollIdentifier = String
 typealias StickerSetName = String
+typealias FileUniqueId = String
 
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024
@@ -219,6 +220,12 @@ const val pointField = "point"
 const val xShiftField = "x_shift"
 const val yShiftField = "y_shift"
 const val scaleField = "scale"
+
+
+const val smallFileIdField = "small_file_id"
+const val bigFileIdField = "big_file_id"
+const val smallFileUniqueIdField = "small_file_unique_id"
+const val bigFileUniqueIdField = "big_file_unique_id"
 
 
 const val currencyField = "currency"
