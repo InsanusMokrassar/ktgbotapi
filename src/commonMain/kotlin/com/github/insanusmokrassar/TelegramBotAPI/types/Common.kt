@@ -95,6 +95,7 @@ const val switchInlineQueryField = "switch_inline_query"
 const val isAnimatedField = "is_animated"
 const val inviteLinkField = "invite_link"
 const val pinnedMessageField = "pinned_message"
+const val customTitleField = "custom_title"
 
 
 const val requestWriteAccessField = "request_write_access"

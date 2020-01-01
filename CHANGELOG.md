@@ -2,6 +2,8 @@
 
 ## 0.21.0 TelegramBotAPI 4.5
 
+* Added the new request `SetChatAdministratorCustomTitle` to manage the custom titles of administrators promoted by the
+bot.
 * Added the field `slowModeDelay` to the `ExtendedSupergroupChat` objects.
 
 ## 0.20.0 MPP Migration
