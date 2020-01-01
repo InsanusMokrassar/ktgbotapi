@@ -2,6 +2,7 @@
 
 ## 0.21.0 TelegramBotAPI 4.5
 
+* Now any administrator object instance have `customTitle` nullable field
 * Added the new request `SetChatAdministratorCustomTitle` to manage the custom titles of administrators promoted by the
 bot.
 * Added the field `slowModeDelay` to the `ExtendedSupergroupChat` objects.

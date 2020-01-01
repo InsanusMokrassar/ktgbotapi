@@ -39,11 +39,13 @@ internal data class RawChatMember(
     @SerialName(canSendOtherMessagesField)
     private val canSendOtherMessages: Boolean = false,
     @SerialName(canAddWebPagePreviewsField)
-    private val canAddWebPagePreviews: Boolean = false
+    private val canAddWebPagePreviews: Boolean = false,
+    @SerialName(customTitleField)
+    private val customTitle: String? = null
 ) {
     val asChatMember: ChatMember by lazy {
         when (status) {
-            "creator" -> CreatorChatMember(user)
+            "creator" -> CreatorChatMember(user, customTitle)
             "administrator" -> AdministratorChatMemberImpl(
                 user,
                 canBeEdited,
@@ -54,7 +56,8 @@ internal data class RawChatMember(
                 canInviteUsers,
                 canRestrictMembers,
                 canPinMessages,
-                canPromoteMembers
+                canPromoteMembers,
+                customTitle
             )
             "member" -> MemberChatMember(user)
             "restricted" -> RestrictedChatMember(

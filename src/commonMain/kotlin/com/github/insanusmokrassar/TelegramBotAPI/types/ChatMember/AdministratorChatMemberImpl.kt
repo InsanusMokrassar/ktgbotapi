@@ -13,5 +13,6 @@ data class AdministratorChatMemberImpl(
     override val canInviteUsers: Boolean,
     override val canRestrictMembers: Boolean,
     override val canPinMessages: Boolean,
-    override val canPromoteMembers: Boolean
+    override val canPromoteMembers: Boolean,
+    override val customTitle: String?
 ) : AdministratorChatMember
