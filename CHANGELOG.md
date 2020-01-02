@@ -13,6 +13,7 @@
     * All parseMode-specific functions in `StringFormatting` now are not `infix`
 * Now will not be thrown exception when there is income unknown type of `MessageEntity`. Instead of this will be
 created `RegularTextMessageEntity` with the same text
+* Fixed problem that usually string formatting did not trigger escaping of control characters
 * Removed constructor of `TextMentionMessageEntity`, which was deprecated previously
 * Removed constructor of `TextMentionTextSource`, which was deprecated previously
 * All `TelegramMediaFile` instances now have field `fileUniqueId`, which represents `file_unique_id` field from API

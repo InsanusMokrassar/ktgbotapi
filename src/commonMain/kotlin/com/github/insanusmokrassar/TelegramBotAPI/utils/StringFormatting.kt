@@ -17,11 +17,11 @@ const val htmlPreControl = "pre"
 const val htmlUnderlineControl = "u"
 const val htmlStrikethroughControl = "s"
 
-private fun String.markdownDefault(controlSymbol: String) = "$controlSymbol$this$controlSymbol"
-private fun String.htmlDefault(controlSymbol: String) = "<$controlSymbol>$this</$controlSymbol>"
+private fun String.markdownDefault(controlSymbol: String) = "$controlSymbol${toMarkdown()}$controlSymbol"
+private fun String.htmlDefault(controlSymbol: String) = "<$controlSymbol>${toHtml()}</$controlSymbol>"
 
-fun String.linkMarkdown(link: String): String = "[$this]($link)"
-fun String.linkHTML(link: String): String = "<a href=\"$link\">$this</a>"
+fun String.linkMarkdown(link: String): String = "[${toMarkdown()}]($link)"
+fun String.linkHTML(link: String): String = "<a href=\"$link\">${toHtml()}</a>"
 
 
 fun String.boldMarkdown(): String = markdownDefault(markdownBoldControl)
@@ -40,8 +40,8 @@ fun String.preMarkdown(): String = markdownDefault(markdownPreControl)
 fun String.preHTML(): String = htmlDefault(htmlPreControl)
 
 
-fun String.emailMarkdown(): String = linkMarkdown("mailto://$this")
-fun String.emailHTML(): String = linkHTML("mailto://$this")
+fun String.emailMarkdown(): String = linkMarkdown("mailto://$${toMarkdown()}")
+fun String.emailHTML(): String = linkHTML("mailto://$${toHtml()}")
 
 /**
  * Crutch for support of strikethrough in default markdown. Simply add modifier, but it will not look like correct
@@ -58,14 +58,14 @@ fun String.underlineHTML(): String = htmlDefault(htmlUnderlineControl)
 
 
 private inline fun String.mention(adapt: String.() -> String): String = if (startsWith("@")) {
-    this
+    adapt()
 } else {
     "@${adapt()}"
 }
 
 
 private inline fun String.hashTag(adapt: String.() -> String): String = if (startsWith("#")) {
-    this
+    adapt()
 } else {
     "#${adapt()}"
 }
@@ -87,14 +87,18 @@ fun String.phoneMarkdown(): String = toMarkdown()
 fun String.phoneHTML(): String = toHtml()
 
 
-fun String.command(): String = if (startsWith("/")) {
-    this
+fun String.command(adapt: String.() -> String): String = if (startsWith("/")) {
+    adapt()
 } else {
-    "/$this"
+    "/${adapt()}"
 }
 
-fun String.commandMarkdown(): String = command()
-fun String.commandHTML(): String = command()
+fun String.commandMarkdown(): String = command(String::toMarkdown)
+fun String.commandHTML(): String = command(String::toHtml)
+
+
+fun String.regularMarkdown(): String = toMarkdown()
+fun String.regularHtml(): String = toHtml()
 
 
 infix fun String.bold(parseMode: ParseMode): String = when (parseMode) {

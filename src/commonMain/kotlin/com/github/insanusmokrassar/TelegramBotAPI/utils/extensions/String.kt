@@ -25,7 +25,4 @@ fun String.toHtml(): String = replace(
 ).replace(
     "&",
     "&amp;"
-).replace(
-    "\"",
-    "&quot;"
 )
