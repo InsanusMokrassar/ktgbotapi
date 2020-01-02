@@ -8,5 +8,5 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.phoneMarkdown
 data class PhoneNumberMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String
-) : MessageEntity, TextSource by PhoneNumberTextSource(sourceString)
+    override val rawSource: String
+) : MessageEntity, TextSource by PhoneNumberTextSource(rawSource)

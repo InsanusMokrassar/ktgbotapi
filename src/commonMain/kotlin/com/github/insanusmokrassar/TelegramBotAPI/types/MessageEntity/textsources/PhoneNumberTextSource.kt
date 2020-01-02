@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.phoneHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.phoneMarkdown
 
 class PhoneNumberTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.phoneMarkdown()
-    override val asHtmlSource: String = sourceString.phoneHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.phoneMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.phoneHTML()
 }

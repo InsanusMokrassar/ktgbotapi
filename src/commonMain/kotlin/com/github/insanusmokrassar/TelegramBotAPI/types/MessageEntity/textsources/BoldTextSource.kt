@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.boldHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.boldMarkdown
 
 class BoldTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.boldMarkdown()
-    override val asHtmlSource: String = sourceString.boldHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.boldMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.boldHTML()
 }

@@ -8,5 +8,5 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.toMarkdown
 data class RegularTextMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String
-) : MessageEntity, TextSource by RegularTextSource(sourceString)
+    override val rawSource: String
+) : MessageEntity, TextSource by RegularTextSource(rawSource)

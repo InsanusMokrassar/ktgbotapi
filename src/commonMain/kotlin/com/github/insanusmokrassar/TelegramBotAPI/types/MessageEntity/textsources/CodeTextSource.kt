@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.codeHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.codeMarkdown
 
 class CodeTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.codeMarkdown()
-    override val asHtmlSource: String = sourceString.codeHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.codeMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.codeHTML()
 }

@@ -8,5 +8,5 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.preMarkdown
 data class PreTextMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String
-) : MessageEntity, TextSource by PreTextSource(sourceString)
+    override val rawSource: String
+) : MessageEntity, TextSource by PreTextSource(rawSource)

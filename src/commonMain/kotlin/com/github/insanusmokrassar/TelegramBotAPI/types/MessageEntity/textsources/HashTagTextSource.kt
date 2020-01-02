@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.hashTagHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.hashTagMarkdown
 
 class HashTagTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.hashTagMarkdown()
-    override val asHtmlSource: String = sourceString.hashTagHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.hashTagMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.hashTagHTML()
 }

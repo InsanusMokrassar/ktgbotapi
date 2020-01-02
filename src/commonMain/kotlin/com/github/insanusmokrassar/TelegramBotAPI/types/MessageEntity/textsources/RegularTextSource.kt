@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.toHtml
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.toMarkdown
 
 class RegularTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.toMarkdown()
-    override val asHtmlSource: String = sourceString.toHtml()
+    override val asMarkdownSource: String
+        get() = rawSource.toMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.toHtml()
 }

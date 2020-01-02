@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionMarkdown
 
 class MentionTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.mentionMarkdown()
-    override val asHtmlSource: String = sourceString.mentionHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.mentionMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.mentionHTML()
 }

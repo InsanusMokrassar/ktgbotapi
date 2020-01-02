@@ -8,8 +8,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.commandMarkdown
 data class BotCommandMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String,
-    private val botCommandTextSource: BotCommandTextSource = BotCommandTextSource(sourceString)
+    override val rawSource: String,
+    private val botCommandTextSource: BotCommandTextSource = BotCommandTextSource(rawSource)
 ) : MessageEntity, TextSource by botCommandTextSource {
     val command: String
         get() = botCommandTextSource.command

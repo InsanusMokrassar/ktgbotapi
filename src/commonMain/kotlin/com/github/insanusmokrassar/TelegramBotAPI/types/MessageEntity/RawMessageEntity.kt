@@ -29,7 +29,7 @@ internal data class RawMessageEntity(
             "code" -> CodeTextMessageEntity(offset, length, sourceSubstring)
             "pre" -> PreTextMessageEntity(offset, length, sourceSubstring)
             "text_link" -> TextLinkMessageEntity(offset, length, sourceSubstring, url ?: throw IllegalStateException("URL must not be null for text link"))
-            "text_mention" -> TextMentionMessageEntity(offset, length, sourceSubstring, user as PrivateChat)
+            "text_mention" -> TextMentionMessageEntity(offset, length, sourceSubstring, user ?: throw IllegalStateException("User must not be null for text mention"))
             "underline" -> UnderlineMessageEntity(offset, length, sourceSubstring)
             "strikethrough" -> StrikethroughMessageEntity(offset, length, sourceSubstring)
             else -> throw IllegalArgumentException("Unknown type of message entity")

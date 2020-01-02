@@ -2,6 +2,17 @@
 
 ## 0.21.0 TelegramBotAPI 4.5
 
+* Added support of strikethrough and underline
+    * Added `UnderlineTextSource` and `UnderlineMessageEntity`
+    * Added `StrikethroughTextSource` and `StrikethroughMessageEntity`
+    * Added support in `RawMessageEntity`
+* Now `TextSource` have its `rawSource` const
+    * `sourceString` in `MessageEntity` now is deprecated
+        * All `MessageEntity` classes now have no income parameter `sourceString`
+    * In most part of `TextSource` classes `asMarkdownSource` and `asHtmlSource` now are getters instead if fields
+    * All parseMode-specific functions in `StringFormatting` now are not `infix`
+* Removed constructor of `TextMentionMessageEntity`, which was deprecated previously
+* Removed constructor of `TextMentionTextSource`, which was deprecated previously
 * All `TelegramMediaFile` instances now have field `fileUniqueId`, which represents `file_unique_id` field from API
 * Now `ChatPhoto` have two additional fields: `smallFileUniqueId` and `bigFileUniqueId`
 * Now any administrator object instance have `customTitle` nullable field
@@ -11,10 +22,6 @@ bot.
 
 ## 0.20.0 MPP Migration
 
-* Added support of strikethrough and underline
-    * Added `UnderlineTextSource` and `UnderlineMessageEntity`
-    * Added `StrikethroughTextSource` and `StrikethroughMessageEntity`
-    * Added support in `RawMessageEntity`
 * Time library change: `joda-time` -> `com.soywiz.korlibs.klock:klock`
 * `Currencied` now using as `currency` value with type `String`
     * For `Java` there is `Currencied#javaCurrency` extension function, which will give an old currency work way

@@ -8,5 +8,5 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.emailMarkdown
 data class EMailMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String
-) : MessageEntity, TextSource by EMailTextSource(sourceString)
+    override val rawSource: String
+) : MessageEntity, TextSource by EMailTextSource(rawSource)

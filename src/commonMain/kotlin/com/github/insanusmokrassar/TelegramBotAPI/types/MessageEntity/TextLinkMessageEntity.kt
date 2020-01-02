@@ -8,6 +8,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.linkMarkdown
 data class TextLinkMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String,
+    override val rawSource: String,
     val url: String
-) : MessageEntity, TextSource by TextLinkTextSource(sourceString, url)
+) : MessageEntity, TextSource by TextLinkTextSource(rawSource, url)

@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.italicHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.italicMarkdown
 
 class ItalicTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.italicMarkdown()
-    override val asHtmlSource: String = sourceString.italicHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.italicMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.italicHTML()
 }

@@ -8,5 +8,5 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.boldMarkdown
 data class BoldTextMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String
-) : MessageEntity, TextSource by BoldTextSource(sourceString)
+    override val rawSource: String
+) : MessageEntity, TextSource by BoldTextSource(rawSource)

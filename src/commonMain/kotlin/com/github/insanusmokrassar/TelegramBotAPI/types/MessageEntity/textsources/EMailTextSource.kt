@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.emailHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.emailMarkdown
 
 class EMailTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.emailMarkdown()
-    override val asHtmlSource: String = sourceString.emailHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.emailMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.emailHTML()
 }

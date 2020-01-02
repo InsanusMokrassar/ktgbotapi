@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.linkHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.linkMarkdown
 
 class URLTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource{
-    override val asMarkdownSource: String = sourceString.linkMarkdown(sourceString)
-    override val asHtmlSource: String = sourceString.linkHTML(sourceString)
+    override val asMarkdownSource: String
+        get() = rawSource.linkMarkdown(rawSource)
+    override val asHtmlSource: String
+        get() = rawSource.linkHTML(rawSource)
 }

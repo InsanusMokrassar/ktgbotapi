@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.underlineHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.underlineMarkdown
 
 class UnderlineTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.underlineMarkdown()
-    override val asHtmlSource: String = sourceString.underlineHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.underlineMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.underlineHTML()
 }

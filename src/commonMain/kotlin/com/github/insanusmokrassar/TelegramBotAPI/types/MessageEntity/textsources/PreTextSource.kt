@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.preHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.preMarkdown
 
 class PreTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asMarkdownSource: String = sourceString.preMarkdown()
-    override val asHtmlSource: String = sourceString.preHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.preMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.preHTML()
 }

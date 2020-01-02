@@ -7,6 +7,12 @@ fun String.toMarkdown(): String {
     ).replace(
         "_",
         "\\_"
+    ).replace(
+        "`",
+        "\\`"
+    ).replace(
+        "[",
+        "\\["
     )
 }
 

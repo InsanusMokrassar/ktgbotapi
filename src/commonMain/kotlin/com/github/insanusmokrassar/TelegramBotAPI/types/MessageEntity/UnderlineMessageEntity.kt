@@ -6,5 +6,5 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsource
 class UnderlineMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String
-) : MessageEntity, TextSource by UnderlineTextSource(sourceString)
+    override val rawSource: String
+) : MessageEntity, TextSource by UnderlineTextSource(rawSource)

@@ -7,15 +7,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionMarkdown
 
 class TextMentionTextSource(
-    sourceString: String,
+    override val rawSource: String,
     privateChat: PrivateChat
 ) : TextSource {
-    @Deprecated("Deprecated due to the fact that there is more common constructor")
-    constructor(
-        sourceString: String,
-        user: User
-    ) : this(sourceString, user as PrivateChat)
-
-    override val asMarkdownSource: String = sourceString.mentionMarkdown(privateChat.id)
-    override val asHtmlSource: String = sourceString.mentionHTML(privateChat.id)
+    override val asMarkdownSource: String = rawSource.mentionMarkdown(privateChat.id)
+    override val asHtmlSource: String = rawSource.mentionHTML(privateChat.id)
 }

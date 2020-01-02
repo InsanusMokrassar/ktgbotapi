@@ -5,8 +5,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.strikethroughHTML
 import com.github.insanusmokrassar.TelegramBotAPI.utils.strikethroughMarkdown
 
 class StrikethroughTextSource(
-    sourceString: String
+    override val rawSource: String
 ) : TextSource {
-    override val asHtmlSource: String = sourceString.strikethroughHTML()
-    override val asMarkdownSource: String = sourceString.strikethroughMarkdown()
+    override val asHtmlSource: String
+        get() = rawSource.strikethroughHTML()
+    override val asMarkdownSource: String
+        get() = rawSource.strikethroughMarkdown()
 }

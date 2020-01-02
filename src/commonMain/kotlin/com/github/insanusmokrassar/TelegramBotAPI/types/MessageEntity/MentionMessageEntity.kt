@@ -8,5 +8,5 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.mentionMarkdown
 class MentionMessageEntity(
     override val offset: Int,
     override val length: Int,
-    override val sourceString: String
-) : MessageEntity, TextSource by MentionTextSource(sourceString)
+    override val rawSource: String
+) : MessageEntity, TextSource by MentionTextSource(rawSource)

@@ -14,12 +14,14 @@ const val htmlBoldControl = "b"
 const val htmlItalicControl = "i"
 const val htmlCodeControl = "code"
 const val htmlPreControl = "pre"
+const val htmlUnderlineControl = "u"
+const val htmlStrikethroughControl = "s"
 
-private infix fun String.markdownDefault(controlSymbol: String) = "$controlSymbol$this$controlSymbol"
-private infix fun String.htmlDefault(controlSymbol: String) = "<$controlSymbol>$this</$controlSymbol>"
+private fun String.markdownDefault(controlSymbol: String) = "$controlSymbol$this$controlSymbol"
+private fun String.htmlDefault(controlSymbol: String) = "<$controlSymbol>$this</$controlSymbol>"
 
-infix fun String.linkMarkdown(link: String): String = "[$this]($link)"
-infix fun String.linkHTML(link: String): String = "<a href=\"$link\">$this</a>"
+fun String.linkMarkdown(link: String): String = "[$this]($link)"
+fun String.linkHTML(link: String): String = "<a href=\"$link\">$this</a>"
 
 
 fun String.boldMarkdown(): String = markdownDefault(markdownBoldControl)
@@ -45,32 +47,32 @@ fun String.emailHTML(): String = linkHTML("mailto://$this")
  * Crutch for support of strikethrough in default markdown. Simply add modifier, but it will not look like correct
  */
 fun String.strikethroughMarkdown(): String = map { it + "\u0336" }.joinToString("")
-fun String.strikethroughHTML(): String = htmlDefault("s")
+fun String.strikethroughHTML(): String = htmlDefault(htmlStrikethroughControl)
 
 
 /**
  * Crutch for support of underline in default markdown. Simply add modifier, but it will not look like correct
  */
 fun String.underlineMarkdown(): String = map { it + "\u0347" }.joinToString("")
-fun String.underlineHTML(): String = htmlDefault("u")
+fun String.underlineHTML(): String = htmlDefault(htmlUnderlineControl)
 
 
-private inline infix fun String.mention(adapt: String.() -> String): String = if (startsWith("@")) {
+private inline fun String.mention(adapt: String.() -> String): String = if (startsWith("@")) {
     this
 } else {
     "@${adapt()}"
 }
 
 
-private inline infix fun String.hashTag(adapt: String.() -> String): String = if (startsWith("#")) {
+private inline fun String.hashTag(adapt: String.() -> String): String = if (startsWith("#")) {
     this
 } else {
     "#${adapt()}"
 }
 
 
-infix fun String.mentionMarkdown(userId: UserId): String = linkMarkdown(userId.link)
-infix fun String.mentionHTML(userId: UserId): String = linkHTML(userId.link)
+fun String.mentionMarkdown(userId: UserId): String = linkMarkdown(userId.link)
+fun String.mentionHTML(userId: UserId): String = linkHTML(userId.link)
 
 
 fun String.mentionMarkdown(): String = mention(String::toMarkdown)
