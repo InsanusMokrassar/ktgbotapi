@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.internal.ArrayListSerializer
@@ -28,7 +29,9 @@ internal data class RawMessageEntity(
             "code" -> CodeTextMessageEntity(offset, length, sourceSubstring)
             "pre" -> PreTextMessageEntity(offset, length, sourceSubstring)
             "text_link" -> TextLinkMessageEntity(offset, length, sourceSubstring, url ?: throw IllegalStateException("URL must not be null for text link"))
-            "text_mention" -> TextMentionMessageEntity(offset, length, sourceSubstring, user ?: throw IllegalStateException("User must not be null for text mention"))
+            "text_mention" -> TextMentionMessageEntity(offset, length, sourceSubstring, user as PrivateChat)
+            "underline" -> UnderlineMessageEntity(offset, length, sourceSubstring)
+            "strikethrough" -> StrikethroughMessageEntity(offset, length, sourceSubstring)
             else -> throw IllegalArgumentException("Unknown type of message entity")
         }
     }

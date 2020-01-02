@@ -11,6 +11,10 @@ bot.
 
 ## 0.20.0 MPP Migration
 
+* Added support of strikethrough and underline
+    * Added `UnderlineTextSource` and `UnderlineMessageEntity`
+    * Added `StrikethroughTextSource` and `StrikethroughMessageEntity`
+    * Added support in `RawMessageEntity`
 * Time library change: `joda-time` -> `com.soywiz.korlibs.klock:klock`
 * `Currencied` now using as `currency` value with type `String`
     * For `Java` there is `Currencied#javaCurrency` extension function, which will give an old currency work way

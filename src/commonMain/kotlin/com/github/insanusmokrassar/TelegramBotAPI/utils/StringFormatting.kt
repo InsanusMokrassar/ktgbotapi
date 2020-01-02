@@ -41,6 +41,19 @@ fun String.preHTML(): String = htmlDefault(htmlPreControl)
 fun String.emailMarkdown(): String = linkMarkdown("mailto://$this")
 fun String.emailHTML(): String = linkHTML("mailto://$this")
 
+/**
+ * Crutch for support of strikethrough in default markdown. Simply add modifier, but it will not look like correct
+ */
+fun String.strikethroughMarkdown(): String = map { it + "\u0336" }.joinToString("")
+fun String.strikethroughHTML(): String = htmlDefault("s")
+
+
+/**
+ * Crutch for support of underline in default markdown. Simply add modifier, but it will not look like correct
+ */
+fun String.underlineMarkdown(): String = map { it + "\u0347" }.joinToString("")
+fun String.underlineHTML(): String = htmlDefault("u")
+
 
 private inline infix fun String.mention(adapt: String.() -> String): String = if (startsWith("@")) {
     this
