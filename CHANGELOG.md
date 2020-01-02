@@ -11,6 +11,8 @@
         * All `MessageEntity` classes now have no income parameter `sourceString`
     * In most part of `TextSource` classes `asMarkdownSource` and `asHtmlSource` now are getters instead if fields
     * All parseMode-specific functions in `StringFormatting` now are not `infix`
+* Now will not be thrown exception when there is income unknown type of `MessageEntity`. Instead of this will be
+created `RegularTextMessageEntity` with the same text
 * Removed constructor of `TextMentionMessageEntity`, which was deprecated previously
 * Removed constructor of `TextMentionTextSource`, which was deprecated previously
 * All `TelegramMediaFile` instances now have field `fileUniqueId`, which represents `file_unique_id` field from API

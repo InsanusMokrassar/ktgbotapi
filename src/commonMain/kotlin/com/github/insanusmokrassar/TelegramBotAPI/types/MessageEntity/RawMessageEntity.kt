@@ -32,7 +32,7 @@ internal data class RawMessageEntity(
             "text_mention" -> TextMentionMessageEntity(offset, length, sourceSubstring, user ?: throw IllegalStateException("User must not be null for text mention"))
             "underline" -> UnderlineMessageEntity(offset, length, sourceSubstring)
             "strikethrough" -> StrikethroughMessageEntity(offset, length, sourceSubstring)
-            else -> throw IllegalArgumentException("Unknown type of message entity")
+            else -> RegularTextMessageEntity(offset, length, sourceSubstring)
         }
     }
 }
