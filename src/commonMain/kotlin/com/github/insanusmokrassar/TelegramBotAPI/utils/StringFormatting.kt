@@ -17,8 +17,14 @@ const val htmlPreControl = "pre"
 const val htmlUnderlineControl = "u"
 const val htmlStrikethroughControl = "s"
 
-private fun String.markdownDefault(controlSymbol: String) = "$controlSymbol${toMarkdown()}$controlSymbol"
-private fun String.htmlDefault(controlSymbol: String) = "<$controlSymbol>${toHtml()}</$controlSymbol>"
+private fun String.markdownDefault(
+    openControlSymbol: String,
+    closeControlSymbol: String = openControlSymbol
+) = "$openControlSymbol${toMarkdown()}$closeControlSymbol"
+private fun String.htmlDefault(
+    openControlSymbol: String,
+    closeControlSymbol: String = openControlSymbol
+) = "<$openControlSymbol>${toHtml()}</$closeControlSymbol>"
 
 fun String.linkMarkdown(link: String): String = "[${toMarkdown()}]($link)"
 fun String.linkHTML(link: String): String = "<a href=\"$link\">${toHtml()}</a>"
@@ -36,8 +42,18 @@ fun String.codeMarkdown(): String = markdownDefault(markdownCodeControl)
 fun String.codeHTML(): String = htmlDefault(htmlCodeControl)
 
 
-fun String.preMarkdown(): String = markdownDefault(markdownPreControl)
-fun String.preHTML(): String = htmlDefault(htmlPreControl)
+fun String.preMarkdown(language: String? = null): String = markdownDefault(
+    "$markdownPreControl${language ?.let { "$it\n" } ?: "\n"}",
+    "\n$markdownPreControl"
+)
+fun String.preHTML(language: String? = null): String = htmlDefault(
+    language ?.let { _ ->
+        "$htmlPreControl><$htmlCodeControl class=\"language-$language\""
+    } ?: htmlPreControl,
+    language ?.let { _ ->
+        "$htmlCodeControl></$htmlPreControl"
+    } ?: htmlPreControl
+)
 
 
 fun String.emailMarkdown(): String = linkMarkdown("mailto://$${toMarkdown()}")
@@ -125,6 +141,11 @@ infix fun String.code(parseMode: ParseMode): String = when (parseMode) {
 infix fun String.pre(parseMode: ParseMode): String = when (parseMode) {
     is HTML -> preHTML()
     is Markdown -> preMarkdown()
+}
+
+fun String.pre(parseMode: ParseMode, language: String? = null): String = when (parseMode) {
+    is HTML -> preHTML(language)
+    is Markdown -> preMarkdown(language)
 }
 
 infix fun String.email(parseMode: ParseMode): String = when (parseMode) {
