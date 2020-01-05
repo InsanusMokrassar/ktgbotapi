@@ -111,8 +111,8 @@ val requestsExecutor: RequestsExecutor = ...
 requestsExecutor.execute(GetMe())
 ``` 
 
-The result type of [GetMe](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe) request is
-[User](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User). In fact, in this result must contain
+The result type of [GetMe](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt) request is
+[User](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User.kt). In fact, in this result must contain
 `isBot` equal to `true` always.
 
 
@@ -203,6 +203,6 @@ Here:
 
 * `WEBHOOK_URL` - the url which will be used by Telegram system to send updates
 * `INTERNAL_PORT` - the port which will be used in bot for listening of updates
-* `filter` - instance of [UpdatesFilter](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/utils/extensions/UpdatesFilter.kt),
+* `filter` - instance of [UpdatesFilter](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/updateshandlers/UpdatesFilter.kt),
 which will be used to filter incoming updates
 * `ENGINE_FACTORY` - used factory name, for example, `CIO` in case of usage `io.ktor:ktor-server-cio` as server engine
