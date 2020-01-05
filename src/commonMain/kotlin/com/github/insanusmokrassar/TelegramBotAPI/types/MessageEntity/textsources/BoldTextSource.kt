@@ -8,7 +8,7 @@ class BoldTextSource(
     source: String,
     textParts: List<TextPart>
 ) : MultilevelTextSource {
-    override val textParts: List<TextPart> = source.fullListOfSubSource(textParts)
+    override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
     override val asMarkdownSource: String by lazy { source.boldMarkdown() }
     override val asMarkdownV2Source: String by lazy { boldMarkdownV2() }
     override val asHtmlSource: String by lazy { boldHTML() }

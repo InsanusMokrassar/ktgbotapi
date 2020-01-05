@@ -8,7 +8,7 @@ class StrikethroughTextSource(
     source: String,
     textParts: List<TextPart>
 ) : MultilevelTextSource {
-    override val textParts: List<TextPart> = source.fullListOfSubSource(textParts)
+    override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
     override val asHtmlSource: String by lazy { strikethroughHTML() }
     override val asMarkdownV2Source: String by lazy { strikethroughMarkdownV2() }
     override val asMarkdownSource: String by lazy { source.strikethroughMarkdown() }

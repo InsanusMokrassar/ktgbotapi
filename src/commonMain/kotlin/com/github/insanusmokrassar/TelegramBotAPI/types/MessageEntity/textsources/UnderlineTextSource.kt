@@ -8,7 +8,7 @@ class UnderlineTextSource(
     source: String,
     textParts: List<TextPart>
 ) : MultilevelTextSource {
-    override val textParts: List<TextPart> = source.fullListOfSubSource(textParts)
+    override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
     override val asMarkdownSource: String by lazy { source.underlineMarkdown() }
     override val asMarkdownV2Source: String by lazy { underlineMarkdownV2() }
     override val asHtmlSource: String by lazy { underlineHTML() }
