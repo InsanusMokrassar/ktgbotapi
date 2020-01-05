@@ -82,9 +82,9 @@ compile "com.github.insanusmokrassar:TelegramBotAPI:$telegrambotapi_version"
 For now, this library have no some API god-object. Instead of this, this library has several
 important objects:
 
-* [RequestsExecutor](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/bot/RequestsExecutor.kt)
-* [Requests](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests)
-* [Types](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types)
+* [RequestsExecutor](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/bot/RequestsExecutor.kt)
+* [Requests](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests)
+* [Types](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types)
 
 ### Types
 
