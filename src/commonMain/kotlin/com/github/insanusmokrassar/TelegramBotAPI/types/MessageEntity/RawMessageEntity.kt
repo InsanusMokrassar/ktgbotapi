@@ -39,7 +39,7 @@ internal fun RawMessageEntity.asTextParts(source: String, subParts: List<TextPar
         else -> RegularTextSource(sourceSubstring)
     }.let {
         val part = TextPart(range, it)
-        if (it !is MultilevelTextSource) {
+        if (it !is MultilevelTextSource && subParts.isNotEmpty()) {
             (subParts + part).sortedBy { currentPart -> currentPart.range.first }
         } else {
             listOf(part)
