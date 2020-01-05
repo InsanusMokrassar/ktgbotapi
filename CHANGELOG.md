@@ -2,20 +2,16 @@
 
 ## 0.21.0 TelegramBotAPI 4.5
 
+* _**All `MessageEntity`'es now are replaced with `TextPart`**_
 * Added support of strikethrough and underline
-    * Added `UnderlineTextSource` and `UnderlineMessageEntity`
-    * Added `StrikethroughTextSource` and `StrikethroughMessageEntity`
+    * Added `UnderlineTextSource`
+    * Added `StrikethroughTextSource`
     * Added support in `RawMessageEntity`
-* Now `TextSource` have its `rawSource` const
-    * `sourceString` in `MessageEntity` now is deprecated
-        * All `MessageEntity` classes now have no income parameter `sourceString`
-    * In most part of `TextSource` classes `asMarkdownSource` and `asHtmlSource` now are getters instead if fields
-    * All parseMode-specific functions in `StringFormatting` now are not `infix`
-* Now will not be thrown exception when there is income unknown type of `MessageEntity`. Instead of this will be
-created `RegularTextMessageEntity` with the same text
+* Added support of `MarkdownV2`
+* Now will not be thrown exception when there is income unknown type of `RawMessageEntity`. Instead of this will be
+created `RegularTextSource` with the same text
 * Fixed problem that usually string formatting did not trigger escaping of control characters
 * Actualized work with `pre` type of text - now it is possible to use `language` for formatting of text
-* Removed constructor of `TextMentionMessageEntity`, which was deprecated previously
 * Removed constructor of `TextMentionTextSource`, which was deprecated previously
 * All `TelegramMediaFile` instances now have field `fileUniqueId`, which represents `file_unique_id` field from API
 * Now `ChatPhoto` have two additional fields: `smallFileUniqueId` and `bigFileUniqueId`
