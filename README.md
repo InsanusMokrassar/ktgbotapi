@@ -111,8 +111,8 @@ val requestsExecutor: RequestsExecutor = ...
 requestsExecutor.execute(GetMe())
 ``` 
 
-The result type of [GetMe](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe) request is
-[User](src/main/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User). In fact, in this result must contain
+The result type of [GetMe](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe) request is
+[User](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User). In fact, in this result must contain
 `isBot` equal to `true` always.
 
 
