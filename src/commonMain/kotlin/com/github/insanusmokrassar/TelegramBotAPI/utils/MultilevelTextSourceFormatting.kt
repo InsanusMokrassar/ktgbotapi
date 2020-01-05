@@ -1,10 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.*
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.MultilevelTextSource
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.RegularTextSource
 import com.github.insanusmokrassar.TelegramBotAPI.types.UserId
 import com.github.insanusmokrassar.TelegramBotAPI.types.link
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.escapeMarkdownV2Link
+import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.toHtml
 
 internal fun String.fullListOfSubSource(sourceList: List<TextPart>): List<TextPart> {
     val sortedSourceList = sourceList.sortedBy { it.range.first }.toMutableList()

@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.MultilevelTextSource
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 private val String.withoutCommercialAt

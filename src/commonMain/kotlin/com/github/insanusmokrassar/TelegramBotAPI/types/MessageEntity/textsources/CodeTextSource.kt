@@ -2,7 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsourc
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.escapeMarkdownV2PreAndCode
 
 class CodeTextSource(
     source: String
