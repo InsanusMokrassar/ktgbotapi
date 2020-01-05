@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
+import com.github.insanusmokrassar.TelegramBotAPI.utils.fullListOfSubSource
 
 interface Captioned {
     val caption: String?
@@ -12,5 +12,7 @@ interface CaptionedOutput : Captioned {
 }
 
 interface CaptionedInput : Captioned {
-    val captionEntities: List<MessageEntity>
+    val captionEntities: List<TextPart>
 }
+
+fun CaptionedInput.fullEntitiesList() = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()

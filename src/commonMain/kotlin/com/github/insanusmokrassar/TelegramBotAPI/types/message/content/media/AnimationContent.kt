@@ -1,10 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendAnimation
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.MessageEntity
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.HTMLParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
@@ -18,7 +18,7 @@ data class AnimationContent(
     override val media: AnimationFile,
     val includedDocument: DocumentFile?,
     override val caption: String?,
-    override val captionEntities: List<MessageEntity>
+    override val captionEntities: List<TextPart>
 ) : MediaContent, CaptionedInput {
     override fun createResend(
         chatId: ChatIdentifier,

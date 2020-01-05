@@ -1,14 +1,15 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
-import com.github.insanusmokrassar.TelegramBotAPI.utils.strikethroughHTML
-import com.github.insanusmokrassar.TelegramBotAPI.utils.strikethroughMarkdown
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.MultilevelTextSource
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
+import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 class StrikethroughTextSource(
-    override val rawSource: String
-) : TextSource {
-    override val asHtmlSource: String
-        get() = rawSource.strikethroughHTML()
-    override val asMarkdownSource: String
-        get() = rawSource.strikethroughMarkdown()
+    source: String,
+    textParts: List<TextPart>
+) : MultilevelTextSource {
+    override val textParts: List<TextPart> = source.fullListOfSubSource(textParts)
+    override val asHtmlSource: String by lazy { strikethroughHTML() }
+    override val asMarkdownV2Source: String by lazy { strikethroughMarkdownV2() }
+    override val asMarkdownSource: String by lazy { source.strikethroughMarkdown() }
 }

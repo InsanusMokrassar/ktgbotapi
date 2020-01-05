@@ -1,14 +1,15 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
-import com.github.insanusmokrassar.TelegramBotAPI.utils.underlineHTML
-import com.github.insanusmokrassar.TelegramBotAPI.utils.underlineMarkdown
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.MultilevelTextSource
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
+import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 class UnderlineTextSource(
-    override val rawSource: String
-) : TextSource {
-    override val asMarkdownSource: String
-        get() = rawSource.underlineMarkdown()
-    override val asHtmlSource: String
-        get() = rawSource.underlineHTML()
+    source: String,
+    textParts: List<TextPart>
+) : MultilevelTextSource {
+    override val textParts: List<TextPart> = source.fullListOfSubSource(textParts)
+    override val asMarkdownSource: String by lazy { source.underlineMarkdown() }
+    override val asMarkdownV2Source: String by lazy { underlineMarkdownV2() }
+    override val asHtmlSource: String by lazy { underlineHTML() }
 }

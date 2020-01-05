@@ -1,14 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
-import com.github.insanusmokrassar.TelegramBotAPI.utils.regularHtml
-import com.github.insanusmokrassar.TelegramBotAPI.utils.regularMarkdown
+import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 class RegularTextSource(
-    override val rawSource: String
+    source: String
 ) : TextSource {
-    override val asMarkdownSource: String
-        get() = rawSource.regularMarkdown()
-    override val asHtmlSource: String
-        get() = rawSource.regularHtml()
+    override val asMarkdownSource: String by lazy { source.regularMarkdown() }
+    override val asMarkdownV2Source: String by lazy { source.regularMarkdownV2() }
+    override val asHtmlSource: String by lazy { source.regularHtml() }
 }

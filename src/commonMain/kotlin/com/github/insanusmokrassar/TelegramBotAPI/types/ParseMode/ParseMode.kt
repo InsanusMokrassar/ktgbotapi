@@ -17,6 +17,12 @@ object MarkdownParseMode : ParseMode() {
 }
 
 @Serializable(ParseModeSerializerObject::class)
+object MarkdownV2ParseMode : ParseMode() {
+    @Serializable
+    @SerialName(parseModeField)
+    override val parseModeName: String = "MarkdownV2"
+}
+@Serializable(ParseModeSerializerObject::class)
 object HTMLParseMode : ParseMode() {
     @Serializable
     @SerialName(parseModeField)
@@ -24,6 +30,7 @@ object HTMLParseMode : ParseMode() {
 }
 
 typealias Markdown = MarkdownParseMode
+typealias MarkdownV2 = MarkdownV2ParseMode
 typealias HTML = HTMLParseMode
 
 @Serializer(ParseMode::class)
