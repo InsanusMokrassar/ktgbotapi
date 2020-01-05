@@ -25,6 +25,11 @@ bot.
 * `MultilevelTextSource` was added - it is type of `TextSource`, which can have subsources as parts of this text
 * In all `TextSource`s all fields now are lazy for avoiding of potential risk for performance issues
 
+* Updates in versions:
+    * Coroutines `1.3.2` -> `1.3.3`
+    * Klock `1.8.0` -> `1.8.6`
+    * UUID `0.0.6` -> `0.0.7`
+
 ## 0.20.0 MPP Migration
 
 * Time library change: `joda-time` -> `com.soywiz.korlibs.klock:klock`
