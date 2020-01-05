@@ -127,7 +127,7 @@ internal fun MultilevelTextSource.mentionHTML(): String = "@${textParts.joinSubS
 
 
 internal fun MultilevelTextSource.hashTagMarkdownV2(): String = "\\#${textParts.joinSubSourcesMarkdownV2()}"
-internal fun MultilevelTextSource.hashTagHTML(): String = "\\#${textParts.joinSubSourcesHtml()}"
+internal fun MultilevelTextSource.hashTagHTML(): String = "#${textParts.joinSubSourcesHtml()}"
 
 
 internal fun MultilevelTextSource.phoneMarkdownV2(): String = textParts.joinSubSourcesMarkdownV2()
