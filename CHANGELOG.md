@@ -20,6 +20,11 @@ created `RegularTextSource` with the same text
 bot.
 * Added the field `slowModeDelay` to the `ExtendedSupergroupChat` objects.
 
+* `CaptionedInput` now have extension `fullEntitiesList` which will return list of `TextPart` with `RegularSource`'s
+* `TextPart` added - it will be used as part of some text and can be not related to telegram bot
+* `MultilevelTextSource` was added - it is type of `TextSource`, which can have subsources as parts of this text
+* In all `TextSource`s all fields now are lazy for avoiding of potential risk for performance issues
+
 ## 0.20.0 MPP Migration
 
 * Time library change: `joda-time` -> `com.soywiz.korlibs.klock:klock`
