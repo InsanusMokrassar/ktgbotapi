@@ -4,12 +4,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.MultilevelText
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
-class ItalicTextSource(
+class StrikethroughTextSource(
     source: String,
     textParts: List<TextPart>
 ) : MultilevelTextSource {
     override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
-    override val asMarkdownSource: String by lazy { source.italicMarkdown() }
-    override val asMarkdownV2Source: String by lazy { italicMarkdownV2() }
-    override val asHtmlSource: String by lazy { italicHTML() }
+    override val asHtmlSource: String by lazy { strikethroughHTML() }
+    override val asMarkdownV2Source: String by lazy { strikethroughMarkdownV2() }
+    override val asMarkdownSource: String by lazy { source.strikethroughMarkdown() }
 }

@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.games
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.asTextParts
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import kotlinx.serialization.*
 
@@ -27,7 +28,7 @@ internal data class RawGame(
         description,
         photo,
         caption,
-        caption ?.let { _ -> captionEntities.map { it.asMessageEntity(caption) } } ?: emptyList(),
+        caption ?.let { _ -> captionEntities.asTextParts(caption) } ?: emptyList(),
         animation
     )
 }

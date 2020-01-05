@@ -5,8 +5,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ChatPhoto(
-    @SerialName("small_file_id")
+    @SerialName(smallFileIdField)
     val smallFileId: String,
-    @SerialName("big_file_id")
-    val bigFileId: String
+    @SerialName(bigFileIdField)
+    val bigFileId: String,
+    @SerialName(smallFileUniqueIdField)
+    val smallFileUniqueId: FileUniqueId,
+    @SerialName(bigFileUniqueIdField)
+    val bigFileUniqueId: FileUniqueId
 )

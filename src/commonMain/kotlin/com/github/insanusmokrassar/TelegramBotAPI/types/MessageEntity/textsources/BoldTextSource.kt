@@ -1,12 +1,15 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
-import com.github.insanusmokrassar.TelegramBotAPI.utils.boldHTML
-import com.github.insanusmokrassar.TelegramBotAPI.utils.boldMarkdown
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.MultilevelTextSource
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
+import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 class BoldTextSource(
-    sourceString: String
-) : TextSource {
-    override val asMarkdownSource: String = sourceString.boldMarkdown()
-    override val asHtmlSource: String = sourceString.boldHTML()
+    source: String,
+    textParts: List<TextPart>
+) : MultilevelTextSource {
+    override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
+    override val asMarkdownSource: String by lazy { source.boldMarkdown() }
+    override val asMarkdownV2Source: String by lazy { boldMarkdownV2() }
+    override val asHtmlSource: String by lazy { boldHTML() }
 }

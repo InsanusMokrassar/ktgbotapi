@@ -18,6 +18,7 @@ typealias StartParameter = String
 typealias InlineMessageIdentifier = String
 typealias PollIdentifier = String
 typealias StickerSetName = String
+typealias FileUniqueId = String
 
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024
@@ -40,6 +41,8 @@ val livePeriodLimit = 60 .. 86400
 
 val inlineQueryAnswerResultsLimit = 0 .. 50
 
+val customTitleLength = 0 .. 16
+
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
 const val updateIdField = "update_id"
@@ -57,6 +60,7 @@ const val languageCodeField = "language_code"
 const val textEntitiesField = "text_entities"
 const val stickerSetNameField = "set_name"
 const val stickerSetNameFullField = "sticker_set_name"
+const val slowModeDelayField = "slow_mode_delay"
 const val maskPositionField = "mask_position"
 const val phoneNumberField = "phone_number"
 const val userIdField = "user_id"
@@ -94,6 +98,7 @@ const val switchInlineQueryField = "switch_inline_query"
 const val isAnimatedField = "is_animated"
 const val inviteLinkField = "invite_link"
 const val pinnedMessageField = "pinned_message"
+const val customTitleField = "custom_title"
 
 
 const val requestWriteAccessField = "request_write_access"
@@ -215,6 +220,14 @@ const val pointField = "point"
 const val xShiftField = "x_shift"
 const val yShiftField = "y_shift"
 const val scaleField = "scale"
+
+
+const val smallFileIdField = "small_file_id"
+const val bigFileIdField = "big_file_id"
+const val smallFileUniqueIdField = "small_file_unique_id"
+const val bigFileUniqueIdField = "big_file_unique_id"
+
+const val fileUniqueIdField = "file_unique_id"
 
 
 const val currencyField = "currency"

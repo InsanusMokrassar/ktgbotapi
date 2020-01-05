@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntities
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.asTextParts
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
@@ -85,13 +86,11 @@ internal data class RawMessage(
 ) {
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
-            caption_entities ?.map {
-                it.asMessageEntity(caption)
-            }
+            caption_entities ?.asTextParts(caption)
         } ?: emptyList()
 
         when {
-            text != null -> TextContent(text, entities ?.map { it.asMessageEntity(text) } ?: emptyList())
+            text != null -> TextContent(text, entities ?.asTextParts(text) ?: emptyList())
             audio != null -> AudioContent(
                 audio,
                 caption,

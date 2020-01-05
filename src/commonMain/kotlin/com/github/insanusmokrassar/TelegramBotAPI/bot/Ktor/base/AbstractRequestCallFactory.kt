@@ -9,8 +9,6 @@ import io.ktor.client.request.accept
 import io.ktor.client.request.url
 import io.ktor.http.ContentType
 import io.ktor.http.HttpMethod
-import kotlin.collections.MutableMap
-import kotlin.collections.mutableMapOf
 import kotlin.collections.set
 
 abstract class AbstractRequestCallFactory : KtorCallFactory {
