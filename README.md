@@ -34,19 +34,6 @@ of signed artifacts in Bintray). You can:
 
 ### Maven
 
-To use last versions you will need to add several lines in repositories block of your pom.xml:
-
-```xml
-<repository>
-    <snapshots>
-        <enabled>false</enabled>
-    </snapshots>
-    <id>central</id>
-    <name>bintray</name>
-    <url>http://jcenter.bintray.com</url>
-</repository>
-```
-
 Dependency config presented here:
 
 ```xml
@@ -59,11 +46,9 @@ Dependency config presented here:
 
 ### Gradle
 
-To use last versions you will need to add one line in repositories block of your build.gradle:
+To use last versions you will need to add one line in repositories block of your `build.gradle`:
 
-```groovy
-jcenter()
-```
+`jcenter()` or `mavenCentral()`
 
 And add next line to your dependencies block:
 
