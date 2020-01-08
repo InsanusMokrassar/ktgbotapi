@@ -30,6 +30,8 @@ bot.
     * Klock `1.8.0` -> `1.8.6`
     * UUID `0.0.6` -> `0.0.7`
 
+### 0.21.1
+
 ## 0.20.0 MPP Migration
 
 * Time library change: `joda-time` -> `com.soywiz.korlibs.klock:klock`
