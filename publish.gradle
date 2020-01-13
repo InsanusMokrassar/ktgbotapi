@@ -2,9 +2,19 @@ apply plugin: 'com.jfrog.bintray'
 
 apply from: "maven.publish.gradle"
 
+ext {
+    projectBintrayDir = "${project.group}/".replace(".", "/") + "${project.name}/${project.version}"
+}
+
 bintray {
     user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
     key = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
+    filesSpec {
+        from "${buildDir}/publications/kotlinMultiplatform/"
+        include "module.json"
+        rename "module\\.json", "${project.name}-${project.version}.module"
+        into "${projectBintrayDir}"
+    }
     pkg {
         repo = "StandardRepository"
         name = "${project.name}"

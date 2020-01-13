@@ -34,18 +34,22 @@ publishing {
                 }
 
                 developers {
+                    
                         developer {
                             id "InsanusMokrassar"
                             name "Ovsiannikov Aleksei"
                             email "ovsyannikov.alexey95@gmail.com"
                         }
+                    
                 }
 
                 licenses {
+                    
                         license {
                             name "Apache Software License 2.0"
                             url "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/LICENSE"
                         }
+                    
                 }
             }
         }
