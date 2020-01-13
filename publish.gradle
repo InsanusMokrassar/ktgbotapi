@@ -40,14 +40,13 @@ bintray {
 }
 
 bintrayUpload.doFirst {
-    String[] toInclude =  publishing.publications.collect {
+    publications = publishing.publications.collect {
         if (it.name.contains('kotlinMultiplatform')) {
             null
         } else {
             it.name
         }
-    }
-    publications = (toInclude - null)
+    } - null
 }
 
 bintrayUpload.dependsOn publishToMavenLocal
