@@ -2,10 +2,6 @@ apply plugin: 'com.jfrog.bintray'
 
 apply from: "maven.publish.gradle"
 
-ext {
-    projectBintrayDir = "${project.group}/".replace(".", "/") + "${project.name}/${project.version}"
-}
-
 bintray {
     user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
     key = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
@@ -44,9 +40,14 @@ bintray {
 }
 
 bintrayUpload.doFirst {
-    publications = publishing.publications.collect {
-        it.name
+    String[] toInclude =  publishing.publications.collect {
+        if (it.name.contains('kotlinMultiplatform')) {
+            null
+        } else {
+            it.name
+        }
     }
+    publications = (toInclude - null)
 }
 
 bintrayUpload.dependsOn publishToMavenLocal
