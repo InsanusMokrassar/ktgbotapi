@@ -11,10 +11,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
-import io.ktor.client.call.HttpClientCall
 import io.ktor.client.call.receive
 import io.ktor.client.features.ClientRequestException
-import io.ktor.client.response.readText
+import io.ktor.client.statement.HttpStatement
+import io.ktor.client.statement.readText
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 
@@ -36,22 +36,20 @@ class KtorRequestsExecutor(
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
         return requestsLimiter.limit {
-            var call: HttpClientCall? = null
+            var statement: HttpStatement? = null
             for (factory in callsFactories) {
-                call = factory.prepareCall(
+                statement = factory.prepareCall(
                     client,
                     telegramAPIUrlsKeeper.commonAPIUrl,
                     request
                 )
-                if (call != null) {
+                if (statement != null) {
                     break
                 }
             }
-            if (call == null) {
-                throw IllegalArgumentException("Can't execute request: $request")
-            }
             try {
-                val content = call.response.receive<String>()
+                val response = statement ?.execute() ?: throw IllegalArgumentException("Can't execute request: $request")
+                val content = response.receive<String>()
                 val responseObject = jsonFormatter.parse(Response.serializer(), content)
 
                 (responseObject.result?.let {
@@ -64,7 +62,7 @@ class KtorRequestsExecutor(
                     } else {
                         null
                     }
-                } ?: call.let {
+                } ?: response.let {
                     throw newRequestException(
                         responseObject,
                         content,

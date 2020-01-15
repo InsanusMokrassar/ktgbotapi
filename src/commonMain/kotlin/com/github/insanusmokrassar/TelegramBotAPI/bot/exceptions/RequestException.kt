@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
-import kotlinx.io.errors.IOException
+import kotlinx.io.IOException
 
 fun newRequestException(
     response: Response,
@@ -22,10 +22,9 @@ sealed class RequestException constructor(
     val response: Response,
     val plainAnswer: String,
     message: String? = null,
-    cause: Throwable? = null
+    override val cause: Throwable? = null
 ) : IOException(
-    message ?: "Something went wrong",
-    cause
+    message ?: "Something went wrong"
 )
 
 class CommonRequestException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :

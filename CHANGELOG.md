@@ -32,6 +32,7 @@ bot.
 
 ### 0.21.1
 
+* **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
 * `SendMessage` was renamed to `SendTextMessage` and previous `SendMessage` is deprecated
 * Most part of requests have changed return type. They are listed below:
     <details>
@@ -80,6 +81,8 @@ bot.
     * `StickerContent`
     
     </details>
+* Version updates:
+    * Ktor `1.2.6` -> `1.3.0`
 
 ## 0.20.0 MPP Migration
 
