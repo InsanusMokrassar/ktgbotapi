@@ -4,9 +4,13 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ReplyMar
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.GameContent
 import kotlinx.serialization.*
+
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<GameContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendGame (
@@ -20,11 +24,11 @@ data class SendGame (
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<Message>,
+) : SendMessageRequest<ContentMessage<GameContent>>,
     ReplyMarkup {
     override fun method(): String = "sendGame"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<GameContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

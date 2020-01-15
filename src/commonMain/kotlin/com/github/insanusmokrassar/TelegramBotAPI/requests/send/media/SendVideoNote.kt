@@ -7,8 +7,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.VideoNoteContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mapOfNotNull
 import kotlinx.serialization.*
 
@@ -23,7 +24,7 @@ fun SendVideoNote(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<Message> {
+): Request<ContentMessage<VideoNoteContent>> {
     val videoNoteAsFileId = (videoNote as? FileId) ?.fileId
     val videoNoteAsFile = videoNote as? MultipartFile
     val thumbAsFileId = (thumb as? FileId) ?.fileId
@@ -52,6 +53,9 @@ fun SendVideoNote(
     }
 }
 
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
+
 @Serializable
 data class SendVideoNoteData internal constructor(
     @SerialName(chatIdField)
@@ -74,13 +78,13 @@ data class SendVideoNoteData internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<Message>,
-    SendMessageRequest<Message>,
-    ReplyingMarkupSendMessageRequest<Message>,
-    TextableSendMessageRequest<Message>,
-    ThumbedSendMessageRequest<Message>,
-    DuratedSendMessageRequest<Message>,
-    SizedSendMessageRequest<Message>
+) : DataRequest<ContentMessage<VideoNoteContent>>,
+    SendMessageRequest<ContentMessage<VideoNoteContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<VideoNoteContent>>,
+    TextableSendMessageRequest<ContentMessage<VideoNoteContent>>,
+    ThumbedSendMessageRequest<ContentMessage<VideoNoteContent>>,
+    DuratedSendMessageRequest<ContentMessage<VideoNoteContent>>,
+    SizedSendMessageRequest<ContentMessage<VideoNoteContent>>
 {
     override val height: Int?
         get() = width
@@ -94,8 +98,8 @@ data class SendVideoNoteData internal constructor(
     }
 
     override fun method(): String = "sendVideoNote"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -3,9 +3,14 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.LocationContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
 import kotlinx.serialization.*
+
+private val commonResultDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<LocationContent>>()
 
 @Serializable
 data class EditChatMessageLiveLocation(
@@ -19,10 +24,10 @@ data class EditChatMessageLiveLocation(
     override val longitude: Double,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditChatMessage, EditReplyMessage, EditLocationMessage {
+) : EditChatMessage<LocationContent>, EditReplyMessage, EditLocationMessage {
     override fun method(): String = "editMessageLiveLocation"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

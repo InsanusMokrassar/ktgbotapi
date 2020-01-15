@@ -3,9 +3,14 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.send
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.LocationContent
 import kotlinx.serialization.*
+
+
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
 
 // TODO:: Add location tracker for tracking location
 @Serializable
@@ -24,14 +29,14 @@ data class SendLocation(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<Message>,
-    ReplyingMarkupSendMessageRequest<Message>,
-    PositionedSendMessageRequest<Message>
+) : SendMessageRequest<ContentMessage<LocationContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<LocationContent>>,
+    PositionedSendMessageRequest<ContentMessage<LocationContent>>
 {
 
     override fun method(): String = "sendLocation"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

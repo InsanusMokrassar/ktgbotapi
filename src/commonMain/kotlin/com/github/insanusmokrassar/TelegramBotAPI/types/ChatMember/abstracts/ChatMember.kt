@@ -9,11 +9,12 @@ interface ChatMember {
     val user: User
 }
 
-internal object ChatMemberSerializerWithoutDeserialization : KSerializer<ChatMember> {
+internal object AdministratorChatMemberSerializerWithoutDeserialization : KSerializer<AdministratorChatMember> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("ChatMemberSerializerWithoutDeserialization")
 
-    override fun deserialize(decoder: Decoder): ChatMember = ChatMemberDeserializationStrategy.deserialize(decoder)
-    override fun serialize(encoder: Encoder, obj: ChatMember) = throw UnsupportedOperationException()
+    override fun deserialize(decoder: Decoder): AdministratorChatMember
+        = ChatMemberDeserializationStrategy.deserialize(decoder) as AdministratorChatMember
+    override fun serialize(encoder: Encoder, obj: AdministratorChatMember) = throw UnsupportedOperationException()
 }
 
 internal object ChatMemberDeserializationStrategy : DeserializationStrategy<ChatMember> {

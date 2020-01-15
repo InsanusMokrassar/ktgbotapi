@@ -7,8 +7,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.AnimationContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mapOfNotNull
 import kotlinx.serialization.*
 
@@ -24,7 +25,7 @@ fun SendAnimation(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<Message> {
+): Request<ContentMessage<AnimationContent>> {
     val animationAsFileId = (animation as? FileId) ?.fileId
     val animationAsFile = animation as? MultipartFile
     val thumbAsFileId = (thumb as? FileId) ?.fileId
@@ -54,6 +55,9 @@ fun SendAnimation(
     }
 }
 
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
+
 @Serializable
 data class SendAnimationData internal constructor(
     @SerialName(chatIdField)
@@ -78,13 +82,13 @@ data class SendAnimationData internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<Message>,
-    SendMessageRequest<Message>,
-    ReplyingMarkupSendMessageRequest<Message>,
-    TextableSendMessageRequest<Message>,
-    ThumbedSendMessageRequest<Message>,
-    DuratedSendMessageRequest<Message>,
-    SizedSendMessageRequest<Message>
+) : DataRequest<ContentMessage<AnimationContent>>,
+    SendMessageRequest<ContentMessage<AnimationContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<AnimationContent>>,
+    TextableSendMessageRequest<ContentMessage<AnimationContent>>,
+    ThumbedSendMessageRequest<ContentMessage<AnimationContent>>,
+    DuratedSendMessageRequest<ContentMessage<AnimationContent>>,
+    SizedSendMessageRequest<ContentMessage<AnimationContent>>
 {
     init {
         text ?.let {
@@ -95,8 +99,8 @@ data class SendAnimationData internal constructor(
     }
 
     override fun method(): String = "sendAnimation"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<AnimationContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

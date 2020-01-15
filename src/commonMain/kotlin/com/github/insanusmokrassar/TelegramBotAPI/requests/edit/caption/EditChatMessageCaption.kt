@@ -1,12 +1,15 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.caption
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media.MediaContentMessageResultDeserializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
 import kotlinx.serialization.*
 
 const val editMessageCaptionMethod = "editMessageCaption"
@@ -23,11 +26,11 @@ data class EditChatMessageCaption(
     override val parseMode: ParseMode? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditChatMessage, EditTextChatMessage, EditReplyMessage {
+) : EditChatMessage<MediaContent>, EditTextChatMessage, EditReplyMessage {
 
     override fun method(): String = editMessageCaptionMethod
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<MediaContent>>
+        get() = MediaContentMessageResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -7,8 +7,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.DocumentContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mapOfNotNull
 import kotlinx.serialization.*
 
@@ -21,7 +22,7 @@ fun SendDocument(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<Message> {
+): Request<ContentMessage<DocumentContent>> {
     val documentAsFileId = (document as? FileId) ?.fileId
     val documentAsFile = document as? MultipartFile
     val thumbAsFileId = (thumb as? FileId) ?.fileId
@@ -48,6 +49,9 @@ fun SendDocument(
     }
 }
 
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
+
 @Serializable
 data class SendDocumentData internal constructor(
     @SerialName(chatIdField)
@@ -66,11 +70,11 @@ data class SendDocumentData internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<Message>,
-    SendMessageRequest<Message>,
-    ReplyingMarkupSendMessageRequest<Message>,
-    TextableSendMessageRequest<Message>,
-    ThumbedSendMessageRequest<Message>
+) : DataRequest<ContentMessage<DocumentContent>>,
+    SendMessageRequest<ContentMessage<DocumentContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<DocumentContent>>,
+    TextableSendMessageRequest<ContentMessage<DocumentContent>>,
+    ThumbedSendMessageRequest<ContentMessage<DocumentContent>>
 {
     init {
         text ?.let {
@@ -81,8 +85,8 @@ data class SendDocumentData internal constructor(
     }
 
     override fun method(): String = "sendDocument"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

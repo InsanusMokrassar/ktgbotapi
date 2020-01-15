@@ -7,8 +7,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.PhotoContent
 import kotlinx.serialization.*
 
 fun SendPhoto(
@@ -19,7 +20,7 @@ fun SendPhoto(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<Message> {
+): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
         chatId,
         (photo as? FileId) ?.fileId,
@@ -37,6 +38,9 @@ fun SendPhoto(
     )
 }
 
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
+
 @Serializable
 data class SendPhotoData internal constructor(
     @SerialName(chatIdField)
@@ -53,10 +57,10 @@ data class SendPhotoData internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<Message>,
-    SendMessageRequest<Message>,
-    ReplyingMarkupSendMessageRequest<Message>,
-    TextableSendMessageRequest<Message>
+) : DataRequest<ContentMessage<PhotoContent>>,
+    SendMessageRequest<ContentMessage<PhotoContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
+    TextableSendMessageRequest<ContentMessage<PhotoContent>>
 {
     init {
         text ?.let {
@@ -67,8 +71,8 @@ data class SendPhotoData internal constructor(
     }
 
     override fun method(): String = "sendPhoto"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

@@ -13,24 +13,29 @@ interface Message {
     val date: DateTime
 }
 
-internal object TelegramBotAPIMessageDeserializationStrategy : DeserializationStrategy<Message> {
+internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : DeserializationStrategy<T> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("TelegramBotAPIMessageSerializer")
 
-    override fun patch(decoder: Decoder, old: Message): Message = throw UpdateNotSupportedException(descriptor.name)
-    override fun deserialize(decoder: Decoder): Message {
-        return RawMessage.serializer().deserialize(decoder).asMessage
+    override fun patch(decoder: Decoder, old: T): T = throw UpdateNotSupportedException(descriptor.name)
+    override fun deserialize(decoder: Decoder): T {
+        return RawMessage.serializer().deserialize(decoder).asMessage as T
     }
 }
+internal object TelegramBotAPIMessageDeserializationStrategy
+    : DeserializationStrategy<Message> by TelegramBotAPIMessageDeserializationStrategyClass()
 
-internal object TelegramBotAPIMessageDeserializeOnlySerializer : KSerializer<Message> {
+internal class TelegramBotAPIMessageDeserializeOnlySerializerClass<T : Message> : KSerializer<T> {
+    private val deserializer = TelegramBotAPIMessageDeserializationStrategyClass<T>()
     override val descriptor: SerialDescriptor
-        get() = TelegramBotAPIMessageDeserializationStrategy.descriptor
+        get() = deserializer.descriptor
 
-    override fun deserialize(decoder: Decoder): Message {
-        return TelegramBotAPIMessageDeserializationStrategy.deserialize(decoder)
+    override fun deserialize(decoder: Decoder): T {
+        return deserializer.deserialize(decoder)
     }
 
-    override fun serialize(encoder: Encoder, obj: Message) {
+    override fun serialize(encoder: Encoder, obj: T) {
         throw UnsupportedOperationException("Currently, Message objects can't be serialized y this serializer")
     }
 }
+internal object TelegramBotAPIMessageDeserializeOnlySerializer
+    : KSerializer<Message> by TelegramBotAPIMessageDeserializeOnlySerializerClass()

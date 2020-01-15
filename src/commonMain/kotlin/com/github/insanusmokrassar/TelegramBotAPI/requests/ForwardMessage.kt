@@ -3,9 +3,12 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.MessageAction
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.ForwardedMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
 import kotlinx.serialization.*
+
+private val AbleToBeForwardedMessageDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<AbleToBeForwardedMessage>()
 
 @Serializable
 data class ForwardMessage(
@@ -17,15 +20,14 @@ data class ForwardMessage(
     override val messageId: MessageIdentifier,
     @SerialName(disableNotificationField)
     val disableNotification: Boolean = false
-): SimpleRequest<Message>, MessageAction {
-    @Transient
+): SimpleRequest<AbleToBeForwardedMessage>, MessageAction {
     override val chatId: ChatIdentifier
         get() = fromChatId
 
     override fun method(): String = "forwardMessage"
 
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<AbleToBeForwardedMessage>
+        get() = AbleToBeForwardedMessageDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
