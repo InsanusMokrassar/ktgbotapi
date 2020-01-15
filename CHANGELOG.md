@@ -16,6 +16,7 @@
     * `PossiblyForwardedMessage#forwarded` field now renamed to `forwardInfo`
 * All serializers in library now are `internal`. **If you have used some of them or I have marked as internal by a
 mistake - don't hesitate to say this.**
+* `EditChatMessage` now have generic type and extends `SimpleRequest<ContentMessage<GenericType>>`
 * Most part of requests have changed return type. They are listed below:
     <details>
     
