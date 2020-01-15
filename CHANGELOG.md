@@ -1,36 +1,6 @@
 # TelegramBotAPI changelog
 
-## 0.21.0 TelegramBotAPI 4.5
-
-* _**All `MessageEntity`'es now are replaced with `TextPart`**_
-* Added support of strikethrough and underline
-    * Added `UnderlineTextSource`
-    * Added `StrikethroughTextSource`
-    * Added support in `RawMessageEntity`
-* Added support of `MarkdownV2`
-* Now will not be thrown exception when there is income unknown type of `RawMessageEntity`. Instead of this will be
-created `RegularTextSource` with the same text
-* Fixed problem that usually string formatting did not trigger escaping of control characters
-* Actualized work with `pre` type of text - now it is possible to use `language` for formatting of text
-* Removed constructor of `TextMentionTextSource`, which was deprecated previously
-* All `TelegramMediaFile` instances now have field `fileUniqueId`, which represents `file_unique_id` field from API
-* Now `ChatPhoto` have two additional fields: `smallFileUniqueId` and `bigFileUniqueId`
-* Now any administrator object instance have `customTitle` nullable field
-* Added the new request `SetChatAdministratorCustomTitle` to manage the custom titles of administrators promoted by the
-bot.
-* Added the field `slowModeDelay` to the `ExtendedSupergroupChat` objects.
-
-* `CaptionedInput` now have extension `fullEntitiesList` which will return list of `TextPart` with `RegularSource`'s
-* `TextPart` added - it will be used as part of some text and can be not related to telegram bot
-* `MultilevelTextSource` was added - it is type of `TextSource`, which can have subsources as parts of this text
-* In all `TextSource`s all fields now are lazy for avoiding of potential risk for performance issues
-
-* Updates in versions:
-    * Coroutines `1.3.2` -> `1.3.3`
-    * Klock `1.8.0` -> `1.8.6`
-    * UUID `0.0.6` -> `0.0.7`
-
-### 0.21.1
+### 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
 * `SendMessage` was renamed to `SendTextMessage` and previous `SendMessage` is deprecated
@@ -83,6 +53,36 @@ bot.
     </details>
 * Version updates:
     * Ktor `1.2.6` -> `1.3.0`
+
+## 0.21.0 TelegramBotAPI 4.5
+
+* _**All `MessageEntity`'es now are replaced with `TextPart`**_
+* Added support of strikethrough and underline
+    * Added `UnderlineTextSource`
+    * Added `StrikethroughTextSource`
+    * Added support in `RawMessageEntity`
+* Added support of `MarkdownV2`
+* Now will not be thrown exception when there is income unknown type of `RawMessageEntity`. Instead of this will be
+created `RegularTextSource` with the same text
+* Fixed problem that usually string formatting did not trigger escaping of control characters
+* Actualized work with `pre` type of text - now it is possible to use `language` for formatting of text
+* Removed constructor of `TextMentionTextSource`, which was deprecated previously
+* All `TelegramMediaFile` instances now have field `fileUniqueId`, which represents `file_unique_id` field from API
+* Now `ChatPhoto` have two additional fields: `smallFileUniqueId` and `bigFileUniqueId`
+* Now any administrator object instance have `customTitle` nullable field
+* Added the new request `SetChatAdministratorCustomTitle` to manage the custom titles of administrators promoted by the
+bot.
+* Added the field `slowModeDelay` to the `ExtendedSupergroupChat` objects.
+
+* `CaptionedInput` now have extension `fullEntitiesList` which will return list of `TextPart` with `RegularSource`'s
+* `TextPart` added - it will be used as part of some text and can be not related to telegram bot
+* `MultilevelTextSource` was added - it is type of `TextSource`, which can have subsources as parts of this text
+* In all `TextSource`s all fields now are lazy for avoiding of potential risk for performance issues
+
+* Updates in versions:
+    * Coroutines `1.3.2` -> `1.3.3`
+    * Klock `1.8.0` -> `1.8.6`
+    * UUID `0.0.6` -> `0.0.7`
 
 ## 0.20.0 MPP Migration
 
