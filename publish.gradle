@@ -8,16 +8,19 @@ bintray {
     filesSpec {
         from "${buildDir}/publications/"
         eachFile {
+            String directorySubname = it.getFile().parentFile.name
             if (it.getName() == "module.json") {
-                File file = it.getFile()
-                String directorySubname = file.parentFile.name
                 if (directorySubname == "kotlinMultiplatform") {
                     it.setPath("${project.name}/${project.version}/${project.name}-${project.version}.module")
                 } else {
                     it.setPath("${project.name}-${directorySubname}/${project.version}/${project.name}-${directorySubname}-${project.version}.module")
                 }
             } else {
-                it.exclude()
+                if (directorySubname == "kotlinMultiplatform" && it.getName() == "pom-default.xml") {
+                    it.setPath("${project.name}/${project.version}/${project.name}-${project.version}.pom")
+                } else {
+                    it.exclude()
+                }
             }
         }
         into "${project.group}".replace(".", "/")
