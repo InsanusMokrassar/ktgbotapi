@@ -15,4 +15,4 @@ interface GetGameHighScores : SimpleRequest<List<GameHighScore>> {
         get() = GameHighScoresSerializer
 }
 
-object GameHighScoresSerializer : KSerializer<List<GameHighScore>> by ArrayListSerializer(GameHighScore.serializer())
+internal object GameHighScoresSerializer : KSerializer<List<GameHighScore>> by ArrayListSerializer(GameHighScore.serializer())

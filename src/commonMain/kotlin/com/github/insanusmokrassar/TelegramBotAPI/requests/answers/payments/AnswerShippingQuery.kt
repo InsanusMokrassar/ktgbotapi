@@ -21,7 +21,7 @@ data class AnswerShippingQueryOk(
         get() = serializer()
 }
 
-object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ArrayListSerializer(
+internal object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ArrayListSerializer(
     ShippingOption.serializer()
 )
 

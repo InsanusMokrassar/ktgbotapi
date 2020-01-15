@@ -5,7 +5,7 @@ import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
 import kotlinx.serialization.json.*
 
-object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
+internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardButtons.InlineKeyboardButton")
 
     private fun resolveSerializer(json: JsonObject): KSerializer<out InlineKeyboardButton> {

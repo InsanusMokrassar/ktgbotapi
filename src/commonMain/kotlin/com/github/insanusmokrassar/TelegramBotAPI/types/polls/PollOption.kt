@@ -19,7 +19,7 @@ data class AnonymousPollOption (
     override val votes: Int
 ) : PollOption()
 
-object PollOptionSerializer : KSerializer<PollOption> {
+internal object PollOptionSerializer : KSerializer<PollOption> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName(PollOption::class.simpleName ?: "PollOption")
 
     override fun deserialize(decoder: Decoder): PollOption = AnonymousPollOption.serializer().deserialize(

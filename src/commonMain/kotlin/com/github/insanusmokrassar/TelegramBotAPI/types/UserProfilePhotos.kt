@@ -13,6 +13,6 @@ data class UserProfilePhotos (
     val photos: List<Photo>
 )
 
-object UserProfilePhotosPhotosSerializer : KSerializer<List<Photo>> by ArrayListSerializer(
+internal object UserProfilePhotosPhotosSerializer : KSerializer<List<Photo>> by ArrayListSerializer(
     PhotoSerializer
 )
