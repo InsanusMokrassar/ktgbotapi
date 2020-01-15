@@ -64,7 +64,6 @@ bot.
 * Changed type of `createResend`
     <details>
     
-    * `ResendableContent`
     * `GameContent`
     * `LocationContent`
     * `PollContent`
