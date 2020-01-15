@@ -32,6 +32,56 @@ bot.
 
 ### 0.21.1
 
+* `SendMessage` was renamed to `SendTextMessage` and previous `SendMessage` is deprecated
+* Most part of requests have changed return type. They are listed below:
+    <details>
+    
+    * `ForwardMessage`
+    * `GetChatAdministrators`
+    * `EditChatMessageLiveLocation`
+    * `StopChatMessageLiveLocation`
+    * `EditChatMessageText`
+    * `EditChatMessageCaption`
+    * `EditChatMessageMedia`
+    * `EditChatMessageReplyMarkup`
+    * `SendAnimation`
+    * `SendAudio`
+    * `SendContact`
+    * `SendLocation`
+    * `SendTextMessage`
+    * `SendPoll`
+    * `SendVenue`
+    * `SendGame`
+    * `SendDocument`
+    * `SendMediaGroup`
+    * `SendPhoto`
+    * `SendVideo`
+    * `SendVideoNote`
+    * `SendVoice`
+    * `SendSticker`
+    
+    </details>
+* Changed type of `createResend`
+    <details>
+    
+    * `ResendableContent`
+    * `GameContent`
+    * `LocationContent`
+    * `PollContent`
+    * `TextContent`
+    * `VenueContent`
+    * `AnimationContent`
+    * `AudioContent`
+    * `DocumentContent`
+    * `ContactContent`
+    * `PhotoContent`
+    * `VideoContent`
+    * `VideoNoteContent`
+    * `VoiceContent`
+    * `StickerContent`
+    
+    </details>
+
 ## 0.20.0 MPP Migration
 
 * Time library change: `joda-time` -> `com.soywiz.korlibs.klock:klock`
