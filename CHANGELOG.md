@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-### 0.22.0
+## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
 * `SendMessage` was renamed to `SendTextMessage` and previous `SendMessage` is deprecated
