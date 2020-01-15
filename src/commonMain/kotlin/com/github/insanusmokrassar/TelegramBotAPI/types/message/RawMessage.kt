@@ -134,20 +134,20 @@ internal data class RawMessage(
     }
 
     @Transient
-    private val forwarded: ForwardedMessage? by lazy {
+    private val forwarded: ForwardInfo? by lazy {
         forward_date ?: return@lazy null // According to the documentation, now any forwarded message contains this field
         when {
-            forward_sender_name != null -> AnonymousForwardedMessage(
+            forward_sender_name != null -> AnonymousForwardInfo(
                 forward_date,
                 forward_sender_name
             )
-            forward_from_chat != null -> ForwardedFromChannelMessage(
+            forward_from_chat != null -> ForwardFromChannelInfo(
                 forward_date,
                 forward_from_message_id ?: throw IllegalStateException("Channel forwarded message must contain message id, but was not"),
                 forward_from_chat,
                 forward_signature
             )
-            forward_from != null -> UserForwardedMessage(
+            forward_from != null -> UserForwardInfo(
                 forward_date,
                 forward_from
             )

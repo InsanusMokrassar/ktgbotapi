@@ -2,6 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts
 
 import com.soywiz.klock.DateTime
 
-interface AbleToBeEditedMessage : Message {
+interface PossiblyEditedMessage : Message {
     val editDate: DateTime?
 }

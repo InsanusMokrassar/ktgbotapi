@@ -4,6 +4,16 @@
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
 * `SendMessage` was renamed to `SendTextMessage` and previous `SendMessage` is deprecated
+* All `AbleToBe*` interfaces was renamed to `Possibly*`
+    * `AbleToBeEditedMessage` -> `PossiblyEditedMessage`
+    * `AbleToBeForwardedMessage` -> `PossiblyForwardedMessage`
+    * `AbleToBeMarkedUp` -> `PossiblyMarkedUp`
+    * `AbleToBeEditedMessage` -> `PossiblyEditedMessage`
+* `ForwardedMessage` type was renamed to `ForwardInfo`
+    * `AnonymousForwardedMessage` -> `AnonymousForwardInfo`
+    * `UserForwardedMessage` -> `UserForwardInfo`
+    * `ForwardedFromChannelMessage` -> `ForwardFromChannelInfo`
+    * `PossiblyForwardedMessage#forwarded` field now renamed to `forwardInfo`
 * Most part of requests have changed return type. They are listed below:
     <details>
     
