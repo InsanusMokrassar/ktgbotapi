@@ -4,7 +4,7 @@ import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(KeyboardMarkup::class)
-object KeyboardMarkupSerializer : KSerializer<KeyboardMarkup> {
+internal object KeyboardMarkupSerializer : KSerializer<KeyboardMarkup> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName(KeyboardMarkup::class.toString())
     override fun serialize(encoder: Encoder, obj: KeyboardMarkup) {
         when(obj) {

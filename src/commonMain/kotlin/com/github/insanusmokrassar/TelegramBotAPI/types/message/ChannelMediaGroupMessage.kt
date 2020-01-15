@@ -16,7 +16,7 @@ data class ChannelMediaGroupMessage(
     override val mediaGroupId: MediaGroupIdentifier,
     override val content: MediaGroupContent,
     override val editDate: DateTime?,
-    override val forwarded: ForwardedMessage?,
+    override val forwardInfo: ForwardInfo?,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?
 ) : MediaGroupMessage

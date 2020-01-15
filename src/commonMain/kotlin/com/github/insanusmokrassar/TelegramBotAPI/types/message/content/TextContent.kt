@@ -3,10 +3,12 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message.content
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendMessage
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendTextMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
@@ -20,7 +22,7 @@ data class TextContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): Request<Message> = SendMessage(
+    ): Request<ContentMessage<TextContent>> = SendTextMessage(
         chatId,
         toHtmlTexts().first(),
         HTMLParseMode,
@@ -35,7 +37,7 @@ data class TextContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): List<Request<Message>> = createResends(
+    ): List<Request<ContentMessage<TextContent>>> = createResends(
         chatId,
         disableNotification,
         replyToMessageId,
@@ -49,12 +51,12 @@ data class TextContent(
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?,
         parseMode: ParseMode = HTMLParseMode
-    ): List<Request<Message>> = when (parseMode) {
+    ): List<Request<ContentMessage<TextContent>>> = when (parseMode) {
         is MarkdownParseMode -> toMarkdownTexts()
         is MarkdownV2ParseMode -> toMarkdownV2Texts()
         is HTMLParseMode -> toHtmlTexts()
     }.map {
-        SendMessage(
+        SendTextMessage(
             chatId,
             it,
             parseMode,

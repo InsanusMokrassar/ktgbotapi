@@ -5,11 +5,14 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
 import kotlinx.serialization.*
 
 const val editMessageMediaMethod = "editMessageMedia"
+
+internal val MediaContentMessageResultDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<MediaContent>>()
 
 @Serializable
 data class EditChatMessageMedia(
@@ -21,7 +24,7 @@ data class EditChatMessageMedia(
     override val media: InputMedia,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditChatMessage, EditReplyMessage, EditMediaMessage {
+) : EditChatMessage<MediaContent>, EditReplyMessage, EditMediaMessage {
 
     init {
         if (media.file is MultipartFile) {
@@ -30,8 +33,8 @@ data class EditChatMessageMedia(
     }
 
     override fun method(): String = editMessageMediaMethod
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<MediaContent>>
+        get() = MediaContentMessageResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

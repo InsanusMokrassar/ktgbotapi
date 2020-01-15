@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendPoll
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
@@ -17,7 +18,7 @@ data class PollContent(
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
         replyMarkup: KeyboardMarkup?
-    ): Request<Message> = SendPoll(
+    ): Request<ContentMessage<PollContent>> = SendPoll(
         chatId,
         poll.question,
         poll.options.map { it.text },

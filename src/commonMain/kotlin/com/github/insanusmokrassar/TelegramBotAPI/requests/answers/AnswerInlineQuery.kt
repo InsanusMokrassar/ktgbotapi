@@ -51,6 +51,6 @@ fun InlineQuery.createAnswer(
     switchPmParameter
 )
 
-object InlineQueryAnswersResultsSerializer: KSerializer<List<InlineQueryResult>> by ArrayListSerializer(
+internal object InlineQueryAnswersResultsSerializer: KSerializer<List<InlineQueryResult>> by ArrayListSerializer(
     InlineQueryResultSerializer
 )

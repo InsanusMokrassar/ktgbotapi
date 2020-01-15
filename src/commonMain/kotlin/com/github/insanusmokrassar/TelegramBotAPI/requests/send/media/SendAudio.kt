@@ -8,8 +8,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.AudioContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mapOfNotNull
 import kotlinx.serialization.*
 
@@ -25,7 +26,7 @@ fun SendAudio(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<Message> {
+): Request<ContentMessage<AudioContent>> {
     val audioAsFileId = (audio as? FileId) ?.fileId
     val audioAsFile = audio as? MultipartFile
     val thumbAsFileId = (thumb as? FileId) ?.fileId
@@ -55,6 +56,9 @@ fun SendAudio(
     }
 }
 
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<AudioContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
+
 @Serializable
 data class SendAudioData internal constructor(
     @SerialName(chatIdField)
@@ -79,13 +83,13 @@ data class SendAudioData internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : DataRequest<Message>,
-    SendMessageRequest<Message>,
-    ReplyingMarkupSendMessageRequest<Message>,
-    TextableSendMessageRequest<Message>,
-    ThumbedSendMessageRequest<Message>,
-    TitledSendMessageRequest<Message>,
-    DuratedSendMessageRequest<Message>,
+) : DataRequest<ContentMessage<AudioContent>>,
+    SendMessageRequest<ContentMessage<AudioContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<AudioContent>>,
+    TextableSendMessageRequest<ContentMessage<AudioContent>>,
+    ThumbedSendMessageRequest<ContentMessage<AudioContent>>,
+    TitledSendMessageRequest<ContentMessage<AudioContent>>,
+    DuratedSendMessageRequest<ContentMessage<AudioContent>>,
     Performerable
 {
     init {
@@ -97,8 +101,8 @@ data class SendAudioData internal constructor(
     }
 
     override fun method(): String = "sendAudio"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<AudioContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

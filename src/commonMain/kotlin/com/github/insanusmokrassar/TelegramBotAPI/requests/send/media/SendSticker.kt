@@ -5,8 +5,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.Replyi
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.StickerContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonObject
@@ -17,7 +18,7 @@ fun SendSticker(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-): Request<Message> = SendStickerByFileId(
+): Request<ContentMessage<StickerContent>> = SendStickerByFileId(
     chatId,
     sticker as? FileId,
     disableNotification,
@@ -29,6 +30,9 @@ fun SendSticker(
         is FileId -> it
     }
 }
+
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendStickerByFileId internal constructor(
@@ -42,10 +46,10 @@ data class SendStickerByFileId internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<Message>, ReplyingMarkupSendMessageRequest<Message> {
+) : SendMessageRequest<ContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ContentMessage<StickerContent>> {
     override fun method(): String = "sendSticker"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<StickerContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
@@ -54,7 +58,7 @@ data class SendStickerByFile internal constructor(
     @Transient
     private val sendStickerByFileId: SendStickerByFileId,
     val sticker: MultipartFile
-) : MultipartRequest<Message>, Request<Message> by sendStickerByFileId {
+) : MultipartRequest<ContentMessage<StickerContent>>, Request<ContentMessage<StickerContent>> by sendStickerByFileId {
     override val mediaMap: Map<String, MultipartFile> = mapOf(stickerField to sticker)
     override val paramsJson: JsonObject = sendStickerByFileId.toJsonWithoutNulls(SendStickerByFileId.serializer())
 }

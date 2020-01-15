@@ -16,7 +16,7 @@ data class CommonMessageImpl<T: MessageContent>(
     override val content: T,
     override val date: DateTime,
     override val editDate: DateTime?,
-    override val forwarded: ForwardedMessage?,
+    override val forwardInfo: ForwardInfo?,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     val paymentInfo: PaymentInfo?

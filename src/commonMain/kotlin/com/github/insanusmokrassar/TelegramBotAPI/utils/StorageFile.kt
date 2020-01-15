@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
-import kotlinx.io.core.Input
+import io.ktor.utils.io.core.Input
 import kotlinx.serialization.Serializable
 
 @Serializable

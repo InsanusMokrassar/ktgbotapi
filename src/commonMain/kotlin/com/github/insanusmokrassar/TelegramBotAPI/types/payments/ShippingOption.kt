@@ -16,6 +16,6 @@ data class ShippingOption(
     override val prices: List<LabeledPrice>
 ) : Priced
 
-object LabeledPricesSerializer : KSerializer<List<LabeledPrice>> by ArrayListSerializer(
+internal object LabeledPricesSerializer : KSerializer<List<LabeledPrice>> by ArrayListSerializer(
     LabeledPrice.serializer()
 )

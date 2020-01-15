@@ -6,7 +6,7 @@ import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(InlineQueryResult::class)
-object InlineQueryResultSerializer : KSerializer<InlineQueryResult> {
+internal object InlineQueryResultSerializer : KSerializer<InlineQueryResult> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName(InlineQueryResult::class.toString())
     override fun serialize(encoder: Encoder, obj: InlineQueryResult) {
         when(obj) {

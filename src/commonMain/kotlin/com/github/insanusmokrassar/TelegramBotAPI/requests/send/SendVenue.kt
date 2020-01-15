@@ -3,9 +3,12 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.send
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.VenueContent
 import kotlinx.serialization.*
+
+private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
 
 @Serializable
 data class SendVenue(
@@ -27,10 +30,10 @@ data class SendVenue(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<Message>,
-    PositionedSendMessageRequest<Message>,
-    TitledSendMessageRequest<Message>,
-    ReplyingMarkupSendMessageRequest<Message>
+) : SendMessageRequest<ContentMessage<VenueContent>>,
+    PositionedSendMessageRequest<ContentMessage<VenueContent>>,
+    TitledSendMessageRequest<ContentMessage<VenueContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<VenueContent>>
 {
     constructor(
         chatId: ChatIdentifier,
@@ -51,8 +54,8 @@ data class SendVenue(
     )
 
     override fun method(): String = "sendVenue"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>>
+        get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

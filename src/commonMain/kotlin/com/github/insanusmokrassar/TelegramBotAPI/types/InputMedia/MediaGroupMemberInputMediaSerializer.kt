@@ -4,7 +4,7 @@ import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(MediaGroupMemberInputMedia::class)
-object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMemberInputMedia> {
+internal object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMemberInputMedia> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName(MediaGroupMemberInputMedia::class.toString())
     override fun serialize(encoder: Encoder, obj: MediaGroupMemberInputMedia) {
         when (obj) {

@@ -12,12 +12,12 @@ interface ResendableContent {
         disableNotification: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): Request<Message>
+    ): Request<out Message>
 
     fun createResends(
         chatId: ChatIdentifier,
         disableNotification: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): List<Request<Message>> = listOf(createResend(chatId, disableNotification, replyToMessageId, replyMarkup))
+    ): List<Request<out Message>> = listOf(createResend(chatId, disableNotification, replyToMessageId, replyMarkup))
 }

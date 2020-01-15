@@ -13,7 +13,7 @@ fun Photo.biggest(): PhotoSize? = maxBy {
     it.resolution
 }
 
-object PhotoSerializer : KSerializer<Photo> by ArrayListSerializer(
+internal object PhotoSerializer : KSerializer<Photo> by ArrayListSerializer(
     PhotoSize.serializer()
 )
 

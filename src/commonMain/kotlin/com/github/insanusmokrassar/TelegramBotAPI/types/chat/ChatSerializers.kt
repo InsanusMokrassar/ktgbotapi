@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonObjectSerializer
 
 private val formatter = Json.nonstrict
 
-object PreviewChatSerializer : KSerializer<Chat> {
+internal object PreviewChatSerializer : KSerializer<Chat> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("PreviewChatSerializer")
 
     override fun deserialize(decoder: Decoder): Chat {
@@ -39,7 +39,7 @@ object PreviewChatSerializer : KSerializer<Chat> {
     }
 }
 
-object ExtendedChatSerializer : KSerializer<ExtendedChat> {
+internal object ExtendedChatSerializer : KSerializer<ExtendedChat> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("PreviewChatSerializer")
 
     override fun deserialize(decoder: Decoder): ExtendedChat {

@@ -6,8 +6,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMe
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer
@@ -20,7 +20,7 @@ fun SendMediaGroup(
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null
-): Request<List<Message>> {
+): Request<List<MediaGroupMessage>> {
     if (media.size !in membersCountInMediaGroup) {
         throw IllegalArgumentException("Count of members for media group must be in $membersCountInMediaGroup range")
     }
@@ -53,7 +53,8 @@ fun SendMediaGroup(
     }
 }
 
-private val messagesListSerializer = ArrayListSerializer(TelegramBotAPIMessageDeserializeOnlySerializer)
+private val messagesListSerializer: ArrayListSerializer<MediaGroupMessage>
+    = ArrayListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
 
 @Serializable
 data class SendMediaGroupData internal constructor(
@@ -64,7 +65,7 @@ data class SendMediaGroupData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null
-) : DataRequest<List<Message>>, SendMessageRequest<List<Message>> {
+) : DataRequest<List<MediaGroupMessage>>, SendMessageRequest<List<MediaGroupMessage>> {
     @SerialName(mediaField)
     private val convertedMedia: String
         get() = jsonArray {
@@ -77,7 +78,7 @@ data class SendMediaGroupData internal constructor(
     override fun method(): String = "sendMediaGroup"
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-    override val resultDeserializer: DeserializationStrategy<List<Message>>
+    override val resultDeserializer: DeserializationStrategy<List<MediaGroupMessage>>
         get() = messagesListSerializer
 }
 

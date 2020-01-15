@@ -1,5 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts
 
-interface AbleToReplyMessage {
+interface PossiblyReplyMessage {
     val replyTo: Message?
 }

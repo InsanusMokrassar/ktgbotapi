@@ -1,5 +1,73 @@
 # TelegramBotAPI changelog
 
+## 0.22.0
+
+* **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
+* `SendMessage` was renamed to `SendTextMessage` and previous `SendMessage` is deprecated
+* All `AbleToBe*` interfaces was renamed to `Possibly*`
+    * `AbleToBeEditedMessage` -> `PossiblyEditedMessage`
+    * `AbleToBeForwardedMessage` -> `PossiblyForwardedMessage`
+    * `AbleToBeMarkedUp` -> `PossiblyMarkedUp`
+    * `AbleToBeEditedMessage` -> `PossiblyEditedMessage`
+* `ForwardedMessage` type was renamed to `ForwardInfo`
+    * `AnonymousForwardedMessage` -> `AnonymousForwardInfo`
+    * `UserForwardedMessage` -> `UserForwardInfo`
+    * `ForwardedFromChannelMessage` -> `ForwardFromChannelInfo`
+    * `PossiblyForwardedMessage#forwarded` field now renamed to `forwardInfo`
+* All serializers in library now are `internal`. **If you have used some of them or I have marked as internal by a
+mistake - don't hesitate to say this.**
+* `EditChatMessage` now have generic type and extends `SimpleRequest<ContentMessage<GenericType>>`
+* `ResendableContent` now extends `Request<out Message>` instead of `Request<Message>`
+* Most part of requests have changed return type. They are listed below:
+    <details>
+    
+    * `ForwardMessage`
+    * `GetChatAdministrators`
+    * `EditChatMessageLiveLocation`
+    * `StopChatMessageLiveLocation`
+    * `EditChatMessageText`
+    * `EditChatMessageCaption`
+    * `EditChatMessageMedia`
+    * `EditChatMessageReplyMarkup`
+    * `SendAnimation`
+    * `SendAudio`
+    * `SendContact`
+    * `SendLocation`
+    * `SendTextMessage`
+    * `SendPoll`
+    * `SendVenue`
+    * `SendGame`
+    * `SendDocument`
+    * `SendMediaGroup`
+    * `SendPhoto`
+    * `SendVideo`
+    * `SendVideoNote`
+    * `SendVoice`
+    * `SendSticker`
+    
+    </details>
+* Changed type of `createResend`
+    <details>
+    
+    * `GameContent`
+    * `LocationContent`
+    * `PollContent`
+    * `TextContent`
+    * `VenueContent`
+    * `AnimationContent`
+    * `AudioContent`
+    * `DocumentContent`
+    * `ContactContent`
+    * `PhotoContent`
+    * `VideoContent`
+    * `VideoNoteContent`
+    * `VoiceContent`
+    * `StickerContent`
+    
+    </details>
+* Version updates:
+    * Ktor `1.2.6` -> `1.3.0`
+
 ## 0.21.0 TelegramBotAPI 4.5
 
 * _**All `MessageEntity`'es now are replaced with `TextPart`**_

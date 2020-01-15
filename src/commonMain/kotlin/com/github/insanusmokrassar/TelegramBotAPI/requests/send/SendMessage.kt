@@ -6,12 +6,15 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
 import kotlinx.serialization.*
 
+internal val TextContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<TextContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
+
 @Serializable
-data class SendMessage(
+data class SendTextMessage(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(textField)
@@ -26,9 +29,9 @@ data class SendMessage(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<Message>,
-    ReplyingMarkupSendMessageRequest<Message>,
-    TextableSendMessageRequest<Message>,
+) : SendMessageRequest<ContentMessage<TextContent>>,
+    ReplyingMarkupSendMessageRequest<ContentMessage<TextContent>>,
+    TextableSendMessageRequest<ContentMessage<TextContent>>,
     DisableWebPagePreview
 {
     init {
@@ -38,8 +41,16 @@ data class SendMessage(
     }
 
     override fun method(): String = "sendMessage"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<TextContent>>
+        get() = TextContentMessageResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+@Deprecated(
+    "This declaration is deprecated due violation of common naming rules",
+    ReplaceWith(
+        "SendTextMessage"
+    )
+)
+typealias SendMessage = SendTextMessage
