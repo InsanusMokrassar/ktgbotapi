@@ -155,7 +155,7 @@ Currently webhook method contains `UpdatesFilter` as necessary argument for gett
 separate getting updates for media groups - they are accumulating with debounce in one second
 (for being sure that all objects of media group was received).
 
-Updates polling also support `UpdatesFilter` but you must not use it and can get updates directly
+Updates polling also support `UpdatesFilter` but it is not required to use it and you can get updates directly
 in `UpdateReceiver`, which you will provide to `startGettingOfUpdates` method
 
 ### Webhook set up
