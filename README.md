@@ -25,7 +25,7 @@ like inserting of additional libraries (like `kotlin stdlib`). In the examples w
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI/_latestVersion)
 
-Currently, last versions of library are not included into the Maven repository (for the reason difficult in publishing
+Currently, last versions of library can be available from the Maven repository with errors (for the reason difficult in publishing
 of signed artifacts in Bintray). You can:
 
 * Use earlier version (available version you can find
