@@ -68,6 +68,10 @@ mistake - don't hesitate to say this.**
 * Version updates:
     * Ktor `1.2.6` -> `1.3.0`
 
+### 0.22.1 MediaContent#asInputMedia
+
+* All `MediaContent` instances now can create their `InputMedia` analog
+
 ## 0.21.0 TelegramBotAPI 4.5
 
 * _**All `MessageEntity`'es now are replaced with `TextPart`**_

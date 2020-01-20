@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendVideoNote
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMediaVideo
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
@@ -10,6 +11,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoNoteFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownV2Captions
 
 data class VideoNoteContent(
     override val media: VideoNoteFile
@@ -39,5 +41,13 @@ data class VideoNoteContent(
         disableNotification,
         replyToMessageId,
         replyMarkup
+    )
+
+    override fun asInputMedia(): InputMediaVideo = InputMediaVideo(
+        media.fileId,
+        width = media.width,
+        height = media.height,
+        duration = media.duration,
+        thumb = media.thumb ?.fileId
     )
 }
