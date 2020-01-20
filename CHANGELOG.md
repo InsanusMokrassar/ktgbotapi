@@ -76,7 +76,6 @@ while they can work incorrectly
 * Added links utils:
     * `makeLinkToMessage` have two signatures - for direct creating using username and for abstract creating using
     chat id
-    * `makeFileLink` is unsafe way to create file link
 
 ## 0.21.0 TelegramBotAPI 4.5
 

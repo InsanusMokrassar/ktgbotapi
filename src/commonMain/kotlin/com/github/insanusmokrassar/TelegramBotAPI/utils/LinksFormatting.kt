@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatId
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.UsernameChat
@@ -35,9 +34,3 @@ fun makeLinkToMessage(
         else -> return null
     }
 }
-
-@PreviewFeature
-fun makeFileLink(
-    botToken: String,
-    filePath: String
-) = "https://api.telegram.org/file/bot$botToken/$filePath"
