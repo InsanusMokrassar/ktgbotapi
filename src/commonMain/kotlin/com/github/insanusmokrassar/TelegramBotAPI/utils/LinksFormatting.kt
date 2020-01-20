@@ -15,6 +15,7 @@ fun makeLinkToMessage(
 ): String = "$internalLinkBeginning/$username/$messageId"
 
 private val linkIdRedundantPartRegex = Regex("^-100")
+private val usernameBeginSymbolRegex = Regex("^@")
 
 @PreviewFeature
 fun makeLinkToMessage(
@@ -22,7 +23,9 @@ fun makeLinkToMessage(
     messageId: MessageIdentifier
 ): String? {
     return when {
-        chat is UsernameChat && chat.username != null -> "$internalLinkBeginning/${chat.username ?.username}/$messageId"
+        chat is UsernameChat && chat.username != null -> {
+            "$internalLinkBeginning/${chat.username ?.username ?.replace(usernameBeginSymbolRegex, "")}/$messageId"
+        }
         chat !is PrivateChat -> chat.id.chatId.toString().replace(
             linkIdRedundantPartRegex,
             ""
