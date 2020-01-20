@@ -71,6 +71,12 @@ mistake - don't hesitate to say this.**
 ### 0.22.1 MediaContent#asInputMedia
 
 * All `MediaContent` instances now can create their `InputMedia` analog
+* New annotation `PreviewFeature` was added to mark new thing as preview for the time
+while they can work incorrectly
+* Added links utils:
+    * `makeLinkToMessage` have two signatures - for direct creating using username and for abstract creating using
+    chat id
+    * `makeFileLink` is unsafe way to create file link
 
 ## 0.21.0 TelegramBotAPI 4.5
 
