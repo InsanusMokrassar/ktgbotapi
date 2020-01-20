@@ -22,7 +22,7 @@ fun makeLinkToMessage(
     messageId: MessageIdentifier
 ): String? {
     return when {
-        chat is UsernameChat && chat.username != null -> "$internalLinkBeginning/${chat.username}/$messageId"
+        chat is UsernameChat && chat.username != null -> "$internalLinkBeginning/${chat.username ?.username}/$messageId"
         chat !is PrivateChat -> chat.id.chatId.toString().replace(
             linkIdRedundantPartRegex,
             ""
