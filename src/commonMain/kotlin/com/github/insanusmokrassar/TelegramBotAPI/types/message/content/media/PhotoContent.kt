@@ -48,7 +48,7 @@ data class PhotoContent(
 
     override fun asInputMedia(): InputMediaPhoto = InputMediaPhoto(
         media.fileId,
-        toMarkdownV2Captions().first(),
+        toMarkdownV2Captions().firstOrNull(),
         MarkdownV2
     )
 }

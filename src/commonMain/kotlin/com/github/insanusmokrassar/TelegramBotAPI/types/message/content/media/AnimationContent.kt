@@ -45,7 +45,7 @@ data class AnimationContent(
 
     override fun asInputMedia(): InputMediaAnimation = InputMediaAnimation(
         media.fileId,
-        toMarkdownV2Captions().first(),
+        toMarkdownV2Captions().firstOrNull(),
         MarkdownV2,
         media.width,
         media.height,

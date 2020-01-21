@@ -41,7 +41,7 @@ data class DocumentContent(
 
     override fun asInputMedia(): InputMediaDocument = InputMediaDocument(
         media.fileId,
-        toMarkdownV2Captions().first(),
+        toMarkdownV2Captions().firstOrNull(),
         MarkdownV2,
         media.thumb ?.fileId
     )

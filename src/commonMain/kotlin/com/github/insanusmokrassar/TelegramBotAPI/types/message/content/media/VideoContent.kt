@@ -53,7 +53,7 @@ data class VideoContent(
 
     override fun asInputMedia(): InputMediaVideo = InputMediaVideo(
         media.fileId,
-        toMarkdownV2Captions().first(),
+        toMarkdownV2Captions().firstOrNull(),
         MarkdownV2,
         media.width,
         media.height,

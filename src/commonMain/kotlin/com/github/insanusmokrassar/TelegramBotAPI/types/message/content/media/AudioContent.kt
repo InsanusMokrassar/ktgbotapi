@@ -44,7 +44,7 @@ data class AudioContent(
 
     override fun asInputMedia(): InputMediaAudio = InputMediaAudio(
         media.fileId,
-        toMarkdownV2Captions().first(),
+        toMarkdownV2Captions().firstOrNull(),
         MarkdownV2,
         media.duration,
         media.performer,
