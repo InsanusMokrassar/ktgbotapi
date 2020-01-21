@@ -16,6 +16,8 @@ There is Telegram Passport API exception of implemented functionality, which was
 as soon as possible. All APIs that are not included are presented
 [wiki](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Not-included-API).
 
+<cut />
+
 ## How to implement library?
 
 Common ways to implement this library are presented here. In some cases it will require additional steps
