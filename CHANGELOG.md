@@ -85,6 +85,8 @@ while they can work incorrectly
     * `UnknownMessageType`
     * `UnknownChatType`
     * `UnknownCallbackQueryType`
+* `UpdatesFilter` now have one additional income callback: `unknownUpdateTypeCallback`
+    * `createSimpleUpdateFilter` can receive one more callback: `unknownCallback` (for `unknownUpdateTypeCallback`)
 
 ## 0.21.0 TelegramBotAPI 4.5
 
