@@ -107,8 +107,8 @@ internal fun MultilevelTextSource.boldMarkdownV2(): String = markdownV2Default(m
 internal fun MultilevelTextSource.boldHTML(): String = htmlDefault(htmlBoldControl)
 
 
-internal fun MultilevelTextSource.cashTagMarkdownV2(): String = "\\#${textParts.joinSubSourcesMarkdownV2()}"
-internal fun MultilevelTextSource.cashTagHTML(): String = "#${textParts.joinSubSourcesHtml()}"
+internal fun MultilevelTextSource.cashTagMarkdownV2(): String = textParts.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.cashTagHTML(): String = textParts.joinSubSourcesHtml()
 
 
 internal fun MultilevelTextSource.italicMarkdownV2(): String = markdownV2Default(markdownItalicControl)
