@@ -84,6 +84,7 @@ while they can work incorrectly
     * `UnknownUpdateType`
     * `UnknownMessageType`
     * `UnknownChatType`
+    * `UnknownCallbackQueryType`
 
 ## 0.21.0 TelegramBotAPI 4.5
 

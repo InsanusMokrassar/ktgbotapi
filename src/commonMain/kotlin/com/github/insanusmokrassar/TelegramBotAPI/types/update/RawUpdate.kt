@@ -14,6 +14,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.updateIdField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 @Serializable
 internal data class RawUpdate constructor(
@@ -38,7 +39,7 @@ internal data class RawUpdate constructor(
     /**
      * @return One of children of [Update] interface or null in case of unknown type of update
      */
-    fun asUpdate(raw: String): Update {
+    fun asUpdate(raw: JsonElement): Update {
         return initedUpdate ?: when {
             edited_message != null -> EditMessageUpdate(updateId, edited_message)
             message != null -> MessageUpdate(updateId, message)
@@ -47,13 +48,16 @@ internal data class RawUpdate constructor(
 
             chosen_inline_result != null -> ChosenInlineResultUpdate(updateId, chosen_inline_result.asChosenInlineResult)
             inline_query != null -> InlineQueryUpdate(updateId, inline_query.asInlineQuery)
-            callback_query != null -> CallbackQueryUpdate(updateId, callback_query.asCallbackQuery)
+            callback_query != null -> CallbackQueryUpdate(
+                updateId,
+                callback_query.asCallbackQuery(raw.jsonObject["callback_query"].toString())
+            )
             shipping_query != null -> ShippingQueryUpdate(updateId, shipping_query)
             pre_checkout_query != null -> PreCheckoutQueryUpdate(updateId, pre_checkout_query)
             poll != null -> PollUpdate(updateId, poll)
             else -> UnknownUpdateType(
                 updateId,
-                raw
+                raw.toString()
             )
         }.also {
             initedUpdate = it
