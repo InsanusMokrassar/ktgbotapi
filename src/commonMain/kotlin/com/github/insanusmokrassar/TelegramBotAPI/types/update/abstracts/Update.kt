@@ -12,6 +12,11 @@ interface Update {
     val data: Any
 }
 
+data class UnknownUpdate(
+    override val updateId: UpdateIdentifier,
+    override val data: String
+) : Update
+
 internal object UpdateSerializerWithoutDeserialization : KSerializer<Update> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("UpdateSerializerWithoutDeserialization")
 
