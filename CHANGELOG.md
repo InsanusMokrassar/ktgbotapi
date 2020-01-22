@@ -77,6 +77,8 @@ while they can work incorrectly
     * `makeLinkToMessage` have two signatures - for direct creating using username and for abstract creating using
     chat id
 
+### 0.22.2 CashTag and independent updates handling
+
 ## 0.21.0 TelegramBotAPI 4.5
 
 * _**All `MessageEntity`'es now are replaced with `TextPart`**_
