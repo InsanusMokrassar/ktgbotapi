@@ -22,13 +22,21 @@ internal data class RawCallbackQuery(
     @SerialName("game_short_name")
     val gameShortName: String? = null
 ) {
-    val asCallbackQuery: CallbackQuery by lazy {
-        when {
+    private var inited: CallbackQuery? = null
+    fun asCallbackQuery(raw: String): CallbackQuery {
+        return inited ?: when {
             message != null && data != null -> MessageDataCallbackQuery(id, from, chatInstance, message, data)
             message != null && gameShortName != null -> MessageGameShortNameCallbackQuery(id, from, chatInstance, message, gameShortName)
             inlineMessageId != null && data != null -> InlineMessageIdDataCallbackQuery(id, from, chatInstance, inlineMessageId, data)
             inlineMessageId != null && gameShortName != null -> InlineMessageIdGameShortNameCallbackQuery(id, from, chatInstance, inlineMessageId, gameShortName)
-            else -> throw IllegalStateException("Strange answer from server, can't create callback query")
+            else -> UnknownCallbackQueryType(
+                id,
+                from,
+                chatInstance,
+                raw
+            )
+        }.also {
+            inited = it
         }
     }
 }

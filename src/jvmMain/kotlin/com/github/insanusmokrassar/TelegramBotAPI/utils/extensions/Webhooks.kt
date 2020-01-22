@@ -73,12 +73,12 @@ suspend fun RequestsExecutor.setWebhook(
         module {
             routing {
                 post(listenRoute) {
-                    val deserialized = call.receiveText()
-                    val update = Json.nonstrict.parse(
+                    val asJson = Json.nonstrict.parseJson(call.receiveText())
+                    val update = Json.nonstrict.fromJson(
                         RawUpdate.serializer(),
-                        deserialized
+                        asJson
                     )
-                    updatesChannel.send(update.asUpdate)
+                    updatesChannel.send(update.asUpdate(asJson))
                     call.respond("Ok")
                 }
             }

@@ -77,6 +77,17 @@ while they can work incorrectly
     * `makeLinkToMessage` have two signatures - for direct creating using username and for abstract creating using
     chat id
 
+### 0.22.2 CashTag and independent updates handling
+
+* `cashtag` entity type was added
+* Several `Unknown*` realizations was added:
+    * `UnknownUpdateType`
+    * `UnknownMessageType`
+    * `UnknownChatType`
+    * `UnknownCallbackQueryType`
+* `UpdatesFilter` now have one additional income callback: `unknownUpdateTypeCallback`
+    * `createSimpleUpdateFilter` can receive one more callback: `unknownCallback` (for `unknownUpdateTypeCallback`)
+
 ## 0.21.0 TelegramBotAPI 4.5
 
 * _**All `MessageEntity`'es now are replaced with `TextPart`**_

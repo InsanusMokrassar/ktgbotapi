@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdateType
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 
@@ -20,7 +21,8 @@ data class UpdatesFilter(
     private val callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
     private val shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     private val preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
-    private val pollUpdateCallback: UpdateReceiver<PollUpdate>? = null
+    private val pollUpdateCallback: UpdateReceiver<PollUpdate>? = null,
+    private val unknownUpdateTypeCallback: UpdateReceiver<UnknownUpdateType>? = null
 ) {
     val asUpdateReceiver: UpdateReceiver<Update> = this::invoke
     val allowedUpdates = listOfNotNull(
@@ -72,6 +74,7 @@ data class UpdatesFilter(
             is ShippingQueryUpdate -> shippingQueryCallback ?.invoke(update)
             is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(update)
             is PollUpdate -> pollUpdateCallback ?.invoke(update)
+            is UnknownUpdateType -> unknownUpdateTypeCallback ?.invoke(update)
         }
     }
 }
@@ -87,7 +90,8 @@ fun createSimpleUpdateFilter(
     callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
-    pollCallback: UpdateReceiver<PollUpdate>? = null
+    pollCallback: UpdateReceiver<PollUpdate>? = null,
+    unknownCallback: UpdateReceiver<UnknownUpdateType>? = null
 ): UpdatesFilter = UpdatesFilter(
     messageCallback = messageCallback,
     messageMediaGroupCallback = mediaGroupCallback,
@@ -102,5 +106,6 @@ fun createSimpleUpdateFilter(
     callbackQueryCallback = callbackQueryCallback,
     shippingQueryCallback = shippingQueryCallback,
     preCheckoutQueryCallback = preCheckoutQueryCallback,
-    pollUpdateCallback = pollCallback
+    pollUpdateCallback = pollCallback,
+    unknownUpdateTypeCallback = unknownCallback
 )

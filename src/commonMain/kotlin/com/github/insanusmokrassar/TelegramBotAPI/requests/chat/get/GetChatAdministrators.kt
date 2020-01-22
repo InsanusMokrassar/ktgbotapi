@@ -3,7 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.get
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.AdministratorChatMember
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.AdministratorChatMemberSerializerWithoutDeserialization
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer

@@ -10,6 +10,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.games.RawGame
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.UnknownMessageType
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.*
@@ -184,91 +185,99 @@ internal data class RawMessage(
 
 
     val asMessage: Message by lazy {
-        chatEvent ?.let {
-            chatEvent ->
-            when (chat) {
-                is SupergroupChat -> SupergroupEventMessage(
-                    messageId,
-                    chat,
-                    chatEvent as? SupergroupEvent ?: throwWrongChatEvent(SupergroupEvent::class, chatEvent),
-                    date.asDate
-                )
-                is GroupChat -> GroupEventMessage(
-                    messageId,
-                    chat,
-                    chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
-                    date.asDate
-                )
-                is ChannelChat -> ChannelEventMessage(
-                    messageId,
-                    chat,
-                    chatEvent as? ChannelEvent ?: throwWrongChatEvent(ChannelEvent::class, chatEvent),
-                    date.asDate
-                )
-                else -> throw IllegalStateException("Expected one of the public chats, but was $chat (in extracting of chat event message)")
-            }
-        } ?: content ?.let {
-            content ->
-            media_group_id ?.let {
-                when (from) {
-                    null -> ChannelMediaGroupMessage(
+        try {
+            chatEvent?.let { chatEvent ->
+                when (chat) {
+                    is SupergroupChat -> SupergroupEventMessage(
                         messageId,
                         chat,
-                        date.asDate,
-                        it,
-                        when (content) {
-                            is PhotoContent -> content
-                            is VideoContent -> content
-                            else -> throw IllegalStateException("Unsupported content for media group")
-                        },
-                        edit_date ?.asDate,
-                        forwarded,
-                        reply_to_message ?.asMessage,
-                        reply_markup
+                        chatEvent as? SupergroupEvent ?: throwWrongChatEvent(SupergroupEvent::class, chatEvent),
+                        date.asDate
                     )
-                    else -> CommonMediaGroupMessage(
+                    is GroupChat -> GroupEventMessage(
                         messageId,
-                        from,
                         chat,
+                        chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
+                        date.asDate
+                    )
+                    is ChannelChat -> ChannelEventMessage(
+                        messageId,
+                        chat,
+                        chatEvent as? ChannelEvent ?: throwWrongChatEvent(ChannelEvent::class, chatEvent),
+                        date.asDate
+                    )
+                    else -> throw IllegalStateException("Expected one of the public chats, but was $chat (in extracting of chat event message)")
+                }
+            } ?: content?.let { content ->
+                media_group_id?.let {
+                    when (from) {
+                        null -> ChannelMediaGroupMessage(
+                            messageId,
+                            chat,
+                            date.asDate,
+                            it,
+                            when (content) {
+                                is PhotoContent -> content
+                                is VideoContent -> content
+                                else -> throw IllegalStateException("Unsupported content for media group")
+                            },
+                            edit_date?.asDate,
+                            forwarded,
+                            reply_to_message?.asMessage,
+                            reply_markup
+                        )
+                        else -> CommonMediaGroupMessage(
+                            messageId,
+                            from,
+                            chat,
+                            date.asDate,
+                            it,
+                            when (content) {
+                                is PhotoContent -> content
+                                is VideoContent -> content
+                                else -> throw IllegalStateException("Unsupported content for media group")
+                            },
+                            edit_date?.asDate,
+                            forwarded,
+                            reply_to_message?.asMessage,
+                            reply_markup
+                        )
+                    }
+                } ?: when (chat) {
+                    is ChannelChat -> ChannelMessage(
+                        messageId,
+                        chat,
+                        content,
                         date.asDate,
-                        it,
-                        when (content) {
-                            is PhotoContent -> content
-                            is VideoContent -> content
-                            else -> throw IllegalStateException("Unsupported content for media group")
-                        },
-                        edit_date ?.asDate,
+                        edit_date?.asDate,
                         forwarded,
-                        reply_to_message ?.asMessage,
-                        reply_markup
+                        reply_to_message?.asMessage,
+                        reply_markup,
+                        author_signature
+                    )
+                    else -> CommonMessageImpl(
+                        messageId,
+                        from
+                            ?: throw IllegalStateException("Was detected common message, but owner (sender) of the message was not found"),
+                        chat,
+                        content,
+                        date.asDate,
+                        edit_date?.asDate,
+                        forwarded,
+                        reply_to_message?.asMessage,
+                        reply_markup,
+                        paymentInfo
                     )
                 }
-            } ?: when (chat) {
-                is ChannelChat -> ChannelMessage(
-                    messageId,
-                    chat,
-                    content,
-                    date.asDate,
-                    edit_date ?.asDate,
-                    forwarded,
-                    reply_to_message ?.asMessage,
-                    reply_markup,
-                    author_signature
-                )
-                else -> CommonMessageImpl(
-                    messageId,
-                    from ?: throw IllegalStateException("Was detected common message, but owner (sender) of the message was not found"),
-                    chat,
-                    content,
-                    date.asDate,
-                    edit_date ?.asDate,
-                    forwarded,
-                    reply_to_message ?.asMessage,
-                    reply_markup,
-                    paymentInfo
-                )
-            }
-        } ?: throw IllegalStateException("Was not found supported type of data")
+            } ?: throw IllegalStateException("Was not found supported type of data")
+        } catch (e: Exception) {
+            UnknownMessageType(
+                messageId,
+                chat,
+                date.asDate,
+                e
+            )
+        }
     }
 
     private fun throwWrongChatEvent(expected: KClass<*>, but: ChatEvent): CommonEvent {
