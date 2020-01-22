@@ -79,6 +79,8 @@ while they can work incorrectly
 
 ### 0.22.2 CashTag and independent updates handling
 
+* `cashtag` entity type was added
+
 ## 0.21.0 TelegramBotAPI 4.5
 
 * _**All `MessageEntity`'es now are replaced with `TextPart`**_

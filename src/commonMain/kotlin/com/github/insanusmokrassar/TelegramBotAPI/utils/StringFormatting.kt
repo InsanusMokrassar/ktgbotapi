@@ -145,6 +145,11 @@ fun String.regularMarkdownV2(): String = escapeMarkdownV2Common()
 fun String.regularHtml(): String = toHtml()
 
 
+fun String.cashTagMarkdown(): String = toMarkdown()
+fun String.cashTagMarkdownV2(): String = escapeMarkdownV2Common()
+fun String.cashTagHtml(): String = toHtml()
+
+
 infix fun String.bold(parseMode: ParseMode): String = when (parseMode) {
     is HTML -> boldHTML()
     is Markdown -> boldMarkdown()
@@ -229,4 +234,10 @@ infix fun String.regular(parseMode: ParseMode): String = when (parseMode) {
     is HTML -> regularHtml()
     is Markdown -> regularMarkdown()
     is MarkdownV2 -> regularMarkdownV2()
+}
+
+infix fun String.cashtag(parseMode: ParseMode): String = when (parseMode) {
+    is HTML -> cashTagHtml()
+    is Markdown -> cashTagMarkdown()
+    is MarkdownV2 -> cashTagMarkdownV2()
 }

@@ -23,7 +23,7 @@ internal fun RawMessageEntity.asTextParts(source: String, subParts: List<TextPar
     return when (type) {
         "mention" -> MentionTextSource(sourceSubstring, shiftedSubParts)
         "hashtag" -> HashTagTextSource(sourceSubstring, shiftedSubParts)
-        "cashtag" -> TODO()
+        "cashtag" -> CashTagTextSource(sourceSubstring, shiftedSubParts)
         "bot_command" -> BotCommandTextSource(sourceSubstring, shiftedSubParts)
         "url" -> URLTextSource(sourceSubstring)
         "email" -> EMailTextSource(sourceSubstring, shiftedSubParts)
