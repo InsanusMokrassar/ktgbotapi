@@ -4,6 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElementSerializer
 
 interface Update {
     val updateId: UpdateIdentifier
@@ -24,6 +26,12 @@ internal object UpdateDeserializationStrategy : DeserializationStrategy<Update> 
     override fun patch(decoder: Decoder, old: Update): Update = throw UpdateNotSupportedException(descriptor.name)
 
     override fun deserialize(decoder: Decoder): Update {
-        return RawUpdate.serializer().deserialize(decoder).asUpdate
+        val asJson = JsonElementSerializer.deserialize(decoder)
+        return Json.nonstrict.fromJson(
+            RawUpdate.serializer(),
+            asJson
+        ).asUpdate(
+            asJson.toString()
+        )
     }
 }

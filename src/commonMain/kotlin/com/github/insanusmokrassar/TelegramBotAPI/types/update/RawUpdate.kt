@@ -33,8 +33,12 @@ internal data class RawUpdate constructor(
     private val pre_checkout_query: PreCheckoutQuery? = null,
     private val poll: Poll? = null
 ) {
-    val asUpdate: Update by lazy {
-        when {
+    private var initedUpdate: Update? = null
+    /**
+     * @return One of children of [Update] interface or null in case of unknown type of update
+     */
+    fun asUpdate(raw: String): Update {
+        return initedUpdate ?: when {
             edited_message != null -> EditMessageUpdate(updateId, edited_message)
             message != null -> MessageUpdate(updateId, message)
             edited_channel_post != null -> EditChannelPostUpdate(updateId, edited_channel_post)
@@ -46,7 +50,9 @@ internal data class RawUpdate constructor(
             shipping_query != null -> ShippingQueryUpdate(updateId, shipping_query)
             pre_checkout_query != null -> PreCheckoutQueryUpdate(updateId, pre_checkout_query)
             poll != null -> PollUpdate(updateId, poll)
-            else -> throw IllegalArgumentException("Unsupported type of update")
+            else -> UnknownUpdate(updateId, raw)
+        }.also {
+            initedUpdate = it
         }
     }
 }

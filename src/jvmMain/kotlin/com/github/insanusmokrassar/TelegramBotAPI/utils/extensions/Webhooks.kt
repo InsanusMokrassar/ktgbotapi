@@ -78,7 +78,7 @@ suspend fun RequestsExecutor.setWebhook(
                         RawUpdate.serializer(),
                         deserialized
                     )
-                    updatesChannel.send(update.asUpdate)
+                    updatesChannel.send(update.asUpdate(deserialized))
                     call.respond("Ok")
                 }
             }
