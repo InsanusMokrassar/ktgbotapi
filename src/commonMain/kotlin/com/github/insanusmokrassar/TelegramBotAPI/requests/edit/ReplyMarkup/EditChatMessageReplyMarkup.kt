@@ -4,9 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditCh
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditReplyMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import kotlinx.serialization.*
 

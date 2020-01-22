@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsourc
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.MultilevelTextSource
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.fullListOfSubSource
 
 class CashTagTextSource(
     source: String,

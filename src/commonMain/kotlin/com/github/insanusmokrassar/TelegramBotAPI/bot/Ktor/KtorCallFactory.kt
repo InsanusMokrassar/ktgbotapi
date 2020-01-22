@@ -2,7 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import io.ktor.client.HttpClient
-import io.ktor.client.call.HttpClientCall
 import io.ktor.client.statement.HttpStatement
 
 interface KtorCallFactory {

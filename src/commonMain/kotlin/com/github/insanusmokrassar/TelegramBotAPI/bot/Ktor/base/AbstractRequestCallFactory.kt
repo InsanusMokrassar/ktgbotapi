@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorCallFactory
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import io.ktor.client.HttpClient
-import io.ktor.client.call.HttpClientCall
 import io.ktor.client.request.*
 import io.ktor.client.statement.HttpStatement
 import io.ktor.http.ContentType

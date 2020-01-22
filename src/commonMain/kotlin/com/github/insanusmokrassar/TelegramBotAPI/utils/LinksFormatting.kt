@@ -3,7 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.UsernameChat
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedChat
 
 private const val internalLinkBeginning = "https://t.me"
 
