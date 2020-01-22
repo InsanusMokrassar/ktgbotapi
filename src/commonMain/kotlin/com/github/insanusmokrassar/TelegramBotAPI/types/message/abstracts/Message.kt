@@ -13,6 +13,13 @@ interface Message {
     val date: DateTime
 }
 
+data class UnknownMessageType(
+    override val messageId: MessageIdentifier,
+    override val chat: Chat,
+    override val date: DateTime,
+    val insideException: Exception
+) : Message
+
 internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : DeserializationStrategy<T> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName("TelegramBotAPIMessageSerializer")
 

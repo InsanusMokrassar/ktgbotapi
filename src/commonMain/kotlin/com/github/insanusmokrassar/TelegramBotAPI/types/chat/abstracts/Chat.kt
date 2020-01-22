@@ -8,3 +8,8 @@ import kotlinx.serialization.Serializable
 interface Chat {
     val id: ChatId
 }
+
+data class UnknownChatType(
+    override val id: ChatId,
+    val raw: String
+) : Chat

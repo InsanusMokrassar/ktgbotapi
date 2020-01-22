@@ -9,7 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Telegr
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdateType
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.updateIdField
 import kotlinx.serialization.SerialName
@@ -51,7 +51,7 @@ internal data class RawUpdate constructor(
             shipping_query != null -> ShippingQueryUpdate(updateId, shipping_query)
             pre_checkout_query != null -> PreCheckoutQueryUpdate(updateId, pre_checkout_query)
             poll != null -> PollUpdate(updateId, poll)
-            else -> UnknownUpdate(
+            else -> UnknownUpdateType(
                 updateId,
                 raw
             )

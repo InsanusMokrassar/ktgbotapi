@@ -12,7 +12,7 @@ interface Update {
     val data: Any
 }
 
-data class UnknownUpdate(
+data class UnknownUpdateType(
     override val updateId: UpdateIdentifier,
     override val data: String
 ) : Update

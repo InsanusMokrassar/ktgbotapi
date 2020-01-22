@@ -1,10 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.chat
 
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.UnknownChatType
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.extended.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.typeField
 import kotlinx.serialization.*
+import kotlinx.serialization.internal.LongSerializer
 import kotlinx.serialization.internal.StringDescriptor
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObjectSerializer
@@ -24,7 +26,10 @@ internal object PreviewChatSerializer : KSerializer<Chat> {
             "group" -> formatter.fromJson(GroupChatImpl.serializer(), decodedJson)
             "supergroup" -> formatter.fromJson(SupergroupChatImpl.serializer(), decodedJson)
             "channel" -> formatter.fromJson(ChannelChatImpl.serializer(), decodedJson)
-            else -> throw IllegalArgumentException("Unknown type of chat")
+            else -> UnknownChatType(
+                formatter.fromJson(LongSerializer, decodedJson.getPrimitive(chatIdField)).toChatId(),
+                decodedJson.toString()
+            )
         }
     }
 

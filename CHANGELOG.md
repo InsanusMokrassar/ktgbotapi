@@ -80,6 +80,10 @@ while they can work incorrectly
 ### 0.22.2 CashTag and independent updates handling
 
 * `cashtag` entity type was added
+* Several `Unknown*` realizations was added:
+    * `UnknownUpdateType`
+    * `UnknownMessageType`
+    * `UnknownChatType`
 * New type of updates was added: `UnknownUpdate`. It will be used in cases when type of update is unknown in system
 
 ## 0.21.0 TelegramBotAPI 4.5
