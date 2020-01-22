@@ -36,7 +36,7 @@ internal object UpdateDeserializationStrategy : DeserializationStrategy<Update> 
             RawUpdate.serializer(),
             asJson
         ).asUpdate(
-            asJson.toString()
+            asJson
         )
     }
 }
