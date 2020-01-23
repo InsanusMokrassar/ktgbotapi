@@ -6,6 +6,7 @@
     * `RegularPoll` type was added to represent polls with type `regular`
     * `QuizPoll` type was added to represent polls with type `quiz`
     * `UnknownPollType` type was added to represent polls which are unknown in current version
+* `AnonymousPollOption` was renamed to `SimplePollOption`
 * `SendPoll` was rewritten as sealed class
     * `SendRegularPoll` was created and represent `sendPoll` method with type `regular`
     * `SendQuizPoll` was created and represent `sendPoll` method with type `quiz`
