@@ -2,6 +2,11 @@
 
 ## 0.23.0 TelegramBotAPI 4.6
 
+* `Poll` now is sealed class
+    * `RegularPoll` type was added to represent polls with type `regular`
+    * `QuizPoll` type was added to represent polls with type `quiz`
+    * `UnknownPollType` type was added to represent polls which are unknown in current version
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
