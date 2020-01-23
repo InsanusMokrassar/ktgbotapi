@@ -60,8 +60,11 @@ data class QuizPoll(
     override val options: List<PollOption>,
     @SerialName(totalVoterCountField)
     override val votesCount: Int,
+    /**
+     * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
+     */
     @SerialName(correctOptionIdField)
-    val correctOptionId: Int,
+    val correctOptionId: Int? = null,
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
