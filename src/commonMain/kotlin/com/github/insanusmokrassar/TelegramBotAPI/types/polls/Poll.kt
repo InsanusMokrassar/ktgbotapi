@@ -11,7 +11,7 @@ sealed class Poll {
     abstract val question: String
     abstract val options: List<PollOption>
     abstract val votesCount: Int
-    abstract val closed: Boolean
+    abstract val isClosed: Boolean
     abstract val isAnonymous: Boolean
 }
 
@@ -26,7 +26,7 @@ data class UnknownPollType(
     @SerialName(totalVoterCountField)
     override val votesCount: Int,
     @SerialName(isClosedField)
-    override val closed: Boolean = false,
+    override val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
     val raw: String
@@ -43,7 +43,7 @@ data class RegularPoll(
     @SerialName(totalVoterCountField)
     override val votesCount: Int,
     @SerialName(isClosedField)
-    override val closed: Boolean = false,
+    override val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
     @SerialName(allowsMultipleAnswersField)
@@ -60,12 +60,12 @@ data class QuizPoll(
     override val options: List<PollOption>,
     @SerialName(totalVoterCountField)
     override val votesCount: Int,
-    @SerialName(isClosedField)
-    override val closed: Boolean = false,
-    @SerialName(isAnonymousField)
-    override val isAnonymous: Boolean = false,
     @SerialName(correctOptionIdField)
-    val correctOptionId: Boolean = false
+    val correctOptionId: Int,
+    @SerialName(isClosedField)
+    override val isClosed: Boolean = false,
+    @SerialName(isAnonymousField)
+    override val isAnonymous: Boolean = false
 ) : Poll()
 
 @Serializer(Poll::class)

@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.PollContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.polls.*
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
@@ -47,6 +48,47 @@ fun SendPoll(
     replyToMessageId = replyToMessageId,
     replyMarkup = replyMarkup
 )
+
+fun Poll.createRequest(
+    chatId: ChatIdentifier,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = when (this) {
+    is RegularPoll -> SendRegularPoll(
+        chatId,
+        question,
+        options.map { it.text },
+        isAnonymous,
+        isClosed,
+        allowMultipleAnswers,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+    is QuizPoll -> SendQuizPoll(
+        chatId,
+        question,
+        options.map { it.text },
+        correctOptionId,
+        isAnonymous,
+        isClosed,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+    is UnknownPollType -> SendRegularPoll(
+        chatId,
+        question,
+        options.map { it.text },
+        isAnonymous,
+        isClosed,
+        false,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+}
 
 sealed class SendPoll : SendMessageRequest<ContentMessage<PollContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<PollContent>> {

@@ -11,6 +11,7 @@
     * `SendQuizPoll` was created and represent `sendPoll` method with type `quiz`
 * `language` field in PreTextSource now correctly passed from telegram MessageEntities
 * `PollAnswer` type was added
+* `Poll#createRequest` extension was added
 
 ## 0.22.0
 
