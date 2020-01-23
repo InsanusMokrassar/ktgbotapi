@@ -9,10 +9,11 @@
 * `SendPoll` was rewritten as sealed class
     * `SendRegularPoll` was created and represent `sendPoll` method with type `regular`
     * `SendQuizPoll` was created and represent `sendPoll` method with type `quiz`
-* `language` field in PreTextSource now correctly passed from telegram MessageEntities
-* `PollAnswer` type was added
 * `Poll#createRequest` extension was added
 * `PollAnswerUpdate` type of update was added
+    * `PollAnswer` type was added
+    * `UpdatesFilter` now support work with `PollAnswerUpdate`
+* `language` field in PreTextSource now correctly passed from telegram MessageEntities
 
 ## 0.22.0
 
