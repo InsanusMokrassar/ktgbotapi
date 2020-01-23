@@ -13,7 +13,8 @@ internal data class RawMessageEntity(
     val offset: Int,
     val length: Int,
     val url: String? = null,
-    val user: User? = null
+    val user: User? = null,
+    val language: String? = null
 )
 
 internal fun RawMessageEntity.asTextParts(source: String, subParts: List<TextPart>): List<TextPart> {
@@ -31,7 +32,7 @@ internal fun RawMessageEntity.asTextParts(source: String, subParts: List<TextPar
         "bold" -> BoldTextSource(sourceSubstring, shiftedSubParts)
         "italic" -> ItalicTextSource(sourceSubstring, shiftedSubParts)
         "code" -> CodeTextSource(sourceSubstring)
-        "pre" -> PreTextSource(sourceSubstring)
+        "pre" -> PreTextSource(sourceSubstring, language)
         "text_link" -> TextLinkTextSource(sourceSubstring, url ?: throw IllegalStateException("URL must not be null for text link"))
         "text_mention" -> TextMentionTextSource(sourceSubstring, user ?: throw IllegalStateException("User must not be null for text mention"), shiftedSubParts)
         "underline" -> UnderlineTextSource(sourceSubstring, shiftedSubParts)

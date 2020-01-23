@@ -10,6 +10,7 @@ const val UPDATE_CALLBACK_QUERY = "callback_query"
 const val UPDATE_SHIPPING_QUERY = "shipping_query"
 const val UPDATE_PRE_CHECKOUT_QUERY = "pre_checkout_query"
 const val UPDATE_POLL = "poll"
+const val UPDATE_POLL_ANSWER = "poll_answer"
 
 val ALL_UPDATES_LIST = listOf(
     UPDATE_MESSAGE,
@@ -21,5 +22,6 @@ val ALL_UPDATES_LIST = listOf(
     UPDATE_CALLBACK_QUERY,
     UPDATE_SHIPPING_QUERY,
     UPDATE_PRE_CHECKOUT_QUERY,
-    UPDATE_POLL
+    UPDATE_POLL,
+    UPDATE_POLL_ANSWER
 )

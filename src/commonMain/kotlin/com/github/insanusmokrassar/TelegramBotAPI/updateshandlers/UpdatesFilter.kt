@@ -22,6 +22,7 @@ data class UpdatesFilter(
     private val shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     private val preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     private val pollUpdateCallback: UpdateReceiver<PollUpdate>? = null,
+    private val pollAnswerUpdateCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     private val unknownUpdateTypeCallback: UpdateReceiver<UnknownUpdateType>? = null
 ) {
     val asUpdateReceiver: UpdateReceiver<Update> = this::invoke
@@ -35,7 +36,8 @@ data class UpdatesFilter(
         callbackQueryCallback ?.let { UPDATE_CALLBACK_QUERY },
         shippingQueryCallback ?.let { UPDATE_SHIPPING_QUERY },
         preCheckoutQueryCallback ?.let { UPDATE_PRE_CHECKOUT_QUERY },
-        pollUpdateCallback ?.let { UPDATE_POLL }
+        pollUpdateCallback ?.let { UPDATE_POLL },
+        pollAnswerUpdateCallback ?.let { UPDATE_POLL_ANSWER }
     )
 
     suspend fun invoke(update: Update) {
@@ -74,6 +76,7 @@ data class UpdatesFilter(
             is ShippingQueryUpdate -> shippingQueryCallback ?.invoke(update)
             is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(update)
             is PollUpdate -> pollUpdateCallback ?.invoke(update)
+            is PollAnswerUpdate -> pollAnswerUpdateCallback ?.invoke(update)
             is UnknownUpdateType -> unknownUpdateTypeCallback ?.invoke(update)
         }
     }
@@ -91,6 +94,7 @@ fun createSimpleUpdateFilter(
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
+    pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     unknownCallback: UpdateReceiver<UnknownUpdateType>? = null
 ): UpdatesFilter = UpdatesFilter(
     messageCallback = messageCallback,
@@ -107,5 +111,6 @@ fun createSimpleUpdateFilter(
     shippingQueryCallback = shippingQueryCallback,
     preCheckoutQueryCallback = preCheckoutQueryCallback,
     pollUpdateCallback = pollCallback,
+    pollAnswerUpdateCallback = pollAnswerCallback,
     unknownUpdateTypeCallback = unknownCallback
 )

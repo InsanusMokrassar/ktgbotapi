@@ -10,7 +10,7 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 
 ## Compatibility
 
-This version compatible with [31th of December 2019 update of TelegramBotAPI (version 4.5)](https://core.telegram.org/bots/api#december-31-2019).
+This version compatible with [23th of January 2020 update of TelegramBotAPI (version 4.6)](https://core.telegram.org/bots/api#january-23-2020).
 There is Telegram Passport API exception of implemented functionality, which was presented in
 [August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#august-27-2018) update. It will be implemented
 as soon as possible. All APIs that are not included are presented
@@ -96,10 +96,9 @@ val requestsExecutor: RequestsExecutor = ...
 requestsExecutor.execute(GetMe())
 ``` 
 
-The result type of [GetMe](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt) request is
-[User](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User.kt). In fact, in this result must contain
-`isBot` equal to `true` always.
-
+The result type of [GetMe](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt)
+request is
+[ExtendedBot](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User.kt).
 
 ### RequestsExecutor
 

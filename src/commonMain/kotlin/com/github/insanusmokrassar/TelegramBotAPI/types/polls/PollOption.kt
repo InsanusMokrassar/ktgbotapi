@@ -12,7 +12,7 @@ sealed class PollOption {
 }
 
 @Serializable
-data class AnonymousPollOption (
+data class SimplePollOption (
     @SerialName(textField)
     override val text: String,
     @SerialName(votesCountField)
@@ -22,13 +22,13 @@ data class AnonymousPollOption (
 internal object PollOptionSerializer : KSerializer<PollOption> {
     override val descriptor: SerialDescriptor = StringDescriptor.withName(PollOption::class.simpleName ?: "PollOption")
 
-    override fun deserialize(decoder: Decoder): PollOption = AnonymousPollOption.serializer().deserialize(
+    override fun deserialize(decoder: Decoder): PollOption = SimplePollOption.serializer().deserialize(
         decoder
     )
 
     override fun serialize(encoder: Encoder, obj: PollOption) {
         when (obj) {
-            is AnonymousPollOption -> AnonymousPollOption.serializer().serialize(
+            is SimplePollOption -> SimplePollOption.serializer().serialize(
                 encoder,
                 obj
             )

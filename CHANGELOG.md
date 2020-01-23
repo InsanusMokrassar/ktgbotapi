@@ -1,5 +1,40 @@
 # TelegramBotAPI changelog
 
+## 0.23.0 TelegramBotAPI 4.6
+
+* `Poll` now is sealed class
+    * `RegularPoll` type was added to represent polls with type `regular`
+    * `QuizPoll` type was added to represent polls with type `quiz`
+    * `UnknownPollType` type was added to represent polls which are unknown in current version
+* `AnonymousPollOption` was renamed to `SimplePollOption`
+* `SendPoll` was rewritten as sealed class
+    * `SendRegularPoll` was created and represent `sendPoll` method with type `regular`
+    * `SendQuizPoll` was created and represent `sendPoll` method with type `quiz`
+* `Poll#createRequest` extension was added
+* `PollAnswerUpdate` type of update was added
+    * `PollAnswer` type was added
+    * `UpdatesFilter` now support work with `PollAnswerUpdate`
+* `language` field in PreTextSource now correctly passed from telegram MessageEntities
+* `KeyboardButton` now is sealed class
+    * Fixed problem of incorrect representation of this class (any type of request can be created separately)
+    * Added new types of `KeyboardButton`:
+        * `UnknownKeyboardButton`
+        * `SimpleKeyboardButton`
+        * `RequestContactKeyboardButton`
+        * `RequestLocationKeyboardButton`
+        * `RequestPollKeyboardButton`
+    * Added new type `KeyboardButtonPollType`:
+        * `UnknownKeyboardButtonPollType`
+        * `RegularKeyboardButtonPollType`
+        * `QuizKeyboardButtonPollType`
+* `User` now is sealed class
+    * `CommonUser` was added as representation of default `User`
+    * `Bot` was added as representation of bot user (it is sealed class)
+        * `ExtendedBot` with additional info
+        * `CommonBot` with simple info
+    * `GetMe` now return `ExtendedBot` object
+    * Now extension `javaLocale` is extension for `CommonUser`
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
