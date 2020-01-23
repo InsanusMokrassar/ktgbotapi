@@ -41,7 +41,7 @@ data class RequestLocationKeyboardButton(
 data class RequestPollKeyboardButton(
     override val text: String,
     @SerialName(requestPollField)
-    val requestPoll: KeyboardButtonPollType = RegularKeyboardButtonPollType
+    val requestPoll: KeyboardButtonPollType
 ) : KeyboardButton()
 
 @Serializer(KeyboardButton::class)
