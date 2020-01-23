@@ -26,6 +26,10 @@
         * `UnknownKeyboardButtonPollType`
         * `RegularKeyboardButtonPollType`
         * `QuizKeyboardButtonPollType`
+* `User` now is sealed class
+    * `CommonUser` was added as representation of default `User`
+    * `Bot` was added as representation of bot user
+    * `GetMe` now return `Bot` object
 
 ## 0.22.0
 
