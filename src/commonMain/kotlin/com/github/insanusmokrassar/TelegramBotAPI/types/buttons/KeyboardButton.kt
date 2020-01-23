@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.buttons
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
+import kotlinx.serialization.internal.StringDescriptor
 import kotlinx.serialization.json.*
 
 @Serializable(KeyboardButtonSerializer::class)
@@ -50,9 +51,6 @@ internal object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
 
         return when {
             asJson is JsonPrimitive -> SimpleKeyboardButton(asJson.content)
-            asJson is JsonObject && asJson.getPrimitiveOrNull(requestContactField) != null -> RequestContactKeyboardButton(
-                asJson.getPrimitive(textField).content
-            )
             asJson is JsonObject && asJson.getPrimitiveOrNull(requestContactField) != null -> RequestContactKeyboardButton(
                 asJson.getPrimitive(textField).content
             )

@@ -39,11 +39,13 @@ internal object KeyboardButtonPollTypeSerializer : KSerializer<KeyboardButtonPol
         }
     }
 
+    /**
+     * Crutch due to the fact that direct serialization of objects currently does not work perfectly
+     */
     override fun serialize(encoder: Encoder, obj: KeyboardButtonPollType) {
-        when (obj) {
-            RegularKeyboardButtonPollType -> RegularKeyboardButtonPollType.serializer().serialize(encoder, RegularKeyboardButtonPollType)
-            QuizKeyboardButtonPollType -> QuizKeyboardButtonPollType.serializer().serialize(encoder, QuizKeyboardButtonPollType)
-            is UnknownKeyboardButtonPollType -> UnknownKeyboardButtonPollType.serializer().serialize(encoder, obj)
-        }
+        UnknownKeyboardButtonPollType.serializer().serialize(
+            encoder,
+            (obj as? UnknownKeyboardButtonPollType) ?: UnknownKeyboardButtonPollType(obj.type)
+        )
     }
 }
