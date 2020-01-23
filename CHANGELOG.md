@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.23.0 TelegramBotAPI 4.6
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
