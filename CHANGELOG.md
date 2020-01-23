@@ -12,6 +12,7 @@
 * `language` field in PreTextSource now correctly passed from telegram MessageEntities
 * `PollAnswer` type was added
 * `Poll#createRequest` extension was added
+* `PollAnswerUpdate` type of update was added
 
 ## 0.22.0
 

@@ -9,6 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Telegr
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
+import com.github.insanusmokrassar.TelegramBotAPI.types.polls.PollAnswer
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdateType
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.updateIdField
@@ -33,7 +34,8 @@ internal data class RawUpdate constructor(
     private val callback_query: RawCallbackQuery? = null,
     private val shipping_query: ShippingQuery? = null,
     private val pre_checkout_query: PreCheckoutQuery? = null,
-    private val poll: Poll? = null
+    private val poll: Poll? = null,
+    private val poll_answer: PollAnswer? = null
 ) {
     private var initedUpdate: Update? = null
     /**
@@ -55,6 +57,7 @@ internal data class RawUpdate constructor(
             shipping_query != null -> ShippingQueryUpdate(updateId, shipping_query)
             pre_checkout_query != null -> PreCheckoutQueryUpdate(updateId, pre_checkout_query)
             poll != null -> PollUpdate(updateId, poll)
+            poll_answer != null -> PollAnswerUpdate(updateId, poll_answer)
             else -> UnknownUpdateType(
                 updateId,
                 raw.toString()
