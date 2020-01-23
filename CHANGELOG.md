@@ -30,6 +30,7 @@
     * `CommonUser` was added as representation of default `User`
     * `Bot` was added as representation of bot user
     * `GetMe` now return `Bot` object
+    * Now extension `javaLocale` is extension for `CommonUser`
 
 ## 0.22.0
 
