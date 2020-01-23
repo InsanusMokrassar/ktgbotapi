@@ -14,6 +14,18 @@
     * `PollAnswer` type was added
     * `UpdatesFilter` now support work with `PollAnswerUpdate`
 * `language` field in PreTextSource now correctly passed from telegram MessageEntities
+* `KeyboardButton` now is sealed class
+    * Fixed problem of incorrect representation of this class (any type of request can be created separately)
+    * Added new types of `KeyboardButton`:
+        * `UnknownKeyboardButton`
+        * `SimpleKeyboardButton`
+        * `RequestContactKeyboardButton`
+        * `RequestLocationKeyboardButton`
+        * `RequestPollKeyboardButton`
+    * Added new type `KeyboardButtonPollType`:
+        * `UnknownKeyboardButtonPollType`
+        * `RegularKeyboardButtonPollType`
+        * `QuizKeyboardButtonPollType`
 
 ## 0.22.0
 

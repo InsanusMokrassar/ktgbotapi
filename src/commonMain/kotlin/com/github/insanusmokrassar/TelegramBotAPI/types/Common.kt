@@ -105,6 +105,10 @@ const val pinnedMessageField = "pinned_message"
 const val customTitleField = "custom_title"
 const val optionIdsField = "option_ids"
 
+const val requestContactField = "request_contact"
+const val requestLocationField = "request_location"
+const val requestPollField = "request_poll"
+
 
 const val requestWriteAccessField = "request_write_access"
 
