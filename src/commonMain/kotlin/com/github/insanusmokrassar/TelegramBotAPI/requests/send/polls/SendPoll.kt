@@ -49,6 +49,10 @@ fun SendPoll(
     replyMarkup = replyMarkup
 )
 
+/**
+ * @return [SendPoll] in case when all is right. It can return [SendRegularPoll] for [QuizPoll] in case if
+ * [QuizPoll.correctOptionId] equal to null
+ */
 fun Poll.createRequest(
     chatId: ChatIdentifier,
     disableNotification: Boolean = false,
@@ -66,13 +70,25 @@ fun Poll.createRequest(
         replyToMessageId,
         replyMarkup
     )
-    is QuizPoll -> SendQuizPoll(
+    is QuizPoll -> correctOptionId ?.let { correctOptionId ->
+        SendQuizPoll(
+            chatId,
+            question,
+            options.map { it.text },
+            correctOptionId,
+            isAnonymous,
+            isClosed,
+            disableNotification,
+            replyToMessageId,
+            replyMarkup
+        )
+    } ?: SendRegularPoll(
         chatId,
         question,
         options.map { it.text },
-        correctOptionId,
         isAnonymous,
         isClosed,
+        false,
         disableNotification,
         replyToMessageId,
         replyMarkup
