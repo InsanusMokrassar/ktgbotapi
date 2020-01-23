@@ -43,6 +43,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
+    pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     timeoutMillis: Long = 30 * 1000,
     scope: CoroutineScope = GlobalScope
 ): UpdatesPoller {
@@ -60,7 +61,8 @@ fun RequestsExecutor.startGettingOfUpdates(
         callbackQueryCallback,
         shippingQueryCallback,
         preCheckoutQueryCallback,
-        pollCallback
+        pollCallback,
+        pollAnswerCallback
     )
     return startGettingOfUpdates(
         timeoutMillis,
@@ -82,6 +84,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
+    pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     timeoutMillis: Long = 30 * 1000,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ): UpdatesPoller = startGettingOfUpdates(
@@ -99,6 +102,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     shippingQueryCallback = shippingQueryCallback,
     preCheckoutQueryCallback = preCheckoutQueryCallback,
     pollCallback = pollCallback,
+    pollAnswerCallback = pollAnswerCallback,
     timeoutMillis = timeoutMillis,
     scope = scope
 )
