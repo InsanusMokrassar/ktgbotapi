@@ -10,6 +10,7 @@ sealed class Poll {
     abstract val id: PollIdentifier
     abstract val question: String
     abstract val options: List<PollOption>
+    abstract val votesCount: Int
     abstract val closed: Boolean
     abstract val isAnonymous: Boolean
 }
@@ -22,6 +23,8 @@ data class UnknownPollType(
     override val question: String,
     @SerialName(optionsField)
     override val options: List<PollOption>,
+    @SerialName(totalVoterCountField)
+    override val votesCount: Int,
     @SerialName(isClosedField)
     override val closed: Boolean = false,
     @SerialName(isAnonymousField)
@@ -37,6 +40,8 @@ data class RegularPoll(
     override val question: String,
     @SerialName(optionsField)
     override val options: List<PollOption>,
+    @SerialName(totalVoterCountField)
+    override val votesCount: Int,
     @SerialName(isClosedField)
     override val closed: Boolean = false,
     @SerialName(isAnonymousField)
@@ -53,6 +58,8 @@ data class QuizPoll(
     override val question: String,
     @SerialName(optionsField)
     override val options: List<PollOption>,
+    @SerialName(totalVoterCountField)
+    override val votesCount: Int,
     @SerialName(isClosedField)
     override val closed: Boolean = false,
     @SerialName(isAnonymousField)
@@ -83,6 +90,7 @@ internal object PollSerializer : KSerializer<Poll> {
                     pollOptionsSerializer,
                     asJson.getArray(optionsField)
                 ),
+                asJson.getPrimitive(totalVoterCountField).int,
                 asJson.getPrimitiveOrNull(isClosedField) ?.booleanOrNull ?: false,
                 asJson.getPrimitiveOrNull(isAnonymousField) ?.booleanOrNull ?: true,
                 asJson.toString()
