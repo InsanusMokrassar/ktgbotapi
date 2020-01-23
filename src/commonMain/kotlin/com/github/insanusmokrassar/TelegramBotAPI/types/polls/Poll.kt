@@ -16,7 +16,7 @@ sealed class Poll {
 }
 
 @Serializable
-data class UnknownPollType(
+data class UnknownPollType internal constructor(
     @SerialName(idField)
     override val id: PollIdentifier,
     @SerialName(questionField)
