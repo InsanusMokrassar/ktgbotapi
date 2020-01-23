@@ -21,8 +21,25 @@ data class CommonUser(
     val languageCode: String? = null
 ) : User()
 
+@Serializable(UserSerializer::class)
+sealed class Bot : User()
+
 @Serializable
-data class Bot(
+data class CommonBot(
+    override val id: ChatId,
+    @SerialName(firstNameField)
+    override val firstName: String,
+    @SerialName(lastNameField)
+    override val lastName: String = "",
+    @SerialName(usernameField)
+    override val username: Username? = null
+) : Bot() {
+    @SerialName(isBotField)
+    private val isBot = true
+}
+
+@Serializable
+data class ExtendedBot(
     override val id: ChatId,
     @SerialName(firstNameField)
     override val firstName: String,
@@ -36,10 +53,11 @@ data class Bot(
     val canReadAllGroupMessages: Boolean = false,
     @SerialName(supportInlineQueriesField)
     val supportsInlineQueries: Boolean = false
-) : User() {
+) : Bot() {
     @SerialName(isBotField)
     private val isBot = true
 }
+
 
 @Serializer(User::class)
 internal object UserSerializer : KSerializer<User> {
@@ -51,17 +69,30 @@ internal object UserSerializer : KSerializer<User> {
                 CommonUser.serializer(),
                 asJson
             )
-            else -> Json.nonstrict.fromJson(
-                Bot.serializer(),
-                asJson
-            )
+            else -> {
+                if ((asJson.get(canJoinGroupsField)
+                    ?: asJson.get(canReadAllGroupMessagesField)
+                    ?: asJson.get(supportInlineQueriesField)) != null
+                ) {
+                    Json.nonstrict.fromJson(
+                        ExtendedBot.serializer(),
+                        asJson
+                    )
+                } else {
+                    Json.nonstrict.fromJson(
+                        CommonBot.serializer(),
+                        asJson
+                    )
+                }
+            }
         }
     }
 
     override fun serialize(encoder: Encoder, obj: User) {
         when (obj) {
             is CommonUser -> CommonUser.serializer().serialize(encoder, obj)
-            is Bot -> Bot.serializer().serialize(encoder, obj)
+            is CommonBot -> CommonBot.serializer().serialize(encoder, obj)
+            is ExtendedBot -> ExtendedBot.serializer().serialize(encoder, obj)
         }
     }
 }
