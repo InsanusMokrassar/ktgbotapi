@@ -10,6 +10,7 @@
     * `SendRegularPoll` was created and represent `sendPoll` method with type `regular`
     * `SendQuizPoll` was created and represent `sendPoll` method with type `quiz`
 * `language` field in PreTextSource now correctly passed from telegram MessageEntities
+* `PollAnswer` type was added
 
 ## 0.22.0
 
