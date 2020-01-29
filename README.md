@@ -12,7 +12,7 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 
 This version compatible with [23th of January 2020 update of TelegramBotAPI (version 4.6)](https://core.telegram.org/bots/api#january-23-2020).
 There is Telegram Passport API exception of implemented functionality, which was presented in
-[August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api#august-27-2018) update. It will be implemented
+[August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api-changelog#august-27-2018) update. It will be implemented
 as soon as possible. All APIs that are not included are presented
 [wiki](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Not-included-API).
 
