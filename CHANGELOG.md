@@ -35,6 +35,8 @@
     * `GetMe` now return `ExtendedBot` object
     * Now extension `javaLocale` is extension for `CommonUser`
 
+### 0.23.1
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
