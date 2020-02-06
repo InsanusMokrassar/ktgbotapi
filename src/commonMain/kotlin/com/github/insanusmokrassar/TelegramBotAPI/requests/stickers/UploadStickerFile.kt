@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.stickers
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
@@ -27,3 +28,18 @@ data class UploadStickerFile(
     override val resultDeserializer: DeserializationStrategy<File>
         get() = File.serializer()
 }
+
+
+suspend fun RequestsExecutor.uploadStickerFile(
+    userId: UserId,
+    sticker: MultipartFile
+) = execute(
+    UploadStickerFile(userId, sticker)
+)
+
+suspend fun RequestsExecutor.uploadStickerFile(
+    user: CommonUser,
+    sticker: MultipartFile
+) = execute(
+    UploadStickerFile(user.id, sticker)
+)
