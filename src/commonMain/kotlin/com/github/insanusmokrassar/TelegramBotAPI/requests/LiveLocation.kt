@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendLocation
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.LocationContent
 import com.soywiz.klock.DateTime
@@ -98,3 +99,37 @@ suspend fun RequestsExecutor.startLiveLocation(
         locationMessage
     )
 }
+
+suspend fun RequestsExecutor.startLiveLocation(
+    scope: CoroutineScope,
+    chat: Chat,
+    latitude: Double,
+    longitude: Double,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+): LiveLocation = startLiveLocation(
+    scope, chat.id, latitude, longitude, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.startLiveLocation(
+    scope: CoroutineScope,
+    chatId: ChatId,
+    location: Location,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+): LiveLocation = startLiveLocation(
+    scope, chatId, location.latitude, location.longitude, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.startLiveLocation(
+    scope: CoroutineScope,
+    chat: Chat,
+    location: Location,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+): LiveLocation = startLiveLocation(
+    scope, chat.id, location.latitude, location.longitude, disableNotification, replyToMessageId, replyMarkup
+)

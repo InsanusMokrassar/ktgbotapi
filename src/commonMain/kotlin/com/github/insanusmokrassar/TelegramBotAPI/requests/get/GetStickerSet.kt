@@ -27,6 +27,6 @@ suspend fun RequestsExecutor.getStickerSet(
 
 suspend fun RequestsExecutor.getStickerSet(
     sticker: Sticker
-) = execute(
-    GetStickerSet(sticker.stickerSetName ?: error("Sticker must contains stickerSetName to be correctly used in getStickerSet method"))
+) = getStickerSet(
+    sticker.stickerSetName ?: error("Sticker must contains stickerSetName to be correctly used in getStickerSet method")
 )
