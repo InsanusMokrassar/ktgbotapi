@@ -8,6 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.Multi
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.StickerContent
@@ -105,4 +106,22 @@ suspend fun RequestsExecutor.sendSticker(
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendSticker(chat.id, sticker, disableNotification, replyToMessageId, replyMarkup)
+
+suspend fun RequestsExecutor.sendSticker(
+    chatId: ChatIdentifier,
+    sticker: Sticker,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendSticker(
+    chatId, sticker.fileId, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendSticker(
+    chat: Chat,
+    sticker: Sticker,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendSticker(chat.id, sticker.fileId, disableNotification, replyToMessageId, replyMarkup)
 
