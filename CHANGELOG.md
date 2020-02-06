@@ -42,6 +42,7 @@
     * Ktor `1.3.0` -> `1.3.1`
 * Now it is possible to get updates by polling with custom executor engine
 * `CommonMultipartFileRequest` now is internal
+* Added `LiveLocation` class for more useful tracking live locations
 
 ## 0.22.0
 
