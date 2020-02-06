@@ -1,9 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.caption.EditInlineMessageCaption
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
+import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import kotlinx.serialization.*
 
@@ -27,3 +30,9 @@ data class EditInlineMessageMedia(
 
     override fun method(): String = editMessageMediaMethod
 }
+
+suspend fun RequestsExecutor.editMessageCaption(
+    inlineMessageId: InlineMessageIdentifier,
+    media: InputMedia,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = execute(EditInlineMessageMedia(inlineMessageId, media, replyMarkup))
