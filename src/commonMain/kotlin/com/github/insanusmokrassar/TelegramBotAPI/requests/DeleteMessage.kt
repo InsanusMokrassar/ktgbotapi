@@ -37,11 +37,9 @@ suspend fun RequestsExecutor.deleteMessage(
 ) = deleteMessage(chat.id, messageId)
 
 suspend fun RequestsExecutor.deleteMessage(
-    chatId: ChatId,
     message: Message
-) = deleteMessage(chatId, message.messageId)
+) = deleteMessage(message.chat, message.messageId)
 
-suspend fun RequestsExecutor.deleteMessage(
-    chat: Chat,
-    message: Message
-) = deleteMessage(chat.id, message.messageId)
+suspend fun Message.delete(
+    requestsExecutor: RequestsExecutor
+) = requestsExecutor.deleteMessage(this)
