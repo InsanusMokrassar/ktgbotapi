@@ -1,7 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.stickers
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
 import com.github.insanusmokrassar.TelegramBotAPI.types.positionField
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickerField
 import kotlinx.serialization.*
@@ -26,3 +28,21 @@ data class SetStickerPositionInSet(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.setStickerPositionInSet(
+    sticker: FileId,
+    position: Int
+) = execute(
+    SetStickerPositionInSet(
+        sticker,
+        position
+    )
+)
+
+suspend fun RequestsExecutor.setStickerPositionInSet(
+    sticker: Sticker,
+    position: Int
+) = setStickerPositionInSet(
+    sticker.fileId,
+    position
+)
