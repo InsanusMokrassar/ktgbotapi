@@ -41,6 +41,7 @@
     * Klock `1.8.6` -> `1.8.7`
     * Ktor `1.3.0` -> `1.3.1`
 * Now it is possible to get updates by polling with custom executor engine
+* `CommonMultipartFileRequest` now is internal
 
 ## 0.22.0
 
