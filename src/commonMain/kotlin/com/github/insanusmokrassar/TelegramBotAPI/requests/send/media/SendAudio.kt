@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Performerable
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
@@ -8,6 +9,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.AudioFile
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.AudioContent
@@ -113,4 +116,139 @@ data class SendAudioFiles internal constructor(
 ) : Files by mapOfNotNull(
     audioField to audio,
     thumbField to thumb
+)
+
+suspend fun RequestsExecutor.sendAudio(
+    chatId: ChatIdentifier,
+    audio: FileId,
+    thumb: FileId? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendAudioData(
+        chatId,
+        audio.fileId,
+        thumb ?.fileId,
+        text,
+        parseMode,
+        duration,
+        performer,
+        title,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+)
+
+suspend fun RequestsExecutor.sendAudio(
+    chatId: ChatIdentifier,
+    audio: AudioFile,
+    thumb: PhotoSize? = audio.thumb,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    title: String? = audio.title,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendAudio(
+    chatId, audio.fileId, thumb ?.fileId, text, parseMode, audio.duration, audio.performer, title, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendAudio(
+    chatId: ChatIdentifier,
+    audio: MultipartFile,
+    thumb: FileId? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    MultipartRequestImpl(
+        SendAudioData(
+            chatId, null, thumb ?.fileId, text, parseMode, duration, performer, title, disableNotification, replyToMessageId, replyMarkup
+        ),
+        SendAudioFiles(audio)
+    )
+)
+
+suspend fun RequestsExecutor.sendAudio(
+    chatId: ChatIdentifier,
+    audio: MultipartFile,
+    thumb: MultipartFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    MultipartRequestImpl(
+        SendAudioData(
+            chatId, null, null, text, parseMode, duration, performer, title, disableNotification, replyToMessageId, replyMarkup
+        ),
+        SendAudioFiles(audio, thumb)
+    )
+)
+
+suspend fun RequestsExecutor.sendAudio(
+    chatId: ChatIdentifier,
+    audio: FileId,
+    thumb: MultipartFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    MultipartRequestImpl(
+        SendAudioData(
+            chatId, audio.fileId, null, text, parseMode, duration, performer, title, disableNotification, replyToMessageId, replyMarkup
+        ),
+        SendAudioFiles(null, thumb)
+    )
+)
+
+suspend fun RequestsExecutor.sendAudio(
+    chatId: ChatIdentifier,
+    audio: MultipartFile,
+    thumb: PhotoSize? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendAudio(
+    chatId, audio, thumb ?.fileId , text, parseMode, duration, performer, title, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendAudio(
+    chatId: ChatIdentifier,
+    audio: AudioFile,
+    thumb: MultipartFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    title: String? = audio.title,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendAudio(
+    chatId, audio.fileId, thumb, text, parseMode, audio.duration, audio.performer, title, disableNotification, replyToMessageId, replyMarkup
 )
