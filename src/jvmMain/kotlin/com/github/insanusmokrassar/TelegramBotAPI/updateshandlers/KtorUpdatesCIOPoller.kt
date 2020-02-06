@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.engine.cio.endpoint
 import io.ktor.util.KtorExperimentalAPI
@@ -31,6 +32,38 @@ fun KtorUpdatesPoller(
                 }
             }
         )
+    )
+
+    return KtorUpdatesPoller(
+        executor,
+        timeoutSeconds,
+        oneTimeUpdatesLimit,
+        allowedUpdates,
+        exceptionsHandler,
+        updatesReceiver
+    )
+}
+
+@KtorExperimentalAPI
+fun KtorUpdatesPoller(
+    telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
+    timeoutSeconds: Int? = null,
+    oneTimeUpdatesLimit: Int? = null,
+    allowedUpdates: List<String> = ALL_UPDATES_LIST,
+    exceptionsHandler: (Exception) -> Boolean = { true },
+    clientEngine: HttpClientEngine = CIO.create {
+        endpoint {
+            timeoutSeconds ?.times(1000) ?.also { timeOutMillis ->
+                keepAliveTime = timeOutMillis.toLong()
+            }
+            connectTimeout = 1000
+        }
+    },
+    updatesReceiver: UpdateReceiver<Update>
+): KtorUpdatesPoller {
+    val executor = KtorRequestsExecutor(
+        telegramAPIUrlsKeeper,
+        HttpClient(clientEngine)
     )
 
     return KtorUpdatesPoller(
