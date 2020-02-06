@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.games
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.InlineMessageAction
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.abstracts.SetGameScore
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
@@ -21,3 +22,23 @@ data class SetGameScoreByInlineMessageId (
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.setGameScore(
+    userId: UserId,
+    score: Long,
+    inlineMessageId: InlineMessageIdentifier,
+    force: Boolean = false,
+    disableEditMessage: Boolean = false
+) = execute(
+    SetGameScoreByInlineMessageId(
+        userId, score, inlineMessageId, force, disableEditMessage
+    )
+)
+
+suspend fun RequestsExecutor.setGameScore(
+    user: CommonUser,
+    score: Long,
+    inlineMessageId: InlineMessageIdentifier,
+    force: Boolean = false,
+    disableEditMessage: Boolean = false
+) = setGameScore(user.id, score, inlineMessageId, force, disableEditMessage)
