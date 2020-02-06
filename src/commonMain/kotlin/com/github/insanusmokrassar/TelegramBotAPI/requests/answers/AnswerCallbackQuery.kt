@@ -34,7 +34,7 @@ fun CallbackQuery.createAnswer(
     cachedTimeSeconds: Int? = null
 ): AnswerCallbackQuery = AnswerCallbackQuery(id, text, showAlert, url, cachedTimeSeconds)
 
-suspend fun RequestsExecutor.sendCallbackQueryAnswer(
+suspend fun RequestsExecutor.answerCallbackQuery(
     callbackQueryId: CallbackQueryIdentifier,
     text: String? = null,
     showAlert: Boolean? = null,
@@ -42,10 +42,10 @@ suspend fun RequestsExecutor.sendCallbackQueryAnswer(
     cachedTimeSeconds: Int? = null
 ) = execute(AnswerCallbackQuery(callbackQueryId, text, showAlert, url, cachedTimeSeconds))
 
-suspend fun RequestsExecutor.sendCallbackQueryAnswer(
+suspend fun RequestsExecutor.answerCallbackQuery(
     callbackQuery: CallbackQuery,
     text: String? = null,
     showAlert: Boolean? = null,
     url: String? = null,
     cachedTimeSeconds: Int? = null
-) = sendCallbackQueryAnswer(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)
+) = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)

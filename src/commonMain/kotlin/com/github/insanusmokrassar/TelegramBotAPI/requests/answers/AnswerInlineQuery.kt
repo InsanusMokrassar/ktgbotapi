@@ -52,7 +52,7 @@ fun InlineQuery.createAnswer(
     switchPmParameter
 )
 
-suspend fun RequestsExecutor.sendInlineQueryAnswer(
+suspend fun RequestsExecutor.answerInlineQuery(
     inlineQueryID: InlineQueryIdentifier,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
@@ -64,7 +64,7 @@ suspend fun RequestsExecutor.sendInlineQueryAnswer(
     AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
 )
 
-suspend fun RequestsExecutor.sendInlineQueryAnswer(
+suspend fun RequestsExecutor.answerInlineQuery(
     inlineQuery: InlineQuery,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
@@ -72,7 +72,7 @@ suspend fun RequestsExecutor.sendInlineQueryAnswer(
     nextOffset: String? = null,
     switchPmText: String? = null,
     switchPmParameter: String? = null
-) = sendInlineQueryAnswer(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
+) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
 
 internal object InlineQueryAnswersResultsSerializer: KSerializer<List<InlineQueryResult>> by ArrayListSerializer(
     InlineQueryResultSerializer
