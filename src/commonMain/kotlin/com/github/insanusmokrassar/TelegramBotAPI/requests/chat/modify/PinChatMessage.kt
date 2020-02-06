@@ -42,7 +42,7 @@ suspend fun RequestsExecutor.pinChatMessage(
     chatId: ChatIdentifier,
     message: Message,
     disableNotification: Boolean = false
-) = execute(PinChatMessage(chatId, message.messageId, disableNotification))
+) = pinChatMessage(chatId, message.messageId, disableNotification)
 
 suspend fun RequestsExecutor.pinChatMessage(
     chat: PublicChat,
