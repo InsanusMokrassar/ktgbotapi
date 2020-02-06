@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
@@ -26,5 +27,5 @@ suspend fun RequestsExecutor.leaveChat(
 ) = execute(LeaveChat(chatId))
 
 suspend fun RequestsExecutor.leaveChat(
-    chat: Chat
+    chat: PublicChat
 ) = leaveChat(chat.id)

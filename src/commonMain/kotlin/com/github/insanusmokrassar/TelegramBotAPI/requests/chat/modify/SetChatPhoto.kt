@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartRe
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChatPermissions
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJson
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
@@ -31,6 +32,6 @@ suspend fun RequestsExecutor.setChatPermissions(
 ) = execute(SetChatPhoto(chatId, photo))
 
 suspend fun RequestsExecutor.setChatPermissions(
-    chat: Chat,
+    chat: PublicChat,
     photo: MultipartFile
 ) = setChatPermissions(chat.id, photo)

@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -69,7 +70,7 @@ suspend fun RequestsExecutor.promoteChatMember(
 )
 
 suspend fun RequestsExecutor.promoteChatMember(
-    chat: Chat,
+    chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
     canChangeInfo: Boolean? = null,
@@ -121,7 +122,7 @@ suspend fun RequestsExecutor.promoteChatMember(
 )
 
 suspend fun RequestsExecutor.promoteChatMember(
-    chat: Chat,
+    chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
     canChangeInfo: Boolean? = null,

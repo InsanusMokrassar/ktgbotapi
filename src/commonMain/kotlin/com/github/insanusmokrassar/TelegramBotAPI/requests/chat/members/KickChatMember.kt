@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -31,7 +32,7 @@ suspend fun RequestsExecutor.kickChatMember(
 ) = execute(KickChatMember(chatId, userId, untilDate))
 
 suspend fun RequestsExecutor.kickChatMember(
-    chat: Chat,
+    chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null
 ) = kickChatMember(chat.id, userId, untilDate)
@@ -43,7 +44,7 @@ suspend fun RequestsExecutor.kickChatMember(
 ) = kickChatMember(chatId, user.id, untilDate)
 
 suspend fun RequestsExecutor.kickChatMember(
-    chat: Chat,
+    chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null
 ) = kickChatMember(chat.id, user.id, untilDate)

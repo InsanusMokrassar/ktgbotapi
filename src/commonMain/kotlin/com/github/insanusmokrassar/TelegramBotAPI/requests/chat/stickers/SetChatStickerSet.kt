@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -28,6 +29,6 @@ suspend fun RequestsExecutor.setChatStickerSet(
 ) = execute(SetChatStickerSet(chatId, stickerSetName))
 
 suspend fun RequestsExecutor.setChatStickerSet(
-    chat: Chat,
+    chat: PublicChat,
     stickerSetName: StickerSetName
 ) = setChatStickerSet(chat.id, stickerSetName)

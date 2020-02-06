@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
@@ -32,7 +33,7 @@ suspend fun RequestsExecutor.pinChatMessage(
 ) = execute(PinChatMessage(chatId, messageId, disableNotification))
 
 suspend fun RequestsExecutor.pinChatMessage(
-    chat: Chat,
+    chat: PublicChat,
     messageId: MessageIdentifier,
     disableNotification: Boolean = false
 ) = pinChatMessage(chat.id, messageId, disableNotification)
@@ -44,7 +45,7 @@ suspend fun RequestsExecutor.pinChatMessage(
 ) = execute(PinChatMessage(chatId, message.messageId, disableNotification))
 
 suspend fun RequestsExecutor.pinChatMessage(
-    chat: Chat,
+    chat: PublicChat,
     message: Message,
     disableNotification: Boolean = false
 ) = pinChatMessage(chat.id, message.messageId, disableNotification)

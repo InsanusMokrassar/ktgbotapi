@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.ChatMember
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.ChatMemberDeserializationStrategy
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 
 @Serializable
@@ -29,7 +30,7 @@ suspend fun RequestsExecutor.getChatMember(
 ) = execute(GetChatMember(chatId, userId))
 
 suspend fun RequestsExecutor.getChatMember(
-    chat: Chat,
+    chat: PublicChat,
     userId: UserId
 ) = getChatMember(chat.id, userId)
 
@@ -39,6 +40,6 @@ suspend fun RequestsExecutor.getChatMember(
 ) = getChatMember(chatId, user.id)
 
 suspend fun RequestsExecutor.getChatMember(
-    chat: Chat,
+    chat: PublicChat,
     user: User
 ) = getChatMember(chat.id, user.id)

@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleReque
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.get.GetChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
@@ -27,5 +28,5 @@ suspend fun RequestsExecutor.deleteChatPhoto(
 ) = execute(DeleteChatPhoto(chatId))
 
 suspend fun RequestsExecutor.deleteChatPhoto(
-    chat: Chat
+    chat: PublicChat
 ) = deleteChatPhoto(chat.id)

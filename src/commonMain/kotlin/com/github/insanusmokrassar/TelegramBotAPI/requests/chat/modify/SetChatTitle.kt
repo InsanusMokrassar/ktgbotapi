@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFi
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -35,6 +36,6 @@ suspend fun RequestsExecutor.setChatTitle(
 ) = execute(SetChatTitle(chatId, title))
 
 suspend fun RequestsExecutor.setChatTitle(
-    chat: Chat,
+    chat: PublicChat,
     title: String
 ) = setChatTitle(chat.id, title)

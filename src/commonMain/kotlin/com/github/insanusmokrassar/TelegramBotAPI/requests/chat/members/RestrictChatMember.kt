@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMe
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChatPermissions
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -35,7 +36,7 @@ suspend fun RequestsExecutor.restrictChatMember(
 ) = execute(RestrictChatMember(chatId, userId, untilDate, permissions))
 
 suspend fun RequestsExecutor.restrictChatMember(
-    chat: Chat,
+    chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
     permissions: ChatPermissions = ChatPermissions()
@@ -49,7 +50,7 @@ suspend fun RequestsExecutor.restrictChatMember(
 ) = restrictChatMember(chatId, user.id, untilDate, permissions)
 
 suspend fun RequestsExecutor.restrictChatMember(
-    chat: Chat,
+    chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
     permissions: ChatPermissions = ChatPermissions()

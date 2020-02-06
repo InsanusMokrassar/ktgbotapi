@@ -4,6 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -27,7 +28,7 @@ suspend fun RequestsExecutor.unbanChatMember(
 ) = execute(UnbanChatMember(chatId, userId))
 
 suspend fun RequestsExecutor.unbanChatMember(
-    chat: Chat,
+    chat: PublicChat,
     userId: UserId
 ) = unbanChatMember(chat.id, userId)
 
@@ -37,7 +38,7 @@ suspend fun RequestsExecutor.unbanChatMember(
 ) = unbanChatMember(chatId, user.id)
 
 suspend fun RequestsExecutor.unbanChatMember(
-    chat: Chat,
+    chat: PublicChat,
     user: User
 ) = unbanChatMember(chat.id, user.id)
 

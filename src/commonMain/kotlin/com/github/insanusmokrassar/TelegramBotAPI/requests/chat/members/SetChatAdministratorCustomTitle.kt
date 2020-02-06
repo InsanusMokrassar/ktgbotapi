@@ -4,6 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -41,7 +42,7 @@ suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
 ) = execute(SetChatAdministratorCustomTitle(chatId, userId, customTitle))
 
 suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
-    chat: Chat,
+    chat: PublicChat,
     userId: UserId,
     customTitle: String
 ) = setChatAdministratorCustomTitle(chat.id, userId, customTitle)
@@ -53,7 +54,7 @@ suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
 ) = setChatAdministratorCustomTitle(chatId, user.id, customTitle)
 
 suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
-    chat: Chat,
+    chat: PublicChat,
     user: User,
     customTitle: String
 ) = setChatAdministratorCustomTitle(chat.id, user.id, customTitle)
