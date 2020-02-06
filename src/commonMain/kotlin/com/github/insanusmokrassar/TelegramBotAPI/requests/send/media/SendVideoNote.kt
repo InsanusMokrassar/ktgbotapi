@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
@@ -7,6 +8,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.VideoNoteContent
@@ -110,4 +113,131 @@ data class SendVideoNoteFiles internal constructor(
 ) : Files by mapOfNotNull(
     videoNoteField to videoNote,
     thumbField to thumb
+)
+
+suspend fun RequestsExecutor.sendVideoNote(
+    chatId: ChatIdentifier,
+    videoNote: FileId,
+    thumb: FileId? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    size: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendVideoNoteData(
+        chatId,
+        videoNote.fileId,
+        thumb ?.fileId,
+        text,
+        parseMode,
+        duration,
+        size,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+)
+
+suspend fun RequestsExecutor.sendVideoNote(
+    chatId: ChatIdentifier,
+    videoNote: VideoFile,
+    thumb: PhotoSize? = videoNote.thumb,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVideoNote(
+    chatId, videoNote.fileId, thumb ?.fileId, text, parseMode, videoNote.duration, videoNote.width, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendVideoNote(
+    chatId: ChatIdentifier,
+    videoNote: MultipartFile,
+    thumb: FileId? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    size: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    MultipartRequestImpl(
+        SendVideoNoteData(
+            chatId, null, thumb ?.fileId, text, parseMode, duration, size, disableNotification, replyToMessageId, replyMarkup
+        ),
+        SendVideoNoteFiles(videoNote)
+    )
+)
+
+suspend fun RequestsExecutor.sendVideoNote(
+    chatId: ChatIdentifier,
+    videoNote: MultipartFile,
+    thumb: MultipartFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    size: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    MultipartRequestImpl(
+        SendVideoNoteData(
+            chatId, null, null, text, parseMode, duration, size, disableNotification, replyToMessageId, replyMarkup
+        ),
+        SendVideoNoteFiles(videoNote, thumb)
+    )
+)
+
+suspend fun RequestsExecutor.sendVideoNote(
+    chatId: ChatIdentifier,
+    videoNote: FileId,
+    thumb: MultipartFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    size: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    MultipartRequestImpl(
+        SendVideoNoteData(
+            chatId, videoNote.fileId, null, text, parseMode, duration, size, disableNotification, replyToMessageId, replyMarkup
+        ),
+        SendVideoNoteFiles(null, thumb)
+    )
+)
+
+suspend fun RequestsExecutor.sendVideoNote(
+    chatId: ChatIdentifier,
+    videoNote: MultipartFile,
+    thumb: PhotoSize? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    size: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVideoNote(
+    chatId, videoNote, thumb ?.fileId , text, parseMode, duration, size, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendVideoNote(
+    chatId: ChatIdentifier,
+    videoNote: VideoFile,
+    thumb: MultipartFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVideoNote(
+    chatId, videoNote.fileId, thumb, text, parseMode, videoNote.duration, videoNote.width, disableNotification, replyToMessageId, replyMarkup
 )
