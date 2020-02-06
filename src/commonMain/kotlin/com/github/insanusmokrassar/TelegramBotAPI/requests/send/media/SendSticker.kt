@@ -1,10 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.MultipartRequestImpl
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.StickerContent
@@ -63,4 +66,43 @@ data class SendStickerByFile internal constructor(
     override val paramsJson: JsonObject = sendStickerByFileId.toJsonWithoutNulls(SendStickerByFileId.serializer())
 }
 
+
+suspend fun RequestsExecutor.sendSticker(
+    chatId: ChatIdentifier,
+    sticker: FileId,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendStickerByFileId(chatId, sticker, disableNotification, replyToMessageId, replyMarkup)
+)
+
+suspend fun RequestsExecutor.sendSticker(
+    chatId: ChatIdentifier,
+    sticker: MultipartFile,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendStickerByFile(
+        SendStickerByFileId(chatId, null, disableNotification, replyToMessageId, replyMarkup),
+        sticker
+    )
+)
+
+suspend fun RequestsExecutor.sendSticker(
+    chat: Chat,
+    sticker: FileId,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendSticker(chat.id, sticker, disableNotification, replyToMessageId, replyMarkup)
+
+suspend fun RequestsExecutor.sendSticker(
+    chat: Chat,
+    sticker: MultipartFile,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendSticker(chat.id, sticker, disableNotification, replyToMessageId, replyMarkup)
 
