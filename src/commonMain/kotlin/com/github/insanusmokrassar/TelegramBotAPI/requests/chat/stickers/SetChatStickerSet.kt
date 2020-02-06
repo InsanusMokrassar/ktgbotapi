@@ -1,8 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.stickers
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequest
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -19,3 +21,13 @@ data class SetChatStickerSet(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.setChatStickerSet(
+    chatId: ChatIdentifier,
+    stickerSetName: StickerSetName
+) = execute(SetChatStickerSet(chatId, stickerSetName))
+
+suspend fun RequestsExecutor.setChatStickerSet(
+    chat: Chat,
+    stickerSetName: StickerSetName
+) = setChatStickerSet(chat.id, stickerSetName)

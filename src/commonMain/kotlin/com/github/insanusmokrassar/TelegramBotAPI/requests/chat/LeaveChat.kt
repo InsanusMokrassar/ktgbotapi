@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequest
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
@@ -18,3 +19,7 @@ data class LeaveChat(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.leaveChat(
+    chatId: ChatIdentifier
+) = execute(LeaveChat(chatId))

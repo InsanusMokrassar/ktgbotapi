@@ -1,10 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.get
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequest
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.AdministratorChatMember
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.AdministratorChatMemberSerializerWithoutDeserialization
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.ArrayListSerializer
@@ -24,3 +26,11 @@ data class GetChatAdministrators(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.getChatAdministrators(
+    chatId: ChatIdentifier
+) = execute(GetChatAdministrators(chatId))
+
+suspend fun RequestsExecutor.getChatAdministrators(
+    chat: Chat
+) = getChatAdministrators(chat.id)

@@ -1,8 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.modify
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequest
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -25,3 +27,13 @@ data class SetChatDescription (
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.setChatDescription(
+    chatId: ChatIdentifier,
+    description: String
+) = execute(SetChatDescription(chatId, description))
+
+suspend fun RequestsExecutor.setChatDescription(
+    chat: Chat,
+    description: String
+) = setChatDescription(chat.id, description)
