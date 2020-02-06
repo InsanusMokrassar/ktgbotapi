@@ -1,6 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.get
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickerSetNameField
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.StickerSet
 import kotlinx.serialization.*
@@ -16,3 +18,15 @@ data class GetStickerSet(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.getStickerSet(
+    name: String
+) = execute(
+    GetStickerSet(name)
+)
+
+suspend fun RequestsExecutor.getStickerSet(
+    sticker: Sticker
+) = execute(
+    GetStickerSet(sticker.stickerSetName ?: error("Sticker must contains stickerSetName to be correctly used in getStickerSet method"))
+)
