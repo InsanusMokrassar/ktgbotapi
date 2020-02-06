@@ -41,7 +41,7 @@ suspend fun RequestsExecutor.getUserProfilePhotos(
 )
 
 suspend fun RequestsExecutor.getUserProfilePhotos(
-    user: User,
+    user: CommonUser,
     offset: Int? = null,
     limit: Int? = null
 ) = getUserProfilePhotos(user.id, offset, limit)
