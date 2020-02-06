@@ -5,7 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChatPermissions
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
@@ -24,12 +23,12 @@ data class SetChatPermissions (
         get() = serializer()
 }
 
-suspend fun RequestsExecutor.setChatPermissions(
+suspend fun RequestsExecutor.setDefaultChatMembersPermissions(
     chatId: ChatIdentifier,
     permissions: ChatPermissions
 ) = execute(SetChatPermissions(chatId, permissions))
 
-suspend fun RequestsExecutor.setChatPermissions(
+suspend fun RequestsExecutor.setDefaultChatMembersPermissions(
     chat: PublicChat,
     permissions: ChatPermissions
-) = setChatPermissions(chat.id, permissions)
+) = setDefaultChatMembersPermissions(chat.id, permissions)
