@@ -1,9 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.PollContent
@@ -183,3 +185,65 @@ data class SendQuizPoll(
         }
     }
 }
+
+
+suspend fun RequestsExecutor.sendRegularPoll(
+    chatId: ChatIdentifier,
+    question: String,
+    options: List<String>,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    allowMultipleAnswers: Boolean = false,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendRegularPoll(
+        chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
+    )
+)
+
+suspend fun RequestsExecutor.sendRegularPoll(
+    chat: Chat,
+    question: String,
+    options: List<String>,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    allowMultipleAnswers: Boolean = false,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendRegularPoll(
+    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
+)
+
+
+suspend fun RequestsExecutor.sendQuizPoll(
+    chatId: ChatIdentifier,
+    question: String,
+    options: List<String>,
+    correctOptionId: Int,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendQuizPoll(
+        chatId, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
+    )
+)
+
+suspend fun RequestsExecutor.sendQuizPoll(
+    chat: Chat,
+    question: String,
+    options: List<String>,
+    correctOptionId: Int,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(
+    chat.id, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
+)
