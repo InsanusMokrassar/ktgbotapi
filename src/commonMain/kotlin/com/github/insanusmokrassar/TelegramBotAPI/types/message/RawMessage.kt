@@ -130,6 +130,7 @@ internal data class RawMessage(
             location != null -> LocationContent(location)
             venue != null -> VenueContent(venue)
             poll != null -> PollContent(poll)
+            invoice != null -> InvoiceOfPayment(invoice)
             else -> null
         }
     }
@@ -175,9 +176,8 @@ internal data class RawMessage(
         }
     }
 
-    private val paymentInfo: PaymentInfo? by lazy {
+    private val paymentInfo: SuccessfulPaymentInfo? by lazy {
         when {
-            invoice != null -> InvoiceOfPayment(invoice)
             successful_payment != null -> SuccessfulPaymentInfo(successful_payment)
             else -> null
         }

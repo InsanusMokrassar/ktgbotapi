@@ -43,6 +43,9 @@
 * Now it is possible to get updates by polling with custom executor engine
 * `CommonMultipartFileRequest` now is internal
 * Added `LiveLocation` class for more useful tracking live locations
+* `InvoiceOfPayment` now is `MessageContent` instead of `PaymentInfo`
+* `SendInvoice` now return `ContentMessage<InvoiceOfPayment>`
+* `paymentInfo` inside of `CommonMessageImpl` now can be set only to `SuccessfulPaymentInfo`
 
 ## 0.22.0
 
