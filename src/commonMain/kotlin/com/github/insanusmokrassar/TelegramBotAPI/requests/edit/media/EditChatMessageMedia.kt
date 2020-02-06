@@ -9,9 +9,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.CommonMessageImpl
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.PhotoContent
 import kotlinx.serialization.*
 
 const val editMessageMediaMethod = "editMessageMedia"
@@ -61,14 +64,14 @@ suspend fun RequestsExecutor.editMessageMedia(
 
 suspend fun RequestsExecutor.editMessageMedia(
     chatId: ChatId,
-    message: Message,
+    message: ContentMessage<out MediaContent>,
     media: InputMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chatId, message.messageId, media, replyMarkup)
 
 suspend fun RequestsExecutor.editMessageMedia(
     chat: Chat,
-    message: Message,
+    message: ContentMessage<out MediaContent>,
     media: InputMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chat.id, message.messageId, media, replyMarkup)

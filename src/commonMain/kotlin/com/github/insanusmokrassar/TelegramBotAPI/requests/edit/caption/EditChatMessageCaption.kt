@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.caption
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media.MediaContentMessageResultDeserializer
@@ -9,9 +10,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.CommonMessageImpl
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.PhotoContent
 import kotlinx.serialization.*
 
 const val editMessageCaptionMethod = "editMessageCaption"
@@ -55,18 +59,22 @@ suspend fun RequestsExecutor.editMessageCaption(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageCaption(chat.id, messageId, text, parseMode, replyMarkup)
 
-suspend fun RequestsExecutor.editMessageCaption(
+suspend fun <T> RequestsExecutor.editMessageCaption(
     chatId: ChatId,
-    message: Message,
+    message: ContentMessage<T>,
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageCaption(chatId, message.messageId, text, parseMode, replyMarkup)
+): ContentMessage<MediaContent> where T : CaptionedInput, T : MediaContent {
+    return editMessageCaption(chatId, message.messageId, text, parseMode, replyMarkup)
+}
 
-suspend fun RequestsExecutor.editMessageCaption(
+suspend fun <T> RequestsExecutor.editMessageCaption(
     chat: Chat,
-    message: Message,
+    message: ContentMessage<T>,
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageCaption(chat.id, message.messageId, text, parseMode, replyMarkup)
+): ContentMessage<MediaContent> where T : CaptionedInput, T : MediaContent {
+    return editMessageCaption(chat.id, message.messageId, text, parseMode, replyMarkup)
+}

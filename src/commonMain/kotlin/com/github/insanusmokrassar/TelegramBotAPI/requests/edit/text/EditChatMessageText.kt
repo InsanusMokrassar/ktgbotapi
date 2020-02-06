@@ -60,7 +60,7 @@ suspend fun RequestsExecutor.editMessageText(
 
 suspend fun RequestsExecutor.editMessageText(
     chatId: ChatId,
-    message: Message,
+    message: ContentMessage<TextContent>,
     text: String,
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
@@ -69,7 +69,7 @@ suspend fun RequestsExecutor.editMessageText(
 
 suspend fun RequestsExecutor.editMessageText(
     chat: Chat,
-    message: Message,
+    message: ContentMessage<TextContent>,
     text: String,
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
