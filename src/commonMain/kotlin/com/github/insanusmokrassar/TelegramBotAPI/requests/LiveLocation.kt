@@ -1,12 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.EditChatMessageLiveLocation
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.StopChatMessageLiveLocation
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendLocation
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.LocationContent
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
 import io.ktor.utils.io.core.Closeable
@@ -16,9 +17,7 @@ private val livePeriodDelayDouble = ((livePeriodLimit.last - 60L) * 1000L).toDou
 class LiveLocation internal constructor(
     private val scope: CoroutineScope,
     private val requestsExecutor: RequestsExecutor,
-    private val chatId: ChatIdentifier,
-    private val messageId: MessageIdentifier,
-    location: Location
+    initMessage: ContentMessage<LocationContent>
 ) : Closeable {
     var isClosed: Boolean = false
         private set
@@ -26,8 +25,8 @@ class LiveLocation internal constructor(
     val leftUntilCloseMillis: TimeSpan
         get() = autoCloseTime - DateTime.now()
     private var updateJob: Job? = null
-    var lastLocation: Location = location
-        private set(value) {
+    private var message: ContentMessage<LocationContent> = initMessage
+        set(value) {
             field = value
             updateJob ?.cancel()
             updateJob = scope.launch {
@@ -37,9 +36,11 @@ class LiveLocation internal constructor(
                 close()
             }
         }
+    val lastLocation: Location
+        get() = message.content.location
 
     init {
-        this.lastLocation = location // required to init updateJob
+        message = initMessage // required to init updateJob
     }
 
     suspend fun updateLocation(
@@ -47,15 +48,11 @@ class LiveLocation internal constructor(
         replyMarkup: InlineKeyboardMarkup? = null
     ): Location {
         if (!isClosed) {
-            lastLocation = requestsExecutor.execute(
-                EditChatMessageLiveLocation(
-                    chatId,
-                    messageId,
-                    location.latitude,
-                    location.longitude,
-                    replyMarkup
-                )
-            ).content.location
+            message = requestsExecutor.editLiveLocation(
+                message,
+                location,
+                replyMarkup
+            )
             return lastLocation
         } else {
             error("LiveLocation is closed")
@@ -69,12 +66,7 @@ class LiveLocation internal constructor(
         isClosed = true
         updateJob ?.cancel()
         scope.launch {
-            requestsExecutor.execute(
-                StopChatMessageLiveLocation(
-                    chatId,
-                    messageId
-                )
-            )
+            requestsExecutor.stopLiveLocation(message)
         }
     }
 }
@@ -103,8 +95,6 @@ suspend fun RequestsExecutor.startLiveLocation(
     return LiveLocation(
         scope,
         this,
-        chatId,
-        locationMessage.messageId,
-        locationMessage.content.location
+        locationMessage
     )
 }
