@@ -1,21 +1,15 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.EditChatMessageLiveLocation
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.StopChatMessageLiveLocation
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.LocationContent
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.executeAsync
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
-import io.ktor.utils.io.core.Closeable
-import kotlinx.coroutines.*
 import kotlinx.serialization.*
 
 

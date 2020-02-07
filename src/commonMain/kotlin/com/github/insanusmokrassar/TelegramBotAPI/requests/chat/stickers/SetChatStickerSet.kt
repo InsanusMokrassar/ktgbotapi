@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequ
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.SupergroupChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 

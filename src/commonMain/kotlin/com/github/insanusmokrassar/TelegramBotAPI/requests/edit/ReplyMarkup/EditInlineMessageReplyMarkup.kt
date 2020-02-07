@@ -3,9 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.ReplyMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditInlineMessage
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditReplyMessage
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media.EditInlineMessageMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import kotlinx.serialization.*
 

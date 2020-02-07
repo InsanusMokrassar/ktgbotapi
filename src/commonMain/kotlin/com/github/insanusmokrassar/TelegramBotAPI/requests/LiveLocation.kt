@@ -1,7 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.editLiveLocation
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.stopLiveLocation
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendLocation
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
@@ -12,7 +13,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.Location
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
 import io.ktor.utils.io.core.Closeable
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
 private val livePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L

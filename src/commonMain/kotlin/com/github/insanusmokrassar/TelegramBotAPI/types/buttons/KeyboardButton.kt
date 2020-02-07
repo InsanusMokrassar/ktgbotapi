@@ -2,7 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.buttons
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 import kotlinx.serialization.json.*
 
 @Serializable(KeyboardButtonSerializer::class)
