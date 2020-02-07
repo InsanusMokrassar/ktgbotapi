@@ -14,9 +14,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Unknow
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceOfPayment
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.SuccessfulPaymentInfo
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.abstracts.PaymentInfo
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.Invoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.SuccessfulPayment
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
@@ -130,7 +129,7 @@ internal data class RawMessage(
             location != null -> LocationContent(location)
             venue != null -> VenueContent(venue)
             poll != null -> PollContent(poll)
-            invoice != null -> InvoiceOfPayment(invoice)
+            invoice != null -> InvoiceContent(invoice)
             else -> null
         }
     }

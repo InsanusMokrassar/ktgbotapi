@@ -43,8 +43,8 @@
 * Now it is possible to get updates by polling with custom executor engine
 * `CommonMultipartFileRequest` now is internal
 * Added `LiveLocation` class for more useful tracking live locations
-* `InvoiceOfPayment` now is `MessageContent` instead of `PaymentInfo`
-* `SendInvoice` now return `ContentMessage<InvoiceOfPayment>`
+* `InvoiceOfPayment` is renamed to `InvoiceContent` and now is `MessageContent` instead of `PaymentInfo`
+* `SendInvoice` now return `ContentMessage<InvoiceContent>`
 * `paymentInfo` inside of `CommonMessageImpl` now can be set only to `SuccessfulPaymentInfo`
 * Added `RecordVideoNoteAction` and `UploadVideoNoteAction` for `record_video_note` and `upload_video_note` actions
 

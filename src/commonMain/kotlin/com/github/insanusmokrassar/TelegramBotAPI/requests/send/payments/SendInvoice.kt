@@ -6,15 +6,13 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMe
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.PhotoContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceOfPayment
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.LabeledPrice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.LabeledPricesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts.*
 import kotlinx.serialization.*
 
-private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceOfPayment>>
+private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
 /**
@@ -67,9 +65,9 @@ data class SendInvoice(
     DisableNotification,
     ReplyMessageId,
     ReplyMarkup,
-    SendMessageRequest<ContentMessage<InvoiceOfPayment>> {
+    SendMessageRequest<ContentMessage<InvoiceContent>> {
     override fun method(): String = "sendInvoice"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<InvoiceOfPayment>>
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
         get() = invoiceMessageSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
