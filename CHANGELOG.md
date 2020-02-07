@@ -48,6 +48,7 @@
 * `paymentInfo` inside of `CommonMessageImpl` now can be set only to `SuccessfulPaymentInfo`
 * Added `RecordVideoNoteAction` and `UploadVideoNoteAction` for `record_video_note` and `upload_video_note` actions
 * For most part of messages was added `RequestsExecutor` extensions for more useful way of usage
+* `toInputFile` extensions now will return more exact types
 
 ## 0.22.0
 
