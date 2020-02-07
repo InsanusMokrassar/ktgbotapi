@@ -278,3 +278,35 @@ suspend fun RequestsExecutor.sendQuizPoll(
 ) = sendQuizPoll(
     chat.id, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
 )
+
+suspend fun RequestsExecutor.sendQuizPoll(
+    chatId: ChatIdentifier,
+    isClosed: Boolean = false,
+    quizPoll: QuizPoll,
+    question: String = quizPoll.question,
+    options: List<String> = quizPoll.options.map { it.text },
+    correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    isAnonymous: Boolean = quizPoll.isAnonymous,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendQuizPoll(
+        chatId, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
+    )
+)
+
+suspend fun RequestsExecutor.sendQuizPoll(
+    chat: Chat,
+    isClosed: Boolean = false,
+    quizPoll: QuizPoll,
+    question: String = quizPoll.question,
+    options: List<String> = quizPoll.options.map { it.text },
+    correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    isAnonymous: Boolean = quizPoll.isAnonymous,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(
+    chat.id, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
+)
