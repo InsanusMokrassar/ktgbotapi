@@ -51,7 +51,7 @@ data class SendLocation(
 
     init {
         if (livePeriod != null && livePeriod !in livePeriodLimit) {
-            error("Live period for sending location must be in $livePeriodLimit")
+            error("Live period for sending location must be in $livePeriodLimit, but was $livePeriod")
         }
     }
 }
