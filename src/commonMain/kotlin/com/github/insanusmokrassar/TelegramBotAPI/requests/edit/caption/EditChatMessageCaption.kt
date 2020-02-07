@@ -60,21 +60,10 @@ suspend fun RequestsExecutor.editMessageCaption(
 ) = editMessageCaption(chat.id, messageId, text, parseMode, replyMarkup)
 
 suspend fun <T> RequestsExecutor.editMessageCaption(
-    chatId: ChatId,
     message: ContentMessage<T>,
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<MediaContent> where T : CaptionedInput, T : MediaContent {
-    return editMessageCaption(chatId, message.messageId, text, parseMode, replyMarkup)
-}
-
-suspend fun <T> RequestsExecutor.editMessageCaption(
-    chat: Chat,
-    message: ContentMessage<T>,
-    text: String,
-    parseMode: ParseMode? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<MediaContent> where T : CaptionedInput, T : MediaContent {
-    return editMessageCaption(chat.id, message.messageId, text, parseMode, replyMarkup)
+    return editMessageCaption(message.chat.id, message.messageId, text, parseMode, replyMarkup)
 }

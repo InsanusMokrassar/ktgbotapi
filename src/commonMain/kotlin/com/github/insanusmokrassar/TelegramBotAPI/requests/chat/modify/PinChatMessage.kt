@@ -39,13 +39,10 @@ suspend fun RequestsExecutor.pinChatMessage(
 ) = pinChatMessage(chat.id, messageId, disableNotification)
 
 suspend fun RequestsExecutor.pinChatMessage(
-    chatId: ChatIdentifier,
     message: Message,
     disableNotification: Boolean = false
-) = pinChatMessage(chatId, message.messageId, disableNotification)
-
-suspend fun RequestsExecutor.pinChatMessage(
-    chat: PublicChat,
-    message: Message,
-    disableNotification: Boolean = false
-) = pinChatMessage(chat.id, message.messageId, disableNotification)
+) = if (message.chat is PublicChat) {
+    pinChatMessage(message.chat.id, message.messageId, disableNotification)
+} else {
+    error("It is possible to pin messages only in non one-to-one chats")
+}

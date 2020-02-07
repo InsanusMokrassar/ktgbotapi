@@ -26,12 +26,12 @@ data class SetChatPhoto (
     override val paramsJson: JsonObject = toJson(serializer())
 }
 
-suspend fun RequestsExecutor.setChatPermissions(
+suspend fun RequestsExecutor.setChatPhoto(
     chatId: ChatIdentifier,
     photo: MultipartFile
 ) = execute(SetChatPhoto(chatId, photo))
 
-suspend fun RequestsExecutor.setChatPermissions(
+suspend fun RequestsExecutor.setChatPhoto(
     chat: PublicChat,
     photo: MultipartFile
-) = setChatPermissions(chat.id, photo)
+) = setChatPhoto(chat.id, photo)

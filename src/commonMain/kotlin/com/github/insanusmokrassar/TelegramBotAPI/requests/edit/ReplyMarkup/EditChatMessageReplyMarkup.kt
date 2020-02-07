@@ -49,14 +49,7 @@ suspend fun RequestsExecutor.editMessageReplyMarkup(
 ) = editMessageReplyMarkup(chat.id, messageId, replyMarkup)
 
 suspend fun RequestsExecutor.editMessageReplyMarkup(
-    chatId: ChatId,
     message: Message,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageReplyMarkup(chatId, message.messageId, replyMarkup)
-
-suspend fun RequestsExecutor.editMessageReplyMarkup(
-    chat: Chat,
-    message: Message,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageReplyMarkup(chat.id, message.messageId, replyMarkup)
+) = editMessageReplyMarkup(message.chat.id, message.messageId, replyMarkup)
 

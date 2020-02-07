@@ -59,19 +59,9 @@ suspend fun RequestsExecutor.editMessageText(
 ) = editMessageText(chat.id, messageId, text, parseMode, disableWebPagePreview, replyMarkup)
 
 suspend fun RequestsExecutor.editMessageText(
-    chatId: ChatId,
     message: ContentMessage<TextContent>,
     text: String,
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageText(chatId, message.messageId, text, parseMode, disableWebPagePreview, replyMarkup)
-
-suspend fun RequestsExecutor.editMessageText(
-    chat: Chat,
-    message: ContentMessage<TextContent>,
-    text: String,
-    parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageText(chat.id, message.messageId, text, parseMode, disableWebPagePreview, replyMarkup)
+) = editMessageText(message.chat.id, message.messageId, text, parseMode, disableWebPagePreview, replyMarkup)

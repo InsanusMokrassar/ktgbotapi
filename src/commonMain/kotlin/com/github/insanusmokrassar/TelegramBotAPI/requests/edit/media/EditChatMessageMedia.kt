@@ -63,15 +63,7 @@ suspend fun RequestsExecutor.editMessageMedia(
 ) = editMessageMedia(chat.id, messageId, media, replyMarkup)
 
 suspend fun RequestsExecutor.editMessageMedia(
-    chatId: ChatId,
     message: ContentMessage<out MediaContent>,
     media: InputMedia,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageMedia(chatId, message.messageId, media, replyMarkup)
-
-suspend fun RequestsExecutor.editMessageMedia(
-    chat: Chat,
-    message: ContentMessage<out MediaContent>,
-    media: InputMedia,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageMedia(chat.id, message.messageId, media, replyMarkup)
+) = editMessageMedia(message.chat.id, message.messageId, media, replyMarkup)
