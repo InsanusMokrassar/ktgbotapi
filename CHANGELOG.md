@@ -46,6 +46,7 @@
 * `InvoiceOfPayment` now is `MessageContent` instead of `PaymentInfo`
 * `SendInvoice` now return `ContentMessage<InvoiceOfPayment>`
 * `paymentInfo` inside of `CommonMessageImpl` now can be set only to `SuccessfulPaymentInfo`
+* Added `RecordVideoNoteAction` and `UploadVideoNoteAction` for `record_video_note` and `upload_video_note` actions
 
 ## 0.22.0
 
