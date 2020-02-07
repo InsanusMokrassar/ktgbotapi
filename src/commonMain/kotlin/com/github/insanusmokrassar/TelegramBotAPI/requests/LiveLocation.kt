@@ -13,6 +13,7 @@ import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
 import io.ktor.utils.io.core.Closeable
 import kotlinx.coroutines.*
+import kotlin.math.ceil
 
 private val livePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
 class LiveLocation internal constructor(
@@ -68,17 +69,18 @@ suspend fun RequestsExecutor.startLiveLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
-    firstTimeUntilCloseMillis: Long = livePeriodDelayMillis,
+    liveTimeMillis: Long = livePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocation {
+    val liveTimeAsDouble = liveTimeMillis.toDouble()
     val locationMessage = execute(
         SendLocation(
             chatId,
             latitude,
             longitude,
-            livePeriodLimit.last.toLong(),
+            ceil(liveTimeAsDouble / 1000).toLong(),
             disableNotification,
             replyToMessageId,
             replyMarkup
@@ -88,7 +90,7 @@ suspend fun RequestsExecutor.startLiveLocation(
     return LiveLocation(
         this,
         scope,
-        firstTimeUntilCloseMillis.toDouble(),
+        liveTimeAsDouble,
         locationMessage
     )
 }
@@ -98,34 +100,34 @@ suspend fun RequestsExecutor.startLiveLocation(
     chat: Chat,
     latitude: Double,
     longitude: Double,
-    firstTimeUntilCloseMillis: Long = livePeriodDelayMillis,
+    liveTimeMillis: Long = livePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocation = startLiveLocation(
-    scope, chat.id, latitude, longitude, firstTimeUntilCloseMillis, disableNotification, replyToMessageId, replyMarkup
+    scope, chat.id, latitude, longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
 )
 
 suspend fun RequestsExecutor.startLiveLocation(
     scope: CoroutineScope,
     chatId: ChatId,
     location: Location,
-    firstTimeUntilCloseMillis: Long = livePeriodDelayMillis,
+    liveTimeMillis: Long = livePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocation = startLiveLocation(
-    scope, chatId, location.latitude, location.longitude, firstTimeUntilCloseMillis, disableNotification, replyToMessageId, replyMarkup
+    scope, chatId, location.latitude, location.longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
 )
 
 suspend fun RequestsExecutor.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,
     location: Location,
-    firstTimeUntilCloseMillis: Long = livePeriodDelayMillis,
+    liveTimeMillis: Long = livePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocation = startLiveLocation(
-    scope, chat.id, location.latitude, location.longitude, firstTimeUntilCloseMillis, disableNotification, replyToMessageId, replyMarkup
+    scope, chat.id, location.latitude, location.longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
 )
