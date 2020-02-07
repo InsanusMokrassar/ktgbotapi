@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMa
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.SuccessfulPaymentInfo
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.abstracts.PaymentInfo
 import com.soywiz.klock.DateTime
 
@@ -19,5 +20,5 @@ data class CommonMessageImpl<T: MessageContent>(
     override val forwardInfo: ForwardInfo?,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
-    val paymentInfo: PaymentInfo?
+    val paymentInfo: SuccessfulPaymentInfo?
 ) : Message, CommonMessage<T>, FromUserMessage

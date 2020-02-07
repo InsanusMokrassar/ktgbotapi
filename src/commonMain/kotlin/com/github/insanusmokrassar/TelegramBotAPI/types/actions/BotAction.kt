@@ -23,6 +23,8 @@ internal object BotActionSerializer: KSerializer<BotAction> {
             UploadAudioAction.actionName -> UploadAudioAction
             UploadDocumentAction.actionName -> UploadDocumentAction
             FindLocationAction.actionName -> FindLocationAction
+            RecordVideoNoteAction.actionName -> RecordVideoNoteAction
+            UploadVideoNoteAction.actionName -> UploadVideoNoteAction
             else -> throw IllegalStateException("Unknown action type: $actionName")
         }
     }
@@ -70,4 +72,14 @@ object UploadDocumentAction : BotAction() {
 @Serializable(BotActionSerializer::class)
 object FindLocationAction : BotAction() {
     override val actionName: String = "find_location"
+}
+
+@Serializable(BotActionSerializer::class)
+object RecordVideoNoteAction : BotAction() {
+    override val actionName: String = "record_video_note"
+}
+
+@Serializable(BotActionSerializer::class)
+object UploadVideoNoteAction : BotAction() {
+    override val actionName: String = "upload_video_note"
 }

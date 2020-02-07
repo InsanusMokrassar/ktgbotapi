@@ -1,9 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.ContactContent
@@ -65,4 +67,52 @@ fun Contact.toRequest(
     disableNotification,
     replyToMessageId,
     replyMarkup
+)
+
+suspend fun RequestsExecutor.sendContact(
+    chatId: ChatIdentifier,
+    phoneNumber: String,
+    firstName: String,
+    lastName: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendContact(
+        chatId, phoneNumber, firstName, lastName, disableNotification, replyToMessageId, replyMarkup
+    )
+)
+
+suspend fun RequestsExecutor.sendContact(
+    chatId: ChatIdentifier,
+    contact: Contact,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendContact(
+        chatId, contact, disableNotification, replyToMessageId, replyMarkup
+    )
+)
+
+suspend fun RequestsExecutor.sendContact(
+    chat: Chat,
+    phoneNumber: String,
+    firstName: String,
+    lastName: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendContact(
+    chat.id, phoneNumber, firstName, lastName, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendContact(
+    chat: Chat,
+    contact: Contact,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendContact(
+    chat.id, contact, disableNotification, replyToMessageId, replyMarkup
 )

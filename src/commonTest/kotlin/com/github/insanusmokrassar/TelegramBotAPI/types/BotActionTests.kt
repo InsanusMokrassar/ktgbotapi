@@ -26,6 +26,8 @@ class BotActionTests {
                 UploadAudioAction -> example.botAction.actionName
                 UploadDocumentAction -> example.botAction.actionName
                 FindLocationAction -> example.botAction.actionName
+                RecordVideoNoteAction -> example.botAction.actionName
+                UploadVideoNoteAction -> example.botAction.actionName
             }
         )
     }
@@ -52,7 +54,9 @@ class BotActionTests {
             RecordAudioAction.example(),
             UploadAudioAction.example(),
             UploadDocumentAction.example(),
-            FindLocationAction.example()
+            FindLocationAction.example(),
+            RecordVideoNoteAction.example(),
+            UploadVideoNoteAction.example()
         ).forEach {
             checkBotActionSerializeDeserialize(it)
         }

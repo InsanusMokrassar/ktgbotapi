@@ -35,6 +35,21 @@
     * `GetMe` now return `ExtendedBot` object
     * Now extension `javaLocale` is extension for `CommonUser`
 
+### 0.23.1
+
+* Versions updates:
+    * Klock `1.8.6` -> `1.8.7`
+    * Ktor `1.3.0` -> `1.3.1`
+* Now it is possible to get updates by polling with custom executor engine
+* `CommonMultipartFileRequest` now is internal
+* Added `LiveLocation` class for more useful tracking live locations
+* `InvoiceOfPayment` is renamed to `InvoiceContent` and now is `MessageContent` instead of `PaymentInfo`
+* `SendInvoice` now return `ContentMessage<InvoiceContent>`
+* `paymentInfo` inside of `CommonMessageImpl` now can be set only to `SuccessfulPaymentInfo`
+* Added `RecordVideoNoteAction` and `UploadVideoNoteAction` for `record_video_note` and `upload_video_note` actions
+* For most part of messages was added `RequestsExecutor` extensions for more useful way of usage
+* `toInputFile` extensions now will return more exact types
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**

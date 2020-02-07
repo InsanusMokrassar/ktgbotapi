@@ -1,8 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.members
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.UntilDate
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -37,3 +40,109 @@ data class PromoteChatMember(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.promoteChatMember(
+    chatId: ChatIdentifier,
+    userId: UserId,
+    untilDate: TelegramDate? = null,
+    canChangeInfo: Boolean? = null,
+    canPostMessages: Boolean? = null,
+    canEditMessages: Boolean? = null,
+    canDeleteMessages: Boolean? = null,
+    canInviteUsers: Boolean? = null,
+    canRestrictMembers: Boolean? = null,
+    canPinMessages: Boolean? = null,
+    canPromoteMembers: Boolean? = null
+) = execute(
+    PromoteChatMember(
+        chatId,
+        userId,
+        untilDate,
+        canChangeInfo,
+        canPostMessages,
+        canEditMessages,
+        canDeleteMessages,
+        canInviteUsers,
+        canRestrictMembers,
+        canPinMessages,
+        canPromoteMembers
+    )
+)
+
+suspend fun RequestsExecutor.promoteChatMember(
+    chat: PublicChat,
+    userId: UserId,
+    untilDate: TelegramDate? = null,
+    canChangeInfo: Boolean? = null,
+    canPostMessages: Boolean? = null,
+    canEditMessages: Boolean? = null,
+    canDeleteMessages: Boolean? = null,
+    canInviteUsers: Boolean? = null,
+    canRestrictMembers: Boolean? = null,
+    canPinMessages: Boolean? = null,
+    canPromoteMembers: Boolean? = null
+) = promoteChatMember(
+    chat.id,
+    userId,
+    untilDate,
+    canChangeInfo,
+    canPostMessages,
+    canEditMessages,
+    canDeleteMessages,
+    canInviteUsers,
+    canRestrictMembers,
+    canPinMessages,
+    canPromoteMembers
+)
+
+suspend fun RequestsExecutor.promoteChatMember(
+    chatId: ChatId,
+    user: User,
+    untilDate: TelegramDate? = null,
+    canChangeInfo: Boolean? = null,
+    canPostMessages: Boolean? = null,
+    canEditMessages: Boolean? = null,
+    canDeleteMessages: Boolean? = null,
+    canInviteUsers: Boolean? = null,
+    canRestrictMembers: Boolean? = null,
+    canPinMessages: Boolean? = null,
+    canPromoteMembers: Boolean? = null
+) = promoteChatMember(
+    chatId,
+    user.id,
+    untilDate,
+    canChangeInfo,
+    canPostMessages,
+    canEditMessages,
+    canDeleteMessages,
+    canInviteUsers,
+    canRestrictMembers,
+    canPinMessages,
+    canPromoteMembers
+)
+
+suspend fun RequestsExecutor.promoteChatMember(
+    chat: PublicChat,
+    user: User,
+    untilDate: TelegramDate? = null,
+    canChangeInfo: Boolean? = null,
+    canPostMessages: Boolean? = null,
+    canEditMessages: Boolean? = null,
+    canDeleteMessages: Boolean? = null,
+    canInviteUsers: Boolean? = null,
+    canRestrictMembers: Boolean? = null,
+    canPinMessages: Boolean? = null,
+    canPromoteMembers: Boolean? = null
+) = promoteChatMember(
+    chat.id,
+    user.id,
+    untilDate,
+    canChangeInfo,
+    canPostMessages,
+    canEditMessages,
+    canDeleteMessages,
+    canInviteUsers,
+    canRestrictMembers,
+    canPinMessages,
+    canPromoteMembers
+)

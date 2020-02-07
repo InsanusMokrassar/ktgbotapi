@@ -1,15 +1,19 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.payments
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategy
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.LabeledPrice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.LabeledPricesSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts.*
 import kotlinx.serialization.*
+
+private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
+    = TelegramBotAPIMessageDeserializationStrategyClass()
 
 /**
  * @param providerData - JSON-ENCODED FIELD
@@ -61,10 +65,10 @@ data class SendInvoice(
     DisableNotification,
     ReplyMessageId,
     ReplyMarkup,
-    SendMessageRequest<Message> {
+    SendMessageRequest<ContentMessage<InvoiceContent>> {
     override fun method(): String = "sendInvoice"
-    override val resultDeserializer: DeserializationStrategy<Message>
-        get() = TelegramBotAPIMessageDeserializationStrategy
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
+        get() = invoiceMessageSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
@@ -101,3 +105,49 @@ data class SendInvoice(
         photoHeight = null
     }
 }
+
+suspend fun RequestsExecutor.sendInvoice(
+    chatId: ChatId,
+    title: String,
+    description: String,
+    payload: String,
+    providerToken: String,
+    startParameter: StartParameter,
+    currency: Currency,
+    prices: List<LabeledPrice>,
+    providerData: String? = null,
+    requireName: Boolean = false,
+    requirePhoneNumber: Boolean = false,
+    requireEmail: Boolean = false,
+    requireShippingAddress: Boolean = false,
+    shouldSendPhoneNumberToProvider: Boolean = false,
+    shouldSendEmailToProvider: Boolean = false,
+    priceDependOnShipAddress: Boolean = false,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = execute(
+    SendInvoice(chatId, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, replyMarkup)
+)
+
+suspend fun RequestsExecutor.sendInvoice(
+    user: CommonUser,
+    title: String,
+    description: String,
+    payload: String,
+    providerToken: String,
+    startParameter: StartParameter,
+    currency: Currency,
+    prices: List<LabeledPrice>,
+    providerData: String? = null,
+    requireName: Boolean = false,
+    requirePhoneNumber: Boolean = false,
+    requireEmail: Boolean = false,
+    requireShippingAddress: Boolean = false,
+    shouldSendPhoneNumberToProvider: Boolean = false,
+    shouldSendEmailToProvider: Boolean = false,
+    priceDependOnShipAddress: Boolean = false,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = sendInvoice(user.id, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, replyMarkup)

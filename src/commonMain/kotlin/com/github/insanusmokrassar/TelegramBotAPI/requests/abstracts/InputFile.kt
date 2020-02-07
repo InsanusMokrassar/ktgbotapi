@@ -18,7 +18,7 @@ data class FileId(
     override val fileId: String
 ) : InputFile()
 
-fun String.toInputFile(): InputFile = FileId(this)
+fun String.toInputFile() = FileId(this)
 
 @Serializer(InputFile::class)
 internal object InputFileSerializer : KSerializer<InputFile> {

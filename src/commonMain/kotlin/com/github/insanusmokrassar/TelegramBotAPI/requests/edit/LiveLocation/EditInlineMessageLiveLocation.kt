@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
@@ -20,3 +21,19 @@ data class EditInlineMessageLiveLocation(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.editLiveLocation(
+    inlineMessageId: InlineMessageIdentifier,
+    latitude: Double,
+    longitude: Double,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = execute(
+    EditInlineMessageLiveLocation(
+        inlineMessageId, latitude, longitude, replyMarkup
+    )
+)
+suspend fun RequestsExecutor.editLiveLocation(
+    inlineMessageId: InlineMessageIdentifier,
+    location: Location,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = editLiveLocation(inlineMessageId, location.latitude, location.longitude, replyMarkup)

@@ -1,6 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.caption
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.text.EditInlineMessageText
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
@@ -22,3 +24,10 @@ data class EditInlineMessageCaption(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.editMessageCaption(
+    inlineMessageId: InlineMessageIdentifier,
+    text: String,
+    parseMode: ParseMode? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = execute(EditInlineMessageCaption(inlineMessageId, text, parseMode, replyMarkup))

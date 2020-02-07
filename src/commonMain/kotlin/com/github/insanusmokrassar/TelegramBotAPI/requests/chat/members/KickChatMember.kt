@@ -1,8 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.members
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.UntilDate
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -21,3 +24,27 @@ data class KickChatMember(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.kickChatMember(
+    chatId: ChatIdentifier,
+    userId: UserId,
+    untilDate: TelegramDate? = null
+) = execute(KickChatMember(chatId, userId, untilDate))
+
+suspend fun RequestsExecutor.kickChatMember(
+    chat: PublicChat,
+    userId: UserId,
+    untilDate: TelegramDate? = null
+) = kickChatMember(chat.id, userId, untilDate)
+
+suspend fun RequestsExecutor.kickChatMember(
+    chatId: ChatId,
+    user: User,
+    untilDate: TelegramDate? = null
+) = kickChatMember(chatId, user.id, untilDate)
+
+suspend fun RequestsExecutor.kickChatMember(
+    chat: PublicChat,
+    user: User,
+    untilDate: TelegramDate? = null
+) = kickChatMember(chat.id, user.id, untilDate)

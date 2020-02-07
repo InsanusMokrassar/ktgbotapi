@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.get
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
@@ -28,3 +29,19 @@ data class GetUserProfilePhotos(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.getUserProfilePhotos(
+    userId: UserId,
+    offset: Int? = null,
+    limit: Int? = null
+) = execute(
+    GetUserProfilePhotos(
+        userId, offset, limit
+    )
+)
+
+suspend fun RequestsExecutor.getUserProfilePhotos(
+    user: CommonUser,
+    offset: Int? = null,
+    limit: Int? = null
+) = getUserProfilePhotos(user.id, offset, limit)

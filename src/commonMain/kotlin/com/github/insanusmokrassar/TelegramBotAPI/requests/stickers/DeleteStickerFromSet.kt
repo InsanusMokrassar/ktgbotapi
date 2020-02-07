@@ -1,7 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.stickers
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
+import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickerField
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
@@ -17,3 +19,19 @@ data class DeleteStickerFromSet(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+
+
+suspend fun RequestsExecutor.deleteStickerFromSet(
+    sticker: FileId
+) = execute(
+    DeleteStickerFromSet(
+        sticker
+    )
+)
+
+suspend fun RequestsExecutor.deleteStickerFromSet(
+    sticker: Sticker
+) = deleteStickerFromSet(
+    sticker.fileId
+)

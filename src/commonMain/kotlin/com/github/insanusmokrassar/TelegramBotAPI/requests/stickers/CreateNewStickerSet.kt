@@ -1,7 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.stickers
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.common.CommonMultipartFileRequest
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.MultipartRequestImpl
 import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts.StickerSetAction
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
@@ -51,3 +53,52 @@ data class CreateNewStickerSet internal constructor(
 
     override fun method(): String = "createNewStickerSet"
 }
+
+
+suspend fun RequestsExecutor.createNewStickerSet(
+    userId: UserId,
+    name: String,
+    sticker: FileId,
+    emojis: String,
+    containsMasks: Boolean? = null,
+    maskPosition: MaskPosition? = null
+) = execute(
+    CreateNewStickerSet(userId, name, emojis, sticker, containsMasks, maskPosition)
+)
+
+suspend fun RequestsExecutor.createNewStickerSet(
+    userId: UserId,
+    name: String,
+    sticker: MultipartFile,
+    emojis: String,
+    containsMasks: Boolean? = null,
+    maskPosition: MaskPosition? = null
+) = execute(
+    CommonMultipartFileRequest(
+        CreateNewStickerSet(userId, name, emojis, null, containsMasks, maskPosition),
+        mapOf(pngStickerField to sticker)
+    )
+)
+
+
+suspend fun RequestsExecutor.createNewStickerSet(
+    user: CommonUser,
+    name: String,
+    sticker: FileId,
+    emojis: String,
+    containsMasks: Boolean? = null,
+    maskPosition: MaskPosition? = null
+) = createNewStickerSet(
+    user.id, name, sticker, emojis, containsMasks, maskPosition
+)
+
+suspend fun RequestsExecutor.createNewStickerSet(
+    user: CommonUser,
+    name: String,
+    sticker: MultipartFile,
+    emojis: String,
+    containsMasks: Boolean? = null,
+    maskPosition: MaskPosition? = null
+) = createNewStickerSet(
+    user.id, name, sticker, emojis, containsMasks, maskPosition
+)

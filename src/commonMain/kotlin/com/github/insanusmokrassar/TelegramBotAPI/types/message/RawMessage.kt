@@ -14,9 +14,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Unknow
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceOfPayment
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.SuccessfulPaymentInfo
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.abstracts.PaymentInfo
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.Invoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.SuccessfulPayment
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
@@ -130,6 +129,7 @@ internal data class RawMessage(
             location != null -> LocationContent(location)
             venue != null -> VenueContent(venue)
             poll != null -> PollContent(poll)
+            invoice != null -> InvoiceContent(invoice)
             else -> null
         }
     }
@@ -175,9 +175,8 @@ internal data class RawMessage(
         }
     }
 
-    private val paymentInfo: PaymentInfo? by lazy {
+    private val paymentInfo: SuccessfulPaymentInfo? by lazy {
         when {
-            invoice != null -> InvoiceOfPayment(invoice)
             successful_payment != null -> SuccessfulPaymentInfo(successful_payment)
             else -> null
         }

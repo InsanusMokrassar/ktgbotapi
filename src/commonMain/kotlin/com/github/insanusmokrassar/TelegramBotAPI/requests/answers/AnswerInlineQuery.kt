@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.answers
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
@@ -50,6 +51,28 @@ fun InlineQuery.createAnswer(
     switchPmText,
     switchPmParameter
 )
+
+suspend fun RequestsExecutor.answerInlineQuery(
+    inlineQueryID: InlineQueryIdentifier,
+    results: List<InlineQueryResult> = emptyList(),
+    cachedTime: Int? = null,
+    isPersonal: Boolean? = null,
+    nextOffset: String? = null,
+    switchPmText: String? = null,
+    switchPmParameter: String? = null
+) = execute(
+    AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
+)
+
+suspend fun RequestsExecutor.answerInlineQuery(
+    inlineQuery: InlineQuery,
+    results: List<InlineQueryResult> = emptyList(),
+    cachedTime: Int? = null,
+    isPersonal: Boolean? = null,
+    nextOffset: String? = null,
+    switchPmText: String? = null,
+    switchPmParameter: String? = null
+) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
 
 internal object InlineQueryAnswersResultsSerializer: KSerializer<List<InlineQueryResult>> by ArrayListSerializer(
     InlineQueryResultSerializer

@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
@@ -12,3 +13,5 @@ class GetMe : SimpleRequest<ExtendedBot> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+suspend fun RequestsExecutor.getMe() = execute(GetMe())

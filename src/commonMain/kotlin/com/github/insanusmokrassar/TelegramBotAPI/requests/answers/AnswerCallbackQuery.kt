@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.answers
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQuery.CallbackQuery
@@ -32,3 +33,19 @@ fun CallbackQuery.createAnswer(
     url: String? = null,
     cachedTimeSeconds: Int? = null
 ): AnswerCallbackQuery = AnswerCallbackQuery(id, text, showAlert, url, cachedTimeSeconds)
+
+suspend fun RequestsExecutor.answerCallbackQuery(
+    callbackQueryId: CallbackQueryIdentifier,
+    text: String? = null,
+    showAlert: Boolean? = null,
+    url: String? = null,
+    cachedTimeSeconds: Int? = null
+) = execute(AnswerCallbackQuery(callbackQueryId, text, showAlert, url, cachedTimeSeconds))
+
+suspend fun RequestsExecutor.answerCallbackQuery(
+    callbackQuery: CallbackQuery,
+    text: String? = null,
+    showAlert: Boolean? = null,
+    url: String? = null,
+    cachedTimeSeconds: Int? = null
+) = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)

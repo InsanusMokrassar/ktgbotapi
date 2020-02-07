@@ -78,10 +78,10 @@ important objects:
 Types declare different objects representation. For example, `Chat` for now represented as
 interface and has several realisations:
 
-* PrivateChat
-* GroupChat
-* SupergroupChat
-* ChannelChat
+* `PrivateChat`
+* `GroupChat`
+* `SupergroupChat`
+* `ChannelChat`
 
 Instead of common garbage with all information as in original [Chat](https://core.telegram.org/bots/api#chat),
 here it was separated for more obvious difference between chats types and their possible content.
@@ -98,7 +98,14 @@ val requestsExecutor: RequestsExecutor = ...
 requestsExecutor.execute(GetMe())
 ``` 
 
-The result type of [GetMe](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt)
+Or you can use new syntax:
+
+```kotlin
+val bot: RequestsExecutor = ...
+bot.getMe()
+```
+
+The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt)
 request is
 [ExtendedBot](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User.kt).
 
@@ -109,31 +116,38 @@ realisation of `RequestsExecutor`, but it is possible, that in future it will be
 project. How to create `RequestsExecutor`:
 
 ```kotlin
-val requestsExecutor = KtorRequestsExecutor(TOKEN)
+val requestsExecutor = KtorRequestsExecutor(
+    TelegramAPIUrlsKeeper(TOKEN)
+)
 ```
 
-Here `KtorRequestsExecutor` - default realisation with Ktor. `TOKEN` is just a token of bot which was retrieved
-according to [instruction](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
+Here:
 
-Besides, for correct usage of this, you must implement in your project both one of engines for client and server
-Ktor libraries:
+* `KtorRequestsExecutor` - default realisation with [ktor](https://ktor.io)
+* `TelegramAPIUrlsKeeper` - special keeper, which  you can save and use for getting files full urls (`resolveFileURL`
+extension inside of `PathedFile.kt`)
+* `TOKEN` is just a token of bot which was retrieved according to
+[instruction](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
+
+By default, for JVM there is implemented `CIO` client engine, but there is not server engine. Both can be changed like
+here:
 
 ```groovy
 dependencies {
     // ...
-    implementation "io.ktor:ktor-server-cio:$ktor_version"
-    implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+    implementation "io.ktor:ktor-server-cio:$ktor_version" // for implementing of server engine
+    implementation "io.ktor:ktor-client-okhttp:$ktor_version" // for implementing of additional client engine
     // ...
 }
 ```
 
-It is able to avoid using of `server` dependency in case if will not be used `Webhook`s. In this case,
+You can avoid using of `server` dependency in case if you will not use `Webhook`s. In this case,
 dependencies list will be simplify:
 
 ```groovy
 dependencies {
     // ...
-    implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+    implementation "io.ktor:ktor-client-okhttp:$ktor_version" // for implementing of additional client engine
     // ...
 }
 ```

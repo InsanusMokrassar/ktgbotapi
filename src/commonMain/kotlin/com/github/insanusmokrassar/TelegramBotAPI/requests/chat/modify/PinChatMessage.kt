@@ -1,8 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.modify
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -20,4 +24,25 @@ data class PinChatMessage (
         get() = BooleanSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
+}
+
+suspend fun RequestsExecutor.pinChatMessage(
+    chatId: ChatIdentifier,
+    messageId: MessageIdentifier,
+    disableNotification: Boolean = false
+) = execute(PinChatMessage(chatId, messageId, disableNotification))
+
+suspend fun RequestsExecutor.pinChatMessage(
+    chat: PublicChat,
+    messageId: MessageIdentifier,
+    disableNotification: Boolean = false
+) = pinChatMessage(chat.id, messageId, disableNotification)
+
+suspend fun RequestsExecutor.pinChatMessage(
+    message: Message,
+    disableNotification: Boolean = false
+) = if (message.chat is PublicChat) {
+    pinChatMessage(message.chat.id, message.messageId, disableNotification)
+} else {
+    error("It is possible to pin messages only in non one-to-one chats")
 }

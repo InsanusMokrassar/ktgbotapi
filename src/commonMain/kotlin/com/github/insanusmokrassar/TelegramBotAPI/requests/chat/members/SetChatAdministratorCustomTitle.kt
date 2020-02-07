@@ -1,7 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.members
 
+import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.BooleanSerializer
 
@@ -13,7 +16,7 @@ import kotlinx.serialization.internal.BooleanSerializer
 @Serializable
 data class SetChatAdministratorCustomTitle(
     @SerialName(chatIdField)
-    override val chatId: ChatId,
+    override val chatId: ChatIdentifier,
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(customTitleField)
@@ -31,3 +34,27 @@ data class SetChatAdministratorCustomTitle(
         }
     }
 }
+
+suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
+    chatId: ChatId,
+    userId: UserId,
+    customTitle: String
+) = execute(SetChatAdministratorCustomTitle(chatId, userId, customTitle))
+
+suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
+    chat: PublicChat,
+    userId: UserId,
+    customTitle: String
+) = setChatAdministratorCustomTitle(chat.id, userId, customTitle)
+
+suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
+    chatId: ChatId,
+    user: User,
+    customTitle: String
+) = setChatAdministratorCustomTitle(chatId, user.id, customTitle)
+
+suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
+    chat: PublicChat,
+    user: User,
+    customTitle: String
+) = setChatAdministratorCustomTitle(chat.id, user.id, customTitle)
