@@ -202,6 +202,22 @@ suspend fun RequestsExecutor.sendRegularPoll(
         chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
     )
 )
+suspend fun RequestsExecutor.sendRegularPoll(
+    chatId: ChatIdentifier,
+    poll: RegularPoll,
+    isClosed: Boolean = false,
+    question: String = poll.question,
+    options: List<String> = poll.options.map { it.text },
+    isAnonymous: Boolean = poll.isAnonymous,
+    allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendRegularPoll(
+        chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
+    )
+)
 
 suspend fun RequestsExecutor.sendRegularPoll(
     chat: Chat,
@@ -210,6 +226,21 @@ suspend fun RequestsExecutor.sendRegularPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendRegularPoll(
+    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendRegularPoll(
+    chat: Chat,
+    poll: RegularPoll,
+    isClosed: Boolean = false,
+    question: String = poll.question,
+    options: List<String> = poll.options.map { it.text },
+    isAnonymous: Boolean = poll.isAnonymous,
+    allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
