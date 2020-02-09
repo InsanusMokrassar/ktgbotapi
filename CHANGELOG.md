@@ -49,6 +49,7 @@
 * Added `RecordVideoNoteAction` and `UploadVideoNoteAction` for `record_video_note` and `upload_video_note` actions
 * For most part of messages was added `RequestsExecutor` extensions for more useful way of usage
 * `toInputFile` extensions now will return more exact types
+* Now it is possible to send broadcast channels size for `FlowsUpdatesFilter`
 
 ## 0.22.0
 

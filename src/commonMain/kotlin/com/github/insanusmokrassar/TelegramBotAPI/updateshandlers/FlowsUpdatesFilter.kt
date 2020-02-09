@@ -10,21 +10,23 @@ import kotlinx.coroutines.flow.asFlow
 
 private fun <T> BroadcastChannel<T>.createUpdateReceiver(): UpdateReceiver<T> = ::send
 
-class FlowsUpdatesFilter {
-    private val messageChannel: BroadcastChannel<MessageUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val messageMediaGroupChannel: BroadcastChannel<MessageMediaGroupUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val editedMessageChannel: BroadcastChannel<EditMessageUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val editedMessageMediaGroupChannel: BroadcastChannel<EditMessageMediaGroupUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val channelPostChannel: BroadcastChannel<ChannelPostUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val channelPostMediaGroupChannel: BroadcastChannel<ChannelPostMediaGroupUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val editedChannelPostChannel: BroadcastChannel<EditChannelPostUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val editedChannelPostMediaGroupChannel: BroadcastChannel<EditChannelPostMediaGroupUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val chosenInlineResultChannel: BroadcastChannel<ChosenInlineResultUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val inlineQueryChannel: BroadcastChannel<InlineQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val callbackQueryChannel: BroadcastChannel<CallbackQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val shippingQueryChannel: BroadcastChannel<ShippingQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val preCheckoutQueryChannel: BroadcastChannel<PreCheckoutQueryUpdate> = BroadcastChannel(Channel.CONFLATED)
-    private val pollChannel: BroadcastChannel<PollUpdate> = BroadcastChannel(Channel.CONFLATED)
+class FlowsUpdatesFilter(
+    broadcastChannelsSize: Int = Channel.CONFLATED
+) {
+    private val messageChannel: BroadcastChannel<MessageUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val messageMediaGroupChannel: BroadcastChannel<MessageMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val editedMessageChannel: BroadcastChannel<EditMessageUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val editedMessageMediaGroupChannel: BroadcastChannel<EditMessageMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val channelPostChannel: BroadcastChannel<ChannelPostUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val channelPostMediaGroupChannel: BroadcastChannel<ChannelPostMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val editedChannelPostChannel: BroadcastChannel<EditChannelPostUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val editedChannelPostMediaGroupChannel: BroadcastChannel<EditChannelPostMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val chosenInlineResultChannel: BroadcastChannel<ChosenInlineResultUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val inlineQueryChannel: BroadcastChannel<InlineQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val callbackQueryChannel: BroadcastChannel<CallbackQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val shippingQueryChannel: BroadcastChannel<ShippingQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val preCheckoutQueryChannel: BroadcastChannel<PreCheckoutQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val pollChannel: BroadcastChannel<PollUpdate> = BroadcastChannel(broadcastChannelsSize)
 
     val filter = UpdatesFilter(
         messageChannel.createUpdateReceiver(),
