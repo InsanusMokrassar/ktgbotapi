@@ -5,6 +5,9 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI)
 [![Build Status](https://jenkins.insanusmokrassar.com/buildStatus/icon?job=TelegramBotAPI_master__publishing)](https://jenkins.insanusmokrassar.com/job/TelegramBotAPI_master__publishing/)
 
+[![Chat in Telegram](badges/chat.svg)](https://t.me/InMoTelegramBotAPI)
+
+
 ## What is it?
 
 Library for Object-Oriented and type-safe work with Telegram Bot API. Most part of some specific solves or unuseful
