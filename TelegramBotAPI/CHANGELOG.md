@@ -55,6 +55,8 @@
 
 * Fixes in `InputMedia` - `media` field was not included to serialization
 
+### 0.23.3
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**
