@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$gradle_bintray_plugin_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.multiplatform" version "$kotlin_version"
+    id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version"
+}
+
+project.version = "$library_version"
+project.group = "com.github.insanusmokrassar"
+
+apply from: "publish.gradle"
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+}
+
+kotlin {
+    jvm()
+    js()
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib')
+                if (project.hasProperty('DEV_MODE') && project.property('DEV_MODE') == "true") {
+                    project (":TelegramBotAPI")
+                } else {
+                    api "${project.group}:TelegramBotAPI:$library_version"
+                }
+            }
+        }
+    }
+}
