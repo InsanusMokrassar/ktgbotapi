@@ -51,6 +51,10 @@
 * `toInputFile` extensions now will return more exact types
 * Now it is possible to send broadcast channels size for `FlowsUpdatesFilter`
 
+### 0.23.2
+
+* Fixes in `InputMedia` - `media` field was not included to serialization
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**

@@ -19,11 +19,8 @@ data class InputMediaDocument(
     override val type: String = "document"
 
     @SerialName(mediaField)
-    val media: String
-        get() = file.let {
-            when (it) {
-                is FileId -> it.fileId
-                is MultipartFile -> it.fileId.toInputMediaFileAttachmentName()
-            }
-        }
+    val media: String = when (file) {
+        is FileId -> file.fileId
+        is MultipartFile -> file.fileId.toInputMediaFileAttachmentName()
+    }
 }
