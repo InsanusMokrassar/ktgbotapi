@@ -69,6 +69,7 @@ fun Contact.toRequest(
     replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendContact(
     chatId: ChatIdentifier,
     phoneNumber: String,
@@ -83,6 +84,7 @@ suspend fun RequestsExecutor.sendContact(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendContact(
     chatId: ChatIdentifier,
     contact: Contact,
@@ -95,6 +97,7 @@ suspend fun RequestsExecutor.sendContact(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendContact(
     chat: Chat,
     phoneNumber: String,
@@ -107,6 +110,7 @@ suspend fun RequestsExecutor.sendContact(
     chat.id, phoneNumber, firstName, lastName, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendContact(
     chat: Chat,
     contact: Contact,

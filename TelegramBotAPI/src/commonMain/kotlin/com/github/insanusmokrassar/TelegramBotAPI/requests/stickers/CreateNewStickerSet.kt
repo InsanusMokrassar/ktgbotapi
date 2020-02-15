@@ -54,6 +54,7 @@ data class CreateNewStickerSet internal constructor(
 }
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.createNewStickerSet(
     userId: UserId,
     name: String,
@@ -65,6 +66,7 @@ suspend fun RequestsExecutor.createNewStickerSet(
     CreateNewStickerSet(userId, name, emojis, sticker, containsMasks, maskPosition)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.createNewStickerSet(
     userId: UserId,
     name: String,
@@ -80,6 +82,7 @@ suspend fun RequestsExecutor.createNewStickerSet(
 )
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.createNewStickerSet(
     user: CommonUser,
     name: String,
@@ -91,6 +94,7 @@ suspend fun RequestsExecutor.createNewStickerSet(
     user.id, name, sticker, emojis, containsMasks, maskPosition
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.createNewStickerSet(
     user: CommonUser,
     name: String,

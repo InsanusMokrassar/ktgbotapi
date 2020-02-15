@@ -50,6 +50,7 @@ data class SendLocation(
     }
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendLocation(
     chatId: ChatIdentifier,
     latitude: Double,
@@ -68,6 +69,7 @@ suspend fun RequestsExecutor.sendLocation(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendLocation(
     chatId: ChatIdentifier,
     location: Location,
@@ -83,6 +85,7 @@ suspend fun RequestsExecutor.sendLocation(
     replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendLocation(
     chat: Chat,
     latitude: Double,
@@ -99,6 +102,7 @@ suspend fun RequestsExecutor.sendLocation(
     replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendLocation(
     chat: Chat,
     location: Location,

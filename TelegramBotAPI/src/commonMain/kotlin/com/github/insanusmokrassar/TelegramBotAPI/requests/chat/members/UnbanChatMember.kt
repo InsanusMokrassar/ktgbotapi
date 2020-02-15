@@ -21,21 +21,25 @@ data class UnbanChatMember(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.unbanChatMember(
     chatId: ChatIdentifier,
     userId: UserId
 ) = execute(UnbanChatMember(chatId, userId))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.unbanChatMember(
     chat: PublicChat,
     userId: UserId
 ) = unbanChatMember(chat.id, userId)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.unbanChatMember(
     chatId: ChatId,
     user: User
 ) = unbanChatMember(chatId, user.id)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.unbanChatMember(
     chat: PublicChat,
     user: User

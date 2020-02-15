@@ -22,6 +22,7 @@ data class EditInlineMessageLiveLocation(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editLiveLocation(
     inlineMessageId: InlineMessageIdentifier,
     latitude: Double,
@@ -32,6 +33,7 @@ suspend fun RequestsExecutor.editLiveLocation(
         inlineMessageId, latitude, longitude, replyMarkup
     )
 )
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editLiveLocation(
     inlineMessageId: InlineMessageIdentifier,
     location: Location,

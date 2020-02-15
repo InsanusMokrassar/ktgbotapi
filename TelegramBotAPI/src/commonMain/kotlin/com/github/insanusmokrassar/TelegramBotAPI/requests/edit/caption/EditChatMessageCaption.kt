@@ -36,6 +36,7 @@ data class EditChatMessageCaption(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -46,6 +47,7 @@ suspend fun RequestsExecutor.editMessageCaption(
     EditChatMessageCaption(chatId, messageId, text, parseMode, replyMarkup)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editMessageCaption(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -54,6 +56,7 @@ suspend fun RequestsExecutor.editMessageCaption(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageCaption(chat.id, messageId, text, parseMode, replyMarkup)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun <T> RequestsExecutor.editMessageCaption(
     message: ContentMessage<T>,
     text: String,

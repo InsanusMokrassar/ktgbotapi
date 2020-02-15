@@ -19,6 +19,7 @@ data class StopInlineMessageLiveLocation(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.stopLiveLocation(
     inlineMessageId: InlineMessageIdentifier,
     replyMarkup: InlineKeyboardMarkup? = null

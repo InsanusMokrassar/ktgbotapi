@@ -22,21 +22,25 @@ data class GetChatMember(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getChatMember(
     chatId: ChatIdentifier,
     userId: UserId
 ) = execute(GetChatMember(chatId, userId))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getChatMember(
     chat: PublicChat,
     userId: UserId
 ) = getChatMember(chat.id, userId)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getChatMember(
     chatId: ChatId,
     user: User
 ) = getChatMember(chatId, user.id)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getChatMember(
     chat: PublicChat,
     user: User

@@ -102,6 +102,7 @@ data class SendDocumentFiles internal constructor(
     thumbField to thumb
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendDocument(
     chatId: ChatIdentifier,
     document: FileId,
@@ -124,6 +125,7 @@ suspend fun RequestsExecutor.sendDocument(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendDocument(
     chatId: ChatIdentifier,
     document: DocumentFile,
@@ -137,6 +139,7 @@ suspend fun RequestsExecutor.sendDocument(
     chatId, document.fileId, thumb ?.fileId, text, parseMode, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendDocument(
     chatId: ChatIdentifier,
     document: MultipartFile,
@@ -155,6 +158,7 @@ suspend fun RequestsExecutor.sendDocument(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendDocument(
     chatId: ChatIdentifier,
     document: MultipartFile,
@@ -173,6 +177,7 @@ suspend fun RequestsExecutor.sendDocument(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendDocument(
     chatId: ChatIdentifier,
     document: FileId,
@@ -191,6 +196,7 @@ suspend fun RequestsExecutor.sendDocument(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendDocument(
     chatId: ChatIdentifier,
     document: MultipartFile,
@@ -204,6 +210,7 @@ suspend fun RequestsExecutor.sendDocument(
     chatId, document, thumb ?.fileId , text, parseMode, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendDocument(
     chatId: ChatIdentifier,
     document: DocumentFile,

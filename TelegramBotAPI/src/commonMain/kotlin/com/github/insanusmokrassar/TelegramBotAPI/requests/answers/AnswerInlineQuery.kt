@@ -52,6 +52,7 @@ fun InlineQuery.createAnswer(
     switchPmParameter
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.answerInlineQuery(
     inlineQueryID: InlineQueryIdentifier,
     results: List<InlineQueryResult> = emptyList(),
@@ -64,6 +65,7 @@ suspend fun RequestsExecutor.answerInlineQuery(
     AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.answerInlineQuery(
     inlineQuery: InlineQuery,
     results: List<InlineQueryResult> = emptyList(),

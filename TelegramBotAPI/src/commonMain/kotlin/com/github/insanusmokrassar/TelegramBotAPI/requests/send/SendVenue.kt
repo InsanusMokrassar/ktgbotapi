@@ -76,6 +76,7 @@ fun Venue.toRequest(
     replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVenue(
     chatId: ChatIdentifier,
     latitude: Double,
@@ -92,6 +93,7 @@ suspend fun RequestsExecutor.sendVenue(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVenue(
     chat: Chat,
     latitude: Double,
@@ -106,6 +108,7 @@ suspend fun RequestsExecutor.sendVenue(
     chat.id, latitude, longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVenue(
     chatId: ChatIdentifier,
     venue: Venue,
@@ -118,6 +121,7 @@ suspend fun RequestsExecutor.sendVenue(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVenue(
     chat: Chat,
     venue: Venue,

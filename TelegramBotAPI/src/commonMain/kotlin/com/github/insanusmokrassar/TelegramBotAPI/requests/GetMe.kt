@@ -14,4 +14,5 @@ class GetMe : SimpleRequest<ExtendedBot> {
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getMe() = execute(GetMe())

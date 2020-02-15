@@ -25,18 +25,21 @@ data class PinChatMessage (
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.pinChatMessage(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
     disableNotification: Boolean = false
 ) = execute(PinChatMessage(chatId, messageId, disableNotification))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.pinChatMessage(
     chat: PublicChat,
     messageId: MessageIdentifier,
     disableNotification: Boolean = false
 ) = pinChatMessage(chat.id, messageId, disableNotification)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.pinChatMessage(
     message: Message,
     disableNotification: Boolean = false

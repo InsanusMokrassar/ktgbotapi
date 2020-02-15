@@ -29,6 +29,7 @@ data class SetStickerPositionInSet(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setStickerPositionInSet(
     sticker: FileId,
     position: Int
@@ -39,6 +40,7 @@ suspend fun RequestsExecutor.setStickerPositionInSet(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setStickerPositionInSet(
     sticker: Sticker,
     position: Int

@@ -32,6 +32,7 @@ data class EditChatMessageLiveLocation(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editLiveLocation(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -44,6 +45,7 @@ suspend fun RequestsExecutor.editLiveLocation(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editLiveLocation(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -52,6 +54,7 @@ suspend fun RequestsExecutor.editLiveLocation(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(chat.id, messageId, latitude, longitude, replyMarkup)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editLiveLocation(
     message: ContentMessage<LocationContent>,
     latitude: Double,
@@ -59,6 +62,7 @@ suspend fun RequestsExecutor.editLiveLocation(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(message.chat, message.messageId, latitude, longitude, replyMarkup)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editLiveLocation(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -70,6 +74,7 @@ suspend fun RequestsExecutor.editLiveLocation(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editLiveLocation(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -77,6 +82,7 @@ suspend fun RequestsExecutor.editLiveLocation(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(chat.id, messageId, location.latitude, location.longitude, replyMarkup)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editLiveLocation(
     message: ContentMessage<LocationContent>,
     location: Location,

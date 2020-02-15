@@ -27,10 +27,12 @@ data class GetChatAdministrators(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getChatAdministrators(
     chatId: ChatIdentifier
 ) = execute(GetChatAdministrators(chatId))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getChatAdministrators(
     chat: PublicChat
 ) = getChatAdministrators(chat.id)

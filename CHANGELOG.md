@@ -57,6 +57,15 @@
 
 ### 0.23.3
 
+__API Extensions__
+
+* For `SendPhoto` was added new functions for uploading of `MultipartFile`
+* `deleteWebhook` extension for `RequestsExecutor` was added
+
+__Telegram Bot API__
+
+* `LiveLocation` now have public constructor, but it is still not recommended to use directly
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**

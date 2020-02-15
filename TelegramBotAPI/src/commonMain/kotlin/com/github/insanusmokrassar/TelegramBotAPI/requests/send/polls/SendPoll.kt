@@ -187,6 +187,7 @@ data class SendQuizPoll(
 }
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendRegularPoll(
     chatId: ChatIdentifier,
     question: String,
@@ -202,6 +203,7 @@ suspend fun RequestsExecutor.sendRegularPoll(
         chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
     )
 )
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendRegularPoll(
     chatId: ChatIdentifier,
     poll: RegularPoll,
@@ -219,6 +221,7 @@ suspend fun RequestsExecutor.sendRegularPoll(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendRegularPoll(
     chat: Chat,
     question: String,
@@ -233,6 +236,7 @@ suspend fun RequestsExecutor.sendRegularPoll(
     chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendRegularPoll(
     chat: Chat,
     poll: RegularPoll,
@@ -249,6 +253,7 @@ suspend fun RequestsExecutor.sendRegularPoll(
 )
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
@@ -265,6 +270,7 @@ suspend fun RequestsExecutor.sendQuizPoll(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendQuizPoll(
     chat: Chat,
     question: String,
@@ -279,6 +285,7 @@ suspend fun RequestsExecutor.sendQuizPoll(
     chat.id, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendQuizPoll(
     chatId: ChatIdentifier,
     isClosed: Boolean = false,
@@ -296,6 +303,7 @@ suspend fun RequestsExecutor.sendQuizPoll(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendQuizPoll(
     chat: Chat,
     isClosed: Boolean = false,

@@ -19,6 +19,7 @@ data class EditInlineMessageReplyMarkup(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editMessageReplyMarkup(
     inlineMessageId: InlineMessageIdentifier,
     replyMarkup: InlineKeyboardMarkup? = null

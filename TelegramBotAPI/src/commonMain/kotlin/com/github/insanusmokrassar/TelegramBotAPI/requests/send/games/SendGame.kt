@@ -36,6 +36,7 @@ data class SendGame (
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendGame(
     chatId: ChatIdentifier,
     gameShortName: String,
@@ -48,6 +49,7 @@ suspend fun RequestsExecutor.sendGame(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendGame(
     chat: Chat,
     gameShortName: String,
@@ -58,6 +60,7 @@ suspend fun RequestsExecutor.sendGame(
     chat.id, gameShortName, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendGame(
     chatId: ChatIdentifier,
     game: Game,
@@ -68,6 +71,7 @@ suspend fun RequestsExecutor.sendGame(
     chatId, game.title, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendGame(
     chat: Chat,
     game: Game,

@@ -27,6 +27,7 @@ data class RestrictChatMember(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.restrictChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
@@ -34,6 +35,7 @@ suspend fun RequestsExecutor.restrictChatMember(
     permissions: ChatPermissions = ChatPermissions()
 ) = execute(RestrictChatMember(chatId, userId, untilDate, permissions))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.restrictChatMember(
     chat: PublicChat,
     userId: UserId,
@@ -41,6 +43,7 @@ suspend fun RequestsExecutor.restrictChatMember(
     permissions: ChatPermissions = ChatPermissions()
 ) = restrictChatMember(chat.id, userId, untilDate, permissions)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.restrictChatMember(
     chatId: ChatId,
     user: User,
@@ -48,6 +51,7 @@ suspend fun RequestsExecutor.restrictChatMember(
     permissions: ChatPermissions = ChatPermissions()
 ) = restrictChatMember(chatId, user.id, untilDate, permissions)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.restrictChatMember(
     chat: PublicChat,
     user: User,

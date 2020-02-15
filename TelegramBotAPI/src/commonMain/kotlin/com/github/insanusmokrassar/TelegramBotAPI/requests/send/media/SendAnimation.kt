@@ -116,6 +116,7 @@ data class SendAnimationFiles internal constructor(
     thumbField to thumb
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAnimation(
     chatId: ChatIdentifier,
     animation: FileId,
@@ -144,6 +145,7 @@ suspend fun RequestsExecutor.sendAnimation(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAnimation(
     chatId: ChatIdentifier,
     animation: AnimationFile,
@@ -157,6 +159,7 @@ suspend fun RequestsExecutor.sendAnimation(
     chatId, animation.fileId, thumb ?.fileId, text, parseMode, animation.duration, animation.width, animation.height, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAnimation(
     chatId: ChatIdentifier,
     animation: MultipartFile,
@@ -178,6 +181,7 @@ suspend fun RequestsExecutor.sendAnimation(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAnimation(
     chatId: ChatIdentifier,
     animation: MultipartFile,
@@ -199,6 +203,7 @@ suspend fun RequestsExecutor.sendAnimation(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAnimation(
     chatId: ChatIdentifier,
     animation: FileId,
@@ -220,6 +225,7 @@ suspend fun RequestsExecutor.sendAnimation(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAnimation(
     chatId: ChatIdentifier,
     animation: MultipartFile,
@@ -236,6 +242,7 @@ suspend fun RequestsExecutor.sendAnimation(
     chatId, animation, thumb ?.fileId , text, parseMode, duration, width, height, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAnimation(
     chatId: ChatIdentifier,
     animation: AnimationFile,

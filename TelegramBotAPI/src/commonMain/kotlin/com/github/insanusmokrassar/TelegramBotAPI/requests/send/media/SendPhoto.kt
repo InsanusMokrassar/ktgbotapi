@@ -86,6 +86,7 @@ data class SendPhotoFiles internal constructor(
     photoField to photo
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendPhoto(
     chatId: ChatIdentifier,
     fileId: FileId,
@@ -106,6 +107,7 @@ suspend fun RequestsExecutor.sendPhoto(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendPhoto(
     chatId: ChatIdentifier,
     file: PhotoSize,
@@ -118,6 +120,7 @@ suspend fun RequestsExecutor.sendPhoto(
     chatId, file.fileId, caption, parseMode, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendPhoto(
     chatId: ChatIdentifier,
     photo: Photo,
@@ -130,6 +133,7 @@ suspend fun RequestsExecutor.sendPhoto(
     chatId, photo.biggest() ?: throw IllegalArgumentException("Photo $photo is empty"), caption, parseMode, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendPhoto(
     chat: Chat,
     fileId: FileId,
@@ -148,6 +152,7 @@ suspend fun RequestsExecutor.sendPhoto(
     replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendPhoto(
     chat: Chat,
     file: PhotoSize,
@@ -160,6 +165,7 @@ suspend fun RequestsExecutor.sendPhoto(
     chat.id, file.fileId, caption, parseMode, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendPhoto(
     chat: Chat,
     photo: Photo,

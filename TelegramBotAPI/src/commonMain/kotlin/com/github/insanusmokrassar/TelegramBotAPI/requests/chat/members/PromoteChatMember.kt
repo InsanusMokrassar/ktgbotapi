@@ -40,6 +40,7 @@ data class PromoteChatMember(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.promoteChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
@@ -68,6 +69,7 @@ suspend fun RequestsExecutor.promoteChatMember(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.promoteChatMember(
     chat: PublicChat,
     userId: UserId,
@@ -94,6 +96,7 @@ suspend fun RequestsExecutor.promoteChatMember(
     canPromoteMembers
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.promoteChatMember(
     chatId: ChatId,
     user: User,
@@ -120,6 +123,7 @@ suspend fun RequestsExecutor.promoteChatMember(
     canPromoteMembers
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.promoteChatMember(
     chat: PublicChat,
     user: User,

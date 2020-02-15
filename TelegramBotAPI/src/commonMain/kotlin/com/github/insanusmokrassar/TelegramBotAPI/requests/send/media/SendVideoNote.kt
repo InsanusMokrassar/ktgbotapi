@@ -115,6 +115,7 @@ data class SendVideoNoteFiles internal constructor(
     thumbField to thumb
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: FileId,
@@ -141,6 +142,7 @@ suspend fun RequestsExecutor.sendVideoNote(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: VideoFile,
@@ -154,6 +156,7 @@ suspend fun RequestsExecutor.sendVideoNote(
     chatId, videoNote.fileId, thumb ?.fileId, text, parseMode, videoNote.duration, videoNote.width, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: MultipartFile,
@@ -174,6 +177,7 @@ suspend fun RequestsExecutor.sendVideoNote(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: MultipartFile,
@@ -194,6 +198,7 @@ suspend fun RequestsExecutor.sendVideoNote(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: FileId,
@@ -214,6 +219,7 @@ suspend fun RequestsExecutor.sendVideoNote(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: MultipartFile,
@@ -229,6 +235,7 @@ suspend fun RequestsExecutor.sendVideoNote(
     chatId, videoNote, thumb ?.fileId , text, parseMode, duration, size, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: VideoFile,

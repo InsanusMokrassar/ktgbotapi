@@ -23,6 +23,7 @@ data class SetGameScoreByInlineMessageId (
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setGameScore(
     userId: UserId,
     score: Long,
@@ -35,6 +36,7 @@ suspend fun RequestsExecutor.setGameScore(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setGameScore(
     user: CommonUser,
     score: Long,
