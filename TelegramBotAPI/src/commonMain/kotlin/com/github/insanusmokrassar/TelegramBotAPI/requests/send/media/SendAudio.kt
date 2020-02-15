@@ -118,6 +118,7 @@ data class SendAudioFiles internal constructor(
     thumbField to thumb
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAudio(
     chatId: ChatIdentifier,
     audio: FileId,
@@ -146,6 +147,7 @@ suspend fun RequestsExecutor.sendAudio(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAudio(
     chatId: ChatIdentifier,
     audio: AudioFile,
@@ -160,6 +162,7 @@ suspend fun RequestsExecutor.sendAudio(
     chatId, audio.fileId, thumb ?.fileId, text, parseMode, audio.duration, audio.performer, title, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAudio(
     chatId: ChatIdentifier,
     audio: MultipartFile,
@@ -181,6 +184,7 @@ suspend fun RequestsExecutor.sendAudio(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAudio(
     chatId: ChatIdentifier,
     audio: MultipartFile,
@@ -202,6 +206,7 @@ suspend fun RequestsExecutor.sendAudio(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAudio(
     chatId: ChatIdentifier,
     audio: FileId,
@@ -223,6 +228,7 @@ suspend fun RequestsExecutor.sendAudio(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAudio(
     chatId: ChatIdentifier,
     audio: MultipartFile,
@@ -239,6 +245,7 @@ suspend fun RequestsExecutor.sendAudio(
     chatId, audio, thumb ?.fileId , text, parseMode, duration, performer, title, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendAudio(
     chatId: ChatIdentifier,
     audio: AudioFile,

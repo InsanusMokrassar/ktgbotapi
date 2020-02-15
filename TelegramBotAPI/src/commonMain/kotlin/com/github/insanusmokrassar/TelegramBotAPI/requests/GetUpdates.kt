@@ -29,6 +29,7 @@ data class GetUpdates(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getUpdates(
     offset: UpdateIdentifier? = null,
     limit: Int? = null,
@@ -40,6 +41,7 @@ suspend fun RequestsExecutor.getUpdates(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getUpdates(
     lastUpdate: Update,
     limit: Int? = null,

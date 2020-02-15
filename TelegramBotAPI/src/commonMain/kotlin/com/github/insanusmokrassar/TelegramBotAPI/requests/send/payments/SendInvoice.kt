@@ -107,6 +107,7 @@ data class SendInvoice(
     }
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendInvoice(
     chatId: ChatId,
     title: String,
@@ -131,6 +132,7 @@ suspend fun RequestsExecutor.sendInvoice(
     SendInvoice(chatId, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, replyMarkup)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendInvoice(
     user: CommonUser,
     title: String,

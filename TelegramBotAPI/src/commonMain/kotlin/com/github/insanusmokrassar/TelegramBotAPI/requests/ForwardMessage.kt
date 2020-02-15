@@ -32,6 +32,7 @@ data class ForwardMessage(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.forwardMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
@@ -41,6 +42,7 @@ suspend fun RequestsExecutor.forwardMessage(
     ForwardMessage(fromChatId, toChatId, messageId, disableNotification)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.forwardMessage(
     fromChat: Chat,
     toChatId: ChatIdentifier,
@@ -48,6 +50,7 @@ suspend fun RequestsExecutor.forwardMessage(
     disableNotification: Boolean = false
 ) = forwardMessage(fromChat.id, toChatId, messageId, disableNotification)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.forwardMessage(
     fromChatId: ChatIdentifier,
     toChat: Chat,
@@ -55,6 +58,7 @@ suspend fun RequestsExecutor.forwardMessage(
     disableNotification: Boolean = false
 ) = forwardMessage(fromChatId, toChat.id, messageId, disableNotification)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.forwardMessage(
     fromChat: Chat,
     toChat: Chat,
@@ -62,12 +66,14 @@ suspend fun RequestsExecutor.forwardMessage(
     disableNotification: Boolean = false
 ) = forwardMessage(fromChat.id, toChat.id, messageId, disableNotification)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.forwardMessage(
     toChatId: ChatIdentifier,
     message: Message,
     disableNotification: Boolean = false
 ) = forwardMessage(message.chat, toChatId, message.messageId, disableNotification)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.forwardMessage(
     toChat: Chat,
     message: Message,

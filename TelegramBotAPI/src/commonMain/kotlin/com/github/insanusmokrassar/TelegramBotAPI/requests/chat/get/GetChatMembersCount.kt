@@ -21,10 +21,12 @@ data class GetChatMembersCount(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getChatMembersCount(
     chatId: ChatIdentifier
 ) = execute(GetChatMembersCount(chatId))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getChatMembersCount(
     chat: PublicChat
 ) = getChatMembersCount(chat.id)

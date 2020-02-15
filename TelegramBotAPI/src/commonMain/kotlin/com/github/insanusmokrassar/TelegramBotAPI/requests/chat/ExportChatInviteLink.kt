@@ -21,10 +21,12 @@ data class ExportChatInviteLink(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.exportChatInviteLink(
     chatId: ChatIdentifier
 ) = execute(ExportChatInviteLink(chatId))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.exportChatInviteLink(
     chat: PublicChat
 ) = exportChatInviteLink(chat.id)

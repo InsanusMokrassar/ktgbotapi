@@ -37,7 +37,11 @@ of signed artifacts in Bintray). You can:
 [here](https://mvnrepository.com/artifact/com.github.insanusmokrassar/TelegramBotAPI))
 * Add `jCenter` repository in build config
 
-### Maven
+### TelegramBotAPI
+
+Contains core and most required things, like types, requests and `KtorRequestsExecutor`.
+
+#### Maven
 
 Dependency config presented here:
 
@@ -49,7 +53,7 @@ Dependency config presented here:
 </dependency>
 ```
 
-### Gradle
+#### Gradle
 
 To use last versions you will need to add one line in repositories block of your `build.gradle`:
 
@@ -67,14 +71,49 @@ or for old gradle:
 compile "com.github.insanusmokrassar:TelegramBotAPI:$telegrambotapi_version"
 ```
 
+### API extensions
+
+Contains extensions for `RequestsExecutor` which usually more obvious than original ones in `TelegramBotAPI` and more
+useful.
+
+#### Maven
+
+Dependency config presented here:
+
+```xml
+<dependency>
+  <groupId>com.github.insanusmokrassar</groupId>
+  <artifactId>TelegramBotAPI-extensions-api</artifactId>
+  <version>${telegrambotapi.version}</version>
+</dependency>
+```
+
+#### Gradle
+
+To use last versions you will need to add one line in repositories block of your `build.gradle`:
+
+`jcenter()` or `mavenCentral()`
+
+And add next line to your dependencies block:
+
+```groovy
+implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$telegrambotapi_version"
+```
+
+or for old gradle:
+
+```groovy
+compile "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$telegrambotapi_version"
+```
+
 ## How to work with library?
 
 For now, this library have no some API god-object. Instead of this, this library has several
 important objects:
 
-* [RequestsExecutor](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/bot/RequestsExecutor.kt)
-* [Requests](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests)
-* [Types](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types)
+* [RequestsExecutor](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/bot/RequestsExecutor.kt)
+* [Requests](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests)
+* [Types](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types)
 
 ### Types
 
@@ -101,16 +140,16 @@ val requestsExecutor: RequestsExecutor = ...
 requestsExecutor.execute(GetMe())
 ``` 
 
-Or you can use new syntax:
+Or you can use new syntax (available by implementing of project [API extensions](#API-extensions):
 
 ```kotlin
 val bot: RequestsExecutor = ...
 bot.getMe()
 ```
 
-The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt)
+The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt)
 request is
-[ExtendedBot](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User.kt).
+[ExtendedBot](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User.kt).
 
 ### RequestsExecutor
 
@@ -206,6 +245,6 @@ Here:
 
 * `WEBHOOK_URL` - the url which will be used by Telegram system to send updates
 * `INTERNAL_PORT` - the port which will be used in bot for listening of updates
-* `filter` - instance of [UpdatesFilter](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/updateshandlers/UpdatesFilter.kt),
+* `filter` - instance of [UpdatesFilter](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/updateshandlers/UpdatesFilter.kt),
 which will be used to filter incoming updates
 * `ENGINE_FACTORY` - used factory name, for example, `CIO` in case of usage `io.ktor:ktor-server-cio` as server engine

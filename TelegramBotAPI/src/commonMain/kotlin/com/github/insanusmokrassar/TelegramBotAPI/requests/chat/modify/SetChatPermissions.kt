@@ -23,11 +23,13 @@ data class SetChatPermissions (
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setDefaultChatMembersPermissions(
     chatId: ChatIdentifier,
     permissions: ChatPermissions
 ) = execute(SetChatPermissions(chatId, permissions))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setDefaultChatMembersPermissions(
     chat: PublicChat,
     permissions: ChatPermissions

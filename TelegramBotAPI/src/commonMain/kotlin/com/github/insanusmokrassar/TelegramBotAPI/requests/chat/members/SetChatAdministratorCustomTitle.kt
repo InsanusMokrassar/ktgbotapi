@@ -34,24 +34,28 @@ data class SetChatAdministratorCustomTitle(
     }
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
     chatId: ChatId,
     userId: UserId,
     customTitle: String
 ) = execute(SetChatAdministratorCustomTitle(chatId, userId, customTitle))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
     chat: PublicChat,
     userId: UserId,
     customTitle: String
 ) = setChatAdministratorCustomTitle(chat.id, userId, customTitle)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
     chatId: ChatId,
     user: User,
     customTitle: String
 ) = setChatAdministratorCustomTitle(chatId, user.id, customTitle)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setChatAdministratorCustomTitle(
     chat: PublicChat,
     user: User,

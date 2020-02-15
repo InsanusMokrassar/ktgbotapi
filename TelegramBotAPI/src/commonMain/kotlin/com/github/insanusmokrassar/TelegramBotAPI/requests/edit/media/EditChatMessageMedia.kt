@@ -41,6 +41,7 @@ data class EditChatMessageMedia(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editMessageMedia(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -50,6 +51,7 @@ suspend fun RequestsExecutor.editMessageMedia(
     EditChatMessageMedia(chatId, messageId, media, replyMarkup)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editMessageMedia(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -57,6 +59,7 @@ suspend fun RequestsExecutor.editMessageMedia(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chat.id, messageId, media, replyMarkup)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editMessageMedia(
     message: ContentMessage<out MediaContent>,
     media: InputMedia,

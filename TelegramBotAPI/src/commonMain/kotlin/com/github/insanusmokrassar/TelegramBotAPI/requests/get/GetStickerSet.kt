@@ -19,12 +19,14 @@ data class GetStickerSet(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getStickerSet(
     name: String
 ) = execute(
     GetStickerSet(name)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getStickerSet(
     sticker: Sticker
 ) = getStickerSet(

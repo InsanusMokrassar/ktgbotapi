@@ -22,6 +22,7 @@ data class DeleteStickerFromSet(
 
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.deleteStickerFromSet(
     sticker: FileId
 ) = execute(
@@ -30,6 +31,7 @@ suspend fun RequestsExecutor.deleteStickerFromSet(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.deleteStickerFromSet(
     sticker: Sticker
 ) = deleteStickerFromSet(

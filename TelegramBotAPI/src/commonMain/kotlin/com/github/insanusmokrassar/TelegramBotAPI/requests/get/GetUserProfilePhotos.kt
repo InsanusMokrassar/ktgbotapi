@@ -30,6 +30,7 @@ data class GetUserProfilePhotos(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getUserProfilePhotos(
     userId: UserId,
     offset: Int? = null,
@@ -40,6 +41,7 @@ suspend fun RequestsExecutor.getUserProfilePhotos(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getUserProfilePhotos(
     user: CommonUser,
     offset: Int? = null,

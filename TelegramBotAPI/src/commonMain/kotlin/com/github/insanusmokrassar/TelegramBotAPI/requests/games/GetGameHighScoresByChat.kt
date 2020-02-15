@@ -23,6 +23,7 @@ data class GetGameHighScoresByChat (
 }
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getGameScore(
     userId: UserId,
     chatId: ChatId,
@@ -31,6 +32,7 @@ suspend fun RequestsExecutor.getGameScore(
     GetGameHighScoresByChat(userId, chatId, messageId)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getGameScore(
     user: CommonUser,
     chatId: ChatId,
@@ -39,6 +41,7 @@ suspend fun RequestsExecutor.getGameScore(
     user.id, chatId, messageId
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getGameScore(
     userId: UserId,
     chat: Chat,
@@ -47,6 +50,7 @@ suspend fun RequestsExecutor.getGameScore(
     userId, chat.id, messageId
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getGameScore(
     user: CommonUser,
     chat: Chat,
@@ -55,6 +59,7 @@ suspend fun RequestsExecutor.getGameScore(
     user.id, chat.id, messageId
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getGameScore(
     userId: UserId,
     message: ContentMessage<GameContent>
@@ -62,6 +67,7 @@ suspend fun RequestsExecutor.getGameScore(
     userId, message.chat.id, message.messageId
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getGameScore(
     user: CommonUser,
     message: ContentMessage<GameContent>

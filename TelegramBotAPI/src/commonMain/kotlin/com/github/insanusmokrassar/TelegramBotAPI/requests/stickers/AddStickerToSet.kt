@@ -51,6 +51,7 @@ data class AddStickerToSet internal constructor(
     override fun method(): String = "addStickerToSet"
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.addStickerToSet(
     userId: UserId,
     stickerSetName: String,
@@ -63,6 +64,7 @@ suspend fun RequestsExecutor.addStickerToSet(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.addStickerToSet(
     userId: UserId,
     stickerSetName: String,
@@ -78,6 +80,7 @@ suspend fun RequestsExecutor.addStickerToSet(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.addStickerToSet(
     user: CommonUser,
     stickerSetName: String,
@@ -88,6 +91,7 @@ suspend fun RequestsExecutor.addStickerToSet(
     user.id, stickerSetName, sticker, emojis, maskPosition
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.addStickerToSet(
     user: CommonUser,
     stickerSetName: String,
@@ -98,6 +102,7 @@ suspend fun RequestsExecutor.addStickerToSet(
     user.id, stickerSetName, sticker, emojis, maskPosition
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.addStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
@@ -108,6 +113,7 @@ suspend fun RequestsExecutor.addStickerToSet(
     userId, stickerSet.name, sticker, emojis, maskPosition
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.addStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
@@ -118,6 +124,7 @@ suspend fun RequestsExecutor.addStickerToSet(
     userId, stickerSet.name, sticker, emojis, maskPosition
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.addStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,
@@ -128,6 +135,7 @@ suspend fun RequestsExecutor.addStickerToSet(
     user.id, stickerSet.name, sticker, emojis, maskPosition
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.addStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,

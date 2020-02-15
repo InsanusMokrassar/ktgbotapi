@@ -88,6 +88,7 @@ data class SendMediaGroupFiles internal constructor(
     val files: List<MultipartFile>
 ) : Files by (files.map { it.fileId to it }.toMap())
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberInputMedia>,
@@ -99,6 +100,7 @@ suspend fun RequestsExecutor.sendMediaGroup(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendMediaGroup(
     chat: Chat,
     media: List<MediaGroupMemberInputMedia>,

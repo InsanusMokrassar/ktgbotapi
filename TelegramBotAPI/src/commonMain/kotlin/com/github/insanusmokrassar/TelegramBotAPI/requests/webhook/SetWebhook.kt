@@ -66,6 +66,7 @@ data class SetWebhook internal constructor(
     }
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setWebhookInfo(
     url: String,
     certificate: FileId,
@@ -77,6 +78,7 @@ suspend fun RequestsExecutor.setWebhookInfo(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setWebhookInfo(
     url: String,
     certificate: MultipartFile,

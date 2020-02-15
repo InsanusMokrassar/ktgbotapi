@@ -55,6 +55,18 @@
 
 * Fixes in `InputMedia` - `media` field was not included to serialization
 
+### 0.23.3 Project separating prepare version
+
+__API Extensions__
+
+* Project created
+* For `SendPhoto` was added new functions for uploading of `MultipartFile`
+* `deleteWebhook` extension for `RequestsExecutor` was added
+
+__Telegram Bot API__
+
+* All `RequestsExecutor` extensions related to Telegram Bots API was replaced into `API Extensions` project
+
 ## 0.22.0
 
 * **`KtorCallFactory` must return `HttpStatement` instead of `HttpClientCall`**

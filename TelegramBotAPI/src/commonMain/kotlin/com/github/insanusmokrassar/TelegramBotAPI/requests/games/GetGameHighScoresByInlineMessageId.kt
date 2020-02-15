@@ -17,6 +17,7 @@ data class GetGameHighScoresByInlineMessageId (
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getGameScore(
     userId: UserId,
     inlineMessageId: InlineMessageIdentifier
@@ -26,6 +27,7 @@ suspend fun RequestsExecutor.getGameScore(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.getGameScore(
     user: CommonUser,
     inlineMessageId: InlineMessageIdentifier

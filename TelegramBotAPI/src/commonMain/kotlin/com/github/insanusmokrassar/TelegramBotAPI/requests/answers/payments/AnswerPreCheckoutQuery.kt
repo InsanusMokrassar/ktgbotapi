@@ -42,17 +42,21 @@ fun PreCheckoutQuery.createAnswerError(
     error
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.answerPreCheckoutQueryOk(
     id: PreCheckoutQueryId
 ) = execute(AnswerPreCheckoutQueryOk(id))
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.answerPreCheckoutQueryOk(
     preCheckoutQuery: PreCheckoutQuery
 ) = answerPreCheckoutQueryOk(preCheckoutQuery.id)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.answerPreCheckoutQueryError(
     id: PreCheckoutQueryId,
     error: String
 ) = execute(AnswerPreCheckoutQueryError(id, error))
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.answerPreCheckoutQueryError(
     preCheckoutQuery: PreCheckoutQuery,
     error: String

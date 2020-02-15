@@ -28,11 +28,13 @@ data class SetChatDescription (
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setChatDescription(
     chatId: ChatIdentifier,
     description: String
 ) = execute(SetChatDescription(chatId, description))
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.setChatDescription(
     chat: PublicChat,
     description: String

@@ -67,6 +67,7 @@ data class SendStickerByFile internal constructor(
 }
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendSticker(
     chatId: ChatIdentifier,
     sticker: FileId,
@@ -77,6 +78,7 @@ suspend fun RequestsExecutor.sendSticker(
     SendStickerByFileId(chatId, sticker, disableNotification, replyToMessageId, replyMarkup)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendSticker(
     chatId: ChatIdentifier,
     sticker: MultipartFile,
@@ -90,6 +92,7 @@ suspend fun RequestsExecutor.sendSticker(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendSticker(
     chat: Chat,
     sticker: FileId,
@@ -98,6 +101,7 @@ suspend fun RequestsExecutor.sendSticker(
     replyMarkup: KeyboardMarkup? = null
 ) = sendSticker(chat.id, sticker, disableNotification, replyToMessageId, replyMarkup)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendSticker(
     chat: Chat,
     sticker: MultipartFile,
@@ -106,6 +110,7 @@ suspend fun RequestsExecutor.sendSticker(
     replyMarkup: KeyboardMarkup? = null
 ) = sendSticker(chat.id, sticker, disableNotification, replyToMessageId, replyMarkup)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendSticker(
     chatId: ChatIdentifier,
     sticker: Sticker,
@@ -116,6 +121,7 @@ suspend fun RequestsExecutor.sendSticker(
     chatId, sticker.fileId, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendSticker(
     chat: Chat,
     sticker: Sticker,

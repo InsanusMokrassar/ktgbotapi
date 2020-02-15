@@ -24,6 +24,7 @@ data class DeleteMessage(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.deleteMessage(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier
@@ -31,11 +32,13 @@ suspend fun RequestsExecutor.deleteMessage(
     DeleteMessage(chatId, messageId)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.deleteMessage(
     chat: Chat,
     messageId: MessageIdentifier
 ) = deleteMessage(chat.id, messageId)
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.deleteMessage(
     message: Message
 ) = deleteMessage(message.chat, message.messageId)

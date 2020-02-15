@@ -58,6 +58,7 @@ data class SendTextMessage(
 )
 typealias SendMessage = SendTextMessage
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendMessage(
     chatId: ChatIdentifier,
     text: String,
@@ -70,6 +71,7 @@ suspend fun RequestsExecutor.sendMessage(
     SendTextMessage(chatId, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, replyMarkup)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendTextMessage(
     chatId: ChatIdentifier,
     text: String,
@@ -82,6 +84,7 @@ suspend fun RequestsExecutor.sendTextMessage(
     chatId, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendMessage(
     chat: Chat,
     text: String,
@@ -93,6 +96,7 @@ suspend fun RequestsExecutor.sendMessage(
 ) = sendMessage(chat.id, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, replyMarkup)
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendTextMessage(
     chat: Chat,
     text: String,

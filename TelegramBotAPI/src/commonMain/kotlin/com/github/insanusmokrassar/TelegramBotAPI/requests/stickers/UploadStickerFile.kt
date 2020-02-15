@@ -30,6 +30,7 @@ data class UploadStickerFile(
 }
 
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.uploadStickerFile(
     userId: UserId,
     sticker: MultipartFile
@@ -37,6 +38,7 @@ suspend fun RequestsExecutor.uploadStickerFile(
     UploadStickerFile(userId, sticker)
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.uploadStickerFile(
     user: CommonUser,
     sticker: MultipartFile

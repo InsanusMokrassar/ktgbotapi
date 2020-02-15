@@ -24,6 +24,7 @@ data class EditInlineMessageCaption(
         get() = serializer()
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editMessageCaption(
     inlineMessageId: InlineMessageIdentifier,
     text: String,

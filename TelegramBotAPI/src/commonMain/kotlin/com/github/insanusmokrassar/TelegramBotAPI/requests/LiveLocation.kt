@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
 private val livePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
+@Deprecated("Deprecated due to extracting into separated library")
 class LiveLocation internal constructor(
     private val requestsExecutor: RequestsExecutor,
     scope: CoroutineScope,
@@ -66,6 +67,7 @@ class LiveLocation internal constructor(
     }
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.startLiveLocation(
     scope: CoroutineScope,
     chatId: ChatIdentifier,
@@ -97,6 +99,7 @@ suspend fun RequestsExecutor.startLiveLocation(
     )
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,
@@ -110,6 +113,7 @@ suspend fun RequestsExecutor.startLiveLocation(
     scope, chat.id, latitude, longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.startLiveLocation(
     scope: CoroutineScope,
     chatId: ChatId,
@@ -122,6 +126,7 @@ suspend fun RequestsExecutor.startLiveLocation(
     scope, chatId, location.latitude, location.longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,

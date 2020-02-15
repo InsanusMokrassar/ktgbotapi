@@ -29,6 +29,7 @@ data class EditInlineMessageMedia(
     override fun method(): String = editMessageMediaMethod
 }
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.editMessageCaption(
     inlineMessageId: InlineMessageIdentifier,
     media: InputMedia,

@@ -120,6 +120,7 @@ data class SendVideoFiles internal constructor(
     thumbField to thumb
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideo(
     chatId: ChatIdentifier,
     video: FileId,
@@ -149,6 +150,7 @@ suspend fun RequestsExecutor.sendVideo(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideo(
     chatId: ChatIdentifier,
     video: VideoFile,
@@ -162,6 +164,7 @@ suspend fun RequestsExecutor.sendVideo(
     chatId, video.fileId, thumb ?.fileId, text, parseMode, video.duration, video.width, video.height, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideo(
     chatId: ChatIdentifier,
     video: MultipartFile,
@@ -184,6 +187,7 @@ suspend fun RequestsExecutor.sendVideo(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideo(
     chatId: ChatIdentifier,
     video: MultipartFile,
@@ -206,6 +210,7 @@ suspend fun RequestsExecutor.sendVideo(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideo(
     chatId: ChatIdentifier,
     video: FileId,
@@ -227,6 +232,7 @@ suspend fun RequestsExecutor.sendVideo(
     )
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideo(
     chatId: ChatIdentifier,
     video: MultipartFile,
@@ -244,6 +250,7 @@ suspend fun RequestsExecutor.sendVideo(
     chatId, video, thumb ?.fileId , text, parseMode, duration, width, height, supportStreaming, disableNotification, replyToMessageId, replyMarkup
 )
 
+@Deprecated("Deprecated due to extracting into separated library")
 suspend fun RequestsExecutor.sendVideo(
     chatId: ChatIdentifier,
     video: VideoFile,
