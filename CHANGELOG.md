@@ -55,7 +55,7 @@
 
 * Fixes in `InputMedia` - `media` field was not included to serialization
 
-### 0.23.3
+### 0.23.3 Project separating prepare version
 
 __API Extensions__
 
