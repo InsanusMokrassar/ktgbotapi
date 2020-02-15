@@ -18,7 +18,8 @@ import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
 private val livePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
-class LiveLocation(
+@Deprecated("Deprecated due to extracting into separated library")
+class LiveLocation internal constructor(
     private val requestsExecutor: RequestsExecutor,
     scope: CoroutineScope,
     autoCloseTimeDelay: Double,

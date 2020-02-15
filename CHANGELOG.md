@@ -66,7 +66,6 @@ __API Extensions__
 __Telegram Bot API__
 
 * All `RequestsExecutor` extensions related to Telegram Bots API was replaced into `API Extensions` project
-* `LiveLocation` now have public constructor, but it is still not recommended to use directly
 
 ## 0.22.0
 
