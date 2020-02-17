@@ -18,7 +18,7 @@ plugins {
 }
 
 project.version = "$library_version"
-project.group = "com.github.insanusmokrassar"
+project.group = "$library_group"
 
 apply from: "publish.gradle"
 
