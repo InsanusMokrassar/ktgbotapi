@@ -1,4 +1,4 @@
-# TelegramBotAPI
+# TelegramBotAPI extensions
 
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/_latestVersion)
@@ -19,7 +19,7 @@ This library always compatible with original `TelegramBotAPI` library version
 
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
-`telegrambotapi.version`, which must be set up by developer. Available versions are presented on
+`telegrambotapi-extensions-api.version`, which must be set up by developer. Available versions are presented on
 [bintray](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api), next version is last published:
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/_latestVersion)
