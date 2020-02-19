@@ -2,18 +2,17 @@
 
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 [![Chat in Telegram](badges/chat.svg)](https://t.me/InMoTelegramBotAPI)
+[![Build Status](https://travis-ci.com/InsanusMokrassar/TelegramBotAPI.svg?branch=master)](https://travis-ci.com/InsanusMokrassar/TelegramBotAPI)
 
 ## TelegramBotAPI status
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI)
-[![Build Status](https://jenkins.insanusmokrassar.com/buildStatus/icon?job=TelegramBotAPI_master__publishing)](https://jenkins.insanusmokrassar.com/job/TelegramBotAPI_master__publishing/)
 
 ## TelegramBotAPI extensions status
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-api)
-[![Build Status](https://jenkins.insanusmokrassar.com/buildStatus/icon?job=TelegramBotAPI-extensions-api_master__publishing)](https://jenkins.insanusmokrassar.com/job/TelegramBotAPI-extensions-api_master__publishing/)
 
 ## What is it?
 
