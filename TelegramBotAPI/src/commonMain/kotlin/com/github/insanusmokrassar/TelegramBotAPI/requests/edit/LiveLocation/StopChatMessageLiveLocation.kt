@@ -28,28 +28,3 @@ data class StopChatMessageLiveLocation(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.stopLiveLocation(
-    chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
-    StopChatMessageLiveLocation(
-        chatId, messageId, replyMarkup
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.stopLiveLocation(
-    chat: Chat,
-    messageId: MessageIdentifier,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = stopLiveLocation(chat.id, messageId, replyMarkup)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.stopLiveLocation(
-    message: ContentMessage<LocationContent>,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = stopLiveLocation(message.chat, message.messageId, replyMarkup)

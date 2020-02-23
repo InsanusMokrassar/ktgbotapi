@@ -65,30 +65,3 @@ data class SetWebhook internal constructor(
         }
     }
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setWebhookInfo(
-    url: String,
-    certificate: FileId,
-    maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
-) = execute(
-    SetWebhook(
-        url, certificate.fileId, maxAllowedConnections, allowedUpdates
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setWebhookInfo(
-    url: String,
-    certificate: MultipartFile,
-    maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
-) = execute(
-    MultipartRequestImpl(
-        SetWebhook(
-            url, null, maxAllowedConnections, allowedUpdates
-        ),
-        mapOf(certificateField to certificate)
-    )
-)

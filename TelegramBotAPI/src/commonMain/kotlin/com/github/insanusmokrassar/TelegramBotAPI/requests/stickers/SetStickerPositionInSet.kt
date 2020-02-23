@@ -28,23 +28,3 @@ data class SetStickerPositionInSet(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setStickerPositionInSet(
-    sticker: FileId,
-    position: Int
-) = execute(
-    SetStickerPositionInSet(
-        sticker,
-        position
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setStickerPositionInSet(
-    sticker: Sticker,
-    position: Int
-) = setStickerPositionInSet(
-    sticker.fileId,
-    position
-)

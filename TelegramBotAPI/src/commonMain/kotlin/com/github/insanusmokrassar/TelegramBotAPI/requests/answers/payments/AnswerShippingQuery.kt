@@ -52,27 +52,3 @@ fun ShippingQuery.createAnswerError(
     id,
     error
 )
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.answerShippingQueryOk(
-    id: ShippingQueryIdentifier,
-    shippingOptions: List<ShippingOption>
-) = execute(AnswerShippingQueryOk(id, shippingOptions))
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.answerShippingQueryOk(
-    shippingQuery: ShippingQuery,
-    shippingOptions: List<ShippingOption>
-) = answerShippingQueryOk(shippingQuery.id, shippingOptions)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.answerShippingQueryError(
-    id: ShippingQueryIdentifier,
-    error: String
-) = execute(AnswerShippingQueryError(id, error))
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.answerShippingQueryError(
-    shippingQuery: ShippingQuery,
-    error: String
-) = answerShippingQueryError(shippingQuery.id, error)
-
-

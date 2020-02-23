@@ -26,33 +26,3 @@ data class StopPoll(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.stopPoll(
-    chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
-    StopPoll(chatId, messageId, replyMarkup)
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.stopPoll(
-    chat: Chat,
-    messageId: MessageIdentifier,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = stopPoll(chat.id, messageId, replyMarkup)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.stopPoll(
-    chatId: ChatId,
-    message: Message,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = stopPoll(chatId, message.messageId, replyMarkup)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.stopPoll(
-    chat: Chat,
-    message: Message,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = stopPoll(chat.id, message.messageId, replyMarkup)

@@ -18,9 +18,3 @@ data class EditInlineMessageReplyMarkup(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageReplyMarkup(
-    inlineMessageId: InlineMessageIdentifier,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(EditInlineMessageReplyMarkup(inlineMessageId, replyMarkup))

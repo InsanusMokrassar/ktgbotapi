@@ -28,20 +28,3 @@ data class UploadStickerFile(
     override val resultDeserializer: DeserializationStrategy<File>
         get() = File.serializer()
 }
-
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.uploadStickerFile(
-    userId: UserId,
-    sticker: MultipartFile
-) = execute(
-    UploadStickerFile(userId, sticker)
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.uploadStickerFile(
-    user: CommonUser,
-    sticker: MultipartFile
-) = execute(
-    UploadStickerFile(user.id, sticker)
-)

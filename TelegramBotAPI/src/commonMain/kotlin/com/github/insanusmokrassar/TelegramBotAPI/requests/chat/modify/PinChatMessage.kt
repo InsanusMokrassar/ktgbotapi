@@ -24,27 +24,3 @@ data class PinChatMessage (
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.pinChatMessage(
-    chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
-    disableNotification: Boolean = false
-) = execute(PinChatMessage(chatId, messageId, disableNotification))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.pinChatMessage(
-    chat: PublicChat,
-    messageId: MessageIdentifier,
-    disableNotification: Boolean = false
-) = pinChatMessage(chat.id, messageId, disableNotification)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.pinChatMessage(
-    message: Message,
-    disableNotification: Boolean = false
-) = if (message.chat is PublicChat) {
-    pinChatMessage(message.chat.id, message.messageId, disableNotification)
-} else {
-    error("It is possible to pin messages only in non one-to-one chats")
-}

@@ -52,30 +52,6 @@ fun InlineQuery.createAnswer(
     switchPmParameter
 )
 
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.answerInlineQuery(
-    inlineQueryID: InlineQueryIdentifier,
-    results: List<InlineQueryResult> = emptyList(),
-    cachedTime: Int? = null,
-    isPersonal: Boolean? = null,
-    nextOffset: String? = null,
-    switchPmText: String? = null,
-    switchPmParameter: String? = null
-) = execute(
-    AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.answerInlineQuery(
-    inlineQuery: InlineQuery,
-    results: List<InlineQueryResult> = emptyList(),
-    cachedTime: Int? = null,
-    isPersonal: Boolean? = null,
-    nextOffset: String? = null,
-    switchPmText: String? = null,
-    switchPmParameter: String? = null
-) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
-
 internal object InlineQueryAnswersResultsSerializer: KSerializer<List<InlineQueryResult>> by ArrayListSerializer(
     InlineQueryResultSerializer
 )

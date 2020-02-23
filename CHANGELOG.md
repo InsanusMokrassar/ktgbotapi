@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 0.24.0
+
+* `TelegramBotAPI`:
+    * All suspend functions for `RequestsExecutor` was removed (due to replacement into
+    [TelegramBotAPI extensions project](TelegramBotAPI-extensions-api/README.md))
+
 ## 0.23.0 TelegramBotAPI 4.6
 
 * `Poll` now is sealed class

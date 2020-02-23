@@ -30,26 +30,3 @@ data class EditChatMessageReplyMarkup(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageReplyMarkup(
-    chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
-    EditChatMessageReplyMarkup(chatId, messageId, replyMarkup)
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageReplyMarkup(
-    chat: Chat,
-    messageId: MessageIdentifier,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageReplyMarkup(chat.id, messageId, replyMarkup)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageReplyMarkup(
-    message: Message,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageReplyMarkup(message.chat.id, message.messageId, replyMarkup)
-

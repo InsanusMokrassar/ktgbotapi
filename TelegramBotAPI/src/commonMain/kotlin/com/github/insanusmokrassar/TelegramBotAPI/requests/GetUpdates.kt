@@ -28,25 +28,3 @@ data class GetUpdates(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getUpdates(
-    offset: UpdateIdentifier? = null,
-    limit: Int? = null,
-    timeout: Int? = null,
-    allowed_updates: List<String>? = ALL_UPDATES_LIST
-) = execute(
-    GetUpdates(
-        offset, limit, timeout, allowed_updates
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getUpdates(
-    lastUpdate: Update,
-    limit: Int? = null,
-    timeout: Int? = null,
-    allowed_updates: List<String>? = ALL_UPDATES_LIST
-) = getUpdates(
-    lastUpdate.updateId + 1, limit, timeout, allowed_updates
-)

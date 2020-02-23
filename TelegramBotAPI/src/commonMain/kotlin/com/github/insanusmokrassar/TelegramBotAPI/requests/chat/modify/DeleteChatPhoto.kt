@@ -20,13 +20,3 @@ data class DeleteChatPhoto(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.deleteChatPhoto(
-    chatId: ChatIdentifier
-) = execute(DeleteChatPhoto(chatId))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.deleteChatPhoto(
-    chat: PublicChat
-) = deleteChatPhoto(chat.id)
