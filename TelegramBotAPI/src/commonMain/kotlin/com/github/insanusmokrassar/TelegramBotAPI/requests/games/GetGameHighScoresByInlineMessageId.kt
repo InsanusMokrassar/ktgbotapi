@@ -16,19 +16,3 @@ data class GetGameHighScoresByInlineMessageId (
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getGameScore(
-    userId: UserId,
-    inlineMessageId: InlineMessageIdentifier
-) = execute(
-    GetGameHighScoresByInlineMessageId(
-        userId, inlineMessageId
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getGameScore(
-    user: CommonUser,
-    inlineMessageId: InlineMessageIdentifier
-) = getGameScore(user.id, inlineMessageId)

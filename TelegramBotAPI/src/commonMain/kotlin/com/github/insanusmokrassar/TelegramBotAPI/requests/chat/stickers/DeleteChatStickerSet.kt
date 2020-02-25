@@ -20,13 +20,3 @@ data class DeleteChatStickerSet(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.deleteChatStickerSet(
-    chatId: ChatIdentifier
-) = execute(DeleteChatStickerSet(chatId))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.deleteChatStickerSet(
-    chat: SupergroupChat
-) = deleteChatStickerSet(chat.id)

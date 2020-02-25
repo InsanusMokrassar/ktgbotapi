@@ -20,13 +20,3 @@ data class LeaveChat(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.leaveChat(
-    chatId: ChatIdentifier
-) = execute(LeaveChat(chatId))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.leaveChat(
-    chat: PublicChat
-) = leaveChat(chat.id)

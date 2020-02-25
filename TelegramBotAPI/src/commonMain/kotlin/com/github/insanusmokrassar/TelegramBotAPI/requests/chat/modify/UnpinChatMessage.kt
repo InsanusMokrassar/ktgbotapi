@@ -20,13 +20,3 @@ data class UnpinChatMessage(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.unpinChatMessage(
-    chatId: ChatIdentifier
-) = execute(UnpinChatMessage(chatId))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.unpinChatMessage(
-    chat: PublicChat
-) = unpinChatMessage(chat.id)

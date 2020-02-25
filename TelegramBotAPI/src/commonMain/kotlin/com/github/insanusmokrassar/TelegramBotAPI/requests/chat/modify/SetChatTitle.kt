@@ -27,15 +27,3 @@ data class SetChatTitle (
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setChatTitle(
-    chatId: ChatIdentifier,
-    title: String
-) = execute(SetChatTitle(chatId, title))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setChatTitle(
-    chat: PublicChat,
-    title: String
-) = setChatTitle(chat.id, title)

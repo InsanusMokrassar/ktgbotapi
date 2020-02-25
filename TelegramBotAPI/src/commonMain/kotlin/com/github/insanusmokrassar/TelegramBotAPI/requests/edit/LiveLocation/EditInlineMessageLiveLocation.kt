@@ -21,21 +21,3 @@ data class EditInlineMessageLiveLocation(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editLiveLocation(
-    inlineMessageId: InlineMessageIdentifier,
-    latitude: Double,
-    longitude: Double,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
-    EditInlineMessageLiveLocation(
-        inlineMessageId, latitude, longitude, replyMarkup
-    )
-)
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editLiveLocation(
-    inlineMessageId: InlineMessageIdentifier,
-    location: Location,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editLiveLocation(inlineMessageId, location.latitude, location.longitude, replyMarkup)

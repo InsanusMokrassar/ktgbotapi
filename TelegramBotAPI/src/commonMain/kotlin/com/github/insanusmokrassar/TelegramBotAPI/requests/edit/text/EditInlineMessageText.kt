@@ -26,12 +26,3 @@ data class EditInlineMessageText(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageText(
-    inlineMessageId: InlineMessageIdentifier,
-    text: String,
-    parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(EditInlineMessageText(inlineMessageId, text, parseMode, disableWebPagePreview, replyMarkup))

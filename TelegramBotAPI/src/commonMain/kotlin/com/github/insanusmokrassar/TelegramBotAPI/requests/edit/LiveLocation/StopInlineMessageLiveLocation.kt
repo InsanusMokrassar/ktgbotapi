@@ -18,13 +18,3 @@ data class StopInlineMessageLiveLocation(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.stopLiveLocation(
-    inlineMessageId: InlineMessageIdentifier,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
-    StopInlineMessageLiveLocation(
-        inlineMessageId, replyMarkup
-    )
-)

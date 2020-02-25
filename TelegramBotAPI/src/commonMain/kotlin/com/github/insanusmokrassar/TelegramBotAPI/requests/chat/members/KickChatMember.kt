@@ -23,31 +23,3 @@ data class KickChatMember(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.kickChatMember(
-    chatId: ChatIdentifier,
-    userId: UserId,
-    untilDate: TelegramDate? = null
-) = execute(KickChatMember(chatId, userId, untilDate))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.kickChatMember(
-    chat: PublicChat,
-    userId: UserId,
-    untilDate: TelegramDate? = null
-) = kickChatMember(chat.id, userId, untilDate)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.kickChatMember(
-    chatId: ChatId,
-    user: User,
-    untilDate: TelegramDate? = null
-) = kickChatMember(chatId, user.id, untilDate)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.kickChatMember(
-    chat: PublicChat,
-    user: User,
-    untilDate: TelegramDate? = null
-) = kickChatMember(chat.id, user.id, untilDate)

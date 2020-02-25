@@ -33,21 +33,3 @@ fun CallbackQuery.createAnswer(
     url: String? = null,
     cachedTimeSeconds: Int? = null
 ): AnswerCallbackQuery = AnswerCallbackQuery(id, text, showAlert, url, cachedTimeSeconds)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.answerCallbackQuery(
-    callbackQueryId: CallbackQueryIdentifier,
-    text: String? = null,
-    showAlert: Boolean? = null,
-    url: String? = null,
-    cachedTimeSeconds: Int? = null
-) = execute(AnswerCallbackQuery(callbackQueryId, text, showAlert, url, cachedTimeSeconds))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.answerCallbackQuery(
-    callbackQuery: CallbackQuery,
-    text: String? = null,
-    showAlert: Boolean? = null,
-    url: String? = null,
-    cachedTimeSeconds: Int? = null
-) = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)

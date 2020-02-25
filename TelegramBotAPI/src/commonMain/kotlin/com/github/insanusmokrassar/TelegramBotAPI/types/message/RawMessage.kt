@@ -142,7 +142,7 @@ internal data class RawMessage(
                 forward_date,
                 forward_sender_name
             )
-            forward_from_chat != null -> ForwardFromChannelInfo(
+            forward_from_chat is ChannelChat -> ForwardFromChannelInfo(
                 forward_date,
                 forward_from_message_id ?: throw IllegalStateException("Channel forwarded message must contain message id, but was not"),
                 forward_from_chat,

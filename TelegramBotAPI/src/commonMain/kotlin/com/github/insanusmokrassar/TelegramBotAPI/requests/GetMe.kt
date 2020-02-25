@@ -13,6 +13,3 @@ class GetMe : SimpleRequest<ExtendedBot> {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getMe() = execute(GetMe())
