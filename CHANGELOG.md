@@ -5,6 +5,7 @@
 * `TelegramBotAPI`:
     * All suspend functions for `RequestsExecutor` was removed (due to replacement into
     [TelegramBotAPI extensions project](TelegramBotAPI-extensions-api/README.md))
+    * `ForwardFromChannelInfo#channelChat` now is `ChannelChat` instead of `Chat`
 * `TelegramBotAPI-extensions-api`:
     * Most part of sending media messages functions was removed and replaced with their `InputFile` args analogs
 

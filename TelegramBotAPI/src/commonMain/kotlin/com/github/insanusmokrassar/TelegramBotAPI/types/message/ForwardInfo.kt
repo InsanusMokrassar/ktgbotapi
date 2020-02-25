@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.ChannelChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 
 @Deprecated(
@@ -52,6 +53,6 @@ typealias ForwardedFromChannelMessage = ForwardFromChannelInfo
 data class ForwardFromChannelInfo(
     override val dateOfOriginal: TelegramDate,
     val messageId: MessageIdentifier,
-    val channelChat: Chat,
+    val channelChat: ChannelChat,
     val signature: String? = null
 ) : ForwardInfo()
