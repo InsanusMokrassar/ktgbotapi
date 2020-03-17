@@ -19,6 +19,11 @@
         * Previous `UpdatesFilter` class was renamed to `SimpleUpdatesFilter` and for backward compatibility was added
         builder function `UpdatesFilter`, which will be removed in near releases
         * `FlowsUpdatesFilter` now implements `UpdatesFilter`
+    * `BaseSentMessageUpdate` and `BaseEditMessageUpdate` interfaces was added
+        * `EditChannelPostUpdate` now is implementing `BaseEditMessageUpdate` interface
+        * `EditMessageUpdate` now is implementing `BaseEditMessageUpdate` interface
+        * `ChannelPostUpdate` now is implementing `BaseSentMessageUpdate` interface
+        * `MessageUpdate` now is implementing `BaseSentMessageUpdate` interface
 * `TelegramBotAPI-extensions-api`:
     * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
     in package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates.UpdatesPolling`
