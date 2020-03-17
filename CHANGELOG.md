@@ -15,6 +15,10 @@
     * `UpdateReceiver` was replaced to the package `com.github.insanusmokrassar.TelegramBotAPI.updateshandlers`
     * All functions inside `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` are deprecated
     and will be removed in some soon versions. Their replacement are able inside `TelegramBotAPI-extensions-api`
+    * `UpdatesFilter` is interface for now
+        * Previous `UpdatesFilter` class was renamed to `SimpleUpdatesFilter` and for backward compatibility was added
+        builder function `UpdatesFilter`, which will be removed in near releases
+        * `FlowsUpdatesFilter` now implements `UpdatesFilter`
 * `TelegramBotAPI-extensions-api`:
     * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
     in package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates.UpdatesPolling`

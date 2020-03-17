@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +12,7 @@ private fun <T> BroadcastChannel<T>.createUpdateReceiver(): UpdateReceiver<T> = 
 
 class FlowsUpdatesFilter(
     broadcastChannelsSize: Int = Channel.CONFLATED
-) {
+): UpdatesFilter {
     private val messageChannel: BroadcastChannel<MessageUpdate> = BroadcastChannel(broadcastChannelsSize)
     private val messageMediaGroupChannel: BroadcastChannel<MessageMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
     private val editedMessageChannel: BroadcastChannel<EditMessageUpdate> = BroadcastChannel(broadcastChannelsSize)
@@ -27,7 +28,12 @@ class FlowsUpdatesFilter(
     private val preCheckoutQueryChannel: BroadcastChannel<PreCheckoutQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
     private val pollChannel: BroadcastChannel<PollUpdate> = BroadcastChannel(broadcastChannelsSize)
 
-    val filter = UpdatesFilter(
+    override val allowedUpdates: List<String>
+        get() = filter.allowedUpdates
+    override val asUpdateReceiver: UpdateReceiver<Update>
+        get() = filter.asUpdateReceiver
+
+    val filter = SimpleUpdatesFilter(
         messageChannel.createUpdateReceiver(),
         messageMediaGroupChannel.createUpdateReceiver(),
         editedMessageChannel.createUpdateReceiver(),

@@ -6,7 +6,57 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdateType
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 
-data class UpdatesFilter(
+typealias UpdateReceiver<T> = suspend (T) -> Unit
+
+interface UpdatesFilter {
+    val asUpdateReceiver: UpdateReceiver<Update>
+    val allowedUpdates: List<String>
+}
+
+@Deprecated(
+    "It is builder function for SimpleUpdatesFilter",
+    ReplaceWith(
+        "SimpleUpdatesFilter",
+        "com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.SimpleUpdatesFilter"
+    )
+)
+fun UpdatesFilter(
+    messageCallback: UpdateReceiver<MessageUpdate>? = null,
+    messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
+    editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
+    editedMessageMediaGroupCallback: UpdateReceiver<EditMessageMediaGroupUpdate>? = null,
+    channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
+    channelPostMediaGroupCallback: UpdateReceiver<ChannelPostMediaGroupUpdate>? = null,
+    editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,
+    editedChannelPostMediaGroupCallback: UpdateReceiver<EditChannelPostMediaGroupUpdate>? = null,
+    chosenInlineResultCallback: UpdateReceiver<ChosenInlineResultUpdate>? = null,
+    inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
+    callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
+    shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
+    preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
+    pollUpdateCallback: UpdateReceiver<PollUpdate>? = null,
+    pollAnswerUpdateCallback: UpdateReceiver<PollAnswerUpdate>? = null,
+    unknownUpdateTypeCallback: UpdateReceiver<UnknownUpdateType>? = null
+) = SimpleUpdatesFilter(
+    messageCallback,
+    messageMediaGroupCallback,
+    editedMessageCallback,
+    editedMessageMediaGroupCallback,
+    channelPostCallback,
+    channelPostMediaGroupCallback,
+    editedChannelPostCallback,
+    editedChannelPostMediaGroupCallback,
+    chosenInlineResultCallback,
+    inlineQueryCallback,
+    callbackQueryCallback,
+    shippingQueryCallback,
+    preCheckoutQueryCallback,
+    pollUpdateCallback,
+    pollAnswerUpdateCallback,
+    unknownUpdateTypeCallback
+)
+
+data class SimpleUpdatesFilter(
     private val messageCallback: UpdateReceiver<MessageUpdate>? = null,
     private val messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
     private val editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
@@ -23,9 +73,9 @@ data class UpdatesFilter(
     private val pollUpdateCallback: UpdateReceiver<PollUpdate>? = null,
     private val pollAnswerUpdateCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     private val unknownUpdateTypeCallback: UpdateReceiver<UnknownUpdateType>? = null
-) {
-    val asUpdateReceiver: UpdateReceiver<Update> = this::invoke
-    val allowedUpdates = listOfNotNull(
+) : UpdatesFilter {
+    override val asUpdateReceiver: UpdateReceiver<Update> = this::invoke
+    override val allowedUpdates = listOfNotNull(
         (messageCallback ?: messageMediaGroupCallback) ?.let { UPDATE_MESSAGE },
         (editedMessageCallback ?: editedMessageMediaGroupCallback) ?.let { UPDATE_EDITED_MESSAGE },
         (channelPostCallback ?: channelPostMediaGroupCallback) ?.let { UPDATE_CHANNEL_POST },
@@ -113,4 +163,3 @@ fun createSimpleUpdateFilter(
     pollAnswerUpdateCallback = pollAnswerCallback,
     unknownUpdateTypeCallback = unknownCallback
 )
-typealias UpdateReceiver<T> = suspend (T) -> Unit
