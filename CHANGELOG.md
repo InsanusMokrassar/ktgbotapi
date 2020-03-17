@@ -26,6 +26,8 @@
         * `MessageUpdate` now is implementing `BaseSentMessageUpdate` interface
     * `UpdatesPoller` and all its usages, childs and childs usages now are deprecated
     * `GetUpdates#timeout` type now is `Seconds` (in fact it is `Int` as previously)
+    * `KtorRequestsExecutor` now is using a copy of incoming `HttpClient` object and install `HttpTimeout` feature
+        * `AbstractRequestCallFactory` now setting up a custom delay in case if request is `GetUpdates`
 * `TelegramBotAPI-extensions-api`:
     * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
     in package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates.UpdatesPolling`

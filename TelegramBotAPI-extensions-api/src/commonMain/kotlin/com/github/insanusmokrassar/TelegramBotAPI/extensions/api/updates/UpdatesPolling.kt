@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestException
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.convertWithMediaGroupUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.lastUpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.getUpdates
@@ -10,10 +11,11 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
+import io.ktor.client.features.HttpRequestTimeoutException
 import kotlinx.coroutines.*
 
 fun RequestsExecutor.startGettingOfUpdates(
-    timeoutMillis: Seconds = 30,
+    timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     allowedUpdates: List<String>? = null,
     updatesReceiver: UpdateReceiver<Update>
@@ -21,30 +23,37 @@ fun RequestsExecutor.startGettingOfUpdates(
     var lastUpdateIdentifier: UpdateIdentifier? = null
 
     while (isActive) {
-        supervisorScope {
-            val updates = getUpdates(
-                offset = lastUpdateIdentifier,
-                timeout = timeoutMillis,
-                allowed_updates = allowedUpdates
-            ).convertWithMediaGroupUpdates()
-
+        try {
             supervisorScope {
-                for (update in updates) {
-                    updatesReceiver(update)
+                val updates = getUpdates(
+                    offset = lastUpdateIdentifier?.plus(1),
+                    timeout = timeoutSeconds,
+                    allowed_updates = allowedUpdates
+                ).convertWithMediaGroupUpdates()
 
-                    lastUpdateIdentifier = update.lastUpdateIdentifier()
+                supervisorScope {
+                    for (update in updates) {
+                        updatesReceiver(update)
+
+                        lastUpdateIdentifier = update.lastUpdateIdentifier()
+                    }
                 }
             }
+        } catch (e: HttpRequestTimeoutException) {
+            e // it is ok due to mechanism of long polling
+        } catch (e: RequestException) {
+            e // it is not ok, but in most cases it will mean that there is some limit for requests count
+            delay(1000L)
         }
     }
 }
 
 fun RequestsExecutor.startGettingOfUpdates(
     updatesFilter: UpdatesFilter,
-    timeoutMillis: Seconds = 30,
+    timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ): Job = startGettingOfUpdates(
-    timeoutMillis,
+    timeoutSeconds,
     scope,
     updatesFilter.allowedUpdates,
     updatesFilter.asUpdateReceiver
@@ -66,7 +75,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    timeoutMillis: Seconds = 30,
+    timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = GlobalScope
 ): Job {
     return startGettingOfUpdates(
@@ -87,7 +96,7 @@ fun RequestsExecutor.startGettingOfUpdates(
             pollCallback,
             pollAnswerCallback
         ),
-        timeoutMillis,
+        timeoutSeconds,
         scope
     )
 }
@@ -105,7 +114,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    timeoutMillis: Seconds = 30,
+    timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ): Job = startGettingOfUpdates(
     messageCallback = messageCallback,
@@ -123,6 +132,6 @@ fun RequestsExecutor.startGettingOfUpdates(
     preCheckoutQueryCallback = preCheckoutQueryCallback,
     pollCallback = pollCallback,
     pollAnswerCallback = pollAnswerCallback,
-    timeoutMillis = timeoutMillis,
+    timeoutSeconds = timeoutSeconds,
     scope = scope
 )
