@@ -22,6 +22,8 @@
 * `TelegramBotAPI-extensions-api`:
     * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
     in package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates.UpdatesPolling`
+    * Now new method of getting updates available: `startGettingUpdates` with `UpdatesFilter` as incoming first
+    parameter
 
 ## 0.23.0 TelegramBotAPI 4.6
 

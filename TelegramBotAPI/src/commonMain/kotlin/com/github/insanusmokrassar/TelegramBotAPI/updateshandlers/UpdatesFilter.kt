@@ -145,7 +145,7 @@ fun createSimpleUpdateFilter(
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     unknownCallback: UpdateReceiver<UnknownUpdateType>? = null
-): UpdatesFilter = UpdatesFilter(
+): UpdatesFilter = SimpleUpdatesFilter(
     messageCallback = messageCallback,
     messageMediaGroupCallback = mediaGroupCallback,
     editedMessageCallback = editedMessageCallback,

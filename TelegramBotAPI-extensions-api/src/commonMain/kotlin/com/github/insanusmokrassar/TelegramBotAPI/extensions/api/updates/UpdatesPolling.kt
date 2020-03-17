@@ -6,9 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.KtorUpdatesPoller
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
 import kotlinx.coroutines.*
 
 
@@ -29,6 +27,17 @@ fun RequestsExecutor.startGettingOfUpdates(
 }
 
 fun RequestsExecutor.startGettingOfUpdates(
+    updatesFilter: UpdatesFilter,
+    timeoutMillis: Long = 30 * 1000,
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
+): UpdatesPoller = startGettingOfUpdates(
+    timeoutMillis,
+    scope,
+    updatesFilter.allowedUpdates,
+    updatesFilter.asUpdateReceiver
+)
+
+fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
@@ -47,28 +56,26 @@ fun RequestsExecutor.startGettingOfUpdates(
     timeoutMillis: Long = 30 * 1000,
     scope: CoroutineScope = GlobalScope
 ): UpdatesPoller {
-    val filter = UpdatesFilter(
-        messageCallback,
-        messageMediaGroupCallback,
-        editedMessageCallback,
-        editedMessageMediaGroupCallback,
-        channelPostCallback,
-        channelPostMediaGroupCallback,
-        editedChannelPostCallback,
-        editedChannelPostMediaGroupCallback,
-        chosenInlineResultCallback,
-        inlineQueryCallback,
-        callbackQueryCallback,
-        shippingQueryCallback,
-        preCheckoutQueryCallback,
-        pollCallback,
-        pollAnswerCallback
-    )
     return startGettingOfUpdates(
+        SimpleUpdatesFilter(
+            messageCallback,
+            messageMediaGroupCallback,
+            editedMessageCallback,
+            editedMessageMediaGroupCallback,
+            channelPostCallback,
+            channelPostMediaGroupCallback,
+            editedChannelPostCallback,
+            editedChannelPostMediaGroupCallback,
+            chosenInlineResultCallback,
+            inlineQueryCallback,
+            callbackQueryCallback,
+            shippingQueryCallback,
+            preCheckoutQueryCallback,
+            pollCallback,
+            pollAnswerCallback
+        ),
         timeoutMillis,
-        scope,
-        filter.allowedUpdates,
-        filter.asUpdateReceiver
+        scope
     )
 }
 
