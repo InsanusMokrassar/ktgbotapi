@@ -1,36 +1,49 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.bot.UpdatesPoller
-import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.convertWithMediaGroupUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.lastUpdateIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.getUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.types.Seconds
+import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
 import kotlinx.coroutines.*
 
-
 fun RequestsExecutor.startGettingOfUpdates(
-    timeoutMillis: Long = 30 * 1000,
+    timeoutMillis: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     allowedUpdates: List<String>? = null,
-    block: UpdateReceiver<Update>
-): UpdatesPoller {
-    return KtorUpdatesPoller(
-        this,
-        timeoutMillis.toInt() / 1000,
-        allowedUpdates = allowedUpdates ?: ALL_UPDATES_LIST,
-        updatesReceiver = block
-    ).also {
-        it.start(scope)
+    updatesReceiver: UpdateReceiver<Update>
+): Job = scope.launch {
+    var lastUpdateIdentifier: UpdateIdentifier? = null
+
+    while (isActive) {
+        supervisorScope {
+            val updates = getUpdates(
+                offset = lastUpdateIdentifier,
+                timeout = timeoutMillis,
+                allowed_updates = allowedUpdates
+            ).convertWithMediaGroupUpdates()
+
+            supervisorScope {
+                for (update in updates) {
+                    updatesReceiver(update)
+
+                    lastUpdateIdentifier = update.lastUpdateIdentifier()
+                }
+            }
+        }
     }
 }
 
 fun RequestsExecutor.startGettingOfUpdates(
     updatesFilter: UpdatesFilter,
-    timeoutMillis: Long = 30 * 1000,
+    timeoutMillis: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
-): UpdatesPoller = startGettingOfUpdates(
+): Job = startGettingOfUpdates(
     timeoutMillis,
     scope,
     updatesFilter.allowedUpdates,
@@ -53,9 +66,9 @@ fun RequestsExecutor.startGettingOfUpdates(
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    timeoutMillis: Long = 30 * 1000,
+    timeoutMillis: Seconds = 30,
     scope: CoroutineScope = GlobalScope
-): UpdatesPoller {
+): Job {
     return startGettingOfUpdates(
         SimpleUpdatesFilter(
             messageCallback,
@@ -92,9 +105,9 @@ fun RequestsExecutor.startGettingOfUpdates(
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    timeoutMillis: Long = 30 * 1000,
+    timeoutMillis: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
-): UpdatesPoller = startGettingOfUpdates(
+): Job = startGettingOfUpdates(
     messageCallback = messageCallback,
     messageMediaGroupCallback = mediaGroupCallback,
     editedMessageCallback = editedMessageCallback,

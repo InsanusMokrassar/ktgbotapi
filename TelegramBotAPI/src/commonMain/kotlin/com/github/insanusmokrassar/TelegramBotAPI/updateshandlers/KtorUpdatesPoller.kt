@@ -17,6 +17,7 @@ import io.ktor.client.engine.HttpClientEngine
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 
+@Deprecated("Deprecated due to more simple way to get updates using TelegramBotAPI-extensions-api")
 fun KtorUpdatesPoller(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     engine: HttpClientEngine,
@@ -41,6 +42,7 @@ fun KtorUpdatesPoller(
     )
 }
 
+@Deprecated("Deprecated due to more simple way to get updates using TelegramBotAPI-extensions-api")
 class KtorUpdatesPoller(
     private val executor: RequestsExecutor,
     private val timeoutSeconds: Int? = null,

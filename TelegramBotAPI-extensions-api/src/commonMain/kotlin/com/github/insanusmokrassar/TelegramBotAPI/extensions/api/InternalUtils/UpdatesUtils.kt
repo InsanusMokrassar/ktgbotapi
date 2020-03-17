@@ -1,15 +1,32 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.MediaGroupIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
 
-internal fun List<BaseMessageUpdate>.convertWithMediaGroupUpdates(): List<Update> {
+internal fun Update.lastUpdateIdentifier(): UpdateIdentifier {
+    return if (this is SentMediaGroupUpdate) {
+        origins.last().updateId
+    } else {
+        updateId
+    }
+}
+
+internal fun List<Update>.lastUpdateIdentifier(): UpdateIdentifier? {
+    return maxBy { it.updateId } ?.lastUpdateIdentifier()
+}
+
+internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
     val mediaGroups = mutableMapOf<MediaGroupIdentifier, MutableList<BaseMessageUpdate>>()
     for (update in this) {
+        if (update !is BaseMessageUpdate) {
+            resultUpdates.add(update)
+            continue
+        }
         val asEditMediaGroupMessage = update.toEditMediaGroupUpdate()
         if (asEditMediaGroupMessage != null) {
             resultUpdates.add(asEditMediaGroupMessage)
@@ -27,7 +44,8 @@ internal fun List<BaseMessageUpdate>.convertWithMediaGroupUpdates(): List<Update
             resultUpdates.add(mediaGroupUpdate)
         }
     }
-    return resultUpdates.sortedBy { it.updateId }
+    resultUpdates.sortBy { it.updateId }
+    return resultUpdates
 }
 
 internal fun List<BaseMessageUpdate>.toSentMediaGroupUpdate(): SentMediaGroupUpdate? = (this as? SentMediaGroupUpdate) ?: let {

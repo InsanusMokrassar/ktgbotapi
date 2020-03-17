@@ -10,6 +10,7 @@ import io.ktor.client.engine.cio.CIO
 import io.ktor.client.engine.cio.endpoint
 import io.ktor.util.KtorExperimentalAPI
 
+@Deprecated("Deprecated due to more simple way to get updates using TelegramBotAPI-extensions-api")
 @KtorExperimentalAPI
 fun KtorUpdatesPoller(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
@@ -43,6 +44,7 @@ fun KtorUpdatesPoller(
     )
 }
 
+@Deprecated("Deprecated due to more simple way to get updates using TelegramBotAPI-extensions-api")
 @KtorExperimentalAPI
 fun KtorUpdatesPoller(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,

@@ -24,11 +24,14 @@
         * `EditMessageUpdate` now is implementing `BaseEditMessageUpdate` interface
         * `ChannelPostUpdate` now is implementing `BaseSentMessageUpdate` interface
         * `MessageUpdate` now is implementing `BaseSentMessageUpdate` interface
+    * `UpdatesPoller` and all its usages, childs and childs usages now are deprecated
+    * `GetUpdates#timeout` type now is `Seconds` (in fact it is `Int` as previously)
 * `TelegramBotAPI-extensions-api`:
     * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
     in package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates.UpdatesPolling`
     * Now new method of getting updates available: `startGettingUpdates` with `UpdatesFilter` as incoming first
     parameter
+    * `startGettingUpdates` with `receiver` and `allowedUpdates` parameters now will handle updates by itself
 
 ## 0.23.0 TelegramBotAPI 4.6
 
