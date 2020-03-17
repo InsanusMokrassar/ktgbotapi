@@ -2,7 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow

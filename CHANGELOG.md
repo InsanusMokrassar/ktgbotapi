@@ -11,6 +11,14 @@
 
 ### 0.24.1
 
+* `TelegramBotAPI`:
+    * `UpdateReceiver` was replaced to the package `com.github.insanusmokrassar.TelegramBotAPI.updateshandlers`
+    * All functions inside `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` are deprecated
+    and will be removed in some soon versions. Their replacement are able inside `TelegramBotAPI-extensions-api`
+* `TelegramBotAPI-extensions-api`:
+    * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
+    in package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates.UpdatesPolling`
+
 ## 0.23.0 TelegramBotAPI 4.6
 
 * `Poll` now is sealed class

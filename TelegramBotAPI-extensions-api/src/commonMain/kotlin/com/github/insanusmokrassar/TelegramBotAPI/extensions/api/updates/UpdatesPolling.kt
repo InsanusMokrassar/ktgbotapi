@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
+package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.bot.UpdatesPoller
@@ -8,18 +8,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.KtorUpdatesPoller
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
 import kotlinx.coroutines.*
 
-@Deprecated(
-    "Replaced",
-    ReplaceWith(
-        "UpdateReceiver",
-        "com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver"
-    )
-)
-typealias UpdateReceiver<T> = com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver<T>
 
-@Deprecated("Replaced into TelegramBotAPI-extensions-api")
 fun RequestsExecutor.startGettingOfUpdates(
     timeoutMillis: Long = 30 * 1000,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
@@ -36,7 +28,6 @@ fun RequestsExecutor.startGettingOfUpdates(
     }
 }
 
-@Deprecated("Replaced into TelegramBotAPI-extensions-api")
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
@@ -81,7 +72,6 @@ fun RequestsExecutor.startGettingOfUpdates(
     )
 }
 
-@Deprecated("Replaced into TelegramBotAPI-extensions-api")
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     mediaGroupCallback: UpdateReceiver<MediaGroupUpdate>? = null,

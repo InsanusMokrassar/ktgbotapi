@@ -5,7 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdateType
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 
 data class UpdatesFilter(
     private val messageCallback: UpdateReceiver<MessageUpdate>? = null,
@@ -114,3 +113,4 @@ fun createSimpleUpdateFilter(
     pollAnswerUpdateCallback = pollAnswerCallback,
     unknownUpdateTypeCallback = unknownCallback
 )
+typealias UpdateReceiver<T> = suspend (T) -> Unit
