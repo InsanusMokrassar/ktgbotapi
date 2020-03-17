@@ -9,6 +9,7 @@
 * `TelegramBotAPI-extensions-api`:
     * Most part of sending media messages functions was removed and replaced with their `InputFile` args analogs
 
+### 0.24.1
 
 ## 0.23.0 TelegramBotAPI 4.6
 
