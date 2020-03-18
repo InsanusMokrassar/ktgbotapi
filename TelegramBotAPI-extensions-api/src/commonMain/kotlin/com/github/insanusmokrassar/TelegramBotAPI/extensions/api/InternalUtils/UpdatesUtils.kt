@@ -21,22 +21,23 @@ internal fun List<Update>.lastUpdateIdentifier(): UpdateIdentifier? {
 
 internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
-    val mediaGroups = mutableMapOf<MediaGroupIdentifier, MutableList<BaseMessageUpdate>>()
+    val mediaGroups = mutableMapOf<MediaGroupIdentifier, MutableList<BaseSentMessageUpdate>>()
     for (update in this) {
-        if (update !is BaseMessageUpdate) {
-            resultUpdates.add(update)
-            continue
-        }
-        val asEditMediaGroupMessage = update.toEditMediaGroupUpdate()
-        if (asEditMediaGroupMessage != null) {
-            resultUpdates.add(asEditMediaGroupMessage)
-        } else {
-            val data = update.data
-            if (data is MediaGroupMessage) {
-                (mediaGroups[data.mediaGroupId] ?: mutableListOf<BaseMessageUpdate>().also { mediaGroups[data.mediaGroupId] = it }).add(update)
-            } else {
-                resultUpdates.add(update)
+        when (update) {
+            is BaseEditMessageUpdate -> resultUpdates.add(
+                update.toEditMediaGroupUpdate()
+            )
+            is BaseSentMessageUpdate -> {
+                val data = update.data
+                if (data is MediaGroupMessage) {
+                    mediaGroups.getOrPut(data.mediaGroupId) {
+                        mutableListOf()
+                    }.add(update)
+                } else {
+                    resultUpdates.add(update)
+                }
             }
+            else -> resultUpdates.add(update)
         }
     }
     mediaGroups.values.map {
@@ -48,7 +49,7 @@ internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     return resultUpdates
 }
 
-internal fun List<BaseMessageUpdate>.toSentMediaGroupUpdate(): SentMediaGroupUpdate? = (this as? SentMediaGroupUpdate) ?: let {
+internal fun List<BaseSentMessageUpdate>.toSentMediaGroupUpdate(): SentMediaGroupUpdate? = (this as? SentMediaGroupUpdate) ?: let {
     if (isEmpty()) {
         return@let null
     }
@@ -60,10 +61,10 @@ internal fun List<BaseMessageUpdate>.toSentMediaGroupUpdate(): SentMediaGroupUpd
     }
 }
 
-internal fun BaseMessageUpdate.toEditMediaGroupUpdate(): EditMediaGroupUpdate? = (this as? EditMediaGroupUpdate) ?: let {
+internal fun BaseEditMessageUpdate.toEditMediaGroupUpdate(): EditMediaGroupUpdate = (this as? EditMediaGroupUpdate) ?: let {
     when (this) {
         is EditMessageUpdate -> EditMessageMediaGroupUpdate(this)
         is EditChannelPostUpdate -> EditChannelPostMediaGroupUpdate(this)
-        else -> null
+        else -> error("Unsupported type of ${BaseEditMessageUpdate::class.simpleName}")
     }
 }
