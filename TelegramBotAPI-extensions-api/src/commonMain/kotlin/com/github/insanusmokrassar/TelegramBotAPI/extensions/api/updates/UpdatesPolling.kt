@@ -1,42 +1,64 @@
-package com.github.insanusmokrassar.TelegramBotAPI.utils.extensions
+package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.bot.UpdatesPoller
-import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
+import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestException
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.convertWithMediaGroupUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.lastUpdateIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.getUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.types.Seconds
+import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.KtorUpdatesPoller
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
+import io.ktor.client.features.HttpRequestTimeoutException
 import kotlinx.coroutines.*
 
-@Deprecated(
-    "Replaced",
-    ReplaceWith(
-        "UpdateReceiver",
-        "com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver"
-    )
-)
-typealias UpdateReceiver<T> = com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver<T>
-
-@Deprecated("Replaced into TelegramBotAPI-extensions-api")
 fun RequestsExecutor.startGettingOfUpdates(
-    timeoutMillis: Long = 30 * 1000,
+    timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     allowedUpdates: List<String>? = null,
-    block: UpdateReceiver<Update>
-): UpdatesPoller {
-    return KtorUpdatesPoller(
-        this,
-        timeoutMillis.toInt() / 1000,
-        allowedUpdates = allowedUpdates ?: ALL_UPDATES_LIST,
-        updatesReceiver = block
-    ).also {
-        it.start(scope)
+    updatesReceiver: UpdateReceiver<Update>
+): Job = scope.launch {
+    var lastUpdateIdentifier: UpdateIdentifier? = null
+
+    while (isActive) {
+        try {
+            supervisorScope {
+                val updates = getUpdates(
+                    offset = lastUpdateIdentifier?.plus(1),
+                    timeout = timeoutSeconds,
+                    allowed_updates = allowedUpdates
+                ).convertWithMediaGroupUpdates()
+
+                supervisorScope {
+                    for (update in updates) {
+                        updatesReceiver(update)
+
+                        lastUpdateIdentifier = update.lastUpdateIdentifier()
+                    }
+                }
+            }
+        } catch (e: HttpRequestTimeoutException) {
+            e // it is ok due to mechanism of long polling
+        } catch (e: RequestException) {
+            e // it is not ok, but in most cases it will mean that there is some limit for requests count
+            delay(1000L)
+        }
     }
 }
 
-@Deprecated("Replaced into TelegramBotAPI-extensions-api")
+fun RequestsExecutor.startGettingOfUpdates(
+    updatesFilter: UpdatesFilter,
+    timeoutSeconds: Seconds = 30,
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
+): Job = startGettingOfUpdates(
+    timeoutSeconds,
+    scope,
+    updatesFilter.allowedUpdates,
+    updatesFilter.asUpdateReceiver
+)
+
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
@@ -53,35 +75,32 @@ fun RequestsExecutor.startGettingOfUpdates(
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    timeoutMillis: Long = 30 * 1000,
+    timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = GlobalScope
-): UpdatesPoller {
-    val filter = UpdatesFilter(
-        messageCallback,
-        messageMediaGroupCallback,
-        editedMessageCallback,
-        editedMessageMediaGroupCallback,
-        channelPostCallback,
-        channelPostMediaGroupCallback,
-        editedChannelPostCallback,
-        editedChannelPostMediaGroupCallback,
-        chosenInlineResultCallback,
-        inlineQueryCallback,
-        callbackQueryCallback,
-        shippingQueryCallback,
-        preCheckoutQueryCallback,
-        pollCallback,
-        pollAnswerCallback
-    )
+): Job {
     return startGettingOfUpdates(
-        timeoutMillis,
-        scope,
-        filter.allowedUpdates,
-        filter.asUpdateReceiver
+        SimpleUpdatesFilter(
+            messageCallback,
+            messageMediaGroupCallback,
+            editedMessageCallback,
+            editedMessageMediaGroupCallback,
+            channelPostCallback,
+            channelPostMediaGroupCallback,
+            editedChannelPostCallback,
+            editedChannelPostMediaGroupCallback,
+            chosenInlineResultCallback,
+            inlineQueryCallback,
+            callbackQueryCallback,
+            shippingQueryCallback,
+            preCheckoutQueryCallback,
+            pollCallback,
+            pollAnswerCallback
+        ),
+        timeoutSeconds,
+        scope
     )
 }
 
-@Deprecated("Replaced into TelegramBotAPI-extensions-api")
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     mediaGroupCallback: UpdateReceiver<MediaGroupUpdate>? = null,
@@ -95,9 +114,9 @@ fun RequestsExecutor.startGettingOfUpdates(
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    timeoutMillis: Long = 30 * 1000,
+    timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
-): UpdatesPoller = startGettingOfUpdates(
+): Job = startGettingOfUpdates(
     messageCallback = messageCallback,
     messageMediaGroupCallback = mediaGroupCallback,
     editedMessageCallback = editedMessageCallback,
@@ -113,6 +132,6 @@ fun RequestsExecutor.startGettingOfUpdates(
     preCheckoutQueryCallback = preCheckoutQueryCallback,
     pollCallback = pollCallback,
     pollAnswerCallback = pollAnswerCallback,
-    timeoutMillis = timeoutMillis,
+    timeoutSeconds = timeoutSeconds,
     scope = scope
 )

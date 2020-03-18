@@ -11,13 +11,13 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaG
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.executeUnsafe
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 
+@Deprecated("Deprecated due to more simple way to get updates using TelegramBotAPI-extensions-api")
 fun KtorUpdatesPoller(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     engine: HttpClientEngine,
@@ -42,6 +42,7 @@ fun KtorUpdatesPoller(
     )
 }
 
+@Deprecated("Deprecated due to more simple way to get updates using TelegramBotAPI-extensions-api")
 class KtorUpdatesPoller(
     private val executor: RequestsExecutor,
     private val timeoutSeconds: Int? = null,

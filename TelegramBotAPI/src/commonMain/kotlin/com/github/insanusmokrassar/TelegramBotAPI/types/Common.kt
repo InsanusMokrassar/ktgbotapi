@@ -20,6 +20,8 @@ typealias PollIdentifier = String
 typealias StickerSetName = String
 typealias FileUniqueId = String
 
+typealias Seconds = Int
+
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024
 val textLength = 0 until 4096

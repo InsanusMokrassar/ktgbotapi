@@ -9,6 +9,31 @@
 * `TelegramBotAPI-extensions-api`:
     * Most part of sending media messages functions was removed and replaced with their `InputFile` args analogs
 
+### 0.24.1
+
+* `TelegramBotAPI`:
+    * `UpdateReceiver` was replaced to the package `com.github.insanusmokrassar.TelegramBotAPI.updateshandlers`
+    * All functions inside `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` are deprecated
+    and will be removed in some soon versions. Their replacement are able inside `TelegramBotAPI-extensions-api`
+    * `UpdatesFilter` is interface for now
+        * Previous `UpdatesFilter` class was renamed to `SimpleUpdatesFilter` and for backward compatibility was added
+        builder function `UpdatesFilter`, which will be removed in near releases
+        * `FlowsUpdatesFilter` now implements `UpdatesFilter`
+    * `BaseSentMessageUpdate` and `BaseEditMessageUpdate` interfaces was added
+        * `EditChannelPostUpdate` now is implementing `BaseEditMessageUpdate` interface
+        * `EditMessageUpdate` now is implementing `BaseEditMessageUpdate` interface
+        * `ChannelPostUpdate` now is implementing `BaseSentMessageUpdate` interface
+        * `MessageUpdate` now is implementing `BaseSentMessageUpdate` interface
+    * `UpdatesPoller` and all its usages, childs and childs usages now are deprecated
+    * `GetUpdates#timeout` type now is `Seconds` (in fact it is `Int` as previously)
+    * `KtorRequestsExecutor` now is using a copy of incoming `HttpClient` object and install `HttpTimeout` feature
+        * `AbstractRequestCallFactory` now setting up a custom delay in case if request is `GetUpdates`
+* `TelegramBotAPI-extensions-api`:
+    * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
+    in package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates.UpdatesPolling`
+    * Now new method of getting updates available: `startGettingUpdates` with `UpdatesFilter` as incoming first
+    parameter
+    * `startGettingUpdates` with `receiver` and `allowedUpdates` parameters now will handle updates by itself
 
 ## 0.23.0 TelegramBotAPI 4.6
 
