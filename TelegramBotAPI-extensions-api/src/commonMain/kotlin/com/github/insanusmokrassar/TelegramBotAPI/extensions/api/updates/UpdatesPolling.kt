@@ -17,6 +17,7 @@ import kotlinx.coroutines.*
 fun RequestsExecutor.startGettingOfUpdates(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     allowedUpdates: List<String>? = null,
     updatesReceiver: UpdateReceiver<Update>
 ): Job = scope.launch {
@@ -40,10 +41,12 @@ fun RequestsExecutor.startGettingOfUpdates(
                 }
             }
         } catch (e: HttpRequestTimeoutException) {
-            e // it is ok due to mechanism of long polling
+            exceptionsHandler ?.invoke(e) // it is ok due to mechanism of long polling
         } catch (e: RequestException) {
-            e // it is not ok, but in most cases it will mean that there is some limit for requests count
+            exceptionsHandler ?.invoke(e) // it is not ok, but in most cases it will mean that there is some limit for requests count
             delay(1000L)
+        } catch (e: Exception) {
+            exceptionsHandler ?.invoke(e)
         }
     }
 }
@@ -51,10 +54,12 @@ fun RequestsExecutor.startGettingOfUpdates(
 fun RequestsExecutor.startGettingOfUpdates(
     updatesFilter: UpdatesFilter,
     timeoutSeconds: Seconds = 30,
+    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ): Job = startGettingOfUpdates(
     timeoutSeconds,
     scope,
+    exceptionsHandler,
     updatesFilter.allowedUpdates,
     updatesFilter.asUpdateReceiver
 )
@@ -76,6 +81,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     timeoutSeconds: Seconds = 30,
+    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     scope: CoroutineScope = GlobalScope
 ): Job {
     return startGettingOfUpdates(
@@ -97,6 +103,7 @@ fun RequestsExecutor.startGettingOfUpdates(
             pollAnswerCallback
         ),
         timeoutSeconds,
+        exceptionsHandler,
         scope
     )
 }
@@ -115,6 +122,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     timeoutSeconds: Seconds = 30,
+    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ): Job = startGettingOfUpdates(
     messageCallback = messageCallback,
@@ -133,5 +141,6 @@ fun RequestsExecutor.startGettingOfUpdates(
     pollCallback = pollCallback,
     pollAnswerCallback = pollAnswerCallback,
     timeoutSeconds = timeoutSeconds,
+    exceptionsHandler = exceptionsHandler,
     scope = scope
 )
