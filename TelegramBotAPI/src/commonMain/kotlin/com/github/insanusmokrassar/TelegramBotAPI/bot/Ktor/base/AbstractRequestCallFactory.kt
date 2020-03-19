@@ -35,6 +35,7 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
                         if (customTimeoutMillis > 0) {
                             timeout {
                                 requestTimeoutMillis = customTimeoutMillis
+                                socketTimeoutMillis = customTimeoutMillis
                             }
                         }
                     }
