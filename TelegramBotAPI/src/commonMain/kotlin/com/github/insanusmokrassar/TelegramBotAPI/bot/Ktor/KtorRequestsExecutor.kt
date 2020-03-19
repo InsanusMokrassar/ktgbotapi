@@ -12,8 +12,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
-import io.ktor.client.features.ClientRequestException
-import io.ktor.client.features.HttpTimeout
+import io.ktor.client.features.*
 import io.ktor.client.statement.HttpStatement
 import io.ktor.client.statement.readText
 import kotlinx.coroutines.delay
@@ -37,7 +36,9 @@ class KtorRequestsExecutor(
     }
 
     private val client = client.config {
-        install(HttpTimeout)
+        if (client.feature(HttpTimeout) == null) {
+            install(HttpTimeout)
+        }
     }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
