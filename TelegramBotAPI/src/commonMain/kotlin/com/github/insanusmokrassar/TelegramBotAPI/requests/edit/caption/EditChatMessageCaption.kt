@@ -35,33 +35,3 @@ data class EditChatMessageCaption(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageCaption(
-    chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
-    text: String,
-    parseMode: ParseMode? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
-    EditChatMessageCaption(chatId, messageId, text, parseMode, replyMarkup)
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageCaption(
-    chat: Chat,
-    messageId: MessageIdentifier,
-    text: String,
-    parseMode: ParseMode? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageCaption(chat.id, messageId, text, parseMode, replyMarkup)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun <T> RequestsExecutor.editMessageCaption(
-    message: ContentMessage<T>,
-    text: String,
-    parseMode: ParseMode? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<MediaContent> where T : CaptionedInput, T : MediaContent {
-    return editMessageCaption(message.chat.id, message.messageId, text, parseMode, replyMarkup)
-}

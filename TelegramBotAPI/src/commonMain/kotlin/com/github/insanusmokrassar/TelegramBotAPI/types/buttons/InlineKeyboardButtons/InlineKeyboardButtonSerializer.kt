@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardB
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 import kotlinx.serialization.json.*
 
 internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {

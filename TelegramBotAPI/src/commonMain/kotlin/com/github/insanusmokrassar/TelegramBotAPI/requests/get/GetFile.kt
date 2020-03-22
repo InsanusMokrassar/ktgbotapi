@@ -19,15 +19,3 @@ data class GetFile(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getFileAdditionalInfo(
-    fileId: FileId
-) = execute(
-    GetFile(fileId)
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getFileAdditionalInfo(
-    file: TelegramMediaFile
-) = getFileAdditionalInfo(file.fileId)

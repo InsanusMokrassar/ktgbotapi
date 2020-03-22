@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InputMessageContent.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(InputMessageContent::class)
 internal object InputMessageContentSerializer : KSerializer<InputMessageContent> {

@@ -23,15 +23,3 @@ data class SetChatPhoto (
     override val mediaMap: Map<String, MultipartFile> = mapOf(photoField to photo)
     override val paramsJson: JsonObject = toJson(serializer())
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setChatPhoto(
-    chatId: ChatIdentifier,
-    photo: MultipartFile
-) = execute(SetChatPhoto(chatId, photo))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setChatPhoto(
-    chat: PublicChat,
-    photo: MultipartFile
-) = setChatPhoto(chat.id, photo)

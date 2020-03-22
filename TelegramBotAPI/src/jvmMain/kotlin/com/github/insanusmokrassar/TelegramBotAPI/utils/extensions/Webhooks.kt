@@ -8,9 +8,11 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
 import com.github.insanusmokrassar.TelegramBotAPI.utils.convertWithMediaGroupUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import io.ktor.application.call
 import io.ktor.request.receiveText
 import io.ktor.response.respond
@@ -73,8 +75,8 @@ suspend fun RequestsExecutor.setWebhook(
         module {
             routing {
                 post(listenRoute) {
-                    val asJson = Json.nonstrict.parseJson(call.receiveText())
-                    val update = Json.nonstrict.fromJson(
+                    val asJson = nonstrictJsonFormat.parseJson(call.receiveText())
+                    val update = nonstrictJsonFormat.fromJson(
                         RawUpdate.serializer(),
                         asJson
                     )

@@ -87,25 +87,3 @@ data class SendMediaGroupData internal constructor(
 data class SendMediaGroupFiles internal constructor(
     val files: List<MultipartFile>
 ) : Files by (files.map { it.fileId to it }.toMap())
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendMediaGroup(
-    chatId: ChatIdentifier,
-    media: List<MediaGroupMemberInputMedia>,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null
-) = execute(
-    SendMediaGroup(
-        chatId, media, disableNotification, replyToMessageId
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendMediaGroup(
-    chat: Chat,
-    media: List<MediaGroupMemberInputMedia>,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null
-) = sendMediaGroup(
-    chat.id, media, disableNotification, replyToMessageId
-)

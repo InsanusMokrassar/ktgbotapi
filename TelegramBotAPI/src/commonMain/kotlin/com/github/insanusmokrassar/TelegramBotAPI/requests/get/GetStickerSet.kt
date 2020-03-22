@@ -18,17 +18,3 @@ data class GetStickerSet(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getStickerSet(
-    name: String
-) = execute(
-    GetStickerSet(name)
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getStickerSet(
-    sticker: Sticker
-) = getStickerSet(
-    sticker.stickerSetName ?: error("Sticker must contains stickerSetName to be correctly used in getStickerSet method")
-)

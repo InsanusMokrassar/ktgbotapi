@@ -13,49 +13,6 @@ interface UpdatesFilter {
     val allowedUpdates: List<String>
 }
 
-@Deprecated(
-    "It is builder function for SimpleUpdatesFilter",
-    ReplaceWith(
-        "SimpleUpdatesFilter",
-        "com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.SimpleUpdatesFilter"
-    )
-)
-fun UpdatesFilter(
-    messageCallback: UpdateReceiver<MessageUpdate>? = null,
-    messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
-    editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
-    editedMessageMediaGroupCallback: UpdateReceiver<EditMessageMediaGroupUpdate>? = null,
-    channelPostCallback: UpdateReceiver<ChannelPostUpdate>? = null,
-    channelPostMediaGroupCallback: UpdateReceiver<ChannelPostMediaGroupUpdate>? = null,
-    editedChannelPostCallback: UpdateReceiver<EditChannelPostUpdate>? = null,
-    editedChannelPostMediaGroupCallback: UpdateReceiver<EditChannelPostMediaGroupUpdate>? = null,
-    chosenInlineResultCallback: UpdateReceiver<ChosenInlineResultUpdate>? = null,
-    inlineQueryCallback: UpdateReceiver<InlineQueryUpdate>? = null,
-    callbackQueryCallback: UpdateReceiver<CallbackQueryUpdate>? = null,
-    shippingQueryCallback: UpdateReceiver<ShippingQueryUpdate>? = null,
-    preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
-    pollUpdateCallback: UpdateReceiver<PollUpdate>? = null,
-    pollAnswerUpdateCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    unknownUpdateTypeCallback: UpdateReceiver<UnknownUpdateType>? = null
-) = SimpleUpdatesFilter(
-    messageCallback,
-    messageMediaGroupCallback,
-    editedMessageCallback,
-    editedMessageMediaGroupCallback,
-    channelPostCallback,
-    channelPostMediaGroupCallback,
-    editedChannelPostCallback,
-    editedChannelPostMediaGroupCallback,
-    chosenInlineResultCallback,
-    inlineQueryCallback,
-    callbackQueryCallback,
-    shippingQueryCallback,
-    preCheckoutQueryCallback,
-    pollUpdateCallback,
-    pollAnswerUpdateCallback,
-    unknownUpdateTypeCallback
-)
-
 data class SimpleUpdatesFilter(
     private val messageCallback: UpdateReceiver<MessageUpdate>? = null,
     private val messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,

@@ -1,16 +1,15 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
+import com.github.insanusmokrassar.TelegramBotAPI.NonstrictTestsJsonFormat
 import com.soywiz.klock.DateTime
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import java.util.concurrent.TimeUnit
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-private val dateTimeMillis = System.currentTimeMillis()
-private val dateTimeUnix = TimeUnit.MILLISECONDS.toSeconds(dateTimeMillis)
-private val dateTime = DateTime(TimeUnit.SECONDS.toMillis(dateTimeUnix))
+private val dateTimeUnix = DateTime.nowUnixLong()
+private val dateTimeMillis = dateTimeUnix * 1000
+private val dateTime = DateTime(dateTimeMillis)
 
 @ImplicitReflectionSerializer
 class TelegramDateTests {
@@ -22,10 +21,10 @@ class TelegramDateTests {
     fun `Serializtion of TelegramDate is working correctly`() {
         val example = Example(TelegramDate(dateTimeUnix))
 
-        val stringified = Json.plain.stringify(Example.serializer(), example)
+        val stringified = NonstrictTestsJsonFormat.stringify(Example.serializer(), example)
         assertEquals("{\"dateTime\":$dateTimeUnix}", stringified)
 
-        val deserialized = Json.plain.parse(Example.serializer(), stringified)
+        val deserialized = NonstrictTestsJsonFormat.parse(Example.serializer(), stringified)
         assertEquals(example, deserialized)
 
         assertEquals(dateTime, deserialized.dateTime.asDate)

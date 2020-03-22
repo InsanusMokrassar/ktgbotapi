@@ -15,6 +15,8 @@
     * `File#toInputFile` extension now will throw error when file does not exists
     * `InlineKeyboardMarkup` will check that `PayInlineKeyboardButton` is the first in case if it is exists in
     `keyboard`
+    * `makeLinkToMessage` now is not `PreviewFeature`
+    * All deprecations was removed
 
 ## 0.24.0
 

@@ -26,36 +26,3 @@ data class RestrictChatMember(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.restrictChatMember(
-    chatId: ChatIdentifier,
-    userId: UserId,
-    untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = execute(RestrictChatMember(chatId, userId, untilDate, permissions))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.restrictChatMember(
-    chat: PublicChat,
-    userId: UserId,
-    untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chat.id, userId, untilDate, permissions)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.restrictChatMember(
-    chatId: ChatId,
-    user: User,
-    untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chatId, user.id, untilDate, permissions)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.restrictChatMember(
-    chat: PublicChat,
-    user: User,
-    untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chat.id, user.id, untilDate, permissions)
-

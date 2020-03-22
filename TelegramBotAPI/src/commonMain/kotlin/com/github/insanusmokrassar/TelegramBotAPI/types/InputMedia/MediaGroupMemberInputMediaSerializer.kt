@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia
 
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(MediaGroupMemberInputMedia::class)
 internal object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMemberInputMedia> {

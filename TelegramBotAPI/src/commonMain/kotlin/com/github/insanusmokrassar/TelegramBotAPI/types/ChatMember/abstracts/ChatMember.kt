@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.RawChatMember
 import com.github.insanusmokrassar.TelegramBotAPI.types.User
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 interface ChatMember {
     val user: User

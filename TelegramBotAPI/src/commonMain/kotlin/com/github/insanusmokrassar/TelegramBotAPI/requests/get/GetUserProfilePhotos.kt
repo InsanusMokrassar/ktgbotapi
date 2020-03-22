@@ -29,21 +29,3 @@ data class GetUserProfilePhotos(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getUserProfilePhotos(
-    userId: UserId,
-    offset: Int? = null,
-    limit: Int? = null
-) = execute(
-    GetUserProfilePhotos(
-        userId, offset, limit
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.getUserProfilePhotos(
-    user: CommonUser,
-    offset: Int? = null,
-    limit: Int? = null
-) = getUserProfilePhotos(user.id, offset, limit)

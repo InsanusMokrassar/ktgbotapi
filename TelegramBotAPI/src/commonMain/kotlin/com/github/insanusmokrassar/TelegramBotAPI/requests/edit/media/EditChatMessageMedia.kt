@@ -40,28 +40,3 @@ data class EditChatMessageMedia(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageMedia(
-    chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
-    media: InputMedia,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
-    EditChatMessageMedia(chatId, messageId, media, replyMarkup)
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageMedia(
-    chat: Chat,
-    messageId: MessageIdentifier,
-    media: InputMedia,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageMedia(chat.id, messageId, media, replyMarkup)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageMedia(
-    message: ContentMessage<out MediaContent>,
-    media: InputMedia,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageMedia(message.chat.id, message.messageId, media, replyMarkup)
