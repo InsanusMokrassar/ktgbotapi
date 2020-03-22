@@ -22,17 +22,19 @@ data class CommonUser(
 ) : User()
 
 @Serializable(UserSerializer::class)
-sealed class Bot : User()
+sealed class Bot : User() {
+    abstract override val username: Username
+}
 
 @Serializable
 data class CommonBot(
     override val id: ChatId,
+    @SerialName(usernameField)
+    override val username: Username,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
-    override val lastName: String = "",
-    @SerialName(usernameField)
-    override val username: Username? = null
+    override val lastName: String = ""
 ) : Bot() {
     @SerialName(isBotField)
     private val isBot = true
@@ -41,12 +43,12 @@ data class CommonBot(
 @Serializable
 data class ExtendedBot(
     override val id: ChatId,
+    @SerialName(usernameField)
+    override val username: Username,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
     override val lastName: String = "",
-    @SerialName(usernameField)
-    override val username: Username? = null,
     @SerialName(canJoinGroupsField)
     val canJoinGroups: Boolean = false,
     @SerialName(canReadAllGroupMessagesField)

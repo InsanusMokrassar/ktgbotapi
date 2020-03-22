@@ -2,6 +2,9 @@
 
 ## 0.25.0
 
+* `TelegramBotAPI`:
+    * `Bot` implementations (as and `Bot` itself) now have not nullable `username`
+
 ## 0.24.0
 
 * `TelegramBotAPI`:
