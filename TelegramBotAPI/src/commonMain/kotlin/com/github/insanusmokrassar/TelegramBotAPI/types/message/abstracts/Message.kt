@@ -23,6 +23,8 @@ internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : Deserializ
     override val descriptor: SerialDescriptor = SerialDescriptor("TelegramBotAPIMessageSerializer", PolymorphicKind.OPEN)
 
     override fun patch(decoder: Decoder, old: T): T = throw UpdateNotSupportedException("TelegramBotAPIMessageSerializer")
+
+    @Suppress("UNCHECKED_CAST")
     override fun deserialize(decoder: Decoder): T {
         return RawMessage.serializer().deserialize(decoder).asMessage as T
     }

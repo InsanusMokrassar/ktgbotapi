@@ -28,7 +28,6 @@ data class PhotoSize(
     override val width: Int,
     override val height: Int
 ) : SizedMediaFile {
-    @Transient
     val resolution: Long by lazy {
         width.toLong() * height
     }

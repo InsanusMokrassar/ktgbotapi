@@ -19,6 +19,9 @@
     * All deprecations was removed
     * `RequestException` now extends `io.ktor.utils.io.errors.IOException` instead of `kotlinx.io.IOException`
     * `Any#toJson` now is NOT `inline`
+    * `FlowsUpdatesFilter` now as marked my annotation `FlowPreview`
+    * `PathedFile#fullUrl` now is not `inline` function
+    * `SimpleRequest#json` now is not `inline` and `internal` function
 
 ## 0.24.0
 

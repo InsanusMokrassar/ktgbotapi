@@ -9,4 +9,4 @@ interface SimpleRequest<T: Any> : Request<T> {
 }
 
 @Suppress("UNCHECKED_CAST")
-inline fun <T: Any, K: SimpleRequest<T>> K.json(): JsonObject = toJsonWithoutNulls(requestSerializer as SerializationStrategy<K>)
+internal fun <T: Any, K: SimpleRequest<T>> K.json(): JsonObject = toJsonWithoutNulls(requestSerializer as SerializationStrategy<K>)
