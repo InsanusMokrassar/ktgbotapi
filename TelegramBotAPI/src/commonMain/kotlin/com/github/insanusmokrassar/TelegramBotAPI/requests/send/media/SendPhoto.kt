@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
@@ -8,8 +7,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.PhotoContent
@@ -84,96 +81,4 @@ data class SendPhotoFiles internal constructor(
     val photo: MultipartFile
 ) : Files by mapOf(
     photoField to photo
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendPhoto(
-    chatId: ChatIdentifier,
-    fileId: FileId,
-    caption: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    SendPhotoData(
-        chatId,
-        fileId.fileId,
-        caption,
-        parseMode,
-        disableNotification,
-        replyToMessageId,
-        replyMarkup
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendPhoto(
-    chatId: ChatIdentifier,
-    file: PhotoSize,
-    caption: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
-    chatId, file.fileId, caption, parseMode, disableNotification, replyToMessageId, replyMarkup
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendPhoto(
-    chatId: ChatIdentifier,
-    photo: Photo,
-    caption: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
-    chatId, photo.biggest() ?: throw IllegalArgumentException("Photo $photo is empty"), caption, parseMode, disableNotification, replyToMessageId, replyMarkup
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendPhoto(
-    chat: Chat,
-    fileId: FileId,
-    caption: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
-    chat.id,
-    fileId,
-    caption,
-    parseMode,
-    disableNotification,
-    replyToMessageId,
-    replyMarkup
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendPhoto(
-    chat: Chat,
-    file: PhotoSize,
-    caption: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
-    chat.id, file.fileId, caption, parseMode, disableNotification, replyToMessageId, replyMarkup
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendPhoto(
-    chat: Chat,
-    photo: Photo,
-    caption: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(
-    chat.id, photo.biggest() ?: throw IllegalArgumentException("Photo $photo is empty"), caption, parseMode, disableNotification, replyToMessageId, replyMarkup
 )

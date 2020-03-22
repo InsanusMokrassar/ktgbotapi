@@ -1,12 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.stickers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.common.CommonMultipartFileRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts.StickerSetAction
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
-import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.StickerSet
 import kotlinx.serialization.*
 
 fun AddStickerToSet(
@@ -50,98 +48,3 @@ data class AddStickerToSet internal constructor(
 
     override fun method(): String = "addStickerToSet"
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.addStickerToSet(
-    userId: UserId,
-    stickerSetName: String,
-    sticker: FileId,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = execute(
-    AddStickerToSet(
-        userId, stickerSetName, emojis, sticker, maskPosition
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.addStickerToSet(
-    userId: UserId,
-    stickerSetName: String,
-    sticker: MultipartFile,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = execute(
-    CommonMultipartFileRequest(
-        AddStickerToSet(
-            userId, stickerSetName, emojis, null, maskPosition
-        ),
-        mapOf(pngStickerField to sticker)
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.addStickerToSet(
-    user: CommonUser,
-    stickerSetName: String,
-    sticker: FileId,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = addStickerToSet(
-    user.id, stickerSetName, sticker, emojis, maskPosition
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.addStickerToSet(
-    user: CommonUser,
-    stickerSetName: String,
-    sticker: MultipartFile,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = addStickerToSet(
-    user.id, stickerSetName, sticker, emojis, maskPosition
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.addStickerToSet(
-    userId: UserId,
-    stickerSet: StickerSet,
-    sticker: FileId,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = addStickerToSet(
-    userId, stickerSet.name, sticker, emojis, maskPosition
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.addStickerToSet(
-    userId: UserId,
-    stickerSet: StickerSet,
-    sticker: MultipartFile,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = addStickerToSet(
-    userId, stickerSet.name, sticker, emojis, maskPosition
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.addStickerToSet(
-    user: CommonUser,
-    stickerSet: StickerSet,
-    sticker: FileId,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = addStickerToSet(
-    user.id, stickerSet.name, sticker, emojis, maskPosition
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.addStickerToSet(
-    user: CommonUser,
-    stickerSet: StickerSet,
-    sticker: MultipartFile,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = addStickerToSet(
-    user.id, stickerSet.name, sticker, emojis, maskPosition
-)

@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.polls
 import com.github.insanusmokrassar.TelegramBotAPI.types.textField
 import com.github.insanusmokrassar.TelegramBotAPI.types.votesCountField
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 @Serializable(PollOptionSerializer::class)
 sealed class PollOption {
@@ -20,17 +19,17 @@ data class SimplePollOption (
 ) : PollOption()
 
 internal object PollOptionSerializer : KSerializer<PollOption> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName(PollOption::class.simpleName ?: "PollOption")
+    override val descriptor: SerialDescriptor = SimplePollOption.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): PollOption = SimplePollOption.serializer().deserialize(
         decoder
     )
 
-    override fun serialize(encoder: Encoder, obj: PollOption) {
-        when (obj) {
+    override fun serialize(encoder: Encoder, value: PollOption) {
+        when (value) {
             is SimplePollOption -> SimplePollOption.serializer().serialize(
                 encoder,
-                obj
+                value
             )
         }
     }

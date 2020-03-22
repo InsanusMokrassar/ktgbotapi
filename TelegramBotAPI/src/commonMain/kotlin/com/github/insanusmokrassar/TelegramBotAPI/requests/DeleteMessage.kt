@@ -1,13 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.MessageAction
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class DeleteMessage(
@@ -19,7 +16,7 @@ data class DeleteMessage(
     override fun method(): String = "deleteMessage"
 
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

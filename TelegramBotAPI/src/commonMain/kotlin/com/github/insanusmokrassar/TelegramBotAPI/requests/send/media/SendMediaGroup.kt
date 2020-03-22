@@ -1,18 +1,16 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.ArrayListSerializer
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.jsonArray
 
 val membersCountInMediaGroup: IntRange = 2 .. 10
@@ -55,8 +53,8 @@ fun SendMediaGroup(
     }
 }
 
-private val messagesListSerializer: ArrayListSerializer<MediaGroupMessage>
-    = ArrayListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
+private val messagesListSerializer: KSerializer<List<MediaGroupMessage>>
+    = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
 
 @Serializable
 data class SendMediaGroupData internal constructor(
@@ -87,25 +85,3 @@ data class SendMediaGroupData internal constructor(
 data class SendMediaGroupFiles internal constructor(
     val files: List<MultipartFile>
 ) : Files by (files.map { it.fileId to it }.toMap())
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendMediaGroup(
-    chatId: ChatIdentifier,
-    media: List<MediaGroupMemberInputMedia>,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null
-) = execute(
-    SendMediaGroup(
-        chatId, media, disableNotification, replyToMessageId
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendMediaGroup(
-    chat: Chat,
-    media: List<MediaGroupMemberInputMedia>,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null
-) = sendMediaGroup(
-    chat.id, media, disableNotification, replyToMessageId
-)

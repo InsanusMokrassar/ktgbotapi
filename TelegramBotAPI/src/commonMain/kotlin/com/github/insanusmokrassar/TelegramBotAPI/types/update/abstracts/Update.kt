@@ -2,9 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElementSerializer
 
 interface Update {
@@ -18,21 +17,21 @@ data class UnknownUpdateType(
 ) : Update
 
 internal object UpdateSerializerWithoutDeserialization : KSerializer<Update> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName("UpdateSerializerWithoutDeserialization")
+    override val descriptor: SerialDescriptor = JsonElementSerializer.descriptor
 
     override fun deserialize(decoder: Decoder): Update = UpdateDeserializationStrategy.deserialize(decoder)
 
-    override fun serialize(encoder: Encoder, obj: Update) = throw UnsupportedOperationException()
+    override fun serialize(encoder: Encoder, value: Update) = throw UnsupportedOperationException()
 }
 
 internal object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName("UpdateDeserializationStrategy")
+    override val descriptor: SerialDescriptor = JsonElementSerializer.descriptor
 
-    override fun patch(decoder: Decoder, old: Update): Update = throw UpdateNotSupportedException(descriptor.name)
+    override fun patch(decoder: Decoder, old: Update): Update = throw UpdateNotSupportedException("Update")
 
     override fun deserialize(decoder: Decoder): Update {
         val asJson = JsonElementSerializer.deserialize(decoder)
-        return Json.nonstrict.fromJson(
+        return nonstrictJsonFormat.fromJson(
             RawUpdate.serializer(),
             asJson
         ).asUpdate(

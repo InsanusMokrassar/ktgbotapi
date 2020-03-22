@@ -1,12 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.modify
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ChatRequest
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class SetChatDescription (
@@ -23,19 +21,7 @@ data class SetChatDescription (
 
     override fun method(): String = "setChatDescription"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setChatDescription(
-    chatId: ChatIdentifier,
-    description: String
-) = execute(SetChatDescription(chatId, description))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.setChatDescription(
-    chat: PublicChat,
-    description: String
-) = setChatDescription(chat.id, description)

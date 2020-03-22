@@ -3,33 +3,32 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQue
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(InlineQueryResult::class)
 internal object InlineQueryResultSerializer : KSerializer<InlineQueryResult> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName(InlineQueryResult::class.toString())
-    override fun serialize(encoder: Encoder, obj: InlineQueryResult) {
-        when(obj) {
-            is InlineQueryResultArticle -> InlineQueryResultArticle.serializer().serialize(encoder, obj)
-            is InlineQueryResultAudioCachedImpl -> InlineQueryResultAudioCachedImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultAudioImpl -> InlineQueryResultAudioImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultContact -> InlineQueryResultContact.serializer().serialize(encoder, obj)
-            is InlineQueryResultDocumentCachedImpl -> InlineQueryResultDocumentCachedImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultDocumentImpl -> InlineQueryResultDocumentImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultGame -> InlineQueryResultGame.serializer().serialize(encoder, obj)
-            is InlineQueryResultGifCachedImpl -> InlineQueryResultGifCachedImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultGifImpl -> InlineQueryResultGifImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultLocation -> InlineQueryResultLocation.serializer().serialize(encoder, obj)
-            is InlineQueryResultMpeg4GifCachedImpl -> InlineQueryResultMpeg4GifCachedImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultMpeg4GifImpl -> InlineQueryResultMpeg4GifImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultPhotoCachedImpl -> InlineQueryResultPhotoCachedImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultPhotoImpl -> InlineQueryResultPhotoImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultStickerCached -> InlineQueryResultStickerCached.serializer().serialize(encoder, obj)
-            is InlineQueryResultVenue -> InlineQueryResultVenue.serializer().serialize(encoder, obj)
-            is InlineQueryResultVideoCachedImpl -> InlineQueryResultVideoCachedImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultVideoImpl -> InlineQueryResultVideoImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultVoiceCachedImpl -> InlineQueryResultVoiceCachedImpl.serializer().serialize(encoder, obj)
-            is InlineQueryResultVoiceImpl -> InlineQueryResultVoiceImpl.serializer().serialize(encoder, obj)
+    override val descriptor: SerialDescriptor = SerialDescriptor(InlineQueryResult::class.toString(), PolymorphicKind.OPEN)
+    override fun serialize(encoder: Encoder, value: InlineQueryResult) {
+        when(value) {
+            is InlineQueryResultArticle -> InlineQueryResultArticle.serializer().serialize(encoder, value)
+            is InlineQueryResultAudioCachedImpl -> InlineQueryResultAudioCachedImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultAudioImpl -> InlineQueryResultAudioImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultContact -> InlineQueryResultContact.serializer().serialize(encoder, value)
+            is InlineQueryResultDocumentCachedImpl -> InlineQueryResultDocumentCachedImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultDocumentImpl -> InlineQueryResultDocumentImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultGame -> InlineQueryResultGame.serializer().serialize(encoder, value)
+            is InlineQueryResultGifCachedImpl -> InlineQueryResultGifCachedImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultGifImpl -> InlineQueryResultGifImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultLocation -> InlineQueryResultLocation.serializer().serialize(encoder, value)
+            is InlineQueryResultMpeg4GifCachedImpl -> InlineQueryResultMpeg4GifCachedImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultMpeg4GifImpl -> InlineQueryResultMpeg4GifImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultPhotoCachedImpl -> InlineQueryResultPhotoCachedImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultPhotoImpl -> InlineQueryResultPhotoImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultStickerCached -> InlineQueryResultStickerCached.serializer().serialize(encoder, value)
+            is InlineQueryResultVenue -> InlineQueryResultVenue.serializer().serialize(encoder, value)
+            is InlineQueryResultVideoCachedImpl -> InlineQueryResultVideoCachedImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultVideoImpl -> InlineQueryResultVideoImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultVoiceCachedImpl -> InlineQueryResultVoiceCachedImpl.serializer().serialize(encoder, value)
+            is InlineQueryResultVoiceImpl -> InlineQueryResultVoiceImpl.serializer().serialize(encoder, value)
         }
     }
 

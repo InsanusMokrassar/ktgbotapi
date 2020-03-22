@@ -5,7 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.RawMessage
 import com.soywiz.klock.DateTime
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 interface Message {
     val messageId: MessageIdentifier
@@ -21,9 +20,11 @@ data class UnknownMessageType(
 ) : Message
 
 internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : DeserializationStrategy<T> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName("TelegramBotAPIMessageSerializer")
+    override val descriptor: SerialDescriptor = SerialDescriptor("TelegramBotAPIMessageSerializer", PolymorphicKind.OPEN)
 
-    override fun patch(decoder: Decoder, old: T): T = throw UpdateNotSupportedException(descriptor.name)
+    override fun patch(decoder: Decoder, old: T): T = throw UpdateNotSupportedException("TelegramBotAPIMessageSerializer")
+
+    @Suppress("UNCHECKED_CAST")
     override fun deserialize(decoder: Decoder): T {
         return RawMessage.serializer().deserialize(decoder).asMessage as T
     }
@@ -40,7 +41,7 @@ internal class TelegramBotAPIMessageDeserializeOnlySerializerClass<T : Message> 
         return deserializer.deserialize(decoder)
     }
 
-    override fun serialize(encoder: Encoder, obj: T) {
+    override fun serialize(encoder: Encoder, value: T) {
         throw UnsupportedOperationException("Currently, Message objects can't be serialized y this serializer")
     }
 }

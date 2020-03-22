@@ -5,9 +5,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateSerializerWithoutDeserialization
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.ArrayListSerializer
+import kotlinx.serialization.builtins.ListSerializer
 
-private val updatesListSerializer = ArrayListSerializer(
+private val updatesListSerializer = ListSerializer(
     UpdateSerializerWithoutDeserialization
 )
 

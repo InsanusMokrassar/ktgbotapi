@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
@@ -8,8 +7,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.AudioFile
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.VoiceContent
@@ -106,132 +103,3 @@ data class SendVoiceFiles internal constructor(
     voiceField to voice,
     thumbField to thumb
 )
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVoice(
-    chatId: ChatIdentifier,
-    voice: FileId,
-    thumb: FileId? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    SendVoiceData(
-        chatId,
-        voice.fileId,
-        thumb ?.fileId,
-        text,
-        parseMode,
-        duration,
-        disableNotification,
-        replyToMessageId,
-        replyMarkup
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVoice(
-    chatId: ChatIdentifier,
-    voice: AudioFile,
-    thumb: PhotoSize? = voice.thumb,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVoice(
-    chatId, voice.fileId, thumb ?.fileId, text, parseMode, voice.duration, disableNotification, replyToMessageId, replyMarkup
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVoice(
-    chatId: ChatIdentifier,
-    voice: MultipartFile,
-    thumb: FileId? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    MultipartRequestImpl(
-        SendVoiceData(
-            chatId, null, thumb ?.fileId, text, parseMode, duration, disableNotification, replyToMessageId, replyMarkup
-        ),
-        SendVoiceFiles(voice)
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVoice(
-    chatId: ChatIdentifier,
-    voice: MultipartFile,
-    thumb: MultipartFile? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    MultipartRequestImpl(
-        SendVoiceData(
-            chatId, null, null, text, parseMode, duration, disableNotification, replyToMessageId, replyMarkup
-        ),
-        SendVoiceFiles(voice, thumb)
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVoice(
-    chatId: ChatIdentifier,
-    voice: FileId,
-    thumb: MultipartFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    MultipartRequestImpl(
-        SendVoiceData(
-            chatId, voice.fileId, null, text, parseMode, duration, disableNotification, replyToMessageId, replyMarkup
-        ),
-        SendVoiceFiles(null, thumb)
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVoice(
-    chatId: ChatIdentifier,
-    voice: MultipartFile,
-    thumb: PhotoSize? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVoice(
-    chatId, voice, thumb ?.fileId , text, parseMode, duration, disableNotification, replyToMessageId, replyMarkup
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVoice(
-    chatId: ChatIdentifier,
-    voice: AudioFile,
-    thumb: MultipartFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVoice(
-    chatId, voice.fileId, thumb, text, parseMode, voice.duration, disableNotification, replyToMessageId, replyMarkup
-)
-

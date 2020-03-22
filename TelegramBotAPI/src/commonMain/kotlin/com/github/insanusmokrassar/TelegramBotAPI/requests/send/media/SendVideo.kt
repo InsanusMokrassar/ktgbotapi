@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.*
@@ -8,8 +7,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.VideoFile
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.VideoContent
@@ -119,148 +116,3 @@ data class SendVideoFiles internal constructor(
     videoField to video,
     thumbField to thumb
 )
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVideo(
-    chatId: ChatIdentifier,
-    video: FileId,
-    thumb: FileId? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    width: Int? = null,
-    height: Int? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    SendVideoData(
-        chatId,
-        video.fileId,
-        thumb ?.fileId,
-        text,
-        parseMode,
-        duration,
-        width,
-        height,
-        null,
-        disableNotification,
-        replyToMessageId,
-        replyMarkup
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVideo(
-    chatId: ChatIdentifier,
-    video: VideoFile,
-    thumb: PhotoSize? = video.thumb,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
-    chatId, video.fileId, thumb ?.fileId, text, parseMode, video.duration, video.width, video.height, disableNotification, replyToMessageId, replyMarkup
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVideo(
-    chatId: ChatIdentifier,
-    video: MultipartFile,
-    thumb: FileId? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    width: Int? = null,
-    height: Int? = null,
-    supportStreaming: Boolean? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    MultipartRequestImpl(
-        SendVideoData(
-            chatId, null, thumb ?.fileId, text, parseMode, duration, width, height, supportStreaming, disableNotification, replyToMessageId, replyMarkup
-        ),
-        SendVideoFiles(video)
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVideo(
-    chatId: ChatIdentifier,
-    video: MultipartFile,
-    thumb: MultipartFile? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    width: Int? = null,
-    height: Int? = null,
-    supportStreaming: Boolean? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    MultipartRequestImpl(
-        SendVideoData(
-            chatId, null, null, text, parseMode, duration, width, height, supportStreaming, disableNotification, replyToMessageId, replyMarkup
-        ),
-        SendVideoFiles(video, thumb)
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVideo(
-    chatId: ChatIdentifier,
-    video: FileId,
-    thumb: MultipartFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    width: Int? = null,
-    height: Int? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = execute(
-    MultipartRequestImpl(
-        SendVideoData(
-            chatId, video.fileId, null, text, parseMode, duration, width, height, null, disableNotification, replyToMessageId, replyMarkup
-        ),
-        SendVideoFiles(null, thumb)
-    )
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVideo(
-    chatId: ChatIdentifier,
-    video: MultipartFile,
-    thumb: PhotoSize? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    width: Int? = null,
-    height: Int? = null,
-    supportStreaming: Boolean? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
-    chatId, video, thumb ?.fileId , text, parseMode, duration, width, height, supportStreaming, disableNotification, replyToMessageId, replyMarkup
-)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.sendVideo(
-    chatId: ChatIdentifier,
-    video: VideoFile,
-    thumb: MultipartFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVideo(
-    chatId, video.fileId, thumb, text, parseMode, video.duration, video.width, video.height, disableNotification, replyToMessageId, replyMarkup
-)
-

@@ -1,13 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.chat.members
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.UntilDate
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMemberRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChatPermissions
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class RestrictChatMember(
@@ -22,40 +20,7 @@ data class RestrictChatMember(
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "restrictChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.restrictChatMember(
-    chatId: ChatIdentifier,
-    userId: UserId,
-    untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = execute(RestrictChatMember(chatId, userId, untilDate, permissions))
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.restrictChatMember(
-    chat: PublicChat,
-    userId: UserId,
-    untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chat.id, userId, untilDate, permissions)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.restrictChatMember(
-    chatId: ChatId,
-    user: User,
-    untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chatId, user.id, untilDate, permissions)
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.restrictChatMember(
-    chat: PublicChat,
-    user: User,
-    untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chat.id, user.id, untilDate, permissions)
-

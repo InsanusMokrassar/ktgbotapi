@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.games
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.InlineMessageAction
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.abstracts.GetGameHighScores
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*

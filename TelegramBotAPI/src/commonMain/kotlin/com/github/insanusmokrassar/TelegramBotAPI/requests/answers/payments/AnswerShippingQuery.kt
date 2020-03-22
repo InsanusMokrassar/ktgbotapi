@@ -1,12 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments.abstracts.AnswerShippingQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingOption
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.ArrayListSerializer
+import kotlinx.serialization.builtins.ListSerializer
 
 @Serializable
 data class AnswerShippingQueryOk(
@@ -22,7 +21,7 @@ data class AnswerShippingQueryOk(
         get() = serializer()
 }
 
-internal object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ArrayListSerializer(
+internal object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ListSerializer(
     ShippingOption.serializer()
 )
 

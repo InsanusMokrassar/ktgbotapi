@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.asFlow
 
 private fun <T> BroadcastChannel<T>.createUpdateReceiver(): UpdateReceiver<T> = ::send
 
+@FlowPreview
 class FlowsUpdatesFilter(
     broadcastChannelsSize: Int = Channel.CONFLATED
 ): UpdatesFilter {

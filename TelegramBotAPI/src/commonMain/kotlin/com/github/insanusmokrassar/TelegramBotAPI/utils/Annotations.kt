@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
-import kotlin.Experimental.Level
-
-@Experimental(Level.WARNING)
+@RequiresOptIn(
+    "It is possible, that bevahiour of this thing will be changed later",
+    RequiresOptIn.Level.WARNING
+)
 annotation class PreviewFeature

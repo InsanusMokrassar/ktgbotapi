@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.MarkdownV2
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 import kotlin.test.*
 

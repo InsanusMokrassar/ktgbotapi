@@ -10,6 +10,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
+import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.features.*
@@ -25,7 +26,7 @@ class KtorRequestsExecutor(
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
     private val requestsLimiter: RequestLimiter = EmptyLimiter,
-    private val jsonFormatter: Json = Json.nonstrict
+    private val jsonFormatter: Json = nonstrictJsonFormat
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {

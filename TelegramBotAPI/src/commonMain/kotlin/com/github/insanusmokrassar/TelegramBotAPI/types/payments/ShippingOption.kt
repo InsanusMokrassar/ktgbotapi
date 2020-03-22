@@ -3,7 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.payments
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts.Priced
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.ArrayListSerializer
+import kotlinx.serialization.builtins.ListSerializer
 
 @Serializable
 data class ShippingOption(
@@ -16,6 +16,6 @@ data class ShippingOption(
     override val prices: List<LabeledPrice>
 ) : Priced
 
-internal object LabeledPricesSerializer : KSerializer<List<LabeledPrice>> by ArrayListSerializer(
+internal object LabeledPricesSerializer : KSerializer<List<LabeledPrice>> by ListSerializer(
     LabeledPrice.serializer()
 )

@@ -28,5 +28,5 @@ data class InputMediaVideo(
     }
 
     @Transient
-    override val arguments: Map<String, Any?> = Mapper.mapNullable(serializer(), this)
+    override val arguments: Map<String, Any?> = Properties.storeNullable(serializer(), this)
 }

@@ -7,7 +7,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.
 
 private const val internalLinkBeginning = "https://t.me"
 
-@PreviewFeature
 fun makeLinkToMessage(
     username: String,
     messageId: MessageIdentifier
@@ -16,7 +15,6 @@ fun makeLinkToMessage(
 private val linkIdRedundantPartRegex = Regex("^-100")
 private val usernameBeginSymbolRegex = Regex("^@")
 
-@PreviewFeature
 fun makeLinkToMessage(
     chat: ExtendedChat,
     messageId: MessageIdentifier

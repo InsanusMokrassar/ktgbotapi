@@ -134,7 +134,6 @@ internal data class RawMessage(
         }
     }
 
-    @Transient
     private val forwarded: ForwardInfo? by lazy {
         forward_date ?: return@lazy null // According to the documentation, now any forwarded message contains this field
         when {

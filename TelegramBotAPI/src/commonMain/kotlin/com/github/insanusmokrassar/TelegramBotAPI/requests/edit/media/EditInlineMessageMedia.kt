@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
@@ -28,10 +27,3 @@ data class EditInlineMessageMedia(
 
     override fun method(): String = editMessageMediaMethod
 }
-
-@Deprecated("Deprecated due to extracting into separated library")
-suspend fun RequestsExecutor.editMessageCaption(
-    inlineMessageId: InlineMessageIdentifier,
-    media: InputMedia,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = execute(EditInlineMessageMedia(inlineMessageId, media, replyMarkup))
