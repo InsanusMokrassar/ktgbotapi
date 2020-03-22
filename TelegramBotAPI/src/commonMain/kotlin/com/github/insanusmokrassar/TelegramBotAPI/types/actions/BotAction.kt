@@ -9,8 +9,8 @@ sealed class BotAction {
 
 @Serializer(BotAction::class)
 internal object BotActionSerializer: KSerializer<BotAction> {
-    override fun serialize(encoder: Encoder, obj: BotAction) {
-        encoder.encodeString(obj.actionName)
+    override fun serialize(encoder: Encoder, value: BotAction) {
+        encoder.encodeString(value.actionName)
     }
 
     override fun deserialize(decoder: Decoder): BotAction {

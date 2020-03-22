@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.ChatPermissions
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class SetChatPermissions (
@@ -18,7 +18,7 @@ data class SetChatPermissions (
 ): ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "setChatPermissions"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

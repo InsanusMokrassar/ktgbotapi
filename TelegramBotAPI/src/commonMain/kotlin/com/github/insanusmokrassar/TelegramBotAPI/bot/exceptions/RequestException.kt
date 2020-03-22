@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
-import kotlinx.io.IOException
+import io.ktor.utils.io.errors.IOException
 
 fun newRequestException(
     response: Response,

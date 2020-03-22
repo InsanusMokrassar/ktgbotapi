@@ -9,9 +9,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ChatMember.abstracts.Adm
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.ArrayListSerializer
+import kotlinx.serialization.builtins.ListSerializer
 
-private val chatMembersListSerializer = ArrayListSerializer(
+private val chatMembersListSerializer = ListSerializer(
     AdministratorChatMemberSerializerWithoutDeserialization
 )
 

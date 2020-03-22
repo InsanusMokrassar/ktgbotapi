@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
+import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObjectSerializer
@@ -67,7 +68,7 @@ internal object UserSerializer : KSerializer<User> {
         val asJson = JsonObjectSerializer.deserialize(decoder)
 
         return when {
-            asJson.getPrimitiveOrNull(isBotField) ?.booleanOrNull != true -> Json.nonstrict.fromJson(
+            asJson.getPrimitiveOrNull(isBotField) ?.booleanOrNull != true -> nonstrictJsonFormat.fromJson(
                 CommonUser.serializer(),
                 asJson
             )
@@ -76,12 +77,12 @@ internal object UserSerializer : KSerializer<User> {
                     ?: asJson.get(canReadAllGroupMessagesField)
                     ?: asJson.get(supportInlineQueriesField)) != null
                 ) {
-                    Json.nonstrict.fromJson(
+                    nonstrictJsonFormat.fromJson(
                         ExtendedBot.serializer(),
                         asJson
                     )
                 } else {
-                    Json.nonstrict.fromJson(
+                    nonstrictJsonFormat.fromJson(
                         CommonBot.serializer(),
                         asJson
                     )
@@ -90,11 +91,11 @@ internal object UserSerializer : KSerializer<User> {
         }
     }
 
-    override fun serialize(encoder: Encoder, obj: User) {
-        when (obj) {
-            is CommonUser -> CommonUser.serializer().serialize(encoder, obj)
-            is CommonBot -> CommonBot.serializer().serialize(encoder, obj)
-            is ExtendedBot -> ExtendedBot.serializer().serialize(encoder, obj)
+    override fun serialize(encoder: Encoder, value: User) {
+        when (value) {
+            is CommonUser -> CommonUser.serializer().serialize(encoder, value)
+            is CommonBot -> CommonBot.serializer().serialize(encoder, value)
+            is ExtendedBot -> ExtendedBot.serializer().serialize(encoder, value)
         }
     }
 }

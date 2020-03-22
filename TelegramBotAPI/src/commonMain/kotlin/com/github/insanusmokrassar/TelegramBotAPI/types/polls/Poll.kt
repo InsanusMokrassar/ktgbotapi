@@ -1,8 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.polls
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.ArrayListSerializer
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.*
 
 @Serializable(PollSerializer::class)
@@ -73,23 +74,23 @@ data class QuizPoll(
 
 @Serializer(Poll::class)
 internal object PollSerializer : KSerializer<Poll> {
-    private val pollOptionsSerializer = ArrayListSerializer(PollOption.serializer())
+    private val pollOptionsSerializer = ListSerializer(PollOption.serializer())
     override fun deserialize(decoder: Decoder): Poll {
         val asJson = JsonObjectSerializer.deserialize(decoder)
 
         return when (asJson.getPrimitive(typeField).content) {
-            regularPollType -> Json.nonstrict.fromJson(
+            regularPollType -> nonstrictJsonFormat.fromJson(
                 RegularPoll.serializer(),
                 asJson
             )
-            quizPollType -> Json.nonstrict.fromJson(
+            quizPollType -> nonstrictJsonFormat.fromJson(
                 QuizPoll.serializer(),
                 asJson
             )
             else -> UnknownPollType(
                 asJson.getPrimitive(idField).content,
                 asJson.getPrimitive(questionField).content,
-                Json.nonstrict.fromJson(
+                nonstrictJsonFormat.fromJson(
                     pollOptionsSerializer,
                     asJson.getArray(optionsField)
                 ),
@@ -101,17 +102,17 @@ internal object PollSerializer : KSerializer<Poll> {
         }
     }
 
-    override fun serialize(encoder: Encoder, obj: Poll) {
-        val asJson = when (obj) {
-            is RegularPoll -> Json.nonstrict.toJson(RegularPoll.serializer(), obj)
-            is QuizPoll -> Json.nonstrict.toJson(QuizPoll.serializer(), obj)
-            is UnknownPollType -> throw IllegalArgumentException("Currently unable to correctly serialize object of poll $obj")
+    override fun serialize(encoder: Encoder, value: Poll) {
+        val asJson = when (value) {
+            is RegularPoll -> nonstrictJsonFormat.toJson(RegularPoll.serializer(), value)
+            is QuizPoll -> nonstrictJsonFormat.toJson(QuizPoll.serializer(), value)
+            is UnknownPollType -> throw IllegalArgumentException("Currently unable to correctly serialize object of poll $value")
         }
         val resultJson = JsonObject(
-            asJson.jsonObject + (typeField to when (obj) {
+            asJson.jsonObject + (typeField to when (value) {
                 is RegularPoll -> JsonPrimitive(regularPollType)
                 is QuizPoll -> JsonPrimitive(quizPollType)
-                is UnknownPollType -> throw IllegalArgumentException("Currently unable to correctly serialize object of poll $obj")
+                is UnknownPollType -> throw IllegalArgumentException("Currently unable to correctly serialize object of poll $value")
             })
         )
         JsonObjectSerializer.serialize(encoder, resultJson)

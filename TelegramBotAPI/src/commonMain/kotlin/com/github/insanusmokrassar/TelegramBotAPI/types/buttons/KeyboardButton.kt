@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.buttons
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
@@ -58,7 +59,7 @@ internal object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
             )
             asJson is JsonObject && asJson.getObjectOrNull(requestPollField) != null -> RequestPollKeyboardButton(
                 asJson.getPrimitive(textField).content,
-                Json.nonstrict.fromJson(
+                nonstrictJsonFormat.fromJson(
                     KeyboardButtonPollType.serializer(),
                     asJson.getObject(requestPollField)
                 )
@@ -74,13 +75,13 @@ internal object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
         }
     }
 
-    override fun serialize(encoder: Encoder, obj: KeyboardButton) {
-        when (obj) {
-            is RequestContactKeyboardButton -> RequestContactKeyboardButton.serializer().serialize(encoder, obj)
-            is RequestLocationKeyboardButton -> RequestLocationKeyboardButton.serializer().serialize(encoder, obj)
-            is RequestPollKeyboardButton -> RequestPollKeyboardButton.serializer().serialize(encoder, obj)
-            is SimpleKeyboardButton -> encoder.encodeString(obj.text)
-            is UnknownKeyboardButton -> JsonElementSerializer.serialize(encoder, Json.nonstrict.parseJson(obj.raw))
+    override fun serialize(encoder: Encoder, value: KeyboardButton) {
+        when (value) {
+            is RequestContactKeyboardButton -> RequestContactKeyboardButton.serializer().serialize(encoder, value)
+            is RequestLocationKeyboardButton -> RequestLocationKeyboardButton.serializer().serialize(encoder, value)
+            is RequestPollKeyboardButton -> RequestPollKeyboardButton.serializer().serialize(encoder, value)
+            is SimpleKeyboardButton -> encoder.encodeString(value.text)
+            is UnknownKeyboardButton -> JsonElementSerializer.serialize(encoder, nonstrictJsonFormat.parseJson(value.raw))
         }
     }
 }

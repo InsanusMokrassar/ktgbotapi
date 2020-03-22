@@ -20,17 +20,17 @@ data class SimplePollOption (
 ) : PollOption()
 
 internal object PollOptionSerializer : KSerializer<PollOption> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName(PollOption::class.simpleName ?: "PollOption")
+    override val descriptor: SerialDescriptor = SimplePollOption.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): PollOption = SimplePollOption.serializer().deserialize(
         decoder
     )
 
-    override fun serialize(encoder: Encoder, obj: PollOption) {
-        when (obj) {
+    override fun serialize(encoder: Encoder, value: PollOption) {
+        when (value) {
             is SimplePollOption -> SimplePollOption.serializer().serialize(
                 encoder,
-                obj
+                value
             )
         }
     }

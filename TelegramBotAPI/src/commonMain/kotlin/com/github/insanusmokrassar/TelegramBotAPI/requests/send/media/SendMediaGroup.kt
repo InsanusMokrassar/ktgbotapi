@@ -12,7 +12,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaG
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.ArrayListSerializer
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.jsonArray
 
 val membersCountInMediaGroup: IntRange = 2 .. 10
@@ -55,8 +55,8 @@ fun SendMediaGroup(
     }
 }
 
-private val messagesListSerializer: ArrayListSerializer<MediaGroupMessage>
-    = ArrayListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
+private val messagesListSerializer: KSerializer<List<MediaGroupMessage>>
+    = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
 
 @Serializable
 data class SendMediaGroupData internal constructor(

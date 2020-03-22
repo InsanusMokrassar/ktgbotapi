@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chatIdField
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.IntSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class GetChatMembersCount(
@@ -16,7 +16,7 @@ data class GetChatMembersCount(
 ): ChatRequest, SimpleRequest<Int> {
     override fun method(): String = "getChatMembersCount"
     override val resultDeserializer: DeserializationStrategy<Int>
-        get() = IntSerializer
+        get() = Int.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

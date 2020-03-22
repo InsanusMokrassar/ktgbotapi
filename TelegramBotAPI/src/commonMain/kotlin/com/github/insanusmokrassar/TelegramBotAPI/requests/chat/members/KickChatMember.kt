@@ -6,7 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMe
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class KickChatMember(
@@ -19,7 +19,7 @@ data class KickChatMember(
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "kickChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

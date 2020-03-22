@@ -5,15 +5,15 @@ import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(InputMedia::class)
 internal object InputMediaSerializer : KSerializer<InputMedia> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName(InputMedia::class.toString())
-    override fun serialize(encoder: Encoder, obj: InputMedia) {
-        when (obj) {
-            is InputMediaVideo -> InputMediaVideo.serializer().serialize(encoder, obj)
-            is InputMediaAudio -> InputMediaAudio.serializer().serialize(encoder, obj)
-            is InputMediaPhoto -> InputMediaPhoto.serializer().serialize(encoder, obj)
-            is InputMediaAnimation -> InputMediaAnimation.serializer().serialize(encoder, obj)
-            is InputMediaDocument -> InputMediaDocument.serializer().serialize(encoder, obj)
-            else -> throw IllegalArgumentException("Can't perform and serialize $obj")
+    override val descriptor: SerialDescriptor = SerialDescriptor(InputMedia::class.toString(), PolymorphicKind.OPEN)
+    override fun serialize(encoder: Encoder, value: InputMedia) {
+        when (value) {
+            is InputMediaVideo -> InputMediaVideo.serializer().serialize(encoder, value)
+            is InputMediaAudio -> InputMediaAudio.serializer().serialize(encoder, value)
+            is InputMediaPhoto -> InputMediaPhoto.serializer().serialize(encoder, value)
+            is InputMediaAnimation -> InputMediaAnimation.serializer().serialize(encoder, value)
+            is InputMediaDocument -> InputMediaDocument.serializer().serialize(encoder, value)
+            else -> throw IllegalArgumentException("Can't perform and serialize $value")
         }
     }
 

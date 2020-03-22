@@ -6,7 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleReque
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickerField
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class DeleteStickerFromSet(
@@ -15,7 +15,7 @@ data class DeleteStickerFromSet(
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "deleteStickerFromSet"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

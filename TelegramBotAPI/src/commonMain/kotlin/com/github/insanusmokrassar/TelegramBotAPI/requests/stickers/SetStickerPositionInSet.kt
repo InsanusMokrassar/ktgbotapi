@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
 import com.github.insanusmokrassar.TelegramBotAPI.types.positionField
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickerField
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class SetStickerPositionInSet(
@@ -24,7 +24,7 @@ data class SetStickerPositionInSet(
 
     override fun method(): String = "setStickerPositionInSet"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

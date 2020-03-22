@@ -3,6 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.games.abstracts
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.UserId
 import kotlinx.serialization.DeserializationStrategy
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.serializer
 
 interface SetGameScore : SimpleRequest<Boolean> {

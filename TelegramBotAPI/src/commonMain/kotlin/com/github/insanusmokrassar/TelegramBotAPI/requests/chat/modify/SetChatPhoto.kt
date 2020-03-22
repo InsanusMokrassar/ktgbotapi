@@ -8,7 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJson
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.JsonObject
 
 @Serializable
@@ -19,7 +19,7 @@ data class SetChatPhoto (
 ): ChatRequest, MultipartRequest<Boolean> {
     override fun method(): String = "setChatPhoto"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val mediaMap: Map<String, MultipartFile> = mapOf(photoField to photo)
     override val paramsJson: JsonObject = toJson(serializer())
 }

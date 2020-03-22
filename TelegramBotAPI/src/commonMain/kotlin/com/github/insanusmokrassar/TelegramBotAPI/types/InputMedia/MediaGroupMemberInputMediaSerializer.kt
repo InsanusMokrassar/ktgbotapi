@@ -5,11 +5,11 @@ import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(MediaGroupMemberInputMedia::class)
 internal object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMemberInputMedia> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName(MediaGroupMemberInputMedia::class.toString())
-    override fun serialize(encoder: Encoder, obj: MediaGroupMemberInputMedia) {
-        when (obj) {
-            is InputMediaPhoto -> InputMediaPhoto.serializer().serialize(encoder, obj)
-            is InputMediaVideo -> InputMediaVideo.serializer().serialize(encoder, obj)
+    override val descriptor: SerialDescriptor = SerialDescriptor(MediaGroupMemberInputMedia::class.toString(), PolymorphicKind.OPEN)
+    override fun serialize(encoder: Encoder, value: MediaGroupMemberInputMedia) {
+        when (value) {
+            is InputMediaPhoto -> InputMediaPhoto.serializer().serialize(encoder, value)
+            is InputMediaVideo -> InputMediaVideo.serializer().serialize(encoder, value)
         }
     }
 

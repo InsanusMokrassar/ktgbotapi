@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.abstracts.ChatMe
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 /**
  * Representation of https://core.telegram.org/bots/api#setchatadministratorcustomtitle
@@ -23,7 +23,7 @@ data class SetChatAdministratorCustomTitle(
 ) : ChatMemberRequest<Boolean> {
     override fun method(): String = "setChatAdministratorCustomTitle"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = RestrictChatMember.serializer()
 

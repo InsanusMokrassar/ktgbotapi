@@ -42,12 +42,12 @@ internal object KeyboardButtonPollTypeSerializer : KSerializer<KeyboardButtonPol
     /**
      * Crutch due to the fact that direct serialization of objects currently does not work perfectly
      */
-    override fun serialize(encoder: Encoder, obj: KeyboardButtonPollType) {
+    override fun serialize(encoder: Encoder, value: KeyboardButtonPollType) {
         JsonObjectSerializer.serialize(
             encoder,
             JsonObject(
                 mapOf(
-                    typeField to JsonPrimitive(obj.type)
+                    typeField to JsonPrimitive(value.type)
                 )
             )
         )

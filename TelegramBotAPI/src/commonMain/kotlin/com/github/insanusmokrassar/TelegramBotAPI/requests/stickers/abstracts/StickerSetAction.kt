@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleReque
 import com.github.insanusmokrassar.TelegramBotAPI.types.UserId
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 interface StickerSetAction : SimpleRequest<Boolean> {
     val userId: UserId
@@ -13,5 +13,5 @@ interface StickerSetAction : SimpleRequest<Boolean> {
     val maskPosition: MaskPosition?
 
     override val resultDeserializer: KSerializer<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
 }

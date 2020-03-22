@@ -43,7 +43,7 @@ internal object ParseModeSerializerObject : KSerializer<ParseMode> {
         }
     }
 
-    override fun serialize(encoder: Encoder, obj: ParseMode) {
-        encoder.encodeString(obj.parseModeName)
+    override fun serialize(encoder: Encoder, value: ParseMode) {
+        encoder.encodeString(value.parseModeName)
     }
 }

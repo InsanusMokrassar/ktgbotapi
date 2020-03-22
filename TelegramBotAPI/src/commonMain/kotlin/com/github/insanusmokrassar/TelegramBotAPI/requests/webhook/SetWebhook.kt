@@ -6,7 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.DataR
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.MultipartRequestImpl
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.serializer
 
 fun SetWebhook(
     url: String,
@@ -53,7 +53,7 @@ data class SetWebhook internal constructor(
 ) : DataRequest<Boolean> {
     override fun method(): String = "setWebhook"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

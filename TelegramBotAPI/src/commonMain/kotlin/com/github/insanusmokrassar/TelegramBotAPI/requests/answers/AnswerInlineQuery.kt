@@ -1,14 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.answers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.serializers.InlineQueryResultSerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InlineQuery
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.ArrayListSerializer
-import kotlinx.serialization.internal.BooleanSerializer
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class AnswerInlineQuery(
@@ -30,7 +29,7 @@ data class AnswerInlineQuery(
 ): SimpleRequest<Boolean> {
     override fun method(): String = "answerInlineQuery"
     override val resultDeserializer: DeserializationStrategy<Boolean>
-        get() = BooleanSerializer
+        get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
@@ -52,6 +51,6 @@ fun InlineQuery.createAnswer(
     switchPmParameter
 )
 
-internal object InlineQueryAnswersResultsSerializer: KSerializer<List<InlineQueryResult>> by ArrayListSerializer(
+internal object InlineQueryAnswersResultsSerializer: KSerializer<List<InlineQueryResult>> by ListSerializer(
     InlineQueryResultSerializer
 )

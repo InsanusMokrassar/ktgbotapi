@@ -22,8 +22,8 @@ fun String.toInputFile() = FileId(this)
 
 @Serializer(InputFile::class)
 internal object InputFileSerializer : KSerializer<InputFile> {
-    override val descriptor: SerialDescriptor = StringDescriptor.withName(FileId::class.toString())
-    override fun serialize(encoder: Encoder, obj: InputFile) = encoder.encodeString(obj.fileId)
+    override val descriptor: SerialDescriptor = PrimitiveDescriptor(FileId::class.toString(), PrimitiveKind.STRING)
+    override fun serialize(encoder: Encoder, value: InputFile) = encoder.encodeString(value.fileId)
     override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString())
 }
 
