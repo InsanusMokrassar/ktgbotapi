@@ -1,10 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
-import com.github.insanusmokrassar.TelegramBotAPI.NonstrictTestsJsonFormat
 import com.github.insanusmokrassar.TelegramBotAPI.TestsJsonFormat
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import kotlin.test.*
 
 @ImplicitReflectionSerializer
@@ -56,25 +54,25 @@ class ChatIdentifierTests {
         )
 
         Example(chatIdentifierChatId.toChatId()).let { withChatId ->
-            val stringified = NonstrictTestsJsonFormat.stringify(Example.serializer(), withChatId)
+            val stringified = TestsJsonFormat.stringify(Example.serializer(), withChatId)
             assertEquals(stringified, "{\"identifier\":$chatIdentifierChatId}")
-            val deserialized = NonstrictTestsJsonFormat.parse(Example.serializer(), stringified)
+            val deserialized = TestsJsonFormat.parse(Example.serializer(), stringified)
             assertEquals(withChatId, deserialized)
         }
 
         Example(testUsername.toUsername()).let { withUsername ->
-            val stringified = NonstrictTestsJsonFormat.stringify(Example.serializer(), withUsername)
+            val stringified = TestsJsonFormat.stringify(Example.serializer(), withUsername)
             assertEquals(stringified, "{\"identifier\":\"$testUsername\"}")
-            val deserialized = NonstrictTestsJsonFormat.parse(Example.serializer(), stringified)
+            val deserialized = TestsJsonFormat.parse(Example.serializer(), stringified)
             assertEquals(withUsername, deserialized)
         }
 
         // Replace @ by empty string, because from time to time we can retrieve from Telegram system
         // username without starting @ symbol
         Example(testUsername.toUsername()).let { withUsername ->
-            val stringified = NonstrictTestsJsonFormat.stringify(Example.serializer(), withUsername).replace("@", "")
+            val stringified = TestsJsonFormat.stringify(Example.serializer(), withUsername).replace("@", "")
             assertEquals("{\"identifier\":\"${testUsername.replace("@", "")}\"}", stringified)
-            val deserialized = NonstrictTestsJsonFormat.parse(Example.serializer(), stringified)
+            val deserialized = TestsJsonFormat.parse(Example.serializer(), stringified)
             assertEquals(withUsername, deserialized)
         }
     }

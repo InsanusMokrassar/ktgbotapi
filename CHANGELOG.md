@@ -17,6 +17,8 @@
     `keyboard`
     * `makeLinkToMessage` now is not `PreviewFeature`
     * All deprecations was removed
+    * `RequestException` now extends `io.ktor.utils.io.errors.IOException` instead of `kotlinx.io.IOException`
+    * `Any#toJson` now is NOT `inline`
 
 ## 0.24.0
 

@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
 import kotlinx.serialization.*
+import kotlinx.serialization.json.JsonPrimitiveSerializer
 
 @Serializable(ChatIdentifierSerializer::class)
 sealed class ChatIdentifier
@@ -39,13 +40,15 @@ fun String.toUsername(): Username = Username(this)
 @Serializer(ChatIdentifier::class)
 internal object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     override fun deserialize(decoder: Decoder): ChatIdentifier {
-        val id = decoder.decodeString()
-        return id.toLongOrNull() ?.let {
+        val id = JsonPrimitiveSerializer.deserialize(decoder)
+        return id.longOrNull ?.let {
             ChatId(it)
-        } ?: if (!id.startsWith("@")) {
-            Username("@$id")
-        } else {
-            Username(id)
+        } ?: id.content.let {
+            if (!it.startsWith("@")) {
+                Username("@$it")
+            } else {
+                Username(it)
+            }
         }
     }
 
