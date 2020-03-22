@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditInlineMessage
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts.EditReplyMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.*

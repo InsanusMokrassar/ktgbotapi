@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.buttons
 
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(KeyboardMarkup::class)
 internal object KeyboardMarkupSerializer : KSerializer<KeyboardMarkup> {

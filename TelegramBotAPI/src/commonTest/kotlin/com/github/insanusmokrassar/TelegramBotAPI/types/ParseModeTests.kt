@@ -4,7 +4,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.TestsJsonFormat
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

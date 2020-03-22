@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.webhook
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.WebhookInfo
 import kotlinx.serialization.*

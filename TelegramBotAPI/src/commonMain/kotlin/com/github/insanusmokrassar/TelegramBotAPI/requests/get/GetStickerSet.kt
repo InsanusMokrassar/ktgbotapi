@@ -1,8 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.get
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickerSetNameField
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.StickerSet
 import kotlinx.serialization.*

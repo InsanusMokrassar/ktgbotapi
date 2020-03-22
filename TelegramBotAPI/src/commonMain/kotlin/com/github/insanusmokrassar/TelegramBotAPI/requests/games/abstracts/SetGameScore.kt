@@ -4,7 +4,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleReque
 import com.github.insanusmokrassar.TelegramBotAPI.types.UserId
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.builtins.serializer
-import kotlinx.serialization.serializer
 
 interface SetGameScore : SimpleRequest<Boolean> {
     val userId: UserId

@@ -2,7 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
 import com.github.insanusmokrassar.TelegramBotAPI.utils.StorageFile
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 @Serializable(InputFileSerializer::class)
 sealed class InputFile {

@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.answers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQuery.CallbackQuery

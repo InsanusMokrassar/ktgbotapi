@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.types
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObjectSerializer
 
 @Serializable(UserSerializer::class)

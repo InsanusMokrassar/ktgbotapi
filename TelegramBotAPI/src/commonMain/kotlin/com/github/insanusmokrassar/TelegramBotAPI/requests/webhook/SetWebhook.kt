@@ -1,6 +1,5 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.webhook
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.DataRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.MultipartRequestImpl
