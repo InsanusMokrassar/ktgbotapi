@@ -23,6 +23,7 @@
     * `PathedFile#fullUrl` now is not `inline` function
     * `SimpleRequest#json` now is not `inline` and `internal` function
     * `FlowsUpdatesFilter` now have two additional flows: `pollAnswerFlow`, `unknownUpdateTypeFlow`
+    * `ExtendedUser` (`typealias`) was added as a `PreviewFeature`
 
 ## 0.24.0
 
