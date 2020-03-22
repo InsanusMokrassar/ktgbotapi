@@ -12,6 +12,9 @@
         * `UUID`: `0.0.7` -> `0.1.0`
 * `TelegramBotAPI`:
     * `Bot` implementations (as and `Bot` itself) now have not nullable `username`
+    * `File#toInputFile` extension now will throw error when file does not exists
+    * `InlineKeyboardMarkup` will check that `PayInlineKeyboardButton` is the first in case if it is exists in
+    `keyboard`
 
 ## 0.24.0
 

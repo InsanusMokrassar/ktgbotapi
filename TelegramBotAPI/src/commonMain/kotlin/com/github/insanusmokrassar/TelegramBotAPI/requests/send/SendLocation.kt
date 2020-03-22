@@ -16,7 +16,6 @@ import kotlinx.serialization.*
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
-// TODO:: Add location tracker for tracking location
 @Serializable
 data class SendLocation(
     @SerialName(chatIdField)
