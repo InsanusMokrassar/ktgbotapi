@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedPrivateChat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.extended.ExtendedPrivateChatImpl
 import com.github.insanusmokrassar.TelegramBotAPI.utils.PreviewFeature
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
@@ -24,7 +24,7 @@ data class CommonUser(
 ) : User()
 
 @PreviewFeature
-typealias ExtendedUser = ExtendedPrivateChat
+typealias ExtendedUser = ExtendedPrivateChatImpl
 
 @Serializable(UserSerializer::class)
 sealed class Bot : User() {
