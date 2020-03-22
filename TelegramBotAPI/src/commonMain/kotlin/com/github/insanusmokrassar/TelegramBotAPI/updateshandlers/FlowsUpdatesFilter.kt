@@ -29,6 +29,8 @@ class FlowsUpdatesFilter(
     private val shippingQueryChannel: BroadcastChannel<ShippingQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
     private val preCheckoutQueryChannel: BroadcastChannel<PreCheckoutQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
     private val pollChannel: BroadcastChannel<PollUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val pollAnswerChannel: BroadcastChannel<PollAnswerUpdate> = BroadcastChannel(broadcastChannelsSize)
+    private val unknownUpdateChannel: BroadcastChannel<Update> = BroadcastChannel(broadcastChannelsSize)
 
     override val allowedUpdates: List<String>
         get() = filter.allowedUpdates
@@ -49,7 +51,9 @@ class FlowsUpdatesFilter(
         callbackQueryChannel.createUpdateReceiver(),
         shippingQueryChannel.createUpdateReceiver(),
         preCheckoutQueryChannel.createUpdateReceiver(),
-        pollChannel.createUpdateReceiver()
+        pollChannel.createUpdateReceiver(),
+        pollAnswerChannel.createUpdateReceiver(),
+        unknownUpdateChannel.createUpdateReceiver()
     )
 
     val messageFlow: Flow<MessageUpdate> = messageChannel.asFlow()
@@ -66,4 +70,6 @@ class FlowsUpdatesFilter(
     val shippingQueryFlow: Flow<ShippingQueryUpdate> = shippingQueryChannel.asFlow()
     val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = preCheckoutQueryChannel.asFlow()
     val pollFlow: Flow<PollUpdate> = pollChannel.asFlow()
+    val pollAnswerFlow: Flow<PollAnswerUpdate> = pollAnswerChannel.asFlow()
+    val unknownUpdateTypeFlow: Flow<Update> = unknownUpdateChannel.asFlow()
 }

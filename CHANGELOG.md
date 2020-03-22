@@ -22,6 +22,7 @@
     * `FlowsUpdatesFilter` now as marked my annotation `FlowPreview`
     * `PathedFile#fullUrl` now is not `inline` function
     * `SimpleRequest#json` now is not `inline` and `internal` function
+    * `FlowsUpdatesFilter` now have two additional flows: `pollAnswerFlow`, `unknownUpdateTypeFlow`
 
 ## 0.24.0
 
