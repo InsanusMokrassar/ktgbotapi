@@ -25,6 +25,8 @@
     * `FlowsUpdatesFilter` now have two additional flows: `pollAnswerFlow`, `unknownUpdateTypeFlow`
     * `ExtendedUser` (`typealias`) was added as a `PreviewFeature`
 
+### 0.25.1
+
 ## 0.24.0
 
 * `TelegramBotAPI`:
