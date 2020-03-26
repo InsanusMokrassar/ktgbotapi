@@ -27,6 +27,7 @@
 
 ### 0.25.1
 
+* Update kotlin: `1.3.70` -> `1.3.71`
 * Fix of error inside of update utils for media groups
 
 ## 0.24.0
