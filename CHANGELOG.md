@@ -27,6 +27,8 @@
 
 ### 0.25.1
 
+* Fix of error inside of update utils for media groups
+
 ## 0.24.0
 
 * `TelegramBotAPI`:
