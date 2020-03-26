@@ -25,6 +25,11 @@
     * `FlowsUpdatesFilter` now have two additional flows: `pollAnswerFlow`, `unknownUpdateTypeFlow`
     * `ExtendedUser` (`typealias`) was added as a `PreviewFeature`
 
+### 0.25.1
+
+* Update kotlin: `1.3.70` -> `1.3.71`
+* Fix of error inside of update utils for media groups
+
 ## 0.24.0
 
 * `TelegramBotAPI`:
