@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
 import kotlinx.serialization.*
 
-fun CreateNewStickerSet(
+fun CreateNewStaticStickerSet(
     userId: UserId,
     name: String,
     sticker: InputFile,
@@ -15,7 +15,7 @@ fun CreateNewStickerSet(
     containsMasks: Boolean? = null,
     maskPosition: MaskPosition? = null
 ): Request<Boolean> {
-    val data = CreateNewStickerSet(userId, name, emojis, sticker as? FileId, containsMasks, maskPosition)
+    val data = CreateNewStaticStickerSet(userId, name, emojis, sticker as? FileId, containsMasks, maskPosition)
     return when (sticker) {
         is MultipartFile -> CommonMultipartFileRequest(
             data,
@@ -25,8 +25,23 @@ fun CreateNewStickerSet(
     }
 }
 
+fun CreateNewStickerSet(
+    userId: UserId,
+    name: String,
+    sticker: InputFile,
+    emojis: String,
+    containsMasks: Boolean? = null,
+    maskPosition: MaskPosition? = null
+): Request<Boolean> = CreateNewStaticStickerSet(userId, name, sticker, emojis, containsMasks, maskPosition)
+
+@Deprecated(
+    "Renamed",
+    ReplaceWith("CreateNewStaticStickerSet", "com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.CreateNewStaticStickerSet")
+)
+typealias CreateNewStickerSet = CreateNewStaticStickerSet
+
 @Serializable
-data class CreateNewStickerSet internal constructor(
+data class CreateNewStaticStickerSet internal constructor(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)

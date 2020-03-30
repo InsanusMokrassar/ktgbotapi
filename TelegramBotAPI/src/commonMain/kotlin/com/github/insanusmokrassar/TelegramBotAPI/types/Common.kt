@@ -192,6 +192,7 @@ const val canRestrictMembersField = "can_restrict_members"
 const val canPinMessagesField = "can_pin_messages"
 const val canPromoteMembersField = "can_promote_members"
 const val pngStickerField = "png_sticker"
+const val tgsStickerField = "tgs_sticker"
 
 const val okField = "ok"
 const val captionField = "caption"

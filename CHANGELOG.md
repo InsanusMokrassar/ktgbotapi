@@ -36,11 +36,15 @@
     * `SetMyCommands` request was added
     * `GetMe` now is object instead of class
     * `GetMe` was replaced into package `com.github.insanusmokrassar.TelegramBotAPI.requests.bot.GetMe`
+    * `CreateNewStickerSet` renamed to `CreateStaticNewStickerSet`
+    * `CreateNewAnimatedStickerSet` request was added (it handle work with `tgs_sticker`)
 * `TelegramBotAPI-extensions-api`:
     * Extensions `sendDice` was added
     * Extension `getMyCommands` request was added
     * Extension `setMyCommands` request was added
     * Extension `getMe` was replaced into package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.bot.GetMeKt.getMe`
+    * **All extensions `createNewStickerSet` was renamed to `createNewStaticStickerSet`**
+    * Extensions `createNewAnimatedStickerSet` was added
 
 ### 0.25.1
 
