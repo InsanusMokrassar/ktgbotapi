@@ -32,8 +32,15 @@
     * Class `Dice` was added (type [dice](https://core.telegram.org/bots/api#dice))
     * Class `DiceContent` was added (for including it in [message](https://core.telegram.org/bots/api#message) object)
     * `BotCommand` was added
+    * `GetMyCommands` request was added
+    * `SetMyCommands` request was added
+    * `GetMe` now is object instead of class
+    * `GetMe` was replaced into package `com.github.insanusmokrassar.TelegramBotAPI.requests.bot.GetMe`
 * `TelegramBotAPI-extensions-api`:
     * Extensions `sendDice` was added
+    * Extension `getMyCommands` request was added
+    * Extension `setMyCommands` request was added
+    * Extension `getMe` was replaced into package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.bot.GetMeKt.getMe`
 
 ### 0.25.1
 

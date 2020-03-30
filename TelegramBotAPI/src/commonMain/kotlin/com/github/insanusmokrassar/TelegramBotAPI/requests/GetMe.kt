@@ -1,14 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests
 
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
-import com.github.insanusmokrassar.TelegramBotAPI.types.ExtendedBot
-import kotlinx.serialization.*
+import com.github.insanusmokrassar.TelegramBotAPI.requests.bot.GetMe
 
-@Serializable
-class GetMe : SimpleRequest<ExtendedBot> {
-    override fun method(): String = "getMe"
-    override val resultDeserializer: DeserializationStrategy<ExtendedBot>
-        get() = ExtendedBot.serializer()
-    override val requestSerializer: SerializationStrategy<*>
-        get() = serializer()
-}
+@Deprecated(
+    "Replaced",
+    ReplaceWith(
+        "GetMe", "com.github.insanusmokrassar.TelegramBotAPI.requests.bot.GetMe"
+    )
+)
+typealias GetMe = GetMe

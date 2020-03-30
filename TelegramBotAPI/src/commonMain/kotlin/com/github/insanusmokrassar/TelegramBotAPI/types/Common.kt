@@ -50,6 +50,7 @@ val diceResultLimit = 1 .. 6
 
 val botCommandLimit = 1 .. 32
 val botCommandDescriptionLimit = 3 .. 256
+val botCommandsLimit = 0 .. 100
 
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
@@ -171,6 +172,7 @@ const val inputMessageContentField = "input_message_content"
 const val hideUrlField = "hide_url"
 
 const val botCommandField = "command"
+const val botCommandsField = "commands"
 
 const val isMemberField = "is_member"
 const val canSendMessagesField = "can_send_messages"
