@@ -25,6 +25,8 @@
     * `FlowsUpdatesFilter` now have two additional flows: `pollAnswerFlow`, `unknownUpdateTypeFlow`
     * `ExtendedUser` (`typealias`) was added as a `PreviewFeature`
 
+### 0.25.2
+
 ### 0.25.1
 
 * Update kotlin: `1.3.70` -> `1.3.71`
