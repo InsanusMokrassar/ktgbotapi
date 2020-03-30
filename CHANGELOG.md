@@ -16,6 +16,7 @@
     * `StickerSet#thumb` was added
     * `AddStickerToSet` renamed to `AddStaticStickerToSet`
     * `AddAnimatedStickerToSet` request was added
+    * `SetStickerSetThumb` request was added
 * `TelegramBotAPI-extensions-api`:
     * Extensions `sendDice` was added
     * Extension `getMyCommands` request was added
@@ -25,6 +26,7 @@
     * Extensions `createNewAnimatedStickerSet` was added
     * **All extensions `addStickerToSet` was renamed to `addStaticStickerToSet`**
     * Extensions `addAnimatedStickerToSet` was added
+    * Extensions `setStickerSetThumb` was added
 
 ## 0.25.0
 

@@ -9,8 +9,6 @@ import kotlinx.serialization.builtins.serializer
 interface StickerSetAction : SimpleRequest<Boolean> {
     val userId: UserId
     val name: String
-    val emojis: String // must be more than one
-    val maskPosition: MaskPosition?
 
     override val resultDeserializer: KSerializer<Boolean>
         get() = Boolean.serializer()

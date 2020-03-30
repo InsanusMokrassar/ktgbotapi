@@ -2,10 +2,12 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.stickers
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.common.CommonMultipartFileRequest
+import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts.StandardStickerSetAction
 import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts.StickerSetAction
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
 import kotlinx.serialization.*
+
 fun AddStaticStickerToSet(
     userId: UserId,
     stickerSetName: String,
@@ -53,7 +55,7 @@ data class AddStaticStickerToSet internal constructor(
     val sticker: FileId? = null,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition? = null
-) : StickerSetAction {
+) : StandardStickerSetAction {
     init {
         if(emojis.isEmpty()) {
             throw IllegalArgumentException("Emojis must not be empty")
