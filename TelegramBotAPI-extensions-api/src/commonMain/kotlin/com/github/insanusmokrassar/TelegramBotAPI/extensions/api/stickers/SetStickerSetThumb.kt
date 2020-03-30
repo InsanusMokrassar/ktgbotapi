@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.stickers
+package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.thumbs
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
@@ -10,65 +10,65 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.StickerSet
 
 suspend fun RequestsExecutor.setStickerSetThumb(
     userId: UserId,
-    stickerSetName: String,
-    sticker: FileId
+    thumbSetName: String,
+    thumb: FileId
 ) = execute(
-    SetStickerSetThumb(userId, stickerSetName, sticker)
+    SetStickerSetThumb(userId, thumbSetName, thumb)
 )
 
 suspend fun RequestsExecutor.setStickerSetThumb(
     userId: UserId,
-    stickerSetName: String,
-    sticker: MultipartFile
+    thumbSetName: String,
+    thumb: MultipartFile
 ) = execute(
-    SetStickerSetThumb(userId, stickerSetName, sticker)
+    SetStickerSetThumb(userId, thumbSetName, thumb)
 )
 
 suspend fun RequestsExecutor.setStickerSetThumb(
     user: CommonUser,
-    stickerSetName: String,
-    sticker: FileId
+    thumbSetName: String,
+    thumb: FileId
 ) = setStickerSetThumb(
-    user.id, stickerSetName, sticker
+    user.id, thumbSetName, thumb
 )
 
 suspend fun RequestsExecutor.setStickerSetThumb(
     user: CommonUser,
-    stickerSetName: String,
-    sticker: MultipartFile
+    thumbSetName: String,
+    thumb: MultipartFile
 ) = setStickerSetThumb(
-    user.id, stickerSetName, sticker
+    user.id, thumbSetName, thumb
 )
 
 suspend fun RequestsExecutor.setStickerSetThumb(
     userId: UserId,
-    stickerSet: StickerSet,
-    sticker: FileId
+    thumbSet: StickerSet,
+    thumb: FileId
 ) = setStickerSetThumb(
-    userId, stickerSet.name, sticker
+    userId, thumbSet.name, thumb
 )
 
 suspend fun RequestsExecutor.setStickerSetThumb(
     userId: UserId,
-    stickerSet: StickerSet,
-    sticker: MultipartFile
+    thumbSet: StickerSet,
+    thumb: MultipartFile
 ) = setStickerSetThumb(
-    userId, stickerSet.name, sticker
+    userId, thumbSet.name, thumb
 )
 
 suspend fun RequestsExecutor.setStickerSetThumb(
     user: CommonUser,
-    stickerSet: StickerSet,
-    sticker: FileId
+    thumbSet: StickerSet,
+    thumb: FileId
 ) = setStickerSetThumb(
-    user.id, stickerSet.name, sticker
+    user.id, thumbSet.name, thumb
 )
 
 suspend fun RequestsExecutor.setStickerSetThumb(
     user: CommonUser,
-    stickerSet: StickerSet,
-    sticker: MultipartFile
+    thumbSet: StickerSet,
+    thumb: MultipartFile
 ) = setStickerSetThumb(
-    user.id, stickerSet.name, sticker
+    user.id, thumbSet.name, thumb
 )
 

@@ -7,22 +7,18 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 
 fun SetStickerSetThumb(
-    stickerSetName: String,
     userId: UserId,
-    sticker: InputFile
+    stickerSetName: String,
+    thumb: MultipartFile
 ): Request<Boolean> {
-    val data = SetStickerSetThumb(userId, stickerSetName, sticker as? FileId)
-    return when (sticker) {
-        is MultipartFile -> CommonMultipartFileRequest(
-            data,
-            mapOf(thumbField to sticker)
-        )
-        is FileId -> data
-    }
+    return CommonMultipartFileRequest(
+        SetStickerSetThumb(userId, stickerSetName),
+        mapOf(thumbField to thumb)
+    )
 }
 
 @Serializable
-data class SetStickerSetThumb internal constructor(
+data class SetStickerSetThumb (
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)
