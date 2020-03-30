@@ -1,31 +1,6 @@
 # TelegramBotAPI changelog
 
-## 0.25.0
-
-* Common:
-    * Versions updates:
-        * `Kotlin`: `1.3.61` -> `1.3.70`
-        * `Kotlin coroutines`: `1.3.3` -> `1.3.5`
-        * `Kotlin serialization`: `0.14.0` -> `0.20.0`
-        * `Ktor`: `1.3.1` -> `1.3.2`
-        * `Klock`: `1.8.7` -> `1.10.0`
-        * `UUID`: `0.0.7` -> `0.1.0`
-* `TelegramBotAPI`:
-    * `Bot` implementations (as and `Bot` itself) now have not nullable `username`
-    * `File#toInputFile` extension now will throw error when file does not exists
-    * `InlineKeyboardMarkup` will check that `PayInlineKeyboardButton` is the first in case if it is exists in
-    `keyboard`
-    * `makeLinkToMessage` now is not `PreviewFeature`
-    * All deprecations was removed
-    * `RequestException` now extends `io.ktor.utils.io.errors.IOException` instead of `kotlinx.io.IOException`
-    * `Any#toJson` now is NOT `inline`
-    * `FlowsUpdatesFilter` now as marked my annotation `FlowPreview`
-    * `PathedFile#fullUrl` now is not `inline` function
-    * `SimpleRequest#json` now is not `inline` and `internal` function
-    * `FlowsUpdatesFilter` now have two additional flows: `pollAnswerFlow`, `unknownUpdateTypeFlow`
-    * `ExtendedUser` (`typealias`) was added as a `PreviewFeature`
-
-### 0.25.2
+## 0.26.0
 
 * `TelegramBotAPI`:
     * Request `SendDice` was added (calling [sendDice](https://core.telegram.org/bots/api#senddice))
@@ -50,6 +25,31 @@
     * Extensions `createNewAnimatedStickerSet` was added
     * **All extensions `addStickerToSet` was renamed to `addStaticStickerToSet`**
     * Extensions `addAnimatedStickerToSet` was added
+
+## 0.25.0
+
+* Common:
+    * Versions updates:
+        * `Kotlin`: `1.3.61` -> `1.3.70`
+        * `Kotlin coroutines`: `1.3.3` -> `1.3.5`
+        * `Kotlin serialization`: `0.14.0` -> `0.20.0`
+        * `Ktor`: `1.3.1` -> `1.3.2`
+        * `Klock`: `1.8.7` -> `1.10.0`
+        * `UUID`: `0.0.7` -> `0.1.0`
+* `TelegramBotAPI`:
+    * `Bot` implementations (as and `Bot` itself) now have not nullable `username`
+    * `File#toInputFile` extension now will throw error when file does not exists
+    * `InlineKeyboardMarkup` will check that `PayInlineKeyboardButton` is the first in case if it is exists in
+    `keyboard`
+    * `makeLinkToMessage` now is not `PreviewFeature`
+    * All deprecations was removed
+    * `RequestException` now extends `io.ktor.utils.io.errors.IOException` instead of `kotlinx.io.IOException`
+    * `Any#toJson` now is NOT `inline`
+    * `FlowsUpdatesFilter` now as marked my annotation `FlowPreview`
+    * `PathedFile#fullUrl` now is not `inline` function
+    * `SimpleRequest#json` now is not `inline` and `internal` function
+    * `FlowsUpdatesFilter` now have two additional flows: `pollAnswerFlow`, `unknownUpdateTypeFlow`
+    * `ExtendedUser` (`typealias`) was added as a `PreviewFeature`
 
 ### 0.25.1
 
