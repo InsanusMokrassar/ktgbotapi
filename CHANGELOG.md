@@ -38,6 +38,7 @@
     * `GetMe` was replaced into package `com.github.insanusmokrassar.TelegramBotAPI.requests.bot.GetMe`
     * `CreateNewStickerSet` renamed to `CreateStaticNewStickerSet`
     * `CreateNewAnimatedStickerSet` request was added (it handle work with `tgs_sticker`)
+    * `StickerSet#thumb` was added
 * `TelegramBotAPI-extensions-api`:
     * Extensions `sendDice` was added
     * Extension `getMyCommands` request was added
