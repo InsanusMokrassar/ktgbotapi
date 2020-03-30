@@ -17,6 +17,7 @@
     * `AddStickerToSet` renamed to `AddStaticStickerToSet`
     * `AddAnimatedStickerToSet` request was added
     * `SetStickerSetThumb` request was added
+    * Most of sticker actions now implements `StandardStickerSetAction` instead of `StickerSetAction`
 * `TelegramBotAPI-extensions-api`:
     * Extensions `sendDice` was added
     * Extension `getMyCommands` request was added
