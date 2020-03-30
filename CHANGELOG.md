@@ -31,6 +31,8 @@
     * Request `SendDice` was added (calling [sendDice](https://core.telegram.org/bots/api#senddice))
     * Class `Dice` was added (type [dice](https://core.telegram.org/bots/api#dice))
     * Class `DiceContent` was added (for including it in [message](https://core.telegram.org/bots/api#message) object)
+* `TelegramBotAPI-extensions-api`:
+    * Extensions `sendDice` was added
 
 ### 0.25.1
 
