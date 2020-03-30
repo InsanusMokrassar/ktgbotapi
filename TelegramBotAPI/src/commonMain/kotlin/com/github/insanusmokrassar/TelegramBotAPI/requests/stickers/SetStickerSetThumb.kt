@@ -7,8 +7,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 
 fun SetStickerSetThumb(
-    userId: UserId,
     stickerSetName: String,
+    userId: UserId,
     sticker: InputFile
 ): Request<Boolean> {
     val data = SetStickerSetThumb(userId, stickerSetName, sticker as? FileId)
