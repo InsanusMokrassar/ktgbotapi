@@ -11,7 +11,7 @@ class SetMyCommands(
     @SerialName(botCommandsField)
     val commands: List<BotCommand>
 ) : SimpleRequest<Boolean> {
-    override fun method(): String = "getMyCommands"
+    override fun method(): String = "setMyCommands"
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
