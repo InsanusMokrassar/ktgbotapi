@@ -6,15 +6,14 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts.St
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
 import kotlinx.serialization.*
-
-fun AddStickerToSet(
+fun AddAnimatedStickerToSet(
     userId: UserId,
     stickerSetName: String,
     sticker: InputFile,
     emojis: String,
     maskPosition: MaskPosition? = null
 ): Request<Boolean> {
-    val data = AddStickerToSet(userId, stickerSetName, emojis, sticker as? FileId, maskPosition)
+    val data = AddAnimatedStickerToSet(userId, stickerSetName, emojis, sticker as? FileId, maskPosition)
     return when (sticker) {
         is MultipartFile -> CommonMultipartFileRequest(
             data,
@@ -25,14 +24,14 @@ fun AddStickerToSet(
 }
 
 @Serializable
-data class AddStickerToSet internal constructor(
+data class AddAnimatedStickerToSet internal constructor(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)
     override val name: String,
     @SerialName(emojisField)
     override val emojis: String,
-    @SerialName(pngStickerField)
+    @SerialName(tgsStickerField)
     val sticker: FileId? = null,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition? = null

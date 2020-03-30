@@ -39,6 +39,8 @@
     * `CreateNewStickerSet` renamed to `CreateStaticNewStickerSet`
     * `CreateNewAnimatedStickerSet` request was added (it handle work with `tgs_sticker`)
     * `StickerSet#thumb` was added
+    * `AddStickerToSet` renamed to `AddStaticStickerToSet`
+    * `AddAnimatedStickerToSet` request was added
 * `TelegramBotAPI-extensions-api`:
     * Extensions `sendDice` was added
     * Extension `getMyCommands` request was added
@@ -46,6 +48,8 @@
     * Extension `getMe` was replaced into package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.bot.GetMeKt.getMe`
     * **All extensions `createNewStickerSet` was renamed to `createNewStaticStickerSet`**
     * Extensions `createNewAnimatedStickerSet` was added
+    * **All extensions `addStickerToSet` was renamed to `addStaticStickerToSet`**
+    * Extensions `addAnimatedStickerToSet` was added
 
 ### 0.25.1
 
