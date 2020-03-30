@@ -74,6 +74,7 @@ internal data class RawMessage(
     private val migrate_from_chat_id: ChatIdentifier? = null,
     private val pinned_message: RawMessage? = null,
     private val invoice: Invoice? = null,
+    private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
 
     // login property
@@ -123,6 +124,7 @@ internal data class RawMessage(
                 adaptedCaptionEntities
             )
             sticker != null -> StickerContent(sticker)
+            dice != null -> DiceContent(dice)
             game != null -> GameContent(game.asGame)
             video_note != null -> VideoNoteContent(video_note)
             contact != null -> ContactContent(contact)

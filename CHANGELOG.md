@@ -27,6 +27,11 @@
 
 ### 0.25.2
 
+* `TelegramBotAPI`:
+    * Request `SendDice` was added (calling [sendDice](https://core.telegram.org/bots/api#senddice))
+    * Class `Dice` was added (type [dice](https://core.telegram.org/bots/api#dice))
+    * Class `DiceContent` was added (for including it in [message](https://core.telegram.org/bots/api#message) object)
+
 ### 0.25.1
 
 * Update kotlin: `1.3.70` -> `1.3.71`

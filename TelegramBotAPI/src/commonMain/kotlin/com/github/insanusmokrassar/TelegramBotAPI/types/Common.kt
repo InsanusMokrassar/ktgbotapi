@@ -19,6 +19,7 @@ typealias InlineMessageIdentifier = String
 typealias PollIdentifier = String
 typealias StickerSetName = String
 typealias FileUniqueId = String
+typealias DiceResult = Int
 
 typealias Seconds = Int
 
@@ -44,6 +45,8 @@ val livePeriodLimit = 60 .. 86400
 val inlineQueryAnswerResultsLimit = 0 .. 50
 
 val customTitleLength = 0 .. 16
+
+val diceResultLimit = 1 .. 6
 
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
@@ -230,6 +233,7 @@ const val optionsField = "options"
 const val payField = "pay"
 const val permissionsField = "permissions"
 const val typeField = "type"
+const val valueField = "value"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
