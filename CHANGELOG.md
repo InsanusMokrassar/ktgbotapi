@@ -2,6 +2,9 @@
 
 ## 0.26.0
 
+* `Common`:
+    * Versions updates:
+        * `Klock`: `1.10.0` -> `1.10.3`
 * `TelegramBotAPI`:
     * Request `SendDice` was added (calling [sendDice](https://core.telegram.org/bots/api#senddice))
     * Class `Dice` was added (type [dice](https://core.telegram.org/bots/api#dice))
