@@ -5,8 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestExceptio
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.convertWithMediaGroupUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.lastUpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.getUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.types.Seconds
-import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
@@ -30,7 +29,20 @@ fun RequestsExecutor.startGettingOfUpdates(
                     offset = lastUpdateIdentifier?.plus(1),
                     timeout = timeoutSeconds,
                     allowed_updates = allowedUpdates
-                ).convertWithMediaGroupUpdates()
+                ).let { originalUpdates ->
+                    val converted = originalUpdates.convertWithMediaGroupUpdates()
+                    /**
+                     * Dirty hack for cases when the media group was retrieved not fully:
+                     *
+                     * We are throw out the last media group and will reretrieve it again in the next get updates
+                     * and it will guarantee that it is full
+                     */
+                    if (originalUpdates.size == getUpdatesLimit.last && converted.last() is SentMediaGroupUpdate) {
+                        converted - converted.last()
+                    } else {
+                        converted
+                    }
+                }
 
                 supervisorScope {
                     for (update in updates) {

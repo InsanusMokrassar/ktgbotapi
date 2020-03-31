@@ -19,9 +19,11 @@ typealias InlineMessageIdentifier = String
 typealias PollIdentifier = String
 typealias StickerSetName = String
 typealias FileUniqueId = String
+typealias DiceResult = Int
 
 typealias Seconds = Int
 
+val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024
 val textLength = 0 until 4096
@@ -44,6 +46,12 @@ val livePeriodLimit = 60 .. 86400
 val inlineQueryAnswerResultsLimit = 0 .. 50
 
 val customTitleLength = 0 .. 16
+
+val diceResultLimit = 1 .. 6
+
+val botCommandLimit = 1 .. 32
+val botCommandDescriptionLimit = 3 .. 256
+val botCommandsLimit = 0 .. 100
 
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
@@ -164,6 +172,8 @@ const val thumbHeightField = "thumb_height"
 const val inputMessageContentField = "input_message_content"
 const val hideUrlField = "hide_url"
 
+const val botCommandField = "command"
+const val botCommandsField = "commands"
 
 const val isMemberField = "is_member"
 const val canSendMessagesField = "can_send_messages"
@@ -183,6 +193,7 @@ const val canRestrictMembersField = "can_restrict_members"
 const val canPinMessagesField = "can_pin_messages"
 const val canPromoteMembersField = "can_promote_members"
 const val pngStickerField = "png_sticker"
+const val tgsStickerField = "tgs_sticker"
 
 const val okField = "ok"
 const val captionField = "caption"
@@ -230,6 +241,7 @@ const val optionsField = "options"
 const val payField = "pay"
 const val permissionsField = "permissions"
 const val typeField = "type"
+const val valueField = "value"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"

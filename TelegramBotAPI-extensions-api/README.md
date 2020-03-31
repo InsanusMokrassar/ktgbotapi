@@ -56,20 +56,46 @@ compile "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$telegrambota
 
 ## Example of usage and comparison with `TelegramBotAPI`
 
-As said in [TelegramBotAPI](../TelegramBotAPI/README.md#Requests), it is possible to use next syntax for requests:
+Here presented review table for comparison of api from original [TelegramBotAPI](../TelegramBotAPI/README.md#Requests)
+and extensions-api library:
 
-```kotlin
-val requestsExecutor: RequestsExecutor = ...
-requestsExecutor.execute(GetMe())
-``` 
-
-This library offer a little bit another way for this:
+In all examples supposed that you have created bot with next approximate lines:
 
 ```kotlin
 val bot: RequestsExecutor = ...
-bot.getMe()
 ```
 
-The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt)
-request is
-[ExtendedBot](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User.kt).
+| TelegramBotAPI | TelegramBotAPI-extensions-api |
+|----------------|-------------------------------|
+| bot.execute(GetMe) |    bot.getMe()          |
+| bot.execute(SendTextMessage(someChatId, text)) | bot.sendTextMessage(chat, text) |
+
+## Updates
+
+Usually, it is more comfortable to use filter object to get separated types of updates:
+
+```kotlin
+val filter = FlowsUpdatesFilter(100)
+```
+
+In this case you will be able:
+
+* Separate types of incoming updates (even media groups)
+* Simplify launch of getting updates:
+```kotlin
+bot.startGettingOfUpdates(
+    filter,
+    scope = CoroutineScope(Dispatchers.Default)
+)
+```
+* Use `filter` flows to comfortable filter, map and do other operations with the whole
+getting updates process:
+```kotlin
+filter.messageFlow.mapNotNull {
+    it.data as? ContentMessage<*>
+}.onEach {
+    println(it)
+}.launchIn(
+    CoroutineScope(Dispatchers.Default)
+)
+```

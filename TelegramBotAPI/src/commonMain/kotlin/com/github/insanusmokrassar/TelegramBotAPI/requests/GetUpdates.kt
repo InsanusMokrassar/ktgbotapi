@@ -14,7 +14,7 @@ private val updatesListSerializer = ListSerializer(
 @Serializable
 data class GetUpdates(
     val offset: UpdateIdentifier? = null,// set `last update id + 1` to receive next part of updates
-    val limit: Int? = null,
+    val limit: Int = getUpdatesLimit.last,
     val timeout: Seconds? = null,
     val allowed_updates: List<String>? = ALL_UPDATES_LIST
 ): SimpleRequest<List<Update>> {
@@ -25,4 +25,10 @@ data class GetUpdates(
 
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
+
+    init {
+        if (limit !in getUpdatesLimit) {
+            error("GetUpdates request can be called only with limit in range $getUpdatesLimit (actual value is $limit)")
+        }
+    }
 }
