@@ -19,7 +19,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.Success
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.Invoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.SuccessfulPayment
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass
 
 // TODO:: add PassportData type

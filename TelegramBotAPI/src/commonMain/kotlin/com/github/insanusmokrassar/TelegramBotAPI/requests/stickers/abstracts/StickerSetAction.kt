@@ -2,7 +2,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.abstracts
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.UserId
-import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.serializer
 

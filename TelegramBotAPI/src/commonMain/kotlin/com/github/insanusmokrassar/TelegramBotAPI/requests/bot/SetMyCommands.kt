@@ -3,7 +3,6 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.bot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
-import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
 
 @Serializable

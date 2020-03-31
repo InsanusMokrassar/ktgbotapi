@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.bot
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.requests.bot.GetMyCommands
 import com.github.insanusmokrassar.TelegramBotAPI.requests.bot.SetMyCommands
 import com.github.insanusmokrassar.TelegramBotAPI.types.BotCommand
 
