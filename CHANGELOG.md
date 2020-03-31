@@ -18,6 +18,9 @@
     * `AddAnimatedStickerToSet` request was added
     * `SetStickerSetThumb` request was added
     * Most of sticker actions now implements `StandardStickerSetAction` instead of `StickerSetAction`
+    * `getUpdatesLimit` was added to be ensure in get updates limit
+    * `GetUpdates` now will check count of requesting updates and throw exception if it is not in range `1 .. 100`
+    * `GetUpdates#limit` now is not nullable and by default set up to 100
 * `TelegramBotAPI-extensions-api`:
     * Extensions `sendDice` was added
     * Extension `getMyCommands` request was added
@@ -28,6 +31,9 @@
     * **All extensions `addStickerToSet` was renamed to `addStaticStickerToSet`**
     * Extensions `addAnimatedStickerToSet` was added
     * Extensions `setStickerSetThumb` was added
+    * Extension `startGettingUpdates` now will drop `SentMediaGroupUpdate` in case if it is the last in updates group
+    and size of retrieved updates is equal to 100 (max count of retrieved updates)
+    * Extensions `getUpdates` now will receive only not nullable `limit` parameter
 
 ## 0.25.0
 

@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 
 suspend fun RequestsExecutor.getUpdates(
     offset: UpdateIdentifier? = null,
-    limit: Int? = null,
+    limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,
     allowed_updates: List<String>? = ALL_UPDATES_LIST
 ) = execute(
@@ -18,7 +18,7 @@ suspend fun RequestsExecutor.getUpdates(
 
 suspend fun RequestsExecutor.getUpdates(
     lastUpdate: Update,
-    limit: Int? = null,
+    limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,
     allowed_updates: List<String>? = ALL_UPDATES_LIST
 ) = getUpdates(

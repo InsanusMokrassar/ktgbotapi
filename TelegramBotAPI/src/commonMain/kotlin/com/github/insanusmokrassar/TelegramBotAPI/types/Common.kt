@@ -23,6 +23,7 @@ typealias DiceResult = Int
 
 typealias Seconds = Int
 
+val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024
 val textLength = 0 until 4096
