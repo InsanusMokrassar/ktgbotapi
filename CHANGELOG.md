@@ -40,6 +40,9 @@
 
 ### 0.26.1
 
+* `TelegramBotAPI`:
+    * `BotCommand` now will check and throw error in case when command or description lengths is/are incorrect
+
 ## 0.25.0
 
 * Common:
