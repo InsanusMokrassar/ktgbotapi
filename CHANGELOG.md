@@ -46,6 +46,7 @@
         * JavaScript realization was removed due to its redundancy
         * JVM realization was replaced with `fun` factory
         * `StorageFile` now able to accept any factory of `Input`
+        * `StorageFileInfo` was added to avoid strange collisions with throws in `StorageFile`
 
 ## 0.25.0
 
