@@ -48,6 +48,8 @@
         * `StorageFile` now able to accept any factory of `Input`
         * `StorageFileInfo` was added to avoid strange collisions with throws in `StorageFile`
     * Fixes issue with `hashTag` for markdown
+    * `InvalidPhotoDimensionsException` was added for cases when `PHOTO_INVALID_DIMENSION` answer received
+
 ## 0.25.0
 
 * Common:
