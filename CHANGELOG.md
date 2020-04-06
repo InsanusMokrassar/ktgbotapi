@@ -38,6 +38,19 @@
     and size of retrieved updates is equal to 100 (max count of retrieved updates)
     * Extensions `getUpdates` now will receive only not nullable `limit` parameter
 
+### 0.26.1
+
+* `TelegramBotAPI`:
+    * `BotCommand` now will check and throw error in case when command or description lengths is/are incorrect
+    * `StorageFile` now is common for all platforms
+        * JavaScript realization was removed due to its redundancy
+        * JVM realization was replaced with `fun` factory
+        * `StorageFile` now able to accept any factory of `Input`
+        * `StorageFileInfo` was added to avoid strange collisions with throws in `StorageFile`
+    * Fixes issue with `hashTag` for markdown
+    * `InvalidPhotoDimensionsException` was added for cases when `PHOTO_INVALID_DIMENSION` answer received
+    * Other fixes
+
 ## 0.25.0
 
 * Common:

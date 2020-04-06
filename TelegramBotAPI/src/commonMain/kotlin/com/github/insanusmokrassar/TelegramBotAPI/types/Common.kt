@@ -49,7 +49,8 @@ val customTitleLength = 0 .. 16
 
 val diceResultLimit = 1 .. 6
 
-val botCommandLimit = 1 .. 32
+val botCommandLengthLimit = 1 .. 32
+val botCommandLimit = botCommandLengthLimit
 val botCommandDescriptionLimit = 3 .. 256
 val botCommandsLimit = 0 .. 100
 

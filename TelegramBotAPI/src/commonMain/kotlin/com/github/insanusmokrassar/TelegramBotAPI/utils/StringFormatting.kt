@@ -120,7 +120,7 @@ fun String.mentionHTML(): String = mention(String::toHtml)
 
 
 fun String.hashTagMarkdown(): String = hashTag(String::toMarkdown)
-fun String.hashTagMarkdownV2(): String = hashTag(String::escapeMarkdownV2Common)
+fun String.hashTagMarkdownV2(): String = hashTag(String::escapeMarkdownV2Common).escapeMarkdownV2Common()
 fun String.hashTagHTML(): String = hashTag(String::toHtml)
 
 

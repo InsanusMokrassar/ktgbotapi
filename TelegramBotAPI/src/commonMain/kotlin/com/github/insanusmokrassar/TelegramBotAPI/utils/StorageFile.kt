@@ -1,12 +1,21 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
+import com.benasher44.uuid.uuid4
 import io.ktor.utils.io.core.Input
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 
 @Serializable
-expect class StorageFile {
-    val contentType: String
+data class StorageFileInfo(
+    val contentType: String,
     val fileName: String
-    fun generateCustomName(): String
-    fun asInput(): Input
+) {
+    fun generateCustomName() = "${uuid4()}.${fileName.fileExtension}"
+}
+
+data class StorageFile(
+    val storageFileInfo: StorageFileInfo,
+    private val inputSource: () -> Input
+) {
+    fun asInput() = inputSource()
 }

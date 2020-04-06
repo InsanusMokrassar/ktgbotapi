@@ -33,8 +33,8 @@ internal object InputFileSerializer : KSerializer<InputFile> {
 @Serializable(InputFileSerializer::class)
 data class MultipartFile (
     val file: StorageFile,
-    val mimeType: String = file.contentType,
-    val filename: String = file.fileName
+    val mimeType: String = file.storageFileInfo.contentType,
+    val filename: String = file.storageFileInfo.fileName
 ) : InputFile() {
-    override val fileId: String = file.generateCustomName()
+    override val fileId: String = file.storageFileInfo.generateCustomName()
 }
