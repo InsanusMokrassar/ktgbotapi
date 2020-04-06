@@ -16,8 +16,8 @@ fun String.toMarkdown(): String {
     )
 }
 
-private val markdownV2LinkEscapes = mutableSetOf(')', '\\')
-private val markdownV2PreAndCodeEscapes = mutableSetOf('`', '\\')
+private val markdownV2LinkEscapes = setOf(')', '\\')
+private val markdownV2PreAndCodeEscapes = setOf('`', '\\')
 private val markdownV2CommonEscapes = setOf(
     '_',
     '*',
