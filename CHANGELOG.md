@@ -49,6 +49,7 @@
         * `StorageFileInfo` was added to avoid strange collisions with throws in `StorageFile`
     * Fixes issue with `hashTag` for markdown
     * `InvalidPhotoDimensionsException` was added for cases when `PHOTO_INVALID_DIMENSION` answer received
+    * Other fixes
 
 ## 0.25.0
 
