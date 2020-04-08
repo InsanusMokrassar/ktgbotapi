@@ -1,8 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
 
 interface MediaGroupUpdate : Update
 
@@ -11,7 +10,7 @@ interface SentMediaGroupUpdate: MediaGroupUpdate {
     val origins: List<BaseMessageUpdate>
 }
 
-interface EditMediaGroupUpdate : MediaGroupUpdate {
+interface EditMediaGroupUpdate : BaseEditMessageUpdate, MediaGroupUpdate {
     override val data: MediaGroupMessage
     val origin: BaseMessageUpdate
 }
