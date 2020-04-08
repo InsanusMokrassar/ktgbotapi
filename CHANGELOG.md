@@ -41,7 +41,7 @@
 ### 0.26.2
 
 * `TelegramBotAPI-extensions-api`:
-    * `startGettingOfUpdates` extension which not require filter (but return a new one) was added
+    * `startGettingOfUpdates` extension which do not require filter (but return a new one) was added
 * `TelegramBotAPI-extensions-utils`:
     * Subproject was added
     * `filterByChat` and `filterByChatId` extensions was added
