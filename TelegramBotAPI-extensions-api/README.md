@@ -1,9 +1,7 @@
 # TelegramBotAPI extensions
 
-[![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-api)
-[![Build Status](https://jenkins.insanusmokrassar.com/buildStatus/icon?job=TelegramBotAPI-extensions-api_master__publishing)](https://jenkins.insanusmokrassar.com/job/TelegramBotAPI-extensions-api_master__publishing/)
 
 ## What is it?
 
@@ -98,4 +96,22 @@ filter.messageFlow.mapNotNull {
 }.launchIn(
     CoroutineScope(Dispatchers.Default)
 )
+```
+
+### Alternative way
+
+There is an alternative way to get updates. In fact it is almost the same, but could be more useful for some cases:
+
+```kotlin
+val filter = bot.startGettingOfUpdates(
+    scope = CoroutineScope(Dispatchers.Default)
+) { // Here as reveiver will be FlowsUpdatesFilter
+    messageFlow.mapNotNull {
+        it.data as? ContentMessage<*>
+    }.onEach {
+        println(it)
+    }.launchIn(
+        CoroutineScope(Dispatchers.Default)
+    )
+}
 ```

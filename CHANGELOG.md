@@ -46,7 +46,7 @@
     * Subproject was added
     * `filterByChat` and `filterByChatId` extensions was added
     * `filterExactCommands` and `filterCommandsInsideTextMessages` extensions was added
-    * `asContentMessages`, `asChatEvents` and `asUnknownMessages` extensions was added
+    * `asContentMessagesFlow`, `asChatEventsFlow` and `asUnknownMessagesFlow` extensions was added
     * `withContentType` extension was added
         * `onlyAnimationContentMessages` extension was added
         * `onlyAudioContentMessages` extension was added

@@ -5,14 +5,14 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseSen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 
-fun <T : BaseSentMessageUpdate> Flow<T>.asContentMessages() = mapNotNull {
+fun <T : BaseSentMessageUpdate> Flow<T>.asContentMessagesFlow() = mapNotNull {
     it.data as? ContentMessage<*>
 }
 
-fun <T : BaseSentMessageUpdate> Flow<T>.asChatEvents() = mapNotNull {
+fun <T : BaseSentMessageUpdate> Flow<T>.asChatEventsFlow() = mapNotNull {
     it.data as? ChatEventMessage
 }
 
-fun <T : BaseSentMessageUpdate> Flow<T>.asUnknownMessages() = mapNotNull {
+fun <T : BaseSentMessageUpdate> Flow<T>.asUnknownMessagesFlow() = mapNotNull {
     it.data as? UnknownMessageType
 }
