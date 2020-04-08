@@ -31,5 +31,5 @@ Anyway, all libraries are very typical inside of them. Examples:
 
 * In `TelegramBotAPI` common request look like `requestsExecutor.execute(SomeRequest())`
 * `TelegramBotAPI-extensions-api` typical syntax look like `requestsExecutor.someRequest()` (in most cases it would be
-better to understand to use `bot` name instead of `requestsExecutor`)
+better to use `bot` name instead of `requestsExecutor`)
 * `TelegramBotAPI-extensions-utils` will look like `filter.filterBaseMessageUpdates(chatId).filterExactCommands(Regex("^.*$"))...`
