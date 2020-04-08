@@ -65,17 +65,20 @@ fun RequestsExecutor.startGettingOfUpdates(
 }
 
 /**
- * This method will create a new one [FlowsUpdatesFilter]. This method is unsafe due to the fact that it will start
+ * This method will create a new one [FlowsUpdatesFilter]. This method could be unsafe due to the fact that it will start
  * getting updates IMMEDIATELY. That means that your bot will be able to skip some of them until you will call
- * [kotlinx.coroutines.flow.Flow.collect] on one of [FlowsUpdatesFilter] flows
+ * [kotlinx.coroutines.flow.Flow.collect] on one of [FlowsUpdatesFilter] flows. To avoid it, you can pass
+ * [flowUpdatesPreset] lambda - it will be called BEFORE starting updates getting
  */
 @PreviewFeature
 fun RequestsExecutor.startGettingOfUpdates(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (suspend (Exception) -> Unit)? = null,
-    flowsUpdatesFilterUpdatesKeeperCount: Int = 64
+    flowsUpdatesFilterUpdatesKeeperCount: Int = 64,
+    flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit = {}
 ): FlowsUpdatesFilter = FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply {
+    flowUpdatesPreset()
     startGettingOfUpdates(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
 }
 
