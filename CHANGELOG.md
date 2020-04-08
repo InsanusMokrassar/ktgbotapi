@@ -48,7 +48,7 @@
 * `TelegramBotAPI-extensions-utils`:
     * Subproject was added
     * `filterBaseMessageUpdates`, `filterSentMediaGroupUpdates` and `filterEditMediaGroupUpdates` extensions was added
-    * `filterExactCommands` and `filterCommandsInsideTextMessages` extensions was added
+    * `filterCommandsWithArgs`, `filterExactCommands` and `filterCommandsInsideTextMessages` extensions was added
     * `asContentMessagesFlow`, `asChatEventsFlow` and `asUnknownMessagesFlow` extensions was added
     * `withContentType` extension was added
         * `onlyAnimationContentMessages` extension was added
