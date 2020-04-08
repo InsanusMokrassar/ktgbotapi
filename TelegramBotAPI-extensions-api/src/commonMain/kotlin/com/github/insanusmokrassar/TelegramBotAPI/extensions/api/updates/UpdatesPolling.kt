@@ -71,7 +71,7 @@ fun RequestsExecutor.startGettingOfUpdates(
  * [flowUpdatesPreset] lambda - it will be called BEFORE starting updates getting
  */
 @PreviewFeature
-fun RequestsExecutor.startGettingOfUpdates(
+fun RequestsExecutor.startGettingFlowsUpdates(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (suspend (Exception) -> Unit)? = null,

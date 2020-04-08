@@ -43,7 +43,7 @@
 * `TelegramBotAPI`:
     * Now `EditMediaGroupUpdate` also extends `BaseEditMessageUpdate`
 * `TelegramBotAPI-extensions-api`:
-    * `startGettingOfUpdates` extension which do not require filter (but return a new one) was added
+    * `startGettingFlowsUpdates` extension which do not require filter (but return a new one) was added
 * `TelegramBotAPI-extensions-utils`:
     * Subproject was added
     * `filterBaseMessageUpdates`, `filterSentMediaGroupUpdates` and `filterEditMediaGroupUpdates` extensions was added
