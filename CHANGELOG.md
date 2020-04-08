@@ -40,6 +40,9 @@
 
 ### 0.26.2
 
+* `TelegramBotAPI-extensions-api`:
+    * `startGettingOfUpdates` extension which not require filter (but return a new one) was added
+
 ### 0.26.1
 
 * `TelegramBotAPI`:
