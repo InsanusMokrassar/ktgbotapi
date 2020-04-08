@@ -13,8 +13,8 @@ the list of this complex currently next projects:
   without any additional library
 * [TelegramBotAPI Extensions](TelegramBotAPI-extensions-api/README.md) - contains extensions (mostly for
   `RequestsExecutor`), which allows to use the core library in more pleasant way
-* [TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) - contains extensions (mostly for
-  `RequestsExecutor`), which allows to use the core library in more pleasant way
+* [TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) - contains extensions for more comfortable
+work with commands, updates and other different things
 
 Most part of some specific solves or unuseful
 moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
@@ -27,5 +27,9 @@ In most cases, the most simple way will be to implement
 simple tools. If you want to dive deeper in the core of library or develop something for it - welcome to
 [TelegramBotAPI](TelegramBotAPI/README.md).
 
-Anyway, all libraries are very typical inside of them. For example, any request in TelegramBotAPI look like
-`requestsExecutor.execute(SomeRequest())`.
+Anyway, all libraries are very typical inside of them. Examples:
+
+* In `TelegramBotAPI` common request look like `requestsExecutor.execute(SomeRequest())`
+* `TelegramBotAPI-extensions-api` typical syntax look like `requestsExecutor.someRequest()` (in most cases it would be
+better to understand to use `bot` name instead of `requestsExecutor`)
+* `TelegramBotAPI-extensions-utils` will look like `filter.filterBaseMessageUpdates(chatId).filterExactCommands(Regex("^.*$"))...`
