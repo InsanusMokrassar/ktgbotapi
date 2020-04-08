@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 private val commandRegex = Regex("[/!][^@\\s]*")
 
 class BotCommandTextSource(
-    source: String,
+    override val source: String,
     textParts: List<TextPart>
 ) : MultilevelTextSource {
     val command: String by lazy {

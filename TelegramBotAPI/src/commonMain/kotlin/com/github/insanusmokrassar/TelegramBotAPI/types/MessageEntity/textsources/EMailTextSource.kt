@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 class EMailTextSource(
-    source: String,
+    override val source: String,
     textParts: List<TextPart>
 ) : MultilevelTextSource {
     override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }

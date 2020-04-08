@@ -42,6 +42,7 @@
 
 * `TelegramBotAPI`:
     * Now `EditMediaGroupUpdate` also extends `BaseEditMessageUpdate`
+    * **EXPERIMENTALLY** Now all `TextSource` realisations will contain `source` field as a property inside of them
 * `TelegramBotAPI-extensions-api`:
     * `startGettingFlowsUpdates` extension which do not require filter (but return a new one) was added
 * `TelegramBotAPI-extensions-utils`:
