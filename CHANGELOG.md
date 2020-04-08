@@ -38,6 +38,8 @@
     and size of retrieved updates is equal to 100 (max count of retrieved updates)
     * Extensions `getUpdates` now will receive only not nullable `limit` parameter
 
+### 0.26.2
+
 ### 0.26.1
 
 * `TelegramBotAPI`:
