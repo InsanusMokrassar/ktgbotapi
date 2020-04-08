@@ -12,7 +12,7 @@ private val String.withoutSharp
     }
 
 class HashTagTextSource(
-    source: String,
+    override val source: String,
     textParts: List<TextPart>
 ) : MultilevelTextSource {
     override val textParts: List<TextPart> by lazy {

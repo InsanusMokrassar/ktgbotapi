@@ -38,6 +38,36 @@
     and size of retrieved updates is equal to 100 (max count of retrieved updates)
     * Extensions `getUpdates` now will receive only not nullable `limit` parameter
 
+### 0.26.2
+
+* `TelegramBotAPI`:
+    * Now `EditMediaGroupUpdate` also extends `BaseEditMessageUpdate`
+    * **EXPERIMENTALLY** Now all `TextSource` realisations will contain `source` field as a property inside of them
+* `TelegramBotAPI-extensions-api`:
+    * `startGettingFlowsUpdates` extension which do not require filter (but return a new one) was added
+* `TelegramBotAPI-extensions-utils`:
+    * Subproject was added
+    * `filterBaseMessageUpdates`, `filterSentMediaGroupUpdates` and `filterEditMediaGroupUpdates` extensions was added
+    * `filterCommandsWithArgs`, `filterExactCommands` and `filterCommandsInsideTextMessages` extensions was added
+    * `asContentMessagesFlow`, `asChatEventsFlow` and `asUnknownMessagesFlow` extensions was added
+    * `withContentType` extension was added
+        * `onlyAnimationContentMessages` extension was added
+        * `onlyAudioContentMessages` extension was added
+        * `onlyContactContentMessages` extension was added
+        * `onlyDiceContentMessages` extension was added
+        * `onlyDocumentContentMessages` extension was added
+        * `onlyGameContentMessages` extension was added
+        * `onlyInvoiceContentMessages` extension was added
+        * `onlyLocationContentMessages` extension was added
+        * `onlyPhotoContentMessages` extension was added
+        * `onlyPollContentMessages` extension was added
+        * `onlyStickerContentMessages` extension was added
+        * `onlyTextContentMessages` extension was added
+        * `onlyVenueContentMessages` extension was added
+        * `onlyVideoContentMessages` extension was added
+        * `onlyVideoNoteContentMessages` extension was added
+        * `onlyVoiceContentMessages` extension was added
+
 ### 0.26.1
 
 * `TelegramBotAPI`:

@@ -4,6 +4,7 @@ interface TextSource {
     val asMarkdownSource: String
     val asMarkdownV2Source: String
     val asHtmlSource: String
+    val source: String
 }
 
 

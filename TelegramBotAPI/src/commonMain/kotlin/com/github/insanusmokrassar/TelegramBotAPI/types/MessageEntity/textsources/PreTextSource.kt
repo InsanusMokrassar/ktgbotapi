@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 class PreTextSource(
-    source: String,
+    override val source: String,
     val language: String? = null
 ) : TextSource {
     override val asMarkdownSource: String by lazy { source.preMarkdown(language) }

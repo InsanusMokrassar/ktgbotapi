@@ -6,7 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateCh
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 class TextMentionTextSource(
-    source: String,
+    override val source: String,
     privateChat: PrivateChat,
     textParts: List<TextPart>
 ) : MultilevelTextSource {

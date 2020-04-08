@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 class TextLinkTextSource(
-    source: String,
+    override val source: String,
     url: String
 ) : TextSource {
     override val asMarkdownSource: String by lazy { source.linkMarkdown(url) }

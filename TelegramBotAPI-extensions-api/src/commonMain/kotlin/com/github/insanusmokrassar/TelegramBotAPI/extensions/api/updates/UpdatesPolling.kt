@@ -10,6 +10,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.PreviewFeature
 import io.ktor.client.features.HttpRequestTimeoutException
 import kotlinx.coroutines.*
 
@@ -61,6 +62,24 @@ fun RequestsExecutor.startGettingOfUpdates(
             exceptionsHandler ?.invoke(e)
         }
     }
+}
+
+/**
+ * This method will create a new one [FlowsUpdatesFilter]. This method could be unsafe due to the fact that it will start
+ * getting updates IMMEDIATELY. That means that your bot will be able to skip some of them until you will call
+ * [kotlinx.coroutines.flow.Flow.collect] on one of [FlowsUpdatesFilter] flows. To avoid it, you can pass
+ * [flowUpdatesPreset] lambda - it will be called BEFORE starting updates getting
+ */
+@PreviewFeature
+fun RequestsExecutor.startGettingFlowsUpdates(
+    timeoutSeconds: Seconds = 30,
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    flowsUpdatesFilterUpdatesKeeperCount: Int = 64,
+    flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit = {}
+): FlowsUpdatesFilter = FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply {
+    flowUpdatesPreset()
+    startGettingOfUpdates(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
 }
 
 fun RequestsExecutor.startGettingOfUpdates(
