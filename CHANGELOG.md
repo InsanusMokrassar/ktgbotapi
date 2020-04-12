@@ -40,6 +40,11 @@
 
 ### 0.26.3
 
+* `TelegramBotAPI`:
+    * `CallbackGameInlineKeyboardButton` was added
+    ([Issue-79](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/79),
+    [PR-80](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/80))
+
 ### 0.26.2
 
 * `TelegramBotAPI`:
