@@ -15,6 +15,7 @@ internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButto
     private fun resolveSerializer(json: JsonObject): KSerializer<out InlineKeyboardButton> {
         return when {
             json[callbackDataField] != null -> CallbackDataInlineKeyboardButton.serializer()
+            json[callbackGameField] != null -> CallbackGameInlineKeyboardButton.serializer()
             json[loginUrlField] != null -> LoginURLInlineKeyboardButton.serializer()
             json[payField] != null -> PayInlineKeyboardButton.serializer()
             json[switchInlineQueryField] != null -> SwitchInlineQueryInlineKeyboardButton.serializer()
