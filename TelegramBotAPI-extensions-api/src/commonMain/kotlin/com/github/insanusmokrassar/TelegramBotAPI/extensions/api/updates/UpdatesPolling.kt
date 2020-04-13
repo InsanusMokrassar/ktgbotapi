@@ -11,6 +11,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.PreviewFeature
+import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
 import io.ktor.client.features.HttpRequestTimeoutException
 import kotlinx.coroutines.*
 
@@ -24,42 +25,44 @@ fun RequestsExecutor.startGettingOfUpdates(
     var lastUpdateIdentifier: UpdateIdentifier? = null
 
     while (isActive) {
-        try {
-            supervisorScope {
-                val updates = getUpdates(
-                    offset = lastUpdateIdentifier?.plus(1),
-                    timeout = timeoutSeconds,
-                    allowed_updates = allowedUpdates
-                ).let { originalUpdates ->
-                    val converted = originalUpdates.convertWithMediaGroupUpdates()
-                    /**
-                     * Dirty hack for cases when the media group was retrieved not fully:
-                     *
-                     * We are throw out the last media group and will reretrieve it again in the next get updates
-                     * and it will guarantee that it is full
-                     */
-                    if (originalUpdates.size == getUpdatesLimit.last && converted.last() is SentMediaGroupUpdate) {
-                        converted - converted.last()
-                    } else {
-                        converted
+        handleSafely(
+            { e ->
+                when (e) {
+                    is HttpRequestTimeoutException -> exceptionsHandler ?.invoke(e)
+                    is RequestException -> {
+                        exceptionsHandler ?.invoke(e)
+                        delay(1000L)
                     }
-                }
-
-                supervisorScope {
-                    for (update in updates) {
-                        updatesReceiver(update)
-
-                        lastUpdateIdentifier = update.lastUpdateIdentifier()
-                    }
+                    else -> exceptionsHandler ?.invoke(e)
                 }
             }
-        } catch (e: HttpRequestTimeoutException) {
-            exceptionsHandler ?.invoke(e) // it is ok due to mechanism of long polling
-        } catch (e: RequestException) {
-            exceptionsHandler ?.invoke(e) // it is not ok, but in most cases it will mean that there is some limit for requests count
-            delay(1000L)
-        } catch (e: Exception) {
-            exceptionsHandler ?.invoke(e)
+        ) {
+            val updates = getUpdates(
+                offset = lastUpdateIdentifier?.plus(1),
+                timeout = timeoutSeconds,
+                allowed_updates = allowedUpdates
+            ).let { originalUpdates ->
+                val converted = originalUpdates.convertWithMediaGroupUpdates()
+                /**
+                 * Dirty hack for cases when the media group was retrieved not fully:
+                 *
+                 * We are throw out the last media group and will reretrieve it again in the next get updates
+                 * and it will guarantee that it is full
+                 */
+                if (originalUpdates.size == getUpdatesLimit.last && converted.last() is SentMediaGroupUpdate) {
+                    converted - converted.last()
+                } else {
+                    converted
+                }
+            }
+
+            handleSafely {
+                for (update in updates) {
+                    updatesReceiver(update)
+
+                    lastUpdateIdentifier = update.lastUpdateIdentifier()
+                }
+            }
         }
     }
 }

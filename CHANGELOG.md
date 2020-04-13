@@ -50,6 +50,9 @@
      case will be created `UnknownUpdateType`
     * `UnknownUpdateType$rawJson` value now is included (`JsonElement`)
     * **EXPERIMENTALLY** `BaseEditMessageUpdate#data` now is `CommonMessage<*>`
+    * Suspend inline function `handleSafely` was added
+        * `KtorRequestsExecutor` now use `handleSafely` instead of `try` with `supervisorScope`
+        * `UpdatesPolling` now use `handleSafely` instead of `try` with `supervisorScope`
 
 ### 0.26.2
 
