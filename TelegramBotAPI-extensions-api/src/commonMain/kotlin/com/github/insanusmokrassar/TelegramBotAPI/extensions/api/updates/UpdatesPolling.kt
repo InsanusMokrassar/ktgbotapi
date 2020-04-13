@@ -27,13 +27,9 @@ fun RequestsExecutor.startGettingOfUpdates(
     while (isActive) {
         handleSafely(
             { e ->
-                when (e) {
-                    is HttpRequestTimeoutException -> exceptionsHandler ?.invoke(e)
-                    is RequestException -> {
-                        exceptionsHandler ?.invoke(e)
-                        delay(1000L)
-                    }
-                    else -> exceptionsHandler ?.invoke(e)
+                exceptionsHandler ?.invoke(e)
+                if (e is RequestException) {
+                    delay(1000L)
                 }
             }
         ) {
