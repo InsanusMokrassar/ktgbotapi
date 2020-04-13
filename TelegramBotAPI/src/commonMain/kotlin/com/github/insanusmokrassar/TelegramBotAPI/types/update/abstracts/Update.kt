@@ -4,6 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonElementSerializer
 
 interface Update {
@@ -13,7 +14,8 @@ interface Update {
 
 data class UnknownUpdateType(
     override val updateId: UpdateIdentifier,
-    override val data: String
+    override val data: String,
+    val rawJson: JsonElement
 ) : Update
 
 internal object UpdateSerializerWithoutDeserialization : KSerializer<Update> {

@@ -1,13 +1,22 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardButtons
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.games.CallbackGame
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
 
 @Serializable(InlineKeyboardButtonSerializer::class)
 sealed class InlineKeyboardButton {
     abstract val text: String
 }
+
+@Serializable
+data class UnknownInlineKeyboardButton internal constructor(
+    override val text: String,
+    val rawData: JsonElement
+) : InlineKeyboardButton()
 
 @Serializable
 data class PayInlineKeyboardButton(
@@ -22,6 +31,14 @@ data class CallbackDataInlineKeyboardButton(
     override val text: String,
     @SerialName(callbackDataField)
     val callbackData: String
+) : InlineKeyboardButton()
+
+@Serializable
+data class CallbackGameInlineKeyboardButton(
+    @SerialName(textField)
+    override val text: String,
+    @SerialName(callbackGameField)
+    val callbackGame: CallbackGame
 ) : InlineKeyboardButton()
 
 @Serializable

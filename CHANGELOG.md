@@ -38,6 +38,22 @@
     and size of retrieved updates is equal to 100 (max count of retrieved updates)
     * Extensions `getUpdates` now will receive only not nullable `limit` parameter
 
+### 0.26.3
+
+* `TelegramBotAPI`:
+    * `CallbackGameInlineKeyboardButton` was added
+    ([Issue-79](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/79),
+    [PR-80](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/80))
+    * `UnknownInlineKeyboardButton` was added. It is unavailable for creating, but you can receive it, for example, in
+    `InlineQueryResult`
+    * `Update` now will be created even if was `SerializationException` inside of creating the update instance - in this
+     case will be created `UnknownUpdateType`
+    * `UnknownUpdateType$rawJson` value now is included (`JsonElement`)
+    * **EXPERIMENTALLY** `BaseEditMessageUpdate#data` now is `CommonMessage<*>`
+    * Suspend inline function `handleSafely` was added
+        * `KtorRequestsExecutor` now use `handleSafely` instead of `try` with `supervisorScope`
+        * `UpdatesPolling` now use `handleSafely` instead of `try` with `supervisorScope`
+
 ### 0.26.2
 
 * `TelegramBotAPI`:
