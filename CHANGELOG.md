@@ -44,6 +44,8 @@
     * `CallbackGameInlineKeyboardButton` was added
     ([Issue-79](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/79),
     [PR-80](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/80))
+    * `UnknownInlineKeyboardButton` was added. It is unavailable for creating, but you can receive it, for example, in
+    `InlineQueryResult`
 
 ### 0.26.2
 
