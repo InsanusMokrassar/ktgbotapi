@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQuery.RawCallbac
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.ChosenInlineResult.RawChosenInlineResult
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.query.RawInlineQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
@@ -21,11 +21,11 @@ internal data class RawUpdate constructor(
     @SerialName(updateIdField)
     val updateId: UpdateIdentifier,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val edited_message: Message? = null,
+    private val edited_message: CommonMessage<*>? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val message: Message? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val edited_channel_post: Message? = null,
+    private val edited_channel_post: CommonMessage<*>? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val channel_post: Message? = null,
     private val inline_query: RawInlineQuery? = null,

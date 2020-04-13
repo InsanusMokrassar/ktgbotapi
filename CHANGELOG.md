@@ -49,6 +49,7 @@
     * `Update` now will be created even if was `SerializationException` inside of creating the update instance - in this
      case will be created `UnknownUpdateType`
     * `UnknownUpdateType$rawJson` value now is included (`JsonElement`)
+    * **EXPERIMENTALLY** `BaseEditMessageUpdate#data` now is `CommonMessage<*>`
 
 ### 0.26.2
 
