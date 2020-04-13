@@ -46,6 +46,9 @@
     [PR-80](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/80))
     * `UnknownInlineKeyboardButton` was added. It is unavailable for creating, but you can receive it, for example, in
     `InlineQueryResult`
+    * `Update` now will be created even if was `SerializationException` inside of creating the update instance - in this
+     case will be created `UnknownUpdateType`
+    * `UnknownUpdateType$rawJson` value now is included (`JsonElement`)
 
 ### 0.26.2
 
