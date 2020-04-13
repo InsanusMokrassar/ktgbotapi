@@ -25,11 +25,11 @@ internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButto
     }
 
     override fun deserialize(decoder: Decoder): InlineKeyboardButton {
-        val json = JsonObjectSerializer.deserialize(decoder)
+        val json = JsonElementSerializer.deserialize(decoder)
 
-        return resolveSerializer(json) ?.let {
+        return (json as? JsonObject) ?.let { resolveSerializer(it) } ?.let {
             nonstrictJsonFormat.fromJson(it, json)
-        } ?: UnknownInlineKeyboardButton(json[textField] ?.contentOrNull ?: "", json)
+        } ?: UnknownInlineKeyboardButton("", json)
     }
 
     override fun serialize(encoder: Encoder, value: InlineKeyboardButton) {
