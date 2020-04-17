@@ -19,6 +19,47 @@ work with commands, updates and other different things
 Most part of some specific solves or unuseful
 moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
 
+## JavaScript notes
+
+In case if you are want to use this library inside of browser, you will need additional settings:
+
+<details>
+<summary>Gradle build script help</summary>
+
+```groovy
+dependencies {
+    /* ... */
+
+    implementation "com.github.insanusmokrassar:TelegramBotAPI:$tgbot_api_version"
+    implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$tgbot_api_version" // optional
+    implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-utils:$tgbot_api_version" // optional
+
+    /* Block of dependencies for correct building in browser */
+    implementation(npm("fs"))
+    implementation(npm("bufferutil"))
+    implementation(npm("utf-8-validate"))
+    implementation(npm("abort-controller"))
+    implementation(npm("text-encoding"))
+}
+
+/* ... */
+
+kotlin {
+    target {
+        browser {
+            /* Block for fix of exception in absence of some functionality, https://github.com/ktorio/ktor/issues/1339 */
+            dceTask {
+                dceOptions {
+                    keep("ktor-ktor-io.\$\$importsForInline\$\$.ktor-ktor-io.io.ktor.utils.io")
+                }
+            }
+        }
+    }
+}
+```
+
+</details>
+
 ## Ok, where should I start?
 
 In most cases, the most simple way will be to implement
