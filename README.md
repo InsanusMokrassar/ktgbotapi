@@ -24,7 +24,7 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 In case if you are want to use this library inside of browser, you will need additional settings:
 
 <details>
-<summary>Gradle build script help</summary>
+<summary>Gradle build script help (thanks for help to [Alexander Nozik](https://github.com/altavir))</summary>
 
 ```groovy
 dependencies {
