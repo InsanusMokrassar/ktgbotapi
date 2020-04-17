@@ -21,7 +21,7 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 
 ## JavaScript notes
 
-In case if you are want to use this library inside of browser, you will need additional settings (thanks for help to [Alexander Nozik](https://github.com/altavir)):
+In case if you are want to use this library inside of browser, you will need additional settings (thanks for help to [Alexander Nozik](https://research.jetbrains.org/researchers/altavir)):
 
 <details>
 <summary>Gradle build script help</summary>
