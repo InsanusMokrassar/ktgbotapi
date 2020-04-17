@@ -21,10 +21,10 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 
 ## JavaScript notes
 
-In case if you are want to use this library inside of browser, you will need additional settings:
+In case if you are want to use this library inside of browser, you will need additional settings (thanks for help to [Alexander Nozik](https://github.com/altavir)):
 
 <details>
-<summary>Gradle build script help (thanks for help to [Alexander Nozik](https://github.com/altavir))</summary>
+<summary>Gradle build script help</summary>
 
 ```groovy
 dependencies {
