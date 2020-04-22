@@ -38,6 +38,16 @@
     and size of retrieved updates is equal to 100 (max count of retrieved updates)
     * Extensions `getUpdates` now will receive only not nullable `limit` parameter
 
+### 0.26.4
+
+* `TelegramBotAPI`:
+    * Now any getting of updates will return `UnknownUpdateType` when inside of deserialization will be
+    `SerializationException` or `NotImplemented` error
+    * `CallbackGame` currently is an object
+        * It is possible to use `CallbackGame` for now
+            * `CallbackGameInlineKeyboardButton` now will not accept `callbackGame` as income object
+    * Now it is possible to pass exception handler in webhook
+
 ### 0.26.3
 
 * `TelegramBotAPI`:

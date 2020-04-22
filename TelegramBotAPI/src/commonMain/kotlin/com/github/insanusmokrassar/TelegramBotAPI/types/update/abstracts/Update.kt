@@ -18,7 +18,7 @@ data class UnknownUpdateType(
     val rawJson: JsonElement
 ) : Update
 
-internal object UpdateSerializerWithoutDeserialization : KSerializer<Update> {
+internal object UpdateSerializerWithoutSerialization : KSerializer<Update> {
     override val descriptor: SerialDescriptor = JsonElementSerializer.descriptor
 
     override fun deserialize(decoder: Decoder): Update = UpdateDeserializationStrategy.deserialize(decoder)

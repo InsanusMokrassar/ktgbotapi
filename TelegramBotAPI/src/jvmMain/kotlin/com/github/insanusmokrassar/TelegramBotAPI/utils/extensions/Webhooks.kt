@@ -4,15 +4,11 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
-import com.github.insanusmokrassar.TelegramBotAPI.utils.convertWithMediaGroupUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
+import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 import io.ktor.application.call
 import io.ktor.request.receiveText
 import io.ktor.response.respond
@@ -45,6 +41,7 @@ suspend fun RequestsExecutor.setWebhook(
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
     maxAllowedConnections: Int? = null,
+    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     block: UpdateReceiver<Update>
 ): Job {
     val executeDeferred = certificate ?.let {
@@ -74,12 +71,18 @@ suspend fun RequestsExecutor.setWebhook(
         module {
             routing {
                 post(listenRoute) {
-                    val asJson = nonstrictJsonFormat.parseJson(call.receiveText())
-                    val update = nonstrictJsonFormat.fromJson(
-                        RawUpdate.serializer(),
-                        asJson
-                    )
-                    updatesChannel.send(update.asUpdate(asJson))
+                    handleSafely(
+                        {
+                            exceptionsHandler ?.invoke(it)
+                        }
+                    ) {
+                        val asJson = nonstrictJsonFormat.parseJson(call.receiveText())
+                        val update = nonstrictJsonFormat.fromJson(
+                            UpdateDeserializationStrategy,
+                            asJson
+                        )
+                        updatesChannel.send(update)
+                    }
                     call.respond("Ok")
                 }
             }
@@ -113,11 +116,6 @@ suspend fun RequestsExecutor.setWebhook(
         launch {
             for (update in updatesChannel) {
                 val data = update.data
-                if (data is MediaGroupUpdate) {
-
-                } else {
-
-                }
                 when (data) {
                     is MediaGroupMessage -> mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
                     else -> block(update)
@@ -138,6 +136,33 @@ suspend fun RequestsExecutor.setWebhook(
         }
     }
 }
+
+suspend fun RequestsExecutor.setWebhook(
+    url: String,
+    port: Int,
+    engineFactory: ApplicationEngineFactory<*, *>,
+    listenHost: String = "0.0.0.0",
+    listenRoute: String = "/",
+    certificate: InputFile? = null,
+    privateKeyConfig: WebhookPrivateKeyConfig? = null,
+    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
+    allowedUpdates: List<String>? = null,
+    maxAllowedConnections: Int? = null,
+    block: UpdateReceiver<Update>
+) = setWebhook(
+    url,
+    port,
+    engineFactory,
+    listenHost,
+    listenRoute,
+    certificate,
+    privateKeyConfig,
+    scope,
+    allowedUpdates,
+    maxAllowedConnections,
+    null,
+    block
+)
 
 suspend fun RequestsExecutor.setWebhook(
     url: String,

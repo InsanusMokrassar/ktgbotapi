@@ -3,12 +3,12 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.SimpleRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateSerializerWithoutDeserialization
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateSerializerWithoutSerialization
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
 private val updatesListSerializer = ListSerializer(
-    UpdateSerializerWithoutDeserialization
+    UpdateSerializerWithoutSerialization
 )
 
 @Serializable
