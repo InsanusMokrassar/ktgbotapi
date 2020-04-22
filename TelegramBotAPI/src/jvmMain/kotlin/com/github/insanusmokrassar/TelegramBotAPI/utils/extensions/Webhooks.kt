@@ -4,10 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
@@ -81,10 +78,10 @@ suspend fun RequestsExecutor.setWebhook(
                     ) {
                         val asJson = nonstrictJsonFormat.parseJson(call.receiveText())
                         val update = nonstrictJsonFormat.fromJson(
-                            RawUpdate.serializer(),
+                            UpdateDeserializationStrategy,
                             asJson
                         )
-                        updatesChannel.send(update.asUpdate(asJson))
+                        updatesChannel.send(update)
                     }
                     call.respond("Ok")
                 }
