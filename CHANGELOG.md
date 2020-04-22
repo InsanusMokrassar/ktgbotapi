@@ -43,6 +43,8 @@
 * `TelegramBotAPI`:
     * Now any getting of updates will return `UnknownUpdateType` when inside of deserialization will be
     `SerializationException` or `NotImplemented` error
+    * `CallbackGame` currently is an object
+        * It is possible to use `CallbackGame` for now
 
 ### 0.26.3
 
