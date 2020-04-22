@@ -64,12 +64,16 @@ internal data class RawUpdate constructor(
                     raw
                 )
             }
-        } catch (e: SerializationException) {
-            UnknownUpdateType(
-                updateId,
-                raw.toString(),
-                raw
-            )
+        } catch (e: Error) {
+            when (e) {
+                is SerializationException,
+                is NotImplementedError -> UnknownUpdateType(
+                    updateId,
+                    raw.toString(),
+                    raw
+                )
+                else -> throw e
+            }
         }.also {
             initedUpdate = it
         }

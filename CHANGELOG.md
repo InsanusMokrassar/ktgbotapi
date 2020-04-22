@@ -40,6 +40,10 @@
 
 ### 0.26.4
 
+* `TelegramBotAPI`:
+    * Now any getting of updates will return `UnknownUpdateType` when inside of deserialization will be
+    `SerializationException` or `NotImplemented` error
+
 ### 0.26.3
 
 * `TelegramBotAPI`:
