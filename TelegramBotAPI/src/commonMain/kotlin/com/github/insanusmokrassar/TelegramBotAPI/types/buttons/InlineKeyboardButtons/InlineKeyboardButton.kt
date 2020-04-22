@@ -36,10 +36,11 @@ data class CallbackDataInlineKeyboardButton(
 @Serializable
 data class CallbackGameInlineKeyboardButton(
     @SerialName(textField)
-    override val text: String,
+    override val text: String
+) : InlineKeyboardButton() {
     @SerialName(callbackGameField)
-    val callbackGame: CallbackGame
-) : InlineKeyboardButton()
+    private val callbackGame = CallbackGame
+}
 
 @Serializable
 data class LoginURLInlineKeyboardButton(
