@@ -13,6 +13,7 @@
         * `explanationEntitiesField`
         * `openPeriodField`
         * `closeDateField`
+    * Extension `List<TextPart>#justTextSources` was added for mapping of `List<TextPart>` to `List<TextSource>`
     * Field `SendPoll#closeInfo` was added
         * Range `openPeriodPollSecondsLimit` was added and used in all `SendPoll` requests for checking income data
     * `SendQuizPoll` now able to use fields `caption` and `parseMode` for `explanation` functionality
