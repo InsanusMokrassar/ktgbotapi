@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.asTextParts
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.dice.Dice
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.games.RawGame
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.*

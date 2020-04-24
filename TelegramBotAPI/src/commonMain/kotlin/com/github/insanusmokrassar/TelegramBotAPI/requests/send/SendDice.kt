@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ReplyMes
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.types.dice.DiceAnimationType
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.DiceContent
@@ -17,6 +18,8 @@ internal val DiceContentMessageResultDeserializer: DeserializationStrategy<Conte
 data class SendDice(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @SerialName(emojiField)
+    val animationType: DiceAnimationType? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)

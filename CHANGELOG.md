@@ -20,7 +20,10 @@
     * Field `Poll#scheduledCloseInfo` was added
     * Sealed class `MultipleAnswersPoll` was added
         * Class `RegularPoll` now extends `MultipleAnswersPoll`
-    
+    * `Dice` class was replaced into new package
+    * Sealed class `DiceAnimationType` was added
+        * Field `Dice#animationType` was added as `emoji` API representation
+        * `SendDice` now receive `animationType` as second parameter
 
 ## 0.26.0
 
