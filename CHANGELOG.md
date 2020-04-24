@@ -14,6 +14,7 @@
         * `openPeriodField`
         * `closeDateField`
     * Field `SendPoll#closeInfo` was added
+        * Range `openPeriodPollSecondsLimit` was added and used in all `SendPoll` requests for checking income data
     * `SendQuizPoll` now able to use fields `caption` and `parseMode` for `explanation` functionality
         * `quizPollExplanationLimit` was added for checking `QuizPoll` explanation size
     * Field `TextLinkTextSource#url` was added

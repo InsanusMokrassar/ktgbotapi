@@ -57,6 +57,8 @@ val botCommandsLimit = 0 .. 100
 
 val quizPollExplanationLimit = 0 .. 200
 
+val openPeriodPollSecondsLimit = 5 .. 600
+
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
 const val updateIdField = "update_id"

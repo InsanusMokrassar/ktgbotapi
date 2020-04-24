@@ -14,6 +14,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.PollCont
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.fullListOfSubSource
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownV2Captions
+import com.soywiz.klock.DateTime
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
@@ -118,6 +119,16 @@ fun Poll.createRequest(
     )
 }
 
+private fun ScheduledCloseInfo.checkSendData() {
+    val span = when (this) {
+        is ExactScheduledCloseInfo -> (closeDateTime - DateTime.now()).seconds
+        is ApproximateScheduledCloseInfo -> openDuration.seconds
+    }.toInt()
+    if (span !in openPeriodPollSecondsLimit) {
+        error("Duration of autoclose for polls must be in range $openPeriodPollSecondsLimit, but was $span")
+    }
+}
+
 sealed class SendPoll : SendMessageRequest<ContentMessage<PollContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<PollContent>> {
     abstract val question: String
@@ -172,6 +183,7 @@ data class SendRegularPoll(
 
     init {
         checkPollInfo(question, options)
+        closeInfo ?.checkSendData()
     }
 }
 
@@ -216,6 +228,7 @@ data class SendQuizPoll(
 
     init {
         checkPollInfo(question, options)
+        closeInfo ?.checkSendData()
         val correctOptionIdRange = 0 .. options.size
         if (correctOptionId !in correctOptionIdRange) {
             throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
