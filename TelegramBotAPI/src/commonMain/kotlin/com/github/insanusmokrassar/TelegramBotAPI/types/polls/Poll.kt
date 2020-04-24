@@ -4,13 +4,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntity
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.asTextParts
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
 import kotlinx.serialization.*
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonObjectSerializer
 
 sealed class ScheduledCloseInfo {
     abstract val closeDateTime: DateTime

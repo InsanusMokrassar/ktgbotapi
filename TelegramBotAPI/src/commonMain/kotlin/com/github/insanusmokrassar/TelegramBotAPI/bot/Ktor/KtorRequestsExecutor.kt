@@ -10,7 +10,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.features.*

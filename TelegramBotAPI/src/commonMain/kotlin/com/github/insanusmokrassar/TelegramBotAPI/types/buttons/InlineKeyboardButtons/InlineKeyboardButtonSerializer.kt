@@ -3,7 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardB
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.JsonElementSerializer
+import kotlinx.serialization.json.JsonObject
 
 internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
     override val descriptor: SerialDescriptor = SerialDescriptor(

@@ -3,13 +3,12 @@ package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send.polls
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls.SendQuizPoll
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls.SendRegularPoll
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Transient
 
 suspend fun RequestsExecutor.sendRegularPoll(
     chatId: ChatIdentifier,
