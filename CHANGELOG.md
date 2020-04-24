@@ -5,6 +5,22 @@
 * Versions:
     * `Kotlin`: `1.3.71` -> `1.3.72`
     * `Klock`: `1.10.3` -> `1.10.5`
+* `TelegramBotAPI`:
+    * Typealias `LongSeconds` was added for correct explanation of seconds in `Long` primitive type
+    * Several new fields was added:
+        * `explanationField`
+        * `explanationEntitiesField`
+        * `openPeriodField`
+        * `closeDateField`
+    * Field `TextLinkTextSource#url` was added
+    * Field `TextMentionTextSource#user` was added
+    * Sealed class `ScheduledCloseInfo` was added
+        * Class `ExactScheduledCloseInfo` was added for cases with `close_date`
+        * Class `ApproximateScheduledCloseInfo` was added for cases with `open_period`
+    * Field `Poll#scheduledCloseInfo` was added
+    * Sealed class `MultipleAnswersPoll` was added
+        * Class `RegularPoll` now extends `MultipleAnswersPoll`
+    
 
 ## 0.26.0
 

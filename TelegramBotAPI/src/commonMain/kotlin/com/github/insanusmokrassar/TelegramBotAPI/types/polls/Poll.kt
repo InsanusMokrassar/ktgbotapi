@@ -1,10 +1,32 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.polls
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.RawMessageEntity
+import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.asTextParts
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
+import com.soywiz.klock.DateTime
+import com.soywiz.klock.TimeSpan
 import kotlinx.serialization.*
-import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.*
+
+sealed class ScheduledCloseInfo {
+    abstract val closeDateTime: DateTime
+}
+
+data class ExactScheduledCloseInfo(
+    override val closeDateTime: DateTime
+) : ScheduledCloseInfo()
+
+data class ApproximateScheduledCloseInfo(
+    val openDuration: TimeSpan
+) : ScheduledCloseInfo() {
+    @Suppress("MemberVisibilityCanBePrivate")
+    val startPoint = DateTime.now()
+    override val closeDateTime: DateTime = startPoint + openDuration
+}
 
 @Serializable(PollSerializer::class)
 sealed class Poll {
@@ -14,6 +36,51 @@ sealed class Poll {
     abstract val votesCount: Int
     abstract val isClosed: Boolean
     abstract val isAnonymous: Boolean
+    abstract val scheduledCloseInfo: ScheduledCloseInfo?
+}
+
+@Serializable(PollSerializer::class)
+sealed class MultipleAnswersPoll : Poll()
+
+@Serializable
+private class RawPoll(
+    @SerialName(idField)
+    val id: PollIdentifier,
+    @SerialName(questionField)
+    val question: String,
+    @SerialName(optionsField)
+    val options: List<PollOption>,
+    @SerialName(totalVoterCountField)
+    val votesCount: Int,
+    @SerialName(isClosedField)
+    val isClosed: Boolean = false,
+    @SerialName(isAnonymousField)
+    val isAnonymous: Boolean = false,
+    @SerialName(typeField)
+    val type: String,
+    @SerialName(allowsMultipleAnswersField)
+    val allowMultipleAnswers: Boolean = false,
+    @SerialName(correctOptionIdField)
+    val correctOptionId: Int? = null,
+    @SerialName(explanationField)
+    val caption: String? = null,
+    @SerialName(explanationEntitiesField)
+    val captionEntities: List<RawMessageEntity> = emptyList(),
+    @SerialName(openPeriodField)
+    val openPeriod: LongSeconds? = null,
+    @SerialName(closeDateField)
+    val closeDate: LongSeconds? = null
+) {
+    @Transient
+    val scheduledCloseInfo: ScheduledCloseInfo? = closeDate ?.let {
+        ExactScheduledCloseInfo(
+            DateTime(unixMillis = it * 1000.0)
+        )
+    } ?: openPeriod ?.let {
+        ApproximateScheduledCloseInfo(
+            TimeSpan(it * 1000.0)
+        )
+    }
 }
 
 @Serializable
@@ -30,91 +97,128 @@ data class UnknownPollType internal constructor(
     override val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
-    val raw: String
-) : Poll()
+    @Serializable
+    val raw: JsonObject
+) : Poll() {
+    @Transient
+    override val scheduledCloseInfo: ScheduledCloseInfo? = raw.getPrimitiveOrNull(closeDateField) ?.longOrNull ?.let {
+        ExactScheduledCloseInfo(
+            DateTime(unixMillis = it * 1000.0)
+        )
+    } ?: raw.getPrimitiveOrNull(durationField) ?.longOrNull ?.let {
+        ApproximateScheduledCloseInfo(
+            TimeSpan(it * 1000.0)
+        )
+    }
+}
 
-@Serializable
+@Serializable(PollSerializer::class)
 data class RegularPoll(
-    @SerialName(idField)
     override val id: PollIdentifier,
-    @SerialName(questionField)
     override val question: String,
-    @SerialName(optionsField)
     override val options: List<PollOption>,
-    @SerialName(totalVoterCountField)
     override val votesCount: Int,
-    @SerialName(isClosedField)
     override val isClosed: Boolean = false,
-    @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
-    @SerialName(allowsMultipleAnswersField)
-    val allowMultipleAnswers: Boolean = false
-) : Poll()
+    val allowMultipleAnswers: Boolean = false,
+    override val scheduledCloseInfo: ScheduledCloseInfo? = null
+) : MultipleAnswersPoll()
 
-@Serializable
+@Serializable(PollSerializer::class)
 data class QuizPoll(
-    @SerialName(idField)
     override val id: PollIdentifier,
-    @SerialName(questionField)
     override val question: String,
-    @SerialName(optionsField)
     override val options: List<PollOption>,
-    @SerialName(totalVoterCountField)
     override val votesCount: Int,
     /**
      * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
      */
-    @SerialName(correctOptionIdField)
     val correctOptionId: Int? = null,
-    @SerialName(isClosedField)
+    override val caption: String? = null,
+    override val captionEntities: List<TextPart> = emptyList(),
     override val isClosed: Boolean = false,
-    @SerialName(isAnonymousField)
-    override val isAnonymous: Boolean = false
-) : Poll()
+    override val isAnonymous: Boolean = false,
+    override val scheduledCloseInfo: ScheduledCloseInfo? = null
+) : Poll(), CaptionedInput
 
 @Serializer(Poll::class)
 internal object PollSerializer : KSerializer<Poll> {
-    private val pollOptionsSerializer = ListSerializer(PollOption.serializer())
+    override val descriptor: SerialDescriptor
+        get() = RawPoll.serializer().descriptor
+
     override fun deserialize(decoder: Decoder): Poll {
         val asJson = JsonObjectSerializer.deserialize(decoder)
+        val rawPoll = nonstrictJsonFormat.fromJson(RawPoll.serializer(), asJson)
 
-        return when (asJson.getPrimitive(typeField).content) {
-            regularPollType -> nonstrictJsonFormat.fromJson(
-                RegularPoll.serializer(),
-                asJson
+        return when (rawPoll.type) {
+            quizPollType -> QuizPoll(
+                rawPoll.id,
+                rawPoll.question,
+                rawPoll.options,
+                rawPoll.votesCount,
+                rawPoll.correctOptionId,
+                rawPoll.caption,
+                rawPoll.caption?.let { rawPoll.captionEntities.asTextParts(it) } ?: emptyList(),
+                rawPoll.isClosed,
+                rawPoll.isAnonymous,
+                rawPoll.scheduledCloseInfo
             )
-            quizPollType -> nonstrictJsonFormat.fromJson(
-                QuizPoll.serializer(),
-                asJson
+            regularPollType -> RegularPoll(
+                rawPoll.id,
+                rawPoll.question,
+                rawPoll.options,
+                rawPoll.votesCount,
+                rawPoll.isClosed,
+                rawPoll.isAnonymous,
+                rawPoll.allowMultipleAnswers,
+                rawPoll.scheduledCloseInfo
             )
             else -> UnknownPollType(
-                asJson.getPrimitive(idField).content,
-                asJson.getPrimitive(questionField).content,
-                nonstrictJsonFormat.fromJson(
-                    pollOptionsSerializer,
-                    asJson.getArray(optionsField)
-                ),
-                asJson.getPrimitive(totalVoterCountField).int,
-                asJson.getPrimitiveOrNull(isClosedField) ?.booleanOrNull ?: false,
-                asJson.getPrimitiveOrNull(isAnonymousField) ?.booleanOrNull ?: true,
-                asJson.toString()
+                rawPoll.id,
+                rawPoll.question,
+                rawPoll.options,
+                rawPoll.votesCount,
+                rawPoll.isClosed,
+                rawPoll.isAnonymous,
+                asJson
             )
         }
     }
 
     override fun serialize(encoder: Encoder, value: Poll) {
-        val asJson = when (value) {
-            is RegularPoll -> nonstrictJsonFormat.toJson(RegularPoll.serializer(), value)
-            is QuizPoll -> nonstrictJsonFormat.toJson(QuizPoll.serializer(), value)
-            is UnknownPollType -> throw IllegalArgumentException("Currently unable to correctly serialize object of poll $value")
+        val closeInfo = value.scheduledCloseInfo
+        val rawPoll = when (value) {
+            is RegularPoll -> RawPoll(
+                value.id,
+                value.question,
+                value.options,
+                value.votesCount,
+                value.isClosed,
+                value.isAnonymous,
+                regularPollType,
+                value.allowMultipleAnswers,
+                openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
+                closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
+            )
+            is QuizPoll -> RawPoll(
+                value.id,
+                value.question,
+                value.options,
+                value.votesCount,
+                value.isClosed,
+                value.isAnonymous,
+                regularPollType,
+                correctOptionId = value.correctOptionId,
+                caption = value.caption,
+                captionEntities = value.captionEntities.asRawMessageEntities(),
+                openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
+                closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
+            )
+            is UnknownPollType -> {
+                JsonObjectSerializer.serialize(encoder, value.raw)
+                return
+            }
         }
-        val resultJson = JsonObject(
-            asJson.jsonObject + (typeField to when (value) {
-                is RegularPoll -> JsonPrimitive(regularPollType)
-                is QuizPoll -> JsonPrimitive(quizPollType)
-                is UnknownPollType -> throw IllegalArgumentException("Currently unable to correctly serialize object of poll $value")
-            })
-        )
-        JsonObjectSerializer.serialize(encoder, resultJson)
+        RawPoll.serializer().serialize(encoder, rawPoll)
     }
 }

@@ -83,6 +83,28 @@ internal fun createTextPart(from: String, entities: RawMessageEntities): List<Te
     return resultList
 }
 
+internal fun List<TextPart>.asRawMessageEntities() = mapNotNull {
+    val source = it.source
+    when (source) {
+        is MentionTextSource -> RawMessageEntity("mention", it.range.first, it.range.last - it.range.first)
+        is HashTagTextSource -> RawMessageEntity("hashtag", it.range.first, it.range.last - it.range.first)
+        is CashTagTextSource -> RawMessageEntity("cashtag", it.range.first, it.range.last - it.range.first)
+        is BotCommandTextSource -> RawMessageEntity("bot_command", it.range.first, it.range.last - it.range.first)
+        is URLTextSource -> RawMessageEntity("url", it.range.first, it.range.last - it.range.first)
+        is EMailTextSource -> RawMessageEntity("email", it.range.first, it.range.last - it.range.first)
+        is PhoneNumberTextSource -> RawMessageEntity("phone_number", it.range.first, it.range.last - it.range.first)
+        is BoldTextSource -> RawMessageEntity("bold", it.range.first, it.range.last - it.range.first)
+        is ItalicTextSource -> RawMessageEntity("italic", it.range.first, it.range.last - it.range.first)
+        is CodeTextSource -> RawMessageEntity("code", it.range.first, it.range.last - it.range.first)
+        is PreTextSource -> RawMessageEntity("pre", it.range.first, it.range.last - it.range.first, language = source.language)
+        is TextLinkTextSource -> RawMessageEntity("text_link", it.range.first, it.range.last - it.range.first, source.url)
+        is TextMentionTextSource -> RawMessageEntity("text_mention", it.range.first, it.range.last - it.range.first, user = source.user)
+        is UnderlineTextSource -> RawMessageEntity("underline", it.range.first, it.range.last - it.range.first)
+        is StrikethroughTextSource -> RawMessageEntity("strikethrough", it.range.first, it.range.last - it.range.first)
+        else -> null
+    }
+}
+
 internal fun RawMessageEntities.asTextParts(sourceString: String): List<TextPart> = createTextPart(sourceString, this)
 
 internal typealias RawMessageEntities = List<RawMessageEntity>

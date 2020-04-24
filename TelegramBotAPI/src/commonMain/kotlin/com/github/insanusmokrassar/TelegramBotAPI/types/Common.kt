@@ -22,6 +22,7 @@ typealias FileUniqueId = String
 typealias DiceResult = Int
 
 typealias Seconds = Int
+typealias LongSeconds = Long
 
 val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
@@ -199,6 +200,7 @@ const val tgsStickerField = "tgs_sticker"
 
 const val okField = "ok"
 const val captionField = "caption"
+const val explanationField = "explanation"
 const val idField = "id"
 const val pollIdField = "poll_id"
 const val textField = "text"
@@ -250,6 +252,9 @@ const val xShiftField = "x_shift"
 const val yShiftField = "y_shift"
 const val scaleField = "scale"
 
+const val explanationEntitiesField = "explanation_entities"
+const val openPeriodField = "open_period"
+const val closeDateField = "close_date"
 
 const val smallFileIdField = "small_file_id"
 const val bigFileIdField = "big_file_id"
