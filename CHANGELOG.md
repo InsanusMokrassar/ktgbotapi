@@ -24,6 +24,13 @@
     * Sealed class `DiceAnimationType` was added
         * Field `Dice#animationType` was added as `emoji` API representation
         * `SendDice` now receive `animationType` as second parameter
+    * For `List<TextPart>` and `List<TextSource>` was added several extensions:
+        * `toMarkdownCaptions`
+        * `toMarkdownTexts`
+        * `toMarkdownV2Captions`
+        * `toMarkdownV2Texts`
+        * `toHtmlCaptions`
+        * `toHtmlTexts`
 
 ## 0.26.0
 
