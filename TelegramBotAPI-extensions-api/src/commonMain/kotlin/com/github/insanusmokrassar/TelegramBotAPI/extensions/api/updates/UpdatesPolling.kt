@@ -12,7 +12,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.PreviewFeature
 import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
-import io.ktor.client.features.HttpRequestTimeoutException
 import kotlinx.coroutines.*
 
 fun RequestsExecutor.startGettingOfUpdates(

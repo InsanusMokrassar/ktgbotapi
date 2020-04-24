@@ -53,15 +53,17 @@ fun createMarkdownText(
     partLength: Int = 4096
 ): List<String> = createFormattedText(entities, partLength, MarkdownParseMode)
 
-fun CaptionedInput.toMarkdownCaptions(): List<String> = createMarkdownText(
-    fullEntitiesList(),
+fun List<TextSource>.toMarkdownCaptions(): List<String> = createMarkdownText(
+    this,
     captionLength.last + 1
 )
+fun CaptionedInput.toMarkdownCaptions(): List<String> = fullEntitiesList().toMarkdownCaptions()
 
-fun TextContent.toMarkdownTexts(): List<String> = createMarkdownText(
-    fullEntitiesList(),
+fun List<TextSource>.toMarkdownTexts(): List<String> = createMarkdownText(
+    this,
     textLength.last + 1
 )
+fun TextContent.toMarkdownTexts(): List<String> = fullEntitiesList().toMarkdownTexts()
 
 
 fun createMarkdownV2Text(
@@ -69,15 +71,17 @@ fun createMarkdownV2Text(
     partLength: Int = 4096
 ): List<String> = createFormattedText(entities, partLength, MarkdownV2ParseMode)
 
-fun CaptionedInput.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
-    fullEntitiesList(),
+fun List<TextSource>.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
+    this,
     captionLength.last + 1
 )
+fun CaptionedInput.toMarkdownV2Captions(): List<String> = fullEntitiesList().toMarkdownV2Captions()
 
-fun TextContent.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
-    fullEntitiesList(),
+fun List<TextSource>.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
+    this,
     textLength.last + 1
 )
+fun TextContent.toMarkdownV2Texts(): List<String> = fullEntitiesList().toMarkdownV2Texts()
 
 
 fun createHtmlText(
@@ -85,14 +89,16 @@ fun createHtmlText(
     partLength: Int = 4096
 ): List<String> = createFormattedText(entities, partLength, HTMLParseMode)
 
-fun CaptionedInput.toHtmlCaptions(): List<String> = createHtmlText(
-    fullEntitiesList(),
+fun List<TextSource>.toHtmlCaptions(): List<String> = createHtmlText(
+    this,
     captionLength.last + 1
 )
+fun CaptionedInput.toHtmlCaptions(): List<String> = fullEntitiesList().toHtmlCaptions()
 
-fun TextContent.toHtmlTexts(): List<String> = createHtmlText(
-    fullEntitiesList(),
+fun List<TextSource>.toHtmlTexts(): List<String> = createHtmlText(
+    this,
     textLength.last + 1
 )
+fun TextContent.toHtmlTexts(): List<String> = fullEntitiesList().toHtmlTexts()
 
 

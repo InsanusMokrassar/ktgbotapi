@@ -1,5 +1,54 @@
 # TelegramBotAPI changelog
 
+## 0.27.0
+
+* `Common`:
+    * Versions updates:
+        * `Kotlin`: `1.3.71` -> `1.3.72`
+        * `Klock`: `1.10.3` -> `1.10.5`
+* `TelegramBotAPI`:
+    * Typealias `LongSeconds` was added for correct explanation of seconds in `Long` primitive type
+    * Several new fields was added:
+        * `explanationField`
+        * `explanationEntitiesField`
+        * `openPeriodField`
+        * `closeDateField`
+    * Extension `List<TextPart>#justTextSources` was added for mapping of `List<TextPart>` to `List<TextSource>`
+    * Field `SendPoll#closeInfo` was added
+        * Range `openPeriodPollSecondsLimit` was added and used in all `SendPoll` requests for checking income data
+    * `SendQuizPoll` now able to use fields `caption` and `parseMode` for `explanation` functionality
+        * `quizPollExplanationLimit` was added for checking `QuizPoll` explanation size
+    * Field `TextLinkTextSource#url` was added
+    * Field `TextMentionTextSource#user` was added
+    * Sealed class `ScheduledCloseInfo` was added
+        * Class `ExactScheduledCloseInfo` was added for cases with `close_date`
+        * Class `ApproximateScheduledCloseInfo` was added for cases with `open_period`
+    * Field `Poll#scheduledCloseInfo` was added
+    * Sealed class `MultipleAnswersPoll` was added
+        * Class `RegularPoll` now extends `MultipleAnswersPoll`
+    * `Dice` class was replaced into new package
+    * Sealed class `DiceAnimationType` was added
+        * Field `Dice#animationType` was added as `emoji` API representation
+        * `SendDice` now receive `animationType` as second parameter
+    * For `List<TextSource>` was added several extensions:
+        * `toMarkdownCaptions`
+        * `toMarkdownTexts`
+        * `toMarkdownV2Captions`
+        * `toMarkdownV2Texts`
+        * `toHtmlCaptions`
+        * `toHtmlTexts`
+* `TelegramBotAPI-extensions-api`:
+    * All `RequestsExecutor#sendDice` extensions now accept `DiceAnimationType?` as second parameter
+    * All `RequestsExecutor#sendRegularPoll` extensions now accept `ScheduledCloseInfo` fourth parameter
+    * All `RequestsExecutor#sendQuizPoll` extensions now accept additional parameters `caption: String` and
+    `parseMode: ParseMode` for `explanation` functionality and `closeInfo: ScheduledCloseInfo?` for autoclose poll
+    functionality
+* `TelegramBotAPI-extensions-utils`:
+    * Several shortcuts for `ScheduledCloseInfo` was added:
+        * `closePollExactAt`
+        * `closePollExactAfter`
+        * `closePollAfter`
+
 ## 0.26.0
 
 * `Common`:

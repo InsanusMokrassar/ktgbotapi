@@ -1,13 +1,20 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.justTextSources
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.MarkdownV2
+import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.PollContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.fullListOfSubSource
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownV2Captions
+import com.soywiz.klock.DateTime
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
@@ -66,6 +73,7 @@ fun Poll.createRequest(
         isAnonymous,
         isClosed,
         allowMultipleAnswers,
+        scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
         replyMarkup
@@ -78,6 +86,9 @@ fun Poll.createRequest(
             correctOptionId,
             isAnonymous,
             isClosed,
+            caption ?.fullListOfSubSource(captionEntities) ?.justTextSources() ?.toMarkdownV2Captions() ?.firstOrNull(),
+            MarkdownV2,
+            scheduledCloseInfo,
             disableNotification,
             replyToMessageId,
             replyMarkup
@@ -89,6 +100,7 @@ fun Poll.createRequest(
         isAnonymous,
         isClosed,
         false,
+        scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
         replyMarkup
@@ -100,10 +112,21 @@ fun Poll.createRequest(
         isAnonymous,
         isClosed,
         false,
+        scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
         replyMarkup
     )
+}
+
+private fun ScheduledCloseInfo.checkSendData() {
+    val span = when (this) {
+        is ExactScheduledCloseInfo -> (closeDateTime - DateTime.now()).seconds
+        is ApproximateScheduledCloseInfo -> openDuration.seconds
+    }.toInt()
+    if (span !in openPeriodPollSecondsLimit) {
+        error("Duration of autoclose for polls must be in range $openPeriodPollSecondsLimit, but was $span")
+    }
 }
 
 sealed class SendPoll : SendMessageRequest<ContentMessage<PollContent>>,
@@ -112,7 +135,11 @@ sealed class SendPoll : SendMessageRequest<ContentMessage<PollContent>>,
     abstract val options: List<String>
     abstract val isAnonymous: Boolean
     abstract val isClosed: Boolean
+    abstract val closeInfo: ScheduledCloseInfo?
     abstract val type: String
+
+    internal abstract val openPeriod: LongSeconds?
+    internal abstract val closeDate: LongSeconds?
 
     override fun method(): String = "sendPoll"
     override val resultDeserializer: DeserializationStrategy<ContentMessage<PollContent>>
@@ -133,6 +160,8 @@ data class SendRegularPoll(
     override val isClosed: Boolean = false,
     @SerialName(allowsMultipleAnswersField)
     val allowMultipleAnswers: Boolean = false,
+    @Transient
+    override val closeInfo: ScheduledCloseInfo? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
@@ -144,8 +173,17 @@ data class SendRegularPoll(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
+    @SerialName(openPeriodField)
+    override val openPeriod: LongSeconds?
+        = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.millisecondsLong ?.div(1000)
+
+    @SerialName(closeDateField)
+    override val closeDate: LongSeconds?
+        = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000)
+
     init {
         checkPollInfo(question, options)
+        closeInfo ?.checkSendData()
     }
 }
 
@@ -163,23 +201,42 @@ data class SendQuizPoll(
     override val isAnonymous: Boolean = true,
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
+    @SerialName(explanationField)
+    override val caption: String? = null,
+    @SerialName(explanationParseModeField)
+    override val parseMode: ParseMode? = null,
+    @Transient
+    override val closeInfo: ScheduledCloseInfo? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendPoll() {
+) : SendPoll(), CaptionedOutput {
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
+    @SerialName(openPeriodField)
+    override val openPeriod: LongSeconds?
+        = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.millisecondsLong ?.div(1000)
+
+    @SerialName(closeDateField)
+    override val closeDate: LongSeconds?
+        = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000)
+
     init {
         checkPollInfo(question, options)
+        closeInfo ?.checkSendData()
         val correctOptionIdRange = 0 .. options.size
         if (correctOptionId !in correctOptionIdRange) {
             throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
                 "value is $correctOptionId")
+        }
+        if (caption != null && caption.length !in quizPollExplanationLimit) {
+            error("Quiz poll explanation size must be in range $quizPollExplanationLimit," +
+                "but actual explanation contains ${caption.length} symbols")
         }
     }
 }

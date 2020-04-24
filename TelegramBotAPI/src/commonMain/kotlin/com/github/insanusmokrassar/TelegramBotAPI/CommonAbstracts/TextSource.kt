@@ -16,3 +16,5 @@ data class TextPart(
     val range: IntRange,
     val source: TextSource
 )
+
+fun List<TextPart>.justTextSources() = map { it.source }

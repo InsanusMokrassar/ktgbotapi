@@ -5,7 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.games.CallbackGame
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
 
 @Serializable(InlineKeyboardButtonSerializer::class)
 sealed class InlineKeyboardButton {

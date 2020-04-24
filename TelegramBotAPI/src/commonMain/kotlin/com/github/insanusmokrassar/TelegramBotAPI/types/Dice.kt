@@ -1,10 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.github.insanusmokrassar.TelegramBotAPI.types.dice.Dice
 
-@Serializable
-data class Dice(
-    @SerialName(valueField)
-    val value: DiceResult
+@Deprecated(
+    "Replaced",
+    ReplaceWith("Dice", "com.github.insanusmokrassar.TelegramBotAPI.types.dice.Dice")
 )
+typealias Dice = Dice
