@@ -57,14 +57,12 @@ fun List<TextSource>.toMarkdownCaptions(): List<String> = createMarkdownText(
     this,
     captionLength.last + 1
 )
-fun List<TextPart>.toMarkdownCaptions(): List<String> = justTextSources().toMarkdownCaptions()
 fun CaptionedInput.toMarkdownCaptions(): List<String> = fullEntitiesList().toMarkdownCaptions()
 
 fun List<TextSource>.toMarkdownTexts(): List<String> = createMarkdownText(
     this,
     textLength.last + 1
 )
-fun List<TextPart>.toMarkdownTexts(): List<String> = justTextSources().toMarkdownTexts()
 fun TextContent.toMarkdownTexts(): List<String> = fullEntitiesList().toMarkdownTexts()
 
 
@@ -77,14 +75,12 @@ fun List<TextSource>.toMarkdownV2Captions(): List<String> = createMarkdownV2Text
     this,
     captionLength.last + 1
 )
-fun List<TextPart>.toMarkdownV2Captions(): List<String> = justTextSources().toMarkdownV2Captions()
 fun CaptionedInput.toMarkdownV2Captions(): List<String> = fullEntitiesList().toMarkdownV2Captions()
 
 fun List<TextSource>.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
     this,
     textLength.last + 1
 )
-fun List<TextPart>.toMarkdownV2Texts(): List<String> = justTextSources().toMarkdownV2Texts()
 fun TextContent.toMarkdownV2Texts(): List<String> = fullEntitiesList().toMarkdownV2Texts()
 
 
@@ -97,14 +93,12 @@ fun List<TextSource>.toHtmlCaptions(): List<String> = createHtmlText(
     this,
     captionLength.last + 1
 )
-fun List<TextPart>.toHtmlCaptions(): List<String> = justTextSources().toHtmlCaptions()
 fun CaptionedInput.toHtmlCaptions(): List<String> = fullEntitiesList().toHtmlCaptions()
 
 fun List<TextSource>.toHtmlTexts(): List<String> = createHtmlText(
     this,
     textLength.last + 1
 )
-fun List<TextPart>.toHtmlTexts(): List<String> = justTextSources().toHtmlTexts()
 fun TextContent.toHtmlTexts(): List<String> = fullEntitiesList().toHtmlTexts()
 
 

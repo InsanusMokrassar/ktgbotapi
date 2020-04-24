@@ -1,6 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.justTextSources
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
@@ -84,7 +85,7 @@ fun Poll.createRequest(
             correctOptionId,
             isAnonymous,
             isClosed,
-            caption ?.fullListOfSubSource(captionEntities) ?.toMarkdownV2Captions() ?.firstOrNull(),
+            caption ?.fullListOfSubSource(captionEntities) ?.justTextSources() ?.toMarkdownV2Captions() ?.firstOrNull(),
             MarkdownV2,
             scheduledCloseInfo,
             disableNotification,

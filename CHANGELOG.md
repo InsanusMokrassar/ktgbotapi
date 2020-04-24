@@ -27,13 +27,19 @@
     * Sealed class `DiceAnimationType` was added
         * Field `Dice#animationType` was added as `emoji` API representation
         * `SendDice` now receive `animationType` as second parameter
-    * For `List<TextPart>` and `List<TextSource>` was added several extensions:
+    * For `List<TextSource>` was added several extensions:
         * `toMarkdownCaptions`
         * `toMarkdownTexts`
         * `toMarkdownV2Captions`
         * `toMarkdownV2Texts`
         * `toHtmlCaptions`
         * `toHtmlTexts`
+* `TelegramBotAPI-extensions-api`:
+    * All `RequestsExecutor#sendDice` extensions now accept `DiceAnimationType?` as second parameter
+    * All `RequestsExecutor#sendRegularPoll` extensions now accept `ScheduledCloseInfo` fourth parameter
+    * All `RequestsExecutor#sendQuizPoll` extensions now accept additional parameters `caption: String` and
+    `parseMode: ParseMode` for `explanation` functionality and `closeInfo: ScheduledCloseInfo?` for autoclose poll
+    functionality
 
 ## 0.26.0
 

@@ -3,12 +3,13 @@ package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send.polls
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls.SendQuizPoll
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls.SendRegularPoll
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.polls.QuizPoll
-import com.github.insanusmokrassar.TelegramBotAPI.types.polls.RegularPoll
+import com.github.insanusmokrassar.TelegramBotAPI.types.polls.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Transient
 
 suspend fun RequestsExecutor.sendRegularPoll(
     chatId: ChatIdentifier,
@@ -17,12 +18,13 @@ suspend fun RequestsExecutor.sendRegularPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendRegularPoll(
-        chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
+        chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, replyToMessageId, replyMarkup
     )
 )
 suspend fun RequestsExecutor.sendRegularPoll(
@@ -33,12 +35,13 @@ suspend fun RequestsExecutor.sendRegularPoll(
     options: List<String> = poll.options.map { it.text },
     isAnonymous: Boolean = poll.isAnonymous,
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
+    closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendRegularPoll(
-        chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
+        chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, replyToMessageId, replyMarkup
     )
 )
 
@@ -49,11 +52,12 @@ suspend fun RequestsExecutor.sendRegularPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendRegularPoll(
-    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
+    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, replyToMessageId, replyMarkup
 )
 
 suspend fun RequestsExecutor.sendRegularPoll(
@@ -64,11 +68,12 @@ suspend fun RequestsExecutor.sendRegularPoll(
     options: List<String> = poll.options.map { it.text },
     isAnonymous: Boolean = poll.isAnonymous,
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
+    closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendRegularPoll(
-    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, disableNotification, replyToMessageId, replyMarkup
+    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, replyToMessageId, replyMarkup
 )
 
 
@@ -79,12 +84,15 @@ suspend fun RequestsExecutor.sendQuizPoll(
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    caption: String? = null,
+    parseMode: ParseMode? = null,
+    closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendQuizPoll(
-        chatId, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
+        chatId, question, options, correctOptionId, isAnonymous, isClosed, caption, parseMode, closeInfo, disableNotification, replyToMessageId, replyMarkup
     )
 )
 
@@ -95,11 +103,14 @@ suspend fun RequestsExecutor.sendQuizPoll(
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    caption: String? = null,
+    parseMode: ParseMode? = null,
+    closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chat.id, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
+    chat.id, question, options, correctOptionId, isAnonymous, isClosed, caption, parseMode, closeInfo, disableNotification, replyToMessageId, replyMarkup
 )
 
 suspend fun RequestsExecutor.sendQuizPoll(
@@ -110,12 +121,15 @@ suspend fun RequestsExecutor.sendQuizPoll(
     options: List<String> = quizPoll.options.map { it.text },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
+    caption: String? = null,
+    parseMode: ParseMode? = null,
+    closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendQuizPoll(
-        chatId, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
+        chatId, question, options, correctOptionId, isAnonymous, isClosed, caption, parseMode, closeInfo, disableNotification, replyToMessageId, replyMarkup
     )
 )
 
@@ -127,9 +141,12 @@ suspend fun RequestsExecutor.sendQuizPoll(
     options: List<String> = quizPoll.options.map { it.text },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
+    caption: String? = null,
+    parseMode: ParseMode? = null,
+    closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chat.id, question, options, correctOptionId, isAnonymous, isClosed, disableNotification, replyToMessageId, replyMarkup
+    chat.id, question, options, correctOptionId, isAnonymous, isClosed, caption, parseMode, closeInfo, disableNotification, replyToMessageId, replyMarkup
 )
