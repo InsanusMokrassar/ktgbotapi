@@ -42,6 +42,11 @@
     * All `RequestsExecutor#sendQuizPoll` extensions now accept additional parameters `caption: String` and
     `parseMode: ParseMode` for `explanation` functionality and `closeInfo: ScheduledCloseInfo?` for autoclose poll
     functionality
+* `TelegramBotAPI-extensions-utils`:
+    * Several shortcuts for `ScheduledCloseInfo` was added:
+        * `closePollExactAt`
+        * `closePollExactAfter`
+        * `closePollAfter`
 
 ## 0.26.0
 
