@@ -2,9 +2,10 @@
 
 ## 0.27.0
 
-* Versions:
-    * `Kotlin`: `1.3.71` -> `1.3.72`
-    * `Klock`: `1.10.3` -> `1.10.5`
+* `Common`:
+    * Versions updates:
+        * `Kotlin`: `1.3.71` -> `1.3.72`
+        * `Klock`: `1.10.3` -> `1.10.5`
 * `TelegramBotAPI`:
     * Typealias `LongSeconds` was added for correct explanation of seconds in `Long` primitive type
     * Several new fields was added:
