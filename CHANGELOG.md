@@ -12,6 +12,8 @@
         * `explanationEntitiesField`
         * `openPeriodField`
         * `closeDateField`
+    * `SendQuizPoll` now able to use fields `caption` and `parseMode` for `explanation` functionality
+        * `quizPollExplanationLimit` was added for checking `QuizPoll` explanation size
     * Field `TextLinkTextSource#url` was added
     * Field `TextMentionTextSource#user` was added
     * Sealed class `ScheduledCloseInfo` was added

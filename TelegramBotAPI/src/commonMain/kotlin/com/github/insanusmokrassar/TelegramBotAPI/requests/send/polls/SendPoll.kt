@@ -1,13 +1,18 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.MarkdownV2
+import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.PollContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.*
+import com.github.insanusmokrassar.TelegramBotAPI.utils.fullListOfSubSource
+import com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownV2Captions
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
@@ -78,6 +83,8 @@ fun Poll.createRequest(
             correctOptionId,
             isAnonymous,
             isClosed,
+            caption ?.fullListOfSubSource(captionEntities) ?.toMarkdownV2Captions() ?.firstOrNull(),
+            MarkdownV2,
             disableNotification,
             replyToMessageId,
             replyMarkup
@@ -163,13 +170,17 @@ data class SendQuizPoll(
     override val isAnonymous: Boolean = true,
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
+    @SerialName(explanationField)
+    override val caption: String? = null,
+    @SerialName(explanationParseModeField)
+    override val parseMode: ParseMode? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendPoll() {
+) : SendPoll(), CaptionedOutput {
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
@@ -180,6 +191,10 @@ data class SendQuizPoll(
         if (correctOptionId !in correctOptionIdRange) {
             throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
                 "value is $correctOptionId")
+        }
+        if (caption != null && caption.length !in quizPollExplanationLimit) {
+            error("Quiz poll explanation size must be in range $quizPollExplanationLimit," +
+                "but actual explanation contains ${caption.length} symbols")
         }
     }
 }

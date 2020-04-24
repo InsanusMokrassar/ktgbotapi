@@ -55,6 +55,8 @@ val botCommandLimit = botCommandLengthLimit
 val botCommandDescriptionLimit = 3 .. 256
 val botCommandsLimit = 0 .. 100
 
+val quizPollExplanationLimit = 0 .. 200
+
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
 const val updateIdField = "update_id"
@@ -253,6 +255,7 @@ const val yShiftField = "y_shift"
 const val scaleField = "scale"
 
 const val explanationEntitiesField = "explanation_entities"
+const val explanationParseModeField = "explanation_parse_mode"
 const val openPeriodField = "open_period"
 const val closeDateField = "close_date"
 
