@@ -71,6 +71,7 @@ fun Poll.createRequest(
         isAnonymous,
         isClosed,
         allowMultipleAnswers,
+        scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
         replyMarkup
@@ -85,6 +86,7 @@ fun Poll.createRequest(
             isClosed,
             caption ?.fullListOfSubSource(captionEntities) ?.toMarkdownV2Captions() ?.firstOrNull(),
             MarkdownV2,
+            scheduledCloseInfo,
             disableNotification,
             replyToMessageId,
             replyMarkup
@@ -96,6 +98,7 @@ fun Poll.createRequest(
         isAnonymous,
         isClosed,
         false,
+        scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
         replyMarkup
@@ -107,6 +110,7 @@ fun Poll.createRequest(
         isAnonymous,
         isClosed,
         false,
+        scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
         replyMarkup
@@ -119,7 +123,11 @@ sealed class SendPoll : SendMessageRequest<ContentMessage<PollContent>>,
     abstract val options: List<String>
     abstract val isAnonymous: Boolean
     abstract val isClosed: Boolean
+    abstract val closeInfo: ScheduledCloseInfo?
     abstract val type: String
+
+    internal abstract val openPeriod: LongSeconds?
+    internal abstract val closeDate: LongSeconds?
 
     override fun method(): String = "sendPoll"
     override val resultDeserializer: DeserializationStrategy<ContentMessage<PollContent>>
@@ -140,6 +148,8 @@ data class SendRegularPoll(
     override val isClosed: Boolean = false,
     @SerialName(allowsMultipleAnswersField)
     val allowMultipleAnswers: Boolean = false,
+    @Transient
+    override val closeInfo: ScheduledCloseInfo? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
@@ -150,6 +160,14 @@ data class SendRegularPoll(
     override val type: String = regularPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
+
+    @SerialName(openPeriodField)
+    override val openPeriod: LongSeconds?
+        = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.millisecondsLong ?.div(1000)
+
+    @SerialName(closeDateField)
+    override val closeDate: LongSeconds?
+        = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000)
 
     init {
         checkPollInfo(question, options)
@@ -174,6 +192,8 @@ data class SendQuizPoll(
     override val caption: String? = null,
     @SerialName(explanationParseModeField)
     override val parseMode: ParseMode? = null,
+    @Transient
+    override val closeInfo: ScheduledCloseInfo? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
@@ -184,6 +204,14 @@ data class SendQuizPoll(
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
+
+    @SerialName(openPeriodField)
+    override val openPeriod: LongSeconds?
+        = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.millisecondsLong ?.div(1000)
+
+    @SerialName(closeDateField)
+    override val closeDate: LongSeconds?
+        = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000)
 
     init {
         checkPollInfo(question, options)

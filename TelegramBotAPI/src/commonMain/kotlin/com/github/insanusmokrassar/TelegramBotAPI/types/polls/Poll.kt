@@ -21,12 +21,21 @@ data class ExactScheduledCloseInfo(
 ) : ScheduledCloseInfo()
 
 data class ApproximateScheduledCloseInfo(
-    val openDuration: TimeSpan
-) : ScheduledCloseInfo() {
+    val openDuration: TimeSpan,
     @Suppress("MemberVisibilityCanBePrivate")
-    val startPoint = DateTime.now()
+    val startPoint: DateTime = DateTime.now()
+) : ScheduledCloseInfo() {
     override val closeDateTime: DateTime = startPoint + openDuration
 }
+
+val LongSeconds.asApproximateScheduledCloseInfo
+    get() = ApproximateScheduledCloseInfo(
+        TimeSpan(this * 1000.0)
+    )
+val LongSeconds.asExactScheduledCloseInfo
+    get() = ExactScheduledCloseInfo(
+        DateTime(unixMillis = this * 1000.0)
+    )
 
 @Serializable(PollSerializer::class)
 sealed class Poll {
@@ -72,15 +81,8 @@ private class RawPoll(
     val closeDate: LongSeconds? = null
 ) {
     @Transient
-    val scheduledCloseInfo: ScheduledCloseInfo? = closeDate ?.let {
-        ExactScheduledCloseInfo(
-            DateTime(unixMillis = it * 1000.0)
-        )
-    } ?: openPeriod ?.let {
-        ApproximateScheduledCloseInfo(
-            TimeSpan(it * 1000.0)
-        )
-    }
+    val scheduledCloseInfo: ScheduledCloseInfo?
+        = closeDate ?.asExactScheduledCloseInfo ?: openPeriod ?.asApproximateScheduledCloseInfo
 }
 
 @Serializable
@@ -101,15 +103,11 @@ data class UnknownPollType internal constructor(
     val raw: JsonObject
 ) : Poll() {
     @Transient
-    override val scheduledCloseInfo: ScheduledCloseInfo? = raw.getPrimitiveOrNull(closeDateField) ?.longOrNull ?.let {
-        ExactScheduledCloseInfo(
-            DateTime(unixMillis = it * 1000.0)
-        )
-    } ?: raw.getPrimitiveOrNull(durationField) ?.longOrNull ?.let {
-        ApproximateScheduledCloseInfo(
-            TimeSpan(it * 1000.0)
-        )
-    }
+    override val scheduledCloseInfo: ScheduledCloseInfo? = raw.getPrimitiveOrNull(
+        closeDateField
+    ) ?.longOrNull ?.asExactScheduledCloseInfo ?: raw.getPrimitiveOrNull(
+        openPeriodField
+    ) ?.longOrNull ?.asApproximateScheduledCloseInfo
 }
 
 @Serializable(PollSerializer::class)
