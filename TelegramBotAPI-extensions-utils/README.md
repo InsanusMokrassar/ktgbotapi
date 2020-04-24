@@ -79,3 +79,34 @@ filter.asContentMessagesFlow().onlyTextContentMessages().onEach {
 ```
 
 As a result, each received message which will be just text message will be printed out with full list of its internal entities
+
+## Shortcuts
+
+With shortcuts you are able to use simple factories for several things.
+
+### ScheduledCloseInfo
+
+In case if you are creating some poll, you able to use next shortcuts.
+
+Next sample will use info with closing at the 10 seconds after now:
+
+```kotlin
+closePollExactAt(DateTime.now() + TimeSpan(10000.0))
+```
+
+In this example we will do the same, but in another way:
+
+```kotlin
+closePollExactAfter(10)
+```
+
+Here we have passed `10` seconds and will get the same result object.
+
+In opposite to previous shortcuts, the next one will create `approximate` closing schedule:
+
+```kotlin
+closePollAfter(10)
+```
+
+The main difference here is that the last one will be closed after 10 seconds since the sending. With first samples
+will be created **exact** time for closing of poll
