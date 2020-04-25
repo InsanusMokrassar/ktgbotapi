@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message.content
 
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.FullTextSourcesList
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendTextMessage
@@ -66,4 +67,4 @@ data class TextContent(
     }
 }
 
-fun TextContent.fullEntitiesList() = text.fullListOfSubSource(entities).map { it.source }
+fun TextContent.fullEntitiesList(): FullTextSourcesList = text.fullListOfSubSource(entities).map { it.source }

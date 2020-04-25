@@ -1,5 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts
 
+typealias FullTextSourcesList = List<TextSource>
+typealias FullTextPartsList = List<TextPart>
+
 interface TextSource {
     val asMarkdownSource: String
     val asMarkdownV2Source: String

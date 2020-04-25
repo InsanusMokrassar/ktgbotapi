@@ -49,6 +49,23 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.1
+
+* `TelegramBotAPI`:
+    * Interface `Explained` and subsinterfaces `ExplainedInput` and `ExplainedOutput` was added
+        * Class `QuizPoll` now implement `ExplainedInput`
+        * In `QuizPoll#caption` and `QuizPoll#captionEntities` are deprecated now
+        * Class `SendQuizPoll` now implement `ExplainedOutput`
+        * In `SendQuizPoll#caption` is deprecated now
+    * `explanationLimit` range was added as future replacement of `quizPollExplanationLimit`
+        * `quizPollExplanationLimit` now is deprecated
+    * Extensions `toMarkdownExplanations`, `toMarkdownV2Explanations` and `toHtmlExplanations` was added
+    * Typealias `FullTextSourcesList` was added
+        * All extensions `fullEntitiesList` now return `FullTextSourcesList`
+        * All extensions of `List<TextSource>` now are extensions for `FullTextSourcesList`
+* `TelegramBotAPI-extensions-api`:
+    * `sendQuizPoll` now is using `explanation` parameter instead of `caption`
+
 ## 0.26.0
 
 * `Common`:

@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedOutput
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.justTextSources
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.abstracts.SendMessageRequest
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
@@ -202,7 +201,7 @@ data class SendQuizPoll(
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
     @SerialName(explanationField)
-    override val caption: String? = null,
+    override val explanation: String? = null,
     @SerialName(explanationParseModeField)
     override val parseMode: ParseMode? = null,
     @Transient
@@ -213,10 +212,14 @@ data class SendQuizPoll(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendPoll(), CaptionedOutput {
+) : SendPoll(), CaptionedOutput, ExplainedOutput {
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
+
+    @Deprecated("Will be removed in near updates", ReplaceWith("explanation"))
+    override val caption: String?
+        get() = explanation
 
     @SerialName(openPeriodField)
     override val openPeriod: LongSeconds?
@@ -234,9 +237,9 @@ data class SendQuizPoll(
             throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
                 "value is $correctOptionId")
         }
-        if (caption != null && caption.length !in quizPollExplanationLimit) {
-            error("Quiz poll explanation size must be in range $quizPollExplanationLimit," +
-                "but actual explanation contains ${caption.length} symbols")
+        if (explanation != null && explanation.length !in explanationLimit) {
+            error("Quiz poll explanation size must be in range $explanationLimit," +
+                "but actual explanation contains ${explanation.length} symbols")
         }
     }
 }
