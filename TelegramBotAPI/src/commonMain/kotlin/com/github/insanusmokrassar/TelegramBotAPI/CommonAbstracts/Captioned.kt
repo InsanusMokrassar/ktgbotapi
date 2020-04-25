@@ -15,4 +15,4 @@ interface CaptionedInput : Captioned {
     val captionEntities: List<TextPart>
 }
 
-fun CaptionedInput.fullEntitiesList() = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()
+fun CaptionedInput.fullEntitiesList(): FullTextSourcesList = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()

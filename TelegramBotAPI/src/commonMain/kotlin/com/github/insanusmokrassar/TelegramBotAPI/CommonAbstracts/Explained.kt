@@ -15,4 +15,4 @@ interface ExplainedInput : Explained {
     val explanationEntities: List<TextPart>
 }
 
-fun ExplainedInput.fullEntitiesList() = explanation ?.fullListOfSubSource(explanationEntities) ?.map { it.source } ?: emptyList()
+fun ExplainedInput.fullEntitiesList(): FullTextSourcesList = explanation ?.fullListOfSubSource(explanationEntities) ?.map { it.source } ?: emptyList()

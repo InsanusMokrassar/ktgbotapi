@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextCont
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.fullEntitiesList
 
 fun createFormattedText(
-    entities: List<TextSource>,
+    entities: FullTextSourcesList,
     partLength: Int = 4096,
     mode: ParseMode = MarkdownParseMode
 ): List<String> {
@@ -48,23 +48,23 @@ fun createFormattedText(
 
 
 fun createMarkdownText(
-    entities: List<TextSource>,
+    entities: FullTextSourcesList,
     partLength: Int = 4096
 ): List<String> = createFormattedText(entities, partLength, MarkdownParseMode)
 
-fun List<TextSource>.toMarkdownCaptions(): List<String> = createMarkdownText(
+fun FullTextSourcesList.toMarkdownCaptions(): List<String> = createMarkdownText(
     this,
     captionLength.last + 1
 )
 fun CaptionedInput.toMarkdownCaptions(): List<String> = fullEntitiesList().toMarkdownCaptions()
 
-fun List<TextSource>.toMarkdownTexts(): List<String> = createMarkdownText(
+fun FullTextSourcesList.toMarkdownTexts(): List<String> = createMarkdownText(
     this,
     textLength.last + 1
 )
 fun TextContent.toMarkdownTexts(): List<String> = fullEntitiesList().toMarkdownTexts()
 
-fun List<TextSource>.toMarkdownExplanations(): List<String> = createMarkdownText(
+fun FullTextSourcesList.toMarkdownExplanations(): List<String> = createMarkdownText(
     this,
     explanationLimit.last + 1
 )
@@ -72,23 +72,23 @@ fun ExplainedInput.toMarkdownExplanations(): List<String> = fullEntitiesList().t
 
 
 fun createMarkdownV2Text(
-    entities: List<TextSource>,
+    entities: FullTextSourcesList,
     partLength: Int = 4096
 ): List<String> = createFormattedText(entities, partLength, MarkdownV2ParseMode)
 
-fun List<TextSource>.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
+fun FullTextSourcesList.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
     this,
     captionLength.last + 1
 )
 fun CaptionedInput.toMarkdownV2Captions(): List<String> = fullEntitiesList().toMarkdownV2Captions()
 
-fun List<TextSource>.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
+fun FullTextSourcesList.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
     this,
     textLength.last + 1
 )
 fun TextContent.toMarkdownV2Texts(): List<String> = fullEntitiesList().toMarkdownV2Texts()
 
-fun List<TextSource>.toMarkdownV2Explanations(): List<String> = createMarkdownV2Text(
+fun FullTextSourcesList.toMarkdownV2Explanations(): List<String> = createMarkdownV2Text(
     this,
     explanationLimit.last + 1
 )
@@ -96,23 +96,23 @@ fun ExplainedInput.toMarkdownV2Explanations(): List<String> = fullEntitiesList()
 
 
 fun createHtmlText(
-    entities: List<TextSource>,
+    entities: FullTextSourcesList,
     partLength: Int = 4096
 ): List<String> = createFormattedText(entities, partLength, HTMLParseMode)
 
-fun List<TextSource>.toHtmlCaptions(): List<String> = createHtmlText(
+fun FullTextSourcesList.toHtmlCaptions(): List<String> = createHtmlText(
     this,
     captionLength.last + 1
 )
 fun CaptionedInput.toHtmlCaptions(): List<String> = fullEntitiesList().toHtmlCaptions()
 
-fun List<TextSource>.toHtmlTexts(): List<String> = createHtmlText(
+fun FullTextSourcesList.toHtmlTexts(): List<String> = createHtmlText(
     this,
     textLength.last + 1
 )
 fun TextContent.toHtmlTexts(): List<String> = fullEntitiesList().toHtmlTexts()
 
-fun List<TextSource>.toHtmlExplanations(): List<String> = createHtmlText(
+fun FullTextSourcesList.toHtmlExplanations(): List<String> = createHtmlText(
     this,
     explanationLimit.last + 1
 )

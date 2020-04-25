@@ -60,6 +60,9 @@
     * `explanationLimit` range was added as future replacement of `quizPollExplanationLimit`
         * `quizPollExplanationLimit` now is deprecated
     * Extensions `toMarkdownExplanations`, `toMarkdownV2Explanations` and `toHtmlExplanations` was added
+    * Typealias `FullTextSourcesList` was added
+        * All extensions `fullEntitiesList` now return `FullTextSourcesList`
+        * All extensions of `List<TextSource>` now are extensions for `FullTextSourcesList`
 * `TelegramBotAPI-extensions-api`:
     * `sendQuizPoll` now is using `explanation` parameter instead of `caption`
 
