@@ -57,6 +57,9 @@
         * In `QuizPoll#caption` and `QuizPoll#captionEntities` are deprecated now
         * Class `SendQuizPoll` now implement `ExplainedOutput`
         * In `SendQuizPoll#caption` is deprecated now
+    * `explanationLimit` range was added as future replacement of `quizPollExplanationLimit`
+        * `quizPollExplanationLimit` now is deprecated
+    * Extensions `toMarkdownExplanations`, `toMarkdownV2Explanations` and `toHtmlExplanations` was added
 * `TelegramBotAPI-extensions-api`:
     * `sendQuizPoll` now is using `explanation` parameter instead of `caption`
 

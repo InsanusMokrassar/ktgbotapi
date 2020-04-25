@@ -1,11 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.captionLength
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.fullEntitiesList
-import com.github.insanusmokrassar.TelegramBotAPI.types.textLength
 
 fun createFormattedText(
     entities: List<TextSource>,
@@ -65,6 +64,12 @@ fun List<TextSource>.toMarkdownTexts(): List<String> = createMarkdownText(
 )
 fun TextContent.toMarkdownTexts(): List<String> = fullEntitiesList().toMarkdownTexts()
 
+fun List<TextSource>.toMarkdownExplanations(): List<String> = createMarkdownText(
+    this,
+    explanationLimit.last + 1
+)
+fun ExplainedInput.toMarkdownExplanations(): List<String> = fullEntitiesList().toMarkdownTexts()
+
 
 fun createMarkdownV2Text(
     entities: List<TextSource>,
@@ -83,6 +88,12 @@ fun List<TextSource>.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
 )
 fun TextContent.toMarkdownV2Texts(): List<String> = fullEntitiesList().toMarkdownV2Texts()
 
+fun List<TextSource>.toMarkdownV2Explanations(): List<String> = createMarkdownV2Text(
+    this,
+    explanationLimit.last + 1
+)
+fun ExplainedInput.toMarkdownV2Explanations(): List<String> = fullEntitiesList().toMarkdownV2Texts()
+
 
 fun createHtmlText(
     entities: List<TextSource>,
@@ -100,5 +111,11 @@ fun List<TextSource>.toHtmlTexts(): List<String> = createHtmlText(
     textLength.last + 1
 )
 fun TextContent.toHtmlTexts(): List<String> = fullEntitiesList().toHtmlTexts()
+
+fun List<TextSource>.toHtmlExplanations(): List<String> = createHtmlText(
+    this,
+    explanationLimit.last + 1
+)
+fun ExplainedInput.toHtmlExplanations(): List<String> = fullEntitiesList().toHtmlTexts()
 
 

@@ -237,8 +237,8 @@ data class SendQuizPoll(
             throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
                 "value is $correctOptionId")
         }
-        if (explanation != null && explanation.length !in quizPollExplanationLimit) {
-            error("Quiz poll explanation size must be in range $quizPollExplanationLimit," +
+        if (explanation != null && explanation.length !in explanationLimit) {
+            error("Quiz poll explanation size must be in range $explanationLimit," +
                 "but actual explanation contains ${explanation.length} symbols")
         }
     }
