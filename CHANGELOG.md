@@ -51,6 +51,15 @@
 
 ### 0.27.1
 
+* `TelegramBotAPI`:
+    * Interface `Explained` and subsinterfaces `ExplainedInput` and `ExplainedOutput` was added
+        * Class `QuizPoll` now implement `ExplainedInput`
+        * In `QuizPoll#caption` and `QuizPoll#captionEntities` are deprecated now
+        * Class `SendQuizPoll` now implement `ExplainedOutput`
+        * In `SendQuizPoll#caption` is deprecated now
+* `TelegramBotAPI-extensions-api`:
+    * `sendQuizPoll` now is using `explanation` parameter instead of `caption`
+
 ## 0.26.0
 
 * `Common`:

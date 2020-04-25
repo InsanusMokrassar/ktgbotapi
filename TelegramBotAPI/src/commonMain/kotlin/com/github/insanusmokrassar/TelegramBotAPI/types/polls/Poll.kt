@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.polls
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart
+import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
@@ -71,9 +70,9 @@ private class RawPoll(
     @SerialName(correctOptionIdField)
     val correctOptionId: Int? = null,
     @SerialName(explanationField)
-    val caption: String? = null,
+    val explanation: String? = null,
     @SerialName(explanationEntitiesField)
-    val captionEntities: List<RawMessageEntity> = emptyList(),
+    val explanationEntities: List<RawMessageEntity> = emptyList(),
     @SerialName(openPeriodField)
     val openPeriod: LongSeconds? = null,
     @SerialName(closeDateField)
@@ -131,12 +130,19 @@ data class QuizPoll(
      * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
      */
     val correctOptionId: Int? = null,
-    override val caption: String? = null,
-    override val captionEntities: List<TextPart> = emptyList(),
+    override val explanation: String? = null,
+    override val explanationEntities: List<TextPart> = emptyList(),
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
-) : Poll(), CaptionedInput
+) : Poll(), CaptionedInput, ExplainedInput {
+    @Deprecated("Will be removed in near updates", ReplaceWith("explanation"))
+    override val caption: String?
+        get() = explanation
+    @Deprecated("Will be removed in near updates", ReplaceWith("explanationEntities"))
+    override val captionEntities: List<TextPart>
+        get() = explanationEntities
+}
 
 @Serializer(Poll::class)
 internal object PollSerializer : KSerializer<Poll> {
@@ -154,8 +160,8 @@ internal object PollSerializer : KSerializer<Poll> {
                 rawPoll.options,
                 rawPoll.votesCount,
                 rawPoll.correctOptionId,
-                rawPoll.caption,
-                rawPoll.caption?.let { rawPoll.captionEntities.asTextParts(it) } ?: emptyList(),
+                rawPoll.explanation,
+                rawPoll.explanation?.let { rawPoll.explanationEntities.asTextParts(it) } ?: emptyList(),
                 rawPoll.isClosed,
                 rawPoll.isAnonymous,
                 rawPoll.scheduledCloseInfo
@@ -206,8 +212,8 @@ internal object PollSerializer : KSerializer<Poll> {
                 value.isAnonymous,
                 regularPollType,
                 correctOptionId = value.correctOptionId,
-                caption = value.caption,
-                captionEntities = value.captionEntities.asRawMessageEntities(),
+                explanation = value.caption,
+                explanationEntities = value.captionEntities.asRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )
