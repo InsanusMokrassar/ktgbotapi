@@ -51,6 +51,11 @@
 
 ### 0.27.2
 
+* `Common`:
+    * Versions:
+        * Coroutines: `1.3.5` -> `1.3.6`
+        * Klock: `1.10.5` -> `1.11.1`
+
 ### 0.27.1
 
 * `TelegramBotAPI`:
