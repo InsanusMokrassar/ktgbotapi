@@ -212,8 +212,8 @@ internal object PollSerializer : KSerializer<Poll> {
                 value.isAnonymous,
                 regularPollType,
                 correctOptionId = value.correctOptionId,
-                explanation = value.caption,
-                explanationEntities = value.captionEntities.asRawMessageEntities(),
+                explanation = value.explanation,
+                explanationEntities = value.explanationEntities.asRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )
