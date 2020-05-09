@@ -49,6 +49,8 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.2
+
 ### 0.27.1
 
 * `TelegramBotAPI`:
