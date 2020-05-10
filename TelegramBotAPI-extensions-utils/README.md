@@ -87,7 +87,7 @@ Unfortunately, due to the erasing of generic types, when you are using `asConten
 data with type `ContentMessage<*>`. For correct filtering of content type for retrieved objects, was created special
 filters:
 
-| Type | Result type | Flow extension |
+| Content type | Result type | Flow extension |
 |:---- |:----------- |:-------------- |
 | Animation | `ContentMessage<AnimationContent>`| `onlyAnimationContentMessages` |
 | Audio | `ContentMessage<AudioContent>` | `onlyAudioContentMessages` |
@@ -116,7 +116,7 @@ filter.messageFlow.asContentMessagesFlow().onlyPhotoContentMessages().onEach {
 )
 ```
 
-#### Chat actions
+##### Chat actions
 
 Chat actions can be divided for three types of events source:
 
@@ -125,6 +125,16 @@ Chat actions can be divided for three types of events source:
 | Channel events | `onlyChannelEvents` |
 | Group events | `onlyGroupEvents` |
 | Supergroup events | `onlySupergroupEvents` |
+
+According to this table, if you want to add filtering by supergroup events, you will use code like this:
+
+```kotlin
+filter.messageFlow.asChatEventsFlow().onlySupergroupEvents().onEach {
+    println(it.chatEvent)
+}.launchIn(
+    CoroutineScope(Dispatchers.Default)
+)
+```
 
 ## Shortcuts
 
