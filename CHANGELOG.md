@@ -58,6 +58,7 @@
 * `TelegramBotAPI`:
     * Expected class `MimeType` was added
         * Field `MimeTyped#mimeType` now typed by `MimeType` instead of `String`
+    * `MediaGroupMemberInputMedia` children now can be deserialized (but only those ones who are declared inside library)
 
 ### 0.27.1
 

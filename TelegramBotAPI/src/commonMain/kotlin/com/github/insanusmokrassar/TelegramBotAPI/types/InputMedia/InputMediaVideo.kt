@@ -6,6 +6,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
 import kotlinx.serialization.*
 
+internal const val videoInputMediaType = "video"
+
 @Serializable
 data class InputMediaVideo(
     override val file: InputFile,
@@ -17,7 +19,7 @@ data class InputMediaVideo(
     override val duration: Long? = null,
     override val thumb: InputFile? = null
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, MediaGroupMemberInputMedia {
-    override val type: String = "video"
+    override val type: String = videoInputMediaType
 
     override fun serialize(format: StringFormat): String = format.stringify(serializer(), this)
 
