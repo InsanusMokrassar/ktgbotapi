@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils
+package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.chat_events
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ChatEventMessage
@@ -16,6 +16,6 @@ fun <T : ChatEventMessage> Flow<ChatEventMessage>.divideBySource(contentType: KC
     }
 }
 
-fun Flow<ChatEventMessage>.channelEvents() = divideBySource(ChannelEventMessage::class)
-fun Flow<ChatEventMessage>.groupEvents() = divideBySource(GroupEventMessage::class)
-fun Flow<ChatEventMessage>.supergroupEvents() = divideBySource(SupergroupEventMessage::class)
+fun Flow<ChatEventMessage>.onlyChannelEvents() = divideBySource(ChannelEventMessage::class)
+fun Flow<ChatEventMessage>.onlyGroupEvents() = divideBySource(GroupEventMessage::class)
+fun Flow<ChatEventMessage>.onlySupergroupEvents() = divideBySource(SupergroupEventMessage::class)

@@ -61,9 +61,9 @@
     * `MediaGroupMemberInputMedia` children now can be deserialized (but only those ones who are declared inside library)
 * `TelegramBotAPI-extensions-utils`:
     * Chat events splitters added:
-        * Extension `Flow<ChatEventMessage>#channelEvents` was added
-        * Extension `Flow<ChatEventMessage>#groupEvents` was added
-        * Extension `Flow<ChatEventMessage>#supergroupEvents` was added
+        * Extension `Flow<ChatEventMessage>#onlyChannelEvents` was added
+        * Extension `Flow<ChatEventMessage>#onlyGroupEvents` was added
+        * Extension `Flow<ChatEventMessage>#onlySupergroupEvents` was added
 
 ### 0.27.1
 

@@ -116,15 +116,15 @@ filter.messageFlow.asContentMessagesFlow().onlyPhotoContentMessages().onEach {
 )
 ```
 
-##### Chat actions
+#### Chat actions
 
 Chat actions can be divided for three types of events source:
 
 | Type | Flow extension |
 |:---- |:-------------- |
-| Channel events | `channelEvents` |
-| Group events | `groupEvents` |
-| Supergroup events | `supergroupEvents` |
+| Channel events | `onlyChannelEvents` |
+| Group events | `onlyGroupEvents` |
+| Supergroup events | `onlySupergroupEvents` |
 
 ## Shortcuts
 
