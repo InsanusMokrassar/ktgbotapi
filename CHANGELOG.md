@@ -59,6 +59,11 @@
     * Expected class `MimeType` was added
         * Field `MimeTyped#mimeType` now typed by `MimeType` instead of `String`
     * `MediaGroupMemberInputMedia` children now can be deserialized (but only those ones who are declared inside library)
+* `TelegramBotAPI-extensions-utils`:
+    * Chat events splitters added:
+        * Extension `Flow<ChatEventMessage>#channelEvents` was added
+        * Extension `Flow<ChatEventMessage>#groupEvents` was added
+        * Extension `Flow<ChatEventMessage>#supergroupEvents` was added
 
 ### 0.27.1
 
