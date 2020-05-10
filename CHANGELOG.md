@@ -55,6 +55,9 @@
     * Versions:
         * Coroutines: `1.3.5` -> `1.3.6`
         * Klock: `1.10.5` -> `1.11.1`
+* `TelegramBotAPI`:
+    * Expected class `MimeType` was added
+        * Field `MimeTyped#mimeType` now typed by `MimeType` instead of `String`
 
 ### 0.27.1
 

@@ -8,6 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.mimeTypeField
+import com.github.insanusmokrassar.TelegramBotAPI.utils.MimeType
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -20,7 +21,7 @@ data class InlineQueryResultDocumentImpl(
     @SerialName(titleField)
     override val title: String,
     @SerialName(mimeTypeField)
-    override val mimeType: String,
+    override val mimeType: MimeType,
     @SerialName(thumbUrlField)
     override val thumbUrl: String? = null,
     @SerialName(thumbWidthField)

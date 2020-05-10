@@ -1,5 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts
 
+import com.github.insanusmokrassar.TelegramBotAPI.utils.MimeType
+
 interface MimeTyped {
-    val mimeType: String? // TODO::replace by something like enum or interface
+    val mimeType: MimeType?
 }
