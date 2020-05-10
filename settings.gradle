@@ -1,3 +1,4 @@
 include ":TelegramBotAPI"
 include ":TelegramBotAPI-extensions-api"
 include ":TelegramBotAPI-extensions-utils"
+include ":docs"

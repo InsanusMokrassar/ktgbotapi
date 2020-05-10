@@ -1,0 +1,87 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.multiplatform" version "$kotlin_version"
+    id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version"
+    id "org.jetbrains.dokka" version "$dokka_version"
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+kotlin {
+    jvm()
+    js()
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib')
+
+                project.parent.subprojects.forEach {
+                    if (it != project) {
+                        api it
+                    }
+                }
+            }
+        }
+    }
+}
+
+private Closure includeSourcesInDokka(String approximateName) {
+    return {
+        parent.subprojects.forEach {
+            if (it != project) {
+                File srcDir = new File(it.projectDir.absolutePath, "src")
+                if (srcDir.exists() && srcDir.isDirectory()) {
+                    srcDir.eachFile {
+                        println(it.absolutePath)
+                        if (it.name.contains(approximateName) && it.isDirectory()) {
+                            String pathToSrc = it.absolutePath
+                            sourceRoot {
+                                path = pathToSrc
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/dokka"
+    disableAutoconfiguration = true
+
+    multiplatform {
+        global {
+            skipDeprecated = true
+
+            sourceLink {
+                path = "./"
+                url = "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/"
+                lineSuffix = "#L"
+            }
+        }
+
+        common(includeSourcesInDokka("commonMain"))
+        js(includeSourcesInDokka("jsMain"))
+        jvm(includeSourcesInDokka("jvmMain"))
+    }
+}
