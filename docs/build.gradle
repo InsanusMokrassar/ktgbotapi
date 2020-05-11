@@ -63,9 +63,13 @@ private Closure includeSourcesInDokka(String... approximateNames) {
     }
 }
 
+String dokkaFolder = "$projectDir/dokka"
+
 dokka {
+    (new File(dokkaFolder)).deleteDir()
+
     outputFormat = 'html'
-    outputDirectory = "$buildDir/dokka"
+    outputDirectory = dokkaFolder
 
     multiplatform {
         global {
