@@ -4,9 +4,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.*
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.json.JsonObject
 
-/**
- * Will be used as SimpleRequest if
- */
 class MultipartRequestImpl<D: DataRequest<R>, F: Files, R: Any>(
     val data: D,
     val files: F

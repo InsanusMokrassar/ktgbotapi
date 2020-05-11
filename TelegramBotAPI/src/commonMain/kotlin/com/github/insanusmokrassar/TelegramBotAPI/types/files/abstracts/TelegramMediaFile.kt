@@ -8,7 +8,7 @@ internal const val fileSizeField = "file_size"
 internal const val filePathField = "file_path"
 
 /**
- * Declare common part of media files in Telegram. Note: it is not representation of `File` type
+ * Declare common part of media files in Telegram. Note: it is not representation of JVM `File` type
  */
 interface TelegramMediaFile {
     val fileId: FileId
