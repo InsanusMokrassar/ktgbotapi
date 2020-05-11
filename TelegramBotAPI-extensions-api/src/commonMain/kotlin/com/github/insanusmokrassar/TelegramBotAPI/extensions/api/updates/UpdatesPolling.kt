@@ -68,7 +68,9 @@ fun RequestsExecutor.startGettingOfUpdates(
  * [kotlinx.coroutines.flow.Flow.collect] on one of [FlowsUpdatesFilter] flows. To avoid it, you can pass
  * [flowUpdatesPreset] lambda - it will be called BEFORE starting updates getting
  */
+@FlowPreview
 @PreviewFeature
+@Suppress("unused")
 fun RequestsExecutor.startGettingFlowsUpdates(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
@@ -137,6 +139,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     )
 }
 
+@Suppress("unused")
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     mediaGroupCallback: UpdateReceiver<MediaGroupUpdate>? = null,

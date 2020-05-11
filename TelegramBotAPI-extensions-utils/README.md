@@ -67,18 +67,74 @@ val filter = bot.startGettingUpdates(
 }
 ```
 
-### Getting of only text incoming messages
+### Filters
+
+There are several filters for flows.
+
+#### Sent messages
+
+All sent messages can be filtered for three types:
+
+| Type | Description | Flow extension |
+|:---- |:----------- |:-------------- |
+| Common messages | Simple messages with text, media, location, etc. | `asContentMessagesFlow` |
+| Chat actions | New chat member, rename of chat, etc. | `asChatEventsFlow` |
+| Unknown events | Any other messages, that contain unsupported data | `asUnknownMessagesFlow` |
+
+##### Common messages
+
+Unfortunately, due to the erasing of generic types, when you are using `asContentMessagesFlow` you will retrieve
+data with type `ContentMessage<*>`. For correct filtering of content type for retrieved objects, was created special
+filters:
+
+| Content type | Result type | Flow extension |
+|:---- |:----------- |:-------------- |
+| Animation | `ContentMessage<AnimationContent>`| `onlyAnimationContentMessages` |
+| Audio | `ContentMessage<AudioContent>` | `onlyAudioContentMessages` |
+| Contact | `ContentMessage<ContactContent>` | `onlyContactContentMessages` |
+| Dice | `ContentMessage<DiceContent>` | `onlyDiceContentMessages` |
+| Document | `ContentMessage<DocumentContent>` | `onlyDocumentContentMessages` |
+| Game | `ContentMessage<GameContent>` | `onlyGameContentMessages` |
+| Invoice | `ContentMessage<InvoiceContent>` | `onlyInvoiceContentMessages` |
+| Location | `ContentMessage<LocationContent>` | `onlyLocationContentMessages` |
+| Photo | `ContentMessage<PhotoContent>` | `onlyPhotoContentMessages` |
+| Poll | `ContentMessage<PollContent>` | `onlyPollContentMessages` |
+| Sticker | `ContentMessage<StickerContent>` | `onlyStickerContentMessages` |
+| Text | `ContentMessage<TextContent>` | `onlyTextContentMessages` |
+| Venue | `ContentMessage<VenueContent>` | `onlyVenueContentMessages` |
+| Video | `ContentMessage<VideoContent>` | `onlyVideoContentMessages` |
+| VideoNote | `ContentMessage<VideoNoteContent>` | `onlyVideoNoteContentMessages` |
+| Voice | `ContentMessage<VoiceContent>` | `onlyVoiceContentMessages` |
+
+For example, if you wish to get only photo messages from private chats of groups, you should call next code:
 
 ```kotlin
-filter.asContentMessagesFlow().onlyTextContentMessages().onEach {
+filter.messageFlow.asContentMessagesFlow().onlyPhotoContentMessages().onEach {
     println(it.content)
-    println(it.fullEntitiesList())
 }.launchIn(
     CoroutineScope(Dispatchers.Default)
 )
 ```
 
-As a result, each received message which will be just text message will be printed out with full list of its internal entities
+##### Chat actions
+
+Chat actions can be divided for three types of events source:
+
+| Type | Flow extension |
+|:---- |:-------------- |
+| Channel events | `onlyChannelEvents` |
+| Group events | `onlyGroupEvents` |
+| Supergroup events | `onlySupergroupEvents` |
+
+According to this table, if you want to add filtering by supergroup events, you will use code like this:
+
+```kotlin
+filter.messageFlow.asChatEventsFlow().onlySupergroupEvents().onEach {
+    println(it.chatEvent)
+}.launchIn(
+    CoroutineScope(Dispatchers.Default)
+)
+```
 
 ## Shortcuts
 

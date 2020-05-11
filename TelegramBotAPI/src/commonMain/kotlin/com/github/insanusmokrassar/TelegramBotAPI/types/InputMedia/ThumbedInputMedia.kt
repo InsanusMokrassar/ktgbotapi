@@ -5,7 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.thumbField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// TODO:: fill thumbed
 interface ThumbedInputMedia : InputMedia {
     val thumb: InputFile?
     @Serializable

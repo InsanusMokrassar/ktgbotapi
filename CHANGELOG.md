@@ -49,6 +49,22 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.2
+
+* `Common`:
+    * Versions:
+        * Coroutines: `1.3.5` -> `1.3.6`
+        * Klock: `1.10.5` -> `1.11.1`
+* `TelegramBotAPI`:
+    * Expected class `MimeType` was added
+        * Field `MimeTyped#mimeType` now typed by `MimeType` instead of `String`
+    * `MediaGroupMemberInputMedia` children now can be deserialized (but only those ones who are declared inside library)
+* `TelegramBotAPI-extensions-utils`:
+    * Chat events splitters added:
+        * Extension `Flow<ChatEventMessage>#onlyChannelEvents` was added
+        * Extension `Flow<ChatEventMessage>#onlyGroupEvents` was added
+        * Extension `Flow<ChatEventMessage>#onlySupergroupEvents` was added
+
 ### 0.27.1
 
 * `TelegramBotAPI`:

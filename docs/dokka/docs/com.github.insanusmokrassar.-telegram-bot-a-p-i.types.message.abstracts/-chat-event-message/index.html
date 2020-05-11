@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ChatEventMessage - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts</a>&nbsp;/&nbsp;<a href="./index.html">ChatEventMessage</a><br/>
+<br/>
+<h1>ChatEventMessage</h1>
+(common) <code><span class="keyword">interface </span><span class="identifier">ChatEventMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-message/index.html"><span class="identifier">Message</span></a></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/message/abstracts/ChatEventMessage.kt#L5">(source)</a>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="chat-event.html">chatEvent</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">chatEvent</span><span class="symbol">: </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.-chat-events.abstracts/-chat-event.html"><span class="identifier">ChatEvent</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Extension Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.extensions.api/delete.html">delete</a></h4>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><a href="../-message/index.html"><span class="identifier">Message</span></a><span class="symbol">.</span><span class="identifier">delete</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.api$delete(com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message, com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor)/requestsExecutor">requestsExecutor</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.bot/-requests-executor/index.html"><span class="identifier">RequestsExecutor</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message/-channel-event-message/index.html">ChannelEventMessage</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">ChannelEventMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatEventMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message/-group-event-message/index.html">GroupEventMessage</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">GroupEventMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatEventMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message/-supergroup-event-message/index.html">SupergroupEventMessage</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SupergroupEventMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatEventMessage</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

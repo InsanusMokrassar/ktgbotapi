@@ -7,6 +7,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
 import kotlinx.serialization.*
 
+internal const val photoInputMediaType = "photo"
+
 @Serializable
 data class InputMediaPhoto(
     override val file: InputFile,
@@ -14,7 +16,7 @@ data class InputMediaPhoto(
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null
 ) : InputMedia, MediaGroupMemberInputMedia {
-    override val type: String = "photo"
+    override val type: String = photoInputMediaType
 
     override fun serialize(format: StringFormat): String = format.stringify(serializer(), this)
 

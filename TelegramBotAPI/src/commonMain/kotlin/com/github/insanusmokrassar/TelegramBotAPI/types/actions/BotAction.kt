@@ -2,6 +2,9 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.actions
 
 import kotlinx.serialization.*
 
+/**
+ * Use BotAction objects realisations to notify user about bot actions
+ */
 @Serializable(BotActionSerializer::class)
 sealed class BotAction {
     abstract val actionName: String
@@ -31,54 +34,80 @@ internal object BotActionSerializer: KSerializer<BotAction> {
 }
 
 /**
- * Use BotAction objects realisations to notify user about bot actions
+ * Will notify user that bot is "typing" something
  */
-
 @Serializable(BotActionSerializer::class)
 object TypingAction : BotAction() {
     override val actionName: String = "typing"
 }
 
+/**
+ * Will notify user that bot is uploading some photo
+ */
 @Serializable(BotActionSerializer::class)
 object UploadPhotoAction : BotAction() {
     override val actionName: String = "upload_photo"
 }
 
+/**
+ * Will notify user that bot is recording some video
+ */
 @Serializable(BotActionSerializer::class)
 object RecordVideoAction : BotAction() {
     override val actionName: String = "record_video"
 }
 
+/**
+ * Will notify user that bot is uploading some photo
+ */
 @Serializable(BotActionSerializer::class)
 object UploadVideoAction : BotAction() {
     override val actionName: String = "upload_video"
 }
 
+/**
+ * Will notify user that bot is recording some audio
+ */
 @Serializable(BotActionSerializer::class)
 object RecordAudioAction : BotAction() {
     override val actionName: String = "record_audio"
 }
 
+/**
+ * Will notify user that bot is uploading some audio
+ */
 @Serializable(BotActionSerializer::class)
 object UploadAudioAction : BotAction() {
     override val actionName: String = "upload_audio"
 }
 
+/**
+ * Will notify user that bot is uploading some document
+ */
 @Serializable(BotActionSerializer::class)
 object UploadDocumentAction : BotAction() {
     override val actionName: String = "upload_document"
 }
 
+/**
+ * Will notify user that bot is trying to find location
+ */
 @Serializable(BotActionSerializer::class)
 object FindLocationAction : BotAction() {
     override val actionName: String = "find_location"
 }
 
+/**
+ * Will notify user that bot is recording video note
+ */
 @Serializable(BotActionSerializer::class)
 object RecordVideoNoteAction : BotAction() {
     override val actionName: String = "record_video_note"
 }
 
+/**
+ * Will notify user that bot is uploading video note
+ */
 @Serializable(BotActionSerializer::class)
 object UploadVideoNoteAction : BotAction() {
     override val actionName: String = "upload_video_note"

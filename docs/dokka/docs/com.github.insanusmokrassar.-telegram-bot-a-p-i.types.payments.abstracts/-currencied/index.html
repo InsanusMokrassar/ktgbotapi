@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Currencied - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts</a>&nbsp;/&nbsp;<a href="./index.html">Currencied</a><br/>
+<br/>
+<h1>Currencied</h1>
+(common) <code><span class="keyword">interface </span><span class="identifier">Currencied</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/payments/abstracts/Currencied.kt#L5">(source)</a>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="currency.html">currency</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">currency</span><span class="symbol">: </span><a href="../-currency.html"><span class="identifier">Currency</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.payments/-invoice/index.html">Invoice</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Invoice</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-amounted/index.html"><span class="identifier">Amounted</span></a><span class="symbol">, </span><a href="./index.html"><span class="identifier">Currencied</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.payments/-pre-checkout-query/index.html">PreCheckoutQuery</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PreCheckoutQuery</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Currencied</span></a><span class="symbol">, </span><a href="../-amounted/index.html"><span class="identifier">Amounted</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.send.payments/-send-invoice/index.html">SendInvoice</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SendInvoice</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Currencied</span></a><span class="symbol">, </span><a href="../-priced/index.html"><span class="identifier">Priced</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts.types/-chat-request/index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts.types/-disable-notification/index.html"><span class="identifier">DisableNotification</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts.types/-reply-message-id/index.html"><span class="identifier">ReplyMessageId</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts.types/-reply-markup/index.html"><span class="identifier">ReplyMarkup</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.send.abstracts/-send-message-request.html"><span class="identifier">SendMessageRequest</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.payments/-invoice-content/index.html"><span class="identifier">InvoiceContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.payments/-successful-payment/index.html">SuccessfulPayment</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SuccessfulPayment</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-amounted/index.html"><span class="identifier">Amounted</span></a><span class="symbol">, </span><a href="./index.html"><span class="identifier">Currencied</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

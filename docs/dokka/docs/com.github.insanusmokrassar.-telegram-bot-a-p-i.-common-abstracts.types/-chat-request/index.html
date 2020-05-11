@@ -1,0 +1,175 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ChatRequest - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types</a>&nbsp;/&nbsp;<a href="./index.html">ChatRequest</a><br/>
+<br/>
+<h1>ChatRequest</h1>
+(common) <code><span class="keyword">interface </span><span class="identifier">ChatRequest</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/CommonAbstracts/types/ChatRequest.kt#L5">(source)</a>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="chat-id.html">chatId</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">chatId</span><span class="symbol">: </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-identifier.html"><span class="identifier">ChatIdentifier</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.abstracts/-chat-member-request/index.html">ChatMemberRequest</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ChatMemberRequest</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.modify/-delete-chat-photo/index.html">DeleteChatPhoto</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">DeleteChatPhoto</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.stickers/-delete-chat-sticker-set/index.html">DeleteChatStickerSet</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">DeleteChatStickerSet</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat/-export-chat-invite-link/index.html">ExportChatInviteLink</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">ExportChatInviteLink</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.get/-get-chat/index.html">GetChat</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">GetChat</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.chat.abstracts.extended/-extended-chat/index.html"><span class="identifier">ExtendedChat</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.get/-get-chat-administrators/index.html">GetChatAdministrators</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">GetChatAdministrators</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-chat-member.abstracts/-administrator-chat-member/index.html"><span class="identifier">AdministratorChatMember</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.get/-get-chat-members-count/index.html">GetChatMembersCount</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">GetChatMembersCount</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat/-leave-chat/index.html">LeaveChat</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">LeaveChat</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-message-action/index.html">MessageAction</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MessageAction</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.modify/-pin-chat-message/index.html">PinChatMessage</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PinChatMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="../-message-action/index.html"><span class="identifier">MessageAction</span></a><span class="symbol">, </span><a href="../-disable-notification/index.html"><span class="identifier">DisableNotification</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.send.abstracts/-send-chat-message-request.html">SendChatMessageRequest</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SendChatMessageRequest</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><a href="./index.html"><span class="identifier">ChatRequest</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.send.payments/-send-invoice/index.html">SendInvoice</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SendInvoice</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.payments.abstracts/-currencied/index.html"><span class="identifier">Currencied</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.payments.abstracts/-priced/index.html"><span class="identifier">Priced</span></a><span class="symbol">, </span><a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../-disable-notification/index.html"><span class="identifier">DisableNotification</span></a><span class="symbol">, </span><a href="../-reply-message-id/index.html"><span class="identifier">ReplyMessageId</span></a><span class="symbol">, </span><a href="../-reply-markup/index.html"><span class="identifier">ReplyMarkup</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.send.abstracts/-send-message-request.html"><span class="identifier">SendMessageRequest</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.payments/-invoice-content/index.html"><span class="identifier">InvoiceContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.modify/-set-chat-description/index.html">SetChatDescription</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SetChatDescription</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.modify/-set-chat-permissions/index.html">SetChatPermissions</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SetChatPermissions</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.modify/-set-chat-photo/index.html">SetChatPhoto</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SetChatPhoto</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-multipart-request/index.html"><span class="identifier">MultipartRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.stickers/-set-chat-sticker-set/index.html">SetChatStickerSet</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SetChatStickerSet</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.modify/-set-chat-title/index.html">SetChatTitle</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SetChatTitle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.chat.modify/-unpin-chat-message/index.html">UnpinChatMessage</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">UnpinChatMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ChatRequest</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

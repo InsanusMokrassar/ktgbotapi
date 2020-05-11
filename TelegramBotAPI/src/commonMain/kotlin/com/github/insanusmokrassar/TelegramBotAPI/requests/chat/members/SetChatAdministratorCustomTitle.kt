@@ -5,11 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
-/**
- * Representation of https://core.telegram.org/bots/api#setchatadministratorcustomtitle
- *
- * Please, remember about restrictions for characters in custom title
- */
 @Serializable
 data class SetChatAdministratorCustomTitle(
     @SerialName(chatIdField)

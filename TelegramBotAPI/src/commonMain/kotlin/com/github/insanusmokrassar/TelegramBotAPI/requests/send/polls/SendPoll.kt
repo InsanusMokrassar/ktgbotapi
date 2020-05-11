@@ -85,7 +85,7 @@ fun Poll.createRequest(
             correctOptionId,
             isAnonymous,
             isClosed,
-            caption ?.fullListOfSubSource(captionEntities) ?.justTextSources() ?.toMarkdownV2Captions() ?.firstOrNull(),
+            explanation ?.fullListOfSubSource(explanationEntities) ?.justTextSources() ?.toMarkdownV2Captions() ?.firstOrNull(),
             MarkdownV2,
             scheduledCloseInfo,
             disableNotification,
