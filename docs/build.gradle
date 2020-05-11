@@ -43,16 +43,15 @@ kotlin {
     }
 }
 
-private Closure includeSourcesInDokka(String approximateName) {
+private Closure includeSourcesInDokka(String... approximateNames) {
     return {
         parent.subprojects.forEach {
             if (it != project) {
                 File srcDir = new File(it.projectDir.absolutePath, "src")
                 if (srcDir.exists() && srcDir.isDirectory()) {
-                    srcDir.eachFile {
-                        println(it.absolutePath)
-                        if (it.name.contains(approximateName) && it.isDirectory()) {
-                            String pathToSrc = it.absolutePath
+                    srcDir.eachFile { file ->
+                        if (approximateNames.any { file.name.contains(it) } && file.isDirectory()) {
+                            String pathToSrc = file.absolutePath
                             sourceRoot {
                                 path = pathToSrc
                             }
@@ -67,7 +66,6 @@ private Closure includeSourcesInDokka(String approximateName) {
 dokka {
     outputFormat = 'html'
     outputDirectory = "$buildDir/dokka"
-    disableAutoconfiguration = true
 
     multiplatform {
         global {
@@ -81,7 +79,7 @@ dokka {
         }
 
         common(includeSourcesInDokka("commonMain"))
-        js(includeSourcesInDokka("jsMain"))
-        jvm(includeSourcesInDokka("jvmMain"))
+        js(includeSourcesInDokka("jsMain"/*, "commonMain"*/))
+        jvm(includeSourcesInDokka("jvmMain"/*, "commonMain"*/))
     }
 }
