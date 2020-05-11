@@ -14,6 +14,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 
 data class TextContent(
     val text: String,
+    /**
+     * Not full list of entities. This list WILL NOT contain [TextPart]s with [com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.RegularTextSource]
+     * @see [TextContent.fullEntitiesList]
+     */
     val entities: List<TextPart> = emptyList()
 ) : MessageContent {
     override fun createResend(
@@ -67,4 +71,8 @@ data class TextContent(
     }
 }
 
+/**
+ * Convert its [TextContent.entities] to list of [com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource]
+ * with [com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.RegularTextSource]
+ */
 fun TextContent.fullEntitiesList(): FullTextSourcesList = text.fullListOfSubSource(entities).map { it.source }

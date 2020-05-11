@@ -7,13 +7,25 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
 
+/**
+ * [Flow.filter] incoming [BaseMessageUpdate]s by their [ChatId]
+ */
 fun <T : BaseMessageUpdate> Flow<T>.filterBaseMessageUpdates(chatId: ChatId): Flow<T> = filter {
     it.data.chat.id == chatId
 }
+/**
+ * [Flow.filter] incoming [BaseMessageUpdate]s by their [ChatId] using [Chat.id] of [chat]
+ */
 fun <T : BaseMessageUpdate> Flow<T>.filterBaseMessageUpdates(chat: Chat): Flow<T> = filterBaseMessageUpdates(chat.id)
 
 
+/**
+ * [Flow.filter] incoming [SentMediaGroupUpdate]s by their [ChatId]
+ */
 fun <T : SentMediaGroupUpdate> Flow<T>.filterSentMediaGroupUpdates(chatId: ChatId): Flow<T> = filter {
     it.data.first().chat.id == chatId
 }
+/**
+ * [Flow.filter] incoming [SentMediaGroupUpdate]s by their [ChatId] using [Chat.id] of [chat]
+ */
 fun <T : SentMediaGroupUpdate> Flow<T>.filterSentMediaGroupUpdates(chat: Chat): Flow<T> = filterSentMediaGroupUpdates(chat.id)
