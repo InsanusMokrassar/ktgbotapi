@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TextContent - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.types.message.content</a>&nbsp;/&nbsp;<a href="./index.html">TextContent</a><br/>
+<br/>
+<h1>TextContent</h1>
+(common) <code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">TextContent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content.abstracts/-message-content.html"><span class="identifier">MessageContent</span></a></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/message/content/TextContent.kt#L15">(source)</a>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<code><span class="identifier">TextContent</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$<init>(kotlin.String, kotlin.collections.List((com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart)))/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$<init>(kotlin.String, kotlin.collections.List((com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextPart)))/entities">entities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-part/index.html"><span class="identifier">TextPart</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">=</span>&nbsp;emptyList()<span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="entities.html">entities</a></h4>
+</td>
+<td>
+<p>Not full list of entities. This list WILL NOT contain <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-part/index.html">TextPart</a>s with <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-regular-text-source/index.html">com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.RegularTextSource</a></p>
+<code><span class="keyword">val </span><span class="identifier">entities</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-part/index.html"><span class="identifier">TextPart</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="text.html">text</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">text</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="create-resend.html">createResend</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">createResend</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResend(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup)/chatId">chatId</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-identifier.html"><span class="identifier">ChatIdentifier</span></a><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResend(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup)/disableNotification">disableNotification</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResend(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup)/replyToMessageId">replyToMessageId</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-message-identifier.html"><span class="identifier">MessageIdentifier</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResend(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup)/replyMarkup">replyMarkup</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.buttons/-keyboard-markup.html"><span class="identifier">KeyboardMarkup</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-request/index.html"><span class="identifier">Request</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="./index.html"><span class="identifier">TextContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="create-resends.html">createResends</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">createResends</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup)/chatId">chatId</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-identifier.html"><span class="identifier">ChatIdentifier</span></a><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup)/disableNotification">disableNotification</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup)/replyToMessageId">replyToMessageId</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-message-identifier.html"><span class="identifier">MessageIdentifier</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup)/replyMarkup">replyMarkup</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.buttons/-keyboard-markup.html"><span class="identifier">KeyboardMarkup</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-request/index.html"><span class="identifier">Request</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="./index.html"><span class="identifier">TextContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">createResends</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup, com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode)/chatId">chatId</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-identifier.html"><span class="identifier">ChatIdentifier</span></a><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup, com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode)/disableNotification">disableNotification</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup, com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode)/replyToMessageId">replyToMessageId</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-message-identifier.html"><span class="identifier">MessageIdentifier</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup, com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode)/replyMarkup">replyMarkup</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.buttons/-keyboard-markup.html"><span class="identifier">KeyboardMarkup</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent$createResends(com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier, kotlin.Boolean, kotlin.Long, com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup, com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode)/parseMode">parseMode</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-parse-mode/-parse-mode/index.html"><span class="identifier">ParseMode</span></a>&nbsp;<span class="symbol">=</span>&nbsp;HTMLParseMode<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-request/index.html"><span class="identifier">Request</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="./index.html"><span class="identifier">TextContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Extension Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../full-entities-list.html">fullEntitiesList</a></h4>
+</td>
+<td>
+<p>Convert its <a href="entities.html">TextContent.entities</a> to list of <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html">com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource</a>
+with <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-regular-text-source/index.html">com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.RegularTextSource</a></p>
+<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">TextContent</span></a><span class="symbol">.</span><span class="identifier">fullEntitiesList</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-full-text-sources-list.html"><span class="identifier">FullTextSourcesList</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.utils/to-html-texts.html">toHtmlTexts</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">TextContent</span></a><span class="symbol">.</span><span class="identifier">toHtmlTexts</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.utils/to-markdown-texts.html">toMarkdownTexts</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">TextContent</span></a><span class="symbol">.</span><span class="identifier">toMarkdownTexts</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.utils/to-markdown-v2-texts.html">toMarkdownV2Texts</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">TextContent</span></a><span class="symbol">.</span><span class="identifier">toMarkdownV2Texts</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

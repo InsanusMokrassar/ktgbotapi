@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>filterCommandsWithArgs - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates</a>&nbsp;/&nbsp;<a href="index.html">kotlinx.coroutines.flow.Flow</a>&nbsp;/&nbsp;<a href="./filter-commands-with-args.html">filterCommandsWithArgs</a><br/>
+<br/>
+<h1>filterCommandsWithArgs</h1>
+(common) <a name="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterCommandsWithArgs(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterCommandsWithArgs.T)), kotlin.text.Regex)"></a>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html"><span class="identifier">BaseSentMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterCommandsWithArgs</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterCommandsWithArgs(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterCommandsWithArgs.T)), kotlin.text.Regex)/commandRegex">commandRegex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html"><span class="identifier">TextSource</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI-extensions-utils/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/extensions/utils/updates/CommandsFilters.kt#L64">(source)</a>
+<p>Convert incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/content.html">com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content</a> of
+messages with <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/full-entities-list.html">fullEntitiesList</a> and check that incoming message contains first <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html">TextSource</a> as
+<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-bot-command-text-source/index.html">BotCommandTextSource</a>. Besides, it is checking that <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/matches.html">BotCommandTextSource.command</a> with incoming
+<a href="filter-commands-with-args.html#com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterCommandsWithArgs(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterCommandsWithArgs.T)), kotlin.text.Regex)/commandRegex">commandRegex</a> and for other <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html">TextSource</a> objects used next rules: all incoming text sources will be passed as is,
+<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-regular-text-source/index.html">RegularTextSource</a> will be split by " " for several <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-regular-text-source/index.html">RegularTextSource</a> which will contains not empty args without
+spaces.</p>
+<p><strong>Return</strong><br/>
+Converted list with first entity <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-bot-command-text-source/index.html">BotCommandTextSource</a> and than all others according to rules in description</p>
+<p><strong>See Also</strong><br/>
+<p><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/full-entities-list.html">fullEntitiesList</a></p>
+<p><a href="as-content-messages-flow.html">asContentMessagesFlow</a></p>
+<p><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.extensions.utils/kotlinx.coroutines.flow.-flow/only-text-content-messages.html">onlyTextContentMessages</a></p>
+</p>
+</BODY>
+</HTML>

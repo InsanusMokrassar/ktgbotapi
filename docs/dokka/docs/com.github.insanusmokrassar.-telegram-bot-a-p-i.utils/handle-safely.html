@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>handleSafely - docs</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">docs</a>&nbsp;/&nbsp;<a href="index.html">com.github.insanusmokrassar.TelegramBotAPI.utils</a>&nbsp;/&nbsp;<a href="./handle-safely.html">handleSafely</a><br/>
+<br/>
+<h1>handleSafely</h1>
+(common) <a name="com.github.insanusmokrassar.TelegramBotAPI.utils$handleSafely(kotlin.coroutines.SuspendFunction1((kotlin.Exception, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)), kotlin.coroutines.SuspendFunction1((kotlinx.coroutines.CoroutineScope, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)))"></a>
+<code><span class="keyword">suspend</span> <span class="keyword">inline</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">handleSafely</span><span class="symbol">(</span><span class="keyword">noinline</span> <span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.utils$handleSafely(kotlin.coroutines.SuspendFunction1((kotlin.Exception, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)), kotlin.coroutines.SuspendFunction1((kotlinx.coroutines.CoroutineScope, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)))/onException">onException</span><span class="symbol">:</span>&nbsp;<span class="keyword">suspend </span><span class="symbol">(</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html"><span class="identifier">Exception</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span>&nbsp;<span class="symbol">=</span>&nbsp;{ throw it }<span class="symbol">, </span><span class="keyword">noinline</span> <span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.utils$handleSafely(kotlin.coroutines.SuspendFunction1((kotlin.Exception, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)), kotlin.coroutines.SuspendFunction1((kotlinx.coroutines.CoroutineScope, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="keyword">suspend </span><span class="identifier">CoroutineScope</span><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/utils/HandleSafely.kt#L12">(source)</a>
+<p>It will run <a href="handle-safely.html#com.github.insanusmokrassar.TelegramBotAPI.utils$handleSafely(kotlin.coroutines.SuspendFunction1((kotlin.Exception, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)), kotlin.coroutines.SuspendFunction1((kotlinx.coroutines.CoroutineScope, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)))/block">block</a> inside of <a href="#">supervisorScope</a> to avoid problems with catching of exceptions</p>
+<h3>Parameters</h3>
+<p><a name="onException"></a>
+<code>onException</code> - Will be called when happen exception inside of <a href="handle-safely.html#com.github.insanusmokrassar.TelegramBotAPI.utils$handleSafely(kotlin.coroutines.SuspendFunction1((kotlin.Exception, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)), kotlin.coroutines.SuspendFunction1((kotlinx.coroutines.CoroutineScope, com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely.T)))/block">block</a>. By default will throw exception - this
+exception will be available for catching</p>
+</BODY>
+</HTML>

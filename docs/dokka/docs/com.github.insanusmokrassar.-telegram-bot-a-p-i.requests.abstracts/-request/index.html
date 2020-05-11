@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Request - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts</a>&nbsp;/&nbsp;<a href="./index.html">Request</a><br/>
+<br/>
+<h1>Request</h1>
+(common) <code><span class="keyword">interface </span><span class="identifier">Request</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/abstracts/Request.kt#L5">(source)</a>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="result-deserializer.html">resultDeserializer</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">resultDeserializer</span><span class="symbol">: </span><span class="identifier">DeserializationStrategy</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="method.html">method</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">method</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../-multipart-request/index.html">MultipartRequest</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MultipartRequest</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Request</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.send.media/-send-sticker-by-file/index.html">SendStickerByFile</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">SendStickerByFile</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-multipart-request/index.html"><span class="identifier">MultipartRequest</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content.media/-sticker-content/index.html"><span class="identifier">StickerContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><a href="./index.html"><span class="identifier">Request</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content.media/-sticker-content/index.html"><span class="identifier">StickerContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-simple-request/index.html">SimpleRequest</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SimpleRequest</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Request</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

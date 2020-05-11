@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EditInlineMessage - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts</a>&nbsp;/&nbsp;<a href="./index.html">EditInlineMessage</a><br/>
+<br/>
+<h1>EditInlineMessage</h1>
+(common) <code><span class="keyword">interface </span><span class="identifier">EditInlineMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.abstracts/-simple-request/index.html"><span class="identifier">SimpleRequest</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/edit/abstracts/EditInlineMessage.kt#L8">(source)</a>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="inline-message-id.html">inlineMessageId</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">inlineMessageId</span><span class="symbol">: </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-inline-message-identifier.html"><span class="identifier">InlineMessageIdentifier</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="result-deserializer.html">resultDeserializer</a></h4>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">val </span><span class="identifier">resultDeserializer</span><span class="symbol">: </span><span class="identifier">DeserializationStrategy</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.caption/-edit-inline-message-caption/index.html">EditInlineMessageCaption</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditInlineMessageCaption</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">EditInlineMessage</span></a><span class="symbol">, </span><a href="../-edit-text-chat-message/index.html"><span class="identifier">EditTextChatMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.-live-location/-edit-inline-message-live-location/index.html">EditInlineMessageLiveLocation</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditInlineMessageLiveLocation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">EditInlineMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a><span class="symbol">, </span><a href="../-edit-location-message/index.html"><span class="identifier">EditLocationMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.media/-edit-inline-message-media/index.html">EditInlineMessageMedia</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditInlineMessageMedia</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">EditInlineMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a><span class="symbol">, </span><a href="../-edit-media-message/index.html"><span class="identifier">EditMediaMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.-reply-markup/-edit-inline-message-reply-markup/index.html">EditInlineMessageReplyMarkup</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditInlineMessageReplyMarkup</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">EditInlineMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.text/-edit-inline-message-text/index.html">EditInlineMessageText</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditInlineMessageText</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">EditInlineMessage</span></a><span class="symbol">, </span><a href="../-edit-text-chat-message/index.html"><span class="identifier">EditTextChatMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a><span class="symbol">, </span><a href="../-edit-disable-web-page-preview-message/index.html"><span class="identifier">EditDisableWebPagePreviewMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.-live-location/-stop-inline-message-live-location/index.html">StopInlineMessageLiveLocation</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">StopInlineMessageLiveLocation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">EditInlineMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

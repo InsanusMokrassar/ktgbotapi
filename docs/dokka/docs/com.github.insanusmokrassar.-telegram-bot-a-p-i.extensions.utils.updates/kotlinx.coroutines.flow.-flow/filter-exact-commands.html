@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>filterExactCommands - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates</a>&nbsp;/&nbsp;<a href="index.html">kotlinx.coroutines.flow.Flow</a>&nbsp;/&nbsp;<a href="./filter-exact-commands.html">filterExactCommands</a><br/>
+<br/>
+<h1>filterExactCommands</h1>
+(common) <a name="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterExactCommands(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterExactCommands.T)), kotlin.text.Regex)"></a>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html"><span class="identifier">BaseSentMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterExactCommands</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterExactCommands(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterExactCommands.T)), kotlin.text.Regex)/commandRegex">commandRegex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/-text-content/index.html"><span class="identifier">TextContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI-extensions-utils/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/extensions/utils/updates/CommandsFilters.kt#L24">(source)</a>
+<p>Convert incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/content.html">com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content</a> of
+messages with <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/full-entities-list.html">fullEntitiesList</a> and check that incoming message contains ONLY ONE <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html">TextSource</a> and that is
+<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-bot-command-text-source/index.html">BotCommandTextSource</a>. Besides, it is checking that <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/matches.html">BotCommandTextSource.command</a> with incoming
+<a href="filter-exact-commands.html#com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterExactCommands(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterExactCommands.T)), kotlin.text.Regex)/commandRegex">commandRegex</a></p>
+<p><strong>Return</strong><br/>
+The same message in case if it contains only <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-bot-command-text-source/index.html">BotCommandTextSource</a> with <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-bot-command-text-source/command.html">Regex.matches</a></p>
+<p><strong>See Also</strong><br/>
+<p><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/full-entities-list.html">fullEntitiesList</a></p>
+<p><a href="as-content-messages-flow.html">asContentMessagesFlow</a></p>
+<p><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.extensions.utils/kotlinx.coroutines.flow.-flow/only-text-content-messages.html">onlyTextContentMessages</a></p>
+</p>
+</BODY>
+</HTML>

@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EditTextChatMessage - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.requests.edit.abstracts</a>&nbsp;/&nbsp;<a href="./index.html">EditTextChatMessage</a><br/>
+<br/>
+<h1>EditTextChatMessage</h1>
+(common) <code><span class="keyword">interface </span><span class="identifier">EditTextChatMessage</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/edit/abstracts/EditTextChatMessage.kt#L5">(source)</a>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="parse-mode.html">parseMode</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">parseMode</span><span class="symbol">: </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-parse-mode/-parse-mode/index.html"><span class="identifier">ParseMode</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="text.html">text</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">text</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.caption/-edit-chat-message-caption/index.html">EditChatMessageCaption</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditChatMessageCaption</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-edit-chat-message.html"><span class="identifier">EditChatMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content.abstracts/-media-content/index.html"><span class="identifier">MediaContent</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="./index.html"><span class="identifier">EditTextChatMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.text/-edit-chat-message-text/index.html">EditChatMessageText</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditChatMessageText</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-edit-chat-message.html"><span class="identifier">EditChatMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/-text-content/index.html"><span class="identifier">TextContent</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="./index.html"><span class="identifier">EditTextChatMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a><span class="symbol">, </span><a href="../-edit-disable-web-page-preview-message/index.html"><span class="identifier">EditDisableWebPagePreviewMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.caption/-edit-inline-message-caption/index.html">EditInlineMessageCaption</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditInlineMessageCaption</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-edit-inline-message/index.html"><span class="identifier">EditInlineMessage</span></a><span class="symbol">, </span><a href="./index.html"><span class="identifier">EditTextChatMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.requests.edit.text/-edit-inline-message-text/index.html">EditInlineMessageText</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">EditInlineMessageText</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-edit-inline-message/index.html"><span class="identifier">EditInlineMessage</span></a><span class="symbol">, </span><a href="./index.html"><span class="identifier">EditTextChatMessage</span></a><span class="symbol">, </span><a href="../-edit-reply-message/index.html"><span class="identifier">EditReplyMessage</span></a><span class="symbol">, </span><a href="../-edit-disable-web-page-preview-message/index.html"><span class="identifier">EditDisableWebPagePreviewMessage</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

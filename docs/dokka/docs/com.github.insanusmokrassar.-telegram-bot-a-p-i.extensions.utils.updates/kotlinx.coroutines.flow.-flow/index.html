@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.kotlinx.coroutines.flow.Flow - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates</a>&nbsp;/&nbsp;<a href="./index.html">kotlinx.coroutines.flow.Flow</a><br/>
+<br/>
+<h3>Extensions for kotlinx.coroutines.flow.Flow</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="as-chat-events-flow.html">asChatEventsFlow</a></h4>
+</td>
+<td>
+<p>Will map incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html">BaseSentMessageUpdate</a>s to <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-chat-event-message/index.html">ChatEventMessage</a> from <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-message-update/data.html">BaseSentMessageUpdate.data</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html"><span class="identifier">BaseSentMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">asChatEventsFlow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-chat-event-message/index.html"><span class="identifier">ChatEventMessage</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="as-content-messages-flow.html">asContentMessagesFlow</a></h4>
+</td>
+<td>
+<p>Will map incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html">BaseSentMessageUpdate</a>s to <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html">ContentMessage</a> from <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-message-update/data.html">BaseSentMessageUpdate.data</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html"><span class="identifier">BaseSentMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">asContentMessagesFlow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="as-data-callback-query-flow.html">asDataCallbackQueryFlow</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update/-callback-query-update/index.html"><span class="identifier">CallbackQueryUpdate</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">asDataCallbackQueryFlow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-callback-query/-data-callback-query/index.html"><span class="identifier">DataCallbackQuery</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="as-game-short-name-callback-query-flow.html">asGameShortNameCallbackQueryFlow</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update/-callback-query-update/index.html"><span class="identifier">CallbackQueryUpdate</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">asGameShortNameCallbackQueryFlow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-callback-query/-game-short-name-callback-query/index.html"><span class="identifier">GameShortNameCallbackQuery</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="as-unknown-callback-query-flow.html">asUnknownCallbackQueryFlow</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update/-callback-query-update/index.html"><span class="identifier">CallbackQueryUpdate</span></a><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">asUnknownCallbackQueryFlow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-callback-query/-unknown-callback-query-type/index.html"><span class="identifier">UnknownCallbackQueryType</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="as-unknown-messages-flow.html">asUnknownMessagesFlow</a></h4>
+</td>
+<td>
+<p>Will map incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html">BaseSentMessageUpdate</a>s to <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-unknown-message-type/index.html">UnknownMessageType</a> from <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-message-update/data.html">BaseSentMessageUpdate.data</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html"><span class="identifier">BaseSentMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">asUnknownMessagesFlow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-unknown-message-type/index.html"><span class="identifier">UnknownMessageType</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="filter-base-message-updates.html">filterBaseMessageUpdates</a></h4>
+</td>
+<td>
+<p><a href="#">Flow.filter</a> incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-message-update/index.html">BaseMessageUpdate</a>s by their <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-id/index.html">ChatId</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-message-update/index.html"><span class="identifier">BaseMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterBaseMessageUpdates</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterBaseMessageUpdates(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterBaseMessageUpdates.T)), com.github.insanusmokrassar.TelegramBotAPI.types.ChatId)/chatId">chatId</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-id/index.html"><span class="identifier">ChatId</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p><a href="#">Flow.filter</a> incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-message-update/index.html">BaseMessageUpdate</a>s by their <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-id/index.html">ChatId</a> using <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.chat.abstracts/-chat/id.html">Chat.id</a> of <a href="filter-base-message-updates.html#com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterBaseMessageUpdates(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterBaseMessageUpdates.T)), com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat)/chat">chat</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-message-update/index.html"><span class="identifier">BaseMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterBaseMessageUpdates</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterBaseMessageUpdates(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterBaseMessageUpdates.T)), com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat)/chat">chat</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.chat.abstracts/-chat/index.html"><span class="identifier">Chat</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="filter-commands-inside-text-messages.html">filterCommandsInsideTextMessages</a></h4>
+</td>
+<td>
+<p>Convert incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/content.html">com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content</a> of
+messages with <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/full-entities-list.html">fullEntitiesList</a> and check that incoming message contains <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-bot-command-text-source/index.html">BotCommandTextSource</a>. Besides, it is
+checking that <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/matches.html">BotCommandTextSource.command</a> with incoming <a href="filter-commands-inside-text-messages.html#com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterCommandsInsideTextMessages(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterCommandsInsideTextMessages.T)), kotlin.text.Regex)/commandRegex">commandRegex</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html"><span class="identifier">BaseSentMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterCommandsInsideTextMessages</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterCommandsInsideTextMessages(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterCommandsInsideTextMessages.T)), kotlin.text.Regex)/commandRegex">commandRegex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/-text-content/index.html"><span class="identifier">TextContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="filter-commands-with-args.html">filterCommandsWithArgs</a></h4>
+</td>
+<td>
+<p>Convert incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/content.html">com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content</a> of
+messages with <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/full-entities-list.html">fullEntitiesList</a> and check that incoming message contains first <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html">TextSource</a> as
+<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-bot-command-text-source/index.html">BotCommandTextSource</a>. Besides, it is checking that <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/matches.html">BotCommandTextSource.command</a> with incoming
+<a href="filter-commands-with-args.html#com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterCommandsWithArgs(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterCommandsWithArgs.T)), kotlin.text.Regex)/commandRegex">commandRegex</a> and for other <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html">TextSource</a> objects used next rules: all incoming text sources will be passed as is,
+<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-regular-text-source/index.html">RegularTextSource</a> will be split by " " for several <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-regular-text-source/index.html">RegularTextSource</a> which will contains not empty args without
+spaces.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html"><span class="identifier">BaseSentMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterCommandsWithArgs</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterCommandsWithArgs(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterCommandsWithArgs.T)), kotlin.text.Regex)/commandRegex">commandRegex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html"><span class="identifier">TextSource</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="filter-exact-commands.html">filterExactCommands</a></h4>
+</td>
+<td>
+<p>Convert incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/content.html">com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content</a> of
+messages with <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/full-entities-list.html">fullEntitiesList</a> and check that incoming message contains ONLY ONE <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-text-source/index.html">TextSource</a> and that is
+<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-message-entity.textsources/-bot-command-text-source/index.html">BotCommandTextSource</a>. Besides, it is checking that <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/matches.html">BotCommandTextSource.command</a> with incoming
+<a href="filter-exact-commands.html#com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterExactCommands(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterExactCommands.T)), kotlin.text.Regex)/commandRegex">commandRegex</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.abstracts/-base-sent-message-update.html"><span class="identifier">BaseSentMessageUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterExactCommands</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterExactCommands(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterExactCommands.T)), kotlin.text.Regex)/commandRegex">commandRegex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/-regex/index.html"><span class="identifier">Regex</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.abstracts/-content-message/index.html"><span class="identifier">ContentMessage</span></a><span class="symbol">&lt;</span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.message.content/-text-content/index.html"><span class="identifier">TextContent</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="filter-sent-media-group-updates.html">filterSentMediaGroupUpdates</a></h4>
+</td>
+<td>
+<p><a href="#">Flow.filter</a> incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.-media-group-updates/-sent-media-group-update/index.html">SentMediaGroupUpdate</a>s by their <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-id/index.html">ChatId</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.-media-group-updates/-sent-media-group-update/index.html"><span class="identifier">SentMediaGroupUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterSentMediaGroupUpdates</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterSentMediaGroupUpdates(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterSentMediaGroupUpdates.T)), com.github.insanusmokrassar.TelegramBotAPI.types.ChatId)/chatId">chatId</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-id/index.html"><span class="identifier">ChatId</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p><a href="#">Flow.filter</a> incoming <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.-media-group-updates/-sent-media-group-update/index.html">SentMediaGroupUpdate</a>s by their <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types/-chat-id/index.html">ChatId</a> using <a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.chat.abstracts/-chat/id.html">Chat.id</a> of <a href="filter-sent-media-group-updates.html#com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterSentMediaGroupUpdates(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterSentMediaGroupUpdates.T)), com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat)/chat">chat</a></p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.update.-media-group-updates/-sent-media-group-update/index.html"><span class="identifier">SentMediaGroupUpdate</span></a><span class="symbol">&gt;</span> <span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">filterSentMediaGroupUpdates</span><span class="symbol">(</span><span class="identifier" id="com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates$filterSentMediaGroupUpdates(kotlinx.coroutines.flow.Flow((com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.filterSentMediaGroupUpdates.T)), com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat)/chat">chat</span><span class="symbol">:</span>&nbsp;<a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.chat.abstracts/-chat/index.html"><span class="identifier">Chat</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

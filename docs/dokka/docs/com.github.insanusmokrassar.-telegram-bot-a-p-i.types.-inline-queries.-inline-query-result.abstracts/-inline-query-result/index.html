@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>InlineQueryResult - docs</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">docs</a>&nbsp;/&nbsp;<a href="../index.html">com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts</a>&nbsp;/&nbsp;<a href="./index.html">InlineQueryResult</a><br/>
+<br/>
+<h1>InlineQueryResult</h1>
+(common) <code><span class="keyword">interface </span><span class="identifier">InlineQueryResult</span></code> <a href="https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult.kt#L8">(source)</a>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="id.html">id</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">id</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="reply-markup.html">replyMarkup</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">replyMarkup</span><span class="symbol">: </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.buttons/-inline-keyboard-markup/index.html"><span class="identifier">InlineKeyboardMarkup</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="type.html">type</a></h4>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">type</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+(common) 
+<h4><a href="../-described-inline-query-result/index.html">DescribedInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">DescribedInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-file-inline-query-result/index.html">FileInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">FileInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result/-inline-query-result-article/index.html">InlineQueryResultArticle</a></h4>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">InlineQueryResultArticle</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../-thumb-sized-inline-query-result/index.html"><span class="identifier">ThumbSizedInlineQueryResult</span></a><span class="symbol">, </span><a href="../-titled-inline-query-result/index.html"><span class="identifier">TitledInlineQueryResult</span></a><span class="symbol">, </span><a href="../-described-inline-query-result/index.html"><span class="identifier">DescribedInlineQueryResult</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a><span class="symbol">, </span><a href="../-url-inline-query-result/index.html"><span class="identifier">UrlInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result.abstracts.results.audio/-inline-query-result-audio-common.html">InlineQueryResultAudioCommon</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">InlineQueryResultAudioCommon</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-captioned-output/index.html"><span class="identifier">CaptionedOutput</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result/-inline-query-result-contact/index.html">InlineQueryResultContact</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InlineQueryResultContact</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-common-contact-data/index.html"><span class="identifier">CommonContactData</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a><span class="symbol">, </span><a href="../-thumbed-inline-query-result/index.html"><span class="identifier">ThumbedInlineQueryResult</span></a><span class="symbol">, </span><a href="../-thumb-sized-inline-query-result/index.html"><span class="identifier">ThumbSizedInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result.abstracts.results.document/-inline-query-result-document-common.html">InlineQueryResultDocumentCommon</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">InlineQueryResultDocumentCommon</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../-titled-inline-query-result/index.html"><span class="identifier">TitledInlineQueryResult</span></a><span class="symbol">, </span><a href="../-described-inline-query-result/index.html"><span class="identifier">DescribedInlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-captioned-output/index.html"><span class="identifier">CaptionedOutput</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result/-inline-query-result-game/index.html">InlineQueryResultGame</a></h4>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">InlineQueryResultGame</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result.abstracts.results.gif/-inline-query-result-gif-common.html">InlineQueryResultGifCommon</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">InlineQueryResultGifCommon</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../-optionally-titled-inline-query-result.html"><span class="identifier">OptionallyTitledInlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-captioned-output/index.html"><span class="identifier">CaptionedOutput</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result/-inline-query-result-location/index.html">InlineQueryResultLocation</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InlineQueryResultLocation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-locationed/index.html"><span class="identifier">Locationed</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-livable/index.html"><span class="identifier">Livable</span></a><span class="symbol">, </span><a href="../-titled-inline-query-result/index.html"><span class="identifier">TitledInlineQueryResult</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a><span class="symbol">, </span><a href="../-thumbed-inline-query-result/index.html"><span class="identifier">ThumbedInlineQueryResult</span></a><span class="symbol">, </span><a href="../-thumb-sized-inline-query-result/index.html"><span class="identifier">ThumbSizedInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result.abstracts.results.mpeg4gif/-inline-query-result-mpeg4-gif-common.html">InlineQueryResultMpeg4GifCommon</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">InlineQueryResultMpeg4GifCommon</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../-optionally-titled-inline-query-result.html"><span class="identifier">OptionallyTitledInlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-captioned-output/index.html"><span class="identifier">CaptionedOutput</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result.abstracts.results.photo/-inline-query-result-photo-common.html">InlineQueryResultPhotoCommon</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">InlineQueryResultPhotoCommon</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../-optionally-titled-inline-query-result.html"><span class="identifier">OptionallyTitledInlineQueryResult</span></a><span class="symbol">, </span><a href="../-described-inline-query-result/index.html"><span class="identifier">DescribedInlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-captioned-output/index.html"><span class="identifier">CaptionedOutput</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result/-inline-query-result-sticker-cached/index.html">InlineQueryResultStickerCached</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InlineQueryResultStickerCached</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a><span class="symbol">, </span><a href="../-with-file-id-inline-query-result/index.html"><span class="identifier">WithFileIdInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result/-inline-query-result-venue/index.html">InlineQueryResultVenue</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">InlineQueryResultVenue</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-locationed/index.html"><span class="identifier">Locationed</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-common-venue-data/index.html"><span class="identifier">CommonVenueData</span></a><span class="symbol">, </span><a href="../-titled-inline-query-result/index.html"><span class="identifier">TitledInlineQueryResult</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a><span class="symbol">, </span><a href="../-thumbed-inline-query-result/index.html"><span class="identifier">ThumbedInlineQueryResult</span></a><span class="symbol">, </span><a href="../-thumb-sized-inline-query-result/index.html"><span class="identifier">ThumbSizedInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result.abstracts.results.video/-inline-query-result-video-common.html">InlineQueryResultVideoCommon</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">InlineQueryResultVideoCommon</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../-titled-inline-query-result/index.html"><span class="identifier">TitledInlineQueryResult</span></a><span class="symbol">, </span><a href="../-described-inline-query-result/index.html"><span class="identifier">DescribedInlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-captioned-output/index.html"><span class="identifier">CaptionedOutput</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.types.-inline-queries.-inline-query-result.abstracts.results.voice/-inline-query-result-voice-common.html">InlineQueryResultVoiceCommon</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">InlineQueryResultVoiceCommon</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-captioned-output/index.html"><span class="identifier">CaptionedOutput</span></a><span class="symbol">, </span><a href="../-with-input-message-content-inline-query-result/index.html"><span class="identifier">WithInputMessageContentInlineQueryResult</span></a><span class="symbol">, </span><a href="../-titled-inline-query-result/index.html"><span class="identifier">TitledInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-optionally-titled-inline-query-result.html">OptionallyTitledInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">OptionallyTitledInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-titled/index.html"><span class="identifier">Titled</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-positioned-inline-query-result.html">PositionedInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">PositionedInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../../com.github.insanusmokrassar.-telegram-bot-a-p-i.-common-abstracts/-locationed/index.html"><span class="identifier">Locationed</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-sized-inline-query-result/index.html">SizedInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SizedInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-thumbed-inline-query-result/index.html">ThumbedInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ThumbedInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-thumb-sized-inline-query-result/index.html">ThumbSizedInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ThumbSizedInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a><span class="symbol">, </span><a href="../-thumbed-inline-query-result/index.html"><span class="identifier">ThumbedInlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-url-inline-query-result/index.html">UrlInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">UrlInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a></code></td>
+</tr>
+<tr>
+<td>
+(common) 
+<h4><a href="../-with-input-message-content-inline-query-result/index.html">WithInputMessageContentInlineQueryResult</a></h4>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">WithInputMessageContentInlineQueryResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">InlineQueryResult</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
