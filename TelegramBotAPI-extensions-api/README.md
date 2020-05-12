@@ -55,13 +55,21 @@ compile "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$telegrambota
 ## Example of usage and comparison with `TelegramBotAPI`
 
 Here presented review table for comparison of api from original [TelegramBotAPI](../TelegramBotAPI/README.md#Requests)
-and extensions-api library:
-
-In all examples supposed that you have created bot with next approximate lines:
+and extensions-api library. First of all, this library allow to create bot instance in a new way:
 
 ```kotlin
-val bot: RequestsExecutor = ...
+val bot = telegramBot("IT IS YOUR TOKEN")
 ```
+
+There are a lot of signature for this. For example, you can create bot with next code:
+
+```kotlin
+val bot = telegramBot("IT IS YOUR TOKEN") {
+    proxy = ProxyBuilder.socks("127.0.0.1", 1080)
+}
+```
+
+In all examples supposed that you have created bot.
 
 | TelegramBotAPI | TelegramBotAPI-extensions-api |
 |----------------|-------------------------------|
