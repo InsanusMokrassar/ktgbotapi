@@ -1,16 +1,14 @@
-package com.github.insanusmokrassar.TelegramBotAPI.extensions.api
+package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.retrieving
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.convertWithMediaGroupUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.utils.updateHandlerWithMediaGroupsAdaptation
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.nonstrictJsonFormat
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateDeserializationStrategy
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.accumulateByKey
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.executeAsync
 import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
 import io.ktor.application.call
@@ -19,8 +17,8 @@ import io.ktor.response.respond
 import io.ktor.routing.*
 import io.ktor.server.engine.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
 import java.util.concurrent.Executors
+
 
 /**
  * @param [scope] Will be used for mapping of media groups
@@ -241,5 +239,3 @@ suspend fun RequestsExecutor.setWebhook(
     maxAllowedConnections,
     filter.asUpdateReceiver
 )
-
-

@@ -1,10 +1,10 @@
-package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates
+package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.retrieving
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestException
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.convertWithMediaGroupUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.lastUpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.getUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.convertWithMediaGroupUpdates
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.lastUpdateIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.requests.GetUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
@@ -14,8 +14,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.PreviewFeature
 import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
 import kotlinx.coroutines.*
 
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
-fun RequestsExecutor.startGettingOfUpdates(
+fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (suspend (Exception) -> Unit)? = null,
@@ -33,10 +32,12 @@ fun RequestsExecutor.startGettingOfUpdates(
                 }
             }
         ) {
-            val updates = getUpdates(
-                offset = lastUpdateIdentifier?.plus(1),
-                timeout = timeoutSeconds,
-                allowed_updates = allowedUpdates
+            val updates = execute(
+                GetUpdates(
+                    offset = lastUpdateIdentifier?.plus(1),
+                    timeout = timeoutSeconds,
+                    allowed_updates = allowedUpdates
+                )
             ).let { originalUpdates ->
                 val converted = originalUpdates.convertWithMediaGroupUpdates()
                 /**
@@ -72,8 +73,7 @@ fun RequestsExecutor.startGettingOfUpdates(
 @FlowPreview
 @PreviewFeature
 @Suppress("unused")
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
-fun RequestsExecutor.startGettingFlowsUpdates(
+fun RequestsExecutor.startGettingFlowsUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (suspend (Exception) -> Unit)? = null,
@@ -81,16 +81,15 @@ fun RequestsExecutor.startGettingFlowsUpdates(
     flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit = {}
 ): FlowsUpdatesFilter = FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply {
     flowUpdatesPreset()
-    startGettingOfUpdates(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
+    startGettingOfUpdatesByLongPolling(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
 }
 
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
-fun RequestsExecutor.startGettingOfUpdates(
+fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     updatesFilter: UpdatesFilter,
     timeoutSeconds: Seconds = 30,
     exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
-): Job = startGettingOfUpdates(
+): Job = startGettingOfUpdatesByLongPolling(
     timeoutSeconds,
     scope,
     exceptionsHandler,
@@ -98,8 +97,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     updatesFilter.asUpdateReceiver
 )
 
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
-fun RequestsExecutor.startGettingOfUpdates(
+fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
@@ -119,7 +117,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     scope: CoroutineScope = GlobalScope
 ): Job {
-    return startGettingOfUpdates(
+    return startGettingOfUpdatesByLongPolling(
         SimpleUpdatesFilter(
             messageCallback,
             messageMediaGroupCallback,
@@ -144,8 +142,7 @@ fun RequestsExecutor.startGettingOfUpdates(
 }
 
 @Suppress("unused")
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
-fun RequestsExecutor.startGettingOfUpdates(
+fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     mediaGroupCallback: UpdateReceiver<MediaGroupUpdate>? = null,
     editedMessageCallback: UpdateReceiver<EditMessageUpdate>? = null,
@@ -161,7 +158,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     timeoutSeconds: Seconds = 30,
     exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
-): Job = startGettingOfUpdates(
+): Job = startGettingOfUpdatesByLongPolling(
     messageCallback = messageCallback,
     messageMediaGroupCallback = mediaGroupCallback,
     editedMessageCallback = editedMessageCallback,
@@ -181,3 +178,4 @@ fun RequestsExecutor.startGettingOfUpdates(
     exceptionsHandler = exceptionsHandler,
     scope = scope
 )
+
