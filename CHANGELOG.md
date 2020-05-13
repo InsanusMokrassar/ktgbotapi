@@ -53,8 +53,10 @@
 
 * `TelegramBotAPI`:
     * Currently `UpdateDeserializationStrategy` is publicly available
+    * All `setWebhook` extensions was marked as deprecated and replaced into `TelegramBotAPI-extensions-api`
 * `TelegramBotAPI-extensions-api`:
     * New extensions `setWebhook` and `includeWebhookInRoute` was added
+    * New extension `CoroutineScope#updateHandlerWithMediaGroupsAdaptation` was added
 * `TelegramBotAPI-extensions-utils`:
     * Extension `asTelegramUpdate` was added
 
