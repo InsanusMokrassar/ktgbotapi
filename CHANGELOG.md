@@ -53,6 +53,8 @@
 
 * `TelegramBotAPI`:
     * Currently `UpdateDeserializationStrategy` is publicly available
+* `TelegramBotAPI-extensions-utils`:
+    * Extension `asTelegramUpdate` was added
 
 ### 0.27.2
 
