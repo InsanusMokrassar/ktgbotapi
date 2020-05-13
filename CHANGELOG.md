@@ -53,6 +53,8 @@
 
 * `TelegramBotAPI`:
     * Currently `UpdateDeserializationStrategy` is publicly available
+* `TelegramBotAPI-extensions-api`:
+    * New extensions `setWebhook` and `includeWebhookInRoute` was added
 * `TelegramBotAPI-extensions-utils`:
     * Extension `asTelegramUpdate` was added
 
