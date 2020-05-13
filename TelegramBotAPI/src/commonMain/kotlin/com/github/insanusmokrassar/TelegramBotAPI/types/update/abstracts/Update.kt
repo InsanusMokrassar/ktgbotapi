@@ -26,7 +26,14 @@ internal object UpdateSerializerWithoutSerialization : KSerializer<Update> {
     override fun serialize(encoder: Encoder, value: Update) = throw UnsupportedOperationException()
 }
 
-internal object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
+/**
+ * Use this object to deserialize objects with type [Update]. Currently it is restricted to use this
+ * [DeserializationStrategy] only with JSON
+ *
+ * @see StringFormat.parse
+ * @see kotlinx.serialization.json.Json.parse
+ */
+object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
     override val descriptor: SerialDescriptor = JsonElementSerializer.descriptor
 
     override fun patch(decoder: Decoder, old: Update): Update = throw UpdateNotSupportedException("Update")

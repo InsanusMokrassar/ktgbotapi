@@ -51,6 +51,9 @@
 
 ### 0.27.3
 
+* `TelegramBotAPI`:
+    * Currently `UpdateDeserializationStrategy` is publicly available
+
 ### 0.27.2
 
 * `Common`:
