@@ -14,7 +14,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.PreviewFeature
 import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
 import kotlinx.coroutines.*
 
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
+@Deprecated("Replaced and renamed in TelegramBotAPI-extensions-utils")
 fun RequestsExecutor.startGettingOfUpdates(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
@@ -72,7 +72,7 @@ fun RequestsExecutor.startGettingOfUpdates(
 @FlowPreview
 @PreviewFeature
 @Suppress("unused")
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
+@Deprecated("Replaced and renamed in TelegramBotAPI-extensions-utils")
 fun RequestsExecutor.startGettingFlowsUpdates(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
@@ -84,7 +84,7 @@ fun RequestsExecutor.startGettingFlowsUpdates(
     startGettingOfUpdates(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
 }
 
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
+@Deprecated("Replaced and renamed in TelegramBotAPI-extensions-utils")
 fun RequestsExecutor.startGettingOfUpdates(
     updatesFilter: UpdatesFilter,
     timeoutSeconds: Seconds = 30,
@@ -98,7 +98,7 @@ fun RequestsExecutor.startGettingOfUpdates(
     updatesFilter.asUpdateReceiver
 )
 
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
+@Deprecated("Replaced and renamed in TelegramBotAPI-extensions-utils")
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
@@ -144,7 +144,7 @@ fun RequestsExecutor.startGettingOfUpdates(
 }
 
 @Suppress("unused")
-@Deprecated("Replaced and renamed into TelegramBotAPI-extensions-utils")
+@Deprecated("Replaced and renamed in TelegramBotAPI-extensions-utils")
 fun RequestsExecutor.startGettingOfUpdates(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     mediaGroupCallback: UpdateReceiver<MediaGroupUpdate>? = null,
