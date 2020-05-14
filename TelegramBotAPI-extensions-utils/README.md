@@ -80,7 +80,7 @@ several useful extensions for both of them:
 
 #### Long polling
 
-The most simple way is Long Polling. The most simple way was mentioned above:
+The most simple way is Long Polling and one of the usages was mentioned above:
 
 ```kotlin
 val filter = bot.startGettingFlowsUpdatesByLongPolling(
