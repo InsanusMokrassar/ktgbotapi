@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import io.ktor.utils.io.core.Closeable
 
 /**
- * Interface for making requests to Telegram Bot API
+ * Interface for making requests to Telegram Bot API. Currently, there is only one built-in implementation -
+ * [com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor]
  *
  * @see Request
  * @see com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor
