@@ -74,3 +74,49 @@ Anyway, all libraries are very typical inside of them. Examples:
 * `TelegramBotAPI-extensions-api` typical syntax look like `requestsExecutor.someRequest()` (in most cases it would be
 better to use `bot` name instead of `requestsExecutor`)
 * `TelegramBotAPI-extensions-utils` will look like `filter.filterBaseMessageUpdates(chatId).filterExactCommands(Regex("^.*$"))...`
+
+## Build instruction
+
+If you want to build this project or to contribute, there are several recommendations:
+
+### Build
+
+In case if you want to just build project, run next command:
+
+```bash
+./gradlew clean build
+```
+
+On windows:
+
+```
+gradlew.bat clean build
+```
+
+### Publishing for work with your version locally
+
+In case, if you want to work in your other projects using your modification (or some state) of this library,
+you can use next code:
+
+```bash
+./gradlew clean build publishToMavenLocal
+```
+
+On windows:
+
+```
+gradlew.bat clean build publishToMavenLocal
+```
+
+But you must remember, that in this case your local maven repo must be the first one from
+your project retrieving libraries:
+
+```groovy
+repositories {
+    mavenLocal() // that must be the first one
+    jcenter()
+    mavenCentral()
+}
+```
+
+Besides, for your own version you can change variable `library_version` in the file [gradle.properties](./gradle.properties).
