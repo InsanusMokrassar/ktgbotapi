@@ -2,14 +2,13 @@ package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.retr
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.nonstrictJsonFormat
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateDeserializationStrategy
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.executeAsync
+import com.github.insanusmokrassar.TelegramBotAPI.utils.ExceptionHandler
 import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
 import io.ktor.application.call
 import io.ktor.request.receiveText
@@ -31,9 +30,9 @@ import java.util.concurrent.Executors
  * @see UpdatesFilter
  * @see UpdatesFilter.asUpdateReceiver
  */
-fun Route.includeWebhookInRoute(
+fun Route.includeWebhookHandlingInRoute(
     scope: CoroutineScope,
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
     block: UpdateReceiver<Update>
 ) {
     val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block)
@@ -56,7 +55,7 @@ fun Route.includeWebhookInRoute(
 /**
  * Setting up ktor server, set webhook info via [SetWebhook] request.
  *
- * @param port port which will be listen by bot
+ * @param listenPort port which will be listen by bot
  * @param listenRoute address to listen by bot
  * @param scope Scope which will be used for
  * @param privateKeyConfig If configured - server will be created with [sslConnector]. [connector] will be used otherwise
@@ -65,14 +64,14 @@ fun Route.includeWebhookInRoute(
  * @see UpdatesFilter
  * @see UpdatesFilter.asUpdateReceiver
  */
-fun setWebhook(
-    port: Int,
+fun startListenWebhooks(
+    listenPort: Int,
     engineFactory: ApplicationEngineFactory<*, *>,
+    exceptionsHandler: ExceptionHandler<Unit>,
     listenHost: String = "0.0.0.0",
     listenRoute: String = "/",
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     block: UpdateReceiver<Update>
 ): ApplicationEngine {
     lateinit var engine: ApplicationEngine
@@ -81,7 +80,7 @@ fun setWebhook(
         module {
             routing {
                 route(listenRoute) {
-                    includeWebhookInRoute(scope, exceptionsHandler, block)
+                    includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
                 }
             }
         }
@@ -93,11 +92,11 @@ fun setWebhook(
                 privateKeyConfig::aliasPassword
             ) {
                 host = listenHost
-                this.port = port
+                this.port = listenPort
             }
         } ?: connector {
             host = listenHost
-            this.port = port
+            this.port = listenPort
         }
 
     }
@@ -110,52 +109,29 @@ fun setWebhook(
 /**
  * Setting up ktor server, set webhook info via [SetWebhook] request.
  *
- * @param url URL of webhook WITHOUT including of [port]
- * @param port port which will be listen by bot
+ * @param listenPort port which will be listen by bot
  * @param listenRoute address to listen by bot
- * @param certificate [com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile] or [com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId]
- * which will be used by telegram to send encrypted messages
  * @param scope Scope which will be used for
  *
  * @see com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter
  * @see UpdatesFilter.asUpdateReceiver
  */
-suspend fun RequestsExecutor.setWebhook(
-    url: String,
-    port: Int,
+@Suppress("unused")
+suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
+    listenPort: Int,
     engineFactory: ApplicationEngineFactory<*, *>,
+    setWebhookRequest: SetWebhook,
+    exceptionsHandler: ExceptionHandler<Unit> = {},
     listenHost: String = "0.0.0.0",
     listenRoute: String = "/",
-    certificate: InputFile? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    allowedUpdates: List<String>? = null,
-    maxAllowedConnections: Int? = null,
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
     block: UpdateReceiver<Update>
 ): Job {
-    val executeDeferred = certificate ?.let {
-        executeAsync(
-            SetWebhook(
-                url,
-                certificate,
-                maxAllowedConnections,
-                allowedUpdates
-            )
-        )
-    } ?: executeAsync(
-        SetWebhook(
-            url,
-            maxAllowedConnections,
-            allowedUpdates
-        )
-    )
-
-
     return try {
-        executeDeferred.await()
-        val engine = setWebhook(port, engineFactory, listenHost, listenRoute, privateKeyConfig, scope, exceptionsHandler, block)
+        execute(setWebhookRequest)
+        val engine = startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, block)
         scope.launch {
             engine.environment.parentCoroutineContext[Job] ?.join()
             engine.stop(1000, 5000)
@@ -164,81 +140,3 @@ suspend fun RequestsExecutor.setWebhook(
         throw e
     }
 }
-
-suspend fun RequestsExecutor.setWebhook(
-    url: String,
-    port: Int,
-    engineFactory: ApplicationEngineFactory<*, *>,
-    listenHost: String = "0.0.0.0",
-    listenRoute: String = "/",
-    certificate: InputFile? = null,
-    privateKeyConfig: WebhookPrivateKeyConfig? = null,
-    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    allowedUpdates: List<String>? = null,
-    maxAllowedConnections: Int? = null,
-    block: UpdateReceiver<Update>
-) = setWebhook(
-    url,
-    port,
-    engineFactory,
-    listenHost,
-    listenRoute,
-    certificate,
-    privateKeyConfig,
-    scope,
-    allowedUpdates,
-    maxAllowedConnections,
-    null,
-    block
-)
-
-@Suppress("unused")
-suspend fun RequestsExecutor.setWebhook(
-    url: String,
-    port: Int,
-    engineFactory: ApplicationEngineFactory<*, *>,
-    certificate: InputFile? = null,
-    privateKeyConfig: WebhookPrivateKeyConfig? = null,
-    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    allowedUpdates: List<String>? = null,
-    maxAllowedConnections: Int? = null,
-    block: UpdateReceiver<Update>
-) = setWebhook(
-    url,
-    port,
-    engineFactory,
-    certificate ?.let { "0.0.0.0" } ?: "localhost",
-    "/",
-    certificate,
-    privateKeyConfig,
-    scope,
-    allowedUpdates,
-    maxAllowedConnections,
-    block
-)
-
-@Suppress("unused")
-suspend fun RequestsExecutor.setWebhook(
-    url: String,
-    port: Int,
-    filter: UpdatesFilter,
-    engineFactory: ApplicationEngineFactory<*, *>,
-    certificate: InputFile? = null,
-    privateKeyConfig: WebhookPrivateKeyConfig? = null,
-    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    maxAllowedConnections: Int? = null,
-    listenHost: String = certificate ?.let { "0.0.0.0" } ?: "localhost",
-    listenRoute: String = "/"
-): Job = setWebhook(
-    url,
-    port,
-    engineFactory,
-    listenHost,
-    listenRoute,
-    certificate,
-    privateKeyConfig,
-    scope,
-    filter.allowedUpdates,
-    maxAllowedConnections,
-    filter.asUpdateReceiver
-)

@@ -53,7 +53,7 @@
 
 * `TelegramBotAPI`:
     * `UpdateDeserializationStrategy` is publicly available now
-    * All `setWebhook` extensions was marked as deprecated and replaced into `TelegramBotAPI-extensions-utils`
+    * All `setWebhook` extensions was marked as deprecated, renamed and replaced into `TelegramBotAPI-extensions-utils`
     * Typealias `ExceptionHandler` was added - it will be used for `handleSafely`
 * `TelegramBotAPI-extensions-api`:
     * Long Polling extensions now are deprecated in this project. It was replaced into `TelegramBotAPI-extensions-utils`
@@ -61,10 +61,10 @@
     * Extension `toTelegramUpdate` was added
     * Long Polling extensions were added
     * Updates utils were added
-    * New extensions `setWebhook` and `includeWebhookInRoute` was added
+    * New extensions `startListenWebhooks`, `setWebhookInfoAndStartListenWebhooks` and `includeWebhookHandlingInRoute` was added
     * New extension `CoroutineScope#updateHandlerWithMediaGroupsAdaptation` was added
 * `TelegramBotAPI-all`:
-    * Project is created
+    * Project was created
 
 ### 0.27.2
 

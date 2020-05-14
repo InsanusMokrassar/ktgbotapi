@@ -75,7 +75,7 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
 fun RequestsExecutor.startGettingFlowsUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
     flowsUpdatesFilterUpdatesKeeperCount: Int = 64,
     flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit = {}
 ): FlowsUpdatesFilter = FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply {
@@ -86,7 +86,7 @@ fun RequestsExecutor.startGettingFlowsUpdatesByLongPolling(
 fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     updatesFilter: UpdatesFilter,
     timeoutSeconds: Seconds = 30,
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ): Job = startGettingOfUpdatesByLongPolling(
     timeoutSeconds,
@@ -113,7 +113,7 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     timeoutSeconds: Seconds = 30,
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
     scope: CoroutineScope = GlobalScope
 ): Job {
     return startGettingOfUpdatesByLongPolling(
@@ -155,7 +155,7 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     timeoutSeconds: Seconds = 30,
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ): Job = startGettingOfUpdatesByLongPolling(
     messageCallback = messageCallback,
