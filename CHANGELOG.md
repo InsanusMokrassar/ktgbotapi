@@ -52,7 +52,7 @@
 ### 0.27.3
 
 * `TelegramBotAPI`:
-    * Currently `UpdateDeserializationStrategy` is publicly available
+    * `UpdateDeserializationStrategy` is publicly available now
     * All `setWebhook` extensions was marked as deprecated and replaced into `TelegramBotAPI-extensions-utils`
     * Typealias `ExceptionHandler` was added - it will be used for `handleSafely`
 * `TelegramBotAPI-extensions-api`:
