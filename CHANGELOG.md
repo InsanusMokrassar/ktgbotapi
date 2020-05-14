@@ -63,6 +63,8 @@
     * Updates utils were added
     * New extensions `setWebhook` and `includeWebhookInRoute` was added
     * New extension `CoroutineScope#updateHandlerWithMediaGroupsAdaptation` was added
+* `TelegramBotAPI-all`:
+    * Project is created
 
 ### 0.27.2
 

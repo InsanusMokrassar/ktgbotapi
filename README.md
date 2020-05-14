@@ -15,6 +15,7 @@ the list of this complex currently next projects:
   `RequestsExecutor`), which allows to use the core library in more pleasant way
 * [TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) - contains extensions for more comfortable
 work with commands, updates and other different things
+* [TelegramBotAPI All](TelegramBotAPI-all/README.md) - concentration of all previously mentioned libraries
 
 Most part of some specific solves or unuseful
 moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
@@ -62,11 +63,14 @@ kotlin {
 
 ## Ok, where should I start?
 
-In most cases, the most simple way will be to implement
-[TelegramBotAPI Extensions](TelegramBotAPI-extensions-api/README.md) and
-[TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) for the reason that they contains more
-simple tools. If you want to dive deeper in the core of library or develop something for it - welcome to
+In most cases, the most simple way will be to implement [TelegramBotAPI All](TelegramBotAPI-all/README.md) - it contains
+all necessary tools for comfort usage of this library. If you want to exclude some libraries, you can implement just
+[TelegramBotAPI API Extensions](TelegramBotAPI-extensions-api/README.md),
+[TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) or even
 [TelegramBotAPI](TelegramBotAPI/README.md).
+
+If you want to dive deeper in the core of library or develop something for it - welcome to learn more from
+[TelegramBotAPI](TelegramBotAPI/README.md) and our [Telegram Chat](https://teleg.one/InMoTelegramBotAPIChat).
 
 Anyway, all libraries are very typical inside of them. Examples:
 
