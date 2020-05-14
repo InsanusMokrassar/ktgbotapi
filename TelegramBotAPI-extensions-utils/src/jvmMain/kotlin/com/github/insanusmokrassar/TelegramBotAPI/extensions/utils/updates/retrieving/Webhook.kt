@@ -21,6 +21,8 @@ import java.util.concurrent.Executors
 
 
 /**
+ * Allows to include webhook in custom route everywhere in your server
+ *
  * @param [scope] Will be used for mapping of media groups
  * @param [exceptionsHandler] Pass this parameter to set custom exception handler for getting updates
  * @param [block] Some receiver block like [com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter]
@@ -57,6 +59,7 @@ fun Route.includeWebhookInRoute(
  * @param port port which will be listen by bot
  * @param listenRoute address to listen by bot
  * @param scope Scope which will be used for
+ * @param privateKeyConfig If configured - server will be created with [sslConnector]. [connector] will be used otherwise
  *
  * @see com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter

@@ -41,7 +41,7 @@ suspend fun RequestsExecutor.setWebhook(
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
     maxAllowedConnections: Int? = null,
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    exceptionsHandler: (ExceptionHandler<Unit>)? = null,
     block: UpdateReceiver<Update>
 ): Job {
     val executeDeferred = certificate ?.let {

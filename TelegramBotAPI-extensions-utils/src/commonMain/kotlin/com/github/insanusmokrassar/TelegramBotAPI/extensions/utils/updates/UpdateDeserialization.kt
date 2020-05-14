@@ -8,24 +8,24 @@ import kotlinx.serialization.json.JsonElement
 /**
  * @return Deserialize [source] as [com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update]
  */
-fun Json.asTelegramUpdate(source: String) = parse(UpdateDeserializationStrategy, source)
+fun Json.toTelegramUpdate(source: String) = parse(UpdateDeserializationStrategy, source)
 /**
  * @return Deserialize [source] as [com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update]
  */
-fun Json.asTelegramUpdate(source: JsonElement) = fromJson(UpdateDeserializationStrategy, source)
+fun Json.toTelegramUpdate(source: JsonElement) = fromJson(UpdateDeserializationStrategy, source)
 
 /**
  * @return Deserialize [this] as [com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update]. In fact,
  * it is must be JSON
  *
- * @see Json.asTelegramUpdate
+ * @see Json.toTelegramUpdate
  */
-fun String.asTelegramUpdate() = nonstrictJsonFormat.asTelegramUpdate(this)
+fun String.toTelegramUpdate() = nonstrictJsonFormat.toTelegramUpdate(this)
 /**
  * @return Deserialize [this] as [com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update]
  *
- * @see Json.asTelegramUpdate
+ * @see Json.toTelegramUpdate
  */
-fun JsonElement.asTelegramUpdate() = nonstrictJsonFormat.asTelegramUpdate(this)
+fun JsonElement.toTelegramUpdate() = nonstrictJsonFormat.toTelegramUpdate(this)
 
 

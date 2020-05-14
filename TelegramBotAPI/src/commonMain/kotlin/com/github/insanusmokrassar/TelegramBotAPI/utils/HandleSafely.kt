@@ -3,6 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.supervisorScope
 
+
+typealias ExceptionHandler<T> = suspend (Exception) -> T
 /**
  * It will run [block] inside of [supervisorScope] to avoid problems with catching of exceptions
  *
@@ -10,7 +12,7 @@ import kotlinx.coroutines.supervisorScope
  * exception will be available for catching
  */
 suspend inline fun <T> handleSafely(
-    noinline onException: suspend (Exception) -> T = { throw it },
+    noinline onException: ExceptionHandler<T> = { throw it },
     noinline block: suspend CoroutineScope.() -> T
 ): T {
     return try {

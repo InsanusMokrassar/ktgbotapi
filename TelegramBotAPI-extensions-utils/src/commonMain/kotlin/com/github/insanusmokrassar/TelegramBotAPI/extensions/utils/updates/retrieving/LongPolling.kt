@@ -10,14 +10,13 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.PreviewFeature
-import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
+import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 import kotlinx.coroutines.*
 
 fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    exceptionsHandler: (ExceptionHandler<Unit>)? = null,
     allowedUpdates: List<String>? = null,
     updatesReceiver: UpdateReceiver<Update>
 ): Job = scope.launch {
