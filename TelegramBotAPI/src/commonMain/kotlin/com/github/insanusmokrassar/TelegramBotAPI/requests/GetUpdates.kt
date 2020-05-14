@@ -11,6 +11,15 @@ private val updatesListSerializer = ListSerializer(
     UpdateSerializerWithoutSerialization
 )
 
+/**
+ * Request updates from Telegram Bot API system. It is important, that the result updates WILL NOT include
+ * [com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate] objects due to the fact,
+ * that it is internal abstraction and in fact any [com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage]
+ * is just a common [com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message]
+ *
+ * @see com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
+ * @see com.github.insanusmokrassar.TelegramBotAPI.utils.convertWithMediaGroupUpdates
+ */
 @Serializable
 data class GetUpdates(
     val offset: UpdateIdentifier? = null,// set `last update id + 1` to receive next part of updates
