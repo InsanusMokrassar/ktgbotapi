@@ -42,9 +42,9 @@ kotlin {
                     api "${project.group}:TelegramBotAPI-extensions-api:$library_version"
                     api "${project.group}:TelegramBotAPI-extensions-utils:$library_version"
                 } else {
-                    implementation project(":TelegramBotAPI")
-                    implementation project(":TelegramBotAPI-extensions-api")
-                    implementation project(":TelegramBotAPI-extensions-utils")
+                    api project(":TelegramBotAPI")
+                    api project(":TelegramBotAPI-extensions-api")
+                    api project(":TelegramBotAPI-extensions-utils")
                 }
             }
         }

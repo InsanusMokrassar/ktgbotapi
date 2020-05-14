@@ -40,7 +40,7 @@ kotlin {
                 if ((project.hasProperty('RELEASE_MODE') && project.property('RELEASE_MODE') == "true") || System.getenv('RELEASE_MODE') == "true") {
                     api "${project.group}:TelegramBotAPI:$library_version"
                 } else {
-                    implementation project(":TelegramBotAPI")
+                    api project(":TelegramBotAPI")
                 }
             }
         }
