@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
-import io.ktor.client.engine.*
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.ProxyConfig
 
 /**
  * @param proxy Standard ktor [ProxyConfig]

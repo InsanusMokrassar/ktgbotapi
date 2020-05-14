@@ -2,7 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.utils
 
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.convertWithMediaGroupUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
 import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.accumulateByKey
 import kotlinx.coroutines.CoroutineScope

@@ -12,7 +12,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 import io.ktor.application.call
 import io.ktor.request.receiveText
 import io.ktor.response.respond
-import io.ktor.routing.*
+import io.ktor.routing.post
+import io.ktor.routing.routing
 import io.ktor.server.engine.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
