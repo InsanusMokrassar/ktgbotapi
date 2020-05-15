@@ -10,6 +10,19 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
  */
 suspend fun RequestsExecutor.setWebhookInfo(
     url: String,
+    maxAllowedConnections: Int? = null,
+    allowedUpdates: List<String>? = null
+) = execute(
+    SetWebhook(
+        url, maxAllowedConnections, allowedUpdates
+    )
+)
+
+/**
+ * Use this method to send information about webhook (like [url] and [certificate])
+ */
+suspend fun RequestsExecutor.setWebhookInfo(
+    url: String,
     certificate: FileId,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null

@@ -61,6 +61,7 @@
 * `TelegramBotAPI-extensions-api`:
     * Long Polling extensions now are deprecated in this project. It was replaced into `TelegramBotAPI-extensions-utils`
     * Several `telegramBot` functions was renamed into `telegramBotWithCustomClientConfig`
+    * Add one more `setWebhookInfo` realisation
 * `TelegramBotAPI-extensions-utils`:
     * Extension `toTelegramUpdate` was added
     * Long Polling extensions were added
