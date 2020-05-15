@@ -4,6 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestException
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
+import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
 import kotlinx.coroutines.*
 
 
@@ -37,12 +38,15 @@ suspend fun <T: Any> RequestsExecutor.executeUnsafe(
 ): T? {
     var leftRetries = retries
     do {
-        try {
-            return execute(request)
-        } catch (e: RequestException) {
-            leftRetries--
-            delay(retriesDelay)
-        }
+        handleSafely(
+            {
+                leftRetries--
+                delay(retriesDelay)
+                null
+            }
+        ) {
+            execute(request)
+        } ?.let { return it }
     } while(leftRetries >= 0)
     return null
 }
