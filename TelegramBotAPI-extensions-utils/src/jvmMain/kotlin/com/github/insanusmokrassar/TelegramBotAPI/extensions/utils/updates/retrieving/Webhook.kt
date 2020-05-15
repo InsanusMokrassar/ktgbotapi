@@ -59,7 +59,7 @@ fun Route.includeWebhookHandlingInRoute(
  * Setting up ktor server, set webhook info via [SetWebhook] request.
  *
  * @param listenPort port which will be listen by bot
- * @param listenRoute address to listen by bot
+ * @param listenRoute address to listen by bot. If null - will be set up in root of host
  * @param scope Scope which will be used for
  * @param privateKeyConfig If configured - server will be created with [sslConnector]. [connector] will be used otherwise
  *
@@ -72,7 +72,7 @@ fun startListenWebhooks(
     engineFactory: ApplicationEngineFactory<*, *>,
     exceptionsHandler: ExceptionHandler<Unit>,
     listenHost: String = "0.0.0.0",
-    listenRoute: String = "/",
+    listenRoute: String? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
@@ -82,9 +82,11 @@ fun startListenWebhooks(
 
         module {
             routing {
-                route(listenRoute) {
-                    includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
-                }
+                listenRoute ?.also {
+                    route(it) {
+                        includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
+                    }
+                } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
             }
         }
         privateKeyConfig ?.let {
