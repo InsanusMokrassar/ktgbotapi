@@ -4,20 +4,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFi
 
 /**
  * Non-suspendable function for easy-to-use creating of [FlowsUpdatesFilter] and applying the block to it
- */
-fun flowsUpdatesFilter(
-    internalChannelsSizes: Int = 64,
-    block: FlowsUpdatesFilter.() -> Unit
-): FlowsUpdatesFilter = FlowsUpdatesFilter(internalChannelsSizes).apply(block)
-
-/**
- * Suspend variation for [flowsUpdatesFilter] function
  *
  * @see flowsUpdatesFilter
  */
-suspend fun flowsUpdatesFilter(
+inline fun flowsUpdatesFilter(
     internalChannelsSizes: Int = 64,
-    block: suspend FlowsUpdatesFilter.() -> Unit
+    block: FlowsUpdatesFilter.() -> Unit
 ): FlowsUpdatesFilter {
     val filter = FlowsUpdatesFilter(internalChannelsSizes)
     filter.block()
