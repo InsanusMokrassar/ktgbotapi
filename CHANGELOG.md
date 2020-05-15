@@ -60,6 +60,7 @@
         * Now it is possible to pass exceptions handler into `executeUnsafe`
 * `TelegramBotAPI-extensions-api`:
     * Long Polling extensions now are deprecated in this project. It was replaced into `TelegramBotAPI-extensions-utils`
+    * Several `telegramBot` functions was renamed into `telegramBotWithCustomClientConfig`
 * `TelegramBotAPI-extensions-utils`:
     * Extension `toTelegramUpdate` was added
     * Long Polling extensions were added

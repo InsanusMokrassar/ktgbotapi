@@ -33,7 +33,7 @@ data class BotBuilder internal constructor(
 }
 
 /**
- * @return Created by [telegramBot] function [RequestsExecutor]. This executor will be preconfigured using [token] and
+ * @return Created by [telegramBotWithCustomClientConfig] function [RequestsExecutor]. This executor will be preconfigured using [token] and
  * [block]
  */
 fun telegramBot(
