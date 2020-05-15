@@ -34,19 +34,23 @@ fun <T: Any> RequestsExecutor.executeAsync(
 suspend fun <T: Any> RequestsExecutor.executeUnsafe(
     request: Request<T>,
     retries: Int = 0,
-    retriesDelay: Long = 1000L
+    retriesDelay: Long = 1000L,
+    onAllFailed: (suspend (exceptions: Array<Exception>) -> Unit)? = null
 ): T? {
     var leftRetries = retries
+    val exceptions = onAllFailed ?.let { mutableListOf<Exception>() }
     do {
         handleSafely(
             {
                 leftRetries--
                 delay(retriesDelay)
+                exceptions ?.add(it)
                 null
             }
         ) {
             execute(request)
         } ?.let { return it }
     } while(leftRetries >= 0)
+    onAllFailed ?.invoke(exceptions ?.toTypedArray() ?: emptyArray())
     return null
 }
