@@ -2,6 +2,9 @@ package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.retr
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.nonstrictJsonFormat
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
+import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
+import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.MultipartRequestImpl
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateDeserializationStrategy
@@ -106,6 +109,29 @@ fun startListenWebhooks(
     return engine
 }
 
+internal suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhooks(
+    listenPort: Int,
+    engineFactory: ApplicationEngineFactory<*, *>,
+    setWebhookRequest: Request<Boolean>,
+    exceptionsHandler: ExceptionHandler<Unit> = {},
+    listenHost: String = "0.0.0.0",
+    listenRoute: String = "/",
+    privateKeyConfig: WebhookPrivateKeyConfig? = null,
+    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
+    block: UpdateReceiver<Update>
+): Job {
+    return try {
+        execute(setWebhookRequest)
+        val engine = startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, block)
+        scope.launch {
+            engine.environment.parentCoroutineContext[Job] ?.join()
+            engine.stop(1000, 5000)
+        }
+    } catch (e: Exception) {
+        throw e
+    }
+}
+
 /**
  * Setting up ktor server, set webhook info via [SetWebhook] request.
  *
@@ -128,15 +154,48 @@ suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
-): Job {
-    return try {
-        execute(setWebhookRequest)
-        val engine = startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, block)
-        scope.launch {
-            engine.environment.parentCoroutineContext[Job] ?.join()
-            engine.stop(1000, 5000)
-        }
-    } catch (e: Exception) {
-        throw e
-    }
-}
+): Job = internalSetWebhookInfoAndStartListenWebhooks(
+    listenPort,
+    engineFactory,
+    setWebhookRequest as Request<Boolean>,
+    exceptionsHandler,
+    listenHost,
+    listenRoute,
+    privateKeyConfig,
+    scope,
+    block
+)
+
+/**
+ * Setting up ktor server, set webhook info via [SetWebhook] request.
+ *
+ * @param listenPort port which will be listen by bot
+ * @param listenRoute address to listen by bot
+ * @param scope Scope which will be used for
+ *
+ * @see com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
+ * @see UpdatesFilter
+ * @see UpdatesFilter.asUpdateReceiver
+ */
+@Suppress("unused")
+suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
+    listenPort: Int,
+    engineFactory: ApplicationEngineFactory<*, *>,
+    setWebhookRequest: MultipartRequestImpl<SetWebhook, Map<String, MultipartFile>, Boolean>,
+    exceptionsHandler: ExceptionHandler<Unit> = {},
+    listenHost: String = "0.0.0.0",
+    listenRoute: String = "/",
+    privateKeyConfig: WebhookPrivateKeyConfig? = null,
+    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
+    block: UpdateReceiver<Update>
+): Job = internalSetWebhookInfoAndStartListenWebhooks(
+    listenPort,
+    engineFactory,
+    setWebhookRequest as Request<Boolean>,
+    exceptionsHandler,
+    listenHost,
+    listenRoute,
+    privateKeyConfig,
+    scope,
+    block
+)

@@ -9,30 +9,36 @@ import kotlinx.serialization.builtins.serializer
 
 fun SetWebhook(
     url: String,
-    certificate: InputFile,
+    certificate: MultipartFile,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
-) : Request<Boolean> {
-    val data = SetWebhook(
+): MultipartRequestImpl<SetWebhook, Map<String, MultipartFile>, Boolean> = MultipartRequestImpl(
+    SetWebhook(
         url,
-        (certificate as? FileId) ?.fileId,
+        null,
         maxAllowedConnections,
         allowedUpdates
-    )
-    return when (certificate) {
-        is FileId -> data
-        is MultipartFile -> MultipartRequestImpl(
-            data,
-            mapOf(certificateField to certificate)
-        )
-    }
-}
+    ),
+    mapOf(certificateField to certificate)
+)
+
+fun SetWebhook(
+    url: String,
+    certificate: FileId,
+    maxAllowedConnections: Int? = null,
+    allowedUpdates: List<String>? = null
+): SetWebhook = SetWebhook(
+    url,
+    certificate.fileId,
+    maxAllowedConnections,
+    allowedUpdates
+)
 
 fun SetWebhook(
     url: String,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
-) : Request<Boolean> = SetWebhook(
+) = SetWebhook(
     url,
     null,
     maxAllowedConnections,
