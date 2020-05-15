@@ -76,7 +76,17 @@ updates retrieving:
 * Long Polling
 
 Both of them you could use in your project using [TelegramBotAPI](../TelegramBotAPI/README.md), but here there are
-several useful extensions for both of them:
+several useful extensions for both of them.
+
+Anyway, in both of ways it will be useful to know that it is possible to create `UpdateReceiver` object using function
+`flowsUpdatesFilter`:
+
+```kotlin
+val internalChannelsSizes = 128
+flowsUpdatesFilter(internalChannelsSizes/* default is 64 */) {
+    /* ... */
+}
+```
 
 #### Long polling
 

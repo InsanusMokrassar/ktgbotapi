@@ -63,6 +63,7 @@
     * Updates utils were added
     * New extensions `startListenWebhooks`, `setWebhookInfoAndStartListenWebhooks` and `includeWebhookHandlingInRoute` was added
     * New extension `CoroutineScope#updateHandlerWithMediaGroupsAdaptation` was added
+    * New extension `flowsUpdatesFilter` was added
 * `TelegramBotAPI-all`:
     * Project was created
 
