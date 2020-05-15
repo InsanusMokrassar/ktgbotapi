@@ -36,6 +36,16 @@ fun SetWebhook(
 
 fun SetWebhook(
     url: String,
+    certificate: InputFile,
+    maxAllowedConnections: Int? = null,
+    allowedUpdates: List<String>? = null
+): Request<Boolean> = when (certificate) {
+    is MultipartFile -> SetWebhook(url, certificate as MultipartFile, maxAllowedConnections, allowedUpdates)
+    is FileId -> SetWebhook(url, certificate as FileId, maxAllowedConnections, allowedUpdates)
+}
+
+fun SetWebhook(
+    url: String,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
 ) = SetWebhook(
