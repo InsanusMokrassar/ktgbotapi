@@ -58,6 +58,9 @@
     * `SetWebhook` factories signatures was changed (backward compatibility was not broken)
     * `executeUnsafe` now working differently
         * Now it is possible to pass exceptions handler into `executeUnsafe`
+    * `BasketballDiceAnimationType` was added
+    * `UnknownDiceAnimationType` now is deprecated due to renaming - currently it is typealias for `CustomDiceAnimationType`
+        * `CustomDiceAnimationType` now is `data` class instead of common class
 * `TelegramBotAPI-extensions-api`:
     * Long Polling extensions now are deprecated in this project. It was replaced into `TelegramBotAPI-extensions-utils`
     * Several `telegramBot` functions was renamed into `telegramBotWithCustomClientConfig`

@@ -15,9 +15,15 @@ object DartsDiceAnimationType : DiceAnimationType() {
     override val emoji: String = "\uD83C\uDFAF"
 }
 @Serializable(DiceAnimationTypeSerializer::class)
-class UnknownDiceAnimationType(
+object BasketballDiceAnimationType : DiceAnimationType() {
+    override val emoji: String = "\uD83C\uDFC0"
+}
+@Serializable(DiceAnimationTypeSerializer::class)
+data class CustomDiceAnimationType(
     override val emoji: String
 ) : DiceAnimationType()
+@Deprecated("Renamed", ReplaceWith("CustomDiceAnimationType"))
+typealias UnknownDiceAnimationType = CustomDiceAnimationType
 
 @Serializer(DiceAnimationType::class)
 internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
@@ -26,7 +32,8 @@ internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
         return when (val type = decoder.decodeString()) {
             CubeDiceAnimationType.emoji -> CubeDiceAnimationType
             DartsDiceAnimationType.emoji -> DartsDiceAnimationType
-            else -> UnknownDiceAnimationType(type)
+            BasketballDiceAnimationType.emoji -> BasketballDiceAnimationType
+            else -> CustomDiceAnimationType(type)
         }
     }
 
