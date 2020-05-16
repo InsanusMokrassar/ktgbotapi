@@ -6,7 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFi
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 
 /**
- * Use this method to send information about webhook (like [url] and [certificate])
+ * Use this method to send information about webhook (like [url])
  */
 suspend fun RequestsExecutor.setWebhookInfo(
     url: String,
