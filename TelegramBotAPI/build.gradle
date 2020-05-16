@@ -83,4 +83,12 @@ kotlin {
             }
         }
     }
+
+    targets.all {
+        compilations.all {
+            kotlinOptions {
+                freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
+            }
+        }
+    }
 }
