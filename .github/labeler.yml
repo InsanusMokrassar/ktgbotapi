@@ -1,7 +1,7 @@
-core: TelegramBotAPI/**/*
-api_extensions: TelegramBotAPI-extensions-api/**/*
-utils_extensions: TelegramBotAPI-extensions-utils/**/*
+api: "TelegramBotAPI-extensions-api/**"
+utils: "TelegramBotAPI-extensions-utils/**"
+core: "TelegramBotAPI/**" # currently not work
 
-code_changes: ./**/*.kt
-gradle_changes: ./**/*.gradle
-markdown_changes: ./**/*.md
+code: "**/*.kt"
+gradle: "**/*.gradle"
+markdown: "**/*.md"
