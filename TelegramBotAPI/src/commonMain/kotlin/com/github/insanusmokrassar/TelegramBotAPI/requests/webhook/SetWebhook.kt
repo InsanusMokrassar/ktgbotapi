@@ -40,6 +40,7 @@ fun SetWebhook(
     allowedUpdates
 )
 
+@Suppress("USELESS_CAST")
 fun SetWebhook(
     url: String,
     certificate: InputFile,

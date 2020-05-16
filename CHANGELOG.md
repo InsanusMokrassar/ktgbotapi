@@ -61,6 +61,7 @@
     * `BasketballDiceAnimationType` was added
     * `UnknownDiceAnimationType` now is deprecated due to renaming - currently it is typealias for `CustomDiceAnimationType`
         * `CustomDiceAnimationType` now is `data` class instead of common class
+    * `FlowsUpdatesFilter` will use size 64 by default for internal broadcast channels
 * `TelegramBotAPI-extensions-api`:
     * Long Polling extensions now are deprecated in this project. It was replaced into `TelegramBotAPI-extensions-utils`
     * Several `telegramBot` functions was renamed into `telegramBotWithCustomClientConfig`
