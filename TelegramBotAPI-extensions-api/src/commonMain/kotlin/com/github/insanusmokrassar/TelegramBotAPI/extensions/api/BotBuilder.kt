@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
-import io.ktor.client.engine.*
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.ProxyConfig
 
 /**
  * @param proxy Standard ktor [ProxyConfig]
@@ -32,7 +33,7 @@ data class BotBuilder internal constructor(
 }
 
 /**
- * @return Created by [telegramBot] function [RequestsExecutor]. This executor will be preconfigured using [token] and
+ * @return Created by [telegramBotWithCustomClientConfig] function [RequestsExecutor]. This executor will be preconfigured using [token] and
  * [block]
  */
 fun telegramBot(

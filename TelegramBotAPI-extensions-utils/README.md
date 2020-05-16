@@ -1,5 +1,23 @@
 # TelegramBotAPI Util  Extensions
 
+- [TelegramBotAPI Util  Extensions](#telegrambotapi-util--extensions)
+  * [What is it?](#what-is-it-)
+  * [How to implement library?](#how-to-implement-library-)
+    + [Maven](#maven)
+    + [Gradle](#gradle)
+  * [How to use?](#how-to-use-)
+    + [Updates](#updates)
+      - [Long polling](#long-polling)
+      - [WebHooks (currently JVM-only)](#webhooks--currently-jvm-only-)
+    + [Filters](#filters)
+      - [Sent messages](#sent-messages)
+        * [Common messages](#common-messages)
+        * [Chat actions](#chat-actions)
+    + [Shortcuts](#shortcuts)
+      - [ScheduledCloseInfo](#scheduledcloseinfo)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils)
 
@@ -60,12 +78,89 @@ val filter = FlowsUpdatesFilter(64)
 Alternative way to use the things below:
 
 ```kotlin
-val filter = bot.startGettingUpdates(
+val filter = bot.startGettingFlowsUpdatesByLongPolling(
     scope = CoroutineScope(Dispatchers.Default)
 ) {
     // place code from examples here with replacing of `filter` by `this`
 }
 ```
+
+### Updates
+
+As mentioned in [Telegram Bot API reference](https://core.telegram.org/bots/api#getting-updates), there are two ways for
+updates retrieving:
+
+* Webhooks
+* Long Polling
+
+Both of them you could use in your project using [TelegramBotAPI](../TelegramBotAPI/README.md), but here there are
+several useful extensions for both of them.
+
+Anyway, in both of ways it will be useful to know that it is possible to create `UpdateReceiver` object using function
+`flowsUpdatesFilter`:
+
+```kotlin
+val internalChannelsSizes = 128
+flowsUpdatesFilter(internalChannelsSizes/* default is 64 */) {
+    /* ... */
+}
+```
+
+#### Long polling
+
+The most simple way is Long Polling and one of the usages was mentioned above:
+
+```kotlin
+val filter = bot.startGettingFlowsUpdatesByLongPolling(
+    scope = CoroutineScope(Dispatchers.Default)
+) {
+    // place code from examples here with replacing of `filter` by `this`
+}
+```
+
+Extension `startGettingFlowsUpdatesByLongPolling` was used in this example, but there are a lot of variations of
+`startGettingOfUpdatesByLongPolling` and others for getting the same result. Usually, it is supposed that you already
+have created `filter` object (or something like this) and will pass it into extension:
+
+```kotlin
+val filter = FlowsUpdatesFilter(64)
+bot.startGettingOfUpdatesByLongPolling(
+    filter
+)
+```
+
+But also there are extensions which allow to pass lambdas directly:
+
+```kotlin
+bot.startGettingOfUpdatesByLongPolling(
+    {
+        println("Received message update: $it")
+    }
+)
+```
+
+Anyway, it is strictly recommended to pass your `CoroutineScope` object to this method at least for more comfortable
+management of updates.
+
+#### WebHooks (currently JVM-only)
+
+For webhooks there are less number of functions and extensions than for Long Polling (but it is still fully automated):
+
+```kotlin
+startListenWebhooks(
+    8081,
+    CIO // require to implement this engine dependency
+) {
+    // here will be all updates one by one in $it
+}
+```
+
+Besides, there are two additional opportunities:
+
+* Extension `Route#includeWebhookHandlingInRoute`, which allow you to include webhook processing inside your ktor
+application without creating of new one server (as it is happening in `startListenWebhooks`)
+* Extension `RequestsExecutor#setWebhookInfoAndStartListenWebhooks`. It is allow to set up full server (in fact, with
+`startListenWebhooks`), but also send `SetWebhook` request before and check that it was successful
 
 ### Filters
 
@@ -136,11 +231,11 @@ filter.messageFlow.asChatEventsFlow().onlySupergroupEvents().onEach {
 )
 ```
 
-## Shortcuts
+### Shortcuts
 
 With shortcuts you are able to use simple factories for several things.
 
-### ScheduledCloseInfo
+#### ScheduledCloseInfo
 
 In case if you are creating some poll, you able to use next shortcuts.
 

@@ -3,17 +3,16 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 
+@Suppress("EXPERIMENTAL_API_USAGE")
 private fun <T> BroadcastChannel<T>.createUpdateReceiver(): UpdateReceiver<T> = ::send
 
-@FlowPreview
+@Suppress("EXPERIMENTAL_API_USAGE", "unused")
 class FlowsUpdatesFilter(
-    broadcastChannelsSize: Int = Channel.CONFLATED
+    broadcastChannelsSize: Int = 64
 ): UpdatesFilter {
     private val messageChannel: BroadcastChannel<MessageUpdate> = BroadcastChannel(broadcastChannelsSize)
     private val messageMediaGroupChannel: BroadcastChannel<MessageMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)

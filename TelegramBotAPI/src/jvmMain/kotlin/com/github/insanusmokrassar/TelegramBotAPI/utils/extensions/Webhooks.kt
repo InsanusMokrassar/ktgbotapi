@@ -30,6 +30,7 @@ import java.util.concurrent.TimeUnit
  * which will be used by telegram to send encrypted messages
  * @param scope Scope which will be used for
  */
+@Deprecated("Replaced into project TelegramBotAPI-extensions-utils")
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
@@ -41,7 +42,7 @@ suspend fun RequestsExecutor.setWebhook(
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     allowedUpdates: List<String>? = null,
     maxAllowedConnections: Int? = null,
-    exceptionsHandler: (suspend (Exception) -> Unit)? = null,
+    exceptionsHandler: (ExceptionHandler<Unit>)? = null,
     block: UpdateReceiver<Update>
 ): Job {
     val executeDeferred = certificate ?.let {
@@ -137,6 +138,7 @@ suspend fun RequestsExecutor.setWebhook(
     }
 }
 
+@Deprecated("Replaced into project TelegramBotAPI-extensions-utils")
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
@@ -164,6 +166,7 @@ suspend fun RequestsExecutor.setWebhook(
     block
 )
 
+@Deprecated("Replaced into project TelegramBotAPI-extensions-utils")
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,
@@ -188,6 +191,7 @@ suspend fun RequestsExecutor.setWebhook(
     block
 )
 
+@Deprecated("Replaced into project TelegramBotAPI-extensions-utils")
 suspend fun RequestsExecutor.setWebhook(
     url: String,
     port: Int,

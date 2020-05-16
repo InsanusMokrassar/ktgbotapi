@@ -15,6 +15,7 @@ the list of this complex currently next projects:
   `RequestsExecutor`), which allows to use the core library in more pleasant way
 * [TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) - contains extensions for more comfortable
 work with commands, updates and other different things
+* [TelegramBotAPI All](TelegramBotAPI-all/README.md) - concentration of all previously mentioned libraries
 
 Most part of some specific solves or unuseful
 moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
@@ -62,11 +63,14 @@ kotlin {
 
 ## Ok, where should I start?
 
-In most cases, the most simple way will be to implement
-[TelegramBotAPI Extensions](TelegramBotAPI-extensions-api/README.md) and
-[TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) for the reason that they contains more
-simple tools. If you want to dive deeper in the core of library or develop something for it - welcome to
+In most cases, the most simple way will be to implement [TelegramBotAPI All](TelegramBotAPI-all/README.md) - it contains
+all necessary tools for comfort usage of this library. If you want to exclude some libraries, you can implement just
+[TelegramBotAPI API Extensions](TelegramBotAPI-extensions-api/README.md),
+[TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) or even
 [TelegramBotAPI](TelegramBotAPI/README.md).
+
+If you want to dive deeper in the core of library or develop something for it - welcome to learn more from
+[TelegramBotAPI](TelegramBotAPI/README.md) and our [Telegram Chat](https://teleg.one/InMoTelegramBotAPIChat).
 
 Anyway, all libraries are very typical inside of them. Examples:
 
@@ -74,3 +78,49 @@ Anyway, all libraries are very typical inside of them. Examples:
 * `TelegramBotAPI-extensions-api` typical syntax look like `requestsExecutor.someRequest()` (in most cases it would be
 better to use `bot` name instead of `requestsExecutor`)
 * `TelegramBotAPI-extensions-utils` will look like `filter.filterBaseMessageUpdates(chatId).filterExactCommands(Regex("^.*$"))...`
+
+## Build instruction
+
+If you want to build this project or to contribute, there are several recommendations:
+
+### Build
+
+In case if you want to just build project, run next command:
+
+```bash
+./gradlew clean build
+```
+
+On windows:
+
+```
+gradlew.bat clean build
+```
+
+### Publishing for work with your version locally
+
+In case, if you want to work in your other projects using your modification (or some state) of this library,
+you can use next code:
+
+```bash
+./gradlew clean build publishToMavenLocal
+```
+
+On windows:
+
+```
+gradlew.bat clean build publishToMavenLocal
+```
+
+But you must remember, that in this case your local maven repo must be the first one from
+your project retrieving libraries:
+
+```groovy
+repositories {
+    mavenLocal() // that must be the first one
+    jcenter()
+    mavenCentral()
+}
+```
+
+Besides, for your own version you can change variable `library_version` in the file [gradle.properties](./gradle.properties).

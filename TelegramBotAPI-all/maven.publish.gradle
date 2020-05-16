@@ -24,9 +24,9 @@ publishing {
             asNode().children().last() + {
                 resolveStrategy = Closure.DELEGATE_FIRST
 
-                description "Util extensions for more useful work with updates and other things"
-                name "Telegram Bot API Utility Extensions"
-                url "https://insanusmokrassar.github.io/TelegramBotAPI/TelegramBotAPI-extensions-utils"
+                description "This project just include all subproject of TelegramBotAPI"
+                name "Telegram Bot API All"
+                url "https://insanusmokrassar.github.io/TelegramBotAPI/TelegramBotAPI-all"
 
                 scm {
                     developerConnection "scm:git:[fetch=]https://github.com/insanusmokrassar/TelegramBotAPI.git[push=]https://github.com/insanusmokrassar/TelegramBotAPI.git"

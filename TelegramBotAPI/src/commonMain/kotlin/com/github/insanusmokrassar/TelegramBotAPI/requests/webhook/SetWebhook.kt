@@ -7,33 +7,56 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
+private fun correctWebhookUrl(sourceUrl: String) = if (sourceUrl.contains("://")) {
+    sourceUrl
+} else {
+    "https://$sourceUrl"
+}
+
+fun SetWebhook(
+    url: String,
+    certificate: MultipartFile,
+    maxAllowedConnections: Int? = null,
+    allowedUpdates: List<String>? = null
+): MultipartRequestImpl<SetWebhook, Map<String, MultipartFile>, Boolean> = MultipartRequestImpl(
+    SetWebhook(
+        correctWebhookUrl(url),
+        null,
+        maxAllowedConnections,
+        allowedUpdates
+    ),
+    mapOf(certificateField to certificate)
+)
+
+fun SetWebhook(
+    url: String,
+    certificate: FileId,
+    maxAllowedConnections: Int? = null,
+    allowedUpdates: List<String>? = null
+): SetWebhook = SetWebhook(
+    correctWebhookUrl(url),
+    certificate.fileId,
+    maxAllowedConnections,
+    allowedUpdates
+)
+
+@Suppress("USELESS_CAST")
 fun SetWebhook(
     url: String,
     certificate: InputFile,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
-) : Request<Boolean> {
-    val data = SetWebhook(
-        url,
-        (certificate as? FileId) ?.fileId,
-        maxAllowedConnections,
-        allowedUpdates
-    )
-    return when (certificate) {
-        is FileId -> data
-        is MultipartFile -> MultipartRequestImpl(
-            data,
-            mapOf(certificateField to certificate)
-        )
-    }
+): Request<Boolean> = when (certificate) {
+    is MultipartFile -> SetWebhook(correctWebhookUrl(url), certificate as MultipartFile, maxAllowedConnections, allowedUpdates)
+    is FileId -> SetWebhook(correctWebhookUrl(url), certificate as FileId, maxAllowedConnections, allowedUpdates)
 }
 
 fun SetWebhook(
     url: String,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
-) : Request<Boolean> = SetWebhook(
-    url,
+) = SetWebhook(
+    correctWebhookUrl(url),
     null,
     maxAllowedConnections,
     allowedUpdates

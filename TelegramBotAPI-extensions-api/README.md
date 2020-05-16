@@ -78,6 +78,10 @@ In all examples supposed that you have created bot.
 
 ## Updates
 
+**Currently, these paragraphs almost outdated due to the fact that extensions for listening of updates and webhooks were
+replaced into `TelegramBotAPI-extensions-utils`. But, most part of information below is correct with small fixes and
+adding of `TelegramBotAPI-extensions-utils` dependency.**
+
 Usually, it is more comfortable to use filter object to get separated types of updates:
 
 ```kotlin

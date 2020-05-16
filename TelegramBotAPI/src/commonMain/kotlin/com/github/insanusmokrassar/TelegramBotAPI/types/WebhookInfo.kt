@@ -7,7 +7,7 @@ data class WebhookInfo(
     @SerialName(urlField)
     val url: String,
     @SerialName(pendingUpdateCountField)
-    val awaitDeliery: Int,
+    val awaitDelivery: Int,
     @SerialName(maxAllowedConnectionsField)
     val maxConnections: Int = 40, // default count according to documentation
     @SerialName(hasCustomCertificateField)

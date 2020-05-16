@@ -4,6 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestException
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
+import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
 import kotlinx.coroutines.*
 
 
@@ -33,16 +34,23 @@ fun <T: Any> RequestsExecutor.executeAsync(
 suspend fun <T: Any> RequestsExecutor.executeUnsafe(
     request: Request<T>,
     retries: Int = 0,
-    retriesDelay: Long = 1000L
+    retriesDelay: Long = 1000L,
+    onAllFailed: (suspend (exceptions: Array<Exception>) -> Unit)? = null
 ): T? {
     var leftRetries = retries
+    val exceptions = onAllFailed ?.let { mutableListOf<Exception>() }
     do {
-        try {
-            return execute(request)
-        } catch (e: RequestException) {
-            leftRetries--
-            delay(retriesDelay)
-        }
+        handleSafely(
+            {
+                leftRetries--
+                delay(retriesDelay)
+                exceptions ?.add(it)
+                null
+            }
+        ) {
+            execute(request)
+        } ?.let { return it }
     } while(leftRetries >= 0)
+    onAllFailed ?.invoke(exceptions ?.toTypedArray() ?: emptyArray())
     return null
 }

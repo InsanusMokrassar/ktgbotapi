@@ -5,6 +5,22 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 
+/**
+ * Use this method to send information about webhook (like [url])
+ */
+suspend fun RequestsExecutor.setWebhookInfo(
+    url: String,
+    maxAllowedConnections: Int? = null,
+    allowedUpdates: List<String>? = null
+) = execute(
+    SetWebhook(
+        url, maxAllowedConnections, allowedUpdates
+    )
+)
+
+/**
+ * Use this method to send information about webhook (like [url] and [certificate])
+ */
 suspend fun RequestsExecutor.setWebhookInfo(
     url: String,
     certificate: FileId,
@@ -16,6 +32,9 @@ suspend fun RequestsExecutor.setWebhookInfo(
     )
 )
 
+/**
+ * Use this method to send information about webhook (like [url] and [certificate])
+ */
 suspend fun RequestsExecutor.setWebhookInfo(
     url: String,
     certificate: MultipartFile,

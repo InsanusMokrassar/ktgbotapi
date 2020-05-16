@@ -49,6 +49,33 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.3
+
+* `TelegramBotAPI`:
+    * `UpdateDeserializationStrategy` is publicly available now
+    * All `setWebhook` extensions was marked as deprecated, renamed and replaced into `TelegramBotAPI-extensions-utils`
+    * Typealias `ExceptionHandler` was added - it will be used for `handleSafely`
+    * `SetWebhook` factories signatures was changed (backward compatibility was not broken)
+    * `executeUnsafe` now working differently
+        * Now it is possible to pass exceptions handler into `executeUnsafe`
+    * `BasketballDiceAnimationType` was added
+    * `UnknownDiceAnimationType` now is deprecated due to renaming - currently it is typealias for `CustomDiceAnimationType`
+        * `CustomDiceAnimationType` now is `data` class instead of common class
+    * `FlowsUpdatesFilter` will use size 64 by default for internal broadcast channels
+* `TelegramBotAPI-extensions-api`:
+    * Long Polling extensions now are deprecated in this project. It was replaced into `TelegramBotAPI-extensions-utils`
+    * Several `telegramBot` functions was renamed into `telegramBotWithCustomClientConfig`
+    * Add one more `setWebhookInfo` realisation
+* `TelegramBotAPI-extensions-utils`:
+    * Extension `toTelegramUpdate` was added
+    * Long Polling extensions were added
+    * Updates utils were added
+    * New extensions `startListenWebhooks`, `setWebhookInfoAndStartListenWebhooks` and `includeWebhookHandlingInRoute` was added
+    * New extension `CoroutineScope#updateHandlerWithMediaGroupsAdaptation` was added
+    * New extension `flowsUpdatesFilter` was added
+* `TelegramBotAPI-all`:
+    * Project was created
+
 ### 0.27.2
 
 * `Common`:

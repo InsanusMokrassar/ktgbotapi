@@ -26,7 +26,7 @@ publishing {
 
                 description "API extensions which provide work with RequestsExecutor of TelegramBotAPI almost like it is described in original Telegram Bot API reference"
                 name "Telegram Bot API Extensions for API"
-                url "https://insanusmokrassar.github.io/TelegramBotAPI"
+                url "https://insanusmokrassar.github.io/TelegramBotAPI/TelegramBotAPI-extensions-api"
 
                 scm {
                     developerConnection "scm:git:[fetch=]https://github.com/insanusmokrassar/TelegramBotAPI.git[push=]https://github.com/insanusmokrassar/TelegramBotAPI.git"
