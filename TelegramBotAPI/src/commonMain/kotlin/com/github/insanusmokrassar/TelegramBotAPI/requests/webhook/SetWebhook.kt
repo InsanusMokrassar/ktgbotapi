@@ -7,6 +7,12 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
+private fun correctWebhookUrl(sourceUrl: String) = if (sourceUrl.contains("://")) {
+    sourceUrl
+} else {
+    "https://$sourceUrl"
+}
+
 fun SetWebhook(
     url: String,
     certificate: MultipartFile,
@@ -14,7 +20,7 @@ fun SetWebhook(
     allowedUpdates: List<String>? = null
 ): MultipartRequestImpl<SetWebhook, Map<String, MultipartFile>, Boolean> = MultipartRequestImpl(
     SetWebhook(
-        url,
+        correctWebhookUrl(url),
         null,
         maxAllowedConnections,
         allowedUpdates
@@ -28,7 +34,7 @@ fun SetWebhook(
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
 ): SetWebhook = SetWebhook(
-    url,
+    correctWebhookUrl(url),
     certificate.fileId,
     maxAllowedConnections,
     allowedUpdates
@@ -40,8 +46,8 @@ fun SetWebhook(
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
 ): Request<Boolean> = when (certificate) {
-    is MultipartFile -> SetWebhook(url, certificate as MultipartFile, maxAllowedConnections, allowedUpdates)
-    is FileId -> SetWebhook(url, certificate as FileId, maxAllowedConnections, allowedUpdates)
+    is MultipartFile -> SetWebhook(correctWebhookUrl(url), certificate as MultipartFile, maxAllowedConnections, allowedUpdates)
+    is FileId -> SetWebhook(correctWebhookUrl(url), certificate as FileId, maxAllowedConnections, allowedUpdates)
 }
 
 fun SetWebhook(
@@ -49,7 +55,7 @@ fun SetWebhook(
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
 ) = SetWebhook(
-    url,
+    correctWebhookUrl(url),
     null,
     maxAllowedConnections,
     allowedUpdates

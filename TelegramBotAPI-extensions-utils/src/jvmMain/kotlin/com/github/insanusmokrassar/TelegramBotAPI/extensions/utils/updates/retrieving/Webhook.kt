@@ -83,9 +83,7 @@ fun startListenWebhooks(
         module {
             routing {
                 listenRoute ?.also {
-                    route(it) {
-                        includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
-                    }
+                    createRouteFromPath(it).includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
                 } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
             }
         }
@@ -97,11 +95,11 @@ fun startListenWebhooks(
                 privateKeyConfig::aliasPassword
             ) {
                 host = listenHost
-                this.port = listenPort
+                port = listenPort
             }
         } ?: connector {
             host = listenHost
-            this.port = listenPort
+            port = listenPort
         }
 
     }
@@ -117,7 +115,7 @@ internal suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhoo
     setWebhookRequest: Request<Boolean>,
     exceptionsHandler: ExceptionHandler<Unit> = {},
     listenHost: String = "0.0.0.0",
-    listenRoute: String = "/",
+    listenRoute: String? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
@@ -186,7 +184,7 @@ suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     setWebhookRequest: MultipartRequestImpl<SetWebhook, Map<String, MultipartFile>, Boolean>,
     exceptionsHandler: ExceptionHandler<Unit> = {},
     listenHost: String = "0.0.0.0",
-    listenRoute: String = "/",
+    listenRoute: String? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
