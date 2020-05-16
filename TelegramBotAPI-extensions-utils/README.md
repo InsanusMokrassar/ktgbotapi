@@ -1,5 +1,23 @@
 # TelegramBotAPI Util  Extensions
 
+- [TelegramBotAPI Util  Extensions](#telegrambotapi-util--extensions)
+  * [What is it?](#what-is-it-)
+  * [How to implement library?](#how-to-implement-library-)
+    + [Maven](#maven)
+    + [Gradle](#gradle)
+  * [How to use?](#how-to-use-)
+    + [Updates](#updates)
+      - [Long polling](#long-polling)
+      - [WebHooks (currently JVM-only)](#webhooks--currently-jvm-only-)
+    + [Filters](#filters)
+      - [Sent messages](#sent-messages)
+        * [Common messages](#common-messages)
+        * [Chat actions](#chat-actions)
+    + [Shortcuts](#shortcuts)
+      - [ScheduledCloseInfo](#scheduledcloseinfo)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils)
 
@@ -213,11 +231,11 @@ filter.messageFlow.asChatEventsFlow().onlySupergroupEvents().onEach {
 )
 ```
 
-## Shortcuts
+### Shortcuts
 
 With shortcuts you are able to use simple factories for several things.
 
-### ScheduledCloseInfo
+#### ScheduledCloseInfo
 
 In case if you are creating some poll, you able to use next shortcuts.
 
