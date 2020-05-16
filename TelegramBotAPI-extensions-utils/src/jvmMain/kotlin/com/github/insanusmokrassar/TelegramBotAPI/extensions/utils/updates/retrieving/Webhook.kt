@@ -109,7 +109,7 @@ fun startListenWebhooks(
     return engine
 }
 
-internal suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhooks(
+private suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhooks(
     listenPort: Int,
     engineFactory: ApplicationEngineFactory<*, *>,
     setWebhookRequest: Request<Boolean>,
