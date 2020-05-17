@@ -77,7 +77,6 @@ fun startListenWebhooks(
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
 ): ApplicationEngine {
-    lateinit var engine: ApplicationEngine
     val env = applicationEngineEnvironment {
 
         module {
@@ -103,10 +102,10 @@ fun startListenWebhooks(
         }
 
     }
-    engine = embeddedServer(engineFactory, env)
-    engine.start(false)
 
-    return engine
+    return embeddedServer(engineFactory, env).also {
+        it.start(false)
+    }
 }
 
 private suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhooks(
@@ -119,14 +118,10 @@ private suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhook
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
-): Job {
+): ApplicationEngine {
     return try {
         execute(setWebhookRequest)
-        val engine = startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, block)
-        scope.launch {
-            engine.environment.parentCoroutineContext[Job] ?.join()
-            engine.stop(1000, 5000)
-        }
+        startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, block)
     } catch (e: Exception) {
         throw e
     }
@@ -154,7 +149,7 @@ suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
-): Job = internalSetWebhookInfoAndStartListenWebhooks(
+): ApplicationEngine = internalSetWebhookInfoAndStartListenWebhooks(
     listenPort,
     engineFactory,
     setWebhookRequest as Request<Boolean>,
@@ -188,7 +183,7 @@ suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
-): Job = internalSetWebhookInfoAndStartListenWebhooks(
+): ApplicationEngine = internalSetWebhookInfoAndStartListenWebhooks(
     listenPort,
     engineFactory,
     setWebhookRequest as Request<Boolean>,
