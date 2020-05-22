@@ -20,37 +20,33 @@ publishing {
     publications.all {
         artifact javadocsJar
 
-        pom.withXml {
-            asNode().children().last() + {
-                resolveStrategy = Closure.DELEGATE_FIRST
+        pom {
+            description = "Library for Object-Oriented and type-safe work with Telegram Bot API"
+            name = "Telegram Bot API"
+            url = "https://insanusmokrassar.github.io/TelegramBotAPI"
 
-                description "Library for Object-Oriented and type-safe work with Telegram Bot API"
-                name "Telegram Bot API"
-                url "https://insanusmokrassar.github.io/TelegramBotAPI"
+            scm {
+                developerConnection = "scm:git:[fetch=]https://github.com/insanusmokrassar/TelegramBotAPI.git[push=]https://github.com/insanusmokrassar/TelegramBotAPI.git"
+                url = "https://github.com/insanusmokrassar/TelegramBotAPI.git"
+            }
 
-                scm {
-                    developerConnection "scm:git:[fetch=]https://github.com/insanusmokrassar/TelegramBotAPI.git[push=]https://github.com/insanusmokrassar/TelegramBotAPI.git"
-                    url "https://github.com/insanusmokrassar/TelegramBotAPI.git"
-                }
+            developers {
+                
+                    developer {
+                        id = "InsanusMokrassar"
+                        name = "Ovsiannikov Aleksei"
+                        email = "ovsyannikov.alexey95@gmail.com"
+                    }
+                
+            }
 
-                developers {
-                    
-                        developer {
-                            id "InsanusMokrassar"
-                            name "Ovsiannikov Aleksei"
-                            email "ovsyannikov.alexey95@gmail.com"
-                        }
-                    
-                }
-
-                licenses {
-                    
-                        license {
-                            name "Apache Software License 2.0"
-                            url "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/LICENSE"
-                        }
-                    
-                }
+            licenses {
+                
+                    license {
+                        name = "Apache Software License 2.0"
+                        url = "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/LICENSE"
+                    }
+                
             }
         }
     }
