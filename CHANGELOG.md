@@ -51,6 +51,15 @@
 
 ### 0.27.4
 
+* `TelegramBotAPI-extensions-utils`:
+    * Several extensions for updates was added:
+        * `onlyBaseMessageUpdates`
+        * `onlySentMessageUpdates`
+        * `onlyEditMessageUpdates`
+        * `onlyMediaGroupsUpdates`
+        * `onlySentMediaGroupUpdates`
+        * `onlyEditMediaGroupUpdates`
+
 ### 0.27.3
 
 * `TelegramBotAPI`:

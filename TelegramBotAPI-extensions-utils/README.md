@@ -166,6 +166,32 @@ application without creating of new one server (as it is happening in `startList
 
 There are several filters for flows.
 
+#### Updates
+
+In the next table it is supposed that you are using some `Flow` with type from `Base type of update` and apply
+extension `Extension` and will get `Flow` with type from `Result type of update` column.
+
+| Base type of update | Extension | Result type of update |
+| ------------------- | --------- | --------------------- |
+| `Update` | `onlyBaseMessageUpdates` | `BaseMessageUpdate` |
+|  |  |  |
+| `BaseMessageUpdate` | `onlySentMessageUpdates` | `BaseSentMessageUpdate` |
+| `BaseMessageUpdate` | `onlyEditMessageUpdates` | `BaseEditMessageUpdate` |
+| `BaseMessageUpdate` | `onlyMediaGroupsUpdates` | `MediaGroupUpdate` |
+|  |  |  |
+| `MediaGroupUpdate` | `onlySentMediaGroupUpdates` | `SentMediaGroupUpdate` |
+| `MediaGroupUpdate` | `onlyEditMediaGroupUpdates` | `EditMediaGroupUpdate` |
+
+All of these extensions was made for more simple work with the others:
+
+```kotlin
+val flow: Flow<BaseMessageUpdate> = ...; // here we are getting flow from somewhere,
+                                        // for example, FlowsUpdatesFilter#messageFlow
+flow.onlySentMessageUpdates().filterExactCommands(Regex("start"))
+```
+
+Here we have used filter `filterExactCommands` which will pass only `ContentMessage` with only one command `start`
+
 #### Sent messages
 
 All sent messages can be filtered for three types:
