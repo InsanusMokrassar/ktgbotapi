@@ -59,6 +59,9 @@
         * `onlyMediaGroupsUpdates`
         * `onlySentMediaGroupUpdates`
         * `onlyEditMediaGroupUpdates`
+    * Renames in chat filters extensions:
+        * `filterBaseMessageUpdates` -> `filterByChatId` and `filterByChat`
+        * `filterSentMediaGroupUpdates` -> `filterByChatId` and `filterByChat`
 
 ### 0.27.3
 
