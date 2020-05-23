@@ -49,6 +49,20 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.4
+
+* `TelegramBotAPI-extensions-utils`:
+    * Several extensions for updates was added:
+        * `onlyBaseMessageUpdates`
+        * `onlySentMessageUpdates`
+        * `onlyEditMessageUpdates`
+        * `onlyMediaGroupsUpdates`
+        * `onlySentMediaGroupUpdates`
+        * `onlyEditMediaGroupUpdates`
+    * Renames in chat filters extensions:
+        * `filterBaseMessageUpdates` -> `filterBaseMessageUpdatesByChatId` and `filterBaseMessageUpdatesByChat`
+        * `filterSentMediaGroupUpdates` -> `filterSentMediaGroupUpdatesByChatId` and `filterSentMediaGroupUpdatesByChat`
+
 ### 0.27.3
 
 * `TelegramBotAPI`:
