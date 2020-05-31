@@ -8,7 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.fullEnti
 
 fun createFormattedText(
     entities: FullTextSourcesList,
-    partLength: Int = 4096,
+    partLength: Int = maxTextLength,
     mode: ParseMode = MarkdownParseMode
 ): List<String> {
     val texts = mutableListOf<String>()
@@ -49,7 +49,7 @@ fun createFormattedText(
 
 fun createMarkdownText(
     entities: FullTextSourcesList,
-    partLength: Int = 4096
+    partLength: Int = maxTextLength
 ): List<String> = createFormattedText(entities, partLength, MarkdownParseMode)
 
 fun FullTextSourcesList.toMarkdownCaptions(): List<String> = createMarkdownText(
@@ -60,7 +60,7 @@ fun CaptionedInput.toMarkdownCaptions(): List<String> = fullEntitiesList().toMar
 
 fun FullTextSourcesList.toMarkdownTexts(): List<String> = createMarkdownText(
     this,
-    textLength.last + 1
+    maxTextLength
 )
 fun TextContent.toMarkdownTexts(): List<String> = fullEntitiesList().toMarkdownTexts()
 
@@ -73,7 +73,7 @@ fun ExplainedInput.toMarkdownExplanations(): List<String> = fullEntitiesList().t
 
 fun createMarkdownV2Text(
     entities: FullTextSourcesList,
-    partLength: Int = 4096
+    partLength: Int = maxTextLength
 ): List<String> = createFormattedText(entities, partLength, MarkdownV2ParseMode)
 
 fun FullTextSourcesList.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
@@ -84,7 +84,7 @@ fun CaptionedInput.toMarkdownV2Captions(): List<String> = fullEntitiesList().toM
 
 fun FullTextSourcesList.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
     this,
-    textLength.last + 1
+    maxTextLength
 )
 fun TextContent.toMarkdownV2Texts(): List<String> = fullEntitiesList().toMarkdownV2Texts()
 
@@ -108,7 +108,7 @@ fun CaptionedInput.toHtmlCaptions(): List<String> = fullEntitiesList().toHtmlCap
 
 fun FullTextSourcesList.toHtmlTexts(): List<String> = createHtmlText(
     this,
-    textLength.last + 1
+    maxTextLength
 )
 fun TextContent.toHtmlTexts(): List<String> = fullEntitiesList().toHtmlTexts()
 
