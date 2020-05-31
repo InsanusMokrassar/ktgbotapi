@@ -28,6 +28,7 @@ val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 until 1024
 val textLength = 0 until 4096
+val maxTextLength = textLength.last + 1
 val userProfilePhotosRequestLimit = 0 .. 100
 val chatTitleLength = 1 until 255
 val chatDescriptionLength = 0 until 256

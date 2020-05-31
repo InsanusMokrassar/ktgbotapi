@@ -36,8 +36,8 @@ data class SendTextMessage(
     DisableWebPagePreview
 {
     init {
-        if (text.length !in textLength) {
-            throw IllegalArgumentException("Text must be in $textLength range")
+        if (text.length > maxTextLength) {
+            throw IllegalArgumentException("Text length must be less than $maxTextLength, but was ${text.length}")
         }
     }
 
