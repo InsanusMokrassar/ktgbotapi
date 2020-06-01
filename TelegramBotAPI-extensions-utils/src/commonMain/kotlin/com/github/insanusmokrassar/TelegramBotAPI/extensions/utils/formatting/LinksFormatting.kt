@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils
+package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.formatting
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
@@ -24,7 +24,8 @@ fun makeLinkToMessage(
 ): String? {
     return when {
         chat is UsernameChat && chat.username != null -> {
-            "$internalLinkBeginning/${chat.username ?.username ?.replace(usernameBeginSymbolRegex, "")}/$messageId"
+            "$internalLinkBeginning/${chat.username ?.username ?.replace(
+                usernameBeginSymbolRegex, "")}/$messageId"
         }
         chat !is PrivateChat -> chat.id.chatId.toString().replace(
             linkIdRedundantPartRegex,
@@ -56,21 +57,24 @@ fun makeLinkToAddStickerSet(
 /**
  * @return Link for adding of sticker set with name [stickerSetName] with formatting for [MarkdownV2]
  */
-fun makeLinkToAddStickerSetInMarkdownV2(stickerSetName: StickerSetName) = makeLinkToAddStickerSet(
-    stickerSetName,
-    MarkdownV2
-)
+fun makeLinkToAddStickerSetInMarkdownV2(stickerSetName: StickerSetName) =
+    makeLinkToAddStickerSet(
+        stickerSetName,
+        MarkdownV2
+    )
 /**
  * @return Link for adding of sticker set with name [stickerSetName] with formatting for [Markdown]
  */
-fun makeLinkToAddStickerSetInMarkdown(stickerSetName: StickerSetName) = makeLinkToAddStickerSet(
-    stickerSetName,
-    Markdown
-)
+fun makeLinkToAddStickerSetInMarkdown(stickerSetName: StickerSetName) =
+    makeLinkToAddStickerSet(
+        stickerSetName,
+        Markdown
+    )
 /**
  * @return Link for adding of sticker set with name [stickerSetName] with formatting for [HTML]
  */
-fun makeLinkToAddStickerSetInHtml(stickerSetName: StickerSetName) = makeLinkToAddStickerSet(
-    stickerSetName,
-    HTML
-)
+fun makeLinkToAddStickerSetInHtml(stickerSetName: StickerSetName) =
+    makeLinkToAddStickerSet(
+        stickerSetName,
+        HTML
+    )
