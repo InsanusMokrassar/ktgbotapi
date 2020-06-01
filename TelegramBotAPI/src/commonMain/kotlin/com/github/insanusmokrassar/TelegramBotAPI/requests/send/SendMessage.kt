@@ -9,6 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
+import com.github.insanusmokrassar.TelegramBotAPI.utils.throwRangeError
 import kotlinx.serialization.*
 
 internal val TextContentMessageResultDeserializer: DeserializationStrategy<ContentMessage<TextContent>>
@@ -36,8 +37,8 @@ data class SendTextMessage(
     DisableWebPagePreview
 {
     init {
-        if (text.length > maxTextLength) {
-            throw IllegalArgumentException("Text length must be less than $maxTextLength, but was ${text.length}")
+        if (text.length !in textLength) {
+            throwRangeError("Text length", textLength, text.length)
         }
     }
 

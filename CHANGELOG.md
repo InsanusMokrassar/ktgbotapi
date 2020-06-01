@@ -52,8 +52,7 @@
 ### 0.27.5
 
 * `TelegramotAPI`:
-    * Fix: `SendTextMessage` will correctly check the length of incoming text
-        * Constant `maxTextLength` was added
+    * Fix: for sending requests caption and text lengths limits were updated
 
 ### 0.27.4
 
