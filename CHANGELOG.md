@@ -56,6 +56,7 @@
         * `Klock`: `1.11.1` -> `1.11.3`
 * `TelegramotAPI`:
     * Fix: for sending requests caption and text lengths limits were updated
+    * New variant of `row` was added
 * `TelegramBotAPI-extensions-utils`:
     * `safely` function was introduced. It is in `PreviewFeature` state currently
 
