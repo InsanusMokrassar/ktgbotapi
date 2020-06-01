@@ -51,6 +51,9 @@
 
 ### 0.27.5
 
+* `Common`:
+    * Versions:
+        * `Klock`: `1.11.1` -> `1.11.3`
 * `TelegramotAPI`:
     * Fix: for sending requests caption and text lengths limits were updated
 
