@@ -11,6 +11,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Conten
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.VoiceContent
 import com.github.insanusmokrassar.TelegramBotAPI.utils.mapOfNotNull
+import com.github.insanusmokrassar.TelegramBotAPI.utils.throwRangeError
 import kotlinx.serialization.*
 
 fun SendVoice(
@@ -84,7 +85,7 @@ data class SendVoiceData internal constructor(
     init {
         text ?.let {
             if (it.length !in captionLength) {
-                throw IllegalArgumentException("Caption must be in $captionLength range")
+                throwRangeError("Caption length", captionLength, it.length)
             }
         }
     }
