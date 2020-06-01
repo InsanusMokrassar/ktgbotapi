@@ -54,7 +54,7 @@ fun createMarkdownText(
 
 fun FullTextSourcesList.toMarkdownCaptions(): List<String> = createMarkdownText(
     this,
-    captionLength.last + 1
+    captionLength.last
 )
 fun CaptionedInput.toMarkdownCaptions(): List<String> = fullEntitiesList().toMarkdownCaptions()
 
@@ -66,7 +66,7 @@ fun TextContent.toMarkdownTexts(): List<String> = fullEntitiesList().toMarkdownT
 
 fun FullTextSourcesList.toMarkdownExplanations(): List<String> = createMarkdownText(
     this,
-    explanationLimit.last + 1
+    explanationLimit.last
 )
 fun ExplainedInput.toMarkdownExplanations(): List<String> = fullEntitiesList().toMarkdownTexts()
 
@@ -78,7 +78,7 @@ fun createMarkdownV2Text(
 
 fun FullTextSourcesList.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
     this,
-    captionLength.last + 1
+    captionLength.last
 )
 fun CaptionedInput.toMarkdownV2Captions(): List<String> = fullEntitiesList().toMarkdownV2Captions()
 
@@ -90,19 +90,19 @@ fun TextContent.toMarkdownV2Texts(): List<String> = fullEntitiesList().toMarkdow
 
 fun FullTextSourcesList.toMarkdownV2Explanations(): List<String> = createMarkdownV2Text(
     this,
-    explanationLimit.last + 1
+    explanationLimit.last
 )
 fun ExplainedInput.toMarkdownV2Explanations(): List<String> = fullEntitiesList().toMarkdownV2Texts()
 
 
 fun createHtmlText(
     entities: FullTextSourcesList,
-    partLength: Int = 4096
+    partLength: Int = textLength.last
 ): List<String> = createFormattedText(entities, partLength, HTMLParseMode)
 
 fun FullTextSourcesList.toHtmlCaptions(): List<String> = createHtmlText(
     this,
-    captionLength.last + 1
+    captionLength.last
 )
 fun CaptionedInput.toHtmlCaptions(): List<String> = fullEntitiesList().toHtmlCaptions()
 
@@ -114,7 +114,7 @@ fun TextContent.toHtmlTexts(): List<String> = fullEntitiesList().toHtmlTexts()
 
 fun FullTextSourcesList.toHtmlExplanations(): List<String> = createHtmlText(
     this,
-    explanationLimit.last + 1
+    explanationLimit.last
 )
 fun ExplainedInput.toHtmlExplanations(): List<String> = fullEntitiesList().toHtmlTexts()
 
