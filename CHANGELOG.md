@@ -62,6 +62,7 @@
         * All `String` formatting public extensions and functions
         * All extensions like `CaptionedInput#toHtmlCaptions`
         * All helper extensions for `List<BaseMessageUpdate>`
+        * All `RequestsExecutor#executeAsync` and `RequestsExecutor#executeUnsafe`
 * `TelegramBotAPI-extensions-utils`:
     * `safely` function was introduced. It is in `PreviewFeature` state currently
     * `makeLinkToMessage` extensions has been added
@@ -76,6 +77,7 @@
                 * `SentMediaGroupUpdate#chat`
                 * `SentMediaGroupUpdate#mediaGroupId`
             * Several `List<MediaGroupMessage>.createResend` extensions were added
+        * `RequestsExecutor#executeAsync` and `RequestsExecutor#executeUnsafe`
 
 ### 0.27.4
 
