@@ -63,6 +63,8 @@
         * All extensions like `CaptionedInput#toHtmlCaptions`
         * All helper extensions for `List<BaseMessageUpdate>`
         * All `RequestsExecutor#executeAsync` and `RequestsExecutor#executeUnsafe`
+    * `BotCommand` now more strictly check commands which passed to it
+        * Regex `BotCommandNameRegex` was added
 * `TelegramBotAPI-extensions-api`:
     * A lot of `RequesstExecutor#getChat` extensions was added for more explicit types showing
     * New `RequesstExecutor#setMyCommands` extension was added

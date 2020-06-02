@@ -1,7 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
+import com.github.insanusmokrassar.TelegramBotAPI.utils.throwRangeError
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
+val BotCommandNameRegex = Regex("[a-z_0-9]{1,32}")
 
 @Serializable
 data class BotCommand(
@@ -12,10 +15,13 @@ data class BotCommand(
 ) {
     init {
         if (command.length !in botCommandLengthLimit) {
-            error("Command size must be in range $botCommandLengthLimit, but actually have length ${command.length}")
+            throwRangeError("Command name size", botCommandLengthLimit, command.length)
+        }
+        if (!command.matches(BotCommandNameRegex)) {
+            error("Bot command must contains only lowercase English letters, digits and underscores, but incoming command was $command")
         }
         if (description.length !in botCommandDescriptionLimit) {
-            error("Command description size must be in range $botCommandDescriptionLimit, but actually have length ${description.length}")
+            throwRangeError("Command description size", botCommandDescriptionLimit, description.length)
         }
     }
 }
