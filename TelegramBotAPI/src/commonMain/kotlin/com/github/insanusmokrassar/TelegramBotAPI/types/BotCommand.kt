@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.throwRangeError
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-val BotCommandNameRegex = Regex("[a-z_0-9]{1,32}")
+val BotCommandNameRegex = Regex("^[a-z_0-9]{${botCommandLengthLimit.first},${botCommandLengthLimit.last}}$")
 
 @Serializable
 data class BotCommand(
