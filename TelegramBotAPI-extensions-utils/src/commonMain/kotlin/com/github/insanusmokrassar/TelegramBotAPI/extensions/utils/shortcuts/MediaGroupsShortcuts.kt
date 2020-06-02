@@ -17,9 +17,9 @@ val List<MediaGroupMessage>.mediaGroupId: MediaGroupIdentifier?
     get() = firstOrNull() ?.mediaGroupId
 
 val SentMediaGroupUpdate.forwardInfo: ForwardInfo?
-    get() = data.forwardInfo!!
+    get() = data.first().forwardInfo
 val SentMediaGroupUpdate.replyTo: Message?
-    get() = data.replyTo
+    get() = data.first().replyTo
 val SentMediaGroupUpdate.chat: Chat
     get() = data.chat!!
 val SentMediaGroupUpdate.mediaGroupId: MediaGroupIdentifier
