@@ -59,11 +59,13 @@
     * New variant of `row` was added
     * `makeLinkToMessage` extensions has been deprecated (replaced into `TelegramBotAPI-extensions-utils`)
     * All `String` formatting public extensions and functions was deprecated and replaced into `TelegramBotAPI-extensions-utils`
+    * All extensions like `CaptionedInput#toHtmlCaptions` was deprecated and replaced into `TelegramBotAPI-extensions-utils`
 * `TelegramBotAPI-extensions-utils`:
     * `safely` function was introduced. It is in `PreviewFeature` state currently
     * `makeLinkToMessage` extensions has been added
     * `makeLinkToAddStickerSet` function and its variations were added
     * All `String` formatting extensions and functions from `TelegramBotAPI` was added
+    * All extensions like `CaptionedInput#toHtmlCaptions` from `TelegramBotAPI` was added
 
 ### 0.27.4
 
