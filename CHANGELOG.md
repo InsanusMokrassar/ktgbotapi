@@ -58,14 +58,24 @@
     * Fix: for sending requests caption and text lengths limits were updated
     * New variant of `row` was added
     * `makeLinkToMessage` extensions has been deprecated (replaced into `TelegramBotAPI-extensions-utils`)
-    * All `String` formatting public extensions and functions was deprecated and replaced into `TelegramBotAPI-extensions-utils`
-    * All extensions like `CaptionedInput#toHtmlCaptions` was deprecated and replaced into `TelegramBotAPI-extensions-utils`
+    * Next things was deprecated and replaced into `TelegramBotAPI-extensions-utils`:
+        * All `String` formatting public extensions and functions
+        * All extensions like `CaptionedInput#toHtmlCaptions`
+        * All helper extensions for `List<BaseMessageUpdate>`
 * `TelegramBotAPI-extensions-utils`:
     * `safely` function was introduced. It is in `PreviewFeature` state currently
     * `makeLinkToMessage` extensions has been added
     * `makeLinkToAddStickerSet` function and its variations were added
-    * All `String` formatting extensions and functions from `TelegramBotAPI` was added
-    * All extensions like `CaptionedInput#toHtmlCaptions` from `TelegramBotAPI` was added
+    * Next tools was added from `TelegramBotAPI`:
+        * All `String` formatting extensions and functions
+        * All extensions like `CaptionedInput#toHtmlCaptions`
+        * All helper extensions for `List<BaseMessageUpdate>`
+            * Several new extensions for `SentMediaGroupUpdate` were added:
+                * `SentMediaGroupUpdate#forwardInfo`
+                * `SentMediaGroupUpdate#replyTo`
+                * `SentMediaGroupUpdate#chat`
+                * `SentMediaGroupUpdate#mediaGroupId`
+            * Several `List<MediaGroupMessage>.createResend` extensions were added
 
 ### 0.27.4
 
