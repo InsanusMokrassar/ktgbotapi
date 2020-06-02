@@ -26,8 +26,8 @@ typealias LongSeconds = Long
 
 val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
-val captionLength = 0 until 1024
-val textLength = 0 until 4096
+val captionLength = 0 .. 1024
+val textLength = 1 .. 4096
 val userProfilePhotosRequestLimit = 0 .. 100
 val chatTitleLength = 1 until 255
 val chatDescriptionLength = 0 until 256
@@ -54,6 +54,8 @@ val botCommandLengthLimit = 1 .. 32
 val botCommandLimit = botCommandLengthLimit
 val botCommandDescriptionLimit = 3 .. 256
 val botCommandsLimit = 0 .. 100
+
+val mediaCountInMediaGroup: IntRange = 2 .. 10
 
 val explanationLimit = 0 .. 200
 @Deprecated("Will be removed in near updates", ReplaceWith("explanationLimit"))

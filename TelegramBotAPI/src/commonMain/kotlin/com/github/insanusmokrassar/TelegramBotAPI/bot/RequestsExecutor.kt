@@ -13,8 +13,8 @@ import io.ktor.utils.io.core.Closeable
 interface RequestsExecutor : Closeable {
     /**
      * Unsafe execution of incoming [request]. Can throw almost any exception. So, it is better to use
-     * something like [com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.executeAsync] or
-     * [com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.executeUnsafe]
+     * something like [com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.shortcuts.executeAsync] or
+     * [com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.shortcuts.executeUnsafe]
      *
      * @throws Exception
      */

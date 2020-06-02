@@ -49,6 +49,43 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.5
+
+* `Common`:
+    * Versions:
+        * `Klock`: `1.11.1` -> `1.11.3`
+* `TelegramotAPI`:
+    * Fix: for sending requests caption and text lengths limits were updated
+    * New variant of `row` was added
+    * `makeLinkToMessage` extensions has been deprecated (replaced into `TelegramBotAPI-extensions-utils`)
+    * Next things was deprecated and replaced into `TelegramBotAPI-extensions-utils`:
+        * All `String` formatting public extensions and functions
+        * All extensions like `CaptionedInput#toHtmlCaptions`
+        * All helper extensions for `List<BaseMessageUpdate>`
+        * All `RequestsExecutor#executeAsync` and `RequestsExecutor#executeUnsafe`
+    * `BotCommand` now more strictly check commands which passed to it
+        * Regex `BotCommandNameRegex` was added
+* `TelegramBotAPI-extensions-api`:
+    * A lot of `RequesstExecutor#getChat` extensions was added for more explicit types showing
+    * New `RequesstExecutor#setMyCommands` extension was added
+    * New field `BotBuilder#ktorClientEngineFactory` introduced
+        * Field `BotBuilder#ktorClientEngine` now is deprecated
+* `TelegramBotAPI-extensions-utils`:
+    * `safely` function was introduced. It is in `PreviewFeature` state currently
+    * `makeLinkToMessage` extensions has been added
+    * `makeLinkToAddStickerSet` function and its variations were added
+    * Next tools was added from `TelegramBotAPI`:
+        * All `String` formatting extensions and functions
+        * All extensions like `CaptionedInput#toHtmlCaptions`
+        * All helper extensions for `List<BaseMessageUpdate>`
+            * Several new extensions for `SentMediaGroupUpdate` were added:
+                * `SentMediaGroupUpdate#forwardInfo`
+                * `SentMediaGroupUpdate#replyTo`
+                * `SentMediaGroupUpdate#chat`
+                * `SentMediaGroupUpdate#mediaGroupId`
+            * Several `List<MediaGroupMessage>.createResend` extensions were added
+        * `RequestsExecutor#executeAsync` and `RequestsExecutor#executeUnsafe`
+
 ### 0.27.4
 
 * `TelegramBotAPI-extensions-utils`:

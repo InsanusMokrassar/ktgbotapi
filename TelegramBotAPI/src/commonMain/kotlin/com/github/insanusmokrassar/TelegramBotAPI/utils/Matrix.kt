@@ -10,6 +10,10 @@ fun <T> MatrixBuilder<T>.row(block: RowBuilder<T>.() -> Unit) {
     add(RowBuilder<T>().also(block).row)
 }
 
+fun <T> MatrixBuilder<T>.row(vararg elements: T) {
+    add(elements.toList())
+}
+
 fun <T> matrix(block: MatrixBuilder<T>.() -> Unit): Matrix<T> {
     return MatrixBuilder<T>().also(block).matrix
 }

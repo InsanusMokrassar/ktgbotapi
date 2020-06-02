@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.utils
 
 @RequiresOptIn(
-    "It is possible, that behaviour of this thing will be changed later",
+    "It is possible, that behaviour of this thing will be changed later or this feature will be removed",
     RequiresOptIn.Level.WARNING
 )
 @Target(

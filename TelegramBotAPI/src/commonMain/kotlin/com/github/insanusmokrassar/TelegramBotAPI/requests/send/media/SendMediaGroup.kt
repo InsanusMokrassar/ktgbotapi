@@ -8,12 +8,15 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
+import com.github.insanusmokrassar.TelegramBotAPI.utils.throwRangeError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.jsonArray
 
-val membersCountInMediaGroup: IntRange = 2 .. 10
+@Deprecated("Replaced and renamed", ReplaceWith("mediaCountInMediaGroup", "com.github.insanusmokrassar.TelegramBotAPI.types.mediaCountInMediaGroup"))
+val membersCountInMediaGroup
+    get() = mediaCountInMediaGroup
 
 fun SendMediaGroup(
     chatId: ChatIdentifier,
@@ -21,8 +24,8 @@ fun SendMediaGroup(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null
 ): Request<List<MediaGroupMessage>> {
-    if (media.size !in membersCountInMediaGroup) {
-        throw IllegalArgumentException("Count of members for media group must be in $membersCountInMediaGroup range")
+    if (media.size !in mediaCountInMediaGroup) {
+        throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
     }
 
     val files: List<MultipartFile> = media.flatMap {

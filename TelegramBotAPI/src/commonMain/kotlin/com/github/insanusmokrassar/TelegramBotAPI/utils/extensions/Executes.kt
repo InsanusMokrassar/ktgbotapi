@@ -7,7 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.Response
 import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
 import kotlinx.coroutines.*
 
-
+@Deprecated("Will be removed in next major update")
 fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
     onFail: (suspend (Response) -> Unit)? = null,
@@ -24,6 +24,7 @@ fun <T: Any> RequestsExecutor.executeAsync(
     }
 }
 
+@Deprecated("Replaced and modified inside of TelegramBotAPI-extensions-utils")
 fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
     scope: CoroutineScope = GlobalScope
@@ -31,6 +32,7 @@ fun <T: Any> RequestsExecutor.executeAsync(
     return scope.async { execute(request) }
 }
 
+@Deprecated("Replaced and modified inside of TelegramBotAPI-extensions-utils")
 suspend fun <T: Any> RequestsExecutor.executeUnsafe(
     request: Request<T>,
     retries: Int = 0,
