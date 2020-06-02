@@ -7,3 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.BotCommand
 suspend fun RequestsExecutor.setMyCommands(
     commands: List<BotCommand>
 ) = execute(SetMyCommands(commands))
+
+suspend fun RequestsExecutor.setMyCommands(
+    vararg commands: BotCommand
+) = setMyCommands(commands.toList())

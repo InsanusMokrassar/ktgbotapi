@@ -65,6 +65,7 @@
         * All `RequestsExecutor#executeAsync` and `RequestsExecutor#executeUnsafe`
 * `TelegramBotAPI-extensions-api`:
     * A lot of `RequesstExecutor#getChat` extensions was added for more explicit types showing
+    * New `RequesstExecutor#setMyCommands` extension was added
 * `TelegramBotAPI-extensions-utils`:
     * `safely` function was introduced. It is in `PreviewFeature` state currently
     * `makeLinkToMessage` extensions has been added
