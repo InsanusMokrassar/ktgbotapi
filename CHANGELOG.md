@@ -63,6 +63,8 @@
         * All extensions like `CaptionedInput#toHtmlCaptions`
         * All helper extensions for `List<BaseMessageUpdate>`
         * All `RequestsExecutor#executeAsync` and `RequestsExecutor#executeUnsafe`
+* `TelegramBotAPI-extensions-api`:
+    * A lot of `RequesstExecutor#getChat` extensions was added for more explicit types showing
 * `TelegramBotAPI-extensions-utils`:
     * `safely` function was introduced. It is in `PreviewFeature` state currently
     * `makeLinkToMessage` extensions has been added
