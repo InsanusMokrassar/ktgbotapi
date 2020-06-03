@@ -67,7 +67,18 @@ String dokkaFolder = "$buildDir/dokka"
 
 dokka {
     outputFormat = 'html'
-    outputDirectory = dokkaFolder
+
+    switch (true) {
+        case project.hasProperty("DOKKA_PATH"):
+            outputDirectory = project.property("DOKKA_PATH").toString()
+            break
+        case System.getenv("DOKKA_PATH") != null:
+            outputDirectory = System.getenv("DOKKA_PATH")
+            break
+        default:
+            outputDirectory = dokkaFolder
+            break
+    }
 
     multiplatform {
         global {
