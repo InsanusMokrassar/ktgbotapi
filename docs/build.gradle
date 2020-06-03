@@ -63,8 +63,6 @@ private Closure includeSourcesInDokka(String... approximateNames) {
     }
 }
 
-String dokkaFolder = "$buildDir/dokka"
-
 dokka {
     outputFormat = 'html'
 
@@ -74,9 +72,6 @@ dokka {
             break
         case System.getenv("DOKKA_PATH") != null:
             outputDirectory = System.getenv("DOKKA_PATH")
-            break
-        default:
-            outputDirectory = dokkaFolder
             break
     }
 
