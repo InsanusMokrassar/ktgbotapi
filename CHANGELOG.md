@@ -51,6 +51,9 @@
 
 ### 0.27.6
 
+* `Common`:
+    * Versions:
+        * `Kotlin Coroutines`: `1.3.6` -> `1.3.7`
 * `TelegramBotAPI`:
     * Interface `PossiblySentViaBot` has been added
         * Additional interface `PossiblySentViaBotCommonMessage` was added for more explicit typing declaration for
