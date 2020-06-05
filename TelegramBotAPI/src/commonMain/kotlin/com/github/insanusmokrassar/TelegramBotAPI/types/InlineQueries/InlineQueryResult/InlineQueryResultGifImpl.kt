@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
+import com.github.insanusmokrassar.TelegramBotAPI.utils.MimeType
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -18,6 +19,8 @@ data class InlineQueryResultGifImpl(
     override val url: String,
     @SerialName(thumbUrlField)
     override val thumbUrl: String,
+    @SerialName(thumbMimeTypeField)
+    override val thumbMimeType: MimeType? = null,
     @SerialName(gifWidthField)
     override val width: Int? = null,
     @SerialName(gifHeightField)
@@ -36,4 +39,10 @@ data class InlineQueryResultGifImpl(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultGif {
     override val type: String = inlineQueryResultGifType
+
+    init {
+        if (thumbMimeType != null && thumbMimeType !in telegramInlineModeGifPermittedMimeTypes) {
+            error("Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes")
+        }
+    }
 }

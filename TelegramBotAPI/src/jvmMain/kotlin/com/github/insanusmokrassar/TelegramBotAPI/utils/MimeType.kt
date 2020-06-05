@@ -24,3 +24,5 @@ internal actual object MimeTypeSerializer : KSerializer<MimeType> {
         encoder.encodeString(value.raw)
     }
 }
+
+actual fun buildMimeType(raw: String): MimeType = MimeType(raw)

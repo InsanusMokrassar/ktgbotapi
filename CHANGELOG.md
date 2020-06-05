@@ -55,6 +55,11 @@
     * Interface `PossiblySentViaBot` has been added
         * Currently, only `ChannelMessage` and `CommonMessageImpl` are implementing interface `PossiblySentViaBot`. It
         could be changed in future
+    * Factory `buildMimeType` was added
+    * `BuiltinMimeTypes` was added
+    * Abstraction `ThumbedWithMimeTypeInlineQueryResult` with `thumbMimeType` field was added
+        * `InlineQueryResultGif` and `InlineQueryResultMpeg4Gif` now extend `ThumbedWithMimeTypeInlineQueryResult`
+        instead of `ThumbedInlineQueryResult`
 
 ### 0.27.5
 
