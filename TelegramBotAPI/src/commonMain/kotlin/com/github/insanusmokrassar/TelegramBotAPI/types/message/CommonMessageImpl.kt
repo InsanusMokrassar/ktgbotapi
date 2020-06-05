@@ -1,7 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.User
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
@@ -19,5 +18,6 @@ data class CommonMessageImpl<T: MessageContent>(
     override val forwardInfo: ForwardInfo?,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
+    override val senderBot: CommonBot?,
     val paymentInfo: SuccessfulPaymentInfo?
-) : Message, CommonMessage<T>, FromUserMessage
+) : Message, CommonMessage<T>, PossiblySentViaBot, FromUserMessage

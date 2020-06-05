@@ -51,6 +51,11 @@
 
 ### 0.27.6
 
+* `TelegramBotAPI`:
+    * Interface `PossiblySentViaBot` has been added
+        * Currently, only `ChannelMessage` and `CommonMessageImpl` are implementing interface `PossiblySentViaBot`. It
+        could be changed in future
+
 ### 0.27.5
 
 * `Common`:

@@ -42,6 +42,7 @@ internal data class RawMessage(
     private val forward_sender_name: ForwardSenderName? = null,
     private val forward_date: TelegramDate? = null,
     private val reply_to_message: RawMessage? = null,
+    private val via_bot: CommonBot? = null,
     private val edit_date: TelegramDate? = null,
     private val media_group_id: MediaGroupIdentifier? = null,
     private val author_signature: AuthorSignature? = null,
@@ -255,6 +256,7 @@ internal data class RawMessage(
                         forwarded,
                         reply_to_message?.asMessage,
                         reply_markup,
+                        via_bot,
                         author_signature
                     )
                     else -> CommonMessageImpl(
@@ -268,6 +270,7 @@ internal data class RawMessage(
                         forwarded,
                         reply_to_message?.asMessage,
                         reply_markup,
+                        via_bot,
                         paymentInfo
                     )
                 }
