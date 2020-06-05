@@ -62,6 +62,8 @@
     * Abstraction `ThumbedWithMimeTypeInlineQueryResult` with `thumbMimeType` field was added
         * `InlineQueryResultGif` and `InlineQueryResultMpeg4Gif` now extend `ThumbedWithMimeTypeInlineQueryResult`
         instead of `ThumbedInlineQueryResult`
+* `TelegramBotAPI-extensions-utils`:
+    * New extensions `onlyCommonMessages`, `onlySentViaBot` and `withoutSentViaBot` was added
 
 ### 0.27.5
 
