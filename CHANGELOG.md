@@ -53,8 +53,10 @@
 
 * `TelegramBotAPI`:
     * Interface `PossiblySentViaBot` has been added
-        * Currently, only `ChannelMessage` and `CommonMessageImpl` are implementing interface `PossiblySentViaBot`. It
-        could be changed in future
+        * Additional interface `PossiblySentViaBotCommonMessage` was added for more explicit typing declaration for
+        compiler
+            * Currently, only `ChannelMessage` and `CommonMessageImpl` are implementing the interface
+            `PossiblySentViaBotCommonMessage`. It could be changed in future
     * Factory `buildMimeType` was added
     * `BuiltinMimeTypes` was added
     * Abstraction `ThumbedWithMimeTypeInlineQueryResult` with `thumbMimeType` field was added
