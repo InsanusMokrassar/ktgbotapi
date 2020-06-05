@@ -23,7 +23,7 @@ internal actual object MimeTypeSerializer : KSerializer<MimeType> {
     override fun deserialize(decoder: Decoder): MimeType {
         val mimeType = decoder.decodeString()
         return mimesCache.getOrPut(mimeType) {
-            MimeType(mimeType)
+            buildMimeType(mimeType)
         }
     }
 
@@ -31,3 +31,5 @@ internal actual object MimeTypeSerializer : KSerializer<MimeType> {
         encoder.encodeString(value.raw)
     }
 }
+
+actual fun buildMimeType(raw: String) = MimeType(raw)

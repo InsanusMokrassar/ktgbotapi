@@ -49,6 +49,25 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.6
+
+* `Common`:
+    * Versions:
+        * `Kotlin Coroutines`: `1.3.6` -> `1.3.7`
+* `TelegramBotAPI`:
+    * Interface `PossiblySentViaBot` has been added
+        * Additional interface `PossiblySentViaBotCommonMessage` was added for more explicit typing declaration for
+        compiler
+            * Currently, only `ChannelMessage` and `CommonMessageImpl` are implementing the interface
+            `PossiblySentViaBotCommonMessage`. It could be changed in future
+    * Factory `buildMimeType` was added
+    * `BuiltinMimeTypes` was added
+    * Abstraction `ThumbedWithMimeTypeInlineQueryResult` with `thumbMimeType` field was added
+        * `InlineQueryResultGif` and `InlineQueryResultMpeg4Gif` now extend `ThumbedWithMimeTypeInlineQueryResult`
+        instead of `ThumbedInlineQueryResult`
+* `TelegramBotAPI-extensions-utils`:
+    * New extensions `onlyCommonMessages`, `onlySentViaBot` and `withoutSentViaBot` was added
+
 ### 0.27.5
 
 * `Common`:

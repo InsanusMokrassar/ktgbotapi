@@ -42,6 +42,7 @@ internal data class RawMessage(
     private val forward_sender_name: ForwardSenderName? = null,
     private val forward_date: TelegramDate? = null,
     private val reply_to_message: RawMessage? = null,
+    private val via_bot: CommonBot? = null,
     private val edit_date: TelegramDate? = null,
     private val media_group_id: MediaGroupIdentifier? = null,
     private val author_signature: AuthorSignature? = null,
@@ -147,7 +148,7 @@ internal data class RawMessage(
             )
             forward_from_chat is ChannelChat -> ForwardFromChannelInfo(
                 forward_date,
-                forward_from_message_id ?: throw IllegalStateException("Channel forwarded message must contain message id, but was not"),
+                forward_from_message_id ?: error("Channel forwarded message must contain message id, but was not"),
                 forward_from_chat,
                 forward_signature
             )
@@ -208,7 +209,7 @@ internal data class RawMessage(
                         chatEvent as? ChannelEvent ?: throwWrongChatEvent(ChannelEvent::class, chatEvent),
                         date.asDate
                     )
-                    else -> throw IllegalStateException("Expected one of the public chats, but was $chat (in extracting of chat event message)")
+                    else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
                 }
             } ?: content?.let { content ->
                 media_group_id?.let {
@@ -221,7 +222,7 @@ internal data class RawMessage(
                             when (content) {
                                 is PhotoContent -> content
                                 is VideoContent -> content
-                                else -> throw IllegalStateException("Unsupported content for media group")
+                                else -> error("Unsupported content for media group")
                             },
                             edit_date?.asDate,
                             forwarded,
@@ -237,7 +238,7 @@ internal data class RawMessage(
                             when (content) {
                                 is PhotoContent -> content
                                 is VideoContent -> content
-                                else -> throw IllegalStateException("Unsupported content for media group")
+                                else -> error("Unsupported content for media group")
                             },
                             edit_date?.asDate,
                             forwarded,
@@ -255,12 +256,12 @@ internal data class RawMessage(
                         forwarded,
                         reply_to_message?.asMessage,
                         reply_markup,
+                        via_bot,
                         author_signature
                     )
                     else -> CommonMessageImpl(
                         messageId,
-                        from
-                            ?: throw IllegalStateException("Was detected common message, but owner (sender) of the message was not found"),
+                        from ?: error("Was detected common message, but owner (sender) of the message was not found"),
                         chat,
                         content,
                         date.asDate,
@@ -268,10 +269,11 @@ internal data class RawMessage(
                         forwarded,
                         reply_to_message?.asMessage,
                         reply_markup,
+                        via_bot,
                         paymentInfo
                     )
                 }
-            } ?: throw IllegalStateException("Was not found supported type of data")
+            } ?: error("Was not found supported type of data")
         } catch (e: Exception) {
             UnknownMessageType(
                 messageId,
@@ -283,6 +285,6 @@ internal data class RawMessage(
     }
 
     private fun throwWrongChatEvent(expected: KClass<*>, but: ChatEvent): CommonEvent {
-        throw IllegalStateException("Wrong type of chat event: expected $expected, but was $but")
+        error("Wrong type of chat event: expected $expected, but was $but")
     }
 }

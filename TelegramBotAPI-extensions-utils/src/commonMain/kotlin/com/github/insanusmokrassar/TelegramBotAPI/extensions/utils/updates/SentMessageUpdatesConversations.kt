@@ -13,6 +13,13 @@ fun <T : BaseSentMessageUpdate> Flow<T>.asContentMessagesFlow() = mapNotNull {
 }
 
 /**
+ * Will map incoming [BaseSentMessageUpdate]s to [CommonMessage] from [BaseSentMessageUpdate.data]
+ */
+fun <T : BaseSentMessageUpdate> Flow<T>.asCommonMessagesFlow() = mapNotNull {
+    it.data as? CommonMessage<*>
+}
+
+/**
  * Will map incoming [BaseSentMessageUpdate]s to [ChatEventMessage] from [BaseSentMessageUpdate.data]
  */
 fun <T : BaseSentMessageUpdate> Flow<T>.asChatEventsFlow() = mapNotNull {

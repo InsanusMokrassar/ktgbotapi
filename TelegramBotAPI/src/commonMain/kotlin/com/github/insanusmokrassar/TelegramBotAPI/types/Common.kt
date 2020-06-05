@@ -1,5 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
+import com.github.insanusmokrassar.TelegramBotAPI.utils.BuiltinMimeTypes
+
 typealias Identifier = Long
 typealias MessageIdentifier = Long
 typealias InlineQueryIdentifier = String
@@ -62,6 +64,12 @@ val explanationLimit = 0 .. 200
 val quizPollExplanationLimit = explanationLimit
 
 val openPeriodPollSecondsLimit = 5 .. 600
+
+val telegramInlineModeGifPermittedMimeTypes = listOf(
+    BuiltinMimeTypes.Image.Jpg,
+    BuiltinMimeTypes.Image.Gif,
+    BuiltinMimeTypes.Video.MP4
+)
 
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
@@ -177,6 +185,7 @@ const val stickerFileIdField = "sticker_file_id"
 const val gameShortNameField = "game_short_name"
 
 const val thumbUrlField = "thumb_url"
+const val thumbMimeTypeField = "thumb_mime_type"
 const val thumbWidthField = "thumb_width"
 const val thumbHeightField = "thumb_height"
 

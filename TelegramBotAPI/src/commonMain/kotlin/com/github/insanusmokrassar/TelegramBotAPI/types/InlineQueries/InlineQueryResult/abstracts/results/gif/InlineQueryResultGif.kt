@@ -2,4 +2,4 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQue
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.*
 
-interface InlineQueryResultGif : InlineQueryResultGifCommon, UrlInlineQueryResult, ThumbedInlineQueryResult, SizedInlineQueryResult, DuratedInlineResultQuery
+interface InlineQueryResultGif : InlineQueryResultGifCommon, UrlInlineQueryResult, ThumbedWithMimeTypeInlineQueryResult, SizedInlineQueryResult, DuratedInlineResultQuery
