@@ -49,6 +49,8 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.6
+
 ### 0.27.5
 
 * `Common`:
