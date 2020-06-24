@@ -24,6 +24,12 @@ fun <T> flatMatrix(block: RowBuilder<T>.() -> Unit): Matrix<T> {
     }.matrix
 }
 
+fun <T> flatMatrix(vararg elements: T): Matrix<T> {
+    return MatrixBuilder<T>().apply {
+        row { elements.forEach { +it } }
+    }.matrix
+}
+
 operator fun <T> RowBuilder<T>.plus(t: T) = add(t)
 
 class RowBuilder<T> {
