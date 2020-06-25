@@ -51,8 +51,6 @@
 
 ### 0.27.7
 
-* `Common`:
-    * Dependency `com.soywiz.korlibs.krypto:krypto` was added for future using in `Telegram Passport`
 * `TelegramBotAPI`:
     * Operator function `unaryPlus` was added to `RowBuilder`. Now it is possible to write `row { +button }`
     * Function `flatMatrix` was added for single-row columns
