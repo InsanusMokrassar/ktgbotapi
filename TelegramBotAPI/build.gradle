@@ -42,6 +42,7 @@ kotlin {
                 api "org.jetbrains.kotlinx:kotlinx-serialization-properties-common:$kotlin_serialisation_runtime_version"
 
                 api "com.soywiz.korlibs.klock:klock:$klock_version"
+                api "com.soywiz.korlibs.krypto:krypto:$krypto_version"
                 api "com.benasher44:uuid:$uuid_version"
 
                 api "io.ktor:ktor-client-core:$ktor_version"
