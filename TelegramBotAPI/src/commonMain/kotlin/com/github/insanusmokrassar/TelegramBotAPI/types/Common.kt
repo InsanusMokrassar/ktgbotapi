@@ -264,10 +264,6 @@ const val permissionsField = "permissions"
 const val typeField = "type"
 const val valueField = "value"
 
-const val dataField = "data"
-const val hashField = "hash"
-const val secretField = "secret"
-
 const val pointField = "point"
 const val xShiftField = "x_shift"
 const val yShiftField = "y_shift"
