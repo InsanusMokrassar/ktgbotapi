@@ -4,4 +4,6 @@ core: "TelegramBotAPI/**" # currently not work
 
 code: "**/*.kt"
 gradle: "**/*.gradle"
-markdown: "**/*.md"
+markdown:
+  - "**/*.md"
+  - "!CHANGELOG.md"

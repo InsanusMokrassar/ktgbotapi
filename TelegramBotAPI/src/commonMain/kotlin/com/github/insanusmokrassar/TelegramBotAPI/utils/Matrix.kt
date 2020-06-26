@@ -18,12 +18,27 @@ fun <T> matrix(block: MatrixBuilder<T>.() -> Unit): Matrix<T> {
     return MatrixBuilder<T>().also(block).matrix
 }
 
+fun <T> flatMatrix(block: RowBuilder<T>.() -> Unit): Matrix<T> {
+    return MatrixBuilder<T>().apply {
+        row(block)
+    }.matrix
+}
+
+fun <T> flatMatrix(vararg elements: T): Matrix<T> {
+    return MatrixBuilder<T>().apply {
+        row { elements.forEach { +it } }
+    }.matrix
+}
+
+operator fun <T> RowBuilder<T>.plus(t: T) = add(t)
+
 class RowBuilder<T> {
     private val mutRow: MutableList<T> = ArrayList()
     val row: List<T>
         get() = mutRow
 
     fun add(t: T) = mutRow.add(t)
+    operator fun T.unaryPlus() = add(this)
 }
 
 class MatrixBuilder<T> {
