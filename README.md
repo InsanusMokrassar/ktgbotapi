@@ -68,6 +68,8 @@ kotlin {
 
 ## Ok, where should I start?
 
+![Libraries hierarchy](resources/TelegramBotAPI-libraries-hierarchy.svg)
+
 In most cases, the most simple way will be to implement [TelegramBotAPI All](TelegramBotAPI-all/README.md) - it contains
 all necessary tools for comfort usage of this library. If you want to exclude some libraries, you can implement just
 [TelegramBotAPI API Extensions](TelegramBotAPI-extensions-api/README.md),
