@@ -54,6 +54,8 @@
 * `TelegramBotAPI`:
     * `UnknownUpdateType` was renamed to `UnknownUpdate`
     * Refactoring and optimization of `FlowsUpdatesFilter`
+* `TelegramBotAPI-extensions-utils`:
+    * Several new functions `makeLinkToMessage` was added
 
 ### 0.27.7
 
