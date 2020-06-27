@@ -9,8 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuer
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.PollAnswer
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdateType
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.updateIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonElement
@@ -57,7 +56,7 @@ internal data class RawUpdate constructor(
                 pre_checkout_query != null -> PreCheckoutQueryUpdate(updateId, pre_checkout_query)
                 poll != null -> PollUpdate(updateId, poll)
                 poll_answer != null -> PollAnswerUpdate(updateId, poll_answer)
-                else -> UnknownUpdateType(
+                else -> UnknownUpdate(
                     updateId,
                     raw.toString(),
                     raw
@@ -66,7 +65,7 @@ internal data class RawUpdate constructor(
         } catch (e: Error) {
             when (e) {
                 is SerializationException,
-                is NotImplementedError -> UnknownUpdateType(
+                is NotImplementedError -> UnknownUpdate(
                     updateId,
                     raw.toString(),
                     raw

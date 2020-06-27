@@ -3,8 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdateType
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
 
 typealias UpdateReceiver<T> = suspend (T) -> Unit
 
@@ -29,7 +28,7 @@ data class SimpleUpdatesFilter(
     private val preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     private val pollUpdateCallback: UpdateReceiver<PollUpdate>? = null,
     private val pollAnswerUpdateCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    private val unknownUpdateTypeCallback: UpdateReceiver<UnknownUpdateType>? = null
+    private val unknownUpdateTypeCallback: UpdateReceiver<UnknownUpdate>? = null
 ) : UpdatesFilter {
     override val asUpdateReceiver: UpdateReceiver<Update> = this::invoke
     override val allowedUpdates = listOfNotNull(
@@ -83,7 +82,7 @@ data class SimpleUpdatesFilter(
             is PreCheckoutQueryUpdate -> preCheckoutQueryCallback ?.invoke(update)
             is PollUpdate -> pollUpdateCallback ?.invoke(update)
             is PollAnswerUpdate -> pollAnswerUpdateCallback ?.invoke(update)
-            is UnknownUpdateType -> unknownUpdateTypeCallback ?.invoke(update)
+            is UnknownUpdate -> unknownUpdateTypeCallback ?.invoke(update)
         }
     }
 }
@@ -101,7 +100,7 @@ fun createSimpleUpdateFilter(
     preCheckoutQueryCallback: UpdateReceiver<PreCheckoutQueryUpdate>? = null,
     pollCallback: UpdateReceiver<PollUpdate>? = null,
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
-    unknownCallback: UpdateReceiver<UnknownUpdateType>? = null
+    unknownCallback: UpdateReceiver<UnknownUpdate>? = null
 ): UpdatesFilter = SimpleUpdatesFilter(
     messageCallback = messageCallback,
     messageMediaGroupCallback = mediaGroupCallback,

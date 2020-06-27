@@ -12,11 +12,13 @@ interface Update {
     val data: Any
 }
 
-data class UnknownUpdateType(
+data class UnknownUpdate(
     override val updateId: UpdateIdentifier,
     override val data: String,
     val rawJson: JsonElement
 ) : Update
+@Deprecated("Renamed", ReplaceWith("UnknownUpdate"))
+typealias UnknownUpdateType = UnknownUpdate
 
 internal object UpdateSerializerWithoutSerialization : KSerializer<Update> {
     override val descriptor: SerialDescriptor = JsonElementSerializer.descriptor

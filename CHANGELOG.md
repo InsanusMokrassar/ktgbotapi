@@ -51,6 +51,10 @@
 
 ### 0.27.8
 
+* `TelegramBotAPI`:
+    * `UnknownUpdateType` was renamed to `UnknownUpdate`
+    * Refactoring and optimization of `FlowsUpdatesFilter`
+
 ### 0.27.7
 
 * `TelegramBotAPI`:
