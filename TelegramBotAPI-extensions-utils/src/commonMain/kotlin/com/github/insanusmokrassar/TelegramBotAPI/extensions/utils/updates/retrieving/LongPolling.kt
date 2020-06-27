@@ -76,7 +76,7 @@ fun RequestsExecutor.startGettingFlowsUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: ExceptionHandler<Unit>? = null,
-    flowsUpdatesFilterUpdatesKeeperCount: Int = 64,
+    flowsUpdatesFilterUpdatesKeeperCount: Int = 100,
     flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit = {}
 ): FlowsUpdatesFilter = FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply {
     flowUpdatesPreset()

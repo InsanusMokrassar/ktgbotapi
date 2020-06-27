@@ -8,7 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFi
  * @see flowsUpdatesFilter
  */
 inline fun flowsUpdatesFilter(
-    internalChannelsSizes: Int = 64,
+    internalChannelsSizes: Int = 100,
     block: FlowsUpdatesFilter.() -> Unit
 ): FlowsUpdatesFilter {
     val filter = FlowsUpdatesFilter(internalChannelsSizes)
