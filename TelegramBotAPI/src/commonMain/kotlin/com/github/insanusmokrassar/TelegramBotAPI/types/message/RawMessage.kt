@@ -20,6 +20,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.Success
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.Invoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.SuccessfulPayment
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.Poll
+import com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass

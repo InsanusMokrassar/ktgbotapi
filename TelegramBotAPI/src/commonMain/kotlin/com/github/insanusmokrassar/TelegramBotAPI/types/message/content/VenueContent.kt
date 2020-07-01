@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue
 
 data class VenueContent(
     val venue: Venue

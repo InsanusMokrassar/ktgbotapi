@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendVenue
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue
 
 suspend fun RequestsExecutor.sendVenue(
     chatId: ChatIdentifier,

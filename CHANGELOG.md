@@ -59,6 +59,9 @@
     * `FoursquareId` and `FoursquareType` typealiases were added
 * `TelegramBotAPI-extensions-utils`:
     * Several new functions `makeLinkToMessage` was added
+    * `Foursquare` data class was added
+        * Extension `Venue#foursquare` was added
+        * Factory function `Venue` with `Foursquare` parameter was added
 
 ### 0.27.7
 

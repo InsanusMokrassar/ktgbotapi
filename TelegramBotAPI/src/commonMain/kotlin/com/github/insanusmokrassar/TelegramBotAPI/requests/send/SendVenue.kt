@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.VenueContent
+import com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<VenueContent>>
