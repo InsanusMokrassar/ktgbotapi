@@ -22,6 +22,8 @@ typealias PollIdentifier = String
 typealias StickerSetName = String
 typealias FileUniqueId = String
 typealias DiceResult = Int
+typealias FoursquareId = String
+typealias FoursquareType = String
 
 typealias Seconds = Int
 typealias LongSeconds = Long

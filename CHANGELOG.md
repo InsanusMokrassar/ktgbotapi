@@ -54,6 +54,9 @@
 * `TelegramBotAPI`:
     * `UnknownUpdateType` was renamed to `UnknownUpdate`
     * Refactoring and optimization of `FlowsUpdatesFilter`
+    * `Venue` type was replaced to a new package: `com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue`
+    * `Venue` type now implements `Locationed` and delegate realisation to its `location` field
+    * `FoursquareId` and `FoursquareType` typealiases were added
 * `TelegramBotAPI-extensions-utils`:
     * Several new functions `makeLinkToMessage` was added
 
