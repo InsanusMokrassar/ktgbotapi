@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.types.buttons
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.ReplyKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardButton
+import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.ReplyKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.utils.flatMatrix
 
 fun ReplyKeyboardMarkup(

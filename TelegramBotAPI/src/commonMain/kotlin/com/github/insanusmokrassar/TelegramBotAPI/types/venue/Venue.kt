@@ -3,7 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.venue
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CommonVenueData
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Locationed
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class Venue(

@@ -3,7 +3,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.PossiblySentViaBotCommonMessage
 import com.soywiz.klock.DateTime

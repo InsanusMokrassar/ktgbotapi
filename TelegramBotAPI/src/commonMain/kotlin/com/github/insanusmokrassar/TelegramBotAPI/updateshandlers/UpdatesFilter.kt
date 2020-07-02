@@ -3,7 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdate
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 
 typealias UpdateReceiver<T> = suspend (T) -> Unit
 

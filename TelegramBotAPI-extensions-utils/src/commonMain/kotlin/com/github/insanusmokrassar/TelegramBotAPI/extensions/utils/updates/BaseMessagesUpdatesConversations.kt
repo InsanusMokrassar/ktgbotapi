@@ -2,7 +2,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterIsInstance
 
 fun Flow<Update>.onlyBaseMessageUpdates(): Flow<BaseMessageUpdate> = filterIsInstance()
 
