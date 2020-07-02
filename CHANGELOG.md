@@ -49,12 +49,28 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.8
+
+* `TelegramBotAPI`:
+    * `UnknownUpdateType` was renamed to `UnknownUpdate`
+    * Refactoring and optimization of `FlowsUpdatesFilter`
+    * `Venue` type was replaced to a new package: `com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue`
+    * `Venue` type now implements `Locationed` and delegate realisation to its `location` field
+    * `FoursquareId` and `FoursquareType` typealiases were added
+* `TelegramBotAPI-extensions-utils`:
+    * Several new functions `makeLinkToMessage` was added
+    * `Foursquare` data class was added
+        * Extension `Venue#foursquare` was added
+        * Factory function `Venue` with `Foursquare` parameter was added
+
 ### 0.27.7
 
 * `TelegramBotAPI`:
     * Operator function `unaryPlus` was added to `RowBuilder`. Now it is possible to write `row { +button }`
     * Function `flatMatrix` was added for single-row columns
     * Operator extension `RowBuilder#plus` was added to be able to write things like `row { this + button }`
+* `TelegramBotAPI-extensions-api`:
+    * Extensions `RequestsExecutor#sendVenue` with `Location` args were added
 * `TelegramBotAPI-extensions-utils`:
     * Function `InlineKeyboardMarkup` for flat keyboards was added
     * Function `ReplyKeyboardMarkup` for flat keyboards was added

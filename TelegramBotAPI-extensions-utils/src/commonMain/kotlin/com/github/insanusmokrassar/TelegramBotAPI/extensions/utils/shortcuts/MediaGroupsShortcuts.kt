@@ -4,7 +4,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendMediaG
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.ForwardInfo
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 
 val List<MediaGroupMessage>.forwardInfo: ForwardInfo?

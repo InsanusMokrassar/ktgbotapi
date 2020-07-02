@@ -1,8 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.formatting
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
+import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.StickerSetName
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.UsernameChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedChat
@@ -14,6 +13,14 @@ fun makeLinkToMessage(
     username: String,
     messageId: MessageIdentifier
 ): String = "$internalLinkBeginning/$username/$messageId"
+fun makeLinkToMessage(
+    username: Username,
+    messageId: MessageIdentifier
+): String = makeLinkToMessage(username.username, messageId)
+fun makeLinkToMessage(
+    chat: UsernameChat,
+    messageId: MessageIdentifier
+): String? = chat.username ?.let { makeLinkToMessage(it, messageId) }
 
 private val linkIdRedundantPartRegex = Regex("^-100")
 private val usernameBeginSymbolRegex = Regex("^@")

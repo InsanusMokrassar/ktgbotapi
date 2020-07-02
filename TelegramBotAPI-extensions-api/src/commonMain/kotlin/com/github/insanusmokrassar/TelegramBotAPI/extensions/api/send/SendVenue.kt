@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendVenue
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue
 
 suspend fun RequestsExecutor.sendVenue(
     chatId: ChatIdentifier,
@@ -34,6 +35,32 @@ suspend fun RequestsExecutor.sendVenue(
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
     chat.id, latitude, longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendVenue(
+    chatId: ChatIdentifier,
+    location: Location,
+    title: String,
+    address: String,
+    foursquareId: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVenue(
+    chatId, location.latitude, location.longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendVenue(
+    chat: Chat,
+    location: Location,
+    title: String,
+    address: String,
+    foursquareId: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVenue(
+    chat.id, location.latitude, location.longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
 )
 
 suspend fun RequestsExecutor.sendVenue(

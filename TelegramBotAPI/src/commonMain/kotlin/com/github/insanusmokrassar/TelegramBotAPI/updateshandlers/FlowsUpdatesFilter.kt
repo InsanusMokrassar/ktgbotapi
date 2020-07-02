@@ -1,74 +1,41 @@
 package com.github.insanusmokrassar.TelegramBotAPI.updateshandlers
 
+import com.github.insanusmokrassar.TelegramBotAPI.types.ALL_UPDATES_LIST
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
+import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UnknownUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-
-@Suppress("EXPERIMENTAL_API_USAGE")
-private fun <T> BroadcastChannel<T>.createUpdateReceiver(): UpdateReceiver<T> = ::send
+import kotlinx.coroutines.flow.*
 
 @Suppress("EXPERIMENTAL_API_USAGE", "unused")
 class FlowsUpdatesFilter(
-    broadcastChannelsSize: Int = 64
+    broadcastChannelsSize: Int = 100
 ): UpdatesFilter {
-    private val messageChannel: BroadcastChannel<MessageUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val messageMediaGroupChannel: BroadcastChannel<MessageMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val editedMessageChannel: BroadcastChannel<EditMessageUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val editedMessageMediaGroupChannel: BroadcastChannel<EditMessageMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val channelPostChannel: BroadcastChannel<ChannelPostUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val channelPostMediaGroupChannel: BroadcastChannel<ChannelPostMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val editedChannelPostChannel: BroadcastChannel<EditChannelPostUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val editedChannelPostMediaGroupChannel: BroadcastChannel<EditChannelPostMediaGroupUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val chosenInlineResultChannel: BroadcastChannel<ChosenInlineResultUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val inlineQueryChannel: BroadcastChannel<InlineQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val callbackQueryChannel: BroadcastChannel<CallbackQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val shippingQueryChannel: BroadcastChannel<ShippingQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val preCheckoutQueryChannel: BroadcastChannel<PreCheckoutQueryUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val pollChannel: BroadcastChannel<PollUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val pollAnswerChannel: BroadcastChannel<PollAnswerUpdate> = BroadcastChannel(broadcastChannelsSize)
-    private val unknownUpdateChannel: BroadcastChannel<Update> = BroadcastChannel(broadcastChannelsSize)
+    private val updatesReceivingChannel = BroadcastChannel<Update>(broadcastChannelsSize)
+    @Suppress("MemberVisibilityCanBePrivate")
+    val allUpdatesFlow: Flow<Update> = updatesReceivingChannel.asFlow()
 
     override val allowedUpdates: List<String>
-        get() = filter.allowedUpdates
-    override val asUpdateReceiver: UpdateReceiver<Update>
-        get() = filter.asUpdateReceiver
+        get() = ALL_UPDATES_LIST
+    override val asUpdateReceiver: UpdateReceiver<Update> = {
+        updatesReceivingChannel.send(it)
+    }
 
-    val filter = SimpleUpdatesFilter(
-        messageChannel.createUpdateReceiver(),
-        messageMediaGroupChannel.createUpdateReceiver(),
-        editedMessageChannel.createUpdateReceiver(),
-        editedMessageMediaGroupChannel.createUpdateReceiver(),
-        channelPostChannel.createUpdateReceiver(),
-        channelPostMediaGroupChannel.createUpdateReceiver(),
-        editedChannelPostChannel.createUpdateReceiver(),
-        editedChannelPostMediaGroupChannel.createUpdateReceiver(),
-        chosenInlineResultChannel.createUpdateReceiver(),
-        inlineQueryChannel.createUpdateReceiver(),
-        callbackQueryChannel.createUpdateReceiver(),
-        shippingQueryChannel.createUpdateReceiver(),
-        preCheckoutQueryChannel.createUpdateReceiver(),
-        pollChannel.createUpdateReceiver(),
-        pollAnswerChannel.createUpdateReceiver(),
-        unknownUpdateChannel.createUpdateReceiver()
-    )
-
-    val messageFlow: Flow<MessageUpdate> = messageChannel.asFlow()
-    val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate> = messageMediaGroupChannel.asFlow()
-    val editedMessageFlow: Flow<EditMessageUpdate> = editedMessageChannel.asFlow()
-    val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate> = editedMessageMediaGroupChannel.asFlow()
-    val channelPostFlow: Flow<ChannelPostUpdate> = channelPostChannel.asFlow()
-    val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate> = channelPostMediaGroupChannel.asFlow()
-    val editedChannelPostFlow: Flow<EditChannelPostUpdate> = editedChannelPostChannel.asFlow()
-    val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate> = editedChannelPostMediaGroupChannel.asFlow()
-    val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate> = chosenInlineResultChannel.asFlow()
-    val inlineQueryFlow: Flow<InlineQueryUpdate> = inlineQueryChannel.asFlow()
-    val callbackQueryFlow: Flow<CallbackQueryUpdate> = callbackQueryChannel.asFlow()
-    val shippingQueryFlow: Flow<ShippingQueryUpdate> = shippingQueryChannel.asFlow()
-    val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = preCheckoutQueryChannel.asFlow()
-    val pollFlow: Flow<PollUpdate> = pollChannel.asFlow()
-    val pollAnswerFlow: Flow<PollAnswerUpdate> = pollAnswerChannel.asFlow()
-    val unknownUpdateTypeFlow: Flow<Update> = unknownUpdateChannel.asFlow()
+    val messageFlow: Flow<MessageUpdate> = allUpdatesFlow.filterIsInstance()
+    val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    val editedMessageFlow: Flow<EditMessageUpdate> = allUpdatesFlow.filterIsInstance()
+    val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    val channelPostFlow: Flow<ChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
+    val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    val editedChannelPostFlow: Flow<EditChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
+    val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate> = allUpdatesFlow.filterIsInstance()
+    val inlineQueryFlow: Flow<InlineQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    val callbackQueryFlow: Flow<CallbackQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    val shippingQueryFlow: Flow<ShippingQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    val pollFlow: Flow<PollUpdate> = allUpdatesFlow.filterIsInstance()
+    val pollAnswerFlow: Flow<PollAnswerUpdate> = allUpdatesFlow.filterIsInstance()
+    val unknownUpdateTypeFlow: Flow<UnknownUpdate> = allUpdatesFlow.filterIsInstance()
 }

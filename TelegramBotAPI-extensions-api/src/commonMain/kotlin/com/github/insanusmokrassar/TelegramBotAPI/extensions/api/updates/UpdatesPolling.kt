@@ -76,7 +76,7 @@ fun RequestsExecutor.startGettingFlowsUpdates(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (suspend (Exception) -> Unit)? = null,
-    flowsUpdatesFilterUpdatesKeeperCount: Int = 64,
+    flowsUpdatesFilterUpdatesKeeperCount: Int = 100,
     flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit = {}
 ): FlowsUpdatesFilter = FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply {
     flowUpdatesPreset()
