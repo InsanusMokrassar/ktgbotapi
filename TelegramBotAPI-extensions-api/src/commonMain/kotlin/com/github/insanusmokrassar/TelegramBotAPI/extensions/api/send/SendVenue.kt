@@ -46,10 +46,8 @@ suspend fun RequestsExecutor.sendVenue(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-) = execute(
-    SendVenue(
-        chatId, location.latitude, location.longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
-    )
+) = sendVenue(
+    chatId, location.latitude, location.longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
 )
 
 suspend fun RequestsExecutor.sendVenue(
