@@ -69,6 +69,8 @@
     * Operator function `unaryPlus` was added to `RowBuilder`. Now it is possible to write `row { +button }`
     * Function `flatMatrix` was added for single-row columns
     * Operator extension `RowBuilder#plus` was added to be able to write things like `row { this + button }`
+* `TelegramBotAPI-extensions-api`:
+    * Extensions `RequestsExecutor#sendVenue` with `Location` args were added
 * `TelegramBotAPI-extensions-utils`:
     * Function `InlineKeyboardMarkup` for flat keyboards was added
     * Function `ReplyKeyboardMarkup` for flat keyboards was added

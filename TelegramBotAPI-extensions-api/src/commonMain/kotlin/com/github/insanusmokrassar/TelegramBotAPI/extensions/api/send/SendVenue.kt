@@ -39,6 +39,34 @@ suspend fun RequestsExecutor.sendVenue(
 
 suspend fun RequestsExecutor.sendVenue(
     chatId: ChatIdentifier,
+    location: Location,
+    title: String,
+    address: String,
+    foursquareId: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendVenue(
+        chatId, location.latitude, location.longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
+    )
+)
+
+suspend fun RequestsExecutor.sendVenue(
+    chat: Chat,
+    location: Location,
+    title: String,
+    address: String,
+    foursquareId: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVenue(
+    chat.id, location.latitude, location.longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend fun RequestsExecutor.sendVenue(
+    chatId: ChatIdentifier,
     venue: Venue,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
