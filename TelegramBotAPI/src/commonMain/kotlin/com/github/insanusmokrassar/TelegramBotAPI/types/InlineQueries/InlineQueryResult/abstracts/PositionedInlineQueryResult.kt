@@ -2,4 +2,5 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQue
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.Locationed
 
+@Deprecated("Will be removed due to useless")
 interface PositionedInlineQueryResult : InlineQueryResult, Locationed
