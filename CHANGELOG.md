@@ -51,6 +51,13 @@
 
 ### 0.27.9
 
+* `Common`
+    * Versions updates:
+        * `Gradle Wrapper`: `6.5-all` -> `6.5.1-bin`
+        * `Coroutines`: `1.3.7` -> `1.3.8`
+        * `Klock`: `1.11.3` -> `1.11.14`
+        * `UUID`: `0.1.0` -> `0.1.1`
+
 ### 0.27.8
 
 * `TelegramBotAPI`:
