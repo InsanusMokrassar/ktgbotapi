@@ -104,7 +104,7 @@ val internalChannelsSizes = 128
 flowsUpdatesFilter(internalChannelsSizes/* default is 64 */) {
     textMessages().onEach {
         println("I have received text message: ${it.content}")
-    }
+    }.launchIn(someCoroutineScope)
     /* ... */
 }
 ```
