@@ -1,14 +1,14 @@
-# TelegramBotAPI Util  Extensions
+# TelegramBotAPI Util Extensions
 
-- [TelegramBotAPI Util  Extensions](#telegrambotapi-util--extensions)
-  * [What is it?](#what-is-it-)
-  * [How to implement library?](#how-to-implement-library-)
+- [TelegramBotAPI Util Extensions](#telegrambotapi-util-extensions)
+  * [What is it?](#what-is-it)
+  * [How to implement library?](#how-to-implement-library)
     + [Maven](#maven)
     + [Gradle](#gradle)
-  * [How to use?](#how-to-use-)
+  * [How to use?](#how-to-use)
     + [Updates](#updates)
       - [Long polling](#long-polling)
-      - [WebHooks (currently JVM-only)](#webhooks--currently-jvm-only-)
+      - [WebHooks (currently JVM-only)](#webhooks--currently-jvm-only)
     + [Filters](#filters)
       - [Sent messages](#sent-messages)
         * [Common messages](#common-messages)
