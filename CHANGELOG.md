@@ -51,6 +51,8 @@
 
 ### 0.27.10
 
+* `TelegramBotAPI-extensions-api`:
+    * Function `telegramBot(TelegramAPIUrlsKeeper)` was added
 * `TelegramBotAPI-extensions-utils`:
     * Extension `Route#includeWebhookHandlingInRouteWithFlows` was added
     * A lot of extensions like `FlowsUpdatesFilter#textMessages` were added:

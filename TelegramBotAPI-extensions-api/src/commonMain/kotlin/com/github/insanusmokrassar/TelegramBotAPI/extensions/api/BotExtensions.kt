@@ -12,7 +12,7 @@ import io.ktor.client.engine.HttpClientEngine
  */
 fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
-    client: HttpClient
+    client: HttpClient = HttpClient()
 ): RequestsExecutor = KtorRequestsExecutor(
     urlsKeeper,
     client
