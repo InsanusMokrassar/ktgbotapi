@@ -53,6 +53,24 @@
 
 * `TelegramBotAPI-extensions-utils`:
     * Extension `Route#includeWebhookHandlingInRouteWithFlows` was added
+    * A lot of extensions like `FlowsUpdatesFilter#textMessages` were added:
+        * `FlowsUpdatesFilter#animationMessages`
+        * `FlowsUpdatesFilter#audioMessages`
+        * `FlowsUpdatesFilter#contactMessages`
+        * `FlowsUpdatesFilter#diceMessages`
+        * `FlowsUpdatesFilter#documentMessages`
+        * `FlowsUpdatesFilter#gameMessages`
+        * `FlowsUpdatesFilter#invoiceMessages`
+        * `FlowsUpdatesFilter#locationMessages`
+        * `FlowsUpdatesFilter#photoMessages`
+            * `FlowsUpdatesFilter#imageMessages`
+        * `FlowsUpdatesFilter#pollMessages`
+        * `FlowsUpdatesFilter#stickerMessages`
+        * `FlowsUpdatesFilter#textMessages`
+        * `FlowsUpdatesFilter#venueMessages`
+        * `FlowsUpdatesFilter#videoMessages`
+        * `FlowsUpdatesFilter#videoNoteMessages`
+        * `FlowsUpdatesFilter#voiceMessages`
 
 ### 0.27.9
 

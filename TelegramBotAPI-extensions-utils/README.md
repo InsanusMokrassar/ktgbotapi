@@ -102,6 +102,9 @@ Anyway, in both of ways it will be useful to know that it is possible to create 
 ```kotlin
 val internalChannelsSizes = 128
 flowsUpdatesFilter(internalChannelsSizes/* default is 64 */) {
+    textMessages().onEach {
+        println("I have received text message: ${it.content}")
+    }
     /* ... */
 }
 ```
