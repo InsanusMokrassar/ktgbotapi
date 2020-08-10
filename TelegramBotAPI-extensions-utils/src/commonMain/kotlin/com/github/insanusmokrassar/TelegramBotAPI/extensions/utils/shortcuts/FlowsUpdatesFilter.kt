@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.shortcuts
 
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.aggregateFlows
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.asContentMessagesFlow
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.*
@@ -8,9 +9,15 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceContent
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
+
+inline fun <reified T : MessageContent> filterForContentMessage(): suspend (ContentMessage<*>) -> ContentMessage<T>? = {
+    if (it.content is T) {
+        it as ContentMessage<T>
+    } else {
+        null
+    }
+}
 
 /**
  * @param scopeToIncludeChannels This parameter is required when you want to include [textMessages] for channels too.
@@ -21,34 +28,14 @@ import kotlinx.coroutines.flow.*
 inline fun <reified T: MessageContent> FlowsUpdatesFilter.filterContentMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ): Flow<ContentMessage<T>> {
+    val filter = filterForContentMessage<T>()
     return scopeToIncludeChannels ?.let { scope ->
-        val bc = BroadcastChannel<ContentMessage<T>>(Channel.BUFFERED)
-        channelPostFlow.asContentMessagesFlow().mapNotNull {
-            if (it.content is T) {
-                it as ContentMessage<T>
-            } else {
-                null
-            }
-        }.onEach {
-            bc.send(it)
-        }.launchIn(scope)
-        messageFlow.asContentMessagesFlow().mapNotNull {
-            if (it.content is T) {
-                it as ContentMessage<T>
-            } else {
-                null
-            }
-        }.onEach {
-            bc.send(it)
-        }.launchIn(scope)
-        bc.asFlow()
-    } ?: messageFlow.asContentMessagesFlow().mapNotNull {
-        if (it.content is T) {
-            it as ContentMessage<T>
-        } else {
-            null
-        }
-    }
+        aggregateFlows(
+            scope,
+            messageFlow.asContentMessagesFlow().mapNotNull(filter),
+            channelPostFlow.asContentMessagesFlow().mapNotNull(filter)
+        )
+    } ?: messageFlow.asContentMessagesFlow().mapNotNull(filter)
 }
 
 fun FlowsUpdatesFilter.animationMessages(
