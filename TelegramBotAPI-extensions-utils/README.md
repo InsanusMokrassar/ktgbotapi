@@ -159,6 +159,8 @@ Besides, there are two additional opportunities:
 
 * Extension `Route#includeWebhookHandlingInRoute`, which allow you to include webhook processing inside your ktor
 application without creating of new one server (as it is happening in `startListenWebhooks`)
+    * Also, you can use `Route#includeWebhookHandlingInRouteWithFlows` to use it like `flowUpdatesFilter` fun, but apply
+    `FlowsUpdatesFilter` to the block
 * Extension `RequestsExecutor#setWebhookInfoAndStartListenWebhooks`. It is allow to set up full server (in fact, with
 `startListenWebhooks`), but also send `SetWebhook` request before and check that it was successful
 

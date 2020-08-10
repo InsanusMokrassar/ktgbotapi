@@ -51,6 +51,9 @@
 
 ### 0.27.10
 
+* `TelegramBotAPI-extensions-utils`:
+    * Extension `Route#includeWebhookHandlingInRouteWithFlows` was added
+
 ### 0.27.9
 
 * `Common`

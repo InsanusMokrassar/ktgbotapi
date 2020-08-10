@@ -2,14 +2,14 @@ package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.retr
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.nonstrictJsonFormat
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.flowsUpdatesFilter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.MultipartRequestImpl
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateDeserializationStrategy
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdatesFilter
+import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
 import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
 import com.github.insanusmokrassar.TelegramBotAPI.utils.ExceptionHandler
 import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
@@ -55,6 +55,16 @@ fun Route.includeWebhookHandlingInRoute(
         call.respond("Ok")
     }
 }
+
+fun Route.includeWebhookHandlingInRouteWithFlows(
+    scope: CoroutineScope,
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
+    block: FlowsUpdatesFilter.() -> Unit
+) = includeWebhookHandlingInRoute(
+    scope,
+    exceptionsHandler,
+    flowsUpdatesFilter(block = block).asUpdateReceiver
+)
 
 /**
  * Setting up ktor server, set webhook info via [SetWebhook] request.
