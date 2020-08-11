@@ -1,14 +1,14 @@
-# TelegramBotAPI Util  Extensions
+# TelegramBotAPI Util Extensions
 
-- [TelegramBotAPI Util  Extensions](#telegrambotapi-util--extensions)
-  * [What is it?](#what-is-it-)
-  * [How to implement library?](#how-to-implement-library-)
+- [TelegramBotAPI Util Extensions](#telegrambotapi-util-extensions)
+  * [What is it?](#what-is-it)
+  * [How to implement library?](#how-to-implement-library)
     + [Maven](#maven)
     + [Gradle](#gradle)
-  * [How to use?](#how-to-use-)
+  * [How to use?](#how-to-use)
     + [Updates](#updates)
       - [Long polling](#long-polling)
-      - [WebHooks (currently JVM-only)](#webhooks--currently-jvm-only-)
+      - [WebHooks (currently JVM-only)](#webhooks--currently-jvm-only)
     + [Filters](#filters)
       - [Sent messages](#sent-messages)
         * [Common messages](#common-messages)
@@ -102,6 +102,9 @@ Anyway, in both of ways it will be useful to know that it is possible to create 
 ```kotlin
 val internalChannelsSizes = 128
 flowsUpdatesFilter(internalChannelsSizes/* default is 64 */) {
+    textMessages().onEach {
+        println("I have received text message: ${it.content}")
+    }.launchIn(someCoroutineScope)
     /* ... */
 }
 ```
@@ -159,6 +162,8 @@ Besides, there are two additional opportunities:
 
 * Extension `Route#includeWebhookHandlingInRoute`, which allow you to include webhook processing inside your ktor
 application without creating of new one server (as it is happening in `startListenWebhooks`)
+    * Also, you can use `Route#includeWebhookHandlingInRouteWithFlows` to use it like `flowUpdatesFilter` fun, but apply
+    `FlowsUpdatesFilter` to the block
 * Extension `RequestsExecutor#setWebhookInfoAndStartListenWebhooks`. It is allow to set up full server (in fact, with
 `startListenWebhooks`), but also send `SetWebhook` request before and check that it was successful
 
