@@ -51,6 +51,26 @@
 
 ### 0.27.11
 
+* `TelegramBotAPI-extensions-utils`:
+    * A lot of extensions like `Flow<BaseSentMessageUpdate>#textMessages` were added:
+        * `Flow<BaseSentMessageUpdate>#animationMessages`
+        * `Flow<BaseSentMessageUpdate>#audioMessages`
+        * `Flow<BaseSentMessageUpdate>#contactMessages`
+        * `Flow<BaseSentMessageUpdate>#diceMessages`
+        * `Flow<BaseSentMessageUpdate>#documentMessages`
+        * `Flow<BaseSentMessageUpdate>#gameMessages`
+        * `Flow<BaseSentMessageUpdate>#invoiceMessages`
+        * `Flow<BaseSentMessageUpdate>#locationMessages`
+        * `Flow<BaseSentMessageUpdate>#photoMessages`
+            * `Flow<BaseSentMessageUpdate>#imageMessages`
+        * `Flow<BaseSentMessageUpdate>#pollMessages`
+        * `Flow<BaseSentMessageUpdate>#stickerMessages`
+        * `Flow<BaseSentMessageUpdate>#textMessages`
+        * `Flow<BaseSentMessageUpdate>#venueMessages`
+        * `Flow<BaseSentMessageUpdate>#videoMessages`
+        * `Flow<BaseSentMessageUpdate>#videoNoteMessages`
+        * `Flow<BaseSentMessageUpdate>#voiceMessages`
+
 ### 0.27.10
 
 * `TelegramBotAPI-extensions-api`:
