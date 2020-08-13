@@ -5,6 +5,9 @@ import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 
+/**
+ * Analog of [merge] function for [Flow]s. The difference is in the usage of [BroadcastChannel] in this case
+ */
 fun <T> aggregateFlows(
     withScope: CoroutineScope,
     vararg flows: Flow<T>,
