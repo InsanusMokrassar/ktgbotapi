@@ -29,3 +29,11 @@ fun <T> Flow<Iterable<T>>.flatMap(): Flow<T> = flow {
         }
     }
 }
+
+fun <T, R> Flow<T>.flatMap(mapper: (T) -> Iterable<R>): Flow<R> = flow {
+    collect {
+        mapper(it).forEach {
+            emit(it)
+        }
+    }
+}

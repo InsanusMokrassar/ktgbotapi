@@ -56,6 +56,8 @@
     * Extensions for `FlowUpdatesFilter` were added:
         * `FlowsUpdatesFilter#allSentMessagesFlow` (combination of `messageFlow` and `channelPostFlow`)
         * `FlowsUpdatesFilter#allSentMediaGroupsFlow` (combination of `messageMediaGroupFlow` and `channelPostMediaGroupFlow`)
+        * `FlowsUpdatesFilter#sentMessages`
+        * `FlowsUpdatesFilter#sentMessagesWithMediaGroups`
         * `FlowsUpdatesFilter#photoMessagesWithMediaGroups`
         * `FlowsUpdatesFilter#imageMessagesWithMediaGroups`
         * `FlowsUpdatesFilter#videoMessagesWithMediaGroups`

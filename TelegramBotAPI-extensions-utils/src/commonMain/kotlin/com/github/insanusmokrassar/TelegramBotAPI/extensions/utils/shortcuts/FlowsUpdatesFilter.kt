@@ -75,6 +75,18 @@ inline fun <reified T: MediaGroupContent> FlowsUpdatesFilter.filterMediaGroupMes
     } ?: messageMediaGroupFlow).filterMediaGroupMessages()
 }
 
+fun FlowsUpdatesFilter.sentMessages(
+    scopeToIncludeChannels: CoroutineScope? = null
+): Flow<ContentMessage<MessageContent>> = filterContentMessages(scopeToIncludeChannels)
+fun FlowsUpdatesFilter.sentMessagesWithMediaGroups(
+    scopeToIncludeChannels: CoroutineScope? = null
+): Flow<ContentMessage<MessageContent>> = merge(
+    sentMessages(scopeToIncludeChannels),
+    mediaGroupMessages(scopeToIncludeChannels).flatMap {
+        it.mapNotNull { it as? ContentMessage<MessageContent> }
+    }
+)
+
 fun Flow<BaseSentMessageUpdate>.animationMessages() = filterContentMessages<AnimationContent>()
 fun FlowsUpdatesFilter.animationMessages(
     scopeToIncludeChannels: CoroutineScope? = null
