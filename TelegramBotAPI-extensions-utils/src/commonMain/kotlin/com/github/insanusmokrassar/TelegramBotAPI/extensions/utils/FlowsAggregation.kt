@@ -21,3 +21,11 @@ fun <T> aggregateFlows(
     }
     return bc.asFlow()
 }
+
+fun <T> Flow<Iterable<T>>.flatMap(): Flow<T> = flow {
+    collect {
+        it.forEach {
+            emit(it)
+        }
+    }
+}

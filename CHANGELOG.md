@@ -52,6 +52,16 @@
 ### 0.27.11
 
 * `TelegramBotAPI-extensions-utils`:
+    * `Flow<Iterable<T>>.flatMap` extension was added
+    * Extensions for `FlowUpdatesFilter` were added:
+        * `FlowsUpdatesFilter#allSentMessagesFlow` (combination of `messageFlow` and `channelPostFlow`)
+        * `FlowsUpdatesFilter#allSentMediaGroupsFlow` (combination of `messageMediaGroupFlow` and `channelPostMediaGroupFlow`)
+        * `FlowsUpdatesFilter#photoMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#imageMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#videoMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#mediaGroupMessages`
+        * `FlowsUpdatesFilter#mediaGroupPhotosMessages`
+        * `FlowsUpdatesFilter#mediaGroupVideosMessages`
     * A lot of extensions like `Flow<BaseSentMessageUpdate>#textMessages` were added:
         * `Flow<BaseSentMessageUpdate>#animationMessages`
         * `Flow<BaseSentMessageUpdate>#audioMessages`
@@ -70,6 +80,9 @@
         * `Flow<BaseSentMessageUpdate>#videoMessages`
         * `Flow<BaseSentMessageUpdate>#videoNoteMessages`
         * `Flow<BaseSentMessageUpdate>#voiceMessages`
+        * `Flow<BaseSentMessageUpdate>#mediaGroupMessages`
+        * `Flow<BaseSentMessageUpdate>#mediaGroupPhotosMessages`
+        * `Flow<BaseSentMessageUpdate>#mediaGroupVideosMessages`
 
 ### 0.27.10
 
