@@ -51,6 +51,9 @@
 
 ### 0.27.11
 
+* `TelegramBotAPI`:
+    * Extension `String#filenameFromUrl` was created
+        * Extension `PathedFile#filename` was created
 * `TelegramBotAPI-extensions-utils`:
     * `Flow<Iterable<T>>.flatMap` extension was added
     * Extensions for `FlowUpdatesFilter` were added:

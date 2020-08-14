@@ -4,7 +4,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.types.FileUniqueId
 import com.github.insanusmokrassar.TelegramBotAPI.types.fileUniqueIdField
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
+import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -20,5 +20,7 @@ data class PathedFile(
     override val fileSize: Long? = null
 ): TelegramMediaFile
 
+val PathedFile.filename: FileName
+    get() = filePath.filenameFromUrl
 fun TelegramAPIUrlsKeeper.resolveFileURL(file: PathedFile): String = "$fileBaseUrl/${file.filePath}"
 fun PathedFile.fullUrl(keeper: TelegramAPIUrlsKeeper): String = keeper.resolveFileURL(this)
