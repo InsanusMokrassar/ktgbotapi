@@ -49,6 +49,43 @@
         * `closePollExactAfter`
         * `closePollAfter`
 
+### 0.27.11
+
+* `TelegramBotAPI-extensions-utils`:
+    * `Flow<Iterable<T>>.flatMap` extension was added
+    * Extensions for `FlowUpdatesFilter` were added:
+        * `FlowsUpdatesFilter#allSentMessagesFlow` (combination of `messageFlow` and `channelPostFlow`)
+        * `FlowsUpdatesFilter#allSentMediaGroupsFlow` (combination of `messageMediaGroupFlow` and `channelPostMediaGroupFlow`)
+        * `FlowsUpdatesFilter#sentMessages`
+        * `FlowsUpdatesFilter#sentMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#photoMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#imageMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#videoMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#mediaGroupMessages`
+        * `FlowsUpdatesFilter#mediaGroupPhotosMessages`
+        * `FlowsUpdatesFilter#mediaGroupVideosMessages`
+    * A lot of extensions like `Flow<BaseSentMessageUpdate>#textMessages` were added:
+        * `Flow<BaseSentMessageUpdate>#animationMessages`
+        * `Flow<BaseSentMessageUpdate>#audioMessages`
+        * `Flow<BaseSentMessageUpdate>#contactMessages`
+        * `Flow<BaseSentMessageUpdate>#diceMessages`
+        * `Flow<BaseSentMessageUpdate>#documentMessages`
+        * `Flow<BaseSentMessageUpdate>#gameMessages`
+        * `Flow<BaseSentMessageUpdate>#invoiceMessages`
+        * `Flow<BaseSentMessageUpdate>#locationMessages`
+        * `Flow<BaseSentMessageUpdate>#photoMessages`
+            * `Flow<BaseSentMessageUpdate>#imageMessages`
+        * `Flow<BaseSentMessageUpdate>#pollMessages`
+        * `Flow<BaseSentMessageUpdate>#stickerMessages`
+        * `Flow<BaseSentMessageUpdate>#textMessages`
+        * `Flow<BaseSentMessageUpdate>#venueMessages`
+        * `Flow<BaseSentMessageUpdate>#videoMessages`
+        * `Flow<BaseSentMessageUpdate>#videoNoteMessages`
+        * `Flow<BaseSentMessageUpdate>#voiceMessages`
+        * `Flow<BaseSentMessageUpdate>#mediaGroupMessages`
+        * `Flow<BaseSentMessageUpdate>#mediaGroupPhotosMessages`
+        * `Flow<BaseSentMessageUpdate>#mediaGroupVideosMessages`
+
 ### 0.27.10
 
 * `TelegramBotAPI-extensions-api`:

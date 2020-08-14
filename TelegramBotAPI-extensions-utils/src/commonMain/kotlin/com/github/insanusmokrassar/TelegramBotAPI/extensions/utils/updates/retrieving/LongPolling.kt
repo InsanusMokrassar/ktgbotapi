@@ -114,7 +114,7 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     pollAnswerCallback: UpdateReceiver<PollAnswerUpdate>? = null,
     timeoutSeconds: Seconds = 30,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
-    scope: CoroutineScope = GlobalScope
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ): Job {
     return startGettingOfUpdatesByLongPolling(
         SimpleUpdatesFilter(
