@@ -31,7 +31,7 @@ repositories {
 
 kotlin {
     jvm()
-    js {
+    js(BOTH) {
         browser { dceTask { keep "$library_group" } }
         nodejs()
     }
