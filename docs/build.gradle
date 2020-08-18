@@ -27,7 +27,7 @@ repositories {
 kotlin {
     jvm()
     js {
-        browser { dceTask { keep "${project.name}.$library_group" } }
+        browser { dceTask { keep "$library_group" } }
         nodejs()
     }
 
