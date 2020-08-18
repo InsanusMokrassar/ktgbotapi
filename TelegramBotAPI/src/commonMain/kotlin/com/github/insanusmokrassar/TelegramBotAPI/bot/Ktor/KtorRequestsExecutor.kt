@@ -45,7 +45,7 @@ class KtorRequestsExecutor(
             { e ->
                 throw if (e is ClientRequestException) {
                     val content = e.response.readText()
-                    val responseObject = jsonFormatter.parse(Response.serializer(), content)
+                    val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
                     newRequestException(
                         responseObject,
                         content,
@@ -71,10 +71,10 @@ class KtorRequestsExecutor(
 
                 val response = statement?.execute() ?: throw IllegalArgumentException("Can't execute request: $request")
                 val content = response.receive<String>()
-                val responseObject = jsonFormatter.parse(Response.serializer(), content)
+                val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
 
                 (responseObject.result?.let {
-                    jsonFormatter.fromJson(request.resultDeserializer, it)
+                    jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
                 } ?: responseObject.parameters?.let {
                     val error = it.error
                     if (error is RetryAfterError) {

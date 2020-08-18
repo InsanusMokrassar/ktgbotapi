@@ -3,40 +3,42 @@ package com.github.insanusmokrassar.TelegramBotAPI.utils
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.json.*
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 internal val nonstrictJsonFormat = Json {
     isLenient = true
     ignoreUnknownKeys = true
-    serializeSpecialFloatingPointValues = true
+    allowSpecialFloatingPointValues = true
     useArrayPolymorphism = true
 }
 
 fun <T: Any> T.toJsonWithoutNulls(serializer: SerializationStrategy<T>): JsonObject = toJson(serializer).withoutNulls()
 
-fun <T: Any> T.toJson(serializer: SerializationStrategy<T>): JsonObject = nonstrictJsonFormat.toJson(
+fun <T: Any> T.toJson(serializer: SerializationStrategy<T>): JsonObject = nonstrictJsonFormat.encodeToJsonElement(
     serializer,
     this
 ).jsonObject
 
 fun JsonArray.withoutNulls(): JsonArray {
-    return jsonArray {
+    return buildJsonArray {
         forEach {
             when (it) {
-                is JsonObject -> +it.withoutNulls()
-                is JsonArray -> +it.withoutNulls()
-                is JsonPrimitive -> +it
+                is JsonObject -> add(it.withoutNulls())
+                is JsonArray -> add(it.withoutNulls())
+                is JsonPrimitive -> add(it)
             }
         }
     }
 }
 
 fun JsonObject.withoutNulls(): JsonObject {
-    return json {
+    return buildJsonObject {
         forEach { (k, v) ->
             when (v) {
-                is JsonObject -> k to v.withoutNulls()
-                is JsonArray -> k to v.withoutNulls()
-                !is JsonNull -> k to v
+                is JsonObject -> put(k, v.withoutNulls())
+                is JsonArray -> put(k, v.withoutNulls())
+                !is JsonNull -> put(k, v)
+                JsonNull -> {
+                    // do nothing
+                }
             }
         }
     }

@@ -1,6 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode
 
 import kotlinx.serialization.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 internal const val parseModeField = "parse_mode"
 

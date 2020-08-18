@@ -8,25 +8,29 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.chat.extended.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
-import kotlinx.serialization.json.JsonObjectSerializer
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.*
 
 private val formatter = nonstrictJsonFormat
 
 internal object PreviewChatSerializer : KSerializer<Chat> {
-    override val descriptor: SerialDescriptor = SerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
+    @InternalSerializationApi
+    override val descriptor: SerialDescriptor = buildSerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
 
     override fun deserialize(decoder: Decoder): Chat {
-        val decodedJson = JsonObjectSerializer.deserialize(decoder)
+        val decodedJson = JsonObject.serializer().deserialize(decoder)
 
-        val type = decodedJson.getPrimitive(typeField).content
+        val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?: error("Field $typeField must be presented, but absent in $decodedJson")
 
         return when (type) {
-            "private" -> formatter.fromJson(PrivateChatImpl.serializer(), decodedJson)
-            "group" -> formatter.fromJson(GroupChatImpl.serializer(), decodedJson)
-            "supergroup" -> formatter.fromJson(SupergroupChatImpl.serializer(), decodedJson)
-            "channel" -> formatter.fromJson(ChannelChatImpl.serializer(), decodedJson)
+            "private" -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+            "group" -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
+            "supergroup" -> formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
+            "channel" -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
             else -> UnknownChatType(
-                formatter.fromJson(Long.serializer(), decodedJson.getPrimitive(chatIdField)).toChatId(),
+                formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
                 decodedJson.toString()
             )
         }
@@ -44,18 +48,19 @@ internal object PreviewChatSerializer : KSerializer<Chat> {
 }
 
 internal object ExtendedChatSerializer : KSerializer<ExtendedChat> {
-    override val descriptor: SerialDescriptor = SerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
+    @InternalSerializationApi
+    override val descriptor: SerialDescriptor = buildSerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
 
     override fun deserialize(decoder: Decoder): ExtendedChat {
-        val decodedJson = JsonObjectSerializer.deserialize(decoder)
+        val decodedJson = JsonObject.serializer().deserialize(decoder)
 
-        val type = decodedJson.getPrimitive(typeField).content
+        val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?: error("Field $typeField must be presented, but absent in $decodedJson")
 
         return when (type) {
-            "private" -> formatter.fromJson(ExtendedPrivateChatImpl.serializer(), decodedJson)
-            "group" -> formatter.fromJson(ExtendedGroupChatImpl.serializer(), decodedJson)
-            "supergroup" -> formatter.fromJson(ExtendedSupergroupChatImpl.serializer(), decodedJson)
-            "channel" -> formatter.fromJson(ExtendedChannelChatImpl.serializer(), decodedJson)
+            "private" -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
+            "group" -> formatter.decodeFromJsonElement(ExtendedGroupChatImpl.serializer(), decodedJson)
+            "supergroup" -> formatter.decodeFromJsonElement(ExtendedSupergroupChatImpl.serializer(), decodedJson)
+            "channel" -> formatter.decodeFromJsonElement(ExtendedChannelChatImpl.serializer(), decodedJson)
             else -> throw IllegalArgumentException("Unknown type of chat")
         }
     }

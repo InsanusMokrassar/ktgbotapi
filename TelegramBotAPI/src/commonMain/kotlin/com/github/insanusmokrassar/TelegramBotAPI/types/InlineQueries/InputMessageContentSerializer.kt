@@ -3,10 +3,14 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InputMessageContent.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InputMessageContent
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 @Serializer(InputMessageContent::class)
 internal object InputMessageContentSerializer : KSerializer<InputMessageContent> {
-    override val descriptor: SerialDescriptor = SerialDescriptor(InputMessageContent::class.toString(), PolymorphicKind.OPEN)
+    @InternalSerializationApi
+    override val descriptor: SerialDescriptor = buildSerialDescriptor(InputMessageContent::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: InputMessageContent) {
         when (value) {
             is InputContactMessageContent -> InputContactMessageContent.serializer().serialize(encoder, value)

@@ -18,7 +18,7 @@ data class InputMediaPhoto(
 ) : InputMedia, MediaGroupMemberInputMedia {
     override val type: String = photoInputMediaType
 
-    override fun serialize(format: StringFormat): String = format.stringify(serializer(), this)
+    override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
     val media: String = when (file) {
@@ -27,7 +27,8 @@ data class InputMediaPhoto(
     }
 
     @Transient
-    override val arguments: Map<String, Any?> = Properties.storeNullable(serializer(), this)
+    @Deprecated("Marked as deprecated for removal in future updates", level = DeprecationLevel.ERROR)
+    override val arguments: Map<String, Any?> = error("Unsupported operation")
 }
 
 fun PhotoSize.toInputMediaPhoto(

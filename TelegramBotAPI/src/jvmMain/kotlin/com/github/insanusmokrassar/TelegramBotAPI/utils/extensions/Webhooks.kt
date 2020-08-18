@@ -77,8 +77,8 @@ suspend fun RequestsExecutor.setWebhook(
                             exceptionsHandler ?.invoke(it)
                         }
                     ) {
-                        val asJson = nonstrictJsonFormat.parseJson(call.receiveText())
-                        val update = nonstrictJsonFormat.fromJson(
+                        val asJson = nonstrictJsonFormat.parseToJsonElement(call.receiveText())
+                        val update = nonstrictJsonFormat.decodeFromJsonElement(
                             UpdateDeserializationStrategy,
                             asJson
                         )

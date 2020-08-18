@@ -1,10 +1,14 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.buttons
 
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 @Serializer(KeyboardMarkup::class)
 internal object KeyboardMarkupSerializer : KSerializer<KeyboardMarkup> {
-    override val descriptor: SerialDescriptor = SerialDescriptor(
+    @InternalSerializationApi
+    override val descriptor: SerialDescriptor = buildSerialDescriptor(
         KeyboardMarkup::class.toString(),
         PolymorphicKind.OPEN
     )

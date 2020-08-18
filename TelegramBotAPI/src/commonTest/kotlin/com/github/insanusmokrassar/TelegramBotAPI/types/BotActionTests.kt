@@ -2,12 +2,10 @@ package com.github.insanusmokrassar.TelegramBotAPI.types
 
 import com.github.insanusmokrassar.TelegramBotAPI.TestsJsonFormat
 import com.github.insanusmokrassar.TelegramBotAPI.types.actions.*
-import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.Serializable
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@ImplicitReflectionSerializer
 class BotActionTests {
     @Serializable
     data class Example(
@@ -33,10 +31,10 @@ class BotActionTests {
     }
 
     private fun checkBotActionSerializeDeserialize(example: Example) {
-        val stringified = TestsJsonFormat.stringify(Example.serializer(), example)
+        val stringified = TestsJsonFormat.encodeToString(Example.serializer(), example)
         assertEquals("{\"botAction\":\"${example.botAction.actionName}\"}", stringified)
 
-        val deserialized = TestsJsonFormat.parse(Example.serializer(), stringified)
+        val deserialized = TestsJsonFormat.decodeFromString(Example.serializer(), stringified)
 
         assertEquals(example, deserialized)
 
@@ -44,7 +42,7 @@ class BotActionTests {
     }
 
     @Test
-    fun `BotAction correctly serialized and deserialized`() {
+    fun `BotAction_correctly_serialized_and_deserialized`() {
         fun BotAction.example() = Example(this)
         listOf(
             TypingAction.example(),

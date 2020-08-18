@@ -1,10 +1,14 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia
 
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 @Serializer(InputMedia::class)
 internal object InputMediaSerializer : KSerializer<InputMedia> {
-    override val descriptor: SerialDescriptor = SerialDescriptor(InputMedia::class.toString(), PolymorphicKind.OPEN)
+    @InternalSerializationApi
+    override val descriptor: SerialDescriptor = buildSerialDescriptor(InputMedia::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: InputMedia) {
         when (value) {
             is InputMediaVideo -> InputMediaVideo.serializer().serialize(encoder, value)

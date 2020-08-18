@@ -1,43 +1,38 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types
 
 import com.github.insanusmokrassar.TelegramBotAPI.TestsJsonFormat
-import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.Serializable
 import kotlin.test.*
 
-@ImplicitReflectionSerializer
 private const val chatIdentifierChatId: Identifier = 123L
-@ImplicitReflectionSerializer
 private const val chatIdentifierLink = "tg://user?id=$chatIdentifierChatId"
-@ImplicitReflectionSerializer
 private const val testUsername = "@Example"
 
-@ImplicitReflectionSerializer
 class ChatIdentifierTests {
     @Test
-    fun `Cast from Int to ChatId is working correctly`() {
+    fun `Cast_from_Int_to_ChatId_is_working_correctly`() {
         val chatId = chatIdentifierChatId.toInt().toChatId()
         assertEquals(chatIdentifierChatId, chatId.chatId)
     }
     @Test
-    fun `Cast from Byte to ChatId is working correctly`() {
+    fun `Cast_from_Byte_to_ChatId_is_working_correctly`() {
         val chatId = chatIdentifierChatId.toByte().toChatId()
         assertEquals(chatIdentifierChatId, chatId.chatId)
     }
     @Test
-    fun `Cast from Identifier to ChatId is working correctly`() {
+    fun `Cast_from_Identifier_to_ChatId_is_working_correctly`() {
         val chatId = chatIdentifierChatId.toChatId()
         assertEquals(chatIdentifierChatId, chatId.chatId)
     }
 
     @Test
-    fun `Creating link from ChatId is correct`() {
+    fun `Creating_link_from_ChatId_is_correct`() {
         val chatId = chatIdentifierChatId.toChatId()
         assertEquals(chatIdentifierLink, chatId.link)
     }
 
     @Test
-    fun `Cast from String to Username is working correctly`() {
+    fun `Cast_from_String_to_Username_is_working_correctly`() {
         assertEquals(testUsername, testUsername.toUsername().username)
 
         assertFails("Username creating must fail when trying to create from string which is not starting from @ symbol") {
@@ -47,32 +42,32 @@ class ChatIdentifierTests {
 
 
     @Test
-    fun `Deserializing from String must work correctly`() {
+    fun `Deserializing_from_String_must_work_correctly`() {
         @Serializable
         data class Example(
             val identifier: ChatIdentifier
         )
 
         Example(chatIdentifierChatId.toChatId()).let { withChatId ->
-            val stringified = TestsJsonFormat.stringify(Example.serializer(), withChatId)
+            val stringified = TestsJsonFormat.encodeToString(Example.serializer(), withChatId)
             assertEquals(stringified, "{\"identifier\":$chatIdentifierChatId}")
-            val deserialized = TestsJsonFormat.parse(Example.serializer(), stringified)
+            val deserialized = TestsJsonFormat.decodeFromString(Example.serializer(), stringified)
             assertEquals(withChatId, deserialized)
         }
 
         Example(testUsername.toUsername()).let { withUsername ->
-            val stringified = TestsJsonFormat.stringify(Example.serializer(), withUsername)
+            val stringified = TestsJsonFormat.encodeToString(Example.serializer(), withUsername)
             assertEquals(stringified, "{\"identifier\":\"$testUsername\"}")
-            val deserialized = TestsJsonFormat.parse(Example.serializer(), stringified)
+            val deserialized = TestsJsonFormat.decodeFromString(Example.serializer(), stringified)
             assertEquals(withUsername, deserialized)
         }
 
         // Replace @ by empty string, because from time to time we can retrieve from Telegram system
         // username without starting @ symbol
         Example(testUsername.toUsername()).let { withUsername ->
-            val stringified = TestsJsonFormat.stringify(Example.serializer(), withUsername).replace("@", "")
+            val stringified = TestsJsonFormat.encodeToString(Example.serializer(), withUsername).replace("@", "")
             assertEquals("{\"identifier\":\"${testUsername.replace("@", "")}\"}", stringified)
-            val deserialized = TestsJsonFormat.parse(Example.serializer(), stringified)
+            val deserialized = TestsJsonFormat.decodeFromString(Example.serializer(), stringified)
             assertEquals(withUsername, deserialized)
         }
     }

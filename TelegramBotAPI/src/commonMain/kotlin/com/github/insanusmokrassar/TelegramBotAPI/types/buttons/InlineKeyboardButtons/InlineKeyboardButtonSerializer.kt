@@ -3,11 +3,14 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardB
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
-import kotlinx.serialization.json.JsonElementSerializer
-import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.*
 
 internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
-    override val descriptor: SerialDescriptor = SerialDescriptor(
+    @InternalSerializationApi
+    override val descriptor: SerialDescriptor = buildSerialDescriptor(
         "com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardButtons.InlineKeyboardButton",
         PolymorphicKind.SEALED
     )
@@ -26,10 +29,10 @@ internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButto
     }
 
     override fun deserialize(decoder: Decoder): InlineKeyboardButton {
-        val json = JsonElementSerializer.deserialize(decoder)
+        val json = JsonElement.serializer().deserialize(decoder)
 
         return (json as? JsonObject) ?.let { resolveSerializer(it) } ?.let {
-            nonstrictJsonFormat.fromJson(it, json)
+            nonstrictJsonFormat.decodeFromJsonElement(it, json)
         } ?: UnknownInlineKeyboardButton("", json)
     }
 
@@ -42,7 +45,7 @@ internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButto
             is SwitchInlineQueryCurrentChatInlineKeyboardButton -> SwitchInlineQueryCurrentChatInlineKeyboardButton.serializer().serialize(encoder, value)
             is URLInlineKeyboardButton -> URLInlineKeyboardButton.serializer().serialize(encoder, value)
             is CallbackGameInlineKeyboardButton -> CallbackGameInlineKeyboardButton.serializer().serialize(encoder, value)
-            is UnknownInlineKeyboardButton -> JsonElementSerializer.serialize(encoder, value.rawData)
+            is UnknownInlineKeyboardButton -> JsonElement.serializer().serialize(encoder, value.rawData)
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.actions
 
 import kotlinx.serialization.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 /**
  * Use BotAction objects realisations to notify user about bot actions

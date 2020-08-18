@@ -4,8 +4,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.RawUpdate
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonElementSerializer
 
 interface Update {
     val updateId: UpdateIdentifier
@@ -21,7 +23,7 @@ data class UnknownUpdate(
 typealias UnknownUpdateType = UnknownUpdate
 
 internal object UpdateSerializerWithoutSerialization : KSerializer<Update> {
-    override val descriptor: SerialDescriptor = JsonElementSerializer.descriptor
+    override val descriptor: SerialDescriptor = JsonElement.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): Update = UpdateDeserializationStrategy.deserialize(decoder)
 
@@ -36,17 +38,17 @@ internal object UpdateSerializerWithoutSerialization : KSerializer<Update> {
  * @see kotlinx.serialization.json.Json.parse
  */
 object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
-    override val descriptor: SerialDescriptor = JsonElementSerializer.descriptor
-
-    override fun patch(decoder: Decoder, old: Update): Update = throw UpdateNotSupportedException("Update")
+    override val descriptor: SerialDescriptor = JsonElement.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): Update {
-        val asJson = JsonElementSerializer.deserialize(decoder)
-        return nonstrictJsonFormat.fromJson(
+        val asJson = JsonElement.serializer().deserialize(decoder)
+        return nonstrictJsonFormat.decodeFromJsonElement(
             RawUpdate.serializer(),
             asJson
         ).asUpdate(
             asJson
         )
     }
+
+    override fun patch(decoder: Decoder, old: Update): Update = error("Unsupported operation")
 }

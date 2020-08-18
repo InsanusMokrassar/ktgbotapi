@@ -3,6 +3,8 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.buttons
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
 @Serializable(KeyboardButtonSerializer::class)
@@ -47,26 +49,26 @@ data class RequestPollKeyboardButton(
 @Serializer(KeyboardButton::class)
 internal object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
     override fun deserialize(decoder: Decoder): KeyboardButton {
-        val asJson = JsonElementSerializer.deserialize(decoder)
+        val asJson = JsonElement.serializer().deserialize(decoder)
 
         return when {
             asJson is JsonPrimitive -> SimpleKeyboardButton(asJson.content)
-            asJson is JsonObject && asJson.getPrimitiveOrNull(requestContactField) != null -> RequestContactKeyboardButton(
-                asJson.getPrimitive(textField).content
+            asJson is JsonObject && asJson[requestContactField] != null -> RequestContactKeyboardButton(
+                asJson[textField]!!.jsonPrimitive.content
             )
-            asJson is JsonObject && asJson.getPrimitiveOrNull(requestLocationField) != null -> RequestLocationKeyboardButton(
-                asJson.getPrimitive(textField).content
+            asJson is JsonObject && asJson[requestLocationField] != null -> RequestLocationKeyboardButton(
+                asJson[textField]!!.jsonPrimitive.content
             )
-            asJson is JsonObject && asJson.getObjectOrNull(requestPollField) != null -> RequestPollKeyboardButton(
-                asJson.getPrimitive(textField).content,
-                nonstrictJsonFormat.fromJson(
+            asJson is JsonObject && asJson[requestPollField] != null -> RequestPollKeyboardButton(
+                asJson[textField]!!.jsonPrimitive.content,
+                nonstrictJsonFormat.decodeFromJsonElement(
                     KeyboardButtonPollType.serializer(),
-                    asJson.getObject(requestPollField)
+                    asJson[requestPollField] ?.jsonObject ?: buildJsonObject {  }
                 )
             )
             else -> UnknownKeyboardButton(
                 when (asJson) {
-                    is JsonObject -> asJson.getPrimitive(textField).content
+                    is JsonObject -> asJson[textField]!!.jsonPrimitive.content
                     is JsonArray -> ""
                     is JsonPrimitive -> asJson.content
                 },
@@ -81,7 +83,7 @@ internal object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
             is RequestLocationKeyboardButton -> RequestLocationKeyboardButton.serializer().serialize(encoder, value)
             is RequestPollKeyboardButton -> RequestPollKeyboardButton.serializer().serialize(encoder, value)
             is SimpleKeyboardButton -> encoder.encodeString(value.text)
-            is UnknownKeyboardButton -> JsonElementSerializer.serialize(encoder, nonstrictJsonFormat.parseJson(value.raw))
+            is UnknownKeyboardButton -> JsonElement.serializer().serialize(encoder, nonstrictJsonFormat.parseToJsonElement(value.raw))
         }
     }
 }

@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
 import kotlinx.serialization.*
+import kotlinx.serialization.properties.Properties
 
 internal const val videoInputMediaType = "video"
 
@@ -21,7 +22,7 @@ data class InputMediaVideo(
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, MediaGroupMemberInputMedia {
     override val type: String = videoInputMediaType
 
-    override fun serialize(format: StringFormat): String = format.stringify(serializer(), this)
+    override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
     val media: String = when (file) {
@@ -30,5 +31,6 @@ data class InputMediaVideo(
     }
 
     @Transient
-    override val arguments: Map<String, Any?> = Properties.storeNullable(serializer(), this)
+    @Deprecated("Marked as deprecated for removal in future updates", level = DeprecationLevel.ERROR)
+    override val arguments: Map<String, Any?> = error("Unsupported operation")
 }

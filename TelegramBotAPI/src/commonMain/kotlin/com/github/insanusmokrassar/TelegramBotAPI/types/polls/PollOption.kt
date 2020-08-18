@@ -3,6 +3,9 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.polls
 import com.github.insanusmokrassar.TelegramBotAPI.types.textField
 import com.github.insanusmokrassar.TelegramBotAPI.types.votesCountField
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 @Serializable(PollOptionSerializer::class)
 sealed class PollOption {

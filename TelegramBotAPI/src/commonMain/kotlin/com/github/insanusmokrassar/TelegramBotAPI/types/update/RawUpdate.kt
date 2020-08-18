@@ -14,6 +14,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 import com.github.insanusmokrassar.TelegramBotAPI.types.updateIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.jsonObject
 
 @Serializable
 internal data class RawUpdate constructor(

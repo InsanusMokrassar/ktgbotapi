@@ -8,11 +8,11 @@ import kotlinx.serialization.json.JsonElement
 /**
  * @return Deserialize [source] as [com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update]
  */
-fun Json.toTelegramUpdate(source: String) = parse(UpdateDeserializationStrategy, source)
+fun Json.toTelegramUpdate(source: String) = decodeFromString(UpdateDeserializationStrategy, source)
 /**
  * @return Deserialize [source] as [com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update]
  */
-fun Json.toTelegramUpdate(source: JsonElement) = fromJson(UpdateDeserializationStrategy, source)
+fun Json.toTelegramUpdate(source: JsonElement) = decodeFromJsonElement(UpdateDeserializationStrategy, source)
 
 /**
  * @return Deserialize [this] as [com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update]. In fact,

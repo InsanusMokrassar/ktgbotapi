@@ -7,8 +7,10 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
 import kotlinx.serialization.*
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonObjectSerializer
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.*
 
 sealed class ScheduledCloseInfo {
     abstract val closeDateTime: DateTime
@@ -101,11 +103,10 @@ data class UnknownPollType internal constructor(
     val raw: JsonObject
 ) : Poll() {
     @Transient
-    override val scheduledCloseInfo: ScheduledCloseInfo? = raw.getPrimitiveOrNull(
-        closeDateField
-    ) ?.longOrNull ?.asExactScheduledCloseInfo ?: raw.getPrimitiveOrNull(
-        openPeriodField
-    ) ?.longOrNull ?.asApproximateScheduledCloseInfo
+    override val scheduledCloseInfo: ScheduledCloseInfo? = (raw[closeDateField] ?: raw[openPeriodField])
+        ?.jsonPrimitive
+        ?.longOrNull
+        ?.asApproximateScheduledCloseInfo
 }
 
 @Serializable(PollSerializer::class)
@@ -150,8 +151,8 @@ internal object PollSerializer : KSerializer<Poll> {
         get() = RawPoll.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): Poll {
-        val asJson = JsonObjectSerializer.deserialize(decoder)
-        val rawPoll = nonstrictJsonFormat.fromJson(RawPoll.serializer(), asJson)
+        val asJson = JsonObject.serializer().deserialize(decoder)
+        val rawPoll = nonstrictJsonFormat.decodeFromJsonElement(RawPoll.serializer(), asJson)
 
         return when (rawPoll.type) {
             quizPollType -> QuizPoll(
@@ -218,7 +219,7 @@ internal object PollSerializer : KSerializer<Poll> {
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )
             is UnknownPollType -> {
-                JsonObjectSerializer.serialize(encoder, value.raw)
+                JsonObject.serializer().serialize(encoder, value.raw)
                 return
             }
         }

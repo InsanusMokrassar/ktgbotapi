@@ -2,6 +2,20 @@
 
 ## 0.28.0
 
+### RC
+
+**THIS VERSION CONTAINS BREAKING CHANGES**
+
+* `Common`:
+    * Version updates:
+        * `Kotlin`: `1.3.72` -> `1.4.0`
+        * `Coroutines`: `1.3.8` -> `1.3.9`
+        * `Serialization`: `0.20.0` -> `1.0.0-RC`
+        * `Klock`: `1.11.14` -> `1.12.0`
+        * `UUID`: `0.1.1` -> `0.2.0`
+        * `Ktor`: `1.3.2` -> `1.3.2-1.4.0-rc`
+    * `buildMimeType` function now is cache-oriented getter which will save already got mime types into internal map
+
 ## 0.27.0
 
 * `Common`:

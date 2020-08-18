@@ -1,6 +1,9 @@
 package com.github.insanusmokrassar.TelegramBotAPI.types.dice
 
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 @Serializable(DiceAnimationTypeSerializer::class)
 sealed class DiceAnimationType {
@@ -27,7 +30,7 @@ typealias UnknownDiceAnimationType = CustomDiceAnimationType
 
 @Serializer(DiceAnimationType::class)
 internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
-    override val descriptor: SerialDescriptor = PrimitiveDescriptor("DiceAnimationType", PrimitiveKind.STRING)
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("DiceAnimationType", PrimitiveKind.STRING)
     override fun deserialize(decoder: Decoder): DiceAnimationType {
         return when (val type = decoder.decodeString()) {
             CubeDiceAnimationType.emoji -> CubeDiceAnimationType

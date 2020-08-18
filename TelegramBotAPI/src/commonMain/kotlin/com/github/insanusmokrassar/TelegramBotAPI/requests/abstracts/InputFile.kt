@@ -2,6 +2,9 @@ package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
 import com.github.insanusmokrassar.TelegramBotAPI.utils.StorageFile
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.*
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 @Serializable(InputFileSerializer::class)
 sealed class InputFile {
@@ -21,7 +24,7 @@ fun String.toInputFile() = FileId(this)
 
 @Serializer(InputFile::class)
 internal object InputFileSerializer : KSerializer<InputFile> {
-    override val descriptor: SerialDescriptor = PrimitiveDescriptor(FileId::class.toString(), PrimitiveKind.STRING)
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(FileId::class.toString(), PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: InputFile) = encoder.encodeString(value.fileId)
     override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString())
 }

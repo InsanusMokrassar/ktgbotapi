@@ -6,6 +6,6 @@ import kotlinx.serialization.json.Json
 internal val nonstrictJsonFormat = Json {
     isLenient = true
     ignoreUnknownKeys = true
-    serializeSpecialFloatingPointValues = true
+    allowSpecialFloatingPointValues = true
     useArrayPolymorphism = true
 }

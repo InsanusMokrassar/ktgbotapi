@@ -13,8 +13,8 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.kotlin.multiplatform" version "$kotlin_version"
-    id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version"
+    id "org.jetbrains.kotlin.multiplatform"
+    id "org.jetbrains.kotlin.plugin.serialization"
 }
 
 project.version = "$library_version"
@@ -31,15 +31,18 @@ repositories {
 
 kotlin {
     jvm()
-    js()
+    js {
+        browser()
+        nodejs()
+    }
 
     sourceSets {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
-                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$kotlin_coroutines_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-properties-common:$kotlin_serialisation_runtime_version"
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+                api "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlin_serialisation_runtime_version"
+                api "org.jetbrains.kotlinx:kotlinx-serialization-properties:$kotlin_serialisation_runtime_version"
 
                 api "com.soywiz.korlibs.klock:klock:$klock_version"
                 api "com.benasher44:uuid:$uuid_version"
@@ -56,9 +59,6 @@ kotlin {
 
         jvmMain {
             dependencies {
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-properties:$kotlin_serialisation_runtime_version"
-
                 api "io.ktor:ktor-client:$ktor_version"
                 api "io.ktor:ktor-server:$ktor_version"
 
@@ -76,10 +76,14 @@ kotlin {
 
         jsMain {
             dependencies {
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-properties-js:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$kotlin_coroutines_version"
                 api "io.ktor:ktor-client-js:$ktor_version"
+            }
+        }
+
+        jsTest {
+            dependencies {
+                implementation kotlin('test-junit')
+                implementation kotlin('test-js')
             }
         }
     }

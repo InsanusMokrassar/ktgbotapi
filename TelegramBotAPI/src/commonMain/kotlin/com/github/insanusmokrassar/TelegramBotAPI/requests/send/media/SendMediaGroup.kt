@@ -12,6 +12,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.throwRangeError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.json.buildJsonArray
 import kotlinx.serialization.json.jsonArray
 
 @Deprecated("Replaced and renamed", ReplaceWith("mediaCountInMediaGroup", "com.github.insanusmokrassar.TelegramBotAPI.types.mediaCountInMediaGroup"))
@@ -71,9 +72,9 @@ data class SendMediaGroupData internal constructor(
 ) : DataRequest<List<MediaGroupMessage>>, SendMessageRequest<List<MediaGroupMessage>> {
     @SerialName(mediaField)
     private val convertedMedia: String
-        get() = jsonArray {
+        get() = buildJsonArray {
             media.forEach {
-                +it.toJsonWithoutNulls(MediaGroupMemberInputMediaSerializer)
+                add(it.toJsonWithoutNulls(MediaGroupMemberInputMediaSerializer))
             }
         }.toString()
 

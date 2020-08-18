@@ -5,7 +5,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.chat.extended.ExtendedPr
 import com.github.insanusmokrassar.TelegramBotAPI.utils.PreviewFeature
 import com.github.insanusmokrassar.TelegramBotAPI.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
-import kotlinx.serialization.json.JsonObjectSerializer
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.*
 
 @Serializable(UserSerializer::class)
 sealed class User : PrivateChat
@@ -69,24 +71,24 @@ data class ExtendedBot(
 @Serializer(User::class)
 internal object UserSerializer : KSerializer<User> {
     override fun deserialize(decoder: Decoder): User {
-        val asJson = JsonObjectSerializer.deserialize(decoder)
+        val asJson = JsonObject.serializer().deserialize(decoder)
 
         return when {
-            asJson.getPrimitiveOrNull(isBotField) ?.booleanOrNull != true -> nonstrictJsonFormat.fromJson(
+            asJson[isBotField] ?.jsonPrimitive ?.booleanOrNull != true -> nonstrictJsonFormat.decodeFromJsonElement(
                 CommonUser.serializer(),
                 asJson
             )
             else -> {
-                if ((asJson.get(canJoinGroupsField)
-                    ?: asJson.get(canReadAllGroupMessagesField)
-                    ?: asJson.get(supportInlineQueriesField)) != null
+                if ((asJson[canJoinGroupsField]
+                    ?: asJson[canReadAllGroupMessagesField]
+                    ?: asJson[supportInlineQueriesField]) != null
                 ) {
-                    nonstrictJsonFormat.fromJson(
+                    nonstrictJsonFormat.decodeFromJsonElement(
                         ExtendedBot.serializer(),
                         asJson
                     )
                 } else {
-                    nonstrictJsonFormat.fromJson(
+                    nonstrictJsonFormat.decodeFromJsonElement(
                         CommonBot.serializer(),
                         asJson
                     )
