@@ -136,14 +136,7 @@ data class QuizPoll(
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
-) : Poll(), CaptionedInput, ExplainedInput {
-    @Deprecated("Will be removed in near updates", ReplaceWith("explanation"))
-    override val caption: String?
-        get() = explanation
-    @Deprecated("Will be removed in near updates", ReplaceWith("explanationEntities"))
-    override val captionEntities: List<TextPart>
-        get() = explanationEntities
-}
+) : Poll(), ExplainedInput
 
 @Serializer(Poll::class)
 internal object PollSerializer : KSerializer<Poll> {

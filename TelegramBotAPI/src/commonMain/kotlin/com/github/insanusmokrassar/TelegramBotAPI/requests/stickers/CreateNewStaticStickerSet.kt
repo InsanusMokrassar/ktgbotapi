@@ -34,12 +34,6 @@ fun CreateNewStickerSet(
     maskPosition: MaskPosition? = null
 ): Request<Boolean> = CreateNewStaticStickerSet(userId, name, sticker, emojis, containsMasks, maskPosition)
 
-@Deprecated(
-    "Renamed",
-    ReplaceWith("CreateNewStaticStickerSet", "com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.CreateNewStaticStickerSet")
-)
-typealias CreateNewStickerSet = CreateNewStaticStickerSet
-
 @Serializable
 data class CreateNewStaticStickerSet internal constructor(
     @SerialName(userIdField)

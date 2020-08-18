@@ -212,14 +212,10 @@ data class SendQuizPoll(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendPoll(), CaptionedOutput, ExplainedOutput {
+) : SendPoll(), ExplainedOutput {
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-
-    @Deprecated("Will be removed in near updates", ReplaceWith("explanation"))
-    override val caption: String?
-        get() = explanation
 
     @SerialName(openPeriodField)
     override val openPeriod: LongSeconds?

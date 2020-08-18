@@ -16,7 +16,7 @@ internal fun Update.lastUpdateIdentifier(): UpdateIdentifier {
 }
 
 internal fun List<Update>.lastUpdateIdentifier(): UpdateIdentifier? {
-    return maxBy { it.updateId } ?.lastUpdateIdentifier()
+    return maxByOrNull { it.updateId } ?.lastUpdateIdentifier()
 }
 
 internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {

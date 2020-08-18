@@ -9,7 +9,7 @@ import kotlinx.serialization.builtins.ListSerializer
 
 typealias Photo = List<PhotoSize>
 
-fun Photo.biggest(): PhotoSize? = maxBy {
+fun Photo.biggest(): PhotoSize? = maxByOrNull {
     it.resolution
 }
 

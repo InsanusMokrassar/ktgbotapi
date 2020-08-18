@@ -62,8 +62,6 @@ val botCommandsLimit = 0 .. 100
 val mediaCountInMediaGroup: IntRange = 2 .. 10
 
 val explanationLimit = 0 .. 200
-@Deprecated("Will be removed in near updates", ReplaceWith("explanationLimit"))
-val quizPollExplanationLimit = explanationLimit
 
 val openPeriodPollSecondsLimit = 5 .. 600
 

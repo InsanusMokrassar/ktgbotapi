@@ -24,24 +24,6 @@ fun AddStaticStickerToSet(
     }
 }
 
-@Deprecated(
-    "Renamed",
-    ReplaceWith("AddStaticStickerToSet", "com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.AddStaticStickerToSet")
-)
-fun AddStickerToSet(
-    userId: UserId,
-    stickerSetName: String,
-    sticker: InputFile,
-    emojis: String,
-    maskPosition: MaskPosition? = null
-) = AddStaticStickerToSet(userId, stickerSetName, sticker, emojis, maskPosition)
-
-@Deprecated(
-    "Renamed",
-    ReplaceWith("AddStaticStickerToSet", "com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.AddStaticStickerToSet")
-)
-typealias AddStickerToSet = AddStaticStickerToSet
-
 @Serializable
 data class AddStaticStickerToSet internal constructor(
     @SerialName(userIdField)

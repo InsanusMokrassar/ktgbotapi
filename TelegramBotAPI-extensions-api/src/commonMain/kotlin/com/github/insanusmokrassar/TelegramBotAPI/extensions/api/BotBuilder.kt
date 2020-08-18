@@ -13,9 +13,7 @@ import io.ktor.client.engine.*
  */
 data class BotBuilder internal constructor(
     var proxy: ProxyConfig? = null,
-    @Deprecated("ktorClientEngineFactory parameter will be used preferable. In future this parameter will be removed")
-    var ktorClientEngine: HttpClientEngine? = null,
-    var ktorClientEngineFactory: HttpClientEngineFactory<out HttpClientEngineConfig>? = null,
+    var ktorClientEngineFactory: HttpClientEngineFactory<HttpClientEngineConfig>? = null,
     var ktorClientConfig: (HttpClientConfig<*>.() -> Unit) ? = null
 ) {
     internal fun createHttpClient(): HttpClient = ktorClientEngineFactory ?.let {
@@ -25,13 +23,6 @@ data class BotBuilder internal constructor(
             }
         ) {
             ktorClientConfig ?.let { it() }
-        }
-    } ?: ktorClientEngine ?.let { engine ->
-        HttpClient(engine) {
-            ktorClientConfig ?.let { it() }
-            engine {
-                this@engine.proxy = this@BotBuilder.proxy ?: this@engine.proxy
-            }
         }
     } ?: HttpClient {
         ktorClientConfig ?.let { it() }

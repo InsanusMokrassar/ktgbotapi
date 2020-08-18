@@ -25,8 +25,6 @@ object BasketballDiceAnimationType : DiceAnimationType() {
 data class CustomDiceAnimationType(
     override val emoji: String
 ) : DiceAnimationType()
-@Deprecated("Renamed", ReplaceWith("CustomDiceAnimationType"))
-typealias UnknownDiceAnimationType = CustomDiceAnimationType
 
 @Serializer(DiceAnimationType::class)
 internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {

@@ -24,7 +24,7 @@ fun Update.lastUpdateIdentifier(): UpdateIdentifier {
  * @see [Update.lastUpdateIdentifier]
  */
 fun List<Update>.lastUpdateIdentifier(): UpdateIdentifier? {
-    return maxBy { it.updateId } ?.lastUpdateIdentifier()
+    return maxByOrNull { it.updateId } ?.lastUpdateIdentifier()
 }
 
 /**

@@ -19,8 +19,6 @@ data class UnknownUpdate(
     override val data: String,
     val rawJson: JsonElement
 ) : Update
-@Deprecated("Renamed", ReplaceWith("UnknownUpdate"))
-typealias UnknownUpdateType = UnknownUpdate
 
 internal object UpdateSerializerWithoutSerialization : KSerializer<Update> {
     override val descriptor: SerialDescriptor = JsonElement.serializer().descriptor

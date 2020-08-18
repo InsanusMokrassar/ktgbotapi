@@ -13,11 +13,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.buildJsonArray
-import kotlinx.serialization.json.jsonArray
-
-@Deprecated("Replaced and renamed", ReplaceWith("mediaCountInMediaGroup", "com.github.insanusmokrassar.TelegramBotAPI.types.mediaCountInMediaGroup"))
-val membersCountInMediaGroup
-    get() = mediaCountInMediaGroup
 
 fun SendMediaGroup(
     chatId: ChatIdentifier,
