@@ -44,7 +44,7 @@ class KtorRequestsExecutor(
         return handleSafely(
             { e ->
                 throw if (e is ClientRequestException) {
-                    val content = e.response.readText()
+                    val content = e.response ?.readText() ?: throw e
                     val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
                     newRequestException(
                         responseObject,
