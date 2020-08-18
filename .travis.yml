@@ -5,6 +5,9 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
-script:
-  - ./gradlew build -s
-  
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew build -s -x jvmTest -x jsTest -x jsNodeTest -x jsBrowserTest
+    - state: test
+      script: ./gradlew allTests
