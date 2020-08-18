@@ -13,7 +13,7 @@
         * `Serialization`: `0.20.0` -> `1.0.0-RC`
         * `Klock`: `1.11.14` -> `1.12.0`
         * `UUID`: `0.1.1` -> `0.2.1`
-        * `Ktor`: `1.3.2` -> `1.3.2-1.4.0-rc`
+        * `Ktor`: `1.3.2` -> `1.4.0`
     * `buildMimeType` function now is cache-oriented getter which will save already got mime types into internal map
     * All deprecations from previous versions were removed
 
