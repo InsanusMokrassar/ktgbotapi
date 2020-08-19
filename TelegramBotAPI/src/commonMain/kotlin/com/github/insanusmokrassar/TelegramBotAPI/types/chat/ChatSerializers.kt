@@ -13,7 +13,8 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
-private val formatter = nonstrictJsonFormat
+private val formatter
+    get() = nonstrictJsonFormat
 
 internal object PreviewChatSerializer : KSerializer<Chat> {
     @InternalSerializationApi
