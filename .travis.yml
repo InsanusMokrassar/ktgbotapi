@@ -8,6 +8,6 @@ jdk: oraclejdk8
 jobs:
   include:
     - stage: build
-      script: ./gradlew build -s -x jvmTest -x jsIrTest -x jsIrBrowserTest -x jsIrNodeTest -x jsLegacyTest -x jsLegacyBrowserTest -x jsLegacyNodeTest
+      script: ./gradlew build -s -x jvmTest -x jsTest -x jsBrowserTest -x jsNodeTest
     - state: test
       script: ./gradlew allTests
