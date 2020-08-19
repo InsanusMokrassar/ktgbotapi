@@ -26,10 +26,7 @@ repositories {
 
 kotlin {
     jvm()
-    js(BOTH) {
-        browser { dceTask { keep "$library_group" } }
-        nodejs()
-    }
+    js()
 
     sourceSets {
         commonMain {
