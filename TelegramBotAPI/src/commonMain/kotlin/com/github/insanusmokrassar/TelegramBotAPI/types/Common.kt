@@ -65,11 +65,14 @@ val explanationLimit = 0 .. 200
 
 val openPeriodPollSecondsLimit = 5 .. 600
 
-val telegramInlineModeGifPermittedMimeTypes = listOf(
-    BuiltinMimeTypes.Image.Jpg,
-    BuiltinMimeTypes.Image.Gif,
-    BuiltinMimeTypes.Video.MP4
-)
+// Made as lazy for correct work in K/JS
+val telegramInlineModeGifPermittedMimeTypes by lazy {
+    listOf(
+        BuiltinMimeTypes.Image.Jpg,
+        BuiltinMimeTypes.Image.Gif,
+        BuiltinMimeTypes.Video.MP4
+    )
+}
 
 const val chatIdField = "chat_id"
 const val messageIdField = "message_id"
