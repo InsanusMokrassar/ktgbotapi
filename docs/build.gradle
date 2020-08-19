@@ -26,7 +26,11 @@ repositories {
 
 kotlin {
     jvm()
-    js()
+    js(IR) {
+        browser()
+        nodejs()
+        binaries.executable()
+    }
 
     sourceSets {
         commonMain {
