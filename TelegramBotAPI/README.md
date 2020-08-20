@@ -1,4 +1,4 @@
-# TelegramBotAPI-all
+# TelegramBotAPI
 
 Concentration of all TelegramBotAPI libraries:
 
