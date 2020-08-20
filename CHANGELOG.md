@@ -8,6 +8,9 @@
 
 ***PROJECT PACKAGES WERE CHANGED***
 
+* Project `TelegramBotAPI` -> `TelegramBotAPI-core`
+* Project `TelegramBotAPI-all` -> `TelegramBotAPI`
+
 * `Common`:
     * Version updates:
         * `Kotlin`: `1.3.72` -> `1.4.0`
