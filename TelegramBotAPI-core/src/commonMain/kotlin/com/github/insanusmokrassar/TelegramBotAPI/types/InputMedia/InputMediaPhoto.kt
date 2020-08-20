@@ -27,8 +27,7 @@ data class InputMediaPhoto(
     }
 
     @Transient
-    @Deprecated("Marked as deprecated for removal in future updates", level = DeprecationLevel.ERROR)
-    override val arguments: Map<String, Any?> = error("Unsupported operation")
+    override val arguments: Map<String, Any?> = buildArguments(serializer())
 }
 
 fun PhotoSize.toInputMediaPhoto(
