@@ -31,10 +31,9 @@ repositories {
 
 kotlin {
     jvm()
-    js(IR) {
+    js(BOTH) {
         browser()
         nodejs()
-        binaries.executable()
     }
 
     sourceSets {
