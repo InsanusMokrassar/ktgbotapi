@@ -21,6 +21,8 @@
         * `Ktor`: `1.3.2` -> `1.4.0`
     * `buildMimeType` function now is cache-oriented getter which will save already got mime types into internal map
     * All deprecations from previous versions were removed
+* `TelegramBotAPI-core`:
+    * Typealias `TelegramBot` was added
 
 ## 0.27.0
 

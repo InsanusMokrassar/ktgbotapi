@@ -20,3 +20,5 @@ interface RequestsExecutor : Closeable {
      */
     suspend fun <T : Any> execute(request: Request<T>): T
 }
+
+typealias TelegramBot = RequestsExecutor
