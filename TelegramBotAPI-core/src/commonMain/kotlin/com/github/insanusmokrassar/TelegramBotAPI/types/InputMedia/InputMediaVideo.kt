@@ -5,7 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
 import kotlinx.serialization.*
-import kotlinx.serialization.properties.Properties
+import kotlinx.serialization.json.JsonElement
 
 internal const val videoInputMediaType = "video"
 
@@ -24,13 +24,13 @@ data class InputMediaVideo(
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
+
+    @Transient
+    override val arguments: JsonElement = buildArguments(serializer())
+
     @SerialName(mediaField)
     val media: String = when (file) {
         is FileId -> file.fileId
         is MultipartFile -> file.fileId.toInputMediaFileAttachmentName()
     }
-
-    @Transient
-    @Deprecated("Marked as deprecated for removal in future updates", level = DeprecationLevel.ERROR)
-    override val arguments: Map<String, Any?> = error("Unsupported operation")
 }

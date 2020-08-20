@@ -6,6 +6,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.parseModeField
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
 import com.github.insanusmokrassar.TelegramBotAPI.types.mediaField
 import kotlinx.serialization.*
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
 
 internal const val photoInputMediaType = "photo"
 
@@ -27,8 +29,7 @@ data class InputMediaPhoto(
     }
 
     @Transient
-    @Deprecated("Marked as deprecated for removal in future updates", level = DeprecationLevel.ERROR)
-    override val arguments: Map<String, Any?> = error("Unsupported operation")
+    override val arguments: JsonElement = buildArguments(serializer())
 }
 
 fun PhotoSize.toInputMediaPhoto(
