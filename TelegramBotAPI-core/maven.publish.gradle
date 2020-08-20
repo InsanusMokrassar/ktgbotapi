@@ -21,9 +21,9 @@ publishing {
         artifact javadocsJar
 
         pom {
-            description = "This project just include all subproject of TelegramBotAPI"
-            name = "Telegram Bot API All"
-            url = "https://insanusmokrassar.github.io/TelegramBotAPI/TelegramBotAPI-all"
+            description = "Library for Object-Oriented and type-safe work with Telegram Bot API"
+            name = "Telegram Bot API Core"
+            url = "https://insanusmokrassar.github.io/TelegramBotAPI"
 
             scm {
                 developerConnection = "scm:git:[fetch=]https://github.com/insanusmokrassar/TelegramBotAPI.git[push=]https://github.com/insanusmokrassar/TelegramBotAPI.git"

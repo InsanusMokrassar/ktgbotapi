@@ -41,9 +41,9 @@ kotlin {
             dependencies {
                 implementation kotlin('stdlib')
                 if ((project.hasProperty('RELEASE_MODE') && project.property('RELEASE_MODE') == "true") || System.getenv('RELEASE_MODE') == "true") {
-                    api "${project.group}:TelegramBotAPI:$library_version"
+                    api "${project.group}:TelegramBotAPI-core:$library_version"
                 } else {
-                    api project(":TelegramBotAPI")
+                    api project(":TelegramBotAPI-core")
                 }
             }
         }

@@ -40,51 +40,15 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
-                api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-properties:$kotlin_serialisation_runtime_version"
-
-                api "com.soywiz.korlibs.klock:klock:$klock_version"
-                api "com.benasher44:uuid:$uuid_version"
-
-                api "io.ktor:ktor-client-core:$ktor_version"
-            }
-        }
-        commonTest {
-            dependencies {
-                implementation kotlin('test-common')
-                implementation kotlin('test-annotations-common')
-            }
-        }
-
-        jvmMain {
-            dependencies {
-                api "io.ktor:ktor-server:$ktor_version"
-                api "io.ktor:ktor-server-host-common:$ktor_version"
-
-                api "io.ktor:ktor-client-cio:$ktor_version"
-
-                api "javax.activation:activation:$javax_activation_version"
-            }
-        }
-        jvmTest {
-            dependencies {
-                implementation kotlin('test-junit')
-            }
-        }
-
-        jsTest {
-            dependencies {
-                implementation kotlin('test-junit')
-                implementation kotlin('test-js')
-            }
-        }
-    }
-
-    targets.all {
-        compilations.all {
-            kotlinOptions {
-                freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
+                if ((project.hasProperty('RELEASE_MODE') && project.property('RELEASE_MODE') == "true") || System.getenv('RELEASE_MODE') == "true") {
+                    api "${project.group}:TelegramBotAPI-core:$library_version"
+                    api "${project.group}:TelegramBotAPI-extensions-api:$library_version"
+                    api "${project.group}:TelegramBotAPI-extensions-utils:$library_version"
+                } else {
+                    api project(":TelegramBotAPI-core")
+                    api project(":TelegramBotAPI-extensions-api")
+                    api project(":TelegramBotAPI-extensions-utils")
+                }
             }
         }
     }

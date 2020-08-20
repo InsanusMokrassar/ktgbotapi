@@ -6,6 +6,8 @@
 
 **THIS VERSION CONTAINS BREAKING CHANGES**
 
+***PROJECT PACKAGES WERE CHANGED***
+
 * `Common`:
     * Version updates:
         * `Kotlin`: `1.3.72` -> `1.4.0`

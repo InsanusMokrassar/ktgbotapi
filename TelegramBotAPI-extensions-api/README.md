@@ -5,13 +5,13 @@
 
 ## What is it?
 
-It is wrapper library for [TelegramBotAPI](../TelegramBotAPI/README.md). Here you can find extensions for
+It is wrapper library for [TelegramBotAPI-core](../TelegramBotAPI-core/README.md). Here you can find extensions for
 `RequestsExecutor`, which are more look like Telegram Bot API requests and in the same time have more obvious signatures
 to help understand some restrictions in Telegram system.
 
 ## Compatibility
 
-This library always compatible with original `TelegramBotAPI` library version
+This library always compatible with original `TelegramBotAPI-core` library version
 
 ## How to implement library?
 
@@ -71,8 +71,8 @@ val bot = telegramBot("IT IS YOUR TOKEN") {
 
 In all examples supposed that you have created bot.
 
-| TelegramBotAPI | TelegramBotAPI-extensions-api |
-|----------------|-------------------------------|
+| TelegramBotAPI-core | TelegramBotAPI-extensions-api |
+|---------------------|-------------------------------|
 | bot.execute(GetMe) |    bot.getMe()          |
 | bot.execute(SendTextMessage(someChatId, text)) | bot.sendTextMessage(chat, text) |
 
