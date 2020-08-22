@@ -13,7 +13,7 @@ fun PathedFile.asStream(
 fun PathedFile.asFile(
         telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
         dest: File = File.createTempFile(this.fileUniqueId, this.filename),
-        defaultBufferSize: Int = 1024
+        defaultBufferSize: Int = DEFAULT_BUFFER_SIZE
 ): File {
     this.asStream(telegramAPIUrlsKeeper).use { input ->
         FileOutputStream(dest).use { out ->
