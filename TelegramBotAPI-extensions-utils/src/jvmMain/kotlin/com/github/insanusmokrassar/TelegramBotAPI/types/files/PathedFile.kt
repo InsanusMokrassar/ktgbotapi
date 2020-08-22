@@ -13,16 +13,20 @@ fun PathedFile.asStream(
 fun PathedFile.asFile(
         telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
         dest: File = File.createTempFile(this.fileUniqueId, this.filename),
-        defaultBufferSize: Int = 1024,
-        buffer: ByteArray = ByteArray(defaultBufferSize)
+        defaultBufferSize: Int = 1024
 ): File {
     this.asStream(telegramAPIUrlsKeeper).use { input ->
         FileOutputStream(dest).use { out ->
-            var read: Int
-            while (input.read(buffer, 0, defaultBufferSize).also { read = it } >= 0) {
-                out.write(buffer, 0, read)
-            }
+            input.copyTo(out, defaultBufferSize)
         }
     }
     return dest
+}
+
+fun PathedFile.asBytes(
+        telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper
+): ByteArray {
+    return this.asStream(telegramAPIUrlsKeeper).use { input ->
+        input.readBytes()
+    }
 }
