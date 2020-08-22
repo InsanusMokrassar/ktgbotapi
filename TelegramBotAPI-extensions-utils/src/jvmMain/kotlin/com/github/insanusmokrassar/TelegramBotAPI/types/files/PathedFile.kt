@@ -25,8 +25,5 @@ fun PathedFile.asFile(
 
 fun PathedFile.asBytes(
         telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper
-): ByteArray {
-    return this.asStream(telegramAPIUrlsKeeper).use { input ->
-        input.readBytes()
-    }
-}
+): ByteArray = this.asStream(telegramAPIUrlsKeeper)
+        .use { input -> input.readBytes() }
