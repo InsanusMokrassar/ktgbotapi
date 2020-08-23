@@ -29,7 +29,4 @@ data class InputMediaVideo(
         is FileId -> file.fileId
         is MultipartFile -> file.fileId.toInputMediaFileAttachmentName()
     }
-
-    @Transient
-    override val arguments: JsonElement = buildArguments(serializer())
 }

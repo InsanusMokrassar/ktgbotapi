@@ -17,5 +17,4 @@ internal fun <T> T.buildArguments(withSerializer: SerializationStrategy<T>) = ar
 @Serializable(MediaGroupMemberInputMediaSerializer::class)
 interface MediaGroupMemberInputMedia : InputMedia, CaptionedOutput {
     fun serialize(format: StringFormat): String
-    val arguments: JsonElement
 }

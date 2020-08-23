@@ -27,9 +27,6 @@ data class InputMediaPhoto(
         is FileId -> file.fileId
         is MultipartFile -> file.fileId.toInputMediaFileAttachmentName()
     }
-
-    @Transient
-    override val arguments: JsonElement = buildArguments(serializer())
 }
 
 fun PhotoSize.toInputMediaPhoto(

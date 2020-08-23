@@ -27,6 +27,7 @@
     * All included `KtorCallFactory` realizations (except of abstract) now are objects:
         * `MultipartRequestCallFactory`
         * `SimpleRequestCallFactory`
+    * `MediaGroupMemberInputMedia` members now will not have `arguments` property due to redundancy and buggy of that
 * `TelegramBotAPI-extensions-api`:
     * Extensions `TelegramBot#downloadFile` were added
 * `TelegramBotAPI-extensions-utils`:
