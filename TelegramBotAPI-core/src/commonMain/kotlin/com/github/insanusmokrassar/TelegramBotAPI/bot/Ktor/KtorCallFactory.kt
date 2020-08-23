@@ -1,13 +1,15 @@
 package com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor
 
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
+import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
-import io.ktor.client.statement.HttpStatement
+import kotlinx.serialization.json.Json
 
 interface KtorCallFactory {
-    suspend fun <T: Any> prepareCall(
+    suspend fun <T: Any> makeCall(
         client: HttpClient,
-        baseUrl: String,
-        request: Request<T>
-    ) : HttpStatement?
+        urlsKeeper: TelegramAPIUrlsKeeper,
+        request: Request<T>,
+        jsonFormatter: Json
+    ): T?
 }

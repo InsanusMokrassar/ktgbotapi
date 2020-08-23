@@ -24,13 +24,12 @@ data class InputMediaVideo(
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
-
-    @Transient
-    override val arguments: JsonElement = buildArguments(serializer())
-
     @SerialName(mediaField)
     val media: String = when (file) {
         is FileId -> file.fileId
         is MultipartFile -> file.fileId.toInputMediaFileAttachmentName()
     }
+
+    @Transient
+    override val arguments: JsonElement = buildArguments(serializer())
 }
