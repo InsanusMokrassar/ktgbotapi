@@ -1,21 +1,17 @@
 package com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base.MultipartRequestCallFactory
-import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base.SimpleRequestCallFactory
+import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.base.*
 import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.newRequestException
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.EmptyLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.bot.settings.limiters.RequestLimiter
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
 import com.github.insanusmokrassar.TelegramBotAPI.types.Response
-import com.github.insanusmokrassar.TelegramBotAPI.types.RetryAfterError
 import com.github.insanusmokrassar.TelegramBotAPI.utils.*
 import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
 import io.ktor.client.features.*
 import io.ktor.client.statement.HttpStatement
 import io.ktor.client.statement.readText
-import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 
 class KtorRequestsExecutor(
@@ -28,7 +24,7 @@ class KtorRequestsExecutor(
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
-            asSequence().plus(SimpleRequestCallFactory()).plus(MultipartRequestCallFactory()).toList()
+            this + listOf(SimpleRequestCallFactory, MultipartRequestCallFactory, DownloadFileRequestCallFactory)
         } else {
             this
         }
@@ -57,39 +53,20 @@ class KtorRequestsExecutor(
             }
         ) {
             requestsLimiter.limit {
-                var statement: HttpStatement? = null
-                for (factory in callsFactories) {
-                    statement = factory.prepareCall(
+                var result: T? = null
+                for (potentialFactory in callsFactories) {
+                    result = potentialFactory.makeCall(
                         client,
-                        telegramAPIUrlsKeeper.commonAPIUrl,
-                        request
+                        telegramAPIUrlsKeeper,
+                        request,
+                        jsonFormatter
                     )
-                    if (statement != null) {
+                    if (result != null) {
                         break
                     }
                 }
 
-                val response = statement?.execute() ?: throw IllegalArgumentException("Can't execute request: $request")
-                val content = response.receive<String>()
-                val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
-
-                (responseObject.result?.let {
-                    jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
-                } ?: responseObject.parameters?.let {
-                    val error = it.error
-                    if (error is RetryAfterError) {
-                        delay(error.leftToRetry)
-                        execute(request)
-                    } else {
-                        null
-                    }
-                } ?: response.let {
-                    throw newRequestException(
-                        responseObject,
-                        content,
-                        "Can't get result object from $content"
-                    )
-                })
+                result ?: error("Can't execute request: $request")
             }
         }
     }

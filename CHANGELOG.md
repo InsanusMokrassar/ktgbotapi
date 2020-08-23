@@ -21,6 +21,21 @@
     * All deprecations from previous versions were removed
 * `TelegramBotAPI-core`:
     * Typealias `TelegramBot` was added
+    * Fully rebuilt `KtorCallFactory` interface to be able to handle custom answers from telegram bot api system
+    * New implementation of `KtorCallFactory` was added: `DownloadFileRequestCallFactory`
+        * `DownloadFile` request was added
+    * All included `KtorCallFactory` realizations (except of abstract) now are objects:
+        * `MultipartRequestCallFactory`
+        * `SimpleRequestCallFactory`
+* `TelegramBotAPI-extensions-api`:
+    * Extensions `TelegramBot#downloadFile` were added
+* `TelegramBotAPI-extensions-utils`:
+    * All extensions for media groups (except of `mediaGroupId`) have changed their context: `List<MediaGroupMessage>`
+    -> `List<CommonMessage<MediaGroupContent>>`
+        * `forwardInfo`
+        * `replyTo`
+        * `chat`
+        * `createResend` (several extensions)
 
 ## 0.27.0
 
