@@ -36,6 +36,9 @@
         * `replyTo`
         * `chat`
         * `createResend` (several extensions)
+    * Several extensions for downloading of files:
+        * `HttpClient#loadFile`
+        * `PathedFile#download`
 
 ## 0.27.0
 
