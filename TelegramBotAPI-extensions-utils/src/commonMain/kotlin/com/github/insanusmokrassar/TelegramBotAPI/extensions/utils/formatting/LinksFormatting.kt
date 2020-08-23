@@ -5,7 +5,6 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.UsernameChat
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedChat
-import com.github.insanusmokrassar.TelegramBotAPI.utils.link
 
 private const val internalLinkBeginning = "https://t.me"
 
