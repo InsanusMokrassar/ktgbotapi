@@ -24,6 +24,7 @@ class SimpleInputFilesTest {
             )
         )
         val inputMedia = photoContent.toMediaGroupMemberInputMedia()
+        assertEquals(photoContent.media.fileId, inputMedia.file)
         val encoded = nonstrictJsonFormat.encodeToString(
             MediaGroupMemberInputMediaSerializer,
             inputMedia
