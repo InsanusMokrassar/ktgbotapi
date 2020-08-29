@@ -6,6 +6,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.files.PhotoSize
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.PhotoContent
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 private val nonstrictJsonFormat = Json {
     isLenient = true
@@ -22,9 +23,17 @@ class SimpleInputFilesTest {
                 PhotoSize("example_file_id".toInputFile(), "example_unique_file_id", 100, 100, 100)
             )
         )
-        nonstrictJsonFormat.encodeToString(
+        val inputMedia = photoContent.toMediaGroupMemberInputMedia()
+        val encoded = nonstrictJsonFormat.encodeToString(
             MediaGroupMemberInputMediaSerializer,
-            photoContent.toMediaGroupMemberInputMedia()
+            inputMedia
+        )
+        assertEquals(
+            inputMedia,
+            nonstrictJsonFormat.decodeFromString(
+                MediaGroupMemberInputMediaSerializer,
+                encoded
+            )
         )
     }
 }
