@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.*
 
 inline fun <reified T : MessageContent> filterForContentMessage(): suspend (ContentMessage<*>) -> ContentMessage<T>? = {
     if (it.content is T) {
+        @Suppress("UNCHECKED_CAST")
         it as ContentMessage<T>
     } else {
         null
@@ -32,6 +33,7 @@ inline fun <reified T : MediaGroupContent> Flow<SentMediaGroupUpdate>.filterMedi
 ): Flow<List<CommonMessage<T>>> = map {
     it.data.mapNotNull { message ->
         if (message.content is T) {
+            @Suppress("UNCHECKED_CAST")
             message as CommonMessage<T>
         } else {
             null
@@ -83,7 +85,10 @@ fun FlowsUpdatesFilter.sentMessagesWithMediaGroups(
 ): Flow<ContentMessage<MessageContent>> = merge(
     sentMessages(scopeToIncludeChannels),
     mediaGroupMessages(scopeToIncludeChannels).flatMap {
-        it.mapNotNull { it as? ContentMessage<MessageContent> }
+        it.mapNotNull {
+            @Suppress("UNCHECKED_CAST")
+            it as? ContentMessage<MessageContent>
+        }
     }
 )
 

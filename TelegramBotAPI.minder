@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<minder version="1.8.0">
+<minder version="1.9.2">
   <theme name="default" label="Default" index="-1"/>
   <styles>
     <style level="0" isset="true" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10"/>
@@ -14,18 +14,18 @@
     <style level="9" isset="true" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10"/>
     <style level="10" isset="true" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10"/>
   </styles>
-  <drawarea x="-53.566975911458371" y="280.97174580891931" scale="1"/>
+  <drawarea x="-53.566975911458371" y="400.97174580891931" scale="1"/>
   <images/>
   <nodes>
-    <node id="1" posx="475.27954101562455" posy="-172.96498107910156" maxwidth="489.29239908854163" width="494" height="168" side="top" fold="false" treesize="724" layout="Downwards">
+    <node id="1" posx="476.27001953124955" posy="-293.91511535644531" maxwidth="489.29239908854163" width="494" height="168" side="bottom" fold="false" treesize="724" layout="Downwards">
       <style linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
       <formatting/>
-      <nodename>TelegramBotAPI
+      <nodename>TelegramBotAPI-core
 
 Root project with API. It is not recommended to use its requests directly and better to use at least TelegramBotAPI-extensions-api</nodename>
       <nodenote></nodenote>
       <nodes>
-        <node id="3" posx="568.77954101562455" posy="95.035018920898438" maxwidth="286.41682942708326" width="307" height="168" side="bottom" fold="false" treesize="724" color="#68b723" colorroot="true" layout="Downwards">
+        <node id="3" posx="569.77001953124955" posy="-25.915115356445312" maxwidth="286.41682942708326" width="307" height="168" side="bottom" fold="false" treesize="724" color="#68b723" colorroot="true" layout="Downwards">
           <style linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="none" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
           <formatting/>
           <nodename>TelegramBotAPI-extensions
@@ -33,7 +33,7 @@ Root project with API. It is not recommended to use its requests directly and be
 Family of projects which are fully based on TelegramBotAPI and extend its functionality</nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="5" posx="360.27954101562455" posy="363.03501892089844" maxwidth="322.17146809895831" width="351" height="191" side="bottom" fold="false" treesize="351" color="#68b723" colorroot="true" layout="Downwards">
+            <node id="5" posx="361.27001953124955" posy="242.08488464355469" maxwidth="322.17146809895831" width="351" height="191" side="bottom" fold="false" treesize="351" color="#68b723" colorroot="true" layout="Downwards">
               <style linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
               <formatting/>
               <nodename>TelegramBotAPI-extensions-api
@@ -41,7 +41,7 @@ Family of projects which are fully based on TelegramBotAPI and extend its functi
 Extensions project for make requests more look like in the Telegram Bot API and give opportunity to use it's easier</nodename>
               <nodenote></nodenote>
             </node>
-            <node id="7" posx="711.27954101562455" posy="363.03501892089844" maxwidth="341.10636393229163" width="373" height="145" side="bottom" fold="false" treesize="373" color="#68b723" colorroot="true" layout="Downwards">
+            <node id="7" posx="712.27001953124955" posy="242.08488464355469" maxwidth="341.10636393229163" width="373" height="145" side="bottom" fold="false" treesize="373" color="#68b723" colorroot="true" layout="Downwards">
               <style linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
               <formatting/>
               <nodename>TelegramBotAPI-extensions-utils
@@ -53,26 +53,26 @@ Extensions project with utils things which will make easier different operations
         </node>
       </nodes>
     </node>
-    <node id="9" posx="521.83642578124955" posy="645.92375183105469" maxwidth="405.23974609375" width="395" height="213" side="bottom" fold="false" treesize="395" layout="Downwards">
+    <node id="9" posx="521.83642578124955" posy="525.01023864746094" maxwidth="405.23974609375" width="395" height="213" side="bottom" fold="false" treesize="395" layout="Downwards">
       <style linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
       <formatting/>
-      <nodename>TelegramBotAPI-all
+      <nodename>TelegramBotAPI
 
 Here included all available TelegramBotAPI libraries:&#xD;
 &#xD;
-* TelegramBotAPI&#xD;
+* TelegramBotAPI-core&#xD;
 * TelegramBotAPI-extensions-api&#xD;
 * TelegramBotAPI-extensions-utils</nodename>
       <nodenote></nodenote>
     </node>
   </nodes>
   <connections>
-    <connection from_id="5" to_id="9" drag_x="574.8447265625" drag_y="605.20840454101562" color="rgb(119,119,119)">
+    <connection from_id="5" to_id="9" drag_x="575.3399658203125" drag_y="484.27658081054688" color="#777777">
       <style connectiondash="dotted" connectionwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10"/>
       <title></title>
       <note></note>
     </connection>
-    <connection from_id="7" to_id="9" drag_x="856.732666015625" drag_y="600.25286865234375" color="rgb(119,119,119)">
+    <connection from_id="7" to_id="9" drag_x="857.2279052734375" drag_y="479.321044921875" color="#777777">
       <style connectiondash="dotted" connectionwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10"/>
       <title></title>
       <note></note>

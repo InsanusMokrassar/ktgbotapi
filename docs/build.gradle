@@ -13,8 +13,8 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.kotlin.multiplatform" version "$kotlin_version"
-    id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version"
+    id "org.jetbrains.kotlin.multiplatform"
+    id "org.jetbrains.kotlin.plugin.serialization"
     id "org.jetbrains.dokka" version "$dokka_version"
 }
 
@@ -26,7 +26,10 @@ repositories {
 
 kotlin {
     jvm()
-    js()
+    js(BOTH) {
+        browser()
+        nodejs()
+    }
 
     sourceSets {
         commonMain {

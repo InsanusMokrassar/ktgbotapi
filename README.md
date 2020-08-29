@@ -3,31 +3,38 @@
 | Common info                           | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Build Status](https://travis-ci.com/InsanusMokrassar/TelegramBotAPI.svg?branch=master)](https://travis-ci.com/InsanusMokrassar/TelegramBotAPI) [Small survey](https://forms.gle/tnjuExdSKEr32ygKA)|
 | -------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Useful links | [![Chat in Telegram](badges/chat.svg)](https://t.me/InMoTelegramBotAPI) [![KDocs](badges/kdocs.svg)](https://tgbotapi.inmo.dev/docs/index.html) [Examples](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/), [Mini tutorial](https://bookstack.inmo.dev/books/telegrambotapi/chapter/introduction-tutorial) |
-| TelegramBotAPI status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI/images/download.svg)](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI) |
+| TelegramBotAPI Core status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-core/images/download.svg)](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-core/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI) |
 | TelegramBotAPI Extensions status      | [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/images/download.svg)](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-api) |
 | TelegramBotAPI Util Extensions status | [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/images/download.svg)](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils) |
-| TelegramBotAPI All status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-all/images/download.svg)](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-all/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-all/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-all)                                                             |
+| TelegramBotAPI All status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI/images/download.svg)](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-all)                                                             |
+
+**At the time of publication of version `0.28.0` there are errors in serialization plugins like
+[kotlinx.serialization#1004](https://github.com/Kotlin/kotlinx.serialization/issues/1004). It is possible, that both JVM
+and JS version may work improperly in some cases with `kotlinx.serialization` version `1.0.0-RC`**
+
 
 It is a complex of libraries for working with `TelegramBotAPI` in type-safe and strict way as much as it possible. In
 the list of this complex currently next projects:
 
-* [TelegramBotAPI](TelegramBotAPI/README.md) - core of library. In fact it is independent library and can be used alone
+* [TelegramBotAPI-core](TelegramBotAPI-core/README.md) - core of library. In fact it is independent library and can be used alone
   without any additional library
 * [TelegramBotAPI Extensions](TelegramBotAPI-extensions-api/README.md) - contains extensions (mostly for
   `RequestsExecutor`), which allows to use the core library in more pleasant way
 * [TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) - contains extensions for more comfortable
 work with commands, updates and other different things
-* [TelegramBotAPI All](TelegramBotAPI-all/README.md) - concentration of all previously mentioned libraries
+* [TelegramBotAPI](TelegramBotAPI/README.md) - concentration of all previously mentioned libraries
 
 Most part of some specific solves or unuseful
 moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## JavaScript notes
 
+### Versions before `0.28.0`
+
 In case if you are want to use this library inside of browser, you will need additional settings (thanks for help to [Alexander Nozik](https://research.jetbrains.org/researchers/altavir)):
 
 <details>
-<summary>Gradle build script help</summary>
+<summary>Gradle build script help (for versions before 0.28.0)</summary>
 
 ```groovy
 dependencies {
@@ -67,14 +74,14 @@ kotlin {
 
 ![Libraries hierarchy](resources/TelegramBotAPI-libraries-hierarchy.svg)
 
-In most cases, the most simple way will be to implement [TelegramBotAPI All](TelegramBotAPI-all/README.md) - it contains
+In most cases, the most simple way will be to implement [TelegramBotAPI](TelegramBotAPI/README.md) - it contains
 all necessary tools for comfort usage of this library. If you want to exclude some libraries, you can implement just
 [TelegramBotAPI API Extensions](TelegramBotAPI-extensions-api/README.md),
 [TelegramBotAPI Util Extensions](TelegramBotAPI-extensions-utils/README.md) or even
-[TelegramBotAPI](TelegramBotAPI/README.md).
+[TelegramBotAPI-core](TelegramBotAPI-core/README.md).
 
 If you want to dive deeper in the core of library or develop something for it - welcome to learn more from
-[TelegramBotAPI](TelegramBotAPI/README.md) and our [Telegram Chat](https://teleg.one/InMoTelegramBotAPIChat).
+[TelegramBotAPI-core](TelegramBotAPI-core/README.md) and our [Telegram Chat](https://teleg.one/InMoTelegramBotAPIChat).
 
 Anyway, all libraries are very typical inside of them. Examples:
 

@@ -1,5 +1,47 @@
 # TelegramBotAPI changelog
 
+## 0.28.0
+
+**THIS VERSION CONTAINS BREAKING CHANGES**
+
+***PROJECT PACKAGES WERE CHANGED***
+
+* Project `TelegramBotAPI` -> `TelegramBotAPI-core`
+* Project `TelegramBotAPI-all` -> `TelegramBotAPI`
+
+* `Common`:
+    * Version updates:
+        * `Kotlin`: `1.3.72` -> `1.4.0`
+        * `Coroutines`: `1.3.8` -> `1.3.9`
+        * `Serialization`: `0.20.0` -> `1.0.0-RC`
+        * `Klock`: `1.11.14` -> `1.12.0`
+        * `UUID`: `0.1.1` -> `0.2.1`
+        * `Ktor`: `1.3.2` -> `1.4.0`
+    * `buildMimeType` function now is cache-oriented getter which will save already got mime types into internal map
+    * All deprecations from previous versions were removed
+* `TelegramBotAPI-core`:
+    * Typealias `TelegramBot` was added
+    * Fully rebuilt `KtorCallFactory` interface to be able to handle custom answers from telegram bot api system
+    * New implementation of `KtorCallFactory` was added: `DownloadFileRequestCallFactory`
+        * `DownloadFile` request was added
+    * All included `KtorCallFactory` realizations (except of abstract) now are objects:
+        * `MultipartRequestCallFactory`
+        * `SimpleRequestCallFactory`
+    * `MediaGroupMemberInputMedia` members now will not have `arguments` property due to redundancy and buggy of that
+    * Field `media` now is common for all `InputMedia` objects
+* `TelegramBotAPI-extensions-api`:
+    * Extensions `TelegramBot#downloadFile` were added
+* `TelegramBotAPI-extensions-utils`:
+    * All extensions for media groups (except of `mediaGroupId`) have changed their context: `List<MediaGroupMessage>`
+    -> `List<CommonMessage<MediaGroupContent>>`
+        * `forwardInfo`
+        * `replyTo`
+        * `chat`
+        * `createResend` (several extensions)
+    * Several extensions for downloading of files:
+        * `HttpClient#loadFile`
+        * `PathedFile#download`
+
 ## 0.27.0
 
 * `Common`:

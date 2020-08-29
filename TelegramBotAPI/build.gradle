@@ -13,8 +13,8 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.kotlin.multiplatform" version "$kotlin_version"
-    id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version"
+    id "org.jetbrains.kotlin.multiplatform"
+    id "org.jetbrains.kotlin.plugin.serialization"
 }
 
 project.version = "$library_version"
@@ -31,63 +31,24 @@ repositories {
 
 kotlin {
     jvm()
-    js()
+    js(BOTH) {
+        browser()
+        nodejs()
+    }
 
     sourceSets {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
-                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$kotlin_coroutines_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-properties-common:$kotlin_serialisation_runtime_version"
-
-                api "com.soywiz.korlibs.klock:klock:$klock_version"
-                api "com.benasher44:uuid:$uuid_version"
-
-                api "io.ktor:ktor-client-core:$ktor_version"
-            }
-        }
-        commonTest {
-            dependencies {
-                implementation kotlin('test-common')
-                implementation kotlin('test-annotations-common')
-            }
-        }
-
-        jvmMain {
-            dependencies {
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-properties:$kotlin_serialisation_runtime_version"
-
-                api "io.ktor:ktor-client:$ktor_version"
-                api "io.ktor:ktor-server:$ktor_version"
-
-                api "io.ktor:ktor-server-host-common:$ktor_version"
-                api "io.ktor:ktor-client-cio:$ktor_version"
-
-                api "javax.activation:activation:$javax_activation_version"
-            }
-        }
-        jvmTest {
-            dependencies {
-                implementation kotlin('test-junit')
-            }
-        }
-
-        jsMain {
-            dependencies {
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-properties-js:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$kotlin_coroutines_version"
-                api "io.ktor:ktor-client-js:$ktor_version"
-            }
-        }
-    }
-
-    targets.all {
-        compilations.all {
-            kotlinOptions {
-                freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
+                if ((project.hasProperty('RELEASE_MODE') && project.property('RELEASE_MODE') == "true") || System.getenv('RELEASE_MODE') == "true") {
+                    api "${project.group}:TelegramBotAPI-core:$library_version"
+                    api "${project.group}:TelegramBotAPI-extensions-api:$library_version"
+                    api "${project.group}:TelegramBotAPI-extensions-utils:$library_version"
+                } else {
+                    api project(":TelegramBotAPI-core")
+                    api project(":TelegramBotAPI-extensions-api")
+                    api project(":TelegramBotAPI-extensions-utils")
+                }
             }
         }
     }
