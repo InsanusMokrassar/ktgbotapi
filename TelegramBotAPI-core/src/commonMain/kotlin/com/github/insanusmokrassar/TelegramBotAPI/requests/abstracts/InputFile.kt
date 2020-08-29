@@ -1,5 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts
 
+import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.toInputMediaFileAttachmentName
 import com.github.insanusmokrassar.TelegramBotAPI.utils.StorageFile
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -28,6 +29,12 @@ internal object InputFileSerializer : KSerializer<InputFile> {
     override fun serialize(encoder: Encoder, value: InputFile) = encoder.encodeString(value.fileId)
     override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString())
 }
+
+internal val InputFile.asMediaData: String
+    get() = when (this) {
+        is FileId -> fileId
+        is MultipartFile -> fileId.toInputMediaFileAttachmentName()
+    }
 
 // TODO:: add checks for files size
 /**

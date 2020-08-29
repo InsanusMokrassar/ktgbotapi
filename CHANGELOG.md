@@ -28,6 +28,7 @@
         * `MultipartRequestCallFactory`
         * `SimpleRequestCallFactory`
     * `MediaGroupMemberInputMedia` members now will not have `arguments` property due to redundancy and buggy of that
+    * Field `media` now is common for all `InputMedia` objects
 * `TelegramBotAPI-extensions-api`:
     * Extensions `TelegramBot#downloadFile` were added
 * `TelegramBotAPI-extensions-utils`:

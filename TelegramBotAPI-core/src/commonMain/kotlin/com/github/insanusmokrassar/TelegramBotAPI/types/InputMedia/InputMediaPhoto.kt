@@ -23,10 +23,8 @@ data class InputMediaPhoto(
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
-    val media: String = when (file) {
-        is FileId -> file.fileId
-        is MultipartFile -> file.fileId.toInputMediaFileAttachmentName()
-    }
+    override val media: String
+    init { media = file.fileId } // crutch until js compiling will be fixed
 }
 
 fun PhotoSize.toInputMediaPhoto(

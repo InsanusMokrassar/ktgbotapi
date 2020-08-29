@@ -23,8 +23,6 @@ data class InputMediaAudio(
     override val type: String = "audio"
 
     @SerialName(mediaField)
-    val media: String = when (file) {
-        is FileId -> file.fileId
-        is MultipartFile -> file.fileId.toInputMediaFileAttachmentName()
-    }
+    override val media: String
+    init { media = file.fileId } // crutch until js compiling will be fixed
 }

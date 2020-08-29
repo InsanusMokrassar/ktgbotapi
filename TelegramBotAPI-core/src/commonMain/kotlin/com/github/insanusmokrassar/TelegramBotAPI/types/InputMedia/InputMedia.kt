@@ -9,4 +9,5 @@ fun String.toInputMediaFileAttachmentName() = "attach://$this"
 interface InputMedia {
     val type: String
     val file: InputFile
+    val media: String
 }
