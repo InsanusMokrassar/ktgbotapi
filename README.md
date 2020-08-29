@@ -8,6 +8,11 @@
 | TelegramBotAPI Util Extensions status | [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/images/download.svg)](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils) |
 | TelegramBotAPI All status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI/images/download.svg)](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-all)                                                             |
 
+**At the time of publication of version `0.28.0` there are errors in serialization plugins like
+[kotlinx.serialization#1004](https://github.com/Kotlin/kotlinx.serialization/issues/1004). It is possible, that both JVM
+and JS version may work improperly in some cases with `kotlinx.serialization` version `1.0.0-RC`**
+
+
 It is a complex of libraries for working with `TelegramBotAPI` in type-safe and strict way as much as it possible. In
 the list of this complex currently next projects:
 
@@ -23,6 +28,8 @@ Most part of some specific solves or unuseful
 moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## JavaScript notes
+
+### Versions before `0.28.0`
 
 In case if you are want to use this library inside of browser, you will need additional settings (thanks for help to [Alexander Nozik](https://research.jetbrains.org/researchers/altavir)):
 
