@@ -24,10 +24,10 @@ suspend fun <T: Any> RequestsExecutor.executeUnsafe(
     request: Request<T>,
     retries: Int = 0,
     retriesDelay: Long = 1000L,
-    onAllFailed: (suspend (exceptions: Array<Exception>) -> Unit)? = null
+    onAllFailed: (suspend (exceptions: Array<Throwable>) -> Unit)? = null
 ): T? {
     var leftRetries = retries
-    val exceptions = onAllFailed ?.let { mutableListOf<Exception>() }
+    val exceptions = onAllFailed ?.let { mutableListOf<Throwable>() }
     do {
         return handleSafely(
             {
