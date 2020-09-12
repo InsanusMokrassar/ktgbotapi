@@ -48,6 +48,8 @@
     * Versions updates:
         * `Kotlin`: `1.4.0` -> `1.4.10`
         * `UUID`: `0.2.1` -> `0.2.2`
+* `TelegramBotAPI-core`:
+    * `ExceptionHandler` has changed its incoming type: `Exception` -> `Throwable`
 
 ## 0.27.0
 

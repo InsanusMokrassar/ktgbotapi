@@ -4,7 +4,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.supervisorScope
 
 
-typealias ExceptionHandler<T> = suspend (Exception) -> T
+typealias ExceptionHandler<T> = suspend (Throwable) -> T
 /**
  * It will run [block] inside of [supervisorScope] to avoid problems with catching of exceptions
  *
@@ -17,7 +17,7 @@ suspend inline fun <T> handleSafely(
 ): T {
     return try {
         supervisorScope(block)
-    } catch (e: Exception) {
+    } catch (e: Throwable) {
         onException(e)
     }
 }
