@@ -62,6 +62,9 @@
         * `filterCommandsWithArgs`
     * Extension `Flow<BaseSentMessageUpdate>.filterCommandsWithArgs` has changed its signature: now it will also have
     original message paired with list of text sources
+    * Shortcut method `commonMessages` for `onlyCommonMessages`
+    * Shortcuts `onlySentViaBot` and `withoutSentViaBot` now are extensions for any `Flow` with types which implementing
+    `ContentMessage`
 
 ## 0.27.0
 
