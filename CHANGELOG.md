@@ -60,6 +60,8 @@
         * `filterExactCommands`
         * `filterCommandsInsideTextMessages`
         * `filterCommandsWithArgs`
+    * Extension `Flow<BaseSentMessageUpdate>.filterCommandsWithArgs` has changed its signature: now it will also have
+    original message paired with list of text sources
 
 ## 0.27.0
 

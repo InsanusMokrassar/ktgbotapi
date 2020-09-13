@@ -5,6 +5,8 @@ import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.onlyTextConte
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.shortcuts.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.BotCommandTextSource
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.RegularTextSource
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.fullEntitiesList
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.*
@@ -50,7 +52,8 @@ fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(
  * [RegularTextSource] will be split by " " for several [RegularTextSource] which will contains not empty args without
  * spaces.
  *
- * @return Converted list with first entity [BotCommandTextSource] and than all others according to rules in description
+ * @return Paired original message and converted list with first entity [BotCommandTextSource] and than all others
+ * according to rules in description
  *
  * @see fullEntitiesList
  * @see asContentMessagesFlow
@@ -58,4 +61,4 @@ fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(
  */
 fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsWithArgs(
     commandRegex: Regex
-): Flow<List<TextSource>> = textMessages().filterCommandsWithArgs(commandRegex)
+): Flow<Pair<ContentMessage<TextContent>, List<TextSource>>> = textMessages().filterCommandsWithArgs(commandRegex)

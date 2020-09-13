@@ -59,7 +59,8 @@ fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsInsideTextMessages(
  * [RegularTextSource] will be split by " " for several [RegularTextSource] which will contains not empty args without
  * spaces.
  *
- * @return Converted list with first entity [BotCommandTextSource] and than all others according to rules in description
+ * @return Paired original message and converted list with first entity [BotCommandTextSource] and than all others
+ * according to rules in description
  *
  * @see fullEntitiesList
  * @see asContentMessagesFlow
@@ -72,7 +73,7 @@ fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsWithArgs(
     val allEntities = contentMessage.content.fullEntitiesList()
     (allEntities.firstOrNull() as? BotCommandTextSource) ?.let {
         if (commandRegex.matches(it.command)) {
-            allEntities.flatMap {
+            contentMessage to allEntities.flatMap {
                 when (it) {
                     is RegularTextSource -> it.source.split(" ").mapNotNull { regularTextSourcePart ->
                         if (regularTextSourcePart.isNotBlank()) {
