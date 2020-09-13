@@ -55,6 +55,12 @@
 
 ### 0.28.2
 
+* `TelegramBotAPI-extensions-utils`:
+    * Several commands shortcuts for `Flow<ContentMessage<TextContent>>` has been added:
+        * `filterExactCommands`
+        * `filterCommandsInsideTextMessages`
+        * `filterCommandsWithArgs`
+
 ## 0.27.0
 
 * `Common`:
