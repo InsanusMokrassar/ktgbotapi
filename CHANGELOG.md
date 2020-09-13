@@ -53,6 +53,8 @@
         * `handleSafely` has changed its signature
         * `executeUnsafe` has changed its signature
 
+### 0.28.2
+
 ## 0.27.0
 
 * `Common`:
