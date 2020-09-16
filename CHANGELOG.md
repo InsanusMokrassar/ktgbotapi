@@ -42,17 +42,6 @@
         * `HttpClient#loadFile`
         * `PathedFile#download`
 
-### 0.28.1
-
-* Common:
-    * Versions updates:
-        * `Kotlin`: `1.4.0` -> `1.4.10`
-        * `UUID`: `0.2.1` -> `0.2.2`
-* `TelegramBotAPI-core`:
-    * `ExceptionHandler` has changed its incoming type: `Exception` -> `Throwable`
-        * `handleSafely` has changed its signature
-        * `executeUnsafe` has changed its signature
-
 ### 0.28.2
 
 * `TelegramBotAPI-extensions-utils`:
@@ -65,6 +54,17 @@
     * Shortcut method `commonMessages` for `onlyCommonMessages`
     * Shortcuts `onlySentViaBot` and `withoutSentViaBot` now are extensions for any `Flow` with types which implementing
     `ContentMessage`
+
+### 0.28.1
+
+* Common:
+    * Versions updates:
+        * `Kotlin`: `1.4.0` -> `1.4.10`
+        * `UUID`: `0.2.1` -> `0.2.2`
+* `TelegramBotAPI-core`:
+    * `ExceptionHandler` has changed its incoming type: `Exception` -> `Throwable`
+        * `handleSafely` has changed its signature
+        * `executeUnsafe` has changed its signature
 
 ## 0.27.0
 
