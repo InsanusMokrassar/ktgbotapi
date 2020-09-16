@@ -1,14 +1,13 @@
-package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates
+package com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.shortcuts
 
 import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.onlyTextContentMessages
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.shortcuts.*
+import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.asContentMessagesFlow
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.BotCommandTextSource
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.RegularTextSource
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.fullEntitiesList
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.*
 
 /**
@@ -23,10 +22,13 @@ import kotlinx.coroutines.flow.*
  * @see fullEntitiesList
  * @see asContentMessagesFlow
  * @see onlyTextContentMessages
+ * @see textMessages
  */
-fun <T : BaseSentMessageUpdate> Flow<T>.filterExactCommands(
+fun <T : ContentMessage<TextContent>> Flow<T>.filterExactCommands(
     commandRegex: Regex
-) = textMessages().filterExactCommands(commandRegex)
+) = filter { contentMessage ->
+    (contentMessage.content.fullEntitiesList().singleOrNull() as? BotCommandTextSource) ?.let { commandRegex.matches(it.command) } == true
+}
 
 /**
  * Convert incoming [com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content] of
@@ -39,10 +41,15 @@ fun <T : BaseSentMessageUpdate> Flow<T>.filterExactCommands(
  * @see fullEntitiesList
  * @see asContentMessagesFlow
  * @see onlyTextContentMessages
+ * @see textMessages
  */
-fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(
+fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsInsideTextMessages(
     commandRegex: Regex
-) = textMessages().filterCommandsInsideTextMessages(commandRegex)
+) = filter { contentMessage ->
+    contentMessage.content.fullEntitiesList().any {
+        (it as? BotCommandTextSource) ?.let { commandRegex.matches(it.command) } == true
+    }
+}
 
 /**
  * Convert incoming [com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content] of
@@ -58,7 +65,30 @@ fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(
  * @see fullEntitiesList
  * @see asContentMessagesFlow
  * @see onlyTextContentMessages
+ * @see textMessages
  */
-fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsWithArgs(
+fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsWithArgs(
     commandRegex: Regex
-): Flow<Pair<ContentMessage<TextContent>, List<TextSource>>> = textMessages().filterCommandsWithArgs(commandRegex)
+) = mapNotNull { contentMessage ->
+    val allEntities = contentMessage.content.fullEntitiesList()
+    (allEntities.firstOrNull() as? BotCommandTextSource) ?.let {
+        if (commandRegex.matches(it.command)) {
+            contentMessage to allEntities.flatMap {
+                when (it) {
+                    is RegularTextSource -> it.source.split(" ").mapNotNull { regularTextSourcePart ->
+                        if (regularTextSourcePart.isNotBlank()) {
+                            RegularTextSource(regularTextSourcePart)
+                        } else {
+                            null
+                        }
+                    }
+                    else -> listOf(it)
+                }
+            }
+        } else {
+            null
+        }
+    }
+}
+
+
