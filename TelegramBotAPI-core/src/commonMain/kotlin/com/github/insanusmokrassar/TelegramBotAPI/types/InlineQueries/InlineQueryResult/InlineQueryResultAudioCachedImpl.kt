@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultAudioCachedImpl(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(audioFileIdField)
     override val fileId: FileId,
     @SerialName(captionField)

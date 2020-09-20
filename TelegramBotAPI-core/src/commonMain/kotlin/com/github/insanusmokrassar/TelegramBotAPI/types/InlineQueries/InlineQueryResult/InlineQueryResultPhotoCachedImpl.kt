@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultPhotoCachedImpl(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(photoFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)

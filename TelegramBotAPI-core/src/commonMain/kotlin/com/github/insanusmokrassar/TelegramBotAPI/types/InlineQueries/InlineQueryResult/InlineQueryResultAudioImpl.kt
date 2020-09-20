@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultAudioImpl(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(audioUrlField)
     override val url: String,
     @SerialName(titleField)

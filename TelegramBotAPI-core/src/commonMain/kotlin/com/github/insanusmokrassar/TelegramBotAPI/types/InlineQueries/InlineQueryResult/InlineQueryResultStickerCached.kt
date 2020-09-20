@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultStickerCached(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(stickerFileIdField)
     override val fileId: FileId,
     @SerialName(replyMarkupField)

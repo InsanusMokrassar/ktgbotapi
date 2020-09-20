@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultDocumentImpl(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(documentUrlField)
     override val url: String,
     @SerialName(titleField)

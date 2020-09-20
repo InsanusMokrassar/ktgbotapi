@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultMpeg4GifImpl(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(mpeg4GifUrlField)
     override val url: String,
     @SerialName(thumbUrlField)

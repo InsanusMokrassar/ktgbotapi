@@ -44,6 +44,10 @@
 
 ### 0.28.3
 
+* `TelegramBotAPI-core`:
+    * All `InlineQueryResult` has changed their type of id for more obvious relation between `InlineQueryResult#id` and
+    `ChosenInlineResult#resultId`: `String` -> `InlineQueryIdentifier`
+
 ### 0.28.2
 
 * `TelegramBotAPI-extensions-utils`:
