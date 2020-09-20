@@ -42,6 +42,8 @@
         * `HttpClient#loadFile`
         * `PathedFile#download`
 
+### 0.28.3
+
 ### 0.28.2
 
 * `TelegramBotAPI-extensions-utils`:
