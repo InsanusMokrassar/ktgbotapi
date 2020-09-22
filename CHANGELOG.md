@@ -44,7 +44,7 @@
 
 ### 0.28.3
 
-* Common`:
+* Common:
     * Version updates:
         * `Klock`: `0.12.0` -> `0.12.1`
         * `Kotlin serialization`: `1.0.0-RC` -> `1.0.0-RC2` (dependency `kotlinx-serialization-core` was replaced with

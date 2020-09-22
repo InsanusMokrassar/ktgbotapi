@@ -3,16 +3,64 @@ buildscript {
         mavenLocal()
         jcenter()
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$gradle_bintray_plugin_version"
+        classpath "com.github.breadmoirai:github-release:$github_release_plugin_version"
     }
 }
 
 plugins {
     id "org.jetbrains.kotlin.multiplatform" version "$kotlin_version" apply false
     id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version" apply false
+}
+
+ext {
+    enable_github_publish=new File(projectDir, "secret.gradle").exists()
+    changelog_from_file=""
+}
+
+if (ext.enable_github_publish) {
+    apply from: './secret.gradle'
+    apply plugin: "com.github.breadmoirai.github-release"
+}
+
+private String getCurrentVersionChangelog() {
+    OutputStream changelogDataOS = new ByteArrayOutputStream()
+    exec {
+        standardOutput = changelogDataOS
+        commandLine './changelog_info_retriever', "$library_version", 'CHANGELOG.md'
+    }
+
+    return changelogDataOS.toString().trim()
+}
+
+if (enable_github_publish && project.hasProperty('GITHUB_RELEASE_TOKEN')) {
+    String changelogFromFile = ""
+    githubRelease {
+        token "${project.property('GITHUB_RELEASE_TOKEN')}"
+
+        owner "InsanusMokrassar"
+        repo "TelegramBotAPI"
+
+        tagName "$library_version"
+        releaseName "$library_version"
+        targetCommitish "$library_version"
+
+        body getCurrentVersionChangelog()
+    }
+
+//    tasks.getByName("githubRelease").doFirst {
+//        OutputStream changelogDataOS = new ByteArrayOutputStream()
+//        exec {
+//            standardOutput = changelogDataOS
+//            commandLine './changelog_info_retriever', "$library_version", 'CHANGELOG.md'
+//        }
+//        changelogFromFile = changelogDataOS.toString().trim()
+//        ext.changelog_from_file = changelogFromFile
+//    }
 }

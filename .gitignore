@@ -8,3 +8,6 @@ settings.xml
 .gradle/
 build/
 out/
+
+local.properties
+secret.gradle

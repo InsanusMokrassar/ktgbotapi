@@ -1,16 +1,29 @@
 #!/bin/bash
 
+function parse() {
+  version=$1
+
+  read -r
+  while [ -z "`echo $REPLY | grep -e "^#\+ $version"`" ]
+  do
+      read -r
+  done
+
+  read -r
+  while [ -z "`echo $REPLY | grep -e "^#\+"`" ]
+  do
+      echo "$REPLY"
+      read -r
+  done
+}
+
 version=$1
+file=$2
 
-read -r
-while [ -z "`echo $REPLY | grep -e "^#\+ $version"`" ]
-do
-    read -r
-done
+if [ -n "$file" ]; then
+  parse $version < "$file"
+else
+  parse $version
+fi
 
-read -r
-while [ -z "`echo $REPLY | grep -e "^#\+"`" ]
-do
-    echo "$REPLY"
-    read -r
-done
+
