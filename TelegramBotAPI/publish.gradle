@@ -25,6 +25,9 @@ bintray {
         }
         into "${project.group}".replace(".", "/")
     }
+    
+    publish = true
+    
     pkg {
         repo = "StandardRepository"
         name = "${project.name}"
