@@ -21,7 +21,6 @@ plugins {
 
 ext {
     enable_github_publish=new File(projectDir, "secret.gradle").exists()
-    changelog_from_file=""
 }
 
 if (ext.enable_github_publish) {
