@@ -52,6 +52,17 @@
 * `TelegramBotAPI-core`:
     * All `InlineQueryResult` has changed their type of id for more obvious relation between `InlineQueryResult#id` and
     `ChosenInlineResult#resultId`: `String` -> `InlineQueryIdentifier`
+* `TelegramBotAPI-extensions-utils`:
+    * Several extensions for updates flows based on `InlineQueryUpdate` has been added:
+        * `Flow<InlineQueryUpdate>#onlyBaseInlineQueriesWithUpdates`
+        * `Flow<InlineQueryUpdate>#onlyBaseInlineQueries`
+        * `Flow<InlineQueryUpdate>#onlyLocationInlineQueriesWithUpdates`
+        * `Flow<InlineQueryUpdate>#onlyLocationInlineQueries`
+    * Several extensions for updates flows based on `ChosenInlineResultUpdate` has been added:
+        * `Flow<ChosenInlineResultUpdate>.onlyBaseChosenInlineResultsWithUpdates`
+        * `Flow<ChosenInlineResultUpdate>.onlyBaseChosenInlineResults`
+        * `Flow<ChosenInlineResultUpdate>.onlyLocationChosenInlineResultsWithUpdates`
+        * `Flow<ChosenInlineResultUpdate>.onlyLocationChosenInlineResults`
 
 ### 0.28.2
 
