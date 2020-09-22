@@ -44,6 +44,11 @@
 
 ### 0.28.3
 
+* Common`:
+    * Version updates:
+        * `Klock`: `0.12.0` -> `0.12.1`
+        * `Kotlin serialization`: `1.0.0-RC` -> `1.0.0-RC2` (dependency `kotlinx-serialization-core` was replaced with
+        `kotlinx-serialization-json` due to [kotlinx.serialization library update](https://github.com/Kotlin/kotlinx.serialization/blob/master/CHANGELOG.md#100-rc2--2020-09-21))
 * `TelegramBotAPI-core`:
     * All `InlineQueryResult` has changed their type of id for more obvious relation between `InlineQueryResult#id` and
     `ChosenInlineResult#resultId`: `String` -> `InlineQueryIdentifier`
