@@ -32,14 +32,7 @@ repositories {
 kotlin {
     jvm()
     js(BOTH) {
-        browser {
-            testTask {
-                useKarma {
-                    useFirefox()
-                    useChrome()
-                }
-            }
-        }
+        browser()
         nodejs()
     }
 
