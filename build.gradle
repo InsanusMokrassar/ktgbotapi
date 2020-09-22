@@ -19,15 +19,6 @@ plugins {
     id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version" apply false
 }
 
-ext {
-    enable_github_publish=new File(projectDir, "secret.gradle").exists()
-}
-
-if (ext.enable_github_publish) {
-    apply from: './secret.gradle'
-    apply plugin: "com.github.breadmoirai.github-release"
-}
-
 private String getCurrentVersionChangelog() {
     OutputStream changelogDataOS = new ByteArrayOutputStream()
     exec {
@@ -38,8 +29,10 @@ private String getCurrentVersionChangelog() {
     return changelogDataOS.toString().trim()
 }
 
-if (enable_github_publish && project.hasProperty('GITHUB_RELEASE_TOKEN')) {
-    String changelogFromFile = ""
+if (new File(projectDir, "secret.gradle").exists()) {
+    apply from: './secret.gradle'
+    apply plugin: "com.github.breadmoirai.github-release"
+
     githubRelease {
         token "${project.property('GITHUB_RELEASE_TOKEN')}"
 
@@ -52,14 +45,4 @@ if (enable_github_publish && project.hasProperty('GITHUB_RELEASE_TOKEN')) {
 
         body getCurrentVersionChangelog()
     }
-
-//    tasks.getByName("githubRelease").doFirst {
-//        OutputStream changelogDataOS = new ByteArrayOutputStream()
-//        exec {
-//            standardOutput = changelogDataOS
-//            commandLine './changelog_info_retriever', "$library_version", 'CHANGELOG.md'
-//        }
-//        changelogFromFile = changelogDataOS.toString().trim()
-//        ext.changelog_from_file = changelogFromFile
-//    }
 }
