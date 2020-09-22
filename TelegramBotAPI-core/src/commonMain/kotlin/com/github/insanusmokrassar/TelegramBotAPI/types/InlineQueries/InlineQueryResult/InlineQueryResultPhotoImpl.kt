@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultPhotoImpl(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(photoUrlField)
     override val url: String,
     @SerialName(thumbUrlField)

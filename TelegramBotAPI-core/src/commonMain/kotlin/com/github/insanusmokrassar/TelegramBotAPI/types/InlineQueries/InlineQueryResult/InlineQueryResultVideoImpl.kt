@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultVideoImpl(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(videoUrlField)
     override val url: String,
     @SerialName(thumbUrlField)

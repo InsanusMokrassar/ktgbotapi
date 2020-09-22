@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultGifImpl(
     @SerialName(idField)
-    override val id: String,
+    override val id: InlineQueryIdentifier,
     @SerialName(gifUrlField)
     override val url: String,
     @SerialName(thumbUrlField)
