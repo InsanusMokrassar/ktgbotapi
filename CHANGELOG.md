@@ -44,6 +44,9 @@
 
 ### 0.28.4
 
+* `Common`:
+    * Version updates:
+        * `Ktor`: `1.4.0` -> `1.4.1`
 * `TelegramBotAPI-core`
     * Interface `GroupEventMessage` has been added ([#140](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/140))
         * Old `GroupEventMessage` was renamed to `CommonGroupEventMessage` ([#140](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/140))
