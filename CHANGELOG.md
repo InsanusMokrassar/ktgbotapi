@@ -42,6 +42,21 @@
         * `HttpClient#loadFile`
         * `PathedFile#download`
 
+### 0.28.4
+
+* `Common`:
+    * Version updates:
+        * `Ktor`: `1.4.0` -> `1.4.1`
+* `TelegramBotAPI-core`
+    * Interface `GroupEventMessage` has been added ([#140](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/140))
+        * Old `GroupEventMessage` was renamed to `CommonGroupEventMessage` ([#140](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/140))
+    * Interface `SupergroupEventMessage` has been added ([#140](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/140))
+        * Old `SupergroupEventMessage` was renamed to `CommonSupergroupEventMessage` ([#140](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/140))
+    * Any `GroupEventMessage` now have `from` field ([#140](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/140))
+* `TelegramBotAPI-extensions-utils`
+    * Extensions `Flow<ChatEventMessage>#onlyGroupEvents` and `Flow<ChatEventMessage>#onlySupergroupEvents` now returns
+    `CommonGroupEventMessage` and `CommonSupergroupEventMessage`
+
 ### 0.28.3
 
 * Common:

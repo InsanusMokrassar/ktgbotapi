@@ -192,14 +192,16 @@ internal data class RawMessage(
         try {
             chatEvent?.let { chatEvent ->
                 when (chat) {
-                    is SupergroupChat -> SupergroupEventMessage(
+                    is SupergroupChat -> CommonSupergroupEventMessage(
                         messageId,
+                        from ?: error("Supergroup events are expected to contain 'from' field"),
                         chat,
                         chatEvent as? SupergroupEvent ?: throwWrongChatEvent(SupergroupEvent::class, chatEvent),
                         date.asDate
                     )
-                    is GroupChat -> GroupEventMessage(
+                    is GroupChat -> CommonGroupEventMessage(
                         messageId,
+                        from ?: error("Supergroup events are expected to contain 'from' field"),
                         chat,
                         chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
                         date.asDate
