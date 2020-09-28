@@ -42,6 +42,8 @@
         * `HttpClient#loadFile`
         * `PathedFile#download`
 
+### 0.28.4
+
 ### 0.28.3
 
 * Common:
