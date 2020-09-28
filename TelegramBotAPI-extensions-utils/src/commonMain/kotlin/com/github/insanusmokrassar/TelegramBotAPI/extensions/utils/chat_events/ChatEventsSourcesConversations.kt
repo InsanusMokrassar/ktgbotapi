@@ -17,5 +17,5 @@ fun <T : ChatEventMessage> Flow<ChatEventMessage>.divideBySource(contentType: KC
 }
 
 fun Flow<ChatEventMessage>.onlyChannelEvents() = divideBySource(ChannelEventMessage::class)
-fun Flow<ChatEventMessage>.onlyGroupEvents() = divideBySource(GroupEventMessage::class)
-fun Flow<ChatEventMessage>.onlySupergroupEvents() = divideBySource(SupergroupEventMessage::class)
+fun Flow<ChatEventMessage>.onlyGroupEvents() = divideBySource(CommonGroupEventMessage::class)
+fun Flow<ChatEventMessage>.onlySupergroupEvents() = divideBySource(CommonSupergroupEventMessage::class)
