@@ -7,6 +7,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.abstr
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.GroupEventMessage
 import com.soywiz.klock.DateTime
 
+@Deprecated("Renamed", ReplaceWith("CommonGroupEventMessage"))
+typealias GroupEventMessage = CommonGroupEventMessage
+
 data class CommonGroupEventMessage(
     override val messageId: MessageIdentifier,
     override val user: User,

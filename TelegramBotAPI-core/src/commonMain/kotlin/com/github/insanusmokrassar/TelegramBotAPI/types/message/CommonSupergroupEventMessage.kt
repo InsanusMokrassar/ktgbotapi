@@ -7,6 +7,9 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.message.ChatEvents.abstr
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.SupergroupEventMessage
 import com.soywiz.klock.DateTime
 
+@Deprecated("Renamed", ReplaceWith("CommonSupergroupEventMessage"))
+typealias SupergroupEventMessage = CommonSupergroupEventMessage
+
 data class CommonSupergroupEventMessage(
     override val messageId: MessageIdentifier,
     override val user: User,
