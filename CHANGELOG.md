@@ -44,6 +44,9 @@
 
 ### 0.28.5
 
+* `TelegramBotAPI-core`:
+    * Now in forward info you can get `ForwardFromSupergroupInfo`
+
 ### 0.28.4
 
 * `Common`:

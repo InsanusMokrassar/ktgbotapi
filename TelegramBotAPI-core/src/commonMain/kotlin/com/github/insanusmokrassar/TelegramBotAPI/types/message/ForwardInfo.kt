@@ -2,6 +2,7 @@ package com.github.insanusmokrassar.TelegramBotAPI.types.message
 
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.ChannelChat
+import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.SupergroupChat
 
 sealed class ForwardInfo {
     abstract val dateOfOriginal: TelegramDate
@@ -22,4 +23,10 @@ data class ForwardFromChannelInfo(
     val messageId: MessageIdentifier,
     val channelChat: ChannelChat,
     val signature: String? = null
+) : ForwardInfo()
+
+data class ForwardFromSupergroupInfo(
+    override val dateOfOriginal: TelegramDate,
+    val messageId: MessageIdentifier,
+    val group: SupergroupChat
 ) : ForwardInfo()

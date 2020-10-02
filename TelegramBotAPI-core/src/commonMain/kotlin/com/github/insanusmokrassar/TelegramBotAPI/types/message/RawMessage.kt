@@ -153,6 +153,11 @@ internal data class RawMessage(
                 forward_from_chat,
                 forward_signature
             )
+            forward_from_chat is SupergroupChat -> ForwardFromSupergroupInfo(
+                forward_date,
+                forward_from_message_id ?: error("Channel forwarded message must contain message id, but was not"),
+                forward_from_chat
+            )
             forward_from != null -> UserForwardInfo(
                 forward_date,
                 forward_from
