@@ -27,6 +27,5 @@ data class ForwardFromChannelInfo(
 
 data class ForwardFromSupergroupInfo(
     override val dateOfOriginal: TelegramDate,
-    val messageId: MessageIdentifier,
     val group: SupergroupChat
 ) : ForwardInfo()
