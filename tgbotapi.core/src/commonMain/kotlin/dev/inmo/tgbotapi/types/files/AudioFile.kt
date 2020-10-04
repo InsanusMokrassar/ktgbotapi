@@ -24,3 +24,5 @@ data class AudioFile(
     override val fileSize: Long? = null,
     override val thumb: PhotoSize? = null
 ) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, TitledMediaFile, Performerable
+
+fun AudioFile.asVoiceFile() = VoiceFile(fileId, fileUniqueId, duration, mimeType, fileSize)

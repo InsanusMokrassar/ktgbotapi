@@ -19,6 +19,8 @@
     * Now in forward info you can get `ForwardFromSupergroupInfo`
     * **BREAKING CHANGE** `SendVoice` factory function has changed its signature: now it have now `thumb`
     (according to the [documentation](https://core.telegram.org/bots/api#sendvoice))
+    * `AudioFile` now can be converted to `VoiceFile`
+    * `VoiceFile` now can be converted to `AudioFile`
 * `TelegramBotAPI-extensions-api`:
     * ALL REQUESTS EXECUTOR USAGES WERE REPLACED WITH `TelegramBot` TYPEALIAS. It should not bring any break changes
     * Internal changes of `sendRegularPoll` and `sendQuizPoll` extensions
