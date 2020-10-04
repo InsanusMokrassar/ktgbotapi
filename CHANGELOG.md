@@ -1,13 +1,26 @@
 # TelegramBotAPI changelog
 
+## 0.29.0
+
+* **THIS VERSION CONTAINS BREAKING CHANGES**
+
+* `TelegramBotAPI-core`:
+    * Now in forward info you can get `ForwardFromSupergroupInfo`
+    * **BREAKING CHANGE** `SendVoice` factory function has changed its signature: now it have now `thumb`
+    (according to the [documentation](https://core.telegram.org/bots/api#sendvoice))
+* `TelegramBotAPI-extensions-api`:
+    * ALL REQUESTS EXECUTOR USAGES WERE REPLACED WITH `TelegramBot` TYPEALIAS. It should not bring any break changes
+    * Internal changes of `sendRegularPoll` and `sendQuizPoll` extensions
+    * Variable `defaultLivePeriodDelayMillis` now is public
+    * All `send` extensions for `TelegramBot` got their `reply` variations (issue [#144](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/144))
+    * A lot of `send` extensions for `TelegramBot` got their variation with `Chat` instead of `ChatIdentifier`
+
 ## 0.28.0
 
-**THIS VERSION CONTAINS BREAKING CHANGES**
-
-***PROJECT PACKAGES WERE CHANGED***
-
-* Project `TelegramBotAPI` -> `TelegramBotAPI-core`
-* Project `TelegramBotAPI-all` -> `TelegramBotAPI`
+* **THIS VERSION CONTAINS BREAKING CHANGES**
+* ***PROJECT PACKAGES WERE CHANGED***
+    * Project `TelegramBotAPI` -> `TelegramBotAPI-core`
+    * Project `TelegramBotAPI-all` -> `TelegramBotAPI`
 
 * `Common`:
     * Version updates:
@@ -41,19 +54,6 @@
     * Several extensions for downloading of files:
         * `HttpClient#loadFile`
         * `PathedFile#download`
-
-### 0.28.5
-
-* `TelegramBotAPI-core`:
-    * Now in forward info you can get `ForwardFromSupergroupInfo`
-    * **BREAKING CHANGE** `SendVoice` factory function has changed its signature: now it have now `thumb`
-    (according to the [documentation](https://core.telegram.org/bots/api#sendvoice))
-* `TelegramBotAPI-extensions-api`:
-    * ALL REQUESTS EXECUTOR USAGES WERE REPLACED WITH `TelegramBot` TYPEALIAS. It should not bring any break changes
-    * Internal changes of `sendRegularPoll` and `sendQuizPoll` extensions
-    * Variable `defaultLivePeriodDelayMillis` now is public
-    * All `send` extensions for `TelegramBot` got their `reply` variations (issue [#144](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/144))
-    * A lot of `send` extensions for `TelegramBot` got their variation with `Chat` instead of `ChatIdentifier`
     
 ### 0.28.4
 
