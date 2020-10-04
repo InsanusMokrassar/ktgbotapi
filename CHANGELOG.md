@@ -3,6 +3,8 @@
 ## 0.29.0
 
 * **THIS VERSION CONTAINS BREAKING CHANGES**
+* ***PROJECT PACKAGES WERE CHANGED***
+    * Packages in the whole project were changed `com.github.insanusmokrassar.TelegramBot`
 
 * `TelegramBotAPI-core`:
     * Now in forward info you can get `ForwardFromSupergroupInfo`
