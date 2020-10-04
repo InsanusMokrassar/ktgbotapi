@@ -40,9 +40,9 @@ In case if you are want to use this library inside of browser, you will need add
 dependencies {
     /* ... */
 
-    implementation "dev.inmo:TelegramBotAPI:$tgbot_api_version"
-    implementation "dev.inmo:TelegramBotAPI-extensions-api:$tgbot_api_version" // optional
-    implementation "dev.inmo:TelegramBotAPI-extensions-utils:$tgbot_api_version" // optional
+    implementation "com.github.insanusmokrassar:TelegramBotAPI:$tgbot_api_version"
+    implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$tgbot_api_version" // optional
+    implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-utils:$tgbot_api_version" // optional
 
     /* Block of dependencies for correct building in browser */
     implementation(npm("fs"))
