@@ -5,7 +5,7 @@
 
 ## What is it?
 
-It is wrapper library for [tgbotapi.core](../tgbotapi.core/README.md). Here you can find extensions for
+It is wrapper library for [TelegramBotAPI Core](../tgbotapi.core/README.md). Here you can find extensions for
 `RequestsExecutor`, which are more look like Telegram Bot API requests and in the same time have more obvious signatures
 to help understand some restrictions in Telegram system.
 

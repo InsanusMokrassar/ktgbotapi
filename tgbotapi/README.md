@@ -2,7 +2,7 @@
 
 Concentration of all TelegramBotAPI libraries:
 
-* [tgbotapi.core](../tgbotapi.core/README.md)
+* [TelegramBotAPI Core](../tgbotapi.core/README.md)
 * [TelegramBotAPI Extensions](../tgbotapi.extensions.api/README.md)
 * [TelegramBotAPI Util Extensions](../tgbotapi.extensions.utils/README.md)
 

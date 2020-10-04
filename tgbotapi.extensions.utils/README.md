@@ -24,7 +24,7 @@
 
 ## What is it?
 
-It is wrapper library for [tgbotapi.core](../tgbotapi.core/README.md). Currently, this library contains some usefull filters for commands, updates types and different others.
+It is wrapper library for [TelegramBotAPI Core](../tgbotapi.core/README.md). Currently, this library contains some usefull filters for commands, updates types and different others.
 
 ## How to implement library?
 
@@ -94,7 +94,7 @@ updates retrieving:
 * Webhooks
 * Long Polling
 
-Both of them you could use in your project using [tgbotapi.core](../tgbotapi.core/README.md), but here there are
+Both of them you could use in your project using [TelegramBotAPI Core](../tgbotapi.core/README.md), but here there are
 several useful extensions for both of them.
 
 Anyway, in both of ways it will be useful to know that it is possible to create `UpdateReceiver` object using function

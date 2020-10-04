@@ -1,4 +1,4 @@
-# tgbotapi.core
+# TelegramBotAPI Core
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core)
