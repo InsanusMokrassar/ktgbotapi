@@ -1,0 +1,5 @@
+package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video
+
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithFileIdInlineQueryResult
+
+interface InlineQueryResultVideoCached : InlineQueryResultVideoCommon, WithFileIdInlineQueryResult

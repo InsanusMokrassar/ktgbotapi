@@ -1,13 +1,37 @@
 # TelegramBotAPI changelog
 
+## 0.29.0
+
+* **THIS VERSION CONTAINS BREAKING CHANGES**
+* ***PROJECT PACKAGES WERE CHANGED***
+    * Packages in the whole project were changed `com.github.insanusmokrassar.TelegramBotAPI` -> `dev.inmo.tgbotapi`
+    * Project group in repositories were changed: `com.github.insanusmokrassar` -> `dev.inmo`
+    * Migration ([Examples migration](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/pull/11)):
+        1. Change implementation in your gradle files:
+            * `implementation "com.github.insanusmokrassar:TelegramBotAPI-core:*"` -> `implementation "dev.inmo:tgbotapi.core:*"`
+            * `implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-utils:*"` -> `implementation "dev.inmo:tgbotapi.extensions.utils:*"`
+            * `implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:*"` -> `implementation "dev.inmo:tgbotapi.extensions.api:*"`
+            * `implementation "com.github.insanusmokrassar:TelegramBotAPI:*"` -> `implementation "dev.inmo:tgbotapi:*"`
+        2. Replace packages `com.github.insanusmokrassar.TelegramBotAPI` in the whole project by `dev.inmo.tgbotapi`
+        
+
+* `TelegramBotAPI-core`:
+    * Now in forward info you can get `ForwardFromSupergroupInfo`
+    * **BREAKING CHANGE** `SendVoice` factory function has changed its signature: now it have now `thumb`
+    (according to the [documentation](https://core.telegram.org/bots/api#sendvoice))
+* `TelegramBotAPI-extensions-api`:
+    * ALL REQUESTS EXECUTOR USAGES WERE REPLACED WITH `TelegramBot` TYPEALIAS. It should not bring any break changes
+    * Internal changes of `sendRegularPoll` and `sendQuizPoll` extensions
+    * Variable `defaultLivePeriodDelayMillis` now is public
+    * All `send` extensions for `TelegramBot` got their `reply` variations (issue [#144](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/144))
+    * A lot of `send` extensions for `TelegramBot` got their variation with `Chat` instead of `ChatIdentifier`
+
 ## 0.28.0
 
-**THIS VERSION CONTAINS BREAKING CHANGES**
-
-***PROJECT PACKAGES WERE CHANGED***
-
-* Project `TelegramBotAPI` -> `TelegramBotAPI-core`
-* Project `TelegramBotAPI-all` -> `TelegramBotAPI`
+* **THIS VERSION CONTAINS BREAKING CHANGES**
+* ***PROJECT PACKAGES WERE CHANGED***
+    * Project `TelegramBotAPI` -> `TelegramBotAPI-core`
+    * Project `TelegramBotAPI-all` -> `TelegramBotAPI`
 
 * `Common`:
     * Version updates:

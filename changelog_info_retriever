@@ -1,20 +1,17 @@
 #!/bin/bash
 
 function parse() {
-  version=$1
+    version=$1
 
-  read -r
-  while [ -z "`echo $REPLY | grep -e "^#\+ $version"`" ]
-  do
-      read -r
-  done
+    while IFS= read -r line && [ -z "`echo $line | grep -e "^#\+ $version"`" ]
+    do
+        : # do nothing
+    done
 
-  read -r
-  while [ -z "`echo $REPLY | grep -e "^#\+"`" ]
-  do
-      echo "$REPLY"
-      read -r
-  done
+    while IFS= read -r line && [ -z "`echo $line | grep -e "^#\+"`" ]
+    do
+        echo "$line"
+    done
 }
 
 version=$1
@@ -25,5 +22,3 @@ if [ -n "$file" ]; then
 else
   parse $version
 fi
-
-

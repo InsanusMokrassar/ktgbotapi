@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$gradle_bintray_plugin_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.multiplatform"
+    id "org.jetbrains.kotlin.plugin.serialization"
+}
+
+project.version = "$library_version"
+project.group = "$library_group"
+
+apply from: "publish.gradle"
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+}
+
+kotlin {
+    jvm()
+    js(BOTH) {
+        browser()
+        nodejs()
+    }
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib')
+                if ((project.hasProperty('RELEASE_MODE') && project.property('RELEASE_MODE') == "true") || System.getenv('RELEASE_MODE') == "true") {
+                    api "${project.group}:tgbotapi.core:$library_version"
+                    api "${project.group}:tgbotapi.extensions.api:$library_version"
+                    api "${project.group}:tgbotapi.extensions.utils:$library_version"
+                } else {
+                    api project(":tgbotapi.core")
+                    api project(":tgbotapi.extensions.api")
+                    api project(":tgbotapi.extensions.utils")
+                }
+            }
+        }
+    }
+}

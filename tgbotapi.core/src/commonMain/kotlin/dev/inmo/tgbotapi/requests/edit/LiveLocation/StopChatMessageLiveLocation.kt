@@ -1,0 +1,28 @@
+package dev.inmo.tgbotapi.requests.edit.LiveLocation
+
+import dev.inmo.tgbotapi.requests.edit.abstracts.EditChatMessage
+import dev.inmo.tgbotapi.requests.edit.abstracts.EditReplyMessage
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
+import dev.inmo.tgbotapi.types.message.content.LocationContent
+import kotlinx.serialization.*
+
+private val commonResultDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<LocationContent>>()
+
+@Serializable
+data class StopChatMessageLiveLocation(
+    @SerialName(chatIdField)
+    override val chatId: ChatIdentifier,
+    @SerialName(messageIdField)
+    override val messageId: MessageIdentifier,
+    @SerialName(replyMarkupField)
+    override val replyMarkup: InlineKeyboardMarkup? = null
+) : EditChatMessage<LocationContent>, EditReplyMessage {
+    override fun method(): String = "stopMessageLiveLocation"
+    override val resultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
+        get() = commonResultDeserializer
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+}

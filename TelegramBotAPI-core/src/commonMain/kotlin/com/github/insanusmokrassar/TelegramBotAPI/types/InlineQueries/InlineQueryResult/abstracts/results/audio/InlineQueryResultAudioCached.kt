@@ -1,5 +1,0 @@
-package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.audio
-
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.WithFileIdInlineQueryResult
-
-interface InlineQueryResultAudioCached : InlineQueryResultAudioCommon, WithFileIdInlineQueryResult

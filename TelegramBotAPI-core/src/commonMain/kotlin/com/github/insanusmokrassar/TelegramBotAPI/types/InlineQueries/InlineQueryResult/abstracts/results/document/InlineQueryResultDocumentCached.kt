@@ -1,5 +1,0 @@
-package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.results.document
-
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.WithFileIdInlineQueryResult
-
-interface InlineQueryResultDocumentCached : InlineQueryResultDocumentCommon, WithFileIdInlineQueryResult

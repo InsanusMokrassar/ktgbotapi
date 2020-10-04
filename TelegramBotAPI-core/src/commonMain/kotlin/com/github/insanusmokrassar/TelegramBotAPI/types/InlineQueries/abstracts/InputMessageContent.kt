@@ -1,7 +1,0 @@
-package com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts
-
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InputMessageContentSerializer
-import kotlinx.serialization.Serializable
-
-@Serializable(InputMessageContentSerializer::class)
-interface InputMessageContent

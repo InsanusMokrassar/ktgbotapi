@@ -1,0 +1,21 @@
+package dev.inmo.tgbotapi.requests.chat.members
+
+import dev.inmo.tgbotapi.requests.chat.abstracts.ChatMemberRequest
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatMember
+import dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatMemberDeserializationStrategy
+import kotlinx.serialization.*
+
+@Serializable
+data class GetChatMember(
+    @SerialName(chatIdField)
+    override val chatId: ChatIdentifier,
+    @SerialName(userIdField)
+    override val userId: UserId
+) : ChatMemberRequest<ChatMember> {
+    override fun method(): String = "getChatMember"
+    override val resultDeserializer: DeserializationStrategy<ChatMember>
+        get() = ChatMemberDeserializationStrategy
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+}
