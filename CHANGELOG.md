@@ -255,7 +255,7 @@
 * `TelegramBotAPI`:
     * `UnknownUpdateType` was renamed to `UnknownUpdate`
     * Refactoring and optimization of `FlowsUpdatesFilter`
-    * `Venue` type was replaced to a new package: `dev.inmo.tgbotapi.types.venue.Venue`
+    * `Venue` type was replaced to a new package: `com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue`
     * `Venue` type now implements `Locationed` and delegate realisation to its `location` field
     * `FoursquareId` and `FoursquareType` typealiases were added
 * `TelegramBotAPI-extensions-utils`:
@@ -419,7 +419,7 @@
     * `GetMyCommands` request was added
     * `SetMyCommands` request was added
     * `GetMe` now is object instead of class
-    * `GetMe` was replaced into package `dev.inmo.tgbotapi.requests.bot.GetMe`
+    * `GetMe` was replaced into package `com.github.insanusmokrassar.TelegramBotAPI.requests.bot.GetMe`
     * `CreateNewStickerSet` renamed to `CreateStaticNewStickerSet`
     * `CreateNewAnimatedStickerSet` request was added (it handle work with `tgs_sticker`)
     * `StickerSet#thumb` was added
@@ -434,7 +434,7 @@
     * Extensions `sendDice` was added
     * Extension `getMyCommands` request was added
     * Extension `setMyCommands` request was added
-    * Extension `getMe` was replaced into package `dev.inmo.tgbotapi.extensions.api.bot.GetMeKt.getMe`
+    * Extension `getMe` was replaced into package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.bot.GetMeKt.getMe`
     * **All extensions `createNewStickerSet` was renamed to `createNewStaticStickerSet`**
     * Extensions `createNewAnimatedStickerSet` was added
     * **All extensions `addStickerToSet` was renamed to `addStaticStickerToSet`**
@@ -555,8 +555,8 @@
 ### 0.24.1
 
 * `TelegramBotAPI`:
-    * `UpdateReceiver` was replaced to the package `dev.inmo.tgbotapi.updateshandlers`
-    * All functions inside `dev.inmo.tgbotapi.utils.extensions.UpdatesPolling` are deprecated
+    * `UpdateReceiver` was replaced to the package `com.github.insanusmokrassar.TelegramBotAPI.updateshandlers`
+    * All functions inside `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` are deprecated
     and will be removed in some soon versions. Their replacement are able inside `TelegramBotAPI-extensions-api`
     * `UpdatesFilter` is interface for now
         * Previous `UpdatesFilter` class was renamed to `SimpleUpdatesFilter` and for backward compatibility was added
@@ -572,7 +572,7 @@
     * `KtorRequestsExecutor` now is using a copy of incoming `HttpClient` object and install `HttpTimeout` feature
         * `AbstractRequestCallFactory` now setting up a custom delay in case if request is `GetUpdates`
 * `TelegramBotAPI-extensions-api`:
-    * All functions from `dev.inmo.tgbotapi.utils.extensions.UpdatesPolling` now available
+    * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
     in package `dev.inmo.tgbotapi.extensions.api.updates.UpdatesPolling`
     * Now new method of getting updates available: `startGettingUpdates` with `UpdatesFilter` as incoming first
     parameter
@@ -806,29 +806,29 @@ bot.
     * `requestSerializer` - field, which must provide serializer of current type
     * `resultDeserializer` - field, which must provide opportunity to deserializer result. Previously it was a function
 * Removed deprecations:
-    * `dev.inmo.tgbotapi.utils.extensions.WebhookPrivateKeyConfig`
-    * `dev.inmo.tgbotapi.utils.extensions.UpdatesFilter`
-    * `dev.inmo.tgbotapi.utils.extensions.createSimpleUpdateFilter`
-    * `dev.inmo.tgbotapi.utils.createMarkdownText`
-    * `dev.inmo.tgbotapi.utils.toMarkdownCaption`
-    * `dev.inmo.tgbotapi.utils.toMarkdownText`
-    * `dev.inmo.tgbotapi.updateshandlers.KtorUpdatesPoller`
-    * `dev.inmo.tgbotapi.types.message.content.abstracts.CaptionedMediaContent`
-    * `dev.inmo.tgbotapi.types.message.CommonForwardedMessage`
-    * `dev.inmo.tgbotapi.types.InputMedia.CaptionedInputMedia`
-    * `dev.inmo.tgbotapi.types.games.Game#text`
-    * `dev.inmo.tgbotapi.types.games.Game#textEntities`
-    * `dev.inmo.tgbotapi.types.files.PathedFileKt.makeFileUrl`
-    * `dev.inmo.tgbotapi.types.files.PathedFileKt.downloadingFilesBaseUrl`
-    * `dev.inmo.tgbotapi.requests.send.media.base.Data`
-    * `dev.inmo.tgbotapi.CommonAbstracts.types.ByInlineMessageId`
-    * `dev.inmo.tgbotapi.CommonAbstracts.types.ByMessageId`
-    * `dev.inmo.tgbotapi.bot.RequestException`
-    * `dev.inmo.tgbotapi.bot.exceptions.ReplyMessageNotFound`
-    * `dev.inmo.tgbotapi.bot.BaseRequestsExecutor#baseUrl`
-    * `dev.inmo.tgbotapi.bot.BaseRequestsExecutor#constructor(token, hostUrl)`
-    * `dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutor#constructor(token, client, hostUrl, callsFactories, excludeDefaultFactories, requestsLimiter, jsonFormatter)`
-    * `dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutor#constructor(token, engine, hostUrl)`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.WebhookPrivateKeyConfig`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesFilter`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.createSimpleUpdateFilter`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.createMarkdownText`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownCaption`
+    * `com.github.insanusmokrassar.TelegramBotAPI.utils.toMarkdownText`
+    * `com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.KtorUpdatesPoller`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.CaptionedMediaContent`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.message.CommonForwardedMessage`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.CaptionedInputMedia`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.games.Game#text`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.games.Game#textEntities`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFileKt.makeFileUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFileKt.downloadingFilesBaseUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.Data`
+    * `com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ByInlineMessageId`
+    * `com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.types.ByMessageId`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.RequestException`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.ReplyMessageNotFound`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor#baseUrl`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.BaseRequestsExecutor#constructor(token, hostUrl)`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor#constructor(token, client, hostUrl, callsFactories, excludeDefaultFactories, requestsLimiter, jsonFormatter)`
+    * `com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor#constructor(token, engine, hostUrl)`
 
 ## 0.18.0 Raws cleaning
 
@@ -964,7 +964,7 @@ some default library
 by their parents
 * `StopPoll` implemented
 * All current `Chat` abstractions are deprecated and rewritten as typealiases. Use `Chat` abstractions from
-`dev.inmo.tgbotapi.types.chat.abstracts` package
+`com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts` package
 * Common Groups now may have pinned message
 * `is_member` field added into `RestrictedChatMember`
 * **BREAK CHANGES** Now `ForwardedMessages` can be `AnonymousForwardedMessage` and `PublicForwardedMessage`. Old
@@ -1093,7 +1093,7 @@ work with media groups lists
 ## 0.9.0
 
 * Old extension `OkHttpClient.Builder#useWith` now deprecated and must be replaced by the same in
-`dev.inmo.tgbotapi.bot.Ktor` package
+`com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor` package
 * Replace `ProxySettings` data class in `settings` package, deprecate old link
 * `BaseRequestsExecutor` now have no it's own scope
 * Add `RequestLimiter` and base realisations
