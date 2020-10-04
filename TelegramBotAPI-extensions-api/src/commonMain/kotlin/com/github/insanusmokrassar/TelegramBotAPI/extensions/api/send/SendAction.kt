@@ -1,102 +1,102 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendAction
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.actions.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 
-suspend fun RequestsExecutor.sendBotAction(
+suspend fun TelegramBot.sendBotAction(
     chatId: ChatIdentifier,
     action: BotAction
 ) = execute(
     SendAction(chatId, action)
 )
 
-suspend fun RequestsExecutor.sendBotAction(
+suspend fun TelegramBot.sendBotAction(
     chat: Chat,
     action: BotAction
 ) = sendBotAction(chat.id, action)
 
 
-suspend fun RequestsExecutor.sendActionTyping(
+suspend fun TelegramBot.sendActionTyping(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, TypingAction)
 
-suspend fun RequestsExecutor.sendActionUploadPhoto(
+suspend fun TelegramBot.sendActionUploadPhoto(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadPhotoAction)
 
-suspend fun RequestsExecutor.sendActionRecordVideo(
+suspend fun TelegramBot.sendActionRecordVideo(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, RecordVideoAction)
 
-suspend fun RequestsExecutor.sendActionUploadVideo(
+suspend fun TelegramBot.sendActionUploadVideo(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadVideoAction)
 
-suspend fun RequestsExecutor.sendActionRecordAudio(
+suspend fun TelegramBot.sendActionRecordAudio(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, RecordAudioAction)
 
-suspend fun RequestsExecutor.sendActionUploadAudio(
+suspend fun TelegramBot.sendActionUploadAudio(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadAudioAction)
 
-suspend fun RequestsExecutor.sendActionUploadDocument(
+suspend fun TelegramBot.sendActionUploadDocument(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadDocumentAction)
 
-suspend fun RequestsExecutor.sendActionFindLocation(
+suspend fun TelegramBot.sendActionFindLocation(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, FindLocationAction)
 
-suspend fun RequestsExecutor.sendActionRecordVideoNote(
+suspend fun TelegramBot.sendActionRecordVideoNote(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, RecordVideoNoteAction)
 
-suspend fun RequestsExecutor.sendActionUploadVideoNote(
+suspend fun TelegramBot.sendActionUploadVideoNote(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadVideoNoteAction)
 
 
-suspend fun RequestsExecutor.sendActionTyping(
+suspend fun TelegramBot.sendActionTyping(
     chat: Chat
 ) = sendBotAction(chat, TypingAction)
 
-suspend fun RequestsExecutor.sendActionUploadPhoto(
+suspend fun TelegramBot.sendActionUploadPhoto(
     chat: Chat
 ) = sendBotAction(chat, UploadPhotoAction)
 
-suspend fun RequestsExecutor.sendActionRecordVideo(
+suspend fun TelegramBot.sendActionRecordVideo(
     chat: Chat
 ) = sendBotAction(chat, RecordVideoAction)
 
-suspend fun RequestsExecutor.sendActionUploadVideo(
+suspend fun TelegramBot.sendActionUploadVideo(
     chat: Chat
 ) = sendBotAction(chat, UploadVideoAction)
 
-suspend fun RequestsExecutor.sendActionRecordAudio(
+suspend fun TelegramBot.sendActionRecordAudio(
     chat: Chat
 ) = sendBotAction(chat, RecordAudioAction)
 
-suspend fun RequestsExecutor.sendActionUploadAudio(
+suspend fun TelegramBot.sendActionUploadAudio(
     chat: Chat
 ) = sendBotAction(chat, UploadAudioAction)
 
-suspend fun RequestsExecutor.sendActionUploadDocument(
+suspend fun TelegramBot.sendActionUploadDocument(
     chat: Chat
 ) = sendBotAction(chat, UploadDocumentAction)
 
-suspend fun RequestsExecutor.sendActionFindLocation(
+suspend fun TelegramBot.sendActionFindLocation(
     chat: Chat
 ) = sendBotAction(chat, FindLocationAction)
 
-suspend fun RequestsExecutor.sendActionRecordVideoNote(
+suspend fun TelegramBot.sendActionRecordVideoNote(
     chat: Chat
 ) = sendBotAction(chat, RecordVideoNoteAction)
 
-suspend fun RequestsExecutor.sendActionUploadVideoNote(
+suspend fun TelegramBot.sendActionUploadVideoNote(
     chat: Chat
 ) = sendBotAction(chat, UploadVideoNoteAction)
 

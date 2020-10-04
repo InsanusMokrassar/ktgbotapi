@@ -1,13 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendVenue
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue
 
-suspend fun RequestsExecutor.sendVenue(
+suspend fun TelegramBot.sendVenue(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
@@ -23,7 +23,7 @@ suspend fun RequestsExecutor.sendVenue(
     )
 )
 
-suspend fun RequestsExecutor.sendVenue(
+suspend fun TelegramBot.sendVenue(
     chat: Chat,
     latitude: Double,
     longitude: Double,
@@ -37,7 +37,7 @@ suspend fun RequestsExecutor.sendVenue(
     chat.id, latitude, longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.sendVenue(
+suspend fun TelegramBot.sendVenue(
     chatId: ChatIdentifier,
     location: Location,
     title: String,
@@ -50,7 +50,7 @@ suspend fun RequestsExecutor.sendVenue(
     chatId, location.latitude, location.longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.sendVenue(
+suspend fun TelegramBot.sendVenue(
     chat: Chat,
     location: Location,
     title: String,
@@ -63,7 +63,7 @@ suspend fun RequestsExecutor.sendVenue(
     chat.id, location.latitude, location.longitude, title, address, foursquareId, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.sendVenue(
+suspend fun TelegramBot.sendVenue(
     chatId: ChatIdentifier,
     venue: Venue,
     disableNotification: Boolean = false,
@@ -75,7 +75,7 @@ suspend fun RequestsExecutor.sendVenue(
     )
 )
 
-suspend fun RequestsExecutor.sendVenue(
+suspend fun TelegramBot.sendVenue(
     chat: Chat,
     venue: Venue,
     disableNotification: Boolean = false,

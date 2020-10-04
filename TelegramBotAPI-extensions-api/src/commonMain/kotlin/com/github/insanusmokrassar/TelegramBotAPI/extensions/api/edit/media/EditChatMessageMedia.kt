@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.edit.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media.EditChatMessageMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
@@ -10,7 +10,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
 
-suspend fun RequestsExecutor.editMessageMedia(
+suspend fun TelegramBot.editMessageMedia(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
     media: InputMedia,
@@ -19,14 +19,14 @@ suspend fun RequestsExecutor.editMessageMedia(
     EditChatMessageMedia(chatId, messageId, media, replyMarkup)
 )
 
-suspend fun RequestsExecutor.editMessageMedia(
+suspend fun TelegramBot.editMessageMedia(
     chat: Chat,
     messageId: MessageIdentifier,
     media: InputMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chat.id, messageId, media, replyMarkup)
 
-suspend fun RequestsExecutor.editMessageMedia(
+suspend fun TelegramBot.editMessageMedia(
     message: ContentMessage<out MediaContent>,
     media: InputMedia,
     replyMarkup: InlineKeyboardMarkup? = null

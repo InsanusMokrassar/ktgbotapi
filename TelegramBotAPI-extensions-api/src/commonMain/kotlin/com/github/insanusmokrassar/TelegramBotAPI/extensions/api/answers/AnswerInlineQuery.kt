@@ -1,12 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.answers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.AnswerInlineQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InlineQuery
 import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueryIdentifier
 
-suspend fun RequestsExecutor.answerInlineQuery(
+suspend fun TelegramBot.answerInlineQuery(
     inlineQueryID: InlineQueryIdentifier,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
@@ -18,7 +18,7 @@ suspend fun RequestsExecutor.answerInlineQuery(
     AnswerInlineQuery(inlineQueryID, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
 )
 
-suspend fun RequestsExecutor.answerInlineQuery(
+suspend fun TelegramBot.answerInlineQuery(
     inlineQuery: InlineQuery,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,

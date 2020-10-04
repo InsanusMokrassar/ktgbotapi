@@ -1,13 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendMediaGroup
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.MediaGroupMemberInputMedia
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 
-suspend fun RequestsExecutor.sendMediaGroup(
+suspend fun TelegramBot.sendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
@@ -18,7 +18,7 @@ suspend fun RequestsExecutor.sendMediaGroup(
     )
 )
 
-suspend fun RequestsExecutor.sendMediaGroup(
+suspend fun TelegramBot.sendMediaGroup(
     chat: Chat,
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,

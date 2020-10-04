@@ -1,7 +1,7 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api
 
 import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
@@ -13,7 +13,7 @@ import io.ktor.client.engine.HttpClientEngine
 fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
     client: HttpClient = HttpClient()
-): RequestsExecutor = KtorRequestsExecutor(
+): TelegramBot = KtorRequestsExecutor(
     urlsKeeper,
     client
 )
@@ -26,7 +26,7 @@ fun telegramBotWithCustomClientConfig(
     urlsKeeper: TelegramAPIUrlsKeeper,
     clientEngine: HttpClientEngine,
     clientConfig: HttpClientConfig<*>.() -> Unit = {}
-): RequestsExecutor = telegramBot(
+): TelegramBot = telegramBot(
     urlsKeeper,
     HttpClient(clientEngine, clientConfig)
 )
@@ -37,7 +37,7 @@ fun telegramBotWithCustomClientConfig(
 fun telegramBotWithCustomClientConfig(
     urlsKeeper: TelegramAPIUrlsKeeper,
     clientConfig: HttpClientConfig<*>.() -> Unit = {}
-): RequestsExecutor = telegramBot(
+): TelegramBot = telegramBot(
     urlsKeeper,
     HttpClient(clientConfig)
 )
@@ -47,7 +47,7 @@ fun telegramBotWithCustomClientConfig(
  */
 fun telegramBot(
     token: String
-): RequestsExecutor = telegramBotWithCustomClientConfig(TelegramAPIUrlsKeeper(token))
+): TelegramBot = telegramBotWithCustomClientConfig(TelegramAPIUrlsKeeper(token))
 
 /**
  * Allows to create bot using bot [token] and already prepared [client]
@@ -55,7 +55,7 @@ fun telegramBot(
 fun telegramBot(
     token: String,
     client: HttpClient
-): RequestsExecutor = telegramBot(TelegramAPIUrlsKeeper(token), client)
+): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token), client)
 
 /**
  * Allows to create bot using bot [token] and configure [HttpClient] using [clientConfig]
@@ -63,7 +63,7 @@ fun telegramBot(
 fun telegramBotWithCustomClientConfig(
     token: String,
     clientConfig: HttpClientConfig<*>.() -> Unit
-): RequestsExecutor = telegramBotWithCustomClientConfig(TelegramAPIUrlsKeeper(token), clientConfig)
+): TelegramBot = telegramBotWithCustomClientConfig(TelegramAPIUrlsKeeper(token), clientConfig)
 
 /**
  * Allows to create bot using bot [token] and specify [HttpClientEngine] by passing [clientEngine] param and optionally
@@ -73,4 +73,4 @@ fun telegramBot(
     token: String,
     clientEngine: HttpClientEngine,
     clientConfig: HttpClientConfig<*>.() -> Unit = {}
-): RequestsExecutor = telegramBotWithCustomClientConfig(TelegramAPIUrlsKeeper(token), clientEngine, clientConfig)
+): TelegramBot = telegramBotWithCustomClientConfig(TelegramAPIUrlsKeeper(token), clientEngine, clientConfig)

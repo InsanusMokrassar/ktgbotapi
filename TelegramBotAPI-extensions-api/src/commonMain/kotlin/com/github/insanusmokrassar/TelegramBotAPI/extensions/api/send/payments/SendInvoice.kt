@@ -1,13 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send.payments
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.payments.SendInvoice
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.LabeledPrice
 import com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts.Currency
 
-suspend fun RequestsExecutor.sendInvoice(
+suspend fun TelegramBot.sendInvoice(
     chatId: ChatId,
     title: String,
     description: String,
@@ -31,7 +31,7 @@ suspend fun RequestsExecutor.sendInvoice(
     SendInvoice(chatId, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, replyMarkup)
 )
 
-suspend fun RequestsExecutor.sendInvoice(
+suspend fun TelegramBot.sendInvoice(
     user: CommonUser,
     title: String,
     description: String,

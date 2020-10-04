@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.edit.LiveLocation.editLiveLocation
 import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.edit.LiveLocation.stopLiveLocation
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendLocation
@@ -19,7 +19,7 @@ import kotlin.math.ceil
 
 private val livePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
 class LiveLocation internal constructor(
-    private val requestsExecutor: RequestsExecutor,
+    private val requestsExecutor: TelegramBot,
     scope: CoroutineScope,
     autoCloseTimeDelay: Double,
     initMessage: ContentMessage<LocationContent>
@@ -66,7 +66,7 @@ class LiveLocation internal constructor(
     }
 }
 
-suspend fun RequestsExecutor.startLiveLocation(
+suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chatId: ChatIdentifier,
     latitude: Double,
@@ -97,7 +97,7 @@ suspend fun RequestsExecutor.startLiveLocation(
     )
 }
 
-suspend fun RequestsExecutor.startLiveLocation(
+suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,
     latitude: Double,
@@ -110,7 +110,7 @@ suspend fun RequestsExecutor.startLiveLocation(
     scope, chat.id, latitude, longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.startLiveLocation(
+suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chatId: ChatId,
     location: Location,
@@ -122,7 +122,7 @@ suspend fun RequestsExecutor.startLiveLocation(
     scope, chatId, location.latitude, location.longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.startLiveLocation(
+suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,
     location: Location,

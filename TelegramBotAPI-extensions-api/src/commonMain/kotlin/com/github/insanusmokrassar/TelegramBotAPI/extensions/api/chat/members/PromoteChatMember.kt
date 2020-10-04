@@ -1,11 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.chat.members
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.members.PromoteChatMember
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
 
-suspend fun RequestsExecutor.promoteChatMember(
+suspend fun TelegramBot.promoteChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -33,7 +33,7 @@ suspend fun RequestsExecutor.promoteChatMember(
     )
 )
 
-suspend fun RequestsExecutor.promoteChatMember(
+suspend fun TelegramBot.promoteChatMember(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -59,7 +59,7 @@ suspend fun RequestsExecutor.promoteChatMember(
     canPromoteMembers
 )
 
-suspend fun RequestsExecutor.promoteChatMember(
+suspend fun TelegramBot.promoteChatMember(
     chatId: ChatId,
     user: User,
     untilDate: TelegramDate? = null,
@@ -85,7 +85,7 @@ suspend fun RequestsExecutor.promoteChatMember(
     canPromoteMembers
 )
 
-suspend fun RequestsExecutor.promoteChatMember(
+suspend fun TelegramBot.promoteChatMember(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,

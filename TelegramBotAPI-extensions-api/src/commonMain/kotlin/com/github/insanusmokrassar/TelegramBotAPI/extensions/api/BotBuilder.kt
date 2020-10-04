@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
@@ -33,13 +33,13 @@ data class BotBuilder internal constructor(
 }
 
 /**
- * @return Created by [telegramBotWithCustomClientConfig] function [RequestsExecutor]. This executor will be preconfigured using [token] and
+ * @return Created by [telegramBotWithCustomClientConfig] function [TelegramBot]. This executor will be preconfigured using [token] and
  * [block]
  */
 fun telegramBot(
     token: String,
     block: BotBuilder.() -> Unit
-): RequestsExecutor = telegramBot(
+): TelegramBot = telegramBot(
     TelegramAPIUrlsKeeper(token),
     BotBuilder().apply(block).createHttpClient()
 )

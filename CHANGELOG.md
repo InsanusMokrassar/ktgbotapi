@@ -46,7 +46,8 @@
 
 * `TelegramBotAPI-core`:
     * Now in forward info you can get `ForwardFromSupergroupInfo`
-
+* `TelegramBotAPI-extensions-api`:
+    * ALL REQUESTS EXECUTOR USAGES WERE REPLACED WITH `TelegramBot` TYPEALIAS. It should not bring any break changes
 ### 0.28.4
 
 * `Common`:

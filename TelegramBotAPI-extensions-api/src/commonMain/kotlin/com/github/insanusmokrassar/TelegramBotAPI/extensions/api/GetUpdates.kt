@@ -1,11 +1,11 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.GetUpdates
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
 
-suspend fun RequestsExecutor.getUpdates(
+suspend fun TelegramBot.getUpdates(
     offset: UpdateIdentifier? = null,
     limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,
@@ -16,7 +16,7 @@ suspend fun RequestsExecutor.getUpdates(
     )
 )
 
-suspend fun RequestsExecutor.getUpdates(
+suspend fun TelegramBot.getUpdates(
     lastUpdate: Update,
     limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,

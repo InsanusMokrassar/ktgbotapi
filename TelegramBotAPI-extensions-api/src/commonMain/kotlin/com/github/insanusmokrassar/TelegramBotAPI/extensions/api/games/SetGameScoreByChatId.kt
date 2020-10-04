@@ -1,13 +1,13 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.SetGameScoreByChatId
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.GameContent
 
-suspend fun RequestsExecutor.setGameScore(
+suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     chatId: ChatId,
@@ -18,7 +18,7 @@ suspend fun RequestsExecutor.setGameScore(
     SetGameScoreByChatId(userId, score, chatId, messageId, force, disableEditMessage)
 )
 
-suspend fun RequestsExecutor.setGameScore(
+suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     chatId: ChatId,
@@ -29,7 +29,7 @@ suspend fun RequestsExecutor.setGameScore(
     user.id, score, chatId, messageId, force, disableEditMessage
 )
 
-suspend fun RequestsExecutor.setGameScore(
+suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     chat: Chat,
@@ -40,7 +40,7 @@ suspend fun RequestsExecutor.setGameScore(
     userId, score, chat.id, messageId, force, disableEditMessage
 )
 
-suspend fun RequestsExecutor.setGameScore(
+suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     chat: Chat,
@@ -51,7 +51,7 @@ suspend fun RequestsExecutor.setGameScore(
     user.id, score, chat.id, messageId, force, disableEditMessage
 )
 
-suspend fun RequestsExecutor.setGameScore(
+suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     message: ContentMessage<GameContent>,
@@ -61,7 +61,7 @@ suspend fun RequestsExecutor.setGameScore(
     userId, score, message.chat.id, message.messageId, force, disableEditMessage
 )
 
-suspend fun RequestsExecutor.setGameScore(
+suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     message: ContentMessage<GameContent>,

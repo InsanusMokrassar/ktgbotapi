@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send.polls
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls.SendQuizPoll
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.polls.SendRegularPoll
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
@@ -10,7 +10,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.polls.*
 
-suspend fun RequestsExecutor.sendRegularPoll(
+suspend fun TelegramBot.sendRegularPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<String>,
@@ -26,7 +26,7 @@ suspend fun RequestsExecutor.sendRegularPoll(
         chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, replyToMessageId, replyMarkup
     )
 )
-suspend fun RequestsExecutor.sendRegularPoll(
+suspend fun TelegramBot.sendRegularPoll(
     chatId: ChatIdentifier,
     poll: RegularPoll,
     isClosed: Boolean = false,
@@ -44,7 +44,7 @@ suspend fun RequestsExecutor.sendRegularPoll(
     )
 )
 
-suspend fun RequestsExecutor.sendRegularPoll(
+suspend fun TelegramBot.sendRegularPoll(
     chat: Chat,
     question: String,
     options: List<String>,
@@ -59,7 +59,7 @@ suspend fun RequestsExecutor.sendRegularPoll(
     chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.sendRegularPoll(
+suspend fun TelegramBot.sendRegularPoll(
     chat: Chat,
     poll: RegularPoll,
     isClosed: Boolean = false,
@@ -76,7 +76,7 @@ suspend fun RequestsExecutor.sendRegularPoll(
 )
 
 
-suspend fun RequestsExecutor.sendQuizPoll(
+suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<String>,
@@ -95,7 +95,7 @@ suspend fun RequestsExecutor.sendQuizPoll(
     )
 )
 
-suspend fun RequestsExecutor.sendQuizPoll(
+suspend fun TelegramBot.sendQuizPoll(
     chat: Chat,
     question: String,
     options: List<String>,
@@ -112,7 +112,7 @@ suspend fun RequestsExecutor.sendQuizPoll(
     chat.id, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.sendQuizPoll(
+suspend fun TelegramBot.sendQuizPoll(
     chatId: ChatIdentifier,
     isClosed: Boolean = false,
     quizPoll: QuizPoll,
@@ -132,7 +132,7 @@ suspend fun RequestsExecutor.sendQuizPoll(
     )
 )
 
-suspend fun RequestsExecutor.sendQuizPoll(
+suspend fun TelegramBot.sendQuizPoll(
     chat: Chat,
     isClosed: Boolean = false,
     quizPoll: QuizPoll,

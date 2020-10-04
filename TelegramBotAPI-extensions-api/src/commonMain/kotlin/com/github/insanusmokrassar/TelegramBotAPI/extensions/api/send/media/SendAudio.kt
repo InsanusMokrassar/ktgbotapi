@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendAudio
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
@@ -9,7 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.AudioFile
 
-suspend fun RequestsExecutor.sendAudio(
+suspend fun TelegramBot.sendAudio(
     chatId: ChatIdentifier,
     audio: InputFile,
     thumb: InputFile? = null,
@@ -37,7 +37,7 @@ suspend fun RequestsExecutor.sendAudio(
     )
 )
 
-suspend fun RequestsExecutor.sendAudio(
+suspend fun TelegramBot.sendAudio(
     chatId: ChatIdentifier,
     audio: AudioFile,
     text: String? = null,

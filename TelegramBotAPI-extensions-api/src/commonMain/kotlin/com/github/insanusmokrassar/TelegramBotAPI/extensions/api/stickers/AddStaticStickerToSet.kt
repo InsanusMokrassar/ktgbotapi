@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.stickers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.AddStaticStickerToSet
@@ -9,7 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.UserId
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
 import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.StickerSet
 
-suspend fun RequestsExecutor.addStaticStickerToSet(
+suspend fun TelegramBot.addStaticStickerToSet(
     userId: UserId,
     stickerSetName: String,
     sticker: FileId,
@@ -19,7 +19,7 @@ suspend fun RequestsExecutor.addStaticStickerToSet(
     AddStaticStickerToSet(userId, stickerSetName, sticker, emojis, maskPosition)
 )
 
-suspend fun RequestsExecutor.addStaticStickerToSet(
+suspend fun TelegramBot.addStaticStickerToSet(
     userId: UserId,
     stickerSetName: String,
     sticker: MultipartFile,
@@ -29,7 +29,7 @@ suspend fun RequestsExecutor.addStaticStickerToSet(
     AddStaticStickerToSet(userId, stickerSetName, sticker, emojis, maskPosition)
 )
 
-suspend fun RequestsExecutor.addStaticStickerToSet(
+suspend fun TelegramBot.addStaticStickerToSet(
     user: CommonUser,
     stickerSetName: String,
     sticker: FileId,
@@ -39,7 +39,7 @@ suspend fun RequestsExecutor.addStaticStickerToSet(
     user.id, stickerSetName, sticker, emojis, maskPosition
 )
 
-suspend fun RequestsExecutor.addStaticStickerToSet(
+suspend fun TelegramBot.addStaticStickerToSet(
     user: CommonUser,
     stickerSetName: String,
     sticker: MultipartFile,
@@ -49,7 +49,7 @@ suspend fun RequestsExecutor.addStaticStickerToSet(
     user.id, stickerSetName, sticker, emojis, maskPosition
 )
 
-suspend fun RequestsExecutor.addStaticStickerToSet(
+suspend fun TelegramBot.addStaticStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
     sticker: FileId,
@@ -59,7 +59,7 @@ suspend fun RequestsExecutor.addStaticStickerToSet(
     userId, stickerSet.name, sticker, emojis, maskPosition
 )
 
-suspend fun RequestsExecutor.addStaticStickerToSet(
+suspend fun TelegramBot.addStaticStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
     sticker: MultipartFile,
@@ -69,7 +69,7 @@ suspend fun RequestsExecutor.addStaticStickerToSet(
     userId, stickerSet.name, sticker, emojis, maskPosition
 )
 
-suspend fun RequestsExecutor.addStaticStickerToSet(
+suspend fun TelegramBot.addStaticStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,
     sticker: FileId,
@@ -79,7 +79,7 @@ suspend fun RequestsExecutor.addStaticStickerToSet(
     user.id, stickerSet.name, sticker, emojis, maskPosition
 )
 
-suspend fun RequestsExecutor.addStaticStickerToSet(
+suspend fun TelegramBot.addStaticStickerToSet(
     user: CommonUser,
     stickerSet: StickerSet,
     sticker: MultipartFile,

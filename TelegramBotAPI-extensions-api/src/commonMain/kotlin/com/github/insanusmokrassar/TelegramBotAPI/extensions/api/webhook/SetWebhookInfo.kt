@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.webhook
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
@@ -8,7 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
 /**
  * Use this method to send information about webhook (like [url])
  */
-suspend fun RequestsExecutor.setWebhookInfo(
+suspend fun TelegramBot.setWebhookInfo(
     url: String,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null
@@ -21,7 +21,7 @@ suspend fun RequestsExecutor.setWebhookInfo(
 /**
  * Use this method to send information about webhook (like [url] and [certificate])
  */
-suspend fun RequestsExecutor.setWebhookInfo(
+suspend fun TelegramBot.setWebhookInfo(
     url: String,
     certificate: FileId,
     maxAllowedConnections: Int? = null,
@@ -35,7 +35,7 @@ suspend fun RequestsExecutor.setWebhookInfo(
 /**
  * Use this method to send information about webhook (like [url] and [certificate])
  */
-suspend fun RequestsExecutor.setWebhookInfo(
+suspend fun TelegramBot.setWebhookInfo(
     url: String,
     certificate: MultipartFile,
     maxAllowedConnections: Int? = null,

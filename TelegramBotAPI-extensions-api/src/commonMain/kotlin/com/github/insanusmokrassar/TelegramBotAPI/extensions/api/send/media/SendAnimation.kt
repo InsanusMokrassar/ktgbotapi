@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendAnimation
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
@@ -9,7 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.files.AnimationFile
 
-suspend fun RequestsExecutor.sendAnimation(
+suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: InputFile,
     thumb: InputFile? = null,
@@ -37,7 +37,7 @@ suspend fun RequestsExecutor.sendAnimation(
     )
 )
 
-suspend fun RequestsExecutor.sendAnimation(
+suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: AnimationFile,
     text: String? = null,

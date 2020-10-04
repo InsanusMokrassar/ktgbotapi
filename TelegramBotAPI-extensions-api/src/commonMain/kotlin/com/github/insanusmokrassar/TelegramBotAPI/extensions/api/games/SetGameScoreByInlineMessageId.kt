@@ -1,10 +1,10 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.games.SetGameScoreByInlineMessageId
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 
-suspend fun RequestsExecutor.setGameScore(
+suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     inlineMessageId: InlineMessageIdentifier,
@@ -16,7 +16,7 @@ suspend fun RequestsExecutor.setGameScore(
     )
 )
 
-suspend fun RequestsExecutor.setGameScore(
+suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     inlineMessageId: InlineMessageIdentifier,

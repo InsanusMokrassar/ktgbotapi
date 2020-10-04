@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendTextMessage
 import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
@@ -8,7 +8,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 
-suspend fun RequestsExecutor.sendMessage(
+suspend fun TelegramBot.sendMessage(
     chatId: ChatIdentifier,
     text: String,
     parseMode: ParseMode? = null,
@@ -20,7 +20,7 @@ suspend fun RequestsExecutor.sendMessage(
     SendTextMessage(chatId, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, replyMarkup)
 )
 
-suspend fun RequestsExecutor.sendTextMessage(
+suspend fun TelegramBot.sendTextMessage(
     chatId: ChatIdentifier,
     text: String,
     parseMode: ParseMode? = null,
@@ -32,7 +32,7 @@ suspend fun RequestsExecutor.sendTextMessage(
     chatId, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.sendMessage(
+suspend fun TelegramBot.sendMessage(
     chat: Chat,
     text: String,
     parseMode: ParseMode? = null,
@@ -43,7 +43,7 @@ suspend fun RequestsExecutor.sendMessage(
 ) = sendMessage(chat.id, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, replyMarkup)
 
 
-suspend fun RequestsExecutor.sendTextMessage(
+suspend fun TelegramBot.sendTextMessage(
     chat: Chat,
     text: String,
     parseMode: ParseMode? = null,

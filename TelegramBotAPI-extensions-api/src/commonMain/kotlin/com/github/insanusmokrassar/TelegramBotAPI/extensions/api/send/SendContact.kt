@@ -1,12 +1,12 @@
 package com.github.insanusmokrassar.TelegramBotAPI.extensions.api.send
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
+import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
 import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendContact
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 
-suspend fun RequestsExecutor.sendContact(
+suspend fun TelegramBot.sendContact(
     chatId: ChatIdentifier,
     phoneNumber: String,
     firstName: String,
@@ -20,7 +20,7 @@ suspend fun RequestsExecutor.sendContact(
     )
 )
 
-suspend fun RequestsExecutor.sendContact(
+suspend fun TelegramBot.sendContact(
     chatId: ChatIdentifier,
     contact: Contact,
     disableNotification: Boolean = false,
@@ -32,7 +32,7 @@ suspend fun RequestsExecutor.sendContact(
     )
 )
 
-suspend fun RequestsExecutor.sendContact(
+suspend fun TelegramBot.sendContact(
     chat: Chat,
     phoneNumber: String,
     firstName: String,
@@ -44,7 +44,7 @@ suspend fun RequestsExecutor.sendContact(
     chat.id, phoneNumber, firstName, lastName, disableNotification, replyToMessageId, replyMarkup
 )
 
-suspend fun RequestsExecutor.sendContact(
+suspend fun TelegramBot.sendContact(
     chat: Chat,
     contact: Contact,
     disableNotification: Boolean = false,
