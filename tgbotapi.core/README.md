@@ -1,7 +1,7 @@
 # tgbotapi.core
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core)
 
 ## What is it?
 
@@ -28,7 +28,7 @@ Currently, last versions of library can be available from the Maven repository w
 of signed artifacts in Bintray). You can:
 
 * Use earlier version (available version you can find
-[here](https://mvnrepository.com/artifact/dev.inmo/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo/tgbotapi.core))
+[here](https://mvnrepository.com/artifact/com.github.insanusmokrassar/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo/tgbotapi.core))
 * Add `jCenter` repository in build config
 
 ### Maven
