@@ -4,7 +4,12 @@
 
 * **THIS VERSION CONTAINS BREAKING CHANGES**
 * ***PROJECT PACKAGES WERE CHANGED***
-    * Packages in the whole project were changed `com.github.insanusmokrassar.TelegramBot`
+    * Packages in the whole project were changed `com.github.insanusmokrassar.TelegramBotAPI` -> `dev.inmo.tgbotapi`
+    * Project group in repositories were changed: `com.github.insanusmokrassar` -> `dev.inmo`
+    * Migration:
+        1. Change implementation in your gradle files:
+            * `implementation "com.github.insanusmokrassar:..."` -> `implementation "dev.inmo:..."`
+        2. Replace packages `com.github.insanusmokrassar.TelegramBotAPI` in the whole project by `dev.inmo.tgbotapi`
 
 * `TelegramBotAPI-core`:
     * Now in forward info you can get `ForwardFromSupergroupInfo`
