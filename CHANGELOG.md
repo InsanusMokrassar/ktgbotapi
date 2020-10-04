@@ -65,7 +65,7 @@
     * Several extensions for downloading of files:
         * `HttpClient#loadFile`
         * `PathedFile#download`
-    
+
 ### 0.28.4
 
 * `Common`:
@@ -573,7 +573,7 @@
         * `AbstractRequestCallFactory` now setting up a custom delay in case if request is `GetUpdates`
 * `TelegramBotAPI-extensions-api`:
     * All functions from `com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.UpdatesPolling` now available
-    in package `dev.inmo.tgbotapi.extensions.api.updates.UpdatesPolling`
+    in package `com.github.insanusmokrassar.TelegramBotAPI.extensions.api.updates.UpdatesPolling`
     * Now new method of getting updates available: `startGettingUpdates` with `UpdatesFilter` as incoming first
     parameter
     * `startGettingUpdates` with `receiver` and `allowedUpdates` parameters now will handle updates by itself
