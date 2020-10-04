@@ -3,7 +3,7 @@
 | Common info                           | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Build Status](https://travis-ci.com/InsanusMokrassar/TelegramBotAPI.svg?branch=master)](https://travis-ci.com/InsanusMokrassar/TelegramBotAPI) [Small survey](https://forms.gle/tnjuExdSKEr32ygKA)|
 | -------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Useful links | [![Chat in Telegram](badges/chat.svg)](https://t.me/InMoTelegramBotAPI) [![KDocs](badges/kdocs.svg)](https://tgbotapi.inmo.dev/docs/index.html) [Examples](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/), [Mini tutorial](https://bookstack.inmo.dev/books/telegrambotapi/chapter/introduction-tutorial) |
-| TelegramBotAPI Core status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi) |
+| TelegramBotAPI Core status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core) |
 | TelegramBotAPI Extensions status      | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api) |
 | TelegramBotAPI Util Extensions status | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils) |
 | TelegramBotAPI All status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi)                                                             |
@@ -16,13 +16,13 @@ and JS version may work improperly in some cases with `kotlinx.serialization` ve
 It is a complex of libraries for working with `TelegramBotAPI` in type-safe and strict way as much as it possible. In
 the list of this complex currently next projects:
 
-* [tgbotapi.core](tgbotapi.core/README.md) - core of library. In fact it is independent library and can be used alone
+* [TelegramBotAPI Core](tgbotapi.core/README.md) - core of library. In fact it is independent library and can be used alone
   without any additional library
-* [TelegramBotAPI Extensions](tgbotapi.extensions.api/README.md) - contains extensions (mostly for
+* [TelegramBotAPI API Extensions](tgbotapi.extensions.api/README.md) - contains extensions (mostly for
   `RequestsExecutor`), which allows to use the core library in more pleasant way
 * [TelegramBotAPI Util Extensions](tgbotapi.extensions.utils/README.md) - contains extensions for more comfortable
 work with commands, updates and other different things
-* [TelegramBotAPI](TelegramBotAPI/README.md) - concentration of all previously mentioned libraries
+* [TelegramBotAPI](tgbotapi/README.md) - concentration of all previously mentioned libraries
 
 Most part of some specific solves or unuseful
 moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
@@ -40,9 +40,9 @@ In case if you are want to use this library inside of browser, you will need add
 dependencies {
     /* ... */
 
-    implementation "dev.inmo:tgbotapi:$tgbot_api_version"
-    implementation "dev.inmo:tgbotapi.extensions.api:$tgbot_api_version" // optional
-    implementation "dev.inmo:tgbotapi.extensions.utils:$tgbot_api_version" // optional
+    implementation "dev.inmo:TelegramBotAPI:$tgbot_api_version"
+    implementation "dev.inmo:TelegramBotAPI-extensions-api:$tgbot_api_version" // optional
+    implementation "dev.inmo:TelegramBotAPI-extensions-utils:$tgbot_api_version" // optional
 
     /* Block of dependencies for correct building in browser */
     implementation(npm("fs"))
@@ -78,10 +78,10 @@ In most cases, the most simple way will be to implement [TelegramBotAPI](Telegra
 all necessary tools for comfort usage of this library. If you want to exclude some libraries, you can implement just
 [TelegramBotAPI API Extensions](tgbotapi.extensions.api/README.md),
 [TelegramBotAPI Util Extensions](tgbotapi.extensions.utils/README.md) or even
-[tgbotapi.core](tgbotapi.core/README.md).
+[TelegramBotAPI Core](tgbotapi.core/README.md).
 
 If you want to dive deeper in the core of library or develop something for it - welcome to learn more from
-[tgbotapi.core](tgbotapi.core/README.md) and our [Telegram Chat](https://teleg.one/InMoTelegramBotAPIChat).
+[TelegramBotAPI Core](tgbotapi.core/README.md) and our [Telegram Chat](https://teleg.one/InMoTelegramBotAPIChat).
 
 Anyway, all libraries are very typical inside of them. Examples:
 
