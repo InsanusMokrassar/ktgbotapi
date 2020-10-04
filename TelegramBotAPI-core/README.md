@@ -1,7 +1,7 @@
 # TelegramBotAPI-core
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI)
 
 ## What is it?
 
@@ -28,7 +28,7 @@ Currently, last versions of library can be available from the Maven repository w
 of signed artifacts in Bintray). You can:
 
 * Use earlier version (available version you can find
-[here](https://mvnrepository.com/artifact/dev.inmo.tgbotapi/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo.tgbotapi/TelegramBotAPI-core))
+[here](https://mvnrepository.com/artifact/dev.inmo/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo/TelegramBotAPI-core))
 * Add `jCenter` repository in build config
 
 ### Maven
@@ -37,7 +37,7 @@ Dependency config presented here:
 
 ```xml
 <dependency>
-  <groupId>dev.inmo.tgbotapi</groupId>
+  <groupId>dev.inmo</groupId>
   <artifactId>TelegramBotAPI-core</artifactId>
   <version>${telegrambotapi.version}</version>
 </dependency>
@@ -52,13 +52,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "dev.inmo.tgbotapi:TelegramBotAPI-core:$telegrambotapi_version"
+implementation "dev.inmo:TelegramBotAPI-core:$telegrambotapi_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "dev.inmo.tgbotapi:TelegramBotAPI-core:$telegrambotapi_version"
+compile "dev.inmo:TelegramBotAPI-core:$telegrambotapi_version"
 ```
 
 ## How to work with library?

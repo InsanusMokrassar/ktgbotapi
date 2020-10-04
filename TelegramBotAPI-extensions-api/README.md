@@ -1,7 +1,7 @@
 # TelegramBotAPI extensions
 
 [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-api/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI-extensions-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI-extensions-api)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI-extensions-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI-extensions-api)
 
 ## What is it?
 
@@ -28,7 +28,7 @@ Dependency config presented here:
 
 ```xml
 <dependency>
-  <groupId>dev.inmo.tgbotapi</groupId>
+  <groupId>dev.inmo</groupId>
   <artifactId>TelegramBotAPI-extensions-api</artifactId>
   <version>${telegrambotapi-extensions-api.version}</version>
 </dependency>
@@ -43,13 +43,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "dev.inmo.tgbotapi:TelegramBotAPI-extensions-api:$telegrambotapi_extensions_api_version"
+implementation "dev.inmo:TelegramBotAPI-extensions-api:$telegrambotapi_extensions_api_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "dev.inmo.tgbotapi:TelegramBotAPI-extensions-api:$telegrambotapi_extensions_api_version"
+compile "dev.inmo:TelegramBotAPI-extensions-api:$telegrambotapi_extensions_api_version"
 ```
 
 ## Example of usage and comparison with `TelegramBotAPI`

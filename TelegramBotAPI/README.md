@@ -11,6 +11,6 @@ Concentration of all TelegramBotAPI libraries:
 ```groovy
 dependencies {
     // ...
-    implementation "dev.inmo.tgbotapi:TelegramBotAPI:$tgBotAPIVersion"
+    implementation "dev.inmo:TelegramBotAPI:$tgBotAPIVersion"
 }
 ```
