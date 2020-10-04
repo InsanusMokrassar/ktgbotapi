@@ -1,7 +1,7 @@
-# TelegramBotAPI-core
+# tgbotapi.core
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI)
 
 ## What is it?
 
@@ -20,15 +20,15 @@ as soon as possible.
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
 `telegrambotapi.version`, which must be set up by developer. Available versions are presented on
-[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core), next version is last published:
+[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core), next version is last published:
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/_latestVersion)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion)
 
 Currently, last versions of library can be available from the Maven repository with errors (for the reason difficult in publishing
 of signed artifacts in Bintray). You can:
 
 * Use earlier version (available version you can find
-[here](https://mvnrepository.com/artifact/dev.inmo/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo/TelegramBotAPI-core))
+[here](https://mvnrepository.com/artifact/dev.inmo/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo/tgbotapi.core))
 * Add `jCenter` repository in build config
 
 ### Maven
@@ -38,7 +38,7 @@ Dependency config presented here:
 ```xml
 <dependency>
   <groupId>dev.inmo</groupId>
-  <artifactId>TelegramBotAPI-core</artifactId>
+  <artifactId>tgbotapi.core</artifactId>
   <version>${telegrambotapi.version}</version>
 </dependency>
 ```
@@ -52,13 +52,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "dev.inmo:TelegramBotAPI-core:$telegrambotapi_version"
+implementation "dev.inmo:tgbotapi.core:$telegrambotapi_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "dev.inmo:TelegramBotAPI-core:$telegrambotapi_version"
+compile "dev.inmo:tgbotapi.core:$telegrambotapi_version"
 ```
 
 ## How to work with library?
@@ -66,9 +66,9 @@ compile "dev.inmo:TelegramBotAPI-core:$telegrambotapi_version"
 For now, this library have no some API god-object. Instead of this, this library has several
 important objects:
 
-* [RequestsExecutor](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI-core/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/bot/RequestsExecutor.kt)
-* [Requests](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI-core/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests)
-* [Types](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI-core/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types)
+* [RequestsExecutor](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/bot/RequestsExecutor.kt)
+* [Requests](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/requests)
+* [Types](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types)
 
 ### Types
 
@@ -96,11 +96,11 @@ requestsExecutor.execute(GetMe())
 ``` 
 
 Also there is an alternative syntax for requests (like `requestsExecutor.getMe()` in project
-[TelegramBotAPI-extensions-api](../TelegramBotAPI-extensions-api/README.md))
+[tgbotapi.extensions.api](../tgbotapi.extensions.api/README.md))
 
-The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI-core/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/requests/GetMe.kt)
+The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/com/github/insanusmokrassar/tgbotapi/requests/GetMe.kt)
 request is
-[ExtendedBot](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/TelegramBotAPI-core/src/commonMain/kotlin/com/github/insanusmokrassar/TelegramBotAPI/types/User.kt).
+[ExtendedBot](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/dev/inmo/tgbotapi/types/User.kt).
 
 ### RequestsExecutor
 

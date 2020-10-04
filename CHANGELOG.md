@@ -8,7 +8,10 @@
     * Project group in repositories were changed: `com.github.insanusmokrassar` -> `dev.inmo`
     * Migration ([Examples migration](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/pull/11)):
         1. Change implementation in your gradle files:
-            * `implementation "com.github.insanusmokrassar:..."` -> `implementation "dev.inmo:..."`
+            * `implementation "com.github.insanusmokrassar:TelegramBotAPI-core:*"` -> `implementation "dev.inmo:tgbotapi.core:*"`
+            * `implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-utils:*"` -> `implementation "dev.inmo:tgbotapi.extensions.utils:*"`
+            * `implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:*"` -> `implementation "dev.inmo:tgbotapi.extensions.api:*"`
+            * `implementation "com.github.insanusmokrassar:TelegramBotAPI:*"` -> `implementation "dev.inmo:tgbotapi:*"`
         2. Replace packages `com.github.insanusmokrassar.TelegramBotAPI` in the whole project by `dev.inmo.tgbotapi`
         
 

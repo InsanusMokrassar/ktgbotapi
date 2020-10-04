@@ -19,21 +19,21 @@
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI-extensions-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/TelegramBotAPI-extensions-utils)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils)
 
 ## What is it?
 
-It is wrapper library for [TelegramBotAPI-core](../TelegramBotAPI-core/README.md). Currently, this library contains some usefull filters for commands, updates types and different others.
+It is wrapper library for [tgbotapi.core](../tgbotapi.core/README.md). Currently, this library contains some usefull filters for commands, updates types and different others.
 
 ## How to implement library?
 
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
 `telegrambotapi-extensions-utils_version`, which must be set up by developer. Available versions are presented on
-[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils), next version is last published:
+[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils), next version is last published:
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils/_latestVersion)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/_latestVersion)
 
 ### Maven
 
@@ -42,7 +42,7 @@ Dependency config presented here:
 ```xml
 <dependency>
   <groupId>dev.inmo</groupId>
-  <artifactId>TelegramBotAPI-extensions-utils</artifactId>
+  <artifactId>tgbotapi.extensions.utils</artifactId>
   <version>${telegrambotapi-extensions-utils_version}</version>
 </dependency>
 ```
@@ -56,13 +56,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "dev.inmo:TelegramBotAPI-extensions-utils:$telegrambotapi-extensions-utils_version"
+implementation "dev.inmo:tgbotapi.extensions.utils:$telegrambotapi-extensions-utils_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "dev.inmo:TelegramBotAPI-extensions-utils:$telegrambotapi-extensions-utils_version"
+compile "dev.inmo:tgbotapi.extensions.utils:$telegrambotapi-extensions-utils_version"
 ```
 
 ## How to use?
@@ -94,7 +94,7 @@ updates retrieving:
 * Webhooks
 * Long Polling
 
-Both of them you could use in your project using [TelegramBotAPI-core](../TelegramBotAPI-core/README.md), but here there are
+Both of them you could use in your project using [tgbotapi.core](../tgbotapi.core/README.md), but here there are
 several useful extensions for both of them.
 
 Anyway, in both of ways it will be useful to know that it is possible to create `UpdateReceiver` object using function
