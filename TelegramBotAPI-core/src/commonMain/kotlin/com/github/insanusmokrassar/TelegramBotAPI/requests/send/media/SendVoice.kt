@@ -17,7 +17,6 @@ import kotlinx.serialization.*
 fun SendVoice(
     chatId: ChatIdentifier,
     voice: InputFile,
-    thumb: InputFile? = null,
     caption: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
@@ -27,13 +26,10 @@ fun SendVoice(
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFileId = (voice as? FileId) ?.fileId
     val voiceAsFile = voice as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
 
     val data = SendVoiceData(
         chatId,
         voiceAsFileId,
-        thumbAsFileId,
         caption,
         parseMode,
         duration,
@@ -42,12 +38,12 @@ fun SendVoice(
         replyMarkup
     )
 
-    return if (voiceAsFile == null && thumbAsFile == null) {
+    return if (voiceAsFile == null) {
         data
     } else {
         MultipartRequestImpl(
             data,
-            SendVoiceFiles(voiceAsFile, thumbAsFile)
+            SendVoiceFiles(voiceAsFile)
         )
     }
 }
@@ -61,8 +57,6 @@ data class SendVoiceData internal constructor(
     override val chatId: ChatIdentifier,
     @SerialName(voiceField)
     val voice: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -79,7 +73,6 @@ data class SendVoiceData internal constructor(
     SendMessageRequest<ContentMessage<VoiceContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<VoiceContent>>,
     TextableSendMessageRequest<ContentMessage<VoiceContent>>,
-    ThumbedSendMessageRequest<ContentMessage<VoiceContent>>,
     DuratedSendMessageRequest<ContentMessage<VoiceContent>>
 {
     init {

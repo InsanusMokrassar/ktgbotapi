@@ -9,6 +9,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMa
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.LocationContent
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
@@ -17,7 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
-private val livePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
+val defaultLivePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
 class LiveLocation internal constructor(
     private val requestsExecutor: TelegramBot,
     scope: CoroutineScope,
@@ -71,7 +72,7 @@ suspend fun TelegramBot.startLiveLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
-    liveTimeMillis: Long = livePeriodDelayMillis,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -102,7 +103,7 @@ suspend fun TelegramBot.startLiveLocation(
     chat: Chat,
     latitude: Double,
     longitude: Double,
-    liveTimeMillis: Long = livePeriodDelayMillis,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -114,7 +115,7 @@ suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chatId: ChatId,
     location: Location,
-    liveTimeMillis: Long = livePeriodDelayMillis,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -126,10 +127,29 @@ suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,
     location: Location,
-    liveTimeMillis: Long = livePeriodDelayMillis,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocation = startLiveLocation(
     scope, chat.id, location.latitude, location.longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
 )
+
+suspend inline fun TelegramBot.replyWithLiveLocation(
+    to: Message,
+    scope: CoroutineScope,
+    latitude: Double,
+    longitude: Double,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = startLiveLocation(scope, to.chat, latitude, longitude, liveTimeMillis, disableNotification, to.messageId, replyMarkup)
+
+suspend inline fun TelegramBot.replyWithLiveLocation(
+    to: Message,
+    scope: CoroutineScope,
+    location: Location,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = startLiveLocation(scope, to.chat, location, liveTimeMillis, disableNotification, to.messageId, replyMarkup)

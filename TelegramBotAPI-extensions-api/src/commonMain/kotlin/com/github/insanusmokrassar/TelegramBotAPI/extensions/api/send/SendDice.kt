@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.dice.DiceAnimationType
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendDice(
     chatId: ChatIdentifier,
@@ -25,3 +26,10 @@ suspend fun TelegramBot.sendDice(
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendDice(chat.id, animationType, disableNotification, replyToMessageId, replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    animationType: DiceAnimationType? = null,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendDice(to.chat, animationType, disableNotification, to.messageId, replyMarkup)

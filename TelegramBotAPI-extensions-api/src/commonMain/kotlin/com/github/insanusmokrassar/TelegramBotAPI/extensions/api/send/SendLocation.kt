@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendLocation
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
@@ -67,5 +68,33 @@ suspend fun TelegramBot.sendLocation(
     location.longitude,
     disableNotification,
     replyToMessageId,
+    replyMarkup
+)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    latitude: Double,
+    longitude: Double,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendLocation(
+    to.chat,
+    latitude,
+    longitude,
+    disableNotification,
+    to.messageId,
+    replyMarkup
+)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    location: Location,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendLocation(
+    to.chat,
+    location,
+    disableNotification,
+    to.messageId,
     replyMarkup
 )

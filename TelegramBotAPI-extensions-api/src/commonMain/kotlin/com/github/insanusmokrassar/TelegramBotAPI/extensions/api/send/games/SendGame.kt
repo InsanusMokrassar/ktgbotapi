@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
 import com.github.insanusmokrassar.TelegramBotAPI.types.games.Game
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
@@ -49,3 +50,28 @@ suspend fun TelegramBot.sendGame(
 ) = sendGame(
     chat.id, game.title, disableNotification, replyToMessageId, replyMarkup
 )
+
+suspend inline fun TelegramBot.replyWithGame(
+    to: Message,
+    gameShortName: String,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendGame(
+    to.chat, gameShortName, disableNotification, to.messageId, replyMarkup
+)
+
+suspend inline fun TelegramBot.replyWithGame(
+    to: Message,
+    game: Game,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendGame(
+    to.chat, game.title, disableNotification, to.messageId, replyMarkup
+)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    game: Game,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = replyWithGame(to, game, disableNotification, replyMarkup)

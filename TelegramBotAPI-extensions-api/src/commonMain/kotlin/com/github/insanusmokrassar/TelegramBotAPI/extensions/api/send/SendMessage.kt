@@ -7,6 +7,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
 import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendMessage(
     chatId: ChatIdentifier,
@@ -52,3 +53,20 @@ suspend fun TelegramBot.sendTextMessage(
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendTextMessage(chat.id, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    text: String,
+    parseMode: ParseMode? = null,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendTextMessage(
+    to.chat,
+    text,
+    parseMode,
+    disableWebPagePreview,
+    disableNotification,
+    to.messageId,
+    replyMarkup
+)

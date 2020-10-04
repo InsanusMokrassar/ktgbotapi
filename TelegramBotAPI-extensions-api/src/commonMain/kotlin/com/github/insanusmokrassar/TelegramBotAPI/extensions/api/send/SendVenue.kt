@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendVenue
 import com.github.insanusmokrassar.TelegramBotAPI.types.*
 import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
 import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
 import com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue
 
 suspend fun TelegramBot.sendVenue(
@@ -83,4 +84,38 @@ suspend fun TelegramBot.sendVenue(
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
     chat.id, venue, disableNotification, replyToMessageId, replyMarkup
+)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    latitude: Double,
+    longitude: Double,
+    title: String,
+    address: String,
+    foursquareId: String? = null,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVenue(
+    to.chat, latitude, longitude, title, address, foursquareId, disableNotification, to.messageId, replyMarkup
+)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    location: Location,
+    title: String,
+    address: String,
+    foursquareId: String? = null,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVenue(
+    to.chat, location, title, address, foursquareId, disableNotification, to.messageId, replyMarkup
+)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    venue: Venue,
+    disableNotification: Boolean = false,
+    replyMarkup: KeyboardMarkup? = null
+) = sendVenue(
+    to.chat, venue, disableNotification, to.messageId, replyMarkup
 )
