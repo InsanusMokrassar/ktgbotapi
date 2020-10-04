@@ -29,7 +29,6 @@ data class VoiceContent(
     ): Request<ContentMessage<VoiceContent>> = SendVoice(
         chatId,
         media.fileId,
-        null,
         toHtmlCaptions().firstOrNull(),
         HTMLParseMode,
         media.duration,
