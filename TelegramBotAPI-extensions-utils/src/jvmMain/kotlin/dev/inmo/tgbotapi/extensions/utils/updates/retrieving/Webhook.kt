@@ -1,18 +1,18 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.nonstrictJsonFormat
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.flowsUpdatesFilter
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.base.MultipartRequestImpl
-import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.UpdateDeserializationStrategy
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.webhook.WebhookPrivateKeyConfig
-import com.github.insanusmokrassar.TelegramBotAPI.utils.ExceptionHandler
-import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
+import dev.inmo.tgbotapi.bot.RequestsExecutor
+import dev.inmo.tgbotapi.extensions.utils.nonstrictJsonFormat
+import dev.inmo.tgbotapi.extensions.utils.updates.flowsUpdatesFilter
+import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
+import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.requests.send.media.base.MultipartRequestImpl
+import dev.inmo.tgbotapi.requests.webhook.SetWebhook
+import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy
+import dev.inmo.tgbotapi.updateshandlers.*
+import dev.inmo.tgbotapi.updateshandlers.webhook.WebhookPrivateKeyConfig
+import dev.inmo.tgbotapi.utils.ExceptionHandler
+import dev.inmo.tgbotapi.utils.handleSafely
 import io.ktor.application.call
 import io.ktor.request.receiveText
 import io.ktor.response.respond
@@ -28,9 +28,9 @@ import java.util.concurrent.Executors
  *
  * @param [scope] Will be used for mapping of media groups
  * @param [exceptionsHandler] Pass this parameter to set custom exception handler for getting updates
- * @param [block] Some receiver block like [com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter]
+ * @param [block] Some receiver block like [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter]
  *
- * @see com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
+ * @see dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter
  * @see UpdatesFilter.asUpdateReceiver
  */
@@ -74,7 +74,7 @@ fun Route.includeWebhookHandlingInRouteWithFlows(
  * @param scope Scope which will be used for
  * @param privateKeyConfig If configured - server will be created with [sslConnector]. [connector] will be used otherwise
  *
- * @see com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
+ * @see dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter
  * @see UpdatesFilter.asUpdateReceiver
  */
@@ -145,7 +145,7 @@ private suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhook
  * @param listenRoute address to listen by bot
  * @param scope Scope which will be used for
  *
- * @see com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
+ * @see dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter
  * @see UpdatesFilter.asUpdateReceiver
  */
@@ -179,7 +179,7 @@ suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
  * @param listenRoute address to listen by bot
  * @param scope Scope which will be used for
  *
- * @see com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
+ * @see dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter
  * @see UpdatesFilter.asUpdateReceiver
  */

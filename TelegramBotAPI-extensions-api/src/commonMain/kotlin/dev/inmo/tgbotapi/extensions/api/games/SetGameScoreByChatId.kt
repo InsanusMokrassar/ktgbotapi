@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.games.SetGameScoreByChatId
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.GameContent
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.games.SetGameScoreByChatId
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.GameContent
 
 suspend fun TelegramBot.setGameScore(
     userId: UserId,

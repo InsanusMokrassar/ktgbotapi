@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFile
-import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.types.files.PathedFile
+import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 

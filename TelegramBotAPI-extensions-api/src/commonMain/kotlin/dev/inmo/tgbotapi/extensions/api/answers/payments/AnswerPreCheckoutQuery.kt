@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.api.answers.payments
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments.AnswerPreCheckoutQueryError
-import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments.AnswerPreCheckoutQueryOk
-import com.github.insanusmokrassar.TelegramBotAPI.types.PreCheckoutQueryId
-import com.github.insanusmokrassar.TelegramBotAPI.types.payments.PreCheckoutQuery
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.answers.payments.AnswerPreCheckoutQueryError
+import dev.inmo.tgbotapi.requests.answers.payments.AnswerPreCheckoutQueryOk
+import dev.inmo.tgbotapi.types.PreCheckoutQueryId
+import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 
 suspend fun TelegramBot.answerPreCheckoutQueryOk(
     id: PreCheckoutQueryId

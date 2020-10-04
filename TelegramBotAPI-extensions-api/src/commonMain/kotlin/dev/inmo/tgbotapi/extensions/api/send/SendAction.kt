@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.SendAction
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.actions.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.send.SendAction
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.actions.*
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 
 suspend fun TelegramBot.sendBotAction(
     chatId: ChatIdentifier,

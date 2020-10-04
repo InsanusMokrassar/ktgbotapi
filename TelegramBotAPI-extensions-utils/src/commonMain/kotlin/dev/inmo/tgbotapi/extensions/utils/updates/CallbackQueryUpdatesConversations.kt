@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQuery.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.CallbackQueryUpdate
+import dev.inmo.tgbotapi.types.CallbackQuery.*
+import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 

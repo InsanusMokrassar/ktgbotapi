@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.LongSeconds
-import com.github.insanusmokrassar.TelegramBotAPI.types.Seconds
-import com.github.insanusmokrassar.TelegramBotAPI.types.polls.ApproximateScheduledCloseInfo
-import com.github.insanusmokrassar.TelegramBotAPI.types.polls.ExactScheduledCloseInfo
+import dev.inmo.tgbotapi.types.LongSeconds
+import dev.inmo.tgbotapi.types.Seconds
+import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
+import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
 

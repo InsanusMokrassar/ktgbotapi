@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseSentMessageUpdate
+import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 

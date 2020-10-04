@@ -1,13 +1,13 @@
 package dev.inmo.tgbotapi.extensions.api.send.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.games.SendGame
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.games.Game
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.send.games.SendGame
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.games.Game
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,

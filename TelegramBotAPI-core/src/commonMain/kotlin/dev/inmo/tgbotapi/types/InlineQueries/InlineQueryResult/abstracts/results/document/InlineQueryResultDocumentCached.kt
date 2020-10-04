@@ -1,0 +1,5 @@
+package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document
+
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithFileIdInlineQueryResult
+
+interface InlineQueryResultDocumentCached : InlineQueryResultDocumentCommon, WithFileIdInlineQueryResult

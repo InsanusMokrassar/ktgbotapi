@@ -1,14 +1,14 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendSticker
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.abstracts.InputFile
+import dev.inmo.tgbotapi.requests.send.media.SendSticker
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.files.Sticker
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendSticker(
     chatId: ChatIdentifier,

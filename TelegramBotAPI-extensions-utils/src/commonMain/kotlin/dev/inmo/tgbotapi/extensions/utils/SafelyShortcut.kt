@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils
 
-import com.github.insanusmokrassar.TelegramBotAPI.utils.*
+import dev.inmo.tgbotapi.utils.*
 import kotlinx.coroutines.CoroutineScope
 
 /**

@@ -1,12 +1,12 @@
 package dev.inmo.tgbotapi.extensions.api.send.payments
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.payments.SendInvoice
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
-import com.github.insanusmokrassar.TelegramBotAPI.types.payments.LabeledPrice
-import com.github.insanusmokrassar.TelegramBotAPI.types.payments.abstracts.Currency
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.payments.LabeledPrice
+import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 
 suspend fun TelegramBot.sendInvoice(
     chatId: ChatId,

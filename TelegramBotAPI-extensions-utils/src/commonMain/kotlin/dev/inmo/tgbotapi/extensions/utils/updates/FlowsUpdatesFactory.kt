@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 
 /**
  * Non-suspendable function for easy-to-use creating of [FlowsUpdatesFilter] and applying the block to it

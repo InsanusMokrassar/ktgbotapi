@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.Request
-import com.github.insanusmokrassar.TelegramBotAPI.utils.handleSafely
+import dev.inmo.tgbotapi.bot.RequestsExecutor
+import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.utils.handleSafely
 import kotlinx.coroutines.*
 
 fun <T: Any> RequestsExecutor.executeAsync(

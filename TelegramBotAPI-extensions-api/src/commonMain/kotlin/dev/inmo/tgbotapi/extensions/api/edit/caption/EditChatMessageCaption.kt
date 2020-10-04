@@ -1,15 +1,15 @@
 package dev.inmo.tgbotapi.extensions.api.edit.caption
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.CaptionedInput
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.caption.EditChatMessageCaption
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaContent
+import dev.inmo.tgbotapi.CommonAbstracts.CaptionedInput
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.edit.caption.EditChatMessageCaption
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.ParseMode.ParseMode
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 
 suspend fun TelegramBot.editMessageCaption(
     chatId: ChatIdentifier,

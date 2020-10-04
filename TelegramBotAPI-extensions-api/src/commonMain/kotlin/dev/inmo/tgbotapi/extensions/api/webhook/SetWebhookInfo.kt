@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.webhook
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
-import com.github.insanusmokrassar.TelegramBotAPI.requests.webhook.SetWebhook
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.abstracts.FileId
+import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
+import dev.inmo.tgbotapi.requests.webhook.SetWebhook
 
 /**
  * Use this method to send information about webhook (like [url])

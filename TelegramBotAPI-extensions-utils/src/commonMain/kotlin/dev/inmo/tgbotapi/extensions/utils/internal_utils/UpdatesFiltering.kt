@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.internal_utils
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.UpdateIdentifier
+import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 

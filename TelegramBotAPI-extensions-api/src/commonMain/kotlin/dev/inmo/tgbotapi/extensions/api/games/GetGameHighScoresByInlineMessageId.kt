@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.games
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.games.GetGameHighScoresByInlineMessageId
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.games.GetGameHighScoresByInlineMessageId
+import dev.inmo.tgbotapi.types.*
 
 suspend fun TelegramBot.getGameScore(
     userId: UserId,

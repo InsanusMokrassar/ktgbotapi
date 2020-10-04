@@ -1,13 +1,13 @@
 package dev.inmo.tgbotapi.extensions.api.stickers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.MultipartFile
-import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.AddStaticStickerToSet
-import com.github.insanusmokrassar.TelegramBotAPI.types.CommonUser
-import com.github.insanusmokrassar.TelegramBotAPI.types.UserId
-import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.MaskPosition
-import com.github.insanusmokrassar.TelegramBotAPI.types.stickers.StickerSet
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.abstracts.FileId
+import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
+import dev.inmo.tgbotapi.requests.stickers.AddStaticStickerToSet
+import dev.inmo.tgbotapi.types.CommonUser
+import dev.inmo.tgbotapi.types.UserId
+import dev.inmo.tgbotapi.types.stickers.MaskPosition
+import dev.inmo.tgbotapi.types.stickers.StickerSet
 
 suspend fun TelegramBot.addStaticStickerToSet(
     userId: UserId,

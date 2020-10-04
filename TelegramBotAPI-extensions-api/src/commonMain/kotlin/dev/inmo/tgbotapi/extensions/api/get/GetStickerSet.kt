@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.get
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.get.GetStickerSet
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.get.GetStickerSet
+import dev.inmo.tgbotapi.types.files.Sticker
 
 suspend fun TelegramBot.getStickerSet(
     name: String

@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.stickers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
-import com.github.insanusmokrassar.TelegramBotAPI.requests.stickers.SetStickerPositionInSet
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.Sticker
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.abstracts.FileId
+import dev.inmo.tgbotapi.requests.stickers.SetStickerPositionInSet
+import dev.inmo.tgbotapi.types.files.Sticker
 
 suspend fun TelegramBot.setStickerPositionInSet(
     sticker: FileId,

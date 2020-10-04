@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.api.answers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.AnswerInlineQuery
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.abstracts.InlineQuery
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueryIdentifier
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.answers.AnswerInlineQuery
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery
+import dev.inmo.tgbotapi.types.InlineQueryIdentifier
 
 suspend fun TelegramBot.answerInlineQuery(
     inlineQueryID: InlineQueryIdentifier,

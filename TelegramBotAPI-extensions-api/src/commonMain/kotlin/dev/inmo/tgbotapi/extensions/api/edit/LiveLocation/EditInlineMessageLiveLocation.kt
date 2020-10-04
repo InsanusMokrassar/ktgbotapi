@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.api.edit.LiveLocation
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.LiveLocation.EditInlineMessageLiveLocation
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineMessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.Location
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.edit.LiveLocation.EditInlineMessageLiveLocation
+import dev.inmo.tgbotapi.types.InlineMessageIdentifier
+import dev.inmo.tgbotapi.types.Location
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
 suspend fun TelegramBot.editLiveLocation(
     inlineMessageId: InlineMessageIdentifier,

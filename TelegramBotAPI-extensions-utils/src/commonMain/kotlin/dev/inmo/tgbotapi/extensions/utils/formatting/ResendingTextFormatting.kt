@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.fullEntitiesList
+import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.ParseMode.*
+import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.content.fullEntitiesList
 
 fun createFormattedText(
     entities: FullTextSourcesList,

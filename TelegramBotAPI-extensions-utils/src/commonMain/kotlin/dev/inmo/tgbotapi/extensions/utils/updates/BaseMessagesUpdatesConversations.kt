@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
+import dev.inmo.tgbotapi.types.update.abstracts.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterIsInstance
 

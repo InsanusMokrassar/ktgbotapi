@@ -1,16 +1,16 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.InputFile
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendVoice
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.ParseMode
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.AudioFile
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.VoiceFile
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.Message
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.abstracts.InputFile
+import dev.inmo.tgbotapi.requests.send.media.SendVoice
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.ParseMode.ParseMode
+import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.files.AudioFile
+import dev.inmo.tgbotapi.types.files.VoiceFile
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,

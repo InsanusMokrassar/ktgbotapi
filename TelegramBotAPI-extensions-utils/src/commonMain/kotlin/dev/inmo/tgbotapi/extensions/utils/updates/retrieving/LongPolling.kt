@@ -1,16 +1,16 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.RequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.bot.exceptions.RequestException
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.convertWithMediaGroupUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.lastUpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.requests.GetUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.*
+import dev.inmo.tgbotapi.bot.RequestsExecutor
+import dev.inmo.tgbotapi.bot.exceptions.RequestException
+import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
+import dev.inmo.tgbotapi.extensions.utils.updates.lastUpdateIdentifier
+import dev.inmo.tgbotapi.requests.GetUpdates
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.update.*
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
+import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.updateshandlers.*
+import dev.inmo.tgbotapi.utils.*
 import kotlinx.coroutines.*
 
 fun RequestsExecutor.startGettingOfUpdatesByLongPolling(

@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.chat.stickers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.stickers.DeleteChatStickerSet
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.SupergroupChat
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.chat.stickers.DeleteChatStickerSet
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.chat.abstracts.SupergroupChat
 
 suspend fun TelegramBot.deleteChatStickerSet(
     chatId: ChatIdentifier

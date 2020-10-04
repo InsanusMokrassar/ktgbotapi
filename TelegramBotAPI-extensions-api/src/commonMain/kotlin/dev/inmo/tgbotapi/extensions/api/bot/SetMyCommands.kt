@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.bot
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.bot.SetMyCommands
-import com.github.insanusmokrassar.TelegramBotAPI.types.BotCommand
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.bot.SetMyCommands
+import dev.inmo.tgbotapi.types.BotCommand
 
 suspend fun TelegramBot.setMyCommands(
     commands: List<BotCommand>

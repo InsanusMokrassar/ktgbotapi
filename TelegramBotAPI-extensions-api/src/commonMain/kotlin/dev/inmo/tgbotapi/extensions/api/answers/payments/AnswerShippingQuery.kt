@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api.answers.payments
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments.AnswerShippingQueryError
-import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.payments.AnswerShippingQueryOk
-import com.github.insanusmokrassar.TelegramBotAPI.types.ShippingQueryIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingOption
-import com.github.insanusmokrassar.TelegramBotAPI.types.payments.ShippingQuery
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.answers.payments.AnswerShippingQueryError
+import dev.inmo.tgbotapi.requests.answers.payments.AnswerShippingQueryOk
+import dev.inmo.tgbotapi.types.ShippingQueryIdentifier
+import dev.inmo.tgbotapi.types.payments.ShippingOption
+import dev.inmo.tgbotapi.types.payments.ShippingQuery
 
 suspend fun TelegramBot.answerShippingQueryOk(
     id: ShippingQueryIdentifier,

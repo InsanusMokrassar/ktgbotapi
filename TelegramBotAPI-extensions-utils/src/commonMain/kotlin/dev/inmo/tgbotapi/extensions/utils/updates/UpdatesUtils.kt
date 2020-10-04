@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.MediaGroupIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.*
+import dev.inmo.tgbotapi.types.MediaGroupIdentifier
+import dev.inmo.tgbotapi.types.UpdateIdentifier
+import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
+import dev.inmo.tgbotapi.types.update.*
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
+import dev.inmo.tgbotapi.types.update.abstracts.*
 
 /**
  * @return If [this] is [SentMediaGroupUpdate] - [Update.updateId] of [last] element, or its own [Update.updateId]

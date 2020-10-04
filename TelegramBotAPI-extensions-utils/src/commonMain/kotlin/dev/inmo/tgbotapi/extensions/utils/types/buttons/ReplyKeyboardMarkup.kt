@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.KeyboardButton
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.ReplyKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.utils.flatMatrix
+import dev.inmo.tgbotapi.types.buttons.KeyboardButton
+import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardMarkup
+import dev.inmo.tgbotapi.utils.flatMatrix
 
 fun ReplyKeyboardMarkup(
     vararg buttons: KeyboardButton,

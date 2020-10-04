@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.Ktor.KtorRequestsExecutor
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutor
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.HttpClientEngine

@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PrivateChat
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.UsernameChat
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.extended.ExtendedChat
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.ParseMode.*
+import dev.inmo.tgbotapi.types.chat.abstracts.PrivateChat
+import dev.inmo.tgbotapi.types.chat.abstracts.UsernameChat
+import dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedChat
 
 private const val internalLinkBeginning = "https://t.me"
 

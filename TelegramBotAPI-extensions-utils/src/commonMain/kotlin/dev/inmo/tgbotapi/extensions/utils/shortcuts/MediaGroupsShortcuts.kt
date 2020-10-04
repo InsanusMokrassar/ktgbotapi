@@ -1,12 +1,12 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
-import com.github.insanusmokrassar.TelegramBotAPI.requests.send.media.SendMediaGroup
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.Chat
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.ForwardInfo
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaGroupContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.SentMediaGroupUpdate
+import dev.inmo.tgbotapi.requests.send.media.SendMediaGroup
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.message.ForwardInfo
+import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 
 val List<CommonMessage<MediaGroupContent>>.forwardInfo: ForwardInfo?
     get() = firstOrNull() ?.forwardInfo

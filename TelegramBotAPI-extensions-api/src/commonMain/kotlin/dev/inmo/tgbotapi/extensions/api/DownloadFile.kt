@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.get.getFileAdditionalInfo
-import com.github.insanusmokrassar.TelegramBotAPI.requests.DownloadFile
-import com.github.insanusmokrassar.TelegramBotAPI.requests.abstracts.FileId
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.PathedFile
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.abstracts.TelegramMediaFile
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.get.getFileAdditionalInfo
+import dev.inmo.tgbotapi.requests.DownloadFile
+import dev.inmo.tgbotapi.requests.abstracts.FileId
+import dev.inmo.tgbotapi.types.files.PathedFile
+import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
 
 suspend fun TelegramBot.downloadFile(
     filePath: String

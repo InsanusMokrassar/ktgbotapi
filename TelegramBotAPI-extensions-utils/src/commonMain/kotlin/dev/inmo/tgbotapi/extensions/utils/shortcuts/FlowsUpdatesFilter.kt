@@ -1,18 +1,18 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.aggregateFlows
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.flatMap
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.asContentMessagesFlow
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.CommonMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MediaGroupContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.SentMediaGroupUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseSentMessageUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.extensions.utils.aggregateFlows
+import dev.inmo.tgbotapi.extensions.utils.flatMap
+import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
+import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
+import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 

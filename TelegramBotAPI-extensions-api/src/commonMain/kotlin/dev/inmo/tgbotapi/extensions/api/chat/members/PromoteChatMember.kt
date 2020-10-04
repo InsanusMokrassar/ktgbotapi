@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.chat.members
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.members.PromoteChatMember
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.chat.members.PromoteChatMember
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
 
 suspend fun TelegramBot.promoteChatMember(
     chatId: ChatIdentifier,

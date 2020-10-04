@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions.venue
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.venue.Venue
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

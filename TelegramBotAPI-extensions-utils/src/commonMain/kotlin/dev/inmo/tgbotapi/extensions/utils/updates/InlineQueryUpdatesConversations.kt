@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.internal_utils.onlySpecifiedTypeOfData
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.internal_utils.onlySpecifiedTypeOfDataWithUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.query.BaseInlineQuery
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineQueries.query.LocationInlineQuery
-import com.github.insanusmokrassar.TelegramBotAPI.types.UpdateIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.InlineQueryUpdate
+import dev.inmo.tgbotapi.extensions.utils.internal_utils.onlySpecifiedTypeOfData
+import dev.inmo.tgbotapi.extensions.utils.internal_utils.onlySpecifiedTypeOfDataWithUpdates
+import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
+import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
+import dev.inmo.tgbotapi.types.UpdateIdentifier
+import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
 import kotlinx.coroutines.flow.*
 
 /**

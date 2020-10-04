@@ -1,0 +1,5 @@
+package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio
+
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithFileIdInlineQueryResult
+
+interface InlineQueryResultAudioCached : InlineQueryResultAudioCommon, WithFileIdInlineQueryResult

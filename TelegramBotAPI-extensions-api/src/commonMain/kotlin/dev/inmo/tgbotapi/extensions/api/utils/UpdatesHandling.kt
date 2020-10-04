@@ -1,18 +1,18 @@
 package dev.inmo.tgbotapi.extensions.api.utils
 
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.api.InternalUtils.convertWithMediaGroupUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.MediaGroupMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.BaseMessageUpdate
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
-import com.github.insanusmokrassar.TelegramBotAPI.updateshandlers.UpdateReceiver
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.accumulateByKey
+import dev.inmo.tgbotapi.extensions.api.InternalUtils.convertWithMediaGroupUpdates
+import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
+import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.updateshandlers.UpdateReceiver
+import dev.inmo.tgbotapi.utils.extensions.accumulateByKey
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 
 /**
  * Create [UpdateReceiver] object which will correctly accumulate updates and send into output updates which INCLUDE
- * [com.github.insanusmokrassar.TelegramBotAPI.types.update.MediaGroupUpdates.MediaGroupUpdate]s.
+ * [dev.inmo.tgbotapi.types.update.MediaGroupUpdates.MediaGroupUpdate]s.
  *
  * @see UpdateReceiver
  */

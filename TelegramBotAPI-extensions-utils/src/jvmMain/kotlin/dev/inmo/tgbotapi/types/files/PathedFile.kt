@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.files
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.files.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream

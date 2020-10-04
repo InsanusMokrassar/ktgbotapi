@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.GetUpdates
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.update.abstracts.Update
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.GetUpdates
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 suspend fun TelegramBot.getUpdates(
     offset: UpdateIdentifier? = null,

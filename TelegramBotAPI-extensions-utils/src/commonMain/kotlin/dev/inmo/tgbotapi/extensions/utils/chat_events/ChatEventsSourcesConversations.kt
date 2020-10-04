@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.chat_events
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 import kotlin.reflect.KClass

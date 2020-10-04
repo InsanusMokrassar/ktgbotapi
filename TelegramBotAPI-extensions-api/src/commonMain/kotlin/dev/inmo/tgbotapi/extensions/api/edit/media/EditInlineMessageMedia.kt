@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.api.edit.media
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.edit.media.EditInlineMessageMedia
-import com.github.insanusmokrassar.TelegramBotAPI.types.InlineMessageIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.InputMedia.InputMedia
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.edit.media.EditInlineMessageMedia
+import dev.inmo.tgbotapi.types.InlineMessageIdentifier
+import dev.inmo.tgbotapi.types.InputMedia.InputMedia
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
 suspend fun TelegramBot.editMessageCaption(
     inlineMessageId: InlineMessageIdentifier,

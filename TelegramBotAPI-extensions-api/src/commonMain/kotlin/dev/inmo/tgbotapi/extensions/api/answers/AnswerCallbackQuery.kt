@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.answers
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.answers.AnswerCallbackQuery
-import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQuery.CallbackQuery
-import com.github.insanusmokrassar.TelegramBotAPI.types.CallbackQueryIdentifier
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.answers.AnswerCallbackQuery
+import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
+import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
 
 suspend fun TelegramBot.answerCallbackQuery(
     callbackQueryId: CallbackQueryIdentifier,

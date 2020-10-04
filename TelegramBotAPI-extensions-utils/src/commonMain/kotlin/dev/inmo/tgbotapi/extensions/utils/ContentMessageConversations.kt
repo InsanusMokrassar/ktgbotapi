@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.utils
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.abstracts.MessageContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.media.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 import kotlin.reflect.KClass

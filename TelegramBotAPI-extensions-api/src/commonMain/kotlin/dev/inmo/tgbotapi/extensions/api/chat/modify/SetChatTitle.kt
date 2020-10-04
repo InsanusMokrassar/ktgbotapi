@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.chat.modify
 
-import com.github.insanusmokrassar.TelegramBotAPI.bot.TelegramBot
-import com.github.insanusmokrassar.TelegramBotAPI.requests.chat.modify.SetChatTitle
-import com.github.insanusmokrassar.TelegramBotAPI.types.ChatIdentifier
-import com.github.insanusmokrassar.TelegramBotAPI.types.chat.abstracts.PublicChat
+import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.requests.chat.modify.SetChatTitle
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
 
 suspend fun TelegramBot.setChatTitle(
     chatId: ChatIdentifier,

@@ -1,0 +1,22 @@
+package dev.inmo.tgbotapi.requests.edit.LiveLocation
+
+import dev.inmo.tgbotapi.requests.edit.abstracts.*
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import kotlinx.serialization.*
+
+@Serializable
+data class EditInlineMessageLiveLocation(
+    @SerialName(inlineMessageIdField)
+    override val inlineMessageId: InlineMessageIdentifier,
+    @SerialName(latitudeField)
+    override val latitude: Double,
+    @SerialName(longitudeField)
+    override val longitude: Double,
+    @SerialName(replyMarkupField)
+    override val replyMarkup: InlineKeyboardMarkup? = null
+) : EditInlineMessage, EditReplyMessage, EditLocationMessage {
+    override fun method(): String = "editMessageLiveLocation"
+    override val requestSerializer: SerializationStrategy<*>
+        get() = serializer()
+}

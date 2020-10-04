@@ -1,17 +1,17 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
-import com.github.insanusmokrassar.TelegramBotAPI.CommonAbstracts.TextSource
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.onlyTextContentMessages
-import com.github.insanusmokrassar.TelegramBotAPI.extensions.utils.updates.asContentMessagesFlow
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.BotCommandTextSource
-import com.github.insanusmokrassar.TelegramBotAPI.types.MessageEntity.textsources.RegularTextSource
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.TextContent
-import com.github.insanusmokrassar.TelegramBotAPI.types.message.content.fullEntitiesList
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.extensions.utils.onlyTextContentMessages
+import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.BotCommandTextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.content.fullEntitiesList
 import kotlinx.coroutines.flow.*
 
 /**
- * Convert incoming [com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content] of
+ * Convert incoming [dev.inmo.tgbotapi.types.message.abstracts.ContentMessage.content] of
  * messages with [fullEntitiesList] and check that incoming message contains ONLY ONE [TextSource] and that is
  * [BotCommandTextSource]. Besides, it is checking that [BotCommandTextSource.command] [Regex.matches] with incoming
  * [commandRegex]
@@ -31,7 +31,7 @@ fun <T : ContentMessage<TextContent>> Flow<T>.filterExactCommands(
 }
 
 /**
- * Convert incoming [com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content] of
+ * Convert incoming [dev.inmo.tgbotapi.types.message.abstracts.ContentMessage.content] of
  * messages with [fullEntitiesList] and check that incoming message contains [BotCommandTextSource]. Besides, it is
  * checking that [BotCommandTextSource.command] [Regex.matches] with incoming [commandRegex]
  *
@@ -52,7 +52,7 @@ fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsInsideTextMessages(
 }
 
 /**
- * Convert incoming [com.github.insanusmokrassar.TelegramBotAPI.types.message.abstracts.ContentMessage.content] of
+ * Convert incoming [dev.inmo.tgbotapi.types.message.abstracts.ContentMessage.content] of
  * messages with [fullEntitiesList] and check that incoming message contains first [TextSource] as
  * [BotCommandTextSource]. Besides, it is checking that [BotCommandTextSource.command] [Regex.matches] with incoming
  * [commandRegex] and for other [TextSource] objects used next rules: all incoming text sources will be passed as is,

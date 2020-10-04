@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
-import com.github.insanusmokrassar.TelegramBotAPI.types.buttons.InlineKeyboardMarkup
-import com.github.insanusmokrassar.TelegramBotAPI.utils.flatMatrix
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.utils.flatMatrix
 
 fun InlineKeyboardMarkup(
     vararg buttons: InlineKeyboardButton

@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
-import com.github.insanusmokrassar.TelegramBotAPI.types.*
-import com.github.insanusmokrassar.TelegramBotAPI.types.ParseMode.*
-import com.github.insanusmokrassar.TelegramBotAPI.utils.extensions.*
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.ParseMode.*
+import dev.inmo.tgbotapi.utils.extensions.*
 
 const val markdownBoldControl = "*"
 const val markdownItalicControl = "_"
