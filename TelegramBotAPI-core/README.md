@@ -1,7 +1,7 @@
 # TelegramBotAPI-core
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-core/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-core/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI)
 
 ## What is it?
 
@@ -20,15 +20,15 @@ as soon as possible.
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
 `telegrambotapi.version`, which must be set up by developer. Available versions are presented on
-[bintray](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-core), next version is last published:
+[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core), next version is last published:
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-core/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-core/_latestVersion)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-core/_latestVersion)
 
 Currently, last versions of library can be available from the Maven repository with errors (for the reason difficult in publishing
 of signed artifacts in Bintray). You can:
 
 * Use earlier version (available version you can find
-[here](https://mvnrepository.com/artifact/com.github.insanusmokrassar/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/com.github.insanusmokrassar/TelegramBotAPI-core))
+[here](https://mvnrepository.com/artifact/dev.inmo.tgbotapi/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo.tgbotapi/TelegramBotAPI-core))
 * Add `jCenter` repository in build config
 
 ### Maven
@@ -37,7 +37,7 @@ Dependency config presented here:
 
 ```xml
 <dependency>
-  <groupId>com.github.insanusmokrassar</groupId>
+  <groupId>dev.inmo.tgbotapi</groupId>
   <artifactId>TelegramBotAPI-core</artifactId>
   <version>${telegrambotapi.version}</version>
 </dependency>
@@ -52,13 +52,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "com.github.insanusmokrassar:TelegramBotAPI-core:$telegrambotapi_version"
+implementation "dev.inmo.tgbotapi:TelegramBotAPI-core:$telegrambotapi_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "com.github.insanusmokrassar:TelegramBotAPI-core:$telegrambotapi_version"
+compile "dev.inmo.tgbotapi:TelegramBotAPI-core:$telegrambotapi_version"
 ```
 
 ## How to work with library?

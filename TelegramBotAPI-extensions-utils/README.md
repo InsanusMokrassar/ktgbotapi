@@ -19,8 +19,8 @@
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-utils)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI-extensions-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI-extensions-utils)
 
 ## What is it?
 
@@ -31,9 +31,9 @@ It is wrapper library for [TelegramBotAPI-core](../TelegramBotAPI-core/README.md
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
 `telegrambotapi-extensions-utils_version`, which must be set up by developer. Available versions are presented on
-[bintray](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils), next version is last published:
+[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils), next version is last published:
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-utils/_latestVersion)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-utils/_latestVersion)
 
 ### Maven
 
@@ -41,7 +41,7 @@ Dependency config presented here:
 
 ```xml
 <dependency>
-  <groupId>com.github.insanusmokrassar</groupId>
+  <groupId>dev.inmo.tgbotapi</groupId>
   <artifactId>TelegramBotAPI-extensions-utils</artifactId>
   <version>${telegrambotapi-extensions-utils_version}</version>
 </dependency>
@@ -56,13 +56,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-utils:$telegrambotapi-extensions-utils_version"
+implementation "dev.inmo.tgbotapi:TelegramBotAPI-extensions-utils:$telegrambotapi-extensions-utils_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "com.github.insanusmokrassar:TelegramBotAPI-extensions-utils:$telegrambotapi-extensions-utils_version"
+compile "dev.inmo.tgbotapi:TelegramBotAPI-extensions-utils:$telegrambotapi-extensions-utils_version"
 ```
 
 ## How to use?

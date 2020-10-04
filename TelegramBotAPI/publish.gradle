@@ -29,7 +29,7 @@ bintray {
     publish = true
     
     pkg {
-        repo = "StandardRepository"
+        repo = "TelegramBotAPI"
         name = "${project.name}"
         vcsUrl = "https://github.com/InsanusMokrassar/TelegramBotAPI"
         licenses = ["Apache-2.0"]

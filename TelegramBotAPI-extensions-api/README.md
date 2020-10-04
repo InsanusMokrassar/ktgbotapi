@@ -1,7 +1,7 @@
 # TelegramBotAPI extensions
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.insanusmokrassar/TelegramBotAPI-extensions-api)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-api/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI-extensions-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo.tgbotapi/TelegramBotAPI-extensions-api)
 
 ## What is it?
 
@@ -18,9 +18,9 @@ This library always compatible with original `TelegramBotAPI-core` library versi
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
 `telegrambotapi-extensions-api.version`, which must be set up by developer. Available versions are presented on
-[bintray](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api), next version is last published:
+[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-api), next version is last published:
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/StandardRepository/TelegramBotAPI-extensions-api/_latestVersion)
+[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-api/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/TelegramBotAPI-extensions-api/_latestVersion)
 
 ### Maven
 
@@ -28,7 +28,7 @@ Dependency config presented here:
 
 ```xml
 <dependency>
-  <groupId>com.github.insanusmokrassar</groupId>
+  <groupId>dev.inmo.tgbotapi</groupId>
   <artifactId>TelegramBotAPI-extensions-api</artifactId>
   <version>${telegrambotapi-extensions-api.version}</version>
 </dependency>
@@ -43,13 +43,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$telegrambotapi_extensions_api_version"
+implementation "dev.inmo.tgbotapi:TelegramBotAPI-extensions-api:$telegrambotapi_extensions_api_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$telegrambotapi_extensions_api_version"
+compile "dev.inmo.tgbotapi:TelegramBotAPI-extensions-api:$telegrambotapi_extensions_api_version"
 ```
 
 ## Example of usage and comparison with `TelegramBotAPI`
