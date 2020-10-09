@@ -30,6 +30,10 @@
 
 ### 0.29.1
 
+* `Common`:
+    * Version updates:
+        * `Serialization`: `1.0.0-RC2` -> `1.0.0`
+
 ## 0.28.0
 
 * **THIS VERSION CONTAINS BREAKING CHANGES**
