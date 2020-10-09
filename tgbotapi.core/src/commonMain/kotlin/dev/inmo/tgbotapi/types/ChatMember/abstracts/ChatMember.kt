@@ -23,5 +23,4 @@ internal object ChatMemberDeserializationStrategy : DeserializationStrategy<Chat
     override val descriptor: SerialDescriptor = RawChatMember.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): ChatMember = RawChatMember.serializer().deserialize(decoder).asChatMember
-    override fun patch(decoder: Decoder, old: ChatMember): ChatMember = error("ChatMember can't be patched")
 }
