@@ -28,6 +28,8 @@
     * All `send` extensions for `TelegramBot` got their `reply` variations (issue [#144](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/144))
     * A lot of `send` extensions for `TelegramBot` got their variation with `Chat` instead of `ChatIdentifier`
 
+### 0.29.1
+
 ## 0.28.0
 
 * **THIS VERSION CONTAINS BREAKING CHANGES**
