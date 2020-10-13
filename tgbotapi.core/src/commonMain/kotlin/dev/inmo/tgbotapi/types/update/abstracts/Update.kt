@@ -47,6 +47,4 @@ object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
             asJson
         )
     }
-
-    override fun patch(decoder: Decoder, old: Update): Update = error("Unsupported operation")
 }
