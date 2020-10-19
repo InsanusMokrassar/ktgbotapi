@@ -11,3 +11,5 @@ jobs:
       script: ./gradlew build -s -x jvmTest -x jsIrTest -x jsIrBrowserTest -x jsIrNodeTest -x jsLegacyTest -x jsLegacyBrowserTest -x jsLegacyNodeTest
     - state: test
       script: ./gradlew allTests
+    - state: dokka
+      script: ./gradlew dokkaHtml
