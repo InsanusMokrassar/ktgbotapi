@@ -46,24 +46,14 @@ kotlin {
     }
 }
 
-private Closure includeSourcesInDokka(String... approximateNames) {
-    return {
-        parent.subprojects.forEach {
-            if (it != project) {
-                File srcDir = new File(it.projectDir.absolutePath, "src")
-                if (srcDir.exists() && srcDir.isDirectory()) {
-                    srcDir.eachFile { file ->
-                        if (approximateNames.any { file.name.contains(it) } && file.isDirectory()) {
-                            String pathToSrc = file.absolutePath
-                            sourceRoot {
-                                path = pathToSrc
-                            }
-                        }
-                    }
-                }
+private List<SourceDirectorySet> findSourcesWithName(String... approximateNames) {
+    return parent.subprojects
+        .findAll { it != project }
+        .collectMany { it.kotlin.sourceSets }
+        .findAll { sourceSet -> approximateNames.any {
+            nameToFilter -> sourceSet.name.contains(nameToFilter)
             }
-        }
-    }
+        }.collect { it.kotlin }
 }
 
 tasks.dokkaHtml {
@@ -88,15 +78,15 @@ tasks.dokkaHtml {
         }
 
         named("commonMain") {
-            includeSourcesInDokka("commonMain")
+            sourceRoots.setFrom(findSourcesWithName("commonMain"))
         }
 
         named("jsMain") {
-            includeSourcesInDokka("jsMain/*", "commonMain/*")
+            sourceRoots.setFrom(findSourcesWithName("jsMain", "commonMain"))
         }
 
         named("jvmMain") {
-            includeSourcesInDokka("jvmMain/*", "commonMain/*")
+            sourceRoots.setFrom(findSourcesWithName("jvmMain", "commonMain"))
         }
     }
 }
