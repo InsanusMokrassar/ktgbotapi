@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
-        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:${dokka_version}")
     }
 }
 
@@ -66,9 +66,7 @@ private Closure includeSourcesInDokka(String... approximateNames) {
     }
 }
 
-dokka {
-    outputFormat = 'html'
-
+tasks.dokkaHtml {
     switch (true) {
         case project.hasProperty("DOKKA_PATH"):
             outputDirectory = project.property("DOKKA_PATH").toString()
@@ -78,19 +76,27 @@ dokka {
             break
     }
 
-    multiplatform {
-        global {
-            skipDeprecated = true
+    dokkaSourceSets {
+        configureEach {
+            skipDeprecated.set(true)
 
             sourceLink {
-                path = "./"
-                url = "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/"
-                lineSuffix = "#L"
+                localDirectory.set(file("./"))
+                remoteUrl.set(new URL("https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/"))
+                remoteLineSuffix.set("#L")
             }
         }
 
-        common(includeSourcesInDokka("commonMain"))
-        js(includeSourcesInDokka("jsMain"/*, "commonMain"*/))
-        jvm(includeSourcesInDokka("jvmMain"/*, "commonMain"*/))
+        named("commonMain") {
+            includeSourcesInDokka("commonMain")
+        }
+
+        named("jsMain") {
+            includeSourcesInDokka("jsMain/*", "commonMain/*")
+        }
+
+        named("jvmMain") {
+            includeSourcesInDokka("jvmMain/*", "commonMain/*")
+        }
     }
 }

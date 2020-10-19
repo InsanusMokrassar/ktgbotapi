@@ -1,3 +1,10 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        jcenter()
+    }
+}
+
 include ":tgbotapi.core"
 include ":tgbotapi.extensions.api"
 include ":tgbotapi.extensions.utils"
