@@ -46,29 +46,17 @@ kotlin {
     }
 }
 
-private Closure includeSourcesInDokka(String... approximateNames) {
-    return {
-        parent.subprojects.forEach {
-            if (it != project) {
-                File srcDir = new File(it.projectDir.absolutePath, "src")
-                if (srcDir.exists() && srcDir.isDirectory()) {
-                    srcDir.eachFile { file ->
-                        if (approximateNames.any { file.name.contains(it) } && file.isDirectory()) {
-                            String pathToSrc = file.absolutePath
-                            sourceRoot {
-                                path = pathToSrc
-                            }
-                        }
-                    }
-                }
+private List<SourceDirectorySet> findSourcesWithName(String... approximateNames) {
+    return parent.subprojects
+        .findAll { it != project }
+        .collectMany { it.kotlin.sourceSets }
+        .findAll { sourceSet -> approximateNames.any {
+            nameToFilter -> sourceSet.name.contains(nameToFilter)
             }
-        }
-    }
+        }.collect { it.kotlin }
 }
 
-dokka {
-    outputFormat = 'html'
-
+tasks.dokkaHtml {
     switch (true) {
         case project.hasProperty("DOKKA_PATH"):
             outputDirectory = project.property("DOKKA_PATH").toString()
@@ -78,19 +66,27 @@ dokka {
             break
     }
 
-    multiplatform {
-        global {
-            skipDeprecated = true
+    dokkaSourceSets {
+        configureEach {
+            skipDeprecated.set(true)
 
             sourceLink {
-                path = "./"
-                url = "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/"
-                lineSuffix = "#L"
+                localDirectory.set(file("./"))
+                remoteUrl.set(new URL("https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/"))
+                remoteLineSuffix.set("#L")
             }
         }
 
-        common(includeSourcesInDokka("commonMain"))
-        js(includeSourcesInDokka("jsMain"/*, "commonMain"*/))
-        jvm(includeSourcesInDokka("jvmMain"/*, "commonMain"*/))
+        named("commonMain") {
+            sourceRoots.setFrom(findSourcesWithName("commonMain"))
+        }
+
+        named("jsMain") {
+            sourceRoots.setFrom(findSourcesWithName("jsMain", "commonMain"))
+        }
+
+        named("jvmMain") {
+            sourceRoots.setFrom(findSourcesWithName("jvmMain", "commonMain"))
+        }
     }
 }
