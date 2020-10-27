@@ -5,21 +5,20 @@ import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.flow.*
 
 @Suppress("EXPERIMENTAL_API_USAGE", "unused")
 class FlowsUpdatesFilter(
     broadcastChannelsSize: Int = 100
 ): UpdatesFilter {
-    private val updatesReceivingChannel = BroadcastChannel<Update>(broadcastChannelsSize)
+    private val updatesSharedFlow = MutableSharedFlow<Update>(extraBufferCapacity = broadcastChannelsSize)
     @Suppress("MemberVisibilityCanBePrivate")
-    val allUpdatesFlow: Flow<Update> = updatesReceivingChannel.asFlow()
+    val allUpdatesFlow: Flow<Update> = updatesSharedFlow.asSharedFlow()
 
     override val allowedUpdates: List<String>
         get() = ALL_UPDATES_LIST
     override val asUpdateReceiver: UpdateReceiver<Update> = {
-        updatesReceivingChannel.send(it)
+        updatesSharedFlow.emit(it)
     }
 
     val messageFlow: Flow<MessageUpdate> = allUpdatesFlow.filterIsInstance()

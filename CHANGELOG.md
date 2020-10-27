@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 0.29.2
+
+* `Common`:
+    * Version updates:
+        * `Coroutines`: `1.3.9` -> `1.4.0`
+    * Internal broadcast channels were replaced with `SharedFlow`
+* `TelegramBotAPI-extensions-utils`:
+    * Extension `ReceiveChannel#debounceByValue` has been deprecated
+
 ## 0.29.1
 
 * `Common`:

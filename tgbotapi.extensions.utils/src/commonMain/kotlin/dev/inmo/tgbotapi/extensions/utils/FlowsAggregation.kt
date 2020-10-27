@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.utils
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 
 /**
@@ -11,15 +10,15 @@ import kotlinx.coroutines.flow.*
 fun <T> aggregateFlows(
     withScope: CoroutineScope,
     vararg flows: Flow<T>,
-    internalBufferSize: Int = Channel.BUFFERED
+    internalBufferSize: Int = 64
 ): Flow<T> {
-    val bc = BroadcastChannel<T>(internalBufferSize)
+    val sharedFlow = MutableSharedFlow<T>(extraBufferCapacity = internalBufferSize)
     flows.forEach {
         it.onEach {
-            safely { bc.send(it) }
+            safely { sharedFlow.emit(it) }
         }.launchIn(withScope)
     }
-    return bc.asFlow()
+    return sharedFlow
 }
 
 fun <T> Flow<Iterable<T>>.flatMap(): Flow<T> = flow {
