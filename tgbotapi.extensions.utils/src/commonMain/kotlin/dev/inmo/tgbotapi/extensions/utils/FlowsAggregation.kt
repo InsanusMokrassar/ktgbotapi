@@ -13,10 +13,11 @@ fun <T> aggregateFlows(
     vararg flows: Flow<T>,
     internalBufferSize: Int = Channel.BUFFERED
 ): Flow<T> {
+    val sharedFlow = MutableSharedFlow<T>(extraBufferCapacity = internalBufferSize)
     val bc = BroadcastChannel<T>(internalBufferSize)
     flows.forEach {
         it.onEach {
-            safely { bc.send(it) }
+            safely { sharedFlow.emit(it) }
         }.launchIn(withScope)
     }
     return bc.asFlow()

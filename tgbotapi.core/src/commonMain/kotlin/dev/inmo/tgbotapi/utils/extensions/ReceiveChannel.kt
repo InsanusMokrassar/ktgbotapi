@@ -11,6 +11,7 @@ private sealed class DebounceAction<T> {
 private data class AddValue<T>(override val value: T) : DebounceAction<T>()
 private data class RemoveJob<T>(override val value: T, val job: Job) : DebounceAction<T>()
 
+@Deprecated("Unused and will be removed in next major release")
 fun <T> ReceiveChannel<T>.debounceByValue(
     delayMillis: Long,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
