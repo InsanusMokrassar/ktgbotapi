@@ -2,6 +2,10 @@
 
 ## 0.29.2
 
+* `Common`:
+    * Version updates:
+        * `Coroutines`: `1.3.9` -> `1.4.0`
+
 ## 0.29.1
 
 * `Common`:
