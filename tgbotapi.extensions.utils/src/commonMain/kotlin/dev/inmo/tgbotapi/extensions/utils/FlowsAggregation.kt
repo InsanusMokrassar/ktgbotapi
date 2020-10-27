@@ -13,13 +13,12 @@ fun <T> aggregateFlows(
     internalBufferSize: Int = 64
 ): Flow<T> {
     val sharedFlow = MutableSharedFlow<T>(extraBufferCapacity = internalBufferSize)
-    val bc = BroadcastChannel<T>(internalBufferSize)
     flows.forEach {
         it.onEach {
             safely { sharedFlow.emit(it) }
         }.launchIn(withScope)
     }
-    return bc.asFlow()
+    return sharedFlow
 }
 
 fun <T> Flow<Iterable<T>>.flatMap(): Flow<T> = flow {
