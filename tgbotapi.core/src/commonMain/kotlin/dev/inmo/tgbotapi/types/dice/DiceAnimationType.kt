@@ -22,10 +22,6 @@ object BasketballDiceAnimationType : DiceAnimationType() {
     override val emoji: String = "\uD83C\uDFC0"
 }
 @Serializable(DiceAnimationTypeSerializer::class)
-object SlotMachineDiceAnimationType : DiceAnimationType() {
-    override val emoji: String = "\uD83C\uDFB0"
-}
-@Serializable(DiceAnimationTypeSerializer::class)
 data class CustomDiceAnimationType(
     override val emoji: String
 ) : DiceAnimationType()
@@ -38,7 +34,6 @@ internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
             CubeDiceAnimationType.emoji -> CubeDiceAnimationType
             DartsDiceAnimationType.emoji -> DartsDiceAnimationType
             BasketballDiceAnimationType.emoji -> BasketballDiceAnimationType
-            SlotMachineDiceAnimationType.emoji -> BasketballDiceAnimationType
             else -> CustomDiceAnimationType(type)
         }
     }
