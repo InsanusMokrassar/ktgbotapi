@@ -2,6 +2,9 @@
 
 ## 0.29.3
 
+* `Core`:
+    * New dice type `SlotMachineDiceAnimationType`
+
 ## 0.29.2
 
 * `Common`:
