@@ -4,6 +4,12 @@
 
 * `Core`:
     * New dice type `SlotMachineDiceAnimationType`
+    * `InputMediaAudio` now implements `MediaGroupMemberInputMedia`
+        * New extension `AudioFile#toInputMediaAudio`
+        * `AudioContent` now implements `MediaGroupContent`
+    * `InputMediaDocument` now implements `MediaGroupMemberInputMedia`
+        * New extension `DocumentFile#toInputMediaDocument`
+        * `DocumentContent` now implements `MediaGroupContent`
 
 ## 0.29.2
 
