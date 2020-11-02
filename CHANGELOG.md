@@ -2,6 +2,9 @@
 
 ## 0.29.3
 
+* `Common`:
+    * Version updates:
+        * `Serialization`: `1.0.0` -> `1.0.1`
 * `Core`:
     * New dice type `SlotMachineDiceAnimationType`
     * `InputMediaAudio` now implements `MediaGroupMemberInputMedia`
