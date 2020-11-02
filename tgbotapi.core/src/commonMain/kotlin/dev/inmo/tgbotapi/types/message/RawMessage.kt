@@ -220,17 +220,20 @@ internal data class RawMessage(
                 }
             } ?: content?.let { content ->
                 media_group_id?.let {
+                    val checkedContent = when (content) {
+                        is PhotoContent -> content
+                        is VideoContent -> content
+                        is AudioContent -> content
+                        is DocumentContent -> content
+                        else -> error("Unsupported content for media group")
+                    }
                     when (from) {
                         null -> ChannelMediaGroupMessage(
                             messageId,
                             chat,
                             date.asDate,
                             it,
-                            when (content) {
-                                is PhotoContent -> content
-                                is VideoContent -> content
-                                else -> error("Unsupported content for media group")
-                            },
+                            checkedContent,
                             edit_date?.asDate,
                             forwarded,
                             reply_to_message?.asMessage,
@@ -242,11 +245,7 @@ internal data class RawMessage(
                             chat,
                             date.asDate,
                             it,
-                            when (content) {
-                                is PhotoContent -> content
-                                is VideoContent -> content
-                                else -> error("Unsupported content for media group")
-                            },
+                            checkedContent,
                             edit_date?.asDate,
                             forwarded,
                             reply_to_message?.asMessage,

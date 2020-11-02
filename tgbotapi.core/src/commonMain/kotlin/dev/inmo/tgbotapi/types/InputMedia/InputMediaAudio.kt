@@ -5,9 +5,13 @@ import dev.inmo.tgbotapi.CommonAbstracts.Performerable
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
+import dev.inmo.tgbotapi.types.files.AudioFile
+import dev.inmo.tgbotapi.types.files.PhotoSize
 import dev.inmo.tgbotapi.types.mediaField
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import dev.inmo.tgbotapi.types.message.content.media.AudioContent
+import kotlinx.serialization.*
+
+internal const val audioInputMediaType = "audio"
 
 @Serializable
 data class InputMediaAudio(
@@ -19,10 +23,26 @@ data class InputMediaAudio(
     override val performer: String? = null,
     override val title: String? = null,
     override val thumb: InputFile? = null
-) : InputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, CaptionedOutput, Performerable {
-    override val type: String = "audio"
+) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, CaptionedOutput, Performerable {
+    override val type: String = audioInputMediaType
+
+    override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
     override val media: String
-    init { media = file.fileId } // crutch until js compiling will be fixed
+    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
 }
+
+fun AudioFile.toInputMediaAudio(
+    caption: String? = null,
+    parseMode: ParseMode? = null,
+    title: String? = this.title
+): InputMediaAudio = InputMediaAudio(
+    fileId,
+    caption,
+    parseMode,
+    duration,
+    performer,
+    title,
+    thumb ?.fileId
+)

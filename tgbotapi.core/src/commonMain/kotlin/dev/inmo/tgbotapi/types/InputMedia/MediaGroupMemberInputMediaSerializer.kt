@@ -16,6 +16,8 @@ internal object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMem
         when (value) {
             is InputMediaPhoto -> InputMediaPhoto.serializer().serialize(encoder, value)
             is InputMediaVideo -> InputMediaVideo.serializer().serialize(encoder, value)
+            is InputMediaAudio -> InputMediaAudio.serializer().serialize(encoder, value)
+            is InputMediaDocument -> InputMediaDocument.serializer().serialize(encoder, value)
         }
     }
 
@@ -25,6 +27,8 @@ internal object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMem
         return when (json[typeField] ?.jsonPrimitive ?.contentOrNull) {
             photoInputMediaType -> nonstrictJsonFormat.decodeFromJsonElement(InputMediaPhoto.serializer(), json)
             videoInputMediaType -> nonstrictJsonFormat.decodeFromJsonElement(InputMediaVideo.serializer(), json)
+            audioInputMediaType -> nonstrictJsonFormat.decodeFromJsonElement(InputMediaAudio.serializer(), json)
+            documentInputMediaType -> nonstrictJsonFormat.decodeFromJsonElement(InputMediaDocument.serializer(), json)
             else -> error("Illegal type of incoming MediaGroupMemberInputMedia")
         }
     }

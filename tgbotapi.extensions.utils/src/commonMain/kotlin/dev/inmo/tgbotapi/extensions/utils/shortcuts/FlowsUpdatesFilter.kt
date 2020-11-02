@@ -6,8 +6,7 @@ import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
@@ -101,6 +100,12 @@ fun Flow<BaseSentMessageUpdate>.audioMessages() = filterContentMessages<AudioCon
 fun FlowsUpdatesFilter.audioMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = filterContentMessages<AudioContent>(scopeToIncludeChannels)
+fun FlowsUpdatesFilter.audioMessagesWithMediaGroups(
+    scopeToIncludeChannels: CoroutineScope? = null
+) = merge(
+    filterContentMessages<AudioContent>(scopeToIncludeChannels),
+    mediaGroupAudioMessages(scopeToIncludeChannels).flatMap()
+)
 
 fun Flow<BaseSentMessageUpdate>.contactMessages() = filterContentMessages<ContactContent>()
 fun FlowsUpdatesFilter.contactMessages(
@@ -116,6 +121,12 @@ fun Flow<BaseSentMessageUpdate>.documentMessages() = filterContentMessages<Docum
 fun FlowsUpdatesFilter.documentMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = filterContentMessages<DocumentContent>(scopeToIncludeChannels)
+fun FlowsUpdatesFilter.documentMessagesWithMediaGroups(
+    scopeToIncludeChannels: CoroutineScope? = null
+) = merge(
+    filterContentMessages<DocumentContent>(scopeToIncludeChannels),
+    mediaGroupDocumentMessages(scopeToIncludeChannels).flatMap()
+)
 
 fun Flow<BaseSentMessageUpdate>.gameMessages() = filterContentMessages<GameContent>()
 fun FlowsUpdatesFilter.gameMessages(
@@ -210,3 +221,18 @@ fun Flow<SentMediaGroupUpdate>.mediaGroupVideosMessages() = filterMediaGroupMess
 fun FlowsUpdatesFilter.mediaGroupVideosMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = filterMediaGroupMessages<VideoContent>(scopeToIncludeChannels)
+
+fun Flow<SentMediaGroupUpdate>.mediaGroupVisualMessages() = filterMediaGroupMessages<VisualMediaGroupContent>()
+fun FlowsUpdatesFilter.mediaGroupVisualMessages(
+    scopeToIncludeChannels: CoroutineScope? = null
+) = filterMediaGroupMessages<VisualMediaGroupContent>(scopeToIncludeChannels)
+
+fun Flow<SentMediaGroupUpdate>.mediaGroupAudioMessages() = filterMediaGroupMessages<AudioContent>()
+fun FlowsUpdatesFilter.mediaGroupAudioMessages(
+    scopeToIncludeChannels: CoroutineScope? = null
+) = filterMediaGroupMessages<AudioContent>(scopeToIncludeChannels)
+
+fun Flow<SentMediaGroupUpdate>.mediaGroupDocumentMessages() = filterMediaGroupMessages<DocumentContent>()
+fun FlowsUpdatesFilter.mediaGroupDocumentMessages(
+    scopeToIncludeChannels: CoroutineScope? = null
+) = filterMediaGroupMessages<DocumentContent>(scopeToIncludeChannels)

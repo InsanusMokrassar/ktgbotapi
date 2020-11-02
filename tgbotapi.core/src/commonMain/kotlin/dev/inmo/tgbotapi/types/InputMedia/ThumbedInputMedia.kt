@@ -9,6 +9,7 @@ interface ThumbedInputMedia : InputMedia {
     val thumb: InputFile?
     @Serializable
     @SerialName(thumbField)
+    @Deprecated("Will be removed due to useless state")
     val thumbMedia: String?
         get() = thumb ?.let {
             when (it) {

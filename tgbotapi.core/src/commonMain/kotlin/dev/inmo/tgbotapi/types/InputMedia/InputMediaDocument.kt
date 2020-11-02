@@ -4,9 +4,11 @@ import dev.inmo.tgbotapi.CommonAbstracts.CaptionedOutput
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
+import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.mediaField
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
+
+internal const val documentInputMediaType = "document"
 
 @Serializable
 data class InputMediaDocument(
@@ -15,10 +17,22 @@ data class InputMediaDocument(
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
     override val thumb: InputFile? = null
-) : InputMedia, ThumbedInputMedia, CaptionedOutput {
-    override val type: String = "document"
+) : InputMedia, DocumentMediaGroupMemberInputMedia, ThumbedInputMedia, CaptionedOutput {
+    override val type: String = documentInputMediaType
+
+    override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
     override val media: String
-    init { media = file.fileId } // crutch until js compiling will be fixed
+    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
 }
+
+fun DocumentFile.toInputMediaDocument(
+    caption: String? = null,
+    parseMode: ParseMode? = null
+) = InputMediaDocument(
+    fileId,
+    caption,
+    parseMode,
+    thumb ?.fileId
+)

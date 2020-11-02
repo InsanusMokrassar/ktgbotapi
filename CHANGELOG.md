@@ -1,5 +1,61 @@
 # TelegramBotAPI changelog
 
+## 0.29.3
+
+* `Common`:
+    * Version updates:
+        * `Serialization`: `1.0.0` -> `1.0.1`
+* `Core`:
+    * New annotation `RiskFeature`. This annotation will be applied to the things which contains unsafe types usage
+        * `SendMediaGroup` factory now marked with `RiskFeature`
+    * Media groups updates:
+        * New functions `SendPlaylist`
+        * New functions `SendDocumentsGroup`
+        * New functions `SendVisualMediaGroup`
+    * New type `VisualMediaGroupMemberInputMedia : MediaGroupMemberInputMedia`
+        * `InputMediaPhoto` now implements `VisualMediaGroupMemberInputMedia` instead of `MediaGroupMemberInputMedia`
+        * `InputMediaVideo` now implements `VisualMediaGroupMemberInputMedia` instead of `MediaGroupMemberInputMedia`
+    * New type `VisualMediaGroupContent : MediaGroupContent`
+        * `PhotoContent` now implements `VisualMediaGroupContent` instead of `MediaGroupContent`
+        * `VideoContent` now implements `VisualMediaGroupContent` instead of `MediaGroupContent`
+    * New type `AudioMediaGroupContent : MediaGroupContent`
+        * `AudioContent` now implements `AudioMediaGroupContent` instead of `MediaContent` and `CaptionedInput`
+    * New type `DocumentMediaGroupContent : MediaGroupContent`
+        * `DocumentContent` now implements `DocumentMediaGroupContent` instead of `MediaContent` and `CaptionedInput`
+    * New type `AudioMediaGroupMemberInputMedia : MediaGroupMemberInputMedia`
+        * `InputMediaAudio` now implements `AudioMediaGroupMemberInputMedia`
+    * New type `DocumentMediaGroupMemberInputMedia : MediaGroupMemberInputMedia`
+        * `InputMediaDocument` now implements `DocumentMediaGroupMemberInputMedia`
+    * New extension `AudioFile#toInputMediaAudio`
+    * `AudioContent` now implements `MediaGroupContent`
+    * New extension `DocumentFile#toInputMediaDocument`
+    * `DocumentContent` now implements `MediaGroupContent`
+    * New dice type `SlotMachineDiceAnimationType`
+    * New extension `TelegramMediaFile#asDocumentFile`
+    * New extension `VideoFile#toInputMediaVideo`
+    * New exception `WrongFileIdentifierException`
+    * Extension `String#toInputMediaFileAttachmentName` now is deprecated
+    * Property `ThumbedInputMedia#thumbMedia` now is deprecated
+* `API`:
+    * New extensions for media groups:
+        * `TelegramBot#sendPlaylist`
+        * `TelegramBot#replyWithPlaylist`
+        * `TelegramBot#sendDocumentsGroup`
+        * `TelegramBot#replyWithDocumentsGroup`
+        * `TelegramBot#sendVisualMediaGroup`
+        * `TelegramBot#replyWithVisualMediaGroup`
+* `Utils`:
+    * New extensions for `Flow`s:
+        * `Flow<SentMediaGroupUpdate>#mediaGroupVisualMessages`
+        * `Flow<SentMediaGroupUpdate>#mediaGroupAudioMessages`
+        * `Flow<SentMediaGroupUpdate>#mediaGroupDocumentMessages`
+    * New extensions for `FlowsUpdatesFilter`:
+        * `FlowsUpdatesFilter#audioMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#mediaGroupAudioMessages`
+        * `FlowsUpdatesFilter#documentMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#mediaGroupDocumentMessages`
+        * `FlowsUpdatesFilter#mediaGroupVisualMessages`
+
 ## 0.29.2
 
 * `Common`:

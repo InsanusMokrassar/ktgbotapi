@@ -17,14 +17,14 @@ data class InputMediaPhoto(
     override val caption: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null
-) : InputMedia, MediaGroupMemberInputMedia {
+) : InputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = photoInputMediaType
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
     override val media: String
-    init { media = file.fileId } // crutch until js compiling will be fixed
+    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
 }
 
 fun PhotoSize.toInputMediaPhoto(

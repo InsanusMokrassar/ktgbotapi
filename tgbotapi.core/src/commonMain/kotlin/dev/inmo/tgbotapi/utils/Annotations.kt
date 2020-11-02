@@ -17,3 +17,21 @@ package dev.inmo.tgbotapi.utils
     AnnotationTarget.TYPE_PARAMETER
 )
 annotation class PreviewFeature
+
+@RequiresOptIn(
+    "This feature can work unstable and may have some restrictions in Telegram System",
+    RequiresOptIn.Level.WARNING
+)
+@Target(
+    AnnotationTarget.CLASS,
+    AnnotationTarget.CONSTRUCTOR,
+    AnnotationTarget.FIELD,
+    AnnotationTarget.PROPERTY,
+    AnnotationTarget.PROPERTY_GETTER,
+    AnnotationTarget.PROPERTY_SETTER,
+    AnnotationTarget.FUNCTION,
+    AnnotationTarget.TYPE,
+    AnnotationTarget.TYPEALIAS,
+    AnnotationTarget.TYPE_PARAMETER
+)
+annotation class RiskFeature(val message: String)

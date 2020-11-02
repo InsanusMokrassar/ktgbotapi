@@ -19,12 +19,12 @@ data class InputMediaVideo(
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, MediaGroupMemberInputMedia {
+) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = videoInputMediaType
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
     override val media: String
-    init { media = file.fileId } // crutch until js compiling will be fixed
+    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
 }

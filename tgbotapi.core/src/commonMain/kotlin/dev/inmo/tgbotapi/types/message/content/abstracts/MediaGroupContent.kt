@@ -6,3 +6,7 @@ import dev.inmo.tgbotapi.types.InputMedia.MediaGroupMemberInputMedia
 interface MediaGroupContent : MediaContent, CaptionedInput {
     fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia
 }
+
+interface VisualMediaGroupContent : MediaGroupContent
+interface AudioMediaGroupContent : MediaGroupContent
+interface DocumentMediaGroupContent : MediaGroupContent
