@@ -34,6 +34,8 @@
     * New extension `TelegramMediaFile#asDocumentFile`
     * New extension `VideoFile#toInputMediaVideo`
     * New exception `WrongFileIdentifierException`
+    * Extension `String#toInputMediaFileAttachmentName` now is deprecated
+    * Property `ThumbedInputMedia#thumbMedia` now is deprecated
 * `API`:
     * New extensions for media groups:
         * `TelegramBot#sendPlaylist`
