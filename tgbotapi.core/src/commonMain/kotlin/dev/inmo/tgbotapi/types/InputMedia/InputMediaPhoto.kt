@@ -17,7 +17,7 @@ data class InputMediaPhoto(
     override val caption: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null
-) : InputMedia, MediaGroupMemberInputMedia {
+) : InputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = photoInputMediaType
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)

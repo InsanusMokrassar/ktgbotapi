@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
 import dev.inmo.tgbotapi.types.ParseMode.MarkdownV2
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
+import dev.inmo.tgbotapi.types.files.asDocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
@@ -48,5 +49,16 @@ data class DocumentContent(
         toMarkdownV2Captions().firstOrNull(),
         MarkdownV2,
         media.thumb ?.fileId
+    )
+}
+
+inline fun <reified T : MediaContent> T.asDocumentContent() = when (this) {
+    is CaptionedInput -> DocumentContent(
+        media.asDocumentFile(),
+        caption,
+        captionEntities
+    )
+    else -> DocumentContent(
+        media.asDocumentFile()
     )
 }

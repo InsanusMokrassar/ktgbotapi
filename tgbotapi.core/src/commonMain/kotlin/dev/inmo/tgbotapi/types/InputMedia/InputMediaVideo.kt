@@ -19,7 +19,7 @@ data class InputMediaVideo(
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, MediaGroupMemberInputMedia {
+) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = videoInputMediaType
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)

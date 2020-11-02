@@ -12,8 +12,7 @@ import dev.inmo.tgbotapi.types.ParseMode.MarkdownV2
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaCollectionContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.utils.toHtmlCaptions
 import dev.inmo.tgbotapi.utils.toMarkdownV2Captions
 
@@ -21,7 +20,7 @@ data class PhotoContent(
     override val mediaCollection: Photo,
     override val caption: String? = null,
     override val captionEntities: List<TextPart> = emptyList()
-) : MediaCollectionContent<PhotoSize>, MediaGroupContent {
+) : MediaCollectionContent<PhotoSize>, VisualMediaGroupContent {
     override val media: PhotoSize = mediaCollection.biggest() ?: throw IllegalStateException("Can't locate any photo size for this content")
 
     override fun createResend(

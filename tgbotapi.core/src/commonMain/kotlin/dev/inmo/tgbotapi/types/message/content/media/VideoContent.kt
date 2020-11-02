@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 import dev.inmo.tgbotapi.utils.toHtmlCaptions
 import dev.inmo.tgbotapi.utils.toMarkdownV2Captions
 
@@ -20,7 +21,7 @@ data class VideoContent(
     override val media: VideoFile,
     override val caption: String? = null,
     override val captionEntities: List<TextPart> = emptyList()
-) : MediaGroupContent {
+) : VisualMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

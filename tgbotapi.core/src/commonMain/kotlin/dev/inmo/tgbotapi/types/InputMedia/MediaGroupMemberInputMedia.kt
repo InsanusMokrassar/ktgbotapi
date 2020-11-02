@@ -18,3 +18,6 @@ internal fun <T> T.buildArguments(withSerializer: SerializationStrategy<T>) = ar
 interface MediaGroupMemberInputMedia : InputMedia, CaptionedOutput {
     fun serialize(format: StringFormat): String
 }
+
+@Serializable(MediaGroupMemberInputMediaSerializer::class)
+interface VisualMediaGroupMemberInputMedia : MediaGroupMemberInputMedia

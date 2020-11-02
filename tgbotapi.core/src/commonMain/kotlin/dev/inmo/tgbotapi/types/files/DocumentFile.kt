@@ -22,3 +22,12 @@ data class DocumentFile(
     @SerialName(fileNameField)
     override val fileName: String? = null
 ) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, CustomNamedMediaFile
+
+inline fun <reified T : TelegramMediaFile> T.asDocumentFile() = DocumentFile(
+    fileId,
+    fileUniqueId,
+    fileSize,
+    (this as? ThumbedMediaFile) ?.thumb,
+    (this as? MimedMediaFile) ?.mimeType,
+    (this as? CustomNamedMediaFile) ?.fileName
+)
