@@ -42,7 +42,7 @@ data class VideoContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = InputMediaVideo(
+    override fun toMediaGroupMemberInputMedia(): InputMediaVideo = InputMediaVideo(
         media.fileId,
         toHtmlCaptions().firstOrNull(),
         HTMLParseMode,

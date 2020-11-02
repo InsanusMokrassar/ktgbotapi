@@ -23,7 +23,7 @@ data class InputMediaAudio(
     override val performer: String? = null,
     override val title: String? = null,
     override val thumb: InputFile? = null
-) : InputMedia, MediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, CaptionedOutput, Performerable {
+) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, CaptionedOutput, Performerable {
     override val type: String = audioInputMediaType
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)

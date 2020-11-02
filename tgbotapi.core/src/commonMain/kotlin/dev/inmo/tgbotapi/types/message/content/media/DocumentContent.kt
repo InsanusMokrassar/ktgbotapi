@@ -39,7 +39,7 @@ data class DocumentContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = media.toInputMediaDocument(
+    override fun toMediaGroupMemberInputMedia(): InputMediaDocument = media.toInputMediaDocument(
         toHtmlCaptions().firstOrNull(),
         HTMLParseMode
     )

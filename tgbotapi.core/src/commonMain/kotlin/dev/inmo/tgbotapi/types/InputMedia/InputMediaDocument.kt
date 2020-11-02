@@ -17,7 +17,7 @@ data class InputMediaDocument(
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
     override val thumb: InputFile? = null
-) : InputMedia, MediaGroupMemberInputMedia, ThumbedInputMedia, CaptionedOutput {
+) : InputMedia, DocumentMediaGroupMemberInputMedia, ThumbedInputMedia, CaptionedOutput {
     override val type: String = documentInputMediaType
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)

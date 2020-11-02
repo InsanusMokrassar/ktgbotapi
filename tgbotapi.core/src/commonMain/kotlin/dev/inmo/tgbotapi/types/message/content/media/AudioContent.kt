@@ -39,7 +39,7 @@ data class AudioContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = media.toInputMediaAudio(
+    override fun toMediaGroupMemberInputMedia(): InputMediaAudio = media.toInputMediaAudio(
         toHtmlCaptions().firstOrNull(),
         HTMLParseMode
     )

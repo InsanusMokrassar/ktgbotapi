@@ -19,5 +19,8 @@ interface MediaGroupMemberInputMedia : InputMedia, CaptionedOutput {
     fun serialize(format: StringFormat): String
 }
 
+interface AudioMediaGroupMemberInputMedia: MediaGroupMemberInputMedia
+interface DocumentMediaGroupMemberInputMedia: MediaGroupMemberInputMedia
+
 @Serializable(MediaGroupMemberInputMediaSerializer::class)
 interface VisualMediaGroupMemberInputMedia : MediaGroupMemberInputMedia

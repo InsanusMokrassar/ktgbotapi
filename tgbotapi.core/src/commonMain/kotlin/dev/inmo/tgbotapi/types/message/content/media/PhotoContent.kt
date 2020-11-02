@@ -38,7 +38,7 @@ data class PhotoContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia = InputMediaPhoto(
+    override fun toMediaGroupMemberInputMedia(): InputMediaPhoto = InputMediaPhoto(
         media.fileId,
         toHtmlCaptions().firstOrNull(),
         HTMLParseMode
