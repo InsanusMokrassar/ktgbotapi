@@ -39,18 +39,10 @@ data class AudioContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): InputMediaAudio = media.toInputMediaAudio(
+    override fun toMediaGroupMemberInputMedia(): InputMediaAudio = asInputMedia()
+
+    override fun asInputMedia(): InputMediaAudio = media.toInputMediaAudio(
         toHtmlCaptions().firstOrNull(),
         HTMLParseMode
-    )
-
-    override fun asInputMedia(): InputMediaAudio = InputMediaAudio(
-        media.fileId,
-        toMarkdownV2Captions().firstOrNull(),
-        MarkdownV2,
-        media.duration,
-        media.performer,
-        media.title,
-        media.thumb ?.fileId
     )
 }

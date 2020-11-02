@@ -38,20 +38,16 @@ data class DocumentContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): InputMediaDocument = media.toInputMediaDocument(
+    override fun toMediaGroupMemberInputMedia(): InputMediaDocument = asInputMedia()
+
+    override fun asInputMedia(): InputMediaDocument = media.toInputMediaDocument(
         toHtmlCaptions().firstOrNull(),
         HTMLParseMode
     )
-
-    override fun asInputMedia(): InputMediaDocument = InputMediaDocument(
-        media.fileId,
-        toMarkdownV2Captions().firstOrNull(),
-        MarkdownV2,
-        media.thumb ?.fileId
-    )
 }
 
-inline fun <reified T : MediaContent> T.asDocumentContent() = when (this) {
+@Suppress("NOTHING_TO_INLINE")
+inline fun MediaContent.asDocumentContent() = when (this) {
     is CaptionedInput -> DocumentContent(
         media.asDocumentFile(),
         caption,

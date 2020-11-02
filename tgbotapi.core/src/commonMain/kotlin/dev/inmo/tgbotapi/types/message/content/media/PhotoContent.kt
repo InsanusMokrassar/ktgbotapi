@@ -4,8 +4,7 @@ import dev.inmo.tgbotapi.CommonAbstracts.TextPart
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendPhoto
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.InputMedia.InputMediaPhoto
-import dev.inmo.tgbotapi.types.InputMedia.MediaGroupMemberInputMedia
+import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
 import dev.inmo.tgbotapi.types.ParseMode.MarkdownV2
@@ -38,15 +37,10 @@ data class PhotoContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): InputMediaPhoto = InputMediaPhoto(
-        media.fileId,
+    override fun toMediaGroupMemberInputMedia(): InputMediaPhoto = asInputMedia()
+
+    override fun asInputMedia(): InputMediaPhoto = media.toInputMediaPhoto(
         toHtmlCaptions().firstOrNull(),
         HTMLParseMode
-    )
-
-    override fun asInputMedia(): InputMediaPhoto = InputMediaPhoto(
-        media.fileId,
-        toMarkdownV2Captions().firstOrNull(),
-        MarkdownV2
     )
 }

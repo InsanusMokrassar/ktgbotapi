@@ -23,7 +23,8 @@ data class DocumentFile(
     override val fileName: String? = null
 ) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, CustomNamedMediaFile
 
-inline fun <reified T : TelegramMediaFile> T.asDocumentFile() = DocumentFile(
+@Suppress("NOTHING_TO_INLINE")
+inline fun TelegramMediaFile.asDocumentFile() = DocumentFile(
     fileId,
     fileUniqueId,
     fileSize,

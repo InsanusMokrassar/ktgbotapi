@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
 import dev.inmo.tgbotapi.types.ParseMode.MarkdownV2
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
+import dev.inmo.tgbotapi.types.files.toInputMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
@@ -42,23 +43,10 @@ data class VideoContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): InputMediaVideo = InputMediaVideo(
-        media.fileId,
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode,
-        media.width,
-        media.height,
-        media.duration,
-        media.thumb ?.fileId
-    )
+    override fun toMediaGroupMemberInputMedia(): InputMediaVideo = asInputMedia()
 
-    override fun asInputMedia(): InputMediaVideo = InputMediaVideo(
-        media.fileId,
-        toMarkdownV2Captions().firstOrNull(),
-        MarkdownV2,
-        media.width,
-        media.height,
-        media.duration,
-        media.thumb ?.fileId
+    override fun asInputMedia(): InputMediaVideo = media.toInputMediaVideo(
+        toHtmlCaptions().firstOrNull(),
+        HTMLParseMode
     )
 }
