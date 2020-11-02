@@ -13,8 +13,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.asDocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.utils.toHtmlCaptions
 import dev.inmo.tgbotapi.utils.toMarkdownV2Captions
 
@@ -22,7 +21,7 @@ data class DocumentContent(
     override val media: DocumentFile,
     override val caption: String? = null,
     override val captionEntities: List<TextPart> = emptyList()
-) : MediaGroupContent {
+) : DocumentMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

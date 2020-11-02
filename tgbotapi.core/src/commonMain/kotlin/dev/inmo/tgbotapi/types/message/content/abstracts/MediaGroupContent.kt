@@ -8,3 +8,5 @@ interface MediaGroupContent : MediaContent, CaptionedInput {
 }
 
 interface VisualMediaGroupContent : MediaGroupContent
+interface AudioMediaGroupContent : MediaGroupContent
+interface DocumentMediaGroupContent : MediaGroupContent

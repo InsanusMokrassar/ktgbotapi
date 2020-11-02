@@ -19,7 +19,7 @@ data class AudioContent(
     override val media: AudioFile,
     override val caption: String? = null,
     override val captionEntities: List<TextPart> = emptyList()
-) : MediaGroupContent {
+) : AudioMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
