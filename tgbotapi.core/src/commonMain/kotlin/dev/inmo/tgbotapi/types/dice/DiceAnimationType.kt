@@ -38,7 +38,7 @@ internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
             CubeDiceAnimationType.emoji -> CubeDiceAnimationType
             DartsDiceAnimationType.emoji -> DartsDiceAnimationType
             BasketballDiceAnimationType.emoji -> BasketballDiceAnimationType
-            SlotMachineDiceAnimationType.emoji -> BasketballDiceAnimationType
+            SlotMachineDiceAnimationType.emoji -> SlotMachineDiceAnimationType
             else -> CustomDiceAnimationType(type)
         }
     }
