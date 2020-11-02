@@ -33,6 +33,7 @@
     * New dice type `SlotMachineDiceAnimationType`
     * New extension `TelegramMediaFile#asDocumentFile`
     * New extension `VideoFile#toInputMediaVideo`
+    * New exteption `WrongFileIdentifierException`
 * `API`:
     * New extensions for media groups:
         * `TelegramBot#sendPlaylist`

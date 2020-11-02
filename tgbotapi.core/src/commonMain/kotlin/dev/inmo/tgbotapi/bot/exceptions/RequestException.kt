@@ -15,6 +15,7 @@ fun newRequestException(
         description.contains("Bad Request: message is not modified") -> MessageIsNotModifiedException(response, plainAnswer, message, cause)
         description == "Unauthorized" -> UnauthorizedException(response, plainAnswer, message, cause)
         description.contains("PHOTO_INVALID_DIMENSIONS") -> InvalidPhotoDimensionsException(response, plainAnswer, message, cause)
+        description.contains("wrong file identifier") -> WrongFileIdentifierException(response, plainAnswer, message, cause)
         else -> null
     }
 } ?: CommonRequestException(response, plainAnswer, message, cause)
@@ -44,4 +45,7 @@ class MessageToEditNotFoundException(response: Response, plainAnswer: String, me
     RequestException(response, plainAnswer, message, cause)
 
 class InvalidPhotoDimensionsException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
+    RequestException(response, plainAnswer, message, cause)
+
+class WrongFileIdentifierException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause)
