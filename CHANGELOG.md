@@ -44,6 +44,17 @@
         * `TelegramBot#replyWithDocumentsGroup`
         * `TelegramBot#sendVisualMediaGroup`
         * `TelegramBot#replyWithVisualMediaGroup`
+* `Utils`:
+    * New extensions for `Flow`s:
+        * `Flow<SentMediaGroupUpdate>#mediaGroupVisualMessages`
+        * `Flow<SentMediaGroupUpdate>#mediaGroupAudioMessages`
+        * `Flow<SentMediaGroupUpdate>#mediaGroupDocumentMessages`
+    * New extensions for `FlowsUpdatesFilter`:
+        * `FlowsUpdatesFilter#audioMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#mediaGroupAudioMessages`
+        * `FlowsUpdatesFilter#documentMessagesWithMediaGroups`
+        * `FlowsUpdatesFilter#mediaGroupDocumentMessages`
+        * `FlowsUpdatesFilter#mediaGroupVisualMessages`
 
 ## 0.29.2
 
