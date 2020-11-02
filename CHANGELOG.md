@@ -2,6 +2,15 @@
 
 ## 0.29.4
 
+* `Core`:
+    * `diceResultLimit` now is deprecated, use `commonDiceResultLimit` instead
+    * New extension `slotMachineDiceResultLimit`
+* `Utils`:
+    * New enum `SlotMachineReelImages`
+    * New extension `Int#asSlotMachineReelImage`
+    * New data class `SlotMachineResult`
+        * New extension `Dice#calculateSlotMachineResult`
+
 ## 0.29.3
 
 * `Common`:
