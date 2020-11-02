@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests.abstracts
 
-import dev.inmo.tgbotapi.types.InputMedia.toInputMediaFileAttachmentName
 import dev.inmo.tgbotapi.utils.StorageFile
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -11,6 +10,14 @@ import kotlinx.serialization.encoding.Encoder
 sealed class InputFile {
     abstract val fileId: String
 }
+
+internal inline val InputFile.attachFileId
+    get() = "attach://$fileId"
+internal inline val InputFile.fileIdToSend
+    get() = when (this) {
+        is FileId -> fileId
+        is MultipartFile -> attachFileId
+    }
 
 // TODO:: add checks for file url/file id regex
 /**
@@ -29,12 +36,6 @@ internal object InputFileSerializer : KSerializer<InputFile> {
     override fun serialize(encoder: Encoder, value: InputFile) = encoder.encodeString(value.fileId)
     override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString())
 }
-
-internal val InputFile.asMediaData: String
-    get() = when (this) {
-        is FileId -> fileId
-        is MultipartFile -> fileId.toInputMediaFileAttachmentName()
-    }
 
 // TODO:: add checks for files size
 /**

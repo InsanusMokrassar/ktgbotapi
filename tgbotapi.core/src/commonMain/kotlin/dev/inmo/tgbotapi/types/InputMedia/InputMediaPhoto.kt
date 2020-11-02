@@ -24,7 +24,7 @@ data class InputMediaPhoto(
 
     @SerialName(mediaField)
     override val media: String
-    init { media = file.fileId } // crutch until js compiling will be fixed
+    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
 }
 
 fun PhotoSize.toInputMediaPhoto(
