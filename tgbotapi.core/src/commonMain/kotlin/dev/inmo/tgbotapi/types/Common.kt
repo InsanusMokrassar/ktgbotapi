@@ -52,7 +52,11 @@ val inlineQueryAnswerResultsLimit = 0 .. 50
 
 val customTitleLength = 0 .. 16
 
-val diceResultLimit = 1 .. 6
+val commonDiceResultLimit = 1 .. 6
+@Deprecated("Renamed", ReplaceWith("commonDiceResultLimit", "dev.inmo.tgbotapi.types.commonDiceResultLimit"))
+val diceResultLimit
+    get() = commonDiceResultLimit
+val slotMachineDiceResultLimit = 1 .. 64
 
 val botCommandLengthLimit = 1 .. 32
 val botCommandLimit = botCommandLengthLimit
