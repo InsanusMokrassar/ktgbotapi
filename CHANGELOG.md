@@ -13,6 +13,7 @@
         section
         * New field `dropPendingUpdates`. It works the same as `drop_pending_updates` in [setWebhook](https://core.telegram.org/bots/api#setwebhook)
         section
+    * New field `ExtendedPrivateChat#bio`
 
 ## 0.29.4
 
