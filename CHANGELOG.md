@@ -2,6 +2,10 @@
 
 ## 0.30.0 Bot API 5.0
 
+* `Core`:
+    * Support of `logOut` method (`LogOut` object as a `Request`)
+    * Support of `close` method (`Close` object as a `Request`)
+
 ## 0.29.4
 
 * `Core`:
