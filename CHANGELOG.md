@@ -18,6 +18,7 @@
     * New fields `AudioFile#fileName` and `VideoFile#fileName`
     * New fields `SendDocument#disableContentTypeDetection` and `InputMediaDocument#disableContentTypeDetection`
     * New request `UnpinAllChatMessages`
+    * New dice type `FootballDiceAnimationType`
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`
