@@ -16,6 +16,7 @@
     * New fields `ExtendedChannelChat#linkedGroupChatId` and `ExtendedSupergroupChat#linkedChannelChatId`
     * New fields `ExtendedSupergroupChat#location`
     * New fields `AudioFile#fileName` and `VideoFile#fileName`
+    * New fields `SendDocument#disableContentTypeDetection` and `InputMediaDocument#disableContentTypeDetection`
 
 ## 0.29.4
 

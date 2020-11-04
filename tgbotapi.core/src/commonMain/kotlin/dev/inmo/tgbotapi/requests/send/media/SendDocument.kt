@@ -14,6 +14,15 @@ import dev.inmo.tgbotapi.utils.mapOfNotNull
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
+/**
+ * Use this method to send general files. On success, the sent [ContentMessage] with [DocumentContent] is returned.
+ * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @param disableContentTypeDetection Disables automatic server-side content type detection for [document] [MultipartFile]
+ *
+ * @see ContentMessage
+ * @see DocumentContent
+ */
 fun SendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
@@ -22,7 +31,8 @@ fun SendDocument(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
 ): Request<ContentMessage<DocumentContent>> {
     val documentAsFileId = (document as? FileId) ?.fileId
     val documentAsFile = document as? MultipartFile
@@ -37,7 +47,8 @@ fun SendDocument(
         parseMode,
         disableNotification,
         replyToMessageId,
-        replyMarkup
+        replyMarkup,
+        disableContentTypeDetection
     )
 
     return if (documentAsFile == null && thumbAsFile == null) {
@@ -53,6 +64,15 @@ fun SendDocument(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+/**
+ * Use this method to send general files. On success, the sent [ContentMessage] with [DocumentContent] is returned.
+ * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @param disableContentTypeDetection Disables automatic server-side content type detection for [document] [MultipartFile]
+ *
+ * @see ContentMessage
+ * @see DocumentContent
+ */
 @Serializable
 data class SendDocumentData internal constructor(
     @SerialName(chatIdField)
@@ -70,7 +90,9 @@ data class SendDocumentData internal constructor(
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
+    @SerialName(disableContentTypeDetectionField)
+    val disableContentTypeDetection: Boolean? = null
 ) : DataRequest<ContentMessage<DocumentContent>>,
     SendMessageRequest<ContentMessage<DocumentContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<DocumentContent>>,
