@@ -16,14 +16,18 @@ private fun correctWebhookUrl(sourceUrl: String) = if (sourceUrl.contains("://")
 fun SetWebhook(
     url: String,
     certificate: MultipartFile,
+    ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
+    allowedUpdates: List<String>? = null,
+    dropPendingUpdates: Boolean? = null
 ): MultipartRequestImpl<SetWebhook, Map<String, MultipartFile>, Boolean> = MultipartRequestImpl(
     SetWebhook(
         correctWebhookUrl(url),
-        null,
+        null as String?,
+        ipAddress,
         maxAllowedConnections,
-        allowedUpdates
+        allowedUpdates,
+        dropPendingUpdates
     ),
     mapOf(certificateField to certificate)
 )
@@ -31,47 +35,61 @@ fun SetWebhook(
 fun SetWebhook(
     url: String,
     certificate: FileId,
+    ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
+    allowedUpdates: List<String>? = null,
+    dropPendingUpdates: Boolean? = null
 ): SetWebhook = SetWebhook(
     correctWebhookUrl(url),
     certificate.fileId,
+    ipAddress,
     maxAllowedConnections,
-    allowedUpdates
+    allowedUpdates,
+    dropPendingUpdates
 )
 
+/**
+ * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update
+ * for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update.
+ *
+ * If you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the [url],
+ * e.g. https://www.example.com/<token>. Since nobody else knows your bot's token, you can be pretty sure it's us.
+ */
 @Suppress("USELESS_CAST")
 fun SetWebhook(
     url: String,
-    certificate: InputFile,
+    certificate: InputFile? = null,
+    ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
+    allowedUpdates: List<String>? = null,
+    dropPendingUpdates: Boolean? = null
 ): Request<Boolean> = when (certificate) {
-    is MultipartFile -> SetWebhook(correctWebhookUrl(url), certificate as MultipartFile, maxAllowedConnections, allowedUpdates)
-    is FileId -> SetWebhook(correctWebhookUrl(url), certificate as FileId, maxAllowedConnections, allowedUpdates)
+    is MultipartFile -> SetWebhook(correctWebhookUrl(url), certificate as MultipartFile, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates)
+    is FileId -> SetWebhook(correctWebhookUrl(url), certificate as FileId, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates)
+    null -> SetWebhook(correctWebhookUrl(url), null as String?, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates)
 }
 
-fun SetWebhook(
-    url: String,
-    maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
-) = SetWebhook(
-    correctWebhookUrl(url),
-    null,
-    maxAllowedConnections,
-    allowedUpdates
-)
-
+/**
+ * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update
+ * for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update.
+ *
+ * If you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the [url],
+ * e.g. https://www.example.com/<token>. Since nobody else knows your bot's token, you can be pretty sure it's us.
+ */
 @Serializable
 data class SetWebhook internal constructor(
     @SerialName(urlField)
     val url: String,
     @SerialName(certificateField)
     val certificateFile: String? = null,
+    @SerialName(ipAddressField)
+    val ipAddress: String? = null,
     @SerialName(maxAllowedConnectionsField)
     val maxAllowedConnections: Int? = null,
     @SerialName(allowedUpdatesField)
-    val allowedUpdates: List<String>? = null
+    val allowedUpdates: List<String>? = null,
+    @SerialName(dropPendingUpdatesField)
+    val dropPendingUpdates: Boolean? = null
 ) : DataRequest<Boolean> {
     override fun method(): String = "setWebhook"
     override val resultDeserializer: DeserializationStrategy<Boolean>

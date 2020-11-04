@@ -5,6 +5,14 @@
 * `Core`:
     * Support of `logOut` method (`LogOut` object as a `Request`)
     * Support of `close` method (`Close` object as a `Request`)
+    * `SetWebhook` updates:
+        * Function `SetWebhook` with `inputFile` has changed this param nullability - `inputFile` now is nullable
+        * Function `SetWebhook` without `certificate` param now is unavailable. You can use `SetWebhook` with nullable
+        `inputFile`
+        * New field `ipAddress`. It works the same as `ip_address` in [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+        section
+        * New field `dropPendingUpdates`. It works the same as `drop_pending_updates` in [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+        section
 
 ## 0.29.4
 
