@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.30.0 Bot API 5.0
+
 ## 0.29.4
 
 * `Core`:
