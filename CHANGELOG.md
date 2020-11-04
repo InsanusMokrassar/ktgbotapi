@@ -17,8 +17,10 @@
     * New fields `ExtendedSupergroupChat#location`
     * New fields `AudioFile#fileName` and `VideoFile#fileName`
     * New fields `SendDocument#disableContentTypeDetection` and `InputMediaDocument#disableContentTypeDetection`
+    * New request `UnpinAllChatMessages`
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
+    * New extensions `TelegramBot#unpinAllChatMessages`
 
 ## 0.29.4
 
