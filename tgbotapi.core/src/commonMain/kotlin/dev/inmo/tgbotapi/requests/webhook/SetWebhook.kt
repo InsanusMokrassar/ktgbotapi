@@ -58,7 +58,7 @@ fun SetWebhook(
 @Suppress("USELESS_CAST")
 fun SetWebhook(
     url: String,
-    certificate: InputFile? = null,
+    certificate: InputFile,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null,
@@ -66,8 +66,30 @@ fun SetWebhook(
 ): Request<Boolean> = when (certificate) {
     is MultipartFile -> SetWebhook(correctWebhookUrl(url), certificate as MultipartFile, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates)
     is FileId -> SetWebhook(correctWebhookUrl(url), certificate as FileId, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates)
-    null -> SetWebhook(correctWebhookUrl(url), null as String?, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates)
 }
+
+/**
+ * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update
+ * for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update.
+ *
+ * If you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the [url],
+ * e.g. https://www.example.com/<token>. Since nobody else knows your bot's token, you can be pretty sure it's us.
+ */
+@Suppress("USELESS_CAST")
+fun SetWebhook(
+    url: String,
+    ipAddress: String? = null,
+    maxAllowedConnections: Int? = null,
+    allowedUpdates: List<String>? = null,
+    dropPendingUpdates: Boolean? = null
+): Request<Boolean> = SetWebhook(
+    correctWebhookUrl(url),
+    null,
+    ipAddress,
+    maxAllowedConnections,
+    allowedUpdates,
+    dropPendingUpdates
+)
 
 /**
  * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update
