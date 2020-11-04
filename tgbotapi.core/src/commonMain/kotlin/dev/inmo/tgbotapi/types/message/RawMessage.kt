@@ -8,6 +8,9 @@ import dev.inmo.tgbotapi.types.chat.abstracts.*
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.RawGame
+import dev.inmo.tgbotapi.types.location.Location
+import dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -86,6 +89,7 @@ internal data class RawMessage(
 
     // passport property
     private val passport_data: Unit? = null,
+    private val proximity_alert_triggered: ProximityAlertTriggered? = null,
 
     private val reply_markup: InlineKeyboardMarkup? = null
 ) {
@@ -180,6 +184,7 @@ internal data class RawMessage(
             )
             channel_chat_created -> ChannelChatCreated()
             pinned_message != null -> PinnedMessage(pinned_message.asMessage)
+            proximity_alert_triggered != null -> proximity_alert_triggered
             else -> null
         }
     }

@@ -3,13 +3,14 @@ package dev.inmo.tgbotapi.types.venue
 import dev.inmo.tgbotapi.CommonAbstracts.CommonVenueData
 import dev.inmo.tgbotapi.CommonAbstracts.Locationed
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Venue(
     @SerialName(locationField)
-    val location: Location,
+    val location: StaticLocation,
     @SerialName(titleField)
     override val title: String,
     @SerialName(addressField)

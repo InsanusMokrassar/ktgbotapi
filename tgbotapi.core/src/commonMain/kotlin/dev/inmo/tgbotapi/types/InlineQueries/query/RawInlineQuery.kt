@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.InlineQueries.query
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -15,7 +16,7 @@ internal data class RawInlineQuery(
     @SerialName(offsetField)
     val offset: String,
     @SerialName(locationField)
-    val location: Location? = null
+    val location: StaticLocation? = null
 ) {
     val asInlineQuery by lazy {
         location ?.let {

@@ -22,6 +22,24 @@
     * Limits for dices has been changed
     * `commonDiceResultLimit` has been deprecated
     * New field `DiceAnimationType#valueLimits`
+    * Locations updates:
+        * New interface `Headed` with property `heading`
+        * New interface `HorizontallyAccured` with property `horizontalAccuracy`
+        * New interface `ProximityAlertable` with property `proximityAlertRadius`
+        * `Location` class has been separated:
+            * `StaticLocation` for static locations
+            * `LiveLocation` for live locations
+        * Property `Livable#livePeriod` now use typealias type `Seconds` (the same by meaning - `Int`)
+        * `EditLocationMessage` now extends `Locationed`, `HorizontallyAccured`, `ProximityAlertable` and `Headed` interfaces
+            * New properties in `EditChatMessageLiveLocation`: `horizontalAccuracy`, `heading`, `proximityAlertRadius`
+            * New properties in `EditInlineMessageLiveLocation`: `horizontalAccuracy`, `heading`, `proximityAlertRadius`
+        * Main constructor of `SendLocation` now is internal. Instead of that currently available next factories:
+            * `SendLocation` - sending of static location without live parameters
+            * `SendStaticLocation` - sending of static location without live parameters
+            * `SendLiveLocation` - sending of live location with live parameters
+        * `PositionedSendMessageRequest` now extends `Locationed`
+        * `LocationContent#createResend` now can create `LiveLocation`
+    * Support of `ProximityAlertTriggered`. It is `CommonEvent`
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`

@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.abstracts.ChosenInlineResult
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -14,7 +15,7 @@ internal data class RawChosenInlineResult(
     @SerialName(queryField)
     val query: String,
     @SerialName(locationField)
-    val location: Location? = null,
+    val location: StaticLocation? = null,
     @SerialName(inlineMessageIdField)
     val inlineMessageId: InlineMessageIdentifier? = null
 ) {

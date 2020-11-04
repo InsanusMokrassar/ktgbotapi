@@ -1,8 +1,10 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
+import dev.inmo.tgbotapi.types.Seconds
+
 interface Livable {
     /**
-     * Period in SECONDS
+     * Period in [Seconds]
      */
-    val livePeriod: Int?
+    val livePeriod: Seconds?
 }

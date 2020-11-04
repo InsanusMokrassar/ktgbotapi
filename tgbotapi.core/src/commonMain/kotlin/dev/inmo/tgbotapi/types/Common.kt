@@ -28,6 +28,12 @@ typealias FoursquareType = String
 typealias Seconds = Int
 typealias LongSeconds = Long
 
+typealias Meters = Float
+typealias Degrees = Int
+
+val degreesLimit = 1 .. 360
+val horizontalAccuracyLimit = 0F .. 1500F
+
 val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
 val captionLength = 0 .. 1024
@@ -93,6 +99,7 @@ const val replyMarkupField = "reply_markup"
 const val disableContentTypeDetectionField = "disable_content_type_detection"
 const val supportStreamingField = "support_streaming"
 const val livePeriodField = "live_period"
+const val proximityAlertRadiusField = "proximity_alert_radius"
 const val isBotField = "is_bot"
 const val firstNameField = "first_name"
 const val lastNameField = "last_name"
@@ -152,6 +159,7 @@ const val customTitleField = "custom_title"
 const val optionIdsField = "option_ids"
 const val ipAddressField = "ip_address"
 const val linkedChatIdField = "linked_chat_id"
+const val horizontalAccuracyField = "horizontal_accuracy"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
@@ -249,6 +257,7 @@ const val heightField = "height"
 const val lengthField = "length"
 const val latitudeField = "latitude"
 const val longitudeField = "longitude"
+const val headingField = "heading"
 const val fromField = "from"
 const val userField = "user"
 const val dateField = "date"

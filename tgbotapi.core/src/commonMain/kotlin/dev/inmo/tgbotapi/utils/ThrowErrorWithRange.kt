@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.utils
 
-internal fun throwRangeError(
+internal fun <T : Comparable<T>> throwRangeError(
     valueName: String,
-    range: IntRange,
-    actualValue: Int
+    range: ClosedRange<T>,
+    actualValue: T
 ): Nothing = error("$valueName must be in range $range, but was $actualValue")

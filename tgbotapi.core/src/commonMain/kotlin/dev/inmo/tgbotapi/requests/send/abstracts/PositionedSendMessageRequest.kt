@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests.send.abstracts
 
-interface PositionedSendMessageRequest<T: Any>: SendMessageRequest<T> {
-    val latitude: Double
-    val longitude: Double
-}
+import dev.inmo.tgbotapi.CommonAbstracts.Locationed
+
+interface PositionedSendMessageRequest<T: Any>: SendMessageRequest<T>, Locationed

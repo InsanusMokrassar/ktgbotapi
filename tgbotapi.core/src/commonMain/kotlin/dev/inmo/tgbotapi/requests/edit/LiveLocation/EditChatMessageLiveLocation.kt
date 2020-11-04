@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.LocationContent
+import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
 private val commonResultDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<LocationContent>>()
@@ -20,6 +21,12 @@ data class EditChatMessageLiveLocation(
     override val latitude: Double,
     @SerialName(longitudeField)
     override val longitude: Double,
+    @SerialName(horizontalAccuracyField)
+    override val horizontalAccuracy: Meters? = null,
+    @SerialName(headingField)
+    override val heading: Degrees? = null,
+    @SerialName(proximityAlertRadiusField)
+    override val proximityAlertRadius: Meters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<LocationContent>, EditReplyMessage, EditLocationMessage {
@@ -28,4 +35,10 @@ data class EditChatMessageLiveLocation(
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
+
+    init {
+        if (horizontalAccuracy != null && horizontalAccuracy !in horizontalAccuracyLimit) {
+            throwRangeError("horizontalAccuracy", horizontalAccuracyLimit, horizontalAccuracy)
+        }
+    }
 }

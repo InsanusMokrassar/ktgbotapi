@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,7 +13,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ChatLocation(
     @SerialName(locationField)
-    val location: Location,
+    val location: StaticLocation,
     @SerialName(addressField)
     val address: String
 )

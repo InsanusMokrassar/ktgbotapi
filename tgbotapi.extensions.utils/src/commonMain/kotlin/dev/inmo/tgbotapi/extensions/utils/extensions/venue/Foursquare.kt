@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions.venue
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -11,7 +12,7 @@ val Venue.foursquare: Foursquare?
     }
 
 fun Venue(
-    location: Location,
+    location: StaticLocation,
     title: String,
     address: String,
     foursquare: Foursquare

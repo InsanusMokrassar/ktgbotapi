@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.edit.LiveLocation.EditChatMessageLiveLocation
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 
@@ -38,7 +39,7 @@ suspend fun TelegramBot.editLiveLocation(
 suspend fun TelegramBot.editLiveLocation(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
-    location: Location,
+    location: StaticLocation,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
     EditChatMessageLiveLocation(
@@ -49,12 +50,12 @@ suspend fun TelegramBot.editLiveLocation(
 suspend fun TelegramBot.editLiveLocation(
     chat: Chat,
     messageId: MessageIdentifier,
-    location: Location,
+    location: StaticLocation,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(chat.id, messageId, location.latitude, location.longitude, replyMarkup)
 
 suspend fun TelegramBot.editLiveLocation(
     message: ContentMessage<LocationContent>,
-    location: Location,
+    location: StaticLocation,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(message.chat, message.messageId, location.latitude, location.longitude, replyMarkup)

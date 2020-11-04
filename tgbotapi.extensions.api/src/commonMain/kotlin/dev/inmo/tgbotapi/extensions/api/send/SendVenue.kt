@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.SendVenue
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.venue.Venue
 
@@ -40,7 +41,7 @@ suspend fun TelegramBot.sendVenue(
 
 suspend fun TelegramBot.sendVenue(
     chatId: ChatIdentifier,
-    location: Location,
+    location: StaticLocation,
     title: String,
     address: String,
     foursquareId: String? = null,
@@ -53,7 +54,7 @@ suspend fun TelegramBot.sendVenue(
 
 suspend fun TelegramBot.sendVenue(
     chat: Chat,
-    location: Location,
+    location: StaticLocation,
     title: String,
     address: String,
     foursquareId: String? = null,
@@ -101,7 +102,7 @@ suspend inline fun TelegramBot.reply(
 
 suspend inline fun TelegramBot.reply(
     to: Message,
-    location: Location,
+    location: StaticLocation,
     title: String,
     address: String,
     foursquareId: String? = null,

@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import io.ktor.utils.io.core.Closeable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -39,13 +40,13 @@ class LiveLocation internal constructor(
         get() = field || leftUntilCloseMillis.millisecondsLong < 0L
 
     private var message: ContentMessage<LocationContent> = initMessage
-    val lastLocation: Location
+    val lastLocation: StaticLocation
         get() = message.content.location
 
     suspend fun updateLocation(
-        location: Location,
+        location: StaticLocation,
         replyMarkup: InlineKeyboardMarkup? = null
-    ): Location {
+    ): StaticLocation {
         if (!isClosed) {
             message = requestsExecutor.editLiveLocation(
                 message,
@@ -114,7 +115,7 @@ suspend fun TelegramBot.startLiveLocation(
 suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chatId: ChatId,
-    location: Location,
+    location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -126,7 +127,7 @@ suspend fun TelegramBot.startLiveLocation(
 suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
     chat: Chat,
-    location: Location,
+    location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -148,7 +149,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
 suspend inline fun TelegramBot.replyWithLiveLocation(
     to: Message,
     scope: CoroutineScope,
-    location: Location,
+    location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     replyMarkup: KeyboardMarkup? = null

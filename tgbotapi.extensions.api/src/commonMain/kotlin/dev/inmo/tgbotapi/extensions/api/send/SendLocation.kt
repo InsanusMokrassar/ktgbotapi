@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.SendLocation
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendLocation(
@@ -27,7 +28,7 @@ suspend fun TelegramBot.sendLocation(
 
 suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
-    location: Location,
+    location: StaticLocation,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -58,7 +59,7 @@ suspend fun TelegramBot.sendLocation(
 
 suspend fun TelegramBot.sendLocation(
     chat: Chat,
-    location: Location,
+    location: StaticLocation,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -88,7 +89,7 @@ suspend inline fun TelegramBot.reply(
 
 suspend inline fun TelegramBot.reply(
     to: Message,
-    location: Location,
+    location: StaticLocation,
     disableNotification: Boolean = false,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
