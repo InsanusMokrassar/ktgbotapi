@@ -10,7 +10,9 @@ data class UnbanChatMember(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(userIdField)
-    override val userId: UserId
+    override val userId: UserId,
+    @SerialName(onlyIfBannedField)
+    val onlyIfBanned: Boolean? = null
 ) : ChatMemberRequest<Boolean> {
     override fun method(): String = "unbanChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>

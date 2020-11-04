@@ -14,6 +14,10 @@
         * New field `dropPendingUpdates`. It works the same as `drop_pending_updates` in [setWebhook](https://core.telegram.org/bots/api#setwebhook)
         section
     * New field `ExtendedPrivateChat#bio`
+    * New data class `ChatLocation`
+    * New field `UnbanChatMember#onlyIfBanned`
+    * New fields `ExtendedChannelChat#linkedGroupChatId` and `ExtendedSupergroupChat#linkedChannelChatId`
+    * New fields `ExtendedSupergroupChat#location`
 
 ## 0.29.4
 
