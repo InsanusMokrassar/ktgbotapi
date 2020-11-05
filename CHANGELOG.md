@@ -23,6 +23,7 @@
     * New fields `AudioFile#fileName` and `VideoFile#fileName`
     * New fields `SendDocument#disableContentTypeDetection` and `InputMediaDocument#disableContentTypeDetection`
     * New request `UnpinAllChatMessages`
+    * New parameter for `unpinChatMessage` method: `messageId`
     * New dice type `FootballDiceAnimationType`
     * Limits for dices has been changed
     * `commonDiceResultLimit` has been deprecated
