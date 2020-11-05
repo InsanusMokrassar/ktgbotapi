@@ -84,22 +84,23 @@ internal fun createTextPart(from: String, entities: RawMessageEntities): List<Te
 
 internal fun List<TextPart>.asRawMessageEntities(): List<RawMessageEntity> = mapNotNull {
     val source = it.source
+    val length = it.range.last - it.range.first + 1
     when (source) {
-        is MentionTextSource -> RawMessageEntity("mention", it.range.first, it.range.last - it.range.first)
-        is HashTagTextSource -> RawMessageEntity("hashtag", it.range.first, it.range.last - it.range.first)
-        is CashTagTextSource -> RawMessageEntity("cashtag", it.range.first, it.range.last - it.range.first)
-        is BotCommandTextSource -> RawMessageEntity("bot_command", it.range.first, it.range.last - it.range.first)
-        is URLTextSource -> RawMessageEntity("url", it.range.first, it.range.last - it.range.first)
-        is EMailTextSource -> RawMessageEntity("email", it.range.first, it.range.last - it.range.first)
-        is PhoneNumberTextSource -> RawMessageEntity("phone_number", it.range.first, it.range.last - it.range.first)
-        is BoldTextSource -> RawMessageEntity("bold", it.range.first, it.range.last - it.range.first)
-        is ItalicTextSource -> RawMessageEntity("italic", it.range.first, it.range.last - it.range.first)
-        is CodeTextSource -> RawMessageEntity("code", it.range.first, it.range.last - it.range.first)
-        is PreTextSource -> RawMessageEntity("pre", it.range.first, it.range.last - it.range.first, language = source.language)
-        is TextLinkTextSource -> RawMessageEntity("text_link", it.range.first, it.range.last - it.range.first, source.url)
-        is TextMentionTextSource -> RawMessageEntity("text_mention", it.range.first, it.range.last - it.range.first, user = source.user)
-        is UnderlineTextSource -> RawMessageEntity("underline", it.range.first, it.range.last - it.range.first)
-        is StrikethroughTextSource -> RawMessageEntity("strikethrough", it.range.first, it.range.last - it.range.first)
+        is MentionTextSource -> RawMessageEntity("mention", it.range.first, length)
+        is HashTagTextSource -> RawMessageEntity("hashtag", it.range.first, length)
+        is CashTagTextSource -> RawMessageEntity("cashtag", it.range.first, length)
+        is BotCommandTextSource -> RawMessageEntity("bot_command", it.range.first, length)
+        is URLTextSource -> RawMessageEntity("url", it.range.first, length)
+        is EMailTextSource -> RawMessageEntity("email", it.range.first, length)
+        is PhoneNumberTextSource -> RawMessageEntity("phone_number", it.range.first, length)
+        is BoldTextSource -> RawMessageEntity("bold", it.range.first, length)
+        is ItalicTextSource -> RawMessageEntity("italic", it.range.first, length)
+        is CodeTextSource -> RawMessageEntity("code", it.range.first, length)
+        is PreTextSource -> RawMessageEntity("pre", it.range.first, length, language = source.language)
+        is TextLinkTextSource -> RawMessageEntity("text_link", it.range.first, length, source.url)
+        is TextMentionTextSource -> RawMessageEntity("text_mention", it.range.first, length, user = source.user)
+        is UnderlineTextSource -> RawMessageEntity("underline", it.range.first, length)
+        is StrikethroughTextSource -> RawMessageEntity("strikethrough", it.range.first, length)
         else -> null
     }
 }
@@ -108,7 +109,7 @@ internal fun List<TextSource>.toRawMessageEntities(): List<RawMessageEntity> {
     var i = 0
     return map {
         TextPart(
-            i until it.source.length,
+            i until (i + it.source.length),
             it
         ).also {
             i = it.range.last + 1

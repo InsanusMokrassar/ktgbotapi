@@ -22,6 +22,7 @@ import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.venue.Venue
+import dev.inmo.tgbotapi.utils.fullListOfSubSource
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass
@@ -91,11 +92,11 @@ internal data class RawMessage(
 ) {
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
-            caption_entities ?.asTextParts(caption)
+            it.fullListOfSubSource(caption_entities ?.asTextParts(caption) ?: emptyList())
         } ?: emptyList()
 
         when {
-            text != null -> TextContent(text, entities ?.asTextParts(text) ?: emptyList())
+            text != null -> TextContent(text, text.fullListOfSubSource(entities ?.asTextParts(text) ?: emptyList()))
             audio != null -> AudioContent(
                 audio,
                 caption,

@@ -13,8 +13,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import kotlinx.serialization.*
 
-private val ResultDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<*>>()
-
 fun CopyMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
@@ -60,8 +58,8 @@ data class CopyMessage internal constructor(
     override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-): SimpleRequest<ContentMessage<*>>,
-    ReplyingMarkupSendMessageRequest<ContentMessage<*>>,
+): SimpleRequest<MessageIdentifier>,
+    ReplyingMarkupSendMessageRequest<MessageIdentifier>,
     MessageAction,
     TextedOutput {
     override val chatId: ChatIdentifier
@@ -72,8 +70,8 @@ data class CopyMessage internal constructor(
 
     override fun method(): String = "copyMessage"
 
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<*>>
-        get() = ResultDeserializer
+    override val resultDeserializer: DeserializationStrategy<MessageIdentifier>
+        get() = MessageIdSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
