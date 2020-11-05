@@ -22,12 +22,14 @@ import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.venue.Venue
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass
 
 // TODO:: add PassportData type
 @Serializable
 internal data class RawMessage(
+    @SerialName(messageIdField)
     val messageId: MessageIdentifier,
     val date: TelegramDate,
     private val chat: Chat,
