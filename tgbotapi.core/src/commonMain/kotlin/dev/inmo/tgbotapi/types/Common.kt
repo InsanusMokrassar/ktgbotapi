@@ -24,6 +24,8 @@ typealias FileUniqueId = String
 typealias DiceResult = Int
 typealias FoursquareId = String
 typealias FoursquareType = String
+typealias GooglePlaceId = String
+typealias GooglePlaceType = String
 
 typealias Seconds = Int
 typealias LongSeconds = Long
@@ -126,6 +128,8 @@ const val showAlertField = "show_alert"
 const val cachedTimeField = "cached_time"
 const val foursquareIdField = "foursquare_id"
 const val foursquareTypeField = "foursquare_type"
+const val googlePlaceIdField = "google_place_id"
+const val googlePlaceTypeField = "google_place_type"
 const val untilDateField = "until_date"
 const val errorMessageField = "error_message"
 const val messageTextField = "message_text"

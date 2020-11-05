@@ -18,7 +18,11 @@ data class InputVenueMessageContent(
     @SerialName(addressField)
     override val address: String,
     @SerialName(foursquareIdField)
-    override val foursquareId: String? = null,
+    override val foursquareId: FoursquareId? = null,
     @SerialName(foursquareTypeField)
-    override val foursquareType: String? = null
+    override val foursquareType: FoursquareType? = null,
+    @SerialName(googlePlaceIdField)
+    override val googlePlaceId: GooglePlaceId? = null,
+    @SerialName(googlePlaceTypeField)
+    override val googlePlaceType: GooglePlaceType? = null
 ) : Locationed, CommonVenueData, InputMessageContent
