@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.utils
 
-import kotlinx.serialization.*
+import kotlinx.serialization.Serializable
 
 @Serializable(MimeTypeSerializer::class)
 actual class MimeType(

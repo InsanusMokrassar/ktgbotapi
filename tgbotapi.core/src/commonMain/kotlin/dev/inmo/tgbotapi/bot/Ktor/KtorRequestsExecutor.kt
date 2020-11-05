@@ -10,7 +10,6 @@ import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.client.HttpClient
 import io.ktor.client.features.*
-import io.ktor.client.statement.HttpStatement
 import io.ktor.client.statement.readText
 import kotlinx.serialization.json.Json
 

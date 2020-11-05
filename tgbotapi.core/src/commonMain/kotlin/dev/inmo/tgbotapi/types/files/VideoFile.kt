@@ -3,11 +3,9 @@ package dev.inmo.tgbotapi.types.files
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
-import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.utils.MimeType
-import dev.inmo.tgbotapi.utils.toHtmlCaptions
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

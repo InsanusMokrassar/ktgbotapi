@@ -4,8 +4,6 @@ import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
-import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntity
-import dev.inmo.tgbotapi.types.MessageEntity.asTextParts
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.DocumentFile

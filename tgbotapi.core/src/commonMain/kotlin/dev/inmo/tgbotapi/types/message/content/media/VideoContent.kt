@@ -5,18 +5,14 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVideo
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
-import dev.inmo.tgbotapi.types.InputMedia.MediaGroupMemberInputMedia
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
-import dev.inmo.tgbotapi.types.ParseMode.MarkdownV2
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.toInputMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 import dev.inmo.tgbotapi.utils.toHtmlCaptions
-import dev.inmo.tgbotapi.utils.toMarkdownV2Captions
 
 data class VideoContent(
     override val media: VideoFile,

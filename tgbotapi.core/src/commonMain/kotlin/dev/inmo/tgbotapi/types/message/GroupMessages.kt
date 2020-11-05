@@ -1,13 +1,12 @@
 package dev.inmo.tgbotapi.types.message
 
+import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage
-import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentInfo
-import com.soywiz.klock.DateTime
-import dev.inmo.tgbotapi.types.chat.abstracts.*
+import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
+import dev.inmo.tgbotapi.types.chat.abstracts.GroupChat
 import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
 data class FromChannelGroupMessageImpl<T : MessageContent>(
     override val chat: GroupChat,

@@ -1,9 +1,7 @@
 package dev.inmo.tgbotapi.requests.local
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
-import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.SerializationStrategy
+import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
 /**

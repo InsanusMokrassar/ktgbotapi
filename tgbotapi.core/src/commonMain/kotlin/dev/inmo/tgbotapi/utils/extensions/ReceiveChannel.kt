@@ -11,48 +11,6 @@ private sealed class DebounceAction<T> {
 private data class AddValue<T>(override val value: T) : DebounceAction<T>()
 private data class RemoveJob<T>(override val value: T, val job: Job) : DebounceAction<T>()
 
-@Deprecated("Unused and will be removed in next major release")
-fun <T> ReceiveChannel<T>.debounceByValue(
-    delayMillis: Long,
-    scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
-    resultBroadcastChannelCapacity: Int = 32
-): ReceiveChannel<T> {
-    val outChannel = Channel<T>(resultBroadcastChannelCapacity)
-    val values = HashMap<T, Job>()
-
-    val channel = Channel<DebounceAction<T>>(Channel.UNLIMITED)
-    scope.launch {
-        for (action in channel) {
-            when (action) {
-                is AddValue -> {
-                    val msg = action.value
-                    values[msg] ?.cancel()
-                    lateinit var job: Job
-                    job = launch {
-                        delay(delayMillis)
-
-                        outChannel.send(msg)
-                        channel.send(RemoveJob(msg, job))
-                    }
-                    values[msg] = job
-                }
-                is RemoveJob -> if (values[action.value] == action.job) {
-                    values.remove(action.value)
-                }
-            }
-
-        }
-    }
-
-    scope.launch {
-        for (msg in this@debounceByValue) {
-            channel.send(AddValue(msg))
-        }
-    }
-
-    return outChannel
-}
-
 typealias AccumulatedValues<K, V> = Pair<K, List<V>>
 
 fun <K, V> ReceiveChannel<Pair<K, V>>.accumulateByKey(

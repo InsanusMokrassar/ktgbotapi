@@ -2,11 +2,13 @@ package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
-import kotlinx.serialization.*
+import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
 
 internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
     @InternalSerializationApi

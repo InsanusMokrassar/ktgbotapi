@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
-import dev.inmo.tgbotapi.types.chat.abstracts.*
+import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
+import dev.inmo.tgbotapi.types.chat.abstracts.GroupChat
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
 interface GroupMessage<T : MessageContent> : PublicMessage<T> {

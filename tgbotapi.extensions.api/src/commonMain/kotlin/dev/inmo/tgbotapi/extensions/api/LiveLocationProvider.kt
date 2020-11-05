@@ -1,19 +1,20 @@
 package dev.inmo.tgbotapi.extensions.api
 
+import com.soywiz.klock.DateTime
+import com.soywiz.klock.TimeSpan
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.edit.LiveLocation.editLiveLocation
 import dev.inmo.tgbotapi.extensions.api.edit.LiveLocation.stopLiveLocation
+import dev.inmo.tgbotapi.requests.send.SendLiveLocation
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.location.LiveLocation
+import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.LocationContent
-import com.soywiz.klock.DateTime
-import com.soywiz.klock.TimeSpan
-import dev.inmo.tgbotapi.requests.send.SendLiveLocation
-import dev.inmo.tgbotapi.types.location.*
 import io.ktor.utils.io.core.Closeable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

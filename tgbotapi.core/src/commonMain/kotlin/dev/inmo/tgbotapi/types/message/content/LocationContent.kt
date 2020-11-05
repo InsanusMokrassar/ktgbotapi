@@ -1,8 +1,10 @@
 package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.requests.send.*
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.requests.send.SendLiveLocation
+import dev.inmo.tgbotapi.requests.send.SendStaticLocation
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage

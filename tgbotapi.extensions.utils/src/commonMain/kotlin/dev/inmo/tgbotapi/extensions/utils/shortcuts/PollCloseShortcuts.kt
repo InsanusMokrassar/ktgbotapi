@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
+import com.soywiz.klock.DateTime
+import com.soywiz.klock.TimeSpan
 import dev.inmo.tgbotapi.types.LongSeconds
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
-import com.soywiz.klock.DateTime
-import com.soywiz.klock.TimeSpan
 
 fun closePollExactAt(
     dateTime: DateTime

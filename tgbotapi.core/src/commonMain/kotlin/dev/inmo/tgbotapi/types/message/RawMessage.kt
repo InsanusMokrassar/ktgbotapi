@@ -9,7 +9,6 @@ import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.RawGame
 import dev.inmo.tgbotapi.types.location.Location
-import dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -23,7 +22,6 @@ import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.venue.Venue
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass
 

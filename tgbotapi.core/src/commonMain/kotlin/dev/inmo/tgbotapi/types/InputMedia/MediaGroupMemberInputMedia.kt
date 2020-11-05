@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.types.InputMedia
 import dev.inmo.tgbotapi.CommonAbstracts.CaptionedOutput
 import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 import kotlinx.serialization.*
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.Json
 
 internal val argumentsFormatter by lazy {
     Json {

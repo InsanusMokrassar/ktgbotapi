@@ -60,9 +60,6 @@ val customTitleLength = 0 .. 16
 
 val dartsAndCubeDiceResultLimit = 1 .. 6
 @Deprecated("Renamed", ReplaceWith("dartsAndCubeDiceResultLimit", "dev.inmo.tgbotapi.types.dartsAndCubeDiceResultLimit"))
-val commonDiceResultLimit
-    get() = dartsAndCubeDiceResultLimit
-@Deprecated("Renamed", ReplaceWith("dartsAndCubeDiceResultLimit", "dev.inmo.tgbotapi.types.dartsAndCubeDiceResultLimit"))
 val diceResultLimit
     get() = dartsAndCubeDiceResultLimit
 val basketballAndFootballDiceResultLimit = 1 .. 5

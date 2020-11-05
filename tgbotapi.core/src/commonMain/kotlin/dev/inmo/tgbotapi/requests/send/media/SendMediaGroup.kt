@@ -9,7 +9,6 @@ import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import dev.inmo.tgbotapi.utils.*
-import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.buildJsonArray

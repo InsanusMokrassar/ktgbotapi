@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.files
 
-import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import java.io.File
 import java.io.FileOutputStream
