@@ -1,21 +1,49 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
-import dev.inmo.tgbotapi.CommonAbstracts.CaptionedOutput
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.CommonAbstracts.types.DisableWebPagePreview
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
+import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntity
+import dev.inmo.tgbotapi.types.MessageEntity.asTextParts
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
-import dev.inmo.tgbotapi.types.disableWebPagePreviewField
-import dev.inmo.tgbotapi.types.messageTextField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Represents the [InputMessageContent] of a text message to be sent as the result of an inline query.
+ */
+fun InputTextMessageContent(
+    text: String,
+    parseMode: ParseMode? = null,
+    disableWebPagePreview: Boolean? = null
+) = InputTextMessageContent(text, parseMode, null, disableWebPagePreview)
+
+/**
+ * Represents the [InputMessageContent] of a text message to be sent as the result of an inline query.
+ */
+fun InputTextMessageContent(
+    entities: List<TextSource>,
+    disableWebPagePreview: Boolean? = null
+) = InputTextMessageContent(entities.makeString(), null, entities.toRawMessageEntities(), disableWebPagePreview)
+
 @Serializable
-data class InputTextMessageContent(
+data class InputTextMessageContent internal constructor(
     @SerialName(messageTextField)
-    override val caption: String,
+    override val text: String,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(entitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(disableWebPagePreviewField)
     override val disableWebPagePreview: Boolean? = null
-) : CaptionedOutput, DisableWebPagePreview, InputMessageContent
+) : CaptionedOutput, TextedOutput, DisableWebPagePreview, InputMessageContent {
+    @Deprecated("Will be removed in next major release")
+    override val caption: String?
+        get() = text
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text) ?.justTextSources()
+    }
+}
