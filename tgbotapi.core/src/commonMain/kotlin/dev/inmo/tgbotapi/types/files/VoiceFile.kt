@@ -23,5 +23,6 @@ data class VoiceFile(
 
 fun VoiceFile.asAudioFile(
     performer: String? = null,
-    title: String? = null
-) = AudioFile(fileId, fileUniqueId, duration, performer, title, mimeType, fileSize)
+    title: String? = null,
+    fileName: String? = null
+) = AudioFile(fileId, fileUniqueId, duration, performer, title, fileName, mimeType, fileSize)

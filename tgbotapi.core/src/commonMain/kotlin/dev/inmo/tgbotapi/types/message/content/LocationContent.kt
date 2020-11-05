@@ -17,6 +17,7 @@ data class LocationContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<LocationContent>> = when (location) {
         is StaticLocation -> SendStaticLocation(
