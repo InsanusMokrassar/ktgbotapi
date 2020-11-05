@@ -7,9 +7,15 @@ interface Explained {
     val explanation: String?
 }
 
-interface ExplainedOutput : Explained {
+interface ParsableExplainedOutput : Explained {
     val parseMode: ParseMode?
 }
+
+interface EntitiesExplainedOutput : Explained {
+    val entities: List<TextSource>?
+}
+
+interface ExplainedOutput : ParsableExplainedOutput, EntitiesExplainedOutput
 
 interface ExplainedInput : Explained {
     /**

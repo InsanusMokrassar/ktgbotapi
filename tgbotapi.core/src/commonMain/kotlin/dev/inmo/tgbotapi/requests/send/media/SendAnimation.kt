@@ -1,9 +1,13 @@
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntity
+import dev.inmo.tgbotapi.types.MessageEntity.asTextParts
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -38,6 +42,49 @@ fun SendAnimation(
         thumbAsFileId,
         caption,
         parseMode,
+        null,
+        duration,
+        width,
+        height,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+
+    return if (animationAsFile == null && thumbAsFile == null) {
+        data
+    } else {
+        MultipartRequestImpl(
+            data,
+            SendAnimationFiles(animationAsFile, thumbAsFile)
+        )
+    }
+}
+
+fun SendAnimation(
+    chatId: ChatIdentifier,
+    animation: InputFile,
+    thumb: InputFile? = null,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ContentMessage<AnimationContent>> {
+    val animationAsFileId = (animation as? FileId) ?.fileId
+    val animationAsFile = animation as? MultipartFile
+    val thumbAsFileId = (thumb as? FileId) ?.fileId
+    val thumbAsFile = thumb as? MultipartFile
+
+    val data = SendAnimationData(
+        chatId,
+        animationAsFileId,
+        thumbAsFileId,
+        entities.makeString(),
+        null,
+        entities.toRawMessageEntities(),
         duration,
         width,
         height,
@@ -71,6 +118,8 @@ data class SendAnimationData internal constructor(
     override val text: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(captionEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(widthField)
@@ -91,6 +140,10 @@ data class SendAnimationData internal constructor(
     DuratedSendMessageRequest<ContentMessage<AnimationContent>>,
     SizedSendMessageRequest<ContentMessage<AnimationContent>>
 {
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    }
+
     init {
         text ?.let {
             if (it.length !in captionLength) {

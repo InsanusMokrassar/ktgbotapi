@@ -1,9 +1,13 @@
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntity
+import dev.inmo.tgbotapi.types.MessageEntity.toRawMessageEntities
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -39,6 +43,51 @@ fun SendVideo(
         thumbAsFileId,
         caption,
         parseMode,
+        null,
+        duration,
+        width,
+        height,
+        supportStreaming,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+
+    return if (videoAsFile == null && thumbAsFile == null) {
+        data
+    } else {
+        MultipartRequestImpl(
+            data,
+            SendVideoFiles(videoAsFile, thumbAsFile)
+        )
+    }
+}
+
+fun SendVideo(
+    chatId: ChatIdentifier,
+    video: InputFile,
+    thumb: InputFile? = null,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    supportStreaming: Boolean? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ContentMessage<VideoContent>> {
+    val videoAsFileId = (video as? FileId) ?.fileId
+    val videoAsFile = video as? MultipartFile
+    val thumbAsFileId = (thumb as? FileId) ?.fileId
+    val thumbAsFile = thumb as? MultipartFile
+
+    val data = SendVideoData(
+        chatId,
+        videoAsFileId,
+        thumbAsFileId,
+        entities.makeString(),
+        null,
+        entities.toRawMessageEntities(),
         duration,
         width,
         height,
@@ -73,6 +122,8 @@ data class SendVideoData internal constructor(
     override val text: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(captionEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(widthField)
@@ -95,6 +146,10 @@ data class SendVideoData internal constructor(
     DuratedSendMessageRequest<ContentMessage<VideoContent>>,
     SizedSendMessageRequest<ContentMessage<VideoContent>>
 {
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    }
+
     init {
         text ?.let {
             if (it.length !in captionLength) {

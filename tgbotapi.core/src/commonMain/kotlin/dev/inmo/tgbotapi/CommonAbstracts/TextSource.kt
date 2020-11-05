@@ -21,3 +21,4 @@ data class TextPart(
 )
 
 fun List<TextPart>.justTextSources() = map { it.source }
+fun List<TextSource>.makeString() = joinToString("") { it.source }

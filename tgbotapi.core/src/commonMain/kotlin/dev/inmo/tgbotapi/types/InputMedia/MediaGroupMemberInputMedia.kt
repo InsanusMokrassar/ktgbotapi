@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
 import dev.inmo.tgbotapi.CommonAbstracts.CaptionedOutput
+import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
@@ -15,7 +16,10 @@ internal fun <T> T.buildArguments(withSerializer: SerializationStrategy<T>) = ar
 )
 
 @Serializable(MediaGroupMemberInputMediaSerializer::class)
-interface MediaGroupMemberInputMedia : InputMedia, CaptionedOutput {
+interface MediaGroupMemberInputMedia : InputMedia, CaptionedOutput, TextedOutput {
+    @Deprecated("Will be removed in next major release")
+    override val caption: String?
+        get() = text
     fun serialize(format: StringFormat): String
 }
 

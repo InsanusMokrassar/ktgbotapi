@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.User
 import dev.inmo.tgbotapi.utils.shiftSourcesToTheLeft
@@ -83,7 +82,7 @@ internal fun createTextPart(from: String, entities: RawMessageEntities): List<Te
     return resultList
 }
 
-internal fun List<TextPart>.asRawMessageEntities() = mapNotNull {
+internal fun List<TextPart>.asRawMessageEntities(): List<RawMessageEntity> = mapNotNull {
     val source = it.source
     when (source) {
         is MentionTextSource -> RawMessageEntity("mention", it.range.first, it.range.last - it.range.first)
@@ -103,6 +102,18 @@ internal fun List<TextPart>.asRawMessageEntities() = mapNotNull {
         is StrikethroughTextSource -> RawMessageEntity("strikethrough", it.range.first, it.range.last - it.range.first)
         else -> null
     }
+}
+
+internal fun List<TextSource>.toRawMessageEntities(): List<RawMessageEntity> {
+    var i = 0
+    return map {
+        TextPart(
+            i until it.source.length,
+            it
+        ).also {
+            i = it.range.last + 1
+        }
+    }.asRawMessageEntities()
 }
 
 internal fun RawMessageEntities.asTextParts(sourceString: String): List<TextPart> = createTextPart(sourceString, this)

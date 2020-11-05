@@ -1,24 +1,45 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntity
+import dev.inmo.tgbotapi.types.MessageEntity.toRawMessageEntities
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.PhotoSize
-import dev.inmo.tgbotapi.types.mediaField
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 
 internal const val photoInputMediaType = "photo"
 
+fun InputMediaPhoto(
+    file: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null
+) = InputMediaPhoto(file, text, parseMode, null)
+
+fun InputMediaPhoto(
+    file: InputFile,
+    entities: List<TextSource>
+) = InputMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities())
+
 @Serializable
-data class InputMediaPhoto(
+data class InputMediaPhoto internal constructor(
     override val file: InputFile,
-    override val caption: String? = null,
+    @SerialName(captionField)
+    override val text: String? = null,
     @SerialName(parseModeField)
-    override val parseMode: ParseMode? = null
+    override val parseMode: ParseMode? = null,
+    @SerialName(captionEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null
 ) : InputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = photoInputMediaType
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 

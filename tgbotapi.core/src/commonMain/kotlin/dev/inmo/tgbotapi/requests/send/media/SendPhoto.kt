@@ -1,9 +1,13 @@
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntity
+import dev.inmo.tgbotapi.types.MessageEntity.toRawMessageEntities
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -27,6 +31,33 @@ fun SendPhoto(
         (photo as? FileId) ?.fileId,
         caption,
         parseMode,
+        null,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+    return data.photo ?.let {
+        data
+    } ?:  MultipartRequestImpl(
+        data,
+        SendPhotoFiles(photo as MultipartFile)
+    )
+}
+
+fun SendPhoto(
+    chatId: ChatIdentifier,
+    photo: InputFile,
+    entities: List<TextSource>,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ContentMessage<PhotoContent>> {
+    val data = SendPhotoData(
+        chatId,
+        (photo as? FileId) ?.fileId,
+        entities.makeString(),
+        null,
+        entities.toRawMessageEntities(),
         disableNotification,
         replyToMessageId,
         replyMarkup
@@ -52,6 +83,8 @@ data class SendPhotoData internal constructor(
     override val text: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(captionEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
@@ -63,6 +96,10 @@ data class SendPhotoData internal constructor(
     ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
     TextableSendMessageRequest<ContentMessage<PhotoContent>>
 {
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    }
+
     init {
         text ?.let {
             if (it.length !in captionLength) {

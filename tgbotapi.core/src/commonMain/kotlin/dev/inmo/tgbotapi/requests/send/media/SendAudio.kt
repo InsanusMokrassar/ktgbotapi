@@ -1,10 +1,13 @@
 package dev.inmo.tgbotapi.requests.send.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.Performerable
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntity
+import dev.inmo.tgbotapi.types.MessageEntity.toRawMessageEntities
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -39,6 +42,49 @@ fun SendAudio(
         thumbAsFileId,
         caption,
         parseMode,
+        null,
+        duration,
+        performer,
+        title,
+        disableNotification,
+        replyToMessageId,
+        replyMarkup
+    )
+
+    return if (audioAsFile == null && thumbAsFile == null) {
+        data
+    } else {
+        MultipartRequestImpl(
+            data,
+            SendAudioFiles(audioAsFile, thumbAsFile)
+        )
+    }
+}
+
+fun SendAudio(
+    chatId: ChatIdentifier,
+    audio: InputFile,
+    thumb: InputFile? = null,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ContentMessage<AudioContent>> {
+    val audioAsFileId = (audio as? FileId) ?.fileId
+    val audioAsFile = audio as? MultipartFile
+    val thumbAsFileId = (thumb as? FileId) ?.fileId
+    val thumbAsFile = thumb as? MultipartFile
+
+    val data = SendAudioData(
+        chatId,
+        audioAsFileId,
+        thumbAsFileId,
+        entities.makeString(),
+        null,
+        entities.toRawMessageEntities(),
         duration,
         performer,
         title,
@@ -72,6 +118,8 @@ data class SendAudioData internal constructor(
     override val text: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(captionEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(performerField)
@@ -93,6 +141,10 @@ data class SendAudioData internal constructor(
     DuratedSendMessageRequest<ContentMessage<AudioContent>>,
     Performerable
 {
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    }
+
     init {
         text ?.let {
             if (it.length !in captionLength) {

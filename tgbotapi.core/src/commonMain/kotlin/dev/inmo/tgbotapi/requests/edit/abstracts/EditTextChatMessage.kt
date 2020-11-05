@@ -1,8 +1,7 @@
 package dev.inmo.tgbotapi.requests.edit.abstracts
 
-import dev.inmo.tgbotapi.types.ParseMode.ParseMode
+import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 
-interface EditTextChatMessage {
-    val text: String
-    val parseMode: ParseMode?
+interface EditTextChatMessage : TextedOutput {
+    override val text: String
 }

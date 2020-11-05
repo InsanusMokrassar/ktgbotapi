@@ -18,8 +18,6 @@ fun SendVideoNote(
     chatId: ChatIdentifier,
     videoNote: InputFile,
     thumb: InputFile? = null,
-    caption: String? = null,
-    parseMode: ParseMode? = null,
     duration: Long? = null,
     size: Int? = null, // in documentation - length (size of video side)
     disableNotification: Boolean = false,
@@ -35,8 +33,6 @@ fun SendVideoNote(
         chatId,
         videoNoteAsFileId,
         thumbAsFileId,
-        caption,
-        parseMode,
         duration,
         size,
         disableNotification,
@@ -65,10 +61,6 @@ data class SendVideoNoteData internal constructor(
     val videoNote: String? = null,
     @SerialName(thumbField)
     override val thumb: String? = null,
-    @SerialName(captionField)
-    override val text: String? = null,
-    @SerialName(parseModeField)
-    override val parseMode: ParseMode? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(lengthField)
@@ -82,21 +74,12 @@ data class SendVideoNoteData internal constructor(
 ) : DataRequest<ContentMessage<VideoNoteContent>>,
     SendMessageRequest<ContentMessage<VideoNoteContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<VideoNoteContent>>,
-    TextableSendMessageRequest<ContentMessage<VideoNoteContent>>,
     ThumbedSendMessageRequest<ContentMessage<VideoNoteContent>>,
     DuratedSendMessageRequest<ContentMessage<VideoNoteContent>>,
     SizedSendMessageRequest<ContentMessage<VideoNoteContent>>
 {
     override val height: Int?
         get() = width
-
-    init {
-        text ?.let {
-            if (it.length !in captionLength) {
-                throwRangeError("Caption length", captionLength, it.length)
-            }
-        }
-    }
 
     override fun method(): String = "sendVideoNote"
     override val resultDeserializer: DeserializationStrategy<ContentMessage<VideoNoteContent>>
