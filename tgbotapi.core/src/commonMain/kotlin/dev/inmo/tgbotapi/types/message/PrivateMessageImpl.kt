@@ -3,13 +3,15 @@ package dev.inmo.tgbotapi.types.message
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage
+import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentInfo
 import com.soywiz.klock.DateTime
+import dev.inmo.tgbotapi.types.message.abstracts.*
 
-data class ChannelMessage<T: MessageContent>(
+data class PrivateMessageImpl<T: MessageContent>(
     override val messageId: MessageIdentifier,
+    override val user: User,
     override val chat: Chat,
     override val content: T,
     override val date: DateTime,
@@ -18,5 +20,8 @@ data class ChannelMessage<T: MessageContent>(
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
-    val authorSignature: AuthorSignature?
-) : PossiblySentViaBotCommonMessage<T>
+    val paymentInfo: SuccessfulPaymentInfo?
+) : PrivateMessage<T>
+
+@Deprecated("Renamed", ReplaceWith("PrivateMessageImpl", "dev.inmo.tgbotapi.types.message.PrivateMessageImpl"))
+typealias CommonMessageImpl<T> = PrivateMessageImpl<T>

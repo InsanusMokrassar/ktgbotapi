@@ -2,6 +2,8 @@
 
 ## 0.30.0 Bot API 5.0
 
+**THIS UPDATE CONTAINS A LOT OF BREAKING CHANGES. PLEASE, BE CAREFUL ON UPGRADING OF YOUR PROJECT**
+
 * `Core`:
     * Support of `logOut` method (`LogOut` object as a `Request`)
     * Support of `close` method (`Close` object as a `Request`)
@@ -43,6 +45,19 @@
     * Property `pollQuestionTextLength` now have maximum up to `300`
     * Anonymous Admins:
         * New field `AdministratorChatMember#isAnonymous`
+    * Several new interfaces of messages:
+        * `SignedMessage` - any message which possibly have `authorSignature`
+        * `WithSenderChatMessage` - any message which have `senderChat`. Property `senderChat` is not-nullable due to
+        separation of implementators
+        * `PublicMessage` - all channel messages have property `val chat: PublicChat` instead of common `val chat: Chat`
+            * `ChannelMessage` - all channel messages have property `val chat: ChannelChat` instead of common `val chat: Chat`
+                * Old `ChannelMessage` was safely renamed to `ChannelMessageImpl` (old name was set as typealias and deprecated)
+            * `GroupMessage` - all group messages have property `val chat: GroupChat` instead of common `val chat: Chat`
+                * `FromChannelGroupMessage` - instances should have property `val channel: ChannelChat`
+                * `AnonymousGroupMessage` - instances may have setup property `authorSignature`
+                * `CommonGroupMessage` - just common message
+            * `PrivateMessage` - works like previous `CommonMessageImpl`
+            * Previous `CommonMessageImpl` safely renamed to `PrivateMessageImpl`
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`

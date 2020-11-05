@@ -3,17 +3,16 @@ package dev.inmo.tgbotapi.types.message
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage
-import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentInfo
 import com.soywiz.klock.DateTime
+import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
+import dev.inmo.tgbotapi.types.message.abstracts.ChannelMessage
 
-data class CommonMessageImpl<T: MessageContent>(
+data class ChannelMessageImpl<T: MessageContent>(
     override val messageId: MessageIdentifier,
-    override val user: User,
-    override val chat: Chat,
+    override val chat: ChannelChat,
     override val content: T,
     override val date: DateTime,
     override val editDate: DateTime?,
@@ -21,5 +20,8 @@ data class CommonMessageImpl<T: MessageContent>(
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
-    val paymentInfo: SuccessfulPaymentInfo?
-) : PossiblySentViaBotCommonMessage<T>, FromUserMessage
+    override val authorSignature: AuthorSignature?
+) : ChannelMessage<T>
+
+@Deprecated("Renamed", ReplaceWith("ChannelMessageImpl", "dev.inmo.tgbotapi.types.message.ChannelMessageImpl"))
+typealias ChannelMessage<T> = ChannelMessageImpl<T>
