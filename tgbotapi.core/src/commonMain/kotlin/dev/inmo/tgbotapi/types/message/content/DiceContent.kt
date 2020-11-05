@@ -16,12 +16,14 @@ data class DiceContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<DiceContent>> = SendDice(
         chatId,
         dice.animationType,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 }

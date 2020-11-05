@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendAnimation
@@ -22,6 +23,7 @@ suspend fun TelegramBot.sendAnimation(
     height: Int? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendAnimation(
@@ -35,6 +37,7 @@ suspend fun TelegramBot.sendAnimation(
         height,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 )
@@ -49,9 +52,10 @@ suspend fun TelegramBot.sendAnimation(
     height: Int? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
-    chatId, animation.fileId, animation.thumb ?.fileId, text, parseMode, duration, width, height, disableNotification, replyToMessageId, replyMarkup
+    chatId, animation.fileId, animation.thumb ?.fileId, text, parseMode, duration, width, height, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 suspend fun TelegramBot.sendAnimation(
@@ -65,8 +69,9 @@ suspend fun TelegramBot.sendAnimation(
     height: Int? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, thumb, text, parseMode, duration, width, height, disableNotification, replyToMessageId, replyMarkup)
+) = sendAnimation(chat.id, animation, thumb, text, parseMode, duration, width, height, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend fun TelegramBot.sendAnimation(
     chat: Chat,
@@ -78,8 +83,9 @@ suspend fun TelegramBot.sendAnimation(
     height: Int? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, text, parseMode, duration, width, height, disableNotification, replyToMessageId, replyMarkup)
+) = sendAnimation(chat.id, animation, text, parseMode, duration, width, height, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithAnimation(
     to: Message,
@@ -91,6 +97,7 @@ suspend inline fun TelegramBot.replyWithAnimation(
     width: Int? = null,
     height: Int? = null,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
     to.chat,
@@ -103,6 +110,7 @@ suspend inline fun TelegramBot.replyWithAnimation(
     height,
     disableNotification,
     to.messageId,
+    allowSendingWithoutReply,
     replyMarkup
 )
 
@@ -115,8 +123,9 @@ suspend inline fun TelegramBot.replyWithAnimation(
     width: Int? = null,
     height: Int? = null,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(to.chat, animation, text, parseMode, duration, width, height, disableNotification, to.messageId, replyMarkup)
+) = sendAnimation(to.chat, animation, text, parseMode, duration, width, height, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -127,5 +136,126 @@ suspend inline fun TelegramBot.reply(
     width: Int? = null,
     height: Int? = null,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = replyWithAnimation(to, animation, text, parseMode, duration, width, height, disableNotification, replyMarkup)
+) = replyWithAnimation(to, animation, text, parseMode, duration, width, height, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+
+suspend fun TelegramBot.sendAnimation(
+    chatId: ChatIdentifier,
+    animation: InputFile,
+    thumb: InputFile? = null,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = execute(
+    SendAnimation(
+        chatId,
+        animation,
+        thumb,
+        entities,
+        duration,
+        width,
+        height,
+        disableNotification,
+        replyToMessageId,
+        allowSendingWithoutReply,
+        replyMarkup
+    )
+)
+
+suspend fun TelegramBot.sendAnimation(
+    chatId: ChatIdentifier,
+    animation: AnimationFile,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendAnimation(
+    chatId, animation.fileId, animation.thumb ?.fileId, entities, duration, width, height, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+)
+
+suspend fun TelegramBot.sendAnimation(
+    chat: Chat,
+    animation: InputFile,
+    thumb: InputFile? = null,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendAnimation(chat.id, animation, thumb, entities, duration, width, height, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+
+suspend fun TelegramBot.sendAnimation(
+    chat: Chat,
+    animation: AnimationFile,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendAnimation(chat.id, animation, entities, duration, width, height, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+
+suspend inline fun TelegramBot.replyWithAnimation(
+    to: Message,
+    animation: InputFile,
+    thumb: InputFile? = null,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendAnimation(
+    to.chat,
+    animation,
+    thumb,
+    entities,
+    duration,
+    width,
+    height,
+    disableNotification,
+    to.messageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
+
+suspend inline fun TelegramBot.replyWithAnimation(
+    to: Message,
+    animation: AnimationFile,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendAnimation(to.chat, animation, entities, duration, width, height, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    animation: AnimationFile,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = replyWithAnimation(to, animation, entities, duration, width, height, disableNotification, allowSendingWithoutReply, replyMarkup)

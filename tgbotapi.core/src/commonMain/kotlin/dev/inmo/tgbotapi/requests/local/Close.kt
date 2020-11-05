@@ -16,7 +16,7 @@ import kotlinx.serialization.builtins.serializer
 @Serializable
 object Close : SimpleRequest<Boolean> {
     override val requestSerializer: SerializationStrategy<*>
-        get() = LogOut.serializer()
+        get() = serializer()
 
     override fun method(): String = "close"
 

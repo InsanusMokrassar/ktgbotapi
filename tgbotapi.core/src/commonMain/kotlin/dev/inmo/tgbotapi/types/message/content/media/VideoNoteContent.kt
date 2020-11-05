@@ -18,26 +18,17 @@ data class VideoNoteContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<VideoNoteContent>> = createResend(chatId, null, null, disableNotification, replyToMessageId, replyMarkup)
-
-    fun createResend(
-        chatId: ChatIdentifier,
-        caption: String?,
-        parseMode: ParseMode? = null,
-        disableNotification: Boolean = false,
-        replyToMessageId: MessageIdentifier? = null,
-        replyMarkup: KeyboardMarkup? = null
     ): Request<ContentMessage<VideoNoteContent>> = SendVideoNote(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        caption,
-        parseMode,
         media.duration,
         media.width,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

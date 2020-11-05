@@ -24,6 +24,7 @@ data class TextContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<TextContent>> = SendTextMessage(
         chatId,
@@ -32,6 +33,7 @@ data class TextContent(
         false,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -39,11 +41,13 @@ data class TextContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): List<Request<ContentMessage<TextContent>>> = createResends(
         chatId,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup,
         HTMLParseMode
     )
@@ -52,6 +56,7 @@ data class TextContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?,
         parseMode: ParseMode = HTMLParseMode
     ): List<Request<ContentMessage<TextContent>>> = when (parseMode) {
@@ -66,6 +71,7 @@ data class TextContent(
             false,
             disableNotification,
             replyToMessageId,
+            allowSendingWithoutReply,
             replyMarkup
         )
     }

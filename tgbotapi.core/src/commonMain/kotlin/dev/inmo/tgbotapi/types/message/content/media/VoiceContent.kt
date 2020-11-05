@@ -25,6 +25,7 @@ data class VoiceContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VoiceContent>> = SendVoice(
         chatId,
@@ -34,6 +35,7 @@ data class VoiceContent(
         media.duration,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

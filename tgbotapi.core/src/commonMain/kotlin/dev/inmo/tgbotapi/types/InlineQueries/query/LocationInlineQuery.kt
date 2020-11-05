@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.InlineQueries.query
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery
+import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 
 data class LocationInlineQuery(
@@ -9,5 +10,5 @@ data class LocationInlineQuery(
     override val from: User,
     override val query: String,
     override val offset: String,
-    val location: StaticLocation
+    val location: Location
 ) : InlineQuery

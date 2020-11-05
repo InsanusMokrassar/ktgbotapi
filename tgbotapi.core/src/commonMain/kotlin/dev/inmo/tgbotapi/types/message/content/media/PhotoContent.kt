@@ -26,6 +26,7 @@ data class PhotoContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<PhotoContent>> = SendPhoto(
         chatId,
@@ -34,6 +35,7 @@ data class PhotoContent(
         HTMLParseMode,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

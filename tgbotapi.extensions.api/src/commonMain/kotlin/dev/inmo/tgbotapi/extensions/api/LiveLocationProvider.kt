@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.extensions.api
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.edit.LiveLocation.editLiveLocation
 import dev.inmo.tgbotapi.extensions.api.edit.LiveLocation.stopLiveLocation
-import dev.inmo.tgbotapi.requests.send.SendLocation
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -13,14 +12,15 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
-import dev.inmo.tgbotapi.types.location.StaticLocation
+import dev.inmo.tgbotapi.requests.send.SendLiveLocation
+import dev.inmo.tgbotapi.types.location.*
 import io.ktor.utils.io.core.Closeable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
 val defaultLivePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
-class LiveLocation internal constructor(
+class LiveLocationProvider internal constructor(
     private val requestsExecutor: TelegramBot,
     scope: CoroutineScope,
     autoCloseTimeDelay: Double,
@@ -40,13 +40,13 @@ class LiveLocation internal constructor(
         get() = field || leftUntilCloseMillis.millisecondsLong < 0L
 
     private var message: ContentMessage<LocationContent> = initMessage
-    val lastLocation: StaticLocation
-        get() = message.content.location
+    val lastLocation: LiveLocation
+        get() = message.content.location as LiveLocation
 
     suspend fun updateLocation(
-        location: StaticLocation,
+        location: LiveLocation,
         replyMarkup: InlineKeyboardMarkup? = null
-    ): StaticLocation {
+    ): LiveLocation {
         if (!isClosed) {
             message = requestsExecutor.editLiveLocation(
                 message,
@@ -74,24 +74,32 @@ suspend fun TelegramBot.startLiveLocation(
     latitude: Double,
     longitude: Double,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    initHorizontalAccuracy: Meters? = null,
+    initHeading: Degrees? = null,
+    initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): LiveLocation {
+): LiveLocationProvider {
     val liveTimeAsDouble = liveTimeMillis.toDouble()
     val locationMessage = execute(
-        SendLocation(
+        SendLiveLocation(
             chatId,
             latitude,
             longitude,
-            ceil(liveTimeAsDouble / 1000).toLong(),
+            ceil(liveTimeAsDouble / 1000).toInt(),
+            initHorizontalAccuracy,
+            initHeading,
+            initProximityAlertRadius,
             disableNotification,
             replyToMessageId,
+            allowSendingWithoutReply,
             replyMarkup
         )
     )
 
-    return LiveLocation(
+    return LiveLocationProvider(
         this,
         scope,
         liveTimeAsDouble,
@@ -105,11 +113,26 @@ suspend fun TelegramBot.startLiveLocation(
     latitude: Double,
     longitude: Double,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    initHorizontalAccuracy: Meters? = null,
+    initHeading: Degrees? = null,
+    initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): LiveLocation = startLiveLocation(
-    scope, chat.id, latitude, longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
+): LiveLocationProvider = startLiveLocation(
+    scope,
+    chat.id,
+    latitude,
+    longitude,
+    liveTimeMillis,
+    initHorizontalAccuracy,
+    initHeading,
+    initProximityAlertRadius,
+    disableNotification,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
 )
 
 suspend fun TelegramBot.startLiveLocation(
@@ -117,11 +140,26 @@ suspend fun TelegramBot.startLiveLocation(
     chatId: ChatId,
     location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    initHorizontalAccuracy: Meters? = null,
+    initHeading: Degrees? = null,
+    initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): LiveLocation = startLiveLocation(
-    scope, chatId, location.latitude, location.longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
+): LiveLocationProvider = startLiveLocation(
+    scope,
+    chatId,
+    location.latitude,
+    location.longitude,
+    liveTimeMillis,
+    initHorizontalAccuracy,
+    initHeading,
+    initProximityAlertRadius,
+    disableNotification,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
 )
 
 suspend fun TelegramBot.startLiveLocation(
@@ -129,11 +167,26 @@ suspend fun TelegramBot.startLiveLocation(
     chat: Chat,
     location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    initHorizontalAccuracy: Meters? = null,
+    initHeading: Degrees? = null,
+    initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): LiveLocation = startLiveLocation(
-    scope, chat.id, location.latitude, location.longitude, liveTimeMillis, disableNotification, replyToMessageId, replyMarkup
+): LiveLocationProvider = startLiveLocation(
+    scope,
+    chat.id,
+    location.latitude,
+    location.longitude,
+    liveTimeMillis,
+    initHorizontalAccuracy,
+    initHeading,
+    initProximityAlertRadius,
+    disableNotification,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
 )
 
 suspend inline fun TelegramBot.replyWithLiveLocation(
@@ -142,15 +195,48 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     latitude: Double,
     longitude: Double,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    initHorizontalAccuracy: Meters? = null,
+    initHeading: Degrees? = null,
+    initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = startLiveLocation(scope, to.chat, latitude, longitude, liveTimeMillis, disableNotification, to.messageId, replyMarkup)
+) = startLiveLocation(
+    scope,
+    to.chat,
+    latitude,
+    longitude,
+    liveTimeMillis,
+    initHorizontalAccuracy,
+    initHeading,
+    initProximityAlertRadius,
+    disableNotification,
+    to.messageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
 
 suspend inline fun TelegramBot.replyWithLiveLocation(
     to: Message,
     scope: CoroutineScope,
     location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    initHorizontalAccuracy: Meters? = null,
+    initHeading: Degrees? = null,
+    initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = startLiveLocation(scope, to.chat, location, liveTimeMillis, disableNotification, to.messageId, replyMarkup)
+) = startLiveLocation(
+    scope,
+    to.chat,
+    location,
+    liveTimeMillis,
+    initHorizontalAccuracy,
+    initHeading,
+    initProximityAlertRadius,
+    disableNotification,
+    to.messageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)

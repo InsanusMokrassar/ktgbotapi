@@ -27,9 +27,10 @@ suspend fun TelegramBot.sendInvoice(
     priceDependOnShipAddress: Boolean = false,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
-    SendInvoice(chatId, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, replyMarkup)
+    SendInvoice(chatId, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 )
 
 suspend fun TelegramBot.sendInvoice(
@@ -51,8 +52,9 @@ suspend fun TelegramBot.sendInvoice(
     priceDependOnShipAddress: Boolean = false,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(user.id, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, replyMarkup)
+) = sendInvoice(user.id, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithInvoice(
     to: Message,
@@ -72,5 +74,6 @@ suspend inline fun TelegramBot.replyWithInvoice(
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(to.chat.id, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, to.messageId, replyMarkup)
+) = sendInvoice(to.chat.id, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)

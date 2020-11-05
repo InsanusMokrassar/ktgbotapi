@@ -26,6 +26,7 @@ data class DocumentContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<DocumentContent>> = SendDocument(
         chatId,
@@ -35,6 +36,7 @@ data class DocumentContent(
         HTMLParseMode,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

@@ -7,7 +7,9 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class LocationContent(
     val location: Location
 ) : MessageContent {
@@ -23,6 +25,7 @@ data class LocationContent(
             location.longitude,
             disableNotification,
             replyToMessageId,
+            allowSendingWithoutReply,
             replyMarkup
         )
         is LiveLocation -> SendLiveLocation(
@@ -35,6 +38,7 @@ data class LocationContent(
             location.proximityAlertRadius,
             disableNotification,
             replyToMessageId,
+            allowSendingWithoutReply,
             replyMarkup
         )
     }

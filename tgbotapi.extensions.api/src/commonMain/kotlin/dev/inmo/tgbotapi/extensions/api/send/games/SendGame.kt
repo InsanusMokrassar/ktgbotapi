@@ -14,10 +14,11 @@ suspend fun TelegramBot.sendGame(
     gameShortName: String,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendGame(
-        chatId, gameShortName, disableNotification, replyToMessageId, replyMarkup
+        chatId, gameShortName, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
     )
 )
 
@@ -26,9 +27,10 @@ suspend fun TelegramBot.sendGame(
     gameShortName: String,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chat.id, gameShortName, disableNotification, replyToMessageId, replyMarkup
+    chat.id, gameShortName, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 suspend fun TelegramBot.sendGame(
@@ -36,9 +38,10 @@ suspend fun TelegramBot.sendGame(
     game: Game,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chatId, game.title, disableNotification, replyToMessageId, replyMarkup
+    chatId, game.title, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 suspend fun TelegramBot.sendGame(
@@ -46,32 +49,36 @@ suspend fun TelegramBot.sendGame(
     game: Game,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chat.id, game.title, disableNotification, replyToMessageId, replyMarkup
+    chat.id, game.title, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 suspend inline fun TelegramBot.replyWithGame(
     to: Message,
     gameShortName: String,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    to.chat, gameShortName, disableNotification, to.messageId, replyMarkup
+    to.chat, gameShortName, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup
 )
 
 suspend inline fun TelegramBot.replyWithGame(
     to: Message,
     game: Game,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    to.chat, game.title, disableNotification, to.messageId, replyMarkup
+    to.chat, game.title, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup
 )
 
 suspend inline fun TelegramBot.reply(
     to: Message,
     game: Game,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = replyWithGame(to, game, disableNotification, replyMarkup)
+) = replyWithGame(to, game, disableNotification, allowSendingWithoutReply, replyMarkup)

@@ -27,6 +27,7 @@ data class AnimationContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<AnimationContent>> = SendAnimation(
         chatId,
@@ -39,6 +40,7 @@ data class AnimationContent(
         media.height,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

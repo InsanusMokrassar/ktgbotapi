@@ -46,6 +46,7 @@ fun SendPoll(
     isClosed: Boolean = false,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
     chatId,
@@ -53,6 +54,7 @@ fun SendPoll(
     options,
     isAnonymous,
     isClosed,
+    allowSendingWithoutReply = allowSendingWithoutReply,
     disableNotification = disableNotification,
     replyToMessageId = replyToMessageId,
     replyMarkup = replyMarkup

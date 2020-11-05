@@ -27,6 +27,7 @@ data class VideoContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VideoContent>> = SendVideo(
         chatId,
@@ -40,6 +41,7 @@ data class VideoContent(
         null,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

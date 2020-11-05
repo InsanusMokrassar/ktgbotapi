@@ -7,21 +7,25 @@ import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
 
 suspend fun TelegramBot.unbanChatMember(
     chatId: ChatIdentifier,
-    userId: UserId
-) = execute(UnbanChatMember(chatId, userId))
+    userId: UserId,
+    onlyIfBanned: Boolean? = null
+) = execute(UnbanChatMember(chatId, userId, onlyIfBanned))
 
 suspend fun TelegramBot.unbanChatMember(
     chat: PublicChat,
-    userId: UserId
-) = unbanChatMember(chat.id, userId)
+    userId: UserId,
+    onlyIfBanned: Boolean? = null
+) = unbanChatMember(chat.id, userId, onlyIfBanned)
 
 suspend fun TelegramBot.unbanChatMember(
     chatId: ChatId,
-    user: User
-) = unbanChatMember(chatId, user.id)
+    user: User,
+    onlyIfBanned: Boolean? = null
+) = unbanChatMember(chatId, user.id, onlyIfBanned)
 
 suspend fun TelegramBot.unbanChatMember(
     chat: PublicChat,
-    user: User
-) = unbanChatMember(chat.id, user.id)
+    user: User,
+    onlyIfBanned: Boolean? = null
+) = unbanChatMember(chat.id, user.id, onlyIfBanned)
 

@@ -15,9 +15,10 @@ suspend fun TelegramBot.sendSticker(
     sticker: InputFile,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendSticker(chatId, sticker, disableNotification, replyToMessageId, replyMarkup)
+    SendSticker(chatId, sticker, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 )
 
 suspend fun TelegramBot.sendSticker(
@@ -25,42 +26,48 @@ suspend fun TelegramBot.sendSticker(
     sticker: InputFile,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat.id, sticker, disableNotification, replyToMessageId, replyMarkup)
+) = sendSticker(chat.id, sticker, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend fun TelegramBot.sendSticker(
     chatId: ChatIdentifier,
     sticker: Sticker,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chatId, sticker.fileId, disableNotification, replyToMessageId, replyMarkup)
+) = sendSticker(chatId, sticker.fileId, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend fun TelegramBot.sendSticker(
     chat: Chat,
     sticker: Sticker,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat, sticker.fileId, disableNotification, replyToMessageId, replyMarkup)
+) = sendSticker(chat, sticker.fileId, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithSticker(
     to: Message,
     sticker: InputFile,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(to.chat, sticker, disableNotification, to.messageId, replyMarkup)
+) = sendSticker(to.chat, sticker, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithSticker(
     to: Message,
     sticker: Sticker,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(to.chat, sticker, disableNotification, to.messageId, replyMarkup)
+) = sendSticker(to.chat, sticker, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
     sticker: Sticker,
     disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = replyWithSticker(to, sticker, disableNotification, replyMarkup)
+) = replyWithSticker(to, sticker, disableNotification, allowSendingWithoutReply, replyMarkup)

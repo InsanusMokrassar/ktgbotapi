@@ -11,6 +11,7 @@ interface ResendableContent {
         chatId: ChatIdentifier,
         disableNotification: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
+        allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<out Message>
 
@@ -18,6 +19,7 @@ interface ResendableContent {
         chatId: ChatIdentifier,
         disableNotification: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
+        allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): List<Request<out Message>> = listOf(createResend(chatId, disableNotification, replyToMessageId, replyMarkup))
+    ): List<Request<out Message>> = listOf(createResend(chatId, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup))
 }

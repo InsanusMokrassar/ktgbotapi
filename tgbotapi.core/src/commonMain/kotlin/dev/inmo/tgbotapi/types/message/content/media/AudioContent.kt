@@ -24,6 +24,7 @@ data class AudioContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<AudioContent>> = SendAudio(
         chatId,
@@ -36,6 +37,7 @@ data class AudioContent(
         media.title,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
