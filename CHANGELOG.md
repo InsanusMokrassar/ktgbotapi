@@ -58,6 +58,7 @@
                 * `CommonGroupMessage` - just common message
             * `PrivateMessage` - works like previous `CommonMessageImpl`
             * Previous `CommonMessageImpl` safely renamed to `PrivateMessageImpl`
+    * New property `PromoteChatMember#isAnonymous`
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`

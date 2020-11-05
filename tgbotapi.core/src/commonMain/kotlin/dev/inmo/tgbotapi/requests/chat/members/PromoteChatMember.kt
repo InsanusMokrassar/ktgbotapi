@@ -14,6 +14,8 @@ data class PromoteChatMember(
     override val userId: UserId,
     @SerialName(untilDateField)
     override val untilDate: TelegramDate? = null,
+    @SerialName(isAnonymousField)
+    private val isAnonymous: Boolean? = null,
     @SerialName(canChangeInfoField)
     private val canChangeInfo: Boolean? = null,
     @SerialName(canPostMessagesField)
