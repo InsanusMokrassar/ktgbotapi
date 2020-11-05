@@ -4,6 +4,9 @@
 
 **THIS UPDATE CONTAINS A LOT OF BREAKING CHANGES. PLEASE, BE CAREFUL ON UPGRADING OF YOUR PROJECT**
 
+* `Common`:
+    * `Version`:
+        * `Coroutine`: `1.4.0` -> `1.4.1`
 * `Core`:
     * Support of `logOut` method (`LogOut` object as a `Request`)
     * Support of `close` method (`Close` object as a `Request`)
