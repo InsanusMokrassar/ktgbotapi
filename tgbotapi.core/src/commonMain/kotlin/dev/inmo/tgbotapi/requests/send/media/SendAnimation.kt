@@ -29,6 +29,7 @@ fun SendAnimation(
     height: Int? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AnimationContent>> {
     val animationAsFileId = (animation as? FileId) ?.fileId
@@ -48,6 +49,7 @@ fun SendAnimation(
         height,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -71,6 +73,7 @@ fun SendAnimation(
     height: Int? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AnimationContent>> {
     val animationAsFileId = (animation as? FileId) ?.fileId
@@ -90,6 +93,7 @@ fun SendAnimation(
         height,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -130,6 +134,8 @@ data class SendAnimationData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<AnimationContent>>,

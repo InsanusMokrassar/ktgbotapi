@@ -17,12 +17,14 @@ fun SendSticker(
     sticker: InputFile,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<StickerContent>> = SendStickerByFileId(
     chatId,
     sticker as? FileId,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 ).let {
     when (sticker) {
@@ -44,6 +46,8 @@ data class SendStickerByFileId internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ContentMessage<StickerContent>> {

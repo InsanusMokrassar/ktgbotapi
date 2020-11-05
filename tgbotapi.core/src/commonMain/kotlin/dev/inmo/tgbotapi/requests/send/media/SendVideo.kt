@@ -30,6 +30,7 @@ fun SendVideo(
     supportStreaming: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VideoContent>> {
     val videoAsFileId = (video as? FileId) ?.fileId
@@ -50,6 +51,7 @@ fun SendVideo(
         supportStreaming,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -74,6 +76,7 @@ fun SendVideo(
     supportStreaming: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VideoContent>> {
     val videoAsFileId = (video as? FileId) ?.fileId
@@ -94,6 +97,7 @@ fun SendVideo(
         supportStreaming,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -136,6 +140,8 @@ data class SendVideoData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<VideoContent>>,

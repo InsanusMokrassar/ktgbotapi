@@ -35,6 +35,7 @@ fun SendDocument(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): Request<ContentMessage<DocumentContent>> {
@@ -52,6 +53,7 @@ fun SendDocument(
         null,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup,
         disableContentTypeDetection
     )
@@ -82,6 +84,7 @@ fun SendDocument(
     entities: List<TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): Request<ContentMessage<DocumentContent>> {
@@ -99,6 +102,7 @@ fun SendDocument(
         entities.toRawMessageEntities(),
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup,
         disableContentTypeDetection
     )
@@ -143,6 +147,8 @@ data class SendDocumentData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null,
     @SerialName(disableContentTypeDetectionField)

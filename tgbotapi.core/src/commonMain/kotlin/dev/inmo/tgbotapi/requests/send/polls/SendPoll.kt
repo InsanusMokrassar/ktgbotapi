@@ -66,6 +66,7 @@ fun Poll.createRequest(
     chatId: ChatIdentifier,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = when (this) {
     is RegularPoll -> SendRegularPoll(
@@ -78,6 +79,7 @@ fun Poll.createRequest(
         scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
     is QuizPoll -> correctOptionId ?.let { correctOptionId ->
@@ -92,6 +94,7 @@ fun Poll.createRequest(
             scheduledCloseInfo,
             disableNotification,
             replyToMessageId,
+            allowSendingWithoutReply,
             replyMarkup
         )
     } ?: SendRegularPoll(
@@ -104,6 +107,7 @@ fun Poll.createRequest(
         scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
     is UnknownPollType -> SendRegularPoll(
@@ -116,6 +120,7 @@ fun Poll.createRequest(
         scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 }
@@ -167,6 +172,8 @@ data class SendRegularPoll(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendPoll() {
@@ -200,6 +207,7 @@ fun SendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
     chatId,
@@ -214,6 +222,7 @@ fun SendQuizPoll(
     closeInfo,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 )
 
@@ -228,6 +237,7 @@ fun SendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
     chatId,
@@ -242,6 +252,7 @@ fun SendQuizPoll(
     closeInfo,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 )
 
@@ -271,6 +282,8 @@ data class SendQuizPoll internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendPoll(), ExplainedOutput {

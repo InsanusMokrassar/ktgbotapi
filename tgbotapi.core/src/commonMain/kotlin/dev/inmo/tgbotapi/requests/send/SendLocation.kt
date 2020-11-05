@@ -20,6 +20,7 @@ fun SendLocation(
     longitude: Double,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation(
     chatId,
@@ -31,6 +32,7 @@ fun SendLocation(
     null,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 )
 
@@ -40,8 +42,9 @@ fun SendStaticLocation(
     longitude: Double,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = SendLocation(chatId, latitude, longitude, disableNotification, replyToMessageId, replyMarkup)
+) = SendLocation(chatId, latitude, longitude, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 fun SendLiveLocation(
     chatId: ChatIdentifier,
@@ -53,6 +56,7 @@ fun SendLiveLocation(
     proximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendLocation(
     chatId,
@@ -64,6 +68,7 @@ fun SendLiveLocation(
     proximityAlertRadius,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 )
 
@@ -87,6 +92,8 @@ data class SendLocation internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<LocationContent>>,

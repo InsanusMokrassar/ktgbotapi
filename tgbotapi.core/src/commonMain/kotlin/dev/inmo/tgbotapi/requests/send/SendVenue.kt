@@ -30,6 +30,8 @@ data class SendVenue(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<VenueContent>>,
@@ -42,6 +44,7 @@ data class SendVenue(
         venue: Venue,
         disableNotification: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
+        allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
     ): this(
         chatId,
@@ -52,6 +55,7 @@ data class SendVenue(
         venue.foursquareId,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -66,11 +70,13 @@ fun Venue.toRequest(
     chatId: ChatIdentifier,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): SendVenue = SendVenue(
     chatId,
     this,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 )

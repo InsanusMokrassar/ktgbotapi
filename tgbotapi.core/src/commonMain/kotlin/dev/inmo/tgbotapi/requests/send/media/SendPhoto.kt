@@ -24,6 +24,7 @@ fun SendPhoto(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
@@ -34,6 +35,7 @@ fun SendPhoto(
         null,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
     return data.photo ?.let {
@@ -50,6 +52,7 @@ fun SendPhoto(
     entities: List<TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
@@ -60,6 +63,7 @@ fun SendPhoto(
         entities.toRawMessageEntities(),
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
     return data.photo ?.let {
@@ -89,6 +93,8 @@ data class SendPhotoData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<PhotoContent>>,

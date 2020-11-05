@@ -25,8 +25,9 @@ fun CopyMessage(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = CopyMessage(fromChatId, toChatId, messageId, text, parseMode, null, disableNotification, replyToMessageId, replyMarkup)
+) = CopyMessage(fromChatId, toChatId, messageId, text, parseMode, null, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 fun CopyMessage(
     fromChatId: ChatIdentifier,
@@ -35,8 +36,9 @@ fun CopyMessage(
     entities: List<TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = CopyMessage(fromChatId, toChatId, messageId, entities.makeString(), null, entities.toRawMessageEntities(), disableNotification, replyToMessageId, replyMarkup)
+) = CopyMessage(fromChatId, toChatId, messageId, entities.makeString(), null, entities.toRawMessageEntities(), disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 @Serializable
 data class CopyMessage internal constructor(
@@ -56,6 +58,8 @@ data class CopyMessage internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ): SimpleRequest<ContentMessage<*>>,

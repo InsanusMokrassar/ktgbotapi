@@ -26,6 +26,7 @@ fun SendVoice(
     duration: Long? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFileId = (voice as? FileId) ?.fileId
@@ -40,6 +41,7 @@ fun SendVoice(
         duration,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -60,6 +62,7 @@ fun SendVoice(
     duration: Long? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFileId = (voice as? FileId) ?.fileId
@@ -74,6 +77,7 @@ fun SendVoice(
         duration,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -108,6 +112,8 @@ data class SendVoiceData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<VoiceContent>>,

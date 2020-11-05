@@ -26,6 +26,7 @@ fun SendTextMessage(
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
     chatId,
@@ -35,6 +36,7 @@ fun SendTextMessage(
     disableWebPagePreview,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 )
 
@@ -44,6 +46,7 @@ fun SendTextMessage(
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
     chatId,
@@ -53,6 +56,7 @@ fun SendTextMessage(
     disableWebPagePreview,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 )
 
@@ -72,6 +76,8 @@ data class SendTextMessage internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<TextContent>>,
