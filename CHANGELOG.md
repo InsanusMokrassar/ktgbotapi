@@ -41,6 +41,8 @@
         * `LocationContent#createResend` now can create `LiveLocation`
     * Support of `ProximityAlertTriggered`. It is `CommonEvent`
     * Property `pollQuestionTextLength` now have maximum up to `300`
+    * Anonymous Admins:
+        * New field `AdministratorChatMember#isAnonymous`
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`

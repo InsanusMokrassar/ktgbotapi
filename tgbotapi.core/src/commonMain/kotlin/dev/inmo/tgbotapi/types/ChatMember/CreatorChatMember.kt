@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.User
 
 data class CreatorChatMember(
     override val user: User,
+    override val isAnonymous: Boolean,
     override val customTitle: String?
 ) : AdministratorChatMember {
     override val canBeEdited: Boolean = true
