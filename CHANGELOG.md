@@ -62,6 +62,7 @@
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`
+    * Extensions `TelegramBot#promoteChatMember` got `isAnonymous` parameter
 
 ## 0.29.4
 
