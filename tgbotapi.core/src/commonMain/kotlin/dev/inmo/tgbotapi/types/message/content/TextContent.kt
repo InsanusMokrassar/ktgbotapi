@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message.content
 
-import dev.inmo.tgbotapi.CommonAbstracts.FullTextSourcesList
+import dev.inmo.tgbotapi.CommonAbstracts.TextSourcesList
 import dev.inmo.tgbotapi.CommonAbstracts.TextPart
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.SendTextMessage
@@ -81,4 +81,4 @@ data class TextContent(
  * Convert its [TextContent.entities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
  * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
  */
-fun TextContent.fullEntitiesList(): FullTextSourcesList = text.fullListOfSubSource(entities).map { it.source }
+fun TextContent.fullEntitiesList(): TextSourcesList = text.fullListOfSubSource(entities).map { it.source }

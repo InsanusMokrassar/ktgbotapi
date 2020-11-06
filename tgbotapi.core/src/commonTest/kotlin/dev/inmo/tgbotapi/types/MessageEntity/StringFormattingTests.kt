@@ -1,5 +1,9 @@
-package dev.inmo.tgbotapi.utils
+package dev.inmo.tgbotapi.types.MessageEntity
 
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
+import dev.inmo.tgbotapi.CommonAbstracts.plus
+import dev.inmo.tgbotapi.utils.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -32,5 +36,21 @@ class StringFormattingTests {
             "```\n$originalHelloWorld\n```",
             originalHelloWorld.preMarkdown()
         )
+    }
+
+    @Test
+    fun testThatCreatingOfStringWithSimpleDSLWorksCorrectly() {
+        val sources: List<TextSource> = regular("It ") +
+            bold(italic("is") +
+                " " +
+                strikethrough(underline("simple"))) +
+                " hello world with " +
+                hashtag("tag") +
+                " and " +
+                mention("mention")
+        sources.toTextParts().testTextParts()
+
+        assertEquals(formattedV2Text, sources.toMarkdownV2Texts().first())
+        assertEquals(formattedHtmlText, sources.toHtmlTexts().first())
     }
 }

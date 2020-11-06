@@ -9,11 +9,21 @@ import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.*
 
 /**
+ * Allows to create bot using bot [urlsKeeper]
+ */
+fun telegramBot(
+    urlsKeeper: TelegramAPIUrlsKeeper
+): TelegramBot = KtorRequestsExecutor(
+    urlsKeeper,
+    HttpClient()
+)
+
+/**
  * Allows to create bot using bot [urlsKeeper] and already prepared [client]
  */
 fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
-    client: HttpClient = HttpClient()
+    client: HttpClient
 ): TelegramBot = KtorRequestsExecutor(
     urlsKeeper,
     client
@@ -66,8 +76,17 @@ inline fun telegramBot(
 @Suppress("NOTHING_TO_INLINE")
 inline fun telegramBot(
     token: String,
+    apiUrl: String = telegramBotAPIDefaultUrl
+): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, apiUrl))
+
+/**
+ * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]
+ */
+@Suppress("NOTHING_TO_INLINE")
+inline fun telegramBot(
+    token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
-    client: HttpClient = HttpClient()
+    client: HttpClient
 ): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, apiUrl), client)
 
 @Suppress("NOTHING_TO_INLINE")
@@ -106,7 +125,7 @@ inline fun telegramBot(
 inline fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
-    noinline clientConfig: HttpClientConfig<*>.() -> Unit = {}
+    noinline clientConfig: HttpClientConfig<*>.() -> Unit
 ) = telegramBot(
     TelegramAPIUrlsKeeper(token, apiUrl),
     clientConfig

@@ -29,4 +29,4 @@ interface ExplainedInput : Explained {
  * Convert its [ExplainedInput.explanationEntities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
  * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
  */
-fun ExplainedInput.fullEntitiesList(): FullTextSourcesList = explanation ?.fullListOfSubSource(explanationEntities) ?.map { it.source } ?: emptyList()
+fun ExplainedInput.fullEntitiesList(): TextSourcesList = explanation ?.fullListOfSubSource(explanationEntities) ?.map { it.source } ?: emptyList()

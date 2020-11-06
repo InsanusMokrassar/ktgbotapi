@@ -4,7 +4,10 @@ import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.MessageEntity.toTextParts
 import dev.inmo.tgbotapi.utils.*
 
-class BoldTextSource(
+/**
+ * @see bold
+ */
+data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
     override val textSources: List<TextSource>
 ) : MultilevelTextSource {
@@ -14,6 +17,8 @@ class BoldTextSource(
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun bold(text: String) = BoldTextSource(text, emptyList())
-@Suppress("NOTHING_TO_INLINE")
 inline fun bold(parts: List<TextSource>) = BoldTextSource(parts.makeString(), parts)
+@Suppress("NOTHING_TO_INLINE")
+inline fun bold(vararg parts: TextSource) = bold(parts.toList())
+@Suppress("NOTHING_TO_INLINE")
+inline fun bold(text: String) = bold(regular(text))

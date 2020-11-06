@@ -28,7 +28,7 @@ internal fun RawMessageEntity.asTextParts(
         "mention" -> MentionTextSource(sourceSubstring, shiftedSubSources)
         "hashtag" -> HashTagTextSource(sourceSubstring, shiftedSubSources)
         "cashtag" -> CashTagTextSource(sourceSubstring, shiftedSubSources)
-        "bot_command" -> BotCommandTextSource(sourceSubstring, shiftedSubSources)
+        "bot_command" -> BotCommandTextSource(sourceSubstring)
         "url" -> URLTextSource(sourceSubstring)
         "email" -> EMailTextSource(sourceSubstring, shiftedSubSources)
         "phone_number" -> PhoneNumberTextSource(sourceSubstring, shiftedSubSources)
@@ -128,6 +128,12 @@ internal fun List<TextSource>.toTextParts(preOffset: Int = 0): List<TextPart> {
             i = it.range.last + 1
         }
     }
+}
+
+fun String.removeLeading(word: String) = if (startsWith(word)){
+    substring(word.length)
+} else {
+    this
 }
 
 internal fun List<TextSource>.toRawMessageEntities(): List<RawMessageEntity> = toTextParts().asRawMessageEntities()

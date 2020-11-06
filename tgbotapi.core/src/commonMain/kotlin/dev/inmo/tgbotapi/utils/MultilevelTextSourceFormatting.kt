@@ -98,6 +98,16 @@ internal fun MultilevelTextSource.linkHTML(
 ) = "<a href=\"${link.toHtml()}\">${textSources.joinSubSourcesHtml()}</a>"
 
 
+internal fun MultilevelTextSource.optionalPrefix(
+    mustStartsWith: String,
+    controlWord: String = mustStartsWith
+) = if (source.startsWith(mustStartsWith)) {
+    ""
+} else {
+    controlWord
+}
+
+
 internal fun MultilevelTextSource.emailMarkdownV2(address: String): String = linkMarkdownV2("mailto://$address")
 internal fun MultilevelTextSource.emailHTML(address: String): String = linkHTML("mailto://$address}")
 
@@ -125,18 +135,21 @@ internal fun MultilevelTextSource.underlineHTML(): String = htmlDefault(htmlUnde
 internal fun MultilevelTextSource.textMentionMarkdownV2(userId: UserId): String = linkMarkdownV2(userId.link)
 internal fun MultilevelTextSource.textMentionHTML(userId: UserId): String = linkHTML(userId.link)
 
-internal fun MultilevelTextSource.mentionMarkdownV2(): String = "@${textSources.joinSubSourcesMarkdownV2()}"
-internal fun MultilevelTextSource.mentionHTML(): String = "@${textSources.joinSubSourcesHtml()}"
+internal fun MultilevelTextSource.mentionMarkdownV2(): String = optionalPrefix("@") + textSources.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.mentionHTML(): String = optionalPrefix("@") + textSources.joinSubSourcesHtml()
 
 
-internal fun MultilevelTextSource.hashTagMarkdownV2(): String = "\\#${textSources.joinSubSourcesMarkdownV2()}"
-internal fun MultilevelTextSource.hashTagHTML(): String = "#${textSources.joinSubSourcesHtml()}"
+internal fun MultilevelTextSource.hashTagMarkdownV2(): String = when {
+    source.startsWith("\\#") || source.startsWith("#") -> ""
+    else -> "\\#"
+} + textSources.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.hashTagHTML(): String = optionalPrefix("#") + textSources.joinSubSourcesHtml()
 
 
 internal fun MultilevelTextSource.phoneMarkdownV2(): String = textSources.joinSubSourcesMarkdownV2()
 internal fun MultilevelTextSource.phoneHTML(): String = textSources.joinSubSourcesHtml()
 
 
-internal fun MultilevelTextSource.commandMarkdownV2(): String = "/${textSources.joinSubSourcesMarkdownV2()}"
-internal fun MultilevelTextSource.commandHTML(): String = "/${textSources.joinSubSourcesHtml()}"
+internal fun MultilevelTextSource.commandMarkdownV2(): String = optionalPrefix("/") + textSources.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.commandHTML(): String = optionalPrefix("/") + textSources.joinSubSourcesHtml()
 

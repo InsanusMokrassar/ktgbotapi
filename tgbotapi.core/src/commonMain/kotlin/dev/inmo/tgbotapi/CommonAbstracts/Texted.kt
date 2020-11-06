@@ -29,4 +29,4 @@ interface TextedInput : Texted {
  * Convert its [TextedInput.textEntities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
  * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
  */
-fun TextedInput.fullEntitiesList(): FullTextSourcesList = text ?.fullListOfSubSource(textEntities) ?.map { it.source } ?: emptyList()
+fun TextedInput.fullEntitiesList(): TextSourcesList = text ?.fullListOfSubSource(textEntities) ?.map { it.source } ?: emptyList()

@@ -23,4 +23,4 @@ interface CaptionedInput : Captioned {
  * Convert its [CaptionedInput.captionEntities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
  * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
  */
-fun CaptionedInput.fullEntitiesList(): FullTextSourcesList = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()
+fun CaptionedInput.fullEntitiesList(): TextSourcesList = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()
