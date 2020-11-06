@@ -1,9 +1,6 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.FoursquareId
-import dev.inmo.tgbotapi.types.FoursquareType
-import dev.inmo.tgbotapi.types.GooglePlaceId
-import dev.inmo.tgbotapi.types.GooglePlaceType
+import dev.inmo.tgbotapi.types.*
 
 interface CommonVenueData : Titled {
     override val title: String

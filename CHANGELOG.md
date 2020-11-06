@@ -76,6 +76,7 @@
         formatter entities will use `RegularTextSource`
         * `MultilevelTextSource#textParts` has been deprecated. Now each `MultilevelTextSource` have its own
         `textSources` list
+    * New dsl for creating of `TextSource` lists
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`

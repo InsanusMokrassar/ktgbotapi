@@ -26,7 +26,15 @@ interface ExplainedInput : Explained {
 }
 
 /**
+ * @see ExplainedInput.explanationEntities
+ * @see justTextSources
+ */
+val ExplainedInput.textSources
+    get() = explanationEntities.justTextSources()
+
+/**
  * Convert its [ExplainedInput.explanationEntities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
  * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
  */
+@Deprecated("Currently list of entities already full. This method is redundant")
 fun ExplainedInput.fullEntitiesList(): TextSourcesList = explanation ?.fullListOfSubSource(explanationEntities) ?.map { it.source } ?: emptyList()
