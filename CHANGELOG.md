@@ -71,6 +71,11 @@
         * `List<TextSource>#separateForMessage`
         * `List<TextSource>#separateForCaption`
         * `List<TextSource>#separateForText`
+    * Rewritten work with text sources and text parts:
+        * Now any `Message` type with entities will have full list of entities. That means that parts without any
+        formatter entities will use `RegularTextSource`
+        * `MultilevelTextSource#textParts` has been deprecated. Now each `MultilevelTextSource` have its own
+        `textSources` list
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`

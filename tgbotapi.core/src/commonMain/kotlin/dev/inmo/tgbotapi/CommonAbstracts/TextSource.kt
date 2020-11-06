@@ -29,7 +29,7 @@ data class TextPart(
 
 fun List<TextPart>.justTextSources() = map { it.source }
 fun List<TextSource>.makeString() = joinToString("") { it.source }
-fun MultilevelTextSource.textParts(offset: Int): List<TextPart> = textSources.toTextParts(offset)
+internal fun MultilevelTextSource.textParts(offset: Int): List<TextPart> = textSources.toTextParts(offset)
 fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {
     if (isEmpty()) {
         return emptyList()
