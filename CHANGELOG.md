@@ -67,6 +67,10 @@
     * New request `CopyMessage`
     * New extension `List<TextSource>#makeString` for more comfortable work with new api with entities
     * Support for Google Places identifiers for venues
+    * New extensions for text sources separating:
+        * `List<TextSource>#separateForMessage`
+        * `List<TextSource>#separateForCaption`
+        * `List<TextSource>#separateForText`
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`
