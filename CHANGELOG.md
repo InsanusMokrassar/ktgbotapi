@@ -66,6 +66,7 @@
     * Update all classes which must have `entities`/`caption_entities` fields
     * New request `CopyMessage`
     * New extension `List<TextSource>#makeString` for more comfortable work with new api with entities
+    * Support for Google Places identifiers for venues
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`

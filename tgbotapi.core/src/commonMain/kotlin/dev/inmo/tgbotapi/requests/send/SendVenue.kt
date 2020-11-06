@@ -25,7 +25,13 @@ data class SendVenue(
     @SerialName(addressField)
     val address: String,
     @SerialName(foursquareIdField)
-    val foursquareId: String? = null,
+    val foursquareId: FoursquareId? = null,
+    @SerialName(foursquareTypeField)
+    val foursquareType: FoursquareType? = null,
+    @SerialName(googlePlaceIdField)
+    val googlePlaceId: GooglePlaceId? = null,
+    @SerialName(googlePlaceTypeField)
+    val googlePlaceType: GooglePlaceType? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
@@ -47,16 +53,19 @@ data class SendVenue(
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
     ): this(
-        chatId,
-        venue.location.latitude,
-        venue.location.longitude,
-        venue.title,
-        venue.address,
-        venue.foursquareId,
-        disableNotification,
-        replyToMessageId,
-        allowSendingWithoutReply,
-        replyMarkup
+        chatId = chatId,
+        latitude = venue.location.latitude,
+        longitude = venue.location.longitude,
+        title = venue.title,
+        address = venue.address,
+        foursquareId = venue.foursquareId,
+        foursquareType = venue.foursquareType,
+        googlePlaceId = venue.googlePlaceId,
+        googlePlaceType = venue.googlePlaceType,
+        disableNotification = disableNotification,
+        replyToMessageId = replyToMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyMarkup = replyMarkup
     )
 
     override fun method(): String = "sendVenue"

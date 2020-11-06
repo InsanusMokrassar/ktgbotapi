@@ -18,5 +18,9 @@ data class Venue(
     @SerialName(foursquareIdField)
     override val foursquareId: FoursquareId? = null,
     @SerialName(foursquareTypeField)
-    override val foursquareType: FoursquareType? = null
+    override val foursquareType: FoursquareType? = null,
+    @SerialName(googlePlaceIdField)
+    override val googlePlaceId: GooglePlaceId? = null,
+    @SerialName(googlePlaceTypeField)
+    override val googlePlaceType: GooglePlaceType? = null
 ) : CommonVenueData, Locationed by location
