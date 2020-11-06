@@ -92,11 +92,11 @@ internal data class RawMessage(
 ) {
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
-            it.fullListOfSubSource(caption_entities ?.asTextParts(caption) ?: emptyList())
+            (caption_entities ?: emptyList()).asTextParts(caption)
         } ?: emptyList()
 
         when {
-            text != null -> TextContent(text, text.fullListOfSubSource(entities ?.asTextParts(text) ?: emptyList()))
+            text != null -> TextContent(text, (entities ?: emptyList()).asTextParts(text))
             audio != null -> AudioContent(
                 audio,
                 caption,

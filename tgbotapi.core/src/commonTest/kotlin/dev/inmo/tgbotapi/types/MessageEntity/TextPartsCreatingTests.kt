@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
+import dev.inmo.tgbotapi.CommonAbstracts.justTextSources
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.utils.*
 import kotlin.test.*
@@ -32,43 +33,21 @@ class TextPartsCreatingTests {
             )
         )
 
-        val textParts = createTextPart(text, entities)
+        val textParts = entities.asTextParts(text)
 
+        assertTrue (textParts.first().source is RegularTextSource)
+        assertTrue (textParts[1].source is BoldTextSource)
+        assertTrue (textParts[2].source is RegularTextSource)
 
-        assertTrue (
-            textParts.first().source is BoldTextSource
-        )
-
-        val boldSource = textParts.first().source as BoldTextSource
-        assertTrue (
-            boldSource.textParts.first().source is ItalicTextSource
-        )
-        assertTrue (
-            boldSource.textParts[1].source is RegularTextSource
-        )
-        assertTrue (
-            boldSource.textParts[2].source is StrikethroughTextSource
-        )
-        assertTrue (
-            (boldSource.textParts[2].source as StrikethroughTextSource).textParts.first().source is UnderlineTextSource
-        )
-
-
-        val fullTextParts = text.fullListOfSubSource(textParts)
-
-        assertTrue(
-            fullTextParts.first().source is RegularTextSource
-        )
-        assertTrue(
-            fullTextParts[1].source is BoldTextSource
-        )
-        assertTrue(
-            fullTextParts[2].source is RegularTextSource
-        )
+        val boldSource = textParts[1].source as BoldTextSource
+        assertTrue (boldSource.textSources.first() is ItalicTextSource)
+        assertTrue (boldSource.textSources[1] is RegularTextSource)
+        assertTrue (boldSource.textSources[2] is StrikethroughTextSource)
+        assertTrue ((boldSource.textSources[2] as StrikethroughTextSource).textSources.first() is UnderlineTextSource)
 
         assertEquals(
             formattedV2Text,
-            createMarkdownV2Text(fullTextParts.map { it.source }).first()
+            textParts.justTextSources().toMarkdownV2Texts().first()
         )
     }
 
@@ -99,43 +78,21 @@ class TextPartsCreatingTests {
             )
         )
 
-        val textParts = createTextPart(text, entities)
+        val textParts = entities.asTextParts(text)
 
+        assertTrue (textParts.first().source is RegularTextSource)
+        assertTrue (textParts[1].source is BoldTextSource)
+        assertTrue (textParts[2].source is RegularTextSource)
 
-        assertTrue (
-            textParts.first().source is BoldTextSource
-        )
-
-        val boldSource = textParts.first().source as BoldTextSource
-        assertTrue (
-            boldSource.textParts.first().source is ItalicTextSource
-        )
-        assertTrue (
-            boldSource.textParts[1].source is RegularTextSource
-        )
-        assertTrue (
-            boldSource.textParts[2].source is StrikethroughTextSource
-        )
-        assertTrue (
-            (boldSource.textParts[2].source as StrikethroughTextSource).textParts.first().source is UnderlineTextSource
-        )
-
-
-        val fullTextParts = text.fullListOfSubSource(textParts)
-
-        assertTrue(
-            fullTextParts.first().source is RegularTextSource
-        )
-        assertTrue(
-            fullTextParts[1].source is BoldTextSource
-        )
-        assertTrue(
-            fullTextParts[2].source is RegularTextSource
-        )
+        val boldSource = textParts[1].source as BoldTextSource
+        assertTrue (boldSource.textSources.first() is ItalicTextSource)
+        assertTrue (boldSource.textSources[1] is RegularTextSource)
+        assertTrue (boldSource.textSources[2] is StrikethroughTextSource)
+        assertTrue ((boldSource.textSources[2] as StrikethroughTextSource).textSources.first() is UnderlineTextSource)
 
         assertEquals(
             formattedHtmlText,
-            createHtmlText(fullTextParts.map { it.source }).first()
+            textParts.justTextSources().toHtmlTexts().first()
         )
     }
 }

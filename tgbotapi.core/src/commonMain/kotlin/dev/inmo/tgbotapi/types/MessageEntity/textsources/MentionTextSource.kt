@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.*
 
 private val String.withoutCommercialAt
@@ -13,13 +12,8 @@ private val String.withoutCommercialAt
 
 class MentionTextSource(
     override val source: String,
-    textParts: List<TextPart>
+    override val textSources: List<TextSource>
 ) : MultilevelTextSource {
-    override val textParts: List<TextPart> by lazy {
-        source.withoutCommercialAt.fullListOfSubSource(
-            textParts.shiftSourcesToTheLeft(1)
-        )
-    }
     override val asMarkdownSource: String by lazy { source.mentionMarkdown() }
     override val asMarkdownV2Source: String by lazy { mentionMarkdownV2() }
     override val asHtmlSource: String by lazy { mentionHTML() }

@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
+import dev.inmo.tgbotapi.types.MessageEntity.toTextParts
 import dev.inmo.tgbotapi.types.captionLength
 import dev.inmo.tgbotapi.types.textLength
 
@@ -15,7 +16,10 @@ interface TextSource {
 
 
 interface MultilevelTextSource : TextSource {
+    @Deprecated("Will be removed in near major release")
     val textParts: List<TextPart>
+        get() = textParts(0)
+    val textSources: List<TextSource>
 }
 
 data class TextPart(
@@ -25,6 +29,7 @@ data class TextPart(
 
 fun List<TextPart>.justTextSources() = map { it.source }
 fun List<TextSource>.makeString() = joinToString("") { it.source }
+fun MultilevelTextSource.textParts(offset: Int): List<TextPart> = textSources.toTextParts(offset)
 fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {
     if (isEmpty()) {
         return emptyList()
