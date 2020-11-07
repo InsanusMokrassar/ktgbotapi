@@ -79,6 +79,7 @@
         `textSources` list
     * New dsl for creating of `TextSource` lists
     * Built-in `handleSafely` and `ExceptionHandler` is deprecated
+    * New common factories for `StorageFile`
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`
