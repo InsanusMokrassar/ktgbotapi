@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.toInputMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
-import dev.inmo.tgbotapi.utils.toHtmlCaptions
+import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class VideoContent(
     override val media: VideoFile,

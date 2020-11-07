@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.Ktor
 
+import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.Ktor.base.*
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
@@ -36,7 +37,7 @@ class KtorRequestsExecutor(
     }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
-        return handleSafely(
+        return safely(
             { e ->
                 throw if (e is ClientRequestException) {
                     val content = e.response ?.readText() ?: throw e

@@ -13,8 +13,8 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.utils.toHtmlCaptions
-import dev.inmo.tgbotapi.utils.toMarkdownV2Captions
+import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
+import dev.inmo.tgbotapi.utils.internal.toMarkdownV2Captions
 
 data class VoiceContent(
     override val media: VoiceFile,

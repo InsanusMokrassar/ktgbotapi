@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.AudioMediaGroupContent
-import dev.inmo.tgbotapi.utils.toHtmlCaptions
+import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class AudioContent(
     override val media: AudioFile,

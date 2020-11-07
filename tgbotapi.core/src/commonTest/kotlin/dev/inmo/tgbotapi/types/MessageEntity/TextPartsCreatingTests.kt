@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
 import dev.inmo.tgbotapi.CommonAbstracts.justTextSources
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
-import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.toHtmlTexts
+import dev.inmo.tgbotapi.utils.internal.toMarkdownV2Texts
 import kotlin.test.*
 
 class TextPartsCreatingTests {

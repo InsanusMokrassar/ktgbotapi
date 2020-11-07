@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
-import dev.inmo.tgbotapi.utils.fullListOfSubSource
+import dev.inmo.tgbotapi.utils.internal.fullListOfSubSource
 
 interface Explained {
     val explanation: String?

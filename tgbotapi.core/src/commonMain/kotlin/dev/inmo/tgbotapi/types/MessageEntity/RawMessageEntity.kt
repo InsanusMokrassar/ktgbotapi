@@ -3,8 +3,8 @@ package dev.inmo.tgbotapi.types.MessageEntity
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.User
-import dev.inmo.tgbotapi.utils.fullListOfSubSource
-import dev.inmo.tgbotapi.utils.shiftSourcesToTheLeft
+import dev.inmo.tgbotapi.utils.internal.fullListOfSubSource
+import dev.inmo.tgbotapi.utils.internal.shiftSourcesToTheLeft
 import kotlinx.serialization.Serializable
 
 @Serializable

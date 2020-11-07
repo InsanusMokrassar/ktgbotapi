@@ -7,6 +7,7 @@
 * `Common`:
     * `Version`:
         * `Coroutine`: `1.4.0` -> `1.4.1`
+        * **NEW** `MicroUtils`: `0.2.7`
 * `Core`:
     * Support of `logOut` method (`LogOut` object as a `Request`)
     * Support of `close` method (`Close` object as a `Request`)
@@ -77,6 +78,7 @@
         * `MultilevelTextSource#textParts` has been deprecated. Now each `MultilevelTextSource` have its own
         `textSources` list
     * New dsl for creating of `TextSource` lists
+    * Built-in `handleSafely` and `ExceptionHandler` is deprecated
 * `API`:
     * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
     * New extensions `TelegramBot#unpinAllChatMessages`

@@ -15,7 +15,7 @@ import dev.inmo.tgbotapi.types.files.asDocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.DocumentMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.utils.toHtmlCaptions
+import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class DocumentContent(
     override val media: DocumentFile,

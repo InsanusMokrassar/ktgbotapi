@@ -1,4 +1,4 @@
-package dev.inmo.tgbotapi.utils
+package dev.inmo.tgbotapi.utils.internal
 
 import dev.inmo.tgbotapi.types.ParseMode.*
 import dev.inmo.tgbotapi.types.UserId

@@ -3,6 +3,9 @@ package dev.inmo.tgbotapi.types.MessageEntity.textsources
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.User
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.*
+import dev.inmo.tgbotapi.utils.internal.textMentionMarkdown
+import dev.inmo.tgbotapi.utils.internal.textMentionMarkdownV2
 
 /**
  * @see mention

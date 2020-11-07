@@ -22,7 +22,6 @@ import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.venue.Venue
-import dev.inmo.tgbotapi.utils.fullListOfSubSource
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass

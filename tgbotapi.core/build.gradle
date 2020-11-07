@@ -47,6 +47,8 @@ kotlin {
                 api "com.soywiz.korlibs.klock:klock:$klock_version"
                 api "com.benasher44:uuid:$uuid_version"
 
+                api "dev.inmo:micro_utils.coroutines:$micro_utils_version"
+
                 api "io.ktor:ktor-client-core:$ktor_version"
             }
         }

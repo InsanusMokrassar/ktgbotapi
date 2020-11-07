@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaCollectionContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
-import dev.inmo.tgbotapi.utils.toHtmlCaptions
+import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class PhotoContent(
     override val mediaCollection: Photo,

@@ -2,6 +2,9 @@ package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.*
+import dev.inmo.tgbotapi.utils.internal.italicMarkdown
+import dev.inmo.tgbotapi.utils.internal.italicMarkdownV2
 
 /**
  * @see italic
