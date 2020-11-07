@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.Ktor
 
+import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.Ktor.base.*
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
@@ -10,7 +11,6 @@ import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.client.HttpClient
 import io.ktor.client.features.*
-import io.ktor.client.statement.HttpStatement
 import io.ktor.client.statement.readText
 import kotlinx.serialization.json.Json
 
@@ -37,7 +37,7 @@ class KtorRequestsExecutor(
     }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
-        return handleSafely(
+        return safely(
             { e ->
                 throw if (e is ClientRequestException) {
                     val content = e.response ?.readText() ?: throw e

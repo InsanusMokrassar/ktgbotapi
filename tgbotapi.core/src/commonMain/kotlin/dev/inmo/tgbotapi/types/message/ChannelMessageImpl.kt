@@ -1,16 +1,16 @@
 package dev.inmo.tgbotapi.types.message
 
+import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
+import dev.inmo.tgbotapi.types.message.abstracts.ChannelMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage
-import com.soywiz.klock.DateTime
 
-data class ChannelMessage<T: MessageContent>(
+data class ChannelMessageImpl<T: MessageContent>(
     override val messageId: MessageIdentifier,
-    override val chat: Chat,
+    override val chat: ChannelChat,
     override val content: T,
     override val date: DateTime,
     override val editDate: DateTime?,
@@ -18,5 +18,8 @@ data class ChannelMessage<T: MessageContent>(
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
-    val authorSignature: AuthorSignature?
-) : PossiblySentViaBotCommonMessage<T>
+    override val authorSignature: AuthorSignature?
+) : ChannelMessage<T>
+
+@Deprecated("Renamed", ReplaceWith("ChannelMessageImpl", "dev.inmo.tgbotapi.types.message.ChannelMessageImpl"))
+typealias ChannelMessage<T> = ChannelMessageImpl<T>

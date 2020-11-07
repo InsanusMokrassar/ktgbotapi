@@ -1,15 +1,26 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.*
+import dev.inmo.tgbotapi.utils.internal.emailMarkdown
+import dev.inmo.tgbotapi.utils.internal.emailMarkdownV2
 
-class EMailTextSource(
+/**
+ * @see email
+ */
+data class EMailTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    textParts: List<TextPart>
+    override val textSources: List<TextSource>
 ) : MultilevelTextSource {
-    override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
     override val asMarkdownSource: String by lazy { source.emailMarkdown() }
     override val asMarkdownV2Source: String by lazy { emailMarkdownV2(source) }
     override val asHtmlSource: String by lazy { emailHTML(source) }
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun email(parts: List<TextSource>) = EMailTextSource(parts.makeString(), parts)
+@Suppress("NOTHING_TO_INLINE")
+inline fun email(vararg parts: TextSource) = email(parts.toList())
+@Suppress("NOTHING_TO_INLINE")
+inline fun email(emailAddress: String) = email(regular(emailAddress))

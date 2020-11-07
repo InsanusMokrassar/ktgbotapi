@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.types.message
 
+import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
-import com.soywiz.klock.DateTime
 
 data class CommonMediaGroupMessage(
     override val messageId: MessageIdentifier,

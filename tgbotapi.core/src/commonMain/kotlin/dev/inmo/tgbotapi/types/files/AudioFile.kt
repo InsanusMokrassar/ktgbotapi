@@ -2,8 +2,7 @@ package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.CommonAbstracts.Performerable
 import dev.inmo.tgbotapi.requests.abstracts.FileId
-import dev.inmo.tgbotapi.types.FileUniqueId
-import dev.inmo.tgbotapi.types.fileUniqueIdField
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.utils.MimeType
 import kotlinx.serialization.SerialName
@@ -15,14 +14,20 @@ data class AudioFile(
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
     override val fileUniqueId: FileUniqueId,
+    @SerialName(durationField)
     override val duration: Long? = null,
+    @SerialName(performerField)
     override val performer: String? = null,
+    @SerialName(titleField)
     override val title: String? = null,
+    @SerialName(fileNameField)
+    override val fileName: String? = null,
     @SerialName(mimeTypeField)
     override val mimeType: MimeType? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
+    @SerialName(thumbField)
     override val thumb: PhotoSize? = null
-) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, TitledMediaFile, Performerable
+) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, TitledMediaFile, Performerable
 
 fun AudioFile.asVoiceFile() = VoiceFile(fileId, fileUniqueId, duration, mimeType, fileSize)

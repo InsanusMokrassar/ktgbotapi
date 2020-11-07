@@ -24,6 +24,8 @@ data class SendDice(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : ReplyingMarkupSendMessageRequest<ContentMessage<DiceContent>>, ReplyMessageId, DisableNotification {

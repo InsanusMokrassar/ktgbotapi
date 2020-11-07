@@ -1,8 +1,10 @@
 package dev.inmo.tgbotapi.requests.edit.text
 
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.requests.send.TextContentMessageResultDeserializer
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -12,8 +14,41 @@ import kotlinx.serialization.*
 
 const val editMessageTextMethod = "editMessageText"
 
+fun EditChatMessageText(
+    chatId: ChatIdentifier,
+    messageId: MessageIdentifier,
+    text: String,
+    parseMode: ParseMode? = null,
+    disableWebPagePreview: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = EditChatMessageText(
+    chatId,
+    messageId,
+    text,
+    parseMode,
+    null,
+    disableWebPagePreview,
+    replyMarkup
+)
+
+fun EditChatMessageText(
+    chatId: ChatIdentifier,
+    messageId: MessageIdentifier,
+    entities: List<TextSource>,
+    disableWebPagePreview: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = EditChatMessageText(
+    chatId,
+    messageId,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    disableWebPagePreview,
+    replyMarkup
+)
+
 @Serializable
-data class EditChatMessageText(
+data class EditChatMessageText internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
@@ -22,11 +57,16 @@ data class EditChatMessageText(
     override val text: String,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(entitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(disableWebPagePreviewField)
     override val disableWebPagePreview: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<TextContent>, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text) ?.justTextSources()
+    }
 
     override fun method(): String = editMessageTextMethod
     override val resultDeserializer: DeserializationStrategy<ContentMessage<TextContent>>

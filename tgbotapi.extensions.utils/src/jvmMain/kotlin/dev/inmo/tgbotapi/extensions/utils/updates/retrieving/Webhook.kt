@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
+import dev.inmo.micro_utils.coroutines.ExceptionHandler
+import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.extensions.utils.nonstrictJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.updates.flowsUpdatesFilter
@@ -11,8 +13,6 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy
 import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.updateshandlers.webhook.WebhookPrivateKeyConfig
-import dev.inmo.tgbotapi.utils.ExceptionHandler
-import dev.inmo.tgbotapi.utils.handleSafely
 import io.ktor.application.call
 import io.ktor.request.receiveText
 import io.ktor.response.respond
@@ -41,7 +41,7 @@ fun Route.includeWebhookHandlingInRoute(
 ) {
     val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block)
     post {
-        handleSafely(
+        safely(
             exceptionsHandler ?: {}
         ) {
             val asJson =

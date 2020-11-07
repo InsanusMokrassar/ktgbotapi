@@ -2,7 +2,8 @@ package dev.inmo.tgbotapi.types.ChatMember.abstracts
 
 import dev.inmo.tgbotapi.types.ChatMember.RawChatMember
 import dev.inmo.tgbotapi.types.User
-import kotlinx.serialization.*
+import kotlinx.serialization.DeserializationStrategy
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder

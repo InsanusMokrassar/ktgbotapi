@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.InlineQueries.query
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.location.Location
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
+import dev.inmo.micro_utils.coroutines.ExceptionHandler
+import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.exceptions.RequestException
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
@@ -23,7 +25,7 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     var lastUpdateIdentifier: UpdateIdentifier? = null
 
     while (isActive) {
-        handleSafely(
+        safely(
             { e ->
                 exceptionsHandler ?.invoke(e)
                 if (e is RequestException) {
@@ -52,7 +54,7 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
                 }
             }
 
-            handleSafely {
+            safely {
                 for (update in updates) {
                     updatesReceiver(update)
 

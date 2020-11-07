@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests.edit.abstracts
 
-interface EditLocationMessage {
-    val latitude: Double
-    val longitude: Double
-}
+import dev.inmo.tgbotapi.CommonAbstracts.*
+
+interface EditLocationMessage : Locationed, HorizontallyAccured, ProximityAlertable, Headed

@@ -1,30 +1,58 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-import dev.inmo.tgbotapi.CommonAbstracts.CaptionedOutput
-import dev.inmo.tgbotapi.CommonAbstracts.Performerable
-import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.requests.abstracts.InputFile
+import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.AudioFile
-import dev.inmo.tgbotapi.types.files.PhotoSize
-import dev.inmo.tgbotapi.types.mediaField
-import dev.inmo.tgbotapi.types.message.content.media.AudioContent
 import kotlinx.serialization.*
 
 internal const val audioInputMediaType = "audio"
 
+fun InputMediaAudio(
+    file: InputFile,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    thumb: InputFile? = null
+) = InputMediaAudio(
+    file, entities.makeString(), null, entities.toRawMessageEntities(), duration, performer, title, thumb
+)
+
+fun InputMediaAudio(
+    file: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    performer: String? = null,
+    title: String? = null,
+    thumb: InputFile? = null
+) = InputMediaAudio(
+    file, text, parseMode, null, duration, performer, title, thumb
+)
+
 @Serializable
-data class InputMediaAudio(
+data class InputMediaAudio internal constructor(
     override val file: InputFile,
-    override val caption: String? = null,
+    @SerialName(captionField)
+    override val text: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(captionEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     override val duration: Long? = null,
     override val performer: String? = null,
     override val title: String? = null,
     override val thumb: InputFile? = null
-) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, CaptionedOutput, Performerable {
+) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, Performerable {
     override val type: String = audioInputMediaType
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 

@@ -23,5 +23,7 @@ data class ExtendedChannelChatImpl(
     override val inviteLink: String? = null,
     @SerialName(pinnedMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    override val pinnedMessage: Message? = null
+    override val pinnedMessage: Message? = null,
+    @SerialName(linkedChatIdField)
+    override val linkedGroupChatId: ChatId? = null
 ) : ExtendedChannelChat

@@ -15,6 +15,7 @@ data class InvoiceContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<InvoiceContent>> {
         error("Unfortunately, currently InvoiceOfPayment can not be resend due to requirement of additional parameters," +

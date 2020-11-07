@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -14,6 +16,15 @@ import dev.inmo.tgbotapi.utils.mapOfNotNull
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
+/**
+ * Use this method to send general files. On success, the sent [ContentMessage] with [DocumentContent] is returned.
+ * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @param disableContentTypeDetection Disables automatic server-side content type detection for [document] [MultipartFile]
+ *
+ * @see ContentMessage
+ * @see DocumentContent
+ */
 fun SendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
@@ -22,7 +33,9 @@ fun SendDocument(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
-    replyMarkup: KeyboardMarkup? = null
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
 ): Request<ContentMessage<DocumentContent>> {
     val documentAsFileId = (document as? FileId) ?.fileId
     val documentAsFile = document as? MultipartFile
@@ -35,9 +48,61 @@ fun SendDocument(
         thumbAsFileId,
         caption,
         parseMode,
+        null,
         disableNotification,
         replyToMessageId,
-        replyMarkup
+        allowSendingWithoutReply,
+        replyMarkup,
+        disableContentTypeDetection
+    )
+
+    return if (documentAsFile == null && thumbAsFile == null) {
+        data
+    } else {
+        MultipartRequestImpl(
+            data,
+            SendDocumentFiles(documentAsFile, thumbAsFile)
+        )
+    }
+}
+
+/**
+ * Use this method to send general files. On success, the sent [ContentMessage] with [DocumentContent] is returned.
+ * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @param disableContentTypeDetection Disables automatic server-side content type detection for [document] [MultipartFile]
+ *
+ * @see ContentMessage
+ * @see DocumentContent
+ */
+fun SendDocument(
+    chatId: ChatIdentifier,
+    document: InputFile,
+    thumb: InputFile? = null,
+    entities: List<TextSource>,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
+): Request<ContentMessage<DocumentContent>> {
+    val documentAsFileId = (document as? FileId) ?.fileId
+    val documentAsFile = document as? MultipartFile
+    val thumbAsFileId = (thumb as? FileId) ?.fileId
+    val thumbAsFile = thumb as? MultipartFile
+
+    val data = SendDocumentData(
+        chatId,
+        documentAsFileId,
+        thumbAsFileId,
+        entities.makeString(),
+        null,
+        entities.toRawMessageEntities(),
+        disableNotification,
+        replyToMessageId,
+        allowSendingWithoutReply,
+        replyMarkup,
+        disableContentTypeDetection
     )
 
     return if (documentAsFile == null && thumbAsFile == null) {
@@ -53,6 +118,15 @@ fun SendDocument(
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<DocumentContent>>
     = TelegramBotAPIMessageDeserializationStrategyClass()
 
+/**
+ * Use this method to send general files. On success, the sent [ContentMessage] with [DocumentContent] is returned.
+ * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @param disableContentTypeDetection Disables automatic server-side content type detection for [document] [MultipartFile]
+ *
+ * @see ContentMessage
+ * @see DocumentContent
+ */
 @Serializable
 data class SendDocumentData internal constructor(
     @SerialName(chatIdField)
@@ -65,18 +139,28 @@ data class SendDocumentData internal constructor(
     override val text: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(captionEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
-    override val replyMarkup: KeyboardMarkup? = null
+    override val replyMarkup: KeyboardMarkup? = null,
+    @SerialName(disableContentTypeDetectionField)
+    val disableContentTypeDetection: Boolean? = null
 ) : DataRequest<ContentMessage<DocumentContent>>,
     SendMessageRequest<ContentMessage<DocumentContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<DocumentContent>>,
     TextableSendMessageRequest<ContentMessage<DocumentContent>>,
     ThumbedSendMessageRequest<ContentMessage<DocumentContent>>
 {
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    }
+
     init {
         text ?.let {
             if (it.length !in captionLength) {

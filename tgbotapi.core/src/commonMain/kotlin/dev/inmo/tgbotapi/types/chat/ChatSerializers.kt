@@ -6,7 +6,8 @@ import dev.inmo.tgbotapi.types.chat.abstracts.UnknownChatType
 import dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedChat
 import dev.inmo.tgbotapi.types.chat.extended.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
-import kotlinx.serialization.*
+import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder

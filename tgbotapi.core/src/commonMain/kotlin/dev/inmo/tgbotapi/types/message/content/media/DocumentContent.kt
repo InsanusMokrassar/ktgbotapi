@@ -5,17 +5,17 @@ import dev.inmo.tgbotapi.CommonAbstracts.TextPart
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.InputMedia.*
+import dev.inmo.tgbotapi.types.InputMedia.InputMediaDocument
+import dev.inmo.tgbotapi.types.InputMedia.toInputMediaDocument
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
-import dev.inmo.tgbotapi.types.ParseMode.MarkdownV2
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.asDocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.*
-import dev.inmo.tgbotapi.utils.toHtmlCaptions
-import dev.inmo.tgbotapi.utils.toMarkdownV2Captions
+import dev.inmo.tgbotapi.types.message.content.abstracts.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
+import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class DocumentContent(
     override val media: DocumentFile,
@@ -26,6 +26,7 @@ data class DocumentContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<DocumentContent>> = SendDocument(
         chatId,
@@ -35,6 +36,7 @@ data class DocumentContent(
         HTMLParseMode,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

@@ -14,8 +14,8 @@ import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.utils.toHtmlCaptions
-import dev.inmo.tgbotapi.utils.toMarkdownV2Captions
+import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
+import dev.inmo.tgbotapi.utils.internal.toMarkdownV2Captions
 
 data class AnimationContent(
     override val media: AnimationFile,
@@ -27,6 +27,7 @@ data class AnimationContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<AnimationContent>> = SendAnimation(
         chatId,
@@ -39,6 +40,7 @@ data class AnimationContent(
         media.height,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

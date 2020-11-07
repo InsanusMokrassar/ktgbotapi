@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.requests.send.media.SendVideoNote
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -18,26 +17,17 @@ data class VideoNoteContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<VideoNoteContent>> = createResend(chatId, null, null, disableNotification, replyToMessageId, replyMarkup)
-
-    fun createResend(
-        chatId: ChatIdentifier,
-        caption: String?,
-        parseMode: ParseMode? = null,
-        disableNotification: Boolean = false,
-        replyToMessageId: MessageIdentifier? = null,
-        replyMarkup: KeyboardMarkup? = null
     ): Request<ContentMessage<VideoNoteContent>> = SendVideoNote(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        caption,
-        parseMode,
         media.duration,
         media.width,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 

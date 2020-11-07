@@ -1,11 +1,12 @@
 package dev.inmo.tgbotapi.types.polls
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import com.soywiz.klock.DateTime
+import com.soywiz.klock.TimeSpan
+import dev.inmo.tgbotapi.CommonAbstracts.ExplainedInput
+import dev.inmo.tgbotapi.CommonAbstracts.TextPart
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
-import com.soywiz.klock.DateTime
-import com.soywiz.klock.TimeSpan
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder

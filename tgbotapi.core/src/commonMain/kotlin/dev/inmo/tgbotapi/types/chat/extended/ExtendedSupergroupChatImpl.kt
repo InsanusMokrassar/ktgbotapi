@@ -32,5 +32,9 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(slowModeDelayField)
     override val slowModeDelay: Long? = null,
     @SerialName(canSetStickerSetField)
-    override val canSetStickerSet: Boolean = false
+    override val canSetStickerSet: Boolean = false,
+    @SerialName(linkedChatIdField)
+    override val linkedChannelChatId: ChatId? = null,
+    @SerialName(locationField)
+    override val location: ChatLocation? = null
 ) : ExtendedSupergroupChat

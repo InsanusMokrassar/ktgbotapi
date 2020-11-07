@@ -9,7 +9,6 @@ import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import dev.inmo.tgbotapi.utils.*
-import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.buildJsonArray
@@ -22,7 +21,8 @@ fun SendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null
 ): Request<List<MediaGroupMessage>> {
     if (media.size !in mediaCountInMediaGroup) {
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
@@ -43,7 +43,8 @@ fun SendMediaGroup(
         chatId,
         media,
         disableNotification,
-        replyToMessageId
+        replyToMessageId,
+        allowSendingWithoutReply
     )
 
     return if (files.isEmpty()) {
@@ -66,8 +67,9 @@ inline fun SendPlaylist(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null
-) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId)
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null
+) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending documents media group
@@ -79,8 +81,9 @@ inline fun SendDocumentsGroup(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null
-) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId)
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null
+) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending visual media group
@@ -93,8 +96,9 @@ inline fun SendVisualMediaGroup(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null
-) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId)
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null
+) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
 
 private val messagesListSerializer: KSerializer<List<MediaGroupMessage>>
     = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
@@ -107,7 +111,9 @@ data class SendMediaGroupData internal constructor(
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageIdentifier? = null
+    override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null
 ) : DataRequest<List<MediaGroupMessage>>, SendMessageRequest<List<MediaGroupMessage>> {
     @SerialName(mediaField)
     private val convertedMedia: String

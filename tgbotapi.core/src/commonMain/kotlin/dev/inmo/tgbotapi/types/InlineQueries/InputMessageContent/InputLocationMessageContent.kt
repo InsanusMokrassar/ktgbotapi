@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
-import dev.inmo.tgbotapi.CommonAbstracts.Livable
-import dev.inmo.tgbotapi.CommonAbstracts.Locationed
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
 import kotlinx.serialization.SerialName
@@ -13,6 +12,12 @@ data class InputLocationMessageContent(
     override val latitude: Double,
     @SerialName(longitudeField)
     override val longitude: Double,
+    @SerialName(horizontalAccuracyField)
+    override val horizontalAccuracy: Meters? = null,
     @SerialName(livePeriodField)
-    override val livePeriod: Int? = null
-) : Locationed, Livable, InputMessageContent
+    override val livePeriod: Seconds? = null,
+    @SerialName(headingField)
+    override val heading: Degrees? = null,
+    @SerialName(proximityAlertRadiusField)
+    override val proximityAlertRadius: Meters? = null
+) : Locationed, HorizontallyAccured, ProximityAlertable, Livable, Headed, InputMessageContent

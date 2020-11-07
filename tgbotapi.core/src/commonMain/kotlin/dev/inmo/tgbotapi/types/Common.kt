@@ -24,9 +24,17 @@ typealias FileUniqueId = String
 typealias DiceResult = Int
 typealias FoursquareId = String
 typealias FoursquareType = String
+typealias GooglePlaceId = String
+typealias GooglePlaceType = String
 
 typealias Seconds = Int
 typealias LongSeconds = Long
+
+typealias Meters = Float
+typealias Degrees = Int
+
+val degreesLimit = 1 .. 360
+val horizontalAccuracyLimit = 0F .. 1500F
 
 val getUpdatesLimit = 1 .. 100
 val callbackQueryAnswerLength = 0 until 200
@@ -43,7 +51,7 @@ val invoiceDescriptionLimit = 1 until 256
 val invoicePayloadBytesLimit = 1 until 128
 
 val pollOptionTextLength = 1 .. 100
-val pollQuestionTextLength = 1 until 256
+val pollQuestionTextLength = 1 .. 300
 val pollOptionsLimit = 2 .. 10
 
 val livePeriodLimit = 60 .. 86400
@@ -52,10 +60,11 @@ val inlineQueryAnswerResultsLimit = 0 .. 50
 
 val customTitleLength = 0 .. 16
 
-val commonDiceResultLimit = 1 .. 6
-@Deprecated("Renamed", ReplaceWith("commonDiceResultLimit", "dev.inmo.tgbotapi.types.commonDiceResultLimit"))
+val dartsAndCubeDiceResultLimit = 1 .. 6
+@Deprecated("Renamed", ReplaceWith("dartsAndCubeDiceResultLimit", "dev.inmo.tgbotapi.types.dartsAndCubeDiceResultLimit"))
 val diceResultLimit
-    get() = commonDiceResultLimit
+    get() = dartsAndCubeDiceResultLimit
+val basketballAndFootballDiceResultLimit = 1 .. 5
 val slotMachineDiceResultLimit = 1 .. 64
 
 val botCommandLengthLimit = 1 .. 32
@@ -85,9 +94,12 @@ const val fromChatIdField = "from_chat_id"
 const val disableWebPagePreviewField = "disable_web_page_preview"
 const val disableNotificationField = "disable_notification"
 const val replyToMessageIdField = "reply_to_message_id"
+const val allowSendingWithoutReplyField = "allow_sending_without_reply"
 const val replyMarkupField = "reply_markup"
+const val disableContentTypeDetectionField = "disable_content_type_detection"
 const val supportStreamingField = "support_streaming"
 const val livePeriodField = "live_period"
+const val proximityAlertRadiusField = "proximity_alert_radius"
 const val isBotField = "is_bot"
 const val firstNameField = "first_name"
 const val lastNameField = "last_name"
@@ -96,12 +108,14 @@ const val canJoinGroupsField = "can_join_groups"
 const val canReadAllGroupMessagesField = "can_read_all_group_messages"
 const val supportInlineQueriesField = "supports_inline_queries"
 const val textEntitiesField = "text_entities"
+const val entitiesField = "entities"
 const val stickerSetNameField = "set_name"
 const val stickerSetNameFullField = "sticker_set_name"
 const val slowModeDelayField = "slow_mode_delay"
 const val maskPositionField = "mask_position"
 const val phoneNumberField = "phone_number"
 const val userIdField = "user_id"
+const val onlyIfBannedField = "only_if_banned"
 const val containsMasksField = "contains_masks"
 const val resultIdField = "result_id"
 const val inlineMessageIdField = "inline_message_id"
@@ -114,6 +128,8 @@ const val showAlertField = "show_alert"
 const val cachedTimeField = "cached_time"
 const val foursquareIdField = "foursquare_id"
 const val foursquareTypeField = "foursquare_type"
+const val googlePlaceIdField = "google_place_id"
+const val googlePlaceTypeField = "google_place_type"
 const val untilDateField = "until_date"
 const val errorMessageField = "error_message"
 const val messageTextField = "message_text"
@@ -123,6 +139,7 @@ const val switchPmTextField = "switch_pm_text"
 const val switchPmParameterField = "switch_pm_parameter"
 const val maxAllowedConnectionsField = "max_connections"
 const val allowedUpdatesField = "allowed_updates"
+const val dropPendingUpdatesField = "drop_pending_updates"
 const val hasCustomCertificateField = "has_custom_certificate"
 const val pendingUpdateCountField = "pending_update_count"
 const val lastErrorDateField = "last_error_date"
@@ -133,6 +150,7 @@ const val totalVoterCountField = "total_voter_count"
 const val correctOptionIdField = "correct_option_id"
 const val allowsMultipleAnswersField = "allows_multiple_answers"
 const val isAnonymousField = "is_anonymous"
+const val captionEntitiesField = "caption_entities"
 const val loginUrlField = "login_url"
 const val forwardTextField = "forward_text"
 const val botUsernameField = "bot_username"
@@ -143,6 +161,9 @@ const val inviteLinkField = "invite_link"
 const val pinnedMessageField = "pinned_message"
 const val customTitleField = "custom_title"
 const val optionIdsField = "option_ids"
+const val ipAddressField = "ip_address"
+const val linkedChatIdField = "linked_chat_id"
+const val horizontalAccuracyField = "horizontal_accuracy"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
@@ -240,11 +261,13 @@ const val heightField = "height"
 const val lengthField = "length"
 const val latitudeField = "latitude"
 const val longitudeField = "longitude"
+const val headingField = "heading"
 const val fromField = "from"
 const val userField = "user"
 const val dateField = "date"
 const val chatField = "chat"
 const val usernameField = "username"
+const val bioField = "bio"
 const val nameField = "name"
 const val emailField = "email"
 const val locationField = "location"

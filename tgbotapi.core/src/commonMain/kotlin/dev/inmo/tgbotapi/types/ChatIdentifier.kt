@@ -3,7 +3,8 @@ package dev.inmo.tgbotapi.types
 import kotlinx.serialization.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.longOrNull
 
 @Serializable(ChatIdentifierSerializer::class)
 sealed class ChatIdentifier

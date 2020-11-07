@@ -10,11 +10,13 @@ import dev.inmo.tgbotapi.requests.webhook.SetWebhook
  */
 suspend fun TelegramBot.setWebhookInfo(
     url: String,
+    ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
+    allowedUpdates: List<String>? = null,
+    dropPendingUpdates: Boolean? = null
 ) = execute(
     SetWebhook(
-        url, maxAllowedConnections, allowedUpdates
+        url, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates
     )
 )
 
@@ -24,11 +26,13 @@ suspend fun TelegramBot.setWebhookInfo(
 suspend fun TelegramBot.setWebhookInfo(
     url: String,
     certificate: FileId,
+    ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
+    allowedUpdates: List<String>? = null,
+    dropPendingUpdates: Boolean? = null
 ) = execute(
     SetWebhook(
-        url, certificate, maxAllowedConnections, allowedUpdates
+        url, certificate, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates
     )
 )
 
@@ -38,10 +42,12 @@ suspend fun TelegramBot.setWebhookInfo(
 suspend fun TelegramBot.setWebhookInfo(
     url: String,
     certificate: MultipartFile,
+    ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null
+    allowedUpdates: List<String>? = null,
+    dropPendingUpdates: Boolean? = null
 ) = execute(
     SetWebhook(
-        url, certificate, maxAllowedConnections, allowedUpdates
+        url, certificate, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates
     )
 )

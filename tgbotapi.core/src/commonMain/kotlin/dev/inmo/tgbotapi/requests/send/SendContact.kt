@@ -26,6 +26,8 @@ data class SendContact(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<ContactContent>>,
@@ -36,6 +38,7 @@ data class SendContact(
         contact: Contact,
         disableNotification: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
+        allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
     ): this(
         chatId,
@@ -44,6 +47,7 @@ data class SendContact(
         contact.lastName,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -58,11 +62,13 @@ fun Contact.toRequest(
     chatId: ChatIdentifier,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): SendContact = SendContact(
     chatId,
     this,
     disableNotification,
     replyToMessageId,
+    allowSendingWithoutReply,
     replyMarkup
 )

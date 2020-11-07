@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.dice
 
+import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
@@ -8,27 +9,45 @@ import kotlinx.serialization.encoding.Encoder
 @Serializable(DiceAnimationTypeSerializer::class)
 sealed class DiceAnimationType {
     abstract val emoji: String
+    abstract val valueLimits: IntRange
 }
 @Serializable(DiceAnimationTypeSerializer::class)
 object CubeDiceAnimationType : DiceAnimationType() {
     override val emoji: String = "\uD83C\uDFB2"
+    override val valueLimits: IntRange
+        get() = dartsAndCubeDiceResultLimit
 }
 @Serializable(DiceAnimationTypeSerializer::class)
 object DartsDiceAnimationType : DiceAnimationType() {
     override val emoji: String = "\uD83C\uDFAF"
+    override val valueLimits: IntRange
+        get() = dartsAndCubeDiceResultLimit
 }
 @Serializable(DiceAnimationTypeSerializer::class)
 object BasketballDiceAnimationType : DiceAnimationType() {
     override val emoji: String = "\uD83C\uDFC0"
+    override val valueLimits: IntRange
+        get() = basketballAndFootballDiceResultLimit
+}
+@Serializable(DiceAnimationTypeSerializer::class)
+object FootballDiceAnimationType : DiceAnimationType() {
+    override val emoji: String = "⚽"
+    override val valueLimits: IntRange
+        get() = basketballAndFootballDiceResultLimit
 }
 @Serializable(DiceAnimationTypeSerializer::class)
 object SlotMachineDiceAnimationType : DiceAnimationType() {
     override val emoji: String = "\uD83C\uDFB0"
+    override val valueLimits: IntRange
+        get() = slotMachineDiceResultLimit
 }
 @Serializable(DiceAnimationTypeSerializer::class)
 data class CustomDiceAnimationType(
     override val emoji: String
-) : DiceAnimationType()
+) : DiceAnimationType() {
+    override val valueLimits: IntRange
+        get() = error("Custom dice animation type have unknown value limits")
+}
 
 @Serializer(DiceAnimationType::class)
 internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
@@ -39,6 +58,7 @@ internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
             DartsDiceAnimationType.emoji -> DartsDiceAnimationType
             BasketballDiceAnimationType.emoji -> BasketballDiceAnimationType
             SlotMachineDiceAnimationType.emoji -> SlotMachineDiceAnimationType
+            FootballDiceAnimationType.emoji -> FootballDiceAnimationType
             else -> CustomDiceAnimationType(type)
         }
     }

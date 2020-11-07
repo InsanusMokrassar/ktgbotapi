@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.UpdateIdentifier
 import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
 
 /**
  * @return Mapped [Flow] with [Pair]s. [Pair.first] in this pair will be [UpdateIdentifier]. It could be useful in

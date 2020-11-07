@@ -1,5 +1,93 @@
 # TelegramBotAPI changelog
 
+## 0.30.0 Bot API 5.0
+
+**THIS UPDATE CONTAINS A LOT OF BREAKING CHANGES. PLEASE, BE CAREFUL ON UPGRADING OF YOUR PROJECT**
+
+* `Common`:
+    * `Version`:
+        * `Coroutine`: `1.4.0` -> `1.4.1`
+        * **NEW** `MicroUtils`: `0.2.7`
+* `Core`:
+    * Support of `logOut` method (`LogOut` object as a `Request`)
+    * Support of `close` method (`Close` object as a `Request`)
+    * `SetWebhook` updates:
+        * New field `ipAddress`. It works the same as `ip_address` in [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+        section
+        * New field `dropPendingUpdates`. It works the same as `drop_pending_updates` in [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+        section
+    * New field `ExtendedPrivateChat#bio`
+    * New data class `ChatLocation`
+    * New field `UnbanChatMember#onlyIfBanned`
+    * New fields `ExtendedChannelChat#linkedGroupChatId` and `ExtendedSupergroupChat#linkedChannelChatId`
+    * New fields `ExtendedSupergroupChat#location`
+    * New fields `AudioFile#fileName` and `VideoFile#fileName`
+    * New fields `SendDocument#disableContentTypeDetection` and `InputMediaDocument#disableContentTypeDetection`
+    * New request `UnpinAllChatMessages`
+    * New parameter for `unpinChatMessage` method: `messageId`
+    * New dice type `FootballDiceAnimationType`
+    * Limits for dices has been changed
+    * `commonDiceResultLimit` has been deprecated
+    * New field `DiceAnimationType#valueLimits`
+    * Locations updates:
+        * New interface `Headed` with property `heading`
+        * New interface `HorizontallyAccured` with property `horizontalAccuracy`
+        * New interface `ProximityAlertable` with property `proximityAlertRadius`
+        * `Location` class has been separated:
+            * `StaticLocation` for static locations
+            * `LiveLocation` for live locations
+        * Property `Livable#livePeriod` now use typealias type `Seconds` (the same by meaning - `Int`)
+        * `EditLocationMessage` now extends `Locationed`, `HorizontallyAccured`, `ProximityAlertable` and `Headed` interfaces
+            * New properties in `EditChatMessageLiveLocation`: `horizontalAccuracy`, `heading`, `proximityAlertRadius`
+            * New properties in `EditInlineMessageLiveLocation`: `horizontalAccuracy`, `heading`, `proximityAlertRadius`
+        * Main constructor of `SendLocation` now is internal. Instead of that currently available next factories:
+            * `SendLocation` - sending of static location without live parameters
+            * `SendStaticLocation` - sending of static location without live parameters
+            * `SendLiveLocation` - sending of live location with live parameters
+        * `PositionedSendMessageRequest` now extends `Locationed`
+        * `LocationContent#createResend` now can create `LiveLocation`
+    * Support of `ProximityAlertTriggered`. It is `CommonEvent`
+    * Property `pollQuestionTextLength` now have maximum up to `300`
+    * Anonymous Admins:
+        * New field `AdministratorChatMember#isAnonymous`
+    * Several new interfaces of messages:
+        * `SignedMessage` - any message which possibly have `authorSignature`
+        * `WithSenderChatMessage` - any message which have `senderChat`. Property `senderChat` is not-nullable due to
+        separation of implementators
+        * `PublicMessage` - all channel messages have property `val chat: PublicChat` instead of common `val chat: Chat`
+            * `ChannelMessage` - all channel messages have property `val chat: ChannelChat` instead of common `val chat: Chat`
+                * Old `ChannelMessage` was safely renamed to `ChannelMessageImpl` (old name was set as typealias and deprecated)
+            * `GroupMessage` - all group messages have property `val chat: GroupChat` instead of common `val chat: Chat`
+                * `FromChannelGroupMessage` - instances should have property `val channel: ChannelChat`
+                * `AnonymousGroupMessage` - instances may have setup property `authorSignature`
+                * `CommonGroupMessage` - just common message
+            * `PrivateMessage` - works like previous `CommonMessageImpl`
+            * Previous `CommonMessageImpl` safely renamed to `PrivateMessageImpl`
+    * New property `PromoteChatMember#isAnonymous`
+    * Update all classes which must have `entities`/`caption_entities` fields
+    * New request `CopyMessage`
+    * New extension `List<TextSource>#makeString` for more comfortable work with new api with entities
+    * Support for Google Places identifiers for venues
+    * New extensions for text sources separating:
+        * `List<TextSource>#separateForMessage`
+        * `List<TextSource>#separateForCaption`
+        * `List<TextSource>#separateForText`
+    * Rewritten work with text sources and text parts:
+        * Now any `Message` type with entities will have full list of entities. That means that parts without any
+        formatter entities will use `RegularTextSource`
+        * `MultilevelTextSource#textParts` has been deprecated. Now each `MultilevelTextSource` have its own
+        `textSources` list
+    * New dsl for creating of `TextSource` lists
+    * Built-in `handleSafely` and `ExceptionHandler` is deprecated
+    * New common factories for `StorageFile`
+* `API`:
+    * Extensions `TelegramBot#pinChatMessage` now support any `Chat` and `Message`s from any `Chat`
+    * New extensions `TelegramBot#unpinAllChatMessages`
+    * Extensions `TelegramBot#promoteChatMember` got `isAnonymous` parameter
+    * All old api methods has been actualized to their analogs in `Core`
+    * All `telegramBot` with `token: String` got `apiUrl` parameter
+    * Factory `telegramBotWithCustomClientConfig` has been renamed to `telegramBot`
+
 ## 0.29.4
 
 * `Core`:

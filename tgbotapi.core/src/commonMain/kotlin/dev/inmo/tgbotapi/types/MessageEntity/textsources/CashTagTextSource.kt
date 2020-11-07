@@ -1,15 +1,26 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.*
+import dev.inmo.tgbotapi.utils.internal.cashTagMarkdown
+import dev.inmo.tgbotapi.utils.internal.cashTagMarkdownV2
 
-class CashTagTextSource(
+/**
+ * @see cashTag
+ */
+data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    textParts: List<TextPart>
+    override val textSources: List<TextSource>
 ) : MultilevelTextSource {
-    override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
     override val asMarkdownSource: String by lazy { source.cashTagMarkdown() }
     override val asMarkdownV2Source: String by lazy { cashTagMarkdownV2() }
     override val asHtmlSource: String by lazy { cashTagHTML() }
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun cashTag(parts: List<TextSource>) = CashTagTextSource(parts.makeString(), parts)
+@Suppress("NOTHING_TO_INLINE")
+inline fun cashTag(vararg parts: TextSource) = cashTag(parts.toList())
+@Suppress("NOTHING_TO_INLINE")
+inline fun cashTag(tag: String) = cashTag(regular(tag))

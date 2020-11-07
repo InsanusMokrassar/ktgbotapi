@@ -1,8 +1,9 @@
 package dev.inmo.tgbotapi.utils
 
-import kotlinx.serialization.*
-import org.w3c.dom.get
 import kotlinx.browser.window
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
+import org.w3c.dom.get
 
 @Serializable(MimeTypeSerializer::class)
 actual class MimeType(

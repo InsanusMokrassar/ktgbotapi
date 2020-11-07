@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message.content
 
-import dev.inmo.tgbotapi.CommonAbstracts.FullTextSourcesList
+import dev.inmo.tgbotapi.CommonAbstracts.TextSourcesList
 import dev.inmo.tgbotapi.CommonAbstracts.TextPart
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.SendTextMessage
@@ -10,7 +10,9 @@ import dev.inmo.tgbotapi.types.ParseMode.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.*
+import dev.inmo.tgbotapi.utils.internal.fullListOfSubSource
+import dev.inmo.tgbotapi.utils.internal.toMarkdownTexts
 
 data class TextContent(
     val text: String,
@@ -24,6 +26,7 @@ data class TextContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<TextContent>> = SendTextMessage(
         chatId,
@@ -32,6 +35,7 @@ data class TextContent(
         false,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -39,11 +43,13 @@ data class TextContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): List<Request<ContentMessage<TextContent>>> = createResends(
         chatId,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup,
         HTMLParseMode
     )
@@ -52,6 +58,7 @@ data class TextContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?,
         parseMode: ParseMode = HTMLParseMode
     ): List<Request<ContentMessage<TextContent>>> = when (parseMode) {
@@ -66,6 +73,7 @@ data class TextContent(
             false,
             disableNotification,
             replyToMessageId,
+            allowSendingWithoutReply,
             replyMarkup
         )
     }
@@ -75,4 +83,4 @@ data class TextContent(
  * Convert its [TextContent.entities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
  * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
  */
-fun TextContent.fullEntitiesList(): FullTextSourcesList = text.fullListOfSubSource(entities).map { it.source }
+fun TextContent.fullEntitiesList(): TextSourcesList = text.fullListOfSubSource(entities).map { it.source }

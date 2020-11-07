@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.requests.send.media
 
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -22,6 +24,7 @@ fun SendVoice(
     duration: Long? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFileId = (voice as? FileId) ?.fileId
@@ -32,9 +35,47 @@ fun SendVoice(
         voiceAsFileId,
         caption,
         parseMode,
+        null,
         duration,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
+        replyMarkup
+    )
+
+    return if (voiceAsFile == null) {
+        data
+    } else {
+        MultipartRequestImpl(
+            data,
+            SendVoiceFiles(voiceAsFile)
+        )
+    }
+}
+
+fun SendVoice(
+    chatId: ChatIdentifier,
+    voice: InputFile,
+    entities: List<TextSource>,
+    duration: Long? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+): Request<ContentMessage<VoiceContent>> {
+    val voiceAsFileId = (voice as? FileId) ?.fileId
+    val voiceAsFile = voice as? MultipartFile
+
+    val data = SendVoiceData(
+        chatId,
+        voiceAsFileId,
+        entities.makeString(),
+        null,
+        entities.toRawMessageEntities(),
+        duration,
+        disableNotification,
+        replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 
@@ -61,12 +102,16 @@ data class SendVoiceData internal constructor(
     override val text: String? = null,
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(captionEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<VoiceContent>>,
@@ -75,6 +120,10 @@ data class SendVoiceData internal constructor(
     TextableSendMessageRequest<ContentMessage<VoiceContent>>,
     DuratedSendMessageRequest<ContentMessage<VoiceContent>>
 {
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    }
+
     init {
         text ?.let {
             if (it.length !in captionLength) {

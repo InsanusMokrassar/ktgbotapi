@@ -1,15 +1,27 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.*
+import dev.inmo.tgbotapi.utils.internal.italicMarkdown
+import dev.inmo.tgbotapi.utils.internal.italicMarkdownV2
 
-class ItalicTextSource(
+/**
+ * @see italic
+ */
+data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    textParts: List<TextPart>
+    override val textSources: List<TextSource>
 ) : MultilevelTextSource {
-    override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
     override val asMarkdownSource: String by lazy { source.italicMarkdown() }
     override val asMarkdownV2Source: String by lazy { italicMarkdownV2() }
     override val asHtmlSource: String by lazy { italicHTML() }
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun italic(parts: List<TextSource>) = ItalicTextSource(parts.makeString(), parts)
+@Suppress("NOTHING_TO_INLINE")
+inline fun italic(vararg parts: TextSource) = italic(parts.toList())
+@Suppress("NOTHING_TO_INLINE")
+inline fun italic(text: String) = italic(regular(text))
+

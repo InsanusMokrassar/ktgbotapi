@@ -16,8 +16,9 @@ data class VenueContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         replyToMessageId: MessageIdentifier?,
+        allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VenueContent>> = SendVenue(
-        chatId, venue, disableNotification, replyToMessageId, replyMarkup
+        chatId, venue, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
     )
 }

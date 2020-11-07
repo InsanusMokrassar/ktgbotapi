@@ -1,25 +1,30 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.*
+import dev.inmo.tgbotapi.utils.internal.commandMarkdown
+import dev.inmo.tgbotapi.utils.internal.commandMarkdownV2
 
 private val commandRegex = Regex("[/!][^@\\s]*")
 
-class BotCommandTextSource(
-    override val source: String,
-    textParts: List<TextPart>
-) : MultilevelTextSource {
+/**
+ * @see botCommand
+ */
+data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
+    override val source: String
+) : TextSource {
     val command: String by lazy {
         commandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
     }
 
-    override val textParts: List<TextPart> by lazy {
-        command.fullListOfSubSource(
-            textParts.shiftSourcesToTheLeft(1)
-        )
-    }
     override val asMarkdownSource: String by lazy { source.commandMarkdown() }
-    override val asMarkdownV2Source: String by lazy { commandMarkdownV2() }
-    override val asHtmlSource: String by lazy { commandHTML() }
+    override val asMarkdownV2Source: String by lazy { source.commandMarkdownV2() }
+    override val asHtmlSource: String by lazy { source.commandHTML() }
 }
+
+/**
+ * @param command Without leading "/"
+ */
+@Suppress("NOTHING_TO_INLINE")
+inline fun botCommand(command: String) = BotCommandTextSource("/$command")

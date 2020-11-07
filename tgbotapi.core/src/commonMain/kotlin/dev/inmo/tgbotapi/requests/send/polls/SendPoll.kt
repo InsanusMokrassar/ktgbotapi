@@ -1,19 +1,17 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
+import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.ParseMode.MarkdownV2
+import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.polls.*
-import dev.inmo.tgbotapi.utils.fullListOfSubSource
-import dev.inmo.tgbotapi.utils.toMarkdownV2Captions
-import com.soywiz.klock.DateTime
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
@@ -43,6 +41,7 @@ fun SendPoll(
     isClosed: Boolean = false,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
     chatId,
@@ -50,6 +49,7 @@ fun SendPoll(
     options,
     isAnonymous,
     isClosed,
+    allowSendingWithoutReply = allowSendingWithoutReply,
     disableNotification = disableNotification,
     replyToMessageId = replyToMessageId,
     replyMarkup = replyMarkup
@@ -63,6 +63,7 @@ fun Poll.createRequest(
     chatId: ChatIdentifier,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = when (this) {
     is RegularPoll -> SendRegularPoll(
@@ -75,6 +76,7 @@ fun Poll.createRequest(
         scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
     is QuizPoll -> correctOptionId ?.let { correctOptionId ->
@@ -85,11 +87,11 @@ fun Poll.createRequest(
             correctOptionId,
             isAnonymous,
             isClosed,
-            explanation ?.fullListOfSubSource(explanationEntities) ?.justTextSources() ?.toMarkdownV2Captions() ?.firstOrNull(),
-            MarkdownV2,
+            fullEntitiesList(),
             scheduledCloseInfo,
             disableNotification,
             replyToMessageId,
+            allowSendingWithoutReply,
             replyMarkup
         )
     } ?: SendRegularPoll(
@@ -102,6 +104,7 @@ fun Poll.createRequest(
         scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
     is UnknownPollType -> SendRegularPoll(
@@ -114,6 +117,7 @@ fun Poll.createRequest(
         scheduledCloseInfo,
         disableNotification,
         replyToMessageId,
+        allowSendingWithoutReply,
         replyMarkup
     )
 }
@@ -165,6 +169,8 @@ data class SendRegularPoll(
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendPoll() {
@@ -186,8 +192,69 @@ data class SendRegularPoll(
     }
 }
 
+fun SendQuizPoll(
+    chatId: ChatIdentifier,
+    question: String,
+    options: List<String>,
+    correctOptionId: Int,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    explanation: String? = null,
+    parseMode: ParseMode? = null,
+    closeInfo: ScheduledCloseInfo? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = SendQuizPoll(
+    chatId,
+    question,
+    options,
+    correctOptionId,
+    isAnonymous,
+    isClosed,
+    explanation,
+    parseMode,
+    null,
+    closeInfo,
+    disableNotification,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
+
+fun SendQuizPoll(
+    chatId: ChatIdentifier,
+    question: String,
+    options: List<String>,
+    correctOptionId: Int,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    entities: List<TextSource>,
+    closeInfo: ScheduledCloseInfo? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = SendQuizPoll(
+    chatId,
+    question,
+    options,
+    correctOptionId,
+    isAnonymous,
+    isClosed,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    closeInfo,
+    disableNotification,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
+
 @Serializable
-data class SendQuizPoll(
+data class SendQuizPoll internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(questionField)
@@ -204,18 +271,25 @@ data class SendQuizPoll(
     override val explanation: String? = null,
     @SerialName(explanationParseModeField)
     override val parseMode: ParseMode? = null,
+    @SerialName(explanationEntitiesField)
+    private val rawEntities: List<RawMessageEntity>? = null,
     @Transient
     override val closeInfo: ScheduledCloseInfo? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
+    @SerialName(allowSendingWithoutReplyField)
+    override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendPoll(), ExplainedOutput {
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
+    override val entities: List<TextSource>? by lazy {
+        rawEntities ?.asTextParts(explanation ?: return@lazy null) ?.justTextSources()
+    }
 
     @SerialName(openPeriodField)
     override val openPeriod: LongSeconds?

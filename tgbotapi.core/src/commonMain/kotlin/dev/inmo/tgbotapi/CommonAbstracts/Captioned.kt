@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
-import dev.inmo.tgbotapi.utils.fullListOfSubSource
+import dev.inmo.tgbotapi.utils.internal.fullListOfSubSource
 
 interface Captioned {
     val caption: String?
@@ -20,7 +20,15 @@ interface CaptionedInput : Captioned {
 }
 
 /**
+ * @see CaptionedInput.captionEntities
+ * @see justTextSources
+ */
+val CaptionedInput.textSources
+    get() = captionEntities.justTextSources()
+
+/**
  * Convert its [CaptionedInput.captionEntities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
  * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
  */
-fun CaptionedInput.fullEntitiesList(): FullTextSourcesList = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()
+@Deprecated("Currently list of entities already full. This method is redundant")
+fun CaptionedInput.fullEntitiesList(): TextSourcesList = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()

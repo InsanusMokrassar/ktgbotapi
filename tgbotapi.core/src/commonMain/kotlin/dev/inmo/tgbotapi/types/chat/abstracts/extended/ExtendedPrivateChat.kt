@@ -1,5 +1,10 @@
 package dev.inmo.tgbotapi.types.chat.abstracts.extended
 
+import dev.inmo.tgbotapi.types.chat.ExtendedChatSerializer
 import dev.inmo.tgbotapi.types.chat.abstracts.PrivateChat
+import kotlinx.serialization.Serializable
 
-interface ExtendedPrivateChat : PrivateChat, ExtendedChat
+@Serializable(ExtendedChatSerializer::class)
+interface ExtendedPrivateChat : PrivateChat, ExtendedChat {
+    val bio: String
+}

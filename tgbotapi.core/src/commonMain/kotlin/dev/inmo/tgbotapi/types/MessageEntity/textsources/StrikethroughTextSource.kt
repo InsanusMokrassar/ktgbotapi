@@ -1,15 +1,26 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.internal.*
+import dev.inmo.tgbotapi.utils.internal.strikethroughMarkdown
+import dev.inmo.tgbotapi.utils.internal.strikethroughMarkdownV2
 
-class StrikethroughTextSource(
+/**
+ * @see strikethrough
+ */
+data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    textParts: List<TextPart>
+    override val textSources: List<TextSource>
 ) : MultilevelTextSource {
-    override val textParts: List<TextPart> by lazy { source.fullListOfSubSource(textParts) }
     override val asHtmlSource: String by lazy { strikethroughHTML() }
     override val asMarkdownV2Source: String by lazy { strikethroughMarkdownV2() }
     override val asMarkdownSource: String by lazy { source.strikethroughMarkdown() }
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun strikethrough(parts: List<TextSource>) = StrikethroughTextSource(parts.makeString(), parts)
+@Suppress("NOTHING_TO_INLINE")
+inline fun strikethrough(vararg parts: TextSource) = strikethrough(parts.toList())
+@Suppress("NOTHING_TO_INLINE")
+inline fun strikethrough(text: String) = strikethrough(regular(text))

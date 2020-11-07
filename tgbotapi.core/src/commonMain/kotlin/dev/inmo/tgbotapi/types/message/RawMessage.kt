@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.chat.abstracts.*
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.RawGame
+import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -30,12 +31,10 @@ import kotlin.reflect.KClass
 internal data class RawMessage(
     @SerialName(messageIdField)
     val messageId: MessageIdentifier,
-    @SerialName(dateField)
     val date: TelegramDate,
-    @SerialName(chatField)
     private val chat: Chat,
-    @SerialName(fromField)
     private val from: User? = null,
+    private val sender_chat: PublicChat? = null,
     private val forward_from: User? = null,
     private val forward_from_chat: Chat? = null,
     private val forward_from_message_id: MessageIdentifier? = null,
@@ -86,16 +85,17 @@ internal data class RawMessage(
 
     // passport property
     private val passport_data: Unit? = null,
+    private val proximity_alert_triggered: ProximityAlertTriggered? = null,
 
     private val reply_markup: InlineKeyboardMarkup? = null
 ) {
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
-            caption_entities ?.asTextParts(caption)
+            (caption_entities ?: emptyList()).asTextParts(caption)
         } ?: emptyList()
 
         when {
-            text != null -> TextContent(text, entities ?.asTextParts(text) ?: emptyList())
+            text != null -> TextContent(text, (entities ?: emptyList()).asTextParts(text))
             audio != null -> AudioContent(
                 audio,
                 caption,
@@ -180,6 +180,7 @@ internal data class RawMessage(
             )
             channel_chat_created -> ChannelChatCreated()
             pinned_message != null -> PinnedMessage(pinned_message.asMessage)
+            proximity_alert_triggered != null -> proximity_alert_triggered
             else -> null
         }
     }
@@ -253,19 +254,61 @@ internal data class RawMessage(
                         )
                     }
                 } ?: when (chat) {
-                    is ChannelChat -> ChannelMessage(
-                        messageId,
-                        chat,
-                        content,
-                        date.asDate,
-                        edit_date?.asDate,
-                        forwarded,
-                        reply_to_message?.asMessage,
-                        reply_markup,
-                        via_bot,
-                        author_signature
-                    )
-                    else -> CommonMessageImpl(
+                    is PublicChat -> when (chat) {
+                        is ChannelChat -> ChannelMessageImpl(
+                            messageId,
+                            chat,
+                            content,
+                            date.asDate,
+                            edit_date?.asDate,
+                            forwarded,
+                            reply_to_message?.asMessage,
+                            reply_markup,
+                            via_bot,
+                            author_signature
+                        )
+                        is GroupChat -> when (sender_chat) {
+                            is ChannelChat -> FromChannelGroupMessageImpl(
+                                chat,
+                                sender_chat,
+                                messageId,
+                                date.asDate,
+                                forwarded,
+                                edit_date ?.asDate,
+                                reply_to_message ?.asMessage,
+                                reply_markup,
+                                content,
+                                via_bot,
+                                author_signature
+                            )
+                            is GroupChat -> AnonymousGroupMessageImpl(
+                                chat,
+                                messageId,
+                                date.asDate,
+                                forwarded,
+                                edit_date ?.asDate,
+                                reply_to_message ?.asMessage,
+                                reply_markup,
+                                content,
+                                via_bot,
+                                author_signature
+                            )
+                            null -> CommonGroupMessageImpl(
+                                chat,
+                                messageId,
+                                date.asDate,
+                                forwarded,
+                                edit_date ?.asDate,
+                                reply_to_message ?.asMessage,
+                                reply_markup,
+                                content,
+                                via_bot
+                            )
+                            else -> error("Currently in groups supported only fields \"sender_chat\" with channel, group or null, but was $sender_chat")
+                        }
+                        else -> error("Unknown type of public chat: $chat")
+                    }
+                    is PrivateChat -> PrivateMessageImpl(
                         messageId,
                         from ?: error("Was detected common message, but owner (sender) of the message was not found"),
                         chat,
@@ -278,6 +321,7 @@ internal data class RawMessage(
                         via_bot,
                         paymentInfo
                     )
+                    else -> error("Unknown type of chat: $chat")
                 }
             } ?: error("Was not found supported type of data")
         } catch (e: Exception) {
