@@ -2,6 +2,9 @@
 
 ## 0.30.1
 
+* `Utils`:
+    *  Builder-style DSL for text sources - `buildEntities` 
+
 ## 0.30.0 Bot API 5.0
 
 **THIS UPDATE CONTAINS A LOT OF BREAKING CHANGES. PLEASE, BE CAREFUL ON UPGRADING OF YOUR PROJECT**
