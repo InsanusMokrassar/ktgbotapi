@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 0.30.1
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.2.7` -> `0.3.0`
+* `Utils`:
+    *  Builder-style DSL for text sources - `buildEntities` (thanks to [djaler](https://github.com/djaler))
+
 ## 0.30.0 Bot API 5.0
 
 **THIS UPDATE CONTAINS A LOT OF BREAKING CHANGES. PLEASE, BE CAREFUL ON UPGRADING OF YOUR PROJECT**

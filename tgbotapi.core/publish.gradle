@@ -27,6 +27,7 @@ bintray {
     }
     
     publish = true
+    override = true
     
     pkg {
         repo = "TelegramBotAPI"
