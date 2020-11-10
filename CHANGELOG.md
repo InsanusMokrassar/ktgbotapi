@@ -11,7 +11,6 @@
     * Extensions `setWebhookInfoAndStartListenWebhooks` has been united in one extension with `SetWebhookRequest`
     incoming parameter
 
-
 ## 0.30.1
 
 * `Common`:
