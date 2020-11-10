@@ -40,15 +40,9 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
-                if ((project.hasProperty('RELEASE_MODE') && project.property('RELEASE_MODE') == "true") || System.getenv('RELEASE_MODE') == "true") {
-                    api "${project.group}:tgbotapi.core:$library_version"
-                    api "${project.group}:tgbotapi.extensions.api:$library_version"
-                    api "${project.group}:tgbotapi.extensions.utils:$library_version"
-                } else {
-                    api project(":tgbotapi.core")
-                    api project(":tgbotapi.extensions.api")
-                    api project(":tgbotapi.extensions.utils")
-                }
+                api project(":tgbotapi.core")
+                api project(":tgbotapi.extensions.api")
+                api project(":tgbotapi.extensions.utils")
             }
         }
     }
