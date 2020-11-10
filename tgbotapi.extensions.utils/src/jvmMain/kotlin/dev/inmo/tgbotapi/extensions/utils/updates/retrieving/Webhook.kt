@@ -5,10 +5,7 @@ import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.extensions.utils.nonstrictJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.updates.flowsUpdatesFilter
-import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
-import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.requests.send.media.base.MultipartRequestImpl
-import dev.inmo.tgbotapi.requests.webhook.SetWebhook
+import dev.inmo.tgbotapi.requests.webhook.SetWebhookRequest
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy
 import dev.inmo.tgbotapi.updateshandlers.*
@@ -67,7 +64,7 @@ fun Route.includeWebhookHandlingInRouteWithFlows(
 )
 
 /**
- * Setting up ktor server, set webhook info via [SetWebhook] request.
+ * Setting up ktor server
  *
  * @param listenPort port which will be listen by bot
  * @param listenRoute address to listen by bot. If null - will be set up in root of host
@@ -119,27 +116,8 @@ fun startListenWebhooks(
     }
 }
 
-private suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhooks(
-    listenPort: Int,
-    engineFactory: ApplicationEngineFactory<*, *>,
-    setWebhookRequest: Request<Boolean>,
-    exceptionsHandler: ExceptionHandler<Unit> = {},
-    listenHost: String = "0.0.0.0",
-    listenRoute: String? = null,
-    privateKeyConfig: WebhookPrivateKeyConfig? = null,
-    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    block: UpdateReceiver<Update>
-): ApplicationEngine {
-    return try {
-        execute(setWebhookRequest)
-        startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, block)
-    } catch (e: Exception) {
-        throw e
-    }
-}
-
 /**
- * Setting up ktor server, set webhook info via [SetWebhook] request.
+ * Setting up ktor server, set webhook info via [SetWebhookRequest] request.
  *
  * @param listenPort port which will be listen by bot
  * @param listenRoute address to listen by bot
@@ -153,55 +131,16 @@ private suspend fun RequestsExecutor.internalSetWebhookInfoAndStartListenWebhook
 suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     listenPort: Int,
     engineFactory: ApplicationEngineFactory<*, *>,
-    setWebhookRequest: SetWebhook,
+    setWebhookRequest: SetWebhookRequest,
     exceptionsHandler: ExceptionHandler<Unit> = {},
     listenHost: String = "0.0.0.0",
     listenRoute: String = "/",
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     block: UpdateReceiver<Update>
-): ApplicationEngine = internalSetWebhookInfoAndStartListenWebhooks(
-    listenPort,
-    engineFactory,
-    setWebhookRequest as Request<Boolean>,
-    exceptionsHandler,
-    listenHost,
-    listenRoute,
-    privateKeyConfig,
-    scope,
-    block
-)
-
-/**
- * Setting up ktor server, set webhook info via [SetWebhook] request.
- *
- * @param listenPort port which will be listen by bot
- * @param listenRoute address to listen by bot
- * @param scope Scope which will be used for
- *
- * @see dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
- * @see UpdatesFilter
- * @see UpdatesFilter.asUpdateReceiver
- */
-@Suppress("unused")
-suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
-    listenPort: Int,
-    engineFactory: ApplicationEngineFactory<*, *>,
-    setWebhookRequest: MultipartRequestImpl<SetWebhook, Map<String, MultipartFile>, Boolean>,
-    exceptionsHandler: ExceptionHandler<Unit> = {},
-    listenHost: String = "0.0.0.0",
-    listenRoute: String? = null,
-    privateKeyConfig: WebhookPrivateKeyConfig? = null,
-    scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
-    block: UpdateReceiver<Update>
-): ApplicationEngine = internalSetWebhookInfoAndStartListenWebhooks(
-    listenPort,
-    engineFactory,
-    setWebhookRequest as Request<Boolean>,
-    exceptionsHandler,
-    listenHost,
-    listenRoute,
-    privateKeyConfig,
-    scope,
-    block
-)
+): ApplicationEngine = try {
+    execute(setWebhookRequest)
+    startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, block)
+} catch (e: Exception) {
+    throw e
+}

@@ -2,6 +2,13 @@
 
 ## 0.30.2
 
+* `Core`:
+    * New sealed class `SetWebhookRequest` which can be used in `SetWebhook` requests
+* `Utils`:
+    * Extensions `setWebhookInfoAndStartListenWebhooks` has been united in one extension with `SetWebhookRequest`
+    incoming parameter
+
+
 ## 0.30.1
 
 * `Common`:
