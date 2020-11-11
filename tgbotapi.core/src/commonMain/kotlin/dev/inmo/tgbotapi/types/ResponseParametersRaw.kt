@@ -8,7 +8,7 @@ data class ResponseParametersRaw(
     @SerialName("migrate_to_chat_id")
     private val migrateToChatId: ChatId? = null,
     @SerialName("retry_after")
-    private val retryAfter: Long? = null
+    private val retryAfter: Seconds? = null
 ) {
     @Transient
     private val createTime: Long = DateTime.now().unixMillisLong

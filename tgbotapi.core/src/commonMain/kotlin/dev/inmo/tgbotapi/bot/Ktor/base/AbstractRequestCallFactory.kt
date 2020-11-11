@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.Ktor.base
 
+import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.requests.GetUpdates
@@ -51,23 +52,17 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
             val content = response.receive<String>()
             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
 
-            return (responseObject.result?.let {
-                jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
-            } ?: responseObject.parameters?.let {
-                val error = it.error
-                if (error is RetryAfterError) {
-                    delay(error.leftToRetry)
-                    makeCall(client, urlsKeeper, request, jsonFormatter)
-                } else {
-                    null
-                }
-            } ?: response.let {
-                throw newRequestException(
-                    responseObject,
-                    content,
-                    "Can't get result object from $content"
-                )
-            })
+            return safely {
+                (responseObject.result?.let {
+                    jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
+                } ?: response.let {
+                    throw newRequestException(
+                        responseObject,
+                        content,
+                        "Can't get result object from $content"
+                    )
+                })
+            }
         }
     }
 
