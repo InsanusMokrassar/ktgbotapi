@@ -53,14 +53,6 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
 
             return (responseObject.result?.let {
                 jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
-            } ?: responseObject.parameters?.let {
-                val error = it.error
-                if (error is RetryAfterError) {
-                    delay(error.leftToRetry)
-                    makeCall(client, urlsKeeper, request, jsonFormatter)
-                } else {
-                    null
-                }
             } ?: response.let {
                 throw newRequestException(
                     responseObject,

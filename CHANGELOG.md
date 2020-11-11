@@ -5,6 +5,13 @@
 * `Common`:
     * `Version`:
         * `MicroUtils`: `0.3.0` -> `0.3.1`
+* `Core`:
+    * New type of requests exceptions `TooMuchRequestsException`. In fact it will be rare case when you will get this
+    exception
+    * `EmptyLimiter` has been renamed to `ExceptionsOnlyLimiter` and currently will stop requests after
+    `TooMuchRequestsException` happen until retry time is actual
+    * `AbstractRequestCallFactory` currently will not look at the response and wait if it have `RetryAfter` error. New
+    behaviour aimed on delegating of this work to `RequestsLimiter`
 
 ## 0.30.2
 

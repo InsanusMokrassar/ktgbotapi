@@ -4,8 +4,7 @@ import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.Ktor.base.*
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
-import dev.inmo.tgbotapi.bot.settings.limiters.EmptyLimiter
-import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
+import dev.inmo.tgbotapi.bot.settings.limiters.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.utils.*
@@ -19,7 +18,7 @@ class KtorRequestsExecutor(
     client: HttpClient = HttpClient(),
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
-    private val requestsLimiter: RequestLimiter = EmptyLimiter,
+    private val requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter,
     private val jsonFormatter: Json = nonstrictJsonFormat
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {

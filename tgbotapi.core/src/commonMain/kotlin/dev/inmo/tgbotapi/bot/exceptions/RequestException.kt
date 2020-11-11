@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.bot.exceptions
 
-import dev.inmo.tgbotapi.types.Response
+import com.soywiz.klock.DateTime
+import dev.inmo.tgbotapi.types.*
 import io.ktor.utils.io.errors.IOException
 
 fun newRequestException(
@@ -16,6 +17,13 @@ fun newRequestException(
         description == "Unauthorized" -> UnauthorizedException(response, plainAnswer, message, cause)
         description.contains("PHOTO_INVALID_DIMENSIONS") -> InvalidPhotoDimensionsException(response, plainAnswer, message, cause)
         description.contains("wrong file identifier") -> WrongFileIdentifierException(response, plainAnswer, message, cause)
+        description.contains("Too Many Requests") -> TooMuchRequestsException(
+            (response.parameters ?.error as? RetryAfterError) ?: RetryAfterError(60, DateTime.now().unixMillisLong),
+            response,
+            plainAnswer,
+            message,
+            cause
+        )
         else -> null
     }
 } ?: CommonRequestException(response, plainAnswer, message, cause)
@@ -48,4 +56,7 @@ class InvalidPhotoDimensionsException(response: Response, plainAnswer: String, m
     RequestException(response, plainAnswer, message, cause)
 
 class WrongFileIdentifierException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
+    RequestException(response, plainAnswer, message, cause)
+
+class TooMuchRequestsException(val retryAfter: RetryAfterError, response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause)
