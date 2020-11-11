@@ -3,6 +3,8 @@ package dev.inmo.tgbotapi.bot.settings.limiters
 import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.exceptions.TooMuchRequestsException
 import dev.inmo.tgbotapi.types.RetryAfterError
+import io.ktor.client.features.ClientRequestException
+import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 
@@ -16,18 +18,34 @@ object ExceptionsOnlyLimiter : RequestLimiter {
         while (true) {
             lockState.first { !it }
             val result = safely({
-                if (it is TooMuchRequestsException) {
-                    try {
-                        safely {
-                            lockState.emit(true)
-                            delay(it.retryAfter.leftToRetry)
+                when (it) {
+                    is TooMuchRequestsException -> {
+                        try {
+                            safely {
+                                lockState.emit(true)
+                                delay(it.retryAfter.leftToRetry)
+                            }
+                        } finally {
+                            lockState.emit(false)
                         }
-                    } finally {
-                        lockState.emit(false)
+                        Result.failure(it)
                     }
-                    Result.failure(it)
-                } else {
-                    throw it
+                    is ClientRequestException -> {
+                        if (it.response.status == HttpStatusCode.TooManyRequests) {
+                            try {
+                                safely {
+                                    lockState.emit(true)
+                                    delay(1000L)
+                                }
+                            } finally {
+                                lockState.emit(false)
+                            }
+                        } else {
+                            throw it
+                        }
+                        Result.failure(it)
+                    }
+                    else -> throw it
                 }
             }) {
                 Result.success(block())
