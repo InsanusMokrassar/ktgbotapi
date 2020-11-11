@@ -10,6 +10,7 @@
     exception
     * `EmptyLimiter` has been renamed to `ExceptionsOnlyLimiter` and currently will stop requests after
     `TooMuchRequestsException` happen until retry time is actual
+        * Now `ExceptionsOnlyLimiter` (previously `EmptyLimiter`) is a class
     * `AbstractRequestCallFactory` currently will not look at the response and wait if it have `RetryAfter` error. New
     behaviour aimed on delegating of this work to `RequestsLimiter`
 

@@ -18,7 +18,7 @@ class KtorRequestsExecutor(
     client: HttpClient = HttpClient(),
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
-    private val requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter,
+    private val requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter(),
     private val jsonFormatter: Json = nonstrictJsonFormat
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {

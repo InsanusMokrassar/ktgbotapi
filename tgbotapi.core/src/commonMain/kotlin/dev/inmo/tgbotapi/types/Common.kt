@@ -28,6 +28,7 @@ typealias GooglePlaceId = String
 typealias GooglePlaceType = String
 
 typealias Seconds = Int
+typealias MilliSeconds = Long
 typealias LongSeconds = Long
 
 typealias Meters = Float
