@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.utils.internal.textMentionMarkdownV2
 data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
     val user: User,
-    override val textSources: List<TextSource>
+    override val subsources: List<TextSource>
 ) : MultilevelTextSource {
     override val asMarkdownSource: String by lazy { source.textMentionMarkdown(user.id) }
     override val asMarkdownV2Source: String by lazy { textMentionMarkdownV2(user.id) }

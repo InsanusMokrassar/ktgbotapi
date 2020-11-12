@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.utils.internal.strikethroughMarkdownV2
  */
 data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val textSources: List<TextSource>
+    override val subsources: List<TextSource>
 ) : MultilevelTextSource {
     override val asHtmlSource: String by lazy { strikethroughHTML() }
     override val asMarkdownV2Source: String by lazy { strikethroughMarkdownV2() }

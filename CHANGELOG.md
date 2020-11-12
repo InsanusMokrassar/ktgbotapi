@@ -5,6 +5,8 @@
 * `Common`:
     * `Version`:
         * `MicroUtils`: `0.3.1` -> `0.3.2`
+* `Core`:
+    * `MultilevelTextSource#textSources` has been safely renamed to `subsources`
 
 ## 0.30.3
 

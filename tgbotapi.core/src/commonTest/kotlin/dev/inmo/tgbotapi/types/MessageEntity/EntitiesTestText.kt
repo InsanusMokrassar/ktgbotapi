@@ -49,8 +49,8 @@ fun List<TextPart>.testTextParts() {
     assertTrue (get(5).source is MentionTextSource)
 
     val boldSource = get(1).source as BoldTextSource
-    assertTrue (boldSource.textSources.first() is ItalicTextSource)
-    assertTrue (boldSource.textSources[1] is RegularTextSource)
-    assertTrue (boldSource.textSources[2] is StrikethroughTextSource)
-    assertTrue ((boldSource.textSources[2] as StrikethroughTextSource).textSources.first() is UnderlineTextSource)
+    assertTrue (boldSource.subsources.first() is ItalicTextSource)
+    assertTrue (boldSource.subsources[1] is RegularTextSource)
+    assertTrue (boldSource.subsources[2] is StrikethroughTextSource)
+    assertTrue ((boldSource.subsources[2] as StrikethroughTextSource).subsources.first() is UnderlineTextSource)
 }

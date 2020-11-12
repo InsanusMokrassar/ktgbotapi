@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.utils.internal.emailMarkdownV2
  */
 data class EMailTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val textSources: List<TextSource>
+    override val subsources: List<TextSource>
 ) : MultilevelTextSource {
     override val asMarkdownSource: String by lazy { source.emailMarkdown() }
     override val asMarkdownV2Source: String by lazy { emailMarkdownV2(source) }
