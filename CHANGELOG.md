@@ -2,6 +2,10 @@
 
 ## 0.30.4
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.3.1` -> `0.3.2`
+
 ## 0.30.3
 
 * `Common`:
