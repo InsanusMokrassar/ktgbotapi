@@ -1,3 +1,5 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
-interface GroupEventMessage : ChatEventMessage, FromUserMessage
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
+
+interface GroupEventMessage<T : GroupEvent> : ChatEventMessage<T>, FromUserMessage

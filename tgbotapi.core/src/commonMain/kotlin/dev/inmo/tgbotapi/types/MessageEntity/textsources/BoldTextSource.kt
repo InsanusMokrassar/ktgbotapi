@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.utils.internal.boldMarkdownV2
  */
 data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val textSources: List<TextSource>
+    override val subsources: List<TextSource>
 ) : MultilevelTextSource {
     override val asMarkdownSource: String by lazy { source.boldMarkdown() }
     override val asMarkdownV2Source: String by lazy { boldMarkdownV2() }

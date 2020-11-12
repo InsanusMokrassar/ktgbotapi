@@ -296,6 +296,7 @@ internal data class RawMessage(
                             null -> CommonGroupMessageImpl(
                                 chat,
                                 messageId,
+                                from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
                                 date.asDate,
                                 forwarded,
                                 edit_date ?.asDate,

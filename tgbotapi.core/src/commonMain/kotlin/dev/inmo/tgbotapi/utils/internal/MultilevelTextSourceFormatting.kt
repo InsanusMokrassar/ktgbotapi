@@ -83,19 +83,19 @@ private fun List<TextSource>.joinSubSourcesHtml() = joinToString("") {
 internal fun MultilevelTextSource.markdownV2Default(
     openControlSymbol: String,
     closeControlSymbol: String = openControlSymbol
-) = "$openControlSymbol${textSources.joinSubSourcesMarkdownV2()}$closeControlSymbol"
+) = "$openControlSymbol${subsources.joinSubSourcesMarkdownV2()}$closeControlSymbol"
 internal fun MultilevelTextSource.htmlDefault(
     openControlSymbol: String,
     closeControlSymbol: String = openControlSymbol
-) = "<$openControlSymbol>${textSources.joinSubSourcesHtml()}</$closeControlSymbol>"
+) = "<$openControlSymbol>${subsources.joinSubSourcesHtml()}</$closeControlSymbol>"
 
 
 internal fun MultilevelTextSource.linkMarkdownV2(
     link: String
-) = "[${textSources.joinSubSourcesMarkdownV2()}](${link.escapeMarkdownV2Link()})"
+) = "[${subsources.joinSubSourcesMarkdownV2()}](${link.escapeMarkdownV2Link()})"
 internal fun MultilevelTextSource.linkHTML(
     link: String
-) = "<a href=\"${link.toHtml()}\">${textSources.joinSubSourcesHtml()}</a>"
+) = "<a href=\"${link.toHtml()}\">${subsources.joinSubSourcesHtml()}</a>"
 
 
 internal fun MultilevelTextSource.optionalPrefix(
@@ -116,8 +116,8 @@ internal fun MultilevelTextSource.boldMarkdownV2(): String = markdownV2Default(m
 internal fun MultilevelTextSource.boldHTML(): String = htmlDefault(htmlBoldControl)
 
 
-internal fun MultilevelTextSource.cashTagMarkdownV2(): String = textSources.joinSubSourcesMarkdownV2()
-internal fun MultilevelTextSource.cashTagHTML(): String = textSources.joinSubSourcesHtml()
+internal fun MultilevelTextSource.cashTagMarkdownV2(): String = subsources.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.cashTagHTML(): String = subsources.joinSubSourcesHtml()
 
 
 internal fun MultilevelTextSource.italicMarkdownV2(): String = markdownV2Default(markdownItalicControl)
@@ -135,21 +135,21 @@ internal fun MultilevelTextSource.underlineHTML(): String = htmlDefault(htmlUnde
 internal fun MultilevelTextSource.textMentionMarkdownV2(userId: UserId): String = linkMarkdownV2(userId.link)
 internal fun MultilevelTextSource.textMentionHTML(userId: UserId): String = linkHTML(userId.link)
 
-internal fun MultilevelTextSource.mentionMarkdownV2(): String = optionalPrefix("@") + textSources.joinSubSourcesMarkdownV2()
-internal fun MultilevelTextSource.mentionHTML(): String = optionalPrefix("@") + textSources.joinSubSourcesHtml()
+internal fun MultilevelTextSource.mentionMarkdownV2(): String = optionalPrefix("@") + subsources.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.mentionHTML(): String = optionalPrefix("@") + subsources.joinSubSourcesHtml()
 
 
 internal fun MultilevelTextSource.hashTagMarkdownV2(): String = when {
     source.startsWith("\\#") || source.startsWith("#") -> ""
     else -> "\\#"
-} + textSources.joinSubSourcesMarkdownV2()
-internal fun MultilevelTextSource.hashTagHTML(): String = optionalPrefix("#") + textSources.joinSubSourcesHtml()
+} + subsources.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.hashTagHTML(): String = optionalPrefix("#") + subsources.joinSubSourcesHtml()
 
 
-internal fun MultilevelTextSource.phoneMarkdownV2(): String = textSources.joinSubSourcesMarkdownV2()
-internal fun MultilevelTextSource.phoneHTML(): String = textSources.joinSubSourcesHtml()
+internal fun MultilevelTextSource.phoneMarkdownV2(): String = subsources.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.phoneHTML(): String = subsources.joinSubSourcesHtml()
 
 
-internal fun MultilevelTextSource.commandMarkdownV2(): String = optionalPrefix("/") + textSources.joinSubSourcesMarkdownV2()
-internal fun MultilevelTextSource.commandHTML(): String = optionalPrefix("/") + textSources.joinSubSourcesHtml()
+internal fun MultilevelTextSource.commandMarkdownV2(): String = optionalPrefix("/") + subsources.joinSubSourcesMarkdownV2()
+internal fun MultilevelTextSource.commandHTML(): String = optionalPrefix("/") + subsources.joinSubSourcesHtml()
 

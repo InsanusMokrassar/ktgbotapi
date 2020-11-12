@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.utils.internal.italicMarkdownV2
  */
 data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val textSources: List<TextSource>
+    override val subsources: List<TextSource>
 ) : MultilevelTextSource {
     override val asMarkdownSource: String by lazy { source.italicMarkdown() }
     override val asMarkdownV2Source: String by lazy { italicMarkdownV2() }

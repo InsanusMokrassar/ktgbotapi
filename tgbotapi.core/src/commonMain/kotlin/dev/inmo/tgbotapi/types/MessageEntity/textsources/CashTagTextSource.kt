@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.utils.internal.cashTagMarkdownV2
  */
 data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val textSources: List<TextSource>
+    override val subsources: List<TextSource>
 ) : MultilevelTextSource {
     override val asMarkdownSource: String by lazy { source.cashTagMarkdown() }
     override val asMarkdownV2Source: String by lazy { cashTagMarkdownV2() }

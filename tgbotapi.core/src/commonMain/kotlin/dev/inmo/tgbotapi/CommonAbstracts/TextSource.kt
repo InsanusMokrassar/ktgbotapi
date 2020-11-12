@@ -36,7 +36,10 @@ interface MultilevelTextSource : TextSource {
     @Deprecated("Will be removed in near major release")
     val textParts: List<TextPart>
         get() = textParts(0)
+    val subsources: List<TextSource>
+    @Deprecated("Will be removed in near major release", ReplaceWith("subsources"))
     val textSources: List<TextSource>
+        get() = subsources
 }
 
 data class TextPart(
@@ -46,7 +49,7 @@ data class TextPart(
 
 fun List<TextPart>.justTextSources() = map { it.source }
 fun List<TextSource>.makeString() = joinToString("") { it.source }
-internal fun MultilevelTextSource.textParts(offset: Int): List<TextPart> = textSources.toTextParts(offset)
+internal fun MultilevelTextSource.textParts(offset: Int): List<TextPart> = subsources.toTextParts(offset)
 fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {
     if (isEmpty()) {
         return emptyList()

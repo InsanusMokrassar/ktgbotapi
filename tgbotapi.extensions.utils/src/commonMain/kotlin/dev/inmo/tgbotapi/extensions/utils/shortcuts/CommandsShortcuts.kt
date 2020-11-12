@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
 import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.textSources
 import dev.inmo.tgbotapi.extensions.utils.onlyTextContentMessages
 import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.BotCommandTextSource
@@ -27,7 +28,7 @@ import kotlinx.coroutines.flow.*
 fun <T : ContentMessage<TextContent>> Flow<T>.filterExactCommands(
     commandRegex: Regex
 ) = filter { contentMessage ->
-    (contentMessage.content.fullEntitiesList().singleOrNull() as? BotCommandTextSource) ?.let { commandRegex.matches(it.command) } == true
+    (contentMessage.content.textSources.singleOrNull() as? BotCommandTextSource) ?.let { commandRegex.matches(it.command) } == true
 }
 
 /**
@@ -46,7 +47,7 @@ fun <T : ContentMessage<TextContent>> Flow<T>.filterExactCommands(
 fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsInsideTextMessages(
     commandRegex: Regex
 ) = filter { contentMessage ->
-    contentMessage.content.fullEntitiesList().any {
+    contentMessage.content.textSources.any {
         (it as? BotCommandTextSource) ?.let { commandRegex.matches(it.command) } == true
     }
 }
@@ -70,7 +71,7 @@ fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsInsideTextMessages(
 fun <T : ContentMessage<TextContent>> Flow<T>.filterCommandsWithArgs(
     commandRegex: Regex
 ) = mapNotNull { contentMessage ->
-    val allEntities = contentMessage.content.fullEntitiesList()
+    val allEntities = contentMessage.content.textSources
     (allEntities.firstOrNull() as? BotCommandTextSource) ?.let {
         if (commandRegex.matches(it.command)) {
             contentMessage to allEntities.flatMap {
