@@ -10,6 +10,8 @@
     * `TextContent#fullEntitiesList` has been deprecated
     * Now `TextContent` implements `TextedInput`
         * `TextContent#entities` has been deprecated
+    * `GroupEventMessage` now overrides `chatEvent` with type `GroupEvent`
+    * `SupergroupEventMessage` now overrides `chatEvent` with type `SupergroupEvent`
 
 ## 0.30.3
 

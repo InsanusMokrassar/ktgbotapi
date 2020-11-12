@@ -1,3 +1,7 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
-interface SupergroupEventMessage : GroupEventMessage
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
+
+interface SupergroupEventMessage : GroupEventMessage {
+    override val chatEvent: SupergroupEvent
+}
