@@ -7,6 +7,9 @@
         * `MicroUtils`: `0.3.1` -> `0.3.2`
 * `Core`:
     * `MultilevelTextSource#textSources` has been safely renamed to `subsources`
+    * `TextContent#fullEntitiesList` has been deprecated
+    * Now `TextContent` implements `TextedInput`
+        * `TextContent#entities` has been deprecated
 
 ## 0.30.3
 
