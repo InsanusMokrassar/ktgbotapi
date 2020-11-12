@@ -1,9 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.chat_events
 
 import dev.inmo.tgbotapi.extensions.utils.shortcuts.*
-import dev.inmo.tgbotapi.types.message.*
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
@@ -19,9 +16,9 @@ fun <T : ChatEventMessage<*>> Flow<ChatEventMessage<*>>.divideBySource(contentTy
     }
 }
 
-@Deprecated("Replaced and renamed", ReplaceWith("allChannelEvents", "dev.inmo.tgbotapi.extensions.utils.shortcuts.allChannelEvents"))
-fun Flow<ChatEventMessage<*>>.onlyChannelEvents() = allChannelEvents()
-@Deprecated("Replaced and renamed", ReplaceWith("allGroupEvents", "dev.inmo.tgbotapi.extensions.utils.shortcuts.allGroupEvents"))
-fun Flow<ChatEventMessage<*>>.onlyGroupEvents() = allGroupEvents()
-@Deprecated("Replaced and renamed", ReplaceWith("allSupergroupEvents", "dev.inmo.tgbotapi.extensions.utils.shortcuts.allSupergroupEvents"))
-fun Flow<ChatEventMessage<*>>.onlySupergroupEvents() = allSupergroupEvents()
+@Deprecated("Replaced and renamed", ReplaceWith("channelEvents", "dev.inmo.tgbotapi.extensions.utils.shortcuts.channelEvents"))
+fun Flow<ChatEventMessage<*>>.onlyChannelEvents() = channelEvents()
+@Deprecated("Replaced and renamed", ReplaceWith("groupEvents", "dev.inmo.tgbotapi.extensions.utils.shortcuts.groupEvents"))
+fun Flow<ChatEventMessage<*>>.onlyGroupEvents() = groupEvents()
+@Deprecated("Replaced and renamed", ReplaceWith("supergroupEvents", "dev.inmo.tgbotapi.extensions.utils.shortcuts.supergroupEvents"))
+fun Flow<ChatEventMessage<*>>.onlySupergroupEvents() = supergroupEvents()

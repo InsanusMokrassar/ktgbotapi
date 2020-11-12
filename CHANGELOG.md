@@ -20,7 +20,11 @@
         * `Flow<ChatEventMessage<*>>#onlyGroupEvents`
         * `Flow<ChatEventMessage<*>>#onlySupergroupEvents`
     * A lot of extensions for `Flow<ChatEventMessage>` has been added:
+        * `FlowsUpdatesFilter#events`
         * `FlowsUpdatesFilter#channelEvents`
+        * `FlowsUpdatesFilter#groupEvents`
+        * `FlowsUpdatesFilter#supergroupEvents`
+        * And a lot of other filters with specific types
 
 ## 0.30.3
 
