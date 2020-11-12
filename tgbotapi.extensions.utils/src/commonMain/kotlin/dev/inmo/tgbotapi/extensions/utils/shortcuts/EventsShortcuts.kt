@@ -36,6 +36,7 @@ inline fun Flow<ChatEventMessage<*>>.deletedChannelPhotoEvents() = channelEvents
 inline fun Flow<ChatEventMessage<*>>.newChannelPhotoEvents() = channelEvents<NewChatPhoto>()
 inline fun Flow<ChatEventMessage<*>>.newChannelTitleEvents() = channelEvents<NewChatTitle>()
 inline fun Flow<ChatEventMessage<*>>.newChannelPinnedMessageEvents() = channelEvents<PinnedMessage>()
+inline fun Flow<ChatEventMessage<*>>.allChannelEvents() = channelEvents<ChannelEvent>()
 
 @RiskFeature("Use with caution")
 inline fun <reified T : GroupEvent> Flow<ChatEventMessage<*>>.groupEvents() = filterByChatEvent<T, GroupEventMessage<T>>()
@@ -47,6 +48,7 @@ inline fun Flow<ChatEventMessage<*>>.newGroupPhotoEvents() = groupEvents<NewChat
 inline fun Flow<ChatEventMessage<*>>.newGroupTitleEvents() = groupEvents<NewChatTitle>()
 inline fun Flow<ChatEventMessage<*>>.newGroupPinnedMessageEvents() = groupEvents<PinnedMessage>()
 inline fun Flow<ChatEventMessage<*>>.proximityAlertTriggeredInGroupEvents() = groupEvents<ProximityAlertTriggered>()
+inline fun Flow<ChatEventMessage<*>>.allGroupEvents() = groupEvents<GroupEvent>()
 
 
 @RiskFeature("Use with caution")
@@ -59,3 +61,4 @@ inline fun Flow<ChatEventMessage<*>>.newSupergroupPhotoEvents() = supergroupEven
 inline fun Flow<ChatEventMessage<*>>.newSupergroupTitleEvents() = supergroupEvents<NewChatTitle>()
 inline fun Flow<ChatEventMessage<*>>.newSupergroupPinnedMessageEvents() = supergroupEvents<PinnedMessage>()
 inline fun Flow<ChatEventMessage<*>>.proximityAlertTriggeredInSupergroupEvents() = supergroupEvents<ProximityAlertTriggered>()
+inline fun Flow<ChatEventMessage<*>>.allSupergroupEvents() = supergroupEvents<SupergroupEvent>()
