@@ -4,7 +4,7 @@
 
 * `Common`:
     * `Version`:
-        * `MicroUtils`: `0.3.1` -> `0.3.2`
+        * `MicroUtils`: `0.3.1` -> `0.3.3`
 * `Core`:
     * `MultilevelTextSource#textSources` has been safely renamed to `subsources`
     * `TextContent#fullEntitiesList` has been deprecated
@@ -14,7 +14,13 @@
     * `SupergroupEventMessage` now overrides `chatEvent` with type `SupergroupEvent`
     * Any `ChatEventMessage` now have generic type of its `chatEvent` (just like messages)
 * `Utils`:
-    * A lot of extensions for `Flow<ChatEventMessage>` has been added
+    * Old extensions related to chat events are deprecated:
+        * `Flow<ChatEventMessage<*>>#divideBySource`
+        * `Flow<ChatEventMessage<*>>#onlyChannelEvents`
+        * `Flow<ChatEventMessage<*>>#onlyGroupEvents`
+        * `Flow<ChatEventMessage<*>>#onlySupergroupEvents`
+    * A lot of extensions for `Flow<ChatEventMessage>` has been added:
+        * `FlowsUpdatesFilter#channelEvents`
 
 ## 0.30.3
 

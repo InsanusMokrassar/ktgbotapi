@@ -2,6 +2,7 @@
 
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
+import dev.inmo.micro_utils.coroutines.plus
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
@@ -11,13 +12,23 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.coroutines.flow.*
 
 @RiskFeature("Use with caution")
+inline fun FlowsUpdatesFilter.events(): Flow<ChatEventMessage<*>> {
+    return channelPostFlow.mapNotNull { it.data as? ChatEventMessage<*> } + messageFlow.mapNotNull { it.data as? ChatEventMessage<*> }
+}
+
+@RiskFeature("Use with caution")
 inline fun FlowsUpdatesFilter.channelEvents(): Flow<ChannelEventMessage<*>> = channelPostFlow.mapNotNull {
     it.data as? ChannelEventMessage<*>
 }
 
 @RiskFeature("Use with caution")
-inline fun <reified T: GroupEventMessage<*>> FlowsUpdatesFilter.groupEvents(): Flow<T> = messageFlow.mapNotNull {
-    it.data as? T
+inline fun FlowsUpdatesFilter.groupEvents(): Flow<GroupEventMessage<*>> = messageFlow.mapNotNull {
+    it.data as? GroupEventMessage<*>
+}
+
+@RiskFeature("Use with caution")
+inline fun FlowsUpdatesFilter.supergroupEvents(): Flow<SupergroupEventMessage<*>> = messageFlow.mapNotNull {
+    it.data as? SupergroupEventMessage<*>
 }
 
 @RiskFeature("Use with caution")
