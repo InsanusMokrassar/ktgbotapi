@@ -1,35 +1,22 @@
+@file:Suppress("NOTHING_TO_INLINE", "unused")
+
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
-import dev.inmo.tgbotapi.extensions.utils.aggregateFlows
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.RiskFeature
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 
-/**
- * @param scopeToIncludeChannels This parameter is required when you want to include [textMessages] for channels too.
- * In this case will be created new channel which will aggregate messages from [FlowsUpdatesFilter.messageFlow] and
- * [FlowsUpdatesFilter.channelPostFlow]. In case it is null will be used [Flow]s mapping
- */
-@Suppress("UNCHECKED_CAST", "NOTHING_TO_INLINE")
 @RiskFeature("Use with caution")
-inline fun FlowsUpdatesFilter.filterChannelEvents(): Flow<ChannelEventMessage<*>> = channelPostFlow.mapNotNull {
+inline fun FlowsUpdatesFilter.channelEvents(): Flow<ChannelEventMessage<*>> = channelPostFlow.mapNotNull {
     it.data as? ChannelEventMessage<*>
 }
 
-/**
- * @param scopeToIncludeChannels This parameter is required when you want to include [textMessages] for channels too.
- * In this case will be created new channel which will aggregate messages from [FlowsUpdatesFilter.messageFlow] and
- * [FlowsUpdatesFilter.channelPostFlow]. In case it is null will be used [Flow]s mapping
- */
-@Suppress("UNCHECKED_CAST")
 @RiskFeature("Use with caution")
-inline fun <reified T: GroupEventMessage<*>> FlowsUpdatesFilter.filterGroupEvents(): Flow<T> = messageFlow.mapNotNull {
+inline fun <reified T: GroupEventMessage<*>> FlowsUpdatesFilter.groupEvents(): Flow<T> = messageFlow.mapNotNull {
     it.data as? T
 }
 

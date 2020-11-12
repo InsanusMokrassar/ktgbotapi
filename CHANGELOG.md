@@ -12,6 +12,9 @@
         * `TextContent#entities` has been deprecated
     * `GroupEventMessage` now overrides `chatEvent` with type `GroupEvent`
     * `SupergroupEventMessage` now overrides `chatEvent` with type `SupergroupEvent`
+    * Any `ChatEventMessage` now have generic type of its `chatEvent` (just like messages)
+* `Utils`:
+    * A lot of extensions for `Flow<ChatEventMessage>` has been added
 
 ## 0.30.3
 
