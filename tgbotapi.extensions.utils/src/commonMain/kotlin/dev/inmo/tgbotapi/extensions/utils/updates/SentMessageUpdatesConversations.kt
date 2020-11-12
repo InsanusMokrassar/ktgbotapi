@@ -19,12 +19,15 @@ fun <T : BaseSentMessageUpdate> Flow<T>.asCommonMessagesFlow() = mapNotNull {
     it.data as? CommonMessage<*>
 }
 
+@Suppress("NOTHING_TO_INLINE")
+inline fun <T : BaseSentMessageUpdate> Flow<T>.chatEvents() = mapNotNull {
+    it.data as? ChatEventMessage<*>
+}
 /**
  * Will map incoming [BaseSentMessageUpdate]s to [ChatEventMessage] from [BaseSentMessageUpdate.data]
  */
-fun <T : BaseSentMessageUpdate> Flow<T>.asChatEventsFlow() = mapNotNull {
-    it.data as? ChatEventMessage
-}
+@Deprecated("Renamed", ReplaceWith("chatEvents", "dev.inmo.tgbotapi.extensions.utils.updates.chatEvents"))
+fun <T : BaseSentMessageUpdate> Flow<T>.asChatEventsFlow() = chatEvents()
 
 /**
  * Will map incoming [BaseSentMessageUpdate]s to [UnknownMessageType] from [BaseSentMessageUpdate.data]
