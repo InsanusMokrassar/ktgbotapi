@@ -17,4 +17,4 @@ interface AnonymousGroupMessage<T : MessageContent> : GroupMessage<T>, SignedMes
     override val senderChat: GroupChat
         get() = chat
 }
-interface CommonGroupMessage<T : MessageContent> : GroupMessage<T>
+interface CommonGroupMessage<T : MessageContent> : GroupMessage<T>, FromUserMessage
