@@ -2,8 +2,8 @@ package dev.inmo.tgbotapi.requests.chat.members
 
 import dev.inmo.tgbotapi.requests.chat.abstracts.ChatMemberRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.ChatMember.ChatMemberSerializer
 import dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatMember
+import dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatMemberSerializer
 import kotlinx.serialization.*
 
 @Serializable
