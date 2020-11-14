@@ -4,13 +4,13 @@ import dev.inmo.tgbotapi.CommonAbstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.ChatMember.abstracts.AdministratorChatMember
-import dev.inmo.tgbotapi.types.ChatMember.abstracts.AdministratorChatMemberSerializerWithoutDeserialization
+import dev.inmo.tgbotapi.types.ChatMember.abstracts.AdministratorChatMemberSerializer
 import dev.inmo.tgbotapi.types.chatIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
 private val chatMembersListSerializer = ListSerializer(
-    AdministratorChatMemberSerializerWithoutDeserialization
+    AdministratorChatMemberSerializer
 )
 
 @Serializable

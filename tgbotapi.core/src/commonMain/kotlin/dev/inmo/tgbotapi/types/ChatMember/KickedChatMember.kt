@@ -1,10 +1,17 @@
 package dev.inmo.tgbotapi.types.ChatMember
 
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.ChatMember.abstracts.BannedChatMember
-import dev.inmo.tgbotapi.types.TelegramDate
-import dev.inmo.tgbotapi.types.User
+import kotlinx.serialization.*
 
+@Serializable
 data class KickedChatMember(
+    @SerialName(userField)
     override val user: User,
-    override val untilDate: TelegramDate?
-) : BannedChatMember
+    @SerialName(untilDateField)
+    override val untilDate: TelegramDate? = null
+) : BannedChatMember {
+    @SerialName(statusField)
+    @Required
+    private val type: String = "kicked"
+}

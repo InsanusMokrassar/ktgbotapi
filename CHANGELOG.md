@@ -2,6 +2,12 @@
 
 ## 0.30.5
 
+* `Core`:
+    * Mechanism of `ChatMember` serialization has been changed
+        * Since this version any `ChatMember` can be serialized (even outside in case it marked by `@Serializable`)
+        * Since this version any `ChatMember` (included in this project) can be deserialized in common way
+    * `User` property `id` has changed its type: now it is `UserId` (under the hood it is the same as `ChatId`)
+
 ## 0.30.4
 
 * `Common`:

@@ -1,7 +1,12 @@
 package dev.inmo.tgbotapi.types.ChatMember
 
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatMember
-import dev.inmo.tgbotapi.types.User
+import kotlinx.serialization.*
 
-data class LeftChatMember(override val user: User) :
-    ChatMember
+@Serializable
+data class LeftChatMember(@SerialName(userField) override val user: User) : ChatMember {
+    @SerialName(statusField)
+    @Required
+    private val type: String = "left"
+}
