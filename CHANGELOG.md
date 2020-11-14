@@ -2,6 +2,9 @@
 
 ## 0.30.5
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.3.3` -> `0.4.0`
 * `Core`:
     * Mechanism of `ChatMember` serialization has been changed
         * Since this version any `ChatMember` can be serialized (even outside in case it marked by `@Serializable`)
