@@ -10,11 +10,13 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
 @Serializable(UserSerializer::class)
-sealed class User : PrivateChat
+sealed class User : PrivateChat {
+    abstract override val id: UserId
+}
 
 @Serializable
 data class CommonUser(
-    override val id: ChatId,
+    override val id: UserId,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
@@ -35,7 +37,7 @@ sealed class Bot : User() {
 
 @Serializable
 data class CommonBot(
-    override val id: ChatId,
+    override val id: UserId,
     @SerialName(usernameField)
     override val username: Username,
     @SerialName(firstNameField)
@@ -49,7 +51,7 @@ data class CommonBot(
 
 @Serializable
 data class ExtendedBot(
-    override val id: ChatId,
+    override val id: UserId,
     @SerialName(usernameField)
     override val username: Username,
     @SerialName(firstNameField)

@@ -1,27 +1,46 @@
 package dev.inmo.tgbotapi.types.ChatMember.abstracts
 
-import dev.inmo.tgbotapi.types.ChatMember.RawChatMember
+import dev.inmo.tgbotapi.types.ChatMember.*
 import dev.inmo.tgbotapi.types.User
-import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.KSerializer
+import dev.inmo.tgbotapi.types.statusField
+import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
+import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
+@Serializable(ChatMemberSerializer::class)
 interface ChatMember {
     val user: User
 }
 
-internal object AdministratorChatMemberSerializerWithoutDeserialization : KSerializer<AdministratorChatMember> {
-    override val descriptor: SerialDescriptor = ChatMemberDeserializationStrategy.descriptor
+@Serializer(ChatMember::class)
+internal object ChatMemberSerializer : KSerializer<ChatMember> {
+    override val descriptor: SerialDescriptor = JsonObject.serializer().descriptor
 
-    override fun deserialize(decoder: Decoder): AdministratorChatMember
-        = ChatMemberDeserializationStrategy.deserialize(decoder) as AdministratorChatMember
-    override fun serialize(encoder: Encoder, value: AdministratorChatMember) = throw UnsupportedOperationException()
-}
+    override fun deserialize(decoder: Decoder): ChatMember {
+        val json = JsonObject.serializer().deserialize(decoder)
+        return when (json[statusField] ?.jsonPrimitive ?.content ?: error("Status field of chat member must be specified, but incoming json contains next: $json")) {
+            "creator" -> nonstrictJsonFormat.decodeFromJsonElement(CreatorChatMember.serializer(), json)
+            "administrator" -> nonstrictJsonFormat.decodeFromJsonElement(AdministratorChatMemberImpl.serializer(), json)
+            "member" -> nonstrictJsonFormat.decodeFromJsonElement(MemberChatMember.serializer(), json)
+            "restricted" -> nonstrictJsonFormat.decodeFromJsonElement(RestrictedChatMember.serializer(), json)
+            "left" -> nonstrictJsonFormat.decodeFromJsonElement(LeftChatMember.serializer(), json)
+            "kicked" -> nonstrictJsonFormat.decodeFromJsonElement(KickedChatMember.serializer(), json)
+            else -> error("Unknown type of chat member in json: $json")
+        }
+    }
 
-internal object ChatMemberDeserializationStrategy : DeserializationStrategy<ChatMember> {
-    override val descriptor: SerialDescriptor = RawChatMember.serializer().descriptor
-
-    override fun deserialize(decoder: Decoder): ChatMember = RawChatMember.serializer().deserialize(decoder).asChatMember
+    override fun serialize(encoder: Encoder, value: ChatMember) {
+        when (value) {
+            is CreatorChatMember -> CreatorChatMember.serializer()
+            is AdministratorChatMemberImpl -> AdministratorChatMemberImpl.serializer()
+            is MemberChatMember -> MemberChatMember.serializer()
+            is RestrictedChatMember -> RestrictedChatMember.serializer()
+            is LeftChatMember -> LeftChatMember.serializer()
+            is KickedChatMember -> KickedChatMember.serializer()
+        }
+    }
 }

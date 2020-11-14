@@ -232,6 +232,7 @@ const val canSendPollsField = "can_send_polls"
 const val canAddWebPagePreviewsField = "can_add_web_page_previews"
 const val canSetStickerSetField = "can_set_sticker_set"
 
+const val statusField = "status"
 const val canBeEditedField = "can_be_edited"
 const val canChangeInfoField = "can_change_info"
 const val canPostMessagesField = "can_post_messages"
