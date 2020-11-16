@@ -13,9 +13,9 @@ import dev.inmo.tgbotapi.utils.internal.codeMarkdownV2
 data class CodeTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String
 ) : TextSource {
-    override val asMarkdownSource: String by lazy { source.codeMarkdown() }
-    override val asMarkdownV2Source: String by lazy { source.codeMarkdownV2() }
-    override val asHtmlSource: String by lazy { source.codeHTML() }
+    override val markdown: String by lazy { source.codeMarkdown() }
+    override val markdownV2: String by lazy { source.codeMarkdownV2() }
+    override val html: String by lazy { source.codeHTML() }
 }
 
 @Suppress("NOTHING_TO_INLINE")

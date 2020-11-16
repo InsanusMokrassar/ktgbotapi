@@ -73,11 +73,11 @@ internal fun List<TextPart>.shiftSourcesToTheLeft(shiftCount: Int = 1): List<Tex
 }
 
 private fun List<TextSource>.joinSubSourcesMarkdownV2() = joinToString("") {
-    it.asMarkdownV2Source
+    it.markdownV2
 }
 
 private fun List<TextSource>.joinSubSourcesHtml() = joinToString("") {
-    it.asHtmlSource
+    it.html
 }
 
 internal fun MultilevelTextSource.markdownV2Default(

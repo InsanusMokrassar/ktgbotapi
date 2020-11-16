@@ -13,9 +13,9 @@ data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.italicMarkdown() }
-    override val asMarkdownV2Source: String by lazy { italicMarkdownV2() }
-    override val asHtmlSource: String by lazy { italicHTML() }
+    override val markdown: String by lazy { source.italicMarkdown() }
+    override val markdownV2: String by lazy { italicMarkdownV2() }
+    override val html: String by lazy { italicHTML() }
 }
 
 @Suppress("NOTHING_TO_INLINE")

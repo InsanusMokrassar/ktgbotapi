@@ -13,9 +13,9 @@ data class PhoneNumberTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.phoneMarkdown() }
-    override val asMarkdownV2Source: String by lazy { phoneMarkdownV2() }
-    override val asHtmlSource: String by lazy { phoneHTML() }
+    override val markdown: String by lazy { source.phoneMarkdown() }
+    override val markdownV2: String by lazy { phoneMarkdownV2() }
+    override val html: String by lazy { phoneHTML() }
 }
 
 @Suppress("NOTHING_TO_INLINE")

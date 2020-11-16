@@ -15,9 +15,9 @@ internal fun createFormattedText(
     val textBuilder = StringBuilder(partLength)
     for (entity in entities) {
         val string = when (mode) {
-            is MarkdownParseMode -> entity.asMarkdownSource
-            is MarkdownV2ParseMode -> entity.asMarkdownV2Source
-            is HTMLParseMode -> entity.asHtmlSource
+            is MarkdownParseMode -> entity.markdown
+            is MarkdownV2ParseMode -> entity.markdownV2
+            is HTMLParseMode -> entity.html
         }
         if (textBuilder.length + string.length > partLength) {
             if (textBuilder.isNotEmpty()) {

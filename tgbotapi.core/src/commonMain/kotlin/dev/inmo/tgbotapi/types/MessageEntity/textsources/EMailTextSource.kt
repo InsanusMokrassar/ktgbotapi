@@ -13,9 +13,9 @@ data class EMailTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor)
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.emailMarkdown() }
-    override val asMarkdownV2Source: String by lazy { emailMarkdownV2(source) }
-    override val asHtmlSource: String by lazy { emailHTML(source) }
+    override val markdown: String by lazy { source.emailMarkdown() }
+    override val markdownV2: String by lazy { emailMarkdownV2(source) }
+    override val html: String by lazy { emailHTML(source) }
 }
 
 @Suppress("NOTHING_TO_INLINE")

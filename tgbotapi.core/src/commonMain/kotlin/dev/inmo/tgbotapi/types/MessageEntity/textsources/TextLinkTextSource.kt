@@ -13,9 +13,9 @@ data class TextLinkTextSource @RiskFeature(DirectInvocationOfTextSourceConstruct
     override val source: String,
     val url: String
 ) : TextSource {
-    override val asMarkdownSource: String by lazy { source.linkMarkdown(url) }
-    override val asMarkdownV2Source: String by lazy { source.linkMarkdownV2(url) }
-    override val asHtmlSource: String by lazy { source.linkHTML(url) }
+    override val markdown: String by lazy { source.linkMarkdown(url) }
+    override val markdownV2: String by lazy { source.linkMarkdownV2(url) }
+    override val html: String by lazy { source.linkHTML(url) }
 }
 
 @Suppress("NOTHING_TO_INLINE")
