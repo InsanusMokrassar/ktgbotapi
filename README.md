@@ -12,6 +12,18 @@
 [kotlinx.serialization#1004](https://github.com/Kotlin/kotlinx.serialization/issues/1004). It is possible, that both JVM
 and JS version may work improperly in some cases with `kotlinx.serialization` version `1.0.0-RC`**
 
+## Fast start
+
+<details>
+<summary>**I do not wanna read a lot, get me my bot**</summary>
+
+You can simply use [this template](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template) (and button
+`Use template`) to get your copy of bot and start to code.
+
+**P.S. Do not forget to look into our [minidocs](https://bookstack.inmo.dev/books/telegrambotapi/) and
+[kdocs](https://tgbotapi.inmo.dev/docs/index.html)**
+
+</details>
 
 It is a complex of libraries for working with `TelegramBotAPI` in type-safe and strict way as much as it possible. In
 the list of this complex currently next projects:
