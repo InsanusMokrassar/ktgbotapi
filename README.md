@@ -15,7 +15,7 @@ and JS version may work improperly in some cases with `kotlinx.serialization` ve
 ## Fast start
 
 <details>
-<summary>**I do not wanna read a lot, get me my bot**</summary>
+<summary><b>I do not wanna read a lot, get me my bot</b></summary>
 
 You can simply use [this template](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template) (and button
 `Use template`) to get your copy of bot and start to code.
@@ -24,6 +24,8 @@ You can simply use [this template](https://github.com/InsanusMokrassar/TelegramB
 [kdocs](https://tgbotapi.inmo.dev/docs/index.html)**
 
 </details>
+
+## What is it?
 
 It is a complex of libraries for working with `TelegramBotAPI` in type-safe and strict way as much as it possible. In
 the list of this complex currently next projects:
