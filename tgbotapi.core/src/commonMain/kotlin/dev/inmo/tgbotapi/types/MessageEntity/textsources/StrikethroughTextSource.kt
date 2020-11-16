@@ -13,9 +13,9 @@ data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceCons
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asHtmlSource: String by lazy { strikethroughHTML() }
-    override val asMarkdownV2Source: String by lazy { strikethroughMarkdownV2() }
-    override val asMarkdownSource: String by lazy { source.strikethroughMarkdown() }
+    override val html: String by lazy { strikethroughHTML() }
+    override val markdownV2: String by lazy { strikethroughMarkdownV2() }
+    override val markdown: String by lazy { source.strikethroughMarkdown() }
 }
 
 @Suppress("NOTHING_TO_INLINE")

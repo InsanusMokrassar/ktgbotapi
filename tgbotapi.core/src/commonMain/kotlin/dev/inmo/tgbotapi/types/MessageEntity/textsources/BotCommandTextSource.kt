@@ -18,9 +18,9 @@ data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
         commandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
     }
 
-    override val asMarkdownSource: String by lazy { source.commandMarkdown() }
-    override val asMarkdownV2Source: String by lazy { source.commandMarkdownV2() }
-    override val asHtmlSource: String by lazy { source.commandHTML() }
+    override val markdown: String by lazy { source.commandMarkdown() }
+    override val markdownV2: String by lazy { source.commandMarkdownV2() }
+    override val html: String by lazy { source.commandHTML() }
 }
 
 /**

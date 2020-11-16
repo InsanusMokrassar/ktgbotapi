@@ -13,9 +13,9 @@ data class HashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.hashTagMarkdown() }
-    override val asMarkdownV2Source: String by lazy { hashTagMarkdownV2() }
-    override val asHtmlSource: String by lazy { hashTagHTML() }
+    override val markdown: String by lazy { source.hashTagMarkdown() }
+    override val markdownV2: String by lazy { hashTagMarkdownV2() }
+    override val html: String by lazy { hashTagHTML() }
 
     init {
         if (!source.startsWith("#")) {

@@ -13,9 +13,9 @@ data class UnderlineTextSource @RiskFeature(DirectInvocationOfTextSourceConstruc
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.underlineMarkdown() }
-    override val asMarkdownV2Source: String by lazy { underlineMarkdownV2() }
-    override val asHtmlSource: String by lazy { underlineHTML() }
+    override val markdown: String by lazy { source.underlineMarkdown() }
+    override val markdownV2: String by lazy { underlineMarkdownV2() }
+    override val html: String by lazy { underlineHTML() }
 }
 
 @Suppress("NOTHING_TO_INLINE")

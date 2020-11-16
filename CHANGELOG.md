@@ -2,6 +2,12 @@
 
 ## 0.30.6
 
+* `Core`
+    * `TextSource` properties has been renamed:
+        * `asMarkdownSource` -> `markdown`
+        * `asMarkdownV2Source` -> `markdownV2`
+        * `asHtmlSource` -> `html`
+
 ## 0.30.5
 
 * `Common`:

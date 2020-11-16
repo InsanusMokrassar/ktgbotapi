@@ -20,9 +20,9 @@ data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.mentionMarkdown() }
-    override val asMarkdownV2Source: String by lazy { mentionMarkdownV2() }
-    override val asHtmlSource: String by lazy { mentionHTML() }
+    override val markdown: String by lazy { source.mentionMarkdown() }
+    override val markdownV2: String by lazy { mentionMarkdownV2() }
+    override val html: String by lazy { mentionHTML() }
 
     init {
         if (!source.startsWith("@")) {

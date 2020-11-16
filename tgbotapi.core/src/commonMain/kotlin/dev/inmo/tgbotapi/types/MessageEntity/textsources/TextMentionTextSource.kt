@@ -15,9 +15,9 @@ data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
     val user: User,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.textMentionMarkdown(user.id) }
-    override val asMarkdownV2Source: String by lazy { textMentionMarkdownV2(user.id) }
-    override val asHtmlSource: String by lazy { textMentionHTML(user.id) }
+    override val markdown: String by lazy { source.textMentionMarkdown(user.id) }
+    override val markdownV2: String by lazy { textMentionMarkdownV2(user.id) }
+    override val html: String by lazy { textMentionHTML(user.id) }
 }
 
 @Suppress("NOTHING_TO_INLINE")

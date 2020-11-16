@@ -13,9 +13,9 @@ data class PreTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) c
     override val source: String,
     val language: String? = null
 ) : TextSource {
-    override val asMarkdownSource: String by lazy { source.preMarkdown(language) }
-    override val asMarkdownV2Source: String by lazy { source.preMarkdownV2(language) }
-    override val asHtmlSource: String by lazy { source.preHTML(language) }
+    override val markdown: String by lazy { source.preMarkdown(language) }
+    override val markdownV2: String by lazy { source.preMarkdownV2(language) }
+    override val html: String by lazy { source.preHTML(language) }
 }
 
 @Suppress("NOTHING_TO_INLINE")

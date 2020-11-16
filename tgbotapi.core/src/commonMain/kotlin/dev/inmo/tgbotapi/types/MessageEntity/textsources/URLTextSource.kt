@@ -12,9 +12,9 @@ import dev.inmo.tgbotapi.utils.internal.linkMarkdownV2
 data class URLTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String
 ) : TextSource {
-    override val asMarkdownSource: String by lazy { source.linkMarkdown(source) }
-    override val asMarkdownV2Source: String by lazy { source.linkMarkdownV2(source) }
-    override val asHtmlSource: String by lazy { source.linkHTML(source) }
+    override val markdown: String by lazy { source.linkMarkdown(source) }
+    override val markdownV2: String by lazy { source.linkMarkdownV2(source) }
+    override val html: String by lazy { source.linkHTML(source) }
 }
 
 @Suppress("NOTHING_TO_INLINE")

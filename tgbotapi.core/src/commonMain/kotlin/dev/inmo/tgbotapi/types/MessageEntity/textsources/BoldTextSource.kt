@@ -13,9 +13,9 @@ data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) 
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.boldMarkdown() }
-    override val asMarkdownV2Source: String by lazy { boldMarkdownV2() }
-    override val asHtmlSource: String by lazy { boldHTML() }
+    override val markdown: String by lazy { source.boldMarkdown() }
+    override val markdownV2: String by lazy { boldMarkdownV2() }
+    override val html: String by lazy { boldHTML() }
 }
 
 @Suppress("NOTHING_TO_INLINE")

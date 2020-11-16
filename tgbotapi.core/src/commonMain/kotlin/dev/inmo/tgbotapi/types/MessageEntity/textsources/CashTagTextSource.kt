@@ -13,9 +13,9 @@ data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val source: String,
     override val subsources: List<TextSource>
 ) : MultilevelTextSource {
-    override val asMarkdownSource: String by lazy { source.cashTagMarkdown() }
-    override val asMarkdownV2Source: String by lazy { cashTagMarkdownV2() }
-    override val asHtmlSource: String by lazy { cashTagHTML() }
+    override val markdown: String by lazy { source.cashTagMarkdown() }
+    override val markdownV2: String by lazy { cashTagMarkdownV2() }
+    override val html: String by lazy { cashTagHTML() }
 }
 
 @Suppress("NOTHING_TO_INLINE")

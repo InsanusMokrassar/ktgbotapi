@@ -14,13 +14,23 @@ typealias FullTextSourcesList = List<TextSource>
 typealias FullTextPartsList = List<TextPart>
 
 interface TextSource {
-    val asMarkdownSource: String
-    val asMarkdownV2Source: String
-    val asHtmlSource: String
+    val markdown: String
+    val markdownV2: String
+    val html: String
     val source: String
 
     val asText: String
         get() = source
+
+    @Deprecated("Rename", ReplaceWith("markdown"))
+    val asMarkdownSource: String
+        get() = markdown
+    @Deprecated("Rename", ReplaceWith("markdownV2"))
+    val asMarkdownV2Source: String
+        get() = markdownV2
+    @Deprecated("Rename", ReplaceWith("html"))
+    val asHtmlSource: String
+        get() = html
 }
 
 @Suppress("NOTHING_TO_INLINE")
