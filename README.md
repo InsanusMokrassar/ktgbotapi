@@ -1,5 +1,16 @@
 # TelegramBotAPI
 
+<details>
+<summary><b>I do not wanna read a lot, just give me my bot</b></summary>
+
+You can simply use [this template](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template) (and button
+`Use template`) to get your copy of bot and start to code.
+
+**P.S. Do not forget to look into our [minidocs](https://bookstack.inmo.dev/books/telegrambotapi/) and
+[kdocs](https://tgbotapi.inmo.dev/docs/index.html)**
+
+</details>
+
 | Common info                           | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Build Status](https://travis-ci.com/InsanusMokrassar/TelegramBotAPI.svg?branch=master)](https://travis-ci.com/InsanusMokrassar/TelegramBotAPI) [Small survey](https://forms.gle/2Hex2ynbHWHhi1KY7)|
 | -------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Useful links | [![Chat in Telegram](badges/chat.svg)](https://t.me/InMoTelegramBotAPI) [![Create bot](badges/template.svg)](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate) [![KDocs](badges/kdocs.svg)](https://tgbotapi.inmo.dev/docs/index.html) [Examples](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/), [Mini tutorial](https://bookstack.inmo.dev/books/telegrambotapi/chapter/introduction-tutorial) |
@@ -11,19 +22,6 @@
 **At the time of publication of version `0.28.0` there are errors in serialization plugins like
 [kotlinx.serialization#1004](https://github.com/Kotlin/kotlinx.serialization/issues/1004). It is possible, that both JVM
 and JS version may work improperly in some cases with `kotlinx.serialization` version `1.0.0-RC`**
-
-## Fast start
-
-<details>
-<summary><b>I do not wanna read a lot, get me my bot</b></summary>
-
-You can simply use [this template](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template) (and button
-`Use template`) to get your copy of bot and start to code.
-
-**P.S. Do not forget to look into our [minidocs](https://bookstack.inmo.dev/books/telegrambotapi/) and
-[kdocs](https://tgbotapi.inmo.dev/docs/index.html)**
-
-</details>
 
 ## What is it?
 
