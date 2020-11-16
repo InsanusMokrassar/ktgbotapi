@@ -9,9 +9,9 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 private const val internalLinkBeginning = "https://t.me"
 
-fun makeLink(username: String) = "$internalLinkBeginning/$username"
+fun makeUsernameLink(username: String) = "$internalLinkBeginning/$username"
 inline val Username.link
-    get() = makeLink(username)
+    get() = makeUsernameLink(username)
 inline fun makeLink(username: Username) = username.link
 
 fun makeLinkToMessage(

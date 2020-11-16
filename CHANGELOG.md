@@ -7,6 +7,17 @@
         * `asMarkdownSource` -> `markdown`
         * `asMarkdownV2Source` -> `markdownV2`
         * `asHtmlSource` -> `html`
+    * `PrivateChat` override `id` property with type `UserId`
+    * Several new extensions and functions in links creation:
+        * New function `makeUsernameLink` with parameter `String`
+            * New extension `Username#link` and function `makeLink(Username)`
+        * Function `makeLinkToMessage` now able to get any type of chat
+            * New extension `Message#link`
+        * Old functions `makeLinkToAddStickerSet...` has been deprecated:
+            * `makeLinkToAddStickerSet`
+            * `makeLinkToAddStickerSetInMarkdownV2`
+            * `makeLinkToAddStickerSetInMarkdown`
+            * `makeLinkToAddStickerSetInHtml`
 
 ## 0.30.5
 
