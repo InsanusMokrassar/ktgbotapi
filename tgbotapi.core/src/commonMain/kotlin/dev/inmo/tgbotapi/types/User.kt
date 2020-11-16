@@ -10,9 +10,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
 @Serializable(UserSerializer::class)
-sealed class User : PrivateChat {
-    abstract override val id: UserId
-}
+sealed class User : PrivateChat
 
 @Serializable
 data class CommonUser(
