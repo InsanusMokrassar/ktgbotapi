@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.extensions.api
 
+import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
@@ -71,11 +72,12 @@ inline fun telegramBot(
 /**
  * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]
  */
+@Deprecated("Replaced in core", ReplaceWith("telegramBot", "dev.inmo.tgbotapi.bot.Ktor.telegramBot"))
 @Suppress("NOTHING_TO_INLINE")
 inline fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl
-): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, apiUrl))
+): TelegramBot = dev.inmo.tgbotapi.bot.Ktor.telegramBot(token, apiUrl)
 
 /**
  * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]

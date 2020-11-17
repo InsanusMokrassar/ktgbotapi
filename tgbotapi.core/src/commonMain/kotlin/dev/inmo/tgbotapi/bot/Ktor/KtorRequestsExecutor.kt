@@ -31,6 +31,16 @@ inline fun telegramBot(
     crossinline builder: KtorRequestsExecutorBuilder.() -> Unit = {}
 ): TelegramBot = KtorRequestsExecutorBuilder(telegramAPIUrlsKeeper).apply(builder).build()
 
+/**
+ * Shortcut for [telegramBot]
+ */
+@Suppress("NOTHING_TO_INLINE")
+inline fun telegramBot(
+    token: String,
+    apiUrl: String = telegramBotAPIDefaultUrl,
+    crossinline builder: KtorRequestsExecutorBuilder.() -> Unit = {}
+): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, apiUrl), builder)
+
 class KtorRequestsExecutor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     client: HttpClient = HttpClient(),
