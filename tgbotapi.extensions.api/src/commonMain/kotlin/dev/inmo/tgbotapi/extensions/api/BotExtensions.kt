@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.api
 
-import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutor
+import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
@@ -11,11 +11,11 @@ import io.ktor.client.engine.*
 /**
  * Allows to create bot using bot [urlsKeeper]
  */
+@Deprecated("Replaced in core", ReplaceWith("telegramBot", "dev.inmo.tgbotapi.bot.Ktor.telegramBot"))
 fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper
-): TelegramBot = KtorRequestsExecutor(
-    urlsKeeper,
-    HttpClient()
+): TelegramBot = dev.inmo.tgbotapi.bot.Ktor.telegramBot(
+    urlsKeeper
 )
 
 /**
@@ -24,10 +24,9 @@ fun telegramBot(
 fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
     client: HttpClient
-): TelegramBot = KtorRequestsExecutor(
-    urlsKeeper,
-    client
-)
+): TelegramBot = dev.inmo.tgbotapi.bot.Ktor.telegramBot(urlsKeeper) {
+    this.client = client
+}
 
 /**
  * Allows to create bot using bot [urlsKeeper] and specify [HttpClientEngineFactory] by passing [clientFactory] param and optionally
@@ -73,11 +72,12 @@ inline fun telegramBot(
 /**
  * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]
  */
+@Deprecated("Replaced in core", ReplaceWith("telegramBot", "dev.inmo.tgbotapi.bot.Ktor.telegramBot"))
 @Suppress("NOTHING_TO_INLINE")
 inline fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl
-): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, apiUrl))
+): TelegramBot = dev.inmo.tgbotapi.bot.Ktor.telegramBot(token, apiUrl)
 
 /**
  * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]
