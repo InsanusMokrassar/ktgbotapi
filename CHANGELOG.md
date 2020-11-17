@@ -7,6 +7,7 @@
         * `MicroUtils`: `0.4.0` -> `0.4.1`
 * `Core`:
     * `TelegramAPIUrlsKeeper` will fix ending of host url since this version
+    * New mechanisms in`PowLimiter` and `CommonLimiter` has been added
 
 ## 0.30.6
 

@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.bot.settings.limiters
 
+import dev.inmo.micro_utils.coroutines.*
+import dev.inmo.tgbotapi.types.MilliSeconds
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.serialization.Serializable
@@ -9,62 +11,60 @@ import kotlin.math.pow
 
 private sealed class RequestEvent
 private class AddRequest(
-    val continuation: Continuation<Long>
+    val continuation: Continuation<MilliSeconds>
 ) : RequestEvent()
 private object CompleteRequest : RequestEvent()
 
 @Serializable
 data class PowLimiter(
-    private val minAwaitTime: Long = 0L,
-    private val maxAwaitTime: Long = 10000L,
+    private val minAwaitTime: MilliSeconds = 0L,
+    private val maxAwaitTime: MilliSeconds = 10000L,
     private val powValue: Double = 4.0,
-    private val powK: Double = 0.0016
+    private val powK: Double = 1.6,
+    @Transient
+    private val scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ) : RequestLimiter {
     @Transient
-    private val scope = CoroutineScope(Dispatchers.Default)
-    @Transient
-    private val eventsChannel = Channel<RequestEvent>(Channel.UNLIMITED)
-    @Transient
     private val awaitTimeRange = minAwaitTime .. maxAwaitTime
+    @Transient
+    private val eventsChannel = let {
+        var requestsInWork = 0.0
+        scope.actor<RequestEvent> {
+            when (it) {
+                is AddRequest -> {
+                    val awaitTime = (requestsInWork.pow(powValue) * powK).toLong()
+                    requestsInWork++
 
-    init {
-        scope.launch {
-            var requestsInWork: Double = 0.0
-            for (event in eventsChannel) {
-                when (event) {
-                    is AddRequest -> {
-                        val awaitTime = (((requestsInWork.pow(powValue) * powK) * 1000L).toLong())
-                        requestsInWork++
-
-                        event.continuation.resume(
-                            if (awaitTime in awaitTimeRange) {
-                                awaitTime
-                            } else {
-                                if (awaitTime < minAwaitTime) {
-                                    minAwaitTime
-                                } else {
-                                    maxAwaitTime
-                                }
-                            }
-                        )
-                    }
-                    is CompleteRequest -> requestsInWork--
+                    it.continuation.resume(
+                        when {
+                            awaitTime in awaitTimeRange -> awaitTime
+                            awaitTime < awaitTimeRange.first -> awaitTimeRange.first
+                            else -> awaitTimeRange.last
+                        }
+                    )
                 }
+                is CompleteRequest -> requestsInWork--
             }
         }
     }
 
-    override suspend fun <T> limit(
-        block: suspend () -> T
+    private suspend inline fun <T> withDelay(
+        crossinline block: suspend () -> T
     ): T {
         val delayMillis = suspendCoroutine<Long> {
             scope.launch { eventsChannel.send(AddRequest(it)) }
         }
         delay(delayMillis)
         return try {
-            block()
+            safely { block() }
         } finally {
             eventsChannel.send(CompleteRequest)
         }
+    }
+
+    override suspend fun <T> limit(
+        block: suspend () -> T
+    ): T {
+        return withDelay(block)
     }
 }

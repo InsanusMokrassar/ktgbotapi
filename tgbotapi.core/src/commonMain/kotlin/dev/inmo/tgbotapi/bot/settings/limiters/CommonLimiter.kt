@@ -1,67 +1,43 @@
 package dev.inmo.tgbotapi.bot.settings.limiters
 
 import com.soywiz.klock.DateTime
+import dev.inmo.micro_utils.coroutines.*
+import dev.inmo.tgbotapi.types.MilliSeconds
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
+import kotlin.coroutines.Continuation
+import kotlin.math.roundToLong
 
 private fun now(): Long = DateTime.nowUnixLong()
 
+@Serializable
 class CommonLimiter(
     private val lockCount: Int = 10,
-    private val regenTime: Long = 20 * 1000L // 20 seconds for full regen of opportunity to send message
+    private val regenTime: MilliSeconds = 15 * 1000, // 15 seconds for full regen of opportunity to send message
+    @Transient
+    private val scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ) : RequestLimiter {
-    private var doLimit: Boolean = false
-
-    private val counterChannel = Channel<Unit>(Channel.UNLIMITED)
-    private val scope = CoroutineScope(Dispatchers.Default)
-    private val counterJob = scope.launch {
-        var wasLastSecond = 0
-        var lastCountTime = now()
-        var limitManagementJob: Job? = null
-        var removeLimitTime: Long = lastCountTime
-        for (counter in counterChannel) {
-            val now = now()
-            if (now - lastCountTime > 1000) {
-                lastCountTime = now
-                wasLastSecond = 1
-            } else {
-                wasLastSecond++
-            }
-            if (wasLastSecond >= lockCount) {
-                removeLimitTime = now + regenTime
-                if (limitManagementJob == null) {
-                    limitManagementJob = launch {
-                        doLimit = true
-                        var internalNow = now()
-                        while (internalNow < removeLimitTime) {
-                            delay(removeLimitTime - internalNow)
-                            internalNow = now()
-                        }
-                        doLimit = false
-                    }
+    private val quotaSemaphore = Semaphore(lockCount)
+    private val counterRegeneratorJob = scope.launch {
+        val regenDelay: MilliSeconds = (regenTime.toDouble() / lockCount).roundToLong()
+        while (isActive) {
+            delay(regenDelay)
+            if (quotaSemaphore.availablePermits < lockCount) {
+                try {
+                    quotaSemaphore.release()
+                } catch (_: IllegalStateException) {
+                    // Skip IllegalStateException due to the fact that this exception may happens in release method
                 }
             }
-            if (now > removeLimitTime) {
-                limitManagementJob = null
-            }
-        }
-    }
-
-    private val quoterChannel = Channel<Unit>(Channel.CONFLATED)
-    private val tickerJob = scope.launch {
-        while (isActive) {
-            quoterChannel.send(Unit)
-            delay(1000L)
         }
     }
 
     override suspend fun <T> limit(block: suspend () -> T): T {
-        counterChannel.send(Unit)
-        return if (!doLimit) {
-            block()
-        } else {
-            quoterChannel.receive()
-            block()
-        }
+        quotaSemaphore.acquire()
+        return block()
     }
 }
