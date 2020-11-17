@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.bot.Ktor
 import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.Ktor.base.*
+import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.bot.settings.limiters.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -12,6 +13,23 @@ import io.ktor.client.HttpClient
 import io.ktor.client.features.*
 import io.ktor.client.statement.readText
 import kotlinx.serialization.json.Json
+
+class KtorRequestsExecutorBuilder(
+    var telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper
+) {
+    var client: HttpClient = HttpClient()
+    var callsFactories: List<KtorCallFactory> = emptyList()
+    var excludeDefaultFactories: Boolean = false
+    var requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter()
+    var jsonFormatter: Json = nonstrictJsonFormat
+
+    fun build() = KtorRequestsExecutor(telegramAPIUrlsKeeper, client, callsFactories, excludeDefaultFactories, requestsLimiter, jsonFormatter)
+}
+
+inline fun telegramBot(
+    telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
+    crossinline builder: KtorRequestsExecutorBuilder.() -> Unit = {}
+): TelegramBot = KtorRequestsExecutorBuilder(telegramAPIUrlsKeeper).apply(builder).build()
 
 class KtorRequestsExecutor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,

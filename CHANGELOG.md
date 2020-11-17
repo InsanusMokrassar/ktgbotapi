@@ -8,6 +8,11 @@
 * `Core`:
     * `TelegramAPIUrlsKeeper` will fix ending of host url since this version
     * New mechanisms in`PowLimiter` and `CommonLimiter` has been added
+    * New builder `KtorRequestsExecutorBuilder`
+        * New function `telegramBot`
+* `Utils`:
+    * Simple function `telegramBot(TelegramAPIUrlsKeeper)` has been deprecated with replacement by almost the same
+    function in `Core`
 
 ## 0.30.6
 
