@@ -53,7 +53,7 @@ publishing {
         repositories {
             maven {
                 name = "bintray"
-                url = uri("https://api.bintray.com/maven/${project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')}/TelegramBotAPI/${project.name};publish=1;override=1")
+                url = uri("https://api.bintray.com/maven/${project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')}/TelegramBotAPI/${project.name}/;publish=1;override=1")
                 credentials {
                     username = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
                     password = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
