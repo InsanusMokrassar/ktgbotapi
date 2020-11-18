@@ -1,59 +1,65 @@
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
-apply from: "maven.publish.gradle"
-
-bintray {
-    user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
-    filesSpec {
-        from "${buildDir}/publications/"
-        eachFile {
-            String directorySubname = it.getFile().parentFile.name
-            if (it.getName() == "module.json") {
-                if (directorySubname == "kotlinMultiplatform") {
-                    it.setPath("${project.name}/${project.version}/${project.name}-${project.version}.module")
-                } else {
-                    it.setPath("${project.name}-${directorySubname}/${project.version}/${project.name}-${directorySubname}-${project.version}.module")
-                }
-            } else {
-                if (directorySubname == "kotlinMultiplatform" && it.getName() == "pom-default.xml") {
-                    it.setPath("${project.name}/${project.version}/${project.name}-${project.version}.pom")
-                } else {
-                    it.exclude()
-                }
-            }
-        }
-        into "${project.group}".replace(".", "/")
-    }
-    
-    publish = true
-    override = true
-    
-    pkg {
-        repo = "TelegramBotAPI"
-        name = "${project.name}"
-        vcsUrl = "https://github.com/InsanusMokrassar/TelegramBotAPI"
-        licenses = ["Apache-2.0"]
-        version {
-            name = "${project.version}"
-            released = new Date()
-            vcsTag = "${project.version}"
-            gpg {
-                sign = true
-                passphrase = project.hasProperty('signing.gnupg.passphrase') ? project.property('signing.gnupg.passphrase') : System.getenv('signing.gnupg.passphrase')
-            }
-        }
-    }
+task javadocsJar(type: Jar) {
+    classifier = 'javadoc'
 }
 
-bintrayUpload.doFirst {
-    publications = publishing.publications.collect {
+afterEvaluate {
+    project.publishing.publications.all {
+        // rename artifacts
+        groupId "${project.group}"
         if (it.name.contains('kotlinMultiplatform')) {
-            null
+            artifactId = "${project.name}"
         } else {
-            it.name
+            artifactId = "${project.name}-$name"
         }
-    } - null
+    }
 }
 
-bintrayUpload.dependsOn publishToMavenLocal
+publishing {
+    publications.all {
+        artifact javadocsJar
+
+        pom {
+            description = "API extensions which provide work with RequestsExecutor of TelegramBotAPI almost like it is described in original Telegram Bot API reference"
+            name = "Telegram Bot API Extensions for API"
+            url = "https://insanusmokrassar.github.io/TelegramBotAPI/TelegramBotAPI-extensions-api"
+
+            scm {
+                developerConnection = "scm:git:[fetch=]https://github.com/insanusmokrassar/TelegramBotAPI.git[push=]https://github.com/insanusmokrassar/TelegramBotAPI.git"
+                url = "https://github.com/insanusmokrassar/TelegramBotAPI.git"
+            }
+
+            developers {
+                
+                    developer {
+                        id = "InsanusMokrassar"
+                        name = "Ovsiannikov Aleksei"
+                        email = "ovsyannikov.alexey95@gmail.com"
+                    }
+                
+            }
+
+            licenses {
+                
+                    license {
+                        name = "Apache Software License 2.0"
+                        url = "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/LICENSE"
+                    }
+                
+            }
+        }
+        
+        repositories {
+            maven {
+                name = "bintray"
+                url = uri("https://api.bintray.com/maven/${project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')}/TelegramBotAPI/${project.name};publish=1;override=1")
+                credentials {
+                    username = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
+                    password = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
+                }
+            }
+        }
+        
+    }
+}
