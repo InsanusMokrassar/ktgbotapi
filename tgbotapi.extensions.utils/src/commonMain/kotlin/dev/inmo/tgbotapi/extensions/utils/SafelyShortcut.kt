@@ -7,7 +7,6 @@ import kotlinx.coroutines.CoroutineScope
 /**
  * Shortcut for [dev.inmo.micro_utils.coroutines.safely]. It was created for more comfortable way of handling different things
  */
-@PreviewFeature
 @Deprecated("In future will be used typealias from micro_utils", ReplaceWith("safely", "dev.inmo.micro_utils.coroutines.safely"))
 suspend inline fun <T> safely(
     noinline onException: ExceptionHandler<T> = { throw it },
