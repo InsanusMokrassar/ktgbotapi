@@ -72,7 +72,6 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
  * [flowUpdatesPreset] lambda - it will be called BEFORE starting updates getting
  */
 @FlowPreview
-@PreviewFeature
 @Suppress("unused")
 fun RequestsExecutor.startGettingFlowsUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
