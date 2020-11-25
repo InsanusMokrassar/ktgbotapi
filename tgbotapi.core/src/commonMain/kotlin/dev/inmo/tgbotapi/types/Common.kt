@@ -65,7 +65,10 @@ val dartsAndCubeDiceResultLimit = 1 .. 6
 @Deprecated("Renamed", ReplaceWith("dartsAndCubeDiceResultLimit", "dev.inmo.tgbotapi.types.dartsAndCubeDiceResultLimit"))
 val diceResultLimit
     get() = dartsAndCubeDiceResultLimit
-val basketballAndFootballDiceResultLimit = 1 .. 5
+val basketballBowlingAndFootballDiceResultLimit = 1 .. 5
+@Deprecated("Renamed", ReplaceWith("basketballBowlingAndFootballDiceResultLimit", "dev.inmo.tgbotapi.types.basketballBowlingAndFootballDiceResultLimit"))
+val basketballAndFootballDiceResultLimit
+    get() = basketballBowlingAndFootballDiceResultLimit
 val slotMachineDiceResultLimit = 1 .. 64
 
 val botCommandLengthLimit = 1 .. 32

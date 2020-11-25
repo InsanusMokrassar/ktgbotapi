@@ -6,6 +6,8 @@
     * `Version`:
         * `UUID`: `0.2.2` -> `0.2.3`
         * `MicroUtils`: `0.4.3` -> `0.4.5`
+* `Core`:
+    * Add `BowlingDiceAnimationType`
 
 ## 0.30.8
 
