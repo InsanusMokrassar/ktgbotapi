@@ -61,10 +61,13 @@ val inlineQueryAnswerResultsLimit = 0 .. 50
 
 val customTitleLength = 0 .. 16
 
-val dartsAndCubeDiceResultLimit = 1 .. 6
-@Deprecated("Renamed", ReplaceWith("dartsAndCubeDiceResultLimit", "dev.inmo.tgbotapi.types.dartsAndCubeDiceResultLimit"))
+val dartsCubeAndBowlingDiceResultLimit = 1 .. 6
+@Deprecated("Renamed", ReplaceWith("dartsCubeAndBowlingDiceResultLimit", "dev.inmo.tgbotapi.types.dartsCubeAndBowlingDiceResultLimit"))
+val dartsAndCubeDiceResultLimit
+    get() = dartsCubeAndBowlingDiceResultLimit
+@Deprecated("Renamed", ReplaceWith("dartsCubeAndBowlingDiceResultLimit", "dev.inmo.tgbotapi.types.dartsCubeAndBowlingDiceResultLimit"))
 val diceResultLimit
-    get() = dartsAndCubeDiceResultLimit
+    get() = dartsCubeAndBowlingDiceResultLimit
 val basketballAndFootballDiceResultLimit = 1 .. 5
 val slotMachineDiceResultLimit = 1 .. 64
 
