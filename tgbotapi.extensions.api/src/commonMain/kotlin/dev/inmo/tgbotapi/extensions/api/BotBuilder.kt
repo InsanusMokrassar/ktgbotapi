@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.extensions.api
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.*
@@ -36,10 +37,25 @@ data class BotBuilder internal constructor(
  * @return Created by [telegramBotWithCustomClientConfig] function [TelegramBot]. This executor will be preconfigured using [token] and
  * [block]
  */
+fun buildBot(
+    token: String,
+    apiUrl: String = telegramBotAPIDefaultUrl,
+    block: BotBuilder.() -> Unit
+) = telegramBot(
+    TelegramAPIUrlsKeeper(token, apiUrl),
+    BotBuilder().apply(block).createHttpClient()
+)
+
+/**
+ * @return Created by [telegramBotWithCustomClientConfig] function [TelegramBot]. This executor will be preconfigured using [token] and
+ * [block]
+ */
+@Deprecated("Renamed", ReplaceWith("buildBot", "dev.inmo.tgbotapi.extensions.api.buildBot"))
 fun telegramBot(
     token: String,
     block: BotBuilder.() -> Unit
-): TelegramBot = telegramBot(
-    TelegramAPIUrlsKeeper(token),
-    BotBuilder().apply(block).createHttpClient()
+): TelegramBot = buildBot(
+    token,
+    telegramBotAPIDefaultUrl,
+    block
 )
