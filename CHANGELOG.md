@@ -1,5 +1,16 @@
 # TelegramBotAPI changelog
 
+## 0.30.10
+
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.4.20` -> `1.4.21`
+        * `Klock`: `2.0.0` -> `2.0.1`
+        * `Ktor`: `1.4.2` -> `1.4.3`
+        * `MicroUtils`: `0.4.6` -> `0.4.11`
+* `API Extensions`:
+    * New function `buildBot`
+
 ## 0.30.9
 
 * `Common`:
