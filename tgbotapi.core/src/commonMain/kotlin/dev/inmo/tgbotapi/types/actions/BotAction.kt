@@ -44,6 +44,7 @@ object TypingAction : BotAction() {
 }
 inline val typing
     get() = TypingAction
+inline fun BotAction.asTyping() = this as? TypingAction
 
 /**
  * Will notify user that bot is uploading some photo
@@ -54,6 +55,7 @@ object UploadPhotoAction : BotAction() {
 }
 inline val uploadPhoto
     get() = UploadPhotoAction
+inline fun BotAction.asUploadPhoto() = this as? UploadPhotoAction
 
 /**
  * Will notify user that bot is recording some video
@@ -64,6 +66,7 @@ object RecordVideoAction : BotAction() {
 }
 inline val recordVideo
     get() = RecordVideoAction
+inline fun BotAction.asRecordVideo() = this as? RecordVideoAction
 
 /**
  * Will notify user that bot is uploading some photo
@@ -74,6 +77,7 @@ object UploadVideoAction : BotAction() {
 }
 inline val uploadVideo
     get() = UploadVideoAction
+inline fun BotAction.asUploadVideo() = this as? UploadVideoAction
 
 /**
  * Will notify user that bot is recording some audio
@@ -84,6 +88,7 @@ object RecordAudioAction : BotAction() {
 }
 inline val recordAudio
     get() = RecordAudioAction
+inline fun BotAction.asRecordAudio() = this as? RecordAudioAction
 
 /**
  * Will notify user that bot is uploading some audio
@@ -94,6 +99,7 @@ object UploadAudioAction : BotAction() {
 }
 inline val uploadAudio
     get() = UploadAudioAction
+inline fun BotAction.asUploadAudio() = this as? UploadAudioAction
 
 /**
  * Will notify user that bot is uploading some document
@@ -104,6 +110,7 @@ object UploadDocumentAction : BotAction() {
 }
 inline val uploadDocument
     get() = UploadDocumentAction
+inline fun BotAction.asUploadDocument() = this as? UploadDocumentAction
 
 /**
  * Will notify user that bot is trying to find location
@@ -114,6 +121,7 @@ object FindLocationAction : BotAction() {
 }
 inline val findLocation
     get() = FindLocationAction
+inline fun BotAction.asFindLocation() = this as? FindLocationAction
 
 /**
  * Will notify user that bot is recording video note
@@ -124,6 +132,7 @@ object RecordVideoNoteAction : BotAction() {
 }
 inline val recordVideoNote
     get() = RecordVideoNoteAction
+inline fun BotAction.asRecordVideoNote() = this as? RecordVideoNoteAction
 
 /**
  * Will notify user that bot is uploading video note
@@ -134,3 +143,4 @@ object UploadVideoNoteAction : BotAction() {
 }
 inline val uploadVideoNote
     get() = UploadVideoNoteAction
+inline fun BotAction.asUploadVideoNote() = this as? UploadVideoNoteAction
