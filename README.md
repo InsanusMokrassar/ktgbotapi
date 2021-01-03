@@ -3,11 +3,11 @@
 <details>
 <summary><b>I do not wanna read a lot, just give me my bot</b></summary>
 
-You can simply use [this template](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template) (and button
-`Use template`) to get your copy of bot and start to code.
+You can simply use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template">this template</a>(and button
+<code>Use template</code>) to get your copy of bot and start to code.
 
-**P.S. Do not forget to look into our [minidocs](https://bookstack.inmo.dev/books/telegrambotapi/) and
-[kdocs](https://tgbotapi.inmo.dev/docs/index.html)**
+<b>P.S. Do not forget to look into our <a href="https://bookstack.inmo.dev/books/telegrambotapi/">minidocs</a> and
+<a href="https://tgbotapi.inmo.dev/docs/index.html">kdocs</a></b>
 
 </details>
 
