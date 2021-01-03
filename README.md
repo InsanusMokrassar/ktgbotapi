@@ -3,8 +3,8 @@
 <details>
 <summary><b>I do not wanna read a lot, just give me my bot</b></summary>
 
-You can simply use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template">this template</a>(and button
-<code>Use template</code>) to get your copy of bot and start to code.
+You can simply use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template">this template</a> (and button
+<a href="https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate">Use template</a>) to get your copy of bot and start to code.
 
 <b>P.S. Do not forget to look into our <a href="https://bookstack.inmo.dev/books/telegrambotapi/">minidocs</a> and
 <a href="https://tgbotapi.inmo.dev/docs/index.html">kdocs</a></b>
