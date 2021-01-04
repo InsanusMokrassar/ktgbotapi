@@ -3,7 +3,6 @@ buildscript {
         mavenLocal()
         jcenter()
         mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
@@ -15,7 +14,6 @@ buildscript {
 plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
-    id "org.jetbrains.kotlin.kapt"
 }
 
 project.version = "$library_version"
@@ -28,7 +26,6 @@ repositories {
     jcenter()
     mavenCentral()
     maven { url "https://kotlin.bintray.com/kotlinx" }
-    maven { url 'https://jitpack.io' }
 }
 
 kotlin {
@@ -52,7 +49,6 @@ kotlin {
                 api "dev.inmo:micro_utils.coroutines:$micro_utils_version"
 
                 api "io.ktor:ktor-client-core:$ktor_version"
-                api "com.github.matfax.klassindex:library:4.+"
             }
         }
         commonTest {
@@ -92,32 +88,5 @@ kotlin {
                 freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
             }
         }
-    }
-}
-
-dependencies {
-    kapt "com.github.matfax.klassindex:processor:4.+"
-}
-
-kapt {
-    useBuildCache = false
-    arguments {
-        arg(
-            "com.github.matfax.klassindex.IndexSubclasses",
-            "dev.inmo.tgbotapi.types.chat.abstracts.Chat",
-//            "dev.inmo.tgbotapi.types.message.abstracts.Message",
-//            "dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery",
-//            "dev.inmo.tgbotapi.types.buttons.KeyboardMarkup",
-//            "dev.inmo.tgbotapi.types.actions.BotAction",
-//            "dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton",
-//            "dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatMember",
-//            "dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile",
-//            "dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery",
-//            "dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult",
-//            "dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent",
-//            "dev.inmo.tgbotapi.types.InputMedia.InputMedia",
-//            "dev.inmo.tgbotapi.types.polls.Poll",
-//            "dev.inmo.tgbotapi.types.update.abstracts.Update"
-        )
     }
 }
