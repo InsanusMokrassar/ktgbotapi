@@ -5,7 +5,7 @@
 * `Common`:
     * `Version`:
         * `MicroUtils`: `0.4.11` -> `0.4.15`
-        * `Klock`: `2.0.1` -> `2.0.2`
+        * `Klock`: `2.0.1` -> `2.0.3`
         * `Ktor`: `1.4.3` -> `1.5.0`
 * `Core`:
     * All bot actions got functions for short calling, like `recordVideo` for `RecordVideoNote`
