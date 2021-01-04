@@ -42,6 +42,9 @@ internal object BotActionSerializer: KSerializer<BotAction> {
 object TypingAction : BotAction() {
     override val actionName: String = "typing"
 }
+inline val typing
+    get() = TypingAction
+inline fun BotAction.asTyping() = this as? TypingAction
 
 /**
  * Will notify user that bot is uploading some photo
@@ -50,6 +53,9 @@ object TypingAction : BotAction() {
 object UploadPhotoAction : BotAction() {
     override val actionName: String = "upload_photo"
 }
+inline val uploadPhoto
+    get() = UploadPhotoAction
+inline fun BotAction.asUploadPhoto() = this as? UploadPhotoAction
 
 /**
  * Will notify user that bot is recording some video
@@ -58,6 +64,9 @@ object UploadPhotoAction : BotAction() {
 object RecordVideoAction : BotAction() {
     override val actionName: String = "record_video"
 }
+inline val recordVideo
+    get() = RecordVideoAction
+inline fun BotAction.asRecordVideo() = this as? RecordVideoAction
 
 /**
  * Will notify user that bot is uploading some photo
@@ -66,6 +75,9 @@ object RecordVideoAction : BotAction() {
 object UploadVideoAction : BotAction() {
     override val actionName: String = "upload_video"
 }
+inline val uploadVideo
+    get() = UploadVideoAction
+inline fun BotAction.asUploadVideo() = this as? UploadVideoAction
 
 /**
  * Will notify user that bot is recording some audio
@@ -74,6 +86,9 @@ object UploadVideoAction : BotAction() {
 object RecordAudioAction : BotAction() {
     override val actionName: String = "record_audio"
 }
+inline val recordAudio
+    get() = RecordAudioAction
+inline fun BotAction.asRecordAudio() = this as? RecordAudioAction
 
 /**
  * Will notify user that bot is uploading some audio
@@ -82,6 +97,9 @@ object RecordAudioAction : BotAction() {
 object UploadAudioAction : BotAction() {
     override val actionName: String = "upload_audio"
 }
+inline val uploadAudio
+    get() = UploadAudioAction
+inline fun BotAction.asUploadAudio() = this as? UploadAudioAction
 
 /**
  * Will notify user that bot is uploading some document
@@ -90,6 +108,9 @@ object UploadAudioAction : BotAction() {
 object UploadDocumentAction : BotAction() {
     override val actionName: String = "upload_document"
 }
+inline val uploadDocument
+    get() = UploadDocumentAction
+inline fun BotAction.asUploadDocument() = this as? UploadDocumentAction
 
 /**
  * Will notify user that bot is trying to find location
@@ -98,6 +119,9 @@ object UploadDocumentAction : BotAction() {
 object FindLocationAction : BotAction() {
     override val actionName: String = "find_location"
 }
+inline val findLocation
+    get() = FindLocationAction
+inline fun BotAction.asFindLocation() = this as? FindLocationAction
 
 /**
  * Will notify user that bot is recording video note
@@ -106,6 +130,9 @@ object FindLocationAction : BotAction() {
 object RecordVideoNoteAction : BotAction() {
     override val actionName: String = "record_video_note"
 }
+inline val recordVideoNote
+    get() = RecordVideoNoteAction
+inline fun BotAction.asRecordVideoNote() = this as? RecordVideoNoteAction
 
 /**
  * Will notify user that bot is uploading video note
@@ -114,3 +141,6 @@ object RecordVideoNoteAction : BotAction() {
 object UploadVideoNoteAction : BotAction() {
     override val actionName: String = "upload_video_note"
 }
+inline val uploadVideoNote
+    get() = UploadVideoNoteAction
+inline fun BotAction.asUploadVideoNote() = this as? UploadVideoNoteAction

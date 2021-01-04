@@ -1,5 +1,16 @@
 # TelegramBotAPI changelog
 
+## 0.30.11
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.11` -> `0.4.15`
+        * `Klock`: `2.0.1` -> `2.0.3`
+        * `Ktor`: `1.4.3` -> `1.5.0`
+* `Core`:
+    * All bot actions got functions for short calling, like `recordVideo` for `RecordVideoNote`
+    * All bot actions got class-cast shortcuts
+
 ## 0.30.10
 
 * `Common`:
