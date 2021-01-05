@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlin.reflect.KClass
 
 fun printlnInstanceSubclassesFuns(kclass: KClass<*>) {
@@ -26,8 +27,8 @@ fun printlnInstancesSubclassesFuns(kclass: KClass<*>, subclasses: Set<KClass<*>>
         val typeUpperBounds = subclass.typeParameters.map { it.upperBounds.first() }
         val imports = "import ${subclass.qualifiedName}" + if (typeUpperBounds.isEmpty()) "" else typeUpperBounds.joinToString("\nimport ", "\nimport ")
         val subtype = "${subclass.simpleName}${if (typeUpperBounds.isEmpty()) "" else "<${typeUpperBounds.joinToString() { (it.classifier as KClass<*>).simpleName!! }}>"}"
-        val code = "inline fun ${kclass.simpleName}.as${subclass.simpleName}(): $subtype? = this as? $subtype\n" +
-            "inline fun ${kclass.simpleName}.require${subclass.simpleName}(): $subtype = this as $subtype"
+        val code = "@PreviewFeature\ninline fun ${kclass.simpleName}.as${subclass.simpleName}(): $subtype? = this as? $subtype\n" +
+            "@PreviewFeature\ninline fun ${kclass.simpleName}.require${subclass.simpleName}(): $subtype = this as $subtype"
         imports to code
     }
 }
@@ -42,10 +43,6 @@ fun main() {
             dev.inmo.tgbotapi.types.CommonUser::class,
             dev.inmo.tgbotapi.types.ExtendedBot::class,
             dev.inmo.tgbotapi.types.User::class,
-            dev.inmo.tgbotapi.types.chat.ChannelChatImpl::class,
-            dev.inmo.tgbotapi.types.chat.GroupChatImpl::class,
-            dev.inmo.tgbotapi.types.chat.PrivateChatImpl::class,
-            dev.inmo.tgbotapi.types.chat.SupergroupChatImpl::class,
             dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat::class,
             dev.inmo.tgbotapi.types.chat.abstracts.GroupChat::class,
             dev.inmo.tgbotapi.types.chat.abstracts.PrivateChat::class,
@@ -59,11 +56,7 @@ fun main() {
             dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedGroupChat::class,
             dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedPrivateChat::class,
             dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedPublicChat::class,
-            dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedSupergroupChat::class,
-            dev.inmo.tgbotapi.types.chat.extended.ExtendedChannelChatImpl::class,
-            dev.inmo.tgbotapi.types.chat.extended.ExtendedGroupChatImpl::class,
-            dev.inmo.tgbotapi.types.chat.extended.ExtendedPrivateChatImpl::class,
-            dev.inmo.tgbotapi.types.chat.extended.ExtendedSupergroupChatImpl::class)
+            dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedSupergroupChat::class,)
     result[dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery::class] =
         setOf(dev.inmo.tgbotapi.types.CallbackQuery.DataCallbackQuery::class,
             dev.inmo.tgbotapi.types.CallbackQuery.GameShortNameCallbackQuery::class,
@@ -75,16 +68,12 @@ fun main() {
             dev.inmo.tgbotapi.types.CallbackQuery.MessageGameShortNameCallbackQuery::class,
             dev.inmo.tgbotapi.types.CallbackQuery.UnknownCallbackQueryType::class)
     result[dev.inmo.tgbotapi.types.message.abstracts.Message::class] =
-        setOf(dev.inmo.tgbotapi.types.message.AnonymousGroupMessageImpl::class,
+        setOf(
             dev.inmo.tgbotapi.types.message.ChannelEventMessage::class,
             dev.inmo.tgbotapi.types.message.ChannelMediaGroupMessage::class,
-            dev.inmo.tgbotapi.types.message.ChannelMessageImpl::class,
             dev.inmo.tgbotapi.types.message.CommonGroupEventMessage::class,
-            dev.inmo.tgbotapi.types.message.CommonGroupMessageImpl::class,
             dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage::class,
             dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage::class,
-            dev.inmo.tgbotapi.types.message.FromChannelGroupMessageImpl::class,
-            dev.inmo.tgbotapi.types.message.PrivateMessageImpl::class,
             dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupMessage::class,
             dev.inmo.tgbotapi.types.message.abstracts.ChannelMessage::class,
             dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage::class,
@@ -125,25 +114,11 @@ fun main() {
             dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessageContent::class)
     result[dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult::class] =
         setOf(dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultArticle::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioCachedImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioImpl::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultContact::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentCachedImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentImpl::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGame::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifCachedImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifImpl::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultLocation::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifCachedImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoCachedImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoImpl::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultStickerCached::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVenue::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoCachedImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceCachedImpl::class,
-            dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceImpl::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.DescribedInlineQueryResult::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.FileInlineQueryResult::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.OptionallyTitledInlineQueryResult::class,
@@ -176,7 +151,7 @@ fun main() {
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCached::class,
             dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCommon::class)
     result[dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatMember::class] =
-        setOf(dev.inmo.tgbotapi.types.ChatMember.AdministratorChatMemberImpl::class,
+        setOf(
             dev.inmo.tgbotapi.types.ChatMember.CreatorChatMember::class,
             dev.inmo.tgbotapi.types.ChatMember.KickedChatMember::class,
             dev.inmo.tgbotapi.types.ChatMember.LeftChatMember::class,
@@ -256,7 +231,9 @@ fun main() {
             dev.inmo.tgbotapi.types.polls.QuizPoll::class,
             dev.inmo.tgbotapi.types.polls.RegularPoll::class,
             dev.inmo.tgbotapi.types.polls.UnknownPollType::class)
+    println("import dev.inmo.tgbotapi.utils.PreviewFeature")
     val importsToFuns = result.keys.flatMap {
+        println("import ${it.qualifiedName}")
         printlnInstancesSubclassesFuns(it, result.getValue(it))
     }
     importsToFuns.forEach { println(it.first) }
