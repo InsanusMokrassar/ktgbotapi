@@ -1,4 +1,4 @@
-@file:Suppress("NOTHING_TO_INLINE", "unused")
+@file:Suppress("NOTHING_TO_INLINE", "unused", "UNCHECKED_CAST")
 
 package dev.inmo.tgbotapi.extensions.utils
 import dev.inmo.tgbotapi.types.*
