@@ -23,7 +23,12 @@ fun printlnInstanceSubclassesFuns(kclass: KClass<*>) {
 
 fun printlnInstancesSubclassesFuns(kclass: KClass<*>, subclasses: Set<KClass<*>>): List<Pair<String, String>> {
     return subclasses.map { subclass ->
-        "${subclass.qualifiedName}" to "inline fun ${kclass.simpleName}.as${subclass.simpleName}(): ${subclass.simpleName}? = this as? ${subclass.simpleName}"
+        val typeUpperBounds = subclass.typeParameters.map { it.upperBounds.first() }
+        val imports = "import ${subclass.qualifiedName}" + if (typeUpperBounds.isEmpty()) "" else typeUpperBounds.joinToString("\nimport ", "\nimport ")
+        val subtype = "${subclass.simpleName}${if (typeUpperBounds.isEmpty()) "" else "<${typeUpperBounds.joinToString() { (it.classifier as KClass<*>).simpleName!! }}>"}"
+        val code = "inline fun ${kclass.simpleName}.as${subclass.simpleName}(): $subtype? = this as? $subtype\n" +
+            "inline fun ${kclass.simpleName}.require${subclass.simpleName}(): $subtype = this as $subtype"
+        imports to code
     }
 }
 
@@ -254,7 +259,7 @@ fun main() {
     val importsToFuns = result.keys.flatMap {
         printlnInstancesSubclassesFuns(it, result.getValue(it))
     }
-    importsToFuns.forEach { println("import ${it.first}") }
+    importsToFuns.forEach { println(it.first) }
     println()
     importsToFuns.forEach { println(it.second) }
 //    printlnInstanceSubclassesFuns(Message::class)
