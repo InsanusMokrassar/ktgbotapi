@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 0.30.12
+
+* `Utils`:
+    * Class casts has been added. Now you can write something like `message.asGroupMessage() ?.let { ... }` instead of
+    `(message as? GroupMessage<*>) ?.let { ... }`
+
 ## 0.30.11
 
 * `Common`:
