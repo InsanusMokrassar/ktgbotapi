@@ -18,6 +18,12 @@ plugins {
     id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version" apply false
 }
 
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
 private String getCurrentVersionChangelog() {
     OutputStream changelogDataOS = new ByteArrayOutputStream()
     exec {
