@@ -9,8 +9,6 @@ typealias ScenarioAndTypeReceiver<T, I> = suspend Scenario.(I) -> T
 
 data class Scenario(
     val bot: TelegramBot,
-    val flowsUpdatesFilter: FlowsUpdatesFilter,
-    val scope: CoroutineScope
+    val scope: CoroutineScope,
+    val flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
 )
-
-
