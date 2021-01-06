@@ -8,5 +8,6 @@ pluginManagement {
 include ":tgbotapi.core"
 include ":tgbotapi.extensions.api"
 include ":tgbotapi.extensions.utils"
+include ":tgbotapi.extensions.steps"
 include ":tgbotapi"
 include ":docs"
