@@ -2,6 +2,10 @@
 
 ## 0.30.13
 
+* `Utils`:
+    * Extensions for `ResendableContent` has been added
+    * Extensions for `TextSource` has been added
+
 ## 0.30.12
 
 * `Utils`:
