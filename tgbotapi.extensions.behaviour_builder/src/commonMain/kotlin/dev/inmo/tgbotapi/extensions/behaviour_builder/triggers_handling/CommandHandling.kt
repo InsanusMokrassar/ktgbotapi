@@ -1,7 +1,7 @@
-package dev.inmo.tgbotapi.extensions.steps.triggers_handling
+package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.tgbotapi.CommonAbstracts.textSources
-import dev.inmo.tgbotapi.extensions.steps.*
+import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent

@@ -1,11 +1,11 @@
-package dev.inmo.tgbotapi.extensions.steps.triggers_handling
+package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
-import dev.inmo.tgbotapi.extensions.steps.BehaviourContext
-import dev.inmo.tgbotapi.extensions.steps.BehaviourContextAndTypeReceiver
-import dev.inmo.tgbotapi.extensions.steps.expectations.expectFlow
+import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
+import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.asContentMessage
 import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat

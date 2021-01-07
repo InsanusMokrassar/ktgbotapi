@@ -1,4 +1,4 @@
-package dev.inmo.tgbotapi.extensions.steps
+package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
