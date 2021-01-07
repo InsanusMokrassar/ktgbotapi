@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.steps.expectations
 
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.steps.Scenario
+import dev.inmo.tgbotapi.extensions.steps.BehaviourContext
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
@@ -73,7 +73,7 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
  * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
  * will be called too), [errorFactory] and then will be returned null
  */
-suspend fun <T> Scenario.expectFlow(
+suspend fun <T> BehaviourContext.expectFlow(
     initRequest: Request<*>? = null,
     count: Int? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -112,7 +112,7 @@ suspend fun <T> FlowsUpdatesFilter.expectOne(
  * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
  * will be called too), [errorFactory] and then will be returned null
  */
-suspend fun <T> Scenario.expectOne(
+suspend fun <T> BehaviourContext.expectOne(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },

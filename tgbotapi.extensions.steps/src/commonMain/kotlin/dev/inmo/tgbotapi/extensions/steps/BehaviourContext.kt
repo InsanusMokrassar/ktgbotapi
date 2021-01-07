@@ -4,10 +4,10 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.CoroutineScope
 
-typealias ScenarioReceiver<T> = suspend Scenario.() -> T
-typealias ScenarioAndTypeReceiver<T, I> = suspend Scenario.(I) -> T
+typealias BehaviourContextReceiver<T> = suspend BehaviourContext.() -> T
+typealias BehaviourContextAndTypeReceiver<T, I> = suspend BehaviourContext.(I) -> T
 
-data class Scenario(
+data class BehaviourContext(
     val bot: TelegramBot,
     val scope: CoroutineScope,
     val flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()

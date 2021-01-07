@@ -3,8 +3,8 @@ package dev.inmo.tgbotapi.extensions.steps.triggers_handling
 
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
-import dev.inmo.tgbotapi.extensions.steps.Scenario
-import dev.inmo.tgbotapi.extensions.steps.ScenarioAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.steps.BehaviourContext
+import dev.inmo.tgbotapi.extensions.steps.BehaviourContextAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.steps.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
@@ -14,10 +14,10 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.flow.filter
 
-internal suspend inline fun <reified T : CallbackQuery> Scenario.onCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+internal suspend inline fun <reified T : CallbackQuery> BehaviourContext.onCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     noinline additionalFilter: (suspend (T) -> Boolean)? = null,
-    noinline scenarioReceiver: ScenarioAndTypeReceiver<Unit, T>
+    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, T>
 ) = flowsUpdatesFilter.expectFlow(bot) {
     it.asCallbackQueryUpdate() ?.data ?.let { query ->
         if (query is T) {
@@ -27,14 +27,14 @@ internal suspend inline fun <reified T : CallbackQuery> Scenario.onCallbackQuery
         }
     }
 }.subscribeSafelyWithoutExceptions(scope) { triggerQuery ->
-    val (jobToCancel, scenario) = if (includeFilterByChatInSubScenario) {
+    val (jobToCancel, scenario) = if (includeFilterByChatInBehaviourSubContext) {
         val subFilter = FlowsUpdatesFilter()
-        val subScenario = copy(flowsUpdatesFilter = subFilter)
+        val subBehaviourContext = copy(flowsUpdatesFilter = subFilter)
 
         flowsUpdatesFilter.allUpdatesFlow.filter {
             val chat = it.sourceChat() ?: return@filter false
             chat.id.chatId == triggerQuery.user.id.chatId
-        }.subscribeSafelyWithoutExceptions(scope, subFilter.asUpdateReceiver) to subScenario
+        }.subscribeSafelyWithoutExceptions(scope, subFilter.asUpdateReceiver) to subBehaviourContext
     } else {
         null to this
     }
@@ -43,49 +43,49 @@ internal suspend inline fun <reified T : CallbackQuery> Scenario.onCallbackQuery
 }
 
 
-suspend fun Scenario.onDataCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+suspend fun BehaviourContext.onDataCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (DataCallbackQuery) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, DataCallbackQuery>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, DataCallbackQuery>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
 
-suspend fun Scenario.onGameShortNameCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+suspend fun BehaviourContext.onGameShortNameCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (GameShortNameCallbackQuery) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, GameShortNameCallbackQuery>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onInlineMessageIdCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, GameShortNameCallbackQuery>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onInlineMessageIdCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (InlineMessageIdCallbackQuery) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, InlineMessageIdCallbackQuery>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onInlineMessageIdDataCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineMessageIdCallbackQuery>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onInlineMessageIdDataCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (InlineMessageIdDataCallbackQuery) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, InlineMessageIdDataCallbackQuery>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onInlineMessageIdGameShortNameCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineMessageIdDataCallbackQuery>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onInlineMessageIdGameShortNameCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (InlineMessageIdGameShortNameCallbackQuery) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, InlineMessageIdGameShortNameCallbackQuery>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onMessageCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineMessageIdGameShortNameCallbackQuery>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onMessageCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (MessageCallbackQuery) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, MessageCallbackQuery>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onMessageDataCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, MessageCallbackQuery>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onMessageDataCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (MessageDataCallbackQuery) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, MessageDataCallbackQuery>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onMessageGameShortNameCallbackQuery(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, MessageDataCallbackQuery>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onMessageGameShortNameCallbackQuery(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (MessageGameShortNameCallbackQuery) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, MessageGameShortNameCallbackQuery>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onUnknownCallbackQueryType(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, MessageGameShortNameCallbackQuery>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onUnknownCallbackQueryType(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (UnknownCallbackQueryType) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, UnknownCallbackQueryType>
-) = onCallbackQuery(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, UnknownCallbackQueryType>
+) = onCallbackQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)

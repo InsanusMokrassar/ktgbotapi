@@ -5,23 +5,23 @@ import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdat
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.CoroutineScope
 
-suspend fun TelegramBot.buildScenarios(
+suspend fun TelegramBot.buildBehaviour(
     scope: CoroutineScope,
     flowUpdatesFilter: FlowsUpdatesFilter,
-    block: ScenarioReceiver<Unit>
+    block: BehaviourContextReceiver<Unit>
 ) {
-    Scenario(
+    BehaviourContext(
         this,
         scope,
         flowUpdatesFilter
     ).block()
 }
 
-suspend fun TelegramBot.buildScenarios(
+suspend fun TelegramBot.buildBehaviour(
     scope: CoroutineScope,
-    block: ScenarioReceiver<Unit>
+    block: BehaviourContextReceiver<Unit>
 ) = FlowsUpdatesFilter().also {
-    buildScenarios(
+    buildBehaviour(
         scope,
         it,
         block

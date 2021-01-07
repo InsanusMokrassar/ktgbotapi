@@ -3,27 +3,24 @@ package dev.inmo.tgbotapi.extensions.steps.triggers_handling
 
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
-import dev.inmo.tgbotapi.extensions.steps.Scenario
-import dev.inmo.tgbotapi.extensions.steps.ScenarioAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.steps.BehaviourContext
+import dev.inmo.tgbotapi.extensions.steps.BehaviourContextAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.steps.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
-import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
-import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.flow.filter
 
-internal suspend inline fun <reified T : ChatEvent> Scenario.onEvent(
-    includeFilterByChatInSubScenario: Boolean = true,
+internal suspend inline fun <reified T : ChatEvent> BehaviourContext.onEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     noinline additionalFilter: (suspend (ChatEventMessage<T>) -> Boolean)? = null,
-    noinline scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<T>>
+    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<T>>
 ) = flowsUpdatesFilter.expectFlow(bot) {
     it.asMessageUpdate() ?.data ?.asChatEventMessage() ?.let { message ->
         if (message.chatEvent is T) {
@@ -34,14 +31,14 @@ internal suspend inline fun <reified T : ChatEvent> Scenario.onEvent(
         }
     }
 }.subscribeSafelyWithoutExceptions(scope) { triggerMessage ->
-    val (jobToCancel, scenario) = if (includeFilterByChatInSubScenario) {
+    val (jobToCancel, scenario) = if (includeFilterByChatInBehaviourSubContext) {
         val subFilter = FlowsUpdatesFilter()
-        val subScenario = copy(flowsUpdatesFilter = subFilter)
+        val subBehaviourContext = copy(flowsUpdatesFilter = subFilter)
 
         flowsUpdatesFilter.allUpdatesFlow.filter {
             val chat = it.sourceChat() ?: return@filter false
             chat.id.chatId == triggerMessage.chat.id.chatId
-        }.subscribeSafelyWithoutExceptions(scope, subFilter.asUpdateReceiver) to subScenario
+        }.subscribeSafelyWithoutExceptions(scope, subFilter.asUpdateReceiver) to subBehaviourContext
     } else {
         null to this
     }
@@ -49,79 +46,79 @@ internal suspend inline fun <reified T : ChatEvent> Scenario.onEvent(
     jobToCancel ?.cancel()
 }
 
-suspend fun Scenario.onChannelEvent(
-    includeFilterByChatInSubScenario: Boolean = true,
+suspend fun BehaviourContext.onChannelEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<ChannelEvent>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<ChannelEvent>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onChatEvent(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<ChannelEvent>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onChatEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<ChatEvent>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<ChatEvent>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onCommonEvent(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<ChatEvent>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onCommonEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<CommonEvent>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<CommonEvent>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onGroupEvent(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<CommonEvent>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onGroupEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<GroupEvent>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<GroupEvent>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onSupergroupEvent(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<GroupEvent>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onSupergroupEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<SupergroupEvent>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<SupergroupEvent>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<SupergroupEvent>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
 
-suspend fun Scenario.onChannelChatCreated(
-    includeFilterByChatInSubScenario: Boolean = true,
+suspend fun BehaviourContext.onChannelChatCreated(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<ChannelChatCreated>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<ChannelChatCreated>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onDeleteChatPhoto(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<ChannelChatCreated>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onDeleteChatPhoto(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<DeleteChatPhoto>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<DeleteChatPhoto>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onGroupChatCreated(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<DeleteChatPhoto>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onGroupChatCreated(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<GroupChatCreated>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<GroupChatCreated>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onLeftChatMember(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<GroupChatCreated>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onLeftChatMember(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<LeftChatMember>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<LeftChatMember>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onNewChatMembers(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<LeftChatMember>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onNewChatMembers(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<NewChatMembers>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<NewChatMembers>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onNewChatPhoto(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<NewChatMembers>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onNewChatPhoto(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<NewChatPhoto>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<NewChatPhoto>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onNewChatTitle(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<NewChatPhoto>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onNewChatTitle(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<NewChatTitle>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<NewChatTitle>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onPinnedMessage(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<NewChatTitle>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onPinnedMessage(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<PinnedMessage>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<PinnedMessage>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onProximityAlertTriggered(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<PinnedMessage>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onProximityAlertTriggered(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<ProximityAlertTriggered>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<ProximityAlertTriggered>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
-suspend fun Scenario.onSupergroupChatCreated(
-    includeFilterByChatInSubScenario: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<ProximityAlertTriggered>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onSupergroupChatCreated(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<SupergroupChatCreated>) -> Boolean)? = null,
-    scenarioReceiver: ScenarioAndTypeReceiver<Unit, ChatEventMessage<SupergroupChatCreated>>
-) = onEvent(includeFilterByChatInSubScenario, additionalFilter, scenarioReceiver)
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<SupergroupChatCreated>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
