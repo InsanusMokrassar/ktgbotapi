@@ -3,7 +3,7 @@
 package dev.inmo.tgbotapi.extensions.steps.expectations
 
 import dev.inmo.tgbotapi.extensions.steps.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.*
+import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.CallbackQuery.*
 import kotlinx.coroutines.flow.toList

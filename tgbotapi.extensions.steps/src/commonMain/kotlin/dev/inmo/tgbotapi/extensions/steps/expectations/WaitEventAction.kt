@@ -3,7 +3,8 @@
 package dev.inmo.tgbotapi.extensions.steps.expectations
 
 import dev.inmo.tgbotapi.extensions.steps.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.*
+import dev.inmo.tgbotapi.extensions.utils.asChatEventMessage
+import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
