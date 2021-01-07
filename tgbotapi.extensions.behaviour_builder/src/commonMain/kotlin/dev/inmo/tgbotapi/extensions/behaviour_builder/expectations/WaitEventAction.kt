@@ -23,7 +23,7 @@ private suspend fun <O> BehaviourContext.waitEventMessages(
     count,
     errorFactory
 ) {
-    it.asMessageUpdate() ?.data ?.asChatEventMessage() ?.mapper()
+    it.asMessageUpdate() ?.data ?.asChatEventMessage() ?.mapper().let(::listOfNotNull)
 }.toList().toList()
 
 

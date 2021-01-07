@@ -20,7 +20,7 @@ private suspend fun <O> BehaviourContext.waitCallbackQueries(
     count,
     errorFactory
 ) {
-    it.asCallbackQueryUpdate() ?.data ?.mapper()
+    it.asCallbackQueryUpdate() ?.data ?.mapper().let(::listOfNotNull)
 }.toList().toList()
 
 

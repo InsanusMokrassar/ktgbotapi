@@ -34,11 +34,11 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> T?
+    filter: suspend (Update) -> List<T>
 ): Flow<T> {
-    val flow = allUpdatesFlow.mapNotNull {
+    val flow = allUpdatesFlow.flatMapConcat {
         val result = safelyWithoutExceptions { filter(it) }
-        if (result == null) {
+        (if (result == null || result.isEmpty()) {
             if (cancelTrigger(it)) {
                 cancelRequestFactory(it) ?.also {
                     safelyWithoutExceptions { bot.execute(it) }
@@ -48,10 +48,10 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
             errorFactory(it) ?.also { errorRequest ->
                 safelyWithoutExceptions { bot.execute(errorRequest) }
             }
-            null
+            emptyList()
         } else {
             result
-        }
+        }).asFlow()
     }
     val result = if (count == null) {
         flow
@@ -79,7 +79,7 @@ suspend fun <T> BehaviourContext.expectFlow(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> T?
+    filter: suspend (Update) -> List<T>
 ) = flowsUpdatesFilter.expectFlow(bot, initRequest, count, errorFactory, cancelRequestFactory, cancelTrigger, filter)
 
 /**
@@ -99,8 +99,10 @@ suspend fun <T> FlowsUpdatesFilter.expectOne(
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
-    filter: suspend (Update) -> T?,
-): T = expectFlow(bot, initRequest, 1, errorFactory, cancelRequestFactory, cancelTrigger, filter).first()
+    filter: suspend (Update) -> T?
+): T = expectFlow(bot, initRequest, 1, errorFactory, cancelRequestFactory, cancelTrigger) {
+    listOfNotNull(filter.invoke(it))
+}.first()
 
 /**
  * @param initRequest If not null, this request will be sent by [bot] before returning value

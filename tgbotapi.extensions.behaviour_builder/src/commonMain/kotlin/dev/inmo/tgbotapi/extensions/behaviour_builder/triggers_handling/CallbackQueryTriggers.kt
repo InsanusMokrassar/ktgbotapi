@@ -25,7 +25,7 @@ internal suspend inline fun <reified T : CallbackQuery> BehaviourContext.onCallb
         } else {
             null
         }
-    }
+    }.let(::listOfNotNull)
 }.subscribeSafelyWithoutExceptions(scope) { triggerQuery ->
     val (jobToCancel, scenario) = if (includeFilterByChatInBehaviourSubContext) {
         val subFilter = FlowsUpdatesFilter()

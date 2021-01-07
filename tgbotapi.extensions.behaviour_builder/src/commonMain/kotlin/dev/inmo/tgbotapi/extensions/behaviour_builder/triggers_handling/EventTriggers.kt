@@ -29,7 +29,7 @@ internal suspend inline fun <reified T : ChatEvent> BehaviourContext.onEvent(
         } else {
             null
         }
-    }
+    }.let(::listOfNotNull)
 }.subscribeSafelyWithoutExceptions(scope) { triggerMessage ->
     val (jobToCancel, scenario) = if (includeFilterByChatInBehaviourSubContext) {
         val subFilter = FlowsUpdatesFilter()
