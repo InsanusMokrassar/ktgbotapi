@@ -15,6 +15,17 @@ private val cancelledByFilterException = CancellationException("Cancelled by fil
 typealias RequestBuilder<T> = suspend (Update) -> Request<T>
 typealias NullableRequestBuilder<T> = suspend (Update) -> Request<T>?
 
+/**
+ * @param initRequest If not null, this request will be sent by [bot] before returning value
+ * @param count If set, result [Flow] will return [count] elements on each [Flow.collect]
+ * @param errorFactory If set, this factory will be used to produce requests in case when user have sent incorrect data
+ * @param cancelRequestFactory If set, this factory will be used to produce requests in case when it is required to say
+ * user that chain of scenario has been cancelled
+ * @param cancelTrigger When this trigger returns true, chain is cancelled
+ * @param filter It is main param, which will be called on each update. When it return not null, result will be returned
+ * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
+ * will be called too), [errorFactory] and then will be returned null
+ */
 @RiskFeature("This method is not very comfortable to use and too low-level. It is recommended to use methods which already included into library")
 suspend fun <T> FlowsUpdatesFilter.expectFlow(
     bot: TelegramBot,
@@ -51,6 +62,17 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
     return result
 }
 
+/**
+ * @param initRequest If not null, this request will be sent by [bot] before returning value
+ * @param count If set, result [Flow] will return [count] elements on each [Flow.collect]
+ * @param errorFactory If set, this factory will be used to produce requests in case when user have sent incorrect data
+ * @param cancelRequestFactory If set, this factory will be used to produce requests in case when it is required to say
+ * user that chain of scenario has been cancelled
+ * @param cancelTrigger When this trigger returns true, chain is cancelled
+ * @param filter It is main param, which will be called on each update. When it return not null, result will be returned
+ * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
+ * will be called too), [errorFactory] and then will be returned null
+ */
 suspend fun <T> Scenario.expectFlow(
     initRequest: Request<*>? = null,
     count: Int? = null,
@@ -60,6 +82,16 @@ suspend fun <T> Scenario.expectFlow(
     filter: suspend (Update) -> T?
 ) = flowsUpdatesFilter.expectFlow(bot, initRequest, count, errorFactory, cancelRequestFactory, cancelTrigger, filter)
 
+/**
+ * @param initRequest If not null, this request will be sent by [bot] before returning value
+ * @param errorFactory If set, this factory will be used to produce requests in case when user have sent incorrect data
+ * @param cancelRequestFactory If set, this factory will be used to produce requests in case when it is required to say
+ * user that chain of scenario has been cancelled
+ * @param cancelTrigger When this trigger returns true, chain is cancelled
+ * @param filter It is main param, which will be called on each update. When it return not null, result will be returned
+ * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
+ * will be called too), [errorFactory] and then will be returned null
+ */
 @RiskFeature("This method is not very comfortable to use and too low-level. It is recommended to use methods which already included into library")
 suspend fun <T> FlowsUpdatesFilter.expectOne(
     bot: TelegramBot,
@@ -70,6 +102,16 @@ suspend fun <T> FlowsUpdatesFilter.expectOne(
     filter: suspend (Update) -> T?,
 ): T = expectFlow(bot, initRequest, 1, errorFactory, cancelRequestFactory, cancelTrigger, filter).first()
 
+/**
+ * @param initRequest If not null, this request will be sent by [bot] before returning value
+ * @param errorFactory If set, this factory will be used to produce requests in case when user have sent incorrect data
+ * @param cancelRequestFactory If set, this factory will be used to produce requests in case when it is required to say
+ * user that chain of scenario has been cancelled
+ * @param cancelTrigger When this trigger returns true, chain is cancelled
+ * @param filter It is main param, which will be called on each update. When it return not null, result will be returned
+ * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
+ * will be called too), [errorFactory] and then will be returned null
+ */
 suspend fun <T> Scenario.expectOne(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
