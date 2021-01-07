@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.extensions.steps.ScenarioAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.steps.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.asContentMessage
 import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
+import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
@@ -37,7 +38,8 @@ internal suspend inline fun <reified T : MessageContent> Scenario.onContent(
         val subScenario = copy(flowsUpdatesFilter = subFilter)
 
         flowsUpdatesFilter.allUpdatesFlow.filter {
-            it.asMessageUpdate() ?.data ?.let { it.chat.id.chatId == triggerMessage.chat.id.chatId } == true
+            val chat = it.sourceChat() ?: return@filter false
+            chat.id.chatId == triggerMessage.chat.id.chatId
         }.subscribeSafelyWithoutExceptions(scope, subFilter.asUpdateReceiver) to subScenario
     } else {
         null to this
