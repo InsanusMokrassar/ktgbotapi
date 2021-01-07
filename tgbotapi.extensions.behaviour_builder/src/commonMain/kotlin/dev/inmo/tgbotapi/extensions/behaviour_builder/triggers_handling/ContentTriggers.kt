@@ -1,3 +1,5 @@
+@file:Suppress("unused", "UNCHECKED_CAST")
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 
@@ -15,9 +17,11 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlinx.coroutines.flow.filter
 
 
+@PreviewFeature
 internal suspend inline fun <reified T : MessageContent> BehaviourContext.onContent(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     includeMediaGroups: Boolean = true,
