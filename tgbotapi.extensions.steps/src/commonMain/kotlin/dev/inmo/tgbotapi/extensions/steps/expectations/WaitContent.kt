@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.steps.expectations
 
 import dev.inmo.tgbotapi.extensions.steps.Scenario
@@ -30,13 +32,14 @@ private suspend inline fun <reified T : MessageContent> Scenario.waitContent(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: (suspend (ContentMessage<T>) -> T?)? = null
+    noinline filter: ContentMessageToContentMapper<T>? = null
 ) : List<T> = waitContentMessage<T>(
     count,
     initRequest,
     errorFactory
 ) {
     if (content is T) {
+        @Suppress("UNCHECKED_CAST")
         val message = (this as ContentMessage<T>)
         if (filter == null) {
             message.content
