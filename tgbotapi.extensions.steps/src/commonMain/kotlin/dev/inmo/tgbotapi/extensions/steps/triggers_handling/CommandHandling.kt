@@ -1,16 +1,11 @@
 package dev.inmo.tgbotapi.extensions.steps.triggers_handling
 
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
-import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.tgbotapi.CommonAbstracts.textSources
 import dev.inmo.tgbotapi.extensions.steps.*
-import dev.inmo.tgbotapi.extensions.steps.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
-import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.filter
 
 suspend fun Scenario.command(
     commandRegex: Regex,

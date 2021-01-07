@@ -3,12 +3,11 @@ package dev.inmo.tgbotapi.extensions.steps.expectations
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.steps.Scenario
-import dev.inmo.tgbotapi.extensions.steps.ScenarioReceiver
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.RiskFeature
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.*
 
 private val cancelledByFilterException = CancellationException("Cancelled by filter precreatedException")

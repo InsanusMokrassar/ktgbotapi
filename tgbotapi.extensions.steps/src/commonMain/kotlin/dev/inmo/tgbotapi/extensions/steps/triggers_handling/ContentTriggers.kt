@@ -6,34 +6,16 @@ import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.steps.Scenario
 import dev.inmo.tgbotapi.extensions.steps.ScenarioAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.steps.expectations.expectFlow
-import dev.inmo.tgbotapi.extensions.utils.*
+import dev.inmo.tgbotapi.extensions.utils.asContentMessage
+import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
 import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
-import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.ContactContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.flow.filter
-import dev.inmo.tgbotapi.types.message.content.DiceContent
-import dev.inmo.tgbotapi.types.message.content.GameContent
-import dev.inmo.tgbotapi.types.message.content.LocationContent
-import dev.inmo.tgbotapi.types.message.content.PollContent
-import dev.inmo.tgbotapi.types.message.content.VenueContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.AudioMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.DocumentMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaCollectionContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.AnimationContent
-import dev.inmo.tgbotapi.types.message.content.media.AudioContent
-import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
-import dev.inmo.tgbotapi.types.message.content.media.PhotoContent
-import dev.inmo.tgbotapi.types.message.content.media.StickerContent
-import dev.inmo.tgbotapi.types.message.content.media.VideoContent
-import dev.inmo.tgbotapi.types.message.content.media.VideoNoteContent
-import dev.inmo.tgbotapi.types.message.content.media.VoiceContent
-import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 
 
 internal suspend inline fun <reified T : MessageContent> Scenario.onContent(
