@@ -2,6 +2,9 @@
 
 ## 0.30.13
 
+* `Core`:
+    * New variable `FlowsUpdatesFilter#allUpdatesWithoutMediaGroupsGroupingFlow` which will contains updates without
+      `SentMediaGroupUpdate`
 * `Utils`:
     * Extensions for `ResendableContent` has been added
     * Extensions for `TextSource` has been added

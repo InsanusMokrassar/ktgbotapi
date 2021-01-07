@@ -14,6 +14,14 @@ class FlowsUpdatesFilter(
     private val updatesSharedFlow = MutableSharedFlow<Update>(extraBufferCapacity = broadcastChannelsSize)
     @Suppress("MemberVisibilityCanBePrivate")
     val allUpdatesFlow: Flow<Update> = updatesSharedFlow.asSharedFlow()
+    @Suppress("MemberVisibilityCanBePrivate")
+    val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update> = updatesSharedFlow.flatMapConcat {
+        (if (it is SentMediaGroupUpdate) {
+            it.origins
+        } else {
+            listOf(it)
+        }).asFlow()
+    }
 
     override val allowedUpdates: List<String>
         get() = ALL_UPDATES_LIST
