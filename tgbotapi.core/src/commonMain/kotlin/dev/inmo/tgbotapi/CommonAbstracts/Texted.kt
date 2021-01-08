@@ -19,13 +19,17 @@ interface TextedOutput : ParsableOutput, EntitiesOutput
 
 interface TextedInput : Texted {
     /**
-     * Not full list of entities. This list WILL NOT contain [TextPart]s with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
+     * Here must be full list of entities. This list must contains [TextPart]s with
+     * [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource] in case if source text contains parts of
+     * regular text
      * @see [CaptionedInput.fullEntitiesList]
      */
     val textEntities: List<TextPart>
 }
 
 /**
+ * Full list of [TextSource] built from source[TextedInput.textEntities]
+ *
  * @see TextedInput.textEntities
  * @see justTextSources
  */

@@ -1,5 +1,19 @@
 # TelegramBotAPI changelog
 
+## 0.30.13
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.15` -> `0.4.16`
+* `Core`:
+    * New variable `FlowsUpdatesFilter#allUpdatesWithoutMediaGroupsGroupingFlow` which will contains updates without
+      `SentMediaGroupUpdate`
+* `Utils`:
+    * Extensions for `ResendableContent` has been added
+    * Extensions for `TextSource` has been added
+* `Behaviour Builder`:
+    * Project has been created :)
+
 ## 0.30.12
 
 * `Utils`:
