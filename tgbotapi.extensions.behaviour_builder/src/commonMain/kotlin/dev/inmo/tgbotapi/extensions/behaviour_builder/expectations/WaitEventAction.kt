@@ -14,9 +14,9 @@ import kotlinx.coroutines.flow.toList
 typealias EventMessageToEventMapper<T> = suspend ChatEventMessage<T>.() -> T?
 
 private suspend fun <O> BehaviourContext.waitEventMessages(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     mapper: suspend ChatEventMessage<ChatEvent>.() -> O?
 ): List<O> = expectFlow(
     initRequest,
@@ -33,9 +33,9 @@ private suspend inline fun <reified T : ChatEvent> BehaviourContext.waitEvents(
     noinline errorFactory: NullableRequestBuilder<*> = { null },
     noinline filter: EventMessageToEventMapper<T>? = null
 ) : List<T> = waitEventMessages<T>(
-    count,
     initRequest,
-    errorFactory
+    errorFactory,
+    count
 ) {
     if (chatEvent is T) {
         @Suppress("UNCHECKED_CAST")
@@ -51,94 +51,94 @@ private suspend inline fun <reified T : ChatEvent> BehaviourContext.waitEvents(
 }
 
 suspend fun BehaviourContext.waitChannelEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<ChannelEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 
 suspend fun BehaviourContext.waitChatEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<ChatEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitCommonEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<CommonEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitGroupEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<GroupEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitSupergroupEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<SupergroupEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 
 suspend fun BehaviourContext.waitChannelChatCreatedEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<ChannelChatCreated>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitDeleteChatPhotoEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<DeleteChatPhoto>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitGroupChatCreatedEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<GroupChatCreated>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitLeftChatMemberEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<LeftChatMember>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitNewChatPhotoEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<NewChatPhoto>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitNewChatMembersEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<NewChatMembers>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitNewChatTitleEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<NewChatTitle>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitPinnedMessageEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<PinnedMessage>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitProximityAlertTriggeredEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<ProximityAlertTriggered>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitSupergroupChatCreatedEvents(
-    count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
     filter: EventMessageToEventMapper<SupergroupChatCreated>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
