@@ -15,8 +15,9 @@ You can simply use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI-b
 | -------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Useful links | [![Chat in Telegram](badges/chat.svg)](https://t.me/InMoTelegramBotAPI) [![Create bot](badges/template.svg)](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate) [![KDocs](badges/kdocs.svg)](https://tgbotapi.inmo.dev/docs/index.html) [Examples](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/), [Mini tutorial](https://bookstack.inmo.dev/books/telegrambotapi/chapter/introduction-tutorial) |
 | TelegramBotAPI Core status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core) |
-| TelegramBotAPI Extensions status      | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api) |
+| TelegramBotAPI API Extensions status      | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api) |
 | TelegramBotAPI Util Extensions status | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils) |
+| TelegramBotAPI Behaviour Builder Extensions status | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.behaviour_builder/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.behaviour_builder/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.behaviour_builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.behaviour_builder) |
 | TelegramBotAPI All status                 | [![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi/images/download.svg)](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi/_latestVersion) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi)                                                             |
 
 **At the time of publication of version `0.28.0` there are errors in serialization plugins like
@@ -34,6 +35,8 @@ the list of this complex currently next projects:
   `RequestsExecutor`), which allows to use the core library in more pleasant way
 * [TelegramBotAPI Util Extensions](tgbotapi.extensions.utils/README.md) - contains extensions for more comfortable
 work with commands, updates and other different things
+* [TelegramBotAPI Behaviour  Builder Extensions](tgbotapi.extensions.behaviour_builder/README.md) - builder for
+  step-by-step handling of bot behaviour in more comfortable manner
 * [TelegramBotAPI](tgbotapi/README.md) - concentration of all previously mentioned libraries
 
 Most part of some specific solves or unuseful
@@ -88,6 +91,7 @@ kotlin {
 
 In most cases, the most simple way will be to implement [TelegramBotAPI](tgbotapi/README.md) - it contains
 all necessary tools for comfort usage of this library. If you want to exclude some libraries, you can implement just
+[TelegramBotAPI BehaviourBuilder Extensions](tgbotapi.extensions.behaviour_builder/README.md),
 [TelegramBotAPI API Extensions](tgbotapi.extensions.api/README.md),
 [TelegramBotAPI Util Extensions](tgbotapi.extensions.utils/README.md) or even
 [TelegramBotAPI Core](tgbotapi.core/README.md).

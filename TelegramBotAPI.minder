@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <minder version="1.11.3">
-  <theme name="default" label="Default" index="0"/>
+  <theme name="default" label="Default" index="-1"/>
   <styles>
     <style level="0" isset="true" branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
     <style level="1" isset="true" branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
@@ -45,7 +45,7 @@
               </nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="6" posx="1543.298161778599" posy="940.04571601189673" width="439" height="122" side="bottom" fold="false" treesize="439" color="#68b723" colorroot="false" layout="Downwards" group="false">
+                <node id="4" posx="1543.298161778599" posy="940.04571601189673" width="439" height="122" side="bottom" fold="false" treesize="439" color="#68b723" colorroot="false" layout="Downwards" group="false">
                   <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="387" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
                   <nodename posx="1559.298161778599" posy="956.04571601189673" maxwidth="408.97932942708348">
                     <text data="tgbotapi.extensions.behaviour_builder&#10;&#10;Extension project for building bot behaviour via special dsl"/>
@@ -58,10 +58,10 @@
         </node>
       </nodes>
     </node>
-    <node id="4" posx="1439.623926752558" posy="1175.0700181766106" width="329" height="213" side="top" fold="false" treesize="329" layout="Downwards" group="false">
-      <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="388" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
-      <nodename posx="1455.623926752558" posy="1191.0700181766106" maxwidth="394.3671875">
-        <text data="tgbotapi&#10;&#10;Here included all available TelegramBotAPI libraries:&#13;&#10;&#13;&#10;* tgbotapi.core&#13;&#10;* tgbotapi.extensions.api&#13;&#10;* tgbotapi.extensions.utils">
+    <node id="5" posx="1391.8445078072455" posy="1155.6062730594231" width="461" height="236" side="bottom" fold="false" treesize="461" layout="Downwards" group="false">
+      <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="430" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
+      <nodename posx="1407.8445078072455" posy="1171.6062730594231" maxwidth="453.885498046875">
+        <text data="tgbotapi&#10;&#10;Here included all available TelegramBotAPI libraries:&#13;&#10;&#13;&#10;* tgbotapi.core&#13;&#10;* tgbotapi.extensions.api&#13;&#10;* tgbotapi.extensions.utils&#10;* tgbotapi.extensions.behaviour_builder">
           <color>
             <range start="67" end="68" extra="rgb(255,0,0)"/>
             <range start="67" end="68" extra="rgb(255,0,0)"/>
@@ -80,6 +80,92 @@
             <range start="67" end="68" extra="rgb(255,0,0)"/>
             <range start="67" end="68" extra="rgb(255,0,0)"/>
             <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
             <range start="84" end="85" extra="rgb(255,0,0)"/>
             <range start="84" end="85" extra="rgb(255,0,0)"/>
             <range start="84" end="85" extra="rgb(255,0,0)"/>
@@ -114,6 +200,89 @@
             <range start="111" end="112" extra="rgb(255,0,0)"/>
             <range start="111" end="112" extra="rgb(255,0,0)"/>
             <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
+            <range start="139" end="140" extra="rgb(255,0,0)"/>
           </color>
         </text>
       </nodename>
@@ -122,17 +291,17 @@
   </nodes>
   <groups/>
   <connections>
-    <connection from_id="2" to_id="4" drag_x="1499.7110442655758" drag_y="1024.5578670942541" color="#777777">
+    <connection from_id="2" to_id="5" drag_x="1475.8213347929195" drag_y="1014.8259945356604" color="#777777">
       <style connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
       <title></title>
       <note></note>
     </connection>
-    <connection from_id="6" to_id="4" drag_x="1683.4610442655785" drag_y="1141.3078670942537" color="#777777">
+    <connection from_id="4" to_id="5" drag_x="1691.5447998046875" drag_y="1107.00439453125" color="#777777">
       <style connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
       <title></title>
       <note></note>
     </connection>
-    <connection from_id="3" to_id="4" drag_x="1535.16259765625" drag_y="911.280029296875">
+    <connection from_id="3" to_id="5" drag_x="1483.48876953125" drag_y="896.18115234375">
       <style connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
       <title></title>
       <note></note>

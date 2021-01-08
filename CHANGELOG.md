@@ -8,6 +8,8 @@
 * `Utils`:
     * Extensions for `ResendableContent` has been added
     * Extensions for `TextSource` has been added
+* `Behaviour Builder`:
+    * Project has been created :)
 
 ## 0.30.12
 
