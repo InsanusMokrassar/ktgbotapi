@@ -105,32 +105,37 @@ suspend fun BehaviourContext.waitAudioMediaGroup(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<AudioMediaGroupContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitDocumentMediaGroup(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<DocumentMediaGroupContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitMedia(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<MediaContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitMediaGroup(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<MediaGroupContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitVisualMediaGroup(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<VisualMediaGroupContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitAnimation(
     count: Int = 1,
     initRequest: Request<*>? = null,
@@ -141,20 +146,23 @@ suspend fun BehaviourContext.waitAudio(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<AudioContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitDocument(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<DocumentContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitPhoto(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<PhotoContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitSticker(
     count: Int = 1,
     initRequest: Request<*>? = null,
@@ -165,8 +173,9 @@ suspend fun BehaviourContext.waitVideo(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
+    includeMediaGroups: Boolean = true,
     filter: ContentMessageToContentMapper<VideoContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitVideoNote(
     count: Int = 1,
     initRequest: Request<*>? = null,
@@ -178,7 +187,7 @@ suspend fun BehaviourContext.waitVoice(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     filter: ContentMessageToContentMapper<VoiceContent>? = null
-) = waitContent(count, initRequest, true, errorFactory, filter)
+) = waitContent(count, initRequest, false, errorFactory, filter)
 suspend fun BehaviourContext.waitInvoice(
     count: Int = 1,
     initRequest: Request<*>? = null,
