@@ -39,9 +39,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
-                api project(":tgbotapi.core")
                 api project(":tgbotapi.extensions.utils")
-                api project(":tgbotapi.extensions.api")
             }
         }
     }

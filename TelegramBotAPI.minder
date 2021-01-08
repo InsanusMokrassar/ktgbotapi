@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<minder version="1.11.1">
-  <theme name="default" label="Default" index="-1"/>
+<minder version="1.11.3">
+  <theme name="default" label="Default" index="0"/>
   <styles>
     <style level="0" isset="true" branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
     <style level="1" isset="true" branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
@@ -14,44 +14,53 @@
     <style level="9" isset="true" branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
     <style level="10" isset="true" branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="200" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true" connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
   </styles>
-  <drawarea x="-320.56697591145837" y="-10.028254191080691" scale="0.75"/>
+  <drawarea x="-950.47548925255796" y="-49.650554065281653" scale="0.5"/>
   <images/>
   <nodes>
-    <node id="0" posx="748.88964843749955" posy="119.42341613769531" width="472" height="168" side="top" fold="false" treesize="603" layout="Downwards" group="false">
+    <node id="0" posx="1378.798161778599" posy="159.04571601189673" width="472" height="168" side="top" fold="false" treesize="743" layout="Downwards" group="false">
       <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="439" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
-      <nodename posx="764.88964843749955" posy="135.42341613769531" maxwidth="488.96484375">
+      <nodename posx="1394.798161778599" posy="175.04571601189673" maxwidth="488.96484375">
         <text data="tgbotapi.core&#10;&#10;Root project with API. It is not recommended to use its requests directly and better to use at least tgbotapi.extensions.api"/>
       </nodename>
       <nodenote></nodenote>
       <nodes>
-        <node id="1" posx="781.88964843749955" posy="387.42341613769531" width="406" height="145" side="bottom" fold="false" treesize="603" color="#68b723" colorroot="true" layout="Downwards" group="false">
+        <node id="1" posx="1411.798161778599" posy="427.04571601189673" width="406" height="145" side="bottom" fold="false" treesize="743" color="#68b723" colorroot="true" layout="Downwards" group="false">
           <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="none" nodewidth="394" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
-          <nodename posx="797.88964843749955" posy="403.42341613769531" maxwidth="419.451171875">
+          <nodename posx="1427.798161778599" posy="443.04571601189673" maxwidth="419.451171875">
             <text data="TelegramBotAPI extensions&#10;&#10;Family of projects which are fully based on TelegramBotAPI and extend its functionality"/>
           </nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="2" posx="683.38964843749955" posy="632.42341613769531" width="296" height="191" side="bottom" fold="false" treesize="296" color="#68b723" colorroot="true" layout="Downwards" group="false">
+            <node id="2" posx="1247.298161778599" posy="672.04571601189673" width="296" height="191" side="bottom" fold="false" treesize="296" color="#68b723" colorroot="true" layout="Downwards" group="false">
               <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="203" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
-              <nodename posx="699.38964843749955" posy="648.42341613769531" maxwidth="295.90315755208337">
+              <nodename posx="1263.298161778599" posy="688.04571601189673" maxwidth="295.90315755208337">
                 <text data="tgbotapi.extensions.api&#10;&#10;Extensions project for make requests more look like in the Telegram Bot API and give opportunity to use it's easier"/>
               </nodename>
               <nodenote></nodenote>
             </node>
-            <node id="3" posx="979.38964843749955" posy="632.42341613769531" width="307" height="168" side="bottom" fold="false" treesize="307" color="#68b723" colorroot="true" layout="Downwards" group="false">
+            <node id="3" posx="1609.298161778599" posy="672.04571601189673" width="307" height="168" side="bottom" fold="false" treesize="439" color="#68b723" colorroot="true" layout="Downwards" group="false">
               <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="286" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
-              <nodename posx="995.38964843749955" posy="648.42341613769531" maxwidth="299.252197265625">
+              <nodename posx="1625.298161778599" posy="688.04571601189673" maxwidth="299.252197265625">
                 <text data="tgbotapi.extensions.utils&#10;&#10;Extensions project with utils things which will make easier different operations"/>
               </nodename>
               <nodenote></nodenote>
+              <nodes>
+                <node id="6" posx="1543.298161778599" posy="940.04571601189673" width="439" height="122" side="bottom" fold="false" treesize="439" color="#68b723" colorroot="false" layout="Downwards" group="false">
+                  <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="387" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
+                  <nodename posx="1559.298161778599" posy="956.04571601189673" maxwidth="408.97932942708348">
+                    <text data="tgbotapi.extensions.behaviour_builder&#10;&#10;Extension project for building bot behaviour via special dsl"/>
+                  </nodename>
+                  <nodenote></nodenote>
+                </node>
+              </nodes>
             </node>
           </nodes>
         </node>
       </nodes>
     </node>
-    <node id="4" posx="815.52319335937455" posy="948.04447937011719" width="329" height="213" side="top" fold="false" treesize="329" layout="Downwards" group="false">
+    <node id="4" posx="1439.623926752558" posy="1175.0700181766106" width="329" height="213" side="top" fold="false" treesize="329" layout="Downwards" group="false">
       <style branchmargin="100" linktype="curved" linkwidth="5" linkarrow="true" linkdash="solid" nodeborder="bracket" nodewidth="388" nodeborderwidth="3" nodefill="false" nodemargin="11" nodepadding="5" nodefont="Roboto Mono 14" nodemarkup="true"/>
-      <nodename posx="831.52319335937455" posy="964.04447937011719" maxwidth="394.3671875">
+      <nodename posx="1455.623926752558" posy="1191.0700181766106" maxwidth="394.3671875">
         <text data="tgbotapi&#10;&#10;Here included all available TelegramBotAPI libraries:&#13;&#10;&#13;&#10;* tgbotapi.core&#13;&#10;* tgbotapi.extensions.api&#13;&#10;* tgbotapi.extensions.utils">
           <color>
             <range start="67" end="68" extra="rgb(255,0,0)"/>
@@ -70,6 +79,7 @@
             <range start="67" end="68" extra="rgb(255,0,0)"/>
             <range start="67" end="68" extra="rgb(255,0,0)"/>
             <range start="67" end="68" extra="rgb(255,0,0)"/>
+            <range start="67" end="68" extra="rgb(255,0,0)"/>
             <range start="84" end="85" extra="rgb(255,0,0)"/>
             <range start="84" end="85" extra="rgb(255,0,0)"/>
             <range start="84" end="85" extra="rgb(255,0,0)"/>
@@ -86,6 +96,8 @@
             <range start="84" end="85" extra="rgb(255,0,0)"/>
             <range start="84" end="85" extra="rgb(255,0,0)"/>
             <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="84" end="85" extra="rgb(255,0,0)"/>
+            <range start="111" end="112" extra="rgb(255,0,0)"/>
             <range start="111" end="112" extra="rgb(255,0,0)"/>
             <range start="111" end="112" extra="rgb(255,0,0)"/>
             <range start="111" end="112" extra="rgb(255,0,0)"/>
@@ -110,12 +122,17 @@
   </nodes>
   <groups/>
   <connections>
-    <connection from_id="2" to_id="4" drag_x="905.70642089843705" drag_y="891.23394775390625" color="#777777">
+    <connection from_id="2" to_id="4" drag_x="1499.7110442655758" drag_y="1024.5578670942541" color="#777777">
       <style connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
       <title></title>
       <note></note>
     </connection>
-    <connection from_id="3" to_id="4" drag_x="1056.456420898437" drag_y="885.48394775390625" color="#777777">
+    <connection from_id="6" to_id="4" drag_x="1683.4610442655785" drag_y="1141.3078670942537" color="#777777">
+      <style connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
+      <title></title>
+      <note></note>
+    </connection>
+    <connection from_id="3" to_id="4" drag_x="1535.16259765625" drag_y="911.280029296875">
       <style connectiondash="dotted" connectionlwidth="2" connectionarrow="fromto" connectionpadding="3" connectionfont="Sans 10" connectiontwidth="100"/>
       <title></title>
       <note></note>

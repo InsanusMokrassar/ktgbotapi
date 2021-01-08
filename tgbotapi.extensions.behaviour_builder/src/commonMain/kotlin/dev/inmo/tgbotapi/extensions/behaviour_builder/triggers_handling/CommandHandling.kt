@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 import dev.inmo.tgbotapi.CommonAbstracts.textSources
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.utils.*
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import kotlinx.coroutines.Job
 
@@ -11,7 +11,7 @@ suspend fun BehaviourContext.command(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     includeFilterByChatInBehaviourSubContext: Boolean = true,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ContentMessage<TextContent>>
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
 ): Job = onText(
     includeFilterByChatInBehaviourSubContext,
     { message ->
@@ -31,5 +31,5 @@ suspend inline fun BehaviourContext.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     includeFilterByChatInBehaviourSubContext: Boolean = true,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ContentMessage<TextContent>>
+    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
 ): Job = command(commandRegex, requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, scenarioReceiver)
