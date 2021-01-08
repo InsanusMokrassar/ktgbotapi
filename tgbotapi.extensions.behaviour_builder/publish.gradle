@@ -25,7 +25,7 @@ publishing {
         artifact javadocsJar
 
         pom {
-            description = "These extensions project contains tools for simple interaction with chats"
+            description = "This extensions project contains tools for simple interaction with chats"
             name = "Telegram Bot API Steps Extensions"
             url = "https://insanusmokrassar.github.io/TelegramBotAPI/tgbotapi.extensions.steps"
 
