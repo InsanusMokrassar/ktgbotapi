@@ -2,6 +2,9 @@
 
 ## 0.30.13
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.15` -> `0.4.16`
 * `Core`:
     * New variable `FlowsUpdatesFilter#allUpdatesWithoutMediaGroupsGroupingFlow` which will contains updates without
       `SentMediaGroupUpdate`
