@@ -2,6 +2,10 @@
 
 ## 0.31.0
 
+* `Behaviour Builder`:
+    * Extension `TelegramBot#buildBehaviour` have changed its return value: now it is `Job` instead of
+      `FlowsUpdatesFilter`
+
 ## 0.30.13
 
 * `Common`:

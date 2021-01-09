@@ -8,10 +8,5 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithInp
 const val inlineQueryResultAudioType = "audio"
 
 interface InlineQueryResultAudioCommon : InlineQueryResult,
-    CaptionedOutput,
     TextedOutput,
-    WithInputMessageContentInlineQueryResult {
-    @Deprecated("Will be removed in next major release")
-    override val caption: String?
-        get() = text
-}
+    WithInputMessageContentInlineQueryResult
