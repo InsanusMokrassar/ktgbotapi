@@ -12,9 +12,12 @@ import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 
+@RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified T : MessageContent> filterForContentMessage(): suspend (ContentMessage<*>) -> ContentMessage<T>? = {
     if (it.content is T) {
         @Suppress("UNCHECKED_CAST")
@@ -25,9 +28,11 @@ inline fun <reified T : MessageContent> filterForContentMessage(): suspend (Cont
 }
 
 @Suppress("UNCHECKED_CAST")
+@RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified T: MessageContent> Flow<BaseSentMessageUpdate>.filterContentMessages(
 ): Flow<ContentMessage<T>> = asContentMessagesFlow().mapNotNull(filterForContentMessage())
 
+@RiskFeature("This method is low-level")
 inline fun <reified T : MediaGroupContent> Flow<SentMediaGroupUpdate>.filterMediaGroupMessages(
 ): Flow<List<CommonMessage<T>>> = map {
     it.data.mapNotNull { message ->
@@ -46,6 +51,7 @@ inline fun <reified T : MediaGroupContent> Flow<SentMediaGroupUpdate>.filterMedi
  * [FlowsUpdatesFilter.channelPostFlow]. In case it is null will be used [Flow]s mapping
  */
 @Suppress("UNCHECKED_CAST")
+@RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified T: MessageContent> FlowsUpdatesFilter.filterContentMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ): Flow<ContentMessage<T>> {
@@ -64,6 +70,7 @@ inline fun <reified T: MessageContent> FlowsUpdatesFilter.filterContentMessages(
  * [FlowsUpdatesFilter.channelPostFlow]. In case it is null will be used [Flow]s mapping
  */
 @Suppress("UNCHECKED_CAST")
+@RiskFeature(lowLevelRiskFeatureMessage)
 inline fun <reified T: MediaGroupContent> FlowsUpdatesFilter.filterMediaGroupMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ): Flow<List<CommonMessage<T>>> {

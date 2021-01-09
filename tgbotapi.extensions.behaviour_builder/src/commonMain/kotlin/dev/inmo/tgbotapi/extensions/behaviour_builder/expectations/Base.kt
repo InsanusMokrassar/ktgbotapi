@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.*
 
@@ -26,7 +27,7 @@ typealias NullableRequestBuilder<T> = suspend (Update) -> Request<T>?
  * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
  * will be called too), [errorFactory] and then will be returned null
  */
-@RiskFeature("This method is not very comfortable to use and too low-level. It is recommended to use methods which already included into library")
+@RiskFeature(lowLevelRiskFeatureMessage)
 suspend fun <T> FlowsUpdatesFilter.expectFlow(
     bot: TelegramBot,
     initRequest: Request<*>? = null,
@@ -92,7 +93,7 @@ suspend fun <T> BehaviourContext.expectFlow(
  * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
  * will be called too), [errorFactory] and then will be returned null
  */
-@RiskFeature("This method is not very comfortable to use and too low-level. It is recommended to use methods which already included into library")
+@RiskFeature(lowLevelRiskFeatureMessage)
 suspend fun <T> FlowsUpdatesFilter.expectOne(
     bot: TelegramBot,
     initRequest: Request<*>? = null,
