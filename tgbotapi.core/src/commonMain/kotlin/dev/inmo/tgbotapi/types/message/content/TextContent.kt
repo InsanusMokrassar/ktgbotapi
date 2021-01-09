@@ -73,9 +73,3 @@ data class TextContent(
         )
     }
 }
-
-/**
- * Convert its [TextContent.entities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
- * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
- */
-internal fun TextContent.fullEntitiesList(): TextSourcesList = text.fullListOfSubSource(textEntities).map { it.source }
