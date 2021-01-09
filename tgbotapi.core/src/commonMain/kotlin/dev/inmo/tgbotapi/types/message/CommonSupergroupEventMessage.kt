@@ -8,9 +8,6 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
 
-@Deprecated("Renamed", ReplaceWith("CommonSupergroupEventMessage"))
-typealias SupergroupEventMessage = CommonSupergroupEventMessage<*>
-
 data class CommonSupergroupEventMessage<T : SupergroupEvent>(
     override val messageId: MessageIdentifier,
     override val user: User,

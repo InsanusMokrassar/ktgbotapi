@@ -8,10 +8,5 @@ const val inlineQueryResultGifType = "gif"
 
 interface InlineQueryResultGifCommon : InlineQueryResult,
     OptionallyTitledInlineQueryResult,
-    CaptionedOutput,
     TextedOutput,
-    WithInputMessageContentInlineQueryResult {
-    @Deprecated("Will be removed in next major release")
-    override val caption: String?
-        get() = text
-}
+    WithInputMessageContentInlineQueryResult

@@ -9,10 +9,5 @@ const val inlineQueryResultDocumentType = "document"
 interface InlineQueryResultDocumentCommon : InlineQueryResult,
     TitledInlineQueryResult,
     DescribedInlineQueryResult,
-    CaptionedOutput,
     TextedOutput,
-    WithInputMessageContentInlineQueryResult {
-    @Deprecated("Will be removed in next major release")
-    override val caption: String?
-        get() = text
-}
+    WithInputMessageContentInlineQueryResult

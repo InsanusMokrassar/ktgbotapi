@@ -7,9 +7,6 @@ import dev.inmo.tgbotapi.types.chat.abstracts.GroupChat
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
 
-@Deprecated("Renamed", ReplaceWith("CommonGroupEventMessage"))
-typealias GroupEventMessage = CommonGroupEventMessage<*>
-
 data class CommonGroupEventMessage<T : GroupEvent>(
     override val messageId: MessageIdentifier,
     override val user: User,

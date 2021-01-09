@@ -60,6 +60,3 @@ class ExceptionsOnlyLimiter(
         }
     }
 }
-
-@Deprecated("Renamed", ReplaceWith("ExceptionsOnlyLimiter", "dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter"))
-typealias EmptyLimiter = ExceptionsOnlyLimiter

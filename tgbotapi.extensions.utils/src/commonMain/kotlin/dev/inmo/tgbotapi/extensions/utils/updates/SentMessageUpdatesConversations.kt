@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.utils.updates
 
 import dev.inmo.tgbotapi.types.message.abstracts.*
@@ -23,11 +25,6 @@ fun <T : BaseSentMessageUpdate> Flow<T>.asCommonMessagesFlow() = mapNotNull {
 inline fun <T : BaseSentMessageUpdate> Flow<T>.chatEvents() = mapNotNull {
     it.data as? ChatEventMessage<*>
 }
-/**
- * Will map incoming [BaseSentMessageUpdate]s to [ChatEventMessage] from [BaseSentMessageUpdate.data]
- */
-@Deprecated("Renamed", ReplaceWith("chatEvents", "dev.inmo.tgbotapi.extensions.utils.updates.chatEvents"))
-fun <T : BaseSentMessageUpdate> Flow<T>.asChatEventsFlow() = chatEvents()
 
 /**
  * Will map incoming [BaseSentMessageUpdate]s to [UnknownMessageType] from [BaseSentMessageUpdate.data]

@@ -42,15 +42,11 @@ data class InputMediaAnimation internal constructor(
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, TextedOutput, CaptionedOutput {
+) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, TextedOutput {
     override val type: String = "animation"
     override val entities: List<TextSource>? by lazy {
         rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
     }
-
-    @Deprecated("Will be removed in next major release")
-    override val caption: String?
-        get() = text
 
     @SerialName(mediaField)
     override val media: String

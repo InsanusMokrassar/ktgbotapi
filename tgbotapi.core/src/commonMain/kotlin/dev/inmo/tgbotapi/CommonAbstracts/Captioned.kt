@@ -30,5 +30,4 @@ val CaptionedInput.textSources
  * Convert its [CaptionedInput.captionEntities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
  * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
  */
-@Deprecated("Currently list of entities already full. This method is redundant")
-fun CaptionedInput.fullEntitiesList(): TextSourcesList = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()
+internal fun CaptionedInput.fullEntitiesList(): TextSourcesList = caption ?.fullListOfSubSource(captionEntities) ?.map { it.source } ?: emptyList()

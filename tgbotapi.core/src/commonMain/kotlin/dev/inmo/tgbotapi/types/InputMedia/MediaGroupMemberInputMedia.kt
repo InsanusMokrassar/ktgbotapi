@@ -16,10 +16,7 @@ internal fun <T> T.buildArguments(withSerializer: SerializationStrategy<T>) = ar
 )
 
 @Serializable(MediaGroupMemberInputMediaSerializer::class)
-interface MediaGroupMemberInputMedia : InputMedia, CaptionedOutput, TextedOutput {
-    @Deprecated("Will be removed in next major release")
-    override val caption: String?
-        get() = text
+interface MediaGroupMemberInputMedia : InputMedia, TextedOutput {
     fun serialize(format: StringFormat): String
 }
 

@@ -8,10 +8,5 @@ const val inlineQueryResultMpeg4GifType = "mpeg4_gif"
 
 interface InlineQueryResultMpeg4GifCommon : InlineQueryResult,
     OptionallyTitledInlineQueryResult,
-    CaptionedOutput,
     TextedOutput,
-    WithInputMessageContentInlineQueryResult {
-    @Deprecated("Will be removed in next major release")
-    override val caption: String?
-        get() = text
-}
+    WithInputMessageContentInlineQueryResult

@@ -22,6 +22,3 @@ data class PrivateMessageImpl<T: MessageContent>(
     override val senderBot: CommonBot?,
     val paymentInfo: SuccessfulPaymentInfo?
 ) : PrivateMessage<T>
-
-@Deprecated("Renamed", ReplaceWith("PrivateMessageImpl", "dev.inmo.tgbotapi.types.message.PrivateMessageImpl"))
-typealias CommonMessageImpl<T> = PrivateMessageImpl<T>

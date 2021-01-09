@@ -7,11 +7,6 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 const val inlineQueryResultVoiceType = "voice"
 
 interface InlineQueryResultVoiceCommon : InlineQueryResult,
-    CaptionedOutput,
     TextedOutput,
     WithInputMessageContentInlineQueryResult,
-    TitledInlineQueryResult {
-    @Deprecated("Will be removed in next major release")
-    override val caption: String?
-        get() = text
-}
+    TitledInlineQueryResult
