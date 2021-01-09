@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.requests.webhook
 
 import dev.inmo.tgbotapi.requests.abstracts.*
-import dev.inmo.tgbotapi.requests.send.media.base.*
+import dev.inmo.tgbotapi.requests.send.media.base.DataRequest
+import dev.inmo.tgbotapi.requests.send.media.base.MultipartRequestImpl
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer

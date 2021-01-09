@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
-import dev.inmo.tgbotapi.utils.internal.fullListOfSubSource
 
 interface Texted {
     val text: String?

@@ -2,12 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.send
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendVenue
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.FoursquareId
-import dev.inmo.tgbotapi.types.FoursquareType
-import dev.inmo.tgbotapi.types.GooglePlaceId
-import dev.inmo.tgbotapi.types.GooglePlaceType
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.location.StaticLocation

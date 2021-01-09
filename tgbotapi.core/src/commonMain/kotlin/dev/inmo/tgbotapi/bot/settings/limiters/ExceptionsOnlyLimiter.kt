@@ -2,11 +2,13 @@ package dev.inmo.tgbotapi.bot.settings.limiters
 
 import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.exceptions.TooMuchRequestsException
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MilliSeconds
+import dev.inmo.tgbotapi.types.RetryAfterError
 import io.ktor.client.features.ClientRequestException
 import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
 
 /**
  * This limiter will limit requests only after getting a [RetryAfterError] or [ClientRequestException] with

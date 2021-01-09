@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.link
-import dev.inmo.tgbotapi.types.ParseMode.*
 import dev.inmo.tgbotapi.types.chat.abstracts.*
 import dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedPublicChat
 import dev.inmo.tgbotapi.types.message.abstracts.Message

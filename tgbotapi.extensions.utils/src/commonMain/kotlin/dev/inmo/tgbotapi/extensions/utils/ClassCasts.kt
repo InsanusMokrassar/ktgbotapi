@@ -1,6 +1,8 @@
 @file:Suppress("NOTHING_TO_INLINE", "unused", "UNCHECKED_CAST")
 
 package dev.inmo.tgbotapi.extensions.utils
+import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.ChatMember.*
@@ -20,6 +22,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.InputMedia.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
@@ -30,58 +33,15 @@ import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.abstracts.ChannelMessage
-import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
-import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage
+import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.*
 import dev.inmo.tgbotapi.utils.PreviewFeature
-import dev.inmo.tgbotapi.types.message.content.abstracts.ResendableContent
-import dev.inmo.tgbotapi.types.message.content.ContactContent
-import dev.inmo.tgbotapi.types.message.content.DiceContent
-import dev.inmo.tgbotapi.types.message.content.GameContent
-import dev.inmo.tgbotapi.types.message.content.LocationContent
-import dev.inmo.tgbotapi.types.message.content.PollContent
-import dev.inmo.tgbotapi.types.message.content.TextContent
-import dev.inmo.tgbotapi.types.message.content.VenueContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.AudioMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.DocumentMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaCollectionContent
-import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.AnimationContent
-import dev.inmo.tgbotapi.types.message.content.media.AudioContent
-import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
-import dev.inmo.tgbotapi.types.message.content.media.PhotoContent
-import dev.inmo.tgbotapi.types.message.content.media.StickerContent
-import dev.inmo.tgbotapi.types.message.content.media.VideoContent
-import dev.inmo.tgbotapi.types.message.content.media.VideoNoteContent
-import dev.inmo.tgbotapi.types.message.content.media.VoiceContent
-import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.BoldTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.BotCommandTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.CashTagTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.CodeTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.EMailTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.HashTagTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.ItalicTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.MentionTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.PhoneNumberTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.PreTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.StrikethroughTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextLinkTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextMentionTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.URLTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.UnderlineTextSource
 
 @PreviewFeature
 inline fun Chat.asBot(): Bot? = this as? Bot

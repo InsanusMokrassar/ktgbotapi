@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif
 
-import dev.inmo.tgbotapi.CommonAbstracts.CaptionedOutput
 import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 

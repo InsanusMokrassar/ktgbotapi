@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.message.content
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.SendTextMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -10,8 +11,6 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.utils.internal.*
-import dev.inmo.tgbotapi.utils.internal.fullListOfSubSource
-import dev.inmo.tgbotapi.utils.internal.toMarkdownTexts
 
 data class TextContent(
     override val text: String,

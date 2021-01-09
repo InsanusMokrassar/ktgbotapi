@@ -5,7 +5,8 @@ import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.Ktor.base.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
-import dev.inmo.tgbotapi.bot.settings.limiters.*
+import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
+import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.utils.*

@@ -2,10 +2,8 @@ package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
 import dev.inmo.tgbotapi.CommonAbstracts.DirectInvocationOfTextSourceConstructor
 import dev.inmo.tgbotapi.CommonAbstracts.TextSource
-import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
-import dev.inmo.tgbotapi.utils.internal.codeMarkdown
-import dev.inmo.tgbotapi.utils.internal.codeMarkdownV2
 
 /**
  * @see code
