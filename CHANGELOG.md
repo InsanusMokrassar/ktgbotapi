@@ -2,8 +2,10 @@
 
 ## 0.31.0
 
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
 * `Common`:
-    * **ALL DEPRECATIONS WAS REMOVED**
+    * **ALL DEPRECATIONS CREATED SINCE 0.30.0 WERE REMOVED**
 * `Behaviour Builder`:
     * Extension `TelegramBot#buildBehaviour` have changed its return value: now it is `Job` instead of
       `FlowsUpdatesFilter`
