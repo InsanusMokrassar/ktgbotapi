@@ -7,6 +7,10 @@
 * `Behaviour Builder`:
     * Extension `TelegramBot#buildBehaviour` have changed its return value: now it is `Job` instead of
       `FlowsUpdatesFilter`
+* `Utils`
+    * New extensions `TelegramBot#longPolling` were added as new recommended way to start getting updates via long
+      polling
+        * Old extensions `RequestsExecutor#startGettingFlowsUpdatesByLongPolling` has been deprecated
 
 ## 0.30.13
 

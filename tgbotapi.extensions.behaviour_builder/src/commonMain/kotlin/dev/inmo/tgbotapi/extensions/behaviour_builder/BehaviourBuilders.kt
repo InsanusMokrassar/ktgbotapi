@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.PreviewFeature
@@ -46,8 +47,8 @@ suspend fun TelegramBot.buildBehaviour(
         it,
         block
     )
-    startGettingOfUpdatesByLongPolling(
-        updatesFilter = it,
+    longPolling(
+        it,
         scope = scope
     )
 }
