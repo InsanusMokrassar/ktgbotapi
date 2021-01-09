@@ -57,12 +57,6 @@ internal fun TextSourcesList.toMarkdownTexts(): List<String> = createMarkdownTex
 )
 internal fun TextContent.toMarkdownTexts(): List<String> = textSources.toMarkdownTexts()
 
-internal fun TextSourcesList.toMarkdownExplanations(): List<String> = createMarkdownText(
-    this,
-    explanationLimit.last
-)
-internal fun ExplainedInput.toMarkdownExplanations(): List<String> = textSources.toMarkdownTexts()
-
 
 internal fun createMarkdownV2Text(
     entities: TextSourcesList,
@@ -80,12 +74,6 @@ internal fun TextSourcesList.toMarkdownV2Texts(): List<String> = createMarkdownV
     textLength.last
 )
 internal fun TextContent.toMarkdownV2Texts(): List<String> = textSources.toMarkdownV2Texts()
-
-internal fun TextSourcesList.toMarkdownV2Explanations(): List<String> = createMarkdownV2Text(
-    this,
-    explanationLimit.last
-)
-internal fun ExplainedInput.toMarkdownV2Explanations(): List<String> = textSources.toMarkdownV2Texts()
 
 
 internal fun createHtmlText(
