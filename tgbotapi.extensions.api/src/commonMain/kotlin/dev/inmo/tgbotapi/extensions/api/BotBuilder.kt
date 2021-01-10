@@ -45,17 +45,3 @@ fun buildBot(
     TelegramAPIUrlsKeeper(token, apiUrl),
     BotBuilder().apply(block).createHttpClient()
 )
-
-/**
- * @return Created by [telegramBotWithCustomClientConfig] function [TelegramBot]. This executor will be preconfigured using [token] and
- * [block]
- */
-@Deprecated("Renamed", ReplaceWith("buildBot", "dev.inmo.tgbotapi.extensions.api.buildBot"))
-fun telegramBot(
-    token: String,
-    block: BotBuilder.() -> Unit
-): TelegramBot = buildBot(
-    token,
-    telegramBotAPIDefaultUrl,
-    block
-)

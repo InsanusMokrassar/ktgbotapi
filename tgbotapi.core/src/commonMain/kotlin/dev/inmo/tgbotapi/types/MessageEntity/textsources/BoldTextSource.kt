@@ -1,10 +1,8 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
 import dev.inmo.tgbotapi.CommonAbstracts.*
-import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
-import dev.inmo.tgbotapi.utils.internal.boldMarkdown
-import dev.inmo.tgbotapi.utils.internal.boldMarkdownV2
 
 /**
  * @see bold

@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
 import dev.inmo.tgbotapi.CommonAbstracts.TextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.CommonAbstracts.plus
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.utils.internal.*
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.MessageEntity.textsources.BotCommandTextSource
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
-import dev.inmo.tgbotapi.types.message.content.fullEntitiesList
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.Flow
 

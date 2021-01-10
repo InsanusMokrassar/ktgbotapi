@@ -18,6 +18,7 @@ package dev.inmo.tgbotapi.utils
 )
 annotation class PreviewFeature
 
+const val lowLevelRiskFeatureMessage = "This method is low-level and not recommended to direct use"
 @RequiresOptIn(
     "This feature can work unstable and may have some restrictions in Telegram System",
     RequiresOptIn.Level.WARNING

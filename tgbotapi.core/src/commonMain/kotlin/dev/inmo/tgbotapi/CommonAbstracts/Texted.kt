@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
-import dev.inmo.tgbotapi.utils.internal.fullListOfSubSource
 
 interface Texted {
     val text: String?
@@ -22,7 +21,6 @@ interface TextedInput : Texted {
      * Here must be full list of entities. This list must contains [TextPart]s with
      * [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource] in case if source text contains parts of
      * regular text
-     * @see [CaptionedInput.fullEntitiesList]
      */
     val textEntities: List<TextPart>
 }
@@ -35,10 +33,3 @@ interface TextedInput : Texted {
  */
 val TextedInput.textSources
     get() = textEntities.justTextSources()
-
-/**
- * Convert its [TextedInput.textEntities] to list of [dev.inmo.tgbotapi.CommonAbstracts.TextSource]
- * with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
- */
-@Deprecated("Currently list of entities already full. This method is redundant")
-fun TextedInput.fullEntitiesList(): TextSourcesList = text ?.fullListOfSubSource(textEntities) ?.map { it.source } ?: emptyList()

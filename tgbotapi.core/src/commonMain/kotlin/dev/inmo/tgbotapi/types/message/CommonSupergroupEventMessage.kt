@@ -4,12 +4,8 @@ import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.User
 import dev.inmo.tgbotapi.types.chat.abstracts.SupergroupChat
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
-
-@Deprecated("Renamed", ReplaceWith("CommonSupergroupEventMessage"))
-typealias SupergroupEventMessage = CommonSupergroupEventMessage<*>
 
 data class CommonSupergroupEventMessage<T : SupergroupEvent>(
     override val messageId: MessageIdentifier,

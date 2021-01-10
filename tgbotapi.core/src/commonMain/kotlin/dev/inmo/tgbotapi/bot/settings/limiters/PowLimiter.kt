@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.bot.settings.limiters
 
-import dev.inmo.micro_utils.coroutines.*
+import dev.inmo.micro_utils.coroutines.actor
+import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.types.MilliSeconds
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import kotlin.coroutines.*

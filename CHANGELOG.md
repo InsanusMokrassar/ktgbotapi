@@ -1,5 +1,19 @@
 # TelegramBotAPI changelog
 
+## 0.31.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Common`:
+    * **ALL DEPRECATIONS CREATED SINCE 0.30.0 WERE REMOVED**
+* `Behaviour Builder`:
+    * Extension `TelegramBot#buildBehaviour` have changed its return value: now it is `Job` instead of
+      `FlowsUpdatesFilter`
+* `Utils`
+    * New extensions `TelegramBot#longPolling` were added as new recommended way to start getting updates via long
+      polling
+        * Old extensions `RequestsExecutor#startGettingFlowsUpdatesByLongPolling` has been deprecated
+
 ## 0.30.13
 
 * `Common`:

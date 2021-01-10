@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.RequestsExecutor
+import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.exceptions.RequestException
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.extensions.utils.updates.lastUpdateIdentifier
@@ -15,7 +16,7 @@ import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.utils.*
 import kotlinx.coroutines.*
 
-fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
+fun TelegramBot.startGettingOfUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
@@ -66,12 +67,40 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
 }
 
 /**
+ * Will [startGettingOfUpdatesByLongPolling] using incoming [flowsUpdatesFilter]. It is assumed that you ALREADY CONFIGURE
+ * all updates receivers, because this method will trigger getting of updates and.
+ */
+fun TelegramBot.longPolling(
+    flowsUpdatesFilter: FlowsUpdatesFilter,
+    timeoutSeconds: Seconds = 30,
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    exceptionsHandler: ExceptionHandler<Unit>? = null
+): Job = flowsUpdatesFilter.run {
+    startGettingOfUpdatesByLongPolling(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
+}
+
+/**
+ * Will enable [longPolling] by creating [FlowsUpdatesFilter] with [flowsUpdatesFilterUpdatesKeeperCount] as an argument
+ * and applied [flowUpdatesPreset]. It is assumed that you WILL CONFIGURE all updates receivers in [flowUpdatesPreset],
+ * because of after [flowUpdatesPreset] method calling will be triggered getting of updates.
+ */
+@Suppress("unused")
+fun TelegramBot.longPolling(
+    timeoutSeconds: Seconds = 30,
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
+    flowsUpdatesFilterUpdatesKeeperCount: Int = 100,
+    flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit
+): Job = longPolling(FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply(flowUpdatesPreset), timeoutSeconds, scope, exceptionsHandler)
+
+/**
  * This method will create a new one [FlowsUpdatesFilter]. This method could be unsafe due to the fact that it will start
  * getting updates IMMEDIATELY. That means that your bot will be able to skip some of them until you will call
  * [kotlinx.coroutines.flow.Flow.collect] on one of [FlowsUpdatesFilter] flows. To avoid it, you can pass
  * [flowUpdatesPreset] lambda - it will be called BEFORE starting updates getting
  */
 @FlowPreview
+@Deprecated("Will be removed soon", ReplaceWith("longPolling", "dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling"))
 @Suppress("unused")
 fun RequestsExecutor.startGettingFlowsUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
@@ -97,6 +126,7 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     updatesFilter.asUpdateReceiver
 )
 
+@Deprecated("Will be removed soon", ReplaceWith("longPolling", "dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling"))
 fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,
     messageMediaGroupCallback: UpdateReceiver<MessageMediaGroupUpdate>? = null,
@@ -141,6 +171,7 @@ fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     )
 }
 
+@Deprecated("Will be removed soon", ReplaceWith("longPolling", "dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling"))
 @Suppress("unused")
 fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     messageCallback: UpdateReceiver<MessageUpdate>? = null,

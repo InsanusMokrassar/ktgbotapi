@@ -1,10 +1,9 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
-import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.CommonAbstracts.DirectInvocationOfTextSourceConstructor
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
-import dev.inmo.tgbotapi.utils.internal.commandMarkdown
-import dev.inmo.tgbotapi.utils.internal.commandMarkdownV2
 
 private val commandRegex = Regex("[/!][^@\\s]*")
 

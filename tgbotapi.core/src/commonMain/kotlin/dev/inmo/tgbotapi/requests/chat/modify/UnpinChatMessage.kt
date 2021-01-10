@@ -2,10 +2,7 @@ package dev.inmo.tgbotapi.requests.chat.modify
 
 import dev.inmo.tgbotapi.CommonAbstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.chatIdField
-import dev.inmo.tgbotapi.types.messageIdField
+import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
