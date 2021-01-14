@@ -357,3 +357,13 @@ const val forceField = "force"
 
 const val regularPollType = "regular"
 const val quizPollType = "quiz"
+
+const val dataField = "data"
+const val credentialsField = "credentials"
+const val hashField = "hash"
+const val translationField = "translation"
+const val filesField = "files"
+const val frontSideField = "front_side"
+const val reverseSideField = "reverse_side"
+const val selfieField = "selfie"
+const val secretField = "secret"
