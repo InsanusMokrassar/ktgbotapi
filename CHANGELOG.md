@@ -2,6 +2,10 @@
 
 ## 0.31.1
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.16` -> `0.4.17`
+
 ## 0.31.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
