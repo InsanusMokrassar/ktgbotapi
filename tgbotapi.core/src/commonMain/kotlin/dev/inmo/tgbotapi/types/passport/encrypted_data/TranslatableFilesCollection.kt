@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.passport.encrypted_data
 
+import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.Base64EncodedData
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.FilesCollection
@@ -17,7 +18,8 @@ data class UtilityBill(
     @SerialName(translationField)
     override val translations: List<PassportFile>,
     @SerialName(hashField)
-    override val hash: Base64EncodedData
+    @Serializable(Base64StringSerializer::class)
+    override val hash: String
 ) : TranslatableFilesCollection()
 @Serializable(EncryptedElementSerializer::class)
 data class BankStatement(
@@ -26,7 +28,8 @@ data class BankStatement(
     @SerialName(translationField)
     override val translations: List<PassportFile>,
     @SerialName(hashField)
-    override val hash: Base64EncodedData
+    @Serializable(Base64StringSerializer::class)
+    override val hash: String
 ) : TranslatableFilesCollection()
 @Serializable(EncryptedElementSerializer::class)
 data class RentalAgreement(
@@ -35,7 +38,8 @@ data class RentalAgreement(
     @SerialName(translationField)
     override val translations: List<PassportFile>,
     @SerialName(hashField)
-    override val hash: Base64EncodedData
+    @Serializable(Base64StringSerializer::class)
+    override val hash: String
 ) : TranslatableFilesCollection()
 @Serializable(EncryptedElementSerializer::class)
 data class PassportRegistration(
@@ -44,7 +48,8 @@ data class PassportRegistration(
     @SerialName(translationField)
     override val translations: List<PassportFile>,
     @SerialName(hashField)
-    override val hash: Base64EncodedData
+    @Serializable(Base64StringSerializer::class)
+    override val hash: String
 ) : TranslatableFilesCollection()
 @Serializable(EncryptedElementSerializer::class)
 data class TemporaryRegistration(
@@ -53,6 +58,7 @@ data class TemporaryRegistration(
     @SerialName(translationField)
     override val translations: List<PassportFile>,
     @SerialName(hashField)
-    override val hash: Base64EncodedData
+    @Serializable(Base64StringSerializer::class)
+    override val hash: String
 ) : TranslatableFilesCollection()
 

@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.passport.encrypted_data
 
+import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
 import dev.inmo.tgbotapi.types.hashField
 import dev.inmo.tgbotapi.types.passport.Base64EncodedData
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.WithPhoneNumber
@@ -12,6 +13,7 @@ data class PhoneNumber(
     @SerialName(phoneNumberField)
     override val phoneNumber: String,
     @SerialName(hashField)
-    override val hash: Base64EncodedData
+    @Serializable(Base64StringSerializer::class)
+    override val hash: String
 ) : WithPhoneNumber {
 }

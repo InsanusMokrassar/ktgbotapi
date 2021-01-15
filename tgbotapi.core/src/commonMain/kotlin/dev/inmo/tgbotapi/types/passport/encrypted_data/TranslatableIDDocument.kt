@@ -1,8 +1,9 @@
 package dev.inmo.tgbotapi.types.passport.encrypted_data
 
+import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.Base64EncodedData
-import dev.inmo.tgbotapi.types.passport.EncryptedAndBase64EncodedData
+import dev.inmo.tgbotapi.types.passport.EncryptedData
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -13,7 +14,7 @@ sealed class TranslatableIDDocument : WithData, WithFrontSide, WithReverseSide, 
 @Serializable(EncryptedElementSerializer::class)
 data class DriverLicense(
     @SerialName(dataField)
-    override val data: EncryptedAndBase64EncodedData,
+    override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile?,
     @SerialName(reverseSideField)
@@ -23,13 +24,14 @@ data class DriverLicense(
     @SerialName(translationField)
     override val translations: List<PassportFile>,
     @SerialName(hashField)
-    override val hash: Base64EncodedData
+    @Serializable(Base64StringSerializer::class)
+    override val hash: String
 ) : TranslatableIDDocument()
 
 @Serializable(EncryptedElementSerializer::class)
 data class IdentityCard(
     @SerialName(dataField)
-    override val data: EncryptedAndBase64EncodedData,
+    override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile?,
     @SerialName(reverseSideField)
@@ -39,5 +41,6 @@ data class IdentityCard(
     @SerialName(translationField)
     override val translations: List<PassportFile>,
     @SerialName(hashField)
-    override val hash: Base64EncodedData
+    @Serializable(Base64StringSerializer::class)
+    override val hash: String
 ) : TranslatableIDDocument()
