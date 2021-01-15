@@ -18,6 +18,7 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentInfo
+import dev.inmo.tgbotapi.types.passport.PassportData
 import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
@@ -84,7 +85,7 @@ internal data class RawMessage(
     private val connected_website: String? = null,
 
     // passport property
-    private val passport_data: Unit? = null,
+    private val passport_data: PassportData? = null,
     private val proximity_alert_triggered: ProximityAlertTriggered? = null,
 
     private val reply_markup: InlineKeyboardMarkup? = null
@@ -324,6 +325,13 @@ internal data class RawMessage(
                     )
                     else -> error("Unknown type of chat: $chat")
                 }
+            } ?: passport_data ?.let{
+                PassportMessage(
+                    messageId,
+                    chat,
+                    date.asDate,
+                    passport_data
+                )
             } ?: error("Was not found supported type of data")
         } catch (e: Exception) {
             UnknownMessageType(
