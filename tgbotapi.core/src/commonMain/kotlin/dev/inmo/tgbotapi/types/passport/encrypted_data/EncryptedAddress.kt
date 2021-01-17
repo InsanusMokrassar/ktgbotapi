@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class EncryptedAddress(
     @SerialName(dataField)
+    @Serializable(Base64StringSerializer::class)
     override val data: EncryptedData,
     @Serializable(Base64StringSerializer::class)
     override val hash: String

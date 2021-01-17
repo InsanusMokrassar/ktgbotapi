@@ -13,6 +13,7 @@ sealed class TranslatableIDDocument : WithData, WithFrontSide, WithReverseSide, 
 @Serializable
 data class DriverLicense(
     @SerialName(dataField)
+    @Serializable(Base64StringSerializer::class)
     override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile? = null,
@@ -30,6 +31,7 @@ data class DriverLicense(
 @Serializable
 data class IdentityCard(
     @SerialName(dataField)
+    @Serializable(Base64StringSerializer::class)
     override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile? = null,

@@ -13,6 +13,7 @@ sealed class Passport : WithData, WithFrontSide, WithSelfie, Translatable
 @Serializable
 data class CommonPassport(
     @SerialName(dataField)
+    @Serializable(Base64StringSerializer::class)
     override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile? = null,
@@ -27,6 +28,7 @@ data class CommonPassport(
 @Serializable
 data class InternalPassport(
     @SerialName(dataField)
+    @Serializable(Base64StringSerializer::class)
     override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile? = null,
