@@ -15,7 +15,7 @@ data class UtilityBill(
     @SerialName(filesField)
     override val files: List<PassportFile>,
     @SerialName(translationField)
-    override val translations: List<PassportFile>,
+    override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64StringSerializer::class)
     override val hash: String
