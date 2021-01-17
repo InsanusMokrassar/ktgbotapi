@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.WithEmail
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class Email(
     @SerialName(emailField)
     override val email: String,

@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable(EncryptedElementSerializer::class)
 sealed class TranslatableFilesCollection : Translatable, FilesCollection
 
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class UtilityBill(
     @SerialName(filesField)
     override val files: List<PassportFile>,
@@ -20,7 +20,7 @@ data class UtilityBill(
     @Serializable(Base64StringSerializer::class)
     override val hash: String
 ) : TranslatableFilesCollection()
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class BankStatement(
     @SerialName(filesField)
     override val files: List<PassportFile>,
@@ -30,7 +30,7 @@ data class BankStatement(
     @Serializable(Base64StringSerializer::class)
     override val hash: String
 ) : TranslatableFilesCollection()
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class RentalAgreement(
     @SerialName(filesField)
     override val files: List<PassportFile>,
@@ -40,7 +40,7 @@ data class RentalAgreement(
     @Serializable(Base64StringSerializer::class)
     override val hash: String
 ) : TranslatableFilesCollection()
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class PassportRegistration(
     @SerialName(filesField)
     override val files: List<PassportFile>,
@@ -50,7 +50,7 @@ data class PassportRegistration(
     @Serializable(Base64StringSerializer::class)
     override val hash: String
 ) : TranslatableFilesCollection()
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class TemporaryRegistration(
     @SerialName(filesField)
     override val files: List<PassportFile>,

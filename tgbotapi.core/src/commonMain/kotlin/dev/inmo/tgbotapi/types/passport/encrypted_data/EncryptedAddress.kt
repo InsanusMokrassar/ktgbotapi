@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.WithData
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class EncryptedAddress(
     @SerialName(dataField)
     override val data: EncryptedData,

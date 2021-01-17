@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable(EncryptedElementSerializer::class)
 sealed class Passport : WithData, WithFrontSide, WithSelfie, Translatable
 
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class CommonPassport(
     @SerialName(dataField)
     override val data: EncryptedData,
@@ -24,7 +24,7 @@ data class CommonPassport(
     @Serializable(Base64StringSerializer::class)
     override val hash: String
 ) : Passport()
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class InternalPassport(
     @SerialName(dataField)
     override val data: EncryptedData,

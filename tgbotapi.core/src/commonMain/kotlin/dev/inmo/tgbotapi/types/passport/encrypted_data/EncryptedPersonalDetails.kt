@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.WithData
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class EncryptedPersonalDetails(
     @SerialName(dataField)
     @Serializable(Base64StringSerializer::class)

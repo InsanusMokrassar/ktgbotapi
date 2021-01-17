@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.phoneNumberField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class PhoneNumber(
     @SerialName(phoneNumberField)
     override val phoneNumber: String,

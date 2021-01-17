@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable(EncryptedElementSerializer::class)
 sealed class TranslatableIDDocument : WithData, WithFrontSide, WithReverseSide, WithSelfie, Translatable
 
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class DriverLicense(
     @SerialName(dataField)
     override val data: EncryptedData,
@@ -27,7 +27,7 @@ data class DriverLicense(
     override val hash: String
 ) : TranslatableIDDocument()
 
-@Serializable(EncryptedElementSerializer::class)
+@Serializable
 data class IdentityCard(
     @SerialName(dataField)
     override val data: EncryptedData,
