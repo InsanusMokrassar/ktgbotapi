@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts
 
 import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
-import dev.inmo.tgbotapi.types.passport.Base64EncodedData
 import dev.inmo.tgbotapi.types.passport.encrypted_data.EncryptedElementSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject

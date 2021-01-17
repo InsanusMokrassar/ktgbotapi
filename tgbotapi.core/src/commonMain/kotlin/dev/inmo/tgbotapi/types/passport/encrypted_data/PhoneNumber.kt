@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types.passport.encrypted_data
 
 import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
 import dev.inmo.tgbotapi.types.hashField
-import dev.inmo.tgbotapi.types.passport.Base64EncodedData
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.WithPhoneNumber
 import dev.inmo.tgbotapi.types.phoneNumberField
 import kotlinx.serialization.SerialName
