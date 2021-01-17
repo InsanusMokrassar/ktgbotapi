@@ -18,8 +18,8 @@ data class PassportFile(
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
     override val fileUniqueId: FileUniqueId,
-    @SerialName(fileSizeField)
-    override val fileSize: Long,
     @SerialName(fileDateField)
-    val uploadingDate: TelegramDate
+    val uploadingDate: TelegramDate,
+    @SerialName(fileSizeField)
+    override val fileSize: Long? = null
 ) : TelegramMediaFile
