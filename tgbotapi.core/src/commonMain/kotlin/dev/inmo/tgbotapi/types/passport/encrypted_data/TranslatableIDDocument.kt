@@ -15,13 +15,13 @@ data class DriverLicense(
     @SerialName(dataField)
     override val data: EncryptedData,
     @SerialName(frontSideField)
-    override val frontSide: PassportFile?,
+    override val frontSide: PassportFile? = null,
     @SerialName(reverseSideField)
-    override val reverseSide: PassportFile?,
+    override val reverseSide: PassportFile? = null,
     @SerialName(selfieField)
-    override val selfie: PassportFile?,
+    override val selfie: PassportFile? = null,
     @SerialName(translationField)
-    override val translations: List<PassportFile>,
+    override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64StringSerializer::class)
     override val hash: String
@@ -32,13 +32,13 @@ data class IdentityCard(
     @SerialName(dataField)
     override val data: EncryptedData,
     @SerialName(frontSideField)
-    override val frontSide: PassportFile?,
+    override val frontSide: PassportFile? = null,
     @SerialName(reverseSideField)
-    override val reverseSide: PassportFile?,
+    override val reverseSide: PassportFile? = null,
     @SerialName(selfieField)
-    override val selfie: PassportFile?,
+    override val selfie: PassportFile? = null,
     @SerialName(translationField)
-    override val translations: List<PassportFile>,
+    override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
     @Serializable(Base64StringSerializer::class)
     override val hash: String
