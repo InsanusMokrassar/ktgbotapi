@@ -329,6 +329,7 @@ internal data class RawMessage(
                 PassportMessage(
                     messageId,
                     chat,
+                    from ?: error("For passport must be provided user, but got null"),
                     date.asDate,
                     passport_data
                 )
