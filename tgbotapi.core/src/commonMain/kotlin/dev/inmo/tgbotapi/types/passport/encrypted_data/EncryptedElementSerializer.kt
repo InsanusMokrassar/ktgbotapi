@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.types.passport.encrypted_data
 
 import dev.inmo.tgbotapi.types.hashField
-import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
+import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement
+import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.UnknownEncryptedPassportElement
 import dev.inmo.tgbotapi.types.typeField
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.KSerializer

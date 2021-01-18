@@ -3,8 +3,6 @@ package dev.inmo.tgbotapi.types.passport.encrypted_data
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.files.abstracts.*
-import dev.inmo.tgbotapi.types.files.abstracts.fileIdField
-import dev.inmo.tgbotapi.types.files.abstracts.fileSizeField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

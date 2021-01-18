@@ -1,9 +1,10 @@
 package dev.inmo.tgbotapi.utils.internal
 
 import dev.inmo.tgbotapi.CommonAbstracts.*
-import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.ParseMode.*
+import dev.inmo.tgbotapi.types.captionLength
 import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.textLength
 
 internal fun createFormattedText(
     entities: TextSourcesList,

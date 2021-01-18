@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.passport.encrypted_data
 
 import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.passport.*
+import dev.inmo.tgbotapi.types.passport.EncryptedData
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
