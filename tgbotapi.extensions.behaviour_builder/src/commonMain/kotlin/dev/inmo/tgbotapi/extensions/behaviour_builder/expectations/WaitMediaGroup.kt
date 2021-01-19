@@ -16,12 +16,12 @@ internal suspend inline fun <reified T : MediaGroupContent> BehaviourContext.onM
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: (suspend (List<MediaGroupMessage>) -> Boolean)? = null
+    noinline filter: (suspend (List<MediaGroupMessage<T>>) -> Boolean)? = null
 ) = flowsUpdatesFilter.expectFlow(bot, initRequest, count, errorFactory) { update ->
     update.asSentMediaGroupUpdate() ?.data ?.let { mediaGroup ->
-        if (mediaGroup.all { message -> message.content is T } && (filter == null || filter(mediaGroup))) {
+        if (mediaGroup.all { message -> message.content is T } && (filter == null || filter(mediaGroup as List<MediaGroupMessage<T>>))) {
             listOf(
-                mediaGroup.map { it.content as T }
+                mediaGroup.map { it.content as T } as List<MediaGroupMessage<T>>
             )
         } else {
             null
@@ -33,29 +33,29 @@ suspend fun BehaviourContext.waitPlaylist(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage>) -> Boolean)? = null
-) = onMediaGroup<AudioMediaGroupContent>(count, initRequest, errorFactory, filter)
+    filter: (suspend (List<MediaGroupMessage<AudioMediaGroupContent>>) -> Boolean)? = null
+) = onMediaGroup(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitDocumentsGroup(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage>) -> Boolean)? = null
-) = onMediaGroup<DocumentMediaGroupContent>(count, initRequest, errorFactory, filter)
+    filter: (suspend (List<MediaGroupMessage<DocumentMediaGroupContent>>) -> Boolean)? = null
+) = onMediaGroup(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitVisualGallery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage>) -> Boolean)? = null
-) = onMediaGroup<VisualMediaGroupContent>(count, initRequest, errorFactory, filter)
+    filter: (suspend (List<MediaGroupMessage<VisualMediaGroupContent>>) -> Boolean)? = null
+) = onMediaGroup(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitPhotoGallery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage>) -> Boolean)? = null
-) = onMediaGroup<PhotoContent>(count, initRequest, errorFactory, filter)
+    filter: (suspend (List<MediaGroupMessage<PhotoContent>>) -> Boolean)? = null
+) = onMediaGroup(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitVideoGallery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage>) -> Boolean)? = null
-) = onMediaGroup<VideoContent>(count, initRequest, errorFactory, filter)
+    filter: (suspend (List<MediaGroupMessage<VideoContent>>) -> Boolean)? = null
+) = onMediaGroup(count, initRequest, errorFactory, filter)

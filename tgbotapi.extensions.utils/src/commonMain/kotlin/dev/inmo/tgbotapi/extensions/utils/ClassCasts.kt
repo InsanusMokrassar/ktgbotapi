@@ -160,17 +160,17 @@ inline fun Message.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? =
 @PreviewFeature
 inline fun Message.requireChannelEventMessage(): ChannelEventMessage<ChannelEvent> = this as ChannelEventMessage<ChannelEvent>
 @PreviewFeature
-inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage? = this as? ChannelMediaGroupMessage
+inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent>? = this as? ChannelMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage = this as ChannelMediaGroupMessage
+inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent> = this as ChannelMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent>? = this as? CommonGroupEventMessage<GroupEvent>
 @PreviewFeature
 inline fun Message.requireCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent> = this as CommonGroupEventMessage<GroupEvent>
 @PreviewFeature
-inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage? = this as? CommonMediaGroupMessage
+inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent>? = this as? CommonMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage = this as CommonMediaGroupMessage
+inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent> = this as CommonMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent>? = this as? CommonSupergroupEventMessage<SupergroupEvent>
 @PreviewFeature
@@ -212,9 +212,9 @@ inline fun Message.asGroupMessage(): GroupMessage<MessageContent>? = this as? Gr
 @PreviewFeature
 inline fun Message.requireGroupMessage(): GroupMessage<MessageContent> = this as GroupMessage<MessageContent>
 @PreviewFeature
-inline fun Message.asMediaGroupMessage(): MediaGroupMessage? = this as? MediaGroupMessage
+inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupContent>? = this as? MediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireMediaGroupMessage(): MediaGroupMessage = this as MediaGroupMessage
+inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupContent> = this as MediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asPossiblyEditedMessage(): PossiblyEditedMessage? = this as? PossiblyEditedMessage
 @PreviewFeature

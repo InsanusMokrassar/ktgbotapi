@@ -7,6 +7,8 @@ import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 /**
@@ -20,7 +22,7 @@ suspend fun TelegramBot.sendMediaGroup(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = execute(
-    SendMediaGroup(
+    SendMediaGroup<MediaGroupContent>(
         chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply
     )
 )

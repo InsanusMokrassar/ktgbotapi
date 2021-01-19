@@ -8,6 +8,10 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.AudioContent
+import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
 import dev.inmo.tgbotapi.utils.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
@@ -17,13 +21,13 @@ const val rawSendingMediaGroupsWarning = "Media groups contains restrictions rel
     " types. Currently it is possible to combine photo + video OR audio OR documents"
 
 @RiskFeature(rawSendingMediaGroupsWarning)
-fun SendMediaGroup(
+fun <T : MediaGroupContent> SendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
-): Request<List<MediaGroupMessage>> {
+): Request<List<MediaGroupMessage<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
     }
@@ -47,14 +51,14 @@ fun SendMediaGroup(
         allowSendingWithoutReply
     )
 
-    return if (files.isEmpty()) {
+    return (if (files.isEmpty()) {
         data
     } else {
         MultipartRequestImpl(
             data,
             SendMediaGroupFiles(files)
         )
-    }
+    }) as Request<List<MediaGroupMessage<T>>>
 }
 
 /**
@@ -69,7 +73,7 @@ inline fun SendPlaylist(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<AudioContent>(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending documents media group
@@ -83,7 +87,7 @@ inline fun SendDocumentsGroup(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<DocumentContent>(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending visual media group
@@ -98,9 +102,9 @@ inline fun SendVisualMediaGroup(
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<VisualMediaGroupContent>(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
 
-private val messagesListSerializer: KSerializer<List<MediaGroupMessage>>
+private val messagesListSerializer: KSerializer<List<MediaGroupMessage<MediaGroupContent>>>
     = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
 
 @Serializable
@@ -114,7 +118,7 @@ data class SendMediaGroupData internal constructor(
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)
     override val allowSendingWithoutReply: Boolean? = null
-) : DataRequest<List<MediaGroupMessage>>, SendMessageRequest<List<MediaGroupMessage>> {
+) : DataRequest<List<MediaGroupMessage<MediaGroupContent>>>, SendMessageRequest<List<MediaGroupMessage<MediaGroupContent>>> {
     @SerialName(mediaField)
     private val convertedMedia: String
         get() = buildJsonArray {
@@ -127,7 +131,7 @@ data class SendMediaGroupData internal constructor(
     override fun method(): String = "sendMediaGroup"
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-    override val resultDeserializer: DeserializationStrategy<List<MediaGroupMessage>>
+    override val resultDeserializer: DeserializationStrategy<List<MediaGroupMessage<MediaGroupContent>>>
         get() = messagesListSerializer
 }
 

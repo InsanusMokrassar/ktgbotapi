@@ -1,10 +1,13 @@
 # TelegramBotAPI changelog
 
-## 0.31.1
+## 0.32.0
 
 * `Common`:
     * `Version`:
         * `MicroUtils`: `0.4.16` -> `0.4.18`
+* `Core`:
+    * Now `MediaGroupMessage` have a generic type related to `MediaGroupContent`
+        * Methods and types related to `MediaGroupMessage` have been modified according to their meanings
 
 ## 0.31.0
 

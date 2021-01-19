@@ -23,7 +23,7 @@ internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
     val mediaGroups = mutableMapOf<MediaGroupIdentifier, MutableList<BaseSentMessageUpdate>>()
     for (update in this) {
-        val data = (update.data as? MediaGroupMessage)
+        val data = (update.data as? MediaGroupMessage<*>)
         if (data == null) {
             resultUpdates.add(update)
             continue
