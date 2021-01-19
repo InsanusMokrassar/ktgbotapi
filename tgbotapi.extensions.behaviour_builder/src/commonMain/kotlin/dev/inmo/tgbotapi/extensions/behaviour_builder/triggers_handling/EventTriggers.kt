@@ -1,21 +1,14 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
-import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
-import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.media.*
-import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
-import kotlinx.coroutines.flow.filter
 
 internal suspend inline fun <reified T : ChatEvent> BehaviourContext.onEvent(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
@@ -31,19 +24,13 @@ internal suspend inline fun <reified T : ChatEvent> BehaviourContext.onEvent(
         }
     }.let(::listOfNotNull)
 }.subscribeSafelyWithoutExceptions(scope) { triggerMessage ->
-    val (jobToCancel, scenario) = if (includeFilterByChatInBehaviourSubContext) {
-        val subFilter = FlowsUpdatesFilter()
-        val subBehaviourContext = copy(flowsUpdatesFilter = subFilter)
-
-        flowsUpdatesFilter.allUpdatesFlow.filter {
-            val chat = it.sourceChat() ?: return@filter false
-            chat.id.chatId == triggerMessage.chat.id.chatId
-        }.subscribeSafelyWithoutExceptions(scope, subFilter.asUpdateReceiver) to subBehaviourContext
-    } else {
-        null to this
+    doInSubContextWithUpdatesFilter(
+        updatesFilter = if (includeFilterByChatInBehaviourSubContext) {
+            { it.sourceChat() ?.id ?.chatId == triggerMessage.chat.id.chatId }
+        } else null
+    ) {
+        scenarioReceiver(triggerMessage)
     }
-    safelyWithoutExceptions { scenario.scenarioReceiver(triggerMessage) }
-    jobToCancel ?.cancel()
 }
 
 suspend fun BehaviourContext.onChannelEvent(

@@ -59,6 +59,12 @@ private suspend inline fun <reified T : MessageContent> BehaviourContext.waitCon
     }
 }
 
+suspend fun BehaviourContext.waitContentMessage(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: CommonMessageToContentMapper<MessageContent>? = null
+) = waitContent(count, initRequest, false, errorFactory, filter)
 suspend fun BehaviourContext.waitContact(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -101,14 +107,14 @@ suspend fun BehaviourContext.waitVenue(
     count: Int = 1,
     filter: CommonMessageToContentMapper<VenueContent>? = null
 ) = waitContent(count, initRequest, false, errorFactory, filter)
-suspend fun BehaviourContext.waitAudioMediaGroup(
+suspend fun BehaviourContext.waitAudioMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     includeMediaGroups: Boolean = true,
     filter: CommonMessageToContentMapper<AudioMediaGroupContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
-suspend fun BehaviourContext.waitDocumentMediaGroup(
+suspend fun BehaviourContext.waitDocumentMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
@@ -119,17 +125,17 @@ suspend fun BehaviourContext.waitMedia(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     filter: CommonMessageToContentMapper<MediaContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
-suspend fun BehaviourContext.waitMediaGroup(
+suspend fun BehaviourContext.waitAnyMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     includeMediaGroups: Boolean = true,
     filter: CommonMessageToContentMapper<MediaGroupContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
-suspend fun BehaviourContext.waitVisualMediaGroup(
+suspend fun BehaviourContext.waitVisualMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
@@ -146,21 +152,21 @@ suspend fun BehaviourContext.waitAudio(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     filter: CommonMessageToContentMapper<AudioContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitDocument(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     filter: CommonMessageToContentMapper<DocumentContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitPhoto(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     filter: CommonMessageToContentMapper<PhotoContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitSticker(
@@ -173,7 +179,7 @@ suspend fun BehaviourContext.waitVideo(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     filter: CommonMessageToContentMapper<VideoContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitVideoNote(

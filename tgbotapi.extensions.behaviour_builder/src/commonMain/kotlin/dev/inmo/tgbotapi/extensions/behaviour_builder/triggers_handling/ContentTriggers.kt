@@ -2,11 +2,8 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
-
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
-import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
@@ -16,9 +13,7 @@ import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
-import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.PreviewFeature
-import kotlinx.coroutines.flow.filter
 
 typealias CommonMessageFilter<T> = (suspend (CommonMessage<T>) -> Boolean)
 
@@ -50,21 +45,22 @@ internal suspend inline fun <reified T : MessageContent> BehaviourContext.onCont
         }
     }.let(::listOfNotNull)
 }.subscribeSafelyWithoutExceptions(scope) { triggerMessage ->
-    val (jobToCancel, scenario) = if (includeFilterByChatInBehaviourSubContext) {
-        val subFilter = FlowsUpdatesFilter()
-        val subBehaviourContext = copy(flowsUpdatesFilter = subFilter)
-
-        flowsUpdatesFilter.allUpdatesFlow.filter {
-            val chat = it.sourceChat() ?: return@filter false
-            chat.id.chatId == triggerMessage.chat.id.chatId
-        }.subscribeSafelyWithoutExceptions(scope, subFilter.asUpdateReceiver) to subBehaviourContext
-    } else {
-        null to this
+    doInSubContextWithUpdatesFilter(
+        updatesFilter = if (includeFilterByChatInBehaviourSubContext) {
+            { it.sourceChat() ?.id ?.chatId == triggerMessage.chat.id.chatId }
+        } else {
+            null
+        }
+    ) {
+        scenarioReceiver(triggerMessage)
     }
-    safelyWithoutExceptions { scenario.scenarioReceiver(triggerMessage) }
-    jobToCancel ?.cancel()
 }
 
+suspend fun BehaviourContext.onContentMessage(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    additionalFilter: CommonMessageFilter<MessageContent>? = null,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MessageContent>>
+) = onContent(includeFilterByChatInBehaviourSubContext, false, additionalFilter, scenarioReceiver)
 suspend fun BehaviourContext.onContact(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: CommonMessageFilter<ContactContent>? = null,
@@ -105,7 +101,7 @@ suspend fun BehaviourContext.onAudioMediaGroup(
     additionalFilter: CommonMessageFilter<AudioMediaGroupContent>? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<AudioMediaGroupContent>>
 ) = onContent(includeFilterByChatInBehaviourSubContext, true, additionalFilter, scenarioReceiver)
-suspend fun BehaviourContext.onDocumentMediaGroup(
+suspend fun BehaviourContext.onDocumentMediaGroupContent(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     includeMediaGroups: Boolean = true,
     additionalFilter: CommonMessageFilter<DocumentMediaGroupContent>? = null,
@@ -113,7 +109,7 @@ suspend fun BehaviourContext.onDocumentMediaGroup(
 ) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)
 suspend fun BehaviourContext.onMediaCollection(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     additionalFilter: (suspend (CommonMessage<MediaCollectionContent<TelegramMediaFile>>) -> Boolean)? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MediaCollectionContent<TelegramMediaFile>>>
 ) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)
@@ -123,18 +119,6 @@ suspend fun BehaviourContext.onMedia(
     additionalFilter: CommonMessageFilter<MediaContent>? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MediaContent>>
 ) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)
-suspend fun BehaviourContext.onMediaGroup(
-    includeFilterByChatInBehaviourSubContext: Boolean = true,
-    includeMediaGroups: Boolean = true,
-    additionalFilter: CommonMessageFilter<MediaGroupContent>? = null,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MediaGroupContent>>
-) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)
-suspend fun BehaviourContext.onVisualMediaGroup(
-    includeFilterByChatInBehaviourSubContext: Boolean = true,
-    includeMediaGroups: Boolean = true,
-    additionalFilter: CommonMessageFilter<VisualMediaGroupContent>? = null,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<VisualMediaGroupContent>>
-) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)
 suspend fun BehaviourContext.onAnimation(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: CommonMessageFilter<AnimationContent>? = null,
@@ -142,19 +126,19 @@ suspend fun BehaviourContext.onAnimation(
 ) = onContent(includeFilterByChatInBehaviourSubContext, false, additionalFilter, scenarioReceiver)
 suspend fun BehaviourContext.onAudio(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     additionalFilter: CommonMessageFilter<AudioContent>? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<AudioContent>>
 ) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)
 suspend fun BehaviourContext.onDocument(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     additionalFilter: CommonMessageFilter<DocumentContent>? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<DocumentContent>>
 ) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)
 suspend fun BehaviourContext.onPhoto(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     additionalFilter: CommonMessageFilter<PhotoContent>? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<PhotoContent>>
 ) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)
@@ -165,7 +149,7 @@ suspend fun BehaviourContext.onSticker(
 ) = onContent(includeFilterByChatInBehaviourSubContext, false, additionalFilter, scenarioReceiver)
 suspend fun BehaviourContext.onVideo(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
-    includeMediaGroups: Boolean = true,
+    includeMediaGroups: Boolean = false,
     additionalFilter: CommonMessageFilter<VideoContent>? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<VideoContent>>
 ) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, scenarioReceiver)

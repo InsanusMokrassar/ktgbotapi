@@ -8,8 +8,17 @@
     * `Version`:
         * `MicroUtils`: `0.4.16` -> `0.4.19`
 * `Core`:
-    * **BC** Now `MediaGroupMessage` have a generic type related to `MediaGroupContent`
+    * **BREAKING CHANGE** Now `MediaGroupMessage` have a generic type related to `MediaGroupContent`
         * Methods and types related to `MediaGroupMessage` have been modified according to their meanings
+    * **Important Change** `FlowsUpdatesFilter` now is an interface. Old class has been renamed to
+      `DefaultFlowsUpdatesFilter` and factory method `FlowsUpdatesFilter` has been added
+* `Behaviour Builder`:
+    * Trigger and expectation extensions for `MessageContent` (`onContentMessage` and `waitContentMessage`)
+    * `onMediaGroup` has been replaced
+    * `waitMediaGroup` has been added
+    * `onVisualMediaGroup` now is just an alternative to `onVisualGallery`
+    * `command` and `onCommand` expectations has been added for commands `String` variant
+    * New extensions `BehaviourContext#oneOf`, `BehaviourContext#parallel` and `Deferred<T>#withAction`
 
 ## 0.31.0
 
