@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.hashField
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.UnknownEncryptedPassportElement
 import dev.inmo.tgbotapi.types.typeField
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializer
@@ -28,6 +29,10 @@ val encryptedElementsClassesByTypes = mapOf(
     "phone_number" to Encapsulator(PhoneNumber::class, PhoneNumber.serializer()),
     "email" to Encapsulator(Email::class, Email.serializer())
 )
+
+@RiskFeature("Remember that this method may return \"unknown\" in case if encrypted element was not defined in library")
+val EncryptedPassportElement.type: String
+    get() = encryptedElementsClassesByTypes.keys.firstOrNull { encryptedElementsClassesByTypes.getValue(it).klass.isInstance(this) } ?: "unknown"
 
 @Serializer(EncryptedPassportElement::class)
 object EncryptedElementSerializer : KSerializer<EncryptedPassportElement> {
