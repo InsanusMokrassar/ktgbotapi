@@ -1,11 +1,17 @@
-package dev.inmo.tgbotapi.types.passport.errors
+@file:Suppress("unused", "EXPERIMENTAL_API_USAGE")
+
+package dev.inmo.tgbotapi.types.passport
 
 import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
 import dev.inmo.tgbotapi.types.passport.encrypted_data.type
+import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.*
 
 @Serializable(PassportElementErrorSerializer::class)
 sealed class PassportElementError {
@@ -14,8 +20,33 @@ sealed class PassportElementError {
     abstract val message: String
 }
 
-@Serializer(PassportElementError::class)
-internal object PassportElementErrorSerializer : KSerializer<PassportElementError> {
+data class UnknownPassportElementError(
+    val raw: JsonObject
+) : PassportElementError() {
+    override val source: String = raw[sourceField] ?.jsonPrimitive ?.contentOrNull ?: ""
+    override val type: String = raw[typeField] ?.jsonPrimitive ?.contentOrNull ?: ""
+    override val message: String = raw[messageField] ?.jsonPrimitive ?.contentOrNull ?: ""
+}
+
+object PassportElementErrorSerializer : KSerializer<PassportElementError> {
+    private val jsonObjectSerializer = JsonObject.serializer()
+    override val descriptor: SerialDescriptor
+        get() = jsonObjectSerializer.descriptor
+    override fun deserialize(decoder: Decoder): PassportElementError {
+        val json = jsonObjectSerializer.deserialize(decoder)
+        return when (json[sourceField] ?.jsonPrimitive ?.content) {
+            "dataField" -> nonstrictJsonFormat.decodeFromJsonElement(PassportElementErrorDataField.serializer(), json)
+            "frontSideField" ->  nonstrictJsonFormat.decodeFromJsonElement(PassportElementErrorFrontSide.serializer(), json)
+            "reverseSideField" ->  nonstrictJsonFormat.decodeFromJsonElement(PassportElementErrorReverseSide.serializer(), json)
+            "selfieField" ->  nonstrictJsonFormat.decodeFromJsonElement(PassportElementErrorSelfie.serializer(), json)
+            "fileField" ->  nonstrictJsonFormat.decodeFromJsonElement(PassportElementFileError.serializer(), json)
+            "filesField" ->  nonstrictJsonFormat.decodeFromJsonElement(PassportElementFilesError.serializer(), json)
+            "translationFileField" ->  nonstrictJsonFormat.decodeFromJsonElement(PassportElementErrorTranslationFile.serializer(), json)
+            "translationFilesField" ->  nonstrictJsonFormat.decodeFromJsonElement(PassportElementErrorTranslationFiles.serializer(), json)
+            "unspecifiedField" ->  nonstrictJsonFormat.decodeFromJsonElement(PassportElementErrorUnspecified.serializer(), json)
+            else -> UnknownPassportElementError(json)
+        }
+    }
     override fun serialize(encoder: Encoder, value: PassportElementError) {
         val neverMindAboutThisVariable = when (value) {
             is PassportElementErrorFrontSide -> PassportElementErrorFrontSide.serializer().serialize(encoder, value)
@@ -27,6 +58,7 @@ internal object PassportElementErrorSerializer : KSerializer<PassportElementErro
             is PassportElementErrorDataField -> PassportElementErrorDataField.serializer().serialize(encoder, value)
             is PassportElementErrorFiles -> PassportElementErrorFiles.serializer().serialize(encoder, value)
             is PassportElementErrorTranslationFiles -> PassportElementErrorTranslationFiles.serializer().serialize(encoder, value)
+            is UnknownPassportElementError -> jsonObjectSerializer.serialize(encoder, value.raw)
         }
     }
 }

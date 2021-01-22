@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.requests
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.passport.errors.PassportElementError
+import dev.inmo.tgbotapi.types.passport.PassportElementError
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
