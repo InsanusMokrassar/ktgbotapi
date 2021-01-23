@@ -87,7 +87,7 @@ fun Poll.createRequest(
             correctOptionId,
             isAnonymous,
             isClosed,
-            fullEntitiesList(),
+            textSources,
             scheduledCloseInfo,
             disableNotification,
             replyToMessageId,

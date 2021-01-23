@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.FileUniqueId
 
 internal const val fileIdField = "file_id"
 internal const val fileSizeField = "file_size"
+internal const val fileDateField = "file_date"
 internal const val filePathField = "file_path"
 
 /**

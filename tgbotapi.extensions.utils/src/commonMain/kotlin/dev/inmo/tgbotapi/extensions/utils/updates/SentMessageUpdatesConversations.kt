@@ -1,5 +1,8 @@
+@file:Suppress("unused")
+
 package dev.inmo.tgbotapi.extensions.utils.updates
 
+import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.Flow
@@ -23,11 +26,11 @@ fun <T : BaseSentMessageUpdate> Flow<T>.asCommonMessagesFlow() = mapNotNull {
 inline fun <T : BaseSentMessageUpdate> Flow<T>.chatEvents() = mapNotNull {
     it.data as? ChatEventMessage<*>
 }
-/**
- * Will map incoming [BaseSentMessageUpdate]s to [ChatEventMessage] from [BaseSentMessageUpdate.data]
- */
-@Deprecated("Renamed", ReplaceWith("chatEvents", "dev.inmo.tgbotapi.extensions.utils.updates.chatEvents"))
-fun <T : BaseSentMessageUpdate> Flow<T>.asChatEventsFlow() = chatEvents()
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun <T : BaseSentMessageUpdate> Flow<T>.passportMessages() = mapNotNull {
+    it.data as? PassportMessage
+}
 
 /**
  * Will map incoming [BaseSentMessageUpdate]s to [UnknownMessageType] from [BaseSentMessageUpdate.data]

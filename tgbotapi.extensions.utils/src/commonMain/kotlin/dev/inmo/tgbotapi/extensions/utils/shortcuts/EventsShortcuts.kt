@@ -9,7 +9,8 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.RiskFeature
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.mapNotNull
 
 @RiskFeature("Use with caution")
 inline fun FlowsUpdatesFilter.events(): Flow<ChatEventMessage<*>> {

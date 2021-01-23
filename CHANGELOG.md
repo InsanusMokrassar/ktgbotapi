@@ -1,5 +1,53 @@
 # TelegramBotAPI changelog
 
+## 0.32.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.16` -> `0.4.21`
+* `Core`:
+    * **BREAKING CHANGE** Now `MediaGroupMessage` have a generic type related to `MediaGroupContent`
+        * Methods and types related to `MediaGroupMessage` have been modified according to their meanings
+    * **Important Change** `FlowsUpdatesFilter` now is an interface. Old class has been renamed to
+      `DefaultFlowsUpdatesFilter` and factory method `FlowsUpdatesFilter` has been added
+* `Behaviour Builder`:
+    * Trigger and expectation extensions for `MessageContent` (`onContentMessage` and `waitContentMessage`)
+    * `onMediaGroup` has been replaced
+    * `waitMediaGroup` has been added
+    * `onVisualMediaGroup` now is just an alternative to `onVisualGallery`
+    * `command` and `onCommand` expectations has been added for commands `String` variant
+    * New extensions `BehaviourContext#oneOf`, `BehaviourContext#parallel` and `Deferred<T>#withAction`
+
+## 0.31.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Common`:
+    * **ALL DEPRECATIONS CREATED SINCE 0.30.0 WERE REMOVED**
+* `Behaviour Builder`:
+    * Extension `TelegramBot#buildBehaviour` have changed its return value: now it is `Job` instead of
+      `FlowsUpdatesFilter`
+* `Utils`
+    * New extensions `TelegramBot#longPolling` were added as new recommended way to start getting updates via long
+      polling
+        * Old extensions `RequestsExecutor#startGettingFlowsUpdatesByLongPolling` has been deprecated
+
+## 0.30.13
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.15` -> `0.4.16`
+* `Core`:
+    * New variable `FlowsUpdatesFilter#allUpdatesWithoutMediaGroupsGroupingFlow` which will contains updates without
+      `SentMediaGroupUpdate`
+* `Utils`:
+    * Extensions for `ResendableContent` has been added
+    * Extensions for `TextSource` has been added
+* `Behaviour Builder`:
+    * Project has been created :)
+
 ## 0.30.12
 
 * `Utils`:

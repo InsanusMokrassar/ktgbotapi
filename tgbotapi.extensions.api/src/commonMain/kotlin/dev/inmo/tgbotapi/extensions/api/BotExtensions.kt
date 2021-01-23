@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.api
 
-import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder
+import dev.inmo.tgbotapi.bot.Ktor.telegramBot
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
@@ -9,22 +9,12 @@ import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.*
 
 /**
- * Allows to create bot using bot [urlsKeeper]
- */
-@Deprecated("Replaced in core", ReplaceWith("telegramBot", "dev.inmo.tgbotapi.bot.Ktor.telegramBot"))
-fun telegramBot(
-    urlsKeeper: TelegramAPIUrlsKeeper
-): TelegramBot = dev.inmo.tgbotapi.bot.Ktor.telegramBot(
-    urlsKeeper
-)
-
-/**
  * Allows to create bot using bot [urlsKeeper] and already prepared [client]
  */
 fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
     client: HttpClient
-): TelegramBot = dev.inmo.tgbotapi.bot.Ktor.telegramBot(urlsKeeper) {
+): TelegramBot = telegramBot(urlsKeeper) {
     this.client = client
 }
 
@@ -68,16 +58,6 @@ inline fun telegramBot(
     urlsKeeper,
     HttpClient(clientConfig)
 )
-
-/**
- * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]
- */
-@Deprecated("Replaced in core", ReplaceWith("telegramBot", "dev.inmo.tgbotapi.bot.Ktor.telegramBot"))
-@Suppress("NOTHING_TO_INLINE")
-inline fun telegramBot(
-    token: String,
-    apiUrl: String = telegramBotAPIDefaultUrl
-): TelegramBot = dev.inmo.tgbotapi.bot.Ktor.telegramBot(token, apiUrl)
 
 /**
  * Allows to create bot using bot [token], [apiUrl] (for custom api servers) and already prepared [client]
@@ -130,37 +110,3 @@ inline fun telegramBot(
     TelegramAPIUrlsKeeper(token, apiUrl),
     clientConfig
 )
-
-/**
- * Allows to create bot using bot [urlsKeeper] and specify [HttpClientEngine] by passing [clientEngine] param and optionally
- * configure [HttpClient] using [clientConfig]
- */
-@Deprecated("Will be removed in next releases", ReplaceWith("telegramBot", "dev.inmo.tgbotapi.extensions.api.telegramBot"))
-fun telegramBotWithCustomClientConfig(
-    urlsKeeper: TelegramAPIUrlsKeeper,
-    clientEngine: HttpClientEngine,
-    clientConfig: HttpClientConfig<*>.() -> Unit
-): TelegramBot = telegramBot(
-    urlsKeeper,
-    HttpClient(clientEngine, clientConfig)
-)
-
-/**
- * Allows to create bot using bot [urlsKeeper] and optionally configure [HttpClient] using [clientConfig]
- */
-@Deprecated("Will be removed in next releases", ReplaceWith("telegramBot", "dev.inmo.tgbotapi.extensions.api.telegramBot"))
-fun telegramBotWithCustomClientConfig(
-    urlsKeeper: TelegramAPIUrlsKeeper,
-    clientConfig: HttpClientConfig<*>.() -> Unit
-): TelegramBot = telegramBot(
-    urlsKeeper,
-    HttpClient(clientConfig)
-)
-
-@Suppress("NOTHING_TO_INLINE")
-@Deprecated("Renamed", ReplaceWith("telegramBot", "dev.inmo.tgbotapi.extensions.api.telegramBot"))
-inline fun telegramBotWithCustomClientConfig(
-    token: String,
-    apiUrl: String = telegramBotAPIDefaultUrl,
-    noinline clientConfig: HttpClientConfig<*>.() -> Unit
-) = telegramBot(token, apiUrl = apiUrl, clientConfig = clientConfig)

@@ -8,10 +8,6 @@ import dev.inmo.tgbotapi.types.textLength
 const val DirectInvocationOfTextSourceConstructor = "It is strongly not recommended to use constructors directly instead of factory methods"
 
 typealias TextSourcesList = List<TextSource>
-@Deprecated("All lists of TextSource in public API now are full. So, this typealias is redundant")
-typealias FullTextSourcesList = List<TextSource>
-@Deprecated("All lists of TextPart in public API now are full. So, this typealias is redundant")
-typealias FullTextPartsList = List<TextPart>
 
 interface TextSource {
     val markdown: String
@@ -21,16 +17,6 @@ interface TextSource {
 
     val asText: String
         get() = source
-
-    @Deprecated("Rename", ReplaceWith("markdown"))
-    val asMarkdownSource: String
-        get() = markdown
-    @Deprecated("Rename", ReplaceWith("markdownV2"))
-    val asMarkdownV2Source: String
-        get() = markdownV2
-    @Deprecated("Rename", ReplaceWith("html"))
-    val asHtmlSource: String
-        get() = html
 }
 
 @Suppress("NOTHING_TO_INLINE")
@@ -43,13 +29,7 @@ inline operator fun TextSource.plus(text: String) = listOf(this, regular(text))
 inline operator fun List<TextSource>.plus(text: String) = this + regular(text)
 
 interface MultilevelTextSource : TextSource {
-    @Deprecated("Will be removed in near major release")
-    val textParts: List<TextPart>
-        get() = textParts(0)
     val subsources: List<TextSource>
-    @Deprecated("Will be removed in near major release", ReplaceWith("subsources"))
-    val textSources: List<TextSource>
-        get() = subsources
 }
 
 data class TextPart(

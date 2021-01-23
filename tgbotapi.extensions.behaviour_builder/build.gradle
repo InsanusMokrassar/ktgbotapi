@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.multiplatform"
+    id "org.jetbrains.kotlin.plugin.serialization"
+}
+
+project.version = "$library_version"
+project.group = "$library_group"
+
+apply from: "publish.gradle"
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+}
+
+kotlin {
+    jvm()
+    js(BOTH) {
+        browser()
+        nodejs()
+    }
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib')
+                api project(":tgbotapi.extensions.utils")
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils
 
+import dev.inmo.micro_utils.coroutines.safely
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.flow.*

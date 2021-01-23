@@ -1,6 +1,8 @@
 @file:Suppress("NOTHING_TO_INLINE", "unused", "UNCHECKED_CAST")
 
 package dev.inmo.tgbotapi.extensions.utils
+import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.ChatMember.*
@@ -20,6 +22,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.InputMedia.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
@@ -30,11 +33,10 @@ import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.abstracts.ChannelMessage
-import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
-import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage
+import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
@@ -158,17 +160,17 @@ inline fun Message.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? =
 @PreviewFeature
 inline fun Message.requireChannelEventMessage(): ChannelEventMessage<ChannelEvent> = this as ChannelEventMessage<ChannelEvent>
 @PreviewFeature
-inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage? = this as? ChannelMediaGroupMessage
+inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent>? = this as? ChannelMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage = this as ChannelMediaGroupMessage
+inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent> = this as ChannelMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent>? = this as? CommonGroupEventMessage<GroupEvent>
 @PreviewFeature
 inline fun Message.requireCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent> = this as CommonGroupEventMessage<GroupEvent>
 @PreviewFeature
-inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage? = this as? CommonMediaGroupMessage
+inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent>? = this as? CommonMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage = this as CommonMediaGroupMessage
+inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent> = this as CommonMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent>? = this as? CommonSupergroupEventMessage<SupergroupEvent>
 @PreviewFeature
@@ -210,9 +212,9 @@ inline fun Message.asGroupMessage(): GroupMessage<MessageContent>? = this as? Gr
 @PreviewFeature
 inline fun Message.requireGroupMessage(): GroupMessage<MessageContent> = this as GroupMessage<MessageContent>
 @PreviewFeature
-inline fun Message.asMediaGroupMessage(): MediaGroupMessage? = this as? MediaGroupMessage
+inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupContent>? = this as? MediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireMediaGroupMessage(): MediaGroupMessage = this as MediaGroupMessage
+inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupContent> = this as MediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asPossiblyEditedMessage(): PossiblyEditedMessage? = this as? PossiblyEditedMessage
 @PreviewFeature
@@ -753,3 +755,163 @@ inline fun Poll.requireRegularPoll(): RegularPoll = this as RegularPoll
 inline fun Poll.asUnknownPollType(): UnknownPollType? = this as? UnknownPollType
 @PreviewFeature
 inline fun Poll.requireUnknownPollType(): UnknownPollType = this as UnknownPollType
+@PreviewFeature
+inline fun ResendableContent.asContactContent(): ContactContent? = this as? ContactContent
+@PreviewFeature
+inline fun ResendableContent.requireContactContent(): ContactContent = this as ContactContent
+@PreviewFeature
+inline fun ResendableContent.asDiceContent(): DiceContent? = this as? DiceContent
+@PreviewFeature
+inline fun ResendableContent.requireDiceContent(): DiceContent = this as DiceContent
+@PreviewFeature
+inline fun ResendableContent.asGameContent(): GameContent? = this as? GameContent
+@PreviewFeature
+inline fun ResendableContent.requireGameContent(): GameContent = this as GameContent
+@PreviewFeature
+inline fun ResendableContent.asLocationContent(): LocationContent? = this as? LocationContent
+@PreviewFeature
+inline fun ResendableContent.requireLocationContent(): LocationContent = this as LocationContent
+@PreviewFeature
+inline fun ResendableContent.asPollContent(): PollContent? = this as? PollContent
+@PreviewFeature
+inline fun ResendableContent.requirePollContent(): PollContent = this as PollContent
+@PreviewFeature
+inline fun ResendableContent.asTextContent(): TextContent? = this as? TextContent
+@PreviewFeature
+inline fun ResendableContent.requireTextContent(): TextContent = this as TextContent
+@PreviewFeature
+inline fun ResendableContent.asVenueContent(): VenueContent? = this as? VenueContent
+@PreviewFeature
+inline fun ResendableContent.requireVenueContent(): VenueContent = this as VenueContent
+@PreviewFeature
+inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupContent? = this as? AudioMediaGroupContent
+@PreviewFeature
+inline fun ResendableContent.requireAudioMediaGroupContent(): AudioMediaGroupContent = this as AudioMediaGroupContent
+@PreviewFeature
+inline fun ResendableContent.asDocumentMediaGroupContent(): DocumentMediaGroupContent? = this as? DocumentMediaGroupContent
+@PreviewFeature
+inline fun ResendableContent.requireDocumentMediaGroupContent(): DocumentMediaGroupContent = this as DocumentMediaGroupContent
+@PreviewFeature
+inline fun ResendableContent.asMediaCollectionContent(): MediaCollectionContent<TelegramMediaFile>? = this as? MediaCollectionContent<TelegramMediaFile>
+@PreviewFeature
+inline fun ResendableContent.requireMediaCollectionContent(): MediaCollectionContent<TelegramMediaFile> = this as MediaCollectionContent<TelegramMediaFile>
+@PreviewFeature
+inline fun ResendableContent.asMediaContent(): MediaContent? = this as? MediaContent
+@PreviewFeature
+inline fun ResendableContent.requireMediaContent(): MediaContent = this as MediaContent
+@PreviewFeature
+inline fun ResendableContent.asMediaGroupContent(): MediaGroupContent? = this as? MediaGroupContent
+@PreviewFeature
+inline fun ResendableContent.requireMediaGroupContent(): MediaGroupContent = this as MediaGroupContent
+@PreviewFeature
+inline fun ResendableContent.asMessageContent(): MessageContent? = this as? MessageContent
+@PreviewFeature
+inline fun ResendableContent.requireMessageContent(): MessageContent = this as MessageContent
+@PreviewFeature
+inline fun ResendableContent.asVisualMediaGroupContent(): VisualMediaGroupContent? = this as? VisualMediaGroupContent
+@PreviewFeature
+inline fun ResendableContent.requireVisualMediaGroupContent(): VisualMediaGroupContent = this as VisualMediaGroupContent
+@PreviewFeature
+inline fun ResendableContent.asAnimationContent(): AnimationContent? = this as? AnimationContent
+@PreviewFeature
+inline fun ResendableContent.requireAnimationContent(): AnimationContent = this as AnimationContent
+@PreviewFeature
+inline fun ResendableContent.asAudioContent(): AudioContent? = this as? AudioContent
+@PreviewFeature
+inline fun ResendableContent.requireAudioContent(): AudioContent = this as AudioContent
+@PreviewFeature
+inline fun ResendableContent.asDocumentContent(): DocumentContent? = this as? DocumentContent
+@PreviewFeature
+inline fun ResendableContent.requireDocumentContent(): DocumentContent = this as DocumentContent
+@PreviewFeature
+inline fun ResendableContent.asPhotoContent(): PhotoContent? = this as? PhotoContent
+@PreviewFeature
+inline fun ResendableContent.requirePhotoContent(): PhotoContent = this as PhotoContent
+@PreviewFeature
+inline fun ResendableContent.asStickerContent(): StickerContent? = this as? StickerContent
+@PreviewFeature
+inline fun ResendableContent.requireStickerContent(): StickerContent = this as StickerContent
+@PreviewFeature
+inline fun ResendableContent.asVideoContent(): VideoContent? = this as? VideoContent
+@PreviewFeature
+inline fun ResendableContent.requireVideoContent(): VideoContent = this as VideoContent
+@PreviewFeature
+inline fun ResendableContent.asVideoNoteContent(): VideoNoteContent? = this as? VideoNoteContent
+@PreviewFeature
+inline fun ResendableContent.requireVideoNoteContent(): VideoNoteContent = this as VideoNoteContent
+@PreviewFeature
+inline fun ResendableContent.asVoiceContent(): VoiceContent? = this as? VoiceContent
+@PreviewFeature
+inline fun ResendableContent.requireVoiceContent(): VoiceContent = this as VoiceContent
+@PreviewFeature
+inline fun ResendableContent.asInvoiceContent(): InvoiceContent? = this as? InvoiceContent
+@PreviewFeature
+inline fun ResendableContent.requireInvoiceContent(): InvoiceContent = this as InvoiceContent
+@PreviewFeature
+inline fun TextSource.asMultilevelTextSource(): MultilevelTextSource? = this as? MultilevelTextSource
+@PreviewFeature
+inline fun TextSource.requireMultilevelTextSource(): MultilevelTextSource = this as MultilevelTextSource
+@PreviewFeature
+inline fun TextSource.asBoldTextSource(): BoldTextSource? = this as? BoldTextSource
+@PreviewFeature
+inline fun TextSource.requireBoldTextSource(): BoldTextSource = this as BoldTextSource
+@PreviewFeature
+inline fun TextSource.asBotCommandTextSource(): BotCommandTextSource? = this as? BotCommandTextSource
+@PreviewFeature
+inline fun TextSource.requireBotCommandTextSource(): BotCommandTextSource = this as BotCommandTextSource
+@PreviewFeature
+inline fun TextSource.asCashTagTextSource(): CashTagTextSource? = this as? CashTagTextSource
+@PreviewFeature
+inline fun TextSource.requireCashTagTextSource(): CashTagTextSource = this as CashTagTextSource
+@PreviewFeature
+inline fun TextSource.asCodeTextSource(): CodeTextSource? = this as? CodeTextSource
+@PreviewFeature
+inline fun TextSource.requireCodeTextSource(): CodeTextSource = this as CodeTextSource
+@PreviewFeature
+inline fun TextSource.asEMailTextSource(): EMailTextSource? = this as? EMailTextSource
+@PreviewFeature
+inline fun TextSource.requireEMailTextSource(): EMailTextSource = this as EMailTextSource
+@PreviewFeature
+inline fun TextSource.asHashTagTextSource(): HashTagTextSource? = this as? HashTagTextSource
+@PreviewFeature
+inline fun TextSource.requireHashTagTextSource(): HashTagTextSource = this as HashTagTextSource
+@PreviewFeature
+inline fun TextSource.asItalicTextSource(): ItalicTextSource? = this as? ItalicTextSource
+@PreviewFeature
+inline fun TextSource.requireItalicTextSource(): ItalicTextSource = this as ItalicTextSource
+@PreviewFeature
+inline fun TextSource.asMentionTextSource(): MentionTextSource? = this as? MentionTextSource
+@PreviewFeature
+inline fun TextSource.requireMentionTextSource(): MentionTextSource = this as MentionTextSource
+@PreviewFeature
+inline fun TextSource.asPhoneNumberTextSource(): PhoneNumberTextSource? = this as? PhoneNumberTextSource
+@PreviewFeature
+inline fun TextSource.requirePhoneNumberTextSource(): PhoneNumberTextSource = this as PhoneNumberTextSource
+@PreviewFeature
+inline fun TextSource.asPreTextSource(): PreTextSource? = this as? PreTextSource
+@PreviewFeature
+inline fun TextSource.requirePreTextSource(): PreTextSource = this as PreTextSource
+@PreviewFeature
+inline fun TextSource.asRegularTextSource(): RegularTextSource? = this as? RegularTextSource
+@PreviewFeature
+inline fun TextSource.requireRegularTextSource(): RegularTextSource = this as RegularTextSource
+@PreviewFeature
+inline fun TextSource.asStrikethroughTextSource(): StrikethroughTextSource? = this as? StrikethroughTextSource
+@PreviewFeature
+inline fun TextSource.requireStrikethroughTextSource(): StrikethroughTextSource = this as StrikethroughTextSource
+@PreviewFeature
+inline fun TextSource.asTextLinkTextSource(): TextLinkTextSource? = this as? TextLinkTextSource
+@PreviewFeature
+inline fun TextSource.requireTextLinkTextSource(): TextLinkTextSource = this as TextLinkTextSource
+@PreviewFeature
+inline fun TextSource.asTextMentionTextSource(): TextMentionTextSource? = this as? TextMentionTextSource
+@PreviewFeature
+inline fun TextSource.requireTextMentionTextSource(): TextMentionTextSource = this as TextMentionTextSource
+@PreviewFeature
+inline fun TextSource.asURLTextSource(): URLTextSource? = this as? URLTextSource
+@PreviewFeature
+inline fun TextSource.requireURLTextSource(): URLTextSource = this as URLTextSource
+@PreviewFeature
+inline fun TextSource.asUnderlineTextSource(): UnderlineTextSource? = this as? UnderlineTextSource
+@PreviewFeature
+inline fun TextSource.requireUnderlineTextSource(): UnderlineTextSource = this as UnderlineTextSource

@@ -1,10 +1,8 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
 import dev.inmo.tgbotapi.CommonAbstracts.*
-import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
-import dev.inmo.tgbotapi.utils.internal.mentionMarkdown
-import dev.inmo.tgbotapi.utils.internal.mentionMarkdownV2
 
 private val String.withoutCommercialAt
     get() = if (startsWith("@")) {

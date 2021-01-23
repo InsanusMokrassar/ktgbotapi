@@ -148,8 +148,3 @@ internal fun MultilevelTextSource.hashTagHTML(): String = optionalPrefix("#") + 
 
 internal fun MultilevelTextSource.phoneMarkdownV2(): String = subsources.joinSubSourcesMarkdownV2()
 internal fun MultilevelTextSource.phoneHTML(): String = subsources.joinSubSourcesHtml()
-
-
-internal fun MultilevelTextSource.commandMarkdownV2(): String = optionalPrefix("/") + subsources.joinSubSourcesMarkdownV2()
-internal fun MultilevelTextSource.commandHTML(): String = optionalPrefix("/") + subsources.joinSubSourcesHtml()
-

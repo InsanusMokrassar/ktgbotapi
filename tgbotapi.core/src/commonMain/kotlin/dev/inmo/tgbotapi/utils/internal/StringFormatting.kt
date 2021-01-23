@@ -99,12 +99,10 @@ private inline fun String.hashTag(adapt: String.() -> String): String = if (star
 }
 
 internal fun String.textMentionMarkdown(userId: UserId): String = linkMarkdown(userId.link)
-internal fun String.textMentionMarkdownV2(userId: UserId): String = linkMarkdownV2(userId.link)
 
 internal fun String.mentionMarkdown(): String = mention(String::toMarkdown)
 
 internal fun String.hashTagMarkdown(): String = hashTag(String::toMarkdown)
-internal fun String.hashTagHTML(): String = hashTag(String::toHtml)
 
 internal fun String.phoneMarkdown(): String = toMarkdown()
 
@@ -135,14 +133,6 @@ internal infix fun Pair<String, String>.link(parseMode: ParseMode): String = whe
     is Markdown -> first.linkMarkdown(second)
     is MarkdownV2 -> first.linkMarkdownV2(second)
 }
-
-
-internal infix fun String.command(parseMode: ParseMode): String = when (parseMode) {
-    is HTML -> commandHTML()
-    is Markdown -> commandMarkdown()
-    is MarkdownV2 -> commandMarkdownV2()
-}
-
 
 internal infix fun String.underline(parseMode: ParseMode): String = when (parseMode) {
     is HTML -> underlineHTML()

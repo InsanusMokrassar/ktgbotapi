@@ -62,12 +62,6 @@ val inlineQueryAnswerResultsLimit = 0 .. 50
 val customTitleLength = 0 .. 16
 
 val dartsCubeAndBowlingDiceResultLimit = 1 .. 6
-@Deprecated("Renamed", ReplaceWith("dartsCubeAndBowlingDiceResultLimit", "dev.inmo.tgbotapi.types.dartsCubeAndBowlingDiceResultLimit"))
-val dartsAndCubeDiceResultLimit
-    get() = dartsCubeAndBowlingDiceResultLimit
-@Deprecated("Renamed", ReplaceWith("dartsCubeAndBowlingDiceResultLimit", "dev.inmo.tgbotapi.types.dartsCubeAndBowlingDiceResultLimit"))
-val diceResultLimit
-    get() = dartsCubeAndBowlingDiceResultLimit
 val basketballAndFootballDiceResultLimit = 1 .. 5
 val slotMachineDiceResultLimit = 1 .. 64
 
@@ -363,3 +357,25 @@ const val forceField = "force"
 
 const val regularPollType = "regular"
 const val quizPollType = "quiz"
+
+const val dataField = "data"
+const val credentialsField = "credentials"
+const val hashField = "hash"
+const val translationField = "translation"
+const val translationFileField = "translation_file"
+const val fileField = "file"
+const val filesField = "files"
+const val translationFilesField = "translation_files"
+const val frontSideField = "front_side"
+const val reverseSideField = "reverse_side"
+const val selfieField = "selfie"
+const val secretField = "secret"
+
+const val errorsField = "errors"
+const val sourceField = "source"
+const val fieldNameField = "field_name"
+const val dataHashField = "data_hash"
+const val fileHashField = "file_hash"
+const val fileHashesField = "file_hashes"
+const val messageField = "message"
+const val unspecifiedField = "unspecified"

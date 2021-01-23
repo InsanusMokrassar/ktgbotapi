@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.requests.GetUpdates
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.Response
-import dev.inmo.tgbotapi.types.RetryAfterError
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
@@ -14,7 +13,6 @@ import io.ktor.client.features.timeout
 import io.ktor.client.request.*
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.ContentType
-import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 import kotlin.collections.set
 

@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.bot.exceptions
 
 import com.soywiz.klock.DateTime
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.Response
+import dev.inmo.tgbotapi.types.RetryAfterError
 import io.ktor.utils.io.errors.IOException
 
 fun newRequestException(

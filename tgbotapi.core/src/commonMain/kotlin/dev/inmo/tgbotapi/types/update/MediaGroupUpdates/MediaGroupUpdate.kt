@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.update.MediaGroupUpdates
 
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
 import dev.inmo.tgbotapi.types.update.abstracts.*
 
 /**
@@ -13,11 +14,11 @@ import dev.inmo.tgbotapi.types.update.abstracts.*
 interface MediaGroupUpdate : Update
 
 interface SentMediaGroupUpdate: MediaGroupUpdate {
-    override val data: List<MediaGroupMessage>
+    override val data: List<MediaGroupMessage<MediaGroupContent>>
     val origins: List<BaseMessageUpdate>
 }
 
 interface EditMediaGroupUpdate : BaseEditMessageUpdate, MediaGroupUpdate {
-    override val data: MediaGroupMessage
+    override val data: MediaGroupMessage<MediaGroupContent>
     val origin: BaseMessageUpdate
 }
