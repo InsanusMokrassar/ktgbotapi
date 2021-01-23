@@ -2,6 +2,8 @@
 
 package dev.inmo.tgbotapi.types.passport
 
+import dev.inmo.micro_utils.crypto.MD5
+import dev.inmo.micro_utils.crypto.md5
 import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
@@ -12,6 +14,9 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
+
+val ByteArray.passportFileHash: MD5
+    get() = md5()
 
 @Serializable(PassportElementErrorSerializer::class)
 sealed class PassportElementError {

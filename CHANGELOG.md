@@ -6,7 +6,7 @@
 
 * `Common`:
     * `Version`:
-        * `MicroUtils`: `0.4.16` -> `0.4.19`
+        * `MicroUtils`: `0.4.16` -> `0.4.21`
 * `Core`:
     * **BREAKING CHANGE** Now `MediaGroupMessage` have a generic type related to `MediaGroupContent`
         * Methods and types related to `MediaGroupMessage` have been modified according to their meanings

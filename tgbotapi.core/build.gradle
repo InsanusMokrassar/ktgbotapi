@@ -46,6 +46,7 @@ kotlin {
                 api "com.soywiz.korlibs.klock:klock:$klock_version"
                 api "com.benasher44:uuid:$uuid_version"
 
+                api "dev.inmo:micro_utils.crypto:$micro_utils_version"
                 api "dev.inmo:micro_utils.coroutines:$micro_utils_version"
                 api "dev.inmo:micro_utils.serialization.base64:$micro_utils_version"
                 api "dev.inmo:micro_utils.serialization.encapsulator:$micro_utils_version"
