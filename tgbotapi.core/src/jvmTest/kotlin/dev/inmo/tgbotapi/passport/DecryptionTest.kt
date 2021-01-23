@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.passport
 
 import dev.inmo.micro_utils.crypto.decodeBase64
-import dev.inmo.tgbotapi.types.passport.EncryptedAndBase64EncodedData
-import dev.inmo.tgbotapi.utils.passport.DecryptionContext
+import dev.inmo.tgbotapi.utils.passport.Decryptor
+import dev.inmo.tgbotapi.utils.passport.doWithDecryptor
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -44,7 +44,7 @@ class DecryptionTest {
 
     @Test
     fun testThatDecryptionIsWorkingCorrectly() {
-        DecryptionContext(privateKey).apply {
+        doWithDecryptor(privateKey) {
             val decrypted = encryptedLoremIpsum.decodeBase64().decrypt().decodeToString()
             assertEquals(inputText, decrypted)
         }

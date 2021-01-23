@@ -71,11 +71,6 @@ kotlin {
                 api "javax.activation:activation:$javax_activation_version"
             }
         }
-        jsMain {
-            dependencies {
-                api npm("crypto", "${crypto_version}")
-            }
-        }
         jvmTest {
             dependencies {
                 implementation kotlin('test-junit')

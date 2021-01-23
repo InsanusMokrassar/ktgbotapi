@@ -4,14 +4,15 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.DownloadFile
 import dev.inmo.tgbotapi.requests.get.GetFile
 import dev.inmo.tgbotapi.types.passport.encrypted_data.PassportFile
+import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.WithData
+import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
+import kotlinx.serialization.json.JsonObject
 
-expect class DecryptionContext(
-    key: String
-) {
+interface Decryptor {
     fun ByteArray.decrypt(): ByteArray
 }
 
-suspend fun DecryptionContext.decrypt(
+suspend fun Decryptor.decrypt(
     file: PassportFile,
     bot: TelegramBot
 ): ByteArray {
@@ -23,3 +24,9 @@ suspend fun DecryptionContext.decrypt(
         )
     ).decrypt()
 }
+fun Decryptor.decryptData(
+    data: WithData
+) = nonstrictJsonFormat.decodeFromString(
+    JsonObject.serializer(),
+    data.data.encodeToByteArray().decrypt().decodeToString()
+)
