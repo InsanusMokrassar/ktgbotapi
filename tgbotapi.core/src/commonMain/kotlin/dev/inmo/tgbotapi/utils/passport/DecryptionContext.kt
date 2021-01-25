@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.utils.passport
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.DownloadFile
 import dev.inmo.tgbotapi.requests.get.GetFile
+import dev.inmo.tgbotapi.types.passport.EncryptedCredentials
 import dev.inmo.tgbotapi.types.passport.encrypted_data.PassportFile
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.WithData
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
@@ -25,7 +26,7 @@ suspend fun Decryptor.decrypt(
     ).decrypt()
 }
 fun Decryptor.decryptData(
-    data: WithData
+    data: EncryptedCredentials
 ) = nonstrictJsonFormat.decodeFromString(
     JsonObject.serializer(),
     data.data.encodeToByteArray().decrypt().decodeToString()

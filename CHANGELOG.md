@@ -19,6 +19,8 @@
     * `onVisualMediaGroup` now is just an alternative to `onVisualGallery`
     * `command` and `onCommand` expectations has been added for commands `String` variant
     * New extensions `BehaviourContext#oneOf`, `BehaviourContext#parallel` and `Deferred<T>#withAction`
+* `API`:
+    * **PASSPORT** New extensions `TelegramBot#setPassportDataErrors`
 
 ## 0.31.0
 
