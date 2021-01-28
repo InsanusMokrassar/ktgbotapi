@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.passport.encrypted_data
 
-import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
+import dev.inmo.micro_utils.serialization.base64.Base64BytesToFromStringSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.EncryptedData
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
@@ -13,7 +13,7 @@ sealed class TranslatableIDDocument : WithData, WithFrontSide, WithReverseSide, 
 @Serializable
 data class DriverLicense(
     @SerialName(dataField)
-    @Serializable(Base64StringSerializer::class)
+    @Serializable(Base64BytesToFromStringSerializer::class)
     override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile? = null,
@@ -24,14 +24,14 @@ data class DriverLicense(
     @SerialName(translationField)
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
-    @Serializable(Base64StringSerializer::class)
-    override val hash: String
+    @Serializable(Base64BytesToFromStringSerializer::class)
+    override val hash: PassportElementHash
 ) : TranslatableIDDocument()
 
 @Serializable
 data class IdentityCard(
     @SerialName(dataField)
-    @Serializable(Base64StringSerializer::class)
+    @Serializable(Base64BytesToFromStringSerializer::class)
     override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile? = null,
@@ -42,6 +42,6 @@ data class IdentityCard(
     @SerialName(translationField)
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
-    @Serializable(Base64StringSerializer::class)
-    override val hash: String
+    @Serializable(Base64BytesToFromStringSerializer::class)
+    override val hash: PassportElementHash
 ) : TranslatableIDDocument()

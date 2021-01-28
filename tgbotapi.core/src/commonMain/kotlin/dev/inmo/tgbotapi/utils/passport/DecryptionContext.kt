@@ -29,5 +29,5 @@ fun Decryptor.decryptData(
     data: EncryptedCredentials
 ) = nonstrictJsonFormat.decodeFromString(
     JsonObject.serializer(),
-    data.data.encodeToByteArray().decrypt().decodeToString()
+    data.data.decrypt().decodeToString()
 )

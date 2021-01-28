@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.passport.encrypted_data
 
-import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
+import dev.inmo.micro_utils.serialization.base64.Base64BytesToFromStringSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.EncryptedData
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
@@ -13,7 +13,7 @@ sealed class Passport : WithData, WithFrontSide, WithSelfie, Translatable
 @Serializable
 data class CommonPassport(
     @SerialName(dataField)
-    @Serializable(Base64StringSerializer::class)
+    @Serializable(Base64BytesToFromStringSerializer::class)
     override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile? = null,
@@ -22,13 +22,13 @@ data class CommonPassport(
     @SerialName(translationField)
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
-    @Serializable(Base64StringSerializer::class)
-    override val hash: String
+    @Serializable(Base64BytesToFromStringSerializer::class)
+    override val hash: PassportElementHash
 ) : Passport()
 @Serializable
 data class InternalPassport(
     @SerialName(dataField)
-    @Serializable(Base64StringSerializer::class)
+    @Serializable(Base64BytesToFromStringSerializer::class)
     override val data: EncryptedData,
     @SerialName(frontSideField)
     override val frontSide: PassportFile? = null,
@@ -37,6 +37,6 @@ data class InternalPassport(
     @SerialName(translationField)
     override val translations: List<PassportFile> = emptyList(),
     @SerialName(hashField)
-    @Serializable(Base64StringSerializer::class)
-    override val hash: String
+    @Serializable(Base64BytesToFromStringSerializer::class)
+    override val hash: PassportElementHash
 ) : Passport()

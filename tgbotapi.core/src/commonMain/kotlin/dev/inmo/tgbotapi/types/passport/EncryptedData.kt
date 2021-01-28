@@ -1,23 +1,23 @@
 package dev.inmo.tgbotapi.types.passport
 
-import dev.inmo.micro_utils.serialization.base64.Base64StringSerializer
+import dev.inmo.micro_utils.crypto.SourceBytes
+import dev.inmo.micro_utils.serialization.base64.Base64BytesToFromStringSerializer
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-typealias EncryptedAndBase64EncodedData = String
-typealias EncryptedByBotPublicKeyData = String
-typealias EncryptedData = String
+typealias EncryptedByBotPublicKeyData = SourceBytes
+typealias EncryptedData = SourceBytes
 
 @Serializable
 data class EncryptedCredentials(
     @SerialName(dataField)
-    @Serializable(Base64StringSerializer::class)
+    @Serializable(Base64BytesToFromStringSerializer::class)
     val data: EncryptedData,
     @SerialName(hashField)
-    @Serializable(Base64StringSerializer::class)
-    val hash: String,
+    @Serializable(Base64BytesToFromStringSerializer::class)
+    val hash: SourceBytes,
     @SerialName(secretField)
-    @Serializable(Base64StringSerializer::class)
+    @Serializable(Base64BytesToFromStringSerializer::class)
     val secret: EncryptedByBotPublicKeyData
 )

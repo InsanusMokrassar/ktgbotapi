@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.passport.encrypted_data
 
+import dev.inmo.micro_utils.crypto.decodeBase64
 import dev.inmo.micro_utils.serialization.encapsulator.Encapsulator
 import dev.inmo.tgbotapi.types.hashField
 import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement
@@ -45,7 +46,7 @@ object EncryptedElementSerializer : KSerializer<EncryptedPassportElement> {
             encryptedElementsClassesByTypes[type] ?.serializer ?.let { deserializer ->
                 nonstrictJsonFormat.decodeFromJsonElement(deserializer, json)
             }
-        } ?: UnknownEncryptedPassportElement(json, json[hashField] ?.jsonPrimitive ?.content ?: "")
+        } ?: UnknownEncryptedPassportElement(json, json[hashField] ?.jsonPrimitive ?.content ?.decodeBase64() ?: byteArrayOf())
     }
 
     override fun serialize(encoder: Encoder, value: EncryptedPassportElement) {

@@ -18,7 +18,7 @@ class PKCS8Decryptor (key: String): Decryptor {
     private val chunkSize: Int = privateKey.modulus.bitLength() / 8
 
     override fun ByteArray.decrypt(): ByteArray {
-        return Cipher.getInstance("RSA/ECB/PKCS1Padding").run {
+        return Cipher.getInstance("RSA/ECB/OAEPWITHSHA-256ANDMGF1PADDING").run {
             init(Cipher.DECRYPT_MODE, privateKey)
             (0 until size step chunkSize).flatMap {
                 val firstIndex = it
