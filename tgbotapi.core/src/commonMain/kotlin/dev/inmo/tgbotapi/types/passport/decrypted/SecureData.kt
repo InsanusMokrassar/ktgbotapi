@@ -9,7 +9,7 @@ data class SecureData(
     @SerialName(personalDetailsField)
     val personalDetails: PersonalDetailsSecureValue? = null,
     @SerialName(passportField)
-    val passport: PassportSecureValue? = null,
+    val passport: CommonPassportSecureValue? = null,
     @SerialName(internalPassportField)
     val internalPassport: InternalPassportSecureValue? = null,
     @SerialName(driverLicenseField)
@@ -26,4 +26,17 @@ data class SecureData(
     val passportRegistration: PassportRegistrationSecureValue? = null,
     @SerialName(temporaryRegistrationField)
     val temporaryRegistration: TemporalRegistrationSecureValue? = null,
-)
+) {
+    val allCredentials by lazy {
+        (personalDetails ?.credentials ?: emptyList()) +
+        (passport ?.credentials ?: emptyList()) +
+        (internalPassport ?.credentials ?: emptyList()) +
+        (driverLicense ?.credentials ?: emptyList()) +
+        (identityCard ?.credentials ?: emptyList()) +
+        (utilityBill ?.credentials ?: emptyList()) +
+        (bankStatement ?.credentials ?: emptyList()) +
+        (rentalAgreement ?.credentials ?: emptyList()) +
+        (passportRegistration ?.credentials ?: emptyList()) +
+        (temporaryRegistration ?.credentials ?: emptyList())
+    }
+}

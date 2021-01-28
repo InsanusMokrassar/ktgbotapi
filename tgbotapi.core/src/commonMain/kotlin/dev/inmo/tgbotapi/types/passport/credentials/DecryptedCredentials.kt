@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class DecryptedCredentials(
     @SerialName(secureDataField)
-    val secureData: List<SecureData>,
+    val secureData: SecureData,
     @SerialName(nonceField)
     val nonce: String
 )
