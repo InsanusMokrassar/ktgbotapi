@@ -2,7 +2,8 @@ package dev.inmo.tgbotapi.types.passport
 
 import dev.inmo.tgbotapi.types.credentialsField
 import dev.inmo.tgbotapi.types.dataField
-import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement
+import dev.inmo.tgbotapi.types.passport.credentials.EncryptedCredentials
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
