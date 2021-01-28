@@ -8,6 +8,7 @@
     * `Version`:
         * `MicroUtils`: `0.4.16` -> `0.4.23`
         * `Klock`: `0.2.3` -> `0.2.4`
+        * `Ktor`: `1.5.0` -> `1.5.1`
 * `Core`:
     * **BREAKING CHANGE** Now `MediaGroupMessage` have a generic type related to `MediaGroupContent`
         * Methods and types related to `MediaGroupMessage` have been modified according to their meanings
