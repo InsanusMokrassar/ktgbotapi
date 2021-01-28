@@ -3,9 +3,8 @@ package dev.inmo.tgbotapi.utils.passport
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.DownloadFile
 import dev.inmo.tgbotapi.requests.get.GetFile
-import dev.inmo.tgbotapi.types.passport.EncryptedCredentials
-import dev.inmo.tgbotapi.types.passport.encrypted_data.PassportFile
-import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.WithData
+import dev.inmo.tgbotapi.types.passport.credentials.EncryptedCredentials
+import dev.inmo.tgbotapi.types.passport.encrypted.PassportFile
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.json.JsonObject
 

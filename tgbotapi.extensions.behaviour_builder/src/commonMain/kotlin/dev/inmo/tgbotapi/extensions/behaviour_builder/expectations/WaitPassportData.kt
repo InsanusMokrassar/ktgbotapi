@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.passport.PassportData
-import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.coroutines.flow.toList
 

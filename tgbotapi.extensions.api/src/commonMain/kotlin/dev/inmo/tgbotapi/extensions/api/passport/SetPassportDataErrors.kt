@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.passport.PassportData
 import dev.inmo.tgbotapi.types.passport.PassportElementError
-import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
 import dev.inmo.tgbotapi.utils.passport.Decryptor
 
 suspend fun TelegramBot.setPassportDataErrors(

@@ -6,8 +6,8 @@ import dev.inmo.micro_utils.crypto.MD5
 import dev.inmo.micro_utils.crypto.md5
 import dev.inmo.micro_utils.serialization.base64.Base64BytesToFromStringSerializer
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
-import dev.inmo.tgbotapi.types.passport.encrypted_data.type
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
+import dev.inmo.tgbotapi.types.passport.encrypted.type
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor

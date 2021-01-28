@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.message.PassportMessage
-import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
 
 suspend inline fun <reified T : EncryptedPassportElement> BehaviourContext.onPassportMessageWith(
     includeFilterByChatInBehaviourSubContext: Boolean = true,

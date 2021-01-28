@@ -38,8 +38,8 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.passport.*
-import dev.inmo.tgbotapi.types.passport.encrypted_data.*
-import dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.*
+import dev.inmo.tgbotapi.types.passport.encrypted.*
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
