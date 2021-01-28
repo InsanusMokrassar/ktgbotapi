@@ -38,6 +38,8 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.passport.*
+import dev.inmo.tgbotapi.types.passport.decrypted.*
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.*
 import dev.inmo.tgbotapi.types.passport.encrypted.*
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
 import dev.inmo.tgbotapi.types.polls.*
@@ -314,6 +316,82 @@ inline fun EncryptedPassportElement.requireWithReverseSide(): WithReverseSide = 
 inline fun EncryptedPassportElement.asWithSelfie(): WithSelfie? = this as? WithSelfie
 @PreviewFeature
 inline fun EncryptedPassportElement.requireWithSelfie(): WithSelfie = this as WithSelfie
+@PreviewFeature
+inline fun SecureValue.asAddressSecureValue(): AddressSecureValue? = this as? AddressSecureValue
+@PreviewFeature
+inline fun SecureValue.requireAddressSecureValue(): AddressSecureValue = this as AddressSecureValue
+@PreviewFeature
+inline fun SecureValue.asBankStatementSecureValue(): BankStatementSecureValue? = this as? BankStatementSecureValue
+@PreviewFeature
+inline fun SecureValue.requireBankStatementSecureValue(): BankStatementSecureValue = this as BankStatementSecureValue
+@PreviewFeature
+inline fun SecureValue.asCommonPassportSecureValue(): CommonPassportSecureValue? = this as? CommonPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.requireCommonPassportSecureValue(): CommonPassportSecureValue = this as CommonPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asDriverLicenseSecureValue(): DriverLicenseSecureValue? = this as? DriverLicenseSecureValue
+@PreviewFeature
+inline fun SecureValue.requireDriverLicenseSecureValue(): DriverLicenseSecureValue = this as DriverLicenseSecureValue
+@PreviewFeature
+inline fun SecureValue.asIdentityCardSecureValue(): IdentityCardSecureValue? = this as? IdentityCardSecureValue
+@PreviewFeature
+inline fun SecureValue.requireIdentityCardSecureValue(): IdentityCardSecureValue = this as IdentityCardSecureValue
+@PreviewFeature
+inline fun SecureValue.asIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue? = this as? IdentityWithReverseSideSecureValue
+@PreviewFeature
+inline fun SecureValue.requireIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue = this as IdentityWithReverseSideSecureValue
+@PreviewFeature
+inline fun SecureValue.asInternalPassportSecureValue(): InternalPassportSecureValue? = this as? InternalPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.requireInternalPassportSecureValue(): InternalPassportSecureValue = this as InternalPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asOtherDocumentsSecureValue(): OtherDocumentsSecureValue? = this as? OtherDocumentsSecureValue
+@PreviewFeature
+inline fun SecureValue.requireOtherDocumentsSecureValue(): OtherDocumentsSecureValue = this as OtherDocumentsSecureValue
+@PreviewFeature
+inline fun SecureValue.asPassportRegistrationSecureValue(): PassportRegistrationSecureValue? = this as? PassportRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePassportRegistrationSecureValue(): PassportRegistrationSecureValue = this as PassportRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.asPassportSecureValue(): PassportSecureValue? = this as? PassportSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePassportSecureValue(): PassportSecureValue = this as PassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asPersonalDetailsSecureValue(): PersonalDetailsSecureValue? = this as? PersonalDetailsSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePersonalDetailsSecureValue(): PersonalDetailsSecureValue = this as PersonalDetailsSecureValue
+@PreviewFeature
+inline fun SecureValue.asRentalAgreementSecureValue(): RentalAgreementSecureValue? = this as? RentalAgreementSecureValue
+@PreviewFeature
+inline fun SecureValue.requireRentalAgreementSecureValue(): RentalAgreementSecureValue = this as RentalAgreementSecureValue
+@PreviewFeature
+inline fun SecureValue.asTemporalRegistrationSecureValue(): TemporalRegistrationSecureValue? = this as? TemporalRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.requireTemporalRegistrationSecureValue(): TemporalRegistrationSecureValue = this as TemporalRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.asUtilityBillSecureValue(): UtilityBillSecureValue? = this as? UtilityBillSecureValue
+@PreviewFeature
+inline fun SecureValue.requireUtilityBillSecureValue(): UtilityBillSecureValue = this as UtilityBillSecureValue
+@PreviewFeature
+inline fun SecureValue.asSecureValueIdentity(): SecureValueIdentity? = this as? SecureValueIdentity
+@PreviewFeature
+inline fun SecureValue.requireSecureValueIdentity(): SecureValueIdentity = this as SecureValueIdentity
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithData(): SecureValueWithData? = this as? SecureValueWithData
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithData(): SecureValueWithData = this as SecureValueWithData
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithFiles(): SecureValueWithFiles? = this as? SecureValueWithFiles
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithFiles(): SecureValueWithFiles = this as SecureValueWithFiles
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithReverseSide(): SecureValueWithReverseSide? = this as? SecureValueWithReverseSide
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithReverseSide(): SecureValueWithReverseSide = this as SecureValueWithReverseSide
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithTranslations(): SecureValueWithTranslations? = this as? SecureValueWithTranslations
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithTranslations(): SecureValueWithTranslations = this as SecureValueWithTranslations
 @PreviewFeature
 inline fun Message.asAnonymousGroupMessageImpl(): AnonymousGroupMessageImpl<MessageContent>? = this as? AnonymousGroupMessageImpl<MessageContent>
 @PreviewFeature
