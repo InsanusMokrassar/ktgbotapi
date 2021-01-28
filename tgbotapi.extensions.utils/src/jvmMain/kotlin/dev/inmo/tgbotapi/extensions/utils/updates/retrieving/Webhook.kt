@@ -34,9 +34,10 @@ import java.util.concurrent.Executors
 fun Route.includeWebhookHandlingInRoute(
     scope: CoroutineScope,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
+    mediaGroupsDebounceTimeMillis: Long = 1000L,
     block: UpdateReceiver<Update>
 ) {
-    val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block)
+    val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block, mediaGroupsDebounceTimeMillis)
     post {
         safely(
             exceptionsHandler ?: {}
@@ -56,10 +57,12 @@ fun Route.includeWebhookHandlingInRoute(
 fun Route.includeWebhookHandlingInRouteWithFlows(
     scope: CoroutineScope,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
+    mediaGroupsDebounceTimeMillis: Long = 1000L,
     block: FlowsUpdatesFilter.() -> Unit
 ) = includeWebhookHandlingInRoute(
     scope,
     exceptionsHandler,
+    mediaGroupsDebounceTimeMillis,
     flowsUpdatesFilter(block = block).asUpdateReceiver
 )
 
@@ -83,6 +86,7 @@ fun startListenWebhooks(
     listenRoute: String? = null,
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
+    mediaGroupsDebounceTimeMillis: Long = 1000L,
     block: UpdateReceiver<Update>
 ): ApplicationEngine {
     val env = applicationEngineEnvironment {
@@ -90,8 +94,8 @@ fun startListenWebhooks(
         module {
             routing {
                 listenRoute ?.also {
-                    createRouteFromPath(it).includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
-                } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, block)
+                    createRouteFromPath(it).includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
+                } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
             }
         }
         privateKeyConfig ?.let {
@@ -137,10 +141,11 @@ suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     listenRoute: String = "/",
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
+    mediaGroupsDebounceTimeMillis: Long = 1000L,
     block: UpdateReceiver<Update>
 ): ApplicationEngine = try {
     execute(setWebhookRequest)
-    startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, block)
+    startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, mediaGroupsDebounceTimeMillis, block)
 } catch (e: Exception) {
     throw e
 }
