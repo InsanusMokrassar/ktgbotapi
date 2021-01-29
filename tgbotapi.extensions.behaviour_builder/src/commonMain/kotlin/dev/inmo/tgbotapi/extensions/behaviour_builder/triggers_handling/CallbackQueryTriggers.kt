@@ -1,18 +1,12 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
-import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.CallbackQuery.*
-import dev.inmo.tgbotapi.types.message.ChatEvents.*
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
-import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
-import kotlinx.coroutines.flow.filter
 
 internal suspend inline fun <reified T : CallbackQuery> BehaviourContext.onCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
@@ -27,19 +21,15 @@ internal suspend inline fun <reified T : CallbackQuery> BehaviourContext.onCallb
         }
     }.let(::listOfNotNull)
 }.subscribeSafelyWithoutExceptions(scope) { triggerQuery ->
-    val (jobToCancel, scenario) = if (includeFilterByChatInBehaviourSubContext) {
-        val subFilter = FlowsUpdatesFilter()
-        val subBehaviourContext = copy(flowsUpdatesFilter = subFilter)
-
-        flowsUpdatesFilter.allUpdatesFlow.filter {
-            val chat = it.sourceChat() ?: return@filter false
-            chat.id.chatId == triggerQuery.user.id.chatId
-        }.subscribeSafelyWithoutExceptions(scope, subFilter.asUpdateReceiver) to subBehaviourContext
-    } else {
-        null to this
+    doInSubContextWithUpdatesFilter(
+        updatesFilter = if (includeFilterByChatInBehaviourSubContext) {
+            { it.sourceChat() ?.id ?.chatId == triggerQuery.user.id.chatId }
+        } else {
+            null
+        }
+    ) {
+        scenarioReceiver(triggerQuery)
     }
-    safelyWithoutExceptions { scenario.scenarioReceiver(triggerQuery) }
-    jobToCancel ?.cancel()
 }
 
 

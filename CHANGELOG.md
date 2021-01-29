@@ -1,5 +1,61 @@
 # TelegramBotAPI changelog
 
+## 0.32.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.16` -> `0.4.23`
+        * `Klock`: `0.2.3` -> `0.2.4`
+        * `Ktor`: `1.5.0` -> `1.5.1`
+* `Core`:
+    * **BREAKING CHANGE** Now `MediaGroupMessage` have a generic type related to `MediaGroupContent`
+        * Methods and types related to `MediaGroupMessage` have been modified according to their meanings
+    * **Important Change** `FlowsUpdatesFilter` now is an interface. Old class has been renamed to
+      `DefaultFlowsUpdatesFilter` and factory method `FlowsUpdatesFilter` has been added
+    * **PASSPORT** Full support of `Telegram Passport API`
+        * `PassportData`
+        * All variants of `EncryptedPassportElement`
+        * All variants of `SecureValue`
+        * All variants of `PassportElementError`
+        * New request `SetPassportDataErrors`
+        * `Credentials`:
+            * `EncryptedCredentials`
+            * `DeryptedCredentials`
+            * `EndDataCredentials`
+* `Behaviour Builder`:
+    * Trigger and expectation extensions for `MessageContent` (`onContentMessage` and `waitContentMessage`)
+    * `onMediaGroup` has been replaced
+    * `waitMediaGroup` has been added
+    * `onVisualMediaGroup` now is just an alternative to `onVisualGallery`
+    * `command` and `onCommand` expectations has been added for commands `String` variant
+    * New extensions `BehaviourContext#oneOf`, `BehaviourContext#parallel` and `Deferred<T>#withAction`
+    * Several renames:
+        * `waitAudioMediaGroup` -> `waitAudioMediaGroupContent`
+        * `waitDocumentMediaGroup` -> `waitDocumentMediaGroupContent`
+        * `waitMediaGroup` -> `waitAnyMediaGroupContent`
+        * `waitVisualMediaGroup` -> `waitVisualMediaGroupContent`
+    * New extensions `BehaviourContext#waitPassportMessagesWith` and `BehaviourContext#waitAnyPassportMessages`
+    * New extensions `BehaviourContext#onPassportMessage` and `BehaviourContext#onPassportMessageWith`
+* `Utils`:
+    * New `ClassCasts` for
+        * `Message`
+        * **PASSPORT** `EncryptedPassportElement`
+        * **PASSPORT** `PassportElementError`
+        * **PASSPORT** `SecureValue`
+    * Several tools for decryption have been added:
+        * `AESDecryptor` is available for `JVM` platform
+        * Extensions `EncryptedCredentials#decryptWithPKCS8PrivateKey` are available for `JVM`
+        platform
+        * Extensions `EndDataCredentials#decryptData` and `FileCredentials#decryptFile` have been added
+        * Several extensions `createDecryptor`
+        * Several extensions `doInDecryptionContextWithPKCS8Key`
+    * New extension `Flow#passportMessages`
+    * In most of webhook setting up functions/methods now available parameter `mediaGroupsDebounceTimeMillis`
+* `API`:
+    * **PASSPORT** New extensions `TelegramBot#setPassportDataErrors`
+
 ## 0.31.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**

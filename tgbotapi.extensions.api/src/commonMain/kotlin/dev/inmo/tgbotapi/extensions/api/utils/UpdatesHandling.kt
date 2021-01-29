@@ -31,7 +31,7 @@ fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
         launch {
             for (update in updatesChannel) {
                 when (val data = update.data) {
-                    is MediaGroupMessage -> mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
+                    is MediaGroupMessage<*> -> mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
                     else -> output(update)
                 }
             }

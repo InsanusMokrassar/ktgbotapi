@@ -2,6 +2,7 @@
 
 package dev.inmo.tgbotapi.extensions.utils.updates
 
+import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.Flow
@@ -24,6 +25,11 @@ fun <T : BaseSentMessageUpdate> Flow<T>.asCommonMessagesFlow() = mapNotNull {
 @Suppress("NOTHING_TO_INLINE")
 inline fun <T : BaseSentMessageUpdate> Flow<T>.chatEvents() = mapNotNull {
     it.data as? ChatEventMessage<*>
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun <T : BaseSentMessageUpdate> Flow<T>.passportMessages() = mapNotNull {
+    it.data as? PassportMessage
 }
 
 /**

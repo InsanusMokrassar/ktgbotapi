@@ -7,15 +7,47 @@ import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.flow.*
 
-@Suppress("EXPERIMENTAL_API_USAGE", "unused")
-class FlowsUpdatesFilter(
+interface FlowsUpdatesFilter : UpdatesFilter {
+    override val allowedUpdates: List<String>
+        get() = ALL_UPDATES_LIST
+    val allUpdatesFlow: Flow<Update>
+    val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update>
+
+    val messageFlow: Flow<MessageUpdate>
+    val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate>
+    val editedMessageFlow: Flow<EditMessageUpdate>
+    val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate>
+    val channelPostFlow: Flow<ChannelPostUpdate>
+    val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate>
+    val editedChannelPostFlow: Flow<EditChannelPostUpdate>
+    val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate>
+    val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate>
+    val inlineQueryFlow: Flow<InlineQueryUpdate>
+    val callbackQueryFlow: Flow<CallbackQueryUpdate>
+    val shippingQueryFlow: Flow<ShippingQueryUpdate>
+    val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate>
+    val pollFlow: Flow<PollUpdate>
+    val pollAnswerFlow: Flow<PollAnswerUpdate>
+    val unknownUpdateTypeFlow: Flow<UnknownUpdate>
+}
+
+/**
+ * Creates [DefaultFlowsUpdatesFilter]
+ */
+@Suppress("FunctionName")
+fun FlowsUpdatesFilter(
     broadcastChannelsSize: Int = 100
-): UpdatesFilter {
+) = DefaultFlowsUpdatesFilter(broadcastChannelsSize)
+
+@Suppress("EXPERIMENTAL_API_USAGE", "unused")
+class DefaultFlowsUpdatesFilter(
+    broadcastChannelsSize: Int = 100
+): FlowsUpdatesFilter {
     private val updatesSharedFlow = MutableSharedFlow<Update>(extraBufferCapacity = broadcastChannelsSize)
     @Suppress("MemberVisibilityCanBePrivate")
-    val allUpdatesFlow: Flow<Update> = updatesSharedFlow.asSharedFlow()
+    override val allUpdatesFlow: Flow<Update> = updatesSharedFlow.asSharedFlow()
     @Suppress("MemberVisibilityCanBePrivate")
-    val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update> = updatesSharedFlow.flatMapConcat {
+    override val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update> = allUpdatesFlow.flatMapConcat {
         when (it) {
             is SentMediaGroupUpdate -> it.origins.asFlow()
             is EditMediaGroupUpdate -> flowOf(it.origin)
@@ -23,26 +55,24 @@ class FlowsUpdatesFilter(
         }
     }
 
-    override val allowedUpdates: List<String>
-        get() = ALL_UPDATES_LIST
     override val asUpdateReceiver: UpdateReceiver<Update> = {
         updatesSharedFlow.emit(it)
     }
 
-    val messageFlow: Flow<MessageUpdate> = allUpdatesFlow.filterIsInstance()
-    val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
-    val editedMessageFlow: Flow<EditMessageUpdate> = allUpdatesFlow.filterIsInstance()
-    val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
-    val channelPostFlow: Flow<ChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
-    val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
-    val editedChannelPostFlow: Flow<EditChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
-    val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
-    val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate> = allUpdatesFlow.filterIsInstance()
-    val inlineQueryFlow: Flow<InlineQueryUpdate> = allUpdatesFlow.filterIsInstance()
-    val callbackQueryFlow: Flow<CallbackQueryUpdate> = allUpdatesFlow.filterIsInstance()
-    val shippingQueryFlow: Flow<ShippingQueryUpdate> = allUpdatesFlow.filterIsInstance()
-    val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = allUpdatesFlow.filterIsInstance()
-    val pollFlow: Flow<PollUpdate> = allUpdatesFlow.filterIsInstance()
-    val pollAnswerFlow: Flow<PollAnswerUpdate> = allUpdatesFlow.filterIsInstance()
-    val unknownUpdateTypeFlow: Flow<UnknownUpdate> = allUpdatesFlow.filterIsInstance()
+    override val messageFlow: Flow<MessageUpdate> = allUpdatesFlow.filterIsInstance()
+    override val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    override val editedMessageFlow: Flow<EditMessageUpdate> = allUpdatesFlow.filterIsInstance()
+    override val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    override val channelPostFlow: Flow<ChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
+    override val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    override val editedChannelPostFlow: Flow<EditChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
+    override val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    override val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate> = allUpdatesFlow.filterIsInstance()
+    override val inlineQueryFlow: Flow<InlineQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    override val callbackQueryFlow: Flow<CallbackQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    override val shippingQueryFlow: Flow<ShippingQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    override val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    override val pollFlow: Flow<PollUpdate> = allUpdatesFlow.filterIsInstance()
+    override val pollAnswerFlow: Flow<PollAnswerUpdate> = allUpdatesFlow.filterIsInstance()
+    override val unknownUpdateTypeFlow: Flow<UnknownUpdate> = allUpdatesFlow.filterIsInstance()
 }

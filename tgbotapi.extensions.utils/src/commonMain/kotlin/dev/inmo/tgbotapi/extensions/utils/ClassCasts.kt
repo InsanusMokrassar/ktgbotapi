@@ -37,6 +37,11 @@ import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.types.passport.*
+import dev.inmo.tgbotapi.types.passport.decrypted.*
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.*
+import dev.inmo.tgbotapi.types.passport.encrypted.*
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
@@ -156,21 +161,273 @@ inline fun CallbackQuery.asUnknownCallbackQueryType(): UnknownCallbackQueryType?
 @PreviewFeature
 inline fun CallbackQuery.requireUnknownCallbackQueryType(): UnknownCallbackQueryType = this as UnknownCallbackQueryType
 @PreviewFeature
+inline fun PassportElementError.asPassportElementErrorDataField(): PassportElementErrorDataField? = this as? PassportElementErrorDataField
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorDataField(): PassportElementErrorDataField = this as PassportElementErrorDataField
+@PreviewFeature
+inline fun PassportElementError.asPassportElementErrorFile(): PassportElementErrorFile? = this as? PassportElementErrorFile
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorFile(): PassportElementErrorFile = this as PassportElementErrorFile
+@PreviewFeature
+inline fun PassportElementError.asPassportElementErrorFiles(): PassportElementErrorFiles? = this as? PassportElementErrorFiles
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorFiles(): PassportElementErrorFiles = this as PassportElementErrorFiles
+@PreviewFeature
+inline fun PassportElementError.asPassportElementErrorFrontSide(): PassportElementErrorFrontSide? = this as? PassportElementErrorFrontSide
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorFrontSide(): PassportElementErrorFrontSide = this as PassportElementErrorFrontSide
+@PreviewFeature
+inline fun PassportElementError.asPassportElementErrorReverseSide(): PassportElementErrorReverseSide? = this as? PassportElementErrorReverseSide
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorReverseSide(): PassportElementErrorReverseSide = this as PassportElementErrorReverseSide
+@PreviewFeature
+inline fun PassportElementError.asPassportElementErrorSelfie(): PassportElementErrorSelfie? = this as? PassportElementErrorSelfie
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorSelfie(): PassportElementErrorSelfie = this as PassportElementErrorSelfie
+@PreviewFeature
+inline fun PassportElementError.asPassportElementErrorTranslationFile(): PassportElementErrorTranslationFile? = this as? PassportElementErrorTranslationFile
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorTranslationFile(): PassportElementErrorTranslationFile = this as PassportElementErrorTranslationFile
+@PreviewFeature
+inline fun PassportElementError.asPassportElementErrorTranslationFiles(): PassportElementErrorTranslationFiles? = this as? PassportElementErrorTranslationFiles
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorTranslationFiles(): PassportElementErrorTranslationFiles = this as PassportElementErrorTranslationFiles
+@PreviewFeature
+inline fun PassportElementError.asPassportElementErrorUnspecified(): PassportElementErrorUnspecified? = this as? PassportElementErrorUnspecified
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementErrorUnspecified(): PassportElementErrorUnspecified = this as PassportElementErrorUnspecified
+@PreviewFeature
+inline fun PassportElementError.asPassportElementFileError(): PassportElementFileError? = this as? PassportElementFileError
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementFileError(): PassportElementFileError = this as PassportElementFileError
+@PreviewFeature
+inline fun PassportElementError.asPassportElementFilesError(): PassportElementFilesError? = this as? PassportElementFilesError
+@PreviewFeature
+inline fun PassportElementError.requirePassportElementFilesError(): PassportElementFilesError = this as PassportElementFilesError
+@PreviewFeature
+inline fun PassportElementError.asPassportMultipleElementsError(): PassportMultipleElementsError? = this as? PassportMultipleElementsError
+@PreviewFeature
+inline fun PassportElementError.requirePassportMultipleElementsError(): PassportMultipleElementsError = this as PassportMultipleElementsError
+@PreviewFeature
+inline fun PassportElementError.asPassportSingleElementError(): PassportSingleElementError? = this as? PassportSingleElementError
+@PreviewFeature
+inline fun PassportElementError.requirePassportSingleElementError(): PassportSingleElementError = this as PassportSingleElementError
+@PreviewFeature
+inline fun PassportElementError.asUnknownPassportElementError(): UnknownPassportElementError? = this as? UnknownPassportElementError
+@PreviewFeature
+inline fun PassportElementError.requireUnknownPassportElementError(): UnknownPassportElementError = this as UnknownPassportElementError
+@PreviewFeature
+inline fun EncryptedPassportElement.asBankStatement(): BankStatement? = this as? BankStatement
+@PreviewFeature
+inline fun EncryptedPassportElement.requireBankStatement(): BankStatement = this as BankStatement
+@PreviewFeature
+inline fun EncryptedPassportElement.asCommonPassport(): CommonPassport? = this as? CommonPassport
+@PreviewFeature
+inline fun EncryptedPassportElement.requireCommonPassport(): CommonPassport = this as CommonPassport
+@PreviewFeature
+inline fun EncryptedPassportElement.asDriverLicense(): DriverLicense? = this as? DriverLicense
+@PreviewFeature
+inline fun EncryptedPassportElement.requireDriverLicense(): DriverLicense = this as DriverLicense
+@PreviewFeature
+inline fun EncryptedPassportElement.asEmail(): Email? = this as? Email
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEmail(): Email = this as Email
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedAddress(): EncryptedAddress? = this as? EncryptedAddress
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedAddress(): EncryptedAddress = this as EncryptedAddress
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPersonalDetails(): EncryptedPersonalDetails? = this as? EncryptedPersonalDetails
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPersonalDetails(): EncryptedPersonalDetails = this as EncryptedPersonalDetails
+@PreviewFeature
+inline fun EncryptedPassportElement.asIdentityCard(): IdentityCard? = this as? IdentityCard
+@PreviewFeature
+inline fun EncryptedPassportElement.requireIdentityCard(): IdentityCard = this as IdentityCard
+@PreviewFeature
+inline fun EncryptedPassportElement.asInternalPassport(): InternalPassport? = this as? InternalPassport
+@PreviewFeature
+inline fun EncryptedPassportElement.requireInternalPassport(): InternalPassport = this as InternalPassport
+@PreviewFeature
+inline fun EncryptedPassportElement.asPassport(): Passport? = this as? Passport
+@PreviewFeature
+inline fun EncryptedPassportElement.requirePassport(): Passport = this as Passport
+@PreviewFeature
+inline fun EncryptedPassportElement.asPassportRegistration(): PassportRegistration? = this as? PassportRegistration
+@PreviewFeature
+inline fun EncryptedPassportElement.requirePassportRegistration(): PassportRegistration = this as PassportRegistration
+@PreviewFeature
+inline fun EncryptedPassportElement.asPhoneNumber(): PhoneNumber? = this as? PhoneNumber
+@PreviewFeature
+inline fun EncryptedPassportElement.requirePhoneNumber(): PhoneNumber = this as PhoneNumber
+@PreviewFeature
+inline fun EncryptedPassportElement.asRentalAgreement(): RentalAgreement? = this as? RentalAgreement
+@PreviewFeature
+inline fun EncryptedPassportElement.requireRentalAgreement(): RentalAgreement = this as RentalAgreement
+@PreviewFeature
+inline fun EncryptedPassportElement.asTemporaryRegistration(): TemporaryRegistration? = this as? TemporaryRegistration
+@PreviewFeature
+inline fun EncryptedPassportElement.requireTemporaryRegistration(): TemporaryRegistration = this as TemporaryRegistration
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection? = this as? EncryptedPassportElementWithTranslatableFilesCollection
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection = this as EncryptedPassportElementWithTranslatableFilesCollection
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument? = this as? EncryptedPassportElementWithTranslatableIDDocument
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument = this as EncryptedPassportElementWithTranslatableIDDocument
+@PreviewFeature
+inline fun EncryptedPassportElement.asUtilityBill(): UtilityBill? = this as? UtilityBill
+@PreviewFeature
+inline fun EncryptedPassportElement.requireUtilityBill(): UtilityBill = this as UtilityBill
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection? = this as? EncryptedPassportElementWithFilesCollection
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection = this as EncryptedPassportElementWithFilesCollection
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable? = this as? EncryptedPassportElementTranslatable
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable = this as EncryptedPassportElementTranslatable
+@PreviewFeature
+inline fun EncryptedPassportElement.asUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement? = this as? UnknownEncryptedPassportElement
+@PreviewFeature
+inline fun EncryptedPassportElement.requireUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement = this as UnknownEncryptedPassportElement
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithData(): EncryptedPassportElementWithData? = this as? EncryptedPassportElementWithData
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithData(): EncryptedPassportElementWithData = this as EncryptedPassportElementWithData
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail? = this as? EncryptedPassportElementWithEmail
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail = this as EncryptedPassportElementWithEmail
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide? = this as? EncryptedPassportElementWithFrontSide
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide = this as EncryptedPassportElementWithFrontSide
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber? = this as? EncryptedPassportElementWithPhoneNumber
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber = this as EncryptedPassportElementWithPhoneNumber
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide? = this as? EncryptedPassportElementWithReverseSide
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide = this as EncryptedPassportElementWithReverseSide
+@PreviewFeature
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie? = this as? EncryptedPassportElementWithSelfie
+@PreviewFeature
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie = this as EncryptedPassportElementWithSelfie
+@PreviewFeature
+inline fun SecureValue.asAddressSecureValue(): AddressSecureValue? = this as? AddressSecureValue
+@PreviewFeature
+inline fun SecureValue.requireAddressSecureValue(): AddressSecureValue = this as AddressSecureValue
+@PreviewFeature
+inline fun SecureValue.asBankStatementSecureValue(): BankStatementSecureValue? = this as? BankStatementSecureValue
+@PreviewFeature
+inline fun SecureValue.requireBankStatementSecureValue(): BankStatementSecureValue = this as BankStatementSecureValue
+@PreviewFeature
+inline fun SecureValue.asCommonPassportSecureValue(): CommonPassportSecureValue? = this as? CommonPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.requireCommonPassportSecureValue(): CommonPassportSecureValue = this as CommonPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asDriverLicenseSecureValue(): DriverLicenseSecureValue? = this as? DriverLicenseSecureValue
+@PreviewFeature
+inline fun SecureValue.requireDriverLicenseSecureValue(): DriverLicenseSecureValue = this as DriverLicenseSecureValue
+@PreviewFeature
+inline fun SecureValue.asIdentityCardSecureValue(): IdentityCardSecureValue? = this as? IdentityCardSecureValue
+@PreviewFeature
+inline fun SecureValue.requireIdentityCardSecureValue(): IdentityCardSecureValue = this as IdentityCardSecureValue
+@PreviewFeature
+inline fun SecureValue.asIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue? = this as? IdentityWithReverseSideSecureValue
+@PreviewFeature
+inline fun SecureValue.requireIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue = this as IdentityWithReverseSideSecureValue
+@PreviewFeature
+inline fun SecureValue.asInternalPassportSecureValue(): InternalPassportSecureValue? = this as? InternalPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.requireInternalPassportSecureValue(): InternalPassportSecureValue = this as InternalPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asOtherDocumentsSecureValue(): OtherDocumentsSecureValue? = this as? OtherDocumentsSecureValue
+@PreviewFeature
+inline fun SecureValue.requireOtherDocumentsSecureValue(): OtherDocumentsSecureValue = this as OtherDocumentsSecureValue
+@PreviewFeature
+inline fun SecureValue.asPassportRegistrationSecureValue(): PassportRegistrationSecureValue? = this as? PassportRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePassportRegistrationSecureValue(): PassportRegistrationSecureValue = this as PassportRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.asPassportSecureValue(): PassportSecureValue? = this as? PassportSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePassportSecureValue(): PassportSecureValue = this as PassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asPersonalDetailsSecureValue(): PersonalDetailsSecureValue? = this as? PersonalDetailsSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePersonalDetailsSecureValue(): PersonalDetailsSecureValue = this as PersonalDetailsSecureValue
+@PreviewFeature
+inline fun SecureValue.asRentalAgreementSecureValue(): RentalAgreementSecureValue? = this as? RentalAgreementSecureValue
+@PreviewFeature
+inline fun SecureValue.requireRentalAgreementSecureValue(): RentalAgreementSecureValue = this as RentalAgreementSecureValue
+@PreviewFeature
+inline fun SecureValue.asTemporalRegistrationSecureValue(): TemporalRegistrationSecureValue? = this as? TemporalRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.requireTemporalRegistrationSecureValue(): TemporalRegistrationSecureValue = this as TemporalRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.asUtilityBillSecureValue(): UtilityBillSecureValue? = this as? UtilityBillSecureValue
+@PreviewFeature
+inline fun SecureValue.requireUtilityBillSecureValue(): UtilityBillSecureValue = this as UtilityBillSecureValue
+@PreviewFeature
+inline fun SecureValue.asSecureValueIdentity(): SecureValueIdentity? = this as? SecureValueIdentity
+@PreviewFeature
+inline fun SecureValue.requireSecureValueIdentity(): SecureValueIdentity = this as SecureValueIdentity
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithData(): SecureValueWithData? = this as? SecureValueWithData
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithData(): SecureValueWithData = this as SecureValueWithData
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithFiles(): SecureValueWithFiles? = this as? SecureValueWithFiles
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithFiles(): SecureValueWithFiles = this as SecureValueWithFiles
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithReverseSide(): SecureValueWithReverseSide? = this as? SecureValueWithReverseSide
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithReverseSide(): SecureValueWithReverseSide = this as SecureValueWithReverseSide
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithTranslations(): SecureValueWithTranslations? = this as? SecureValueWithTranslations
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithTranslations(): SecureValueWithTranslations = this as SecureValueWithTranslations
+@PreviewFeature
+inline fun Message.asAnonymousGroupMessageImpl(): AnonymousGroupMessageImpl<MessageContent>? = this as? AnonymousGroupMessageImpl<MessageContent>
+@PreviewFeature
+inline fun Message.requireAnonymousGroupMessageImpl(): AnonymousGroupMessageImpl<MessageContent> = this as AnonymousGroupMessageImpl<MessageContent>
+@PreviewFeature
+inline fun Message.asChannelMessageImpl(): ChannelMessageImpl<MessageContent>? = this as? ChannelMessageImpl<MessageContent>
+@PreviewFeature
+inline fun Message.requireChannelMessageImpl(): ChannelMessageImpl<MessageContent> = this as ChannelMessageImpl<MessageContent>
+@PreviewFeature
+inline fun Message.asFromChannelGroupMessageImpl(): FromChannelGroupMessageImpl<MessageContent>? = this as? FromChannelGroupMessageImpl<MessageContent>
+@PreviewFeature
+inline fun Message.requireFromChannelGroupMessageImpl(): FromChannelGroupMessageImpl<MessageContent> = this as FromChannelGroupMessageImpl<MessageContent>
+@PreviewFeature
+inline fun Message.asPassportMessage(): PassportMessage? = this as? PassportMessage
+@PreviewFeature
+inline fun Message.requirePassportMessage(): PassportMessage = this as PassportMessage
+@PreviewFeature
+inline fun Message.asPrivateMessageImpl(): PrivateMessageImpl<MessageContent>? = this as? PrivateMessageImpl<MessageContent>
+@PreviewFeature
+inline fun Message.requirePrivateMessageImpl(): PrivateMessageImpl<MessageContent> = this as PrivateMessageImpl<MessageContent>
+@PreviewFeature
 inline fun Message.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? = this as? ChannelEventMessage<ChannelEvent>
 @PreviewFeature
 inline fun Message.requireChannelEventMessage(): ChannelEventMessage<ChannelEvent> = this as ChannelEventMessage<ChannelEvent>
 @PreviewFeature
-inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage? = this as? ChannelMediaGroupMessage
+inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent>? = this as? ChannelMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage = this as ChannelMediaGroupMessage
+inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent> = this as ChannelMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent>? = this as? CommonGroupEventMessage<GroupEvent>
 @PreviewFeature
 inline fun Message.requireCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent> = this as CommonGroupEventMessage<GroupEvent>
 @PreviewFeature
-inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage? = this as? CommonMediaGroupMessage
+inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent>? = this as? CommonMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage = this as CommonMediaGroupMessage
+inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent> = this as CommonMediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent>? = this as? CommonSupergroupEventMessage<SupergroupEvent>
 @PreviewFeature
@@ -212,9 +469,9 @@ inline fun Message.asGroupMessage(): GroupMessage<MessageContent>? = this as? Gr
 @PreviewFeature
 inline fun Message.requireGroupMessage(): GroupMessage<MessageContent> = this as GroupMessage<MessageContent>
 @PreviewFeature
-inline fun Message.asMediaGroupMessage(): MediaGroupMessage? = this as? MediaGroupMessage
+inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupContent>? = this as? MediaGroupMessage<MediaGroupContent>
 @PreviewFeature
-inline fun Message.requireMediaGroupMessage(): MediaGroupMessage = this as MediaGroupMessage
+inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupContent> = this as MediaGroupMessage<MediaGroupContent>
 @PreviewFeature
 inline fun Message.asPossiblyEditedMessage(): PossiblyEditedMessage? = this as? PossiblyEditedMessage
 @PreviewFeature

@@ -8,13 +8,13 @@ import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 
-val List<CommonMessage<MediaGroupContent>>.forwardInfo: ForwardInfo?
+val List<CommonMessage<out MediaGroupContent>>.forwardInfo: ForwardInfo?
     get() = firstOrNull() ?.forwardInfo
-val List<CommonMessage<MediaGroupContent>>.replyTo: Message?
+val List<CommonMessage<out MediaGroupContent>>.replyTo: Message?
     get() = firstOrNull() ?.replyTo
-val List<CommonMessage<MediaGroupContent>>.chat: Chat?
+val List<CommonMessage<out MediaGroupContent>>.chat: Chat?
     get() = firstOrNull() ?.chat
-val List<MediaGroupMessage>.mediaGroupId: MediaGroupIdentifier?
+val List<MediaGroupMessage<*>>.mediaGroupId: MediaGroupIdentifier?
     get() = firstOrNull() ?.mediaGroupId
 
 val SentMediaGroupUpdate.forwardInfo: ForwardInfo?
@@ -30,7 +30,7 @@ fun List<CommonMessage<MediaGroupContent>>.createResend(
     chatId: ChatId,
     disableNotification: Boolean = false,
     replyTo: MessageIdentifier? = null
-) = SendMediaGroup(
+) = SendMediaGroup<MediaGroupContent>(
     chatId,
     map { it.content.toMediaGroupMemberInputMedia() },
     disableNotification,

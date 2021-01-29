@@ -26,6 +26,12 @@ suspend fun BehaviourContext.command(
     },
     scenarioReceiver
 )
+suspend fun BehaviourContext.command(
+    command: String,
+    requireOnlyCommandInMessage: Boolean = true,
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
+) = command(command.toRegex(), requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, scenarioReceiver)
 
 suspend inline fun BehaviourContext.onCommand(
     commandRegex: Regex,
@@ -33,3 +39,10 @@ suspend inline fun BehaviourContext.onCommand(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
 ): Job = command(commandRegex, requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, scenarioReceiver)
+
+suspend inline fun BehaviourContext.onCommand(
+    command: String,
+    requireOnlyCommandInMessage: Boolean = true,
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
+): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, scenarioReceiver)

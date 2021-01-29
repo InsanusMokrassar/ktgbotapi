@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.UpdateReceiver
@@ -32,7 +33,7 @@ fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
         launch {
             for (update in updatesChannel) {
                 when (val data = update.data) {
-                    is MediaGroupMessage -> mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
+                    is MediaGroupMessage<*> -> mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
                     else -> output(update)
                 }
             }
