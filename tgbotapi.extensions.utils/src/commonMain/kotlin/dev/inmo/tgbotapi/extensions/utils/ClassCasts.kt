@@ -269,53 +269,53 @@ inline fun EncryptedPassportElement.asTemporaryRegistration(): TemporaryRegistra
 @PreviewFeature
 inline fun EncryptedPassportElement.requireTemporaryRegistration(): TemporaryRegistration = this as TemporaryRegistration
 @PreviewFeature
-inline fun EncryptedPassportElement.asTranslatableFilesCollection(): TranslatableFilesCollection? = this as? TranslatableFilesCollection
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection? = this as? EncryptedPassportElementWithTranslatableFilesCollection
 @PreviewFeature
-inline fun EncryptedPassportElement.requireTranslatableFilesCollection(): TranslatableFilesCollection = this as TranslatableFilesCollection
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection = this as EncryptedPassportElementWithTranslatableFilesCollection
 @PreviewFeature
-inline fun EncryptedPassportElement.asTranslatableIDDocument(): TranslatableIDDocument? = this as? TranslatableIDDocument
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument? = this as? EncryptedPassportElementWithTranslatableIDDocument
 @PreviewFeature
-inline fun EncryptedPassportElement.requireTranslatableIDDocument(): TranslatableIDDocument = this as TranslatableIDDocument
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument = this as EncryptedPassportElementWithTranslatableIDDocument
 @PreviewFeature
 inline fun EncryptedPassportElement.asUtilityBill(): UtilityBill? = this as? UtilityBill
 @PreviewFeature
 inline fun EncryptedPassportElement.requireUtilityBill(): UtilityBill = this as UtilityBill
 @PreviewFeature
-inline fun EncryptedPassportElement.asFilesCollection(): FilesCollection? = this as? FilesCollection
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection? = this as? EncryptedPassportElementWithFilesCollection
 @PreviewFeature
-inline fun EncryptedPassportElement.requireFilesCollection(): FilesCollection = this as FilesCollection
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection = this as EncryptedPassportElementWithFilesCollection
 @PreviewFeature
-inline fun EncryptedPassportElement.asTranslatable(): Translatable? = this as? Translatable
+inline fun EncryptedPassportElement.asEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable? = this as? EncryptedPassportElementTranslatable
 @PreviewFeature
-inline fun EncryptedPassportElement.requireTranslatable(): Translatable = this as Translatable
+inline fun EncryptedPassportElement.requireEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable = this as EncryptedPassportElementTranslatable
 @PreviewFeature
 inline fun EncryptedPassportElement.asUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement? = this as? UnknownEncryptedPassportElement
 @PreviewFeature
 inline fun EncryptedPassportElement.requireUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement = this as UnknownEncryptedPassportElement
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithData(): WithData? = this as? WithData
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithData(): EncryptedPassportElementWithData? = this as? EncryptedPassportElementWithData
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithData(): WithData = this as WithData
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithData(): EncryptedPassportElementWithData = this as EncryptedPassportElementWithData
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithEmail(): WithEmail? = this as? WithEmail
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail? = this as? EncryptedPassportElementWithEmail
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithEmail(): WithEmail = this as WithEmail
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail = this as EncryptedPassportElementWithEmail
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithFrontSide(): WithFrontSide? = this as? WithFrontSide
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide? = this as? EncryptedPassportElementWithFrontSide
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithFrontSide(): WithFrontSide = this as WithFrontSide
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide = this as EncryptedPassportElementWithFrontSide
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithPhoneNumber(): WithPhoneNumber? = this as? WithPhoneNumber
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber? = this as? EncryptedPassportElementWithPhoneNumber
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithPhoneNumber(): WithPhoneNumber = this as WithPhoneNumber
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber = this as EncryptedPassportElementWithPhoneNumber
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithReverseSide(): WithReverseSide? = this as? WithReverseSide
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide? = this as? EncryptedPassportElementWithReverseSide
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithReverseSide(): WithReverseSide = this as WithReverseSide
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide = this as EncryptedPassportElementWithReverseSide
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithSelfie(): WithSelfie? = this as? WithSelfie
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie? = this as? EncryptedPassportElementWithSelfie
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithSelfie(): WithSelfie = this as WithSelfie
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie = this as EncryptedPassportElementWithSelfie
 @PreviewFeature
 inline fun SecureValue.asAddressSecureValue(): AddressSecureValue? = this as? AddressSecureValue
 @PreviewFeature

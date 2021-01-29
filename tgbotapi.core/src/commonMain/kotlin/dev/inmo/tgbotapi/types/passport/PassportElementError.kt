@@ -100,7 +100,7 @@ data class PassportElementErrorDataField(
     @Required
     override val source: String = dataField
 }
-fun WithData.createDataError(field: String, message: String) = PassportElementErrorDataField(
+fun EncryptedPassportElementWithData.createDataError(field: String, message: String) = PassportElementErrorDataField(
     type,
     field,
     hash,
@@ -121,7 +121,7 @@ data class PassportElementErrorFrontSide(
     @Required
     override val source: String = frontSideField
 }
-fun WithFrontSide.createFrontSideError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorFrontSide(
+fun EncryptedPassportElementWithFrontSide.createFrontSideError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorFrontSide(
     type,
     unencryptedFileHash,
     message
@@ -141,7 +141,7 @@ data class PassportElementErrorReverseSide(
     @Required
     override val source: String = reverseSideField
 }
-fun WithReverseSide.createReverseSideError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorReverseSide(
+fun EncryptedPassportElementWithReverseSide.createReverseSideError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorReverseSide(
     type,
     unencryptedFileHash,
     message
@@ -160,7 +160,7 @@ data class PassportElementErrorSelfie(
     @Required
     override val source: String = selfieField
 }
-fun WithSelfie.createSelfieError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorSelfie(
+fun EncryptedPassportElementWithSelfie.createSelfieError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorSelfie(
     type,
     unencryptedFileHash,
     message
@@ -181,7 +181,7 @@ data class PassportElementErrorFile(
     @Required
     override val source: String = fileField
 }
-fun FilesCollection.createFileError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorFile(
+fun EncryptedPassportElementWithFilesCollection.createFileError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorFile(
     type,
     unencryptedFileHash,
     message
@@ -200,7 +200,7 @@ data class PassportElementErrorFiles(
     @Required
     override val source: String = filesField
 }
-fun FilesCollection.createFilesError(message: String, unencryptedFileHashes: List<PassportElementHash>) = PassportElementErrorFiles(
+fun EncryptedPassportElementWithFilesCollection.createFilesError(message: String, unencryptedFileHashes: List<PassportElementHash>) = PassportElementErrorFiles(
     type,
     unencryptedFileHashes,
     message
@@ -221,7 +221,7 @@ data class PassportElementErrorTranslationFile(
     @Required
     override val source: String = translationFileField
 }
-fun Translatable.createFileError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorTranslationFile(
+fun EncryptedPassportElementTranslatable.createFileError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorTranslationFile(
     type,
     unencryptedFileHash,
     message
@@ -239,7 +239,7 @@ data class PassportElementErrorTranslationFiles(
     @Required
     override val source: String = translationFilesField
 }
-fun Translatable.createFilesError(message: String, unencryptedFileHashes: List<PassportElementHash>) = PassportElementErrorTranslationFiles(
+fun EncryptedPassportElementTranslatable.createFilesError(message: String, unencryptedFileHashes: List<PassportElementHash>) = PassportElementErrorTranslationFiles(
     type,
     unencryptedFileHashes,
     message

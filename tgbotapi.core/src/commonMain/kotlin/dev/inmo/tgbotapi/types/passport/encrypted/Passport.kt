@@ -8,7 +8,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable(EncryptedElementSerializer::class)
-sealed class Passport : WithData, WithFrontSide, WithSelfie, Translatable
+sealed class Passport : EncryptedPassportElementWithData, EncryptedPassportElementWithFrontSide, EncryptedPassportElementWithSelfie, EncryptedPassportElementTranslatable
 
 @Serializable
 data class CommonPassport(

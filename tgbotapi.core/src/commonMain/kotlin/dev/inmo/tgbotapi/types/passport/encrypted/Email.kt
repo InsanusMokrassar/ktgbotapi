@@ -4,7 +4,7 @@ import dev.inmo.micro_utils.serialization.base64.Base64BytesToFromStringSerializ
 import dev.inmo.tgbotapi.types.emailField
 import dev.inmo.tgbotapi.types.hashField
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.PassportElementHash
-import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.WithEmail
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithEmail
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -15,5 +15,4 @@ data class Email(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : WithEmail {
-}
+) : EncryptedPassportElementWithEmail
