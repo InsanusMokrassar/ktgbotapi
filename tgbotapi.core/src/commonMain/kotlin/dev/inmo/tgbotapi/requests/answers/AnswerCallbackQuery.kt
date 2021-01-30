@@ -16,7 +16,7 @@ data class AnswerCallbackQuery(
     val showAlert: Boolean? = null,
     @SerialName(urlField)
     val url: String? = null,
-    @SerialName(cachedTimeField)
+    @SerialName(cacheTimeField)
     val cachedTimeSeconds: Int? = null
 ) : SimpleRequest<Boolean> {
     override fun method(): String = "answerCallbackQuery"

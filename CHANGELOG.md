@@ -2,6 +2,9 @@
 
 ## 0.32.1
 
+* `Core`:
+    * Fix of [#272](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/272)
+
 ## 0.32.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
