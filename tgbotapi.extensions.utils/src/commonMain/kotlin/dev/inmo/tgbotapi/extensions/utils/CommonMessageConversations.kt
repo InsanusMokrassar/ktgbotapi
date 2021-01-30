@@ -5,6 +5,17 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage
 import kotlinx.coroutines.flow.*
 
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T : MessageContent> CommonMessage<*>.withContent() = if (content is T) {
+    this as CommonMessage<T>
+} else {
+    null
+}
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T : MessageContent> CommonMessage<*>.requireWithContent() = this as CommonMessage<T>
+
 /**
  * Simple factory to convert [ContentMessage] to a [CommonMessage]
  */

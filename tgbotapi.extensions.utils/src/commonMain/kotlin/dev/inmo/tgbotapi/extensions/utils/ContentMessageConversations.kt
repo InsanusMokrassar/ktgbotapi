@@ -9,6 +9,21 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 import kotlin.reflect.KClass
 
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T : MessageContent> ContentMessage<*>.withContent() = if (content is T) {
+    this as ContentMessage<T>
+} else {
+    null
+}
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T : MessageContent> ContentMessage<*>.requireWithContent() = this as ContentMessage<T>
+
+private inline fun <reified T : MessageContent> Flow<ContentMessage<*>>.withContentType() = mapNotNull {
+    it.withContent<T>()
+}
+
+@Deprecated("This method will be removed in next major update")
 fun <T : MessageContent> Flow<ContentMessage<*>>.withContentType(contentType: KClass<T>) = mapNotNull {
     if (contentType.isInstance(it.content)) {
         @Suppress("UNCHECKED_CAST")
@@ -18,19 +33,19 @@ fun <T : MessageContent> Flow<ContentMessage<*>>.withContentType(contentType: KC
     }
 }
 
-fun Flow<ContentMessage<*>>.onlyAnimationContentMessages() = withContentType(AnimationContent::class)
-fun Flow<ContentMessage<*>>.onlyAudioContentMessages() = withContentType(AudioContent::class)
-fun Flow<ContentMessage<*>>.onlyContactContentMessages() = withContentType(ContactContent::class)
-fun Flow<ContentMessage<*>>.onlyDiceContentMessages() = withContentType(DiceContent::class)
-fun Flow<ContentMessage<*>>.onlyDocumentContentMessages() = withContentType(DocumentContent::class)
-fun Flow<ContentMessage<*>>.onlyGameContentMessages() = withContentType(GameContent::class)
-fun Flow<ContentMessage<*>>.onlyInvoiceContentMessages() = withContentType(InvoiceContent::class)
-fun Flow<ContentMessage<*>>.onlyLocationContentMessages() = withContentType(LocationContent::class)
-fun Flow<ContentMessage<*>>.onlyPhotoContentMessages() = withContentType(PhotoContent::class)
-fun Flow<ContentMessage<*>>.onlyPollContentMessages() = withContentType(PollContent::class)
-fun Flow<ContentMessage<*>>.onlyStickerContentMessages() = withContentType(StickerContent::class)
-fun Flow<ContentMessage<*>>.onlyTextContentMessages() = withContentType(TextContent::class)
-fun Flow<ContentMessage<*>>.onlyVenueContentMessages() = withContentType(VenueContent::class)
-fun Flow<ContentMessage<*>>.onlyVideoContentMessages() = withContentType(VideoContent::class)
-fun Flow<ContentMessage<*>>.onlyVideoNoteContentMessages() = withContentType(VideoNoteContent::class)
-fun Flow<ContentMessage<*>>.onlyVoiceContentMessages() = withContentType(VoiceContent::class)
+fun Flow<ContentMessage<*>>.onlyAnimationContentMessages() = withContentType<AnimationContent>()
+fun Flow<ContentMessage<*>>.onlyAudioContentMessages() = withContentType<AudioContent>()
+fun Flow<ContentMessage<*>>.onlyContactContentMessages() = withContentType<ContactContent>()
+fun Flow<ContentMessage<*>>.onlyDiceContentMessages() = withContentType<DiceContent>()
+fun Flow<ContentMessage<*>>.onlyDocumentContentMessages() = withContentType<DocumentContent>()
+fun Flow<ContentMessage<*>>.onlyGameContentMessages() = withContentType<GameContent>()
+fun Flow<ContentMessage<*>>.onlyInvoiceContentMessages() = withContentType<InvoiceContent>()
+fun Flow<ContentMessage<*>>.onlyLocationContentMessages() = withContentType<LocationContent>()
+fun Flow<ContentMessage<*>>.onlyPhotoContentMessages() = withContentType<PhotoContent>()
+fun Flow<ContentMessage<*>>.onlyPollContentMessages() = withContentType<PollContent>()
+fun Flow<ContentMessage<*>>.onlyStickerContentMessages() = withContentType<StickerContent>()
+fun Flow<ContentMessage<*>>.onlyTextContentMessages() = withContentType<TextContent>()
+fun Flow<ContentMessage<*>>.onlyVenueContentMessages() = withContentType<VenueContent>()
+fun Flow<ContentMessage<*>>.onlyVideoContentMessages() = withContentType<VideoContent>()
+fun Flow<ContentMessage<*>>.onlyVideoNoteContentMessages() = withContentType<VideoNoteContent>()
+fun Flow<ContentMessage<*>>.onlyVoiceContentMessages() = withContentType<VoiceContent>()

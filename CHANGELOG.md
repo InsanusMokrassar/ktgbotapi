@@ -4,6 +4,8 @@
 
 * `Core`:
     * Fix of [#272](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/272)
+* `Utils`:
+    * Fix of [#273](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/273)
 
 ## 0.32.0
 
