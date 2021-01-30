@@ -9,16 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 import kotlin.reflect.KClass
 
-@Suppress("UNCHECKED_CAST")
-inline fun <reified T : MessageContent> ContentMessage<*>.withContent() = if (content is T) {
-    this as ContentMessage<T>
-} else {
-    null
-}
-
-@Suppress("UNCHECKED_CAST")
-inline fun <reified T : MessageContent> ContentMessage<*>.requireWithContent() = this as ContentMessage<T>
-
 private inline fun <reified T : MessageContent> Flow<ContentMessage<*>>.withContentType() = mapNotNull {
     it.withContent<T>()
 }
