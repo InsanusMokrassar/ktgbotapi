@@ -13,7 +13,7 @@ data class StopInlineMessageLiveLocation(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditReplyMessage {
-    override fun method(): String = "stopMessageLiveLocation"
+    override fun method(): String = stopMessageLiveLocationMethod
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
