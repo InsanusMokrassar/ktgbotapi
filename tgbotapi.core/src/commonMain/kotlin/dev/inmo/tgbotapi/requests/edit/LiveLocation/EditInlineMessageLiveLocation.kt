@@ -23,7 +23,7 @@ data class EditInlineMessageLiveLocation(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditReplyMessage, EditLocationMessage {
-    override fun method(): String = "editMessageLiveLocation"
+    override fun method(): String = editMessageLiveLocationMethod
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

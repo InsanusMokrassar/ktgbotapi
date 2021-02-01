@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
 private val commonResultDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<LocationContent>>()
+const val editMessageLiveLocationMethod = "editMessageLiveLocation"
 
 @Serializable
 data class EditChatMessageLiveLocation(
@@ -30,7 +31,7 @@ data class EditChatMessageLiveLocation(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<LocationContent>, EditReplyMessage, EditLocationMessage {
-    override fun method(): String = "editMessageLiveLocation"
+    override fun method(): String = editMessageLiveLocationMethod
     override val resultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>

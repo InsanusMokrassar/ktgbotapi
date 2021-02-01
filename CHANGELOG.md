@@ -1,5 +1,10 @@
 # TelegramBotAPI changelog
 
+## 0.32.2
+
+* `Core`:
+    * Fix of [#275](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/275)
+
 ## 0.32.1
 
 * `Core`:
