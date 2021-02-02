@@ -1,5 +1,10 @@
 # TelegramBotAPI changelog
 
+## 0.32.3
+
+* `Behaviour Builder`:
+    * Add expectators and waiters for inline queries
+
 ## 0.32.2
 
 * `Core`:
