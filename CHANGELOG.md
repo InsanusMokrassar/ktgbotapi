@@ -2,6 +2,10 @@
 
 ## 0.32.4
 
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.4.21` -> `1.4.30`
+
 ## 0.32.3
 
 * `Behaviour Builder`:
