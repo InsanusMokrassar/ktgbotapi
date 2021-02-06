@@ -17,7 +17,9 @@ class CommonLimiter(
     @Transient
     private val scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ) : RequestLimiter {
+    @Transient
     private val quotaSemaphore = Semaphore(lockCount)
+    @Transient
     private val counterRegeneratorJob = scope.launch {
         val regenDelay: MilliSeconds = (regenTime.toDouble() / lockCount).roundToLong()
         while (isActive) {

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
 import com.soywiz.klock.DateTime
+import com.soywiz.klock.TimeSpan
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
@@ -15,6 +16,11 @@ import dev.inmo.tgbotapi.types.polls.*
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
+
+private inline val ApproximateScheduledCloseInfo.openPeriod
+    get() = openDuration.millisecondsLong.div(1000)
+private inline val ExactScheduledCloseInfo.closeDate
+    get() = closeDateTime.unixMillisLong.div(1000)
 
 private fun checkPollInfo(
     question: String,
@@ -138,11 +144,22 @@ sealed class SendPoll : SendMessageRequest<ContentMessage<PollContent>>,
     abstract val options: List<String>
     abstract val isAnonymous: Boolean
     abstract val isClosed: Boolean
-    abstract val closeInfo: ScheduledCloseInfo?
     abstract val type: String
 
     internal abstract val openPeriod: LongSeconds?
     internal abstract val closeDate: LongSeconds?
+
+    protected val creationDate = DateTime.now()
+    open val closeInfo: ScheduledCloseInfo?
+        get() {
+            val openPeriod = openPeriod
+            val closeDate = closeDate
+            return when {
+                openPeriod != null -> openPeriod.asApproximateScheduledCloseInfo(creationDate)
+                closeDate != null -> closeDate.asExactScheduledCloseInfo
+                else -> null
+            }
+        }
 
     override fun method(): String = "sendPoll"
     override val resultDeserializer: DeserializationStrategy<ContentMessage<PollContent>>
@@ -163,8 +180,10 @@ data class SendRegularPoll(
     override val isClosed: Boolean = false,
     @SerialName(allowsMultipleAnswersField)
     val allowMultipleAnswers: Boolean = false,
-    @Transient
-    override val closeInfo: ScheduledCloseInfo? = null,
+    @SerialName(openPeriodField)
+    override val openPeriod: LongSeconds?= null,
+    @SerialName(closeDateField)
+    override val closeDate: LongSeconds?,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
@@ -178,19 +197,38 @@ data class SendRegularPoll(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
-    @SerialName(openPeriodField)
-    override val openPeriod: LongSeconds?
-        = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.millisecondsLong ?.div(1000)
-
-    @SerialName(closeDateField)
-    override val closeDate: LongSeconds?
-        = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000)
-
     init {
         checkPollInfo(question, options)
         closeInfo ?.checkSendData()
     }
 }
+
+fun SendRegularPoll(
+    chatId: ChatIdentifier,
+    question: String,
+    options: List<String>,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    allowMultipleAnswers: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = SendRegularPoll(
+    chatId,
+    question,
+    options,
+    isAnonymous,
+    isClosed,
+    allowMultipleAnswers,
+    (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
+    (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
+    disableNotification,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
 
 fun SendQuizPoll(
     chatId: ChatIdentifier,
@@ -253,6 +291,39 @@ fun SendQuizPoll(
     replyMarkup
 )
 
+internal fun SendQuizPoll(
+    chatId: ChatIdentifier,
+    question: String,
+    options: List<String>,
+    correctOptionId: Int,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    explanation: String? = null,
+    parseMode: ParseMode? = null,
+    rawEntities: List<RawMessageEntity>? = null,
+    closeInfo: ScheduledCloseInfo? = null,
+    disableNotification: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = SendQuizPoll(
+    chatId,
+    question,
+    options,
+    correctOptionId,
+    isAnonymous,
+    isClosed,
+    explanation,
+    parseMode,
+    rawEntities,
+    (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
+    (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
+    disableNotification,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
+
 @Serializable
 data class SendQuizPoll internal constructor(
     @SerialName(chatIdField)
@@ -273,8 +344,10 @@ data class SendQuizPoll internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(explanationEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
-    @Transient
-    override val closeInfo: ScheduledCloseInfo? = null,
+    @SerialName(openPeriodField)
+    override val openPeriod: LongSeconds? = null,
+    @SerialName(closeDateField)
+    override val closeDate: LongSeconds? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
@@ -290,14 +363,6 @@ data class SendQuizPoll internal constructor(
     override val entities: List<TextSource>? by lazy {
         rawEntities ?.asTextParts(explanation ?: return@lazy null) ?.justTextSources()
     }
-
-    @SerialName(openPeriodField)
-    override val openPeriod: LongSeconds?
-        = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.millisecondsLong ?.div(1000)
-
-    @SerialName(closeDateField)
-    override val closeDate: LongSeconds?
-        = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000)
 
     init {
         checkPollInfo(question, options)

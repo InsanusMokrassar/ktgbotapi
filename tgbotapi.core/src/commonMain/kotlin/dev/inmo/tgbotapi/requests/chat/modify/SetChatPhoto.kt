@@ -18,6 +18,8 @@ data class SetChatPhoto (
     override fun method(): String = "setChatPhoto"
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
+    @Transient
     override val mediaMap: Map<String, MultipartFile> = mapOf(photoField to photo)
+    @Transient
     override val paramsJson: JsonObject = toJson(serializer())
 }
