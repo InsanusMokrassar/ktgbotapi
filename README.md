@@ -1,5 +1,4 @@
-* [Participate in our common survey](https://forms.gle/q6Xf8K3fD1pPsYUw9)
-* [Participate in our new version survey](https://t.me/InMoTelegramBotAPI/68)
+[Participate in our common survey ☺](https://forms.gle/q6Xf8K3fD1pPsYUw9)
 
 # TelegramBotAPI
 
