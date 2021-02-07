@@ -7,6 +7,17 @@
         * `Kotlin`: `1.4.21` -> `1.4.30`
         * `Klock`: `2.0.4` -> `2.0.6`
         * `MicroUtils`: `0.4.23` -> `0.4.24`
+* `Core`:
+    * Renames:
+        * `ChannelMessage` -> `ChannelContentMessage`
+        * `PublicMessage` -> `PublicContentMessage`
+            * `GroupMessage` -> `GroupContentMessage`
+                * `FromChannelGroupMessage` -> `FromChannelGroupContentMessage`
+                * `AnonymousGroupMessage` -> `AnonymousGroupContentMessage`
+                * `CommonGroupMessage` -> `CommonGroupContentMessage`
+        * `PrivateMessage` -> `PrivateContentMessage`
+* `Extensions Utils`:
+    * Renames of extensions in `ClassCasts` according to changes in `Core`
 
 ## 0.32.3
 
