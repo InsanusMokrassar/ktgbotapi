@@ -1,38 +1,68 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
+import kotlinx.serialization.Serializable
 
-typealias Identifier = Long
-typealias MessageIdentifier = Long
-typealias InlineQueryIdentifier = String
-typealias UpdateIdentifier = Long
-typealias MediaGroupIdentifier = String
-typealias ForwardSignature = String
-typealias ForwardSenderName = String
-typealias AuthorSignature = ForwardSignature
-typealias CallbackQueryIdentifier = String
-typealias PaymentQueryIdentifier = String
-typealias PreCheckoutQueryId = String
-typealias ShippingQueryIdentifier = String
-typealias InvoicePayload = String
-typealias ShippingOptionIdentifier = String
-typealias StartParameter = String
-typealias InlineMessageIdentifier = String
-typealias PollIdentifier = String
-typealias StickerSetName = String
-typealias FileUniqueId = String
-typealias DiceResult = Int
-typealias FoursquareId = String
-typealias FoursquareType = String
-typealias GooglePlaceId = String
-typealias GooglePlaceType = String
+@Serializable
+value class Identifier(val id: Long)
+@Serializable
+value class MessageIdentifier(val value: Long)
+@Serializable
+value class InlineQueryIdentifier(val value: String)
+@Serializable
+value class UpdateIdentifier(val value: Long)
+@Serializable
+value class MediaGroupIdentifier(val value: String)
+@Serializable
+value class ForwardSignature(val value: String)
+@Serializable
+value class ForwardSenderName(val value: String)
+@Serializable
+value class AuthorSignature(val value: ForwardSignature)
+@Serializable
+value class CallbackQueryIdentifier(val value: String)
+@Serializable
+value class PaymentQueryIdentifier(val value: String)
+@Serializable
+value class PreCheckoutQueryId(val value: String)
+@Serializable
+value class ShippingQueryIdentifier(val value: String)
+@Serializable
+value class InvoicePayload(val value: String)
+@Serializable
+value class ShippingOptionIdentifier(val value: String)
+@Serializable
+value class StartParameter(val value: String)
+@Serializable
+value class InlineMessageIdentifier(val value: String)
+@Serializable
+value class PollIdentifier(val value: String)
+@Serializable
+value class StickerSetName(val value: String)
+@Serializable
+value class FileUniqueId(val value: String)
+@Serializable
+value class DiceResult(val value: Int)
+@Serializable
+value class FoursquareId(val value: String)
+@Serializable
+value class FoursquareType(val value: String)
+@Serializable
+value class GooglePlaceId(val value: String)
+@Serializable
+value class GooglePlaceType(val value: String)
 
-typealias Seconds = Int
-typealias MilliSeconds = Long
-typealias LongSeconds = Long
+@Serializable
+value class Seconds(val value: Int)
+@Serializable
+value class MilliSeconds(val value: Long)
+@Serializable
+value class LongSeconds(val value: Long)
 
-typealias Meters = Float
-typealias Degrees = Int
+@Serializable
+value class Meters(val value: Float)
+@Serializable
+value class Degrees(val value: Int)
 
 val degreesLimit = 1 .. 360
 val horizontalAccuracyLimit = 0F .. 1500F

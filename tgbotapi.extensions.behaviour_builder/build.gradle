@@ -32,7 +32,7 @@ kotlin {
     jvm {
         compilations.main.kotlinOptions.useIR = true
     }
-    js(BOTH) {
+    js(IR) {
         browser()
         nodejs()
     }

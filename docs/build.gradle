@@ -25,8 +25,10 @@ repositories {
 }
 
 kotlin {
-    jvm()
-    js(BOTH) {
+    jvm {
+        compilations.main.kotlinOptions.useIR = true
+    }
+    js(IR) {
         browser()
         nodejs()
     }
