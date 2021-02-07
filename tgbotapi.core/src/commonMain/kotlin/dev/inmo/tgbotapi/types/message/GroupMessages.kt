@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.chat.abstracts.GroupChat
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
-data class FromChannelGroupMessageImpl<T : MessageContent>(
+data class FromChannelGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
     override val channel: ChannelChat,
     override val messageId: MessageIdentifier,
@@ -20,9 +20,11 @@ data class FromChannelGroupMessageImpl<T : MessageContent>(
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : FromChannelGroupMessage<T>
+) : FromChannelGroupContentMessage<T>
+@Deprecated("Renamed due to ambiguity of naming", ReplaceWith("FromChannelGroupContentMessageImpl", "dev.inmo.tgbotapi.types.message.FromChannelGroupContentMessageImpl"))
+typealias FromChannelGroupMessageImpl<T> = FromChannelGroupContentMessageImpl<T>
 
-data class AnonymousGroupMessageImpl<T : MessageContent>(
+data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
     override val messageId: MessageIdentifier,
     override val date: DateTime,
@@ -33,9 +35,11 @@ data class AnonymousGroupMessageImpl<T : MessageContent>(
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : AnonymousGroupMessage<T>
+) : AnonymousGroupContentMessage<T>
+@Deprecated("Renamed due to ambiguity of naming", ReplaceWith("AnonymousGroupContentMessageImpl", "dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl"))
+typealias AnonymousGroupMessageImpl<T> = AnonymousGroupContentMessageImpl<T>
 
-data class CommonGroupMessageImpl<T : MessageContent>(
+data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
     override val messageId: MessageIdentifier,
     override val user: User,
@@ -46,4 +50,6 @@ data class CommonGroupMessageImpl<T : MessageContent>(
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?
-) : CommonGroupMessage<T>
+) : CommonGroupContentMessage<T>
+@Deprecated("Renamed due to ambiguity of naming", ReplaceWith("CommonGroupContentMessageImpl", "dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl"))
+typealias CommonGroupMessageImpl<T> = CommonGroupContentMessageImpl<T>
