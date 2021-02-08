@@ -2,6 +2,9 @@
 
 ## 0.32.5
 
+* `Core`:
+    * Add `mention` variants for user ids and receiver variants ([#294](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/294))
+
 ## 0.32.4
 
 * `Common`:
