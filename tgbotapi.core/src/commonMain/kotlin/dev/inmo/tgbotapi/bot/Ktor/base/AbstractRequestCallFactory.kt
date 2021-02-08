@@ -16,6 +16,8 @@ import io.ktor.http.ContentType
 import kotlinx.serialization.json.Json
 import kotlin.collections.set
 
+var defaultUpdateTimeoutForZeroDelay = 1000L
+
 abstract class AbstractRequestCallFactory : KtorCallFactory {
     private val methodsCache: MutableMap<String, String> = mutableMapOf()
     override suspend fun <T : Any> makeCall(
@@ -40,6 +42,11 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
                         timeout {
                             requestTimeoutMillis = customTimeoutMillis
                             socketTimeoutMillis = customTimeoutMillis
+                        }
+                    } else {
+                        timeout {
+                            requestTimeoutMillis = defaultUpdateTimeoutForZeroDelay
+                            socketTimeoutMillis = defaultUpdateTimeoutForZeroDelay
                         }
                     }
                 }

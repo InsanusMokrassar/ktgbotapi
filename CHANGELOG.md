@@ -4,6 +4,9 @@
 
 * `Core`:
     * Add `mention` variants for user ids and receiver variants ([#294](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/294))
+    * Now `AbstractRequestCallFactory` will set up one-second delay for zero timeouts in `GetUpdate` requests
+    * Several extensions for `TelegramBotAPI` like `retrieveAccumulatedUpdates` have been added as a solution for
+    [#293](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/293)
 
 ## 0.32.4
 
