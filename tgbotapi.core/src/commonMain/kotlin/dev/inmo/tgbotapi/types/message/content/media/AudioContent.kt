@@ -1,18 +1,17 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
 import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.textSources
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendAudio
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaAudio
 import dev.inmo.tgbotapi.types.InputMedia.toInputMediaAudio
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.AudioMediaGroupContent
-import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class AudioContent(
     override val media: AudioFile,
@@ -29,8 +28,7 @@ data class AudioContent(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode,
+        textSources,
         media.duration,
         media.performer,
         media.title,
@@ -42,8 +40,5 @@ data class AudioContent(
 
     override fun toMediaGroupMemberInputMedia(): InputMediaAudio = asInputMedia()
 
-    override fun asInputMedia(): InputMediaAudio = media.toInputMediaAudio(
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode
-    )
+    override fun asInputMedia(): InputMediaAudio = media.toInputMediaAudio(textSources)
 }

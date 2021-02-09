@@ -39,8 +39,9 @@ typealias HTML = HTMLParseMode
 internal object ParseModeSerializerObject : KSerializer<ParseMode> {
     override fun deserialize(decoder: Decoder): ParseMode {
         return when (decoder.decodeString()) {
-            MarkdownParseMode.parseModeName -> MarkdownParseMode
-            HTMLParseMode.parseModeName -> HTMLParseMode
+            Markdown.parseModeName -> Markdown
+            MarkdownV2.parseModeName -> MarkdownV2
+            HTML.parseModeName -> HTML
             else -> throw IllegalArgumentException("Unknown parse mode")
         }
     }

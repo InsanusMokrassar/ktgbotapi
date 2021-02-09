@@ -1,21 +1,16 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.CaptionedInput
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendAnimation
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaAnimation
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
-import dev.inmo.tgbotapi.types.ParseMode.MarkdownV2
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
-import dev.inmo.tgbotapi.utils.internal.toMarkdownV2Captions
 
 data class AnimationContent(
     override val media: AnimationFile,
@@ -33,8 +28,7 @@ data class AnimationContent(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode,
+        textSources,
         media.duration,
         media.width,
         media.height,
@@ -46,8 +40,7 @@ data class AnimationContent(
 
     override fun asInputMedia(): InputMediaAnimation = InputMediaAnimation(
         media.fileId,
-        toMarkdownV2Captions().firstOrNull(),
-        MarkdownV2,
+        textSources,
         media.width,
         media.height,
         media.duration,

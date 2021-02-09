@@ -1,18 +1,17 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
 import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.textSources
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVideo
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.toInputMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
-import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class VideoContent(
     override val media: VideoFile,
@@ -29,8 +28,7 @@ data class VideoContent(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode,
+        textSources,
         media.duration,
         media.width,
         media.height,
@@ -43,8 +41,5 @@ data class VideoContent(
 
     override fun toMediaGroupMemberInputMedia(): InputMediaVideo = asInputMedia()
 
-    override fun asInputMedia(): InputMediaVideo = media.toInputMediaVideo(
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode
-    )
+    override fun asInputMedia(): InputMediaVideo = media.toInputMediaVideo(textSources)
 }
