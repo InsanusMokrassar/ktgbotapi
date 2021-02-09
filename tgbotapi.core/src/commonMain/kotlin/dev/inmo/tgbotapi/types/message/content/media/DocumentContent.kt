@@ -1,21 +1,18 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.CaptionedInput
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaDocument
 import dev.inmo.tgbotapi.types.InputMedia.toInputMediaDocument
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.asDocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.DocumentMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class DocumentContent(
     override val media: DocumentFile,
@@ -32,8 +29,7 @@ data class DocumentContent(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode,
+        textSources,
         disableNotification,
         replyToMessageId,
         allowSendingWithoutReply,
@@ -42,10 +38,7 @@ data class DocumentContent(
 
     override fun toMediaGroupMemberInputMedia(): InputMediaDocument = asInputMedia()
 
-    override fun asInputMedia(): InputMediaDocument = media.toInputMediaDocument(
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode
-    )
+    override fun asInputMedia(): InputMediaDocument = media.toInputMediaDocument(textSources)
 }
 
 @Suppress("NOTHING_TO_INLINE")

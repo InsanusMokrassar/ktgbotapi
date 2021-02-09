@@ -53,3 +53,10 @@ fun PhotoSize.toInputMediaPhoto(
     caption,
     parseMode
 )
+
+fun PhotoSize.toInputMediaPhoto(
+    textSources: TextSourcesList = emptyList()
+): InputMediaPhoto = InputMediaPhoto(
+    fileId,
+    textSources
+)
