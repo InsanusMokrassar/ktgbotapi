@@ -35,6 +35,14 @@ typealias Markdown = MarkdownParseMode
 typealias MarkdownV2 = MarkdownV2ParseMode
 typealias HTML = HTMLParseMode
 
+/**
+ * This variable respects to default parse mode used in places like next:
+ *
+ * * [dev.inmo.tgbotapi.types.message.content.TextContent.createResends]
+ * *
+ */
+var defaultParseMode: ParseMode = HTML
+
 @Serializer(ParseMode::class)
 internal object ParseModeSerializerObject : KSerializer<ParseMode> {
     override fun deserialize(decoder: Decoder): ParseMode {
