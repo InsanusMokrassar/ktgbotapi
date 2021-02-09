@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.client.features.HttpRequestTimeoutException
+import io.ktor.utils.io.core.use
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlin.coroutines.coroutineContext
@@ -107,17 +108,19 @@ fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
     avoidCallbackQueries: Boolean = false,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
     allowedUpdates: List<String>? = null
-): Flow<Update> = flow {
+): Flow<Update> = channelFlow {
     val parentContext = kotlin.coroutines.coroutineContext
-    retrieveAccumulatedUpdates(
-        avoidInlineQueries,
-        avoidCallbackQueries,
-        CoroutineScope(parentContext),
-        exceptionsHandler,
-        allowedUpdates
-    ) {
-        withContext(parentContext) { emit(it) }
-    }.join()
+    channel.apply {
+        retrieveAccumulatedUpdates(
+            avoidInlineQueries,
+            avoidCallbackQueries,
+            CoroutineScope(parentContext),
+            exceptionsHandler,
+            allowedUpdates,
+            ::send
+        ).join()
+        close()
+    }
 }
 
 fun TelegramBot.retrieveAccumulatedUpdates(
