@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.micro_utils.common.Warning
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import kotlinx.serialization.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -17,9 +19,20 @@ data class ChatId(
     val chatId: Identifier
 ) : ChatIdentifier()
 
-
-val ChatId.link: String
-    get() = "tg://user?id=$chatId"
+/**
+ * https://core.telegram.org/bots/api#formatting-options
+ */
+@Warning("This API have restrictions in Telegram System")
+val Identifier.link: String
+    get() = "tg://user?id=$this"
+/**
+ * https://core.telegram.org/bots/api#formatting-options
+ */
+@Warning("This API have restrictions in Telegram System")
+val UserId.link: String
+    get() = chatId.link
+val User.link: String
+    get() = id.link
 
 typealias UserId = ChatId
 

@@ -7,6 +7,7 @@
     * Now `AbstractRequestCallFactory` will set up one-second delay for zero timeouts in `GetUpdate` requests
     * Several extensions for `TelegramBotAPI` like `retrieveAccumulatedUpdates` have been added as a solution for
     [#293](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/293)
+    * Links for `tg://user?id=<user_id>` have been updated ([#292](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/292))
 
 ## 0.32.4
 
