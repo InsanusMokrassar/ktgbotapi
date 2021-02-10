@@ -37,11 +37,12 @@ class ExceptionsOnlyLimiter(
     override suspend fun <T> limit(block: suspend () -> T): T {
         while (true) {
             lockState.first { !it }
+            var throwable: Throwable? = null
             val result = safely({
-                when (it) {
+                throwable = when (it) {
                     is TooMuchRequestsException -> {
                         lock(it.retryAfter.leftToRetry)
-                        Result.failure(it)
+                        it
                     }
                     is ClientRequestException -> {
                         if (it.response.status == HttpStatusCode.TooManyRequests) {
@@ -49,15 +50,16 @@ class ExceptionsOnlyLimiter(
                         } else {
                             throw it
                         }
-                        Result.failure(it)
+                        it
                     }
                     else -> throw it
                 }
+                null
             }) {
-                Result.success(block())
+                block()
             }
-            if (result.isSuccess) {
-                return result.getOrNull()!!
+            if (throwable == null) {
+                return result!!
             }
         }
     }

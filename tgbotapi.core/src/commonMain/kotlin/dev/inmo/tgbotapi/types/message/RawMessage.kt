@@ -256,7 +256,7 @@ internal data class RawMessage(
                     }
                 } ?: when (chat) {
                     is PublicChat -> when (chat) {
-                        is ChannelChat -> ChannelMessageImpl(
+                        is ChannelChat -> ChannelContentMessageImpl(
                             messageId,
                             chat,
                             content,
@@ -269,7 +269,7 @@ internal data class RawMessage(
                             author_signature
                         )
                         is GroupChat -> when (sender_chat) {
-                            is ChannelChat -> FromChannelGroupMessageImpl(
+                            is ChannelChat -> FromChannelGroupContentMessageImpl(
                                 chat,
                                 sender_chat,
                                 messageId,
@@ -282,7 +282,7 @@ internal data class RawMessage(
                                 via_bot,
                                 author_signature
                             )
-                            is GroupChat -> AnonymousGroupMessageImpl(
+                            is GroupChat -> AnonymousGroupContentMessageImpl(
                                 chat,
                                 messageId,
                                 date.asDate,
@@ -294,7 +294,7 @@ internal data class RawMessage(
                                 via_bot,
                                 author_signature
                             )
-                            null -> CommonGroupMessageImpl(
+                            null -> CommonGroupContentMessageImpl(
                                 chat,
                                 messageId,
                                 from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
@@ -310,7 +310,7 @@ internal data class RawMessage(
                         }
                         else -> error("Unknown type of public chat: $chat")
                     }
-                    is PrivateChat -> PrivateMessageImpl(
+                    is PrivateChat -> PrivateContentMessageImpl(
                         messageId,
                         from ?: error("Was detected common message, but owner (sender) of the message was not found"),
                         chat,

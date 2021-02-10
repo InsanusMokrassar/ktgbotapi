@@ -1,19 +1,18 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
 import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.textSources
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendPhoto
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaPhoto
 import dev.inmo.tgbotapi.types.InputMedia.toInputMediaPhoto
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.ParseMode.HTMLParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaCollectionContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
-import dev.inmo.tgbotapi.utils.internal.toHtmlCaptions
 
 data class PhotoContent(
     override val mediaCollection: Photo,
@@ -31,8 +30,7 @@ data class PhotoContent(
     ): Request<ContentMessage<PhotoContent>> = SendPhoto(
         chatId,
         media.fileId,
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode,
+        textSources,
         disableNotification,
         replyToMessageId,
         allowSendingWithoutReply,
@@ -41,8 +39,5 @@ data class PhotoContent(
 
     override fun toMediaGroupMemberInputMedia(): InputMediaPhoto = asInputMedia()
 
-    override fun asInputMedia(): InputMediaPhoto = media.toInputMediaPhoto(
-        toHtmlCaptions().firstOrNull(),
-        HTMLParseMode
-    )
+    override fun asInputMedia(): InputMediaPhoto = media.toInputMediaPhoto(textSources)
 }

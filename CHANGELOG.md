@@ -1,6 +1,19 @@
 # TelegramBotAPI changelog
 
+
 ## 0.33.0
+
+## 0.32.5
+
+* `Core`:
+    * Add `mention` variants for user ids and receiver variants ([#294](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/294))
+    * Now `AbstractRequestCallFactory` will set up one-second delay for zero timeouts in `GetUpdate` requests
+    * Several extensions for `TelegramBotAPI` like `retrieveAccumulatedUpdates` have been added as a solution for
+    [#293](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/293)
+    * Links for `tg://user?id=<user_id>` have been updated ([#292](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/292))
+    * All usages of captions or texts in resends and same things have been replaced with `textSources`
+    * Global `defaultParseMode` has been added ([#291](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/291))
+
 
 ## 0.32.4
 
@@ -9,6 +22,17 @@
         * `Kotlin`: `1.4.21` -> `1.4.30`
         * `Klock`: `2.0.4` -> `2.0.6`
         * `MicroUtils`: `0.4.23` -> `0.4.24`
+* `Core`:
+    * Renames:
+        * `ChannelMessage` -> `ChannelContentMessage`
+        * `PublicMessage` -> `PublicContentMessage`
+            * `GroupMessage` -> `GroupContentMessage`
+                * `FromChannelGroupMessage` -> `FromChannelGroupContentMessage`
+                * `AnonymousGroupMessage` -> `AnonymousGroupContentMessage`
+                * `CommonGroupMessage` -> `CommonGroupContentMessage`
+        * `PrivateMessage` -> `PrivateContentMessage`
+* `Extensions Utils`:
+    * Renames of extensions in `ClassCasts` according to changes in `Core`
 
 ## 0.32.3
 
