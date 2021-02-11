@@ -48,7 +48,7 @@ suspend fun main() {
       reply(it, "Hi:)")
     }
 
-    retrieveAccumulatedUpdates().join()
+    retrieveAccumulatedUpdates(this).join()
   }
 }
 ```
