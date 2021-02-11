@@ -81,13 +81,7 @@ suspend fun main() {
         SendTextMessage(
           it.chat.id,
           "Send me your name or choose \"nope\"",
-          replyMarkup = ReplyKeyboardMarkup(
-            matrix {
-              row {
-                +SimpleKeyboardButton("nope")
-              }
-            }
-          )
+          replyMarkup = nameReplyMarkup
         )
       ).first().text.takeIf { it != "nope" }
 
