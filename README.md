@@ -48,10 +48,7 @@ suspend fun main() {
       reply(it, "Hi:)")
     }
 
-    retrieveAccumulatedUpdates(
-      allowedUpdates,
-      asUpdatesReceiver
-    ).join()
+    retrieveAccumulatedUpdates().join()
   }
 }
 ```
