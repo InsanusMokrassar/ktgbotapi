@@ -2,16 +2,7 @@
 
 # TelegramBotAPI
 
-<details>
-<summary><b>I do not wanna read a lot, just give me my bot</b></summary>
-
-You can simply use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template">this template</a> (and button
-<a href="https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate">Use template</a>) to get your copy of bot and start to code.
-<p></p>
-<b>P.S. Do not forget to look into our <a href="https://bookstack.inmo.dev/books/telegrambotapi/">minidocs</a> and
-<a href="https://tgbotapi.inmo.dev/docs/index.html">kdocs</a></b>
-
-</details>
+Hello! This is a set of libraries for working with Telegram Bot API.
 
 | Common info                           | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Build Status](https://github.com/InsanusMokrassar/TelegramBotAPI/workflows/Build/badge.svg)](https://github.com/InsanusMokrassar/TelegramBotAPI/actions) [Small survey](https://forms.gle/2Hex2ynbHWHhi1KY7)|
 | -------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -22,134 +13,101 @@ You can simply use <a href="https://github.com/InsanusMokrassar/TelegramBotAPI-b
 | TelegramBotAPI Behaviour Builder Extensions status | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.behaviour_builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.behaviour_builder) |
 | TelegramBotAPI All status                 | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi)                                                             |
 
-**At the time of publication of version `0.28.0` there are errors in serialization plugins like
-[kotlinx.serialization#1004](https://github.com/Kotlin/kotlinx.serialization/issues/1004). It is possible, that both JVM
-and JS version may work improperly in some cases with `kotlinx.serialization` version `1.0.0-RC`**
+## Examples
 
-## What is it?
+### Most common example
 
-It is a complex of libraries for working with `TelegramBotAPI` in type-safe and strict way as much as it possible. In
-the list of this complex currently next projects:
+```kotlin
+suspend fun main() {
+  val bot = telegramBot(TOKEN)
 
-* [TelegramBotAPI Core](tgbotapi.core/README.md) - core of library. In fact it is independent library and can be used alone
-  without any additional library
-* [TelegramBotAPI API Extensions](tgbotapi.extensions.api/README.md) - contains extensions (mostly for
-  `RequestsExecutor`), which allows to use the core library in more pleasant way
-* [TelegramBotAPI Util Extensions](tgbotapi.extensions.utils/README.md) - contains extensions for more comfortable
-work with commands, updates and other different things
-* [TelegramBotAPI Behaviour  Builder Extensions](tgbotapi.extensions.behaviour_builder/README.md) - builder for
-  step-by-step handling of bot behaviour in more comfortable manner
-* [TelegramBotAPI](tgbotapi/README.md) - concentration of all previously mentioned libraries
-
-Most part of some specific solves or unuseful
-moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
-
-## JavaScript notes
-
-### Versions before `0.28.0`
-
-In case if you are want to use this library inside of browser, you will need additional settings (thanks for help to [Alexander Nozik](https://research.jetbrains.org/researchers/altavir)):
-
-<details>
-<summary>Gradle build script help (for versions before 0.28.0)</summary>
-
-```groovy
-dependencies {
-    /* ... */
-
-    implementation "com.github.insanusmokrassar:TelegramBotAPI:$tgbot_api_version"
-    implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-api:$tgbot_api_version" // optional
-    implementation "com.github.insanusmokrassar:TelegramBotAPI-extensions-utils:$tgbot_api_version" // optional
-
-    /* Block of dependencies for correct building in browser */
-    implementation(npm("fs"))
-    implementation(npm("bufferutil"))
-    implementation(npm("utf-8-validate"))
-    implementation(npm("abort-controller"))
-    implementation(npm("text-encoding"))
-}
-
-/* ... */
-
-kotlin {
-    target {
-        browser {
-            /* Block for fix of exception in absence of some functionality, https://github.com/ktorio/ktor/issues/1339 */
-            dceTask {
-                dceOptions {
-                    keep("ktor-ktor-io.\$\$importsForInline\$\$.ktor-ktor-io.io.ktor.utils.io")
-                }
-            }
-        }
+  bot.buildBehaviour {
+    println(getMe())
+  
+    onCommand("start") {
+      reply(it, "Hi:)")
     }
+  }.join()
 }
 ```
 
-</details>
+In this example you will see information about this bot at the moment of starting and answer with `Hi:)` every time it
+gets message `/start`
 
-## Ok, where should I start?
+### Handling only last messages
 
-![Libraries hierarchy](resources/TelegramBotAPI-libraries-hierarchy.svg)
+```kotlin
+suspend fun main() {
+  val bot = telegramBot(TOKEN)
 
-In most cases, the most simple way will be to implement [TelegramBotAPI](tgbotapi/README.md) - it contains
-all necessary tools for comfort usage of this library. If you want to exclude some libraries, you can implement just
-[TelegramBotAPI BehaviourBuilder Extensions](tgbotapi.extensions.behaviour_builder/README.md),
-[TelegramBotAPI API Extensions](tgbotapi.extensions.api/README.md),
-[TelegramBotAPI Util Extensions](tgbotapi.extensions.utils/README.md) or even
-[TelegramBotAPI Core](tgbotapi.core/README.md).
+  val flowsUpdatesFilter = FlowsUpdatesFilter()
+  bot.buildBehaviour(flowUpdatesFilter = flowsUpdatesFilter) {
+    println(getMe())
+  
+    onCommand("start") {
+      reply(it, "Hi:)")
+    }
 
-If you want to dive deeper in the core of library or develop something for it - welcome to learn more from
-[TelegramBotAPI Core](tgbotapi.core/README.md) and our [Telegram Chat](https://teleg.one/InMoTelegramBotAPIChat).
-
-Anyway, all libraries are very typical inside of them. Examples:
-
-* In `TelegramBotAPI` common request look like `requestsExecutor.execute(SomeRequest())`
-* `tgbotapi.extensions.api` typical syntax look like `requestsExecutor.someRequest()` (in most cases it would be
-better to use `bot` name instead of `requestsExecutor`)
-* `tgbotapi.extensions.utils` will look like `filter.filterBaseMessageUpdates(chatId).filterExactCommands(Regex("^.*$"))...`
-
-## Build instruction
-
-If you want to build this project or to contribute, there are several recommendations:
-
-### Build
-
-In case if you want to just build project, run next command:
-
-```bash
-./gradlew clean build
-```
-
-On windows:
-
-```
-gradlew.bat clean build
-```
-
-### Publishing for work with your version locally
-
-In case, if you want to work in your other projects using your modification (or some state) of this library,
-you can use next code:
-
-```bash
-./gradlew clean build publishToMavenLocal
-```
-
-On windows:
-
-```
-gradlew.bat clean build publishToMavenLocal
-```
-
-But you must remember, that in this case your local maven repo must be the first one from
-your project retrieving libraries:
-
-```groovy
-repositories {
-    mavenLocal() // that must be the first one
-    jcenter()
-    mavenCentral()
+    retrieveAccumulatedUpdates(
+      allowedUpdates,
+      asUpdatesReceiver
+    )
+  }.join()
 }
 ```
 
-Besides, for your own version you can change variable `library_version` in the file [gradle.properties](./gradle.properties).
+The main difference with the previous example is that bot will get only last updates (accumulated before bot launch
+and maybe some updates it got after launch)
+
+### Build a little bit more complex behaviour
+
+```kotlin
+suspend fun main() {
+  val bot = telegramBot(TOKEN)
+
+  bot.buildBehaviour {
+    println(getMe())
+
+    val nameReplyMarkup = ReplyKeyboardMarkup(
+      matrix {
+        row {
+          +SimpleKeyboardButton("nope")
+        }
+      }
+    )
+    onCommand("start") {
+      val photo = waitPhoto(
+        SendTextMessage(it.chat.id, "Send me your photo please")
+      ).first()
+
+      val name = waitText(
+        SendTextMessage(
+          it.chat.id,
+          "Send me your name or choose \"nope\"",
+          replyMarkup = ReplyKeyboardMarkup(
+            matrix {
+              row {
+                +SimpleKeyboardButton("nope")
+              }
+            }
+          )
+        )
+      ).first().text.takeIf { it != "nope" }
+
+      sendPhoto(
+        it.chat,
+        photo.mediaCollection,
+        entities = buildEntities {
+          if (name != null) regular(name) // may be collapsed up to name ?.let(::regular)
+        }
+      )
+    }
+  }.join()
+}
+```
+
+### More examples
+
+You may find examples in [this project](https://github.com/InsanusMokrassar/TelegramBotAPI-examples). Besides, you are
+always welcome in our [wiki](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/About-this-project) and
+[chat](https://t.me/InMoTelegramBotAPIChat).
