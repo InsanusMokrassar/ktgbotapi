@@ -51,8 +51,8 @@ suspend fun main() {
     retrieveAccumulatedUpdates(
       allowedUpdates,
       asUpdatesReceiver
-    )
-  }.join()
+    ).join()
+  }
 }
 ```
 
