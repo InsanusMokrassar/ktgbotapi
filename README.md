@@ -15,6 +15,16 @@ Hello! This is a set of libraries for working with Telegram Bot API.
 
 ## Examples
 
+There are several things you need to do to launch examples below:
+
+* Add `mavenCentral()` to your project repositories
+    * [Maven variant](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Including-in-your-project#pomxml)
+* Add dependency `implementation "dev.inmo:tgbotapi:$tgbotapi_version"` 
+    * Replace `tgbotapi_version` with exact version (see last one in table above) or put variable with this name in project
+    * Alternative variant for maven [here](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Including-in-your-project#telegrambotapi)
+
+More including instructions [available here](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/Including-in-your-project)
+
 ### Most common example
 
 ```kotlin
