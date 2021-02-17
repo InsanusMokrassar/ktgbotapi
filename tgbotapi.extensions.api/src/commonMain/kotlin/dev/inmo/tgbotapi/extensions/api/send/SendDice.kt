@@ -29,10 +29,18 @@ suspend fun TelegramBot.sendDice(
     replyMarkup: KeyboardMarkup? = null
 ) = sendDice(chat.id, animationType, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
-suspend inline fun TelegramBot.reply(
+suspend inline fun TelegramBot.replyWithDice(
     to: Message,
     animationType: DiceAnimationType? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendDice(to.chat, animationType, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    animationType: DiceAnimationType? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = replyWithDice(to, animationType, disableNotification, allowSendingWithoutReply, replyMarkup)
