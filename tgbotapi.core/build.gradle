@@ -108,7 +108,8 @@ kapt {
     arguments {
         arg(
             "com.github.matfax.klassindex.IndexSubclasses",
-            "dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValue",
+            "dev.inmo.tgbotapi.types.dice.DiceAnimationType",
+//            "dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValue",
 //            "dev.inmo.tgbotapi.types.message.content.abstracts.ResendableContent",
 //            "dev.inmo.tgbotapi.types.message.abstracts.Message",
 //            "dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement",

@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.actions.BotAction
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.abstracts.ResendableContent
@@ -40,25 +41,7 @@ val result = mutableMapOf<KClass<*>, Set<KClass<*>>>()
 
 
 fun main() {
-    result[SecureValue::class] = setOf(dev.inmo.tgbotapi.types.passport.decrypted.AddressSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.BankStatementSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.CommonPassportSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.DriverLicenseSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.IdentityCardSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.IdentityWithReverseSideSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.InternalPassportSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.OtherDocumentsSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.PassportRegistrationSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.PassportSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.PersonalDetailsSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.RentalAgreementSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.TemporalRegistrationSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.UtilityBillSecureValue::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueIdentity::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithData::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithFiles::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithReverseSide::class,
-        dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithTranslations::class)
+    result[DiceAnimationType::class] = KlassIndex.getSubclasses(DiceAnimationType::class).toSet()
     println("import dev.inmo.tgbotapi.utils.PreviewFeature")
     val importsToFuns = result.keys.flatMap {
         println("import ${it.qualifiedName}")
