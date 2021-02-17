@@ -2,6 +2,8 @@
 
 ## 0.32.7
 
+* `Core`:
+    * New variable `LeftRestrictionsChatPermissions` 
 * `Behaviour Builder`:
     * Now `doInSubContextWithUpdatesFilter` and `doInSubContext` will automatically subscribe on updates of parent
       `BehaviourContext`
