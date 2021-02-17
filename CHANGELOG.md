@@ -1,5 +1,17 @@
 # TelegramBotAPI changelog
 
+## 0.32.6
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.24` -> `0.4.25`
+* `Extensions API`:
+    * New extension `TelegramBot#replyWithDice`
+* `Extensions Utils`:
+    * `SlotMachineReelImages` has been renamed to `SlotMachineReelImage`
+    * `SlotMachineReelImage` got two built-in parameters: `text` and `number`
+    * New extension `String#asSlotMachineReelImage`
+
 ## 0.32.5
 
 * `Core`:
