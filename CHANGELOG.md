@@ -3,7 +3,7 @@
 ## 0.32.7
 
 * `Core`:
-    * New variable `LeftRestrictionsChatPermissions` 
+    * New variable `LeftRestrictionsChatPermissions` and `RestrictionsChatPermissions`
 * `Extensions Utils`:
     * `DiceAnimationType` class casts
 * `Behaviour Builder`:

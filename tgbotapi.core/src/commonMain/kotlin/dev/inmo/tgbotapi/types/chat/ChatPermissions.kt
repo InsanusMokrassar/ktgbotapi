@@ -34,3 +34,14 @@ val LeftRestrictionsChatPermissions = ChatPermissions(
     canInviteUsers = true,
     canPinMessages = true,
 )
+
+val RestrictionsChatPermissions = ChatPermissions(
+    canSendMessages = false,
+    canSendMediaMessages = false,
+    canSendPolls = false,
+    canSendOtherMessages = false,
+    canAddWebPagePreviews = false,
+    canChangeInfo = false,
+    canInviteUsers = false,
+    canPinMessages = false,
+)
