@@ -4,6 +4,8 @@
 
 * `Core`:
     * New variable `LeftRestrictionsChatPermissions` 
+* `Extensions Utils`:
+    * `DiceAnimationType` class casts
 * `Behaviour Builder`:
     * Now `doInSubContextWithUpdatesFilter` and `doInSubContext` will automatically subscribe on updates of parent
       `BehaviourContext`
