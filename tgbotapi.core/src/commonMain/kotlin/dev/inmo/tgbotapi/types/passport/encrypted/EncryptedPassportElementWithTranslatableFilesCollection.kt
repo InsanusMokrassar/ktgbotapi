@@ -7,7 +7,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable(EncryptedElementSerializer::class)
-sealed class TranslatableFilesCollection : Translatable, FilesCollection
+sealed class EncryptedPassportElementWithTranslatableFilesCollection : EncryptedPassportElementTranslatable, EncryptedPassportElementWithFilesCollection
 
 @Serializable
 data class UtilityBill(
@@ -18,7 +18,7 @@ data class UtilityBill(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : TranslatableFilesCollection()
+) : EncryptedPassportElementWithTranslatableFilesCollection()
 @Serializable
 data class BankStatement(
     @SerialName(filesField)
@@ -28,7 +28,7 @@ data class BankStatement(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : TranslatableFilesCollection()
+) : EncryptedPassportElementWithTranslatableFilesCollection()
 @Serializable
 data class RentalAgreement(
     @SerialName(filesField)
@@ -38,7 +38,7 @@ data class RentalAgreement(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : TranslatableFilesCollection()
+) : EncryptedPassportElementWithTranslatableFilesCollection()
 @Serializable
 data class PassportRegistration(
     @SerialName(filesField)
@@ -48,7 +48,7 @@ data class PassportRegistration(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : TranslatableFilesCollection()
+) : EncryptedPassportElementWithTranslatableFilesCollection()
 @Serializable
 data class TemporaryRegistration(
     @SerialName(filesField)
@@ -58,5 +58,5 @@ data class TemporaryRegistration(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : TranslatableFilesCollection()
+) : EncryptedPassportElementWithTranslatableFilesCollection()
 

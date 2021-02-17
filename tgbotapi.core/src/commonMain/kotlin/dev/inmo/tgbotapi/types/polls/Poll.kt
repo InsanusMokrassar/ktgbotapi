@@ -33,6 +33,9 @@ val LongSeconds.asApproximateScheduledCloseInfo
     get() = ApproximateScheduledCloseInfo(
         TimeSpan(this * 1000.0)
     )
+fun LongSeconds.asApproximateScheduledCloseInfo(startPoint: DateTime) = ApproximateScheduledCloseInfo(
+    TimeSpan(this * 1000.0), startPoint
+)
 val LongSeconds.asExactScheduledCloseInfo
     get() = ExactScheduledCloseInfo(
         DateTime(unixMillis = this * 1000.0)

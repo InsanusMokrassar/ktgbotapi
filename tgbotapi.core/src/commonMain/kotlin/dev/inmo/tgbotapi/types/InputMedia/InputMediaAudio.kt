@@ -74,3 +74,15 @@ fun AudioFile.toInputMediaAudio(
     title,
     thumb ?.fileId
 )
+
+fun AudioFile.toInputMediaAudio(
+    textSources: TextSourcesList = emptyList(),
+    title: String? = this.title
+): InputMediaAudio = InputMediaAudio(
+    fileId,
+    textSources,
+    duration,
+    performer,
+    title,
+    thumb ?.fileId
+)

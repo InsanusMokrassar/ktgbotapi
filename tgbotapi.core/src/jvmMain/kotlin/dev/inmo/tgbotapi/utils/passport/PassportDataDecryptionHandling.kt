@@ -13,3 +13,12 @@ inline fun <T> PassportData.doInDecryptionContextWithPKCS8Key(
     expectedNonce ?.let { require(expectedNonce == decryptedCredentials.nonce) }
     return decryptedCredentials.secureData.run(block)
 }
+inline fun <T> PassportData.doInDecryptionContextWithPKCS8Key(
+    pkcs8Key: String,
+    expectedNonce: String? = null,
+    crossinline block: SecureData.() -> T
+): T {
+    val decryptedCredentials = credentials.decryptWithPKCS8PrivateKey(pkcs8Key)
+    expectedNonce ?.let { require(expectedNonce == decryptedCredentials.nonce) }
+    return decryptedCredentials.secureData.run(block)
+}

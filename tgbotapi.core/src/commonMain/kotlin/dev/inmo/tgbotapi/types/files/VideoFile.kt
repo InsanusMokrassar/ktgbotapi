@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.files
 
+import dev.inmo.tgbotapi.CommonAbstracts.TextSourcesList
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
@@ -39,6 +40,18 @@ inline fun VideoFile.toInputMediaVideo(
     fileId,
     caption,
     parseMode,
+    width,
+    height,
+    duration,
+    thumb ?.fileId
+)
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun VideoFile.toInputMediaVideo(
+    textSources: TextSourcesList
+) = InputMediaVideo(
+    fileId,
+    textSources,
     width,
     height,
     duration,

@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.message.content.LocationContent
 import kotlinx.serialization.*
 
 private val commonResultDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<LocationContent>>()
+const val stopMessageLiveLocationMethod = "stopMessageLiveLocation"
 
 @Serializable
 data class StopChatMessageLiveLocation(
@@ -20,7 +21,7 @@ data class StopChatMessageLiveLocation(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<LocationContent>, EditReplyMessage {
-    override fun method(): String = "stopMessageLiveLocation"
+    override fun method(): String = stopMessageLiveLocationMethod
     override val resultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>

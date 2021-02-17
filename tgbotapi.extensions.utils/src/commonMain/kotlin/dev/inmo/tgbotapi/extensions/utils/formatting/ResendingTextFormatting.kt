@@ -8,15 +8,15 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 fun createFormattedText(
     entities: TextSourcesList,
     partLength: Int = textLength.last,
-    mode: ParseMode = MarkdownParseMode
+    mode: ParseMode = defaultParseMode
 ): List<String> {
     val texts = mutableListOf<String>()
     val textBuilder = StringBuilder(partLength)
     for (entity in entities) {
         val string = when (mode) {
-            is MarkdownParseMode -> entity.markdown
-            is MarkdownV2ParseMode -> entity.markdownV2
-            is HTMLParseMode -> entity.html
+            is Markdown -> entity.markdown
+            is MarkdownV2 -> entity.markdownV2
+            is HTML -> entity.html
         }
         if (textBuilder.length + string.length > partLength) {
             if (textBuilder.isNotEmpty()) {
@@ -49,7 +49,7 @@ fun createFormattedText(
 fun createMarkdownText(
     entities: TextSourcesList,
     partLength: Int = textLength.last
-): List<String> = createFormattedText(entities, partLength, MarkdownParseMode)
+): List<String> = createFormattedText(entities, partLength, Markdown)
 
 fun TextSourcesList.toMarkdownCaptions(): List<String> = createMarkdownText(
     this,
@@ -73,7 +73,7 @@ fun ExplainedInput.toMarkdownExplanations(): List<String> = textSources.toMarkdo
 fun createMarkdownV2Text(
     entities: TextSourcesList,
     partLength: Int = textLength.last
-): List<String> = createFormattedText(entities, partLength, MarkdownV2ParseMode)
+): List<String> = createFormattedText(entities, partLength, MarkdownV2)
 
 fun TextSourcesList.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
     this,
@@ -97,7 +97,7 @@ fun ExplainedInput.toMarkdownV2Explanations(): List<String> = textSources.toMark
 fun createHtmlText(
     entities: TextSourcesList,
     partLength: Int = textLength.last
-): List<String> = createFormattedText(entities, partLength, HTMLParseMode)
+): List<String> = createFormattedText(entities, partLength, HTML)
 
 fun TextSourcesList.toHtmlCaptions(): List<String> = createHtmlText(
     this,

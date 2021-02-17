@@ -11,9 +11,6 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 ## Compatibility
 
 This version compatible with [4th of November 2020 update of TelegramBotAPI (version 5.0)](https://core.telegram.org/bots/api#november-4-2020).
-There is only one exception of implemented functionality - Telegram Passport API, which was presented in
-[August 2018 update of TelegramBotAPI](https://core.telegram.org/bots/api-changelog#august-27-2018) update. It will be implemented
-as soon as possible.
 
 ## How to implement library?
 
@@ -149,3 +146,18 @@ Here was used `okhttp` realisation of client, but there are several others engin
 available on ktor.io site for [client](https://ktor.io/clients/http-client/engines.html) and [server](https://ktor.io/quickstart/artifacts.html)
 engines.
 
+### Passport
+
+In case you wish to work with `Telegram Passport`, currently there are several useful things, but most part of working
+with decryption and handling is available only on JVM. Next snippet contains example of data decryption on JVM platform:
+
+```kotlin
+passportMessage.passportData.doInDecryptionContextWithPKCS8Key(privateKey) {
+    val passportDataSecureValue = passport ?.data ?: return@doInDecryptionContextWithPKCS8Key
+    val passportData = (passportMessage.passportData.data.firstOrNull { it is CommonPassport } ?: return@doInDecryptionContextWithPKCS8Key) as CommonPassport
+    val decrypted = passportDataSecureValue.decrypt(
+        passportData.data
+    ) ?.decodeToString() ?: return@doInDecryptionContextWithPKCS8Key
+    println(decrypted)
+}
+```

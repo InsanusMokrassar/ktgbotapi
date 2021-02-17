@@ -1,5 +1,74 @@
 # TelegramBotAPI changelog
 
+## 0.32.7
+
+* `Core`:
+    * New variable `LeftRestrictionsChatPermissions` 
+* `Behaviour Builder`:
+    * Now `doInSubContextWithUpdatesFilter` and `doInSubContext` will automatically subscribe on updates of parent
+      `BehaviourContext`
+    * `doInSubContextWithFlowsUpdatesFilterSetup`, `doInSubContextWithUpdatesFilter` and `doInSubContext` got new
+      parameter `stopOnCompletion` to be able to disable stopping of behaviour context on finishing
+
+## 0.32.6
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.24` -> `0.4.25`
+* `Extensions API`:
+    * New extension `TelegramBot#replyWithDice`
+* `Extensions Utils`:
+    * `SlotMachineReelImages` has been renamed to `SlotMachineReelImage`
+    * `SlotMachineReelImage` got two built-in parameters: `text` and `number`
+    * New extension `String#asSlotMachineReelImage`
+
+## 0.32.5
+
+* `Core`:
+    * Add `mention` variants for user ids and receiver variants ([#294](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/294))
+    * Now `AbstractRequestCallFactory` will set up one-second delay for zero timeouts in `GetUpdate` requests
+    * Several extensions for `TelegramBotAPI` like `retrieveAccumulatedUpdates` have been added as a solution for
+    [#293](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/293)
+    * Links for `tg://user?id=<user_id>` have been updated ([#292](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/292))
+    * All usages of captions or texts in resends and same things have been replaced with `textSources`
+    * Global `defaultParseMode` has been added ([#291](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/291))
+
+## 0.32.4
+
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.4.21` -> `1.4.30`
+        * `Klock`: `2.0.4` -> `2.0.6`
+        * `MicroUtils`: `0.4.23` -> `0.4.24`
+* `Core`:
+    * Renames:
+        * `ChannelMessage` -> `ChannelContentMessage`
+        * `PublicMessage` -> `PublicContentMessage`
+            * `GroupMessage` -> `GroupContentMessage`
+                * `FromChannelGroupMessage` -> `FromChannelGroupContentMessage`
+                * `AnonymousGroupMessage` -> `AnonymousGroupContentMessage`
+                * `CommonGroupMessage` -> `CommonGroupContentMessage`
+        * `PrivateMessage` -> `PrivateContentMessage`
+* `Extensions Utils`:
+    * Renames of extensions in `ClassCasts` according to changes in `Core`
+
+## 0.32.3
+
+* `Behaviour Builder`:
+    * Add expectators and waiters for inline queries
+
+## 0.32.2
+
+* `Core`:
+    * Fix of [#275](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/275)
+
+## 0.32.1
+
+* `Core`:
+    * Fix of [#272](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/272)
+* `Utils`:
+    * Fix of [#273](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/273)
+
 ## 0.32.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
@@ -14,6 +83,16 @@
         * Methods and types related to `MediaGroupMessage` have been modified according to their meanings
     * **Important Change** `FlowsUpdatesFilter` now is an interface. Old class has been renamed to
       `DefaultFlowsUpdatesFilter` and factory method `FlowsUpdatesFilter` has been added
+    * **PASSPORT** Full support of `Telegram Passport API`
+        * `PassportData`
+        * All variants of `EncryptedPassportElement`
+        * All variants of `SecureValue`
+        * All variants of `PassportElementError`
+        * New request `SetPassportDataErrors`
+        * `Credentials`:
+            * `EncryptedCredentials`
+            * `DeryptedCredentials`
+            * `EndDataCredentials`
 * `Behaviour Builder`:
     * Trigger and expectation extensions for `MessageContent` (`onContentMessage` and `waitContentMessage`)
     * `onMediaGroup` has been replaced
@@ -21,6 +100,28 @@
     * `onVisualMediaGroup` now is just an alternative to `onVisualGallery`
     * `command` and `onCommand` expectations has been added for commands `String` variant
     * New extensions `BehaviourContext#oneOf`, `BehaviourContext#parallel` and `Deferred<T>#withAction`
+    * Several renames:
+        * `waitAudioMediaGroup` -> `waitAudioMediaGroupContent`
+        * `waitDocumentMediaGroup` -> `waitDocumentMediaGroupContent`
+        * `waitMediaGroup` -> `waitAnyMediaGroupContent`
+        * `waitVisualMediaGroup` -> `waitVisualMediaGroupContent`
+    * New extensions `BehaviourContext#waitPassportMessagesWith` and `BehaviourContext#waitAnyPassportMessages`
+    * New extensions `BehaviourContext#onPassportMessage` and `BehaviourContext#onPassportMessageWith`
+* `Utils`:
+    * New `ClassCasts` for
+        * `Message`
+        * **PASSPORT** `EncryptedPassportElement`
+        * **PASSPORT** `PassportElementError`
+        * **PASSPORT** `SecureValue`
+    * Several tools for decryption have been added:
+        * `AESDecryptor` is available for `JVM` platform
+        * Extensions `EncryptedCredentials#decryptWithPKCS8PrivateKey` are available for `JVM`
+        platform
+        * Extensions `EndDataCredentials#decryptData` and `FileCredentials#decryptFile` have been added
+        * Several extensions `createDecryptor`
+        * Several extensions `doInDecryptionContextWithPKCS8Key`
+    * New extension `Flow#passportMessages`
+    * In most of webhook setting up functions/methods now available parameter `mediaGroupsDebounceTimeMillis`
 * `API`:
     * **PASSPORT** New extensions `TelegramBot#setPassportDataErrors`
 

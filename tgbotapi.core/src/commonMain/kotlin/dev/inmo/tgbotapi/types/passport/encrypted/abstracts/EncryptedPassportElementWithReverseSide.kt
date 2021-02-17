@@ -1,9 +1,10 @@
 package dev.inmo.tgbotapi.types.passport.encrypted.abstracts
 
 import dev.inmo.tgbotapi.types.passport.encrypted.EncryptedElementSerializer
+import dev.inmo.tgbotapi.types.passport.encrypted.PassportFile
 import kotlinx.serialization.Serializable
 
 @Serializable(EncryptedElementSerializer::class)
-interface WithEmail : EncryptedPassportElement {
-    val email: String
+interface EncryptedPassportElementWithReverseSide : EncryptedPassportElement {
+    val reverseSide: PassportFile?
 }

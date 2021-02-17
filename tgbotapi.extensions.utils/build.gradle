@@ -29,7 +29,9 @@ repositories {
 }
 
 kotlin {
-    jvm()
+    jvm {
+        compilations.main.kotlinOptions.useIR = true
+    }
     js(BOTH) {
         browser()
         nodejs()
@@ -40,6 +42,24 @@ kotlin {
             dependencies {
                 implementation kotlin('stdlib')
                 api project(":tgbotapi.core")
+            }
+        }
+
+        commonTest {
+            dependencies {
+                implementation kotlin('test-common')
+                implementation kotlin('test-annotations-common')
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation kotlin('test-junit')
+            }
+        }
+        jsTest {
+            dependencies {
+                implementation kotlin('test-junit')
+                implementation kotlin('test-js')
             }
         }
     }

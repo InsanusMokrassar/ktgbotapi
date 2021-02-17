@@ -5,6 +5,6 @@ import dev.inmo.tgbotapi.types.passport.encrypted.PassportFile
 import kotlinx.serialization.Serializable
 
 @Serializable(EncryptedElementSerializer::class)
-interface WithFrontSide : EncryptedPassportElement {
-    val frontSide: PassportFile?
+interface EncryptedPassportElementTranslatable : EncryptedPassportElement {
+    val translations: List<PassportFile>
 }

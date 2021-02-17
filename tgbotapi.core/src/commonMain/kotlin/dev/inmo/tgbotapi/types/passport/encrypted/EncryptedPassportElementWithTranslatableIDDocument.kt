@@ -8,7 +8,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable(EncryptedElementSerializer::class)
-sealed class TranslatableIDDocument : WithData, WithFrontSide, WithReverseSide, WithSelfie, Translatable
+sealed class EncryptedPassportElementWithTranslatableIDDocument : EncryptedPassportElementWithData, EncryptedPassportElementWithFrontSide, EncryptedPassportElementWithReverseSide, EncryptedPassportElementWithSelfie, EncryptedPassportElementTranslatable
 
 @Serializable
 data class DriverLicense(
@@ -26,7 +26,7 @@ data class DriverLicense(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : TranslatableIDDocument()
+) : EncryptedPassportElementWithTranslatableIDDocument()
 
 @Serializable
 data class IdentityCard(
@@ -44,4 +44,4 @@ data class IdentityCard(
     @SerialName(hashField)
     @Serializable(Base64BytesToFromStringSerializer::class)
     override val hash: PassportElementHash
-) : TranslatableIDDocument()
+) : EncryptedPassportElementWithTranslatableIDDocument()

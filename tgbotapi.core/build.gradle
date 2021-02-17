@@ -31,7 +31,9 @@ repositories {
 }
 
 kotlin {
-    jvm()
+    jvm {
+        compilations.main.kotlinOptions.useIR = true
+    }
     js(BOTH) {
         browser()
         nodejs()
@@ -61,6 +63,7 @@ kotlin {
             dependencies {
                 implementation kotlin('test-common')
                 implementation kotlin('test-annotations-common')
+                implementation project(":tgbotapi.extensions.utils")
             }
         }
 

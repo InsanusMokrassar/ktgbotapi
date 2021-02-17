@@ -24,7 +24,7 @@ private suspend fun <O> BehaviourContext.waitCallbackQueries(
 }.toList().toList()
 
 
-private suspend inline fun <reified T : CallbackQuery> BehaviourContext.waitEvents(
+private suspend inline fun <reified T : CallbackQuery> BehaviourContext.waitCallbacks(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
@@ -51,52 +51,52 @@ suspend fun BehaviourContext.waitDataCallbackQuery(
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<DataCallbackQuery>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitGameShortNameCallbackQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<GameShortNameCallbackQuery>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitInlineMessageIdCallbackQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<InlineMessageIdCallbackQuery>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitInlineMessageIdDataCallbackQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<InlineMessageIdDataCallbackQuery>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitInlineMessageIdGameShortNameCallbackQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<InlineMessageIdGameShortNameCallbackQuery>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitMessageCallbackQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<MessageCallbackQuery>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitMessageDataCallbackQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<MessageDataCallbackQuery>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitMessageGameShortNameCallbackQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<MessageGameShortNameCallbackQuery>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitUnknownCallbackQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: CallbackQueryMapper<UnknownCallbackQueryType>? = null
-) = waitEvents(count, initRequest, errorFactory, filter)
+) = waitCallbacks(count, initRequest, errorFactory, filter)

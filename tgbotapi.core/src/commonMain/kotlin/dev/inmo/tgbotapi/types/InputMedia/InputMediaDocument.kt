@@ -70,3 +70,11 @@ fun DocumentFile.toInputMediaDocument(
     parseMode,
     thumb ?.fileId
 )
+
+fun DocumentFile.toInputMediaDocument(
+    textSources: TextSourcesList = emptyList()
+) = InputMediaDocument(
+    fileId,
+    textSources,
+    thumb ?.fileId
+)

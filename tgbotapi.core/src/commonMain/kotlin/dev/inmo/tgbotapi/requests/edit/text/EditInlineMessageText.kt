@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.requests.edit.text
 
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
-import dev.inmo.tgbotapi.requests.edit.media.editMessageMediaMethod
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
@@ -55,10 +54,10 @@ data class EditInlineMessageText internal constructor(
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextParts(text) ?.justTextSources()
     }
 
-    override fun method(): String = editMessageMediaMethod
+    override fun method(): String = editMessageTextMethod
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

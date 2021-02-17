@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.types.passport.encrypted.abstracts
 
-import dev.inmo.tgbotapi.types.passport.credentials.EncryptedData
 import dev.inmo.tgbotapi.types.passport.encrypted.EncryptedElementSerializer
+import dev.inmo.tgbotapi.types.passport.encrypted.PassportFile
 import kotlinx.serialization.Serializable
 
 @Serializable(EncryptedElementSerializer::class)
-interface WithData : EncryptedPassportElement {
-    val data: EncryptedData
+interface EncryptedPassportElementWithFrontSide : EncryptedPassportElement {
+    val frontSide: PassportFile?
 }

@@ -38,6 +38,8 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.passport.*
+import dev.inmo.tgbotapi.types.passport.decrypted.*
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.*
 import dev.inmo.tgbotapi.types.passport.encrypted.*
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
 import dev.inmo.tgbotapi.types.polls.*
@@ -267,73 +269,165 @@ inline fun EncryptedPassportElement.asTemporaryRegistration(): TemporaryRegistra
 @PreviewFeature
 inline fun EncryptedPassportElement.requireTemporaryRegistration(): TemporaryRegistration = this as TemporaryRegistration
 @PreviewFeature
-inline fun EncryptedPassportElement.asTranslatableFilesCollection(): TranslatableFilesCollection? = this as? TranslatableFilesCollection
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection? = this as? EncryptedPassportElementWithTranslatableFilesCollection
 @PreviewFeature
-inline fun EncryptedPassportElement.requireTranslatableFilesCollection(): TranslatableFilesCollection = this as TranslatableFilesCollection
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection = this as EncryptedPassportElementWithTranslatableFilesCollection
 @PreviewFeature
-inline fun EncryptedPassportElement.asTranslatableIDDocument(): TranslatableIDDocument? = this as? TranslatableIDDocument
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument? = this as? EncryptedPassportElementWithTranslatableIDDocument
 @PreviewFeature
-inline fun EncryptedPassportElement.requireTranslatableIDDocument(): TranslatableIDDocument = this as TranslatableIDDocument
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument = this as EncryptedPassportElementWithTranslatableIDDocument
 @PreviewFeature
 inline fun EncryptedPassportElement.asUtilityBill(): UtilityBill? = this as? UtilityBill
 @PreviewFeature
 inline fun EncryptedPassportElement.requireUtilityBill(): UtilityBill = this as UtilityBill
 @PreviewFeature
-inline fun EncryptedPassportElement.asFilesCollection(): FilesCollection? = this as? FilesCollection
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection? = this as? EncryptedPassportElementWithFilesCollection
 @PreviewFeature
-inline fun EncryptedPassportElement.requireFilesCollection(): FilesCollection = this as FilesCollection
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection = this as EncryptedPassportElementWithFilesCollection
 @PreviewFeature
-inline fun EncryptedPassportElement.asTranslatable(): Translatable? = this as? Translatable
+inline fun EncryptedPassportElement.asEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable? = this as? EncryptedPassportElementTranslatable
 @PreviewFeature
-inline fun EncryptedPassportElement.requireTranslatable(): Translatable = this as Translatable
+inline fun EncryptedPassportElement.requireEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable = this as EncryptedPassportElementTranslatable
 @PreviewFeature
 inline fun EncryptedPassportElement.asUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement? = this as? UnknownEncryptedPassportElement
 @PreviewFeature
 inline fun EncryptedPassportElement.requireUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement = this as UnknownEncryptedPassportElement
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithData(): WithData? = this as? WithData
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithData(): EncryptedPassportElementWithData? = this as? EncryptedPassportElementWithData
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithData(): WithData = this as WithData
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithData(): EncryptedPassportElementWithData = this as EncryptedPassportElementWithData
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithEmail(): WithEmail? = this as? WithEmail
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail? = this as? EncryptedPassportElementWithEmail
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithEmail(): WithEmail = this as WithEmail
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail = this as EncryptedPassportElementWithEmail
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithFrontSide(): WithFrontSide? = this as? WithFrontSide
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide? = this as? EncryptedPassportElementWithFrontSide
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithFrontSide(): WithFrontSide = this as WithFrontSide
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide = this as EncryptedPassportElementWithFrontSide
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithPhoneNumber(): WithPhoneNumber? = this as? WithPhoneNumber
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber? = this as? EncryptedPassportElementWithPhoneNumber
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithPhoneNumber(): WithPhoneNumber = this as WithPhoneNumber
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber = this as EncryptedPassportElementWithPhoneNumber
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithReverseSide(): WithReverseSide? = this as? WithReverseSide
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide? = this as? EncryptedPassportElementWithReverseSide
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithReverseSide(): WithReverseSide = this as WithReverseSide
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide = this as EncryptedPassportElementWithReverseSide
 @PreviewFeature
-inline fun EncryptedPassportElement.asWithSelfie(): WithSelfie? = this as? WithSelfie
+inline fun EncryptedPassportElement.asEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie? = this as? EncryptedPassportElementWithSelfie
 @PreviewFeature
-inline fun EncryptedPassportElement.requireWithSelfie(): WithSelfie = this as WithSelfie
+inline fun EncryptedPassportElement.requireEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie = this as EncryptedPassportElementWithSelfie
 @PreviewFeature
-inline fun Message.asAnonymousGroupMessageImpl(): AnonymousGroupMessageImpl<MessageContent>? = this as? AnonymousGroupMessageImpl<MessageContent>
+inline fun SecureValue.asAddressSecureValue(): AddressSecureValue? = this as? AddressSecureValue
 @PreviewFeature
-inline fun Message.requireAnonymousGroupMessageImpl(): AnonymousGroupMessageImpl<MessageContent> = this as AnonymousGroupMessageImpl<MessageContent>
+inline fun SecureValue.requireAddressSecureValue(): AddressSecureValue = this as AddressSecureValue
 @PreviewFeature
-inline fun Message.asChannelMessageImpl(): ChannelMessageImpl<MessageContent>? = this as? ChannelMessageImpl<MessageContent>
+inline fun SecureValue.asBankStatementSecureValue(): BankStatementSecureValue? = this as? BankStatementSecureValue
 @PreviewFeature
-inline fun Message.requireChannelMessageImpl(): ChannelMessageImpl<MessageContent> = this as ChannelMessageImpl<MessageContent>
+inline fun SecureValue.requireBankStatementSecureValue(): BankStatementSecureValue = this as BankStatementSecureValue
 @PreviewFeature
-inline fun Message.asFromChannelGroupMessageImpl(): FromChannelGroupMessageImpl<MessageContent>? = this as? FromChannelGroupMessageImpl<MessageContent>
+inline fun SecureValue.asCommonPassportSecureValue(): CommonPassportSecureValue? = this as? CommonPassportSecureValue
 @PreviewFeature
-inline fun Message.requireFromChannelGroupMessageImpl(): FromChannelGroupMessageImpl<MessageContent> = this as FromChannelGroupMessageImpl<MessageContent>
+inline fun SecureValue.requireCommonPassportSecureValue(): CommonPassportSecureValue = this as CommonPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asDriverLicenseSecureValue(): DriverLicenseSecureValue? = this as? DriverLicenseSecureValue
+@PreviewFeature
+inline fun SecureValue.requireDriverLicenseSecureValue(): DriverLicenseSecureValue = this as DriverLicenseSecureValue
+@PreviewFeature
+inline fun SecureValue.asIdentityCardSecureValue(): IdentityCardSecureValue? = this as? IdentityCardSecureValue
+@PreviewFeature
+inline fun SecureValue.requireIdentityCardSecureValue(): IdentityCardSecureValue = this as IdentityCardSecureValue
+@PreviewFeature
+inline fun SecureValue.asIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue? = this as? IdentityWithReverseSideSecureValue
+@PreviewFeature
+inline fun SecureValue.requireIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue = this as IdentityWithReverseSideSecureValue
+@PreviewFeature
+inline fun SecureValue.asInternalPassportSecureValue(): InternalPassportSecureValue? = this as? InternalPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.requireInternalPassportSecureValue(): InternalPassportSecureValue = this as InternalPassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asOtherDocumentsSecureValue(): OtherDocumentsSecureValue? = this as? OtherDocumentsSecureValue
+@PreviewFeature
+inline fun SecureValue.requireOtherDocumentsSecureValue(): OtherDocumentsSecureValue = this as OtherDocumentsSecureValue
+@PreviewFeature
+inline fun SecureValue.asPassportRegistrationSecureValue(): PassportRegistrationSecureValue? = this as? PassportRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePassportRegistrationSecureValue(): PassportRegistrationSecureValue = this as PassportRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.asPassportSecureValue(): PassportSecureValue? = this as? PassportSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePassportSecureValue(): PassportSecureValue = this as PassportSecureValue
+@PreviewFeature
+inline fun SecureValue.asPersonalDetailsSecureValue(): PersonalDetailsSecureValue? = this as? PersonalDetailsSecureValue
+@PreviewFeature
+inline fun SecureValue.requirePersonalDetailsSecureValue(): PersonalDetailsSecureValue = this as PersonalDetailsSecureValue
+@PreviewFeature
+inline fun SecureValue.asRentalAgreementSecureValue(): RentalAgreementSecureValue? = this as? RentalAgreementSecureValue
+@PreviewFeature
+inline fun SecureValue.requireRentalAgreementSecureValue(): RentalAgreementSecureValue = this as RentalAgreementSecureValue
+@PreviewFeature
+inline fun SecureValue.asTemporalRegistrationSecureValue(): TemporalRegistrationSecureValue? = this as? TemporalRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.requireTemporalRegistrationSecureValue(): TemporalRegistrationSecureValue = this as TemporalRegistrationSecureValue
+@PreviewFeature
+inline fun SecureValue.asUtilityBillSecureValue(): UtilityBillSecureValue? = this as? UtilityBillSecureValue
+@PreviewFeature
+inline fun SecureValue.requireUtilityBillSecureValue(): UtilityBillSecureValue = this as UtilityBillSecureValue
+@PreviewFeature
+inline fun SecureValue.asSecureValueIdentity(): SecureValueIdentity? = this as? SecureValueIdentity
+@PreviewFeature
+inline fun SecureValue.requireSecureValueIdentity(): SecureValueIdentity = this as SecureValueIdentity
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithData(): SecureValueWithData? = this as? SecureValueWithData
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithData(): SecureValueWithData = this as SecureValueWithData
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithFiles(): SecureValueWithFiles? = this as? SecureValueWithFiles
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithFiles(): SecureValueWithFiles = this as SecureValueWithFiles
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithReverseSide(): SecureValueWithReverseSide? = this as? SecureValueWithReverseSide
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithReverseSide(): SecureValueWithReverseSide = this as SecureValueWithReverseSide
+@PreviewFeature
+inline fun SecureValue.asSecureValueWithTranslations(): SecureValueWithTranslations? = this as? SecureValueWithTranslations
+@PreviewFeature
+inline fun SecureValue.requireSecureValueWithTranslations(): SecureValueWithTranslations = this as SecureValueWithTranslations
+@PreviewFeature
+inline fun Message.asAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent>? = this as? AnonymousGroupContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asAnonymousGroupContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.asAnonymousGroupContentMessageImpl"))
+inline fun Message.asAnonymousGroupMessageImpl() = asAnonymousGroupContentMessageImpl()
+@PreviewFeature
+inline fun Message.requireAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent> = this as AnonymousGroupContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireAnonymousGroupContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.requireAnonymousGroupContentMessageImpl"))
+inline fun Message.requireAnonymousGroupMessageImpl() = requireAnonymousGroupContentMessageImpl()
+@PreviewFeature
+inline fun Message.asChannelContentMessageImpl(): ChannelContentMessageImpl<MessageContent>? = this as? ChannelContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asChannelContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.asChannelContentMessageImpl"))
+inline fun Message.asChannelMessageImpl() = asChannelContentMessageImpl()
+@PreviewFeature
+inline fun Message.requireChannelContentMessageImpl(): ChannelContentMessageImpl<MessageContent> = this as ChannelContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireChannelContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.requireChannelContentMessageImpl"))
+inline fun Message.requireChannelMessageImpl() = requireChannelContentMessageImpl()
+@PreviewFeature
+inline fun Message.asFromChannelGroupContentMessageImpl(): FromChannelGroupContentMessageImpl<MessageContent>? = this as? FromChannelGroupContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asFromChannelGroupContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.asFromChannelGroupContentMessageImpl"))
+inline fun Message.asFromChannelGroupMessageImpl() = asFromChannelGroupContentMessageImpl()
+@PreviewFeature
+inline fun Message.requireFromChannelGroupContentMessageImpl(): FromChannelGroupContentMessageImpl<MessageContent> = this as FromChannelGroupContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireFromChannelGroupContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.requireFromChannelGroupContentMessageImpl"))
+inline fun Message.requireFromChannelGroupMessageImpl() = requireFromChannelGroupContentMessageImpl()
 @PreviewFeature
 inline fun Message.asPassportMessage(): PassportMessage? = this as? PassportMessage
 @PreviewFeature
 inline fun Message.requirePassportMessage(): PassportMessage = this as PassportMessage
 @PreviewFeature
-inline fun Message.asPrivateMessageImpl(): PrivateMessageImpl<MessageContent>? = this as? PrivateMessageImpl<MessageContent>
+inline fun Message.asPrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent>? = this as? PrivateContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asPrivateContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.asPrivateContentMessageImpl"))
+inline fun Message.asPrivateMessageImpl() = asPrivateContentMessageImpl()
 @PreviewFeature
-inline fun Message.requirePrivateMessageImpl(): PrivateMessageImpl<MessageContent> = this as PrivateMessageImpl<MessageContent>
+inline fun Message.requirePrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent> = this as PrivateContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requirePrivateContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.requirePrivateContentMessageImpl"))
+inline fun Message.requirePrivateMessageImpl() = requirePrivateContentMessageImpl()
 @PreviewFeature
 inline fun Message.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? = this as? ChannelEventMessage<ChannelEvent>
 @PreviewFeature
@@ -355,21 +449,33 @@ inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessag
 @PreviewFeature
 inline fun Message.requireCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent> = this as CommonSupergroupEventMessage<SupergroupEvent>
 @PreviewFeature
-inline fun Message.asAnonymousGroupMessage(): AnonymousGroupMessage<MessageContent>? = this as? AnonymousGroupMessage<MessageContent>
+inline fun Message.asAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent>? = this as? AnonymousGroupContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asAnonymousGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asAnonymousGroupContentMessage"))
+inline fun Message.asAnonymousGroupMessage() = asAnonymousGroupContentMessage()
 @PreviewFeature
-inline fun Message.requireAnonymousGroupMessage(): AnonymousGroupMessage<MessageContent> = this as AnonymousGroupMessage<MessageContent>
+inline fun Message.requireAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent> = this as AnonymousGroupContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireAnonymousGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireAnonymousGroupContentMessage"))
+inline fun Message.requireAnonymousGroupMessage() = requireAnonymousGroupContentMessage()
 @PreviewFeature
-inline fun Message.asChannelMessage(): ChannelMessage<MessageContent>? = this as? ChannelMessage<MessageContent>
+inline fun Message.asChannelContentMessage(): ChannelContentMessageImpl<MessageContent>? = this as? ChannelContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asChannelContentMessage", "dev.inmo.tgbotapi.extensions.utils.asChannelContentMessage"))
+inline fun Message.asChannelMessage() = asChannelContentMessage()
 @PreviewFeature
-inline fun Message.requireChannelMessage(): ChannelMessage<MessageContent> = this as ChannelMessage<MessageContent>
+inline fun Message.requireChannelContentMessage(): ChannelContentMessageImpl<MessageContent> = this as ChannelContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireChannelContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireChannelContentMessage"))
+inline fun Message.requireChannelMessage() = requireChannelContentMessage()
 @PreviewFeature
 inline fun Message.asChatEventMessage(): ChatEventMessage<ChatEvent>? = this as? ChatEventMessage<ChatEvent>
 @PreviewFeature
 inline fun Message.requireChatEventMessage(): ChatEventMessage<ChatEvent> = this as ChatEventMessage<ChatEvent>
 @PreviewFeature
-inline fun Message.asCommonGroupMessage(): CommonGroupMessage<MessageContent>? = this as? CommonGroupMessage<MessageContent>
+inline fun Message.asCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent>? = this as? CommonGroupContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asCommonGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asCommonGroupContentMessage"))
+inline fun Message.asCommonGroupMessage() = asCommonGroupContentMessage()
 @PreviewFeature
-inline fun Message.requireCommonGroupMessage(): CommonGroupMessage<MessageContent> = this as CommonGroupMessage<MessageContent>
+inline fun Message.requireCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent> = this as CommonGroupContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireCommonGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireCommonGroupContentMessage"))
+inline fun Message.requireCommonGroupMessage() = requireCommonGroupContentMessage()
 @PreviewFeature
 inline fun Message.asCommonMessage(): CommonMessage<MessageContent>? = this as? CommonMessage<MessageContent>
 @PreviewFeature
@@ -379,17 +485,25 @@ inline fun Message.asContentMessage(): ContentMessage<MessageContent>? = this as
 @PreviewFeature
 inline fun Message.requireContentMessage(): ContentMessage<MessageContent> = this as ContentMessage<MessageContent>
 @PreviewFeature
-inline fun Message.asFromChannelGroupMessage(): FromChannelGroupMessage<MessageContent>? = this as? FromChannelGroupMessage<MessageContent>
+inline fun Message.asFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent>? = this as? FromChannelGroupContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asFromChannelGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asFromChannelGroupContentMessage"))
+inline fun Message.asFromChannelGroupMessage() = asFromChannelGroupContentMessage()
 @PreviewFeature
-inline fun Message.requireFromChannelGroupMessage(): FromChannelGroupMessage<MessageContent> = this as FromChannelGroupMessage<MessageContent>
+inline fun Message.requireFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent> = this as FromChannelGroupContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireFromChannelGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireFromChannelGroupContentMessage"))
+inline fun Message.requireFromChannelGroupMessage() = requireFromChannelGroupContentMessage()
 @PreviewFeature
 inline fun Message.asGroupEventMessage(): GroupEventMessage<GroupEvent>? = this as? GroupEventMessage<GroupEvent>
 @PreviewFeature
 inline fun Message.requireGroupEventMessage(): GroupEventMessage<GroupEvent> = this as GroupEventMessage<GroupEvent>
 @PreviewFeature
-inline fun Message.asGroupMessage(): GroupMessage<MessageContent>? = this as? GroupMessage<MessageContent>
+inline fun Message.asGroupContentMessage(): GroupContentMessage<MessageContent>? = this as? GroupContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asGroupContentMessage"))
+inline fun Message.asGroupMessage() = asGroupContentMessage()
 @PreviewFeature
-inline fun Message.requireGroupMessage(): GroupMessage<MessageContent> = this as GroupMessage<MessageContent>
+inline fun Message.requireGroupContentMessage(): GroupContentMessage<MessageContent> = this as GroupContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireGroupContentMessage"))
+inline fun Message.requireGroupMessage() = requireGroupContentMessage()
 @PreviewFeature
 inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupContent>? = this as? MediaGroupMessage<MediaGroupContent>
 @PreviewFeature
@@ -407,13 +521,21 @@ inline fun Message.asPossiblyPaymentMessage(): PossiblyPaymentMessage? = this as
 @PreviewFeature
 inline fun Message.requirePossiblyPaymentMessage(): PossiblyPaymentMessage = this as PossiblyPaymentMessage
 @PreviewFeature
-inline fun Message.asPrivateMessage(): PrivateMessage<MessageContent>? = this as? PrivateMessage<MessageContent>
+inline fun Message.asPrivateContentMessage(): PrivateContentMessage<MessageContent>? = this as? PrivateContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asPrivateContentMessage", "dev.inmo.tgbotapi.extensions.utils.asPrivateContentMessage"))
+inline fun Message.asPrivateMessage() = asPrivateContentMessage()
 @PreviewFeature
-inline fun Message.requirePrivateMessage(): PrivateMessage<MessageContent> = this as PrivateMessage<MessageContent>
+inline fun Message.requirePrivateContentMessage(): PrivateContentMessage<MessageContent> = this as PrivateContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requirePrivateContentMessage", "dev.inmo.tgbotapi.extensions.utils.requirePrivateContentMessage"))
+inline fun Message.requirePrivateMessage() = requirePrivateContentMessage()
 @PreviewFeature
-inline fun Message.asPublicMessage(): PublicMessage<MessageContent>? = this as? PublicMessage<MessageContent>
+inline fun Message.asPublicContentMessage(): PublicContentMessage<MessageContent>? = this as? PublicContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asPublicContentMessage", "dev.inmo.tgbotapi.extensions.utils.asPublicContentMessage"))
+inline fun Message.asPublicMessage() = asPublicContentMessage()
 @PreviewFeature
-inline fun Message.requirePublicMessage(): PublicMessage<MessageContent> = this as PublicMessage<MessageContent>
+inline fun Message.requirePublicContentMessage(): PublicContentMessage<MessageContent> = this as PublicContentMessage<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requirePublicContentMessage", "dev.inmo.tgbotapi.extensions.utils.requirePublicContentMessage"))
+inline fun Message.requirePublicMessage() = requirePublicContentMessage()
 @PreviewFeature
 inline fun Message.asSignedMessage(): SignedMessage? = this as? SignedMessage
 @PreviewFeature

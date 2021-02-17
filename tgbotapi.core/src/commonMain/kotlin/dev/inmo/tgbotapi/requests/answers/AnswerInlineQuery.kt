@@ -16,7 +16,7 @@ data class AnswerInlineQuery(
     @Serializable(InlineQueryAnswersResultsSerializer::class)
     @SerialName(resultsField)
     val results: List<InlineQueryResult> = emptyList(),
-    @SerialName(cachedTimeField)
+    @SerialName(cacheTimeField)
     val cachedTime: Int? = null,
     @SerialName(isPersonalField)
     val isPersonal: Boolean? = null,
