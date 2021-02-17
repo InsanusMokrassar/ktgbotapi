@@ -4,6 +4,7 @@ import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.filter
 
@@ -25,12 +26,15 @@ data class BehaviourContext(
 
 /**
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [newFlowsUpdatesFilterSetUp] is provided and
- * [CoroutineScope] as new [BehaviourContext.scope]
+ * [CoroutineScope] as new [BehaviourContext.scope]. You must do all subscription/running of longPolling manually.
  *
  * @param newFlowsUpdatesFilterSetUp As a parameter receives [FlowsUpdatesFilter] from old [this] [BehaviourContext.flowsUpdatesFilter]
  */
+@RiskFeature("It is recommended to use doInSubContextWithUpdatesFilter instead. " +
+    "This method is low level and should not be used in case you are not pretty sure you need it.")
 suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
     newFlowsUpdatesFilterSetUp: BehaviourContextAndTypeReceiver<Unit, FlowsUpdatesFilter>?,
+    stopOnCompletion: Boolean = true,
     behaviourContextReceiver: BehaviourContextReceiver<T>
 ) = copy(
     flowsUpdatesFilter = FlowsUpdatesFilter(),
@@ -39,7 +43,7 @@ suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
     newFlowsUpdatesFilterSetUp ?.let {
         it.apply { invoke(this@run, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
     }
-    behaviourContextReceiver().also { stop() }
+    behaviourContextReceiver().also { if (stopOnCompletion) stop() }
 }
 
 /**
@@ -48,19 +52,24 @@ suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
  */
 suspend fun <T> BehaviourContext.doInSubContextWithUpdatesFilter(
     updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?,
+    stopOnCompletion: Boolean = true,
     behaviourContextReceiver: BehaviourContextReceiver<T>
 ) = doInSubContextWithFlowsUpdatesFilterSetup(
     newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
         { oldOne ->
             oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(scope, asUpdateReceiver)
         }
+    } ?: { oldOne ->
+         oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(scope, asUpdateReceiver)
     },
+    stopOnCompletion,
     behaviourContextReceiver
 )
 
 suspend fun <T> BehaviourContext.doInSubContext(
+    stopOnCompletion: Boolean = true,
     behaviourContextReceiver: BehaviourContextReceiver<T>
-) = doInSubContextWithFlowsUpdatesFilterSetup(newFlowsUpdatesFilterSetUp = null, behaviourContextReceiver)
+) = doInSubContextWithUpdatesFilter(updatesFilter = null, stopOnCompletion, behaviourContextReceiver)
 
 /**
  * This method will cancel ALL subsequent contexts, expectations and waiters

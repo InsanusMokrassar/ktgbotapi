@@ -28,6 +28,7 @@ import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.chat.abstracts.*
 import dev.inmo.tgbotapi.types.chat.abstracts.extended.*
+import dev.inmo.tgbotapi.types.dice.*
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.types.message.*
@@ -1216,3 +1217,31 @@ inline fun TextSource.requireURLTextSource(): URLTextSource = this as URLTextSou
 inline fun TextSource.asUnderlineTextSource(): UnderlineTextSource? = this as? UnderlineTextSource
 @PreviewFeature
 inline fun TextSource.requireUnderlineTextSource(): UnderlineTextSource = this as UnderlineTextSource
+@PreviewFeature
+inline fun DiceAnimationType.asBasketballDiceAnimationType(): BasketballDiceAnimationType? = this as? BasketballDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.requireBasketballDiceAnimationType(): BasketballDiceAnimationType = this as BasketballDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.asBowlingDiceAnimationType(): BowlingDiceAnimationType? = this as? BowlingDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.requireBowlingDiceAnimationType(): BowlingDiceAnimationType = this as BowlingDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.asCubeDiceAnimationType(): CubeDiceAnimationType? = this as? CubeDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.requireCubeDiceAnimationType(): CubeDiceAnimationType = this as CubeDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.asCustomDiceAnimationType(): CustomDiceAnimationType? = this as? CustomDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.requireCustomDiceAnimationType(): CustomDiceAnimationType = this as CustomDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.asDartsDiceAnimationType(): DartsDiceAnimationType? = this as? DartsDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.requireDartsDiceAnimationType(): DartsDiceAnimationType = this as DartsDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.asFootballDiceAnimationType(): FootballDiceAnimationType? = this as? FootballDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.requireFootballDiceAnimationType(): FootballDiceAnimationType = this as FootballDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.asSlotMachineDiceAnimationType(): SlotMachineDiceAnimationType? = this as? SlotMachineDiceAnimationType
+@PreviewFeature
+inline fun DiceAnimationType.requireSlotMachineDiceAnimationType(): SlotMachineDiceAnimationType = this as SlotMachineDiceAnimationType

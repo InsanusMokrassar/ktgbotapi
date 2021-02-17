@@ -23,3 +23,25 @@ data class ChatPermissions(
     @SerialName(canPinMessagesField)
     val canPinMessages: Boolean = false
 )
+
+val LeftRestrictionsChatPermissions = ChatPermissions(
+    canSendMessages = true,
+    canSendMediaMessages = true,
+    canSendPolls = true,
+    canSendOtherMessages = true,
+    canAddWebPagePreviews = true,
+    canChangeInfo = true,
+    canInviteUsers = true,
+    canPinMessages = true,
+)
+
+val RestrictionsChatPermissions = ChatPermissions(
+    canSendMessages = false,
+    canSendMediaMessages = false,
+    canSendPolls = false,
+    canSendOtherMessages = false,
+    canAddWebPagePreviews = false,
+    canChangeInfo = false,
+    canInviteUsers = false,
+    canPinMessages = false,
+)

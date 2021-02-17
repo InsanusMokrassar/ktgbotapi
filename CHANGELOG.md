@@ -1,5 +1,17 @@
 # TelegramBotAPI changelog
 
+## 0.32.7
+
+* `Core`:
+    * New variable `LeftRestrictionsChatPermissions` and `RestrictionsChatPermissions`
+* `Extensions Utils`:
+    * `DiceAnimationType` class casts
+* `Behaviour Builder`:
+    * Now `doInSubContextWithUpdatesFilter` and `doInSubContext` will automatically subscribe on updates of parent
+      `BehaviourContext`
+    * `doInSubContextWithFlowsUpdatesFilterSetup`, `doInSubContextWithUpdatesFilter` and `doInSubContext` got new
+      parameter `stopOnCompletion` to be able to disable stopping of behaviour context on finishing
+
 ## 0.32.6
 
 * `Common`:
