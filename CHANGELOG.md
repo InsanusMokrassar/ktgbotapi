@@ -2,6 +2,10 @@
 
 ## 0.32.8
 
+* `Common`:
+    * `Version`:
+        * `Serialization`: `1.1.0-RC` -> `1.1.0`
+
 ## 0.32.7
 
 * `Core`:
