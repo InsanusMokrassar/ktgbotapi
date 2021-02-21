@@ -5,6 +5,7 @@
 * `Common`:
     * `Version`:
         * `Serialization`: `1.1.0-RC` -> `1.1.0`
+        * `MicroUtils`: `0.4.25` -> `0.4.26`
 
 ## 0.32.7
 
