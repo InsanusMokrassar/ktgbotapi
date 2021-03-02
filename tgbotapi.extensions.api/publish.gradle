@@ -38,17 +38,15 @@ publishing {
                 
             }
         }
-        
         repositories {
             maven {
-                name = "bintray"
-                url = uri("https://api.bintray.com/maven/${project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')}/TelegramBotAPI/${project.name}/;publish=1;override=1")
+                name = "GithubPackages"
+                url = uri("https://maven.pkg.github.com/InsanusMokrassar/TelegramBotAPI")
                 credentials {
-                    username = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
-                    password = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : System.getenv('BINTRAY_KEY')
+                    username = project.hasProperty('GITHUBPACKAGES_USER') ? project.property('GITHUBPACKAGES_USER') : System.getenv('GITHUBPACKAGES_USER')
+                    password = project.hasProperty('GITHUBPACKAGES_PASSWORD') ? project.property('GITHUBPACKAGES_PASSWORD') : System.getenv('GITHUBPACKAGES_PASSWORD')
                 }
             }
-            
             maven {
                 name = "sonatype"
                 url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
@@ -57,9 +55,7 @@ publishing {
                     password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
                 }
             }
-            
         }
-        
     }
 }
 
