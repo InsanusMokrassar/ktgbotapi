@@ -20,5 +20,3 @@ jobs:
         env:
           GITHUBPACKAGES_USER: ${{ github.actor }}
           GITHUBPACKAGES_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-          SONATYPE_USER: "plug"
-          SONATYPE_PASSWORD: "plug"
