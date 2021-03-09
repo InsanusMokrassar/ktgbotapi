@@ -16,7 +16,7 @@ internal suspend inline fun <reified T : ChatEvent> BehaviourContext.onEvent(
     noinline additionalFilter: (suspend (ChatEventMessage<T>) -> Boolean)? = null,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<T>>
 ) = flowsUpdatesFilter.expectFlow(bot) {
-    it.asMessageUpdate() ?.data ?.asChatEventMessage() ?.let { message ->
+    it.asBaseSentMessageUpdate() ?.data ?.asChatEventMessage() ?.let { message ->
         if (message.chatEvent is T) {
             val adaptedMessage = message as ChatEventMessage<T>
             if (additionalFilter == null || additionalFilter(adaptedMessage)) adaptedMessage else null
