@@ -5,6 +5,8 @@
 * `Common`:
     * `Version`:
         * `MicroUtils`: `0.4.28` -> `0.4.29`
+* `Behaviour Builder`:
+    * Now content triggers and expectaters will wait for channel posts too
 
 ## 0.32.9
 
