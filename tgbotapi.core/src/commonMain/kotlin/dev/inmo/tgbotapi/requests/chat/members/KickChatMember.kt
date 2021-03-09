@@ -13,7 +13,9 @@ data class KickChatMember(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(untilDateField)
-    override val untilDate: TelegramDate? = null
+    override val untilDate: TelegramDate? = null,
+    @SerialName(revokeMessagesField)
+    val revokeMessages: Boolean? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "kickChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>
