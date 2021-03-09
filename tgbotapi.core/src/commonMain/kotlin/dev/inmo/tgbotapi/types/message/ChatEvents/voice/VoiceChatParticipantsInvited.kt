@@ -7,7 +7,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class VoiceChatParticipantsInvited(
+data class VoiceChatParticipantsInvited(
     @SerialName(usersField)
     val users: List<User> = emptyList()
 ) : VoiceChatEvent
