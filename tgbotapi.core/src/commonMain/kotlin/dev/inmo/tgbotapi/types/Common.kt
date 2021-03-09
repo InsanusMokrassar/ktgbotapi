@@ -240,6 +240,7 @@ const val canRestrictMembersField = "can_restrict_members"
 const val canPinMessagesField = "can_pin_messages"
 const val canPromoteMembersField = "can_promote_members"
 const val canManageVoiceChatsField = "can_manage_voice_chats"
+const val canManageChatField = "can_manage_chat"
 const val pngStickerField = "png_sticker"
 const val tgsStickerField = "tgs_sticker"
 

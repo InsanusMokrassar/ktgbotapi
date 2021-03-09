@@ -14,6 +14,7 @@ interface AdministratorChatMember : SpecialRightsChatMember {
     val canRestrictMembers: Boolean
     val canPromoteMembers: Boolean
     val canManageVoiceChats: Boolean
+    val canManageChat: Boolean
     val isAnonymous: Boolean
     val customTitle: String?
 }
