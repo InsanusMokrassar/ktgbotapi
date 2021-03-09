@@ -16,6 +16,9 @@ data class MessageAutoDeleteTimerChanged(
     val newAutoDeleteTime: Seconds // TODO:: check that it is seconds
 ) : ChannelEvent, GroupEvent, SupergroupEvent
 
+val MessageAutoDeleteTimerChanged.isOff
+    get() = newAutoDeleteTime == 0
+
 val MessageAutoDeleteTimerChanged.is24Hours
     get() = newAutoDeleteTime == seconds24Hours
 
