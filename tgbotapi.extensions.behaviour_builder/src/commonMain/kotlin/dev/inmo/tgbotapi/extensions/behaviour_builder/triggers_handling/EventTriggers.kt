@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 
 internal suspend inline fun <reified T : ChatEvent> BehaviourContext.onEvent(
@@ -42,6 +43,31 @@ suspend fun BehaviourContext.onChatEvent(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatEventMessage<ChatEvent>) -> Boolean)? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<ChatEvent>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onVoiceChatEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    additionalFilter: (suspend (ChatEventMessage<VoiceChatEvent>) -> Boolean)? = null,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<VoiceChatEvent>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onVoiceChatStartedEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    additionalFilter: (suspend (ChatEventMessage<VoiceChatStarted>) -> Boolean)? = null,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<VoiceChatStarted>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onVoiceChatEndedEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    additionalFilter: (suspend (ChatEventMessage<VoiceChatEnded>) -> Boolean)? = null,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<VoiceChatEnded>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onVoiceChatParticipantsInvitedEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    additionalFilter: (suspend (ChatEventMessage<VoiceChatParticipantsInvited>) -> Boolean)? = null,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<VoiceChatParticipantsInvited>>
+) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+suspend fun BehaviourContext.onMessageAutoDeleteTimerChangedEvent(
+    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    additionalFilter: (suspend (ChatEventMessage<MessageAutoDeleteTimerChanged>) -> Boolean)? = null,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<MessageAutoDeleteTimerChanged>>
 ) = onEvent(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
 suspend fun BehaviourContext.onCommonEvent(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
