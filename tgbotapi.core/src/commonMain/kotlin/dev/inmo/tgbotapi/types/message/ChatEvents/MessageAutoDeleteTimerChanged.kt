@@ -7,8 +7,8 @@ import dev.inmo.tgbotapi.types.messageAutoDeleteTimeField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-private val seconds24Hours: Seconds = 60 * 60 * 24
-private val seconds7Days: Seconds = seconds24Hours * 7
+private const val seconds24Hours: Seconds = 60 * 60 * 24
+private const val seconds7Days: Seconds = seconds24Hours * 7
 
 @Serializable
 data class MessageAutoDeleteTimerChanged(
