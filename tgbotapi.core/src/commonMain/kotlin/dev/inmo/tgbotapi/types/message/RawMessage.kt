@@ -87,6 +87,9 @@ internal data class RawMessage(
     private val voice_chat_ended: VoiceChatEnded? = null,
     private val voice_chat_participants_invited: VoiceChatParticipantsInvited? = null,
 
+    // AutoDelete Message time changed
+    private val message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged? = null,
+
     // login property
     private val connected_website: String? = null,
 
@@ -179,6 +182,7 @@ internal data class RawMessage(
             new_chat_title != null -> NewChatTitle(new_chat_title)
             new_chat_photo != null -> NewChatPhoto(new_chat_photo.toList())
             voice_chat_started != null -> voice_chat_started
+            message_auto_delete_timer_changed != null -> message_auto_delete_timer_changed
             voice_chat_ended != null -> voice_chat_ended
             voice_chat_participants_invited != null -> voice_chat_participants_invited
             delete_chat_photo -> DeleteChatPhoto()
