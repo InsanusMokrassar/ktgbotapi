@@ -31,7 +31,7 @@ private suspend fun <O> BehaviourContext.waitCommonMessage(
             (it as CommonMessage<MessageContent>).mapper()
         } ?.let { return@expectFlow it }
     }
-    it.asMessageUpdate() ?.data ?.asCommonMessage() ?.mapper().let(::listOfNotNull)
+    it.asBaseSentMessageUpdate() ?.data ?.asCommonMessage() ?.mapper().let(::listOfNotNull)
 }.toList().toList()
 
 private suspend inline fun <reified T : MessageContent> BehaviourContext.waitContent(

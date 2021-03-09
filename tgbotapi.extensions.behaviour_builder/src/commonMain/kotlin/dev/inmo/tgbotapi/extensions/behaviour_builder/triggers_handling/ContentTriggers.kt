@@ -36,7 +36,7 @@ internal suspend inline fun <reified T : MessageContent> BehaviourContext.onCont
             return@expectFlow it
         }
     }
-    it.asMessageUpdate() ?.data ?.asCommonMessage() ?.let { message ->
+    it.asBaseSentMessageUpdate() ?.data ?.asCommonMessage() ?.let { message ->
         if (message.content is T) {
             val adaptedMessage = message as CommonMessage<T>
             if (additionalFilter == null || additionalFilter(adaptedMessage)) adaptedMessage else null
