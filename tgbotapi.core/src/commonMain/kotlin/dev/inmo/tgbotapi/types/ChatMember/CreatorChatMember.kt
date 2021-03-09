@@ -30,6 +30,8 @@ data class CreatorChatMember(
     override val canPinMessages: Boolean = true
     @Transient
     override val canPromoteMembers: Boolean = true
+    @Transient
+    override val canManageVoiceChats: Boolean = true
     @SerialName(statusField)
     @Required
     private val type: String = "creator"
