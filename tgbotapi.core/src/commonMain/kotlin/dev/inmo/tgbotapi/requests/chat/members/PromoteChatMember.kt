@@ -31,7 +31,9 @@ data class PromoteChatMember(
     @SerialName(canPinMessagesField)
     private val canPinMessages: Boolean? = null,
     @SerialName(canPromoteMembersField)
-    private val canPromoteMembers: Boolean? = null
+    private val canPromoteMembers: Boolean? = null,
+    @SerialName(canManageVoiceChatsField)
+    private val canManageVoiceChats: Boolean? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "promoteChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>
