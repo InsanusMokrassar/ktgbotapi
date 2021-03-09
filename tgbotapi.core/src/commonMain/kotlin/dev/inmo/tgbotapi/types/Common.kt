@@ -162,6 +162,7 @@ const val optionIdsField = "option_ids"
 const val ipAddressField = "ip_address"
 const val linkedChatIdField = "linked_chat_id"
 const val horizontalAccuracyField = "horizontal_accuracy"
+const val revokeMessagesField = "revoke_messages"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
