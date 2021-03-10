@@ -26,10 +26,12 @@ typealias FoursquareId = String
 typealias FoursquareType = String
 typealias GooglePlaceId = String
 typealias GooglePlaceType = String
+typealias MembersLimit = Int
 
 typealias Seconds = Int
 typealias MilliSeconds = Long
 typealias LongSeconds = Long
+typealias UnixTimeStamp = LongSeconds
 
 typealias Meters = Float
 typealias Degrees = Int
@@ -75,6 +77,8 @@ val mediaCountInMediaGroup: IntRange = 2 .. 10
 val explanationLimit = 0 .. 200
 
 val openPeriodPollSecondsLimit = 5 .. 600
+
+val membersLimit = 1 .. 99999
 
 // Made as lazy for correct work in K/JS
 val telegramInlineModeGifPermittedMimeTypes by lazy {
@@ -164,6 +168,10 @@ const val linkedChatIdField = "linked_chat_id"
 const val horizontalAccuracyField = "horizontal_accuracy"
 const val revokeMessagesField = "revoke_messages"
 const val messageAutoDeleteTimeField = "message_auto_delete_time"
+const val isPrimaryField = "is_primary"
+const val isRevokedField = "is_revoked"
+const val expireDateField = "expire_date"
+const val memberLimitField = "member_limit"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
@@ -296,6 +304,7 @@ const val payField = "pay"
 const val permissionsField = "permissions"
 const val typeField = "type"
 const val valueField = "value"
+const val creatorField = "creator"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
