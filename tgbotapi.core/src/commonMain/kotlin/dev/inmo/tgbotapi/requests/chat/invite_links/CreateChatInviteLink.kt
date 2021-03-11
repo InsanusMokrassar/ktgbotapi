@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.chat.invite_links
 
-import com.soywiz.klock.*
+import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.requests.chat.abstracts.EditChatInviteLinkRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*

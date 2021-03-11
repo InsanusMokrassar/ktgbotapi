@@ -5,12 +5,13 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
-import dev.inmo.tgbotapi.extensions.utils.*
+import dev.inmo.tgbotapi.extensions.utils.asSentMediaGroupUpdate
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.extensions.utils.shortcuts.chat
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.content.media.PhotoContent
+import dev.inmo.tgbotapi.types.message.content.media.VideoContent
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature

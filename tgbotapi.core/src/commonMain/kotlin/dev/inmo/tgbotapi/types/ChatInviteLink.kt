@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types
 
-import com.soywiz.klock.*
+import com.soywiz.klock.DateTime
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder

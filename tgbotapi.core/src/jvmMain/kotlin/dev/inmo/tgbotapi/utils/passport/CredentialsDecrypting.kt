@@ -4,11 +4,10 @@ import dev.inmo.micro_utils.crypto.decodeBase64
 import dev.inmo.tgbotapi.types.passport.credentials.DecryptedCredentials
 import dev.inmo.tgbotapi.types.passport.credentials.EncryptedCredentials
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
-import java.security.*
+import java.security.KeyFactory
+import java.security.PrivateKey
 import java.security.spec.PKCS8EncodedKeySpec
 import javax.crypto.Cipher
-import javax.crypto.spec.IvParameterSpec
-import javax.crypto.spec.SecretKeySpec
 
 private val regexToRemoveFromKey = Regex("(-----(BEGIN|END) ((?:.*? KEY)|CERTIFICATE)-----|[\\s])")
 

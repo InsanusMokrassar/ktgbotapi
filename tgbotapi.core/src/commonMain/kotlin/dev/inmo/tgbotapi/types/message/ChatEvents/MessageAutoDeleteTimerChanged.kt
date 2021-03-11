@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.message.ChatEvents
 
-import com.soywiz.klock.hours
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.messageAutoDeleteTimeField

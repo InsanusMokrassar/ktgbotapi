@@ -14,10 +14,8 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.client.features.HttpRequestTimeoutException
-import io.ktor.utils.io.core.use
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import kotlin.coroutines.coroutineContext
 
 fun TelegramBot.startGettingOfUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
