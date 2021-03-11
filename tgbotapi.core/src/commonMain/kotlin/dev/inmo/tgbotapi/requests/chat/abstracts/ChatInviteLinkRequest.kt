@@ -5,11 +5,11 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.DeserializationStrategy
 
-interface ChatInviteLinkRequest : SimpleRequest<BotInviteLink> {
+interface ChatInviteLinkRequest : SimpleRequest<CommonInviteLink> {
     val chatId: ChatId
 
-    override val resultDeserializer: DeserializationStrategy<BotInviteLink>
-        get() = BotInviteLink.serializer()
+    override val resultDeserializer: DeserializationStrategy<CommonInviteLink>
+        get() = CommonInviteLink.serializer()
 }
 interface KnownChatInviteLinkRequest : ChatInviteLinkRequest {
     val inviteLink: String
