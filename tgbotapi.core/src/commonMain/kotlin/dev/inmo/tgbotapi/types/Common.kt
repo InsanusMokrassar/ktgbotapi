@@ -253,6 +253,8 @@ const val canManageVoiceChatsField = "can_manage_voice_chats"
 const val canManageChatField = "can_manage_chat"
 const val pngStickerField = "png_sticker"
 const val tgsStickerField = "tgs_sticker"
+const val oldChatMemberField = "old_chat_member"
+const val newChatMemberField = "new_chat_member"
 
 const val okField = "ok"
 const val captionField = "caption"
