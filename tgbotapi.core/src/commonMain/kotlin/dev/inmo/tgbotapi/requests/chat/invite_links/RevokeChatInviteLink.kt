@@ -9,7 +9,7 @@ import kotlinx.serialization.*
 @Serializable
 data class RevokeChatInviteLink(
     @SerialName(chatIdField)
-    override val chatId: ChatId,
+    override val chatId: ChatIdentifier,
     @SerialName(inviteLinkField)
     override val inviteLink: String
 ) : KnownChatInviteLinkRequest {

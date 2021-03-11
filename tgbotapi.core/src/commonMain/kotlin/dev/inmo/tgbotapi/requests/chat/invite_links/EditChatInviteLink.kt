@@ -9,16 +9,16 @@ import kotlinx.serialization.*
 @Serializable
 data class EditChatInviteLink(
     @SerialName(chatIdField)
-    override val chatId: ChatId,
+    override val chatId: ChatIdentifier,
     @SerialName(inviteLinkField)
     override val inviteLink: String,
     @SerialName(expireDateField)
-    private val expirationUnixTimeStamp: UnixTimeStamp? = null,
+    private val expirationUnixTimeStamp: TelegramDate? = null,
     @SerialName(memberLimitField)
     override val membersLimit: MembersLimit? = null
 ) : EditChatInviteLinkRequest, KnownChatInviteLinkRequest {
     override val expireDate: DateTime?
-        get() = expirationUnixTimeStamp ?.seconds ?.let { DateTime(it.milliseconds) }
+        get() = expirationUnixTimeStamp ?.asDate
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
@@ -26,10 +26,10 @@ data class EditChatInviteLink(
 }
 
 fun EditChatInviteLink(
-    chatId: ChatId,
+    chatId: ChatIdentifier,
     inviteLink: String,
     expireDate: DateTime,
     membersLimit: MembersLimit? = null
 ): EditChatInviteLink = EditChatInviteLink(
-    chatId, inviteLink, expireDate.unixMillisDouble.milliseconds.seconds.toLong(), membersLimit
+    chatId, inviteLink, expireDate.toTelegramDate(), membersLimit
 )
