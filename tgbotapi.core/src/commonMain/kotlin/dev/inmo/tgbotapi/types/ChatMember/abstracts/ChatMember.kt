@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.ChatMember.abstracts
 import dev.inmo.tgbotapi.types.ChatMember.*
 import dev.inmo.tgbotapi.types.User
 import dev.inmo.tgbotapi.types.statusField
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -17,7 +18,8 @@ interface ChatMember {
 }
 
 @Serializer(ChatMember::class)
-internal object ChatMemberSerializer : KSerializer<ChatMember> {
+@RiskFeature
+object ChatMemberSerializer : KSerializer<ChatMember> {
     override val descriptor: SerialDescriptor = JsonObject.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): ChatMember {

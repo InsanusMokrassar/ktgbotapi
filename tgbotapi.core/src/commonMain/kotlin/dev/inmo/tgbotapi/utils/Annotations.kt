@@ -35,4 +35,4 @@ const val lowLevelRiskFeatureMessage = "This method is low-level and not recomme
     AnnotationTarget.TYPEALIAS,
     AnnotationTarget.TYPE_PARAMETER
 )
-annotation class RiskFeature(val message: String)
+annotation class RiskFeature(val message: String = lowLevelRiskFeatureMessage)
