@@ -17,7 +17,7 @@ private data class RawChatInviteLink(
     @SerialName(isRevokedField)
     val isRevoked: Boolean,
     @SerialName(expireDateField)
-    val expirationDateTime: UnixTimeStamp? = null,
+    val expirationDateTime: TelegramDate? = null,
     @SerialName(memberLimitField)
     val membersLimit: MembersLimit ?= null
 )
@@ -27,7 +27,7 @@ private fun ChatInviteLink.toRawChatInviteLink() = RawChatInviteLink(
     creator,
     isPrimary,
     isRevoked,
-    expirationDateTime ?.unixMillis ?.milliseconds ?.seconds ?.toLong(),
+    expirationDateTime ?.toTelegramDate(),
     membersLimit
 )
 
@@ -50,16 +50,14 @@ data class PrimaryInviteLink(
     @SerialName(isRevokedField)
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
-    private val expireDate: UnixTimeStamp? = null,
+    private val expireDate: TelegramDate? = null,
     @SerialName(memberLimitField)
     override val membersLimit: MembersLimit? = null
 ) : ChatInviteLink() {
     override val isPrimary: Boolean
         get() = true
     override val expirationDateTime: DateTime?
-        get() {
-            return DateTime(expireDate ?.seconds ?.milliseconds ?: return null)
-        }
+        get() = expireDate ?.asDate
 }
 
 @Serializable
@@ -71,16 +69,14 @@ data class CommonInviteLink(
     @SerialName(isRevokedField)
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
-    private val expireDate: UnixTimeStamp? = null,
+    private val expireDate: TelegramDate? = null,
     @SerialName(memberLimitField)
     override val membersLimit: MembersLimit? = null
 ) : ChatInviteLink() {
     override val isPrimary: Boolean
         get() = false
     override val expirationDateTime: DateTime?
-        get() {
-            return DateTime(expireDate ?.seconds ?.milliseconds ?: return null)
-        }
+        get() = expireDate ?.asDate
 }
 
 @Serializer(ChatInviteLink::class)

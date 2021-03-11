@@ -11,6 +11,8 @@ const val UPDATE_SHIPPING_QUERY = "shipping_query"
 const val UPDATE_PRE_CHECKOUT_QUERY = "pre_checkout_query"
 const val UPDATE_POLL = "poll"
 const val UPDATE_POLL_ANSWER = "poll_answer"
+const val MY_CHAT_MEMBER = "my_chat_member"
+const val CHAT_MEMBER = "chat_member"
 
 val ALL_UPDATES_LIST = listOf(
     UPDATE_MESSAGE,
@@ -23,5 +25,7 @@ val ALL_UPDATES_LIST = listOf(
     UPDATE_SHIPPING_QUERY,
     UPDATE_PRE_CHECKOUT_QUERY,
     UPDATE_POLL,
-    UPDATE_POLL_ANSWER
+    UPDATE_POLL_ANSWER,
+    MY_CHAT_MEMBER,
+    CHAT_MEMBER
 )

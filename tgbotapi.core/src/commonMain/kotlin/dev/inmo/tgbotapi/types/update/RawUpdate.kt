@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.types.update
 
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.RawCallbackQuery
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.RawChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.query.RawInlineQuery
-import dev.inmo.tgbotapi.types.UpdateIdentifier
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
@@ -11,7 +11,6 @@ import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.polls.PollAnswer
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.types.updateIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.jsonObject
@@ -34,7 +33,9 @@ internal data class RawUpdate constructor(
     private val shipping_query: ShippingQuery? = null,
     private val pre_checkout_query: PreCheckoutQuery? = null,
     private val poll: Poll? = null,
-    private val poll_answer: PollAnswer? = null
+    private val poll_answer: PollAnswer? = null,
+    private val my_chat_member: ChatMemberUpdated? = null,
+    private val chat_member: ChatMemberUpdated? = null
 ) {
     private var initedUpdate: Update? = null
     /**
@@ -58,6 +59,8 @@ internal data class RawUpdate constructor(
                 pre_checkout_query != null -> PreCheckoutQueryUpdate(updateId, pre_checkout_query)
                 poll != null -> PollUpdate(updateId, poll)
                 poll_answer != null -> PollAnswerUpdate(updateId, poll_answer)
+                my_chat_member != null -> MyChatMemberUpdatedUpdate(updateId, my_chat_member)
+                chat_member != null -> CommonChatMemberUpdatedUpdate(updateId, chat_member)
                 else -> UnknownUpdate(
                     updateId,
                     raw.toString(),
