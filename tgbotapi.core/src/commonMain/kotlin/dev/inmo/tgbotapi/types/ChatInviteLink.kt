@@ -5,7 +5,6 @@ import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.JsonObject
 
 @Serializable
 private data class RawChatInviteLink(
@@ -40,27 +39,6 @@ sealed class ChatInviteLink {
     abstract val isRevoked: Boolean
     abstract val expirationDateTime: DateTime?
     abstract val membersLimit: MembersLimit?
-}
-
-@Serializable
-data class BotInviteLink(
-    @SerialName(inviteLinkField)
-    override val inviteLink: String,
-    @SerialName(creatorField)
-    override val creator: Bot,
-    @SerialName(isRevokedField)
-    override val isRevoked: Boolean = false,
-    @SerialName(expireDateField)
-    private val expireDate: UnixTimeStamp? = null,
-    @SerialName(memberLimitField)
-    override val membersLimit: MembersLimit? = null
-) : ChatInviteLink() {
-    override val isPrimary: Boolean
-        get() = false
-    override val expirationDateTime: DateTime?
-        get() {
-            return DateTime(expireDate ?.seconds ?.milliseconds ?: return null)
-        }
 }
 
 @Serializable
@@ -114,9 +92,6 @@ object ChatInviteLinkSerializer : KSerializer<ChatInviteLink> {
         val deserializedRaw = RawChatInviteLink.serializer().deserialize(decoder)
         return deserializedRaw.run {
             when {
-                creator is Bot -> BotInviteLink(
-                    inviteLink, creator, isRevoked, expirationDateTime, membersLimit
-                )
                 deserializedRaw.isPrimary -> PrimaryInviteLink(
                     inviteLink, creator, isRevoked, expirationDateTime, membersLimit
                 )
