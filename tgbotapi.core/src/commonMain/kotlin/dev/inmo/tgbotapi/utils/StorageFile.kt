@@ -37,8 +37,6 @@ data class StorageFile(
 ) {
     val input: Input
         get() = inputSource()
-    @Deprecated("This method will be fully replaced with input property", ReplaceWith("input"))
-    fun asInput() = input
 }
 
 @Suppress("NOTHING_TO_INLINE")

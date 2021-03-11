@@ -20,5 +20,3 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
 ) : ChannelContentMessage<T>
-@Deprecated("Renamed due to ambiguity of naming", ReplaceWith("ChannelContentMessageImpl", "dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl"))
-typealias ChannelMessageImpl<T> = ChannelContentMessageImpl<T>

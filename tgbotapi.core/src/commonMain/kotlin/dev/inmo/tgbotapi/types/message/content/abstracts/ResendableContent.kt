@@ -14,12 +14,4 @@ interface ResendableContent {
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<out Message>
-
-    fun createResends(
-        chatId: ChatIdentifier,
-        disableNotification: Boolean = false,
-        replyToMessageId: MessageIdentifier? = null,
-        allowSendingWithoutReply: Boolean? = null,
-        replyMarkup: KeyboardMarkup? = null
-    ): List<Request<out Message>> = listOf(createResend(chatId, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup))
 }
