@@ -48,6 +48,53 @@ import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.*
 import dev.inmo.tgbotapi.utils.PreviewFeature
+import dev.inmo.tgbotapi.types.dice.DiceAnimationType
+import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
+import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
+import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
+import dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
+import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
+import dev.inmo.tgbotapi.types.update.EditMessageUpdate
+import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.ChannelPostMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.EditChannelPostMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.EditMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.EditMessageMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.MediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.MessageMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.MessageUpdate
+import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.PollAnswerUpdate
+import dev.inmo.tgbotapi.types.update.PollUpdate
+import dev.inmo.tgbotapi.types.update.PreCheckoutQueryUpdate
+import dev.inmo.tgbotapi.types.update.ShippingQueryUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
+import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
+import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMember
+import dev.inmo.tgbotapi.types.message.ChatEvents.MessageAutoDeleteTimerChanged
+import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
+import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatPhoto
+import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatTitle
+import dev.inmo.tgbotapi.types.message.ChatEvents.PinnedMessage
+import dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
+import dev.inmo.tgbotapi.types.message.ChatEvents.SupergroupChatCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VoiceChatEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VoiceChatEnded
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VoiceChatParticipantsInvited
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VoiceChatStarted
 
 @PreviewFeature
 inline fun Chat.asBot(): Bot? = this as? Bot
@@ -938,6 +985,18 @@ inline fun Update.asUnknownUpdate(): UnknownUpdate? = this as? UnknownUpdate
 @PreviewFeature
 inline fun Update.requireUnknownUpdate(): UnknownUpdate = this as UnknownUpdate
 @PreviewFeature
+inline fun Update.asCommonChatMemberUpdatedUpdate(): CommonChatMemberUpdatedUpdate? = this as? CommonChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.requireCommonChatMemberUpdatedUpdate(): CommonChatMemberUpdatedUpdate = this as CommonChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.asMyChatMemberUpdatedUpdate(): MyChatMemberUpdatedUpdate? = this as? MyChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.requireMyChatMemberUpdatedUpdate(): MyChatMemberUpdatedUpdate = this as MyChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.asChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate? = this as? ChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.requireChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate = this as ChatMemberUpdatedUpdate
+@PreviewFeature
 inline fun TelegramMediaFile.asAnimationFile(): AnimationFile? = this as? AnimationFile
 @PreviewFeature
 inline fun TelegramMediaFile.requireAnimationFile(): AnimationFile = this as AnimationFile
@@ -1245,3 +1304,79 @@ inline fun DiceAnimationType.requireFootballDiceAnimationType(): FootballDiceAni
 inline fun DiceAnimationType.asSlotMachineDiceAnimationType(): SlotMachineDiceAnimationType? = this as? SlotMachineDiceAnimationType
 @PreviewFeature
 inline fun DiceAnimationType.requireSlotMachineDiceAnimationType(): SlotMachineDiceAnimationType = this as SlotMachineDiceAnimationType
+@PreviewFeature
+inline fun ChatEvent.asChannelChatCreated(): ChannelChatCreated? = this as? ChannelChatCreated
+@PreviewFeature
+inline fun ChatEvent.requireChannelChatCreated(): ChannelChatCreated = this as ChannelChatCreated
+@PreviewFeature
+inline fun ChatEvent.asDeleteChatPhoto(): DeleteChatPhoto? = this as? DeleteChatPhoto
+@PreviewFeature
+inline fun ChatEvent.requireDeleteChatPhoto(): DeleteChatPhoto = this as DeleteChatPhoto
+@PreviewFeature
+inline fun ChatEvent.asGroupChatCreated(): GroupChatCreated? = this as? GroupChatCreated
+@PreviewFeature
+inline fun ChatEvent.requireGroupChatCreated(): GroupChatCreated = this as GroupChatCreated
+@PreviewFeature
+inline fun ChatEvent.asLeftChatMember(): LeftChatMember? = this as? LeftChatMember
+@PreviewFeature
+inline fun ChatEvent.requireLeftChatMember(): LeftChatMember = this as LeftChatMember
+@PreviewFeature
+inline fun ChatEvent.asMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged? = this as? MessageAutoDeleteTimerChanged
+@PreviewFeature
+inline fun ChatEvent.requireMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged = this as MessageAutoDeleteTimerChanged
+@PreviewFeature
+inline fun ChatEvent.asNewChatMembers(): NewChatMembers? = this as? NewChatMembers
+@PreviewFeature
+inline fun ChatEvent.requireNewChatMembers(): NewChatMembers = this as NewChatMembers
+@PreviewFeature
+inline fun ChatEvent.asNewChatPhoto(): NewChatPhoto? = this as? NewChatPhoto
+@PreviewFeature
+inline fun ChatEvent.requireNewChatPhoto(): NewChatPhoto = this as NewChatPhoto
+@PreviewFeature
+inline fun ChatEvent.asNewChatTitle(): NewChatTitle? = this as? NewChatTitle
+@PreviewFeature
+inline fun ChatEvent.requireNewChatTitle(): NewChatTitle = this as NewChatTitle
+@PreviewFeature
+inline fun ChatEvent.asPinnedMessage(): PinnedMessage? = this as? PinnedMessage
+@PreviewFeature
+inline fun ChatEvent.requirePinnedMessage(): PinnedMessage = this as PinnedMessage
+@PreviewFeature
+inline fun ChatEvent.asProximityAlertTriggered(): ProximityAlertTriggered? = this as? ProximityAlertTriggered
+@PreviewFeature
+inline fun ChatEvent.requireProximityAlertTriggered(): ProximityAlertTriggered = this as ProximityAlertTriggered
+@PreviewFeature
+inline fun ChatEvent.asSupergroupChatCreated(): SupergroupChatCreated? = this as? SupergroupChatCreated
+@PreviewFeature
+inline fun ChatEvent.requireSupergroupChatCreated(): SupergroupChatCreated = this as SupergroupChatCreated
+@PreviewFeature
+inline fun ChatEvent.asChannelEvent(): ChannelEvent? = this as? ChannelEvent
+@PreviewFeature
+inline fun ChatEvent.requireChannelEvent(): ChannelEvent = this as ChannelEvent
+@PreviewFeature
+inline fun ChatEvent.asCommonEvent(): CommonEvent? = this as? CommonEvent
+@PreviewFeature
+inline fun ChatEvent.requireCommonEvent(): CommonEvent = this as CommonEvent
+@PreviewFeature
+inline fun ChatEvent.asGroupEvent(): GroupEvent? = this as? GroupEvent
+@PreviewFeature
+inline fun ChatEvent.requireGroupEvent(): GroupEvent = this as GroupEvent
+@PreviewFeature
+inline fun ChatEvent.asSupergroupEvent(): SupergroupEvent? = this as? SupergroupEvent
+@PreviewFeature
+inline fun ChatEvent.requireSupergroupEvent(): SupergroupEvent = this as SupergroupEvent
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatEvent(): VoiceChatEvent? = this as? VoiceChatEvent
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatEvent(): VoiceChatEvent = this as VoiceChatEvent
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatEnded(): VoiceChatEnded? = this as? VoiceChatEnded
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatEnded(): VoiceChatEnded = this as VoiceChatEnded
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatParticipantsInvited(): VoiceChatParticipantsInvited? = this as? VoiceChatParticipantsInvited
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatParticipantsInvited(): VoiceChatParticipantsInvited = this as VoiceChatParticipantsInvited
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatStarted(): VoiceChatStarted? = this as? VoiceChatStarted
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatStarted(): VoiceChatStarted = this as VoiceChatStarted
