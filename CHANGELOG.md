@@ -5,8 +5,10 @@
 * `Common`:
     * `Version`:
         * `MicroUtils`: `0.4.28` -> `0.4.29`
+* `Core`:
+    * `AdministratorChatMemberSerializer` and `ChatMemberSerializer` has changed their visibility: they are public for now
 * `Behaviour Builder`:
-    * Now content triggers and expectaters will wait for channel posts too
+    * Now content triggers and expectators will wait for channel posts too
 
 ## 0.32.9
 
