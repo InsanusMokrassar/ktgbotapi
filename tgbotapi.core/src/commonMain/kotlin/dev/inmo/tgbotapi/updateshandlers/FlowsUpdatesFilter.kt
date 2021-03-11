@@ -28,6 +28,8 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate>
     val pollFlow: Flow<PollUpdate>
     val pollAnswerFlow: Flow<PollAnswerUpdate>
+    val chatMemberUpdatedFlow: Flow<CommonChatMemberUpdatedUpdate>
+    val myChatMemberUpdatedFlow: Flow<MyChatMemberUpdatedUpdate>
     val unknownUpdateTypeFlow: Flow<UnknownUpdate>
 }
 
@@ -74,5 +76,7 @@ class DefaultFlowsUpdatesFilter(
     override val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = allUpdatesFlow.filterIsInstance()
     override val pollFlow: Flow<PollUpdate> = allUpdatesFlow.filterIsInstance()
     override val pollAnswerFlow: Flow<PollAnswerUpdate> = allUpdatesFlow.filterIsInstance()
+    override val chatMemberUpdatedFlow: Flow<CommonChatMemberUpdatedUpdate> = allUpdatesFlow.filterIsInstance()
+    override val myChatMemberUpdatedFlow: Flow<MyChatMemberUpdatedUpdate> = allUpdatesFlow.filterIsInstance()
     override val unknownUpdateTypeFlow: Flow<UnknownUpdate> = allUpdatesFlow.filterIsInstance()
 }
