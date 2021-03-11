@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.abstracts.ResendableContent
 import dev.inmo.tgbotapi.types.passport.PassportElementError
@@ -41,7 +42,8 @@ val result = mutableMapOf<KClass<*>, Set<KClass<*>>>()
 
 
 fun main() {
-    result[DiceAnimationType::class] = KlassIndex.getSubclasses(DiceAnimationType::class).toSet()
+    result[Update::class] = KlassIndex.getSubclasses(Update::class).toSet()
+    result[ChatEvent::class] = KlassIndex.getSubclasses(ChatEvent::class).toSet()
     println("import dev.inmo.tgbotapi.utils.PreviewFeature")
     val importsToFuns = result.keys.flatMap {
         println("import ${it.qualifiedName}")
