@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
 
-internal suspend inline fun <reified U : ChatMemberUpdatedUpdate> BehaviourContext.onChatMemberUpdated(
+internal suspend inline fun <reified U : ChatMemberUpdatedUpdate> BehaviourContext.onChatMemberUpdatedInternal(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     noinline additionalFilter: (suspend (ChatMemberUpdated) -> Boolean)? = null,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
@@ -34,7 +34,7 @@ suspend fun BehaviourContext.onChatMemberUpdated(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatMemberUpdated) -> Boolean)? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdated<ChatMemberUpdatedUpdate>(
+) = onChatMemberUpdatedInternal<ChatMemberUpdatedUpdate>(
     includeFilterByChatInBehaviourSubContext,
     additionalFilter,
     scenarioReceiver
@@ -44,7 +44,7 @@ suspend fun BehaviourContext.onCommonChatMemberUpdated(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatMemberUpdated) -> Boolean)? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdated<CommonChatMemberUpdatedUpdate>(
+) = onChatMemberUpdatedInternal<CommonChatMemberUpdatedUpdate>(
     includeFilterByChatInBehaviourSubContext,
     additionalFilter,
     scenarioReceiver
@@ -54,7 +54,7 @@ suspend fun BehaviourContext.onMyChatMemberUpdated(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (ChatMemberUpdated) -> Boolean)? = null,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdated<MyChatMemberUpdatedUpdate>(
+) = onChatMemberUpdatedInternal<MyChatMemberUpdatedUpdate>(
     includeFilterByChatInBehaviourSubContext,
     additionalFilter,
     scenarioReceiver

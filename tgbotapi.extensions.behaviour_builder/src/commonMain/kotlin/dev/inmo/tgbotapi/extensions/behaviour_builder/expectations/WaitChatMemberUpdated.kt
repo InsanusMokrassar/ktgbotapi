@@ -26,7 +26,7 @@ private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContex
     (it as? T) ?.data.let(::listOfNotNull)
 }.toList().toList()
 
-private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdated(
+private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdatedWithFilter(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
@@ -48,18 +48,18 @@ suspend fun BehaviourContext.waitChatMemberUpdated(
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
-) = waitChatMemberUpdated<ChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
+) = waitChatMemberUpdatedWithFilter<ChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
 
 suspend fun BehaviourContext.waitCommonChatMemberUpdated(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
-) = waitChatMemberUpdated<CommonChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
+) = waitChatMemberUpdatedWithFilter<CommonChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
 
 suspend fun BehaviourContext.waitMyChatMemberUpdated(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
-) = waitChatMemberUpdated<MyChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
+) = waitChatMemberUpdatedWithFilter<MyChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
