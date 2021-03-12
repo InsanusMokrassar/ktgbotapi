@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.games.RawGame
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
 import dev.inmo.tgbotapi.types.message.content.*
@@ -80,6 +81,14 @@ internal data class RawMessage(
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
+
+    // Voice Chat Service Messages
+    private val voice_chat_started: VoiceChatStarted? = null,
+    private val voice_chat_ended: VoiceChatEnded? = null,
+    private val voice_chat_participants_invited: VoiceChatParticipantsInvited? = null,
+
+    // AutoDelete Message time changed
+    private val message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged? = null,
 
     // login property
     private val connected_website: String? = null,
@@ -172,6 +181,10 @@ internal data class RawMessage(
             left_chat_member != null -> LeftChatMember(left_chat_member)
             new_chat_title != null -> NewChatTitle(new_chat_title)
             new_chat_photo != null -> NewChatPhoto(new_chat_photo.toList())
+            voice_chat_started != null -> voice_chat_started
+            message_auto_delete_timer_changed != null -> message_auto_delete_timer_changed
+            voice_chat_ended != null -> voice_chat_ended
+            voice_chat_participants_invited != null -> voice_chat_participants_invited
             delete_chat_photo -> DeleteChatPhoto()
             group_chat_created -> GroupChatCreated(
                 migrate_to_chat_id

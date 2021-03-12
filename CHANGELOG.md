@@ -1,5 +1,39 @@
 # TelegramBotAPI changelog
 
+## 0.33.0
+
+**UPDATE UP TO Telegram Bot API 5.1**
+_**ALL DEPRECATIONS WERE REMOVED**_
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.28` -> `0.4.29`
+* `Core`:
+    * `AdministratorChatMemberSerializer` and `ChatMemberSerializer` has changed their visibility: they are public for now
+    * Add `ChatInviteLinkRequest` with subrequests like `KnownChatInviteLinkRequest`
+    * Add `CreateChatInviteLink`/`EditChatInviteLink`/`RevokeChatInviteLink` requests
+    * Update `KickChatMember` to include `revokeMessages` flag
+    * Update `PromoteChatMember` to include `canManageVoiceChats` and `canManageChat` flags
+    * Add `ChatInviteLink` object
+        * Add `PrimaryInviteLink` for `ChatInviteLink` with `isPrimary == true`
+        * Add `CommonInviteLink` for `ChatInviteLink` with `isPrimary == false`
+    * `AdministratorChatMemberSerializer` has been set as public for several versions
+    * `ChatMemberSerializer` has been set as public for several versions
+    * Add `ChatMemberUpdated`
+    * Add `MessageAutoDeleteTimerChanged`
+    * Add `VoiceChatEvent`
+        * Add `VoiceChatEnded`
+        * Add `VoiceChatParticipantsInvited`
+    * Add `VoiceChatStarted`
+    * Add `ChatMemberUpdatedUpdate`
+        * Add `CommonChatMemberUpdatedUpdate`
+        * Add `MyChatMemberUpdatedUpdate`
+* `API`:
+    * All API extensions has been updated
+* `Behaviour Builder`:
+    * Now content triggers and expectators will wait for channel posts too
+    * New waiters and triggers for `ChatMemberUpdated` and its variations
+
 ## 0.32.9
 
 * `Common`:

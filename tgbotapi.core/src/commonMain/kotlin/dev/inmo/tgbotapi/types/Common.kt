@@ -26,10 +26,12 @@ typealias FoursquareId = String
 typealias FoursquareType = String
 typealias GooglePlaceId = String
 typealias GooglePlaceType = String
+typealias MembersLimit = Int
 
 typealias Seconds = Int
 typealias MilliSeconds = Long
 typealias LongSeconds = Long
+typealias UnixTimeStamp = LongSeconds
 
 typealias Meters = Float
 typealias Degrees = Int
@@ -75,6 +77,8 @@ val mediaCountInMediaGroup: IntRange = 2 .. 10
 val explanationLimit = 0 .. 200
 
 val openPeriodPollSecondsLimit = 5 .. 600
+
+val membersLimit = 1 .. 99999
 
 // Made as lazy for correct work in K/JS
 val telegramInlineModeGifPermittedMimeTypes by lazy {
@@ -162,6 +166,12 @@ const val optionIdsField = "option_ids"
 const val ipAddressField = "ip_address"
 const val linkedChatIdField = "linked_chat_id"
 const val horizontalAccuracyField = "horizontal_accuracy"
+const val revokeMessagesField = "revoke_messages"
+const val messageAutoDeleteTimeField = "message_auto_delete_time"
+const val isPrimaryField = "is_primary"
+const val isRevokedField = "is_revoked"
+const val expireDateField = "expire_date"
+const val memberLimitField = "member_limit"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
@@ -239,8 +249,12 @@ const val canInviteUsersField = "can_invite_users"
 const val canRestrictMembersField = "can_restrict_members"
 const val canPinMessagesField = "can_pin_messages"
 const val canPromoteMembersField = "can_promote_members"
+const val canManageVoiceChatsField = "can_manage_voice_chats"
+const val canManageChatField = "can_manage_chat"
 const val pngStickerField = "png_sticker"
 const val tgsStickerField = "tgs_sticker"
+const val oldChatMemberField = "old_chat_member"
+const val newChatMemberField = "new_chat_member"
 
 const val okField = "ok"
 const val captionField = "caption"
@@ -292,6 +306,7 @@ const val payField = "pay"
 const val permissionsField = "permissions"
 const val typeField = "type"
 const val valueField = "value"
+const val creatorField = "creator"
 
 const val pointField = "point"
 const val xShiftField = "x_shift"
@@ -331,6 +346,7 @@ const val telegramPaymentChargeIdField = "telegram_payment_charge_id"
 const val providerPaymentChargeIdField = "provider_payment_charge_id"
 const val providerTokenField = "provider_token"
 const val providerDataField = "provider_data"
+const val usersField = "users"
 
 const val requireNameField = "need_name"
 const val requirePhoneNumberField = "need_phone_number"

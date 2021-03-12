@@ -8,23 +8,27 @@ import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
 suspend fun TelegramBot.kickChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
-    untilDate: TelegramDate? = null
-) = execute(KickChatMember(chatId, userId, untilDate))
+    untilDate: TelegramDate? = null,
+    revokeMessages: Boolean? = null
+) = execute(KickChatMember(chatId, userId, untilDate, revokeMessages))
 
 suspend fun TelegramBot.kickChatMember(
     chat: PublicChat,
     userId: UserId,
-    untilDate: TelegramDate? = null
-) = kickChatMember(chat.id, userId, untilDate)
+    untilDate: TelegramDate? = null,
+    revokeMessages: Boolean? = null
+) = kickChatMember(chat.id, userId, untilDate, revokeMessages)
 
 suspend fun TelegramBot.kickChatMember(
     chatId: ChatId,
     user: User,
-    untilDate: TelegramDate? = null
-) = kickChatMember(chatId, user.id, untilDate)
+    untilDate: TelegramDate? = null,
+    revokeMessages: Boolean? = null
+) = kickChatMember(chatId, user.id, untilDate, revokeMessages)
 
 suspend fun TelegramBot.kickChatMember(
     chat: PublicChat,
     user: User,
-    untilDate: TelegramDate? = null
-) = kickChatMember(chat.id, user.id, untilDate)
+    untilDate: TelegramDate? = null,
+    revokeMessages: Boolean? = null
+) = kickChatMember(chat.id, user.id, untilDate, revokeMessages)

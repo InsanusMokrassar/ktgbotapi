@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.micro_utils.common.Warning
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import kotlinx.serialization.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder

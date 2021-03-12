@@ -3,11 +3,12 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
+import dev.inmo.tgbotapi.extensions.utils.asBaseSentMessageUpdate
 import dev.inmo.tgbotapi.extensions.utils.asChatEventMessage
-import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import kotlinx.coroutines.flow.toList
 
@@ -23,7 +24,7 @@ private suspend fun <O> BehaviourContext.waitEventMessages(
     count,
     errorFactory
 ) {
-    it.asMessageUpdate() ?.data ?.asChatEventMessage() ?.mapper().let(::listOfNotNull)
+    it.asBaseSentMessageUpdate() ?.data ?.asChatEventMessage() ?.mapper().let(::listOfNotNull)
 }.toList().toList()
 
 
@@ -63,6 +64,39 @@ suspend fun BehaviourContext.waitChatEvents(
     count: Int = 1,
     filter: EventMessageToEventMapper<ChatEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter)
+
+suspend fun BehaviourContext.waitVoiceChatEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: EventMessageToEventMapper<VoiceChatEvent>? = null
+) = waitEvents(count, initRequest, errorFactory, filter)
+suspend fun BehaviourContext.waitVoiceChatStartedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: EventMessageToEventMapper<VoiceChatStarted>? = null
+) = waitEvents(count, initRequest, errorFactory, filter)
+suspend fun BehaviourContext.waitVoiceChatEndedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: EventMessageToEventMapper<VoiceChatEnded>? = null
+) = waitEvents(count, initRequest, errorFactory, filter)
+suspend fun BehaviourContext.waitVoiceChatParticipantsInvitedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: EventMessageToEventMapper<VoiceChatParticipantsInvited>? = null
+) = waitEvents(count, initRequest, errorFactory, filter)
+
+suspend fun BehaviourContext.waitMessageAutoDeleteTimerChangedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: EventMessageToEventMapper<MessageAutoDeleteTimerChanged>? = null
+) = waitEvents(count, initRequest, errorFactory, filter)
+
 suspend fun BehaviourContext.waitCommonEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },

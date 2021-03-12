@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.ChatMember.abstracts
 
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -13,12 +14,15 @@ interface AdministratorChatMember : SpecialRightsChatMember {
     val canRemoveMessages: Boolean
     val canRestrictMembers: Boolean
     val canPromoteMembers: Boolean
+    val canManageVoiceChats: Boolean
+    val canManageChat: Boolean
     val isAnonymous: Boolean
     val customTitle: String?
 }
 
 @Serializer(AdministratorChatMember::class)
-internal object AdministratorChatMemberSerializer : KSerializer<AdministratorChatMember> {
+@RiskFeature
+object AdministratorChatMemberSerializer : KSerializer<AdministratorChatMember> {
     override val descriptor: SerialDescriptor = ChatMemberSerializer.descriptor
 
     override fun deserialize(decoder: Decoder): AdministratorChatMember = ChatMemberSerializer.deserialize(decoder) as AdministratorChatMember

@@ -3,8 +3,8 @@ package dev.inmo.tgbotapi.types.passport.encrypted
 import dev.inmo.micro_utils.serialization.base64.Base64BytesToFromStringSerializer
 import dev.inmo.tgbotapi.types.emailField
 import dev.inmo.tgbotapi.types.hashField
-import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.PassportElementHash
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithEmail
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.PassportElementHash
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

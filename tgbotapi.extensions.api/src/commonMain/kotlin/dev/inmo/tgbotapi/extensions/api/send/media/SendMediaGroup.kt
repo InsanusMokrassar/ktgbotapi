@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 /**

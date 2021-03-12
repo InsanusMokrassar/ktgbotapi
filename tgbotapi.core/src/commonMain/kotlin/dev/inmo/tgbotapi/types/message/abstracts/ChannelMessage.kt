@@ -9,5 +9,3 @@ interface ChannelContentMessage<T: MessageContent> : PossiblySentViaBotCommonMes
     override val senderChat: ChannelChat
         get() = chat
 }
-@Deprecated("Renamed due to ambiguity of naming", ReplaceWith("ChannelContentMessage", "dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage"))
-typealias ChannelMessage<T> = ChannelContentMessage<T>

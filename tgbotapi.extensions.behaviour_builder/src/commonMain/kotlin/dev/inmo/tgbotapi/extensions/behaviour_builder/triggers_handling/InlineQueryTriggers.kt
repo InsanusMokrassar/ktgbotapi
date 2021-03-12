@@ -5,8 +5,6 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
-import dev.inmo.tgbotapi.types.CallbackQuery.DataCallbackQuery
-import dev.inmo.tgbotapi.types.CallbackQuery.GameShortNameCallbackQuery
 import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
