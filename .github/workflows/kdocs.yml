@@ -1,5 +1,4 @@
-
-name: Publish package to GitHub Packages
+name: Publish KDocs
 on:
   push:
     branches:
