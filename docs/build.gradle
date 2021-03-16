@@ -56,7 +56,7 @@ private List<SourceDirectorySet> findSourcesWithName(String... approximateNames)
         }.collect { it.kotlin }
 }
 
-tasks.dokkaHtml {
+Object callback = {
     switch (true) {
         case project.hasProperty("DOKKA_PATH"):
             outputDirectory = project.property("DOKKA_PATH").toString()
@@ -90,3 +90,6 @@ tasks.dokkaHtml {
         }
     }
 }
+
+tasks.dokkaGfm(callback)
+tasks.dokkaHtml(callback)
