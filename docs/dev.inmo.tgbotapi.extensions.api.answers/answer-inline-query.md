@@ -1,0 +1,12 @@
+//[docs](../../index.md)/[dev.inmo.tgbotapi.extensions.api.answers](index.md)/[answerInlineQuery](answer-inline-query.md)
+
+
+
+# answerInlineQuery  
+[common]  
+Content  
+suspend fun [TelegramBot](../dev.inmo.tgbotapi.bot/index.md#%5Bdev.inmo.tgbotapi.bot%2FTelegramBot%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081).[answerInlineQuery](answer-inline-query.md)(inlineQueryID: [InlineQueryIdentifier](../dev.inmo.tgbotapi.types/index.md#%5Bdev.inmo.tgbotapi.types%2FInlineQueryIdentifier%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081), results: [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)<[InlineQueryResult](../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/-inline-query-result/index.md)> = emptyList(), cachedTime: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)? = null, isPersonal: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)? = null, nextOffset: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null, switchPmText: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null, switchPmParameter: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)  
+suspend fun [TelegramBot](../dev.inmo.tgbotapi.bot/index.md#%5Bdev.inmo.tgbotapi.bot%2FTelegramBot%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081).[answerInlineQuery](answer-inline-query.md)(inlineQuery: [InlineQuery](../dev.inmo.tgbotapi.types.InlineQueries.abstracts/-inline-query/index.md), results: [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)<[InlineQueryResult](../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/-inline-query-result/index.md)> = emptyList(), cachedTime: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)? = null, isPersonal: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)? = null, nextOffset: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null, switchPmText: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null, switchPmParameter: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)  
+
+
+

@@ -1,0 +1,21 @@
+//[docs](../../../index.md)/[dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult](../index.md)/[InlineQueryResultAudioCachedImpl](index.md)
+
+
+
+# InlineQueryResultAudioCachedImpl  
+ [common] data class [InlineQueryResultAudioCachedImpl](index.md) : [InlineQueryResultAudioCached](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio/-inline-query-result-audio-cached/index.md)   
+
+
+## Properties  
+  
+|  Name |  Summary | 
+|---|---|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/entities/#/PointingToDeclaration/"></a>[entities](entities.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/entities/#/PointingToDeclaration/"></a> [common] open override val [entities](entities.md): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)<[TextSource](../../dev.inmo.tgbotapi.CommonAbstracts/-text-source/index.md)>?   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/fileId/#/PointingToDeclaration/"></a>[fileId](file-id.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/fileId/#/PointingToDeclaration/"></a> [common] open override val [fileId](file-id.md): [FileId](../../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.md)   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/id/#/PointingToDeclaration/"></a>[id](id.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/id/#/PointingToDeclaration/"></a> [common] open override val [id](id.md): [InlineQueryIdentifier](../../dev.inmo.tgbotapi.types/index.md#%5Bdev.inmo.tgbotapi.types%2FInlineQueryIdentifier%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081)   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/inputMessageContent/#/PointingToDeclaration/"></a>[inputMessageContent](input-message-content.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/inputMessageContent/#/PointingToDeclaration/"></a> [common] open override val [inputMessageContent](input-message-content.md): [InputMessageContent](../../dev.inmo.tgbotapi.types.InlineQueries.abstracts/-input-message-content/index.md)? = null   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/parseMode/#/PointingToDeclaration/"></a>[parseMode](parse-mode.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/parseMode/#/PointingToDeclaration/"></a> [common] open override val [parseMode](parse-mode.md): [ParseMode](../../dev.inmo.tgbotapi.types.ParseMode/-parse-mode/index.md)? = null   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/replyMarkup/#/PointingToDeclaration/"></a>[replyMarkup](reply-markup.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/replyMarkup/#/PointingToDeclaration/"></a> [common] open override val [replyMarkup](reply-markup.md): [InlineKeyboardMarkup](../../dev.inmo.tgbotapi.types.buttons/-inline-keyboard-markup/index.md)? = null   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/text/#/PointingToDeclaration/"></a>[text](text.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/text/#/PointingToDeclaration/"></a> [common] open override val [text](text.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/type/#/PointingToDeclaration/"></a>[type](type.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultAudioCachedImpl/type/#/PointingToDeclaration/"></a> [common] open override val [type](type.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)   <br>|
+

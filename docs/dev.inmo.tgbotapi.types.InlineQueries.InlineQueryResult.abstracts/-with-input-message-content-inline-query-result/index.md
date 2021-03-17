@@ -1,0 +1,35 @@
+//[docs](../../../index.md)/[dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts](../index.md)/[WithInputMessageContentInlineQueryResult](index.md)
+
+
+
+# WithInputMessageContentInlineQueryResult  
+ [common] interface [WithInputMessageContentInlineQueryResult](index.md) : [InlineQueryResult](../-inline-query-result/index.md)   
+
+
+## Properties  
+  
+|  Name |  Summary | 
+|---|---|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/WithInputMessageContentInlineQueryResult/id/#/PointingToDeclaration/"></a>[id](index.md#%5Bdev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts%2FWithInputMessageContentInlineQueryResult%2Fid%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F625018081)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/WithInputMessageContentInlineQueryResult/id/#/PointingToDeclaration/"></a> [common] abstract val [id](index.md#%5Bdev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts%2FWithInputMessageContentInlineQueryResult%2Fid%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F625018081): [InlineQueryIdentifier](../../dev.inmo.tgbotapi.types/index.md#%5Bdev.inmo.tgbotapi.types%2FInlineQueryIdentifier%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081)   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/WithInputMessageContentInlineQueryResult/inputMessageContent/#/PointingToDeclaration/"></a>[inputMessageContent](input-message-content.md)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/WithInputMessageContentInlineQueryResult/inputMessageContent/#/PointingToDeclaration/"></a> [common] abstract val [inputMessageContent](input-message-content.md): [InputMessageContent](../../dev.inmo.tgbotapi.types.InlineQueries.abstracts/-input-message-content/index.md)?   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/WithInputMessageContentInlineQueryResult/replyMarkup/#/PointingToDeclaration/"></a>[replyMarkup](index.md#%5Bdev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts%2FWithInputMessageContentInlineQueryResult%2FreplyMarkup%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F625018081)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/WithInputMessageContentInlineQueryResult/replyMarkup/#/PointingToDeclaration/"></a> [common] abstract val [replyMarkup](index.md#%5Bdev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts%2FWithInputMessageContentInlineQueryResult%2FreplyMarkup%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F625018081): [InlineKeyboardMarkup](../../dev.inmo.tgbotapi.types.buttons/-inline-keyboard-markup/index.md)?   <br>|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/WithInputMessageContentInlineQueryResult/type/#/PointingToDeclaration/"></a>[type](index.md#%5Bdev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts%2FWithInputMessageContentInlineQueryResult%2Ftype%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F625018081)| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts/WithInputMessageContentInlineQueryResult/type/#/PointingToDeclaration/"></a> [common] abstract val [type](index.md#%5Bdev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts%2FWithInputMessageContentInlineQueryResult%2Ftype%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F625018081): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)   <br>|
+
+
+## Inheritors  
+  
+|  Name | 
+|---|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultArticle///PointingToDeclaration/"></a>[InlineQueryResultArticle](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/-inline-query-result-article/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultContact///PointingToDeclaration/"></a>[InlineQueryResultContact](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/-inline-query-result-contact/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultLocation///PointingToDeclaration/"></a>[InlineQueryResultLocation](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/-inline-query-result-location/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultStickerCached///PointingToDeclaration/"></a>[InlineQueryResultStickerCached](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/-inline-query-result-sticker-cached/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/InlineQueryResultVenue///PointingToDeclaration/"></a>[InlineQueryResultVenue](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult/-inline-query-result-venue/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio/InlineQueryResultAudioCommon///PointingToDeclaration/"></a>[InlineQueryResultAudioCommon](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio/-inline-query-result-audio-common/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document/InlineQueryResultDocumentCommon///PointingToDeclaration/"></a>[InlineQueryResultDocumentCommon](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document/-inline-query-result-document-common/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif/InlineQueryResultGifCommon///PointingToDeclaration/"></a>[InlineQueryResultGifCommon](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif/-inline-query-result-gif-common/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif/InlineQueryResultMpeg4GifCommon///PointingToDeclaration/"></a>[InlineQueryResultMpeg4GifCommon](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif/-inline-query-result-mpeg4-gif-common/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo/InlineQueryResultPhotoCommon///PointingToDeclaration/"></a>[InlineQueryResultPhotoCommon](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo/-inline-query-result-photo-common/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video/InlineQueryResultVideoCommon///PointingToDeclaration/"></a>[InlineQueryResultVideoCommon](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video/-inline-query-result-video-common/index.md)|
+| <a name="dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice/InlineQueryResultVoiceCommon///PointingToDeclaration/"></a>[InlineQueryResultVoiceCommon](../../dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice/-inline-query-result-voice-common/index.md)|
+

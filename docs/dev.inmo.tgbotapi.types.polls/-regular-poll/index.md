@@ -1,0 +1,21 @@
+//[docs](../../../index.md)/[dev.inmo.tgbotapi.types.polls](../index.md)/[RegularPoll](index.md)
+
+
+
+# RegularPoll  
+ [common] data class [RegularPoll](index.md)(**id**: [PollIdentifier](../../dev.inmo.tgbotapi.types/index.md#%5Bdev.inmo.tgbotapi.types%2FPollIdentifier%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081), **question**: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), **options**: [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)<[PollOption](../-poll-option/index.md)>, **votesCount**: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), **isClosed**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **isAnonymous**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **allowMultipleAnswers**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **scheduledCloseInfo**: [ScheduledCloseInfo](../-scheduled-close-info/index.md)?) : [MultipleAnswersPoll](../-multiple-answers-poll/index.md)   
+
+
+## Properties  
+  
+|  Name |  Summary | 
+|---|---|
+| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/allowMultipleAnswers/#/PointingToDeclaration/"></a>[allowMultipleAnswers](allow-multiple-answers.md)| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/allowMultipleAnswers/#/PointingToDeclaration/"></a> [common] val [allowMultipleAnswers](allow-multiple-answers.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/id/#/PointingToDeclaration/"></a>[id](id.md)| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/id/#/PointingToDeclaration/"></a> [common] open override val [id](id.md): [PollIdentifier](../../dev.inmo.tgbotapi.types/index.md#%5Bdev.inmo.tgbotapi.types%2FPollIdentifier%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081)   <br>|
+| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/isAnonymous/#/PointingToDeclaration/"></a>[isAnonymous](is-anonymous.md)| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/isAnonymous/#/PointingToDeclaration/"></a> [common] open override val [isAnonymous](is-anonymous.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/isClosed/#/PointingToDeclaration/"></a>[isClosed](is-closed.md)| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/isClosed/#/PointingToDeclaration/"></a> [common] open override val [isClosed](is-closed.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/options/#/PointingToDeclaration/"></a>[options](options.md)| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/options/#/PointingToDeclaration/"></a> [common] open override val [options](options.md): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)<[PollOption](../-poll-option/index.md)>   <br>|
+| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/question/#/PointingToDeclaration/"></a>[question](question.md)| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/question/#/PointingToDeclaration/"></a> [common] open override val [question](question.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)   <br>|
+| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/scheduledCloseInfo/#/PointingToDeclaration/"></a>[scheduledCloseInfo](scheduled-close-info.md)| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/scheduledCloseInfo/#/PointingToDeclaration/"></a> [common] open override val [scheduledCloseInfo](scheduled-close-info.md): [ScheduledCloseInfo](../-scheduled-close-info/index.md)? = null   <br>|
+| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/votesCount/#/PointingToDeclaration/"></a>[votesCount](votes-count.md)| <a name="dev.inmo.tgbotapi.types.polls/RegularPoll/votesCount/#/PointingToDeclaration/"></a> [common] open override val [votesCount](votes-count.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)   <br>|
+

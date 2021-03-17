@@ -1,0 +1,19 @@
+//[docs](../../index.md)/[dev.inmo.tgbotapi.requests.edit.abstracts](index.md)
+
+
+
+# Package dev.inmo.tgbotapi.requests.edit.abstracts  
+
+
+## Types  
+  
+|  Name |  Summary | 
+|---|---|
+| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditChatMessage///PointingToDeclaration/"></a>[EditChatMessage](-edit-chat-message/index.md)| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditChatMessage///PointingToDeclaration/"></a>[common]  <br>Content  <br>interface [EditChatMessage](-edit-chat-message/index.md)<[MT](-edit-chat-message/index.md) : [MessageContent](../dev.inmo.tgbotapi.types.message.content.abstracts/-message-content/index.md)> : [SimpleRequest](../dev.inmo.tgbotapi.requests.abstracts/-simple-request/index.md)<[ContentMessage](../dev.inmo.tgbotapi.types.message.abstracts/-content-message/index.md)<[MT](-edit-chat-message/index.md)>> , [MessageAction](../dev.inmo.tgbotapi.CommonAbstracts.types/-message-action/index.md)  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditDisableWebPagePreviewMessage///PointingToDeclaration/"></a>[EditDisableWebPagePreviewMessage](-edit-disable-web-page-preview-message/index.md)| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditDisableWebPagePreviewMessage///PointingToDeclaration/"></a>[common]  <br>Content  <br>interface [EditDisableWebPagePreviewMessage](-edit-disable-web-page-preview-message/index.md)  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditInlineMessage///PointingToDeclaration/"></a>[EditInlineMessage](-edit-inline-message/index.md)| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditInlineMessage///PointingToDeclaration/"></a>[common]  <br>Content  <br>interface [EditInlineMessage](-edit-inline-message/index.md) : [SimpleRequest](../dev.inmo.tgbotapi.requests.abstracts/-simple-request/index.md)<[Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)>   <br><br><br>|
+| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditLocationMessage///PointingToDeclaration/"></a>[EditLocationMessage](-edit-location-message/index.md)| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditLocationMessage///PointingToDeclaration/"></a>[common]  <br>Content  <br>interface [EditLocationMessage](-edit-location-message/index.md) : [Locationed](../dev.inmo.tgbotapi.CommonAbstracts/-locationed/index.md), [HorizontallyAccured](../dev.inmo.tgbotapi.CommonAbstracts/-horizontally-accured/index.md), [ProximityAlertable](../dev.inmo.tgbotapi.CommonAbstracts/-proximity-alertable/index.md), [Headed](../dev.inmo.tgbotapi.CommonAbstracts/-headed/index.md)  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditMediaMessage///PointingToDeclaration/"></a>[EditMediaMessage](-edit-media-message/index.md)| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditMediaMessage///PointingToDeclaration/"></a>[common]  <br>Content  <br>interface [EditMediaMessage](-edit-media-message/index.md)  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditReplyMessage///PointingToDeclaration/"></a>[EditReplyMessage](-edit-reply-message/index.md)| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditReplyMessage///PointingToDeclaration/"></a>[common]  <br>Content  <br>interface [EditReplyMessage](-edit-reply-message/index.md) : [ReplyMarkup](../dev.inmo.tgbotapi.CommonAbstracts.types/-reply-markup/index.md)  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditTextChatMessage///PointingToDeclaration/"></a>[EditTextChatMessage](-edit-text-chat-message/index.md)| <a name="dev.inmo.tgbotapi.requests.edit.abstracts/EditTextChatMessage///PointingToDeclaration/"></a>[common]  <br>Content  <br>interface [EditTextChatMessage](-edit-text-chat-message/index.md) : [TextedOutput](../dev.inmo.tgbotapi.CommonAbstracts/-texted-output/index.md)  <br><br><br>|
+

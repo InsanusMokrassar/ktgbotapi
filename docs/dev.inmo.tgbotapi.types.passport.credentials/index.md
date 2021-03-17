@@ -1,0 +1,19 @@
+//[docs](../../index.md)/[dev.inmo.tgbotapi.types.passport.credentials](index.md)
+
+
+
+# Package dev.inmo.tgbotapi.types.passport.credentials  
+
+
+## Types  
+  
+|  Name |  Summary | 
+|---|---|
+| <a name="dev.inmo.tgbotapi.types.passport.credentials/DataCredentials///PointingToDeclaration/"></a>[DataCredentials](-data-credentials/index.md)| <a name="dev.inmo.tgbotapi.types.passport.credentials/DataCredentials///PointingToDeclaration/"></a>[common]  <br>Content  <br>data class [DataCredentials](-data-credentials/index.md)(**hash**: , **secret**: ) : [EndDataCredentials](-end-data-credentials/index.md)  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.types.passport.credentials/DecryptedCredentials///PointingToDeclaration/"></a>[DecryptedCredentials](-decrypted-credentials/index.md)| <a name="dev.inmo.tgbotapi.types.passport.credentials/DecryptedCredentials///PointingToDeclaration/"></a>[common]  <br>Content  <br>data class [DecryptedCredentials](-decrypted-credentials/index.md)(**secureData**: [SecureData](../dev.inmo.tgbotapi.types.passport.decrypted/-secure-data/index.md), **nonce**: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html))  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.types.passport.credentials/EncryptedByBotPublicKeyData///PointingToDeclaration/"></a>[EncryptedByBotPublicKeyData](index.md#%5Bdev.inmo.tgbotapi.types.passport.credentials%2FEncryptedByBotPublicKeyData%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081)| <a name="dev.inmo.tgbotapi.types.passport.credentials/EncryptedByBotPublicKeyData///PointingToDeclaration/"></a>[common]  <br>Content  <br>typealias [EncryptedByBotPublicKeyData](index.md#%5Bdev.inmo.tgbotapi.types.passport.credentials%2FEncryptedByBotPublicKeyData%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081) =   <br><br><br>|
+| <a name="dev.inmo.tgbotapi.types.passport.credentials/EncryptedCredentials///PointingToDeclaration/"></a>[EncryptedCredentials](-encrypted-credentials/index.md)| <a name="dev.inmo.tgbotapi.types.passport.credentials/EncryptedCredentials///PointingToDeclaration/"></a>[common]  <br>Content  <br>data class [EncryptedCredentials](-encrypted-credentials/index.md)(**data**: [EncryptedData](index.md#%5Bdev.inmo.tgbotapi.types.passport.credentials%2FEncryptedData%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081), **hash**: , **secret**: [EncryptedByBotPublicKeyData](index.md#%5Bdev.inmo.tgbotapi.types.passport.credentials%2FEncryptedByBotPublicKeyData%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081))  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.types.passport.credentials/EncryptedData///PointingToDeclaration/"></a>[EncryptedData](index.md#%5Bdev.inmo.tgbotapi.types.passport.credentials%2FEncryptedData%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081)| <a name="dev.inmo.tgbotapi.types.passport.credentials/EncryptedData///PointingToDeclaration/"></a>[common]  <br>Content  <br>typealias [EncryptedData](index.md#%5Bdev.inmo.tgbotapi.types.passport.credentials%2FEncryptedData%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F625018081) =   <br><br><br>|
+| <a name="dev.inmo.tgbotapi.types.passport.credentials/EndDataCredentials///PointingToDeclaration/"></a>[EndDataCredentials](-end-data-credentials/index.md)| <a name="dev.inmo.tgbotapi.types.passport.credentials/EndDataCredentials///PointingToDeclaration/"></a>[common]  <br>Content  <br>sealed class [EndDataCredentials](-end-data-credentials/index.md)  <br><br><br>|
+| <a name="dev.inmo.tgbotapi.types.passport.credentials/FileCredentials///PointingToDeclaration/"></a>[FileCredentials](-file-credentials/index.md)| <a name="dev.inmo.tgbotapi.types.passport.credentials/FileCredentials///PointingToDeclaration/"></a>[common]  <br>Content  <br>data class [FileCredentials](-file-credentials/index.md)(**hash**: , **secret**: ) : [EndDataCredentials](-end-data-credentials/index.md)  <br><br><br>|
+

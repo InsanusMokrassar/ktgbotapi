@@ -1,0 +1,21 @@
+//[docs](../../../index.md)/[dev.inmo.tgbotapi.types.chat](../index.md)/[ChatPermissions](index.md)
+
+
+
+# ChatPermissions  
+ [common] data class [ChatPermissions](index.md)(**canSendMessages**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **canSendMediaMessages**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **canSendPolls**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **canSendOtherMessages**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **canAddWebPagePreviews**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **canChangeInfo**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **canInviteUsers**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), **canPinMessages**: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html))   
+
+
+## Properties  
+  
+|  Name |  Summary | 
+|---|---|
+| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canAddWebPagePreviews/#/PointingToDeclaration/"></a>[canAddWebPagePreviews](can-add-web-page-previews.md)| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canAddWebPagePreviews/#/PointingToDeclaration/"></a> [common] val [canAddWebPagePreviews](can-add-web-page-previews.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canChangeInfo/#/PointingToDeclaration/"></a>[canChangeInfo](can-change-info.md)| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canChangeInfo/#/PointingToDeclaration/"></a> [common] val [canChangeInfo](can-change-info.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canInviteUsers/#/PointingToDeclaration/"></a>[canInviteUsers](can-invite-users.md)| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canInviteUsers/#/PointingToDeclaration/"></a> [common] val [canInviteUsers](can-invite-users.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canPinMessages/#/PointingToDeclaration/"></a>[canPinMessages](can-pin-messages.md)| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canPinMessages/#/PointingToDeclaration/"></a> [common] val [canPinMessages](can-pin-messages.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canSendMediaMessages/#/PointingToDeclaration/"></a>[canSendMediaMessages](can-send-media-messages.md)| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canSendMediaMessages/#/PointingToDeclaration/"></a> [common] val [canSendMediaMessages](can-send-media-messages.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canSendMessages/#/PointingToDeclaration/"></a>[canSendMessages](can-send-messages.md)| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canSendMessages/#/PointingToDeclaration/"></a> [common] val [canSendMessages](can-send-messages.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canSendOtherMessages/#/PointingToDeclaration/"></a>[canSendOtherMessages](can-send-other-messages.md)| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canSendOtherMessages/#/PointingToDeclaration/"></a> [common] val [canSendOtherMessages](can-send-other-messages.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canSendPolls/#/PointingToDeclaration/"></a>[canSendPolls](can-send-polls.md)| <a name="dev.inmo.tgbotapi.types.chat/ChatPermissions/canSendPolls/#/PointingToDeclaration/"></a> [common] val [canSendPolls](can-send-polls.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false   <br>|
+
