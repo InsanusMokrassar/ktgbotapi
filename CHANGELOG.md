@@ -2,6 +2,11 @@
 
 ## 0.33.1
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.29` -> `0.4.30`
+        * `Klocks`: `2.0.6` -> `2.0.7`
+
 ## 0.33.0
 
 **UPDATE UP TO Telegram Bot API 5.1**
