@@ -12,10 +12,10 @@ jobs:
         with:
           java-version: 1.8
       - name: Build
-        run: ./gradlew dokkaGfm
+        run: ./gradlew dokkaHtml
       - name: Publish KDocs
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/build/dokka/gfm
+          publish_dir: ./docs/build/dokka/html
           publish_branch: kdocs
