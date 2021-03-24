@@ -7,6 +7,8 @@
         * `Kotlin`: `1.4.31` -> `1.4.32`
         * `MicroUtils`: `0.4.29` -> `0.4.30`
         * `Klocks`: `2.0.6` -> `2.0.7`
+* `Utils Extensions`:
+    * Add extensions `parseCommandsWithParams`
 
 ## 0.33.0
 
