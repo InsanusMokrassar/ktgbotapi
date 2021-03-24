@@ -60,10 +60,3 @@ fun CaptionedInput.parseCommandsWithParams(
 fun ContentMessage<TextContent>.parseCommandsWithParams(
     argsSeparator: Regex = defaultArgsSeparator
 ) = content.parseCommandsWithParams(argsSeparator)
-
-/**
- * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
- */
-fun <T> ContentMessage<T>.parseCommandsWithParams(
-    argsSeparator: Regex = defaultArgsSeparator
-) where T : CaptionedInput, T : MessageContent = content.parseCommandsWithParams(argsSeparator)
