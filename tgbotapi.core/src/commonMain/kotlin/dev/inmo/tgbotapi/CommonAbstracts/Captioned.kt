@@ -6,6 +6,7 @@ interface Captioned {
     val caption: String?
 }
 
+@Deprecated("This interface is not used in library and will be removed soon")
 interface CaptionedOutput : Captioned {
     val parseMode: ParseMode?
 }
