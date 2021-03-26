@@ -12,7 +12,7 @@ fun newRequestException(
     cause: Throwable? = null
 ) = response.description ?.let { description ->
     when {
-        description == "Bad Request: reply message not found" -> ReplyMessageNotFoundException(response, plainAnswer, message, cause)
+        description == "Bad Request: reply message not found" || description == "Bad Request: replied message not found" -> ReplyMessageNotFoundException(response, plainAnswer, message, cause)
         description == "Bad Request: message to edit not found" -> MessageToEditNotFoundException(response, plainAnswer, message, cause)
         description.contains("Bad Request: message is not modified") -> MessageIsNotModifiedException(response, plainAnswer, message, cause)
         description == "Unauthorized" -> UnauthorizedException(response, plainAnswer, message, cause)
