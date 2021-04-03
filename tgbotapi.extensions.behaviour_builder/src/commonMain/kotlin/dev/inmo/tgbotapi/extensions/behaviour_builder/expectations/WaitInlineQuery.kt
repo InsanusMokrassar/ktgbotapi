@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import kotlinx.coroutines.flow.toList
 
-typealias InlineQueryMapper<T> = T.() -> T?
+typealias InlineQueryMapper<T> = suspend T.() -> T?
 
 private suspend fun <O> BehaviourContext.waitInlineQueries(
     count: Int = 1,

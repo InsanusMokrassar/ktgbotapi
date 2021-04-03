@@ -2,6 +2,14 @@
 
 ## 0.33.2
 
+* `Behaviour Builder`:
+    * New typealias `MediaGroupFilter` has been added for `MediaGroup` expectators
+    * Several typealiases became `suspend`:
+        * `CallbackQueryMapper`
+        * `ChatMemberUpdatedMapper`
+        * `InlineQueryMapper`
+    * Commands got an additional parameter - `additionalFilter`. It will be called when all command filters were passed
+
 ## 0.33.1
 
 * `Common`:

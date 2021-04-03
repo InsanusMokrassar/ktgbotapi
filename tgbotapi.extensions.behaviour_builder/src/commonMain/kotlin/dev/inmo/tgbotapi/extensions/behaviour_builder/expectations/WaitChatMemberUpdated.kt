@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
 import kotlinx.coroutines.flow.toList
 
-typealias ChatMemberUpdatedMapper<T> = T.() -> T?
+typealias ChatMemberUpdatedMapper<T> = suspend T.() -> T?
 
 private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdated(
     count: Int = 1,
