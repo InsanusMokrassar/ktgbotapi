@@ -11,12 +11,14 @@ import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
 
+typealias MediaGroupFilter<T> = suspend List<MediaGroupMessage<T>>.() -> Boolean
+
 @PreviewFeature
 internal suspend inline fun <reified T : MediaGroupContent> BehaviourContext.buildMediaGroupWaiter(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: (suspend (List<MediaGroupMessage<T>>) -> Boolean)? = null
+    noinline filter: MediaGroupFilter<T>? = null
 ) = flowsUpdatesFilter.expectFlow(bot, initRequest, count, errorFactory) { update ->
     update.asSentMediaGroupUpdate() ?.data ?.let { mediaGroup ->
         if (mediaGroup.all { message -> message.content is T } && (filter == null || filter(mediaGroup as List<MediaGroupMessage<T>>))) {
@@ -33,35 +35,35 @@ suspend fun BehaviourContext.waitMediaGroup(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage<MediaGroupContent>>) -> Boolean)? = null
+    filter: MediaGroupFilter<MediaGroupContent>? = null
 ) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitPlaylist(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage<AudioMediaGroupContent>>) -> Boolean)? = null
+    filter: MediaGroupFilter<AudioMediaGroupContent>? = null
 ) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitDocumentsGroup(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage<DocumentMediaGroupContent>>) -> Boolean)? = null
+    filter: MediaGroupFilter<DocumentMediaGroupContent>? = null
 ) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitVisualGallery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage<VisualMediaGroupContent>>) -> Boolean)? = null
+    filter: MediaGroupFilter<VisualMediaGroupContent>? = null
 ) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitPhotoGallery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage<PhotoContent>>) -> Boolean)? = null
+    filter: MediaGroupFilter<PhotoContent>? = null
 ) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)
 suspend fun BehaviourContext.waitVideoGallery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: (suspend (List<MediaGroupMessage<VideoContent>>) -> Boolean)? = null
+    filter: MediaGroupFilter<VideoContent>? = null
 ) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)
