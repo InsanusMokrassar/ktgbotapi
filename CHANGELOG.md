@@ -2,6 +2,9 @@
 
 ## 0.33.2
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.30` -> `0.4.32`
 * `Behaviour Builder`:
     * New typealias `MediaGroupFilter` has been added for `MediaGroup` expectators
     * Several typealiases became `suspend`:
