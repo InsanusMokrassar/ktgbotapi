@@ -57,10 +57,10 @@ suspend fun <T> BehaviourContext.doInSubContextWithUpdatesFilter(
 ) = doInSubContextWithFlowsUpdatesFilterSetup(
     newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
         { oldOne ->
-            oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(scope, asUpdateReceiver)
+            oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
         }
     } ?: { oldOne ->
-         oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(scope, asUpdateReceiver)
+        oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
     },
     stopOnCompletion,
     behaviourContextReceiver
