@@ -32,7 +32,8 @@ internal suspend inline fun <reified T : MediaGroupContent> BehaviourContext.bui
     doInSubContextWithUpdatesFilter(
         updatesFilter = if (includeFilterByChatInBehaviourSubContext) {
             { it.sourceChat() ?.id ?.chatId == mediaGroupChat.id.chatId }
-        } else null
+        } else null,
+        stopOnCompletion = false
     ) {
         scenarioReceiver(mediaGroup)
     }

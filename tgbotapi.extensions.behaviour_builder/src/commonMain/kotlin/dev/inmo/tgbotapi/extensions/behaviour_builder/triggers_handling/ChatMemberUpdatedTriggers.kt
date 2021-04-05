@@ -24,7 +24,8 @@ internal suspend inline fun <reified U : ChatMemberUpdatedUpdate> BehaviourConte
             { it.sourceChat() ?.id ?.chatId == triggerChatMemberUpdated.chat.id.chatId }
         } else {
             null
-        }
+        },
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerChatMemberUpdated)
     }

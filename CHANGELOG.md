@@ -2,6 +2,10 @@
 
 ## 0.33.3
 
+* `Behaviour Builder`:
+    * Rewrite logic of `doInSubContextWithUpdatesFilter` and `doInSubContextWithFlowsUpdatesFilterSetup` extensions
+    * All triggers now work with `stopOnCompletion` set up to `false`
+
 ## 0.33.2
 
 * `Common`:

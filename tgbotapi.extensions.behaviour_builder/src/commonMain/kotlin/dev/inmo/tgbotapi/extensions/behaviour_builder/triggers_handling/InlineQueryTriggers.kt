@@ -27,7 +27,8 @@ internal suspend inline fun <reified T : InlineQuery> BehaviourContext.onInlineQ
             { it.sourceChat() ?.id ?.chatId == triggerQuery.from.id.chatId }
         } else {
             null
-        }
+        },
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerQuery)
     }

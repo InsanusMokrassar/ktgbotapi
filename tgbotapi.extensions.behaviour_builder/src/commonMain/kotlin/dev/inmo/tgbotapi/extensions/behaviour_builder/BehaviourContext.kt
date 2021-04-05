@@ -36,12 +36,13 @@ suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
     newFlowsUpdatesFilterSetUp: BehaviourContextAndTypeReceiver<Unit, FlowsUpdatesFilter>?,
     stopOnCompletion: Boolean = true,
     behaviourContextReceiver: BehaviourContextReceiver<T>
-) = copy(
-    flowsUpdatesFilter = FlowsUpdatesFilter(),
-    scope = CoroutineScope(scope.coroutineContext + SupervisorJob())
-).run {
+): T = supervisorScope {
+    val newContext = copy(
+        flowsUpdatesFilter = FlowsUpdatesFilter(),
+        scope = this
+    )
     newFlowsUpdatesFilterSetUp ?.let {
-        it.apply { invoke(this@run, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
+        it.apply { invoke(newContext, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
     }
     behaviourContextReceiver().also { if (stopOnCompletion) stop() }
 }
@@ -54,17 +55,23 @@ suspend fun <T> BehaviourContext.doInSubContextWithUpdatesFilter(
     updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?,
     stopOnCompletion: Boolean = true,
     behaviourContextReceiver: BehaviourContextReceiver<T>
-) = doInSubContextWithFlowsUpdatesFilterSetup(
-    newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
-        { oldOne ->
-            oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
-        }
-    } ?: { oldOne ->
-        oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
-    },
-    stopOnCompletion,
-    behaviourContextReceiver
-)
+): T {
+    val updatesScope = CoroutineScope(coroutineContext + SupervisorJob())
+
+    return doInSubContextWithFlowsUpdatesFilterSetup(
+        newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
+            { oldOne ->
+                oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(updatesScope, asUpdateReceiver)
+            }
+        } ?: { oldOne ->
+            oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(updatesScope, asUpdateReceiver)
+        },
+        stopOnCompletion
+    ) {
+        coroutineContext.job.invokeOnCompletion { updatesScope.cancel() }
+        behaviourContextReceiver()
+    }
+}
 
 suspend fun <T> BehaviourContext.doInSubContext(
     stopOnCompletion: Boolean = true,
