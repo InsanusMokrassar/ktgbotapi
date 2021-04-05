@@ -6,6 +6,8 @@
     * `Version`:
         * `MicroUtils`: `0.4.32` -> `0.4.33`
         * `Ktor`: `1.5.2` -> `1.5.3`
+* `API`:
+    * Bot actions DSL (fix for [#358](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/358))
 * `Behaviour Builder`:
     * Rewrite logic of `doInSubContextWithUpdatesFilter` and `doInSubContextWithFlowsUpdatesFilterSetup` extensions
     * All triggers now work with `stopOnCompletion` set up to `false`
