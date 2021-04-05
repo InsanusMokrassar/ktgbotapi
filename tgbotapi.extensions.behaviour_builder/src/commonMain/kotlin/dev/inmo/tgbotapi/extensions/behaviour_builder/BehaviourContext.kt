@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.weakLaunch
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
@@ -55,23 +56,21 @@ suspend fun <T> BehaviourContext.doInSubContextWithUpdatesFilter(
     updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?,
     stopOnCompletion: Boolean = true,
     behaviourContextReceiver: BehaviourContextReceiver<T>
-): T {
-    val updatesScope = CoroutineScope(coroutineContext + SupervisorJob())
-
-    return doInSubContextWithFlowsUpdatesFilterSetup(
-        newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
-            { oldOne ->
-                oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(updatesScope, asUpdateReceiver)
+): T = doInSubContextWithFlowsUpdatesFilterSetup(
+    newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
+        { oldOne ->
+            weakLaunch {
+                oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
             }
-        } ?: { oldOne ->
-            oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(updatesScope, asUpdateReceiver)
-        },
-        stopOnCompletion
-    ) {
-        coroutineContext.job.invokeOnCompletion { updatesScope.cancel() }
-        behaviourContextReceiver()
-    }
-}
+        }
+    } ?: { oldOne ->
+        weakLaunch {
+            oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
+        }
+    },
+    stopOnCompletion,
+    behaviourContextReceiver
+)
 
 suspend fun <T> BehaviourContext.doInSubContext(
     stopOnCompletion: Boolean = true,
