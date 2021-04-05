@@ -80,6 +80,8 @@ val openPeriodPollSecondsLimit = 5 .. 600
 
 val membersLimit = 1 .. 99999
 
+const val botActionActualityTime: Seconds = 5
+
 // Made as lazy for correct work in K/JS
 val telegramInlineModeGifPermittedMimeTypes by lazy {
     listOf(
