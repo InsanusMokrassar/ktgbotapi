@@ -44,7 +44,7 @@ suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
     newFlowsUpdatesFilterSetUp ?.let {
         it.apply { invoke(newContext, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
     }
-    behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+    newContext.behaviourContextReceiver().also { if (stopOnCompletion) stop() }
 }
 
 /**
