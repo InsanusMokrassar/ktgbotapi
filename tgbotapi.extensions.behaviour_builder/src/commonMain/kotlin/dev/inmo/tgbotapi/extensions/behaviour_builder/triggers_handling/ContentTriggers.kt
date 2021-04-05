@@ -50,7 +50,8 @@ internal suspend inline fun <reified T : MessageContent> BehaviourContext.onCont
             { it.sourceChat() ?.id ?.chatId == triggerMessage.chat.id.chatId }
         } else {
             null
-        }
+        },
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerMessage)
     }

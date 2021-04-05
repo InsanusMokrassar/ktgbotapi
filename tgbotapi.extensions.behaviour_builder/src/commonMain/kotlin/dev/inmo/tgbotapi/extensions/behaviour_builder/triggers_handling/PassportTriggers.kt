@@ -25,7 +25,8 @@ suspend inline fun <reified T : EncryptedPassportElement> BehaviourContext.onPas
     doInSubContextWithUpdatesFilter(
         updatesFilter = if (includeFilterByChatInBehaviourSubContext) {
             { it.sourceChat() ?.id ?.chatId == triggerMessage.chat.id.chatId }
-        } else null
+        } else null,
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerMessage)
     }

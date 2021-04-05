@@ -29,7 +29,8 @@ internal suspend inline fun <reified T : ChatEvent> BehaviourContext.onEvent(
     doInSubContextWithUpdatesFilter(
         updatesFilter = if (includeFilterByChatInBehaviourSubContext) {
             { it.sourceChat() ?.id ?.chatId == triggerMessage.chat.id.chatId }
-        } else null
+        } else null,
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerMessage)
     }

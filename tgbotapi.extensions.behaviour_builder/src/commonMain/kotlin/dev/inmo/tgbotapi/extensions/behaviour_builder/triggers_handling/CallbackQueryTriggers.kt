@@ -26,7 +26,8 @@ internal suspend inline fun <reified T : CallbackQuery> BehaviourContext.onCallb
             { it.sourceChat() ?.id ?.chatId == triggerQuery.user.id.chatId }
         } else {
             null
-        }
+        },
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerQuery)
     }
