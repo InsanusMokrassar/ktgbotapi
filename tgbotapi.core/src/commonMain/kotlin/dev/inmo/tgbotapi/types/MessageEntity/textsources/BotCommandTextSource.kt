@@ -4,12 +4,14 @@ import dev.inmo.tgbotapi.CommonAbstracts.DirectInvocationOfTextSourceConstructor
 import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
+import kotlinx.serialization.Serializable
 
 private val commandRegex = Regex("[/!][^@\\s]*")
 
 /**
  * @see botCommand
  */
+@Serializable
 data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String
 ) : TextSource {

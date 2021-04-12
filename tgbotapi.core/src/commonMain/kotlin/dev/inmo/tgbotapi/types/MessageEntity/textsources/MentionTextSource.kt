@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.MessageEntity.textsources
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
+import kotlinx.serialization.Serializable
 
 private val String.withoutCommercialAt
     get() = if (startsWith("@")) {
@@ -14,6 +15,7 @@ private val String.withoutCommercialAt
 /**
  * @see mention
  */
+@Serializable
 data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
     override val subsources: List<TextSource>

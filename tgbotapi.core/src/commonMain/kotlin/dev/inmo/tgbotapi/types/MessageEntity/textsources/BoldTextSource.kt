@@ -3,10 +3,13 @@ package dev.inmo.tgbotapi.types.MessageEntity.textsources
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * @see bold
  */
+@Serializable
 data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
     override val subsources: List<TextSource>

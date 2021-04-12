@@ -3,10 +3,12 @@ package dev.inmo.tgbotapi.types.MessageEntity.textsources
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
+import kotlinx.serialization.Serializable
 
 /**
  * @see underline
  */
+@Serializable
 data class UnderlineTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
     override val subsources: List<TextSource>

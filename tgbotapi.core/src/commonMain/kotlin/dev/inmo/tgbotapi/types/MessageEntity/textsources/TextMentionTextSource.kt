@@ -4,10 +4,12 @@ import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
+import kotlinx.serialization.Serializable
 
 /**
  * @see mention
  */
+@Serializable
 data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
     val user: User,

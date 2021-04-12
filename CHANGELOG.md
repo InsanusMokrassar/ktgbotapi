@@ -2,6 +2,10 @@
 
 ## 0.33.4
 
+* `Core`:
+    * All `TextSource` implementators have become `Serializable`
+        * New serializer `TextSourceSerializer`
+
 ## 0.33.3
 
 * `Common`:
