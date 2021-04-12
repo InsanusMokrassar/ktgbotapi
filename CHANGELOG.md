@@ -8,6 +8,8 @@
 * `Core`:
     * All `TextSource` implementators have become `Serializable`
         * New serializer `TextSourceSerializer`
+* `Extensions Utils`
+    * Fixes in `parseCommandsWithParams`
 
 ## 0.33.3
 
