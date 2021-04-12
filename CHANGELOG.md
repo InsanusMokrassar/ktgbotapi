@@ -2,6 +2,9 @@
 
 ## 0.33.4
 
+* `Common`:
+    * `Version`:
+        * `uuid`: `0.2.3` -> `0.2.4`
 * `Core`:
     * All `TextSource` implementators have become `Serializable`
         * New serializer `TextSourceSerializer`
