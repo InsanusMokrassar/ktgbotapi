@@ -5,7 +5,7 @@
 * `Common`:
     * `Version`:
         * `uuid`: `0.2.3` -> `0.2.4`
-        * `MicroUtils`: `0.4.33` -> `0.4.34`
+        * `MicroUtils`: `0.4.33` -> `0.4.35`
 * `Core`:
     * All `TextSource` implementators have become `Serializable`
         * New serializer `TextSourceSerializer`

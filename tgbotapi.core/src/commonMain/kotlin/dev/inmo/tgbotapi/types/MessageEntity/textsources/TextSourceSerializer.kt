@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
+import dev.inmo.micro_utils.serialization.typed_serializer.TypedSerializer
 import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.CommonAbstracts.justTextSources
 import dev.inmo.tgbotapi.types.MessageEntity.*
@@ -30,63 +31,14 @@ private val baseSerializers: Map<String, KSerializer<out TextSource>> = mapOf(
 )
 
 @Serializer(TextSource::class)
-object TextSourceSerializer : KSerializer<TextSource> {
-    private val serializers = baseSerializers.toMutableMap()
-    @InternalSerializationApi
-    override val descriptor: SerialDescriptor = buildSerialDescriptor(
-        "TextSourceSerializer",
-        SerialKind.CONTEXTUAL
-    ) {
-        element("type", String.serializer().descriptor)
-        element("value", ContextualSerializer(TextSource::class).descriptor)
-    }
-
-    @InternalSerializationApi
-    override fun deserialize(decoder: Decoder): TextSource {
-        return decoder.decodeStructure(descriptor) {
-            var type: String? = null
-            lateinit var result: TextSource
-            while (true) {
-                when (val index = decodeElementIndex(descriptor)) {
-                    0 -> type = decodeStringElement(descriptor, 0)
-                    1 -> {
-                        require(type != null) { "Type is null, but it is expected that was inited already" }
-                        result = decodeSerializableElement(
-                            descriptor,
-                            1,
-                            serializers.getValue(type)
-                        )
-                    }
-                    CompositeDecoder.DECODE_DONE -> break
-                    else -> error("Unexpected index: $index")
-                }
-            }
-            result
-        }
-    }
-
-    @InternalSerializationApi
-    private fun <T : TextSource> CompositeEncoder.encode(value: T) {
-        encodeSerializableElement(descriptor, 1, value::class.serializer() as KSerializer<T>, value)
-    }
-
-    @InternalSerializationApi
-    override fun serialize(encoder: Encoder, value: TextSource) {
-        encoder.encodeStructure(descriptor) {
-            val valueSerializer = value::class.serializer()
-            val type = serializers.keys.first { serializers[it] == valueSerializer }
-            encodeStringElement(descriptor, 0, type)
-            encode(value)
-        }
-    }
-
-    fun <T: TextSource> include(type: String, serializer: KSerializer<T>) {
+object TextSourceSerializer : TypedSerializer<TextSource>(TextSource::class, baseSerializers) {
+    override fun <T: TextSource> include(type: String, serializer: KSerializer<T>) {
         require(type !in baseSerializers.keys)
-        serializers[type] = serializer
+        super.include(type, serializer)
     }
 
-    fun exclude(type: String) {
+    override fun exclude(type: String) {
         require(type !in baseSerializers.keys)
-        serializers.remove(type)
+        super.exclude(type)
     }
 }
