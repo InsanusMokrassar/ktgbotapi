@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.UpdateReceiver

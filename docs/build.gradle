@@ -36,7 +36,7 @@ kotlin {
             dependencies {
                 implementation kotlin('stdlib')
 
-                project.parent.subprojects.forEach {
+                rootProject.subprojects.forEach {
                     if (it != project) {
                         api it
                     }
@@ -56,7 +56,7 @@ private List<SourceDirectorySet> findSourcesWithName(String... approximateNames)
         }.collect { it.kotlin }
 }
 
-tasks.dokkaHtml {
+Object callback = {
     switch (true) {
         case project.hasProperty("DOKKA_PATH"):
             outputDirectory = project.property("DOKKA_PATH").toString()
@@ -82,11 +82,14 @@ tasks.dokkaHtml {
         }
 
         named("jsMain") {
-            sourceRoots.setFrom(findSourcesWithName("jsMain", "commonMain"))
+            sourceRoots.setFrom(findSourcesWithName("jsMain"))
         }
 
         named("jvmMain") {
-            sourceRoots.setFrom(findSourcesWithName("jvmMain", "commonMain"))
+            sourceRoots.setFrom(findSourcesWithName("jvmMain"))
         }
     }
 }
+
+tasks.dokkaGfm(callback)
+tasks.dokkaHtml(callback)

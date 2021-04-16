@@ -10,7 +10,7 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 
 ## Compatibility
 
-This version compatible with [4th of November 2020 update of TelegramBotAPI (version 5.0)](https://core.telegram.org/bots/api#november-4-2020).
+This version compatible with [9th of March 2021 update of TelegramBotAPI (version 5.1)](https://core.telegram.org/bots/api-changelog#march-9-2021).
 
 ## How to implement library?
 

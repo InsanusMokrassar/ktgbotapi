@@ -1,14 +1,88 @@
 # TelegramBotAPI changelog
 
-## 0.32.10
+## 0.33.4
+
+* `Common`:
+    * `Version`:
+        * `uuid`: `0.2.3` -> `0.2.4`
+        * `MicroUtils`: `0.4.33` -> `0.4.35`
+* `Core`:
+    * All `TextSource` implementators have become `Serializable`
+        * New serializer `TextSourceSerializer`
+    * Interface`FromUserMessage` now extends `Message`
+    * New interface `FromUser`
+        * Interface `FromUserMessage` now extends `FromUser`
+* `Extensions Utils`
+    * Fixes in `parseCommandsWithParams`
+
+## 0.33.3
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.32` -> `0.4.33`
+        * `Ktor`: `1.5.2` -> `1.5.3`
+* `API`:
+    * Bot actions DSL (fix for [#358](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/358))
+* `Behaviour Builder`:
+    * Rewrite logic of `doInSubContextWithUpdatesFilter` and `doInSubContextWithFlowsUpdatesFilterSetup` extensions
+    * All triggers now work with `stopOnCompletion` set up to `false`
+
+## 0.33.2
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.4.30` -> `0.4.32`
+* `Behaviour Builder`:
+    * New typealias `MediaGroupFilter` has been added for `MediaGroup` expectators
+    * Several typealiases became `suspend`:
+        * `CallbackQueryMapper`
+        * `ChatMemberUpdatedMapper`
+        * `InlineQueryMapper`
+    * Commands got an additional parameter - `additionalFilter`. It will be called when all command filters were passed
+
+## 0.33.1
+
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.4.31` -> `1.4.32`
+        * `MicroUtils`: `0.4.29` -> `0.4.30`
+        * `Klocks`: `2.0.6` -> `2.0.7`
+* `Utils Extensions`:
+    * Add extensions `parseCommandsWithParams`
+
+## 0.33.0
+
+**UPDATE UP TO Telegram Bot API 5.1**
+_**ALL DEPRECATIONS WERE REMOVED**_
 
 * `Common`:
     * `Version`:
         * `MicroUtils`: `0.4.28` -> `0.4.29`
 * `Core`:
     * `AdministratorChatMemberSerializer` and `ChatMemberSerializer` has changed their visibility: they are public for now
+    * Add `ChatInviteLinkRequest` with subrequests like `KnownChatInviteLinkRequest`
+    * Add `CreateChatInviteLink`/`EditChatInviteLink`/`RevokeChatInviteLink` requests
+    * Update `KickChatMember` to include `revokeMessages` flag
+    * Update `PromoteChatMember` to include `canManageVoiceChats` and `canManageChat` flags
+    * Add `ChatInviteLink` object
+        * Add `PrimaryInviteLink` for `ChatInviteLink` with `isPrimary == true`
+        * Add `CommonInviteLink` for `ChatInviteLink` with `isPrimary == false`
+    * `AdministratorChatMemberSerializer` has been set as public for several versions
+    * `ChatMemberSerializer` has been set as public for several versions
+    * Add `ChatMemberUpdated`
+    * Add `MessageAutoDeleteTimerChanged`
+    * Add `VoiceChatEvent`
+        * Add `VoiceChatEnded`
+        * Add `VoiceChatParticipantsInvited`
+    * Add `VoiceChatStarted`
+    * Add `ChatMemberUpdatedUpdate`
+        * Add `CommonChatMemberUpdatedUpdate`
+        * Add `MyChatMemberUpdatedUpdate`
+* `API`:
+    * All API extensions has been updated
 * `Behaviour Builder`:
     * Now content triggers and expectators will wait for channel posts too
+    * New waiters and triggers for `ChatMemberUpdated` and its variations
 
 ## 0.32.9
 

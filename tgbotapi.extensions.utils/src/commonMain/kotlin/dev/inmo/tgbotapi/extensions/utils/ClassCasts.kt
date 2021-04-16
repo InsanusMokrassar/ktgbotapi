@@ -32,7 +32,10 @@ import dev.inmo.tgbotapi.types.dice.*
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMember
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
@@ -395,40 +398,24 @@ inline fun SecureValue.asSecureValueWithTranslations(): SecureValueWithTranslati
 inline fun SecureValue.requireSecureValueWithTranslations(): SecureValueWithTranslations = this as SecureValueWithTranslations
 @PreviewFeature
 inline fun Message.asAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent>? = this as? AnonymousGroupContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asAnonymousGroupContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.asAnonymousGroupContentMessageImpl"))
-inline fun Message.asAnonymousGroupMessageImpl() = asAnonymousGroupContentMessageImpl()
 @PreviewFeature
 inline fun Message.requireAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent> = this as AnonymousGroupContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requireAnonymousGroupContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.requireAnonymousGroupContentMessageImpl"))
-inline fun Message.requireAnonymousGroupMessageImpl() = requireAnonymousGroupContentMessageImpl()
 @PreviewFeature
 inline fun Message.asChannelContentMessageImpl(): ChannelContentMessageImpl<MessageContent>? = this as? ChannelContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asChannelContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.asChannelContentMessageImpl"))
-inline fun Message.asChannelMessageImpl() = asChannelContentMessageImpl()
 @PreviewFeature
 inline fun Message.requireChannelContentMessageImpl(): ChannelContentMessageImpl<MessageContent> = this as ChannelContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requireChannelContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.requireChannelContentMessageImpl"))
-inline fun Message.requireChannelMessageImpl() = requireChannelContentMessageImpl()
 @PreviewFeature
 inline fun Message.asFromChannelGroupContentMessageImpl(): FromChannelGroupContentMessageImpl<MessageContent>? = this as? FromChannelGroupContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asFromChannelGroupContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.asFromChannelGroupContentMessageImpl"))
-inline fun Message.asFromChannelGroupMessageImpl() = asFromChannelGroupContentMessageImpl()
 @PreviewFeature
 inline fun Message.requireFromChannelGroupContentMessageImpl(): FromChannelGroupContentMessageImpl<MessageContent> = this as FromChannelGroupContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requireFromChannelGroupContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.requireFromChannelGroupContentMessageImpl"))
-inline fun Message.requireFromChannelGroupMessageImpl() = requireFromChannelGroupContentMessageImpl()
 @PreviewFeature
 inline fun Message.asPassportMessage(): PassportMessage? = this as? PassportMessage
 @PreviewFeature
 inline fun Message.requirePassportMessage(): PassportMessage = this as PassportMessage
 @PreviewFeature
 inline fun Message.asPrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent>? = this as? PrivateContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asPrivateContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.asPrivateContentMessageImpl"))
-inline fun Message.asPrivateMessageImpl() = asPrivateContentMessageImpl()
 @PreviewFeature
 inline fun Message.requirePrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent> = this as PrivateContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requirePrivateContentMessageImpl", "dev.inmo.tgbotapi.extensions.utils.requirePrivateContentMessageImpl"))
-inline fun Message.requirePrivateMessageImpl() = requirePrivateContentMessageImpl()
 @PreviewFeature
 inline fun Message.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? = this as? ChannelEventMessage<ChannelEvent>
 @PreviewFeature
@@ -451,32 +438,20 @@ inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessag
 inline fun Message.requireCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent> = this as CommonSupergroupEventMessage<SupergroupEvent>
 @PreviewFeature
 inline fun Message.asAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent>? = this as? AnonymousGroupContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asAnonymousGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asAnonymousGroupContentMessage"))
-inline fun Message.asAnonymousGroupMessage() = asAnonymousGroupContentMessage()
 @PreviewFeature
 inline fun Message.requireAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent> = this as AnonymousGroupContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requireAnonymousGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireAnonymousGroupContentMessage"))
-inline fun Message.requireAnonymousGroupMessage() = requireAnonymousGroupContentMessage()
 @PreviewFeature
 inline fun Message.asChannelContentMessage(): ChannelContentMessageImpl<MessageContent>? = this as? ChannelContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asChannelContentMessage", "dev.inmo.tgbotapi.extensions.utils.asChannelContentMessage"))
-inline fun Message.asChannelMessage() = asChannelContentMessage()
 @PreviewFeature
 inline fun Message.requireChannelContentMessage(): ChannelContentMessageImpl<MessageContent> = this as ChannelContentMessageImpl<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requireChannelContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireChannelContentMessage"))
-inline fun Message.requireChannelMessage() = requireChannelContentMessage()
 @PreviewFeature
 inline fun Message.asChatEventMessage(): ChatEventMessage<ChatEvent>? = this as? ChatEventMessage<ChatEvent>
 @PreviewFeature
 inline fun Message.requireChatEventMessage(): ChatEventMessage<ChatEvent> = this as ChatEventMessage<ChatEvent>
 @PreviewFeature
 inline fun Message.asCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent>? = this as? CommonGroupContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asCommonGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asCommonGroupContentMessage"))
-inline fun Message.asCommonGroupMessage() = asCommonGroupContentMessage()
 @PreviewFeature
 inline fun Message.requireCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent> = this as CommonGroupContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requireCommonGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireCommonGroupContentMessage"))
-inline fun Message.requireCommonGroupMessage() = requireCommonGroupContentMessage()
 @PreviewFeature
 inline fun Message.asCommonMessage(): CommonMessage<MessageContent>? = this as? CommonMessage<MessageContent>
 @PreviewFeature
@@ -487,24 +462,16 @@ inline fun Message.asContentMessage(): ContentMessage<MessageContent>? = this as
 inline fun Message.requireContentMessage(): ContentMessage<MessageContent> = this as ContentMessage<MessageContent>
 @PreviewFeature
 inline fun Message.asFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent>? = this as? FromChannelGroupContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asFromChannelGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asFromChannelGroupContentMessage"))
-inline fun Message.asFromChannelGroupMessage() = asFromChannelGroupContentMessage()
 @PreviewFeature
 inline fun Message.requireFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent> = this as FromChannelGroupContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requireFromChannelGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireFromChannelGroupContentMessage"))
-inline fun Message.requireFromChannelGroupMessage() = requireFromChannelGroupContentMessage()
 @PreviewFeature
 inline fun Message.asGroupEventMessage(): GroupEventMessage<GroupEvent>? = this as? GroupEventMessage<GroupEvent>
 @PreviewFeature
 inline fun Message.requireGroupEventMessage(): GroupEventMessage<GroupEvent> = this as GroupEventMessage<GroupEvent>
 @PreviewFeature
 inline fun Message.asGroupContentMessage(): GroupContentMessage<MessageContent>? = this as? GroupContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asGroupContentMessage"))
-inline fun Message.asGroupMessage() = asGroupContentMessage()
 @PreviewFeature
 inline fun Message.requireGroupContentMessage(): GroupContentMessage<MessageContent> = this as GroupContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requireGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireGroupContentMessage"))
-inline fun Message.requireGroupMessage() = requireGroupContentMessage()
 @PreviewFeature
 inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupContent>? = this as? MediaGroupMessage<MediaGroupContent>
 @PreviewFeature
@@ -523,20 +490,12 @@ inline fun Message.asPossiblyPaymentMessage(): PossiblyPaymentMessage? = this as
 inline fun Message.requirePossiblyPaymentMessage(): PossiblyPaymentMessage = this as PossiblyPaymentMessage
 @PreviewFeature
 inline fun Message.asPrivateContentMessage(): PrivateContentMessage<MessageContent>? = this as? PrivateContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asPrivateContentMessage", "dev.inmo.tgbotapi.extensions.utils.asPrivateContentMessage"))
-inline fun Message.asPrivateMessage() = asPrivateContentMessage()
 @PreviewFeature
 inline fun Message.requirePrivateContentMessage(): PrivateContentMessage<MessageContent> = this as PrivateContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requirePrivateContentMessage", "dev.inmo.tgbotapi.extensions.utils.requirePrivateContentMessage"))
-inline fun Message.requirePrivateMessage() = requirePrivateContentMessage()
 @PreviewFeature
 inline fun Message.asPublicContentMessage(): PublicContentMessage<MessageContent>? = this as? PublicContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("asPublicContentMessage", "dev.inmo.tgbotapi.extensions.utils.asPublicContentMessage"))
-inline fun Message.asPublicMessage() = asPublicContentMessage()
 @PreviewFeature
 inline fun Message.requirePublicContentMessage(): PublicContentMessage<MessageContent> = this as PublicContentMessage<MessageContent>
-@Deprecated("Renamed", ReplaceWith("requirePublicContentMessage", "dev.inmo.tgbotapi.extensions.utils.requirePublicContentMessage"))
-inline fun Message.requirePublicMessage() = requirePublicContentMessage()
 @PreviewFeature
 inline fun Message.asSignedMessage(): SignedMessage? = this as? SignedMessage
 @PreviewFeature
@@ -938,6 +897,18 @@ inline fun Update.asUnknownUpdate(): UnknownUpdate? = this as? UnknownUpdate
 @PreviewFeature
 inline fun Update.requireUnknownUpdate(): UnknownUpdate = this as UnknownUpdate
 @PreviewFeature
+inline fun Update.asCommonChatMemberUpdatedUpdate(): CommonChatMemberUpdatedUpdate? = this as? CommonChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.requireCommonChatMemberUpdatedUpdate(): CommonChatMemberUpdatedUpdate = this as CommonChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.asMyChatMemberUpdatedUpdate(): MyChatMemberUpdatedUpdate? = this as? MyChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.requireMyChatMemberUpdatedUpdate(): MyChatMemberUpdatedUpdate = this as MyChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.asChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate? = this as? ChatMemberUpdatedUpdate
+@PreviewFeature
+inline fun Update.requireChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate = this as ChatMemberUpdatedUpdate
+@PreviewFeature
 inline fun TelegramMediaFile.asAnimationFile(): AnimationFile? = this as? AnimationFile
 @PreviewFeature
 inline fun TelegramMediaFile.requireAnimationFile(): AnimationFile = this as AnimationFile
@@ -1245,3 +1216,79 @@ inline fun DiceAnimationType.requireFootballDiceAnimationType(): FootballDiceAni
 inline fun DiceAnimationType.asSlotMachineDiceAnimationType(): SlotMachineDiceAnimationType? = this as? SlotMachineDiceAnimationType
 @PreviewFeature
 inline fun DiceAnimationType.requireSlotMachineDiceAnimationType(): SlotMachineDiceAnimationType = this as SlotMachineDiceAnimationType
+@PreviewFeature
+inline fun ChatEvent.asChannelChatCreated(): ChannelChatCreated? = this as? ChannelChatCreated
+@PreviewFeature
+inline fun ChatEvent.requireChannelChatCreated(): ChannelChatCreated = this as ChannelChatCreated
+@PreviewFeature
+inline fun ChatEvent.asDeleteChatPhoto(): DeleteChatPhoto? = this as? DeleteChatPhoto
+@PreviewFeature
+inline fun ChatEvent.requireDeleteChatPhoto(): DeleteChatPhoto = this as DeleteChatPhoto
+@PreviewFeature
+inline fun ChatEvent.asGroupChatCreated(): GroupChatCreated? = this as? GroupChatCreated
+@PreviewFeature
+inline fun ChatEvent.requireGroupChatCreated(): GroupChatCreated = this as GroupChatCreated
+@PreviewFeature
+inline fun ChatEvent.asLeftChatMember(): LeftChatMember? = this as? LeftChatMember
+@PreviewFeature
+inline fun ChatEvent.requireLeftChatMember(): LeftChatMember = this as LeftChatMember
+@PreviewFeature
+inline fun ChatEvent.asMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged? = this as? MessageAutoDeleteTimerChanged
+@PreviewFeature
+inline fun ChatEvent.requireMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged = this as MessageAutoDeleteTimerChanged
+@PreviewFeature
+inline fun ChatEvent.asNewChatMembers(): NewChatMembers? = this as? NewChatMembers
+@PreviewFeature
+inline fun ChatEvent.requireNewChatMembers(): NewChatMembers = this as NewChatMembers
+@PreviewFeature
+inline fun ChatEvent.asNewChatPhoto(): NewChatPhoto? = this as? NewChatPhoto
+@PreviewFeature
+inline fun ChatEvent.requireNewChatPhoto(): NewChatPhoto = this as NewChatPhoto
+@PreviewFeature
+inline fun ChatEvent.asNewChatTitle(): NewChatTitle? = this as? NewChatTitle
+@PreviewFeature
+inline fun ChatEvent.requireNewChatTitle(): NewChatTitle = this as NewChatTitle
+@PreviewFeature
+inline fun ChatEvent.asPinnedMessage(): PinnedMessage? = this as? PinnedMessage
+@PreviewFeature
+inline fun ChatEvent.requirePinnedMessage(): PinnedMessage = this as PinnedMessage
+@PreviewFeature
+inline fun ChatEvent.asProximityAlertTriggered(): ProximityAlertTriggered? = this as? ProximityAlertTriggered
+@PreviewFeature
+inline fun ChatEvent.requireProximityAlertTriggered(): ProximityAlertTriggered = this as ProximityAlertTriggered
+@PreviewFeature
+inline fun ChatEvent.asSupergroupChatCreated(): SupergroupChatCreated? = this as? SupergroupChatCreated
+@PreviewFeature
+inline fun ChatEvent.requireSupergroupChatCreated(): SupergroupChatCreated = this as SupergroupChatCreated
+@PreviewFeature
+inline fun ChatEvent.asChannelEvent(): ChannelEvent? = this as? ChannelEvent
+@PreviewFeature
+inline fun ChatEvent.requireChannelEvent(): ChannelEvent = this as ChannelEvent
+@PreviewFeature
+inline fun ChatEvent.asCommonEvent(): CommonEvent? = this as? CommonEvent
+@PreviewFeature
+inline fun ChatEvent.requireCommonEvent(): CommonEvent = this as CommonEvent
+@PreviewFeature
+inline fun ChatEvent.asGroupEvent(): GroupEvent? = this as? GroupEvent
+@PreviewFeature
+inline fun ChatEvent.requireGroupEvent(): GroupEvent = this as GroupEvent
+@PreviewFeature
+inline fun ChatEvent.asSupergroupEvent(): SupergroupEvent? = this as? SupergroupEvent
+@PreviewFeature
+inline fun ChatEvent.requireSupergroupEvent(): SupergroupEvent = this as SupergroupEvent
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatEvent(): VoiceChatEvent? = this as? VoiceChatEvent
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatEvent(): VoiceChatEvent = this as VoiceChatEvent
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatEnded(): VoiceChatEnded? = this as? VoiceChatEnded
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatEnded(): VoiceChatEnded = this as VoiceChatEnded
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatParticipantsInvited(): VoiceChatParticipantsInvited? = this as? VoiceChatParticipantsInvited
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatParticipantsInvited(): VoiceChatParticipantsInvited = this as VoiceChatParticipantsInvited
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatStarted(): VoiceChatStarted? = this as? VoiceChatStarted
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatStarted(): VoiceChatStarted = this as VoiceChatStarted

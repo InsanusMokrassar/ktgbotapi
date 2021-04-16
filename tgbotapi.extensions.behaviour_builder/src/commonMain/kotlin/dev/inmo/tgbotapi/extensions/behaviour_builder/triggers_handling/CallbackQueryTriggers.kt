@@ -4,7 +4,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
-import dev.inmo.tgbotapi.extensions.utils.*
+import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.CallbackQuery.*
 
@@ -26,7 +26,8 @@ internal suspend inline fun <reified T : CallbackQuery> BehaviourContext.onCallb
             { it.sourceChat() ?.id ?.chatId == triggerQuery.user.id.chatId }
         } else {
             null
-        }
+        },
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerQuery)
     }

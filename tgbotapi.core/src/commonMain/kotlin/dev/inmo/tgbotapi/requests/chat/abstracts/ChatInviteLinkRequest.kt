@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.DeserializationStrategy
 
 interface ChatInviteLinkRequest : SimpleRequest<CommonInviteLink> {
-    val chatId: ChatId
+    val chatId: ChatIdentifier
 
     override val resultDeserializer: DeserializationStrategy<CommonInviteLink>
         get() = CommonInviteLink.serializer()

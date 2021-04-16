@@ -13,16 +13,6 @@ private inline fun <reified T : MessageContent> Flow<ContentMessage<*>>.withCont
     it.withContent<T>()
 }
 
-@Deprecated("This method will be removed in next major update")
-fun <T : MessageContent> Flow<ContentMessage<*>>.withContentType(contentType: KClass<T>) = mapNotNull {
-    if (contentType.isInstance(it.content)) {
-        @Suppress("UNCHECKED_CAST")
-        it as ContentMessage<T>
-    } else {
-        null
-    }
-}
-
 fun Flow<ContentMessage<*>>.onlyAnimationContentMessages() = withContentType<AnimationContent>()
 fun Flow<ContentMessage<*>>.onlyAudioContentMessages() = withContentType<AudioContent>()
 fun Flow<ContentMessage<*>>.onlyContactContentMessages() = withContentType<ContactContent>()

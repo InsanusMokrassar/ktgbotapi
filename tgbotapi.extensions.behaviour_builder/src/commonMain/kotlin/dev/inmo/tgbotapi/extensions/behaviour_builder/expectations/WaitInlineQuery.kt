@@ -1,16 +1,14 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
 import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import kotlinx.coroutines.flow.toList
 
-typealias InlineQueryMapper<T> = T.() -> T?
+typealias InlineQueryMapper<T> = suspend T.() -> T?
 
 private suspend fun <O> BehaviourContext.waitInlineQueries(
     count: Int = 1,

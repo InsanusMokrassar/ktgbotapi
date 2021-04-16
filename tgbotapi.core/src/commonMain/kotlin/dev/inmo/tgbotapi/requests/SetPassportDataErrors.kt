@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests
 
-import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.PassportElementError

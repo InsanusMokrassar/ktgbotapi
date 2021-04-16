@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.chat.invite_links
 
-import com.soywiz.klock.*
+import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.requests.chat.abstracts.EditChatInviteLinkRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
@@ -8,14 +8,14 @@ import kotlinx.serialization.*
 @Serializable
 data class CreateChatInviteLink(
     @SerialName(chatIdField)
-    override val chatId: ChatId,
+    override val chatId: ChatIdentifier,
     @SerialName(expireDateField)
-    private val expirationUnixTimeStamp: UnixTimeStamp? = null,
+    private val expirationUnixTimeStamp: TelegramDate? = null,
     @SerialName(memberLimitField)
     override val membersLimit: MembersLimit? = null
 ) : EditChatInviteLinkRequest {
     override val expireDate: DateTime?
-        get() = expirationUnixTimeStamp ?.seconds ?.let { DateTime(it.milliseconds) }
+        get() = expirationUnixTimeStamp ?.asDate
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
@@ -27,5 +27,5 @@ fun CreateChatInviteLink(
     expireDate: DateTime,
     membersLimit: MembersLimit? = null
 ): CreateChatInviteLink = CreateChatInviteLink(
-    chatId, expireDate.unixMillisDouble.milliseconds.seconds.toLong(), membersLimit
+    chatId, expireDate.toTelegramDate(), membersLimit
 )

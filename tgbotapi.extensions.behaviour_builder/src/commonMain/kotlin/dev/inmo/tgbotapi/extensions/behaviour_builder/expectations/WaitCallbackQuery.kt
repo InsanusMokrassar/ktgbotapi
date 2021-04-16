@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.CallbackQuery.*
 import kotlinx.coroutines.flow.toList
 
-typealias CallbackQueryMapper<T> = T.() -> T?
+typealias CallbackQueryMapper<T> = suspend T.() -> T?
 
 private suspend fun <O> BehaviourContext.waitCallbackQueries(
     count: Int = 1,

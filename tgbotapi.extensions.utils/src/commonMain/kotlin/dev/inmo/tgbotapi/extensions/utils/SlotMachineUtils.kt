@@ -16,8 +16,6 @@ enum class SlotMachineReelImage(val text: String, val number: Int) {
     LEMON("\uD83C\uDF4B", 2),
     SEVEN("7", 3)
 }
-@Deprecated("Renamed", ReplaceWith("SlotMachineReelImage", "dev.inmo.tgbotapi.extensions.utils.SlotMachineReelImage"))
-typealias SlotMachineReelImages = SlotMachineReelImage
 
 /**
  * @return First [SlotMachineReelImage] with [SlotMachineReelImage.number] equal to receiver OR [SlotMachineReelImage.SEVEN]
