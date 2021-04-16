@@ -42,8 +42,7 @@ val result = mutableMapOf<KClass<*>, Set<KClass<*>>>()
 
 
 fun main() {
-    result[Update::class] = KlassIndex.getSubclasses(Update::class).toSet()
-    result[ChatEvent::class] = KlassIndex.getSubclasses(ChatEvent::class).toSet()
+    result[Message::class] = KlassIndex.getSubclasses(Message::class).toSet()
     println("import dev.inmo.tgbotapi.utils.PreviewFeature")
     val importsToFuns = result.keys.flatMap {
         println("import ${it.qualifiedName}")
