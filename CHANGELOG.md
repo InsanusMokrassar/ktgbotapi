@@ -9,6 +9,9 @@
 * `Core`:
     * All `TextSource` implementators have become `Serializable`
         * New serializer `TextSourceSerializer`
+    * Interface`FromUserMessage` now extends `Message`
+    * New interface `FromUser`
+        * Interface `FromUserMessage` now extends `FromUser`
 * `Extensions Utils`
     * Fixes in `parseCommandsWithParams`
 
