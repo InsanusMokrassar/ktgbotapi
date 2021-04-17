@@ -1,14 +1,17 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourceSerializer
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.regular
 import dev.inmo.tgbotapi.types.MessageEntity.toTextParts
 import dev.inmo.tgbotapi.types.captionLength
 import dev.inmo.tgbotapi.types.textLength
+import kotlinx.serialization.Serializable
 
 const val DirectInvocationOfTextSourceConstructor = "It is strongly not recommended to use constructors directly instead of factory methods"
 
 typealias TextSourcesList = List<TextSource>
 
+@Serializable(TextSourceSerializer::class)
 interface TextSource {
     val markdown: String
     val markdownV2: String
@@ -17,6 +20,10 @@ interface TextSource {
 
     val asText: String
         get() = source
+
+    companion object {
+        fun serializer() = TextSourceSerializer
+    }
 }
 
 @Suppress("NOTHING_TO_INLINE")
@@ -28,8 +35,13 @@ inline operator fun TextSource.plus(text: String) = listOf(this, regular(text))
 @Suppress("NOTHING_TO_INLINE")
 inline operator fun List<TextSource>.plus(text: String) = this + regular(text)
 
+@Serializable(TextSourceSerializer::class)
 interface MultilevelTextSource : TextSource {
     val subsources: List<TextSource>
+
+    companion object {
+        fun serializer() = TextSourceSerializer
+    }
 }
 
 data class TextPart(

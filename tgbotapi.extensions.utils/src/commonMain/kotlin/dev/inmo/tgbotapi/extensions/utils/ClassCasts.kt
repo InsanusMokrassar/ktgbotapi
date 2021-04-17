@@ -513,6 +513,10 @@ inline fun Message.asPossiblySentViaBotCommonMessage(): PossiblySentViaBotCommon
 @PreviewFeature
 inline fun Message.requirePossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent> = this as PossiblySentViaBotCommonMessage<MessageContent>
 @PreviewFeature
+inline fun Message.asFromUserMessage(): FromUserMessage? = this as? FromUserMessage
+@PreviewFeature
+inline fun Message.requireFromUserMessage(): FromUserMessage = this as FromUserMessage
+@PreviewFeature
 inline fun BotAction.asFindLocationAction(): FindLocationAction? = this as? FindLocationAction
 @PreviewFeature
 inline fun BotAction.requireFindLocationAction(): FindLocationAction = this as FindLocationAction
