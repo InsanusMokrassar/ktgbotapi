@@ -20,7 +20,7 @@ fun SendAudio(
     chatId: ChatIdentifier,
     audio: InputFile,
     thumb: InputFile? = null,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
     performer: String? = null,

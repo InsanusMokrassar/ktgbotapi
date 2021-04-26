@@ -16,8 +16,8 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 
 data class PhotoContent(
     override val mediaCollection: Photo,
-    override val caption: String? = null,
-    override val captionEntities: List<TextPart> = emptyList()
+    override val text: String? = null,
+    override val textEntities: List<TextPart> = emptyList()
 ) : MediaCollectionContent<PhotoSize>, VisualMediaGroupContent {
     override val media: PhotoSize = mediaCollection.biggest() ?: throw IllegalStateException("Can't locate any photo size for this content")
 

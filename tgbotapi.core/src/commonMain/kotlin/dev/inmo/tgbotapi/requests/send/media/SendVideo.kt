@@ -20,7 +20,7 @@ fun SendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
     thumb: InputFile? = null,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
     width: Int? = null,

@@ -46,7 +46,7 @@ data class InputMediaPhoto internal constructor(
 }
 
 fun PhotoSize.toInputMediaPhoto(
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null
 ): InputMediaPhoto = InputMediaPhoto(
     fileId,

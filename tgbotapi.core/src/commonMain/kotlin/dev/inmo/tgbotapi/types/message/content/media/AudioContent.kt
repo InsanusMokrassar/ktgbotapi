@@ -15,8 +15,8 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.AudioMediaGroupContent
 
 data class AudioContent(
     override val media: AudioFile,
-    override val caption: String? = null,
-    override val captionEntities: List<TextPart> = emptyList()
+    override val text: String? = null,
+    override val textEntities: List<TextPart> = emptyList()
 ) : AudioMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,

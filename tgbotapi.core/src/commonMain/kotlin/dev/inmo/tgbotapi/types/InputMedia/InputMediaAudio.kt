@@ -62,7 +62,7 @@ data class InputMediaAudio internal constructor(
 }
 
 fun AudioFile.toInputMediaAudio(
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     title: String? = this.title
 ): InputMediaAudio = InputMediaAudio(

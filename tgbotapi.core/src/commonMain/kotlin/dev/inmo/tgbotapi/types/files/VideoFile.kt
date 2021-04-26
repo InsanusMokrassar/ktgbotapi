@@ -34,7 +34,7 @@ data class VideoFile(
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toInputMediaVideo(
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null
 ) = InputMediaVideo(
     fileId,

@@ -15,8 +15,8 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 
 data class VideoContent(
     override val media: VideoFile,
-    override val caption: String? = null,
-    override val captionEntities: List<TextPart> = emptyList()
+    override val text: String? = null,
+    override val textEntities: List<TextPart> = emptyList()
 ) : VisualMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,

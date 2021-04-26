@@ -16,7 +16,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 suspend fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     fileId: InputFile,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -26,7 +26,7 @@ suspend fun TelegramBot.sendPhoto(
     SendPhoto(
         chatId,
         fileId,
-        caption,
+        text,
         parseMode,
         disableNotification,
         replyToMessageId,
@@ -38,65 +38,65 @@ suspend fun TelegramBot.sendPhoto(
 suspend fun TelegramBot.sendPhoto(
     chat: Chat,
     fileId: InputFile,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat.id, fileId, caption, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chat.id, fileId, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photo: Photo,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photo.biggest() ?.fileId ?: error("Photo content must not be empty"), caption, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chatId, photo.biggest() ?.fileId ?: error("Photo content must not be empty"), text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend fun TelegramBot.sendPhoto(
     chat: Chat,
     photo: Photo,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat.id, photo, caption, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chat.id, photo, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithPhoto(
     to: Message,
     fileId: InputFile,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, fileId, caption, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(to.chat, fileId, text, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithPhoto(
     to: Message,
     photo: Photo,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, photo, caption, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(to.chat, photo, text, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
     photo: Photo,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = replyWithPhoto(to, photo, caption, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
+) = replyWithPhoto(to, photo, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
 
 
 suspend inline fun TelegramBot.sendPhoto(

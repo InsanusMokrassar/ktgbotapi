@@ -13,9 +13,9 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 
 data class VoiceContent(
     override val media: VoiceFile,
-    override val caption: String? = null,
-    override val captionEntities: List<TextPart> = emptyList()
-) : MediaContent, CaptionedInput {
+    override val text: String? = null,
+    override val textEntities: List<TextPart> = emptyList()
+) : MediaContent, CaptionedInput, TextedInput {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

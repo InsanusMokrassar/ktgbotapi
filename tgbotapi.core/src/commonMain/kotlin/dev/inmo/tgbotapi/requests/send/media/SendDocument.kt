@@ -29,7 +29,7 @@ fun SendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
     thumb: InputFile? = null,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,

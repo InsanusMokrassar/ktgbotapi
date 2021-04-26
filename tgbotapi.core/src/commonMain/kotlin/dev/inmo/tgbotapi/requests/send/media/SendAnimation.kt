@@ -20,7 +20,7 @@ fun SendAnimation(
     chatId: ChatIdentifier,
     animation: InputFile,
     thumb: InputFile? = null,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
     width: Int? = null,

@@ -18,7 +18,7 @@ import kotlinx.serialization.*
 fun SendPhoto(
     chatId: ChatIdentifier,
     photo: InputFile,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
