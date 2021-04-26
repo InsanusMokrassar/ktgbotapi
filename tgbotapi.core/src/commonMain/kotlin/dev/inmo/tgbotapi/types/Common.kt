@@ -319,6 +319,7 @@ const val scaleField = "scale"
 
 const val maxTipAmountField = "max_tip_amount"
 const val suggestedTipAmountsField = "suggested_tip_amounts"
+const val chatTypeField = "chat_type"
 
 const val explanationEntitiesField = "explanation_entities"
 const val explanationParseModeField = "explanation_parse_mode"
