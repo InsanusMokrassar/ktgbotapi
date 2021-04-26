@@ -2,6 +2,9 @@
 
 ## 0.34.0
 
+* `Core`:
+    * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
+
 ## 0.33.4
 
 * `Common`:

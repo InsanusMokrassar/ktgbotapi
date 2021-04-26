@@ -30,13 +30,13 @@ data class SendInvoice(
     val payload: String,
     @SerialName(providerTokenField)
     val providerToken: String,
-    @SerialName(startParameterField)
-    val startParameter: StartParameter,
     @SerialName(currencyField)
     override val currency: Currency,
     @Serializable(LabeledPricesSerializer::class)
     @SerialName(pricesField)
     override val prices: List<LabeledPrice>,
+    @SerialName(startParameterField)
+    val startParameter: StartParameter? = null,
     @SerialName(providerDataField)
     val providerData: String? = null,
     @SerialName(requireNameField)
