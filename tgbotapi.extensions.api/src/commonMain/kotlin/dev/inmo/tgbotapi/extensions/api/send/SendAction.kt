@@ -43,6 +43,14 @@ suspend fun TelegramBot.sendActionUploadAudio(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadAudioAction)
 
+suspend fun TelegramBot.sendActionRecordVoice(
+    chatId: ChatIdentifier
+) = sendBotAction(chatId, RecordVoiceAction)
+
+suspend fun TelegramBot.sendActionUploadVoice(
+    chatId: ChatIdentifier
+) = sendBotAction(chatId, UploadVoiceAction)
+
 suspend fun TelegramBot.sendActionUploadDocument(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadDocumentAction)
@@ -83,6 +91,14 @@ suspend fun TelegramBot.sendActionRecordAudio(
 suspend fun TelegramBot.sendActionUploadAudio(
     chat: Chat
 ) = sendBotAction(chat, UploadAudioAction)
+
+suspend fun TelegramBot.sendActionRecordVoice(
+    chat: Chat
+) = sendBotAction(chat, RecordVoiceAction)
+
+suspend fun TelegramBot.sendActionUploadVoice(
+    chat: Chat
+) = sendBotAction(chat, UploadVoiceAction)
 
 suspend fun TelegramBot.sendActionUploadDocument(
     chat: Chat

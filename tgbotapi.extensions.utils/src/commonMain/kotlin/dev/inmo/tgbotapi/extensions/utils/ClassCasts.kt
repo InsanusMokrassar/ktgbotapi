@@ -525,6 +525,10 @@ inline fun BotAction.asRecordAudioAction(): RecordAudioAction? = this as? Record
 @PreviewFeature
 inline fun BotAction.requireRecordAudioAction(): RecordAudioAction = this as RecordAudioAction
 @PreviewFeature
+inline fun BotAction.asRecordVoiceAction(): RecordVoiceAction? = this as? RecordVoiceAction
+@PreviewFeature
+inline fun BotAction.requireRecordVoiceAction(): RecordVoiceAction = this as RecordVoiceAction
+@PreviewFeature
 inline fun BotAction.asRecordVideoAction(): RecordVideoAction? = this as? RecordVideoAction
 @PreviewFeature
 inline fun BotAction.requireRecordVideoAction(): RecordVideoAction = this as RecordVideoAction
@@ -540,6 +544,10 @@ inline fun BotAction.requireTypingAction(): TypingAction = this as TypingAction
 inline fun BotAction.asUploadAudioAction(): UploadAudioAction? = this as? UploadAudioAction
 @PreviewFeature
 inline fun BotAction.requireUploadAudioAction(): UploadAudioAction = this as UploadAudioAction
+@PreviewFeature
+inline fun BotAction.asUploadVoiceAction(): UploadVoiceAction? = this as? UploadVoiceAction
+@PreviewFeature
+inline fun BotAction.requireUploadVoiceAction(): UploadVoiceAction = this as UploadVoiceAction
 @PreviewFeature
 inline fun BotAction.asUploadDocumentAction(): UploadDocumentAction? = this as? UploadDocumentAction
 @PreviewFeature

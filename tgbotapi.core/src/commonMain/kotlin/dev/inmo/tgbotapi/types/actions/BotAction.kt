@@ -102,6 +102,28 @@ inline val uploadAudio
 inline fun BotAction.asUploadAudio() = this as? UploadAudioAction
 
 /**
+ * Will notify user that bot is recording some audio
+ */
+@Serializable(BotActionSerializer::class)
+object RecordVoiceAction : BotAction() {
+    override val actionName: String = "record_voice"
+}
+inline val recordVoice
+    get() = RecordVoiceAction
+inline fun BotAction.asRecordVoice() = this as? RecordVoiceAction
+
+/**
+ * Will notify user that bot is uploading some audio
+ */
+@Serializable(BotActionSerializer::class)
+object UploadVoiceAction : BotAction() {
+    override val actionName: String = "upload_voice"
+}
+inline val uploadVoice
+    get() = UploadVoiceAction
+inline fun BotAction.asUploadVoice() = this as? UploadVoiceAction
+
+/**
  * Will notify user that bot is uploading some document
  */
 @Serializable(BotActionSerializer::class)
