@@ -355,6 +355,7 @@ const val providerPaymentChargeIdField = "provider_payment_charge_id"
 const val providerTokenField = "provider_token"
 const val providerDataField = "provider_data"
 const val usersField = "users"
+const val startDateField = "start_date"
 
 const val requireNameField = "need_name"
 const val requirePhoneNumberField = "need_phone_number"
