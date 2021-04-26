@@ -35,6 +35,10 @@ data class SendInvoice(
     @Serializable(LabeledPricesSerializer::class)
     @SerialName(pricesField)
     override val prices: List<LabeledPrice>,
+    @SerialName(maxTipAmountField)
+    val maxTipAmount: Int? = null,
+    @SerialName(suggestedTipAmountsField)
+    val suggestedTipAmounts: List<Int>? = null,
     @SerialName(startParameterField)
     val startParameter: StartParameter? = null,
     @SerialName(providerDataField)
@@ -87,6 +91,17 @@ data class SendInvoice(
     @SerialName(photoHeightField)
     var photoHeight: Int? = null
         private set
+
+    init {
+        suggestedTipAmounts ?.let { _ ->
+            require(suggestedTipAmounts.size in suggestedTipAmountsLimit)
+            maxTipAmount ?.let { _ ->
+                require(
+                    suggestedTipAmounts.none { it > maxTipAmount }
+                )
+            }
+        }
+    }
 
     fun setPhoto(
         photoUrl: String,

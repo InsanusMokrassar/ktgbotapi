@@ -4,6 +4,7 @@
 
 * `Core`:
     * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
+    * Fields `SendInvoice#maxTipAmount` and `SendInvoice#suggestedTipAmounts` have been added
 
 ## 0.33.4
 
