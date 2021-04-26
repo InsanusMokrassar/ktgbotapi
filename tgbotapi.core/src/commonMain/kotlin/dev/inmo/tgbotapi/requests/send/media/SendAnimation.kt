@@ -39,7 +39,7 @@ fun SendAnimation(
         chatId,
         animationAsFileId,
         thumbAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         duration,

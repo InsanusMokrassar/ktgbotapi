@@ -67,7 +67,7 @@ fun AudioFile.toInputMediaAudio(
     title: String? = this.title
 ): InputMediaAudio = InputMediaAudio(
     fileId,
-    caption,
+    text,
     parseMode,
     duration,
     performer,

@@ -39,7 +39,7 @@ fun SendAudio(
         chatId,
         audioAsFileId,
         thumbAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         duration,

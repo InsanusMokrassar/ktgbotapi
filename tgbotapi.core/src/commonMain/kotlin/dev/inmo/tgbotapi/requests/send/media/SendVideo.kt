@@ -40,7 +40,7 @@ fun SendVideo(
         chatId,
         videoAsFileId,
         thumbAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         duration,

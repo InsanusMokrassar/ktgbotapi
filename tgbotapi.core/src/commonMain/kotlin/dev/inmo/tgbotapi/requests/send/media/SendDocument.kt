@@ -46,7 +46,7 @@ fun SendDocument(
         chatId,
         documentAsFileId,
         thumbAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         disableNotification,

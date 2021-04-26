@@ -38,7 +38,7 @@ inline fun VideoFile.toInputMediaVideo(
     parseMode: ParseMode? = null
 ) = InputMediaVideo(
     fileId,
-    caption,
+    text,
     parseMode,
     width,
     height,

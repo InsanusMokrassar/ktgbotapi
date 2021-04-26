@@ -50,7 +50,7 @@ fun PhotoSize.toInputMediaPhoto(
     parseMode: ParseMode? = null
 ): InputMediaPhoto = InputMediaPhoto(
     fileId,
-    caption,
+    text,
     parseMode
 )
 

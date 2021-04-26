@@ -28,7 +28,7 @@ fun SendPhoto(
     val data = SendPhotoData(
         chatId,
         (photo as? FileId) ?.fileId,
-        caption,
+        text,
         parseMode,
         null,
         disableNotification,

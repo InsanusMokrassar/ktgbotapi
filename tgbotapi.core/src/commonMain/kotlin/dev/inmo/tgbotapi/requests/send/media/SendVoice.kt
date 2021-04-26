@@ -33,7 +33,7 @@ fun SendVoice(
     val data = SendVoiceData(
         chatId,
         voiceAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         duration,
