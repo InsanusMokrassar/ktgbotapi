@@ -6,11 +6,6 @@ interface Captioned {
     val caption: String?
 }
 
-@Deprecated("This interface is not used in library and will be removed soon")
-interface CaptionedOutput : Captioned {
-    val parseMode: ParseMode?
-}
-
 interface CaptionedInput : Captioned {
     /**
      * Full list of entities. This list WILL contain [TextPart]s with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
