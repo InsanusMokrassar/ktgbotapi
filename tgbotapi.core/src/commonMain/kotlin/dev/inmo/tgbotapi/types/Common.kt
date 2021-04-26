@@ -80,6 +80,8 @@ val openPeriodPollSecondsLimit = 5 .. 600
 
 val membersLimit = 1 .. 99999
 
+val suggestedTipAmountsLimit = 1 .. 4
+
 const val botActionActualityTime: Seconds = 5
 
 // Made as lazy for correct work in K/JS
@@ -314,6 +316,9 @@ const val pointField = "point"
 const val xShiftField = "x_shift"
 const val yShiftField = "y_shift"
 const val scaleField = "scale"
+
+const val maxTipAmountField = "max_tip_amount"
+const val suggestedTipAmountsField = "suggested_tip_amounts"
 
 const val explanationEntitiesField = "explanation_entities"
 const val explanationParseModeField = "explanation_parse_mode"
