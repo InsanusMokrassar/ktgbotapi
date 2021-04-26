@@ -35,10 +35,18 @@ suspend fun TelegramBot.sendActionUploadVideo(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadVideoAction)
 
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("sendActionRecordVoice", "dev.inmo.tgbotapi.extensions.api.send.sendActionRecordVoice")
+)
 suspend fun TelegramBot.sendActionRecordAudio(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, RecordAudioAction)
 
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("sendActionUploadVoice", "dev.inmo.tgbotapi.extensions.api.send.sendActionUploadVoice")
+)
 suspend fun TelegramBot.sendActionUploadAudio(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadAudioAction)
@@ -84,10 +92,18 @@ suspend fun TelegramBot.sendActionUploadVideo(
     chat: Chat
 ) = sendBotAction(chat, UploadVideoAction)
 
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("sendActionRecordVoice", "dev.inmo.tgbotapi.extensions.api.send.sendActionRecordVoice")
+)
 suspend fun TelegramBot.sendActionRecordAudio(
     chat: Chat
 ) = sendBotAction(chat, RecordAudioAction)
 
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("sendActionUploadVoice", "dev.inmo.tgbotapi.extensions.api.send.sendActionUploadVoice")
+)
 suspend fun TelegramBot.sendActionUploadAudio(
     chat: Chat
 ) = sendBotAction(chat, UploadAudioAction)

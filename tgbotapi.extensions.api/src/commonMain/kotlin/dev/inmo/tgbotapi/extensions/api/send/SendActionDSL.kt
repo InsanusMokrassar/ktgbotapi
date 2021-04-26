@@ -56,7 +56,15 @@ suspend fun <T> TelegramBot.withTypingAction(chatId: ChatId, block: TelegramBotA
 suspend fun <T> TelegramBot.withUploadPhotoAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, UploadPhotoAction, block)
 suspend fun <T> TelegramBot.withRecordVideoAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, RecordVideoAction, block)
 suspend fun <T> TelegramBot.withUploadVideoAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, UploadVideoAction, block)
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("withRecordVoiceAction", "dev.inmo.tgbotapi.extensions.api.send.withRecordVoiceAction")
+)
 suspend fun <T> TelegramBot.withRecordAudioAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, RecordAudioAction, block)
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("withUploadVoiceAction", "dev.inmo.tgbotapi.extensions.api.send.withUploadVoiceAction")
+)
 suspend fun <T> TelegramBot.withUploadAudioAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, UploadAudioAction, block)
 suspend fun <T> TelegramBot.withRecordVoiceAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, RecordVoiceAction, block)
 suspend fun <T> TelegramBot.withUploadVoiceAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, UploadVoiceAction, block)
@@ -70,7 +78,15 @@ suspend fun <T> TelegramBot.withTypingAction(chat: Chat, block: TelegramBotActio
 suspend fun <T> TelegramBot.withUploadPhotoAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, UploadPhotoAction, block)
 suspend fun <T> TelegramBot.withRecordVideoAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, RecordVideoAction, block)
 suspend fun <T> TelegramBot.withUploadVideoAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, UploadVideoAction, block)
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("withRecordVoiceAction", "dev.inmo.tgbotapi.extensions.api.send.withRecordVoiceAction")
+)
 suspend fun <T> TelegramBot.withRecordAudioAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, RecordAudioAction, block)
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("withUploadVoiceAction", "dev.inmo.tgbotapi.extensions.api.send.withUploadVoiceAction")
+)
 suspend fun <T> TelegramBot.withUploadAudioAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, UploadAudioAction, block)
 suspend fun <T> TelegramBot.withRecordVoiceAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, RecordVoiceAction, block)
 suspend fun <T> TelegramBot.withUploadVoiceAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, UploadVoiceAction, block)
