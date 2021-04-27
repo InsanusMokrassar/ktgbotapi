@@ -4,8 +4,11 @@
 
 * `Core`:
     * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
-    * Fields `SendInvoice#maxTipAmount` and `SendInvoice#suggestedTipAmounts` have been added
+    * New interface `CommonSendInvoiceData` has been added
+      * Fields `CommonSendInvoiceData#maxTipAmount` and `CommonSendInvoiceData#suggestedTipAmounts` have been added
     * New type `InputInvoiceMessageContent` has been added
+    * Interface `Captioned` and `CaptionedInput` now is deprecated
+      * Most of captions usages were replaced with texts
     * `textSources` become main field in `TextedInput`
         * `textEntities` become are calculable property in `TextedInput`
 
