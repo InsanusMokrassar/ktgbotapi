@@ -16,7 +16,7 @@ data class AnimationContent(
     override val media: AnimationFile,
     val includedDocument: DocumentFile?,
     override val text: String?,
-    override val textEntities: List<TextPart>
+    override val textSources: TextSourcesList = emptyList()
 ) : MediaContent, CaptionedInput, TextedInput {
     override fun createResend(
         chatId: ChatIdentifier,

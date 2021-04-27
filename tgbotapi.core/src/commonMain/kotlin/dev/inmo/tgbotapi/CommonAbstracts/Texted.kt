@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
+import dev.inmo.tgbotapi.types.MessageEntity.toTextParts
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 
 interface Texted {
@@ -18,18 +19,16 @@ interface TextedOutput : ParsableOutput, EntitiesOutput
 
 interface TextedInput : Texted {
     /**
+     * Full list of [TextSource] built from source[TextedInput.textEntities]
+     *
+     * @see justTextSources
+     */
+    val textSources: List<TextSource>
+    /**
      * Here must be full list of entities. This list must contains [TextPart]s with
      * [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource] in case if source text contains parts of
      * regular text
      */
     val textEntities: List<TextPart>
+        get() = textSources.toTextParts()
 }
-
-/**
- * Full list of [TextSource] built from source[TextedInput.textEntities]
- *
- * @see TextedInput.textEntities
- * @see justTextSources
- */
-val TextedInput.textSources
-    get() = textEntities.justTextSources()

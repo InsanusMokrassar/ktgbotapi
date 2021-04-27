@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
 data class TextContent(
     override val text: String,
-    override val textEntities: List<TextPart> = emptyList()
+    override val textSources: TextSourcesList = emptyList(),
 ) : MessageContent, TextedInput {
     override fun createResend(
         chatId: ChatIdentifier,

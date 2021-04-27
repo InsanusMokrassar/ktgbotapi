@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message
 
+import dev.inmo.tgbotapi.CommonAbstracts.justTextSources
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntities
 import dev.inmo.tgbotapi.types.MessageEntity.asTextParts
@@ -102,11 +103,11 @@ internal data class RawMessage(
 ) {
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
-            (caption_entities ?: emptyList()).asTextParts(caption)
+            (caption_entities ?: emptyList()).asTextParts(caption).justTextSources()
         } ?: emptyList()
 
         when {
-            text != null -> TextContent(text, (entities ?: emptyList()).asTextParts(text))
+            text != null -> TextContent(text, (entities ?: emptyList()).asTextParts(text).justTextSources())
             audio != null -> AudioContent(
                 audio,
                 caption,

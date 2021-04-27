@@ -17,7 +17,7 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 data class DocumentContent(
     override val media: DocumentFile,
     override val text: String? = null,
-    override val textEntities: List<TextPart> = emptyList()
+    override val textSources: TextSourcesList = emptyList()
 ) : DocumentMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -46,7 +46,7 @@ inline fun MediaContent.asDocumentContent() = when (this) {
     is TextedInput -> DocumentContent(
         media.asDocumentFile(),
         text,
-        textEntities
+        textSources
     )
     else -> DocumentContent(
         media.asDocumentFile()

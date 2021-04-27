@@ -6,6 +6,8 @@
     * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
     * Fields `SendInvoice#maxTipAmount` and `SendInvoice#suggestedTipAmounts` have been added
     * New type `InputInvoiceMessageContent` has been added
+    * `textSources` become main field in `TextedInput`
+        * `textEntities` become are calculable property in `TextedInput`
 
 ## 0.33.4
 

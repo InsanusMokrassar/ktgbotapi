@@ -9,6 +9,6 @@ data class Game(
     val description: String,
     val photo: Photo,
     override val text: String? = null,
-    override val textEntities: List<TextPart> = emptyList(),
+    override val textSources: TextSourcesList = emptyList(),
     val animation: AnimationFile? = null
 ) : Titled, CaptionedInput, TextedInput

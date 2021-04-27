@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.games
 
+import dev.inmo.tgbotapi.CommonAbstracts.justTextSources
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntities
 import dev.inmo.tgbotapi.types.MessageEntity.asTextParts
@@ -28,7 +29,7 @@ internal data class RawGame(
         description,
         photo,
         text,
-        text ?.let { _ -> textEntities.asTextParts(text) } ?: emptyList(),
+        text ?.let { _ -> textEntities.asTextParts(text).justTextSources() } ?: emptyList(),
         animation
     )
 }

@@ -20,10 +20,3 @@ interface CaptionedInput : Captioned, TextedInput {
     val captionEntities: List<TextPart>
         get() = textEntities
 }
-
-/**
- * @see CaptionedInput.captionEntities
- * @see justTextSources
- */
-val CaptionedInput.textSources
-    get() = captionEntities.justTextSources()

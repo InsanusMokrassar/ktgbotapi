@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
-import dev.inmo.tgbotapi.CommonAbstracts.textSources
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVideo
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -16,7 +15,7 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 data class VideoContent(
     override val media: VideoFile,
     override val text: String? = null,
-    override val textEntities: List<TextPart> = emptyList()
+    override val textSources: TextSourcesList = emptyList()
 ) : VisualMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,
