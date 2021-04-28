@@ -84,7 +84,7 @@ data class SendTextMessage internal constructor(
     DisableWebPagePreview
 {
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text) ?.justTextSources()
+        rawEntities ?.asTextSources(text)
     }
 
     init {

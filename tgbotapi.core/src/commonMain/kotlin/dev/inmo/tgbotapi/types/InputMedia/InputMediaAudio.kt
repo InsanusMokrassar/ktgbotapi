@@ -51,7 +51,7 @@ data class InputMediaAudio internal constructor(
 ) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, Performerable {
     override val type: String = audioInputMediaType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)

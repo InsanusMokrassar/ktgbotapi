@@ -17,15 +17,10 @@ interface EntitiesExplainedOutput : Explained {
 interface ExplainedOutput : ParsableExplainedOutput, EntitiesExplainedOutput
 
 interface ExplainedInput : Explained {
+    val textSources: TextSourcesList
     /**
      * Full list of entities. This list WILL contain [TextPart]s with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
      */
     val explanationEntities: List<TextPart>
+        get() = textSources.toTextParts()
 }
-
-/**
- * @see ExplainedInput.explanationEntities
- * @see justTextSources
- */
-val ExplainedInput.textSources
-    get() = explanationEntities.justTextSources()

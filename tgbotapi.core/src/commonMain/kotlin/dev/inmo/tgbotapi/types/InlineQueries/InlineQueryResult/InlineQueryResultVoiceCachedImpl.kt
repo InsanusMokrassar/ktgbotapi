@@ -53,6 +53,6 @@ data class InlineQueryResultVoiceCachedImpl internal constructor(
 ) : InlineQueryResultVoiceCached {
     override val type: String = inlineQueryResultVoiceType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

@@ -35,7 +35,7 @@ data class InputMediaPhoto internal constructor(
 ) : InputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = photoInputMediaType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)

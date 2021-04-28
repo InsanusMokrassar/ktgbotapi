@@ -57,6 +57,6 @@ data class InlineQueryResultVideoCachedImpl internal constructor(
 ) : InlineQueryResultVideoCached {
     override val type: String = inlineQueryResultVideoType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

@@ -60,6 +60,6 @@ data class InlineQueryResultAudioImpl internal constructor(
 ) : InlineQueryResultAudio {
     override val type: String = inlineQueryResultAudioType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

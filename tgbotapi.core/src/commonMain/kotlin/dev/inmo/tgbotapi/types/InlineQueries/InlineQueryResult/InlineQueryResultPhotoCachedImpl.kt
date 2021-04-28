@@ -57,6 +57,6 @@ data class InlineQueryResultPhotoCachedImpl internal constructor(
 ) : InlineQueryResultPhotoCached {
     override val type: String = inlineQueryResultPhotoType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

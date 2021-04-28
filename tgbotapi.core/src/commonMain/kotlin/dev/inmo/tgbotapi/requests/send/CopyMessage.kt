@@ -63,7 +63,7 @@ data class CopyMessage internal constructor(
     override val chatId: ChatIdentifier
         get() = fromChatId
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun method(): String = "copyMessage"

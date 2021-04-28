@@ -1,76 +1,11 @@
 package dev.inmo.tgbotapi.utils.internal
 
 import dev.inmo.tgbotapi.CommonAbstracts.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.regular
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.link
 import dev.inmo.tgbotapi.utils.extensions.escapeMarkdownV2Link
 import dev.inmo.tgbotapi.utils.extensions.toHtml
-
-internal fun String.fullListOfSubSource(sourceList: List<TextPart>): List<TextPart> {
-    val sortedSourceList = sourceList.sortedBy { it.range.first }.toMutableList()
-
-    var previousLastIndex = 0
-
-    val newSubSources = mutableListOf<TextPart>()
-
-    while (sortedSourceList.isNotEmpty()) {
-        val topSource = sortedSourceList.removeAt(0)
-        if (topSource.range.first - previousLastIndex > 0) {
-            val range = previousLastIndex until topSource.range.first
-            newSubSources.add(
-                TextPart(
-                    range,
-                    RegularTextSource(
-                        substring(range)
-                    )
-                )
-            )
-        }
-        newSubSources.add(topSource)
-        previousLastIndex = topSource.range.last + 1
-    }
-
-    if (length > previousLastIndex) {
-        val range = previousLastIndex until length
-        newSubSources.add(
-            TextPart(
-                range,
-                RegularTextSource(
-                    substring(range)
-                )
-            )
-        )
-    }
-
-    return newSubSources
-}
-
-internal fun List<TextPart>.shiftSourcesToTheLeft(shiftCount: Int = 1): List<TextPart> {
-    return mapNotNull {
-        val first = (it.range.first - shiftCount).let { firstCalculated ->
-            if (firstCalculated < 0) {
-                0
-            } else {
-                firstCalculated
-            }
-        }
-        val last = (it.range.last - shiftCount).let { lastCalculated ->
-            if (lastCalculated < 0) {
-                0
-            } else {
-                lastCalculated
-            }
-        }
-        it.copy(range = first .. last).let { newSubSource ->
-            if (newSubSource.range.isEmpty()) {
-                null
-            } else {
-                newSubSource
-            }
-        }
-    }
-}
 
 private fun List<TextSource>.joinSubSourcesMarkdownV2() = joinToString("") {
     it.markdownV2

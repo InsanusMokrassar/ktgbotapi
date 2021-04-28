@@ -121,7 +121,7 @@ data class SendVoiceData internal constructor(
     DuratedSendMessageRequest<ContentMessage<VoiceContent>>
 {
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {

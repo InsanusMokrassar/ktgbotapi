@@ -10,6 +10,7 @@
     * Interface `Captioned` and `CaptionedInput` now is deprecated
       * Most of captions usages were replaced with texts
     * `textSources` become main field in `TextedInput`
+        * **MIGRATION** Remove all `import dev.inmo.tgbotapi.CommonAbstracts.textSources` in your project
         * `textEntities` become are calculable property in `TextedInput`
 
 ## 0.33.4

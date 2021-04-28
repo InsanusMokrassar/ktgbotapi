@@ -59,7 +59,7 @@ data class EditChatMessageCaption internal constructor(
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<MediaContent>, EditTextChatMessage, EditReplyMessage {
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text) ?.justTextSources()
+        rawEntities ?.asTextSources(text)
     }
 
     override fun method(): String = editMessageCaptionMethod

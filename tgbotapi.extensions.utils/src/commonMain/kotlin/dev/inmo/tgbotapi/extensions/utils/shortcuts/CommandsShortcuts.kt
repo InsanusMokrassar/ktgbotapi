@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
 import dev.inmo.tgbotapi.CommonAbstracts.TextSource
-import dev.inmo.tgbotapi.CommonAbstracts.textSources
 import dev.inmo.tgbotapi.extensions.utils.onlyTextContentMessages
 import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.BotCommandTextSource

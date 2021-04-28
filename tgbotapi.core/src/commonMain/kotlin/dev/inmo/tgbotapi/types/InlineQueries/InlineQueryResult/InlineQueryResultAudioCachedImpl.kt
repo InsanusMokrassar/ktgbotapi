@@ -49,6 +49,6 @@ data class InlineQueryResultAudioCachedImpl internal constructor(
 ) : InlineQueryResultAudioCached {
     override val type: String = inlineQueryResultAudioType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

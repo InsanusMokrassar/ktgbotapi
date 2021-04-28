@@ -57,6 +57,6 @@ data class InlineQueryResultDocumentCachedImpl internal constructor(
 ) : InlineQueryResultDocumentCached {
     override val type: String = inlineQueryResultDocumentType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

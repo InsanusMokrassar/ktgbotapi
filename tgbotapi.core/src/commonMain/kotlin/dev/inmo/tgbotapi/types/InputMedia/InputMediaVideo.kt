@@ -46,7 +46,7 @@ data class InputMediaVideo internal constructor (
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = videoInputMediaType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)

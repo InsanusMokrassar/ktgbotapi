@@ -3,8 +3,6 @@ package dev.inmo.tgbotapi.types.MessageEntity
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.User
-import dev.inmo.tgbotapi.utils.internal.fullListOfSubSource
-import dev.inmo.tgbotapi.utils.internal.shiftSourcesToTheLeft
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -15,70 +13,115 @@ internal data class RawMessageEntity(
     val url: String? = null,
     val user: User? = null,
     val language: String? = null
-)
-
-internal fun RawMessageEntity.asTextParts(
-    source: String,
-    subParts: List<TextPart>
-): List<TextPart> {
-    val sourceSubstring: String = source.substring(offset, offset + length)
-    val range = offset until (offset + length)
-    val shiftedSubSources = sourceSubstring.fullListOfSubSource(subParts.shiftSourcesToTheLeft(offset)).justTextSources()
-    return when (type) {
-        "mention" -> MentionTextSource(sourceSubstring, shiftedSubSources)
-        "hashtag" -> HashTagTextSource(sourceSubstring, shiftedSubSources)
-        "cashtag" -> CashTagTextSource(sourceSubstring, shiftedSubSources)
-        "bot_command" -> BotCommandTextSource(sourceSubstring)
-        "url" -> URLTextSource(sourceSubstring)
-        "email" -> EMailTextSource(sourceSubstring, shiftedSubSources)
-        "phone_number" -> PhoneNumberTextSource(sourceSubstring, shiftedSubSources)
-        "bold" -> BoldTextSource(sourceSubstring, shiftedSubSources)
-        "italic" -> ItalicTextSource(sourceSubstring, shiftedSubSources)
-        "code" -> CodeTextSource(sourceSubstring)
-        "pre" -> PreTextSource(sourceSubstring, language)
-        "text_link" -> TextLinkTextSource(sourceSubstring, url ?: throw IllegalStateException("URL must not be null for text link"))
-        "text_mention" -> TextMentionTextSource(sourceSubstring, user ?: throw IllegalStateException("User must not be null for text mention"), shiftedSubSources)
-        "underline" -> UnderlineTextSource(sourceSubstring, shiftedSubSources)
-        "strikethrough" -> StrikethroughTextSource(sourceSubstring, shiftedSubSources)
-        else -> RegularTextSource(sourceSubstring)
-    }.let {
-        val part = TextPart(range, it)
-        if (it !is MultilevelTextSource && subParts.isNotEmpty()) {
-            (subParts + part).sortedBy { currentPart -> currentPart.range.first }
-        } else {
-            listOf(part)
-        }
+) {
+    internal val range by lazy {
+        offset until (offset + length)
     }
 }
 
-internal fun createTextPart(originalFullString: String, entities: RawMessageEntities): List<TextPart> {
-    val mutableEntities = entities.toMutableList()
-    mutableEntities.sortBy { it.offset }
-    val resultList = mutableListOf<TextPart>()
+internal fun RawMessageEntity.asTextSource(
+    source: String,
+    subParts: List<TextSource>
+): TextSource {
+    val sourceSubstring: String = source.substring(range)
+    val subPartsWithRegulars by lazy {
+        subParts.fillWithRegulars(sourceSubstring)
+    }
+    return when (type) {
+        "mention" -> MentionTextSource(sourceSubstring, subPartsWithRegulars)
+        "hashtag" -> HashTagTextSource(sourceSubstring, subPartsWithRegulars)
+        "cashtag" -> CashTagTextSource(sourceSubstring, subPartsWithRegulars)
+        "bot_command" -> BotCommandTextSource(sourceSubstring)
+        "url" -> URLTextSource(sourceSubstring)
+        "email" -> EMailTextSource(sourceSubstring, subPartsWithRegulars)
+        "phone_number" -> PhoneNumberTextSource(sourceSubstring, subPartsWithRegulars)
+        "bold" -> BoldTextSource(sourceSubstring, subPartsWithRegulars)
+        "italic" -> ItalicTextSource(sourceSubstring, subPartsWithRegulars)
+        "code" -> CodeTextSource(sourceSubstring)
+        "pre" -> PreTextSource(sourceSubstring, language)
+        "text_link" -> TextLinkTextSource(sourceSubstring, url ?: throw IllegalStateException("URL must not be null for text link"))
+        "text_mention" -> TextMentionTextSource(sourceSubstring, user ?: throw IllegalStateException("User must not be null for text mention"), subPartsWithRegulars)
+        "underline" -> UnderlineTextSource(sourceSubstring, subPartsWithRegulars)
+        "strikethrough" -> StrikethroughTextSource(sourceSubstring, subPartsWithRegulars)
+        else -> RegularTextSource(sourceSubstring)
+    }
+}
+
+private inline operator fun <T : Comparable<T>> ClosedRange<T>.contains(other: ClosedRange<T>): Boolean {
+    return start <= other.start && endInclusive >= other.endInclusive
+}
+
+internal fun List<TextSource>.fillWithRegulars(source: String): List<TextSource> {
+    var index = 0
+    val result = mutableListOf<TextSource>()
+    for (i in 0 until size) {
+        val textSource = get(i)
+        val thisSourceInStart = source.startsWith(textSource.source, index)
+        if (!thisSourceInStart) {
+            val regularEndIndex = source.indexOf(textSource.source)
+            result.add(regular(source.substring(index, regularEndIndex)))
+            index = regularEndIndex
+        }
+        result.add(textSource)
+        index += textSource.source.length
+    }
+
+    if (index != source.length) {
+        result.add(regular(source.substring(index, source.length)))
+    }
+
+    return result
+}
+
+private fun createTextSources(originalFullString: String, entities: RawMessageEntities): List<TextSource> {
+    val mutableEntities = entities.toMutableList().apply { sortBy { it.offset } }
+    val resultList = mutableListOf<TextSource>()
 
     while (mutableEntities.isNotEmpty()) {
-        val currentFirst = mutableEntities.removeAt(0)
-        val subEntities = if (mutableEntities.isNotEmpty()) {
-            val lastIndex = currentFirst.offset + currentFirst.length
-            val subEntities = mutableListOf<RawMessageEntity>()
-            while (mutableEntities.isNotEmpty()) {
-                val currentPossibleSubEntity = mutableEntities.first()
-                if (currentPossibleSubEntity.offset < lastIndex) {
-                    subEntities.add(currentPossibleSubEntity)
-                    mutableEntities.removeAt(0)
-                } else {
-                    break
+        var parent = mutableEntities.removeFirst()
+        val subentities = mutableListOf<RawMessageEntity>()
+        val toAddCutted = mutableListOf<RawMessageEntity>()
+        while (mutableEntities.isNotEmpty()) {
+            val potentialParent = mutableEntities.first()
+            when {
+                potentialParent.range.first > parent.range.last -> break
+                potentialParent.range in parent.range -> {
+                    subentities.add(potentialParent)
+                }
+                potentialParent.offset == parent.offset && potentialParent.length > parent.length -> {
+                    subentities.add(parent)
+                    parent = potentialParent
+                }
+                else -> { // need to cut
+                    toAddCutted.add(potentialParent)
                 }
             }
-            subEntities
-        } else {
-            emptyList<RawMessageEntity>()
+            mutableEntities.remove(potentialParent)
         }
-
-        resultList.addAll(
-            currentFirst.asTextParts(
+        val subtextSources = if (subentities.isNotEmpty()) {
+            mutableEntities.removeAll(subentities)
+            if (toAddCutted.isNotEmpty()) {
+                val borderIndex = parent.range.last + 1
+                mutableEntities.addAll(
+                    0,
+                    toAddCutted.map {
+                        val firstLength = borderIndex - it.offset
+                        subentities.add(it.copy(length = firstLength))
+                        it.copy(
+                            offset = borderIndex,
+                            length = it.length - firstLength
+                        )
+                    }
+                )
+            }
+            createTextSources(originalFullString, subentities)
+        } else {
+            emptyList()
+        }
+        resultList.add(
+            parent.asTextSource(
                 originalFullString,
-                createTextPart(originalFullString, subEntities)
+                subtextSources
             )
         )
     }
@@ -86,46 +129,41 @@ internal fun createTextPart(originalFullString: String, entities: RawMessageEnti
     return resultList
 }
 
-internal fun TextPart.asRawMessageEntities(): List<RawMessageEntity> {
+internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEntity> {
     val source = source
-    val length = range.last - range.first + 1
-
+    val length = source.length
     return listOfNotNull(
-        when (source) {
-            is MentionTextSource -> RawMessageEntity("mention", range.first, length)
-            is HashTagTextSource -> RawMessageEntity("hashtag", range.first, length)
-            is CashTagTextSource -> RawMessageEntity("cashtag", range.first, length)
-            is BotCommandTextSource -> RawMessageEntity("bot_command", range.first, length)
-            is URLTextSource -> RawMessageEntity("url", range.first, length)
-            is EMailTextSource -> RawMessageEntity("email", range.first, length)
-            is PhoneNumberTextSource -> RawMessageEntity("phone_number", range.first, length)
-            is BoldTextSource -> RawMessageEntity("bold", range.first, length)
-            is ItalicTextSource -> RawMessageEntity("italic", range.first, length)
-            is CodeTextSource -> RawMessageEntity("code", range.first, length)
-            is PreTextSource -> RawMessageEntity("pre", range.first, length, language = source.language)
-            is TextLinkTextSource -> RawMessageEntity("text_link", range.first, length, source.url)
-            is TextMentionTextSource -> RawMessageEntity("text_mention", range.first, length, user = source.user)
-            is UnderlineTextSource -> RawMessageEntity("underline", range.first, length)
-            is StrikethroughTextSource -> RawMessageEntity("strikethrough", range.first, length)
+        when (this) {
+            is MentionTextSource -> RawMessageEntity("mention", offset, length)
+            is HashTagTextSource -> RawMessageEntity("hashtag", offset, length)
+            is CashTagTextSource -> RawMessageEntity("cashtag", offset, length)
+            is BotCommandTextSource -> RawMessageEntity("bot_command", offset, length)
+            is URLTextSource -> RawMessageEntity("url", offset, length)
+            is EMailTextSource -> RawMessageEntity("email", offset, length)
+            is PhoneNumberTextSource -> RawMessageEntity("phone_number", offset, length)
+            is BoldTextSource -> RawMessageEntity("bold", offset, length)
+            is ItalicTextSource -> RawMessageEntity("italic", offset, length)
+            is CodeTextSource -> RawMessageEntity("code", offset, length)
+            is PreTextSource -> RawMessageEntity("pre", offset, length, language = language)
+            is TextLinkTextSource -> RawMessageEntity("text_link", offset, length, url)
+            is TextMentionTextSource -> RawMessageEntity("text_mention", offset, length, user = user)
+            is UnderlineTextSource -> RawMessageEntity("underline", offset, length)
+            is StrikethroughTextSource -> RawMessageEntity("strikethrough", offset, length)
             else -> null
         }
-    ) + if (source is MultilevelTextSource) {
-        source.textParts(range.first).asRawMessageEntities()
+    ) + if (this is MultilevelTextSource) {
+        subsources.toRawMessageEntities(offset)
     } else {
         emptyList()
     }
 }
 
-internal fun List<TextPart>.asRawMessageEntities(): List<RawMessageEntity> = flatMap { it.asRawMessageEntities() }
 
-internal fun List<TextSource>.toTextParts(preOffset: Int = 0): List<TextPart> {
+internal fun List<TextSource>.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
     var i = preOffset
-    return map {
-        TextPart(
-            i until (i + it.source.length),
-            it
-        ).also {
-            i = it.range.last + 1
+    return flatMap {
+        it.toRawMessageEntities(i).also {
+            i += it.maxByOrNull { it.length }!!.length + 1
         }
     }
 }
@@ -136,10 +174,8 @@ fun String.removeLeading(word: String) = if (startsWith(word)){
     this
 }
 
-internal fun List<TextSource>.toRawMessageEntities(): List<RawMessageEntity> = toTextParts().asRawMessageEntities()
+internal fun List<TextSource>.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
 
-internal fun RawMessageEntities.asTextParts(sourceString: String): List<TextPart> = sourceString.fullListOfSubSource(
-    createTextPart(sourceString, this)
-)
+internal fun RawMessageEntities.asTextSources(sourceString: String): List<TextSource> = createTextSources(sourceString, this).fillWithRegulars(sourceString)
 
 internal typealias RawMessageEntities = List<RawMessageEntity>

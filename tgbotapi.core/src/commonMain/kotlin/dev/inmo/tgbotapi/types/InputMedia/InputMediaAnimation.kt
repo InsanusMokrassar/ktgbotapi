@@ -45,7 +45,7 @@ data class InputMediaAnimation internal constructor(
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, TextedOutput {
     override val type: String = "animation"
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     @SerialName(mediaField)

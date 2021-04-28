@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.CommonAbstracts
 
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourceSerializer
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.regular
-import dev.inmo.tgbotapi.types.MessageEntity.toTextParts
 import dev.inmo.tgbotapi.types.captionLength
 import dev.inmo.tgbotapi.types.textLength
 import kotlinx.serialization.Serializable
@@ -44,14 +43,27 @@ interface MultilevelTextSource : TextSource {
     }
 }
 
+@Deprecated("This class will be removed soon. Use TextSources instead")
 data class TextPart(
     val range: IntRange,
     val source: TextSource
 )
 
+@Deprecated("This method is no longer required to work with TextSources")
 fun List<TextPart>.justTextSources() = map { it.source }
+internal fun List<TextSource>.toTextParts(preOffset: Int = 0): List<TextPart> {
+    var i = preOffset
+    return map {
+        TextPart(
+            i until (i + it.source.length),
+            it
+        ).also {
+            i = it.range.last + 1
+        }
+    }
+}
+
 fun List<TextSource>.makeString() = joinToString("") { it.source }
-internal fun MultilevelTextSource.textParts(offset: Int): List<TextPart> = subsources.toTextParts(offset)
 fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {
     if (isEmpty()) {
         return emptyList()

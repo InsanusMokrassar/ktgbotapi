@@ -73,7 +73,7 @@ data class InlineQueryResultGifImpl internal constructor(
 ) : InlineQueryResultGif {
     override val type: String = inlineQueryResultGifType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {

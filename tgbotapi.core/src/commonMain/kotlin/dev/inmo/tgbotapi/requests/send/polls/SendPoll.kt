@@ -360,7 +360,7 @@ data class SendQuizPoll internal constructor(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(explanation ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(explanation ?: return@lazy null)
     }
 
     init {

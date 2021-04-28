@@ -39,6 +39,6 @@ data class InputTextMessageContent internal constructor(
     override val disableWebPagePreview: Boolean? = null
 ) : TextedOutput, DisableWebPagePreview, InputMessageContent {
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text) ?.justTextSources()
+        rawEntities ?.asTextSources(text)
     }
 }

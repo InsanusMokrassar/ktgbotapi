@@ -73,7 +73,7 @@ data class InlineQueryResultMpeg4GifImpl internal constructor(
 ) : InlineQueryResultMpeg4Gif {
     override val type: String = inlineQueryResultMpeg4GifType
     override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {
