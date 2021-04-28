@@ -15,6 +15,7 @@ _**ALL OLD DEPRECATIONS WERE REMOVED**_
     * `textSources` become main field in `TextedInput`
         * **MIGRATION** Remove all `import dev.inmo.tgbotapi.CommonAbstracts.textSources` in your project
         * `textEntities` become are calculable property in `TextedInput`
+    * Interface `VoiceChatEvent` now is `CommonEvent`
 
 ## 0.33.4
 
