@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
-import dev.inmo.tgbotapi.types.payments.abstracts.*
+import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import kotlinx.serialization.*
 
 private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.edit.caption
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.caption.EditChatMessageCaption
 import dev.inmo.tgbotapi.types.ChatIdentifier

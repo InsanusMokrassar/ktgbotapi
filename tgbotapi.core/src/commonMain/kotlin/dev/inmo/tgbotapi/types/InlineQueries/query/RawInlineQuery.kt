@@ -4,7 +4,8 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.ChatType
 import dev.inmo.tgbotapi.types.chat.ChatTypeSerializer
 import dev.inmo.tgbotapi.types.location.Location
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class RawInlineQuery(

@@ -2,6 +2,9 @@
 
 ## 0.34.0
 
+**UPDATE UP TO Telegram Bot API 5.2**
+_**ALL OLD DEPRECATIONS WERE REMOVED**_
+
 * `Core`:
     * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
     * New interface `CommonSendInvoiceData` has been added

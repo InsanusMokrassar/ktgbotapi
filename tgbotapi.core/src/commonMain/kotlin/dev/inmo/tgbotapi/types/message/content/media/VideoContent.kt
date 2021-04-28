@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSourcesList
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVideo
 import dev.inmo.tgbotapi.types.ChatIdentifier

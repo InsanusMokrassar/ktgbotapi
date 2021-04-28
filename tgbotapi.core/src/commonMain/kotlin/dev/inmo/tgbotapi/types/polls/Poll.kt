@@ -2,7 +2,8 @@ package dev.inmo.tgbotapi.types.polls
 
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.ExplainedInput
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat

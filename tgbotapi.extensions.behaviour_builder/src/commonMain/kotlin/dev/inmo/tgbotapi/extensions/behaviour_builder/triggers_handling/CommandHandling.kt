@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
-import dev.inmo.tgbotapi.extensions.behaviour_builder.*
-import dev.inmo.tgbotapi.extensions.utils.*
+import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
+import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.utils.asBotCommandTextSource
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import kotlinx.coroutines.Job

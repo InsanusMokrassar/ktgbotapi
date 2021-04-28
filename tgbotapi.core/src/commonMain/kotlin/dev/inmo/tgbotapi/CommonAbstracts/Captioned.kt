@@ -1,7 +1,5 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.ParseMode.ParseMode
-
 const val CaptionDeprecation = "Captioned interface and others will be removed soon and not recommended to use"
 
 @Deprecated(CaptionDeprecation)

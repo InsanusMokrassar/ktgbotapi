@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.payments.abstracts.*
+import dev.inmo.tgbotapi.types.payments.abstracts.Currencied
+import dev.inmo.tgbotapi.types.payments.abstracts.Priced
 
 interface CommonSendInvoiceData : Titled, Currencied, Priced {
     val description: String

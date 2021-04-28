@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.types.InlineQueryIdentifier
 import dev.inmo.tgbotapi.types.User
 import dev.inmo.tgbotapi.types.chat.ChatType
 import dev.inmo.tgbotapi.types.location.Location
-import kotlinx.serialization.Serializable
 
 data class LocationInlineQuery(
     override val id: InlineQueryIdentifier,

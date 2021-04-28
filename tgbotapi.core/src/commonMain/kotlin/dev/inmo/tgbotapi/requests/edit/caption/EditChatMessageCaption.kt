@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.edit.caption
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.requests.edit.media.MediaContentMessageResultDeserializer
 import dev.inmo.tgbotapi.types.*

@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.utils.internal
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.regular
+import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.link
 import dev.inmo.tgbotapi.utils.extensions.escapeMarkdownV2Link
