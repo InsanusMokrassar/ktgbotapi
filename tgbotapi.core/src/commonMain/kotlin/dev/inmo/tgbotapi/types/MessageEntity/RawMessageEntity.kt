@@ -162,9 +162,9 @@ internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEn
 
 internal fun List<TextSource>.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
     var i = preOffset
-    return flatMap {
-        it.toRawMessageEntities(i).also {
-            i += it.maxByOrNull { it.length }!!.length + 1
+    return flatMap { textSource ->
+        textSource.toRawMessageEntities(i).also {
+            i += it.maxByOrNull { it.length } ?.length ?: textSource.source.length
         }
     }
 }
