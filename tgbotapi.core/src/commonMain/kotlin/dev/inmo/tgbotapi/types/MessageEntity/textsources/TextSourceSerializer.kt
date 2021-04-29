@@ -2,14 +2,13 @@ package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
 import dev.inmo.micro_utils.serialization.typed_serializer.TypedSerializer
 import dev.inmo.tgbotapi.CommonAbstracts.TextSource
-import dev.inmo.tgbotapi.CommonAbstracts.justTextSources
-import dev.inmo.tgbotapi.types.MessageEntity.*
-import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntities
-import dev.inmo.tgbotapi.utils.RiskFeature
-import kotlinx.serialization.*
-import kotlinx.serialization.builtins.serializer
-import kotlinx.serialization.descriptors.*
-import kotlinx.serialization.encoding.*
+import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntity
+import dev.inmo.tgbotapi.types.MessageEntity.asTextSources
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializer
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
 
 private val baseSerializers: Map<String, KSerializer<out TextSource>> = mapOf(
     "regular" to RegularTextSource.serializer(),

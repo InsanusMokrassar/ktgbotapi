@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4Gif
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.inlineQueryResultMpeg4GifType
@@ -72,8 +73,8 @@ data class InlineQueryResultMpeg4GifImpl internal constructor(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultMpeg4Gif {
     override val type: String = inlineQueryResultMpeg4GifType
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {

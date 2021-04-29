@@ -1,9 +1,8 @@
 package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import java.io.*
 import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
 import java.net.URL
 
 fun PathedFile.asStream(

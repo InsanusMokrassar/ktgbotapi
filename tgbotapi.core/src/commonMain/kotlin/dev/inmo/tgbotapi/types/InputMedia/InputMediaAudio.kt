@@ -50,8 +50,8 @@ data class InputMediaAudio internal constructor(
     override val thumb: InputFile? = null
 ) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, Performerable {
     override val type: String = audioInputMediaType
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
@@ -62,12 +62,12 @@ data class InputMediaAudio internal constructor(
 }
 
 fun AudioFile.toInputMediaAudio(
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     title: String? = this.title
 ): InputMediaAudio = InputMediaAudio(
     fileId,
-    caption,
+    text,
     parseMode,
     duration,
     performer,

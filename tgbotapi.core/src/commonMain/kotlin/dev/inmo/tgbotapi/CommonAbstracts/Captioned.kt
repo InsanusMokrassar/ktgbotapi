@@ -1,26 +1,20 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.ParseMode.ParseMode
+const val CaptionDeprecation = "Captioned interface and others will be removed soon and not recommended to use"
 
-interface Captioned {
+@Deprecated(CaptionDeprecation)
+interface Captioned : Texted {
+    @Deprecated(CaptionDeprecation)
     val caption: String?
+        get() = text
 }
 
-@Deprecated("This interface is not used in library and will be removed soon")
-interface CaptionedOutput : Captioned {
-    val parseMode: ParseMode?
-}
-
-interface CaptionedInput : Captioned {
+@Deprecated(CaptionDeprecation)
+interface CaptionedInput : Captioned, TextedInput {
     /**
      * Full list of entities. This list WILL contain [TextPart]s with [dev.inmo.tgbotapi.types.MessageEntity.textsources.RegularTextSource]
      */
+    @Deprecated(CaptionDeprecation)
     val captionEntities: List<TextPart>
+        get() = textEntities
 }
-
-/**
- * @see CaptionedInput.captionEntities
- * @see justTextSources
- */
-val CaptionedInput.textSources
-    get() = captionEntities.justTextSources()

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.edit.caption
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
@@ -47,8 +48,8 @@ data class EditInlineMessageCaption internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditTextChatMessage, EditReplyMessage {
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text)
     }
 
     override fun method(): String = editMessageCaptionMethod

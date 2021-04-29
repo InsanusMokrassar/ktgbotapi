@@ -2,7 +2,8 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.DeferredAction
 import dev.inmo.micro_utils.coroutines.invokeFirstOf
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 
 suspend fun <T> BehaviourContext.parallel(
     action: BehaviourContextReceiver<T>

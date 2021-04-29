@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
@@ -20,7 +21,7 @@ fun SendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
     thumb: InputFile? = null,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
     width: Int? = null,
@@ -40,7 +41,7 @@ fun SendVideo(
         chatId,
         videoAsFileId,
         thumbAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         duration,
@@ -150,8 +151,8 @@ data class SendVideoData internal constructor(
     DuratedSendMessageRequest<ContentMessage<VideoContent>>,
     SizedSendMessageRequest<ContentMessage<VideoContent>>
 {
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {

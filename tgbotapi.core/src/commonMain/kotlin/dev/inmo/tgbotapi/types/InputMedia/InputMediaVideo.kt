@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
@@ -45,8 +46,8 @@ data class InputMediaVideo internal constructor (
     override val thumb: InputFile? = null
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = videoInputMediaType
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)

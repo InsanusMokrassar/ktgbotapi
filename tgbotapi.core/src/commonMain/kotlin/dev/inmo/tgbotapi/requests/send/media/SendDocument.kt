@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
@@ -29,7 +30,7 @@ fun SendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
     thumb: InputFile? = null,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -46,7 +47,7 @@ fun SendDocument(
         chatId,
         documentAsFileId,
         thumbAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         disableNotification,
@@ -157,8 +158,8 @@ data class SendDocumentData internal constructor(
     TextableSendMessageRequest<ContentMessage<DocumentContent>>,
     ThumbedSendMessageRequest<ContentMessage<DocumentContent>>
 {
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {

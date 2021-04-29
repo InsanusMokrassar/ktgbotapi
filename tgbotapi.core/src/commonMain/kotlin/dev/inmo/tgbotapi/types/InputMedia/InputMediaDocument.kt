@@ -13,11 +13,11 @@ internal const val documentInputMediaType = "document"
 
 fun InputMediaDocument(
     file: InputFile,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     thumb: InputFile? = null,
     disableContentTypeDetection: Boolean? = null
-) = InputMediaDocument(file, caption, parseMode, null, thumb, disableContentTypeDetection)
+) = InputMediaDocument(file, text, parseMode, null, thumb, disableContentTypeDetection)
 
 fun InputMediaDocument(
     file: InputFile,
@@ -50,8 +50,8 @@ data class InputMediaDocument internal constructor(
     val disableContentTypeDetection: Boolean? = null
 ) : InputMedia, DocumentMediaGroupMemberInputMedia, ThumbedInputMedia {
     override val type: String = documentInputMediaType
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
@@ -62,11 +62,11 @@ data class InputMediaDocument internal constructor(
 }
 
 fun DocumentFile.toInputMediaDocument(
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null
 ) = InputMediaDocument(
     fileId,
-    caption,
+    text,
     parseMode,
     thumb ?.fileId
 )

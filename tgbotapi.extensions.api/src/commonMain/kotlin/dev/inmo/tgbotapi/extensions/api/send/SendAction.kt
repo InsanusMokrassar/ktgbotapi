@@ -35,13 +35,29 @@ suspend fun TelegramBot.sendActionUploadVideo(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadVideoAction)
 
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("sendActionRecordVoice", "dev.inmo.tgbotapi.extensions.api.send.sendActionRecordVoice")
+)
 suspend fun TelegramBot.sendActionRecordAudio(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, RecordAudioAction)
 
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("sendActionUploadVoice", "dev.inmo.tgbotapi.extensions.api.send.sendActionUploadVoice")
+)
 suspend fun TelegramBot.sendActionUploadAudio(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, UploadAudioAction)
+
+suspend fun TelegramBot.sendActionRecordVoice(
+    chatId: ChatIdentifier
+) = sendBotAction(chatId, RecordVoiceAction)
+
+suspend fun TelegramBot.sendActionUploadVoice(
+    chatId: ChatIdentifier
+) = sendBotAction(chatId, UploadVoiceAction)
 
 suspend fun TelegramBot.sendActionUploadDocument(
     chatId: ChatIdentifier
@@ -76,13 +92,29 @@ suspend fun TelegramBot.sendActionUploadVideo(
     chat: Chat
 ) = sendBotAction(chat, UploadVideoAction)
 
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("sendActionRecordVoice", "dev.inmo.tgbotapi.extensions.api.send.sendActionRecordVoice")
+)
 suspend fun TelegramBot.sendActionRecordAudio(
     chat: Chat
 ) = sendBotAction(chat, RecordAudioAction)
 
+@Deprecated(
+    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
+    ReplaceWith("sendActionUploadVoice", "dev.inmo.tgbotapi.extensions.api.send.sendActionUploadVoice")
+)
 suspend fun TelegramBot.sendActionUploadAudio(
     chat: Chat
 ) = sendBotAction(chat, UploadAudioAction)
+
+suspend fun TelegramBot.sendActionRecordVoice(
+    chat: Chat
+) = sendBotAction(chat, RecordVoiceAction)
+
+suspend fun TelegramBot.sendActionUploadVoice(
+    chat: Chat
+) = sendBotAction(chat, UploadVoiceAction)
 
 suspend fun TelegramBot.sendActionUploadDocument(
     chat: Chat

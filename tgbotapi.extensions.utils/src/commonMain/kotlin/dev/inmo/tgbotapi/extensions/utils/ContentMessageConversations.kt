@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
-import kotlin.reflect.KClass
 
 private inline fun <reified T : MessageContent> Flow<ContentMessage<*>>.withContentType() = mapNotNull {
     it.withContent<T>()

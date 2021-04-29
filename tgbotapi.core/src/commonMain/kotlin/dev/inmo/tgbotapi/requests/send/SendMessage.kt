@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.CommonAbstracts.types.DisableWebPagePreview
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
@@ -83,8 +84,8 @@ data class SendTextMessage internal constructor(
     TextableSendMessageRequest<ContentMessage<TextContent>>,
     DisableWebPagePreview
 {
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text)
     }
 
     init {

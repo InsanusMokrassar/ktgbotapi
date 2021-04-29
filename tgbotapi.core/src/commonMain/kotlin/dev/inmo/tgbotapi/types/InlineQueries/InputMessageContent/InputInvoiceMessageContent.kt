@@ -1,28 +1,16 @@
-package dev.inmo.tgbotapi.requests.send.payments
+package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
 import dev.inmo.tgbotapi.CommonAbstracts.CommonSendInvoiceData
-import dev.inmo.tgbotapi.CommonAbstracts.types.*
-import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
-import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
-    = TelegramBotAPIMessageDeserializationStrategyClass()
-
-/**
- * @param providerData - JSON-ENCODED FIELD
- */
 @Serializable
-data class SendInvoice(
-    @SerialName(chatIdField)
-    override val chatId: ChatId,
+class InputInvoiceMessageContent(
     @SerialName(titleField)
     override val title: String,
     @SerialName(descriptionField)
@@ -40,8 +28,6 @@ data class SendInvoice(
     override val maxTipAmount: Int? = null,
     @SerialName(suggestedTipAmountsField)
     override val suggestedTipAmounts: List<Int>? = null,
-    @SerialName(startParameterField)
-    val startParameter: StartParameter? = null,
     @SerialName(providerDataField)
     override val providerData: String? = null,
     @SerialName(requireNameField)
@@ -57,27 +43,8 @@ data class SendInvoice(
     @SerialName(shouldSendEmailToProviderField)
     override val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
-    override val priceDependOnShipAddress: Boolean = false,
-    @SerialName(disableNotificationField)
-    override val disableNotification: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageIdentifier? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
-    @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
-) : CommonSendInvoiceData,
-    ChatRequest,
-    DisableNotification,
-    ReplyMessageId,
-    ReplyMarkup,
-    SendMessageRequest<ContentMessage<InvoiceContent>> {
-    override fun method(): String = "sendInvoice"
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
-        get() = invoiceMessageSerializer
-    override val requestSerializer: SerializationStrategy<*>
-        get() = serializer()
-
+    override val priceDependOnShipAddress: Boolean = false
+) : InputMessageContent, CommonSendInvoiceData {
     @SerialName(photoUrlField)
     override var photoUrl: String? = null
         private set
@@ -91,17 +58,6 @@ data class SendInvoice(
     @SerialName(photoHeightField)
     override var photoHeight: Int? = null
         private set
-
-    init {
-        suggestedTipAmounts ?.let { _ ->
-            require(suggestedTipAmounts.size in suggestedTipAmountsLimit)
-            maxTipAmount ?.let { _ ->
-                require(
-                    suggestedTipAmounts.none { it > maxTipAmount }
-                )
-            }
-        }
-    }
 
     override fun setPhoto(
         photoUrl: String,

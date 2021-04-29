@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import kotlin.test.assertTrue
 
@@ -36,19 +36,19 @@ internal val testTextEntities = listOf(
     RawMessageEntity(
         "mention",
         39,
-        6
+        8
     )
 )
 
-fun List<TextPart>.testTextParts() {
-    assertTrue (first().source is RegularTextSource)
-    assertTrue (get(1).source is BoldTextSource)
-    assertTrue (get(2).source is RegularTextSource)
-    assertTrue (get(3).source is HashTagTextSource)
-    assertTrue (get(4).source is RegularTextSource)
-    assertTrue (get(5).source is MentionTextSource)
+fun List<TextSource>.testTextSources() {
+    assertTrue (first() is RegularTextSource)
+    assertTrue (get(1) is BoldTextSource)
+    assertTrue (get(2) is RegularTextSource)
+    assertTrue (get(3) is HashTagTextSource)
+    assertTrue (get(4) is RegularTextSource)
+    assertTrue (get(5) is MentionTextSource)
 
-    val boldSource = get(1).source as BoldTextSource
+    val boldSource = get(1) as BoldTextSource
     assertTrue (boldSource.subsources.first() is ItalicTextSource)
     assertTrue (boldSource.subsources[1] is RegularTextSource)
     assertTrue (boldSource.subsources[2] is StrikethroughTextSource)

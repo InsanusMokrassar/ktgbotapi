@@ -1,10 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
-import dev.inmo.tgbotapi.types.CallbackQuery.DataCallbackQuery
 import dev.inmo.tgbotapi.types.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate

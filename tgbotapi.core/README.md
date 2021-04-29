@@ -1,6 +1,5 @@
 # TelegramBotAPI Core
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core)
 
 ## What is it?
@@ -10,7 +9,7 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 
 ## Compatibility
 
-This version compatible with [9th of March 2021 update of TelegramBotAPI (version 5.1)](https://core.telegram.org/bots/api-changelog#march-9-2021).
+This version compatible with [26th of April 2021 update of TelegramBotAPI (version 5.2)](https://core.telegram.org/bots/api-changelog#april-26-2021).
 
 ## How to implement library?
 

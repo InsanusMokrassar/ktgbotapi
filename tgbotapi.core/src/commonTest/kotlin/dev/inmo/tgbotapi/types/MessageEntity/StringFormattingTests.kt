@@ -48,7 +48,7 @@ class StringFormattingTests {
                 hashtag("tag") +
                 " and " +
                 mention("mention")
-        sources.toTextParts().testTextParts()
+        sources.testTextSources()
 
         assertEquals(formattedV2Text, sources.toMarkdownV2Texts().first())
         assertEquals(formattedHtmlText, sources.toHtmlTexts().first())

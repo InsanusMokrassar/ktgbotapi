@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.types.polls
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
 import dev.inmo.tgbotapi.CommonAbstracts.ExplainedInput
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
@@ -135,8 +135,8 @@ data class QuizPoll(
      * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
      */
     val correctOptionId: Int? = null,
-    override val explanation: String? = null,
-    override val explanationEntities: List<TextPart> = emptyList(),
+    override val text: String? = null,
+    override val textSources: List<TextSource> = emptyList(),
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
@@ -159,7 +159,7 @@ internal object PollSerializer : KSerializer<Poll> {
                 rawPoll.votesCount,
                 rawPoll.correctOptionId,
                 rawPoll.explanation,
-                rawPoll.explanation?.let { rawPoll.explanationEntities.asTextParts(it) } ?: emptyList(),
+                rawPoll.explanation?.let { rawPoll.explanationEntities.asTextSources(it) } ?: emptyList(),
                 rawPoll.isClosed,
                 rawPoll.isAnonymous,
                 rawPoll.scheduledCloseInfo
@@ -210,8 +210,8 @@ internal object PollSerializer : KSerializer<Poll> {
                 value.isAnonymous,
                 regularPollType,
                 correctOptionId = value.correctOptionId,
-                explanation = value.explanation,
-                explanationEntities = value.explanationEntities.asRawMessageEntities(),
+                explanation = value.text,
+                explanationEntities = value.textSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )

@@ -20,7 +20,7 @@ fun SendAudio(
     chatId: ChatIdentifier,
     audio: InputFile,
     thumb: InputFile? = null,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
     performer: String? = null,
@@ -39,7 +39,7 @@ fun SendAudio(
         chatId,
         audioAsFileId,
         thumbAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         duration,
@@ -145,8 +145,8 @@ data class SendAudioData internal constructor(
     DuratedSendMessageRequest<ContentMessage<AudioContent>>,
     Performerable
 {
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {

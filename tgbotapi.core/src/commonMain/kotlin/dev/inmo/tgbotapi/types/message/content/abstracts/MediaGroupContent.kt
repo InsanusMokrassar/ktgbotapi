@@ -1,9 +1,10 @@
 package dev.inmo.tgbotapi.types.message.content.abstracts
 
 import dev.inmo.tgbotapi.CommonAbstracts.CaptionedInput
+import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.types.InputMedia.*
 
-interface MediaGroupContent : MediaContent, CaptionedInput {
+interface MediaGroupContent : MediaContent, CaptionedInput, TextedInput {
     fun toMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia
 }
 

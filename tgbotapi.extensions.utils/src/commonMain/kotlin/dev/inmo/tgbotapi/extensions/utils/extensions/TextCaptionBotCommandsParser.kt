@@ -4,7 +4,6 @@ import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.BotCommandTextSource
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
 
 val defaultArgsSeparator = Regex(" ")
@@ -19,10 +18,13 @@ fun List<TextSource>.parseCommandsWithParams(
     var currentArgs = ""
     fun includeCurrent() = currentBotCommandSource ?.let {
         currentArgs = currentArgs.trim()
-        if (currentArgs.isNotEmpty()) {
-            result[it.command] = currentArgs.split(argsSeparator).toTypedArray()
-            currentArgs = ""
+        result[it.command] = if (currentArgs.isNotEmpty()) {
+            currentArgs.split(argsSeparator).toTypedArray()
+        } else {
+            emptyArray()
         }
+        currentArgs = ""
+        currentBotCommandSource = null
     }
     for (textSource in this) {
         if (textSource is BotCommandTextSource) {
@@ -39,23 +41,9 @@ fun List<TextSource>.parseCommandsWithParams(
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
  */
-fun TextedInput.parseCommandsWithParams(
+fun TextedWithTextSources.parseCommandsWithParams(
     argsSeparator: Regex = defaultArgsSeparator
-) = textSources.parseCommandsWithParams(argsSeparator)
-
-/**
- * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
- */
-fun TextedOutput.parseCommandsWithParams(
-    argsSeparator: Regex = defaultArgsSeparator
-) = entities ?.parseCommandsWithParams(argsSeparator) ?: emptyMap()
-
-/**
- * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
- */
-fun CaptionedInput.parseCommandsWithParams(
-    argsSeparator: Regex = defaultArgsSeparator
-) = textSources.parseCommandsWithParams(argsSeparator)
+) = textSources ?.parseCommandsWithParams(argsSeparator) ?: emptyMap()
 
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command

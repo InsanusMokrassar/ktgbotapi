@@ -1,5 +1,30 @@
 # TelegramBotAPI changelog
 
+## 0.34.0
+
+**UPDATE UP TO Telegram Bot API 5.2**
+_**ALL OLD DEPRECATIONS WERE REMOVED**_
+
+* `Core`:
+    * Type `ChatType` has been added
+    * New `ExtendedChat` for unknown messages `UnknownExtendedChat` has been added
+    * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
+    * New interface `CommonSendInvoiceData` has been added
+        * Fields `CommonSendInvoiceData#maxTipAmount` and `CommonSendInvoiceData#suggestedTipAmounts` have been added
+    * New type `InputInvoiceMessageContent` has been added
+    * New interface `TextedWithTextSources` on top of `Texted` interface
+        * Interface `TextedInput` now extends `TextedWithTextSources` with overriding of `textSources` field as not
+          nullable
+        * `textSources` become main field in `TextedInput`
+            * **MIGRATION** Remove all `import dev.inmo.tgbotapi.CommonAbstracts.textSources` in your project
+            * `textEntities` become are calculable property in `TextedInput`
+  * Interface `Captioned` and `CaptionedInput` now is deprecated
+      * Most of captions usages were replaced with texts
+  * Interface `Explained` and `ExplainedInput` now is deprecated
+      * Most of captions usages were replaced with texts
+    * Interface `VoiceChatEvent` now is `CommonEvent`
+  * Mechanism of `RawMessageEntity` converting were fully rewritten
+
 ## 0.33.4
 
 * `Common`:

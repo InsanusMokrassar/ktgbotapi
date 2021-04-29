@@ -1,8 +1,8 @@
 @file:Suppress("NOTHING_TO_INLINE", "unused", "UNCHECKED_CAST")
 
 package dev.inmo.tgbotapi.extensions.utils
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.ChatMember.*
@@ -525,6 +525,10 @@ inline fun BotAction.asRecordAudioAction(): RecordAudioAction? = this as? Record
 @PreviewFeature
 inline fun BotAction.requireRecordAudioAction(): RecordAudioAction = this as RecordAudioAction
 @PreviewFeature
+inline fun BotAction.asRecordVoiceAction(): RecordVoiceAction? = this as? RecordVoiceAction
+@PreviewFeature
+inline fun BotAction.requireRecordVoiceAction(): RecordVoiceAction = this as RecordVoiceAction
+@PreviewFeature
 inline fun BotAction.asRecordVideoAction(): RecordVideoAction? = this as? RecordVideoAction
 @PreviewFeature
 inline fun BotAction.requireRecordVideoAction(): RecordVideoAction = this as RecordVideoAction
@@ -540,6 +544,10 @@ inline fun BotAction.requireTypingAction(): TypingAction = this as TypingAction
 inline fun BotAction.asUploadAudioAction(): UploadAudioAction? = this as? UploadAudioAction
 @PreviewFeature
 inline fun BotAction.requireUploadAudioAction(): UploadAudioAction = this as UploadAudioAction
+@PreviewFeature
+inline fun BotAction.asUploadVoiceAction(): UploadVoiceAction? = this as? UploadVoiceAction
+@PreviewFeature
+inline fun BotAction.requireUploadVoiceAction(): UploadVoiceAction = this as UploadVoiceAction
 @PreviewFeature
 inline fun BotAction.asUploadDocumentAction(): UploadDocumentAction? = this as? UploadDocumentAction
 @PreviewFeature
@@ -580,6 +588,10 @@ inline fun InputMessageContent.requireInputTextMessageContent(): InputTextMessag
 inline fun InputMessageContent.asInputVenueMessageContent(): InputVenueMessageContent? = this as? InputVenueMessageContent
 @PreviewFeature
 inline fun InputMessageContent.requireInputVenueMessageContent(): InputVenueMessageContent = this as InputVenueMessageContent
+@PreviewFeature
+inline fun InputMessageContent.asInputInvoiceMessageContent(): InputInvoiceMessageContent? = this as? InputInvoiceMessageContent
+@PreviewFeature
+inline fun InputMessageContent.requireInputInvoiceMessageContent(): InputInvoiceMessageContent = this as InputInvoiceMessageContent
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultArticle(): InlineQueryResultArticle? = this as? InlineQueryResultArticle
 @PreviewFeature
@@ -1296,3 +1308,11 @@ inline fun ChatEvent.requireVoiceChatParticipantsInvited(): VoiceChatParticipant
 inline fun ChatEvent.asVoiceChatStarted(): VoiceChatStarted? = this as? VoiceChatStarted
 @PreviewFeature
 inline fun ChatEvent.requireVoiceChatStarted(): VoiceChatStarted = this as VoiceChatStarted
+@PreviewFeature
+inline fun CommonSendInvoiceData.asSendInvoice(): SendInvoice? = this as? SendInvoice
+@PreviewFeature
+inline fun CommonSendInvoiceData.requireVoiceChatParticipantsInvited(): SendInvoice = this as SendInvoice
+@PreviewFeature
+inline fun CommonSendInvoiceData.asInputInvoiceMessageContent(): InputInvoiceMessageContent? = this as? InputInvoiceMessageContent
+@PreviewFeature
+inline fun CommonSendInvoiceData.requireInputInvoiceMessageContent(): InputInvoiceMessageContent = this as InputInvoiceMessageContent

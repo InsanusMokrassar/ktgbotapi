@@ -80,6 +80,8 @@ val openPeriodPollSecondsLimit = 5 .. 600
 
 val membersLimit = 1 .. 99999
 
+val suggestedTipAmountsLimit = 1 .. 4
+
 const val botActionActualityTime: Seconds = 5
 
 // Made as lazy for correct work in K/JS
@@ -315,6 +317,10 @@ const val xShiftField = "x_shift"
 const val yShiftField = "y_shift"
 const val scaleField = "scale"
 
+const val maxTipAmountField = "max_tip_amount"
+const val suggestedTipAmountsField = "suggested_tip_amounts"
+const val chatTypeField = "chat_type"
+
 const val explanationEntitiesField = "explanation_entities"
 const val explanationParseModeField = "explanation_parse_mode"
 const val openPeriodField = "open_period"
@@ -349,6 +355,7 @@ const val providerPaymentChargeIdField = "provider_payment_charge_id"
 const val providerTokenField = "provider_token"
 const val providerDataField = "provider_data"
 const val usersField = "users"
+const val startDateField = "start_date"
 
 const val requireNameField = "need_name"
 const val requirePhoneNumberField = "need_phone_number"

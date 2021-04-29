@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextSourcesList
+import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -16,8 +17,8 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 
 data class DocumentContent(
     override val media: DocumentFile,
-    override val caption: String? = null,
-    override val captionEntities: List<TextPart> = emptyList()
+    override val text: String? = null,
+    override val textSources: TextSourcesList = emptyList()
 ) : DocumentMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -43,10 +44,10 @@ data class DocumentContent(
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun MediaContent.asDocumentContent() = when (this) {
-    is CaptionedInput -> DocumentContent(
+    is TextedInput -> DocumentContent(
         media.asDocumentFile(),
-        caption,
-        captionEntities
+        text,
+        textSources
     )
     else -> DocumentContent(
         media.asDocumentFile()

@@ -17,6 +17,7 @@ internal object InputMessageContentSerializer : KSerializer<InputMessageContent>
             is InputLocationMessageContent -> InputLocationMessageContent.serializer().serialize(encoder, value)
             is InputTextMessageContent -> InputTextMessageContent.serializer().serialize(encoder, value)
             is InputVenueMessageContent -> InputVenueMessageContent.serializer().serialize(encoder, value)
+            is InputInvoiceMessageContent -> InputInvoiceMessageContent.serializer().serialize(encoder, value)
             else -> throw IllegalArgumentException("Unknown for serializing InputContactMessageContent")
         }
     }
