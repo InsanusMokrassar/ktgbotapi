@@ -18,10 +18,12 @@ fun List<TextSource>.parseCommandsWithParams(
     var currentArgs = ""
     fun includeCurrent() = currentBotCommandSource ?.let {
         currentArgs = currentArgs.trim()
-        if (currentArgs.isNotEmpty()) {
-            result[it.command] = currentArgs.split(argsSeparator).toTypedArray()
-            currentArgs = ""
+        result[it.command] = if (currentArgs.isNotEmpty()) {
+            currentArgs.split(argsSeparator).toTypedArray()
+        } else {
+            emptyArray()
         }
+        currentArgs = ""
     }
     for (textSource in this) {
         if (textSource is BotCommandTextSource) {
