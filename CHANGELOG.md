@@ -6,6 +6,7 @@
 _**ALL OLD DEPRECATIONS WERE REMOVED**_
 
 * `Core`:
+    * Type `ChatType` has been added
     * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
     * New interface `CommonSendInvoiceData` has been added
         * Fields `CommonSendInvoiceData#maxTipAmount` and `CommonSendInvoiceData#suggestedTipAmounts` have been added
