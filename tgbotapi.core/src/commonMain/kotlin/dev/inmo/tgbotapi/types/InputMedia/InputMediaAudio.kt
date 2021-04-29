@@ -50,7 +50,7 @@ data class InputMediaAudio internal constructor(
     override val thumb: InputFile? = null
 ) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, Performerable {
     override val type: String = audioInputMediaType
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

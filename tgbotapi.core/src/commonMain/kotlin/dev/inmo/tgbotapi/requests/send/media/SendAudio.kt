@@ -145,7 +145,7 @@ data class SendAudioData internal constructor(
     DuratedSendMessageRequest<ContentMessage<AudioContent>>,
     Performerable
 {
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

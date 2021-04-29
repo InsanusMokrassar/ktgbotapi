@@ -46,7 +46,7 @@ data class InputMediaVideo internal constructor (
     override val thumb: InputFile? = null
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = videoInputMediaType
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

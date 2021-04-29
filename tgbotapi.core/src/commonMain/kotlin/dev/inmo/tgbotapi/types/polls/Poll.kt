@@ -135,7 +135,7 @@ data class QuizPoll(
      * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
      */
     val correctOptionId: Int? = null,
-    override val explanation: String? = null,
+    override val text: String? = null,
     override val textSources: List<TextSource> = emptyList(),
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
@@ -210,7 +210,7 @@ internal object PollSerializer : KSerializer<Poll> {
                 value.isAnonymous,
                 regularPollType,
                 correctOptionId = value.correctOptionId,
-                explanation = value.explanation,
+                explanation = value.text,
                 explanationEntities = value.textSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)

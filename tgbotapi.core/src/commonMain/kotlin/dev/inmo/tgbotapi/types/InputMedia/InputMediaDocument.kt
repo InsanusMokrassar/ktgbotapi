@@ -50,7 +50,7 @@ data class InputMediaDocument internal constructor(
     val disableContentTypeDetection: Boolean? = null
 ) : InputMedia, DocumentMediaGroupMemberInputMedia, ThumbedInputMedia {
     override val type: String = documentInputMediaType
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

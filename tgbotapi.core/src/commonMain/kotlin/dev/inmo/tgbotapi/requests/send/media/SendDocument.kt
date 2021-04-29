@@ -158,7 +158,7 @@ data class SendDocumentData internal constructor(
     TextableSendMessageRequest<ContentMessage<DocumentContent>>,
     ThumbedSendMessageRequest<ContentMessage<DocumentContent>>
 {
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

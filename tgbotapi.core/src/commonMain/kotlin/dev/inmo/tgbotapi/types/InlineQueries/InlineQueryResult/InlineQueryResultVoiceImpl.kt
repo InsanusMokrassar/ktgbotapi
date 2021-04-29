@@ -66,7 +66,7 @@ data class InlineQueryResultVoiceImpl internal constructor(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultVoice {
     override val type: String = inlineQueryResultVoiceType
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

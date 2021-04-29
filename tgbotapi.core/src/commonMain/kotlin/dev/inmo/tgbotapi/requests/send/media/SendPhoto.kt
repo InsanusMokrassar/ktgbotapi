@@ -101,7 +101,7 @@ data class SendPhotoData internal constructor(
     ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
     TextableSendMessageRequest<ContentMessage<PhotoContent>>
 {
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

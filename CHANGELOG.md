@@ -8,13 +8,18 @@ _**ALL OLD DEPRECATIONS WERE REMOVED**_
 * `Core`:
     * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
     * New interface `CommonSendInvoiceData` has been added
-      * Fields `CommonSendInvoiceData#maxTipAmount` and `CommonSendInvoiceData#suggestedTipAmounts` have been added
+        * Fields `CommonSendInvoiceData#maxTipAmount` and `CommonSendInvoiceData#suggestedTipAmounts` have been added
     * New type `InputInvoiceMessageContent` has been added
-    * Interface `Captioned` and `CaptionedInput` now is deprecated
+    * New interface `TextedWithTextSources` on top of `Texted` interface
+        * Interface `TextedInput` now extends `TextedWithTextSources` with overriding of `textSources` field as not
+          nullable
+        * `textSources` become main field in `TextedInput`
+            * **MIGRATION** Remove all `import dev.inmo.tgbotapi.CommonAbstracts.textSources` in your project
+            * `textEntities` become are calculable property in `TextedInput`
+  * Interface `Captioned` and `CaptionedInput` now is deprecated
       * Most of captions usages were replaced with texts
-    * `textSources` become main field in `TextedInput`
-        * **MIGRATION** Remove all `import dev.inmo.tgbotapi.CommonAbstracts.textSources` in your project
-        * `textEntities` become are calculable property in `TextedInput`
+  * Interface `Explained` and `ExplainedInput` now is deprecated
+      * Most of captions usages were replaced with texts
     * Interface `VoiceChatEvent` now is `CommonEvent`
 
 ## 0.33.4

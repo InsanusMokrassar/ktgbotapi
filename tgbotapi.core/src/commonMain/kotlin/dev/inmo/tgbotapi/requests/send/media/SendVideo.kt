@@ -151,7 +151,7 @@ data class SendVideoData internal constructor(
     DuratedSendMessageRequest<ContentMessage<VideoContent>>,
     SizedSendMessageRequest<ContentMessage<VideoContent>>
 {
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

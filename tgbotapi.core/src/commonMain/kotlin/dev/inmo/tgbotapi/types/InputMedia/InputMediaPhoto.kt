@@ -34,7 +34,7 @@ data class InputMediaPhoto internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null
 ) : InputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = photoInputMediaType
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

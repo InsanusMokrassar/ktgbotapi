@@ -145,7 +145,7 @@ data class SendAnimationData internal constructor(
     DuratedSendMessageRequest<ContentMessage<AnimationContent>>,
     SizedSendMessageRequest<ContentMessage<AnimationContent>>
 {
-    override val entities: List<TextSource>? by lazy {
+    override val textSources: List<TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

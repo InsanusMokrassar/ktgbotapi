@@ -47,7 +47,7 @@ fun TextedInput.parseCommandsWithParams(
  */
 fun TextedOutput.parseCommandsWithParams(
     argsSeparator: Regex = defaultArgsSeparator
-) = entities ?.parseCommandsWithParams(argsSeparator) ?: emptyMap()
+) = textSources ?.parseCommandsWithParams(argsSeparator) ?: emptyMap()
 
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
