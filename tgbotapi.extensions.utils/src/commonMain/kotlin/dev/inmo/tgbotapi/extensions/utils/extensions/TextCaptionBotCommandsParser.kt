@@ -24,6 +24,7 @@ fun List<TextSource>.parseCommandsWithParams(
             emptyArray()
         }
         currentArgs = ""
+        currentBotCommandSource = null
     }
     for (textSource in this) {
         if (textSource is BotCommandTextSource) {
