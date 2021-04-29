@@ -29,7 +29,6 @@ private val baseSerializers: Map<String, KSerializer<out TextSource>> = mapOf(
     "cashtag" to CashTagTextSource.serializer(),
 )
 
-@Serializer(TextSource::class)
 object TextSourceSerializer : TypedSerializer<TextSource>(TextSource::class, baseSerializers) {
     override fun <T: TextSource> include(type: String, serializer: KSerializer<T>) {
         require(type !in baseSerializers.keys)
