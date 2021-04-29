@@ -22,6 +22,7 @@ _**ALL OLD DEPRECATIONS WERE REMOVED**_
   * Interface `Explained` and `ExplainedInput` now is deprecated
       * Most of captions usages were replaced with texts
     * Interface `VoiceChatEvent` now is `CommonEvent`
+  * Mechanism of `RawMessageEntity` converting were fully rewritten
 
 ## 0.33.4
 
