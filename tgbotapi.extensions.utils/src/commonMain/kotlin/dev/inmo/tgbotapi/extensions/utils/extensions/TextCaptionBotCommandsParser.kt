@@ -40,23 +40,9 @@ fun List<TextSource>.parseCommandsWithParams(
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
  */
-fun TextedInput.parseCommandsWithParams(
-    argsSeparator: Regex = defaultArgsSeparator
-) = textSources.parseCommandsWithParams(argsSeparator)
-
-/**
- * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
- */
-fun TextedOutput.parseCommandsWithParams(
+fun TextedWithTextSources.parseCommandsWithParams(
     argsSeparator: Regex = defaultArgsSeparator
 ) = textSources ?.parseCommandsWithParams(argsSeparator) ?: emptyMap()
-
-/**
- * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
- */
-fun CaptionedInput.parseCommandsWithParams(
-    argsSeparator: Regex = defaultArgsSeparator
-) = textSources.parseCommandsWithParams(argsSeparator)
 
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
