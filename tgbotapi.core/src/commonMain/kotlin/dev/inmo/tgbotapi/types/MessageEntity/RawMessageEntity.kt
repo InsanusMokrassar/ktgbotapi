@@ -59,7 +59,7 @@ internal fun List<TextSource>.fillWithRegulars(source: String): List<TextSource>
         val textSource = get(i)
         val thisSourceInStart = source.startsWith(textSource.source, index)
         if (!thisSourceInStart) {
-            val regularEndIndex = source.indexOf(textSource.source)
+            val regularEndIndex = source.indexOf(textSource.source, index)
             result.add(regular(source.substring(index, regularEndIndex)))
             index = regularEndIndex
         }

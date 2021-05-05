@@ -2,6 +2,9 @@
 
 ## 0.34.1
 
+* `Core`
+    * Fix in creating of text sources list
+
 ## 0.34.0
 
 **UPDATE UP TO Telegram Bot API 5.2**
