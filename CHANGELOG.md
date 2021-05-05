@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 0.34.1
+
+* `Common`:
+    * `Version`:
+        * `ktor`: `1.5.3` -> `1.5.4`
+        * `MicroUtils`: `0.4.35` -> `0.4.36`
+* `Core`
+    * Fix in creating of text sources list
+
 ## 0.34.0
 
 **UPDATE UP TO Telegram Bot API 5.2**
