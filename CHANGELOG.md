@@ -5,6 +5,7 @@
 * `Common`:
     * `Version`:
         * `ktor`: `1.5.3` -> `1.5.4`
+        * `MicroUtils`: `0.4.35` -> `0.4.36`
 * `Core`
     * Fix in creating of text sources list
 
