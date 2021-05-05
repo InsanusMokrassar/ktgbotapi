@@ -2,6 +2,9 @@
 
 ## 0.34.1
 
+* `Common`:
+    * `Version`:
+        * `ktor`: `1.5.3` -> `1.5.4`
 * `Core`
     * Fix in creating of text sources list
 
