@@ -14,6 +14,7 @@
 _**It is recommended to use [0.34.1](https://github.com/InsanusMokrassar/TelegramBotAPI/releases/tag/0.34.1) version due to the bug in 0.34.0 related to rewriting of `TextSource`s creating mechanism.**_
 
 **UPDATE UP TO Telegram Bot API 5.2**
+
 _**ALL OLD DEPRECATIONS WERE REMOVED**_
 
 * `Core`:
