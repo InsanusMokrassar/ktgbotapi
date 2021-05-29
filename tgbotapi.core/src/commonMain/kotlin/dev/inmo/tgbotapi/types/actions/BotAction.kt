@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.types.actions
 
 import kotlinx.serialization.*
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
@@ -8,12 +10,14 @@ import kotlinx.serialization.encoding.Encoder
  * Use BotAction objects realisations to notify user about bot actions
  */
 @Serializable(BotActionSerializer::class)
-sealed class BotAction {
-    abstract val actionName: String
+sealed interface BotAction {
+    val actionName: String
 }
 
 @Serializer(BotAction::class)
 internal object BotActionSerializer: KSerializer<BotAction> {
+    override val descriptor: SerialDescriptor = String.serializer().descriptor
+
     override fun serialize(encoder: Encoder, value: BotAction) {
         encoder.encodeString(value.actionName)
     }
@@ -41,7 +45,7 @@ internal object BotActionSerializer: KSerializer<BotAction> {
  * Will notify user that bot is "typing" something
  */
 @Serializable(BotActionSerializer::class)
-object TypingAction : BotAction() {
+object TypingAction : BotAction {
     override val actionName: String = "typing"
 }
 inline val typing
@@ -52,7 +56,7 @@ inline fun BotAction.asTyping() = this as? TypingAction
  * Will notify user that bot is uploading some photo
  */
 @Serializable(BotActionSerializer::class)
-object UploadPhotoAction : BotAction() {
+object UploadPhotoAction : BotAction {
     override val actionName: String = "upload_photo"
 }
 inline val uploadPhoto
@@ -63,7 +67,7 @@ inline fun BotAction.asUploadPhoto() = this as? UploadPhotoAction
  * Will notify user that bot is recording some video
  */
 @Serializable(BotActionSerializer::class)
-object RecordVideoAction : BotAction() {
+object RecordVideoAction : BotAction {
     override val actionName: String = "record_video"
 }
 inline val recordVideo
@@ -74,7 +78,7 @@ inline fun BotAction.asRecordVideo() = this as? RecordVideoAction
  * Will notify user that bot is uploading some photo
  */
 @Serializable(BotActionSerializer::class)
-object UploadVideoAction : BotAction() {
+object UploadVideoAction : BotAction {
     override val actionName: String = "upload_video"
 }
 inline val uploadVideo
@@ -89,7 +93,7 @@ inline fun BotAction.asUploadVideo() = this as? UploadVideoAction
     "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
     ReplaceWith("RecordVoiceAction", "dev.inmo.tgbotapi.types.actions.RecordVoiceAction")
 )
-object RecordAudioAction : BotAction() {
+object RecordAudioAction : BotAction {
     override val actionName: String = "record_audio"
 }
 @Deprecated(
@@ -112,7 +116,7 @@ inline fun BotAction.asRecordAudio() = this as? RecordAudioAction
     "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
     ReplaceWith("UploadVoiceAction", "dev.inmo.tgbotapi.types.actions.UploadVoiceAction")
 )
-object UploadAudioAction : BotAction() {
+object UploadAudioAction : BotAction {
     override val actionName: String = "upload_audio"
 }
 @Deprecated(
@@ -131,7 +135,7 @@ inline fun BotAction.asUploadAudio() = this as? UploadAudioAction
  * Will notify user that bot is recording some audio
  */
 @Serializable(BotActionSerializer::class)
-object RecordVoiceAction : BotAction() {
+object RecordVoiceAction : BotAction {
     override val actionName: String = "record_voice"
 }
 inline val recordVoice
@@ -142,7 +146,7 @@ inline fun BotAction.asRecordVoice() = this as? RecordVoiceAction
  * Will notify user that bot is uploading some audio
  */
 @Serializable(BotActionSerializer::class)
-object UploadVoiceAction : BotAction() {
+object UploadVoiceAction : BotAction {
     override val actionName: String = "upload_voice"
 }
 inline val uploadVoice
@@ -153,7 +157,7 @@ inline fun BotAction.asUploadVoice() = this as? UploadVoiceAction
  * Will notify user that bot is uploading some document
  */
 @Serializable(BotActionSerializer::class)
-object UploadDocumentAction : BotAction() {
+object UploadDocumentAction : BotAction {
     override val actionName: String = "upload_document"
 }
 inline val uploadDocument
@@ -164,7 +168,7 @@ inline fun BotAction.asUploadDocument() = this as? UploadDocumentAction
  * Will notify user that bot is trying to find location
  */
 @Serializable(BotActionSerializer::class)
-object FindLocationAction : BotAction() {
+object FindLocationAction : BotAction {
     override val actionName: String = "find_location"
 }
 inline val findLocation
@@ -175,7 +179,7 @@ inline fun BotAction.asFindLocation() = this as? FindLocationAction
  * Will notify user that bot is recording video note
  */
 @Serializable(BotActionSerializer::class)
-object RecordVideoNoteAction : BotAction() {
+object RecordVideoNoteAction : BotAction {
     override val actionName: String = "record_video_note"
 }
 inline val recordVideoNote
@@ -186,7 +190,7 @@ inline fun BotAction.asRecordVideoNote() = this as? RecordVideoNoteAction
  * Will notify user that bot is uploading video note
  */
 @Serializable(BotActionSerializer::class)
-object UploadVideoNoteAction : BotAction() {
+object UploadVideoNoteAction : BotAction {
     override val actionName: String = "upload_video_note"
 }
 inline val uploadVideoNote
