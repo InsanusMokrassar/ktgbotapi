@@ -15,6 +15,8 @@
         * `Ktor`: `1.5.4` -> `1.6.0`
 * `Core`:
     * `ForceReply` has been renamed to `ReplyForce`
+    * `Captioned` and `Explained` interfaces have been removed
+    * `RecordAudioAction` and `UploadAudioAction` (and all related to these actions functionality) have been removed
 
 ## 0.34.1
 
