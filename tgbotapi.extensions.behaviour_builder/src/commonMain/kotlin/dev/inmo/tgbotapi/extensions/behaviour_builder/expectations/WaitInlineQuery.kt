@@ -3,8 +3,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
-import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
+import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import kotlinx.coroutines.flow.toList
 
 typealias InlineQueryMapper<T> = suspend T.() -> T?
@@ -48,7 +47,7 @@ suspend fun BehaviourContext.waitAnyInlineQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: InlineQueryMapper<dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery>? = null
+    filter: InlineQueryMapper<InlineQuery>? = null
 ) = waitInlines(count, initRequest, errorFactory, filter)
 
 suspend fun BehaviourContext.waitBaseInlineQuery(
