@@ -9,25 +9,25 @@ import kotlinx.serialization.encoding.Encoder
 
 internal const val parseModeField = "parse_mode"
 
-@Serializable(ParseModeSerializerObject::class)
+@Serializable(ParseModeSerializer::class)
 sealed interface ParseMode {
     val parseModeName: String
 }
 
-@Serializable(ParseModeSerializerObject::class)
+@Serializable(ParseModeSerializer::class)
 object MarkdownParseMode : ParseMode {
     @Serializable
     @SerialName(parseModeField)
     override val parseModeName: String = "Markdown"
 }
 
-@Serializable(ParseModeSerializerObject::class)
+@Serializable(ParseModeSerializer::class)
 object MarkdownV2ParseMode : ParseMode {
     @Serializable
     @SerialName(parseModeField)
     override val parseModeName: String = "MarkdownV2"
 }
-@Serializable(ParseModeSerializerObject::class)
+@Serializable(ParseModeSerializer::class)
 object HTMLParseMode : ParseMode {
     @Serializable
     @SerialName(parseModeField)
@@ -47,7 +47,7 @@ typealias HTML = HTMLParseMode
 var defaultParseMode: ParseMode = HTML
 
 @RiskFeature
-object ParseModeSerializerObject : KSerializer<ParseMode> {
+object ParseModeSerializer : KSerializer<ParseMode> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
     override fun deserialize(decoder: Decoder): ParseMode {
         return when (decoder.decodeString()) {
