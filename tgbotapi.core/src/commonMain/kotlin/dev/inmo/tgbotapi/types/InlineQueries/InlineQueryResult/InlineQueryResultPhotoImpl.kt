@@ -1,12 +1,12 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhoto
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.inlineQueryResultPhotoType
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -38,7 +38,20 @@ fun InlineQueryResultPhotoImpl(
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultPhotoImpl(id, url, thumbUrl, width, height, title, description, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
+) = InlineQueryResultPhotoImpl(
+    id,
+    url,
+    thumbUrl,
+    width,
+    height,
+    title,
+    description,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    replyMarkup,
+    inputMessageContent
+)
 
 @Serializable
 data class InlineQueryResultPhotoImpl internal constructor(

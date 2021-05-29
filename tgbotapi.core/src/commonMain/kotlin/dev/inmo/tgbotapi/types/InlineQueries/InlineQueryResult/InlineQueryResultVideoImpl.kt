@@ -1,12 +1,12 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.inlineQueryResultVideoType
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -44,7 +44,22 @@ fun InlineQueryResultVideoImpl(
     entities: List<TextSource>,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultVideoImpl(id, url, thumbUrl, mimeType, title, width, height, duration, description, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
+) = InlineQueryResultVideoImpl(
+    id,
+    url,
+    thumbUrl,
+    mimeType,
+    title,
+    width,
+    height,
+    duration,
+    description,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    replyMarkup,
+    inputMessageContent
+)
 
 @Serializable
 data class InlineQueryResultVideoImpl internal constructor(

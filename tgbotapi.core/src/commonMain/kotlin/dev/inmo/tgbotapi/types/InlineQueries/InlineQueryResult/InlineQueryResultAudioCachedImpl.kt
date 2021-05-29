@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudioCached
@@ -8,6 +7,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -29,7 +29,15 @@ fun InlineQueryResultAudioCachedImpl(
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultAudioCachedImpl(id, fileId, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
+) = InlineQueryResultAudioCachedImpl(
+    id,
+    fileId,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    replyMarkup,
+    inputMessageContent
+)
 
 @Serializable
 data class InlineQueryResultAudioCachedImpl internal constructor(

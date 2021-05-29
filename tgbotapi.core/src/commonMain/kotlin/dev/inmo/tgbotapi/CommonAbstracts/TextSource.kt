@@ -21,21 +21,21 @@ const val DirectInvocationOfTextSourceConstructor =
 typealias TextSourcesList = TextSourcesList
 
 @Deprecated("Replaced", ReplaceWith("TextSource", "dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource"))
-typealias TextSource = dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+typealias TextSource = TextSource
 
 @Suppress("NOTHING_TO_INLINE")
 @Deprecated("Replaced", ReplaceWith("plus", "dev.inmo.tgbotapi.types.MessageEntity.textsources.plus"))
-inline operator fun dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource.plus(other: dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource) =
+inline operator fun TextSource.plus(other: TextSource) =
     listOf(this, other)
 
 @Suppress("NOTHING_TO_INLINE")
 @Deprecated("Replaced", ReplaceWith("plus", "dev.inmo.tgbotapi.types.MessageEntity.textsources.plus"))
-inline operator fun dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource.plus(other: List<TextSource>) =
+inline operator fun TextSource.plus(other: List<TextSource>) =
     listOf(this) + other
 
 @Suppress("NOTHING_TO_INLINE")
 @Deprecated("Replaced", ReplaceWith("plus", "dev.inmo.tgbotapi.types.MessageEntity.textsources.plus"))
-inline operator fun dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource.plus(text: String) =
+inline operator fun TextSource.plus(text: String) =
     listOf(this, regular(text))
 
 @Suppress("NOTHING_TO_INLINE")
@@ -48,7 +48,7 @@ inline operator fun List<TextSource>.plus(text: String) = this + regular(text)
 )
 typealias MultilevelTextSource = MultilevelTextSource
 
-@Deprecated("Replaced", ReplaceWith("makeString", "dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString"))
+@Deprecated("Replaced", ReplaceWith("makeString()", "dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString"))
 fun List<TextSource>.makeString() = makeString()
 
 @Deprecated(

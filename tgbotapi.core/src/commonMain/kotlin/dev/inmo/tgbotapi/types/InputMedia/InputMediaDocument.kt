@@ -1,11 +1,9 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.DocumentFile
@@ -26,7 +24,14 @@ fun InputMediaDocument(
     entities: TextSourcesList,
     thumb: InputFile? = null,
     disableContentTypeDetection: Boolean? = null
-) = InputMediaDocument(file, entities.makeString(), null, entities.toRawMessageEntities(), thumb, disableContentTypeDetection)
+) = InputMediaDocument(
+    file,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    thumb,
+    disableContentTypeDetection
+)
 
 /**
  * Represents a general file to be sent. See https://core.telegram.org/bots/api#inputmediadocument
