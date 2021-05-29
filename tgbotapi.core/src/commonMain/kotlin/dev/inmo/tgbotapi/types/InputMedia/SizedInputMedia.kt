@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-interface SizedInputMedia : InputMedia {
+sealed interface SizedInputMedia : InputMedia {
     val width: Int?
     val height: Int?
 }

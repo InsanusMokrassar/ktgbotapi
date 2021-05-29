@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.extensions.utils.onlyTextContentMessages
 import dev.inmo.tgbotapi.extensions.utils.shortcuts.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.BotCommandTextSource
@@ -60,4 +59,4 @@ fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsInsideTextMessages(
  */
 fun <T : BaseSentMessageUpdate> Flow<T>.filterCommandsWithArgs(
     commandRegex: Regex
-): Flow<Pair<ContentMessage<TextContent>, List<TextSource>>> = textMessages().filterCommandsWithArgs(commandRegex)
+): Flow<Pair<ContentMessage<TextContent>, List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>>> = textMessages().filterCommandsWithArgs(commandRegex)

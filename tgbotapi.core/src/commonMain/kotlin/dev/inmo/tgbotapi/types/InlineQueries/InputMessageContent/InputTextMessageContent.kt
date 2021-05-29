@@ -3,8 +3,8 @@ package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.CommonAbstracts.types.DisableWebPagePreview
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import kotlinx.serialization.SerialName
@@ -23,7 +23,7 @@ fun InputTextMessageContent(
  * Represents the [InputMessageContent] of a text message to be sent as the result of an inline query.
  */
 fun InputTextMessageContent(
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableWebPagePreview: Boolean? = null
 ) = InputTextMessageContent(entities.makeString(), null, entities.toRawMessageEntities(), disableWebPagePreview)
 

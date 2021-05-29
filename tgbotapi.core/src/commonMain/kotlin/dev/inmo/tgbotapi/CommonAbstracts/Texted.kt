@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 
 interface Texted {
@@ -9,7 +10,7 @@ interface TextedWithTextSources : Texted {
     /**
      * Full list of [TextSource] built from source[TextedInput.textEntities]
      */
-    val textSources: List<TextSource>?
+    val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>?
 }
 
 interface ParsableOutput : Texted {
@@ -17,7 +18,7 @@ interface ParsableOutput : Texted {
 }
 
 interface EntitiesOutput : TextedWithTextSources {
-    val entities: List<TextSource>?
+    val entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>?
         get() = textSources
 }
 

@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.extensions.api.send.polls
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.polls.SendQuizPoll
 import dev.inmo.tgbotapi.requests.send.polls.SendRegularPoll
@@ -162,7 +161,7 @@ suspend inline fun TelegramBot.sendQuizPoll(
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -181,7 +180,7 @@ suspend inline fun TelegramBot.sendQuizPoll(
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -199,7 +198,7 @@ suspend inline fun TelegramBot.sendQuizPoll(
     options: List<String> = quizPoll.options.map { it.text },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -217,7 +216,7 @@ suspend inline fun TelegramBot.sendQuizPoll(
     options: List<String> = quizPoll.options.map { it.text },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -292,7 +291,7 @@ suspend inline fun TelegramBot.replyWithQuizPoll(
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -307,7 +306,7 @@ suspend inline fun TelegramBot.replyWithQuizPoll(
     options: List<String> = quizPoll.options.map { it.text },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,

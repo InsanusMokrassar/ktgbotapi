@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.PhotoSize
@@ -20,7 +21,7 @@ fun InputMediaPhoto(
 
 fun InputMediaPhoto(
     file: InputFile,
-    entities: List<TextSource>
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>
 ) = InputMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities())
 
 @Serializable

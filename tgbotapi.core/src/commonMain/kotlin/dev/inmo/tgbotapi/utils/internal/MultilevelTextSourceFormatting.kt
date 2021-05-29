@@ -1,17 +1,16 @@
 package dev.inmo.tgbotapi.utils.internal
 
 import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.link
 import dev.inmo.tgbotapi.utils.extensions.escapeMarkdownV2Link
 import dev.inmo.tgbotapi.utils.extensions.toHtml
 
-private fun List<TextSource>.joinSubSourcesMarkdownV2() = joinToString("") {
+private fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.joinSubSourcesMarkdownV2() = joinToString("") {
     it.markdownV2
 }
 
-private fun List<TextSource>.joinSubSourcesHtml() = joinToString("") {
+private fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.joinSubSourcesHtml() = joinToString("") {
     it.html
 }
 

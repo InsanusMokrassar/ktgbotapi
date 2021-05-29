@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests.send.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
@@ -80,7 +79,7 @@ fun SendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
     thumb: InputFile? = null,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -158,7 +157,7 @@ data class SendDocumentData internal constructor(
     TextableSendMessageRequest<ContentMessage<DocumentContent>>,
     ThumbedSendMessageRequest<ContentMessage<DocumentContent>>
 {
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendVoice
@@ -107,7 +106,7 @@ suspend inline fun TelegramBot.reply(
 suspend inline fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,
     voice: InputFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     duration: Long? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -129,7 +128,7 @@ suspend inline fun TelegramBot.sendVoice(
 suspend inline fun TelegramBot.sendVoice(
     chat: Chat,
     voice: InputFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     duration: Long? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -140,7 +139,7 @@ suspend inline fun TelegramBot.sendVoice(
 suspend inline fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,
     voice: VoiceFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -152,7 +151,7 @@ suspend inline fun TelegramBot.sendVoice(
 suspend inline fun TelegramBot.sendVoice(
     chat: Chat,
     voice: VoiceFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -162,7 +161,7 @@ suspend inline fun TelegramBot.sendVoice(
 suspend inline fun TelegramBot.replyWithVoice(
     to: Message,
     voice: InputFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     duration: Long? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -172,7 +171,7 @@ suspend inline fun TelegramBot.replyWithVoice(
 suspend inline fun TelegramBot.replyWithVoice(
     to: Message,
     voice: VoiceFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -181,7 +180,7 @@ suspend inline fun TelegramBot.replyWithVoice(
 suspend inline fun TelegramBot.reply(
     to: Message,
     voice: VoiceFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null

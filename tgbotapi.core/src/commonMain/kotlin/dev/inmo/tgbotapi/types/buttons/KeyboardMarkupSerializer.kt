@@ -14,7 +14,7 @@ internal object KeyboardMarkupSerializer : KSerializer<KeyboardMarkup> {
     )
     override fun serialize(encoder: Encoder, value: KeyboardMarkup) {
         when(value) {
-            is ForceReply -> ForceReply.serializer().serialize(encoder, value)
+            is ReplyForce -> ReplyForce.serializer().serialize(encoder, value)
             is InlineKeyboardMarkup -> InlineKeyboardMarkup.serializer().serialize(encoder, value)
             is ReplyKeyboardMarkup -> ReplyKeyboardMarkup.serializer().serialize(encoder, value)
             is ReplyKeyboardRemove -> ReplyKeyboardRemove.serializer().serialize(encoder, value)

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -27,7 +28,7 @@ fun CopyMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
     messageId: MessageIdentifier,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,

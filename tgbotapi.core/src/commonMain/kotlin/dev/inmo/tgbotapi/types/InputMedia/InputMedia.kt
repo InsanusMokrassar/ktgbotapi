@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import kotlinx.serialization.Serializable
 
 @Serializable(InputMediaSerializer::class)
-interface InputMedia {
+sealed interface InputMedia {
     val type: String
     val file: InputFile
     val media: String

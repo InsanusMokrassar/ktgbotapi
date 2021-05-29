@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.CommonAbstracts.types.DisableWebPagePreview
 import dev.inmo.tgbotapi.requests.send.abstracts.*
@@ -41,7 +40,7 @@ fun SendTextMessage(
 
 fun SendTextMessage(
     chatId: ChatIdentifier,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -84,7 +83,7 @@ data class SendTextMessage internal constructor(
     TextableSendMessageRequest<ContentMessage<TextContent>>,
     DisableWebPagePreview
 {
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
         rawEntities ?.asTextSources(text)
     }
 

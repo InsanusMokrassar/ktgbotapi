@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -65,7 +66,7 @@ fun SendAudio(
     chatId: ChatIdentifier,
     audio: InputFile,
     thumb: InputFile? = null,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,

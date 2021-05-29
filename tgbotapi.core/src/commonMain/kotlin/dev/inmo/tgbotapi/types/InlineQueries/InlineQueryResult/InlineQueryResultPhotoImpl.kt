@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhoto
@@ -35,7 +34,7 @@ fun InlineQueryResultPhotoImpl(
     height: Int? = null,
     title: String? = null,
     description: String? = null,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultPhotoImpl(id, url, thumbUrl, width, height, title, description, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
@@ -68,7 +67,7 @@ data class InlineQueryResultPhotoImpl internal constructor(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultPhoto {
     override val type: String = inlineQueryResultPhotoType
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

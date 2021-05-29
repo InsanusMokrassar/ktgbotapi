@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
@@ -30,7 +29,7 @@ fun InlineQueryResultDocumentCachedImpl(
     fileId: FileId,
     title: String,
     description: String? = null,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultDocumentCachedImpl(id, fileId, title, description, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
@@ -57,7 +56,7 @@ data class InlineQueryResultDocumentCachedImpl internal constructor(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultDocumentCached {
     override val type: String = inlineQueryResultDocumentType
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

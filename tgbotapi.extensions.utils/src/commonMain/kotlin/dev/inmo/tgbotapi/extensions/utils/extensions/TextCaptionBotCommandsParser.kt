@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.BotCommandTextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 

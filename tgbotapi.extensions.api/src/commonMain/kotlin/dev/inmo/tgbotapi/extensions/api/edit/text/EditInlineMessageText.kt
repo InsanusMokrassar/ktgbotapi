@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.extensions.api.edit.text
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.text.EditInlineMessageText
 import dev.inmo.tgbotapi.types.InlineMessageIdentifier
@@ -17,7 +16,7 @@ suspend fun TelegramBot.editMessageText(
 
 suspend fun TelegramBot.editMessageText(
     inlineMessageId: InlineMessageIdentifier,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(EditInlineMessageText(inlineMessageId, entities, disableWebPagePreview, replyMarkup))

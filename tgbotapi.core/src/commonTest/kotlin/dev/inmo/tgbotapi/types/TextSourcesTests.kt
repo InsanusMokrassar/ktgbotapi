@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.TestsJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.formatting.*

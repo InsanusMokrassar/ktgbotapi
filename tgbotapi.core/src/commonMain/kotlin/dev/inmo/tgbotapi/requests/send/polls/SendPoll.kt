@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageReques
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -267,7 +268,7 @@ fun SendQuizPoll(
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,

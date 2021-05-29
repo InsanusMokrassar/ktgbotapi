@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocument
@@ -39,7 +38,7 @@ fun InlineQueryResultDocumentImpl(
     thumbWidth: Int? = null,
     thumbHeight: Int? = null,
     description: String? = null,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultDocumentImpl(id, url, title, mimeType, thumbUrl, thumbWidth, thumbHeight, description, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
@@ -74,7 +73,7 @@ data class InlineQueryResultDocumentImpl internal constructor(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultDocument {
     override val type: String = inlineQueryResultDocumentType
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

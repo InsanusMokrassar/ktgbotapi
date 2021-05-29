@@ -11,6 +11,8 @@
         * `Klock`: `2.0.7` -> `2.1.2`
         * `UUID`: `0.2.3` -> `0.3.0`
         * `Ktor`: `1.5.4` -> `1.6.0`
+* `Core`:
+    * `ForceReply` has been renamed to `ReplyForce`
 
 ## 0.34.1
 

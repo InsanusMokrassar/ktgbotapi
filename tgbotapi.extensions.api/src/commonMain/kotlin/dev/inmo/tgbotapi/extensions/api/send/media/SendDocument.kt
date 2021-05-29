@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
@@ -116,7 +115,7 @@ suspend inline fun TelegramBot.sendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
     thumb: InputFile? = null,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -140,7 +139,7 @@ suspend inline fun TelegramBot.sendDocument(
     chat: Chat,
     document: InputFile,
     thumb: InputFile? = null,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -151,7 +150,7 @@ suspend inline fun TelegramBot.sendDocument(
 suspend inline fun TelegramBot.sendDocument(
     chatId: ChatIdentifier,
     document: DocumentFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -164,7 +163,7 @@ suspend inline fun TelegramBot.sendDocument(
 suspend inline fun TelegramBot.sendDocument(
     chat: Chat,
     document: DocumentFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -176,7 +175,7 @@ suspend inline fun TelegramBot.replyWithDocument(
     to: Message,
     document: InputFile,
     thumb: InputFile? = null,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
@@ -186,7 +185,7 @@ suspend inline fun TelegramBot.replyWithDocument(
 suspend inline fun TelegramBot.replyWithDocument(
     to: Message,
     document: DocumentFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
@@ -196,7 +195,7 @@ suspend inline fun TelegramBot.replyWithDocument(
 suspend inline fun TelegramBot.reply(
     to: Message,
     document: DocumentFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,

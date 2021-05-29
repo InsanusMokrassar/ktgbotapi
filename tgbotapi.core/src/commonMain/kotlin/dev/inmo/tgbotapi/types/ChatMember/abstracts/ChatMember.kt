@@ -13,7 +13,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 @Serializable(ChatMemberSerializer::class)
-interface ChatMember {
+sealed interface ChatMember {
     val user: User
 }
 

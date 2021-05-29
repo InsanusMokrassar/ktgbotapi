@@ -981,9 +981,9 @@ inline fun TelegramMediaFile.asThumbedMediaFile(): ThumbedMediaFile? = this as? 
 @PreviewFeature
 inline fun TelegramMediaFile.requireThumbedMediaFile(): ThumbedMediaFile = this as ThumbedMediaFile
 @PreviewFeature
-inline fun KeyboardMarkup.asForceReply(): ForceReply? = this as? ForceReply
+inline fun KeyboardMarkup.asForceReply(): ReplyForce? = this as? ReplyForce
 @PreviewFeature
-inline fun KeyboardMarkup.requireForceReply(): ForceReply = this as ForceReply
+inline fun KeyboardMarkup.requireForceReply(): ReplyForce = this as ReplyForce
 @PreviewFeature
 inline fun KeyboardMarkup.asInlineKeyboardMarkup(): InlineKeyboardMarkup? = this as? InlineKeyboardMarkup
 @PreviewFeature

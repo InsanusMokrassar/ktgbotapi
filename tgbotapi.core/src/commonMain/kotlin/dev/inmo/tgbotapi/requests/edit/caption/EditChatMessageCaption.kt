@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests.edit.caption
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.requests.edit.media.MediaContentMessageResultDeserializer
@@ -33,7 +32,7 @@ fun EditChatMessageCaption(
 fun EditChatMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageCaption(
     chatId,
@@ -59,7 +58,7 @@ data class EditChatMessageCaption internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<MediaContent>, EditTextChatMessage, EditReplyMessage {
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
         rawEntities ?.asTextSources(text)
     }
 

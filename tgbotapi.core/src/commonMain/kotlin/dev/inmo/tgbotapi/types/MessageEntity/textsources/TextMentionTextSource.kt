@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*

@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import kotlinx.serialization.SerialName
@@ -22,7 +23,7 @@ fun InputMediaAnimation(
 
 fun InputMediaAnimation(
     file: InputFile,
-    entities: List<TextSource>,
+    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,

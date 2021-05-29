@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import kotlin.test.assertTrue
 
@@ -40,7 +39,7 @@ internal val testTextEntities = listOf(
     )
 )
 
-fun List<TextSource>.testTextSources() {
+fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.testTextSources() {
     assertTrue (first() is RegularTextSource)
     assertTrue (get(1) is BoldTextSource)
     assertTrue (get(2) is RegularTextSource)
