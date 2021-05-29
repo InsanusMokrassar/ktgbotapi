@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -25,8 +26,8 @@ object QuizKeyboardButtonPollType : KeyboardButtonPollType {
     override val type: String = quizPollType
 }
 
-@Serializer(KeyboardButtonPollType::class)
-internal object KeyboardButtonPollTypeSerializer : KSerializer<KeyboardButtonPollType> {
+@RiskFeature
+object KeyboardButtonPollTypeSerializer : KSerializer<KeyboardButtonPollType> {
     private val internalSerializer = JsonElement.serializer()
     override val descriptor: SerialDescriptor = internalSerializer.descriptor
 

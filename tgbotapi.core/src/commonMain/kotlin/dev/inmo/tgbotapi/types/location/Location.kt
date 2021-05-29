@@ -39,7 +39,6 @@ data class LiveLocation(
     override val proximityAlertRadius: Meters? = null
 ) : Location, Livable, ProximityAlertable, Headed
 
-@Serializer(Location::class)
 object LocationSerializer : KSerializer<Location> {
     private val internalSerializer = JsonObject.serializer()
     override val descriptor: SerialDescriptor = internalSerializer.descriptor

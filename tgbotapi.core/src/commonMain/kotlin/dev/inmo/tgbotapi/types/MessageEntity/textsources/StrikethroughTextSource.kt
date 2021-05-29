@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val subsources: List<TextSource>
+    override val subsources: TextSourcesList
 ) : MultilevelTextSource {
     override val html: String by lazy { strikethroughHTML() }
     override val markdownV2: String by lazy { strikethroughMarkdownV2() }
@@ -18,7 +18,7 @@ data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceCons
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun strikethrough(parts: List<TextSource>) = StrikethroughTextSource(parts.makeString(), parts)
+inline fun strikethrough(parts: TextSourcesList) = StrikethroughTextSource(parts.makeString(), parts)
 @Suppress("NOTHING_TO_INLINE")
 inline fun strikethrough(vararg parts: TextSource) = strikethrough(parts.toList())
 @Suppress("NOTHING_TO_INLINE")

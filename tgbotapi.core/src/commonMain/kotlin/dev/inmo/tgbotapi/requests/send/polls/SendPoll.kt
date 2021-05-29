@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
 import com.soywiz.klock.DateTime
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
@@ -268,7 +269,7 @@ fun SendQuizPoll(
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: List<TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,

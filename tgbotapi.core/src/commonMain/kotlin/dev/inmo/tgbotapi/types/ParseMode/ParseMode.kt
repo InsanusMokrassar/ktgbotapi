@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.ParseMode
 
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -45,8 +46,8 @@ typealias HTML = HTMLParseMode
  */
 var defaultParseMode: ParseMode = HTML
 
-@Serializer(ParseMode::class)
-internal object ParseModeSerializerObject : KSerializer<ParseMode> {
+@RiskFeature
+object ParseModeSerializerObject : KSerializer<ParseMode> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
     override fun deserialize(decoder: Decoder): ParseMode {
         return when (decoder.decodeString()) {

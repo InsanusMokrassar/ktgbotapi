@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.api.send
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.CopyMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -86,7 +87,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
     messageId: MessageIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -99,7 +100,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChat: Chat,
     toChatId: ChatIdentifier,
     messageId: MessageIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -110,7 +111,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChatId: ChatIdentifier,
     toChat: Chat,
     messageId: MessageIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -121,7 +122,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChat: Chat,
     toChat: Chat,
     messageId: MessageIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -131,7 +132,7 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
     message: Message,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -141,7 +142,7 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
     message: Message,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,

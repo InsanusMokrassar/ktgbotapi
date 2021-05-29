@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.games
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
+import dev.inmo.tgbotapi.CommonAbstracts.Titled
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.Photo

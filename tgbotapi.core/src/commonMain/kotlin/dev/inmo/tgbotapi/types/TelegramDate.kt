@@ -1,9 +1,13 @@
 package dev.inmo.tgbotapi.types
 
 import com.soywiz.klock.DateTime
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.JsonPrimitive
 
 @Serializable(TelegramDateSerializer::class)
 data class TelegramDate(
@@ -24,8 +28,10 @@ data class TelegramDate(
 
 fun DateTime.toTelegramDate(): TelegramDate = TelegramDate(this)
 
-@Serializer(TelegramDate::class)
-internal object TelegramDateSerializer : KSerializer<TelegramDate> {
+@RiskFeature
+object TelegramDateSerializer : KSerializer<TelegramDate> {
+    override val descriptor: SerialDescriptor = Long.serializer().descriptor
+
     override fun serialize(encoder: Encoder, value: TelegramDate) {
         encoder.encodeLong(
             value.date

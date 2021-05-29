@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
     val user: User,
-    override val subsources: List<TextSource>
+    override val subsources: TextSourcesList
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.textMentionMarkdown(user.id) }
     override val markdownV2: String by lazy { textMentionMarkdownV2(user.id) }
@@ -20,17 +20,17 @@ data class TextMentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(parts: List<TextSource>, user: User) = TextMentionTextSource(parts.makeString(), user, parts)
+inline fun mention(parts: TextSourcesList, user: User) = TextMentionTextSource(parts.makeString(), user, parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun User.mention(parts: List<TextSource>) = mention(parts, this)
+inline fun User.mention(parts: TextSourcesList) = mention(parts, this)
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(parts: List<TextSource>, userId: UserId) = mention(parts, CommonUser(userId, ""))
+inline fun mention(parts: TextSourcesList, userId: UserId) = mention(parts, CommonUser(userId, ""))
 @Suppress("NOTHING_TO_INLINE")
-inline fun UserId.mention(parts: List<TextSource>) = mention(parts, this)
+inline fun UserId.mention(parts: TextSourcesList) = mention(parts, this)
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(parts: List<TextSource>, id: Identifier) = mention(parts, UserId(id))
+inline fun mention(parts: TextSourcesList, id: Identifier) = mention(parts, UserId(id))
 @Suppress("NOTHING_TO_INLINE")
-inline fun Identifier.mention(parts: List<TextSource>) = mention(parts, this)
+inline fun Identifier.mention(parts: TextSourcesList) = mention(parts, this)
 @Suppress("NOTHING_TO_INLINE")
 inline fun mention(user: User, vararg parts: TextSource) = mention(parts.toList(), user)
 @Suppress("NOTHING_TO_INLINE")

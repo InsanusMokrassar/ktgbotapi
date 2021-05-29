@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendAnimation
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -144,7 +145,7 @@ suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: InputFile,
     thumb: InputFile? = null,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -171,7 +172,7 @@ suspend fun TelegramBot.sendAnimation(
 suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: AnimationFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -187,7 +188,7 @@ suspend fun TelegramBot.sendAnimation(
     chat: Chat,
     animation: InputFile,
     thumb: InputFile? = null,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -200,7 +201,7 @@ suspend fun TelegramBot.sendAnimation(
 suspend fun TelegramBot.sendAnimation(
     chat: Chat,
     animation: AnimationFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -214,7 +215,7 @@ suspend inline fun TelegramBot.replyWithAnimation(
     to: Message,
     animation: InputFile,
     thumb: InputFile? = null,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -238,7 +239,7 @@ suspend inline fun TelegramBot.replyWithAnimation(
 suspend inline fun TelegramBot.replyWithAnimation(
     to: Message,
     animation: AnimationFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -250,7 +251,7 @@ suspend inline fun TelegramBot.replyWithAnimation(
 suspend inline fun TelegramBot.reply(
     to: Message,
     animation: AnimationFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,

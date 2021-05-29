@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.chat.abstracts.UnknownChatType
 import dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedChat
 import dev.inmo.tgbotapi.types.chat.abstracts.extended.UnknownExtendedChat
 import dev.inmo.tgbotapi.types.chat.extended.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
@@ -39,7 +40,6 @@ val String.asChatType
         ChatType.ChannelChatType.stringified -> ChatType.ChannelChatType
         else -> ChatType.UnknownChatType(this)
     }
-@Serializer(ChatType::class)
 object ChatTypeSerializer : KSerializer<ChatType> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
     override fun deserialize(decoder: Decoder): ChatType {
@@ -51,7 +51,8 @@ object ChatTypeSerializer : KSerializer<ChatType> {
     }
 }
 
-internal object PreviewChatSerializer : KSerializer<Chat> {
+@RiskFeature
+object PreviewChatSerializer : KSerializer<Chat> {
     @InternalSerializationApi
     override val descriptor: SerialDescriptor = buildSerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
 
@@ -83,7 +84,8 @@ internal object PreviewChatSerializer : KSerializer<Chat> {
     }
 }
 
-internal object ExtendedChatSerializer : KSerializer<ExtendedChat> {
+@RiskFeature
+object ExtendedChatSerializer : KSerializer<ExtendedChat> {
     @InternalSerializationApi
     override val descriptor: SerialDescriptor = buildSerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
 

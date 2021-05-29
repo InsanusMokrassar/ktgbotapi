@@ -1,14 +1,14 @@
 package dev.inmo.tgbotapi.types.InlineQueries
 
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializer(InputMessageContent::class)
-internal object InputMessageContentSerializer : KSerializer<InputMessageContent> {
+@RiskFeature
+object InputMessageContentSerializer : KSerializer<InputMessageContent> {
     @InternalSerializationApi
     override val descriptor: SerialDescriptor = buildSerialDescriptor(InputMessageContent::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: InputMessageContent) {

@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -26,7 +27,7 @@ fun EditInlineMessageText(
 
 fun EditInlineMessageText(
     inlineMessageId: InlineMessageIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditInlineMessageText(
@@ -53,7 +54,7 @@ data class EditInlineMessageText internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
-    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }
 

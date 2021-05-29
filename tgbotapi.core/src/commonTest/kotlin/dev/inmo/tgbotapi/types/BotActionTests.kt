@@ -9,6 +9,7 @@ import kotlin.test.assertEquals
 class BotActionTests {
     @Serializable
     data class Example(
+        @Serializable(BotActionSerializer::class)
         val botAction: BotAction
     )
 

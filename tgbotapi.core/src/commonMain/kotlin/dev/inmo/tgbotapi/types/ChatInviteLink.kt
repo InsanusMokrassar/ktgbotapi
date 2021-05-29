@@ -79,7 +79,6 @@ data class CommonInviteLink(
         get() = expireDate ?.asDate
 }
 
-@Serializer(ChatInviteLink::class)
 object ChatInviteLinkSerializer : KSerializer<ChatInviteLink> {
     override val descriptor: SerialDescriptor
         get() = RawChatInviteLink.serializer().descriptor

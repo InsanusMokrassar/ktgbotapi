@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.User
 import kotlinx.serialization.Serializable
@@ -21,8 +20,8 @@ internal data class RawMessageEntity(
 
 internal fun RawMessageEntity.asTextSource(
     source: String,
-    subParts: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>
-): dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource {
+    subParts: TextSourcesList
+): TextSource {
     val sourceSubstring: String = source.substring(range)
     val subPartsWithRegulars by lazy {
         subParts.fillWithRegulars(sourceSubstring)
@@ -58,9 +57,9 @@ private inline operator fun <T : Comparable<T>> ClosedRange<T>.contains(other: C
     return start <= other.start && endInclusive >= other.endInclusive
 }
 
-internal fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.fillWithRegulars(source: String): List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource> {
+internal fun TextSourcesList.fillWithRegulars(source: String): TextSourcesList {
     var index = 0
-    val result = mutableListOf<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>()
+    val result = mutableListOf<TextSource>()
     for (i in 0 until size) {
         val textSource = get(i)
         val thisSourceInStart = source.startsWith(textSource.source, index)
@@ -83,9 +82,9 @@ internal fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.
 private fun createTextSources(
     originalFullString: String,
     entities: RawMessageEntities
-): List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource> {
+): TextSourcesList {
     val mutableEntities = entities.toMutableList().apply { sortBy { it.offset } }
-    val resultList = mutableListOf<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>()
+    val resultList = mutableListOf<TextSource>()
 
     while (mutableEntities.isNotEmpty()) {
         var parent = mutableEntities.removeFirst()
@@ -139,7 +138,7 @@ private fun createTextSources(
     return resultList
 }
 
-internal fun dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEntity> {
+internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEntity> {
     val source = source
     val length = source.length
     return listOfNotNull(
@@ -169,7 +168,7 @@ internal fun dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource.toRawM
 }
 
 
-internal fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
+internal fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
     var i = preOffset
     return flatMap { textSource ->
         textSource.toRawMessageEntities(i).also {
@@ -184,9 +183,9 @@ fun String.removeLeading(word: String) = if (startsWith(word)) {
     this
 }
 
-internal fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
+internal fun TextSourcesList.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
 
-internal fun RawMessageEntities.asTextSources(sourceString: String): List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource> =
+internal fun RawMessageEntities.asTextSources(sourceString: String): TextSourcesList =
     createTextSources(sourceString, this).fillWithRegulars(sourceString)
 
 internal typealias RawMessageEntities = List<RawMessageEntity>

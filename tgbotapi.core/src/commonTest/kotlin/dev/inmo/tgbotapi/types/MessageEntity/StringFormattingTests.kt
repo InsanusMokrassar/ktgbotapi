@@ -39,7 +39,7 @@ class StringFormattingTests {
 
     @Test
     fun testThatCreatingOfStringWithSimpleDSLWorksCorrectly() {
-        val sources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource> = regular("It ") +
+        val sources: TextSourcesList = regular("It ") +
             bold(italic("is") +
                 " " +
                 strikethrough(underline("simple"))) +

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -47,8 +48,8 @@ data class RequestPollKeyboardButton(
     val requestPoll: KeyboardButtonPollType
 ) : KeyboardButton
 
-@Serializer(KeyboardButton::class)
-internal object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
+@RiskFeature
+object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
     private val internalSerializer = JsonElement.serializer()
     override val descriptor: SerialDescriptor = internalSerializer.descriptor
 

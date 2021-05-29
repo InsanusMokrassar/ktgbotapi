@@ -4,8 +4,10 @@ import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoice
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.inlineQueryResultVoiceType
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -38,7 +40,7 @@ fun InlineQueryResultVoiceImpl(
     url: String,
     title: String,
     duration: Int? = null,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultVoiceImpl(id, url, title, duration, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
@@ -65,7 +67,7 @@ data class InlineQueryResultVoiceImpl internal constructor(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultVoice {
     override val type: String = inlineQueryResultVoiceType
-    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

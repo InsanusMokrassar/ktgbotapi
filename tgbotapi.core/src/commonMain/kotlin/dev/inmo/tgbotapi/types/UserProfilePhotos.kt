@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.types.files.Photo
 import dev.inmo.tgbotapi.types.files.PhotoSerializer
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
@@ -13,6 +14,7 @@ data class UserProfilePhotos (
     val photos: List<Photo>
 )
 
-internal object UserProfilePhotosPhotosSerializer : KSerializer<List<Photo>> by ListSerializer(
+@RiskFeature
+object UserProfilePhotosPhotosSerializer : KSerializer<List<Photo>> by ListSerializer(
     PhotoSerializer
 )

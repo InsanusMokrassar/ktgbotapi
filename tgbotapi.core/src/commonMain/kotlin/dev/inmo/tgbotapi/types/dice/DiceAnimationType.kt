@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.dice
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
@@ -55,8 +56,8 @@ data class CustomDiceAnimationType(
         get() = error("Custom dice animation type have unknown value limits")
 }
 
-@Serializer(DiceAnimationType::class)
-internal object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
+@RiskFeature
+object DiceAnimationTypeSerializer : KSerializer<DiceAnimationType> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("DiceAnimationType", PrimitiveKind.STRING)
     override fun deserialize(decoder: Decoder): DiceAnimationType {
         return when (val type = decoder.decodeString()) {

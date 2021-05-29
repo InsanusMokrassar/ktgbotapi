@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.FileUniqueId
 import dev.inmo.tgbotapi.types.fileUniqueIdField
 import dev.inmo.tgbotapi.types.files.abstracts.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
@@ -13,7 +14,8 @@ fun Photo.biggest(): PhotoSize? = maxByOrNull {
     it.resolution
 }
 
-internal object PhotoSerializer : KSerializer<Photo> by ListSerializer(
+@RiskFeature
+object PhotoSerializer : KSerializer<Photo> by ListSerializer(
     PhotoSize.serializer()
 )
 

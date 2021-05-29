@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.serializers.InlineQueryResultSerializer
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
@@ -26,7 +26,7 @@ data class AnswerInlineQuery(
     val switchPmText: String? = null,
     @SerialName(switchPmParameterField)
     val switchPmParameter: String? = null
-): SimpleRequest<Boolean> {
+) : SimpleRequest<Boolean> {
     override fun method(): String = "answerInlineQuery"
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
@@ -34,7 +34,7 @@ data class AnswerInlineQuery(
         get() = serializer()
 }
 
-fun InlineQuery.createAnswer(
+fun dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery.createAnswer(
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,
@@ -51,6 +51,7 @@ fun InlineQuery.createAnswer(
     switchPmParameter
 )
 
-internal object InlineQueryAnswersResultsSerializer: KSerializer<List<InlineQueryResult>> by ListSerializer(
+@RiskFeature
+object InlineQueryAnswersResultsSerializer : KSerializer<List<InlineQueryResult>> by ListSerializer(
     InlineQueryResultSerializer
 )

@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.api.send
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendTextMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -60,7 +61,7 @@ suspend fun TelegramBot.sendTextMessage(
 
 suspend fun TelegramBot.sendMessage(
     chatId: ChatIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -72,7 +73,7 @@ suspend fun TelegramBot.sendMessage(
 
 suspend fun TelegramBot.sendTextMessage(
     chatId: ChatIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -84,7 +85,7 @@ suspend fun TelegramBot.sendTextMessage(
 
 suspend fun TelegramBot.sendMessage(
     chat: Chat,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -95,7 +96,7 @@ suspend fun TelegramBot.sendMessage(
 
 suspend fun TelegramBot.sendTextMessage(
     chat: Chat,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -123,7 +124,7 @@ suspend inline fun TelegramBot.reply(
 )
 suspend inline fun TelegramBot.reply(
     to: Message,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,

@@ -1,10 +1,11 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.DocumentFile
@@ -22,7 +23,7 @@ fun InputMediaDocument(
 
 fun InputMediaDocument(
     file: InputFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     thumb: InputFile? = null,
     disableContentTypeDetection: Boolean? = null
 ) = InputMediaDocument(file, entities.makeString(), null, entities.toRawMessageEntities(), thumb, disableContentTypeDetection)
@@ -51,7 +52,7 @@ data class InputMediaDocument internal constructor(
     val disableContentTypeDetection: Boolean? = null
 ) : InputMedia, DocumentMediaGroupMemberInputMedia, ThumbedInputMedia {
     override val type: String = documentInputMediaType
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

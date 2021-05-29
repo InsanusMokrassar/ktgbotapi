@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
+import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.CommonAbstracts.types.MessageAction
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
@@ -28,7 +29,7 @@ fun CopyMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
     messageId: MessageIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: List<TextSource>,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,

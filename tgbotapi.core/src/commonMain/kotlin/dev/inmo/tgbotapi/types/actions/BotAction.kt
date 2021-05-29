@@ -14,8 +14,7 @@ sealed interface BotAction {
     val actionName: String
 }
 
-@Serializer(BotAction::class)
-internal object BotActionSerializer: KSerializer<BotAction> {
+object BotActionSerializer: KSerializer<BotAction> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
 
     override fun serialize(encoder: Encoder, value: BotAction) {

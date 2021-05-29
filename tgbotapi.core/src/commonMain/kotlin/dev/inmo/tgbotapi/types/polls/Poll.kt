@@ -2,10 +2,11 @@ package dev.inmo.tgbotapi.types.polls
 
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -142,8 +143,8 @@ data class QuizPoll(
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
 ) : Poll, TextedInput
 
-@Serializer(Poll::class)
-internal object PollSerializer : KSerializer<Poll> {
+@RiskFeature
+object PollSerializer : KSerializer<Poll> {
     override val descriptor: SerialDescriptor
         get() = RawPoll.serializer().descriptor
 

@@ -2,13 +2,14 @@ package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.serializers
 
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializer(InlineQueryResult::class)
-internal object InlineQueryResultSerializer : KSerializer<InlineQueryResult> {
+@RiskFeature
+object InlineQueryResultSerializer : KSerializer<InlineQueryResult> {
     @InternalSerializationApi
     override val descriptor: SerialDescriptor = buildSerialDescriptor(InlineQueryResult::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: InlineQueryResult) {

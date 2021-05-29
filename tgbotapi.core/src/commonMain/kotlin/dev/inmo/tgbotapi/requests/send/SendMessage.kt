@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.CommonAbstracts.types.DisableWebPagePreview
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -40,7 +41,7 @@ fun SendTextMessage(
 
 fun SendTextMessage(
     chatId: ChatIdentifier,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -83,7 +84,7 @@ data class SendTextMessage internal constructor(
     TextableSendMessageRequest<ContentMessage<TextContent>>,
     DisableWebPagePreview
 {
-    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }
 

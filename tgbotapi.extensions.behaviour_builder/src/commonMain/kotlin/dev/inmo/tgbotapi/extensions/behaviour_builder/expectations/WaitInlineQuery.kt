@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import kotlinx.coroutines.flow.toList
@@ -14,7 +13,7 @@ private suspend fun <O> BehaviourContext.waitInlineQueries(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    mapper: suspend InlineQuery.() -> O?
+    mapper: suspend dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery.() -> O?
 ): List<O> = expectFlow(
     initRequest,
     count,
@@ -24,7 +23,7 @@ private suspend fun <O> BehaviourContext.waitInlineQueries(
 }.toList().toList()
 
 
-private suspend inline fun <reified T : InlineQuery> BehaviourContext.waitInlines(
+private suspend inline fun <reified T : dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery> BehaviourContext.waitInlines(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
@@ -49,7 +48,7 @@ suspend fun BehaviourContext.waitAnyInlineQuery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: InlineQueryMapper<InlineQuery>? = null
+    filter: InlineQueryMapper<dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery>? = null
 ) = waitInlines(count, initRequest, errorFactory, filter)
 
 suspend fun BehaviourContext.waitBaseInlineQuery(

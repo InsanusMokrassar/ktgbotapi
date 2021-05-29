@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendAudio
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -121,7 +122,7 @@ suspend inline fun TelegramBot.sendAudio(
     chatId: ChatIdentifier,
     audio: InputFile,
     thumb: InputFile? = null,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
@@ -149,7 +150,7 @@ suspend inline fun TelegramBot.sendAudio(
     chat: Chat,
     audio: InputFile,
     thumb: InputFile? = null,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
@@ -162,7 +163,7 @@ suspend inline fun TelegramBot.sendAudio(
 suspend inline fun TelegramBot.sendAudio(
     chatId: ChatIdentifier,
     audio: AudioFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     title: String? = audio.title,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -173,7 +174,7 @@ suspend inline fun TelegramBot.sendAudio(
 suspend inline fun TelegramBot.sendAudio(
     chat: Chat,
     audio: AudioFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     title: String? = audio.title,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -185,7 +186,7 @@ suspend inline fun TelegramBot.replyWithAudio(
     to: Message,
     audio: InputFile,
     thumb: InputFile? = null,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
@@ -197,7 +198,7 @@ suspend inline fun TelegramBot.replyWithAudio(
 suspend inline fun TelegramBot.replyWithAudio(
     to: Message,
     audio: AudioFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     title: String? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -207,7 +208,7 @@ suspend inline fun TelegramBot.replyWithAudio(
 suspend inline fun TelegramBot.reply(
     to: Message,
     audio: AudioFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     title: String? = null,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,

@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendPhoto
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -101,7 +102,7 @@ suspend inline fun TelegramBot.reply(
 suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     fileId: InputFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -121,7 +122,7 @@ suspend inline fun TelegramBot.sendPhoto(
 suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     fileId: InputFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -131,7 +132,7 @@ suspend inline fun TelegramBot.sendPhoto(
 suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photo: Photo,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -141,7 +142,7 @@ suspend inline fun TelegramBot.sendPhoto(
 suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     photo: Photo,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -151,7 +152,7 @@ suspend inline fun TelegramBot.sendPhoto(
 suspend inline fun TelegramBot.replyWithPhoto(
     to: Message,
     fileId: InputFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -160,7 +161,7 @@ suspend inline fun TelegramBot.replyWithPhoto(
 suspend inline fun TelegramBot.replyWithPhoto(
     to: Message,
     photo: Photo,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -169,7 +170,7 @@ suspend inline fun TelegramBot.replyWithPhoto(
 suspend inline fun TelegramBot.reply(
     to: Message,
     photo: Photo,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null

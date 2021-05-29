@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.abstracts
 
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.StorageFile
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -30,8 +31,8 @@ data class FileId(
 
 fun String.toInputFile() = FileId(this)
 
-@Serializer(InputFile::class)
-internal object InputFileSerializer : KSerializer<InputFile> {
+@RiskFeature
+object InputFileSerializer : KSerializer<InputFile> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(FileId::class.toString(), PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: InputFile) = encoder.encodeString(value.fileId)
     override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString())

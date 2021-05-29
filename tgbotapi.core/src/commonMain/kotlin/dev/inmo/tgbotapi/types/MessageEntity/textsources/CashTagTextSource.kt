@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val subsources: List<TextSource>
+    override val subsources: TextSourcesList
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.cashTagMarkdown() }
     override val markdownV2: String by lazy { cashTagMarkdownV2() }
@@ -18,7 +18,7 @@ data class CashTagTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun cashTag(parts: List<TextSource>) = CashTagTextSource(parts.makeString(), parts)
+inline fun cashTag(parts: TextSourcesList) = CashTagTextSource(parts.makeString(), parts)
 @Suppress("NOTHING_TO_INLINE")
 inline fun cashTag(vararg parts: TextSource) = cashTag(parts.toList())
 @Suppress("NOTHING_TO_INLINE")

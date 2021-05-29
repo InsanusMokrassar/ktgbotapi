@@ -17,7 +17,6 @@ sealed interface ChatMember {
     val user: User
 }
 
-@Serializer(ChatMember::class)
 @RiskFeature
 object ChatMemberSerializer : KSerializer<ChatMember> {
     override val descriptor: SerialDescriptor = JsonObject.serializer().descriptor
@@ -27,9 +26,9 @@ object ChatMemberSerializer : KSerializer<ChatMember> {
         return when (json[statusField] ?.jsonPrimitive ?.content ?: error("Status field of chat member must be specified, but incoming json contains next: $json")) {
             "creator" -> nonstrictJsonFormat.decodeFromJsonElement(CreatorChatMember.serializer(), json)
             "administrator" -> nonstrictJsonFormat.decodeFromJsonElement(AdministratorChatMemberImpl.serializer(), json)
-            "member" -> nonstrictJsonFormat.decodeFromJsonElement(MemberChatMember.serializer(), json)
+            "member" -> nonstrictJsonFormat.decodeFromJsonElement(MemberChatMemberImpl.serializer(), json)
             "restricted" -> nonstrictJsonFormat.decodeFromJsonElement(RestrictedChatMember.serializer(), json)
-            "left" -> nonstrictJsonFormat.decodeFromJsonElement(LeftChatMember.serializer(), json)
+            "left" -> nonstrictJsonFormat.decodeFromJsonElement(LeftChatMemberImpl.serializer(), json)
             "kicked" -> nonstrictJsonFormat.decodeFromJsonElement(KickedChatMember.serializer(), json)
             else -> error("Unknown type of chat member in json: $json")
         }
@@ -39,9 +38,9 @@ object ChatMemberSerializer : KSerializer<ChatMember> {
         when (value) {
             is CreatorChatMember -> CreatorChatMember.serializer()
             is AdministratorChatMemberImpl -> AdministratorChatMemberImpl.serializer()
-            is MemberChatMember -> MemberChatMember.serializer()
+            is MemberChatMember -> MemberChatMemberImpl.serializer()
             is RestrictedChatMember -> RestrictedChatMember.serializer()
-            is LeftChatMember -> LeftChatMember.serializer()
+            is LeftChatMember -> LeftChatMemberImpl.serializer()
             is KickedChatMember -> KickedChatMember.serializer()
         }
     }

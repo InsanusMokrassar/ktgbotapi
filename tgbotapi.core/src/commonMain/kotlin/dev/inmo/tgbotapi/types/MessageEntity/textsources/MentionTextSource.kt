@@ -17,7 +17,7 @@ private val String.withoutCommercialAt
 @Serializable
 data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val subsources: List<TextSource>
+    override val subsources: TextSourcesList
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.mentionMarkdown() }
     override val markdownV2: String by lazy { mentionMarkdownV2() }
@@ -31,7 +31,7 @@ data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(parts: List<TextSource>) = (regular("@") + parts).let { MentionTextSource(it.makeString(), it) }
+inline fun mention(parts: TextSourcesList) = (regular("@") + parts).let { MentionTextSource(it.makeString(), it) }
 @Suppress("NOTHING_TO_INLINE")
 inline fun mention(vararg parts: TextSource) = mention(parts.toList())
 

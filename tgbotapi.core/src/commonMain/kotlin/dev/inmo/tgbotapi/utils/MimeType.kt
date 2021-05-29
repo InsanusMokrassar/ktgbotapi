@@ -19,8 +19,8 @@ fun buildMimeType(raw: String): MimeType = mimesCache.getOrPut(raw) {
     createMimeType(raw)
 }
 
-@Serializer(MimeType::class)
-internal object MimeTypeSerializer : KSerializer<MimeType> {
+@RiskFeature
+object MimeTypeSerializer : KSerializer<MimeType> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("mimeType", PrimitiveKind.STRING)
 
     override fun deserialize(decoder: Decoder): MimeType {

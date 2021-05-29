@@ -15,7 +15,7 @@ internal const val audioInputMediaType = "audio"
 
 fun InputMediaAudio(
     file: InputFile,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
@@ -51,7 +51,7 @@ data class InputMediaAudio internal constructor(
     override val thumb: InputFile? = null
 ) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, Performerable {
     override val type: String = audioInputMediaType
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

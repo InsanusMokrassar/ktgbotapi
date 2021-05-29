@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.answers.payments.abstracts.AnswerShippingQuery
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.payments.ShippingOption
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
@@ -21,7 +22,8 @@ data class AnswerShippingQueryOk(
         get() = serializer()
 }
 
-internal object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ListSerializer(
+@RiskFeature
+object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ListSerializer(
     ShippingOption.serializer()
 )
 

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
 import dev.inmo.tgbotapi.types.typeField
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -8,8 +9,8 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
-@Serializer(MediaGroupMemberInputMedia::class)
-internal object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMemberInputMedia> {
+@RiskFeature
+object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMemberInputMedia> {
     @InternalSerializationApi
     override val descriptor: SerialDescriptor = buildSerialDescriptor(MediaGroupMemberInputMedia::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: MediaGroupMemberInputMedia) {

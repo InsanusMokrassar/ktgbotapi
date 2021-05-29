@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
 const val DirectInvocationOfTextSourceConstructor = "It is strongly not recommended to use constructors directly instead of factory methods"
 
 typealias TextSourcesList = List<TextSource>
+typealias MutableTextSourcesList = MutableList<TextSource>
 
 @Serializable(TextSourceSerializer::class)
 sealed interface TextSource {

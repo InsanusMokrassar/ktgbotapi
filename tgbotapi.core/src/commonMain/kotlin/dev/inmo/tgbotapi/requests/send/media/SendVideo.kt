@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -67,7 +68,7 @@ fun SendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
     thumb: InputFile? = null,
-    entities: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -150,7 +151,7 @@ data class SendVideoData internal constructor(
     DuratedSendMessageRequest<ContentMessage<VideoContent>>,
     SizedSendMessageRequest<ContentMessage<VideoContent>>
 {
-    override val textSources: List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

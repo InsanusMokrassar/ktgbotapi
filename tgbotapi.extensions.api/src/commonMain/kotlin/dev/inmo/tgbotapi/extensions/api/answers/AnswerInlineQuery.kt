@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.extensions.api.answers
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.answers.AnswerInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueryIdentifier
 
 suspend fun TelegramBot.answerInlineQuery(
@@ -19,7 +18,7 @@ suspend fun TelegramBot.answerInlineQuery(
 )
 
 suspend fun TelegramBot.answerInlineQuery(
-    inlineQuery: InlineQuery,
+    inlineQuery: dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,
