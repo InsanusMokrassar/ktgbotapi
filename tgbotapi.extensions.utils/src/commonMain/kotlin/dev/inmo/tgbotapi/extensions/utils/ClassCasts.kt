@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.ChatMember.*
 import dev.inmo.tgbotapi.types.ChatMember.abstracts.*
+import dev.inmo.tgbotapi.types.ChatMember.abstracts.MemberChatMember
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.*
@@ -23,6 +24,8 @@ import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.MultilevelTextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
@@ -521,10 +524,6 @@ inline fun BotAction.asFindLocationAction(): FindLocationAction? = this as? Find
 @PreviewFeature
 inline fun BotAction.requireFindLocationAction(): FindLocationAction = this as FindLocationAction
 @PreviewFeature
-inline fun BotAction.asRecordAudioAction(): RecordAudioAction? = this as? RecordAudioAction
-@PreviewFeature
-inline fun BotAction.requireRecordAudioAction(): RecordAudioAction = this as RecordAudioAction
-@PreviewFeature
 inline fun BotAction.asRecordVoiceAction(): RecordVoiceAction? = this as? RecordVoiceAction
 @PreviewFeature
 inline fun BotAction.requireRecordVoiceAction(): RecordVoiceAction = this as RecordVoiceAction
@@ -540,10 +539,6 @@ inline fun BotAction.requireRecordVideoNoteAction(): RecordVideoNoteAction = thi
 inline fun BotAction.asTypingAction(): TypingAction? = this as? TypingAction
 @PreviewFeature
 inline fun BotAction.requireTypingAction(): TypingAction = this as TypingAction
-@PreviewFeature
-inline fun BotAction.asUploadAudioAction(): UploadAudioAction? = this as? UploadAudioAction
-@PreviewFeature
-inline fun BotAction.requireUploadAudioAction(): UploadAudioAction = this as UploadAudioAction
 @PreviewFeature
 inline fun BotAction.asUploadVoiceAction(): UploadVoiceAction? = this as? UploadVoiceAction
 @PreviewFeature

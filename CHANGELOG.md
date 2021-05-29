@@ -2,6 +2,8 @@
 
 ## 0.35.0
 
+**ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
+
 * `Common`:
     * `Version`:
         * `Kotlin`: `1.4.72` -> `1.5.10`

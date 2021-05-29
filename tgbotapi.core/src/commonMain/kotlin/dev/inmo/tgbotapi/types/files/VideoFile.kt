@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.files
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSourcesList
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo

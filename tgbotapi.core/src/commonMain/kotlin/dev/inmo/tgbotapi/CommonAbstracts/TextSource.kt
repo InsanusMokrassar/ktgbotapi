@@ -66,7 +66,7 @@ fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.separateF
     "Replaced",
     ReplaceWith("separateForCaption", "dev.inmo.tgbotapi.types.MessageEntity.textsources.separateForCaption")
 )
-fun List<dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource>.separateForCaption() = separateForCaption()
+fun List<TextSource>.separateForCaption() = separateForCaption()
 
 /**
  * This method will prepare [TextSource]s list for messages with [textLength]

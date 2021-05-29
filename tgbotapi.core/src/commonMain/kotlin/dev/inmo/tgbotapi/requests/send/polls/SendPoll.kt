@@ -356,7 +356,7 @@ data class SendQuizPoll internal constructor(
     override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendPoll(), ExplainedOutput, TextedOutput {
+) : SendPoll(), TextedOutput {
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

@@ -20,8 +20,6 @@ class BotActionTests {
                 UploadPhotoAction -> example.botAction.actionName
                 RecordVideoAction -> example.botAction.actionName
                 UploadVideoAction -> example.botAction.actionName
-                RecordAudioAction -> example.botAction.actionName
-                UploadAudioAction -> example.botAction.actionName
                 RecordVoiceAction -> example.botAction.actionName
                 UploadVoiceAction -> example.botAction.actionName
                 UploadDocumentAction -> example.botAction.actionName
@@ -51,8 +49,6 @@ class BotActionTests {
             UploadPhotoAction.example(),
             RecordVideoAction.example(),
             UploadVideoAction.example(),
-            RecordAudioAction.example(),
-            UploadAudioAction.example(),
             RecordVoiceAction.example(),
             UploadVoiceAction.example(),
             UploadDocumentAction.example(),

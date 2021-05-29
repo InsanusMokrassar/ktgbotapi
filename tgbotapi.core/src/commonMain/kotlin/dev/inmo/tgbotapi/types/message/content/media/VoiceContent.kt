@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVoice
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaAudio
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VoiceFile
@@ -15,7 +16,7 @@ data class VoiceContent(
     override val media: VoiceFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList()
-) : MediaContent, CaptionedInput, TextedInput {
+) : MediaContent, TextedInput {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

@@ -28,8 +28,6 @@ internal object BotActionSerializer: KSerializer<BotAction> {
             UploadPhotoAction.actionName -> UploadPhotoAction
             RecordVideoAction.actionName -> RecordVideoAction
             UploadVideoAction.actionName -> UploadVideoAction
-            RecordAudioAction.actionName -> RecordAudioAction
-            UploadAudioAction.actionName -> UploadAudioAction
             RecordVoiceAction.actionName -> RecordVoiceAction
             UploadVoiceAction.actionName -> UploadVoiceAction
             UploadDocumentAction.actionName -> UploadDocumentAction
@@ -84,52 +82,6 @@ object UploadVideoAction : BotAction {
 inline val uploadVideo
     get() = UploadVideoAction
 inline fun BotAction.asUploadVideo() = this as? UploadVideoAction
-
-/**
- * Will notify user that bot is recording some audio
- */
-@Serializable(BotActionSerializer::class)
-@Deprecated(
-    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
-    ReplaceWith("RecordVoiceAction", "dev.inmo.tgbotapi.types.actions.RecordVoiceAction")
-)
-object RecordAudioAction : BotAction {
-    override val actionName: String = "record_audio"
-}
-@Deprecated(
-    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
-    ReplaceWith("recordVoice", "dev.inmo.tgbotapi.types.actions.recordVoice")
-)
-inline val recordAudio
-    get() = RecordAudioAction
-@Deprecated(
-    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
-    ReplaceWith("asRecordVoice", "dev.inmo.tgbotapi.types.actions.asRecordVoice")
-)
-inline fun BotAction.asRecordAudio() = this as? RecordAudioAction
-
-/**
- * Will notify user that bot is uploading some audio
- */
-@Serializable(BotActionSerializer::class)
-@Deprecated(
-    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
-    ReplaceWith("UploadVoiceAction", "dev.inmo.tgbotapi.types.actions.UploadVoiceAction")
-)
-object UploadAudioAction : BotAction {
-    override val actionName: String = "upload_audio"
-}
-@Deprecated(
-    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
-    ReplaceWith("uploadVoice", "dev.inmo.tgbotapi.types.actions.uploadVoice")
-)
-inline val uploadAudio
-    get() = UploadAudioAction
-@Deprecated(
-    "Deprecated according to https://core.telegram.org/bots/api-changelog#april-26-2021",
-    ReplaceWith("asUploadVoice", "dev.inmo.tgbotapi.types.actions.asUploadVoice")
-)
-inline fun BotAction.asUploadAudio() = this as? UploadAudioAction
 
 /**
  * Will notify user that bot is recording some audio
