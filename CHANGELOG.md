@@ -26,7 +26,8 @@
     * `KeyboardMarkup` becomes `sealed`
     * `LeftChatMember` and `MemberChatMember` become interfaces. All their code were replaced to the `*Impl` classes
     * Most of `sealed` classes have been modified to be interfaces
-    * Most serializers becomes public, but they are still `RistFeature` 
+    * Most serializers becomes public, but they are still `RistFeature`
+    * For `EntitiesBuilder` multilevel text sources builders with callback have been added
 
 ## 0.34.1
 
