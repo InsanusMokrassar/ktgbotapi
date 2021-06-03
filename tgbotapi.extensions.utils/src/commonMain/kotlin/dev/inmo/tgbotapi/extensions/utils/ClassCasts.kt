@@ -20,8 +20,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.*
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
-import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
-import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
+import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.actions.*
@@ -924,19 +923,19 @@ inline fun BotAction.asUploadVideoNoteAction(): UploadVideoNoteAction? = this as
 inline fun BotAction.requireUploadVideoNoteAction(): UploadVideoNoteAction = this as UploadVideoNoteAction
 
 @PreviewFeature
-inline fun dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery.asBaseInlineQuery(): BaseInlineQuery? =
+inline fun InlineQuery.asBaseInlineQuery(): BaseInlineQuery? =
     this as? BaseInlineQuery
 
 @PreviewFeature
-inline fun dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery.requireBaseInlineQuery(): BaseInlineQuery =
+inline fun InlineQuery.requireBaseInlineQuery(): BaseInlineQuery =
     this as BaseInlineQuery
 
 @PreviewFeature
-inline fun dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery.asLocationInlineQuery(): LocationInlineQuery? =
+inline fun InlineQuery.asLocationInlineQuery(): LocationInlineQuery? =
     this as? LocationInlineQuery
 
 @PreviewFeature
-inline fun dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery.requireLocationInlineQuery(): LocationInlineQuery =
+inline fun InlineQuery.requireLocationInlineQuery(): LocationInlineQuery =
     this as LocationInlineQuery
 
 @PreviewFeature

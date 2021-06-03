@@ -40,6 +40,8 @@ val String.asChatType
         ChatType.ChannelChatType.stringified -> ChatType.ChannelChatType
         else -> ChatType.UnknownChatType(this)
     }
+
+@RiskFeature
 object ChatTypeSerializer : KSerializer<ChatType> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
     override fun deserialize(decoder: Decoder): ChatType {

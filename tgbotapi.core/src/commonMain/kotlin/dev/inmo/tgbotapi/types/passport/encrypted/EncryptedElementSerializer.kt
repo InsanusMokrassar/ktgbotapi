@@ -35,6 +35,7 @@ val encryptedElementsClassesByTypes = mapOf(
 val EncryptedPassportElement.type: String
     get() = encryptedElementsClassesByTypes.keys.firstOrNull { encryptedElementsClassesByTypes.getValue(it).klass.isInstance(this) } ?: "unknown"
 
+@RiskFeature
 object EncryptedElementSerializer : KSerializer<EncryptedPassportElement> {
     private val jsonSerializer = JsonObject.serializer()
     override val descriptor: SerialDescriptor = jsonSerializer.descriptor

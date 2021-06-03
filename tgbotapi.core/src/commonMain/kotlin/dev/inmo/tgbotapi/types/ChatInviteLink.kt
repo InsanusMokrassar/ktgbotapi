@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types
 
 import com.soywiz.klock.DateTime
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -79,6 +80,7 @@ data class CommonInviteLink(
         get() = expireDate ?.asDate
 }
 
+@RiskFeature
 object ChatInviteLinkSerializer : KSerializer<ChatInviteLink> {
     override val descriptor: SerialDescriptor
         get() = RawChatInviteLink.serializer().descriptor

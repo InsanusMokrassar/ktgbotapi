@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 
-internal suspend inline fun <reified T : dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery> BehaviourContext.onInlineQuery(
+internal suspend inline fun <reified T : InlineQuery> BehaviourContext.onInlineQuery(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     noinline additionalFilter: (suspend (T) -> Boolean)? = null,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, T>
@@ -36,7 +36,7 @@ internal suspend inline fun <reified T : dev.inmo.tgbotapi.types.InlineQueries.q
 suspend fun BehaviourContext.onAnyInlineQuery(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: (suspend (InlineQuery) -> Boolean)? = null,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery>
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineQuery>
 ) = onInlineQuery(includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
 
 

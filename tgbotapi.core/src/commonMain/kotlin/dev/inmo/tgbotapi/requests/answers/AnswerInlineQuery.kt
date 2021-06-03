@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.serializers.InlineQueryResultSerializer
+import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
@@ -34,7 +35,7 @@ data class AnswerInlineQuery(
         get() = serializer()
 }
 
-fun dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery.createAnswer(
+fun InlineQuery.createAnswer(
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,

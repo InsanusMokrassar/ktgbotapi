@@ -12,7 +12,7 @@ private suspend fun <O> BehaviourContext.waitInlineQueries(
     count: Int = 1,
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    mapper: suspend dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery.() -> O?
+    mapper: suspend InlineQuery.() -> O?
 ): List<O> = expectFlow(
     initRequest,
     count,
@@ -22,7 +22,7 @@ private suspend fun <O> BehaviourContext.waitInlineQueries(
 }.toList().toList()
 
 
-private suspend inline fun <reified T : dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery> BehaviourContext.waitInlines(
+private suspend inline fun <reified T : InlineQuery> BehaviourContext.waitInlines(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },

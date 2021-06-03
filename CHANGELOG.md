@@ -20,8 +20,13 @@
     * `RecordAudioAction` and `UploadAudioAction` (and all related to these actions functionality) have been removed
     * `TextSource` interface and all related things have been replaced
     * `CallbackQuery` interface and all its extenders/implementers become `sealed`
-    * `ChatMember` become `sealed`
+    * `InputMedia` interface and all its extenders/implementers become `sealed`
+    * `ParseMode` interface and all its extenders/implementers become `sealed`
+    * `ChatMember` becomes `sealed`
+    * `KeyboardMarkup` becomes `sealed`
     * `LeftChatMember` and `MemberChatMember` become interfaces. All their code were replaced to the `*Impl` classes
+    * Most of `sealed` classes have been modified to be interfaces
+    * Most serializers becomes public, but they are still `RistFeature` 
 
 ## 0.34.1
 
