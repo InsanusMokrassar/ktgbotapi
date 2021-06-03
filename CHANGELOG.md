@@ -3,6 +3,7 @@
 ## 0.35.0
 
 **ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
+**JS PART NOW USE IR COMPILER ONLY**
 
 * `Common`:
     * `Version`:
@@ -17,6 +18,7 @@
     * `ForceReply` has been renamed to `ReplyForce`
     * `Captioned` and `Explained` interfaces have been removed
     * `RecordAudioAction` and `UploadAudioAction` (and all related to these actions functionality) have been removed
+    * `TextSource` interface and all related things have been replaced
 
 ## 0.34.1
 
