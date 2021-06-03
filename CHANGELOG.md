@@ -19,6 +19,9 @@
     * `Captioned` and `Explained` interfaces have been removed
     * `RecordAudioAction` and `UploadAudioAction` (and all related to these actions functionality) have been removed
     * `TextSource` interface and all related things have been replaced
+    * `CallbackQuery` interface and all its extenders/implementers become `sealed`
+    * `ChatMember` become `sealed`
+    * `LeftChatMember` and `MemberChatMember` become interfaces. All their code were replaced to the `*Impl` classes
 
 ## 0.34.1
 
