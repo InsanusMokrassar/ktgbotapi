@@ -8,7 +8,7 @@
 * `Common`:
     * `Version`:
         * `Kotlin`: `1.4.72` -> `1.5.10`
-        * `MicroUtils`: `0.4.36` -> `0.5.5`
+        * `MicroUtils`: `0.4.36` -> `0.5.6`
         * `Coroutines`: `1.4.3` -> `1.5.0`
         * `Serialization`: `1.1.0` -> `1.2.1`
         * `Klock`: `2.0.7` -> `2.1.2`
