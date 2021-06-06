@@ -2,9 +2,10 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.types.chat.abstracts.PrivateChat
 import dev.inmo.tgbotapi.types.chat.extended.ExtendedPrivateChatImpl
-import dev.inmo.tgbotapi.utils.PreviewFeature
+import dev.inmo.tgbotapi.utils.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
@@ -68,10 +69,12 @@ data class ExtendedBot(
 }
 
 
-@Serializer(User::class)
-internal object UserSerializer : KSerializer<User> {
+@RiskFeature
+object UserSerializer : KSerializer<User> {
+    private val internalSerializer = JsonObject.serializer()
+    override val descriptor: SerialDescriptor = internalSerializer.descriptor
     override fun deserialize(decoder: Decoder): User {
-        val asJson = JsonObject.serializer().deserialize(decoder)
+        val asJson = internalSerializer.deserialize(decoder)
 
         return when {
             asJson[isBotField] ?.jsonPrimitive ?.booleanOrNull != true -> nonstrictJsonFormat.decodeFromJsonElement(

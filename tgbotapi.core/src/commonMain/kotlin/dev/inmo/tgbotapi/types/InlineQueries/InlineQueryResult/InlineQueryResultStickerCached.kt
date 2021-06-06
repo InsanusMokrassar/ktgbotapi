@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

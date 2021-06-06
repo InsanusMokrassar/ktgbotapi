@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.*
 import dev.inmo.tgbotapi.types.message.content.TextContent
 
@@ -55,19 +55,18 @@ fun TextSourcesList.toMarkdownCaptions(): List<String> = createMarkdownText(
     this,
     captionLength.last
 )
-fun CaptionedInput.toMarkdownCaptions(): List<String> = textSources.toMarkdownCaptions()
 
 fun TextSourcesList.toMarkdownTexts(): List<String> = createMarkdownText(
     this,
     textLength.last
 )
+
 fun TextContent.toMarkdownTexts(): List<String> = textSources.toMarkdownTexts()
 
 fun TextSourcesList.toMarkdownExplanations(): List<String> = createMarkdownText(
     this,
     explanationLimit.last
 )
-fun ExplainedInput.toMarkdownExplanations(): List<String> = textSources.toMarkdownTexts()
 
 
 fun createMarkdownV2Text(
@@ -79,19 +78,18 @@ fun TextSourcesList.toMarkdownV2Captions(): List<String> = createMarkdownV2Text(
     this,
     captionLength.last
 )
-fun CaptionedInput.toMarkdownV2Captions(): List<String> = textSources.toMarkdownV2Captions()
 
 fun TextSourcesList.toMarkdownV2Texts(): List<String> = createMarkdownV2Text(
     this,
     textLength.last
 )
+
 fun TextContent.toMarkdownV2Texts(): List<String> = textSources.toMarkdownV2Texts()
 
 fun TextSourcesList.toMarkdownV2Explanations(): List<String> = createMarkdownV2Text(
     this,
     explanationLimit.last
 )
-fun ExplainedInput.toMarkdownV2Explanations(): List<String> = textSources.toMarkdownV2Texts()
 
 
 fun createHtmlText(
@@ -103,18 +101,17 @@ fun TextSourcesList.toHtmlCaptions(): List<String> = createHtmlText(
     this,
     captionLength.last
 )
-fun CaptionedInput.toHtmlCaptions(): List<String> = textSources.toHtmlCaptions()
 
 fun TextSourcesList.toHtmlTexts(): List<String> = createHtmlText(
     this,
     textLength.last
 )
+
 fun TextContent.toHtmlTexts(): List<String> = textSources.toHtmlTexts()
 
 fun TextSourcesList.toHtmlExplanations(): List<String> = createHtmlText(
     this,
     explanationLimit.last
 )
-fun ExplainedInput.toHtmlExplanations(): List<String> = textSources.toHtmlTexts()
 
 

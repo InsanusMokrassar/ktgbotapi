@@ -4,13 +4,14 @@ import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 
 @Serializable(LocationSerializer::class)
-sealed class Location : Locationed, HorizontallyAccured
+sealed interface Location : Locationed, HorizontallyAccured
 
 @Serializable
 data class StaticLocation(
@@ -20,7 +21,7 @@ data class StaticLocation(
     override val latitude: Double,
     @SerialName(horizontalAccuracyField)
     override val horizontalAccuracy: Meters? = null
-) : Location()
+) : Location
 
 @Serializable
 data class LiveLocation(
@@ -36,11 +37,12 @@ data class LiveLocation(
     override val heading: Degrees? = null,
     @SerialName(proximityAlertRadiusField)
     override val proximityAlertRadius: Meters? = null
-) : Location(), Livable, ProximityAlertable, Headed
+) : Location, Livable, ProximityAlertable, Headed
 
-@Serializer(Location::class)
 object LocationSerializer : KSerializer<Location> {
-    override fun deserialize(decoder: Decoder): Location = JsonObject.serializer().deserialize(decoder).let {
+    private val internalSerializer = JsonObject.serializer()
+    override val descriptor: SerialDescriptor = internalSerializer.descriptor
+    override fun deserialize(decoder: Decoder): Location = internalSerializer.deserialize(decoder).let {
         if (it.containsKey(livePeriodField) && it[livePeriodField] != JsonNull) {
             nonstrictJsonFormat.decodeFromJsonElement(LiveLocation.serializer(), it)
         } else {

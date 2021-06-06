@@ -13,6 +13,7 @@ private val dateTime = DateTime(dateTimeMillis)
 class TelegramDateTests {
     @Serializable
     data class Example(
+        @Serializable(TelegramDateSerializer::class)
         val dateTime: TelegramDate
     )
     @Test

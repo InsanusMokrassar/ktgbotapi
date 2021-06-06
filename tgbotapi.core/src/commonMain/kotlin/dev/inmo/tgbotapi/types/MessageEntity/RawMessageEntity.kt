@@ -1,7 +1,5 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
-import dev.inmo.tgbotapi.CommonAbstracts.MultilevelTextSource
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.User
 import kotlinx.serialization.Serializable
@@ -22,7 +20,7 @@ internal data class RawMessageEntity(
 
 internal fun RawMessageEntity.asTextSource(
     source: String,
-    subParts: List<TextSource>
+    subParts: TextSourcesList
 ): TextSource {
     val sourceSubstring: String = source.substring(range)
     val subPartsWithRegulars by lazy {
@@ -40,8 +38,15 @@ internal fun RawMessageEntity.asTextSource(
         "italic" -> ItalicTextSource(sourceSubstring, subPartsWithRegulars)
         "code" -> CodeTextSource(sourceSubstring)
         "pre" -> PreTextSource(sourceSubstring, language)
-        "text_link" -> TextLinkTextSource(sourceSubstring, url ?: throw IllegalStateException("URL must not be null for text link"))
-        "text_mention" -> TextMentionTextSource(sourceSubstring, user ?: throw IllegalStateException("User must not be null for text mention"), subPartsWithRegulars)
+        "text_link" -> TextLinkTextSource(
+            sourceSubstring,
+            url ?: throw IllegalStateException("URL must not be null for text link")
+        )
+        "text_mention" -> TextMentionTextSource(
+            sourceSubstring,
+            user ?: throw IllegalStateException("User must not be null for text mention"),
+            subPartsWithRegulars
+        )
         "underline" -> UnderlineTextSource(sourceSubstring, subPartsWithRegulars)
         "strikethrough" -> StrikethroughTextSource(sourceSubstring, subPartsWithRegulars)
         else -> RegularTextSource(sourceSubstring)
@@ -52,7 +57,7 @@ private inline operator fun <T : Comparable<T>> ClosedRange<T>.contains(other: C
     return start <= other.start && endInclusive >= other.endInclusive
 }
 
-internal fun List<TextSource>.fillWithRegulars(source: String): List<TextSource> {
+internal fun TextSourcesList.fillWithRegulars(source: String): TextSourcesList {
     var index = 0
     val result = mutableListOf<TextSource>()
     for (i in 0 until size) {
@@ -74,7 +79,10 @@ internal fun List<TextSource>.fillWithRegulars(source: String): List<TextSource>
     return result
 }
 
-private fun createTextSources(originalFullString: String, entities: RawMessageEntities): List<TextSource> {
+private fun createTextSources(
+    originalFullString: String,
+    entities: RawMessageEntities
+): TextSourcesList {
     val mutableEntities = entities.toMutableList().apply { sortBy { it.offset } }
     val resultList = mutableListOf<TextSource>()
 
@@ -160,23 +168,24 @@ internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEn
 }
 
 
-internal fun List<TextSource>.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
+internal fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawMessageEntity> {
     var i = preOffset
     return flatMap { textSource ->
         textSource.toRawMessageEntities(i).also {
-            i += it.maxByOrNull { it.length } ?.length ?: textSource.source.length
+            i += it.maxByOrNull { it.length }?.length ?: textSource.source.length
         }
     }
 }
 
-fun String.removeLeading(word: String) = if (startsWith(word)){
+fun String.removeLeading(word: String) = if (startsWith(word)) {
     substring(word.length)
 } else {
     this
 }
 
-internal fun List<TextSource>.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
+internal fun TextSourcesList.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)
 
-internal fun RawMessageEntities.asTextSources(sourceString: String): List<TextSource> = createTextSources(sourceString, this).fillWithRegulars(sourceString)
+internal fun RawMessageEntities.asTextSources(sourceString: String): TextSourcesList =
+    createTextSources(sourceString, this).fillWithRegulars(sourceString)
 
 internal typealias RawMessageEntities = List<RawMessageEntity>

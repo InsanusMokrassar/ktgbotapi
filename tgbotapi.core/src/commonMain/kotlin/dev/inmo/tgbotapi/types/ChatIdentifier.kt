@@ -1,7 +1,9 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.micro_utils.common.Warning
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonPrimitive
@@ -52,10 +54,12 @@ data class Username(
 
 fun String.toUsername(): Username = Username(this)
 
-@Serializer(ChatIdentifier::class)
-internal object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
+@RiskFeature
+object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
+    private val internalSerializer = JsonPrimitive.serializer()
+    override val descriptor: SerialDescriptor = internalSerializer.descriptor
     override fun deserialize(decoder: Decoder): ChatIdentifier {
-        val id = JsonPrimitive.serializer().deserialize(decoder)
+        val id = internalSerializer.deserialize(decoder)
         return id.longOrNull ?.let {
             ChatId(it)
         } ?: id.content.let {

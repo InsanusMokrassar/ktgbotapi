@@ -1,10 +1,11 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import kotlinx.serialization.SerialName
@@ -22,12 +23,21 @@ fun InputMediaAnimation(
 
 fun InputMediaAnimation(
     file: InputFile,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
     thumb: InputFile? = null
-) = InputMediaAnimation(file, entities.makeString(), null, entities.toRawMessageEntities(), width, height, duration, thumb)
+) = InputMediaAnimation(
+    file,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    width,
+    height,
+    duration,
+    thumb
+)
 
 @Serializable
 data class InputMediaAnimation internal constructor(
@@ -44,7 +54,7 @@ data class InputMediaAnimation internal constructor(
     override val thumb: InputFile? = null
 ) : InputMedia, SizedInputMedia, DuratedInputMedia, ThumbedInputMedia, TextedOutput {
     override val type: String = "animation"
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

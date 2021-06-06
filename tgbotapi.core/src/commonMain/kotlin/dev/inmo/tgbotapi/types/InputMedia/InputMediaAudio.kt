@@ -5,6 +5,8 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.AudioFile
@@ -14,7 +16,7 @@ internal const val audioInputMediaType = "audio"
 
 fun InputMediaAudio(
     file: InputFile,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
@@ -50,7 +52,7 @@ data class InputMediaAudio internal constructor(
     override val thumb: InputFile? = null
 ) : InputMedia, AudioMediaGroupMemberInputMedia, DuratedInputMedia, ThumbedInputMedia, TitledInputMedia, Performerable {
     override val type: String = audioInputMediaType
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

@@ -1,12 +1,12 @@
 package dev.inmo.tgbotapi.requests.send.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
-import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -48,7 +48,7 @@ fun SendPhoto(
 fun SendPhoto(
     chatId: ChatIdentifier,
     photo: InputFile,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
@@ -56,7 +56,7 @@ fun SendPhoto(
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
         chatId,
-        (photo as? FileId) ?.fileId,
+        (photo as? FileId)?.fileId,
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
@@ -101,7 +101,7 @@ data class SendPhotoData internal constructor(
     ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
     TextableSendMessageRequest<ContentMessage<PhotoContent>>
 {
-    override val textSources: List<TextSource>? by lazy {
+    override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 

@@ -1,5 +1,34 @@
 # TelegramBotAPI changelog
 
+## 0.35.0
+
+**ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
+**JS PART NOW USE IR COMPILER ONLY**
+
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.4.72` -> `1.5.10`
+        * `MicroUtils`: `0.4.36` -> `0.5.6`
+        * `Coroutines`: `1.4.3` -> `1.5.0`
+        * `Serialization`: `1.1.0` -> `1.2.1`
+        * `Klock`: `2.0.7` -> `2.1.2`
+        * `UUID`: `0.2.3` -> `0.3.0`
+        * `Ktor`: `1.5.4` -> `1.6.0`
+* `Core`:
+    * `ForceReply` has been renamed to `ReplyForce`
+    * `Captioned` and `Explained` interfaces have been removed
+    * `RecordAudioAction` and `UploadAudioAction` (and all related to these actions functionality) have been removed
+    * `TextSource` interface and all related things have been replaced
+    * `CallbackQuery` interface and all its extenders/implementers become `sealed`
+    * `InputMedia` interface and all its extenders/implementers become `sealed`
+    * `ParseMode` interface and all its extenders/implementers become `sealed`
+    * `ChatMember` becomes `sealed`
+    * `KeyboardMarkup` becomes `sealed`
+    * `LeftChatMember` and `MemberChatMember` become interfaces. All their code were replaced to the `*Impl` classes
+    * Most of `sealed` classes have been modified to be interfaces
+    * Most serializers becomes public, but they are still `RistFeature`
+    * For `EntitiesBuilder` multilevel text sources builders with callback have been added
+
 ## 0.34.1
 
 * `Common`:

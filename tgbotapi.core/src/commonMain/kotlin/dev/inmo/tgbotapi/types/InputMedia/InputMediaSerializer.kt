@@ -1,12 +1,13 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializer(InputMedia::class)
-internal object InputMediaSerializer : KSerializer<InputMedia> {
+@RiskFeature
+object InputMediaSerializer : KSerializer<InputMedia> {
     @InternalSerializationApi
     override val descriptor: SerialDescriptor = buildSerialDescriptor(InputMedia::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: InputMedia) {

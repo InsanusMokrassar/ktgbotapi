@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
@@ -11,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val subsources: List<TextSource>
+    override val subsources: TextSourcesList
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.boldMarkdown() }
     override val markdownV2: String by lazy { boldMarkdownV2() }
@@ -19,7 +18,7 @@ data class BoldTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) 
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun bold(parts: List<TextSource>) = BoldTextSource(parts.makeString(), parts)
+inline fun bold(parts: TextSourcesList) = BoldTextSource(parts.makeString(), parts)
 @Suppress("NOTHING_TO_INLINE")
 inline fun bold(vararg parts: TextSource) = bold(parts.toList())
 @Suppress("NOTHING_TO_INLINE")

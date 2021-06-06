@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.edit.text
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.text.EditChatMessageText
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -42,7 +42,7 @@ suspend fun TelegramBot.editMessageText(
 suspend fun TelegramBot.editMessageText(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
@@ -52,14 +52,14 @@ suspend fun TelegramBot.editMessageText(
 suspend fun TelegramBot.editMessageText(
     chat: Chat,
     messageId: MessageIdentifier,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageText(chat.id, messageId, entities, disableWebPagePreview, replyMarkup)
 
 suspend fun TelegramBot.editMessageText(
     message: ContentMessage<TextContent>,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageText(message.chat.id, message.messageId, entities, disableWebPagePreview, replyMarkup)

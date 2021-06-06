@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.CommonAbstracts.CommonVenueData
 import dev.inmo.tgbotapi.CommonAbstracts.Locationed
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

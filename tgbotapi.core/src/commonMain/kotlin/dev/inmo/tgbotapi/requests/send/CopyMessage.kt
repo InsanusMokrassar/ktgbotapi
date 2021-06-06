@@ -1,11 +1,13 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 import dev.inmo.tgbotapi.CommonAbstracts.types.MessageAction
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -32,7 +34,18 @@ fun CopyMessage(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = CopyMessage(fromChatId, toChatId, messageId, entities.makeString(), null, entities.toRawMessageEntities(), disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = CopyMessage(
+    fromChatId,
+    toChatId,
+    messageId,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    disableNotification,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
 
 @Serializable
 data class CopyMessage internal constructor(

@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.polls
 
 import dev.inmo.tgbotapi.types.textField
 import dev.inmo.tgbotapi.types.votesCountField
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -21,7 +22,8 @@ data class SimplePollOption (
     override val votes: Int
 ) : PollOption()
 
-internal object PollOptionSerializer : KSerializer<PollOption> {
+@RiskFeature
+object PollOptionSerializer : KSerializer<PollOption> {
     override val descriptor: SerialDescriptor = SimplePollOption.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): PollOption = SimplePollOption.serializer().deserialize(

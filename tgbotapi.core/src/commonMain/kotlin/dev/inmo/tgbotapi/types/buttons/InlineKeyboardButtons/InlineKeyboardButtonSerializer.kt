@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
@@ -10,7 +11,8 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 
-internal object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
+@RiskFeature
+object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
     @InternalSerializationApi
     override val descriptor: SerialDescriptor = buildSerialDescriptor(
         "dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton",

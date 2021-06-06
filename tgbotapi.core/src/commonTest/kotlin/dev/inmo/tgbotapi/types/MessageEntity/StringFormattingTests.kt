@@ -1,7 +1,5 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
-import dev.inmo.tgbotapi.CommonAbstracts.plus
 import dev.inmo.tgbotapi.extensions.utils.formatting.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import kotlin.test.Test
@@ -40,7 +38,7 @@ class StringFormattingTests {
 
     @Test
     fun testThatCreatingOfStringWithSimpleDSLWorksCorrectly() {
-        val sources: List<TextSource> = regular("It ") +
+        val sources: TextSourcesList = regular("It ") +
             bold(italic("is") +
                 " " +
                 strikethrough(underline("simple"))) +
