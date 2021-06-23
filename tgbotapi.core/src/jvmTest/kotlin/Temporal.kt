@@ -33,7 +33,8 @@ fun printlnInstancesSubclassesFuns(kclass: KClass<*>, subclasses: Set<KClass<*>>
         val imports = "import ${subclass.qualifiedName}" + if (typeUpperBounds.isEmpty()) "" else typeUpperBounds.joinToString("\nimport ", "\nimport ")
         val subtype = "${subclass.simpleName}${if (typeUpperBounds.isEmpty()) "" else "<${typeUpperBounds.joinToString() { (it.classifier as KClass<*>).simpleName!! }}>"}"
         val code = "@PreviewFeature\ninline fun ${kclass.simpleName}.as${subclass.simpleName}(): $subtype? = this as? $subtype\n" +
-            "@PreviewFeature\ninline fun ${kclass.simpleName}.require${subclass.simpleName}(): $subtype = this as $subtype"
+            "@PreviewFeature\ninline fun ${kclass.simpleName}.require${subclass.simpleName}(): $subtype = this as $subtype\n" +
+            "@PreviewFeature\ninline fun <T> ${kclass.simpleName}.when${subclass.simpleName}(block: (${subclass.simpleName}) -> T): $subtype = as${subclass.simpleName}() ?.let(block)"
         imports to code
     }
 }
