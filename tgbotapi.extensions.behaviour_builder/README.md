@@ -15,7 +15,7 @@ bot.startGettingFlowsUpdatesByLongPolling {
 This library offer other way to do a lot of routine in more simple way:
 
 ```kotlin
-telegramBot(token) {
+telegramBotWithBehaviour(token) {
     onCommand("start".regex) {
         execute(SendTextMessage(it.chat.id, "This bot can ...")) // replaceable with reply(it, "This bot can ...") when you are using `tgbotapi.extensions.api`
     }
@@ -28,7 +28,7 @@ In terminology of this project the `Triggers` are things which have no initial m
 messages and filter messages for context which will be used in subcontext. Full syntax with `onText` as an example:
 
 ```kotlin
-telegramBot(TOKEN) {
+telegramBotWithBehaviour(TOKEN) {
     onText(
         includeFilterByChatInBehaviourSubContext = true, // if false - last lambda will receive all messages instead of filtered by chat messages
         additionalFilter = { message: CommonMessage<TextContent> ->
@@ -45,7 +45,7 @@ telegramBot(TOKEN) {
 Waiters targeted to get some content "here and now", they must be used inside some trigger main lambda:
 
 ```kotlin
-telegramBot(TOKEN) {
+telegramBotWithBehaviour(TOKEN) {
     onCommand("start") { message: CommonMessage<TextContent> ->
         val userPhotos = waitPhoto(
             SendTextMessage(it.chat.id, "Ok, send me some photo, please"), // init request, can be any `Request` object

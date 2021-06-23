@@ -2,6 +2,9 @@
 
 ## 0.35.1
 
+* `Behaviour Builder`:
+    * New extensions `telegramBotWithBehaviour`
+
 ## 0.35.0
 
 **ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
