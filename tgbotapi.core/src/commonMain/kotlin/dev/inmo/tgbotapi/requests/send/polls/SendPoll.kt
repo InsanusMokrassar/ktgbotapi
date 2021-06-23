@@ -1,11 +1,13 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
 import com.soywiz.klock.DateTime
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -338,7 +340,7 @@ data class SendQuizPoll internal constructor(
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
     @SerialName(explanationField)
-    override val explanation: String? = null,
+    override val text: String? = null,
     @SerialName(explanationParseModeField)
     override val parseMode: ParseMode? = null,
     @SerialName(explanationEntitiesField)
@@ -355,12 +357,12 @@ data class SendQuizPoll internal constructor(
     override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendPoll(), ExplainedOutput {
+) : SendPoll(), TextedOutput {
     override val type: String = quizPollType
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(explanation ?: return@lazy null) ?.justTextSources()
+    override val textSources: List<TextSource>? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {
@@ -371,9 +373,9 @@ data class SendQuizPoll internal constructor(
             throw IllegalArgumentException("Correct option id must be in range of $correctOptionIdRange, but actual " +
                 "value is $correctOptionId")
         }
-        if (explanation != null && explanation.length !in explanationLimit) {
+        if (text != null && text.length !in explanationLimit) {
             error("Quiz poll explanation size must be in range $explanationLimit," +
-                "but actual explanation contains ${explanation.length} symbols")
+                "but actual explanation contains ${text.length} symbols")
         }
     }
 }

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.polls.Poll
+import dev.inmo.tgbotapi.types.polls.PollSerializer
 import kotlinx.serialization.*
 
 @Serializable
@@ -19,7 +20,7 @@ data class StopPoll(
 ) : MessageAction, SimpleRequest<Poll>, ReplyMarkup {
     override fun method(): String = "stopPoll"
     override val resultDeserializer: DeserializationStrategy<Poll>
-        get() = Poll.serializer()
+        get() = PollSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }

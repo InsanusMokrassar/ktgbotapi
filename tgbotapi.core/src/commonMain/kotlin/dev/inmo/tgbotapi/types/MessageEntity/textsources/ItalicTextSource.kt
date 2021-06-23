@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
@@ -11,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val subsources: List<TextSource>
+    override val subsources: TextSourcesList
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.italicMarkdown() }
     override val markdownV2: String by lazy { italicMarkdownV2() }
@@ -19,7 +18,7 @@ data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun italic(parts: List<TextSource>) = ItalicTextSource(parts.makeString(), parts)
+inline fun italic(parts: TextSourcesList) = ItalicTextSource(parts.makeString(), parts)
 @Suppress("NOTHING_TO_INLINE")
 inline fun italic(vararg parts: TextSource) = italic(parts.toList())
 @Suppress("NOTHING_TO_INLINE")

@@ -2,10 +2,12 @@
 
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.User
 
-fun buildEntities(init: EntitiesBuilder.() -> Unit): List<TextSource> = EntitiesBuilder().apply(init).build()
+typealias EntitiesBuilderBody = EntitiesBuilder.() -> Unit
+
+fun buildEntities(init: EntitiesBuilderBody): TextSourcesList = EntitiesBuilder().apply(init).build()
 
 /**
  * This builder can be used to provide building of [TextSource]s [List]
@@ -13,23 +15,25 @@ fun buildEntities(init: EntitiesBuilder.() -> Unit): List<TextSource> = Entities
  * @see buildEntities
  */
 class EntitiesBuilder internal constructor(
-    private val entitiesList: MutableList<TextSource> = mutableListOf()
+    private val entitiesList: MutableTextSourcesList = mutableListOf()
 ) {
     /**
      * It is not safe field which contains potentially changeable [List]
      */
-    val entities: List<TextSource>
+    val entities: TextSourcesList
         get() = entitiesList
 
     /**
      * @return New immutable list which will be deattached from this builder
      */
-    fun build(): List<TextSource> = entities.toList()
+    fun build(): TextSourcesList = entities.toList()
 
-    fun add(source: TextSource) { entitiesList.add(source) }
+    fun add(source: TextSource) {
+        entitiesList.add(source)
+    }
 
     operator fun TextSource.unaryPlus() = add(this)
-    operator fun List<TextSource>.unaryPlus() = entitiesList.addAll(this)
+    operator fun TextSourcesList.unaryPlus() = entitiesList.addAll(this)
     operator fun invoke(vararg source: TextSource) = entitiesList.addAll(source)
 
     operator fun String.unaryPlus() {
@@ -37,7 +41,8 @@ class EntitiesBuilder internal constructor(
     }
 }
 
-inline fun EntitiesBuilder.bold(parts: List<TextSource>) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.bold(parts))
+inline fun EntitiesBuilder.bold(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.bold(parts))
+inline fun EntitiesBuilder.bold(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.bold(buildEntities(init)))
 
 inline fun EntitiesBuilder.bold(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.bold(*parts))
@@ -47,8 +52,9 @@ inline fun EntitiesBuilder.bold(text: String) = add(dev.inmo.tgbotapi.types.Mess
 inline fun EntitiesBuilder.botCommand(command: String) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.botCommand(command))
 
-inline fun EntitiesBuilder.cashTag(parts: List<TextSource>) =
+inline fun EntitiesBuilder.cashTag(parts: TextSourcesList) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.cashTag(parts))
+inline fun EntitiesBuilder.cashTag(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.cashTag(buildEntities(init)))
 
 inline fun EntitiesBuilder.cashTag(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.cashTag(*parts))
@@ -57,8 +63,9 @@ inline fun EntitiesBuilder.cashTag(text: String) = add(dev.inmo.tgbotapi.types.M
 
 inline fun EntitiesBuilder.code(code: String) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.code(code))
 
-inline fun EntitiesBuilder.email(parts: List<TextSource>) =
+inline fun EntitiesBuilder.email(parts: TextSourcesList) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.email(parts))
+inline fun EntitiesBuilder.email(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.email(buildEntities(init)))
 
 inline fun EntitiesBuilder.email(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.email(*parts))
@@ -66,24 +73,27 @@ inline fun EntitiesBuilder.email(vararg parts: TextSource) =
 inline fun EntitiesBuilder.email(emailAddress: String) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.email(emailAddress))
 
-inline fun EntitiesBuilder.hashtag(parts: List<TextSource>) =
+inline fun EntitiesBuilder.hashtag(parts: TextSourcesList) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.hashtag(parts))
+inline fun EntitiesBuilder.hashtag(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.hashtag(buildEntities(init)))
 
 inline fun EntitiesBuilder.hashtag(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.hashtag(*parts))
 
 inline fun EntitiesBuilder.hashtag(hashtag: String) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.hashtag(hashtag))
 
-inline fun EntitiesBuilder.italic(parts: List<TextSource>) =
+inline fun EntitiesBuilder.italic(parts: TextSourcesList) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.italic(parts))
+inline fun EntitiesBuilder.italic(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.italic(buildEntities(init)))
 
 inline fun EntitiesBuilder.italic(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.italic(*parts))
 
 inline fun EntitiesBuilder.italic(text: String) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.italic(text))
 
-inline fun EntitiesBuilder.mention(parts: List<TextSource>) =
+inline fun EntitiesBuilder.mention(parts: TextSourcesList) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.mention(parts))
+inline fun EntitiesBuilder.mention(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.mention(buildEntities(init)))
 
 inline fun EntitiesBuilder.mention(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.mention(*parts))
@@ -91,17 +101,21 @@ inline fun EntitiesBuilder.mention(vararg parts: TextSource) =
 inline fun EntitiesBuilder.mention(whoToMention: String) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.mention(whoToMention))
 
-inline fun EntitiesBuilder.mention(parts: List<TextSource>, user: User) =
+inline fun EntitiesBuilder.mention(parts: TextSourcesList, user: User) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.mention(parts, user))
 
-inline fun EntitiesBuilder.mention(user: User, vararg parts: TextSource) =
+inline fun EntitiesBuilder.mention(
+    user: User,
+    vararg parts: TextSource
+) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.mention(user, *parts))
 
 inline fun EntitiesBuilder.mention(text: String, user: User) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.mention(text, user))
 
-inline fun EntitiesBuilder.phone(parts: List<TextSource>) =
+inline fun EntitiesBuilder.phone(parts: TextSourcesList) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.phone(parts))
+inline fun EntitiesBuilder.phone(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.phone(buildEntities(init)))
 
 inline fun EntitiesBuilder.phone(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.phone(*parts))
@@ -115,8 +129,9 @@ inline fun EntitiesBuilder.pre(code: String, language: String?) =
 inline fun EntitiesBuilder.regular(text: String) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.regular(text))
 
-inline fun EntitiesBuilder.strikethrough(parts: List<TextSource>) =
+inline fun EntitiesBuilder.strikethrough(parts: TextSourcesList) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.strikethrough(parts))
+inline fun EntitiesBuilder.strikethrough(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.strikethrough(buildEntities(init)))
 
 inline fun EntitiesBuilder.strikethrough(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.strikethrough(*parts))
@@ -130,8 +145,9 @@ inline fun EntitiesBuilder.link(text: String, url: String) =
 inline fun EntitiesBuilder.link(url: String) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.link(url))
 
-inline fun EntitiesBuilder.underline(parts: List<TextSource>) =
+inline fun EntitiesBuilder.underline(parts: TextSourcesList) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.underline(parts))
+inline fun EntitiesBuilder.underline(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.underline(buildEntities(init)))
 
 inline fun EntitiesBuilder.underline(vararg parts: TextSource) =
     add(dev.inmo.tgbotapi.types.MessageEntity.textsources.underline(*parts))

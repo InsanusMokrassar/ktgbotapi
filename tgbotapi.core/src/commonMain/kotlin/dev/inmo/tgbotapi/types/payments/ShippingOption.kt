@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.payments
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.payments.abstracts.Priced
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 
@@ -16,6 +17,7 @@ data class ShippingOption(
     override val prices: List<LabeledPrice>
 ) : Priced
 
-internal object LabeledPricesSerializer : KSerializer<List<LabeledPrice>> by ListSerializer(
+@RiskFeature
+object LabeledPricesSerializer : KSerializer<List<LabeledPrice>> by ListSerializer(
     LabeledPrice.serializer()
 )

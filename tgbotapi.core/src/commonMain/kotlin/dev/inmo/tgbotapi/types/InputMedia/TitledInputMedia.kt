@@ -1,5 +1,5 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-interface TitledInputMedia : InputMedia {
+sealed interface TitledInputMedia : InputMedia {
     val title: String?
 }

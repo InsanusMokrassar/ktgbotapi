@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.DocumentFile
@@ -13,18 +13,25 @@ internal const val documentInputMediaType = "document"
 
 fun InputMediaDocument(
     file: InputFile,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     thumb: InputFile? = null,
     disableContentTypeDetection: Boolean? = null
-) = InputMediaDocument(file, caption, parseMode, null, thumb, disableContentTypeDetection)
+) = InputMediaDocument(file, text, parseMode, null, thumb, disableContentTypeDetection)
 
 fun InputMediaDocument(
     file: InputFile,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     thumb: InputFile? = null,
     disableContentTypeDetection: Boolean? = null
-) = InputMediaDocument(file, entities.makeString(), null, entities.toRawMessageEntities(), thumb, disableContentTypeDetection)
+) = InputMediaDocument(
+    file,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    thumb,
+    disableContentTypeDetection
+)
 
 /**
  * Represents a general file to be sent. See https://core.telegram.org/bots/api#inputmediadocument
@@ -50,8 +57,8 @@ data class InputMediaDocument internal constructor(
     val disableContentTypeDetection: Boolean? = null
 ) : InputMedia, DocumentMediaGroupMemberInputMedia, ThumbedInputMedia {
     override val type: String = documentInputMediaType
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: TextSourcesList? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
@@ -62,11 +69,11 @@ data class InputMediaDocument internal constructor(
 }
 
 fun DocumentFile.toInputMediaDocument(
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null
 ) = InputMediaDocument(
     fileId,
-    caption,
+    text,
     parseMode,
     thumb ?.fileId
 )

@@ -9,6 +9,7 @@ import kotlin.test.assertEquals
 class BotActionTests {
     @Serializable
     data class Example(
+        @Serializable(BotActionSerializer::class)
         val botAction: BotAction
     )
 
@@ -20,8 +21,8 @@ class BotActionTests {
                 UploadPhotoAction -> example.botAction.actionName
                 RecordVideoAction -> example.botAction.actionName
                 UploadVideoAction -> example.botAction.actionName
-                RecordAudioAction -> example.botAction.actionName
-                UploadAudioAction -> example.botAction.actionName
+                RecordVoiceAction -> example.botAction.actionName
+                UploadVoiceAction -> example.botAction.actionName
                 UploadDocumentAction -> example.botAction.actionName
                 FindLocationAction -> example.botAction.actionName
                 RecordVideoNoteAction -> example.botAction.actionName
@@ -49,8 +50,8 @@ class BotActionTests {
             UploadPhotoAction.example(),
             RecordVideoAction.example(),
             UploadVideoAction.example(),
-            RecordAudioAction.example(),
-            UploadAudioAction.example(),
+            RecordVoiceAction.example(),
+            UploadVoiceAction.example(),
             UploadDocumentAction.example(),
             FindLocationAction.example(),
             RecordVideoNoteAction.example(),

@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.types.files
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSourcesList
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.utils.MimeType
@@ -34,11 +34,11 @@ data class VideoFile(
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toInputMediaVideo(
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null
 ) = InputMediaVideo(
     fileId,
-    caption,
+    text,
     parseMode,
     width,
     height,

@@ -1,10 +1,11 @@
 package dev.inmo.tgbotapi.requests.edit.text
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.requests.send.TextContentMessageResultDeserializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -34,7 +35,7 @@ fun EditChatMessageText(
 fun EditChatMessageText(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageText(
@@ -64,8 +65,8 @@ data class EditChatMessageText internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<TextContent>, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text) ?.justTextSources()
+    override val textSources: TextSourcesList? by lazy {
+        rawEntities ?.asTextSources(text)
     }
 
     override fun method(): String = editMessageTextMethod

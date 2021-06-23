@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.PhotoSize
@@ -20,7 +20,7 @@ fun InputMediaPhoto(
 
 fun InputMediaPhoto(
     file: InputFile,
-    entities: List<TextSource>
+    entities: TextSourcesList
 ) = InputMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities())
 
 @Serializable
@@ -34,8 +34,8 @@ data class InputMediaPhoto internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null
 ) : InputMedia, VisualMediaGroupMemberInputMedia {
     override val type: String = photoInputMediaType
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: TextSourcesList? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
@@ -46,11 +46,11 @@ data class InputMediaPhoto internal constructor(
 }
 
 fun PhotoSize.toInputMediaPhoto(
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null
 ): InputMediaPhoto = InputMediaPhoto(
     fileId,
-    caption,
+    text,
     parseMode
 )
 

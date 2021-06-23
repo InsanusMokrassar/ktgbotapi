@@ -1,11 +1,12 @@
 package dev.inmo.tgbotapi.requests.send.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -19,7 +20,7 @@ import kotlinx.serialization.*
 fun SendVoice(
     chatId: ChatIdentifier,
     voice: InputFile,
-    caption: String? = null,
+    text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
     disableNotification: Boolean = false,
@@ -33,7 +34,7 @@ fun SendVoice(
     val data = SendVoiceData(
         chatId,
         voiceAsFileId,
-        caption,
+        text,
         parseMode,
         null,
         duration,
@@ -56,7 +57,7 @@ fun SendVoice(
 fun SendVoice(
     chatId: ChatIdentifier,
     voice: InputFile,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     duration: Long? = null,
     disableNotification: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -120,8 +121,8 @@ data class SendVoiceData internal constructor(
     TextableSendMessageRequest<ContentMessage<VoiceContent>>,
     DuratedSendMessageRequest<ContentMessage<VoiceContent>>
 {
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: TextSourcesList? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 
     init {

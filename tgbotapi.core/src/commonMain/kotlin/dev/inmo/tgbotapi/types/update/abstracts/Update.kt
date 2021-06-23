@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.update.abstracts
 
 import dev.inmo.tgbotapi.types.UpdateIdentifier
 import dev.inmo.tgbotapi.types.update.RawUpdate
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -20,7 +21,8 @@ data class UnknownUpdate(
     val rawJson: JsonElement
 ) : Update
 
-internal object UpdateSerializerWithoutSerialization : KSerializer<Update> {
+@RiskFeature
+object UpdateSerializerWithoutSerialization : KSerializer<Update> {
     override val descriptor: SerialDescriptor = JsonElement.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): Update = UpdateDeserializationStrategy.deserialize(decoder)

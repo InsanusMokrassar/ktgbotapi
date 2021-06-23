@@ -1,12 +1,12 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCached
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.inlineQueryResultDocumentType
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -29,10 +29,20 @@ fun InlineQueryResultDocumentCachedImpl(
     fileId: FileId,
     title: String,
     description: String? = null,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultDocumentCachedImpl(id, fileId, title, description, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
+) = InlineQueryResultDocumentCachedImpl(
+    id,
+    fileId,
+    title,
+    description,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    replyMarkup,
+    inputMessageContent
+)
 
 @Serializable
 data class InlineQueryResultDocumentCachedImpl internal constructor(
@@ -56,7 +66,7 @@ data class InlineQueryResultDocumentCachedImpl internal constructor(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultDocumentCached {
     override val type: String = inlineQueryResultDocumentType
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: TextSourcesList? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

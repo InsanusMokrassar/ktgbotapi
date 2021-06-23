@@ -5,9 +5,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InlineQuery
-import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
-import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
+import dev.inmo.tgbotapi.types.InlineQueries.query.*
 
 internal suspend inline fun <reified T : InlineQuery> BehaviourContext.onInlineQuery(
     includeFilterByChatInBehaviourSubContext: Boolean = true,

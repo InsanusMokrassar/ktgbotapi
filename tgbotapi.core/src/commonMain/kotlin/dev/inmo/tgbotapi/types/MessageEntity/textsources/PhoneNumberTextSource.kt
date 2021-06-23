@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
@@ -11,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class PhoneNumberTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String,
-    override val subsources: List<TextSource>
+    override val subsources: TextSourcesList
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.phoneMarkdown() }
     override val markdownV2: String by lazy { phoneMarkdownV2() }
@@ -19,7 +18,7 @@ data class PhoneNumberTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
 }
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun phone(parts: List<TextSource>) = PhoneNumberTextSource(parts.makeString(), parts)
+inline fun phone(parts: TextSourcesList) = PhoneNumberTextSource(parts.makeString(), parts)
 @Suppress("NOTHING_TO_INLINE")
 inline fun phone(vararg parts: TextSource) = phone(parts.toList())
 @Suppress("NOTHING_TO_INLINE")

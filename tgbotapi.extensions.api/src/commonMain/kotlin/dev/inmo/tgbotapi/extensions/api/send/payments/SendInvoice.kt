@@ -14,9 +14,11 @@ suspend fun TelegramBot.sendInvoice(
     description: String,
     payload: String,
     providerToken: String,
-    startParameter: StartParameter,
     currency: Currency,
     prices: List<LabeledPrice>,
+    maxTipAmount: Int? = null,
+    suggestedTipAmounts: List<Int>? = null,
+    startParameter: StartParameter? = null,
     providerData: String? = null,
     requireName: Boolean = false,
     requirePhoneNumber: Boolean = false,
@@ -30,7 +32,7 @@ suspend fun TelegramBot.sendInvoice(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
-    SendInvoice(chatId, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+    SendInvoice(chatId, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts ?.sorted(), startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 )
 
 suspend fun TelegramBot.sendInvoice(
@@ -39,9 +41,11 @@ suspend fun TelegramBot.sendInvoice(
     description: String,
     payload: String,
     providerToken: String,
-    startParameter: StartParameter,
     currency: Currency,
     prices: List<LabeledPrice>,
+    maxTipAmount: Int? = null,
+    suggestedTipAmounts: List<Int>? = null,
+    startParameter: StartParameter? = null,
     providerData: String? = null,
     requireName: Boolean = false,
     requirePhoneNumber: Boolean = false,
@@ -54,7 +58,7 @@ suspend fun TelegramBot.sendInvoice(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(user.id, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendInvoice(user.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithInvoice(
     to: Message,
@@ -62,9 +66,11 @@ suspend inline fun TelegramBot.replyWithInvoice(
     description: String,
     payload: String,
     providerToken: String,
-    startParameter: StartParameter,
     currency: Currency,
     prices: List<LabeledPrice>,
+    maxTipAmount: Int? = null,
+    suggestedTipAmounts: List<Int>? = null,
+    startParameter: StartParameter? = null,
     providerData: String? = null,
     requireName: Boolean = false,
     requirePhoneNumber: Boolean = false,
@@ -76,4 +82,4 @@ suspend inline fun TelegramBot.replyWithInvoice(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(to.chat.id, title, description, payload, providerToken, startParameter, currency, prices, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendInvoice(to.chat.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)

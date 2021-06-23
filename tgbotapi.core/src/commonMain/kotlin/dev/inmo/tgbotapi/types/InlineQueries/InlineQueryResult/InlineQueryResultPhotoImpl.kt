@@ -1,11 +1,12 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhoto
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.inlineQueryResultPhotoType
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -34,10 +35,23 @@ fun InlineQueryResultPhotoImpl(
     height: Int? = null,
     title: String? = null,
     description: String? = null,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultPhotoImpl(id, url, thumbUrl, width, height, title, description, entities.makeString(), null, entities.toRawMessageEntities(), replyMarkup, inputMessageContent)
+) = InlineQueryResultPhotoImpl(
+    id,
+    url,
+    thumbUrl,
+    width,
+    height,
+    title,
+    description,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    replyMarkup,
+    inputMessageContent
+)
 
 @Serializable
 data class InlineQueryResultPhotoImpl internal constructor(
@@ -67,7 +81,7 @@ data class InlineQueryResultPhotoImpl internal constructor(
     override val inputMessageContent: InputMessageContent? = null
 ) : InlineQueryResultPhoto {
     override val type: String = inlineQueryResultPhotoType
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text ?: return@lazy null) ?.justTextSources()
+    override val textSources: TextSourcesList? by lazy {
+        rawEntities ?.asTextSources(text ?: return@lazy null)
     }
 }

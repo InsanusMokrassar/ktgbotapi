@@ -21,7 +21,7 @@ data class InlineKeyboardMarkup(
             // first button is not PayInlineKeyboardButton
             val firstIsPaymentButton = keyboard.first().firstOrNull() is PayInlineKeyboardButton
             if (!firstIsPaymentButton) {
-                error("In case if PayInlineKeyboardButton included in keyboard - it must ")
+                error("In case if PayInlineKeyboardButton included in keyboard - it must be the first one")
             }
         }
     }

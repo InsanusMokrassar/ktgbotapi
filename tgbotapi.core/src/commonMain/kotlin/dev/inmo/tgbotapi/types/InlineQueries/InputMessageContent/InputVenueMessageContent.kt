@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 import dev.inmo.tgbotapi.CommonAbstracts.CommonVenueData
 import dev.inmo.tgbotapi.CommonAbstracts.Locationed
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

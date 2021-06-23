@@ -20,7 +20,6 @@ interface AdministratorChatMember : SpecialRightsChatMember {
     val customTitle: String?
 }
 
-@Serializer(AdministratorChatMember::class)
 @RiskFeature
 object AdministratorChatMemberSerializer : KSerializer<AdministratorChatMember> {
     override val descriptor: SerialDescriptor = ChatMemberSerializer.descriptor

@@ -31,8 +31,6 @@ internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : Deserializ
         return RawMessage.serializer().deserialize(decoder).asMessage as T
     }
 }
-internal object TelegramBotAPIMessageDeserializationStrategy
-    : DeserializationStrategy<Message> by TelegramBotAPIMessageDeserializationStrategyClass()
 
 internal class TelegramBotAPIMessageDeserializeOnlySerializerClass<T : Message> : KSerializer<T> {
     private val deserializer = TelegramBotAPIMessageDeserializationStrategyClass<T>()

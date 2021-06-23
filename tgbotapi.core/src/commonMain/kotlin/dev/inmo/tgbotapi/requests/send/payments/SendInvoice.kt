@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.payments
 
+import dev.inmo.tgbotapi.CommonAbstracts.CommonSendInvoiceData
 import dev.inmo.tgbotapi.CommonAbstracts.types.*
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
@@ -9,7 +10,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
-import dev.inmo.tgbotapi.types.payments.abstracts.*
+import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import kotlinx.serialization.*
 
 private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
@@ -23,36 +24,40 @@ data class SendInvoice(
     @SerialName(chatIdField)
     override val chatId: ChatId,
     @SerialName(titleField)
-    val title: String,
+    override val title: String,
     @SerialName(descriptionField)
-    val description: String,
+    override val description: String,
     @SerialName(payloadField)
-    val payload: String,
+    override val payload: String,
     @SerialName(providerTokenField)
-    val providerToken: String,
-    @SerialName(startParameterField)
-    val startParameter: StartParameter,
+    override val providerToken: String,
     @SerialName(currencyField)
     override val currency: Currency,
     @Serializable(LabeledPricesSerializer::class)
     @SerialName(pricesField)
     override val prices: List<LabeledPrice>,
+    @SerialName(maxTipAmountField)
+    override val maxTipAmount: Int? = null,
+    @SerialName(suggestedTipAmountsField)
+    override val suggestedTipAmounts: List<Int>? = null,
+    @SerialName(startParameterField)
+    val startParameter: StartParameter? = null,
     @SerialName(providerDataField)
-    val providerData: String? = null,
+    override val providerData: String? = null,
     @SerialName(requireNameField)
-    val requireName: Boolean = false,
+    override val requireName: Boolean = false,
     @SerialName(requirePhoneNumberField)
-    val requirePhoneNumber: Boolean = false,
+    override val requirePhoneNumber: Boolean = false,
     @SerialName(requireEmailField)
-    val requireEmail: Boolean = false,
+    override val requireEmail: Boolean = false,
     @SerialName(requireShippingAddressField)
-    val requireShippingAddress: Boolean = false,
+    override val requireShippingAddress: Boolean = false,
     @SerialName(shouldSendPhoneNumberToProviderField)
-    val shouldSendPhoneNumberToProvider: Boolean = false,
+    override val shouldSendPhoneNumberToProvider: Boolean = false,
     @SerialName(shouldSendEmailToProviderField)
-    val shouldSendEmailToProvider: Boolean = false,
+    override val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
-    val priceDependOnShipAddress: Boolean = false,
+    override val priceDependOnShipAddress: Boolean = false,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(replyToMessageIdField)
@@ -61,8 +66,7 @@ data class SendInvoice(
     override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : Currencied,
-    Priced,
+) : CommonSendInvoiceData,
     ChatRequest,
     DisableNotification,
     ReplyMessageId,
@@ -75,24 +79,35 @@ data class SendInvoice(
         get() = serializer()
 
     @SerialName(photoUrlField)
-    var photoUrl: String? = null
+    override var photoUrl: String? = null
         private set
     @SerialName(photoSizeField)
-    var photoSize: Long? = null
+    override var photoSize: Long? = null
         private set
 
     @SerialName(photoWidthField)
-    var photoWidth: Int? = null
+    override var photoWidth: Int? = null
         private set
     @SerialName(photoHeightField)
-    var photoHeight: Int? = null
+    override var photoHeight: Int? = null
         private set
 
-    fun setPhoto(
+    init {
+        suggestedTipAmounts ?.let { _ ->
+            require(suggestedTipAmounts.size in suggestedTipAmountsLimit)
+            maxTipAmount ?.let { _ ->
+                require(
+                    suggestedTipAmounts.none { it > maxTipAmount }
+                )
+            }
+        }
+    }
+
+    override fun setPhoto(
         photoUrl: String,
-        photoSize: Long? = null,
-        photoWidth: Int? = null,
-        photoHeight: Int? = null
+        photoSize: Long?,
+        photoWidth: Int?,
+        photoHeight: Int?
     ) {
         this.photoUrl = photoUrl
         this.photoSize = photoSize
@@ -100,7 +115,7 @@ data class SendInvoice(
         this.photoHeight = photoHeight
     }
 
-    fun unsetPhoto() {
+    override fun unsetPhoto() {
         photoUrl = null
         photoSize = null
         photoWidth = null

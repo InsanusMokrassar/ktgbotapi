@@ -1,5 +1,71 @@
 # TelegramBotAPI changelog
 
+## 0.35.0
+
+**ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
+**JS PART NOW USE IR COMPILER ONLY**
+
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.4.72` -> `1.5.10`
+        * `MicroUtils`: `0.4.36` -> `0.5.6`
+        * `Coroutines`: `1.4.3` -> `1.5.0`
+        * `Serialization`: `1.1.0` -> `1.2.1`
+        * `Klock`: `2.0.7` -> `2.1.2`
+        * `UUID`: `0.2.3` -> `0.3.0`
+        * `Ktor`: `1.5.4` -> `1.6.0`
+* `Core`:
+    * `ForceReply` has been renamed to `ReplyForce`
+    * `Captioned` and `Explained` interfaces have been removed
+    * `RecordAudioAction` and `UploadAudioAction` (and all related to these actions functionality) have been removed
+    * `TextSource` interface and all related things have been replaced
+    * `CallbackQuery` interface and all its extenders/implementers become `sealed`
+    * `InputMedia` interface and all its extenders/implementers become `sealed`
+    * `ParseMode` interface and all its extenders/implementers become `sealed`
+    * `ChatMember` becomes `sealed`
+    * `KeyboardMarkup` becomes `sealed`
+    * `LeftChatMember` and `MemberChatMember` become interfaces. All their code were replaced to the `*Impl` classes
+    * Most of `sealed` classes have been modified to be interfaces
+    * Most serializers becomes public, but they are still `RistFeature`
+    * For `EntitiesBuilder` multilevel text sources builders with callback have been added
+
+## 0.34.1
+
+* `Common`:
+    * `Version`:
+        * `ktor`: `1.5.3` -> `1.5.4`
+        * `MicroUtils`: `0.4.35` -> `0.4.36`
+* `Core`
+    * Fix in creating of text sources list
+
+## 0.34.0
+
+_**It is recommended to use [0.34.1](https://github.com/InsanusMokrassar/TelegramBotAPI/releases/tag/0.34.1) version due to the bug in 0.34.0 related to rewriting of `TextSource`s creating mechanism.**_
+
+**UPDATE UP TO Telegram Bot API 5.2**
+
+_**ALL OLD DEPRECATIONS WERE REMOVED**_
+
+* `Core`:
+    * Type `ChatType` has been added
+    * New `ExtendedChat` for unknown messages `UnknownExtendedChat` has been added
+    * `SendInvoice#startParameter` becomes optional and replaced in `SendInvoice` constructor
+    * New interface `CommonSendInvoiceData` has been added
+        * Fields `CommonSendInvoiceData#maxTipAmount` and `CommonSendInvoiceData#suggestedTipAmounts` have been added
+    * New type `InputInvoiceMessageContent` has been added
+    * New interface `TextedWithTextSources` on top of `Texted` interface
+        * Interface `TextedInput` now extends `TextedWithTextSources` with overriding of `textSources` field as not
+          nullable
+        * `textSources` become main field in `TextedInput`
+            * **MIGRATION** Remove all `import dev.inmo.tgbotapi.CommonAbstracts.textSources` in your project
+            * `textEntities` become are calculable property in `TextedInput`
+  * Interface `Captioned` and `CaptionedInput` now is deprecated
+      * Most of captions usages were replaced with texts
+  * Interface `Explained` and `ExplainedInput` now is deprecated
+      * Most of captions usages were replaced with texts
+    * Interface `VoiceChatEvent` now is `CommonEvent`
+  * Mechanism of `RawMessageEntity` converting were fully rewritten
+
 ## 0.33.4
 
 * `Common`:

@@ -21,6 +21,13 @@ plugins {
 allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
+        if (it != rootProject.findProject("docs")) {
+            tasks.whenTaskAdded { task ->
+                if (task.name == "jsLegacyBrowserTest" || task.name == "jsLegacyNodeTest") {
+                    task.enabled = false
+                }
+            }
+        }
     }
 }
 

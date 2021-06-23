@@ -1,10 +1,11 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 import dev.inmo.tgbotapi.CommonAbstracts.types.DisableWebPagePreview
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import kotlinx.serialization.SerialName
@@ -23,7 +24,7 @@ fun InputTextMessageContent(
  * Represents the [InputMessageContent] of a text message to be sent as the result of an inline query.
  */
 fun InputTextMessageContent(
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null
 ) = InputTextMessageContent(entities.makeString(), null, entities.toRawMessageEntities(), disableWebPagePreview)
 
@@ -38,7 +39,7 @@ data class InputTextMessageContent internal constructor(
     @SerialName(disableWebPagePreviewField)
     override val disableWebPagePreview: Boolean? = null
 ) : TextedOutput, DisableWebPagePreview, InputMessageContent {
-    override val entities: List<TextSource>? by lazy {
-        rawEntities ?.asTextParts(text) ?.justTextSources()
+    override val textSources: TextSourcesList? by lazy {
+        rawEntities ?.asTextSources(text)
     }
 }

@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.games
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntities
-import dev.inmo.tgbotapi.types.MessageEntity.asTextParts
+import dev.inmo.tgbotapi.types.MessageEntity.asTextSources
 import dev.inmo.tgbotapi.types.files.*
 import kotlinx.serialization.*
 
@@ -16,9 +16,9 @@ internal data class RawGame(
     @SerialName(photoField)
     private val photo: Photo,
     @SerialName(textField)
-    private val caption: String? = null,
+    private val text: String? = null,
     @SerialName(textEntitiesField)
-    private val captionEntities: RawMessageEntities = emptyList(),
+    private val textEntities: RawMessageEntities = emptyList(),
     @SerialName(animationField)
     private val animation: AnimationFile? = null
 ) {
@@ -27,8 +27,8 @@ internal data class RawGame(
         title,
         description,
         photo,
-        caption,
-        caption ?.let { _ -> captionEntities.asTextParts(caption) } ?: emptyList(),
+        text,
+        text ?.let { _ -> textEntities.asTextSources(text) } ?: emptyList(),
         animation
     )
 }

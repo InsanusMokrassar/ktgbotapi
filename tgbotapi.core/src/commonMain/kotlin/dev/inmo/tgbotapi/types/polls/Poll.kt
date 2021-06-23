@@ -2,10 +2,11 @@ package dev.inmo.tgbotapi.types.polls
 
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
-import dev.inmo.tgbotapi.CommonAbstracts.ExplainedInput
-import dev.inmo.tgbotapi.CommonAbstracts.TextPart
+import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -13,19 +14,19 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
-sealed class ScheduledCloseInfo {
-    abstract val closeDateTime: DateTime
+sealed interface ScheduledCloseInfo {
+    val closeDateTime: DateTime
 }
 
 data class ExactScheduledCloseInfo(
     override val closeDateTime: DateTime
-) : ScheduledCloseInfo()
+) : ScheduledCloseInfo
 
 data class ApproximateScheduledCloseInfo(
     val openDuration: TimeSpan,
     @Suppress("MemberVisibilityCanBePrivate")
     val startPoint: DateTime = DateTime.now()
-) : ScheduledCloseInfo() {
+) : ScheduledCloseInfo {
     override val closeDateTime: DateTime = startPoint + openDuration
 }
 
@@ -42,18 +43,18 @@ val LongSeconds.asExactScheduledCloseInfo
     )
 
 @Serializable(PollSerializer::class)
-sealed class Poll {
-    abstract val id: PollIdentifier
-    abstract val question: String
-    abstract val options: List<PollOption>
-    abstract val votesCount: Int
-    abstract val isClosed: Boolean
-    abstract val isAnonymous: Boolean
-    abstract val scheduledCloseInfo: ScheduledCloseInfo?
+sealed interface Poll {
+    val id: PollIdentifier
+    val question: String
+    val options: List<PollOption>
+    val votesCount: Int
+    val isClosed: Boolean
+    val isAnonymous: Boolean
+    val scheduledCloseInfo: ScheduledCloseInfo?
 }
 
 @Serializable(PollSerializer::class)
-sealed class MultipleAnswersPoll : Poll()
+sealed interface MultipleAnswersPoll : Poll
 
 @Serializable
 private class RawPoll(
@@ -105,7 +106,7 @@ data class UnknownPollType internal constructor(
     override val isAnonymous: Boolean = false,
     @Serializable
     val raw: JsonObject
-) : Poll() {
+) : Poll {
     @Transient
     override val scheduledCloseInfo: ScheduledCloseInfo? = (raw[closeDateField] ?: raw[openPeriodField])
         ?.jsonPrimitive
@@ -123,7 +124,7 @@ data class RegularPoll(
     override val isAnonymous: Boolean = false,
     val allowMultipleAnswers: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
-) : MultipleAnswersPoll()
+) : MultipleAnswersPoll
 
 @Serializable(PollSerializer::class)
 data class QuizPoll(
@@ -135,15 +136,15 @@ data class QuizPoll(
      * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
      */
     val correctOptionId: Int? = null,
-    override val explanation: String? = null,
-    override val explanationEntities: List<TextPart> = emptyList(),
+    override val text: String? = null,
+    override val textSources: List<TextSource> = emptyList(),
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
-) : Poll(), ExplainedInput
+) : Poll, TextedInput
 
-@Serializer(Poll::class)
-internal object PollSerializer : KSerializer<Poll> {
+@RiskFeature
+object PollSerializer : KSerializer<Poll> {
     override val descriptor: SerialDescriptor
         get() = RawPoll.serializer().descriptor
 
@@ -159,7 +160,7 @@ internal object PollSerializer : KSerializer<Poll> {
                 rawPoll.votesCount,
                 rawPoll.correctOptionId,
                 rawPoll.explanation,
-                rawPoll.explanation?.let { rawPoll.explanationEntities.asTextParts(it) } ?: emptyList(),
+                rawPoll.explanation?.let { rawPoll.explanationEntities.asTextSources(it) } ?: emptyList(),
                 rawPoll.isClosed,
                 rawPoll.isAnonymous,
                 rawPoll.scheduledCloseInfo
@@ -210,8 +211,8 @@ internal object PollSerializer : KSerializer<Poll> {
                 value.isAnonymous,
                 regularPollType,
                 correctOptionId = value.correctOptionId,
-                explanation = value.explanation,
-                explanationEntities = value.explanationEntities.asRawMessageEntities(),
+                explanation = value.text,
+                explanationEntities = value.textSources.toRawMessageEntities(),
                 openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openDuration ?.seconds ?.toLong(),
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )

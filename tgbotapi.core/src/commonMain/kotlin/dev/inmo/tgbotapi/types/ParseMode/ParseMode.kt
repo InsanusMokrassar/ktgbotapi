@@ -1,31 +1,34 @@
 package dev.inmo.tgbotapi.types.ParseMode
 
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 internal const val parseModeField = "parse_mode"
 
-@Serializable(ParseModeSerializerObject::class)
-sealed class ParseMode {
-    abstract val parseModeName: String
+@Serializable(ParseModeSerializer::class)
+sealed interface ParseMode {
+    val parseModeName: String
 }
 
-@Serializable(ParseModeSerializerObject::class)
-object MarkdownParseMode : ParseMode() {
+@Serializable(ParseModeSerializer::class)
+object MarkdownParseMode : ParseMode {
     @Serializable
     @SerialName(parseModeField)
     override val parseModeName: String = "Markdown"
 }
 
-@Serializable(ParseModeSerializerObject::class)
-object MarkdownV2ParseMode : ParseMode() {
+@Serializable(ParseModeSerializer::class)
+object MarkdownV2ParseMode : ParseMode {
     @Serializable
     @SerialName(parseModeField)
     override val parseModeName: String = "MarkdownV2"
 }
-@Serializable(ParseModeSerializerObject::class)
-object HTMLParseMode : ParseMode() {
+@Serializable(ParseModeSerializer::class)
+object HTMLParseMode : ParseMode {
     @Serializable
     @SerialName(parseModeField)
     override val parseModeName: String = "HTML"
@@ -43,8 +46,9 @@ typealias HTML = HTMLParseMode
  */
 var defaultParseMode: ParseMode = HTML
 
-@Serializer(ParseMode::class)
-internal object ParseModeSerializerObject : KSerializer<ParseMode> {
+@RiskFeature
+object ParseModeSerializer : KSerializer<ParseMode> {
+    override val descriptor: SerialDescriptor = String.serializer().descriptor
     override fun deserialize(decoder: Decoder): ParseMode {
         return when (decoder.decodeString()) {
             Markdown.parseModeName -> Markdown

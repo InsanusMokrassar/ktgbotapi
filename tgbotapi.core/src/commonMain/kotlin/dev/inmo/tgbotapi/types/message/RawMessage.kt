@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntities
-import dev.inmo.tgbotapi.types.MessageEntity.asTextParts
+import dev.inmo.tgbotapi.types.MessageEntity.asTextSources
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.*
 import dev.inmo.tgbotapi.types.dice.Dice
@@ -83,6 +83,7 @@ internal data class RawMessage(
     private val successful_payment: SuccessfulPayment? = null,
 
     // Voice Chat Service Messages
+    private val voice_chat_scheduled: VoiceChatScheduled? = null,
     private val voice_chat_started: VoiceChatStarted? = null,
     private val voice_chat_ended: VoiceChatEnded? = null,
     private val voice_chat_participants_invited: VoiceChatParticipantsInvited? = null,
@@ -101,11 +102,11 @@ internal data class RawMessage(
 ) {
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
-            (caption_entities ?: emptyList()).asTextParts(caption)
+            (caption_entities ?: emptyList()).asTextSources(caption)
         } ?: emptyList()
 
         when {
-            text != null -> TextContent(text, (entities ?: emptyList()).asTextParts(text))
+            text != null -> TextContent(text, (entities ?: emptyList()).asTextSources(text))
             audio != null -> AudioContent(
                 audio,
                 caption,
@@ -182,6 +183,7 @@ internal data class RawMessage(
             new_chat_title != null -> NewChatTitle(new_chat_title)
             new_chat_photo != null -> NewChatPhoto(new_chat_photo.toList())
             voice_chat_started != null -> voice_chat_started
+            voice_chat_scheduled != null -> voice_chat_scheduled
             message_auto_delete_timer_changed != null -> message_auto_delete_timer_changed
             voice_chat_ended != null -> voice_chat_ended
             voice_chat_participants_invited != null -> voice_chat_participants_invited

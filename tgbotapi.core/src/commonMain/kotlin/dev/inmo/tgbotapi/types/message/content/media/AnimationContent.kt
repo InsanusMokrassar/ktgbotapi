@@ -1,10 +1,11 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendAnimation
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaAnimation
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AnimationFile
@@ -15,9 +16,9 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 data class AnimationContent(
     override val media: AnimationFile,
     val includedDocument: DocumentFile?,
-    override val caption: String?,
-    override val captionEntities: List<TextPart>
-) : MediaContent, CaptionedInput {
+    override val text: String?,
+    override val textSources: TextSourcesList = emptyList()
+) : MediaContent, TextedInput {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

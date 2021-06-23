@@ -1,13 +1,10 @@
 package dev.inmo.tgbotapi.types
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextSource
-import dev.inmo.tgbotapi.CommonAbstracts.makeString
 import dev.inmo.tgbotapi.TestsJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.formatting.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourceSerializer
-import kotlinx.serialization.PolymorphicSerializer
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.makeString
 import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.encodeToString
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -29,9 +26,9 @@ class TextSourcesTests {
             regular(" ")
             pre("text", "kotlin")
         }
-        val serialized = TestsJsonFormat.encodeToString(ListSerializer(TextSource.serializer()), testList)
+        val serialized = TestsJsonFormat.encodeToString(ListSerializer(TextSourceSerializer), testList)
         val deserialized = TestsJsonFormat.decodeFromString(
-            ListSerializer(TextSource.serializer()),
+            ListSerializer(TextSourceSerializer),
             serialized
         )
         assertEquals(testList, deserialized)

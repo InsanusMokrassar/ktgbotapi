@@ -15,12 +15,12 @@ internal fun <T> T.buildArguments(withSerializer: SerializationStrategy<T>) = ar
 )
 
 @Serializable(MediaGroupMemberInputMediaSerializer::class)
-interface MediaGroupMemberInputMedia : InputMedia, TextedOutput {
+sealed interface MediaGroupMemberInputMedia : InputMedia, TextedOutput {
     fun serialize(format: StringFormat): String
 }
 
-interface AudioMediaGroupMemberInputMedia: MediaGroupMemberInputMedia
-interface DocumentMediaGroupMemberInputMedia: MediaGroupMemberInputMedia
+sealed interface AudioMediaGroupMemberInputMedia: MediaGroupMemberInputMedia
+sealed interface DocumentMediaGroupMemberInputMedia: MediaGroupMemberInputMedia
 
 @Serializable(MediaGroupMemberInputMediaSerializer::class)
-interface VisualMediaGroupMemberInputMedia : MediaGroupMemberInputMedia
+sealed interface VisualMediaGroupMemberInputMedia : MediaGroupMemberInputMedia

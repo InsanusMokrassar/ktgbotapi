@@ -40,13 +40,13 @@ class ChatIdentifierTests {
         }
     }
 
+    @Serializable
+    data class Example(
+        val identifier: ChatIdentifier
+    )
 
     @Test
     fun `Deserializing_from_String_must_work_correctly`() {
-        @Serializable
-        data class Example(
-            val identifier: ChatIdentifier
-        )
 
         Example(chatIdentifierChatId.toChatId()).let { withChatId ->
             val stringified = TestsJsonFormat.encodeToString(Example.serializer(), withChatId)

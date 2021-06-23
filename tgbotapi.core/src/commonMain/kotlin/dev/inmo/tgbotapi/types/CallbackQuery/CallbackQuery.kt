@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.types.CallbackQuery
 import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
 import dev.inmo.tgbotapi.types.User
 
-interface CallbackQuery {
+sealed interface CallbackQuery {
     val id: CallbackQueryIdentifier
     val user: User
     val chatInstance: String
