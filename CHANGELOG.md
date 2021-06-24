@@ -2,6 +2,9 @@
 
 ## 0.35.1
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.5.6` -> `0.5.13`
 * `Behaviour Builder`:
     * New extensions `telegramBotWithBehaviour`
 * `API`:
