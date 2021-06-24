@@ -4,6 +4,8 @@
 
 * `Behaviour Builder`:
     * New extensions `telegramBotWithBehaviour`
+* `API`:
+    * All `reply` and subsequent extension have been replaced in send package
 
 ## 0.35.0
 
