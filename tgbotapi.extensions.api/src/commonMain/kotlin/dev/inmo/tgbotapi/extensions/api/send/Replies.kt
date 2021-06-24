@@ -446,21 +446,21 @@ suspend inline fun TelegramBot.replyWithMediaGroup(
     allowSendingWithoutReply: Boolean? = null
 ) = sendMediaGroup(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
 
-suspend inline fun TelegramBot.reply(
+suspend inline fun TelegramBot.replyWithPlaylist(
     to: Message,
     media: List<AudioMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
 ) = sendPlaylist(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
 
-suspend inline fun TelegramBot.reply(
+suspend inline fun TelegramBot.replyWithDocuments(
     to: Message,
     media: List<DocumentMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
 ) = sendDocumentsGroup(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
 
-suspend inline fun TelegramBot.reply(
+suspend inline fun TelegramBot.replyWithGallery(
     to: Message,
     media: List<VisualMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,

@@ -1,7 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.send.reply
+import dev.inmo.tgbotapi.extensions.api.send.replyWithPlaylist
+import dev.inmo.tgbotapi.extensions.api.send.replyWithDocuments
+import dev.inmo.tgbotapi.extensions.api.send.replyWithGallery
 import dev.inmo.tgbotapi.extensions.api.send.replyWithMediaGroup
 import dev.inmo.tgbotapi.requests.send.media.*
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -141,36 +143,36 @@ suspend inline fun TelegramBot.replyWithMediaGroup(
 
 @Deprecated(
     "Replaced",
-    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+    ReplaceWith("replyWithPlaylist", "dev.inmo.tgbotapi.extensions.api.send.replyWithPlaylist")
 )
 suspend inline fun TelegramBot.replyWithPlaylist(
     to: Message,
     media: List<AudioMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = reply(to, media, disableNotification, allowSendingWithoutReply)
+) = replyWithPlaylist(to, media, disableNotification, allowSendingWithoutReply)
 
 @Deprecated(
     "Replaced",
-    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+    ReplaceWith("replyWithDocuments", "dev.inmo.tgbotapi.extensions.api.send.replyWithDocuments")
 )
 suspend inline fun TelegramBot.replyWithDocumentsGroup(
     to: Message,
     media: List<DocumentMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = reply(to, media, disableNotification, allowSendingWithoutReply)
+) = replyWithDocuments(to, media, disableNotification, allowSendingWithoutReply)
 
 @Deprecated(
     "Replaced",
-    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+    ReplaceWith("replyWithGallery", "dev.inmo.tgbotapi.extensions.api.send.replyWithGallery")
 )
 suspend inline fun TelegramBot.replyWithVisualMediaGroup(
     to: Message,
     media: List<VisualMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = reply(to, media, disableNotification, allowSendingWithoutReply)
+) = replyWithGallery(to, media, disableNotification, allowSendingWithoutReply)
 
 @Deprecated(
     "Replaced",
