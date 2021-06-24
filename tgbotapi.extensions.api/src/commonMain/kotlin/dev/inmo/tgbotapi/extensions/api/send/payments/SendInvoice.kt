@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.send.payments
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.reply
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -60,6 +61,11 @@ suspend fun TelegramBot.sendInvoice(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = sendInvoice(user.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithInvoice(
     to: Message,
     title: String,
@@ -82,4 +88,4 @@ suspend inline fun TelegramBot.replyWithInvoice(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(to.chat.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, allowSendingWithoutReply, replyMarkup)

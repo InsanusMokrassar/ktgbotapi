@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.reply
+import dev.inmo.tgbotapi.extensions.api.send.replyWithPhoto
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendPhoto
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -68,36 +70,6 @@ suspend fun TelegramBot.sendPhoto(
     replyMarkup: KeyboardMarkup? = null
 ) = sendPhoto(chat.id, photo, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
-suspend inline fun TelegramBot.replyWithPhoto(
-    to: Message,
-    fileId: InputFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, fileId, text, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.replyWithPhoto(
-    to: Message,
-    photo: Photo,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, photo, text, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    photo: Photo,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = replyWithPhoto(to, photo, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
-
 
 suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
@@ -149,6 +121,54 @@ suspend inline fun TelegramBot.sendPhoto(
     replyMarkup: KeyboardMarkup? = null
 ) = sendPhoto(chat.id, photo, entities, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithPhoto", "dev.inmo.tgbotapi.extensions.api.send.replyWithPhoto")
+)
+suspend inline fun TelegramBot.replyWithPhoto(
+    to: Message,
+    fileId: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = replyWithPhoto(to, fileId, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
+suspend inline fun TelegramBot.replyWithPhoto(
+    to: Message,
+    photo: Photo,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = reply(to, photo, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    photo: Photo,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = reply(to, photo, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithPhoto", "dev.inmo.tgbotapi.extensions.api.send.replyWithPhoto")
+)
 suspend inline fun TelegramBot.replyWithPhoto(
     to: Message,
     fileId: InputFile,
@@ -156,8 +176,12 @@ suspend inline fun TelegramBot.replyWithPhoto(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, fileId, entities, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = replyWithPhoto(to, fileId, entities, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithPhoto(
     to: Message,
     photo: Photo,
@@ -165,8 +189,12 @@ suspend inline fun TelegramBot.replyWithPhoto(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, photo, entities, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, photo, entities, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.reply(
     to: Message,
     photo: Photo,
@@ -174,4 +202,4 @@ suspend inline fun TelegramBot.reply(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = replyWithPhoto(to, photo, entities, disableNotification, allowSendingWithoutReply, replyMarkup)
+) = reply(to, photo, entities, disableNotification, allowSendingWithoutReply, replyMarkup)

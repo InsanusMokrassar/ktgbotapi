@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.reply
+import dev.inmo.tgbotapi.extensions.api.send.replyWithMediaGroup
 import dev.inmo.tgbotapi.requests.send.media.*
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.*
@@ -124,35 +126,56 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     chat.id, media, disableNotification, replyToMessageId, allowSendingWithoutReply
 )
 
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithMediaGroup", "dev.inmo.tgbotapi.extensions.api.send.replyWithMediaGroup")
+)
 @RiskFeature(rawSendingMediaGroupsWarning)
 suspend inline fun TelegramBot.replyWithMediaGroup(
     to: Message,
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendMediaGroup(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
+) = replyWithMediaGroup(to, media, disableNotification, allowSendingWithoutReply)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithPlaylist(
     to: Message,
     media: List<AudioMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendPlaylist(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
+) = reply(to, media, disableNotification, allowSendingWithoutReply)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithDocumentsGroup(
     to: Message,
     media: List<DocumentMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendDocumentsGroup(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
+) = reply(to, media, disableNotification, allowSendingWithoutReply)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithVisualMediaGroup(
     to: Message,
     media: List<VisualMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendVisualMediaGroup(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
+) = reply(to, media, disableNotification, allowSendingWithoutReply)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithMediaGroup", "dev.inmo.tgbotapi.extensions.api.send.replyWithMediaGroup")
+)
 suspend inline fun TelegramBot.reply(
     to: Message,
     media: List<MediaGroupMemberInputMedia>,
