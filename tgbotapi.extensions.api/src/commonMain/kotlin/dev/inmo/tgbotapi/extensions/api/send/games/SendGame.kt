@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.send.games
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.replyWithGame
+import dev.inmo.tgbotapi.extensions.api.send.reply
 import dev.inmo.tgbotapi.requests.send.games.SendGame
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageIdentifier
@@ -55,30 +57,38 @@ suspend fun TelegramBot.sendGame(
     chat.id, game.title, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithGame", "dev.inmo.tgbotapi.extensions.api.send.replyWithGame")
+)
 suspend inline fun TelegramBot.replyWithGame(
     to: Message,
     gameShortName: String,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendGame(
-    to.chat, gameShortName, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup
-)
+) = replyWithGame(to, gameShortName, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithGame", "dev.inmo.tgbotapi.extensions.api.send.replyWithGame")
+)
 suspend inline fun TelegramBot.replyWithGame(
     to: Message,
     game: Game,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendGame(
-    to.chat, game.title, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup
-)
+) = replyWithGame(to, game, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.reply(
     to: Message,
     game: Game,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = replyWithGame(to, game, disableNotification, allowSendingWithoutReply, replyMarkup)
+) = reply(to, game, disableNotification, allowSendingWithoutReply, replyMarkup)

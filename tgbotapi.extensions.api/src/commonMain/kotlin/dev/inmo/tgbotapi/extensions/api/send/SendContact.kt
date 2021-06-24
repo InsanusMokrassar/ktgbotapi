@@ -58,37 +58,3 @@ suspend fun TelegramBot.sendContact(
 ) = sendContact(
     chat.id, contact, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    phoneNumber: String,
-    firstName: String,
-    lastName: String? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendContact(
-    to.chat,
-    phoneNumber,
-    firstName,
-    lastName,
-    disableNotification,
-    to.messageId,
-    allowSendingWithoutReply,
-    replyMarkup
-)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    contact: Contact,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendContact(
-    to.chat,
-    contact,
-    disableNotification,
-    to.messageId,
-    allowSendingWithoutReply,
-    replyMarkup
-)
