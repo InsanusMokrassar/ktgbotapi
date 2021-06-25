@@ -7,6 +7,8 @@
         * `MicroUtils`: `0.5.6` -> `0.5.13`
 * `Behaviour Builder`:
     * New extensions `telegramBotWithBehaviour`
+    * All triggers (`on*` extensions) have been modified to work in parallel by default (new parameter
+      `performInParallel`, by default `true`)
 * `API`:
     * All `reply` and subsequent extension have been replaced in send package
 
