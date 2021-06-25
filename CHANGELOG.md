@@ -14,6 +14,7 @@
     
 * `Bot API 5.3`:
     * Add type `BotCommandScope`, its serializer `BotCommandScopeSerializer` and all its children
+    * New request `DeleteMyCommands` and updates in `GetMyCommands` and `SetMyCommands`
 
 ## 0.35.0
 

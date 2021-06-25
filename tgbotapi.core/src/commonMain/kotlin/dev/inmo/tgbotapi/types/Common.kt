@@ -234,6 +234,7 @@ const val hideUrlField = "hide_url"
 
 const val botCommandField = "command"
 const val botCommandsField = "commands"
+const val scopeField = "scope"
 
 const val isMemberField = "is_member"
 const val canSendMessagesField = "can_send_messages"
