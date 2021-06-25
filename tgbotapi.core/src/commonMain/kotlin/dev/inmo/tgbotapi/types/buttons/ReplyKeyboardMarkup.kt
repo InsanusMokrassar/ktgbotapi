@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.types.buttons
 
+import dev.inmo.tgbotapi.types.inputFieldPlaceholderField
+import dev.inmo.tgbotapi.types.inputFieldPlaceholderLimit
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -10,5 +12,13 @@ data class ReplyKeyboardMarkup(
     val resizeKeyboard: Boolean? = null,
     @SerialName("one_time_keyboard")
     val oneTimeKeyboard: Boolean? = null,
+    @SerialName(inputFieldPlaceholderField)
+    val inputFieldPlaceholder: String? = null,
     val selective: Boolean? = null
-) : KeyboardMarkup
+) : KeyboardMarkup {
+    init {
+        if (inputFieldPlaceholder != null && inputFieldPlaceholder.length !in inputFieldPlaceholderLimit) {
+            error("Field $inputFieldPlaceholderField length must be in $inputFieldPlaceholderLimit, but was ${inputFieldPlaceholder.length}")
+        }
+    }
+}

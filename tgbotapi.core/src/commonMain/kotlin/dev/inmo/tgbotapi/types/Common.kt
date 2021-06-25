@@ -82,6 +82,8 @@ val membersLimit = 1 .. 99999
 
 val suggestedTipAmountsLimit = 1 .. 4
 
+val inputFieldPlaceholderLimit = 1 .. 64
+
 const val botActionActualityTime: Seconds = 5
 
 // Made as lazy for correct work in K/JS
@@ -365,6 +367,8 @@ const val requireShippingAddressField = "need_shipping_address"
 
 const val shouldSendPhoneNumberToProviderField = "send_phone_number_to_provider"
 const val shouldSendEmailToProviderField = "send_email_to_provider"
+
+const val inputFieldPlaceholderField = "input_field_placeholder"
 
 const val priceDependOnShipAddressField = "is_flexible"
 
