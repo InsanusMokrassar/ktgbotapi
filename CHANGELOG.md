@@ -4,7 +4,8 @@
 
 * `Common`:
     * `Version`:
-        * `MicroUtils`: `0.5.6` -> `0.5.13`
+        * `Kotlin`: `1.5.10` -> `1.5.20`
+        * `MicroUtils`: `0.5.6` -> `0.5.14`
 * `Behaviour Builder`:
     * New extensions `telegramBotWithBehaviour`
     * All triggers (`on*` extensions) have been modified to work in parallel by default (new parameter
