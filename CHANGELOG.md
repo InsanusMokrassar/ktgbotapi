@@ -11,6 +11,9 @@
       `performInParallel`, by default `true`)
 * `API`:
     * All `reply` and subsequent extension have been replaced in send package
+    
+* `Bot API 5.3`:
+    * Add type `BotCommandScope`, its serializer `BotCommandScopeSerializer` and all its children
 
 ## 0.35.0
 
