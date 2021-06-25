@@ -8,13 +8,16 @@ import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
 @Serializable
-data class GetChatMembersCount(
+data class GetChatMemberCount(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier
 ): ChatRequest, SimpleRequest<Int> {
-    override fun method(): String = "getChatMembersCount"
+    override fun method(): String = "getChatMemberCount"
     override val resultDeserializer: DeserializationStrategy<Int>
         get() = Int.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+@Deprecated("Renamed", ReplaceWith("GetChatMemberCount", "dev.inmo.tgbotapi.requests.chat.get.GetChatMemberCount"))
+typealias GetChatMembersCount = GetChatMemberCount

@@ -15,6 +15,7 @@
 * `Bot API 5.3`:
     * Add type `BotCommandScope`, its serializer `BotCommandScopeSerializer` and all its children
     * New request `DeleteMyCommands` and updates in `GetMyCommands` and `SetMyCommands`
+    * Renames according to `And more` of [June 25, 2021](https://core.telegram.org/bots/api-changelog#june-25-2021) update
 
 ## 0.35.0
 
