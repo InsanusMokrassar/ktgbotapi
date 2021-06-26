@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
+import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.Ktor.telegramBot
 import dev.inmo.tgbotapi.bot.TelegramBot
@@ -28,6 +29,7 @@ suspend fun telegramBotWithBehaviour(
     scope: CoroutineScope? = null,
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
+    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     block: BehaviourContextReceiver<Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -37,6 +39,7 @@ suspend fun telegramBotWithBehaviour(
     buildBehaviour(
         scope ?: CoroutineScope(coroutineContext),
         flowsUpdatesFilter,
+        defaultExceptionsHandler,
         block
     )
 }
@@ -60,6 +63,7 @@ suspend fun telegramBotWithBehaviour(
     scope: CoroutineScope? = null,
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
+    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     block: BehaviourContextReceiver<Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -69,6 +73,7 @@ suspend fun telegramBotWithBehaviour(
     ).let {
         it to it.buildBehaviour(
             scope ?: CoroutineScope(coroutineContext),
+            defaultExceptionsHandler,
             block
         )
     }

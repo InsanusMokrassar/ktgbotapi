@@ -10,6 +10,7 @@
     * New extensions `telegramBotWithBehaviour`
     * All triggers (`on*` extensions) have been modified to work in parallel by default (new parameter
       `performInParallel`, by default `true`)
+    * All behaviour builder extensions got new parameter `defaultExceptionsHandler`
 * `API`:
     * All `reply` and subsequent extension have been replaced in send package
 * `Bot API 5.3`:

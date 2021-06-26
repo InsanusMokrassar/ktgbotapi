@@ -60,12 +60,12 @@ suspend fun <T> BehaviourContext.doInSubContextWithUpdatesFilter(
     newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
         { oldOne ->
             weakLaunch {
-                oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
+                oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(this, block = asUpdateReceiver)
             }
         }
     } ?: { oldOne ->
         weakLaunch {
-            oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
+            oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(this, block = asUpdateReceiver)
         }
     },
     stopOnCompletion,
