@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
-import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
-import dev.inmo.micro_utils.coroutines.weakLaunch
+import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
@@ -37,15 +36,18 @@ suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
     newFlowsUpdatesFilterSetUp: BehaviourContextAndTypeReceiver<Unit, FlowsUpdatesFilter>?,
     stopOnCompletion: Boolean = true,
     behaviourContextReceiver: BehaviourContextReceiver<T>
-): T = supervisorScope {
-    val newContext = copy(
+): T {
+    return copy(
         flowsUpdatesFilter = FlowsUpdatesFilter(),
-        scope = this
-    )
-    newFlowsUpdatesFilterSetUp ?.let {
-        it.apply { invoke(newContext, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
+        scope = LinkedSupervisorScope()
+    ).run {
+        newFlowsUpdatesFilterSetUp ?.let {
+            it.apply { invoke(this@run, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
+        }
+        withContext(coroutineContext) {
+            behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+        }
     }
-    newContext.behaviourContextReceiver().also { if (stopOnCompletion) stop() }
 }
 
 /**

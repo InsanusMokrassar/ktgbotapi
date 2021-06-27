@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
+import dev.inmo.micro_utils.coroutines.safelyWithResult
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
@@ -38,11 +39,11 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
     filter: suspend (Update) -> List<T>
 ): Flow<T> {
     val flow = allUpdatesFlow.flatMapConcat {
-        val result = safelyWithoutExceptions { filter(it) }
-        (if (result == null || result.isEmpty()) {
+        val result = safelyWithResult { filter(it) }
+        (if (result.isFailure || result.getOrThrow().isEmpty()) {
             if (cancelTrigger(it)) {
                 cancelRequestFactory(it) ?.also {
-                    safelyWithoutExceptions { bot.execute(it) }
+                    safelyWithResult { bot.execute(it) }
                     throw cancelledByFilterException
                 }
             }
@@ -51,7 +52,7 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
             }
             emptyList()
         } else {
-            result
+            result.getOrThrow()
         }).asFlow()
     }
     val result = if (count == null) {
