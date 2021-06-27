@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 typealias CommonMessageFilter<T> = (suspend (CommonMessage<T>) -> Boolean)
@@ -27,26 +28,21 @@ internal suspend inline fun <reified T : MessageContent> BehaviourContext.onCont
     markerFactory: MarkerFactory<in CommonMessage<T>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<T>>
 ) = flowsUpdatesFilter.expectFlow(bot) {
-    if (includeMediaGroups) {
-        it.asSentMediaGroupUpdate() ?.data ?.mapNotNull {
-            if (it.content is T) {
-                val adaptedMessage = it as CommonMessage<T>
-                if (additionalFilter == null || additionalFilter(adaptedMessage)) adaptedMessage else null
-            } else {
-                null
-            }
-        } ?.let {
-            return@expectFlow it
-        }
+    val messages = it.whenBaseSentMessageUpdate {
+        it.data.whenCommonMessage(::listOfNotNull)
+    } ?: if (includeMediaGroups) {
+        it.asSentMediaGroupUpdate() ?.data ?: emptyList()
+    } else {
+        emptyList()
     }
-    it.asBaseSentMessageUpdate() ?.data ?.asCommonMessage() ?.let { message ->
+    messages.mapNotNull { message ->
         if (message.content is T) {
             val adaptedMessage = message as CommonMessage<T>
             if (additionalFilter == null || additionalFilter(adaptedMessage)) adaptedMessage else null
         } else {
             null
         }
-    }.let(::listOfNotNull)
+    }
 }.subscribeSafelyWithoutExceptionsAsync(
     scope,
     markerFactory::invoke
@@ -66,9 +62,10 @@ internal suspend inline fun <reified T : MessageContent> BehaviourContext.onCont
 suspend fun BehaviourContext.onContentMessage(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: CommonMessageFilter<MessageContent>? = null,
+    includeMediaGroups: Boolean = true,
     markerFactory: MarkerFactory<in CommonMessage<MessageContent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MessageContent>>
-) = onContent(includeFilterByChatInBehaviourSubContext, false, additionalFilter, markerFactory, scenarioReceiver)
+) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, markerFactory, scenarioReceiver)
 suspend fun BehaviourContext.onContact(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: CommonMessageFilter<ContactContent>? = null,
