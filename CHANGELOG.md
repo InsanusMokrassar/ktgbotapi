@@ -11,6 +11,8 @@
     * All triggers (`on*` extensions) have been modified to work in parallel by default (new parameter
       `performInParallel`, by default `true`)
     * All behaviour builder extensions got new parameter `defaultExceptionsHandler`
+    * Class `BehaviourContext` was rewritten as an interface with default realization `DefaultBehaviourContext` and
+    factory `BehaviourContext(TelegramBot, CoroutineScope, FlowsUpdatesFilter)`
 * `API`:
     * All `reply` and subsequent extension have been replaced in send package
 * `Bot API 5.3`:

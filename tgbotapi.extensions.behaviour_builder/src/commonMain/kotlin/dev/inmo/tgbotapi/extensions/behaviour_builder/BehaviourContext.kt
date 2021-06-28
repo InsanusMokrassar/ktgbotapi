@@ -14,15 +14,49 @@ typealias BehaviourContextAndTypeReceiver<T, I> = suspend BehaviourContext.(I) -
 /**
  * This class contains all necessary tools for work with bots and especially for [buildBehaviour]
  *
- * @param scope This param will be used for creating of some subscriptions inside of methods, updates listening and
- * different other things in context of working with [CoroutineScope] and coroutines.
- * @param flowsUpdatesFilter This parameter will be used to subscribe on different types of update
+ * @see DefaultBehaviourContext
  */
-data class BehaviourContext(
-    val bot: TelegramBot,
-    val scope: CoroutineScope,
-    val flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
-) : FlowsUpdatesFilter by flowsUpdatesFilter, TelegramBot by bot, CoroutineScope by scope
+interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
+    val bot: TelegramBot
+        get() = this
+
+    /**
+     * Will be used for creating of some subscriptions inside of methods, updates listening and different other things
+     * in context of working with [CoroutineScope] and coroutines.
+     */
+    val scope: CoroutineScope
+        get() = this
+
+    /**
+     * This parameter will be used to subscribe on different types of update
+     */
+    val flowsUpdatesFilter: FlowsUpdatesFilter
+        get() = this
+
+    fun copy(
+        bot: TelegramBot = this.bot,
+        scope: CoroutineScope = this.scope,
+        flowsUpdatesFilter: FlowsUpdatesFilter = this.flowsUpdatesFilter
+    ): BehaviourContext
+}
+
+class DefaultBehaviourContext(
+    override val bot: TelegramBot,
+    override val scope: CoroutineScope,
+    override val flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
+) : FlowsUpdatesFilter by flowsUpdatesFilter, TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
+    override fun copy(
+        bot: TelegramBot,
+        scope: CoroutineScope,
+        flowsUpdatesFilter: FlowsUpdatesFilter
+    ): DefaultBehaviourContext = DefaultBehaviourContext(bot, scope, flowsUpdatesFilter)
+}
+
+fun BehaviourContext(
+    bot: TelegramBot,
+    scope: CoroutineScope,
+    flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
+) = DefaultBehaviourContext(bot, scope, flowsUpdatesFilter)
 
 /**
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [newFlowsUpdatesFilterSetUp] is provided and
