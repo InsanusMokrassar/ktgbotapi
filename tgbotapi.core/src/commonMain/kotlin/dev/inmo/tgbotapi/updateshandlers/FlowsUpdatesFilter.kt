@@ -42,7 +42,7 @@ fun FlowsUpdatesFilter(
     broadcastChannelsSize: Int = 100
 ) = DefaultFlowsUpdatesFilter(broadcastChannelsSize)
 
-@Suppress("EXPERIMENTAL_API_USAGE", "unused")
+@Suppress("unused")
 class DefaultFlowsUpdatesFilter(
     broadcastChannelsSize: Int = 100,
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND

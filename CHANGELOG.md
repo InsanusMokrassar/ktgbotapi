@@ -6,15 +6,25 @@
     * `Version`:
         * `Kotlin`: `1.5.10` -> `1.5.20`
         * `MicroUtils`: `0.5.6` -> `0.5.15`
+* `Core`:
+    * New interface `MyCommandsRequest` (also see `Bot API 5.3` below)
 * `Behaviour Builder`:
+    * ❗️ All triggers (`on*` extensions) have been modified to work in parallel by some marker by default (new parameter
+      `markerFactory`, in most cases will work async for different chats)
     * New extensions `telegramBotWithBehaviour`
-    * All triggers (`on*` extensions) have been modified to work in parallel by default (new parameter
-      `performInParallel`, by default `true`)
     * All behaviour builder extensions got new parameter `defaultExceptionsHandler`
     * Class `BehaviourContext` was rewritten as an interface with default realization `DefaultBehaviourContext` and
-    factory `BehaviourContext(TelegramBot, CoroutineScope, FlowsUpdatesFilter)`
+      factory `BehaviourContext(TelegramBot, CoroutineScope, FlowsUpdatesFilter)`
+    * Extension `buildBehaviour` (and all related extensions/functions) for opportunity to pass
+      `defaultExceptionsHandler`
+    * Trigger `onContentMessage` now may include media groups
 * `API`:
-    * All `reply` and subsequent extension have been replaced in send package
+    * All `reply` and subsequent extensions have been replaced in send package
+* `Utils`:
+    * With class casts like `as*` and `require*` now you may use `when*` with parameter callback
+    * Methods of `EntitiesBuilder` now will return builder itself, so you may create sequences like
+      `buildEntities { bold("Hello,") + italic(" world") }` directly in `buildEntities` body
+    * New extension `TelegramBot#longPollingFlow` has been added with returning value `Flow` with updates
 * `Bot API 5.3`:
     * Add type `BotCommandScope`, its serializer `BotCommandScopeSerializer` and all its children
     * New request `DeleteMyCommands` and updates in `GetMyCommands` and `SetMyCommands`

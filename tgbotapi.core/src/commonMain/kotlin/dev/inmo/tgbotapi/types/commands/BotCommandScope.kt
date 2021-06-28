@@ -18,14 +18,14 @@ private class SurrogateBotCommandScope(
     val userId: UserId? = null
 ) {
     fun asBotCommandScope() = when (type) {
-        "default" -> BotCommandScopeDefault
-        "all_private_chats" -> BotCommandScopeAllPrivateChats
-        "all_group_chats" -> BotCommandScopeAllGroupChats
-        "all_chat_administrators" -> BotCommandScopeAllChatAdministrators
-        "chat_administrators" -> BotCommandScopeChatAdministrators(
+        BotCommandScopeDefault.type -> BotCommandScopeDefault
+        BotCommandScopeAllPrivateChats.type -> BotCommandScopeAllPrivateChats
+        BotCommandScopeAllGroupChats.type -> BotCommandScopeAllGroupChats
+        BotCommandScopeAllChatAdministrators.type -> BotCommandScopeAllChatAdministrators
+        BotCommandScopeChatAdministrators.type -> BotCommandScopeChatAdministrators(
             chatId ?: error("chat_administrators type must have $chatIdField field, but have no")
         )
-        "chat_member" -> BotCommandScopeChatMember(
+        BotCommandScopeChatMember.type -> BotCommandScopeChatMember(
             chatId ?: error("chat_administrators type must have $chatIdField field, but have no"),
             userId ?: error("chat_administrators type must have $userIdField field, but have no")
         )
@@ -89,7 +89,10 @@ data class BotCommandScopeChatAdministrators(
     override val chatId: ChatIdentifier
 ) : ChatBotCommandScope {
     @Required
-    override val type: String = "chat_administrators"
+    override val type: String = BotCommandScopeChatAdministrators.type
+    companion object {
+        const val type = "chat_administrators"
+    }
 }
 
 @Serializable
@@ -98,13 +101,15 @@ data class BotCommandScopeChatMember(
     val userId: UserId
 ) : ChatBotCommandScope {
     @Required
-    override val type: String = "chat_member"
+    override val type: String = BotCommandScopeChatMember.type
+    companion object {
+        const val type = "chat_member"
+    }
 }
 
 
 object BotCommandScopeSerializer : KSerializer<BotCommandScope> {
 
-    @RiskFeature
     override val descriptor: SerialDescriptor = SurrogateBotCommandScope.serializer().descriptor
 
     override fun deserialize(

@@ -52,7 +52,7 @@ class EntitiesBuilder internal constructor(
     operator fun plus(sources: Iterable<TextSource>) = addAll(sources)
 
     operator fun plus(other: EntitiesBuilder) = if (other == this) {
-        // do nothing; assume user
+        // do nothing; assume user is using something like regular("Hello, ") + bold("world") in buildEntities
         this
     } else {
         addAll(other.entitiesList)
