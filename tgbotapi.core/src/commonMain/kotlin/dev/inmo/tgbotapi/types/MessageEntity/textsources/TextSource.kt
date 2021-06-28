@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
 import dev.inmo.tgbotapi.types.captionLength
 import dev.inmo.tgbotapi.types.textLength
+import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.Serializable
 
 const val DirectInvocationOfTextSourceConstructor = "It is strongly not recommended to use constructors directly instead of factory methods"
@@ -42,7 +43,8 @@ sealed interface MultilevelTextSource : TextSource {
     }
 }
 
-fun List<TextSource>.makeString() = joinToString("") { it.source }
+@Deprecated("Replaced", ReplaceWith("makeString()", "dev.inmo.tgbotapi.utils.extensions.makeString"))
+fun TextSourcesList.makeString() = makeString(null)
 fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {
     if (isEmpty()) {
         return emptyList()

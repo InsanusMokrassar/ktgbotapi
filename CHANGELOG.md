@@ -8,6 +8,7 @@
         * `MicroUtils`: `0.5.6` -> `0.5.15`
 * `Core`:
     * New interface `MyCommandsRequest` (also see `Bot API 5.3` below)
+    * New extensions `TextSourcesList#make*String` for all parse modes
 * `Behaviour Builder`:
     * ❗️ All triggers (`on*` extensions) have been modified to work in parallel by some marker by default (new parameter
       `markerFactory`, in most cases will work async for different chats)

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
 
