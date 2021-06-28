@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.utils.internal
 
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.MultilevelTextSource
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.link
 import dev.inmo.tgbotapi.utils.extensions.escapeMarkdownV2Link

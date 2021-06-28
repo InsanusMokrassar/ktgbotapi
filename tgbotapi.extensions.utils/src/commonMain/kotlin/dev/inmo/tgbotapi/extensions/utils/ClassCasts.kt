@@ -19,7 +19,6 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.*
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
-import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*

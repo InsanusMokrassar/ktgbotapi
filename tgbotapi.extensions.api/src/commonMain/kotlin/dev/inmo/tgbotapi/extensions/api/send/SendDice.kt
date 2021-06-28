@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendDice(
     chatId: ChatIdentifier,

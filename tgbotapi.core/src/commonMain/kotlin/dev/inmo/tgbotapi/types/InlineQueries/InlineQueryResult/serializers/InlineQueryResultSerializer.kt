@@ -3,7 +3,8 @@ package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.serializers
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import dev.inmo.tgbotapi.utils.RiskFeature
-import kotlinx.serialization.*
+import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder

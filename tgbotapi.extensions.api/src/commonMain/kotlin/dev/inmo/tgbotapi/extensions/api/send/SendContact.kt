@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.requests.send.SendContact
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendContact(
     chatId: ChatIdentifier,

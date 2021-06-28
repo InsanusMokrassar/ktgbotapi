@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.send.games
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.send.replyWithGame
 import dev.inmo.tgbotapi.extensions.api.send.reply
+import dev.inmo.tgbotapi.extensions.api.send.replyWithGame
 import dev.inmo.tgbotapi.requests.send.games.SendGame
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageIdentifier

@@ -15,7 +15,6 @@ import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 typealias CommonMessageFilter<T> = (suspend (CommonMessage<T>) -> Boolean)

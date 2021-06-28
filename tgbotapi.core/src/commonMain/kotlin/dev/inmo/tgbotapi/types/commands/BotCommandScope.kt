@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.commands
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
