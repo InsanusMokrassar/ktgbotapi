@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.CommonAbstracts.CommonSendInvoiceData
+import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.*
@@ -3096,3 +3097,12 @@ inline fun CommonSendInvoiceData.asInputInvoiceMessageContent(): InputInvoiceMes
 @PreviewFeature
 inline fun CommonSendInvoiceData.requireInputInvoiceMessageContent(): InputInvoiceMessageContent =
     this as InputInvoiceMessageContent
+
+@PreviewFeature
+inline fun <T> Any.whenFromUser(block: (FromUser) -> T) = asFromUser() ?.let(block)
+
+@PreviewFeature
+inline fun Any.asFromUser(): FromUser? = this as? FromUser
+
+@PreviewFeature
+inline fun Any.requireFromUser(): FromUser = this as FromUser
