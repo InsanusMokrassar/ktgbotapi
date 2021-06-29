@@ -6,7 +6,9 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ContactContent(
     val contact: Contact
 ) : MessageContent {

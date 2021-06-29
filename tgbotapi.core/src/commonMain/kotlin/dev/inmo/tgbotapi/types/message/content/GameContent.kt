@@ -8,7 +8,9 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class GameContent(
     val game: Game
 ) : MessageContent {

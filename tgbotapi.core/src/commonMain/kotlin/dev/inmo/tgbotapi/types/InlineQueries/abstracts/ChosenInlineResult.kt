@@ -1,10 +1,6 @@
 package dev.inmo.tgbotapi.types.InlineQueries.abstracts
 
-import dev.inmo.tgbotapi.CommonAbstracts.FromUser
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 
-interface ChosenInlineResult : FromUser {
-    val resultId: InlineQueryIdentifier //chosen temporary, can be changed
-    val inlineMessageId: InlineMessageIdentifier?
-    val query: String
-}
+@Deprecated("Replaced", ReplaceWith("ChosenInlineResult", "dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult"))
+typealias ChosenInlineResult = ChosenInlineResult

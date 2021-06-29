@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.ChosenInlineResult
 
 data class BaseChosenInlineResult(
     override val resultId: InlineQueryIdentifier,

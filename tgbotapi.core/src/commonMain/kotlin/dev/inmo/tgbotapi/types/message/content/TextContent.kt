@@ -9,7 +9,9 @@ import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TextContent(
     override val text: String,
     override val textSources: TextSourcesList = emptyList(),

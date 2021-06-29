@@ -5,7 +5,9 @@ import dev.inmo.tgbotapi.CommonAbstracts.Titled
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.Photo
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Game(
     override val title: String,
     val description: String,

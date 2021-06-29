@@ -12,7 +12,9 @@ import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class AnimationContent(
     override val media: AnimationFile,
     val includedDocument: DocumentFile?,

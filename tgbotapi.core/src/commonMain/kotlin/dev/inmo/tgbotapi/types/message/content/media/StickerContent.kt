@@ -9,7 +9,9 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class StickerContent(
     override val media: Sticker
 ) : MediaContent {

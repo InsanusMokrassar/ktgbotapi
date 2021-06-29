@@ -9,7 +9,9 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class VideoNoteContent(
     override val media: VideoNoteFile
 ) : MediaContent {

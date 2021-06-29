@@ -12,7 +12,9 @@ import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaCollectionContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PhotoContent(
     override val mediaCollection: Photo,
     override val text: String? = null,

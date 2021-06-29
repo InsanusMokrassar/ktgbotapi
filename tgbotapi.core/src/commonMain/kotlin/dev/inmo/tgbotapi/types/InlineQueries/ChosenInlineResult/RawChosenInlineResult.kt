@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.ChosenInlineResult
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -20,7 +19,7 @@ internal data class RawChosenInlineResult(
     val inlineMessageId: InlineMessageIdentifier? = null
 ) {
     val asChosenInlineResult: ChosenInlineResult by lazy {
-        location ?.let {
+        location?.let {
             LocationChosenInlineResult(resultId, user, location, inlineMessageId, query)
         } ?: BaseChosenInlineResult(resultId, user, inlineMessageId, query)
     }
