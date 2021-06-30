@@ -1,11 +1,11 @@
 package dev.inmo.tgbotapi.types.CallbackQuery
 
+import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
 import dev.inmo.tgbotapi.types.User
 
-sealed interface CallbackQuery {
+sealed interface CallbackQuery : FromUser {
     val id: CallbackQueryIdentifier
-    val user: User
     val chatInstance: String
 }
 

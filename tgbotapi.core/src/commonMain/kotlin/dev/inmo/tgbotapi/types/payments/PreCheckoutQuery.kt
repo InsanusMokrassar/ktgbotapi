@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.payments
 
+import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.payments.abstracts.*
 import kotlinx.serialization.SerialName
@@ -11,7 +12,7 @@ data class PreCheckoutQuery(
     @SerialName(idField)
     val id: PreCheckoutQueryId,
     @SerialName(fromField)
-    val user: User,
+    override val user: User,
     @SerialName(currencyField)
     override val currency: Currency,
     @SerialName(totalAmountField)
@@ -22,4 +23,4 @@ data class PreCheckoutQuery(
     val shippingOptionId: ShippingOptionIdentifier? = null,
     @SerialName(orderInfoField)
     val orderInfo: OrderInfo? = null
-) : Currencied, Amounted
+) : Currencied, Amounted, FromUser
