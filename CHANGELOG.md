@@ -26,7 +26,7 @@
       factory `BehaviourContext(TelegramBot, CoroutineScope, FlowsUpdatesFilter)`
     * Extension `buildBehaviour` (and all related extensions/functions) for opportunity to pass
       `defaultExceptionsHandler`
-    * Trigger `onContentMessage` now may include media groups
+    * Trigger `onContentMessage` and waiter `waitContentMessage` now may include media groups
 * `API`:
     * All `reply` and subsequent extensions have been replaced in send package
 * `Utils`:

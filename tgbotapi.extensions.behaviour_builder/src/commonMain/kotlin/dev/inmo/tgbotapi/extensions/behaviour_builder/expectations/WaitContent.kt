@@ -63,8 +63,9 @@ suspend fun BehaviourContext.waitContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
+    includeMediaGroups: Boolean = true,
     filter: CommonMessageToContentMapper<MessageContent>? = null
-) = waitContent(count, initRequest, false, errorFactory, filter)
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter)
 suspend fun BehaviourContext.waitContact(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
