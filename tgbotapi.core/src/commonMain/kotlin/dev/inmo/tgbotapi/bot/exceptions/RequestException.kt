@@ -24,7 +24,7 @@ fun newRequestException(
             plainAnswer,
             message,
             cause
-        ),
+        )
         description.contains("Conflict: terminated by other getUpdates request") -> GetUpdatesConflict(
             response,
             plainAnswer,
