@@ -17,6 +17,7 @@
     * Added `Any#whenFromUser`, `Any#asFromUser` and`Any#requireFromUser` extensions
     * `MedaGroupUpdate` and its direct extenders `SentMediaGroupUpdate` and `EditMediaGroupUpdate` became
       `sealed interface`s
+    * New built-in `RequestException` implementator `GetUpdatesConflict` has been added
 * `Behaviour Builder`:
     * ❗️ All triggers (`on*` extensions) have been modified to work in parallel by some marker by default (new parameter
       `markerFactory`, in most cases will work async for different chats)

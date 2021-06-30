@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
 import dev.inmo.tgbotapi.bot.exceptions.RequestException
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.extensions.utils.updates.lastUpdateIdentifier
@@ -30,6 +31,9 @@ fun TelegramBot.longPollingFlow(
                 exceptionsHandler ?.invoke(e)
                 if (e is RequestException) {
                     delay(1000L)
+                }
+                if (e is GetUpdatesConflict && (exceptionsHandler == null || exceptionsHandler == defaultSafelyExceptionHandler)) {
+                    println("Warning!!! Other bot with the same bot token requests updates with getUpdate in parallel")
                 }
             }
         ) {

@@ -24,6 +24,12 @@ fun newRequestException(
             plainAnswer,
             message,
             cause
+        ),
+        description.contains("Conflict: terminated by other getUpdates request") -> GetUpdatesConflict(
+            response,
+            plainAnswer,
+            message,
+            cause
         )
         else -> null
     }
@@ -60,4 +66,7 @@ class WrongFileIdentifierException(response: Response, plainAnswer: String, mess
     RequestException(response, plainAnswer, message, cause)
 
 class TooMuchRequestsException(val retryAfter: RetryAfterError, response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
+    RequestException(response, plainAnswer, message, cause)
+
+class GetUpdatesConflict(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
     RequestException(response, plainAnswer, message, cause)
