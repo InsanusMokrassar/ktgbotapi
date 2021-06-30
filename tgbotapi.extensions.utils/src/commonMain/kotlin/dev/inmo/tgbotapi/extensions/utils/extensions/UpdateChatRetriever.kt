@@ -17,7 +17,6 @@ fun Update.sourceChat(): Chat? = when (this) {
     is MediaGroupUpdate -> when (this) {
         is SentMediaGroupUpdate -> data.chat
         is EditMediaGroupUpdate -> data.chat
-        else -> null
     }
     is BaseMessageUpdate -> data.chat
     is InlineQueryUpdate -> data.from
