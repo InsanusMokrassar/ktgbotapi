@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.reply
+import dev.inmo.tgbotapi.extensions.api.send.replyWithDocument
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -77,41 +79,6 @@ suspend fun TelegramBot.sendDocument(
     disableContentTypeDetection: Boolean? = null
 ) = sendDocument(chat.id, document, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
-suspend inline fun TelegramBot.replyWithDocument(
-    to: Message,
-    document: InputFile,
-    thumb: InputFile? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
-) = sendDocument(to.chat, document, thumb, text, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
-
-suspend inline fun TelegramBot.replyWithDocument(
-    to: Message,
-    document: DocumentFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
-) = sendDocument(to.chat, document, text, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    document: DocumentFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null,
-    disableContentTypeDetection: Boolean? = null
-) = replyWithDocument(to, document, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
-
-
 suspend inline fun TelegramBot.sendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
@@ -172,6 +139,57 @@ suspend inline fun TelegramBot.sendDocument(
     disableContentTypeDetection: Boolean? = null
 ) = sendDocument(chat.id, document, entities, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithDocument", "dev.inmo.tgbotapi.extensions.api.send.replyWithDocument")
+)
+suspend inline fun TelegramBot.replyWithDocument(
+    to: Message,
+    document: InputFile,
+    thumb: InputFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
+) = replyWithDocument(to, document, thumb, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
+suspend inline fun TelegramBot.replyWithDocument(
+    to: Message,
+    document: DocumentFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
+) = reply(to, document, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    document: DocumentFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    disableContentTypeDetection: Boolean? = null
+) = reply(to, document, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithDocument", "dev.inmo.tgbotapi.extensions.api.send.replyWithDocument")
+)
 suspend inline fun TelegramBot.replyWithDocument(
     to: Message,
     document: InputFile,
@@ -181,8 +199,12 @@ suspend inline fun TelegramBot.replyWithDocument(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(to.chat, document, thumb, entities, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = replyWithDocument(to, document, thumb, entities, disableNotification, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithDocument(
     to: Message,
     document: DocumentFile,
@@ -191,8 +213,12 @@ suspend inline fun TelegramBot.replyWithDocument(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(to.chat, document, entities, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = reply(to, document, entities, disableNotification, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.reply(
     to: Message,
     document: DocumentFile,
@@ -201,4 +227,4 @@ suspend inline fun TelegramBot.reply(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = replyWithDocument(to, document, entities, disableNotification, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = reply(to, document, entities, disableNotification, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)

@@ -3,7 +3,6 @@ package dev.inmo.tgbotapi.types
 import dev.inmo.tgbotapi.types.chat.abstracts.PrivateChat
 import dev.inmo.tgbotapi.types.chat.extended.ExtendedPrivateChatImpl
 import dev.inmo.tgbotapi.utils.*
-import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder

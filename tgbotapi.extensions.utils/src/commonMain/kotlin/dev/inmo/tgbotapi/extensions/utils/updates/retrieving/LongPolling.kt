@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
 import dev.inmo.tgbotapi.bot.exceptions.RequestException
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.extensions.utils.updates.lastUpdateIdentifier
@@ -17,13 +18,11 @@ import io.ktor.client.features.HttpRequestTimeoutException
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
-fun TelegramBot.startGettingOfUpdatesByLongPolling(
+fun TelegramBot.longPollingFlow(
     timeoutSeconds: Seconds = 30,
-    scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
     allowedUpdates: List<String>? = null,
-    updatesReceiver: UpdateReceiver<Update>
-): Job = scope.launch {
+): Flow<Update> = channelFlow {
     var lastUpdateIdentifier: UpdateIdentifier? = null
 
     while (isActive) {
@@ -32,6 +31,9 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
                 exceptionsHandler ?.invoke(e)
                 if (e is RequestException) {
                     delay(1000L)
+                }
+                if (e is GetUpdatesConflict && (exceptionsHandler == null || exceptionsHandler == defaultSafelyExceptionHandler)) {
+                    println("Warning!!! Other bot with the same bot token requests updates with getUpdate in parallel")
                 }
             }
         ) {
@@ -49,6 +51,12 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
                  * We are throw out the last media group and will reretrieve it again in the next get updates
                  * and it will guarantee that it is full
                  */
+                /**
+                 * Dirty hack for cases when the media group was retrieved not fully:
+                 *
+                 * We are throw out the last media group and will reretrieve it again in the next get updates
+                 * and it will guarantee that it is full
+                 */
                 if (originalUpdates.size == getUpdatesLimit.last && converted.last() is SentMediaGroupUpdate) {
                     converted - converted.last()
                 } else {
@@ -56,16 +64,30 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
                 }
             }
 
-            safely {
+            safelyWithResult {
                 for (update in updates) {
-                    updatesReceiver(update)
+                    send(update)
 
                     lastUpdateIdentifier = update.lastUpdateIdentifier()
                 }
+            }.onFailure {
+                cancel(it as? CancellationException ?: return@onFailure)
             }
         }
     }
 }
+
+fun TelegramBot.startGettingOfUpdatesByLongPolling(
+    timeoutSeconds: Seconds = 30,
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    exceptionsHandler: (ExceptionHandler<Unit>)? = null,
+    allowedUpdates: List<String>? = null,
+    updatesReceiver: UpdateReceiver<Update>
+): Job = longPollingFlow(timeoutSeconds, exceptionsHandler, allowedUpdates).subscribeSafely(
+    scope,
+    exceptionsHandler ?: defaultSafelyExceptionHandler,
+    updatesReceiver
+)
 
 fun TelegramBot.retrieveAccumulatedUpdates(
     avoidInlineQueries: Boolean = false,

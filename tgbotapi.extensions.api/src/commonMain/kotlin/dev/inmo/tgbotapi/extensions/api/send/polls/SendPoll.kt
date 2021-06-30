@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.send.polls
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.reply
 import dev.inmo.tgbotapi.requests.send.polls.SendQuizPoll
 import dev.inmo.tgbotapi.requests.send.polls.SendRegularPoll
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -227,6 +228,10 @@ suspend inline fun TelegramBot.sendQuizPoll(
     chat.id, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithRegularPoll(
     to: Message,
     question: String,
@@ -238,8 +243,12 @@ suspend inline fun TelegramBot.replyWithRegularPoll(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(to.chat, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithRegularPoll(
     to: Message,
     poll: RegularPoll,
@@ -252,8 +261,12 @@ suspend inline fun TelegramBot.replyWithRegularPoll(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(to.chat, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithQuizPoll(
     to: Message,
     question: String,
@@ -267,8 +280,12 @@ suspend inline fun TelegramBot.replyWithQuizPoll(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(to.chat, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithQuizPoll(
     to: Message,
     isClosed: Boolean = false,
@@ -283,8 +300,12 @@ suspend inline fun TelegramBot.replyWithQuizPoll(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(to.chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, explanation, parseMode, closeInfo, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, quizPoll, isClosed, question, options, correctOptionId, isAnonymous, explanation, parseMode, closeInfo, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithQuizPoll(
     to: Message,
     question: String,
@@ -297,8 +318,12 @@ suspend inline fun TelegramBot.replyWithQuizPoll(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(to.chat, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, question, options, correctOptionId, isAnonymous, isClosed)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithQuizPoll(
     to: Message,
     isClosed: Boolean = false,
@@ -312,4 +337,4 @@ suspend inline fun TelegramBot.replyWithQuizPoll(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(to.chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, quizPoll, entities, isClosed, question, options, correctOptionId, isAnonymous, closeInfo, disableNotification, allowSendingWithoutReply, replyMarkup)

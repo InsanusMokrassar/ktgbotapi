@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
-import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
-import dev.inmo.micro_utils.coroutines.weakLaunch
+import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
@@ -15,15 +14,49 @@ typealias BehaviourContextAndTypeReceiver<T, I> = suspend BehaviourContext.(I) -
 /**
  * This class contains all necessary tools for work with bots and especially for [buildBehaviour]
  *
- * @param scope This param will be used for creating of some subscriptions inside of methods, updates listening and
- * different other things in context of working with [CoroutineScope] and coroutines.
- * @param flowsUpdatesFilter This parameter will be used to subscribe on different types of update
+ * @see DefaultBehaviourContext
  */
-data class BehaviourContext(
-    val bot: TelegramBot,
-    val scope: CoroutineScope,
-    val flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
-) : FlowsUpdatesFilter by flowsUpdatesFilter, TelegramBot by bot, CoroutineScope by scope
+interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
+    val bot: TelegramBot
+        get() = this
+
+    /**
+     * Will be used for creating of some subscriptions inside of methods, updates listening and different other things
+     * in context of working with [CoroutineScope] and coroutines.
+     */
+    val scope: CoroutineScope
+        get() = this
+
+    /**
+     * This parameter will be used to subscribe on different types of update
+     */
+    val flowsUpdatesFilter: FlowsUpdatesFilter
+        get() = this
+
+    fun copy(
+        bot: TelegramBot = this.bot,
+        scope: CoroutineScope = this.scope,
+        flowsUpdatesFilter: FlowsUpdatesFilter = this.flowsUpdatesFilter
+    ): BehaviourContext
+}
+
+class DefaultBehaviourContext(
+    override val bot: TelegramBot,
+    override val scope: CoroutineScope,
+    override val flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
+) : FlowsUpdatesFilter by flowsUpdatesFilter, TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
+    override fun copy(
+        bot: TelegramBot,
+        scope: CoroutineScope,
+        flowsUpdatesFilter: FlowsUpdatesFilter
+    ): DefaultBehaviourContext = DefaultBehaviourContext(bot, scope, flowsUpdatesFilter)
+}
+
+fun BehaviourContext(
+    bot: TelegramBot,
+    scope: CoroutineScope,
+    flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
+) = DefaultBehaviourContext(bot, scope, flowsUpdatesFilter)
 
 /**
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [newFlowsUpdatesFilterSetUp] is provided and
@@ -37,15 +70,18 @@ suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
     newFlowsUpdatesFilterSetUp: BehaviourContextAndTypeReceiver<Unit, FlowsUpdatesFilter>?,
     stopOnCompletion: Boolean = true,
     behaviourContextReceiver: BehaviourContextReceiver<T>
-): T = supervisorScope {
-    val newContext = copy(
+): T {
+    return copy(
         flowsUpdatesFilter = FlowsUpdatesFilter(),
-        scope = this
-    )
-    newFlowsUpdatesFilterSetUp ?.let {
-        it.apply { invoke(newContext, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
+        scope = LinkedSupervisorScope()
+    ).run {
+        newFlowsUpdatesFilterSetUp ?.let {
+            it.apply { invoke(this@run, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
+        }
+        withContext(coroutineContext) {
+            behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+        }
     }
-    newContext.behaviourContextReceiver().also { if (stopOnCompletion) stop() }
 }
 
 /**
@@ -60,12 +96,12 @@ suspend fun <T> BehaviourContext.doInSubContextWithUpdatesFilter(
     newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
         { oldOne ->
             weakLaunch {
-                oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
+                oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(this, block = asUpdateReceiver)
             }
         }
     } ?: { oldOne ->
         weakLaunch {
-            oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(this, asUpdateReceiver)
+            oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(this, block = asUpdateReceiver)
         }
     },
     stopOnCompletion,

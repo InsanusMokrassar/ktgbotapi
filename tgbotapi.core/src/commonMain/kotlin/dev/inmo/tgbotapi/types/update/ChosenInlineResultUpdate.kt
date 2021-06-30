@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.update
 
-import dev.inmo.tgbotapi.types.InlineQueries.abstracts.ChosenInlineResult
+import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 import dev.inmo.tgbotapi.types.UpdateIdentifier
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 

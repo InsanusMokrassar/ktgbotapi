@@ -11,14 +11,14 @@ import dev.inmo.tgbotapi.types.update.abstracts.*
  * @see dev.inmo.tgbotapi.extensions.api.SetWebhookKt.includeWebhookInRoute
  * @see dev.inmo.tgbotapi.extensions.api.updates.UpdatesPollingKt.startGettingOfUpdates
  */
-interface MediaGroupUpdate : Update
+sealed interface MediaGroupUpdate : Update
 
-interface SentMediaGroupUpdate: MediaGroupUpdate {
+sealed interface SentMediaGroupUpdate: MediaGroupUpdate {
     override val data: List<MediaGroupMessage<MediaGroupContent>>
     val origins: List<BaseMessageUpdate>
 }
 
-interface EditMediaGroupUpdate : BaseEditMessageUpdate, MediaGroupUpdate {
+sealed interface EditMediaGroupUpdate : BaseEditMessageUpdate, MediaGroupUpdate {
     override val data: MediaGroupMessage<MediaGroupContent>
     val origin: BaseMessageUpdate
 }

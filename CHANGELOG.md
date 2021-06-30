@@ -1,5 +1,45 @@
 # TelegramBotAPI changelog
 
+## 0.35.1
+
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.5.10` -> `1.5.20`
+        * `MicroUtils`: `0.5.6` -> `0.5.15`
+* `Core`:
+    * New interface `MyCommandsRequest` (also see `Bot API 5.3` below)
+    * New extensions `TextSourcesList#make*String` for all parse modes
+    * All `MessageContent` subclasses now serializable
+    * `ChosenInlineResult` was replaced and modified to be sealed
+    * `ChosenInlineResult` now extends `FromUser`
+    * Added `Update#sourceUser` method
+    * More types assumed as sent by user types now implements `FromUser` interface
+    * Added `Any#whenFromUser`, `Any#asFromUser` and`Any#requireFromUser` extensions
+    * `MedaGroupUpdate` and its direct extenders `SentMediaGroupUpdate` and `EditMediaGroupUpdate` became
+      `sealed interface`s
+    * New built-in `RequestException` implementator `GetUpdatesConflict` has been added
+* `Behaviour Builder`:
+    * ❗️ All triggers (`on*` extensions) have been modified to work in parallel by some marker by default (new parameter
+      `markerFactory`, in most cases will work async for different chats)
+    * New extensions `telegramBotWithBehaviour`
+    * All behaviour builder extensions got new parameter `defaultExceptionsHandler`
+    * Class `BehaviourContext` was rewritten as an interface with default realization `DefaultBehaviourContext` and
+      factory `BehaviourContext(TelegramBot, CoroutineScope, FlowsUpdatesFilter)`
+    * Extension `buildBehaviour` (and all related extensions/functions) for opportunity to pass
+      `defaultExceptionsHandler`
+    * Trigger `onContentMessage` and waiter `waitContentMessage` now may include media groups
+* `API`:
+    * All `reply` and subsequent extensions have been replaced in send package
+* `Utils`:
+    * With class casts like `as*` and `require*` now you may use `when*` with parameter callback
+    * Methods of `EntitiesBuilder` now will return builder itself, so you may create sequences like
+      `buildEntities { bold("Hello,") + italic(" world") }` directly in `buildEntities` body
+    * New extension `TelegramBot#longPollingFlow` has been added with returning value `Flow` with updates
+* `Bot API 5.3`:
+    * Add type `BotCommandScope`, its serializer `BotCommandScopeSerializer` and all its children
+    * New request `DeleteMyCommands` and updates in `GetMyCommands` and `SetMyCommands`
+    * Renames according to `And more` of [June 25, 2021](https://core.telegram.org/bots/api-changelog#june-25-2021) update
+
 ## 0.35.0
 
 **ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**

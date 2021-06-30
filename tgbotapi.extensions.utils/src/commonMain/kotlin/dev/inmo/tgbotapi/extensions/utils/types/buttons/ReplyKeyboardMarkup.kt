@@ -8,10 +8,12 @@ fun ReplyKeyboardMarkup(
     vararg buttons: KeyboardButton,
     resizeKeyboard: Boolean? = null,
     oneTimeKeyboard: Boolean? = null,
+    inputFieldPlaceholder: String? = null,
     selective: Boolean? = null
 ): ReplyKeyboardMarkup = ReplyKeyboardMarkup(
     flatMatrix { buttons.forEach { +it } },
     resizeKeyboard,
     oneTimeKeyboard,
+    inputFieldPlaceholder,
     selective
 )

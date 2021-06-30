@@ -8,7 +8,9 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.polls.Poll
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PollContent(
     val poll: Poll
 ) : MessageContent {

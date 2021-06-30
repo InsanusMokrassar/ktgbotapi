@@ -28,16 +28,34 @@ class EntitiesBuilder internal constructor(
      */
     fun build(): TextSourcesList = entities.toList()
 
-    fun add(source: TextSource) {
+    fun add(source: TextSource): EntitiesBuilder {
         entitiesList.add(source)
+        return this
+    }
+
+    fun addAll(sources: Iterable<TextSource>): EntitiesBuilder {
+        entitiesList.addAll(sources)
+        return this
     }
 
     operator fun TextSource.unaryPlus() = add(this)
-    operator fun TextSourcesList.unaryPlus() = entitiesList.addAll(this)
-    operator fun invoke(vararg source: TextSource) = entitiesList.addAll(source)
+    operator fun TextSourcesList.unaryPlus() = addAll(this)
+    operator fun invoke(vararg source: TextSource) = addAll(source.toList())
 
-    operator fun String.unaryPlus() {
+    operator fun String.unaryPlus(): EntitiesBuilder {
         add(dev.inmo.tgbotapi.types.MessageEntity.textsources.regular(this))
+        return this@EntitiesBuilder
+    }
+
+    operator fun plus(text: String) = text.unaryPlus()
+    operator fun plus(source: TextSource) = add(source)
+    operator fun plus(sources: Iterable<TextSource>) = addAll(sources)
+
+    operator fun plus(other: EntitiesBuilder) = if (other == this) {
+        // do nothing; assume user is using something like regular("Hello, ") + bold("world") in buildEntities
+        this
+    } else {
+        addAll(other.entitiesList)
     }
 }
 

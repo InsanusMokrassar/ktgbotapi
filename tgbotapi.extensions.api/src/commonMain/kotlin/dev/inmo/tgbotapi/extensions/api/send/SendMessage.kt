@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendMessage(
     chatId: ChatIdentifier,
@@ -103,38 +102,3 @@ suspend fun TelegramBot.sendTextMessage(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendTextMessage(chat.id, entities, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    text: String,
-    parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(
-    to.chat,
-    text,
-    parseMode,
-    disableWebPagePreview,
-    disableNotification,
-    to.messageId,
-    allowSendingWithoutReply,
-    replyMarkup
-)
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    entities: TextSourcesList,
-    disableWebPagePreview: Boolean? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(
-    to.chat,
-    entities,
-    disableWebPagePreview,
-    disableNotification,
-    to.messageId,
-    allowSendingWithoutReply,
-    replyMarkup
-)

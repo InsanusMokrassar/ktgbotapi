@@ -1,11 +1,14 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
+import dev.inmo.micro_utils.coroutines.ContextSafelyExceptionHandler
+import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.plus
 
 /**
  * Use this method in case you wish to make some additional actions with [flowUpdatesFilter].
@@ -20,11 +23,18 @@ import kotlinx.coroutines.CoroutineScope
 suspend fun TelegramBot.buildBehaviour(
     scope: CoroutineScope,
     flowUpdatesFilter: FlowsUpdatesFilter,
+    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     block: BehaviourContextReceiver<Unit>
 ) {
     BehaviourContext(
         this,
-        scope,
+        scope.let {
+              if (defaultExceptionsHandler == null) {
+                  it
+              } else {
+                  it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
+              }
+        },
         flowUpdatesFilter
     ).block()
 }
@@ -40,11 +50,13 @@ suspend fun TelegramBot.buildBehaviour(
 @PreviewFeature
 suspend fun TelegramBot.buildBehaviour(
     scope: CoroutineScope,
+    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     block: BehaviourContextReceiver<Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviour(
         scope,
         it,
+        defaultExceptionsHandler,
         block
     )
     longPolling(

@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
 
 interface FlowsUpdatesFilter : UpdatesFilter {
@@ -41,11 +42,12 @@ fun FlowsUpdatesFilter(
     broadcastChannelsSize: Int = 100
 ) = DefaultFlowsUpdatesFilter(broadcastChannelsSize)
 
-@Suppress("EXPERIMENTAL_API_USAGE", "unused")
+@Suppress("unused")
 class DefaultFlowsUpdatesFilter(
-    broadcastChannelsSize: Int = 100
+    broadcastChannelsSize: Int = 100,
+    onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND
 ): FlowsUpdatesFilter {
-    private val updatesSharedFlow = MutableSharedFlow<Update>(extraBufferCapacity = broadcastChannelsSize)
+    private val updatesSharedFlow = MutableSharedFlow<Update>(extraBufferCapacity = broadcastChannelsSize, onBufferOverflow = onBufferOverflow)
     @Suppress("MemberVisibilityCanBePrivate")
     override val allUpdatesFlow: Flow<Update> = updatesSharedFlow.asSharedFlow()
     @Suppress("MemberVisibilityCanBePrivate")

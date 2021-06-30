@@ -11,7 +11,9 @@ import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.toInputMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class VideoContent(
     override val media: VideoFile,
     override val text: String? = null,
