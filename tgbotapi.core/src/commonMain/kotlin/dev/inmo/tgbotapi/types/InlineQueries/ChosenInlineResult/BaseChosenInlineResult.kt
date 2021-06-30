@@ -1,9 +1,13 @@
 package dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult
 
 import dev.inmo.tgbotapi.types.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class BaseChosenInlineResult(
     override val resultId: InlineQueryIdentifier,
+    @SerialName(fromField)
     override val user: User,
     override val inlineMessageId: InlineMessageIdentifier?,
     override val query: String

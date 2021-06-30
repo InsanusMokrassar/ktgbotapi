@@ -11,6 +11,7 @@
     * New extensions `TextSourcesList#make*String` for all parse modes
     * All `MessageContent` subclasses now serializable
     * `ChosenInlineResult` was replaced and modified to be sealed
+    * `ChosenInlineResult` now extends `FromUser`
     * Added `Update#sourceUser` method
     * More types assumed as sent by user types now implements `FromUser` interface
     * Added `Any#whenFromUser`, `Any#asFromUser` and`Any#requireFromUser` extensions
