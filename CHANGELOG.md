@@ -7,6 +7,12 @@
         * `Klock`: `2.2.0` -> `2.3.1`
         * `Ktor`: `1.6.1` -> `1.6.2`
         * `MicroUtils`: `0.5.16` -> `0.5.17`
+* `Behaviour Builder`:
+    * New provider `defaultCoroutineScopeProvider`
+        * Now it is not necessary to provide `CoroutineScope` to `TelegramBot#buildBehaviour`
+        extension
+    * New `TelegramBot#buildBehaviour` extension with `FlowUpdatesFilter` and `CoroutineScope` with
+    default `CoroutineScope`
 
 ## 0.35.2
 
