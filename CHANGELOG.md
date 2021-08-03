@@ -15,6 +15,7 @@
         extension
     * New `TelegramBot#buildBehaviour` extension with `FlowUpdatesFilter` and `CoroutineScope` with
     default `CoroutineScope`
+    * New typealias `SimpleFilter` for unifying triggers filter signatures
 
 ## 0.35.2
 
