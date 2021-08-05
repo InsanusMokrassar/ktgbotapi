@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult
 
 import dev.inmo.tgbotapi.CommonAbstracts.FromUser
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.InlineMessageIdentifier
+import dev.inmo.tgbotapi.types.InlineQueryIdentifier
 
 sealed interface ChosenInlineResult : FromUser {
     val resultId: InlineQueryIdentifier //chosen temporary, can be changed
