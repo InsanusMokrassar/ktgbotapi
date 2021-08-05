@@ -1,6 +1,10 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.replyWithDocuments
+import dev.inmo.tgbotapi.extensions.api.send.replyWithGallery
+import dev.inmo.tgbotapi.extensions.api.send.replyWithMediaGroup
+import dev.inmo.tgbotapi.extensions.api.send.replyWithPlaylist
 import dev.inmo.tgbotapi.requests.send.media.*
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.*
@@ -124,35 +128,56 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     chat.id, media, disableNotification, replyToMessageId, allowSendingWithoutReply
 )
 
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithMediaGroup", "dev.inmo.tgbotapi.extensions.api.send.replyWithMediaGroup")
+)
 @RiskFeature(rawSendingMediaGroupsWarning)
 suspend inline fun TelegramBot.replyWithMediaGroup(
     to: Message,
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendMediaGroup(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
+) = replyWithMediaGroup(to, media, disableNotification, allowSendingWithoutReply)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithPlaylist", "dev.inmo.tgbotapi.extensions.api.send.replyWithPlaylist")
+)
 suspend inline fun TelegramBot.replyWithPlaylist(
     to: Message,
     media: List<AudioMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendPlaylist(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
+) = replyWithPlaylist(to, media, disableNotification, allowSendingWithoutReply)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithDocuments", "dev.inmo.tgbotapi.extensions.api.send.replyWithDocuments")
+)
 suspend inline fun TelegramBot.replyWithDocumentsGroup(
     to: Message,
     media: List<DocumentMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendDocumentsGroup(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
+) = replyWithDocuments(to, media, disableNotification, allowSendingWithoutReply)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithGallery", "dev.inmo.tgbotapi.extensions.api.send.replyWithGallery")
+)
 suspend inline fun TelegramBot.replyWithVisualMediaGroup(
     to: Message,
     media: List<VisualMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendVisualMediaGroup(to.chat, media, disableNotification, to.messageId, allowSendingWithoutReply)
+) = replyWithGallery(to, media, disableNotification, allowSendingWithoutReply)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithMediaGroup", "dev.inmo.tgbotapi.extensions.api.send.replyWithMediaGroup")
+)
 suspend inline fun TelegramBot.reply(
     to: Message,
     media: List<MediaGroupMemberInputMedia>,

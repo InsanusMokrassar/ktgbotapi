@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.reply
+import dev.inmo.tgbotapi.extensions.api.send.replyWithVideo
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendVideo
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -81,41 +83,6 @@ suspend fun TelegramBot.sendVideo(
     replyMarkup: KeyboardMarkup? = null
 ) = sendVideo(chat.id, video, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
-suspend inline fun TelegramBot.replyWithVideo(
-    to: Message,
-    video: InputFile,
-    thumb: InputFile? = null,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    width: Int? = null,
-    height: Int? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVideo(to.chat, video, thumb, text, parseMode, duration, width, height, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.replyWithVideo(
-    to: Message,
-    video: VideoFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVideo(to.chat, video, text, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    video: VideoFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = replyWithVideo(to, video, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
-
-
 suspend inline fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
@@ -180,6 +147,57 @@ suspend inline fun TelegramBot.sendVideo(
     replyMarkup: KeyboardMarkup? = null
 ) = sendVideo(chat.id, video, entities, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithVideo", "dev.inmo.tgbotapi.extensions.api.send.replyWithVideo")
+)
+suspend inline fun TelegramBot.replyWithVideo(
+    to: Message,
+    video: InputFile,
+    thumb: InputFile? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    width: Int? = null,
+    height: Int? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = replyWithVideo(to, video, thumb, text, parseMode, duration, width, height, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
+suspend inline fun TelegramBot.replyWithVideo(
+    to: Message,
+    video: VideoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = reply(to, video, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    video: VideoFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = reply(to, video, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithVideo", "dev.inmo.tgbotapi.extensions.api.send.replyWithVideo")
+)
 suspend inline fun TelegramBot.replyWithVideo(
     to: Message,
     video: InputFile,
@@ -191,8 +209,12 @@ suspend inline fun TelegramBot.replyWithVideo(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(to.chat, video, thumb, entities, duration, width, height, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = replyWithVideo(to, video, thumb, entities, duration, width, height, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithVideo(
     to: Message,
     video: VideoFile,
@@ -200,8 +222,12 @@ suspend inline fun TelegramBot.replyWithVideo(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(to.chat, video, entities, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, video, entities, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.reply(
     to: Message,
     video: VideoFile,
@@ -209,4 +235,4 @@ suspend inline fun TelegramBot.reply(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = replyWithVideo(to, video, entities, disableNotification, allowSendingWithoutReply, replyMarkup)
+) = reply(to, video, entities, disableNotification, allowSendingWithoutReply, replyMarkup)

@@ -7,7 +7,7 @@ import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
 @Serializable
-data class KickChatMember(
+data class BanChatMember(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(userIdField)
@@ -17,9 +17,12 @@ data class KickChatMember(
     @SerialName(revokeMessagesField)
     val revokeMessages: Boolean? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
-    override fun method(): String = "kickChatMember"
+    override fun method(): String = "banChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
+
+@Deprecated("Renamed", ReplaceWith("BanChatMember", "dev.inmo.tgbotapi.requests.chat.members.BanChatMember"))
+typealias KickChatMember = BanChatMember

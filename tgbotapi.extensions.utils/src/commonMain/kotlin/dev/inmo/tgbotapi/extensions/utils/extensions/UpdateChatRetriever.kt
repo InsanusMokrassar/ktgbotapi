@@ -1,6 +1,10 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
+import dev.inmo.tgbotapi.extensions.utils.asFromUser
+import dev.inmo.tgbotapi.extensions.utils.asFromUserMessage
+import dev.inmo.tgbotapi.extensions.utils.asUser
 import dev.inmo.tgbotapi.extensions.utils.shortcuts.chat
+import dev.inmo.tgbotapi.types.User
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
@@ -13,7 +17,6 @@ fun Update.sourceChat(): Chat? = when (this) {
     is MediaGroupUpdate -> when (this) {
         is SentMediaGroupUpdate -> data.chat
         is EditMediaGroupUpdate -> data.chat
-        else -> null
     }
     is BaseMessageUpdate -> data.chat
     is InlineQueryUpdate -> data.from
@@ -24,3 +27,6 @@ fun Update.sourceChat(): Chat? = when (this) {
     is ShippingQueryUpdate -> data.user
     else -> null
 }
+
+@PreviewFeature
+fun Update.sourceUser(): User? = data.asFromUser()?.user ?: sourceChat()?.asUser()

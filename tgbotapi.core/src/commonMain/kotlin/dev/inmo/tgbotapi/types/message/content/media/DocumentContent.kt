@@ -14,7 +14,9 @@ import dev.inmo.tgbotapi.types.files.asDocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.DocumentMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class DocumentContent(
     override val media: DocumentFile,
     override val text: String? = null,

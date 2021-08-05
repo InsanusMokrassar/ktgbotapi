@@ -5,4 +5,4 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
 
 data class LeftChatMember(
     val user: User
-): CommonEvent
+) : CommonEvent

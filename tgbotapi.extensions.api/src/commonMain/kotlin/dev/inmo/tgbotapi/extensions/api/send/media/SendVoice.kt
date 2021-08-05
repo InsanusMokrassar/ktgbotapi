@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.reply
+import dev.inmo.tgbotapi.extensions.api.send.replyWithVoice
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendVoice
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -72,37 +74,6 @@ suspend fun TelegramBot.sendVoice(
     replyMarkup: KeyboardMarkup? = null
 ) = sendVoice(chat.id, voice, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
-suspend inline fun TelegramBot.replyWithVoice(
-    to: Message,
-    voice: InputFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    duration: Long? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVoice(to.chat, voice, text, parseMode, duration, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.replyWithVoice(
-    to: Message,
-    voice: VoiceFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVoice(to.chat, voice, text, parseMode, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    voice: VoiceFile,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = replyWithVoice(to, voice, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
-
 
 suspend inline fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,
@@ -159,6 +130,55 @@ suspend inline fun TelegramBot.sendVoice(
     replyMarkup: KeyboardMarkup? = null
 ) = sendVoice(chat.id, voice, entities, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithVoice", "dev.inmo.tgbotapi.extensions.api.send.replyWithVoice")
+)
+suspend inline fun TelegramBot.replyWithVoice(
+    to: Message,
+    voice: InputFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    duration: Long? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = replyWithVoice(to, voice, text, parseMode, duration, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
+suspend inline fun TelegramBot.replyWithVoice(
+    to: Message,
+    voice: VoiceFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = reply(to, voice, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    voice: VoiceFile,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = reply(to, voice, text, parseMode, disableNotification, allowSendingWithoutReply, replyMarkup)
+
+
+@Deprecated(
+    "Replaced",
+    ReplaceWith("replyWithVoice", "dev.inmo.tgbotapi.extensions.api.send.replyWithVoice")
+)
 suspend inline fun TelegramBot.replyWithVoice(
     to: Message,
     voice: InputFile,
@@ -167,8 +187,12 @@ suspend inline fun TelegramBot.replyWithVoice(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(to.chat, voice, entities, duration, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = replyWithVoice(to, voice, entities, duration, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.replyWithVoice(
     to: Message,
     voice: VoiceFile,
@@ -176,8 +200,12 @@ suspend inline fun TelegramBot.replyWithVoice(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(to.chat, voice, entities, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = reply(to, voice, entities, disableNotification, allowSendingWithoutReply, replyMarkup)
 
+@Deprecated(
+    "Replaced",
+    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
+)
 suspend inline fun TelegramBot.reply(
     to: Message,
     voice: VoiceFile,
@@ -185,4 +213,4 @@ suspend inline fun TelegramBot.reply(
     disableNotification: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = replyWithVoice(to, voice, entities, disableNotification, allowSendingWithoutReply, replyMarkup)
+) = reply(to, voice, entities, disableNotification, allowSendingWithoutReply, replyMarkup)

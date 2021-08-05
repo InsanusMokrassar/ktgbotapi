@@ -11,7 +11,9 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class VoiceContent(
     override val media: VoiceFile,
     override val text: String? = null,

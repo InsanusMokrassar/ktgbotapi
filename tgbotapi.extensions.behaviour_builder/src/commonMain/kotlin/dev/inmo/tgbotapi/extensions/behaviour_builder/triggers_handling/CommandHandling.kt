@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTypeReceiver
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.asBotCommandTextSource
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
@@ -12,6 +14,7 @@ suspend fun BehaviourContext.command(
     requireOnlyCommandInMessage: Boolean = true,
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: CommonMessageFilter<TextContent>? = null,
+    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
 ): Job = onText(
     includeFilterByChatInBehaviourSubContext,
@@ -27,6 +30,7 @@ suspend fun BehaviourContext.command(
             commandRegex.matches(it.asBotCommandTextSource() ?.command ?: return@any false)
         } && (additionalFilter ?.invoke(message) != false)
     },
+    markerFactory,
     scenarioReceiver
 )
 suspend fun BehaviourContext.command(
@@ -34,21 +38,24 @@ suspend fun BehaviourContext.command(
     requireOnlyCommandInMessage: Boolean = true,
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     additionalFilter: CommonMessageFilter<TextContent>? = null,
+    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
-) = command(command.toRegex(), requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+) = command(command.toRegex(), requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, markerFactory, scenarioReceiver)
 
 suspend inline fun BehaviourContext.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     noinline additionalFilter: CommonMessageFilter<TextContent>? = null,
+    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
-): Job = command(commandRegex, requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+): Job = command(commandRegex, requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, markerFactory, scenarioReceiver)
 
 suspend inline fun BehaviourContext.onCommand(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     noinline additionalFilter: CommonMessageFilter<TextContent>? = null,
+    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
-): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, scenarioReceiver)
+): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, markerFactory, scenarioReceiver)

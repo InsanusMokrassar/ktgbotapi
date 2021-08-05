@@ -53,6 +53,7 @@ kotlin {
                 api "dev.inmo:micro_utils.serialization.base64:$micro_utils_version"
                 api "dev.inmo:micro_utils.serialization.encapsulator:$micro_utils_version"
                 api "dev.inmo:micro_utils.serialization.typed_serializer:$micro_utils_version"
+                api "dev.inmo:micro_utils.language_codes:$micro_utils_version"
 
                 api "io.ktor:ktor-client-core:$ktor_version"
                 api "com.github.matfax.klassindex:library:4.+"

@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.requests.send.SendContact
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendContact(
     chatId: ChatIdentifier,
@@ -57,38 +56,4 @@ suspend fun TelegramBot.sendContact(
     replyMarkup: KeyboardMarkup? = null
 ) = sendContact(
     chat.id, contact, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
-)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    phoneNumber: String,
-    firstName: String,
-    lastName: String? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendContact(
-    to.chat,
-    phoneNumber,
-    firstName,
-    lastName,
-    disableNotification,
-    to.messageId,
-    allowSendingWithoutReply,
-    replyMarkup
-)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    contact: Contact,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendContact(
-    to.chat,
-    contact,
-    disableNotification,
-    to.messageId,
-    allowSendingWithoutReply,
-    replyMarkup
 )

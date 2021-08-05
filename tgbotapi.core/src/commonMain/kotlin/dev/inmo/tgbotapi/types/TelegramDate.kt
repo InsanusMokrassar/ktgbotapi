@@ -7,7 +7,6 @@ import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.JsonPrimitive
 
 @Serializable(TelegramDateSerializer::class)
 data class TelegramDate(

@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.micro_utils.language_codes.IetfLanguageCode
+import dev.inmo.micro_utils.language_codes.IetfLanguageCodeSerializer
+import dev.inmo.tgbotapi.CommonAbstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.types.chat.abstracts.PrivateChat
 import dev.inmo.tgbotapi.types.chat.extended.ExtendedPrivateChatImpl
 import dev.inmo.tgbotapi.utils.*
-import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -23,8 +25,17 @@ data class CommonUser(
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(languageCodeField)
-    val languageCode: String? = null
-) : User()
+    @Serializable(IetfLanguageCodeSerializer::class)
+    override val ietfLanguageCode: IetfLanguageCode? = null
+) : User(), WithOptionalLanguageCode {
+    constructor(
+        id: UserId,
+        firstName: String,
+        lastName: String = "",
+        username: Username? = null,
+        languageCode: String
+    ) : this(id, firstName, lastName, username, IetfLanguageCode(languageCode))
+}
 
 @PreviewFeature
 typealias ExtendedUser = ExtendedPrivateChatImpl

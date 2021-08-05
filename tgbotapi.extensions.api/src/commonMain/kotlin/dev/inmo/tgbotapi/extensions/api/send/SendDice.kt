@@ -7,7 +7,6 @@ import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.sendDice(
     chatId: ChatIdentifier,
@@ -28,19 +27,3 @@ suspend fun TelegramBot.sendDice(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendDice(chat.id, animationType, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.replyWithDice(
-    to: Message,
-    animationType: DiceAnimationType? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendDice(to.chat, animationType, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    animationType: DiceAnimationType? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = replyWithDice(to, animationType, disableNotification, allowSendingWithoutReply, replyMarkup)

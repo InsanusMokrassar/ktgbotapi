@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.location.StaticLocation
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.venue.Venue
 
 suspend fun TelegramBot.sendVenue(
@@ -159,78 +158,6 @@ suspend fun TelegramBot.sendVenue(
     venue = venue,
     disableNotification = disableNotification,
     replyToMessageId = replyToMessageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
-    replyMarkup = replyMarkup
-)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    latitude: Double,
-    longitude: Double,
-    title: String,
-    address: String,
-    foursquareId: FoursquareId? = null,
-    foursquareType: FoursquareType? = null,
-    googlePlaceId: GooglePlaceId? = null,
-    googlePlaceType: GooglePlaceType? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVenue(
-    chat = to.chat,
-    latitude = latitude,
-    longitude = longitude,
-    title = title,
-    address = address,
-    foursquareId = foursquareId,
-    foursquareType = foursquareType,
-    googlePlaceId = googlePlaceId,
-    googlePlaceType = googlePlaceType,
-    disableNotification = disableNotification,
-    replyToMessageId = to.messageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
-    replyMarkup = replyMarkup
-)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    location: StaticLocation,
-    title: String,
-    address: String,
-    foursquareId: FoursquareId? = null,
-    foursquareType: FoursquareType? = null,
-    googlePlaceId: GooglePlaceId? = null,
-    googlePlaceType: GooglePlaceType? = null,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVenue(
-    chat = to.chat,
-    latitude = location.latitude,
-    longitude = location.longitude,
-    title = title,
-    address = address,
-    foursquareId = foursquareId,
-    foursquareType = foursquareType,
-    googlePlaceId = googlePlaceId,
-    googlePlaceType = googlePlaceType,
-    disableNotification = disableNotification,
-    replyToMessageId = to.messageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
-    replyMarkup = replyMarkup
-)
-
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    venue: Venue,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = sendVenue(
-    chat = to.chat,
-    venue = venue,
-    disableNotification = disableNotification,
-    replyToMessageId = to.messageId,
     allowSendingWithoutReply = allowSendingWithoutReply,
     replyMarkup = replyMarkup
 )

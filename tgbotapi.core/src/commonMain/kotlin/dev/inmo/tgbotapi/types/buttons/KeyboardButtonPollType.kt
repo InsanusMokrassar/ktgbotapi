@@ -2,7 +2,8 @@ package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.RiskFeature
-import kotlinx.serialization.*
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
