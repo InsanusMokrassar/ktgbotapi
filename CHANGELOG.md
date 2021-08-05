@@ -7,6 +7,8 @@
         * `Klock`: `2.2.0` -> `2.3.1`
         * `Ktor`: `1.6.1` -> `1.6.2`
         * `MicroUtils`: `0.5.16` -> `0.5.18`
+* `Core`:
+    * Support of strongly-typed ietf language codes has been added
 * `API`:
     * New extension `TelegramBot#downloadFile` for any `MediaContent`
 * `Behaviour Builder`:
