@@ -43,7 +43,7 @@ val result = mutableMapOf<KClass<*>, Set<KClass<*>>>()
 
 
 fun main() {
-    result[Message::class] = KlassIndex.getSubclasses(Message::class).toSet()
+    result[Message::class] = KlassIndex.getSubclasses(dev.inmo.tgbotapi.CommonAbstracts.WithOptionalLanguageCode::class).toSet()
     println("import dev.inmo.tgbotapi.utils.PreviewFeature")
     val importsToFuns = result.keys.flatMap {
         println("import ${it.qualifiedName}")

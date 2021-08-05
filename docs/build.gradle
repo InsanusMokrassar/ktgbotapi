@@ -77,17 +77,17 @@ Object callback = {
             }
         }
 
-        named("commonMain") {
-            sourceRoots.setFrom(findSourcesWithName("commonMain"))
-        }
-
-        named("jsMain") {
-            sourceRoots.setFrom(findSourcesWithName("jsMain"))
-        }
-
-        named("jvmMain") {
-            sourceRoots.setFrom(findSourcesWithName("jvmMain"))
-        }
+//        named("commonMain") {
+//            sourceRoots.setFrom(findSourcesWithName("commonMain"))
+//        }
+//
+//        named("jsMain") {
+//            sourceRoots.setFrom(findSourcesWithName("jsMain"))
+//        }
+//
+//        named("jvmMain") {
+//            sourceRoots.setFrom(findSourcesWithName("jvmMain"))
+//        }
     }
 }
 

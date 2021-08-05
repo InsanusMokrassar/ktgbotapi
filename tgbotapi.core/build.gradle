@@ -112,7 +112,7 @@ kapt {
 //            "dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent",
 //            "dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValue",
 //            "dev.inmo.tgbotapi.types.message.content.abstracts.ResendableContent",
-            "dev.inmo.tgbotapi.types.message.abstracts.Message",
+            "dev.inmo.tgbotapi.CommonAbstracts.WithOptionalLanguageCode",
 //            "dev.inmo.tgbotapi.types.passport.encrypted_data.abstracts.EncryptedPassportElement",
 //            "dev.inmo.tgbotapi.types.passport.PassportElementError",
 //            "dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery",
