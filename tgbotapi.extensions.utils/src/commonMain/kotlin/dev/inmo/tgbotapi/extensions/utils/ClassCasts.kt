@@ -2,10 +2,8 @@
 
 package dev.inmo.tgbotapi.extensions.utils
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
-import dev.inmo.tgbotapi.requests.bot.*
-import dev.inmo.tgbotapi.requests.bot.DeleteMyCommands.Companion
-import dev.inmo.tgbotapi.requests.bot.GetMyCommands.Companion
+import dev.inmo.tgbotapi.CommonAbstracts.CommonSendInvoiceData
+import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.*
@@ -25,8 +23,6 @@ import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.MultilevelTextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
@@ -3110,75 +3106,3 @@ inline fun Any.asFromUser(): FromUser? = this as? FromUser
 
 @PreviewFeature
 inline fun Any.requireFromUser(): FromUser = this as FromUser
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.asWithLanguageCode(): WithLanguageCode? = this as? WithLanguageCode
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.requireWithLanguageCode(): WithLanguageCode = this as WithLanguageCode
-
-@PreviewFeature
-inline fun <T> WithOptionalLanguageCode.whenWithLanguageCode(block: (WithLanguageCode) -> T): WithLanguageCode = asWithLanguageCode() ?.let(block)
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.asDeleteMyCommands(): DeleteMyCommands? = this as? DeleteMyCommands
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.requireDeleteMyCommands(): DeleteMyCommands = this as DeleteMyCommands
-
-@PreviewFeature
-inline fun <T> WithOptionalLanguageCode.whenDeleteMyCommands(block: (DeleteMyCommands) -> T): DeleteMyCommands = asDeleteMyCommands() ?.let(block)
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.asCompanion(): Companion? = this as? Companion
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.requireCompanion(): Companion = this as Companion
-
-@PreviewFeature
-inline fun <T> WithOptionalLanguageCode.whenCompanion(block: (Companion) -> T): Companion = asCompanion() ?.let(block)
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.asGetMyCommands(): GetMyCommands? = this as? GetMyCommands
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.requireGetMyCommands(): GetMyCommands = this as GetMyCommands
-
-@PreviewFeature
-inline fun <T> WithOptionalLanguageCode.whenGetMyCommands(block: (GetMyCommands) -> T): GetMyCommands = asGetMyCommands() ?.let(block)
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.asCompanion(): Companion? = this as? Companion
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.requireCompanion(): Companion = this as Companion
-
-@PreviewFeature
-inline fun <T> WithOptionalLanguageCode.whenCompanion(block: (Companion) -> T): Companion = asCompanion() ?.let(block)
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.asMyCommandsRequest(): MyCommandsRequest<Any>? = this as? MyCommandsRequest<Any>
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.requireMyCommandsRequest(): MyCommandsRequest<Any> = this as MyCommandsRequest<Any>
-
-@PreviewFeature
-inline fun <T> WithOptionalLanguageCode.whenMyCommandsRequest(block: (MyCommandsRequest) -> T): MyCommandsRequest<Any> = asMyCommandsRequest() ?.let(block)
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.asSetMyCommands(): SetMyCommands? = this as? SetMyCommands
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.requireSetMyCommands(): SetMyCommands = this as SetMyCommands
-
-@PreviewFeature
-inline fun <T> WithOptionalLanguageCode.whenSetMyCommands(block: (SetMyCommands) -> T): SetMyCommands = asSetMyCommands() ?.let(block)
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.asCommonUser(): CommonUser? = this as? CommonUser
-
-@PreviewFeature
-inline fun WithOptionalLanguageCode.requireCommonUser(): CommonUser = this as CommonUser
-
-@PreviewFeature
-inline fun <T> WithOptionalLanguageCode.whenCommonUser(block: (CommonUser) -> T): CommonUser = asCommonUser() ?.let(block)

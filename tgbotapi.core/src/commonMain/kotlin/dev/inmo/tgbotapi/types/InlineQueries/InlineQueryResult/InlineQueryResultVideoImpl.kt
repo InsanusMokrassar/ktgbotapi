@@ -6,12 +6,12 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.files.abstracts.mimeTypeField
 import dev.inmo.tgbotapi.utils.MimeType
-import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
