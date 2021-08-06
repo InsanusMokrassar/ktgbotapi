@@ -15,16 +15,16 @@ private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContex
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<T>? = null,
+    noinline filter: SimpleFilter<T>? = null,
     noinline mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>
 ): List<ChatMemberUpdated> = expectFlow(
     initRequest,
     count,
     errorFactory
 ) {
-    val data = (it as? T) ?.data ?: return@expectFlow emptyList()
-    if (filter == null || filter(data)) {
-        data.mapper().let(::listOfNotNull)
+    val casted = (it as? T) ?: return@expectFlow emptyList()
+    if (filter == null || filter(casted)) {
+        casted.data.mapper().let(::listOfNotNull)
     } else {
         emptyList()
     }
@@ -34,7 +34,7 @@ private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContex
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<T>? = null,
+    noinline filter: SimpleFilter<T>? = null,
     noinline mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
 ) : List<ChatMemberUpdated> = waitChatMemberUpdated<T>(
     count,

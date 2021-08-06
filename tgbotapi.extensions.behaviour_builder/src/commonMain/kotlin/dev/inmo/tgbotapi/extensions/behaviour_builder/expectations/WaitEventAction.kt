@@ -39,13 +39,17 @@ private suspend inline fun <reified T : ChatEvent> BehaviourContext.waitEvents(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<ChatEventMessage<T>>? = null,
+    noinline filter: SimpleFilter<ChatEventMessage<T>>? = null,
     noinline mapper: EventMessageToEventMapper<T>? = null
 ) : List<T> = waitEventMessages<T>(
     initRequest,
     errorFactory,
     count,
-    filter
+    filter ?.let {
+        {
+            (it.chatEvent as? T) ?.let { filter(it as ChatEventMessage<T>) } == true
+        }
+    }
 ) {
     if (chatEvent is T) {
         @Suppress("UNCHECKED_CAST")

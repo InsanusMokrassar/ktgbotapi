@@ -56,14 +56,18 @@ private suspend inline fun <reified T : MessageContent> BehaviourContext.waitCon
     initRequest: Request<*>? = null,
     includeMediaGroups: Boolean = true,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<CommonMessage<T>>? = null,
+    noinline filter: SimpleFilter<CommonMessage<T>>? = null,
     noinline mapper: CommonMessageToContentMapper<T>? = null
 ) : List<T> = waitCommonMessage<T>(
     count,
     initRequest,
     includeMediaGroups,
     errorFactory,
-    filter
+    filter ?.let {
+        {
+            it.withContent<T>() ?.let { filter(it) } == true
+        }
+    }
 ) {
     if (content is T) {
         @Suppress("UNCHECKED_CAST")

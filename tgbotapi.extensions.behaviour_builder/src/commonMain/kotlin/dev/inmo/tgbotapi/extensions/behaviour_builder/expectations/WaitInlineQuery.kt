@@ -33,19 +33,23 @@ private suspend inline fun <reified T : InlineQuery> BehaviourContext.waitInline
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<InlineQuery>? = null,
+    noinline filter: SimpleFilter<T>? = null,
     noinline mapper: InlineQueryMapper<T>? = null
 ) : List<T> = waitInlineQueries<T>(
     count,
     initRequest,
     errorFactory,
-    filter
+    filter ?.let {
+        {
+            (it as? T) ?.let { casted -> filter(casted) } == true
+        }
+    }
 ) {
     if (this is T) {
-        if (filter == null) {
+        if (mapper == null) {
             this
         } else {
-            filter(this)
+            mapper(this)
         }
     } else {
         null

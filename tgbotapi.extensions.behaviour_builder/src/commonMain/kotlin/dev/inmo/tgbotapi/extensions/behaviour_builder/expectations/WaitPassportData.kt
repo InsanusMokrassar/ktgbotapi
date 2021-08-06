@@ -37,7 +37,7 @@ suspend inline fun <reified T : EncryptedPassportElement> BehaviourContext.waitP
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<PassportMessage>? = null,
+    noinline filter: SimpleFilter<PassportMessage>? = null,
     noinline mapper: PassportMessageMapper? = null
 ) : List<PassportData> = waitPassportMessages(
     initRequest,
