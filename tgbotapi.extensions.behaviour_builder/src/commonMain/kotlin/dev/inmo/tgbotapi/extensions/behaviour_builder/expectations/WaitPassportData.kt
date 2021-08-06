@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
 import dev.inmo.tgbotapi.extensions.utils.asPassportMessage
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -17,30 +18,38 @@ suspend fun <O> BehaviourContext.waitPassportMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
+    filter: SimpleFilter<PassportMessage>? = null,
     mapper: suspend PassportMessage.() -> O?
 ): List<O> = expectFlow(
     initRequest,
     count,
     errorFactory
 ) {
-    it.asMessageUpdate() ?.data ?.asPassportMessage() ?.mapper().let(::listOfNotNull)
+    val data = it.asMessageUpdate() ?.data ?.asPassportMessage() ?: return@expectFlow emptyList()
+    if (filter == null || filter(data)) {
+        data.mapper().let(::listOfNotNull)
+    } else {
+        emptyList()
+    }
 }.toList().toList()
 
 suspend inline fun <reified T : EncryptedPassportElement> BehaviourContext.waitPassportMessagesWith(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: PassportMessageMapper? = null
+    filter: SimpleFilter<PassportMessage>? = null,
+    noinline mapper: PassportMessageMapper? = null
 ) : List<PassportData> = waitPassportMessages(
     initRequest,
     errorFactory,
-    count
+    count,
+    filter
 ) {
     if (passportData.data.any { it is T }) {
-        if (filter == null) {
+        if (mapper == null) {
             passportData
         } else {
-            filter(this)
+            mapper(this)
         }
     } else {
         null
@@ -51,5 +60,6 @@ suspend fun BehaviourContext.waitAnyPassportMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: PassportMessageMapper? = null
-) = waitPassportMessagesWith<EncryptedPassportElement>(count, initRequest, errorFactory, filter)
+    filter: SimpleFilter<PassportMessage>? = null,
+    mapper: PassportMessageMapper? = null
+) = waitPassportMessagesWith<EncryptedPassportElement>(count, initRequest, errorFactory, filter, mapper)

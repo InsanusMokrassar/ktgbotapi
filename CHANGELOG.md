@@ -18,6 +18,7 @@
     * New `TelegramBot#buildBehaviour` extension with `FlowUpdatesFilter` and `CoroutineScope` with
     default `CoroutineScope`
     * New typealias `SimpleFilter` for unifying triggers filter signatures
+         * All waiters got real filters (`SimpleFilter`) and rename old filters as mappers
 
 ## 0.35.2
 
