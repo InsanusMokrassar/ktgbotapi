@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.extensions.utils.asFromUser
-import dev.inmo.tgbotapi.extensions.utils.asFromUserMessage
 import dev.inmo.tgbotapi.extensions.utils.asUser
 import dev.inmo.tgbotapi.extensions.utils.shortcuts.chat
 import dev.inmo.tgbotapi.types.User

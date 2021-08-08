@@ -7,10 +7,10 @@ import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageReques
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
-import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
 fun CopyMessage(
