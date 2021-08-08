@@ -21,6 +21,7 @@
     default `CoroutineScope`
     * New typealias `SimpleFilter` for unifying triggers filter signatures
          * All waiters got real filters (`SimpleFilter`) and rename old filters as mappers
+    * New extensions for `Any`: `as`/`when`/`require` for `WithOptionalLanguageCode` and `WithLanguageCode`
 
 ## 0.35.2
 

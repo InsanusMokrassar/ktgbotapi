@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.micro_utils.language_codes.IetfLanguageCode
 import dev.inmo.micro_utils.language_codes.IetfLanguageCodeSerializer
-import dev.inmo.tgbotapi.CommonAbstracts.WithOptionalLanguageCode
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.types.chat.abstracts.PrivateChat
 import dev.inmo.tgbotapi.types.chat.extended.ExtendedPrivateChatImpl
 import dev.inmo.tgbotapi.utils.*

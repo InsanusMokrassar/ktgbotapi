@@ -1,4 +1,4 @@
-package dev.inmo.tgbotapi.CommonAbstracts
+package dev.inmo.tgbotapi.types.abstracts
 
 import dev.inmo.micro_utils.language_codes.IetfLanguageCode
 
