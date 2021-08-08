@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.Ktor.base
 
+import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
@@ -19,4 +20,7 @@ class SimpleRequestCallFactory : AbstractRequestCallFactory() {
             ContentType.Application.Json
         )
     }
+
+    @Deprecated("Use class SimpleRequestCallFactory() constructor call instead of just SimpleRequestCallFactory")
+    companion object : KtorCallFactory by SimpleRequestCallFactory()
 }

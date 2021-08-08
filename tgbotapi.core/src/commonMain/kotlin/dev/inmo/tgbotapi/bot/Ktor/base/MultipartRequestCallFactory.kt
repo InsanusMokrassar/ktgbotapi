@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.Ktor.base
 
+import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.mapWithCommonValues
@@ -35,4 +36,7 @@ class MultipartRequestCallFactory : AbstractRequestCallFactory() {
             }
         )
     }
+
+    @Deprecated("Use class MultipartRequestCallFactory() constructor call instead of just MultipartRequestCallFactory")
+    companion object : KtorCallFactory by MultipartRequestCallFactory()
 }
