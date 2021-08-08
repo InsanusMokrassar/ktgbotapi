@@ -9,7 +9,7 @@ import io.ktor.client.request.forms.formData
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 
-object MultipartRequestCallFactory : AbstractRequestCallFactory() {
+class MultipartRequestCallFactory : AbstractRequestCallFactory() {
     override fun <T : Any> prepareCallBody(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,

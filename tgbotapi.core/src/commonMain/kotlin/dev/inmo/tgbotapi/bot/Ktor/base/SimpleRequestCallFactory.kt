@@ -6,7 +6,7 @@ import io.ktor.client.HttpClient
 import io.ktor.http.ContentType
 import io.ktor.http.content.TextContent
 
-object SimpleRequestCallFactory : AbstractRequestCallFactory() {
+class SimpleRequestCallFactory : AbstractRequestCallFactory() {
     override fun <T : Any> prepareCallBody(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,

@@ -8,6 +8,8 @@
         * `Ktor`: `1.6.1` -> `1.6.2`
         * `MicroUtils`: `0.5.16` -> `0.5.18`
 * `Core`:
+    * **`SimpleRequestCallFactory` and `MultipartRequestCallFactory` became a classes instead of objects to avoid
+    collisions in different bots**
     * Support of strongly-typed ietf language codes has been added
 * `API`:
     * New extension `TelegramBot#downloadFile` for any `MediaContent`
