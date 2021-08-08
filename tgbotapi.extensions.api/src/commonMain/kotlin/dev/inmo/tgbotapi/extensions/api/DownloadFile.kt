@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.DownloadFile
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 
 suspend fun TelegramBot.downloadFile(
     filePath: String
@@ -29,4 +30,10 @@ suspend fun TelegramBot.downloadFile(
     file: TelegramMediaFile
 ): ByteArray = downloadFile(
     getFileAdditionalInfo(file)
+)
+
+suspend fun TelegramBot.downloadFile(
+    file: MediaContent
+): ByteArray = downloadFile(
+    getFileAdditionalInfo(file.media)
 )

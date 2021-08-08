@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.*
@@ -17,7 +18,7 @@ import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
-typealias CommonMessageFilter<T> = (suspend (CommonMessage<T>) -> Boolean)
+typealias CommonMessageFilter<T> = SimpleFilter<CommonMessage<T>>
 
 @PreviewFeature
 internal suspend inline fun <reified T : MessageContent> BehaviourContext.onContent(
@@ -123,7 +124,7 @@ suspend fun BehaviourContext.onDocumentMediaGroupContent(
 suspend fun BehaviourContext.onMediaCollection(
     includeFilterByChatInBehaviourSubContext: Boolean = true,
     includeMediaGroups: Boolean = false,
-    additionalFilter: (suspend (CommonMessage<MediaCollectionContent<TelegramMediaFile>>) -> Boolean)? = null,
+    additionalFilter: SimpleFilter<CommonMessage<MediaCollectionContent<TelegramMediaFile>>>? = null,
     markerFactory: MarkerFactory<in CommonMessage<MediaCollectionContent<TelegramMediaFile>>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MediaCollectionContent<TelegramMediaFile>>>
 ) = onContent(includeFilterByChatInBehaviourSubContext, includeMediaGroups, additionalFilter, markerFactory, scenarioReceiver)

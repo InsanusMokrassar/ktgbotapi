@@ -1,12 +1,13 @@
 package dev.inmo.tgbotapi.bot.Ktor.base
 
+import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.http.ContentType
 import io.ktor.http.content.TextContent
 
-object SimpleRequestCallFactory : AbstractRequestCallFactory() {
+class SimpleRequestCallFactory : AbstractRequestCallFactory() {
     override fun <T : Any> prepareCallBody(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
@@ -19,4 +20,7 @@ object SimpleRequestCallFactory : AbstractRequestCallFactory() {
             ContentType.Application.Json
         )
     }
+
+    @Deprecated("Use class SimpleRequestCallFactory() constructor call instead of just SimpleRequestCallFactory")
+    companion object : KtorCallFactory by SimpleRequestCallFactory()
 }

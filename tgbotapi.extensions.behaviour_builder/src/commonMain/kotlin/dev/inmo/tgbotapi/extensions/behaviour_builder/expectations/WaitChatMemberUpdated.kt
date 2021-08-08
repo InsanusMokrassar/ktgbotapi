@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
@@ -14,29 +15,37 @@ private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContex
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
+    noinline filter: SimpleFilter<T>? = null,
     noinline mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>
 ): List<ChatMemberUpdated> = expectFlow(
     initRequest,
     count,
     errorFactory
 ) {
-    (it as? T) ?.data.let(::listOfNotNull)
+    val casted = (it as? T) ?: return@expectFlow emptyList()
+    if (filter == null || filter(casted)) {
+        casted.data.mapper().let(::listOfNotNull)
+    } else {
+        emptyList()
+    }
 }.toList().toList()
 
 private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdatedWithFilter(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
+    noinline filter: SimpleFilter<T>? = null,
+    noinline mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
 ) : List<ChatMemberUpdated> = waitChatMemberUpdated<T>(
     count,
     initRequest,
-    errorFactory
+    errorFactory,
+    filter,
 ) {
-    if (filter == null) {
+    if (mapper == null) {
         this
     } else {
-        filter(this)
+        mapper(this)
     }
 }
 
@@ -44,19 +53,22 @@ suspend fun BehaviourContext.waitChatMemberUpdated(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
-) = waitChatMemberUpdatedWithFilter<ChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
+    filter: SimpleFilter<ChatMemberUpdatedUpdate>? = null,
+    mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
+) = waitChatMemberUpdatedWithFilter<ChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter, mapper)
 
 suspend fun BehaviourContext.waitCommonChatMemberUpdated(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
-) = waitChatMemberUpdatedWithFilter<CommonChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
+    filter: SimpleFilter<CommonChatMemberUpdatedUpdate>? = null,
+    mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
+) = waitChatMemberUpdatedWithFilter<CommonChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter, mapper)
 
 suspend fun BehaviourContext.waitMyChatMemberUpdated(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
-) = waitChatMemberUpdatedWithFilter<MyChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter)
+    filter: SimpleFilter<MyChatMemberUpdatedUpdate>? = null,
+    mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
+) = waitChatMemberUpdatedWithFilter<MyChatMemberUpdatedUpdate>(count, initRequest, errorFactory, filter, mapper)

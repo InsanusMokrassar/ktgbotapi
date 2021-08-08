@@ -52,7 +52,7 @@ class KtorRequestsExecutor(
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
-            this + listOf(SimpleRequestCallFactory, MultipartRequestCallFactory, DownloadFileRequestCallFactory)
+            this + listOf(SimpleRequestCallFactory(), MultipartRequestCallFactory(), DownloadFileRequestCallFactory)
         } else {
             this
         }

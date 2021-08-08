@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.Ktor.base
 
+import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.mapWithCommonValues
@@ -9,7 +10,7 @@ import io.ktor.client.request.forms.formData
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 
-object MultipartRequestCallFactory : AbstractRequestCallFactory() {
+class MultipartRequestCallFactory : AbstractRequestCallFactory() {
     override fun <T : Any> prepareCallBody(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,
@@ -35,4 +36,7 @@ object MultipartRequestCallFactory : AbstractRequestCallFactory() {
             }
         )
     }
+
+    @Deprecated("Use class MultipartRequestCallFactory() constructor call instead of just MultipartRequestCallFactory")
+    companion object : KtorCallFactory by MultipartRequestCallFactory()
 }

@@ -6,13 +6,13 @@ import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
-import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.media.PhotoContent
+import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 

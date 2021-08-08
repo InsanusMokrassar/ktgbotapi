@@ -1,5 +1,28 @@
 # TelegramBotAPI changelog
 
+## 0.35.3
+
+* `Common`:
+    * `Version`:
+        * `Klock`: `2.2.0` -> `2.3.1`
+        * `Ktor`: `1.6.1` -> `1.6.2`
+        * `MicroUtils`: `0.5.16` -> `0.5.18`
+* `Core`:
+    * **`SimpleRequestCallFactory` and `MultipartRequestCallFactory` became a classes instead of objects to avoid
+    collisions in different bots**
+    * Support of strongly-typed ietf language codes has been added
+* `API`:
+    * New extension `TelegramBot#downloadFile` for any `MediaContent`
+* `Behaviour Builder`:
+    * New provider `defaultCoroutineScopeProvider`
+        * Now it is not necessary to provide `CoroutineScope` to `TelegramBot#buildBehaviour`
+        extension
+    * New `TelegramBot#buildBehaviour` extension with `FlowUpdatesFilter` and `CoroutineScope` with
+    default `CoroutineScope`
+    * New typealias `SimpleFilter` for unifying triggers filter signatures
+         * All waiters got real filters (`SimpleFilter`) and rename old filters as mappers
+    * New extensions for `Any`: `as`/`when`/`require` for `WithOptionalLanguageCode` and `WithLanguageCode`
+
 ## 0.35.2
 
 * `Common`:
