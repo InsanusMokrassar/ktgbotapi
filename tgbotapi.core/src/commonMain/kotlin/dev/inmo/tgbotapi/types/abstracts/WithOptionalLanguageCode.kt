@@ -9,9 +9,3 @@ interface WithOptionalLanguageCode {
         get() = ietfLanguageCode ?.code
 }
 
-interface WithLanguageCode : WithOptionalLanguageCode {
-    override val ietfLanguageCode: IetfLanguageCode
-
-    override val languageCode: String
-        get() = ietfLanguageCode.code
-}

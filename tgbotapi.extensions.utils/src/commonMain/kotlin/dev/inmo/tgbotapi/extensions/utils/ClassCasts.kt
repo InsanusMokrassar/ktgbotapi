@@ -23,7 +23,6 @@ import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
-import dev.inmo.tgbotapi.types.abstracts.WithLanguageCode
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.buttons.*
@@ -3117,12 +3116,3 @@ inline fun Any.asWithOptionalLanguageCode(): WithOptionalLanguageCode? = this as
 
 @PreviewFeature
 inline fun Any.requireWithOptionalLanguageCode(): WithOptionalLanguageCode = this as WithOptionalLanguageCode
-
-@PreviewFeature
-inline fun <T> Any.whenWithLanguageCode(block: (WithLanguageCode) -> T) = asWithLanguageCode() ?.let(block)
-
-@PreviewFeature
-inline fun Any.asWithLanguageCode(): WithLanguageCode? = this as? WithLanguageCode
-
-@PreviewFeature
-inline fun Any.requireWithLanguageCode(): WithLanguageCode = this as WithLanguageCode
