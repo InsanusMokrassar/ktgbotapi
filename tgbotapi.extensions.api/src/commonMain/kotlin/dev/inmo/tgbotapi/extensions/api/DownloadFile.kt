@@ -16,8 +16,8 @@ suspend fun TelegramBot.downloadFile(
 
 suspend fun TelegramBot.downloadFile(
     pathedFile: PathedFile
-): ByteArray = execute(
-    DownloadFile(pathedFile.filePath)
+): ByteArray = downloadFile(
+    pathedFile.filePath
 )
 
 suspend fun TelegramBot.downloadFile(
