@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.bot.Ktor.base
 import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.DownloadFileStream
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.utils.InputStreamAllocator
+import dev.inmo.tgbotapi.utils.ByteReadChannelAllocator
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
@@ -23,7 +23,7 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
     ): T? = (request as? DownloadFileStream) ?.let {
         val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
-        return InputStreamAllocator {
+        return ByteReadChannelAllocator {
             val scope = CoroutineScope(coroutineContext)
             val outChannel = ByteChannel()
             scope.launch {

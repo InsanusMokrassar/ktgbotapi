@@ -1,15 +1,15 @@
 package dev.inmo.tgbotapi.requests
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.utils.InputStreamAllocator
-import dev.inmo.tgbotapi.utils.InputStreamAllocatorSerializer
+import dev.inmo.tgbotapi.utils.ByteReadChannelAllocator
+import dev.inmo.tgbotapi.utils.ByteReadChannelAllocatorSerializer
 import kotlinx.serialization.DeserializationStrategy
 
 class DownloadFileStream(
     val filePath: String
-) : Request<InputStreamAllocator> {
+) : Request<ByteReadChannelAllocator> {
     override fun method(): String = filePath
-    override val resultDeserializer: DeserializationStrategy<InputStreamAllocator>
-        get() = InputStreamAllocatorSerializer
+    override val resultDeserializer: DeserializationStrategy<ByteReadChannelAllocator>
+        get() = ByteReadChannelAllocatorSerializer
 
 }

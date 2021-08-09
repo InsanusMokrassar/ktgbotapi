@@ -1,22 +1,20 @@
 package dev.inmo.tgbotapi.utils
 
 import dev.inmo.micro_utils.common.ByteArrayAllocatorSerializer
-import io.ktor.util.toByteArray
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.*
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-fun interface InputStreamAllocator {
+fun interface ByteReadChannelAllocator {
     suspend operator fun invoke(): ByteReadChannel
 }
 
-object InputStreamAllocatorSerializer : KSerializer<InputStreamAllocator> {
+object ByteReadChannelAllocatorSerializer : KSerializer<ByteReadChannelAllocator> {
     override val descriptor: SerialDescriptor = ByteArrayAllocatorSerializer.descriptor
 
-    override fun serialize(encoder: Encoder, value: InputStreamAllocator) {
+    override fun serialize(encoder: Encoder, value: ByteReadChannelAllocator) {
         TODO("Not yet implemented")
 //        ByteArrayAllocatorSerializer.serialize(
 //            encoder
@@ -24,8 +22,8 @@ object InputStreamAllocatorSerializer : KSerializer<InputStreamAllocator> {
 //        }
     }
 
-    override fun deserialize(decoder: Decoder): InputStreamAllocator {
+    override fun deserialize(decoder: Decoder): ByteReadChannelAllocator {
         val byteArrayAllocator = ByteArrayAllocatorSerializer.deserialize(decoder)
-        return InputStreamAllocator { ByteReadChannel(byteArrayAllocator()) }
+        return ByteReadChannelAllocator { ByteReadChannel(byteArrayAllocator()) }
     }
 }
