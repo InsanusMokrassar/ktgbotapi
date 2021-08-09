@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 0.35.4 Hotfix
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.5.18` -> `0.5.19`
+
 ## 0.35.3
 
 * `Common`:
