@@ -2,15 +2,16 @@
 
 ## 0.35.5
 
+* `API`:
+    * New extensions `TelegramBot#downloadFile` for writing of incoming bytes to the file
+    * `PathedFile#filename` extension has been deprecated, and new property `PathedFile#fileName` has been included
+      directly in `PathedFile`
+
 ## 0.35.4 Hotfix
 
 * `Common`:
     * `Version`:
         * `MicroUtils`: `0.5.18` -> `0.5.19`
-* `API`:
-    * New extensions `TelegramBot#downloadFile` for writing of incoming bytes to the file
-    * `PathedFile#filename` extension has been deprecated, and new property `PathedFile#fileName` has been included
-    directly in `PathedFile`
 
 ## 0.35.3
 
