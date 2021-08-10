@@ -4,6 +4,10 @@
 
 * `API`:
     * New extensions `TelegramBot#downloadFile` for writing of incoming bytes to the file
+    * New extensions `TelegramBot#downloadFileStream` and `TelegramBot#downloadFileStreamAllocator` for getting of input
+    streams instead of whole bytes arrays
+    * Old extensions `TelegramBot#downloadFile` has been replaced to the new package. Migration: replace in your project
+    `import dev.inmo.tgbotapi.extensions.api.downloadFile` with `import dev.inmo.tgbotapi.extensions.api.files.downloadFile`
     * `PathedFile#filename` extension has been deprecated, and new property `PathedFile#fileName` has been included
       directly in `PathedFile`
 
