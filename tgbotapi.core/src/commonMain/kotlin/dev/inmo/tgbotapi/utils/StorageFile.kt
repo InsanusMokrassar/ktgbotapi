@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.utils
 
 import com.benasher44.uuid.uuid4
+import io.ktor.utils.io.*
 import io.ktor.utils.io.core.ByteReadPacket
 import io.ktor.utils.io.core.Input
 import kotlinx.serialization.Serializable
@@ -50,8 +51,30 @@ inline fun StorageFile(
     ByteReadPacket(bytes)
 }
 
-/**
- *
- */
+@Suppress("NOTHING_TO_INLINE")
+suspend inline fun StorageFile(
+    fileName: String,
+    byteReadChannel: ByteReadChannel,
+    mimeType: MimeType
+) = StorageFile(
+    StorageFileInfo(mimeType.raw, fileName),
+    byteReadChannel.asInput().let { { it } }
+)
+
 @Suppress("NOTHING_TO_INLINE", "unused")
-inline fun ByteArray.asStorageFile(fileName: String, mimeType: MimeType) = StorageFile(fileName, this, mimeType)
+inline fun ByteArray.asStorageFile(
+    fileName: String,
+    mimeType: MimeType
+) = StorageFile(fileName, this, mimeType)
+
+@Suppress("NOTHING_TO_INLINE", "unused")
+suspend inline fun ByteReadChannel.asStorageFile(
+    fileName: String,
+    mimeType: MimeType
+) = StorageFile(fileName, this, mimeType)
+
+@Suppress("NOTHING_TO_INLINE", "unused")
+suspend inline fun ByteReadChannelAllocator.asStorageFile(
+    fileName: String,
+    mimeType: MimeType
+) = this.invoke().asStorageFile(fileName, mimeType)
