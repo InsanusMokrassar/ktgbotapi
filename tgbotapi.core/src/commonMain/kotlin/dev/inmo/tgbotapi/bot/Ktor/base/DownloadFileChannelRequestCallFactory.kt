@@ -23,7 +23,7 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
     ): T? = (request as? DownloadFileStream) ?.let {
         val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
-        return ByteReadChannelAllocator {
+        ByteReadChannelAllocator {
             val scope = CoroutineScope(coroutineContext)
             val outChannel = ByteChannel()
             scope.launch {
