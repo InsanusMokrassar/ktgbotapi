@@ -4,6 +4,8 @@
 
 * `Core`:
     * Several new extensions `ByteReadChannel#asStorageFile` and `ByteReadChannelAllocator#asStorageFile`
+    * Several new extensions `ByteArray#asMultipartFile`, `ByteReadChannel#asMultipartFile` and
+    `ByteReadChannelAllocator#asMultipartFile`
 * `API`:
     * New extensions `TelegramBot#downloadFile` for writing of incoming bytes to the file
     * New extensions `TelegramBot#downloadFileStream` and `TelegramBot#downloadFileStreamAllocator` for getting of input

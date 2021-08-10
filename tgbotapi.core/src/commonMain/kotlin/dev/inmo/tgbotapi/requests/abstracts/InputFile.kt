@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.abstracts
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.StorageFile
+import dev.inmo.tgbotapi.utils.*
+import io.ktor.utils.io.ByteReadChannel
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.*
@@ -42,6 +42,8 @@ object InputFileSerializer : KSerializer<InputFile> {
 // TODO:: add checks for files size
 /**
  * Contains info about file for sending
+ *
+ * @see asMultipartFile
  */
 @Serializable(InputFileSerializer::class)
 data class MultipartFile (
@@ -51,3 +53,22 @@ data class MultipartFile (
 ) : InputFile() {
     override val fileId: String = file.storageFileInfo.generateCustomName()
 }
+
+
+@Suppress("NOTHING_TO_INLINE", "unused")
+inline fun ByteArray.asMultipartFile(
+    fileName: String,
+    mimeType: MimeType
+) = MultipartFile(asStorageFile(fileName, mimeType))
+
+@Suppress("NOTHING_TO_INLINE", "unused")
+suspend inline fun ByteReadChannel.asMultipartFile(
+    fileName: String,
+    mimeType: MimeType
+) = MultipartFile(asStorageFile(fileName, mimeType))
+
+@Suppress("NOTHING_TO_INLINE", "unused")
+suspend inline fun ByteReadChannelAllocator.asMultipartFile(
+    fileName: String,
+    mimeType: MimeType
+) = this.invoke().asMultipartFile(fileName, mimeType)
