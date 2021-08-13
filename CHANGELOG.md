@@ -14,6 +14,8 @@
     `import dev.inmo.tgbotapi.extensions.api.downloadFile` with `import dev.inmo.tgbotapi.extensions.api.files.downloadFile`
     * `PathedFile#filename` extension has been deprecated, and new property `PathedFile#fileName` has been included
       directly in `PathedFile`
+* `Utils`:
+    * Add several functions `convertToStorageFile` and extensions `TelegramBot#convertToStorageFile`
 
 ## 0.35.4 Hotfix
 
