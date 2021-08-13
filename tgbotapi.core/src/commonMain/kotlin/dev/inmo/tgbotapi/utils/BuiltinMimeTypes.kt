@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.utils
 
-sealed interface BuiltinMimeTypes {
+object BuiltinMimeTypes {
     object Image {
         val Jpg = buildMimeType("image/jpeg")
         val Gif = buildMimeType("image/gif")
