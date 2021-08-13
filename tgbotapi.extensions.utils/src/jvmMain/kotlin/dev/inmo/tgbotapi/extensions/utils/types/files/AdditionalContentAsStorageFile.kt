@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.types.files
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.utils.asMimedMediaFile
 import dev.inmo.tgbotapi.requests.DownloadFileStream
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.get.GetFile
@@ -35,7 +36,9 @@ suspend fun TelegramBot.convertToStorageFile(
 
 suspend fun TelegramBot.convertToStorageFile(
     file: TelegramMediaFile
-): StorageFile = convertToStorageFile(file.fileId)
+): StorageFile = file.asMimedMediaFile() ?.mimeType ?.let {
+    convertToStorageFile(file.fileId, it)
+} ?: convertToStorageFile(file.fileId)
 
 suspend fun TelegramBot.convertToStorageFile(
     content: MediaContent
