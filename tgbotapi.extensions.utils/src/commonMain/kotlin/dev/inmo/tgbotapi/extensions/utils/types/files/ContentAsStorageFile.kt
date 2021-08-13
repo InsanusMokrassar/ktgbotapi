@@ -11,35 +11,28 @@ import dev.inmo.tgbotapi.utils.*
 
 suspend fun convertToStorageFile(
     downloadStreamAllocator: ByteReadChannelAllocator,
-    pathedFile: PathedFile,
-    mimeType: MimeType
+    pathedFile: PathedFile
 ): StorageFile {
     return downloadStreamAllocator.asStorageFile(
-        pathedFile.fileName,
-        mimeType
+        pathedFile.fileName
     )
 }
 
 suspend fun TelegramBot.convertToStorageFile(
-    pathedFile: PathedFile,
-    mimeType: MimeType
+    pathedFile: PathedFile
 ): StorageFile = convertToStorageFile(
     execute(DownloadFileStream(pathedFile.filePath)),
-    pathedFile,
-    mimeType
+    pathedFile
 )
 
 suspend fun TelegramBot.convertToStorageFile(
-    fileId: FileId,
-    mimeType: MimeType
-): StorageFile = convertToStorageFile(execute(GetFile(fileId)), mimeType)
+    fileId: FileId
+): StorageFile = convertToStorageFile(execute(GetFile(fileId)))
 
 suspend fun TelegramBot.convertToStorageFile(
-    file: TelegramMediaFile,
-    mimeType: MimeType
-): StorageFile = convertToStorageFile(file.fileId, mimeType)
+    file: TelegramMediaFile
+): StorageFile = convertToStorageFile(file.fileId)
 
 suspend fun TelegramBot.convertToStorageFile(
-    content: MediaContent,
-    mimeType: MimeType
-): StorageFile = convertToStorageFile(content.media, mimeType)
+    content: MediaContent
+): StorageFile = convertToStorageFile(content.media)
