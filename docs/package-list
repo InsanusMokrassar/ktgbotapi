@@ -87,6 +87,8 @@ $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base//defaultUpdateTimeoutForZeroDela
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/AbstractRequestCallFactory///PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-abstract-request-call-factory/index.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/AbstractRequestCallFactory/AbstractRequestCallFactory/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-abstract-request-call-factory/-abstract-request-call-factory.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/AbstractRequestCallFactory/makeCall/#io.ktor.client.HttpClient#dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper#dev.inmo.tgbotapi.requests.abstracts.Request[TypeParam(bounds=[kotlin.Any])]#kotlinx.serialization.json.Json/PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-abstract-request-call-factory/make-call.html
+$dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/DownloadFileChannelRequestCallFactory///PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-download-file-channel-request-call-factory/index.html
+$dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/DownloadFileChannelRequestCallFactory/makeCall/#io.ktor.client.HttpClient#dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper#dev.inmo.tgbotapi.requests.abstracts.Request[TypeParam(bounds=[kotlin.Any])]#kotlinx.serialization.json.Json/PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-download-file-channel-request-call-factory/make-call.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/DownloadFileRequestCallFactory///PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-download-file-request-call-factory/index.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/DownloadFileRequestCallFactory/makeCall/#io.ktor.client.HttpClient#dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper#dev.inmo.tgbotapi.requests.abstracts.Request[TypeParam(bounds=[kotlin.Any])]#kotlinx.serialization.json.Json/PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-download-file-request-call-factory/make-call.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/MultipartRequestCallFactory///PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-multipart-request-call-factory/index.html
@@ -94,6 +96,7 @@ $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/MultipartRequestCallFactory/Mult
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/SimpleRequestCallFactory///PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-simple-request-call-factory/index.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor.base/SimpleRequestCallFactory/SimpleRequestCallFactory/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor.base/-simple-request-call-factory/-simple-request-call-factory.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor////PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor/index.html
+$dokka.location:dev.inmo.tgbotapi.bot.Ktor//createTelegramBotDefaultKtorCallRequestsFactories/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor/create-telegram-bot-default-ktor-call-requests-factories.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor//telegramBot/#dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper#kotlin.Function1[dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor/telegram-bot.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor//telegramBot/#kotlin.String#kotlin.String#kotlin.Function1[dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor/telegram-bot.html
 $dokka.location:dev.inmo.tgbotapi.bot.Ktor/KtorCallFactory///PointingToDeclaration/docs/dev.inmo.tgbotapi.bot.Ktor/-ktor-call-factory/index.html
@@ -313,6 +316,27 @@ $dokka.location:dev.inmo.tgbotapi.extensions.api.edit.text//editMessageText/dev.
 $dokka.location:dev.inmo.tgbotapi.extensions.api.edit.text//editMessageText/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.abstracts.ContentMessage[dev.inmo.tgbotapi.types.message.content.TextContent]#kotlin.collections.List[dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource]#kotlin.Boolean?#dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup?/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.edit.text/edit-message-text.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.edit.text//editMessageText/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.String#kotlin.String#dev.inmo.tgbotapi.types.ParseMode.ParseMode?#kotlin.Boolean?#dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup?/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.edit.text/edit-message-text.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.edit.text//editMessageText/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.String#kotlin.collections.List[dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource]#kotlin.Boolean?#dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup?/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.edit.text/edit-message-text.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files////PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/index.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.requests.abstracts.FileId#java.io.File/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.requests.abstracts.FileId/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.PathedFile#java.io.File/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.PathedFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile#java.io.File/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent#java.io.File/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.String#java.io.File/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStream/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.requests.abstracts.FileId/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStream/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.PathedFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStream/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStream/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStream/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStreamAllocator/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.requests.abstracts.FileId/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream-allocator.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStreamAllocator/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.PathedFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream-allocator.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStreamAllocator/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream-allocator.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStreamAllocator/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream-allocator.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.files//downloadFileStreamAllocator/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.files/download-file-stream-allocator.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.games////PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.games/index.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.games//getGameScore/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.ChatId#dev.inmo.tgbotapi.types.ChatId#kotlin.Long/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.games/get-game-score.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.games//getGameScore/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.ChatId#dev.inmo.tgbotapi.types.chat.abstracts.Chat#kotlin.Long/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.games/get-game-score.html
@@ -333,6 +357,7 @@ $dokka.location:dev.inmo.tgbotapi.extensions.api.games//setGameScore/dev.inmo.tg
 $dokka.location:dev.inmo.tgbotapi.extensions.api.get////PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.get/index.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.get//getFileAdditionalInfo/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.requests.abstracts.FileId/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.get/get-file-additional-info.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.get//getFileAdditionalInfo/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.get/get-file-additional-info.html
+$dokka.location:dev.inmo.tgbotapi.extensions.api.get//getFileAdditionalInfo/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.get/get-file-additional-info.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.get//getStickerSet/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.Sticker/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.get/get-sticker-set.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.get//getStickerSet/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.get/get-sticker-set.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api.get//getUserProfilePhotos/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.ChatId#kotlin.Int?#kotlin.Int?/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api.get/get-user-profile-photos.html
@@ -624,11 +649,6 @@ $dokka.location:dev.inmo.tgbotapi.extensions.api//delete/dev.inmo.tgbotapi.types
 $dokka.location:dev.inmo.tgbotapi.extensions.api//deleteMessage/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.ChatIdentifier#kotlin.Long/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/delete-message.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api//deleteMessage/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.chat.abstracts.Chat#kotlin.Long/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/delete-message.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api//deleteMessage/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.abstracts.Message/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/delete-message.html
-$dokka.location:dev.inmo.tgbotapi.extensions.api//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.requests.abstracts.FileId/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/download-file.html
-$dokka.location:dev.inmo.tgbotapi.extensions.api//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.PathedFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/download-file.html
-$dokka.location:dev.inmo.tgbotapi.extensions.api//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/download-file.html
-$dokka.location:dev.inmo.tgbotapi.extensions.api//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/download-file.html
-$dokka.location:dev.inmo.tgbotapi.extensions.api//downloadFile/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/download-file.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api//forwardMessage/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.ChatIdentifier#dev.inmo.tgbotapi.types.ChatIdentifier#kotlin.Long#kotlin.Boolean/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/forward-message.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api//forwardMessage/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.ChatIdentifier#dev.inmo.tgbotapi.types.chat.abstracts.Chat#kotlin.Long#kotlin.Boolean/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/forward-message.html
 $dokka.location:dev.inmo.tgbotapi.extensions.api//forwardMessage/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.ChatIdentifier#dev.inmo.tgbotapi.types.message.abstracts.Message#kotlin.Boolean/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.api/forward-message.html
@@ -1185,6 +1205,12 @@ $dokka.location:dev.inmo.tgbotapi.extensions.utils.shortcuts//voiceMessages/kotl
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons////PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/index.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons//InlineKeyboardMarkup/#kotlin.Array[dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton]/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/-inline-keyboard-markup.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons//ReplyKeyboardMarkup/#kotlin.Array[dev.inmo.tgbotapi.types.buttons.KeyboardButton]#kotlin.Boolean?#kotlin.Boolean?#kotlin.String?#kotlin.Boolean?/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/-reply-keyboard-markup.html
+$dokka.location:dev.inmo.tgbotapi.extensions.utils.types.files////PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.files/index.html
+$dokka.location:dev.inmo.tgbotapi.extensions.utils.types.files//convertToStorageFile/#dev.inmo.tgbotapi.utils.ByteReadChannelAllocator#dev.inmo.tgbotapi.types.files.PathedFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.files/convert-to-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.utils.types.files//convertToStorageFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.requests.abstracts.FileId/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.files/convert-to-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.utils.types.files//convertToStorageFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.PathedFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.files/convert-to-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.utils.types.files//convertToStorageFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.files/convert-to-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.extensions.utils.types.files//convertToStorageFile/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.files/convert-to-storage-file.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.updates.retrieving////PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/index.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.updates.retrieving//createAccumulatedUpdatesRetrieverFlow/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.Boolean#kotlin.Boolean#kotlin.coroutines.SuspendFunction1[kotlin.Throwable,kotlin.Unit]?#kotlin.collections.List[kotlin.String]?/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/create-accumulated-updates-retriever-flow.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.updates.retrieving//includeWebhookHandlingInRoute/io.ktor.routing.Route#kotlinx.coroutines.CoroutineScope#kotlin.coroutines.SuspendFunction1[kotlin.Throwable,kotlin.Unit]?#kotlin.Long#kotlin.coroutines.SuspendFunction1[dev.inmo.tgbotapi.types.update.abstracts.Update,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/include-webhook-handling-in-route.html
@@ -2272,6 +2298,9 @@ $dokka.location:dev.inmo.tgbotapi.extensions.utils/SlotMachineResult/rawValue/#/
 $dokka.location:dev.inmo.tgbotapi.extensions.utils/SlotMachineResult/right/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils/-slot-machine-result/right.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils/SlotMachineResult/rightReel/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils/-slot-machine-result/right-reel.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts////PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/index.html
+$dokka.location:dev.inmo.tgbotapi.requests.abstracts//asMultipartFile/dev.inmo.tgbotapi.utils.ByteReadChannelAllocator#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/as-multipart-file.html
+$dokka.location:dev.inmo.tgbotapi.requests.abstracts//asMultipartFile/dev.inmo.tgbotapi.utils.StorageFile#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/as-multipart-file.html
+$dokka.location:dev.inmo.tgbotapi.requests.abstracts//asMultipartFile/io.ktor.utils.io.ByteReadChannel#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/as-multipart-file.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts//toInputFile/java.io.File#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/to-input-file.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts//toInputFile/kotlin.String#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/to-input-file.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/FileId///PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html
@@ -2284,11 +2313,10 @@ $dokka.location:dev.inmo.tgbotapi.requests.abstracts/InputFileSerializer/descrip
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/InputFileSerializer/deserialize/#kotlinx.serialization.encoding.Decoder/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-input-file-serializer/deserialize.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/InputFileSerializer/serialize/#kotlinx.serialization.encoding.Encoder#dev.inmo.tgbotapi.requests.abstracts.InputFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-input-file-serializer/serialize.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartFile///PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-file/index.html
-$dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartFile/MultipartFile/#dev.inmo.tgbotapi.utils.StorageFile#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-file/-multipart-file.html
+$dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartFile/MultipartFile/#dev.inmo.tgbotapi.utils.StorageFile#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-file/-multipart-file.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartFile/file/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-file/file.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartFile/fileId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-file/file-id.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartFile/filename/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-file/filename.html
-$dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartFile/mimeType/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-file/mime-type.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartRequest///PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-request/index.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartRequest/mediaMap/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-request/media-map.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts/MultipartRequest/paramsJson/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/-multipart-request/params-json.html
@@ -3307,6 +3335,11 @@ $dokka.location:dev.inmo.tgbotapi.requests/DownloadFile/DownloadFile/#kotlin.Str
 $dokka.location:dev.inmo.tgbotapi.requests/DownloadFile/filePath/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-download-file/file-path.html
 $dokka.location:dev.inmo.tgbotapi.requests/DownloadFile/method/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-download-file/method.html
 $dokka.location:dev.inmo.tgbotapi.requests/DownloadFile/resultDeserializer/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-download-file/result-deserializer.html
+$dokka.location:dev.inmo.tgbotapi.requests/DownloadFileStream///PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-download-file-stream/index.html
+$dokka.location:dev.inmo.tgbotapi.requests/DownloadFileStream/DownloadFileStream/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-download-file-stream/-download-file-stream.html
+$dokka.location:dev.inmo.tgbotapi.requests/DownloadFileStream/filePath/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-download-file-stream/file-path.html
+$dokka.location:dev.inmo.tgbotapi.requests/DownloadFileStream/method/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-download-file-stream/method.html
+$dokka.location:dev.inmo.tgbotapi.requests/DownloadFileStream/resultDeserializer/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-download-file-stream/result-deserializer.html
 $dokka.location:dev.inmo.tgbotapi.requests/ForwardMessage///PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-forward-message/index.html
 $dokka.location:dev.inmo.tgbotapi.requests/ForwardMessage/ForwardMessage/#dev.inmo.tgbotapi.types.ChatIdentifier#dev.inmo.tgbotapi.types.ChatIdentifier#kotlin.Long#kotlin.Boolean/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-forward-message/-forward-message.html
 $dokka.location:dev.inmo.tgbotapi.requests/ForwardMessage/chatId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests/-forward-message/chat-id.html
@@ -4590,13 +4623,10 @@ $dokka.location:dev.inmo.tgbotapi.types.files.abstracts/TitledMediaFile///Pointi
 $dokka.location:dev.inmo.tgbotapi.types.files.abstracts/TitledMediaFile/title/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files.abstracts/-titled-media-file/title.html
 $dokka.location:dev.inmo.tgbotapi.types.files////PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/index.html
 $dokka.location:dev.inmo.tgbotapi.types.files//asAudioFile/dev.inmo.tgbotapi.types.files.VoiceFile#kotlin.String?#kotlin.String?#kotlin.String?/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/as-audio-file.html
-$dokka.location:dev.inmo.tgbotapi.types.files//asBytes/dev.inmo.tgbotapi.types.files.PathedFile#dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/as-bytes.html
 $dokka.location:dev.inmo.tgbotapi.types.files//asDocumentFile/dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/as-document-file.html
-$dokka.location:dev.inmo.tgbotapi.types.files//asFile/dev.inmo.tgbotapi.types.files.PathedFile#dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper#java.io.File#kotlin.Int/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/as-file.html
 $dokka.location:dev.inmo.tgbotapi.types.files//asStream/dev.inmo.tgbotapi.types.files.PathedFile#dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/as-stream.html
 $dokka.location:dev.inmo.tgbotapi.types.files//asVoiceFile/dev.inmo.tgbotapi.types.files.AudioFile#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/as-voice-file.html
 $dokka.location:dev.inmo.tgbotapi.types.files//biggest/kotlin.collections.List[dev.inmo.tgbotapi.types.files.PhotoSize]#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/biggest.html
-$dokka.location:dev.inmo.tgbotapi.types.files//filename/dev.inmo.tgbotapi.types.files.PathedFile#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/filename.html
 $dokka.location:dev.inmo.tgbotapi.types.files//fullUrl/dev.inmo.tgbotapi.types.files.PathedFile#dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/full-url.html
 $dokka.location:dev.inmo.tgbotapi.types.files//resolveFileURL/dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper#dev.inmo.tgbotapi.types.files.PathedFile/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/resolve-file-u-r-l.html
 $dokka.location:dev.inmo.tgbotapi.types.files//toInputMediaVideo/dev.inmo.tgbotapi.types.files.VideoFile#kotlin.String?#dev.inmo.tgbotapi.types.ParseMode.ParseMode?/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/to-input-media-video.html
@@ -4639,6 +4669,7 @@ $dokka.location:dev.inmo.tgbotapi.types.files/File/fileUniqueId/#/PointingToDecl
 $dokka.location:dev.inmo.tgbotapi.types.files/PathedFile///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/-pathed-file/index.html
 $dokka.location:dev.inmo.tgbotapi.types.files/PathedFile/PathedFile/#dev.inmo.tgbotapi.requests.abstracts.FileId#kotlin.String#kotlin.String#kotlin.Long?/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/-pathed-file/-pathed-file.html
 $dokka.location:dev.inmo.tgbotapi.types.files/PathedFile/fileId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/-pathed-file/file-id.html
+$dokka.location:dev.inmo.tgbotapi.types.files/PathedFile/fileName/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/-pathed-file/file-name.html
 $dokka.location:dev.inmo.tgbotapi.types.files/PathedFile/filePath/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/-pathed-file/file-path.html
 $dokka.location:dev.inmo.tgbotapi.types.files/PathedFile/fileSize/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/-pathed-file/file-size.html
 $dokka.location:dev.inmo.tgbotapi.types.files/PathedFile/fileUniqueId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.files/-pathed-file/file-unique-id.html
@@ -6272,9 +6303,13 @@ $dokka.location:dev.inmo.tgbotapi.utils.passport/Decryptor///PointingToDeclarati
 $dokka.location:dev.inmo.tgbotapi.utils.passport/Decryptor/decrypt/#kotlin.ByteArray/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils.passport/-decryptor/decrypt.html
 $dokka.location:dev.inmo.tgbotapi.utils////PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/index.html
 $dokka.location:dev.inmo.tgbotapi.utils//StorageFile/#java.io.File/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file.html
-$dokka.location:dev.inmo.tgbotapi.utils//StorageFile/#kotlin.String#kotlin.ByteArray#dev.inmo.tgbotapi.utils.MimeType/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.utils//StorageFile/#kotlin.String#io.ktor.utils.io.ByteReadChannel/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.utils//StorageFile/#kotlin.String#kotlin.ByteArray/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.utils//asInput/io.ktor.utils.io.ByteReadChannel#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/as-input.html
 $dokka.location:dev.inmo.tgbotapi.utils//asMimeType/kotlin.String#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/as-mime-type.html
-$dokka.location:dev.inmo.tgbotapi.utils//asStorageFile/kotlin.ByteArray#kotlin.String#dev.inmo.tgbotapi.utils.MimeType/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/as-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.utils//asStorageFile/dev.inmo.tgbotapi.utils.ByteReadChannelAllocator#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/as-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.utils//asStorageFile/io.ktor.utils.io.ByteReadChannel#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/as-storage-file.html
+$dokka.location:dev.inmo.tgbotapi.utils//asStorageFile/kotlin.ByteArray#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/as-storage-file.html
 $dokka.location:dev.inmo.tgbotapi.utils//buildMimeType/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/build-mime-type.html
 $dokka.location:dev.inmo.tgbotapi.utils//fileExtension/kotlin.String#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/file-extension.html
 $dokka.location:dev.inmo.tgbotapi.utils//filenameFromUrl/kotlin.String#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/filename-from-url.html
@@ -6294,12 +6329,22 @@ $dokka.location:dev.inmo.tgbotapi.utils//toJson/TypeParam(bounds=[kotlin.Any])#k
 $dokka.location:dev.inmo.tgbotapi.utils//toJsonWithoutNulls/TypeParam(bounds=[kotlin.Any])#kotlinx.serialization.SerializationStrategy[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/to-json-without-nulls.html
 $dokka.location:dev.inmo.tgbotapi.utils//withoutNulls/kotlinx.serialization.json.JsonArray#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/without-nulls.html
 $dokka.location:dev.inmo.tgbotapi.utils//withoutNulls/kotlinx.serialization.json.JsonObject#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/without-nulls.html
+$dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Application///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-application/index.html
+$dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Application/Pdf/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-application/-pdf.html
+$dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Application/Zip/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-application/-zip.html
 $dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Image///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-image/index.html
 $dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Image/Gif/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-image/-gif.html
 $dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Image/Jpg/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-image/-jpg.html
+$dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Text///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-text/index.html
+$dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Text/Html/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-text/-html.html
 $dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Video///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-video/index.html
 $dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes.Video/MP4/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/-video/-m-p4.html
 $dokka.location:dev.inmo.tgbotapi.utils/BuiltinMimeTypes///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-builtin-mime-types/index.html
+$dokka.location:dev.inmo.tgbotapi.utils/ByteReadChannelAllocator///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-byte-read-channel-allocator/index.html
+$dokka.location:dev.inmo.tgbotapi.utils/ByteReadChannelAllocator/invoke/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-byte-read-channel-allocator/invoke.html
+$dokka.location:dev.inmo.tgbotapi.utils/ByteReadChannelAllocatorDeserializationStrategy///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-byte-read-channel-allocator-deserialization-strategy/index.html
+$dokka.location:dev.inmo.tgbotapi.utils/ByteReadChannelAllocatorDeserializationStrategy/descriptor/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-byte-read-channel-allocator-deserialization-strategy/descriptor.html
+$dokka.location:dev.inmo.tgbotapi.utils/ByteReadChannelAllocatorDeserializationStrategy/deserialize/#kotlinx.serialization.encoding.Decoder/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-byte-read-channel-allocator-deserialization-strategy/deserialize.html
 $dokka.location:dev.inmo.tgbotapi.utils/MatrixBuilder///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-matrix-builder/index.html
 $dokka.location:dev.inmo.tgbotapi.utils/MatrixBuilder/MatrixBuilder/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-matrix-builder/-matrix-builder.html
 $dokka.location:dev.inmo.tgbotapi.utils/MatrixBuilder/add/#kotlin.collections.List[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-matrix-builder/add.html
@@ -6329,13 +6374,13 @@ $dokka.location:dev.inmo.tgbotapi.utils/StorageFile/StorageFile/#dev.inmo.tgbota
 $dokka.location:dev.inmo.tgbotapi.utils/StorageFile/input/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file/input.html
 $dokka.location:dev.inmo.tgbotapi.utils/StorageFile/storageFileInfo/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file/storage-file-info.html
 $dokka.location:dev.inmo.tgbotapi.utils/StorageFileInfo///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file-info/index.html
-$dokka.location:dev.inmo.tgbotapi.utils/StorageFileInfo/StorageFileInfo/#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file-info/-storage-file-info.html
-$dokka.location:dev.inmo.tgbotapi.utils/StorageFileInfo/contentType/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file-info/content-type.html
+$dokka.location:dev.inmo.tgbotapi.utils/StorageFileInfo/StorageFileInfo/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file-info/-storage-file-info.html
 $dokka.location:dev.inmo.tgbotapi.utils/StorageFileInfo/fileName/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file-info/file-name.html
 $dokka.location:dev.inmo.tgbotapi.utils/StorageFileInfo/generateCustomName/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file-info/generate-custom-name.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/index.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/TelegramAPIUrlsKeeper/#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/-telegram-a-p-i-urls-keeper.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/commonAPIUrl/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/common-a-p-i-url.html
+$dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/createFileLinkUrl/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/create-file-link-url.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/fileBaseUrl/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/file-base-url.html
 dev.inmo.tgbotapi.CommonAbstracts
 dev.inmo.tgbotapi.CommonAbstracts.types
@@ -6360,6 +6405,7 @@ dev.inmo.tgbotapi.extensions.api.edit.ReplyMarkup
 dev.inmo.tgbotapi.extensions.api.edit.caption
 dev.inmo.tgbotapi.extensions.api.edit.media
 dev.inmo.tgbotapi.extensions.api.edit.text
+dev.inmo.tgbotapi.extensions.api.files
 dev.inmo.tgbotapi.extensions.api.games
 dev.inmo.tgbotapi.extensions.api.get
 dev.inmo.tgbotapi.extensions.api.passport
@@ -6383,6 +6429,7 @@ dev.inmo.tgbotapi.extensions.utils.extensions.venue
 dev.inmo.tgbotapi.extensions.utils.formatting
 dev.inmo.tgbotapi.extensions.utils.shortcuts
 dev.inmo.tgbotapi.extensions.utils.types.buttons
+dev.inmo.tgbotapi.extensions.utils.types.files
 dev.inmo.tgbotapi.extensions.utils.updates
 dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 dev.inmo.tgbotapi.requests
