@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.utils
 
 import com.benasher44.uuid.uuid4
+import io.ktor.utils.io.*
 import io.ktor.utils.io.core.ByteReadPacket
 import io.ktor.utils.io.core.Input
 import kotlinx.serialization.Serializable
@@ -13,9 +14,14 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class StorageFileInfo(
-    val contentType: String,
     val fileName: String
 ) {
+    @Deprecated("This constructor is redundant. Use constructor without mime type")
+    constructor(
+        contentType: String,
+        fileName: String
+    ): this(fileName)
+
     /**
      * This methods is required for random generation of name for keeping warranties about unique file name
      */
@@ -39,19 +45,55 @@ data class StorageFile(
         get() = inputSource()
 }
 
+@Deprecated("This constructor is redundant. Use constructor without mime type")
 @Suppress("NOTHING_TO_INLINE")
 inline fun StorageFile(
     fileName: String,
     bytes: ByteArray,
     mimeType: MimeType
 ) = StorageFile(
-    StorageFileInfo(mimeType.raw, fileName)
+    StorageFileInfo(fileName)
 ) {
     ByteReadPacket(bytes)
 }
 
-/**
- *
- */
+@Suppress("NOTHING_TO_INLINE")
+inline fun StorageFile(
+    fileName: String,
+    bytes: ByteArray
+) = StorageFile(
+    StorageFileInfo(fileName)
+) {
+    ByteReadPacket(bytes)
+}
+
+@Suppress("NOTHING_TO_INLINE")
+suspend inline fun StorageFile(
+    fileName: String,
+    byteReadChannel: ByteReadChannel
+) = StorageFile(
+    StorageFileInfo(fileName),
+    byteReadChannel.asInput().let { { it } }
+)
+
 @Suppress("NOTHING_TO_INLINE", "unused")
-inline fun ByteArray.asStorageFile(fileName: String, mimeType: MimeType) = StorageFile(fileName, this, mimeType)
+inline fun ByteArray.asStorageFile(
+    fileName: String
+) = StorageFile(fileName, this)
+
+@Deprecated("This constructor is redundant. Use constructor without mime type")
+@Suppress("NOTHING_TO_INLINE", "unused")
+inline fun ByteArray.asStorageFile(
+    fileName: String,
+    mimeType: MimeType
+) = asStorageFile(fileName)
+
+@Suppress("NOTHING_TO_INLINE", "unused")
+suspend inline fun ByteReadChannel.asStorageFile(
+    fileName: String
+) = StorageFile(fileName, this)
+
+@Suppress("NOTHING_TO_INLINE", "unused")
+suspend inline fun ByteReadChannelAllocator.asStorageFile(
+    fileName: String
+) = this.invoke().asStorageFile(fileName)

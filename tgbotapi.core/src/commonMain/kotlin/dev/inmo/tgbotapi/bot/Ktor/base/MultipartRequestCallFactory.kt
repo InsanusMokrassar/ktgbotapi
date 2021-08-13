@@ -24,7 +24,6 @@ class MultipartRequestCallFactory : AbstractRequestCallFactory() {
                         is MultipartFile -> appendInput(
                             key,
                             Headers.build {
-                                append(HttpHeaders.ContentType, value.mimeType)
                                 append(HttpHeaders.ContentDisposition, "filename=${value.fileId}")
                             },
                             block = value.file::input

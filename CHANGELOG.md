@@ -1,5 +1,25 @@
 # TelegramBotAPI changelog
 
+## 0.35.5
+
+**MIME TYPES FOR REQUESTS HAVE BEEN DEPRECATED DUE TO REDUNDANCY OF MIME TYPES IN FILES SENDING**
+
+* `Core`:
+    * Several new extensions `ByteReadChannel#asStorageFile` and `ByteReadChannelAllocator#asStorageFile`
+    * Several new extensions `ByteArray#asMultipartFile`, `ByteReadChannel#asMultipartFile` and
+    `ByteReadChannelAllocator#asMultipartFile`
+    * New extension `StorageFile#asMultipartFile`
+* `API`:
+    * New extensions `TelegramBot#downloadFile` for writing of incoming bytes to the file
+    * New extensions `TelegramBot#downloadFileStream` and `TelegramBot#downloadFileStreamAllocator` for getting of input
+    streams instead of whole bytes arrays
+    * Old extensions `TelegramBot#downloadFile` has been replaced to the new package. Migration: replace in your project
+    `import dev.inmo.tgbotapi.extensions.api.downloadFile` with `import dev.inmo.tgbotapi.extensions.api.files.downloadFile`
+    * `PathedFile#filename` extension has been deprecated, and new property `PathedFile#fileName` has been included
+      directly in `PathedFile`
+* `Utils`:
+    * Add several functions `convertToStorageFile` and extensions `TelegramBot#convertToStorageFile`
+
 ## 0.35.4 Hotfix
 
 * `Common`:

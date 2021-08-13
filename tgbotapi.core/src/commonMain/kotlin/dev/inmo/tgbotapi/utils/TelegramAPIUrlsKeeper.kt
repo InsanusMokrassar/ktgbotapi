@@ -26,4 +26,6 @@ class TelegramAPIUrlsKeeper(
         commonAPIUrl = "$correctedHost/bot$token"
         fileBaseUrl = "$correctedHost/file/bot$token"
     }
+
+    fun createFileLinkUrl(filePath: String) = "${fileBaseUrl}/$filePath"
 }

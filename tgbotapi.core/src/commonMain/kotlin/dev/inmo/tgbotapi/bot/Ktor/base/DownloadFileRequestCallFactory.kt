@@ -16,9 +16,9 @@ object DownloadFileRequestCallFactory : KtorCallFactory {
         request: Request<T>,
         jsonFormatter: Json
     ): T? = (request as? DownloadFile) ?.let {
-        val fullUrl = "${urlsKeeper.fileBaseUrl}/${it.filePath}"
+        val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
-        return safely {
+        safely {
             @Suppress("UNCHECKED_CAST")
             client.get<ByteArray>(fullUrl) as T // always ByteArray
         }

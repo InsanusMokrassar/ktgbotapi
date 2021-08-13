@@ -5,8 +5,7 @@ import dev.inmo.tgbotapi.types.FileUniqueId
 import dev.inmo.tgbotapi.types.fileUniqueIdField
 import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.utils.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class PathedFile(
@@ -18,8 +17,14 @@ data class PathedFile(
     val filePath: String,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null
-): TelegramMediaFile
+): TelegramMediaFile {
+    @Transient
+    val fileName: FileName by lazy(LazyThreadSafetyMode.PUBLICATION) {
+        filePath.filenameFromUrl
+    }
+}
 
+@Deprecated("Use fileName property instead", ReplaceWith("fileName"))
 val PathedFile.filename: FileName
     get() = filePath.filenameFromUrl
 fun TelegramAPIUrlsKeeper.resolveFileURL(file: PathedFile): String = "$fileBaseUrl/${file.filePath}"

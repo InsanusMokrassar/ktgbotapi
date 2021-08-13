@@ -42,6 +42,14 @@ inline fun telegramBot(
     crossinline builder: KtorRequestsExecutorBuilder.() -> Unit = {}
 ): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, apiUrl), builder)
 
+@RiskFeature
+fun createTelegramBotDefaultKtorCallRequestsFactories() = listOf(
+    SimpleRequestCallFactory(),
+    MultipartRequestCallFactory(),
+    DownloadFileRequestCallFactory,
+    DownloadFileChannelRequestCallFactory
+)
+
 class KtorRequestsExecutor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     client: HttpClient = HttpClient(),
@@ -52,7 +60,7 @@ class KtorRequestsExecutor(
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
-            this + listOf(SimpleRequestCallFactory(), MultipartRequestCallFactory(), DownloadFileRequestCallFactory)
+            this + createTelegramBotDefaultKtorCallRequestsFactories()
         } else {
             this
         }

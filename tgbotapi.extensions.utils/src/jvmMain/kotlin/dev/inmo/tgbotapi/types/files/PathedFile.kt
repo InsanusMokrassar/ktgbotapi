@@ -9,6 +9,7 @@ fun PathedFile.asStream(
         telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper
 ): InputStream = URL(this.fullUrl(telegramAPIUrlsKeeper)).openStream()
 
+@Deprecated("This api will be removed soon. Use `downloadFile` instead")
 fun PathedFile.asFile(
         telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
         dest: File = File.createTempFile(this.fileUniqueId, this.filename),
@@ -22,6 +23,7 @@ fun PathedFile.asFile(
     return dest
 }
 
+@Deprecated("This api will be removed soon. Use `downloadFile` instead")
 fun PathedFile.asBytes(
         telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper
 ): ByteArray = this.asStream(telegramAPIUrlsKeeper)
