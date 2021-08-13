@@ -2,6 +2,8 @@
 
 ## 0.35.5
 
+**MIME TYPES FOR REQUESTS HAVE BEEN DEPRECATED DUE TO REDUNDANCY OF MIME TYPES IN FILES SENDING**
+
 * `Core`:
     * Several new extensions `ByteReadChannel#asStorageFile` and `ByteReadChannelAllocator#asStorageFile`
     * Several new extensions `ByteArray#asMultipartFile`, `ByteReadChannel#asMultipartFile` and
