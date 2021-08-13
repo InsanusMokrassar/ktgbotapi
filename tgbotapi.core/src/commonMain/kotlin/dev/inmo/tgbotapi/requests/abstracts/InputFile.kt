@@ -54,6 +54,8 @@ data class MultipartFile (
     override val fileId: String = file.storageFileInfo.generateCustomName()
 }
 
+@Suppress("NOTHING_TO_INLINE", "unused")
+inline fun StorageFile.asMultipartFile() = MultipartFile(this)
 
 @Suppress("NOTHING_TO_INLINE", "unused")
 inline fun ByteArray.asMultipartFile(
