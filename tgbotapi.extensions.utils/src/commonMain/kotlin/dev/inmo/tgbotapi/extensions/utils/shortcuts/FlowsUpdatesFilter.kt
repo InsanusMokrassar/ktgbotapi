@@ -47,8 +47,8 @@ inline fun <reified T : MediaGroupContent> Flow<SentMediaGroupUpdate>.filterMedi
 
 /**
  * @param scopeToIncludeChannels This parameter is required when you want to include [textMessages] for channels too.
- * In this case will be created new channel which will aggregate messages from [FlowsUpdatesFilter.messageFlow] and
- * [FlowsUpdatesFilter.channelPostFlow]. In case it is null will be used [Flow]s mapping
+ * In this case will be created new channel which will aggregate messages from [FlowsUpdatesFilter.messagesFlow] and
+ * [FlowsUpdatesFilter.channelPostsFlow]. In case it is null will be used [Flow]s mapping
  */
 @Suppress("UNCHECKED_CAST")
 @RiskFeature(lowLevelRiskFeatureMessage)
@@ -58,16 +58,16 @@ inline fun <reified T: MessageContent> FlowsUpdatesFilter.filterContentMessages(
     return (scopeToIncludeChannels ?.let { scope ->
         aggregateFlows(
             scope,
-            messageFlow,
-            channelPostFlow
+            messagesFlow,
+            channelPostsFlow
         )
-    } ?: messageFlow).filterContentMessages()
+    } ?: messagesFlow).filterContentMessages()
 }
 
 /**
  * @param scopeToIncludeChannels This parameter is required when you want to include [SentMediaGroupUpdate] for channels
- * too. In this case will be created new channel which will aggregate messages from [FlowsUpdatesFilter.messageFlow] and
- * [FlowsUpdatesFilter.channelPostFlow]. In case it is null will be used [Flow]s mapping
+ * too. In this case will be created new channel which will aggregate messages from [FlowsUpdatesFilter.messagesFlow] and
+ * [FlowsUpdatesFilter.channelPostsFlow]. In case it is null will be used [Flow]s mapping
  */
 @Suppress("UNCHECKED_CAST")
 @RiskFeature(lowLevelRiskFeatureMessage)
@@ -77,10 +77,10 @@ inline fun <reified T: MediaGroupContent> FlowsUpdatesFilter.filterMediaGroupMes
     return (scopeToIncludeChannels ?.let { scope ->
         aggregateFlows(
             scope,
-            messageMediaGroupFlow,
-            channelPostMediaGroupFlow
+            messageMediaGroupsFlow,
+            channelPostMediaGroupsFlow
         )
-    } ?: messageMediaGroupFlow).filterMediaGroupMessages()
+    } ?: messageMediaGroupsFlow).filterMediaGroupMessages()
 }
 
 fun FlowsUpdatesFilter.sentMessages(

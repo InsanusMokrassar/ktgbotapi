@@ -14,21 +14,21 @@ import kotlinx.coroutines.flow.mapNotNull
 
 @RiskFeature("Use with caution")
 inline fun FlowsUpdatesFilter.events(): Flow<ChatEventMessage<*>> {
-    return channelPostFlow.mapNotNull { it.data as? ChatEventMessage<*> } + messageFlow.mapNotNull { it.data as? ChatEventMessage<*> }
+    return channelPostsFlow.mapNotNull { it.data as? ChatEventMessage<*> } + messagesFlow.mapNotNull { it.data as? ChatEventMessage<*> }
 }
 
 @RiskFeature("Use with caution")
-inline fun FlowsUpdatesFilter.channelEvents(): Flow<ChannelEventMessage<*>> = channelPostFlow.mapNotNull {
+inline fun FlowsUpdatesFilter.channelEvents(): Flow<ChannelEventMessage<*>> = channelPostsFlow.mapNotNull {
     it.data as? ChannelEventMessage<*>
 }
 
 @RiskFeature("Use with caution")
-inline fun FlowsUpdatesFilter.groupEvents(): Flow<GroupEventMessage<*>> = messageFlow.mapNotNull {
+inline fun FlowsUpdatesFilter.groupEvents(): Flow<GroupEventMessage<*>> = messagesFlow.mapNotNull {
     it.data as? GroupEventMessage<*>
 }
 
 @RiskFeature("Use with caution")
-inline fun FlowsUpdatesFilter.supergroupEvents(): Flow<SupergroupEventMessage<*>> = messageFlow.mapNotNull {
+inline fun FlowsUpdatesFilter.supergroupEvents(): Flow<SupergroupEventMessage<*>> = messagesFlow.mapNotNull {
     it.data as? SupergroupEventMessage<*>
 }
 

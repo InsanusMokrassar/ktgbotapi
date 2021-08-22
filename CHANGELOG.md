@@ -6,6 +6,8 @@
     * `Version`:
         * `Klock`: `2.3.1` -> `2.3.3`
         * `MicroUtils`: `0.5.19` -> `0.5.21`
+* `Core`:
+    * All `FlowsUpdatesFilter` flows have been renamed and updated
 * `Utils`:
     * Extensions `allSentMessagesFlow` and `allSentMediaGroupsFlow` have been deprecated
 

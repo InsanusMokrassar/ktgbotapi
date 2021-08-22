@@ -14,24 +14,79 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     val allUpdatesFlow: Flow<Update>
     val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update>
 
+    val messagesFlow: Flow<MessageUpdate>
+    val messageMediaGroupsFlow: Flow<MessageMediaGroupUpdate>
+    val editedMessagesFlow: Flow<EditMessageUpdate>
+    val editedMessageMediaGroupsFlow: Flow<EditMessageMediaGroupUpdate>
+    val channelPostsFlow: Flow<ChannelPostUpdate>
+    val channelPostMediaGroupsFlow: Flow<ChannelPostMediaGroupUpdate>
+    val editedChannelPostsFlow: Flow<EditChannelPostUpdate>
+    val editedChannelPostMediaGroupsFlow: Flow<EditChannelPostMediaGroupUpdate>
+    val chosenInlineResultsFlow: Flow<ChosenInlineResultUpdate>
+    val inlineQueriesFlow: Flow<InlineQueryUpdate>
+    val callbackQueriesFlow: Flow<CallbackQueryUpdate>
+    val shippingQueriesFlow: Flow<ShippingQueryUpdate>
+    val preCheckoutQueriesFlow: Flow<PreCheckoutQueryUpdate>
+    val pollsFlow: Flow<PollUpdate>
+    val pollAnswersFlow: Flow<PollAnswerUpdate>
+    val chatMemberUpdatesFlow: Flow<CommonChatMemberUpdatedUpdate>
+    val myChatMemberUpdatesFlow: Flow<MyChatMemberUpdatedUpdate>
+    val unknownUpdatesFlow: Flow<UnknownUpdate>
+
+    @Deprecated("Renamed", ReplaceWith("messagesFlow"))
     val messageFlow: Flow<MessageUpdate>
+        get() = messagesFlow
+    @Deprecated("Renamed", ReplaceWith("messageMediaGroupsFlow"))
     val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate>
+        get() = messageMediaGroupsFlow
+    @Deprecated("Renamed", ReplaceWith("editedMessagesFlow"))
     val editedMessageFlow: Flow<EditMessageUpdate>
+        get() = editedMessagesFlow
+    @Deprecated("Renamed", ReplaceWith("editedMessageMediaGroupsFlow"))
     val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate>
+        get() = editedMessageMediaGroupsFlow
+    @Deprecated("Renamed", ReplaceWith("channelPostsFlow"))
     val channelPostFlow: Flow<ChannelPostUpdate>
+        get() = channelPostsFlow
+    @Deprecated("Renamed", ReplaceWith("channelPostMediaGroupsFlow"))
     val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate>
+        get() = channelPostMediaGroupsFlow
+    @Deprecated("Renamed", ReplaceWith("editedChannelPostsFlow"))
     val editedChannelPostFlow: Flow<EditChannelPostUpdate>
+        get() = editedChannelPostsFlow
+    @Deprecated("Renamed", ReplaceWith("editedChannelPostMediaGroupsFlow"))
     val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate>
+        get() = editedChannelPostMediaGroupsFlow
+    @Deprecated("Renamed", ReplaceWith("chosenInlineResultsFlow"))
     val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate>
+        get() = chosenInlineResultsFlow
+    @Deprecated("Renamed", ReplaceWith("inlineQueriesFlow"))
     val inlineQueryFlow: Flow<InlineQueryUpdate>
+        get() = inlineQueriesFlow
+    @Deprecated("Renamed", ReplaceWith("callbackQueriesFlow"))
     val callbackQueryFlow: Flow<CallbackQueryUpdate>
+        get() = callbackQueriesFlow
+    @Deprecated("Renamed", ReplaceWith("shippingQueriesFlow"))
     val shippingQueryFlow: Flow<ShippingQueryUpdate>
+        get() = shippingQueriesFlow
+    @Deprecated("Renamed", ReplaceWith("preCheckoutQueriesFlow"))
     val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate>
+        get() = preCheckoutQueriesFlow
+    @Deprecated("Renamed", ReplaceWith("pollsFlow"))
     val pollFlow: Flow<PollUpdate>
+        get() = pollsFlow
+    @Deprecated("Renamed", ReplaceWith("pollAnswersFlow"))
     val pollAnswerFlow: Flow<PollAnswerUpdate>
+        get() = pollAnswersFlow
+    @Deprecated("Renamed", ReplaceWith("chatMemberUpdatesFlow"))
     val chatMemberUpdatedFlow: Flow<CommonChatMemberUpdatedUpdate>
+        get() = chatMemberUpdatesFlow
+    @Deprecated("Renamed", ReplaceWith("myChatMemberUpdatesFlow"))
     val myChatMemberUpdatedFlow: Flow<MyChatMemberUpdatedUpdate>
+        get() = myChatMemberUpdatesFlow
+    @Deprecated("Renamed", ReplaceWith("unknownUpdatesFlow"))
     val unknownUpdateTypeFlow: Flow<UnknownUpdate>
+        get() = unknownUpdatesFlow
 }
 
 /**
@@ -63,22 +118,22 @@ class DefaultFlowsUpdatesFilter(
         updatesSharedFlow.emit(it)
     }
 
-    override val messageFlow: Flow<MessageUpdate> = allUpdatesFlow.filterIsInstance()
-    override val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
-    override val editedMessageFlow: Flow<EditMessageUpdate> = allUpdatesFlow.filterIsInstance()
-    override val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
-    override val channelPostFlow: Flow<ChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
-    override val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
-    override val editedChannelPostFlow: Flow<EditChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
-    override val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
-    override val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate> = allUpdatesFlow.filterIsInstance()
-    override val inlineQueryFlow: Flow<InlineQueryUpdate> = allUpdatesFlow.filterIsInstance()
-    override val callbackQueryFlow: Flow<CallbackQueryUpdate> = allUpdatesFlow.filterIsInstance()
-    override val shippingQueryFlow: Flow<ShippingQueryUpdate> = allUpdatesFlow.filterIsInstance()
-    override val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate> = allUpdatesFlow.filterIsInstance()
-    override val pollFlow: Flow<PollUpdate> = allUpdatesFlow.filterIsInstance()
-    override val pollAnswerFlow: Flow<PollAnswerUpdate> = allUpdatesFlow.filterIsInstance()
-    override val chatMemberUpdatedFlow: Flow<CommonChatMemberUpdatedUpdate> = allUpdatesFlow.filterIsInstance()
-    override val myChatMemberUpdatedFlow: Flow<MyChatMemberUpdatedUpdate> = allUpdatesFlow.filterIsInstance()
-    override val unknownUpdateTypeFlow: Flow<UnknownUpdate> = allUpdatesFlow.filterIsInstance()
+    override val messagesFlow: Flow<MessageUpdate> = allUpdatesFlow.filterIsInstance()
+    override val messageMediaGroupsFlow: Flow<MessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    override val editedMessagesFlow: Flow<EditMessageUpdate> = allUpdatesFlow.filterIsInstance()
+    override val editedMessageMediaGroupsFlow: Flow<EditMessageMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    override val channelPostsFlow: Flow<ChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
+    override val channelPostMediaGroupsFlow: Flow<ChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    override val editedChannelPostsFlow: Flow<EditChannelPostUpdate> = allUpdatesFlow.filterIsInstance()
+    override val editedChannelPostMediaGroupsFlow: Flow<EditChannelPostMediaGroupUpdate> = allUpdatesFlow.filterIsInstance()
+    override val chosenInlineResultsFlow: Flow<ChosenInlineResultUpdate> = allUpdatesFlow.filterIsInstance()
+    override val inlineQueriesFlow: Flow<InlineQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    override val callbackQueriesFlow: Flow<CallbackQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    override val shippingQueriesFlow: Flow<ShippingQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    override val preCheckoutQueriesFlow: Flow<PreCheckoutQueryUpdate> = allUpdatesFlow.filterIsInstance()
+    override val pollsFlow: Flow<PollUpdate> = allUpdatesFlow.filterIsInstance()
+    override val pollAnswersFlow: Flow<PollAnswerUpdate> = allUpdatesFlow.filterIsInstance()
+    override val chatMemberUpdatesFlow: Flow<CommonChatMemberUpdatedUpdate> = allUpdatesFlow.filterIsInstance()
+    override val myChatMemberUpdatesFlow: Flow<MyChatMemberUpdatedUpdate> = allUpdatesFlow.filterIsInstance()
+    override val unknownUpdatesFlow: Flow<UnknownUpdate> = allUpdatesFlow.filterIsInstance()
 }
