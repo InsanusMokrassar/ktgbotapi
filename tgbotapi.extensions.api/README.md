@@ -3,12 +3,12 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api)
 
 - [TelegramBotAPI extensions](#telegrambotapi-extensions)
-    * [What is it?](#what-is-it-)
+    * [What is it?](#what-is-it)
     * [Compatibility](#compatibility)
-    * [How to implement library?](#how-to-implement-library-)
+    * [How to implement library?](#how-to-implement-library)
         + [Maven](#maven)
         + [Gradle](#gradle)
-    * [Example of usage and comparison with `TelegramBotAPI`](#example-of-usage-and-comparison-with--telegrambotapi-)
+    * [Example of usage and comparison with `TelegramBotAPI`](#example-of-usage-and-comparison-with-telegrambotapi)
     * [Updates](#updates)
         + [Alternative way](#alternative-way)
 

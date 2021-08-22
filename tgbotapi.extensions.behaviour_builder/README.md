@@ -3,7 +3,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.behaviour_builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.behaviour_builder)
 
 - [TelegramBotAPI Behaviour Builder Extensions](#telegrambotapi-behaviour-builder-extensions)
-  * [What is it?](#what-is-it-)
+  * [What is it?](#what-is-it)
   * [Triggers](#triggers)
   * [Waiters](#waiters)
 

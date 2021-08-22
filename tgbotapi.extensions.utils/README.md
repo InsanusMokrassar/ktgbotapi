@@ -10,7 +10,7 @@
   * [How to use?](#how-to-use)
     + [Updates](#updates)
       - [Long polling](#long-polling)
-      - [WebHooks (currently JVM-only)](#webhooks--currently-jvm-only)
+      - [WebHooks (currently JVM-only)](#webhooks-currently-jvm-only)
     + [Filters](#filters)
       - [Sent messages](#sent-messages)
         * [Common messages](#common-messages)
