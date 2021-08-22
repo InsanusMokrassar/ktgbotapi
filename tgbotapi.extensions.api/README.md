@@ -1,7 +1,18 @@
 # TelegramBotAPI extensions
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api)
+
+- [TelegramBotAPI extensions](#telegrambotapi-extensions)
+    * [What is it?](#what-is-it-)
+    * [Compatibility](#compatibility)
+    * [How to implement library?](#how-to-implement-library-)
+        + [Maven](#maven)
+        + [Gradle](#gradle)
+    * [Example of usage and comparison with `TelegramBotAPI`](#example-of-usage-and-comparison-with--telegrambotapi-)
+    * [Updates](#updates)
+        + [Alternative way](#alternative-way)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## What is it?
 

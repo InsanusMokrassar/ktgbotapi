@@ -1,5 +1,6 @@
 # TelegramBotAPI Util Extensions
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils)
 
 - [TelegramBotAPI Util Extensions](#telegrambotapi-util-extensions)
   * [What is it?](#what-is-it)
@@ -18,9 +19,6 @@
       - [ScheduledCloseInfo](#scheduledcloseinfo)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/_latestVersion)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils)
 
 ## What is it?
 
