@@ -1,5 +1,16 @@
 # TelegramBotAPI changelog
 
+## 0.35.6
+
+* `Common`:
+    * `Version`:
+        * `Klock`: `2.3.1` -> `2.3.3`
+        * `MicroUtils`: `0.5.19` -> `0.5.21`
+* `Core`:
+    * All `FlowsUpdatesFilter` flows have been renamed and updated
+* `Utils`:
+    * Extensions `allSentMessagesFlow` and `allSentMediaGroupsFlow` have been deprecated
+
 ## 0.35.5
 
 **MIME TYPES FOR REQUESTS HAVE BEEN DEPRECATED DUE TO REDUNDANCY OF MIME TYPES IN FILES SENDING**

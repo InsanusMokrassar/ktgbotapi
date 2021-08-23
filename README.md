@@ -2,6 +2,15 @@
 
 # TelegramBotAPI
 
+- [TelegramBotAPI](#telegrambotapi)
+  * [Examples](#examples)
+    + [Most common example](#most-common-example)
+    + [Handling only last messages](#handling-only-last-messages)
+    + [Build a little bit more complex behaviour](#build-a-little-bit-more-complex-behaviour)
+    + [More examples](#more-examples)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 Hello! This is a set of libraries for working with Telegram Bot API.
 
 | Common info                           | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Build Status](https://github.com/InsanusMokrassar/TelegramBotAPI/workflows/Build/badge.svg)](https://github.com/InsanusMokrassar/TelegramBotAPI/actions) [Small survey](https://forms.gle/2Hex2ynbHWHhi1KY7)|

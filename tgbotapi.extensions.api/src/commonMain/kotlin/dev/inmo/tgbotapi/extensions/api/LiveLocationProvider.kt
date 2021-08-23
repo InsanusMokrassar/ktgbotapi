@@ -21,6 +21,10 @@ import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
 val defaultLivePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
+
+/**
+ * @see startLiveLocation
+ */
 class LiveLocationProvider internal constructor(
     private val requestsExecutor: TelegramBot,
     scope: CoroutineScope,
