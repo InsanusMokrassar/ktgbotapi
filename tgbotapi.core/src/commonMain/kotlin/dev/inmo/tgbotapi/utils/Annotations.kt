@@ -12,9 +12,7 @@ package dev.inmo.tgbotapi.utils
     AnnotationTarget.PROPERTY_GETTER,
     AnnotationTarget.PROPERTY_SETTER,
     AnnotationTarget.FUNCTION,
-    AnnotationTarget.TYPE,
-    AnnotationTarget.TYPEALIAS,
-    AnnotationTarget.TYPE_PARAMETER
+    AnnotationTarget.TYPEALIAS
 )
 annotation class PreviewFeature
 
@@ -31,8 +29,6 @@ const val lowLevelRiskFeatureMessage = "This method is low-level and not recomme
     AnnotationTarget.PROPERTY_GETTER,
     AnnotationTarget.PROPERTY_SETTER,
     AnnotationTarget.FUNCTION,
-    AnnotationTarget.TYPE,
-    AnnotationTarget.TYPEALIAS,
-    AnnotationTarget.TYPE_PARAMETER
+    AnnotationTarget.TYPEALIAS
 )
 annotation class RiskFeature(val message: String = lowLevelRiskFeatureMessage)
