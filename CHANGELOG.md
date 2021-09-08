@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.35.8
+
 ## 0.35.7
 
 * `Common`:
