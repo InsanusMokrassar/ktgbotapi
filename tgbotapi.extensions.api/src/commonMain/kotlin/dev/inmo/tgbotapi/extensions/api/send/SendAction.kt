@@ -19,6 +19,9 @@ suspend fun TelegramBot.sendBotAction(
 ) = sendBotAction(chat.id, action)
 
 
+/**
+ * Displays nice "typing" text in chat header
+ */
 suspend fun TelegramBot.sendActionTyping(
     chatId: ChatIdentifier
 ) = sendBotAction(chatId, TypingAction)
@@ -60,6 +63,9 @@ suspend fun TelegramBot.sendActionUploadVideoNote(
 ) = sendBotAction(chatId, UploadVideoNoteAction)
 
 
+/**
+ * Displays some nice "typing" text in chat header
+ */
 suspend fun TelegramBot.sendActionTyping(
     chat: Chat
 ) = sendBotAction(chat, TypingAction)
