@@ -10,6 +10,8 @@
     * `MultipartRequestCallFactory` now will use file name as multipart `filename` parameter instead of generated
     filename
     * New extension `MPPFile#asMultipartFile`
+* `API`
+    * Fixes in `TelegramBot#withAction`
 * `Behaviour Builder`:
     * New extensions `BehaviourContext#commandWithArgs` and `BehaviourContext#onCommandWithArgs`
 

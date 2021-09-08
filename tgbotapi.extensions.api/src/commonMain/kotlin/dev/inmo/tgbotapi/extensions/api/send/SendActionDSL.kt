@@ -1,13 +1,13 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
-import dev.inmo.micro_utils.coroutines.safely
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendAction
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import kotlinx.coroutines.*
+import kotlin.coroutines.coroutineContext
 
 private const val refreshTime: MilliSeconds = (botActionActualityTime - 1) * 1000L
 typealias TelegramBotActionCallback<T> = suspend TelegramBot.() -> T
@@ -16,21 +16,17 @@ suspend fun <T> TelegramBot.withAction(
     actionRequest: SendAction,
     block: TelegramBotActionCallback<T>
 ): T {
-    val botActionJob = supervisorScope {
-        launch {
-            while (isActive) {
-                delay(refreshTime)
-                safelyWithoutExceptions {
-                    execute(actionRequest)
-                }
+    val botActionJob = CoroutineScope(coroutineContext).launch {
+        while (isActive) {
+            delay(refreshTime)
+            safelyWithoutExceptions {
+                execute(actionRequest)
             }
         }
     }
-    return try {
-        safely { block() }
-    } finally {
-        botActionJob.cancel()
-    }
+    val result = safelyWithResult { block() }
+    botActionJob.cancel()
+    return result.getOrThrow()
 }
 
 suspend fun <T> TelegramBot.withAction(
