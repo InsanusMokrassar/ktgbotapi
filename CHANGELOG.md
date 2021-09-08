@@ -6,6 +6,9 @@
     * `Version`:
         * `MicroUtils`: `0.5.24` -> `0.5.25`
         * `UUID`: `0.3.0` -> `0.3.1`
+* `Core`:
+    * `MultipartRequestCallFactory` now will use file name as multipart `filename` parameter instead of generated
+    filename
 
 ## 0.35.7
 
