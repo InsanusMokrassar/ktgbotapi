@@ -4,6 +4,7 @@ import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import kotlinx.coroutines.*
+import kotlin.coroutines.coroutineContext
 
 fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>,
@@ -16,9 +17,7 @@ fun <T: Any> RequestsExecutor.executeAsync(
 
 suspend fun <T: Any> RequestsExecutor.executeAsync(
     request: Request<T>
-): Deferred<T> = coroutineScope {
-    executeAsync(request, this)
-}
+): Deferred<T> = executeAsync(request, CoroutineScope(coroutineContext))
 
 suspend fun <T: Any> RequestsExecutor.executeUnsafe(
     request: Request<T>,

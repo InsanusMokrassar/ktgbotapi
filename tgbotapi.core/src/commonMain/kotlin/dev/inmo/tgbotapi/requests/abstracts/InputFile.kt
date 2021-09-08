@@ -1,13 +1,26 @@
 package dev.inmo.tgbotapi.requests.abstracts
 
+import dev.inmo.micro_utils.common.MPPFile
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.utils.io.ByteReadChannel
+import io.ktor.utils.io.core.Input
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
+/**
+ * Common type for all files in Telegram Bot API which can be sent via requests like [dev.inmo.tgbotapi.requests.send.media.SendDocument].
+ * You may use methods like [MPPFile.asMultipartFile] when you want to send files from your file system, but you should
+ * remember about [restrictions][https://core.telegram.org/bots/api#sending-files] in Telegram for bots. In case you
+ * wish to send file by its url, use [FileId] and pass your url as [FileId.fileId]
+ *
+ * @see MPPFile.asMultipartFile
+ * @see ByteArray.asMultipartFile
+ * @see ByteReadChannel.asMultipartFile
+ * @see ByteReadChannelAllocator.asMultipartFile
+ */
 @Serializable(InputFileSerializer::class)
 sealed class InputFile {
     abstract val fileId: String
@@ -75,3 +88,5 @@ suspend inline fun ByteReadChannel.asMultipartFile(
 suspend inline fun ByteReadChannelAllocator.asMultipartFile(
     fileName: String
 ) = this.invoke().asMultipartFile(fileName)
+
+expect suspend fun MPPFile.asMultipartFile(): MultipartFile

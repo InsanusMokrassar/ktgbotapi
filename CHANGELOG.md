@@ -1,5 +1,20 @@
 # TelegramBotAPI changelog
 
+## 0.35.8
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.5.24` -> `0.5.25`
+        * `UUID`: `0.3.0` -> `0.3.1`
+* `Core`:
+    * `MultipartRequestCallFactory` now will use file name as multipart `filename` parameter instead of generated
+    filename
+    * New extension `MPPFile#asMultipartFile`
+* `API`
+    * Fixes in `TelegramBot#withAction`
+* `Behaviour Builder`:
+    * New extensions `BehaviourContext#commandWithArgs` and `BehaviourContext#onCommandWithArgs`
+
 ## 0.35.7
 
 * `Common`:
