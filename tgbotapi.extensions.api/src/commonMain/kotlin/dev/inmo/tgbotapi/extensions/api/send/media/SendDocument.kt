@@ -14,6 +14,16 @@ import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 
+/**
+ * Sends a document message to a specified chat.
+ * 
+ * @param document - A document to send
+ * @param thumb - A thumbnail to display in the chat
+ * @param text - Text as a caption to the file
+ * @param allowSendingWithoutReply - idk
+ * @param replyMarkup - Visual buttons to display in the chat. Can be in the place of a keyboard or directly under the message
+ * @param disableContentTypeDetection - idk
+ */
 suspend fun TelegramBot.sendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
@@ -40,6 +50,16 @@ suspend fun TelegramBot.sendDocument(
     )
 )
 
+/**
+ * Sends a document message to a specified chat.
+ * 
+ * @param document - A document to send
+ * @param thumb - A thumbnail to display in the chat
+ * @param text - Text as a caption to the file
+ * @param allowSendingWithoutReply - idk
+ * @param replyMarkup - Visual buttons to display in the chat. Can be in the place of a keyboard or directly under the message
+ * @param disableContentTypeDetection - idk
+ */
 suspend fun TelegramBot.sendDocument(
     chat: Chat,
     document: InputFile,
@@ -53,6 +73,16 @@ suspend fun TelegramBot.sendDocument(
     disableContentTypeDetection: Boolean? = null
 ) = sendDocument(chat.id, document, thumb, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
+/**
+ * Sends a document message to a specified chat.
+ * 
+ * @param document - A document to send
+ * @param thumb - A thumbnail to display in the chat
+ * @param text - Text as a caption to the file
+ * @param allowSendingWithoutReply - idk
+ * @param replyMarkup - Visual buttons to display in the chat. Can be in the place of a keyboard or directly under the message
+ * @param disableContentTypeDetection - idk
+ */
 suspend fun TelegramBot.sendDocument(
     chatId: ChatIdentifier,
     document: DocumentFile,
@@ -67,6 +97,16 @@ suspend fun TelegramBot.sendDocument(
     chatId, document.fileId, document.thumb ?.fileId, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection
 )
 
+/**
+ * Sends a document message to a specified chat.
+ * 
+ * @param document - A document to send
+ * @param thumb - A thumbnail to display in the chat
+ * @param text - Text as a caption to the file
+ * @param allowSendingWithoutReply - idk
+ * @param replyMarkup - Visual buttons to display in the chat. Can be in the place of a keyboard or directly under the message
+ * @param disableContentTypeDetection - idk
+ */
 suspend fun TelegramBot.sendDocument(
     chat: Chat,
     document: DocumentFile,
@@ -102,6 +142,7 @@ suspend inline fun TelegramBot.sendDocument(
         disableContentTypeDetection
     )
 )
+
 
 suspend inline fun TelegramBot.sendDocument(
     chat: Chat,
