@@ -10,6 +10,8 @@
     * `MultipartRequestCallFactory` now will use file name as multipart `filename` parameter instead of generated
     filename
     * New extension `MPPFile#asMultipartFile`
+* `Behaviour Builder`:
+    * New extensions `BehaviourContext#commandWithArgs` and `BehaviourContext#onCommandWithArgs`
 
 ## 0.35.7
 
