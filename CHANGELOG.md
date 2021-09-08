@@ -7,8 +7,7 @@
         * `MicroUtils`: `0.5.24` -> `0.5.25`
         * `UUID`: `0.3.0` -> `0.3.1`
 * `Core`:
-    * `MultipartRequestCallFactory` now will use file name as multipart `filename` parameter instead of generated
-    filename
+    * `MultipartRequestCallFactory` now will use file name as multipart `filename` parameter instead of generated file id
     * New extension `MPPFile#asMultipartFile`
 * `API`
     * Fixes in `TelegramBot#withAction`
