@@ -9,6 +9,7 @@
 * `Core`:
     * `MultipartRequestCallFactory` now will use file name as multipart `filename` parameter instead of generated
     filename
+    * New extension `MPPFile#asMultipartFile`
 
 ## 0.35.7
 

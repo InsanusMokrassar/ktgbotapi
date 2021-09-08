@@ -1,7 +1,9 @@
 package dev.inmo.tgbotapi.requests.abstracts
 
+import dev.inmo.micro_utils.common.MPPFile
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.utils.io.ByteReadChannel
+import io.ktor.utils.io.core.Input
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.*
@@ -75,3 +77,5 @@ suspend inline fun ByteReadChannel.asMultipartFile(
 suspend inline fun ByteReadChannelAllocator.asMultipartFile(
     fileName: String
 ) = this.invoke().asMultipartFile(fileName)
+
+expect suspend fun MPPFile.asMultipartFile(): MultipartFile
