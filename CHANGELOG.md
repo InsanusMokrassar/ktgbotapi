@@ -2,6 +2,9 @@
 
 ## 0.35.9
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.5.25` -> `0.5.26`
 * `Core`:
     * New `BotAction` implementation - `CustomBotAction`
 
