@@ -2,6 +2,9 @@
 
 ## 0.35.9
 
+* `Core`:
+    * New `BotAction` implementation - `CustomBotAction`
+
 ## 0.35.8
 
 * `Common`:

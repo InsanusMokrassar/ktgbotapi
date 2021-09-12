@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.actions
 
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.serializer
@@ -34,7 +35,7 @@ object BotActionSerializer: KSerializer<BotAction> {
             FindLocationAction.actionName -> FindLocationAction
             RecordVideoNoteAction.actionName -> RecordVideoNoteAction
             UploadVideoNoteAction.actionName -> UploadVideoNoteAction
-            else -> throw IllegalStateException("Unknown action type: $actionName")
+            else -> CustomBotAction(actionName)
         }
     }
 }
@@ -148,3 +149,7 @@ object UploadVideoNoteAction : BotAction {
 inline val uploadVideoNote
     get() = UploadVideoNoteAction
 inline fun BotAction.asUploadVideoNote() = this as? UploadVideoNoteAction
+
+@Serializable(BotActionSerializer::class)
+@RiskFeature("Usage of this action may lead to errors")
+class CustomBotAction(override val actionName: String) : BotAction
