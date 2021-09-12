@@ -7,6 +7,7 @@
         * `MicroUtils`: `0.5.25` -> `0.5.26`
 * `Core`:
     * New `BotAction` implementation - `CustomBotAction`
+    * `LocationContent` has been divided to two different types: `LiveLocationContent` and `StaticLocationContent`
 
 ## 0.35.8
 

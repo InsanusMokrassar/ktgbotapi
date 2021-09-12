@@ -27,6 +27,7 @@ class BotActionTests {
                 FindLocationAction -> example.botAction.actionName
                 RecordVideoNoteAction -> example.botAction.actionName
                 UploadVideoNoteAction -> example.botAction.actionName
+                is CustomBotAction -> example.botAction.actionName
             }
         )
     }

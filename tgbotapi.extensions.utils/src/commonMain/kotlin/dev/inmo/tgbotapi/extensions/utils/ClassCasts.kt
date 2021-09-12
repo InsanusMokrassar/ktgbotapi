@@ -2507,6 +2507,24 @@ inline fun ResendableContent.asLocationContent(): LocationContent? = this as? Lo
 inline fun ResendableContent.requireLocationContent(): LocationContent = this as LocationContent
 
 @PreviewFeature
+inline fun <T> ResendableContent.whenLiveLocationContent(block: (LiveLocationContent) -> T) = asLiveLocationContent() ?.let(block)
+
+@PreviewFeature
+inline fun ResendableContent.asLiveLocationContent(): LiveLocationContent? = this as? LiveLocationContent
+
+@PreviewFeature
+inline fun ResendableContent.requireLiveLocationContent(): LiveLocationContent = this as LiveLocationContent
+
+@PreviewFeature
+inline fun <T> ResendableContent.whenStaticLocationContent(block: (StaticLocationContent) -> T) = asStaticLocationContent() ?.let(block)
+
+@PreviewFeature
+inline fun ResendableContent.asStaticLocationContent(): StaticLocationContent? = this as? StaticLocationContent
+
+@PreviewFeature
+inline fun ResendableContent.requireStaticLocationContent(): StaticLocationContent = this as StaticLocationContent
+
+@PreviewFeature
 inline fun <T> ResendableContent.whenPollContent(block: (PollContent) -> T) = asPollContent() ?.let(block)
 
 @PreviewFeature
