@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.filter
 typealias BehaviourContextReceiver<T> = suspend BehaviourContext.() -> T
 typealias BehaviourContextAndTypeReceiver<T, I> = suspend BehaviourContext.(I) -> T
 typealias BehaviourContextAndTwoTypesReceiver<T, I1, I2> = suspend BehaviourContext.(I1, I2) -> T
+internal inline fun <T, I1, I2> BehaviourContextAndTwoTypesReceiver<T, I1, I2>.toOneType(
+    i1: I1,
+): BehaviourContextAndTypeReceiver<T, I2> = { invoke(this, i1, it) }
 
 /**
  * This class contains all necessary tools for work with bots and especially for [buildBehaviour]

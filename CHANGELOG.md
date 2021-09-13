@@ -8,6 +8,8 @@
 * `Core`:
     * New `BotAction` implementation - `CustomBotAction`
     * `LocationContent` has been divided to two different types: `LiveLocationContent` and `StaticLocationContent`
+* `Behaviour Builder`:
+    * All triggers has been changed to use two filters: filter for in subcontext data and filter for incoming data
 
 ## 0.35.8
 
