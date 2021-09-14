@@ -8,6 +8,8 @@
 * `Core`:
     * New `BotAction` implementation - `CustomBotAction`
     * `LocationContent` has been divided to two different types: `LiveLocationContent` and `StaticLocationContent`
+* `API`:
+    * Two new extensions: `TelegramBot#answer` with `CallbackQuery` and `InlineQuery`
 * `Behaviour Builder`:
     * All triggers has been changed to use two filters: filter for in subcontext data and filter for incoming data
 

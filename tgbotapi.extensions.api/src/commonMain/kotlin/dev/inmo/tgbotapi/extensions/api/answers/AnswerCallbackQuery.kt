@@ -20,3 +20,11 @@ suspend fun TelegramBot.answerCallbackQuery(
     url: String? = null,
     cachedTimeSeconds: Int? = null
 ) = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)
+
+suspend fun TelegramBot.answer(
+    callbackQuery: CallbackQuery,
+    text: String? = null,
+    showAlert: Boolean? = null,
+    url: String? = null,
+    cachedTimeSeconds: Int? = null
+) = answerCallbackQuery(callbackQuery.id, text, showAlert, url, cachedTimeSeconds)

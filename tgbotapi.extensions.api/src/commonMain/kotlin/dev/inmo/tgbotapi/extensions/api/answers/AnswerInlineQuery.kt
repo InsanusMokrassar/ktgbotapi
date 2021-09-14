@@ -27,3 +27,13 @@ suspend fun TelegramBot.answerInlineQuery(
     switchPmText: String? = null,
     switchPmParameter: String? = null
 ) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
+
+suspend fun TelegramBot.answer(
+    inlineQuery: InlineQuery,
+    results: List<InlineQueryResult> = emptyList(),
+    cachedTime: Int? = null,
+    isPersonal: Boolean? = null,
+    nextOffset: String? = null,
+    switchPmText: String? = null,
+    switchPmParameter: String? = null
+) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, switchPmText, switchPmParameter)
