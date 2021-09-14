@@ -11,7 +11,8 @@
 * `API`:
     * Two new extensions: `TelegramBot#answer` with `CallbackQuery` and `InlineQuery`
 * `Behaviour Builder`:
-    * All triggers has been changed to use two filters: filter for in subcontext data and filter for incoming data
+    * All triggers have been changed to use two filters: filter for in subcontext data and filter for incoming data
+    * New waiters for edited content
 
 ## 0.35.8
 

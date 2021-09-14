@@ -333,6 +333,28 @@ suspend fun BehaviourContext.onLocation(
     markerFactory,
     scenarioReceiver
 )
+suspend fun BehaviourContext.onLiveLocation(
+    initialFilter: CommonMessageFilter<LiveLocationContent>? = CommonMessageFilterExcludeMediaGroups,
+    updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<LiveLocationContent>, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in CommonMessage<LiveLocationContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<LiveLocationContent>>
+) = onContent(
+    initialFilter,
+    updatesFilter,
+    markerFactory,
+    scenarioReceiver
+)
+suspend fun BehaviourContext.onStaticLocation(
+    initialFilter: CommonMessageFilter<StaticLocationContent>? = CommonMessageFilterExcludeMediaGroups,
+    updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<StaticLocationContent>, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in CommonMessage<StaticLocationContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<StaticLocationContent>>
+) = onContent(
+    initialFilter,
+    updatesFilter,
+    markerFactory,
+    scenarioReceiver
+)
 suspend fun BehaviourContext.onPoll(
     initialFilter: CommonMessageFilter<PollContent>? = CommonMessageFilterExcludeMediaGroups,
     updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<PollContent>, Update> = MessageFilterByChat,
