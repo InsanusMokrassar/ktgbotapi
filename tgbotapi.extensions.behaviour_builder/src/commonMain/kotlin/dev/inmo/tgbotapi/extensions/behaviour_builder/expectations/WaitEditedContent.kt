@@ -2,7 +2,6 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.utils.asCommonMessage
@@ -14,9 +13,7 @@ import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
-import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.toList
 
 private suspend fun <O> BehaviourContext.waitEditedCommonMessage(
