@@ -41,6 +41,16 @@ suspend fun BehaviourContext.onLocationInlineQuery(
 ) = onInlineQuery(additionalFilter, if (includeFilterByChatInBehaviourSubContext) InlineQueryFilterByUser else null, markerFactory, scenarioReceiver)
 
 
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
 suspend fun BehaviourContext.onAnyInlineQuery(
     initialFilter: SimpleFilter<InlineQuery>? = null,
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, InlineQuery, Update>? = InlineQueryFilterByUser,
@@ -48,6 +58,16 @@ suspend fun BehaviourContext.onAnyInlineQuery(
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
 suspend fun BehaviourContext.onBaseInlineQuery(
     initialFilter: SimpleFilter<BaseInlineQuery>? = null,
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, BaseInlineQuery, Update>? = InlineQueryFilterByUser,
@@ -55,6 +75,16 @@ suspend fun BehaviourContext.onBaseInlineQuery(
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, BaseInlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
 suspend fun BehaviourContext.onLocationInlineQuery(
     initialFilter: SimpleFilter<LocationInlineQuery>? = null,
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, LocationInlineQuery, Update>? = InlineQueryFilterByUser,

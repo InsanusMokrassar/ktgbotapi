@@ -125,7 +125,7 @@ suspend fun BehaviourContext.command(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
 ): Job = onText(
@@ -143,7 +143,7 @@ suspend fun BehaviourContext.command(
     }.let {
         initialFilter ?.times(it) ?: it
     },
-    updatesFilter,
+    subcontextUpdatesFilter,
     markerFactory,
     scenarioReceiver
 )
@@ -152,40 +152,40 @@ suspend fun BehaviourContext.command(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
-) = command(command.toRegex(), requireOnlyCommandInMessage, initialFilter, updatesFilter, markerFactory, scenarioReceiver)
+) = command(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 suspend inline fun BehaviourContext.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     noinline initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    noinline updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
-): Job = command(commandRegex, requireOnlyCommandInMessage, initialFilter, updatesFilter, markerFactory, scenarioReceiver)
+): Job = command(commandRegex, requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 suspend inline fun BehaviourContext.onCommand(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
     noinline initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    noinline updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
-): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, initialFilter, updatesFilter, markerFactory, scenarioReceiver)
+): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 suspend fun BehaviourContext.commandWithArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTwoTypesReceiver<Unit, CommonMessage<TextContent>, Array<String>>
 ) = command(
     commandRegex,
     requireOnlyCommandInMessage = false,
     initialFilter = initialFilter,
-    updatesFilter = updatesFilter,
+    subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory
 ) {
     val args = it.parseCommandsWithParams().let { commandsWithArgs ->
@@ -198,13 +198,13 @@ suspend fun BehaviourContext.commandWithArgs(
 suspend fun BehaviourContext.commandWithArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTwoTypesReceiver<Unit, CommonMessage<TextContent>, Array<String>>
 ) = commandWithArgs(
     command.toRegex(),
     initialFilter = initialFilter,
-    updatesFilter = updatesFilter,
+    subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory,
     scenarioReceiver = scenarioReceiver
 )
@@ -212,15 +212,15 @@ suspend fun BehaviourContext.commandWithArgs(
 suspend inline fun BehaviourContext.onCommandWithArgs(
     commandRegex: Regex,
     noinline initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    noinline updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: BehaviourContextAndTwoTypesReceiver<Unit, CommonMessage<TextContent>, Array<String>>
-): Job = commandWithArgs(commandRegex, initialFilter, updatesFilter, markerFactory, scenarioReceiver)
+): Job = commandWithArgs(commandRegex, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 suspend inline fun BehaviourContext.onCommandWithArgs(
     command: String,
     noinline initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    noinline updatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: BehaviourContextAndTwoTypesReceiver<Unit, CommonMessage<TextContent>, Array<String>>
-): Job = onCommandWithArgs(command.toRegex(), initialFilter, updatesFilter, markerFactory, scenarioReceiver)
+): Job = onCommandWithArgs(command.toRegex(), initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

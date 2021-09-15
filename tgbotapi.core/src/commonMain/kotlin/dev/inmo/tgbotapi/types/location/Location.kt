@@ -10,6 +10,13 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 
+/**
+ * Common interface for any known telegram location. Use [LocationSerializer] in case you wish
+ * to serialize/deserialize [Location]
+ *
+ * @see dev.inmo.tgbotapi.extensions.utils.asStaticLocation
+ * @see dev.inmo.tgbotapi.extensions.utils.asLiveLocation
+ */
 @Serializable(LocationSerializer::class)
 sealed interface Location : Locationed, HorizontallyAccured
 
