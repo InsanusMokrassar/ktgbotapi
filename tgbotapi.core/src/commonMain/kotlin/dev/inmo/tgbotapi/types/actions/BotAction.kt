@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.actions
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
@@ -151,5 +152,7 @@ inline val uploadVideoNote
 inline fun BotAction.asUploadVideoNote() = this as? UploadVideoNoteAction
 
 @Serializable(BotActionSerializer::class)
-@RiskFeature("Usage of this action may lead to errors")
-class CustomBotAction(override val actionName: String) : BotAction
+@Warning("Use this action only in case you are pretty sure that there are no other action for your needs")
+class CustomBotAction @RiskFeature("Usage of this action may lead to errors") constructor(
+    override val actionName: String
+) : BotAction
