@@ -1,5 +1,27 @@
 # TelegramBotAPI changelog
 
+## 0.35.9
+
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.5.30` -> `1.5.31`
+        * `Klock`: `2.4.1` -> `2.4.2`
+        * `MicroUtils`: `0.5.25` -> `0.5.28`
+* `Core`:
+    * New `BotAction` implementation - `CustomBotAction`
+    * `LocationContent` has been divided to two different types: `LiveLocationContent` and `StaticLocationContent`
+* `API`:
+    * Two new extensions: `TelegramBot#answer` with `CallbackQuery` and `InlineQuery`
+* `Behaviour Builder`:
+    * All triggers have been changed to use two filters: filter for in subcontext data and filter for incoming data
+    * New waiters for edited content
+    * New extension `BehaviourContext#followLocation`
+    * New factory-functions:
+        * `BehaviourContextReceiver`
+        * `BehaviourContextAndTypeReceiver`
+        * `BehaviourContextAndTwoTypesReceiver`
+    * Old API for triggers with the flags like `includeFilterByChatInBehaviourSubContext` have been deprecated
+
 ## 0.35.8
 
 * `Common`:

@@ -1,52 +1,59 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
-import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
-import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
+import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByChat
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
 import dev.inmo.tgbotapi.extensions.utils.asPassportMessage
-import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
+import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <reified T : EncryptedPassportElement> BehaviourContext.onPassportMessageWith(
-    includeFilterByChatInBehaviourSubContext: Boolean = true,
-    noinline additionalFilter: SimpleFilter<PassportMessage>? = null,
+    noinline initialFilter: SimpleFilter<PassportMessage>? = null,
+    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, PassportMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, PassportMessage>
-) = flowsUpdatesFilter.expectFlow(bot) {
-    it.asMessageUpdate() ?.data ?.asPassportMessage() ?.let { message ->
-        if (message.passportData.data.any { it is T }) {
-            if (additionalFilter == null || additionalFilter(message)) message else null
-        } else {
-            null
-        }
-    }.let(::listOfNotNull)
-}.subscribeSafelyWithoutExceptionsAsync(
-    scope,
-    markerFactory::invoke
-) { triggerMessage ->
-    doInSubContextWithUpdatesFilter(
-        updatesFilter = if (includeFilterByChatInBehaviourSubContext) {
-            { it.sourceChat() ?.id ?.chatId == triggerMessage.chat.id.chatId }
-        } else null,
-        stopOnCompletion = false
-    ) {
-        scenarioReceiver(triggerMessage)
-    }
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+    (it.asMessageUpdate() ?.data ?.asPassportMessage() ?.takeIf { it.passportData.data.any { it is T } }) ?.let(::listOfNotNull)
 }
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onPassportMessage(
-    includeFilterByChatInBehaviourSubContext: Boolean = true,
+    includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<PassportMessage>? = null,
     markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, PassportMessage>
 ) = onPassportMessageWith<EncryptedPassportElement>(
-    includeFilterByChatInBehaviourSubContext,
     additionalFilter,
+    if (includeFilterByChatInBehaviourSubContext) MessageFilterByChat else null,
+    markerFactory,
+    scenarioReceiver
+)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun BehaviourContext.onPassportMessage(
+    initialFilter: SimpleFilter<PassportMessage>? = null,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, PassportMessage, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, PassportMessage>
+) = onPassportMessageWith<EncryptedPassportElement>(
+    initialFilter,
+    subcontextUpdatesFilter,
     markerFactory,
     scenarioReceiver
 )

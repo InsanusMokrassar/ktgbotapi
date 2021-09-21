@@ -32,6 +32,7 @@ import dev.inmo.tgbotapi.types.chat.abstracts.extended.*
 import dev.inmo.tgbotapi.types.dice.*
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.abstracts.*
+import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMember
@@ -2507,6 +2508,24 @@ inline fun ResendableContent.asLocationContent(): LocationContent? = this as? Lo
 inline fun ResendableContent.requireLocationContent(): LocationContent = this as LocationContent
 
 @PreviewFeature
+inline fun <T> ResendableContent.whenLiveLocationContent(block: (LiveLocationContent) -> T) = asLiveLocationContent() ?.let(block)
+
+@PreviewFeature
+inline fun ResendableContent.asLiveLocationContent(): LiveLocationContent? = this as? LiveLocationContent
+
+@PreviewFeature
+inline fun ResendableContent.requireLiveLocationContent(): LiveLocationContent = this as LiveLocationContent
+
+@PreviewFeature
+inline fun <T> ResendableContent.whenStaticLocationContent(block: (StaticLocationContent) -> T) = asStaticLocationContent() ?.let(block)
+
+@PreviewFeature
+inline fun ResendableContent.asStaticLocationContent(): StaticLocationContent? = this as? StaticLocationContent
+
+@PreviewFeature
+inline fun ResendableContent.requireStaticLocationContent(): StaticLocationContent = this as StaticLocationContent
+
+@PreviewFeature
 inline fun <T> ResendableContent.whenPollContent(block: (PollContent) -> T) = asPollContent() ?.let(block)
 
 @PreviewFeature
@@ -3116,3 +3135,21 @@ inline fun Any.asWithOptionalLanguageCode(): WithOptionalLanguageCode? = this as
 
 @PreviewFeature
 inline fun Any.requireWithOptionalLanguageCode(): WithOptionalLanguageCode = this as WithOptionalLanguageCode
+
+@PreviewFeature
+inline fun <T> Location.whenStaticLocation(block: (StaticLocation) -> T) = asStaticLocation() ?.let(block)
+
+@PreviewFeature
+inline fun Location.asStaticLocation(): StaticLocation? = this as? StaticLocation
+
+@PreviewFeature
+inline fun Location.requireStaticLocation(): StaticLocation = this as StaticLocation
+
+@PreviewFeature
+inline fun <T> Location.whenLiveLocation(block: (LiveLocation) -> T) = asLiveLocation() ?.let(block)
+
+@PreviewFeature
+inline fun Location.asLiveLocation(): LiveLocation? = this as? LiveLocation
+
+@PreviewFeature
+inline fun Location.requireLiveLocation(): LiveLocation = this as LiveLocation

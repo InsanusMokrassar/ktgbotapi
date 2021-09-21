@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
-import dev.inmo.tgbotapi.types.message.content.LocationContent
+import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.utils.throwRangeError
 import kotlinx.serialization.*
 
