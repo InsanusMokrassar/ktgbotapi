@@ -6,7 +6,7 @@
     * `Version`:
         * `Kotlin`: `1.5.30` -> `1.5.31`
         * `Klock`: `2.4.1` -> `2.4.2`
-        * `MicroUtils`: `0.5.25` -> `0.5.27`
+        * `MicroUtils`: `0.5.25` -> `0.5.28`
 * `Core`:
     * New `BotAction` implementation - `CustomBotAction`
     * `LocationContent` has been divided to two different types: `LiveLocationContent` and `StaticLocationContent`
