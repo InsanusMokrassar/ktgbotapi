@@ -19,6 +19,25 @@ import kotlinx.serialization.encoding.*
 sealed interface LocationContent : MessageContent {
     val location: Location
 
+    fun copy(location: Location = this.location) {
+        when (this) {
+            is LiveLocationContent -> LiveLocationContent(
+                (location as? LiveLocation) ?: this.location.copy(
+                    longitude = location.longitude,
+                    latitude = location.latitude,
+                    horizontalAccuracy = location.horizontalAccuracy
+                )
+            )
+            is StaticLocationContent -> StaticLocationContent(
+                (location as? StaticLocation) ?: this.location.copy(
+                    longitude = location.longitude,
+                    latitude = location.latitude,
+                    horizontalAccuracy = location.horizontalAccuracy
+                )
+            )
+        }
+    }
+
     companion object {
         operator fun invoke(location: Location): LocationContent {
             return when (location) {
