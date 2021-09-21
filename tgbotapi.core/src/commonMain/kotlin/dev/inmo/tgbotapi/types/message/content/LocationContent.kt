@@ -15,6 +15,13 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.encoding.*
 
+/**
+ * [MessageContent] with [location]. This interface contains [copy] method for cases when you do not want to use some
+ * class casts for copying of content
+ *
+ * @see LocationContentSerializer
+ * @see Location
+ */
 @Serializable(LocationContentSerializer::class)
 sealed interface LocationContent : MessageContent {
     val location: Location
@@ -48,6 +55,9 @@ sealed interface LocationContent : MessageContent {
     }
 }
 
+/**
+ * [KSerializer] for [LocationContent]
+ */
 @Serializer(LocationContent::class)
 object LocationContentSerializer : KSerializer<LocationContent> {
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("LocationContent") {
@@ -78,6 +88,12 @@ object LocationContentSerializer : KSerializer<LocationContent> {
 
 }
 
+/**
+ * [LocationContent] which represents content with [LiveLocation]. In case you are tracking this content throw message
+ * changes, may evolve to [StaticLocationContent]
+ *
+ * @see dev.inmo.tgbotapi.extensions.behaviour_builder.utils.followLocation
+ */
 @Serializable(LocationContentSerializer::class)
 data class LiveLocationContent(
     override val location: LiveLocation
@@ -103,6 +119,10 @@ data class LiveLocationContent(
     ) as SendMessageRequest<ContentMessage<LiveLocationContent>>
 }
 
+/**
+ * Just a [LocationContent] with [StaticLocation] [location]. It could be [LiveLocationContent] in previous time in case
+ * when somebody has sent [LiveLocation] in chat and then stop to broadcast location
+ */
 @Serializable(LocationContentSerializer::class)
 data class StaticLocationContent(
     override val location: StaticLocation
