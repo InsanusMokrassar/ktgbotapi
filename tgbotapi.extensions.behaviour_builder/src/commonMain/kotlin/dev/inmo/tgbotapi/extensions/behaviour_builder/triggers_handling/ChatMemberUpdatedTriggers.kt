@@ -22,6 +22,7 @@ internal suspend inline fun <reified U : ChatMemberUpdatedUpdate> BehaviourConte
     ((it as? U) ?.data) ?.let(::listOfNotNull)
 }
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onChatMemberUpdated(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<ChatMemberUpdated>? = null,
@@ -34,6 +35,7 @@ suspend fun BehaviourContext.onChatMemberUpdated(
     scenarioReceiver
 )
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onCommonChatMemberUpdated(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<ChatMemberUpdated>? = null,
@@ -46,6 +48,7 @@ suspend fun BehaviourContext.onCommonChatMemberUpdated(
     scenarioReceiver
 )
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onMyChatMemberUpdated(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<ChatMemberUpdated>? = null,

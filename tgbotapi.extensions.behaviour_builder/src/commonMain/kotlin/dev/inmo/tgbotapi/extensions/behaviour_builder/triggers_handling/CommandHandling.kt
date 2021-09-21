@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.Job
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.command(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
@@ -42,6 +43,7 @@ suspend fun BehaviourContext.command(
     scenarioReceiver
 )
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.command(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
@@ -51,6 +53,7 @@ suspend fun BehaviourContext.command(
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
 ) = command(command.toRegex(), requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, markerFactory, scenarioReceiver)
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend inline fun BehaviourContext.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
@@ -60,6 +63,7 @@ suspend inline fun BehaviourContext.onCommand(
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
 ): Job = command(commandRegex, requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, markerFactory, scenarioReceiver)
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend inline fun BehaviourContext.onCommand(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
@@ -69,6 +73,7 @@ suspend inline fun BehaviourContext.onCommand(
     noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
 ): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, includeFilterByChatInBehaviourSubContext, additionalFilter, markerFactory, scenarioReceiver)
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.commandWithArgs(
     commandRegex: Regex,
     includeFilterByChatInBehaviourSubContext: Boolean,
@@ -89,6 +94,7 @@ suspend fun BehaviourContext.commandWithArgs(
     scenarioReceiver(it, args)
 }
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.commandWithArgs(
     command: String,
     includeFilterByChatInBehaviourSubContext: Boolean,
@@ -103,6 +109,7 @@ suspend fun BehaviourContext.commandWithArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend inline fun BehaviourContext.onCommandWithArgs(
     commandRegex: Regex,
     includeFilterByChatInBehaviourSubContext: Boolean,
@@ -111,6 +118,7 @@ suspend inline fun BehaviourContext.onCommandWithArgs(
     noinline scenarioReceiver: BehaviourContextAndTwoTypesReceiver<Unit, CommonMessage<TextContent>, Array<String>>
 ): Job = commandWithArgs(commandRegex, includeFilterByChatInBehaviourSubContext, additionalFilter, markerFactory, scenarioReceiver)
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend inline fun BehaviourContext.onCommandWithArgs(
     command: String,
     includeFilterByChatInBehaviourSubContext: Boolean,

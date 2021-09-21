@@ -7,6 +7,9 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
+internal const val OldAPITriggersDeprecationText = "This signature of method has been deprecated. Use signature with the" +
+    " same name and subcontextUpdatesFilter/initialFilter instead"
+
 internal suspend inline fun <reified T> BehaviourContext.on(
     markerFactory: MarkerFactory<in T, Any>,
     noinline initialFilter: SimpleFilter<T>? = null,

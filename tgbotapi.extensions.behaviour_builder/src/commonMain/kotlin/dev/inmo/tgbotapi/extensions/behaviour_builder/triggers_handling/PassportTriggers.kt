@@ -20,6 +20,7 @@ internal suspend inline fun <reified T : EncryptedPassportElement> BehaviourCont
     (it.asMessageUpdate() ?.data ?.asPassportMessage() ?.takeIf { it.passportData.data.any { it is T } }) ?.let(::listOfNotNull)
 }
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onPassportMessage(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<PassportMessage>? = null,

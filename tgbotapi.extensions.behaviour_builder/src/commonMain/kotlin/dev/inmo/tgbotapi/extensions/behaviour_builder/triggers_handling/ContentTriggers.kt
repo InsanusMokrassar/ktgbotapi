@@ -37,6 +37,7 @@ internal suspend inline fun <reified T : MessageContent> BehaviourContext.onCont
     }
 }
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onContentMessage(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<MessageContent>? = null,
@@ -49,6 +50,7 @@ suspend fun BehaviourContext.onContentMessage(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onContact(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<ContactContent>? = null,
@@ -60,6 +62,7 @@ suspend fun BehaviourContext.onContact(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onDice(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<DiceContent>? = null,
@@ -71,6 +74,7 @@ suspend fun BehaviourContext.onDice(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onGame(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<GameContent>? = null,
@@ -82,6 +86,7 @@ suspend fun BehaviourContext.onGame(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onLocation(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<LocationContent>? = null,
@@ -93,6 +98,7 @@ suspend fun BehaviourContext.onLocation(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onPoll(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<PollContent>? = null,
@@ -104,6 +110,7 @@ suspend fun BehaviourContext.onPoll(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onText(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<TextContent>? = null,
@@ -115,6 +122,7 @@ suspend fun BehaviourContext.onText(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onVenue(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<VenueContent>? = null,
@@ -126,6 +134,7 @@ suspend fun BehaviourContext.onVenue(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onAudioMediaGroup(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<AudioMediaGroupContent>? = null,
@@ -137,6 +146,7 @@ suspend fun BehaviourContext.onAudioMediaGroup(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onDocumentMediaGroupContent(
     includeFilterByChatInBehaviourSubContext: Boolean,
     includeMediaGroups: Boolean = true,
@@ -149,6 +159,7 @@ suspend fun BehaviourContext.onDocumentMediaGroupContent(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onMediaCollection(
     includeFilterByChatInBehaviourSubContext: Boolean,
     includeMediaGroups: Boolean = false,
@@ -161,6 +172,7 @@ suspend fun BehaviourContext.onMediaCollection(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onMedia(
     includeFilterByChatInBehaviourSubContext: Boolean,
     includeMediaGroups: Boolean = true,
@@ -173,6 +185,7 @@ suspend fun BehaviourContext.onMedia(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onAnimation(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<AnimationContent>? = null,
@@ -184,6 +197,7 @@ suspend fun BehaviourContext.onAnimation(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onAudio(
     includeFilterByChatInBehaviourSubContext: Boolean,
     includeMediaGroups: Boolean = false,
@@ -196,6 +210,7 @@ suspend fun BehaviourContext.onAudio(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onDocument(
     includeFilterByChatInBehaviourSubContext: Boolean,
     includeMediaGroups: Boolean = false,
@@ -208,6 +223,7 @@ suspend fun BehaviourContext.onDocument(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onPhoto(
     includeFilterByChatInBehaviourSubContext: Boolean,
     includeMediaGroups: Boolean = false,
@@ -220,6 +236,7 @@ suspend fun BehaviourContext.onPhoto(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onSticker(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<StickerContent>? = null,
@@ -231,6 +248,7 @@ suspend fun BehaviourContext.onSticker(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onVideo(
     includeFilterByChatInBehaviourSubContext: Boolean,
     includeMediaGroups: Boolean = false,
@@ -243,6 +261,7 @@ suspend fun BehaviourContext.onVideo(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onVideoNote(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<VideoNoteContent>? = null,
@@ -254,6 +273,7 @@ suspend fun BehaviourContext.onVideoNote(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onVoice(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<VoiceContent>? = null,
@@ -265,6 +285,7 @@ suspend fun BehaviourContext.onVoice(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onInvoice(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: CommonMessageFilter<InvoiceContent>? = null,

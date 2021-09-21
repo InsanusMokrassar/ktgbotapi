@@ -20,7 +20,7 @@ internal suspend inline fun <reified T : CallbackQuery> BehaviourContext.onCallb
     (it.asCallbackQueryUpdate() ?.data as? T) ?.let(::listOfNotNull)
 }
 
-
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onDataCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<DataCallbackQuery>? = null,
@@ -32,6 +32,7 @@ suspend fun BehaviourContext.onDataCallbackQuery(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onGameShortNameCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<GameShortNameCallbackQuery>? = null,
@@ -43,6 +44,7 @@ suspend fun BehaviourContext.onGameShortNameCallbackQuery(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onInlineMessageIdCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<InlineMessageIdCallbackQuery>? = null,
@@ -54,6 +56,7 @@ suspend fun BehaviourContext.onInlineMessageIdCallbackQuery(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onInlineMessageIdDataCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<InlineMessageIdDataCallbackQuery>? = null,
@@ -65,6 +68,7 @@ suspend fun BehaviourContext.onInlineMessageIdDataCallbackQuery(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onInlineMessageIdGameShortNameCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<InlineMessageIdGameShortNameCallbackQuery>? = null,
@@ -76,6 +80,7 @@ suspend fun BehaviourContext.onInlineMessageIdGameShortNameCallbackQuery(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onMessageCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<MessageCallbackQuery>? = null,
@@ -87,6 +92,7 @@ suspend fun BehaviourContext.onMessageCallbackQuery(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onMessageDataCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<MessageDataCallbackQuery>? = null,
@@ -98,6 +104,7 @@ suspend fun BehaviourContext.onMessageDataCallbackQuery(
     markerFactory,
     scenarioReceiver
 )
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onMessageGameShortNameCallbackQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<MessageGameShortNameCallbackQuery>? = null,

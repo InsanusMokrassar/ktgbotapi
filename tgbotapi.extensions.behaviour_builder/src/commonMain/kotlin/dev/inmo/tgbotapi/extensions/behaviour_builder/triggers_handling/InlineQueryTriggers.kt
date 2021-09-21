@@ -19,6 +19,7 @@ internal suspend inline fun <reified T : InlineQuery> BehaviourContext.onInlineQ
 }
 
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onAnyInlineQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<InlineQuery>? = null,
@@ -26,6 +27,7 @@ suspend fun BehaviourContext.onAnyInlineQuery(
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineQuery>
 ) = onInlineQuery(additionalFilter, if (includeFilterByChatInBehaviourSubContext) InlineQueryFilterByUser else null, markerFactory, scenarioReceiver)
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onBaseInlineQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<BaseInlineQuery>? = null,
@@ -33,6 +35,7 @@ suspend fun BehaviourContext.onBaseInlineQuery(
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, BaseInlineQuery>
 ) = onInlineQuery(additionalFilter, if (includeFilterByChatInBehaviourSubContext) InlineQueryFilterByUser else null, markerFactory, scenarioReceiver)
 
+@Deprecated(OldAPITriggersDeprecationText)
 suspend fun BehaviourContext.onLocationInlineQuery(
     includeFilterByChatInBehaviourSubContext: Boolean,
     additionalFilter: SimpleFilter<LocationInlineQuery>? = null,
