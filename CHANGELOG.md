@@ -16,6 +16,10 @@
     * All triggers have been changed to use two filters: filter for in subcontext data and filter for incoming data
     * New waiters for edited content
     * New extension `BehaviourContext#followLocation`
+    * New factory-functions:
+        * `BehaviourContextReceiver`
+        * `BehaviourContextAndTypeReceiver`
+        * `BehaviourContextAndTwoTypesReceiver`
     * Old API for triggers with the flags like `includeFilterByChatInBehaviourSubContext` have been deprecated
 
 ## 0.35.8

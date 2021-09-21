@@ -5,21 +5,21 @@ typealias SimpleFilter<T> = suspend (T) -> Boolean
 inline fun <T> SimpleFilter(noinline block: SimpleFilter<T>) = block
 
 /**
- * Represent && operation between [this] and [other] on each invocation
+ * Makes an AND (&&) operation between [this] and [other]
  */
 operator fun <T> SimpleFilter<T>.times(other: SimpleFilter<T>): SimpleFilter<T> = {
     this(it) && other(it)
 }
 
 /**
- * Represent || operation between [this] and [other] on each invocation
+ * Makes an OR (||) operation between [this] and [other]
  */
 operator fun <T> SimpleFilter<T>.plus(other: SimpleFilter<T>): SimpleFilter<T> = {
     this(it) || other(it)
 }
 
 /**
- * Represent reversing of [this] invocation
+ * Reverse results of [this]
  */
 operator fun <T> SimpleFilter<T>.not(): SimpleFilter<T> = {
     !this(it)

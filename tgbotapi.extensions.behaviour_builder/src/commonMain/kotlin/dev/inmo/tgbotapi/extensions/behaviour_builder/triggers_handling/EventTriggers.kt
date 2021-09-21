@@ -171,7 +171,10 @@ suspend fun BehaviourContext.onSupergroupChatCreated(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -187,7 +190,10 @@ suspend fun BehaviourContext.onChannelEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -203,7 +209,10 @@ suspend fun BehaviourContext.onChatEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -219,7 +228,10 @@ suspend fun BehaviourContext.onVoiceChatEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -235,7 +247,10 @@ suspend fun BehaviourContext.onVoiceChatStartedEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -251,7 +266,10 @@ suspend fun BehaviourContext.onVoiceChatEndedEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -267,7 +285,10 @@ suspend fun BehaviourContext.onVoiceChatParticipantsInvitedEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -283,7 +304,10 @@ suspend fun BehaviourContext.onMessageAutoDeleteTimerChangedEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -299,7 +323,10 @@ suspend fun BehaviourContext.onCommonEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -315,7 +342,10 @@ suspend fun BehaviourContext.onGroupEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -331,7 +361,10 @@ suspend fun BehaviourContext.onSupergroupEvent(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -347,7 +380,10 @@ suspend fun BehaviourContext.onChannelChatCreated(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -363,7 +399,10 @@ suspend fun BehaviourContext.onDeleteChatPhoto(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -379,7 +418,10 @@ suspend fun BehaviourContext.onGroupChatCreated(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -395,7 +437,10 @@ suspend fun BehaviourContext.onLeftChatMember(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -411,7 +456,10 @@ suspend fun BehaviourContext.onNewChatMembers(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -427,7 +475,10 @@ suspend fun BehaviourContext.onNewChatPhoto(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -443,7 +494,10 @@ suspend fun BehaviourContext.onNewChatTitle(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -459,7 +513,10 @@ suspend fun BehaviourContext.onPinnedMessage(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
@@ -475,7 +532,10 @@ suspend fun BehaviourContext.onProximityAlertTriggered(
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
- * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage]
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
  * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
  * in one "stream". Output of [markerFactory] will be used as a key for "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that

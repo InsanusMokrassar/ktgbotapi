@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.*
@@ -11,6 +13,9 @@ import kotlinx.coroutines.flow.filter
 typealias BehaviourContextReceiver<T> = suspend BehaviourContext.() -> T
 typealias BehaviourContextAndTypeReceiver<T, I> = suspend BehaviourContext.(I) -> T
 typealias BehaviourContextAndTwoTypesReceiver<T, I1, I2> = suspend BehaviourContext.(I1, I2) -> T
+inline fun <T> BehaviourContextReceiver(noinline block: BehaviourContextReceiver<T>) = block
+inline fun <T, I> BehaviourContextAndTypeReceiver(noinline block: BehaviourContextAndTypeReceiver<T, I>) = block
+inline fun <T, I1, I2> BehaviourContextAndTwoTypesReceiver(noinline block: BehaviourContextAndTwoTypesReceiver<T, I1, I2>) = block
 internal inline fun <T, I1, I2> BehaviourContextAndTwoTypesReceiver<T, I1, I2>.toOneType(
     i1: I1,
 ): BehaviourContextAndTypeReceiver<T, I2> = { invoke(this, i1, it) }
