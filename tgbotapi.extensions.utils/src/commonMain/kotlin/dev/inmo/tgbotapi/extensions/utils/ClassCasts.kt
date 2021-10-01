@@ -2314,10 +2314,10 @@ inline fun TelegramMediaFile.asThumbedMediaFile(): ThumbedMediaFile? = this as? 
 inline fun TelegramMediaFile.requireThumbedMediaFile(): ThumbedMediaFile = this as ThumbedMediaFile
 
 @PreviewFeature
-inline fun <T> KeyboardMarkup.whenForceReply(block: (ForceReply) -> T) = asForceReply() ?.let(block)
+inline fun <T> KeyboardMarkup.whenForceReply(block: (ReplyForce) -> T) = asForceReply() ?.let(block)
 
 @PreviewFeature
-inline fun KeyboardMarkup.asForceReply(): ForceReply? = this as? ReplyForce
+inline fun KeyboardMarkup.asForceReply(): ReplyForce? = this as? ReplyForce
 
 @PreviewFeature
 inline fun KeyboardMarkup.requireForceReply(): ReplyForce = this as ReplyForce

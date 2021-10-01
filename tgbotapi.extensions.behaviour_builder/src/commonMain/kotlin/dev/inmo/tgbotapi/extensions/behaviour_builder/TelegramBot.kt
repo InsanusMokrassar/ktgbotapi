@@ -37,8 +37,8 @@ suspend fun telegramBotWithBehaviour(
     builder
 ).apply {
     buildBehaviour(
-        scope ?: CoroutineScope(coroutineContext),
         flowsUpdatesFilter,
+        scope ?: CoroutineScope(coroutineContext),
         defaultExceptionsHandler,
         block
     )
