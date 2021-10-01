@@ -7,6 +7,10 @@ import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageCaption(
     inlineMessageId: InlineMessageIdentifier,
     text: String,
@@ -14,6 +18,10 @@ suspend fun TelegramBot.editMessageCaption(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(EditInlineMessageCaption(inlineMessageId, text, parseMode, replyMarkup))
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageCaption(
     inlineMessageId: InlineMessageIdentifier,
     entities: TextSourcesList,

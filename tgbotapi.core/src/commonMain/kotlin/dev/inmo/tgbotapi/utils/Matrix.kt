@@ -32,7 +32,7 @@ fun <T> flatMatrix(vararg elements: T): Matrix<T> {
 
 operator fun <T> RowBuilder<T>.plus(t: T) = add(t)
 
-class RowBuilder<T> {
+open class RowBuilder<T> {
     private val mutRow: MutableList<T> = ArrayList()
     val row: List<T>
         get() = mutRow
@@ -41,11 +41,12 @@ class RowBuilder<T> {
     operator fun T.unaryPlus() = add(this)
 }
 
-class MatrixBuilder<T> {
+open class MatrixBuilder<T> {
     private val mutMatrix: MutableList<List<T>> = ArrayList()
     val matrix: Matrix<T>
-        get() = mutMatrix
+        get() = mutMatrix.toList()
 
     fun add(t: List<T>) = mutMatrix.add(t)
     operator fun plus(t: List<T>) = add(t)
+    operator fun T.unaryPlus() = add(listOf(this))
 }

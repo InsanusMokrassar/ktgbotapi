@@ -6,6 +6,10 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendContact(
     chatId: ChatIdentifier,
     phoneNumber: String,
@@ -21,6 +25,10 @@ suspend fun TelegramBot.sendContact(
     )
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendContact(
     chatId: ChatIdentifier,
     contact: Contact,
@@ -34,6 +42,10 @@ suspend fun TelegramBot.sendContact(
     )
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendContact(
     chat: Chat,
     phoneNumber: String,
@@ -47,6 +59,10 @@ suspend fun TelegramBot.sendContact(
     chat.id, phoneNumber, firstName, lastName, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendContact(
     chat: Chat,
     contact: Contact,

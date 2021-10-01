@@ -10,6 +10,10 @@ import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageMedia(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -19,6 +23,10 @@ suspend fun TelegramBot.editMessageMedia(
     EditChatMessageMedia(chatId, messageId, media, replyMarkup)
 )
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageMedia(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -26,6 +34,10 @@ suspend fun TelegramBot.editMessageMedia(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chat.id, messageId, media, replyMarkup)
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageMedia(
     message: ContentMessage<out MediaContent>,
     media: InputMedia,

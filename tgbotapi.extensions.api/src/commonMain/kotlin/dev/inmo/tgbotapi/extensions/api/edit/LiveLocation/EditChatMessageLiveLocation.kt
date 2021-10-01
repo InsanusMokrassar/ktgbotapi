@@ -9,6 +9,10 @@ import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editLiveLocation(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -24,6 +28,10 @@ suspend fun TelegramBot.editLiveLocation(
     )
 )
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editLiveLocation(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -35,6 +43,10 @@ suspend fun TelegramBot.editLiveLocation(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(chat.id, messageId, latitude, longitude, horizontalAccuracy, heading, proximityAlertRadius, replyMarkup)
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editLiveLocation(
     message: ContentMessage<LocationContent>,
     latitude: Double,
@@ -45,6 +57,10 @@ suspend fun TelegramBot.editLiveLocation(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(message.chat, message.messageId, latitude, longitude, horizontalAccuracy, heading, proximityAlertRadius, replyMarkup)
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editLiveLocation(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -56,6 +72,10 @@ suspend fun TelegramBot.editLiveLocation(
     )
 )
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editLiveLocation(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -63,6 +83,10 @@ suspend fun TelegramBot.editLiveLocation(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(chat.id, messageId, location.latitude, location.longitude, location.horizontalAccuracy, location.heading, location.proximityAlertRadius, replyMarkup)
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editLiveLocation(
     message: ContentMessage<LocationContent>,
     location: LiveLocation,

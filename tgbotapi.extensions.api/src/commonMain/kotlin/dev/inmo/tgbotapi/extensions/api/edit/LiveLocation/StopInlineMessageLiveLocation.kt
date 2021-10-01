@@ -5,6 +5,10 @@ import dev.inmo.tgbotapi.requests.edit.LiveLocation.StopInlineMessageLiveLocatio
 import dev.inmo.tgbotapi.types.InlineMessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.stopLiveLocation(
     inlineMessageId: InlineMessageIdentifier,
     replyMarkup: InlineKeyboardMarkup? = null

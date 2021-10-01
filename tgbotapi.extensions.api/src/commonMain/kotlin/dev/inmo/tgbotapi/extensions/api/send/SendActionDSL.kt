@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
-import dev.inmo.micro_utils.coroutines.*
+import dev.inmo.micro_utils.coroutines.safelyWithResult
+import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendAction
 import dev.inmo.tgbotapi.types.*

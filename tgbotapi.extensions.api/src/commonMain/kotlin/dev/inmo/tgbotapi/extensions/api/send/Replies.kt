@@ -28,6 +28,10 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 
 // Contact
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     phoneNumber: String,
@@ -47,6 +51,10 @@ suspend inline fun TelegramBot.reply(
     replyMarkup
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     contact: Contact,
@@ -65,6 +73,10 @@ suspend inline fun TelegramBot.reply(
 
 // Dice
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.replyWithDice(
     to: Message,
     animationType: DiceAnimationType? = null,
@@ -73,6 +85,10 @@ suspend inline fun TelegramBot.replyWithDice(
     replyMarkup: KeyboardMarkup? = null
 ) = sendDice(to.chat, animationType, disableNotification, to.messageId, allowSendingWithoutReply, replyMarkup)
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     animationType: DiceAnimationType,
@@ -84,6 +100,10 @@ suspend inline fun TelegramBot.reply(
 
 // Location
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     latitude: Double,
@@ -99,6 +119,10 @@ suspend inline fun TelegramBot.reply(
     replyMarkup
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     location: StaticLocation,
@@ -115,6 +139,10 @@ suspend inline fun TelegramBot.reply(
 
 // Text message
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     text: String,
@@ -134,6 +162,10 @@ suspend inline fun TelegramBot.reply(
     replyMarkup
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     entities: TextSourcesList,
@@ -154,6 +186,10 @@ suspend inline fun TelegramBot.reply(
 
 // Venue
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     latitude: Double,
@@ -646,6 +682,10 @@ suspend inline fun TelegramBot.reply(
 
 // Invoice
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend inline fun TelegramBot.reply(
     to: Message,
     title: String,

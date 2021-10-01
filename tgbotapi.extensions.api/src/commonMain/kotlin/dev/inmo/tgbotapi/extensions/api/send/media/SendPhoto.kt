@@ -1,8 +1,6 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.send.reply
-import dev.inmo.tgbotapi.extensions.api.send.replyWithPhoto
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendPhoto
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -13,8 +11,11 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.files.Photo
 import dev.inmo.tgbotapi.types.files.biggest
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     fileId: InputFile,
@@ -37,6 +38,10 @@ suspend fun TelegramBot.sendPhoto(
     )
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendPhoto(
     chat: Chat,
     fileId: InputFile,
@@ -48,6 +53,10 @@ suspend fun TelegramBot.sendPhoto(
     replyMarkup: KeyboardMarkup? = null
 ) = sendPhoto(chat.id, fileId, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photo: Photo,
@@ -59,6 +68,10 @@ suspend fun TelegramBot.sendPhoto(
     replyMarkup: KeyboardMarkup? = null
 ) = sendPhoto(chatId, photo.biggest() ?.fileId ?: error("Photo content must not be empty"), text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendPhoto(
     chat: Chat,
     photo: Photo,
@@ -71,6 +84,10 @@ suspend fun TelegramBot.sendPhoto(
 ) = sendPhoto(chat.id, photo, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     fileId: InputFile,
@@ -91,6 +108,10 @@ suspend inline fun TelegramBot.sendPhoto(
     )
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     fileId: InputFile,
@@ -101,6 +122,10 @@ suspend inline fun TelegramBot.sendPhoto(
     replyMarkup: KeyboardMarkup? = null
 ) = sendPhoto(chat.id, fileId, entities, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photo: Photo,
@@ -111,6 +136,10 @@ suspend inline fun TelegramBot.sendPhoto(
     replyMarkup: KeyboardMarkup? = null
 ) = sendPhoto(chatId, photo.biggest() ?.fileId ?: error("Photo content must not be empty"), entities, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     photo: Photo,

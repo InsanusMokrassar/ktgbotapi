@@ -7,6 +7,10 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.stopPoll(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -15,18 +19,30 @@ suspend fun TelegramBot.stopPoll(
     StopPoll(chatId, messageId, replyMarkup)
 )
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.stopPoll(
     chat: Chat,
     messageId: MessageIdentifier,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = stopPoll(chat.id, messageId, replyMarkup)
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.stopPoll(
     chatId: ChatId,
     message: Message,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = stopPoll(chatId, message.messageId, replyMarkup)
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.stopPoll(
     chat: Chat,
     message: Message,

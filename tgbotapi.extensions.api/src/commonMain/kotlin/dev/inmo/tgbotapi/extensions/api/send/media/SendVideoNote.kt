@@ -9,6 +9,10 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: InputFile,
@@ -33,6 +37,10 @@ suspend fun TelegramBot.sendVideoNote(
     )
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendVideoNote(
     chatId: ChatIdentifier,
     videoNote: VideoNoteFile,
@@ -44,6 +52,10 @@ suspend fun TelegramBot.sendVideoNote(
     chatId, videoNote.fileId, videoNote.thumb ?.fileId, videoNote.duration, videoNote.width, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendVideoNote(
     chat: Chat,
     videoNote: InputFile,
@@ -56,6 +68,10 @@ suspend fun TelegramBot.sendVideoNote(
     replyMarkup: KeyboardMarkup? = null
 ) = sendVideoNote(chat.id, videoNote, thumb, duration, size, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendVideoNote(
     chat: Chat,
     videoNote: VideoNoteFile,

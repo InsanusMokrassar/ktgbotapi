@@ -9,11 +9,21 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
+/**
+ * Representation union of https://core.telegram.org/bots/api#keyboardbutton . See inheritors for more info
+ */
 @Serializable(KeyboardButtonSerializer::class)
 sealed interface KeyboardButton {
     val text: String
 }
 
+/**
+ * Simple button. user will send text of this button. You will be able to catch this text in updates and data using
+ * [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onText] in
+ * case you are using Behaviour Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
+ * and [kotlinx.coroutines.flow.filterIsInstance] and filtering by type
+ * [dev.inmo.tgbotapi.types.message.abstracts.CommonMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyTextContentMessages]
+*/
 @Serializable
 data class SimpleKeyboardButton(
     override val text: String
@@ -25,22 +35,45 @@ data class UnknownKeyboardButton internal constructor(
     val raw: String
 ) : KeyboardButton
 
+/**
+ * Private chats only. When user will tap on this button, his contact (with his number and name) will be sent to the bot. You will be able
+ * to catch this contact in updates and data using [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onContact] in
+ * case you are using Behaviour Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
+ * and [kotlinx.coroutines.flow.filterIsInstance] and filtering by type
+ * [dev.inmo.tgbotapi.types.message.abstracts.CommonMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyContactContentMessages]
+*/
 @Serializable
 data class RequestContactKeyboardButton(
     override val text: String
 ) : KeyboardButton {
     @SerialName(requestContactField)
+    @EncodeDefault
     val requestContact: Boolean = true
 }
 
+/**
+ * Private chats only. When user will tap on this button, his location will be sent to the bot. You will be able
+ * to catch this location in updates and data using [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onLocation] in
+ * case you are using Behaviour Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
+ * and [kotlinx.coroutines.flow.filterIsInstance] and filtering by type
+ * [dev.inmo.tgbotapi.types.message.abstracts.CommonMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyLocationContentMessages]
+ */
 @Serializable
 data class RequestLocationKeyboardButton(
     override val text: String
 ) : KeyboardButton {
     @SerialName(requestLocationField)
+    @EncodeDefault
     val requestLocation: Boolean = true
 }
 
+/**
+ * Private chats only. When user will tap on this button, he will be asked for the poll with [requestPoll] options. You will be able
+ * to catch this poll in updates and data using [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onPoll] in
+ * case you are using Behaviour Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
+ * and [kotlinx.coroutines.flow.filterIsInstance] and filtering by type
+ * [dev.inmo.tgbotapi.types.message.abstracts.CommonMessage] and [dev.inmo.tgbotapi.extensions.utils.onlyPollContentMessages]
+ */
 @Serializable
 data class RequestPollKeyboardButton(
     override val text: String,

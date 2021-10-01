@@ -1,16 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api.send.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.send.replyWithDocuments
-import dev.inmo.tgbotapi.extensions.api.send.replyWithGallery
-import dev.inmo.tgbotapi.extensions.api.send.replyWithMediaGroup
-import dev.inmo.tgbotapi.extensions.api.send.replyWithPlaylist
 import dev.inmo.tgbotapi.requests.send.media.*
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 

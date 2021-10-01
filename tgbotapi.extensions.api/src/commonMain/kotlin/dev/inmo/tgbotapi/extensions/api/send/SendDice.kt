@@ -8,6 +8,10 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendDice(
     chatId: ChatIdentifier,
     animationType: DiceAnimationType? = null,
@@ -19,6 +23,10 @@ suspend fun TelegramBot.sendDice(
     SendDice(chatId, animationType, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 )
 
+/**
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
 suspend fun TelegramBot.sendDice(
     chat: Chat,
     animationType: DiceAnimationType? = null,

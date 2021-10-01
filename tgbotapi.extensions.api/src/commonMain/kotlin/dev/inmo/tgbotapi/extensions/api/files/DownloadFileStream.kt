@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.api.files
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.get.getFileAdditionalInfo
-import dev.inmo.tgbotapi.requests.DownloadFileStream
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile

@@ -13,6 +13,10 @@ import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -23,6 +27,10 @@ suspend fun TelegramBot.editMessageCaption(
     EditChatMessageCaption(chatId, messageId, text, parseMode, replyMarkup)
 )
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageCaption(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -31,6 +39,10 @@ suspend fun TelegramBot.editMessageCaption(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageCaption(chat.id, messageId, text, parseMode, replyMarkup)
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun <T> TelegramBot.editMessageCaption(
     message: ContentMessage<T>,
     text: String,
@@ -40,6 +52,10 @@ suspend fun <T> TelegramBot.editMessageCaption(
     return editMessageCaption(message.chat.id, message.messageId, text, parseMode, replyMarkup)
 }
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageIdentifier,
@@ -49,6 +65,10 @@ suspend fun TelegramBot.editMessageCaption(
     EditChatMessageCaption(chatId, messageId, entities, replyMarkup)
 )
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun TelegramBot.editMessageCaption(
     chat: Chat,
     messageId: MessageIdentifier,
@@ -56,6 +76,10 @@ suspend fun TelegramBot.editMessageCaption(
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageCaption(chat.id, messageId, entities, replyMarkup)
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
 suspend fun <T> TelegramBot.editMessageCaption(
     message: ContentMessage<T>,
     entities: List<TextSource>,
