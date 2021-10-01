@@ -9,6 +9,10 @@
         * `Serialization`: `1.2.2` -> `1.3.0`
         * `Ktor`: `1.6.3` -> `1.6.4`
         * `MicroUtils`: `0.5.28` -> `0.5.31`
+* `Utils`:
+    * Two new dsl:
+        * `inlineKeyboard` for creating `InlineKeyboardMarkup`
+        * `replyKeyboard` for creating `ReplyKeyboardMarkup`
 
 ## 0.35.9
 
