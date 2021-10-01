@@ -11,6 +11,8 @@
         * `MicroUtils`: `0.5.28` -> `0.5.31`
 * `Core`:
     * `PayInlineKeyboardButton#pay` now is deprecated
+    * `RowBuilder` and `MatrixBuilder` now are open and available for extending
+    * `MatrixBuilder#matrix` will return read-only new list instead of original internal `mutMatrix`
 * `Utils`:
     * Two new dsl:
         * `inlineKeyboard` for creating `InlineKeyboardMarkup`
