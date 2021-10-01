@@ -32,61 +32,6 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     val chatMemberUpdatesFlow: Flow<CommonChatMemberUpdatedUpdate>
     val myChatMemberUpdatesFlow: Flow<MyChatMemberUpdatedUpdate>
     val unknownUpdatesFlow: Flow<UnknownUpdate>
-
-    @Deprecated("Renamed", ReplaceWith("messagesFlow"))
-    val messageFlow: Flow<MessageUpdate>
-        get() = messagesFlow
-    @Deprecated("Renamed", ReplaceWith("messageMediaGroupsFlow"))
-    val messageMediaGroupFlow: Flow<MessageMediaGroupUpdate>
-        get() = messageMediaGroupsFlow
-    @Deprecated("Renamed", ReplaceWith("editedMessagesFlow"))
-    val editedMessageFlow: Flow<EditMessageUpdate>
-        get() = editedMessagesFlow
-    @Deprecated("Renamed", ReplaceWith("editedMessageMediaGroupsFlow"))
-    val editedMessageMediaGroupFlow: Flow<EditMessageMediaGroupUpdate>
-        get() = editedMessageMediaGroupsFlow
-    @Deprecated("Renamed", ReplaceWith("channelPostsFlow"))
-    val channelPostFlow: Flow<ChannelPostUpdate>
-        get() = channelPostsFlow
-    @Deprecated("Renamed", ReplaceWith("channelPostMediaGroupsFlow"))
-    val channelPostMediaGroupFlow: Flow<ChannelPostMediaGroupUpdate>
-        get() = channelPostMediaGroupsFlow
-    @Deprecated("Renamed", ReplaceWith("editedChannelPostsFlow"))
-    val editedChannelPostFlow: Flow<EditChannelPostUpdate>
-        get() = editedChannelPostsFlow
-    @Deprecated("Renamed", ReplaceWith("editedChannelPostMediaGroupsFlow"))
-    val editedChannelPostMediaGroupFlow: Flow<EditChannelPostMediaGroupUpdate>
-        get() = editedChannelPostMediaGroupsFlow
-    @Deprecated("Renamed", ReplaceWith("chosenInlineResultsFlow"))
-    val chosenInlineResultFlow: Flow<ChosenInlineResultUpdate>
-        get() = chosenInlineResultsFlow
-    @Deprecated("Renamed", ReplaceWith("inlineQueriesFlow"))
-    val inlineQueryFlow: Flow<InlineQueryUpdate>
-        get() = inlineQueriesFlow
-    @Deprecated("Renamed", ReplaceWith("callbackQueriesFlow"))
-    val callbackQueryFlow: Flow<CallbackQueryUpdate>
-        get() = callbackQueriesFlow
-    @Deprecated("Renamed", ReplaceWith("shippingQueriesFlow"))
-    val shippingQueryFlow: Flow<ShippingQueryUpdate>
-        get() = shippingQueriesFlow
-    @Deprecated("Renamed", ReplaceWith("preCheckoutQueriesFlow"))
-    val preCheckoutQueryFlow: Flow<PreCheckoutQueryUpdate>
-        get() = preCheckoutQueriesFlow
-    @Deprecated("Renamed", ReplaceWith("pollsFlow"))
-    val pollFlow: Flow<PollUpdate>
-        get() = pollsFlow
-    @Deprecated("Renamed", ReplaceWith("pollAnswersFlow"))
-    val pollAnswerFlow: Flow<PollAnswerUpdate>
-        get() = pollAnswersFlow
-    @Deprecated("Renamed", ReplaceWith("chatMemberUpdatesFlow"))
-    val chatMemberUpdatedFlow: Flow<CommonChatMemberUpdatedUpdate>
-        get() = chatMemberUpdatesFlow
-    @Deprecated("Renamed", ReplaceWith("myChatMemberUpdatesFlow"))
-    val myChatMemberUpdatedFlow: Flow<MyChatMemberUpdatedUpdate>
-        get() = myChatMemberUpdatesFlow
-    @Deprecated("Renamed", ReplaceWith("unknownUpdatesFlow"))
-    val unknownUpdateTypeFlow: Flow<UnknownUpdate>
-        get() = unknownUpdatesFlow
 }
 
 /**

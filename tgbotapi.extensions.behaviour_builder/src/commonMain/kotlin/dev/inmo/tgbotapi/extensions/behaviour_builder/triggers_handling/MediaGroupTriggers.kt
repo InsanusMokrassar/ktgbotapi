@@ -25,58 +25,6 @@ internal suspend inline fun <reified T : MediaGroupContent> BehaviourContext.bui
     (it.asSentMediaGroupUpdate() ?.data ?.takeIf { it.all { it is T } } as? List<MediaGroupMessage<T>>) ?.let(::listOfNotNull)
 }
 
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onMediaGroup(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<List<MediaGroupMessage<MediaGroupContent>>>? = null,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<MediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, List<MediaGroupMessage<MediaGroupContent>>>
-) = buildMediaGroupTrigger(additionalFilter, if (includeFilterByChatInBehaviourSubContext) MessagesFilterByChat else null, markerFactory, scenarioReceiver)
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onPlaylist(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<List<MediaGroupMessage<AudioMediaGroupContent>>>? = null,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<AudioMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, List<MediaGroupMessage<AudioMediaGroupContent>>>
-) = buildMediaGroupTrigger(additionalFilter, if (includeFilterByChatInBehaviourSubContext) MessagesFilterByChat else null, markerFactory, scenarioReceiver)
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onDocumentsGroup(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<List<MediaGroupMessage<DocumentMediaGroupContent>>>? = null,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<DocumentMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, List<MediaGroupMessage<DocumentMediaGroupContent>>>
-) = buildMediaGroupTrigger(additionalFilter, if (includeFilterByChatInBehaviourSubContext) MessagesFilterByChat else null, markerFactory, scenarioReceiver)
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onVisualGallery(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<List<MediaGroupMessage<VisualMediaGroupContent>>>? = null,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<VisualMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, List<MediaGroupMessage<VisualMediaGroupContent>>>
-) = buildMediaGroupTrigger(additionalFilter, if (includeFilterByChatInBehaviourSubContext) MessagesFilterByChat else null, markerFactory, scenarioReceiver)
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onVisualMediaGroup(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<List<MediaGroupMessage<VisualMediaGroupContent>>>? = null,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<VisualMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, List<MediaGroupMessage<VisualMediaGroupContent>>>
-) = onVisualGallery(additionalFilter, if (includeFilterByChatInBehaviourSubContext) MessagesFilterByChat else null, markerFactory, scenarioReceiver)
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onPhotoGallery(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<List<MediaGroupMessage<PhotoContent>>>? = null,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<PhotoContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, List<MediaGroupMessage<PhotoContent>>>
-) = buildMediaGroupTrigger(additionalFilter, if (includeFilterByChatInBehaviourSubContext) MessagesFilterByChat else null, markerFactory, scenarioReceiver)
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onVideoGallery(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<List<MediaGroupMessage<VideoContent>>>? = null,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<VideoContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, List<MediaGroupMessage<VideoContent>>>
-) = buildMediaGroupTrigger(additionalFilter, if (includeFilterByChatInBehaviourSubContext) MessagesFilterByChat else null, markerFactory, scenarioReceiver)
-
-
-
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,

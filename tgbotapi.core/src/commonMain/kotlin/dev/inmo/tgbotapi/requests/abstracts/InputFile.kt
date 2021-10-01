@@ -64,20 +64,10 @@ data class MultipartFile (
     val filename: String = file.storageFileInfo.fileName
 ) : InputFile() {
     override val fileId: String = file.storageFileInfo.generateCustomName()
-
-    @Deprecated("This constructor is redundant. Use constructor without mime type")
-    constructor(file: StorageFile, mimeType: String, filename: String): this(file, filename)
 }
 
 @Suppress("NOTHING_TO_INLINE", "unused")
 inline fun StorageFile.asMultipartFile() = MultipartFile(this)
-
-@Deprecated("This method is redundant. Use asMultipartFile without mime type")
-@Suppress("NOTHING_TO_INLINE", "unused")
-inline fun ByteArray.asMultipartFile(
-    fileName: String,
-    mimeType: MimeType
-) = MultipartFile(asStorageFile(fileName))
 
 @Suppress("NOTHING_TO_INLINE", "unused")
 suspend inline fun ByteReadChannel.asMultipartFile(

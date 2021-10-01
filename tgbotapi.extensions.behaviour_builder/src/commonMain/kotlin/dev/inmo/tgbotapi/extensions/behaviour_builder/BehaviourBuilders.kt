@@ -26,36 +26,6 @@ expect var defaultCoroutineScopeProvider: () -> CoroutineScope
  * @see startGettingOfUpdatesByLongPolling
  */
 @PreviewFeature
-@Deprecated("Parameters has been reordered. Replace scope and flowUpdatesFilter for correct order")
-suspend fun TelegramBot.buildBehaviour(
-    scope: CoroutineScope,
-    flowUpdatesFilter: FlowsUpdatesFilter,
-    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
-    block: BehaviourContextReceiver<Unit>
-) {
-    BehaviourContext(
-        this,
-        scope.let {
-              if (defaultExceptionsHandler == null) {
-                  it
-              } else {
-                  it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
-              }
-        },
-        flowUpdatesFilter
-    ).block()
-}
-
-/**
- * Use this method in case you wish to make some additional actions with [flowUpdatesFilter].
- *
- * **WARNING** This method WILL NOT launch any listening of updates. Use something like
- * [startGettingOfUpdatesByLongPolling] or tools for work with webhooks
- *
- * @see [BehaviourContext]
- * @see startGettingOfUpdatesByLongPolling
- */
-@PreviewFeature
 suspend fun TelegramBot.buildBehaviour(
     flowUpdatesFilter: FlowsUpdatesFilter,
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
@@ -90,8 +60,8 @@ suspend fun TelegramBot.buildBehaviour(
     block: BehaviourContextReceiver<Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviour(
-        scope,
         it,
+        scope,
         defaultExceptionsHandler,
         block
     )

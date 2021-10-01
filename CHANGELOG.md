@@ -2,6 +2,14 @@
 
 ## 0.36.0
 
+**ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
+
+* `Common`:
+    * `Version`:
+        * `Serialization`: `1.2.2` -> `1.3.0`
+        * `Ktor`: `1.6.3` -> `1.6.4`
+        * `MicroUtils`: `0.5.28` -> `0.5.31`
+
 ## 0.35.9
 
 * `Common`:

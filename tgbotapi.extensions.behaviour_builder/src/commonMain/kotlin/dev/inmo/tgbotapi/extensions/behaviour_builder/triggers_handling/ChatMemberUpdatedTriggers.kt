@@ -22,45 +22,6 @@ internal suspend inline fun <reified U : ChatMemberUpdatedUpdate> BehaviourConte
     ((it as? U) ?.data) ?.let(::listOfNotNull)
 }
 
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onChatMemberUpdated(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<ChatMemberUpdated>? = null,
-    markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdatedInternal<ChatMemberUpdatedUpdate>(
-    additionalFilter,
-    if (includeFilterByChatInBehaviourSubContext) ChatMemberUpdatedFilterByChat else null,
-    markerFactory,
-    scenarioReceiver
-)
-
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onCommonChatMemberUpdated(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<ChatMemberUpdated>? = null,
-    markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdatedInternal<CommonChatMemberUpdatedUpdate>(
-    additionalFilter,
-    if (includeFilterByChatInBehaviourSubContext) ChatMemberUpdatedFilterByChat else null,
-    markerFactory,
-    scenarioReceiver
-)
-
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onMyChatMemberUpdated(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<ChatMemberUpdated>? = null,
-    markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdatedInternal<MyChatMemberUpdatedUpdate>(
-    additionalFilter,
-    if (includeFilterByChatInBehaviourSubContext) ChatMemberUpdatedFilterByChat else null,
-    markerFactory,
-    scenarioReceiver
-)
-
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call

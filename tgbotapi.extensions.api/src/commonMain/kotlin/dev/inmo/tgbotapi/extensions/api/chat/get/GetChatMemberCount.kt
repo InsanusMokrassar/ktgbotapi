@@ -12,13 +12,3 @@ suspend fun TelegramBot.getChatMemberCount(
 suspend fun TelegramBot.getChatMemberCount(
     chat: PublicChat
 ) = getChatMemberCount(chat.id)
-
-@Deprecated("Renamed", ReplaceWith("getChatMemberCount", "dev.inmo.tgbotapi.extensions.api.chat.get.getChatMemberCount"))
-suspend fun TelegramBot.getChatMembersCount(
-    chatId: ChatIdentifier
-) = getChatMemberCount(chatId)
-
-@Deprecated("Renamed", ReplaceWith("getChatMemberCount", "dev.inmo.tgbotapi.extensions.api.chat.get.getChatMemberCount"))
-suspend fun TelegramBot.getChatMembersCount(
-    chat: PublicChat
-) = getChatMemberCount(chat)

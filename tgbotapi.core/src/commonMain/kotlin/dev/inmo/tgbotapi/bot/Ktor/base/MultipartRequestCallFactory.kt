@@ -35,7 +35,4 @@ class MultipartRequestCallFactory : AbstractRequestCallFactory() {
             }
         )
     }
-
-    @Deprecated("Use class MultipartRequestCallFactory() constructor call instead of just MultipartRequestCallFactory")
-    companion object : KtorCallFactory by MultipartRequestCallFactory()
 }

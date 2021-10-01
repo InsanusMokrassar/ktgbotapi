@@ -20,19 +20,6 @@ internal suspend inline fun <reified T : EncryptedPassportElement> BehaviourCont
     (it.asMessageUpdate() ?.data ?.asPassportMessage() ?.takeIf { it.passportData.data.any { it is T } }) ?.let(::listOfNotNull)
 }
 
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onPassportMessage(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<PassportMessage>? = null,
-    markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, PassportMessage>
-) = onPassportMessageWith<EncryptedPassportElement>(
-    additionalFilter,
-    if (includeFilterByChatInBehaviourSubContext) MessageFilterByChat else null,
-    markerFactory,
-    scenarioReceiver
-)
-
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call

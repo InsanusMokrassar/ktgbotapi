@@ -18,6 +18,3 @@ data class GetChatMemberCount(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Renamed", ReplaceWith("GetChatMemberCount", "dev.inmo.tgbotapi.requests.chat.get.GetChatMemberCount"))
-typealias GetChatMembersCount = GetChatMemberCount

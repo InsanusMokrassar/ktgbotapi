@@ -60,32 +60,3 @@ suspend fun TelegramBot.sendInvoice(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = sendInvoice(user.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
-
-
-@Deprecated(
-    "Replaced",
-    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
-)
-suspend inline fun TelegramBot.replyWithInvoice(
-    to: Message,
-    title: String,
-    description: String,
-    payload: String,
-    providerToken: String,
-    currency: Currency,
-    prices: List<LabeledPrice>,
-    maxTipAmount: Int? = null,
-    suggestedTipAmounts: List<Int>? = null,
-    startParameter: StartParameter? = null,
-    providerData: String? = null,
-    requireName: Boolean = false,
-    requirePhoneNumber: Boolean = false,
-    requireEmail: Boolean = false,
-    requireShippingAddress: Boolean = false,
-    shouldSendPhoneNumberToProvider: Boolean = false,
-    shouldSendEmailToProvider: Boolean = false,
-    priceDependOnShipAddress: Boolean = false,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: InlineKeyboardMarkup? = null
-) = reply(to, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, allowSendingWithoutReply, replyMarkup)

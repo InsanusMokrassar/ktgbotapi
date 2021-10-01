@@ -32,35 +32,3 @@ suspend fun TelegramBot.banChatMember(
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null
 ) = banChatMember(chat.id, user.id, untilDate, revokeMessages)
-
-@Deprecated("Renamed", ReplaceWith("banChatMember", "dev.inmo.tgbotapi.extensions.api.chat.members.banChatMember"))
-suspend fun TelegramBot.kickChatMember(
-    chatId: ChatIdentifier,
-    userId: UserId,
-    untilDate: TelegramDate? = null,
-    revokeMessages: Boolean? = null
-) = banChatMember(chatId, userId, untilDate, revokeMessages)
-
-@Deprecated("Renamed", ReplaceWith("banChatMember", "dev.inmo.tgbotapi.extensions.api.chat.members.banChatMember"))
-suspend fun TelegramBot.kickChatMember(
-    chat: PublicChat,
-    userId: UserId,
-    untilDate: TelegramDate? = null,
-    revokeMessages: Boolean? = null
-) = banChatMember(chat, userId, untilDate, revokeMessages)
-
-@Deprecated("Renamed", ReplaceWith("banChatMember", "dev.inmo.tgbotapi.extensions.api.chat.members.banChatMember"))
-suspend fun TelegramBot.kickChatMember(
-    chatId: ChatId,
-    user: User,
-    untilDate: TelegramDate? = null,
-    revokeMessages: Boolean? = null
-) = banChatMember(chatId, user, untilDate, revokeMessages)
-
-@Deprecated("Renamed", ReplaceWith("banChatMember", "dev.inmo.tgbotapi.extensions.api.chat.members.banChatMember"))
-suspend fun TelegramBot.kickChatMember(
-    chat: PublicChat,
-    user: User,
-    untilDate: TelegramDate? = null,
-    revokeMessages: Boolean? = null
-) = banChatMember(chat, user, untilDate, revokeMessages)

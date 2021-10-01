@@ -10,6 +10,3 @@ data class LeftChatMemberImpl(@SerialName(userField) override val user: User) : 
     @Required
     private val type: String = "left"
 }
-
-@Deprecated("Renamed", ReplaceWith("LeftChatMemberImpl", "dev.inmo.tgbotapi.types.ChatMember.LeftChatMemberImpl"))
-typealias LeftChatMember = LeftChatMemberImpl

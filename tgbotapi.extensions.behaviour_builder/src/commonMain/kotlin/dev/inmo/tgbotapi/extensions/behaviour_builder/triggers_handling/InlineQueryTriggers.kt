@@ -18,33 +18,6 @@ internal suspend inline fun <reified T : InlineQuery> BehaviourContext.onInlineQ
     (it.asInlineQueryUpdate() ?.data as? T) ?.let(::listOfNotNull)
 }
 
-
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onAnyInlineQuery(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<InlineQuery>? = null,
-    markerFactory: MarkerFactory<in InlineQuery, Any> = ByUserInlineQueryMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineQuery>
-) = onInlineQuery(additionalFilter, if (includeFilterByChatInBehaviourSubContext) InlineQueryFilterByUser else null, markerFactory, scenarioReceiver)
-
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onBaseInlineQuery(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<BaseInlineQuery>? = null,
-    markerFactory: MarkerFactory<in BaseInlineQuery, Any> = ByUserInlineQueryMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, BaseInlineQuery>
-) = onInlineQuery(additionalFilter, if (includeFilterByChatInBehaviourSubContext) InlineQueryFilterByUser else null, markerFactory, scenarioReceiver)
-
-@Deprecated(OldAPITriggersDeprecationText)
-suspend fun BehaviourContext.onLocationInlineQuery(
-    includeFilterByChatInBehaviourSubContext: Boolean,
-    additionalFilter: SimpleFilter<LocationInlineQuery>? = null,
-    markerFactory: MarkerFactory<in LocationInlineQuery, Any> = ByUserInlineQueryMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, LocationInlineQuery>
-) = onInlineQuery(additionalFilter, if (includeFilterByChatInBehaviourSubContext) InlineQueryFilterByUser else null, markerFactory, scenarioReceiver)
-
-
-
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,

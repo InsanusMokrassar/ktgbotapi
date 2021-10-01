@@ -56,39 +56,3 @@ suspend fun TelegramBot.sendGame(
 ) = sendGame(
     chat.id, game.title, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
-
-@Deprecated(
-    "Replaced",
-    ReplaceWith("replyWithGame", "dev.inmo.tgbotapi.extensions.api.send.replyWithGame")
-)
-suspend inline fun TelegramBot.replyWithGame(
-    to: Message,
-    gameShortName: String,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = replyWithGame(to, gameShortName, disableNotification, allowSendingWithoutReply, replyMarkup)
-
-@Deprecated(
-    "Replaced",
-    ReplaceWith("replyWithGame", "dev.inmo.tgbotapi.extensions.api.send.replyWithGame")
-)
-suspend inline fun TelegramBot.replyWithGame(
-    to: Message,
-    game: Game,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = replyWithGame(to, game, disableNotification, allowSendingWithoutReply, replyMarkup)
-
-@Deprecated(
-    "Replaced",
-    ReplaceWith("reply", "dev.inmo.tgbotapi.extensions.api.send.reply")
-)
-suspend inline fun TelegramBot.reply(
-    to: Message,
-    game: Game,
-    disableNotification: Boolean = false,
-    allowSendingWithoutReply: Boolean? = null,
-    replyMarkup: KeyboardMarkup? = null
-) = reply(to, game, disableNotification, allowSendingWithoutReply, replyMarkup)
