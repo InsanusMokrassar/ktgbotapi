@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <reified T : ChatEvent> BehaviourContext.onEvent(
@@ -41,6 +42,25 @@ suspend fun BehaviourContext.onChannelEvent(
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatEventMessage<ChannelEvent>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<ChannelEvent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<ChannelEvent>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun BehaviourContext.onPrivateEvent(
+    initialFilter: SimpleFilter<ChatEventMessage<PrivateEvent>>? = null,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatEventMessage<PrivateEvent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<PrivateEvent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<PrivateEvent>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -155,6 +175,25 @@ suspend fun BehaviourContext.onMessageAutoDeleteTimerChangedEvent(
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatEventMessage<MessageAutoDeleteTimerChanged>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<MessageAutoDeleteTimerChanged>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<MessageAutoDeleteTimerChanged>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun BehaviourContext.onCommonGroupEvent(
+    initialFilter: SimpleFilter<ChatEventMessage<CommonGroupEvent>>? = null,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatEventMessage<CommonGroupEvent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<CommonGroupEvent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<CommonGroupEvent>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -402,4 +441,23 @@ suspend fun BehaviourContext.onSupergroupChatCreated(
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatEventMessage<SupergroupChatCreated>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<SupergroupChatCreated>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<SupergroupChatCreated>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun BehaviourContext.onSuccessfulPayment(
+    initialFilter: SimpleFilter<ChatEventMessage<SuccessfulPaymentEvent>>? = null,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatEventMessage<SuccessfulPaymentEvent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<SuccessfulPaymentEvent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<SuccessfulPaymentEvent>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

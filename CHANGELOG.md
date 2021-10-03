@@ -13,6 +13,8 @@
     * `PayInlineKeyboardButton#pay` now is deprecated
     * `RowBuilder` and `MatrixBuilder` now are open and available for extending
     * `MatrixBuilder#matrix` will return read-only new list instead of original internal `mutMatrix`
+    * Introduced new type of events `SuccessfulPaymentEvent` instead of putting of payment inside of message
+    * New type of events union: `CommonGroupEvent`
 * `Utils`:
     * Two new dsl:
         * `inlineKeyboard` for creating `InlineKeyboardMarkup`

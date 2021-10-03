@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import kotlinx.coroutines.flow.toList
 
 typealias EventMessageToEventMapper<T> = suspend ChatEventMessage<T>.() -> T?
@@ -72,6 +73,14 @@ suspend fun BehaviourContext.waitChannelEvents(
     mapper: EventMessageToEventMapper<ChannelEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
 
+suspend fun BehaviourContext.waitPrivateEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<ChatEventMessage<PrivateEvent>>? = null,
+    mapper: EventMessageToEventMapper<PrivateEvent>? = null
+) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+
 suspend fun BehaviourContext.waitChatEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -117,6 +126,14 @@ suspend fun BehaviourContext.waitMessageAutoDeleteTimerChangedEvents(
     mapper: EventMessageToEventMapper<MessageAutoDeleteTimerChanged>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
 
+
+suspend fun BehaviourContext.waitCommonGroupEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<ChatEventMessage<CommonGroupEvent>>? = null,
+    mapper: EventMessageToEventMapper<CommonGroupEvent>? = null
+) = waitEvents(count, initRequest, errorFactory, filter, mapper)
 suspend fun BehaviourContext.waitCommonEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -124,6 +141,7 @@ suspend fun BehaviourContext.waitCommonEvents(
     filter: SimpleFilter<ChatEventMessage<CommonEvent>>? = null,
     mapper: EventMessageToEventMapper<CommonEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+
 suspend fun BehaviourContext.waitGroupEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -208,4 +226,11 @@ suspend fun BehaviourContext.waitSupergroupChatCreatedEvents(
     count: Int = 1,
     filter: SimpleFilter<ChatEventMessage<SupergroupChatCreated>>? = null,
     mapper: EventMessageToEventMapper<SupergroupChatCreated>? = null
+) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitSuccessfulPaymentEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<ChatEventMessage<SuccessfulPaymentEvent>>? = null,
+    mapper: EventMessageToEventMapper<SuccessfulPaymentEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)

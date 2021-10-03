@@ -6,7 +6,10 @@ import dev.inmo.micro_utils.coroutines.plus
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
+import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
+import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.coroutines.flow.Flow
@@ -33,6 +36,11 @@ inline fun FlowsUpdatesFilter.supergroupEvents(): Flow<SupergroupEventMessage<*>
 }
 
 @RiskFeature("Use with caution")
+inline fun FlowsUpdatesFilter.privateEvents(): Flow<PrivateEventMessage<*>> = messagesFlow.mapNotNull {
+    it.data as? PrivateEventMessage<*>
+}
+
+@RiskFeature("Use with caution")
 inline fun <reified T: ChatEvent, reified O: ChatEventMessage<T>> Flow<ChatEventMessage<*>>.filterByChatEvent(): Flow<O> = mapNotNull {
     if (it.chatEvent is T) it as? O else null
 }
@@ -51,6 +59,8 @@ inline fun Flow<ChatEventMessage<*>>.newChannelTitleEvents() = filterChannelEven
 inline fun FlowsUpdatesFilter.newChannelTitleEvents() = filterChannelEvents<NewChatTitle>()
 inline fun Flow<ChatEventMessage<*>>.newChannelPinnedMessageEvents() = filterChannelEvents<PinnedMessage>()
 inline fun FlowsUpdatesFilter.newChannelPinnedMessageEvents() = filterChannelEvents<PinnedMessage>()
+inline fun Flow<ChatEventMessage<*>>.successfulPaymentInChannelEvents() = filterChannelEvents<SuccessfulPaymentEvent>()
+inline fun FlowsUpdatesFilter.successfulPaymentInChannelEvents() = filterChannelEvents<SuccessfulPaymentEvent>()
 inline fun Flow<ChatEventMessage<*>>.channelEvents() = filterChannelEvents<ChannelEvent>()
 
 @RiskFeature("Use with caution")
@@ -73,6 +83,8 @@ inline fun Flow<ChatEventMessage<*>>.newGroupPinnedMessageEvents() = filterGroup
 inline fun FlowsUpdatesFilter.newGroupPinnedMessageEvents() = filterGroupEvents<PinnedMessage>()
 inline fun Flow<ChatEventMessage<*>>.proximityAlertTriggeredInGroupEvents() = filterGroupEvents<ProximityAlertTriggered>()
 inline fun FlowsUpdatesFilter.proximityAlertTriggeredInGroupEvents() = filterGroupEvents<ProximityAlertTriggered>()
+inline fun Flow<ChatEventMessage<*>>.successfulPaymentInGroupEvents() = filterGroupEvents<SuccessfulPaymentEvent>()
+inline fun FlowsUpdatesFilter.successfulPaymentInGroupEvents() = filterGroupEvents<SuccessfulPaymentEvent>()
 inline fun Flow<ChatEventMessage<*>>.groupEvents() = filterGroupEvents<GroupEvent>()
 
 
@@ -96,4 +108,16 @@ inline fun Flow<ChatEventMessage<*>>.newSupergroupPinnedMessageEvents() = filter
 inline fun FlowsUpdatesFilter.newSupergroupPinnedMessageEvents() = filterSupergroupEvents<PinnedMessage>()
 inline fun Flow<ChatEventMessage<*>>.proximityAlertTriggeredInSupergroupEvents() = filterSupergroupEvents<ProximityAlertTriggered>()
 inline fun FlowsUpdatesFilter.proximityAlertTriggeredInSupergroupEvents() = filterSupergroupEvents<ProximityAlertTriggered>()
+inline fun Flow<ChatEventMessage<*>>.successfulPaymentInSupergroupEvents() = filterSupergroupEvents<SuccessfulPaymentEvent>()
+inline fun FlowsUpdatesFilter.successfulPaymentInSupergroupEvents() = filterSupergroupEvents<SuccessfulPaymentEvent>()
 inline fun Flow<ChatEventMessage<*>>.supergroupEvents() = filterSupergroupEvents<SupergroupEvent>()
+
+@RiskFeature("Use with caution")
+inline fun <reified T : PrivateEvent> Flow<ChatEventMessage<*>>.filterPrivateEvents() = filterByChatEvent<T, PrivateEventMessage<T>>()
+@RiskFeature("Use with caution")
+inline fun <reified T : PrivateEvent> FlowsUpdatesFilter.filterPrivateEvents() = privateEvents().filterByChatEvent<T, PrivateEventMessage<T>>()
+inline fun Flow<ChatEventMessage<*>>.successfulPaymentInPrivateEvents() = filterPrivateEvents<SuccessfulPaymentEvent>()
+inline fun FlowsUpdatesFilter.successfulPaymentInPrivateEvents() = filterPrivateEvents<SuccessfulPaymentEvent>()
+inline fun Flow<ChatEventMessage<*>>.newPrivatePinnedMessageEvents() = filterPrivateEvents<PinnedMessage>()
+inline fun FlowsUpdatesFilter.newPrivatePinnedMessageEvents() = filterPrivateEvents<PinnedMessage>()
+inline fun Flow<ChatEventMessage<*>>.privateEvents() = filterPrivateEvents<PrivateEvent>()

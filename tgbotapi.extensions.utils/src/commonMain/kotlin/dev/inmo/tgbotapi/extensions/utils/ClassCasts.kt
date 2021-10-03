@@ -1093,6 +1093,15 @@ inline fun Message.asGroupEventMessage(): GroupEventMessage<GroupEvent>? = this 
 inline fun Message.requireGroupEventMessage(): GroupEventMessage<GroupEvent> = this as GroupEventMessage<GroupEvent>
 
 @PreviewFeature
+inline fun <T> Message.whenPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T) = asPrivateEventMessage() ?.let(block)
+
+@PreviewFeature
+inline fun Message.asPrivateEventMessage(): PrivateEventMessage<PrivateEvent>? = this as? PrivateEventMessage<PrivateEvent>
+
+@PreviewFeature
+inline fun Message.requirePrivateEventMessage(): PrivateEventMessage<PrivateEvent> = this as PrivateEventMessage<PrivateEvent>
+
+@PreviewFeature
 inline fun <T> Message.whenGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T) = asGroupContentMessage() ?.let(block)
 
 @PreviewFeature
@@ -3034,13 +3043,13 @@ inline fun ChatEvent.asChannelEvent(): ChannelEvent? = this as? ChannelEvent
 inline fun ChatEvent.requireChannelEvent(): ChannelEvent = this as ChannelEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenCommonEvent(block: (CommonEvent) -> T) = asCommonEvent() ?.let(block)
+inline fun <T> ChatEvent.whenCommonEvent(block: (CommonGroupEvent) -> T) = asCommonEvent() ?.let(block)
 
 @PreviewFeature
-inline fun ChatEvent.asCommonEvent(): CommonEvent? = this as? CommonEvent
+inline fun ChatEvent.asCommonEvent(): CommonGroupEvent? = this as? CommonGroupEvent
 
 @PreviewFeature
-inline fun ChatEvent.requireCommonEvent(): CommonEvent = this as CommonEvent
+inline fun ChatEvent.requireCommonEvent(): CommonGroupEvent = this as CommonGroupEvent
 
 @PreviewFeature
 inline fun <T> ChatEvent.whenGroupEvent(block: (GroupEvent) -> T) = asGroupEvent() ?.let(block)

@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentInfo
+import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 
 data class PrivateContentMessageImpl<T: MessageContent>(
     override val messageId: MessageIdentifier,
@@ -20,5 +20,7 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
-    val paymentInfo: SuccessfulPaymentInfo?
-) : PrivateContentMessage<T>
+) : PrivateContentMessage<T> {
+    @Deprecated("This value will always be null. You may get SuccessfulPayment as one of ChatEvents")
+    val paymentInfo: SuccessfulPaymentEvent? = null
+}
