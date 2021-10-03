@@ -6,6 +6,8 @@ import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
 import dev.inmo.tgbotapi.types.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
+import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 /**
@@ -26,6 +28,18 @@ val MessagesFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, List<Mess
  * Allow only updates from the same user as base [CallbackQuery.user]
  */
 val CallbackQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, CallbackQuery, Update> = { query, update ->
+    update.sourceChat() ?.id == query.user.id
+}
+/**
+ * Allow only updates from the same user as base [ShippingQuery.user]
+ */
+val ShippingQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, ShippingQuery, Update> = { query, update ->
+    update.sourceChat() ?.id == query.user.id
+}
+/**
+ * Allow only updates from the same user as base [ShippingQuery.user]
+ */
+val PreCheckoutQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, PreCheckoutQuery, Update> = { query, update ->
     update.sourceChat() ?.id == query.user.id
 }
 /**

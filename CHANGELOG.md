@@ -19,6 +19,11 @@
     * Two new dsl:
         * `inlineKeyboard` for creating `InlineKeyboardMarkup`
         * `replyKeyboard` for creating `ReplyKeyboardMarkup`
+* `Behaviour Builder`:
+    * New expecters and waiters:
+        * `waitShippingQueries`/`onShippingQuery`
+        * `waitPreCheckoutQueries`/`onPreCheckoutQuery`
+        * `waitChosenInlineResult`/`onChosenInlineResult`
 
 ## 0.35.9
 

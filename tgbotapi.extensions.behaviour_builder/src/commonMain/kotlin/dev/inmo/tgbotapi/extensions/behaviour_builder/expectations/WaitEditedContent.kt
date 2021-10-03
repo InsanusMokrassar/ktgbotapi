@@ -119,6 +119,9 @@ suspend fun BehaviourContext.waitEditedStaticLocation(
     filter: SimpleFilter<CommonMessage<StaticLocationContent>>? = null,
     mapper: CommonMessageToContentMapper<StaticLocationContent>? = null
 ) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+/**
+ * This
+ */
 suspend fun BehaviourContext.waitEditedPoll(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
