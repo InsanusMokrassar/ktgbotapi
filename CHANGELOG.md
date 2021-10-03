@@ -24,6 +24,7 @@
         * `waitShippingQueries`/`onShippingQuery`
         * `waitPreCheckoutQueries`/`onPreCheckoutQuery`
         * `waitChosenInlineResult`/`onChosenInlineResult`
+        * `waitPollUpdates`/`onPollUpdates`
 
 ## 0.35.9
 

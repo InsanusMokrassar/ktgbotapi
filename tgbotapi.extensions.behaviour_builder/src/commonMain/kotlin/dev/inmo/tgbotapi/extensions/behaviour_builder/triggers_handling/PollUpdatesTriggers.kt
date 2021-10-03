@@ -30,7 +30,7 @@ internal suspend inline fun <reified T : Poll> BehaviourContext.onPollUpdatedBas
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onPollUpdated(
+suspend fun BehaviourContext.onPollUpdates(
     initialFilter: SimpleFilter<Poll>? = null,
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, Poll, Update>? = null,
     markerFactory: MarkerFactory<in Poll, Any> = ByIdPollMarkerFactory,
@@ -54,7 +54,7 @@ suspend fun BehaviourContext.onPollUpdated(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onRegularPollUpdated(
+suspend fun BehaviourContext.onRegularPollUpdates(
     initialFilter: SimpleFilter<RegularPoll>? = null,
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, RegularPoll, Update>? = null,
     markerFactory: MarkerFactory<in RegularPoll, Any> = ByIdPollMarkerFactory,
@@ -78,7 +78,7 @@ suspend fun BehaviourContext.onRegularPollUpdated(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onQuizPollUpdated(
+suspend fun BehaviourContext.onQuizPollUpdates(
     initialFilter: SimpleFilter<QuizPoll>? = null,
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, QuizPoll, Update>? = null,
     markerFactory: MarkerFactory<in QuizPoll, Any> = ByIdPollMarkerFactory,
