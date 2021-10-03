@@ -37,7 +37,7 @@ suspend fun BehaviourContext.onDataCallbackQuery(
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, DataCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in DataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, DataCallbackQuery>
-) = onPollAnswered(
+) = onCallbackQuery(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
@@ -61,7 +61,7 @@ suspend fun BehaviourContext.onGameShortNameCallbackQuery(
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, GameShortNameCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in GameShortNameCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, GameShortNameCallbackQuery>
-) = onPollAnswered(
+) = onCallbackQuery(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
@@ -85,7 +85,7 @@ suspend fun BehaviourContext.onInlineMessageIdCallbackQuery(
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, InlineMessageIdCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in InlineMessageIdCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineMessageIdCallbackQuery>
-) = onPollAnswered(
+) = onCallbackQuery(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
@@ -157,7 +157,7 @@ suspend fun BehaviourContext.onMessageCallbackQuery(
     subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, MessageCallbackQuery, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in MessageCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, MessageCallbackQuery>
-) = onPollAnswered(
+) = onCallbackQuery(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
