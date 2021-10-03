@@ -189,11 +189,11 @@ suspend fun BehaviourContext.onMessageAutoDeleteTimerChangedEvent(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onCommonGroupEvent(
-    initialFilter: SimpleFilter<ChatEventMessage<CommonGroupEvent>>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatEventMessage<CommonGroupEvent>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<CommonGroupEvent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<CommonGroupEvent>>
+suspend fun BehaviourContext.onPublicChatEvent(
+    initialFilter: SimpleFilter<ChatEventMessage<PublicChatEvent>>? = null,
+    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatEventMessage<PublicChatEvent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<PublicChatEvent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatEventMessage<PublicChatEvent>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**

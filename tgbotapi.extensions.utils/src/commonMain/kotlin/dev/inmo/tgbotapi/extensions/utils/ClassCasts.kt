@@ -3043,13 +3043,22 @@ inline fun ChatEvent.asChannelEvent(): ChannelEvent? = this as? ChannelEvent
 inline fun ChatEvent.requireChannelEvent(): ChannelEvent = this as ChannelEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenCommonEvent(block: (CommonGroupEvent) -> T) = asCommonEvent() ?.let(block)
+inline fun <T> ChatEvent.whenPublicChatEvent(block: (PublicChatEvent) -> T) = asPublicChatEvent() ?.let(block)
 
 @PreviewFeature
-inline fun ChatEvent.asCommonEvent(): CommonGroupEvent? = this as? CommonGroupEvent
+inline fun ChatEvent.asPublicChatEvent(): PublicChatEvent? = this as? PublicChatEvent
 
 @PreviewFeature
-inline fun ChatEvent.requireCommonEvent(): CommonGroupEvent = this as CommonGroupEvent
+inline fun ChatEvent.requirePublicChatEvent(): PublicChatEvent = this as PublicChatEvent
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenCommonEvent(block: (CommonEvent) -> T) = asCommonEvent() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asCommonEvent(): CommonEvent? = this as? CommonEvent
+
+@PreviewFeature
+inline fun ChatEvent.requireCommonEvent(): CommonEvent = this as CommonEvent
 
 @PreviewFeature
 inline fun <T> ChatEvent.whenGroupEvent(block: (GroupEvent) -> T) = asGroupEvent() ?.let(block)

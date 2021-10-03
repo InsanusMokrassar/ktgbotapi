@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.message.ChatEvents
 
 import dev.inmo.tgbotapi.types.Meters
 import dev.inmo.tgbotapi.types.User
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonGroupEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import kotlinx.serialization.Serializable
 
 /**
@@ -14,4 +14,4 @@ data class ProximityAlertTriggered(
     val traveler: User,
     val watcher: User,
     val distance: Meters
-) : CommonGroupEvent
+) : PublicChatEvent

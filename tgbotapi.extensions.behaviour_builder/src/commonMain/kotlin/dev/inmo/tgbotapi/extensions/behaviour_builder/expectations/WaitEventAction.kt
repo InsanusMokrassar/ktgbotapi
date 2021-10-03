@@ -127,12 +127,12 @@ suspend fun BehaviourContext.waitMessageAutoDeleteTimerChangedEvents(
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
 
 
-suspend fun BehaviourContext.waitCommonGroupEvents(
+suspend fun BehaviourContext.waitPublicChatEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<CommonGroupEvent>>? = null,
-    mapper: EventMessageToEventMapper<CommonGroupEvent>? = null
+    filter: SimpleFilter<ChatEventMessage<PublicChatEvent>>? = null,
+    mapper: EventMessageToEventMapper<PublicChatEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
 suspend fun BehaviourContext.waitCommonEvents(
     initRequest: Request<*>? = null,
