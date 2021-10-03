@@ -59,7 +59,7 @@ private suspend inline fun <reified T : Poll> BehaviourContext.waitPolls(
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot
  */
-suspend fun BehaviourContext.waitPollsUpdates(
+suspend fun BehaviourContext.waitPollUpdates(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
@@ -70,7 +70,7 @@ suspend fun BehaviourContext.waitPollsUpdates(
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot
  */
-suspend fun BehaviourContext.waitQuizPollsUpdates(
+suspend fun BehaviourContext.waitQuizPollUpdates(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
@@ -81,7 +81,7 @@ suspend fun BehaviourContext.waitQuizPollsUpdates(
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot
  */
-suspend fun BehaviourContext.waitRegularPollsUpdates(
+suspend fun BehaviourContext.waitRegularPollUpdates(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,

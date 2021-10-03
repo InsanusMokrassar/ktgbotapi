@@ -119,9 +119,7 @@ suspend fun BehaviourContext.waitEditedStaticLocation(
     filter: SimpleFilter<CommonMessage<StaticLocationContent>>? = null,
     mapper: CommonMessageToContentMapper<StaticLocationContent>? = null
 ) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
-/**
- * This
- */
+@Deprecated("Potentially, this trigger will never be used. Use `waitPollUpdates` instead")
 suspend fun BehaviourContext.waitEditedPoll(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
