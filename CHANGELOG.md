@@ -7,8 +7,7 @@
 * `Common`:
     * `Version`:
         * `Serialization`: `1.2.2` -> `1.3.0`
-        * `Ktor`: `1.6.3` -> `1.6.4`
-        * `MicroUtils`: `0.5.28` -> `0.6.0`
+        * `MicroUtils`: `0.5.28` -> `0.7.0`
 * `Core`:
     * `PayInlineKeyboardButton#pay` now is deprecated
     * `RowBuilder` and `MatrixBuilder` now are open and available for extending
