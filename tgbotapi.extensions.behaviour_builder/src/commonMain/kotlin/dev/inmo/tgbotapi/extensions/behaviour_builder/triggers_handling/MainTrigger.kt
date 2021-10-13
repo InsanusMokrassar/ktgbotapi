@@ -7,14 +7,11 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal const val OldAPITriggersDeprecationText = "This signature of method has been deprecated. Use signature with the" +
-    " same name and subcontextUpdatesFilter/initialFilter instead"
-
-internal suspend inline fun <reified T> BehaviourContext.on(
+internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
     markerFactory: MarkerFactory<in T, Any>,
     noinline initialFilter: SimpleFilter<T>? = null,
-    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>? = null,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, T>,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
     noinline updateToData: (Update) -> List<T>?
 ) = flowsUpdatesFilter.expectFlow(bot) {
     updateToData(it) ?.mapNotNull { data ->

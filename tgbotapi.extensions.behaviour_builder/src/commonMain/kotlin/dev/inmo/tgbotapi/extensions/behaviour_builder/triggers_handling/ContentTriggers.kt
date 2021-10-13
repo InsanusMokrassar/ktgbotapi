@@ -22,11 +22,11 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 typealias CommonMessageFilter<T> = SimpleFilter<CommonMessage<T>>
 inline fun <T : MessageContent> CommonMessageFilter(noinline block: CommonMessageFilter<T>) = block
 
-internal suspend inline fun <reified T : MessageContent> BehaviourContext.onContent(
+internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onContent(
     noinline initialFilter: CommonMessageFilter<T>? = null,
-    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<T>, Update>? = MessageFilterByChat,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<T>, Any> = ByChatMessageMarkerFactory,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<T>>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     when (it) {
         is BaseSentMessageUpdate -> it.data.whenCommonMessage(::listOfNotNull)
@@ -50,11 +50,11 @@ internal suspend inline fun <reified T : MessageContent> BehaviourContext.onCont
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onContentMessage(
+suspend fun <BC : BehaviourContext> BC.onContentMessage(
     initialFilter: CommonMessageFilter<MessageContent>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<MessageContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MessageContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<MessageContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MessageContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MessageContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -74,11 +74,11 @@ suspend fun BehaviourContext.onContentMessage(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onContact(
+suspend fun <BC : BehaviourContext> BC.onContact(
     initialFilter: CommonMessageFilter<ContactContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<ContactContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<ContactContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<ContactContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<ContactContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<ContactContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -98,11 +98,11 @@ suspend fun BehaviourContext.onContact(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onDice(
+suspend fun <BC : BehaviourContext> BC.onDice(
     initialFilter: CommonMessageFilter<DiceContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<DiceContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DiceContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<DiceContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<DiceContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DiceContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -122,11 +122,11 @@ suspend fun BehaviourContext.onDice(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onGame(
+suspend fun <BC : BehaviourContext> BC.onGame(
     initialFilter: CommonMessageFilter<GameContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<GameContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<GameContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<GameContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<GameContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<GameContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -146,11 +146,11 @@ suspend fun BehaviourContext.onGame(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onLocation(
+suspend fun <BC : BehaviourContext> BC.onLocation(
     initialFilter: CommonMessageFilter<LocationContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<LocationContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<LocationContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<LocationContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<LocationContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<LocationContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -170,11 +170,11 @@ suspend fun BehaviourContext.onLocation(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onLiveLocation(
+suspend fun <BC : BehaviourContext> BC.onLiveLocation(
     initialFilter: CommonMessageFilter<LiveLocationContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<LiveLocationContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<LiveLocationContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<LiveLocationContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<LiveLocationContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<LiveLocationContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -194,11 +194,11 @@ suspend fun BehaviourContext.onLiveLocation(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onStaticLocation(
+suspend fun <BC : BehaviourContext> BC.onStaticLocation(
     initialFilter: CommonMessageFilter<StaticLocationContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<StaticLocationContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<StaticLocationContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<StaticLocationContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<StaticLocationContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<StaticLocationContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -218,11 +218,11 @@ suspend fun BehaviourContext.onStaticLocation(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onPoll(
+suspend fun <BC : BehaviourContext> BC.onPoll(
     initialFilter: CommonMessageFilter<PollContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<PollContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<PollContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<PollContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<PollContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PollContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -242,11 +242,11 @@ suspend fun BehaviourContext.onPoll(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onText(
+suspend fun <BC : BehaviourContext> BC.onText(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<TextContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -266,11 +266,11 @@ suspend fun BehaviourContext.onText(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onVenue(
+suspend fun <BC : BehaviourContext> BC.onVenue(
     initialFilter: CommonMessageFilter<VenueContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<VenueContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VenueContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<VenueContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<VenueContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VenueContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -290,11 +290,11 @@ suspend fun BehaviourContext.onVenue(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onAudioMediaGroup(
+suspend fun <BC : BehaviourContext> BC.onAudioMediaGroup(
     initialFilter: CommonMessageFilter<AudioMediaGroupContent>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<AudioMediaGroupContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AudioMediaGroupContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<AudioMediaGroupContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<AudioMediaGroupContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioMediaGroupContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -314,11 +314,11 @@ suspend fun BehaviourContext.onAudioMediaGroup(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onDocumentMediaGroupContent(
+suspend fun <BC : BehaviourContext> BC.onDocumentMediaGroupContent(
     initialFilter: CommonMessageFilter<DocumentMediaGroupContent>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<DocumentMediaGroupContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DocumentMediaGroupContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<DocumentMediaGroupContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<DocumentMediaGroupContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentMediaGroupContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -338,11 +338,11 @@ suspend fun BehaviourContext.onDocumentMediaGroupContent(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onMediaCollection(
+suspend fun <BC : BehaviourContext> BC.onMediaCollection(
     initialFilter: CommonMessageFilter<MediaCollectionContent<TelegramMediaFile>>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<MediaCollectionContent<TelegramMediaFile>>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaCollectionContent<TelegramMediaFile>>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<MediaCollectionContent<TelegramMediaFile>>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MediaCollectionContent<TelegramMediaFile>>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaCollectionContent<TelegramMediaFile>>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -362,11 +362,11 @@ suspend fun BehaviourContext.onMediaCollection(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onMedia(
+suspend fun <BC : BehaviourContext> BC.onMedia(
     initialFilter: CommonMessageFilter<MediaContent>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<MediaContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<MediaContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<MediaContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -386,11 +386,11 @@ suspend fun BehaviourContext.onMedia(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onAnimation(
+suspend fun <BC : BehaviourContext> BC.onAnimation(
     initialFilter: CommonMessageFilter<AnimationContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<AnimationContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AnimationContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<AnimationContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<AnimationContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -410,11 +410,11 @@ suspend fun BehaviourContext.onAnimation(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onAudio(
+suspend fun <BC : BehaviourContext> BC.onAudio(
     initialFilter: CommonMessageFilter<AudioContent>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<AudioContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AudioContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<AudioContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<AudioContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -434,11 +434,11 @@ suspend fun BehaviourContext.onAudio(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onDocument(
+suspend fun <BC : BehaviourContext> BC.onDocument(
     initialFilter: CommonMessageFilter<DocumentContent>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<DocumentContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DocumentContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<DocumentContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<DocumentContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -458,11 +458,11 @@ suspend fun BehaviourContext.onDocument(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onPhoto(
+suspend fun <BC : BehaviourContext> BC.onPhoto(
     initialFilter: CommonMessageFilter<PhotoContent>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<PhotoContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<PhotoContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<PhotoContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<PhotoContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -482,11 +482,11 @@ suspend fun BehaviourContext.onPhoto(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onSticker(
+suspend fun <BC : BehaviourContext> BC.onSticker(
     initialFilter: CommonMessageFilter<StickerContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<StickerContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<StickerContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<StickerContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<StickerContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<StickerContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -506,11 +506,11 @@ suspend fun BehaviourContext.onSticker(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onVideo(
+suspend fun <BC : BehaviourContext> BC.onVideo(
     initialFilter: CommonMessageFilter<VideoContent>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<VideoContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VideoContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<VideoContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<VideoContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -530,11 +530,11 @@ suspend fun BehaviourContext.onVideo(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onVideoNote(
+suspend fun <BC : BehaviourContext> BC.onVideoNote(
     initialFilter: CommonMessageFilter<VideoNoteContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<VideoNoteContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VideoNoteContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<VideoNoteContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<VideoNoteContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoNoteContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -554,11 +554,11 @@ suspend fun BehaviourContext.onVideoNote(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onVoice(
+suspend fun <BC : BehaviourContext> BC.onVoice(
     initialFilter: CommonMessageFilter<VoiceContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<VoiceContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VoiceContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<VoiceContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<VoiceContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -578,11 +578,11 @@ suspend fun BehaviourContext.onVoice(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onInvoice(
+suspend fun <BC : BehaviourContext> BC.onInvoice(
     initialFilter: CommonMessageFilter<InvoiceContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<InvoiceContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<InvoiceContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<InvoiceContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, CommonMessage<InvoiceContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<InvoiceContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,

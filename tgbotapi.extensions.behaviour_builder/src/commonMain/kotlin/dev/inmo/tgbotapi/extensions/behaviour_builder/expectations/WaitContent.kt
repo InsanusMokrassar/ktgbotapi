@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
 
 typealias CommonMessageToContentMapper<T> = suspend CommonMessage<T>.() -> T?
@@ -25,7 +26,7 @@ private suspend fun <O> BehaviourContext.waitCommonMessage(
     errorFactory: NullableRequestBuilder<*> = { null },
     filter: SimpleFilter<CommonMessage<MessageContent>>? = null,
     mapper: suspend CommonMessage<MessageContent>.() -> O?
-): List<O> = expectFlow(
+): Flow<O> = expectFlow(
     initRequest,
     count,
     errorFactory
@@ -49,7 +50,7 @@ private suspend fun <O> BehaviourContext.waitCommonMessage(
             null
         }
     }
-}.toList().toList()
+}
 
 internal inline fun <reified T : MessageContent> contentConverter(
     noinline mapper: CommonMessageToContentMapper<T>? = null
@@ -85,7 +86,7 @@ private suspend inline fun <reified T : MessageContent> BehaviourContext.waitCon
         }
     },
     contentConverter(mapper)
-)
+).toList()
 
 suspend fun BehaviourContext.waitContentMessage(
     initRequest: Request<*>? = null,

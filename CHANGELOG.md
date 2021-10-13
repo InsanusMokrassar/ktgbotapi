@@ -8,6 +8,7 @@
     * `Version`:
         * `Serialization`: `1.2.2` -> `1.3.0`
         * `MicroUtils`: `0.5.28` -> `0.7.0`
+        * `Klock`: `2.4.3` -> `2.4.5`
 * `Core`:
     * `PayInlineKeyboardButton#pay` now is deprecated
     * `RowBuilder` and `MatrixBuilder` now are open and available for extending
@@ -24,6 +25,8 @@
         * `waitPreCheckoutQueries`/`onPreCheckoutQuery`
         * `waitChosenInlineResult`/`onChosenInlineResult`
         * `waitPollUpdates`/`onPollUpdates`
+* `Behaviour Builder FSM extension`:
+    * Has been created :)
 
 ## 0.35.9
 

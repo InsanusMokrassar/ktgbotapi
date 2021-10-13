@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenLocal()
-        jcenter()
         mavenCentral()
     }
 
@@ -23,9 +22,7 @@ apply from: "publish.gradle"
 
 repositories {
     mavenLocal()
-    jcenter()
     mavenCentral()
-    maven { url "https://kotlin.bintray.com/kotlinx" }
 }
 
 kotlin {
@@ -43,6 +40,7 @@ kotlin {
                 api project(":tgbotapi.extensions.api")
                 api project(":tgbotapi.extensions.utils")
                 api project(":tgbotapi.extensions.behaviour_builder")
+                api project(":tgbotapi.extensions.behaviour_builder.fsm")
             }
         }
     }

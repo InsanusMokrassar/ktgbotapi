@@ -9,11 +9,11 @@ import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <reified T : InlineQuery> BehaviourContext.onInlineQuery(
+internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.onInlineQuery(
     noinline initialFilter: SimpleFilter<T>? = null,
-    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>? = InlineQueryFilterByUser,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in T, Any> = ByUserInlineQueryMarkerFactory,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, T>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.asInlineQueryUpdate() ?.data as? T) ?.let(::listOfNotNull)
 }
@@ -30,11 +30,11 @@ internal suspend inline fun <reified T : InlineQuery> BehaviourContext.onInlineQ
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onAnyInlineQuery(
+suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
     initialFilter: SimpleFilter<InlineQuery>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, InlineQuery, Update>? = InlineQueryFilterByUser,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in InlineQuery, Any> = ByUserInlineQueryMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, InlineQuery>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 
@@ -50,11 +50,11 @@ suspend fun BehaviourContext.onAnyInlineQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onBaseInlineQuery(
+suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
     initialFilter: SimpleFilter<BaseInlineQuery>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, BaseInlineQuery, Update>? = InlineQueryFilterByUser,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseInlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in BaseInlineQuery, Any> = ByUserInlineQueryMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, BaseInlineQuery>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseInlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 
@@ -70,9 +70,9 @@ suspend fun BehaviourContext.onBaseInlineQuery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onLocationInlineQuery(
+suspend fun <BC : BehaviourContext> BC.onLocationInlineQuery(
     initialFilter: SimpleFilter<LocationInlineQuery>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, LocationInlineQuery, Update>? = InlineQueryFilterByUser,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationInlineQuery, Update>? = InlineQueryFilterByUser,
     markerFactory: MarkerFactory<in LocationInlineQuery, Any> = ByUserInlineQueryMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, LocationInlineQuery>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationInlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

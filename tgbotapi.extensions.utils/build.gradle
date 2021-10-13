@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenLocal()
-        jcenter()
         mavenCentral()
     }
 
@@ -23,9 +22,7 @@ apply from: "publish.gradle"
 
 repositories {
     mavenLocal()
-    jcenter()
     mavenCentral()
-    maven { url "https://kotlin.bintray.com/kotlinx" }
 }
 
 kotlin {

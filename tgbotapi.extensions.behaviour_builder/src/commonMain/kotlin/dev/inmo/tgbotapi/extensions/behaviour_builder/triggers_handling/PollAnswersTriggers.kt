@@ -10,11 +10,11 @@ import dev.inmo.tgbotapi.extensions.utils.asPollUpdate
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun BehaviourContext.onPollAnswered(
+internal suspend inline fun <BC : BehaviourContext> BC.onPollAnswered(
     noinline initialFilter: SimpleFilter<PollAnswer>? = null,
-    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, PollAnswer, Update>? = null,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
     markerFactory: MarkerFactory<in PollAnswer, Any> = ByIdPollAnswerMarkerFactory,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, PollAnswer>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.asPollAnswerUpdate() ?.data) ?.let(::listOfNotNull)
 }
@@ -31,11 +31,11 @@ internal suspend inline fun BehaviourContext.onPollAnswered(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onPollAnswer(
+suspend fun <BC : BehaviourContext> BC.onPollAnswer(
     initialFilter: SimpleFilter<PollAnswer>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, PollAnswer, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
     markerFactory: MarkerFactory<in PollAnswer, Any> = ByIdPollAnswerMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, PollAnswer>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>
 ) = onPollAnswered(
     initialFilter,
     subcontextUpdatesFilter,

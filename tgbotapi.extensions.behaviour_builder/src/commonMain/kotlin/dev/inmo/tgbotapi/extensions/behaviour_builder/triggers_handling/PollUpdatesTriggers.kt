@@ -9,11 +9,11 @@ import dev.inmo.tgbotapi.extensions.utils.asPollUpdate
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <reified T : Poll> BehaviourContext.onPollUpdatedBase(
+internal suspend inline fun <BC : BehaviourContext, reified T : Poll> BC.onPollUpdatedBase(
     noinline initialFilter: SimpleFilter<T>? = null,
-    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>? = null,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any> = ByIdPollMarkerFactory,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, T>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.asPollUpdate() ?.data as? T) ?.let(::listOfNotNull)
 }
@@ -30,11 +30,11 @@ internal suspend inline fun <reified T : Poll> BehaviourContext.onPollUpdatedBas
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onPollUpdates(
+suspend fun <BC : BehaviourContext> BC.onPollUpdates(
     initialFilter: SimpleFilter<Poll>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, Poll, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Poll, Update>? = null,
     markerFactory: MarkerFactory<in Poll, Any> = ByIdPollMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, Poll>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Poll>
 ) = onPollUpdatedBase(
     initialFilter,
     subcontextUpdatesFilter,
@@ -54,11 +54,11 @@ suspend fun BehaviourContext.onPollUpdates(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onRegularPollUpdates(
+suspend fun <BC : BehaviourContext> BC.onRegularPollUpdates(
     initialFilter: SimpleFilter<RegularPoll>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, RegularPoll, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, RegularPoll, Update>? = null,
     markerFactory: MarkerFactory<in RegularPoll, Any> = ByIdPollMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, RegularPoll>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, RegularPoll>
 ) = onPollUpdatedBase(
     initialFilter,
     subcontextUpdatesFilter,
@@ -78,11 +78,11 @@ suspend fun BehaviourContext.onRegularPollUpdates(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onQuizPollUpdates(
+suspend fun <BC : BehaviourContext> BC.onQuizPollUpdates(
     initialFilter: SimpleFilter<QuizPoll>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, QuizPoll, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, QuizPoll, Update>? = null,
     markerFactory: MarkerFactory<in QuizPoll, Any> = ByIdPollMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, QuizPoll>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, QuizPoll>
 ) = onPollUpdatedBase(
     initialFilter,
     subcontextUpdatesFilter,

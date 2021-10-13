@@ -11,11 +11,11 @@ import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <reified T : EncryptedPassportElement> BehaviourContext.onPassportMessageWith(
+internal suspend inline fun <BC : BehaviourContext, reified T : EncryptedPassportElement> BC.onPassportMessageWith(
     noinline initialFilter: SimpleFilter<PassportMessage>? = null,
-    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, PassportMessage, Update>? = MessageFilterByChat,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, PassportMessage>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.asMessageUpdate() ?.data ?.asPassportMessage() ?.takeIf { it.passportData.data.any { it is T } }) ?.let(::listOfNotNull)
 }
@@ -33,12 +33,12 @@ internal suspend inline fun <reified T : EncryptedPassportElement> BehaviourCont
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onPassportMessage(
+suspend fun <BC : BehaviourContext> BC.onPassportMessage(
     initialFilter: SimpleFilter<PassportMessage>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, PassportMessage, Update>? = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, PassportMessage>
-) = onPassportMessageWith<EncryptedPassportElement>(
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>
+) = onPassportMessageWith<BC, EncryptedPassportElement>(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,

@@ -49,7 +49,7 @@ Dependency config presented here:
 
 To use last versions you will need to add one line in repositories block of your `build.gradle`:
 
-`jcenter()` or `mavenCentral()`
+`mavenCentral()`
 
 And add next line to your dependencies block:
 

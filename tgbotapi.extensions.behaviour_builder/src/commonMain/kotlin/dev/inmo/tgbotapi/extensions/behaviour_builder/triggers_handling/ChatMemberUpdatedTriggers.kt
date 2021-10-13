@@ -13,11 +13,11 @@ import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <reified U : ChatMemberUpdatedUpdate> BehaviourContext.onChatMemberUpdatedInternal(
+internal suspend inline fun <BC : BehaviourContext, reified U : ChatMemberUpdatedUpdate> BC.onChatMemberUpdatedInternal(
     noinline initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
-    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     ((it as? U) ?.data) ?.let(::listOfNotNull)
 }
@@ -35,12 +35,12 @@ internal suspend inline fun <reified U : ChatMemberUpdatedUpdate> BehaviourConte
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onChatMemberUpdated(
+suspend fun <BC : BehaviourContext> BC.onChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdatedInternal<ChatMemberUpdatedUpdate>(
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
@@ -59,12 +59,12 @@ suspend fun BehaviourContext.onChatMemberUpdated(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onCommonChatMemberUpdated(
+suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdatedInternal<CommonChatMemberUpdatedUpdate>(
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,
@@ -83,12 +83,12 @@ suspend fun BehaviourContext.onCommonChatMemberUpdated(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onMyChatMemberUpdated(
+suspend fun <BC : BehaviourContext> BC.onMyChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChatMemberUpdated>
-) = onChatMemberUpdatedInternal<MyChatMemberUpdatedUpdate>(
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
+) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     initialFilter,
     subcontextUpdatesFilter,
     markerFactory,

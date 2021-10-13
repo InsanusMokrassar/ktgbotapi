@@ -11,11 +11,11 @@ import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <reified T : ChosenInlineResult> BehaviourContext.onChosenInlineResultBase(
+internal suspend inline fun <BC : BehaviourContext, reified T : ChosenInlineResult> BC.onChosenInlineResultBase(
     noinline initialFilter: SimpleFilter<T>? = null,
-    noinline subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, T, Update>? = null,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any> = ByUserIdChosenInlineResultMarkerFactory,
-    noinline scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, T>
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.asChosenInlineResultUpdate() ?.data as? T) ?.let(::listOfNotNull)
 }
@@ -32,11 +32,11 @@ internal suspend inline fun <reified T : ChosenInlineResult> BehaviourContext.on
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onChosenInlineResult(
+suspend fun <BC : BehaviourContext> BC.onChosenInlineResult(
     initialFilter: SimpleFilter<ChosenInlineResult>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, ChosenInlineResult, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in ChosenInlineResult, Any> = ByUserIdChosenInlineResultMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, ChosenInlineResult>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChosenInlineResult>
 ) = onChosenInlineResultBase(
     initialFilter,
     subcontextUpdatesFilter,
@@ -56,11 +56,11 @@ suspend fun BehaviourContext.onChosenInlineResult(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onLocationChosenInlineResult(
+suspend fun <BC : BehaviourContext> BC.onLocationChosenInlineResult(
     initialFilter: SimpleFilter<LocationChosenInlineResult>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, LocationChosenInlineResult, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in LocationChosenInlineResult, Any> = ByUserIdChosenInlineResultMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, LocationChosenInlineResult>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationChosenInlineResult>
 ) = onChosenInlineResultBase(
     initialFilter,
     subcontextUpdatesFilter,
@@ -80,11 +80,11 @@ suspend fun BehaviourContext.onLocationChosenInlineResult(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun BehaviourContext.onBaseChosenInlineResult(
+suspend fun <BC : BehaviourContext> BC.onBaseChosenInlineResult(
     initialFilter: SimpleFilter<BaseChosenInlineResult>? = null,
-    subcontextUpdatesFilter: BehaviourContextAndTwoTypesReceiver<Boolean, BaseChosenInlineResult, Update>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseChosenInlineResult, Update>? = null,
     markerFactory: MarkerFactory<in BaseChosenInlineResult, Any> = ByUserIdChosenInlineResultMarkerFactory,
-    scenarioReceiver: BehaviourContextAndTypeReceiver<Unit, BaseChosenInlineResult>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseChosenInlineResult>
 ) = onChosenInlineResultBase(
     initialFilter,
     subcontextUpdatesFilter,

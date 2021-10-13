@@ -8,7 +8,6 @@ pluginManagement {
     }
     repositories {
         gradlePluginPortal()
-        jcenter()
     }
 }
 
@@ -16,5 +15,6 @@ include ":tgbotapi.core"
 include ":tgbotapi.extensions.api"
 include ":tgbotapi.extensions.utils"
 include ":tgbotapi.extensions.behaviour_builder"
+include ":tgbotapi.extensions.behaviour_builder.fsm"
 include ":tgbotapi"
 include ":docs"

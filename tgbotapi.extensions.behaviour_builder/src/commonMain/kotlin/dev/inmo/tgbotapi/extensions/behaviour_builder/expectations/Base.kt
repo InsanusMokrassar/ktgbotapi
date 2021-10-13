@@ -4,6 +4,7 @@ import dev.inmo.micro_utils.coroutines.safelyWithResult
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
+import dev.inmo.tgbotapi.extensions.utils.flatMap
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
@@ -38,9 +39,9 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
     filter: suspend (Update) -> List<T>
 ): Flow<T> {
-    val flow = allUpdatesFlow.flatMapConcat {
+    val flow = allUpdatesFlow.map {
         val result = safelyWithResult { filter(it) }
-        (if (result.isFailure || result.getOrThrow().isEmpty()) {
+        if (result.isFailure || result.getOrThrow().isEmpty()) {
             if (cancelTrigger(it)) {
                 cancelRequestFactory(it) ?.also {
                     safelyWithResult { bot.execute(it) }
@@ -53,8 +54,8 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
             emptyList()
         } else {
             result.getOrThrow()
-        }).asFlow()
-    }
+        }
+    }.flatMap()
     val result = if (count == null) {
         flow
     } else {

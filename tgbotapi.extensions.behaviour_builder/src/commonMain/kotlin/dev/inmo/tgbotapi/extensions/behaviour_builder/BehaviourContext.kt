@@ -5,20 +5,25 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.*
 
-typealias BehaviourContextReceiver<T> = suspend BehaviourContext.() -> T
-typealias BehaviourContextAndTypeReceiver<T, I> = suspend BehaviourContext.(I) -> T
-typealias BehaviourContextAndTwoTypesReceiver<T, I1, I2> = suspend BehaviourContext.(I1, I2) -> T
+typealias CustomBehaviourContextReceiver<BC, T> = suspend BC.() -> T
+typealias BehaviourContextReceiver<T> = CustomBehaviourContextReceiver<BehaviourContext, T>
+typealias CustomBehaviourContextAndTypeReceiver<BC, T, I> = suspend BC.(I) -> T
+typealias BehaviourContextAndTypeReceiver<T, I> = CustomBehaviourContextAndTypeReceiver<BehaviourContext, T, I>
+typealias CustomBehaviourContextAndTwoTypesReceiver<BC, T, I1, I2> = suspend BC.(I1, I2) -> T
+typealias BehaviourContextAndTwoTypesReceiver<T, I1, I2> = CustomBehaviourContextAndTwoTypesReceiver<BehaviourContext, T, I1, I2>
 inline fun <T> BehaviourContextReceiver(noinline block: BehaviourContextReceiver<T>) = block
+inline fun <BC, T> CustomBehaviourContextReceiver(noinline block: CustomBehaviourContextReceiver<BC, T>) = block
 inline fun <T, I> BehaviourContextAndTypeReceiver(noinline block: BehaviourContextAndTypeReceiver<T, I>) = block
 inline fun <T, I1, I2> BehaviourContextAndTwoTypesReceiver(noinline block: BehaviourContextAndTwoTypesReceiver<T, I1, I2>) = block
-internal inline fun <T, I1, I2> BehaviourContextAndTwoTypesReceiver<T, I1, I2>.toOneType(
+internal inline fun <BC, T, I1, I2> CustomBehaviourContextAndTwoTypesReceiver<BC, T, I1, I2>.toOneType(
     i1: I1,
-): BehaviourContextAndTypeReceiver<T, I2> = { invoke(this, i1, it) }
+): CustomBehaviourContextAndTypeReceiver<BC, T, I2> = { invoke(this, i1, it) }
 
 /**
  * This class contains all necessary tools for work with bots and especially for [buildBehaviour]
@@ -45,27 +50,68 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
     fun copy(
         bot: TelegramBot = this.bot,
         scope: CoroutineScope = this.scope,
-        flowsUpdatesFilter: FlowsUpdatesFilter = this.flowsUpdatesFilter
+        broadcastChannelsSize: Int = 100,
+        onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
+        upstreamUpdatesFlow: Flow<Update>? = null,
+        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
     ): BehaviourContext
+
+    @Deprecated("This method is not recommended to use and will be removed in near release")
+    fun copy(
+        bot: TelegramBot,
+        scope: CoroutineScope = this.scope,
+        flowsUpdatesFilter: FlowsUpdatesFilter = this.flowsUpdatesFilter
+    ): BehaviourContext = copy(upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow)
 }
 
 class DefaultBehaviourContext(
     override val bot: TelegramBot,
     override val scope: CoroutineScope,
-    override val flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
-) : FlowsUpdatesFilter by flowsUpdatesFilter, TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
+    private val broadcastChannelsSize: Int = 100,
+    private val onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
+    private val upstreamUpdatesFlow: Flow<Update>? = null,
+    private val updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
+) : AbstractFlowsUpdatesFilter(), TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
+
+    private val additionalUpdatesSharedFlow = MutableSharedFlow<Update>(0, broadcastChannelsSize, onBufferOverflow)
+    override val allUpdatesFlow: Flow<Update> = (additionalUpdatesSharedFlow.asSharedFlow()).let {
+        if (upstreamUpdatesFlow != null) {
+            (it + upstreamUpdatesFlow).distinctUntilChanged { old, new -> old.updateId == new.updateId }
+        } else {
+            it
+        }
+    }.let {
+        val updatesFilter = updatesFilter
+        if (updatesFilter != null) {
+            it.filter { updatesFilter(it) }
+        } else {
+            it
+        }
+    }
+    override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
+
     override fun copy(
         bot: TelegramBot,
         scope: CoroutineScope,
-        flowsUpdatesFilter: FlowsUpdatesFilter
-    ): DefaultBehaviourContext = DefaultBehaviourContext(bot, scope, flowsUpdatesFilter)
+        broadcastChannelsSize: Int,
+        onBufferOverflow: BufferOverflow,
+        upstreamUpdatesFlow: Flow<Update>?,
+        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
+    ): BehaviourContext = DefaultBehaviourContext(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter)
 }
 
 fun BehaviourContext(
     bot: TelegramBot,
     scope: CoroutineScope,
     flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
-) = DefaultBehaviourContext(bot, scope, flowsUpdatesFilter)
+) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow)
+
+inline fun <T> BehaviourContext(
+    bot: TelegramBot,
+    scope: CoroutineScope,
+    flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
+    crossinline block: BehaviourContext.() -> T
+) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow).run(block)
 
 /**
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [newFlowsUpdatesFilterSetUp] is provided and
@@ -75,21 +121,19 @@ fun BehaviourContext(
  */
 @RiskFeature("It is recommended to use doInSubContextWithUpdatesFilter instead. " +
     "This method is low level and should not be used in case you are not pretty sure you need it.")
-suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
-    newFlowsUpdatesFilterSetUp: BehaviourContextAndTypeReceiver<Unit, FlowsUpdatesFilter>?,
+@Deprecated("This method is useless and will not be used in future")
+suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithFlowsUpdatesFilterSetup(
+    newFlowsUpdatesFilterSetUp: CustomBehaviourContextAndTypeReceiver<BC, Unit, FlowsUpdatesFilter>?,
     stopOnCompletion: Boolean = true,
-    behaviourContextReceiver: BehaviourContextReceiver<T>
-): T {
-    return copy(
-        flowsUpdatesFilter = FlowsUpdatesFilter(),
-        scope = LinkedSupervisorScope()
-    ).run {
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): T = (copy(
+    scope = LinkedSupervisorScope(),
+) as BC).run {
+    withContext(coroutineContext) {
         newFlowsUpdatesFilterSetUp ?.let {
             it.apply { invoke(this@run, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
         }
-        withContext(coroutineContext) {
-            behaviourContextReceiver().also { if (stopOnCompletion) stop() }
-        }
+        behaviourContextReceiver().also { if (stopOnCompletion) stop() }
     }
 }
 
@@ -97,25 +141,24 @@ suspend fun <T> BehaviourContext.doInSubContextWithFlowsUpdatesFilterSetup(
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [updatesFilter] is provided and
  * [CoroutineScope] as new [BehaviourContext.scope]
  */
-suspend fun <T> BehaviourContext.doInSubContextWithUpdatesFilter(
-    updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?,
+suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
+    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>?,
     stopOnCompletion: Boolean = true,
-    behaviourContextReceiver: BehaviourContextReceiver<T>
-): T = doInSubContextWithFlowsUpdatesFilterSetup(
-    newFlowsUpdatesFilterSetUp = updatesFilter ?.let {
-        { oldOne ->
-            weakLaunch {
-                oldOne.allUpdatesFlow.filter { updatesFilter(it) }.subscribeSafelyWithoutExceptions(this, block = asUpdateReceiver)
-            }
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): T = copy(
+    scope = LinkedSupervisorScope(),
+    updatesFilter = updatesFilter ?.let { _ ->
+        {
+            (this as? BC) ?.run {
+                updatesFilter(it)
+            } ?: true
         }
-    } ?: { oldOne ->
-        weakLaunch {
-            oldOne.allUpdatesFlow.subscribeSafelyWithoutExceptions(this, block = asUpdateReceiver)
-        }
-    },
-    stopOnCompletion,
-    behaviourContextReceiver
-)
+    }
+).run {
+    withContext(coroutineContext) {
+        behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+    }
+}
 
 suspend fun <T> BehaviourContext.doInSubContext(
     stopOnCompletion: Boolean = true,
