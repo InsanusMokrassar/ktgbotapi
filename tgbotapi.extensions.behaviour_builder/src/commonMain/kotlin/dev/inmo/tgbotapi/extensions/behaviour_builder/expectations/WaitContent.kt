@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
+import kotlin.reflect.KClass
 
 typealias CommonMessageToContentMapper<T> = suspend CommonMessage<T>.() -> T?
 
@@ -54,19 +55,17 @@ private suspend fun <O> BehaviourContext.waitCommonMessage(
 
 internal inline fun <reified T : MessageContent> contentConverter(
     noinline mapper: CommonMessageToContentMapper<T>? = null
-): suspend CommonMessage<MessageContent>.() -> T? = {
-    if (content is T) {
-        @Suppress("UNCHECKED_CAST")
-        val message = (this as CommonMessage<T>)
-        if (mapper == null) {
-            message.content
-        } else {
+): suspend CommonMessage<MessageContent>.() -> T? = mapper ?.let {
+    {
+        if (content is T) {
+            @Suppress("UNCHECKED_CAST")
+            val message = (this as CommonMessage<T>)
             safelyWithoutExceptions { mapper(message) }
+        } else {
+            null
         }
-    } else {
-        null
     }
-}
+} ?: { content as? T }
 
 private suspend inline fun <reified T : MessageContent> BehaviourContext.waitContent(
     count: Int = 1,

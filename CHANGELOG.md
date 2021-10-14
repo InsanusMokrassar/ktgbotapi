@@ -7,7 +7,7 @@
 * `Common`:
     * `Version`:
         * `Serialization`: `1.2.2` -> `1.3.0`
-        * `MicroUtils`: `0.5.28` -> `0.7.0`
+        * `MicroUtils`: `0.5.28` -> `0.7.1`
         * `Klock`: `2.4.3` -> `2.4.5`
 * `Core`:
     * `PayInlineKeyboardButton#pay` now is deprecated
