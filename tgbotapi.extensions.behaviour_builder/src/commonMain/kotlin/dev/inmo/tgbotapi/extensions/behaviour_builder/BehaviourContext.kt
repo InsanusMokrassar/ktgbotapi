@@ -144,16 +144,19 @@ suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithFlowsUpdatesFilterSe
 suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
     updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>?,
     stopOnCompletion: Boolean = true,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    scope: CoroutineScope = LinkedSupervisorScope(),
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
 ): T = copy(
-    scope = LinkedSupervisorScope(),
+    scope = scope,
     updatesFilter = updatesFilter ?.let { _ ->
         {
             (this as? BC) ?.run {
                 updatesFilter(it)
             } ?: true
         }
-    }
+    },
+    upstreamUpdatesFlow = updatesUpstreamFlow
 ).run {
     withContext(coroutineContext) {
         behaviourContextReceiver().also { if (stopOnCompletion) stop() }
@@ -162,8 +165,10 @@ suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
 
 suspend fun <T> BehaviourContext.doInSubContext(
     stopOnCompletion: Boolean = true,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    scope: CoroutineScope = LinkedSupervisorScope(),
     behaviourContextReceiver: BehaviourContextReceiver<T>
-) = doInSubContextWithUpdatesFilter(updatesFilter = null, stopOnCompletion, behaviourContextReceiver)
+) = doInSubContextWithUpdatesFilter(updatesFilter = null, stopOnCompletion, updatesUpstreamFlow, scope, behaviourContextReceiver)
 
 /**
  * This method will cancel ALL subsequent contexts, expectations and waiters

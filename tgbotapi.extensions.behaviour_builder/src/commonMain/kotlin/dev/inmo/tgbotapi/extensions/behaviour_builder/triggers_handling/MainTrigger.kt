@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
-import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
+import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
@@ -21,9 +21,12 @@ internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
     scope,
     markerFactory::invoke
 ) { triggerData ->
+    val scope = LinkedSupervisorScope()
     doInSubContextWithUpdatesFilter(
         updatesFilter = subcontextUpdatesFilter ?.toOneType(triggerData),
-        stopOnCompletion = false
+        stopOnCompletion = false,
+        updatesUpstreamFlow = allUpdatesFlow.accumulatorFlow(scope),
+        scope = scope
     ) {
         scenarioReceiver(triggerData)
     }
