@@ -1,14 +1,18 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
+import dev.inmo.micro_utils.coroutines.ContextSafelyExceptionHandler
+import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.micro_utils.fsm.common.*
 import dev.inmo.micro_utils.fsm.common.managers.DefaultStatesManager
 import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
+import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import kotlinx.coroutines.CoroutineScope
+import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.utils.PreviewFeature
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
 
 class BehaviourContextWithFSMBuilder internal constructor(
@@ -83,9 +87,13 @@ inline fun <reified I : State> BehaviourContextWithFSMBuilder.strictlyOn(handler
 suspend fun TelegramBot.buildBehaviourWithFSM(
     upstreamUpdatesFlow: Flow<Update>? = null,
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
+    statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
+    handlersPreset: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
     block: suspend BehaviourContextWithFSMBuilder.() -> Unit
 ) = BehaviourContextWithFSMBuilder(
-    DefaultBehaviourContext(this, scope, upstreamUpdatesFlow = upstreamUpdatesFlow)
+    DefaultBehaviourContext(this, scope, upstreamUpdatesFlow = upstreamUpdatesFlow),
+    statesManager,
+    handlersPreset
 ).apply { block() }.build()
 
 /**
@@ -98,10 +106,83 @@ suspend fun TelegramBot.buildBehaviourWithFSM(
 suspend fun TelegramBot.buildBehaviourWithFSMAndLongPolling(
     upstreamUpdatesFlow: Flow<Update>? = null,
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
+    statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
+    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
     block: suspend BehaviourContextWithFSMBuilder.() -> Unit
-) = buildBehaviourWithFSM(upstreamUpdatesFlow, scope, block).run {
+) = buildBehaviourWithFSM(upstreamUpdatesFlow, scope, statesManager, presetHandlers, block).run {
     this to scope.launch {
-        longPolling(this@run, scope = this)
-        start(this)
+        start()
+        longPolling(flowsUpdatesFilter, scope = scope)
+    }
+}
+
+/**
+ * Use this method in case you wish to make some additional actions with [flowUpdatesFilter].
+ *
+ * **WARNING** This method WILL NOT launch any listening of updates. Use something like
+ * [startGettingOfUpdatesByLongPolling] (or just [longPolling]) or tools for work with webhooks
+ *
+ * @see BehaviourContext
+ * @see BehaviourContextWithFSM
+ * @see longPolling
+ * @see strictlyOn
+ * @see onStateOrSubstate
+ */
+@PreviewFeature
+suspend fun TelegramBot.buildBehaviourWithFSM(
+    flowUpdatesFilter: FlowsUpdatesFilter,
+    scope: CoroutineScope = defaultCoroutineScopeProvider(),
+    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
+    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
+    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder, Unit>
+): BehaviourContextWithFSM = BehaviourContextWithFSMBuilder(
+    BehaviourContext(
+        this,
+        scope.let {
+            if (defaultExceptionsHandler == null) {
+                it
+            } else {
+                it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
+            }
+        },
+        flowUpdatesFilter
+    ),
+    statesManager,
+    presetHandlers
+).apply { block() }.build()
+
+/**
+ * Use this method to build bot behaviour with FSM and run it via long polling. In case you wish to use
+ * [FlowsUpdatesFilter] of result [BehaviourContextWithFSM] for additional manipulations, you must provide external
+ * [FlowsUpdatesFilter] in other [buildBehaviourWithFSM] function.
+ *
+ * @see buildBehaviourWithFSM
+ * @see BehaviourContext
+ * @see longPolling
+ * @see strictlyOn
+ * @see onStateOrSubstate
+ */
+@PreviewFeature
+suspend fun TelegramBot.buildBehaviourWithFSM(
+    scope: CoroutineScope = defaultCoroutineScopeProvider(),
+    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
+    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
+    block: BehaviourContextReceiver<Unit>
+) = FlowsUpdatesFilter().let {
+    buildBehaviourWithFSM(
+        it,
+        scope,
+        defaultExceptionsHandler,
+        statesManager,
+        presetHandlers,
+        block
+    ).run {
+        start()
+        longPolling(
+            flowsUpdatesFilter,
+            scope = scope
+        )
     }
 }

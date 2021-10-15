@@ -21,6 +21,8 @@ private suspend fun <I : State> BehaviourContextWithFSM.launchStateHandling(
 }
 
 interface BehaviourContextWithFSM : BehaviourContext, StatesMachine {
+    suspend fun start() = start(this)
+
     override fun copy(
         bot: TelegramBot,
         scope: CoroutineScope,
