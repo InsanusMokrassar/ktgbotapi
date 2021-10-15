@@ -37,7 +37,7 @@ suspend fun telegramBotWithBehaviourAndFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
-    block: BehaviourContextReceiver<Unit>
+    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder, Unit>
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
@@ -75,7 +75,7 @@ suspend fun telegramBotWithBehaviourAndFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
-    block: BehaviourContextReceiver<Unit>
+    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,

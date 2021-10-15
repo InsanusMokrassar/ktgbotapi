@@ -89,7 +89,7 @@ suspend fun TelegramBot.buildBehaviourWithFSM(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     handlersPreset: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
-    block: suspend BehaviourContextWithFSMBuilder.() -> Unit
+    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder, Unit>
 ) = BehaviourContextWithFSMBuilder(
     DefaultBehaviourContext(this, scope, upstreamUpdatesFlow = upstreamUpdatesFlow),
     statesManager,
@@ -108,7 +108,7 @@ suspend fun TelegramBot.buildBehaviourWithFSMAndLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
-    block: suspend BehaviourContextWithFSMBuilder.() -> Unit
+    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder, Unit>
 ) = buildBehaviourWithFSM(upstreamUpdatesFlow, scope, statesManager, presetHandlers, block).run {
     this to scope.launch {
         start()
@@ -169,7 +169,7 @@ suspend fun TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
-    block: BehaviourContextReceiver<Unit>
+    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
         it,
