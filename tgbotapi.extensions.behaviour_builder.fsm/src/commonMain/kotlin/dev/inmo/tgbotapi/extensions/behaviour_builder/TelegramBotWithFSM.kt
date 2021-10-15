@@ -16,7 +16,7 @@ import kotlin.coroutines.coroutineContext
 
 
 /**
- * Create bot using [telegramBot] and start listening for updates using [buildBehaviour].
+ * Create bot using [telegramBot] and start listening for updates using [buildBehaviourWithFSM].
  * Use this method in case you wish to make some additional actions with [flowsUpdatesFilter].
  *
  * **WARNING** This method WILL NOT launch any listening of updates. Use something like
@@ -43,8 +43,8 @@ suspend fun telegramBotWithBehaviourAndFSM(
     apiUrl,
     builder
 ).apply {
-    buildBehaviourWithFSM(
-        flowsUpdatesFilter,
+    buildBehaviourWithFSMAndStartLongPolling(
+        flowsUpdatesFilter.allUpdatesFlow,
         scope ?: CoroutineScope(coroutineContext),
         defaultExceptionsHandler,
         statesManager,
@@ -67,7 +67,7 @@ suspend fun telegramBotWithBehaviourAndFSM(
  * @see [buildBehaviour]
  * @see startGettingOfUpdatesByLongPolling
  */
-suspend fun telegramBotWithBehaviourAndFSM(
+suspend fun telegramBotWithBehaviourAndFSMAndStartLongPolling(
     token: String,
     scope: CoroutineScope? = null,
     apiUrl: String = telegramBotAPIDefaultUrl,
@@ -82,7 +82,7 @@ suspend fun telegramBotWithBehaviourAndFSM(
         apiUrl,
         builder
     ).let {
-        it to it.buildBehaviourWithFSM (
+        it to it.buildBehaviourWithFSMAndStartLongPolling (
             scope ?: CoroutineScope(coroutineContext),
             defaultExceptionsHandler,
             statesManager,

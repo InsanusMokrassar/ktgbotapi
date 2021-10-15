@@ -67,8 +67,8 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
 class DefaultBehaviourContext(
     override val bot: TelegramBot,
     override val scope: CoroutineScope,
-    private val broadcastChannelsSize: Int = 100,
-    private val onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
+    broadcastChannelsSize: Int = 100,
+    onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
     private val upstreamUpdatesFlow: Flow<Update>? = null,
     private val updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
 ) : AbstractFlowsUpdatesFilter(), TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
