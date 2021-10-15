@@ -20,6 +20,13 @@ private suspend fun <I : State> BehaviourContextWithFSM.launchStateHandling(
     }
 }
 
+/**
+ * Interface which combine [BehaviourContext] and [StatesMachine]. Subcontext of triggers and states contexts must have
+ * one common flow of updates and must not lose updates between updates
+ *
+ * @see DefaultBehaviourContextWithFSM
+ * @see buildBehaviourWithFSM
+ */
 interface BehaviourContextWithFSM : BehaviourContext, StatesMachine {
     suspend fun start() = start(this)
 
@@ -41,6 +48,10 @@ interface BehaviourContextWithFSM : BehaviourContext, StatesMachine {
     }
 }
 
+/**
+ * Default realization of [BehaviourContextWithFSM]. It uses [behaviourContext] as a base for this object as
+ * [BehaviourContext], but managing substates contexts updates for avoiding of updates lost between states
+ */
 class DefaultBehaviourContextWithFSM(
     private val behaviourContext: BehaviourContext,
     private val statesManager: StatesManager,

@@ -9,12 +9,17 @@
         * `Serialization`: `1.2.2` -> `1.3.0`
         * `MicroUtils`: `0.5.28` -> `0.7.1`
         * `Klock`: `2.4.3` -> `2.4.5`
+        * `Ktor`: `1.6.3` -> `1.6.4`
 * `Core`:
+    * `PrivateContentMessageImpl#paymentInfo` now is deprecated and will always be null
     * `PayInlineKeyboardButton#pay` now is deprecated
     * `RowBuilder` and `MatrixBuilder` now are open and available for extending
     * `MatrixBuilder#matrix` will return read-only new list instead of original internal `mutMatrix`
     * Introduced new type of events `SuccessfulPaymentEvent` instead of putting of payment inside of message
-    * New type of events union: `PublicChatEvent`
+    * New type of events union: `PublicChatEvent`. `CommonEvent` is still union of any `ChatEvent`
+    * New `AbstractFlowsUpdatesFilter` with default `lazy` realization for all typed flows
+    * `FlowsUpdatesFilter` fun now have `onBufferOverflow` and `upstreamUpdatesFlow` as incoming params
+        * `DefaultFlowsUpdatesFilter` now use additional `upstreamUpdatesFlow` as source of updates
 * `Utils`:
     * Two new dsl:
         * `inlineKeyboard` for creating `InlineKeyboardMarkup`
