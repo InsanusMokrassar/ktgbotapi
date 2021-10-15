@@ -54,11 +54,8 @@ suspend fun telegramBotWithBehaviourAndFSM(
 }
 
 /**
- * Create bot using [telegramBot] and start listening for updates using [buildBehaviour].
- * Use this method in case you wish to make some additional actions with [flowsUpdatesFilter].
- *
- * **WARNING** This method WILL NOT launch any listening of updates. Use something like
- * [startGettingOfUpdatesByLongPolling] or tools for work with webhooks
+ * Create bot using [telegramBot] and start listening for updates using [buildBehaviourWithFSMAndStartLongPolling]. This
+ * method will launch updates retrieving via long polling inside of [buildBehaviourWithFSMAndStartLongPolling]
  *
  * @return Pair of [TelegramBot] and [Job]. This [Job] can be used to stop listening updates in your [block] you passed
  * here
