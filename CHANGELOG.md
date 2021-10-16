@@ -8,7 +8,7 @@
     * `Version`:
         * `Serialization`: `1.2.2` -> `1.3.0`
         * `MicroUtils`: `0.5.28` -> `0.7.1`
-        * `Klock`: `2.4.3` -> `2.4.5`
+        * `Klock`: `2.4.3` -> `2.4.6`
         * `Ktor`: `1.6.3` -> `1.6.4`
 * `Core`:
     * `PrivateContentMessageImpl#paymentInfo` now is deprecated and will always be null
