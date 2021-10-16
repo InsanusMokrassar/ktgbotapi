@@ -24,6 +24,10 @@
     * Two new dsl:
         * `inlineKeyboard` for creating `InlineKeyboardMarkup`
         * `replyKeyboard` for creating `ReplyKeyboardMarkup`
+    * Cast helpers for `Message`:
+        * `asPossiblyReplyMessage`: tries to cast a `Message` to `PossiblyReplyMessage`, returns `null` if the message is not of that type
+        * `requirePossiblyReplyMessage`: casts a `Message` to `PossiblyReplyMessage`, fails if the message is not of that type
+        * `whenPossiblyReplyMessage`: tries to cast a `Message` to `PossiblyReplyMessage` and runs the given block of code with it, if the cast is successful
 * `Behaviour Builder`:
     * New expecters and waiters:
         * `waitShippingQueries`/`onShippingQuery`
