@@ -43,7 +43,7 @@
         * `waitChosenInlineResult`/`onChosenInlineResult`
         * `waitPollUpdates`/`onPollUpdates`
 * `Behaviour Builder FSM extension`:
-    * Has been created :)
+    * See [Difference between old Behaviour Builder and new one with FSM](https://telegra.ph/Difference-between-old-Behaviour-Builder-and-new-one-with-FSM-10-18)
 
 ## 0.35.9
 
