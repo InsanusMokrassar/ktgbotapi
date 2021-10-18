@@ -1,6 +1,8 @@
-api: "TelegramBotAPI-extensions-api/**"
-utils: "TelegramBotAPI-extensions-utils/**"
-core: "TelegramBotAPI/**" # currently not work
+api: "TelegramBotAPI-api/**"
+utils: "TelegramBotAPI-utils/**"
+behaviour-builder: "TelegramBotAPI-behaviour_builder/**"
+behaviour-builder_fsm: "TelegramBotAPI-behaviour_builder-fsm/**"
+core: "TelegramBotAPI-core/**" # currently not work
 
 code: "**/*.kt"
 gradle: "**/*.gradle"

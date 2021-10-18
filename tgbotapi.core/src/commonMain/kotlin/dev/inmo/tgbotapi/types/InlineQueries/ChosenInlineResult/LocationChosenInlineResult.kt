@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 data class LocationChosenInlineResult(
     override val resultId: InlineQueryIdentifier,
     @SerialName(fromField)
-    override val user: User,
+    override val from: User,
     val location: StaticLocation,
     override val inlineMessageId: InlineMessageIdentifier?,
     override val query: String

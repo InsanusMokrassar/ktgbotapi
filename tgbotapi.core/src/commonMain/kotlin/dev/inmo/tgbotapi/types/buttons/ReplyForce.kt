@@ -26,6 +26,3 @@ data class ReplyForce(
         }
     }
 }
-
-@Deprecated("Renamed", ReplaceWith("ReplyForce", "dev.inmo.tgbotapi.types.buttons.ReplyForce"))
-typealias ForceReply = ReplyForce

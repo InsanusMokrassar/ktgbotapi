@@ -2,8 +2,7 @@ package dev.inmo.tgbotapi.types.polls
 
 import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.types.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 
 @Serializable
 data class PollAnswer(
@@ -13,4 +12,8 @@ data class PollAnswer(
     override val user: User,
     @SerialName(optionIdsField)
     val chosen: List<Int>
-) : FromUser
+) : FromUser {
+    @Transient
+    override val from: User
+        get() = user
+}

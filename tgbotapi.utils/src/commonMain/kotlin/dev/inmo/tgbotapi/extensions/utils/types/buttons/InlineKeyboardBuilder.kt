@@ -1,0 +1,130 @@
+package dev.inmo.tgbotapi.extensions.utils.types.buttons
+
+import dev.inmo.tgbotapi.types.LoginURL
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.utils.MatrixBuilder
+import dev.inmo.tgbotapi.utils.RowBuilder
+
+/**
+ * Core DSL part of Inline Keyboard DSL. Can accept only [InlineKeyboardButton] and returns ready to use
+ * [InlineKeyboardMarkup] via [build] method
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ * @see InlineKeyboardRowBuilder
+ */
+class InlineKeyboardBuilder : MatrixBuilder<InlineKeyboardButton>() {
+    /**
+     * Creates [InlineKeyboardMarkup] using internal [matrix]
+     */
+    fun build() = InlineKeyboardMarkup(matrix)
+}
+
+/**
+ * Row builder of [InlineKeyboardBuilder]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+class InlineKeyboardRowBuilder : RowBuilder<InlineKeyboardButton>()
+
+/**
+ * Factory-function for [InlineKeyboardBuilder]. It will [apply] [block] to internally created [InlineKeyboardMarkup]
+ * and [InlineKeyboardBuilder.build] [InlineKeyboardMarkup] then
+ *
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun inlineKeyboard(
+    crossinline block: InlineKeyboardBuilder.() -> Unit
+) = InlineKeyboardBuilder().apply(block).build()
+
+/**
+ * Creates an [InlineKeyboardRowBuilder] and [apply] [block] with this builder
+ *
+ * @see payButton
+ * @see dataButton
+ * @see gameButton
+ * @see loginButton
+ * @see inlineQueryInCurrentChatButton
+ * @see inlineQueryButton
+ * @see urlButton
+ */
+inline fun InlineKeyboardBuilder.row(
+    crossinline block: InlineKeyboardRowBuilder.() -> Unit
+) = add(InlineKeyboardRowBuilder().apply(block).row)
+
+/**
+ * Creates and put [PayInlineKeyboardButton]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.payButton(
+    text: String
+) = add(PayInlineKeyboardButton(text))
+
+/**
+ * Creates and put [CallbackDataInlineKeyboardButton]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.dataButton(
+    text: String,
+    data: String
+) = add(CallbackDataInlineKeyboardButton(text, data))
+
+/**
+ * Creates and put [CallbackGameInlineKeyboardButton]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.gameButton(
+    text: String
+) = add(CallbackGameInlineKeyboardButton(text))
+
+/**
+ * Creates and put [LoginURLInlineKeyboardButton]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.loginButton(
+    text: String,
+    loginUrl: LoginURL
+) = add(LoginURLInlineKeyboardButton(text, loginUrl))
+
+/**
+ * Creates and put [SwitchInlineQueryCurrentChatInlineKeyboardButton]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.inlineQueryInCurrentChatButton(
+    text: String,
+    data: String
+) = add(SwitchInlineQueryCurrentChatInlineKeyboardButton(text, data))
+
+/**
+ * Creates and put [SwitchInlineQueryInlineKeyboardButton]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.inlineQueryButton(
+    text: String,
+    data: String
+) = add(SwitchInlineQueryInlineKeyboardButton(text, data))
+
+/**
+ * Creates and put [URLInlineKeyboardButton]
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.urlButton(
+    text: String,
+    url: String
+) = add(URLInlineKeyboardButton(text, url))

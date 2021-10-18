@@ -17,8 +17,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.message.content.media.*
-import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
-import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentInfo
+import dev.inmo.tgbotapi.types.message.payments.*
 import dev.inmo.tgbotapi.types.passport.PassportData
 import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
@@ -197,17 +196,10 @@ internal data class RawMessage(
             channel_chat_created -> ChannelChatCreated()
             pinned_message != null -> PinnedMessage(pinned_message.asMessage)
             proximity_alert_triggered != null -> proximity_alert_triggered
+            successful_payment != null -> SuccessfulPaymentEvent(successful_payment)
             else -> null
         }
     }
-
-    private val paymentInfo: SuccessfulPaymentInfo? by lazy {
-        when {
-            successful_payment != null -> SuccessfulPaymentInfo(successful_payment)
-            else -> null
-        }
-    }
-
 
     val asMessage: Message by lazy {
         try {
@@ -231,6 +223,12 @@ internal data class RawMessage(
                         messageId,
                         chat,
                         chatEvent as? ChannelEvent ?: throwWrongChatEvent(ChannelEvent::class, chatEvent),
+                        date.asDate
+                    )
+                    is PrivateChat -> PrivateEventMessage(
+                        messageId,
+                        chat,
+                        chatEvent as? PrivateEvent ?: throwWrongChatEvent(PrivateEvent::class, chatEvent),
                         date.asDate
                     )
                     else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
@@ -335,8 +333,7 @@ internal data class RawMessage(
                         forwarded,
                         reply_to_message?.asMessage,
                         reply_markup,
-                        via_bot,
-                        paymentInfo
+                        via_bot
                     )
                     else -> error("Unknown type of chat: $chat")
                 }
@@ -359,7 +356,7 @@ internal data class RawMessage(
         }
     }
 
-    private fun throwWrongChatEvent(expected: KClass<*>, but: ChatEvent): CommonEvent {
+    private fun throwWrongChatEvent(expected: KClass<*>, but: ChatEvent): Nothing {
         error("Wrong type of chat event: expected $expected, but was $but")
     }
 }

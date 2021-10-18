@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.buttons
 
+import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.KSerializer
@@ -9,19 +10,38 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
+/**
+ * Poll type for [RequestPollKeyboardButton]. Visit https://core.telegram.org/bots/api#keyboardbuttonpolltype for more
+ * info and see inheritors.
+ *
+ * @see KeyboardButtonPollTypeSerializer
+ */
 @Serializable(KeyboardButtonPollTypeSerializer::class)
 sealed interface KeyboardButtonPollType {
     val type: String
 }
 
 @Serializable
+@Warning("This type should be used only in cases you are sure that it is required")
 class UnknownKeyboardButtonPollType internal constructor(override val type: String): KeyboardButtonPollType
 
+/**
+ * Just a regular poll type
+ *
+ * @see dev.inmo.tgbotapi.types.polls.RegularPoll
+ * @see RequestPollKeyboardButton
+ */
 @Serializable
 object RegularKeyboardButtonPollType : KeyboardButtonPollType {
     override val type: String = regularPollType
 }
 
+/**
+ * Quiz poll type
+ *
+ * @see dev.inmo.tgbotapi.types.polls.QuizPoll
+ * @see RequestPollKeyboardButton
+ */
 @Serializable
 object QuizKeyboardButtonPollType : KeyboardButtonPollType {
     override val type: String = quizPollType

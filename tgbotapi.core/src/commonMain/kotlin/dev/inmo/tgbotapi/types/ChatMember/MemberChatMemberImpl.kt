@@ -10,6 +10,3 @@ data class MemberChatMemberImpl(@SerialName(userField) override val user: User) 
     @Required
     private val type: String = "member"
 }
-
-@Deprecated("Renamed", ReplaceWith("MemberChatMember", "dev.inmo.tgbotapi.types.ChatMember.MemberChatMemberImpl"))
-typealias MemberChatMember = MemberChatMemberImpl

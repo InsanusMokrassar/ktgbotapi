@@ -23,6 +23,3 @@ data class BanChatMember(
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 }
-
-@Deprecated("Renamed", ReplaceWith("BanChatMember", "dev.inmo.tgbotapi.requests.chat.members.BanChatMember"))
-typealias KickChatMember = BanChatMember

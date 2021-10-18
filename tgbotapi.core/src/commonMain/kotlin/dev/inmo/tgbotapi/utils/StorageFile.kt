@@ -16,12 +16,6 @@ import kotlinx.serialization.Serializable
 data class StorageFileInfo(
     val fileName: String
 ) {
-    @Deprecated("This constructor is redundant. Use constructor without mime type")
-    constructor(
-        contentType: String,
-        fileName: String
-    ): this(fileName)
-
     /**
      * This methods is required for random generation of name for keeping warranties about unique file name
      */
@@ -43,18 +37,6 @@ data class StorageFile(
 ) {
     val input: Input
         get() = inputSource()
-}
-
-@Deprecated("This constructor is redundant. Use constructor without mime type")
-@Suppress("NOTHING_TO_INLINE")
-inline fun StorageFile(
-    fileName: String,
-    bytes: ByteArray,
-    mimeType: MimeType
-) = StorageFile(
-    StorageFileInfo(fileName)
-) {
-    ByteReadPacket(bytes)
 }
 
 @Suppress("NOTHING_TO_INLINE")
@@ -80,13 +62,6 @@ suspend inline fun StorageFile(
 inline fun ByteArray.asStorageFile(
     fileName: String
 ) = StorageFile(fileName, this)
-
-@Deprecated("This constructor is redundant. Use constructor without mime type")
-@Suppress("NOTHING_TO_INLINE", "unused")
-inline fun ByteArray.asStorageFile(
-    fileName: String,
-    mimeType: MimeType
-) = asStorageFile(fileName)
 
 @Suppress("NOTHING_TO_INLINE", "unused")
 suspend inline fun ByteReadChannel.asStorageFile(

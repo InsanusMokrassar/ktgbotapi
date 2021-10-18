@@ -1,5 +1,50 @@
 # TelegramBotAPI changelog
 
+## 0.36.0
+
+**ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
+**ALL EXTENSION PACKAGES HAS BEEN RENAMES**. Old packages are still available, but will be removed in next major update:
+
+* `tgbotapi.extensions.api` -> `tgbotape.api`
+* `tgbotapi.extensions.utils` -> `tgbotape.utils`
+* `tgbotapi.extensions.behaviour_builder` -> `tgbotape.behaviour_builder`
+
+* `Common`:
+    * `Version`:
+        * `Serialization`: `1.2.2` -> `1.3.0`
+        * `MicroUtils`: `0.5.28` -> `0.7.2`
+        * `Klock`: `2.4.3` -> `2.4.6`
+        * `Ktor`: `1.6.3` -> `1.6.4`
+* `Core`:
+    * `PrivateContentMessageImpl#paymentInfo` now is deprecated and will always be null
+    * `PayInlineKeyboardButton#pay` now is deprecated
+    * `RowBuilder` and `MatrixBuilder` now are open and available for extending
+    * `MatrixBuilder#matrix` will return read-only new list instead of original internal `mutMatrix`
+    * Introduced new type of events `SuccessfulPaymentEvent` instead of putting of payment inside of message
+    * New type of events union: `PublicChatEvent`. `CommonEvent` is still union of any `ChatEvent`
+    * New `AbstractFlowsUpdatesFilter` with default `lazy` realization for all typed flows
+    * `FlowsUpdatesFilter` fun now have `onBufferOverflow` and `upstreamUpdatesFlow` as incoming params
+        * `DefaultFlowsUpdatesFilter` now use additional `upstreamUpdatesFlow` as source of updates
+* `Utils`:
+    * Two new dsl:
+        * `inlineKeyboard` for creating `InlineKeyboardMarkup`
+        * `replyKeyboard` for creating `ReplyKeyboardMarkup`
+    * Cast helpers for `Message` (thanks to [madhead](https://github.com/madhead)):
+        * `asPossiblyReplyMessage`: tries to cast a `Message` to `PossiblyReplyMessage`, returns `null` if the message is not of that type
+        * `requirePossiblyReplyMessage`: casts a `Message` to `PossiblyReplyMessage`, fails if the message is not of that type
+        * `whenPossiblyReplyMessage`: tries to cast a `Message` to `PossiblyReplyMessage` and runs the given block of code with it, if the cast is successful
+    * New type `WithUser` for unioning of all types with `user`
+        * `FromUser` now extends `WithUser`
+        * Cast helpers for type `WithUser`: `asWithUser`, `whenWithUser`, `requireWithUser`
+* `Behaviour Builder`:
+    * New expecters and waiters:
+        * `waitShippingQueries`/`onShippingQuery`
+        * `waitPreCheckoutQueries`/`onPreCheckoutQuery`
+        * `waitChosenInlineResult`/`onChosenInlineResult`
+        * `waitPollUpdates`/`onPollUpdates`
+* `Behaviour Builder FSM extension`:
+    * See [Difference between old Behaviour Builder and new one with FSM](https://telegra.ph/Difference-between-old-Behaviour-Builder-and-new-one-with-FSM-10-18)
+
 ## 0.35.9
 
 * `Common`:

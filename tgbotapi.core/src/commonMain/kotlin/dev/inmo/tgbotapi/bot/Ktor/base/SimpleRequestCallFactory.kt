@@ -20,7 +20,4 @@ class SimpleRequestCallFactory : AbstractRequestCallFactory() {
             ContentType.Application.Json
         )
     }
-
-    @Deprecated("Use class SimpleRequestCallFactory() constructor call instead of just SimpleRequestCallFactory")
-    companion object : KtorCallFactory by SimpleRequestCallFactory()
 }

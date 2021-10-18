@@ -11,7 +11,7 @@ sealed interface CallbackQuery : FromUser {
 
 data class UnknownCallbackQueryType(
     override val id: CallbackQueryIdentifier,
-    override val user: User,
+    override val from: User,
     override val chatInstance: String,
     val raw: String
 ) : CallbackQuery

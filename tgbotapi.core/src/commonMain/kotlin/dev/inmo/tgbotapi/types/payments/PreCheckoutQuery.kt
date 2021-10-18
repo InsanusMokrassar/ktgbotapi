@@ -12,7 +12,7 @@ data class PreCheckoutQuery(
     @SerialName(idField)
     val id: PreCheckoutQueryId,
     @SerialName(fromField)
-    override val user: User,
+    override val from: User,
     @SerialName(currencyField)
     override val currency: Currency,
     @SerialName(totalAmountField)

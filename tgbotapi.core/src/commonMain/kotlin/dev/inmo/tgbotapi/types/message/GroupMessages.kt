@@ -38,7 +38,7 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
 data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
     override val messageId: MessageIdentifier,
-    override val user: User,
+    override val from: User,
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,

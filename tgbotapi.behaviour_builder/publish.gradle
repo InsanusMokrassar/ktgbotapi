@@ -1,0 +1,69 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+task javadocsJar(type: Jar) {
+    classifier = 'javadoc'
+}
+
+publishing {
+    publications.all {
+        artifact javadocsJar
+
+        pom {
+            description = "This extensions project contains tools for simple interaction with chats"
+            name = "Telegram Bot API Steps Extensions"
+            url = "https://insanusmokrassar.github.io/TelegramBotAPI/tgbotapi.extensions.steps"
+
+            scm {
+                developerConnection = "scm:git:[fetch=]https://github.com/insanusmokrassar/TelegramBotAPI.git[push=]https://github.com/insanusmokrassar/TelegramBotAPI.git"
+                url = "https://github.com/insanusmokrassar/TelegramBotAPI.git"
+            }
+
+            developers {
+                
+                    developer {
+                        id = "InsanusMokrassar"
+                        name = "Ovsiannikov Aleksei"
+                        email = "ovsyannikov.alexey95@gmail.com"
+                    }
+                
+            }
+
+            licenses {
+                
+                    license {
+                        name = "Apache Software License 2.0"
+                        url = "https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/LICENSE"
+                    }
+                
+            }
+        }
+        repositories {
+            if ((project.hasProperty('GITHUBPACKAGES_USER') || System.getenv('GITHUBPACKAGES_USER') != null) && (project.hasProperty('GITHUBPACKAGES_PASSWORD') || System.getenv('GITHUBPACKAGES_PASSWORD') != null)) {
+                maven {
+                    name = "GithubPackages"
+                    url = uri("https://maven.pkg.github.com/InsanusMokrassar/TelegramBotAPI")
+                    credentials {
+                        username = project.hasProperty('GITHUBPACKAGES_USER') ? project.property('GITHUBPACKAGES_USER') : System.getenv('GITHUBPACKAGES_USER')
+                        password = project.hasProperty('GITHUBPACKAGES_PASSWORD') ? project.property('GITHUBPACKAGES_PASSWORD') : System.getenv('GITHUBPACKAGES_PASSWORD')
+                    }
+                }
+            }
+            if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != null) && (project.hasProperty('SONATYPE_PASSWORD') || System.getenv('SONATYPE_PASSWORD') != null)) {
+                maven {
+                    name = "sonatype"
+                    url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+                    credentials {
+                        username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
+                        password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign publishing.publications
+}

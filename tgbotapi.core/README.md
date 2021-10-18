@@ -39,7 +39,7 @@ of signed artifacts in Bintray). You can:
 
 * Use earlier version (available version you can find
 [here](https://mvnrepository.com/artifact/com.github.insanusmokrassar/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo/tgbotapi.core))
-* Add `jCenter` repository in build config
+* Add `mavenCentral` repository in build config
 
 ### Maven
 
@@ -57,7 +57,7 @@ Dependency config presented here:
 
 To use last versions you will need to add one line in repositories block of your `build.gradle`:
 
-`jcenter()` or `mavenCentral()`
+`mavenCentral()`
 
 And add next line to your dependencies block:
 
@@ -106,7 +106,7 @@ requestsExecutor.execute(GetMe())
 ``` 
 
 Also there is an alternative syntax for requests (like `requestsExecutor.getMe()` in project
-[tgbotapi.extensions.api](../tgbotapi.extensions.api/README.md))
+[tgbotapi.api](../tgbotapi.api/README.md))
 
 The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/com/github/insanusmokrassar/tgbotapi/requests/GetMe.kt)
 request is

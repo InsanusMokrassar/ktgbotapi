@@ -12,6 +12,7 @@ on:
 jobs:
   triage:
     runs-on: ubuntu-latest
+    if: ${{ github.actor == github.repository_owner }}
     steps:
       - uses: actions/labeler@v2
         with:

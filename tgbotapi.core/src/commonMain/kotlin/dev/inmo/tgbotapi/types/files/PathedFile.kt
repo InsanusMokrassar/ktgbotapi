@@ -24,8 +24,5 @@ data class PathedFile(
     }
 }
 
-@Deprecated("Use fileName property instead", ReplaceWith("fileName"))
-val PathedFile.filename: FileName
-    get() = filePath.filenameFromUrl
 fun TelegramAPIUrlsKeeper.resolveFileURL(file: PathedFile): String = "$fileBaseUrl/${file.filePath}"
 fun PathedFile.fullUrl(keeper: TelegramAPIUrlsKeeper): String = keeper.resolveFileURL(this)
