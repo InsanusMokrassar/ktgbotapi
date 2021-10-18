@@ -3,9 +3,10 @@
 Concentration of all TelegramBotAPI libraries:
 
 * [TelegramBotAPI Core](../tgbotapi.core/README.md)
-* [TelegramBotAPI Extensions](../tgbotapi.extensions.api/README.md)
-* [TelegramBotAPI Util Extensions](../tgbotapi.extensions.utils/README.md)
-* [TelegramBotAPI Behaviour Builder Extensions](../tgbotapi.extensions.behaviour_builder/README.md)
+* [TelegramBotAPI Extensions](../tgbotapi.api/README.md)
+* [TelegramBotAPI Util Extensions](../tgbotapi.utils/README.md)
+* [TelegramBotAPI Behaviour Builder Extensions](../tgbotapi.behaviour_builder/README.md)
+* [TelegramBotAPI Behaviour Builder FSM Extensions](../tgbotapi.behaviour_builder.fsm/README.md)
 
 ## Implementation
 

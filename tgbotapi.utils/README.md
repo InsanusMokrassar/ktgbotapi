@@ -1,24 +1,6 @@
 # TelegramBotAPI Util Extensions
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.utils)
-
-- [TelegramBotAPI Util Extensions](#telegrambotapi-util-extensions)
-  * [What is it?](#what-is-it)
-  * [How to implement library?](#how-to-implement-library)
-    + [Maven](#maven)
-    + [Gradle](#gradle)
-  * [How to use?](#how-to-use)
-    + [Updates](#updates)
-      - [Long polling](#long-polling)
-      - [WebHooks (currently JVM-only)](#webhooks-currently-jvm-only)
-    + [Filters](#filters)
-      - [Sent messages](#sent-messages)
-        * [Common messages](#common-messages)
-        * [Chat actions](#chat-actions)
-    + [Shortcuts](#shortcuts)
-      - [ScheduledCloseInfo](#scheduledcloseinfo)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils)
 
 ## What is it?
 
@@ -28,10 +10,9 @@ It is wrapper library for [TelegramBotAPI Core](../tgbotapi.core/README.md). Cur
 
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
-`telegrambotapi-extensions-utils_version`, which must be set up by developer. Available versions are presented on
-[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils), next version is last published:
+`telegrambotapi-extensions-utils_version`, which must be set up by developer. Next version is last published:
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.utils/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils)
 
 ### Maven
 
@@ -40,7 +21,7 @@ Dependency config presented here:
 ```xml
 <dependency>
   <groupId>dev.inmo</groupId>
-  <artifactId>tgbotapi.extensions.utils</artifactId>
+  <artifactId>tgbotapi.utils</artifactId>
   <version>${telegrambotapi-extensions-utils_version}</version>
 </dependency>
 ```
@@ -54,13 +35,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "dev.inmo:tgbotapi.extensions.utils:$telegrambotapi-extensions-utils_version"
+implementation "dev.inmo:tgbotapi.utils:$telegrambotapi-extensions-utils_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "dev.inmo:tgbotapi.extensions.utils:$telegrambotapi-extensions-utils_version"
+compile "dev.inmo:tgbotapi.utils:$telegrambotapi-extensions-utils_version"
 ```
 
 ## How to use?

@@ -1,13 +1,6 @@
 # TelegramBotAPI Behaviour Builder Extensions
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.behaviour_builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.behaviour_builder)
-
-- [TelegramBotAPI Behaviour Builder Extensions](#telegrambotapi-behaviour-builder-extensions)
-  * [What is it?](#what-is-it)
-  * [Triggers](#triggers)
-  * [Waiters](#waiters)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder)
 
 ## What is it?
 

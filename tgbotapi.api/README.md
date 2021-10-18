@@ -1,18 +1,6 @@
-# TelegramBotAPI extensions
+# TelegramBotAPI API extensions
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.extensions.api)
-
-- [TelegramBotAPI extensions](#telegrambotapi-extensions)
-    * [What is it?](#what-is-it)
-    * [Compatibility](#compatibility)
-    * [How to implement library?](#how-to-implement-library)
-        + [Maven](#maven)
-        + [Gradle](#gradle)
-    * [Example of usage and comparison with `TelegramBotAPI`](#example-of-usage-and-comparison-with-telegrambotapi)
-    * [Updates](#updates)
-        + [Alternative way](#alternative-way)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api)
 
 ## What is it?
 
@@ -28,10 +16,9 @@ This library always compatible with original `tgbotapi.core` library version
 
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
-`telegrambotapi-extensions-api.version`, which must be set up by developer. Available versions are presented on
-[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api), next version is last published:
+`telegrambotapi-extensions-api.version`, which must be set up by developer.
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.extensions.api/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api)
 
 ### Maven
 
@@ -40,7 +27,7 @@ Dependency config presented here:
 ```xml
 <dependency>
   <groupId>dev.inmo</groupId>
-  <artifactId>tgbotapi.extensions.api</artifactId>
+  <artifactId>tgbotapi.api</artifactId>
   <version>${telegrambotapi-extensions-api.version}</version>
 </dependency>
 ```
@@ -54,13 +41,13 @@ To use last versions you will need to add one line in repositories block of your
 And add next line to your dependencies block:
 
 ```groovy
-implementation "dev.inmo:tgbotapi.extensions.api:$telegrambotapi_extensions_api_version"
+implementation "dev.inmo:tgbotapi.api:$telegrambotapi_extensions_api_version"
 ```
 
 or for old gradle:
 
 ```groovy
-compile "dev.inmo:tgbotapi.extensions.api:$telegrambotapi_extensions_api_version"
+compile "dev.inmo:tgbotapi.api:$telegrambotapi_extensions_api_version"
 ```
 
 ## Example of usage and comparison with `TelegramBotAPI`
@@ -82,7 +69,7 @@ val bot = telegramBot("IT IS YOUR TOKEN") {
 
 In all examples supposed that you have created bot.
 
-| tgbotapi.core | tgbotapi.extensions.api |
+| tgbotapi.core | tgbotapi.api |
 |---------------------|-------------------------------|
 | bot.execute(GetMe) |    bot.getMe()          |
 | bot.execute(SendTextMessage(someChatId, text)) | bot.sendTextMessage(chat, text) |
@@ -90,8 +77,8 @@ In all examples supposed that you have created bot.
 ## Updates
 
 **Currently, these paragraphs almost outdated due to the fact that extensions for listening of updates and webhooks were
-replaced into `tgbotapi.extensions.utils`. But, most part of information below is correct with small fixes and
-adding of `tgbotapi.extensions.utils` dependency.**
+replaced into `tgbotapi.utils`. But, most part of information below is correct with small fixes and
+adding of `tgbotapi.utils` dependency.**
 
 Usually, it is more comfortable to use filter object to get separated types of updates:
 

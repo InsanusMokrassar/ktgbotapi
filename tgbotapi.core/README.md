@@ -106,7 +106,7 @@ requestsExecutor.execute(GetMe())
 ``` 
 
 Also there is an alternative syntax for requests (like `requestsExecutor.getMe()` in project
-[tgbotapi.extensions.api](../tgbotapi.extensions.api/README.md))
+[tgbotapi.api](../tgbotapi.api/README.md))
 
 The result type of [GetMe (and getMe extension)](https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/tgbotapi.core/src/commonMain/kotlin/com/github/insanusmokrassar/tgbotapi/requests/GetMe.kt)
 request is
