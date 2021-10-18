@@ -1133,6 +1133,15 @@ inline fun Message.asPossiblyEditedMessage(): PossiblyEditedMessage? = this as? 
 inline fun Message.requirePossiblyEditedMessage(): PossiblyEditedMessage = this as PossiblyEditedMessage
 
 @PreviewFeature
+inline fun <T> Message.whenPossiblyReplyMessage(block: (PossiblyReplyMessage) -> T) = asPossiblyReplyMessage() ?.let(block)
+
+@PreviewFeature
+inline fun Message.asPossiblyReplyMessage(): PossiblyReplyMessage? = this as? PossiblyReplyMessage
+
+@PreviewFeature
+inline fun Message.requirePossiblyReplyMessage(): PossiblyReplyMessage = this as PossiblyReplyMessage
+
+@PreviewFeature
 inline fun <T> Message.whenPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T) = asPossiblyForwardedMessage() ?.let(block)
 
 @PreviewFeature
