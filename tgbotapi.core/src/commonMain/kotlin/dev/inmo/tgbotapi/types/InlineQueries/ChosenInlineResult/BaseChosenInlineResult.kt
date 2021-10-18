@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 data class BaseChosenInlineResult(
     override val resultId: InlineQueryIdentifier,
     @SerialName(fromField)
-    override val user: User,
+    override val from: User,
     override val inlineMessageId: InlineMessageIdentifier?,
     override val query: String
 ) : ChosenInlineResult

@@ -2,8 +2,7 @@
 
 package dev.inmo.tgbotapi.extensions.utils
 
-import dev.inmo.tgbotapi.CommonAbstracts.CommonSendInvoiceData
-import dev.inmo.tgbotapi.CommonAbstracts.FromUser
+import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.*
@@ -3153,6 +3152,15 @@ inline fun Any.asFromUser(): FromUser? = this as? FromUser
 
 @PreviewFeature
 inline fun Any.requireFromUser(): FromUser = this as FromUser
+
+@PreviewFeature
+inline fun <T> Any.whenWithUser(block: (WithUser) -> T) = asWithUser() ?.let(block)
+
+@PreviewFeature
+inline fun Any.asWithUser(): WithUser? = this as? WithUser
+
+@PreviewFeature
+inline fun Any.requireWithUser(): WithUser = this as WithUser
 
 @PreviewFeature
 inline fun <T> Any.whenWithOptionalLanguageCode(block: (WithOptionalLanguageCode) -> T) = asWithOptionalLanguageCode() ?.let(block)

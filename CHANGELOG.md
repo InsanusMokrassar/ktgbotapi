@@ -24,10 +24,13 @@
     * Two new dsl:
         * `inlineKeyboard` for creating `InlineKeyboardMarkup`
         * `replyKeyboard` for creating `ReplyKeyboardMarkup`
-    * Cast helpers for `Message`:
+    * Cast helpers for `Message` (thanks to [madhead](https://github.com/madhead)):
         * `asPossiblyReplyMessage`: tries to cast a `Message` to `PossiblyReplyMessage`, returns `null` if the message is not of that type
         * `requirePossiblyReplyMessage`: casts a `Message` to `PossiblyReplyMessage`, fails if the message is not of that type
         * `whenPossiblyReplyMessage`: tries to cast a `Message` to `PossiblyReplyMessage` and runs the given block of code with it, if the cast is successful
+    * New type `WithUser` for unioning of all types with `user`
+        * `FromUser` now extends `WithUser`
+        * Cast helpers for type `WithUser`: `asWithUser`, `whenWithUser`, `requireWithUser`
 * `Behaviour Builder`:
     * New expecters and waiters:
         * `waitShippingQueries`/`onShippingQuery`

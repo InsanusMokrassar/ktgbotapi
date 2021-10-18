@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 
 data class PrivateContentMessageImpl<T: MessageContent>(
     override val messageId: MessageIdentifier,
-    override val user: User,
+    override val from: User,
     override val chat: Chat,
     override val content: T,
     override val date: DateTime,

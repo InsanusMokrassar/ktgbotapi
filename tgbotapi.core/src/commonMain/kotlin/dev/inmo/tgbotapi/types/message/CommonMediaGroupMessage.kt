@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
 
 data class CommonMediaGroupMessage<T : MediaGroupContent>(
     override val messageId: MessageIdentifier,
-    override val user: User,
+    override val from: User,
     override val chat: Chat,
     override val date: DateTime,
     override val mediaGroupId: MediaGroupIdentifier,

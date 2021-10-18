@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 data class MessageGameShortNameCallbackQuery(
     override val id: CallbackQueryIdentifier,
-    override val user: User,
+    override val from: User,
     override val chatInstance: String,
     override val message: Message,
     override val gameShortName: String

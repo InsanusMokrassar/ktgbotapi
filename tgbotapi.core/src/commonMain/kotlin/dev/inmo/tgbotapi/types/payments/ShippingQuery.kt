@@ -10,7 +10,7 @@ data class ShippingQuery(
     @SerialName(idField)
     val id: ShippingQueryIdentifier,
     @SerialName(fromField)
-    override val user: User,
+    override val from: User,
     @SerialName(invoicePayloadField)
     val invoicePayload: InvoicePayload,
     @SerialName(shippingAddressField)

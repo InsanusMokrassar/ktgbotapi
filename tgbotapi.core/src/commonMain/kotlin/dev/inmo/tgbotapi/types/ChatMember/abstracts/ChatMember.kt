@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.ChatMember.abstracts
 
+import dev.inmo.tgbotapi.CommonAbstracts.WithUser
 import dev.inmo.tgbotapi.types.ChatMember.*
 import dev.inmo.tgbotapi.types.User
 import dev.inmo.tgbotapi.types.statusField
@@ -14,9 +15,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 @Serializable(ChatMemberSerializer::class)
-sealed interface ChatMember {
-    val user: User
-}
+sealed interface ChatMember : WithUser
 
 @RiskFeature
 object ChatMemberSerializer : KSerializer<ChatMember> {

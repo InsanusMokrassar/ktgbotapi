@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message
 
+import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
 import dev.inmo.tgbotapi.types.chat.abstracts.SupergroupChat
@@ -15,8 +16,8 @@ data class AnonymousForwardInfo(
 
 data class UserForwardInfo(
     override val dateOfOriginal: TelegramDate,
-    val from: User
-) : ForwardInfo()
+    override val from: User
+) : ForwardInfo(), FromUser
 
 data class ForwardFromChannelInfo(
     override val dateOfOriginal: TelegramDate,
