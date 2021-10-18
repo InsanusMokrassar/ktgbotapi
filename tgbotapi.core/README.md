@@ -39,7 +39,7 @@ of signed artifacts in Bintray). You can:
 
 * Use earlier version (available version you can find
 [here](https://mvnrepository.com/artifact/com.github.insanusmokrassar/TelegramBotAPI) (before 0.28.0) or [here](https://mvnrepository.com/artifact/dev.inmo/tgbotapi.core))
-* Add `jCenter` repository in build config
+* Add `mavenCentral` repository in build config
 
 ### Maven
 

@@ -12,6 +12,10 @@ pluginManagement {
 }
 
 include ":tgbotapi.core"
+include ":tgbotapi.api"
+include ":tgbotapi.utils"
+include ":tgbotapi.behaviour_builder"
+include ":tgbotapi.behaviour_builder.fsm"
 include ":tgbotapi.extensions.api"
 include ":tgbotapi.extensions.utils"
 include ":tgbotapi.extensions.behaviour_builder"

@@ -36,25 +36,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
-                api project(":tgbotapi.core")
-            }
-        }
-
-        commonTest {
-            dependencies {
-                implementation kotlin('test-common')
-                implementation kotlin('test-annotations-common')
-            }
-        }
-        jvmTest {
-            dependencies {
-                implementation kotlin('test-junit')
-            }
-        }
-        jsTest {
-            dependencies {
-                implementation kotlin('test-junit')
-                implementation kotlin('test-js')
+                api project(":tgbotapi.utils")
             }
         }
     }
@@ -65,3 +47,4 @@ java {
         languageVersion = JavaLanguageVersion.of(8)
     }
 }
+

@@ -3,6 +3,11 @@
 ## 0.36.0
 
 **ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
+**ALL EXTENSION PACKAGES HAS BEEN RENAMES**. Old packages are still available, but will be removed in next major update:
+
+* `tgbotapi.extensions.api` -> `tgbotape.api`
+* `tgbotapi.extensions.utils` -> `tgbotape.utils`
+* `tgbotapi.extensions.behaviour_builder` -> `tgbotape.behaviour_builder`
 
 * `Common`:
     * `Version`:

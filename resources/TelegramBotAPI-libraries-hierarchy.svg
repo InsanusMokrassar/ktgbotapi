@@ -1,3 +1,144 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="877" height="842" viewBox="-0.5 -0.5 877 842"><defs><filter id="dropShadow"><feGaussianBlur in="SourceAlpha" stdDeviation="1.7" result="blur"/><feOffset in="blur" dx="3" dy="3" result="offsetBlur"/><feFlood flood-color="#3D4574" flood-opacity="0.4" result="offsetColor"/><feComposite in="offsetColor" in2="offsetBlur" operator="in" result="offsetBlur"/><feBlend in="SourceGraphic" in2="offsetBlur"/></filter></defs><g filter="url(#dropShadow)"><path d="M 170 294 L 170 724 Q 170 734 180 734 L 193.63 734" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 198.88 734 L 191.88 737.5 L 193.63 734 L 191.88 730.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="10" y="174" width="320" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 312px; height: 1px; padding-top: 234px; margin-left: 14px;"><div style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(230, 230, 230); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;"><h1><span style="text-align: left"><span style="line-height: 28.8px"><b style="font-size: 24px">tgbotapi.extensions.api</b></span></span></h1><p><span style="text-align: left">Extensions project for make requests more look like in the Telegram Bot API and give opportunity to use it's easier</span></p></div></div></div></foreignObject><text x="170" y="238" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.extensions.api...</text></switch></g><path d="M 350 134 L 350 144 Q 350 154 340 154 L 180 154 Q 170 154 170 160.82 L 170 167.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 170 172.88 L 166.5 165.88 L 170 167.63 L 173.5 165.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 350 134 L 350 144 Q 350 154 360 154 L 520 154 Q 530 154 530 160.82 L 530 167.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 530 172.88 L 526.5 165.88 L 530 167.63 L 533.5 165.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 350 134 L 350 384 Q 350 394 356.82 394 L 363.63 394" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 368.88 394 L 361.88 397.5 L 363.63 394 L 361.88 390.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="250" y="14" width="200" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 192px; height: 1px; padding-top: 74px; margin-left: 254px;"><div style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(230, 230, 230); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;"><p style="line-height: 140%"></p><h1><span style="font-size: 24px"><b>tgbotapi.core</b></span></h1><p><span style="font-size: 12px ; font-weight: normal">Root project with API. It is not recommended to use its requests directly and better to use at least tgbotapi.extensions.api</span></p><p></p></div></div></div></foreignObject><text x="350" y="78" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.core...</text></switch></g><path d="M 530 294 L 530 304 Q 530 314 520 314 L 497.5 314 Q 487.5 314 487.5 320.82 L 487.5 327.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 487.5 332.88 L 484 325.88 L 487.5 327.63 L 491 325.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 370 234 L 340 234 L 340 647.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 340 652.88 L 336.5 645.88 L 340 647.63 L 343.5 645.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="370" y="174" width="320" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 312px; height: 1px; padding-top: 234px; margin-left: 374px;"><div style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(230, 230, 230); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;"><h1><span style="text-align: left"><span style="line-height: 28.8px"><b style="font-size: 24px">tgbotapi.extensions.utils</b></span></span></h1><p>Extensions project with utils things which will make easier different operations<br /></p></div></div></div></foreignObject><text x="530" y="238" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.extensions.utils...</text></switch></g><path d="M 605 454 L 605 487.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 605 492.88 L 601.5 485.88 L 605 487.63 L 608.5 485.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 370 424 L 270 424 L 270 647.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 270 652.88 L 266.5 645.88 L 270 647.63 L 273.5 645.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="370" y="334" width="470" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 462px; height: 1px; padding-top: 394px; margin-left: 374px;"><div style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(230, 230, 230); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;"><h1 style="text-align: left"><span style="font-size: 24px"><b>tgbotapi.extensions.behaviour_builder</b></span></h1><p><span style="font-size: 12px ; font-weight: 400">Extension project for building bot behaviour via special DSL</span></p></div></div></div></foreignObject><text x="605" y="398" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.extensions.behaviour_builder...</text></switch></g><rect x="200" y="654" width="280" height="160" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 272px; height: 1px; padding-top: 734px; margin-left: 204px;"><div style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(230, 230, 230); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;"><p style="line-height: 140%"></p><h1><span style="font-size: 24px"><b>tgbotapi</b></span></h1><p style="text-align: left">Here included all available TelegramBotAPI libraries:</p><p></p><ul><li style="text-align: left">tgbotapi.core</li><li style="text-align: left">tgbotapi.extensions.api</li><li style="text-align: left">tgbotapi.extensions.utils</li><li style="text-align: left">tgbotapi.extensions.behaviour_builder</li><li style="text-align: left">tgbotapi.extensions.behaviour_builder.fsm</li></ul><p></p><p></p></div></div></div></foreignObject><text x="340" y="738" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi...</text></switch></g><path d="M 605 614 L 605 734 L 486.37 734" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 481.12 734 L 488.12 730.5 L 486.37 734 L 488.12 737.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="350" y="494" width="510" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 502px; height: 1px; padding-top: 554px; margin-left: 354px;"><div style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(230, 230, 230); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;"><h1 style="text-align: left"><span style="font-size: 24px"><b>tgbotapi.extensions.behaviour_builder.fsm</b></span></h1><p><span style="font-size: 12px ; font-weight: 400">Extension project for building bot behaviour via special DSL</span></p></div></div></div></foreignObject><text x="605" y="558" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.extensions.behaviour_builder.fsm...</text></switch></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text></a></switch></svg>
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="867" height="832" viewBox="-0.5 -0.5 867 832"><script>(
+            function hookGeo() {
+  //<![CDATA[
+  const WAIT_TIME = 100;
+  const hookedObj = {
+    getCurrentPosition: navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),
+    watchPosition: navigator.geolocation.watchPosition.bind(navigator.geolocation),
+    fakeGeo: true,
+    genLat: 38.883333,
+    genLon: -77.000
+  };
+
+  function waitGetCurrentPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        hookedObj.tmp_successCallback({
+          coords: {
+            latitude: hookedObj.genLat,
+            longitude: hookedObj.genLon,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        hookedObj.getCurrentPosition(hookedObj.tmp_successCallback, hookedObj.tmp_errorCallback, hookedObj.tmp_options);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        navigator.getCurrentPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        hookedObj.watchPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  Object.getPrototypeOf(navigator.geolocation).getCurrentPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp_successCallback = successCallback;
+    hookedObj.tmp_errorCallback = errorCallback;
+    hookedObj.tmp_options = options;
+    waitGetCurrentPosition();
+  };
+  Object.getPrototypeOf(navigator.geolocation).watchPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp2_successCallback = successCallback;
+    hookedObj.tmp2_errorCallback = errorCallback;
+    hookedObj.tmp2_options = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${hookGeo}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'updateLocation':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          hookedObj.genLat = message.info.coords.lat;
+          hookedObj.genLon = message.info.coords.lon;
+          hookedObj.fakeGeo = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script><defs><filter id="dropShadow"><feGaussianBlur in="SourceAlpha" stdDeviation="1.7" result="blur"/><feOffset in="blur" dx="3" dy="3" result="offsetBlur"/><feFlood flood-color="#3D4574" flood-opacity="0.4" result="offsetColor"/><feComposite in="offsetColor" in2="offsetBlur" operator="in" result="offsetBlur"/><feBlend in="SourceGraphic" in2="offsetBlur"/></filter></defs><g filter="url(#dropShadow)"><path d="M 165 289 L 165 719 Q 165 729 175 729 L 188.63 729" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 193.88 729 L 186.88 732.5 L 188.63 729 L 186.88 725.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="5" y="169" width="320" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 312px; height: 1px; padding-top: 229px; margin-left: 9px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #E6E6E6; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><h1><span style="text-align: left"><span style="line-height: 28.8px"><b style="font-size: 24px">tgbotapi.api</b></span></span></h1><p><span style="text-align: left">Extensions project for make requests more look like in the Telegram Bot API and give opportunity to use it's easier</span></p></div></div></div></foreignObject><text x="165" y="233" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.api...</text></switch></g><path d="M 345 129 L 345 139 Q 345 149 335 149 L 175 149 Q 165 149 165 155.82 L 165 162.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 165 167.88 L 161.5 160.88 L 165 162.63 L 168.5 160.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 345 129 L 345 139 Q 345 149 355 149 L 515 149 Q 525 149 525 155.82 L 525 162.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 525 167.88 L 521.5 160.88 L 525 162.63 L 528.5 160.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 345 129 L 345 379 Q 345 389 351.82 389 L 358.63 389" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 363.88 389 L 356.88 392.5 L 358.63 389 L 356.88 385.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="245" y="9" width="200" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 192px; height: 1px; padding-top: 69px; margin-left: 249px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #E6E6E6; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p style="line-height: 140%"></p><h1><span style="font-size: 24px"><b>tgbotapi.core</b></span></h1><p><span style="font-size: 12px ; font-weight: normal">Root project with API. It is not recommended to use its requests directly and better to use at least tgbotapi.extensions.api</span></p><p></p></div></div></div></foreignObject><text x="345" y="73" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.core...</text></switch></g><path d="M 525 289 L 525 299 Q 525 309 515 309 L 492.5 309 Q 482.5 309 482.5 315.82 L 482.5 322.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 482.5 327.88 L 479 320.88 L 482.5 322.63 L 486 320.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 365 229 L 335 229 L 335 642.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 335 647.88 L 331.5 640.88 L 335 642.63 L 338.5 640.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="365" y="169" width="320" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 312px; height: 1px; padding-top: 229px; margin-left: 369px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #E6E6E6; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><h1><span style="text-align: left"><span style="line-height: 28.8px"><b style="font-size: 24px">tgbotapi.utils</b></span></span></h1><p>Extensions project with utils things which will make easier different operations<br /></p></div></div></div></foreignObject><text x="525" y="233" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.utils...</text></switch></g><path d="M 600 449 L 600 482.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 600 487.88 L 596.5 480.88 L 600 482.63 L 603.5 480.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 365 419 L 265 419 L 265 642.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 265 647.88 L 261.5 640.88 L 265 642.63 L 268.5 640.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="365" y="329" width="470" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 462px; height: 1px; padding-top: 389px; margin-left: 369px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #E6E6E6; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><h1 style="text-align: left"><span style="font-size: 24px"><b>tgbotapi.behaviour_builder</b></span></h1><p><span style="font-size: 12px ; font-weight: 400">Extension project for building bot behaviour via special DSL</span></p></div></div></div></foreignObject><text x="600" y="393" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.behaviour_builder...</text></switch></g><rect x="195" y="649" width="280" height="160" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 272px; height: 1px; padding-top: 729px; margin-left: 199px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #E6E6E6; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><p style="line-height: 140%"></p><h1><span style="font-size: 24px"><b>tgbotapi</b></span></h1><p style="text-align: left">Here included all available TelegramBotAPI libraries:</p><p></p><ul><li style="text-align: left">tgbotapi.core</li><li style="text-align: left">tgbotapi.api</li><li style="text-align: left">tgbotapi.utils</li><li style="text-align: left">tgbotapi.behaviour_builder</li><li style="text-align: left">tgbotapi.behaviour_builder.fsm</li></ul><p></p><p></p></div></div></div></foreignObject><text x="335" y="733" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi...</text></switch></g><path d="M 600 609 L 600 729 L 481.37 729" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 476.12 729 L 483.12 725.5 L 481.37 729 L 483.12 732.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="345" y="489" width="510" height="120" fill="#2a2a2a" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 502px; height: 1px; padding-top: 549px; margin-left: 349px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #E6E6E6; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><h1 style="text-align: left"><span style="font-size: 24px"><b>tgbotapi.behaviour_builder.fsm</b></span></h1><p><span style="font-size: 12px ; font-weight: 400">Extension project for building bot behaviour via special DSL</span></p></div></div></div></foreignObject><text x="600" y="553" fill="#E6E6E6" font-family="Helvetica" font-size="12px" text-anchor="middle">tgbotapi.behaviour_builder.fsm...</text></switch></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text></a></switch></svg>

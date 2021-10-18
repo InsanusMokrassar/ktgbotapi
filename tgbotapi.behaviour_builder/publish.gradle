@@ -10,9 +10,9 @@ publishing {
         artifact javadocsJar
 
         pom {
-            description = "API extensions which provide work with RequestsExecutor of TelegramBotAPI almost like it is described in original Telegram Bot API reference"
-            name = "Telegram Bot API Extensions for API"
-            url = "https://insanusmokrassar.github.io/TelegramBotAPI/TelegramBotAPI-extensions-api"
+            description = "This extensions project contains tools for simple interaction with chats"
+            name = "Telegram Bot API Steps Extensions"
+            url = "https://insanusmokrassar.github.io/TelegramBotAPI/tgbotapi.extensions.steps"
 
             scm {
                 developerConnection = "scm:git:[fetch=]https://github.com/insanusmokrassar/TelegramBotAPI.git[push=]https://github.com/insanusmokrassar/TelegramBotAPI.git"

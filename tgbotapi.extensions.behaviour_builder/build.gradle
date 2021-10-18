@@ -36,7 +36,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib')
-                api project(":tgbotapi.extensions.utils")
+                api project(":tgbotapi.behaviour_builder")
             }
         }
     }
@@ -47,3 +47,4 @@ java {
         languageVersion = JavaLanguageVersion.of(8)
     }
 }
+
