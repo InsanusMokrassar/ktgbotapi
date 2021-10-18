@@ -22,10 +22,10 @@ import kotlin.coroutines.coroutineContext
  * **WARNING** This method WILL NOT launch any listening of updates. Use something like
  * [startGettingOfUpdatesByLongPolling] or tools for work with webhooks
  *
- * @return Created bot which has been used to create [BehaviourContext] via [buildBehaviour]
+ * @return Created bot which has been used to create [BehaviourContext] via [buildBehaviourWithFSM]
  *
  * @see [BehaviourContext]
- * @see [buildBehaviour]
+ * @see [buildBehaviourWithFSM]
  * @see startGettingOfUpdatesByLongPolling
  */
 suspend fun telegramBotWithBehaviourAndFSM(
@@ -60,8 +60,8 @@ suspend fun telegramBotWithBehaviourAndFSM(
  * @return Pair of [TelegramBot] and [Job]. This [Job] can be used to stop listening updates in your [block] you passed
  * here
  *
- * @see [BehaviourContext]
- * @see [buildBehaviour]
+ * @see BehaviourContext
+ * @see buildBehaviourWithFSMAndStartLongPolling
  * @see startGettingOfUpdatesByLongPolling
  */
 suspend fun telegramBotWithBehaviourAndFSMAndStartLongPolling(

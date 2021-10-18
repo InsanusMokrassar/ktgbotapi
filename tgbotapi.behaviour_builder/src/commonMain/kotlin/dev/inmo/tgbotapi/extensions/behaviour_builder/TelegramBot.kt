@@ -45,20 +45,19 @@ suspend fun telegramBotWithBehaviour(
 }
 
 /**
- * Create bot using [telegramBot] and start listening for updates using [buildBehaviour].
+ * Create bot using [telegramBot] and start listening for updates using [buildBehaviourWithLongPolling].
  * Use this method in case you wish to make some additional actions with [flowsUpdatesFilter].
  *
- * **WARNING** This method WILL NOT launch any listening of updates. Use something like
- * [startGettingOfUpdatesByLongPolling] or tools for work with webhooks
+ * **WARNING** This method WILL launch updates listening inside of calling [buildBehaviourWithLongPolling]
  *
  * @return Pair of [TelegramBot] and [Job]. This [Job] can be used to stop listening updates in your [block] you passed
  * here
  *
  * @see [BehaviourContext]
- * @see [buildBehaviour]
+ * @see buildBehaviourWithLongPolling
  * @see startGettingOfUpdatesByLongPolling
  */
-suspend fun telegramBotWithBehaviour(
+suspend fun telegramBotWithBehaviourAndLongPolling(
     token: String,
     scope: CoroutineScope? = null,
     apiUrl: String = telegramBotAPIDefaultUrl,
@@ -71,10 +70,20 @@ suspend fun telegramBotWithBehaviour(
         apiUrl,
         builder
     ).let {
-        it to it.buildBehaviour(
+        it to it.buildBehaviourWithLongPolling(
             scope ?: CoroutineScope(coroutineContext),
             defaultExceptionsHandler,
             block
         )
     }
 }
+
+@Deprecated("Renamed to telegramBotWithBehaviourAndLongPolling")
+suspend fun telegramBotWithBehaviour(
+    token: String,
+    scope: CoroutineScope? = null,
+    apiUrl: String = telegramBotAPIDefaultUrl,
+    builder: KtorRequestsExecutorBuilder.() -> Unit = {},
+    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    block: BehaviourContextReceiver<Unit>
+) = telegramBotWithBehaviourAndLongPolling(token, scope, apiUrl, builder, defaultExceptionsHandler, block)

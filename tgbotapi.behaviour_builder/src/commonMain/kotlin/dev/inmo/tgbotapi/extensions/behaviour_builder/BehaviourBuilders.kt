@@ -54,7 +54,7 @@ suspend fun TelegramBot.buildBehaviour(
  * @see startGettingOfUpdatesByLongPolling
  */
 @PreviewFeature
-suspend fun TelegramBot.buildBehaviour(
+suspend fun TelegramBot.buildBehaviourWithLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     block: BehaviourContextReceiver<Unit>
@@ -70,3 +70,11 @@ suspend fun TelegramBot.buildBehaviour(
         scope = scope
     )
 }
+
+@PreviewFeature
+@Deprecated("Renamed to buildBehaviourWithLongPolling")
+suspend fun TelegramBot.buildBehaviour(
+    scope: CoroutineScope = defaultCoroutineScopeProvider(),
+    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    block: BehaviourContextReceiver<Unit>
+) = buildBehaviourWithLongPolling(scope, defaultExceptionsHandler, block)
