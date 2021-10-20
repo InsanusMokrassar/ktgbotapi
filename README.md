@@ -20,7 +20,7 @@ Hello! This is a set of libraries for working with Telegram Bot API.
 | TelegramBotAPI API Extensions status      | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api) |
 | TelegramBotAPI Util Extensions status | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils) |
 | TelegramBotAPI Behaviour Builder Extensions status | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder) |
-| TelegramBotAPI Behaviour Builder Extensions status | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder.fsm/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder.fsm) |
+| TelegramBotAPI Behaviour Builder FSM Extensions status | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder.fsm/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder.fsm) |
 | TelegramBotAPI All status                 | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi)                                                             |
 
 ## Examples
