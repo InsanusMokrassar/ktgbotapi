@@ -15,9 +15,9 @@ fun buildEntities(init: EntitiesBuilderBody): TextSourcesList = EntitiesBuilder(
  *
  * @see buildEntities
  */
-class EntitiesBuilder internal constructor(
+class EntitiesBuilder internal constructor() {
     private val entitiesList: MutableTextSourcesList = mutableListOf()
-) {
+
     /**
      * It is not safe field which contains potentially changeable [List]
      */
