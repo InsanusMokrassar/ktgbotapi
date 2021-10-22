@@ -2,6 +2,9 @@
 
 ## 0.36.1
 
+* `Utils`:
+    * `buildEntities` DSL now have parameter `separator` to specify `TextSource` that will be inserted between other sources
+
 ## 0.36.0
 
 **ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED**
