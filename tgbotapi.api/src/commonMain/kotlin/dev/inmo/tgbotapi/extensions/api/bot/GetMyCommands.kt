@@ -13,5 +13,5 @@ suspend fun TelegramBot.getMyCommands(
 
 suspend fun TelegramBot.getMyCommands(
     scope: BotCommandScope = BotCommandScopeDefault,
-    languageCode: String? = null
+    languageCode: String?
 ) = getMyCommands(scope, languageCode ?.let(::IetfLanguageCode))

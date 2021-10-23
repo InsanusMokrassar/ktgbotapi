@@ -11,19 +11,18 @@ import kotlin.test.assertEquals
 class TextSourcesTests {
     @Test
     fun testThatTextSourcesSerializedCorrectly() {
-        val testList = buildEntities {
-            bold(
+        val testList = buildEntities(" ") {
+            bold {
+                italic("It")
+                link("is example", "https://is.example")
+            }
+            underline("of")
+            italic(
                 buildEntities {
-                    italic("It")
-                    regular(" ")
-                    link("is example", "https://is.example")
+                    strikethrough("comp")
+                    underline("lex")
                 }
             )
-            regular(" ")
-            underline("of")
-            regular(" ")
-            strikethrough("complex")
-            regular(" ")
             pre("text", "kotlin")
         }
         val serialized = TestsJsonFormat.encodeToString(ListSerializer(TextSourceSerializer), testList)
@@ -33,5 +32,6 @@ class TextSourcesTests {
         )
         assertEquals(testList, deserialized)
         assertEquals(testList.makeString(), deserialized.makeString())
+        assertEquals("It is example of complex text", testList.makeString())
     }
 }
