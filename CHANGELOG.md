@@ -2,6 +2,9 @@
 
 ## 0.36.1
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.7.2` -> `0.7.3`
 * `API`:
     * Fix `getMyCommands` overloads conflict when no arguments provided
 * `Utils`:
