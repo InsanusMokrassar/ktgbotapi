@@ -2,6 +2,8 @@
 
 ## 0.36.1
 
+* `API`:
+    * Fix `getMyCommands` overloads conflict when no arguments provided
 * `Utils`:
     * `buildEntities` DSL now have parameter `separator` to specify `TextSource` that will be inserted between other sources
 
