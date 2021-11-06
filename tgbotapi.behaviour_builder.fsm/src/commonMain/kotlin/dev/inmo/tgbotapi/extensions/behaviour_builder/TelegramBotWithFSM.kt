@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
+import dev.inmo.micro_utils.fsm.common.State
 import dev.inmo.micro_utils.fsm.common.StatesManager
 import dev.inmo.micro_utils.fsm.common.managers.DefaultStatesManager
 import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
@@ -28,16 +29,16 @@ import kotlin.coroutines.coroutineContext
  * @see [buildBehaviourWithFSM]
  * @see startGettingOfUpdatesByLongPolling
  */
-suspend fun telegramBotWithBehaviourAndFSM(
+suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     token: String,
     flowsUpdatesFilter: FlowsUpdatesFilter,
     scope: CoroutineScope? = null,
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
-    statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder, Unit>
+    statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
+    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
@@ -64,15 +65,15 @@ suspend fun telegramBotWithBehaviourAndFSM(
  * @see buildBehaviourWithFSMAndStartLongPolling
  * @see startGettingOfUpdatesByLongPolling
  */
-suspend fun telegramBotWithBehaviourAndFSMAndStartLongPolling(
+suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     token: String,
     scope: CoroutineScope? = null,
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
-    statesManager: StatesManager = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder, Unit>
+    statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
+    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,

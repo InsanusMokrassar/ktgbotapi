@@ -19,10 +19,10 @@ import kotlin.reflect.KClass
  * @param delegateTo This handler will be called in case [checkHandleable] returns true with class caster incoming
  * [State] in [handleState]
  */
-class BehaviourWithFSMStateHandlerHolder<I : State>(
+class BehaviourWithFSMStateHandlerHolder<I : O, O : State>(
     private val inputKlass: KClass<I>,
     private val strict: Boolean = false,
-    private val delegateTo: BehaviourWithFSMStateHandler<I>
+    private val delegateTo: BehaviourWithFSMStateHandler<I, O>
 ) {
     /**
      * Check ability of [delegateTo] to handle this [state]
@@ -30,7 +30,7 @@ class BehaviourWithFSMStateHandlerHolder<I : State>(
      * @return When [state]::class exactly equals to [inputKlass] will always return true. Otherwise when [strict]
      * mode is disabled, will be used [KClass.isInstance] of [inputKlass] for checking
      */
-    fun checkHandleable(state: State) = state::class == inputKlass || (!strict && inputKlass.isInstance(state))
+    fun checkHandleable(state: O): Boolean = state::class == inputKlass || (!strict && inputKlass.isInstance(state))
 
     /**
      * Handling of state :)
@@ -38,10 +38,10 @@ class BehaviourWithFSMStateHandlerHolder<I : State>(
      * @param contextUpdatesFlow This [Flow] will be used as source of updates. By contract, this [Flow] must be common
      * for all [State]s of incoming [state] [State.context] and for the whole chain inside of [BehaviourContextWithFSM]
      */
-    suspend fun BehaviourContextWithFSM.handleState(
+    suspend fun BehaviourContextWithFSM<in O>.handleState(
         contextUpdatesFlow: Flow<Update>,
-        state: State
-    ): State? {
+        state: O
+    ): O? {
         val subscope = scope.LinkedSupervisorScope()
         return with(copy(scope = subscope, upstreamUpdatesFlow = contextUpdatesFlow)) {
             with(delegateTo) {
@@ -50,3 +50,8 @@ class BehaviourWithFSMStateHandlerHolder<I : State>(
         }
     }
 }
+
+inline fun <reified I : O, O : State> BehaviourWithFSMStateHandlerHolder(
+    strict: Boolean = false,
+    delegateTo: BehaviourWithFSMStateHandler<I, O>
+) = BehaviourWithFSMStateHandlerHolder(I::class, strict, delegateTo)
