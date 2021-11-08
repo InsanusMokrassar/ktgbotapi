@@ -13,6 +13,7 @@ const val UPDATE_POLL = "poll"
 const val UPDATE_POLL_ANSWER = "poll_answer"
 const val MY_CHAT_MEMBER = "my_chat_member"
 const val CHAT_MEMBER = "chat_member"
+const val CHAT_JOIN_REQUEST = "chat_join_request"
 
 val ALL_UPDATES_LIST = listOf(
     UPDATE_MESSAGE,
@@ -27,5 +28,6 @@ val ALL_UPDATES_LIST = listOf(
     UPDATE_POLL,
     UPDATE_POLL_ANSWER,
     MY_CHAT_MEMBER,
-    CHAT_MEMBER
+    CHAT_MEMBER,
+    CHAT_JOIN_REQUEST
 )
