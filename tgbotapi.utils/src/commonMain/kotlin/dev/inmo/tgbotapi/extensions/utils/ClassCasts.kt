@@ -1275,6 +1275,15 @@ inline fun BotAction.asTypingAction(): TypingAction? = this as? TypingAction
 inline fun BotAction.requireTypingAction(): TypingAction = this as TypingAction
 
 @PreviewFeature
+inline fun <T> BotAction.whenChooseStickerAction(block: (ChooseStickerAction) -> T) = asChooseStickerAction() ?.let(block)
+
+@PreviewFeature
+inline fun BotAction.asChooseStickerAction(): ChooseStickerAction? = this as? ChooseStickerAction
+
+@PreviewFeature
+inline fun BotAction.requireChooseStickerAction(): ChooseStickerAction = this as ChooseStickerAction
+
+@PreviewFeature
 inline fun <T> BotAction.whenUploadVoiceAction(block: (UploadVoiceAction) -> T) = asUploadVoiceAction() ?.let(block)
 
 @PreviewFeature

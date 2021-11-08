@@ -36,6 +36,7 @@ object BotActionSerializer: KSerializer<BotAction> {
             FindLocationAction.actionName -> FindLocationAction
             RecordVideoNoteAction.actionName -> RecordVideoNoteAction
             UploadVideoNoteAction.actionName -> UploadVideoNoteAction
+            ChooseStickerAction.actionName -> ChooseStickerAction
             else -> CustomBotAction(actionName)
         }
     }
@@ -150,6 +151,17 @@ object UploadVideoNoteAction : BotAction {
 inline val uploadVideoNote
     get() = UploadVideoNoteAction
 inline fun BotAction.asUploadVideoNote() = this as? UploadVideoNoteAction
+
+/**
+ * Will notify user that bot is uploading video note
+ */
+@Serializable(BotActionSerializer::class)
+object ChooseStickerAction : BotAction {
+    override val actionName: String = "choose_sticker"
+}
+inline val chooseSticker
+    get() = ChooseStickerAction
+inline fun BotAction.asChooseStickerAction() = this as? ChooseStickerAction
 
 @Serializable(BotActionSerializer::class)
 @Warning("Use this action only in case you are pretty sure that there are no other action for your needs")
