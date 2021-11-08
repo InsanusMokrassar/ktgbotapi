@@ -26,10 +26,7 @@ data class UnknownInlineKeyboardButton internal constructor(
  */
 @Serializable
 data class PayInlineKeyboardButton(
-    override val text: String,
-    @Deprecated("Don't use this button due to removing of this in near release")
-    @Transient
-    val pay: Boolean = true
+    override val text: String
 ) : InlineKeyboardButton {
     @ExperimentalSerializationApi
     @EncodeDefault

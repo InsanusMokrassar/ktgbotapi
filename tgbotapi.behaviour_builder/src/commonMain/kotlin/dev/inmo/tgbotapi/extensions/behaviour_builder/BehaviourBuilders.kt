@@ -27,7 +27,7 @@ expect var defaultCoroutineScopeProvider: () -> CoroutineScope
  */
 @PreviewFeature
 suspend fun TelegramBot.buildBehaviour(
-    flowUpdatesFilter: FlowsUpdatesFilter,
+    flowUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     block: BehaviourContextReceiver<Unit>
@@ -70,11 +70,3 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
         scope = scope
     )
 }
-
-@PreviewFeature
-@Deprecated("Renamed to buildBehaviourWithLongPolling")
-suspend fun TelegramBot.buildBehaviour(
-    scope: CoroutineScope = defaultCoroutineScopeProvider(),
-    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
-    block: BehaviourContextReceiver<Unit>
-) = buildBehaviourWithLongPolling(scope, defaultExceptionsHandler, block)

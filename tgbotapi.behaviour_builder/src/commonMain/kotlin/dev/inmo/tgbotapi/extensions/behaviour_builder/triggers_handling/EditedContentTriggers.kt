@@ -166,19 +166,6 @@ suspend fun <BC : BehaviourContext> BC.onEditedLocation(
     scenarioReceiver
 )
 
-@Deprecated("Potentially, this trigger will never be used. Use `onPollUpdated` instead")
-suspend fun <BC : BehaviourContext> BC.onEditedPoll(
-    initialFilter: CommonMessageFilter<PollContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<PollContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<PollContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PollContent>>
-)= onEditedContent(
-    initialFilter,
-    subcontextUpdatesFilter,
-    markerFactory,
-    scenarioReceiver
-)
-
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
