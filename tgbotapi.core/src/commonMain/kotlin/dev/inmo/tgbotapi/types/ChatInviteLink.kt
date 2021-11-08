@@ -18,6 +18,8 @@ private data class RawChatInviteLink(
     val isPrimary: Boolean,
     @SerialName(isRevokedField)
     val isRevoked: Boolean,
+    @SerialName(nameField)
+    val name: String? = null,
     @SerialName(expireDateField)
     val expirationDateTime: TelegramDate? = null,
     @SerialName(memberLimitField)
@@ -33,6 +35,7 @@ private fun ChatInviteLink.toRawChatInviteLink() = RawChatInviteLink(
     creator,
     isPrimary,
     isRevoked,
+    (this as? SecondaryChatInviteLink) ?.name,
     expirationDateTime ?.toTelegramDate(),
     (this as? ChatInviteLinkWithLimitedMembers) ?.membersLimit,
     this is ChatInviteLinkWithJoinRequest,
@@ -47,6 +50,7 @@ sealed interface ChatInviteLink : WithUser {
         get() = this is PrimaryInviteLink
     val isRevoked: Boolean
     val expirationDateTime: DateTime?
+    val name: String?
 
     override val user: User
         get() = creator
@@ -79,6 +83,8 @@ data class PrimaryInviteLink(
 ) : ChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate
+    override val name: String?
+        get() = null
 }
 
 @Serializable
@@ -87,8 +93,10 @@ data class ChatInviteLinkWithJoinRequest(
     override val inviteLink: String,
     @SerialName(creatorField)
     override val creator: User,
+    @SerialName(nameField)
+    override val name: String? = null,
     @SerialName(pendingJoinRequestCountField)
-    val leftToReview: Int,
+    val leftToReview: Int = 0,
     @SerialName(isRevokedField)
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
@@ -104,6 +112,8 @@ data class ChatInviteLinkWithLimitedMembers(
     override val inviteLink: String,
     @SerialName(creatorField)
     override val creator: User,
+    @SerialName(nameField)
+    override val name: String? = null,
     @SerialName(memberLimitField)
     val membersLimit: MembersLimit,
     @SerialName(isRevokedField)
@@ -121,6 +131,8 @@ data class ChatInviteLinkUnlimited(
     override val inviteLink: String,
     @SerialName(creatorField)
     override val creator: User,
+    @SerialName(nameField)
+    override val name: String? = null,
     @SerialName(isRevokedField)
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
@@ -144,16 +156,16 @@ object ChatInviteLinkSerializer : KSerializer<ChatInviteLink> {
                 )
                 createsJoinRequest == true -> {
                     ChatInviteLinkWithJoinRequest(
-                        inviteLink, creator, pendingJoinRequestCount ?: 0, isRevoked, expirationDateTime
+                        inviteLink, creator, name, pendingJoinRequestCount ?: 0, isRevoked, expirationDateTime
                     )
                 }
                 membersLimit != null -> {
                     ChatInviteLinkWithLimitedMembers(
-                        inviteLink, creator, membersLimit, isRevoked, expirationDateTime
+                        inviteLink, creator, name, membersLimit, isRevoked, expirationDateTime
                     )
                 }
                 else -> ChatInviteLinkUnlimited(
-                    inviteLink, creator, isRevoked, expirationDateTime
+                    inviteLink, creator, name, isRevoked, expirationDateTime
                 )
             }
         }

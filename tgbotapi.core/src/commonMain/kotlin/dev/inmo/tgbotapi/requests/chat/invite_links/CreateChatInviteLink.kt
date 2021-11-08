@@ -15,30 +15,36 @@ sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInv
     companion object {
         fun unlimited(
             chatId: ChatIdentifier,
+            name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
-        ) = CreateChatInviteLinkUnlimited(chatId, expirationUnixTimeStamp)
+        ) = CreateChatInviteLinkUnlimited(chatId, name, expirationUnixTimeStamp)
         fun withLimitedMembers(
             chatId: ChatIdentifier,
             membersLimit: MembersLimit,
+            name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
-        ) = CreateChatInviteLinkWithLimitedMembers(chatId, membersLimit, expirationUnixTimeStamp)
+        ) = CreateChatInviteLinkWithLimitedMembers(chatId, membersLimit, name, expirationUnixTimeStamp)
         fun withJoinRequest(
             chatId: ChatIdentifier,
+            name: String? = null,
             expirationUnixTimeStamp: TelegramDate? = null,
-        ) = CreateChatInviteLinkWithJoinRequest(chatId, expirationUnixTimeStamp)
+        ) = CreateChatInviteLinkWithJoinRequest(chatId, name, expirationUnixTimeStamp)
         fun unlimited(
             chatId: ChatIdentifier,
-            expiration: DateTime? = null,
-        ) = unlimited(chatId, expiration?.toTelegramDate())
+            expiration: DateTime,
+            name: String? = null,
+        ) = unlimited(chatId, name, expiration.toTelegramDate())
         fun withLimitedMembers(
             chatId: ChatIdentifier,
             membersLimit: MembersLimit,
-            expiration: DateTime? = null,
-        ) = withLimitedMembers(chatId, membersLimit, expiration?.toTelegramDate())
+            expiration: DateTime,
+            name: String? = null,
+        ) = withLimitedMembers(chatId, membersLimit, name, expiration.toTelegramDate())
         fun withJoinRequest(
             chatId: ChatIdentifier,
-            expiration: DateTime? = null,
-        ) = withJoinRequest(chatId, expiration?.toTelegramDate())
+            expiration: DateTime,
+            name: String? = null,
+        ) = withJoinRequest(chatId, name, expiration.toTelegramDate())
     }
 }
 
@@ -54,6 +60,8 @@ sealed interface CreateChatInviteLink<R : SecondaryChatInviteLink> : EditChatInv
 data class CreateChatInviteLinkUnlimited(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @SerialName(nameField)
+    override val name: String? = null,
     @SerialName(expireDateField)
     override val expirationUnixTimeStamp: TelegramDate? = null,
 ) : CreateChatInviteLink<ChatInviteLinkUnlimited> {
@@ -77,6 +85,8 @@ data class CreateChatInviteLinkWithLimitedMembers(
     override val chatId: ChatIdentifier,
     @SerialName(memberLimitField)
     override val membersLimit: MembersLimit,
+    @SerialName(nameField)
+    override val name: String? = null,
     @SerialName(expireDateField)
     override val expirationUnixTimeStamp: TelegramDate? = null,
 ) : CreateChatInviteLink<ChatInviteLinkWithLimitedMembers>, LimitedMembersChatInviteLinkRequest {
@@ -96,6 +106,8 @@ data class CreateChatInviteLinkWithLimitedMembers(
 data class CreateChatInviteLinkWithJoinRequest(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @SerialName(nameField)
+    override val name: String? = null,
     @SerialName(expireDateField)
     override val expirationUnixTimeStamp: TelegramDate? = null,
 ) : CreateChatInviteLink<ChatInviteLinkWithJoinRequest>, WithJoinRequestChatInviteLinkRequest {

@@ -9,151 +9,175 @@ import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chatId: ChatIdentifier,
     previousLink: String,
+    name: String? = null,
     expiration: TelegramDate? = null
-) = execute(EditChatInviteLink.unlimited(chatId, previousLink, expiration))
+) = execute(EditChatInviteLink.unlimited(chatId, previousLink, name, expiration))
 
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chat: PublicChat,
     previousLink: String,
+    name: String? = null,
     expiration: TelegramDate? = null,
-) = editChatInviteLinkUnlimited(chat.id, previousLink, expiration)
+) = editChatInviteLinkUnlimited(chat.id, previousLink, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chatId: ChatIdentifier,
     previousLink: String,
-    expiration: DateTime
-) = editChatInviteLinkUnlimited(chatId, previousLink, expiration.toTelegramDate())
+    expiration: DateTime,
+    name: String? = null,
+) = editChatInviteLinkUnlimited(chatId, previousLink, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chat: PublicChat,
     previousLink: String,
-    expiration: DateTime
-) = editChatInviteLinkUnlimited(chat.id, previousLink, expiration.toTelegramDate())
+    expiration: DateTime,
+    name: String? = null,
+) = editChatInviteLinkUnlimited(chat.id, previousLink, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chatId: ChatIdentifier,
     previousLink: String,
     membersLimit: MembersLimit,
+    name: String? = null,
     expiration: TelegramDate? = null
-) = execute(EditChatInviteLink.withLimitedMembers(chatId, previousLink, membersLimit, expiration))
+) = execute(EditChatInviteLink.withLimitedMembers(chatId, previousLink, membersLimit, name, expiration))
 
 suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chat: PublicChat,
     previousLink: String,
     membersLimit: MembersLimit,
+    name: String? = null,
     expiration: TelegramDate? = null,
-) = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, expiration)
+) = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chatId: ChatIdentifier,
     previousLink: String,
     membersLimit: MembersLimit,
     expiration: DateTime,
-) = editChatInviteLinkWithLimitedMembers(chatId, previousLink, membersLimit, expiration.toTelegramDate())
+    name: String? = null,
+) = editChatInviteLinkWithLimitedMembers(chatId, previousLink, membersLimit, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chat: PublicChat,
     previousLink: String,
     membersLimit: MembersLimit,
     expiration: DateTime,
-) = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, expiration.toTelegramDate())
+    name: String? = null,
+) = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chatId: ChatIdentifier,
     previousLink: String,
+    name: String? = null,
     expiration: TelegramDate? = null
-) = execute(EditChatInviteLink.withJoinRequest(chatId, previousLink, expiration))
+) = execute(EditChatInviteLink.withJoinRequest(chatId, previousLink, name, expiration))
 
 suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chat: PublicChat,
     previousLink: String,
+    name: String? = null,
     expiration: TelegramDate? = null,
-) = editChatInviteLinkWithJoinRequest(chat.id, previousLink, expiration)
+) = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chatId: ChatIdentifier,
     previousLink: String,
     expiration: DateTime,
-) = editChatInviteLinkWithJoinRequest(chatId, previousLink, expiration.toTelegramDate())
+    name: String? = null,
+) = editChatInviteLinkWithJoinRequest(chatId, previousLink, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chat: PublicChat,
     previousLink: String,
     expiration: DateTime,
-) = editChatInviteLinkWithJoinRequest(chat.id, previousLink, expiration.toTelegramDate())
+    name: String? = null,
+) = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
+    name: String? = null,
     expiration: TelegramDate? = null
-) = editChatInviteLinkUnlimited(chatId, previousLink.inviteLink, expiration)
+) = editChatInviteLinkUnlimited(chatId, previousLink.inviteLink, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chat: PublicChat,
     previousLink: ChatInviteLink,
+    name: String? = null,
     expiration: TelegramDate? = null,
-) = editChatInviteLinkUnlimited(chat.id, previousLink, expiration)
+) = editChatInviteLinkUnlimited(chat.id, previousLink, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
-    expiration: DateTime
-) = editChatInviteLinkUnlimited(chatId, previousLink, expiration.toTelegramDate())
+    expiration: DateTime,
+    name: String? = null,
+) = editChatInviteLinkUnlimited(chatId, previousLink, name, expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chat: PublicChat,
     previousLink: ChatInviteLink,
-    expiration: DateTime
-) = editChatInviteLinkUnlimited(chat.id, previousLink, expiration.toTelegramDate())
+    expiration: DateTime,
+    name: String? = null,
+) = editChatInviteLinkUnlimited(chat.id, previousLink, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
     membersLimit: MembersLimit,
+    name: String? = null,
     expiration: TelegramDate? = null
-) = editChatInviteLinkWithLimitedMembers(chatId, previousLink.inviteLink, membersLimit, expiration)
+) = editChatInviteLinkWithLimitedMembers(chatId, previousLink.inviteLink, membersLimit, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chat: PublicChat,
     previousLink: ChatInviteLink,
     membersLimit: MembersLimit,
+    name: String? = null,
     expiration: TelegramDate? = null,
-) = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, expiration)
+) = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
     membersLimit: MembersLimit,
     expiration: DateTime,
-) = editChatInviteLinkWithLimitedMembers(chatId, previousLink, membersLimit, expiration.toTelegramDate())
+    name: String? = null,
+) = editChatInviteLinkWithLimitedMembers(chatId, previousLink, membersLimit, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkWithLimitedMembers(
     chat: PublicChat,
     previousLink: ChatInviteLink,
     membersLimit: MembersLimit,
     expiration: DateTime,
-) = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, expiration.toTelegramDate())
+    name: String? = null,
+) = editChatInviteLinkWithLimitedMembers(chat.id, previousLink, membersLimit, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
+    name: String? = null,
     expiration: TelegramDate? = null
-) = editChatInviteLinkWithJoinRequest(chatId, previousLink.inviteLink, expiration)
+) = editChatInviteLinkWithJoinRequest(chatId, previousLink.inviteLink, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chat: PublicChat,
     previousLink: ChatInviteLink,
+    name: String? = null,
     expiration: TelegramDate? = null,
-) = editChatInviteLinkWithJoinRequest(chat.id, previousLink, expiration)
+) = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name, expiration)
 
 suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chatId: ChatIdentifier,
     previousLink: ChatInviteLink,
     expiration: DateTime,
-) = editChatInviteLinkWithJoinRequest(chatId, previousLink, expiration.toTelegramDate())
+    name: String? = null,
+) = editChatInviteLinkWithJoinRequest(chatId, previousLink, name , expiration.toTelegramDate())
 
 suspend fun TelegramBot.editChatInviteLinkWithJoinRequest(
     chat: PublicChat,
     previousLink: ChatInviteLink,
     expiration: DateTime,
-) = editChatInviteLinkWithJoinRequest(chat.id, previousLink, expiration.toTelegramDate())
+    name: String? = null,
+) = editChatInviteLinkWithJoinRequest(chat.id, previousLink, name , expiration.toTelegramDate())

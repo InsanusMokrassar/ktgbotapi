@@ -27,4 +27,5 @@ interface WithJoinRequestChatInviteLinkRequest : ChatInviteLinkRequest<ChatInvit
 
 interface EditChatInviteLinkRequest<R : SecondaryChatInviteLink> : ChatInviteLinkRequest<R> {
     val expireDate: DateTime?
+    val name: String?
 }
