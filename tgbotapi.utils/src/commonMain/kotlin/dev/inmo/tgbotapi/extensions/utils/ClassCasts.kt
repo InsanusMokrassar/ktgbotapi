@@ -3206,3 +3206,48 @@ inline fun Location.asLiveLocation(): LiveLocation? = this as? LiveLocation
 
 @PreviewFeature
 inline fun Location.requireLiveLocation(): LiveLocation = this as LiveLocation
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenPrimaryInviteLink(block: (PrimaryInviteLink) -> T) = asPrimaryInviteLink() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asPrimaryInviteLink(): PrimaryInviteLink? = this as? PrimaryInviteLink
+
+@PreviewFeature
+inline fun ChatInviteLink.requirePrimaryInviteLink(): PrimaryInviteLink = this as PrimaryInviteLink
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenSecondaryChatInviteLink(block: (SecondaryChatInviteLink) -> T) = asSecondaryChatInviteLink() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asSecondaryChatInviteLink(): SecondaryChatInviteLink? = this as? SecondaryChatInviteLink
+
+@PreviewFeature
+inline fun ChatInviteLink.requireSecondaryChatInviteLink(): SecondaryChatInviteLink = this as SecondaryChatInviteLink
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T) = asChatInviteLinkWithJoinRequest() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest? = this as? ChatInviteLinkWithJoinRequest
+
+@PreviewFeature
+inline fun ChatInviteLink.requireChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest = this as ChatInviteLinkWithJoinRequest
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T) = asChatInviteLinkWithLimitedMembers() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers? = this as? ChatInviteLinkWithLimitedMembers
+
+@PreviewFeature
+inline fun ChatInviteLink.requireChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers = this as ChatInviteLinkWithLimitedMembers
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T) = asChatInviteLinkUnlimited() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asChatInviteLinkUnlimited(): ChatInviteLinkUnlimited? = this as? ChatInviteLinkUnlimited
+
+@PreviewFeature
+inline fun ChatInviteLink.requireChatInviteLinkUnlimited(): ChatInviteLinkUnlimited = this as ChatInviteLinkUnlimited
