@@ -6,26 +6,66 @@ import dev.inmo.tgbotapi.requests.chat.invite_links.CreateChatInviteLink
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
 
-suspend fun TelegramBot.createChatInviteLink(
+suspend fun TelegramBot.createChatInviteLinkUnlimited(
     chatId: ChatIdentifier,
-    expiration: TelegramDate? = null,
-    membersLimit: MembersLimit? = null
-) = execute(CreateChatInviteLink(chatId, expiration, membersLimit))
+    expiration: TelegramDate? = null
+) = execute(CreateChatInviteLink.unlimited(chatId, expiration))
 
-suspend fun TelegramBot.createChatInviteLink(
+suspend fun TelegramBot.createChatInviteLinkUnlimited(
     chat: PublicChat,
     expiration: TelegramDate? = null,
-    membersLimit: MembersLimit? = null
-) = createChatInviteLink(chat.id, expiration, membersLimit)
+) = createChatInviteLinkUnlimited(chat.id, expiration)
 
-suspend fun TelegramBot.createChatInviteLink(
+suspend fun TelegramBot.createChatInviteLinkUnlimited(
+    chatId: ChatIdentifier,
+    expiration: DateTime
+) = createChatInviteLinkUnlimited(chatId, expiration.toTelegramDate())
+
+suspend fun TelegramBot.createChatInviteLinkUnlimited(
+    chat: PublicChat,
+    expiration: DateTime
+) = createChatInviteLinkUnlimited(chat.id, expiration.toTelegramDate())
+
+suspend fun TelegramBot.createChatInviteLinkWithLimitedMembers(
+    chatId: ChatIdentifier,
+    membersLimit: MembersLimit,
+    expiration: TelegramDate? = null
+) = execute(CreateChatInviteLink.withLimitedMembers(chatId, membersLimit, expiration))
+
+suspend fun TelegramBot.createChatInviteLinkWithLimitedMembers(
+    chat: PublicChat,
+    membersLimit: MembersLimit,
+    expiration: TelegramDate? = null,
+) = createChatInviteLinkWithLimitedMembers(chat.id, membersLimit, expiration)
+
+suspend fun TelegramBot.createChatInviteLinkWithLimitedMembers(
+    chatId: ChatIdentifier,
+    membersLimit: MembersLimit,
+    expiration: DateTime,
+) = createChatInviteLinkWithLimitedMembers(chatId, membersLimit, expiration.toTelegramDate())
+
+suspend fun TelegramBot.createChatInviteLinkWithLimitedMembers(
+    chat: PublicChat,
+    membersLimit: MembersLimit,
+    expiration: DateTime,
+) = createChatInviteLinkWithLimitedMembers(chat.id, membersLimit, expiration.toTelegramDate())
+
+suspend fun TelegramBot.createChatInviteLinkWithJoinRequest(
+    chatId: ChatIdentifier,
+    expiration: TelegramDate? = null
+) = execute(CreateChatInviteLink.withJoinRequest(chatId, expiration))
+
+suspend fun TelegramBot.createChatInviteLinkWithJoinRequest(
+    chat: PublicChat,
+    expiration: TelegramDate? = null,
+) = createChatInviteLinkWithJoinRequest(chat.id, expiration)
+
+suspend fun TelegramBot.createChatInviteLinkWithJoinRequest(
     chatId: ChatIdentifier,
     expiration: DateTime,
-    membersLimit: MembersLimit? = null
-) = createChatInviteLink(chatId, expiration.toTelegramDate(), membersLimit)
+) = createChatInviteLinkWithJoinRequest(chatId, expiration.toTelegramDate())
 
-suspend fun TelegramBot.createChatInviteLink(
+suspend fun TelegramBot.createChatInviteLinkWithJoinRequest(
     chat: PublicChat,
     expiration: DateTime,
-    membersLimit: MembersLimit? = null
-) = createChatInviteLink(chat.id, expiration.toTelegramDate(), membersLimit)
+) = createChatInviteLinkWithJoinRequest(chat.id, expiration.toTelegramDate())

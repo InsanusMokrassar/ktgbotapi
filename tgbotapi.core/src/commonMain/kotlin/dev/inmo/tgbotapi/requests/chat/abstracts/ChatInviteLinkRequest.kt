@@ -5,16 +5,26 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.DeserializationStrategy
 
-interface ChatInviteLinkRequest : SimpleRequest<CommonInviteLink> {
+interface ChatInviteLinkRequest<R : SecondaryChatInviteLink> : SimpleRequest<R> {
     val chatId: ChatIdentifier
-
-    override val resultDeserializer: DeserializationStrategy<CommonInviteLink>
-        get() = CommonInviteLink.serializer()
 }
-interface KnownChatInviteLinkRequest : ChatInviteLinkRequest {
+
+interface KnownChatInviteLinkRequest<R : SecondaryChatInviteLink> : ChatInviteLinkRequest<R> {
     val inviteLink: String
 }
-interface EditChatInviteLinkRequest : ChatInviteLinkRequest {
+
+interface LimitedMembersChatInviteLinkRequest : ChatInviteLinkRequest<ChatInviteLinkWithLimitedMembers> {
+    val membersLimit: MembersLimit
+
+    override val resultDeserializer: DeserializationStrategy<ChatInviteLinkWithLimitedMembers>
+        get() = ChatInviteLinkWithLimitedMembers.serializer()
+}
+
+interface WithJoinRequestChatInviteLinkRequest : ChatInviteLinkRequest<ChatInviteLinkWithJoinRequest> {
+    override val resultDeserializer: DeserializationStrategy<ChatInviteLinkWithJoinRequest>
+        get() = ChatInviteLinkWithJoinRequest.serializer()
+}
+
+interface EditChatInviteLinkRequest<R : SecondaryChatInviteLink> : ChatInviteLinkRequest<R> {
     val expireDate: DateTime?
-    val membersLimit: MembersLimit?
 }
