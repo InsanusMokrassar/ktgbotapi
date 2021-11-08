@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.bot.Ktor.base
 
 import dev.inmo.micro_utils.coroutines.safely
+import dev.inmo.micro_utils.coroutines.safelyWithResult
 import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.requests.GetUpdates
@@ -57,7 +58,7 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
             val content = response.receive<String>()
             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
 
-            return safely {
+            return safelyWithResult {
                 (responseObject.result?.let {
                     jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
                 } ?: response.let {
@@ -67,7 +68,7 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
                         "Can't get result object from $content"
                     )
                 })
-            }
+            }.getOrThrow()
         }
     }
 

@@ -9,12 +9,12 @@ import kotlinx.serialization.Serializable
 data class ChatJoinRequest(
     @SerialName(chatField)
     val chat: PublicChat,
-    @SerialName(userField)
+    @SerialName(fromField)
     override val from: User,
     @SerialName(dateField)
     val date: TelegramDate,
-    @SerialName(bioField)
-    val bio: String,
     @SerialName(inviteLinkField)
-    val inviteLink: ChatInviteLink
+    val inviteLink: ChatInviteLink,
+    @SerialName(bioField)
+    val bio: String? = null
 ) : FromUser

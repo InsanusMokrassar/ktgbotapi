@@ -2,9 +2,7 @@ package dev.inmo.tgbotapi.requests.chat.invite_links
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
-import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.SerializationStrategy
+import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
 sealed interface ChatJoinRequestAnswer : SimpleRequest<Boolean> {
@@ -17,7 +15,9 @@ sealed interface ChatJoinRequestAnswer : SimpleRequest<Boolean> {
 
 @Serializable
 data class ApproveChatJoinRequest(
+    @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @SerialName(userIdField)
     override val userId: UserId
 ) : ChatJoinRequestAnswer {
     override val requestSerializer: SerializationStrategy<*>
@@ -28,7 +28,9 @@ data class ApproveChatJoinRequest(
 
 @Serializable
 data class DeclineChatJoinRequest(
+    @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
+    @SerialName(userIdField)
     override val userId: UserId
 ) : ChatJoinRequestAnswer {
     override val requestSerializer: SerializationStrategy<*>
