@@ -1,11 +1,16 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories
 
 import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
+import dev.inmo.tgbotapi.types.ChatJoinRequest
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 
 object ByUserCallbackQueryMarkerFactory : MarkerFactory<CallbackQuery, Any> {
     override suspend fun invoke(data: CallbackQuery) = data.user
+}
+
+object ByChatChatJoinRequestMarkerFactory : MarkerFactory<ChatJoinRequest, Any> {
+    override suspend fun invoke(data: ChatJoinRequest) = data.chat
 }
 
 object ByUserShippingQueryMarkerFactory : MarkerFactory<ShippingQuery, Any> {

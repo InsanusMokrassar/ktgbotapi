@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.filters
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
 import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
+import dev.inmo.tgbotapi.types.ChatJoinRequest
 import dev.inmo.tgbotapi.types.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -52,5 +53,11 @@ val InlineQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, Inline
  * Allow only events from the same chat as base [ChatMemberUpdated]
  */
 val ChatMemberUpdatedFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, ChatMemberUpdated, Update> = { updated, update ->
+    update.sourceChat() ?.id == updated.chat.id
+}
+/**
+ * Allow only events from the same chat as base [ChatMemberUpdated]
+ */
+val ChatJoinRequestFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, ChatJoinRequest, Update> = { updated, update ->
     update.sourceChat() ?.id == updated.chat.id
 }
