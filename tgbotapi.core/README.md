@@ -21,10 +21,6 @@
 Library for Object-Oriented and type-safe work with Telegram Bot API. Most part of some specific solves or unuseful
 moments are describing by official [Telegram Bot API](https://core.telegram.org/bots/api).
 
-## Compatibility
-
-This version compatible with [25th of June 2021 update of TelegramBotAPI (version 5.3)](https://core.telegram.org/bots/api-changelog#june-25-2021).
-
 ## How to implement library?
 
 Common ways to implement this library are presented here. In some cases it will require additional steps

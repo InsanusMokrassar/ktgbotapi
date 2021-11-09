@@ -2,26 +2,12 @@
 
 # TelegramBotAPI
 
-- [TelegramBotAPI](#telegrambotapi)
-  * [Examples](#examples)
-    + [Most common example](#most-common-example)
-    + [Handling only last messages](#handling-only-last-messages)
-    + [Build a little bit more complex behaviour](#build-a-little-bit-more-complex-behaviour)
-    + [More examples](#more-examples)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+| [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Build Status](https://github.com/InsanusMokrassar/TelegramBotAPI/workflows/Build/badge.svg)](https://github.com/InsanusMokrassar/TelegramBotAPI/actions) [![Small survey](https://img.shields.io/static/v1?label=Google&message=Survey&color=blue)](https://forms.gle/2Hex2ynbHWHhi1KY7) [![Chat in Telegram](https://img.shields.io/static/v1?label=Telegram&message=Chat&color=blue)](https://t.me/InMoTelegramBotAPI) |
+|:---:|
+| [![Create bot](https://img.shields.io/static/v1?label=Github&message=Template&color=blue)](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate) [![Examples](https://img.shields.io/static/v1?label=Github&message=Examples&color=blue)](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/) [![KDocs](https://img.shields.io/static/v1?label=Dokka&message=KDocs&color=blue)](https://tgbotapi.inmo.dev/index.html) [![Mini tutorial](https://img.shields.io/static/v1?label=Bookstack&message=Tutorial&color=blue)](https://bookstack.inmo.dev/books/telegrambotapi/chapter/introduction-tutorial) |
+| [![Supported version](https://img.shields.io/badge/Telegram%20Bot%20API-5.4-blue)](https://core.telegram.org/bots/api-changelog#november-5-2021) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi) |
 
 Hello! This is a set of libraries for working with Telegram Bot API.
-
-| Common info                           | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Build Status](https://github.com/InsanusMokrassar/TelegramBotAPI/workflows/Build/badge.svg)](https://github.com/InsanusMokrassar/TelegramBotAPI/actions) [Small survey](https://forms.gle/2Hex2ynbHWHhi1KY7)|
-| -------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Useful links | [![Chat in Telegram](https://img.shields.io/static/v1?label=Talk&message=Telegram&color=blue)](https://t.me/InMoTelegramBotAPI) [![Create bot](https://img.shields.io/static/v1?label=Github&message=Template&color=blue)](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate) [![KDocs](https://img.shields.io/static/v1?label=Open&message=kdocs&color=blue)](https://tgbotapi.inmo.dev/index.html) [Examples](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/), [Mini tutorial](https://bookstack.inmo.dev/books/telegrambotapi/chapter/introduction-tutorial) |
-| TelegramBotAPI Core status                 | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core) |
-| TelegramBotAPI API Extensions status      | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.api) |
-| TelegramBotAPI Util Extensions status | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.utils) |
-| TelegramBotAPI Behaviour Builder Extensions status | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder) |
-| TelegramBotAPI Behaviour Builder FSM Extensions status | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder.fsm/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.behaviour_builder.fsm) |
-| TelegramBotAPI All status                 | [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi)                                                             |
 
 ## Examples
 
