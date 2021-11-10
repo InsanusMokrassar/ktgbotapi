@@ -1,5 +1,21 @@
 # TelegramBotAPI changelog
 
+## 0.37.0
+
+* `Common`:
+    * `Version`:
+        * `Klock`: `2.4.6` -> `2.4.7`
+        * `Ktor`: `1.6.4` -> `1.6.5`
+        * `MicroUtils`: `0.7.3` -> `0.8.1`
+* `Core`:
+    * Replacement of simple `CreateChatInviteLink` and `EditChatInviteLink` with several new:
+        * `CreateChatInviteLinkSimple`
+        * `CreateChatInviteLinkWithLimitedMembers`
+        * `CreateChatInviteLinkWithJoinRequest`
+        * `EditChatInviteLinkSimple`
+        * `EditChatInviteLinkWithLimitedMembers`
+        * `EditChatInviteLinkWithJoinRequest`
+
 ## 0.36.1
 
 * `Common`:

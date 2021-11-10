@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types
 
 import com.soywiz.klock.DateTime
+import dev.inmo.tgbotapi.CommonAbstracts.WithUser
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -17,10 +18,16 @@ private data class RawChatInviteLink(
     val isPrimary: Boolean,
     @SerialName(isRevokedField)
     val isRevoked: Boolean,
+    @SerialName(nameField)
+    val name: String? = null,
     @SerialName(expireDateField)
     val expirationDateTime: TelegramDate? = null,
     @SerialName(memberLimitField)
-    val membersLimit: MembersLimit ?= null
+    val membersLimit: MembersLimit ?= null,
+    @SerialName(createsJoinRequestField)
+    val createsJoinRequest: Boolean? = null,
+    @SerialName(pendingJoinRequestCountField)
+    val pendingJoinRequestCount: MembersLimit ?= null
 )
 
 private fun ChatInviteLink.toRawChatInviteLink() = RawChatInviteLink(
@@ -28,18 +35,39 @@ private fun ChatInviteLink.toRawChatInviteLink() = RawChatInviteLink(
     creator,
     isPrimary,
     isRevoked,
+    (this as? SecondaryChatInviteLink) ?.name,
     expirationDateTime ?.toTelegramDate(),
-    membersLimit
+    (this as? ChatInviteLinkWithLimitedMembers) ?.membersLimit,
+    this is ChatInviteLinkWithJoinRequest,
+    (this as? ChatInviteLinkWithJoinRequest) ?.leftToReview
 )
 
 @Serializable(ChatInviteLinkSerializer::class)
-sealed class ChatInviteLink {
-    abstract val inviteLink: String
-    abstract val creator: User
-    abstract val isPrimary: Boolean
-    abstract val isRevoked: Boolean
-    abstract val expirationDateTime: DateTime?
-    abstract val membersLimit: MembersLimit?
+sealed interface ChatInviteLink : WithUser {
+    val inviteLink: String
+    val creator: User
+    val isPrimary: Boolean
+        get() = this is PrimaryInviteLink
+    val isRevoked: Boolean
+    val expirationDateTime: DateTime?
+    val name: String?
+
+    override val user: User
+        get() = creator
+
+    companion object {
+        fun serializer(): KSerializer<ChatInviteLink> = ChatInviteLinkSerializer
+    }
+}
+
+@Serializable(ChatInviteLinkSerializer::class)
+sealed interface SecondaryChatInviteLink : ChatInviteLink {
+    override val isPrimary: Boolean
+        get() = false
+
+    companion object {
+        fun serializer(): KSerializer<SecondaryChatInviteLink> = ChatInviteLinkSerializer as KSerializer<SecondaryChatInviteLink>
+    }
 }
 
 @Serializable
@@ -52,30 +80,64 @@ data class PrimaryInviteLink(
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
     private val expireDate: TelegramDate? = null,
-    @SerialName(memberLimitField)
-    override val membersLimit: MembersLimit? = null
-) : ChatInviteLink() {
-    override val isPrimary: Boolean
-        get() = true
+) : ChatInviteLink {
+    override val expirationDateTime: DateTime?
+        get() = expireDate ?.asDate
+    override val name: String?
+        get() = null
+}
+
+@Serializable
+data class ChatInviteLinkWithJoinRequest(
+    @SerialName(inviteLinkField)
+    override val inviteLink: String,
+    @SerialName(creatorField)
+    override val creator: User,
+    @SerialName(nameField)
+    override val name: String? = null,
+    @SerialName(pendingJoinRequestCountField)
+    val leftToReview: Int = 0,
+    @SerialName(isRevokedField)
+    override val isRevoked: Boolean = false,
+    @SerialName(expireDateField)
+    private val expireDate: TelegramDate? = null
+) : SecondaryChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate
 }
 
 @Serializable
-data class CommonInviteLink(
+data class ChatInviteLinkWithLimitedMembers(
     @SerialName(inviteLinkField)
     override val inviteLink: String,
     @SerialName(creatorField)
     override val creator: User,
+    @SerialName(nameField)
+    override val name: String? = null,
+    @SerialName(memberLimitField)
+    val membersLimit: MembersLimit,
     @SerialName(isRevokedField)
     override val isRevoked: Boolean = false,
     @SerialName(expireDateField)
     private val expireDate: TelegramDate? = null,
-    @SerialName(memberLimitField)
-    override val membersLimit: MembersLimit? = null
-) : ChatInviteLink() {
-    override val isPrimary: Boolean
-        get() = false
+) : SecondaryChatInviteLink {
+    override val expirationDateTime: DateTime?
+        get() = expireDate ?.asDate
+}
+
+@Serializable
+data class ChatInviteLinkUnlimited(
+    @SerialName(inviteLinkField)
+    override val inviteLink: String,
+    @SerialName(creatorField)
+    override val creator: User,
+    @SerialName(nameField)
+    override val name: String? = null,
+    @SerialName(isRevokedField)
+    override val isRevoked: Boolean = false,
+    @SerialName(expireDateField)
+    private val expireDate: TelegramDate? = null,
+) : SecondaryChatInviteLink {
     override val expirationDateTime: DateTime?
         get() = expireDate ?.asDate
 }
@@ -89,11 +151,21 @@ object ChatInviteLinkSerializer : KSerializer<ChatInviteLink> {
         val deserializedRaw = RawChatInviteLink.serializer().deserialize(decoder)
         return deserializedRaw.run {
             when {
-                deserializedRaw.isPrimary -> PrimaryInviteLink(
-                    inviteLink, creator, isRevoked, expirationDateTime, membersLimit
+                isPrimary -> PrimaryInviteLink(
+                    inviteLink, creator, isRevoked, expirationDateTime
                 )
-                else -> CommonInviteLink(
-                    inviteLink, creator, isRevoked, expirationDateTime, membersLimit
+                createsJoinRequest == true -> {
+                    ChatInviteLinkWithJoinRequest(
+                        inviteLink, creator, name, pendingJoinRequestCount ?: 0, isRevoked, expirationDateTime
+                    )
+                }
+                membersLimit != null -> {
+                    ChatInviteLinkWithLimitedMembers(
+                        inviteLink, creator, name, membersLimit, isRevoked, expirationDateTime
+                    )
+                }
+                else -> ChatInviteLinkUnlimited(
+                    inviteLink, creator, name, isRevoked, expirationDateTime
                 )
             }
         }

@@ -20,7 +20,4 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
-) : PrivateContentMessage<T> {
-    @Deprecated("This value will always be null. You may get SuccessfulPayment as one of ChatEvents")
-    val paymentInfo: SuccessfulPaymentEvent? = null
-}
+) : PrivateContentMessage<T>

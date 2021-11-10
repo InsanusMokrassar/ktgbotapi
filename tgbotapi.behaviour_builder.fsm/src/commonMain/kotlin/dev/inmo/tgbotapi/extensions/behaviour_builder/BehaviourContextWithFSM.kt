@@ -10,16 +10,6 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
 
-private suspend fun <I : State> BehaviourContextWithFSM.launchStateHandling(
-    state: State,
-    contextUpdatesFlow: Flow<Update>,
-    handlers: List<BehaviourWithFSMStateHandlerHolder<out I>>
-): State? {
-    return handlers.firstOrNull { it.checkHandleable(state) } ?.run {
-        handleState(contextUpdatesFlow, state)
-    }
-}
-
 /**
  * Interface which combine [BehaviourContext] and [StatesMachine]. Subcontext of triggers and states contexts must have
  * one common flow of updates and must not lose updates between updates
@@ -27,8 +17,18 @@ private suspend fun <I : State> BehaviourContextWithFSM.launchStateHandling(
  * @see DefaultBehaviourContextWithFSM
  * @see buildBehaviourWithFSM
  */
-interface BehaviourContextWithFSM : BehaviourContext, StatesMachine {
+interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T> {
     suspend fun start() = start(this)
+
+    suspend fun launchStateHandling(
+        state: T,
+        contextUpdatesFlow: Flow<Update>,
+        handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>
+    ): T? {
+        return handlers.firstOrNull { it.checkHandleable(state) } ?.run {
+            handleState(contextUpdatesFlow, state)
+        }
+    }
 
     override fun copy(
         bot: TelegramBot,
@@ -37,14 +37,14 @@ interface BehaviourContextWithFSM : BehaviourContext, StatesMachine {
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
-    ): BehaviourContextWithFSM
+    ): BehaviourContextWithFSM<T>
 
     companion object {
-        operator fun invoke(
+        operator fun <T : State> invoke(
             behaviourContext: BehaviourContext,
-            handlers: List<BehaviourWithFSMStateHandlerHolder<*>>,
-            statesManager: StatesManager
-        ) = DefaultBehaviourContextWithFSM(behaviourContext, statesManager, handlers)
+            handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
+            statesManager: StatesManager<T>
+        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers)
     }
 }
 
@@ -52,23 +52,24 @@ interface BehaviourContextWithFSM : BehaviourContext, StatesMachine {
  * Default realization of [BehaviourContextWithFSM]. It uses [behaviourContext] as a base for this object as
  * [BehaviourContext], but managing substates contexts updates for avoiding of updates lost between states
  */
-class DefaultBehaviourContextWithFSM(
+class DefaultBehaviourContextWithFSM<T : State>(
     private val behaviourContext: BehaviourContext,
-    private val statesManager: StatesManager,
-    private val handlers: List<BehaviourWithFSMStateHandlerHolder<*>>
-) : BehaviourContext by behaviourContext, BehaviourContextWithFSM {
+    private val statesManager: StatesManager<T>,
+    private val handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>
+) : BehaviourContext by behaviourContext, BehaviourContextWithFSM<T> {
     private val updatesFlows = mutableMapOf<Any, Flow<Update>>()
     private fun getContextUpdatesFlow(context: Any) = updatesFlows.getOrPut(context) {
         allUpdatesFlow.accumulatorFlow(scope)
     }
-    override suspend fun StatesMachine.handleState(state: State): State? = launchStateHandling(
+
+    override suspend fun StatesMachine<in T>.handleState(state: T): T? = launchStateHandling(
         state,
         allUpdatesFlow,
         handlers
     )
 
     override fun start(scope: CoroutineScope): Job = scope.launchSafelyWithoutExceptions {
-        val statePerformer: suspend (State) -> Unit = { state: State ->
+        val statePerformer: suspend (T) -> Unit = { state: T ->
             val newState = launchStateHandling(state, getContextUpdatesFlow(state.context), handlers)
             if (newState != null) {
                 statesManager.update(state, newState)
@@ -94,7 +95,7 @@ class DefaultBehaviourContextWithFSM(
         }
     }
 
-    override suspend fun startChain(state: State) {
+    override suspend fun startChain(state: T) {
         statesManager.startChain(state)
     }
 
@@ -105,7 +106,7 @@ class DefaultBehaviourContextWithFSM(
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
-    ): BehaviourContextWithFSM = BehaviourContextWithFSM(
+    ): BehaviourContextWithFSM<T> = BehaviourContextWithFSM(
         behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter),
         handlers,
         statesManager

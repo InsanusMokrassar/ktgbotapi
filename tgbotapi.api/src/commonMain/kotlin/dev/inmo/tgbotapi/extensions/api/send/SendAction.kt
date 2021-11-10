@@ -100,3 +100,7 @@ suspend fun TelegramBot.sendActionUploadVideoNote(
     chat: Chat
 ) = sendBotAction(chat, UploadVideoNoteAction)
 
+suspend fun TelegramBot.sendActionChooseStickerAction(
+    chat: Chat
+) = sendBotAction(chat, ChooseStickerAction)
+

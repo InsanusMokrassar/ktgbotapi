@@ -59,6 +59,7 @@ suspend fun <T> TelegramBot.withUploadDocumentAction(chatId: ChatId, block: Tele
 suspend fun <T> TelegramBot.withFindLocationAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, FindLocationAction, block)
 suspend fun <T> TelegramBot.withRecordVideoNoteAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, RecordVideoNoteAction, block)
 suspend fun <T> TelegramBot.withUploadVideoNoteAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, UploadVideoNoteAction, block)
+suspend fun <T> TelegramBot.withChooseStickerAction(chatId: ChatId, block: TelegramBotActionCallback<T>) = withAction(chatId, ChooseStickerAction, block)
 
 
 suspend fun <T> TelegramBot.withTypingAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, TypingAction, block)
@@ -71,3 +72,4 @@ suspend fun <T> TelegramBot.withUploadDocumentAction(chat: Chat, block: Telegram
 suspend fun <T> TelegramBot.withFindLocationAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, FindLocationAction, block)
 suspend fun <T> TelegramBot.withRecordVideoNoteAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, RecordVideoNoteAction, block)
 suspend fun <T> TelegramBot.withUploadVideoNoteAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, UploadVideoNoteAction, block)
+suspend fun <T> TelegramBot.withChooseStickerAction(chat: Chat, block: TelegramBotActionCallback<T>) = withAction(chat, ChooseStickerAction, block)

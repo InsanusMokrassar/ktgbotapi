@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.CommonAbstracts.WithUser
 import dev.inmo.tgbotapi.extensions.utils.asFromUser
 import dev.inmo.tgbotapi.extensions.utils.asUser
 import dev.inmo.tgbotapi.extensions.utils.shortcuts.chat
+import dev.inmo.tgbotapi.types.ChatJoinRequest
 import dev.inmo.tgbotapi.types.User
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.update.*
@@ -14,12 +15,13 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
-fun Update.sourceChat(): Chat? = when {
-    this is MediaGroupUpdate -> when (this) {
+fun Update.sourceChat(): Chat? = when (this) {
+    is MediaGroupUpdate -> when (this) {
         is SentMediaGroupUpdate -> data.chat
         is EditMediaGroupUpdate -> data.chat
     }
-    this is BaseMessageUpdate -> data.chat
+    is BaseMessageUpdate -> data.chat
+    is ChatJoinRequestUpdate -> data.chat
     else -> {
         when (val data = data) {
             is FromUser -> data.from

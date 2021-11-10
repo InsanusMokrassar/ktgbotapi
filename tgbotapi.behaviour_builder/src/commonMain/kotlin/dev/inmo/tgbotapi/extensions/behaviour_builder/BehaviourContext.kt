@@ -55,13 +55,6 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
         upstreamUpdatesFlow: Flow<Update>? = null,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
     ): BehaviourContext
-
-    @Deprecated("This method is not recommended to use and will be removed in near release")
-    fun copy(
-        bot: TelegramBot,
-        scope: CoroutineScope = this.scope,
-        flowsUpdatesFilter: FlowsUpdatesFilter = this.flowsUpdatesFilter
-    ): BehaviourContext = copy(upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow)
 }
 
 class DefaultBehaviourContext(
@@ -112,30 +105,6 @@ inline fun <T> BehaviourContext(
     flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     crossinline block: BehaviourContext.() -> T
 ) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow).run(block)
-
-/**
- * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [newFlowsUpdatesFilterSetUp] is provided and
- * [CoroutineScope] as new [BehaviourContext.scope]. You must do all subscription/running of longPolling manually.
- *
- * @param newFlowsUpdatesFilterSetUp As a parameter receives [FlowsUpdatesFilter] from old [this] [BehaviourContext.flowsUpdatesFilter]
- */
-@RiskFeature("It is recommended to use doInSubContextWithUpdatesFilter instead. " +
-    "This method is low level and should not be used in case you are not pretty sure you need it.")
-@Deprecated("This method is useless and will not be used in future")
-suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithFlowsUpdatesFilterSetup(
-    newFlowsUpdatesFilterSetUp: CustomBehaviourContextAndTypeReceiver<BC, Unit, FlowsUpdatesFilter>?,
-    stopOnCompletion: Boolean = true,
-    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
-): T = (copy(
-    scope = LinkedSupervisorScope(),
-) as BC).run {
-    withContext(coroutineContext) {
-        newFlowsUpdatesFilterSetUp ?.let {
-            it.apply { invoke(this@run, this@doInSubContextWithFlowsUpdatesFilterSetup.flowsUpdatesFilter) }
-        }
-        behaviourContextReceiver().also { if (stopOnCompletion) stop() }
-    }
-}
 
 /**
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [updatesFilter] is provided and

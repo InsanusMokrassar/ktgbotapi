@@ -1275,6 +1275,15 @@ inline fun BotAction.asTypingAction(): TypingAction? = this as? TypingAction
 inline fun BotAction.requireTypingAction(): TypingAction = this as TypingAction
 
 @PreviewFeature
+inline fun <T> BotAction.whenChooseStickerAction(block: (ChooseStickerAction) -> T) = asChooseStickerAction() ?.let(block)
+
+@PreviewFeature
+inline fun BotAction.asChooseStickerAction(): ChooseStickerAction? = this as? ChooseStickerAction
+
+@PreviewFeature
+inline fun BotAction.requireChooseStickerAction(): ChooseStickerAction = this as ChooseStickerAction
+
+@PreviewFeature
 inline fun <T> BotAction.whenUploadVoiceAction(block: (UploadVoiceAction) -> T) = asUploadVoiceAction() ?.let(block)
 
 @PreviewFeature
@@ -2203,6 +2212,15 @@ inline fun Update.asChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate? = this a
 
 @PreviewFeature
 inline fun Update.requireChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate = this as ChatMemberUpdatedUpdate
+
+@PreviewFeature
+inline fun <T> Update.whenChatJoinRequestUpdate(block: (ChatJoinRequestUpdate) -> T) = asChatJoinRequestUpdate() ?.let(block)
+
+@PreviewFeature
+inline fun Update.asChatJoinRequestUpdate(): ChatJoinRequestUpdate? = this as? ChatJoinRequestUpdate
+
+@PreviewFeature
+inline fun Update.requireChatJoinRequestUpdate(): ChatJoinRequestUpdate = this as ChatJoinRequestUpdate
 
 @PreviewFeature
 inline fun <T> TelegramMediaFile.whenAnimationFile(block: (AnimationFile) -> T) = asAnimationFile() ?.let(block)
@@ -3188,3 +3206,48 @@ inline fun Location.asLiveLocation(): LiveLocation? = this as? LiveLocation
 
 @PreviewFeature
 inline fun Location.requireLiveLocation(): LiveLocation = this as LiveLocation
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenPrimaryInviteLink(block: (PrimaryInviteLink) -> T) = asPrimaryInviteLink() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asPrimaryInviteLink(): PrimaryInviteLink? = this as? PrimaryInviteLink
+
+@PreviewFeature
+inline fun ChatInviteLink.requirePrimaryInviteLink(): PrimaryInviteLink = this as PrimaryInviteLink
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenSecondaryChatInviteLink(block: (SecondaryChatInviteLink) -> T) = asSecondaryChatInviteLink() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asSecondaryChatInviteLink(): SecondaryChatInviteLink? = this as? SecondaryChatInviteLink
+
+@PreviewFeature
+inline fun ChatInviteLink.requireSecondaryChatInviteLink(): SecondaryChatInviteLink = this as SecondaryChatInviteLink
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T) = asChatInviteLinkWithJoinRequest() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest? = this as? ChatInviteLinkWithJoinRequest
+
+@PreviewFeature
+inline fun ChatInviteLink.requireChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest = this as ChatInviteLinkWithJoinRequest
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T) = asChatInviteLinkWithLimitedMembers() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers? = this as? ChatInviteLinkWithLimitedMembers
+
+@PreviewFeature
+inline fun ChatInviteLink.requireChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers = this as ChatInviteLinkWithLimitedMembers
+
+@PreviewFeature
+inline fun <T> ChatInviteLink.whenChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T) = asChatInviteLinkUnlimited() ?.let(block)
+
+@PreviewFeature
+inline fun ChatInviteLink.asChatInviteLinkUnlimited(): ChatInviteLinkUnlimited? = this as? ChatInviteLinkUnlimited
+
+@PreviewFeature
+inline fun ChatInviteLink.requireChatInviteLinkUnlimited(): ChatInviteLinkUnlimited = this as ChatInviteLinkUnlimited

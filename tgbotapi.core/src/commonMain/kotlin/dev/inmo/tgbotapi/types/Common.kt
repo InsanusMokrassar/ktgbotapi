@@ -177,6 +177,8 @@ const val messageAutoDeleteTimeField = "message_auto_delete_time"
 const val isPrimaryField = "is_primary"
 const val isRevokedField = "is_revoked"
 const val expireDateField = "expire_date"
+const val createsJoinRequestField = "creates_join_request"
+const val pendingJoinRequestCountField = "pending_join_request_count"
 const val memberLimitField = "member_limit"
 
 const val requestContactField = "request_contact"

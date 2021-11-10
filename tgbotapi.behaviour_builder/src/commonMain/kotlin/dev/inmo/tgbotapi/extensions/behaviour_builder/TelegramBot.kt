@@ -25,7 +25,7 @@ import kotlin.coroutines.coroutineContext
  */
 suspend fun telegramBotWithBehaviour(
     token: String,
-    flowsUpdatesFilter: FlowsUpdatesFilter,
+    flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     scope: CoroutineScope? = null,
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
@@ -77,13 +77,3 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
         )
     }
 }
-
-@Deprecated("Renamed to telegramBotWithBehaviourAndLongPolling")
-suspend fun telegramBotWithBehaviour(
-    token: String,
-    scope: CoroutineScope? = null,
-    apiUrl: String = telegramBotAPIDefaultUrl,
-    builder: KtorRequestsExecutorBuilder.() -> Unit = {},
-    defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
-    block: BehaviourContextReceiver<Unit>
-) = telegramBotWithBehaviourAndLongPolling(token, scope, apiUrl, builder, defaultExceptionsHandler, block)

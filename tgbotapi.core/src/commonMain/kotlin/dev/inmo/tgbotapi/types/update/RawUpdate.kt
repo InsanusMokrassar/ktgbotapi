@@ -35,7 +35,8 @@ internal data class RawUpdate constructor(
     private val poll: Poll? = null,
     private val poll_answer: PollAnswer? = null,
     private val my_chat_member: ChatMemberUpdated? = null,
-    private val chat_member: ChatMemberUpdated? = null
+    private val chat_member: ChatMemberUpdated? = null,
+    private val chat_join_request: ChatJoinRequest? = null
 ) {
     private var initedUpdate: Update? = null
     /**
@@ -61,6 +62,7 @@ internal data class RawUpdate constructor(
                 poll_answer != null -> PollAnswerUpdate(updateId, poll_answer)
                 my_chat_member != null -> MyChatMemberUpdatedUpdate(updateId, my_chat_member)
                 chat_member != null -> CommonChatMemberUpdatedUpdate(updateId, chat_member)
+                chat_join_request != null -> ChatJoinRequestUpdate(updateId, chat_join_request)
                 else -> UnknownUpdate(
                     updateId,
                     raw.toString(),
