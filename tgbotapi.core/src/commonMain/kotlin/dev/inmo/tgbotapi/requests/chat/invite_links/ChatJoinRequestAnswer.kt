@@ -5,6 +5,9 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
+/**
+ * Represent a join request answer. See inheritors for more info
+ */
 sealed interface ChatJoinRequestAnswer : SimpleRequest<Boolean> {
     val chatId: ChatIdentifier
     val userId: UserId
@@ -13,6 +16,10 @@ sealed interface ChatJoinRequestAnswer : SimpleRequest<Boolean> {
         get() = Boolean.serializer()
 }
 
+/**
+ * Represent [approve](https://core.telegram.org/bots/api#approvechatjoinrequest) [ChatJoinRequestAnswer]. You may approve
+ * the requests retrieved in with [ChatJoinRequest] (in [dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate])
+ */
 @Serializable
 data class ApproveChatJoinRequest(
     @SerialName(chatIdField)
@@ -26,6 +33,10 @@ data class ApproveChatJoinRequest(
     override fun method(): String  = "approveChatJoinRequest"
 }
 
+/**
+ * Represent [decline](https://core.telegram.org/bots/api#declinechatjoinrequest) [ChatJoinRequestAnswer]. You may approve
+ * the requests retrieved in with [ChatJoinRequest] (in [dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate])
+ */
 @Serializable
 data class DeclineChatJoinRequest(
     @SerialName(chatIdField)

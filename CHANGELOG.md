@@ -17,6 +17,13 @@
         * `EditChatInviteLinkSimple`
         * `EditChatInviteLinkWithLimitedMembers`
         * `EditChatInviteLinkWithJoinRequest`
+    * New `BotAction`: `ChooseStickerAction`
+    * Now requester will throw exceptions related to responses decoding directly instead of wrapping in
+      `RequestException`
+    * 
+* `BehaviourBuilder FSM`:
+    * **Incompatible changes** (now generics are used in state machines)
+    * `strictlyOn` and `onStateOrSubstate` now are part of `BehaviourContextWithFSMBuilder`
 
 ## 0.36.1
 
