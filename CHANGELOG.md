@@ -1,6 +1,8 @@
 # TelegramBotAPI changelog
 
-## 0.37.0
+## 0.37.0 Telegram Bot API 5.4
+
+**ALL DEPRECATIONS WERE REMOVED**
 
 * `Common`:
     * `Version`:
