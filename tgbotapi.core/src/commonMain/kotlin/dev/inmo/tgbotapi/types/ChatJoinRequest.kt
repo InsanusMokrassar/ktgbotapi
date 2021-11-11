@@ -5,6 +5,9 @@ import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Represent a [ChatJoinRequest](https://core.telegram.org/bots/api#chatjoinrequest)
+ */
 @Serializable
 data class ChatJoinRequest(
     @SerialName(chatField)

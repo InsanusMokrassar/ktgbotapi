@@ -42,6 +42,9 @@ private fun ChatInviteLink.toRawChatInviteLink() = RawChatInviteLink(
     (this as? ChatInviteLinkWithJoinRequest) ?.leftToReview
 )
 
+/**
+ * Base interface for all chat invite links. See inheritors for more info or official [docs](https://core.telegram.org/bots/api#chatinvitelink)
+ */
 @Serializable(ChatInviteLinkSerializer::class)
 sealed interface ChatInviteLink : WithUser {
     val inviteLink: String
@@ -60,6 +63,9 @@ sealed interface ChatInviteLink : WithUser {
     }
 }
 
+/**
+ * Base interface for all [ChatInviteLink]s which are NOT [PrimaryInviteLink]
+ */
 @Serializable(ChatInviteLinkSerializer::class)
 sealed interface SecondaryChatInviteLink : ChatInviteLink {
     override val isPrimary: Boolean
@@ -70,6 +76,9 @@ sealed interface SecondaryChatInviteLink : ChatInviteLink {
     }
 }
 
+/**
+ * Primary invite link in the chat for this bot
+ */
 @Serializable
 data class PrimaryInviteLink(
     @SerialName(inviteLinkField)
@@ -87,6 +96,12 @@ data class PrimaryInviteLink(
         get() = null
 }
 
+/**
+ * Represent [SecondaryChatInviteLink] which will require an aprovement from one of the administrators
+ *
+ * @see ChatJoinRequest
+ * @see dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
+ */
 @Serializable
 data class ChatInviteLinkWithJoinRequest(
     @SerialName(inviteLinkField)
@@ -106,6 +121,9 @@ data class ChatInviteLinkWithJoinRequest(
         get() = expireDate ?.asDate
 }
 
+/**
+ * Represent [SecondaryChatInviteLink] which will have limitation for the amount of chat members to join
+ */
 @Serializable
 data class ChatInviteLinkWithLimitedMembers(
     @SerialName(inviteLinkField)
@@ -125,6 +143,10 @@ data class ChatInviteLinkWithLimitedMembers(
         get() = expireDate ?.asDate
 }
 
+/**
+ * Represent [SecondaryChatInviteLink] which have no any restrictions like [ChatInviteLinkWithJoinRequest] or
+ * [ChatInviteLinkWithLimitedMembers]
+ */
 @Serializable
 data class ChatInviteLinkUnlimited(
     @SerialName(inviteLinkField)
