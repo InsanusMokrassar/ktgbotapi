@@ -2,6 +2,12 @@
 
 ## 0.37.1
 
+* `Common`:
+    * `Version`:
+        * `Serialization`: `1.3.0` -> `1.3.1`
+        * `Klock`: `2.4.7` -> `2.4.8`
+        * `MicroUtils`: `0.8.1` -> `0.8.2`
+
 ## 0.37.0 Telegram Bot API 5.4
 
 **ALL DEPRECATIONS WERE REMOVED**
