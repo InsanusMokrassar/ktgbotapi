@@ -23,7 +23,13 @@ repositories {
 }
 
 kotlin {
-    jvm()
+    jvm {
+        compilations.main {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+    }
     js(IR) {
         browser()
         nodejs()
@@ -91,3 +97,8 @@ Object callback = {
 
 tasks.dokkaGfm(callback)
 tasks.dokkaHtml(callback)
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
