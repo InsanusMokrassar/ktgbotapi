@@ -429,7 +429,7 @@ inline fun EntitiesBuilder.link(text: String, url: String) = add(dev.inmo.tgbota
 /**
  * Version of [EntitiesBuilder.link] with new line at the end
  */
-inline fun EntitiesBuilder.linkln(text: String, url: String) = link(text) + newLine
+inline fun EntitiesBuilder.linkln(text: String, url: String) = link(text, url) + newLine
 /**
  * Add link using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.MessageEntity.textsources.link]
  */
