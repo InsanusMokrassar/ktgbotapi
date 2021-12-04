@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 0.37.2
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.8.2` -> `0.8.5`
+* `Utils`:
+    * Fix of `EntitiesBuilder#linkln`
+
 ## 0.37.1
 
 * `Common`:
