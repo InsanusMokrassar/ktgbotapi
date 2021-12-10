@@ -96,6 +96,7 @@ val telegramInlineModeGifPermittedMimeTypes by lazy {
 }
 
 const val chatIdField = "chat_id"
+const val senderChatIdField = "sender_chat_id"
 const val messageIdField = "message_id"
 const val updateIdField = "update_id"
 const val fromChatIdField = "from_chat_id"

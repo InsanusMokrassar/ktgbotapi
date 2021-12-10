@@ -4,7 +4,7 @@
 
 * `Common`:
     * `Version`:
-        * `MicroUtils`: `0.8.2` -> `0.8.5`
+        * `MicroUtils`: `0.8.2` -> `0.8.6`
 * `Utils`:
     * Fix of `EntitiesBuilder#linkln`
 
