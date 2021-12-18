@@ -15,12 +15,28 @@ data class FromChannelGroupContentMessageImpl<T : MessageContent>(
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
+    override val forwardable: Boolean,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : FromChannelGroupContentMessage<T>
+) : FromChannelGroupContentMessage<T> {
+    @Deprecated("Use the constructor with forwardable field")
+    constructor(
+        chat: GroupChat,
+        channel: ChannelChat,
+        messageId: MessageIdentifier,
+        date: DateTime,
+        forwardInfo: ForwardInfo?,
+        editDate: DateTime?,
+        replyTo: Message?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?
+    ) : this(chat, channel, messageId, date, forwardInfo, editDate, true, replyTo, replyMarkup, content, senderBot, authorSignature)
+}
 
 data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
@@ -28,12 +44,27 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
+    override val forwardable: Boolean,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : AnonymousGroupContentMessage<T>
+) : AnonymousGroupContentMessage<T> {
+    @Deprecated("Use the constructor with forwardable field")
+    constructor(
+        chat: GroupChat,
+        messageId: MessageIdentifier,
+        date: DateTime,
+        forwardInfo: ForwardInfo?,
+        editDate: DateTime?,
+        replyTo: Message?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?
+    ) : this(chat, messageId, date, forwardInfo, editDate, true, replyTo, replyMarkup, content, senderBot, authorSignature)
+}
 
 data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
@@ -42,8 +73,23 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
+    override val forwardable: Boolean,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?
-) : CommonGroupContentMessage<T>
+) : CommonGroupContentMessage<T> {
+    @Deprecated("Use the constructor with forwardable field")
+    constructor(
+        chat: GroupChat,
+        messageId: MessageIdentifier,
+        from: User,
+        date: DateTime,
+        forwardInfo: ForwardInfo?,
+        editDate: DateTime?,
+        replyTo: Message?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?
+    ) : this(chat, messageId, from, date, forwardInfo, editDate, true, replyTo, replyMarkup, content, senderBot)
+}

@@ -13,12 +13,27 @@ data class UnconnectedChannelContentMessageImpl<T: MessageContent>(
     override val content: T,
     override val date: DateTime,
     override val editDate: DateTime?,
+    override val forwardable: Boolean,
     override val forwardInfo: ForwardInfo?,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : UnconnectedChannelContentMessage<T>
+) : UnconnectedChannelContentMessage<T> {
+    @Deprecated("Use the constructor with forwardable field")
+    constructor(
+        messageId: MessageIdentifier,
+        chat: ChannelChat,
+        content: T,
+        date: DateTime,
+        editDate: DateTime?,
+        forwardInfo: ForwardInfo?,
+        replyTo: Message?,
+        replyMarkup: InlineKeyboardMarkup?,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?
+    ) : this(messageId, chat, content, date, editDate, true, forwardInfo, replyTo, replyMarkup, senderBot, authorSignature)
+}
 
 @Deprecated("Renamed to UnconnectedChannelContentMessage", ReplaceWith("UnconnectedChannelContentMessage", "dev.inmo.tgbotapi.types.message.UnconnectedChannelContentMessageImpl"))
 typealias ChannelContentMessageImpl<T> = UnconnectedChannelContentMessage<T>
