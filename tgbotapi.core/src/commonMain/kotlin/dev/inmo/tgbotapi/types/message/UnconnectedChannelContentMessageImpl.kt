@@ -4,11 +4,10 @@ import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
-import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
-data class ChannelContentMessageImpl<T: MessageContent>(
+data class UnconnectedChannelContentMessageImpl<T: MessageContent>(
     override val messageId: MessageIdentifier,
     override val chat: ChannelChat,
     override val content: T,
@@ -19,4 +18,7 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : ChannelContentMessage<T>
+) : UnconnectedChannelContentMessage<T>
+
+@Deprecated("Renamed to UnconnectedChannelContentMessage", ReplaceWith("UnconnectedChannelContentMessage", "dev.inmo.tgbotapi.types.message.UnconnectedChannelContentMessageImpl"))
+typealias ChannelContentMessageImpl<T> = UnconnectedChannelContentMessage<T>

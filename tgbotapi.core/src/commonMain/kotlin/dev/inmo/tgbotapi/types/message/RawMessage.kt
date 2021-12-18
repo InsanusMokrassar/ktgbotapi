@@ -42,6 +42,7 @@ internal data class RawMessage(
     private val forward_signature: ForwardSignature? = null,
     private val forward_sender_name: ForwardSenderName? = null,
     private val forward_date: TelegramDate? = null,
+    private val is_automatic_forward: Boolean? = null,
     private val reply_to_message: RawMessage? = null,
     private val via_bot: CommonBot? = null,
     private val edit_date: TelegramDate? = null,
@@ -269,18 +270,33 @@ internal data class RawMessage(
                     }
                 } ?: when (chat) {
                     is PublicChat -> when (chat) {
-                        is ChannelChat -> ChannelContentMessageImpl(
-                            messageId,
-                            chat,
-                            content,
-                            date.asDate,
-                            edit_date?.asDate,
-                            forwarded,
-                            reply_to_message?.asMessage,
-                            reply_markup,
-                            via_bot,
-                            author_signature
-                        )
+                        is ChannelChat -> if (is_automatic_forward == true) {
+                            ConnectedChannelContentMessageImpl(
+                                messageId,
+                                chat,
+                                content,
+                                date.asDate,
+                                edit_date?.asDate,
+                                forwarded,
+                                reply_to_message?.asMessage,
+                                reply_markup,
+                                via_bot,
+                                author_signature
+                            )
+                        } else {
+                            UnconnectedChannelContentMessageImpl(
+                                messageId,
+                                chat,
+                                content,
+                                date.asDate,
+                                edit_date?.asDate,
+                                forwarded,
+                                reply_to_message?.asMessage,
+                                reply_markup,
+                                via_bot,
+                                author_signature
+                            )
+                        }
                         is GroupChat -> when (sender_chat) {
                             is ChannelChat -> FromChannelGroupContentMessageImpl(
                                 chat,
