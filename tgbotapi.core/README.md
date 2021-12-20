@@ -26,9 +26,9 @@ moments are describing by official [Telegram Bot API](https://core.telegram.org/
 Common ways to implement this library are presented here. In some cases it will require additional steps
 like inserting of additional libraries (like `kotlin stdlib`). In the examples will be used variable
 `telegrambotapi.version`, which must be set up by developer. Available versions are presented on
-[bintray](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core), next version is last published:
+maven central, next version is last published:
 
-[![Download](https://api.bintray.com/packages/insanusmokrassar/TelegramBotAPI/tgbotapi.core/images/download.svg) ](https://bintray.com/insanusmokrassar/TelegramBotAPI/tgbotapi.core/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core)
 
 Currently, last versions of library can be available from the Maven repository with errors (for the reason difficult in publishing
 of signed artifacts in Bintray). You can:

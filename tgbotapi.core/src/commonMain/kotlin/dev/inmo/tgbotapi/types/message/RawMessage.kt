@@ -42,9 +42,11 @@ internal data class RawMessage(
     private val forward_signature: ForwardSignature? = null,
     private val forward_sender_name: ForwardSenderName? = null,
     private val forward_date: TelegramDate? = null,
+    private val is_automatic_forward: Boolean? = null,
     private val reply_to_message: RawMessage? = null,
     private val via_bot: CommonBot? = null,
     private val edit_date: TelegramDate? = null,
+    private val has_protected_content: Boolean? = null,
     private val media_group_id: MediaGroupIdentifier? = null,
     private val author_signature: AuthorSignature? = null,
     private val text: String? = null,
@@ -250,6 +252,7 @@ internal data class RawMessage(
                             it,
                             checkedContent,
                             edit_date?.asDate,
+                            has_protected_content != true,
                             forwarded,
                             reply_to_message?.asMessage,
                             reply_markup
@@ -262,6 +265,7 @@ internal data class RawMessage(
                             it,
                             checkedContent,
                             edit_date?.asDate,
+                            has_protected_content != true,
                             forwarded,
                             reply_to_message?.asMessage,
                             reply_markup
@@ -269,18 +273,35 @@ internal data class RawMessage(
                     }
                 } ?: when (chat) {
                     is PublicChat -> when (chat) {
-                        is ChannelChat -> ChannelContentMessageImpl(
-                            messageId,
-                            chat,
-                            content,
-                            date.asDate,
-                            edit_date?.asDate,
-                            forwarded,
-                            reply_to_message?.asMessage,
-                            reply_markup,
-                            via_bot,
-                            author_signature
-                        )
+                        is ChannelChat -> if (is_automatic_forward == true) {
+                            ConnectedChannelContentMessageImpl(
+                                messageId,
+                                chat,
+                                content,
+                                date.asDate,
+                                edit_date?.asDate,
+                                has_protected_content != true,
+                                forwarded,
+                                reply_to_message?.asMessage,
+                                reply_markup,
+                                via_bot,
+                                author_signature
+                            )
+                        } else {
+                            UnconnectedChannelContentMessageImpl(
+                                messageId,
+                                chat,
+                                content,
+                                date.asDate,
+                                edit_date?.asDate,
+                                has_protected_content != true,
+                                forwarded,
+                                reply_to_message?.asMessage,
+                                reply_markup,
+                                via_bot,
+                                author_signature
+                            )
+                        }
                         is GroupChat -> when (sender_chat) {
                             is ChannelChat -> FromChannelGroupContentMessageImpl(
                                 chat,
@@ -289,6 +310,7 @@ internal data class RawMessage(
                                 date.asDate,
                                 forwarded,
                                 edit_date ?.asDate,
+                                has_protected_content != true,
                                 reply_to_message ?.asMessage,
                                 reply_markup,
                                 content,
@@ -301,6 +323,7 @@ internal data class RawMessage(
                                 date.asDate,
                                 forwarded,
                                 edit_date ?.asDate,
+                                has_protected_content != true,
                                 reply_to_message ?.asMessage,
                                 reply_markup,
                                 content,
@@ -314,6 +337,7 @@ internal data class RawMessage(
                                 date.asDate,
                                 forwarded,
                                 edit_date ?.asDate,
+                                has_protected_content != true,
                                 reply_to_message ?.asMessage,
                                 reply_markup,
                                 content,
@@ -330,6 +354,7 @@ internal data class RawMessage(
                         content,
                         date.asDate,
                         edit_date?.asDate,
+                        has_protected_content != true,
                         forwarded,
                         reply_to_message?.asMessage,
                         reply_markup,

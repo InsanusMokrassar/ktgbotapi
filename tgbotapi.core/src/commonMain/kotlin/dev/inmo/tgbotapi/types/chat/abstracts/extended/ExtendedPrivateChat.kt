@@ -7,4 +7,8 @@ import kotlinx.serialization.Serializable
 @Serializable(ExtendedChatSerializer::class)
 interface ExtendedPrivateChat : PrivateChat, ExtendedChat {
     val bio: String
+    val hasPrivateForwards: Boolean
+
+    val allowCreateUserIdLink: Boolean
+        get() = hasPrivateForwards
 }

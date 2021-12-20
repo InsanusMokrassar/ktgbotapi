@@ -18,5 +18,7 @@ data class ExtendedPrivateChatImpl(
     @SerialName(lastNameField)
     override val lastName: String = "",
     @SerialName(bioField)
-    override val bio: String = ""
+    override val bio: String = "",
+    @SerialName(hasPrivateForwardsField)
+    override val hasPrivateForwards: Boolean = false
 ) : ExtendedPrivateChat
