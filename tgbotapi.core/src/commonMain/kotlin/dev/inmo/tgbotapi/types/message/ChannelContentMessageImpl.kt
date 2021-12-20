@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
-data class UnconnectedChannelContentMessageImpl<T: MessageContent>(
+data class ChannelContentMessageImpl<T: MessageContent>(
     override val messageId: MessageIdentifier,
     override val chat: ChannelChat,
     override val content: T,
@@ -19,7 +19,7 @@ data class UnconnectedChannelContentMessageImpl<T: MessageContent>(
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : UnconnectedChannelContentMessage<T> {
+) : ChannelContentMessage<T> {
     @Deprecated("Use the constructor with forwardable field")
     constructor(
         messageId: MessageIdentifier,
@@ -34,6 +34,3 @@ data class UnconnectedChannelContentMessageImpl<T: MessageContent>(
         authorSignature: AuthorSignature?
     ) : this(messageId, chat, content, date, editDate, true, forwardInfo, replyTo, replyMarkup, senderBot, authorSignature)
 }
-
-@Deprecated("Renamed to UnconnectedChannelContentMessage", ReplaceWith("UnconnectedChannelContentMessage", "dev.inmo.tgbotapi.types.message.UnconnectedChannelContentMessageImpl"))
-typealias ChannelContentMessageImpl<T> = UnconnectedChannelContentMessage<T>

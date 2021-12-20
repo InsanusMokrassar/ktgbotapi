@@ -15,6 +15,9 @@ interface FromChannelGroupContentMessage<T : MessageContent> : GroupContentMessa
         get() = channel
 }
 
+interface ConnectedFromChannelGroupContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>
+interface UnconnectedFromChannelGroupContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>
+
 interface AnonymousGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, SignedMessage, WithSenderChatMessage {
     override val senderChat: GroupChat
         get() = chat

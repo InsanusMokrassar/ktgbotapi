@@ -12,8 +12,7 @@ import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
-import dev.inmo.tgbotapi.types.message.abstracts.Message
-import dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
+import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.message.content.media.*
@@ -273,50 +272,51 @@ internal data class RawMessage(
                     }
                 } ?: when (chat) {
                     is PublicChat -> when (chat) {
-                        is ChannelChat -> if (is_automatic_forward == true) {
-                            ConnectedChannelContentMessageImpl(
-                                messageId,
-                                chat,
-                                content,
-                                date.asDate,
-                                edit_date?.asDate,
-                                has_protected_content != true,
-                                forwarded,
-                                reply_to_message?.asMessage,
-                                reply_markup,
-                                via_bot,
-                                author_signature
-                            )
-                        } else {
-                            UnconnectedChannelContentMessageImpl(
-                                messageId,
-                                chat,
-                                content,
-                                date.asDate,
-                                edit_date?.asDate,
-                                has_protected_content != true,
-                                forwarded,
-                                reply_to_message?.asMessage,
-                                reply_markup,
-                                via_bot,
-                                author_signature
-                            )
-                        }
+                        is ChannelChat -> ChannelContentMessageImpl(
+                            messageId,
+                            chat,
+                            content,
+                            date.asDate,
+                            edit_date?.asDate,
+                            has_protected_content != true,
+                            forwarded,
+                            reply_to_message?.asMessage,
+                            reply_markup,
+                            via_bot,
+                            author_signature
+                        )
                         is GroupChat -> when (sender_chat) {
-                            is ChannelChat -> FromChannelGroupContentMessageImpl(
-                                chat,
-                                sender_chat,
-                                messageId,
-                                date.asDate,
-                                forwarded,
-                                edit_date ?.asDate,
-                                has_protected_content != true,
-                                reply_to_message ?.asMessage,
-                                reply_markup,
-                                content,
-                                via_bot,
-                                author_signature
-                            )
+                            is ChannelChat -> if (is_automatic_forward == true) {
+                                ConnectedFromChannelGroupContentMessageImpl(
+                                    chat,
+                                    sender_chat,
+                                    messageId,
+                                    date.asDate,
+                                    forwarded,
+                                    edit_date ?.asDate,
+                                    has_protected_content != true,
+                                    reply_to_message ?.asMessage,
+                                    reply_markup,
+                                    content,
+                                    via_bot,
+                                    author_signature
+                                )
+                            } else {
+                                UnconnectedFromChannelGroupContentMessageImpl(
+                                    chat,
+                                    sender_chat,
+                                    messageId,
+                                    date.asDate,
+                                    forwarded,
+                                    edit_date ?.asDate,
+                                    has_protected_content != true,
+                                    reply_to_message ?.asMessage,
+                                    reply_markup,
+                                    content,
+                                    via_bot,
+                                    author_signature
+                                )
+                            }
                             is GroupChat -> AnonymousGroupContentMessageImpl(
                                 chat,
                                 messageId,
