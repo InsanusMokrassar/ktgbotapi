@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.chat.abstracts.GroupChat
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
-data class FromChannelGroupContentMessageImpl<T : MessageContent>(
+data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
     override val channel: ChannelChat,
     override val messageId: MessageIdentifier,
@@ -21,7 +21,7 @@ data class FromChannelGroupContentMessageImpl<T : MessageContent>(
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : FromChannelGroupContentMessage<T> {
+) : ConnectedFromChannelGroupContentMessage<T> {
     @Deprecated("Use the constructor with forwardable field")
     constructor(
         chat: GroupChat,
@@ -37,6 +37,24 @@ data class FromChannelGroupContentMessageImpl<T : MessageContent>(
         authorSignature: AuthorSignature?
     ) : this(chat, channel, messageId, date, forwardInfo, editDate, true, replyTo, replyMarkup, content, senderBot, authorSignature)
 }
+
+@Deprecated("Renamed", ReplaceWith("ConnectedFromChannelGroupContentMessageImpl", "dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl"))
+typealias FromChannelGroupContentMessageImpl<T> = ConnectedFromChannelGroupContentMessageImpl<T>
+
+data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
+    override val chat: GroupChat,
+    override val channel: ChannelChat,
+    override val messageId: MessageIdentifier,
+    override val date: DateTime,
+    override val forwardInfo: ForwardInfo?,
+    override val editDate: DateTime?,
+    override val forwardable: Boolean,
+    override val replyTo: Message?,
+    override val replyMarkup: InlineKeyboardMarkup?,
+    override val content: T,
+    override val senderBot: CommonBot?,
+    override val authorSignature: AuthorSignature?
+) : UnconnectedFromChannelGroupContentMessage<T>
 
 data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,

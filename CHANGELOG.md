@@ -1,5 +1,32 @@
 # TelegramBotAPI changelog
 
+## 0.37.3 Hotfix of 0.37.3
+
+* `Core`:
+    * Fixes in hierarchy (and creating) of messages from channels
+
+---
+
+`0.37.2` changelog:
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.8.2` -> `0.8.7`
+* `Core`:
+    * New request type: `ChatSenderRequest`
+        * New request `BanChatSenderChat`
+        * New request `UnbanChatSenderChat`
+    * `ExtendedPrivateChat` got new properties: `hasPrivateForwards` and `allowCreateUserIdLink` (same as `hasPrivateForwards`)
+    * All `ContentMessage` got field `forwardable` (old constructors marked as `Deprecated`)
+    * `FromChannelGroupContentMessage` has been divided for two interfaces (and corresponding classes):
+        * `ConnectedFromChannelGroupContentMessage` (and `ConnectedFromChannelGroupContentMessageImpl`) for connected to the group channels messages
+        * `UnconnectedFromChannelGroupContentMessage` (and `UnconnectedFromChannelGroupContentMessageImpl`) for unconnected channels
+* `API`:
+    * New extensions `TelegramBot#banChatSenderChat`
+    * New extensions `TelegramBot#unbanChatSenderChat`
+* `Utils`:
+    * Fix of `EntitiesBuilder#linkln`
+
 ## 0.37.2 Telegram Bot API 5.5
 
 * `Common`:

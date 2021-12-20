@@ -915,15 +915,15 @@ inline fun Message.requireAnonymousGroupContentMessageImpl(): AnonymousGroupCont
     this as AnonymousGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelContentMessageImpl(block: (UnconnectedChannelContentMessageImpl<MessageContent>) -> T) = asChannelContentMessageImpl() ?.let(block)
+inline fun <T> Message.whenChannelContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T) = asChannelContentMessageImpl() ?.let(block)
 
 @PreviewFeature
-inline fun Message.asChannelContentMessageImpl(): UnconnectedChannelContentMessageImpl<MessageContent>? =
-    this as? UnconnectedChannelContentMessageImpl<MessageContent>
+inline fun Message.asChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? =
+    this as? UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireChannelContentMessageImpl(): UnconnectedChannelContentMessageImpl<MessageContent> =
-    this as UnconnectedChannelContentMessageImpl<MessageContent>
+inline fun Message.requireChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent> =
+    this as UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenFromChannelGroupContentMessageImpl(block: (FromChannelGroupContentMessageImpl<MessageContent>) -> T) = asFromChannelGroupContentMessageImpl() ?.let(block)
@@ -1034,26 +1034,26 @@ inline fun Message.requireChannelContentMessage(): ChannelContentMessage<Message
     this as ChannelContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenConnectedChannelContentMessage(block: (ConnectedChannelContentMessage<MessageContent>) -> T) = asConnectedChannelContentMessage() ?.let(block)
+inline fun <T> Message.whenConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) = asConnectedFromChannelGroupContentMessage() ?.let(block)
 
 @PreviewFeature
-inline fun Message.asConnectedChannelContentMessage(): ConnectedChannelContentMessage<MessageContent>? =
-    this as? ConnectedChannelContentMessageImpl<MessageContent>
+inline fun Message.asConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent>? =
+    this as? ConnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireConnectedChannelContentMessage(): ConnectedChannelContentMessage<MessageContent> =
-    this as ConnectedChannelContentMessage<MessageContent>
+inline fun Message.requireConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent> =
+    this as ConnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenUnconnectedChannelContentMessage(block: (UnconnectedChannelContentMessage<MessageContent>) -> T) = asUnconnectedChannelContentMessage() ?.let(block)
+inline fun <T> Message.whenUnconnectedFromChannelGroupContentMessage(block: (UnconnectedFromChannelGroupContentMessage<MessageContent>) -> T) = asUnconnectedFromChannelGroupContentMessage() ?.let(block)
 
 @PreviewFeature
-inline fun Message.asUnconnectedChannelContentMessage(): UnconnectedChannelContentMessage<MessageContent>? =
-    this as? UnconnectedChannelContentMessage<MessageContent>
+inline fun Message.asUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent>? =
+    this as? UnconnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireUnconnectedChannelContentMessage(): UnconnectedChannelContentMessage<MessageContent> =
-    this as UnconnectedChannelContentMessage<MessageContent>
+inline fun Message.requireUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent> =
+    this as UnconnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
 inline fun <T> Message.whenChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T) = asChatEventMessage() ?.let(block)
