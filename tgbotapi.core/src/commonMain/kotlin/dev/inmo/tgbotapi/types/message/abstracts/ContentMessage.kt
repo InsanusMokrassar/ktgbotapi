@@ -7,5 +7,5 @@ interface ContentMessage<T: MessageContent>: Message {
     val content: T
 
     val hasProtectedContent: Boolean
-        get() = forwardable
+        get() = !forwardable
 }
