@@ -5,6 +5,9 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 
+/**
+ * Representation of [banChatSenderChat](https://core.telegram.org/bots/api#banchatsenderchat) request
+ */
 @Serializable
 data class BanChatSenderChat(
     @SerialName(chatIdField)
