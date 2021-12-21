@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.37.4
+
 ## 0.37.3 Hotfix of 0.37.3
 
 * `Core`:
