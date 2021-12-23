@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 0.37.3 Hotfix of 0.37.3
+## 0.37.3 Hotfix of 0.37.2
 
 * `Core`:
     * Fixes in hierarchy (and creating) of messages from channels
@@ -8,6 +8,8 @@
 ---
 
 `0.37.2` changelog:
+
+_This update contains [Telegram Bot API 5.5](https://core.telegram.org/bots/api-changelog#december-7-2021) implementation_
 
 * `Common`:
     * `Version`:
