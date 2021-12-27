@@ -6,6 +6,6 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 /**
  * This event is sent when a group is converted to a supergroup.
  */
-class MigratedToSupergroup(
+data class MigratedToSupergroup(
     val migratedFrom: ChatId
 ): SupergroupEvent
