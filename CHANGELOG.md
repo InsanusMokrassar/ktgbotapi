@@ -1,6 +1,10 @@
 # TelegramBotAPI changelog
 
 ## 0.37.4
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.8.7` -> `0.8.9`
 * `Core`:
     * New `SupergroupEvent` subtype: `MigratedToSupergroup`. This event is sent when a group is converted to a supergroup while bot is in the group.
     * Helper extenstion functions on `ChatEvent` to cast it to `MigratedToSupergroup`.
