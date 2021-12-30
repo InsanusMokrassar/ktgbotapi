@@ -10,7 +10,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @RiskFeature
 object InputMessageContentSerializer : KSerializer<InputMessageContent> {
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(InputMessageContent::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: InputMessageContent) {
         when (value) {

@@ -23,7 +23,7 @@ data class UnknownMessageType(
 ) : Message
 
 internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : DeserializationStrategy<T> {
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor("TelegramBotAPIMessageSerializer", PolymorphicKind.OPEN)
 
     @Suppress("UNCHECKED_CAST")
@@ -34,7 +34,7 @@ internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : Deserializ
 
 internal class TelegramBotAPIMessageDeserializeOnlySerializerClass<T : Message> : KSerializer<T> {
     private val deserializer = TelegramBotAPIMessageDeserializationStrategyClass<T>()
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor
         get() = deserializer.descriptor
 

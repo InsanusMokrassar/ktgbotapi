@@ -12,7 +12,7 @@ import kotlinx.serialization.json.*
 
 @RiskFeature
 object MediaGroupMemberInputMediaSerializer : KSerializer<MediaGroupMemberInputMedia> {
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(MediaGroupMemberInputMedia::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: MediaGroupMemberInputMedia) {
         when (value) {

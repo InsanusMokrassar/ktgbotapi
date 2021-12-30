@@ -1,5 +1,16 @@
 # TelegramBotAPI changelog
 
+## 0.38.0
+
+* `Common`:
+    * `Version`:
+        * `Kotlin`: `1.5.31` -> `1.6.10`
+        * `Coroutines`: `1.5.2` -> `1.6.0`
+        * `Serialization`: `1.3.1` -> `1.3.2`
+        * `Klock`: `2.4.8` -> `2.4.10`
+        * `Ktor`: `1.6.5` -> `1.6.7`
+        * `MicroUtils`: `0.8.7` -> `0.9.0`
+
 ## 0.37.4
 
 ## 0.37.3 Hotfix of 0.37.3
