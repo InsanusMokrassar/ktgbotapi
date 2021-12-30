@@ -75,8 +75,8 @@ internal data class RawMessage(
     private val group_chat_created: Boolean = false,
     private val supergroup_chat_created: Boolean = false,
     private val channel_chat_created: Boolean = false,
-    private val migrate_to_chat_id: ChatIdentifier? = null,
-    private val migrate_from_chat_id: ChatIdentifier? = null,
+    private val migrate_to_chat_id: ChatId? = null,
+    private val migrate_from_chat_id: ChatId? = null,
     private val pinned_message: RawMessage? = null,
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
@@ -192,6 +192,9 @@ internal data class RawMessage(
                 migrate_to_chat_id
             )
             supergroup_chat_created -> SupergroupChatCreated(
+                migrate_from_chat_id
+            )
+            migrate_from_chat_id != null -> MigratedToSupergroup(
                 migrate_from_chat_id
             )
             channel_chat_created -> ChannelChatCreated()
