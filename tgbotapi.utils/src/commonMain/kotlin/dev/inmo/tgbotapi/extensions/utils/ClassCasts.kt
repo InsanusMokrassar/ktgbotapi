@@ -3082,6 +3082,15 @@ inline fun ChatEvent.asSupergroupChatCreated(): SupergroupChatCreated? = this as
 inline fun ChatEvent.requireSupergroupChatCreated(): SupergroupChatCreated = this as SupergroupChatCreated
 
 @PreviewFeature
+inline fun <T> ChatEvent.whenMigratedToSupergroup(block: (MigratedToSupergroup) -> T) = asMigratedToSupergroup() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asMigratedToSupergroup(): MigratedToSupergroup? = this as? MigratedToSupergroup
+
+@PreviewFeature
+inline fun ChatEvent.requireMigratedToSupergroup(): MigratedToSupergroup = this as MigratedToSupergroup
+
+@PreviewFeature
 inline fun <T> ChatEvent.whenChannelEvent(block: (ChannelEvent) -> T) = asChannelEvent() ?.let(block)
 
 @PreviewFeature
