@@ -15,7 +15,7 @@ import kotlin.test.fail
 
 class MigratedToSupergroupTest {
     @Test
-    fun `MigratedToSupergroup event should be parsed`() {
+    fun MigratedToSupergroupEventShouldBeParsed() {
         val payload = """
             {
               "update_id": 42,
