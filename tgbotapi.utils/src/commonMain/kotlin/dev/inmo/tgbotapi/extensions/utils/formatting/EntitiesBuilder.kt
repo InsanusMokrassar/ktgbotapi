@@ -99,6 +99,41 @@ inline fun EntitiesBuilder.bold(text: String) = add(dev.inmo.tgbotapi.types.Mess
  */
 inline fun EntitiesBuilder.boldln(text: String) = bold(text) + newLine
 
+/**
+ * Add spoiler using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler]
+ */
+inline fun EntitiesBuilder.spoiler(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler(parts))
+/**
+ * Version of [EntitiesBuilder.spoiler] with new line at the end
+ */
+inline fun EntitiesBuilder.spoilerln(parts: TextSourcesList) = spoiler(parts) + newLine
+/**
+ * Add spoiler using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler].
+ * Will reuse separator config from [buildEntities]
+ */
+inline fun EntitiesBuilder.spoiler(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler(buildEntities(separator, init)))
+/**
+ * Version of [EntitiesBuilder.spoiler] with new line at the end.
+ * Will reuse separator config from [buildEntities]
+ */
+inline fun EntitiesBuilder.spoilerln(noinline init: EntitiesBuilderBody) = spoiler(init) + newLine
+/**
+ * Add spoiler using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler]
+ */
+inline fun EntitiesBuilder.spoiler(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler(*parts))
+/**
+ * Version of [EntitiesBuilder.spoiler] with new line at the end
+ */
+inline fun EntitiesBuilder.spoilerln(vararg parts: TextSource) = spoiler(*parts) + newLine
+/**
+ * Add spoiler using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler]
+ */
+inline fun EntitiesBuilder.spoiler(text: String) = add(dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler(text))
+/**
+ * Version of [EntitiesBuilder.spoiler] with new line at the end
+ */
+inline fun EntitiesBuilder.spoilerln(text: String) = spoiler(text) + newLine
+
 
 /**
  * Add botCommand using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.MessageEntity.textsources.botCommand]

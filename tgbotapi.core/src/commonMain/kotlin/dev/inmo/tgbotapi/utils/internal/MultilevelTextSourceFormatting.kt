@@ -49,6 +49,10 @@ internal fun MultilevelTextSource.italicMarkdownV2(): String = markdownV2Default
 internal fun MultilevelTextSource.italicHTML(): String = htmlDefault(htmlItalicControl)
 
 
+internal fun MultilevelTextSource.spoilerMarkdownV2(): String = markdownV2Default(markdownSpoilerControl)
+internal fun MultilevelTextSource.spoilerHTML(): String = htmlDefault(htmlSpoilerControl, htmlSpoilerClosingControl)
+
+
 internal fun MultilevelTextSource.strikethroughMarkdownV2(): String = markdownV2Default(markdownV2StrikethroughControl)
 internal fun MultilevelTextSource.strikethroughHTML(): String = htmlDefault(htmlStrikethroughControl)
 

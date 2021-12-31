@@ -11,6 +11,8 @@
         * `Klock`: `2.4.8` -> `2.4.10`
         * `Ktor`: `1.6.5` -> `1.6.7`
         * `MicroUtils`: `0.8.7` -> `0.9.0`
+* `Core`:
+    * Add `SpoilerTextSource` (as part of `Telegram Bot API 5.6` update)
 
 ## 0.37.4
 

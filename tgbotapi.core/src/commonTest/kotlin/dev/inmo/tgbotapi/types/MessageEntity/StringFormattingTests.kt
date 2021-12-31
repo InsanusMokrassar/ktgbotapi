@@ -42,7 +42,9 @@ class StringFormattingTests {
             bold(italic("is") +
                 " " +
                 strikethrough(underline("simple"))) +
-                " hello world with " +
+                " " +
+                spoiler("hello world") +
+                " with " +
                 hashtag("tag") +
                 " and " +
                 mention("mention")

@@ -20,6 +20,7 @@ private val baseSerializers: Map<String, KSerializer<out TextSource>> = mapOf(
     "text_mention" to TextMentionTextSource.serializer(),
     "hashtag" to HashTagTextSource.serializer(),
     "cashtag" to CashTagTextSource.serializer(),
+    "spoiler" to SpoilerTextSource.serializer(),
 )
 
 object TextSourceSerializer : TypedSerializer<TextSource>(TextSource::class, baseSerializers) {

@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.utils.extensions.*
 
 const val markdownBoldControl = "*"
 const val markdownItalicControl = "_"
+const val markdownSpoilerControl = "||"
 const val markdownCodeControl = "`"
 const val markdownPreControl = "```"
 
@@ -18,6 +19,8 @@ const val markdownV2ItalicEndControl = "$markdownItalicControl$markdownV2ItalicU
 
 const val htmlBoldControl = "b"
 const val htmlItalicControl = "i"
+const val htmlSpoilerControl = "span class=\"tg-spoiler\""
+const val htmlSpoilerClosingControl = "span"
 const val htmlCodeControl = "code"
 const val htmlPreControl = "pre"
 const val htmlUnderlineControl = "u"
@@ -46,12 +49,13 @@ internal fun String.boldMarkdown(): String = markdownDefault(markdownBoldControl
 
 internal fun String.italicMarkdown(): String = markdownDefault(markdownItalicControl)
 
+internal fun String.spoilerMarkdown(): String = markdownDefault(markdownSpoilerControl)
+
 /**
  * Crutch for support of strikethrough in default markdown. Simply add modifier, but it will not look like correct
  */
 
 internal fun String.strikethroughMarkdown(): String = map { it + "\u0336" }.joinToString("")
-internal fun String.strikethroughMarkdownV2(): String = markdownV2Default(markdownV2StrikethroughControl)
 
 
 /**
