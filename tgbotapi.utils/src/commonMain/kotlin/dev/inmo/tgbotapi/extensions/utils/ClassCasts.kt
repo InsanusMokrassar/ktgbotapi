@@ -926,15 +926,16 @@ inline fun Message.requireChannelContentMessageImpl(): UnconnectedFromChannelGro
     this as UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenFromChannelGroupContentMessageImpl(block: (FromChannelGroupContentMessageImpl<MessageContent>) -> T) = asFromChannelGroupContentMessageImpl() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenConnectedFromChannelGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.whenConnectedFromChannelGroupContentMessage"))
+inline fun <T> Message.whenFromChannelGroupContentMessageImpl(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) = whenConnectedFromChannelGroupContentMessage(block)
 
 @PreviewFeature
-inline fun Message.asFromChannelGroupContentMessageImpl(): FromChannelGroupContentMessageImpl<MessageContent>? =
-    this as? FromChannelGroupContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("asConnectedFromChannelGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.asConnectedFromChannelGroupContentMessage"))
+inline fun Message.asFromChannelGroupContentMessageImpl(): ConnectedFromChannelGroupContentMessage<MessageContent>? = asConnectedFromChannelGroupContentMessage()
 
 @PreviewFeature
-inline fun Message.requireFromChannelGroupContentMessageImpl(): FromChannelGroupContentMessageImpl<MessageContent> =
-    this as FromChannelGroupContentMessageImpl<MessageContent>
+@Deprecated("Renamed", ReplaceWith("requireConnectedFromChannelGroupContentMessage", "dev.inmo.tgbotapi.extensions.utils.requireConnectedFromChannelGroupContentMessage"))
+inline fun Message.requireFromChannelGroupContentMessageImpl(): ConnectedFromChannelGroupContentMessage<MessageContent> = requireConnectedFromChannelGroupContentMessage()
 
 @PreviewFeature
 inline fun <T> Message.whenPassportMessage(block: (PassportMessage) -> T) = asPassportMessage() ?.let(block)
@@ -1038,7 +1039,7 @@ inline fun <T> Message.whenConnectedFromChannelGroupContentMessage(block: (Conne
 
 @PreviewFeature
 inline fun Message.asConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent>? =
-    this as? ConnectedFromChannelGroupContentMessageImpl<MessageContent>
+    this as? ConnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
 inline fun Message.requireConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent> =
