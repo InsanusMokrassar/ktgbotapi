@@ -25,6 +25,7 @@ fun <T : MediaGroupContent> SendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
 ): Request<List<MediaGroupMessage<T>>> {
@@ -47,6 +48,7 @@ fun <T : MediaGroupContent> SendMediaGroup(
         chatId,
         media,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply
     )
@@ -71,9 +73,10 @@ inline fun SendPlaylist(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<AudioContent>(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<AudioContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending documents media group
@@ -85,9 +88,10 @@ inline fun SendDocumentsGroup(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<DocumentContent>(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<DocumentContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending visual media group
@@ -100,9 +104,10 @@ inline fun SendVisualMediaGroup(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberInputMedia>,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<VisualMediaGroupContent>(chatId, media, disableNotification, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<VisualMediaGroupContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 private val messagesListSerializer: KSerializer<List<MediaGroupMessage<MediaGroupContent>>>
     = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
@@ -114,6 +119,8 @@ data class SendMediaGroupData internal constructor(
     val media: List<MediaGroupMemberInputMedia> = emptyList(),
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)

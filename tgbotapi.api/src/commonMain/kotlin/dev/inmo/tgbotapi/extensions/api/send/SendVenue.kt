@@ -23,6 +23,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -38,6 +39,7 @@ suspend fun TelegramBot.sendVenue(
         googlePlaceId = googlePlaceId,
         googlePlaceType = googlePlaceType,
         disableNotification = disableNotification,
+        protectContent = protectContent,
         replyToMessageId = replyToMessageId,
         allowSendingWithoutReply = allowSendingWithoutReply,
         replyMarkup = replyMarkup
@@ -59,6 +61,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -73,6 +76,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     disableNotification = disableNotification,
+    protectContent = protectContent,
     replyToMessageId = replyToMessageId,
     allowSendingWithoutReply = allowSendingWithoutReply,
     replyMarkup = replyMarkup
@@ -92,6 +96,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -106,6 +111,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     disableNotification = disableNotification,
+    protectContent = protectContent,
     replyToMessageId = replyToMessageId,
     allowSendingWithoutReply = allowSendingWithoutReply,
     replyMarkup = replyMarkup
@@ -125,6 +131,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -139,6 +146,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     disableNotification = disableNotification,
+    protectContent = protectContent,
     replyToMessageId = replyToMessageId,
     allowSendingWithoutReply = allowSendingWithoutReply,
     replyMarkup = replyMarkup
@@ -152,6 +160,7 @@ suspend fun TelegramBot.sendVenue(
     chatId: ChatIdentifier,
     venue: Venue,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -160,6 +169,7 @@ suspend fun TelegramBot.sendVenue(
         chatId = chatId,
         venue = venue,
         disableNotification = disableNotification,
+        protectContent = protectContent,
         replyToMessageId = replyToMessageId,
         allowSendingWithoutReply = allowSendingWithoutReply,
         replyMarkup = replyMarkup
@@ -174,6 +184,7 @@ suspend fun TelegramBot.sendVenue(
     chat: Chat,
     venue: Venue,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -181,6 +192,7 @@ suspend fun TelegramBot.sendVenue(
     chatId = chat.id,
     venue = venue,
     disableNotification = disableNotification,
+    protectContent = protectContent,
     replyToMessageId = replyToMessageId,
     allowSendingWithoutReply = allowSendingWithoutReply,
     replyMarkup = replyMarkup

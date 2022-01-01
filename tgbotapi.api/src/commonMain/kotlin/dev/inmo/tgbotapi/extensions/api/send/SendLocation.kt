@@ -17,6 +17,7 @@ suspend fun TelegramBot.sendLocation(
     latitude: Double,
     longitude: Double,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -25,6 +26,7 @@ suspend fun TelegramBot.sendLocation(
         latitude,
         longitude,
         disableNotification = disableNotification,
+        protectContent = protectContent,
         replyToMessageId = replyToMessageId,
         replyMarkup = replyMarkup
     )
@@ -38,6 +40,7 @@ suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
     location: StaticLocation,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
@@ -45,6 +48,7 @@ suspend fun TelegramBot.sendLocation(
     location.latitude,
     location.longitude,
     disableNotification,
+    protectContent,
     replyToMessageId,
     replyMarkup
 )
@@ -58,6 +62,7 @@ suspend fun TelegramBot.sendLocation(
     latitude: Double,
     longitude: Double,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
@@ -65,6 +70,7 @@ suspend fun TelegramBot.sendLocation(
     latitude,
     longitude,
     disableNotification,
+    protectContent,
     replyToMessageId,
     replyMarkup
 )
@@ -77,6 +83,7 @@ suspend fun TelegramBot.sendLocation(
     chat: Chat,
     location: StaticLocation,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
@@ -84,6 +91,7 @@ suspend fun TelegramBot.sendLocation(
     location.latitude,
     location.longitude,
     disableNotification,
+    protectContent,
     replyToMessageId,
     replyMarkup
 )
@@ -97,9 +105,10 @@ suspend fun TelegramBot.sendStaticLocation(
     latitude: Double,
     longitude: Double,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chatId, latitude, longitude, disableNotification, replyToMessageId, replyMarkup)
+) = sendLocation(chatId, latitude, longitude, disableNotification, protectContent, replyToMessageId, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -109,9 +118,10 @@ suspend fun TelegramBot.sendStaticLocation(
     chatId: ChatIdentifier,
     location: StaticLocation,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chatId, location.latitude, location.longitude, disableNotification, replyToMessageId, replyMarkup)
+) = sendLocation(chatId, location.latitude, location.longitude, disableNotification, protectContent, replyToMessageId, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -122,9 +132,10 @@ suspend fun TelegramBot.sendStaticLocation(
     latitude: Double,
     longitude: Double,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chat.id, latitude, longitude, disableNotification, replyToMessageId, replyMarkup)
+) = sendLocation(chat.id, latitude, longitude, disableNotification, protectContent, replyToMessageId, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -134,6 +145,7 @@ suspend fun TelegramBot.sendStaticLocation(
     chat: Chat,
     location: StaticLocation,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chat.id, location.latitude, location.longitude, disableNotification, replyToMessageId, replyMarkup)
+) = sendLocation(chat.id, location.latitude, location.longitude, disableNotification, protectContent, replyToMessageId, replyMarkup)

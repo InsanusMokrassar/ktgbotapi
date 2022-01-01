@@ -34,6 +34,8 @@ data class SendVenue(
     val googlePlaceType: GooglePlaceType? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)
@@ -49,6 +51,7 @@ data class SendVenue(
         chatId: ChatIdentifier,
         venue: Venue,
         disableNotification: Boolean = false,
+        protectContent: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
@@ -63,6 +66,7 @@ data class SendVenue(
         googlePlaceId = venue.googlePlaceId,
         googlePlaceType = venue.googlePlaceType,
         disableNotification = disableNotification,
+        protectContent = protectContent,
         replyToMessageId = replyToMessageId,
         allowSendingWithoutReply = allowSendingWithoutReply,
         replyMarkup = replyMarkup
@@ -78,6 +82,7 @@ data class SendVenue(
 fun Venue.toRequest(
     chatId: ChatIdentifier,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -85,6 +90,7 @@ fun Venue.toRequest(
     chatId,
     this,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup

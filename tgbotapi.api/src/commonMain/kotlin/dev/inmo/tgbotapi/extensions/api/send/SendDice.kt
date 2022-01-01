@@ -16,11 +16,12 @@ suspend fun TelegramBot.sendDice(
     chatId: ChatIdentifier,
     animationType: DiceAnimationType? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendDice(chatId, animationType, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+    SendDice(chatId, animationType, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 )
 
 /**
@@ -31,7 +32,8 @@ suspend fun TelegramBot.sendDice(
     chat: Chat,
     animationType: DiceAnimationType? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendDice(chat.id, animationType, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendDice(chat.id, animationType, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)

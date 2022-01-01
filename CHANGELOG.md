@@ -13,6 +13,8 @@
         * `MicroUtils`: `0.8.7` -> `0.9.0`
 * `Core`:
     * Add `SpoilerTextSource` (as part of `Telegram Bot API 5.6` update)
+    * Add support of `protect_content` as a field `protectContent` in all send message requests and parameter in all
+      functions related to that requests (as part of `Telegram Bot API 5.6` update)
 
 ## 0.37.4
 

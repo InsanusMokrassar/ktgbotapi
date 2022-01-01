@@ -23,6 +23,7 @@ suspend fun TelegramBot.sendVoice(
     parseMode: ParseMode? = null,
     duration: Long? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -34,6 +35,7 @@ suspend fun TelegramBot.sendVoice(
         parseMode,
         duration,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup
@@ -51,10 +53,11 @@ suspend fun TelegramBot.sendVoice(
     parseMode: ParseMode? = null,
     duration: Long? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, text, parseMode, duration, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(chat.id, voice, text, parseMode, duration, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -66,11 +69,12 @@ suspend fun TelegramBot.sendVoice(
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVoice(
-    chatId, voice.fileId, text, parseMode, voice.duration, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, voice.fileId, text, parseMode, voice.duration, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -83,10 +87,11 @@ suspend fun TelegramBot.sendVoice(
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, text, parseMode, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(chat.id, voice, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -99,6 +104,7 @@ suspend inline fun TelegramBot.sendVoice(
     entities: TextSourcesList,
     duration: Long? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -109,6 +115,7 @@ suspend inline fun TelegramBot.sendVoice(
         entities,
         duration,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup
@@ -125,10 +132,11 @@ suspend inline fun TelegramBot.sendVoice(
     entities: TextSourcesList,
     duration: Long? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, entities, duration, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(chat.id, voice, entities, duration, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -139,11 +147,12 @@ suspend inline fun TelegramBot.sendVoice(
     voice: VoiceFile,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVoice(
-    chatId, voice.fileId, entities, voice.duration, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, voice.fileId, entities, voice.duration, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -154,7 +163,8 @@ suspend inline fun TelegramBot.sendVoice(
     voice: VoiceFile,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, entities, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(chat.id, voice, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)

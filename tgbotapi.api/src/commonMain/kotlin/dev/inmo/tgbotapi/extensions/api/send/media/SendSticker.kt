@@ -17,11 +17,12 @@ suspend fun TelegramBot.sendSticker(
     chatId: ChatIdentifier,
     sticker: InputFile,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendSticker(chatId, sticker, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+    SendSticker(chatId, sticker, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 )
 
 /**
@@ -32,10 +33,11 @@ suspend fun TelegramBot.sendSticker(
     chat: Chat,
     sticker: InputFile,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat.id, sticker, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chat.id, sticker, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -45,10 +47,11 @@ suspend fun TelegramBot.sendSticker(
     chatId: ChatIdentifier,
     sticker: Sticker,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chatId, sticker.fileId, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chatId, sticker.fileId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -58,7 +61,8 @@ suspend fun TelegramBot.sendSticker(
     chat: Chat,
     sticker: Sticker,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat, sticker.fileId, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chat, sticker.fileId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)

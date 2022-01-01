@@ -16,12 +16,13 @@ suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     gameShortName: String,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendGame(
-        chatId, gameShortName, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+        chatId, gameShortName, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
     )
 )
 
@@ -33,11 +34,12 @@ suspend fun TelegramBot.sendGame(
     chat: Chat,
     gameShortName: String,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chat.id, gameShortName, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chat.id, gameShortName, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -48,11 +50,12 @@ suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     game: Game,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chatId, game.title, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, game.title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -63,9 +66,10 @@ suspend fun TelegramBot.sendGame(
     chat: Chat,
     game: Game,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chat.id, game.title, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chat.id, game.title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
