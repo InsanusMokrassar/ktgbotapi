@@ -49,7 +49,7 @@ internal fun String.boldMarkdown(): String = markdownDefault(markdownBoldControl
 
 internal fun String.italicMarkdown(): String = markdownDefault(markdownItalicControl)
 
-internal fun String.spoilerMarkdown(): String = markdownDefault(markdownSpoilerControl)
+internal fun String.spoilerMarkdown(): String = regularMarkdown()
 
 /**
  * Crutch for support of strikethrough in default markdown. Simply add modifier, but it will not look like correct
