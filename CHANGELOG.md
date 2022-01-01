@@ -1,7 +1,13 @@
 # TelegramBotAPI changelog
 
-
 ## 0.38.0
+
+_This update contains [Telegram Bot API 5.6](https://core.telegram.org/bots/api-changelog#december-30-2021) implementation_
+
+_This update contains migration onto Kotlin 1.6_
+
+_This update has changed constructors of all `CommonMessage` implementations_
+
 
 * `Common`:
     * `Version`:
@@ -15,6 +21,17 @@
     * Add `SpoilerTextSource` (as part of `Telegram Bot API 5.6` update)
     * Add support of `protect_content` as a field `protectContent` in all send message requests and parameter in all
       functions related to that requests (as part of `Telegram Bot API 5.6` update)
+    * **ALL IMPLEMENTERS OF `CommonMessage` HAS CHANGED THEIR CONSTRUCTOR: NOW THEY GET `hasProtectedContent` instead of
+      `forwardable` (inversed) field**
+        * `ChannelContentMessageImpl`
+        * `ChannelMediaGroupMessage`
+        * `CommonMediaGroupMessage`
+        * `GroupContentMessage` implementers
+            * `ConnectedFromChannelGroupContentMessageImpl`
+            * `UnconnectedFromChannelGroupContentMessageImpl`
+            * `AnonymousGroupContentMessageImpl`
+            * `CommonGroupContentMessageImpl`
+        * `PrivateContentMessageImpl`
 
 ## 0.37.4
 
