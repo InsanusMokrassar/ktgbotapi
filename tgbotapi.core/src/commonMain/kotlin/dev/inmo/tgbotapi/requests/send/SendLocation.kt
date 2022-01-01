@@ -19,6 +19,7 @@ fun SendLocation(
     latitude: Double,
     longitude: Double,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -31,6 +32,7 @@ fun SendLocation(
     null,
     null,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -41,10 +43,11 @@ fun SendStaticLocation(
     latitude: Double,
     longitude: Double,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = SendLocation(chatId, latitude, longitude, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = SendLocation(chatId, latitude, longitude, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 fun SendLiveLocation(
     chatId: ChatIdentifier,
@@ -55,6 +58,7 @@ fun SendLiveLocation(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -67,6 +71,7 @@ fun SendLiveLocation(
     heading,
     proximityAlertRadius,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -90,6 +95,8 @@ data class SendLocation internal constructor(
     override val proximityAlertRadius: Meters? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)

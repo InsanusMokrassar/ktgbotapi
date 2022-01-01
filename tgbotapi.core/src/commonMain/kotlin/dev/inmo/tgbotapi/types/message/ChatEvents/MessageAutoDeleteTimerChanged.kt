@@ -13,7 +13,7 @@ private const val seconds7Days: Seconds = seconds24Hours * 7
 data class MessageAutoDeleteTimerChanged(
     @SerialName(messageAutoDeleteTimeField)
     val newAutoDeleteTime: Seconds // TODO:: check that it is seconds
-) : ChannelEvent, GroupEvent, SupergroupEvent
+) : ChannelEvent, GroupEvent, SupergroupEvent, PrivateEvent
 
 val MessageAutoDeleteTimerChanged.isOff
     get() = newAutoDeleteTime == 0

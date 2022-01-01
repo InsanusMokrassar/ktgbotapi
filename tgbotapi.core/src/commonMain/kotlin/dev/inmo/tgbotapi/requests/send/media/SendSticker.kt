@@ -16,6 +16,7 @@ fun SendSticker(
     chatId: ChatIdentifier,
     sticker: InputFile,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -23,6 +24,7 @@ fun SendSticker(
     chatId,
     sticker as? FileId,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -44,6 +46,8 @@ data class SendStickerByFileId internal constructor(
     val sticker: FileId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)

@@ -91,6 +91,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -106,6 +107,7 @@ suspend fun TelegramBot.startLiveLocation(
             initHeading,
             initProximityAlertRadius,
             disableNotification,
+            protectContent,
             replyToMessageId,
             allowSendingWithoutReply,
             replyMarkup
@@ -134,6 +136,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -147,6 +150,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading,
     initProximityAlertRadius,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -165,6 +169,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -178,6 +183,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading,
     initProximityAlertRadius,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -196,6 +202,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -209,6 +216,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading,
     initProximityAlertRadius,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -228,6 +236,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = startLiveLocation(
@@ -240,6 +249,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading,
     initProximityAlertRadius,
     disableNotification,
+    protectContent,
     to.messageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -258,6 +268,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = startLiveLocation(
@@ -269,6 +280,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading,
     initProximityAlertRadius,
     disableNotification,
+    protectContent,
     to.messageId,
     allowSendingWithoutReply,
     replyMarkup

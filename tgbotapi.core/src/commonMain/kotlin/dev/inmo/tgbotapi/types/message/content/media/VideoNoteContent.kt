@@ -18,6 +18,7 @@ data class VideoNoteContent(
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
+        protectContent: Boolean,
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
@@ -28,6 +29,7 @@ data class VideoNoteContent(
         media.duration,
         media.width,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup

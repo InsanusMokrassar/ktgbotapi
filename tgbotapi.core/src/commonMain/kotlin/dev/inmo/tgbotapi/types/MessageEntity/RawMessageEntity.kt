@@ -49,6 +49,7 @@ internal fun RawMessageEntity.asTextSource(
         )
         "underline" -> UnderlineTextSource(sourceSubstring, subPartsWithRegulars)
         "strikethrough" -> StrikethroughTextSource(sourceSubstring, subPartsWithRegulars)
+        "spoiler" -> SpoilerTextSource(sourceSubstring, subPartsWithRegulars)
         else -> RegularTextSource(sourceSubstring)
     }
 }
@@ -158,6 +159,7 @@ internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEn
             is TextMentionTextSource -> RawMessageEntity("text_mention", offset, length, user = user)
             is UnderlineTextSource -> RawMessageEntity("underline", offset, length)
             is StrikethroughTextSource -> RawMessageEntity("strikethrough", offset, length)
+            is SpoilerTextSource -> RawMessageEntity("spoiler", offset, length)
             else -> null
         }
     ) + if (this is MultilevelTextSource) {

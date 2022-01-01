@@ -29,29 +29,35 @@ val SentMediaGroupUpdate.mediaGroupId: MediaGroupIdentifier
 fun List<CommonMessage<MediaGroupContent>>.createResend(
     chatId: ChatId,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyTo: MessageIdentifier? = null
 ) = SendMediaGroup<MediaGroupContent>(
     chatId,
     map { it.content.toMediaGroupMemberInputMedia() },
     disableNotification,
+    protectContent,
     replyTo
 )
 
 fun List<CommonMessage<MediaGroupContent>>.createResend(
     chat: Chat,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyTo: MessageIdentifier? = null
 ) = createResend(
     chat.id,
     disableNotification,
+    protectContent,
     replyTo
 )
 
 fun SentMediaGroupUpdate.createResend(
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyTo: MessageIdentifier? = null
 ) = data.createResend(
     chat,
     disableNotification,
+    protectContent,
     replyTo
 )

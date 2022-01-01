@@ -10,6 +10,7 @@ interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean = false,
+        protectContent: Boolean = false,
         replyToMessageId: MessageIdentifier? = null,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null

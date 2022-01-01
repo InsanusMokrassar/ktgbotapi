@@ -3,9 +3,9 @@ package dev.inmo.tgbotapi.types.message.abstracts
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 
 interface ContentMessage<T: MessageContent>: Message {
-    val forwardable: Boolean
+    val hasProtectedContent: Boolean
     val content: T
 
-    val hasProtectedContent: Boolean
-        get() = !forwardable
+    val forwardable: Boolean
+        get() = !hasProtectedContent
 }

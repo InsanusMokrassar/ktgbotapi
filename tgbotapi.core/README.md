@@ -2,20 +2,6 @@
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi.core)
 
-- [TelegramBotAPI Core](#telegrambotapi-core)
-    * [What is it?](#what-is-it-)
-    * [Compatibility](#compatibility)
-    * [How to implement library?](#how-to-implement-library-)
-        + [Maven](#maven)
-        + [Gradle](#gradle)
-    * [How to work with library?](#how-to-work-with-library-)
-        + [Types](#types)
-        + [Requests](#requests)
-        + [RequestsExecutor](#requestsexecutor)
-        + [Passport](#passport)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 ## What is it?
 
 Library for Object-Oriented and type-safe work with Telegram Bot API. Most part of some specific solves or unuseful

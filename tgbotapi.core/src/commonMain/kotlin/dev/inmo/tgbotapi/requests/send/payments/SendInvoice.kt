@@ -60,6 +60,8 @@ data class SendInvoice(
     override val priceDependOnShipAddress: Boolean = false,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)

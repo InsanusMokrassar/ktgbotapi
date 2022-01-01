@@ -11,7 +11,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @RiskFeature
 object InlineQueryResultSerializer : KSerializer<InlineQueryResult> {
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(InlineQueryResult::class.toString(), PolymorphicKind.OPEN)
     override fun serialize(encoder: Encoder, value: InlineQueryResult) {
         when(value) {

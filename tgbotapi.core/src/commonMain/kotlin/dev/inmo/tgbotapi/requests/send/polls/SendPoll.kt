@@ -47,6 +47,7 @@ fun SendPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -69,6 +70,7 @@ fun SendPoll(
 fun Poll.createRequest(
     chatId: ChatIdentifier,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -82,6 +84,7 @@ fun Poll.createRequest(
         allowMultipleAnswers,
         scheduledCloseInfo,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup
@@ -97,6 +100,7 @@ fun Poll.createRequest(
             textSources,
             scheduledCloseInfo,
             disableNotification,
+            protectContent,
             replyToMessageId,
             allowSendingWithoutReply,
             replyMarkup
@@ -110,6 +114,7 @@ fun Poll.createRequest(
         false,
         scheduledCloseInfo,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup
@@ -123,6 +128,7 @@ fun Poll.createRequest(
         false,
         scheduledCloseInfo,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup
@@ -187,6 +193,8 @@ data class SendRegularPoll(
     override val closeDate: LongSeconds?,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)
@@ -213,6 +221,7 @@ fun SendRegularPoll(
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -226,6 +235,7 @@ fun SendRegularPoll(
     (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
     (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -242,6 +252,7 @@ fun SendQuizPoll(
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -257,6 +268,7 @@ fun SendQuizPoll(
     null,
     closeInfo,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -272,6 +284,7 @@ fun SendQuizPoll(
     entities: List<TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -287,6 +300,7 @@ fun SendQuizPoll(
     entities.toRawMessageEntities(),
     closeInfo,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -304,6 +318,7 @@ internal fun SendQuizPoll(
     rawEntities: List<RawMessageEntity>? = null,
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -320,6 +335,7 @@ internal fun SendQuizPoll(
     (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
     (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -351,6 +367,8 @@ data class SendQuizPoll internal constructor(
     override val closeDate: LongSeconds? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)

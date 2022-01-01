@@ -24,6 +24,7 @@ data class AnimationContent(
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
+        protectContent: Boolean,
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
@@ -36,6 +37,7 @@ data class AnimationContent(
         media.width,
         media.height,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup

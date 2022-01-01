@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
 import dev.inmo.tgbotapi.CommonAbstracts.types.MessageAction
+import dev.inmo.tgbotapi.CommonAbstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.types.*
@@ -20,10 +21,11 @@ fun CopyMessage(
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = CopyMessage(fromChatId, toChatId, messageId, text, parseMode, null, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = CopyMessage(fromChatId, toChatId, messageId, text, parseMode, null, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 fun CopyMessage(
     fromChatId: ChatIdentifier,
@@ -31,6 +33,7 @@ fun CopyMessage(
     messageId: MessageIdentifier,
     entities: List<TextSource>,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
@@ -42,6 +45,7 @@ fun CopyMessage(
     null,
     entities.toRawMessageEntities(),
     disableNotification,
+    protectContent,
     replyToMessageId,
     allowSendingWithoutReply,
     replyMarkup
@@ -63,6 +67,8 @@ data class CopyMessage internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
     override val replyToMessageId: MessageIdentifier? = null,
     @SerialName(allowSendingWithoutReplyField)
@@ -72,7 +78,8 @@ data class CopyMessage internal constructor(
 ): SimpleRequest<MessageIdentifier>,
     ReplyingMarkupSendMessageRequest<MessageIdentifier>,
     MessageAction,
-    TextedOutput {
+    TextedOutput,
+    ProtectContent {
     override val chatId: ChatIdentifier
         get() = fromChatId
     override val textSources: List<TextSource>? by lazy {

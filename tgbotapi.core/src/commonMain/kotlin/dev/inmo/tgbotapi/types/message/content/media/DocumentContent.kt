@@ -25,6 +25,7 @@ data class DocumentContent(
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
+        protectContent: Boolean,
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
@@ -34,6 +35,7 @@ data class DocumentContent(
         media.thumb ?.fileId,
         textSources,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup

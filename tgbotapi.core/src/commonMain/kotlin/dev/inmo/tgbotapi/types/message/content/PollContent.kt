@@ -17,12 +17,14 @@ data class PollContent(
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
+        protectContent: Boolean,
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<PollContent>> = poll.createRequest(
         chatId,
         disableNotification,
+        protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
         replyMarkup

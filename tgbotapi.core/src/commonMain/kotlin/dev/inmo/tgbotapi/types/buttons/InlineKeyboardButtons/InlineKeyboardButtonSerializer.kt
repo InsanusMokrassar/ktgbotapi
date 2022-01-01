@@ -13,7 +13,7 @@ import kotlinx.serialization.json.JsonObject
 
 @RiskFeature
 object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(
         "dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton",
         PolymorphicKind.SEALED

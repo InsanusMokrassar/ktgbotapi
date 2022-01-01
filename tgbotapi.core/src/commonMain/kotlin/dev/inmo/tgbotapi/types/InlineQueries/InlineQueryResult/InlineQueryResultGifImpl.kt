@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
+import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGif
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.inlineQueryResultGifType
@@ -55,6 +56,37 @@ fun InlineQueryResultGifImpl(
     entities.toRawMessageEntities(),
     replyMarkup,
     inputMessageContent
+)
+
+fun InlineQueryResultGifImpl(
+    id: InlineQueryIdentifier,
+    gifFile: FileId,
+    thumbUrl: String,
+    thumbMimeType: MimeType? = null,
+    width: Int? = null,
+    height: Int? = null,
+    duration: Int? = null,
+    title: String? = null,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    replyMarkup: InlineKeyboardMarkup? = null,
+    inputMessageContent: InputMessageContent? = null
+) = InlineQueryResultGifImpl(id, gifFile.fileId, thumbUrl, thumbMimeType, width, height, duration, title, text, parseMode, replyMarkup, inputMessageContent)
+
+fun InlineQueryResultGifImpl(
+    id: InlineQueryIdentifier,
+    gifFile: FileId,
+    thumbUrl: String,
+    thumbMimeType: MimeType? = null,
+    width: Int? = null,
+    height: Int? = null,
+    duration: Int? = null,
+    title: String? = null,
+    entities: TextSourcesList,
+    replyMarkup: InlineKeyboardMarkup? = null,
+    inputMessageContent: InputMessageContent? = null
+) = InlineQueryResultGifImpl(
+    id, gifFile.fileId, thumbUrl, thumbMimeType, width, height, duration, title, entities, replyMarkup, inputMessageContent
 )
 
 @Serializable

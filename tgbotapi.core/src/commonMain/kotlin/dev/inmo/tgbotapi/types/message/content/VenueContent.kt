@@ -17,10 +17,11 @@ data class VenueContent(
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
+        protectContent: Boolean,
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VenueContent>> = SendVenue(
-        chatId, venue, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+        chatId, venue, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
     )
 }

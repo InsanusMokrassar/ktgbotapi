@@ -19,11 +19,12 @@ suspend fun TelegramBot.sendMessage(
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendTextMessage(chatId, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+    SendTextMessage(chatId, text, parseMode, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 )
 
 /**
@@ -36,11 +37,12 @@ suspend fun TelegramBot.sendTextMessage(
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendMessage(
-    chatId, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, text, parseMode, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -53,10 +55,11 @@ suspend fun TelegramBot.sendMessage(
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendMessage(chat.id, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendMessage(chat.id, text, parseMode, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -69,10 +72,11 @@ suspend fun TelegramBot.sendTextMessage(
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(chat.id, text, parseMode, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendTextMessage(chat.id, text, parseMode, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -83,11 +87,12 @@ suspend fun TelegramBot.sendMessage(
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendTextMessage(chatId, entities, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+    SendTextMessage(chatId, entities, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 )
 
 /**
@@ -99,11 +104,12 @@ suspend fun TelegramBot.sendTextMessage(
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendMessage(
-    chatId, entities, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, entities, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -115,10 +121,11 @@ suspend fun TelegramBot.sendMessage(
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendMessage(chat.id, entities, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendMessage(chat.id, entities, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -130,7 +137,8 @@ suspend fun TelegramBot.sendTextMessage(
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
+    protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(chat.id, entities, disableWebPagePreview, disableNotification, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendTextMessage(chat.id, entities, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)

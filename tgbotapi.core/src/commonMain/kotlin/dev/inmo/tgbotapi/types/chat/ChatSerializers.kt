@@ -55,7 +55,7 @@ object ChatTypeSerializer : KSerializer<ChatType> {
 
 @RiskFeature
 object PreviewChatSerializer : KSerializer<Chat> {
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
 
     override fun deserialize(decoder: Decoder): Chat {
@@ -88,7 +88,7 @@ object PreviewChatSerializer : KSerializer<Chat> {
 
 @RiskFeature
 object ExtendedChatSerializer : KSerializer<ExtendedChat> {
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
 
     override fun deserialize(decoder: Decoder): ExtendedChat {

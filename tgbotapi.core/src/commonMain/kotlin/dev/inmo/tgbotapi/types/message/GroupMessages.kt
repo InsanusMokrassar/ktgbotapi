@@ -15,31 +15,13 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
-    override val forwardable: Boolean,
+    override val hasProtectedContent: Boolean,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : ConnectedFromChannelGroupContentMessage<T> {
-    @Deprecated("Use the constructor with forwardable field")
-    constructor(
-        chat: GroupChat,
-        channel: ChannelChat,
-        messageId: MessageIdentifier,
-        date: DateTime,
-        forwardInfo: ForwardInfo?,
-        editDate: DateTime?,
-        replyTo: Message?,
-        replyMarkup: InlineKeyboardMarkup?,
-        content: T,
-        senderBot: CommonBot?,
-        authorSignature: AuthorSignature?
-    ) : this(chat, channel, messageId, date, forwardInfo, editDate, true, replyTo, replyMarkup, content, senderBot, authorSignature)
-}
-
-@Deprecated("Renamed", ReplaceWith("ConnectedFromChannelGroupContentMessageImpl", "dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl"))
-typealias FromChannelGroupContentMessageImpl<T> = ConnectedFromChannelGroupContentMessageImpl<T>
+) : ConnectedFromChannelGroupContentMessage<T>
 
 data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
     override val chat: GroupChat,
@@ -48,7 +30,7 @@ data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
-    override val forwardable: Boolean,
+    override val hasProtectedContent: Boolean,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
@@ -62,27 +44,13 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
-    override val forwardable: Boolean,
+    override val hasProtectedContent: Boolean,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?
-) : AnonymousGroupContentMessage<T> {
-    @Deprecated("Use the constructor with forwardable field")
-    constructor(
-        chat: GroupChat,
-        messageId: MessageIdentifier,
-        date: DateTime,
-        forwardInfo: ForwardInfo?,
-        editDate: DateTime?,
-        replyTo: Message?,
-        replyMarkup: InlineKeyboardMarkup?,
-        content: T,
-        senderBot: CommonBot?,
-        authorSignature: AuthorSignature?
-    ) : this(chat, messageId, date, forwardInfo, editDate, true, replyTo, replyMarkup, content, senderBot, authorSignature)
-}
+) : AnonymousGroupContentMessage<T>
 
 data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
@@ -91,23 +59,9 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
-    override val forwardable: Boolean,
+    override val hasProtectedContent: Boolean,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?
-) : CommonGroupContentMessage<T> {
-    @Deprecated("Use the constructor with forwardable field")
-    constructor(
-        chat: GroupChat,
-        messageId: MessageIdentifier,
-        from: User,
-        date: DateTime,
-        forwardInfo: ForwardInfo?,
-        editDate: DateTime?,
-        replyTo: Message?,
-        replyMarkup: InlineKeyboardMarkup?,
-        content: T,
-        senderBot: CommonBot?
-    ) : this(chat, messageId, from, date, forwardInfo, editDate, true, replyTo, replyMarkup, content, senderBot)
-}
+) : CommonGroupContentMessage<T>

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests
 
 import dev.inmo.tgbotapi.CommonAbstracts.types.MessageAction
+import dev.inmo.tgbotapi.CommonAbstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
@@ -18,8 +19,10 @@ data class ForwardMessage(
     @SerialName(messageIdField)
     override val messageId: MessageIdentifier,
     @SerialName(disableNotificationField)
-    val disableNotification: Boolean = false
-): SimpleRequest<PossiblyForwardedMessage>, MessageAction {
+    val disableNotification: Boolean = false,
+    @SerialName(protectContentField)
+    override val protectContent: Boolean = false
+): SimpleRequest<PossiblyForwardedMessage>, MessageAction, ProtectContent {
     override val chatId: ChatIdentifier
         get() = fromChatId
 

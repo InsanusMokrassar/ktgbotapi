@@ -9,7 +9,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @RiskFeature
 object KeyboardMarkupSerializer : KSerializer<KeyboardMarkup> {
-    @InternalSerializationApi
+    @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(
         KeyboardMarkup::class.toString(),
         PolymorphicKind.OPEN

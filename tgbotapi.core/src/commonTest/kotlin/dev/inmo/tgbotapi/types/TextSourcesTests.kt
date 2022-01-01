@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types
 import dev.inmo.tgbotapi.TestsJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.formatting.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourceSerializer
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.builtins.ListSerializer
 import kotlin.test.Test
@@ -15,6 +16,11 @@ class TextSourcesTests {
             bold {
                 italic("It")
                 link("is example", "https://is.example")
+            }
+            spoiler {
+                regular("and")
+                italic("that")
+                link("is spoiler", "https://is.example")
             }
             underline("of")
             italic(
@@ -32,6 +38,6 @@ class TextSourcesTests {
         )
         assertEquals(testList, deserialized)
         assertEquals(testList.makeString(), deserialized.makeString())
-        assertEquals("It is example of complex text", testList.makeString())
+        assertEquals("It is example and that is spoiler of complex text", testList.makeString())
     }
 }

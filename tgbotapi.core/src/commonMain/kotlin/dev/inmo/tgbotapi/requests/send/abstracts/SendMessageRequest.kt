@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests.send.abstracts
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.DisableNotification
-import dev.inmo.tgbotapi.CommonAbstracts.types.ReplyMessageId
+import dev.inmo.tgbotapi.CommonAbstracts.types.*
 
-interface SendMessageRequest<T: Any> : SendChatMessageRequest<T>, ReplyMessageId, DisableNotification
+interface SendMessageRequest<T: Any> : SendChatMessageRequest<T>, ReplyMessageId, DisableNotification, ProtectContent
