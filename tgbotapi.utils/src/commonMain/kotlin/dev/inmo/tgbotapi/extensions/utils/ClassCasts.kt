@@ -3365,3 +3365,21 @@ inline fun MessageContent.asTextedInput(): TextedInput? = this as? TextedInput
 
 @PreviewFeature
 inline fun MessageContent.requireTextedInput(): TextedInput = this as TextedInput
+
+@PreviewFeature
+inline fun <T> ScheduledCloseInfo.whenExactScheduledCloseInfo(block: (ExactScheduledCloseInfo) -> T) = asExactScheduledCloseInfo() ?.let(block)
+
+@PreviewFeature
+inline fun ScheduledCloseInfo.asExactScheduledCloseInfo(): ExactScheduledCloseInfo? = this as? ExactScheduledCloseInfo
+
+@PreviewFeature
+inline fun ScheduledCloseInfo.requireExactScheduledCloseInfo(): ExactScheduledCloseInfo = this as ExactScheduledCloseInfo
+
+@PreviewFeature
+inline fun <T> ScheduledCloseInfo.whenApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T) = asApproximateScheduledCloseInfo() ?.let(block)
+
+@PreviewFeature
+inline fun ScheduledCloseInfo.asApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo? = this as? ApproximateScheduledCloseInfo
+
+@PreviewFeature
+inline fun ScheduledCloseInfo.requireApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo = this as ApproximateScheduledCloseInfo

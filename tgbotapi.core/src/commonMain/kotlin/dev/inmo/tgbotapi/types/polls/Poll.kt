@@ -54,7 +54,9 @@ sealed interface Poll {
 }
 
 @Serializable(PollSerializer::class)
-sealed interface MultipleAnswersPoll : Poll
+sealed interface MultipleAnswersPoll : Poll {
+    val allowMultipleAnswers: Boolean
+}
 
 @Serializable
 private class RawPoll(
@@ -122,7 +124,7 @@ data class RegularPoll(
     override val votesCount: Int,
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
-    val allowMultipleAnswers: Boolean = false,
+    override val allowMultipleAnswers: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
 ) : MultipleAnswersPoll
 

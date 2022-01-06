@@ -22,8 +22,6 @@ import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.venue.Venue
 import dev.inmo.tgbotapi.utils.RiskFeature
 
-private const val RawFieldsUsageWarning = "This API is raw and experimental. So, it is possible that behaviour of this API will be changed in near updates"
-
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.from: User?
     get() = asFromUser() ?.from

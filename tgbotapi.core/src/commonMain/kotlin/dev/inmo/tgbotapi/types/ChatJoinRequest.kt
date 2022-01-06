@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types
 
+import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
 import kotlinx.serialization.SerialName
@@ -20,4 +21,7 @@ data class ChatJoinRequest(
     val inviteLink: ChatInviteLink,
     @SerialName(bioField)
     val bio: String? = null
-) : FromUser
+) : FromUser {
+    val dateTime: DateTime
+        get() = date.asDate
+}
