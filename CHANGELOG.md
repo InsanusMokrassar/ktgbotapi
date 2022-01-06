@@ -9,7 +9,12 @@
         * `ForwardFromSupergroupInfo` now extends `ForwardFromPublicChatInfo`
     * New type of events: `UserLoggedIn`
 * `Utils`:
-    * New extensions for `Message` which represents raw fields (as from raw message)
+    * New extensions properties (raw fields as in original API) for several types have been added:
+        * `Message`
+        * `CallbackQuery`
+        * `ChosenInlineResult`
+        * `InlineQuery`
+        * `Poll`
 
 ## 0.38.0
 
