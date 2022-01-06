@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.38.1
+
 ## 0.38.0
 
 _This update contains [Telegram Bot API 5.6](https://core.telegram.org/bots/api-changelog#december-30-2021) implementation_
