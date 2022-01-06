@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions.raw
 
-import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList

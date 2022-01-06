@@ -8,6 +8,8 @@
         * `ForwardFromChannelInfo` now extends `ForwardFromPublicChatInfo`
         * `ForwardFromSupergroupInfo` now extends `ForwardFromPublicChatInfo`
     * New type of events: `UserLoggedIn`
+* `Utils`:
+    * New extensions for `Message` which represents raw fields (as from raw message)
 
 ## 0.38.0
 
