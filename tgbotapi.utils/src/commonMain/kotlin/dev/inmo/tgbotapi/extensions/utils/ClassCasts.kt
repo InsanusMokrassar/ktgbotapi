@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.ChatMember.*
 import dev.inmo.tgbotapi.types.ChatMember.abstracts.*
 import dev.inmo.tgbotapi.types.ChatMember.abstracts.MemberChatMember
+import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.*
@@ -3383,3 +3384,21 @@ inline fun ScheduledCloseInfo.asApproximateScheduledCloseInfo(): ApproximateSche
 
 @PreviewFeature
 inline fun ScheduledCloseInfo.requireApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo = this as ApproximateScheduledCloseInfo
+
+@PreviewFeature
+inline fun <T> ChosenInlineResult.whenLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T) = asLocationChosenInlineResult() ?.let(block)
+
+@PreviewFeature
+inline fun ChosenInlineResult.asLocationChosenInlineResult(): LocationChosenInlineResult? = this as? LocationChosenInlineResult
+
+@PreviewFeature
+inline fun ChosenInlineResult.requireLocationChosenInlineResult(): LocationChosenInlineResult = this as LocationChosenInlineResult
+
+@PreviewFeature
+inline fun <T> ChosenInlineResult.whenBaseChosenInlineResult(block: (BaseChosenInlineResult) -> T) = asBaseChosenInlineResult() ?.let(block)
+
+@PreviewFeature
+inline fun ChosenInlineResult.asBaseChosenInlineResult(): BaseChosenInlineResult? = this as? BaseChosenInlineResult
+
+@PreviewFeature
+inline fun ChosenInlineResult.requireBaseChosenInlineResult(): BaseChosenInlineResult = this as BaseChosenInlineResult
