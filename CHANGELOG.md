@@ -9,7 +9,7 @@
         * `ForwardFromSupergroupInfo` now extends `ForwardFromPublicChatInfo`
     * New type of events: `UserLoggedIn`
 * `Utils`:
-    * New extensions properties (raw fields as in original API) for several types have been added:
+    * ([#511](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/511)) New extensions properties (raw fields as in original API) for several types have been added:
         * `Message`
         * `CallbackQuery`
         * `ChosenInlineResult`
