@@ -42,6 +42,7 @@ import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.passport.*
 import dev.inmo.tgbotapi.types.passport.decrypted.*
 import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.*
@@ -3065,6 +3066,15 @@ inline fun ChatEvent.asPinnedMessage(): PinnedMessage? = this as? PinnedMessage
 inline fun ChatEvent.requirePinnedMessage(): PinnedMessage = this as PinnedMessage
 
 @PreviewFeature
+inline fun <T> ChatEvent.whenSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T) = asSuccessfulPaymentEvent() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asSuccessfulPaymentEvent(): SuccessfulPaymentEvent? = this as? SuccessfulPaymentEvent
+
+@PreviewFeature
+inline fun ChatEvent.requireSuccessfulPaymentEvent(): SuccessfulPaymentEvent = this as SuccessfulPaymentEvent
+
+@PreviewFeature
 inline fun <T> ChatEvent.whenProximityAlertTriggered(block: (ProximityAlertTriggered) -> T) = asProximityAlertTriggered() ?.let(block)
 
 @PreviewFeature
@@ -3175,6 +3185,24 @@ inline fun ChatEvent.asVoiceChatStarted(): VoiceChatStarted? = this as? VoiceCha
 inline fun ChatEvent.requireVoiceChatStarted(): VoiceChatStarted = this as VoiceChatStarted
 
 @PreviewFeature
+inline fun <T> ChatEvent.whenVoiceChatScheduled(block: (VoiceChatScheduled) -> T) = asVoiceChatScheduled() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asVoiceChatScheduled(): VoiceChatScheduled? = this as? VoiceChatScheduled
+
+@PreviewFeature
+inline fun ChatEvent.requireVoiceChatScheduled(): VoiceChatScheduled = this as VoiceChatScheduled
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenUserLoggedIn(block: (UserLoggedIn) -> T) = asUserLoggedIn() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asUserLoggedIn(): UserLoggedIn? = this as? UserLoggedIn
+
+@PreviewFeature
+inline fun ChatEvent.requireUserLoggedIn(): UserLoggedIn = this as UserLoggedIn
+
+@PreviewFeature
 inline fun <T> CommonSendInvoiceData.whenSendInvoice(block: (SendInvoice) -> T) = asSendInvoice() ?.let(block)
 
 @PreviewFeature
@@ -3283,3 +3311,57 @@ inline fun ChatInviteLink.asChatInviteLinkUnlimited(): ChatInviteLinkUnlimited? 
 
 @PreviewFeature
 inline fun ChatInviteLink.requireChatInviteLinkUnlimited(): ChatInviteLinkUnlimited = this as ChatInviteLinkUnlimited
+
+@PreviewFeature
+inline fun <T> ForwardInfo.whenAnonymousForwardInfo(block: (AnonymousForwardInfo) -> T) = asAnonymousForwardInfo() ?.let(block)
+
+@PreviewFeature
+inline fun ForwardInfo.asAnonymousForwardInfo(): AnonymousForwardInfo? = this as? AnonymousForwardInfo
+
+@PreviewFeature
+inline fun ForwardInfo.requireAnonymousForwardInfo(): AnonymousForwardInfo = this as AnonymousForwardInfo
+
+@PreviewFeature
+inline fun <T> ForwardInfo.whenUserForwardInfo(block: (UserForwardInfo) -> T) = asUserForwardInfo() ?.let(block)
+
+@PreviewFeature
+inline fun ForwardInfo.asUserForwardInfo(): UserForwardInfo? = this as? UserForwardInfo
+
+@PreviewFeature
+inline fun ForwardInfo.requireUserForwardInfo(): UserForwardInfo = this as UserForwardInfo
+
+@PreviewFeature
+inline fun <T> ForwardInfo.whenForwardFromPublicChatInfo(block: (ForwardFromPublicChatInfo) -> T) = asForwardFromPublicChatInfo() ?.let(block)
+
+@PreviewFeature
+inline fun ForwardInfo.asForwardFromPublicChatInfo(): ForwardFromPublicChatInfo? = this as? ForwardFromPublicChatInfo
+
+@PreviewFeature
+inline fun ForwardInfo.requireForwardFromPublicChatInfo(): ForwardFromPublicChatInfo = this as ForwardFromPublicChatInfo
+
+@PreviewFeature
+inline fun <T> ForwardInfo.whenForwardFromChannelInfo(block: (ForwardFromChannelInfo) -> T) = asForwardFromChannelInfo() ?.let(block)
+
+@PreviewFeature
+inline fun ForwardInfo.asForwardFromChannelInfo(): ForwardFromChannelInfo? = this as? ForwardFromChannelInfo
+
+@PreviewFeature
+inline fun ForwardInfo.requireForwardFromChannelInfo(): ForwardFromChannelInfo = this as ForwardFromChannelInfo
+
+@PreviewFeature
+inline fun <T> ForwardInfo.whenForwardFromSupergroupInfo(block: (ForwardFromSupergroupInfo) -> T) = asForwardFromSupergroupInfo() ?.let(block)
+
+@PreviewFeature
+inline fun ForwardInfo.asForwardFromSupergroupInfo(): ForwardFromSupergroupInfo? = this as? ForwardFromSupergroupInfo
+
+@PreviewFeature
+inline fun ForwardInfo.requireForwardFromSupergroupInfo(): ForwardFromSupergroupInfo = this as ForwardFromSupergroupInfo
+
+@PreviewFeature
+inline fun <T> MessageContent.whenTextedInput(block: (TextedInput) -> T) = asTextedInput() ?.let(block)
+
+@PreviewFeature
+inline fun MessageContent.asTextedInput(): TextedInput? = this as? TextedInput
+
+@PreviewFeature
+inline fun MessageContent.requireTextedInput(): TextedInput = this as TextedInput

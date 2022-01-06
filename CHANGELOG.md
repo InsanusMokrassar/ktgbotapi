@@ -4,6 +4,10 @@
 
 * `Core`:
     * `MessageCallbackQuery` (and all implementers as well) has changed the type of `message`: now it is `ContentMessage<MessageContent>` instead of `Message`
+    * New type `ForwardFromPublicChatInfo` as extender of `ForwardInfo`:
+        * `ForwardFromChannelInfo` now extends `ForwardFromPublicChatInfo`
+        * `ForwardFromSupergroupInfo` now extends `ForwardFromPublicChatInfo`
+    * New type of events: `UserLoggedIn`
 
 ## 0.38.0
 

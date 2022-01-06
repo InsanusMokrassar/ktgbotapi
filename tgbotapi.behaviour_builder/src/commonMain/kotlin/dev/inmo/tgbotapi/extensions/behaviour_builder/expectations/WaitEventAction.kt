@@ -234,3 +234,10 @@ suspend fun BehaviourContext.waitSuccessfulPaymentEvents(
     filter: SimpleFilter<ChatEventMessage<SuccessfulPaymentEvent>>? = null,
     mapper: EventMessageToEventMapper<SuccessfulPaymentEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitUserLoggedInEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<ChatEventMessage<UserLoggedIn>>? = null,
+    mapper: EventMessageToEventMapper<UserLoggedIn>? = null
+) = waitEvents(count, initRequest, errorFactory, filter, mapper)
