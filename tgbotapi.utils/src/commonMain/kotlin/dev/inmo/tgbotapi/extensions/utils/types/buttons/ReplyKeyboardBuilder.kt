@@ -1,10 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
 import dev.inmo.tgbotapi.types.buttons.*
-import dev.inmo.tgbotapi.types.inputFieldPlaceholderField
 import dev.inmo.tgbotapi.utils.MatrixBuilder
 import dev.inmo.tgbotapi.utils.RowBuilder
-import kotlinx.serialization.SerialName
 
 /**
  * Core DSL part of Keyboard DSL. Can accept only [KeyboardButton] and returns ready to use

@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.ChatMember.*
 import dev.inmo.tgbotapi.types.ChatMember.abstracts.*
-import dev.inmo.tgbotapi.types.ChatMember.abstracts.MemberChatMember
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
