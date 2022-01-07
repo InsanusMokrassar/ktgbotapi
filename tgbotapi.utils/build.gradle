@@ -43,7 +43,6 @@ kotlin {
             dependencies {
                 implementation kotlin('stdlib')
                 api project(":tgbotapi.core")
-                api "dev.inmo:micro_utils.crypto:$micro_utils_version"
             }
         }
 
