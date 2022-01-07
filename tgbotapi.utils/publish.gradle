@@ -1,5 +1,4 @@
 apply plugin: 'maven-publish'
-apply plugin: 'signing'
 
 task javadocsJar(type: Jar) {
     classifier = 'javadoc'
@@ -62,8 +61,19 @@ publishing {
         }
     }
 }
-
-signing {
-    useGpgCmd()
-    sign publishing.publications
+    
+if (project.hasProperty("signing.gnupg.keyName")) {
+    apply plugin: 'signing'
+    
+    signing {
+        useGpgCmd()
+    
+        sign publishing.publications
+    }
+    
+    task signAll {
+        tasks.withType(Sign).forEach {
+            dependsOn(it)
+        }
+    }
 }

@@ -201,6 +201,7 @@ internal data class RawMessage(
             pinned_message != null -> PinnedMessage(pinned_message.asMessage)
             proximity_alert_triggered != null -> proximity_alert_triggered
             successful_payment != null -> SuccessfulPaymentEvent(successful_payment)
+            connected_website != null -> UserLoggedIn(connected_website)
             else -> null
         }
     }

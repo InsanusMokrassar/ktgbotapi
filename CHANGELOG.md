@@ -1,5 +1,21 @@
 # TelegramBotAPI changelog
 
+## 0.38.1
+
+* `Core`:
+    * `MessageCallbackQuery` (and all implementers as well) has changed the type of `message`: now it is `ContentMessage<MessageContent>` instead of `Message`
+    * New type `ForwardFromPublicChatInfo` as extender of `ForwardInfo`:
+        * `ForwardFromChannelInfo` now extends `ForwardFromPublicChatInfo`
+        * `ForwardFromSupergroupInfo` now extends `ForwardFromPublicChatInfo`
+    * New type of events: `UserLoggedIn`
+* `Utils`:
+    * ([#511](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/511)) New extensions properties (raw fields as in original API) for several types have been added:
+        * `Message`
+        * `CallbackQuery`
+        * `ChosenInlineResult`
+        * `InlineQuery`
+        * `Poll`
+
 ## 0.38.0
 
 _This update contains [Telegram Bot API 5.6](https://core.telegram.org/bots/api-changelog#december-30-2021) implementation_

@@ -2,8 +2,7 @@ package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
-import dev.inmo.tgbotapi.types.chat.abstracts.SupergroupChat
+import dev.inmo.tgbotapi.types.chat.abstracts.*
 
 sealed class ForwardInfo {
     abstract val dateOfOriginal: TelegramDate
@@ -19,14 +18,24 @@ data class UserForwardInfo(
     override val from: User
 ) : ForwardInfo(), FromUser
 
+sealed class ForwardFromPublicChatInfo : ForwardInfo() {
+    abstract val chat: PublicChat
+}
+
 data class ForwardFromChannelInfo(
     override val dateOfOriginal: TelegramDate,
     val messageId: MessageIdentifier,
     val channelChat: ChannelChat,
     val signature: String? = null
-) : ForwardInfo()
+) : ForwardFromPublicChatInfo() {
+    override val chat: PublicChat
+        get() = channelChat
+}
 
 data class ForwardFromSupergroupInfo(
     override val dateOfOriginal: TelegramDate,
     val group: SupergroupChat
-) : ForwardInfo()
+) : ForwardFromPublicChatInfo() {
+    override val chat: PublicChat
+        get() = group
+}
