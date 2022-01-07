@@ -35,3 +35,9 @@ val Poll.open_period: Seconds?
 @RiskFeature(RawFieldsUsageWarning)
 val Poll.close_date: TelegramDate?
     get() = scheduledCloseInfo ?.asExactScheduledCloseInfo() ?.closeDateTime ?.toTelegramDate()
+@RiskFeature(RawFieldsUsageWarning)
+val Poll.is_closed: Boolean
+    get() = isClosed
+@RiskFeature(RawFieldsUsageWarning)
+val Poll.is_anonymous: Boolean
+    get() = isAnonymous

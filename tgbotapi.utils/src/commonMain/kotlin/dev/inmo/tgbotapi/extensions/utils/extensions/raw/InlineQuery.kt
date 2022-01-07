@@ -8,3 +8,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 @RiskFeature(RawFieldsUsageWarning)
 val InlineQuery.location: Location?
     get() = asLocationInlineQuery() ?.location
+
+@RiskFeature(RawFieldsUsageWarning)
+val InlineQuery.chat_type: String?
+    get() = chatType ?.stringified
