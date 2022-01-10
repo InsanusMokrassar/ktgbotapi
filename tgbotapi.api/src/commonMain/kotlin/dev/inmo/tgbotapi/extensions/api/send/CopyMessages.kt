@@ -22,7 +22,7 @@ import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
  */
 suspend inline fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
-    messages: List<MediaGroupContent>,
+    messages: List<MediaGroupMessage<MediaGroupContent>>,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
@@ -30,7 +30,7 @@ suspend inline fun TelegramBot.copyMessages(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
 ): List<MediaGroupMessage<MediaGroupContent>> {
-    val first = messages.first().toMediaGroupMemberInputMedia().let {
+    val first = messages.first().content.toMediaGroupMemberInputMedia().let {
         if (text != null) {
             when (it) {
                 is InputMediaAudio -> it.copy(text = text, parseMode = parseMode)
@@ -46,7 +46,7 @@ suspend inline fun TelegramBot.copyMessages(
     return sendMediaGroup(
         toChatId,
         listOf(first) + messages.drop(1).map {
-            it.toMediaGroupMemberInputMedia()
+            it.content.toMediaGroupMemberInputMedia()
         },
         disableNotification,
         protectContent,
@@ -54,21 +54,6 @@ suspend inline fun TelegramBot.copyMessages(
         allowSendingWithoutReply
     )
 }
-
-/**
- * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
- * will be copied as they are
- */
-suspend inline fun TelegramBot.copyMessages(
-    toChatId: ChatIdentifier,
-    messages: List<MediaGroupMessage<MediaGroupContent>>,
-    text: String? = null,
-    parseMode: ParseMode? = null,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    allowSendingWithoutReply: Boolean? = null
-) = copyMessages(toChatId, messages.map { it.content }, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
@@ -121,14 +106,14 @@ suspend inline fun TelegramBot.copyMessages(
  */
 suspend inline fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
-    messages: List<MediaGroupContent>,
+    messages: List<MediaGroupMessage<MediaGroupContent>>,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
 ): List<MediaGroupMessage<MediaGroupContent>> {
-    val first = messages.first().toMediaGroupMemberInputMedia().let {
+    val first = messages.first().content.toMediaGroupMemberInputMedia().let {
         when (it) {
             is InputMediaAudio -> InputMediaAudio(it.file, entities, it.duration, it.performer, it.title, it.thumb)
             is InputMediaDocument -> InputMediaDocument(it.file, entities, it.thumb, it.disableContentTypeDetection)
@@ -140,7 +125,7 @@ suspend inline fun TelegramBot.copyMessages(
     return sendMediaGroup(
         toChatId,
         listOf(first) + messages.drop(1).map {
-            it.toMediaGroupMemberInputMedia()
+            it.content.toMediaGroupMemberInputMedia()
         },
         disableNotification,
         protectContent,
@@ -148,20 +133,6 @@ suspend inline fun TelegramBot.copyMessages(
         allowSendingWithoutReply
     )
 }
-
-/**
- * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
- * will be copied as they are
- */
-suspend inline fun TelegramBot.copyMessages(
-    toChatId: ChatIdentifier,
-    messages: List<MediaGroupMessage<MediaGroupContent>>,
-    entities: TextSourcesList,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
-    allowSendingWithoutReply: Boolean? = null
-) = copyMessages(toChatId, messages.map { it.content }, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
