@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 0.38.2
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.0` -> `0.9.1`
+* `API`
+    * New extensions `TelegramBot#copyMessages` for media groups
+
 ## 0.38.1
 
 * `Core`:
