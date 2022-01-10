@@ -2,6 +2,9 @@
 
 ## 0.38.2
 
+* `API`
+    * New extensions `TelegramBot#copyMessages` for media groups
+
 ## 0.38.1
 
 * `Core`:
