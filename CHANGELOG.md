@@ -2,6 +2,9 @@
 
 ## 0.38.3
 
+* `API`
+    * New extensions `TelegramBot#send*` for media groups with contents
+
 ## 0.38.2
 
 * `Common`:
