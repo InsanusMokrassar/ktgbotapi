@@ -7,7 +7,7 @@ const savedDarkMode = storage ? JSON.parse(storage) : false
 if(savedDarkMode === true){
     document.getElementsByTagName("html")[0].classList.add("theme-dark")
 }</script>
-<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
   <body>
     <div class="navigation-wrapper" id="navigation-wrapper">
       <div id="leftToggler"><span class="icon-toggler"></span></div>
@@ -23,7 +23,7 @@ if(savedDarkMode === true){
       <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
-      <div id="main"><script type="text/javascript" src="../../../scripts/main.js"></script>
+      <div id="main">
         <div class="main-content" id="content" pageIds="docs::dev.inmo.tgbotapi.requests.send.payments/SendInvoice///PointingToDeclaration//-1982836883">
           <div class="breadcrumbs"><a href="../../../index.html">docs</a>/<a href="../index.html">dev.inmo.tgbotapi.requests.send.payments</a>/<a href="index.html">SendInvoice</a></div>
           <div class="cover ">
@@ -39,13 +39,15 @@ if(savedDarkMode === true){
               <div data-togglable="Parameters">
                 <div class="platform-hinted WithExtraAttributes with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Parameters">
                   <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><span>provider</span><wbr></wbr><span><span>Data</span></span></span></div><div><div class="title"><div data-togglable="Parameters"><ul><li><p class="paragraph">JSON-ENCODED FIELD</p></li></ul></div></div></div></div></div></div></div></div>                </div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>provider</span><wbr></wbr><span><span>Data</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><ul><li><p class="paragraph">JSON-ENCODED FIELD</p></li></ul></div></div></div></div></div></div></div></div>                </div>
               </div>
               <h2 class="tabbedcontent">Constructors</h2>
               <div class="table" data-togglable="Constructors"><a data-name="-28627492%2FConstructors%2F-1982836883" anchor-label="SendInvoice" id="-28627492%2FConstructors%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue TabbedContent">
-                    <div class=""><span class="inline-flex"><a href="-send-invoice.html">SendInvoice</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-28627492%2FConstructors%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-send-invoice.html"><span>Send</span><wbr></wbr><span><span>Invoice</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-28627492%2FConstructors%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -62,7 +64,9 @@ if(savedDarkMode === true){
               <div class="table" data-togglable="Functions"><a data-name="-1062434298%2FFunctions%2F-1982836883" anchor-label="method" id="-1062434298%2FFunctions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="method.html"><span><span>method</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1062434298%2FFunctions%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="method.html"><span><span>method</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1062434298%2FFunctions%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -77,7 +81,9 @@ if(savedDarkMode === true){
 <a data-name="1119962920%2FFunctions%2F-1982836883" anchor-label="setPhoto" id="1119962920%2FFunctions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="set-photo.html"><span>set</span><wbr></wbr><span><span>Photo</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1119962920%2FFunctions%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="set-photo.html"><span>set</span><wbr></wbr><span><span>Photo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1119962920%2FFunctions%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -92,7 +98,9 @@ if(savedDarkMode === true){
 <a data-name="2120601182%2FFunctions%2F-1982836883" anchor-label="unsetPhoto" id="2120601182%2FFunctions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="unset-photo.html"><span>unset</span><wbr></wbr><span><span>Photo</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2120601182%2FFunctions%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="unset-photo.html"><span>unset</span><wbr></wbr><span><span>Photo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2120601182%2FFunctions%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -109,7 +117,9 @@ if(savedDarkMode === true){
               <div class="table" data-togglable="Properties"><a data-name="-1575291084%2FProperties%2F-1982836883" anchor-label="allowSendingWithoutReply" id="-1575291084%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="allow-sending-without-reply.html">allowSendingWithoutReply</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1575291084%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="allow-sending-without-reply.html">allowSendingWithoutReply</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1575291084%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -124,7 +134,9 @@ if(savedDarkMode === true){
 <a data-name="-1469013868%2FProperties%2F-1982836883" anchor-label="chatId" id="-1469013868%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="chat-id.html">chatId</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1469013868%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="chat-id.html">chatId</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1469013868%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -139,7 +151,9 @@ if(savedDarkMode === true){
 <a data-name="-1448278442%2FProperties%2F-1982836883" anchor-label="currency" id="-1448278442%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="currency.html">currency</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1448278442%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="currency.html">currency</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1448278442%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -154,7 +168,9 @@ if(savedDarkMode === true){
 <a data-name="-968613513%2FProperties%2F-1982836883" anchor-label="description" id="-968613513%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="description.html">description</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-968613513%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="description.html">description</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-968613513%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -169,7 +185,9 @@ if(savedDarkMode === true){
 <a data-name="241450848%2FProperties%2F-1982836883" anchor-label="disableNotification" id="241450848%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="disable-notification.html">disableNotification</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="241450848%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="disable-notification.html">disableNotification</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="241450848%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -184,7 +202,9 @@ if(savedDarkMode === true){
 <a data-name="-1127642280%2FProperties%2F-1982836883" anchor-label="maxTipAmount" id="-1127642280%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="max-tip-amount.html">maxTipAmount</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1127642280%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="max-tip-amount.html">maxTipAmount</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1127642280%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -199,7 +219,9 @@ if(savedDarkMode === true){
 <a data-name="-669165787%2FProperties%2F-1982836883" anchor-label="payload" id="-669165787%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="payload.html">payload</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-669165787%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="payload.html">payload</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-669165787%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -214,7 +236,9 @@ if(savedDarkMode === true){
 <a data-name="1416306202%2FProperties%2F-1982836883" anchor-label="photoHeight" id="1416306202%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="photo-height.html">photoHeight</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1416306202%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="photo-height.html">photoHeight</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1416306202%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -229,7 +253,9 @@ if(savedDarkMode === true){
 <a data-name="-1596034688%2FProperties%2F-1982836883" anchor-label="photoSize" id="-1596034688%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="photo-size.html">photoSize</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1596034688%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="photo-size.html">photoSize</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1596034688%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -244,7 +270,9 @@ if(savedDarkMode === true){
 <a data-name="1111050762%2FProperties%2F-1982836883" anchor-label="photoUrl" id="1111050762%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="photo-url.html">photoUrl</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1111050762%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="photo-url.html">photoUrl</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1111050762%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -259,7 +287,9 @@ if(savedDarkMode === true){
 <a data-name="1886411411%2FProperties%2F-1982836883" anchor-label="photoWidth" id="1886411411%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="photo-width.html">photoWidth</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1886411411%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="photo-width.html">photoWidth</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1886411411%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -274,7 +304,9 @@ if(savedDarkMode === true){
 <a data-name="-144517597%2FProperties%2F-1982836883" anchor-label="priceDependOnShipAddress" id="-144517597%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="price-depend-on-ship-address.html">priceDependOnShipAddress</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-144517597%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="price-depend-on-ship-address.html">priceDependOnShipAddress</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-144517597%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -289,7 +321,9 @@ if(savedDarkMode === true){
 <a data-name="1815665341%2FProperties%2F-1982836883" anchor-label="prices" id="1815665341%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="prices.html">prices</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1815665341%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="prices.html">prices</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1815665341%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -304,7 +338,9 @@ if(savedDarkMode === true){
 <a data-name="-1028385187%2FProperties%2F-1982836883" anchor-label="protectContent" id="-1028385187%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="protect-content.html">protectContent</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1028385187%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="protect-content.html">protectContent</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1028385187%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -319,7 +355,9 @@ if(savedDarkMode === true){
 <a data-name="912972652%2FProperties%2F-1982836883" anchor-label="providerData" id="912972652%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="provider-data.html">providerData</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="912972652%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="provider-data.html">providerData</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="912972652%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -334,7 +372,9 @@ if(savedDarkMode === true){
 <a data-name="-1507765525%2FProperties%2F-1982836883" anchor-label="providerToken" id="-1507765525%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="provider-token.html">providerToken</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1507765525%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="provider-token.html">providerToken</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1507765525%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -349,7 +389,9 @@ if(savedDarkMode === true){
 <a data-name="659071105%2FProperties%2F-1982836883" anchor-label="replyMarkup" id="659071105%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="reply-markup.html">replyMarkup</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="659071105%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="reply-markup.html">replyMarkup</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="659071105%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -364,7 +406,9 @@ if(savedDarkMode === true){
 <a data-name="-43040790%2FProperties%2F-1982836883" anchor-label="replyToMessageId" id="-43040790%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="reply-to-message-id.html">replyToMessageId</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-43040790%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="reply-to-message-id.html">replyToMessageId</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-43040790%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -379,7 +423,9 @@ if(savedDarkMode === true){
 <a data-name="327702290%2FProperties%2F-1982836883" anchor-label="requestSerializer" id="327702290%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="request-serializer.html">requestSerializer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="327702290%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="request-serializer.html">requestSerializer</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="327702290%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -394,7 +440,9 @@ if(savedDarkMode === true){
 <a data-name="-1761204496%2FProperties%2F-1982836883" anchor-label="requireEmail" id="-1761204496%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="require-email.html">requireEmail</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1761204496%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="require-email.html">requireEmail</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1761204496%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -409,7 +457,9 @@ if(savedDarkMode === true){
 <a data-name="1074536035%2FProperties%2F-1982836883" anchor-label="requireName" id="1074536035%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="require-name.html">requireName</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1074536035%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="require-name.html">requireName</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1074536035%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -424,7 +474,9 @@ if(savedDarkMode === true){
 <a data-name="-881444523%2FProperties%2F-1982836883" anchor-label="requirePhoneNumber" id="-881444523%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="require-phone-number.html">requirePhoneNumber</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-881444523%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="require-phone-number.html">requirePhoneNumber</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-881444523%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -439,7 +491,9 @@ if(savedDarkMode === true){
 <a data-name="1969650854%2FProperties%2F-1982836883" anchor-label="requireShippingAddress" id="1969650854%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="require-shipping-address.html">requireShippingAddress</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1969650854%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="require-shipping-address.html">requireShippingAddress</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1969650854%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -454,7 +508,9 @@ if(savedDarkMode === true){
 <a data-name="-1733525193%2FProperties%2F-1982836883" anchor-label="resultDeserializer" id="-1733525193%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="result-deserializer.html">resultDeserializer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1733525193%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="result-deserializer.html">resultDeserializer</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1733525193%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -469,7 +525,9 @@ if(savedDarkMode === true){
 <a data-name="1778437926%2FProperties%2F-1982836883" anchor-label="shouldSendEmailToProvider" id="1778437926%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="should-send-email-to-provider.html">shouldSendEmailToProvider</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1778437926%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="should-send-email-to-provider.html">shouldSendEmailToProvider</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1778437926%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -484,7 +542,9 @@ if(savedDarkMode === true){
 <a data-name="-1291598389%2FProperties%2F-1982836883" anchor-label="shouldSendPhoneNumberToProvider" id="-1291598389%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="should-send-phone-number-to-provider.html">shouldSendPhoneNumberToProvider</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1291598389%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="should-send-phone-number-to-provider.html">shouldSendPhoneNumberToProvider</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1291598389%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -499,7 +559,9 @@ if(savedDarkMode === true){
 <a data-name="-1887578560%2FProperties%2F-1982836883" anchor-label="startParameter" id="-1887578560%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="start-parameter.html">startParameter</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1887578560%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="start-parameter.html">startParameter</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1887578560%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -514,7 +576,9 @@ if(savedDarkMode === true){
 <a data-name="-780922928%2FProperties%2F-1982836883" anchor-label="suggestedTipAmounts" id="-780922928%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="suggested-tip-amounts.html">suggestedTipAmounts</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-780922928%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="suggested-tip-amounts.html">suggestedTipAmounts</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-780922928%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -529,7 +593,9 @@ if(savedDarkMode === true){
 <a data-name="83460891%2FProperties%2F-1982836883" anchor-label="title" id="83460891%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
                 <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="title.html">title</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="83460891%2FProperties%2F-1982836883"></span>
+                    <div class=""><span class="inline-flex">
+                        <div><a href="title.html">title</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="83460891%2FProperties%2F-1982836883"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
