@@ -1,5 +1,15 @@
 # TelegramBotAPI changelog
 
+## 0.38.3
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.1` -> `0.9.2`
+        * `Klock`: `2.4.10` -> `2.4.12`
+        * `UUID`: `0.3.1` -> `0.4.0`
+* `API`
+    * New extensions `TelegramBot#send*` for media groups with contents
+
 ## 0.38.2
 
 * `Common`:
