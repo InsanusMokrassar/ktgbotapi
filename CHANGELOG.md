@@ -2,6 +2,9 @@
 
 ## 0.38.4
 
+* `Utils`:
+    * Rename `PathedFile` to avoid clash with core file (fix of [#529](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/529))
+
 ## 0.38.3
 
 * `Common`:
