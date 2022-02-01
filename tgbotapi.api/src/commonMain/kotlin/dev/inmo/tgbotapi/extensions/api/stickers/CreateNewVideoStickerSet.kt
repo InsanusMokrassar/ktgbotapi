@@ -11,44 +11,48 @@ import dev.inmo.tgbotapi.types.stickers.MaskPosition
 suspend fun TelegramBot.createNewVideoStickerSet(
     userId: UserId,
     name: String,
+    title: String,
     sticker: FileId,
     emojis: String,
     containsMasks: Boolean? = null,
     maskPosition: MaskPosition? = null
 ) = execute(
-    CreateNewVideoStickerSet(userId, name, sticker, emojis, containsMasks, maskPosition)
+    CreateNewVideoStickerSet(userId, name, title, sticker, emojis, containsMasks, maskPosition)
 )
 
 suspend fun TelegramBot.createNewVideoStickerSet(
     userId: UserId,
     name: String,
+    title: String,
     sticker: MultipartFile,
     emojis: String,
     containsMasks: Boolean? = null,
     maskPosition: MaskPosition? = null
 ) = execute(
-    CreateNewVideoStickerSet(userId, name, sticker, emojis, containsMasks, maskPosition)
+    CreateNewVideoStickerSet(userId, name, title, sticker, emojis, containsMasks, maskPosition)
 )
 
 
 suspend fun TelegramBot.createNewVideoStickerSet(
     user: CommonUser,
     name: String,
+    title: String,
     sticker: FileId,
     emojis: String,
     containsMasks: Boolean? = null,
     maskPosition: MaskPosition? = null
 ) = createNewVideoStickerSet(
-    user.id, name, sticker, emojis, containsMasks, maskPosition
+    user.id, name, title, sticker, emojis, containsMasks, maskPosition
 )
 
 suspend fun TelegramBot.createNewVideoStickerSet(
     user: CommonUser,
     name: String,
+    title: String,
     sticker: MultipartFile,
     emojis: String,
     containsMasks: Boolean? = null,
     maskPosition: MaskPosition? = null
 ) = createNewVideoStickerSet(
-    user.id, name, sticker, emojis, containsMasks, maskPosition
+    user.id, name, title, sticker, emojis, containsMasks, maskPosition
 )
