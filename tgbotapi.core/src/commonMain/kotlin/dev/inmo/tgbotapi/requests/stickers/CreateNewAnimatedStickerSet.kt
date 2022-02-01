@@ -21,7 +21,7 @@ fun CreateNewAnimatedStickerSet(
     return when (sticker) {
         is MultipartFile -> CommonMultipartFileRequest(
             data,
-            mapOf(pngStickerField to sticker)
+            mapOf(tgsStickerField to sticker)
         )
         is FileId -> data
     }
