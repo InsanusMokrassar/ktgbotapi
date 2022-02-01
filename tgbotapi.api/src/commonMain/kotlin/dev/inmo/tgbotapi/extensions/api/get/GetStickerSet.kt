@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.get
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.get.GetStickerSet
-import dev.inmo.tgbotapi.types.files.Sticker
+import dev.inmo.tgbotapi.types.files.sticker.Sticker
 
 suspend fun TelegramBot.getStickerSet(
     name: String

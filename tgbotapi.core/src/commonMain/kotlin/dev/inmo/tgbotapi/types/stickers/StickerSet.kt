@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.stickers
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.files.PhotoSize
-import dev.inmo.tgbotapi.types.files.Sticker
+import dev.inmo.tgbotapi.types.files.sticker.Sticker
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -16,6 +16,8 @@ data class StickerSet(
     val stickers: List<Sticker>,
     @SerialName(isAnimatedField)
     val isAnimated: Boolean = false,
+    @SerialName(isVideoField)
+    val isVideo: Boolean = false,
     @SerialName(containsMasksField)
     val containsMasks: Boolean = false,
     @SerialName(thumbField)

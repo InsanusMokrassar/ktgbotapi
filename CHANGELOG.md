@@ -2,6 +2,12 @@
 
 ## 0.38.4
 
+__This update contains including of [Telegram Bot API 5.7](https://core.telegram.org/bots/api-changelog#january-31-2022)__
+
+* `Core`:
+    * Support of new fields `Sticker`
+    * Support of new fields `StickerSet`
+    * Support of new fields in creating of sticker set and sticker
 * `Utils`:
     * Rename `PathedFile` to avoid clash with core file (fix of [#529](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/529))
 

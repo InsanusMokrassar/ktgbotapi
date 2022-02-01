@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.types.files.sticker.Sticker
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.Message
