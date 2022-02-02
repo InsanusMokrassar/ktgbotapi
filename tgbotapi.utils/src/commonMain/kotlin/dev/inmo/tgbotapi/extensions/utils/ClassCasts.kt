@@ -31,6 +31,8 @@ import dev.inmo.tgbotapi.types.chat.abstracts.extended.*
 import dev.inmo.tgbotapi.types.dice.*
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.abstracts.*
+import dev.inmo.tgbotapi.types.files.sticker.*
+import dev.inmo.tgbotapi.types.files.sticker.Sticker
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
@@ -2308,6 +2310,33 @@ inline fun TelegramMediaFile.asSticker(): Sticker? = this as? Sticker
 
 @PreviewFeature
 inline fun TelegramMediaFile.requireSticker(): Sticker = this as Sticker
+
+@PreviewFeature
+inline fun <T> TelegramMediaFile.whenSimpleSticker(block: (SimpleSticker) -> T) = asSimpleSticker() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMediaFile.asSimpleSticker(): SimpleSticker? = this as? SimpleSticker
+
+@PreviewFeature
+inline fun TelegramMediaFile.requireSimpleSticker(): SimpleSticker = this as SimpleSticker
+
+@PreviewFeature
+inline fun <T> TelegramMediaFile.whenAnimatedSticker(block: (AnimatedSticker) -> T) = asAnimatedSticker() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMediaFile.asAnimatedSticker(): AnimatedSticker? = this as? AnimatedSticker
+
+@PreviewFeature
+inline fun TelegramMediaFile.requireAnimatedSticker(): AnimatedSticker = this as AnimatedSticker
+
+@PreviewFeature
+inline fun <T> TelegramMediaFile.whenVideoSticker(block: (VideoSticker) -> T) = asVideoSticker() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMediaFile.asVideoSticker(): VideoSticker? = this as? VideoSticker
+
+@PreviewFeature
+inline fun TelegramMediaFile.requireVideoSticker(): VideoSticker = this as VideoSticker
 
 @PreviewFeature
 inline fun <T> TelegramMediaFile.whenVideoFile(block: (VideoFile) -> T) = asVideoFile() ?.let(block)
