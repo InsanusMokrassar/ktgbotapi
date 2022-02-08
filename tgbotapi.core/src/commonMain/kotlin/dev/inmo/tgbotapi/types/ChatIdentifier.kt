@@ -46,6 +46,9 @@ fun Byte.toChatId(): ChatId = toLong().toChatId()
 data class Username(
     val username: String
 ) : ChatIdentifier() {
+    val usernameWithoutAt
+        get() = username.dropWhile { it == '@' }
+
     init {
         if (!username.startsWith("@")) {
             throw IllegalArgumentException("Username must starts with `@`")

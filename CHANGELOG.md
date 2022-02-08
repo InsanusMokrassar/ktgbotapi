@@ -1,5 +1,18 @@
 # TelegramBotAPI changelog
 
+## 0.38.5
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.5` -> `0.9.6`
+* `Core`:
+    * `Username` got new property `usernameWithoutAt` which will return `username` without leading `@`
+* `Utils`:
+    * Several new functions for working with deep links:
+        * `makeUsernameDeepLinkPrefix`
+        * `makeTelegramDeepLink`
+        * `makeDeepLink`
+
 ## 0.38.4
 
 __This update contains including of [Telegram Bot API 5.7](https://core.telegram.org/bots/api-changelog#january-31-2022)__
