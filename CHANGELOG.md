@@ -2,6 +2,9 @@
 
 ## 0.38.5
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.5` -> `0.9.6`
 * `Core`:
     * `Username` got new property `usernameWithoutAt` which will return `username` without leading `@`
 * `Utils`:
