@@ -2,6 +2,9 @@
 
 ## 0.38.6
 
+* `Core`:
+    * New member of `MentionTextSource` - `username`
+
 ## 0.38.5
 
 * `Common`:
