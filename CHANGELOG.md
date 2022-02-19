@@ -2,6 +2,10 @@
 
 ## 0.38.6
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.6` -> `0.9.8`
+        * `Klock`: `2.4.13` -> `2.5.1`
 * `Core`:
     * New member of `MentionTextSource` - `username`
 
