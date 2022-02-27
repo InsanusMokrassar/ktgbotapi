@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 0.38.6
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.6` -> `0.9.9`
+        * `Klock`: `2.4.13` -> `2.5.2`
+* `Core`:
+    * New member of `MentionTextSource` - `username`
+
 ## 0.38.5
 
 * `Common`:

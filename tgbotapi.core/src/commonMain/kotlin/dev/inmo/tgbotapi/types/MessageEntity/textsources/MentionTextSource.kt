@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
+import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.internal.*
@@ -23,6 +24,7 @@ data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
     override val markdown: String by lazy { source.mentionMarkdown() }
     override val markdownV2: String by lazy { mentionMarkdownV2() }
     override val html: String by lazy { mentionHTML() }
+    val username: Username = Username(source)
 
     init {
         if (!source.startsWith("@")) {
@@ -41,4 +43,7 @@ inline fun mention(vararg parts: TextSource) = mention(parts.toList())
  */
 @Suppress("NOTHING_TO_INLINE")
 inline fun mention(whoToMention: String) = mention(regular(whoToMention))
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun mention(whoToMention: Username) = mention(whoToMention.username.dropWhile { it == '@' })
 
