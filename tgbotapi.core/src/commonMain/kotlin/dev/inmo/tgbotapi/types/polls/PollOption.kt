@@ -12,6 +12,13 @@ import kotlinx.serialization.encoding.Encoder
 sealed class PollOption {
     abstract val text: String
     abstract val votes: Int
+
+    companion object {
+        fun simple(
+            text: String,
+            votes: Int = 0
+        ) = SimplePollOption(text, votes)
+    }
 }
 
 @Serializable
@@ -19,7 +26,7 @@ data class SimplePollOption (
     @SerialName(textField)
     override val text: String,
     @SerialName(votesCountField)
-    override val votes: Int
+    override val votes: Int = 0
 ) : PollOption()
 
 @RiskFeature
