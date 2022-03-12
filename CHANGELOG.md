@@ -4,8 +4,8 @@
 
 * `Common`:
     * `Version`:
-        * `MicroUtils`: `0.9.9` -> `0.9.10`
-        * `Klock`: `2.5.2` -> `2.6.1`
+        * `MicroUtils`: `0.9.9` -> `0.9.12`
+        * `Klock`: `2.5.2` -> `2.6.2`
 * `Core`:
     * `SimplePollOption#votes` now is `0` by default
     * New function `PollOption.Companion#simple`
