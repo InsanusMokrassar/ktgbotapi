@@ -6273,6 +6273,8 @@ $dokka.location:dev.inmo.tgbotapi.types.polls/PollAnswer/chosen/#/PointingToDecl
 $dokka.location:dev.inmo.tgbotapi.types.polls/PollAnswer/from/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.polls/-poll-answer/from.html
 $dokka.location:dev.inmo.tgbotapi.types.polls/PollAnswer/pollId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.polls/-poll-answer/poll-id.html
 $dokka.location:dev.inmo.tgbotapi.types.polls/PollAnswer/user/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.polls/-poll-answer/user.html
+$dokka.location:dev.inmo.tgbotapi.types.polls/PollOption.Companion///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.polls/-poll-option/-companion/index.html
+$dokka.location:dev.inmo.tgbotapi.types.polls/PollOption.Companion/simple/#kotlin.String#kotlin.Int/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.polls/-poll-option/-companion/simple.html
 $dokka.location:dev.inmo.tgbotapi.types.polls/PollOption///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.polls/-poll-option/index.html
 $dokka.location:dev.inmo.tgbotapi.types.polls/PollOption/text/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.polls/-poll-option/text.html
 $dokka.location:dev.inmo.tgbotapi.types.polls/PollOption/votes/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.polls/-poll-option/votes.html
