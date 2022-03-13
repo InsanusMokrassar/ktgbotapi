@@ -28,7 +28,7 @@ Other configuration examples:
 suspend fun main() {
   val bot = telegramBot(TOKEN)
 
-  bot.buildBehaviour {
+  bot.buildBehaviourWithLongPolling {
     println(getMe())
   
     onCommand("start") {
@@ -69,7 +69,7 @@ and maybe some updates it got after launch)
 suspend fun main() {
   val bot = telegramBot(TOKEN)
 
-  bot.buildBehaviour {
+  bot.buildBehaviourWithLongPolling {
     println(getMe())
 
     val nameReplyMarkup = ReplyKeyboardMarkup(
