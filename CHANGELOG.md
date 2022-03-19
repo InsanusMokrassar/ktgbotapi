@@ -1,5 +1,19 @@
 # TelegramBotAPI changelog
 
+## 0.38.8
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.12` -> `0.9.16`
+        * `Klock`: `2.6.2` -> `2.6.3`
+        * `Ktor`: `1.6.7` -> `1.6.8`
+* `BehaviourBuilder`:
+    * Fixes in `onMediaGroup` and dependent functions
+    * Add several new extensions for `SimpleFilter`:
+        * `SimpleFilter#listAll`
+        * `SimpleFilter#listAny`
+        * `SimpleFilter#listNone`
+
 ## 0.38.7
 
 * `Common`:

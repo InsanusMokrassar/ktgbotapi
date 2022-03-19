@@ -22,7 +22,11 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupConten
     markerFactory: MarkerFactory<in List<MediaGroupMessage<T>>, Any> = ByChatMediaGroupMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<T>>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asSentMediaGroupUpdate() ?.data ?.takeIf { it.all { it is T } } as? List<MediaGroupMessage<T>>) ?.let(::listOfNotNull)
+    (it.asSentMediaGroupUpdate() ?.data ?.takeIf { messages ->
+        messages.all { message ->
+            message.content is T
+        }
+    } as? List<MediaGroupMessage<T>>) ?.let(::listOfNotNull)
 }
 
 /**
