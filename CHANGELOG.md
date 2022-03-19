@@ -9,6 +9,10 @@
         * `Ktor`: `1.6.7` -> `1.6.8`
 * `BehaviourBuilder`:
     * Fixes in `onMediaGroup` and dependent functions
+    * Add several new extensions for `SimpleFilter`:
+        * `SimpleFilter#listAll`
+        * `SimpleFilter#listAny`
+        * `SimpleFilter#listNone`
 
 ## 0.38.7
 
