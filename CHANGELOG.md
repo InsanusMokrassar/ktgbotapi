@@ -2,6 +2,9 @@
 
 ## 0.38.9
 
+* `Core`:
+    * New function `MessageContent.Companion#serializationModule`
+
 ## 0.38.8
 
 * `Common`:
