@@ -4,6 +4,8 @@
 
 * `Core`:
     * New function `MessageContent.Companion#serializationModule`
+* `API`:
+    * Add replies which will use another message as a source for reply (`copyMessage`)
 
 ## 0.38.8
 
