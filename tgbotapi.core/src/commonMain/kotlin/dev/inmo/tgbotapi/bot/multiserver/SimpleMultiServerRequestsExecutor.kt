@@ -8,6 +8,8 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.*
+import kotlin.js.JsName
+import kotlin.jvm.JvmName
 
 /**
  * This type of [RequestsExecutor] (aka [TelegramBot]) has been created to aggregate several bots under the hood and make
@@ -56,6 +58,8 @@ class SimpleMultiServerRequestsExecutor(
          * [TelegramBot] when called (or first when current index is last or -1)
          * @param onClose This method will be called inside of [close] method. By default, will close all [bots]
          */
+        @JvmName("createByUrlsKeepers")
+        @JsName("createByUrlsKeepers")
         inline operator fun invoke(
             keepers: Iterable<TelegramAPIUrlsKeeper>,
             crossinline builder: KtorRequestsExecutorBuilder.(TelegramAPIUrlsKeeper) -> Unit = {},
@@ -82,6 +86,8 @@ class SimpleMultiServerRequestsExecutor(
          * [TelegramBot] when called (or first when current index is last or -1)
          * @param onClose This method will be called inside of [close] method. By default, will close all [bots]
          */
+        @JvmName("createByTokens")
+        @JsName("createByTokens")
         inline operator fun invoke(
             tokens: Iterable<String>,
             crossinline builder: KtorRequestsExecutorBuilder.(String) -> Unit = {},
@@ -109,6 +115,8 @@ class SimpleMultiServerRequestsExecutor(
          * [TelegramBot] when called (or first when current index is last or -1)
          * @param onClose This method will be called inside of [close] method. By default, will close all [bots]
          */
+        @JvmName("createByTokensAndApiUrls")
+        @JsName("createByTokensAndApiUrls")
         inline operator fun invoke(
             tokens: Iterable<Pair<String, String>>,
             crossinline builder: KtorRequestsExecutorBuilder.(Pair<String, String>) -> Unit = {},
@@ -161,6 +169,8 @@ inline fun telegramBot(
  * @param onClose This method will be called inside of [SimpleMultiServerRequestsExecutor.close] method. By default,
  * will close all [SimpleMultiServerRequestsExecutor.bots]
  */
+@JvmName("telegramBotByApiUrlsKeepers")
+@JsName("telegramBotByApiUrlsKeepers")
 inline fun telegramBot(
     keepers: Iterable<TelegramAPIUrlsKeeper>,
     crossinline builder: KtorRequestsExecutorBuilder.(TelegramAPIUrlsKeeper) -> Unit = {},
@@ -180,6 +190,8 @@ inline fun telegramBot(
  * @param onClose This method will be called inside of [SimpleMultiServerRequestsExecutor.close] method. By default,
  * will close all [SimpleMultiServerRequestsExecutor.bots]
  */
+@JvmName("telegramBotByTokens")
+@JsName("telegramBotByTokens")
 inline fun telegramBot(
     tokens: Iterable<String>,
     crossinline builder: KtorRequestsExecutorBuilder.(String) -> Unit = {},
@@ -200,6 +212,8 @@ inline fun telegramBot(
  * @param onClose This method will be called inside of [SimpleMultiServerRequestsExecutor.close] method. By default,
  * will close all [SimpleMultiServerRequestsExecutor.bots]
  */
+@JvmName("telegramBotByTokensAndApiUrls")
+@JsName("telegramBotByTokensAndApiUrls")
 inline fun telegramBot(
     tokens: Iterable<Pair<String, String>>,
     crossinline builder: KtorRequestsExecutorBuilder.(Pair<String, String>) -> Unit = {},
