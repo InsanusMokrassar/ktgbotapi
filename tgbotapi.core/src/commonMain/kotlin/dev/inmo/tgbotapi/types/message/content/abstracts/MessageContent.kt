@@ -3,10 +3,12 @@ package dev.inmo.tgbotapi.types.message.content.abstracts
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.modules.*
 
 interface MessageContent: ResendableContent {
     companion object {
+        @RiskFeature("This serialization module can be changed in near releases")
         fun serializationModule(
             additionalBuilder: PolymorphicModuleBuilder<MessageContent>.() -> Unit = {}
         ) = SerializersModule {
