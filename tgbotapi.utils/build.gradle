@@ -17,8 +17,9 @@ plugins {
 
 project.version = "$library_version"
 project.group = "$library_group"
+project.description = "Additional extensions for core part of tgbotapi"
 
-apply from: "publish.gradle"
+apply from: "../publish.gradle"
 
 repositories {
     mavenLocal()

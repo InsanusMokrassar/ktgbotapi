@@ -17,8 +17,9 @@ plugins {
 
 project.version = "$library_version"
 project.group = "$library_group"
+project.description = "Core part of tgbotapi with all (and only) required functionality for working with Telegram Bot API"
 
-apply from: "publish.gradle"
+apply from: "../publish.gradle"
 
 repositories {
     mavenLocal()

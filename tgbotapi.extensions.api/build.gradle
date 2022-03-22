@@ -17,8 +17,9 @@ plugins {
 
 project.version = "$library_version"
 project.group = "$library_group"
+project.description = "DEPRECATED, use tgbotapi.api"
 
-apply from: "publish.gradle"
+apply from: "../publish.gradle"
 
 repositories {
     mavenLocal()
