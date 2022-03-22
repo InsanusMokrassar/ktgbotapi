@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 0.38.9
+
+* `Core`:
+    * New function `MessageContent.Companion#serializationModule`
+    * Now it is possible to create `TelegramBot` (`RequestsExecutor`) with several bots under the hood and opportunity
+      for bots requests load balancing or fault-fix via sending of the requests via another bot
+* `API`:
+    * Add replies which will use another message as a source for reply (`copyMessage`)
+
 ## 0.38.8
 
 * `Common`:

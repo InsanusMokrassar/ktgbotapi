@@ -17,8 +17,9 @@ plugins {
 
 project.version = "$library_version"
 project.group = "$library_group"
+project.description = "API extensions with \"Telegram Bot API\"-like extensions for TelegramBot and RequestsExecutor"
 
-apply from: "publish.gradle"
+apply from: "../publish.gradle"
 
 repositories {
     mavenLocal()

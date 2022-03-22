@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.sticker.Sticker
@@ -864,3 +865,38 @@ suspend inline fun TelegramBot.reply(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(to.chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    fromChatId: ChatIdentifier,
+    messageId: MessageIdentifier,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = copyMessage(fromChatId, to.chat.id, messageId, text, parseMode, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    fromChat: Chat,
+    messageId: MessageIdentifier,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = reply(to, fromChat.id, messageId, text, parseMode, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    copy: Message,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = reply(to, copy.chat.id, copy.messageId, text, parseMode, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
