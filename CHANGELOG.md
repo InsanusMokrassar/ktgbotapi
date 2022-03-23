@@ -2,6 +2,9 @@
 
 ## 0.38.10
 
+* `API`:
+    * All `with*Action` extensions got a contracts which declare that `block` will be called once
+
 ## 0.38.9
 
 * `Core`:
