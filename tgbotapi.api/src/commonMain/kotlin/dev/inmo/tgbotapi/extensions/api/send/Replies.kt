@@ -571,6 +571,17 @@ suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ) = sendPhoto(to.chat, photo, text, parseMode, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    photoSize: PhotoSize,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendPhoto(to.chat, photoSize, text, parseMode, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+
 
 suspend inline fun TelegramBot.replyWithPhoto(
     to: Message,
@@ -591,6 +602,16 @@ suspend inline fun TelegramBot.reply(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendPhoto(to.chat, photo, entities, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    photoSize: PhotoSize,
+    entities: TextSourcesList,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendPhoto(to.chat, photoSize, entities, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Sticker
