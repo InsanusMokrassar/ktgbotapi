@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 0.38.10
+
+* `API`:
+    * All `with*Action` extensions got a contracts which declare that `block` will be called once
+    * Add several extensions `TelegramBot#sendPhoto` with `PhotoSize`
+    * Add several extensions `TelegramBot#reply` with `PhotoSize`
+
 ## 0.38.9
 
 * `Core`:
