@@ -2,6 +2,9 @@
 
 ## 0.38.11
 
+* `Core`:
+    * Fixes in `TextSourcesList` creating in from `RawMessageEntities`
+
 ## 0.38.10
 
 * `API`:

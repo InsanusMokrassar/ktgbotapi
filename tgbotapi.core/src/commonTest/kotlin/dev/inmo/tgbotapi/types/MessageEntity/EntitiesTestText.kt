@@ -3,43 +3,43 @@ package dev.inmo.tgbotapi.types.MessageEntity
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import kotlin.test.assertTrue
 
-const val testText = "It is simple hello world with #tag and @mention"
-const val formattedV2Text = "It *_is_ ~__simple__~* ||hello world|| with \\#tag and @mention"
-const val formattedHtmlText = "It <b><i>is</i> <s><u>simple</u></s></b> <span class=\"tg-spoiler\">hello world</span> with #tag and @mention"
+const val testText = "It (is?) is simple hello world with #tag and @mention"
+const val formattedV2Text = "It \\(is?\\) *_is_ ~__simple__~* ||hello world|| with \\#tag and @mention"
+const val formattedHtmlText = "It (is?) <b><i>is</i> <s><u>simple</u></s></b> <span class=\"tg-spoiler\">hello world</span> with #tag and @mention"
 internal val testTextEntities = listOf(
     RawMessageEntity(
         "bold",
-        3,
+        9,
         9
     ),
     RawMessageEntity(
         "italic",
-        3,
+        9,
         2
     ),
     RawMessageEntity(
         "strikethrough",
-        6,
+        12,
         6
     ),
     RawMessageEntity(
         "underline",
-        6,
+        12,
         6
     ),
     RawMessageEntity(
         "spoiler",
-        13,
+        19,
         11
     ),
     RawMessageEntity(
         "hashtag",
-        30,
+        36,
         4
     ),
     RawMessageEntity(
         "mention",
-        39,
+        45,
         8
     )
 )

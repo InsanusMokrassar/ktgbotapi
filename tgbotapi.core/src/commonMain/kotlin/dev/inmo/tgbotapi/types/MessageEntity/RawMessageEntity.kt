@@ -20,11 +20,11 @@ internal data class RawMessageEntity(
 
 internal fun RawMessageEntity.asTextSource(
     source: String,
-    subParts: TextSourcesList
+    subParts: List<Pair<Int, TextSource>>
 ): TextSource {
     val sourceSubstring: String = source.substring(range)
     val subPartsWithRegulars by lazy {
-        subParts.fillWithRegulars(sourceSubstring)
+        subParts.map { (it.first - offset) to it.second }.fillWithRegulars(sourceSubstring)
     }
     return when (type) {
         "mention" -> MentionTextSource(sourceSubstring, subPartsWithRegulars)
@@ -58,16 +58,14 @@ private inline operator fun <T : Comparable<T>> ClosedRange<T>.contains(other: C
     return start <= other.start && endInclusive >= other.endInclusive
 }
 
-internal fun TextSourcesList.fillWithRegulars(source: String): TextSourcesList {
+internal fun List<Pair<Int, TextSource>>.fillWithRegulars(source: String): TextSourcesList {
     var index = 0
     val result = mutableListOf<TextSource>()
-    for (i in 0 until size) {
-        val textSource = get(i)
-        val thisSourceInStart = source.startsWith(textSource.source, index)
-        if (!thisSourceInStart) {
-            val regularEndIndex = source.indexOf(textSource.source, index)
-            result.add(regular(source.substring(index, regularEndIndex)))
-            index = regularEndIndex
+    for (i in indices) {
+        val (offset, textSource) = get(i)
+        if (offset - index > 0) {
+            result.add(regular(source.substring(index, offset)))
+            index = offset
         }
         result.add(textSource)
         index += textSource.source.length
@@ -83,9 +81,9 @@ internal fun TextSourcesList.fillWithRegulars(source: String): TextSourcesList {
 private fun createTextSources(
     originalFullString: String,
     entities: RawMessageEntities
-): TextSourcesList {
+): List<Pair<Int, TextSource>> {
     val mutableEntities = entities.toMutableList().apply { sortBy { it.offset } }
-    val resultList = mutableListOf<TextSource>()
+    val resultList = mutableListOf<Pair<Int, TextSource>>()
 
     while (mutableEntities.isNotEmpty()) {
         var parent = mutableEntities.removeFirst()
@@ -129,7 +127,7 @@ private fun createTextSources(
             emptyList()
         }
         resultList.add(
-            parent.asTextSource(
+            parent.offset to parent.asTextSource(
                 originalFullString,
                 subtextSources
             )
