@@ -2,6 +2,10 @@
 
 ## 0.38.11
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.16` -> `0.9.17`
+        * `Klock`: `2.6.3` -> `2.7.0`
 * `Core`:
     * Fixes in `TextSourcesList` creating in from `RawMessageEntities`
 
