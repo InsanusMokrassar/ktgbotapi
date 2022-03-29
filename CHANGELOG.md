@@ -8,6 +8,7 @@
         * `Klock`: `2.6.3` -> `2.7.0`
 * `Core`:
     * Fixes in `TextSourcesList` creating in from `RawMessageEntities`
+    * Old ways to create keyboards (`matrix` and `row`) have been deprecated
 * `API`:
     * Add opportunity to `reply` with `Poll`
     * Add opportunity to `reply` with any `MessageContent`
