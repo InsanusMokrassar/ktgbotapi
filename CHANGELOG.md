@@ -1,5 +1,19 @@
 # TelegramBotAPI changelog
 
+## 0.38.11
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.16` -> `0.9.17`
+        * `Klock`: `2.6.3` -> `2.7.0`
+* `Core`:
+    * Fixes in `TextSourcesList` creating in from `RawMessageEntities`
+    * Old ways to create keyboards (`matrix` and `row`) have been deprecated
+* `API`:
+    * Add ability to `reply` with `Poll`
+    * Add ability to `reply` with any `MessageContent`
+    * Add ability to `reply` with any `TelegramMediaFile`
+
 ## 0.38.10
 
 * `API`:
