@@ -17,12 +17,14 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.sticker.Sticker
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import dev.inmo.tgbotapi.types.passport.encrypted.PassportFile
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
@@ -992,4 +994,80 @@ suspend fun TelegramBot.reply(
             replyMarkup
         )
     )
+}
+
+suspend fun TelegramBot.reply(
+    to: Message,
+    mediaFile: TelegramMediaFile,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    when (mediaFile) {
+        is AudioFile -> reply(
+            to = to,
+            audio = mediaFile,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is AnimationFile -> reply(
+            to = to,
+            animation = mediaFile,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is VoiceFile -> reply(
+            to = to,
+            voice = mediaFile,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is VideoFile -> reply(
+            to = to,
+            video = mediaFile,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is VideoNoteFile -> reply(
+            to = to,
+            videoNote = mediaFile,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is DocumentFile -> reply(
+            to = to,
+            document = mediaFile,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is Sticker -> reply(
+            to = to,
+            sticker = mediaFile,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        else -> reply(
+            to = to,
+            document = mediaFile.asDocumentFile(),
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+    }
 }

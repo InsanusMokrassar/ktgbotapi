@@ -12,6 +12,7 @@
 * `API`:
     * Add opportunity to `reply` with `Poll`
     * Add opportunity to `reply` with any `MessageContent`
+    * Add opportunity to `reply` with any `TelegramMediaFile`
 
 ## 0.38.10
 
