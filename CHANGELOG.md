@@ -8,6 +8,9 @@
         * `Klock`: `2.6.3` -> `2.7.0`
 * `Core`:
     * Fixes in `TextSourcesList` creating in from `RawMessageEntities`
+* `API`:
+    * Add opportunity to `reply` with `Poll`
+    * Add opportunity to `reply` with any `MessageContent`
 
 ## 0.38.10
 

@@ -19,8 +19,10 @@ import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.sticker.Sticker
 import dev.inmo.tgbotapi.types.games.Game
-import dev.inmo.tgbotapi.types.location.StaticLocation
+import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
@@ -118,6 +120,7 @@ suspend inline fun TelegramBot.reply(
     longitude: Double,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
     to.chat,
@@ -125,6 +128,7 @@ suspend inline fun TelegramBot.reply(
     longitude,
     disableNotification,
     protectContent,
+    allowSendingWithoutReply,
     to.messageId,
     replyMarkup
 )
@@ -138,12 +142,14 @@ suspend inline fun TelegramBot.reply(
     location: StaticLocation,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
     to.chat,
     location,
     disableNotification,
     protectContent,
+    allowSendingWithoutReply,
     to.messageId,
     replyMarkup
 )
@@ -887,6 +893,52 @@ suspend inline fun TelegramBot.reply(
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(to.chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
+
+suspend inline fun TelegramBot.reply(
+    to: Message,
+    poll: Poll,
+    isClosed: Boolean = false,
+    question: String = poll.question,
+    options: List<String> = poll.options.map { it.text },
+    isAnonymous: Boolean = poll.isAnonymous,
+    closeInfo: ScheduledCloseInfo? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = when (poll) {
+    is RegularPoll -> reply(
+        to = to,
+        poll = poll,
+        isClosed = isClosed,
+        question = question,
+        options = options,
+        isAnonymous = isAnonymous,
+        allowMultipleAnswers = isAnonymous,
+        closeInfo = closeInfo,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyMarkup = replyMarkup
+    )
+    is UnknownPollType -> error("Unable to send poll with unknown type ($poll)")
+    is QuizPoll -> reply(
+        to = to,
+        quizPoll = poll,
+        entities = poll.textSources,
+        isClosed = isClosed,
+        question = question,
+        options = options,
+        isAnonymous = isAnonymous,
+        closeInfo = closeInfo,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyMarkup = replyMarkup
+    )
+}
+
+
 suspend inline fun TelegramBot.reply(
     to: Message,
     fromChatId: ChatIdentifier,
@@ -921,3 +973,23 @@ suspend inline fun TelegramBot.reply(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = reply(to, copy.chat.id, copy.messageId, text, parseMode, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
+
+suspend fun TelegramBot.reply(
+    to: Message,
+    content: MessageContent,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    execute(
+        content.createResend(
+            to.chat.id,
+            disableNotification,
+            protectContent,
+            to.messageId,
+            allowSendingWithoutReply,
+            replyMarkup
+        )
+    )
+}
