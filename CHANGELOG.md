@@ -10,9 +10,9 @@
     * Fixes in `TextSourcesList` creating in from `RawMessageEntities`
     * Old ways to create keyboards (`matrix` and `row`) have been deprecated
 * `API`:
-    * Add opportunity to `reply` with `Poll`
-    * Add opportunity to `reply` with any `MessageContent`
-    * Add opportunity to `reply` with any `TelegramMediaFile`
+    * Add ability to `reply` with `Poll`
+    * Add ability to `reply` with any `MessageContent`
+    * Add ability to `reply` with any `TelegramMediaFile`
 
 ## 0.38.10
 
