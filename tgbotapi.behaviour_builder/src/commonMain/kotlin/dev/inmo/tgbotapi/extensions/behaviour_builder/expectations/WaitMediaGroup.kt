@@ -70,9 +70,3 @@ suspend fun BehaviourContext.waitVideoGallery(
     count: Int = 1,
     filter: MediaGroupFilter<VideoContent>? = null
 ) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)
-suspend fun BehaviourContext.waitTextedMediaGroupMediaContent(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: MediaGroupFilter<TextedMediaGroupMediaContent>? = null
-) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)

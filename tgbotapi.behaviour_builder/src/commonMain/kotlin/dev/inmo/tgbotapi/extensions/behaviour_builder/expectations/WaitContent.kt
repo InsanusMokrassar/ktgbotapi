@@ -201,14 +201,6 @@ suspend fun BehaviourContext.waitVisualMediaGroupContent(
     filter: SimpleFilter<CommonMessage<VisualMediaGroupContent>>? = null,
     mapper: CommonMessageToContentMapper<VisualMediaGroupContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
-suspend fun BehaviourContext.waitTextedMediaGroupMediaContent(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<TextedMediaGroupMediaContent>>? = null,
-    mapper: CommonMessageToContentMapper<TextedMediaGroupMediaContent>? = null
-) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
 suspend fun BehaviourContext.waitTextedMediaContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
