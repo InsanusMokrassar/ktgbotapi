@@ -20,7 +20,7 @@ data class AnimationContent(
     val includedDocument: DocumentFile?,
     override val text: String?,
     override val textSources: TextSourcesList = emptyList()
-) : MediaContent, TextedInput {
+) : TextedMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

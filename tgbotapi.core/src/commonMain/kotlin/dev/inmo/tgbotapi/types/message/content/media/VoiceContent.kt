@@ -18,7 +18,7 @@ data class VoiceContent(
     override val media: VoiceFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList()
-) : MediaContent, TextedInput {
+) : TextedMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

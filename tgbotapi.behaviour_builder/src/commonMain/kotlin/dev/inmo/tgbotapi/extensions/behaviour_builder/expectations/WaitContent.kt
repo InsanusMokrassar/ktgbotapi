@@ -16,7 +16,6 @@ import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
-import kotlin.reflect.KClass
 
 typealias CommonMessageToContentMapper<T> = suspend CommonMessage<T>.() -> T?
 

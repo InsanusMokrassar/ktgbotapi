@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.update.MediaGroupUpdates
 
 import dev.inmo.tgbotapi.types.UpdateIdentifier
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
 import dev.inmo.tgbotapi.types.update.EditMessageUpdate
 
 data class EditMessageMediaGroupUpdate(

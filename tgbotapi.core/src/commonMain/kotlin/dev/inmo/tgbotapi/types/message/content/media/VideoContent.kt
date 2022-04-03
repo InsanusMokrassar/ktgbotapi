@@ -10,7 +10,6 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.toInputMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -18,7 +17,7 @@ data class VideoContent(
     override val media: VideoFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList()
-) : VisualMediaGroupContent {
+) : VisualMediaGroupContent, TextedMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,

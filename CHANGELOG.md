@@ -2,6 +2,10 @@
 
 ## 0.38.12
 
+* `Core`:
+    * New type `TextedMediaContent` which will unite `TextedInput` and `MediaContent`
+    * `MediaGroupContent` and all subsequent inheritors have been replaced to the package `dev.inmo.tgbotapi.types.message.content.media`
+
 ## 0.38.11
 
 * `Common`:
