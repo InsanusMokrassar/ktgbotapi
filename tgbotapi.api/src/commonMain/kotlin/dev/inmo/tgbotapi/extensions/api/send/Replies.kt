@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.rawSendingMediaGroupsWarning
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InputMedia.*
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -24,7 +25,7 @@ import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.passport.encrypted.PassportFile
+import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
@@ -1061,9 +1062,158 @@ suspend fun TelegramBot.reply(
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
         )
+        is PhotoSize -> reply(
+            to = to,
+            photoSize = mediaFile,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
         else -> reply(
             to = to,
             document = mediaFile.asDocumentFile(),
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+    }
+}
+
+suspend fun TelegramBot.reply(
+    to: Message,
+    content: TextedMediaContent,
+    text: String?,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    when (content) {
+        is VoiceContent -> reply(
+            to = to,
+            voice = content.media,
+            text = text,
+            parseMode = parseMode,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is AudioMediaGroupContent -> reply(
+            to = to,
+            audio = content.media,
+            text = text,
+            parseMode = parseMode,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is PhotoContent -> reply(
+            to = to,
+            photoSize = content.media,
+            text = text,
+            parseMode = parseMode,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is VideoContent -> reply(
+            to = to,
+            video = content.media,
+            text = text,
+            parseMode = parseMode,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is AnimationContent -> reply(
+            to = to,
+            animation = content.media,
+            text = text,
+            parseMode = parseMode,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        else -> reply(
+            to = to,
+            document = content.media.asDocumentFile(),
+            text = text,
+            parseMode = parseMode,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+    }
+}
+
+suspend fun TelegramBot.reply(
+    to: Message,
+    content: TextedMediaContent,
+    entities: List<TextSource>,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    when (content) {
+        is VoiceContent -> reply(
+            to = to,
+            voice = content.media,
+            entities = entities,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is AudioMediaGroupContent -> reply(
+            to = to,
+            audio = content.media,
+            entities = entities,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is PhotoContent -> reply(
+            to = to,
+            photoSize = content.media,
+            entities = entities,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is VideoContent -> reply(
+            to = to,
+            video = content.media,
+            entities = entities,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        is AnimationContent -> reply(
+            to = to,
+            animation = content.media,
+            entities = entities,
+            disableNotification = disableNotification,
+            protectContent = protectContent,
+            allowSendingWithoutReply = allowSendingWithoutReply,
+            replyMarkup = replyMarkup
+        )
+        else -> reply(
+            to = to,
+            document = content.media.asDocumentFile(),
+            entities = entities,
             disableNotification = disableNotification,
             protectContent = protectContent,
             allowSendingWithoutReply = allowSendingWithoutReply,
