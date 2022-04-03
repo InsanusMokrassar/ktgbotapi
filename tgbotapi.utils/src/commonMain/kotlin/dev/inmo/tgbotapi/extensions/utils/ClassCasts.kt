@@ -43,6 +43,10 @@ import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.content.media.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.passport.*
@@ -2670,6 +2674,17 @@ inline fun ResendableContent.asMediaCollectionContent(): MediaCollectionContent<
 @PreviewFeature
 inline fun ResendableContent.requireMediaCollectionContent(): MediaCollectionContent<TelegramMediaFile> =
     this as MediaCollectionContent<TelegramMediaFile>
+
+@PreviewFeature
+inline fun <T> ResendableContent.whenTextedMediaContent(block: (TextedMediaContent) -> T) = asTextedMediaContent() ?.let(block)
+
+@PreviewFeature
+inline fun ResendableContent.asTextedMediaContent(): TextedMediaContent? =
+    this as? TextedMediaContent
+
+@PreviewFeature
+inline fun ResendableContent.requireTextedMediaContent(): TextedMediaContent =
+    this as TextedMediaContent
 
 @PreviewFeature
 inline fun <T> ResendableContent.whenMediaContent(block: (MediaContent) -> T) = asMediaContent() ?.let(block)

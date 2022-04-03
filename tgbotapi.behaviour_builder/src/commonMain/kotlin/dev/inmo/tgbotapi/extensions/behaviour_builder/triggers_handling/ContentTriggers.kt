@@ -14,6 +14,8 @@ import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.content.media.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.DocumentMediaGroupContent
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
@@ -319,6 +321,30 @@ suspend fun <BC : BehaviourContext> BC.onDocumentMediaGroupContent(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DocumentMediaGroupContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<DocumentMediaGroupContent>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentMediaGroupContent>>
+) = onContent(
+    initialFilter,
+    subcontextUpdatesFilter,
+    markerFactory,
+    scenarioReceiver
+)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onTextedMediaContent(
+    initialFilter: CommonMessageFilter<TextedMediaContent>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextedMediaContent>, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in CommonMessage<TextedMediaContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedMediaContent>>
 ) = onContent(
     initialFilter,
     subcontextUpdatesFilter,
