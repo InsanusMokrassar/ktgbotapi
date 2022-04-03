@@ -4,7 +4,7 @@
 
 * `Core`:
     * New type `TextedMediaContent` which will unite `TextedInput` and `MediaContent`
-    * New type `TextedMediaGroupMediaInput` which will unite `TextedMediaContent` and `MediaGroupContent`
+    * New type `TextedMediaGroupMediaContent` which will unite `TextedMediaContent` and `MediaGroupContent`
     * `MediaGroupContent` and all subsequent inheritors have been replaced to the package `dev.inmo.tgbotapi.types.message.content.media`
     * Add `reply` functions with the texted content with including of text
 

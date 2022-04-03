@@ -213,7 +213,7 @@ fun FlowsUpdatesFilter.textedMediaContentMessagesWithMediaGroups(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = merge(
     filterContentMessages<TextedMediaContent>(scopeToIncludeChannels),
-    mediaGroupTextedMediaGroupMediaInput(scopeToIncludeChannels).flatMap()
+    mediaGroupTextedMediaGroupMediaContent(scopeToIncludeChannels).flatMap()
 )
 
 fun Flow<BaseSentMessageUpdate>.videoNoteMessages() = filterContentMessages<VideoNoteContent>()
@@ -257,7 +257,7 @@ fun FlowsUpdatesFilter.mediaGroupDocumentMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = filterMediaGroupMessages<DocumentContent>(scopeToIncludeChannels)
 
-fun Flow<SentMediaGroupUpdate>.mediaGroupTextedMediaGroupMediaInput() = filterMediaGroupMessages<TextedMediaGroupMediaInput>()
-fun FlowsUpdatesFilter.mediaGroupTextedMediaGroupMediaInput(
+fun Flow<SentMediaGroupUpdate>.mediaGroupTextedMediaGroupMediaContent() = filterMediaGroupMessages<TextedMediaGroupMediaContent>()
+fun FlowsUpdatesFilter.mediaGroupTextedMediaGroupMediaContent(
     scopeToIncludeChannels: CoroutineScope? = null
-) = filterMediaGroupMessages<TextedMediaGroupMediaInput>(scopeToIncludeChannels)
+) = filterMediaGroupMessages<TextedMediaGroupMediaContent>(scopeToIncludeChannels)

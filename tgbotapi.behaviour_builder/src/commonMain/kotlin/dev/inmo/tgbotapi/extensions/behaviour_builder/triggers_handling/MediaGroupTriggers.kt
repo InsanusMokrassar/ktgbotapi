@@ -9,8 +9,11 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByC
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.asSentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.content.media.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
@@ -102,6 +105,25 @@ suspend fun <BC : BehaviourContext> BC.onVisualGallery(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<VisualMediaGroupContent>>, Update>? = MessagesFilterByChat,
     markerFactory: MarkerFactory<in List<MediaGroupMessage<VisualMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<VisualMediaGroupContent>>>
+) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onTextedMediaGroupMediaContent(
+    initialFilter: SimpleFilter<List<MediaGroupMessage<TextedMediaGroupMediaContent>>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<TextedMediaGroupMediaContent>>, Update>? = MessagesFilterByChat,
+    markerFactory: MarkerFactory<in List<MediaGroupMessage<TextedMediaGroupMediaContent>>, Any> = ByChatMediaGroupMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<TextedMediaGroupMediaContent>>>
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**

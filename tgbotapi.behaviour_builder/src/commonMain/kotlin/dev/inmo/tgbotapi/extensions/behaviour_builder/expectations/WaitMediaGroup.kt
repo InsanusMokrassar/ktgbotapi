@@ -6,6 +6,10 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.content.media.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
 import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
@@ -65,4 +69,10 @@ suspend fun BehaviourContext.waitVideoGallery(
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
     filter: MediaGroupFilter<VideoContent>? = null
+) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)
+suspend fun BehaviourContext.waitTextedMediaGroupMediaContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: MediaGroupFilter<TextedMediaGroupMediaContent>? = null
 ) = buildMediaGroupWaiter(count, initRequest, errorFactory, filter)

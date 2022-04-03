@@ -11,6 +11,10 @@ import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.content.media.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
@@ -196,6 +200,22 @@ suspend fun BehaviourContext.waitVisualMediaGroupContent(
     includeMediaGroups: Boolean = true,
     filter: SimpleFilter<CommonMessage<VisualMediaGroupContent>>? = null,
     mapper: CommonMessageToContentMapper<VisualMediaGroupContent>? = null
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitTextedMediaGroupMediaContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    includeMediaGroups: Boolean = true,
+    filter: SimpleFilter<CommonMessage<TextedMediaGroupMediaContent>>? = null,
+    mapper: CommonMessageToContentMapper<TextedMediaGroupMediaContent>? = null
+) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitTextedMediaContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    includeMediaGroups: Boolean = true,
+    filter: SimpleFilter<CommonMessage<TextedMediaContent>>? = null,
+    mapper: CommonMessageToContentMapper<TextedMediaContent>? = null
 ) = waitContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
 suspend fun BehaviourContext.waitAnimation(
     initRequest: Request<*>? = null,
