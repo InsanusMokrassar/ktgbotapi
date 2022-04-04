@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.client.features.HttpRequestTimeoutException
+import io.ktor.utils.io.CancellationException
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
@@ -89,6 +90,29 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
     updatesReceiver
 )
 
+/**
+ * @return [kotlinx.coroutines.flow.Flow] which will emit updates to the collector while they will be accumulated. Works
+ * the same as [longPollingFlow], but it will cancel the flow after the first one [HttpRequestTimeoutException]
+ */
+fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
+    avoidInlineQueries: Boolean = false,
+    avoidCallbackQueries: Boolean = false,
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
+    allowedUpdates: List<String>? = null
+): Flow<Update> = longPollingFlow(
+    timeoutSeconds = 0,
+    exceptionsHandler = {
+        if (it is HttpRequestTimeoutException) {
+            throw CancellationException("Cancel due to absence of new updates")
+        } else {
+            exceptionsHandler ?.invoke(it)
+        }
+    },
+    allowedUpdates = allowedUpdates
+).filter {
+    !(it is InlineQueryUpdate && avoidInlineQueries || it is CallbackQueryUpdate && avoidCallbackQueries)
+}
+
 fun TelegramBot.retrieveAccumulatedUpdates(
     avoidInlineQueries: Boolean = false,
     avoidCallbackQueries: Boolean = false,
@@ -96,51 +120,15 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
     allowedUpdates: List<String>? = null,
     updatesReceiver: UpdateReceiver<Update>
-): Job = scope.launch {
-    safelyWithoutExceptions {
-        startGettingOfUpdatesByLongPolling(
-            0,
-            CoroutineScope(coroutineContext + SupervisorJob()),
-            {
-                if (it is HttpRequestTimeoutException) {
-                    throw CancellationException("Cancel due to absence of new updates")
-                } else {
-                    exceptionsHandler ?.invoke(it)
-                }
-            },
-            allowedUpdates
-        ) {
-            when {
-                it is InlineQueryUpdate && avoidInlineQueries ||
-                it is CallbackQueryUpdate && avoidCallbackQueries -> return@startGettingOfUpdatesByLongPolling
-                else -> updatesReceiver(it)
-            }
-        }.join()
-    }
-}
-
-/**
- * @return [kotlinx.coroutines.flow.Flow] which will emit updates to the collector while they will be accumulated. Works
- * the same as [retrieveAccumulatedUpdates], but pass [kotlinx.coroutines.flow.FlowCollector.emit] as a callback
- */
-fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
-    avoidInlineQueries: Boolean = false,
-    avoidCallbackQueries: Boolean = false,
-    exceptionsHandler: ExceptionHandler<Unit>? = null,
-    allowedUpdates: List<String>? = null
-): Flow<Update> = channelFlow {
-    val parentContext = kotlin.coroutines.coroutineContext
-    channel.apply {
-        retrieveAccumulatedUpdates(
-            avoidInlineQueries,
-            avoidCallbackQueries,
-            CoroutineScope(parentContext),
-            exceptionsHandler,
-            allowedUpdates,
-            ::send
-        ).join()
-        close()
-    }
+): Job = createAccumulatedUpdatesRetrieverFlow(
+    avoidInlineQueries,
+    avoidCallbackQueries,
+    exceptionsHandler,
+    allowedUpdates
+).subscribeSafelyWithoutExceptions(
+    scope.LinkedSupervisorScope()
+) {
+    updatesReceiver(it)
 }
 
 fun TelegramBot.retrieveAccumulatedUpdates(
@@ -149,9 +137,30 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     avoidCallbackQueries: Boolean = false,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: ExceptionHandler<Unit>? = null
-) = flowsUpdatesFilter.run {
-    retrieveAccumulatedUpdates(avoidInlineQueries, avoidCallbackQueries, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
-}
+) = retrieveAccumulatedUpdates(
+    avoidInlineQueries,
+    avoidCallbackQueries,
+    scope,
+    exceptionsHandler,
+    flowsUpdatesFilter.allowedUpdates,
+    flowsUpdatesFilter.asUpdateReceiver
+)
+
+suspend fun TelegramBot.flushAccumulatedUpdates(
+    avoidInlineQueries: Boolean = false,
+    avoidCallbackQueries: Boolean = false,
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    allowedUpdates: List<String>? = null,
+    exceptionsHandler: ExceptionHandler<Unit>? = null,
+    updatesReceiver: UpdateReceiver<Update> = {}
+) = retrieveAccumulatedUpdates(
+    avoidInlineQueries,
+    avoidCallbackQueries,
+    scope,
+    exceptionsHandler,
+    allowedUpdates,
+    updatesReceiver
+).join()
 
 /**
  * Will [startGettingOfUpdatesByLongPolling] using incoming [flowsUpdatesFilter]. It is assumed that you ALREADY CONFIGURE
