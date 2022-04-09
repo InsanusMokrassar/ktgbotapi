@@ -12,7 +12,6 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.asDocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.DocumentMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 import kotlinx.serialization.Serializable
 

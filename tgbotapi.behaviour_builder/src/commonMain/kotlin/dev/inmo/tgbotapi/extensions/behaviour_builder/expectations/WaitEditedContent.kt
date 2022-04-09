@@ -12,6 +12,10 @@ import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.content.media.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
 import kotlinx.coroutines.flow.toList
@@ -172,6 +176,14 @@ suspend fun BehaviourContext.waitEditedVisualMediaGroupContent(
     includeMediaGroups: Boolean = true,
     filter: SimpleFilter<CommonMessage<VisualMediaGroupContent>>? = null,
     mapper: CommonMessageToContentMapper<VisualMediaGroupContent>? = null
+) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitEditedTextedMediaContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    includeMediaGroups: Boolean = true,
+    filter: SimpleFilter<CommonMessage<TextedMediaContent>>? = null,
+    mapper: CommonMessageToContentMapper<TextedMediaContent>? = null
 ) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
 suspend fun BehaviourContext.waitEditedAnimation(
     initRequest: Request<*>? = null,

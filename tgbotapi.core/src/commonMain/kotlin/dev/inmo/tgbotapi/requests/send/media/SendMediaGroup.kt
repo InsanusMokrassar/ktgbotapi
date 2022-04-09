@@ -8,8 +8,8 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InputMedia.*
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.media.AudioContent
 import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
 import dev.inmo.tgbotapi.utils.*

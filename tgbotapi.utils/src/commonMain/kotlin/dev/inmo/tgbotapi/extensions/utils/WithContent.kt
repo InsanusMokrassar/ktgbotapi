@@ -4,6 +4,7 @@ package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
 
 inline fun <reified T : MessageContent> ContentMessage<*>.withContent() = if (content is T) { this as ContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> ContentMessage<*>.requireWithContent() = withContent<T>()!!

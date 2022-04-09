@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.FileUniqueId
 import dev.inmo.tgbotapi.types.fileUniqueIdField
 import dev.inmo.tgbotapi.types.files.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
 import dev.inmo.tgbotapi.utils.MimeType
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,11 +25,15 @@ data class DocumentFile(
 ) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, CustomNamedMediaFile
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun TelegramMediaFile.asDocumentFile() = DocumentFile(
-    fileId,
-    fileUniqueId,
-    fileSize,
-    (this as? ThumbedMediaFile) ?.thumb,
-    (this as? MimedMediaFile) ?.mimeType,
-    (this as? CustomNamedMediaFile) ?.fileName
-)
+inline fun TelegramMediaFile.asDocumentFile() = if (this is DocumentFile) {
+    this
+} else {
+    DocumentFile(
+        fileId,
+        fileUniqueId,
+        fileSize,
+        (this as? ThumbedMediaFile) ?.thumb,
+        (this as? MimedMediaFile) ?.mimeType,
+        (this as? CustomNamedMediaFile) ?.fileName
+    )
+}

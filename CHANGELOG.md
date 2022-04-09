@@ -1,5 +1,19 @@
 # TelegramBotAPI changelog
 
+## 0.38.12
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.17` -> `0.9.19`
+        * `Coroutines`: `1.6.0` -> `1.6.1`
+* `Core`:
+    * New type `TextedMediaContent` which will unite `TextedInput` and `MediaContent`
+    * `MediaGroupContent` and all subsequent inheritors have been replaced to the package `dev.inmo.tgbotapi.types.message.content.media`
+    * `MediaGroupContent` Now extends `TextedMediaContent` instead of `MediaContent`
+    * Add `reply` functions with the texted content with including of text
+* `Utils`:
+    * Improve work with retrieving of accumulated updates
+
 ## 0.38.11
 
 * `Common`:

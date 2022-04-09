@@ -10,7 +10,6 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.toInputMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.VisualMediaGroupContent
 import kotlinx.serialization.Serializable
 
 @Serializable
