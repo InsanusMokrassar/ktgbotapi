@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.bot.Ktor.base
 
-import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.DownloadFileStream
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -25,13 +25,16 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
         val fullUrl = urlsKeeper.createFileLinkUrl(it.filePath)
 
         ByteReadChannelAllocator {
-            val scope = CoroutineScope(coroutineContext)
+            val scope = CoroutineScope(currentCoroutineContext() + SupervisorJob())
             val outChannel = ByteChannel()
-            scope.launchSafelyWithoutExceptions {
-                client.get<HttpStatement>(fullUrl).execute { httpResponse ->
-                    val channel: ByteReadChannel = httpResponse.receive()
-                    channel.copyAndClose(outChannel)
+            scope.launch {
+                runCatchingSafely {
+                    client.get<HttpStatement>(fullUrl).execute { httpResponse ->
+                        val channel: ByteReadChannel = httpResponse.receive()
+                        channel.copyAndClose(outChannel)
+                    }
                 }
+                scope.cancel()
             }
             outChannel
         } as T
