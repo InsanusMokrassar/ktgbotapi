@@ -75,46 +75,51 @@ class KtorRequestsExecutor(
     }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
-        return safely(
-            { e ->
-                pipelineStepsHolder.onRequestException(request, e) ?.let { return@safely it }
+        return runCatching {
+            safely(
+                { e ->
+                    pipelineStepsHolder.onRequestException(request, e) ?.let { return@safely it }
 
-                throw if (e is ClientRequestException) {
-                    val content = e.response.readText()
-                    val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
-                    newRequestException(
-                        responseObject,
-                        content,
-                        "Can't get result object from $content"
-                    )
-                } else {
-                    e
-                }
-            }
-        ) {
-            pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
-            requestsLimiter.limit {
-                var result: T? = null
-                lateinit var factoryHandledRequest: KtorCallFactory
-                for (potentialFactory in callsFactories) {
-                    pipelineStepsHolder.onBeforeCallFactoryMakeCall(request, potentialFactory)
-                    result = potentialFactory.makeCall(
-                        client,
-                        telegramAPIUrlsKeeper,
-                        request,
-                        jsonFormatter
-                    )
-                    result = pipelineStepsHolder.onAfterCallFactoryMakeCall(result, request, potentialFactory)
-                    if (result != null) {
-                        factoryHandledRequest = potentialFactory
-                        break
+                    throw if (e is ClientRequestException) {
+                        val content = e.response.readText()
+                        val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
+                        newRequestException(
+                            responseObject,
+                            content,
+                            "Can't get result object from $content"
+                        )
+                    } else {
+                        e
                     }
-                }
 
-                result ?.let {
-                    pipelineStepsHolder.onRequestResultPresented(it, request, factoryHandledRequest, callsFactories)
-                } ?: pipelineStepsHolder.onRequestResultAbsent(request, callsFactories) ?: error("Can't execute request: $request")
+                }
+            ) {
+                pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
+                requestsLimiter.limit {
+                    var result: T? = null
+                    lateinit var factoryHandledRequest: KtorCallFactory
+                    for (potentialFactory in callsFactories) {
+                        pipelineStepsHolder.onBeforeCallFactoryMakeCall(request, potentialFactory)
+                        result = potentialFactory.makeCall(
+                            client,
+                            telegramAPIUrlsKeeper,
+                            request,
+                            jsonFormatter
+                        )
+                        result = pipelineStepsHolder.onAfterCallFactoryMakeCall(result, request, potentialFactory)
+                        if (result != null) {
+                            factoryHandledRequest = potentialFactory
+                            break
+                        }
+                    }
+
+                    result ?.let {
+                        pipelineStepsHolder.onRequestResultPresented(it, request, factoryHandledRequest, callsFactories)
+                    } ?: pipelineStepsHolder.onRequestResultAbsent(request, callsFactories) ?: error("Can't execute request: $request")
+                }
             }
+        }.let {
+            pipelineStepsHolder.onRequestReturnResult(it, request, callsFactories)
         }
     }
 

@@ -34,7 +34,7 @@ interface KtorPipelineStepsHolder {
      * Will always be called after [potentialFactory] has tried to make [request] and got some [result]. If returns
      * value - that value will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
      */
-    suspend fun <T : Any> onAfterCallFactoryMakeCall(
+    suspend fun <T: Any> onAfterCallFactoryMakeCall(
         result: T?,
         request: Request<T>,
         potentialFactory: KtorCallFactory
@@ -45,7 +45,7 @@ interface KtorPipelineStepsHolder {
      * handled [request] and returned [result]. If returns value - that value will be returned from
      * [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
      */
-    suspend fun <T : Any> onRequestResultPresented(
+    suspend fun <T: Any> onRequestResultPresented(
         result: T,
         request: Request<T>,
         resultCallFactory: KtorCallFactory,
@@ -56,8 +56,18 @@ interface KtorPipelineStepsHolder {
      * Will be called when there is no [KtorCallFactory] from [callsFactories] which may handle [request]. If returns
      * value - that value will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
      */
-    suspend fun <T : Any> onRequestResultAbsent(
+    suspend fun <T: Any> onRequestResultAbsent(
         request: Request<T>,
         callsFactories: List<KtorCallFactory>
     ): T? = null
+
+    /**
+     * This step will be called when the [result] has been retrieved (or exception has happened). If returns value -
+     * that value will be returned from [dev.inmo.tgbotapi.bot.RequestsExecutor.execute] instead
+     */
+    suspend fun <T: Any> onRequestReturnResult(
+        result: Result<T>,
+        request: Request<T>,
+        callsFactories: List<KtorCallFactory>
+    ): T = result.getOrThrow()
 }
