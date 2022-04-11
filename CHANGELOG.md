@@ -2,6 +2,9 @@
 
 ## 0.38.13
 
+* `Core`:
+    * Fixes in `mention` creation
+
 ## 0.38.12
 
 * `Common`:
