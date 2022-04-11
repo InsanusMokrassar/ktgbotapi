@@ -4,6 +4,7 @@
 
 * `Core`:
     * Fixes in `mention` creation
+    * Deprecate `StorageFileInfo`
 
 ## 0.38.12
 

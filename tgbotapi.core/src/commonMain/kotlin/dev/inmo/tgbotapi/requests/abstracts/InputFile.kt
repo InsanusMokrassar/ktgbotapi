@@ -61,9 +61,9 @@ object InputFileSerializer : KSerializer<InputFile> {
 @Serializable(InputFileSerializer::class)
 data class MultipartFile (
     val file: StorageFile,
-    val filename: String = file.storageFileInfo.fileName
+    val filename: String = file.fileName
 ) : InputFile() {
-    override val fileId: String = file.storageFileInfo.generateCustomName()
+    override val fileId: String = file.generateCustomName()
 }
 
 @Suppress("NOTHING_TO_INLINE", "unused")

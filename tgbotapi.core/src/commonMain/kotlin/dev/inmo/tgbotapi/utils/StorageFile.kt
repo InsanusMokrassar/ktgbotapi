@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.utils
 
 import com.benasher44.uuid.uuid4
+import dev.inmo.micro_utils.common.MPPFile
+import dev.inmo.micro_utils.common.filename
 import io.ktor.utils.io.*
 import io.ktor.utils.io.core.ByteReadPacket
 import io.ktor.utils.io.core.Input
@@ -13,6 +15,7 @@ import kotlinx.serialization.Serializable
  * @param fileName This filename will be used in telegram system as name of file
  */
 @Serializable
+@Deprecated("Will be removed soon")
 data class StorageFileInfo(
     val fileName: String
 ) {
@@ -25,18 +28,35 @@ data class StorageFileInfo(
 /**
  * Contains info about file, which potentially can be sent to telegram system.
  *
- * @param storageFileInfo Information about this file
+ * @param fileName Filename
  * @param inputSource Lambda which able to allocate [Input] for uploading/manipulating data
  *
  * @see StorageFileInfo
  * @see asStorageFile
  */
 data class StorageFile(
-    val storageFileInfo: StorageFileInfo,
+    val fileName: String,
     private val inputSource: () -> Input
 ) {
     val input: Input
         get() = inputSource()
+    @Deprecated("This field will be removed soon. Use fileName instead of StorageFileInfo")
+    val storageFileInfo: StorageFileInfo
+        get() = StorageFileInfo(fileName)
+
+    /**
+     * This methods is required for random generation of name for keeping warranties about unique file name
+     */
+    fun generateCustomName() = "${uuid4()}.${fileName.fileExtension}"
+
+    @Deprecated("This constructor will be removed soon. Use constructor with fileName instead of StorageFileInfo")
+    constructor(
+        storageFileInfo: StorageFileInfo,
+        inputSource: () -> Input
+    ) : this(
+        storageFileInfo.fileName,
+        inputSource
+    )
 }
 
 @Suppress("NOTHING_TO_INLINE")
@@ -44,7 +64,7 @@ inline fun StorageFile(
     fileName: String,
     bytes: ByteArray
 ) = StorageFile(
-    StorageFileInfo(fileName)
+    fileName
 ) {
     ByteReadPacket(bytes)
 }
@@ -54,8 +74,8 @@ suspend inline fun StorageFile(
     fileName: String,
     byteReadChannel: ByteReadChannel
 ) = StorageFile(
-    StorageFileInfo(fileName),
-    byteReadChannel.asInput().let { { it } }
+    fileName,
+    inputSource = byteReadChannel.asInput().let { { it } }
 )
 
 @Suppress("NOTHING_TO_INLINE", "unused")
