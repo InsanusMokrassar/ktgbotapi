@@ -5,6 +5,8 @@
 * `Core`:
     * Fixes in `mention` creation
     * Deprecate `StorageFileInfo`
+* `BehaviourBuilder`:
+    * In the expectations a lot of `on*Message` extensions have been added (like `onContentMessage`). These extensions could be useful when with the `Content` its message info is important
 
 ## 0.38.12
 
