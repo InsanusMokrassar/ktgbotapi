@@ -70,4 +70,6 @@ interface KtorPipelineStepsHolder {
         request: Request<T>,
         callsFactories: List<KtorCallFactory>
     ): T = result.getOrThrow()
+
+    companion object : KtorPipelineStepsHolder
 }
