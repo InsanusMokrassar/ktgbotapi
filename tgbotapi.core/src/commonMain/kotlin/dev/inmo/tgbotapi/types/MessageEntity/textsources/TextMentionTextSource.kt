@@ -33,7 +33,12 @@ inline fun mention(parts: TextSourcesList, id: Identifier) = mention(parts, User
 @Suppress("NOTHING_TO_INLINE")
 inline fun Identifier.mention(parts: TextSourcesList) = mention(parts, this)
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(user: User, vararg parts: TextSource) = mention(parts.toList(), user)
+inline fun mention(user: User, vararg parts: TextSource) = mention(
+    textSourcesOrElseTextSource(parts.toList()) {
+        RegularTextSource("${user.lastName} ${user.firstName}")
+    },
+    user
+)
 @Suppress("NOTHING_TO_INLINE")
 inline fun mention(text: String, user: User) = mention(user, regular(text))
 @Suppress("NOTHING_TO_INLINE")

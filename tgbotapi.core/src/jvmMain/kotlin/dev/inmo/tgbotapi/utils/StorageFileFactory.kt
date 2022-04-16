@@ -7,7 +7,7 @@ import java.nio.file.Files
 fun StorageFile(
     file: File
 ) = StorageFile(
-    StorageFileInfo(file.name)
+    file.name
 ) {
     file.inputStream().asInput()
 }
