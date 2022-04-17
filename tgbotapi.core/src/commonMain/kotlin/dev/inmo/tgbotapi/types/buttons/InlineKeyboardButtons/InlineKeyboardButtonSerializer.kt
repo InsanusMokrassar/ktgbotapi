@@ -37,7 +37,7 @@ object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
 
         return (json as? JsonObject) ?.let { resolveSerializer(it) } ?.let {
             nonstrictJsonFormat.decodeFromJsonElement(it, json)
-        } ?: UnknownInlineKeyboardButton("", json)
+        } ?: UnknownInlineKeyboardButton(json)
     }
 
     override fun serialize(encoder: Encoder, value: InlineKeyboardButton) {
