@@ -84,10 +84,10 @@ internal data class RawMessage(
     private val successful_payment: SuccessfulPayment? = null,
 
     // Voice Chat Service Messages
-    private val voice_chat_scheduled: VoiceChatScheduled? = null,
-    private val voice_chat_started: VoiceChatStarted? = null,
-    private val voice_chat_ended: VoiceChatEnded? = null,
-    private val voice_chat_participants_invited: VoiceChatParticipantsInvited? = null,
+    private val video_chat_scheduled: VideoChatScheduled? = null,
+    private val video_chat_started: VideoChatStarted? = null,
+    private val video_chat_ended: VideoChatEnded? = null,
+    private val video_chat_participants_invited: VideoChatParticipantsInvited? = null,
 
     // AutoDelete Message time changed
     private val message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged? = null,
@@ -186,11 +186,11 @@ internal data class RawMessage(
             left_chat_member != null -> LeftChatMember(left_chat_member)
             new_chat_title != null -> NewChatTitle(new_chat_title)
             new_chat_photo != null -> NewChatPhoto(new_chat_photo.toList())
-            voice_chat_started != null -> voice_chat_started
-            voice_chat_scheduled != null -> voice_chat_scheduled
+            video_chat_started != null -> video_chat_started
+            video_chat_scheduled != null -> video_chat_scheduled
             message_auto_delete_timer_changed != null -> message_auto_delete_timer_changed
-            voice_chat_ended != null -> voice_chat_ended
-            voice_chat_participants_invited != null -> voice_chat_participants_invited
+            video_chat_ended != null -> video_chat_ended
+            video_chat_participants_invited != null -> video_chat_participants_invited
             delete_chat_photo -> DeleteChatPhoto()
             group_chat_created -> GroupChatCreated(
                 migrate_to_chat_id

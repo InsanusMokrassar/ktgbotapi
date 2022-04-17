@@ -177,17 +177,33 @@ inline val Message.successful_payment: SuccessfulPayment?
     get() = asChatEventMessage() ?.chatEvent ?.asSuccessfulPaymentEvent() ?.payment
 
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.voice_chat_scheduled: VoiceChatScheduled?
+@Deprecated("Renamed as video instead of voice")
+inline val Message.voice_chat_scheduled: VideoChatScheduled?
     get() = asChatEventMessage() ?.chatEvent ?.asVoiceChatScheduled()
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.voice_chat_started: VoiceChatStarted?
+@Deprecated("Renamed as video instead of voice")
+inline val Message.voice_chat_started: VideoChatStarted?
     get() = asChatEventMessage() ?.chatEvent ?.asVoiceChatStarted()
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.voice_chat_ended: VoiceChatEnded?
+@Deprecated("Renamed as video instead of voice")
+inline val Message.voice_chat_ended: VideoChatEnded?
     get() = asChatEventMessage() ?.chatEvent ?.asVoiceChatEnded()
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.voice_chat_participants_invited: VoiceChatParticipantsInvited?
+@Deprecated("Renamed as video instead of voice")
+inline val Message.voice_chat_participants_invited: VideoChatParticipantsInvited?
     get() = asChatEventMessage() ?.chatEvent ?.asVoiceChatParticipantsInvited()
+@RiskFeature(RawFieldsUsageWarning)
+inline val Message.video_chat_scheduled: VideoChatScheduled?
+    get() = asChatEventMessage() ?.chatEvent ?.asVideoChatScheduled()
+@RiskFeature(RawFieldsUsageWarning)
+inline val Message.video_chat_started: VideoChatStarted?
+    get() = asChatEventMessage() ?.chatEvent ?.asVideoChatStarted()
+@RiskFeature(RawFieldsUsageWarning)
+inline val Message.video_chat_ended: VideoChatEnded?
+    get() = asChatEventMessage() ?.chatEvent ?.asVideoChatEnded()
+@RiskFeature(RawFieldsUsageWarning)
+inline val Message.video_chat_participants_invited: VideoChatParticipantsInvited?
+    get() = asChatEventMessage() ?.chatEvent ?.asVideoChatParticipantsInvited()
 
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged?

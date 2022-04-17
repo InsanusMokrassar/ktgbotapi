@@ -89,33 +89,66 @@ suspend fun BehaviourContext.waitChatEvents(
     mapper: EventMessageToEventMapper<ChatEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
 
+@Deprecated("Renamed as Video instead of Voice")
 suspend fun BehaviourContext.waitVoiceChatEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VoiceChatEvent>>? = null,
-    mapper: EventMessageToEventMapper<VoiceChatEvent>? = null
+    filter: SimpleFilter<ChatEventMessage<VideoChatEvent>>? = null,
+    mapper: EventMessageToEventMapper<VideoChatEvent>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+@Deprecated("Renamed as Video instead of Voice")
 suspend fun BehaviourContext.waitVoiceChatStartedEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VoiceChatStarted>>? = null,
-    mapper: EventMessageToEventMapper<VoiceChatStarted>? = null
+    filter: SimpleFilter<ChatEventMessage<VideoChatStarted>>? = null,
+    mapper: EventMessageToEventMapper<VideoChatStarted>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+@Deprecated("Renamed as Video instead of Voice")
 suspend fun BehaviourContext.waitVoiceChatEndedEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VoiceChatEnded>>? = null,
-    mapper: EventMessageToEventMapper<VoiceChatEnded>? = null
+    filter: SimpleFilter<ChatEventMessage<VideoChatEnded>>? = null,
+    mapper: EventMessageToEventMapper<VideoChatEnded>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+@Deprecated("Renamed as Video instead of Voice")
 suspend fun BehaviourContext.waitVoiceChatParticipantsInvitedEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VoiceChatParticipantsInvited>>? = null,
-    mapper: EventMessageToEventMapper<VoiceChatParticipantsInvited>? = null
+    filter: SimpleFilter<ChatEventMessage<VideoChatParticipantsInvited>>? = null,
+    mapper: EventMessageToEventMapper<VideoChatParticipantsInvited>? = null
+) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+
+suspend fun BehaviourContext.waitVideoChatEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<ChatEventMessage<VideoChatEvent>>? = null,
+    mapper: EventMessageToEventMapper<VideoChatEvent>? = null
+) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitVideoChatStartedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<ChatEventMessage<VideoChatStarted>>? = null,
+    mapper: EventMessageToEventMapper<VideoChatStarted>? = null
+) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitVideoChatEndedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<ChatEventMessage<VideoChatEnded>>? = null,
+    mapper: EventMessageToEventMapper<VideoChatEnded>? = null
+) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitVideoChatParticipantsInvitedEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<ChatEventMessage<VideoChatParticipantsInvited>>? = null,
+    mapper: EventMessageToEventMapper<VideoChatParticipantsInvited>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
 
 suspend fun BehaviourContext.waitMessageAutoDeleteTimerChangedEvents(
