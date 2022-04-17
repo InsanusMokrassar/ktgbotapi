@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.message.content.abstracts
 
 import dev.inmo.tgbotapi.types.InputMedia.InputMedia
-import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
+import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 
 interface MediaContent: MessageContent {
     val media: TelegramMediaFile

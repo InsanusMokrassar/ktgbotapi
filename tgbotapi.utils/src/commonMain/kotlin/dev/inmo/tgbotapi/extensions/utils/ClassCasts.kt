@@ -30,9 +30,9 @@ import dev.inmo.tgbotapi.types.chat.abstracts.*
 import dev.inmo.tgbotapi.types.chat.abstracts.extended.*
 import dev.inmo.tgbotapi.types.dice.*
 import dev.inmo.tgbotapi.types.files.*
-import dev.inmo.tgbotapi.types.files.abstracts.*
-import dev.inmo.tgbotapi.types.files.sticker.*
-import dev.inmo.tgbotapi.types.files.sticker.Sticker
+import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.*

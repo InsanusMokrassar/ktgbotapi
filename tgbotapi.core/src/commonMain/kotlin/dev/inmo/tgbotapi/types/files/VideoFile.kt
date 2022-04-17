@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
-import dev.inmo.tgbotapi.types.files.abstracts.*
 import dev.inmo.tgbotapi.utils.MimeType
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

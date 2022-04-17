@@ -22,7 +22,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByC
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.asEditMessageUpdate
 import dev.inmo.tgbotapi.extensions.utils.withContent
-import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
+import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.*

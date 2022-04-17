@@ -189,6 +189,13 @@ const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
 const val requestPollField = "request_poll"
 
+const val fileNameField = "file_name"
+const val mimeTypeField = "mime_type"
+const val fileIdField = "file_id"
+const val fileSizeField = "file_size"
+const val fileDateField = "file_date"
+const val filePathField = "file_path"
+
 
 const val requestWriteAccessField = "request_write_access"
 

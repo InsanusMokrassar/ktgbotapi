@@ -3,7 +3,9 @@
 ## 1.0.0
 
 * `Core`:
-    * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json`
+    * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json` ([#563](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/563))
+    * All the interfaces from `dev.inmo.tgbotapi.types.files.abstracts` have been replaced to `dev.inmo.tgbotapi.types.files` and converted to sealed ([#550](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/550))
+    * `PassportFile` has been replaced to `dev.inmo.tgbotapi.types.files`
 
 ## 0.38.13
 

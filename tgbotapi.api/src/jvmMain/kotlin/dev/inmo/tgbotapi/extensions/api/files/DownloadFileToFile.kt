@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.get.getFileAdditionalInfo
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.files.PathedFile
-import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
+import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 import io.ktor.util.cio.use
 import io.ktor.util.cio.writeChannel

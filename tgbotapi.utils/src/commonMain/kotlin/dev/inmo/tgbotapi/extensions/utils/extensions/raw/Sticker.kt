@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.extensions.raw
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.files.sticker.*
+import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 
 inline val Sticker.file_id: FileId
