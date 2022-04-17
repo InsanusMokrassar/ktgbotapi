@@ -1,15 +1,11 @@
-package dev.inmo.tgbotapi.types.ChatMember
+package dev.inmo.tgbotapi.types
 
-import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.ChatMember.abstracts.AdministratorChatMember
-import kotlinx.serialization.*
+import dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatAdministratorRights
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
-data class AdministratorChatMemberImpl(
-    @SerialName(userField)
-    override val user: User,
-    @SerialName(canBeEditedField)
-    override val canBeEdited: Boolean = false,
+data class ChatAdministratorRightsImpl(
     @SerialName(canChangeInfoField)
     override val canChangeInfo: Boolean = false,
     @SerialName(canPostMessagesField)
@@ -31,11 +27,5 @@ data class AdministratorChatMemberImpl(
     @SerialName(canManageChatField)
     override val canManageChat: Boolean = false,
     @SerialName(isAnonymousField)
-    override val isAnonymous: Boolean = false,
-    @SerialName(customTitleField)
-    override val customTitle: String? = null
-) : AdministratorChatMember {
-    @SerialName(statusField)
-    @Required
-    private val type: String = "administrator"
-}
+    override val isAnonymous: Boolean = false
+) : ChatAdministratorRights
