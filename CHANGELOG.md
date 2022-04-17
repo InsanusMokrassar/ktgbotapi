@@ -2,6 +2,9 @@
 
 ## 1.0.0
 
+* `Core`:
+    * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json`
+
 ## 0.38.13
 
 * `Core`:
