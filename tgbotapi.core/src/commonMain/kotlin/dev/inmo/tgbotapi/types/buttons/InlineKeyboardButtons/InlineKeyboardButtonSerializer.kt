@@ -48,6 +48,7 @@ object InlineKeyboardButtonSerializer : KSerializer<InlineKeyboardButton> {
             is SwitchInlineQueryInlineKeyboardButton -> SwitchInlineQueryInlineKeyboardButton.serializer().serialize(encoder, value)
             is SwitchInlineQueryCurrentChatInlineKeyboardButton -> SwitchInlineQueryCurrentChatInlineKeyboardButton.serializer().serialize(encoder, value)
             is URLInlineKeyboardButton -> URLInlineKeyboardButton.serializer().serialize(encoder, value)
+            is WebAppInlineKeyboardButton -> WebAppInlineKeyboardButton.serializer().serialize(encoder, value)
             is CallbackGameInlineKeyboardButton -> CallbackGameInlineKeyboardButton.serializer().serialize(encoder, value)
             is UnknownInlineKeyboardButton -> JsonElement.serializer().serialize(encoder, value.rawData)
         }

@@ -2517,6 +2517,16 @@ inline fun InlineKeyboardButton.requireURLInlineKeyboardButton(): URLInlineKeybo
     this as URLInlineKeyboardButton
 
 @PreviewFeature
+inline fun <T> InlineKeyboardButton.whenWebAppKeyboardButton(block: (WebAppKeyboardButton) -> T) = asWebAppKeyboardButton() ?.let(block)
+
+@PreviewFeature
+inline fun InlineKeyboardButton.asWebAppKeyboardButton(): WebAppKeyboardButton? = this as? WebAppKeyboardButton
+
+@PreviewFeature
+inline fun InlineKeyboardButton.requireWebAppKeyboardButton(): WebAppKeyboardButton =
+    this as WebAppKeyboardButton
+
+@PreviewFeature
 inline fun <T> InlineKeyboardButton.whenUnknownInlineKeyboardButton(block: (UnknownInlineKeyboardButton) -> T) = asUnknownInlineKeyboardButton() ?.let(block)
 
 @PreviewFeature

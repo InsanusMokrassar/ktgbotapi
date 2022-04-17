@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
@@ -63,9 +64,21 @@ data class RequestLocationKeyboardButton(
     override val text: String
 ) : KeyboardButton {
     @SerialName(requestLocationField)
-    @EncodeDefault
+    @Required
     val requestLocation: Boolean = true
 }
+
+/**
+ * Private chats only. Description of the Web App that will be launched when the user presses the button. The Web App
+ * will be able to send an arbitrary message on behalf of the user using the method `answerWebAppQuery`. Available only
+ * in private chats between a user and the bot.
+ */
+@Serializable
+data class WebAppKeyboardButton(
+    override val text: String,
+    @SerialName(webAppField)
+    val webApp: WebAppInfo
+) : KeyboardButton
 
 /**
  * Private chats only. When user will tap on this button, he will be asked for the poll with [requestPoll] options. You will be able
@@ -97,6 +110,13 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
             asJson is JsonObject && asJson[requestLocationField] != null -> RequestLocationKeyboardButton(
                 asJson[textField]!!.jsonPrimitive.content
             )
+            asJson is JsonObject && asJson[webAppField] != null -> WebAppKeyboardButton(
+                asJson[textField]!!.jsonPrimitive.content,
+                nonstrictJsonFormat.decodeFromJsonElement(
+                    WebAppInfo.serializer(),
+                    asJson[webAppField]!!
+                )
+            )
             asJson is JsonObject && asJson[requestPollField] != null -> RequestPollKeyboardButton(
                 asJson[textField]!!.jsonPrimitive.content,
                 nonstrictJsonFormat.decodeFromJsonElement(
@@ -119,6 +139,7 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
         when (value) {
             is RequestContactKeyboardButton -> RequestContactKeyboardButton.serializer().serialize(encoder, value)
             is RequestLocationKeyboardButton -> RequestLocationKeyboardButton.serializer().serialize(encoder, value)
+            is WebAppKeyboardButton -> WebAppKeyboardButton.serializer().serialize(encoder, value)
             is RequestPollKeyboardButton -> RequestPollKeyboardButton.serializer().serialize(encoder, value)
             is SimpleKeyboardButton -> encoder.encodeString(value.text)
             is UnknownKeyboardButton -> JsonElement.serializer().serialize(encoder, nonstrictJsonFormat.parseToJsonElement(value.raw))

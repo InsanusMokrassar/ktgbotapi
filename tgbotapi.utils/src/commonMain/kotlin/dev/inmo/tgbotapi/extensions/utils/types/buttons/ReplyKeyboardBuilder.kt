@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
 import dev.inmo.tgbotapi.types.buttons.*
+import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 import dev.inmo.tgbotapi.utils.MatrixBuilder
 import dev.inmo.tgbotapi.utils.RowBuilder
 
@@ -98,3 +99,14 @@ inline fun ReplyKeyboardRowBuilder.requestPollButton(
     text: String,
     pollType: KeyboardButtonPollType
 ) = add(RequestPollKeyboardButton(text, pollType))
+
+/**
+ * Creates and put [WebAppKeyboardButton]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun ReplyKeyboardRowBuilder.webAppButton(
+    text: String,
+    webApp: WebAppInfo
+) = add(WebAppKeyboardButton(text, webApp))
