@@ -4,15 +4,18 @@ import com.soywiz.klock.TimeSpan
 import com.soywiz.klock.seconds
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.durationField
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VoiceChatEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class VoiceChatEnded(
+data class VideoChatEnded(
     @SerialName(durationField)
     val duration: Seconds
-) : VoiceChatEvent {
+) : VideoChatEvent {
     val timeSpan: TimeSpan
         get() = TimeSpan(duration.seconds.milliseconds)
 }
+
+@Deprecated("Renamed", ReplaceWith("VideoChatEnded", "dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded"))
+typealias VoiceChatEnded = VideoChatEnded
