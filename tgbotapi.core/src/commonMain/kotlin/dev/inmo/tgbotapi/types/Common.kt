@@ -439,3 +439,5 @@ const val passportRegistrationField = "passport_registration"
 const val temporaryRegistrationField = "temporary_registration"
 
 const val buttonTextField = "button_text"
+const val webAppField = "web_app"
+const val menuButtonField = "menu_button"
