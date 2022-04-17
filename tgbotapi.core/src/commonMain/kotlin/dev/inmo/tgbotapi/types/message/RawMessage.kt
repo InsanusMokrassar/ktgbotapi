@@ -95,6 +95,9 @@ internal data class RawMessage(
     // login property
     private val connected_website: String? = null,
 
+    // login property
+    private val web_app_data: WebAppData? = null,
+
     // passport property
     private val passport_data: PassportData? = null,
     private val proximity_alert_triggered: ProximityAlertTriggered? = null,
@@ -203,6 +206,7 @@ internal data class RawMessage(
             proximity_alert_triggered != null -> proximity_alert_triggered
             successful_payment != null -> SuccessfulPaymentEvent(successful_payment)
             connected_website != null -> UserLoggedIn(connected_website)
+            web_app_data != null -> web_app_data
             else -> null
         }
     }

@@ -437,3 +437,5 @@ const val bankStatementField = "bank_statement"
 const val rentalAgreementField = "rental_agreement"
 const val passportRegistrationField = "passport_registration"
 const val temporaryRegistrationField = "temporary_registration"
+
+const val buttonTextField = "button_text"
