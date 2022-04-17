@@ -18,7 +18,7 @@ suspend fun TelegramBot.promoteChatMember(
     canRestrictMembers: Boolean? = null,
     canPinMessages: Boolean? = null,
     canPromoteMembers: Boolean? = null,
-    canManageVoiceChats: Boolean? = null,
+    canManageVideoChats: Boolean? = null,
     canManageChat: Boolean?
 ) = execute(
     PromoteChatMember(
@@ -34,7 +34,7 @@ suspend fun TelegramBot.promoteChatMember(
         canRestrictMembers,
         canPinMessages,
         canPromoteMembers,
-        canManageVoiceChats,
+        canManageVideoChats,
         canManageChat
     )
 )
@@ -52,7 +52,7 @@ suspend fun TelegramBot.promoteChatMember(
     canRestrictMembers: Boolean? = null,
     canPinMessages: Boolean? = null,
     canPromoteMembers: Boolean? = null,
-    canManageVoiceChats: Boolean? = null,
+    canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null
 ) = promoteChatMember(
     chat.id,
@@ -67,7 +67,7 @@ suspend fun TelegramBot.promoteChatMember(
     canRestrictMembers,
     canPinMessages,
     canPromoteMembers,
-    canManageVoiceChats,
+    canManageVideoChats,
     canManageChat
 )
 
@@ -84,7 +84,7 @@ suspend fun TelegramBot.promoteChatMember(
     canRestrictMembers: Boolean? = null,
     canPinMessages: Boolean? = null,
     canPromoteMembers: Boolean? = null,
-    canManageVoiceChats: Boolean? = null,
+    canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null
 ) = promoteChatMember(
     chatId,
@@ -99,7 +99,7 @@ suspend fun TelegramBot.promoteChatMember(
     canRestrictMembers,
     canPinMessages,
     canPromoteMembers,
-    canManageVoiceChats,
+    canManageVideoChats,
     canManageChat
 )
 
@@ -116,7 +116,7 @@ suspend fun TelegramBot.promoteChatMember(
     canRestrictMembers: Boolean? = null,
     canPinMessages: Boolean? = null,
     canPromoteMembers: Boolean? = null,
-    canManageVoiceChats: Boolean? = null,
+    canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null
 ) = promoteChatMember(
     chat.id,
@@ -131,6 +131,6 @@ suspend fun TelegramBot.promoteChatMember(
     canRestrictMembers,
     canPinMessages,
     canPromoteMembers,
-    canManageVoiceChats,
+    canManageVideoChats,
     canManageChat
 )
