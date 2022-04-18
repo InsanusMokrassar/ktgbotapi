@@ -64,7 +64,7 @@ kotlin {
             dependencies {
                 implementation kotlin('test-common')
                 implementation kotlin('test-annotations-common')
-                implementation project(":tgbotapi.extensions.utils")
+                implementation project(":tgbotapi.utils")
             }
         }
 
