@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.webapps
 
+import dev.inmo.micro_utils.crypto.CryptoJS
+
 external class WebApp {
     val initData: String
     val initDataUnsafe: WebAppInitData
@@ -73,3 +75,7 @@ fun WebApp.onMainButtonClicked(eventHandler: EventHandler) = onEvent(EventType.M
  * @return The callback which should be used in case you want to turn off events handling
  */
 fun WebApp.onViewportChanged(eventHandler: ViewportChangedEventHandler) = onEvent(EventType.ViewportChanged, eventHandler)
+
+fun WebApp.isInitDataSafe(botToken: String) = CryptoJS.hex(
+    CryptoJS.HmacSHA256(botToken, "WebAppData")
+) == initDataUnsafe.hash
