@@ -6,6 +6,8 @@ __This update contains including of [Telegram Bot API 6.0](https://core.telegram
 
 * `Core`:
     * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json`
+* `WebApps`:
+    * Created 🎉
 
 ## 0.38.13
 
