@@ -40,11 +40,17 @@ kotlin {
             dependencies {
                 implementation kotlin('stdlib')
 
-                rootProject.subprojects.forEach {
-                    if (it != project) {
-                        api it
-                    }
-                }
+                api project(":tgbotapi.core")
+                api project(":tgbotapi.api")
+                api project(":tgbotapi.utils")
+                api project(":tgbotapi.behaviour_builder")
+                api project(":tgbotapi.behaviour_builder.fsm")
+                api project(":tgbotapi")
+            }
+        }
+        jsMain {
+            dependencies {
+                api project(":tgbotapi.webapps")
             }
         }
     }
