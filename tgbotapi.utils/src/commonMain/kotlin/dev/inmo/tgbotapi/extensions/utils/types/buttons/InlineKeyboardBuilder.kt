@@ -140,3 +140,14 @@ inline fun InlineKeyboardRowBuilder.webAppButton(
     text: String,
     webApp: WebAppInfo
 ) = add(WebAppInlineKeyboardButton(text, webApp))
+
+/**
+ * Creates and put [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.webAppButton(
+    text: String,
+    url: String
+) = webAppButton(text, WebAppInfo(url))
