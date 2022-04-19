@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
+import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import kotlinx.coroutines.flow.toList
@@ -274,3 +275,10 @@ suspend fun BehaviourContext.waitUserLoggedInEvents(
     filter: SimpleFilter<ChatEventMessage<UserLoggedIn>>? = null,
     mapper: EventMessageToEventMapper<UserLoggedIn>? = null
 ) = waitEvents(count, initRequest, errorFactory, filter, mapper)
+suspend fun BehaviourContext.waitWebAppDataEvents(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+    count: Int = 1,
+    filter: SimpleFilter<PrivateEventMessage<WebAppData>>? = null,
+    mapper: EventMessageToEventMapper<WebAppData>? = null
+) = waitEvents(count, initRequest, errorFactory, filter ?.let { { it is PrivateEventMessage && filter(it) } }, mapper)
