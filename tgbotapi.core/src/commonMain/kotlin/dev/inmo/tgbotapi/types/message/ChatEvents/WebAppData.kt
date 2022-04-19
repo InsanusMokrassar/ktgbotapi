@@ -7,7 +7,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class WebAppData(
+data class WebAppData(
     @SerialName(dataField)
     val data: String,
     @SerialName(buttonTextField)
