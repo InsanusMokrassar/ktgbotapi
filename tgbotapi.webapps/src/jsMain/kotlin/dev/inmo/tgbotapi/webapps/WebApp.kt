@@ -19,11 +19,11 @@ external class WebApp {
 
     internal fun onEvent(type: String, callback: () -> Unit)
     @JsName("onEvent")
-    internal fun onEventWithBoolean(type: String, callback: (Boolean) -> Unit)
+    internal fun onEventWithBoolean(type: String, callback: (ViewportChangedData) -> Unit)
 
     fun offEvent(type: String, callback: () -> Unit)
     @JsName("offEvent")
-    fun offEventWithBoolean(type: String, callback: (Boolean) -> Unit)
+    fun offEventWithBoolean(type: String, callback: (ViewportChangedData) -> Unit)
 
     fun sendData(data: String)
 
@@ -54,7 +54,7 @@ fun WebApp.onEvent(type: EventType, eventHandler: EventHandler) = {
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ViewportChanged, eventHandler: ViewportChangedEventHandler) = { it: Boolean ->
+fun WebApp.onEvent(type: EventType.ViewportChanged, eventHandler: ViewportChangedEventHandler) = { it: ViewportChangedData ->
     eventHandler(js("this").unsafeCast<WebApp>(), it)
 }.also {
     onEventWithBoolean(
