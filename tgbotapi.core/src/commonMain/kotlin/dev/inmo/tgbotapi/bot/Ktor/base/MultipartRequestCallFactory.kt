@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.bot.Ktor.base
 
-import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.mapWithCommonValues
@@ -26,7 +25,7 @@ class MultipartRequestCallFactory : AbstractRequestCallFactory() {
                             Headers.build {
                                 append(HttpHeaders.ContentDisposition, "filename=${value.filename}")
                             },
-                            block = value.file::input
+                            block = value::input
                         )
                         is FileId -> append(key, value.fileId)
                         else -> append(key, value.toString())

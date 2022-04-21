@@ -10,6 +10,10 @@ __All the `tgbotapi.extensions.*` packages have been removed__
     * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json` ([#563](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/563))
     * All the interfaces from `dev.inmo.tgbotapi.types.files.abstracts` have been replaced to `dev.inmo.tgbotapi.types.files` and converted to sealed ([#550](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/550))
     * `PassportFile` has been replaced to `dev.inmo.tgbotapi.types.files`
+    * `StorageFile` has been deprecated (fix of [#556](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/556))
+        * `MultipartFile` do not require `StorageFile` anymore
+        * `InputFile` companion got functions to simplify creation of `InputFile`s
+        * New typealias `FileUrl` (represents `FileId` but declare that they are the same)
 * `WebApps`:
     * Created 🎉
 * `BehaviourBuilder`:
