@@ -1,6 +1,4 @@
 package dev.inmo.tgbotapi.types.ChatMember.abstracts
 
-import kotlinx.serialization.Serializable
-
-@Serializable(ChatMemberSerializer::class)
-interface SpecialRightsChatMember : ChatMember, SpecialChatAdministratorRights
+@Deprecated("SpecialRightsChatMember", ReplaceWith("SpecialRightsChatMember", "dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember"))
+typealias SpecialRightsChatMember = dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember

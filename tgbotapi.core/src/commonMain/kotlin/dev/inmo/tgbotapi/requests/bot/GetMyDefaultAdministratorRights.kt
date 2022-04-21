@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.requests.bot
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.ChatMember.AdministratorChatMemberImpl
+import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberImpl
 import kotlinx.serialization.*
 
 @Serializable

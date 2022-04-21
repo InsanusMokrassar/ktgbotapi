@@ -9,6 +9,8 @@ __All the `tgbotapi.extensions.*` packages have been removed__
 * `Core`:
     * **`Ktor` package renamed. Migration:** `dev.inmo.tgbotapi.bot.Ktor` -> `dev.inmo.tgbotapi.bot.ktor`
     * **`CallbackQuery` package renamed. Migration:** `dev.inmo.tgbotapi.types.CallbackQuery([\s\\.])` -> `dev.inmo.tgbotapi.types.queries.callback$1`
+    * **`ChatMember` package renamed. Migration:** `dev.inmo.tgbotapi.types.ChatMember([\s\\.])` -> `dev.inmo.tgbotapi.types.chat.member$1`
+    * **`ChatAdministratorRightsImpl` replaced. Migration:** `dev.inmo.tgbotapi.types.ChatAdministratorRightsImpl` -> `dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRightsImpl`
     * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json` ([#563](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/563))
     * All the interfaces from `dev.inmo.tgbotapi.types.files.abstracts` have been replaced to `dev.inmo.tgbotapi.types.files` and converted to sealed ([#550](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/550))
     * `PassportFile` has been replaced to `dev.inmo.tgbotapi.types.files`

@@ -6,8 +6,7 @@ import dev.inmo.tgbotapi.CommonAbstracts.*
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.queries.callback.*
-import dev.inmo.tgbotapi.types.ChatMember.*
-import dev.inmo.tgbotapi.types.ChatMember.abstracts.*
+import dev.inmo.tgbotapi.types.chat.member.*
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
@@ -28,6 +27,11 @@ import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.chat.abstracts.*
 import dev.inmo.tgbotapi.types.chat.abstracts.extended.*
+import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
+import dev.inmo.tgbotapi.types.chat.member.BannedChatMember
+import dev.inmo.tgbotapi.types.chat.member.ChatMember
+import dev.inmo.tgbotapi.types.chat.member.MemberChatMember
+import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 import dev.inmo.tgbotapi.types.dice.*
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker

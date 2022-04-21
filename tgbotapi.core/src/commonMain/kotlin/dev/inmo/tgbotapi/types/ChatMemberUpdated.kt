@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types
 
-import dev.inmo.tgbotapi.types.ChatMember.abstracts.ChatMember
+import dev.inmo.tgbotapi.types.chat.member.ChatMember
 import dev.inmo.tgbotapi.types.chat.abstracts.Chat
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
