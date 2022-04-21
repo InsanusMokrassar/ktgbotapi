@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
 import dev.inmo.tgbotapi.requests.send.media.SendMediaGroup
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.ForwardInfo
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent

@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.extensions.raw
 
 import dev.inmo.tgbotapi.types.ChatInviteLink
 import dev.inmo.tgbotapi.types.chat.member.ChatMember
-import dev.inmo.tgbotapi.types.ChatMemberUpdated
+import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 @RiskFeature(RawFieldsUsageWarning)

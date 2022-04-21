@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.extensions.api.chat.members
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.members.*
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
+import dev.inmo.tgbotapi.types.chat.PublicChat
 
 suspend fun TelegramBot.unbanChatSenderChat(
     chatId: ChatIdentifier,

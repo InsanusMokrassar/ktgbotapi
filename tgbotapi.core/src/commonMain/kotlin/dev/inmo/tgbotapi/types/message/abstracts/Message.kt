@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.message.abstracts
 
 import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.RawMessage
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*

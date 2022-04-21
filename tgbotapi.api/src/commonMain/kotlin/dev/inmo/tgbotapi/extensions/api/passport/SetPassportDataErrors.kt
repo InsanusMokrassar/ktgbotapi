@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.passport
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.SetPassportDataErrors
-import dev.inmo.tgbotapi.types.User
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.passport.PassportData

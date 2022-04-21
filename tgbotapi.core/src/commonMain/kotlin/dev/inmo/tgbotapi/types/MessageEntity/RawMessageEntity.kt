@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
-import dev.inmo.tgbotapi.types.User
+import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.Serializable
 
 @Serializable

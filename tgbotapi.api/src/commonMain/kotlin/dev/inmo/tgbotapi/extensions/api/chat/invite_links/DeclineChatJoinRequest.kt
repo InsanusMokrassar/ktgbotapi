@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.api.chat.invite_links
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.requests.chat.invite_links.ApproveChatJoinRequest
 import dev.inmo.tgbotapi.requests.chat.invite_links.DeclineChatJoinRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
+import dev.inmo.tgbotapi.types.chat.*
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
 
 suspend fun TelegramBot.declineChatJoinRequest(

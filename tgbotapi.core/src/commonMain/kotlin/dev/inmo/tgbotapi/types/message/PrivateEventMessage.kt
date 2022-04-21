@@ -2,8 +2,7 @@ package dev.inmo.tgbotapi.types.message
 
 import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
-import dev.inmo.tgbotapi.types.chat.abstracts.PrivateChat
+import dev.inmo.tgbotapi.types.chat.PrivateChat
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 

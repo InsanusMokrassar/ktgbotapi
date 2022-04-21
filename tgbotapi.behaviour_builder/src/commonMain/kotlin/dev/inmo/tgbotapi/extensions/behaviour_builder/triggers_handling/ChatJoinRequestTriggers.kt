@@ -5,9 +5,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.*
 import dev.inmo.tgbotapi.extensions.utils.asChatJoinRequestUpdate
-import dev.inmo.tgbotapi.extensions.utils.asShippingQueryUpdate
-import dev.inmo.tgbotapi.types.ChatJoinRequest
-import dev.inmo.tgbotapi.types.payments.ShippingQuery
+import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 /**

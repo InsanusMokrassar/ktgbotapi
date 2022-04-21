@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.CommonAbstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.ExtendedChatSerializer
-import dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedChat
+import dev.inmo.tgbotapi.types.chat.ExtendedChat
 import dev.inmo.tgbotapi.types.chatIdField
 import kotlinx.serialization.*
 

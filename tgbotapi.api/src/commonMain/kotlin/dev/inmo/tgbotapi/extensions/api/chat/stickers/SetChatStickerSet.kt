@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.stickers.SetChatStickerSet
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.StickerSetName
-import dev.inmo.tgbotapi.types.chat.abstracts.SupergroupChat
+import dev.inmo.tgbotapi.types.chat.SupergroupChat
 
 suspend fun TelegramBot.setChatStickerSet(
     chatId: ChatIdentifier,

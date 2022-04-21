@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.InlineQueries.query
 
 import dev.inmo.tgbotapi.types.InlineQueryIdentifier
-import dev.inmo.tgbotapi.types.User
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.chat.ChatType
 
 data class BaseInlineQuery(

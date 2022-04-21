@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.types.InlineQueries.query
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.ChatType
-import dev.inmo.tgbotapi.types.chat.ChatTypeSerializer
+import dev.inmo.tgbotapi.types.chat.*
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.location.Location
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

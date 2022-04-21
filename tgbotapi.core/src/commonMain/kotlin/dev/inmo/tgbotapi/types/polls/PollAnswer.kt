@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.polls
 
 import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
 @Serializable

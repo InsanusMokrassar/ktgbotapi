@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.message.ChatEvents
 
 import dev.inmo.tgbotapi.types.Meters
-import dev.inmo.tgbotapi.types.User
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import kotlinx.serialization.Serializable
 

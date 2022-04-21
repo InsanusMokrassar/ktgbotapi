@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.User
+import dev.inmo.tgbotapi.types.chat.User
 
 /**
  * Inheritors of this interface have some [User] as a source of data. For example, any [dev.inmo.tgbotapi.types.queries.callback.CallbackQuery]

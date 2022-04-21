@@ -11,6 +11,17 @@ __All the `tgbotapi.extensions.*` packages have been removed__
     * **`CallbackQuery` package renamed. Migration:** `dev.inmo.tgbotapi.types.CallbackQuery([\s\\.])` -> `dev.inmo.tgbotapi.types.queries.callback$1`
     * **`ChatMember` package renamed. Migration:** `dev.inmo.tgbotapi.types.ChatMember([\s\\.])` -> `dev.inmo.tgbotapi.types.chat.member$1`
     * **`ChatAdministratorRightsImpl` replaced. Migration:** `dev.inmo.tgbotapi.types.ChatAdministratorRightsImpl` -> `dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRightsImpl`
+    * **`chat.abstract.extended` replaced. Migration:** `dev.inmo.tgbotapi.types.chat.abstract.extended` -> `dev.inmo.tgbotapi.types.chat.member.chat`
+    * **`chat.abstract` replaced. Migration:** `dev.inmo.tgbotapi.types.chat.abstract` -> `dev.inmo.tgbotapi.types.chat.member.chat`
+    * **`chat.extended` replaced. Migration:** `dev.inmo.tgbotapi.types.chat.extended` -> `dev.inmo.tgbotapi.types.chat.member.chat`
+    * **User interfaces have been fully replaced**:
+        * `dev.inmo.tgbotapi.types.User` -> `dev.inmo.tgbotapi.types.chat.User`
+        * `dev.inmo.tgbotapi.types.CommonUser` -> `dev.inmo.tgbotapi.types.chat.CommonUser`
+        * `dev.inmo.tgbotapi.types.ExtendedUser` -> `dev.inmo.tgbotapi.types.chat.ExtendedUser`
+        * `dev.inmo.tgbotapi.types.Bot` -> `dev.inmo.tgbotapi.types.chat.Bot`
+        * `dev.inmo.tgbotapi.types.CommonBot` -> `dev.inmo.tgbotapi.types.chat.CommonBot`
+        * `dev.inmo.tgbotapi.types.ExtendedBot` -> `dev.inmo.tgbotapi.types.chat.ExtendedBot`
+        * `dev.inmo.tgbotapi.types.UserSerializer` -> `dev.inmo.tgbotapi.types.chat.UserSerializer`
     * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json` ([#563](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/563))
     * All the interfaces from `dev.inmo.tgbotapi.types.files.abstracts` have been replaced to `dev.inmo.tgbotapi.types.files` and converted to sealed ([#550](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/550))
     * `PassportFile` has been replaced to `dev.inmo.tgbotapi.types.files`

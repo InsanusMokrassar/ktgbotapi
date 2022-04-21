@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.micro_utils.common.Warning
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable

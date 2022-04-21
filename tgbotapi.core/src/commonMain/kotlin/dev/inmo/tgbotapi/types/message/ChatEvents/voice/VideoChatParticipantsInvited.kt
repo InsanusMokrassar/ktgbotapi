@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message.ChatEvents.voice
 
-import dev.inmo.tgbotapi.types.User
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
 import dev.inmo.tgbotapi.types.usersField
 import kotlinx.serialization.SerialName

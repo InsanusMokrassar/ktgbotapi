@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.queries.callback
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent

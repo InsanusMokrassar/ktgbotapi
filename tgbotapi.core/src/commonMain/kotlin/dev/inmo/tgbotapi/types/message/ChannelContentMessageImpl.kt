@@ -3,7 +3,8 @@ package dev.inmo.tgbotapi.types.message
 import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.chat.abstracts.ChannelChat
+import dev.inmo.tgbotapi.types.chat.ChannelChat
+import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 

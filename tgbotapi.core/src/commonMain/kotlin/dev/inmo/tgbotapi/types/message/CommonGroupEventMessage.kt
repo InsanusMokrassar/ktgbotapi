@@ -2,8 +2,8 @@ package dev.inmo.tgbotapi.types.message
 
 import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.User
-import dev.inmo.tgbotapi.types.chat.abstracts.GroupChat
+import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.types.chat.GroupChat
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
 

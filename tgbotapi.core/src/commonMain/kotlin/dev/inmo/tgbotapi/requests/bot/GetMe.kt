@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.bot
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
-import dev.inmo.tgbotapi.types.ExtendedBot
+import dev.inmo.tgbotapi.types.chat.ExtendedBot
 import kotlinx.serialization.*
 
 @Serializable

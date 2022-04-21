@@ -4,7 +4,9 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntities
 import dev.inmo.tgbotapi.types.MessageEntity.asTextSources
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.chat.abstracts.*
+import dev.inmo.tgbotapi.types.chat.*
+import dev.inmo.tgbotapi.types.chat.CommonBot
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker

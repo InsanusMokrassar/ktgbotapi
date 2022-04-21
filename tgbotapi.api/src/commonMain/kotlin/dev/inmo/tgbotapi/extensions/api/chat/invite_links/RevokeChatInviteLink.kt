@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.invite_links.RevokeChatInviteLink
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.ChatInviteLink
-import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
+import dev.inmo.tgbotapi.types.chat.PublicChat
 
 suspend fun TelegramBot.revokeChatInviteLink(
     chatId: ChatIdentifier,

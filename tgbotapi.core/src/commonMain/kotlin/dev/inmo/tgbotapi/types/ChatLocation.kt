@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  * Represents a location to which a chat is connected.
  *
  * @see dev.inmo.tgbotapi.requests.chat.get.GetChat
- * @see dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedSupergroupChat
+ * @see dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
  */
 @Serializable
 data class ChatLocation(

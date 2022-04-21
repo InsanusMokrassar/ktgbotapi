@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.queries.callback
 
 import dev.inmo.tgbotapi.CommonAbstracts.FromUser
 import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
-import dev.inmo.tgbotapi.types.User
+import dev.inmo.tgbotapi.types.chat.User
 
 sealed interface CallbackQuery : FromUser {
     val id: CallbackQueryIdentifier
