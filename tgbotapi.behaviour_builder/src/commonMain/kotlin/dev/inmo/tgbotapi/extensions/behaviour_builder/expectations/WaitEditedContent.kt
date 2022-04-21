@@ -58,7 +58,7 @@ private suspend inline fun <reified T : MessageContent> BehaviourContext.waitEdi
     initRequest: Request<*>? = null,
     includeMediaGroups: Boolean = true,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<CommonMessage<T>>? = null,
+    filter: SimpleFilter<CommonMessage<T>>? = null,
     noinline mapper: CommonMessageToContentMapper<T>? = null
 ) : List<T> = waitEditedCommonMessage<T>(
     count,

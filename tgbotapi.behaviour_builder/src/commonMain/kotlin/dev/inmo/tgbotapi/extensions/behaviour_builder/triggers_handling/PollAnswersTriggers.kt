@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext> BC.onPollAnswered(
-    noinline initialFilter: SimpleFilter<PollAnswer>? = null,
+    initialFilter: SimpleFilter<PollAnswer>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
     markerFactory: MarkerFactory<in PollAnswer, Any> = ByIdPollAnswerMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>

@@ -12,6 +12,8 @@ __All the `tgbotapi.extensions.*` packages have been removed__
     * `PassportFile` has been replaced to `dev.inmo.tgbotapi.types.files`
 * `WebApps`:
     * Created 🎉
+* `BehaviourBuilder`:
+    * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
 
 ## 0.38.13
 

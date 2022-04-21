@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext, reified T : CallbackQuery> BC.onCallbackQuery(
-    noinline initialFilter: SimpleFilter<T>? = null,
+    initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in T, Any> = ByUserCallbackQueryMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>

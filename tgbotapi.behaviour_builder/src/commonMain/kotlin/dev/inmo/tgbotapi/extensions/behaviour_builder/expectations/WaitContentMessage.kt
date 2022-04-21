@@ -78,7 +78,7 @@ private suspend inline fun <reified T : MessageContent> BehaviourContext.waitCon
     initRequest: Request<*>? = null,
     includeMediaGroups: Boolean = true,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<CommonMessage<T>>? = null,
+    filter: SimpleFilter<CommonMessage<T>>? = null,
     noinline mapper: CommonMessageToCommonMessageMapper<T>? = null
 ) : List<CommonMessage<T>> = waitCommonMessage<T>(
     count,

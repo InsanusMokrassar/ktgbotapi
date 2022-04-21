@@ -36,7 +36,7 @@ import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
 internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onEditedContent(
-    noinline initialFilter: CommonMessageFilter<T>? = null,
+    initialFilter: CommonMessageFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<T>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>

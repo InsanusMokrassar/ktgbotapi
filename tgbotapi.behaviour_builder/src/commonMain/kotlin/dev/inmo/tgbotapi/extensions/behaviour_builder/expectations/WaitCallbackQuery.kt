@@ -35,7 +35,7 @@ private suspend inline fun <reified T : CallbackQuery> BehaviourContext.waitCall
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<T>? = null,
+    filter: SimpleFilter<T>? = null,
     noinline mapper: CallbackQueryMapper<T>? = null
 ) : List<T> = waitCallbackQueries<T>(
     count,

@@ -15,7 +15,7 @@ private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContex
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<T>? = null,
+    filter: SimpleFilter<T>? = null,
     noinline mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>
 ): List<ChatMemberUpdated> = expectFlow(
     initRequest,
@@ -34,7 +34,7 @@ private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContex
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<T>? = null,
+    filter: SimpleFilter<T>? = null,
     noinline mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
 ) : List<ChatMemberUpdated> = waitChatMemberUpdated<T>(
     count,

@@ -33,7 +33,7 @@ private suspend inline fun BehaviourContext.waitPollAnswers(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<PollAnswer>? = null,
+    filter: SimpleFilter<PollAnswer>? = null,
     noinline mapper: PollAnswerMapper? = null
 ) : List<PollAnswer> = this@waitPollAnswers.waitPollsAnswers<PollAnswer>(
     count,

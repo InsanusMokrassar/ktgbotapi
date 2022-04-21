@@ -22,10 +22,9 @@ import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 typealias CommonMessageFilter<T> = SimpleFilter<CommonMessage<T>>
-inline fun <T : MessageContent> CommonMessageFilter(noinline block: CommonMessageFilter<T>) = block
 
 internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onContentMessageWithType(
-    noinline initialFilter: CommonMessageFilter<T>? = null,
+    initialFilter: CommonMessageFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<T>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<T>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>

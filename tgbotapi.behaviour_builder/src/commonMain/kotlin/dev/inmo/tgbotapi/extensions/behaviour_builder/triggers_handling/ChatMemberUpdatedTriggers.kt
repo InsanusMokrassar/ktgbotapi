@@ -14,7 +14,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext, reified U : ChatMemberUpdatedUpdate> BC.onChatMemberUpdatedInternal(
-    noinline initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
+    initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
     markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>

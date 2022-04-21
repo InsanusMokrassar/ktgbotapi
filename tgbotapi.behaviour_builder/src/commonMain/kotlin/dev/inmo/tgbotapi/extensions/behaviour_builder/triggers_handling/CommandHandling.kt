@@ -55,7 +55,7 @@ suspend fun <BC : BehaviourContext> BC.command(
 suspend inline fun <BC : BehaviourContext> BC.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
-    noinline initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
@@ -64,7 +64,7 @@ suspend inline fun <BC : BehaviourContext> BC.onCommand(
 suspend inline fun <BC : BehaviourContext> BC.onCommand(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
-    noinline initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
@@ -106,7 +106,7 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
 
 suspend inline fun <BC : BehaviourContext> BC.onCommandWithArgs(
     commandRegex: Regex,
-    noinline initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, CommonMessage<TextContent>, Array<String>>
@@ -114,7 +114,7 @@ suspend inline fun <BC : BehaviourContext> BC.onCommandWithArgs(
 
 suspend inline fun <BC : BehaviourContext> BC.onCommandWithArgs(
     command: String,
-    noinline initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, CommonMessage<TextContent>, Array<String>>
