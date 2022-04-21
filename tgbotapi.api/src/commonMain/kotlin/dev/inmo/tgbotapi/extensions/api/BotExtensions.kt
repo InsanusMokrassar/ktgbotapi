@@ -13,7 +13,7 @@ import io.ktor.client.engine.*
  */
 fun telegramBot(
     urlsKeeper: TelegramAPIUrlsKeeper,
-    client: HttpClient
+    client: HttpClient = HttpClient()
 ): TelegramBot = telegramBot(urlsKeeper) {
     this.client = client
 }
@@ -66,7 +66,7 @@ inline fun telegramBot(
 inline fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
-    client: HttpClient
+    client: HttpClient = HttpClient()
 ): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, apiUrl), client)
 
 @Suppress("NOTHING_TO_INLINE")
