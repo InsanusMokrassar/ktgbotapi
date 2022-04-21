@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.bot.ktor
 
-import dev.inmo.tgbotapi.bot.Ktor.KtorCallFactory
 import dev.inmo.tgbotapi.requests.abstracts.Request
 
 interface KtorPipelineStepsHolder {

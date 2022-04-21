@@ -5,8 +5,8 @@ import dev.inmo.micro_utils.fsm.common.State
 import dev.inmo.micro_utils.fsm.common.StatesManager
 import dev.inmo.micro_utils.fsm.common.managers.DefaultStatesManager
 import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
-import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder
-import dev.inmo.tgbotapi.bot.Ktor.telegramBot
+import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
+import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter

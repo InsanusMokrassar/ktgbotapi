@@ -7,6 +7,7 @@ __This update contains including of [Telegram Bot API 6.0](https://core.telegram
 __All the `tgbotapi.extensions.*` packages have been removed__
 
 * `Core`:
+    * **`Ktor` package renamed. Migration:** `dev.inmo.tgbotapi.bot.Ktor` -> `dev.inmo.tgbotapi.bot.ktor`
     * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json` ([#563](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/563))
     * All the interfaces from `dev.inmo.tgbotapi.types.files.abstracts` have been replaced to `dev.inmo.tgbotapi.types.files` and converted to sealed ([#550](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/550))
     * `PassportFile` has been replaced to `dev.inmo.tgbotapi.types.files`
