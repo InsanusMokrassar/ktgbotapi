@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.requests.answers
 
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer
 

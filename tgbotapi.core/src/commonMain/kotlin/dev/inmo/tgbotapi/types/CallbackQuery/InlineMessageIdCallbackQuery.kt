@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.types.CallbackQuery
 
-import dev.inmo.tgbotapi.types.InlineMessageIdentifier
-
-sealed interface InlineMessageIdCallbackQuery : CallbackQuery {
-    val inlineMessageId: InlineMessageIdentifier
-}
+@Deprecated("Replaced", ReplaceWith("InlineMessageIdCallbackQuery", "dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery"))
+typealias InlineMessageIdCallbackQuery = dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery

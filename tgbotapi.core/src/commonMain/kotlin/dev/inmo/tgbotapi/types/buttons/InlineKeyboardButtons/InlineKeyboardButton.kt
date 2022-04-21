@@ -43,14 +43,14 @@ data class PayInlineKeyboardButton(
  * Simple button with [callbackData] which you are able to catch this type of updates and data using
  * [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onDataCallbackQuery] in
  * case you are using Behaviour Builder OR [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.callbackQueriesFlow]
- * with [kotlinx.coroutines.flow.filterIsInstance] and filtering by type [dev.inmo.tgbotapi.types.CallbackQuery.DataCallbackQuery]
+ * with [kotlinx.coroutines.flow.filterIsInstance] and filtering by type [dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery]
  */
 @Serializable
 data class CallbackDataInlineKeyboardButton(
     @SerialName(textField)
     override val text: String,
     /**
-     * You will receive this data in [dev.inmo.tgbotapi.types.CallbackQuery.DataCallbackQuery.data] field
+     * You will receive this data in [dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery.data] field
      */
     @SerialName(callbackDataField)
     val callbackData: String

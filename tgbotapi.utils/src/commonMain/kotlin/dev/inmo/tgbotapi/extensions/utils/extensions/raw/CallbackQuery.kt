@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions.raw
 
 import dev.inmo.tgbotapi.extensions.utils.*
-import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import dev.inmo.tgbotapi.types.InlineMessageIdentifier
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent

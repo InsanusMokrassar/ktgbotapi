@@ -1,4 +1,4 @@
-package dev.inmo.tgbotapi.types.CallbackQuery
+package dev.inmo.tgbotapi.types.queries.callback
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.*

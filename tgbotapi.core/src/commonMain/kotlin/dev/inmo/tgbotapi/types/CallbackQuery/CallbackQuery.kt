@@ -1,17 +1,7 @@
 package dev.inmo.tgbotapi.types.CallbackQuery
 
-import dev.inmo.tgbotapi.CommonAbstracts.FromUser
-import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
-import dev.inmo.tgbotapi.types.User
+@Deprecated("Replaced", ReplaceWith("CallbackQuery", "dev.inmo.tgbotapi.types.queries.callback.CallbackQuery"))
+typealias CallbackQuery = dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 
-sealed interface CallbackQuery : FromUser {
-    val id: CallbackQueryIdentifier
-    val chatInstance: String
-}
-
-data class UnknownCallbackQueryType(
-    override val id: CallbackQueryIdentifier,
-    override val from: User,
-    override val chatInstance: String,
-    val raw: String
-) : CallbackQuery
+@Deprecated("Replaced", ReplaceWith("UnknownCallbackQueryType", "dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType"))
+typealias UnknownCallbackQueryType = dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType

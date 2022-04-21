@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils
 
-import dev.inmo.tgbotapi.types.CallbackQuery.*
+import dev.inmo.tgbotapi.types.queries.callback.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 

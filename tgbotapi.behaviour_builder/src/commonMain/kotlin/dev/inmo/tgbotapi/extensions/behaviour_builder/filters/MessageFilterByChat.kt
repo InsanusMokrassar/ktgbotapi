@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.filters
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
-import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import dev.inmo.tgbotapi.types.ChatJoinRequest
 import dev.inmo.tgbotapi.types.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery

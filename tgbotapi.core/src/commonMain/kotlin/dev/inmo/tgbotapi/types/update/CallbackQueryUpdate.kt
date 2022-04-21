@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.update
 
-import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import dev.inmo.tgbotapi.types.UpdateIdentifier
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
