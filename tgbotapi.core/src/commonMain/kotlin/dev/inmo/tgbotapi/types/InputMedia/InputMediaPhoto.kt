@@ -1,63 +1,40 @@
 package dev.inmo.tgbotapi.types.InputMedia
 
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
-import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
-import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.MessageEntity.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.MessageEntity.toRawMessageEntities
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
-import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.PhotoSize
+import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 import dev.inmo.tgbotapi.utils.extensions.makeString
-import kotlinx.serialization.*
 
-internal const val photoInputMediaType = "photo"
-
+@Deprecated("Replaced and renamed", ReplaceWith("TelegramMediaPhoto", "dev.inmo.tgbotapi.types.media.TelegramMediaPhoto"))
 fun InputMediaPhoto(
     file: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null
-) = InputMediaPhoto(file, text, parseMode, null)
+) = TelegramMediaPhoto(file, text, parseMode, null)
 
+@Deprecated("Replaced and renamed", ReplaceWith("TelegramMediaPhoto", "dev.inmo.tgbotapi.types.media.TelegramMediaPhoto"))
 fun InputMediaPhoto(
     file: InputFile,
     entities: TextSourcesList
-) = InputMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities())
+) = TelegramMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities())
 
-@Serializable
-data class InputMediaPhoto internal constructor(
-    override val file: InputFile,
-    @SerialName(captionField)
-    override val text: String? = null,
-    @SerialName(parseModeField)
-    override val parseMode: ParseMode? = null,
-    @SerialName(captionEntitiesField)
-    private val rawEntities: List<RawMessageEntity>? = null
-) : InputMedia, VisualMediaGroupMemberInputMedia {
-    override val type: String = photoInputMediaType
-    override val textSources: TextSourcesList? by lazy {
-        rawEntities ?.asTextSources(text ?: return@lazy null)
-    }
-
-    override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
-
-    @SerialName(mediaField)
-    override val media: String
-    init { media = file.fileIdToSend } // crutch until js compiling will be fixed
-}
-
+@Deprecated("Replaced and renamed", ReplaceWith("TelegramMediaPhoto", "dev.inmo.tgbotapi.types.media.TelegramMediaPhoto"))
 fun PhotoSize.toInputMediaPhoto(
     text: String? = null,
     parseMode: ParseMode? = null
-): InputMediaPhoto = InputMediaPhoto(
+): InputMediaPhoto = TelegramMediaPhoto(
     fileId,
     text,
     parseMode
 )
 
+@Deprecated("Replaced and renamed", ReplaceWith("TelegramMediaPhoto", "dev.inmo.tgbotapi.types.media.TelegramMediaPhoto"))
 fun PhotoSize.toInputMediaPhoto(
     textSources: TextSourcesList = emptyList()
-): InputMediaPhoto = InputMediaPhoto(
+): InputMediaPhoto = TelegramMediaPhoto(
     fileId,
     textSources
 )

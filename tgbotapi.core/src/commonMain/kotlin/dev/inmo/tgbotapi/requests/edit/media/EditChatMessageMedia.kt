@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.requests.edit.media
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InputMedia.InputMedia
+import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -21,7 +21,7 @@ data class EditChatMessageMedia(
     @SerialName(messageIdField)
     override val messageId: MessageIdentifier,
     @SerialName(mediaField)
-    override val media: InputMedia,
+    override val media: TelegramMedia,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<MediaContent>, EditReplyMessage, EditMediaMessage {

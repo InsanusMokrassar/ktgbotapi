@@ -33,7 +33,7 @@ fun List<CommonMessage<MediaGroupContent>>.createResend(
     replyTo: MessageIdentifier? = null
 ) = SendMediaGroup<MediaGroupContent>(
     chatId,
-    map { it.content.toMediaGroupMemberInputMedia() },
+    map { it.content.toMediaGroupMemberTelegramMedia() },
     disableNotification,
     protectContent,
     replyTo

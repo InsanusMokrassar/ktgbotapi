@@ -4,8 +4,8 @@ import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.InputMedia.InputMediaDocument
-import dev.inmo.tgbotapi.types.InputMedia.toInputMediaDocument
+import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
+import dev.inmo.tgbotapi.types.media.toTelegramMediaDocument
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -40,9 +40,9 @@ data class DocumentContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): InputMediaDocument = asInputMedia()
+    override fun toMediaGroupMemberTelegramMedia(): TelegramMediaDocument = asTelegramMedia()
 
-    override fun asInputMedia(): InputMediaDocument = media.toInputMediaDocument(textSources)
+    override fun asTelegramMedia(): TelegramMediaDocument = media.toTelegramMediaDocument(textSources)
 }
 
 @Suppress("NOTHING_TO_INLINE")

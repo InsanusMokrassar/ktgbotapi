@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.extensions.api.send.polls.sendRegularPoll
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.rawSendingMediaGroupsWarning
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InputMedia.*
+import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
@@ -524,7 +524,7 @@ suspend inline fun TelegramBot.reply(
 @RiskFeature(rawSendingMediaGroupsWarning)
 suspend inline fun TelegramBot.replyWithMediaGroup(
     to: Message,
-    media: List<MediaGroupMemberInputMedia>,
+    media: List<MediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
@@ -532,7 +532,7 @@ suspend inline fun TelegramBot.replyWithMediaGroup(
 
 suspend inline fun TelegramBot.replyWithPlaylist(
     to: Message,
-    media: List<AudioMediaGroupMemberInputMedia>,
+    media: List<AudioMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
@@ -540,7 +540,7 @@ suspend inline fun TelegramBot.replyWithPlaylist(
 
 suspend inline fun TelegramBot.replyWithDocuments(
     to: Message,
-    media: List<DocumentMediaGroupMemberInputMedia>,
+    media: List<DocumentMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
@@ -548,7 +548,7 @@ suspend inline fun TelegramBot.replyWithDocuments(
 
 suspend inline fun TelegramBot.replyWithGallery(
     to: Message,
-    media: List<VisualMediaGroupMemberInputMedia>,
+    media: List<VisualMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null

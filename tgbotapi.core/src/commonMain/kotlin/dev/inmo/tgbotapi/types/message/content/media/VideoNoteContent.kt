@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.types.message.content.media
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVideoNote
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
+import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
@@ -35,7 +35,7 @@ data class VideoNoteContent(
         replyMarkup
     )
 
-    override fun asInputMedia(): InputMediaVideo = InputMediaVideo(
+    override fun asTelegramMedia(): TelegramMediaVideo = TelegramMediaVideo(
         media.fileId,
         width = media.width,
         height = media.height,

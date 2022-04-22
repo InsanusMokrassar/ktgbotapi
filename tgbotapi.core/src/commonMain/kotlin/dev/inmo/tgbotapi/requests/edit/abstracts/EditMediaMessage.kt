@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.edit.abstracts
 
-import dev.inmo.tgbotapi.types.InputMedia.InputMedia
+import dev.inmo.tgbotapi.types.media.TelegramMedia
 
 interface EditMediaMessage {
-    val media: InputMedia
+    val media: TelegramMedia
 }

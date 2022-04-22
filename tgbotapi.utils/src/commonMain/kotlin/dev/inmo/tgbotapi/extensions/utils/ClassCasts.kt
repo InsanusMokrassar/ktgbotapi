@@ -19,7 +19,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.*
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
-import dev.inmo.tgbotapi.types.InputMedia.*
+import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.types.actions.*
@@ -1895,128 +1895,284 @@ inline fun ChatMember.asSpecialRightsChatMember(): SpecialRightsChatMember? = th
 inline fun ChatMember.requireSpecialRightsChatMember(): SpecialRightsChatMember = this as SpecialRightsChatMember
 
 @PreviewFeature
-inline fun <T> InputMedia.whenAudioMediaGroupMemberInputMedia(block: (AudioMediaGroupMemberInputMedia) -> T) = asAudioMediaGroupMemberInputMedia() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenAudioMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.whenAudioMediaGroupMemberTelegramMedia"))
+inline fun <T> TelegramMedia.whenAudioMediaGroupMemberInputMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) = whenAudioMediaGroupMemberTelegramMedia(block)
 
 @PreviewFeature
-inline fun InputMedia.asAudioMediaGroupMemberInputMedia(): AudioMediaGroupMemberInputMedia? =
-    this as? AudioMediaGroupMemberInputMedia
+@Deprecated("Renamed", ReplaceWith("asAudioMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.asAudioMediaGroupMemberTelegramMedia"))
+inline fun TelegramMedia.asAudioMediaGroupMemberInputMedia(): AudioMediaGroupMemberTelegramMedia? = asAudioMediaGroupMemberTelegramMedia()
 
 @PreviewFeature
-inline fun InputMedia.requireAudioMediaGroupMemberInputMedia(): AudioMediaGroupMemberInputMedia =
-    this as AudioMediaGroupMemberInputMedia
+@Deprecated("Renamed", ReplaceWith("requireAudioMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.requireAudioMediaGroupMemberTelegramMedia"))
+inline fun TelegramMedia.requireAudioMediaGroupMemberInputMedia(): AudioMediaGroupMemberTelegramMedia = requireAudioMediaGroupMemberTelegramMedia()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenDocumentMediaGroupMemberInputMedia(block: (DocumentMediaGroupMemberInputMedia) -> T) = asDocumentMediaGroupMemberInputMedia() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenDocumentMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.whenDocumentMediaGroupMemberTelegramMedia"))
+inline fun <T> TelegramMedia.whenDocumentMediaGroupMemberInputMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) = whenDocumentMediaGroupMemberTelegramMedia(block)
 
 @PreviewFeature
-inline fun InputMedia.asDocumentMediaGroupMemberInputMedia(): DocumentMediaGroupMemberInputMedia? =
-    this as? DocumentMediaGroupMemberInputMedia
+@Deprecated("Renamed", ReplaceWith("asDocumentMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.asDocumentMediaGroupMemberTelegramMedia"))
+inline fun TelegramMedia.asDocumentMediaGroupMemberInputMedia(): DocumentMediaGroupMemberTelegramMedia? = asDocumentMediaGroupMemberTelegramMedia()
 
 @PreviewFeature
-inline fun InputMedia.requireDocumentMediaGroupMemberInputMedia(): DocumentMediaGroupMemberInputMedia =
-    this as DocumentMediaGroupMemberInputMedia
+@Deprecated("Renamed", ReplaceWith("requireDocumentMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.requireDocumentMediaGroupMemberTelegramMedia"))
+inline fun TelegramMedia.requireDocumentMediaGroupMemberInputMedia(): DocumentMediaGroupMemberTelegramMedia = requireDocumentMediaGroupMemberTelegramMedia()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenDuratedInputMedia(block: (DuratedInputMedia) -> T) = asDuratedInputMedia() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenDuratedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.whenDuratedTelegramMedia"))
+inline fun <T> TelegramMedia.whenDuratedInputMedia(block: (DuratedTelegramMedia) -> T) = whenDuratedTelegramMedia(block)
 
 @PreviewFeature
-inline fun InputMedia.asDuratedInputMedia(): DuratedInputMedia? = this as? DuratedInputMedia
+@Deprecated("Renamed", ReplaceWith("asDuratedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.asDuratedTelegramMedia"))
+inline fun TelegramMedia.asDuratedInputMedia(): DuratedTelegramMedia? = asDuratedTelegramMedia()
 
 @PreviewFeature
-inline fun InputMedia.requireDuratedInputMedia(): DuratedInputMedia = this as DuratedInputMedia
+@Deprecated("Renamed", ReplaceWith("requireDuratedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.requireDuratedTelegramMedia"))
+inline fun TelegramMedia.requireDuratedInputMedia(): DuratedTelegramMedia = requireDuratedTelegramMedia()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenInputMediaAnimation(block: (InputMediaAnimation) -> T) = asInputMediaAnimation() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenTelegramMediaAnimation", "dev.inmo.tgbotapi.extensions.utils.whenTelegramMediaAnimation"))
+inline fun <T> TelegramMedia.whenInputMediaAnimation(block: (TelegramMediaAnimation) -> T) = whenTelegramMediaAnimation(block)
 
 @PreviewFeature
-inline fun InputMedia.asInputMediaAnimation(): InputMediaAnimation? = this as? InputMediaAnimation
+@Deprecated("Renamed", ReplaceWith("asTelegramMediaAnimation", "dev.inmo.tgbotapi.extensions.utils.asTelegramMediaAnimation"))
+inline fun TelegramMedia.asInputMediaAnimation(): TelegramMediaAnimation? = asTelegramMediaAnimation()
 
 @PreviewFeature
-inline fun InputMedia.requireInputMediaAnimation(): InputMediaAnimation = this as InputMediaAnimation
+@Deprecated("Renamed", ReplaceWith("requireTelegramMediaAnimation", "dev.inmo.tgbotapi.extensions.utils.requireTelegramMediaAnimation"))
+inline fun TelegramMedia.requireInputMediaAnimation(): TelegramMediaAnimation = requireTelegramMediaAnimation()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenInputMediaAudio(block: (InputMediaAudio) -> T) = asInputMediaAudio() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenTelegramMediaAudio", "dev.inmo.tgbotapi.extensions.utils.whenTelegramMediaAudio"))
+inline fun <T> TelegramMedia.whenInputMediaAudio(block: (TelegramMediaAudio) -> T) = whenTelegramMediaAudio(block)
 
 @PreviewFeature
-inline fun InputMedia.asInputMediaAudio(): InputMediaAudio? = this as? InputMediaAudio
+@Deprecated("Renamed", ReplaceWith("asTelegramMediaAudio", "dev.inmo.tgbotapi.extensions.utils.asTelegramMediaAudio"))
+inline fun TelegramMedia.asInputMediaAudio(): TelegramMediaAudio? = asTelegramMediaAudio()
 
 @PreviewFeature
-inline fun InputMedia.requireInputMediaAudio(): InputMediaAudio = this as InputMediaAudio
+@Deprecated("Renamed", ReplaceWith("requireTelegramMediaAudio", "dev.inmo.tgbotapi.extensions.utils.requireTelegramMediaAudio"))
+inline fun TelegramMedia.requireInputMediaAudio(): TelegramMediaAudio = requireTelegramMediaAudio()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenInputMediaDocument(block: (InputMediaDocument) -> T) = asInputMediaDocument() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenTelegramMediaDocument", "dev.inmo.tgbotapi.extensions.utils.whenTelegramMediaDocument"))
+inline fun <T> TelegramMedia.whenInputMediaDocument(block: (TelegramMediaDocument) -> T) = whenTelegramMediaDocument(block)
 
 @PreviewFeature
-inline fun InputMedia.asInputMediaDocument(): InputMediaDocument? = this as? InputMediaDocument
+@Deprecated("Renamed", ReplaceWith("asTelegramMediaDocument", "dev.inmo.tgbotapi.extensions.utils.asTelegramMediaDocument"))
+inline fun TelegramMedia.asInputMediaDocument(): TelegramMediaDocument? = asTelegramMediaDocument()
 
 @PreviewFeature
-inline fun InputMedia.requireInputMediaDocument(): InputMediaDocument = this as InputMediaDocument
+@Deprecated("Renamed", ReplaceWith("requireTelegramMediaDocument", "dev.inmo.tgbotapi.extensions.utils.requireTelegramMediaDocument"))
+inline fun TelegramMedia.requireInputMediaDocument(): TelegramMediaDocument = requireTelegramMediaDocument()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenInputMediaPhoto(block: (InputMediaPhoto) -> T) = asInputMediaPhoto() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenTelegramMediaPhoto", "dev.inmo.tgbotapi.extensions.utils.whenTelegramMediaPhoto"))
+inline fun <T> TelegramMedia.whenInputMediaPhoto(block: (TelegramMediaPhoto) -> T) = whenTelegramMediaPhoto(block)
 
 @PreviewFeature
-inline fun InputMedia.asInputMediaPhoto(): InputMediaPhoto? = this as? InputMediaPhoto
+@Deprecated("Renamed", ReplaceWith("asTelegramMediaPhoto", "dev.inmo.tgbotapi.extensions.utils.asTelegramMediaPhoto"))
+inline fun TelegramMedia.asInputMediaPhoto(): TelegramMediaPhoto? = asTelegramMediaPhoto()
 
 @PreviewFeature
-inline fun InputMedia.requireInputMediaPhoto(): InputMediaPhoto = this as InputMediaPhoto
+@Deprecated("Renamed", ReplaceWith("requireTelegramMediaPhoto", "dev.inmo.tgbotapi.extensions.utils.requireTelegramMediaPhoto"))
+inline fun TelegramMedia.requireInputMediaPhoto(): TelegramMediaPhoto = requireTelegramMediaPhoto()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenInputMediaVideo(block: (InputMediaVideo) -> T) = asInputMediaVideo() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenTelegramMediaVideo", "dev.inmo.tgbotapi.extensions.utils.whenTelegramMediaVideo"))
+inline fun <T> TelegramMedia.whenInputMediaVideo(block: (TelegramMediaVideo) -> T) = whenTelegramMediaVideo(block)
 
 @PreviewFeature
-inline fun InputMedia.asInputMediaVideo(): InputMediaVideo? = this as? InputMediaVideo
+@Deprecated("Renamed", ReplaceWith("asTelegramMediaVideo", "dev.inmo.tgbotapi.extensions.utils.asTelegramMediaVideo"))
+inline fun TelegramMedia.asInputMediaVideo(): TelegramMediaVideo? = asTelegramMediaVideo()
 
 @PreviewFeature
-inline fun InputMedia.requireInputMediaVideo(): InputMediaVideo = this as InputMediaVideo
+@Deprecated("Renamed", ReplaceWith("requireTelegramMediaVideo", "dev.inmo.tgbotapi.extensions.utils.requireTelegramMediaVideo"))
+inline fun TelegramMedia.requireInputMediaVideo(): TelegramMediaVideo = requireTelegramMediaVideo()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenMediaGroupMemberInputMedia(block: (MediaGroupMemberInputMedia) -> T) = asMediaGroupMemberInputMedia() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.whenMediaGroupMemberTelegramMedia"))
+inline fun <T> TelegramMedia.whenMediaGroupMemberInputMedia(block: (MediaGroupMemberTelegramMedia) -> T) = whenMediaGroupMemberTelegramMedia(block)
 
 @PreviewFeature
-inline fun InputMedia.asMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia? = this as? MediaGroupMemberInputMedia
+@Deprecated("Renamed", ReplaceWith("asMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.asMediaGroupMemberTelegramMedia"))
+inline fun TelegramMedia.asMediaGroupMemberInputMedia(): MediaGroupMemberTelegramMedia? = asMediaGroupMemberTelegramMedia()
 
 @PreviewFeature
-inline fun InputMedia.requireMediaGroupMemberInputMedia(): MediaGroupMemberInputMedia =
-    this as MediaGroupMemberInputMedia
+@Deprecated("Renamed", ReplaceWith("requireMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.requireMediaGroupMemberTelegramMedia"))
+inline fun TelegramMedia.requireMediaGroupMemberInputMedia(): MediaGroupMemberTelegramMedia = requireMediaGroupMemberTelegramMedia()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenSizedInputMedia(block: (SizedInputMedia) -> T) = asSizedInputMedia() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenSizedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.whenSizedTelegramMedia"))
+inline fun <T> TelegramMedia.whenSizedInputMedia(block: (SizedTelegramMedia) -> T) = whenSizedTelegramMedia(block)
 
 @PreviewFeature
-inline fun InputMedia.asSizedInputMedia(): SizedInputMedia? = this as? SizedInputMedia
+@Deprecated("Renamed", ReplaceWith("asSizedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.asSizedTelegramMedia"))
+inline fun TelegramMedia.asSizedInputMedia(): SizedTelegramMedia? = asSizedTelegramMedia()
 
 @PreviewFeature
-inline fun InputMedia.requireSizedInputMedia(): SizedInputMedia = this as SizedInputMedia
+@Deprecated("Renamed", ReplaceWith("requireSizedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.requireSizedTelegramMedia"))
+inline fun TelegramMedia.requireSizedInputMedia(): SizedTelegramMedia = requireSizedTelegramMedia()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenThumbedInputMedia(block: (ThumbedInputMedia) -> T) = asThumbedInputMedia() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenThumbedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.whenThumbedTelegramMedia"))
+inline fun <T> TelegramMedia.whenThumbedInputMedia(block: (ThumbedTelegramMedia) -> T) = whenThumbedTelegramMedia(block)
 
 @PreviewFeature
-inline fun InputMedia.asThumbedInputMedia(): ThumbedInputMedia? = this as? ThumbedInputMedia
+@Deprecated("Renamed", ReplaceWith("asThumbedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.asThumbedTelegramMedia"))
+inline fun TelegramMedia.asThumbedInputMedia(): ThumbedTelegramMedia? = asThumbedTelegramMedia()
 
 @PreviewFeature
-inline fun InputMedia.requireThumbedInputMedia(): ThumbedInputMedia = this as ThumbedInputMedia
+@Deprecated("Renamed", ReplaceWith("requireThumbedTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.requireThumbedTelegramMedia"))
+inline fun TelegramMedia.requireThumbedInputMedia(): ThumbedTelegramMedia = requireThumbedTelegramMedia()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenTitledInputMedia(block: (TitledInputMedia) -> T) = asTitledInputMedia() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenTitledTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.whenTitledTelegramMedia"))
+inline fun <T> TelegramMedia.whenTitledInputMedia(block: (TitledTelegramMedia) -> T) = whenTitledTelegramMedia(block)
 
 @PreviewFeature
-inline fun InputMedia.asTitledInputMedia(): TitledInputMedia? = this as? TitledInputMedia
+@Deprecated("Renamed", ReplaceWith("asTitledTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.asTitledTelegramMedia"))
+inline fun TelegramMedia.asTitledInputMedia(): TitledTelegramMedia? = asTitledTelegramMedia()
 
 @PreviewFeature
-inline fun InputMedia.requireTitledInputMedia(): TitledInputMedia = this as TitledInputMedia
+@Deprecated("Renamed", ReplaceWith("requireTitledTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.requireTitledTelegramMedia"))
+inline fun TelegramMedia.requireTitledInputMedia(): TitledTelegramMedia = requireTitledTelegramMedia()
 
 @PreviewFeature
-inline fun <T> InputMedia.whenVisualMediaGroupMemberInputMedia(block: (VisualMediaGroupMemberInputMedia) -> T) = asVisualMediaGroupMemberInputMedia() ?.let(block)
+@Deprecated("Renamed", ReplaceWith("whenVisualMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.whenVisualMediaGroupMemberTelegramMedia"))
+inline fun <T> TelegramMedia.whenVisualMediaGroupMemberInputMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) = whenVisualMediaGroupMemberTelegramMedia(block)
 
 @PreviewFeature
-inline fun InputMedia.asVisualMediaGroupMemberInputMedia(): VisualMediaGroupMemberInputMedia? =
-    this as? VisualMediaGroupMemberInputMedia
+@Deprecated("Renamed", ReplaceWith("asVisualMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.asVisualMediaGroupMemberTelegramMedia"))
+inline fun TelegramMedia.asVisualMediaGroupMemberInputMedia(): VisualMediaGroupMemberTelegramMedia? = asVisualMediaGroupMemberTelegramMedia()
 
 @PreviewFeature
-inline fun InputMedia.requireVisualMediaGroupMemberInputMedia(): VisualMediaGroupMemberInputMedia =
-    this as VisualMediaGroupMemberInputMedia
+@Deprecated("Renamed", ReplaceWith("requireVisualMediaGroupMemberTelegramMedia", "dev.inmo.tgbotapi.extensions.utils.requireVisualMediaGroupMemberTelegramMedia"))
+inline fun TelegramMedia.requireVisualMediaGroupMemberInputMedia(): VisualMediaGroupMemberTelegramMedia = requireVisualMediaGroupMemberTelegramMedia()
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) = asAudioMediaGroupMemberTelegramMedia() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia? =
+    this as? AudioMediaGroupMemberTelegramMedia
+
+@PreviewFeature
+inline fun TelegramMedia.requireAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia =
+    this as AudioMediaGroupMemberTelegramMedia
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) = asDocumentMediaGroupMemberTelegramMedia() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia? =
+    this as? DocumentMediaGroupMemberTelegramMedia
+
+@PreviewFeature
+inline fun TelegramMedia.requireDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia =
+    this as DocumentMediaGroupMemberTelegramMedia
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T) = asDuratedTelegramMedia() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asDuratedTelegramMedia(): DuratedTelegramMedia? = this as? DuratedTelegramMedia
+
+@PreviewFeature
+inline fun TelegramMedia.requireDuratedTelegramMedia(): DuratedTelegramMedia = this as DuratedTelegramMedia
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T) = asTelegramMediaAnimation() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asTelegramMediaAnimation(): TelegramMediaAnimation? = this as? TelegramMediaAnimation
+
+@PreviewFeature
+inline fun TelegramMedia.requireTelegramMediaAnimation(): TelegramMediaAnimation = this as TelegramMediaAnimation
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenTelegramMediaAudio(block: (TelegramMediaAudio) -> T) = asTelegramMediaAudio() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asTelegramMediaAudio(): TelegramMediaAudio? = this as? TelegramMediaAudio
+
+@PreviewFeature
+inline fun TelegramMedia.requireTelegramMediaAudio(): TelegramMediaAudio = this as TelegramMediaAudio
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenTelegramMediaDocument(block: (TelegramMediaDocument) -> T) = asTelegramMediaDocument() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asTelegramMediaDocument(): TelegramMediaDocument? = this as? TelegramMediaDocument
+
+@PreviewFeature
+inline fun TelegramMedia.requireTelegramMediaDocument(): TelegramMediaDocument = this as TelegramMediaDocument
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T) = asTelegramMediaPhoto() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asTelegramMediaPhoto(): TelegramMediaPhoto? = this as? TelegramMediaPhoto
+
+@PreviewFeature
+inline fun TelegramMedia.requireTelegramMediaPhoto(): TelegramMediaPhoto = this as TelegramMediaPhoto
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenTelegramMediaVideo(block: (TelegramMediaVideo) -> T) = asTelegramMediaVideo() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asTelegramMediaVideo(): TelegramMediaVideo? = this as? TelegramMediaVideo
+
+@PreviewFeature
+inline fun TelegramMedia.requireTelegramMediaVideo(): TelegramMediaVideo = this as TelegramMediaVideo
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T) = asMediaGroupMemberTelegramMedia() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia? = this as? MediaGroupMemberTelegramMedia
+
+@PreviewFeature
+inline fun TelegramMedia.requireMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia =
+    this as MediaGroupMemberTelegramMedia
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenSizedTelegramMedia(block: (SizedTelegramMedia) -> T) = asSizedTelegramMedia() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asSizedTelegramMedia(): SizedTelegramMedia? = this as? SizedTelegramMedia
+
+@PreviewFeature
+inline fun TelegramMedia.requireSizedTelegramMedia(): SizedTelegramMedia = this as SizedTelegramMedia
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T) = asThumbedTelegramMedia() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asThumbedTelegramMedia(): ThumbedTelegramMedia? = this as? ThumbedTelegramMedia
+
+@PreviewFeature
+inline fun TelegramMedia.requireThumbedTelegramMedia(): ThumbedTelegramMedia = this as ThumbedTelegramMedia
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenTitledTelegramMedia(block: (TitledTelegramMedia) -> T) = asTitledTelegramMedia() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asTitledTelegramMedia(): TitledTelegramMedia? = this as? TitledTelegramMedia
+
+@PreviewFeature
+inline fun TelegramMedia.requireTitledTelegramMedia(): TitledTelegramMedia = this as TitledTelegramMedia
+
+@PreviewFeature
+inline fun <T> TelegramMedia.whenVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) = asVisualMediaGroupMemberTelegramMedia() ?.let(block)
+
+@PreviewFeature
+inline fun TelegramMedia.asVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia? =
+    this as? VisualMediaGroupMemberTelegramMedia
+
+@PreviewFeature
+inline fun TelegramMedia.requireVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia =
+    this as VisualMediaGroupMemberTelegramMedia
 
 @PreviewFeature
 inline fun <T> Update.whenCallbackQueryUpdate(block: (CallbackQueryUpdate) -> T) = asCallbackQueryUpdate() ?.let(block)

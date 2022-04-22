@@ -1,10 +1,10 @@
-package dev.inmo.tgbotapi.types.InputMedia
+package dev.inmo.tgbotapi.types.media
 
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import kotlinx.serialization.Serializable
 
-@Serializable(InputMediaSerializer::class)
-sealed interface InputMedia {
+@Serializable(TelegramMediaSerializer::class)
+sealed interface TelegramMedia {
     val type: String
     val file: InputFile
     val media: String

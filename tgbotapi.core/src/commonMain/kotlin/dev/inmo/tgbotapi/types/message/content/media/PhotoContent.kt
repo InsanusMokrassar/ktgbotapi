@@ -3,8 +3,8 @@ package dev.inmo.tgbotapi.types.message.content.media
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendPhoto
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.InputMedia.InputMediaPhoto
-import dev.inmo.tgbotapi.types.InputMedia.toInputMediaPhoto
+import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+import dev.inmo.tgbotapi.types.media.toTelegramMediaPhoto
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -39,7 +39,7 @@ data class PhotoContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): InputMediaPhoto = asInputMedia()
+    override fun toMediaGroupMemberTelegramMedia(): TelegramMediaPhoto = asTelegramMedia()
 
-    override fun asInputMedia(): InputMediaPhoto = media.toInputMediaPhoto(textSources)
+    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources)
 }

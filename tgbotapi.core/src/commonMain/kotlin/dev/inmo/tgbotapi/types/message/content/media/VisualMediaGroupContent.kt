@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
-import dev.inmo.tgbotapi.types.InputMedia.VisualMediaGroupMemberInputMedia
+import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
 
 interface VisualMediaGroupContent : MediaGroupContent {
-    override fun toMediaGroupMemberInputMedia(): VisualMediaGroupMemberInputMedia
+    override fun toMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia
 }

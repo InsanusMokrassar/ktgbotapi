@@ -1,16 +1,14 @@
 package dev.inmo.tgbotapi.types.message.content.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVoice
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.InputMedia.InputMediaAudio
+import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -38,7 +36,7 @@ data class VoiceContent(
         replyMarkup
     )
 
-    override fun asInputMedia(): InputMediaAudio = InputMediaAudio(
+    override fun asTelegramMedia(): TelegramMediaAudio = TelegramMediaAudio(
         media.fileId,
         textSources,
         media.duration

@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi
 
 import dev.inmo.tgbotapi.requests.abstracts.toInputFile
-import dev.inmo.tgbotapi.types.InputMedia.MediaGroupMemberInputMediaSerializer
+import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMediaSerializer
 import dev.inmo.tgbotapi.types.files.PhotoSize
 import dev.inmo.tgbotapi.types.message.content.media.PhotoContent
 import kotlinx.serialization.json.Json
@@ -24,16 +24,16 @@ class SimpleInputFilesTest {
                 PhotoSize("example_file_id".toInputFile(), "example_unique_file_id", 100, 100, 100)
             )
         )
-        val inputMedia = photoContent.toMediaGroupMemberInputMedia()
+        val inputMedia = photoContent.toMediaGroupMemberTelegramMedia()
         assertEquals(photoContent.media.fileId, inputMedia.file)
         val encoded = nonstrictJsonFormat.encodeToString(
-            MediaGroupMemberInputMediaSerializer,
+            MediaGroupMemberTelegramMediaSerializer,
             inputMedia
         )
         assertEquals(
             inputMedia,
             nonstrictJsonFormat.decodeFromString(
-                MediaGroupMemberInputMediaSerializer,
+                MediaGroupMemberTelegramMediaSerializer,
                 encoded
             )
         )

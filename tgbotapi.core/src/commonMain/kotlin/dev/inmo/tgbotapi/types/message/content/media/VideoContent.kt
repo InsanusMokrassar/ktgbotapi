@@ -3,12 +3,12 @@ package dev.inmo.tgbotapi.types.message.content.media
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVideo
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
+import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
-import dev.inmo.tgbotapi.types.files.toInputMediaVideo
+import dev.inmo.tgbotapi.types.files.toTelegramMediaVideo
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import kotlinx.serialization.Serializable
 
@@ -41,7 +41,7 @@ data class VideoContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberInputMedia(): InputMediaVideo = asInputMedia()
+    override fun toMediaGroupMemberTelegramMedia(): TelegramMediaVideo = asTelegramMedia()
 
-    override fun asInputMedia(): InputMediaVideo = media.toInputMediaVideo(textSources)
+    override fun asTelegramMedia(): TelegramMediaVideo = media.toTelegramMediaVideo(textSources)
 }
