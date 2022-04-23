@@ -2,8 +2,9 @@ package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.games.CallbackGame
+import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 import kotlinx.serialization.*
-import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.*
 
 /**
  * Some button of [dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup]. See inheritors and visit
@@ -15,10 +16,14 @@ sealed interface InlineKeyboardButton {
 }
 
 @Serializable
-data class UnknownInlineKeyboardButton internal constructor(
-    override val text: String,
+data class UnknownInlineKeyboardButton (
     val rawData: JsonElement
-) : InlineKeyboardButton
+) : InlineKeyboardButton {
+    override val text: String
+        get() = runCatching {
+            rawData.jsonObject[textField] ?.jsonPrimitive ?.content
+        }.getOrNull() ?: ""
+}
 
 /**
  * This type of button must always be the first button in the first row. Visit
@@ -115,4 +120,15 @@ data class URLInlineKeyboardButton(
     override val text: String,
     @SerialName(urlField)
     val url: String
+) : InlineKeyboardButton
+
+/**
+ * Button with [WebAppInfo]. Web App will be launched when the button is pressed. The Web App will be able to send a
+ * `web_app_data` service message. **Available in private chats only**.
+ */
+@Serializable
+data class WebAppInlineKeyboardButton(
+    override val text: String,
+    @SerialName(webAppField)
+    val webApp: WebAppInfo
 ) : InlineKeyboardButton

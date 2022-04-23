@@ -26,8 +26,8 @@ data class AdministratorChatMemberImpl(
     override val canPinMessages: Boolean = false,
     @SerialName(canPromoteMembersField)
     override val canPromoteMembers: Boolean = false,
-    @SerialName(canManageVoiceChatsField)
-    override val canManageVoiceChats: Boolean = false,
+    @SerialName(canManageVideoChatsField)
+    override val canManageVideoChats: Boolean = false,
     @SerialName(canManageChatField)
     override val canManageChat: Boolean = false,
     @SerialName(isAnonymousField)

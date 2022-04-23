@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.extensions.utils.asChatEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
+import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -94,11 +95,12 @@ suspend fun <BC : BehaviourContext> BC.onChatEvent(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
+@Deprecated("Renamed as Video instead of Voice")
 suspend fun <BC : BehaviourContext> BC.onVoiceChatEvent(
-    initialFilter: SimpleFilter<ChatEventMessage<VoiceChatEvent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VoiceChatEvent>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<VoiceChatEvent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VoiceChatEvent>>
+    initialFilter: SimpleFilter<ChatEventMessage<VideoChatEvent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatEvent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<VideoChatEvent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatEvent>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -113,11 +115,12 @@ suspend fun <BC : BehaviourContext> BC.onVoiceChatEvent(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
+@Deprecated("Renamed as Video instead of Voice")
 suspend fun <BC : BehaviourContext> BC.onVoiceChatStartedEvent(
-    initialFilter: SimpleFilter<ChatEventMessage<VoiceChatStarted>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VoiceChatStarted>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<VoiceChatStarted>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VoiceChatStarted>>
+    initialFilter: SimpleFilter<ChatEventMessage<VideoChatStarted>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatStarted>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<VideoChatStarted>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatStarted>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -132,11 +135,12 @@ suspend fun <BC : BehaviourContext> BC.onVoiceChatStartedEvent(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
+@Deprecated("Renamed as Video instead of Voice")
 suspend fun <BC : BehaviourContext> BC.onVoiceChatEndedEvent(
-    initialFilter: SimpleFilter<ChatEventMessage<VoiceChatEnded>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VoiceChatEnded>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<VoiceChatEnded>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VoiceChatEnded>>
+    initialFilter: SimpleFilter<ChatEventMessage<VideoChatEnded>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatEnded>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<VideoChatEnded>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatEnded>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -151,11 +155,88 @@ suspend fun <BC : BehaviourContext> BC.onVoiceChatEndedEvent(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
+@Deprecated("Renamed as Video instead of Voice")
 suspend fun <BC : BehaviourContext> BC.onVoiceChatParticipantsInvitedEvent(
-    initialFilter: SimpleFilter<ChatEventMessage<VoiceChatParticipantsInvited>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VoiceChatParticipantsInvited>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<VoiceChatParticipantsInvited>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VoiceChatParticipantsInvited>>
+    initialFilter: SimpleFilter<ChatEventMessage<VideoChatParticipantsInvited>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatParticipantsInvited>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<VideoChatParticipantsInvited>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatParticipantsInvited>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onVideoChatEvent(
+    initialFilter: SimpleFilter<ChatEventMessage<VideoChatEvent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatEvent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<VideoChatEvent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatEvent>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onVideoChatStartedEvent(
+    initialFilter: SimpleFilter<ChatEventMessage<VideoChatStarted>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatStarted>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<VideoChatStarted>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatStarted>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onVideoChatEndedEvent(
+    initialFilter: SimpleFilter<ChatEventMessage<VideoChatEnded>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatEnded>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<VideoChatEnded>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatEnded>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onVideoChatParticipantsInvitedEvent(
+    initialFilter: SimpleFilter<ChatEventMessage<VideoChatParticipantsInvited>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<VideoChatParticipantsInvited>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<VideoChatParticipantsInvited>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<VideoChatParticipantsInvited>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -483,3 +564,30 @@ suspend fun <BC : BehaviourContext> BC.onUserLoggedIn(
     markerFactory: MarkerFactory<in ChatEventMessage<UserLoggedIn>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<UserLoggedIn>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onWebAppData(
+    initialFilter: SimpleFilter<PrivateEventMessage<WebAppData>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PrivateEventMessage<WebAppData>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<WebAppData>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PrivateEventMessage<WebAppData>>
+) = onEvent(
+    initialFilter ?.let { { it is PrivateEventMessage<WebAppData> && initialFilter(it) } },
+    subcontextUpdatesFilter ?.let { { it: ChatEventMessage<WebAppData>, update: Update -> it is PrivateEventMessage<WebAppData> && subcontextUpdatesFilter(it, update) } },
+    markerFactory
+) {
+    if (it is PrivateEventMessage<WebAppData>) {
+        scenarioReceiver(it)
+    }
+}

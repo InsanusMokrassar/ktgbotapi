@@ -16,6 +16,8 @@ data class WebhookInfo(
     val allowedUpdates: List<String> = ALL_UPDATES_LIST,
     @SerialName(lastErrorDateField)
     val lastErrorDate: TelegramDate? = null,
+    @SerialName(lastSynchronizationErrorDateField)
+    val lastSynchronizationErrorDate: TelegramDate? = null,
     @SerialName(lastErrorMessageField)
     val lastErrorMessage: String? = null
 ) {

@@ -2517,6 +2517,16 @@ inline fun InlineKeyboardButton.requireURLInlineKeyboardButton(): URLInlineKeybo
     this as URLInlineKeyboardButton
 
 @PreviewFeature
+inline fun <T> InlineKeyboardButton.whenWebAppKeyboardButton(block: (WebAppKeyboardButton) -> T) = asWebAppKeyboardButton() ?.let(block)
+
+@PreviewFeature
+inline fun InlineKeyboardButton.asWebAppKeyboardButton(): WebAppKeyboardButton? = this as? WebAppKeyboardButton
+
+@PreviewFeature
+inline fun InlineKeyboardButton.requireWebAppKeyboardButton(): WebAppKeyboardButton =
+    this as WebAppKeyboardButton
+
+@PreviewFeature
 inline fun <T> InlineKeyboardButton.whenUnknownInlineKeyboardButton(block: (UnknownInlineKeyboardButton) -> T) = asUnknownInlineKeyboardButton() ?.let(block)
 
 @PreviewFeature
@@ -3191,51 +3201,113 @@ inline fun ChatEvent.asSupergroupEvent(): SupergroupEvent? = this as? Supergroup
 inline fun ChatEvent.requireSupergroupEvent(): SupergroupEvent = this as SupergroupEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVoiceChatEvent(block: (VoiceChatEvent) -> T) = asVoiceChatEvent() ?.let(block)
+@Deprecated("Renamed as Video instead of Voice")
+inline fun <T> ChatEvent.whenVoiceChatEvent(block: (VideoChatEvent) -> T) = asVoiceChatEvent() ?.let(block)
 
 @PreviewFeature
-inline fun ChatEvent.asVoiceChatEvent(): VoiceChatEvent? = this as? VoiceChatEvent
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.asVoiceChatEvent(): VideoChatEvent? = this as? VideoChatEvent
 
 @PreviewFeature
-inline fun ChatEvent.requireVoiceChatEvent(): VoiceChatEvent = this as VoiceChatEvent
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.requireVoiceChatEvent(): VideoChatEvent = this as VideoChatEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVoiceChatEnded(block: (VoiceChatEnded) -> T) = asVoiceChatEnded() ?.let(block)
+@Deprecated("Renamed as Video instead of Voice")
+inline fun <T> ChatEvent.whenVoiceChatEnded(block: (VideoChatEnded) -> T) = asVoiceChatEnded() ?.let(block)
 
 @PreviewFeature
-inline fun ChatEvent.asVoiceChatEnded(): VoiceChatEnded? = this as? VoiceChatEnded
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.asVoiceChatEnded(): VideoChatEnded? = this as? VideoChatEnded
 
 @PreviewFeature
-inline fun ChatEvent.requireVoiceChatEnded(): VoiceChatEnded = this as VoiceChatEnded
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.requireVoiceChatEnded(): VideoChatEnded = this as VideoChatEnded
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVoiceChatParticipantsInvited(block: (VoiceChatParticipantsInvited) -> T) = asVoiceChatParticipantsInvited() ?.let(block)
+@Deprecated("Renamed as Video instead of Voice")
+inline fun <T> ChatEvent.whenVoiceChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T) = asVoiceChatParticipantsInvited() ?.let(block)
 
 @PreviewFeature
-inline fun ChatEvent.asVoiceChatParticipantsInvited(): VoiceChatParticipantsInvited? =
-    this as? VoiceChatParticipantsInvited
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.asVoiceChatParticipantsInvited(): VideoChatParticipantsInvited? =
+    this as? VideoChatParticipantsInvited
 
 @PreviewFeature
-inline fun ChatEvent.requireVoiceChatParticipantsInvited(): VoiceChatParticipantsInvited =
-    this as VoiceChatParticipantsInvited
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.requireVoiceChatParticipantsInvited(): VideoChatParticipantsInvited =
+    this as VideoChatParticipantsInvited
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVoiceChatStarted(block: (VoiceChatStarted) -> T) = asVoiceChatStarted() ?.let(block)
+@Deprecated("Renamed as Video instead of Voice")
+inline fun <T> ChatEvent.whenVoiceChatStarted(block: (VideoChatStarted) -> T) = asVoiceChatStarted() ?.let(block)
 
 @PreviewFeature
-inline fun ChatEvent.asVoiceChatStarted(): VoiceChatStarted? = this as? VoiceChatStarted
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.asVoiceChatStarted(): VideoChatStarted? = this as? VideoChatStarted
 
 @PreviewFeature
-inline fun ChatEvent.requireVoiceChatStarted(): VoiceChatStarted = this as VoiceChatStarted
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.requireVoiceChatStarted(): VideoChatStarted = this as VideoChatStarted
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVoiceChatScheduled(block: (VoiceChatScheduled) -> T) = asVoiceChatScheduled() ?.let(block)
+@Deprecated("Renamed as Video instead of Voice")
+inline fun <T> ChatEvent.whenVoiceChatScheduled(block: (VideoChatScheduled) -> T) = asVoiceChatScheduled() ?.let(block)
 
 @PreviewFeature
-inline fun ChatEvent.asVoiceChatScheduled(): VoiceChatScheduled? = this as? VoiceChatScheduled
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.asVoiceChatScheduled(): VideoChatScheduled? = this as? VideoChatScheduled
 
 @PreviewFeature
-inline fun ChatEvent.requireVoiceChatScheduled(): VoiceChatScheduled = this as VoiceChatScheduled
+@Deprecated("Renamed as Video instead of Voice")
+inline fun ChatEvent.requireVoiceChatScheduled(): VideoChatScheduled = this as VideoChatScheduled
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenVideoChatEvent(block: (VideoChatEvent) -> T) = asVideoChatEvent() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asVideoChatEvent(): VideoChatEvent? = this as? VideoChatEvent
+
+@PreviewFeature
+inline fun ChatEvent.requireVideoChatEvent(): VideoChatEvent = this as VideoChatEvent
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenVideoChatEnded(block: (VideoChatEnded) -> T) = asVideoChatEnded() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asVideoChatEnded(): VideoChatEnded? = this as? VideoChatEnded
+
+@PreviewFeature
+inline fun ChatEvent.requireVideoChatEnded(): VideoChatEnded = this as VideoChatEnded
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenVideoChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T) = asVideoChatParticipantsInvited() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asVideoChatParticipantsInvited(): VideoChatParticipantsInvited? =
+    this as? VideoChatParticipantsInvited
+
+@PreviewFeature
+inline fun ChatEvent.requireVideoChatParticipantsInvited(): VideoChatParticipantsInvited =
+    this as VideoChatParticipantsInvited
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenVideoChatStarted(block: (VideoChatStarted) -> T) = asVideoChatStarted() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asVideoChatStarted(): VideoChatStarted? = this as? VideoChatStarted
+
+@PreviewFeature
+inline fun ChatEvent.requireVideoChatStarted(): VideoChatStarted = this as VideoChatStarted
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenVideoChatScheduled(block: (VideoChatScheduled) -> T) = asVideoChatScheduled() ?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asVideoChatScheduled(): VideoChatScheduled? = this as? VideoChatScheduled
+
+@PreviewFeature
+inline fun ChatEvent.requireVideoChatScheduled(): VideoChatScheduled = this as VideoChatScheduled
 
 @PreviewFeature
 inline fun <T> ChatEvent.whenUserLoggedIn(block: (UserLoggedIn) -> T) = asUserLoggedIn() ?.let(block)

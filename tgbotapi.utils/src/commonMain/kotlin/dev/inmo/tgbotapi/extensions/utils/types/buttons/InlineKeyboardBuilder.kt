@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.utils.types.buttons
 import dev.inmo.tgbotapi.types.LoginURL
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 import dev.inmo.tgbotapi.utils.MatrixBuilder
 import dev.inmo.tgbotapi.utils.RowBuilder
 
@@ -128,3 +129,25 @@ inline fun InlineKeyboardRowBuilder.urlButton(
     text: String,
     url: String
 ) = add(URLInlineKeyboardButton(text, url))
+
+/**
+ * Creates and put [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.webAppButton(
+    text: String,
+    webApp: WebAppInfo
+) = add(WebAppInlineKeyboardButton(text, webApp))
+
+/**
+ * Creates and put [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
+ *
+ * @see inlineKeyboard
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun InlineKeyboardRowBuilder.webAppButton(
+    text: String,
+    url: String
+) = webAppButton(text, WebAppInfo(url))

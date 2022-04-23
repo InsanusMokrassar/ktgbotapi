@@ -31,7 +31,7 @@ data class CreatorChatMember(
     @Transient
     override val canPromoteMembers: Boolean = true
     @Transient
-    override val canManageVoiceChats: Boolean = true
+    override val canManageVideoChats: Boolean = true
     @Transient
     override val canManageChat: Boolean = true
     @SerialName(statusField)

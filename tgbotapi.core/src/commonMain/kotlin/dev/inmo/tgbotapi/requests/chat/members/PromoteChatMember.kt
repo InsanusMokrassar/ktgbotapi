@@ -32,8 +32,8 @@ data class PromoteChatMember(
     private val canPinMessages: Boolean? = null,
     @SerialName(canPromoteMembersField)
     private val canPromoteMembers: Boolean? = null,
-    @SerialName(canManageVoiceChatsField)
-    private val canManageVoiceChats: Boolean? = null,
+    @SerialName(canManageVideoChatsField)
+    private val canManageVideoChats: Boolean? = null,
     @SerialName(canManageChatField)
     private val canManageChat: Boolean? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
