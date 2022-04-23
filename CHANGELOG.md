@@ -2,8 +2,6 @@
 
 ## 1.0.0
 
-__This update contains including of [Telegram Bot API 6.0](https://core.telegram.org/bots/api-changelog#april-16-2022)__
-
 __All the `tgbotapi.extensions.*` packages have been removed__
 
 * `Core`:
@@ -31,10 +29,17 @@ __All the `tgbotapi.extensions.*` packages have been removed__
         * `MultipartFile` do not require `StorageFile` anymore
         * `InputFile` companion got functions to simplify creation of `InputFile`s
         * New typealias `FileUrl` (represents `FileId` but declare that they are the same)
-* `WebApps`:
-    * Created 🎉
 * `BehaviourBuilder`:
     * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
+
+## 0.38.14
+
+__This update contains including of [Telegram Bot API 6.0](https://core.telegram.org/bots/api-changelog#april-16-2022)__
+
+* `Core`:
+    * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json`
+* `WebApps`:
+    * Created 🎉
 
 ## 0.38.13
 
