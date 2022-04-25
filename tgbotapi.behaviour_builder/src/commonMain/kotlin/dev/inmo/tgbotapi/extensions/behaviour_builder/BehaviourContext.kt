@@ -26,7 +26,7 @@ internal inline fun <BC, T, I1, I2> CustomBehaviourContextAndTwoTypesReceiver<BC
 ): CustomBehaviourContextAndTypeReceiver<BC, T, I2> = { invoke(this, i1, it) }
 
 /**
- * This class contains all necessary tools for work with bots and especially for [buildBehaviour]
+ * This class contains all necessary tools for work with bots and especially [buildBehaviour]
  *
  * @see DefaultBehaviourContext
  */
