@@ -5,6 +5,8 @@ import dev.inmo.micro_utils.fsm.common.*
 import dev.inmo.micro_utils.fsm.common.managers.DefaultStatesManager
 import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.DefaultTelegramHandlersRegistrar
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.TelegramHandlersRegistrar
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -95,12 +97,14 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): BehaviourContextWithFSM<T> = BehaviourContextWithFSMBuilder(
     DefaultBehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
-        upstreamUpdatesFlow = upstreamUpdatesFlow
+        upstreamUpdatesFlow = upstreamUpdatesFlow,
+        telegramHandlersRegistrar = telegramHandlersRegistrar
     ),
     statesManager,
     presetHandlers
@@ -117,6 +121,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): Pair<BehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
     upstreamUpdatesFlow,
@@ -124,6 +129,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler,
     statesManager,
     presetHandlers,
+    telegramHandlersRegistrar,
     block
 ).run {
     this to scope.launch {
@@ -157,12 +163,14 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): BehaviourContextWithFSM<T> = BehaviourContextWithFSMBuilder(
     DefaultBehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
-        upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow
+        upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow,
+        telegramHandlersRegistrar = telegramHandlersRegistrar
     ),
     statesManager,
     presetHandlers
@@ -185,6 +193,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
@@ -193,6 +202,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
         defaultExceptionsHandler,
         statesManager,
         presetHandlers,
+        telegramHandlersRegistrar,
         block
     ).run {
         start()

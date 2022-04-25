@@ -3,6 +3,8 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder
 import dev.inmo.micro_utils.coroutines.ContextSafelyExceptionHandler
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.DefaultTelegramHandlersRegistrar
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.TelegramHandlersRegistrar
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
@@ -30,6 +32,7 @@ suspend fun TelegramBot.buildBehaviour(
     flowUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: BehaviourContextReceiver<Unit>
 ) {
     BehaviourContext(
@@ -41,7 +44,8 @@ suspend fun TelegramBot.buildBehaviour(
                   it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
               }
         },
-        flowUpdatesFilter
+        flowUpdatesFilter,
+        telegramHandlersRegistrar
     ).block()
 }
 
@@ -57,12 +61,14 @@ suspend fun TelegramBot.buildBehaviour(
 suspend fun TelegramBot.buildBehaviourWithLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: BehaviourContextReceiver<Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviour(
         it,
         scope,
         defaultExceptionsHandler,
+        telegramHandlersRegistrar,
         block
     )
     longPolling(

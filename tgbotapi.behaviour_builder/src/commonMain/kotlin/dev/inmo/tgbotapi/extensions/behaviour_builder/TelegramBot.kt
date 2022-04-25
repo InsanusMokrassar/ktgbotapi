@@ -4,6 +4,8 @@ import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.Ktor.telegramBot
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.DefaultTelegramHandlersRegistrar
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.TelegramHandlersRegistrar
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
@@ -30,6 +32,7 @@ suspend fun telegramBotWithBehaviour(
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: BehaviourContextReceiver<Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -40,6 +43,7 @@ suspend fun telegramBotWithBehaviour(
         flowsUpdatesFilter,
         scope ?: CoroutineScope(coroutineContext),
         defaultExceptionsHandler,
+        telegramHandlersRegistrar,
         block
     )
 }
@@ -63,6 +67,7 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: BehaviourContextReceiver<Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -73,6 +78,7 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
         it to it.buildBehaviourWithLongPolling(
             scope ?: CoroutineScope(coroutineContext),
             defaultExceptionsHandler,
+            telegramHandlersRegistrar,
             block
         )
     }

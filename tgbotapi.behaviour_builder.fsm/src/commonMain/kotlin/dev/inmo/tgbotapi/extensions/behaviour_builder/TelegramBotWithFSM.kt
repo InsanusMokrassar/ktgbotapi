@@ -8,6 +8,8 @@ import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
 import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.Ktor.telegramBot
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.DefaultTelegramHandlersRegistrar
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.TelegramHandlersRegistrar
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
@@ -38,6 +40,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -50,6 +53,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
         defaultExceptionsHandler,
         statesManager,
         presetHandlers,
+        telegramHandlersRegistrar,
         block
     )
 }
@@ -73,6 +77,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -85,6 +90,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
             defaultExceptionsHandler,
             statesManager,
             presetHandlers,
+            telegramHandlersRegistrar,
             block
         )
     }

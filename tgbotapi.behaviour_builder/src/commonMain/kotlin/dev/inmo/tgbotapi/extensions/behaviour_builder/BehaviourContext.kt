@@ -4,9 +4,10 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.DefaultTelegramHandlersRegistrar
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.TelegramHandlersRegistrar
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
-import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
@@ -30,7 +31,7 @@ internal inline fun <BC, T, I1, I2> CustomBehaviourContextAndTwoTypesReceiver<BC
  *
  * @see DefaultBehaviourContext
  */
-interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
+interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope, TelegramHandlersRegistrar {
     val bot: TelegramBot
         get() = this
 
@@ -47,12 +48,16 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
     val flowsUpdatesFilter: FlowsUpdatesFilter
         get() = this
 
+    val telegramHandlersRegistrar: TelegramHandlersRegistrar
+        get() = this
+
     fun copy(
         bot: TelegramBot = this.bot,
         scope: CoroutineScope = this.scope,
         broadcastChannelsSize: Int = 100,
         onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
         upstreamUpdatesFlow: Flow<Update>? = null,
+        telegramHandlersRegistrar: TelegramHandlersRegistrar = this.telegramHandlersRegistrar,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
     ): BehaviourContext
 }
@@ -60,11 +65,16 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
 class DefaultBehaviourContext(
     override val bot: TelegramBot,
     override val scope: CoroutineScope,
+    override val telegramHandlersRegistrar: TelegramHandlersRegistrar,
     broadcastChannelsSize: Int = 100,
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
     private val upstreamUpdatesFlow: Flow<Update>? = null,
     private val updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
-) : AbstractFlowsUpdatesFilter(), TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
+) : AbstractFlowsUpdatesFilter(),
+    TelegramBot by bot,
+    CoroutineScope by scope,
+    TelegramHandlersRegistrar by telegramHandlersRegistrar,
+    BehaviourContext {
 
     private val additionalUpdatesSharedFlow = MutableSharedFlow<Update>(0, broadcastChannelsSize, onBufferOverflow)
     override val allUpdatesFlow: Flow<Update> = (additionalUpdatesSharedFlow.asSharedFlow()).let {
@@ -89,22 +99,25 @@ class DefaultBehaviourContext(
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
+        telegramHandlersRegistrar: TelegramHandlersRegistrar,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
-    ): BehaviourContext = DefaultBehaviourContext(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter)
+    ): BehaviourContext = DefaultBehaviourContext(bot, scope, telegramHandlersRegistrar, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter)
 }
 
 fun BehaviourContext(
     bot: TelegramBot,
     scope: CoroutineScope,
-    flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
-) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow)
+    flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
+) = DefaultBehaviourContext(bot, scope, telegramHandlersRegistrar, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow)
 
 inline fun <T> BehaviourContext(
     bot: TelegramBot,
     scope: CoroutineScope,
     flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
+    telegramHandlersRegistrar: TelegramHandlersRegistrar = DefaultTelegramHandlersRegistrar(),
     crossinline block: BehaviourContext.() -> T
-) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow).run(block)
+) = DefaultBehaviourContext(bot, scope, telegramHandlersRegistrar, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow).run(block)
 
 /**
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [updatesFilter] is provided and

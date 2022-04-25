@@ -44,6 +44,7 @@ kotlin {
             dependencies {
                 implementation kotlin('stdlib')
                 api project(":tgbotapi.utils")
+                api "dev.inmo:micro_utils.handlers.common:$micro_utils_version"
             }
         }
     }

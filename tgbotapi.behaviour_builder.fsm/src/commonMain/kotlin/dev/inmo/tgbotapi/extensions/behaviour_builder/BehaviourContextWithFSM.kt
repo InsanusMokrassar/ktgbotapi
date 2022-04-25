@@ -6,6 +6,7 @@ import dev.inmo.micro_utils.fsm.common.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.micro_utils.coroutines.accumulatorFlow
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers.TelegramHandlersRegistrar
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
@@ -36,6 +37,7 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
+        telegramHandlersRegistrar: TelegramHandlersRegistrar,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
     ): BehaviourContextWithFSM<T>
 
@@ -105,9 +107,10 @@ class DefaultBehaviourContextWithFSM<T : State>(
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
+        telegramHandlersRegistrar: TelegramHandlersRegistrar,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
     ): BehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter),
+        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, telegramHandlersRegistrar, updatesFilter),
         handlers,
         statesManager
     )
