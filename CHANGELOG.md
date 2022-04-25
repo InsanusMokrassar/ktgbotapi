@@ -2,6 +2,9 @@
 
 ## 0.38.15
 
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.20` -> `0.9.24`
 * `Core`:
     * Fixes in `MessageContent#serializationModule`
 
