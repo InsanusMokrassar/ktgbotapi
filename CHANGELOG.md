@@ -7,6 +7,8 @@
         * `MicroUtils`: `0.9.20` -> `0.9.24`
 * `Core`:
     * Fixes in `MessageContent#serializationModule`
+* `BehaviourBuilder`:
+    * Add triggers for `DataCallbackQuery` and subtypes with regex checking of data
 
 ## 0.38.14
 
