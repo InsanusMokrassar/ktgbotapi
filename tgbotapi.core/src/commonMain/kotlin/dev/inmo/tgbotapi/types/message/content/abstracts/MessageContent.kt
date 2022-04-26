@@ -20,8 +20,7 @@ interface MessageContent: ResendableContent {
                 subclass(DiceContent::class)
                 subclass(TextContent::class)
 
-                subclass(LiveLocationContent::class)
-                subclass(StaticLocationContent::class)
+                subclass(LocationContent::class, LocationContentSerializer)
 
                 subclass(PhotoContent::class)
                 subclass(VideoContent::class)
