@@ -32,6 +32,16 @@ __All the `tgbotapi.extensions.*` packages have been removed__
 * `BehaviourBuilder`:
     * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
 
+## 0.38.15
+
+* `Common`:
+    * `Version`:
+        * `MicroUtils`: `0.9.20` -> `0.9.24`
+* `Core`:
+    * Fixes in `MessageContent#serializationModule`
+* `BehaviourBuilder`:
+    * Add triggers for `DataCallbackQuery` and subtypes with regex checking of data
+
 ## 0.38.14
 
 __This update contains including of [Telegram Bot API 6.0](https://core.telegram.org/bots/api-changelog#april-16-2022)__
