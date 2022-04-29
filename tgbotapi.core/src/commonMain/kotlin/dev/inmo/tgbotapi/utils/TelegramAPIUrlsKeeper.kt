@@ -18,6 +18,10 @@ class TelegramAPIUrlsKeeper(
     token: String,
     hostUrl: String = telegramBotAPIDefaultUrl
 ) {
+    val webAppDataSecretKey by lazy {
+        token.hmacSha256("WebAppData")
+    }
+
     val commonAPIUrl: String
     val fileBaseUrl: String
 
@@ -28,4 +32,10 @@ class TelegramAPIUrlsKeeper(
     }
 
     fun createFileLinkUrl(filePath: String) = "${fileBaseUrl}/$filePath"
+
+    /**
+     * @param rawData Data from [dev.inmo.tgbotapi.webapps.WebApp.initData]
+     * @param hash Data from [dev.inmo.tgbotapi.webapps.WebApp.initDataUnsafe] from the field [dev.inmo.tgbotapi.webapps.WebAppInitData.hash]
+     */
+    fun checkWebAppLink(rawData: String, hash: String) = rawData.hmacSha256(webAppDataSecretKey).hex() == hash
 }
