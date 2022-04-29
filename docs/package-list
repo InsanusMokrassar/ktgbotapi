@@ -7420,9 +7420,11 @@ $dokka.location:dev.inmo.tgbotapi.utils/StorageFile/generateCustomName/#/Pointin
 $dokka.location:dev.inmo.tgbotapi.utils/StorageFile/input/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-storage-file/input.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper///PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/index.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/TelegramAPIUrlsKeeper/#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/-telegram-a-p-i-urls-keeper.html
+$dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/checkWebAppLink/#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/check-web-app-link.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/commonAPIUrl/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/common-a-p-i-url.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/createFileLinkUrl/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/create-file-link-url.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/fileBaseUrl/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/file-base-url.html
+$dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/webAppDataSecretKey/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/web-app-data-secret-key.html
 $dokka.location:dev.inmo.tgbotapi.webapps////PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps//HmacSHA256/dev.inmo.micro_utils.crypto.CryptoJs#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-hmac-s-h-a256.html
 $dokka.location:dev.inmo.tgbotapi.webapps//Telegram/org.w3c.dom.Window#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-telegram.html
