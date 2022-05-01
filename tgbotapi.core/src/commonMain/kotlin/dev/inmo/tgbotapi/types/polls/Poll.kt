@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.polls
 
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
-import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
+import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity

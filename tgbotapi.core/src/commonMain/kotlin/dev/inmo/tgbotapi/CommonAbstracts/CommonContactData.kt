@@ -1,8 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-interface CommonContactData {
-    val phoneNumber: String
-    val firstName: String
-    val lastName: String?
-    val vcard: String? // TODO:: Replace by some vCard abstraction
-}
+@Deprecated("Replaced", ReplaceWith("CommonContactData", "dev.inmo.tgbotapi.abstracts.CommonContactData"))
+typealias CommonContactData = dev.inmo.tgbotapi.abstracts.CommonContactData

@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.InlineQueries.query
 
-import dev.inmo.tgbotapi.CommonAbstracts.FromUser
+import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.types.InlineQueryIdentifier
 import dev.inmo.tgbotapi.types.chat.ChatType
 

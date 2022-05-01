@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message.content
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
+import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.media.*

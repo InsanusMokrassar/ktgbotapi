@@ -1,5 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts.types
 
-interface DisableNotification {
-    val disableNotification: Boolean
-}
+@Deprecated("Replaced", ReplaceWith("DisableNotification", "dev.inmo.tgbotapi.abstracts.types.DisableNotification"))
+typealias DisableNotification = dev.inmo.tgbotapi.abstracts.types.DisableNotification

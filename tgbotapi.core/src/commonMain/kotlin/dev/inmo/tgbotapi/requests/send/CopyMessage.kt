@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
-import dev.inmo.tgbotapi.CommonAbstracts.types.MessageAction
-import dev.inmo.tgbotapi.CommonAbstracts.types.ProtectContent
+import dev.inmo.tgbotapi.abstracts.TextedOutput
+import dev.inmo.tgbotapi.abstracts.types.MessageAction
+import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.types.*

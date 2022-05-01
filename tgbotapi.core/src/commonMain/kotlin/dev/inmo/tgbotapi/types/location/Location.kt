@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.location
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*

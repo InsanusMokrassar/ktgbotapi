@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.games
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.InlineMessageAction
+import dev.inmo.tgbotapi.abstracts.types.InlineMessageAction
 import dev.inmo.tgbotapi.requests.games.abstracts.GetGameHighScores
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*

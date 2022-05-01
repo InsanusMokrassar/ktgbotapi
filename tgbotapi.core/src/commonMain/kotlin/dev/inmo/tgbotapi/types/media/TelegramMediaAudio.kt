@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.Performerable
+import dev.inmo.tgbotapi.abstracts.Performerable
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
@@ -52,7 +52,8 @@ data class TelegramMediaAudio internal constructor(
     override val performer: String? = null,
     override val title: String? = null,
     override val thumb: InputFile? = null
-) : TelegramMedia, AudioMediaGroupMemberTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TitledTelegramMedia, Performerable {
+) : TelegramMedia, AudioMediaGroupMemberTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TitledTelegramMedia,
+    Performerable {
     override val type: String = audioTelegramMediaType
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
+import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*

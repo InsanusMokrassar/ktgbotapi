@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
-import dev.inmo.tgbotapi.CommonAbstracts.FromUser
-import dev.inmo.tgbotapi.CommonAbstracts.WithUser
+import dev.inmo.tgbotapi.abstracts.FromUser
+import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.extensions.utils.asUser
 import dev.inmo.tgbotapi.extensions.utils.shortcuts.chat
 import dev.inmo.tgbotapi.types.chat.User

@@ -2,7 +2,7 @@
 
 package dev.inmo.tgbotapi.extensions.utils
 
-import dev.inmo.tgbotapi.CommonAbstracts.*
+import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.queries.callback.*

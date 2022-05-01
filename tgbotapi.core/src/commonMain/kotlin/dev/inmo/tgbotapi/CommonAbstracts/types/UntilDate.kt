@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts.types
 
-import dev.inmo.tgbotapi.types.TelegramDate
-
-interface UntilDate {
-    val untilDate: TelegramDate?
-}
+@Deprecated("Replaced", ReplaceWith("UntilDate", "dev.inmo.tgbotapi.abstracts.types.UntilDate"))
+typealias UntilDate = dev.inmo.tgbotapi.abstracts.types.UntilDate

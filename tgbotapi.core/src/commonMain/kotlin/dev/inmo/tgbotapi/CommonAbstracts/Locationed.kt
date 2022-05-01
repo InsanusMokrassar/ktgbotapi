@@ -1,6 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-interface Locationed {
-    val latitude: Double
-    val longitude: Double
-}
+@Deprecated("Replaced", ReplaceWith("Locationed", "dev.inmo.tgbotapi.abstracts.Locationed"))
+typealias Locationed = dev.inmo.tgbotapi.abstracts.Locationed

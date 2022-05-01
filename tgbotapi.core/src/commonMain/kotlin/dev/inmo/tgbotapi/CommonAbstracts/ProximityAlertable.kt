@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.Meters
-
-interface ProximityAlertable {
-    val proximityAlertRadius: Meters?
-}
+@Deprecated("Replaced", ReplaceWith("ProximityAlertable", "dev.inmo.tgbotapi.abstracts.ProximityAlertable"))
+typealias ProximityAlertable = dev.inmo.tgbotapi.abstracts.ProximityAlertable

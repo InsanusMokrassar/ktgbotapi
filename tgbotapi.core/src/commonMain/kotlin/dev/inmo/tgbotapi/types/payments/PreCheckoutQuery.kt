@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.payments
 
-import dev.inmo.tgbotapi.CommonAbstracts.FromUser
+import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.payments.abstracts.*

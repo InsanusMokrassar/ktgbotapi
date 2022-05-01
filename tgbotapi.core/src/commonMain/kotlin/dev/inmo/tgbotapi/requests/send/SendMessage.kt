@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.DisableWebPagePreview
+import dev.inmo.tgbotapi.abstracts.types.DisableWebPagePreview
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList

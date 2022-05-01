@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.polls
 
 import com.soywiz.klock.DateTime
-import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
+import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*

@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts.types
 
-import dev.inmo.tgbotapi.types.MessageIdentifier
-
-interface MessageAction: ChatRequest {
-    val messageId: MessageIdentifier
-}
+@Deprecated("Replaced", ReplaceWith("MessageAction:", "dev.inmo.tgbotapi.abstracts.types.MessageAction:"))
+typealias MessageAction = dev.inmo.tgbotapi.abstracts.types.MessageAction

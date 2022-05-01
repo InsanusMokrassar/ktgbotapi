@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.chat.member
 
-import dev.inmo.tgbotapi.CommonAbstracts.WithUser
+import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.types.statusField
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat

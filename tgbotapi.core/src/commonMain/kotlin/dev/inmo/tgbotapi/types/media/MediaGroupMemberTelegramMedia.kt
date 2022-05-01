@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.media
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
+import dev.inmo.tgbotapi.abstracts.TextedOutput
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.json.Json

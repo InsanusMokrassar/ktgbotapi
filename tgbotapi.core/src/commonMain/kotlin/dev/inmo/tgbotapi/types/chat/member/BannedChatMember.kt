@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.chat.member
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.UntilDate
+import dev.inmo.tgbotapi.abstracts.types.UntilDate
 import kotlinx.serialization.Serializable
 
 @Serializable(ChatMemberSerializer::class)

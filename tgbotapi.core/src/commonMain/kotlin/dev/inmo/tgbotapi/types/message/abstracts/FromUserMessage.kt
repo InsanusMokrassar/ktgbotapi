@@ -1,5 +1,5 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
-import dev.inmo.tgbotapi.CommonAbstracts.FromUser
+import dev.inmo.tgbotapi.abstracts.FromUser
 
 interface FromUserMessage : FromUser, Message

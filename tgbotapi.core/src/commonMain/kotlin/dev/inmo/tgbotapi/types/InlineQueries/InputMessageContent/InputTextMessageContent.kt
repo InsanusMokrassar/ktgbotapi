@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
-import dev.inmo.tgbotapi.CommonAbstracts.TextedOutput
-import dev.inmo.tgbotapi.CommonAbstracts.types.DisableWebPagePreview
+import dev.inmo.tgbotapi.abstracts.TextedOutput
+import dev.inmo.tgbotapi.abstracts.types.DisableWebPagePreview
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
