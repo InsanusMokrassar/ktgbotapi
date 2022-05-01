@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.ForwardInfo
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 
 val List<CommonMessage<out MediaGroupContent>>.forwardInfo: ForwardInfo?
     get() = firstOrNull() ?.forwardInfo

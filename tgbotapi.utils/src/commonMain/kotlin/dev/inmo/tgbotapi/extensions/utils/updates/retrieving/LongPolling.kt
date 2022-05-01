@@ -10,10 +10,9 @@ import dev.inmo.tgbotapi.extensions.utils.updates.lastUpdateIdentifier
 import dev.inmo.tgbotapi.requests.GetUpdates
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.update.*
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.updateshandlers.*
-import dev.inmo.tgbotapi.utils.*
 import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.utils.io.CancellationException
 import kotlinx.coroutines.*

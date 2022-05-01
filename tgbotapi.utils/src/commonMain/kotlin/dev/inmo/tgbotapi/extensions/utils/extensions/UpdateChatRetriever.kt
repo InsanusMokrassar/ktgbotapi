@@ -7,9 +7,9 @@ import dev.inmo.tgbotapi.extensions.utils.shortcuts.chat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.update.media_group.*
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature

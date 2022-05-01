@@ -1,13 +1,4 @@
 package dev.inmo.tgbotapi.types.update.MediaGroupUpdates
 
-import dev.inmo.tgbotapi.types.UpdateIdentifier
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
-import dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
-
-data class EditChannelPostMediaGroupUpdate(
-    override val origin: EditChannelPostUpdate
-) : EditMediaGroupUpdate {
-    override val updateId: UpdateIdentifier = origin.updateId
-    override val data: MediaGroupMessage<MediaGroupContent> = origin.data as MediaGroupMessage<MediaGroupContent>
-}
+@Deprecated("Replaced", ReplaceWith("EditChannelPostMediaGroupUpdate", "dev.inmo.tgbotapi.types.update.media_group.EditChannelPostMediaGroupUpdate"))
+typealias EditChannelPostMediaGroupUpdate = dev.inmo.tgbotapi.types.update.media_group.EditChannelPostMediaGroupUpdate

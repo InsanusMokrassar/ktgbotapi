@@ -4,8 +4,8 @@ import dev.inmo.tgbotapi.types.MediaGroupIdentifier
 import dev.inmo.tgbotapi.types.UpdateIdentifier
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.update.*
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.*
+import dev.inmo.tgbotapi.types.update.media_group.*
 
 internal fun Update.lastUpdateIdentifier(): UpdateIdentifier {
     return if (this is SentMediaGroupUpdate) {

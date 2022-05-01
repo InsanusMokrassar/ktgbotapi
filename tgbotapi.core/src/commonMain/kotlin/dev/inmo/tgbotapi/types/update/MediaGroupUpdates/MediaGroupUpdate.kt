@@ -1,24 +1,10 @@
 package dev.inmo.tgbotapi.types.update.MediaGroupUpdates
 
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
-import dev.inmo.tgbotapi.types.update.abstracts.*
+@Deprecated("Replaced", ReplaceWith("MediaGroupUpdate", "dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate"))
+typealias MediaGroupUpdate = dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate
 
-/**
- * By default there is no instances of objects which could be deserialized from raw updates. If you want to get objects
- * with this type, you should use something like [dev.inmo.tgbotapi.extensions.api.SetWebhookKt.includeWebhookInRoute]
- *
- * @see dev.inmo.tgbotapi.extensions.api.SetWebhookKt.includeWebhookInRoute
- * @see dev.inmo.tgbotapi.extensions.api.updates.UpdatesPollingKt.startGettingOfUpdates
- */
-sealed interface MediaGroupUpdate : Update
+@Deprecated("Replaced", ReplaceWith("SentMediaGroupUpdate", "dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate"))
+typealias SentMediaGroupUpdate = dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 
-sealed interface SentMediaGroupUpdate: MediaGroupUpdate {
-    override val data: List<MediaGroupMessage<MediaGroupContent>>
-    val origins: List<BaseMessageUpdate>
-}
-
-sealed interface EditMediaGroupUpdate : BaseEditMessageUpdate, MediaGroupUpdate {
-    override val data: MediaGroupMessage<MediaGroupContent>
-    val origin: BaseMessageUpdate
-}
+@Deprecated("Replaced", ReplaceWith("EditMediaGroupUpdate", "dev.inmo.tgbotapi.types.update.media_group.EditMediaGroupUpdate"))
+typealias EditMediaGroupUpdate = dev.inmo.tgbotapi.types.update.media_group.EditMediaGroupUpdate

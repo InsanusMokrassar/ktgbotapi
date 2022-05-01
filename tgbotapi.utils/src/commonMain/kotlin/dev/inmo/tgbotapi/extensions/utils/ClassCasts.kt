@@ -60,8 +60,8 @@ import dev.inmo.tgbotapi.types.passport.encrypted.*
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.*
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.*
+import dev.inmo.tgbotapi.types.update.media_group.*
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature

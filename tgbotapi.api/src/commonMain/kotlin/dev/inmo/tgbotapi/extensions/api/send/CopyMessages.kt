@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 
 /**
  * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements

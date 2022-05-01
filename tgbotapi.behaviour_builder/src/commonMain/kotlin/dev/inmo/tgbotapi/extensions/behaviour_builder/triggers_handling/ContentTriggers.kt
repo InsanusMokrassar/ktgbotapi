@@ -15,7 +15,7 @@ import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 

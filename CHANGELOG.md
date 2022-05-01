@@ -27,6 +27,7 @@ __All the `tgbotapi.extensions.*` packages have been removed__
         * `dev.inmo.tgbotapi.types.message.content.media` -> `dev.inmo.tgbotapi.types.message.content`
     * **Replaces of `TextSource`s. Migrations:** `dev.inmo.tgbotapi.types.MessageEntity.textsources` -> `dev.inmo.tgbotapi.types.message.textsources`
     * **Replaces of `ParseMode`s. Migrations:** `dev.inmo.tgbotapi.types.ParseMode` -> `dev.inmo.tgbotapi.types.message`
+    * **Replaces of `MediaGroupUpdate`s. Migrations:** `dev.inmo.tgbotapi.types.update.MediaGroupUpdates` -> `dev.inmo.tgbotapi.types.update.media_group`
     * **`InvoiceContent` has been replaced: `dev.inmo.tgbotapi.types.message.payments.InvoiceContent` -> `dev.inmo.tgbotapi.types.message.content.InvoiceContent`**
     * **`PossiblySentViaBotCommonMessage` has been replaced: `dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage` -> `dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage`**
     * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json` ([#563](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/563))
