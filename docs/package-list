@@ -5369,6 +5369,14 @@ $dokka.location:dev.inmo.tgbotapi.types.chat/SupergroupChatImpl/id/#/PointingToD
 $dokka.location:dev.inmo.tgbotapi.types.chat/SupergroupChatImpl/title/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-supergroup-chat-impl/title.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/SupergroupChatImpl/username/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-supergroup-chat-impl/username.html
 $dokka.location:dev.inmo.tgbotapi.types.commands////PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/index.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope.Companion///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/-companion/index.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope.Companion/AllChatAdministrators/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/-companion/-all-chat-administrators.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope.Companion/AllGroupChats/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/-companion/-all-group-chats.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope.Companion/AllPrivateChats/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/-companion/-all-private-chats.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope.Companion/Chat/#dev.inmo.tgbotapi.types.ChatIdentifier/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/-companion/-chat.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope.Companion/ChatAdministrators/#dev.inmo.tgbotapi.types.ChatIdentifier/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/-companion/-chat-administrators.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope.Companion/ChatMember/#dev.inmo.tgbotapi.types.ChatIdentifier#dev.inmo.tgbotapi.types.ChatId/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/-companion/-chat-member.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope.Companion/Default/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/-companion/-default.html
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/index.html
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScope/type/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope/type.html
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeAllChatAdministrators///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-all-chat-administrators/index.html
@@ -5377,6 +5385,12 @@ $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeAllGroupChats///
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeAllGroupChats/type/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-all-group-chats/type.html
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeAllPrivateChats///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-all-private-chats/index.html
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeAllPrivateChats/type/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-all-private-chats/type.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChat.Companion///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat/-companion/index.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChat.Companion/type/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat/-companion/type.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChat///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat/index.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChat/BotCommandScopeChat/#dev.inmo.tgbotapi.types.ChatIdentifier/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat/-bot-command-scope-chat.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChat/chatId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat/chat-id.html
+$dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChat/type/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat/type.html
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChatAdministrators.Companion///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat-administrators/-companion/index.html
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChatAdministrators.Companion/type/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat-administrators/-companion/type.html
 $dokka.location:dev.inmo.tgbotapi.types.commands/BotCommandScopeChatAdministrators///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.commands/-bot-command-scope-chat-administrators/index.html
