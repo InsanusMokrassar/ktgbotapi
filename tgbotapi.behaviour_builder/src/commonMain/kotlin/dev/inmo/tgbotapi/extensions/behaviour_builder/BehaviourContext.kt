@@ -128,7 +128,7 @@ suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
     upstreamUpdatesFlow = updatesUpstreamFlow
 ).run {
     withContext(coroutineContext) {
-        behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+        (this@run as BC).behaviourContextReceiver().also { if (stopOnCompletion) stop() }
     }
 }
 
