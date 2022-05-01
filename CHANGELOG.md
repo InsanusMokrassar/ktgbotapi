@@ -30,7 +30,12 @@ __All the `tgbotapi.extensions.*` packages have been removed__
     * **Replaces of `MediaGroupUpdate`s. Migrations:** `dev.inmo.tgbotapi.types.update.MediaGroupUpdates` -> `dev.inmo.tgbotapi.types.update.media_group`
     * **`InvoiceContent` has been replaced: `dev.inmo.tgbotapi.types.message.payments.InvoiceContent` -> `dev.inmo.tgbotapi.types.message.content.InvoiceContent`**
     * **`PossiblySentViaBotCommonMessage` has been replaced: `dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage` -> `dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage`**
-    * **Edit live location requests have been replaced: `dev.inmo.tgbotapi.requests.edit.LiveLocation` -> `dev.inmo.tgbotapi.requests.edit.location.live`**
+    * **Edit live location requests have been replaced:**
+        * `dev.inmo.tgbotapi.requests.edit.LiveLocation` -> `dev.inmo.tgbotapi.requests.edit.location.live`
+        * `dev.inmo.tgbotapi.extensions.api.edit.LiveLocation` -> `dev.inmo.tgbotapi.extensions.api.edit.location.live`
+  * **Edit reply markup requests have been replaced:**
+      * `dev.inmo.tgbotapi.requests.edit.ReplyMarkup` -> `dev.inmo.tgbotapi.requests.edit.reply_markup`
+      * `dev.inmo.tgbotapi.extensions.api.edit.ReplyMarkup` -> `dev.inmo.tgbotapi.extensions.api.edit.reply_markup`
     * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json` ([#563](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/563))
     * All the interfaces from `dev.inmo.tgbotapi.types.files.abstracts` have been replaced to `dev.inmo.tgbotapi.types.files` and converted to sealed ([#550](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/550))
     * `PassportFile` has been replaced to `dev.inmo.tgbotapi.types.files`
