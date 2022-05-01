@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.edit.LiveLocation
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.requests.edit.LiveLocation.StopChatMessageLiveLocation
+import dev.inmo.tgbotapi.requests.edit.location.live.StopChatMessageLiveLocation
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup

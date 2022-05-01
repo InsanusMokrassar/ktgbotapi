@@ -1,45 +1,7 @@
 package dev.inmo.tgbotapi.requests.edit.LiveLocation
 
-import dev.inmo.tgbotapi.requests.edit.abstracts.*
-import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
-import dev.inmo.tgbotapi.types.message.content.LocationContent
-import dev.inmo.tgbotapi.utils.throwRangeError
-import kotlinx.serialization.*
+@Deprecated("Replaced", ReplaceWith("editMessageLiveLocationMethod", "dev.inmo.tgbotapi.requests.edit.location.live.editMessageLiveLocationMethod"))
+const val editMessageLiveLocationMethod = dev.inmo.tgbotapi.requests.edit.location.live.editMessageLiveLocationMethod
 
-private val commonResultDeserializer = TelegramBotAPIMessageDeserializationStrategyClass<ContentMessage<LocationContent>>()
-const val editMessageLiveLocationMethod = "editMessageLiveLocation"
-
-@Serializable
-data class EditChatMessageLiveLocation(
-    @SerialName(chatIdField)
-    override val chatId: ChatIdentifier,
-    @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
-    @SerialName(latitudeField)
-    override val latitude: Double,
-    @SerialName(longitudeField)
-    override val longitude: Double,
-    @SerialName(horizontalAccuracyField)
-    override val horizontalAccuracy: Meters? = null,
-    @SerialName(headingField)
-    override val heading: Degrees? = null,
-    @SerialName(proximityAlertRadiusField)
-    override val proximityAlertRadius: Meters? = null,
-    @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditChatMessage<LocationContent>, EditReplyMessage, EditLocationMessage {
-    override fun method(): String = editMessageLiveLocationMethod
-    override val resultDeserializer: DeserializationStrategy<ContentMessage<LocationContent>>
-        get() = commonResultDeserializer
-    override val requestSerializer: SerializationStrategy<*>
-        get() = serializer()
-
-    init {
-        if (horizontalAccuracy != null && horizontalAccuracy !in horizontalAccuracyLimit) {
-            throwRangeError("horizontalAccuracy", horizontalAccuracyLimit, horizontalAccuracy)
-        }
-    }
-}
+@Deprecated("Replaced", ReplaceWith("EditChatMessageLiveLocation", "dev.inmo.tgbotapi.requests.edit.location.live.EditChatMessageLiveLocation"))
+typealias EditChatMessageLiveLocation = dev.inmo.tgbotapi.requests.edit.location.live.EditChatMessageLiveLocation
