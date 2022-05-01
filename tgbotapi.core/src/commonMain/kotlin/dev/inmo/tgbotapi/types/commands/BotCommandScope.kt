@@ -22,11 +22,14 @@ private class SurrogateBotCommandScope(
         BotCommandScopeAllGroupChats.type -> BotCommandScopeAllGroupChats
         BotCommandScopeAllChatAdministrators.type -> BotCommandScopeAllChatAdministrators
         BotCommandScopeChatAdministrators.type -> BotCommandScopeChatAdministrators(
-            chatId ?: error("chat_administrators type must have $chatIdField field, but have no")
+            chatId ?: error("${BotCommandScopeChatAdministrators.type} type must have $chatIdField field, but have no")
         )
         BotCommandScopeChatMember.type -> BotCommandScopeChatMember(
-            chatId ?: error("chat_administrators type must have $chatIdField field, but have no"),
-            userId ?: error("chat_administrators type must have $userIdField field, but have no")
+            chatId ?: error("${BotCommandScopeChatMember.type} type must have $chatIdField field, but have no"),
+            userId ?: error("${BotCommandScopeChatMember.type} type must have $userIdField field, but have no")
+        )
+        BotCommandScopeChat.type -> BotCommandScopeChat(
+            chatId ?: error("${BotCommandScopeChat.type} type must have $chatIdField field, but have no")
         )
         else -> UnknownBotCommandScope(type)
     }
@@ -40,6 +43,7 @@ private class SurrogateBotCommandScope(
             BotCommandScopeAllChatAdministrators -> SurrogateBotCommandScope(scope.type)
             is BotCommandScopeChatAdministrators -> SurrogateBotCommandScope(scope.type, scope.chatId)
             is BotCommandScopeChatMember -> SurrogateBotCommandScope(scope.type, scope.chatId, scope.userId)
+            is BotCommandScopeChat -> SurrogateBotCommandScope(scope.type, scope.chatId)
         }
     }
 }
@@ -91,6 +95,17 @@ data class BotCommandScopeChatAdministrators(
     override val type: String = BotCommandScopeChatAdministrators.type
     companion object {
         const val type = "chat_administrators"
+    }
+}
+
+@Serializable
+data class BotCommandScopeChat(
+    override val chatId: ChatIdentifier
+) : ChatBotCommandScope {
+    @Required
+    override val type: String = BotCommandScopeChat.type
+    companion object {
+        const val type = "chat"
     }
 }
 

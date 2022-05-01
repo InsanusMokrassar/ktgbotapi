@@ -2,6 +2,9 @@
 
 ## 0.38.17
 
+* `Core`:
+    * Add `BotCommandScopeChat` as new `BotCommandScope` (fix of [#574](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/574))
+
 ## 0.38.16
 
 * `Core`:
