@@ -32,6 +32,11 @@ __All the `tgbotapi.extensions.*` packages have been removed__
 * `BehaviourBuilder`:
     * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
 
+## 0.38.16
+
+* `Core`:
+    * `TelegramAPIUrlsKeeper` now have two new things: properties `webAppDataSecretKey` and fun `checkWebAppLink`
+
 ## 0.38.15
 
 * `Common`:
