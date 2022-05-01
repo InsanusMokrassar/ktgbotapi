@@ -37,6 +37,12 @@ __All the `tgbotapi.extensions.*` packages have been removed__
 * `BehaviourBuilder`:
     * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
 
+## 0.38.17
+
+* `Core`:
+    * Add `BotCommandScopeChat` as new `BotCommandScope` (fix of [#574](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/574))
+    * `BotCommandScope` companion got several properties and functions for more useful scope creation
+
 ## 0.38.16
 
 * `Core`:
