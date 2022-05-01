@@ -51,6 +51,16 @@ private class SurrogateBotCommandScope(
 @Serializable(BotCommandScopeSerializer::class)
 sealed interface BotCommandScope {
     val type: String
+
+    companion object {
+        val Default = BotCommandScopeDefault
+        val AllPrivateChats = BotCommandScopeAllPrivateChats
+        val AllGroupChats = BotCommandScopeAllGroupChats
+        val AllChatAdministrators = BotCommandScopeAllChatAdministrators
+        fun ChatAdministrators(chatId: ChatIdentifier) = BotCommandScopeChatAdministrators(chatId)
+        fun Chat(chatId: ChatIdentifier) = BotCommandScopeChat(chatId)
+        fun ChatMember(chatId: ChatIdentifier, userId: UserId) = BotCommandScopeChatMember(chatId, userId)
+    }
 }
 
 @Serializable
