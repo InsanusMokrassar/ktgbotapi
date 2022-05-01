@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.extensions.api.edit.text
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.text.EditInlineMessageText
 import dev.inmo.tgbotapi.types.InlineMessageIdentifier
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 

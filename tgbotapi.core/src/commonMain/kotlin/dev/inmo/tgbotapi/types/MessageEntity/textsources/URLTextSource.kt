@@ -1,20 +1,13 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.internal.*
-import kotlinx.serialization.Serializable
+import dev.inmo.tgbotapi.utils.internal.link
 
 /**
  * @see link
  */
-@Serializable
-data class URLTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String
-) : TextSource {
-    override val markdown: String by lazy { source.linkMarkdown(source) }
-    override val markdownV2: String by lazy { source.linkMarkdownV2(source) }
-    override val html: String by lazy { source.linkHTML(source) }
-}
+@Deprecated("Replaced", ReplaceWith("URLTextSource", "dev.inmo.tgbotapi.types.message.textsources.URLTextSource"))
+typealias URLTextSource = dev.inmo.tgbotapi.types.message.textsources.URLTextSource
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun link(url: String) = URLTextSource(url)
+@Deprecated("Replaced", ReplaceWith("link", "dev.inmo.tgbotapi.types.message.textsources.link"))
+inline fun link(url: String) = dev.inmo.tgbotapi.types.message.textsources.link(url)

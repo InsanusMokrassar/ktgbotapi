@@ -1,7 +1,7 @@
-package dev.inmo.tgbotapi.types.MessageEntity
+package dev.inmo.tgbotapi.types.message
 
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.types.message.textsources.*
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -175,12 +175,6 @@ internal fun TextSourcesList.toRawMessageEntities(preOffset: Int = 0): List<RawM
             i += it.maxByOrNull { it.length }?.length ?: textSource.source.length
         }
     }
-}
-
-fun String.removeLeading(word: String) = if (startsWith(word)) {
-    substring(word.length)
-} else {
-    this
 }
 
 internal fun TextSourcesList.toRawMessageEntities(): List<RawMessageEntity> = toRawMessageEntities(0)

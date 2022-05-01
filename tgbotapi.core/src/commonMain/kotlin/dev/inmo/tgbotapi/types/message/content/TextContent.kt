@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.CommonAbstracts.TextedInput
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.SendTextMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage

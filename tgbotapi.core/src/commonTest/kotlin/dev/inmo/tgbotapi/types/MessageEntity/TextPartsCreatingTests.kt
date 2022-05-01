@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.MessageEntity
 
 import dev.inmo.tgbotapi.extensions.utils.formatting.toHtmlTexts
 import dev.inmo.tgbotapi.extensions.utils.formatting.toMarkdownV2Texts
+import dev.inmo.tgbotapi.types.message.asTextSources
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

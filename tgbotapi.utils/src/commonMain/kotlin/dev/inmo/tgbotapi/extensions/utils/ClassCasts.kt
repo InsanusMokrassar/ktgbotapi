@@ -20,7 +20,6 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.types.media.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.buttons.*
@@ -53,6 +52,7 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
+import dev.inmo.tgbotapi.types.message.textsources.*
 import dev.inmo.tgbotapi.types.passport.*
 import dev.inmo.tgbotapi.types.passport.decrypted.*
 import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.*

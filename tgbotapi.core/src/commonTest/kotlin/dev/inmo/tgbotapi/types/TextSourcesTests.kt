@@ -2,8 +2,7 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.TestsJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.formatting.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourceSerializer
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.spoiler
+import dev.inmo.tgbotapi.types.message.textsources.TextSourceSerializer
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.builtins.ListSerializer
 import kotlin.test.Test

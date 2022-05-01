@@ -4,11 +4,13 @@ import dev.inmo.tgbotapi.CommonAbstracts.Performerable
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.MessageEntity.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.files.AudioFile
+import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 

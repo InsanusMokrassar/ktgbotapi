@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.utils.extensions
 
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.ParseMode.*
 
 inline fun TextSourcesList.makeString(

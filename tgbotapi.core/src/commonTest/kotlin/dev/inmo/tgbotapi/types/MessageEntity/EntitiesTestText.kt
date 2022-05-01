@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
+import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.textsources.*
 import kotlin.test.assertTrue
 
 const val testText = "It (is?) is simple hello world with #tag and @mention"

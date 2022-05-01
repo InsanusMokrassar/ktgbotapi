@@ -1,26 +1,17 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.extensions.makeString
-import dev.inmo.tgbotapi.utils.internal.*
-import kotlinx.serialization.Serializable
-
 /**
  * @see strikethrough
  */
-@Serializable
-data class StrikethroughTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String,
-    override val subsources: TextSourcesList
-) : MultilevelTextSource {
-    override val html: String by lazy { strikethroughHTML() }
-    override val markdownV2: String by lazy { strikethroughMarkdownV2() }
-    override val markdown: String by lazy { source.strikethroughMarkdown() }
-}
+@Deprecated("Replaced", ReplaceWith("StrikethroughTextSource", "dev.inmo.tgbotapi.types.message.textsources.StrikethroughTextSource"))
+typealias StrikethroughTextSource = dev.inmo.tgbotapi.types.message.textsources.StrikethroughTextSource
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun strikethrough(parts: TextSourcesList) = StrikethroughTextSource(parts.makeString(), parts)
+@Deprecated("Replaced", ReplaceWith("strikethrough", "dev.inmo.tgbotapi.types.message.textsources.strikethrough"))
+inline fun strikethrough(parts: TextSourcesList) = dev.inmo.tgbotapi.types.message.textsources.strikethrough(parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun strikethrough(vararg parts: TextSource) = strikethrough(parts.toList())
+@Deprecated("Replaced", ReplaceWith("strikethrough", "dev.inmo.tgbotapi.types.message.textsources.strikethrough"))
+inline fun strikethrough(vararg parts: TextSource) = dev.inmo.tgbotapi.types.message.textsources.strikethrough(*parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun strikethrough(text: String) = strikethrough(regular(text))
+@Deprecated("Replaced", ReplaceWith("strikethrough", "dev.inmo.tgbotapi.types.message.textsources.strikethrough"))
+inline fun strikethrough(text: String) = dev.inmo.tgbotapi.types.message.textsources.strikethrough(text)

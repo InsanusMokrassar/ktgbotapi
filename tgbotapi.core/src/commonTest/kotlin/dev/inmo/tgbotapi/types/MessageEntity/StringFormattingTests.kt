@@ -1,7 +1,9 @@
 package dev.inmo.tgbotapi.types.MessageEntity
 
 import dev.inmo.tgbotapi.extensions.utils.formatting.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
+import dev.inmo.tgbotapi.types.message.RawMessageEntity
+import dev.inmo.tgbotapi.types.message.asTextSources
+import dev.inmo.tgbotapi.types.message.textsources.*
 import kotlin.test.*
 
 class StringFormattingTests {

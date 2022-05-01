@@ -1,49 +1,28 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
 import dev.inmo.tgbotapi.types.Username
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.extensions.makeString
-import dev.inmo.tgbotapi.utils.internal.*
-import kotlinx.serialization.Serializable
-
-private val String.withoutCommercialAt
-    get() = if (startsWith("@")) {
-        substring(1)
-    } else {
-        this
-    }
 
 /**
  * @see mention
  */
-@Serializable
-data class MentionTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String,
-    override val subsources: TextSourcesList
-) : MultilevelTextSource {
-    override val markdown: String by lazy { source.mentionMarkdown() }
-    override val markdownV2: String by lazy { mentionMarkdownV2() }
-    override val html: String by lazy { mentionHTML() }
-    val username: Username = Username(source)
-
-    init {
-        if (!source.startsWith("@")) {
-            error("Mention source must starts with @, but actual value is \"$source\"")
-        }
-    }
-}
+@Deprecated("Replaced", ReplaceWith("MentionTextSource", "dev.inmo.tgbotapi.types.message.textsources.MentionTextSource"))
+typealias MentionTextSource = dev.inmo.tgbotapi.types.message.textsources.MentionTextSource
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(parts: TextSourcesList) = (regular("@") + parts).let { MentionTextSource(it.makeString(), it) }
+@Deprecated("Replaced", ReplaceWith("mention", "dev.inmo.tgbotapi.types.message.textsources.mention"))
+inline fun mention(parts: TextSourcesList) = dev.inmo.tgbotapi.types.message.textsources.mention(parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(vararg parts: TextSource) = mention(parts.toList())
+@Deprecated("Replaced", ReplaceWith("mention", "dev.inmo.tgbotapi.types.message.textsources.mention"))
+inline fun mention(vararg parts: TextSource) = dev.inmo.tgbotapi.types.message.textsources.mention(*parts)
 
 /**
  * Without leading "@"
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(whoToMention: String) = mention(regular(whoToMention))
+@Deprecated("Replaced", ReplaceWith("mention", "dev.inmo.tgbotapi.types.message.textsources.mention"))
+inline fun mention(whoToMention: String) = dev.inmo.tgbotapi.types.message.textsources.mention(whoToMention)
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(whoToMention: Username) = mention(whoToMention.username.dropWhile { it == '@' })
+@Deprecated("Replaced", ReplaceWith("mention", "dev.inmo.tgbotapi.types.message.textsources.mention"))
+inline fun mention(whoToMention: Username) = dev.inmo.tgbotapi.types.message.textsources.mention(whoToMention)
 

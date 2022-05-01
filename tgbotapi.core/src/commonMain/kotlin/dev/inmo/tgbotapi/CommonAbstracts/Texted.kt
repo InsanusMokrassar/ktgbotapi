@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.ParseMode.ParseMode
 
 interface Texted {

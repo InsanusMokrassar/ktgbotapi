@@ -1,8 +1,6 @@
 package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntities
-import dev.inmo.tgbotapi.types.MessageEntity.asTextSources
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.chat.CommonBot
