@@ -8,10 +8,9 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
-import io.ktor.client.features.timeout
+import io.ktor.client.plugins.timeout
 import io.ktor.client.request.*
-import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import kotlinx.serialization.json.Json
 import kotlin.collections.set
@@ -28,7 +27,7 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
     ): T? {
         val preparedBody = prepareCallBody(client, urlsKeeper, request) ?: return null
 
-        client.post<HttpResponse> {
+        client.post {
             url(
                 methodsCache[request.method()] ?: "${urlsKeeper.commonAPIUrl}/${request.method()}".also {
                     methodsCache[request.method()] = it
@@ -37,7 +36,7 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
             accept(ContentType.Application.Json)
 
             if (request is GetUpdates) {
-                request.timeout?.times(1000L)?.let { customTimeoutMillis ->
+                request.timeout?.times(1000L) ?.let { customTimeoutMillis ->
                     if (customTimeoutMillis > 0) {
                         timeout {
                             requestTimeoutMillis = customTimeoutMillis
@@ -52,9 +51,9 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
                 }
             }
 
-            body = preparedBody
+            setBody(preparedBody)
         }.let { response ->
-            val content = response.receive<String>()
+            val content = response.bodyAsText()
             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
 
             return safelyWithResult {

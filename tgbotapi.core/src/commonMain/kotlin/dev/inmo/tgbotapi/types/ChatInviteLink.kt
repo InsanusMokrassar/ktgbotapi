@@ -58,10 +58,6 @@ sealed interface ChatInviteLink : WithUser {
 
     override val user: User
         get() = creator
-
-    companion object {
-        fun serializer(): KSerializer<ChatInviteLink> = ChatInviteLinkSerializer
-    }
 }
 
 /**
@@ -71,10 +67,6 @@ sealed interface ChatInviteLink : WithUser {
 sealed interface SecondaryChatInviteLink : ChatInviteLink {
     override val isPrimary: Boolean
         get() = false
-
-    companion object {
-        fun serializer(): KSerializer<SecondaryChatInviteLink> = ChatInviteLinkSerializer as KSerializer<SecondaryChatInviteLink>
-    }
 }
 
 /**

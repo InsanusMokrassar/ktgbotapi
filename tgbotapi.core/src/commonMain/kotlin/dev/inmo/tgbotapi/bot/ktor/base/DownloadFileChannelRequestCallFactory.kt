@@ -10,6 +10,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpStatement
+import io.ktor.client.statement.bodyAsChannel
 import io.ktor.utils.io.*
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
@@ -28,10 +29,9 @@ object DownloadFileChannelRequestCallFactory : KtorCallFactory {
             val outChannel = ByteChannel()
             scope.launch {
                 runCatchingSafely {
-                    client.get<HttpStatement>(fullUrl).execute { httpResponse ->
-                        val channel: ByteReadChannel = httpResponse.receive()
-                        channel.copyAndClose(outChannel)
-                    }
+                    val response = client.get(fullUrl)
+                    val channel: ByteReadChannel = response.bodyAsChannel()
+                    channel.copyAndClose(outChannel)
                 }
                 scope.cancel()
             }

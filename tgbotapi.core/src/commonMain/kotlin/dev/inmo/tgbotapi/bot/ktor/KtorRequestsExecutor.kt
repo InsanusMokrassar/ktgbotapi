@@ -11,7 +11,8 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.client.HttpClient
-import io.ktor.client.features.*
+import io.ktor.client.plugins.*
+import io.ktor.client.statement.bodyAsText
 import io.ktor.client.statement.readText
 import kotlinx.serialization.json.Json
 
@@ -41,7 +42,7 @@ class KtorRequestsExecutor(
     }
 
     private val client = client.config {
-        if (client.feature(HttpTimeout) == null) {
+        if (client.pluginOrNull(HttpTimeout) == null) {
             install(HttpTimeout)
         }
     }
@@ -53,7 +54,7 @@ class KtorRequestsExecutor(
                     pipelineStepsHolder.onRequestException(request, e) ?.let { return@safely it }
 
                     throw if (e is ClientRequestException) {
-                        val content = e.response.readText()
+                        val content = e.response.bodyAsText()
                         val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
                         newRequestException(
                             responseObject,

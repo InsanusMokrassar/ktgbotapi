@@ -18,10 +18,6 @@ sealed interface TextSource {
 
     val asText: String
         get() = source
-
-    companion object {
-        fun serializer() = TextSourceSerializer
-    }
 }
 
 @Suppress("NOTHING_TO_INLINE")
@@ -36,10 +32,6 @@ inline operator fun List<TextSource>.plus(text: String) = this + regular(text)
 @Serializable(TextSourceSerializer::class)
 sealed interface MultilevelTextSource : TextSource {
     val subsources: List<TextSource>
-
-    companion object {
-        fun serializer() = TextSourceSerializer
-    }
 }
 
 fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {

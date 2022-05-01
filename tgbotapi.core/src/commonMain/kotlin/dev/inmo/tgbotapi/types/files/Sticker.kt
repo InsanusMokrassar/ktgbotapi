@@ -36,10 +36,6 @@ sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile {
         get() = this is AnimatedSticker
     val isVideo
         get() = this is VideoSticker
-
-    companion object {
-        fun serializer(): KSerializer<Sticker> = StickerSerializer
-    }
 }
 
 object StickerSerializer : KSerializer<Sticker> {

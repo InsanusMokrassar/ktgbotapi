@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
+import io.ktor.client.statement.readBytes
 import kotlinx.serialization.json.Json
 
 object DownloadFileRequestCallFactory : KtorCallFactory {
@@ -20,7 +21,7 @@ object DownloadFileRequestCallFactory : KtorCallFactory {
 
         safely {
             @Suppress("UNCHECKED_CAST")
-            client.get<ByteArray>(fullUrl) as T // always ByteArray
+            client.get(fullUrl).readBytes() as T // always ByteArray
         }
     }
 }

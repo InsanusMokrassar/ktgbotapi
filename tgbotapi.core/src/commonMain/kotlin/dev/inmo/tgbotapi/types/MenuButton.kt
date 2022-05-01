@@ -49,10 +49,6 @@ sealed interface MenuButton {
         override val type: String,
         val rawJson: JsonElement
     ) : MenuButton
-
-    companion object {
-        fun serializer(): KSerializer<MenuButton> = MenuButtonSerializer
-    }
 }
 
 @Serializable
