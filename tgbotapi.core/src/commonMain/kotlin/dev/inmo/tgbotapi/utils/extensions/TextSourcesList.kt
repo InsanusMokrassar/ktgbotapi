@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.utils.extensions
 
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.ParseMode.*
+import dev.inmo.tgbotapi.types.message.*
 
 inline fun TextSourcesList.makeString(
     parseMode: ParseMode? = null

@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
-import dev.inmo.tgbotapi.types.ParseMode.ParseMode
+import dev.inmo.tgbotapi.types.message.ParseMode
 
 interface Texted {
     val text: String?
