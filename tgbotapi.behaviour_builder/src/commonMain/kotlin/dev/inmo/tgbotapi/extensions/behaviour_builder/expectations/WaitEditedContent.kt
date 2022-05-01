@@ -10,13 +10,11 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.media.*
-import dev.inmo.tgbotapi.types.message.content.media.AudioMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.DocumentMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
 import kotlinx.coroutines.flow.toList
 

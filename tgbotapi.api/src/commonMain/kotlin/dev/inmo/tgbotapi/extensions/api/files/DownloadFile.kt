@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.requests.DownloadFile
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
+import dev.inmo.tgbotapi.types.message.content.MediaContent
 
 suspend fun TelegramBot.downloadFile(
     filePath: String

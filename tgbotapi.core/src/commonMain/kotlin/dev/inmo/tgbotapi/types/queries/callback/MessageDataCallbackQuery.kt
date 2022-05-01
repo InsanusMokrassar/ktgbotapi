@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.types.queries.callback
 import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 data class MessageDataCallbackQuery(
     override val id: CallbackQueryIdentifier,

@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage
+import dev.inmo.tgbotapi.types.message.content.MessageContent
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import kotlinx.coroutines.flow.*
 
 /**

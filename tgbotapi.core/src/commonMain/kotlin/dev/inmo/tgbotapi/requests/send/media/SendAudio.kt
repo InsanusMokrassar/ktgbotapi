@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.ParseMode.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
-import dev.inmo.tgbotapi.types.message.content.media.AudioContent
+import dev.inmo.tgbotapi.types.message.content.AudioContent
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import dev.inmo.tgbotapi.utils.mapOfNotNull
 import dev.inmo.tgbotapi.utils.throwRangeError

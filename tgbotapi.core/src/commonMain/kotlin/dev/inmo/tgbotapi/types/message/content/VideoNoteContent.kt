@@ -1,23 +1,19 @@
-package dev.inmo.tgbotapi.types.message.content.media
+package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.requests.send.media.SendVideo
+import dev.inmo.tgbotapi.requests.send.media.SendVideoNote
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
-import dev.inmo.tgbotapi.types.files.VideoFile
-import dev.inmo.tgbotapi.types.files.toTelegramMediaVideo
+import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class VideoContent(
-    override val media: VideoFile,
-    override val text: String? = null,
-    override val textSources: TextSourcesList = emptyList()
-) : VisualMediaGroupContent {
+data class VideoNoteContent(
+    override val media: VideoNoteFile
+) : MediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
@@ -25,15 +21,12 @@ data class VideoContent(
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<VideoContent>> = SendVideo(
+    ): Request<ContentMessage<VideoNoteContent>> = SendVideoNote(
         chatId,
         media.fileId,
         media.thumb ?.fileId,
-        textSources,
         media.duration,
         media.width,
-        media.height,
-        null,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -41,7 +34,11 @@ data class VideoContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberTelegramMedia(): TelegramMediaVideo = asTelegramMedia()
-
-    override fun asTelegramMedia(): TelegramMediaVideo = media.toTelegramMediaVideo(textSources)
+    override fun asTelegramMedia(): TelegramMediaVideo = TelegramMediaVideo(
+        media.fileId,
+        width = media.width,
+        height = media.height,
+        duration = media.duration,
+        thumb = media.thumb ?.fileId
+    )
 }

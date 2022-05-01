@@ -1,20 +1,22 @@
-package dev.inmo.tgbotapi.types.message.content.media
+package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.requests.send.media.SendSticker
+import dev.inmo.tgbotapi.requests.send.media.SendVoice
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
+import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
+import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
-import dev.inmo.tgbotapi.types.files.Sticker
+import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class StickerContent(
-    override val media: Sticker
-) : MediaContent {
+data class VoiceContent(
+    override val media: VoiceFile,
+    override val text: String? = null,
+    override val textSources: TextSourcesList = emptyList()
+) : TextedMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
@@ -22,9 +24,11 @@ data class StickerContent(
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<StickerContent>> = SendSticker(
+    ): Request<ContentMessage<VoiceContent>> = SendVoice(
         chatId,
         media.fileId,
+        textSources,
+        media.duration,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -32,9 +36,9 @@ data class StickerContent(
         replyMarkup
     )
 
-    override fun asTelegramMedia(): TelegramMediaDocument = TelegramMediaDocument(
+    override fun asTelegramMedia(): TelegramMediaAudio = TelegramMediaAudio(
         media.fileId,
-        null,
-        thumb = media.thumb ?.fileId
+        textSources,
+        media.duration
     )
 }

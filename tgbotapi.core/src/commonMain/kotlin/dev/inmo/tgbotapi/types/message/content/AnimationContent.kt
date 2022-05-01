@@ -1,26 +1,24 @@
-package dev.inmo.tgbotapi.types.message.content.media
+package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.requests.send.media.SendPhoto
+import dev.inmo.tgbotapi.requests.send.media.SendAnimation
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
-import dev.inmo.tgbotapi.types.media.toTelegramMediaPhoto
+import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
-import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.types.files.AnimationFile
+import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaCollectionContent
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PhotoContent(
-    override val mediaCollection: Photo,
-    override val text: String? = null,
+data class AnimationContent(
+    override val media: AnimationFile,
+    val includedDocument: DocumentFile?,
+    override val text: String?,
     override val textSources: TextSourcesList = emptyList()
-) : MediaCollectionContent<PhotoSize>, VisualMediaGroupContent {
-    override val media: PhotoSize = mediaCollection.biggest() ?: throw IllegalStateException("Can't locate any photo size for this content")
-
+) : TextedMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
@@ -28,10 +26,14 @@ data class PhotoContent(
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<PhotoContent>> = SendPhoto(
+    ): Request<ContentMessage<AnimationContent>> = SendAnimation(
         chatId,
         media.fileId,
+        media.thumb ?.fileId,
         textSources,
+        media.duration,
+        media.width,
+        media.height,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -39,7 +41,12 @@ data class PhotoContent(
         replyMarkup
     )
 
-    override fun toMediaGroupMemberTelegramMedia(): TelegramMediaPhoto = asTelegramMedia()
-
-    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources)
+    override fun asTelegramMedia(): TelegramMediaAnimation = TelegramMediaAnimation(
+        media.fileId,
+        textSources,
+        media.width,
+        media.height,
+        media.duration,
+        media.thumb ?.fileId
+    )
 }

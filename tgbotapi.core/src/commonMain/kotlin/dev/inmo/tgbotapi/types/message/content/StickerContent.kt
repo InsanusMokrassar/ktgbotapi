@@ -1,19 +1,18 @@
-package dev.inmo.tgbotapi.types.message.content.media
+package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.requests.send.media.SendVideoNote
+import dev.inmo.tgbotapi.requests.send.media.SendSticker
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
-import dev.inmo.tgbotapi.types.files.VideoNoteFile
+import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class VideoNoteContent(
-    override val media: VideoNoteFile
+data class StickerContent(
+    override val media: Sticker
 ) : MediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -22,12 +21,9 @@ data class VideoNoteContent(
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<VideoNoteContent>> = SendVideoNote(
+    ): Request<ContentMessage<StickerContent>> = SendSticker(
         chatId,
         media.fileId,
-        media.thumb ?.fileId,
-        media.duration,
-        media.width,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -35,11 +31,9 @@ data class VideoNoteContent(
         replyMarkup
     )
 
-    override fun asTelegramMedia(): TelegramMediaVideo = TelegramMediaVideo(
+    override fun asTelegramMedia(): TelegramMediaDocument = TelegramMediaDocument(
         media.fileId,
-        width = media.width,
-        height = media.height,
-        duration = media.duration,
+        null,
         thumb = media.thumb ?.fileId
     )
 }

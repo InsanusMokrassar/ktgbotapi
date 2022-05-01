@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
+import dev.inmo.tgbotapi.types.message.content.MessageContent
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

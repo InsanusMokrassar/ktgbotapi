@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi
 import dev.inmo.tgbotapi.requests.abstracts.toInputFile
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMediaSerializer
 import dev.inmo.tgbotapi.types.files.PhotoSize
-import dev.inmo.tgbotapi.types.message.content.media.PhotoContent
+import dev.inmo.tgbotapi.types.message.content.PhotoContent
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals

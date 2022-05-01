@@ -8,10 +8,10 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
-import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.AudioContent
-import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.AudioContent
+import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.utils.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer

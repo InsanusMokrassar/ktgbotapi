@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
-import dev.inmo.tgbotapi.types.message.content.media.StickerContent
+import dev.inmo.tgbotapi.types.message.content.StickerContent
 import dev.inmo.tgbotapi.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonObject

@@ -1,22 +1,23 @@
-package dev.inmo.tgbotapi.types.message.content.media
+package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.requests.send.media.SendVoice
+import dev.inmo.tgbotapi.requests.send.media.SendAudio
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
+import dev.inmo.tgbotapi.types.media.toTelegramMediaAudio
 import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
-import dev.inmo.tgbotapi.types.files.VoiceFile
+import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class VoiceContent(
-    override val media: VoiceFile,
+data class AudioContent(
+    override val media: AudioFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList()
-) : TextedMediaContent {
+) : AudioMediaGroupContent {
     override fun createResend(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
@@ -24,11 +25,14 @@ data class VoiceContent(
         replyToMessageId: MessageIdentifier?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<VoiceContent>> = SendVoice(
+    ): Request<ContentMessage<AudioContent>> = SendAudio(
         chatId,
         media.fileId,
+        media.thumb ?.fileId,
         textSources,
         media.duration,
+        media.performer,
+        media.title,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -36,9 +40,7 @@ data class VoiceContent(
         replyMarkup
     )
 
-    override fun asTelegramMedia(): TelegramMediaAudio = TelegramMediaAudio(
-        media.fileId,
-        textSources,
-        media.duration
-    )
+    override fun toMediaGroupMemberTelegramMedia(): TelegramMediaAudio = asTelegramMedia()
+
+    override fun asTelegramMedia(): TelegramMediaAudio = media.toTelegramMediaAudio(textSources)
 }

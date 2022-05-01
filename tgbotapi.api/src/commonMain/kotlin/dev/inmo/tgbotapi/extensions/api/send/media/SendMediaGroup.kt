@@ -6,10 +6,10 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.AudioContent
-import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.AudioContent
+import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlin.jvm.JvmName
 
