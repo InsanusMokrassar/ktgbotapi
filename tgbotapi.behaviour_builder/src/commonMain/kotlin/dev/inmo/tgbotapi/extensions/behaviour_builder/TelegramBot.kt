@@ -30,10 +30,12 @@ suspend fun telegramBotWithBehaviour(
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    testServer: Boolean = false,
     block: BehaviourContextReceiver<Unit>
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
+    testServer,
     builder
 ).apply {
     buildBehaviour(
@@ -63,11 +65,13 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
     apiUrl: String = telegramBotAPIDefaultUrl,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    testServer: Boolean = false,
     block: BehaviourContextReceiver<Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,
         apiUrl,
+        testServer,
         builder
     ).let {
         it to it.buildBehaviourWithLongPolling(
