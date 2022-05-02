@@ -90,7 +90,7 @@ class DefaultBehaviourContext(
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
-    ): BehaviourContext = DefaultBehaviourContext(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter)
+    ): DefaultBehaviourContext = DefaultBehaviourContext(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter)
 }
 
 fun BehaviourContext(
@@ -116,19 +116,20 @@ suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     scope: CoroutineScope = LinkedSupervisorScope(),
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
-): T = copy(
-    scope = scope,
-    updatesFilter = updatesFilter ?.let { _ ->
-        {
-            (this as? BC) ?.run {
-                updatesFilter(it)
-            } ?: true
-        }
-    },
-    upstreamUpdatesFlow = updatesUpstreamFlow
-).run {
-    withContext(coroutineContext) {
-        (this@run as BC).behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+): T {
+    val newContext = copy(
+        scope = scope,
+        updatesFilter = updatesFilter ?.let { _ ->
+            {
+                (this as? BC) ?.run {
+                    updatesFilter(it)
+                } ?: true
+            }
+        },
+        upstreamUpdatesFlow = updatesUpstreamFlow
+    ) as BC
+    return withContext(currentCoroutineContext()) {
+        newContext.behaviourContextReceiver().also { if (stopOnCompletion) newContext.stop() }
     }
 }
 
