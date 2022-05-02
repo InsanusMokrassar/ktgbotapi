@@ -38,10 +38,12 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    testServer: Boolean = false,
     block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
+    testServer,
     builder
 ).apply {
     buildBehaviourWithFSMAndStartLongPolling(
@@ -73,11 +75,13 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    testServer: Boolean = false,
     block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,
         apiUrl,
+        testServer,
         builder
     ).let {
         it to it.buildBehaviourWithFSMAndStartLongPolling (

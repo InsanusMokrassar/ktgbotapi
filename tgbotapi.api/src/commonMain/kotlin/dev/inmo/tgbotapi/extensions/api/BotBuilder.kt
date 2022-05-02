@@ -40,8 +40,9 @@ data class BotBuilder internal constructor(
 fun buildBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
+    testServer: Boolean = false,
     block: BotBuilder.() -> Unit
 ) = telegramBot(
-    TelegramAPIUrlsKeeper(token, apiUrl),
+    TelegramAPIUrlsKeeper(token, testServer, apiUrl),
     BotBuilder().apply(block).createHttpClient()
 )
