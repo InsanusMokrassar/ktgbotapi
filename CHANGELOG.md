@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 0.38.18
+
+* `Core`:
+    * Add support of test servers (fix of [#577](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/577))
+* `BehaviourBuilder`:
+    * Fixes in extension `BehaviourContext#doInSubContextWithUpdatesFilter` (thanks to [xzima](https://github.com/xzima))
+
 ## 0.38.17
 
 * `Core`:
