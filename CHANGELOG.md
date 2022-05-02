@@ -2,6 +2,9 @@
 
 ## 0.38.18
 
+* `BehaviourBuilder`:
+    * Fixes in extension `BehaviourContext#doInSubContextWithUpdatesFilter` (thanks to [xzima](https://github.com/xzima))
+
 ## 0.38.17
 
 * `Core`:
