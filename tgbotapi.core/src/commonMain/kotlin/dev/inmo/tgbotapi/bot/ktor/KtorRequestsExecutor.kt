@@ -125,5 +125,6 @@ inline fun telegramBot(
 inline fun telegramBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
+    testServer: Boolean = false,
     builder: KtorRequestsExecutorBuilder.() -> Unit = {}
-): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, apiUrl), builder)
+): TelegramBot = telegramBot(TelegramAPIUrlsKeeper(token, testServer, apiUrl), builder)
