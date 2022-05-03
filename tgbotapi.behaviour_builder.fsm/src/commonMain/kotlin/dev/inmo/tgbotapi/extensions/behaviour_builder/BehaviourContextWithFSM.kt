@@ -147,6 +147,26 @@ class DefaultBehaviourContextWithFSM<T : State>(
             launch { statePerformer(it) }
         }
     }
+    /**
+     * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
+     * for input [State] will be used [KClass.isInstance] and any inheritor of [kClass] will pass this requirement
+     *
+     * @see BehaviourWithFSMStateHandlerHolder
+     * @see BehaviourContextWithFSM.add
+     */
+    @Suppress("MemberVisibilityCanBePrivate")
+    inline fun <reified I : T> onStateOrSubstate(handler: BehaviourWithFSMStateHandler<I, T>) = add(I::class, strict = false, handler)
+
+    /**
+     * Add STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Strict means that
+     * for input [State] will be used [State]::class == [kClass] and any [State] with exactly the same type will pass
+     * requirements
+     *
+     * @see BehaviourWithFSMStateHandlerHolder
+     * @see BehaviourContextWithFSM.addStrict
+     */
+    @Suppress("MemberVisibilityCanBePrivate")
+    inline fun <reified I : T> strictlyOn(handler: BehaviourWithFSMStateHandler<I, T>) = addStrict(I::class, handler)
 
     override suspend fun startChain(state: T) {
         statesManager.startChain(state)

@@ -33,8 +33,8 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSM<T>, Unit>
-): BehaviourContextWithFSM<T> = BehaviourContextWithFSM(
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
+): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
@@ -55,8 +55,8 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSM<T>, Unit>
-): Pair<BehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
+): Pair<DefaultBehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
     upstreamUpdatesFlow,
     scope,
     defaultExceptionsHandler,
@@ -95,8 +95,8 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSM<T>, Unit>
-): BehaviourContextWithFSM<T> = BehaviourContextWithFSM(
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
+): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
@@ -123,7 +123,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSM<T>, Unit>
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
         it,
