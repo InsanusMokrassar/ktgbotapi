@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 0.38.19
+
+* `BehaviourBuilder`:
+    * Hotfixes
+* `BehaviourBuilder FSM`:
+    * `BehaviourContextWithFSMBuilder` deprecated in favor to `BehaviourContextWithFSM`
+    * Now it is possible to define additional handlers in subcontexts of `BehaviourBuilderWithFSM`
+
 ## 0.38.18
 
 * `Core`:
