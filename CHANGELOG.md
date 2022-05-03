@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.38.20
+
 ## 0.38.19
 
 * `BehaviourBuilder`:
