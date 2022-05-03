@@ -32,7 +32,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
@@ -54,7 +54,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<DefaultBehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
     upstreamUpdatesFlow,
@@ -94,7 +94,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
@@ -122,7 +122,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(

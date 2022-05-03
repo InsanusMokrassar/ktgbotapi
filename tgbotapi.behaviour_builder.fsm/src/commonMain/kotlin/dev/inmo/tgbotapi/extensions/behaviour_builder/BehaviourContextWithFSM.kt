@@ -61,17 +61,11 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
     ): BehaviourContextWithFSM<T>
 
     companion object {
-        @JvmName("invokeWithMutableList")
-        operator fun <T : State> invoke(
-            behaviourContext: BehaviourContext,
-            handlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>>,
-            statesManager: StatesManager<T>
-        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers.toMutableList())
         operator fun <T : State> invoke(
             behaviourContext: BehaviourContext,
             handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
             statesManager: StatesManager<T>
-        ) = invoke<T>(behaviourContext, handlers.toMutableList(), statesManager)
+        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers)
     }
 }
 
@@ -104,9 +98,12 @@ inline fun <reified I : O, O: State> BehaviourContextWithFSM<O>.strictlyOn(handl
 class DefaultBehaviourContextWithFSM<T : State>(
     private val behaviourContext: BehaviourContext,
     private val statesManager: StatesManager<T>,
-    private val handlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>>
+    private val handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>
 ) : BehaviourContext by behaviourContext, BehaviourContextWithFSM<T> {
     private val updatesFlows = mutableMapOf<Any, Flow<Update>>()
+    private val additionalHandlers = mutableListOf<BehaviourWithFSMStateHandlerHolder<*, T>>()
+    private var actualHandlersList = additionalHandlers + handlers
+
     private fun getContextUpdatesFlow(context: Any) = updatesFlows.getOrPut(context) {
         allUpdatesFlow.accumulatorFlow(scope)
     }
@@ -114,16 +111,17 @@ class DefaultBehaviourContextWithFSM<T : State>(
     override suspend fun StatesMachine<in T>.handleState(state: T): T? = launchStateHandling(
         state,
         allUpdatesFlow,
-        handlers
+        actualHandlersList
     )
 
     override fun <I : T> add(kClass: KClass<I>, strict: Boolean, handler: BehaviourWithFSMStateHandler<I, T>) {
-        handlers.add(BehaviourWithFSMStateHandlerHolder(kClass, strict, handler))
+        additionalHandlers.add(BehaviourWithFSMStateHandlerHolder(kClass, strict, handler))
+        actualHandlersList = additionalHandlers + handlers
     }
 
     override fun start(scope: CoroutineScope): Job = scope.launchSafelyWithoutExceptions {
         val statePerformer: suspend (T) -> Unit = { state: T ->
-            val newState = launchStateHandling(state, getContextUpdatesFlow(state.context), handlers)
+            val newState = launchStateHandling(state, getContextUpdatesFlow(state.context), actualHandlersList)
             if (newState != null) {
                 statesManager.update(state, newState)
             } else {
@@ -181,7 +179,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
     ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
         behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter),
-        handlers.toMutableList(),
+        handlers,
         statesManager
     )
 }
