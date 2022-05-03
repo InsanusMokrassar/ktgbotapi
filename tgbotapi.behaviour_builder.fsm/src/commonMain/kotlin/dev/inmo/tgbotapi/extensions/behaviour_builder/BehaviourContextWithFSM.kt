@@ -9,6 +9,8 @@ import dev.inmo.micro_utils.coroutines.accumulatorFlow
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
+import kotlin.jvm.JvmName
+import kotlin.reflect.KClass
 
 /**
  * Interface which combine [BehaviourContext] and [StatesMachine]. Subcontext of triggers and states contexts must have
@@ -30,6 +32,25 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         }
     }
 
+    /**
+     * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
+     * for input [State] will be used [KClass.isInstance] and any inheritor of [kClass] will pass this requirement
+     *
+     * @see BehaviourWithFSMStateHandlerHolder
+     * @see onStateOrSubstate
+     */
+    fun <I : T> add(kClass: KClass<I>, strict: Boolean = false, handler: BehaviourWithFSMStateHandler<I, T>)
+
+    /**
+     * Add STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Strict means that
+     * for input [State] will be used [State]::class == [kClass] and any [State] with exactly the same type will pass
+     * requirements
+     *
+     * @see BehaviourWithFSMStateHandlerHolder
+     * @see strictlyOn
+     */
+    fun <I : T> addStrict(kClass: KClass<I>, handler: BehaviourWithFSMStateHandler<I, T>) = add(kClass, strict = true, handler)
+
     override fun copy(
         bot: TelegramBot,
         scope: CoroutineScope,
@@ -40,13 +61,41 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
     ): BehaviourContextWithFSM<T>
 
     companion object {
+        @JvmName("invokeWithMutableList")
+        operator fun <T : State> invoke(
+            behaviourContext: BehaviourContext,
+            handlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>>,
+            statesManager: StatesManager<T>
+        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers.toMutableList())
         operator fun <T : State> invoke(
             behaviourContext: BehaviourContext,
             handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
             statesManager: StatesManager<T>
-        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers)
+        ) = invoke<T>(behaviourContext, handlers.toMutableList(), statesManager)
     }
 }
+
+
+/**
+ * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
+ * for input [State] will be used [KClass.isInstance] and any inheritor of [kClass] will pass this requirement
+ *
+ * @see BehaviourWithFSMStateHandlerHolder
+ * @see BehaviourContextWithFSM.add
+ */
+@Suppress("MemberVisibilityCanBePrivate")
+inline fun <reified I : O, O: State> BehaviourContextWithFSM<O>.onStateOrSubstate(handler: BehaviourWithFSMStateHandler<I, O>) = add(I::class, strict = false, handler)
+
+/**
+ * Add STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Strict means that
+ * for input [State] will be used [State]::class == [kClass] and any [State] with exactly the same type will pass
+ * requirements
+ *
+ * @see BehaviourWithFSMStateHandlerHolder
+ * @see BehaviourContextWithFSM.addStrict
+ */
+@Suppress("MemberVisibilityCanBePrivate")
+inline fun <reified I : O, O: State> BehaviourContextWithFSM<O>.strictlyOn(handler: BehaviourWithFSMStateHandler<I, O>) = addStrict(I::class, handler)
 
 /**
  * Default realization of [BehaviourContextWithFSM]. It uses [behaviourContext] as a base for this object as
@@ -55,7 +104,7 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
 class DefaultBehaviourContextWithFSM<T : State>(
     private val behaviourContext: BehaviourContext,
     private val statesManager: StatesManager<T>,
-    private val handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>
+    private val handlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>>
 ) : BehaviourContext by behaviourContext, BehaviourContextWithFSM<T> {
     private val updatesFlows = mutableMapOf<Any, Flow<Update>>()
     private fun getContextUpdatesFlow(context: Any) = updatesFlows.getOrPut(context) {
@@ -67,6 +116,10 @@ class DefaultBehaviourContextWithFSM<T : State>(
         allUpdatesFlow,
         handlers
     )
+
+    override fun <I : T> add(kClass: KClass<I>, strict: Boolean, handler: BehaviourWithFSMStateHandler<I, T>) {
+        handlers.add(BehaviourWithFSMStateHandlerHolder(kClass, strict, handler))
+    }
 
     override fun start(scope: CoroutineScope): Job = scope.launchSafelyWithoutExceptions {
         val statePerformer: suspend (T) -> Unit = { state: T ->
@@ -106,9 +159,9 @@ class DefaultBehaviourContextWithFSM<T : State>(
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
-    ): BehaviourContextWithFSM<T> = BehaviourContextWithFSM(
+    ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
         behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter),
-        handlers,
+        handlers.toMutableList(),
         statesManager
     )
 }
