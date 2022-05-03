@@ -2,6 +2,9 @@
 
 ## 0.38.20
 
+* `BehaviourBuilder FSM`:
+    * Hotfixes
+
 ## 0.38.19
 
 * `BehaviourBuilder`:

@@ -28,7 +28,9 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>
     ): T? {
         return handlers.firstOrNull { it.checkHandleable(state) } ?.run {
-            handleState(contextUpdatesFlow, state)
+            doInSubContext(updatesUpstreamFlow = contextUpdatesFlow) {
+                handleState(state)
+            }
         }
     }
 
