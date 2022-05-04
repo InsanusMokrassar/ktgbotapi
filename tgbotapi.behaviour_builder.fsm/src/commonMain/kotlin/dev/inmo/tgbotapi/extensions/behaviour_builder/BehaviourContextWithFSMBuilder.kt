@@ -14,70 +14,8 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlin.reflect.KClass
 
-class BehaviourContextWithFSMBuilder<T : State> internal constructor(
-    private val resultBehaviourContext: BehaviourContextWithFSM<T>,
-    private val handlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>>
-) : BehaviourContextWithFSM<T> by resultBehaviourContext {
-    internal constructor(
-        baseBehaviourContext: BehaviourContext,
-        statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-        handlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf()
-    ) : this(DefaultBehaviourContextWithFSM(baseBehaviourContext, statesManager, handlers), handlers)
-
-    /**
-     * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
-     * for input [State] will be used [KClass.isInstance] and any inheritor of [kClass] will pass this requirement
-     *
-     * @see BehaviourWithFSMStateHandlerHolder
-     * @see onStateOrSubstate
-     */
-    fun <I : T> add(kClass: KClass<I>, handler: BehaviourWithFSMStateHandler<I, T>) {
-        handlers.add(BehaviourWithFSMStateHandlerHolder(kClass, false, handler))
-    }
-
-    /**
-     * Add STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Strict means that
-     * for input [State] will be used [State]::class == [kClass] and any [State] with exactly the same type will pass
-     * requirements
-     *
-     * @see BehaviourWithFSMStateHandlerHolder
-     * @see strictlyOn
-     */
-    fun <I : T> addStrict(kClass: KClass<I>, handler: BehaviourWithFSMStateHandler<I, T>) {
-        handlers.add(BehaviourWithFSMStateHandlerHolder(kClass, true, handler))
-    }
-
-
-    /**
-     * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
-     * for input [State] will be used [KClass.isInstance] and any inheritor of [kClass] will pass this requirement
-     *
-     * @see BehaviourWithFSMStateHandlerHolder
-     * @see BehaviourContextWithFSMBuilder.add
-     */
-    @Suppress("MemberVisibilityCanBePrivate")
-    inline fun <reified I : T> onStateOrSubstate(handler: BehaviourWithFSMStateHandler<I, T>) {
-        add(I::class, handler)
-    }
-
-    /**
-     * Add STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Strict means that
-     * for input [State] will be used [State]::class == [kClass] and any [State] with exactly the same type will pass
-     * requirements
-     *
-     * @see BehaviourWithFSMStateHandlerHolder
-     * @see BehaviourContextWithFSMBuilder.addStrict
-     */
-    @Suppress("MemberVisibilityCanBePrivate")
-    inline fun <reified I : T> strictlyOn(handler: BehaviourWithFSMStateHandler<I, T>) {
-        addStrict(I::class, handler)
-    }
-
-    /**
-     * Returns completed [resultBehaviourContext], [handlers] and [statesManager]
-     */
-    internal fun build() = resultBehaviourContext
-}
+@Deprecated("Will be removed soon")
+typealias BehaviourContextWithFSMBuilder<T> = BehaviourContextWithFSM<T>
 
 /**
  * Creates [BehaviourContextWithFSM] via creating of [DefaultBehaviourContext] with [this] as [TelegramBot],
@@ -94,17 +32,17 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
-): BehaviourContextWithFSM<T> = BehaviourContextWithFSMBuilder(
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
+): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
         upstreamUpdatesFlow = upstreamUpdatesFlow
     ),
-    statesManager,
-    presetHandlers
-).apply { block() }.build()
+    presetHandlers,
+    statesManager
+).apply { block() }
 
 /**
  * Use [buildBehaviourWithFSM] to create [BehaviourContextWithFSM] and launch getting of updates
@@ -116,9 +54,9 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
-): Pair<BehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
+): Pair<DefaultBehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
     upstreamUpdatesFlow,
     scope,
     defaultExceptionsHandler,
@@ -147,8 +85,8 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
  * @see BehaviourContext
  * @see BehaviourContextWithFSM
  * @see longPolling
- * @see BehaviourContextWithFSMBuilder.strictlyOn
- * @see BehaviourContextWithFSMBuilder.onStateOrSubstate
+ * @see BehaviourContextWithFSM.strictlyOn
+ * @see BehaviourContextWithFSM.onStateOrSubstate
  */
 @PreviewFeature
 suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
@@ -156,17 +94,17 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
-): BehaviourContextWithFSM<T> = BehaviourContextWithFSMBuilder(
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
+): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
         this,
         defaultExceptionsHandler ?.let { scope + ContextSafelyExceptionHandler(it) } ?: scope,
         upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow
     ),
-    statesManager,
-    presetHandlers
-).apply { block() }.build()
+    presetHandlers,
+    statesManager
+).apply { block() }
 
 /**
  * Use [buildBehaviourWithFSM] to create [BehaviourContextWithFSM] and launch getting of updates
@@ -176,16 +114,16 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
  * @see buildBehaviourWithFSMAndStartLongPolling
  * @see BehaviourContext
  * @see longPolling
- * @see BehaviourContextWithFSMBuilder.strictlyOn
- * @see BehaviourContextWithFSMBuilder.onStateOrSubstate
+ * @see BehaviourContextWithFSM.strictlyOn
+ * @see BehaviourContextWithFSM.onStateOrSubstate
  */
 @PreviewFeature
 suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
         it,

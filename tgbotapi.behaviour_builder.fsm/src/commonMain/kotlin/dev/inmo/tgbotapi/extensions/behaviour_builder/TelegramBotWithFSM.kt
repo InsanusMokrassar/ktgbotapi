@@ -37,9 +37,9 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     testServer: Boolean = false,
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
     apiUrl,
@@ -74,9 +74,9 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
-    presetHandlers: MutableList<BehaviourWithFSMStateHandlerHolder<*, T>> = mutableListOf(),
+    presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     testServer: Boolean = false,
-    block: CustomBehaviourContextReceiver<BehaviourContextWithFSMBuilder<T>, Unit>
+    block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
         token,

@@ -6,6 +6,9 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQ
 import dev.inmo.tgbotapi.types.webapps.query.SentWebAppMessage
 import kotlinx.serialization.*
 
+/**
+ * @param webAppQueryId [dev.inmo.tgbotapi.webapps.WebAppInitData.queryId]
+ */
 @Serializable
 data class AnswerWebAppQuery(
     @SerialName(webAppQueryIdField)

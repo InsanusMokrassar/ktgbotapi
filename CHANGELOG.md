@@ -47,6 +47,22 @@ __All the `tgbotapi.extensions.*` packages have been removed__
 * `BehaviourBuilder`:
     * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
 
+## 0.38.20
+
+* `BehaviourBuilder FSM`:
+    * Hotfixes
+* `WebApps`:
+    * New extension `TelegramBot#answerWebAppQuery`
+    * New function `handleResult`
+
+## 0.38.19
+
+* `BehaviourBuilder`:
+    * Hotfixes
+* `BehaviourBuilder FSM`:
+    * `BehaviourContextWithFSMBuilder` deprecated in favor to `BehaviourContextWithFSM`
+    * Now it is possible to define additional handlers in subcontexts of `BehaviourBuilderWithFSM`
+
 ## 0.38.18
 
 * `Core`:
