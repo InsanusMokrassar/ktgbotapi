@@ -2,6 +2,10 @@
 
 ## 0.38.22
 
+* `Core`:
+    * New constant `tgWebAppStartParamField`
+    * All keyboards builders and rows blocks becomes not crossinline
+
 ## 0.38.21
 
 * `WebApps`:

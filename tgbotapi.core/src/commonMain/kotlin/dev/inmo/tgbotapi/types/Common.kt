@@ -96,6 +96,8 @@ val telegramInlineModeGifPermittedMimeTypes by lazy {
     )
 }
 
+const val tgWebAppStartParamField = "tgWebAppStartParam"
+
 const val chatIdField = "chat_id"
 const val senderChatIdField = "sender_chat_id"
 const val messageIdField = "message_id"
