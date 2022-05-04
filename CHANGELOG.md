@@ -4,6 +4,7 @@
 
 * `WebApps`:
     * `WebAppInitData#queryId` now have correct js name of field
+    * New function `sendDataOrWorkWithQueryId`
 
 ## 0.38.20
 
