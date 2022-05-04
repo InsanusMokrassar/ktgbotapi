@@ -6,6 +6,7 @@
     * Hotfixes
 * `WebApps`:
     * New extension `TelegramBot#answerWebAppQuery`
+    * New function `handleResult`
 
 ## 0.38.19
 
