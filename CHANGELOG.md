@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 0.38.20
+
+* `BehaviourBuilder FSM`:
+    * Hotfixes
+* `WebApps`:
+    * New extension `TelegramBot#answerWebAppQuery`
+    * New function `handleResult`
+
 ## 0.38.19
 
 * `BehaviourBuilder`:

@@ -34,20 +34,11 @@ class BehaviourWithFSMStateHandlerHolder<I : O, O : State>(
 
     /**
      * Handling of state :)
-     *
-     * @param contextUpdatesFlow This [Flow] will be used as source of updates. By contract, this [Flow] must be common
-     * for all [State]s of incoming [state] [State.context] and for the whole chain inside of [BehaviourContextWithFSM]
      */
     suspend fun BehaviourContextWithFSM<in O>.handleState(
-        contextUpdatesFlow: Flow<Update>,
         state: O
-    ): O? {
-        val subscope = scope.LinkedSupervisorScope()
-        return with(copy(scope = subscope, upstreamUpdatesFlow = contextUpdatesFlow)) {
-            with(delegateTo) {
-                handleState(state as I)
-            }
-        }
+    ): O? = with(delegateTo) {
+        handleState(state as I)
     }
 }
 
