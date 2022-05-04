@@ -8,11 +8,26 @@ import dev.inmo.tgbotapi.types.WebAppQueryId
  * that callback. Before and after calling of this callback will not be used any method of answering to the telegram
  * system, so, you must use something like [answerWebAppQuery] by yourself to send the result
  */
-inline fun handleResult(
+inline fun sendDataOrWorkWithQueryId(
     onSendData: () -> String?,
     onAnswerWebAppQuery: (WebAppQueryId) -> Unit
 ) {
-    webApp.initDataUnsafe.queryId ?.let {
-        onAnswerWebAppQuery(it)
-    } ?: webApp.sendData(onSendData() ?: return)
+    val queryId = webApp.initDataUnsafe.queryId
+
+    if (queryId == null) {
+        webApp.sendData(onSendData() ?: return)
+    } else {
+        onAnswerWebAppQuery(queryId)
+    }
 }
+
+/**
+ * @param onSendData Should return the data which must be used in [WebApp.sendData]. If returns null, data will not be sent
+ * @param onAnswerWebAppQuery In case if [WebAppInitData.queryId] is presented in [WebApp.initDataUnsafe], will be called
+ * that callback. Before and after calling of this callback will not be used any method of answering to the telegram
+ * system, so, you must use something like [answerWebAppQuery] by yourself to send the result
+ */
+inline fun handleResult(
+    onSendData: () -> String?,
+    onAnswerWebAppQuery: (WebAppQueryId) -> Unit
+) = sendDataOrWorkWithQueryId(onSendData, onAnswerWebAppQuery)

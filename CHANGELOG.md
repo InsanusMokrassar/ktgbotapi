@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 0.38.21
+
+* `WebApps`:
+    * `WebAppInitData#queryId` now have correct js name of field
+    * New function `sendDataOrWorkWithQueryId`
+
 ## 0.38.20
 
 * `BehaviourBuilder FSM`:
