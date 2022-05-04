@@ -2,6 +2,9 @@
 
 ## 0.38.21
 
+* `WebApps`:
+    * `WebAppInitData#queryId` now have correct js name of field
+
 ## 0.38.20
 
 * `BehaviourBuilder FSM`:
