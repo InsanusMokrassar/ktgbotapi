@@ -4,6 +4,8 @@
 
 * `BehaviourBuilder FSM`:
     * Hotfixes
+* `WebApps`:
+    * New extension `TelegramBot#answerWebAppQuery`
 
 ## 0.38.19
 
