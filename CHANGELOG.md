@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 0.38.22
+
 ## 0.38.21
 
 * `WebApps`:
