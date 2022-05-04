@@ -7457,6 +7457,7 @@ $dokka.location:dev.inmo.tgbotapi.webapps//onEvent/dev.inmo.tgbotapi.webapps.Web
 $dokka.location:dev.inmo.tgbotapi.webapps//onMainButtonClicked/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-main-button-clicked.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onThemeChanged/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-theme-changed.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onViewportChanged/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function2[dev.inmo.tgbotapi.webapps.WebApp,dev.inmo.tgbotapi.webapps.ViewportChangedData,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-viewport-changed.html
+$dokka.location:dev.inmo.tgbotapi.webapps//sendDataOrWorkWithQueryId/#kotlin.Function0[kotlin.String?]#kotlin.Function1[kotlin.String,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/send-data-or-work-with-query-id.html
 $dokka.location:dev.inmo.tgbotapi.webapps//setParams/dev.inmo.tgbotapi.webapps.MainButton#dev.inmo.tgbotapi.webapps.MainButtonParams/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/set-params.html
 $dokka.location:dev.inmo.tgbotapi.webapps//telegram/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/telegram.html
 $dokka.location:dev.inmo.tgbotapi.webapps//webApp/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/web-app.html
