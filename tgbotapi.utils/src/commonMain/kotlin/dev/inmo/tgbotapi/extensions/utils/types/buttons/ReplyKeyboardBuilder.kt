@@ -44,7 +44,7 @@ inline fun replyKeyboard(
     oneTimeKeyboard: Boolean? = null,
     inputFieldPlaceholder: String? = null,
     selective: Boolean? = null,
-    crossinline block: ReplyKeyboardBuilder.() -> Unit
+    block: ReplyKeyboardBuilder.() -> Unit
 ) = ReplyKeyboardBuilder().apply(block).build(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective)
 
 /**
@@ -56,7 +56,7 @@ inline fun replyKeyboard(
  * @see requestPollButton
  */
 inline fun ReplyKeyboardBuilder.row(
-    crossinline block: ReplyKeyboardRowBuilder.() -> Unit
+    block: ReplyKeyboardRowBuilder.() -> Unit
 ) = add(ReplyKeyboardRowBuilder().apply(block).row)
 
 /**
@@ -110,3 +110,14 @@ inline fun ReplyKeyboardRowBuilder.webAppButton(
     text: String,
     webApp: WebAppInfo
 ) = add(WebAppKeyboardButton(text, webApp))
+
+/**
+ * Creates and put [WebAppKeyboardButton]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun ReplyKeyboardRowBuilder.webAppButton(
+    text: String,
+    url: String
+) = webAppButton(text, WebAppInfo(url))
