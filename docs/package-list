@@ -1717,6 +1717,7 @@ $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons//urlButton/dev.
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons//webAppButton/dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardRowBuilder#kotlin.String#dev.inmo.tgbotapi.types.webapps.WebAppInfo/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/web-app-button.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons//webAppButton/dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardRowBuilder#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/web-app-button.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons//webAppButton/dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardRowBuilder#kotlin.String#dev.inmo.tgbotapi.types.webapps.WebAppInfo/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/web-app-button.html
+$dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons//webAppButton/dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardRowBuilder#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/web-app-button.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons/InlineKeyboardBuilder///PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/-inline-keyboard-builder/index.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons/InlineKeyboardBuilder/InlineKeyboardBuilder/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/-inline-keyboard-builder/-inline-keyboard-builder.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils.types.buttons/InlineKeyboardBuilder/build/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils.types.buttons/-inline-keyboard-builder/build.html
@@ -6986,6 +6987,7 @@ $dokka.location:dev.inmo.tgbotapi.types//temporaryRegistrationField/#/PointingTo
 $dokka.location:dev.inmo.tgbotapi.types//textEntitiesField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/text-entities-field.html
 $dokka.location:dev.inmo.tgbotapi.types//textField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/text-field.html
 $dokka.location:dev.inmo.tgbotapi.types//textLength/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/text-length.html
+$dokka.location:dev.inmo.tgbotapi.types//tgWebAppStartParamField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/tg-web-app-start-param-field.html
 $dokka.location:dev.inmo.tgbotapi.types//tgsStickerField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/tgs-sticker-field.html
 $dokka.location:dev.inmo.tgbotapi.types//thumbField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/thumb-field.html
 $dokka.location:dev.inmo.tgbotapi.types//thumbHeightField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/thumb-height-field.html
@@ -7323,6 +7325,7 @@ $dokka.location:dev.inmo.tgbotapi.updateshandlers/UpdatesFilter/asUpdateReceiver
 $dokka.location:dev.inmo.tgbotapi.utils.extensions////PointingToDeclaration/docs/dev.inmo.tgbotapi.utils.extensions/index.html
 $dokka.location:dev.inmo.tgbotapi.utils.extensions//accumulateByKey/kotlinx.coroutines.channels.ReceiveChannel[kotlin.Pair[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]]#kotlin.Long#kotlinx.coroutines.CoroutineScope#kotlin.Int/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils.extensions/accumulate-by-key.html
 $dokka.location:dev.inmo.tgbotapi.utils.extensions//asReference/TypeParam(bounds=[kotlin.Any?])#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils.extensions/as-reference.html
+$dokka.location:dev.inmo.tgbotapi.utils.extensions//createWebAppStartParam/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils.extensions/create-web-app-start-param.html
 $dokka.location:dev.inmo.tgbotapi.utils.extensions//escapeMarkdownV2Common/kotlin.String#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils.extensions/escape-markdown-v2-common.html
 $dokka.location:dev.inmo.tgbotapi.utils.extensions//escapeMarkdownV2Link/kotlin.String#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils.extensions/escape-markdown-v2-link.html
 $dokka.location:dev.inmo.tgbotapi.utils.extensions//escapeMarkdownV2PreAndCode/kotlin.String#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils.extensions/escape-markdown-v2-pre-and-code.html
