@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.webapps
 
-import dev.inmo.tgbotapi.types.MilliSeconds
-import dev.inmo.tgbotapi.types.WebAppQueryId
+import dev.inmo.tgbotapi.types.*
 
 external interface WebAppInitData {
+    @JsName("query_id")
     val queryId: WebAppQueryId?
 
     val user: WebAppUser?

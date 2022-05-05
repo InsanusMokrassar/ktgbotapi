@@ -37,7 +37,7 @@ class InlineKeyboardRowBuilder : RowBuilder<InlineKeyboardButton>()
  * @see InlineKeyboardBuilder.row
  */
 inline fun inlineKeyboard(
-    crossinline block: InlineKeyboardBuilder.() -> Unit
+    block: InlineKeyboardBuilder.() -> Unit
 ) = InlineKeyboardBuilder().apply(block).build()
 
 /**
@@ -52,7 +52,7 @@ inline fun inlineKeyboard(
  * @see urlButton
  */
 inline fun InlineKeyboardBuilder.row(
-    crossinline block: InlineKeyboardRowBuilder.() -> Unit
+    block: InlineKeyboardRowBuilder.() -> Unit
 ) = add(InlineKeyboardRowBuilder().apply(block).row)
 
 /**

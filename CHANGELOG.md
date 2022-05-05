@@ -47,6 +47,18 @@ __All the `tgbotapi.extensions.*` packages have been removed__
 * `BehaviourBuilder`:
     * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
 
+## 0.38.22
+
+* `Core`:
+    * New constant `tgWebAppStartParamField`
+    * All keyboards builders and rows blocks becomes not crossinline
+
+## 0.38.21
+
+* `WebApps`:
+    * `WebAppInitData#queryId` now have correct js name of field
+    * New function `sendDataOrWorkWithQueryId`
+
 ## 0.38.20
 
 * `BehaviourBuilder FSM`:
