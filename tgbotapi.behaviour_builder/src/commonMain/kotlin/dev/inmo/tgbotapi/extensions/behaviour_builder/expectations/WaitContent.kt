@@ -9,12 +9,9 @@ import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
+import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
 import dev.inmo.tgbotapi.types.message.content.media.*
-import dev.inmo.tgbotapi.types.message.content.media.AudioMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.DocumentMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
 import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
