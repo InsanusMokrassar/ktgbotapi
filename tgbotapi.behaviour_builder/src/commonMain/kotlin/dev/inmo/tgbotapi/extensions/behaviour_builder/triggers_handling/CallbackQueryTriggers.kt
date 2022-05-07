@@ -37,14 +37,14 @@ internal suspend inline fun <BC : BehaviourContext, reified T : CallbackQuery> B
  * data
  */
 internal suspend inline fun <BC : BehaviourContext, reified T : DataCallbackQuery> BC.onDataCallbackQueryCounted(
-    noinline initialFilter: SimpleFilter<T>? = null,
+    initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = CallbackQueryFilterByUser,
     markerFactory: MarkerFactory<in T, Any> = ByUserCallbackQueryMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ): Job {
     val newInitialFilter = SimpleFilter<DataCallbackQuery> {
         it is T && initialFilter ?.invoke(it) ?: true
-    }
+    }::invoke
     return runCatchingSafely {
         onCallbackQuery (
             initialFilter,
