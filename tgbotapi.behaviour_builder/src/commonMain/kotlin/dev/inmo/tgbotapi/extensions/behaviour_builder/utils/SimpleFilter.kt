@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.utils
 fun interface SimpleFilter<in T> {
     suspend operator fun invoke(o: T): Boolean
 }
+val TrueSimpleFilter = SimpleFilter<Any?> { true }
 
 /**
  * @return [SimpleFilter] which will return true in case when all the items in incoming data passed [this] filter

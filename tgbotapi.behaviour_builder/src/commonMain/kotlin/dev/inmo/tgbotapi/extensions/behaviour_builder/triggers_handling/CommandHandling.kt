@@ -2,6 +2,8 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
+import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.CommonMessageFilterExcludeMediaGroups
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByChat
@@ -15,8 +17,7 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.Job
 
-
-suspend fun <BC : BehaviourContext> BC.command(
+internal suspend fun <BC : BehaviourContext> BC.commandUncounted(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -44,6 +45,35 @@ suspend fun <BC : BehaviourContext> BC.command(
 )
 
 suspend fun <BC : BehaviourContext> BC.command(
+    commandRegex: Regex,
+    requireOnlyCommandInMessage: Boolean = true,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+): Job = runCatchingSafely {
+    commandUncounted(
+        commandRegex,
+        requireOnlyCommandInMessage,
+        initialFilter,
+        subcontextUpdatesFilter,
+        markerFactory,
+        scenarioReceiver
+    )
+}.onFailure {
+    triggersHolder.handleableCommandsHolder.unregisterHandleable(commandRegex)
+}.onSuccess {
+    triggersHolder.handleableCommandsHolder.registerHandleable(commandRegex)
+    it.invokeOnCompletion {
+        runCatching {
+            launchSafelyWithoutExceptions {
+                triggersHolder.handleableCommandsHolder.unregisterHandleable(commandRegex)
+            }
+        }
+    }
+}.getOrThrow()
+
+suspend fun <BC : BehaviourContext> BC.command(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -52,22 +82,22 @@ suspend fun <BC : BehaviourContext> BC.command(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
 ) = command(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
-suspend inline fun <BC : BehaviourContext> BC.onCommand(
+suspend fun <BC : BehaviourContext> BC.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
 ): Job = command(commandRegex, requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
-suspend inline fun <BC : BehaviourContext> BC.onCommand(
+suspend fun <BC : BehaviourContext> BC.onCommand(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
 ): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 suspend fun <BC : BehaviourContext> BC.commandWithArgs(
@@ -104,18 +134,18 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     scenarioReceiver = scenarioReceiver
 )
 
-suspend inline fun <BC : BehaviourContext> BC.onCommandWithArgs(
+suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    noinline scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, CommonMessage<TextContent>, Array<String>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, CommonMessage<TextContent>, Array<String>>
 ): Job = commandWithArgs(commandRegex, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
-suspend inline fun <BC : BehaviourContext> BC.onCommandWithArgs(
+suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    noinline scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, CommonMessage<TextContent>, Array<String>>
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, CommonMessage<TextContent>, Array<String>>
 ): Job = onCommandWithArgs(command.toRegex(), initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

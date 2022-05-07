@@ -2,10 +2,9 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.utils.*
+import dev.inmo.tgbotapi.extensions.utils.asChosenInlineResultUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
-import dev.inmo.tgbotapi.types.polls.*
 import kotlinx.coroutines.flow.toList
 
 typealias ChosenInlineResultMapper<T> = suspend T.() -> T?
