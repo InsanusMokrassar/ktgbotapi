@@ -3,22 +3,13 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserIdChosenInlineResultMarkerFactory
+import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.CallbackQueryFilterByUser
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.*
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserCallbackQueryMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asChosenInlineResultUpdate
-import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
+import dev.inmo.tgbotapi.types.CallbackQuery.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T : ChosenInlineResult> BC.onChosenInlineResultBase(
-    noinline initialFilter: SimpleFilter<T>? = null,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
-    markerFactory: MarkerFactory<in T, Any> = ByUserIdChosenInlineResultMarkerFactory,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
-) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asChosenInlineResultUpdate() ?.data as? T) ?.let(::listOfNotNull)
-}
-
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
@@ -31,13 +22,13 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChosenInlineResu
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onChosenInlineResult(
-    initialFilter: SimpleFilter<ChosenInlineResult>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChosenInlineResult, Update>? = null,
-    markerFactory: MarkerFactory<in ChosenInlineResult, Any> = ByUserIdChosenInlineResultMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChosenInlineResult>
-) = onChosenInlineResultBase(
-    initialFilter,
+suspend fun <BC : BehaviourContext> BC.onUnhandledDataCallbackQuery(
+    initialFilter: SimpleFilter<DataCallbackQuery>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DataCallbackQuery, Update>? = CallbackQueryFilterByUser,
+    markerFactory: MarkerFactory<in DataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DataCallbackQuery>
+) = onCallbackQuery (
+    initialFilter * !SimpleFilter<MessageDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
     subcontextUpdatesFilter,
     markerFactory,
     scenarioReceiver
@@ -55,13 +46,13 @@ suspend fun <BC : BehaviourContext> BC.onChosenInlineResult(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onLocationChosenInlineResult(
-    initialFilter: SimpleFilter<LocationChosenInlineResult>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationChosenInlineResult, Update>? = null,
-    markerFactory: MarkerFactory<in LocationChosenInlineResult, Any> = ByUserIdChosenInlineResultMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationChosenInlineResult>
-) = onChosenInlineResultBase(
-    initialFilter,
+suspend fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQuery(
+    initialFilter: SimpleFilter<InlineMessageIdDataCallbackQuery>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineMessageIdDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
+    markerFactory: MarkerFactory<in InlineMessageIdDataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineMessageIdDataCallbackQuery>
+) = onCallbackQuery (
+    initialFilter * !SimpleFilter<MessageDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
     subcontextUpdatesFilter,
     markerFactory,
     scenarioReceiver
@@ -79,13 +70,13 @@ suspend fun <BC : BehaviourContext> BC.onLocationChosenInlineResult(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onBaseChosenInlineResult(
-    initialFilter: SimpleFilter<BaseChosenInlineResult>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseChosenInlineResult, Update>? = null,
-    markerFactory: MarkerFactory<in BaseChosenInlineResult, Any> = ByUserIdChosenInlineResultMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseChosenInlineResult>
-) = onChosenInlineResultBase(
-    initialFilter,
+suspend fun <BC : BehaviourContext> BC.onUnhandledMessageDataCallbackQuery(
+    initialFilter: SimpleFilter<MessageDataCallbackQuery>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MessageDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
+    markerFactory: MarkerFactory<in MessageDataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MessageDataCallbackQuery>
+) = onCallbackQuery(
+    initialFilter * !SimpleFilter<MessageDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
     subcontextUpdatesFilter,
     markerFactory,
     scenarioReceiver

@@ -4,10 +4,10 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.*
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByIdPollAnswerMarkerFactory
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.asPollAnswerUpdate
-import dev.inmo.tgbotapi.extensions.utils.asPollUpdate
-import dev.inmo.tgbotapi.types.polls.*
+import dev.inmo.tgbotapi.types.polls.PollAnswer
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext> BC.onPollAnswered(
