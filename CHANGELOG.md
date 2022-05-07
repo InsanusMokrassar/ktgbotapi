@@ -2,6 +2,9 @@
 
 ## 0.38.23
 
+* `BehaviourHandler`:
+    * Add support of fallback triggers (fix of [#560](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/560))
+
 ## 0.38.22
 
 * `Core`:

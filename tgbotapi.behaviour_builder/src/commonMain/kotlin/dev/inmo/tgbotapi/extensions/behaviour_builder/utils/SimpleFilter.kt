@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.utils
 typealias SimpleFilter<T> = suspend (T) -> Boolean
 
 inline fun <T> SimpleFilter(noinline block: SimpleFilter<T>) = block
+val TrueSimpleFilter = SimpleFilter<Any?> { true }
 
 /**
  * @return [SimpleFilter] which will return true in case when all the items in incoming data passed [this] filter

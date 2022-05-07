@@ -4,6 +4,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.TriggersHolder
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -47,12 +48,15 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
     val flowsUpdatesFilter: FlowsUpdatesFilter
         get() = this
 
+    val triggersHolder: TriggersHolder
+
     fun copy(
         bot: TelegramBot = this.bot,
         scope: CoroutineScope = this.scope,
         broadcastChannelsSize: Int = 100,
         onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
         upstreamUpdatesFlow: Flow<Update>? = null,
+        triggersHolder: TriggersHolder = TriggersHolder(),
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
     ): BehaviourContext
 }
@@ -63,6 +67,7 @@ class DefaultBehaviourContext(
     broadcastChannelsSize: Int = 100,
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
     private val upstreamUpdatesFlow: Flow<Update>? = null,
+    override val triggersHolder: TriggersHolder = TriggersHolder(),
     private val updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
 ) : AbstractFlowsUpdatesFilter(), TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
 
@@ -89,22 +94,25 @@ class DefaultBehaviourContext(
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
+        triggersHolder: TriggersHolder,
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
-    ): DefaultBehaviourContext = DefaultBehaviourContext(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, updatesFilter)
+    ): DefaultBehaviourContext = DefaultBehaviourContext(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder, updatesFilter)
 }
 
 fun BehaviourContext(
     bot: TelegramBot,
     scope: CoroutineScope,
-    flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter()
-) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow)
+    flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
+    triggersHolder: TriggersHolder = TriggersHolder(),
+) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder)
 
 inline fun <T> BehaviourContext(
     bot: TelegramBot,
     scope: CoroutineScope,
     flowsUpdatesFilter: FlowsUpdatesFilter = FlowsUpdatesFilter(),
+    triggersHolder: TriggersHolder = TriggersHolder(),
     crossinline block: BehaviourContext.() -> T
-) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow).run(block)
+) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder).run(block)
 
 /**
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [updatesFilter] is provided and
@@ -115,6 +123,7 @@ suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
     stopOnCompletion: Boolean = true,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
 ): T {
     val newContext = copy(
@@ -126,7 +135,8 @@ suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
                 } ?: true
             }
         },
-        upstreamUpdatesFlow = updatesUpstreamFlow
+        upstreamUpdatesFlow = updatesUpstreamFlow,
+        triggersHolder = triggersHolder
     ) as BC
     return withContext(currentCoroutineContext()) {
         newContext.behaviourContextReceiver().also { if (stopOnCompletion) newContext.stop() }
@@ -137,8 +147,9 @@ suspend fun <T> BehaviourContext.doInSubContext(
     stopOnCompletion: Boolean = true,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
     behaviourContextReceiver: BehaviourContextReceiver<T>
-) = doInSubContextWithUpdatesFilter(updatesFilter = null, stopOnCompletion, updatesUpstreamFlow, scope, behaviourContextReceiver)
+) = doInSubContextWithUpdatesFilter(updatesFilter = null, stopOnCompletion, updatesUpstreamFlow, scope, triggersHolder, behaviourContextReceiver)
 
 /**
  * This method will cancel ALL subsequent contexts, expectations and waiters
