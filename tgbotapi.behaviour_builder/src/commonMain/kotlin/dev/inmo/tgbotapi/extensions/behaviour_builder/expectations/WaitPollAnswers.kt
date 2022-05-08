@@ -45,14 +45,10 @@ private suspend inline fun BehaviourContext.waitPollAnswers(
         }
     }
 ) {
-    if (this is PollAnswer) {
-        if (mapper == null) {
-            this
-        } else {
-            mapper(this)
-        }
+    if (mapper == null) {
+        this
     } else {
-        null
+        mapper(this)
     }
 }
 

@@ -23,6 +23,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChatEvent> BC.on
     markerFactory: MarkerFactory<in ChatEventMessage<T>, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<T>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+    @Suppress("UNCHECKED_CAST")
     (it.asBaseSentMessageUpdate() ?.data ?.asChatEventMessage() ?.takeIf { it.chatEvent is T } as? ChatEventMessage<T>) ?.let(::listOfNotNull)
 }
 
@@ -584,7 +585,7 @@ suspend fun <BC : BehaviourContext> BC.onWebAppData(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PrivateEventMessage<WebAppData>>
 ) = onEvent(
     initialFilter ?.let { { it is PrivateEventMessage<WebAppData> && initialFilter(it) } },
-    subcontextUpdatesFilter ?.let { { it: ChatEventMessage<WebAppData>, update: Update -> it is PrivateEventMessage<WebAppData> && subcontextUpdatesFilter(it, update) } },
+    subcontextUpdatesFilter ?.let { { message: ChatEventMessage<WebAppData>, update: Update -> message is PrivateEventMessage<WebAppData> && subcontextUpdatesFilter(message, update) } },
     markerFactory
 ) {
     if (it is PrivateEventMessage<WebAppData>) {

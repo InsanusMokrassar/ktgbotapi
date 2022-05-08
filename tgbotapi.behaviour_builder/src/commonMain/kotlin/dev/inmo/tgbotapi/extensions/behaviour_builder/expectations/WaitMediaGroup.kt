@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.toList
 
 typealias MediaGroupFilter<T> = suspend List<MediaGroupMessage<T>>.() -> Boolean
 
-@PreviewFeature
 internal suspend inline fun <reified T : MediaGroupContent> BehaviourContext.buildMediaGroupWaiter(
     count: Int = 1,
     initRequest: Request<*>? = null,

@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 /**
  * Allow only messages which are not [MediaGroupMessage]
  */
-val MessageFilterExcludingMediaGroups: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<*>, Update> = { message, update ->
+val MessageFilterExcludingMediaGroups: BehaviourContextAndTwoTypesReceiver<Boolean, CommonMessage<*>, Update> = { _, update ->
     update !is MediaGroupMessage<*>
 }
 

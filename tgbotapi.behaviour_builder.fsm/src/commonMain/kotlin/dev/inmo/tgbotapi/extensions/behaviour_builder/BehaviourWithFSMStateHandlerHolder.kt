@@ -38,6 +38,7 @@ class BehaviourWithFSMStateHandlerHolder<I : O, O : State>(
     suspend fun BehaviourContextWithFSM<in O>.handleState(
         state: O
     ): O? = with(delegateTo) {
+        @Suppress("UNCHECKED_CAST")
         handleState(state as I)
     }
 }

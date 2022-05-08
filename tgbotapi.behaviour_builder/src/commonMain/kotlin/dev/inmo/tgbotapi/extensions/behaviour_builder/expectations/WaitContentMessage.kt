@@ -36,7 +36,7 @@ internal suspend fun <O : MessageContent> BehaviourContext.waitCommonMessage(
     val messages = when (it) {
         is SentMediaGroupUpdate -> {
             if (includeMediaGroups) {
-                it.data.map { it as CommonMessage<MessageContent> }
+                it.data
             } else {
                 emptyList()
             }
@@ -45,7 +45,8 @@ internal suspend fun <O : MessageContent> BehaviourContext.waitCommonMessage(
         else -> return@expectFlow emptyList()
     }
     messages.mapNotNull { message ->
-        val asCommonMessage = message as CommonMessage<MessageContent>
+        @Suppress("UNCHECKED_CAST")
+        val asCommonMessage = message as? CommonMessage<MessageContent> ?: return@mapNotNull null
         if (filter == null || filter(asCommonMessage)) {
             asCommonMessage.mapper()
         } else {
