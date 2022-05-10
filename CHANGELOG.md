@@ -4,6 +4,10 @@
 
 __All the `tgbotapi.extensions.*` packages have been removed__
 
+* `Versions`:
+    * `Kotlin`: `1.6.10` -> `1.6.21`
+    * `Ktor`: `1.6.8` -> `2.0.1`
+    * `MicroUtils`: `0.9.24` -> `0.10.2`
 * `Core`:
     * **`Ktor` package renamed. Migration:** `dev.inmo.tgbotapi.bot.Ktor` -> `dev.inmo.tgbotapi.bot.ktor`
     * **`CallbackQuery` package renamed. Migration:** `dev.inmo.tgbotapi.types.CallbackQuery([\s\\.])` -> `dev.inmo.tgbotapi.types.queries.callback$1`
