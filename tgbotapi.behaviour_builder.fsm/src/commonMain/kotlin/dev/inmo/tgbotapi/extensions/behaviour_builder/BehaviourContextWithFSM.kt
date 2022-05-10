@@ -5,12 +5,10 @@ import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.micro_utils.fsm.common.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.micro_utils.coroutines.accumulatorFlow
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.TriggersHolder
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
-import kotlin.jvm.JvmName
 import kotlin.reflect.KClass
 
 /**
@@ -22,18 +20,6 @@ import kotlin.reflect.KClass
  */
 interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T> {
     suspend fun start() = start(this)
-
-    suspend fun launchStateHandling(
-        state: T,
-        contextUpdatesFlow: Flow<Update>,
-        handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>
-    ): T? {
-        return handlers.firstOrNull { it.checkHandleable(state) } ?.run {
-            doInSubContext(updatesUpstreamFlow = contextUpdatesFlow) {
-                handleState(state)
-            }
-        }
-    }
 
     /**
      * Add NON STRICT [handler] to list of available in future [BehaviourContextWithFSM]. Non strict means that
@@ -104,19 +90,22 @@ class DefaultBehaviourContextWithFSM<T : State>(
     private val statesManager: StatesManager<T>,
     private val handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>
 ) : BehaviourContext by behaviourContext, BehaviourContextWithFSM<T> {
-    private val updatesFlows = mutableMapOf<Any, Flow<Update>>()
+    private val updatesFlows = mutableMapOf<Any, DefaultBehaviourContextWithFSM<T>>()
     private val additionalHandlers = mutableListOf<BehaviourWithFSMStateHandlerHolder<*, T>>()
     private var actualHandlersList = additionalHandlers + handlers
 
-    private fun getContextUpdatesFlow(context: Any) = updatesFlows.getOrPut(context) {
-        allUpdatesFlow.accumulatorFlow(scope)
+    private suspend fun getSubContext(context: Any) = updatesFlows.getOrPut(context) {
+        createSubContext()
     }
 
-    override suspend fun StatesMachine<in T>.handleState(state: T): T? = launchStateHandling(
-        state,
-        allUpdatesFlow,
-        actualHandlersList
-    )
+    override suspend fun StatesMachine<in T>.handleState(state: T): T? {
+        return getSubContext(
+            state.context
+        ).launchStateHandling(
+            state,
+            actualHandlersList
+        )
+    }
 
     override fun <I : T> add(kClass: KClass<I>, strict: Boolean, handler: BehaviourWithFSMStateHandler<I, T>) {
         additionalHandlers.add(BehaviourWithFSMStateHandlerHolder(kClass, strict, handler))
@@ -125,7 +114,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
 
     override fun start(scope: CoroutineScope): Job = scope.launchSafelyWithoutExceptions {
         val statePerformer: suspend (T) -> Unit = { state: T ->
-            val newState = launchStateHandling(state, getContextUpdatesFlow(state.context), actualHandlersList)
+            val newState = getSubContext(state.context).launchStateHandling(state, actualHandlersList)
             if (newState != null) {
                 statesManager.update(state, newState)
             } else {

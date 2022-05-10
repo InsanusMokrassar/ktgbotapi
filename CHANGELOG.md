@@ -50,6 +50,15 @@ __All the `tgbotapi.extensions.*` packages have been removed__
         * New typealias `FileUrl` (represents `FileId` but declare that they are the same)
 * `BehaviourBuilder`:
     * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
+    * New extension `BehaviourContext#createSubContext`. It uses separated `AccumulatorFlow` and will retrieve updates by itself
+    * New extension `BehaviourContext#doInContext`
+* `BehaviourContextWithFSM`:
+    * `launchStateHandling` lost its parameter `contextUpdatesFlow: Flow`
+    * `handleState` of `BehaviourContextWithFSM` now will get/create sub context for the state and launch handling in it
+    * `BehaviourWithFSMStateHandler` now extends `StatesHandler`
+    * `BehaviourWithFSMStateHandlerHolder` now extends `CheckableHandlerHolder` and `BehaviourWithFSMStateHandler`
+        * Function `checkHandleable` of `BehaviourWithFSMStateHandlerHolder` now is `suspend`
+    * 
 
 ## 0.38.23
 

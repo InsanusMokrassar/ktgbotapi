@@ -84,7 +84,7 @@ class DefaultBehaviourContext(
         } else {
             it
         }
-    }
+    }.accumulatorFlow(scope)
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
 
     override fun copy(
@@ -113,6 +113,35 @@ inline fun <T> BehaviourContext(
     crossinline block: BehaviourContext.() -> T
 ) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder).run(block)
 
+suspend fun <BC : BehaviourContext> BC.createSubContext(
+    scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow.accumulatorFlow(scope),
+    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>? = null,
+) = copy(
+    scope = scope,
+    updatesFilter = updatesFilter ?.let { _ ->
+        {
+            (this as? BC) ?.run {
+                updatesFilter(it)
+            } ?: true
+        }
+    },
+    upstreamUpdatesFlow = updatesUpstreamFlow,
+    triggersHolder = triggersHolder
+) as BC
+
+/**
+ * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [updatesFilter] is provided and
+ * [CoroutineScope] as new [BehaviourContext.scope]
+ */
+suspend fun <T, BC : BehaviourContext> BC.doInContext(
+    stopOnCompletion: Boolean = true,
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): T {
+    return behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+}
+
 /**
  * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [updatesFilter] is provided and
  * [CoroutineScope] as new [BehaviourContext.scope]
@@ -125,21 +154,15 @@ suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
     triggersHolder: TriggersHolder = this.triggersHolder,
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
 ): T {
-    val newContext = copy(
-        scope = scope,
-        updatesFilter = updatesFilter ?.let { _ ->
-            {
-                (this as? BC) ?.run {
-                    updatesFilter(it)
-                } ?: true
-            }
-        },
-        upstreamUpdatesFlow = updatesUpstreamFlow,
-        triggersHolder = triggersHolder
-    ) as BC
-    return withContext(currentCoroutineContext()) {
-        newContext.behaviourContextReceiver().also { if (stopOnCompletion) newContext.stop() }
-    }
+    return createSubContext(
+        scope,
+        triggersHolder,
+        updatesUpstreamFlow,
+        updatesFilter
+    ).doInContext(
+        stopOnCompletion,
+        behaviourContextReceiver
+    )
 }
 
 suspend fun <T> BehaviourContext.doInSubContext(

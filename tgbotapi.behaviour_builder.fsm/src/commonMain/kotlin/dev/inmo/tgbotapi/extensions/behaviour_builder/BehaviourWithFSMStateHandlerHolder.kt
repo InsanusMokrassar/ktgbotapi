@@ -1,12 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
-import dev.inmo.micro_utils.coroutines.LinkedSupervisorScope
-import dev.inmo.micro_utils.coroutines.weakLaunch
 import dev.inmo.micro_utils.fsm.common.*
-import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlin.reflect.KClass
 
 /**
@@ -23,23 +17,27 @@ class BehaviourWithFSMStateHandlerHolder<I : O, O : State>(
     private val inputKlass: KClass<I>,
     private val strict: Boolean = false,
     private val delegateTo: BehaviourWithFSMStateHandler<I, O>
-) {
+) : CheckableHandlerHolder<O, O>, BehaviourWithFSMStateHandler<O, O> {
     /**
      * Check ability of [delegateTo] to handle this [state]
      *
      * @return When [state]::class exactly equals to [inputKlass] will always return true. Otherwise when [strict]
      * mode is disabled, will be used [KClass.isInstance] of [inputKlass] for checking
      */
-    fun checkHandleable(state: O): Boolean = state::class == inputKlass || (!strict && inputKlass.isInstance(state))
+    override suspend fun checkHandleable(state: O): Boolean = state::class == inputKlass || (!strict && inputKlass.isInstance(state))
 
     /**
      * Handling of state :)
      */
-    suspend fun BehaviourContextWithFSM<in O>.handleState(
-        state: O
-    ): O? = with(delegateTo) {
+    override suspend fun BehaviourContextWithFSM<in O>.handleState(state: O): O? = with(delegateTo) {
         @Suppress("UNCHECKED_CAST")
         handleState(state as I)
+    }
+
+    override suspend fun StatesMachine<in O>.handleState(state: O): O? = if (this is BehaviourContextWithFSM) {
+        handleState(state)
+    } else {
+        null
     }
 }
 
