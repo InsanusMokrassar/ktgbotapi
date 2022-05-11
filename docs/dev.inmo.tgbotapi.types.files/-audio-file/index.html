@@ -1,237 +1,279 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>AudioFile</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
 const savedDarkMode = storage ? JSON.parse(storage) : false
 if(savedDarkMode === true){
     document.getElementsByTagName("html")[0].classList.add("theme-dark")
 }</script>
-<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
-  <body>
-    <div class="navigation-wrapper" id="navigation-wrapper">
-      <div id="leftToggler"><span class="icon-toggler"></span></div>
-      <div class="library-name"><a href="../../../index.html">docs</a></div>
-      <div></div>
-      <div class="pull-right d-flex">
-        <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector common-like" data-active="" data-filter=":docs:dokkaHtml/commonMain">common</button></div>
-<button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
-      </div>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>docs</span>
+            </a>
     </div>
-    <div id="container">
-      <div id="leftColumn">
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+            <div class="filter-section" id="filter-section">
+                    <button class="platform-tag platform-selector common-like" data-active="" data-filter=":docs:dokkaHtml/commonMain">common</button>
+            </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div class="main-content" id="content" pageIds="docs::dev.inmo.tgbotapi.types.files/AudioFile///PointingToDeclaration//-1982836883">
-          <div class="breadcrumbs"><a href="../../../index.html">docs</a>/<a href="../index.html">dev.inmo.tgbotapi.types.files</a>/<a href="index.html">AudioFile</a></div>
-          <div class="cover ">
-            <h1 class="cover"><span>Audio</span><wbr></wbr><span><span>File</span></span></h1>
-            <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-              <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">AudioFile</a><span class="token punctuation">(</span>fileId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span>fileUniqueId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#1418693177%2FClasslikes%2F-1982836883">FileUniqueId</a><span class="token punctuation">, </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token punctuation">, </span>performer<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span>mimeType<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token punctuation">, </span>fileSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token punctuation">, </span>thumb<span class="token operator">: </span><a href="../-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token punctuation">)</span> : <a href="../../dev.inmo.tgbotapi.types.files.abstracts/-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../../dev.inmo.tgbotapi.types.files.abstracts/-custom-named-media-file/index.html">CustomNamedMediaFile</a>, <a href="../../dev.inmo.tgbotapi.types.files.abstracts/-mimed-media-file/index.html">MimedMediaFile</a>, <a href="../../dev.inmo.tgbotapi.types.files.abstracts/-thumbed-media-file/index.html">ThumbedMediaFile</a>, <a href="../../dev.inmo.tgbotapi.types.files.abstracts/-playable-media-file/index.html">PlayableMediaFile</a>, <a href="../../dev.inmo.tgbotapi.types.files.abstracts/-titled-media-file/index.html">TitledMediaFile</a>, <a href="../../dev.inmo.tgbotapi.CommonAbstracts/-performerable/index.html">Performerable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>            </div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Extensions">Extensions</button></div>
-            <div class="tabs-section-body">
-              <h2 class="">Properties</h2>
-              <div class="table" data-togglable="Properties"><a data-name="-1376068603%2FProperties%2F-1982836883" anchor-label="duration" id="-1376068603%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="duration.html">duration</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1376068603%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-1376068603%2FProperties%2F-1982836883" anchor-label="duration" id="-1376068603%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="duration.html">duration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1847680578%2FProperties%2F-1982836883" anchor-label="fileId" id="1847680578%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="file-id.html">fileId</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1847680578%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1847680578%2FProperties%2F-1982836883" anchor-label="fileId" id="1847680578%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="file-id.html">fileId</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1594155310%2FProperties%2F-1982836883" anchor-label="fileName" id="-1594155310%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="file-name.html">fileName</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1594155310%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-1594155310%2FProperties%2F-1982836883" anchor-label="fileName" id="-1594155310%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="file-name.html">fileName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-550458852%2FProperties%2F-1982836883" anchor-label="fileSize" id="-550458852%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="file-size.html">fileSize</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-550458852%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-550458852%2FProperties%2F-1982836883" anchor-label="fileSize" id="-550458852%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="file-size.html">fileSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="582578097%2FProperties%2F-1982836883" anchor-label="fileUniqueId" id="582578097%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="file-unique-id.html">fileUniqueId</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="582578097%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="582578097%2FProperties%2F-1982836883" anchor-label="fileUniqueId" id="582578097%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="file-unique-id.html">fileUniqueId</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#1418693177%2FClasslikes%2F-1982836883">FileUniqueId</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1580550475%2FProperties%2F-1982836883" anchor-label="mimeType" id="1580550475%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="mime-type.html">mimeType</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1580550475%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1580550475%2FProperties%2F-1982836883" anchor-label="mimeType" id="1580550475%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="mime-type.html">mimeType</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1617157075%2FProperties%2F-1982836883" anchor-label="performer" id="1617157075%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="performer.html">performer</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1617157075%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1617157075%2FProperties%2F-1982836883" anchor-label="performer" id="1617157075%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="performer.html">performer</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-2093460277%2FProperties%2F-1982836883" anchor-label="thumb" id="-2093460277%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="thumb.html">thumb</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2093460277%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-2093460277%2FProperties%2F-1982836883" anchor-label="thumb" id="-2093460277%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="thumb.html">thumb</a><span class="token operator">: </span><a href="../-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-2014176631%2FProperties%2F-1982836883" anchor-label="title" id="-2014176631%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="title.html">title</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2014176631%2FProperties%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-2014176631%2FProperties%2F-1982836883" anchor-label="title" id="-2014176631%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="title.html">title</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="tabbedcontent">Extensions</h2>
-              <div class="table" data-togglable="Extensions"><a data-name="188896063%2FExtensions%2F-1982836883" anchor-label="asVoiceFile" id="188896063%2FExtensions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="../as-voice-file.html"><span>as</span><wbr></wbr><span>Voice</span><wbr></wbr><span><span>File</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="188896063%2FExtensions%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html">AudioFile</a><span class="token punctuation">.</span><a href="../as-voice-file.html"><span class="token function">asVoiceFile</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-voice-file/index.html">VoiceFile</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-214659006%2FExtensions%2F-1982836883" anchor-label="toInputMediaAudio" id="-214659006%2FExtensions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="../../dev.inmo.tgbotapi.types.InputMedia/to-input-media-audio.html"><span>to</span><wbr></wbr><span>Input</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>Audio</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-214659006%2FExtensions%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html">AudioFile</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.types.InputMedia/to-input-media-audio.html"><span class="token function">toInputMediaAudio</span></a><span class="token punctuation">(</span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span>parseMode<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.ParseMode/-parse-mode/index.html">ParseMode</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>this.title<span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.InputMedia/-input-media-audio/index.html">InputMediaAudio</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html">AudioFile</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.types.InputMedia/to-input-media-audio.html"><span class="token function">toInputMediaAudio</span></a><span class="token punctuation">(</span>textSources<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.MessageEntity.textsources/index.html#-828955009%2FClasslikes%2F-1982836883">TextSourcesList</a><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>this.title<span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.InputMedia/-input-media-audio/index.html">InputMediaAudio</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="docs::dev.inmo.tgbotapi.types.files/AudioFile///PointingToDeclaration//-1982836883">
+  <div class="breadcrumbs"><a href="../../../index.html">docs</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.types.files</a><span class="delimiter">/</span><a href="index.html">AudioFile</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Audio</span><wbr></wbr><span><span>File</span></span></h1>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">AudioFile</a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>fileId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>fileUniqueId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#1418693177%2FClasslikes%2F-1982836883">FileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>performer<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>mimeType<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>fileSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>thumb<span class="token operator">: </span><a href="../-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-telegram-media-file/index.html">TelegramMediaFile</a>, <a href="../-custom-named-media-file/index.html">CustomNamedMediaFile</a>, <a href="../-mimed-media-file/index.html">MimedMediaFile</a>, <a href="../-thumbed-media-file/index.html">ThumbedMediaFile</a>, <a href="../-playable-media-file/index.html">PlayableMediaFile</a>, <a href="../-titled-media-file/index.html">TitledMediaFile</a>, <a href="../../dev.inmo.tgbotapi.abstracts/-performerable/index.html">Performerable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>    </div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Extensions">Extensions</button></div>
+    <div class="tabs-section-body">
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="-218776234%2FConstructors%2F-1982836883" anchor-label="AudioFile" id="-218776234%2FConstructors%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-audio-file.html"><span>Audio</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-218776234%2FConstructors%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-audio-file.html"><span class="token function">AudioFile</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fileId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fileUniqueId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#1418693177%2FClasslikes%2F-1982836883">FileUniqueId</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;performer<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;mimeType<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fileSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;thumb<span class="token operator">: </span><a href="../-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="-1376068603%2FProperties%2F-1982836883" anchor-label="duration" id="-1376068603%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="duration.html">duration</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1376068603%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-1376068603%2FProperties%2F-1982836883" anchor-label="duration" id="-1376068603%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="duration.html">duration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1847680578%2FProperties%2F-1982836883" anchor-label="fileId" id="1847680578%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="file-id.html">fileId</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1847680578%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1847680578%2FProperties%2F-1982836883" anchor-label="fileId" id="1847680578%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="file-id.html">fileId</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-file-id/index.html">FileId</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1594155310%2FProperties%2F-1982836883" anchor-label="fileName" id="-1594155310%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="file-name.html">fileName</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1594155310%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-1594155310%2FProperties%2F-1982836883" anchor-label="fileName" id="-1594155310%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="file-name.html">fileName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-550458852%2FProperties%2F-1982836883" anchor-label="fileSize" id="-550458852%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="file-size.html">fileSize</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-550458852%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-550458852%2FProperties%2F-1982836883" anchor-label="fileSize" id="-550458852%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="file-size.html">fileSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="582578097%2FProperties%2F-1982836883" anchor-label="fileUniqueId" id="582578097%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="file-unique-id.html">fileUniqueId</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="582578097%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="582578097%2FProperties%2F-1982836883" anchor-label="fileUniqueId" id="582578097%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="file-unique-id.html">fileUniqueId</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#1418693177%2FClasslikes%2F-1982836883">FileUniqueId</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1580550475%2FProperties%2F-1982836883" anchor-label="mimeType" id="1580550475%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="mime-type.html">mimeType</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1580550475%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1580550475%2FProperties%2F-1982836883" anchor-label="mimeType" id="1580550475%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="mime-type.html">mimeType</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.utils/-mime-type/index.html">MimeType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1617157075%2FProperties%2F-1982836883" anchor-label="performer" id="1617157075%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="performer.html">performer</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1617157075%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1617157075%2FProperties%2F-1982836883" anchor-label="performer" id="1617157075%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="performer.html">performer</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2093460277%2FProperties%2F-1982836883" anchor-label="thumb" id="-2093460277%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="thumb.html">thumb</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2093460277%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-2093460277%2FProperties%2F-1982836883" anchor-label="thumb" id="-2093460277%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="thumb.html">thumb</a><span class="token operator">: </span><a href="../-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2014176631%2FProperties%2F-1982836883" anchor-label="title" id="-2014176631%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="title.html">title</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2014176631%2FProperties%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-2014176631%2FProperties%2F-1982836883" anchor-label="title" id="-2014176631%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="title.html">title</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="tabbedcontent">Extensions</h2>
+      <div class="table" data-togglable="Extensions"><a data-name="188896063%2FExtensions%2F-1982836883" anchor-label="asVoiceFile" id="188896063%2FExtensions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../as-voice-file.html"><span>as</span><wbr></wbr><span>Voice</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="188896063%2FExtensions%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html">AudioFile</a><span class="token punctuation">.</span><a href="../as-voice-file.html"><span class="token function">asVoiceFile</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-voice-file/index.html">VoiceFile</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1567323984%2FExtensions%2F-1982836883" anchor-label="toTelegramMediaAudio" id="-1567323984%2FExtensions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../dev.inmo.tgbotapi.types.media/to-telegram-media-audio.html"><span>to</span><wbr></wbr><span>Telegram</span><wbr></wbr><span>Media</span><wbr></wbr><span><span>Audio</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1567323984%2FExtensions%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html">AudioFile</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.types.media/to-telegram-media-audio.html"><span class="token function">toTelegramMediaAudio</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;parseMode<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.message/-parse-mode/index.html">ParseMode</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>this.title</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.media/-telegram-media-audio/index.html">TelegramMediaAudio</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html">AudioFile</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.types.media/to-telegram-media-audio.html"><span class="token function">toTelegramMediaAudio</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">textSources<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.message.textsources/index.html#-1531751294%2FClasslikes%2F-1982836883">TextSourcesList</a><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>this.title</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.media/-telegram-media-audio/index.html">TelegramMediaAudio</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
+</body>
 </html>
-

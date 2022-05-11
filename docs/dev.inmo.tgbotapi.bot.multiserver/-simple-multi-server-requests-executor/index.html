@@ -1,130 +1,157 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>SimpleMultiServerRequestsExecutor</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
 const savedDarkMode = storage ? JSON.parse(storage) : false
 if(savedDarkMode === true){
     document.getElementsByTagName("html")[0].classList.add("theme-dark")
 }</script>
-<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
-  <body>
-    <div class="navigation-wrapper" id="navigation-wrapper">
-      <div id="leftToggler"><span class="icon-toggler"></span></div>
-      <div class="library-name"><a href="../../../index.html">docs</a></div>
-      <div></div>
-      <div class="pull-right d-flex">
-        <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector common-like" data-active="" data-filter=":docs:dokkaHtml/commonMain">common</button></div>
-<button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
-      </div>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>docs</span>
+            </a>
     </div>
-    <div id="container">
-      <div id="leftColumn">
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+            <div class="filter-section" id="filter-section">
+                    <button class="platform-tag platform-selector common-like" data-active="" data-filter=":docs:dokkaHtml/commonMain">common</button>
+            </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div class="main-content" id="content" pageIds="docs::dev.inmo.tgbotapi.bot.multiserver/SimpleMultiServerRequestsExecutor///PointingToDeclaration//-1982836883">
-          <div class="breadcrumbs"><a href="../../../index.html">docs</a>/<a href="../index.html">dev.inmo.tgbotapi.bot.multiserver</a>/<a href="index.html">SimpleMultiServerRequestsExecutor</a></div>
-          <div class="cover ">
-            <h1 class="cover"><span>Simple</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Server</span><wbr></wbr><span>Requests</span><wbr></wbr><span><span>Executor</span></span></h1>
-            <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-              <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SimpleMultiServerRequestsExecutor</a><span class="token punctuation">(</span>bots<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator">&gt;</span><span class="token punctuation">, </span>botSelector<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span>currentBotIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span>t<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token punctuation">, </span>onClose<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">)</span> : <a href="../../dev.inmo.tgbotapi.bot/-requests-executor/index.html">RequestsExecutor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">This type of <a href="../../dev.inmo.tgbotapi.bot/-requests-executor/index.html">RequestsExecutor</a> (aka <a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a>) has been created to aggregate several bots under the hood and make requests, for example, with changing of api url</p></div>            </div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
-            <div class="tabs-section-body">
-              <h2 class="">Parameters</h2>
-              <div data-togglable="Parameters">
-                <div class="platform-hinted WithExtraAttributes with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Parameters">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span><span>bots</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Bots which will be used to <a href="../../dev.inmo.tgbotapi.requests.abstracts/-request/index.html">execute</a>s</p></div></div></div></div></div><div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>bot</span><wbr></wbr><span><span>Selector</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">It is strategy by which the bot is selected for the execution. This lambda will receive <strong>-1</strong> when request execution just started and this call is first in context of one <a href="execute.html">execute</a>. By default, will select next <a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a> when called (or first when current index is last or -1)</p></div></div></div></div></div><div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>on</span><wbr></wbr><span><span>Close</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">This method will be called inside of <a href="close.html">close</a> method. By default, will close all <span data-unresolved-link="dev.inmo.tgbotapi.bot.multiserver/SimpleMultiServerRequestsExecutor/bots/#/PointingToDeclaration/">bots</span></p></div></div></div></div></div></div></div></div>                </div>
-              </div>
-              <h2 class="tabbedcontent">Constructors</h2>
-              <div class="table" data-togglable="Constructors"><a data-name="-1568770351%2FConstructors%2F-1982836883" anchor-label="SimpleMultiServerRequestsExecutor" id="-1568770351%2FConstructors%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue TabbedContent">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-simple-multi-server-requests-executor.html"><span>Simple</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Server</span><wbr></wbr><span>Requests</span><wbr></wbr><span><span>Executor</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1568770351%2FConstructors%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-simple-multi-server-requests-executor.html"><span class="token function">SimpleMultiServerRequestsExecutor</span></a><span class="token punctuation">(</span>bots<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator">&gt;</span><span class="token punctuation">, </span>botSelector<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span>currentBotIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span>t<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator"> = </span>{ i, _ -&gt;
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="docs::dev.inmo.tgbotapi.bot.multiserver/SimpleMultiServerRequestsExecutor///PointingToDeclaration//-1982836883">
+  <div class="breadcrumbs"><a href="../../../index.html">docs</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.bot.multiserver</a><span class="delimiter">/</span><a href="index.html">SimpleMultiServerRequestsExecutor</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Simple</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Server</span><wbr></wbr><span>Requests</span><wbr></wbr><span><span>Executor</span></span></h1>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SimpleMultiServerRequestsExecutor</a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;bots<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;botSelector<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span>currentBotIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span>t<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator"> = </span>{ i, _ -&gt;
         getOrElse(i + 1) { first() }
-    }<span class="token punctuation">, </span>onClose<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{
+    }<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;onClose<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{
         bots.forEach(TelegramBot::close)
-    }<span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Types</h2>
-              <div class="table" data-togglable="Types"><a data-name="-1258149338%2FClasslikes%2F-1982836883" anchor-label="Companion" id="-1258149338%2FClasslikes%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1258149338%2FClasslikes%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="1789297383%2FFunctions%2F-1982836883" anchor-label="close" id="1789297383%2FFunctions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="close.html"><span><span>close</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1789297383%2FFunctions%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1244267865%2FFunctions%2F-1982836883" anchor-label="execute" id="1244267865%2FFunctions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
-                <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="execute.html"><span><span>execute</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1244267865%2FFunctions%2F-1982836883"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="execute.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="execute.html"><span class="token function">execute</span></a><span class="token punctuation">(</span>request<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-request/index.html">Request</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="execute.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="execute.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Unsafe execution of incoming <a href="execute.html">request</a>. Can throw almost any exception. So, it is better to use something like <a href="../../dev.inmo.tgbotapi.extensions.utils.shortcuts/execute-async.html">dev.inmo.tgbotapi.extensions.utils.shortcuts.executeAsync</a> or <a href="../../dev.inmo.tgbotapi.extensions.utils.shortcuts/execute-unsafe.html">dev.inmo.tgbotapi.extensions.utils.shortcuts.executeUnsafe</a></p></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    }</span></span><span class="token punctuation">)</span> : <a href="../../dev.inmo.tgbotapi.bot/-requests-executor/index.html">RequestsExecutor</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">This type of <a href="../../dev.inmo.tgbotapi.bot/-requests-executor/index.html">RequestsExecutor</a> (aka <a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a>) has been created to aggregate several bots under the hood and make requests, for example, with changing of api url</p></div>    </div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
+    <div class="tabs-section-body">
+      <h2 class="">Parameters</h2>
+      <div data-togglable="Parameters">
+        <div class="platform-hinted WithExtraAttributes with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Parameters">
+          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span><span>bots</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Bots which will be used to <a href="../../dev.inmo.tgbotapi.requests.abstracts/-request/index.html">execute</a>s</p></div></div></div></div></div><div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>bot</span><wbr></wbr><span><span>Selector</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">It is strategy by which the bot is selected for the execution. This lambda will receive <strong>-1</strong> when request execution just started and this call is first in context of one <a href="execute.html">execute</a>. By default, will select next <a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a> when called (or first when current index is last or -1)</p></div></div></div></div></div><div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>on</span><wbr></wbr><span><span>Close</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">This method will be called inside of <a href="close.html">close</a> method. By default, will close all <span data-unresolved-link="dev.inmo.tgbotapi.bot.multiserver/SimpleMultiServerRequestsExecutor/bots/#/PointingToDeclaration/">bots</span></p></div></div></div></div></div></div></div></div>        </div>
+      </div>
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="-1568770351%2FConstructors%2F-1982836883" anchor-label="SimpleMultiServerRequestsExecutor" id="-1568770351%2FConstructors%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-simple-multi-server-requests-executor.html"><span>Simple</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Server</span><wbr></wbr><span>Requests</span><wbr></wbr><span><span>Executor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1568770351%2FConstructors%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-simple-multi-server-requests-executor.html"><span class="token function">SimpleMultiServerRequestsExecutor</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;bots<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;botSelector<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword"></span>currentBotIndex<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span>t<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.bot/index.html#-1167693203%2FClasslikes%2F-1982836883">TelegramBot</a><span class="token operator"> = </span>{ i, _ -&gt;
+        getOrElse(i + 1) { first() }
+    }<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;onClose<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{
+        bots.forEach(TelegramBot::close)
+    }</span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+      <h2 class="">Types</h2>
+      <div class="table" data-togglable="Types"><a data-name="-1258149338%2FClasslikes%2F-1982836883" anchor-label="Companion" id="-1258149338%2FClasslikes%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1258149338%2FClasslikes%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="1789297383%2FFunctions%2F-1982836883" anchor-label="close" id="1789297383%2FFunctions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="close.html"><span><span>close</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1789297383%2FFunctions%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1244267865%2FFunctions%2F-1982836883" anchor-label="execute" id="1244267865%2FFunctions%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a>
+        <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="execute.html"><span><span>execute</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1244267865%2FFunctions%2F-1982836883"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="execute.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="execute.html"><span class="token function">execute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.requests.abstracts/-request/index.html">Request</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="execute.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="execute.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Unsafe execution of incoming <a href="execute.html">request</a>. Can throw almost any exception. So, it is better to use something like <a href="../../dev.inmo.tgbotapi.extensions.utils.shortcuts/execute-async.html">dev.inmo.tgbotapi.extensions.utils.shortcuts.executeAsync</a> or <a href="../../dev.inmo.tgbotapi.extensions.utils.shortcuts/execute-unsafe.html">dev.inmo.tgbotapi.extensions.utils.shortcuts.executeUnsafe</a></p></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
+</body>
 </html>
-
