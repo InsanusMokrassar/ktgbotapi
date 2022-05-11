@@ -60,7 +60,6 @@ __All the `tgbotapi.extensions.*` packages have been removed__
     * `BehaviourWithFSMStateHandler` now extends `StatesHandler`
     * `BehaviourWithFSMStateHandlerHolder` now extends `CheckableHandlerHolder` and `BehaviourWithFSMStateHandler`
         * Function `checkHandleable` of `BehaviourWithFSMStateHandlerHolder` now is `suspend`
-    * 
 
 ## 0.38.23
 
