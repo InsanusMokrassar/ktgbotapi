@@ -1,16 +1,15 @@
 package dev.inmo.tgbotapi.types.buttons
 
-import dev.inmo.tgbotapi.types.inputFieldPlaceholderField
-import dev.inmo.tgbotapi.types.inputFieldPlaceholderLimit
+import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class ReplyKeyboardMarkup(
     val keyboard: Matrix<KeyboardButton>,
-    @SerialName("resize_keyboard")
+    @SerialName(resizeKeyboardField)
     val resizeKeyboard: Boolean? = null,
-    @SerialName("one_time_keyboard")
+    @SerialName(oneTimeKeyboardField)
     val oneTimeKeyboard: Boolean? = null,
     @SerialName(inputFieldPlaceholderField)
     val inputFieldPlaceholder: String? = null,
