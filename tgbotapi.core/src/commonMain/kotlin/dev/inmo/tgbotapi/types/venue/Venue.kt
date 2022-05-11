@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.venue
 
-import dev.inmo.tgbotapi.CommonAbstracts.CommonVenueData
-import dev.inmo.tgbotapi.CommonAbstracts.Locationed
+import dev.inmo.tgbotapi.abstracts.CommonVenueData
+import dev.inmo.tgbotapi.abstracts.Locationed
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import kotlinx.serialization.SerialName

@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.types.ChatMember.abstracts
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.UntilDate
-import kotlinx.serialization.Serializable
-
-@Serializable(ChatMemberSerializer::class)
-interface BannedChatMember : ChatMember, UntilDate
+@Deprecated("BannedChatMember", ReplaceWith("BannedChatMember", "dev.inmo.tgbotapi.types.chat.member.BannedChatMember"))
+typealias BannedChatMember = dev.inmo.tgbotapi.types.chat.member.BannedChatMember

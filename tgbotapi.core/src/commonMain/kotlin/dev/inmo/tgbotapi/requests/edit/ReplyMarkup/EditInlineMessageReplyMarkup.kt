@@ -1,19 +1,4 @@
 package dev.inmo.tgbotapi.requests.edit.ReplyMarkup
 
-import dev.inmo.tgbotapi.requests.edit.abstracts.EditInlineMessage
-import dev.inmo.tgbotapi.requests.edit.abstracts.EditReplyMessage
-import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import kotlinx.serialization.*
-
-@Serializable
-data class EditInlineMessageReplyMarkup(
-    @SerialName(inlineMessageIdField)
-    override val inlineMessageId: InlineMessageIdentifier,
-    @SerialName(replyMarkupField)
-    override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditInlineMessage, EditReplyMessage {
-    override fun method(): String = editMessageReplyMarkupMethod
-    override val requestSerializer: SerializationStrategy<*>
-        get() = serializer()
-}
+@Deprecated("Replaced", ReplaceWith("EditInlineMessageReplyMarkup", "dev.inmo.tgbotapi.requests.edit.reply_markup.EditInlineMessageReplyMarkup"))
+typealias EditInlineMessageReplyMarkup = dev.inmo.tgbotapi.requests.edit.reply_markup.EditInlineMessageReplyMarkup

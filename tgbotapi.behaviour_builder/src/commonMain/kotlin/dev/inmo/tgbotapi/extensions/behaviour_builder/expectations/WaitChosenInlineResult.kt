@@ -33,7 +33,7 @@ private suspend inline fun <reified T : ChosenInlineResult> BehaviourContext.wai
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<T>? = null,
+    filter: SimpleFilter<T>? = null,
     noinline mapper: ChosenInlineResultMapper<T>? = null
 ) : List<T> = this@waitChosenInlineResults.waitChosenInlineResultsUpdates<T>(
     count,

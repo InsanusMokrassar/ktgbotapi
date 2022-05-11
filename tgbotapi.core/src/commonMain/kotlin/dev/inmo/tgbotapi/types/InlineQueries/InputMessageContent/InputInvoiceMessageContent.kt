@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
-import dev.inmo.tgbotapi.CommonAbstracts.CommonSendInvoiceData
+import dev.inmo.tgbotapi.abstracts.CommonSendInvoiceData
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer

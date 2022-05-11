@@ -1,5 +1,8 @@
 package dev.inmo.tgbotapi.utils
 
+import dev.inmo.micro_utils.crypto.hex
+import dev.inmo.micro_utils.crypto.hmacSha256
+
 const val telegramBotAPIDefaultUrl = "https://api.telegram.org"
 
 private inline val String.withoutLastSlash: String

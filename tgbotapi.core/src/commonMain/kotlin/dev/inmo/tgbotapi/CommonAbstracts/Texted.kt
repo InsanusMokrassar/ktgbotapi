@@ -1,29 +1,18 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
-import dev.inmo.tgbotapi.types.ParseMode.ParseMode
+@Deprecated("Replaced", ReplaceWith("Texted", "dev.inmo.tgbotapi.abstracts.Texted"))
+typealias Texted = dev.inmo.tgbotapi.abstracts.Texted
+@Deprecated("Replaced", ReplaceWith("TextedWithTextSources", "dev.inmo.tgbotapi.abstracts.TextedWithTextSources"))
+typealias TextedWithTextSources = dev.inmo.tgbotapi.abstracts.TextedWithTextSources
 
-interface Texted {
-    val text: String?
-}
-interface TextedWithTextSources : Texted {
-    /**
-     * Full list of [TextSource]s
-     */
-    val textSources: List<TextSource>?
-}
+@Deprecated("Replaced", ReplaceWith("ParsableOutput", "dev.inmo.tgbotapi.abstracts.ParsableOutput"))
+typealias ParsableOutput = dev.inmo.tgbotapi.abstracts.ParsableOutput
 
-interface ParsableOutput : Texted {
-    val parseMode: ParseMode?
-}
+@Deprecated("Replaced", ReplaceWith("EntitiesOutput", "dev.inmo.tgbotapi.abstracts.EntitiesOutput"))
+typealias EntitiesOutput = dev.inmo.tgbotapi.abstracts.EntitiesOutput
 
-interface EntitiesOutput : TextedWithTextSources {
-    val entities: List<TextSource>?
-        get() = textSources
-}
+@Deprecated("Replaced", ReplaceWith("TextedOutput", "dev.inmo.tgbotapi.abstracts.TextedOutput"))
+typealias TextedOutput = dev.inmo.tgbotapi.abstracts.TextedOutput
 
-interface TextedOutput : ParsableOutput, EntitiesOutput
-
-interface TextedInput : TextedWithTextSources {
-    override val textSources: List<TextSource>
-}
+@Deprecated("Replaced", ReplaceWith("TextedInput", "dev.inmo.tgbotapi.abstracts.TextedInput"))
+typealias TextedInput = dev.inmo.tgbotapi.abstracts.TextedInput

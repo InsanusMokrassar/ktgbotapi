@@ -10,11 +10,11 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy
 import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.updateshandlers.webhook.WebhookPrivateKeyConfig
-import io.ktor.application.call
-import io.ktor.request.receiveText
-import io.ktor.response.respond
-import io.ktor.routing.*
+import io.ktor.server.application.call
 import io.ktor.server.engine.*
+import io.ktor.server.request.receiveText
+import io.ktor.server.response.respond
+import io.ktor.server.routing.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.concurrent.Executors

@@ -1,27 +1,18 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.extensions.makeString
-import dev.inmo.tgbotapi.utils.internal.*
-import kotlinx.serialization.Serializable
-
 /**
  * @see italic
  */
-@Serializable
-data class ItalicTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String,
-    override val subsources: TextSourcesList
-) : MultilevelTextSource {
-    override val markdown: String by lazy { source.italicMarkdown() }
-    override val markdownV2: String by lazy { italicMarkdownV2() }
-    override val html: String by lazy { italicHTML() }
-}
+@Deprecated("Replaced", ReplaceWith("ItalicTextSource", "dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource"))
+typealias ItalicTextSource = dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun italic(parts: TextSourcesList) = ItalicTextSource(parts.makeString(), parts)
+@Deprecated("Replaced", ReplaceWith("italic", "dev.inmo.tgbotapi.types.message.textsources.italic"))
+inline fun italic(parts: TextSourcesList) = dev.inmo.tgbotapi.types.message.textsources.italic(parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun italic(vararg parts: TextSource) = italic(parts.toList())
+@Deprecated("Replaced", ReplaceWith("italic", "dev.inmo.tgbotapi.types.message.textsources.italic"))
+inline fun italic(vararg parts: TextSource) = dev.inmo.tgbotapi.types.message.textsources.italic(*parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun italic(text: String) = italic(regular(text))
+@Deprecated("Replaced", ReplaceWith("italic", "dev.inmo.tgbotapi.types.message.textsources.italic"))
+inline fun italic(text: String) = dev.inmo.tgbotapi.types.message.textsources.italic(text)
 

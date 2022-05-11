@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.api.games
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.games.SetGameScoreByInlineMessageId
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.CommonUser
 
 suspend fun TelegramBot.setGameScore(
     userId: UserId,

@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.DisableNotification
-import dev.inmo.tgbotapi.CommonAbstracts.types.ReplyMessageId
+import dev.inmo.tgbotapi.abstracts.types.DisableNotification
+import dev.inmo.tgbotapi.abstracts.types.ReplyMessageId
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup

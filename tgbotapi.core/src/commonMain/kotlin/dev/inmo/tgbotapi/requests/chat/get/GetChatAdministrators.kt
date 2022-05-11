@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.requests.chat.get
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.ChatRequest
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.ChatMember.abstracts.AdministratorChatMember
-import dev.inmo.tgbotapi.types.ChatMember.abstracts.AdministratorChatMemberSerializer
+import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
+import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberSerializer
 import dev.inmo.tgbotapi.types.chatIdField
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer

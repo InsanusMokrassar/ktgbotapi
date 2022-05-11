@@ -2,10 +2,9 @@ package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InputMedia.InputMediaVideo
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.ParseMode.ParseMode
-import dev.inmo.tgbotapi.types.files.abstracts.*
+import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.utils.MimeType
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -33,10 +32,10 @@ data class VideoFile(
 ) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun VideoFile.toInputMediaVideo(
+inline fun VideoFile.toTelegramMediaVideo(
     text: String? = null,
     parseMode: ParseMode? = null
-) = InputMediaVideo(
+) = TelegramMediaVideo(
     fileId,
     text,
     parseMode,
@@ -47,9 +46,9 @@ inline fun VideoFile.toInputMediaVideo(
 )
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun VideoFile.toInputMediaVideo(
+inline fun VideoFile.toTelegramMediaVideo(
     textSources: TextSourcesList
-) = InputMediaVideo(
+) = TelegramMediaVideo(
     fileId,
     textSources,
     width,
@@ -57,3 +56,16 @@ inline fun VideoFile.toInputMediaVideo(
     duration,
     thumb ?.fileId
 )
+
+@Suppress("NOTHING_TO_INLINE")
+@Deprecated("Renamed", ReplaceWith("toTelegramMediaVideo", "dev.inmo.tgbotapi.types.files.toTelegramMediaVideo"))
+inline fun VideoFile.toInputMediaVideo(
+    text: String? = null,
+    parseMode: ParseMode? = null
+) = toTelegramMediaVideo(text, parseMode)
+
+@Suppress("NOTHING_TO_INLINE")
+@Deprecated("Renamed", ReplaceWith("toTelegramMediaVideo", "dev.inmo.tgbotapi.types.files.toTelegramMediaVideo"))
+inline fun VideoFile.toInputMediaVideo(
+    textSources: TextSourcesList
+) = toTelegramMediaVideo(textSources)

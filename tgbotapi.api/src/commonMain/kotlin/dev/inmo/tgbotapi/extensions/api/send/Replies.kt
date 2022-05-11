@@ -9,23 +9,21 @@ import dev.inmo.tgbotapi.extensions.api.send.polls.sendRegularPoll
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.rawSendingMediaGroupsWarning
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InputMedia.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSource
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.ParseMode.ParseMode
+import dev.inmo.tgbotapi.types.media.*
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
+import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
-import dev.inmo.tgbotapi.types.files.abstracts.TelegramMediaFile
-import dev.inmo.tgbotapi.types.files.sticker.Sticker
+import dev.inmo.tgbotapi.types.files.TelegramMediaFile
+import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.message.content.media.*
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
@@ -525,7 +523,7 @@ suspend inline fun TelegramBot.reply(
 @RiskFeature(rawSendingMediaGroupsWarning)
 suspend inline fun TelegramBot.replyWithMediaGroup(
     to: Message,
-    media: List<MediaGroupMemberInputMedia>,
+    media: List<MediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
@@ -533,7 +531,7 @@ suspend inline fun TelegramBot.replyWithMediaGroup(
 
 suspend inline fun TelegramBot.replyWithPlaylist(
     to: Message,
-    media: List<AudioMediaGroupMemberInputMedia>,
+    media: List<AudioMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
@@ -541,7 +539,7 @@ suspend inline fun TelegramBot.replyWithPlaylist(
 
 suspend inline fun TelegramBot.replyWithDocuments(
     to: Message,
-    media: List<DocumentMediaGroupMemberInputMedia>,
+    media: List<DocumentMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
@@ -549,7 +547,7 @@ suspend inline fun TelegramBot.replyWithDocuments(
 
 suspend inline fun TelegramBot.replyWithGallery(
     to: Message,
-    media: List<VisualMediaGroupMemberInputMedia>,
+    media: List<VisualMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null

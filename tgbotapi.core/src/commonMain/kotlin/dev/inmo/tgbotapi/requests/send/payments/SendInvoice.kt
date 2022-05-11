@@ -1,13 +1,13 @@
 package dev.inmo.tgbotapi.requests.send.payments
 
-import dev.inmo.tgbotapi.CommonAbstracts.CommonSendInvoiceData
-import dev.inmo.tgbotapi.CommonAbstracts.types.*
+import dev.inmo.tgbotapi.abstracts.CommonSendInvoiceData
+import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
-import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
+import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency

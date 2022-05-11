@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
     markerFactory: MarkerFactory<in T, Any>,
-    noinline initialFilter: SimpleFilter<T>? = null,
+    initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
     noinline updateToData: (Update) -> List<T>?
@@ -21,12 +21,9 @@ internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
     scope,
     markerFactory::invoke
 ) { triggerData ->
-    val scope = LinkedSupervisorScope()
-    doInSubContextWithUpdatesFilter(
+    createSubContextAndDoWithUpdatesFilter(
         updatesFilter = subcontextUpdatesFilter ?.toOneType(triggerData),
-        stopOnCompletion = false,
-        updatesUpstreamFlow = allUpdatesFlow.accumulatorFlow(scope),
-        scope = scope
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerData)
     }

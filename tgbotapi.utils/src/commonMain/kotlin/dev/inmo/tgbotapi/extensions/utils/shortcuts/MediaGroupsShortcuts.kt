@@ -2,11 +2,11 @@ package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
 import dev.inmo.tgbotapi.requests.send.media.SendMediaGroup
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.ForwardInfo
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 
 val List<CommonMessage<out MediaGroupContent>>.forwardInfo: ForwardInfo?
     get() = firstOrNull() ?.forwardInfo
@@ -33,7 +33,7 @@ fun List<CommonMessage<MediaGroupContent>>.createResend(
     replyTo: MessageIdentifier? = null
 ) = SendMediaGroup<MediaGroupContent>(
     chatId,
-    map { it.content.toMediaGroupMemberInputMedia() },
+    map { it.content.toMediaGroupMemberTelegramMedia() },
     disableNotification,
     protectContent,
     replyTo

@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.CallbackQuery.*
+import dev.inmo.tgbotapi.types.queries.callback.*
 import kotlinx.coroutines.flow.toList
 
 typealias CallbackQueryMapper<T> = suspend T.() -> T?
@@ -35,7 +35,7 @@ private suspend inline fun <reified T : CallbackQuery> BehaviourContext.waitCall
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<T>? = null,
+    filter: SimpleFilter<T>? = null,
     noinline mapper: CallbackQueryMapper<T>? = null
 ) : List<T> = waitCallbackQueries<T>(
     count,

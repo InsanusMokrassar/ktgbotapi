@@ -3,13 +3,13 @@ package dev.inmo.tgbotapi.extensions.api.send.media
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.media.*
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.InputMedia.*
+import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.MessageIdentifier
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
-import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.AudioContent
-import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
+import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.AudioContent
+import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlin.jvm.JvmName
 
@@ -19,7 +19,7 @@ import kotlin.jvm.JvmName
 @RiskFeature(rawSendingMediaGroupsWarning)
 suspend fun TelegramBot.sendMediaGroup(
     chatId: ChatIdentifier,
-    media: List<MediaGroupMemberInputMedia>,
+    media: List<MediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -36,7 +36,7 @@ suspend fun TelegramBot.sendMediaGroup(
 @RiskFeature(rawSendingMediaGroupsWarning)
 suspend fun TelegramBot.sendMediaGroup(
     chat: Chat,
-    media: List<MediaGroupMemberInputMedia>,
+    media: List<MediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -58,7 +58,7 @@ suspend fun TelegramBot.sendMediaGroup(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = sendMediaGroup(
-    chatId, media.map { it.toMediaGroupMemberInputMedia() }, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply
+    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply
 )
 
 /**
@@ -82,7 +82,7 @@ suspend fun TelegramBot.sendMediaGroup(
  */
 suspend fun TelegramBot.sendPlaylist(
     chatId: ChatIdentifier,
-    media: List<AudioMediaGroupMemberInputMedia>,
+    media: List<AudioMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -98,7 +98,7 @@ suspend fun TelegramBot.sendPlaylist(
  */
 suspend fun TelegramBot.sendPlaylist(
     chat: Chat,
-    media: List<AudioMediaGroupMemberInputMedia>,
+    media: List<AudioMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -119,7 +119,7 @@ suspend fun TelegramBot.sendPlaylist(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = sendPlaylist(
-    chatId, media.map { it.toMediaGroupMemberInputMedia() }, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply
+    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply
 )
 
 /**
@@ -142,7 +142,7 @@ suspend fun TelegramBot.sendPlaylist(
  */
 suspend fun TelegramBot.sendDocumentsGroup(
     chatId: ChatIdentifier,
-    media: List<DocumentMediaGroupMemberInputMedia>,
+    media: List<DocumentMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -158,7 +158,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
  */
 suspend fun TelegramBot.sendDocumentsGroup(
     chat: Chat,
-    media: List<DocumentMediaGroupMemberInputMedia>,
+    media: List<DocumentMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -179,7 +179,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = sendDocumentsGroup(
-    chatId, media.map { it.toMediaGroupMemberInputMedia() }, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply
+    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply
 )
 
 /**
@@ -202,7 +202,7 @@ suspend fun TelegramBot.sendDocumentsGroup(
  */
 suspend fun TelegramBot.sendVisualMediaGroup(
     chatId: ChatIdentifier,
-    media: List<VisualMediaGroupMemberInputMedia>,
+    media: List<VisualMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -218,7 +218,7 @@ suspend fun TelegramBot.sendVisualMediaGroup(
  */
 suspend fun TelegramBot.sendVisualMediaGroup(
     chat: Chat,
-    media: List<VisualMediaGroupMemberInputMedia>,
+    media: List<VisualMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -239,7 +239,7 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = sendVisualMediaGroup(
-    chatId, media.map { it.toMediaGroupMemberInputMedia() }, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply
+    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply
 )
 
 /**

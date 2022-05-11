@@ -1,5 +1,66 @@
 # TelegramBotAPI changelog
 
+## 1.0.0
+
+__All the `tgbotapi.extensions.*` packages have been removed__
+
+* `Versions`:
+    * `Kotlin`: `1.6.10` -> `1.6.21`
+    * `Ktor`: `1.6.8` -> `2.0.1`
+    * `MicroUtils`: `0.9.24` -> `0.10.2`
+* `Core`:
+    * **`Ktor` package renamed. Migration:** `dev.inmo.tgbotapi.bot.Ktor` -> `dev.inmo.tgbotapi.bot.ktor`
+    * **`CallbackQuery` package renamed. Migration:** `dev.inmo.tgbotapi.types.CallbackQuery([\s\\.])` -> `dev.inmo.tgbotapi.types.queries.callback$1`
+    * **`ChatMember` package renamed. Migration:** `dev.inmo.tgbotapi.types.ChatMember([\s\\.])` -> `dev.inmo.tgbotapi.types.chat.member$1`
+    * **`ChatAdministratorRightsImpl` replaced. Migration:** `dev.inmo.tgbotapi.types.ChatAdministratorRightsImpl` -> `dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRightsImpl`
+    * **`chat.abstract.extended` replaced. Migration:** `dev.inmo.tgbotapi.types.chat.abstract.extended` -> `dev.inmo.tgbotapi.types.chat.member.chat`
+    * **`chat.abstract` replaced. Migration:** `dev.inmo.tgbotapi.types.chat.abstract` -> `dev.inmo.tgbotapi.types.chat.member.chat`
+    * **`chat.extended` replaced. Migration:** `dev.inmo.tgbotapi.types.chat.extended` -> `dev.inmo.tgbotapi.types.chat.member.chat`
+    * **User interfaces have been fully replaced**:
+        * `dev.inmo.tgbotapi.types.User` -> `dev.inmo.tgbotapi.types.chat.User`
+        * `dev.inmo.tgbotapi.types.CommonUser` -> `dev.inmo.tgbotapi.types.chat.CommonUser`
+        * `dev.inmo.tgbotapi.types.ExtendedUser` -> `dev.inmo.tgbotapi.types.chat.ExtendedUser`
+        * `dev.inmo.tgbotapi.types.Bot` -> `dev.inmo.tgbotapi.types.chat.Bot`
+        * `dev.inmo.tgbotapi.types.CommonBot` -> `dev.inmo.tgbotapi.types.chat.CommonBot`
+        * `dev.inmo.tgbotapi.types.ExtendedBot` -> `dev.inmo.tgbotapi.types.chat.ExtendedBot`
+        * `dev.inmo.tgbotapi.types.UserSerializer` -> `dev.inmo.tgbotapi.types.chat.UserSerializer`
+    * **All `InputMedia` has been renamed as `TelegramMedia`. Migration:** `InputMedia` -> `TelegramMedia`
+        * `dev.inmo.tgbotapi.types.InputMedia` -> `dev.inmo.tgbotapi.types.media`
+    * **Replaces of `MessageContent`. Migrations:**
+        * `dev.inmo.tgbotapi.types.message.content.abstracts` -> `dev.inmo.tgbotapi.types.message.content`
+        * `dev.inmo.tgbotapi.types.message.content.media` -> `dev.inmo.tgbotapi.types.message.content`
+    * **Replaces of `TextSource`s. Migrations:** `dev.inmo.tgbotapi.types.MessageEntity.textsources` -> `dev.inmo.tgbotapi.types.message.textsources`
+    * **Replaces of `ParseMode`s. Migrations:** `dev.inmo.tgbotapi.types.ParseMode` -> `dev.inmo.tgbotapi.types.message`
+    * **Replaces of `MediaGroupUpdate`s. Migrations:** `dev.inmo.tgbotapi.types.update.MediaGroupUpdates` -> `dev.inmo.tgbotapi.types.update.media_group`
+    * **`InvoiceContent` has been replaced: `dev.inmo.tgbotapi.types.message.payments.InvoiceContent` -> `dev.inmo.tgbotapi.types.message.content.InvoiceContent`**
+    * **`PossiblySentViaBotCommonMessage` has been replaced: `dev.inmo.tgbotapi.types.message.content.abstracts.PossiblySentViaBotCommonMessage` -> `dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage`**
+    * **Edit live location requests have been replaced:**
+        * `dev.inmo.tgbotapi.requests.edit.LiveLocation` -> `dev.inmo.tgbotapi.requests.edit.location.live`
+        * `dev.inmo.tgbotapi.extensions.api.edit.LiveLocation` -> `dev.inmo.tgbotapi.extensions.api.edit.location.live`
+    * **Edit reply markup requests have been replaced:**
+        * `dev.inmo.tgbotapi.requests.edit.ReplyMarkup` -> `dev.inmo.tgbotapi.requests.edit.reply_markup`
+        * `dev.inmo.tgbotapi.extensions.api.edit.ReplyMarkup` -> `dev.inmo.tgbotapi.extensions.api.edit.reply_markup`
+    * **Common abstracts have been replaced: `dev.inmo.tgbotapi.CommonAbstracts` -> `dev.inmo.tgbotapi.abstracts`**
+    * Constructor of `UnknownInlineKeyboardButton` is not internal and can be created with any `json` ([#563](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/563))
+    * All the interfaces from `dev.inmo.tgbotapi.types.files.abstracts` have been replaced to `dev.inmo.tgbotapi.types.files` and converted to sealed ([#550](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/550))
+    * `PassportFile` has been replaced to `dev.inmo.tgbotapi.types.files`
+    * `StorageFile` has been deprecated (fix of [#556](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/556))
+        * `MultipartFile` do not require `StorageFile` anymore
+        * `InputFile` companion got functions to simplify creation of `InputFile`s
+        * New typealias `FileUrl` (represents `FileId` but declare that they are the same)
+* `BehaviourBuilder`:
+    * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
+    * New extension `BehaviourContext#createSubContext`. It uses separated `AccumulatorFlow` and will retrieve updates by itself
+    * New extension `BehaviourContext#doInContext`
+    * Extension `BehaviourContext#doInSubContextWithUpdatesFilter` has been renamed to `BehaviourContext#createSubContextAndDoWithUpdatesFilter`
+    * Extension `BehaviourContext#doInSubContext` has been deprecated
+* `BehaviourContextWithFSM`:
+    * `launchStateHandling` lost its parameter `contextUpdatesFlow: Flow`
+    * `handleState` of `BehaviourContextWithFSM` now will get/create sub context for the state and launch handling in it
+    * `BehaviourWithFSMStateHandler` now extends `StatesHandler`
+    * `BehaviourWithFSMStateHandlerHolder` now extends `CheckableHandlerHolder` and `BehaviourWithFSMStateHandler`
+        * Function `checkHandleable` of `BehaviourWithFSMStateHandlerHolder` now is `suspend`
+
 ## 0.38.23
 
 * `BehaviourHandler`:

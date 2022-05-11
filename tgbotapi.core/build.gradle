@@ -55,6 +55,7 @@ kotlin {
                 api "dev.inmo:micro_utils.serialization.base64:$micro_utils_version"
                 api "dev.inmo:micro_utils.serialization.encapsulator:$micro_utils_version"
                 api "dev.inmo:micro_utils.serialization.typed_serializer:$micro_utils_version"
+                api "dev.inmo:micro_utils.ktor.common:$micro_utils_version"
                 api "dev.inmo:micro_utils.language_codes:$micro_utils_version"
 
                 api "io.ktor:ktor-client-core:$ktor_version"
@@ -64,7 +65,7 @@ kotlin {
             dependencies {
                 implementation kotlin('test-common')
                 implementation kotlin('test-annotations-common')
-                implementation project(":tgbotapi.extensions.utils")
+                implementation project(":tgbotapi.utils")
             }
         }
 

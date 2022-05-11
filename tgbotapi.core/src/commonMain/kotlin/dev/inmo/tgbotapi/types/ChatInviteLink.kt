@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.types
 
 import com.soywiz.klock.DateTime
-import dev.inmo.tgbotapi.CommonAbstracts.WithUser
+import dev.inmo.tgbotapi.abstracts.WithUser
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -57,10 +58,6 @@ sealed interface ChatInviteLink : WithUser {
 
     override val user: User
         get() = creator
-
-    companion object {
-        fun serializer(): KSerializer<ChatInviteLink> = ChatInviteLinkSerializer
-    }
 }
 
 /**
@@ -70,10 +67,6 @@ sealed interface ChatInviteLink : WithUser {
 sealed interface SecondaryChatInviteLink : ChatInviteLink {
     override val isPrimary: Boolean
         get() = false
-
-    companion object {
-        fun serializer(): KSerializer<SecondaryChatInviteLink> = ChatInviteLinkSerializer as KSerializer<SecondaryChatInviteLink>
-    }
 }
 
 /**

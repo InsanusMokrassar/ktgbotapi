@@ -1,11 +1,6 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
-import dev.inmo.tgbotapi.types.chat.abstracts.UnknownChatType
-import dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedChat
-import dev.inmo.tgbotapi.types.chat.abstracts.extended.UnknownExtendedChat
-import dev.inmo.tgbotapi.types.chat.extended.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
@@ -119,5 +114,42 @@ object ExtendedChatSerializer : KSerializer<ExtendedChat> {
     }
 }
 
+@RiskFeature
+object UserSerializer : KSerializer<User> {
+    private val internalSerializer = JsonObject.serializer()
+    override val descriptor: SerialDescriptor = internalSerializer.descriptor
+    override fun deserialize(decoder: Decoder): User {
+        val asJson = internalSerializer.deserialize(decoder)
 
+        return when {
+            asJson[isBotField] ?.jsonPrimitive ?.booleanOrNull != true -> nonstrictJsonFormat.decodeFromJsonElement(
+                CommonUser.serializer(),
+                asJson
+            )
+            else -> {
+                if ((asJson[canJoinGroupsField]
+                        ?: asJson[canReadAllGroupMessagesField]
+                        ?: asJson[supportInlineQueriesField]) != null
+                ) {
+                    nonstrictJsonFormat.decodeFromJsonElement(
+                        ExtendedBot.serializer(),
+                        asJson
+                    )
+                } else {
+                    nonstrictJsonFormat.decodeFromJsonElement(
+                        CommonBot.serializer(),
+                        asJson
+                    )
+                }
+            }
+        }
+    }
 
+    override fun serialize(encoder: Encoder, value: User) {
+        when (value) {
+            is CommonUser -> CommonUser.serializer().serialize(encoder, value)
+            is CommonBot -> CommonBot.serializer().serialize(encoder, value)
+            is ExtendedBot -> ExtendedBot.serializer().serialize(encoder, value)
+        }
+    }
+}

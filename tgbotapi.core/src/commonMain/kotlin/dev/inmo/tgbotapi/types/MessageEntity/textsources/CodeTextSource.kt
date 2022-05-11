@@ -1,20 +1,13 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.internal.*
-import kotlinx.serialization.Serializable
+import dev.inmo.tgbotapi.utils.internal.code
 
 /**
  * @see code
  */
-@Serializable
-data class CodeTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String
-) : TextSource {
-    override val markdown: String by lazy { source.codeMarkdown() }
-    override val markdownV2: String by lazy { source.codeMarkdownV2() }
-    override val html: String by lazy { source.codeHTML() }
-}
+@Deprecated("Replaced", ReplaceWith("CodeTextSource", "dev.inmo.tgbotapi.types.message.textsources.CodeTextSource"))
+typealias CodeTextSource = dev.inmo.tgbotapi.types.message.textsources.CodeTextSource
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun code(code: String) = CodeTextSource(code)
+@Deprecated("Replaced", ReplaceWith("code", "dev.inmo.tgbotapi.types.message.textsources.code"))
+inline fun code(code: String) = dev.inmo.tgbotapi.types.message.textsources.code(code)

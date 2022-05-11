@@ -1,5 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-interface Performerable {
-    val performer: String?
-}
+@Deprecated("Replaced", ReplaceWith("Performerable", "dev.inmo.tgbotapi.abstracts.Performerable"))
+typealias Performerable = dev.inmo.tgbotapi.abstracts.Performerable

@@ -194,6 +194,13 @@ const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
 const val requestPollField = "request_poll"
 
+const val fileNameField = "file_name"
+const val mimeTypeField = "mime_type"
+const val fileIdField = "file_id"
+const val fileSizeField = "file_size"
+const val fileDateField = "file_date"
+const val filePathField = "file_path"
+
 
 const val requestWriteAccessField = "request_write_access"
 
@@ -384,6 +391,8 @@ const val requireShippingAddressField = "need_shipping_address"
 const val shouldSendPhoneNumberToProviderField = "send_phone_number_to_provider"
 const val shouldSendEmailToProviderField = "send_email_to_provider"
 
+const val resizeKeyboardField = "resize_keyboard"
+const val oneTimeKeyboardField = "one_time_keyboard"
 const val inputFieldPlaceholderField = "input_field_placeholder"
 
 const val priceDependOnShipAddressField = "is_flexible"

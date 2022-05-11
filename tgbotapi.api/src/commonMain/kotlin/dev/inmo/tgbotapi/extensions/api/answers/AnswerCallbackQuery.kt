@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.answers
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.answers.AnswerCallbackQuery
-import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
 
 suspend fun TelegramBot.answerCallbackQuery(

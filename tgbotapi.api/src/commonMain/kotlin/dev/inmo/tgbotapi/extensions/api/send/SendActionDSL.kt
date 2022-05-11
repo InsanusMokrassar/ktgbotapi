@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendAction
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.actions.*
-import dev.inmo.tgbotapi.types.chat.abstracts.Chat
+import dev.inmo.tgbotapi.types.chat.Chat
 import kotlinx.coroutines.*
 import kotlin.contracts.*
 import kotlin.coroutines.coroutineContext

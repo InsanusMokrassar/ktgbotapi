@@ -1,12 +1,11 @@
 package dev.inmo.tgbotapi.bot.multiserver
 
-import dev.inmo.tgbotapi.bot.Ktor.KtorRequestsExecutorBuilder
-import dev.inmo.tgbotapi.bot.Ktor.telegramBot
+import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
+import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
-import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.*
 import kotlin.js.JsName
 import kotlin.jvm.JvmName

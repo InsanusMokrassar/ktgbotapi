@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.types.update
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.CallbackQuery.RawCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.RawCallbackQuery
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.RawChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.query.RawInlineQuery
+import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
+import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery

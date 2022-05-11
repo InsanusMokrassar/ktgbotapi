@@ -4,7 +4,7 @@ import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.invite_links.CreateChatInviteLink
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.abstracts.PublicChat
+import dev.inmo.tgbotapi.types.chat.PublicChat
 
 suspend fun TelegramBot.createChatInviteLinkUnlimited(
     chatId: ChatIdentifier,

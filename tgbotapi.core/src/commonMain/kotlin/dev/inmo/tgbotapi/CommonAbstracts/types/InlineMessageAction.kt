@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts.types
 
-import dev.inmo.tgbotapi.types.InlineMessageIdentifier
-
-interface InlineMessageAction {
-    val inlineMessageId: InlineMessageIdentifier
-}
+@Deprecated("Replaced", ReplaceWith("InlineMessageAction", "dev.inmo.tgbotapi.abstracts.types.InlineMessageAction"))
+typealias InlineMessageAction = dev.inmo.tgbotapi.abstracts.types.InlineMessageAction

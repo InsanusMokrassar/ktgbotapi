@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportEle
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext, reified T : EncryptedPassportElement> BC.onPassportMessageWith(
-    noinline initialFilter: SimpleFilter<PassportMessage>? = null,
+    initialFilter: SimpleFilter<PassportMessage>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>

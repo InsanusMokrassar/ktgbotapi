@@ -9,11 +9,12 @@ import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.MediaContent
-import dev.inmo.tgbotapi.types.message.content.abstracts.MessageContent
-import dev.inmo.tgbotapi.types.message.content.media.*
-import dev.inmo.tgbotapi.types.message.payments.InvoiceContent
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.SentMediaGroupUpdate
+import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.InvoiceContent
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
@@ -35,7 +36,7 @@ internal suspend fun <O : MessageContent> BehaviourContext.waitCommonMessage(
     val messages = when (it) {
         is SentMediaGroupUpdate -> {
             if (includeMediaGroups) {
-                it.data.map { it as CommonMessage<MessageContent> }
+                it.data
             } else {
                 emptyList()
             }
@@ -44,7 +45,8 @@ internal suspend fun <O : MessageContent> BehaviourContext.waitCommonMessage(
         else -> return@expectFlow emptyList()
     }
     messages.mapNotNull { message ->
-        val asCommonMessage = message as CommonMessage<MessageContent>
+        @Suppress("UNCHECKED_CAST")
+        val asCommonMessage = message as? CommonMessage<MessageContent> ?: return@mapNotNull null
         if (filter == null || filter(asCommonMessage)) {
             asCommonMessage.mapper()
         } else {
@@ -75,7 +77,7 @@ private suspend inline fun <reified T : MessageContent> BehaviourContext.waitCon
     initRequest: Request<*>? = null,
     includeMediaGroups: Boolean = true,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<CommonMessage<T>>? = null,
+    filter: SimpleFilter<CommonMessage<T>>? = null,
     noinline mapper: CommonMessageToCommonMessageMapper<T>? = null
 ) : List<CommonMessage<T>> = waitCommonMessage<T>(
     count,

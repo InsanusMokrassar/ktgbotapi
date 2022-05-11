@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.Meters
-
-interface HorizontallyAccured {
-    val horizontalAccuracy: Meters?
-}
+@Deprecated("Replaced", ReplaceWith("HorizontallyAccured", "dev.inmo.tgbotapi.abstracts.HorizontallyAccured"))
+typealias HorizontallyAccured = dev.inmo.tgbotapi.abstracts.HorizontallyAccured

@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts.types
 
-import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
-
-interface ReplyMarkup {
-    val replyMarkup: KeyboardMarkup?
-}
+@Deprecated("Replaced", ReplaceWith("ReplyMarkup", "dev.inmo.tgbotapi.abstracts.types.ReplyMarkup"))
+typealias ReplyMarkup = dev.inmo.tgbotapi.abstracts.types.ReplyMarkup

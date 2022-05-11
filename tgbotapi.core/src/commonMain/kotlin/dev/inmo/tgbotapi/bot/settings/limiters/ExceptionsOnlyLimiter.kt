@@ -4,7 +4,7 @@ import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.exceptions.TooMuchRequestsException
 import dev.inmo.tgbotapi.types.MilliSeconds
 import dev.inmo.tgbotapi.types.RetryAfterError
-import io.ktor.client.features.ClientRequestException
+import io.ktor.client.plugins.ClientRequestException
 import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

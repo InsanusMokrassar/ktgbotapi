@@ -1,9 +1,7 @@
 package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
-import dev.inmo.tgbotapi.types.FileUniqueId
-import dev.inmo.tgbotapi.types.fileUniqueIdField
-import dev.inmo.tgbotapi.types.files.abstracts.*
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.*
 import kotlinx.serialization.*
 

@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.ParseMode.*
+import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.utils.extensions.*
 
 const val markdownBoldControl = "*"

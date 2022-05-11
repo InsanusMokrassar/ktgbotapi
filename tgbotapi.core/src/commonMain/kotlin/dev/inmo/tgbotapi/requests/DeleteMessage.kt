@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.MessageAction
+import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*

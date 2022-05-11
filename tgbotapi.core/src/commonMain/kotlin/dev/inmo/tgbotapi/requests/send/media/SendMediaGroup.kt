@@ -5,13 +5,13 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.InputMedia.*
+import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
-import dev.inmo.tgbotapi.types.message.content.media.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.media.AudioContent
-import dev.inmo.tgbotapi.types.message.content.media.DocumentContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.AudioContent
+import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.utils.*
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
@@ -23,7 +23,7 @@ const val rawSendingMediaGroupsWarning = "Media groups contains restrictions rel
 @RiskFeature(rawSendingMediaGroupsWarning)
 fun <T : MediaGroupContent> SendMediaGroup(
     chatId: ChatIdentifier,
-    media: List<MediaGroupMemberInputMedia>,
+    media: List<MediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -36,7 +36,7 @@ fun <T : MediaGroupContent> SendMediaGroup(
     val files: List<MultipartFile> = media.flatMap {
         listOfNotNull(
             it.file as? MultipartFile,
-            if (it is ThumbedInputMedia) {
+            if (it is ThumbedTelegramMedia) {
                 it.thumb as? MultipartFile
             } else {
                 null
@@ -66,12 +66,12 @@ fun <T : MediaGroupContent> SendMediaGroup(
 /**
  * Use this method to be sure that you are correctly sending playlist with audios
  *
- * @see InputMediaAudio
+ * @see TelegramMediaAudio
  */
 @Suppress("NOTHING_TO_INLINE")
 inline fun SendPlaylist(
     chatId: ChatIdentifier,
-    media: List<AudioMediaGroupMemberInputMedia>,
+    media: List<AudioMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -81,12 +81,12 @@ inline fun SendPlaylist(
 /**
  * Use this method to be sure that you are correctly sending documents media group
  *
- * @see InputMediaDocument
+ * @see TelegramMediaDocument
  */
 @Suppress("NOTHING_TO_INLINE")
 inline fun SendDocumentsGroup(
     chatId: ChatIdentifier,
-    media: List<DocumentMediaGroupMemberInputMedia>,
+    media: List<DocumentMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -96,13 +96,13 @@ inline fun SendDocumentsGroup(
 /**
  * Use this method to be sure that you are correctly sending visual media group
  *
- * @see InputMediaPhoto
- * @see InputMediaVideo
+ * @see TelegramMediaPhoto
+ * @see TelegramMediaVideo
  */
 @Suppress("NOTHING_TO_INLINE")
 inline fun SendVisualMediaGroup(
     chatId: ChatIdentifier,
-    media: List<VisualMediaGroupMemberInputMedia>,
+    media: List<VisualMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageIdentifier? = null,
@@ -116,7 +116,7 @@ private val messagesListSerializer: KSerializer<List<MediaGroupMessage<MediaGrou
 data class SendMediaGroupData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
-    val media: List<MediaGroupMemberInputMedia> = emptyList(),
+    val media: List<MediaGroupMemberTelegramMedia> = emptyList(),
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -130,7 +130,7 @@ data class SendMediaGroupData internal constructor(
     private val convertedMedia: String
         get() = buildJsonArray {
             media.forEach {
-                add(it.toJsonWithoutNulls(MediaGroupMemberInputMediaSerializer))
+                add(it.toJsonWithoutNulls(MediaGroupMemberTelegramMediaSerializer))
             }
         }.toString()
 

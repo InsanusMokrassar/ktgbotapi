@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.ChatMemberUpdated
+import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
@@ -15,7 +15,7 @@ private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContex
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<T>? = null,
+    filter: SimpleFilter<T>? = null,
     noinline mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>
 ): List<ChatMemberUpdated> = expectFlow(
     initRequest,
@@ -34,7 +34,7 @@ private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContex
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<T>? = null,
+    filter: SimpleFilter<T>? = null,
     noinline mapper: ChatMemberUpdatedMapper<ChatMemberUpdated>? = null
 ) : List<ChatMemberUpdated> = waitChatMemberUpdated<T>(
     count,

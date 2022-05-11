@@ -1,27 +1,18 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.extensions.makeString
-import dev.inmo.tgbotapi.utils.internal.*
-import kotlinx.serialization.Serializable
-
 /**
  * @see phone
  */
-@Serializable
-data class PhoneNumberTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String,
-    override val subsources: TextSourcesList
-) : MultilevelTextSource {
-    override val markdown: String by lazy { source.phoneMarkdown() }
-    override val markdownV2: String by lazy { phoneMarkdownV2() }
-    override val html: String by lazy { phoneHTML() }
-}
+@Deprecated("Replaced", ReplaceWith("PhoneNumberTextSource", "dev.inmo.tgbotapi.types.message.textsources.PhoneNumberTextSource"))
+typealias PhoneNumberTextSource = dev.inmo.tgbotapi.types.message.textsources.PhoneNumberTextSource
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun phone(parts: TextSourcesList) = PhoneNumberTextSource(parts.makeString(), parts)
+@Deprecated("Replaced", ReplaceWith("phone", "dev.inmo.tgbotapi.types.message.textsources.phone"))
+inline fun phone(parts: TextSourcesList) = dev.inmo.tgbotapi.types.message.textsources.phone(parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun phone(vararg parts: TextSource) = phone(parts.toList())
+@Deprecated("Replaced", ReplaceWith("phone", "dev.inmo.tgbotapi.types.message.textsources.phone"))
+inline fun phone(vararg parts: TextSource) = dev.inmo.tgbotapi.types.message.textsources.phone(*parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun phone(number: String) = phone(regular(number))
+@Deprecated("Replaced", ReplaceWith("phone", "dev.inmo.tgbotapi.types.message.textsources.phone"))
+inline fun phone(number: String) = dev.inmo.tgbotapi.types.message.textsources.phone(number)
 

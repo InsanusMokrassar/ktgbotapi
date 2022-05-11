@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
-import dev.inmo.tgbotapi.CommonAbstracts.CommonContactData
+import dev.inmo.tgbotapi.abstracts.CommonContactData
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

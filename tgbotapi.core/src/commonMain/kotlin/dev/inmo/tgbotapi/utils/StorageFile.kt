@@ -9,23 +9,6 @@ import io.ktor.utils.io.core.Input
 import kotlinx.serialization.Serializable
 
 /**
- * Information about file for [StorageFile]
- *
- * @param contentType Raw type like "application/json"
- * @param fileName This filename will be used in telegram system as name of file
- */
-@Serializable
-@Deprecated("Will be removed soon")
-data class StorageFileInfo(
-    val fileName: String
-) {
-    /**
-     * This methods is required for random generation of name for keeping warranties about unique file name
-     */
-    fun generateCustomName() = "${uuid4()}.${fileName.fileExtension}"
-}
-
-/**
  * Contains info about file, which potentially can be sent to telegram system.
  *
  * @param fileName Filename
@@ -34,31 +17,22 @@ data class StorageFileInfo(
  * @see StorageFileInfo
  * @see asStorageFile
  */
+@Deprecated("Storage file now is not necessary")
 data class StorageFile(
     val fileName: String,
     private val inputSource: () -> Input
 ) {
     val input: Input
         get() = inputSource()
-    @Deprecated("This field will be removed soon. Use fileName instead of StorageFileInfo")
-    val storageFileInfo: StorageFileInfo
-        get() = StorageFileInfo(fileName)
 
     /**
      * This methods is required for random generation of name for keeping warranties about unique file name
      */
     fun generateCustomName() = "${uuid4()}.${fileName.fileExtension}"
 
-    @Deprecated("This constructor will be removed soon. Use constructor with fileName instead of StorageFileInfo")
-    constructor(
-        storageFileInfo: StorageFileInfo,
-        inputSource: () -> Input
-    ) : this(
-        storageFileInfo.fileName,
-        inputSource
-    )
 }
 
+@Deprecated("Storage file now is not necessary")
 @Suppress("NOTHING_TO_INLINE")
 inline fun StorageFile(
     fileName: String,
@@ -69,6 +43,7 @@ inline fun StorageFile(
     ByteReadPacket(bytes)
 }
 
+@Deprecated("StorageFile now is not necessary")
 @Suppress("NOTHING_TO_INLINE")
 suspend inline fun StorageFile(
     fileName: String,
@@ -78,16 +53,19 @@ suspend inline fun StorageFile(
     inputSource = byteReadChannel.asInput().let { { it } }
 )
 
+@Deprecated("StorageFile now is not necessary")
 @Suppress("NOTHING_TO_INLINE", "unused")
 inline fun ByteArray.asStorageFile(
     fileName: String
 ) = StorageFile(fileName, this)
 
+@Deprecated("StorageFile now is not necessary")
 @Suppress("NOTHING_TO_INLINE", "unused")
 suspend inline fun ByteReadChannel.asStorageFile(
     fileName: String
 ) = StorageFile(fileName, this)
 
+@Deprecated("StorageFile now is not necessary")
 @Suppress("NOTHING_TO_INLINE", "unused")
 suspend inline fun ByteReadChannelAllocator.asStorageFile(
     fileName: String

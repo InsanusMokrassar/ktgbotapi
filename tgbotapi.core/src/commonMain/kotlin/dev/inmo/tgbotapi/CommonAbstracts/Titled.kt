@@ -1,5 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-interface Titled {
-    val title: String?
-}
+@Deprecated("Replaced", ReplaceWith("Titled", "dev.inmo.tgbotapi.abstracts.Titled"))
+typealias Titled = dev.inmo.tgbotapi.abstracts.Titled

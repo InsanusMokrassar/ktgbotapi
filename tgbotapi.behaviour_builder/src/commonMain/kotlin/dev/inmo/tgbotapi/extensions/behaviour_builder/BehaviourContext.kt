@@ -84,7 +84,7 @@ class DefaultBehaviourContext(
         } else {
             it
         }
-    }
+    }.accumulatorFlow(scope)
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
 
     override fun copy(
@@ -113,10 +113,70 @@ inline fun <T> BehaviourContext(
     crossinline block: BehaviourContext.() -> T
 ) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder).run(block)
 
+fun <BC : BehaviourContext> BC.createSubContext(
+    scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>? = null,
+) = copy(
+    scope = scope,
+    updatesFilter = updatesFilter ?.let { _ ->
+        {
+            (this as? BC) ?.run {
+                updatesFilter(it)
+            } ?: true
+        }
+    },
+    upstreamUpdatesFlow = updatesUpstreamFlow,
+    triggersHolder = triggersHolder
+) as BC
+
 /**
- * Creates new one [BehaviourContext], adding subsequent [FlowsUpdatesFilter] in case [updatesFilter] is provided and
- * [CoroutineScope] as new [BehaviourContext.scope]
+ * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
+ *
+ * @param stopOnCompletion ___FALSE BY DEFAULT___. Will stop [this] in case if passed true
  */
+suspend fun <T, BC : BehaviourContext> BC.doInContext(
+    stopOnCompletion: Boolean = false,
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): T {
+    return withContext(coroutineContext) {
+        behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+    }
+}
+
+/**
+ * Creates new one [BehaviourContext] using [createSubContext] and launches [behaviourContextReceiver] in a new context
+ * using [doInContext]
+ *
+ * @param stopOnCompletion ___TRUE BY DEFAULT___
+ */
+suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter(
+    scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>? = null,
+    stopOnCompletion: Boolean = true,
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): T {
+    return createSubContext(
+        scope,
+        triggersHolder,
+        updatesUpstreamFlow,
+        updatesFilter
+    ).doInContext(
+        stopOnCompletion,
+        behaviourContextReceiver
+    )
+}
+
+/**
+ * Creates new one [BehaviourContext] using [createSubContext] and launches [behaviourContextReceiver] in a new context
+ * using [doInContext]
+ *
+ * @param stopOnCompletion ___TRUE BY DEFAULT___
+ */
+@Deprecated("Renamed", ReplaceWith("createSubContextAndDoWithUpdatesFilter", "dev.inmo.tgbotapi.extensions.behaviour_builder.createSubContextAndDoWithUpdatesFilter"))
 suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
     updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>?,
     stopOnCompletion: Boolean = true,
@@ -125,30 +185,32 @@ suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
     triggersHolder: TriggersHolder = this.triggersHolder,
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
 ): T {
-    val newContext = copy(
-        scope = scope,
-        updatesFilter = updatesFilter ?.let { _ ->
-            {
-                (this as? BC) ?.run {
-                    updatesFilter(it)
-                } ?: true
-            }
-        },
-        upstreamUpdatesFlow = updatesUpstreamFlow,
-        triggersHolder = triggersHolder
-    ) as BC
-    return withContext(currentCoroutineContext()) {
-        newContext.behaviourContextReceiver().also { if (stopOnCompletion) newContext.stop() }
-    }
+    return createSubContext(
+        scope,
+        triggersHolder,
+        updatesUpstreamFlow,
+        updatesFilter
+    ).doInContext(
+        stopOnCompletion,
+        behaviourContextReceiver
+    )
 }
 
+@Deprecated("Redundant", ReplaceWith("createSubContextAndDoWithUpdatesFilter", "dev.inmo.tgbotapi.extensions.behaviour_builder.createSubContextAndDoWithUpdatesFilter"))
 suspend fun <T> BehaviourContext.doInSubContext(
     stopOnCompletion: Boolean = true,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     scope: CoroutineScope = LinkedSupervisorScope(),
     triggersHolder: TriggersHolder = this.triggersHolder,
     behaviourContextReceiver: BehaviourContextReceiver<T>
-) = doInSubContextWithUpdatesFilter(updatesFilter = null, stopOnCompletion, updatesUpstreamFlow, scope, triggersHolder, behaviourContextReceiver)
+) = createSubContextAndDoWithUpdatesFilter(
+    scope,
+    triggersHolder,
+    updatesUpstreamFlow,
+    updatesFilter = null,
+    stopOnCompletion,
+    behaviourContextReceiver
+)
 
 /**
  * This method will cancel ALL subsequent contexts, expectations and waiters

@@ -4,14 +4,17 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.asSentMediaGroupUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
-import dev.inmo.tgbotapi.types.message.content.media.*
+import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
 import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
 
 typealias MediaGroupFilter<T> = suspend List<MediaGroupMessage<T>>.() -> Boolean
 
-@PreviewFeature
 internal suspend inline fun <reified T : MediaGroupContent> BehaviourContext.buildMediaGroupWaiter(
     count: Int = 1,
     initRequest: Request<*>? = null,

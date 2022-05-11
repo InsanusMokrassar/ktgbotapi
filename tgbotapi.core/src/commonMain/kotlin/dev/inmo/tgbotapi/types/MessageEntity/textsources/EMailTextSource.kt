@@ -1,26 +1,17 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.extensions.makeString
-import dev.inmo.tgbotapi.utils.internal.*
-import kotlinx.serialization.Serializable
-
 /**
  * @see email
  */
-@Serializable
-data class EMailTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String,
-    override val subsources: TextSourcesList
-) : MultilevelTextSource {
-    override val markdown: String by lazy { source.emailMarkdown() }
-    override val markdownV2: String by lazy { emailMarkdownV2(source) }
-    override val html: String by lazy { emailHTML(source) }
-}
+@Deprecated("Replaced", ReplaceWith("EMailTextSource", "dev.inmo.tgbotapi.types.message.textsources.EMailTextSource"))
+typealias EMailTextSource = dev.inmo.tgbotapi.types.message.textsources.EMailTextSource
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun email(parts: TextSourcesList) = EMailTextSource(parts.makeString(), parts)
+@Deprecated("Replaced", ReplaceWith("email", "dev.inmo.tgbotapi.types.message.textsources.email"))
+inline fun email(parts: TextSourcesList) = dev.inmo.tgbotapi.types.message.textsources.email(parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun email(vararg parts: TextSource) = email(parts.toList())
+@Deprecated("Replaced", ReplaceWith("email", "dev.inmo.tgbotapi.types.message.textsources.email"))
+inline fun email(vararg parts: TextSource) = dev.inmo.tgbotapi.types.message.textsources.email(*parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun email(emailAddress: String) = email(regular(emailAddress))
+@Deprecated("Replaced", ReplaceWith("email", "dev.inmo.tgbotapi.types.message.textsources.email"))
+inline fun email(emailAddress: String) = dev.inmo.tgbotapi.types.message.textsources.email(emailAddress)

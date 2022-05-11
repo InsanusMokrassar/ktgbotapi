@@ -1,42 +1,22 @@
 package dev.inmo.tgbotapi.types.ParseMode
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import kotlinx.serialization.*
-import kotlinx.serialization.builtins.serializer
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
+@Deprecated("Replaced", ReplaceWith("ParseMode", "dev.inmo.tgbotapi.types.message.ParseMode"))
+typealias ParseMode = dev.inmo.tgbotapi.types.message.ParseMode
 
-internal const val parseModeField = "parse_mode"
+@Deprecated("Replaced", ReplaceWith("MarkdownParseMode", "dev.inmo.tgbotapi.types.message.MarkdownParseMode"))
+typealias MarkdownParseMode = dev.inmo.tgbotapi.types.message.MarkdownParseMode
 
-@Serializable(ParseModeSerializer::class)
-sealed interface ParseMode {
-    val parseModeName: String
-}
+@Deprecated("Replaced", ReplaceWith("MarkdownV2ParseMode", "dev.inmo.tgbotapi.types.message.MarkdownV2ParseMode"))
+typealias MarkdownV2ParseMode = dev.inmo.tgbotapi.types.message.MarkdownV2ParseMode
+@Deprecated("Replaced", ReplaceWith("HTMLParseMode", "dev.inmo.tgbotapi.types.message.HTMLParseMode"))
+typealias HTMLParseMode = dev.inmo.tgbotapi.types.message.HTMLParseMode
 
-@Serializable(ParseModeSerializer::class)
-object MarkdownParseMode : ParseMode {
-    @Serializable
-    @SerialName(parseModeField)
-    override val parseModeName: String = "Markdown"
-}
-
-@Serializable(ParseModeSerializer::class)
-object MarkdownV2ParseMode : ParseMode {
-    @Serializable
-    @SerialName(parseModeField)
-    override val parseModeName: String = "MarkdownV2"
-}
-@Serializable(ParseModeSerializer::class)
-object HTMLParseMode : ParseMode {
-    @Serializable
-    @SerialName(parseModeField)
-    override val parseModeName: String = "HTML"
-}
-
-typealias Markdown = MarkdownParseMode
-typealias MarkdownV2 = MarkdownV2ParseMode
-typealias HTML = HTMLParseMode
+@Deprecated("Replaced", ReplaceWith("Markdown", "dev.inmo.tgbotapi.types.message.Markdown"))
+typealias Markdown = dev.inmo.tgbotapi.types.message.Markdown
+@Deprecated("Replaced", ReplaceWith("MarkdownV2", "dev.inmo.tgbotapi.types.message.MarkdownV2"))
+typealias MarkdownV2 = dev.inmo.tgbotapi.types.message.MarkdownV2
+@Deprecated("Replaced", ReplaceWith("HTML", "dev.inmo.tgbotapi.types.message.HTML"))
+typealias HTML = dev.inmo.tgbotapi.types.message.HTML
 
 /**
  * This variable respects to default parse mode used in places like next:
@@ -44,21 +24,8 @@ typealias HTML = HTMLParseMode
  * * [dev.inmo.tgbotapi.types.message.content.TextContent.createResends]
  * *
  */
-var defaultParseMode: ParseMode = HTML
+@Deprecated("Replaced", ReplaceWith("defaultParseMode", "dev.inmo.tgbotapi.types.message.defaultParseMode"))
+var defaultParseMode = dev.inmo.tgbotapi.types.message.defaultParseMode
 
-@RiskFeature
-object ParseModeSerializer : KSerializer<ParseMode> {
-    override val descriptor: SerialDescriptor = String.serializer().descriptor
-    override fun deserialize(decoder: Decoder): ParseMode {
-        return when (decoder.decodeString()) {
-            Markdown.parseModeName -> Markdown
-            MarkdownV2.parseModeName -> MarkdownV2
-            HTML.parseModeName -> HTML
-            else -> throw IllegalArgumentException("Unknown parse mode")
-        }
-    }
-
-    override fun serialize(encoder: Encoder, value: ParseMode) {
-        encoder.encodeString(value.parseModeName)
-    }
-}
+@Deprecated("Replaced", ReplaceWith("ParseModeSerializer", "dev.inmo.tgbotapi.types.message.ParseModeSerializer"))
+typealias ParseModeSerializer = dev.inmo.tgbotapi.types.message.ParseModeSerializer

@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.DownloadFile
 import dev.inmo.tgbotapi.requests.get.GetFile
 import dev.inmo.tgbotapi.types.passport.credentials.*
-import dev.inmo.tgbotapi.types.passport.encrypted.PassportFile
+import dev.inmo.tgbotapi.types.files.PassportFile
 
 fun EndDataCredentials.decryptData(
     bytes: EncryptedData

@@ -88,7 +88,6 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
  * @see BehaviourContextWithFSM.strictlyOn
  * @see BehaviourContextWithFSM.onStateOrSubstate
  */
-@PreviewFeature
 suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     flowUpdatesFilter: FlowsUpdatesFilter,
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
@@ -117,7 +116,6 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
  * @see BehaviourContextWithFSM.strictlyOn
  * @see BehaviourContextWithFSM.onStateOrSubstate
  */
-@PreviewFeature
 suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,

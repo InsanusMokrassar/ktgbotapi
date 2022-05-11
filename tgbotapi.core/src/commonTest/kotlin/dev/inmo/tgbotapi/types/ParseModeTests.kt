@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.TestsJsonFormat
-import dev.inmo.tgbotapi.types.ParseMode.*
+import dev.inmo.tgbotapi.types.message.*
 import kotlinx.serialization.Serializable
 import kotlin.test.Test
 import kotlin.test.assertEquals

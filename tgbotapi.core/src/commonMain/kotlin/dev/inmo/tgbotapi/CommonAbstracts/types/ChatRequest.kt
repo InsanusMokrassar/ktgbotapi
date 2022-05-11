@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts.types
 
-import dev.inmo.tgbotapi.types.ChatIdentifier
-
-interface ChatRequest : OptionalChatRequest {
-    override val chatId: ChatIdentifier
-}
+@Deprecated("Replaced", ReplaceWith("ChatRequest", "dev.inmo.tgbotapi.abstracts.types.ChatRequest"))
+typealias ChatRequest = dev.inmo.tgbotapi.abstracts.types.ChatRequest

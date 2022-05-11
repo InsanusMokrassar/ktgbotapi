@@ -33,7 +33,7 @@ private suspend inline fun <reified T : InlineQuery> BehaviourContext.waitInline
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<T>? = null,
+    filter: SimpleFilter<T>? = null,
     noinline mapper: InlineQueryMapper<T>? = null
 ) : List<T> = waitInlineQueries<T>(
     count,

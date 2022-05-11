@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

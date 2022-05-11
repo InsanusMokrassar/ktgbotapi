@@ -3,8 +3,8 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.micro_utils.common.joinTo
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.*
-import dev.inmo.tgbotapi.types.User
+import dev.inmo.tgbotapi.types.message.textsources.*
+import dev.inmo.tgbotapi.types.chat.User
 
 typealias EntitiesBuilderBody = EntitiesBuilder.() -> Unit
 val newLine = regular("\n")

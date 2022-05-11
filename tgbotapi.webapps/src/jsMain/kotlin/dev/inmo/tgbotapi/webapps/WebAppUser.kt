@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.webapps
 
 import dev.inmo.micro_utils.language_codes.IetfLanguageCode
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.CommonBot
+import dev.inmo.tgbotapi.types.chat.CommonUser
 
 external interface WebAppUser {
     val id: Identifier

@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.chat.get
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.ChatRequest
-import dev.inmo.tgbotapi.CommonAbstracts.types.OptionalChatRequest
+import dev.inmo.tgbotapi.abstracts.types.ChatRequest
+import dev.inmo.tgbotapi.abstracts.types.OptionalChatRequest
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*

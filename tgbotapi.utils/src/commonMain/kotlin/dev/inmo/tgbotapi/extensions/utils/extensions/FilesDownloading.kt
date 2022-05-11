@@ -4,11 +4,12 @@ import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
+import io.ktor.client.statement.readBytes
 
 suspend fun HttpClient.loadFile(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
     filePath: String
-) = get<ByteArray>("${telegramAPIUrlsKeeper.fileBaseUrl}/$filePath")
+) = get("${telegramAPIUrlsKeeper.fileBaseUrl}/$filePath").readBytes()
 
 suspend fun HttpClient.loadFile(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,

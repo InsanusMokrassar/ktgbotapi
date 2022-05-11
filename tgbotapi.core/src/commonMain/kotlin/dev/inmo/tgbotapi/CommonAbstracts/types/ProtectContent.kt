@@ -1,5 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts.types
 
-interface ProtectContent {
-    val protectContent: Boolean
-}
+@Deprecated("Replaced", ReplaceWith("ProtectContent", "dev.inmo.tgbotapi.abstracts.types.ProtectContent"))
+typealias ProtectContent = dev.inmo.tgbotapi.abstracts.types.ProtectContent

@@ -13,9 +13,11 @@ import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithParams
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlinx.coroutines.Job
 
 
+@PreviewFeature
 suspend fun <BC : BehaviourContext> BC.unhandledCommand(
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -43,6 +45,7 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommand(
     scenarioReceiver
 )
 
+@PreviewFeature
 suspend fun <BC : BehaviourContext> BC.onUnhandledCommand(
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -51,6 +54,7 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledCommand(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
 ): Job = unhandledCommand(requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+@PreviewFeature
 suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
@@ -68,6 +72,7 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
     scenarioReceiver(it, args)
 }
 
+@PreviewFeature
 suspend fun <BC : BehaviourContext> BC.onUnhandledCommandWithArgs(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,

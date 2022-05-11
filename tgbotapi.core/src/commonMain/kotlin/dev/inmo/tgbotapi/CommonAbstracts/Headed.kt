@@ -1,7 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.Degrees
-
-interface Headed {
-    val heading: Degrees?
-}
+@Deprecated("Replaced", ReplaceWith("Headed", "dev.inmo.tgbotapi.abstracts.Headed"))
+typealias Headed = dev.inmo.tgbotapi.abstracts.Headed

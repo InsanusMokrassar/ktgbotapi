@@ -2,8 +2,8 @@ package dev.inmo.tgbotapi.requests.get
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.types.fileIdField
 import dev.inmo.tgbotapi.types.files.PathedFile
-import dev.inmo.tgbotapi.types.files.abstracts.fileIdField
 import kotlinx.serialization.*
 
 @Serializable

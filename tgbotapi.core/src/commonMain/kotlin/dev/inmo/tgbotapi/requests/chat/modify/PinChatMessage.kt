@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.chat.modify
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.*
+import dev.inmo.tgbotapi.abstracts.types.*
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*

@@ -1,18 +1,7 @@
 package dev.inmo.tgbotapi.types.ChatMember.abstracts
 
-sealed interface SpecialChatAdministratorRights {
-    val canChangeInfo: Boolean
-    val canInviteUsers: Boolean
-    val canPinMessages: Boolean
-}
+@Deprecated("SpecialChatAdministratorRights", ReplaceWith("SpecialChatAdministratorRights", "dev.inmo.tgbotapi.types.chat.member.SpecialChatAdministratorRights"))
+typealias SpecialChatAdministratorRights = dev.inmo.tgbotapi.types.chat.member.SpecialChatAdministratorRights
 
-interface ChatAdministratorRights : SpecialChatAdministratorRights {
-    val isAnonymous: Boolean
-    val canManageChat: Boolean
-    val canRemoveMessages: Boolean
-    val canManageVideoChats: Boolean
-    val canRestrictMembers: Boolean
-    val canPromoteMembers: Boolean
-    val canPostMessages: Boolean
-    val canEditMessages: Boolean
-}
+@Deprecated("ChatAdministratorRights", ReplaceWith("ChatAdministratorRights", "dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRights"))
+typealias ChatAdministratorRights = dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRights

@@ -41,7 +41,7 @@ private suspend inline fun <reified T : ChatEvent> BehaviourContext.waitEvents(
     count: Int = 1,
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null },
-    noinline filter: SimpleFilter<ChatEventMessage<T>>? = null,
+    filter: SimpleFilter<ChatEventMessage<T>>? = null,
     noinline mapper: EventMessageToEventMapper<T>? = null
 ) : List<T> = waitEventMessages<T>(
     initRequest,

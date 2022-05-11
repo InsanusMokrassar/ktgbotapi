@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories
 
-import dev.inmo.tgbotapi.types.CallbackQuery.CallbackQuery
-import dev.inmo.tgbotapi.types.ChatJoinRequest
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
+import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 

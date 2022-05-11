@@ -1,11 +1,12 @@
 package dev.inmo.tgbotapi.requests.abstracts
 
+import com.benasher44.uuid.uuid4
 import dev.inmo.micro_utils.common.MPPFile
 import dev.inmo.tgbotapi.utils.*
 import io.ktor.utils.io.ByteReadChannel
+import io.ktor.utils.io.core.ByteReadPacket
 import io.ktor.utils.io.core.Input
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -24,6 +25,15 @@ import kotlinx.serialization.encoding.Encoder
 @Serializable(InputFileSerializer::class)
 sealed class InputFile {
     abstract val fileId: String
+
+    companion object {
+        operator fun invoke(file: MPPFile) = file.asMultipartFile()
+
+        fun fromInput(filename: String, inputSource: () -> Input) = MultipartFile(filename, inputSource)
+        fun fromFile(file: MPPFile) = invoke(file)
+        fun fromId(id: String) = FileId(id)
+        fun fromUrl(url: String) = FileUrl(url)
+    }
 }
 
 internal inline val InputFile.attachFileId
@@ -43,6 +53,8 @@ data class FileId(
     override val fileId: String
 ) : InputFile()
 
+typealias FileUrl = FileId
+
 fun String.toInputFile() = FileId(this)
 
 @RiskFeature
@@ -60,23 +72,49 @@ object InputFileSerializer : KSerializer<InputFile> {
  */
 @Serializable(InputFileSerializer::class)
 data class MultipartFile (
-    val file: StorageFile,
-    val filename: String = file.fileName
+    val filename: String,
+    private val inputSource: () -> Input
 ) : InputFile() {
-    override val fileId: String = file.generateCustomName()
+    @Required
+    override val fileId: String = "${uuid4()}.${filename.fileExtension}"
+    val input: Input
+        get() = inputSource()
+
+    @Deprecated("Storage file now is not necessary")
+    constructor(
+        file: StorageFile,
+        filename: String = file.fileName
+    ) : this(
+        filename,
+        file::input
+    )
 }
 
+@Deprecated("Storage file now is not necessary")
 @Suppress("NOTHING_TO_INLINE", "unused")
-inline fun StorageFile.asMultipartFile() = MultipartFile(this)
+inline fun StorageFile.asMultipartFile() = MultipartFile(fileName, ::input)
 
 @Suppress("NOTHING_TO_INLINE", "unused")
 suspend inline fun ByteReadChannel.asMultipartFile(
     fileName: String
-) = MultipartFile(asStorageFile(fileName))
+) = MultipartFile(
+    fileName,
+    inputSource = asInput().let { { it } }
+)
+
+@Suppress("NOTHING_TO_INLINE", "unused")
+inline fun ByteArray.asMultipartFile(
+    fileName: String
+) = MultipartFile(
+    fileName,
+    inputSource = { ByteReadPacket(this) }
+)
 
 @Suppress("NOTHING_TO_INLINE", "unused")
 suspend inline fun ByteReadChannelAllocator.asMultipartFile(
     fileName: String
 ) = this.invoke().asMultipartFile(fileName)
 
-expect suspend fun MPPFile.asMultipartFile(): MultipartFile
+expect fun MPPFile.asMultipartFile(): MultipartFile
+@Suppress("NOTHING_TO_INLINE")
+inline fun MPPFile.multipartFile() = asMultipartFile()

@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.chat.members
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.UntilDate
+import dev.inmo.tgbotapi.abstracts.types.UntilDate
 import dev.inmo.tgbotapi.requests.chat.abstracts.ChatMemberRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*

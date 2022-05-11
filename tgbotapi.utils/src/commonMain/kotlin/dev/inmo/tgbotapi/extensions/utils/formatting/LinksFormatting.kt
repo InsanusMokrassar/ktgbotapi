@@ -1,9 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.MessageEntity.textsources.link
-import dev.inmo.tgbotapi.types.chat.abstracts.*
-import dev.inmo.tgbotapi.types.chat.abstracts.extended.ExtendedPublicChat
+import dev.inmo.tgbotapi.types.message.textsources.link
+import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 private const val internalLinkBeginning = "https://t.me"

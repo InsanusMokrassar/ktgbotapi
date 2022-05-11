@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult
 
-import dev.inmo.tgbotapi.CommonAbstracts.CommonVenueData
-import dev.inmo.tgbotapi.CommonAbstracts.Locationed
+import dev.inmo.tgbotapi.abstracts.CommonVenueData
+import dev.inmo.tgbotapi.abstracts.Locationed
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent

@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.types.games
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.MessageEntity.RawMessageEntities
-import dev.inmo.tgbotapi.types.MessageEntity.asTextSources
+import dev.inmo.tgbotapi.types.message.RawMessageEntities
+import dev.inmo.tgbotapi.types.message.asTextSources
 import dev.inmo.tgbotapi.types.files.*
 import kotlinx.serialization.*
 

@@ -1,26 +1,19 @@
 package dev.inmo.tgbotapi.types.MessageEntity.textsources
 
-import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.extensions.makeString
-import dev.inmo.tgbotapi.utils.internal.*
-import kotlinx.serialization.Serializable
+import dev.inmo.tgbotapi.utils.internal.underline
 
 /**
  * @see underline
  */
-@Serializable
-data class UnderlineTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
-    override val source: String,
-    override val subsources: TextSourcesList
-) : MultilevelTextSource {
-    override val markdown: String by lazy { source.underlineMarkdown() }
-    override val markdownV2: String by lazy { underlineMarkdownV2() }
-    override val html: String by lazy { underlineHTML() }
-}
+@Deprecated("Replaced", ReplaceWith("UnderlineTextSource", "dev.inmo.tgbotapi.types.message.textsources.UnderlineTextSource"))
+typealias UnderlineTextSource = dev.inmo.tgbotapi.types.message.textsources.UnderlineTextSource
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun underline(parts: TextSourcesList) = UnderlineTextSource(parts.makeString(), parts)
+@Deprecated("Replaced", ReplaceWith("underline", "dev.inmo.tgbotapi.types.message.textsources.underline"))
+inline fun underline(parts: TextSourcesList) = dev.inmo.tgbotapi.types.message.textsources.underline(parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun underline(vararg parts: TextSource) = underline(parts.toList())
+@Deprecated("Replaced", ReplaceWith("underline", "dev.inmo.tgbotapi.types.message.textsources.underline"))
+inline fun underline(vararg parts: TextSource) = dev.inmo.tgbotapi.types.message.textsources.underline(*parts)
 @Suppress("NOTHING_TO_INLINE")
-inline fun underline(text: String) = underline(regular(text))
+@Deprecated("Replaced", ReplaceWith("underline", "dev.inmo.tgbotapi.types.message.textsources.underline"))
+inline fun underline(text: String) = dev.inmo.tgbotapi.types.message.textsources.underline(text)

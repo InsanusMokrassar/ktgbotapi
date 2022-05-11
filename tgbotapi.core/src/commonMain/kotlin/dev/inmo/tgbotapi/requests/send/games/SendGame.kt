@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.games
 
-import dev.inmo.tgbotapi.CommonAbstracts.types.ReplyMarkup
+import dev.inmo.tgbotapi.abstracts.types.ReplyMarkup
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup

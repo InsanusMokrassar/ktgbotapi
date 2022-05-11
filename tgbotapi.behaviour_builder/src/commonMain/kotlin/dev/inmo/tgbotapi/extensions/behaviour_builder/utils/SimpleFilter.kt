@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.utils
 
-typealias SimpleFilter<T> = suspend (T) -> Boolean
-
-inline fun <T> SimpleFilter(noinline block: SimpleFilter<T>) = block
+fun interface SimpleFilter<in T> {
+    suspend operator fun invoke(o: T): Boolean
+}
 val TrueSimpleFilter = SimpleFilter<Any?> { true }
 
 /**
@@ -30,7 +30,7 @@ fun <T> SimpleFilter<T>.listNone() = SimpleFilter<Iterable<T>> {
  * Makes an AND (&&) operation between [this] and [other]
  */
 operator fun <T> SimpleFilter<T>?.times(other: SimpleFilter<T>): SimpleFilter<T> = this ?.let {
-    {
+    SimpleFilter {
         this(it) && other(it)
     }
 } ?: other
@@ -39,7 +39,7 @@ operator fun <T> SimpleFilter<T>?.times(other: SimpleFilter<T>): SimpleFilter<T>
  * Makes an OR (||) operation between [this] and [other]
  */
 operator fun <T> SimpleFilter<T>?.plus(other: SimpleFilter<T>): SimpleFilter<T> = this ?.let {
-    {
+    SimpleFilter {
         this(it) || other(it)
     }
 } ?: other
@@ -47,6 +47,6 @@ operator fun <T> SimpleFilter<T>?.plus(other: SimpleFilter<T>): SimpleFilter<T> 
 /**
  * Reverse results of [this]
  */
-operator fun <T> SimpleFilter<T>.not(): SimpleFilter<T> = {
+operator fun <T> SimpleFilter<T>.not() = SimpleFilter<T> {
     !this(it)
 }

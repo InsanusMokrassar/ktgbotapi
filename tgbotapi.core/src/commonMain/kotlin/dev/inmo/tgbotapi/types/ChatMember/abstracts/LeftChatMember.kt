@@ -1,3 +1,4 @@
 package dev.inmo.tgbotapi.types.ChatMember.abstracts
 
-interface LeftChatMember : ChatMember
+@Deprecated("LeftChatMember", ReplaceWith("LeftChatMember", "dev.inmo.tgbotapi.types.chat.member.LeftChatMember"))
+typealias LeftChatMember = dev.inmo.tgbotapi.types.chat.member.LeftChatMember

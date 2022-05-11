@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.bot
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.bot.SetMyDefaultAdministratorRights
-import dev.inmo.tgbotapi.types.ChatAdministratorRightsImpl
+import dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRightsImpl
 
 suspend fun TelegramBot.setMyDefaultAdministratorRights(
     rights: ChatAdministratorRightsImpl,

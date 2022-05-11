@@ -2,9 +2,9 @@ package dev.inmo.tgbotapi.updateshandlers
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.update.*
-import dev.inmo.tgbotapi.types.update.MediaGroupUpdates.*
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.update.media_group.*
 
 typealias UpdateReceiver<T> = suspend (T) -> Unit
 

@@ -1,10 +1,4 @@
 package dev.inmo.tgbotapi.CommonAbstracts
 
-import dev.inmo.tgbotapi.types.Seconds
-
-interface Livable {
-    /**
-     * Period in [Seconds]
-     */
-    val livePeriod: Seconds?
-}
+@Deprecated("Replaced", ReplaceWith("Livable", "dev.inmo.tgbotapi.abstracts.Livable"))
+typealias Livable = dev.inmo.tgbotapi.abstracts.Livable
