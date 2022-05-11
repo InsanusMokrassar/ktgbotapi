@@ -116,7 +116,7 @@ inline fun <T> BehaviourContext(
 fun <BC : BehaviourContext> BC.createSubContext(
     scope: CoroutineScope = LinkedSupervisorScope(),
     triggersHolder: TriggersHolder = this.triggersHolder,
-    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow.accumulatorFlow(scope),
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>? = null,
 ) = copy(
     scope = scope,
@@ -154,7 +154,7 @@ suspend fun <T, BC : BehaviourContext> BC.doInContext(
 suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter(
     scope: CoroutineScope = LinkedSupervisorScope(),
     triggersHolder: TriggersHolder = this.triggersHolder,
-    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow.accumulatorFlow(scope),
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
     updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>? = null,
     stopOnCompletion: Boolean = true,
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>

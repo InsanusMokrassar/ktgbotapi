@@ -52,6 +52,8 @@ __All the `tgbotapi.extensions.*` packages have been removed__
     * `SimpleFilter` now is a `fun interface` instead of just callback (fix of [#546](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/546))
     * New extension `BehaviourContext#createSubContext`. It uses separated `AccumulatorFlow` and will retrieve updates by itself
     * New extension `BehaviourContext#doInContext`
+    * Extension `BehaviourContext#doInSubContextWithUpdatesFilter` has been renamed to `BehaviourContext#createSubContextAndDoWithUpdatesFilter`
+    * Extension `BehaviourContext#doInSubContext` has been deprecated
 * `BehaviourContextWithFSM`:
     * `launchStateHandling` lost its parameter `contextUpdatesFlow: Flow`
     * `handleState` of `BehaviourContextWithFSM` now will get/create sub context for the state and launch handling in it
