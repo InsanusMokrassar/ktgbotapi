@@ -21,12 +21,9 @@ internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
     scope,
     markerFactory::invoke
 ) { triggerData ->
-    val scope = LinkedSupervisorScope()
-    doInSubContextWithUpdatesFilter(
+    createSubContextAndDoWithUpdatesFilter(
         updatesFilter = subcontextUpdatesFilter ?.toOneType(triggerData),
-        stopOnCompletion = false,
-        updatesUpstreamFlow = allUpdatesFlow.accumulatorFlow(scope),
-        scope = scope
+        stopOnCompletion = false
     ) {
         scenarioReceiver(triggerData)
     }

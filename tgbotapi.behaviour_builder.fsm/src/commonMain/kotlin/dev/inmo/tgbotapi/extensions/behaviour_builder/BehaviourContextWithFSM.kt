@@ -94,7 +94,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
     private val additionalHandlers = mutableListOf<BehaviourWithFSMStateHandlerHolder<*, T>>()
     private var actualHandlersList = additionalHandlers + handlers
 
-    private suspend fun getSubContext(context: Any) = updatesFlows.getOrPut(context) {
+    private fun getSubContext(context: Any) = updatesFlows.getOrPut(context) {
         createSubContext()
     }
 
