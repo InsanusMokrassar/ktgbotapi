@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 1.0.1
+
+* `Versions`:
+    * `Serialization`: `1.3.2` -> `1.3.3`
+    * `MicroUtils`: `0.10.3` -> `0.10.4`
+
 ## 1.0.0
 
 __All the `tgbotapi.extensions.*` packages have been removed__
@@ -7,7 +13,7 @@ __All the `tgbotapi.extensions.*` packages have been removed__
 * `Versions`:
     * `Kotlin`: `1.6.10` -> `1.6.21`
     * `Ktor`: `1.6.8` -> `2.0.1`
-    * `MicroUtils`: `0.9.24` -> `0.10.2`
+    * `MicroUtils`: `0.9.24` -> `0.10.3`
 * `Core`:
     * **`Ktor` package renamed. Migration:** `dev.inmo.tgbotapi.bot.Ktor` -> `dev.inmo.tgbotapi.bot.ktor`
     * **`CallbackQuery` package renamed. Migration:** `dev.inmo.tgbotapi.types.CallbackQuery([\s\\.])` -> `dev.inmo.tgbotapi.types.queries.callback$1`
