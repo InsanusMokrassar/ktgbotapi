@@ -49,10 +49,11 @@ fun Route.includeWebhookHandlingInRoute(
                 transformer(update)
             }.onSuccess {
                 call.respond(HttpStatusCode.OK)
+            }.onFailure {
+                call.respond(HttpStatusCode.InternalServerError)
             }
         } catch (e: Throwable) {
             exceptionsHandler ?.invoke(e)
-            call.respond(HttpStatusCode.InternalServerError)
         }
     }
 }
