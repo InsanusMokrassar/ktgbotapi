@@ -51,7 +51,7 @@ fun Route.includeWebhookHandlingInRoute(
                 call.respond(HttpStatusCode.OK)
             }.onFailure {
                 call.respond(HttpStatusCode.InternalServerError)
-            }
+            }.getOrThrow()
         } catch (e: Throwable) {
             exceptionsHandler ?.invoke(e)
         }
