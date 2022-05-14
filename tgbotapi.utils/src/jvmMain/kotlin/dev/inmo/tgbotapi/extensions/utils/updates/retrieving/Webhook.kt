@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
-import dev.inmo.micro_utils.coroutines.ExceptionHandler
-import dev.inmo.micro_utils.coroutines.safely
+import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.extensions.utils.nonstrictJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.updates.flowsUpdatesFilter
@@ -10,6 +9,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy
 import dev.inmo.tgbotapi.updateshandlers.*
 import dev.inmo.tgbotapi.updateshandlers.webhook.WebhookPrivateKeyConfig
+import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.call
 import io.ktor.server.engine.*
 import io.ktor.server.request.receiveText
@@ -39,18 +39,22 @@ fun Route.includeWebhookHandlingInRoute(
 ) {
     val transformer = scope.updateHandlerWithMediaGroupsAdaptation(block, mediaGroupsDebounceTimeMillis)
     post {
-        safely(
-            exceptionsHandler ?: {}
-        ) {
-            val asJson =
-                nonstrictJsonFormat.parseToJsonElement(call.receiveText())
-            val update = nonstrictJsonFormat.decodeFromJsonElement(
-                UpdateDeserializationStrategy,
-                asJson
-            )
-            transformer(update)
+        try {
+            runCatchingSafely {
+                val asJson = nonstrictJsonFormat.parseToJsonElement(call.receiveText())
+                val update = nonstrictJsonFormat.decodeFromJsonElement(
+                    UpdateDeserializationStrategy,
+                    asJson
+                )
+                transformer(update)
+            }.onSuccess {
+                call.respond(HttpStatusCode.OK)
+            }.onFailure {
+                call.respond(HttpStatusCode.InternalServerError)
+            }.getOrThrow()
+        } catch (e: Throwable) {
+            exceptionsHandler ?.invoke(e)
         }
-        call.respond("Ok")
     }
 }
 
@@ -87,6 +91,7 @@ fun startListenWebhooks(
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     mediaGroupsDebounceTimeMillis: Long = 1000L,
+    additionalApplicationEngineEnvironmentConfigurator: ApplicationEngineEnvironmentBuilder.() -> Unit = {},
     block: UpdateReceiver<Update>
 ): ApplicationEngine {
     val env = applicationEngineEnvironment {
@@ -98,6 +103,7 @@ fun startListenWebhooks(
                 } ?: includeWebhookHandlingInRoute(scope, exceptionsHandler, mediaGroupsDebounceTimeMillis, block)
             }
         }
+
         privateKeyConfig ?.let {
             sslConnector(
                 privateKeyConfig.keyStore,
@@ -113,6 +119,7 @@ fun startListenWebhooks(
             port = listenPort
         }
 
+        additionalApplicationEngineEnvironmentConfigurator()
     }
 
     return embeddedServer(engineFactory, env).also {
@@ -142,10 +149,11 @@ suspend fun RequestsExecutor.setWebhookInfoAndStartListenWebhooks(
     privateKeyConfig: WebhookPrivateKeyConfig? = null,
     scope: CoroutineScope = CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher()),
     mediaGroupsDebounceTimeMillis: Long = 1000L,
+    additionalApplicationEngineEnvironmentConfigurator: ApplicationEngineEnvironmentBuilder.() -> Unit = {},
     block: UpdateReceiver<Update>
 ): ApplicationEngine = try {
     execute(setWebhookRequest)
-    startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, mediaGroupsDebounceTimeMillis, block)
+    startListenWebhooks(listenPort, engineFactory, exceptionsHandler, listenHost, listenRoute, privateKeyConfig, scope, mediaGroupsDebounceTimeMillis, additionalApplicationEngineEnvironmentConfigurator, block)
 } catch (e: Exception) {
     throw e
 }

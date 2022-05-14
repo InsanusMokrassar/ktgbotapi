@@ -1,5 +1,10 @@
 # TelegramBotAPI changelog
 
+## 1.1.0
+
+* `Utils`:
+    * New parameter `additionalApplicationEngineEnvironmentConfigurator` in `RequestsExecutor#setWebhookInfoAndStartListenWebhooks` and `startListenWebhooks`
+
 ## 1.0.1
 
 * `Versions`:
