@@ -7,8 +7,7 @@ import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.PreviewFeature
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.plus
+import kotlinx.coroutines.*
 
 /**
  * This function is used in [buildBehaviour] extensions to provide default [CoroutineScope] and allow to avoid all
@@ -30,18 +29,18 @@ suspend fun TelegramBot.buildBehaviour(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     block: BehaviourContextReceiver<Unit>
-) {
-    BehaviourContext(
-        this,
-        scope.let {
-              if (defaultExceptionsHandler == null) {
-                  it
-              } else {
-                  it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
-              }
-        },
-        flowUpdatesFilter
-    ).block()
+): BehaviourContext = BehaviourContext(
+    this,
+    scope.let {
+          if (defaultExceptionsHandler == null) {
+              it
+          } else {
+              it + ContextSafelyExceptionHandler(defaultExceptionsHandler)
+          }
+    },
+    flowUpdatesFilter
+).apply {
+    block()
 }
 
 /**
@@ -56,15 +55,14 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     block: BehaviourContextReceiver<Unit>
-) = FlowsUpdatesFilter().let {
-    buildBehaviour(
-        it,
-        scope,
-        defaultExceptionsHandler,
-        block
+): Job {
+    val behaviourContext = buildBehaviour(
+        scope = scope,
+        defaultExceptionsHandler = defaultExceptionsHandler,
+        block = block
     )
-    longPolling(
-        it,
+    return longPolling(
+        behaviourContext,
         scope = scope
     )
 }

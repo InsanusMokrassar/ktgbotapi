@@ -2,6 +2,9 @@
 
 ## 1.1.1
 
+* `Behaviour Builder`:
+    * Extension `TelegramBot#buildBehaviour` now returns `BehaviourContext`
+
 ## 1.1.0
 
 * `Utils`:
