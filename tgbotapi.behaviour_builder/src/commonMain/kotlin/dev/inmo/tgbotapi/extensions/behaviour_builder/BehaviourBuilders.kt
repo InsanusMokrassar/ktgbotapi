@@ -63,6 +63,6 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
     )
     return longPolling(
         behaviourContext,
-        scope = scope
+        scope = behaviourContext
     )
 }
