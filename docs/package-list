@@ -7462,14 +7462,13 @@ $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/commonAPIUrl/#/Poi
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/createFileLinkUrl/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/create-file-link-url.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/fileBaseUrl/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/file-base-url.html
 $dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/webAppDataSecretKey/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/web-app-data-secret-key.html
+$dokka.location:dev.inmo.tgbotapi.utils/TelegramAPIUrlsKeeper/webAppDataSecretKeyHash/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.utils/-telegram-a-p-i-urls-keeper/web-app-data-secret-key-hash.html
 $dokka.location:dev.inmo.tgbotapi.webapps////PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/index.html
-$dokka.location:dev.inmo.tgbotapi.webapps//HmacSHA256/dev.inmo.micro_utils.crypto.CryptoJs#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-hmac-s-h-a256.html
 $dokka.location:dev.inmo.tgbotapi.webapps//Telegram/org.w3c.dom.Window#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-telegram.html
 $dokka.location:dev.inmo.tgbotapi.webapps//answerWebAppQuery/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/answer-web-app-query.html
 $dokka.location:dev.inmo.tgbotapi.webapps//asUser/dev.inmo.tgbotapi.webapps.WebAppUser#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/as-user.html
 $dokka.location:dev.inmo.tgbotapi.webapps//colorScheme/dev.inmo.tgbotapi.webapps.WebApp#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/color-scheme.html
 $dokka.location:dev.inmo.tgbotapi.webapps//handleResult/#kotlin.Function0[kotlin.String?]#kotlin.Function1[kotlin.String,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/handle-result.html
-$dokka.location:dev.inmo.tgbotapi.webapps//hex/dev.inmo.micro_utils.crypto.CryptoJs#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/hex.html
 $dokka.location:dev.inmo.tgbotapi.webapps//isInitDataSafe/dev.inmo.tgbotapi.webapps.WebApp#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/is-init-data-safe.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onClick/dev.inmo.tgbotapi.webapps.MainButton#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-click.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onEvent/dev.inmo.tgbotapi.webapps.WebApp#dev.inmo.tgbotapi.webapps.EventType#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-event.html
