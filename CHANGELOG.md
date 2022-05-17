@@ -2,6 +2,11 @@
 
 ## 1.1.1
 
+* `Versions`:
+    * `MicroUtils.Crypto` will not be provided with that library anymore. Instead, it is recommended to use `Korlibs.Krypto`. You still can add crypto from microutils using next groovy dependency: `dev.inmo:micro_utils.crypto:$micro_utils_version`
+* `Core`:
+    * Improvements in `TelegramAPIUrlsKeeper#checkWebAppLink`
+    * New field in `TelegramAPIUrlsKeeper#webAppDataSecretKeyHash`
 * `Behaviour Builder`:
     * Extension `TelegramBot#buildBehaviour` now returns `BehaviourContext`
 

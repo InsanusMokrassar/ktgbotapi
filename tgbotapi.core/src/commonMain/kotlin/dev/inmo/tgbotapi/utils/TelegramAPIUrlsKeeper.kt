@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.utils
 
-import dev.inmo.micro_utils.crypto.hex
-import dev.inmo.micro_utils.crypto.hmacSha256
+import com.soywiz.krypto.*
+import io.ktor.http.decodeURLQueryComponent
+import io.ktor.utils.io.core.toByteArray
 
 const val telegramBotAPIDefaultUrl = "https://api.telegram.org"
 
@@ -22,9 +23,11 @@ class TelegramAPIUrlsKeeper(
     hostUrl: String = telegramBotAPIDefaultUrl,
     urlsSuffixes: String = ""
 ) {
-    val webAppDataSecretKey by lazy {
-        token.hmacSha256("WebAppData")
+    val webAppDataSecretKeyHash by lazy {
+        HMAC.hmacSHA256("WebAppData".toByteArray(), token.toByteArray())
     }
+    val webAppDataSecretKey
+        get() = webAppDataSecretKeyHash.hexLower
 
     val commonAPIUrl: String
     val fileBaseUrl: String
@@ -47,5 +50,14 @@ class TelegramAPIUrlsKeeper(
      * @param rawData Data from [dev.inmo.tgbotapi.webapps.WebApp.initData]
      * @param hash Data from [dev.inmo.tgbotapi.webapps.WebApp.initDataUnsafe] from the field [dev.inmo.tgbotapi.webapps.WebAppInitData.hash]
      */
-    fun checkWebAppLink(rawData: String, hash: String) = rawData.hmacSha256(webAppDataSecretKey).hex() == hash
+    fun checkWebAppLink(rawData: String, hash: String): Boolean {
+        val preparedData = rawData
+            .decodeURLQueryComponent()
+            .split("&")
+            .filterNot { it.startsWith("hash=") }
+            .sorted()
+            .joinToString("\n")
+
+        return HMAC.hmacSHA256(webAppDataSecretKeyHash.bytes, preparedData.toByteArray()).hexLower == hash.lowercase()
+    }
 }
