@@ -6,13 +6,10 @@ import dev.inmo.micro_utils.fsm.common.managers.DefaultStatesManager
 import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
-import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
-import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
-import kotlin.reflect.KClass
 
 @Deprecated("Will be removed soon")
 typealias BehaviourContextWithFSMBuilder<T> = BehaviourContextWithFSM<T>
@@ -33,6 +30,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
@@ -41,7 +39,8 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
         upstreamUpdatesFlow = upstreamUpdatesFlow
     ),
     presetHandlers,
-    statesManager
+    statesManager,
+    onStateHandlingErrorHandler
 ).apply { block() }
 
 /**
@@ -55,6 +54,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<DefaultBehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
     upstreamUpdatesFlow,
@@ -62,6 +62,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler,
     statesManager,
     presetHandlers,
+    onStateHandlingErrorHandler,
     block
 ).run {
     this to scope.launch {
@@ -94,6 +95,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
     DefaultBehaviourContext(
@@ -102,6 +104,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
         upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow
     ),
     presetHandlers,
+    onStateHandlingErrorHandler,
     statesManager
 ).apply { block() }
 
