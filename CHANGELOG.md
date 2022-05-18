@@ -2,6 +2,9 @@
 
 ## 1.1.2
 
+* `Core`:
+    * Rename of `TelegramAPIUrlsKeeper#checkWebAppLink` -> `TelegramAPIUrlsKeeper#checkWebAppData` (fix of [#591](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/591))
+
 ## 1.1.1
 
 * `Versions`:
