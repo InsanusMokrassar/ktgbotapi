@@ -39,6 +39,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     testServer: Boolean = false,
+    onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -52,6 +53,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
         defaultExceptionsHandler,
         statesManager,
         presetHandlers,
+        onStateHandlingErrorHandler,
         block
     )
 }
@@ -76,6 +78,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     testServer: Boolean = false,
+    onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -89,6 +92,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
             defaultExceptionsHandler,
             statesManager,
             presetHandlers,
+            onStateHandlingErrorHandler,
             block
         )
     }

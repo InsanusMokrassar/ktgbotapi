@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.webapps
 
-import dev.inmo.micro_utils.crypto.CryptoJS
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 
 external class WebApp {
@@ -77,7 +76,7 @@ fun WebApp.onMainButtonClicked(eventHandler: EventHandler) = onEvent(EventType.M
  */
 fun WebApp.onViewportChanged(eventHandler: ViewportChangedEventHandler) = onEvent(EventType.ViewportChanged, eventHandler)
 
-fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppLink(
+fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
     initData,
     initDataUnsafe.hash
 )

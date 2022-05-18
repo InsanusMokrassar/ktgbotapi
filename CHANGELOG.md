@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 1.1.2
+
+* `Core`:
+    * Rename of `TelegramAPIUrlsKeeper#checkWebAppLink` -> `TelegramAPIUrlsKeeper#checkWebAppData` (fix of [#591](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/591))
+* `Behaviour Builder with FSM`:
+    * New typealias `StateHandlingErrorHandler`
+    * `BehaviourBuilderWithFSM` now accepts new parameter `onStateHandlingErrorHandler` which will be used in case if state has not been successfully completed
+
 ## 1.1.1
 
 * `Versions`:

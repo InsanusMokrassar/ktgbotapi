@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
-import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
-import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.micro_utils.fsm.common.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -50,12 +49,32 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
     ): BehaviourContextWithFSM<T>
 
+    fun copy(
+        bot: TelegramBot = this.bot,
+        scope: CoroutineScope = this.scope,
+        broadcastChannelsSize: Int = 100,
+        onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
+        upstreamUpdatesFlow: Flow<Update>? = null,
+        triggersHolder: TriggersHolder = this.triggersHolder,
+        onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
+        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
+    ): BehaviourContextWithFSM<T> = copy(
+        bot,
+        scope,
+        broadcastChannelsSize,
+        onBufferOverflow,
+        upstreamUpdatesFlow,
+        triggersHolder,
+        updatesFilter
+    )
+
     companion object {
         operator fun <T : State> invoke(
             behaviourContext: BehaviourContext,
             handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
-            statesManager: StatesManager<T>
-        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers)
+            statesManager: StatesManager<T>,
+            onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler()
+        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers, onStateHandlingErrorHandler)
     }
 }
 
@@ -84,15 +103,25 @@ inline fun <reified I : O, O: State> BehaviourContextWithFSM<O>.strictlyOn(handl
 /**
  * Default realization of [BehaviourContextWithFSM]. It uses [behaviourContext] as a base for this object as
  * [BehaviourContext], but managing substates contexts updates for avoiding of updates lost between states
+ * @param onStateHandlingErrorHandler Will be used in case if state handling has not been successfully completed in [launchStateHandling]
  */
 class DefaultBehaviourContextWithFSM<T : State>(
     private val behaviourContext: BehaviourContext,
     private val statesManager: StatesManager<T>,
-    private val handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>
+    private val handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
+    private val onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler()
 ) : BehaviourContext by behaviourContext, BehaviourContextWithFSM<T> {
     private val updatesFlows = mutableMapOf<Any, DefaultBehaviourContextWithFSM<T>>()
     private val additionalHandlers = mutableListOf<BehaviourWithFSMStateHandlerHolder<*, T>>()
     private var actualHandlersList = additionalHandlers + handlers
+
+    override suspend fun launchStateHandling(state: T, handlers: List<CheckableHandlerHolder<in T, T>>): T? {
+        return runCatchingSafely {
+            super.launchStateHandling(state, handlers)
+        }.getOrElse {
+            onStateHandlingErrorHandler(state, it)
+        }
+    }
 
     private fun getSubContext(context: Any) = updatesFlows.getOrPut(context) {
         createSubContext()
@@ -174,6 +203,23 @@ class DefaultBehaviourContextWithFSM<T : State>(
     ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
         behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder, updatesFilter),
         handlers,
-        statesManager
+        statesManager,
+        onStateHandlingErrorHandler
+    )
+
+    override fun copy(
+        bot: TelegramBot,
+        scope: CoroutineScope,
+        broadcastChannelsSize: Int,
+        onBufferOverflow: BufferOverflow,
+        upstreamUpdatesFlow: Flow<Update>?,
+        triggersHolder: TriggersHolder,
+        onStateHandlingErrorHandler: StateHandlingErrorHandler<T>,
+        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
+    ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
+        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder, updatesFilter),
+        handlers,
+        statesManager,
+        onStateHandlingErrorHandler
     )
 }
