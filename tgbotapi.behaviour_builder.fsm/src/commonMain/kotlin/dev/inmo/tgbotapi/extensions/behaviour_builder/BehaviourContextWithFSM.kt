@@ -58,7 +58,15 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         triggersHolder: TriggersHolder = this.triggersHolder,
         onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
-    ): BehaviourContextWithFSM<T>
+    ): BehaviourContextWithFSM<T> = copy(
+        bot,
+        scope,
+        broadcastChannelsSize,
+        onBufferOverflow,
+        upstreamUpdatesFlow,
+        triggersHolder,
+        updatesFilter
+    )
 
     companion object {
         operator fun <T : State> invoke(
