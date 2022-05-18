@@ -104,8 +104,8 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
         upstreamUpdatesFlow = flowUpdatesFilter.allUpdatesFlow
     ),
     presetHandlers,
-    onStateHandlingErrorHandler,
-    statesManager
+    statesManager,
+    onStateHandlingErrorHandler
 ).apply { block() }
 
 /**
@@ -124,6 +124,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
@@ -132,6 +133,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
         defaultExceptionsHandler,
         statesManager,
         presetHandlers,
+        onStateHandlingErrorHandler,
         block
     ).run {
         start()
