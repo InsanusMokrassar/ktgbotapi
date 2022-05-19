@@ -4,6 +4,8 @@ import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.micro_utils.fsm.common.*
 import dev.inmo.micro_utils.fsm.common.managers.DefaultStatesManager
 import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
+import dev.inmo.micro_utils.fsm.common.utils.StateHandlingErrorHandler
+import dev.inmo.micro_utils.fsm.common.utils.defaultStateHandlingErrorHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.types.update.abstracts.Update

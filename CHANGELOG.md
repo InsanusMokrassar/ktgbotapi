@@ -2,6 +2,9 @@
 
 ## 1.1.3
 
+* `Behaviour Builder with FSM`:
+    * Typealias `StateHandlingErrorHandler` from `1.1.2` has been deprecated and should be replaced with the new one from microutils
+
 ## 1.1.2
 
 * `Core`:

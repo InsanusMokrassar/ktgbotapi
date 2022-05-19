@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder
 
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.micro_utils.fsm.common.*
+import dev.inmo.micro_utils.fsm.common.utils.StateHandlingErrorHandler
+import dev.inmo.micro_utils.fsm.common.utils.defaultStateHandlingErrorHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.TriggersHolder
@@ -116,11 +118,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
     private var actualHandlersList = additionalHandlers + handlers
 
     override suspend fun launchStateHandling(state: T, handlers: List<CheckableHandlerHolder<in T, T>>): T? {
-        return runCatchingSafely {
-            super.launchStateHandling(state, handlers)
-        }.getOrElse {
-            onStateHandlingErrorHandler(state, it)
-        }
+        return launchStateHandling(state, handlers, onStateHandlingErrorHandler)
     }
 
     private fun getSubContext(context: Any) = updatesFlows.getOrPut(context) {
