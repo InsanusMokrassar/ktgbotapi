@@ -5,6 +5,8 @@ import dev.inmo.micro_utils.fsm.common.State
 import dev.inmo.micro_utils.fsm.common.StatesManager
 import dev.inmo.micro_utils.fsm.common.managers.DefaultStatesManager
 import dev.inmo.micro_utils.fsm.common.managers.InMemoryDefaultStatesManagerRepo
+import dev.inmo.micro_utils.fsm.common.utils.StateHandlingErrorHandler
+import dev.inmo.micro_utils.fsm.common.utils.defaultStateHandlingErrorHandler
 import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.bot.TelegramBot
