@@ -2,6 +2,9 @@
 
 ## 1.1.4
 
+* `Behaviour Builder`:
+    * Improvements in updates passing inside of subcontexts
+
 ## 1.1.3
 
 * `Behaviour Builder with FSM`:
