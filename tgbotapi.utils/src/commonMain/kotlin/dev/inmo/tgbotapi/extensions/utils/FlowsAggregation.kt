@@ -22,13 +22,16 @@ fun <T> aggregateFlows(
     return sharedFlow
 }
 
-fun <T> Flow<Iterable<T>>.flatMap(): Flow<T> = flow {
+fun <T> Flow<Iterable<T>>.flatten(): Flow<T> = flow {
     collect {
         it.forEach {
             emit(it)
         }
     }
 }
+
+@Deprecated("Renamed", ReplaceWith("flatten", "dev.inmo.tgbotapi.extensions.utils.flatten"))
+fun <T> Flow<Iterable<T>>.flatMap(): Flow<T> = flatten()
 
 fun <T, R> Flow<T>.flatMap(mapper: (T) -> Iterable<R>): Flow<R> = flow {
     collect {

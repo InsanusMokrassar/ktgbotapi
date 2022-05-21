@@ -12,212 +12,150 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
+import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
 
 typealias EventMessageToEventMapper<T> = suspend ChatEventMessage<T>.() -> T?
 
-private suspend inline fun <reified O : ChatEvent> BehaviourContext.waitEvents(
+@RiskFeature(lowLevelRiskFeatureMessage)
+suspend inline fun <reified O : ChatEvent> BehaviourContext.waitEvents(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<O>>? = null
-): List<O> = expectFlow(
+    noinline errorFactory: NullableRequestBuilder<*> = { null }
+): Flow<O> = expectFlow(
     initRequest,
-    count,
     errorFactory
 ) {
-    val data = it.asBaseSentMessageUpdate() ?.data ?.asChatEventMessage() ?.withEvent<O>() ?: return@expectFlow emptyList()
-    if (filter == null || filter(data)) {
-        listOf(data.chatEvent)
-    } else {
-        emptyList()
-    }
-}.toList().toList()
+    it.asBaseSentMessageUpdate() ?.data ?.asChatEventMessage() ?.withEvent<O>() ?.chatEvent.let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitChannelEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<ChannelEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChannelEvent>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitPrivateEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<PrivateEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<PrivateEvent>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitChatEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<ChatEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChatEvent>(initRequest, errorFactory)
 
 @Deprecated("Renamed as Video instead of Voice")
 suspend fun BehaviourContext.waitVoiceChatEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VideoChatEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<VideoChatEvent>(initRequest, errorFactory)
 @Deprecated("Renamed as Video instead of Voice")
 suspend fun BehaviourContext.waitVoiceChatStartedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VideoChatStarted>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<VideoChatStarted>(initRequest, errorFactory)
 @Deprecated("Renamed as Video instead of Voice")
 suspend fun BehaviourContext.waitVoiceChatEndedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VideoChatEnded>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<VideoChatEnded>(initRequest, errorFactory)
 @Deprecated("Renamed as Video instead of Voice")
 suspend fun BehaviourContext.waitVoiceChatParticipantsInvitedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VideoChatParticipantsInvited>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<VideoChatParticipantsInvited>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitVideoChatEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VideoChatEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<VideoChatEvent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitVideoChatStartedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VideoChatStarted>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<VideoChatStarted>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitVideoChatEndedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VideoChatEnded>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<VideoChatEnded>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitVideoChatParticipantsInvitedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<VideoChatParticipantsInvited>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<VideoChatParticipantsInvited>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitMessageAutoDeleteTimerChangedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<MessageAutoDeleteTimerChanged>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<MessageAutoDeleteTimerChanged>(initRequest, errorFactory)
 
 
 suspend fun BehaviourContext.waitPublicChatEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<PublicChatEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<PublicChatEvent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitCommonEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<CommonEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<CommonEvent>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitGroupEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<GroupEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<GroupEvent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitSupergroupEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<SupergroupEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<SupergroupEvent>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitChannelChatCreatedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<ChannelChatCreated>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChannelChatCreated>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitDeleteChatPhotoEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<DeleteChatPhoto>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<DeleteChatPhoto>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitGroupChatCreatedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<GroupChatCreated>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<GroupChatCreated>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitLeftChatMemberEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<LeftChatMember>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<LeftChatMember>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitNewChatPhotoEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<NewChatPhoto>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<NewChatPhoto>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitNewChatMembersEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<NewChatMembers>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<NewChatMembers>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitNewChatTitleEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<NewChatTitle>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<NewChatTitle>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitPinnedMessageEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<PinnedMessage>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<PinnedMessage>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitProximityAlertTriggeredEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<ProximityAlertTriggered>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ProximityAlertTriggered>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitSupergroupChatCreatedEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<SupergroupChatCreated>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<SupergroupChatCreated>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitSuccessfulPaymentEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<SuccessfulPaymentEvent>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<SuccessfulPaymentEvent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitUserLoggedInEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatEventMessage<UserLoggedIn>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<UserLoggedIn>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitWebAppDataEvents(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<PrivateEventMessage<WebAppData>>? = null
-) = waitEvents(initRequest, errorFactory, count, filter ?.let { SimpleFilter<ChatEventMessage<WebAppData>> { it is PrivateEventMessage && filter(it) } })
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<WebAppData>(initRequest, errorFactory)

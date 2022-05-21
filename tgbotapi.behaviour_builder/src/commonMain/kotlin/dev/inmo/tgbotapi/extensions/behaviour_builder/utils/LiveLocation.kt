@@ -3,9 +3,12 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.utils
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTypeReceiver
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitEditedLocation
+import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitEditedLocationMessage
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
 
 /**
  * Use this extension when you want to follow [LiveLocation] until it will became [StaticLocation]. This method
@@ -20,11 +23,7 @@ suspend fun BehaviourContext.followLocation(
     onLocation(message.content.location)
 
     while (currentLocation !is StaticLocation) {
-        currentLocation = waitEditedLocation(
-            filter = {
-                it.messageId == message.messageId && it.chat.id == message.chat.id
-            }
-        ).first().location
+        currentLocation = waitEditedLocationMessage().filter { it.messageId == message.messageId && it.chat.id == message.chat.id }.first().content.location
         onLocation(currentLocation)
     }
 }

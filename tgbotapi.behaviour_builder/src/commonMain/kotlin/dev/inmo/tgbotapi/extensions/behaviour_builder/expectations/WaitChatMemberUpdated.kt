@@ -7,45 +7,35 @@ import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
 
 typealias ChatMemberUpdatedMapper<T> = suspend T.() -> T?
 
-private suspend inline fun <reified T : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdatedWithFilter(
-    count: Int = 1,
+@RiskFeature(lowLevelRiskFeatureMessage)
+suspend inline fun <reified O : ChatMemberUpdatedUpdate> BehaviourContext.waitChatMemberUpdatedWithFilter(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<T>? = null
-): List<ChatMemberUpdated> = expectFlow(
+    noinline errorFactory: NullableRequestBuilder<*> = { null }
+): Flow<ChatMemberUpdated> = expectFlow(
     initRequest,
-    count,
     errorFactory
 ) {
-    val casted = (it as? T) ?: return@expectFlow emptyList()
-    if (filter == null || filter(casted)) {
-        listOf(casted.data)
-    } else {
-        emptyList()
-    }
-}.toList().toList()
+    (it as? O) ?.data.let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitChatMemberUpdated(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatMemberUpdatedUpdate>? = null
-) = waitChatMemberUpdatedWithFilter(count, initRequest, errorFactory, filter)
+) = waitChatMemberUpdatedWithFilter<ChatMemberUpdatedUpdate>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitCommonChatMemberUpdated(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonChatMemberUpdatedUpdate>? = null
-) = waitChatMemberUpdatedWithFilter(count, initRequest, errorFactory, filter)
+) = waitChatMemberUpdatedWithFilter<CommonChatMemberUpdatedUpdate>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitMyChatMemberUpdated(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<MyChatMemberUpdatedUpdate>? = null
-) = waitChatMemberUpdatedWithFilter(count, initRequest, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitChatMemberUpdatedWithFilter<MyChatMemberUpdatedUpdate>(initRequest, errorFactory)

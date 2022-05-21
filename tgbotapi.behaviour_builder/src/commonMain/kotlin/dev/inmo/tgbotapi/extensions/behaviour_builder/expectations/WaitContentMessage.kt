@@ -16,19 +16,19 @@ import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
+import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
 typealias CommonMessageToCommonMessageMapper<T> = suspend CommonMessage<T>.() -> CommonMessage<T>?
 
-internal suspend inline fun <reified O : MessageContent> BehaviourContext.waitContentMessage(
-    count: Int = 1,
+@RiskFeature(lowLevelRiskFeatureMessage)
+suspend inline fun <reified O : MessageContent> BehaviourContext.waitContentMessage(
     initRequest: Request<*>? = null,
     includeMediaGroups: Boolean = true,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<CommonMessage<O>>? = null
+    noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<CommonMessage<O>> = expectFlow(
     initRequest,
-    count,
     errorFactory
 ) {
     val messages = when (it) {
@@ -43,13 +43,7 @@ internal suspend inline fun <reified O : MessageContent> BehaviourContext.waitCo
         else -> return@expectFlow emptyList()
     }
     messages.mapNotNull { message ->
-        @Suppress("UNCHECKED_CAST")
-        val asCommonMessage = (message as? CommonMessage<*>) ?.withContent<O>() ?: return@mapNotNull null
-        if (filter == null || filter(asCommonMessage)) {
-            asCommonMessage
-        } else {
-            null
-        }
+        (message as? CommonMessage<*>) ?.withContent<O>()
     }
 }
 
@@ -73,161 +67,111 @@ internal inline fun <reified T : MessageContent> contentMessageConverter(
 suspend fun BehaviourContext.waitContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<MessageContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = true
+) = waitContentMessage<MessageContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitContactMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<ContactContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<ContactContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitDiceMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<DiceContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<DiceContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitGameMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<GameContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<GameContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitLocationMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<LocationContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<LocationContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitLiveLocationMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<LiveLocationContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<LiveLocationContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitStaticLocationMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<StaticLocationContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<StaticLocationContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitPollMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<PollContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<PollContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitTextMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<TextContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<TextContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitVenueMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<VenueContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<VenueContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitAudioMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<AudioMediaGroupContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = true
+) = waitContentMessage<AudioMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitDocumentMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<DocumentMediaGroupContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = true
+) = waitContentMessage<DocumentMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitMediaMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<MediaContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = false
+) = waitContentMessage<MediaContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitAnyMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<MediaGroupContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = true
+) = waitContentMessage<MediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitVisualMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<VisualMediaGroupContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = true
+) = waitContentMessage<VisualMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitTextedMediaContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<TextedMediaContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = true
+) = waitContentMessage<TextedMediaContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitAnimationMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<AnimationContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<AnimationContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitAudioMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<AudioContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = false
+) = waitContentMessage<AudioContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitDocumentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<DocumentContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = false
+) = waitContentMessage<DocumentContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitPhotoMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<PhotoContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = false
+) = waitContentMessage<PhotoContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitStickerMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<StickerContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<StickerContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitVideoMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<VideoContent>>? = null
-) = waitContentMessage(count, initRequest, includeMediaGroups, errorFactory, filter)
+    includeMediaGroups: Boolean = false
+) = waitContentMessage<VideoContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitVideoNoteMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<VideoNoteContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<VideoNoteContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitVoiceMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<VoiceContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<VoiceContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitInvoiceMessage(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<InvoiceContent>>? = null
-) = waitContentMessage(count, initRequest, false, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<InvoiceContent>(initRequest, false, errorFactory)

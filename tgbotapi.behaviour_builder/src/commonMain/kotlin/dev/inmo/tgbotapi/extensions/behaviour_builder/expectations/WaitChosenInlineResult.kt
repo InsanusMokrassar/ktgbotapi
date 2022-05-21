@@ -5,45 +5,35 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.utils.asChosenInlineResultUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
+import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
 
 typealias ChosenInlineResultMapper<T> = suspend T.() -> T?
 
-private suspend inline fun <reified O> BehaviourContext.waitChosenInlineResults(
-    count: Int = 1,
+@RiskFeature(lowLevelRiskFeatureMessage)
+suspend inline fun <reified O> BehaviourContext.waitChosenInlineResults(
     initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<O>? = null
-): List<O> = expectFlow(
+    noinline errorFactory: NullableRequestBuilder<*> = { null }
+): Flow<O> = expectFlow(
     initRequest,
-    count,
     errorFactory
 ) {
-    val data = it.asChosenInlineResultUpdate() ?.data as? O ?: return@expectFlow emptyList()
-    if (filter == null || filter(data)) {
-        listOf(data)
-    } else {
-        emptyList()
-    }
-}.toList().toList()
+    (it.asChosenInlineResultUpdate() ?.data as? O).let(::listOfNotNull)
+}
 
 suspend fun BehaviourContext.waitChosenInlineResult(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChosenInlineResult>? = null
-) = waitChosenInlineResults(count, initRequest, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitChosenInlineResults<ChosenInlineResult>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitLocationChosenInlineResult(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<LocationChosenInlineResult>? = null
-) = waitChosenInlineResults(count, initRequest, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitChosenInlineResults<LocationChosenInlineResult>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitBaseChosenInlineResult(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<BaseChosenInlineResult>? = null
-) = waitChosenInlineResults(count, initRequest, errorFactory, filter)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitChosenInlineResults<BaseChosenInlineResult>(initRequest, errorFactory)
