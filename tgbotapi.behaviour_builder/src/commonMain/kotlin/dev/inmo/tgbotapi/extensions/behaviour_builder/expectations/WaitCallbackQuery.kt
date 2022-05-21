@@ -22,8 +22,8 @@ private suspend fun <O> BehaviourContext.waitCallbackQueries(
     count,
     errorFactory
 ) {
-    val data = it.asCallbackQueryUpdate() ?.data
-    if (data != null && (filter == null || filter(data))) {
+    val data = it.asCallbackQueryUpdate() ?.data ?: return@expectFlow emptyList()
+    if (filter == null || filter(data)) {
         data.mapper().let(::listOfNotNull)
     } else {
         emptyList()

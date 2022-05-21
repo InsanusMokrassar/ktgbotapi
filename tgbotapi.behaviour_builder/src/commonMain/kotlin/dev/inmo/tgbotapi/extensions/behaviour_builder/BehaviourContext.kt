@@ -55,9 +55,22 @@ interface BehaviourContext : FlowsUpdatesFilter, TelegramBot, CoroutineScope {
         broadcastChannelsSize: Int = 100,
         onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
         upstreamUpdatesFlow: Flow<Update>? = null,
+        triggersHolder: TriggersHolder = TriggersHolder()
+    ): BehaviourContext
+
+    /**
+     * @param updatesFilter unused
+     */
+    @Deprecated("Do not use this method")
+    fun copy(
+        bot: TelegramBot = this.bot,
+        scope: CoroutineScope = this.scope,
+        broadcastChannelsSize: Int = 100,
+        onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
+        upstreamUpdatesFlow: Flow<Update>? = null,
         triggersHolder: TriggersHolder = TriggersHolder(),
         updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
-    ): BehaviourContext
+    ): BehaviourContext = copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder)
 }
 
 class DefaultBehaviourContext(
@@ -67,6 +80,7 @@ class DefaultBehaviourContext(
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
     private val upstreamUpdatesFlow: Flow<Update>? = null,
     override val triggersHolder: TriggersHolder = TriggersHolder(),
+    @Deprecated("This method is not used anymore")
     private val updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
 ) : AbstractFlowsUpdatesFilter(), TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
 
@@ -80,13 +94,6 @@ class DefaultBehaviourContext(
         } else {
             it
         }
-    }.let {
-        val updatesFilter = updatesFilter
-        if (updatesFilter != null) {
-            it.filter { updatesFilter(it) }
-        } else {
-            it
-        }
     }.accumulatorFlow(scope)
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
 
@@ -96,9 +103,8 @@ class DefaultBehaviourContext(
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
-        triggersHolder: TriggersHolder,
-        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
-    ): DefaultBehaviourContext = DefaultBehaviourContext(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder, updatesFilter)
+        triggersHolder: TriggersHolder
+    ): DefaultBehaviourContext = DefaultBehaviourContext(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder)
 }
 
 fun BehaviourContext(
@@ -116,23 +122,33 @@ inline fun <T> BehaviourContext(
     crossinline block: BehaviourContext.() -> T
 ) = DefaultBehaviourContext(bot, scope, upstreamUpdatesFlow = flowsUpdatesFilter.allUpdatesFlow, triggersHolder = triggersHolder).run(block)
 
+/**
+ * Creates new [BehaviourContext] using its [BehaviourContext.copy] method
+ *
+ * @param updatesFilter This param will not be used anymore
+ */
 fun <BC : BehaviourContext> BC.createSubContext(
     scope: CoroutineScope = LinkedSupervisorScope(),
     triggersHolder: TriggersHolder = this.triggersHolder,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
-    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>? = null,
 ) = copy(
     scope = scope,
-    updatesFilter = updatesFilter ?.let { _ ->
-        {
-            (this as? BC) ?.run {
-                updatesFilter(it)
-            } ?: true
-        }
-    },
     upstreamUpdatesFlow = updatesUpstreamFlow,
     triggersHolder = triggersHolder
 ) as BC
+
+/**
+ * Creates new [BehaviourContext] using its [BehaviourContext.copy] method
+ *
+ * @param updatesFilter This param will not be used anymore
+ */
+@Deprecated("It is not recommended to use updates filter anymore")
+fun <BC : BehaviourContext> BC.createSubContext(
+    scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>?,
+) = createSubContext(scope, triggersHolder, updatesUpstreamFlow)
 
 /**
  * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
@@ -158,18 +174,37 @@ suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter
     scope: CoroutineScope = LinkedSupervisorScope(),
     triggersHolder: TriggersHolder = this.triggersHolder,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
-    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>? = null,
     stopOnCompletion: Boolean = true,
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
 ): T {
     return createSubContext(
         scope,
         triggersHolder,
-        updatesUpstreamFlow,
-        updatesFilter
+        updatesUpstreamFlow
     ).doInContext(
         stopOnCompletion,
         behaviourContextReceiver
+    )
+}
+
+/**
+ * Creates new one [BehaviourContext] using [createSubContext] and launches [behaviourContextReceiver] in a new context
+ * using [doInContext]
+ *
+ * @param stopOnCompletion ___TRUE BY DEFAULT___
+ * @param updatesFilter Is not used anymore
+ */
+@Deprecated("It is not recommended to use updates filter anymore")
+suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter(
+    scope: CoroutineScope = LinkedSupervisorScope(),
+    triggersHolder: TriggersHolder = this.triggersHolder,
+    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
+    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>?,
+    stopOnCompletion: Boolean = true,
+    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
+): T {
+    return createSubContextAndDoWithUpdatesFilter(
+        scope, triggersHolder, updatesUpstreamFlow, stopOnCompletion, behaviourContextReceiver
     )
 }
 
