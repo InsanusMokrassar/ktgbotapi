@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 1.1.4
+
 ## 1.1.3
 
 * `Behaviour Builder with FSM`:
