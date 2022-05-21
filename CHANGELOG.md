@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 1.2.0
+## 2.0.0
 
 * `Behaviour Builder`:
     * Mappers have been removed from waiters extensions
