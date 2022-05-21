@@ -34,7 +34,6 @@ import dev.inmo.tgbotapi.types.message.content.MediaContent
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.utils.PreviewFeature
 
 internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onEditedContent(
     initialFilter: CommonMessageFilter<T>? = null,

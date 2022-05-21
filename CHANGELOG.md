@@ -3,7 +3,10 @@
 ## 1.2.0
 
 * `Behaviour Builder`:
-    * Improvements in updates passing inside of subcontexts
+    * Mappers have been removed from waiters extensions
+    * Triggers extensions now will use filtering inside of context receiver instead of passing the filters into `BehaviourContext`. That means that in the subcontext will not be used preinstalled filters for their `BehaviourContext` and filter of trigger will not be used in subcontext
+* `Utils`:
+    * Add opportunity to get event messages with specific `ChatEvent` type using `withEvent`/`requireWithEvent` (by analog with `withEvent` and `requireWithEvent`)
 
 ## 1.1.3
 

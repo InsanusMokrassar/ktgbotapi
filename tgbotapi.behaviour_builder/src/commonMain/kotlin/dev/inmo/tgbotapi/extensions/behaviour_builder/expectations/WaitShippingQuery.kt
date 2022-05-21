@@ -9,20 +9,19 @@ import kotlinx.coroutines.flow.toList
 
 typealias ShippingQueryMapper = suspend ShippingQuery.() -> ShippingQuery?
 
-private suspend fun <O> BehaviourContext.waitShippingQueries(
+private suspend inline fun <reified O : ShippingQuery> BehaviourContext.waitShippingQueries(
     count: Int = 1,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<ShippingQuery>? = null,
-    mapper: suspend ShippingQuery.() -> O?
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
+    filter: SimpleFilter<O>? = null
 ): List<O> = expectFlow(
     initRequest,
     count,
     errorFactory
 ) {
-    val data = it.asShippingQueryUpdate() ?.data
-    if (data != null && (filter == null || filter(data))) {
-        data.mapper().let(::listOfNotNull)
+    val data = it.asShippingQueryUpdate() ?.data as? O ?: return@expectFlow emptyList()
+    if (filter == null || filter(data)) {
+        listOf(data)
     } else {
         emptyList()
     }
@@ -33,17 +32,10 @@ suspend fun BehaviourContext.waitShippingQueries(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<ShippingQuery>? = null,
-    mapper: ShippingQueryMapper? = null
+    filter: SimpleFilter<ShippingQuery>? = null
 ) : List<ShippingQuery> = waitShippingQueries(
     count,
     initRequest,
     errorFactory,
     filter
-) {
-    if (mapper == null) {
-        this
-    } else {
-        mapper(this)
-    }
-}
+)

@@ -9,73 +9,41 @@ import kotlinx.coroutines.flow.toList
 
 typealias ChosenInlineResultMapper<T> = suspend T.() -> T?
 
-private suspend fun <O> BehaviourContext.waitChosenInlineResultsUpdates(
+private suspend inline fun <reified O> BehaviourContext.waitChosenInlineResults(
     count: Int = 1,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<ChosenInlineResult>? = null,
-    mapper: suspend ChosenInlineResult.() -> O?
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
+    filter: SimpleFilter<O>? = null
 ): List<O> = expectFlow(
     initRequest,
     count,
     errorFactory
 ) {
-    val data = it.asChosenInlineResultUpdate() ?.data
-    if (data != null && (filter == null || filter(data))) {
-        data.mapper().let(::listOfNotNull)
+    val data = it.asChosenInlineResultUpdate() ?.data as? O ?: return@expectFlow emptyList()
+    if (filter == null || filter(data)) {
+        listOf(data)
     } else {
         emptyList()
     }
 }.toList().toList()
 
-
-private suspend inline fun <reified T : ChosenInlineResult> BehaviourContext.waitChosenInlineResults(
-    count: Int = 1,
-    initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<T>? = null,
-    noinline mapper: ChosenInlineResultMapper<T>? = null
-) : List<T> = this@waitChosenInlineResults.waitChosenInlineResultsUpdates<T>(
-    count,
-    initRequest,
-    errorFactory,
-    filter ?.let {
-        {
-            (it as? T) ?.let { filter(it) } == true
-        }
-    }
-) {
-    if (this is T) {
-        if (mapper == null) {
-            this
-        } else {
-            mapper(this)
-        }
-    } else {
-        null
-    }
-}
-
 suspend fun BehaviourContext.waitChosenInlineResult(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<ChosenInlineResult>? = null,
-    mapper: ChosenInlineResultMapper<ChosenInlineResult>? = null
-) = waitChosenInlineResults(count, initRequest, errorFactory, filter, mapper)
+    filter: SimpleFilter<ChosenInlineResult>? = null
+) = waitChosenInlineResults(count, initRequest, errorFactory, filter)
 
 suspend fun BehaviourContext.waitLocationChosenInlineResult(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<LocationChosenInlineResult>? = null,
-    mapper: PollMapper<LocationChosenInlineResult>? = null
-) = waitChosenInlineResults(count, initRequest, errorFactory, filter, mapper)
+    filter: SimpleFilter<LocationChosenInlineResult>? = null
+) = waitChosenInlineResults(count, initRequest, errorFactory, filter)
 
 suspend fun BehaviourContext.waitBaseChosenInlineResult(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<BaseChosenInlineResult>? = null,
-    mapper: PollMapper<BaseChosenInlineResult>? = null
-) = waitChosenInlineResults(count, initRequest, errorFactory, filter, mapper)
+    filter: SimpleFilter<BaseChosenInlineResult>? = null
+) = waitChosenInlineResults(count, initRequest, errorFactory, filter)

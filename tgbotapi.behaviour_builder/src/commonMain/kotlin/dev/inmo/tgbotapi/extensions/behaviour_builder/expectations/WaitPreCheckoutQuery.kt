@@ -9,20 +9,19 @@ import kotlinx.coroutines.flow.toList
 
 typealias PreCheckoutQueryMapper = suspend PreCheckoutQuery.() -> PreCheckoutQuery?
 
-private suspend fun <O> BehaviourContext.waitPreCheckoutQueries(
+private suspend inline fun <reified O : PreCheckoutQuery> BehaviourContext.waitPreCheckoutQueries(
     count: Int = 1,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<PreCheckoutQuery>? = null,
-    mapper: suspend PreCheckoutQuery.() -> O?
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
+    filter: SimpleFilter<O>? = null
 ): List<O> = expectFlow(
     initRequest,
     count,
     errorFactory
 ) {
-    val data = it.asPreCheckoutQueryUpdate() ?.data
-    if (data != null && (filter == null || filter(data))) {
-        data.mapper().let(::listOfNotNull)
+    val data = it.asPreCheckoutQueryUpdate() ?.data as? O ?: return@expectFlow emptyList()
+    if (filter == null || filter(data)) {
+        listOf(data)
     } else {
         emptyList()
     }
@@ -33,17 +32,10 @@ suspend fun BehaviourContext.waitPreCheckoutQueries(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<PreCheckoutQuery>? = null,
-    mapper: PreCheckoutQueryMapper? = null
+    filter: SimpleFilter<PreCheckoutQuery>? = null
 ) : List<PreCheckoutQuery> = waitPreCheckoutQueries(
     count,
     initRequest,
     errorFactory,
     filter
-) {
-    if (mapper == null) {
-        this
-    } else {
-        mapper(this)
-    }
-}
+)

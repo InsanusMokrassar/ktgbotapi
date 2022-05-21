@@ -9,20 +9,19 @@ import kotlinx.coroutines.flow.toList
 
 typealias ChatJoinRequestsMapper = suspend ChatJoinRequest.() -> ChatJoinRequest?
 
-private suspend fun <O> BehaviourContext.waitChatJoinRequests(
+private suspend inline fun <reified O> BehaviourContext.internalWaitChatJoinRequests(
     count: Int = 1,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<ChatJoinRequest>? = null,
-    mapper: suspend ChatJoinRequest.() -> O?
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
+    filter: SimpleFilter<O>? = null
 ): List<O> = expectFlow(
     initRequest,
     count,
     errorFactory
 ) {
-    val data = it.asChatJoinRequestUpdate() ?.data
-    if (data != null && (filter == null || filter(data))) {
-        data.mapper().let(::listOfNotNull)
+    val data = it.asChatJoinRequestUpdate() ?.data as? O ?: return@expectFlow emptyList()
+    if (filter == null || filter(data)) {
+        listOf(data)
     } else {
         emptyList()
     }
@@ -33,17 +32,10 @@ suspend fun BehaviourContext.waitChatJoinRequests(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<ChatJoinRequest>? = null,
-    mapper: ChatJoinRequestsMapper? = null
-) : List<ChatJoinRequest> = waitChatJoinRequests(
+    filter: SimpleFilter<ChatJoinRequest>? = null
+) : List<ChatJoinRequest> = internalWaitChatJoinRequests(
     count,
     initRequest,
     errorFactory,
     filter
-) {
-    if (mapper == null) {
-        this
-    } else {
-        mapper(this)
-    }
-}
+)

@@ -9,48 +9,23 @@ import kotlinx.coroutines.flow.toList
 
 typealias PollAnswerMapper = suspend PollAnswer.() -> PollAnswer?
 
-private suspend fun <O> BehaviourContext.waitPollsAnswers(
+private suspend inline fun <reified O : PollAnswer> BehaviourContext.waitPollAnswers(
     count: Int = 1,
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<PollAnswer>? = null,
-    mapper: suspend PollAnswer.() -> O?
+    noinline errorFactory: NullableRequestBuilder<*> = { null },
+    filter: SimpleFilter<O>? = null
 ): List<O> = expectFlow(
     initRequest,
     count,
     errorFactory
 ) {
-    val data = it.asPollAnswerUpdate() ?.data
-    if (data != null && (filter == null || filter(data))) {
-        data.mapper().let(::listOfNotNull)
+    val data = it.asPollAnswerUpdate() ?.data as? O ?: return@expectFlow emptyList()
+    if (filter == null || filter(data)) {
+        listOf(data)
     } else {
         emptyList()
     }
 }.toList().toList()
-
-
-private suspend inline fun BehaviourContext.waitPollAnswers(
-    count: Int = 1,
-    initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<PollAnswer>? = null,
-    noinline mapper: PollAnswerMapper? = null
-) : List<PollAnswer> = this@waitPollAnswers.waitPollsAnswers<PollAnswer>(
-    count,
-    initRequest,
-    errorFactory,
-    filter ?.let {
-        {
-            (it as? PollAnswer) ?.let { filter(it) } == true
-        }
-    }
-) {
-    if (mapper == null) {
-        this
-    } else {
-        mapper(this)
-    }
-}
 
 /**
  * This wait will be triggered only for stopped polls and polls, which are sent by the bot
@@ -59,6 +34,5 @@ suspend fun BehaviourContext.waitPollAnswers(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     count: Int = 1,
-    filter: SimpleFilter<PollAnswer>? = null,
-    mapper: PollAnswerMapper? = null
-) = waitPollAnswers(count, initRequest, errorFactory, filter, mapper)
+    filter: SimpleFilter<PollAnswer>? = null
+) = waitPollAnswers(count, initRequest, errorFactory, filter)
