@@ -43,27 +43,6 @@ suspend fun BehaviourContext.waitChatEventsMessages(
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEventsMessages<ChatEvent>(initRequest, errorFactory)
 
-@Deprecated("Renamed as Video instead of Voice")
-suspend fun BehaviourContext.waitVoiceChatEventsMessages(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEventsMessages<VideoChatEvent>(initRequest, errorFactory)
-@Deprecated("Renamed as Video instead of Voice")
-suspend fun BehaviourContext.waitVoiceChatStartedEventsMessages(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEventsMessages<VideoChatStarted>(initRequest, errorFactory)
-@Deprecated("Renamed as Video instead of Voice")
-suspend fun BehaviourContext.waitVoiceChatEndedEventsMessages(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEventsMessages<VideoChatEnded>(initRequest, errorFactory)
-@Deprecated("Renamed as Video instead of Voice")
-suspend fun BehaviourContext.waitVoiceChatParticipantsInvitedEventsMessages(
-    initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEventsMessages<VideoChatParticipantsInvited>(initRequest, errorFactory)
-
 suspend fun BehaviourContext.waitVideoChatEventsMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

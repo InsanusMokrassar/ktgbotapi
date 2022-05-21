@@ -80,7 +80,7 @@ class DefaultBehaviourContext(
     onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
     private val upstreamUpdatesFlow: Flow<Update>? = null,
     override val triggersHolder: TriggersHolder = TriggersHolder(),
-    @Deprecated("This method is not used anymore")
+    @Deprecated("This parameter is not used anymore")
     private val updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>? = null
 ) : AbstractFlowsUpdatesFilter(), TelegramBot by bot, CoroutineScope by scope, BehaviourContext {
 
@@ -207,48 +207,6 @@ suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter
         scope, triggersHolder, updatesUpstreamFlow, stopOnCompletion, behaviourContextReceiver
     )
 }
-
-/**
- * Creates new one [BehaviourContext] using [createSubContext] and launches [behaviourContextReceiver] in a new context
- * using [doInContext]
- *
- * @param stopOnCompletion ___TRUE BY DEFAULT___
- */
-@Deprecated("Renamed", ReplaceWith("createSubContextAndDoWithUpdatesFilter", "dev.inmo.tgbotapi.extensions.behaviour_builder.createSubContextAndDoWithUpdatesFilter"))
-suspend fun <T, BC : BehaviourContext> BC.doInSubContextWithUpdatesFilter(
-    updatesFilter: CustomBehaviourContextAndTypeReceiver<BC, Boolean, Update>?,
-    stopOnCompletion: Boolean = true,
-    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
-    scope: CoroutineScope = LinkedSupervisorScope(),
-    triggersHolder: TriggersHolder = this.triggersHolder,
-    behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
-): T {
-    return createSubContext(
-        scope,
-        triggersHolder,
-        updatesUpstreamFlow,
-        updatesFilter
-    ).doInContext(
-        stopOnCompletion,
-        behaviourContextReceiver
-    )
-}
-
-@Deprecated("Redundant", ReplaceWith("createSubContextAndDoWithUpdatesFilter", "dev.inmo.tgbotapi.extensions.behaviour_builder.createSubContextAndDoWithUpdatesFilter"))
-suspend fun <T> BehaviourContext.doInSubContext(
-    stopOnCompletion: Boolean = true,
-    updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
-    scope: CoroutineScope = LinkedSupervisorScope(),
-    triggersHolder: TriggersHolder = this.triggersHolder,
-    behaviourContextReceiver: BehaviourContextReceiver<T>
-) = createSubContextAndDoWithUpdatesFilter(
-    scope,
-    triggersHolder,
-    updatesUpstreamFlow,
-    updatesFilter = null,
-    stopOnCompletion,
-    behaviourContextReceiver
-)
 
 /**
  * This method will cancel ALL subsequent contexts, expectations and waiters

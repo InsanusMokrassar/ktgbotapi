@@ -16,6 +16,3 @@ data class VideoChatEnded(
     val timeSpan: TimeSpan
         get() = TimeSpan(duration.seconds.milliseconds)
 }
-
-@Deprecated("Renamed", ReplaceWith("VideoChatEnded", "dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded"))
-typealias VoiceChatEnded = VideoChatEnded

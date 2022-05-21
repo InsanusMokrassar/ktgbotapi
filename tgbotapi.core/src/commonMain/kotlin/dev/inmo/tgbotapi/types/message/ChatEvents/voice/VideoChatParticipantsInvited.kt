@@ -11,6 +11,3 @@ data class VideoChatParticipantsInvited(
     @SerialName(usersField)
     val users: List<User> = emptyList()
 ) : VideoChatEvent
-
-@Deprecated("Renamed", ReplaceWith("VideoChatParticipantsInvited", "dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited"))
-typealias VoiceChatParticipantsInvited = VideoChatParticipantsInvited

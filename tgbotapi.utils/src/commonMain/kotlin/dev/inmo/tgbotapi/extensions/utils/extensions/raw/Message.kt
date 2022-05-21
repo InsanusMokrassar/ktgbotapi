@@ -178,22 +178,6 @@ inline val Message.successful_payment: SuccessfulPayment?
     get() = asChatEventMessage() ?.chatEvent ?.asSuccessfulPaymentEvent() ?.payment
 
 @RiskFeature(RawFieldsUsageWarning)
-@Deprecated("Renamed as video instead of voice")
-inline val Message.voice_chat_scheduled: VideoChatScheduled?
-    get() = asChatEventMessage() ?.chatEvent ?.asVoiceChatScheduled()
-@RiskFeature(RawFieldsUsageWarning)
-@Deprecated("Renamed as video instead of voice")
-inline val Message.voice_chat_started: VideoChatStarted?
-    get() = asChatEventMessage() ?.chatEvent ?.asVoiceChatStarted()
-@RiskFeature(RawFieldsUsageWarning)
-@Deprecated("Renamed as video instead of voice")
-inline val Message.voice_chat_ended: VideoChatEnded?
-    get() = asChatEventMessage() ?.chatEvent ?.asVoiceChatEnded()
-@RiskFeature(RawFieldsUsageWarning)
-@Deprecated("Renamed as video instead of voice")
-inline val Message.voice_chat_participants_invited: VideoChatParticipantsInvited?
-    get() = asChatEventMessage() ?.chatEvent ?.asVoiceChatParticipantsInvited()
-@RiskFeature(RawFieldsUsageWarning)
 inline val Message.video_chat_scheduled: VideoChatScheduled?
     get() = asChatEventMessage() ?.chatEvent ?.asVideoChatScheduled()
 @RiskFeature(RawFieldsUsageWarning)
