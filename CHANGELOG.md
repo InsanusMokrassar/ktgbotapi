@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 1.1.4
+## 1.2.0
 
 * `Behaviour Builder`:
     * Improvements in updates passing inside of subcontexts
