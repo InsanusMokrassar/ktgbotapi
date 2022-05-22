@@ -79,20 +79,7 @@ data class MultipartFile (
     override val fileId: String = "${uuid4()}.${filename.fileExtension}"
     val input: Input
         get() = inputSource()
-
-    @Deprecated("Storage file now is not necessary")
-    constructor(
-        file: StorageFile,
-        filename: String = file.fileName
-    ) : this(
-        filename,
-        file::input
-    )
 }
-
-@Deprecated("Storage file now is not necessary")
-@Suppress("NOTHING_TO_INLINE", "unused")
-inline fun StorageFile.asMultipartFile() = MultipartFile(fileName, ::input)
 
 @Suppress("NOTHING_TO_INLINE", "unused")
 suspend inline fun ByteReadChannel.asMultipartFile(

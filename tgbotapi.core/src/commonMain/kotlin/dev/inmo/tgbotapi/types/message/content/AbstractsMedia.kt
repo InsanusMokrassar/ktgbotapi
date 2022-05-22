@@ -19,8 +19,6 @@ sealed interface DocumentMediaGroupContent : MediaGroupContent {
 
 sealed interface MediaGroupContent : TextedMediaContent {
     fun toMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia
-    @Deprecated("Renamed", ReplaceWith("toMediaGroupMemberTelegramMedia()"))
-    fun toMediaGroupMemberInputMedia(): MediaGroupMemberTelegramMedia = toMediaGroupMemberTelegramMedia()
 }
 
 sealed interface TextedMediaContent : MediaContent, TextedInput

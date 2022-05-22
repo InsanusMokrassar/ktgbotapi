@@ -15,16 +15,17 @@ internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
     noinline updateToData: (Update) -> List<T>?
 ) = flowsUpdatesFilter.expectFlow(bot) {
     updateToData(it) ?.mapNotNull { data ->
-        if (initialFilter ?.invoke(data) != false) data else null
+        if (initialFilter ?.invoke(data) != false) it to data else null
     } ?: emptyList()
 }.subscribeSafelyWithoutExceptionsAsync(
     scope,
-    markerFactory::invoke
-) { triggerData ->
+    { markerFactory(it.second) }
+) { (update, triggerData) ->
     createSubContextAndDoWithUpdatesFilter(
-        updatesFilter = subcontextUpdatesFilter ?.toOneType(triggerData),
         stopOnCompletion = false
     ) {
-        scenarioReceiver(triggerData)
+        if (subcontextUpdatesFilter ?.invoke(this, triggerData, update) != false) {
+            scenarioReceiver(triggerData)
+        }
     }
 }

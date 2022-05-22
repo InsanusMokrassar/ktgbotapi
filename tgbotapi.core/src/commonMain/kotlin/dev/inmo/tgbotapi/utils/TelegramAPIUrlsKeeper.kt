@@ -60,11 +60,4 @@ class TelegramAPIUrlsKeeper(
 
         return HMAC.hmacSHA256(webAppDataSecretKeyHash.bytes, preparedData.toByteArray()).hexLower == hash.lowercase()
     }
-
-    /**
-     * @param rawData Data from [dev.inmo.tgbotapi.webapps.WebApp.initData]
-     * @param hash Data from [dev.inmo.tgbotapi.webapps.WebApp.initDataUnsafe] from the field [dev.inmo.tgbotapi.webapps.WebAppInitData.hash]
-     */
-    @Deprecated("Renamed", ReplaceWith("checkWebAppData"))
-    inline fun checkWebAppLink(rawData: String, hash: String) = checkWebAppData(rawData, hash)
 }

@@ -11,6 +11,3 @@ data class VideoChatScheduled(
     @SerialName(startDateField)
     val startDate: TelegramDate
 ) : VideoChatEvent
-
-@Deprecated("Renamed", ReplaceWith("VideoChatScheduled", "dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled"))
-typealias VoiceChatScheduled = VideoChatScheduled

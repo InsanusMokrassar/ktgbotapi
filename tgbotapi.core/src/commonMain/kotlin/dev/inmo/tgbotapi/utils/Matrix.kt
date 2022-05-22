@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.types.buttons.Matrix
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardRowBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardRowBuilder
  */
-@Deprecated("This functionality will be removed soon")
 fun <T> row(block: RowBuilder<T>.() -> Unit): List<T> {
     return RowBuilder<T>().also(block).row
 }
@@ -15,7 +14,6 @@ fun <T> row(block: RowBuilder<T>.() -> Unit): List<T> {
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardRowBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardRowBuilder
  */
-@Deprecated("This functionality will be removed soon")
 fun <T> MatrixBuilder<T>.row(block: RowBuilder<T>.() -> Unit) {
     add(RowBuilder<T>().also(block).row)
 }
@@ -24,7 +22,6 @@ fun <T> MatrixBuilder<T>.row(block: RowBuilder<T>.() -> Unit) {
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardRowBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardRowBuilder
  */
-@Deprecated("This functionality will be removed soon")
 fun <T> MatrixBuilder<T>.row(vararg elements: T) {
     add(elements.toList())
 }
@@ -33,7 +30,6 @@ fun <T> MatrixBuilder<T>.row(vararg elements: T) {
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardBuilder
  */
-@Deprecated("This functionality will be removed soon")
 fun <T> matrix(block: MatrixBuilder<T>.() -> Unit): Matrix<T> {
     return MatrixBuilder<T>().also(block).matrix
 }
@@ -42,7 +38,6 @@ fun <T> matrix(block: MatrixBuilder<T>.() -> Unit): Matrix<T> {
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardBuilder
  */
-@Deprecated("This functionality will be removed soon")
 fun <T> flatMatrix(block: RowBuilder<T>.() -> Unit): Matrix<T> {
     return MatrixBuilder<T>().apply {
         row(block)
@@ -53,7 +48,6 @@ fun <T> flatMatrix(block: RowBuilder<T>.() -> Unit): Matrix<T> {
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardBuilder
  */
-@Deprecated("This functionality will be removed soon")
 fun <T> flatMatrix(vararg elements: T): Matrix<T> {
     return MatrixBuilder<T>().apply {
         row { elements.forEach { +it } }
@@ -64,7 +58,6 @@ fun <T> flatMatrix(vararg elements: T): Matrix<T> {
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.InlineKeyboardRowBuilder
  * @see dev.inmo.tgbotapi.extensions.utils.types.buttons.ReplyKeyboardRowBuilder
  */
-@Deprecated("This functionality will be removed soon")
 operator fun <T> RowBuilder<T>.plus(t: T) = add(t)
 
 open class RowBuilder<T> {

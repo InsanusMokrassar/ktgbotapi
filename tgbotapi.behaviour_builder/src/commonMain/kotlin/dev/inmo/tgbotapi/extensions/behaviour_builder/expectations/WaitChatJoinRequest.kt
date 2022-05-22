@@ -5,45 +5,29 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.utils.asChatJoinRequestUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
+import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
 
 typealias ChatJoinRequestsMapper = suspend ChatJoinRequest.() -> ChatJoinRequest?
 
-private suspend fun <O> BehaviourContext.waitChatJoinRequests(
-    count: Int = 1,
+@RiskFeature(lowLevelRiskFeatureMessage)
+suspend inline fun <reified O> BehaviourContext.internalWaitChatJoinRequests(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<ChatJoinRequest>? = null,
-    mapper: suspend ChatJoinRequest.() -> O?
-): List<O> = expectFlow(
+    noinline errorFactory: NullableRequestBuilder<*> = { null }
+): Flow<O> = expectFlow(
     initRequest,
-    count,
     errorFactory
 ) {
-    val data = it.asChatJoinRequestUpdate() ?.data
-    if (data != null && (filter == null || filter(data))) {
-        data.mapper().let(::listOfNotNull)
-    } else {
-        emptyList()
-    }
-}.toList().toList()
+    (it.asChatJoinRequestUpdate() ?.data as? O).let(::listOfNotNull)
+}
 
 
 suspend fun BehaviourContext.waitChatJoinRequests(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<ChatJoinRequest>? = null,
-    mapper: ChatJoinRequestsMapper? = null
-) : List<ChatJoinRequest> = waitChatJoinRequests(
-    count,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) : Flow<ChatJoinRequest> = internalWaitChatJoinRequests(
     initRequest,
-    errorFactory,
-    filter
-) {
-    if (mapper == null) {
-        this
-    } else {
-        mapper(this)
-    }
-}
+    errorFactory
+)

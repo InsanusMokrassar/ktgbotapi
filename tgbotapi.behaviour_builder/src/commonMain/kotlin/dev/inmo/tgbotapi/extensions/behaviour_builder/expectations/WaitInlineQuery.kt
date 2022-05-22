@@ -5,76 +5,34 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
+import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
 
 typealias InlineQueryMapper<T> = suspend T.() -> T?
 
-private suspend fun <O> BehaviourContext.waitInlineQueries(
-    count: Int = 1,
+@RiskFeature(lowLevelRiskFeatureMessage)
+suspend inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<InlineQuery>? = null,
-    mapper: suspend InlineQuery.() -> O?
-): List<O> = expectFlow(
+    noinline errorFactory: NullableRequestBuilder<*> = { null }
+): Flow<O> = expectFlow(
     initRequest,
-    count,
     errorFactory
 ) {
-    val data = it.asInlineQueryUpdate() ?.data
-    if (data != null && (filter == null || filter(data))) {
-        data.mapper().let(::listOfNotNull)
-    } else {
-        emptyList()
-    }
-}.toList().toList()
-
-
-private suspend inline fun <reified T : InlineQuery> BehaviourContext.waitInlines(
-    count: Int = 1,
-    initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<T>? = null,
-    noinline mapper: InlineQueryMapper<T>? = null
-) : List<T> = waitInlineQueries<T>(
-    count,
-    initRequest,
-    errorFactory,
-    filter ?.let {
-        {
-            (it as? T) ?.let { casted -> filter(casted) } == true
-        }
-    }
-) {
-    if (this is T) {
-        if (mapper == null) {
-            this
-        } else {
-            mapper(this)
-        }
-    } else {
-        null
-    }
+    (it.asInlineQueryUpdate() ?.data as? O).let(::listOfNotNull)
 }
 
 suspend fun BehaviourContext.waitAnyInlineQuery(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<InlineQuery>? = null,
-    mapper: InlineQueryMapper<InlineQuery>? = null
-) = waitInlines(count, initRequest, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitInlineQueries<InlineQuery>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitBaseInlineQuery(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<BaseInlineQuery>? = null,
-    mapper: InlineQueryMapper<BaseInlineQuery>? = null
-) = waitInlines(count, initRequest, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitInlineQueries<BaseInlineQuery>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitLocationInlineQuery(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<LocationInlineQuery>? = null,
-    mapper: InlineQueryMapper<LocationInlineQuery>? = null
-) = waitInlines(count, initRequest, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitInlineQueries<LocationInlineQuery>(initRequest, errorFactory)

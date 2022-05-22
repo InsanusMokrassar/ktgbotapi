@@ -4,7 +4,7 @@ import dev.inmo.micro_utils.coroutines.safelyWithResult
 import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.flatMap
+import dev.inmo.tgbotapi.extensions.utils.flatten
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
@@ -20,7 +20,6 @@ typealias NullableRequestBuilder<T> = suspend (Update) -> Request<T>?
 
 /**
  * @param initRequest If not null, this request will be sent by [bot] before returning value
- * @param count If set, result [Flow] will return [count] elements on each [Flow.collect]
  * @param errorFactory If set, this factory will be used to produce requests in case when user have sent incorrect data
  * @param cancelRequestFactory If set, this factory will be used to produce requests in case when it is required to say
  * user that chain of scenario has been cancelled
@@ -33,7 +32,6 @@ typealias NullableRequestBuilder<T> = suspend (Update) -> Request<T>?
 suspend fun <T> FlowsUpdatesFilter.expectFlow(
     bot: TelegramBot,
     initRequest: Request<*>? = null,
-    count: Int? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
@@ -55,19 +53,13 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
         } else {
             result.getOrThrow()
         }
-    }.flatMap()
-    val result = if (count == null) {
-        flow
-    } else {
-        flow.take(count)
-    }
+    }.flatten()
     initRequest ?.also { safelyWithoutExceptions { bot.execute(initRequest) } }
-    return result
+    return flow
 }
 
 /**
  * @param initRequest If not null, this request will be sent by [bot] before returning value
- * @param count If set, result [Flow] will return [count] elements on each [Flow.collect]
  * @param errorFactory If set, this factory will be used to produce requests in case when user have sent incorrect data
  * @param cancelRequestFactory If set, this factory will be used to produce requests in case when it is required to say
  * user that chain of scenario has been cancelled
@@ -76,14 +68,14 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
  * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
  * will be called too), [errorFactory] and then will be returned null
  */
+@RiskFeature(lowLevelRiskFeatureMessage)
 suspend fun <T> BehaviourContext.expectFlow(
     initRequest: Request<*>? = null,
-    count: Int? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
     filter: suspend (Update) -> List<T>
-) = flowsUpdatesFilter.expectFlow(bot, initRequest, count, errorFactory, cancelRequestFactory, cancelTrigger, filter)
+) = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger, filter)
 
 /**
  * @param initRequest If not null, this request will be sent by [bot] before returning value
@@ -103,7 +95,7 @@ suspend fun <T> FlowsUpdatesFilter.expectOne(
     cancelRequestFactory: NullableRequestBuilder<*> = { null },
     cancelTrigger: suspend (Update) -> Boolean = { cancelRequestFactory(it) != null },
     filter: suspend (Update) -> T?
-): T = expectFlow(bot, initRequest, 1, errorFactory, cancelRequestFactory, cancelTrigger) {
+): T = expectFlow(bot, initRequest, errorFactory, cancelRequestFactory, cancelTrigger) {
     listOfNotNull(filter.invoke(it))
 }.first()
 
@@ -117,6 +109,7 @@ suspend fun <T> FlowsUpdatesFilter.expectOne(
  * as is, but when it returns null, then will be called [cancelTrigger] (if it will return true - [cancelRequestFactory]
  * will be called too), [errorFactory] and then will be returned null
  */
+@RiskFeature(lowLevelRiskFeatureMessage)
 suspend fun <T> BehaviourContext.expectOne(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },

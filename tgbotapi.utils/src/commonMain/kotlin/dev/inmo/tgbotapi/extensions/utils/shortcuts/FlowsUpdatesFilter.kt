@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
 import dev.inmo.tgbotapi.extensions.utils.aggregateFlows
 import dev.inmo.tgbotapi.extensions.utils.flatMap
+import dev.inmo.tgbotapi.extensions.utils.flatten
 import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -111,7 +112,7 @@ fun FlowsUpdatesFilter.audioMessagesWithMediaGroups(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = merge(
     filterContentMessages<AudioContent>(scopeToIncludeChannels),
-    mediaGroupAudioMessages(scopeToIncludeChannels).flatMap()
+    mediaGroupAudioMessages(scopeToIncludeChannels).flatten()
 )
 
 fun Flow<BaseSentMessageUpdate>.contactMessages() = filterContentMessages<ContactContent>()
@@ -132,7 +133,7 @@ fun FlowsUpdatesFilter.documentMessagesWithMediaGroups(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = merge(
     filterContentMessages<DocumentContent>(scopeToIncludeChannels),
-    mediaGroupDocumentMessages(scopeToIncludeChannels).flatMap()
+    mediaGroupDocumentMessages(scopeToIncludeChannels).flatten()
 )
 
 fun Flow<BaseSentMessageUpdate>.gameMessages() = filterContentMessages<GameContent>()
@@ -159,7 +160,7 @@ fun FlowsUpdatesFilter.photoMessagesWithMediaGroups(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = merge(
     filterContentMessages<PhotoContent>(scopeToIncludeChannels),
-    mediaGroupPhotosMessages(scopeToIncludeChannels).flatMap()
+    mediaGroupPhotosMessages(scopeToIncludeChannels).flatten()
 )
 /**
  * Shortcut for [photoMessages]
@@ -200,7 +201,7 @@ fun FlowsUpdatesFilter.videoMessagesWithMediaGroups(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = merge(
     filterContentMessages<VideoContent>(scopeToIncludeChannels),
-    mediaGroupVideosMessages(scopeToIncludeChannels).flatMap()
+    mediaGroupVideosMessages(scopeToIncludeChannels).flatten()
 )
 
 fun Flow<BaseSentMessageUpdate>.videoNoteMessages() = filterContentMessages<VideoNoteContent>()

@@ -56,16 +56,3 @@ inline fun VideoFile.toTelegramMediaVideo(
     duration,
     thumb ?.fileId
 )
-
-@Suppress("NOTHING_TO_INLINE")
-@Deprecated("Renamed", ReplaceWith("toTelegramMediaVideo", "dev.inmo.tgbotapi.types.files.toTelegramMediaVideo"))
-inline fun VideoFile.toInputMediaVideo(
-    text: String? = null,
-    parseMode: ParseMode? = null
-) = toTelegramMediaVideo(text, parseMode)
-
-@Suppress("NOTHING_TO_INLINE")
-@Deprecated("Renamed", ReplaceWith("toTelegramMediaVideo", "dev.inmo.tgbotapi.types.files.toTelegramMediaVideo"))
-inline fun VideoFile.toInputMediaVideo(
-    textSources: TextSourcesList
-) = toTelegramMediaVideo(textSources)

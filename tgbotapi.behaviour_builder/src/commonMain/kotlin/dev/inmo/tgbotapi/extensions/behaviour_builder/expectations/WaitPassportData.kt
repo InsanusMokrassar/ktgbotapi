@@ -9,57 +9,24 @@ import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.passport.PassportData
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.toList
 
 typealias PassportMessageMapper = suspend PassportMessage.() -> PassportData
 
-@RiskFeature("Do not use this message directly, use waitPassportMessagesWith or waitAnyPassportMessages instead")
-suspend fun <O> BehaviourContext.waitPassportMessages(
+@RiskFeature(lowLevelRiskFeatureMessage)
+suspend inline fun <reified O : EncryptedPassportElement> BehaviourContext.waitPassportMessagesWith(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<PassportMessage>? = null,
-    mapper: suspend PassportMessage.() -> O?
-): List<O> = expectFlow(
+    noinline errorFactory: NullableRequestBuilder<*> = { null }
+): Flow<O> = expectFlow(
     initRequest,
-    count,
     errorFactory
 ) {
-    val data = it.asMessageUpdate() ?.data ?.asPassportMessage() ?: return@expectFlow emptyList()
-    if (filter == null || filter(data)) {
-        data.mapper().let(::listOfNotNull)
-    } else {
-        emptyList()
-    }
-}.toList().toList()
-
-suspend inline fun <reified T : EncryptedPassportElement> BehaviourContext.waitPassportMessagesWith(
-    count: Int = 1,
-    initRequest: Request<*>? = null,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<PassportMessage>? = null,
-    noinline mapper: PassportMessageMapper? = null
-) : List<PassportData> = waitPassportMessages(
-    initRequest,
-    errorFactory,
-    count,
-    filter
-) {
-    if (passportData.data.any { it is T }) {
-        if (mapper == null) {
-            passportData
-        } else {
-            mapper(this)
-        }
-    } else {
-        null
-    }
+    it.asMessageUpdate() ?.data ?.asPassportMessage() ?.passportData ?.data ?.filterIsInstance<O>() ?: emptyList()
 }
 
 suspend fun BehaviourContext.waitAnyPassportMessages(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<PassportMessage>? = null,
-    mapper: PassportMessageMapper? = null
-) = waitPassportMessagesWith<EncryptedPassportElement>(count, initRequest, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitPassportMessagesWith<EncryptedPassportElement>(initRequest, errorFactory)

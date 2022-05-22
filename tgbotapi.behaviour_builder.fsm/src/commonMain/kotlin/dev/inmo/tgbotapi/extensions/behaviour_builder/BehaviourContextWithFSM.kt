@@ -47,9 +47,25 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
-        triggersHolder: TriggersHolder,
-        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
+        triggersHolder: TriggersHolder
     ): BehaviourContextWithFSM<T>
+
+    fun copy(
+        bot: TelegramBot = this.bot,
+        scope: CoroutineScope = this.scope,
+        broadcastChannelsSize: Int = 100,
+        onBufferOverflow: BufferOverflow = BufferOverflow.SUSPEND,
+        upstreamUpdatesFlow: Flow<Update>? = null,
+        triggersHolder: TriggersHolder = this.triggersHolder,
+        onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler()
+    ): BehaviourContextWithFSM<T> = copy(
+        bot,
+        scope,
+        broadcastChannelsSize,
+        onBufferOverflow,
+        upstreamUpdatesFlow,
+        triggersHolder
+    )
 
     fun copy(
         bot: TelegramBot = this.bot,
@@ -67,7 +83,7 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
         onBufferOverflow,
         upstreamUpdatesFlow,
         triggersHolder,
-        updatesFilter
+        onStateHandlingErrorHandler
     )
 
     companion object {
@@ -196,10 +212,9 @@ class DefaultBehaviourContextWithFSM<T : State>(
         broadcastChannelsSize: Int,
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
-        triggersHolder: TriggersHolder,
-        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
+        triggersHolder: TriggersHolder
     ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder, updatesFilter),
+        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder),
         handlers,
         statesManager,
         onStateHandlingErrorHandler
@@ -212,10 +227,9 @@ class DefaultBehaviourContextWithFSM<T : State>(
         onBufferOverflow: BufferOverflow,
         upstreamUpdatesFlow: Flow<Update>?,
         triggersHolder: TriggersHolder,
-        onStateHandlingErrorHandler: StateHandlingErrorHandler<T>,
-        updatesFilter: BehaviourContextAndTypeReceiver<Boolean, Update>?
+        onStateHandlingErrorHandler: StateHandlingErrorHandler<T>
     ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
-        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder, updatesFilter),
+        behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder),
         handlers,
         statesManager,
         onStateHandlingErrorHandler

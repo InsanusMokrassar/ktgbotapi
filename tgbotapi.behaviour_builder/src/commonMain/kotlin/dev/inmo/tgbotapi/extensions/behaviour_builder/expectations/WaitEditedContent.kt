@@ -16,237 +16,127 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
-import kotlinx.coroutines.flow.toList
+import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
+import kotlinx.coroutines.flow.*
 
-private suspend fun <O> BehaviourContext.waitEditedCommonMessage(
-    count: Int = 1,
+@RiskFeature(lowLevelRiskFeatureMessage)
+suspend inline fun <reified O : MessageContent> BehaviourContext.waitEditedContent(
     initRequest: Request<*>? = null,
     includeMediaGroups: Boolean = true,
+    noinline errorFactory: NullableRequestBuilder<*> = { null }
+): Flow<O> = waitEditedContentMessage<O>(initRequest, includeMediaGroups, errorFactory).map { it.content }
+
+suspend fun BehaviourContext.waitEditedMessageContent(
+    initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<CommonMessage<MessageContent>>? = null,
-    mapper: suspend CommonMessage<MessageContent>.() -> O?
-): List<O> = expectFlow(
-    initRequest,
-    count,
-    errorFactory
-) {
-    val messages = when (it) {
-        is BaseEditMessageUpdate -> {
-            val commonMessage = it.data.asCommonMessage()
-            if (commonMessage !is MediaGroupMessage<*> || includeMediaGroups) {
-                listOf(commonMessage)
-            } else {
-                emptyList()
-            }
-        }
-        else -> return@expectFlow emptyList()
-    }
-    messages.mapNotNull { message ->
-        val asCommonMessage = message as CommonMessage<MessageContent>
-        if (filter == null || filter(asCommonMessage)) {
-            asCommonMessage.mapper()
-        } else {
-            null
-        }
-    }
-}.toList().toList()
-
-private suspend inline fun <reified T : MessageContent> BehaviourContext.waitEditedContent(
-    count: Int = 1,
-    initRequest: Request<*>? = null,
-    includeMediaGroups: Boolean = true,
-    noinline errorFactory: NullableRequestBuilder<*> = { null },
-    filter: SimpleFilter<CommonMessage<T>>? = null,
-    noinline mapper: CommonMessageToContentMapper<T>? = null
-) : List<T> = waitEditedCommonMessage<T>(
-    count,
-    initRequest,
-    includeMediaGroups,
-    errorFactory,
-    filter ?.let {
-        {
-            it.withContent<T>() ?.let { filter(it) } == true
-        }
-    },
-    contentConverter(mapper)
-)
+    includeMediaGroups: Boolean = true
+) = waitEditedContent<MessageContent>(initRequest, includeMediaGroups, errorFactory)
 
 suspend fun BehaviourContext.waitEditedContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<MessageContent>>? = null,
-    mapper: CommonMessageToContentMapper<MessageContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = true
+) = waitEditedContent<MessageContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedContact(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<ContactContent>>? = null,
-    mapper: CommonMessageToContentMapper<ContactContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<ContactContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedDice(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<DiceContent>>? = null,
-    mapper: CommonMessageToContentMapper<DiceContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<DiceContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedGame(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<GameContent>>? = null,
-    mapper: CommonMessageToContentMapper<GameContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<GameContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedLocation(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<LocationContent>>? = null,
-    mapper: CommonMessageToContentMapper<LocationContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<LocationContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedLiveLocation(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<LiveLocationContent>>? = null,
-    mapper: CommonMessageToContentMapper<LiveLocationContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<LiveLocationContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedStaticLocation(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<StaticLocationContent>>? = null,
-    mapper: CommonMessageToContentMapper<StaticLocationContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<StaticLocationContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedText(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<TextContent>>? = null,
-    mapper: CommonMessageToContentMapper<TextContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<TextContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedVenue(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<VenueContent>>? = null,
-    mapper: CommonMessageToContentMapper<VenueContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<VenueContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedAudioMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<AudioMediaGroupContent>>? = null,
-    mapper: CommonMessageToContentMapper<AudioMediaGroupContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = true
+) = waitEditedContent<AudioMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedDocumentMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<DocumentMediaGroupContent>>? = null,
-    mapper: CommonMessageToContentMapper<DocumentMediaGroupContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = true
+) = waitEditedContent<DocumentMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedMedia(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<MediaContent>>? = null,
-    mapper: CommonMessageToContentMapper<MediaContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = false
+) = waitEditedContent<MediaContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedAnyMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<MediaGroupContent>>? = null,
-    mapper: CommonMessageToContentMapper<MediaGroupContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = true
+) = waitEditedContent<MediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedVisualMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<VisualMediaGroupContent>>? = null,
-    mapper: CommonMessageToContentMapper<VisualMediaGroupContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = true
+) = waitEditedContent<VisualMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedTextedMediaContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = true,
-    filter: SimpleFilter<CommonMessage<TextedMediaContent>>? = null,
-    mapper: CommonMessageToContentMapper<TextedMediaContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = true
+) = waitEditedContent<TextedMediaContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedAnimation(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<AnimationContent>>? = null,
-    mapper: CommonMessageToContentMapper<AnimationContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<AnimationContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedAudio(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<AudioContent>>? = null,
-    mapper: CommonMessageToContentMapper<AudioContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = false
+) = waitEditedContent<AudioContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedDocument(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<DocumentContent>>? = null,
-    mapper: CommonMessageToContentMapper<DocumentContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = false
+) = waitEditedContent<DocumentContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedPhoto(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<PhotoContent>>? = null,
-    mapper: CommonMessageToContentMapper<PhotoContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = false
+) = waitEditedContent<PhotoContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedSticker(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<StickerContent>>? = null,
-    mapper: CommonMessageToContentMapper<StickerContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<StickerContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedVideo(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    includeMediaGroups: Boolean = false,
-    filter: SimpleFilter<CommonMessage<VideoContent>>? = null,
-    mapper: CommonMessageToContentMapper<VideoContent>? = null
-) = waitEditedContent(count, initRequest, includeMediaGroups, errorFactory, filter, mapper)
+    includeMediaGroups: Boolean = false
+) = waitEditedContent<VideoContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitEditedVideoNote(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<VideoNoteContent>>? = null,
-    mapper: CommonMessageToContentMapper<VideoNoteContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<VideoNoteContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedVoice(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<VoiceContent>>? = null,
-    mapper: CommonMessageToContentMapper<VoiceContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<VoiceContent>(initRequest, false, errorFactory)
 suspend fun BehaviourContext.waitEditedInvoice(
     initRequest: Request<*>? = null,
-    errorFactory: NullableRequestBuilder<*> = { null },
-    count: Int = 1,
-    filter: SimpleFilter<CommonMessage<InvoiceContent>>? = null,
-    mapper: CommonMessageToContentMapper<InvoiceContent>? = null
-) = waitEditedContent(count, initRequest, false, errorFactory, filter, mapper)
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<InvoiceContent>(initRequest, false, errorFactory)

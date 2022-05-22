@@ -25,7 +25,6 @@ import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
@@ -34,7 +33,6 @@ import dev.inmo.tgbotapi.types.message.content.MediaContent
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.utils.PreviewFeature
 
 internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> BC.onEditedContent(
     initialFilter: CommonMessageFilter<T>? = null,

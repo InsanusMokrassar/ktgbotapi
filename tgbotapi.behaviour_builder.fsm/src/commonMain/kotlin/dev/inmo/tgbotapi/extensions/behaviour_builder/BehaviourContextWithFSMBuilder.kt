@@ -13,9 +13,6 @@ import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 
-@Deprecated("Will be removed soon")
-typealias BehaviourContextWithFSMBuilder<T> = BehaviourContextWithFSM<T>
-
 /**
  * Creates [BehaviourContextWithFSM] via creating of [DefaultBehaviourContext] with [this] as [TelegramBot],
  * [scope] as target scope for that [DefaultBehaviourContext] and [upstreamUpdatesFlow]. Pass [statesManager]

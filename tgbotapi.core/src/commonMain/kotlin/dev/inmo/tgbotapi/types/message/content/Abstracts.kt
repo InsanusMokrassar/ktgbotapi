@@ -106,8 +106,6 @@ sealed interface MediaCollectionContent<T: TelegramMediaFile>: MessageContent, M
 sealed interface MediaContent: MessageContent {
     val media: TelegramMediaFile
     fun asTelegramMedia(): TelegramMedia
-    @Deprecated("Renamed", ReplaceWith("asTelegramMedia()"))
-    fun asInputMedia(): TelegramMedia = asTelegramMedia()
 }
 
 sealed interface ResendableContent {
