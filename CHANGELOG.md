@@ -2,6 +2,9 @@
 
 ## 2.0.1
 
+* `Utils`:
+    * `TelegramBot#longPolling` now accepts `UpdatesFilter` instead of `FlowsUpdatesFilter`
+
 ## 2.0.0
 
 ___ALL PREVIOUS DEPRECATIONS HAVE BEEN REMOVED___
