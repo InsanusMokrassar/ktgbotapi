@@ -2,6 +2,9 @@
 
 ## 2.0.1
 
+* `Versions`:
+    * `Ktor`: `2.0.1` -> `2.0.2`
+    * `MicroUtils`: `0.10.5` -> `0.10.6`
 * `Utils`:
     * `TelegramBot#longPolling` now accepts `UpdatesFilter` instead of `FlowsUpdatesFilter`
 
