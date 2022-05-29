@@ -166,11 +166,11 @@ suspend fun TelegramBot.flushAccumulatedUpdates(
  * all updates receivers, because this method will trigger getting of updates and.
  */
 fun TelegramBot.longPolling(
-    flowsUpdatesFilter: FlowsUpdatesFilter,
+    updatesFilter: UpdatesFilter,
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: ExceptionHandler<Unit>? = null
-): Job = flowsUpdatesFilter.run {
+): Job = updatesFilter.run {
     startGettingOfUpdatesByLongPolling(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
 }
 
