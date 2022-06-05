@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 2.0.2
+
+* `Versions`:
+    * `MicroUtils`: `0.10.8` -> `0.11.0`
+    * `UUID`: `0.4.0` -> `0.4.1`
+
 ## 2.0.1
 
 * `Versions`:
