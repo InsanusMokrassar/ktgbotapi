@@ -2,6 +2,8 @@
 
 ## 2.0.3
 
+* `Core`:
+  * New function `regularln` for simple creating of `RegularTextSource` with new line in the end
 * `Versions`:
     * `MicroUtils`: `0.11.0` -> `0.11.3`
 
