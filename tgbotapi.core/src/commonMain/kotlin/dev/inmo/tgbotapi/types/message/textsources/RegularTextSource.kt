@@ -18,3 +18,6 @@ data class RegularTextSource @RiskFeature(DirectInvocationOfTextSourceConstructo
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun regular(text: String) = RegularTextSource(text)
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun regularln(text: String) = regular("$text\n")
