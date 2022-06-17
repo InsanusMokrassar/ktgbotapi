@@ -4,6 +4,8 @@
 
 * `Core`:
   * New function `regularln` for simple creating of `RegularTextSource` with new line in the end
+* `API`:
+  * New function `downloadFileToTemp` for simple downloading of file in filesystem and manipulation with avoiding of direct using input streams and other low-level things
 * `Versions`:
     * `MicroUtils`: `0.11.0` -> `0.11.3`
 
