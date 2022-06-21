@@ -39,6 +39,16 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat {
     val canSetStickerSet: Boolean
     val linkedChannelChatId: ChatId?
     val location: ChatLocation?
+
+    /**
+     * This field represents field "join_to_send_messages" from API
+     */
+    val requireToJoinForMessaging: Boolean
+
+    /**
+     * This field represents field "join_by_request" from API
+     */
+    val requireAdminApproveOnJoin: Boolean
 }
 
 @Serializable(ExtendedChatSerializer::class)

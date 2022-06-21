@@ -3,6 +3,7 @@
 ## 2.1.0
 
 * Add support of functionality for `WebApp`s from [Bot API 6.1](https://core.telegram.org/bots/api-changelog#june-20-2022)
+* Add support of functionality for premium feature from [Bot API 6.1](https://core.telegram.org/bots/api-changelog#june-20-2022)
 
 ## 2.0.3
 

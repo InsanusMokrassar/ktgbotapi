@@ -22,7 +22,8 @@ data class StickerSurrogate(
     val emoji: String? = null,
     val set_name: StickerSetName? = null,
     val mask_position: MaskPosition? = null,
-    val file_size: Long? = null
+    val file_size: Long? = null,
+    val premium_animation: File? = null
 )
 
 // TODO:: Serializer
@@ -31,6 +32,7 @@ sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile {
     val emoji: String?
     val maskPosition: MaskPosition?
     val stickerSetName: StickerSetName?
+    val premiumAnimationFile: File?
 
     val isAnimated
         get() = this is AnimatedSticker
@@ -53,6 +55,7 @@ object StickerSerializer : KSerializer<Sticker> {
                 surrogate.thumb,
                 surrogate.emoji,
                 surrogate.set_name,
+                surrogate.premium_animation,
                 surrogate.mask_position,
                 surrogate.file_size
             )
@@ -64,6 +67,7 @@ object StickerSerializer : KSerializer<Sticker> {
                 surrogate.thumb,
                 surrogate.emoji,
                 surrogate.set_name,
+                surrogate.premium_animation,
                 surrogate.mask_position,
                 surrogate.file_size
             )
@@ -75,6 +79,7 @@ object StickerSerializer : KSerializer<Sticker> {
                 surrogate.thumb,
                 surrogate.emoji,
                 surrogate.set_name,
+                surrogate.premium_animation,
                 surrogate.mask_position,
                 surrogate.file_size
             )
@@ -103,6 +108,8 @@ data class SimpleSticker(
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
+    @SerialName(premiumAnimationField)
+    override val premiumAnimationFile: File?,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition? = null,
     @SerialName(fileSizeField)
@@ -124,6 +131,8 @@ data class AnimatedSticker(
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
+    @SerialName(premiumAnimationField)
+    override val premiumAnimationFile: File?,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition? = null,
     @SerialName(fileSizeField)
@@ -145,6 +154,8 @@ data class VideoSticker(
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
+    @SerialName(premiumAnimationField)
+    override val premiumAnimationFile: File?,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition? = null,
     @SerialName(fileSizeField)

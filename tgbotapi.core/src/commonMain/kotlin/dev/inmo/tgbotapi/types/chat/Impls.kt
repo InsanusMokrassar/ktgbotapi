@@ -80,8 +80,10 @@ data class CommonUser(
     override val username: Username? = null,
     @SerialName(languageCodeField)
     @Serializable(IetfLanguageCodeSerializer::class)
-    override val ietfLanguageCode: IetfLanguageCode? = null
-) : User(), WithOptionalLanguageCode {
+    override val ietfLanguageCode: IetfLanguageCode? = null,
+    @SerialName(isPremiumField)
+    override val isPremium: Boolean = false
+) : User(), WithOptionalLanguageCode, PremiumChat {
     constructor(
         id: UserId,
         firstName: String,

@@ -95,7 +95,11 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(linkedChatIdField)
     override val linkedChannelChatId: ChatId? = null,
     @SerialName(locationField)
-    override val location: ChatLocation? = null
+    override val location: ChatLocation? = null,
+    @SerialName(joinToSendMessagesField)
+    override val requireToJoinForMessaging: Boolean = false,
+    @SerialName(joinByRequestField)
+    override val requireAdminApproveOnJoin: Boolean = false
 ) : ExtendedSupergroupChat
 
 @Serializable

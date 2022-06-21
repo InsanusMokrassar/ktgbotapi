@@ -33,6 +33,11 @@ sealed interface UsernameChat : Chat {
 }
 
 @Serializable(PreviewChatSerializer::class)
+sealed interface PremiumChat : Chat {
+    val isPremium: Boolean
+}
+
+@Serializable(PreviewChatSerializer::class)
 sealed interface Chat {
     val id: ChatId
 }
