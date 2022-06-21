@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.abstracts.*
+import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.queries.callback.*
@@ -3273,7 +3274,16 @@ inline fun <T> CommonSendInvoiceData.whenSendInvoice(block: (SendInvoice) -> T) 
 inline fun CommonSendInvoiceData.asSendInvoice(): SendInvoice? = this as? SendInvoice
 
 @PreviewFeature
-inline fun CommonSendInvoiceData.requireVoiceChatParticipantsInvited(): SendInvoice = this as SendInvoice
+inline fun CommonSendInvoiceData.requireSendInvoice(): SendInvoice = this as SendInvoice
+
+@PreviewFeature
+inline fun <T> CommonSendInvoiceData.whenCreateInvoiceLink(block: (CreateInvoiceLink) -> T) = asCreateInvoiceLink() ?.let(block)
+
+@PreviewFeature
+inline fun CommonSendInvoiceData.asCreateInvoiceLink(): CreateInvoiceLink? = this as? CreateInvoiceLink
+
+@PreviewFeature
+inline fun CommonSendInvoiceData.requireCreateInvoiceLink(): CreateInvoiceLink = this as CreateInvoiceLink
 
 @PreviewFeature
 inline fun <T> CommonSendInvoiceData.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) = asInputInvoiceMessageContent() ?.let(block)
