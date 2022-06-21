@@ -19,3 +19,5 @@ inline val Sticker.mask_position: MaskPosition?
     get() = maskPosition
 inline val Sticker.file_size: Long?
     get() = fileSize
+inline val Sticker.premium_animation: File?
+    get() = premiumAnimationFile

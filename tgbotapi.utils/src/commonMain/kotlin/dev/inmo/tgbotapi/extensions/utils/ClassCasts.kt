@@ -236,6 +236,24 @@ inline fun Chat.asExtendedSupergroupChat(): ExtendedSupergroupChat? = this as? E
 inline fun Chat.requireExtendedSupergroupChat(): ExtendedSupergroupChat = this as ExtendedSupergroupChat
 
 @PreviewFeature
+inline fun <T> Chat.whenPremiumChat(block: (PremiumChat) -> T) = asPremiumChat() ?.let(block)
+
+@PreviewFeature
+inline fun Chat.asPremiumChat(): PremiumChat? = this as? PremiumChat
+
+@PreviewFeature
+inline fun Chat.requirePremiumChat(): PremiumChat = this as PremiumChat
+
+@PreviewFeature
+inline fun <T> Chat.whenAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T) = asAbleToAddInAttachmentMenuChat() ?.let(block)
+
+@PreviewFeature
+inline fun Chat.asAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat? = this as? AbleToAddInAttachmentMenuChat
+
+@PreviewFeature
+inline fun Chat.requireAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat = this as AbleToAddInAttachmentMenuChat
+
+@PreviewFeature
 inline fun <T> CallbackQuery.whenDataCallbackQuery(block: (DataCallbackQuery) -> T) = asDataCallbackQuery() ?.let(block)
 
 @PreviewFeature

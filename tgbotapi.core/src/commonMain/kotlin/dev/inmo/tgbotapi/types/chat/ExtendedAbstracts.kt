@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.chat.ExtendedChat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import kotlinx.serialization.Serializable
@@ -43,12 +42,12 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat {
     /**
      * This field represents field "join_to_send_messages" from API
      */
-    val requireToJoinForMessaging: Boolean
+    val requiresJoinForMessaging: Boolean
 
     /**
      * This field represents field "join_by_request" from API
      */
-    val requireAdminApproveOnJoin: Boolean
+    val requireAdminApproveToJoin: Boolean
 }
 
 @Serializable(ExtendedChatSerializer::class)
