@@ -237,13 +237,13 @@ inline fun Chat.asExtendedSupergroupChat(): ExtendedSupergroupChat? = this as? E
 inline fun Chat.requireExtendedSupergroupChat(): ExtendedSupergroupChat = this as ExtendedSupergroupChat
 
 @PreviewFeature
-inline fun <T> Chat.whenPremiumChat(block: (PremiumChat) -> T) = asPremiumChat() ?.let(block)
+inline fun <T> Chat.whenPossiblyPremiumChat(block: (PossiblyPremiumChat) -> T) = asPossiblyPremiumChat() ?.let(block)
 
 @PreviewFeature
-inline fun Chat.asPremiumChat(): PremiumChat? = this as? PremiumChat
+inline fun Chat.asPossiblyPremiumChat(): PossiblyPremiumChat? = this as? PossiblyPremiumChat
 
 @PreviewFeature
-inline fun Chat.requirePremiumChat(): PremiumChat = this as PremiumChat
+inline fun Chat.requirePossiblyPremiumChat(): PossiblyPremiumChat = this as PossiblyPremiumChat
 
 @PreviewFeature
 inline fun <T> Chat.whenAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T) = asAbleToAddInAttachmentMenuChat() ?.let(block)

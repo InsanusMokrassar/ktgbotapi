@@ -85,7 +85,7 @@ data class CommonUser(
     override val isPremium: Boolean = false,
     @SerialName(addedToAttachmentMenuField)
     override val addedToAttachmentMenu: Boolean = false
-) : User(), WithOptionalLanguageCode, PremiumChat, AbleToAddInAttachmentMenuChat {
+) : User(), WithOptionalLanguageCode, PossiblyPremiumChat, AbleToAddInAttachmentMenuChat {
     constructor(
         id: UserId,
         firstName: String,
