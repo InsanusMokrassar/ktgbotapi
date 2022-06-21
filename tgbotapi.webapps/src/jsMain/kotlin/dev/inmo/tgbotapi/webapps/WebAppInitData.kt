@@ -15,5 +15,10 @@ external interface WebAppInitData {
     @JsName("auth_date")
     val authDate: MilliSeconds
 
+    @JsName("can_send_after")
+    val canSendAfter: MilliSeconds
+
+    val chat: WebAppChat
+
     val hash: String
 }

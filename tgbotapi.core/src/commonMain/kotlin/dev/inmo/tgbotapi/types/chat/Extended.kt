@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
 
 @Serializable
 data class ExtendedChannelChatImpl(
@@ -119,7 +120,8 @@ data class ExtendedBot(
 
 data class UnknownExtendedChat(
     override val id: ChatId,
-    val raw: String
+    val raw: String,
+    val rawJson: JsonObject
 ) : ExtendedChat {
     override val chatPhoto: ChatPhoto? = null
 }

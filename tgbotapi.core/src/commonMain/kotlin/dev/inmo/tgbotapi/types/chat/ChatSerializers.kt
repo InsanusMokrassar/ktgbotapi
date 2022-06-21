@@ -65,7 +65,8 @@ object PreviewChatSerializer : KSerializer<Chat> {
             ChatType.ChannelChatType -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
             is ChatType.UnknownChatType -> UnknownChatType(
                 formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
-                decodedJson.toString()
+                decodedJson.toString(),
+                decodedJson
             )
         }
     }
@@ -77,6 +78,10 @@ object PreviewChatSerializer : KSerializer<Chat> {
             is GroupChatImpl -> GroupChatImpl.serializer().serialize(encoder, value)
             is SupergroupChatImpl -> SupergroupChatImpl.serializer().serialize(encoder, value)
             is ChannelChatImpl -> ChannelChatImpl.serializer().serialize(encoder, value)
+            is CommonBot -> CommonBot.serializer().serialize(encoder, value)
+            is ExtendedBot -> ExtendedBot.serializer().serialize(encoder, value)
+            is CommonUser -> CommonUser.serializer().serialize(encoder, value)
+            is UnknownChatType -> JsonObject.serializer().serialize(encoder, value.rawJson)
         }
     }
 }
@@ -99,7 +104,8 @@ object ExtendedChatSerializer : KSerializer<ExtendedChat> {
             ChatType.ChannelChatType -> formatter.decodeFromJsonElement(ExtendedChannelChatImpl.serializer(), decodedJson)
             is ChatType.UnknownChatType -> UnknownExtendedChat(
                 formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
-                decodedJson.toString()
+                decodedJson.toString(),
+                decodedJson
             )
         }
     }
@@ -110,6 +116,7 @@ object ExtendedChatSerializer : KSerializer<ExtendedChat> {
             is ExtendedGroupChatImpl -> ExtendedGroupChatImpl.serializer().serialize(encoder, value)
             is ExtendedSupergroupChatImpl -> ExtendedSupergroupChatImpl.serializer().serialize(encoder, value)
             is ExtendedChannelChatImpl -> ExtendedChannelChatImpl.serializer().serialize(encoder, value)
+            is UnknownExtendedChat -> JsonObject.serializer().serialize(encoder, value.rawJson)
         }
     }
 }
