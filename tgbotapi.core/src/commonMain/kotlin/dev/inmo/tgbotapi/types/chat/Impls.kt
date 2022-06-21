@@ -82,8 +82,10 @@ data class CommonUser(
     @Serializable(IetfLanguageCodeSerializer::class)
     override val ietfLanguageCode: IetfLanguageCode? = null,
     @SerialName(isPremiumField)
-    override val isPremium: Boolean = false
-) : User(), WithOptionalLanguageCode, PremiumChat {
+    override val isPremium: Boolean = false,
+    @SerialName(addedToAttachmentMenuField)
+    override val addedToAttachmentMenu: Boolean = false
+) : User(), WithOptionalLanguageCode, PremiumChat, AbleToAddInAttachmentMenuChat {
     constructor(
         id: UserId,
         firstName: String,
