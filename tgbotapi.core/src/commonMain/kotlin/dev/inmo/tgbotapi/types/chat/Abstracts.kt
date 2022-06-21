@@ -33,6 +33,16 @@ sealed interface UsernameChat : Chat {
 }
 
 @Serializable(PreviewChatSerializer::class)
+sealed interface PossiblyPremiumChat : Chat {
+    val isPremium: Boolean
+}
+
+@Serializable(PreviewChatSerializer::class)
+sealed interface AbleToAddInAttachmentMenuChat : Chat {
+    val addedToAttachmentMenu: Boolean
+}
+
+@Serializable(PreviewChatSerializer::class)
 sealed interface Chat {
     val id: ChatId
 }

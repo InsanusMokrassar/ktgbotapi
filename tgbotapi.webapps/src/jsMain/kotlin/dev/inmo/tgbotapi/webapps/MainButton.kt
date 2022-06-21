@@ -23,6 +23,7 @@ external class MainButton {
     fun hideProgress(): MainButton
 
     internal fun onClick(eventHandler: () -> Unit): MainButton
+    internal fun offClick(eventHandler: () -> Unit): MainButton
 
     internal fun setParams(params: Json): MainButton
 }

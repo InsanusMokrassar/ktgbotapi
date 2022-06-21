@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.abstracts.*
+import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.queries.callback.*
@@ -234,6 +235,24 @@ inline fun Chat.asExtendedSupergroupChat(): ExtendedSupergroupChat? = this as? E
 
 @PreviewFeature
 inline fun Chat.requireExtendedSupergroupChat(): ExtendedSupergroupChat = this as ExtendedSupergroupChat
+
+@PreviewFeature
+inline fun <T> Chat.whenPossiblyPremiumChat(block: (PossiblyPremiumChat) -> T) = asPossiblyPremiumChat() ?.let(block)
+
+@PreviewFeature
+inline fun Chat.asPossiblyPremiumChat(): PossiblyPremiumChat? = this as? PossiblyPremiumChat
+
+@PreviewFeature
+inline fun Chat.requirePossiblyPremiumChat(): PossiblyPremiumChat = this as PossiblyPremiumChat
+
+@PreviewFeature
+inline fun <T> Chat.whenAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T) = asAbleToAddInAttachmentMenuChat() ?.let(block)
+
+@PreviewFeature
+inline fun Chat.asAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat? = this as? AbleToAddInAttachmentMenuChat
+
+@PreviewFeature
+inline fun Chat.requireAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat = this as AbleToAddInAttachmentMenuChat
 
 @PreviewFeature
 inline fun <T> CallbackQuery.whenDataCallbackQuery(block: (DataCallbackQuery) -> T) = asDataCallbackQuery() ?.let(block)
@@ -3255,7 +3274,16 @@ inline fun <T> CommonSendInvoiceData.whenSendInvoice(block: (SendInvoice) -> T) 
 inline fun CommonSendInvoiceData.asSendInvoice(): SendInvoice? = this as? SendInvoice
 
 @PreviewFeature
-inline fun CommonSendInvoiceData.requireVoiceChatParticipantsInvited(): SendInvoice = this as SendInvoice
+inline fun CommonSendInvoiceData.requireSendInvoice(): SendInvoice = this as SendInvoice
+
+@PreviewFeature
+inline fun <T> CommonSendInvoiceData.whenCreateInvoiceLink(block: (CreateInvoiceLink) -> T) = asCreateInvoiceLink() ?.let(block)
+
+@PreviewFeature
+inline fun CommonSendInvoiceData.asCreateInvoiceLink(): CreateInvoiceLink? = this as? CreateInvoiceLink
+
+@PreviewFeature
+inline fun CommonSendInvoiceData.requireCreateInvoiceLink(): CreateInvoiceLink = this as CreateInvoiceLink
 
 @PreviewFeature
 inline fun <T> CommonSendInvoiceData.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) = asInputInvoiceMessageContent() ?.let(block)

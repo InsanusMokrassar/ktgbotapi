@@ -1,5 +1,15 @@
 # TelegramBotAPI changelog
 
+## 2.1.0
+
+__This update contains including of [Telegram Bot API 6.1](https://core.telegram.org/bots/api-changelog#june-20-2022)__
+
+* Add support of functionality for `WebApp`s from [Bot API 6.1](https://core.telegram.org/bots/api-changelog#june-20-2022)
+* Add support of functionality for premium feature from [Bot API 6.1](https://core.telegram.org/bots/api-changelog#june-20-2022)
+* Add support of `addedToAttachmentMenu` in `CommonUser` from [Bot API 6.1](https://core.telegram.org/bots/api-changelog#june-20-2022)
+* Add support of `secret_token` in `SetWebhook` request from [Bot API 6.1](https://core.telegram.org/bots/api-changelog#june-20-2022)
+* Add support of `createInvoiceLink` request from [Bot API 6.1](https://core.telegram.org/bots/api-changelog#june-20-2022)
+
 ## 2.0.3
 
 * `Core`:

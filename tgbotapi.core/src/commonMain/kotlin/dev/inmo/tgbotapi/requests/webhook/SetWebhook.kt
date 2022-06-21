@@ -20,7 +20,8 @@ class MultipartSetWebhookRequest(
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null,
-    dropPendingUpdates: Boolean? = null
+    dropPendingUpdates: Boolean? = null,
+    secretToken: String? = null
 ) : SetWebhookRequest(), MultipartRequest<Boolean> by MultipartRequestImpl(
     SetWebhook(
         correctWebhookUrl(url),
@@ -28,7 +29,8 @@ class MultipartSetWebhookRequest(
         ipAddress,
         maxAllowedConnections,
         allowedUpdates,
-        dropPendingUpdates
+        dropPendingUpdates,
+        secretToken
     ),
     mapOf(certificateField to certificate)
 )
@@ -39,14 +41,16 @@ fun SetWebhook(
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null,
-    dropPendingUpdates: Boolean? = null
+    dropPendingUpdates: Boolean? = null,
+    secretToken: String? = null
 ): MultipartSetWebhookRequest = MultipartSetWebhookRequest(
     correctWebhookUrl(url),
     certificate,
     ipAddress,
     maxAllowedConnections,
     allowedUpdates,
-    dropPendingUpdates
+    dropPendingUpdates,
+    secretToken
 )
 
 fun SetWebhook(
@@ -55,14 +59,16 @@ fun SetWebhook(
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null,
-    dropPendingUpdates: Boolean? = null
+    dropPendingUpdates: Boolean? = null,
+    secretToken: String? = null
 ): SetWebhook = SetWebhook(
     correctWebhookUrl(url),
     certificate.fileId,
     ipAddress,
     maxAllowedConnections,
     allowedUpdates,
-    dropPendingUpdates
+    dropPendingUpdates,
+    secretToken
 )
 
 /**
@@ -79,10 +85,11 @@ fun SetWebhook(
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null,
-    dropPendingUpdates: Boolean? = null
+    dropPendingUpdates: Boolean? = null,
+    secretToken: String? = null
 ) = when (certificate) {
-    is MultipartFile -> SetWebhook(correctWebhookUrl(url), certificate as MultipartFile, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates)
-    is FileId -> SetWebhook(correctWebhookUrl(url), certificate as FileId, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates)
+    is MultipartFile -> SetWebhook(correctWebhookUrl(url), certificate as MultipartFile, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates, secretToken)
+    is FileId -> SetWebhook(correctWebhookUrl(url), certificate as FileId, ipAddress, maxAllowedConnections, allowedUpdates, dropPendingUpdates, secretToken)
 }
 
 /**
@@ -98,14 +105,16 @@ fun SetWebhook(
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
     allowedUpdates: List<String>? = null,
-    dropPendingUpdates: Boolean? = null
+    dropPendingUpdates: Boolean? = null,
+    secretToken: String? = null
 ) = SetWebhook(
     correctWebhookUrl(url),
     null,
     ipAddress,
     maxAllowedConnections,
     allowedUpdates,
-    dropPendingUpdates
+    dropPendingUpdates,
+    secretToken
 )
 
 /**
@@ -128,7 +137,9 @@ data class SetWebhook internal constructor(
     @SerialName(allowedUpdatesField)
     val allowedUpdates: List<String>? = null,
     @SerialName(dropPendingUpdatesField)
-    val dropPendingUpdates: Boolean? = null
+    val dropPendingUpdates: Boolean? = null,
+    @SerialName(secretTokenField)
+    val secretToken: String? = null
 ) : SetWebhookRequest(), DataRequest<Boolean> {
     override fun method(): String = "setWebhook"
     override val resultDeserializer: DeserializationStrategy<Boolean>

@@ -1,9 +1,10 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.ChatId
-import dev.inmo.tgbotapi.types.chat.Chat
+import kotlinx.serialization.json.JsonObject
 
 data class UnknownChatType(
     override val id: ChatId,
-    val raw: String
+    val raw: String,
+    val rawJson: JsonObject
 ) : Chat

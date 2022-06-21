@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
 
 @Serializable
 data class ExtendedChannelChatImpl(
@@ -94,7 +95,11 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(linkedChatIdField)
     override val linkedChannelChatId: ChatId? = null,
     @SerialName(locationField)
-    override val location: ChatLocation? = null
+    override val location: ChatLocation? = null,
+    @SerialName(joinToSendMessagesField)
+    override val requiresJoinForMessaging: Boolean = false,
+    @SerialName(joinByRequestField)
+    override val requireAdminApproveToJoin: Boolean = false
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -119,7 +124,8 @@ data class ExtendedBot(
 
 data class UnknownExtendedChat(
     override val id: ChatId,
-    val raw: String
+    val raw: String,
+    val rawJson: JsonObject
 ) : ExtendedChat {
     override val chatPhoto: ChatPhoto? = null
 }
