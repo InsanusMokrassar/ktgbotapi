@@ -50,8 +50,9 @@ suspend fun <T> TelegramBot.editMessageCaption(
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-): ContentMessage<MediaContent> where T : TextedWithTextSources, T : MediaContent {
-    return editMessageCaption(message.chat.id, message.messageId, text, parseMode, replyMarkup)
+): ContentMessage<T> where T : TextedWithTextSources, T : MediaContent {
+    @Suppress("UNCHECKED_CAST")
+    return editMessageCaption(message.chat.id, message.messageId, text, parseMode, replyMarkup) as ContentMessage<T>
 }
 
 /**
