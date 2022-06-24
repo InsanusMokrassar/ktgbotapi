@@ -11,7 +11,9 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.MediaContent
+import dev.inmo.tgbotapi.utils.RiskFeature
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -82,6 +84,20 @@ suspend fun TelegramBot.editMessageCaption(
  */
 suspend fun <T> TelegramBot.editMessageCaption(
     message: ContentMessage<T>,
+    entities: List<TextSource>,
+    replyMarkup: InlineKeyboardMarkup? = null
+): ContentMessage<T> where T : TextedWithTextSources, T : MediaContent {
+    @Suppress("UNCHECKED_CAST")
+    return editMessageCaption(message.chat.id, message.messageId, entities, replyMarkup) as ContentMessage<T>
+}
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+@RiskFeature("This method is unsafe due to absence of any guaranties about the type of message. In case if message is not media message this method will throw an exception")
+suspend fun <T> TelegramBot.editMessageCaption(
+    message: Message,
     entities: List<TextSource>,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<MediaContent> where T : TextedWithTextSources, T : MediaContent {
