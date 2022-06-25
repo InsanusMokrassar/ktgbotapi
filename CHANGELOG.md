@@ -7,6 +7,7 @@
   * Now it is possible to edit any message caption via `editMessageCaption` (but with warning)
   * Media message caption edit method (`editMessageCaption`) now returns the message with the same generic type (as it must be in telegram system)
   * New extensions `TelegramBot#edit` has been added for all possible editions types
+  * New extensions `TelegramBot#send` has been added for all possible sending types
 
 ## 2.1.0
 
