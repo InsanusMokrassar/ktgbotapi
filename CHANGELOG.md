@@ -8,6 +8,9 @@
   * Media message caption edit method (`editMessageCaption`) now returns the message with the same generic type (as it must be in telegram system)
   * New extensions `TelegramBot#edit` has been added for all possible editions types
   * New extensions `TelegramBot#send` has been added for all possible sending types
+  * New extensions `TelegramBot#delete` has been added
+* `Versions`:
+    * `MicroUtils`: `0.11.3` -> `0.11.6`
 
 ## 2.1.0
 
