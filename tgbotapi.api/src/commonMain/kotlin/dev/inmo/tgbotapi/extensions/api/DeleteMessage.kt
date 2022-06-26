@@ -23,6 +23,20 @@ suspend fun TelegramBot.deleteMessage(
     message: Message
 ) = deleteMessage(message.chat, message.messageId)
 
+suspend fun TelegramBot.delete(
+    chatId: ChatIdentifier,
+    messageId: MessageIdentifier
+) = deleteMessage(chatId, messageId)
+
+suspend fun TelegramBot.delete(
+    chat: Chat,
+    messageId: MessageIdentifier
+) = deleteMessage(chat, messageId)
+
+suspend fun TelegramBot.delete(
+    message: Message
+) = deleteMessage(message)
+
 suspend fun Message.delete(
     requestsExecutor: TelegramBot
 ) = requestsExecutor.deleteMessage(this)

@@ -22,7 +22,7 @@ suspend fun <T> TelegramBot.withAction(
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
-    val botActionJob = CoroutineScope(coroutineContext).launch {
+    val botActionJob = CoroutineScope(currentCoroutineContext()).launch {
         while (isActive) {
             delay(refreshTime)
             safelyWithoutExceptions {
