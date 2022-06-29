@@ -1,48 +1,16 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
-    }
-}
-
 plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
 }
 
-project.version = "$library_version"
-project.group = "$library_group"
 project.description = "Core part of tgbotapi with all (and only) required functionality for working with Telegram Bot API"
 
-apply from: "../publish.gradle"
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
+apply from: "$mppProjectWithSerializationPresetPath"
 
 kotlin {
-    jvm {
-        compilations.main {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
-    js(IR) {
-        browser()
-        nodejs()
-    }
-
     sourceSets {
         commonMain {
             dependencies {
-                implementation kotlin('stdlib')
                 api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
                 api "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialisation_runtime_version"
                 api "org.jetbrains.kotlinx:kotlinx-serialization-properties:$kotlin_serialisation_runtime_version"
@@ -63,12 +31,9 @@ kotlin {
         }
         commonTest {
             dependencies {
-                implementation kotlin('test-common')
-                implementation kotlin('test-annotations-common')
                 implementation project(":tgbotapi.utils")
             }
         }
-
         jvmMain {
             dependencies {
                 api "io.ktor:ktor-server:$ktor_version"
@@ -79,29 +44,13 @@ kotlin {
                 api "javax.activation:activation:$javax_activation_version"
             }
         }
-        jvmTest {
-            dependencies {
-                implementation kotlin('test-junit')
-            }
-        }
-        jsTest {
-            dependencies {
-                implementation kotlin('test-junit')
-                implementation kotlin('test-js')
-            }
-        }
     }
 
-    targets.all {
-        compilations.all {
-            kotlinOptions {
-                freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
-            }
-        }
-    }
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+//    targets.all {
+//        compilations.all {
+//            kotlinOptions {
+//                freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
+//            }
+//        }
+//    }
 }

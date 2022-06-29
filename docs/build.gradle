@@ -14,7 +14,7 @@ buildscript {
 plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
-    id "org.jetbrains.dokka" version "$dokka_version"
+    id "org.jetbrains.dokka"
 }
 
 repositories {
