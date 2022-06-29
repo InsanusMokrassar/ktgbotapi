@@ -1,107 +1,57 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
-    }
-}
-
 plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
 }
 
-project.version = "$library_version"
-project.group = "$library_group"
 project.description = "Core part of tgbotapi with all (and only) required functionality for working with Telegram Bot API"
 
-apply from: "../publish.gradle"
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
+apply from: "$mppProjectWithSerializationPresetPath"
+apply from: "$publishGradlePath"
 
 kotlin {
-    jvm {
-        compilations.main {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
-    js(IR) {
-        browser()
-        nodejs()
-    }
-
     sourceSets {
         commonMain {
             dependencies {
-                implementation kotlin('stdlib')
-                api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialisation_runtime_version"
-                api "org.jetbrains.kotlinx:kotlinx-serialization-properties:$kotlin_serialisation_runtime_version"
+                api libs.kotlin.coroutines
+                api libs.kotlin.serialization
+                api libs.kotlin.serialization.properties
 
-                api "com.soywiz.korlibs.klock:klock:$korlibs_version"
-                api "com.soywiz.korlibs.krypto:krypto:$korlibs_version"
-                api "com.benasher44:uuid:$uuid_version"
+                api libs.korlibs.klock
+                api libs.korlibs.krypto
+                api libs.uuid
 
-                api "dev.inmo:micro_utils.coroutines:$micro_utils_version"
-                api "dev.inmo:micro_utils.serialization.base64:$micro_utils_version"
-                api "dev.inmo:micro_utils.serialization.encapsulator:$micro_utils_version"
-                api "dev.inmo:micro_utils.serialization.typed_serializer:$micro_utils_version"
-                api "dev.inmo:micro_utils.ktor.common:$micro_utils_version"
-                api "dev.inmo:micro_utils.language_codes:$micro_utils_version"
+                api libs.microutils.coroutines
+                api libs.microutils.serialization.base64
+                api libs.microutils.serialization.encapsulator
+                api libs.microutils.serialization.typedSerializer
+                api libs.microutils.ktor.common
+                api libs.microutils.languageCodes
 
-                api "io.ktor:ktor-client-core:$ktor_version"
+                api libs.ktor.client.core
             }
         }
         commonTest {
             dependencies {
-                implementation kotlin('test-common')
-                implementation kotlin('test-annotations-common')
                 implementation project(":tgbotapi.utils")
             }
         }
-
         jvmMain {
             dependencies {
-                api "io.ktor:ktor-server:$ktor_version"
-                api "io.ktor:ktor-server-host-common:$ktor_version"
+                api libs.ktor.server
+                api libs.ktor.server.host.common
 
-                api "io.ktor:ktor-client-cio:$ktor_version"
+                api libs.ktor.client.cio
 
-                api "javax.activation:activation:$javax_activation_version"
-            }
-        }
-        jvmTest {
-            dependencies {
-                implementation kotlin('test-junit')
-            }
-        }
-        jsTest {
-            dependencies {
-                implementation kotlin('test-junit')
-                implementation kotlin('test-js')
+                api libs.javax.activation
             }
         }
     }
 
-    targets.all {
-        compilations.all {
-            kotlinOptions {
-                freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
-            }
-        }
-    }
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+//    targets.all {
+//        compilations.all {
+//            kotlinOptions {
+//                freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
+//            }
+//        }
+//    }
 }

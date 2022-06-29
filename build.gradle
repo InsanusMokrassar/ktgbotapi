@@ -6,19 +6,20 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
-        classpath "com.github.breadmoirai:github-release:$github_release_plugin_version"
+        classpath libs.kotlin.gradle.plugin
+        classpath libs.kotlin.serialization.plugin
+        classpath libs.kotlin.dokka.plugin
+        classpath libs.github.release.plugin
     }
-}
-
-plugins {
-    id "org.jetbrains.kotlin.multiplatform" version "$kotlin_version" apply false
-    id "org.jetbrains.kotlin.plugin.serialization" version "$kotlin_version" apply false
 }
 
 // temporal crutch until legacy tests will be stabled or legacy target will be removed
 allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+    }
     if (it != rootProject.findProject("docs")) {
         tasks.whenTaskAdded { task ->
             if(task.name == "jsLegacyBrowserTest" || task.name == "jsLegacyNodeTest") {
@@ -27,6 +28,7 @@ allprojects {
         }
     }
 }
+apply from: "./extensions.gradle"
 
 private String getCurrentVersionChangelog() {
     OutputStream changelogDataOS = new ByteArrayOutputStream()
