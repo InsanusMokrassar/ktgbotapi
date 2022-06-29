@@ -1,8 +1,6 @@
 project.version = "$library_version"
 project.group = "$library_group"
 
-apply from: "$publishGradlePath"
-
 kotlin {
     jvm {
         compilations.main {

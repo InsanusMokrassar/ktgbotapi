@@ -6,13 +6,14 @@ plugins {
 project.description = "Behaviour Builder DSL"
 
 apply from: "$mppProjectWithSerializationPresetPath"
+apply from: "$publishGradlePath"
 
 kotlin {
     sourceSets {
         commonMain {
             dependencies {
                 api project(":tgbotapi.behaviour_builder")
-                api "dev.inmo:micro_utils.fsm.common:$micro_utils_version"
+                api libs.microutils.fsm.common
             }
         }
     }

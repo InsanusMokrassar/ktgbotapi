@@ -9,7 +9,7 @@ buildscript {
         classpath libs.kotlin.gradle.plugin
         classpath libs.kotlin.serialization.plugin
         classpath libs.kotlin.dokka.plugin
-        classpath "com.github.breadmoirai:github-release:$github_release_plugin_version"
+        classpath libs.github.release.plugin
     }
 }
 

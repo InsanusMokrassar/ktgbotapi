@@ -6,6 +6,7 @@ plugins {
 project.description = "Behaviour Builder DSL"
 
 apply from: "$mppProjectWithSerializationPresetPath"
+apply from: "$publishGradlePath"
 
 kotlin {
     sourceSets {

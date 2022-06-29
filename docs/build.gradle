@@ -1,45 +1,17 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
-        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
-    }
-}
-
 plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
     id "org.jetbrains.dokka"
 }
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
+project.description = "Full collection of all built-in tgbotapi tools"
+
+apply from: "$mppProjectWithSerializationPresetPath"
 
 kotlin {
-    jvm {
-        compilations.main {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
-    js(IR) {
-        browser()
-        nodejs()
-    }
-
     sourceSets {
         commonMain {
             dependencies {
-                implementation kotlin('stdlib')
-
                 api project(":tgbotapi.core")
                 api project(":tgbotapi.api")
                 api project(":tgbotapi.utils")
@@ -103,8 +75,3 @@ Object callback = {
 
 tasks.dokkaGfm(callback)
 tasks.dokkaHtml(callback)
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
