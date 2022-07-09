@@ -44,7 +44,7 @@ val User.link: String
  */
 @Deprecated("Renamed", ReplaceWith("userLink", "dev.inmo.tgbotapi.types.userLink"))
 val Identifier.link: String
-    get() = "$internalLinkBeginning/tg://user?id=$this"
+    get() = "tg://user?id=$this"
 /**
  * https://core.telegram.org/bots/api#formatting-options
  */
