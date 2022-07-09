@@ -18,7 +18,7 @@ data class ChatJoinRequest(
     @SerialName(dateField)
     val date: TelegramDate,
     @SerialName(inviteLinkField)
-    val inviteLink: ChatInviteLink,
+    val inviteLink: ChatInviteLink? = null,
     @SerialName(bioField)
     val bio: String? = null
 ) : FromUser {

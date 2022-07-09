@@ -4,6 +4,8 @@
 
 * `Utils`:
   * Rename `UserId` extension `link` to `userLink`
+* `Core`
+  * `ChatJoinRequest#inviteLink` is nullable due to the fact that join requests without link do not require invite link
 
 ## 2.1.2
 
