@@ -2,6 +2,9 @@
 
 ## 2.1.3
 
+* `Utils`:
+  * Rename `UserId` extension `link` to `userLink`
+
 ## 2.1.2
 
 * `Versions`:

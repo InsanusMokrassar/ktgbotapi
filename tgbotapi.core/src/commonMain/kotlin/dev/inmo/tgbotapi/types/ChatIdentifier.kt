@@ -11,6 +11,8 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.longOrNull
 
+const val internalLinkBeginning = "https://t.me"
+
 @Serializable(ChatIdentifierSerializer::class)
 sealed class ChatIdentifier
 
@@ -26,16 +28,29 @@ data class ChatId(
  * https://core.telegram.org/bots/api#formatting-options
  */
 @Warning("This API have restrictions in Telegram System")
-val Identifier.link: String
+val Identifier.userLink: String
     get() = "tg://user?id=$this"
 /**
  * https://core.telegram.org/bots/api#formatting-options
  */
 @Warning("This API have restrictions in Telegram System")
-val UserId.link: String
-    get() = chatId.link
+val UserId.userLink: String
+    get() = chatId.userLink
 val User.link: String
-    get() = id.link
+    get() = id.userLink
+
+/**
+ * https://core.telegram.org/bots/api#formatting-options
+ */
+@Deprecated("Renamed", ReplaceWith("userLink", "dev.inmo.tgbotapi.types.userLink"))
+val Identifier.link: String
+    get() = "$internalLinkBeginning/tg://user?id=$this"
+/**
+ * https://core.telegram.org/bots/api#formatting-options
+ */
+@Deprecated("Renamed", ReplaceWith("userLink", "dev.inmo.tgbotapi.types.userLink"))
+val ChatId.link: String
+    get() = chatId.link
 
 typealias UserId = ChatId
 
