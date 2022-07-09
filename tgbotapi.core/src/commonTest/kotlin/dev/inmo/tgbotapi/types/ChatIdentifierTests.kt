@@ -28,7 +28,7 @@ class ChatIdentifierTests {
     @Test
     fun `Creating_link_from_ChatId_is_correct`() {
         val chatId = chatIdentifierChatId.toChatId()
-        assertEquals(chatIdentifierLink, chatId.link)
+        assertEquals(chatIdentifierLink, chatId.userLink)
     }
 
     @Test

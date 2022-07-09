@@ -5,5 +5,5 @@ import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 @RiskFeature(RawFieldsUsageWarning)
-val ChatJoinRequest.invite_link: ChatInviteLink
+val ChatJoinRequest.invite_link: ChatInviteLink?
     get() = inviteLink

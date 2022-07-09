@@ -1,11 +1,20 @@
 # TelegramBotAPI changelog
 
+## 2.1.3
+
+* `Versions`:
+  * `MicroUtils`: `0.11.9` -> `0.11.12`
+* `Utils`:
+  * Rename `UserId` extension `link` to `userLink`
+* `Core`
+  * `ChatJoinRequest#inviteLink` is nullable due to the fact that join requests without link do not require invite link
+
 ## 2.1.2
 
 * `Versions`:
-    * `Coroutines`: `1.6.1` -> `1.6.3`
-    * `Ktor`: `2.0.2` -> `2.0.3`
-    * `MicroUtils`: `0.11.6` -> `0.11.9`
+  * `Coroutines`: `1.6.1` -> `1.6.3`
+  * `Ktor`: `2.0.2` -> `2.0.3`
+  * `MicroUtils`: `0.11.6` -> `0.11.9`
 
 ## 2.1.1
 

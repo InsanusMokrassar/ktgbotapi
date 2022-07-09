@@ -5,8 +5,6 @@ import dev.inmo.tgbotapi.types.message.textsources.link
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 
-private const val internalLinkBeginning = "https://t.me"
-
 fun makeUsernameLink(username: String) = "$internalLinkBeginning/$username"
 fun makeUsernameDeepLinkPrefix(username: String) = "${makeUsernameLink(username)}?start="
 inline val Username.link
@@ -73,7 +71,7 @@ val Message.link: String?
 val Chat.link: String?
     get() {
         if (this is UsernameChat) {
-            username ?.username ?.let { return it }
+            username ?.link
         }
         if (this is ExtendedPublicChat) {
             inviteLink ?.let { return it }
