@@ -50,7 +50,7 @@ if (new File(projectDir, "secret.gradle").exists()) {
         owner "InsanusMokrassar"
         repo "TelegramBotAPI"
 
-        tagName "$library_version"
+        tagName "v$library_version"
         releaseName "$library_version"
         targetCommitish "$library_version"
 
