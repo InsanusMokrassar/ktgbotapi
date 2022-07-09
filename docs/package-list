@@ -5180,7 +5180,7 @@ $dokka.location:dev.inmo.tgbotapi.types.chat/ChannelChatImpl/username/#/Pointing
 $dokka.location:dev.inmo.tgbotapi.types.chat/Chat///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-chat/index.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/Chat/id/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-chat/id.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ChatJoinRequest///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-chat-join-request/index.html
-$dokka.location:dev.inmo.tgbotapi.types.chat/ChatJoinRequest/ChatJoinRequest/#dev.inmo.tgbotapi.types.chat.PublicChat#dev.inmo.tgbotapi.types.chat.User#dev.inmo.tgbotapi.types.TelegramDate#dev.inmo.tgbotapi.types.ChatInviteLink#kotlin.String?/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-chat-join-request/-chat-join-request.html
+$dokka.location:dev.inmo.tgbotapi.types.chat/ChatJoinRequest/ChatJoinRequest/#dev.inmo.tgbotapi.types.chat.PublicChat#dev.inmo.tgbotapi.types.chat.User#dev.inmo.tgbotapi.types.TelegramDate#dev.inmo.tgbotapi.types.ChatInviteLink?#kotlin.String?/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-chat-join-request/-chat-join-request.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ChatJoinRequest/bio/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-chat-join-request/bio.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ChatJoinRequest/chat/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-chat-join-request/chat.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ChatJoinRequest/date/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-chat-join-request/date.html
@@ -7162,6 +7162,7 @@ $dokka.location:dev.inmo.tgbotapi.types//inlineResultQueryIdLingth/#/PointingToD
 $dokka.location:dev.inmo.tgbotapi.types//inputFieldPlaceholderField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/input-field-placeholder-field.html
 $dokka.location:dev.inmo.tgbotapi.types//inputFieldPlaceholderLimit/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/input-field-placeholder-limit.html
 $dokka.location:dev.inmo.tgbotapi.types//inputMessageContentField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/input-message-content-field.html
+$dokka.location:dev.inmo.tgbotapi.types//internalLinkBeginning/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/internal-link-beginning.html
 $dokka.location:dev.inmo.tgbotapi.types//internalPassportField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/internal-passport-field.html
 $dokka.location:dev.inmo.tgbotapi.types//inviteLinkField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/invite-link-field.html
 $dokka.location:dev.inmo.tgbotapi.types//invoiceDescriptionLimit/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/invoice-description-limit.html
@@ -7192,9 +7193,7 @@ $dokka.location:dev.inmo.tgbotapi.types//lastSynchronizationErrorDateField/#/Poi
 $dokka.location:dev.inmo.tgbotapi.types//latitudeField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/latitude-field.html
 $dokka.location:dev.inmo.tgbotapi.types//lengthField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/length-field.html
 $dokka.location:dev.inmo.tgbotapi.types//limitField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/limit-field.html
-$dokka.location:dev.inmo.tgbotapi.types//link/dev.inmo.tgbotapi.types.ChatId#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/link.html
 $dokka.location:dev.inmo.tgbotapi.types//link/dev.inmo.tgbotapi.types.chat.User#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/link.html
-$dokka.location:dev.inmo.tgbotapi.types//link/kotlin.Long#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/link.html
 $dokka.location:dev.inmo.tgbotapi.types//linkedChatIdField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/linked-chat-id-field.html
 $dokka.location:dev.inmo.tgbotapi.types//livePeriodField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/live-period-field.html
 $dokka.location:dev.inmo.tgbotapi.types//livePeriodLimit/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/live-period-limit.html
@@ -7358,6 +7357,8 @@ $dokka.location:dev.inmo.tgbotapi.types//updateIdField/#/PointingToDeclaration/
 $dokka.location:dev.inmo.tgbotapi.types//urlField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/url-field.html
 $dokka.location:dev.inmo.tgbotapi.types//userField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/user-field.html
 $dokka.location:dev.inmo.tgbotapi.types//userIdField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/user-id-field.html
+$dokka.location:dev.inmo.tgbotapi.types//userLink/dev.inmo.tgbotapi.types.ChatId#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/user-link.html
+$dokka.location:dev.inmo.tgbotapi.types//userLink/kotlin.Long#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/user-link.html
 $dokka.location:dev.inmo.tgbotapi.types//userProfilePhotosRequestLimit/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/user-profile-photos-request-limit.html
 $dokka.location:dev.inmo.tgbotapi.types//usernameField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/username-field.html
 $dokka.location:dev.inmo.tgbotapi.types//usersField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/users-field.html
