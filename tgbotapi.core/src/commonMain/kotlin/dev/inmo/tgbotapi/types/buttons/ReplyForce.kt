@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.buttons
 
-import dev.inmo.tgbotapi.types.inputFieldPlaceholderField
-import dev.inmo.tgbotapi.types.inputFieldPlaceholderLimit
+import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 
 @Serializable
@@ -10,7 +9,7 @@ data class ReplyForce(
     @SerialName(inputFieldPlaceholderField)
     val inputFieldPlaceholder: String? = null
 ) : KeyboardMarkup {
-    @SerialName("force_reply")
+    @SerialName(forceReplyField)
     @Required
     val forceReply: Boolean = true
 
