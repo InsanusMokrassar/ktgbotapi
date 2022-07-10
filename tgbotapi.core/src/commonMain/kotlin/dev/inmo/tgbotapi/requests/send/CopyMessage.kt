@@ -16,6 +16,9 @@ import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
+const val OrderChangingDeprecationWarn = "The order of parameters in this factory will be changed soon. To avoid unexpected behaviour, swap message id and target chat id parameters"
+
+@Deprecated(OrderChangingDeprecationWarn)
 fun CopyMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
@@ -27,8 +30,21 @@ fun CopyMessage(
     replyToMessageId: MessageIdentifier? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = CopyMessage(fromChatId, toChatId, messageId, text, parseMode, null, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = CopyMessage(
+    toChatId,
+    fromChatId,
+    messageId,
+    text,
+    parseMode,
+    null,
+    disableNotification,
+    protectContent,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
 
+@Deprecated(OrderChangingDeprecationWarn)
 fun CopyMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
@@ -40,8 +56,57 @@ fun CopyMessage(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
-    fromChatId,
     toChatId,
+    fromChatId,
+    messageId,
+    entities.makeString(),
+    null,
+    entities.toRawMessageEntities(),
+    disableNotification,
+    protectContent,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
+
+fun CopyMessage(
+    fromChatId: ChatIdentifier,
+    messageId: MessageIdentifier,
+    toChatId: ChatIdentifier,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = CopyMessage(
+    toChatId,
+    fromChatId,
+    messageId,
+    text,
+    parseMode,
+    null,
+    disableNotification,
+    protectContent,
+    replyToMessageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
+
+fun CopyMessage(
+    fromChatId: ChatIdentifier,
+    messageId: MessageIdentifier,
+    toChatId: ChatIdentifier,
+    entities: List<TextSource>,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageIdentifier? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = CopyMessage(
+    toChatId,
+    fromChatId,
     messageId,
     entities.makeString(),
     null,
@@ -55,10 +120,10 @@ fun CopyMessage(
 
 @Serializable
 data class CopyMessage internal constructor(
-    @SerialName(fromChatIdField)
-    val fromChatId: ChatIdentifier,
     @SerialName(chatIdField)
     val toChatId: ChatIdentifier,
+    @SerialName(fromChatIdField)
+    val fromChatId: ChatIdentifier,
     @SerialName(messageIdField)
     override val messageId: MessageIdentifier,
     @SerialName(captionField)

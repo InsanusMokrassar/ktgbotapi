@@ -2,6 +2,11 @@
 
 ## 2.2.0
 
+* `Core`:
+  * For `CopyMessage` order of parameters has been changed
+* `API`:
+  * For `copyMessage` order of parameters has been changed
+
 ## 2.1.3
 
 * `Versions`:
