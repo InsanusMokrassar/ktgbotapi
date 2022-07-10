@@ -19,6 +19,7 @@
   * New extension `Message#sameChat`
   * New extension `Message#sameMessage`
   * New functions `flatInlineKeyboard` and `flatReplyKeyboard`
+  * Experimentally add new triple of class casts: `if*`, `*OrNull` and `*OrThrow`
 
 ## 2.1.3
 
