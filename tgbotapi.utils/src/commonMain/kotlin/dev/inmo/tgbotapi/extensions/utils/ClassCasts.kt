@@ -1828,13 +1828,13 @@ inline fun InlineQueryResult.requireInlineQueryResultVoiceCommon(): InlineQueryR
     this as InlineQueryResultVoiceCommon
 
 @PreviewFeature
-inline fun <T> ChatMember.whenCreatorChatMember(block: (CreatorChatMember) -> T) = asCreatorChatMember() ?.let(block)
+inline fun <T> ChatMember.whenCreatorChatMember(block: (OwnerChatMember) -> T) = asCreatorChatMember() ?.let(block)
 
 @PreviewFeature
-inline fun ChatMember.asCreatorChatMember(): CreatorChatMember? = this as? CreatorChatMember
+inline fun ChatMember.asCreatorChatMember(): OwnerChatMember? = this as? OwnerChatMember
 
 @PreviewFeature
-inline fun ChatMember.requireCreatorChatMember(): CreatorChatMember = this as CreatorChatMember
+inline fun ChatMember.requireCreatorChatMember(): OwnerChatMember = this as OwnerChatMember
 
 @PreviewFeature
 inline fun <T> ChatMember.whenKickedChatMember(block: (KickedChatMember) -> T) = asKickedChatMember() ?.let(block)

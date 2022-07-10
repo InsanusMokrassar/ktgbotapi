@@ -12,6 +12,7 @@
     * New companion functions:
       * `ReplyForce#Selective`
       * `ReplyForce#NonSelective`
+  * Rename `CreatorChatMember` -> `OwnerChatMember`
 * `API`:
   * For `copyMessage` order of parameters has been changed
 * `Utils`:
