@@ -7,6 +7,7 @@
 * `API`:
   * For `copyMessage` order of parameters has been changed
 * `Utils`:
+  * New extension `Message#sameChat`
   * New extension `Message#sameMessage`
 
 ## 2.1.3
