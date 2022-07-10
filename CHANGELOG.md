@@ -9,6 +9,7 @@
 * `Utils`:
   * New extension `Message#sameChat`
   * New extension `Message#sameMessage`
+  * New functions `flatInlineKeyboard` and `flatReplyKeyboard`
 
 ## 2.1.3
 

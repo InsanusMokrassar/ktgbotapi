@@ -48,6 +48,20 @@ inline fun replyKeyboard(
 ) = ReplyKeyboardBuilder().apply(block).build(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective)
 
 /**
+ * Factory-function for [ReplyKeyboardBuilder], but in difference with [replyKeyboard] this method will create single-row
+ * keyboard
+ */
+inline fun flatReplyKeyboard(
+    resizeKeyboard: Boolean? = null,
+    oneTimeKeyboard: Boolean? = null,
+    inputFieldPlaceholder: String? = null,
+    selective: Boolean? = null,
+    block: ReplyKeyboardRowBuilder.() -> Unit
+) = replyKeyboard(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective) {
+    row(block)
+}
+
+/**
  * Creates an [ReplyKeyboardRowBuilder] and [apply] [block] with this builder
  *
  * @see simpleButton
