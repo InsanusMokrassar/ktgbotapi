@@ -16,6 +16,8 @@ import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
+// TODO:: Swap fromChatId and toChatId for more correct order of parameters
+
 const val OrderChangingDeprecationWarn = "The order of parameters in this factory will be changed soon. To avoid unexpected behaviour, swap message id and target chat id parameters"
 
 @Deprecated(OrderChangingDeprecationWarn)
