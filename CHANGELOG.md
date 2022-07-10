@@ -4,6 +4,14 @@
 
 * `Core`:
   * For `CopyMessage` order of parameters has been changed
+  * `ReplyForce` defaults changes:
+    * All old companion properties (like `ReplyForce.ReplyForceSelective`) have been renamed:
+      * `ReplyForceSelective` -> `Selective`
+      * `ReplyForceNonSelective` -> `NonSelective`
+      * `ReplyForceDefault` -> `Default`
+    * New companion functions:
+      * `ReplyForce#Selective`
+      * `ReplyForce#NonSelective`
 * `API`:
   * For `copyMessage` order of parameters has been changed
 * `Utils`:
