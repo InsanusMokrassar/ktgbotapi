@@ -22,7 +22,7 @@ object ChatMemberSerializer : KSerializer<ChatMember> {
     override fun deserialize(decoder: Decoder): ChatMember {
         val json = JsonObject.serializer().deserialize(decoder)
         return when (json[statusField] ?.jsonPrimitive ?.content ?: error("Status field of chat member must be specified, but incoming json contains next: $json")) {
-            "creator" -> nonstrictJsonFormat.decodeFromJsonElement(CreatorChatMember.serializer(), json)
+            "creator" -> nonstrictJsonFormat.decodeFromJsonElement(OwnerChatMember.serializer(), json)
             "administrator" -> nonstrictJsonFormat.decodeFromJsonElement(AdministratorChatMemberImpl.serializer(), json)
             "member" -> nonstrictJsonFormat.decodeFromJsonElement(MemberChatMemberImpl.serializer(), json)
             "restricted" -> nonstrictJsonFormat.decodeFromJsonElement(RestrictedChatMember.serializer(), json)
@@ -34,7 +34,7 @@ object ChatMemberSerializer : KSerializer<ChatMember> {
 
     override fun serialize(encoder: Encoder, value: ChatMember) {
         when (value) {
-            is CreatorChatMember -> CreatorChatMember.serializer()
+            is OwnerChatMember -> OwnerChatMember.serializer()
             is AdministratorChatMemberImpl -> AdministratorChatMemberImpl.serializer()
             is MemberChatMember -> MemberChatMemberImpl.serializer()
             is RestrictedChatMember -> RestrictedChatMember.serializer()

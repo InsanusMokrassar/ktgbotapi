@@ -1,5 +1,26 @@
 # TelegramBotAPI changelog
 
+## 2.2.0
+
+* `Core`:
+  * For `CopyMessage` order of parameters has been changed
+  * `ReplyForce` defaults changes:
+    * All old companion properties (like `ReplyForce.ReplyForceSelective`) have been renamed:
+      * `ReplyForceSelective` -> `Selective`
+      * `ReplyForceNonSelective` -> `NonSelective`
+      * `ReplyForceDefault` -> `Default`
+    * New companion functions:
+      * `ReplyForce#Selective`
+      * `ReplyForce#NonSelective`
+  * Rename `CreatorChatMember` -> `OwnerChatMember`
+* `API`:
+  * For `copyMessage` order of parameters has been changed
+* `Utils`:
+  * New extension `Message#sameChat`
+  * New extension `Message#sameMessage`
+  * New functions `flatInlineKeyboard` and `flatReplyKeyboard`
+  * Experimentally add new triple of class casts: `if*`, `*OrNull` and `*OrThrow`
+
 ## 2.1.3
 
 * `Versions`:

@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
 @Serializable
-data class CreatorChatMember(
+data class OwnerChatMember(
     override val user: User,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
@@ -38,3 +38,6 @@ data class CreatorChatMember(
     @Required
     private val type: String = "creator"
 }
+
+@Deprecated("Renamed", ReplaceWith("OwnerChatMember", "dev.inmo.tgbotapi.types.chat.member.OwnerChatMember"))
+typealias CreatorChatMember = OwnerChatMember

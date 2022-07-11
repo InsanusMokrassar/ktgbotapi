@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types.buttons
 
-import dev.inmo.tgbotapi.types.inputFieldPlaceholderField
-import dev.inmo.tgbotapi.types.inputFieldPlaceholderLimit
+import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 
 @Serializable
@@ -10,13 +9,24 @@ data class ReplyForce(
     @SerialName(inputFieldPlaceholderField)
     val inputFieldPlaceholder: String? = null
 ) : KeyboardMarkup {
-    @SerialName("force_reply")
+    @SerialName(forceReplyField)
     @Required
     val forceReply: Boolean = true
 
     companion object {
-        val ReplyForceSelective = ReplyForce(true)
-        val ReplyForceNonSelective = ReplyForce(false)
+        fun Selective(inputFieldPlaceholder: String? = null) = ReplyForce(true, inputFieldPlaceholder)
+        fun NonSelective(inputFieldPlaceholder: String? = null) = ReplyForce(false, inputFieldPlaceholder)
+        val Selective = Selective()
+        val NonSelective = NonSelective()
+        val Default = ReplyForce()
+
+        @Deprecated("Renamed", ReplaceWith("ReplyForce.Selective"))
+        inline val ReplyForceSelective
+            get() = Selective
+        @Deprecated("Renamed", ReplaceWith("ReplyForce.NonSelective"))
+        inline val ReplyForceNonSelective
+            get() = NonSelective
+        @Deprecated("Renamed", ReplaceWith("ReplyForce.Default"))
         val ReplyForceDefault = ReplyForce()
     }
 

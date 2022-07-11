@@ -41,6 +41,16 @@ inline fun inlineKeyboard(
 ) = InlineKeyboardBuilder().apply(block).build()
 
 /**
+ * Factory-function for [InlineKeyboardBuilder], but in difference with [inlineKeyboard] this function will create single-row
+ * inline keyboard
+ *
+ * @see InlineKeyboardBuilder.row
+ */
+inline fun flatInlineKeyboard(
+    block: InlineKeyboardRowBuilder.() -> Unit
+) = inlineKeyboard { row(block) }
+
+/**
  * Creates an [InlineKeyboardRowBuilder] and [apply] [block] with this builder
  *
  * @see payButton
