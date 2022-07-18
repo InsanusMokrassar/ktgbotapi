@@ -3,6 +3,7 @@
 | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Build Status](https://github.com/InsanusMokrassar/TelegramBotAPI/workflows/Build/badge.svg)](https://github.com/InsanusMokrassar/TelegramBotAPI/actions) [![Small survey](https://img.shields.io/static/v1?label=Google&message=Survey&color=blue&logo=google-sheets)](https://docs.google.com/forms/d/e/1FAIpQLSctdJHT_aEniyYT0-IUAEfo1hsIlezX2owlkEAYX4KPl2V2_A/viewform?usp=sf_link) [![Chat in Telegram](https://img.shields.io/static/v1?label=Telegram&message=Chat&color=blue&logo=telegram)](https://t.me/InMoTelegramBotAPI) |
 |:---:|
 | [![Create bot](https://img.shields.io/static/v1?label=Github&message=Template&color=blue&logo=github)](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate) [![Examples](https://img.shields.io/static/v1?label=Github&message=Examples&color=blue&logo=github)](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/) [![KDocs](https://img.shields.io/static/v1?label=Dokka&message=KDocs&color=blue&logo=kotlin)](https://tgbotapi.inmo.dev/index.html) [![Mini tutorial](https://img.shields.io/static/v1?label=Bookstack&message=Tutorial&color=blue&logo=bookstack)](https://bookstack.inmo.dev/books/telegrambotapi/chapter/introduction-tutorial) |
+| [![Telegram Channel](./resources/tg_channel_qr.jpg)](https://t.me/InMoTelegramBotAPI) |
 
 Hello! This is a set of libraries for working with Telegram Bot API.
 
