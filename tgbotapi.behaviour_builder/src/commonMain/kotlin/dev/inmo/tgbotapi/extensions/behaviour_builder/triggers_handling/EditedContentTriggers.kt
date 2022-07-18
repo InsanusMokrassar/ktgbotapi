@@ -85,9 +85,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedContentMessage(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedContact(
     initialFilter: CommonMessageFilter<ContactContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<ContactContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<ContactContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<ContactContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ContactMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ContactMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ContactMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -109,9 +109,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedContact(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedDice(
     initialFilter: CommonMessageFilter<DiceContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DiceContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<DiceContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DiceContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DiceMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in DiceMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DiceMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -133,9 +133,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedDice(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedGame(
     initialFilter: CommonMessageFilter<GameContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<GameContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<GameContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<GameContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, GameMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in GameMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, GameMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -157,9 +157,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedGame(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedLocation(
     initialFilter: CommonMessageFilter<LocationContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<LocationContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<LocationContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<LocationContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in LocationMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -181,9 +181,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedLocation(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedText(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -205,9 +205,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedText(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedVenue(
     initialFilter: CommonMessageFilter<VenueContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VenueContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<VenueContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VenueContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, VenueMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in VenueMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, VenueMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -229,9 +229,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedVenue(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedAudioMediaGroup(
     initialFilter: CommonMessageFilter<AudioMediaGroupContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AudioMediaGroupContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<AudioMediaGroupContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioMediaGroupContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, AudioMediaGroupMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in AudioMediaGroupMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, AudioMediaGroupMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -253,9 +253,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedAudioMediaGroup(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedDocumentMediaGroupContent(
     initialFilter: CommonMessageFilter<DocumentMediaGroupContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DocumentMediaGroupContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<DocumentMediaGroupContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentMediaGroupContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DocumentMediaGroupMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in DocumentMediaGroupMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DocumentMediaGroupMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -277,9 +277,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedDocumentMediaGroupContent(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedTextedMediaContent(
     initialFilter: CommonMessageFilter<TextedMediaContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextedMediaContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<TextedMediaContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedMediaContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextedMediaMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextedMediaMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextedMediaMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -301,9 +301,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedTextedMediaContent(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedMediaCollection(
     initialFilter: CommonMessageFilter<MediaCollectionContent<TelegramMediaFile>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaCollectionContent<TelegramMediaFile>>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<MediaCollectionContent<TelegramMediaFile>>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaCollectionContent<TelegramMediaFile>>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaCollectionMessage<TelegramMediaFile>, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in MediaCollectionMessage<TelegramMediaFile>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaCollectionMessage<TelegramMediaFile>>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -325,9 +325,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedMediaCollection(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedMedia(
     initialFilter: CommonMessageFilter<MediaContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<MediaContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<MediaContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in MediaMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -349,9 +349,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedMedia(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedAnimation(
     initialFilter: CommonMessageFilter<AnimationContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AnimationContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<AnimationContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, AnimationMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in AnimationMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, AnimationMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -373,9 +373,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedAnimation(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedAudio(
     initialFilter: CommonMessageFilter<AudioContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<AudioContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<AudioContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, AudioMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in AudioMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, AudioMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -397,9 +397,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedAudio(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedDocument(
     initialFilter: CommonMessageFilter<DocumentContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<DocumentContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<DocumentContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DocumentMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in DocumentMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DocumentMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -421,9 +421,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedDocument(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedPhoto(
     initialFilter: CommonMessageFilter<PhotoContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<PhotoContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<PhotoContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PhotoMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in PhotoMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PhotoMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -445,9 +445,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedPhoto(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedSticker(
     initialFilter: CommonMessageFilter<StickerContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<StickerContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<StickerContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<StickerContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, StickerMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in StickerMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, StickerMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -469,9 +469,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedSticker(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedVideo(
     initialFilter: CommonMessageFilter<VideoContent>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VideoContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<VideoContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, VideoMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in VideoMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, VideoMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -493,9 +493,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedVideo(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedVideoNote(
     initialFilter: CommonMessageFilter<VideoNoteContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VideoNoteContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<VideoNoteContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoNoteContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, VideoNoteMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in VideoNoteMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, VideoNoteMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -517,9 +517,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedVideoNote(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedVoice(
     initialFilter: CommonMessageFilter<VoiceContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<VoiceContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<VoiceContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, VoiceMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in VoiceMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, VoiceMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
@@ -541,9 +541,9 @@ suspend fun <BC : BehaviourContext> BC.onEditedVoice(
  */
 suspend fun <BC : BehaviourContext> BC.onEditedInvoice(
     initialFilter: CommonMessageFilter<InvoiceContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<InvoiceContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<InvoiceContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<InvoiceContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InvoiceMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in InvoiceMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InvoiceMessage>
 )= onEditedContent(
     initialFilter,
     subcontextUpdatesFilter,
