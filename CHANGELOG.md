@@ -4,6 +4,7 @@
 
 * `Versions`:
     * `Coroutines`: `1.6.3` -> `1.6.4`
+    * `MicroUtils`: `0.11.12` -> `0.11.13`
 * `Core`:
     * New `typealiase`s for `CommonMessage` with all supported content types, more info: [PR](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/629)
 * `Utils`:
