@@ -35,10 +35,10 @@ messages and filter messages for context which will be used in subcontext. Full 
 telegramBotWithBehaviour(TOKEN) {
     onText(
         includeFilterByChatInBehaviourSubContext = true, // if false - last lambda will receive all messages instead of filtered by chat messages
-        additionalFilter = { message: CommonMessage<TextContent> ->
+        additionalFilter = { message: TextMessage ->
             // here you may check incoming message for any requirements before it will be passed to the main lambda
         }
-    ) { message: CommonMessage<TextContent> -> // this here is `BehaviourContext`
+    ) { message: TextMessage -> // this here is `BehaviourContext`
         // here put your actions and additional waiters
     }
 }
@@ -50,7 +50,7 @@ Waiters targeted to get some content "here and now", they must be used inside so
 
 ```kotlin
 telegramBotWithBehaviour(TOKEN) {
-    onCommand("start") { message: CommonMessage<TextContent> ->
+    onCommand("start") { message: TextMessage ->
         val userPhotos = waitPhoto(
             SendTextMessage(it.chat.id, "Ok, send me some photo, please"), // init request, can be any `Request` object
             { update: Update -> // That is update which is NOT passed requirements. In current context we expect some photo, but received something else
