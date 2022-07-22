@@ -10,20 +10,19 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.Mar
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
 import dev.inmo.tgbotapi.extensions.utils.asBotCommandTextSource
 import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithParams
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature
 import kotlinx.coroutines.Job
-
 
 @PreviewFeature
 suspend fun <BC : BehaviourContext> BC.unhandledCommand(
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ): Job = onText(
     CommonMessageFilter<TextContent> { message ->
         val content = message.content
@@ -49,17 +48,17 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommand(
 suspend fun <BC : BehaviourContext> BC.onUnhandledCommand(
     requireOnlyCommandInMessage: Boolean = true,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ): Job = unhandledCommand(requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 @PreviewFeature
 suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, CommonMessage<TextContent>, Map<String, Array<String>>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Map<String, Array<String>>>
 ) = onUnhandledCommand(
     requireOnlyCommandInMessage = false,
     initialFilter = initialFilter,
@@ -75,7 +74,7 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
 @PreviewFeature
 suspend fun <BC : BehaviourContext> BC.onUnhandledCommandWithArgs(
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CommonMessage<TextContent>, Update> = MessageFilterByChat,
-    markerFactory: MarkerFactory<in CommonMessage<TextContent>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, CommonMessage<TextContent>, Map<String, Array<String>>>
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Map<String, Array<String>>>
 ): Job = unhandledCommandWithArgs(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

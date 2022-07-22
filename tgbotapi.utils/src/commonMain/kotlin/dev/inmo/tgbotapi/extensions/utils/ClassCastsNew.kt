@@ -46,6 +46,7 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMember
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
