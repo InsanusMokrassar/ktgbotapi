@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 2.2.1
+
+* `Versions`:
+    * `Coroutines`: `1.6.3` -> `1.6.4`
+* `Core`:
+    * New `typealiase`s for `CommonMessage` with all supported content types, more info: [PR](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/629)
+* `Utils`:
+    * New extensions for all types of messages `*.withContentOrNull` and `*.withContentOrThrow` as analogies to the same ones from class casts
+
 ## 2.2.0
 
 * `Core`:
