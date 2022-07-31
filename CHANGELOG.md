@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 2.2.2
+
+* `Utils`:
+  * `buildEntities` now is inline
+* `Behaviour Builder`:
+  * Fixes in `CallbackQuery` triggers
+
 ## 2.2.1
 
 * `Versions`:
