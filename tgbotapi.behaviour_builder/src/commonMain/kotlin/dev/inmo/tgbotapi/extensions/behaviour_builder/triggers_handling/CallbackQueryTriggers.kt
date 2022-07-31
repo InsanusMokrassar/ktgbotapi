@@ -6,10 +6,9 @@ import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.CallbackQueryFilterByUser
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserCallbackQueryMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus
 import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
 import dev.inmo.tgbotapi.types.queries.callback.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -111,7 +110,7 @@ suspend fun <BC : BehaviourContext> BC.onDataCallbackQuery(
     markerFactory: MarkerFactory<in DataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DataCallbackQuery>
 ) = onDataCallbackQuery(
-    initialFilter = initialFilter + {
+    initialFilter = initialFilter * {
         it.data.matches(dataRegex)
     },
     subcontextUpdatesFilter,
@@ -239,7 +238,7 @@ suspend fun <BC : BehaviourContext> BC.onInlineMessageIdDataCallbackQuery(
     markerFactory: MarkerFactory<in InlineMessageIdDataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineMessageIdDataCallbackQuery>
 ) = onInlineMessageIdDataCallbackQuery(
-    initialFilter = initialFilter + {
+    initialFilter = initialFilter * {
         it.data.matches(dataRegex)
     },
     subcontextUpdatesFilter,
@@ -367,7 +366,7 @@ suspend fun <BC : BehaviourContext> BC.onMessageDataCallbackQuery(
     markerFactory: MarkerFactory<in MessageDataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MessageDataCallbackQuery>
 ) = onMessageDataCallbackQuery(
-    initialFilter = initialFilter + {
+    initialFilter = initialFilter * {
         it.data.matches(dataRegex)
     },
     subcontextUpdatesFilter,
