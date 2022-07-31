@@ -5,19 +5,20 @@ package dev.inmo.tgbotapi.extensions.utils.formatting
 import dev.inmo.micro_utils.common.joinTo
 import dev.inmo.tgbotapi.types.message.textsources.*
 import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.utils.RiskFeature
 
 typealias EntitiesBuilderBody = EntitiesBuilder.() -> Unit
 val newLine = regular("\n")
 
-fun buildEntities(separator: TextSource? = null, init: EntitiesBuilderBody): TextSourcesList = EntitiesBuilder(separator).apply(init).build()
-fun buildEntities(separator: String, init: EntitiesBuilderBody) = buildEntities(regular(separator), init)
+inline fun buildEntities(separator: TextSource? = null, init: EntitiesBuilderBody): TextSourcesList = EntitiesBuilder(separator).apply(init).build()
+inline fun buildEntities(separator: String, init: EntitiesBuilderBody) = buildEntities(regular(separator), init)
 
 /**
  * This builder can be used to provide building of [TextSource]s [List]
  *
  * @see buildEntities
  */
-class EntitiesBuilder internal constructor(
+class EntitiesBuilder @RiskFeature constructor(
     val separator: TextSource? = null
 ) {
     private val entitiesList: MutableTextSourcesList = mutableListOf()
