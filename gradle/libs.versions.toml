@@ -7,7 +7,7 @@ kotlin-gradle-plugin = "7.0.4"
 
 javax-activation = "1.1.1"
 
-korlibs = "2.7.0"
+korlibs = "3.0.0"
 uuid = "0.4.1"
 ktor = "2.0.3"
 
