@@ -7,57 +7,66 @@ import dev.inmo.tgbotapi.types.chat.User
 
 sealed interface ForwardInfo {
     abstract val dateOfOriginal: TelegramDate
+
+    data class ByAnonymous(
+        override val dateOfOriginal: TelegramDate,
+        val senderName: String
+    ) : ForwardInfo
+
+    data class ByUser(
+        override val dateOfOriginal: TelegramDate,
+        override val from: User
+    ) : ForwardInfo, FromUser
+
+    sealed interface PublicChat : ForwardInfo {
+        val chat: dev.inmo.tgbotapi.types.chat.PublicChat
+
+        /**
+         * Represent forward info for the message sent by [channelChat] into some group
+         */
+        data class SentByChannel(
+            override val dateOfOriginal: TelegramDate,
+            val channelChat: ChannelChat,
+            val signature: String? = null
+        ) : PublicChat {
+            override val chat: dev.inmo.tgbotapi.types.chat.PublicChat
+                get() = channelChat
+        }
+
+        /**
+         * Represent forward info for the message sent by [channelChat] into that channel
+         */
+        data class FromChannel(
+            override val dateOfOriginal: TelegramDate,
+            val messageId: MessageIdentifier,
+            val channelChat: ChannelChat,
+            val signature: String? = null
+        ) : PublicChat {
+            override val chat: dev.inmo.tgbotapi.types.chat.PublicChat
+                get() = channelChat
+        }
+
+        data class FromSupergroup(
+            override val dateOfOriginal: TelegramDate,
+            val group: SupergroupChat
+        ) : PublicChat {
+            override val chat: dev.inmo.tgbotapi.types.chat.PublicChat
+                get() = group
+        }
+    }
 }
 
-data class AnonymousForwardInfo(
-    override val dateOfOriginal: TelegramDate,
-    val senderName: String
-) : ForwardInfo
+@Deprecated("Replaced", ReplaceWith("ForwardInfo.ByAnonymous", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
+typealias AnonymousForwardInfo = ForwardInfo.ByAnonymous
 
-data class UserForwardInfo(
-    override val dateOfOriginal: TelegramDate,
-    override val from: User
-) : ForwardInfo, FromUser
+@Deprecated("Replaced", ReplaceWith("ForwardInfo.ByUser", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
+typealias UserForwardInfo = ForwardInfo.ByUser
 
-sealed interface ForwardFromPublicChatInfo : ForwardInfo {
-    val chat: PublicChat
+@Deprecated("Replaced", ReplaceWith("ForwardInfo.PublicChat", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
+typealias ForwardFromPublicChatInfo = ForwardInfo.PublicChat
 
-    /**
-     * Represent forward info for the message sent by [channelChat] into some group
-     */
-    data class SentByChannel(
-        override val dateOfOriginal: TelegramDate,
-        val channelChat: ChannelChat,
-        val signature: String? = null
-    ) : ForwardFromPublicChatInfo {
-        override val chat: PublicChat
-            get() = channelChat
-    }
+@Deprecated("Replaced", ReplaceWith("ForwardInfo.PublicChat.FromChannel", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
+typealias ForwardFromChannelInfo = ForwardInfo.PublicChat.FromChannel
 
-    /**
-     * Represent forward info for the message sent by [channelChat] into that channel
-     */
-    data class FromChannel(
-        override val dateOfOriginal: TelegramDate,
-        val messageId: MessageIdentifier,
-        val channelChat: ChannelChat,
-        val signature: String? = null
-    ) : ForwardFromPublicChatInfo {
-        override val chat: PublicChat
-            get() = channelChat
-    }
-
-    data class FromSupergroup(
-        override val dateOfOriginal: TelegramDate,
-        val group: SupergroupChat
-    ) : ForwardFromPublicChatInfo {
-        override val chat: PublicChat
-            get() = group
-    }
-}
-
-@Deprecated("Replaced", ReplaceWith("ForwardFromPublicChatInfo.FromChannel", "dev.inmo.tgbotapi.types.message.FromChannel"))
-typealias ForwardFromChannelInfo = ForwardFromPublicChatInfo.FromChannel
-
-@Deprecated("Replaced", ReplaceWith("ForwardFromPublicChatInfo.FromSupergroup", "dev.inmo.tgbotapi.types.message.ForwardFromPublicChatInfo"))
-typealias ForwardFromSupergroupInfo = ForwardFromPublicChatInfo.FromSupergroup
+@Deprecated("Replaced", ReplaceWith("ForwardInfo.PublicChat.FromSupergroup", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
+typealias ForwardFromSupergroupInfo = ForwardInfo.PublicChat.FromSupergroup
