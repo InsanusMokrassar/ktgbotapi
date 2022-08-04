@@ -950,7 +950,18 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(fromChatId, to.chat.id, messageId, text, parseMode, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(
+    to.chat.id,
+    fromChatId,
+    messageId,
+    text,
+    parseMode,
+    disableNotification,
+    protectContent,
+    to.messageId,
+    allowSendingWithoutReply,
+    replyMarkup
+)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
