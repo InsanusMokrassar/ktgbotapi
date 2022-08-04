@@ -162,13 +162,21 @@ internal data class RawMessage(
                 forward_date,
                 forward_sender_name
             )
-            forward_from_chat is ChannelChat -> ForwardFromChannelInfo(
-                forward_date,
-                forward_from_message_id ?: error("Channel forwarded message must contain message id, but was not"),
-                forward_from_chat,
-                forward_signature
-            )
-            forward_from_chat is SupergroupChat -> ForwardFromSupergroupInfo(
+            forward_from_chat is ChannelChat -> if (forward_from_message_id == null) {
+                ForwardFromPublicChatInfo.SentByChannel(
+                    forward_date,
+                    forward_from_chat,
+                    forward_signature
+                )
+            } else {
+                ForwardFromPublicChatInfo.FromChannel(
+                    forward_date,
+                    forward_from_message_id,
+                    forward_from_chat,
+                    forward_signature
+                )
+            }
+            forward_from_chat is SupergroupChat -> ForwardFromPublicChatInfo.FromSupergroup(
                 forward_date,
                 forward_from_chat
             )

@@ -3415,22 +3415,31 @@ inline fun ForwardInfo.forwardFromPublicChatInfoOrNull(): ForwardFromPublicChatI
 inline fun ForwardInfo.forwardFromPublicChatInfoOrThrow(): ForwardFromPublicChatInfo = this as ForwardFromPublicChatInfo
 
 @PreviewFeature
-inline fun <T> ForwardInfo.ifForwardFromChannelInfo(block: (ForwardFromChannelInfo) -> T) = forwardFromChannelInfoOrNull() ?.let(block)
+inline fun <T> ForwardInfo.ifForwardFromChannelInfo(block: (ForwardFromPublicChatInfo.FromChannel) -> T) = forwardFromChannelInfoOrNull() ?.let(block)
 
 @PreviewFeature
-inline fun ForwardInfo.forwardFromChannelInfoOrNull(): ForwardFromChannelInfo? = this as? ForwardFromChannelInfo
+inline fun ForwardInfo.forwardFromChannelInfoOrNull(): ForwardFromPublicChatInfo.FromChannel? = this as? ForwardFromPublicChatInfo.FromChannel
 
 @PreviewFeature
-inline fun ForwardInfo.forwardFromChannelInfoOrThrow(): ForwardFromChannelInfo = this as ForwardFromChannelInfo
+inline fun ForwardInfo.forwardFromChannelInfoOrThrow(): ForwardFromPublicChatInfo.FromChannel = this as ForwardFromPublicChatInfo.FromChannel
 
 @PreviewFeature
-inline fun <T> ForwardInfo.ifForwardFromSupergroupInfo(block: (ForwardFromSupergroupInfo) -> T) = forwardFromSupergroupInfoOrNull() ?.let(block)
+inline fun <T> ForwardInfo.ifForwardSentByChannelInfo(block: (ForwardFromPublicChatInfo.SentByChannel) -> T) = forwardSentByChannelInfoOrNull() ?.let(block)
 
 @PreviewFeature
-inline fun ForwardInfo.forwardFromSupergroupInfoOrNull(): ForwardFromSupergroupInfo? = this as? ForwardFromSupergroupInfo
+inline fun ForwardInfo.forwardSentByChannelInfoOrNull(): ForwardFromPublicChatInfo.SentByChannel? = this as? ForwardFromPublicChatInfo.SentByChannel
 
 @PreviewFeature
-inline fun ForwardInfo.forwardFromSupergroupInfoOrThrow(): ForwardFromSupergroupInfo = this as ForwardFromSupergroupInfo
+inline fun ForwardInfo.forwardSentByChannelInfoOrThrow(): ForwardFromPublicChatInfo.SentByChannel = this as ForwardFromPublicChatInfo.SentByChannel
+
+@PreviewFeature
+inline fun <T> ForwardInfo.ifForwardFromSupergroupInfo(block: (ForwardFromPublicChatInfo.FromSupergroup) -> T) = forwardFromSupergroupInfoOrNull() ?.let(block)
+
+@PreviewFeature
+inline fun ForwardInfo.forwardFromSupergroupInfoOrNull(): ForwardFromPublicChatInfo.FromSupergroup? = this as? ForwardFromPublicChatInfo.FromSupergroup
+
+@PreviewFeature
+inline fun ForwardInfo.forwardFromSupergroupInfoOrThrow(): ForwardFromPublicChatInfo.FromSupergroup = this as ForwardFromPublicChatInfo.FromSupergroup
 
 @PreviewFeature
 inline fun <T> MessageContent.ifTextedInput(block: (TextedInput) -> T) = textedInputOrNull() ?.let(block)
