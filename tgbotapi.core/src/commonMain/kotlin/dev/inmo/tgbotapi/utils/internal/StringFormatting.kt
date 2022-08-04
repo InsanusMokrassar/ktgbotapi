@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.utils.internal
 
-import dev.inmo.tgbotapi.types.UserId
-import dev.inmo.tgbotapi.types.link
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.utils.extensions.*
 
@@ -102,7 +101,7 @@ private inline fun String.hashTag(adapt: String.() -> String): String = if (star
     "#${adapt()}"
 }
 
-internal fun String.textMentionMarkdown(userId: UserId): String = linkMarkdown(userId.link)
+internal fun String.textMentionMarkdown(userId: UserId): String = linkMarkdown(userId.userLink)
 
 internal fun String.mentionMarkdown(): String = mention(String::toMarkdown)
 

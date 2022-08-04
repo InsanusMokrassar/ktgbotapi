@@ -77,7 +77,7 @@ val Chat.link: String?
             inviteLink ?.let { return it }
         }
         if (this is PrivateChat) {
-            return id.link
+            return id.userLink
         }
         return null
     }
