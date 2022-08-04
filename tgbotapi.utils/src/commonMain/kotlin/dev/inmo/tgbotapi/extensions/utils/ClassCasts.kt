@@ -1829,18 +1829,6 @@ inline fun InlineQueryResult.requireInlineQueryResultVoiceCommon(): InlineQueryR
     this as InlineQueryResultVoiceCommon
 
 @PreviewFeature
-@Deprecated("Renamed", ReplaceWith("whenOwnerChatMember", "dev.inmo.tgbotapi.extensions.utils.whenOwnerChatMember"))
-inline fun <T> ChatMember.whenCreatorChatMember(block: (CreatorChatMember) -> T) = asCreatorChatMember() ?.let(block)
-
-@PreviewFeature
-@Deprecated("Renamed", ReplaceWith("asOwnerChatMember", "dev.inmo.tgbotapi.extensions.utils.asOwnerChatMember"))
-inline fun ChatMember.asCreatorChatMember(): CreatorChatMember? = this as? CreatorChatMember
-
-@PreviewFeature
-@Deprecated("Renamed", ReplaceWith("requireOwnerChatMember", "dev.inmo.tgbotapi.extensions.utils.requireOwnerChatMember"))
-inline fun ChatMember.requireCreatorChatMember(): CreatorChatMember = this as CreatorChatMember
-
-@PreviewFeature
 inline fun <T> ChatMember.whenOwnerChatMember(block: (OwnerChatMember) -> T) = asOwnerChatMember() ?.let(block)
 
 @PreviewFeature

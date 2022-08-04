@@ -30,9 +30,6 @@ fun <T> Flow<Iterable<T>>.flatten(): Flow<T> = flow {
     }
 }
 
-@Deprecated("Renamed", ReplaceWith("flatten", "dev.inmo.tgbotapi.extensions.utils.flatten"))
-fun <T> Flow<Iterable<T>>.flatMap(): Flow<T> = flatten()
-
 fun <T, R> Flow<T>.flatMap(mapper: (T) -> Iterable<R>): Flow<R> = flow {
     collect {
         mapper(it).forEach {

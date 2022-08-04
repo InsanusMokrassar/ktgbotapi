@@ -19,15 +19,6 @@ data class ReplyForce(
         val Selective = Selective()
         val NonSelective = NonSelective()
         val Default = ReplyForce()
-
-        @Deprecated("Renamed", ReplaceWith("ReplyForce.Selective"))
-        inline val ReplyForceSelective
-            get() = Selective
-        @Deprecated("Renamed", ReplaceWith("ReplyForce.NonSelective"))
-        inline val ReplyForceNonSelective
-            get() = NonSelective
-        @Deprecated("Renamed", ReplaceWith("ReplyForce.Default"))
-        val ReplyForceDefault = ReplyForce()
     }
 
     init {
