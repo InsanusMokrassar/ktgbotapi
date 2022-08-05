@@ -5,9 +5,6 @@ package dev.inmo.tgbotapi.extensions.utils
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.MessageContent
-import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 
 inline fun <reified T : ChatEvent> ChatEventMessage<*>.withEvent() = if (chatEvent is T) { this as ChatEventMessage<T> } else { null }
 inline fun <reified T : ChatEvent> ChatEventMessage<*>.requireWithEvent() = withEvent<T>()!!

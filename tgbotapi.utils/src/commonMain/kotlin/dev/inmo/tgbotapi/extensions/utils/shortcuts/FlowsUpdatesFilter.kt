@@ -7,11 +7,8 @@ import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.InvoiceContent
-import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage

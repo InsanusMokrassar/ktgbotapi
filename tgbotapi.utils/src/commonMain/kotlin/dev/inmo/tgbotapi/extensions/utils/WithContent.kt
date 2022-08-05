@@ -3,9 +3,8 @@
 package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.MessageContent
-import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 inline fun <reified T : MessageContent> ContentMessage<*>.withContent() = if (content is T) { this as ContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> ContentMessage<*>.requireWithContent() = withContent<T>()!!
