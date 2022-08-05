@@ -31,11 +31,11 @@ if(savedDarkMode === true){
             </a>
     </div>
     <div>
-2.2.2    </div>
+3.0.0    </div>
     <div class="pull-right d-flex">
-            <div class="filter-section" id="filter-section">
-                    <button class="platform-tag platform-selector common-like" data-active="" data-filter=":docs:dokkaHtml/commonMain">common</button>
-            </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":docs:dokkaHtml/commonMain">common</button>
+        </div>
         <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
     </div>
@@ -51,7 +51,7 @@ if(savedDarkMode === true){
     <h1 class="cover"><span>Send</span><wbr></wbr><span><span>Invoice</span></span></h1>
     <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
       <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">SendInvoice</a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>chatId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-chat-id/index.html">ChatId</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>description<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>payload<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>providerToken<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>currency<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.payments.abstracts/index.html#-513333552%2FClasslikes%2F-1982836883">Currency</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>prices<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.types.payments/-labeled-price/index.html">LabeledPrice</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>maxTipAmount<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>suggestedTipAmounts<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>startParameter<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#-76931046%2FClasslikes%2F-1982836883">StartParameter</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>providerData<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>requireName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>requirePhoneNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>requireEmail<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>requireShippingAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>shouldSendPhoneNumberToProvider<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>shouldSendEmailToProvider<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>priceDependOnShipAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>disableNotification<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>protectContent<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>replyToMessageId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#489476273%2FClasslikes%2F-1982836883">MessageIdentifier</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>allowSendingWithoutReply<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>replyMarkup<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.buttons/-inline-keyboard-markup/index.html">InlineKeyboardMarkup</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../dev.inmo.tgbotapi.abstracts/-common-send-invoice-data/index.html">CommonSendInvoiceData</a>, <a href="../../dev.inmo.tgbotapi.abstracts.types/-chat-request/index.html">ChatRequest</a>, <a href="../../dev.inmo.tgbotapi.abstracts.types/-disable-notification/index.html">DisableNotification</a>, <a href="../../dev.inmo.tgbotapi.abstracts.types/-reply-message-id/index.html">ReplyMessageId</a>, <a href="../../dev.inmo.tgbotapi.abstracts.types/-reply-markup/index.html">ReplyMarkup</a>, <a href="../../dev.inmo.tgbotapi.requests.send.abstracts/-send-message-request/index.html">SendMessageRequest</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.types.message.abstracts/-content-message/index.html">ContentMessage</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.types.message.content/-invoice-content/index.html">InvoiceContent</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>    </div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">SendInvoice</a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>chatId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-chat-id/index.html">ChatId</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>description<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>payload<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>providerToken<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>currency<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.payments.abstracts/index.html#-513333552%2FClasslikes%2F-1982836883">Currency</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>prices<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.types.payments/-labeled-price/index.html">LabeledPrice</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>maxTipAmount<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>suggestedTipAmounts<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>startParameter<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#-76931046%2FClasslikes%2F-1982836883">StartParameter</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>providerData<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>requireName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>requirePhoneNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>requireEmail<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>requireShippingAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>shouldSendPhoneNumberToProvider<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>shouldSendEmailToProvider<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>priceDependOnShipAddress<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>disableNotification<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>protectContent<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>replyToMessageId<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/index.html#489476273%2FClasslikes%2F-1982836883">MessageIdentifier</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>allowSendingWithoutReply<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>replyMarkup<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.buttons/-inline-keyboard-markup/index.html">InlineKeyboardMarkup</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../dev.inmo.tgbotapi.abstracts/-common-send-invoice-data/index.html">CommonSendInvoiceData</a>, <a href="../../dev.inmo.tgbotapi.abstracts.types/-chat-request/index.html">ChatRequest</a>, <a href="../../dev.inmo.tgbotapi.abstracts.types/-disable-notification/index.html">DisableNotification</a>, <a href="../../dev.inmo.tgbotapi.abstracts.types/-reply-message-id/index.html">ReplyMessageId</a>, <a href="../../dev.inmo.tgbotapi.abstracts.types/-with-reply-markup/index.html">WithReplyMarkup</a>, <a href="../../dev.inmo.tgbotapi.requests.send.abstracts/-send-message-request/index.html">SendMessageRequest</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.types.message.abstracts/-content-message/index.html">ContentMessage</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../dev.inmo.tgbotapi.types.message.content/-invoice-content/index.html">InvoiceContent</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>    </div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
@@ -139,7 +139,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="allow-sending-without-reply.html">allowSendingWithoutReply</a></div>
+                <div><a href="allow-sending-without-reply.html"><span>allow</span><wbr></wbr><span>Sending</span><wbr></wbr><span>Without</span><wbr></wbr><span><span>Reply</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1575291084%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -156,7 +156,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="chat-id.html">chatId</a></div>
+                <div><a href="chat-id.html"><span>chat</span><wbr></wbr><span><span>Id</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1469013868%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -173,7 +173,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="currency.html">currency</a></div>
+                <div><a href="currency.html"><span><span>currency</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1448278442%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -190,7 +190,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="description.html">description</a></div>
+                <div><a href="description.html"><span><span>description</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-968613513%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -207,7 +207,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="disable-notification.html">disableNotification</a></div>
+                <div><a href="disable-notification.html"><span>disable</span><wbr></wbr><span><span>Notification</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="241450848%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -224,7 +224,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="max-tip-amount.html">maxTipAmount</a></div>
+                <div><a href="max-tip-amount.html"><span>max</span><wbr></wbr><span>Tip</span><wbr></wbr><span><span>Amount</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1127642280%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -241,7 +241,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="payload.html">payload</a></div>
+                <div><a href="payload.html"><span><span>payload</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-669165787%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -258,7 +258,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="photo-height.html">photoHeight</a></div>
+                <div><a href="photo-height.html"><span>photo</span><wbr></wbr><span><span>Height</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1416306202%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -266,7 +266,7 @@ if(savedDarkMode === true){
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
                   <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1416306202%2FProperties%2F-1982836883" anchor-label="photoHeight" id="1416306202%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="photo-height.html">photoHeight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1416306202%2FProperties%2F-1982836883" anchor-label="photoHeight" id="1416306202%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="photo-height.html">photoHeight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -275,7 +275,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="photo-size.html">photoSize</a></div>
+                <div><a href="photo-size.html"><span>photo</span><wbr></wbr><span><span>Size</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1596034688%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -283,7 +283,7 @@ if(savedDarkMode === true){
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
                   <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-1596034688%2FProperties%2F-1982836883" anchor-label="photoSize" id="-1596034688%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="photo-size.html">photoSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="-1596034688%2FProperties%2F-1982836883" anchor-label="photoSize" id="-1596034688%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="photo-size.html">photoSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -292,7 +292,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="photo-url.html">photoUrl</a></div>
+                <div><a href="photo-url.html"><span>photo</span><wbr></wbr><span><span>Url</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1111050762%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -300,7 +300,7 @@ if(savedDarkMode === true){
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
                   <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1111050762%2FProperties%2F-1982836883" anchor-label="photoUrl" id="1111050762%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="photo-url.html">photoUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1111050762%2FProperties%2F-1982836883" anchor-label="photoUrl" id="1111050762%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="photo-url.html">photoUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="photo-width.html">photoWidth</a></div>
+                <div><a href="photo-width.html"><span>photo</span><wbr></wbr><span><span>Width</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1886411411%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -317,7 +317,7 @@ if(savedDarkMode === true){
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
                   <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain" data-active="" data-toggle=":docs:dokkaHtml/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1886411411%2FProperties%2F-1982836883" anchor-label="photoWidth" id="1886411411%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="photo-width.html">photoWidth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/commonMain"><a data-name="1886411411%2FProperties%2F-1982836883" anchor-label="photoWidth" id="1886411411%2FProperties%2F-1982836883" data-filterable-set=":docs:dokkaHtml/commonMain"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="photo-width.html">photoWidth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -326,7 +326,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="price-depend-on-ship-address.html">priceDependOnShipAddress</a></div>
+                <div><a href="price-depend-on-ship-address.html"><span>price</span><wbr></wbr><span>Depend</span><wbr></wbr><span>On</span><wbr></wbr><span>Ship</span><wbr></wbr><span><span>Address</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-144517597%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -343,7 +343,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="prices.html">prices</a></div>
+                <div><a href="prices.html"><span><span>prices</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1815665341%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -360,7 +360,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="protect-content.html">protectContent</a></div>
+                <div><a href="protect-content.html"><span>protect</span><wbr></wbr><span><span>Content</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1028385187%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -377,7 +377,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="provider-data.html">providerData</a></div>
+                <div><a href="provider-data.html"><span>provider</span><wbr></wbr><span><span>Data</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="912972652%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -394,7 +394,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="provider-token.html">providerToken</a></div>
+                <div><a href="provider-token.html"><span>provider</span><wbr></wbr><span><span>Token</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1507765525%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -411,7 +411,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="reply-markup.html">replyMarkup</a></div>
+                <div><a href="reply-markup.html"><span>reply</span><wbr></wbr><span><span>Markup</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="659071105%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -428,7 +428,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="reply-to-message-id.html">replyToMessageId</a></div>
+                <div><a href="reply-to-message-id.html"><span>reply</span><wbr></wbr><span>To</span><wbr></wbr><span>Message</span><wbr></wbr><span><span>Id</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-43040790%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -445,7 +445,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="request-serializer.html">requestSerializer</a></div>
+                <div><a href="request-serializer.html"><span>request</span><wbr></wbr><span><span>Serializer</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="327702290%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -462,7 +462,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="require-email.html">requireEmail</a></div>
+                <div><a href="require-email.html"><span>require</span><wbr></wbr><span><span>Email</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1761204496%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -479,7 +479,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="require-name.html">requireName</a></div>
+                <div><a href="require-name.html"><span>require</span><wbr></wbr><span><span>Name</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1074536035%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -496,7 +496,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="require-phone-number.html">requirePhoneNumber</a></div>
+                <div><a href="require-phone-number.html"><span>require</span><wbr></wbr><span>Phone</span><wbr></wbr><span><span>Number</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-881444523%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -513,7 +513,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="require-shipping-address.html">requireShippingAddress</a></div>
+                <div><a href="require-shipping-address.html"><span>require</span><wbr></wbr><span>Shipping</span><wbr></wbr><span><span>Address</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1969650854%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -530,7 +530,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="result-deserializer.html">resultDeserializer</a></div>
+                <div><a href="result-deserializer.html"><span>result</span><wbr></wbr><span><span>Deserializer</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1733525193%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -547,7 +547,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="should-send-email-to-provider.html">shouldSendEmailToProvider</a></div>
+                <div><a href="should-send-email-to-provider.html"><span>should</span><wbr></wbr><span>Send</span><wbr></wbr><span>Email</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Provider</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1778437926%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -564,7 +564,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="should-send-phone-number-to-provider.html">shouldSendPhoneNumberToProvider</a></div>
+                <div><a href="should-send-phone-number-to-provider.html"><span>should</span><wbr></wbr><span>Send</span><wbr></wbr><span>Phone</span><wbr></wbr><span>Number</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Provider</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1291598389%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -581,7 +581,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="start-parameter.html">startParameter</a></div>
+                <div><a href="start-parameter.html"><span>start</span><wbr></wbr><span><span>Parameter</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1887578560%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -598,7 +598,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="suggested-tip-amounts.html">suggestedTipAmounts</a></div>
+                <div><a href="suggested-tip-amounts.html"><span>suggested</span><wbr></wbr><span>Tip</span><wbr></wbr><span><span>Amounts</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-780922928%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -615,7 +615,7 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":docs:dokkaHtml/commonMain" data-filterable-set=":docs:dokkaHtml/commonMain">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="title.html">title</a></div>
+                <div><a href="title.html"><span><span>title</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="83460891%2FProperties%2F-1982836883"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
@@ -632,10 +632,11 @@ if(savedDarkMode === true){
     </div>
   </div>
 </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
                 class="pull-right"><span>Generated by </span><a
                 href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-        </div>
+      </div>
     </div>
 </div>
 </body>
