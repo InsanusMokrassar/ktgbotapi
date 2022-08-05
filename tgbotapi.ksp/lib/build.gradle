@@ -5,4 +5,3 @@ plugins {
 project.description = "Class Casts generator KSP library to include into your library"
 
 apply from: "$mppProjectWithSerializationPresetPath"
-apply from: "$publishGradlePath"

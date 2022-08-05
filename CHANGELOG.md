@@ -2,12 +2,21 @@
 
 ## 3.0.0
 
+* `Versions`:
+  * `Kotlin`: `1.6.21` -> `1.7.10`
+  * `Serialization`: `1.3.3` -> `1.4.0-RC`
+  * `Korlibs`: `2.7.0` -> `3.0.0`
+  * `UUID`: `0.4.1` -> `0.5.0`
+  * `MicroUtils`: `0.11.13` -> `0.12.0`
+* `Core`:
+    * Interface `ReplyMakrup` has been renamed to `WithReplyMarkup` to correspond its purpose
+* `API`:
+    * Add new `Flow`-based live locations API
+* `Utils`:
+  * **BREAKING CHANGES** Now all new classcasts (like `Chat.ifPrivateChat` etc.) have been rewritten to be generated with `ksp` and `kotlin poet`
+
 ## 2.2.2
 
-* `Core`:
-  * Interface `ReplyMakrup` has been renamed to `WithReplyMarkup` to correspond its purpose
-* `API`:
-  * New API (`handleLiveLocation`) for live location streaming using `Flow`
 * `Utils`:
   * `buildEntities` now is inline
 * `Behaviour Builder`:
