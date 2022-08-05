@@ -2,6 +2,10 @@
 
 ## 3.0.0
 
+**ALL OLD DEPRECATIONS HAVE BEEN REMOVED**
+
+**`copyMessage` HAVE CHANGED THEIR SIGNATURE BY SWAPPING FROM AND TO CHAT IDS**
+
 * `Versions`:
   * `Kotlin`: `1.6.21` -> `1.7.10`
   * `Serialization`: `1.3.3` -> `1.4.0-RC`
@@ -10,8 +14,17 @@
   * `MicroUtils`: `0.11.13` -> `0.12.0`
 * `Core`:
     * Interface `ReplyMakrup` has been renamed to `WithReplyMarkup` to correspond its purpose
+    * Data class `LeftChatMember` has been renamed to `LeftChatMemberEvent` to avoid type ambiguite with the other `LeftChatMember`
+    * `ForwardInfo` hierarchy has been fully reworked:
+      * `AnonymousForwardInfo` -> `ForwardInfo.ByAnonymous`
+      * `UserForwardInfo` -> `ForwardInfo.ByUser`
+      * `ForwardFromPublicChatInfo` -> `ForwardInfo.PublicChat`
+      * `ForwardFromChannelInfo` -> `ForwardInfo.PublicChat.FromChannel`
+      * `ForwardFromSupergroupInfo` -> `ForwardInfo.PublicChat.FromSupergroup`
+      * `ForwardInfo.PublicChat.SentByChannel` ___has been created___
 * `API`:
     * Add new `Flow`-based live locations API
+    * Add `sendLocation` for sending live locations
 * `Utils`:
   * **BREAKING CHANGES** Now all new classcasts (like `Chat.ifPrivateChat` etc.) have been rewritten to be generated with `ksp` and `kotlin poet`
 
