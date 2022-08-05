@@ -4,6 +4,7 @@ import com.google.devtools.ksp.getAllSuperTypes
 import com.google.devtools.ksp.processing.*
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
+import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.writeTo
 import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
@@ -43,6 +44,17 @@ class TelegramBotAPISymbolProcessor(
             targetPackage,
             outputFile
         ).apply {
+            addAnnotation(
+                AnnotationSpec.builder(Suppress::class).apply {
+                    addMember("\"unused\"")
+                    addMember("\"RemoveRedundantQualifierName\"")
+                    addMember("\"RedundantVisibilityModifier\"")
+                    addMember("\"NOTHING_TO_INLINE\"")
+                    addMember("\"UNCHECKED_CAST\"")
+                    addMember("\"OPT_IN_USAGE\"")
+                    useSiteTarget(AnnotationSpec.UseSiteTarget.FILE)
+                }.build()
+            )
             classes.forEach {
                 fill(
                     it,

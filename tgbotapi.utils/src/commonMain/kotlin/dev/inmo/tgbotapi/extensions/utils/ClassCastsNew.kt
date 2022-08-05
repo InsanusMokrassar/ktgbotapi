@@ -1,3 +1,12 @@
+@file:Suppress(
+  "unused",
+  "RemoveRedundantQualifierName",
+  "RedundantVisibilityModifier",
+  "NOTHING_TO_INLINE",
+  "UNCHECKED_CAST",
+  "OPT_IN_USAGE",
+)
+
 package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.abstracts.CommonSendInvoiceData
@@ -410,6 +419,7 @@ import dev.inmo.tgbotapi.types.update.media_group.EditMessageMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.media_group.MessageMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
+import kotlin.Suppress
 
 public inline fun CommonSendInvoiceData.createInvoiceLinkOrNull(): CreateInvoiceLink? = this as?
     dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
