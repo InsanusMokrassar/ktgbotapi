@@ -5,7 +5,7 @@ package dev.inmo.tgbotapi.types.passport
 import dev.inmo.micro_utils.crypto.MD5
 import dev.inmo.micro_utils.crypto.md5
 import dev.inmo.micro_utils.serialization.base64.Base64BytesToFromStringSerializer
-import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
 import dev.inmo.tgbotapi.types.passport.encrypted.type

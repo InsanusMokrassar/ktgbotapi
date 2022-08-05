@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import com.soywiz.klock.DateTime
-import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.RawMessage

@@ -29,8 +29,6 @@ kotlin {
                 api libs.microutils.languageCodes
 
                 api libs.ktor.client.core
-
-                compileOnly project(":tgbotapi.ksp:lib")
             }
         }
         commonTest {
@@ -52,8 +50,7 @@ kotlin {
 }
 
 dependencies {
-    add("kspCommonMainMetadata", project(":tgbotapi.ksp:processor"))
-    add("kspJvm", project(":tgbotapi.ksp:processor"))
+    add("kspJvm", project(":tgbotapi.ksp"))
 }
 
 ksp {

@@ -7,7 +7,6 @@ import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.ksp.writeTo
-import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import java.io.File
 
 class TelegramBotAPISymbolProcessor(
@@ -17,7 +16,7 @@ class TelegramBotAPISymbolProcessor(
     private val outputFolder: String? = null
 ) : SymbolProcessor {
     override fun process(resolver: Resolver): List<KSAnnotated> {
-        val classes = resolver.getSymbolsWithAnnotation(ClassCastsIncluded::class.qualifiedName!!).filterIsInstance<KSClassDeclaration>()
+        val classes = resolver.getSymbolsWithAnnotation("dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded").filterIsInstance<KSClassDeclaration>()
         val classesSubtypes = mutableMapOf<KSClassDeclaration, MutableSet<KSClassDeclaration>>()
 
         resolver.getAllFiles().forEach {

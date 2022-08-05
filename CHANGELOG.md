@@ -28,6 +28,8 @@
 * `Utils`:
   * **BREAKING CHANGES** Now all new classcasts (like `Chat.ifPrivateChat` etc.) have been rewritten to be generated with `ksp` and `kotlin poet`
 
+*Note: Versions 3.0.0 and 3.0.1 have been published with errors and didn't recommend to use*
+
 ## 2.2.2
 
 * `Utils`:

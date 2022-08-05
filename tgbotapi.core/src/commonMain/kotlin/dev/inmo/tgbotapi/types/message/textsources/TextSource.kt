@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message.textsources
 
-import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.captionLength
 import dev.inmo.tgbotapi.types.textLength
 import kotlinx.serialization.Serializable
