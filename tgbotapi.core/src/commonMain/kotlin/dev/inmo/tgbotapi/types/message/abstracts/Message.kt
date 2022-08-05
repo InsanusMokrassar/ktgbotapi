@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import com.soywiz.klock.DateTime
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.RawMessage
@@ -9,6 +10,7 @@ import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
+@ClassCastsIncluded
 interface Message {
     val messageId: MessageIdentifier
     val chat: Chat

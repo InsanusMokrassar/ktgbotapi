@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.actions
 
 import dev.inmo.micro_utils.common.Warning
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
@@ -13,6 +14,7 @@ import kotlinx.serialization.encoding.Encoder
  * Use BotAction objects realisations to notify user about bot actions
  */
 @Serializable(BotActionSerializer::class)
+@ClassCastsIncluded
 sealed interface BotAction {
     val actionName: String
 }

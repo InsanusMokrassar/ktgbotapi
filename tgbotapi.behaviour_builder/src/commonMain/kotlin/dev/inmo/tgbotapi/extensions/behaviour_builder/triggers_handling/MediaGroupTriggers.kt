@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessagesFilterByCh
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMediaGroupMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asSentMediaGroupUpdate
+import dev.inmo.tgbotapi.extensions.utils.sentMediaGroupUpdateOrNull
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -20,7 +20,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupConten
     markerFactory: MarkerFactory<in List<MediaGroupMessage<T>>, Any> = ByChatMediaGroupMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<T>>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asSentMediaGroupUpdate() ?.data ?.takeIf { messages ->
+    (it.sentMediaGroupUpdateOrNull() ?.data ?.takeIf { messages ->
         messages.all { message ->
             message.content is T
         }

@@ -1,10 +1,12 @@
 package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.tgbotapi.abstracts.FromUser
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.chat.User
 
+@ClassCastsIncluded
 sealed interface ForwardInfo {
     abstract val dateOfOriginal: TelegramDate
 

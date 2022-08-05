@@ -20,7 +20,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.CommonMessageFilte
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByChat
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asEditMessageUpdate
+import dev.inmo.tgbotapi.extensions.utils.editMessageUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
@@ -41,7 +41,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> 
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<T>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     when (it) {
-        is BaseEditMessageUpdate -> (it.asEditMessageUpdate() ?.data ?.withContent<T>())
+        is BaseEditMessageUpdate -> (it.editMessageUpdateOrNull() ?.data ?.withContent<T>())
         else -> null
     } ?.let(::listOfNotNull)
 }

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.location
 
 import dev.inmo.tgbotapi.abstracts.*
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
@@ -18,6 +19,7 @@ import kotlinx.serialization.json.JsonObject
  * @see dev.inmo.tgbotapi.extensions.utils.asLiveLocation
  */
 @Serializable(LocationSerializer::class)
+@ClassCastsIncluded
 sealed interface Location : Locationed, HorizontallyAccured
 
 @Serializable

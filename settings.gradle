@@ -12,6 +12,8 @@ pluginManagement {
 }
 
 include ":tgbotapi.core"
+include ":tgbotapi.ksp:processor"
+include ":tgbotapi.ksp:lib"
 include ":tgbotapi.api"
 include ":tgbotapi.utils"
 include ":tgbotapi.behaviour_builder"

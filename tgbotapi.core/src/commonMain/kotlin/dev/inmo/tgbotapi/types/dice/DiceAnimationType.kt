@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.dice
 
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.KSerializer
@@ -9,6 +10,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(DiceAnimationTypeSerializer::class)
+@ClassCastsIncluded
 sealed interface DiceAnimationType {
     val emoji: String
     val valueLimits: IntRange

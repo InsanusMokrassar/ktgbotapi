@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.update.abstracts
 
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.UpdateIdentifier
 import dev.inmo.tgbotapi.types.update.RawUpdate
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -10,6 +11,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonElement
 
+@ClassCastsIncluded
 interface Update {
     val updateId: UpdateIdentifier
     val data: Any

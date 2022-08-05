@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.utils.asPreCheckoutQueryUpdate
+import dev.inmo.tgbotapi.extensions.utils.preCheckoutQueryUpdateOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -19,5 +19,5 @@ suspend fun BehaviourContext.waitPreCheckoutQueries(
     initRequest,
     errorFactory
 ) {
-    it.asPreCheckoutQueryUpdate() ?.data.let(::listOfNotNull)
+    it.preCheckoutQueryUpdateOrNull() ?.data.let(::listOfNotNull)
 }

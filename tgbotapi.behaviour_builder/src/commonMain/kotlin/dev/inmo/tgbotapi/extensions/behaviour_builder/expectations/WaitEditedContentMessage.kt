@@ -4,7 +4,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.utils.asCommonMessage
+import dev.inmo.tgbotapi.extensions.utils.commonMessageOrNull
 import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
@@ -32,7 +32,7 @@ suspend inline fun <reified O : MessageContent> BehaviourContext.waitEditedConte
 ) {
     val messages = when (it) {
         is BaseEditMessageUpdate -> {
-            val commonMessage = it.data.asCommonMessage() ?: return@expectFlow emptyList()
+            val commonMessage = it.data.commonMessageOrNull() ?: return@expectFlow emptyList()
             if (commonMessage !is MediaGroupMessage<*> || includeMediaGroups) {
                 listOf(commonMessage)
             } else {

@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.ShippingQueryFilte
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserShippingQueryMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asShippingQueryUpdate
+import dev.inmo.tgbotapi.extensions.utils.shippingQueryUpdateOrNull
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -31,5 +31,5 @@ suspend fun <BC : BehaviourContext> BC.onShippingQuery(
     markerFactory: MarkerFactory<in ShippingQuery, Any> = ByUserShippingQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ShippingQuery>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asShippingQueryUpdate() ?.data) ?.let(::listOfNotNull)
+    (it.shippingQueryUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

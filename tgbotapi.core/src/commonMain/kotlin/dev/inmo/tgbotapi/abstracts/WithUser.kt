@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.abstracts
 
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.chat.User
 
 /**
@@ -7,6 +8,7 @@ import dev.inmo.tgbotapi.types.chat.User
  *
  * @see FromUser
  */
+@ClassCastsIncluded
 interface WithUser {
     val user: User
 }

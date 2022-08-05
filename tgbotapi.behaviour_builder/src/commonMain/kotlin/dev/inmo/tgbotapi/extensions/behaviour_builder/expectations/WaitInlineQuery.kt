@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
+import dev.inmo.tgbotapi.extensions.utils.inlineQueryUpdateOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -20,7 +20,7 @@ suspend inline fun <reified O : InlineQuery> BehaviourContext.waitInlineQueries(
     initRequest,
     errorFactory
 ) {
-    (it.asInlineQueryUpdate() ?.data as? O).let(::listOfNotNull)
+    (it.inlineQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 suspend fun BehaviourContext.waitAnyInlineQuery(

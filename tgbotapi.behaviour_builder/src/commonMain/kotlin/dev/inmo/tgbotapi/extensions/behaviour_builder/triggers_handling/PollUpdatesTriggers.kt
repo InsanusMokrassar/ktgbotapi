@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByIdPollMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asPollUpdate
+import dev.inmo.tgbotapi.extensions.utils.pollUpdateOrNull
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -16,7 +16,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : Poll> BC.onPollU
     markerFactory: MarkerFactory<in T, Any> = ByIdPollMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asPollUpdate() ?.data as? T) ?.let(::listOfNotNull)
+    (it.pollUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
 
 /**

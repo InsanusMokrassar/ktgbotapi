@@ -4,7 +4,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
+import dev.inmo.tgbotapi.extensions.utils.callbackQueryUpdateOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.queries.callback.*
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -22,7 +22,7 @@ suspend inline fun <reified O> BehaviourContext.waitCallbackQueries(
     initRequest,
     errorFactory
 ) {
-    (it.asCallbackQueryUpdate() ?.data as O).let(::listOfNotNull)
+    (it.callbackQueryUpdateOrNull() ?.data as O).let(::listOfNotNull)
 }
 
 

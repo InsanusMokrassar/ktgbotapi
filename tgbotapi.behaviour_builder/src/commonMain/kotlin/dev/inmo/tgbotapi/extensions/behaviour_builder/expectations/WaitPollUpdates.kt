@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.utils.asPollUpdate
+import dev.inmo.tgbotapi.extensions.utils.pollUpdateOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -20,7 +20,7 @@ suspend inline fun <reified O : Poll> BehaviourContext.waitPolls(
     initRequest,
     errorFactory
 ) {
-    (it.asPollUpdate() ?.data as? O).let(::listOfNotNull)
+    (it.pollUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 /**

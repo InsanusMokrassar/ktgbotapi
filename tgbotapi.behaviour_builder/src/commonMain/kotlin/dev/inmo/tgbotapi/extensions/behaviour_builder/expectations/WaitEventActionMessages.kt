@@ -25,7 +25,7 @@ suspend inline fun <reified O : ChatEvent> BehaviourContext.waitEventsMessages(
     initRequest,
     errorFactory
 ) {
-    it.asBaseSentMessageUpdate() ?.data ?.asChatEventMessage() ?.withEvent<O>().let(::listOfNotNull)
+    it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.withEvent<O>().let(::listOfNotNull)
 }
 
 suspend fun BehaviourContext.waitChannelEventsMessages(

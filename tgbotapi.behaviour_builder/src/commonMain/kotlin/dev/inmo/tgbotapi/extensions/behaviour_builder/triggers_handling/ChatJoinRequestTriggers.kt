@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.ChatJoinRequestFil
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatChatJoinRequestMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asChatJoinRequestUpdate
+import dev.inmo.tgbotapi.extensions.utils.chatJoinRequestUpdateOrNull
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -29,5 +29,5 @@ suspend fun <BC : BehaviourContext> BC.onChatJoinRequest(
     markerFactory: MarkerFactory<in ChatJoinRequest, Any> = ByChatChatJoinRequestMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatJoinRequest>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asChatJoinRequestUpdate() ?.data) ?.let(::listOfNotNull)
+    (it.chatJoinRequestUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

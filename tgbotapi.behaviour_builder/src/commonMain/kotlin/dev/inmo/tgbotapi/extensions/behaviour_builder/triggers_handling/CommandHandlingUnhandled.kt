@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByCha
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
-import dev.inmo.tgbotapi.extensions.utils.asBotCommandTextSource
+import dev.inmo.tgbotapi.extensions.utils.botCommandTextSourceOrNull
 import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithParams
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
@@ -33,7 +33,7 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommand(
             true
         }
         sizeRequirement && textSources.any {
-            val command = it.asBotCommandTextSource() ?.command ?: return@any false
+            val command = it.botCommandTextSourceOrNull() ?.command ?: return@any false
             !triggersHolder.handleableCommandsHolder.isHandled(command)
         }
     }.let {
