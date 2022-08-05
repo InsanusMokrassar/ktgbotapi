@@ -30,7 +30,7 @@ kotlin {
 
                 api libs.ktor.client.core
 
-                implementation project(":tgbotapi.ksp:lib")
+                compileOnly project(":tgbotapi.ksp:lib")
             }
         }
         commonTest {
