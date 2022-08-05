@@ -4432,9 +4432,6 @@ $dokka.location:dev.inmo.tgbotapi.extensions.utils/SlotMachineResult/leftReel/#/
 $dokka.location:dev.inmo.tgbotapi.extensions.utils/SlotMachineResult/rawValue/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils/-slot-machine-result/raw-value.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils/SlotMachineResult/right/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils/-slot-machine-result/right.html
 $dokka.location:dev.inmo.tgbotapi.extensions.utils/SlotMachineResult/rightReel/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.extensions.utils/-slot-machine-result/right-reel.html
-$dokka.location:dev.inmo.tgbotapi.ksp.lib////PointingToDeclaration/docs/dev.inmo.tgbotapi.ksp.lib/index.html
-$dokka.location:dev.inmo.tgbotapi.ksp.lib/ClassCastsIncluded///PointingToDeclaration/docs/dev.inmo.tgbotapi.ksp.lib/-class-casts-included/index.html
-$dokka.location:dev.inmo.tgbotapi.ksp.lib/ClassCastsIncluded/ClassCastsIncluded/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.ksp.lib/-class-casts-included/-class-casts-included.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts////PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/index.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts//asMultipartFile/dev.inmo.micro_utils.common.MPPFile#/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/as-multipart-file.html
 $dokka.location:dev.inmo.tgbotapi.requests.abstracts//asMultipartFile/dev.inmo.tgbotapi.utils.ByteReadChannelAllocator#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.requests.abstracts/as-multipart-file.html
@@ -9260,7 +9257,6 @@ dev.inmo.tgbotapi.extensions.utils.types.buttons
 dev.inmo.tgbotapi.extensions.utils.types.files
 dev.inmo.tgbotapi.extensions.utils.updates
 dev.inmo.tgbotapi.extensions.utils.updates.retrieving
-dev.inmo.tgbotapi.ksp.lib
 dev.inmo.tgbotapi.requests
 dev.inmo.tgbotapi.requests.abstracts
 dev.inmo.tgbotapi.requests.answers
