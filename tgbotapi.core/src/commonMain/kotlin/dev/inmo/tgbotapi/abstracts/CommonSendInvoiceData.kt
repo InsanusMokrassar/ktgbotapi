@@ -1,8 +1,10 @@
 package dev.inmo.tgbotapi.abstracts
 
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.payments.abstracts.Currencied
 import dev.inmo.tgbotapi.types.payments.abstracts.Priced
 
+@ClassCastsIncluded
 interface CommonSendInvoiceData : Titled, Currencied, Priced {
     val description: String
     val payload: String

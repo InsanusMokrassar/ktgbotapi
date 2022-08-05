@@ -2,10 +2,10 @@ package dev.inmo.tgbotapi.extensions.utils.shortcuts
 
 import dev.inmo.tgbotapi.extensions.utils.onlyTextContentMessages
 import dev.inmo.tgbotapi.extensions.utils.updates.asContentMessagesFlow
-import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
-import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
+import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 import kotlinx.coroutines.flow.*
 
 /**

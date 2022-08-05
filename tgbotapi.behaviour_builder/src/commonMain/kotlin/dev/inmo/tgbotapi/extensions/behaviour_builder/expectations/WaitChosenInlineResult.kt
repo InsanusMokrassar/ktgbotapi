@@ -1,14 +1,12 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.utils.asChosenInlineResultUpdate
+import dev.inmo.tgbotapi.extensions.utils.chosenInlineResultUpdateOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.toList
 
 typealias ChosenInlineResultMapper<T> = suspend T.() -> T?
 
@@ -20,7 +18,7 @@ suspend inline fun <reified O> BehaviourContext.waitChosenInlineResults(
     initRequest,
     errorFactory
 ) {
-    (it.asChosenInlineResultUpdate() ?.data as? O).let(::listOfNotNull)
+    (it.chosenInlineResultUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 suspend fun BehaviourContext.waitChosenInlineResult(

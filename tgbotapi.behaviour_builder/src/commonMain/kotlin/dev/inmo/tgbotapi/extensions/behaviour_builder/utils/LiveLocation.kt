@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.utils
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTypeReceiver
-import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitEditedLocation
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitEditedLocationMessage
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage

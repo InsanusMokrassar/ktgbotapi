@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.InlineQueryFilterB
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserInlineQueryMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asInlineQueryUpdate
+import dev.inmo.tgbotapi.extensions.utils.inlineQueryUpdateOrNull
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -15,7 +15,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.
     markerFactory: MarkerFactory<in T, Any> = ByUserInlineQueryMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asInlineQueryUpdate() ?.data as? T) ?.let(::listOfNotNull)
+    (it.inlineQueryUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
 
 /**

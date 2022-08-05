@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 
 fun createFormattedText(
     entities: TextSourcesList,

@@ -38,6 +38,3 @@ data class OwnerChatMember(
     @Required
     private val type: String = "creator"
 }
-
-@Deprecated("Renamed", ReplaceWith("OwnerChatMember", "dev.inmo.tgbotapi.types.chat.member.OwnerChatMember"))
-typealias CreatorChatMember = OwnerChatMember

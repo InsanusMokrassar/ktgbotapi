@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.chat
 
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.Serializable
 
@@ -43,6 +44,7 @@ sealed interface AbleToAddInAttachmentMenuChat : Chat {
 }
 
 @Serializable(PreviewChatSerializer::class)
+@ClassCastsIncluded
 sealed interface Chat {
     val id: ChatId
 }

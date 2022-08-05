@@ -156,26 +156,39 @@ internal data class RawMessage(
     }
 
     private val forwarded: ForwardInfo? by lazy {
-        forward_date ?: return@lazy null // According to the documentation, now any forwarded message contains this field
+        forward_date
+            ?: return@lazy null // According to the documentation, now any forwarded message contains this field
         when {
-            forward_sender_name != null -> AnonymousForwardInfo(
+            forward_sender_name != null -> ForwardInfo.ByAnonymous(
                 forward_date,
                 forward_sender_name
             )
-            forward_from_chat is ChannelChat -> ForwardFromChannelInfo(
-                forward_date,
-                forward_from_message_id ?: error("Channel forwarded message must contain message id, but was not"),
-                forward_from_chat,
-                forward_signature
-            )
-            forward_from_chat is SupergroupChat -> ForwardFromSupergroupInfo(
+
+            forward_from_chat is ChannelChat -> if (forward_from_message_id == null) {
+                ForwardInfo.PublicChat.SentByChannel(
+                    forward_date,
+                    forward_from_chat,
+                    forward_signature
+                )
+            } else {
+                ForwardInfo.PublicChat.FromChannel(
+                    forward_date,
+                    forward_from_message_id,
+                    forward_from_chat,
+                    forward_signature
+                )
+            }
+
+            forward_from_chat is SupergroupChat -> ForwardInfo.PublicChat.FromSupergroup(
                 forward_date,
                 forward_from_chat
             )
-            forward_from != null -> UserForwardInfo(
+
+            forward_from != null -> ForwardInfo.ByUser(
                 forward_date,
                 forward_from
             )
+
             else -> null
         }
     }

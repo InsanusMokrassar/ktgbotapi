@@ -1,10 +1,10 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.abstracts.TextedWithTextSources
-import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
 
 
 val defaultArgsSeparator = Regex(" ")

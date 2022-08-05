@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserIdChosenInlineResultMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asChosenInlineResultUpdate
+import dev.inmo.tgbotapi.extensions.utils.chosenInlineResultUpdateOrNull
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -16,7 +16,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChosenInlineResu
     markerFactory: MarkerFactory<in T, Any> = ByUserIdChosenInlineResultMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asChosenInlineResultUpdate() ?.data as? T) ?.let(::listOfNotNull)
+    (it.chosenInlineResultUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
 
 /**

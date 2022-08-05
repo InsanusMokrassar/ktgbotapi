@@ -6,8 +6,6 @@ import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.queries.callback.*
-import dev.inmo.tgbotapi.types.chat.member.*
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.*
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
@@ -20,26 +18,16 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.*
 import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
 import dev.inmo.tgbotapi.types.InlineQueries.query.*
-import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.chat.*
-import dev.inmo.tgbotapi.types.chat.Bot
-import dev.inmo.tgbotapi.types.chat.CommonBot
-import dev.inmo.tgbotapi.types.chat.CommonUser
-import dev.inmo.tgbotapi.types.chat.ExtendedBot
-import dev.inmo.tgbotapi.types.chat.User
-import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
-import dev.inmo.tgbotapi.types.chat.member.BannedChatMember
-import dev.inmo.tgbotapi.types.chat.member.ChatMember
-import dev.inmo.tgbotapi.types.chat.member.MemberChatMember
-import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
+import dev.inmo.tgbotapi.types.chat.member.*
 import dev.inmo.tgbotapi.types.dice.*
 import dev.inmo.tgbotapi.types.files.*
-import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.location.*
+import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMember
@@ -48,11 +36,6 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.message.textsources.*
 import dev.inmo.tgbotapi.types.passport.*
@@ -61,13 +44,14 @@ import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.*
 import dev.inmo.tgbotapi.types.passport.encrypted.*
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
 import dev.inmo.tgbotapi.types.polls.*
+import dev.inmo.tgbotapi.types.queries.callback.*
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.abstracts.*
 import dev.inmo.tgbotapi.types.update.media_group.*
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
-inline fun <T> Chat.whenBot(block: (Bot) -> T) = asBot() ?.let(block)
+inline fun <T> Chat.whenBot(block: (Bot) -> T) = asBot()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asBot(): Bot? = this as? Bot
@@ -76,7 +60,7 @@ inline fun Chat.asBot(): Bot? = this as? Bot
 inline fun Chat.requireBot(): Bot = this as Bot
 
 @PreviewFeature
-inline fun <T> Chat.whenCommonBot(block: (CommonBot) -> T) = asCommonBot() ?.let(block)
+inline fun <T> Chat.whenCommonBot(block: (CommonBot) -> T) = asCommonBot()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asCommonBot(): CommonBot? = this as? CommonBot
@@ -85,7 +69,7 @@ inline fun Chat.asCommonBot(): CommonBot? = this as? CommonBot
 inline fun Chat.requireCommonBot(): CommonBot = this as CommonBot
 
 @PreviewFeature
-inline fun <T> Chat.whenCommonUser(block: (CommonUser) -> T) = asCommonUser() ?.let(block)
+inline fun <T> Chat.whenCommonUser(block: (CommonUser) -> T) = asCommonUser()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asCommonUser(): CommonUser? = this as? CommonUser
@@ -94,7 +78,7 @@ inline fun Chat.asCommonUser(): CommonUser? = this as? CommonUser
 inline fun Chat.requireCommonUser(): CommonUser = this as CommonUser
 
 @PreviewFeature
-inline fun <T> Chat.whenExtendedBot(block: (ExtendedBot) -> T) = asExtendedBot() ?.let(block)
+inline fun <T> Chat.whenExtendedBot(block: (ExtendedBot) -> T) = asExtendedBot()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asExtendedBot(): ExtendedBot? = this as? ExtendedBot
@@ -103,7 +87,7 @@ inline fun Chat.asExtendedBot(): ExtendedBot? = this as? ExtendedBot
 inline fun Chat.requireExtendedBot(): ExtendedBot = this as ExtendedBot
 
 @PreviewFeature
-inline fun <T> Chat.whenUser(block: (User) -> T) = asUser() ?.let(block)
+inline fun <T> Chat.whenUser(block: (User) -> T) = asUser()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asUser(): User? = this as? User
@@ -112,7 +96,7 @@ inline fun Chat.asUser(): User? = this as? User
 inline fun Chat.requireUser(): User = this as User
 
 @PreviewFeature
-inline fun <T> Chat.whenChannelChat(block: (ChannelChat) -> T) = asChannelChat() ?.let(block)
+inline fun <T> Chat.whenChannelChat(block: (ChannelChat) -> T) = asChannelChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asChannelChat(): ChannelChat? = this as? ChannelChat
@@ -121,7 +105,7 @@ inline fun Chat.asChannelChat(): ChannelChat? = this as? ChannelChat
 inline fun Chat.requireChannelChat(): ChannelChat = this as ChannelChat
 
 @PreviewFeature
-inline fun <T> Chat.whenGroupChat(block: (GroupChat) -> T) = asGroupChat() ?.let(block)
+inline fun <T> Chat.whenGroupChat(block: (GroupChat) -> T) = asGroupChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asGroupChat(): GroupChat? = this as? GroupChat
@@ -130,7 +114,7 @@ inline fun Chat.asGroupChat(): GroupChat? = this as? GroupChat
 inline fun Chat.requireGroupChat(): GroupChat = this as GroupChat
 
 @PreviewFeature
-inline fun <T> Chat.whenPrivateChat(block: (PrivateChat) -> T) = asPrivateChat() ?.let(block)
+inline fun <T> Chat.whenPrivateChat(block: (PrivateChat) -> T) = asPrivateChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asPrivateChat(): PrivateChat? = this as? PrivateChat
@@ -139,7 +123,7 @@ inline fun Chat.asPrivateChat(): PrivateChat? = this as? PrivateChat
 inline fun Chat.requirePrivateChat(): PrivateChat = this as PrivateChat
 
 @PreviewFeature
-inline fun <T> Chat.whenPublicChat(block: (PublicChat) -> T) = asPublicChat() ?.let(block)
+inline fun <T> Chat.whenPublicChat(block: (PublicChat) -> T) = asPublicChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asPublicChat(): PublicChat? = this as? PublicChat
@@ -148,7 +132,7 @@ inline fun Chat.asPublicChat(): PublicChat? = this as? PublicChat
 inline fun Chat.requirePublicChat(): PublicChat = this as PublicChat
 
 @PreviewFeature
-inline fun <T> Chat.whenSuperPublicChat(block: (SuperPublicChat) -> T) = asSuperPublicChat() ?.let(block)
+inline fun <T> Chat.whenSuperPublicChat(block: (SuperPublicChat) -> T) = asSuperPublicChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asSuperPublicChat(): SuperPublicChat? = this as? SuperPublicChat
@@ -157,7 +141,7 @@ inline fun Chat.asSuperPublicChat(): SuperPublicChat? = this as? SuperPublicChat
 inline fun Chat.requireSuperPublicChat(): SuperPublicChat = this as SuperPublicChat
 
 @PreviewFeature
-inline fun <T> Chat.whenSupergroupChat(block: (SupergroupChat) -> T) = asSupergroupChat() ?.let(block)
+inline fun <T> Chat.whenSupergroupChat(block: (SupergroupChat) -> T) = asSupergroupChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asSupergroupChat(): SupergroupChat? = this as? SupergroupChat
@@ -166,7 +150,7 @@ inline fun Chat.asSupergroupChat(): SupergroupChat? = this as? SupergroupChat
 inline fun Chat.requireSupergroupChat(): SupergroupChat = this as SupergroupChat
 
 @PreviewFeature
-inline fun <T> Chat.whenUnknownChatType(block: (UnknownChatType) -> T) = asUnknownChatType() ?.let(block)
+inline fun <T> Chat.whenUnknownChatType(block: (UnknownChatType) -> T) = asUnknownChatType()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asUnknownChatType(): UnknownChatType? = this as? UnknownChatType
@@ -175,7 +159,7 @@ inline fun Chat.asUnknownChatType(): UnknownChatType? = this as? UnknownChatType
 inline fun Chat.requireUnknownChatType(): UnknownChatType = this as UnknownChatType
 
 @PreviewFeature
-inline fun <T> Chat.whenUsernameChat(block: (UsernameChat) -> T) = asUsernameChat() ?.let(block)
+inline fun <T> Chat.whenUsernameChat(block: (UsernameChat) -> T) = asUsernameChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asUsernameChat(): UsernameChat? = this as? UsernameChat
@@ -184,7 +168,7 @@ inline fun Chat.asUsernameChat(): UsernameChat? = this as? UsernameChat
 inline fun Chat.requireUsernameChat(): UsernameChat = this as UsernameChat
 
 @PreviewFeature
-inline fun <T> Chat.whenExtendedChannelChat(block: (ExtendedChannelChat) -> T) = asExtendedChannelChat() ?.let(block)
+inline fun <T> Chat.whenExtendedChannelChat(block: (ExtendedChannelChat) -> T) = asExtendedChannelChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asExtendedChannelChat(): ExtendedChannelChat? = this as? ExtendedChannelChat
@@ -193,7 +177,7 @@ inline fun Chat.asExtendedChannelChat(): ExtendedChannelChat? = this as? Extende
 inline fun Chat.requireExtendedChannelChat(): ExtendedChannelChat = this as ExtendedChannelChat
 
 @PreviewFeature
-inline fun <T> Chat.whenExtendedChat(block: (ExtendedChat) -> T) = asExtendedChat() ?.let(block)
+inline fun <T> Chat.whenExtendedChat(block: (ExtendedChat) -> T) = asExtendedChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asExtendedChat(): ExtendedChat? = this as? ExtendedChat
@@ -202,7 +186,7 @@ inline fun Chat.asExtendedChat(): ExtendedChat? = this as? ExtendedChat
 inline fun Chat.requireExtendedChat(): ExtendedChat = this as ExtendedChat
 
 @PreviewFeature
-inline fun <T> Chat.whenExtendedGroupChat(block: (ExtendedGroupChat) -> T) = asExtendedGroupChat() ?.let(block)
+inline fun <T> Chat.whenExtendedGroupChat(block: (ExtendedGroupChat) -> T) = asExtendedGroupChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asExtendedGroupChat(): ExtendedGroupChat? = this as? ExtendedGroupChat
@@ -211,7 +195,7 @@ inline fun Chat.asExtendedGroupChat(): ExtendedGroupChat? = this as? ExtendedGro
 inline fun Chat.requireExtendedGroupChat(): ExtendedGroupChat = this as ExtendedGroupChat
 
 @PreviewFeature
-inline fun <T> Chat.whenExtendedPrivateChat(block: (ExtendedPrivateChat) -> T) = asExtendedPrivateChat() ?.let(block)
+inline fun <T> Chat.whenExtendedPrivateChat(block: (ExtendedPrivateChat) -> T) = asExtendedPrivateChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asExtendedPrivateChat(): ExtendedPrivateChat? = this as? ExtendedPrivateChat
@@ -220,7 +204,7 @@ inline fun Chat.asExtendedPrivateChat(): ExtendedPrivateChat? = this as? Extende
 inline fun Chat.requireExtendedPrivateChat(): ExtendedPrivateChat = this as ExtendedPrivateChat
 
 @PreviewFeature
-inline fun <T> Chat.whenExtendedPublicChat(block: (ExtendedPublicChat) -> T) = asExtendedPublicChat() ?.let(block)
+inline fun <T> Chat.whenExtendedPublicChat(block: (ExtendedPublicChat) -> T) = asExtendedPublicChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asExtendedPublicChat(): ExtendedPublicChat? = this as? ExtendedPublicChat
@@ -229,7 +213,8 @@ inline fun Chat.asExtendedPublicChat(): ExtendedPublicChat? = this as? ExtendedP
 inline fun Chat.requireExtendedPublicChat(): ExtendedPublicChat = this as ExtendedPublicChat
 
 @PreviewFeature
-inline fun <T> Chat.whenExtendedSupergroupChat(block: (ExtendedSupergroupChat) -> T) = asExtendedSupergroupChat() ?.let(block)
+inline fun <T> Chat.whenExtendedSupergroupChat(block: (ExtendedSupergroupChat) -> T) =
+    asExtendedSupergroupChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asExtendedSupergroupChat(): ExtendedSupergroupChat? = this as? ExtendedSupergroupChat
@@ -238,7 +223,7 @@ inline fun Chat.asExtendedSupergroupChat(): ExtendedSupergroupChat? = this as? E
 inline fun Chat.requireExtendedSupergroupChat(): ExtendedSupergroupChat = this as ExtendedSupergroupChat
 
 @PreviewFeature
-inline fun <T> Chat.whenPossiblyPremiumChat(block: (PossiblyPremiumChat) -> T) = asPossiblyPremiumChat() ?.let(block)
+inline fun <T> Chat.whenPossiblyPremiumChat(block: (PossiblyPremiumChat) -> T) = asPossiblyPremiumChat()?.let(block)
 
 @PreviewFeature
 inline fun Chat.asPossiblyPremiumChat(): PossiblyPremiumChat? = this as? PossiblyPremiumChat
@@ -247,16 +232,19 @@ inline fun Chat.asPossiblyPremiumChat(): PossiblyPremiumChat? = this as? Possibl
 inline fun Chat.requirePossiblyPremiumChat(): PossiblyPremiumChat = this as PossiblyPremiumChat
 
 @PreviewFeature
-inline fun <T> Chat.whenAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T) = asAbleToAddInAttachmentMenuChat() ?.let(block)
+inline fun <T> Chat.whenAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T) =
+    asAbleToAddInAttachmentMenuChat()?.let(block)
 
 @PreviewFeature
-inline fun Chat.asAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat? = this as? AbleToAddInAttachmentMenuChat
+inline fun Chat.asAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat? =
+    this as? AbleToAddInAttachmentMenuChat
 
 @PreviewFeature
-inline fun Chat.requireAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat = this as AbleToAddInAttachmentMenuChat
+inline fun Chat.requireAbleToAddInAttachmentMenuChat(): AbleToAddInAttachmentMenuChat =
+    this as AbleToAddInAttachmentMenuChat
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenDataCallbackQuery(block: (DataCallbackQuery) -> T) = asDataCallbackQuery() ?.let(block)
+inline fun <T> CallbackQuery.whenDataCallbackQuery(block: (DataCallbackQuery) -> T) = asDataCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asDataCallbackQuery(): DataCallbackQuery? = this as? DataCallbackQuery
@@ -265,7 +253,8 @@ inline fun CallbackQuery.asDataCallbackQuery(): DataCallbackQuery? = this as? Da
 inline fun CallbackQuery.requireDataCallbackQuery(): DataCallbackQuery = this as DataCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T) = asGameShortNameCallbackQuery() ?.let(block)
+inline fun <T> CallbackQuery.whenGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T) =
+    asGameShortNameCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asGameShortNameCallbackQuery(): GameShortNameCallbackQuery? =
@@ -276,7 +265,8 @@ inline fun CallbackQuery.requireGameShortNameCallbackQuery(): GameShortNameCallb
     this as GameShortNameCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenInlineMessageIdCallbackQuery(block: (InlineMessageIdCallbackQuery) -> T) = asInlineMessageIdCallbackQuery() ?.let(block)
+inline fun <T> CallbackQuery.whenInlineMessageIdCallbackQuery(block: (InlineMessageIdCallbackQuery) -> T) =
+    asInlineMessageIdCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asInlineMessageIdCallbackQuery(): InlineMessageIdCallbackQuery? =
@@ -287,7 +277,8 @@ inline fun CallbackQuery.requireInlineMessageIdCallbackQuery(): InlineMessageIdC
     this as InlineMessageIdCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenInlineMessageIdDataCallbackQuery(block: (InlineMessageIdDataCallbackQuery) -> T) = asInlineMessageIdDataCallbackQuery() ?.let(block)
+inline fun <T> CallbackQuery.whenInlineMessageIdDataCallbackQuery(block: (InlineMessageIdDataCallbackQuery) -> T) =
+    asInlineMessageIdDataCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asInlineMessageIdDataCallbackQuery(): InlineMessageIdDataCallbackQuery? =
@@ -298,7 +289,8 @@ inline fun CallbackQuery.requireInlineMessageIdDataCallbackQuery(): InlineMessag
     this as InlineMessageIdDataCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenInlineMessageIdGameShortNameCallbackQuery(block: (InlineMessageIdGameShortNameCallbackQuery) -> T) = asInlineMessageIdGameShortNameCallbackQuery() ?.let(block)
+inline fun <T> CallbackQuery.whenInlineMessageIdGameShortNameCallbackQuery(block: (InlineMessageIdGameShortNameCallbackQuery) -> T) =
+    asInlineMessageIdGameShortNameCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asInlineMessageIdGameShortNameCallbackQuery(): InlineMessageIdGameShortNameCallbackQuery? =
@@ -309,7 +301,8 @@ inline fun CallbackQuery.requireInlineMessageIdGameShortNameCallbackQuery(): Inl
     this as InlineMessageIdGameShortNameCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenMessageCallbackQuery(block: (MessageCallbackQuery) -> T) = asMessageCallbackQuery() ?.let(block)
+inline fun <T> CallbackQuery.whenMessageCallbackQuery(block: (MessageCallbackQuery) -> T) =
+    asMessageCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asMessageCallbackQuery(): MessageCallbackQuery? = this as? MessageCallbackQuery
@@ -318,7 +311,8 @@ inline fun CallbackQuery.asMessageCallbackQuery(): MessageCallbackQuery? = this 
 inline fun CallbackQuery.requireMessageCallbackQuery(): MessageCallbackQuery = this as MessageCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenMessageDataCallbackQuery(block: (MessageDataCallbackQuery) -> T) = asMessageDataCallbackQuery() ?.let(block)
+inline fun <T> CallbackQuery.whenMessageDataCallbackQuery(block: (MessageDataCallbackQuery) -> T) =
+    asMessageDataCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asMessageDataCallbackQuery(): MessageDataCallbackQuery? = this as? MessageDataCallbackQuery
@@ -327,7 +321,8 @@ inline fun CallbackQuery.asMessageDataCallbackQuery(): MessageDataCallbackQuery?
 inline fun CallbackQuery.requireMessageDataCallbackQuery(): MessageDataCallbackQuery = this as MessageDataCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T) = asMessageGameShortNameCallbackQuery() ?.let(block)
+inline fun <T> CallbackQuery.whenMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T) =
+    asMessageGameShortNameCallbackQuery()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asMessageGameShortNameCallbackQuery(): MessageGameShortNameCallbackQuery? =
@@ -338,7 +333,8 @@ inline fun CallbackQuery.requireMessageGameShortNameCallbackQuery(): MessageGame
     this as MessageGameShortNameCallbackQuery
 
 @PreviewFeature
-inline fun <T> CallbackQuery.whenUnknownCallbackQueryType(block: (UnknownCallbackQueryType) -> T) = asUnknownCallbackQueryType() ?.let(block)
+inline fun <T> CallbackQuery.whenUnknownCallbackQueryType(block: (UnknownCallbackQueryType) -> T) =
+    asUnknownCallbackQueryType()?.let(block)
 
 @PreviewFeature
 inline fun CallbackQuery.asUnknownCallbackQueryType(): UnknownCallbackQueryType? = this as? UnknownCallbackQueryType
@@ -347,7 +343,8 @@ inline fun CallbackQuery.asUnknownCallbackQueryType(): UnknownCallbackQueryType?
 inline fun CallbackQuery.requireUnknownCallbackQueryType(): UnknownCallbackQueryType = this as UnknownCallbackQueryType
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorDataField(block: (PassportElementErrorDataField) -> T) = asPassportElementErrorDataField() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorDataField(block: (PassportElementErrorDataField) -> T) =
+    asPassportElementErrorDataField()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorDataField(): PassportElementErrorDataField? =
@@ -358,7 +355,8 @@ inline fun PassportElementError.requirePassportElementErrorDataField(): Passport
     this as PassportElementErrorDataField
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorFile(block: (PassportElementErrorFile) -> T) = asPassportElementErrorFile() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorFile(block: (PassportElementErrorFile) -> T) =
+    asPassportElementErrorFile()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorFile(): PassportElementErrorFile? =
@@ -369,7 +367,8 @@ inline fun PassportElementError.requirePassportElementErrorFile(): PassportEleme
     this as PassportElementErrorFile
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorFiles(block: (PassportElementErrorFiles) -> T) = asPassportElementErrorFiles() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorFiles(block: (PassportElementErrorFiles) -> T) =
+    asPassportElementErrorFiles()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorFiles(): PassportElementErrorFiles? =
@@ -380,7 +379,8 @@ inline fun PassportElementError.requirePassportElementErrorFiles(): PassportElem
     this as PassportElementErrorFiles
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorFrontSide(block: (PassportElementErrorFrontSide) -> T) = asPassportElementErrorFrontSide() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorFrontSide(block: (PassportElementErrorFrontSide) -> T) =
+    asPassportElementErrorFrontSide()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorFrontSide(): PassportElementErrorFrontSide? =
@@ -391,7 +391,8 @@ inline fun PassportElementError.requirePassportElementErrorFrontSide(): Passport
     this as PassportElementErrorFrontSide
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorReverseSide(block: (PassportElementErrorReverseSide) -> T) = asPassportElementErrorReverseSide() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorReverseSide(block: (PassportElementErrorReverseSide) -> T) =
+    asPassportElementErrorReverseSide()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorReverseSide(): PassportElementErrorReverseSide? =
@@ -402,7 +403,8 @@ inline fun PassportElementError.requirePassportElementErrorReverseSide(): Passpo
     this as PassportElementErrorReverseSide
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorSelfie(block: (PassportElementErrorSelfie) -> T) = asPassportElementErrorSelfie() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorSelfie(block: (PassportElementErrorSelfie) -> T) =
+    asPassportElementErrorSelfie()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorSelfie(): PassportElementErrorSelfie? =
@@ -413,7 +415,8 @@ inline fun PassportElementError.requirePassportElementErrorSelfie(): PassportEle
     this as PassportElementErrorSelfie
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorTranslationFile(block: (PassportElementErrorTranslationFile) -> T) = asPassportElementErrorTranslationFile() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorTranslationFile(block: (PassportElementErrorTranslationFile) -> T) =
+    asPassportElementErrorTranslationFile()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorTranslationFile(): PassportElementErrorTranslationFile? =
@@ -424,7 +427,8 @@ inline fun PassportElementError.requirePassportElementErrorTranslationFile(): Pa
     this as PassportElementErrorTranslationFile
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorTranslationFiles(block: (PassportElementErrorTranslationFiles) -> T) = asPassportElementErrorTranslationFiles() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorTranslationFiles(block: (PassportElementErrorTranslationFiles) -> T) =
+    asPassportElementErrorTranslationFiles()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorTranslationFiles(): PassportElementErrorTranslationFiles? =
@@ -435,7 +439,8 @@ inline fun PassportElementError.requirePassportElementErrorTranslationFiles(): P
     this as PassportElementErrorTranslationFiles
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementErrorUnspecified(block: (PassportElementErrorUnspecified) -> T) = asPassportElementErrorUnspecified() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementErrorUnspecified(block: (PassportElementErrorUnspecified) -> T) =
+    asPassportElementErrorUnspecified()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementErrorUnspecified(): PassportElementErrorUnspecified? =
@@ -446,7 +451,8 @@ inline fun PassportElementError.requirePassportElementErrorUnspecified(): Passpo
     this as PassportElementErrorUnspecified
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementFileError(block: (PassportElementFileError) -> T) = asPassportElementFileError() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementFileError(block: (PassportElementFileError) -> T) =
+    asPassportElementFileError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementFileError(): PassportElementFileError? =
@@ -457,7 +463,8 @@ inline fun PassportElementError.requirePassportElementFileError(): PassportEleme
     this as PassportElementFileError
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportElementFilesError(block: (PassportElementFilesError) -> T) = asPassportElementFilesError() ?.let(block)
+inline fun <T> PassportElementError.whenPassportElementFilesError(block: (PassportElementFilesError) -> T) =
+    asPassportElementFilesError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportElementFilesError(): PassportElementFilesError? =
@@ -468,7 +475,8 @@ inline fun PassportElementError.requirePassportElementFilesError(): PassportElem
     this as PassportElementFilesError
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportMultipleElementsError(block: (PassportMultipleElementsError) -> T) = asPassportMultipleElementsError() ?.let(block)
+inline fun <T> PassportElementError.whenPassportMultipleElementsError(block: (PassportMultipleElementsError) -> T) =
+    asPassportMultipleElementsError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportMultipleElementsError(): PassportMultipleElementsError? =
@@ -479,7 +487,8 @@ inline fun PassportElementError.requirePassportMultipleElementsError(): Passport
     this as PassportMultipleElementsError
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenPassportSingleElementError(block: (PassportSingleElementError) -> T) = asPassportSingleElementError() ?.let(block)
+inline fun <T> PassportElementError.whenPassportSingleElementError(block: (PassportSingleElementError) -> T) =
+    asPassportSingleElementError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asPassportSingleElementError(): PassportSingleElementError? =
@@ -490,7 +499,8 @@ inline fun PassportElementError.requirePassportSingleElementError(): PassportSin
     this as PassportSingleElementError
 
 @PreviewFeature
-inline fun <T> PassportElementError.whenUnknownPassportElementError(block: (UnknownPassportElementError) -> T) = asUnknownPassportElementError() ?.let(block)
+inline fun <T> PassportElementError.whenUnknownPassportElementError(block: (UnknownPassportElementError) -> T) =
+    asUnknownPassportElementError()?.let(block)
 
 @PreviewFeature
 inline fun PassportElementError.asUnknownPassportElementError(): UnknownPassportElementError? =
@@ -501,7 +511,7 @@ inline fun PassportElementError.requireUnknownPassportElementError(): UnknownPas
     this as UnknownPassportElementError
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenBankStatement(block: (BankStatement) -> T) = asBankStatement() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenBankStatement(block: (BankStatement) -> T) = asBankStatement()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asBankStatement(): BankStatement? = this as? BankStatement
@@ -510,7 +520,8 @@ inline fun EncryptedPassportElement.asBankStatement(): BankStatement? = this as?
 inline fun EncryptedPassportElement.requireBankStatement(): BankStatement = this as BankStatement
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenCommonPassport(block: (CommonPassport) -> T) = asCommonPassport() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenCommonPassport(block: (CommonPassport) -> T) =
+    asCommonPassport()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asCommonPassport(): CommonPassport? = this as? CommonPassport
@@ -519,7 +530,7 @@ inline fun EncryptedPassportElement.asCommonPassport(): CommonPassport? = this a
 inline fun EncryptedPassportElement.requireCommonPassport(): CommonPassport = this as CommonPassport
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenDriverLicense(block: (DriverLicense) -> T) = asDriverLicense() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenDriverLicense(block: (DriverLicense) -> T) = asDriverLicense()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asDriverLicense(): DriverLicense? = this as? DriverLicense
@@ -528,7 +539,7 @@ inline fun EncryptedPassportElement.asDriverLicense(): DriverLicense? = this as?
 inline fun EncryptedPassportElement.requireDriverLicense(): DriverLicense = this as DriverLicense
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEmail(block: (Email) -> T) = asEmail() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEmail(block: (Email) -> T) = asEmail()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEmail(): Email? = this as? Email
@@ -537,7 +548,8 @@ inline fun EncryptedPassportElement.asEmail(): Email? = this as? Email
 inline fun EncryptedPassportElement.requireEmail(): Email = this as Email
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedAddress(block: (EncryptedAddress) -> T) = asEncryptedAddress() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedAddress(block: (EncryptedAddress) -> T) =
+    asEncryptedAddress()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedAddress(): EncryptedAddress? = this as? EncryptedAddress
@@ -546,7 +558,8 @@ inline fun EncryptedPassportElement.asEncryptedAddress(): EncryptedAddress? = th
 inline fun EncryptedPassportElement.requireEncryptedAddress(): EncryptedAddress = this as EncryptedAddress
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPersonalDetails(block: (EncryptedPersonalDetails) -> T) = asEncryptedPersonalDetails() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPersonalDetails(block: (EncryptedPersonalDetails) -> T) =
+    asEncryptedPersonalDetails()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPersonalDetails(): EncryptedPersonalDetails? =
@@ -557,7 +570,7 @@ inline fun EncryptedPassportElement.requireEncryptedPersonalDetails(): Encrypted
     this as EncryptedPersonalDetails
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenIdentityCard(block: (IdentityCard) -> T) = asIdentityCard() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenIdentityCard(block: (IdentityCard) -> T) = asIdentityCard()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asIdentityCard(): IdentityCard? = this as? IdentityCard
@@ -566,7 +579,8 @@ inline fun EncryptedPassportElement.asIdentityCard(): IdentityCard? = this as? I
 inline fun EncryptedPassportElement.requireIdentityCard(): IdentityCard = this as IdentityCard
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenInternalPassport(block: (InternalPassport) -> T) = asInternalPassport() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenInternalPassport(block: (InternalPassport) -> T) =
+    asInternalPassport()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asInternalPassport(): InternalPassport? = this as? InternalPassport
@@ -575,7 +589,7 @@ inline fun EncryptedPassportElement.asInternalPassport(): InternalPassport? = th
 inline fun EncryptedPassportElement.requireInternalPassport(): InternalPassport = this as InternalPassport
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenPassport(block: (Passport) -> T) = asPassport() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenPassport(block: (Passport) -> T) = asPassport()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asPassport(): Passport? = this as? Passport
@@ -584,7 +598,8 @@ inline fun EncryptedPassportElement.asPassport(): Passport? = this as? Passport
 inline fun EncryptedPassportElement.requirePassport(): Passport = this as Passport
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenPassportRegistration(block: (PassportRegistration) -> T) = asPassportRegistration() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenPassportRegistration(block: (PassportRegistration) -> T) =
+    asPassportRegistration()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asPassportRegistration(): PassportRegistration? = this as? PassportRegistration
@@ -593,7 +608,7 @@ inline fun EncryptedPassportElement.asPassportRegistration(): PassportRegistrati
 inline fun EncryptedPassportElement.requirePassportRegistration(): PassportRegistration = this as PassportRegistration
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenPhoneNumber(block: (PhoneNumber) -> T) = asPhoneNumber() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenPhoneNumber(block: (PhoneNumber) -> T) = asPhoneNumber()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asPhoneNumber(): PhoneNumber? = this as? PhoneNumber
@@ -602,7 +617,8 @@ inline fun EncryptedPassportElement.asPhoneNumber(): PhoneNumber? = this as? Pho
 inline fun EncryptedPassportElement.requirePhoneNumber(): PhoneNumber = this as PhoneNumber
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenRentalAgreement(block: (RentalAgreement) -> T) = asRentalAgreement() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenRentalAgreement(block: (RentalAgreement) -> T) =
+    asRentalAgreement()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asRentalAgreement(): RentalAgreement? = this as? RentalAgreement
@@ -611,7 +627,8 @@ inline fun EncryptedPassportElement.asRentalAgreement(): RentalAgreement? = this
 inline fun EncryptedPassportElement.requireRentalAgreement(): RentalAgreement = this as RentalAgreement
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenTemporaryRegistration(block: (TemporaryRegistration) -> T) = asTemporaryRegistration() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenTemporaryRegistration(block: (TemporaryRegistration) -> T) =
+    asTemporaryRegistration()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asTemporaryRegistration(): TemporaryRegistration? = this as? TemporaryRegistration
@@ -621,7 +638,8 @@ inline fun EncryptedPassportElement.requireTemporaryRegistration(): TemporaryReg
     this as TemporaryRegistration
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithTranslatableFilesCollection(block: (EncryptedPassportElementWithTranslatableFilesCollection) -> T) = asEncryptedPassportElementWithTranslatableFilesCollection() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithTranslatableFilesCollection(block: (EncryptedPassportElementWithTranslatableFilesCollection) -> T) =
+    asEncryptedPassportElementWithTranslatableFilesCollection()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableFilesCollection(): EncryptedPassportElementWithTranslatableFilesCollection? =
@@ -632,7 +650,8 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslata
     this as EncryptedPassportElementWithTranslatableFilesCollection
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithTranslatableIDDocument(block: (EncryptedPassportElementWithTranslatableIDDocument) -> T) = asEncryptedPassportElementWithTranslatableIDDocument() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithTranslatableIDDocument(block: (EncryptedPassportElementWithTranslatableIDDocument) -> T) =
+    asEncryptedPassportElementWithTranslatableIDDocument()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithTranslatableIDDocument(): EncryptedPassportElementWithTranslatableIDDocument? =
@@ -643,7 +662,7 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithTranslata
     this as EncryptedPassportElementWithTranslatableIDDocument
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenUtilityBill(block: (UtilityBill) -> T) = asUtilityBill() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenUtilityBill(block: (UtilityBill) -> T) = asUtilityBill()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asUtilityBill(): UtilityBill? = this as? UtilityBill
@@ -652,7 +671,8 @@ inline fun EncryptedPassportElement.asUtilityBill(): UtilityBill? = this as? Uti
 inline fun EncryptedPassportElement.requireUtilityBill(): UtilityBill = this as UtilityBill
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithFilesCollection(block: (EncryptedPassportElementWithFilesCollection) -> T) = asEncryptedPassportElementWithFilesCollection() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithFilesCollection(block: (EncryptedPassportElementWithFilesCollection) -> T) =
+    asEncryptedPassportElementWithFilesCollection()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithFilesCollection(): EncryptedPassportElementWithFilesCollection? =
@@ -663,7 +683,8 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFilesColl
     this as EncryptedPassportElementWithFilesCollection
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementTranslatable(block: (EncryptedPassportElementTranslatable) -> T) = asEncryptedPassportElementTranslatable() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementTranslatable(block: (EncryptedPassportElementTranslatable) -> T) =
+    asEncryptedPassportElementTranslatable()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementTranslatable(): EncryptedPassportElementTranslatable? =
@@ -674,7 +695,8 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementTranslatable(
     this as EncryptedPassportElementTranslatable
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenUnknownEncryptedPassportElement(block: (UnknownEncryptedPassportElement) -> T) = asUnknownEncryptedPassportElement() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenUnknownEncryptedPassportElement(block: (UnknownEncryptedPassportElement) -> T) =
+    asUnknownEncryptedPassportElement()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asUnknownEncryptedPassportElement(): UnknownEncryptedPassportElement? =
@@ -685,7 +707,8 @@ inline fun EncryptedPassportElement.requireUnknownEncryptedPassportElement(): Un
     this as UnknownEncryptedPassportElement
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithData(block: (EncryptedPassportElementWithData) -> T) = asEncryptedPassportElementWithData() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithData(block: (EncryptedPassportElementWithData) -> T) =
+    asEncryptedPassportElementWithData()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithData(): EncryptedPassportElementWithData? =
@@ -696,7 +719,8 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithData(): E
     this as EncryptedPassportElementWithData
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithEmail(block: (EncryptedPassportElementWithEmail) -> T) = asEncryptedPassportElementWithEmail() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithEmail(block: (EncryptedPassportElementWithEmail) -> T) =
+    asEncryptedPassportElementWithEmail()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithEmail(): EncryptedPassportElementWithEmail? =
@@ -707,7 +731,8 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithEmail(): 
     this as EncryptedPassportElementWithEmail
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithFrontSide(block: (EncryptedPassportElementWithFrontSide) -> T) = asEncryptedPassportElementWithFrontSide() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithFrontSide(block: (EncryptedPassportElementWithFrontSide) -> T) =
+    asEncryptedPassportElementWithFrontSide()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithFrontSide(): EncryptedPassportElementWithFrontSide? =
@@ -718,7 +743,8 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithFrontSide
     this as EncryptedPassportElementWithFrontSide
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithPhoneNumber(block: (EncryptedPassportElementWithPhoneNumber) -> T) = asEncryptedPassportElementWithPhoneNumber() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithPhoneNumber(block: (EncryptedPassportElementWithPhoneNumber) -> T) =
+    asEncryptedPassportElementWithPhoneNumber()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithPhoneNumber(): EncryptedPassportElementWithPhoneNumber? =
@@ -729,7 +755,8 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithPhoneNumb
     this as EncryptedPassportElementWithPhoneNumber
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithReverseSide(block: (EncryptedPassportElementWithReverseSide) -> T) = asEncryptedPassportElementWithReverseSide() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithReverseSide(block: (EncryptedPassportElementWithReverseSide) -> T) =
+    asEncryptedPassportElementWithReverseSide()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithReverseSide(): EncryptedPassportElementWithReverseSide? =
@@ -740,7 +767,8 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithReverseSi
     this as EncryptedPassportElementWithReverseSide
 
 @PreviewFeature
-inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithSelfie(block: (EncryptedPassportElementWithSelfie) -> T) = asEncryptedPassportElementWithSelfie() ?.let(block)
+inline fun <T> EncryptedPassportElement.whenEncryptedPassportElementWithSelfie(block: (EncryptedPassportElementWithSelfie) -> T) =
+    asEncryptedPassportElementWithSelfie()?.let(block)
 
 @PreviewFeature
 inline fun EncryptedPassportElement.asEncryptedPassportElementWithSelfie(): EncryptedPassportElementWithSelfie? =
@@ -751,7 +779,7 @@ inline fun EncryptedPassportElement.requireEncryptedPassportElementWithSelfie():
     this as EncryptedPassportElementWithSelfie
 
 @PreviewFeature
-inline fun <T> SecureValue.whenAddressSecureValue(block: (AddressSecureValue) -> T) = asAddressSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenAddressSecureValue(block: (AddressSecureValue) -> T) = asAddressSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asAddressSecureValue(): AddressSecureValue? = this as? AddressSecureValue
@@ -760,7 +788,8 @@ inline fun SecureValue.asAddressSecureValue(): AddressSecureValue? = this as? Ad
 inline fun SecureValue.requireAddressSecureValue(): AddressSecureValue = this as AddressSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenBankStatementSecureValue(block: (BankStatementSecureValue) -> T) = asBankStatementSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenBankStatementSecureValue(block: (BankStatementSecureValue) -> T) =
+    asBankStatementSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asBankStatementSecureValue(): BankStatementSecureValue? = this as? BankStatementSecureValue
@@ -769,7 +798,8 @@ inline fun SecureValue.asBankStatementSecureValue(): BankStatementSecureValue? =
 inline fun SecureValue.requireBankStatementSecureValue(): BankStatementSecureValue = this as BankStatementSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenCommonPassportSecureValue(block: (CommonPassportSecureValue) -> T) = asCommonPassportSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenCommonPassportSecureValue(block: (CommonPassportSecureValue) -> T) =
+    asCommonPassportSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asCommonPassportSecureValue(): CommonPassportSecureValue? = this as? CommonPassportSecureValue
@@ -778,7 +808,8 @@ inline fun SecureValue.asCommonPassportSecureValue(): CommonPassportSecureValue?
 inline fun SecureValue.requireCommonPassportSecureValue(): CommonPassportSecureValue = this as CommonPassportSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenDriverLicenseSecureValue(block: (DriverLicenseSecureValue) -> T) = asDriverLicenseSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenDriverLicenseSecureValue(block: (DriverLicenseSecureValue) -> T) =
+    asDriverLicenseSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asDriverLicenseSecureValue(): DriverLicenseSecureValue? = this as? DriverLicenseSecureValue
@@ -787,7 +818,8 @@ inline fun SecureValue.asDriverLicenseSecureValue(): DriverLicenseSecureValue? =
 inline fun SecureValue.requireDriverLicenseSecureValue(): DriverLicenseSecureValue = this as DriverLicenseSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenIdentityCardSecureValue(block: (IdentityCardSecureValue) -> T) = asIdentityCardSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenIdentityCardSecureValue(block: (IdentityCardSecureValue) -> T) =
+    asIdentityCardSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asIdentityCardSecureValue(): IdentityCardSecureValue? = this as? IdentityCardSecureValue
@@ -796,7 +828,8 @@ inline fun SecureValue.asIdentityCardSecureValue(): IdentityCardSecureValue? = t
 inline fun SecureValue.requireIdentityCardSecureValue(): IdentityCardSecureValue = this as IdentityCardSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenIdentityWithReverseSideSecureValue(block: (IdentityWithReverseSideSecureValue) -> T) = asIdentityWithReverseSideSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenIdentityWithReverseSideSecureValue(block: (IdentityWithReverseSideSecureValue) -> T) =
+    asIdentityWithReverseSideSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asIdentityWithReverseSideSecureValue(): IdentityWithReverseSideSecureValue? =
@@ -807,7 +840,8 @@ inline fun SecureValue.requireIdentityWithReverseSideSecureValue(): IdentityWith
     this as IdentityWithReverseSideSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenInternalPassportSecureValue(block: (InternalPassportSecureValue) -> T) = asInternalPassportSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenInternalPassportSecureValue(block: (InternalPassportSecureValue) -> T) =
+    asInternalPassportSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asInternalPassportSecureValue(): InternalPassportSecureValue? =
@@ -818,7 +852,8 @@ inline fun SecureValue.requireInternalPassportSecureValue(): InternalPassportSec
     this as InternalPassportSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenOtherDocumentsSecureValue(block: (OtherDocumentsSecureValue) -> T) = asOtherDocumentsSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenOtherDocumentsSecureValue(block: (OtherDocumentsSecureValue) -> T) =
+    asOtherDocumentsSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asOtherDocumentsSecureValue(): OtherDocumentsSecureValue? = this as? OtherDocumentsSecureValue
@@ -827,7 +862,8 @@ inline fun SecureValue.asOtherDocumentsSecureValue(): OtherDocumentsSecureValue?
 inline fun SecureValue.requireOtherDocumentsSecureValue(): OtherDocumentsSecureValue = this as OtherDocumentsSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenPassportRegistrationSecureValue(block: (PassportRegistrationSecureValue) -> T) = asPassportRegistrationSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenPassportRegistrationSecureValue(block: (PassportRegistrationSecureValue) -> T) =
+    asPassportRegistrationSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asPassportRegistrationSecureValue(): PassportRegistrationSecureValue? =
@@ -838,7 +874,8 @@ inline fun SecureValue.requirePassportRegistrationSecureValue(): PassportRegistr
     this as PassportRegistrationSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenPassportSecureValue(block: (PassportSecureValue) -> T) = asPassportSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenPassportSecureValue(block: (PassportSecureValue) -> T) =
+    asPassportSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asPassportSecureValue(): PassportSecureValue? = this as? PassportSecureValue
@@ -847,7 +884,8 @@ inline fun SecureValue.asPassportSecureValue(): PassportSecureValue? = this as? 
 inline fun SecureValue.requirePassportSecureValue(): PassportSecureValue = this as PassportSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenPersonalDetailsSecureValue(block: (PersonalDetailsSecureValue) -> T) = asPersonalDetailsSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenPersonalDetailsSecureValue(block: (PersonalDetailsSecureValue) -> T) =
+    asPersonalDetailsSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asPersonalDetailsSecureValue(): PersonalDetailsSecureValue? = this as? PersonalDetailsSecureValue
@@ -857,7 +895,8 @@ inline fun SecureValue.requirePersonalDetailsSecureValue(): PersonalDetailsSecur
     this as PersonalDetailsSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenRentalAgreementSecureValue(block: (RentalAgreementSecureValue) -> T) = asRentalAgreementSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenRentalAgreementSecureValue(block: (RentalAgreementSecureValue) -> T) =
+    asRentalAgreementSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asRentalAgreementSecureValue(): RentalAgreementSecureValue? = this as? RentalAgreementSecureValue
@@ -867,7 +906,8 @@ inline fun SecureValue.requireRentalAgreementSecureValue(): RentalAgreementSecur
     this as RentalAgreementSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenTemporalRegistrationSecureValue(block: (TemporalRegistrationSecureValue) -> T) = asTemporalRegistrationSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenTemporalRegistrationSecureValue(block: (TemporalRegistrationSecureValue) -> T) =
+    asTemporalRegistrationSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asTemporalRegistrationSecureValue(): TemporalRegistrationSecureValue? =
@@ -878,7 +918,8 @@ inline fun SecureValue.requireTemporalRegistrationSecureValue(): TemporalRegistr
     this as TemporalRegistrationSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenUtilityBillSecureValue(block: (UtilityBillSecureValue) -> T) = asUtilityBillSecureValue() ?.let(block)
+inline fun <T> SecureValue.whenUtilityBillSecureValue(block: (UtilityBillSecureValue) -> T) =
+    asUtilityBillSecureValue()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asUtilityBillSecureValue(): UtilityBillSecureValue? = this as? UtilityBillSecureValue
@@ -887,7 +928,8 @@ inline fun SecureValue.asUtilityBillSecureValue(): UtilityBillSecureValue? = thi
 inline fun SecureValue.requireUtilityBillSecureValue(): UtilityBillSecureValue = this as UtilityBillSecureValue
 
 @PreviewFeature
-inline fun <T> SecureValue.whenSecureValueIdentity(block: (SecureValueIdentity) -> T) = asSecureValueIdentity() ?.let(block)
+inline fun <T> SecureValue.whenSecureValueIdentity(block: (SecureValueIdentity) -> T) =
+    asSecureValueIdentity()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asSecureValueIdentity(): SecureValueIdentity? = this as? SecureValueIdentity
@@ -896,7 +938,8 @@ inline fun SecureValue.asSecureValueIdentity(): SecureValueIdentity? = this as? 
 inline fun SecureValue.requireSecureValueIdentity(): SecureValueIdentity = this as SecureValueIdentity
 
 @PreviewFeature
-inline fun <T> SecureValue.whenSecureValueWithData(block: (SecureValueWithData) -> T) = asSecureValueWithData() ?.let(block)
+inline fun <T> SecureValue.whenSecureValueWithData(block: (SecureValueWithData) -> T) =
+    asSecureValueWithData()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asSecureValueWithData(): SecureValueWithData? = this as? SecureValueWithData
@@ -905,7 +948,8 @@ inline fun SecureValue.asSecureValueWithData(): SecureValueWithData? = this as? 
 inline fun SecureValue.requireSecureValueWithData(): SecureValueWithData = this as SecureValueWithData
 
 @PreviewFeature
-inline fun <T> SecureValue.whenSecureValueWithFiles(block: (SecureValueWithFiles) -> T) = asSecureValueWithFiles() ?.let(block)
+inline fun <T> SecureValue.whenSecureValueWithFiles(block: (SecureValueWithFiles) -> T) =
+    asSecureValueWithFiles()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asSecureValueWithFiles(): SecureValueWithFiles? = this as? SecureValueWithFiles
@@ -914,7 +958,8 @@ inline fun SecureValue.asSecureValueWithFiles(): SecureValueWithFiles? = this as
 inline fun SecureValue.requireSecureValueWithFiles(): SecureValueWithFiles = this as SecureValueWithFiles
 
 @PreviewFeature
-inline fun <T> SecureValue.whenSecureValueWithReverseSide(block: (SecureValueWithReverseSide) -> T) = asSecureValueWithReverseSide() ?.let(block)
+inline fun <T> SecureValue.whenSecureValueWithReverseSide(block: (SecureValueWithReverseSide) -> T) =
+    asSecureValueWithReverseSide()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asSecureValueWithReverseSide(): SecureValueWithReverseSide? = this as? SecureValueWithReverseSide
@@ -924,7 +969,8 @@ inline fun SecureValue.requireSecureValueWithReverseSide(): SecureValueWithRever
     this as SecureValueWithReverseSide
 
 @PreviewFeature
-inline fun <T> SecureValue.whenSecureValueWithTranslations(block: (SecureValueWithTranslations) -> T) = asSecureValueWithTranslations() ?.let(block)
+inline fun <T> SecureValue.whenSecureValueWithTranslations(block: (SecureValueWithTranslations) -> T) =
+    asSecureValueWithTranslations()?.let(block)
 
 @PreviewFeature
 inline fun SecureValue.asSecureValueWithTranslations(): SecureValueWithTranslations? =
@@ -935,7 +981,8 @@ inline fun SecureValue.requireSecureValueWithTranslations(): SecureValueWithTran
     this as SecureValueWithTranslations
 
 @PreviewFeature
-inline fun <T> Message.whenAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T) = asAnonymousGroupContentMessageImpl() ?.let(block)
+inline fun <T> Message.whenAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T) =
+    asAnonymousGroupContentMessageImpl()?.let(block)
 
 @PreviewFeature
 inline fun Message.asAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent>? =
@@ -946,7 +993,8 @@ inline fun Message.requireAnonymousGroupContentMessageImpl(): AnonymousGroupCont
     this as AnonymousGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T) = asChannelContentMessageImpl() ?.let(block)
+inline fun <T> Message.whenChannelContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T) =
+    asChannelContentMessageImpl()?.let(block)
 
 @PreviewFeature
 inline fun Message.asChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? =
@@ -957,7 +1005,7 @@ inline fun Message.requireChannelContentMessageImpl(): UnconnectedFromChannelGro
     this as UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenPassportMessage(block: (PassportMessage) -> T) = asPassportMessage() ?.let(block)
+inline fun <T> Message.whenPassportMessage(block: (PassportMessage) -> T) = asPassportMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPassportMessage(): PassportMessage? = this as? PassportMessage
@@ -966,7 +1014,8 @@ inline fun Message.asPassportMessage(): PassportMessage? = this as? PassportMess
 inline fun Message.requirePassportMessage(): PassportMessage = this as PassportMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T) = asPrivateContentMessageImpl() ?.let(block)
+inline fun <T> Message.whenPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T) =
+    asPrivateContentMessageImpl()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent>? =
@@ -977,7 +1026,8 @@ inline fun Message.requirePrivateContentMessageImpl(): PrivateContentMessageImpl
     this as PrivateContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelEventMessage(block: (ChannelEventMessage<ChannelEvent>) -> T) = asChannelEventMessage() ?.let(block)
+inline fun <T> Message.whenChannelEventMessage(block: (ChannelEventMessage<ChannelEvent>) -> T) =
+    asChannelEventMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? =
@@ -988,7 +1038,8 @@ inline fun Message.requireChannelEventMessage(): ChannelEventMessage<ChannelEven
     this as ChannelEventMessage<ChannelEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelMediaGroupMessage(block: (ChannelMediaGroupMessage<MediaGroupContent>) -> T) = asChannelMediaGroupMessage() ?.let(block)
+inline fun <T> Message.whenChannelMediaGroupMessage(block: (ChannelMediaGroupMessage<MediaGroupContent>) -> T) =
+    asChannelMediaGroupMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent>? =
@@ -999,7 +1050,8 @@ inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage<M
     this as ChannelMediaGroupMessage<MediaGroupContent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) = asCommonGroupEventMessage() ?.let(block)
+inline fun <T> Message.whenCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) =
+    asCommonGroupEventMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent>? =
@@ -1010,7 +1062,8 @@ inline fun Message.requireCommonGroupEventMessage(): CommonGroupEventMessage<Gro
     this as CommonGroupEventMessage<GroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupContent>) -> T) = asCommonMediaGroupMessage() ?.let(block)
+inline fun <T> Message.whenCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupContent>) -> T) =
+    asCommonMediaGroupMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent>? =
@@ -1021,7 +1074,8 @@ inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage<Med
     this as CommonMediaGroupMessage<MediaGroupContent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) = asCommonSupergroupEventMessage() ?.let(block)
+inline fun <T> Message.whenCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) =
+    asCommonSupergroupEventMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent>? =
@@ -1032,7 +1086,8 @@ inline fun Message.requireCommonSupergroupEventMessage(): CommonSupergroupEventM
     this as CommonSupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenAnonymousGroupContentMessage(block: (AnonymousGroupContentMessage<MessageContent>) -> T) = asAnonymousGroupContentMessage() ?.let(block)
+inline fun <T> Message.whenAnonymousGroupContentMessage(block: (AnonymousGroupContentMessage<MessageContent>) -> T) =
+    asAnonymousGroupContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent>? =
@@ -1043,7 +1098,8 @@ inline fun Message.requireAnonymousGroupContentMessage(): AnonymousGroupContentM
     this as AnonymousGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T) = asChannelContentMessage() ?.let(block)
+inline fun <T> Message.whenChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T) =
+    asChannelContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asChannelContentMessage(): ChannelContentMessage<MessageContent>? =
@@ -1054,7 +1110,8 @@ inline fun Message.requireChannelContentMessage(): ChannelContentMessage<Message
     this as ChannelContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) = asConnectedFromChannelGroupContentMessage() ?.let(block)
+inline fun <T> Message.whenConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) =
+    asConnectedFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent>? =
@@ -1065,7 +1122,8 @@ inline fun Message.requireConnectedFromChannelGroupContentMessage(): ConnectedFr
     this as ConnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenUnconnectedFromChannelGroupContentMessage(block: (UnconnectedFromChannelGroupContentMessage<MessageContent>) -> T) = asUnconnectedFromChannelGroupContentMessage() ?.let(block)
+inline fun <T> Message.whenUnconnectedFromChannelGroupContentMessage(block: (UnconnectedFromChannelGroupContentMessage<MessageContent>) -> T) =
+    asUnconnectedFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent>? =
@@ -1076,7 +1134,8 @@ inline fun Message.requireUnconnectedFromChannelGroupContentMessage(): Unconnect
     this as UnconnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T) = asChatEventMessage() ?.let(block)
+inline fun <T> Message.whenChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T) =
+    asChatEventMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asChatEventMessage(): ChatEventMessage<ChatEvent>? = this as? ChatEventMessage<ChatEvent>
@@ -1085,7 +1144,8 @@ inline fun Message.asChatEventMessage(): ChatEventMessage<ChatEvent>? = this as?
 inline fun Message.requireChatEventMessage(): ChatEventMessage<ChatEvent> = this as ChatEventMessage<ChatEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T) = asCommonGroupContentMessage() ?.let(block)
+inline fun <T> Message.whenCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T) =
+    asCommonGroupContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent>? =
@@ -1096,7 +1156,7 @@ inline fun Message.requireCommonGroupContentMessage(): CommonGroupContentMessage
     this as CommonGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonMessage(block: (CommonMessage<MessageContent>) -> T) = asCommonMessage() ?.let(block)
+inline fun <T> Message.whenCommonMessage(block: (CommonMessage<MessageContent>) -> T) = asCommonMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asCommonMessage(): CommonMessage<MessageContent>? = this as? CommonMessage<MessageContent>
@@ -1105,7 +1165,7 @@ inline fun Message.asCommonMessage(): CommonMessage<MessageContent>? = this as? 
 inline fun Message.requireCommonMessage(): CommonMessage<MessageContent> = this as CommonMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenContentMessage(block: (ContentMessage<MessageContent>) -> T) = asContentMessage() ?.let(block)
+inline fun <T> Message.whenContentMessage(block: (ContentMessage<MessageContent>) -> T) = asContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asContentMessage(): ContentMessage<MessageContent>? = this as? ContentMessage<MessageContent>
@@ -1114,7 +1174,8 @@ inline fun Message.asContentMessage(): ContentMessage<MessageContent>? = this as
 inline fun Message.requireContentMessage(): ContentMessage<MessageContent> = this as ContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenFromChannelGroupContentMessage(block: (FromChannelGroupContentMessage<MessageContent>) -> T) = asFromChannelGroupContentMessage() ?.let(block)
+inline fun <T> Message.whenFromChannelGroupContentMessage(block: (FromChannelGroupContentMessage<MessageContent>) -> T) =
+    asFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent>? =
@@ -1125,7 +1186,8 @@ inline fun Message.requireFromChannelGroupContentMessage(): FromChannelGroupCont
     this as FromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T) = asGroupEventMessage() ?.let(block)
+inline fun <T> Message.whenGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T) =
+    asGroupEventMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asGroupEventMessage(): GroupEventMessage<GroupEvent>? = this as? GroupEventMessage<GroupEvent>
@@ -1134,16 +1196,20 @@ inline fun Message.asGroupEventMessage(): GroupEventMessage<GroupEvent>? = this 
 inline fun Message.requireGroupEventMessage(): GroupEventMessage<GroupEvent> = this as GroupEventMessage<GroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T) = asPrivateEventMessage() ?.let(block)
+inline fun <T> Message.whenPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T) =
+    asPrivateEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPrivateEventMessage(): PrivateEventMessage<PrivateEvent>? = this as? PrivateEventMessage<PrivateEvent>
+inline fun Message.asPrivateEventMessage(): PrivateEventMessage<PrivateEvent>? =
+    this as? PrivateEventMessage<PrivateEvent>
 
 @PreviewFeature
-inline fun Message.requirePrivateEventMessage(): PrivateEventMessage<PrivateEvent> = this as PrivateEventMessage<PrivateEvent>
+inline fun Message.requirePrivateEventMessage(): PrivateEventMessage<PrivateEvent> =
+    this as PrivateEventMessage<PrivateEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T) = asGroupContentMessage() ?.let(block)
+inline fun <T> Message.whenGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T) =
+    asGroupContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asGroupContentMessage(): GroupContentMessage<MessageContent>? =
@@ -1154,7 +1220,8 @@ inline fun Message.requireGroupContentMessage(): GroupContentMessage<MessageCont
     this as GroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage<MediaGroupContent>) -> T) = asMediaGroupMessage() ?.let(block)
+inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage<MediaGroupContent>) -> T) =
+    asMediaGroupMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupContent>? =
@@ -1165,7 +1232,8 @@ inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupConte
     this as MediaGroupMessage<MediaGroupContent>
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T) = asPossiblyEditedMessage() ?.let(block)
+inline fun <T> Message.whenPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T) =
+    asPossiblyEditedMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPossiblyEditedMessage(): PossiblyEditedMessage? = this as? PossiblyEditedMessage
@@ -1174,7 +1242,8 @@ inline fun Message.asPossiblyEditedMessage(): PossiblyEditedMessage? = this as? 
 inline fun Message.requirePossiblyEditedMessage(): PossiblyEditedMessage = this as PossiblyEditedMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblyReplyMessage(block: (PossiblyReplyMessage) -> T) = asPossiblyReplyMessage() ?.let(block)
+inline fun <T> Message.whenPossiblyReplyMessage(block: (PossiblyReplyMessage) -> T) =
+    asPossiblyReplyMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPossiblyReplyMessage(): PossiblyReplyMessage? = this as? PossiblyReplyMessage
@@ -1183,7 +1252,8 @@ inline fun Message.asPossiblyReplyMessage(): PossiblyReplyMessage? = this as? Po
 inline fun Message.requirePossiblyReplyMessage(): PossiblyReplyMessage = this as PossiblyReplyMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T) = asPossiblyForwardedMessage() ?.let(block)
+inline fun <T> Message.whenPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T) =
+    asPossiblyForwardedMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPossiblyForwardedMessage(): PossiblyForwardedMessage? = this as? PossiblyForwardedMessage
@@ -1192,7 +1262,8 @@ inline fun Message.asPossiblyForwardedMessage(): PossiblyForwardedMessage? = thi
 inline fun Message.requirePossiblyForwardedMessage(): PossiblyForwardedMessage = this as PossiblyForwardedMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblyPaymentMessage(block: (PossiblyPaymentMessage) -> T) = asPossiblyPaymentMessage() ?.let(block)
+inline fun <T> Message.whenPossiblyPaymentMessage(block: (PossiblyPaymentMessage) -> T) =
+    asPossiblyPaymentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPossiblyPaymentMessage(): PossiblyPaymentMessage? = this as? PossiblyPaymentMessage
@@ -1201,7 +1272,8 @@ inline fun Message.asPossiblyPaymentMessage(): PossiblyPaymentMessage? = this as
 inline fun Message.requirePossiblyPaymentMessage(): PossiblyPaymentMessage = this as PossiblyPaymentMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T) = asPrivateContentMessage() ?.let(block)
+inline fun <T> Message.whenPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T) =
+    asPrivateContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPrivateContentMessage(): PrivateContentMessage<MessageContent>? =
@@ -1212,7 +1284,8 @@ inline fun Message.requirePrivateContentMessage(): PrivateContentMessage<Message
     this as PrivateContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenPublicContentMessage(block: (PublicContentMessage<MessageContent>) -> T) = asPublicContentMessage() ?.let(block)
+inline fun <T> Message.whenPublicContentMessage(block: (PublicContentMessage<MessageContent>) -> T) =
+    asPublicContentMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPublicContentMessage(): PublicContentMessage<MessageContent>? =
@@ -1223,7 +1296,7 @@ inline fun Message.requirePublicContentMessage(): PublicContentMessage<MessageCo
     this as PublicContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenSignedMessage(block: (SignedMessage) -> T) = asSignedMessage() ?.let(block)
+inline fun <T> Message.whenSignedMessage(block: (SignedMessage) -> T) = asSignedMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asSignedMessage(): SignedMessage? = this as? SignedMessage
@@ -1232,7 +1305,8 @@ inline fun Message.asSignedMessage(): SignedMessage? = this as? SignedMessage
 inline fun Message.requireSignedMessage(): SignedMessage = this as SignedMessage
 
 @PreviewFeature
-inline fun <T> Message.whenSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T) = asSupergroupEventMessage() ?.let(block)
+inline fun <T> Message.whenSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T) =
+    asSupergroupEventMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asSupergroupEventMessage(): SupergroupEventMessage<SupergroupEvent>? =
@@ -1243,7 +1317,7 @@ inline fun Message.requireSupergroupEventMessage(): SupergroupEventMessage<Super
     this as SupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenUnknownMessageType(block: (UnknownMessageType) -> T) = asUnknownMessageType() ?.let(block)
+inline fun <T> Message.whenUnknownMessageType(block: (UnknownMessageType) -> T) = asUnknownMessageType()?.let(block)
 
 @PreviewFeature
 inline fun Message.asUnknownMessageType(): UnknownMessageType? = this as? UnknownMessageType
@@ -1252,7 +1326,8 @@ inline fun Message.asUnknownMessageType(): UnknownMessageType? = this as? Unknow
 inline fun Message.requireUnknownMessageType(): UnknownMessageType = this as UnknownMessageType
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T) = asPossiblySentViaBotCommonMessage() ?.let(block)
+inline fun <T> Message.whenPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T) =
+    asPossiblySentViaBotCommonMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asPossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent>? =
@@ -1263,7 +1338,7 @@ inline fun Message.requirePossiblySentViaBotCommonMessage(): PossiblySentViaBotC
     this as PossiblySentViaBotCommonMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenFromUserMessage(block: (FromUserMessage) -> T) = asFromUserMessage() ?.let(block)
+inline fun <T> Message.whenFromUserMessage(block: (FromUserMessage) -> T) = asFromUserMessage()?.let(block)
 
 @PreviewFeature
 inline fun Message.asFromUserMessage(): FromUserMessage? = this as? FromUserMessage
@@ -1272,7 +1347,7 @@ inline fun Message.asFromUserMessage(): FromUserMessage? = this as? FromUserMess
 inline fun Message.requireFromUserMessage(): FromUserMessage = this as FromUserMessage
 
 @PreviewFeature
-inline fun <T> BotAction.whenFindLocationAction(block: (FindLocationAction) -> T) = asFindLocationAction() ?.let(block)
+inline fun <T> BotAction.whenFindLocationAction(block: (FindLocationAction) -> T) = asFindLocationAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asFindLocationAction(): FindLocationAction? = this as? FindLocationAction
@@ -1281,7 +1356,7 @@ inline fun BotAction.asFindLocationAction(): FindLocationAction? = this as? Find
 inline fun BotAction.requireFindLocationAction(): FindLocationAction = this as FindLocationAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenRecordVoiceAction(block: (RecordVoiceAction) -> T) = asRecordVoiceAction() ?.let(block)
+inline fun <T> BotAction.whenRecordVoiceAction(block: (RecordVoiceAction) -> T) = asRecordVoiceAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asRecordVoiceAction(): RecordVoiceAction? = this as? RecordVoiceAction
@@ -1290,7 +1365,7 @@ inline fun BotAction.asRecordVoiceAction(): RecordVoiceAction? = this as? Record
 inline fun BotAction.requireRecordVoiceAction(): RecordVoiceAction = this as RecordVoiceAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenRecordVideoAction(block: (RecordVideoAction) -> T) = asRecordVideoAction() ?.let(block)
+inline fun <T> BotAction.whenRecordVideoAction(block: (RecordVideoAction) -> T) = asRecordVideoAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asRecordVideoAction(): RecordVideoAction? = this as? RecordVideoAction
@@ -1299,7 +1374,8 @@ inline fun BotAction.asRecordVideoAction(): RecordVideoAction? = this as? Record
 inline fun BotAction.requireRecordVideoAction(): RecordVideoAction = this as RecordVideoAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenRecordVideoNoteAction(block: (RecordVideoNoteAction) -> T) = asRecordVideoNoteAction() ?.let(block)
+inline fun <T> BotAction.whenRecordVideoNoteAction(block: (RecordVideoNoteAction) -> T) =
+    asRecordVideoNoteAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asRecordVideoNoteAction(): RecordVideoNoteAction? = this as? RecordVideoNoteAction
@@ -1308,7 +1384,7 @@ inline fun BotAction.asRecordVideoNoteAction(): RecordVideoNoteAction? = this as
 inline fun BotAction.requireRecordVideoNoteAction(): RecordVideoNoteAction = this as RecordVideoNoteAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenTypingAction(block: (TypingAction) -> T) = asTypingAction() ?.let(block)
+inline fun <T> BotAction.whenTypingAction(block: (TypingAction) -> T) = asTypingAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asTypingAction(): TypingAction? = this as? TypingAction
@@ -1317,7 +1393,8 @@ inline fun BotAction.asTypingAction(): TypingAction? = this as? TypingAction
 inline fun BotAction.requireTypingAction(): TypingAction = this as TypingAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenChooseStickerAction(block: (ChooseStickerAction) -> T) = asChooseStickerAction() ?.let(block)
+inline fun <T> BotAction.whenChooseStickerAction(block: (ChooseStickerAction) -> T) =
+    asChooseStickerAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asChooseStickerAction(): ChooseStickerAction? = this as? ChooseStickerAction
@@ -1326,7 +1403,7 @@ inline fun BotAction.asChooseStickerAction(): ChooseStickerAction? = this as? Ch
 inline fun BotAction.requireChooseStickerAction(): ChooseStickerAction = this as ChooseStickerAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenUploadVoiceAction(block: (UploadVoiceAction) -> T) = asUploadVoiceAction() ?.let(block)
+inline fun <T> BotAction.whenUploadVoiceAction(block: (UploadVoiceAction) -> T) = asUploadVoiceAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asUploadVoiceAction(): UploadVoiceAction? = this as? UploadVoiceAction
@@ -1335,7 +1412,8 @@ inline fun BotAction.asUploadVoiceAction(): UploadVoiceAction? = this as? Upload
 inline fun BotAction.requireUploadVoiceAction(): UploadVoiceAction = this as UploadVoiceAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenUploadDocumentAction(block: (UploadDocumentAction) -> T) = asUploadDocumentAction() ?.let(block)
+inline fun <T> BotAction.whenUploadDocumentAction(block: (UploadDocumentAction) -> T) =
+    asUploadDocumentAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asUploadDocumentAction(): UploadDocumentAction? = this as? UploadDocumentAction
@@ -1344,7 +1422,7 @@ inline fun BotAction.asUploadDocumentAction(): UploadDocumentAction? = this as? 
 inline fun BotAction.requireUploadDocumentAction(): UploadDocumentAction = this as UploadDocumentAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenUploadPhotoAction(block: (UploadPhotoAction) -> T) = asUploadPhotoAction() ?.let(block)
+inline fun <T> BotAction.whenUploadPhotoAction(block: (UploadPhotoAction) -> T) = asUploadPhotoAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asUploadPhotoAction(): UploadPhotoAction? = this as? UploadPhotoAction
@@ -1353,7 +1431,7 @@ inline fun BotAction.asUploadPhotoAction(): UploadPhotoAction? = this as? Upload
 inline fun BotAction.requireUploadPhotoAction(): UploadPhotoAction = this as UploadPhotoAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenUploadVideoAction(block: (UploadVideoAction) -> T) = asUploadVideoAction() ?.let(block)
+inline fun <T> BotAction.whenUploadVideoAction(block: (UploadVideoAction) -> T) = asUploadVideoAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asUploadVideoAction(): UploadVideoAction? = this as? UploadVideoAction
@@ -1362,7 +1440,8 @@ inline fun BotAction.asUploadVideoAction(): UploadVideoAction? = this as? Upload
 inline fun BotAction.requireUploadVideoAction(): UploadVideoAction = this as UploadVideoAction
 
 @PreviewFeature
-inline fun <T> BotAction.whenUploadVideoNoteAction(block: (UploadVideoNoteAction) -> T) = asUploadVideoNoteAction() ?.let(block)
+inline fun <T> BotAction.whenUploadVideoNoteAction(block: (UploadVideoNoteAction) -> T) =
+    asUploadVideoNoteAction()?.let(block)
 
 @PreviewFeature
 inline fun BotAction.asUploadVideoNoteAction(): UploadVideoNoteAction? = this as? UploadVideoNoteAction
@@ -1371,7 +1450,7 @@ inline fun BotAction.asUploadVideoNoteAction(): UploadVideoNoteAction? = this as
 inline fun BotAction.requireUploadVideoNoteAction(): UploadVideoNoteAction = this as UploadVideoNoteAction
 
 @PreviewFeature
-inline fun <T> InlineQuery.whenBaseInlineQuery(block: (BaseInlineQuery) -> T) = asBaseInlineQuery() ?.let(block)
+inline fun <T> InlineQuery.whenBaseInlineQuery(block: (BaseInlineQuery) -> T) = asBaseInlineQuery()?.let(block)
 
 @PreviewFeature
 inline fun InlineQuery.asBaseInlineQuery(): BaseInlineQuery? =
@@ -1382,7 +1461,8 @@ inline fun InlineQuery.requireBaseInlineQuery(): BaseInlineQuery =
     this as BaseInlineQuery
 
 @PreviewFeature
-inline fun <T> InlineQuery.whenLocationInlineQuery(block: (LocationInlineQuery) -> T) = asLocationInlineQuery() ?.let(block)
+inline fun <T> InlineQuery.whenLocationInlineQuery(block: (LocationInlineQuery) -> T) =
+    asLocationInlineQuery()?.let(block)
 
 @PreviewFeature
 inline fun InlineQuery.asLocationInlineQuery(): LocationInlineQuery? =
@@ -1393,7 +1473,8 @@ inline fun InlineQuery.requireLocationInlineQuery(): LocationInlineQuery =
     this as LocationInlineQuery
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputContactMessageContent(block: (InputContactMessageContent) -> T) = asInputContactMessageContent() ?.let(block)
+inline fun <T> InputMessageContent.whenInputContactMessageContent(block: (InputContactMessageContent) -> T) =
+    asInputContactMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputContactMessageContent(): InputContactMessageContent? =
@@ -1404,7 +1485,8 @@ inline fun InputMessageContent.requireInputContactMessageContent(): InputContact
     this as InputContactMessageContent
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputLocationMessageContent(block: (InputLocationMessageContent) -> T) = asInputLocationMessageContent() ?.let(block)
+inline fun <T> InputMessageContent.whenInputLocationMessageContent(block: (InputLocationMessageContent) -> T) =
+    asInputLocationMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputLocationMessageContent(): InputLocationMessageContent? =
@@ -1415,7 +1497,8 @@ inline fun InputMessageContent.requireInputLocationMessageContent(): InputLocati
     this as InputLocationMessageContent
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputTextMessageContent(block: (InputTextMessageContent) -> T) = asInputTextMessageContent() ?.let(block)
+inline fun <T> InputMessageContent.whenInputTextMessageContent(block: (InputTextMessageContent) -> T) =
+    asInputTextMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputTextMessageContent(): InputTextMessageContent? = this as? InputTextMessageContent
@@ -1425,7 +1508,8 @@ inline fun InputMessageContent.requireInputTextMessageContent(): InputTextMessag
     this as InputTextMessageContent
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputVenueMessageContent(block: (InputVenueMessageContent) -> T) = asInputVenueMessageContent() ?.let(block)
+inline fun <T> InputMessageContent.whenInputVenueMessageContent(block: (InputVenueMessageContent) -> T) =
+    asInputVenueMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputVenueMessageContent(): InputVenueMessageContent? =
@@ -1436,7 +1520,8 @@ inline fun InputMessageContent.requireInputVenueMessageContent(): InputVenueMess
     this as InputVenueMessageContent
 
 @PreviewFeature
-inline fun <T> InputMessageContent.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) = asInputInvoiceMessageContent() ?.let(block)
+inline fun <T> InputMessageContent.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) =
+    asInputInvoiceMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun InputMessageContent.asInputInvoiceMessageContent(): InputInvoiceMessageContent? =
@@ -1447,7 +1532,8 @@ inline fun InputMessageContent.requireInputInvoiceMessageContent(): InputInvoice
     this as InputInvoiceMessageContent
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultArticle(block: (InlineQueryResultArticle) -> T) = asInlineQueryResultArticle() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultArticle(block: (InlineQueryResultArticle) -> T) =
+    asInlineQueryResultArticle()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultArticle(): InlineQueryResultArticle? = this as? InlineQueryResultArticle
@@ -1457,7 +1543,8 @@ inline fun InlineQueryResult.requireInlineQueryResultArticle(): InlineQueryResul
     this as InlineQueryResultArticle
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultContact(block: (InlineQueryResultContact) -> T) = asInlineQueryResultContact() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultContact(block: (InlineQueryResultContact) -> T) =
+    asInlineQueryResultContact()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultContact(): InlineQueryResultContact? = this as? InlineQueryResultContact
@@ -1467,7 +1554,8 @@ inline fun InlineQueryResult.requireInlineQueryResultContact(): InlineQueryResul
     this as InlineQueryResultContact
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultGame(block: (InlineQueryResultGame) -> T) = asInlineQueryResultGame() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultGame(block: (InlineQueryResultGame) -> T) =
+    asInlineQueryResultGame()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultGame(): InlineQueryResultGame? = this as? InlineQueryResultGame
@@ -1476,7 +1564,8 @@ inline fun InlineQueryResult.asInlineQueryResultGame(): InlineQueryResultGame? =
 inline fun InlineQueryResult.requireInlineQueryResultGame(): InlineQueryResultGame = this as InlineQueryResultGame
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultLocation(block: (InlineQueryResultLocation) -> T) = asInlineQueryResultLocation() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultLocation(block: (InlineQueryResultLocation) -> T) =
+    asInlineQueryResultLocation()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultLocation(): InlineQueryResultLocation? =
@@ -1487,7 +1576,8 @@ inline fun InlineQueryResult.requireInlineQueryResultLocation(): InlineQueryResu
     this as InlineQueryResultLocation
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultStickerCached(block: (InlineQueryResultStickerCached) -> T) = asInlineQueryResultStickerCached() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultStickerCached(block: (InlineQueryResultStickerCached) -> T) =
+    asInlineQueryResultStickerCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultStickerCached(): InlineQueryResultStickerCached? =
@@ -1498,7 +1588,8 @@ inline fun InlineQueryResult.requireInlineQueryResultStickerCached(): InlineQuer
     this as InlineQueryResultStickerCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVenue(block: (InlineQueryResultVenue) -> T) = asInlineQueryResultVenue() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVenue(block: (InlineQueryResultVenue) -> T) =
+    asInlineQueryResultVenue()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVenue(): InlineQueryResultVenue? = this as? InlineQueryResultVenue
@@ -1507,7 +1598,8 @@ inline fun InlineQueryResult.asInlineQueryResultVenue(): InlineQueryResultVenue?
 inline fun InlineQueryResult.requireInlineQueryResultVenue(): InlineQueryResultVenue = this as InlineQueryResultVenue
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenDescribedInlineQueryResult(block: (DescribedInlineQueryResult) -> T) = asDescribedInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenDescribedInlineQueryResult(block: (DescribedInlineQueryResult) -> T) =
+    asDescribedInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asDescribedInlineQueryResult(): DescribedInlineQueryResult? =
@@ -1518,7 +1610,8 @@ inline fun InlineQueryResult.requireDescribedInlineQueryResult(): DescribedInlin
     this as DescribedInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenFileInlineQueryResult(block: (FileInlineQueryResult) -> T) = asFileInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenFileInlineQueryResult(block: (FileInlineQueryResult) -> T) =
+    asFileInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asFileInlineQueryResult(): FileInlineQueryResult? = this as? FileInlineQueryResult
@@ -1527,7 +1620,8 @@ inline fun InlineQueryResult.asFileInlineQueryResult(): FileInlineQueryResult? =
 inline fun InlineQueryResult.requireFileInlineQueryResult(): FileInlineQueryResult = this as FileInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenOptionallyTitledInlineQueryResult(block: (OptionallyTitledInlineQueryResult) -> T) = asOptionallyTitledInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenOptionallyTitledInlineQueryResult(block: (OptionallyTitledInlineQueryResult) -> T) =
+    asOptionallyTitledInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asOptionallyTitledInlineQueryResult(): OptionallyTitledInlineQueryResult? =
@@ -1538,7 +1632,8 @@ inline fun InlineQueryResult.requireOptionallyTitledInlineQueryResult(): Optiona
     this as OptionallyTitledInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenSizedInlineQueryResult(block: (SizedInlineQueryResult) -> T) = asSizedInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenSizedInlineQueryResult(block: (SizedInlineQueryResult) -> T) =
+    asSizedInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asSizedInlineQueryResult(): SizedInlineQueryResult? = this as? SizedInlineQueryResult
@@ -1547,7 +1642,8 @@ inline fun InlineQueryResult.asSizedInlineQueryResult(): SizedInlineQueryResult?
 inline fun InlineQueryResult.requireSizedInlineQueryResult(): SizedInlineQueryResult = this as SizedInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenThumbSizedInlineQueryResult(block: (ThumbSizedInlineQueryResult) -> T) = asThumbSizedInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenThumbSizedInlineQueryResult(block: (ThumbSizedInlineQueryResult) -> T) =
+    asThumbSizedInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asThumbSizedInlineQueryResult(): ThumbSizedInlineQueryResult? =
@@ -1558,7 +1654,8 @@ inline fun InlineQueryResult.requireThumbSizedInlineQueryResult(): ThumbSizedInl
     this as ThumbSizedInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenThumbedInlineQueryResult(block: (ThumbedInlineQueryResult) -> T) = asThumbedInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenThumbedInlineQueryResult(block: (ThumbedInlineQueryResult) -> T) =
+    asThumbedInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asThumbedInlineQueryResult(): ThumbedInlineQueryResult? = this as? ThumbedInlineQueryResult
@@ -1568,7 +1665,8 @@ inline fun InlineQueryResult.requireThumbedInlineQueryResult(): ThumbedInlineQue
     this as ThumbedInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenThumbedWithMimeTypeInlineQueryResult(block: (ThumbedWithMimeTypeInlineQueryResult) -> T) = asThumbedWithMimeTypeInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenThumbedWithMimeTypeInlineQueryResult(block: (ThumbedWithMimeTypeInlineQueryResult) -> T) =
+    asThumbedWithMimeTypeInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asThumbedWithMimeTypeInlineQueryResult(): ThumbedWithMimeTypeInlineQueryResult? =
@@ -1579,7 +1677,8 @@ inline fun InlineQueryResult.requireThumbedWithMimeTypeInlineQueryResult(): Thum
     this as ThumbedWithMimeTypeInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenTitledInlineQueryResult(block: (TitledInlineQueryResult) -> T) = asTitledInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenTitledInlineQueryResult(block: (TitledInlineQueryResult) -> T) =
+    asTitledInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asTitledInlineQueryResult(): TitledInlineQueryResult? = this as? TitledInlineQueryResult
@@ -1588,7 +1687,8 @@ inline fun InlineQueryResult.asTitledInlineQueryResult(): TitledInlineQueryResul
 inline fun InlineQueryResult.requireTitledInlineQueryResult(): TitledInlineQueryResult = this as TitledInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenUrlInlineQueryResult(block: (UrlInlineQueryResult) -> T) = asUrlInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenUrlInlineQueryResult(block: (UrlInlineQueryResult) -> T) =
+    asUrlInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asUrlInlineQueryResult(): UrlInlineQueryResult? = this as? UrlInlineQueryResult
@@ -1597,7 +1697,8 @@ inline fun InlineQueryResult.asUrlInlineQueryResult(): UrlInlineQueryResult? = t
 inline fun InlineQueryResult.requireUrlInlineQueryResult(): UrlInlineQueryResult = this as UrlInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenWithInputMessageContentInlineQueryResult(block: (WithInputMessageContentInlineQueryResult) -> T) = asWithInputMessageContentInlineQueryResult() ?.let(block)
+inline fun <T> InlineQueryResult.whenWithInputMessageContentInlineQueryResult(block: (WithInputMessageContentInlineQueryResult) -> T) =
+    asWithInputMessageContentInlineQueryResult()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asWithInputMessageContentInlineQueryResult(): WithInputMessageContentInlineQueryResult? =
@@ -1608,7 +1709,8 @@ inline fun InlineQueryResult.requireWithInputMessageContentInlineQueryResult(): 
     this as WithInputMessageContentInlineQueryResult
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultAudio(block: (InlineQueryResultAudio) -> T) = asInlineQueryResultAudio() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultAudio(block: (InlineQueryResultAudio) -> T) =
+    asInlineQueryResultAudio()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultAudio(): InlineQueryResultAudio? = this as? InlineQueryResultAudio
@@ -1617,7 +1719,8 @@ inline fun InlineQueryResult.asInlineQueryResultAudio(): InlineQueryResultAudio?
 inline fun InlineQueryResult.requireInlineQueryResultAudio(): InlineQueryResultAudio = this as InlineQueryResultAudio
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultAudioCached(block: (InlineQueryResultAudioCached) -> T) = asInlineQueryResultAudioCached() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultAudioCached(block: (InlineQueryResultAudioCached) -> T) =
+    asInlineQueryResultAudioCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultAudioCached(): InlineQueryResultAudioCached? =
@@ -1628,7 +1731,8 @@ inline fun InlineQueryResult.requireInlineQueryResultAudioCached(): InlineQueryR
     this as InlineQueryResultAudioCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultAudioCommon(block: (InlineQueryResultAudioCommon) -> T) = asInlineQueryResultAudioCommon() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultAudioCommon(block: (InlineQueryResultAudioCommon) -> T) =
+    asInlineQueryResultAudioCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultAudioCommon(): InlineQueryResultAudioCommon? =
@@ -1639,7 +1743,8 @@ inline fun InlineQueryResult.requireInlineQueryResultAudioCommon(): InlineQueryR
     this as InlineQueryResultAudioCommon
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultDocument(block: (InlineQueryResultDocument) -> T) = asInlineQueryResultDocument() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultDocument(block: (InlineQueryResultDocument) -> T) =
+    asInlineQueryResultDocument()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultDocument(): InlineQueryResultDocument? =
@@ -1650,7 +1755,8 @@ inline fun InlineQueryResult.requireInlineQueryResultDocument(): InlineQueryResu
     this as InlineQueryResultDocument
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultDocumentCached(block: (InlineQueryResultDocumentCached) -> T) = asInlineQueryResultDocumentCached() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultDocumentCached(block: (InlineQueryResultDocumentCached) -> T) =
+    asInlineQueryResultDocumentCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultDocumentCached(): InlineQueryResultDocumentCached? =
@@ -1661,7 +1767,8 @@ inline fun InlineQueryResult.requireInlineQueryResultDocumentCached(): InlineQue
     this as InlineQueryResultDocumentCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultDocumentCommon(block: (InlineQueryResultDocumentCommon) -> T) = asInlineQueryResultDocumentCommon() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultDocumentCommon(block: (InlineQueryResultDocumentCommon) -> T) =
+    asInlineQueryResultDocumentCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultDocumentCommon(): InlineQueryResultDocumentCommon? =
@@ -1672,7 +1779,8 @@ inline fun InlineQueryResult.requireInlineQueryResultDocumentCommon(): InlineQue
     this as InlineQueryResultDocumentCommon
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultGif(block: (InlineQueryResultGif) -> T) = asInlineQueryResultGif() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultGif(block: (InlineQueryResultGif) -> T) =
+    asInlineQueryResultGif()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultGif(): InlineQueryResultGif? = this as? InlineQueryResultGif
@@ -1681,7 +1789,8 @@ inline fun InlineQueryResult.asInlineQueryResultGif(): InlineQueryResultGif? = t
 inline fun InlineQueryResult.requireInlineQueryResultGif(): InlineQueryResultGif = this as InlineQueryResultGif
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultGifCached(block: (InlineQueryResultGifCached) -> T) = asInlineQueryResultGifCached() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultGifCached(block: (InlineQueryResultGifCached) -> T) =
+    asInlineQueryResultGifCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultGifCached(): InlineQueryResultGifCached? =
@@ -1692,7 +1801,8 @@ inline fun InlineQueryResult.requireInlineQueryResultGifCached(): InlineQueryRes
     this as InlineQueryResultGifCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultGifCommon(block: (InlineQueryResultGifCommon) -> T) = asInlineQueryResultGifCommon() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultGifCommon(block: (InlineQueryResultGifCommon) -> T) =
+    asInlineQueryResultGifCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultGifCommon(): InlineQueryResultGifCommon? =
@@ -1703,7 +1813,8 @@ inline fun InlineQueryResult.requireInlineQueryResultGifCommon(): InlineQueryRes
     this as InlineQueryResultGifCommon
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4Gif(block: (InlineQueryResultMpeg4Gif) -> T) = asInlineQueryResultMpeg4Gif() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4Gif(block: (InlineQueryResultMpeg4Gif) -> T) =
+    asInlineQueryResultMpeg4Gif()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultMpeg4Gif(): InlineQueryResultMpeg4Gif? =
@@ -1714,7 +1825,8 @@ inline fun InlineQueryResult.requireInlineQueryResultMpeg4Gif(): InlineQueryResu
     this as InlineQueryResultMpeg4Gif
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4GifCached(block: (InlineQueryResultMpeg4GifCached) -> T) = asInlineQueryResultMpeg4GifCached() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4GifCached(block: (InlineQueryResultMpeg4GifCached) -> T) =
+    asInlineQueryResultMpeg4GifCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultMpeg4GifCached(): InlineQueryResultMpeg4GifCached? =
@@ -1725,7 +1837,8 @@ inline fun InlineQueryResult.requireInlineQueryResultMpeg4GifCached(): InlineQue
     this as InlineQueryResultMpeg4GifCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4GifCommon(block: (InlineQueryResultMpeg4GifCommon) -> T) = asInlineQueryResultMpeg4GifCommon() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultMpeg4GifCommon(block: (InlineQueryResultMpeg4GifCommon) -> T) =
+    asInlineQueryResultMpeg4GifCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultMpeg4GifCommon(): InlineQueryResultMpeg4GifCommon? =
@@ -1736,7 +1849,8 @@ inline fun InlineQueryResult.requireInlineQueryResultMpeg4GifCommon(): InlineQue
     this as InlineQueryResultMpeg4GifCommon
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultPhoto(block: (InlineQueryResultPhoto) -> T) = asInlineQueryResultPhoto() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultPhoto(block: (InlineQueryResultPhoto) -> T) =
+    asInlineQueryResultPhoto()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultPhoto(): InlineQueryResultPhoto? = this as? InlineQueryResultPhoto
@@ -1745,7 +1859,8 @@ inline fun InlineQueryResult.asInlineQueryResultPhoto(): InlineQueryResultPhoto?
 inline fun InlineQueryResult.requireInlineQueryResultPhoto(): InlineQueryResultPhoto = this as InlineQueryResultPhoto
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultPhotoCached(block: (InlineQueryResultPhotoCached) -> T) = asInlineQueryResultPhotoCached() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultPhotoCached(block: (InlineQueryResultPhotoCached) -> T) =
+    asInlineQueryResultPhotoCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultPhotoCached(): InlineQueryResultPhotoCached? =
@@ -1756,7 +1871,8 @@ inline fun InlineQueryResult.requireInlineQueryResultPhotoCached(): InlineQueryR
     this as InlineQueryResultPhotoCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultPhotoCommon(block: (InlineQueryResultPhotoCommon) -> T) = asInlineQueryResultPhotoCommon() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultPhotoCommon(block: (InlineQueryResultPhotoCommon) -> T) =
+    asInlineQueryResultPhotoCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultPhotoCommon(): InlineQueryResultPhotoCommon? =
@@ -1767,7 +1883,8 @@ inline fun InlineQueryResult.requireInlineQueryResultPhotoCommon(): InlineQueryR
     this as InlineQueryResultPhotoCommon
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVideo(block: (InlineQueryResultVideo) -> T) = asInlineQueryResultVideo() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVideo(block: (InlineQueryResultVideo) -> T) =
+    asInlineQueryResultVideo()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVideo(): InlineQueryResultVideo? = this as? InlineQueryResultVideo
@@ -1776,7 +1893,8 @@ inline fun InlineQueryResult.asInlineQueryResultVideo(): InlineQueryResultVideo?
 inline fun InlineQueryResult.requireInlineQueryResultVideo(): InlineQueryResultVideo = this as InlineQueryResultVideo
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVideoCached(block: (InlineQueryResultVideoCached) -> T) = asInlineQueryResultVideoCached() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVideoCached(block: (InlineQueryResultVideoCached) -> T) =
+    asInlineQueryResultVideoCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVideoCached(): InlineQueryResultVideoCached? =
@@ -1787,7 +1905,8 @@ inline fun InlineQueryResult.requireInlineQueryResultVideoCached(): InlineQueryR
     this as InlineQueryResultVideoCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVideoCommon(block: (InlineQueryResultVideoCommon) -> T) = asInlineQueryResultVideoCommon() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVideoCommon(block: (InlineQueryResultVideoCommon) -> T) =
+    asInlineQueryResultVideoCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVideoCommon(): InlineQueryResultVideoCommon? =
@@ -1798,7 +1917,8 @@ inline fun InlineQueryResult.requireInlineQueryResultVideoCommon(): InlineQueryR
     this as InlineQueryResultVideoCommon
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVoice(block: (InlineQueryResultVoice) -> T) = asInlineQueryResultVoice() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVoice(block: (InlineQueryResultVoice) -> T) =
+    asInlineQueryResultVoice()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVoice(): InlineQueryResultVoice? = this as? InlineQueryResultVoice
@@ -1807,7 +1927,8 @@ inline fun InlineQueryResult.asInlineQueryResultVoice(): InlineQueryResultVoice?
 inline fun InlineQueryResult.requireInlineQueryResultVoice(): InlineQueryResultVoice = this as InlineQueryResultVoice
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVoiceCached(block: (InlineQueryResultVoiceCached) -> T) = asInlineQueryResultVoiceCached() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVoiceCached(block: (InlineQueryResultVoiceCached) -> T) =
+    asInlineQueryResultVoiceCached()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVoiceCached(): InlineQueryResultVoiceCached? =
@@ -1818,7 +1939,8 @@ inline fun InlineQueryResult.requireInlineQueryResultVoiceCached(): InlineQueryR
     this as InlineQueryResultVoiceCached
 
 @PreviewFeature
-inline fun <T> InlineQueryResult.whenInlineQueryResultVoiceCommon(block: (InlineQueryResultVoiceCommon) -> T) = asInlineQueryResultVoiceCommon() ?.let(block)
+inline fun <T> InlineQueryResult.whenInlineQueryResultVoiceCommon(block: (InlineQueryResultVoiceCommon) -> T) =
+    asInlineQueryResultVoiceCommon()?.let(block)
 
 @PreviewFeature
 inline fun InlineQueryResult.asInlineQueryResultVoiceCommon(): InlineQueryResultVoiceCommon? =
@@ -1829,19 +1951,7 @@ inline fun InlineQueryResult.requireInlineQueryResultVoiceCommon(): InlineQueryR
     this as InlineQueryResultVoiceCommon
 
 @PreviewFeature
-@Deprecated("Renamed", ReplaceWith("whenOwnerChatMember", "dev.inmo.tgbotapi.extensions.utils.whenOwnerChatMember"))
-inline fun <T> ChatMember.whenCreatorChatMember(block: (CreatorChatMember) -> T) = asCreatorChatMember() ?.let(block)
-
-@PreviewFeature
-@Deprecated("Renamed", ReplaceWith("asOwnerChatMember", "dev.inmo.tgbotapi.extensions.utils.asOwnerChatMember"))
-inline fun ChatMember.asCreatorChatMember(): CreatorChatMember? = this as? CreatorChatMember
-
-@PreviewFeature
-@Deprecated("Renamed", ReplaceWith("requireOwnerChatMember", "dev.inmo.tgbotapi.extensions.utils.requireOwnerChatMember"))
-inline fun ChatMember.requireCreatorChatMember(): CreatorChatMember = this as CreatorChatMember
-
-@PreviewFeature
-inline fun <T> ChatMember.whenOwnerChatMember(block: (OwnerChatMember) -> T) = asOwnerChatMember() ?.let(block)
+inline fun <T> ChatMember.whenOwnerChatMember(block: (OwnerChatMember) -> T) = asOwnerChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatMember.asOwnerChatMember(): OwnerChatMember? = this as? OwnerChatMember
@@ -1850,7 +1960,7 @@ inline fun ChatMember.asOwnerChatMember(): OwnerChatMember? = this as? OwnerChat
 inline fun ChatMember.requireOwnerChatMember(): OwnerChatMember = this as OwnerChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenKickedChatMember(block: (KickedChatMember) -> T) = asKickedChatMember() ?.let(block)
+inline fun <T> ChatMember.whenKickedChatMember(block: (KickedChatMember) -> T) = asKickedChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatMember.asKickedChatMember(): KickedChatMember? = this as? KickedChatMember
@@ -1859,7 +1969,7 @@ inline fun ChatMember.asKickedChatMember(): KickedChatMember? = this as? KickedC
 inline fun ChatMember.requireKickedChatMember(): KickedChatMember = this as KickedChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenLeftChatMember(block: (LeftChatMember) -> T) = asLeftChatMember() ?.let(block)
+inline fun <T> ChatMember.whenLeftChatMember(block: (LeftChatMember) -> T) = asLeftChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatMember.asLeftChatMember(): LeftChatMember? = this as? LeftChatMember
@@ -1868,7 +1978,7 @@ inline fun ChatMember.asLeftChatMember(): LeftChatMember? = this as? LeftChatMem
 inline fun ChatMember.requireLeftChatMember(): LeftChatMember = this as LeftChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenMemberChatMember(block: (MemberChatMember) -> T) = asMemberChatMember() ?.let(block)
+inline fun <T> ChatMember.whenMemberChatMember(block: (MemberChatMember) -> T) = asMemberChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatMember.asMemberChatMember(): MemberChatMember? = this as? MemberChatMember
@@ -1877,7 +1987,8 @@ inline fun ChatMember.asMemberChatMember(): MemberChatMember? = this as? MemberC
 inline fun ChatMember.requireMemberChatMember(): MemberChatMember = this as MemberChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenRestrictedChatMember(block: (RestrictedChatMember) -> T) = asRestrictedChatMember() ?.let(block)
+inline fun <T> ChatMember.whenRestrictedChatMember(block: (RestrictedChatMember) -> T) =
+    asRestrictedChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatMember.asRestrictedChatMember(): RestrictedChatMember? = this as? RestrictedChatMember
@@ -1886,7 +1997,8 @@ inline fun ChatMember.asRestrictedChatMember(): RestrictedChatMember? = this as?
 inline fun ChatMember.requireRestrictedChatMember(): RestrictedChatMember = this as RestrictedChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenAdministratorChatMember(block: (AdministratorChatMember) -> T) = asAdministratorChatMember() ?.let(block)
+inline fun <T> ChatMember.whenAdministratorChatMember(block: (AdministratorChatMember) -> T) =
+    asAdministratorChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatMember.asAdministratorChatMember(): AdministratorChatMember? = this as? AdministratorChatMember
@@ -1895,7 +2007,7 @@ inline fun ChatMember.asAdministratorChatMember(): AdministratorChatMember? = th
 inline fun ChatMember.requireAdministratorChatMember(): AdministratorChatMember = this as AdministratorChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenBannedChatMember(block: (BannedChatMember) -> T) = asBannedChatMember() ?.let(block)
+inline fun <T> ChatMember.whenBannedChatMember(block: (BannedChatMember) -> T) = asBannedChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatMember.asBannedChatMember(): BannedChatMember? = this as? BannedChatMember
@@ -1904,7 +2016,8 @@ inline fun ChatMember.asBannedChatMember(): BannedChatMember? = this as? BannedC
 inline fun ChatMember.requireBannedChatMember(): BannedChatMember = this as BannedChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenSpecialRightsChatMember(block: (SpecialRightsChatMember) -> T) = asSpecialRightsChatMember() ?.let(block)
+inline fun <T> ChatMember.whenSpecialRightsChatMember(block: (SpecialRightsChatMember) -> T) =
+    asSpecialRightsChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatMember.asSpecialRightsChatMember(): SpecialRightsChatMember? = this as? SpecialRightsChatMember
@@ -1913,7 +2026,8 @@ inline fun ChatMember.asSpecialRightsChatMember(): SpecialRightsChatMember? = th
 inline fun ChatMember.requireSpecialRightsChatMember(): SpecialRightsChatMember = this as SpecialRightsChatMember
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) = asAudioMediaGroupMemberTelegramMedia() ?.let(block)
+inline fun <T> TelegramMedia.whenAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) =
+    asAudioMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia? =
@@ -1924,7 +2038,8 @@ inline fun TelegramMedia.requireAudioMediaGroupMemberTelegramMedia(): AudioMedia
     this as AudioMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) = asDocumentMediaGroupMemberTelegramMedia() ?.let(block)
+inline fun <T> TelegramMedia.whenDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) =
+    asDocumentMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia? =
@@ -1935,7 +2050,8 @@ inline fun TelegramMedia.requireDocumentMediaGroupMemberTelegramMedia(): Documen
     this as DocumentMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T) = asDuratedTelegramMedia() ?.let(block)
+inline fun <T> TelegramMedia.whenDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T) =
+    asDuratedTelegramMedia()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asDuratedTelegramMedia(): DuratedTelegramMedia? = this as? DuratedTelegramMedia
@@ -1944,7 +2060,8 @@ inline fun TelegramMedia.asDuratedTelegramMedia(): DuratedTelegramMedia? = this 
 inline fun TelegramMedia.requireDuratedTelegramMedia(): DuratedTelegramMedia = this as DuratedTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T) = asTelegramMediaAnimation() ?.let(block)
+inline fun <T> TelegramMedia.whenTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T) =
+    asTelegramMediaAnimation()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asTelegramMediaAnimation(): TelegramMediaAnimation? = this as? TelegramMediaAnimation
@@ -1953,7 +2070,8 @@ inline fun TelegramMedia.asTelegramMediaAnimation(): TelegramMediaAnimation? = t
 inline fun TelegramMedia.requireTelegramMediaAnimation(): TelegramMediaAnimation = this as TelegramMediaAnimation
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaAudio(block: (TelegramMediaAudio) -> T) = asTelegramMediaAudio() ?.let(block)
+inline fun <T> TelegramMedia.whenTelegramMediaAudio(block: (TelegramMediaAudio) -> T) =
+    asTelegramMediaAudio()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asTelegramMediaAudio(): TelegramMediaAudio? = this as? TelegramMediaAudio
@@ -1962,7 +2080,8 @@ inline fun TelegramMedia.asTelegramMediaAudio(): TelegramMediaAudio? = this as? 
 inline fun TelegramMedia.requireTelegramMediaAudio(): TelegramMediaAudio = this as TelegramMediaAudio
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaDocument(block: (TelegramMediaDocument) -> T) = asTelegramMediaDocument() ?.let(block)
+inline fun <T> TelegramMedia.whenTelegramMediaDocument(block: (TelegramMediaDocument) -> T) =
+    asTelegramMediaDocument()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asTelegramMediaDocument(): TelegramMediaDocument? = this as? TelegramMediaDocument
@@ -1971,7 +2090,8 @@ inline fun TelegramMedia.asTelegramMediaDocument(): TelegramMediaDocument? = thi
 inline fun TelegramMedia.requireTelegramMediaDocument(): TelegramMediaDocument = this as TelegramMediaDocument
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T) = asTelegramMediaPhoto() ?.let(block)
+inline fun <T> TelegramMedia.whenTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T) =
+    asTelegramMediaPhoto()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asTelegramMediaPhoto(): TelegramMediaPhoto? = this as? TelegramMediaPhoto
@@ -1980,7 +2100,8 @@ inline fun TelegramMedia.asTelegramMediaPhoto(): TelegramMediaPhoto? = this as? 
 inline fun TelegramMedia.requireTelegramMediaPhoto(): TelegramMediaPhoto = this as TelegramMediaPhoto
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaVideo(block: (TelegramMediaVideo) -> T) = asTelegramMediaVideo() ?.let(block)
+inline fun <T> TelegramMedia.whenTelegramMediaVideo(block: (TelegramMediaVideo) -> T) =
+    asTelegramMediaVideo()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asTelegramMediaVideo(): TelegramMediaVideo? = this as? TelegramMediaVideo
@@ -1989,17 +2110,20 @@ inline fun TelegramMedia.asTelegramMediaVideo(): TelegramMediaVideo? = this as? 
 inline fun TelegramMedia.requireTelegramMediaVideo(): TelegramMediaVideo = this as TelegramMediaVideo
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T) = asMediaGroupMemberTelegramMedia() ?.let(block)
+inline fun <T> TelegramMedia.whenMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T) =
+    asMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia? = this as? MediaGroupMemberTelegramMedia
+inline fun TelegramMedia.asMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia? =
+    this as? MediaGroupMemberTelegramMedia
 
 @PreviewFeature
 inline fun TelegramMedia.requireMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia =
     this as MediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenSizedTelegramMedia(block: (SizedTelegramMedia) -> T) = asSizedTelegramMedia() ?.let(block)
+inline fun <T> TelegramMedia.whenSizedTelegramMedia(block: (SizedTelegramMedia) -> T) =
+    asSizedTelegramMedia()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asSizedTelegramMedia(): SizedTelegramMedia? = this as? SizedTelegramMedia
@@ -2008,7 +2132,8 @@ inline fun TelegramMedia.asSizedTelegramMedia(): SizedTelegramMedia? = this as? 
 inline fun TelegramMedia.requireSizedTelegramMedia(): SizedTelegramMedia = this as SizedTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T) = asThumbedTelegramMedia() ?.let(block)
+inline fun <T> TelegramMedia.whenThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T) =
+    asThumbedTelegramMedia()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asThumbedTelegramMedia(): ThumbedTelegramMedia? = this as? ThumbedTelegramMedia
@@ -2017,7 +2142,8 @@ inline fun TelegramMedia.asThumbedTelegramMedia(): ThumbedTelegramMedia? = this 
 inline fun TelegramMedia.requireThumbedTelegramMedia(): ThumbedTelegramMedia = this as ThumbedTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTitledTelegramMedia(block: (TitledTelegramMedia) -> T) = asTitledTelegramMedia() ?.let(block)
+inline fun <T> TelegramMedia.whenTitledTelegramMedia(block: (TitledTelegramMedia) -> T) =
+    asTitledTelegramMedia()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asTitledTelegramMedia(): TitledTelegramMedia? = this as? TitledTelegramMedia
@@ -2026,7 +2152,8 @@ inline fun TelegramMedia.asTitledTelegramMedia(): TitledTelegramMedia? = this as
 inline fun TelegramMedia.requireTitledTelegramMedia(): TitledTelegramMedia = this as TitledTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) = asVisualMediaGroupMemberTelegramMedia() ?.let(block)
+inline fun <T> TelegramMedia.whenVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) =
+    asVisualMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMedia.asVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia? =
@@ -2037,7 +2164,7 @@ inline fun TelegramMedia.requireVisualMediaGroupMemberTelegramMedia(): VisualMed
     this as VisualMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun <T> Update.whenCallbackQueryUpdate(block: (CallbackQueryUpdate) -> T) = asCallbackQueryUpdate() ?.let(block)
+inline fun <T> Update.whenCallbackQueryUpdate(block: (CallbackQueryUpdate) -> T) = asCallbackQueryUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asCallbackQueryUpdate(): CallbackQueryUpdate? = this as? CallbackQueryUpdate
@@ -2046,7 +2173,7 @@ inline fun Update.asCallbackQueryUpdate(): CallbackQueryUpdate? = this as? Callb
 inline fun Update.requireCallbackQueryUpdate(): CallbackQueryUpdate = this as CallbackQueryUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenChannelPostUpdate(block: (ChannelPostUpdate) -> T) = asChannelPostUpdate() ?.let(block)
+inline fun <T> Update.whenChannelPostUpdate(block: (ChannelPostUpdate) -> T) = asChannelPostUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asChannelPostUpdate(): ChannelPostUpdate? = this as? ChannelPostUpdate
@@ -2055,7 +2182,8 @@ inline fun Update.asChannelPostUpdate(): ChannelPostUpdate? = this as? ChannelPo
 inline fun Update.requireChannelPostUpdate(): ChannelPostUpdate = this as ChannelPostUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenChosenInlineResultUpdate(block: (ChosenInlineResultUpdate) -> T) = asChosenInlineResultUpdate() ?.let(block)
+inline fun <T> Update.whenChosenInlineResultUpdate(block: (ChosenInlineResultUpdate) -> T) =
+    asChosenInlineResultUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asChosenInlineResultUpdate(): ChosenInlineResultUpdate? = this as? ChosenInlineResultUpdate
@@ -2064,7 +2192,8 @@ inline fun Update.asChosenInlineResultUpdate(): ChosenInlineResultUpdate? = this
 inline fun Update.requireChosenInlineResultUpdate(): ChosenInlineResultUpdate = this as ChosenInlineResultUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenEditChannelPostUpdate(block: (EditChannelPostUpdate) -> T) = asEditChannelPostUpdate() ?.let(block)
+inline fun <T> Update.whenEditChannelPostUpdate(block: (EditChannelPostUpdate) -> T) =
+    asEditChannelPostUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asEditChannelPostUpdate(): EditChannelPostUpdate? = this as? EditChannelPostUpdate
@@ -2073,7 +2202,7 @@ inline fun Update.asEditChannelPostUpdate(): EditChannelPostUpdate? = this as? E
 inline fun Update.requireEditChannelPostUpdate(): EditChannelPostUpdate = this as EditChannelPostUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenEditMessageUpdate(block: (EditMessageUpdate) -> T) = asEditMessageUpdate() ?.let(block)
+inline fun <T> Update.whenEditMessageUpdate(block: (EditMessageUpdate) -> T) = asEditMessageUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asEditMessageUpdate(): EditMessageUpdate? = this as? EditMessageUpdate
@@ -2082,7 +2211,7 @@ inline fun Update.asEditMessageUpdate(): EditMessageUpdate? = this as? EditMessa
 inline fun Update.requireEditMessageUpdate(): EditMessageUpdate = this as EditMessageUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenInlineQueryUpdate(block: (InlineQueryUpdate) -> T) = asInlineQueryUpdate() ?.let(block)
+inline fun <T> Update.whenInlineQueryUpdate(block: (InlineQueryUpdate) -> T) = asInlineQueryUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asInlineQueryUpdate(): InlineQueryUpdate? = this as? InlineQueryUpdate
@@ -2091,7 +2220,8 @@ inline fun Update.asInlineQueryUpdate(): InlineQueryUpdate? = this as? InlineQue
 inline fun Update.requireInlineQueryUpdate(): InlineQueryUpdate = this as InlineQueryUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenChannelPostMediaGroupUpdate(block: (ChannelPostMediaGroupUpdate) -> T) = asChannelPostMediaGroupUpdate() ?.let(block)
+inline fun <T> Update.whenChannelPostMediaGroupUpdate(block: (ChannelPostMediaGroupUpdate) -> T) =
+    asChannelPostMediaGroupUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asChannelPostMediaGroupUpdate(): ChannelPostMediaGroupUpdate? = this as? ChannelPostMediaGroupUpdate
@@ -2101,7 +2231,8 @@ inline fun Update.requireChannelPostMediaGroupUpdate(): ChannelPostMediaGroupUpd
     this as ChannelPostMediaGroupUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenEditChannelPostMediaGroupUpdate(block: (EditChannelPostMediaGroupUpdate) -> T) = asEditChannelPostMediaGroupUpdate() ?.let(block)
+inline fun <T> Update.whenEditChannelPostMediaGroupUpdate(block: (EditChannelPostMediaGroupUpdate) -> T) =
+    asEditChannelPostMediaGroupUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asEditChannelPostMediaGroupUpdate(): EditChannelPostMediaGroupUpdate? =
@@ -2112,7 +2243,8 @@ inline fun Update.requireEditChannelPostMediaGroupUpdate(): EditChannelPostMedia
     this as EditChannelPostMediaGroupUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenEditMediaGroupUpdate(block: (EditMediaGroupUpdate) -> T) = asEditMediaGroupUpdate() ?.let(block)
+inline fun <T> Update.whenEditMediaGroupUpdate(block: (EditMediaGroupUpdate) -> T) =
+    asEditMediaGroupUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asEditMediaGroupUpdate(): EditMediaGroupUpdate? = this as? EditMediaGroupUpdate
@@ -2121,7 +2253,8 @@ inline fun Update.asEditMediaGroupUpdate(): EditMediaGroupUpdate? = this as? Edi
 inline fun Update.requireEditMediaGroupUpdate(): EditMediaGroupUpdate = this as EditMediaGroupUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenEditMessageMediaGroupUpdate(block: (EditMessageMediaGroupUpdate) -> T) = asEditMessageMediaGroupUpdate() ?.let(block)
+inline fun <T> Update.whenEditMessageMediaGroupUpdate(block: (EditMessageMediaGroupUpdate) -> T) =
+    asEditMessageMediaGroupUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asEditMessageMediaGroupUpdate(): EditMessageMediaGroupUpdate? = this as? EditMessageMediaGroupUpdate
@@ -2131,7 +2264,7 @@ inline fun Update.requireEditMessageMediaGroupUpdate(): EditMessageMediaGroupUpd
     this as EditMessageMediaGroupUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenMediaGroupUpdate(block: (MediaGroupUpdate) -> T) = asMediaGroupUpdate() ?.let(block)
+inline fun <T> Update.whenMediaGroupUpdate(block: (MediaGroupUpdate) -> T) = asMediaGroupUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asMediaGroupUpdate(): MediaGroupUpdate? = this as? MediaGroupUpdate
@@ -2140,7 +2273,8 @@ inline fun Update.asMediaGroupUpdate(): MediaGroupUpdate? = this as? MediaGroupU
 inline fun Update.requireMediaGroupUpdate(): MediaGroupUpdate = this as MediaGroupUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenMessageMediaGroupUpdate(block: (MessageMediaGroupUpdate) -> T) = asMessageMediaGroupUpdate() ?.let(block)
+inline fun <T> Update.whenMessageMediaGroupUpdate(block: (MessageMediaGroupUpdate) -> T) =
+    asMessageMediaGroupUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asMessageMediaGroupUpdate(): MessageMediaGroupUpdate? = this as? MessageMediaGroupUpdate
@@ -2149,7 +2283,8 @@ inline fun Update.asMessageMediaGroupUpdate(): MessageMediaGroupUpdate? = this a
 inline fun Update.requireMessageMediaGroupUpdate(): MessageMediaGroupUpdate = this as MessageMediaGroupUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenSentMediaGroupUpdate(block: (SentMediaGroupUpdate) -> T) = asSentMediaGroupUpdate() ?.let(block)
+inline fun <T> Update.whenSentMediaGroupUpdate(block: (SentMediaGroupUpdate) -> T) =
+    asSentMediaGroupUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asSentMediaGroupUpdate(): SentMediaGroupUpdate? = this as? SentMediaGroupUpdate
@@ -2158,7 +2293,7 @@ inline fun Update.asSentMediaGroupUpdate(): SentMediaGroupUpdate? = this as? Sen
 inline fun Update.requireSentMediaGroupUpdate(): SentMediaGroupUpdate = this as SentMediaGroupUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenMessageUpdate(block: (MessageUpdate) -> T) = asMessageUpdate() ?.let(block)
+inline fun <T> Update.whenMessageUpdate(block: (MessageUpdate) -> T) = asMessageUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asMessageUpdate(): MessageUpdate? = this as? MessageUpdate
@@ -2167,7 +2302,7 @@ inline fun Update.asMessageUpdate(): MessageUpdate? = this as? MessageUpdate
 inline fun Update.requireMessageUpdate(): MessageUpdate = this as MessageUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenPollAnswerUpdate(block: (PollAnswerUpdate) -> T) = asPollAnswerUpdate() ?.let(block)
+inline fun <T> Update.whenPollAnswerUpdate(block: (PollAnswerUpdate) -> T) = asPollAnswerUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asPollAnswerUpdate(): PollAnswerUpdate? = this as? PollAnswerUpdate
@@ -2176,7 +2311,7 @@ inline fun Update.asPollAnswerUpdate(): PollAnswerUpdate? = this as? PollAnswerU
 inline fun Update.requirePollAnswerUpdate(): PollAnswerUpdate = this as PollAnswerUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenPollUpdate(block: (PollUpdate) -> T) = asPollUpdate() ?.let(block)
+inline fun <T> Update.whenPollUpdate(block: (PollUpdate) -> T) = asPollUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asPollUpdate(): PollUpdate? = this as? PollUpdate
@@ -2185,7 +2320,8 @@ inline fun Update.asPollUpdate(): PollUpdate? = this as? PollUpdate
 inline fun Update.requirePollUpdate(): PollUpdate = this as PollUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenPreCheckoutQueryUpdate(block: (PreCheckoutQueryUpdate) -> T) = asPreCheckoutQueryUpdate() ?.let(block)
+inline fun <T> Update.whenPreCheckoutQueryUpdate(block: (PreCheckoutQueryUpdate) -> T) =
+    asPreCheckoutQueryUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asPreCheckoutQueryUpdate(): PreCheckoutQueryUpdate? = this as? PreCheckoutQueryUpdate
@@ -2194,7 +2330,7 @@ inline fun Update.asPreCheckoutQueryUpdate(): PreCheckoutQueryUpdate? = this as?
 inline fun Update.requirePreCheckoutQueryUpdate(): PreCheckoutQueryUpdate = this as PreCheckoutQueryUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenShippingQueryUpdate(block: (ShippingQueryUpdate) -> T) = asShippingQueryUpdate() ?.let(block)
+inline fun <T> Update.whenShippingQueryUpdate(block: (ShippingQueryUpdate) -> T) = asShippingQueryUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asShippingQueryUpdate(): ShippingQueryUpdate? = this as? ShippingQueryUpdate
@@ -2203,7 +2339,8 @@ inline fun Update.asShippingQueryUpdate(): ShippingQueryUpdate? = this as? Shipp
 inline fun Update.requireShippingQueryUpdate(): ShippingQueryUpdate = this as ShippingQueryUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenBaseEditMessageUpdate(block: (BaseEditMessageUpdate) -> T) = asBaseEditMessageUpdate() ?.let(block)
+inline fun <T> Update.whenBaseEditMessageUpdate(block: (BaseEditMessageUpdate) -> T) =
+    asBaseEditMessageUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asBaseEditMessageUpdate(): BaseEditMessageUpdate? = this as? BaseEditMessageUpdate
@@ -2212,7 +2349,7 @@ inline fun Update.asBaseEditMessageUpdate(): BaseEditMessageUpdate? = this as? B
 inline fun Update.requireBaseEditMessageUpdate(): BaseEditMessageUpdate = this as BaseEditMessageUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenBaseMessageUpdate(block: (BaseMessageUpdate) -> T) = asBaseMessageUpdate() ?.let(block)
+inline fun <T> Update.whenBaseMessageUpdate(block: (BaseMessageUpdate) -> T) = asBaseMessageUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asBaseMessageUpdate(): BaseMessageUpdate? = this as? BaseMessageUpdate
@@ -2221,7 +2358,8 @@ inline fun Update.asBaseMessageUpdate(): BaseMessageUpdate? = this as? BaseMessa
 inline fun Update.requireBaseMessageUpdate(): BaseMessageUpdate = this as BaseMessageUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenBaseSentMessageUpdate(block: (BaseSentMessageUpdate) -> T) = asBaseSentMessageUpdate() ?.let(block)
+inline fun <T> Update.whenBaseSentMessageUpdate(block: (BaseSentMessageUpdate) -> T) =
+    asBaseSentMessageUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asBaseSentMessageUpdate(): BaseSentMessageUpdate? = this as? BaseSentMessageUpdate
@@ -2230,7 +2368,7 @@ inline fun Update.asBaseSentMessageUpdate(): BaseSentMessageUpdate? = this as? B
 inline fun Update.requireBaseSentMessageUpdate(): BaseSentMessageUpdate = this as BaseSentMessageUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenUnknownUpdate(block: (UnknownUpdate) -> T) = asUnknownUpdate() ?.let(block)
+inline fun <T> Update.whenUnknownUpdate(block: (UnknownUpdate) -> T) = asUnknownUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asUnknownUpdate(): UnknownUpdate? = this as? UnknownUpdate
@@ -2239,7 +2377,8 @@ inline fun Update.asUnknownUpdate(): UnknownUpdate? = this as? UnknownUpdate
 inline fun Update.requireUnknownUpdate(): UnknownUpdate = this as UnknownUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenCommonChatMemberUpdatedUpdate(block: (CommonChatMemberUpdatedUpdate) -> T) = asCommonChatMemberUpdatedUpdate() ?.let(block)
+inline fun <T> Update.whenCommonChatMemberUpdatedUpdate(block: (CommonChatMemberUpdatedUpdate) -> T) =
+    asCommonChatMemberUpdatedUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asCommonChatMemberUpdatedUpdate(): CommonChatMemberUpdatedUpdate? =
@@ -2250,7 +2389,8 @@ inline fun Update.requireCommonChatMemberUpdatedUpdate(): CommonChatMemberUpdate
     this as CommonChatMemberUpdatedUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenMyChatMemberUpdatedUpdate(block: (MyChatMemberUpdatedUpdate) -> T) = asMyChatMemberUpdatedUpdate() ?.let(block)
+inline fun <T> Update.whenMyChatMemberUpdatedUpdate(block: (MyChatMemberUpdatedUpdate) -> T) =
+    asMyChatMemberUpdatedUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asMyChatMemberUpdatedUpdate(): MyChatMemberUpdatedUpdate? = this as? MyChatMemberUpdatedUpdate
@@ -2259,7 +2399,8 @@ inline fun Update.asMyChatMemberUpdatedUpdate(): MyChatMemberUpdatedUpdate? = th
 inline fun Update.requireMyChatMemberUpdatedUpdate(): MyChatMemberUpdatedUpdate = this as MyChatMemberUpdatedUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenChatMemberUpdatedUpdate(block: (ChatMemberUpdatedUpdate) -> T) = asChatMemberUpdatedUpdate() ?.let(block)
+inline fun <T> Update.whenChatMemberUpdatedUpdate(block: (ChatMemberUpdatedUpdate) -> T) =
+    asChatMemberUpdatedUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate? = this as? ChatMemberUpdatedUpdate
@@ -2268,7 +2409,8 @@ inline fun Update.asChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate? = this a
 inline fun Update.requireChatMemberUpdatedUpdate(): ChatMemberUpdatedUpdate = this as ChatMemberUpdatedUpdate
 
 @PreviewFeature
-inline fun <T> Update.whenChatJoinRequestUpdate(block: (ChatJoinRequestUpdate) -> T) = asChatJoinRequestUpdate() ?.let(block)
+inline fun <T> Update.whenChatJoinRequestUpdate(block: (ChatJoinRequestUpdate) -> T) =
+    asChatJoinRequestUpdate()?.let(block)
 
 @PreviewFeature
 inline fun Update.asChatJoinRequestUpdate(): ChatJoinRequestUpdate? = this as? ChatJoinRequestUpdate
@@ -2277,7 +2419,7 @@ inline fun Update.asChatJoinRequestUpdate(): ChatJoinRequestUpdate? = this as? C
 inline fun Update.requireChatJoinRequestUpdate(): ChatJoinRequestUpdate = this as ChatJoinRequestUpdate
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenAnimationFile(block: (AnimationFile) -> T) = asAnimationFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenAnimationFile(block: (AnimationFile) -> T) = asAnimationFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asAnimationFile(): AnimationFile? = this as? AnimationFile
@@ -2286,7 +2428,7 @@ inline fun TelegramMediaFile.asAnimationFile(): AnimationFile? = this as? Animat
 inline fun TelegramMediaFile.requireAnimationFile(): AnimationFile = this as AnimationFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenAudioFile(block: (AudioFile) -> T) = asAudioFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenAudioFile(block: (AudioFile) -> T) = asAudioFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asAudioFile(): AudioFile? = this as? AudioFile
@@ -2295,7 +2437,7 @@ inline fun TelegramMediaFile.asAudioFile(): AudioFile? = this as? AudioFile
 inline fun TelegramMediaFile.requireAudioFile(): AudioFile = this as AudioFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenDocumentFile(block: (DocumentFile) -> T) = asDocumentFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenDocumentFile(block: (DocumentFile) -> T) = asDocumentFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asDocumentFile(): DocumentFile? = this as? DocumentFile
@@ -2304,7 +2446,7 @@ inline fun TelegramMediaFile.asDocumentFile(): DocumentFile? = this as? Document
 inline fun TelegramMediaFile.requireDocumentFile(): DocumentFile = this as DocumentFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenFile(block: (File) -> T) = asFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenFile(block: (File) -> T) = asFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asFile(): File? = this as? File
@@ -2313,7 +2455,7 @@ inline fun TelegramMediaFile.asFile(): File? = this as? File
 inline fun TelegramMediaFile.requireFile(): File = this as File
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenPathedFile(block: (PathedFile) -> T) = asPathedFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenPathedFile(block: (PathedFile) -> T) = asPathedFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asPathedFile(): PathedFile? = this as? PathedFile
@@ -2322,7 +2464,7 @@ inline fun TelegramMediaFile.asPathedFile(): PathedFile? = this as? PathedFile
 inline fun TelegramMediaFile.requirePathedFile(): PathedFile = this as PathedFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenPhotoSize(block: (PhotoSize) -> T) = asPhotoSize() ?.let(block)
+inline fun <T> TelegramMediaFile.whenPhotoSize(block: (PhotoSize) -> T) = asPhotoSize()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asPhotoSize(): PhotoSize? = this as? PhotoSize
@@ -2331,7 +2473,7 @@ inline fun TelegramMediaFile.asPhotoSize(): PhotoSize? = this as? PhotoSize
 inline fun TelegramMediaFile.requirePhotoSize(): PhotoSize = this as PhotoSize
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenSticker(block: (Sticker) -> T) = asSticker() ?.let(block)
+inline fun <T> TelegramMediaFile.whenSticker(block: (Sticker) -> T) = asSticker()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asSticker(): Sticker? = this as? Sticker
@@ -2340,7 +2482,7 @@ inline fun TelegramMediaFile.asSticker(): Sticker? = this as? Sticker
 inline fun TelegramMediaFile.requireSticker(): Sticker = this as Sticker
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenSimpleSticker(block: (SimpleSticker) -> T) = asSimpleSticker() ?.let(block)
+inline fun <T> TelegramMediaFile.whenSimpleSticker(block: (SimpleSticker) -> T) = asSimpleSticker()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asSimpleSticker(): SimpleSticker? = this as? SimpleSticker
@@ -2349,7 +2491,7 @@ inline fun TelegramMediaFile.asSimpleSticker(): SimpleSticker? = this as? Simple
 inline fun TelegramMediaFile.requireSimpleSticker(): SimpleSticker = this as SimpleSticker
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenAnimatedSticker(block: (AnimatedSticker) -> T) = asAnimatedSticker() ?.let(block)
+inline fun <T> TelegramMediaFile.whenAnimatedSticker(block: (AnimatedSticker) -> T) = asAnimatedSticker()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asAnimatedSticker(): AnimatedSticker? = this as? AnimatedSticker
@@ -2358,7 +2500,7 @@ inline fun TelegramMediaFile.asAnimatedSticker(): AnimatedSticker? = this as? An
 inline fun TelegramMediaFile.requireAnimatedSticker(): AnimatedSticker = this as AnimatedSticker
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenVideoSticker(block: (VideoSticker) -> T) = asVideoSticker() ?.let(block)
+inline fun <T> TelegramMediaFile.whenVideoSticker(block: (VideoSticker) -> T) = asVideoSticker()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asVideoSticker(): VideoSticker? = this as? VideoSticker
@@ -2367,7 +2509,7 @@ inline fun TelegramMediaFile.asVideoSticker(): VideoSticker? = this as? VideoSti
 inline fun TelegramMediaFile.requireVideoSticker(): VideoSticker = this as VideoSticker
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenVideoFile(block: (VideoFile) -> T) = asVideoFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenVideoFile(block: (VideoFile) -> T) = asVideoFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asVideoFile(): VideoFile? = this as? VideoFile
@@ -2376,7 +2518,7 @@ inline fun TelegramMediaFile.asVideoFile(): VideoFile? = this as? VideoFile
 inline fun TelegramMediaFile.requireVideoFile(): VideoFile = this as VideoFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenVideoNoteFile(block: (VideoNoteFile) -> T) = asVideoNoteFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenVideoNoteFile(block: (VideoNoteFile) -> T) = asVideoNoteFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asVideoNoteFile(): VideoNoteFile? = this as? VideoNoteFile
@@ -2385,7 +2527,7 @@ inline fun TelegramMediaFile.asVideoNoteFile(): VideoNoteFile? = this as? VideoN
 inline fun TelegramMediaFile.requireVideoNoteFile(): VideoNoteFile = this as VideoNoteFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenVoiceFile(block: (VoiceFile) -> T) = asVoiceFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenVoiceFile(block: (VoiceFile) -> T) = asVoiceFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asVoiceFile(): VoiceFile? = this as? VoiceFile
@@ -2394,7 +2536,7 @@ inline fun TelegramMediaFile.asVoiceFile(): VoiceFile? = this as? VoiceFile
 inline fun TelegramMediaFile.requireVoiceFile(): VoiceFile = this as VoiceFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenMimedMediaFile(block: (MimedMediaFile) -> T) = asMimedMediaFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenMimedMediaFile(block: (MimedMediaFile) -> T) = asMimedMediaFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asMimedMediaFile(): MimedMediaFile? = this as? MimedMediaFile
@@ -2403,7 +2545,8 @@ inline fun TelegramMediaFile.asMimedMediaFile(): MimedMediaFile? = this as? Mime
 inline fun TelegramMediaFile.requireMimedMediaFile(): MimedMediaFile = this as MimedMediaFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenPlayableMediaFile(block: (PlayableMediaFile) -> T) = asPlayableMediaFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenPlayableMediaFile(block: (PlayableMediaFile) -> T) =
+    asPlayableMediaFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asPlayableMediaFile(): PlayableMediaFile? = this as? PlayableMediaFile
@@ -2412,7 +2555,7 @@ inline fun TelegramMediaFile.asPlayableMediaFile(): PlayableMediaFile? = this as
 inline fun TelegramMediaFile.requirePlayableMediaFile(): PlayableMediaFile = this as PlayableMediaFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenSizedMediaFile(block: (SizedMediaFile) -> T) = asSizedMediaFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenSizedMediaFile(block: (SizedMediaFile) -> T) = asSizedMediaFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asSizedMediaFile(): SizedMediaFile? = this as? SizedMediaFile
@@ -2421,7 +2564,7 @@ inline fun TelegramMediaFile.asSizedMediaFile(): SizedMediaFile? = this as? Size
 inline fun TelegramMediaFile.requireSizedMediaFile(): SizedMediaFile = this as SizedMediaFile
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenThumbedMediaFile(block: (ThumbedMediaFile) -> T) = asThumbedMediaFile() ?.let(block)
+inline fun <T> TelegramMediaFile.whenThumbedMediaFile(block: (ThumbedMediaFile) -> T) = asThumbedMediaFile()?.let(block)
 
 @PreviewFeature
 inline fun TelegramMediaFile.asThumbedMediaFile(): ThumbedMediaFile? = this as? ThumbedMediaFile
@@ -2430,7 +2573,7 @@ inline fun TelegramMediaFile.asThumbedMediaFile(): ThumbedMediaFile? = this as? 
 inline fun TelegramMediaFile.requireThumbedMediaFile(): ThumbedMediaFile = this as ThumbedMediaFile
 
 @PreviewFeature
-inline fun <T> KeyboardMarkup.whenForceReply(block: (ReplyForce) -> T) = asForceReply() ?.let(block)
+inline fun <T> KeyboardMarkup.whenForceReply(block: (ReplyForce) -> T) = asForceReply()?.let(block)
 
 @PreviewFeature
 inline fun KeyboardMarkup.asForceReply(): ReplyForce? = this as? ReplyForce
@@ -2439,7 +2582,8 @@ inline fun KeyboardMarkup.asForceReply(): ReplyForce? = this as? ReplyForce
 inline fun KeyboardMarkup.requireForceReply(): ReplyForce = this as ReplyForce
 
 @PreviewFeature
-inline fun <T> KeyboardMarkup.whenInlineKeyboardMarkup(block: (InlineKeyboardMarkup) -> T) = asInlineKeyboardMarkup() ?.let(block)
+inline fun <T> KeyboardMarkup.whenInlineKeyboardMarkup(block: (InlineKeyboardMarkup) -> T) =
+    asInlineKeyboardMarkup()?.let(block)
 
 @PreviewFeature
 inline fun KeyboardMarkup.asInlineKeyboardMarkup(): InlineKeyboardMarkup? = this as? InlineKeyboardMarkup
@@ -2448,7 +2592,8 @@ inline fun KeyboardMarkup.asInlineKeyboardMarkup(): InlineKeyboardMarkup? = this
 inline fun KeyboardMarkup.requireInlineKeyboardMarkup(): InlineKeyboardMarkup = this as InlineKeyboardMarkup
 
 @PreviewFeature
-inline fun <T> KeyboardMarkup.whenReplyKeyboardMarkup(block: (ReplyKeyboardMarkup) -> T) = asReplyKeyboardMarkup() ?.let(block)
+inline fun <T> KeyboardMarkup.whenReplyKeyboardMarkup(block: (ReplyKeyboardMarkup) -> T) =
+    asReplyKeyboardMarkup()?.let(block)
 
 @PreviewFeature
 inline fun KeyboardMarkup.asReplyKeyboardMarkup(): ReplyKeyboardMarkup? = this as? ReplyKeyboardMarkup
@@ -2457,7 +2602,8 @@ inline fun KeyboardMarkup.asReplyKeyboardMarkup(): ReplyKeyboardMarkup? = this a
 inline fun KeyboardMarkup.requireReplyKeyboardMarkup(): ReplyKeyboardMarkup = this as ReplyKeyboardMarkup
 
 @PreviewFeature
-inline fun <T> KeyboardMarkup.whenReplyKeyboardRemove(block: (ReplyKeyboardRemove) -> T) = asReplyKeyboardRemove() ?.let(block)
+inline fun <T> KeyboardMarkup.whenReplyKeyboardRemove(block: (ReplyKeyboardRemove) -> T) =
+    asReplyKeyboardRemove()?.let(block)
 
 @PreviewFeature
 inline fun KeyboardMarkup.asReplyKeyboardRemove(): ReplyKeyboardRemove? = this as? ReplyKeyboardRemove
@@ -2466,7 +2612,8 @@ inline fun KeyboardMarkup.asReplyKeyboardRemove(): ReplyKeyboardRemove? = this a
 inline fun KeyboardMarkup.requireReplyKeyboardRemove(): ReplyKeyboardRemove = this as ReplyKeyboardRemove
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenCallbackDataInlineKeyboardButton(block: (CallbackDataInlineKeyboardButton) -> T) = asCallbackDataInlineKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenCallbackDataInlineKeyboardButton(block: (CallbackDataInlineKeyboardButton) -> T) =
+    asCallbackDataInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asCallbackDataInlineKeyboardButton(): CallbackDataInlineKeyboardButton? =
@@ -2477,7 +2624,8 @@ inline fun InlineKeyboardButton.requireCallbackDataInlineKeyboardButton(): Callb
     this as CallbackDataInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenCallbackGameInlineKeyboardButton(block: (CallbackGameInlineKeyboardButton) -> T) = asCallbackGameInlineKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenCallbackGameInlineKeyboardButton(block: (CallbackGameInlineKeyboardButton) -> T) =
+    asCallbackGameInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asCallbackGameInlineKeyboardButton(): CallbackGameInlineKeyboardButton? =
@@ -2488,7 +2636,8 @@ inline fun InlineKeyboardButton.requireCallbackGameInlineKeyboardButton(): Callb
     this as CallbackGameInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenLoginURLInlineKeyboardButton(block: (LoginURLInlineKeyboardButton) -> T) = asLoginURLInlineKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenLoginURLInlineKeyboardButton(block: (LoginURLInlineKeyboardButton) -> T) =
+    asLoginURLInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asLoginURLInlineKeyboardButton(): LoginURLInlineKeyboardButton? =
@@ -2499,7 +2648,8 @@ inline fun InlineKeyboardButton.requireLoginURLInlineKeyboardButton(): LoginURLI
     this as LoginURLInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenPayInlineKeyboardButton(block: (PayInlineKeyboardButton) -> T) = asPayInlineKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenPayInlineKeyboardButton(block: (PayInlineKeyboardButton) -> T) =
+    asPayInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asPayInlineKeyboardButton(): PayInlineKeyboardButton? = this as? PayInlineKeyboardButton
@@ -2509,7 +2659,8 @@ inline fun InlineKeyboardButton.requirePayInlineKeyboardButton(): PayInlineKeybo
     this as PayInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenSwitchInlineQueryCurrentChatInlineKeyboardButton(block: (SwitchInlineQueryCurrentChatInlineKeyboardButton) -> T) = asSwitchInlineQueryCurrentChatInlineKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenSwitchInlineQueryCurrentChatInlineKeyboardButton(block: (SwitchInlineQueryCurrentChatInlineKeyboardButton) -> T) =
+    asSwitchInlineQueryCurrentChatInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asSwitchInlineQueryCurrentChatInlineKeyboardButton(): SwitchInlineQueryCurrentChatInlineKeyboardButton? =
@@ -2520,7 +2671,8 @@ inline fun InlineKeyboardButton.requireSwitchInlineQueryCurrentChatInlineKeyboar
     this as SwitchInlineQueryCurrentChatInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenSwitchInlineQueryInlineKeyboardButton(block: (SwitchInlineQueryInlineKeyboardButton) -> T) = asSwitchInlineQueryInlineKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenSwitchInlineQueryInlineKeyboardButton(block: (SwitchInlineQueryInlineKeyboardButton) -> T) =
+    asSwitchInlineQueryInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asSwitchInlineQueryInlineKeyboardButton(): SwitchInlineQueryInlineKeyboardButton? =
@@ -2531,7 +2683,8 @@ inline fun InlineKeyboardButton.requireSwitchInlineQueryInlineKeyboardButton(): 
     this as SwitchInlineQueryInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenURLInlineKeyboardButton(block: (URLInlineKeyboardButton) -> T) = asURLInlineKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenURLInlineKeyboardButton(block: (URLInlineKeyboardButton) -> T) =
+    asURLInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asURLInlineKeyboardButton(): URLInlineKeyboardButton? = this as? URLInlineKeyboardButton
@@ -2541,7 +2694,8 @@ inline fun InlineKeyboardButton.requireURLInlineKeyboardButton(): URLInlineKeybo
     this as URLInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenWebAppKeyboardButton(block: (WebAppKeyboardButton) -> T) = asWebAppKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenWebAppKeyboardButton(block: (WebAppKeyboardButton) -> T) =
+    asWebAppKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asWebAppKeyboardButton(): WebAppKeyboardButton? = this as? WebAppKeyboardButton
@@ -2551,7 +2705,8 @@ inline fun InlineKeyboardButton.requireWebAppKeyboardButton(): WebAppKeyboardBut
     this as WebAppKeyboardButton
 
 @PreviewFeature
-inline fun <T> InlineKeyboardButton.whenUnknownInlineKeyboardButton(block: (UnknownInlineKeyboardButton) -> T) = asUnknownInlineKeyboardButton() ?.let(block)
+inline fun <T> InlineKeyboardButton.whenUnknownInlineKeyboardButton(block: (UnknownInlineKeyboardButton) -> T) =
+    asUnknownInlineKeyboardButton()?.let(block)
 
 @PreviewFeature
 inline fun InlineKeyboardButton.asUnknownInlineKeyboardButton(): UnknownInlineKeyboardButton? =
@@ -2562,7 +2717,7 @@ inline fun InlineKeyboardButton.requireUnknownInlineKeyboardButton(): UnknownInl
     this as UnknownInlineKeyboardButton
 
 @PreviewFeature
-inline fun <T> Poll.whenMultipleAnswersPoll(block: (MultipleAnswersPoll) -> T) = asMultipleAnswersPoll() ?.let(block)
+inline fun <T> Poll.whenMultipleAnswersPoll(block: (MultipleAnswersPoll) -> T) = asMultipleAnswersPoll()?.let(block)
 
 @PreviewFeature
 inline fun Poll.asMultipleAnswersPoll(): MultipleAnswersPoll? = this as? MultipleAnswersPoll
@@ -2571,7 +2726,7 @@ inline fun Poll.asMultipleAnswersPoll(): MultipleAnswersPoll? = this as? Multipl
 inline fun Poll.requireMultipleAnswersPoll(): MultipleAnswersPoll = this as MultipleAnswersPoll
 
 @PreviewFeature
-inline fun <T> Poll.whenQuizPoll(block: (QuizPoll) -> T) = asQuizPoll() ?.let(block)
+inline fun <T> Poll.whenQuizPoll(block: (QuizPoll) -> T) = asQuizPoll()?.let(block)
 
 @PreviewFeature
 inline fun Poll.asQuizPoll(): QuizPoll? = this as? QuizPoll
@@ -2580,7 +2735,7 @@ inline fun Poll.asQuizPoll(): QuizPoll? = this as? QuizPoll
 inline fun Poll.requireQuizPoll(): QuizPoll = this as QuizPoll
 
 @PreviewFeature
-inline fun <T> Poll.whenRegularPoll(block: (RegularPoll) -> T) = asRegularPoll() ?.let(block)
+inline fun <T> Poll.whenRegularPoll(block: (RegularPoll) -> T) = asRegularPoll()?.let(block)
 
 @PreviewFeature
 inline fun Poll.asRegularPoll(): RegularPoll? = this as? RegularPoll
@@ -2589,7 +2744,7 @@ inline fun Poll.asRegularPoll(): RegularPoll? = this as? RegularPoll
 inline fun Poll.requireRegularPoll(): RegularPoll = this as RegularPoll
 
 @PreviewFeature
-inline fun <T> Poll.whenUnknownPollType(block: (UnknownPollType) -> T) = asUnknownPollType() ?.let(block)
+inline fun <T> Poll.whenUnknownPollType(block: (UnknownPollType) -> T) = asUnknownPollType()?.let(block)
 
 @PreviewFeature
 inline fun Poll.asUnknownPollType(): UnknownPollType? = this as? UnknownPollType
@@ -2598,7 +2753,7 @@ inline fun Poll.asUnknownPollType(): UnknownPollType? = this as? UnknownPollType
 inline fun Poll.requireUnknownPollType(): UnknownPollType = this as UnknownPollType
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenContactContent(block: (ContactContent) -> T) = asContactContent() ?.let(block)
+inline fun <T> ResendableContent.whenContactContent(block: (ContactContent) -> T) = asContactContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asContactContent(): ContactContent? = this as? ContactContent
@@ -2607,7 +2762,7 @@ inline fun ResendableContent.asContactContent(): ContactContent? = this as? Cont
 inline fun ResendableContent.requireContactContent(): ContactContent = this as ContactContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenDiceContent(block: (DiceContent) -> T) = asDiceContent() ?.let(block)
+inline fun <T> ResendableContent.whenDiceContent(block: (DiceContent) -> T) = asDiceContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asDiceContent(): DiceContent? = this as? DiceContent
@@ -2616,7 +2771,7 @@ inline fun ResendableContent.asDiceContent(): DiceContent? = this as? DiceConten
 inline fun ResendableContent.requireDiceContent(): DiceContent = this as DiceContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenGameContent(block: (GameContent) -> T) = asGameContent() ?.let(block)
+inline fun <T> ResendableContent.whenGameContent(block: (GameContent) -> T) = asGameContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asGameContent(): GameContent? = this as? GameContent
@@ -2625,7 +2780,7 @@ inline fun ResendableContent.asGameContent(): GameContent? = this as? GameConten
 inline fun ResendableContent.requireGameContent(): GameContent = this as GameContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenLocationContent(block: (LocationContent) -> T) = asLocationContent() ?.let(block)
+inline fun <T> ResendableContent.whenLocationContent(block: (LocationContent) -> T) = asLocationContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asLocationContent(): LocationContent? = this as? LocationContent
@@ -2634,7 +2789,8 @@ inline fun ResendableContent.asLocationContent(): LocationContent? = this as? Lo
 inline fun ResendableContent.requireLocationContent(): LocationContent = this as LocationContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenLiveLocationContent(block: (LiveLocationContent) -> T) = asLiveLocationContent() ?.let(block)
+inline fun <T> ResendableContent.whenLiveLocationContent(block: (LiveLocationContent) -> T) =
+    asLiveLocationContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asLiveLocationContent(): LiveLocationContent? = this as? LiveLocationContent
@@ -2643,7 +2799,8 @@ inline fun ResendableContent.asLiveLocationContent(): LiveLocationContent? = thi
 inline fun ResendableContent.requireLiveLocationContent(): LiveLocationContent = this as LiveLocationContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenStaticLocationContent(block: (StaticLocationContent) -> T) = asStaticLocationContent() ?.let(block)
+inline fun <T> ResendableContent.whenStaticLocationContent(block: (StaticLocationContent) -> T) =
+    asStaticLocationContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asStaticLocationContent(): StaticLocationContent? = this as? StaticLocationContent
@@ -2652,7 +2809,7 @@ inline fun ResendableContent.asStaticLocationContent(): StaticLocationContent? =
 inline fun ResendableContent.requireStaticLocationContent(): StaticLocationContent = this as StaticLocationContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenPollContent(block: (PollContent) -> T) = asPollContent() ?.let(block)
+inline fun <T> ResendableContent.whenPollContent(block: (PollContent) -> T) = asPollContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asPollContent(): PollContent? = this as? PollContent
@@ -2661,7 +2818,7 @@ inline fun ResendableContent.asPollContent(): PollContent? = this as? PollConten
 inline fun ResendableContent.requirePollContent(): PollContent = this as PollContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenTextContent(block: (TextContent) -> T) = asTextContent() ?.let(block)
+inline fun <T> ResendableContent.whenTextContent(block: (TextContent) -> T) = asTextContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asTextContent(): TextContent? = this as? TextContent
@@ -2670,7 +2827,7 @@ inline fun ResendableContent.asTextContent(): TextContent? = this as? TextConten
 inline fun ResendableContent.requireTextContent(): TextContent = this as TextContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenVenueContent(block: (VenueContent) -> T) = asVenueContent() ?.let(block)
+inline fun <T> ResendableContent.whenVenueContent(block: (VenueContent) -> T) = asVenueContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asVenueContent(): VenueContent? = this as? VenueContent
@@ -2679,7 +2836,8 @@ inline fun ResendableContent.asVenueContent(): VenueContent? = this as? VenueCon
 inline fun ResendableContent.requireVenueContent(): VenueContent = this as VenueContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenAudioMediaGroupContent(block: (AudioMediaGroupContent) -> T) = asAudioMediaGroupContent() ?.let(block)
+inline fun <T> ResendableContent.whenAudioMediaGroupContent(block: (AudioMediaGroupContent) -> T) =
+    asAudioMediaGroupContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupContent? = this as? AudioMediaGroupContent
@@ -2688,7 +2846,8 @@ inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupContent?
 inline fun ResendableContent.requireAudioMediaGroupContent(): AudioMediaGroupContent = this as AudioMediaGroupContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenDocumentMediaGroupContent(block: (DocumentMediaGroupContent) -> T) = asDocumentMediaGroupContent() ?.let(block)
+inline fun <T> ResendableContent.whenDocumentMediaGroupContent(block: (DocumentMediaGroupContent) -> T) =
+    asDocumentMediaGroupContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asDocumentMediaGroupContent(): DocumentMediaGroupContent? =
@@ -2699,7 +2858,8 @@ inline fun ResendableContent.requireDocumentMediaGroupContent(): DocumentMediaGr
     this as DocumentMediaGroupContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenMediaCollectionContent(block: (MediaCollectionContent<TelegramMediaFile>) -> T) = asMediaCollectionContent() ?.let(block)
+inline fun <T> ResendableContent.whenMediaCollectionContent(block: (MediaCollectionContent<TelegramMediaFile>) -> T) =
+    asMediaCollectionContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asMediaCollectionContent(): MediaCollectionContent<TelegramMediaFile>? =
@@ -2710,7 +2870,8 @@ inline fun ResendableContent.requireMediaCollectionContent(): MediaCollectionCon
     this as MediaCollectionContent<TelegramMediaFile>
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenTextedMediaContent(block: (TextedMediaContent) -> T) = asTextedMediaContent() ?.let(block)
+inline fun <T> ResendableContent.whenTextedMediaContent(block: (TextedMediaContent) -> T) =
+    asTextedMediaContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asTextedMediaContent(): TextedMediaContent? =
@@ -2721,7 +2882,7 @@ inline fun ResendableContent.requireTextedMediaContent(): TextedMediaContent =
     this as TextedMediaContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenMediaContent(block: (MediaContent) -> T) = asMediaContent() ?.let(block)
+inline fun <T> ResendableContent.whenMediaContent(block: (MediaContent) -> T) = asMediaContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asMediaContent(): MediaContent? = this as? MediaContent
@@ -2730,7 +2891,8 @@ inline fun ResendableContent.asMediaContent(): MediaContent? = this as? MediaCon
 inline fun ResendableContent.requireMediaContent(): MediaContent = this as MediaContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenMediaGroupContent(block: (MediaGroupContent) -> T) = asMediaGroupContent() ?.let(block)
+inline fun <T> ResendableContent.whenMediaGroupContent(block: (MediaGroupContent) -> T) =
+    asMediaGroupContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asMediaGroupContent(): MediaGroupContent? = this as? MediaGroupContent
@@ -2739,7 +2901,7 @@ inline fun ResendableContent.asMediaGroupContent(): MediaGroupContent? = this as
 inline fun ResendableContent.requireMediaGroupContent(): MediaGroupContent = this as MediaGroupContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenMessageContent(block: (MessageContent) -> T) = asMessageContent() ?.let(block)
+inline fun <T> ResendableContent.whenMessageContent(block: (MessageContent) -> T) = asMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asMessageContent(): MessageContent? = this as? MessageContent
@@ -2748,7 +2910,8 @@ inline fun ResendableContent.asMessageContent(): MessageContent? = this as? Mess
 inline fun ResendableContent.requireMessageContent(): MessageContent = this as MessageContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenVisualMediaGroupContent(block: (VisualMediaGroupContent) -> T) = asVisualMediaGroupContent() ?.let(block)
+inline fun <T> ResendableContent.whenVisualMediaGroupContent(block: (VisualMediaGroupContent) -> T) =
+    asVisualMediaGroupContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asVisualMediaGroupContent(): VisualMediaGroupContent? = this as? VisualMediaGroupContent
@@ -2757,7 +2920,7 @@ inline fun ResendableContent.asVisualMediaGroupContent(): VisualMediaGroupConten
 inline fun ResendableContent.requireVisualMediaGroupContent(): VisualMediaGroupContent = this as VisualMediaGroupContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenAnimationContent(block: (AnimationContent) -> T) = asAnimationContent() ?.let(block)
+inline fun <T> ResendableContent.whenAnimationContent(block: (AnimationContent) -> T) = asAnimationContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asAnimationContent(): AnimationContent? = this as? AnimationContent
@@ -2766,7 +2929,7 @@ inline fun ResendableContent.asAnimationContent(): AnimationContent? = this as? 
 inline fun ResendableContent.requireAnimationContent(): AnimationContent = this as AnimationContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenAudioContent(block: (AudioContent) -> T) = asAudioContent() ?.let(block)
+inline fun <T> ResendableContent.whenAudioContent(block: (AudioContent) -> T) = asAudioContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asAudioContent(): AudioContent? = this as? AudioContent
@@ -2775,7 +2938,7 @@ inline fun ResendableContent.asAudioContent(): AudioContent? = this as? AudioCon
 inline fun ResendableContent.requireAudioContent(): AudioContent = this as AudioContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenDocumentContent(block: (DocumentContent) -> T) = asDocumentContent() ?.let(block)
+inline fun <T> ResendableContent.whenDocumentContent(block: (DocumentContent) -> T) = asDocumentContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asDocumentContent(): DocumentContent? = this as? DocumentContent
@@ -2784,7 +2947,7 @@ inline fun ResendableContent.asDocumentContent(): DocumentContent? = this as? Do
 inline fun ResendableContent.requireDocumentContent(): DocumentContent = this as DocumentContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenPhotoContent(block: (PhotoContent) -> T) = asPhotoContent() ?.let(block)
+inline fun <T> ResendableContent.whenPhotoContent(block: (PhotoContent) -> T) = asPhotoContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asPhotoContent(): PhotoContent? = this as? PhotoContent
@@ -2793,7 +2956,7 @@ inline fun ResendableContent.asPhotoContent(): PhotoContent? = this as? PhotoCon
 inline fun ResendableContent.requirePhotoContent(): PhotoContent = this as PhotoContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenStickerContent(block: (StickerContent) -> T) = asStickerContent() ?.let(block)
+inline fun <T> ResendableContent.whenStickerContent(block: (StickerContent) -> T) = asStickerContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asStickerContent(): StickerContent? = this as? StickerContent
@@ -2802,7 +2965,7 @@ inline fun ResendableContent.asStickerContent(): StickerContent? = this as? Stic
 inline fun ResendableContent.requireStickerContent(): StickerContent = this as StickerContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenVideoContent(block: (VideoContent) -> T) = asVideoContent() ?.let(block)
+inline fun <T> ResendableContent.whenVideoContent(block: (VideoContent) -> T) = asVideoContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asVideoContent(): VideoContent? = this as? VideoContent
@@ -2811,7 +2974,7 @@ inline fun ResendableContent.asVideoContent(): VideoContent? = this as? VideoCon
 inline fun ResendableContent.requireVideoContent(): VideoContent = this as VideoContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenVideoNoteContent(block: (VideoNoteContent) -> T) = asVideoNoteContent() ?.let(block)
+inline fun <T> ResendableContent.whenVideoNoteContent(block: (VideoNoteContent) -> T) = asVideoNoteContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asVideoNoteContent(): VideoNoteContent? = this as? VideoNoteContent
@@ -2820,7 +2983,7 @@ inline fun ResendableContent.asVideoNoteContent(): VideoNoteContent? = this as? 
 inline fun ResendableContent.requireVideoNoteContent(): VideoNoteContent = this as VideoNoteContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenVoiceContent(block: (VoiceContent) -> T) = asVoiceContent() ?.let(block)
+inline fun <T> ResendableContent.whenVoiceContent(block: (VoiceContent) -> T) = asVoiceContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asVoiceContent(): VoiceContent? = this as? VoiceContent
@@ -2829,7 +2992,7 @@ inline fun ResendableContent.asVoiceContent(): VoiceContent? = this as? VoiceCon
 inline fun ResendableContent.requireVoiceContent(): VoiceContent = this as VoiceContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenInvoiceContent(block: (InvoiceContent) -> T) = asInvoiceContent() ?.let(block)
+inline fun <T> ResendableContent.whenInvoiceContent(block: (InvoiceContent) -> T) = asInvoiceContent()?.let(block)
 
 @PreviewFeature
 inline fun ResendableContent.asInvoiceContent(): InvoiceContent? = this as? InvoiceContent
@@ -2838,7 +3001,8 @@ inline fun ResendableContent.asInvoiceContent(): InvoiceContent? = this as? Invo
 inline fun ResendableContent.requireInvoiceContent(): InvoiceContent = this as InvoiceContent
 
 @PreviewFeature
-inline fun <T> TextSource.whenMultilevelTextSource(block: (MultilevelTextSource) -> T) = asMultilevelTextSource() ?.let(block)
+inline fun <T> TextSource.whenMultilevelTextSource(block: (MultilevelTextSource) -> T) =
+    asMultilevelTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asMultilevelTextSource(): MultilevelTextSource? = this as? MultilevelTextSource
@@ -2847,7 +3011,7 @@ inline fun TextSource.asMultilevelTextSource(): MultilevelTextSource? = this as?
 inline fun TextSource.requireMultilevelTextSource(): MultilevelTextSource = this as MultilevelTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenBoldTextSource(block: (BoldTextSource) -> T) = asBoldTextSource() ?.let(block)
+inline fun <T> TextSource.whenBoldTextSource(block: (BoldTextSource) -> T) = asBoldTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asBoldTextSource(): BoldTextSource? = this as? BoldTextSource
@@ -2856,7 +3020,8 @@ inline fun TextSource.asBoldTextSource(): BoldTextSource? = this as? BoldTextSou
 inline fun TextSource.requireBoldTextSource(): BoldTextSource = this as BoldTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenBotCommandTextSource(block: (BotCommandTextSource) -> T) = asBotCommandTextSource() ?.let(block)
+inline fun <T> TextSource.whenBotCommandTextSource(block: (BotCommandTextSource) -> T) =
+    asBotCommandTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asBotCommandTextSource(): BotCommandTextSource? = this as? BotCommandTextSource
@@ -2865,7 +3030,7 @@ inline fun TextSource.asBotCommandTextSource(): BotCommandTextSource? = this as?
 inline fun TextSource.requireBotCommandTextSource(): BotCommandTextSource = this as BotCommandTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenCashTagTextSource(block: (CashTagTextSource) -> T) = asCashTagTextSource() ?.let(block)
+inline fun <T> TextSource.whenCashTagTextSource(block: (CashTagTextSource) -> T) = asCashTagTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asCashTagTextSource(): CashTagTextSource? = this as? CashTagTextSource
@@ -2874,7 +3039,7 @@ inline fun TextSource.asCashTagTextSource(): CashTagTextSource? = this as? CashT
 inline fun TextSource.requireCashTagTextSource(): CashTagTextSource = this as CashTagTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenCodeTextSource(block: (CodeTextSource) -> T) = asCodeTextSource() ?.let(block)
+inline fun <T> TextSource.whenCodeTextSource(block: (CodeTextSource) -> T) = asCodeTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asCodeTextSource(): CodeTextSource? = this as? CodeTextSource
@@ -2883,7 +3048,7 @@ inline fun TextSource.asCodeTextSource(): CodeTextSource? = this as? CodeTextSou
 inline fun TextSource.requireCodeTextSource(): CodeTextSource = this as CodeTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenEMailTextSource(block: (EMailTextSource) -> T) = asEMailTextSource() ?.let(block)
+inline fun <T> TextSource.whenEMailTextSource(block: (EMailTextSource) -> T) = asEMailTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asEMailTextSource(): EMailTextSource? = this as? EMailTextSource
@@ -2892,7 +3057,7 @@ inline fun TextSource.asEMailTextSource(): EMailTextSource? = this as? EMailText
 inline fun TextSource.requireEMailTextSource(): EMailTextSource = this as EMailTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenHashTagTextSource(block: (HashTagTextSource) -> T) = asHashTagTextSource() ?.let(block)
+inline fun <T> TextSource.whenHashTagTextSource(block: (HashTagTextSource) -> T) = asHashTagTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asHashTagTextSource(): HashTagTextSource? = this as? HashTagTextSource
@@ -2901,7 +3066,7 @@ inline fun TextSource.asHashTagTextSource(): HashTagTextSource? = this as? HashT
 inline fun TextSource.requireHashTagTextSource(): HashTagTextSource = this as HashTagTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenItalicTextSource(block: (ItalicTextSource) -> T) = asItalicTextSource() ?.let(block)
+inline fun <T> TextSource.whenItalicTextSource(block: (ItalicTextSource) -> T) = asItalicTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asItalicTextSource(): ItalicTextSource? = this as? ItalicTextSource
@@ -2910,7 +3075,7 @@ inline fun TextSource.asItalicTextSource(): ItalicTextSource? = this as? ItalicT
 inline fun TextSource.requireItalicTextSource(): ItalicTextSource = this as ItalicTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenMentionTextSource(block: (MentionTextSource) -> T) = asMentionTextSource() ?.let(block)
+inline fun <T> TextSource.whenMentionTextSource(block: (MentionTextSource) -> T) = asMentionTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asMentionTextSource(): MentionTextSource? = this as? MentionTextSource
@@ -2919,7 +3084,8 @@ inline fun TextSource.asMentionTextSource(): MentionTextSource? = this as? Menti
 inline fun TextSource.requireMentionTextSource(): MentionTextSource = this as MentionTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenPhoneNumberTextSource(block: (PhoneNumberTextSource) -> T) = asPhoneNumberTextSource() ?.let(block)
+inline fun <T> TextSource.whenPhoneNumberTextSource(block: (PhoneNumberTextSource) -> T) =
+    asPhoneNumberTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asPhoneNumberTextSource(): PhoneNumberTextSource? = this as? PhoneNumberTextSource
@@ -2928,7 +3094,7 @@ inline fun TextSource.asPhoneNumberTextSource(): PhoneNumberTextSource? = this a
 inline fun TextSource.requirePhoneNumberTextSource(): PhoneNumberTextSource = this as PhoneNumberTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenPreTextSource(block: (PreTextSource) -> T) = asPreTextSource() ?.let(block)
+inline fun <T> TextSource.whenPreTextSource(block: (PreTextSource) -> T) = asPreTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asPreTextSource(): PreTextSource? = this as? PreTextSource
@@ -2937,7 +3103,7 @@ inline fun TextSource.asPreTextSource(): PreTextSource? = this as? PreTextSource
 inline fun TextSource.requirePreTextSource(): PreTextSource = this as PreTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenRegularTextSource(block: (RegularTextSource) -> T) = asRegularTextSource() ?.let(block)
+inline fun <T> TextSource.whenRegularTextSource(block: (RegularTextSource) -> T) = asRegularTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asRegularTextSource(): RegularTextSource? = this as? RegularTextSource
@@ -2946,7 +3112,8 @@ inline fun TextSource.asRegularTextSource(): RegularTextSource? = this as? Regul
 inline fun TextSource.requireRegularTextSource(): RegularTextSource = this as RegularTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenStrikethroughTextSource(block: (StrikethroughTextSource) -> T) = asStrikethroughTextSource() ?.let(block)
+inline fun <T> TextSource.whenStrikethroughTextSource(block: (StrikethroughTextSource) -> T) =
+    asStrikethroughTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asStrikethroughTextSource(): StrikethroughTextSource? = this as? StrikethroughTextSource
@@ -2955,7 +3122,7 @@ inline fun TextSource.asStrikethroughTextSource(): StrikethroughTextSource? = th
 inline fun TextSource.requireStrikethroughTextSource(): StrikethroughTextSource = this as StrikethroughTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenTextLinkTextSource(block: (TextLinkTextSource) -> T) = asTextLinkTextSource() ?.let(block)
+inline fun <T> TextSource.whenTextLinkTextSource(block: (TextLinkTextSource) -> T) = asTextLinkTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asTextLinkTextSource(): TextLinkTextSource? = this as? TextLinkTextSource
@@ -2964,7 +3131,8 @@ inline fun TextSource.asTextLinkTextSource(): TextLinkTextSource? = this as? Tex
 inline fun TextSource.requireTextLinkTextSource(): TextLinkTextSource = this as TextLinkTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenTextMentionTextSource(block: (TextMentionTextSource) -> T) = asTextMentionTextSource() ?.let(block)
+inline fun <T> TextSource.whenTextMentionTextSource(block: (TextMentionTextSource) -> T) =
+    asTextMentionTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asTextMentionTextSource(): TextMentionTextSource? = this as? TextMentionTextSource
@@ -2973,7 +3141,7 @@ inline fun TextSource.asTextMentionTextSource(): TextMentionTextSource? = this a
 inline fun TextSource.requireTextMentionTextSource(): TextMentionTextSource = this as TextMentionTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenURLTextSource(block: (URLTextSource) -> T) = asURLTextSource() ?.let(block)
+inline fun <T> TextSource.whenURLTextSource(block: (URLTextSource) -> T) = asURLTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asURLTextSource(): URLTextSource? = this as? URLTextSource
@@ -2982,7 +3150,8 @@ inline fun TextSource.asURLTextSource(): URLTextSource? = this as? URLTextSource
 inline fun TextSource.requireURLTextSource(): URLTextSource = this as URLTextSource
 
 @PreviewFeature
-inline fun <T> TextSource.whenUnderlineTextSource(block: (UnderlineTextSource) -> T) = asUnderlineTextSource() ?.let(block)
+inline fun <T> TextSource.whenUnderlineTextSource(block: (UnderlineTextSource) -> T) =
+    asUnderlineTextSource()?.let(block)
 
 @PreviewFeature
 inline fun TextSource.asUnderlineTextSource(): UnderlineTextSource? = this as? UnderlineTextSource
@@ -2991,7 +3160,8 @@ inline fun TextSource.asUnderlineTextSource(): UnderlineTextSource? = this as? U
 inline fun TextSource.requireUnderlineTextSource(): UnderlineTextSource = this as UnderlineTextSource
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenBasketballDiceAnimationType(block: (BasketballDiceAnimationType) -> T) = asBasketballDiceAnimationType() ?.let(block)
+inline fun <T> DiceAnimationType.whenBasketballDiceAnimationType(block: (BasketballDiceAnimationType) -> T) =
+    asBasketballDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asBasketballDiceAnimationType(): BasketballDiceAnimationType? =
@@ -3002,7 +3172,8 @@ inline fun DiceAnimationType.requireBasketballDiceAnimationType(): BasketballDic
     this as BasketballDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenBowlingDiceAnimationType(block: (BowlingDiceAnimationType) -> T) = asBowlingDiceAnimationType() ?.let(block)
+inline fun <T> DiceAnimationType.whenBowlingDiceAnimationType(block: (BowlingDiceAnimationType) -> T) =
+    asBowlingDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asBowlingDiceAnimationType(): BowlingDiceAnimationType? = this as? BowlingDiceAnimationType
@@ -3012,7 +3183,8 @@ inline fun DiceAnimationType.requireBowlingDiceAnimationType(): BowlingDiceAnima
     this as BowlingDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenCubeDiceAnimationType(block: (CubeDiceAnimationType) -> T) = asCubeDiceAnimationType() ?.let(block)
+inline fun <T> DiceAnimationType.whenCubeDiceAnimationType(block: (CubeDiceAnimationType) -> T) =
+    asCubeDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asCubeDiceAnimationType(): CubeDiceAnimationType? = this as? CubeDiceAnimationType
@@ -3021,7 +3193,8 @@ inline fun DiceAnimationType.asCubeDiceAnimationType(): CubeDiceAnimationType? =
 inline fun DiceAnimationType.requireCubeDiceAnimationType(): CubeDiceAnimationType = this as CubeDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenCustomDiceAnimationType(block: (CustomDiceAnimationType) -> T) = asCustomDiceAnimationType() ?.let(block)
+inline fun <T> DiceAnimationType.whenCustomDiceAnimationType(block: (CustomDiceAnimationType) -> T) =
+    asCustomDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asCustomDiceAnimationType(): CustomDiceAnimationType? = this as? CustomDiceAnimationType
@@ -3030,7 +3203,8 @@ inline fun DiceAnimationType.asCustomDiceAnimationType(): CustomDiceAnimationTyp
 inline fun DiceAnimationType.requireCustomDiceAnimationType(): CustomDiceAnimationType = this as CustomDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenDartsDiceAnimationType(block: (DartsDiceAnimationType) -> T) = asDartsDiceAnimationType() ?.let(block)
+inline fun <T> DiceAnimationType.whenDartsDiceAnimationType(block: (DartsDiceAnimationType) -> T) =
+    asDartsDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asDartsDiceAnimationType(): DartsDiceAnimationType? = this as? DartsDiceAnimationType
@@ -3039,7 +3213,8 @@ inline fun DiceAnimationType.asDartsDiceAnimationType(): DartsDiceAnimationType?
 inline fun DiceAnimationType.requireDartsDiceAnimationType(): DartsDiceAnimationType = this as DartsDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenFootballDiceAnimationType(block: (FootballDiceAnimationType) -> T) = asFootballDiceAnimationType() ?.let(block)
+inline fun <T> DiceAnimationType.whenFootballDiceAnimationType(block: (FootballDiceAnimationType) -> T) =
+    asFootballDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asFootballDiceAnimationType(): FootballDiceAnimationType? =
@@ -3050,7 +3225,8 @@ inline fun DiceAnimationType.requireFootballDiceAnimationType(): FootballDiceAni
     this as FootballDiceAnimationType
 
 @PreviewFeature
-inline fun <T> DiceAnimationType.whenSlotMachineDiceAnimationType(block: (SlotMachineDiceAnimationType) -> T) = asSlotMachineDiceAnimationType() ?.let(block)
+inline fun <T> DiceAnimationType.whenSlotMachineDiceAnimationType(block: (SlotMachineDiceAnimationType) -> T) =
+    asSlotMachineDiceAnimationType()?.let(block)
 
 @PreviewFeature
 inline fun DiceAnimationType.asSlotMachineDiceAnimationType(): SlotMachineDiceAnimationType? =
@@ -3061,7 +3237,7 @@ inline fun DiceAnimationType.requireSlotMachineDiceAnimationType(): SlotMachineD
     this as SlotMachineDiceAnimationType
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenChannelChatCreated(block: (ChannelChatCreated) -> T) = asChannelChatCreated() ?.let(block)
+inline fun <T> ChatEvent.whenChannelChatCreated(block: (ChannelChatCreated) -> T) = asChannelChatCreated()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asChannelChatCreated(): ChannelChatCreated? = this as? ChannelChatCreated
@@ -3070,7 +3246,7 @@ inline fun ChatEvent.asChannelChatCreated(): ChannelChatCreated? = this as? Chan
 inline fun ChatEvent.requireChannelChatCreated(): ChannelChatCreated = this as ChannelChatCreated
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenDeleteChatPhoto(block: (DeleteChatPhoto) -> T) = asDeleteChatPhoto() ?.let(block)
+inline fun <T> ChatEvent.whenDeleteChatPhoto(block: (DeleteChatPhoto) -> T) = asDeleteChatPhoto()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asDeleteChatPhoto(): DeleteChatPhoto? = this as? DeleteChatPhoto
@@ -3079,7 +3255,7 @@ inline fun ChatEvent.asDeleteChatPhoto(): DeleteChatPhoto? = this as? DeleteChat
 inline fun ChatEvent.requireDeleteChatPhoto(): DeleteChatPhoto = this as DeleteChatPhoto
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenGroupChatCreated(block: (GroupChatCreated) -> T) = asGroupChatCreated() ?.let(block)
+inline fun <T> ChatEvent.whenGroupChatCreated(block: (GroupChatCreated) -> T) = asGroupChatCreated()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asGroupChatCreated(): GroupChatCreated? = this as? GroupChatCreated
@@ -3088,7 +3264,7 @@ inline fun ChatEvent.asGroupChatCreated(): GroupChatCreated? = this as? GroupCha
 inline fun ChatEvent.requireGroupChatCreated(): GroupChatCreated = this as GroupChatCreated
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenLeftChatMember(block: (LeftChatMember) -> T) = asLeftChatMember() ?.let(block)
+inline fun <T> ChatEvent.whenLeftChatMember(block: (LeftChatMember) -> T) = asLeftChatMember()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asLeftChatMember(): LeftChatMember? = this as? LeftChatMember
@@ -3097,7 +3273,8 @@ inline fun ChatEvent.asLeftChatMember(): LeftChatMember? = this as? LeftChatMemb
 inline fun ChatEvent.requireLeftChatMember(): LeftChatMember = this as LeftChatMember
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenMessageAutoDeleteTimerChanged(block: (MessageAutoDeleteTimerChanged) -> T) = asMessageAutoDeleteTimerChanged() ?.let(block)
+inline fun <T> ChatEvent.whenMessageAutoDeleteTimerChanged(block: (MessageAutoDeleteTimerChanged) -> T) =
+    asMessageAutoDeleteTimerChanged()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged? =
@@ -3108,7 +3285,7 @@ inline fun ChatEvent.requireMessageAutoDeleteTimerChanged(): MessageAutoDeleteTi
     this as MessageAutoDeleteTimerChanged
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenNewChatMembers(block: (NewChatMembers) -> T) = asNewChatMembers() ?.let(block)
+inline fun <T> ChatEvent.whenNewChatMembers(block: (NewChatMembers) -> T) = asNewChatMembers()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asNewChatMembers(): NewChatMembers? = this as? NewChatMembers
@@ -3117,7 +3294,7 @@ inline fun ChatEvent.asNewChatMembers(): NewChatMembers? = this as? NewChatMembe
 inline fun ChatEvent.requireNewChatMembers(): NewChatMembers = this as NewChatMembers
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenNewChatPhoto(block: (NewChatPhoto) -> T) = asNewChatPhoto() ?.let(block)
+inline fun <T> ChatEvent.whenNewChatPhoto(block: (NewChatPhoto) -> T) = asNewChatPhoto()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asNewChatPhoto(): NewChatPhoto? = this as? NewChatPhoto
@@ -3126,7 +3303,7 @@ inline fun ChatEvent.asNewChatPhoto(): NewChatPhoto? = this as? NewChatPhoto
 inline fun ChatEvent.requireNewChatPhoto(): NewChatPhoto = this as NewChatPhoto
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenNewChatTitle(block: (NewChatTitle) -> T) = asNewChatTitle() ?.let(block)
+inline fun <T> ChatEvent.whenNewChatTitle(block: (NewChatTitle) -> T) = asNewChatTitle()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asNewChatTitle(): NewChatTitle? = this as? NewChatTitle
@@ -3135,7 +3312,7 @@ inline fun ChatEvent.asNewChatTitle(): NewChatTitle? = this as? NewChatTitle
 inline fun ChatEvent.requireNewChatTitle(): NewChatTitle = this as NewChatTitle
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenPinnedMessage(block: (PinnedMessage) -> T) = asPinnedMessage() ?.let(block)
+inline fun <T> ChatEvent.whenPinnedMessage(block: (PinnedMessage) -> T) = asPinnedMessage()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asPinnedMessage(): PinnedMessage? = this as? PinnedMessage
@@ -3144,7 +3321,8 @@ inline fun ChatEvent.asPinnedMessage(): PinnedMessage? = this as? PinnedMessage
 inline fun ChatEvent.requirePinnedMessage(): PinnedMessage = this as PinnedMessage
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T) = asSuccessfulPaymentEvent() ?.let(block)
+inline fun <T> ChatEvent.whenSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T) =
+    asSuccessfulPaymentEvent()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asSuccessfulPaymentEvent(): SuccessfulPaymentEvent? = this as? SuccessfulPaymentEvent
@@ -3153,7 +3331,8 @@ inline fun ChatEvent.asSuccessfulPaymentEvent(): SuccessfulPaymentEvent? = this 
 inline fun ChatEvent.requireSuccessfulPaymentEvent(): SuccessfulPaymentEvent = this as SuccessfulPaymentEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenProximityAlertTriggered(block: (ProximityAlertTriggered) -> T) = asProximityAlertTriggered() ?.let(block)
+inline fun <T> ChatEvent.whenProximityAlertTriggered(block: (ProximityAlertTriggered) -> T) =
+    asProximityAlertTriggered()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asProximityAlertTriggered(): ProximityAlertTriggered? = this as? ProximityAlertTriggered
@@ -3162,7 +3341,8 @@ inline fun ChatEvent.asProximityAlertTriggered(): ProximityAlertTriggered? = thi
 inline fun ChatEvent.requireProximityAlertTriggered(): ProximityAlertTriggered = this as ProximityAlertTriggered
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenSupergroupChatCreated(block: (SupergroupChatCreated) -> T) = asSupergroupChatCreated() ?.let(block)
+inline fun <T> ChatEvent.whenSupergroupChatCreated(block: (SupergroupChatCreated) -> T) =
+    asSupergroupChatCreated()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asSupergroupChatCreated(): SupergroupChatCreated? = this as? SupergroupChatCreated
@@ -3171,7 +3351,8 @@ inline fun ChatEvent.asSupergroupChatCreated(): SupergroupChatCreated? = this as
 inline fun ChatEvent.requireSupergroupChatCreated(): SupergroupChatCreated = this as SupergroupChatCreated
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenMigratedToSupergroup(block: (MigratedToSupergroup) -> T) = asMigratedToSupergroup() ?.let(block)
+inline fun <T> ChatEvent.whenMigratedToSupergroup(block: (MigratedToSupergroup) -> T) =
+    asMigratedToSupergroup()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asMigratedToSupergroup(): MigratedToSupergroup? = this as? MigratedToSupergroup
@@ -3180,7 +3361,7 @@ inline fun ChatEvent.asMigratedToSupergroup(): MigratedToSupergroup? = this as? 
 inline fun ChatEvent.requireMigratedToSupergroup(): MigratedToSupergroup = this as MigratedToSupergroup
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenChannelEvent(block: (ChannelEvent) -> T) = asChannelEvent() ?.let(block)
+inline fun <T> ChatEvent.whenChannelEvent(block: (ChannelEvent) -> T) = asChannelEvent()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asChannelEvent(): ChannelEvent? = this as? ChannelEvent
@@ -3189,7 +3370,7 @@ inline fun ChatEvent.asChannelEvent(): ChannelEvent? = this as? ChannelEvent
 inline fun ChatEvent.requireChannelEvent(): ChannelEvent = this as ChannelEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenPublicChatEvent(block: (PublicChatEvent) -> T) = asPublicChatEvent() ?.let(block)
+inline fun <T> ChatEvent.whenPublicChatEvent(block: (PublicChatEvent) -> T) = asPublicChatEvent()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asPublicChatEvent(): PublicChatEvent? = this as? PublicChatEvent
@@ -3198,7 +3379,7 @@ inline fun ChatEvent.asPublicChatEvent(): PublicChatEvent? = this as? PublicChat
 inline fun ChatEvent.requirePublicChatEvent(): PublicChatEvent = this as PublicChatEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenCommonEvent(block: (CommonEvent) -> T) = asCommonEvent() ?.let(block)
+inline fun <T> ChatEvent.whenCommonEvent(block: (CommonEvent) -> T) = asCommonEvent()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asCommonEvent(): CommonEvent? = this as? CommonEvent
@@ -3207,7 +3388,7 @@ inline fun ChatEvent.asCommonEvent(): CommonEvent? = this as? CommonEvent
 inline fun ChatEvent.requireCommonEvent(): CommonEvent = this as CommonEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenGroupEvent(block: (GroupEvent) -> T) = asGroupEvent() ?.let(block)
+inline fun <T> ChatEvent.whenGroupEvent(block: (GroupEvent) -> T) = asGroupEvent()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asGroupEvent(): GroupEvent? = this as? GroupEvent
@@ -3216,7 +3397,7 @@ inline fun ChatEvent.asGroupEvent(): GroupEvent? = this as? GroupEvent
 inline fun ChatEvent.requireGroupEvent(): GroupEvent = this as GroupEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenSupergroupEvent(block: (SupergroupEvent) -> T) = asSupergroupEvent() ?.let(block)
+inline fun <T> ChatEvent.whenSupergroupEvent(block: (SupergroupEvent) -> T) = asSupergroupEvent()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asSupergroupEvent(): SupergroupEvent? = this as? SupergroupEvent
@@ -3225,7 +3406,7 @@ inline fun ChatEvent.asSupergroupEvent(): SupergroupEvent? = this as? Supergroup
 inline fun ChatEvent.requireSupergroupEvent(): SupergroupEvent = this as SupergroupEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVideoChatEvent(block: (VideoChatEvent) -> T) = asVideoChatEvent() ?.let(block)
+inline fun <T> ChatEvent.whenVideoChatEvent(block: (VideoChatEvent) -> T) = asVideoChatEvent()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asVideoChatEvent(): VideoChatEvent? = this as? VideoChatEvent
@@ -3234,7 +3415,7 @@ inline fun ChatEvent.asVideoChatEvent(): VideoChatEvent? = this as? VideoChatEve
 inline fun ChatEvent.requireVideoChatEvent(): VideoChatEvent = this as VideoChatEvent
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVideoChatEnded(block: (VideoChatEnded) -> T) = asVideoChatEnded() ?.let(block)
+inline fun <T> ChatEvent.whenVideoChatEnded(block: (VideoChatEnded) -> T) = asVideoChatEnded()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asVideoChatEnded(): VideoChatEnded? = this as? VideoChatEnded
@@ -3243,7 +3424,8 @@ inline fun ChatEvent.asVideoChatEnded(): VideoChatEnded? = this as? VideoChatEnd
 inline fun ChatEvent.requireVideoChatEnded(): VideoChatEnded = this as VideoChatEnded
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVideoChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T) = asVideoChatParticipantsInvited() ?.let(block)
+inline fun <T> ChatEvent.whenVideoChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T) =
+    asVideoChatParticipantsInvited()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asVideoChatParticipantsInvited(): VideoChatParticipantsInvited? =
@@ -3254,7 +3436,7 @@ inline fun ChatEvent.requireVideoChatParticipantsInvited(): VideoChatParticipant
     this as VideoChatParticipantsInvited
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVideoChatStarted(block: (VideoChatStarted) -> T) = asVideoChatStarted() ?.let(block)
+inline fun <T> ChatEvent.whenVideoChatStarted(block: (VideoChatStarted) -> T) = asVideoChatStarted()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asVideoChatStarted(): VideoChatStarted? = this as? VideoChatStarted
@@ -3263,7 +3445,7 @@ inline fun ChatEvent.asVideoChatStarted(): VideoChatStarted? = this as? VideoCha
 inline fun ChatEvent.requireVideoChatStarted(): VideoChatStarted = this as VideoChatStarted
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenVideoChatScheduled(block: (VideoChatScheduled) -> T) = asVideoChatScheduled() ?.let(block)
+inline fun <T> ChatEvent.whenVideoChatScheduled(block: (VideoChatScheduled) -> T) = asVideoChatScheduled()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asVideoChatScheduled(): VideoChatScheduled? = this as? VideoChatScheduled
@@ -3272,7 +3454,7 @@ inline fun ChatEvent.asVideoChatScheduled(): VideoChatScheduled? = this as? Vide
 inline fun ChatEvent.requireVideoChatScheduled(): VideoChatScheduled = this as VideoChatScheduled
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenUserLoggedIn(block: (UserLoggedIn) -> T) = asUserLoggedIn() ?.let(block)
+inline fun <T> ChatEvent.whenUserLoggedIn(block: (UserLoggedIn) -> T) = asUserLoggedIn()?.let(block)
 
 @PreviewFeature
 inline fun ChatEvent.asUserLoggedIn(): UserLoggedIn? = this as? UserLoggedIn
@@ -3281,7 +3463,7 @@ inline fun ChatEvent.asUserLoggedIn(): UserLoggedIn? = this as? UserLoggedIn
 inline fun ChatEvent.requireUserLoggedIn(): UserLoggedIn = this as UserLoggedIn
 
 @PreviewFeature
-inline fun <T> CommonSendInvoiceData.whenSendInvoice(block: (SendInvoice) -> T) = asSendInvoice() ?.let(block)
+inline fun <T> CommonSendInvoiceData.whenSendInvoice(block: (SendInvoice) -> T) = asSendInvoice()?.let(block)
 
 @PreviewFeature
 inline fun CommonSendInvoiceData.asSendInvoice(): SendInvoice? = this as? SendInvoice
@@ -3290,7 +3472,8 @@ inline fun CommonSendInvoiceData.asSendInvoice(): SendInvoice? = this as? SendIn
 inline fun CommonSendInvoiceData.requireSendInvoice(): SendInvoice = this as SendInvoice
 
 @PreviewFeature
-inline fun <T> CommonSendInvoiceData.whenCreateInvoiceLink(block: (CreateInvoiceLink) -> T) = asCreateInvoiceLink() ?.let(block)
+inline fun <T> CommonSendInvoiceData.whenCreateInvoiceLink(block: (CreateInvoiceLink) -> T) =
+    asCreateInvoiceLink()?.let(block)
 
 @PreviewFeature
 inline fun CommonSendInvoiceData.asCreateInvoiceLink(): CreateInvoiceLink? = this as? CreateInvoiceLink
@@ -3299,7 +3482,8 @@ inline fun CommonSendInvoiceData.asCreateInvoiceLink(): CreateInvoiceLink? = thi
 inline fun CommonSendInvoiceData.requireCreateInvoiceLink(): CreateInvoiceLink = this as CreateInvoiceLink
 
 @PreviewFeature
-inline fun <T> CommonSendInvoiceData.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) = asInputInvoiceMessageContent() ?.let(block)
+inline fun <T> CommonSendInvoiceData.whenInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) =
+    asInputInvoiceMessageContent()?.let(block)
 
 @PreviewFeature
 inline fun CommonSendInvoiceData.asInputInvoiceMessageContent(): InputInvoiceMessageContent? =
@@ -3310,7 +3494,7 @@ inline fun CommonSendInvoiceData.requireInputInvoiceMessageContent(): InputInvoi
     this as InputInvoiceMessageContent
 
 @PreviewFeature
-inline fun <T> Any.whenFromUser(block: (FromUser) -> T) = asFromUser() ?.let(block)
+inline fun <T> Any.whenFromUser(block: (FromUser) -> T) = asFromUser()?.let(block)
 
 @PreviewFeature
 inline fun Any.asFromUser(): FromUser? = this as? FromUser
@@ -3319,7 +3503,7 @@ inline fun Any.asFromUser(): FromUser? = this as? FromUser
 inline fun Any.requireFromUser(): FromUser = this as FromUser
 
 @PreviewFeature
-inline fun <T> Any.whenWithUser(block: (WithUser) -> T) = asWithUser() ?.let(block)
+inline fun <T> Any.whenWithUser(block: (WithUser) -> T) = asWithUser()?.let(block)
 
 @PreviewFeature
 inline fun Any.asWithUser(): WithUser? = this as? WithUser
@@ -3328,7 +3512,8 @@ inline fun Any.asWithUser(): WithUser? = this as? WithUser
 inline fun Any.requireWithUser(): WithUser = this as WithUser
 
 @PreviewFeature
-inline fun <T> Any.whenWithOptionalLanguageCode(block: (WithOptionalLanguageCode) -> T) = asWithOptionalLanguageCode() ?.let(block)
+inline fun <T> Any.whenWithOptionalLanguageCode(block: (WithOptionalLanguageCode) -> T) =
+    asWithOptionalLanguageCode()?.let(block)
 
 @PreviewFeature
 inline fun Any.asWithOptionalLanguageCode(): WithOptionalLanguageCode? = this as? WithOptionalLanguageCode
@@ -3337,7 +3522,7 @@ inline fun Any.asWithOptionalLanguageCode(): WithOptionalLanguageCode? = this as
 inline fun Any.requireWithOptionalLanguageCode(): WithOptionalLanguageCode = this as WithOptionalLanguageCode
 
 @PreviewFeature
-inline fun <T> Location.whenStaticLocation(block: (StaticLocation) -> T) = asStaticLocation() ?.let(block)
+inline fun <T> Location.whenStaticLocation(block: (StaticLocation) -> T) = asStaticLocation()?.let(block)
 
 @PreviewFeature
 inline fun Location.asStaticLocation(): StaticLocation? = this as? StaticLocation
@@ -3346,7 +3531,7 @@ inline fun Location.asStaticLocation(): StaticLocation? = this as? StaticLocatio
 inline fun Location.requireStaticLocation(): StaticLocation = this as StaticLocation
 
 @PreviewFeature
-inline fun <T> Location.whenLiveLocation(block: (LiveLocation) -> T) = asLiveLocation() ?.let(block)
+inline fun <T> Location.whenLiveLocation(block: (LiveLocation) -> T) = asLiveLocation()?.let(block)
 
 @PreviewFeature
 inline fun Location.asLiveLocation(): LiveLocation? = this as? LiveLocation
@@ -3355,7 +3540,7 @@ inline fun Location.asLiveLocation(): LiveLocation? = this as? LiveLocation
 inline fun Location.requireLiveLocation(): LiveLocation = this as LiveLocation
 
 @PreviewFeature
-inline fun <T> ChatInviteLink.whenPrimaryInviteLink(block: (PrimaryInviteLink) -> T) = asPrimaryInviteLink() ?.let(block)
+inline fun <T> ChatInviteLink.whenPrimaryInviteLink(block: (PrimaryInviteLink) -> T) = asPrimaryInviteLink()?.let(block)
 
 @PreviewFeature
 inline fun ChatInviteLink.asPrimaryInviteLink(): PrimaryInviteLink? = this as? PrimaryInviteLink
@@ -3364,7 +3549,8 @@ inline fun ChatInviteLink.asPrimaryInviteLink(): PrimaryInviteLink? = this as? P
 inline fun ChatInviteLink.requirePrimaryInviteLink(): PrimaryInviteLink = this as PrimaryInviteLink
 
 @PreviewFeature
-inline fun <T> ChatInviteLink.whenSecondaryChatInviteLink(block: (SecondaryChatInviteLink) -> T) = asSecondaryChatInviteLink() ?.let(block)
+inline fun <T> ChatInviteLink.whenSecondaryChatInviteLink(block: (SecondaryChatInviteLink) -> T) =
+    asSecondaryChatInviteLink()?.let(block)
 
 @PreviewFeature
 inline fun ChatInviteLink.asSecondaryChatInviteLink(): SecondaryChatInviteLink? = this as? SecondaryChatInviteLink
@@ -3373,25 +3559,32 @@ inline fun ChatInviteLink.asSecondaryChatInviteLink(): SecondaryChatInviteLink? 
 inline fun ChatInviteLink.requireSecondaryChatInviteLink(): SecondaryChatInviteLink = this as SecondaryChatInviteLink
 
 @PreviewFeature
-inline fun <T> ChatInviteLink.whenChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T) = asChatInviteLinkWithJoinRequest() ?.let(block)
+inline fun <T> ChatInviteLink.whenChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T) =
+    asChatInviteLinkWithJoinRequest()?.let(block)
 
 @PreviewFeature
-inline fun ChatInviteLink.asChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest? = this as? ChatInviteLinkWithJoinRequest
+inline fun ChatInviteLink.asChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest? =
+    this as? ChatInviteLinkWithJoinRequest
 
 @PreviewFeature
-inline fun ChatInviteLink.requireChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest = this as ChatInviteLinkWithJoinRequest
+inline fun ChatInviteLink.requireChatInviteLinkWithJoinRequest(): ChatInviteLinkWithJoinRequest =
+    this as ChatInviteLinkWithJoinRequest
 
 @PreviewFeature
-inline fun <T> ChatInviteLink.whenChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T) = asChatInviteLinkWithLimitedMembers() ?.let(block)
+inline fun <T> ChatInviteLink.whenChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T) =
+    asChatInviteLinkWithLimitedMembers()?.let(block)
 
 @PreviewFeature
-inline fun ChatInviteLink.asChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers? = this as? ChatInviteLinkWithLimitedMembers
+inline fun ChatInviteLink.asChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers? =
+    this as? ChatInviteLinkWithLimitedMembers
 
 @PreviewFeature
-inline fun ChatInviteLink.requireChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers = this as ChatInviteLinkWithLimitedMembers
+inline fun ChatInviteLink.requireChatInviteLinkWithLimitedMembers(): ChatInviteLinkWithLimitedMembers =
+    this as ChatInviteLinkWithLimitedMembers
 
 @PreviewFeature
-inline fun <T> ChatInviteLink.whenChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T) = asChatInviteLinkUnlimited() ?.let(block)
+inline fun <T> ChatInviteLink.whenChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T) =
+    asChatInviteLinkUnlimited()?.let(block)
 
 @PreviewFeature
 inline fun ChatInviteLink.asChatInviteLinkUnlimited(): ChatInviteLinkUnlimited? = this as? ChatInviteLinkUnlimited
@@ -3400,34 +3593,37 @@ inline fun ChatInviteLink.asChatInviteLinkUnlimited(): ChatInviteLinkUnlimited? 
 inline fun ChatInviteLink.requireChatInviteLinkUnlimited(): ChatInviteLinkUnlimited = this as ChatInviteLinkUnlimited
 
 @PreviewFeature
-inline fun <T> ForwardInfo.whenAnonymousForwardInfo(block: (AnonymousForwardInfo) -> T) = asAnonymousForwardInfo() ?.let(block)
+inline fun <T> ForwardInfo.whenAnonymousForwardInfo(block: (ForwardInfo.ByAnonymous) -> T) =
+    asAnonymousForwardInfo()?.let(block)
 
 @PreviewFeature
-inline fun ForwardInfo.asAnonymousForwardInfo(): AnonymousForwardInfo? = this as? AnonymousForwardInfo
+inline fun ForwardInfo.asAnonymousForwardInfo(): ForwardInfo.ByAnonymous? = this as? ForwardInfo.ByAnonymous
 
 @PreviewFeature
-inline fun ForwardInfo.requireAnonymousForwardInfo(): AnonymousForwardInfo = this as AnonymousForwardInfo
+inline fun ForwardInfo.requireAnonymousForwardInfo(): ForwardInfo.ByAnonymous = this as ForwardInfo.ByAnonymous
 
 @PreviewFeature
-inline fun <T> ForwardInfo.whenUserForwardInfo(block: (UserForwardInfo) -> T) = asUserForwardInfo() ?.let(block)
+inline fun <T> ForwardInfo.whenUserForwardInfo(block: (ForwardInfo.ByUser) -> T) = asUserForwardInfo()?.let(block)
 
 @PreviewFeature
-inline fun ForwardInfo.asUserForwardInfo(): UserForwardInfo? = this as? UserForwardInfo
+inline fun ForwardInfo.asUserForwardInfo(): ForwardInfo.ByUser? = this as? ForwardInfo.ByUser
 
 @PreviewFeature
-inline fun ForwardInfo.requireUserForwardInfo(): UserForwardInfo = this as UserForwardInfo
+inline fun ForwardInfo.requireUserForwardInfo(): ForwardInfo.ByUser = this as ForwardInfo.ByUser
 
 @PreviewFeature
-inline fun <T> ForwardInfo.whenForwardFromPublicChatInfo(block: (ForwardFromPublicChatInfo) -> T) = asForwardFromPublicChatInfo() ?.let(block)
+inline fun <T> ForwardInfo.whenForwardFromPublicChatInfo(block: (ForwardInfo.PublicChat) -> T) =
+    asForwardFromPublicChatInfo()?.let(block)
 
 @PreviewFeature
-inline fun ForwardInfo.asForwardFromPublicChatInfo(): ForwardFromPublicChatInfo? = this as? ForwardFromPublicChatInfo
+inline fun ForwardInfo.asForwardFromPublicChatInfo(): ForwardInfo.PublicChat? = this as? ForwardInfo.PublicChat
 
 @PreviewFeature
-inline fun ForwardInfo.requireForwardFromPublicChatInfo(): ForwardFromPublicChatInfo = this as ForwardFromPublicChatInfo
+inline fun ForwardInfo.requireForwardFromPublicChatInfo(): ForwardInfo.PublicChat = this as ForwardInfo.PublicChat
 
 @PreviewFeature
-inline fun <T> ForwardInfo.whenForwardFromChannelInfo(block: (ForwardFromChannelInfo) -> T) = asForwardFromChannelInfo() ?.let(block)
+inline fun <T> ForwardInfo.whenForwardFromChannelInfo(block: (ForwardFromChannelInfo) -> T) =
+    asForwardFromChannelInfo()?.let(block)
 
 @PreviewFeature
 inline fun ForwardInfo.asForwardFromChannelInfo(): ForwardFromChannelInfo? = this as? ForwardFromChannelInfo
@@ -3436,7 +3632,8 @@ inline fun ForwardInfo.asForwardFromChannelInfo(): ForwardFromChannelInfo? = thi
 inline fun ForwardInfo.requireForwardFromChannelInfo(): ForwardFromChannelInfo = this as ForwardFromChannelInfo
 
 @PreviewFeature
-inline fun <T> ForwardInfo.whenForwardFromSupergroupInfo(block: (ForwardFromSupergroupInfo) -> T) = asForwardFromSupergroupInfo() ?.let(block)
+inline fun <T> ForwardInfo.whenForwardFromSupergroupInfo(block: (ForwardFromSupergroupInfo) -> T) =
+    asForwardFromSupergroupInfo()?.let(block)
 
 @PreviewFeature
 inline fun ForwardInfo.asForwardFromSupergroupInfo(): ForwardFromSupergroupInfo? = this as? ForwardFromSupergroupInfo
@@ -3445,7 +3642,7 @@ inline fun ForwardInfo.asForwardFromSupergroupInfo(): ForwardFromSupergroupInfo?
 inline fun ForwardInfo.requireForwardFromSupergroupInfo(): ForwardFromSupergroupInfo = this as ForwardFromSupergroupInfo
 
 @PreviewFeature
-inline fun <T> MessageContent.whenTextedInput(block: (TextedInput) -> T) = asTextedInput() ?.let(block)
+inline fun <T> MessageContent.whenTextedInput(block: (TextedInput) -> T) = asTextedInput()?.let(block)
 
 @PreviewFeature
 inline fun MessageContent.asTextedInput(): TextedInput? = this as? TextedInput
@@ -3454,34 +3651,43 @@ inline fun MessageContent.asTextedInput(): TextedInput? = this as? TextedInput
 inline fun MessageContent.requireTextedInput(): TextedInput = this as TextedInput
 
 @PreviewFeature
-inline fun <T> ScheduledCloseInfo.whenExactScheduledCloseInfo(block: (ExactScheduledCloseInfo) -> T) = asExactScheduledCloseInfo() ?.let(block)
+inline fun <T> ScheduledCloseInfo.whenExactScheduledCloseInfo(block: (ExactScheduledCloseInfo) -> T) =
+    asExactScheduledCloseInfo()?.let(block)
 
 @PreviewFeature
 inline fun ScheduledCloseInfo.asExactScheduledCloseInfo(): ExactScheduledCloseInfo? = this as? ExactScheduledCloseInfo
 
 @PreviewFeature
-inline fun ScheduledCloseInfo.requireExactScheduledCloseInfo(): ExactScheduledCloseInfo = this as ExactScheduledCloseInfo
+inline fun ScheduledCloseInfo.requireExactScheduledCloseInfo(): ExactScheduledCloseInfo =
+    this as ExactScheduledCloseInfo
 
 @PreviewFeature
-inline fun <T> ScheduledCloseInfo.whenApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T) = asApproximateScheduledCloseInfo() ?.let(block)
+inline fun <T> ScheduledCloseInfo.whenApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T) =
+    asApproximateScheduledCloseInfo()?.let(block)
 
 @PreviewFeature
-inline fun ScheduledCloseInfo.asApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo? = this as? ApproximateScheduledCloseInfo
+inline fun ScheduledCloseInfo.asApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo? =
+    this as? ApproximateScheduledCloseInfo
 
 @PreviewFeature
-inline fun ScheduledCloseInfo.requireApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo = this as ApproximateScheduledCloseInfo
+inline fun ScheduledCloseInfo.requireApproximateScheduledCloseInfo(): ApproximateScheduledCloseInfo =
+    this as ApproximateScheduledCloseInfo
 
 @PreviewFeature
-inline fun <T> ChosenInlineResult.whenLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T) = asLocationChosenInlineResult() ?.let(block)
+inline fun <T> ChosenInlineResult.whenLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T) =
+    asLocationChosenInlineResult()?.let(block)
 
 @PreviewFeature
-inline fun ChosenInlineResult.asLocationChosenInlineResult(): LocationChosenInlineResult? = this as? LocationChosenInlineResult
+inline fun ChosenInlineResult.asLocationChosenInlineResult(): LocationChosenInlineResult? =
+    this as? LocationChosenInlineResult
 
 @PreviewFeature
-inline fun ChosenInlineResult.requireLocationChosenInlineResult(): LocationChosenInlineResult = this as LocationChosenInlineResult
+inline fun ChosenInlineResult.requireLocationChosenInlineResult(): LocationChosenInlineResult =
+    this as LocationChosenInlineResult
 
 @PreviewFeature
-inline fun <T> ChosenInlineResult.whenBaseChosenInlineResult(block: (BaseChosenInlineResult) -> T) = asBaseChosenInlineResult() ?.let(block)
+inline fun <T> ChosenInlineResult.whenBaseChosenInlineResult(block: (BaseChosenInlineResult) -> T) =
+    asBaseChosenInlineResult()?.let(block)
 
 @PreviewFeature
 inline fun ChosenInlineResult.asBaseChosenInlineResult(): BaseChosenInlineResult? = this as? BaseChosenInlineResult

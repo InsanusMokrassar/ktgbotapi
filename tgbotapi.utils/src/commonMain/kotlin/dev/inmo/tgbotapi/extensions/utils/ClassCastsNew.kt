@@ -1,3478 +1,4461 @@
-@file:Suppress("NOTHING_TO_INLINE", "unused", "UNCHECKED_CAST")
+@file:Suppress(
+  "unused",
+  "RemoveRedundantQualifierName",
+  "RedundantVisibilityModifier",
+  "NOTHING_TO_INLINE",
+  "UNCHECKED_CAST",
+  "OPT_IN_USAGE",
+)
 
 package dev.inmo.tgbotapi.extensions.utils
 
-import dev.inmo.tgbotapi.abstracts.*
+import dev.inmo.tgbotapi.abstracts.CommonSendInvoiceData
+import dev.inmo.tgbotapi.abstracts.FromUser
+import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
-import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.queries.callback.*
-import dev.inmo.tgbotapi.types.chat.member.*
-import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.*
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.*
-import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.*
-import dev.inmo.tgbotapi.types.InlineQueries.query.*
-import dev.inmo.tgbotapi.types.media.*
-import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
-import dev.inmo.tgbotapi.types.actions.*
-import dev.inmo.tgbotapi.types.buttons.*
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
-import dev.inmo.tgbotapi.types.chat.*
+import dev.inmo.tgbotapi.types.ChatInviteLink
+import dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
+import dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
+import dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
+import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
+import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
+import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultArticle
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioCachedImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultContact
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentCachedImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGame
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifCachedImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultLocation
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifCachedImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoCachedImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultStickerCached
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVenue
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoCachedImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceCachedImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceImpl
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.DescribedInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.FileInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.OptionallyTitledInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.SizedInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbSizedInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbedInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbedWithMimeTypeInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.TitledInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.UrlInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithInputMessageContentInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudio
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudioCached
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudioCommon
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocument
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCached
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCommon
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGif
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGifCached
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGifCommon
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4Gif
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4GifCached
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4GifCommon
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhoto
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhotoCached
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhotoCommon
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideoCached
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideoCommon
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoice
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCached
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCommon
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputContactMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputInvoiceMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputLocationMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputTextMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessageContent
+import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
+import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
+import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
+import dev.inmo.tgbotapi.types.PrimaryInviteLink
+import dev.inmo.tgbotapi.types.SecondaryChatInviteLink
+import dev.inmo.tgbotapi.types.actions.BotAction
+import dev.inmo.tgbotapi.types.actions.ChooseStickerAction
+import dev.inmo.tgbotapi.types.actions.CustomBotAction
+import dev.inmo.tgbotapi.types.actions.FindLocationAction
+import dev.inmo.tgbotapi.types.actions.RecordVideoAction
+import dev.inmo.tgbotapi.types.actions.RecordVideoNoteAction
+import dev.inmo.tgbotapi.types.actions.RecordVoiceAction
+import dev.inmo.tgbotapi.types.actions.TypingAction
+import dev.inmo.tgbotapi.types.actions.UploadDocumentAction
+import dev.inmo.tgbotapi.types.actions.UploadPhotoAction
+import dev.inmo.tgbotapi.types.actions.UploadVideoAction
+import dev.inmo.tgbotapi.types.actions.UploadVideoNoteAction
+import dev.inmo.tgbotapi.types.actions.UploadVoiceAction
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackDataInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.LoginURLInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryCurrentChatInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.URLInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.UnknownInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.WebAppInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.buttons.ReplyForce
+import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardMarkup
+import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardRemove
+import dev.inmo.tgbotapi.types.chat.AbleToAddInAttachmentMenuChat
 import dev.inmo.tgbotapi.types.chat.Bot
+import dev.inmo.tgbotapi.types.chat.ChannelChat
+import dev.inmo.tgbotapi.types.chat.ChannelChatImpl
+import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.chat.ExtendedBot
+import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
+import dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
+import dev.inmo.tgbotapi.types.chat.ExtendedChat
+import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
+import dev.inmo.tgbotapi.types.chat.ExtendedGroupChatImpl
+import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
+import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChatImpl
+import dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
+import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
+import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChatImpl
+import dev.inmo.tgbotapi.types.chat.GroupChat
+import dev.inmo.tgbotapi.types.chat.GroupChatImpl
+import dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
+import dev.inmo.tgbotapi.types.chat.PrivateChat
+import dev.inmo.tgbotapi.types.chat.PrivateChatImpl
+import dev.inmo.tgbotapi.types.chat.PublicChat
+import dev.inmo.tgbotapi.types.chat.SuperPublicChat
+import dev.inmo.tgbotapi.types.chat.SupergroupChat
+import dev.inmo.tgbotapi.types.chat.SupergroupChatImpl
+import dev.inmo.tgbotapi.types.chat.UnknownChatType
+import dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 import dev.inmo.tgbotapi.types.chat.User
+import dev.inmo.tgbotapi.types.chat.UsernameChat
 import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
+import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberImpl
 import dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 import dev.inmo.tgbotapi.types.chat.member.ChatMember
+import dev.inmo.tgbotapi.types.chat.member.KickedChatMember
+import dev.inmo.tgbotapi.types.chat.member.LeftChatMember
+import dev.inmo.tgbotapi.types.chat.member.LeftChatMemberImpl
 import dev.inmo.tgbotapi.types.chat.member.MemberChatMember
+import dev.inmo.tgbotapi.types.chat.member.MemberChatMemberImpl
+import dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
+import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
-import dev.inmo.tgbotapi.types.dice.*
-import dev.inmo.tgbotapi.types.files.*
+import dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
+import dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
+import dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
+import dev.inmo.tgbotapi.types.dice.CustomDiceAnimationType
+import dev.inmo.tgbotapi.types.dice.DartsDiceAnimationType
+import dev.inmo.tgbotapi.types.dice.DiceAnimationType
+import dev.inmo.tgbotapi.types.dice.FootballDiceAnimationType
+import dev.inmo.tgbotapi.types.dice.SlotMachineDiceAnimationType
+import dev.inmo.tgbotapi.types.files.AnimatedSticker
+import dev.inmo.tgbotapi.types.files.AnimationFile
+import dev.inmo.tgbotapi.types.files.AudioFile
+import dev.inmo.tgbotapi.types.files.DocumentFile
+import dev.inmo.tgbotapi.types.files.File
+import dev.inmo.tgbotapi.types.files.MimedMediaFile
+import dev.inmo.tgbotapi.types.files.PassportFile
+import dev.inmo.tgbotapi.types.files.PathedFile
+import dev.inmo.tgbotapi.types.files.PhotoSize
+import dev.inmo.tgbotapi.types.files.PlayableMediaFile
+import dev.inmo.tgbotapi.types.files.SimpleSticker
+import dev.inmo.tgbotapi.types.files.SizedMediaFile
 import dev.inmo.tgbotapi.types.files.Sticker
-import dev.inmo.tgbotapi.types.location.*
-import dev.inmo.tgbotapi.types.message.*
-import dev.inmo.tgbotapi.types.message.ChatEvents.*
-import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMember
-import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
-import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
-import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.files.TelegramMediaFile
+import dev.inmo.tgbotapi.types.files.ThumbedMediaFile
+import dev.inmo.tgbotapi.types.files.VideoFile
+import dev.inmo.tgbotapi.types.files.VideoNoteFile
+import dev.inmo.tgbotapi.types.files.VideoSticker
+import dev.inmo.tgbotapi.types.files.VoiceFile
+import dev.inmo.tgbotapi.types.location.LiveLocation
+import dev.inmo.tgbotapi.types.location.Location
+import dev.inmo.tgbotapi.types.location.StaticLocation
+import dev.inmo.tgbotapi.types.media.AudioMediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
+import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.SizedTelegramMedia
+import dev.inmo.tgbotapi.types.media.TelegramMedia
+import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
+import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
+import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
+import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
+import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
+import dev.inmo.tgbotapi.types.media.TitledTelegramMedia
+import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl
+import dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl
+import dev.inmo.tgbotapi.types.message.ChannelEventMessage
+import dev.inmo.tgbotapi.types.message.ChannelMediaGroupMessage
+import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
+import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.MessageAutoDeleteTimerChanged
+import dev.inmo.tgbotapi.types.message.ChatEvents.MigratedToSupergroup
+import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
+import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatPhoto
+import dev.inmo.tgbotapi.types.message.ChatEvents.NewChatTitle
+import dev.inmo.tgbotapi.types.message.ChatEvents.PinnedMessage
+import dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
+import dev.inmo.tgbotapi.types.message.ChatEvents.SupergroupChatCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.UserLoggedIn
+import dev.inmo.tgbotapi.types.message.ChatEvents.WebAppData
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
+import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
+import dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl
+import dev.inmo.tgbotapi.types.message.CommonGroupEventMessage
+import dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage
+import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
+import dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl
+import dev.inmo.tgbotapi.types.message.ForwardInfo
+import dev.inmo.tgbotapi.types.message.PassportMessage
+import dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl
+import dev.inmo.tgbotapi.types.message.PrivateEventMessage
+import dev.inmo.tgbotapi.types.message.UnconnectedFromChannelGroupContentMessageImpl
+import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ConnectedFromChannelGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
+import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
-import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
+import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
+import dev.inmo.tgbotapi.types.message.abstracts.UnconnectedFromChannelGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
+import dev.inmo.tgbotapi.types.message.content.AnimationContent
+import dev.inmo.tgbotapi.types.message.content.AudioContent
 import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.ContactContent
+import dev.inmo.tgbotapi.types.message.content.DiceContent
+import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.GameContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
+import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
+import dev.inmo.tgbotapi.types.message.content.LocationContent
+import dev.inmo.tgbotapi.types.message.content.MediaCollectionContent
+import dev.inmo.tgbotapi.types.message.content.MediaContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MessageContent
+import dev.inmo.tgbotapi.types.message.content.PhotoContent
+import dev.inmo.tgbotapi.types.message.content.PollContent
+import dev.inmo.tgbotapi.types.message.content.ResendableContent
+import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
+import dev.inmo.tgbotapi.types.message.content.StickerContent
+import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.content.TextedMediaContent
+import dev.inmo.tgbotapi.types.message.content.VenueContent
+import dev.inmo.tgbotapi.types.message.content.VideoContent
+import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
-import dev.inmo.tgbotapi.types.message.textsources.*
-import dev.inmo.tgbotapi.types.passport.*
-import dev.inmo.tgbotapi.types.passport.decrypted.*
-import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.*
-import dev.inmo.tgbotapi.types.passport.encrypted.*
-import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.*
-import dev.inmo.tgbotapi.types.polls.*
-import dev.inmo.tgbotapi.types.update.*
-import dev.inmo.tgbotapi.types.update.abstracts.*
-import dev.inmo.tgbotapi.types.update.media_group.*
-import dev.inmo.tgbotapi.utils.PreviewFeature
+import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
+import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
+import dev.inmo.tgbotapi.types.message.textsources.CashTagTextSource
+import dev.inmo.tgbotapi.types.message.textsources.CodeTextSource
+import dev.inmo.tgbotapi.types.message.textsources.EMailTextSource
+import dev.inmo.tgbotapi.types.message.textsources.HashTagTextSource
+import dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
+import dev.inmo.tgbotapi.types.message.textsources.MentionTextSource
+import dev.inmo.tgbotapi.types.message.textsources.MultilevelTextSource
+import dev.inmo.tgbotapi.types.message.textsources.PhoneNumberTextSource
+import dev.inmo.tgbotapi.types.message.textsources.PreTextSource
+import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
+import dev.inmo.tgbotapi.types.message.textsources.SpoilerTextSource
+import dev.inmo.tgbotapi.types.message.textsources.StrikethroughTextSource
+import dev.inmo.tgbotapi.types.message.textsources.TextLinkTextSource
+import dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
+import dev.inmo.tgbotapi.types.message.textsources.URLTextSource
+import dev.inmo.tgbotapi.types.message.textsources.UnderlineTextSource
+import dev.inmo.tgbotapi.types.passport.PassportElementError
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorDataField
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorFile
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorFiles
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorFrontSide
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorReverseSide
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorSelfie
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorTranslationFile
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorTranslationFiles
+import dev.inmo.tgbotapi.types.passport.PassportElementErrorUnspecified
+import dev.inmo.tgbotapi.types.passport.PassportElementFileError
+import dev.inmo.tgbotapi.types.passport.PassportElementFilesError
+import dev.inmo.tgbotapi.types.passport.PassportMultipleElementsError
+import dev.inmo.tgbotapi.types.passport.PassportSingleElementError
+import dev.inmo.tgbotapi.types.passport.UnknownPassportElementError
+import dev.inmo.tgbotapi.types.passport.decrypted.AddressSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.BankStatementSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.CommonPassportSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.DriverLicenseSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.IdentityCardSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.IdentityWithReverseSideSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.InternalPassportSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.OtherDocumentsSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.PassportRegistrationSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.PassportSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.PersonalDetailsSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.RentalAgreementSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.TemporalRegistrationSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.UtilityBillSecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValue
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueIdentity
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithData
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithFiles
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithReverseSide
+import dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithTranslations
+import dev.inmo.tgbotapi.types.passport.encrypted.BankStatement
+import dev.inmo.tgbotapi.types.passport.encrypted.CommonPassport
+import dev.inmo.tgbotapi.types.passport.encrypted.DriverLicense
+import dev.inmo.tgbotapi.types.passport.encrypted.Email
+import dev.inmo.tgbotapi.types.passport.encrypted.EncryptedAddress
+import dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPassportElementWithTranslatableFilesCollection
+import dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPassportElementWithTranslatableIDDocument
+import dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPersonalDetails
+import dev.inmo.tgbotapi.types.passport.encrypted.IdentityCard
+import dev.inmo.tgbotapi.types.passport.encrypted.InternalPassport
+import dev.inmo.tgbotapi.types.passport.encrypted.Passport
+import dev.inmo.tgbotapi.types.passport.encrypted.PassportRegistration
+import dev.inmo.tgbotapi.types.passport.encrypted.PhoneNumber
+import dev.inmo.tgbotapi.types.passport.encrypted.RentalAgreement
+import dev.inmo.tgbotapi.types.passport.encrypted.TemporaryRegistration
+import dev.inmo.tgbotapi.types.passport.encrypted.UtilityBill
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementTranslatable
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithData
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithEmail
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithFilesCollection
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithFrontSide
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithPhoneNumber
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithReverseSide
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithSelfie
+import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.UnknownEncryptedPassportElement
+import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
+import dev.inmo.tgbotapi.types.payments.ShippingQuery
+import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
+import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
+import dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
+import dev.inmo.tgbotapi.types.polls.Poll
+import dev.inmo.tgbotapi.types.polls.PollAnswer
+import dev.inmo.tgbotapi.types.polls.QuizPoll
+import dev.inmo.tgbotapi.types.polls.RegularPoll
+import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
+import dev.inmo.tgbotapi.types.polls.UnknownPollType
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.GameShortNameCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdDataCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdGameShortNameCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.MessageCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
+import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
+import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
+import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
+import dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
+import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
+import dev.inmo.tgbotapi.types.update.EditMessageUpdate
+import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
+import dev.inmo.tgbotapi.types.update.MessageUpdate
+import dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.PollAnswerUpdate
+import dev.inmo.tgbotapi.types.update.PollUpdate
+import dev.inmo.tgbotapi.types.update.PreCheckoutQueryUpdate
+import dev.inmo.tgbotapi.types.update.ShippingQueryUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
+import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.update.media_group.ChannelPostMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.EditChannelPostMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.EditMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.EditMessageMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.MessageMediaGroupUpdate
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
+import kotlin.Suppress
+
+public inline fun CommonSendInvoiceData.createInvoiceLinkOrNull(): CreateInvoiceLink? = this as?
+    dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
+
+public inline fun CommonSendInvoiceData.createInvoiceLinkOrThrow(): CreateInvoiceLink = this as
+    dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
+
+public inline fun <T> CommonSendInvoiceData.ifCreateInvoiceLink(block: (CreateInvoiceLink) -> T): T?
+    = createInvoiceLinkOrNull() ?.let(block)
+
+public inline fun CommonSendInvoiceData.sendInvoiceOrNull(): SendInvoice? = this as?
+    dev.inmo.tgbotapi.requests.send.payments.SendInvoice
+
+public inline fun CommonSendInvoiceData.sendInvoiceOrThrow(): SendInvoice = this as
+    dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 
-@PreviewFeature
-inline fun <T> Chat.ifBot(block: (Bot) -> T) = botOrNull() ?.let(block)
+public inline fun <T> CommonSendInvoiceData.ifSendInvoice(block: (SendInvoice) -> T): T? =
+    sendInvoiceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.botOrNull(): Bot? = this as? Bot
+public inline fun CommonSendInvoiceData.inputInvoiceMessageContentOrNull():
+    InputInvoiceMessageContent? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputInvoiceMessageContent
 
-@PreviewFeature
-inline fun Chat.botOrThrow(): Bot = this as Bot
+public inline fun CommonSendInvoiceData.inputInvoiceMessageContentOrThrow():
+    InputInvoiceMessageContent = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputInvoiceMessageContent
 
-@PreviewFeature
-inline fun <T> Chat.ifCommonBot(block: (CommonBot) -> T) = commonBotOrNull() ?.let(block)
+public inline fun <T>
+    CommonSendInvoiceData.ifInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T): T?
+    = inputInvoiceMessageContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.commonBotOrNull(): CommonBot? = this as? CommonBot
+public inline fun WithUser.fromUserOrNull(): FromUser? = this as?
+    dev.inmo.tgbotapi.abstracts.FromUser
 
-@PreviewFeature
-inline fun Chat.commonBotOrThrow(): CommonBot = this as CommonBot
+public inline fun WithUser.fromUserOrThrow(): FromUser = this as
+    dev.inmo.tgbotapi.abstracts.FromUser
 
-@PreviewFeature
-inline fun <T> Chat.ifCommonUser(block: (CommonUser) -> T) = commonUserOrNull() ?.let(block)
+public inline fun <T> WithUser.ifFromUser(block: (FromUser) -> T): T? = fromUserOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun Chat.commonUserOrNull(): CommonUser? = this as? CommonUser
+public inline fun WithUser.chatInviteLinkOrNull(): ChatInviteLink? = this as?
+    dev.inmo.tgbotapi.types.ChatInviteLink
 
-@PreviewFeature
-inline fun Chat.commonUserOrThrow(): CommonUser = this as CommonUser
+public inline fun WithUser.chatInviteLinkOrThrow(): ChatInviteLink = this as
+    dev.inmo.tgbotapi.types.ChatInviteLink
 
-@PreviewFeature
-inline fun <T> Chat.ifExtendedBot(block: (ExtendedBot) -> T) = extendedBotOrNull() ?.let(block)
+public inline fun <T> WithUser.ifChatInviteLink(block: (ChatInviteLink) -> T): T? =
+    chatInviteLinkOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.extendedBotOrNull(): ExtendedBot? = this as? ExtendedBot
+public inline fun WithUser.secondaryChatInviteLinkOrNull(): SecondaryChatInviteLink? = this as?
+    dev.inmo.tgbotapi.types.SecondaryChatInviteLink
 
-@PreviewFeature
-inline fun Chat.extendedBotOrThrow(): ExtendedBot = this as ExtendedBot
+public inline fun WithUser.secondaryChatInviteLinkOrThrow(): SecondaryChatInviteLink = this as
+    dev.inmo.tgbotapi.types.SecondaryChatInviteLink
 
-@PreviewFeature
-inline fun <T> Chat.ifUser(block: (User) -> T) = userOrNull() ?.let(block)
+public inline fun <T> WithUser.ifSecondaryChatInviteLink(block: (SecondaryChatInviteLink) -> T): T?
+    = secondaryChatInviteLinkOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.userOrNull(): User? = this as? User
+public inline fun WithUser.primaryInviteLinkOrNull(): PrimaryInviteLink? = this as?
+    dev.inmo.tgbotapi.types.PrimaryInviteLink
 
-@PreviewFeature
-inline fun Chat.userOrThrow(): User = this as User
+public inline fun WithUser.primaryInviteLinkOrThrow(): PrimaryInviteLink = this as
+    dev.inmo.tgbotapi.types.PrimaryInviteLink
 
-@PreviewFeature
-inline fun <T> Chat.ifChannelChat(block: (ChannelChat) -> T) = channelChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifPrimaryInviteLink(block: (PrimaryInviteLink) -> T): T? =
+    primaryInviteLinkOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.channelChatOrNull(): ChannelChat? = this as? ChannelChat
+public inline fun WithUser.chatInviteLinkWithJoinRequestOrNull(): ChatInviteLinkWithJoinRequest? =
+    this as? dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
 
-@PreviewFeature
-inline fun Chat.channelChatOrThrow(): ChannelChat = this as ChannelChat
+public inline fun WithUser.chatInviteLinkWithJoinRequestOrThrow(): ChatInviteLinkWithJoinRequest =
+    this as dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
 
-@PreviewFeature
-inline fun <T> Chat.ifGroupChat(block: (GroupChat) -> T) = groupChatOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T): T? =
+    chatInviteLinkWithJoinRequestOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.groupChatOrNull(): GroupChat? = this as? GroupChat
+public inline fun WithUser.chatInviteLinkWithLimitedMembersOrNull():
+    ChatInviteLinkWithLimitedMembers? = this as?
+    dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
 
-@PreviewFeature
-inline fun Chat.groupChatOrThrow(): GroupChat = this as GroupChat
+public inline fun WithUser.chatInviteLinkWithLimitedMembersOrThrow():
+    ChatInviteLinkWithLimitedMembers = this as
+    dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
 
-@PreviewFeature
-inline fun <T> Chat.ifPrivateChat(block: (PrivateChat) -> T) = privateChatOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T): T?
+    = chatInviteLinkWithLimitedMembersOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.privateChatOrNull(): PrivateChat? = this as? PrivateChat
+public inline fun WithUser.chatInviteLinkUnlimitedOrNull(): ChatInviteLinkUnlimited? = this as?
+    dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
 
-@PreviewFeature
-inline fun Chat.privateChatOrThrow(): PrivateChat = this as PrivateChat
+public inline fun WithUser.chatInviteLinkUnlimitedOrThrow(): ChatInviteLinkUnlimited = this as
+    dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
 
-@PreviewFeature
-inline fun <T> Chat.ifPublicChat(block: (PublicChat) -> T) = publicChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T): T?
+    = chatInviteLinkUnlimitedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.publicChatOrNull(): PublicChat? = this as? PublicChat
+public inline fun WithUser.baseChosenInlineResultOrNull(): BaseChosenInlineResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 
-@PreviewFeature
-inline fun Chat.publicChatOrThrow(): PublicChat = this as PublicChat
+public inline fun WithUser.baseChosenInlineResultOrThrow(): BaseChosenInlineResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 
-@PreviewFeature
-inline fun <T> Chat.ifSuperPublicChat(block: (SuperPublicChat) -> T) = superPublicChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifBaseChosenInlineResult(block: (BaseChosenInlineResult) -> T): T? =
+    baseChosenInlineResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.superPublicChatOrNull(): SuperPublicChat? = this as? SuperPublicChat
+public inline fun WithUser.chosenInlineResultOrNull(): ChosenInlineResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 
-@PreviewFeature
-inline fun Chat.superPublicChatOrThrow(): SuperPublicChat = this as SuperPublicChat
+public inline fun WithUser.chosenInlineResultOrThrow(): ChosenInlineResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 
-@PreviewFeature
-inline fun <T> Chat.ifSupergroupChat(block: (SupergroupChat) -> T) = supergroupChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifChosenInlineResult(block: (ChosenInlineResult) -> T): T? =
+    chosenInlineResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.supergroupChatOrNull(): SupergroupChat? = this as? SupergroupChat
+public inline fun WithUser.locationChosenInlineResultOrNull(): LocationChosenInlineResult? = this
+    as? dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
 
-@PreviewFeature
-inline fun Chat.supergroupChatOrThrow(): SupergroupChat = this as SupergroupChat
+public inline fun WithUser.locationChosenInlineResultOrThrow(): LocationChosenInlineResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
 
-@PreviewFeature
-inline fun <T> Chat.ifUnknownChatType(block: (UnknownChatType) -> T) = unknownChatTypeOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T): T? =
+    locationChosenInlineResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.unknownChatTypeOrNull(): UnknownChatType? = this as? UnknownChatType
+public inline fun WithUser.baseInlineQueryOrNull(): BaseInlineQuery? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 
-@PreviewFeature
-inline fun Chat.unknownChatTypeOrThrow(): UnknownChatType = this as UnknownChatType
+public inline fun WithUser.baseInlineQueryOrThrow(): BaseInlineQuery = this as
+    dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 
-@PreviewFeature
-inline fun <T> Chat.ifUsernameChat(block: (UsernameChat) -> T) = usernameChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifBaseInlineQuery(block: (BaseInlineQuery) -> T): T? =
+    baseInlineQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.usernameChatOrNull(): UsernameChat? = this as? UsernameChat
+public inline fun WithUser.inlineQueryOrNull(): InlineQuery? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 
-@PreviewFeature
-inline fun Chat.usernameChatOrThrow(): UsernameChat = this as UsernameChat
+public inline fun WithUser.inlineQueryOrThrow(): InlineQuery = this as
+    dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 
-@PreviewFeature
-inline fun <T> Chat.ifExtendedChannelChat(block: (ExtendedChannelChat) -> T) = extendedChannelChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifInlineQuery(block: (InlineQuery) -> T): T? = inlineQueryOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun Chat.extendedChannelChatOrNull(): ExtendedChannelChat? = this as? ExtendedChannelChat
+public inline fun WithUser.locationInlineQueryOrNull(): LocationInlineQuery? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 
-@PreviewFeature
-inline fun Chat.extendedChannelChatOrThrow(): ExtendedChannelChat = this as ExtendedChannelChat
+public inline fun WithUser.locationInlineQueryOrThrow(): LocationInlineQuery = this as
+    dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 
-@PreviewFeature
-inline fun <T> Chat.ifExtendedChat(block: (ExtendedChat) -> T) = extendedChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifLocationInlineQuery(block: (LocationInlineQuery) -> T): T? =
+    locationInlineQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.extendedChatOrNull(): ExtendedChat? = this as? ExtendedChat
+public inline fun WithUser.chatJoinRequestOrNull(): ChatJoinRequest? = this as?
+    dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 
-@PreviewFeature
-inline fun Chat.extendedChatOrThrow(): ExtendedChat = this as ExtendedChat
+public inline fun WithUser.chatJoinRequestOrThrow(): ChatJoinRequest = this as
+    dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 
-@PreviewFeature
-inline fun <T> Chat.ifExtendedGroupChat(block: (ExtendedGroupChat) -> T) = extendedGroupChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifChatJoinRequest(block: (ChatJoinRequest) -> T): T? =
+    chatJoinRequestOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.extendedGroupChatOrNull(): ExtendedGroupChat? = this as? ExtendedGroupChat
+public inline fun WithUser.administratorChatMemberOrNull(): AdministratorChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
 
-@PreviewFeature
-inline fun Chat.extendedGroupChatOrThrow(): ExtendedGroupChat = this as ExtendedGroupChat
+public inline fun WithUser.administratorChatMemberOrThrow(): AdministratorChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
 
-@PreviewFeature
-inline fun <T> Chat.ifExtendedPrivateChat(block: (ExtendedPrivateChat) -> T) = extendedPrivateChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifAdministratorChatMember(block: (AdministratorChatMember) -> T): T?
+    = administratorChatMemberOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.extendedPrivateChatOrNull(): ExtendedPrivateChat? = this as? ExtendedPrivateChat
+public inline fun WithUser.administratorChatMemberImplOrNull(): AdministratorChatMemberImpl? = this
+    as? dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberImpl
 
-@PreviewFeature
-inline fun Chat.extendedPrivateChatOrThrow(): ExtendedPrivateChat = this as ExtendedPrivateChat
+public inline fun WithUser.administratorChatMemberImplOrThrow(): AdministratorChatMemberImpl = this
+    as dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberImpl
 
-@PreviewFeature
-inline fun <T> Chat.ifExtendedPublicChat(block: (ExtendedPublicChat) -> T) = extendedPublicChatOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifAdministratorChatMemberImpl(block: (AdministratorChatMemberImpl) -> T): T? =
+    administratorChatMemberImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.extendedPublicChatOrNull(): ExtendedPublicChat? = this as? ExtendedPublicChat
+public inline fun WithUser.bannedChatMemberOrNull(): BannedChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 
-@PreviewFeature
-inline fun Chat.extendedPublicChatOrThrow(): ExtendedPublicChat = this as ExtendedPublicChat
+public inline fun WithUser.bannedChatMemberOrThrow(): BannedChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 
-@PreviewFeature
-inline fun <T> Chat.ifExtendedSupergroupChat(block: (ExtendedSupergroupChat) -> T) = extendedSupergroupChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifBannedChatMember(block: (BannedChatMember) -> T): T? =
+    bannedChatMemberOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.extendedSupergroupChatOrNull(): ExtendedSupergroupChat? = this as? ExtendedSupergroupChat
+public inline fun WithUser.chatMemberOrNull(): ChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.ChatMember
 
-@PreviewFeature
-inline fun Chat.extendedSupergroupChatOrThrow(): ExtendedSupergroupChat = this as ExtendedSupergroupChat
+public inline fun WithUser.chatMemberOrThrow(): ChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.ChatMember
 
-@PreviewFeature
-inline fun <T> Chat.ifPossiblyPremiumChat(block: (PossiblyPremiumChat) -> T) = possiblyPremiumChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifChatMember(block: (ChatMember) -> T): T? = chatMemberOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun Chat.possiblyPremiumChatOrNull(): PossiblyPremiumChat? = this as? PossiblyPremiumChat
+public inline fun WithUser.kickedChatMemberOrNull(): KickedChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.KickedChatMember
 
-@PreviewFeature
-inline fun Chat.possiblyPremiumChatOrThrow(): PossiblyPremiumChat = this as PossiblyPremiumChat
+public inline fun WithUser.kickedChatMemberOrThrow(): KickedChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.KickedChatMember
 
-@PreviewFeature
-inline fun <T> Chat.ifAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T) = ableToAddInAttachmentMenuChatOrNull() ?.let(block)
+public inline fun <T> WithUser.ifKickedChatMember(block: (KickedChatMember) -> T): T? =
+    kickedChatMemberOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Chat.ableToAddInAttachmentMenuChatOrNull(): AbleToAddInAttachmentMenuChat? = this as? AbleToAddInAttachmentMenuChat
+public inline fun WithUser.leftChatMemberOrNull(): LeftChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.LeftChatMember
 
-@PreviewFeature
-inline fun Chat.ableToAddInAttachmentMenuChatOrThrow(): AbleToAddInAttachmentMenuChat = this as AbleToAddInAttachmentMenuChat
+public inline fun WithUser.leftChatMemberOrThrow(): LeftChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.LeftChatMember
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifDataCallbackQuery(block: (DataCallbackQuery) -> T) = dataCallbackQueryOrNull() ?.let(block)
+public inline fun <T> WithUser.ifLeftChatMember(block: (LeftChatMember) -> T): T? =
+    leftChatMemberOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.dataCallbackQueryOrNull(): DataCallbackQuery? = this as? DataCallbackQuery
+public inline fun WithUser.leftChatMemberImplOrNull(): LeftChatMemberImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.member.LeftChatMemberImpl
 
-@PreviewFeature
-inline fun CallbackQuery.dataCallbackQueryOrThrow(): DataCallbackQuery = this as DataCallbackQuery
+public inline fun WithUser.leftChatMemberImplOrThrow(): LeftChatMemberImpl = this as
+    dev.inmo.tgbotapi.types.chat.member.LeftChatMemberImpl
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T) = gameShortNameCallbackQueryOrNull() ?.let(block)
+public inline fun <T> WithUser.ifLeftChatMemberImpl(block: (LeftChatMemberImpl) -> T): T? =
+    leftChatMemberImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.gameShortNameCallbackQueryOrNull(): GameShortNameCallbackQuery? =
-    this as? GameShortNameCallbackQuery
+public inline fun WithUser.memberChatMemberOrNull(): MemberChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 
-@PreviewFeature
-inline fun CallbackQuery.gameShortNameCallbackQueryOrThrow(): GameShortNameCallbackQuery =
-    this as GameShortNameCallbackQuery
+public inline fun WithUser.memberChatMemberOrThrow(): MemberChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifInlineMessageIdCallbackQuery(block: (InlineMessageIdCallbackQuery) -> T) = inlineMessageIdCallbackQueryOrNull() ?.let(block)
+public inline fun <T> WithUser.ifMemberChatMember(block: (MemberChatMember) -> T): T? =
+    memberChatMemberOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.inlineMessageIdCallbackQueryOrNull(): InlineMessageIdCallbackQuery? =
-    this as? InlineMessageIdCallbackQuery
+public inline fun WithUser.memberChatMemberImplOrNull(): MemberChatMemberImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.member.MemberChatMemberImpl
 
-@PreviewFeature
-inline fun CallbackQuery.inlineMessageIdCallbackQueryOrThrow(): InlineMessageIdCallbackQuery =
-    this as InlineMessageIdCallbackQuery
+public inline fun WithUser.memberChatMemberImplOrThrow(): MemberChatMemberImpl = this as
+    dev.inmo.tgbotapi.types.chat.member.MemberChatMemberImpl
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifInlineMessageIdDataCallbackQuery(block: (InlineMessageIdDataCallbackQuery) -> T) = inlineMessageIdDataCallbackQueryOrNull() ?.let(block)
+public inline fun <T> WithUser.ifMemberChatMemberImpl(block: (MemberChatMemberImpl) -> T): T? =
+    memberChatMemberImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.inlineMessageIdDataCallbackQueryOrNull(): InlineMessageIdDataCallbackQuery? =
-    this as? InlineMessageIdDataCallbackQuery
+public inline fun WithUser.ownerChatMemberOrNull(): OwnerChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 
-@PreviewFeature
-inline fun CallbackQuery.inlineMessageIdDataCallbackQueryOrThrow(): InlineMessageIdDataCallbackQuery =
-    this as InlineMessageIdDataCallbackQuery
+public inline fun WithUser.ownerChatMemberOrThrow(): OwnerChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifInlineMessageIdGameShortNameCallbackQuery(block: (InlineMessageIdGameShortNameCallbackQuery) -> T) = inlineMessageIdGameShortNameCallbackQueryOrNull() ?.let(block)
+public inline fun <T> WithUser.ifOwnerChatMember(block: (OwnerChatMember) -> T): T? =
+    ownerChatMemberOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.inlineMessageIdGameShortNameCallbackQueryOrNull(): InlineMessageIdGameShortNameCallbackQuery? =
-    this as? InlineMessageIdGameShortNameCallbackQuery
+public inline fun WithUser.restrictedChatMemberOrNull(): RestrictedChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 
-@PreviewFeature
-inline fun CallbackQuery.inlineMessageIdGameShortNameCallbackQueryOrThrow(): InlineMessageIdGameShortNameCallbackQuery =
-    this as InlineMessageIdGameShortNameCallbackQuery
+public inline fun WithUser.restrictedChatMemberOrThrow(): RestrictedChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifMessageCallbackQuery(block: (MessageCallbackQuery) -> T) = messageCallbackQueryOrNull() ?.let(block)
+public inline fun <T> WithUser.ifRestrictedChatMember(block: (RestrictedChatMember) -> T): T? =
+    restrictedChatMemberOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.messageCallbackQueryOrNull(): MessageCallbackQuery? = this as? MessageCallbackQuery
+public inline fun WithUser.specialRightsChatMemberOrNull(): SpecialRightsChatMember? = this as?
+    dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 
-@PreviewFeature
-inline fun CallbackQuery.messageCallbackQueryOrThrow(): MessageCallbackQuery = this as MessageCallbackQuery
+public inline fun WithUser.specialRightsChatMemberOrThrow(): SpecialRightsChatMember = this as
+    dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifMessageDataCallbackQuery(block: (MessageDataCallbackQuery) -> T) = messageDataCallbackQueryOrNull() ?.let(block)
+public inline fun <T> WithUser.ifSpecialRightsChatMember(block: (SpecialRightsChatMember) -> T): T?
+    = specialRightsChatMemberOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.messageDataCallbackQueryOrNull(): MessageDataCallbackQuery? = this as? MessageDataCallbackQuery
+public inline fun WithUser.leftChatMemberEventOrNull(): LeftChatMemberEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
 
-@PreviewFeature
-inline fun CallbackQuery.messageDataCallbackQueryOrThrow(): MessageDataCallbackQuery = this as MessageDataCallbackQuery
+public inline fun WithUser.leftChatMemberEventOrThrow(): LeftChatMemberEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T) = messageGameShortNameCallbackQueryOrNull() ?.let(block)
+public inline fun <T> WithUser.ifLeftChatMemberEvent(block: (LeftChatMemberEvent) -> T): T? =
+    leftChatMemberEventOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.messageGameShortNameCallbackQueryOrNull(): MessageGameShortNameCallbackQuery? =
-    this as? MessageGameShortNameCallbackQuery
+public inline fun WithUser.commonGroupEventMessageOrNull(): CommonGroupEventMessage<GroupEvent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.CommonGroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-@PreviewFeature
-inline fun CallbackQuery.messageGameShortNameCallbackQueryOrThrow(): MessageGameShortNameCallbackQuery =
-    this as MessageGameShortNameCallbackQuery
+public inline fun WithUser.commonGroupEventMessageOrThrow(): CommonGroupEventMessage<GroupEvent> =
+    this as
+    dev.inmo.tgbotapi.types.message.CommonGroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-@PreviewFeature
-inline fun <T> CallbackQuery.ifUnknownCallbackQueryType(block: (UnknownCallbackQueryType) -> T) = unknownCallbackQueryTypeOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T): T? =
+    commonGroupEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CallbackQuery.unknownCallbackQueryTypeOrNull(): UnknownCallbackQueryType? = this as? UnknownCallbackQueryType
+public inline fun WithUser.commonMediaGroupMessageOrNull():
+    CommonMediaGroupMessage<MediaGroupContent>? = this as?
+    dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
 
-@PreviewFeature
-inline fun CallbackQuery.unknownCallbackQueryTypeOrThrow(): UnknownCallbackQueryType = this as UnknownCallbackQueryType
+public inline fun WithUser.commonMediaGroupMessageOrThrow():
+    CommonMediaGroupMessage<MediaGroupContent> = this as
+    dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorDataField(block: (PassportElementErrorDataField) -> T) = passportElementErrorDataFieldOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupContent>) -> T): T?
+    = commonMediaGroupMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorDataFieldOrNull(): PassportElementErrorDataField? =
-    this as? PassportElementErrorDataField
+public inline fun WithUser.commonSupergroupEventMessageOrNull():
+    CommonSupergroupEventMessage<SupergroupEvent>? = this as?
+    dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorDataFieldOrThrow(): PassportElementErrorDataField =
-    this as PassportElementErrorDataField
+public inline fun WithUser.commonSupergroupEventMessageOrThrow():
+    CommonSupergroupEventMessage<SupergroupEvent> = this as
+    dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorFile(block: (PassportElementErrorFile) -> T) = passportElementErrorFileOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T):
+    T? = commonSupergroupEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorFileOrNull(): PassportElementErrorFile? =
-    this as? PassportElementErrorFile
+public inline fun WithUser.commonGroupContentMessageImplOrNull():
+    CommonGroupContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorFileOrThrow(): PassportElementErrorFile =
-    this as PassportElementErrorFile
+public inline fun WithUser.commonGroupContentMessageImplOrThrow():
+    CommonGroupContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorFiles(block: (PassportElementErrorFiles) -> T) = passportElementErrorFilesOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifCommonGroupContentMessageImpl(block: (CommonGroupContentMessageImpl<MessageContent>) -> T):
+    T? = commonGroupContentMessageImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorFilesOrNull(): PassportElementErrorFiles? =
-    this as? PassportElementErrorFiles
+public inline fun WithUser.passportMessageOrNull(): PassportMessage? = this as?
+    dev.inmo.tgbotapi.types.message.PassportMessage
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorFilesOrThrow(): PassportElementErrorFiles =
-    this as PassportElementErrorFiles
+public inline fun WithUser.passportMessageOrThrow(): PassportMessage = this as
+    dev.inmo.tgbotapi.types.message.PassportMessage
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorFrontSide(block: (PassportElementErrorFrontSide) -> T) = passportElementErrorFrontSideOrNull() ?.let(block)
+public inline fun <T> WithUser.ifPassportMessage(block: (PassportMessage) -> T): T? =
+    passportMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorFrontSideOrNull(): PassportElementErrorFrontSide? =
-    this as? PassportElementErrorFrontSide
+public inline fun WithUser.privateContentMessageImplOrNull():
+    PrivateContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorFrontSideOrThrow(): PassportElementErrorFrontSide =
-    this as PassportElementErrorFrontSide
+public inline fun WithUser.privateContentMessageImplOrThrow():
+    PrivateContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorReverseSide(block: (PassportElementErrorReverseSide) -> T) = passportElementErrorReverseSideOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T):
+    T? = privateContentMessageImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorReverseSideOrNull(): PassportElementErrorReverseSide? =
-    this as? PassportElementErrorReverseSide
+public inline fun WithUser.fromUserMessageOrNull(): FromUserMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorReverseSideOrThrow(): PassportElementErrorReverseSide =
-    this as PassportElementErrorReverseSide
+public inline fun WithUser.fromUserMessageOrThrow(): FromUserMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorSelfie(block: (PassportElementErrorSelfie) -> T) = passportElementErrorSelfieOrNull() ?.let(block)
+public inline fun <T> WithUser.ifFromUserMessage(block: (FromUserMessage) -> T): T? =
+    fromUserMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorSelfieOrNull(): PassportElementErrorSelfie? =
-    this as? PassportElementErrorSelfie
+public inline fun WithUser.groupEventMessageOrNull(): GroupEventMessage<GroupEvent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorSelfieOrThrow(): PassportElementErrorSelfie =
-    this as PassportElementErrorSelfie
+public inline fun WithUser.groupEventMessageOrThrow(): GroupEventMessage<GroupEvent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorTranslationFile(block: (PassportElementErrorTranslationFile) -> T) = passportElementErrorTranslationFileOrNull() ?.let(block)
+public inline fun <T> WithUser.ifGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T): T?
+    = groupEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorTranslationFileOrNull(): PassportElementErrorTranslationFile? =
-    this as? PassportElementErrorTranslationFile
+public inline fun WithUser.commonGroupContentMessageOrNull():
+    CommonGroupContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorTranslationFileOrThrow(): PassportElementErrorTranslationFile =
-    this as PassportElementErrorTranslationFile
+public inline fun WithUser.commonGroupContentMessageOrThrow():
+    CommonGroupContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorTranslationFiles(block: (PassportElementErrorTranslationFiles) -> T) = passportElementErrorTranslationFilesOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T):
+    T? = commonGroupContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorTranslationFilesOrNull(): PassportElementErrorTranslationFiles? =
-    this as? PassportElementErrorTranslationFiles
+public inline fun WithUser.privateContentMessageOrNull(): PrivateContentMessage<MessageContent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorTranslationFilesOrThrow(): PassportElementErrorTranslationFiles =
-    this as PassportElementErrorTranslationFiles
+public inline fun WithUser.privateContentMessageOrThrow(): PrivateContentMessage<MessageContent> =
+    this as
+    dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementErrorUnspecified(block: (PassportElementErrorUnspecified) -> T) = passportElementErrorUnspecifiedOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T): T? =
+    privateContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorUnspecifiedOrNull(): PassportElementErrorUnspecified? =
-    this as? PassportElementErrorUnspecified
+public inline fun WithUser.supergroupEventMessageOrNull(): SupergroupEventMessage<SupergroupEvent>?
+    = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-@PreviewFeature
-inline fun PassportElementError.passportElementErrorUnspecifiedOrThrow(): PassportElementErrorUnspecified =
-    this as PassportElementErrorUnspecified
+public inline fun WithUser.supergroupEventMessageOrThrow(): SupergroupEventMessage<SupergroupEvent>
+    = this as
+    dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementFileError(block: (PassportElementFileError) -> T) = passportElementFileErrorOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T): T? =
+    supergroupEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementFileErrorOrNull(): PassportElementFileError? =
-    this as? PassportElementFileError
+public inline fun WithUser.preCheckoutQueryOrNull(): PreCheckoutQuery? = this as?
+    dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 
-@PreviewFeature
-inline fun PassportElementError.passportElementFileErrorOrThrow(): PassportElementFileError =
-    this as PassportElementFileError
+public inline fun WithUser.preCheckoutQueryOrThrow(): PreCheckoutQuery = this as
+    dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportElementFilesError(block: (PassportElementFilesError) -> T) = passportElementFilesErrorOrNull() ?.let(block)
+public inline fun <T> WithUser.ifPreCheckoutQuery(block: (PreCheckoutQuery) -> T): T? =
+    preCheckoutQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportElementFilesErrorOrNull(): PassportElementFilesError? =
-    this as? PassportElementFilesError
+public inline fun WithUser.shippingQueryOrNull(): ShippingQuery? = this as?
+    dev.inmo.tgbotapi.types.payments.ShippingQuery
 
-@PreviewFeature
-inline fun PassportElementError.passportElementFilesErrorOrThrow(): PassportElementFilesError =
-    this as PassportElementFilesError
+public inline fun WithUser.shippingQueryOrThrow(): ShippingQuery = this as
+    dev.inmo.tgbotapi.types.payments.ShippingQuery
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportMultipleElementsError(block: (PassportMultipleElementsError) -> T) = passportMultipleElementsErrorOrNull() ?.let(block)
+public inline fun <T> WithUser.ifShippingQuery(block: (ShippingQuery) -> T): T? =
+    shippingQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportMultipleElementsErrorOrNull(): PassportMultipleElementsError? =
-    this as? PassportMultipleElementsError
+public inline fun WithUser.pollAnswerOrNull(): PollAnswer? = this as?
+    dev.inmo.tgbotapi.types.polls.PollAnswer
 
-@PreviewFeature
-inline fun PassportElementError.passportMultipleElementsErrorOrThrow(): PassportMultipleElementsError =
-    this as PassportMultipleElementsError
+public inline fun WithUser.pollAnswerOrThrow(): PollAnswer = this as
+    dev.inmo.tgbotapi.types.polls.PollAnswer
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifPassportSingleElementError(block: (PassportSingleElementError) -> T) = passportSingleElementErrorOrNull() ?.let(block)
+public inline fun <T> WithUser.ifPollAnswer(block: (PollAnswer) -> T): T? = pollAnswerOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.passportSingleElementErrorOrNull(): PassportSingleElementError? =
-    this as? PassportSingleElementError
+public inline fun WithUser.callbackQueryOrNull(): CallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 
-@PreviewFeature
-inline fun PassportElementError.passportSingleElementErrorOrThrow(): PassportSingleElementError =
-    this as PassportSingleElementError
+public inline fun WithUser.callbackQueryOrThrow(): CallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 
-@PreviewFeature
-inline fun <T> PassportElementError.ifUnknownPassportElementError(block: (UnknownPassportElementError) -> T) = unknownPassportElementErrorOrNull() ?.let(block)
+public inline fun <T> WithUser.ifCallbackQuery(block: (CallbackQuery) -> T): T? =
+    callbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun PassportElementError.unknownPassportElementErrorOrNull(): UnknownPassportElementError? =
-    this as? UnknownPassportElementError
+public inline fun WithUser.unknownCallbackQueryTypeOrNull(): UnknownCallbackQueryType? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
 
-@PreviewFeature
-inline fun PassportElementError.unknownPassportElementErrorOrThrow(): UnknownPassportElementError =
-    this as UnknownPassportElementError
+public inline fun WithUser.unknownCallbackQueryTypeOrThrow(): UnknownCallbackQueryType = this as
+    dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifBankStatement(block: (BankStatement) -> T) = bankStatementOrNull() ?.let(block)
+public inline fun <T> WithUser.ifUnknownCallbackQueryType(block: (UnknownCallbackQueryType) -> T):
+    T? = unknownCallbackQueryTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.bankStatementOrNull(): BankStatement? = this as? BankStatement
+public inline fun WithUser.dataCallbackQueryOrNull(): DataCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery
 
-@PreviewFeature
-inline fun EncryptedPassportElement.bankStatementOrThrow(): BankStatement = this as BankStatement
+public inline fun WithUser.dataCallbackQueryOrThrow(): DataCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifCommonPassport(block: (CommonPassport) -> T) = commonPassportOrNull() ?.let(block)
+public inline fun <T> WithUser.ifDataCallbackQuery(block: (DataCallbackQuery) -> T): T? =
+    dataCallbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.commonPassportOrNull(): CommonPassport? = this as? CommonPassport
+public inline fun WithUser.gameShortNameCallbackQueryOrNull(): GameShortNameCallbackQuery? = this
+    as? dev.inmo.tgbotapi.types.queries.callback.GameShortNameCallbackQuery
 
-@PreviewFeature
-inline fun EncryptedPassportElement.commonPassportOrThrow(): CommonPassport = this as CommonPassport
+public inline fun WithUser.gameShortNameCallbackQueryOrThrow(): GameShortNameCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.GameShortNameCallbackQuery
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifDriverLicense(block: (DriverLicense) -> T) = driverLicenseOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T): T? =
+    gameShortNameCallbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.driverLicenseOrNull(): DriverLicense? = this as? DriverLicense
+public inline fun WithUser.inlineMessageIdCallbackQueryOrNull(): InlineMessageIdCallbackQuery? =
+    this as? dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
 
-@PreviewFeature
-inline fun EncryptedPassportElement.driverLicenseOrThrow(): DriverLicense = this as DriverLicense
+public inline fun WithUser.inlineMessageIdCallbackQueryOrThrow(): InlineMessageIdCallbackQuery =
+    this as dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEmail(block: (Email) -> T) = emailOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifInlineMessageIdCallbackQuery(block: (InlineMessageIdCallbackQuery) -> T): T? =
+    inlineMessageIdCallbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.emailOrNull(): Email? = this as? Email
+public inline fun WithUser.inlineMessageIdDataCallbackQueryOrNull():
+    InlineMessageIdDataCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdDataCallbackQuery
 
-@PreviewFeature
-inline fun EncryptedPassportElement.emailOrThrow(): Email = this as Email
+public inline fun WithUser.inlineMessageIdDataCallbackQueryOrThrow():
+    InlineMessageIdDataCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdDataCallbackQuery
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedAddress(block: (EncryptedAddress) -> T) = encryptedAddressOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifInlineMessageIdDataCallbackQuery(block: (InlineMessageIdDataCallbackQuery) -> T): T?
+    = inlineMessageIdDataCallbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedAddressOrNull(): EncryptedAddress? = this as? EncryptedAddress
+public inline fun WithUser.inlineMessageIdGameShortNameCallbackQueryOrNull():
+    InlineMessageIdGameShortNameCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdGameShortNameCallbackQuery
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedAddressOrThrow(): EncryptedAddress = this as EncryptedAddress
+public inline fun WithUser.inlineMessageIdGameShortNameCallbackQueryOrThrow():
+    InlineMessageIdGameShortNameCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdGameShortNameCallbackQuery
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPersonalDetails(block: (EncryptedPersonalDetails) -> T) = encryptedPersonalDetailsOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifInlineMessageIdGameShortNameCallbackQuery(block: (InlineMessageIdGameShortNameCallbackQuery) -> T):
+    T? = inlineMessageIdGameShortNameCallbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPersonalDetailsOrNull(): EncryptedPersonalDetails? =
-    this as? EncryptedPersonalDetails
+public inline fun WithUser.messageCallbackQueryOrNull(): MessageCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.MessageCallbackQuery
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPersonalDetailsOrThrow(): EncryptedPersonalDetails =
-    this as EncryptedPersonalDetails
+public inline fun WithUser.messageCallbackQueryOrThrow(): MessageCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.MessageCallbackQuery
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifIdentityCard(block: (IdentityCard) -> T) = identityCardOrNull() ?.let(block)
+public inline fun <T> WithUser.ifMessageCallbackQuery(block: (MessageCallbackQuery) -> T): T? =
+    messageCallbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.identityCardOrNull(): IdentityCard? = this as? IdentityCard
+public inline fun WithUser.messageDataCallbackQueryOrNull(): MessageDataCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
 
-@PreviewFeature
-inline fun EncryptedPassportElement.identityCardOrThrow(): IdentityCard = this as IdentityCard
+public inline fun WithUser.messageDataCallbackQueryOrThrow(): MessageDataCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifInternalPassport(block: (InternalPassport) -> T) = internalPassportOrNull() ?.let(block)
+public inline fun <T> WithUser.ifMessageDataCallbackQuery(block: (MessageDataCallbackQuery) -> T):
+    T? = messageDataCallbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.internalPassportOrNull(): InternalPassport? = this as? InternalPassport
+public inline fun WithUser.messageGameShortNameCallbackQueryOrNull():
+    MessageGameShortNameCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuery
 
-@PreviewFeature
-inline fun EncryptedPassportElement.internalPassportOrThrow(): InternalPassport = this as InternalPassport
+public inline fun WithUser.messageGameShortNameCallbackQueryOrThrow():
+    MessageGameShortNameCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuery
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifPassport(block: (Passport) -> T) = passportOrNull() ?.let(block)
+public inline fun <T>
+    WithUser.ifMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T):
+    T? = messageGameShortNameCallbackQueryOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.passportOrNull(): Passport? = this as? Passport
+public inline fun InlineQueryResult.inlineQueryResultArticleOrNull(): InlineQueryResultArticle? =
+    this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultArticle
 
-@PreviewFeature
-inline fun EncryptedPassportElement.passportOrThrow(): Passport = this as Passport
+public inline fun InlineQueryResult.inlineQueryResultArticleOrThrow(): InlineQueryResultArticle =
+    this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultArticle
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifPassportRegistration(block: (PassportRegistration) -> T) = passportRegistrationOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultArticle(block: (InlineQueryResultArticle) -> T): T? =
+    inlineQueryResultArticleOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.passportRegistrationOrNull(): PassportRegistration? = this as? PassportRegistration
+public inline fun InlineQueryResult.inlineQueryResultAudioCachedImplOrNull():
+    InlineQueryResultAudioCachedImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioCachedImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.passportRegistrationOrThrow(): PassportRegistration = this as PassportRegistration
+public inline fun InlineQueryResult.inlineQueryResultAudioCachedImplOrThrow():
+    InlineQueryResultAudioCachedImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioCachedImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifPhoneNumber(block: (PhoneNumber) -> T) = phoneNumberOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultAudioCachedImpl(block: (InlineQueryResultAudioCachedImpl) -> T):
+    T? = inlineQueryResultAudioCachedImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.phoneNumberOrNull(): PhoneNumber? = this as? PhoneNumber
+public inline fun InlineQueryResult.inlineQueryResultAudioImplOrNull(): InlineQueryResultAudioImpl?
+    = this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.phoneNumberOrThrow(): PhoneNumber = this as PhoneNumber
+public inline fun InlineQueryResult.inlineQueryResultAudioImplOrThrow(): InlineQueryResultAudioImpl
+    = this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifRentalAgreement(block: (RentalAgreement) -> T) = rentalAgreementOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultAudioImpl(block: (InlineQueryResultAudioImpl) -> T): T? =
+    inlineQueryResultAudioImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.rentalAgreementOrNull(): RentalAgreement? = this as? RentalAgreement
+public inline fun InlineQueryResult.inlineQueryResultContactOrNull(): InlineQueryResultContact? =
+    this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultContact
 
-@PreviewFeature
-inline fun EncryptedPassportElement.rentalAgreementOrThrow(): RentalAgreement = this as RentalAgreement
+public inline fun InlineQueryResult.inlineQueryResultContactOrThrow(): InlineQueryResultContact =
+    this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultContact
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifTemporaryRegistration(block: (TemporaryRegistration) -> T) = temporaryRegistrationOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultContact(block: (InlineQueryResultContact) -> T): T? =
+    inlineQueryResultContactOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.temporaryRegistrationOrNull(): TemporaryRegistration? = this as? TemporaryRegistration
+public inline fun InlineQueryResult.inlineQueryResultDocumentCachedImplOrNull():
+    InlineQueryResultDocumentCachedImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentCachedImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.temporaryRegistrationOrThrow(): TemporaryRegistration =
-    this as TemporaryRegistration
+public inline fun InlineQueryResult.inlineQueryResultDocumentCachedImplOrThrow():
+    InlineQueryResultDocumentCachedImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentCachedImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithTranslatableFilesCollection(block: (EncryptedPassportElementWithTranslatableFilesCollection) -> T) = encryptedPassportElementWithTranslatableFilesCollectionOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultDocumentCachedImpl(block: (InlineQueryResultDocumentCachedImpl) -> T):
+    T? = inlineQueryResultDocumentCachedImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithTranslatableFilesCollectionOrNull(): EncryptedPassportElementWithTranslatableFilesCollection? =
-    this as? EncryptedPassportElementWithTranslatableFilesCollection
+public inline fun InlineQueryResult.inlineQueryResultDocumentImplOrNull():
+    InlineQueryResultDocumentImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithTranslatableFilesCollectionOrThrow(): EncryptedPassportElementWithTranslatableFilesCollection =
-    this as EncryptedPassportElementWithTranslatableFilesCollection
+public inline fun InlineQueryResult.inlineQueryResultDocumentImplOrThrow():
+    InlineQueryResultDocumentImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithTranslatableIDDocument(block: (EncryptedPassportElementWithTranslatableIDDocument) -> T) = encryptedPassportElementWithTranslatableIDDocumentOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultDocumentImpl(block: (InlineQueryResultDocumentImpl) -> T):
+    T? = inlineQueryResultDocumentImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithTranslatableIDDocumentOrNull(): EncryptedPassportElementWithTranslatableIDDocument? =
-    this as? EncryptedPassportElementWithTranslatableIDDocument
+public inline fun InlineQueryResult.inlineQueryResultGameOrNull(): InlineQueryResultGame? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGame
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithTranslatableIDDocumentOrThrow(): EncryptedPassportElementWithTranslatableIDDocument =
-    this as EncryptedPassportElementWithTranslatableIDDocument
+public inline fun InlineQueryResult.inlineQueryResultGameOrThrow(): InlineQueryResultGame = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGame
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifUtilityBill(block: (UtilityBill) -> T) = utilityBillOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultGame(block: (InlineQueryResultGame) -> T): T? =
+    inlineQueryResultGameOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.utilityBillOrNull(): UtilityBill? = this as? UtilityBill
+public inline fun InlineQueryResult.inlineQueryResultGifCachedImplOrNull():
+    InlineQueryResultGifCachedImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifCachedImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.utilityBillOrThrow(): UtilityBill = this as UtilityBill
+public inline fun InlineQueryResult.inlineQueryResultGifCachedImplOrThrow():
+    InlineQueryResultGifCachedImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifCachedImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithFilesCollection(block: (EncryptedPassportElementWithFilesCollection) -> T) = encryptedPassportElementWithFilesCollectionOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultGifCachedImpl(block: (InlineQueryResultGifCachedImpl) -> T):
+    T? = inlineQueryResultGifCachedImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithFilesCollectionOrNull(): EncryptedPassportElementWithFilesCollection? =
-    this as? EncryptedPassportElementWithFilesCollection
+public inline fun InlineQueryResult.inlineQueryResultGifImplOrNull(): InlineQueryResultGifImpl? =
+    this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithFilesCollectionOrThrow(): EncryptedPassportElementWithFilesCollection =
-    this as EncryptedPassportElementWithFilesCollection
+public inline fun InlineQueryResult.inlineQueryResultGifImplOrThrow(): InlineQueryResultGifImpl =
+    this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementTranslatable(block: (EncryptedPassportElementTranslatable) -> T) = encryptedPassportElementTranslatableOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultGifImpl(block: (InlineQueryResultGifImpl) -> T): T? =
+    inlineQueryResultGifImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementTranslatableOrNull(): EncryptedPassportElementTranslatable? =
-    this as? EncryptedPassportElementTranslatable
+public inline fun InlineQueryResult.inlineQueryResultLocationOrNull(): InlineQueryResultLocation? =
+    this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultLocation
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementTranslatableOrThrow(): EncryptedPassportElementTranslatable =
-    this as EncryptedPassportElementTranslatable
+public inline fun InlineQueryResult.inlineQueryResultLocationOrThrow(): InlineQueryResultLocation =
+    this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultLocation
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifUnknownEncryptedPassportElement(block: (UnknownEncryptedPassportElement) -> T) = unknownEncryptedPassportElementOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultLocation(block: (InlineQueryResultLocation) -> T): T? =
+    inlineQueryResultLocationOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.unknownEncryptedPassportElementOrNull(): UnknownEncryptedPassportElement? =
-    this as? UnknownEncryptedPassportElement
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifCachedImplOrNull():
+    InlineQueryResultMpeg4GifCachedImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifCachedImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.unknownEncryptedPassportElementOrThrow(): UnknownEncryptedPassportElement =
-    this as UnknownEncryptedPassportElement
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifCachedImplOrThrow():
+    InlineQueryResultMpeg4GifCachedImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifCachedImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithData(block: (EncryptedPassportElementWithData) -> T) = encryptedPassportElementWithDataOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultMpeg4GifCachedImpl(block: (InlineQueryResultMpeg4GifCachedImpl) -> T):
+    T? = inlineQueryResultMpeg4GifCachedImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithDataOrNull(): EncryptedPassportElementWithData? =
-    this as? EncryptedPassportElementWithData
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifImplOrNull():
+    InlineQueryResultMpeg4GifImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithDataOrThrow(): EncryptedPassportElementWithData =
-    this as EncryptedPassportElementWithData
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifImplOrThrow():
+    InlineQueryResultMpeg4GifImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithEmail(block: (EncryptedPassportElementWithEmail) -> T) = encryptedPassportElementWithEmailOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultMpeg4GifImpl(block: (InlineQueryResultMpeg4GifImpl) -> T):
+    T? = inlineQueryResultMpeg4GifImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithEmailOrNull(): EncryptedPassportElementWithEmail? =
-    this as? EncryptedPassportElementWithEmail
+public inline fun InlineQueryResult.inlineQueryResultPhotoCachedImplOrNull():
+    InlineQueryResultPhotoCachedImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoCachedImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithEmailOrThrow(): EncryptedPassportElementWithEmail =
-    this as EncryptedPassportElementWithEmail
+public inline fun InlineQueryResult.inlineQueryResultPhotoCachedImplOrThrow():
+    InlineQueryResultPhotoCachedImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoCachedImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithFrontSide(block: (EncryptedPassportElementWithFrontSide) -> T) = encryptedPassportElementWithFrontSideOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultPhotoCachedImpl(block: (InlineQueryResultPhotoCachedImpl) -> T):
+    T? = inlineQueryResultPhotoCachedImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithFrontSideOrNull(): EncryptedPassportElementWithFrontSide? =
-    this as? EncryptedPassportElementWithFrontSide
+public inline fun InlineQueryResult.inlineQueryResultPhotoImplOrNull(): InlineQueryResultPhotoImpl?
+    = this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithFrontSideOrThrow(): EncryptedPassportElementWithFrontSide =
-    this as EncryptedPassportElementWithFrontSide
+public inline fun InlineQueryResult.inlineQueryResultPhotoImplOrThrow(): InlineQueryResultPhotoImpl
+    = this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoImpl
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithPhoneNumber(block: (EncryptedPassportElementWithPhoneNumber) -> T) = encryptedPassportElementWithPhoneNumberOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultPhotoImpl(block: (InlineQueryResultPhotoImpl) -> T): T? =
+    inlineQueryResultPhotoImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithPhoneNumberOrNull(): EncryptedPassportElementWithPhoneNumber? =
-    this as? EncryptedPassportElementWithPhoneNumber
+public inline fun InlineQueryResult.inlineQueryResultStickerCachedOrNull():
+    InlineQueryResultStickerCached? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultStickerCached
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithPhoneNumberOrThrow(): EncryptedPassportElementWithPhoneNumber =
-    this as EncryptedPassportElementWithPhoneNumber
+public inline fun InlineQueryResult.inlineQueryResultStickerCachedOrThrow():
+    InlineQueryResultStickerCached = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultStickerCached
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithReverseSide(block: (EncryptedPassportElementWithReverseSide) -> T) = encryptedPassportElementWithReverseSideOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultStickerCached(block: (InlineQueryResultStickerCached) -> T):
+    T? = inlineQueryResultStickerCachedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithReverseSideOrNull(): EncryptedPassportElementWithReverseSide? =
-    this as? EncryptedPassportElementWithReverseSide
+public inline fun InlineQueryResult.inlineQueryResultVenueOrNull(): InlineQueryResultVenue? = this
+    as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVenue
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithReverseSideOrThrow(): EncryptedPassportElementWithReverseSide =
-    this as EncryptedPassportElementWithReverseSide
+public inline fun InlineQueryResult.inlineQueryResultVenueOrThrow(): InlineQueryResultVenue = this
+    as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVenue
 
-@PreviewFeature
-inline fun <T> EncryptedPassportElement.ifEncryptedPassportElementWithSelfie(block: (EncryptedPassportElementWithSelfie) -> T) = encryptedPassportElementWithSelfieOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVenue(block: (InlineQueryResultVenue) -> T): T? =
+    inlineQueryResultVenueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithSelfieOrNull(): EncryptedPassportElementWithSelfie? =
-    this as? EncryptedPassportElementWithSelfie
+public inline fun InlineQueryResult.inlineQueryResultVideoCachedImplOrNull():
+    InlineQueryResultVideoCachedImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoCachedImpl
 
-@PreviewFeature
-inline fun EncryptedPassportElement.encryptedPassportElementWithSelfieOrThrow(): EncryptedPassportElementWithSelfie =
-    this as EncryptedPassportElementWithSelfie
+public inline fun InlineQueryResult.inlineQueryResultVideoCachedImplOrThrow():
+    InlineQueryResultVideoCachedImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoCachedImpl
 
-@PreviewFeature
-inline fun <T> SecureValue.ifAddressSecureValue(block: (AddressSecureValue) -> T) = addressSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVideoCachedImpl(block: (InlineQueryResultVideoCachedImpl) -> T):
+    T? = inlineQueryResultVideoCachedImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.addressSecureValueOrNull(): AddressSecureValue? = this as? AddressSecureValue
+public inline fun InlineQueryResult.inlineQueryResultVideoImplOrNull(): InlineQueryResultVideoImpl?
+    = this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoImpl
 
-@PreviewFeature
-inline fun SecureValue.addressSecureValueOrThrow(): AddressSecureValue = this as AddressSecureValue
+public inline fun InlineQueryResult.inlineQueryResultVideoImplOrThrow(): InlineQueryResultVideoImpl
+    = this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoImpl
 
-@PreviewFeature
-inline fun <T> SecureValue.ifBankStatementSecureValue(block: (BankStatementSecureValue) -> T) = bankStatementSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVideoImpl(block: (InlineQueryResultVideoImpl) -> T): T? =
+    inlineQueryResultVideoImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.bankStatementSecureValueOrNull(): BankStatementSecureValue? = this as? BankStatementSecureValue
+public inline fun InlineQueryResult.inlineQueryResultVoiceCachedImplOrNull():
+    InlineQueryResultVoiceCachedImpl? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceCachedImpl
 
-@PreviewFeature
-inline fun SecureValue.bankStatementSecureValueOrThrow(): BankStatementSecureValue = this as BankStatementSecureValue
+public inline fun InlineQueryResult.inlineQueryResultVoiceCachedImplOrThrow():
+    InlineQueryResultVoiceCachedImpl = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceCachedImpl
 
-@PreviewFeature
-inline fun <T> SecureValue.ifCommonPassportSecureValue(block: (CommonPassportSecureValue) -> T) = commonPassportSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVoiceCachedImpl(block: (InlineQueryResultVoiceCachedImpl) -> T):
+    T? = inlineQueryResultVoiceCachedImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.commonPassportSecureValueOrNull(): CommonPassportSecureValue? = this as? CommonPassportSecureValue
+public inline fun InlineQueryResult.inlineQueryResultVoiceImplOrNull(): InlineQueryResultVoiceImpl?
+    = this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceImpl
 
-@PreviewFeature
-inline fun SecureValue.commonPassportSecureValueOrThrow(): CommonPassportSecureValue = this as CommonPassportSecureValue
+public inline fun InlineQueryResult.inlineQueryResultVoiceImplOrThrow(): InlineQueryResultVoiceImpl
+    = this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceImpl
 
-@PreviewFeature
-inline fun <T> SecureValue.ifDriverLicenseSecureValue(block: (DriverLicenseSecureValue) -> T) = driverLicenseSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVoiceImpl(block: (InlineQueryResultVoiceImpl) -> T): T? =
+    inlineQueryResultVoiceImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.driverLicenseSecureValueOrNull(): DriverLicenseSecureValue? = this as? DriverLicenseSecureValue
+public inline fun InlineQueryResult.describedInlineQueryResultOrNull(): DescribedInlineQueryResult?
+    = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.DescribedInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.driverLicenseSecureValueOrThrow(): DriverLicenseSecureValue = this as DriverLicenseSecureValue
+public inline fun InlineQueryResult.describedInlineQueryResultOrThrow(): DescribedInlineQueryResult
+    = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.DescribedInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifIdentityCardSecureValue(block: (IdentityCardSecureValue) -> T) = identityCardSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifDescribedInlineQueryResult(block: (DescribedInlineQueryResult) -> T): T? =
+    describedInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.identityCardSecureValueOrNull(): IdentityCardSecureValue? = this as? IdentityCardSecureValue
+public inline fun InlineQueryResult.fileInlineQueryResultOrNull(): FileInlineQueryResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.FileInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.identityCardSecureValueOrThrow(): IdentityCardSecureValue = this as IdentityCardSecureValue
+public inline fun InlineQueryResult.fileInlineQueryResultOrThrow(): FileInlineQueryResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.FileInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifIdentityWithReverseSideSecureValue(block: (IdentityWithReverseSideSecureValue) -> T) = identityWithReverseSideSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifFileInlineQueryResult(block: (FileInlineQueryResult) -> T): T? =
+    fileInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.identityWithReverseSideSecureValueOrNull(): IdentityWithReverseSideSecureValue? =
-    this as? IdentityWithReverseSideSecureValue
+public inline fun InlineQueryResult.optionallyTitledInlineQueryResultOrNull():
+    OptionallyTitledInlineQueryResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.OptionallyTitledInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.identityWithReverseSideSecureValueOrThrow(): IdentityWithReverseSideSecureValue =
-    this as IdentityWithReverseSideSecureValue
+public inline fun InlineQueryResult.optionallyTitledInlineQueryResultOrThrow():
+    OptionallyTitledInlineQueryResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.OptionallyTitledInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifInternalPassportSecureValue(block: (InternalPassportSecureValue) -> T) = internalPassportSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifOptionallyTitledInlineQueryResult(block: (OptionallyTitledInlineQueryResult) -> T):
+    T? = optionallyTitledInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.internalPassportSecureValueOrNull(): InternalPassportSecureValue? =
-    this as? InternalPassportSecureValue
+public inline fun InlineQueryResult.sizedInlineQueryResultOrNull(): SizedInlineQueryResult? = this
+    as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.SizedInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.internalPassportSecureValueOrThrow(): InternalPassportSecureValue =
-    this as InternalPassportSecureValue
+public inline fun InlineQueryResult.sizedInlineQueryResultOrThrow(): SizedInlineQueryResult = this
+    as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.SizedInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifOtherDocumentsSecureValue(block: (OtherDocumentsSecureValue) -> T) = otherDocumentsSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifSizedInlineQueryResult(block: (SizedInlineQueryResult) -> T): T? =
+    sizedInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.otherDocumentsSecureValueOrNull(): OtherDocumentsSecureValue? = this as? OtherDocumentsSecureValue
+public inline fun InlineQueryResult.thumbSizedInlineQueryResultOrNull():
+    ThumbSizedInlineQueryResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbSizedInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.otherDocumentsSecureValueOrThrow(): OtherDocumentsSecureValue = this as OtherDocumentsSecureValue
+public inline fun InlineQueryResult.thumbSizedInlineQueryResultOrThrow():
+    ThumbSizedInlineQueryResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbSizedInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifPassportRegistrationSecureValue(block: (PassportRegistrationSecureValue) -> T) = passportRegistrationSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifThumbSizedInlineQueryResult(block: (ThumbSizedInlineQueryResult) -> T): T? =
+    thumbSizedInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.passportRegistrationSecureValueOrNull(): PassportRegistrationSecureValue? =
-    this as? PassportRegistrationSecureValue
+public inline fun InlineQueryResult.thumbedInlineQueryResultOrNull(): ThumbedInlineQueryResult? =
+    this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbedInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.passportRegistrationSecureValueOrThrow(): PassportRegistrationSecureValue =
-    this as PassportRegistrationSecureValue
+public inline fun InlineQueryResult.thumbedInlineQueryResultOrThrow(): ThumbedInlineQueryResult =
+    this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbedInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifPassportSecureValue(block: (PassportSecureValue) -> T) = passportSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifThumbedInlineQueryResult(block: (ThumbedInlineQueryResult) -> T): T? =
+    thumbedInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.passportSecureValueOrNull(): PassportSecureValue? = this as? PassportSecureValue
+public inline fun InlineQueryResult.thumbedWithMimeTypeInlineQueryResultOrNull():
+    ThumbedWithMimeTypeInlineQueryResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbedWithMimeTypeInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.passportSecureValueOrThrow(): PassportSecureValue = this as PassportSecureValue
+public inline fun InlineQueryResult.thumbedWithMimeTypeInlineQueryResultOrThrow():
+    ThumbedWithMimeTypeInlineQueryResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbedWithMimeTypeInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifPersonalDetailsSecureValue(block: (PersonalDetailsSecureValue) -> T) = personalDetailsSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifThumbedWithMimeTypeInlineQueryResult(block: (ThumbedWithMimeTypeInlineQueryResult) -> T):
+    T? = thumbedWithMimeTypeInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.personalDetailsSecureValueOrNull(): PersonalDetailsSecureValue? = this as? PersonalDetailsSecureValue
+public inline fun InlineQueryResult.titledInlineQueryResultOrNull(): TitledInlineQueryResult? = this
+    as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.TitledInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.personalDetailsSecureValueOrThrow(): PersonalDetailsSecureValue =
-    this as PersonalDetailsSecureValue
+public inline fun InlineQueryResult.titledInlineQueryResultOrThrow(): TitledInlineQueryResult = this
+    as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.TitledInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifRentalAgreementSecureValue(block: (RentalAgreementSecureValue) -> T) = rentalAgreementSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifTitledInlineQueryResult(block: (TitledInlineQueryResult) -> T): T? =
+    titledInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.rentalAgreementSecureValueOrNull(): RentalAgreementSecureValue? = this as? RentalAgreementSecureValue
+public inline fun InlineQueryResult.urlInlineQueryResultOrNull(): UrlInlineQueryResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.UrlInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.rentalAgreementSecureValueOrThrow(): RentalAgreementSecureValue =
-    this as RentalAgreementSecureValue
+public inline fun InlineQueryResult.urlInlineQueryResultOrThrow(): UrlInlineQueryResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.UrlInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifTemporalRegistrationSecureValue(block: (TemporalRegistrationSecureValue) -> T) = temporalRegistrationSecureValueOrNull() ?.let(block)
+public inline fun <T> InlineQueryResult.ifUrlInlineQueryResult(block: (UrlInlineQueryResult) -> T):
+    T? = urlInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.temporalRegistrationSecureValueOrNull(): TemporalRegistrationSecureValue? =
-    this as? TemporalRegistrationSecureValue
+public inline fun InlineQueryResult.withInputMessageContentInlineQueryResultOrNull():
+    WithInputMessageContentInlineQueryResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithInputMessageContentInlineQueryResult
 
-@PreviewFeature
-inline fun SecureValue.temporalRegistrationSecureValueOrThrow(): TemporalRegistrationSecureValue =
-    this as TemporalRegistrationSecureValue
+public inline fun InlineQueryResult.withInputMessageContentInlineQueryResultOrThrow():
+    WithInputMessageContentInlineQueryResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithInputMessageContentInlineQueryResult
 
-@PreviewFeature
-inline fun <T> SecureValue.ifUtilityBillSecureValue(block: (UtilityBillSecureValue) -> T) = utilityBillSecureValueOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifWithInputMessageContentInlineQueryResult(block: (WithInputMessageContentInlineQueryResult) -> T):
+    T? = withInputMessageContentInlineQueryResultOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.utilityBillSecureValueOrNull(): UtilityBillSecureValue? = this as? UtilityBillSecureValue
+public inline fun InlineQueryResult.inlineQueryResultAudioOrNull(): InlineQueryResultAudio? = this
+    as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudio
 
-@PreviewFeature
-inline fun SecureValue.utilityBillSecureValueOrThrow(): UtilityBillSecureValue = this as UtilityBillSecureValue
+public inline fun InlineQueryResult.inlineQueryResultAudioOrThrow(): InlineQueryResultAudio = this
+    as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudio
 
-@PreviewFeature
-inline fun <T> SecureValue.ifSecureValueIdentity(block: (SecureValueIdentity) -> T) = secureValueIdentityOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultAudio(block: (InlineQueryResultAudio) -> T): T? =
+    inlineQueryResultAudioOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.secureValueIdentityOrNull(): SecureValueIdentity? = this as? SecureValueIdentity
+public inline fun InlineQueryResult.inlineQueryResultAudioCachedOrNull():
+    InlineQueryResultAudioCached? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudioCached
 
-@PreviewFeature
-inline fun SecureValue.secureValueIdentityOrThrow(): SecureValueIdentity = this as SecureValueIdentity
+public inline fun InlineQueryResult.inlineQueryResultAudioCachedOrThrow():
+    InlineQueryResultAudioCached = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudioCached
 
-@PreviewFeature
-inline fun <T> SecureValue.ifSecureValueWithData(block: (SecureValueWithData) -> T) = secureValueWithDataOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultAudioCached(block: (InlineQueryResultAudioCached) -> T): T?
+    = inlineQueryResultAudioCachedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.secureValueWithDataOrNull(): SecureValueWithData? = this as? SecureValueWithData
+public inline fun InlineQueryResult.inlineQueryResultAudioCommonOrNull():
+    InlineQueryResultAudioCommon? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudioCommon
 
-@PreviewFeature
-inline fun SecureValue.secureValueWithDataOrThrow(): SecureValueWithData = this as SecureValueWithData
+public inline fun InlineQueryResult.inlineQueryResultAudioCommonOrThrow():
+    InlineQueryResultAudioCommon = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudioCommon
 
-@PreviewFeature
-inline fun <T> SecureValue.ifSecureValueWithFiles(block: (SecureValueWithFiles) -> T) = secureValueWithFilesOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultAudioCommon(block: (InlineQueryResultAudioCommon) -> T): T?
+    = inlineQueryResultAudioCommonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.secureValueWithFilesOrNull(): SecureValueWithFiles? = this as? SecureValueWithFiles
+public inline fun InlineQueryResult.inlineQueryResultDocumentOrNull(): InlineQueryResultDocument? =
+    this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocument
 
-@PreviewFeature
-inline fun SecureValue.secureValueWithFilesOrThrow(): SecureValueWithFiles = this as SecureValueWithFiles
+public inline fun InlineQueryResult.inlineQueryResultDocumentOrThrow(): InlineQueryResultDocument =
+    this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocument
 
-@PreviewFeature
-inline fun <T> SecureValue.ifSecureValueWithReverseSide(block: (SecureValueWithReverseSide) -> T) = secureValueWithReverseSideOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultDocument(block: (InlineQueryResultDocument) -> T): T? =
+    inlineQueryResultDocumentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.secureValueWithReverseSideOrNull(): SecureValueWithReverseSide? = this as? SecureValueWithReverseSide
+public inline fun InlineQueryResult.inlineQueryResultDocumentCachedOrNull():
+    InlineQueryResultDocumentCached? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCached
 
-@PreviewFeature
-inline fun SecureValue.secureValueWithReverseSideOrThrow(): SecureValueWithReverseSide =
-    this as SecureValueWithReverseSide
+public inline fun InlineQueryResult.inlineQueryResultDocumentCachedOrThrow():
+    InlineQueryResultDocumentCached = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCached
 
-@PreviewFeature
-inline fun <T> SecureValue.ifSecureValueWithTranslations(block: (SecureValueWithTranslations) -> T) = secureValueWithTranslationsOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultDocumentCached(block: (InlineQueryResultDocumentCached) -> T):
+    T? = inlineQueryResultDocumentCachedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun SecureValue.secureValueWithTranslationsOrNull(): SecureValueWithTranslations? =
-    this as? SecureValueWithTranslations
+public inline fun InlineQueryResult.inlineQueryResultDocumentCommonOrNull():
+    InlineQueryResultDocumentCommon? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCommon
 
-@PreviewFeature
-inline fun SecureValue.secureValueWithTranslationsOrThrow(): SecureValueWithTranslations =
-    this as SecureValueWithTranslations
+public inline fun InlineQueryResult.inlineQueryResultDocumentCommonOrThrow():
+    InlineQueryResultDocumentCommon = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.document.InlineQueryResultDocumentCommon
 
-@PreviewFeature
-inline fun <T> Message.ifAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T) = anonymousGroupContentMessageImplOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultDocumentCommon(block: (InlineQueryResultDocumentCommon) -> T):
+    T? = inlineQueryResultDocumentCommonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.anonymousGroupContentMessageImplOrNull(): AnonymousGroupContentMessageImpl<MessageContent>? =
-    this as? AnonymousGroupContentMessageImpl<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultGifOrNull(): InlineQueryResultGif? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGif
 
-@PreviewFeature
-inline fun Message.anonymousGroupContentMessageImplOrThrow(): AnonymousGroupContentMessageImpl<MessageContent> =
-    this as AnonymousGroupContentMessageImpl<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultGifOrThrow(): InlineQueryResultGif = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGif
 
-@PreviewFeature
-inline fun <T> Message.ifChannelContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T) = channelContentMessageImplOrNull() ?.let(block)
+public inline fun <T> InlineQueryResult.ifInlineQueryResultGif(block: (InlineQueryResultGif) -> T):
+    T? = inlineQueryResultGifOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.channelContentMessageImplOrNull(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? =
-    this as? UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultGifCachedOrNull(): InlineQueryResultGifCached?
+    = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGifCached
 
-@PreviewFeature
-inline fun Message.channelContentMessageImplOrThrow(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent> =
-    this as UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultGifCachedOrThrow(): InlineQueryResultGifCached
+    = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGifCached
 
-@PreviewFeature
-inline fun <T> Message.ifPassportMessage(block: (PassportMessage) -> T) = passportMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultGifCached(block: (InlineQueryResultGifCached) -> T): T? =
+    inlineQueryResultGifCachedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.passportMessageOrNull(): PassportMessage? = this as? PassportMessage
+public inline fun InlineQueryResult.inlineQueryResultGifCommonOrNull(): InlineQueryResultGifCommon?
+    = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGifCommon
 
-@PreviewFeature
-inline fun Message.passportMessageOrThrow(): PassportMessage = this as PassportMessage
+public inline fun InlineQueryResult.inlineQueryResultGifCommonOrThrow(): InlineQueryResultGifCommon
+    = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.gif.InlineQueryResultGifCommon
 
-@PreviewFeature
-inline fun <T> Message.ifPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T) = privateContentMessageImplOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultGifCommon(block: (InlineQueryResultGifCommon) -> T): T? =
+    inlineQueryResultGifCommonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.privateContentMessageImplOrNull(): PrivateContentMessageImpl<MessageContent>? =
-    this as? PrivateContentMessageImpl<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifOrNull(): InlineQueryResultMpeg4Gif? =
+    this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4Gif
 
-@PreviewFeature
-inline fun Message.privateContentMessageImplOrThrow(): PrivateContentMessageImpl<MessageContent> =
-    this as PrivateContentMessageImpl<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifOrThrow(): InlineQueryResultMpeg4Gif =
+    this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4Gif
 
-@PreviewFeature
-inline fun <T> Message.ifChannelEventMessage(block: (ChannelEventMessage<ChannelEvent>) -> T) = channelEventMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultMpeg4Gif(block: (InlineQueryResultMpeg4Gif) -> T): T? =
+    inlineQueryResultMpeg4GifOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.channelEventMessageOrNull(): ChannelEventMessage<ChannelEvent>? =
-    this as? ChannelEventMessage<ChannelEvent>
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifCachedOrNull():
+    InlineQueryResultMpeg4GifCached? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4GifCached
 
-@PreviewFeature
-inline fun Message.channelEventMessageOrThrow(): ChannelEventMessage<ChannelEvent> =
-    this as ChannelEventMessage<ChannelEvent>
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifCachedOrThrow():
+    InlineQueryResultMpeg4GifCached = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4GifCached
 
-@PreviewFeature
-inline fun <T> Message.ifChannelMediaGroupMessage(block: (ChannelMediaGroupMessage<MediaGroupContent>) -> T) = channelMediaGroupMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultMpeg4GifCached(block: (InlineQueryResultMpeg4GifCached) -> T):
+    T? = inlineQueryResultMpeg4GifCachedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.channelMediaGroupMessageOrNull(): ChannelMediaGroupMessage<MediaGroupContent>? =
-    this as? ChannelMediaGroupMessage<MediaGroupContent>
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifCommonOrNull():
+    InlineQueryResultMpeg4GifCommon? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4GifCommon
 
-@PreviewFeature
-inline fun Message.channelMediaGroupMessageOrThrow(): ChannelMediaGroupMessage<MediaGroupContent> =
-    this as ChannelMediaGroupMessage<MediaGroupContent>
+public inline fun InlineQueryResult.inlineQueryResultMpeg4GifCommonOrThrow():
+    InlineQueryResultMpeg4GifCommon = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.mpeg4gif.InlineQueryResultMpeg4GifCommon
 
-@PreviewFeature
-inline fun <T> Message.ifCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) = commonGroupEventMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultMpeg4GifCommon(block: (InlineQueryResultMpeg4GifCommon) -> T):
+    T? = inlineQueryResultMpeg4GifCommonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.commonGroupEventMessageOrNull(): CommonGroupEventMessage<GroupEvent>? =
-    this as? CommonGroupEventMessage<GroupEvent>
+public inline fun InlineQueryResult.inlineQueryResultPhotoOrNull(): InlineQueryResultPhoto? = this
+    as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhoto
 
-@PreviewFeature
-inline fun Message.commonGroupEventMessageOrThrow(): CommonGroupEventMessage<GroupEvent> =
-    this as CommonGroupEventMessage<GroupEvent>
+public inline fun InlineQueryResult.inlineQueryResultPhotoOrThrow(): InlineQueryResultPhoto = this
+    as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhoto
 
-@PreviewFeature
-inline fun <T> Message.ifCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupContent>) -> T) = commonMediaGroupMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultPhoto(block: (InlineQueryResultPhoto) -> T): T? =
+    inlineQueryResultPhotoOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.commonMediaGroupMessageOrNull(): CommonMediaGroupMessage<MediaGroupContent>? =
-    this as? CommonMediaGroupMessage<MediaGroupContent>
+public inline fun InlineQueryResult.inlineQueryResultPhotoCachedOrNull():
+    InlineQueryResultPhotoCached? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhotoCached
 
-@PreviewFeature
-inline fun Message.commonMediaGroupMessageOrThrow(): CommonMediaGroupMessage<MediaGroupContent> =
-    this as CommonMediaGroupMessage<MediaGroupContent>
+public inline fun InlineQueryResult.inlineQueryResultPhotoCachedOrThrow():
+    InlineQueryResultPhotoCached = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhotoCached
 
-@PreviewFeature
-inline fun <T> Message.ifCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) = commonSupergroupEventMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultPhotoCached(block: (InlineQueryResultPhotoCached) -> T): T?
+    = inlineQueryResultPhotoCachedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.commonSupergroupEventMessageOrNull(): CommonSupergroupEventMessage<SupergroupEvent>? =
-    this as? CommonSupergroupEventMessage<SupergroupEvent>
+public inline fun InlineQueryResult.inlineQueryResultPhotoCommonOrNull():
+    InlineQueryResultPhotoCommon? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhotoCommon
 
-@PreviewFeature
-inline fun Message.commonSupergroupEventMessageOrThrow(): CommonSupergroupEventMessage<SupergroupEvent> =
-    this as CommonSupergroupEventMessage<SupergroupEvent>
+public inline fun InlineQueryResult.inlineQueryResultPhotoCommonOrThrow():
+    InlineQueryResultPhotoCommon = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.photo.InlineQueryResultPhotoCommon
 
-@PreviewFeature
-inline fun <T> Message.ifAnonymousGroupContentMessage(block: (AnonymousGroupContentMessage<MessageContent>) -> T) = anonymousGroupContentMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultPhotoCommon(block: (InlineQueryResultPhotoCommon) -> T): T?
+    = inlineQueryResultPhotoCommonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.anonymousGroupContentMessageOrNull(): AnonymousGroupContentMessage<MessageContent>? =
-    this as? AnonymousGroupContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVideoOrNull(): InlineQueryResultVideo? = this
+    as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
 
-@PreviewFeature
-inline fun Message.anonymousGroupContentMessageOrThrow(): AnonymousGroupContentMessage<MessageContent> =
-    this as AnonymousGroupContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVideoOrThrow(): InlineQueryResultVideo = this
+    as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideo
 
-@PreviewFeature
-inline fun <T> Message.ifChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T) = channelContentMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVideo(block: (InlineQueryResultVideo) -> T): T? =
+    inlineQueryResultVideoOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.channelContentMessageOrNull(): ChannelContentMessage<MessageContent>? =
-    this as? ChannelContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVideoCachedOrNull():
+    InlineQueryResultVideoCached? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideoCached
 
-@PreviewFeature
-inline fun Message.channelContentMessageOrThrow(): ChannelContentMessage<MessageContent> =
-    this as ChannelContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVideoCachedOrThrow():
+    InlineQueryResultVideoCached = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideoCached
 
-@PreviewFeature
-inline fun <T> Message.ifConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) = connectedFromChannelGroupContentMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVideoCached(block: (InlineQueryResultVideoCached) -> T): T?
+    = inlineQueryResultVideoCachedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.connectedFromChannelGroupContentMessageOrNull(): ConnectedFromChannelGroupContentMessage<MessageContent>? =
-    this as? ConnectedFromChannelGroupContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVideoCommonOrNull():
+    InlineQueryResultVideoCommon? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideoCommon
 
-@PreviewFeature
-inline fun Message.connectedFromChannelGroupContentMessageOrThrow(): ConnectedFromChannelGroupContentMessage<MessageContent> =
-    this as ConnectedFromChannelGroupContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVideoCommonOrThrow():
+    InlineQueryResultVideoCommon = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.video.InlineQueryResultVideoCommon
 
-@PreviewFeature
-inline fun <T> Message.ifUnconnectedFromChannelGroupContentMessage(block: (UnconnectedFromChannelGroupContentMessage<MessageContent>) -> T) = unconnectedFromChannelGroupContentMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVideoCommon(block: (InlineQueryResultVideoCommon) -> T): T?
+    = inlineQueryResultVideoCommonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.unconnectedFromChannelGroupContentMessageOrNull(): UnconnectedFromChannelGroupContentMessage<MessageContent>? =
-    this as? UnconnectedFromChannelGroupContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVoiceOrNull(): InlineQueryResultVoice? = this
+    as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoice
 
-@PreviewFeature
-inline fun Message.unconnectedFromChannelGroupContentMessageOrThrow(): UnconnectedFromChannelGroupContentMessage<MessageContent> =
-    this as UnconnectedFromChannelGroupContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVoiceOrThrow(): InlineQueryResultVoice = this
+    as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoice
 
-@PreviewFeature
-inline fun <T> Message.ifChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T) = chatEventMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVoice(block: (InlineQueryResultVoice) -> T): T? =
+    inlineQueryResultVoiceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.chatEventMessageOrNull(): ChatEventMessage<ChatEvent>? = this as? ChatEventMessage<ChatEvent>
+public inline fun InlineQueryResult.inlineQueryResultVoiceCachedOrNull():
+    InlineQueryResultVoiceCached? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCached
 
-@PreviewFeature
-inline fun Message.chatEventMessageOrThrow(): ChatEventMessage<ChatEvent> = this as ChatEventMessage<ChatEvent>
+public inline fun InlineQueryResult.inlineQueryResultVoiceCachedOrThrow():
+    InlineQueryResultVoiceCached = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCached
 
-@PreviewFeature
-inline fun <T> Message.ifCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T) = commonGroupContentMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVoiceCached(block: (InlineQueryResultVoiceCached) -> T): T?
+    = inlineQueryResultVoiceCachedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.commonGroupContentMessageOrNull(): CommonGroupContentMessage<MessageContent>? =
-    this as? CommonGroupContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVoiceCommonOrNull():
+    InlineQueryResultVoiceCommon? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCommon
 
-@PreviewFeature
-inline fun Message.commonGroupContentMessageOrThrow(): CommonGroupContentMessage<MessageContent> =
-    this as CommonGroupContentMessage<MessageContent>
+public inline fun InlineQueryResult.inlineQueryResultVoiceCommonOrThrow():
+    InlineQueryResultVoiceCommon = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.voice.InlineQueryResultVoiceCommon
 
-@PreviewFeature
-inline fun <T> Message.ifCommonMessage(block: (CommonMessage<MessageContent>) -> T) = commonMessageOrNull() ?.let(block)
+public inline fun <T>
+    InlineQueryResult.ifInlineQueryResultVoiceCommon(block: (InlineQueryResultVoiceCommon) -> T): T?
+    = inlineQueryResultVoiceCommonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.commonMessageOrNull(): CommonMessage<MessageContent>? = this as? CommonMessage<MessageContent>
+public inline fun InputMessageContent.inputContactMessageContentOrNull():
+    InputContactMessageContent? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputContactMessageContent
 
-@PreviewFeature
-inline fun Message.commonMessageOrThrow(): CommonMessage<MessageContent> = this as CommonMessage<MessageContent>
+public inline fun InputMessageContent.inputContactMessageContentOrThrow():
+    InputContactMessageContent = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputContactMessageContent
 
-@PreviewFeature
-inline fun <T> Message.ifContentMessage(block: (ContentMessage<MessageContent>) -> T) = contentMessageOrNull() ?.let(block)
+public inline fun <T>
+    InputMessageContent.ifInputContactMessageContent(block: (InputContactMessageContent) -> T): T? =
+    inputContactMessageContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.contentMessageOrNull(): ContentMessage<MessageContent>? = this as? ContentMessage<MessageContent>
+public inline fun InputMessageContent.inputInvoiceMessageContentOrNull():
+    InputInvoiceMessageContent? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputInvoiceMessageContent
 
-@PreviewFeature
-inline fun Message.contentMessageOrThrow(): ContentMessage<MessageContent> = this as ContentMessage<MessageContent>
+public inline fun InputMessageContent.inputInvoiceMessageContentOrThrow():
+    InputInvoiceMessageContent = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputInvoiceMessageContent
 
-@PreviewFeature
-inline fun <T> Message.ifFromChannelGroupContentMessage(block: (FromChannelGroupContentMessage<MessageContent>) -> T) = fromChannelGroupContentMessageOrNull() ?.let(block)
+public inline fun <T>
+    InputMessageContent.ifInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T): T? =
+    inputInvoiceMessageContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.fromChannelGroupContentMessageOrNull(): FromChannelGroupContentMessage<MessageContent>? =
-    this as? FromChannelGroupContentMessage<MessageContent>
+public inline fun InputMessageContent.inputLocationMessageContentOrNull():
+    InputLocationMessageContent? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputLocationMessageContent
 
-@PreviewFeature
-inline fun Message.fromChannelGroupContentMessageOrThrow(): FromChannelGroupContentMessage<MessageContent> =
-    this as FromChannelGroupContentMessage<MessageContent>
+public inline fun InputMessageContent.inputLocationMessageContentOrThrow():
+    InputLocationMessageContent = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputLocationMessageContent
 
-@PreviewFeature
-inline fun <T> Message.ifGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T) = groupEventMessageOrNull() ?.let(block)
+public inline fun <T>
+    InputMessageContent.ifInputLocationMessageContent(block: (InputLocationMessageContent) -> T): T?
+    = inputLocationMessageContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.groupEventMessageOrNull(): GroupEventMessage<GroupEvent>? = this as? GroupEventMessage<GroupEvent>
+public inline fun InputMessageContent.inputTextMessageContentOrNull(): InputTextMessageContent? =
+    this as? dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputTextMessageContent
 
-@PreviewFeature
-inline fun Message.groupEventMessageOrThrow(): GroupEventMessage<GroupEvent> = this as GroupEventMessage<GroupEvent>
+public inline fun InputMessageContent.inputTextMessageContentOrThrow(): InputTextMessageContent =
+    this as dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputTextMessageContent
 
-@PreviewFeature
-inline fun <T> Message.ifPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T) = privateEventMessageOrNull() ?.let(block)
+public inline fun <T>
+    InputMessageContent.ifInputTextMessageContent(block: (InputTextMessageContent) -> T): T? =
+    inputTextMessageContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.privateEventMessageOrNull(): PrivateEventMessage<PrivateEvent>? = this as? PrivateEventMessage<PrivateEvent>
+public inline fun InputMessageContent.inputVenueMessageContentOrNull(): InputVenueMessageContent? =
+    this as? dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessageContent
 
-@PreviewFeature
-inline fun Message.privateEventMessageOrThrow(): PrivateEventMessage<PrivateEvent> = this as PrivateEventMessage<PrivateEvent>
+public inline fun InputMessageContent.inputVenueMessageContentOrThrow(): InputVenueMessageContent =
+    this as dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent.InputVenueMessageContent
 
-@PreviewFeature
-inline fun <T> Message.ifGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T) = groupContentMessageOrNull() ?.let(block)
+public inline fun <T>
+    InputMessageContent.ifInputVenueMessageContent(block: (InputVenueMessageContent) -> T): T? =
+    inputVenueMessageContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.groupContentMessageOrNull(): GroupContentMessage<MessageContent>? =
-    this as? GroupContentMessage<MessageContent>
+public inline fun BotAction.typingActionOrNull(): TypingAction? = this as?
+    dev.inmo.tgbotapi.types.actions.TypingAction
 
-@PreviewFeature
-inline fun Message.groupContentMessageOrThrow(): GroupContentMessage<MessageContent> =
-    this as GroupContentMessage<MessageContent>
+public inline fun BotAction.typingActionOrThrow(): TypingAction = this as
+    dev.inmo.tgbotapi.types.actions.TypingAction
 
-@PreviewFeature
-inline fun <T> Message.ifMediaGroupMessage(block: (MediaGroupMessage<MediaGroupContent>) -> T) = mediaGroupMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifTypingAction(block: (TypingAction) -> T): T? =
+    typingActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.mediaGroupMessageOrNull(): MediaGroupMessage<MediaGroupContent>? =
-    this as? MediaGroupMessage<MediaGroupContent>
+public inline fun BotAction.uploadPhotoActionOrNull(): UploadPhotoAction? = this as?
+    dev.inmo.tgbotapi.types.actions.UploadPhotoAction
 
-@PreviewFeature
-inline fun Message.mediaGroupMessageOrThrow(): MediaGroupMessage<MediaGroupContent> =
-    this as MediaGroupMessage<MediaGroupContent>
+public inline fun BotAction.uploadPhotoActionOrThrow(): UploadPhotoAction = this as
+    dev.inmo.tgbotapi.types.actions.UploadPhotoAction
 
-@PreviewFeature
-inline fun <T> Message.ifPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T) = possiblyEditedMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifUploadPhotoAction(block: (UploadPhotoAction) -> T): T? =
+    uploadPhotoActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.possiblyEditedMessageOrNull(): PossiblyEditedMessage? = this as? PossiblyEditedMessage
+public inline fun BotAction.recordVideoActionOrNull(): RecordVideoAction? = this as?
+    dev.inmo.tgbotapi.types.actions.RecordVideoAction
 
-@PreviewFeature
-inline fun Message.possiblyEditedMessageOrThrow(): PossiblyEditedMessage = this as PossiblyEditedMessage
+public inline fun BotAction.recordVideoActionOrThrow(): RecordVideoAction = this as
+    dev.inmo.tgbotapi.types.actions.RecordVideoAction
 
-@PreviewFeature
-inline fun <T> Message.ifPossiblyReplyMessage(block: (PossiblyReplyMessage) -> T) = possiblyReplyMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifRecordVideoAction(block: (RecordVideoAction) -> T): T? =
+    recordVideoActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.possiblyReplyMessageOrNull(): PossiblyReplyMessage? = this as? PossiblyReplyMessage
+public inline fun BotAction.uploadVideoActionOrNull(): UploadVideoAction? = this as?
+    dev.inmo.tgbotapi.types.actions.UploadVideoAction
 
-@PreviewFeature
-inline fun Message.possiblyReplyMessageOrThrow(): PossiblyReplyMessage = this as PossiblyReplyMessage
+public inline fun BotAction.uploadVideoActionOrThrow(): UploadVideoAction = this as
+    dev.inmo.tgbotapi.types.actions.UploadVideoAction
 
-@PreviewFeature
-inline fun <T> Message.ifPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T) = possiblyForwardedMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifUploadVideoAction(block: (UploadVideoAction) -> T): T? =
+    uploadVideoActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.possiblyForwardedMessageOrNull(): PossiblyForwardedMessage? = this as? PossiblyForwardedMessage
+public inline fun BotAction.recordVoiceActionOrNull(): RecordVoiceAction? = this as?
+    dev.inmo.tgbotapi.types.actions.RecordVoiceAction
 
-@PreviewFeature
-inline fun Message.possiblyForwardedMessageOrThrow(): PossiblyForwardedMessage = this as PossiblyForwardedMessage
+public inline fun BotAction.recordVoiceActionOrThrow(): RecordVoiceAction = this as
+    dev.inmo.tgbotapi.types.actions.RecordVoiceAction
 
-@PreviewFeature
-inline fun <T> Message.ifPossiblyPaymentMessage(block: (PossiblyPaymentMessage) -> T) = possiblyPaymentMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifRecordVoiceAction(block: (RecordVoiceAction) -> T): T? =
+    recordVoiceActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.possiblyPaymentMessageOrNull(): PossiblyPaymentMessage? = this as? PossiblyPaymentMessage
+public inline fun BotAction.uploadVoiceActionOrNull(): UploadVoiceAction? = this as?
+    dev.inmo.tgbotapi.types.actions.UploadVoiceAction
 
-@PreviewFeature
-inline fun Message.possiblyPaymentMessageOrThrow(): PossiblyPaymentMessage = this as PossiblyPaymentMessage
+public inline fun BotAction.uploadVoiceActionOrThrow(): UploadVoiceAction = this as
+    dev.inmo.tgbotapi.types.actions.UploadVoiceAction
 
-@PreviewFeature
-inline fun <T> Message.ifPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T) = privateContentMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifUploadVoiceAction(block: (UploadVoiceAction) -> T): T? =
+    uploadVoiceActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.privateContentMessageOrNull(): PrivateContentMessage<MessageContent>? =
-    this as? PrivateContentMessage<MessageContent>
+public inline fun BotAction.uploadDocumentActionOrNull(): UploadDocumentAction? = this as?
+    dev.inmo.tgbotapi.types.actions.UploadDocumentAction
 
-@PreviewFeature
-inline fun Message.privateContentMessageOrThrow(): PrivateContentMessage<MessageContent> =
-    this as PrivateContentMessage<MessageContent>
+public inline fun BotAction.uploadDocumentActionOrThrow(): UploadDocumentAction = this as
+    dev.inmo.tgbotapi.types.actions.UploadDocumentAction
 
-@PreviewFeature
-inline fun <T> Message.ifPublicContentMessage(block: (PublicContentMessage<MessageContent>) -> T) = publicContentMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifUploadDocumentAction(block: (UploadDocumentAction) -> T): T? =
+    uploadDocumentActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.publicContentMessageOrNull(): PublicContentMessage<MessageContent>? =
-    this as? PublicContentMessage<MessageContent>
+public inline fun BotAction.findLocationActionOrNull(): FindLocationAction? = this as?
+    dev.inmo.tgbotapi.types.actions.FindLocationAction
 
-@PreviewFeature
-inline fun Message.publicContentMessageOrThrow(): PublicContentMessage<MessageContent> =
-    this as PublicContentMessage<MessageContent>
+public inline fun BotAction.findLocationActionOrThrow(): FindLocationAction = this as
+    dev.inmo.tgbotapi.types.actions.FindLocationAction
 
-@PreviewFeature
-inline fun <T> Message.ifSignedMessage(block: (SignedMessage) -> T) = signedMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifFindLocationAction(block: (FindLocationAction) -> T): T? =
+    findLocationActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.signedMessageOrNull(): SignedMessage? = this as? SignedMessage
+public inline fun BotAction.recordVideoNoteActionOrNull(): RecordVideoNoteAction? = this as?
+    dev.inmo.tgbotapi.types.actions.RecordVideoNoteAction
 
-@PreviewFeature
-inline fun Message.signedMessageOrThrow(): SignedMessage = this as SignedMessage
+public inline fun BotAction.recordVideoNoteActionOrThrow(): RecordVideoNoteAction = this as
+    dev.inmo.tgbotapi.types.actions.RecordVideoNoteAction
 
-@PreviewFeature
-inline fun <T> Message.ifSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T) = supergroupEventMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifRecordVideoNoteAction(block: (RecordVideoNoteAction) -> T): T? =
+    recordVideoNoteActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.supergroupEventMessageOrNull(): SupergroupEventMessage<SupergroupEvent>? =
-    this as? SupergroupEventMessage<SupergroupEvent>
+public inline fun BotAction.uploadVideoNoteActionOrNull(): UploadVideoNoteAction? = this as?
+    dev.inmo.tgbotapi.types.actions.UploadVideoNoteAction
 
-@PreviewFeature
-inline fun Message.supergroupEventMessageOrThrow(): SupergroupEventMessage<SupergroupEvent> =
-    this as SupergroupEventMessage<SupergroupEvent>
+public inline fun BotAction.uploadVideoNoteActionOrThrow(): UploadVideoNoteAction = this as
+    dev.inmo.tgbotapi.types.actions.UploadVideoNoteAction
 
-@PreviewFeature
-inline fun <T> Message.ifUnknownMessageType(block: (UnknownMessageType) -> T) = unknownMessageTypeOrNull() ?.let(block)
+public inline fun <T> BotAction.ifUploadVideoNoteAction(block: (UploadVideoNoteAction) -> T): T? =
+    uploadVideoNoteActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.unknownMessageTypeOrNull(): UnknownMessageType? = this as? UnknownMessageType
+public inline fun BotAction.chooseStickerActionOrNull(): ChooseStickerAction? = this as?
+    dev.inmo.tgbotapi.types.actions.ChooseStickerAction
 
-@PreviewFeature
-inline fun Message.unknownMessageTypeOrThrow(): UnknownMessageType = this as UnknownMessageType
+public inline fun BotAction.chooseStickerActionOrThrow(): ChooseStickerAction = this as
+    dev.inmo.tgbotapi.types.actions.ChooseStickerAction
 
-@PreviewFeature
-inline fun <T> Message.ifPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T) = possiblySentViaBotCommonMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifChooseStickerAction(block: (ChooseStickerAction) -> T): T? =
+    chooseStickerActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.possiblySentViaBotCommonMessageOrNull(): PossiblySentViaBotCommonMessage<MessageContent>? =
-    this as? PossiblySentViaBotCommonMessage<MessageContent>
+public inline fun BotAction.customBotActionOrNull(): CustomBotAction? = this as?
+    dev.inmo.tgbotapi.types.actions.CustomBotAction
 
-@PreviewFeature
-inline fun Message.possiblySentViaBotCommonMessageOrThrow(): PossiblySentViaBotCommonMessage<MessageContent> =
-    this as PossiblySentViaBotCommonMessage<MessageContent>
+public inline fun BotAction.customBotActionOrThrow(): CustomBotAction = this as
+    dev.inmo.tgbotapi.types.actions.CustomBotAction
 
-@PreviewFeature
-inline fun <T> Message.ifFromUserMessage(block: (FromUserMessage) -> T) = fromUserMessageOrNull() ?.let(block)
+public inline fun <T> BotAction.ifCustomBotAction(block: (CustomBotAction) -> T): T? =
+    customBotActionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Message.fromUserMessageOrNull(): FromUserMessage? = this as? FromUserMessage
+public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull():
+    UnknownInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.UnknownInlineKeyboardButton
 
-@PreviewFeature
-inline fun Message.fromUserMessageOrThrow(): FromUserMessage = this as FromUserMessage
+public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrThrow():
+    UnknownInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.UnknownInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifFindLocationAction(block: (FindLocationAction) -> T) = findLocationActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifUnknownInlineKeyboardButton(block: (UnknownInlineKeyboardButton) -> T):
+    T? = unknownInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.findLocationActionOrNull(): FindLocationAction? = this as? FindLocationAction
+public inline fun InlineKeyboardButton.payInlineKeyboardButtonOrNull(): PayInlineKeyboardButton? =
+    this as? dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
 
-@PreviewFeature
-inline fun BotAction.findLocationActionOrThrow(): FindLocationAction = this as FindLocationAction
+public inline fun InlineKeyboardButton.payInlineKeyboardButtonOrThrow(): PayInlineKeyboardButton =
+    this as dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifRecordVoiceAction(block: (RecordVoiceAction) -> T) = recordVoiceActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifPayInlineKeyboardButton(block: (PayInlineKeyboardButton) -> T): T? =
+    payInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.recordVoiceActionOrNull(): RecordVoiceAction? = this as? RecordVoiceAction
+public inline fun InlineKeyboardButton.callbackDataInlineKeyboardButtonOrNull():
+    CallbackDataInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackDataInlineKeyboardButton
 
-@PreviewFeature
-inline fun BotAction.recordVoiceActionOrThrow(): RecordVoiceAction = this as RecordVoiceAction
+public inline fun InlineKeyboardButton.callbackDataInlineKeyboardButtonOrThrow():
+    CallbackDataInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackDataInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifRecordVideoAction(block: (RecordVideoAction) -> T) = recordVideoActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifCallbackDataInlineKeyboardButton(block: (CallbackDataInlineKeyboardButton) -> T):
+    T? = callbackDataInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.recordVideoActionOrNull(): RecordVideoAction? = this as? RecordVideoAction
+public inline fun InlineKeyboardButton.callbackGameInlineKeyboardButtonOrNull():
+    CallbackGameInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineKeyboardButton
 
-@PreviewFeature
-inline fun BotAction.recordVideoActionOrThrow(): RecordVideoAction = this as RecordVideoAction
+public inline fun InlineKeyboardButton.callbackGameInlineKeyboardButtonOrThrow():
+    CallbackGameInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifRecordVideoNoteAction(block: (RecordVideoNoteAction) -> T) = recordVideoNoteActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifCallbackGameInlineKeyboardButton(block: (CallbackGameInlineKeyboardButton) -> T):
+    T? = callbackGameInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.recordVideoNoteActionOrNull(): RecordVideoNoteAction? = this as? RecordVideoNoteAction
+public inline fun InlineKeyboardButton.loginURLInlineKeyboardButtonOrNull():
+    LoginURLInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.LoginURLInlineKeyboardButton
 
-@PreviewFeature
-inline fun BotAction.recordVideoNoteActionOrThrow(): RecordVideoNoteAction = this as RecordVideoNoteAction
+public inline fun InlineKeyboardButton.loginURLInlineKeyboardButtonOrThrow():
+    LoginURLInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.LoginURLInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifTypingAction(block: (TypingAction) -> T) = typingActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifLoginURLInlineKeyboardButton(block: (LoginURLInlineKeyboardButton) -> T):
+    T? = loginURLInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.typingActionOrNull(): TypingAction? = this as? TypingAction
+public inline fun InlineKeyboardButton.switchInlineQueryCurrentChatInlineKeyboardButtonOrNull():
+    SwitchInlineQueryCurrentChatInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryCurrentChatInlineKeyboardButton
 
-@PreviewFeature
-inline fun BotAction.typingActionOrThrow(): TypingAction = this as TypingAction
+public inline fun InlineKeyboardButton.switchInlineQueryCurrentChatInlineKeyboardButtonOrThrow():
+    SwitchInlineQueryCurrentChatInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryCurrentChatInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifChooseStickerAction(block: (ChooseStickerAction) -> T) = chooseStickerActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifSwitchInlineQueryCurrentChatInlineKeyboardButton(block: (SwitchInlineQueryCurrentChatInlineKeyboardButton) -> T):
+    T? = switchInlineQueryCurrentChatInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.chooseStickerActionOrNull(): ChooseStickerAction? = this as? ChooseStickerAction
+public inline fun InlineKeyboardButton.switchInlineQueryInlineKeyboardButtonOrNull():
+    SwitchInlineQueryInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryInlineKeyboardButton
 
-@PreviewFeature
-inline fun BotAction.chooseStickerActionOrThrow(): ChooseStickerAction = this as ChooseStickerAction
+public inline fun InlineKeyboardButton.switchInlineQueryInlineKeyboardButtonOrThrow():
+    SwitchInlineQueryInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifUploadVoiceAction(block: (UploadVoiceAction) -> T) = uploadVoiceActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifSwitchInlineQueryInlineKeyboardButton(block: (SwitchInlineQueryInlineKeyboardButton) -> T):
+    T? = switchInlineQueryInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.uploadVoiceActionOrNull(): UploadVoiceAction? = this as? UploadVoiceAction
+public inline fun InlineKeyboardButton.uRLInlineKeyboardButtonOrNull(): URLInlineKeyboardButton? =
+    this as? dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.URLInlineKeyboardButton
 
-@PreviewFeature
-inline fun BotAction.uploadVoiceActionOrThrow(): UploadVoiceAction = this as UploadVoiceAction
+public inline fun InlineKeyboardButton.uRLInlineKeyboardButtonOrThrow(): URLInlineKeyboardButton =
+    this as dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.URLInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifUploadDocumentAction(block: (UploadDocumentAction) -> T) = uploadDocumentActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifURLInlineKeyboardButton(block: (URLInlineKeyboardButton) -> T): T? =
+    uRLInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.uploadDocumentActionOrNull(): UploadDocumentAction? = this as? UploadDocumentAction
+public inline fun InlineKeyboardButton.webAppInlineKeyboardButtonOrNull():
+    WebAppInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.WebAppInlineKeyboardButton
 
-@PreviewFeature
-inline fun BotAction.uploadDocumentActionOrThrow(): UploadDocumentAction = this as UploadDocumentAction
+public inline fun InlineKeyboardButton.webAppInlineKeyboardButtonOrThrow():
+    WebAppInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.WebAppInlineKeyboardButton
 
-@PreviewFeature
-inline fun <T> BotAction.ifUploadPhotoAction(block: (UploadPhotoAction) -> T) = uploadPhotoActionOrNull() ?.let(block)
+public inline fun <T>
+    InlineKeyboardButton.ifWebAppInlineKeyboardButton(block: (WebAppInlineKeyboardButton) -> T): T?
+    = webAppInlineKeyboardButtonOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.uploadPhotoActionOrNull(): UploadPhotoAction? = this as? UploadPhotoAction
+public inline fun KeyboardMarkup.inlineKeyboardMarkupOrNull(): InlineKeyboardMarkup? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
-@PreviewFeature
-inline fun BotAction.uploadPhotoActionOrThrow(): UploadPhotoAction = this as UploadPhotoAction
+public inline fun KeyboardMarkup.inlineKeyboardMarkupOrThrow(): InlineKeyboardMarkup = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
-@PreviewFeature
-inline fun <T> BotAction.ifUploadVideoAction(block: (UploadVideoAction) -> T) = uploadVideoActionOrNull() ?.let(block)
+public inline fun <T> KeyboardMarkup.ifInlineKeyboardMarkup(block: (InlineKeyboardMarkup) -> T): T?
+    = inlineKeyboardMarkupOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.uploadVideoActionOrNull(): UploadVideoAction? = this as? UploadVideoAction
+public inline fun KeyboardMarkup.replyForceOrNull(): ReplyForce? = this as?
+    dev.inmo.tgbotapi.types.buttons.ReplyForce
 
-@PreviewFeature
-inline fun BotAction.uploadVideoActionOrThrow(): UploadVideoAction = this as UploadVideoAction
+public inline fun KeyboardMarkup.replyForceOrThrow(): ReplyForce = this as
+    dev.inmo.tgbotapi.types.buttons.ReplyForce
 
-@PreviewFeature
-inline fun <T> BotAction.ifUploadVideoNoteAction(block: (UploadVideoNoteAction) -> T) = uploadVideoNoteActionOrNull() ?.let(block)
+public inline fun <T> KeyboardMarkup.ifReplyForce(block: (ReplyForce) -> T): T? = replyForceOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun BotAction.uploadVideoNoteActionOrNull(): UploadVideoNoteAction? = this as? UploadVideoNoteAction
+public inline fun KeyboardMarkup.replyKeyboardMarkupOrNull(): ReplyKeyboardMarkup? = this as?
+    dev.inmo.tgbotapi.types.buttons.ReplyKeyboardMarkup
 
-@PreviewFeature
-inline fun BotAction.uploadVideoNoteActionOrThrow(): UploadVideoNoteAction = this as UploadVideoNoteAction
+public inline fun KeyboardMarkup.replyKeyboardMarkupOrThrow(): ReplyKeyboardMarkup = this as
+    dev.inmo.tgbotapi.types.buttons.ReplyKeyboardMarkup
 
-@PreviewFeature
-inline fun <T> InlineQuery.ifBaseInlineQuery(block: (BaseInlineQuery) -> T) = baseInlineQueryOrNull() ?.let(block)
+public inline fun <T> KeyboardMarkup.ifReplyKeyboardMarkup(block: (ReplyKeyboardMarkup) -> T): T? =
+    replyKeyboardMarkupOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQuery.baseInlineQueryOrNull(): BaseInlineQuery? =
-    this as? BaseInlineQuery
+public inline fun KeyboardMarkup.replyKeyboardRemoveOrNull(): ReplyKeyboardRemove? = this as?
+    dev.inmo.tgbotapi.types.buttons.ReplyKeyboardRemove
 
-@PreviewFeature
-inline fun InlineQuery.baseInlineQueryOrThrow(): BaseInlineQuery =
-    this as BaseInlineQuery
+public inline fun KeyboardMarkup.replyKeyboardRemoveOrThrow(): ReplyKeyboardRemove = this as
+    dev.inmo.tgbotapi.types.buttons.ReplyKeyboardRemove
 
-@PreviewFeature
-inline fun <T> InlineQuery.ifLocationInlineQuery(block: (LocationInlineQuery) -> T) = locationInlineQueryOrNull() ?.let(block)
+public inline fun <T> KeyboardMarkup.ifReplyKeyboardRemove(block: (ReplyKeyboardRemove) -> T): T? =
+    replyKeyboardRemoveOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQuery.locationInlineQueryOrNull(): LocationInlineQuery? =
-    this as? LocationInlineQuery
+public inline fun Chat.channelChatOrNull(): ChannelChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ChannelChat
 
-@PreviewFeature
-inline fun InlineQuery.locationInlineQueryOrThrow(): LocationInlineQuery =
-    this as LocationInlineQuery
+public inline fun Chat.channelChatOrThrow(): ChannelChat = this as
+    dev.inmo.tgbotapi.types.chat.ChannelChat
 
-@PreviewFeature
-inline fun <T> InputMessageContent.ifInputContactMessageContent(block: (InputContactMessageContent) -> T) = inputContactMessageContentOrNull() ?.let(block)
+public inline fun <T> Chat.ifChannelChat(block: (ChannelChat) -> T): T? = channelChatOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InputMessageContent.inputContactMessageContentOrNull(): InputContactMessageContent? =
-    this as? InputContactMessageContent
+public inline fun Chat.groupChatOrNull(): GroupChat? = this as?
+    dev.inmo.tgbotapi.types.chat.GroupChat
 
-@PreviewFeature
-inline fun InputMessageContent.inputContactMessageContentOrThrow(): InputContactMessageContent =
-    this as InputContactMessageContent
+public inline fun Chat.groupChatOrThrow(): GroupChat = this as
+    dev.inmo.tgbotapi.types.chat.GroupChat
 
-@PreviewFeature
-inline fun <T> InputMessageContent.ifInputLocationMessageContent(block: (InputLocationMessageContent) -> T) = inputLocationMessageContentOrNull() ?.let(block)
+public inline fun <T> Chat.ifGroupChat(block: (GroupChat) -> T): T? = groupChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InputMessageContent.inputLocationMessageContentOrNull(): InputLocationMessageContent? =
-    this as? InputLocationMessageContent
+public inline fun Chat.privateChatOrNull(): PrivateChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PrivateChat
 
-@PreviewFeature
-inline fun InputMessageContent.inputLocationMessageContentOrThrow(): InputLocationMessageContent =
-    this as InputLocationMessageContent
+public inline fun Chat.privateChatOrThrow(): PrivateChat = this as
+    dev.inmo.tgbotapi.types.chat.PrivateChat
 
-@PreviewFeature
-inline fun <T> InputMessageContent.ifInputTextMessageContent(block: (InputTextMessageContent) -> T) = inputTextMessageContentOrNull() ?.let(block)
+public inline fun <T> Chat.ifPrivateChat(block: (PrivateChat) -> T): T? = privateChatOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InputMessageContent.inputTextMessageContentOrNull(): InputTextMessageContent? = this as? InputTextMessageContent
+public inline fun Chat.publicChatOrNull(): PublicChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PublicChat
 
-@PreviewFeature
-inline fun InputMessageContent.inputTextMessageContentOrThrow(): InputTextMessageContent =
-    this as InputTextMessageContent
+public inline fun Chat.publicChatOrThrow(): PublicChat = this as
+    dev.inmo.tgbotapi.types.chat.PublicChat
 
-@PreviewFeature
-inline fun <T> InputMessageContent.ifInputVenueMessageContent(block: (InputVenueMessageContent) -> T) = inputVenueMessageContentOrNull() ?.let(block)
+public inline fun <T> Chat.ifPublicChat(block: (PublicChat) -> T): T? = publicChatOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InputMessageContent.inputVenueMessageContentOrNull(): InputVenueMessageContent? =
-    this as? InputVenueMessageContent
+public inline fun Chat.supergroupChatOrNull(): SupergroupChat? = this as?
+    dev.inmo.tgbotapi.types.chat.SupergroupChat
 
-@PreviewFeature
-inline fun InputMessageContent.inputVenueMessageContentOrThrow(): InputVenueMessageContent =
-    this as InputVenueMessageContent
+public inline fun Chat.supergroupChatOrThrow(): SupergroupChat = this as
+    dev.inmo.tgbotapi.types.chat.SupergroupChat
 
-@PreviewFeature
-inline fun <T> InputMessageContent.ifInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) = inputInvoiceMessageContentOrNull() ?.let(block)
+public inline fun <T> Chat.ifSupergroupChat(block: (SupergroupChat) -> T): T? =
+    supergroupChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InputMessageContent.inputInvoiceMessageContentOrNull(): InputInvoiceMessageContent? =
-    this as? InputInvoiceMessageContent
+public inline fun Chat.superPublicChatOrNull(): SuperPublicChat? = this as?
+    dev.inmo.tgbotapi.types.chat.SuperPublicChat
 
-@PreviewFeature
-inline fun InputMessageContent.inputInvoiceMessageContentOrThrow(): InputInvoiceMessageContent =
-    this as InputInvoiceMessageContent
+public inline fun Chat.superPublicChatOrThrow(): SuperPublicChat = this as
+    dev.inmo.tgbotapi.types.chat.SuperPublicChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultArticle(block: (InlineQueryResultArticle) -> T) = inlineQueryResultArticleOrNull() ?.let(block)
+public inline fun <T> Chat.ifSuperPublicChat(block: (SuperPublicChat) -> T): T? =
+    superPublicChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultArticleOrNull(): InlineQueryResultArticle? = this as? InlineQueryResultArticle
+public inline fun Chat.usernameChatOrNull(): UsernameChat? = this as?
+    dev.inmo.tgbotapi.types.chat.UsernameChat
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultArticleOrThrow(): InlineQueryResultArticle =
-    this as InlineQueryResultArticle
+public inline fun Chat.usernameChatOrThrow(): UsernameChat = this as
+    dev.inmo.tgbotapi.types.chat.UsernameChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultContact(block: (InlineQueryResultContact) -> T) = inlineQueryResultContactOrNull() ?.let(block)
+public inline fun <T> Chat.ifUsernameChat(block: (UsernameChat) -> T): T? = usernameChatOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultContactOrNull(): InlineQueryResultContact? = this as? InlineQueryResultContact
+public inline fun Chat.possiblyPremiumChatOrNull(): PossiblyPremiumChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultContactOrThrow(): InlineQueryResultContact =
-    this as InlineQueryResultContact
+public inline fun Chat.possiblyPremiumChatOrThrow(): PossiblyPremiumChat = this as
+    dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultGame(block: (InlineQueryResultGame) -> T) = inlineQueryResultGameOrNull() ?.let(block)
+public inline fun <T> Chat.ifPossiblyPremiumChat(block: (PossiblyPremiumChat) -> T): T? =
+    possiblyPremiumChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultGameOrNull(): InlineQueryResultGame? = this as? InlineQueryResultGame
+public inline fun Chat.ableToAddInAttachmentMenuChatOrNull(): AbleToAddInAttachmentMenuChat? = this
+    as? dev.inmo.tgbotapi.types.chat.AbleToAddInAttachmentMenuChat
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultGameOrThrow(): InlineQueryResultGame = this as InlineQueryResultGame
+public inline fun Chat.ableToAddInAttachmentMenuChatOrThrow(): AbleToAddInAttachmentMenuChat = this
+    as dev.inmo.tgbotapi.types.chat.AbleToAddInAttachmentMenuChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultLocation(block: (InlineQueryResultLocation) -> T) = inlineQueryResultLocationOrNull() ?.let(block)
+public inline fun <T>
+    Chat.ifAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T): T? =
+    ableToAddInAttachmentMenuChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultLocationOrNull(): InlineQueryResultLocation? =
-    this as? InlineQueryResultLocation
+public inline fun Chat.extendedChannelChatImplOrNull(): ExtendedChannelChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultLocationOrThrow(): InlineQueryResultLocation =
-    this as InlineQueryResultLocation
+public inline fun Chat.extendedChannelChatImplOrThrow(): ExtendedChannelChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultStickerCached(block: (InlineQueryResultStickerCached) -> T) = inlineQueryResultStickerCachedOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedChannelChatImpl(block: (ExtendedChannelChatImpl) -> T): T? =
+    extendedChannelChatImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultStickerCachedOrNull(): InlineQueryResultStickerCached? =
-    this as? InlineQueryResultStickerCached
+public inline fun Chat.extendedGroupChatImplOrNull(): ExtendedGroupChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedGroupChatImpl
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultStickerCachedOrThrow(): InlineQueryResultStickerCached =
-    this as InlineQueryResultStickerCached
+public inline fun Chat.extendedGroupChatImplOrThrow(): ExtendedGroupChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedGroupChatImpl
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultVenue(block: (InlineQueryResultVenue) -> T) = inlineQueryResultVenueOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedGroupChatImpl(block: (ExtendedGroupChatImpl) -> T): T? =
+    extendedGroupChatImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVenueOrNull(): InlineQueryResultVenue? = this as? InlineQueryResultVenue
+public inline fun Chat.extendedPrivateChatImplOrNull(): ExtendedPrivateChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedPrivateChatImpl
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVenueOrThrow(): InlineQueryResultVenue = this as InlineQueryResultVenue
+public inline fun Chat.extendedPrivateChatImplOrThrow(): ExtendedPrivateChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedPrivateChatImpl
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifDescribedInlineQueryResult(block: (DescribedInlineQueryResult) -> T) = describedInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedPrivateChatImpl(block: (ExtendedPrivateChatImpl) -> T): T? =
+    extendedPrivateChatImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.describedInlineQueryResultOrNull(): DescribedInlineQueryResult? =
-    this as? DescribedInlineQueryResult
+public inline fun Chat.extendedSupergroupChatImplOrNull(): ExtendedSupergroupChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChatImpl
 
-@PreviewFeature
-inline fun InlineQueryResult.describedInlineQueryResultOrThrow(): DescribedInlineQueryResult =
-    this as DescribedInlineQueryResult
+public inline fun Chat.extendedSupergroupChatImplOrThrow(): ExtendedSupergroupChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChatImpl
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifFileInlineQueryResult(block: (FileInlineQueryResult) -> T) = fileInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedSupergroupChatImpl(block: (ExtendedSupergroupChatImpl) -> T):
+    T? = extendedSupergroupChatImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.fileInlineQueryResultOrNull(): FileInlineQueryResult? = this as? FileInlineQueryResult
+public inline fun Chat.extendedBotOrNull(): ExtendedBot? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedBot
 
-@PreviewFeature
-inline fun InlineQueryResult.fileInlineQueryResultOrThrow(): FileInlineQueryResult = this as FileInlineQueryResult
+public inline fun Chat.extendedBotOrThrow(): ExtendedBot = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedBot
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifOptionallyTitledInlineQueryResult(block: (OptionallyTitledInlineQueryResult) -> T) = optionallyTitledInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedBot(block: (ExtendedBot) -> T): T? = extendedBotOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.optionallyTitledInlineQueryResultOrNull(): OptionallyTitledInlineQueryResult? =
-    this as? OptionallyTitledInlineQueryResult
+public inline fun Chat.unknownExtendedChatOrNull(): UnknownExtendedChat? = this as?
+    dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 
-@PreviewFeature
-inline fun InlineQueryResult.optionallyTitledInlineQueryResultOrThrow(): OptionallyTitledInlineQueryResult =
-    this as OptionallyTitledInlineQueryResult
+public inline fun Chat.unknownExtendedChatOrThrow(): UnknownExtendedChat = this as
+    dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifSizedInlineQueryResult(block: (SizedInlineQueryResult) -> T) = sizedInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifUnknownExtendedChat(block: (UnknownExtendedChat) -> T): T? =
+    unknownExtendedChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.sizedInlineQueryResultOrNull(): SizedInlineQueryResult? = this as? SizedInlineQueryResult
+public inline fun Chat.extendedChannelChatOrNull(): ExtendedChannelChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
 
-@PreviewFeature
-inline fun InlineQueryResult.sizedInlineQueryResultOrThrow(): SizedInlineQueryResult = this as SizedInlineQueryResult
+public inline fun Chat.extendedChannelChatOrThrow(): ExtendedChannelChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifThumbSizedInlineQueryResult(block: (ThumbSizedInlineQueryResult) -> T) = thumbSizedInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedChannelChat(block: (ExtendedChannelChat) -> T): T? =
+    extendedChannelChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.thumbSizedInlineQueryResultOrNull(): ThumbSizedInlineQueryResult? =
-    this as? ThumbSizedInlineQueryResult
+public inline fun Chat.extendedGroupChatOrNull(): ExtendedGroupChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
 
-@PreviewFeature
-inline fun InlineQueryResult.thumbSizedInlineQueryResultOrThrow(): ThumbSizedInlineQueryResult =
-    this as ThumbSizedInlineQueryResult
+public inline fun Chat.extendedGroupChatOrThrow(): ExtendedGroupChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifThumbedInlineQueryResult(block: (ThumbedInlineQueryResult) -> T) = thumbedInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedGroupChat(block: (ExtendedGroupChat) -> T): T? =
+    extendedGroupChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.thumbedInlineQueryResultOrNull(): ThumbedInlineQueryResult? = this as? ThumbedInlineQueryResult
+public inline fun Chat.extendedPrivateChatOrNull(): ExtendedPrivateChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
 
-@PreviewFeature
-inline fun InlineQueryResult.thumbedInlineQueryResultOrThrow(): ThumbedInlineQueryResult =
-    this as ThumbedInlineQueryResult
+public inline fun Chat.extendedPrivateChatOrThrow(): ExtendedPrivateChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifThumbedWithMimeTypeInlineQueryResult(block: (ThumbedWithMimeTypeInlineQueryResult) -> T) = thumbedWithMimeTypeInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedPrivateChat(block: (ExtendedPrivateChat) -> T): T? =
+    extendedPrivateChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.thumbedWithMimeTypeInlineQueryResultOrNull(): ThumbedWithMimeTypeInlineQueryResult? =
-    this as? ThumbedWithMimeTypeInlineQueryResult
+public inline fun Chat.extendedPublicChatOrNull(): ExtendedPublicChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 
-@PreviewFeature
-inline fun InlineQueryResult.thumbedWithMimeTypeInlineQueryResultOrThrow(): ThumbedWithMimeTypeInlineQueryResult =
-    this as ThumbedWithMimeTypeInlineQueryResult
+public inline fun Chat.extendedPublicChatOrThrow(): ExtendedPublicChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifTitledInlineQueryResult(block: (TitledInlineQueryResult) -> T) = titledInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedPublicChat(block: (ExtendedPublicChat) -> T): T? =
+    extendedPublicChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.titledInlineQueryResultOrNull(): TitledInlineQueryResult? = this as? TitledInlineQueryResult
+public inline fun Chat.extendedSupergroupChatOrNull(): ExtendedSupergroupChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
 
-@PreviewFeature
-inline fun InlineQueryResult.titledInlineQueryResultOrThrow(): TitledInlineQueryResult = this as TitledInlineQueryResult
+public inline fun Chat.extendedSupergroupChatOrThrow(): ExtendedSupergroupChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifUrlInlineQueryResult(block: (UrlInlineQueryResult) -> T) = urlInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedSupergroupChat(block: (ExtendedSupergroupChat) -> T): T? =
+    extendedSupergroupChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.urlInlineQueryResultOrNull(): UrlInlineQueryResult? = this as? UrlInlineQueryResult
+public inline fun Chat.extendedChatOrNull(): ExtendedChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedChat
 
-@PreviewFeature
-inline fun InlineQueryResult.urlInlineQueryResultOrThrow(): UrlInlineQueryResult = this as UrlInlineQueryResult
+public inline fun Chat.extendedChatOrThrow(): ExtendedChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedChat
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifWithInputMessageContentInlineQueryResult(block: (WithInputMessageContentInlineQueryResult) -> T) = withInputMessageContentInlineQueryResultOrNull() ?.let(block)
+public inline fun <T> Chat.ifExtendedChat(block: (ExtendedChat) -> T): T? = extendedChatOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.withInputMessageContentInlineQueryResultOrNull(): WithInputMessageContentInlineQueryResult? =
-    this as? WithInputMessageContentInlineQueryResult
+public inline fun Chat.groupChatImplOrNull(): GroupChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.GroupChatImpl
 
-@PreviewFeature
-inline fun InlineQueryResult.withInputMessageContentInlineQueryResultOrThrow(): WithInputMessageContentInlineQueryResult =
-    this as WithInputMessageContentInlineQueryResult
+public inline fun Chat.groupChatImplOrThrow(): GroupChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.GroupChatImpl
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultAudio(block: (InlineQueryResultAudio) -> T) = inlineQueryResultAudioOrNull() ?.let(block)
+public inline fun <T> Chat.ifGroupChatImpl(block: (GroupChatImpl) -> T): T? = groupChatImplOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultAudioOrNull(): InlineQueryResultAudio? = this as? InlineQueryResultAudio
+public inline fun Chat.privateChatImplOrNull(): PrivateChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.PrivateChatImpl
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultAudioOrThrow(): InlineQueryResultAudio = this as InlineQueryResultAudio
+public inline fun Chat.privateChatImplOrThrow(): PrivateChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.PrivateChatImpl
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultAudioCached(block: (InlineQueryResultAudioCached) -> T) = inlineQueryResultAudioCachedOrNull() ?.let(block)
+public inline fun <T> Chat.ifPrivateChatImpl(block: (PrivateChatImpl) -> T): T? =
+    privateChatImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultAudioCachedOrNull(): InlineQueryResultAudioCached? =
-    this as? InlineQueryResultAudioCached
+public inline fun Chat.supergroupChatImplOrNull(): SupergroupChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.SupergroupChatImpl
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultAudioCachedOrThrow(): InlineQueryResultAudioCached =
-    this as InlineQueryResultAudioCached
+public inline fun Chat.supergroupChatImplOrThrow(): SupergroupChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.SupergroupChatImpl
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultAudioCommon(block: (InlineQueryResultAudioCommon) -> T) = inlineQueryResultAudioCommonOrNull() ?.let(block)
+public inline fun <T> Chat.ifSupergroupChatImpl(block: (SupergroupChatImpl) -> T): T? =
+    supergroupChatImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultAudioCommonOrNull(): InlineQueryResultAudioCommon? =
-    this as? InlineQueryResultAudioCommon
+public inline fun Chat.channelChatImplOrNull(): ChannelChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.ChannelChatImpl
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultAudioCommonOrThrow(): InlineQueryResultAudioCommon =
-    this as InlineQueryResultAudioCommon
+public inline fun Chat.channelChatImplOrThrow(): ChannelChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.ChannelChatImpl
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultDocument(block: (InlineQueryResultDocument) -> T) = inlineQueryResultDocumentOrNull() ?.let(block)
+public inline fun <T> Chat.ifChannelChatImpl(block: (ChannelChatImpl) -> T): T? =
+    channelChatImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultDocumentOrNull(): InlineQueryResultDocument? =
-    this as? InlineQueryResultDocument
+public inline fun Chat.userOrNull(): User? = this as? dev.inmo.tgbotapi.types.chat.User
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultDocumentOrThrow(): InlineQueryResultDocument =
-    this as InlineQueryResultDocument
+public inline fun Chat.userOrThrow(): User = this as dev.inmo.tgbotapi.types.chat.User
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultDocumentCached(block: (InlineQueryResultDocumentCached) -> T) = inlineQueryResultDocumentCachedOrNull() ?.let(block)
+public inline fun <T> Chat.ifUser(block: (User) -> T): T? = userOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultDocumentCachedOrNull(): InlineQueryResultDocumentCached? =
-    this as? InlineQueryResultDocumentCached
+public inline fun Chat.botOrNull(): Bot? = this as? dev.inmo.tgbotapi.types.chat.Bot
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultDocumentCachedOrThrow(): InlineQueryResultDocumentCached =
-    this as InlineQueryResultDocumentCached
+public inline fun Chat.botOrThrow(): Bot = this as dev.inmo.tgbotapi.types.chat.Bot
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultDocumentCommon(block: (InlineQueryResultDocumentCommon) -> T) = inlineQueryResultDocumentCommonOrNull() ?.let(block)
+public inline fun <T> Chat.ifBot(block: (Bot) -> T): T? = botOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultDocumentCommonOrNull(): InlineQueryResultDocumentCommon? =
-    this as? InlineQueryResultDocumentCommon
+public inline fun Chat.commonBotOrNull(): CommonBot? = this as?
+    dev.inmo.tgbotapi.types.chat.CommonBot
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultDocumentCommonOrThrow(): InlineQueryResultDocumentCommon =
-    this as InlineQueryResultDocumentCommon
+public inline fun Chat.commonBotOrThrow(): CommonBot = this as
+    dev.inmo.tgbotapi.types.chat.CommonBot
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultGif(block: (InlineQueryResultGif) -> T) = inlineQueryResultGifOrNull() ?.let(block)
+public inline fun <T> Chat.ifCommonBot(block: (CommonBot) -> T): T? = commonBotOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultGifOrNull(): InlineQueryResultGif? = this as? InlineQueryResultGif
+public inline fun Chat.commonUserOrNull(): CommonUser? = this as?
+    dev.inmo.tgbotapi.types.chat.CommonUser
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultGifOrThrow(): InlineQueryResultGif = this as InlineQueryResultGif
+public inline fun Chat.commonUserOrThrow(): CommonUser = this as
+    dev.inmo.tgbotapi.types.chat.CommonUser
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultGifCached(block: (InlineQueryResultGifCached) -> T) = inlineQueryResultGifCachedOrNull() ?.let(block)
+public inline fun <T> Chat.ifCommonUser(block: (CommonUser) -> T): T? = commonUserOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultGifCachedOrNull(): InlineQueryResultGifCached? =
-    this as? InlineQueryResultGifCached
+public inline fun Chat.unknownChatTypeOrNull(): UnknownChatType? = this as?
+    dev.inmo.tgbotapi.types.chat.UnknownChatType
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultGifCachedOrThrow(): InlineQueryResultGifCached =
-    this as InlineQueryResultGifCached
+public inline fun Chat.unknownChatTypeOrThrow(): UnknownChatType = this as
+    dev.inmo.tgbotapi.types.chat.UnknownChatType
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultGifCommon(block: (InlineQueryResultGifCommon) -> T) = inlineQueryResultGifCommonOrNull() ?.let(block)
+public inline fun <T> Chat.ifUnknownChatType(block: (UnknownChatType) -> T): T? =
+    unknownChatTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultGifCommonOrNull(): InlineQueryResultGifCommon? =
-    this as? InlineQueryResultGifCommon
+public inline fun DiceAnimationType.cubeDiceAnimationTypeOrNull(): CubeDiceAnimationType? = this as?
+    dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultGifCommonOrThrow(): InlineQueryResultGifCommon =
-    this as InlineQueryResultGifCommon
+public inline fun DiceAnimationType.cubeDiceAnimationTypeOrThrow(): CubeDiceAnimationType = this as
+    dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultMpeg4Gif(block: (InlineQueryResultMpeg4Gif) -> T) = inlineQueryResultMpeg4GifOrNull() ?.let(block)
+public inline fun <T>
+    DiceAnimationType.ifCubeDiceAnimationType(block: (CubeDiceAnimationType) -> T): T? =
+    cubeDiceAnimationTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultMpeg4GifOrNull(): InlineQueryResultMpeg4Gif? =
-    this as? InlineQueryResultMpeg4Gif
+public inline fun DiceAnimationType.dartsDiceAnimationTypeOrNull(): DartsDiceAnimationType? = this
+    as? dev.inmo.tgbotapi.types.dice.DartsDiceAnimationType
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultMpeg4GifOrThrow(): InlineQueryResultMpeg4Gif =
-    this as InlineQueryResultMpeg4Gif
+public inline fun DiceAnimationType.dartsDiceAnimationTypeOrThrow(): DartsDiceAnimationType = this
+    as dev.inmo.tgbotapi.types.dice.DartsDiceAnimationType
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultMpeg4GifCached(block: (InlineQueryResultMpeg4GifCached) -> T) = inlineQueryResultMpeg4GifCachedOrNull() ?.let(block)
+public inline fun <T>
+    DiceAnimationType.ifDartsDiceAnimationType(block: (DartsDiceAnimationType) -> T): T? =
+    dartsDiceAnimationTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultMpeg4GifCachedOrNull(): InlineQueryResultMpeg4GifCached? =
-    this as? InlineQueryResultMpeg4GifCached
+public inline fun DiceAnimationType.basketballDiceAnimationTypeOrNull():
+    BasketballDiceAnimationType? = this as? dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultMpeg4GifCachedOrThrow(): InlineQueryResultMpeg4GifCached =
-    this as InlineQueryResultMpeg4GifCached
+public inline fun DiceAnimationType.basketballDiceAnimationTypeOrThrow():
+    BasketballDiceAnimationType = this as dev.inmo.tgbotapi.types.dice.BasketballDiceAnimationType
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultMpeg4GifCommon(block: (InlineQueryResultMpeg4GifCommon) -> T) = inlineQueryResultMpeg4GifCommonOrNull() ?.let(block)
+public inline fun <T>
+    DiceAnimationType.ifBasketballDiceAnimationType(block: (BasketballDiceAnimationType) -> T): T? =
+    basketballDiceAnimationTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultMpeg4GifCommonOrNull(): InlineQueryResultMpeg4GifCommon? =
-    this as? InlineQueryResultMpeg4GifCommon
+public inline fun DiceAnimationType.footballDiceAnimationTypeOrNull(): FootballDiceAnimationType? =
+    this as? dev.inmo.tgbotapi.types.dice.FootballDiceAnimationType
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultMpeg4GifCommonOrThrow(): InlineQueryResultMpeg4GifCommon =
-    this as InlineQueryResultMpeg4GifCommon
+public inline fun DiceAnimationType.footballDiceAnimationTypeOrThrow(): FootballDiceAnimationType =
+    this as dev.inmo.tgbotapi.types.dice.FootballDiceAnimationType
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultPhoto(block: (InlineQueryResultPhoto) -> T) = inlineQueryResultPhotoOrNull() ?.let(block)
+public inline fun <T>
+    DiceAnimationType.ifFootballDiceAnimationType(block: (FootballDiceAnimationType) -> T): T? =
+    footballDiceAnimationTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultPhotoOrNull(): InlineQueryResultPhoto? = this as? InlineQueryResultPhoto
+public inline fun DiceAnimationType.bowlingDiceAnimationTypeOrNull(): BowlingDiceAnimationType? =
+    this as? dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultPhotoOrThrow(): InlineQueryResultPhoto = this as InlineQueryResultPhoto
+public inline fun DiceAnimationType.bowlingDiceAnimationTypeOrThrow(): BowlingDiceAnimationType =
+    this as dev.inmo.tgbotapi.types.dice.BowlingDiceAnimationType
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultPhotoCached(block: (InlineQueryResultPhotoCached) -> T) = inlineQueryResultPhotoCachedOrNull() ?.let(block)
+public inline fun <T>
+    DiceAnimationType.ifBowlingDiceAnimationType(block: (BowlingDiceAnimationType) -> T): T? =
+    bowlingDiceAnimationTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultPhotoCachedOrNull(): InlineQueryResultPhotoCached? =
-    this as? InlineQueryResultPhotoCached
+public inline fun DiceAnimationType.slotMachineDiceAnimationTypeOrNull():
+    SlotMachineDiceAnimationType? = this as?
+    dev.inmo.tgbotapi.types.dice.SlotMachineDiceAnimationType
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultPhotoCachedOrThrow(): InlineQueryResultPhotoCached =
-    this as InlineQueryResultPhotoCached
+public inline fun DiceAnimationType.slotMachineDiceAnimationTypeOrThrow():
+    SlotMachineDiceAnimationType = this as dev.inmo.tgbotapi.types.dice.SlotMachineDiceAnimationType
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultPhotoCommon(block: (InlineQueryResultPhotoCommon) -> T) = inlineQueryResultPhotoCommonOrNull() ?.let(block)
+public inline fun <T>
+    DiceAnimationType.ifSlotMachineDiceAnimationType(block: (SlotMachineDiceAnimationType) -> T): T?
+    = slotMachineDiceAnimationTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultPhotoCommonOrNull(): InlineQueryResultPhotoCommon? =
-    this as? InlineQueryResultPhotoCommon
+public inline fun DiceAnimationType.customDiceAnimationTypeOrNull(): CustomDiceAnimationType? = this
+    as? dev.inmo.tgbotapi.types.dice.CustomDiceAnimationType
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultPhotoCommonOrThrow(): InlineQueryResultPhotoCommon =
-    this as InlineQueryResultPhotoCommon
+public inline fun DiceAnimationType.customDiceAnimationTypeOrThrow(): CustomDiceAnimationType = this
+    as dev.inmo.tgbotapi.types.dice.CustomDiceAnimationType
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultVideo(block: (InlineQueryResultVideo) -> T) = inlineQueryResultVideoOrNull() ?.let(block)
+public inline fun <T>
+    DiceAnimationType.ifCustomDiceAnimationType(block: (CustomDiceAnimationType) -> T): T? =
+    customDiceAnimationTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVideoOrNull(): InlineQueryResultVideo? = this as? InlineQueryResultVideo
+public inline fun TelegramMediaFile.animationFileOrNull(): AnimationFile? = this as?
+    dev.inmo.tgbotapi.types.files.AnimationFile
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVideoOrThrow(): InlineQueryResultVideo = this as InlineQueryResultVideo
+public inline fun TelegramMediaFile.animationFileOrThrow(): AnimationFile = this as
+    dev.inmo.tgbotapi.types.files.AnimationFile
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultVideoCached(block: (InlineQueryResultVideoCached) -> T) = inlineQueryResultVideoCachedOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifAnimationFile(block: (AnimationFile) -> T): T? =
+    animationFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVideoCachedOrNull(): InlineQueryResultVideoCached? =
-    this as? InlineQueryResultVideoCached
+public inline fun TelegramMediaFile.audioFileOrNull(): AudioFile? = this as?
+    dev.inmo.tgbotapi.types.files.AudioFile
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVideoCachedOrThrow(): InlineQueryResultVideoCached =
-    this as InlineQueryResultVideoCached
+public inline fun TelegramMediaFile.audioFileOrThrow(): AudioFile = this as
+    dev.inmo.tgbotapi.types.files.AudioFile
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultVideoCommon(block: (InlineQueryResultVideoCommon) -> T) = inlineQueryResultVideoCommonOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifAudioFile(block: (AudioFile) -> T): T? = audioFileOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVideoCommonOrNull(): InlineQueryResultVideoCommon? =
-    this as? InlineQueryResultVideoCommon
+public inline fun TelegramMediaFile.documentFileOrNull(): DocumentFile? = this as?
+    dev.inmo.tgbotapi.types.files.DocumentFile
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVideoCommonOrThrow(): InlineQueryResultVideoCommon =
-    this as InlineQueryResultVideoCommon
+public inline fun TelegramMediaFile.documentFileOrThrow(): DocumentFile = this as
+    dev.inmo.tgbotapi.types.files.DocumentFile
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultVoice(block: (InlineQueryResultVoice) -> T) = inlineQueryResultVoiceOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifDocumentFile(block: (DocumentFile) -> T): T? =
+    documentFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVoiceOrNull(): InlineQueryResultVoice? = this as? InlineQueryResultVoice
+public inline fun TelegramMediaFile.fileOrNull(): File? = this as?
+    dev.inmo.tgbotapi.types.files.File
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVoiceOrThrow(): InlineQueryResultVoice = this as InlineQueryResultVoice
+public inline fun TelegramMediaFile.fileOrThrow(): File = this as dev.inmo.tgbotapi.types.files.File
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultVoiceCached(block: (InlineQueryResultVoiceCached) -> T) = inlineQueryResultVoiceCachedOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifFile(block: (File) -> T): T? = fileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVoiceCachedOrNull(): InlineQueryResultVoiceCached? =
-    this as? InlineQueryResultVoiceCached
+public inline fun TelegramMediaFile.mimedMediaFileOrNull(): MimedMediaFile? = this as?
+    dev.inmo.tgbotapi.types.files.MimedMediaFile
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVoiceCachedOrThrow(): InlineQueryResultVoiceCached =
-    this as InlineQueryResultVoiceCached
+public inline fun TelegramMediaFile.mimedMediaFileOrThrow(): MimedMediaFile = this as
+    dev.inmo.tgbotapi.types.files.MimedMediaFile
 
-@PreviewFeature
-inline fun <T> InlineQueryResult.ifInlineQueryResultVoiceCommon(block: (InlineQueryResultVoiceCommon) -> T) = inlineQueryResultVoiceCommonOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifMimedMediaFile(block: (MimedMediaFile) -> T): T? =
+    mimedMediaFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVoiceCommonOrNull(): InlineQueryResultVoiceCommon? =
-    this as? InlineQueryResultVoiceCommon
+public inline fun TelegramMediaFile.passportFileOrNull(): PassportFile? = this as?
+    dev.inmo.tgbotapi.types.files.PassportFile
 
-@PreviewFeature
-inline fun InlineQueryResult.inlineQueryResultVoiceCommonOrThrow(): InlineQueryResultVoiceCommon =
-    this as InlineQueryResultVoiceCommon
+public inline fun TelegramMediaFile.passportFileOrThrow(): PassportFile = this as
+    dev.inmo.tgbotapi.types.files.PassportFile
 
-@PreviewFeature
-inline fun <T> ChatMember.ifOwnerChatMember(block: (OwnerChatMember) -> T) = ownerChatMemberOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifPassportFile(block: (PassportFile) -> T): T? =
+    passportFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatMember.ownerChatMemberOrNull(): OwnerChatMember? = this as? OwnerChatMember
+public inline fun TelegramMediaFile.pathedFileOrNull(): PathedFile? = this as?
+    dev.inmo.tgbotapi.types.files.PathedFile
 
-@PreviewFeature
-inline fun ChatMember.ownerChatMemberOrThrow(): OwnerChatMember = this as OwnerChatMember
+public inline fun TelegramMediaFile.pathedFileOrThrow(): PathedFile = this as
+    dev.inmo.tgbotapi.types.files.PathedFile
 
-@PreviewFeature
-inline fun <T> ChatMember.ifKickedChatMember(block: (KickedChatMember) -> T) = kickedChatMemberOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifPathedFile(block: (PathedFile) -> T): T? =
+    pathedFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatMember.kickedChatMemberOrNull(): KickedChatMember? = this as? KickedChatMember
+public inline fun TelegramMediaFile.photoSizeOrNull(): PhotoSize? = this as?
+    dev.inmo.tgbotapi.types.files.PhotoSize
 
-@PreviewFeature
-inline fun ChatMember.kickedChatMemberOrThrow(): KickedChatMember = this as KickedChatMember
+public inline fun TelegramMediaFile.photoSizeOrThrow(): PhotoSize = this as
+    dev.inmo.tgbotapi.types.files.PhotoSize
 
-@PreviewFeature
-inline fun <T> ChatMember.ifLeftChatMember(block: (LeftChatMember) -> T) = leftChatMemberOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifPhotoSize(block: (PhotoSize) -> T): T? = photoSizeOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun ChatMember.leftChatMemberOrNull(): LeftChatMember? = this as? LeftChatMember
+public inline fun TelegramMediaFile.playableMediaFileOrNull(): PlayableMediaFile? = this as?
+    dev.inmo.tgbotapi.types.files.PlayableMediaFile
 
-@PreviewFeature
-inline fun ChatMember.leftChatMemberOrThrow(): LeftChatMember = this as LeftChatMember
+public inline fun TelegramMediaFile.playableMediaFileOrThrow(): PlayableMediaFile = this as
+    dev.inmo.tgbotapi.types.files.PlayableMediaFile
 
-@PreviewFeature
-inline fun <T> ChatMember.ifMemberChatMember(block: (MemberChatMember) -> T) = memberChatMemberOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifPlayableMediaFile(block: (PlayableMediaFile) -> T): T? =
+    playableMediaFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatMember.memberChatMemberOrNull(): MemberChatMember? = this as? MemberChatMember
+public inline fun TelegramMediaFile.sizedMediaFileOrNull(): SizedMediaFile? = this as?
+    dev.inmo.tgbotapi.types.files.SizedMediaFile
 
-@PreviewFeature
-inline fun ChatMember.memberChatMemberOrThrow(): MemberChatMember = this as MemberChatMember
+public inline fun TelegramMediaFile.sizedMediaFileOrThrow(): SizedMediaFile = this as
+    dev.inmo.tgbotapi.types.files.SizedMediaFile
 
-@PreviewFeature
-inline fun <T> ChatMember.ifRestrictedChatMember(block: (RestrictedChatMember) -> T) = restrictedChatMemberOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifSizedMediaFile(block: (SizedMediaFile) -> T): T? =
+    sizedMediaFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatMember.restrictedChatMemberOrNull(): RestrictedChatMember? = this as? RestrictedChatMember
+public inline fun TelegramMediaFile.stickerOrNull(): Sticker? = this as?
+    dev.inmo.tgbotapi.types.files.Sticker
 
-@PreviewFeature
-inline fun ChatMember.restrictedChatMemberOrThrow(): RestrictedChatMember = this as RestrictedChatMember
+public inline fun TelegramMediaFile.stickerOrThrow(): Sticker = this as
+    dev.inmo.tgbotapi.types.files.Sticker
 
-@PreviewFeature
-inline fun <T> ChatMember.ifAdministratorChatMember(block: (AdministratorChatMember) -> T) = administratorChatMemberOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifSticker(block: (Sticker) -> T): T? = stickerOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun ChatMember.administratorChatMemberOrNull(): AdministratorChatMember? = this as? AdministratorChatMember
+public inline fun TelegramMediaFile.simpleStickerOrNull(): SimpleSticker? = this as?
+    dev.inmo.tgbotapi.types.files.SimpleSticker
 
-@PreviewFeature
-inline fun ChatMember.administratorChatMemberOrThrow(): AdministratorChatMember = this as AdministratorChatMember
+public inline fun TelegramMediaFile.simpleStickerOrThrow(): SimpleSticker = this as
+    dev.inmo.tgbotapi.types.files.SimpleSticker
 
-@PreviewFeature
-inline fun <T> ChatMember.ifBannedChatMember(block: (BannedChatMember) -> T) = bannedChatMemberOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifSimpleSticker(block: (SimpleSticker) -> T): T? =
+    simpleStickerOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatMember.bannedChatMemberOrNull(): BannedChatMember? = this as? BannedChatMember
+public inline fun TelegramMediaFile.animatedStickerOrNull(): AnimatedSticker? = this as?
+    dev.inmo.tgbotapi.types.files.AnimatedSticker
 
-@PreviewFeature
-inline fun ChatMember.bannedChatMemberOrThrow(): BannedChatMember = this as BannedChatMember
+public inline fun TelegramMediaFile.animatedStickerOrThrow(): AnimatedSticker = this as
+    dev.inmo.tgbotapi.types.files.AnimatedSticker
 
-@PreviewFeature
-inline fun <T> ChatMember.ifSpecialRightsChatMember(block: (SpecialRightsChatMember) -> T) = specialRightsChatMemberOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifAnimatedSticker(block: (AnimatedSticker) -> T): T? =
+    animatedStickerOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatMember.specialRightsChatMemberOrNull(): SpecialRightsChatMember? = this as? SpecialRightsChatMember
+public inline fun TelegramMediaFile.videoStickerOrNull(): VideoSticker? = this as?
+    dev.inmo.tgbotapi.types.files.VideoSticker
 
-@PreviewFeature
-inline fun ChatMember.specialRightsChatMemberOrThrow(): SpecialRightsChatMember = this as SpecialRightsChatMember
+public inline fun TelegramMediaFile.videoStickerOrThrow(): VideoSticker = this as
+    dev.inmo.tgbotapi.types.files.VideoSticker
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) = audioMediaGroupMemberTelegramMediaOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifVideoSticker(block: (VideoSticker) -> T): T? =
+    videoStickerOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.audioMediaGroupMemberTelegramMediaOrNull(): AudioMediaGroupMemberTelegramMedia? =
-    this as? AudioMediaGroupMemberTelegramMedia
+public inline fun TelegramMediaFile.thumbedMediaFileOrNull(): ThumbedMediaFile? = this as?
+    dev.inmo.tgbotapi.types.files.ThumbedMediaFile
 
-@PreviewFeature
-inline fun TelegramMedia.audioMediaGroupMemberTelegramMediaOrThrow(): AudioMediaGroupMemberTelegramMedia =
-    this as AudioMediaGroupMemberTelegramMedia
+public inline fun TelegramMediaFile.thumbedMediaFileOrThrow(): ThumbedMediaFile = this as
+    dev.inmo.tgbotapi.types.files.ThumbedMediaFile
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) = documentMediaGroupMemberTelegramMediaOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifThumbedMediaFile(block: (ThumbedMediaFile) -> T): T? =
+    thumbedMediaFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.documentMediaGroupMemberTelegramMediaOrNull(): DocumentMediaGroupMemberTelegramMedia? =
-    this as? DocumentMediaGroupMemberTelegramMedia
+public inline fun TelegramMediaFile.videoFileOrNull(): VideoFile? = this as?
+    dev.inmo.tgbotapi.types.files.VideoFile
 
-@PreviewFeature
-inline fun TelegramMedia.documentMediaGroupMemberTelegramMediaOrThrow(): DocumentMediaGroupMemberTelegramMedia =
-    this as DocumentMediaGroupMemberTelegramMedia
+public inline fun TelegramMediaFile.videoFileOrThrow(): VideoFile = this as
+    dev.inmo.tgbotapi.types.files.VideoFile
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T) = duratedTelegramMediaOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifVideoFile(block: (VideoFile) -> T): T? = videoFileOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.duratedTelegramMediaOrNull(): DuratedTelegramMedia? = this as? DuratedTelegramMedia
+public inline fun TelegramMediaFile.videoNoteFileOrNull(): VideoNoteFile? = this as?
+    dev.inmo.tgbotapi.types.files.VideoNoteFile
 
-@PreviewFeature
-inline fun TelegramMedia.duratedTelegramMediaOrThrow(): DuratedTelegramMedia = this as DuratedTelegramMedia
+public inline fun TelegramMediaFile.videoNoteFileOrThrow(): VideoNoteFile = this as
+    dev.inmo.tgbotapi.types.files.VideoNoteFile
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T) = telegramMediaAnimationOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifVideoNoteFile(block: (VideoNoteFile) -> T): T? =
+    videoNoteFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as? TelegramMediaAnimation
+public inline fun TelegramMediaFile.voiceFileOrNull(): VoiceFile? = this as?
+    dev.inmo.tgbotapi.types.files.VoiceFile
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as TelegramMediaAnimation
+public inline fun TelegramMediaFile.voiceFileOrThrow(): VoiceFile = this as
+    dev.inmo.tgbotapi.types.files.VoiceFile
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifTelegramMediaAudio(block: (TelegramMediaAudio) -> T) = telegramMediaAudioOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifVoiceFile(block: (VoiceFile) -> T): T? = voiceFileOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaAudioOrNull(): TelegramMediaAudio? = this as? TelegramMediaAudio
+public inline fun Location.staticLocationOrNull(): StaticLocation? = this as?
+    dev.inmo.tgbotapi.types.location.StaticLocation
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaAudioOrThrow(): TelegramMediaAudio = this as TelegramMediaAudio
+public inline fun Location.staticLocationOrThrow(): StaticLocation = this as
+    dev.inmo.tgbotapi.types.location.StaticLocation
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifTelegramMediaDocument(block: (TelegramMediaDocument) -> T) = telegramMediaDocumentOrNull() ?.let(block)
+public inline fun <T> Location.ifStaticLocation(block: (StaticLocation) -> T): T? =
+    staticLocationOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaDocumentOrNull(): TelegramMediaDocument? = this as? TelegramMediaDocument
+public inline fun Location.liveLocationOrNull(): LiveLocation? = this as?
+    dev.inmo.tgbotapi.types.location.LiveLocation
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaDocumentOrThrow(): TelegramMediaDocument = this as TelegramMediaDocument
+public inline fun Location.liveLocationOrThrow(): LiveLocation = this as
+    dev.inmo.tgbotapi.types.location.LiveLocation
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T) = telegramMediaPhotoOrNull() ?.let(block)
+public inline fun <T> Location.ifLiveLocation(block: (LiveLocation) -> T): T? = liveLocationOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaPhotoOrNull(): TelegramMediaPhoto? = this as? TelegramMediaPhoto
+public inline fun TelegramMedia.duratedTelegramMediaOrNull(): DuratedTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaPhotoOrThrow(): TelegramMediaPhoto = this as TelegramMediaPhoto
+public inline fun TelegramMedia.duratedTelegramMediaOrThrow(): DuratedTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifTelegramMediaVideo(block: (TelegramMediaVideo) -> T) = telegramMediaVideoOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T): T? =
+    duratedTelegramMediaOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaVideoOrNull(): TelegramMediaVideo? = this as? TelegramMediaVideo
+public inline fun TelegramMedia.mediaGroupMemberTelegramMediaOrNull():
+    MediaGroupMemberTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
 
-@PreviewFeature
-inline fun TelegramMedia.telegramMediaVideoOrThrow(): TelegramMediaVideo = this as TelegramMediaVideo
+public inline fun TelegramMedia.mediaGroupMemberTelegramMediaOrThrow():
+    MediaGroupMemberTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T) = mediaGroupMemberTelegramMediaOrNull() ?.let(block)
+public inline fun <T>
+    TelegramMedia.ifMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T): T? =
+    mediaGroupMemberTelegramMediaOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.mediaGroupMemberTelegramMediaOrNull(): MediaGroupMemberTelegramMedia? = this as? MediaGroupMemberTelegramMedia
+public inline fun TelegramMedia.audioMediaGroupMemberTelegramMediaOrNull():
+    AudioMediaGroupMemberTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.AudioMediaGroupMemberTelegramMedia
 
-@PreviewFeature
-inline fun TelegramMedia.mediaGroupMemberTelegramMediaOrThrow(): MediaGroupMemberTelegramMedia =
-    this as MediaGroupMemberTelegramMedia
+public inline fun TelegramMedia.audioMediaGroupMemberTelegramMediaOrThrow():
+    AudioMediaGroupMemberTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.AudioMediaGroupMemberTelegramMedia
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifSizedTelegramMedia(block: (SizedTelegramMedia) -> T) = sizedTelegramMediaOrNull() ?.let(block)
+public inline fun <T>
+    TelegramMedia.ifAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T):
+    T? = audioMediaGroupMemberTelegramMediaOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.sizedTelegramMediaOrNull(): SizedTelegramMedia? = this as? SizedTelegramMedia
+public inline fun TelegramMedia.documentMediaGroupMemberTelegramMediaOrNull():
+    DocumentMediaGroupMemberTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
 
-@PreviewFeature
-inline fun TelegramMedia.sizedTelegramMediaOrThrow(): SizedTelegramMedia = this as SizedTelegramMedia
+public inline fun TelegramMedia.documentMediaGroupMemberTelegramMediaOrThrow():
+    DocumentMediaGroupMemberTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T) = thumbedTelegramMediaOrNull() ?.let(block)
+public inline fun <T>
+    TelegramMedia.ifDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T):
+    T? = documentMediaGroupMemberTelegramMediaOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.thumbedTelegramMediaOrNull(): ThumbedTelegramMedia? = this as? ThumbedTelegramMedia
+public inline fun TelegramMedia.visualMediaGroupMemberTelegramMediaOrNull():
+    VisualMediaGroupMemberTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
 
-@PreviewFeature
-inline fun TelegramMedia.thumbedTelegramMediaOrThrow(): ThumbedTelegramMedia = this as ThumbedTelegramMedia
+public inline fun TelegramMedia.visualMediaGroupMemberTelegramMediaOrThrow():
+    VisualMediaGroupMemberTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifTitledTelegramMedia(block: (TitledTelegramMedia) -> T) = titledTelegramMediaOrNull() ?.let(block)
+public inline fun <T>
+    TelegramMedia.ifVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T):
+    T? = visualMediaGroupMemberTelegramMediaOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.titledTelegramMediaOrNull(): TitledTelegramMedia? = this as? TitledTelegramMedia
+public inline fun TelegramMedia.sizedTelegramMediaOrNull(): SizedTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.SizedTelegramMedia
 
-@PreviewFeature
-inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedia = this as TitledTelegramMedia
+public inline fun TelegramMedia.sizedTelegramMediaOrThrow(): SizedTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.SizedTelegramMedia
 
-@PreviewFeature
-inline fun <T> TelegramMedia.ifVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) = visualMediaGroupMemberTelegramMediaOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifSizedTelegramMedia(block: (SizedTelegramMedia) -> T): T? =
+    sizedTelegramMediaOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMedia.visualMediaGroupMemberTelegramMediaOrNull(): VisualMediaGroupMemberTelegramMedia? =
-    this as? VisualMediaGroupMemberTelegramMedia
+public inline fun TelegramMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
-@PreviewFeature
-inline fun TelegramMedia.visualMediaGroupMemberTelegramMediaOrThrow(): VisualMediaGroupMemberTelegramMedia =
-    this as VisualMediaGroupMemberTelegramMedia
+public inline fun TelegramMedia.telegramMediaAnimationOrThrow(): TelegramMediaAnimation = this as
+    dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
-@PreviewFeature
-inline fun <T> Update.ifCallbackQueryUpdate(block: (CallbackQueryUpdate) -> T) = callbackQueryUpdateOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T):
+    T? = telegramMediaAnimationOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.callbackQueryUpdateOrNull(): CallbackQueryUpdate? = this as? CallbackQueryUpdate
+public inline fun TelegramMedia.telegramMediaAudioOrNull(): TelegramMediaAudio? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 
-@PreviewFeature
-inline fun Update.callbackQueryUpdateOrThrow(): CallbackQueryUpdate = this as CallbackQueryUpdate
+public inline fun TelegramMedia.telegramMediaAudioOrThrow(): TelegramMediaAudio = this as
+    dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 
-@PreviewFeature
-inline fun <T> Update.ifChannelPostUpdate(block: (ChannelPostUpdate) -> T) = channelPostUpdateOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifTelegramMediaAudio(block: (TelegramMediaAudio) -> T): T? =
+    telegramMediaAudioOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.channelPostUpdateOrNull(): ChannelPostUpdate? = this as? ChannelPostUpdate
+public inline fun TelegramMedia.telegramMediaDocumentOrNull(): TelegramMediaDocument? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 
-@PreviewFeature
-inline fun Update.channelPostUpdateOrThrow(): ChannelPostUpdate = this as ChannelPostUpdate
+public inline fun TelegramMedia.telegramMediaDocumentOrThrow(): TelegramMediaDocument = this as
+    dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 
-@PreviewFeature
-inline fun <T> Update.ifChosenInlineResultUpdate(block: (ChosenInlineResultUpdate) -> T) = chosenInlineResultUpdateOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifTelegramMediaDocument(block: (TelegramMediaDocument) -> T): T?
+    = telegramMediaDocumentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.chosenInlineResultUpdateOrNull(): ChosenInlineResultUpdate? = this as? ChosenInlineResultUpdate
+public inline fun TelegramMedia.telegramMediaPhotoOrNull(): TelegramMediaPhoto? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 
-@PreviewFeature
-inline fun Update.chosenInlineResultUpdateOrThrow(): ChosenInlineResultUpdate = this as ChosenInlineResultUpdate
+public inline fun TelegramMedia.telegramMediaPhotoOrThrow(): TelegramMediaPhoto = this as
+    dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 
-@PreviewFeature
-inline fun <T> Update.ifEditChannelPostUpdate(block: (EditChannelPostUpdate) -> T) = editChannelPostUpdateOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T): T? =
+    telegramMediaPhotoOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.editChannelPostUpdateOrNull(): EditChannelPostUpdate? = this as? EditChannelPostUpdate
+public inline fun TelegramMedia.telegramMediaVideoOrNull(): TelegramMediaVideo? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 
-@PreviewFeature
-inline fun Update.editChannelPostUpdateOrThrow(): EditChannelPostUpdate = this as EditChannelPostUpdate
+public inline fun TelegramMedia.telegramMediaVideoOrThrow(): TelegramMediaVideo = this as
+    dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 
-@PreviewFeature
-inline fun <T> Update.ifEditMessageUpdate(block: (EditMessageUpdate) -> T) = editMessageUpdateOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifTelegramMediaVideo(block: (TelegramMediaVideo) -> T): T? =
+    telegramMediaVideoOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.editMessageUpdateOrNull(): EditMessageUpdate? = this as? EditMessageUpdate
+public inline fun TelegramMedia.thumbedTelegramMediaOrNull(): ThumbedTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 
-@PreviewFeature
-inline fun Update.editMessageUpdateOrThrow(): EditMessageUpdate = this as EditMessageUpdate
+public inline fun TelegramMedia.thumbedTelegramMediaOrThrow(): ThumbedTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 
-@PreviewFeature
-inline fun <T> Update.ifInlineQueryUpdate(block: (InlineQueryUpdate) -> T) = inlineQueryUpdateOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T): T? =
+    thumbedTelegramMediaOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.inlineQueryUpdateOrNull(): InlineQueryUpdate? = this as? InlineQueryUpdate
+public inline fun TelegramMedia.titledTelegramMediaOrNull(): TitledTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 
-@PreviewFeature
-inline fun Update.inlineQueryUpdateOrThrow(): InlineQueryUpdate = this as InlineQueryUpdate
+public inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 
-@PreviewFeature
-inline fun <T> Update.ifChannelPostMediaGroupUpdate(block: (ChannelPostMediaGroupUpdate) -> T) = channelPostMediaGroupUpdateOrNull() ?.let(block)
+public inline fun <T> TelegramMedia.ifTitledTelegramMedia(block: (TitledTelegramMedia) -> T): T? =
+    titledTelegramMediaOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.channelPostMediaGroupUpdateOrNull(): ChannelPostMediaGroupUpdate? = this as? ChannelPostMediaGroupUpdate
+public inline fun ChatEvent.channelChatCreatedOrNull(): ChannelChatCreated? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
 
-@PreviewFeature
-inline fun Update.channelPostMediaGroupUpdateOrThrow(): ChannelPostMediaGroupUpdate =
-    this as ChannelPostMediaGroupUpdate
+public inline fun ChatEvent.channelChatCreatedOrThrow(): ChannelChatCreated = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
 
-@PreviewFeature
-inline fun <T> Update.ifEditChannelPostMediaGroupUpdate(block: (EditChannelPostMediaGroupUpdate) -> T) = editChannelPostMediaGroupUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifChannelChatCreated(block: (ChannelChatCreated) -> T): T? =
+    channelChatCreatedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.editChannelPostMediaGroupUpdateOrNull(): EditChannelPostMediaGroupUpdate? =
-    this as? EditChannelPostMediaGroupUpdate
+public inline fun ChatEvent.deleteChatPhotoOrNull(): DeleteChatPhoto? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 
-@PreviewFeature
-inline fun Update.editChannelPostMediaGroupUpdateOrThrow(): EditChannelPostMediaGroupUpdate =
-    this as EditChannelPostMediaGroupUpdate
+public inline fun ChatEvent.deleteChatPhotoOrThrow(): DeleteChatPhoto = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 
-@PreviewFeature
-inline fun <T> Update.ifEditMediaGroupUpdate(block: (EditMediaGroupUpdate) -> T) = editMediaGroupUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifDeleteChatPhoto(block: (DeleteChatPhoto) -> T): T? =
+    deleteChatPhotoOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.editMediaGroupUpdateOrNull(): EditMediaGroupUpdate? = this as? EditMediaGroupUpdate
+public inline fun ChatEvent.groupChatCreatedOrNull(): GroupChatCreated? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 
-@PreviewFeature
-inline fun Update.editMediaGroupUpdateOrThrow(): EditMediaGroupUpdate = this as EditMediaGroupUpdate
+public inline fun ChatEvent.groupChatCreatedOrThrow(): GroupChatCreated = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 
-@PreviewFeature
-inline fun <T> Update.ifEditMessageMediaGroupUpdate(block: (EditMessageMediaGroupUpdate) -> T) = editMessageMediaGroupUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGroupChatCreated(block: (GroupChatCreated) -> T): T? =
+    groupChatCreatedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.editMessageMediaGroupUpdateOrNull(): EditMessageMediaGroupUpdate? = this as? EditMessageMediaGroupUpdate
+public inline fun ChatEvent.leftChatMemberEventOrNull(): LeftChatMemberEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
 
-@PreviewFeature
-inline fun Update.editMessageMediaGroupUpdateOrThrow(): EditMessageMediaGroupUpdate =
-    this as EditMessageMediaGroupUpdate
+public inline fun ChatEvent.leftChatMemberEventOrThrow(): LeftChatMemberEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
 
-@PreviewFeature
-inline fun <T> Update.ifMediaGroupUpdate(block: (MediaGroupUpdate) -> T) = mediaGroupUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifLeftChatMemberEvent(block: (LeftChatMemberEvent) -> T): T? =
+    leftChatMemberEventOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.mediaGroupUpdateOrNull(): MediaGroupUpdate? = this as? MediaGroupUpdate
+public inline fun ChatEvent.messageAutoDeleteTimerChangedOrNull(): MessageAutoDeleteTimerChanged? =
+    this as? dev.inmo.tgbotapi.types.message.ChatEvents.MessageAutoDeleteTimerChanged
 
-@PreviewFeature
-inline fun Update.mediaGroupUpdateOrThrow(): MediaGroupUpdate = this as MediaGroupUpdate
+public inline fun ChatEvent.messageAutoDeleteTimerChangedOrThrow(): MessageAutoDeleteTimerChanged =
+    this as dev.inmo.tgbotapi.types.message.ChatEvents.MessageAutoDeleteTimerChanged
 
-@PreviewFeature
-inline fun <T> Update.ifMessageMediaGroupUpdate(block: (MessageMediaGroupUpdate) -> T) = messageMediaGroupUpdateOrNull() ?.let(block)
+public inline fun <T>
+    ChatEvent.ifMessageAutoDeleteTimerChanged(block: (MessageAutoDeleteTimerChanged) -> T): T? =
+    messageAutoDeleteTimerChangedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.messageMediaGroupUpdateOrNull(): MessageMediaGroupUpdate? = this as? MessageMediaGroupUpdate
+public inline fun ChatEvent.migratedToSupergroupOrNull(): MigratedToSupergroup? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.MigratedToSupergroup
 
-@PreviewFeature
-inline fun Update.messageMediaGroupUpdateOrThrow(): MessageMediaGroupUpdate = this as MessageMediaGroupUpdate
+public inline fun ChatEvent.migratedToSupergroupOrThrow(): MigratedToSupergroup = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.MigratedToSupergroup
 
-@PreviewFeature
-inline fun <T> Update.ifSentMediaGroupUpdate(block: (SentMediaGroupUpdate) -> T) = sentMediaGroupUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifMigratedToSupergroup(block: (MigratedToSupergroup) -> T): T? =
+    migratedToSupergroupOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.sentMediaGroupUpdateOrNull(): SentMediaGroupUpdate? = this as? SentMediaGroupUpdate
+public inline fun ChatEvent.newChatMembersOrNull(): NewChatMembers? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
 
-@PreviewFeature
-inline fun Update.sentMediaGroupUpdateOrThrow(): SentMediaGroupUpdate = this as SentMediaGroupUpdate
+public inline fun ChatEvent.newChatMembersOrThrow(): NewChatMembers = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.NewChatMembers
 
-@PreviewFeature
-inline fun <T> Update.ifMessageUpdate(block: (MessageUpdate) -> T) = messageUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifNewChatMembers(block: (NewChatMembers) -> T): T? =
+    newChatMembersOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.messageUpdateOrNull(): MessageUpdate? = this as? MessageUpdate
+public inline fun ChatEvent.newChatPhotoOrNull(): NewChatPhoto? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.NewChatPhoto
 
-@PreviewFeature
-inline fun Update.messageUpdateOrThrow(): MessageUpdate = this as MessageUpdate
+public inline fun ChatEvent.newChatPhotoOrThrow(): NewChatPhoto = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.NewChatPhoto
 
-@PreviewFeature
-inline fun <T> Update.ifPollAnswerUpdate(block: (PollAnswerUpdate) -> T) = pollAnswerUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifNewChatPhoto(block: (NewChatPhoto) -> T): T? =
+    newChatPhotoOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.pollAnswerUpdateOrNull(): PollAnswerUpdate? = this as? PollAnswerUpdate
+public inline fun ChatEvent.newChatTitleOrNull(): NewChatTitle? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.NewChatTitle
 
-@PreviewFeature
-inline fun Update.pollAnswerUpdateOrThrow(): PollAnswerUpdate = this as PollAnswerUpdate
+public inline fun ChatEvent.newChatTitleOrThrow(): NewChatTitle = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.NewChatTitle
 
-@PreviewFeature
-inline fun <T> Update.ifPollUpdate(block: (PollUpdate) -> T) = pollUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifNewChatTitle(block: (NewChatTitle) -> T): T? =
+    newChatTitleOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.pollUpdateOrNull(): PollUpdate? = this as? PollUpdate
+public inline fun ChatEvent.pinnedMessageOrNull(): PinnedMessage? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.PinnedMessage
 
-@PreviewFeature
-inline fun Update.pollUpdateOrThrow(): PollUpdate = this as PollUpdate
+public inline fun ChatEvent.pinnedMessageOrThrow(): PinnedMessage = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.PinnedMessage
 
-@PreviewFeature
-inline fun <T> Update.ifPreCheckoutQueryUpdate(block: (PreCheckoutQueryUpdate) -> T) = preCheckoutQueryUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifPinnedMessage(block: (PinnedMessage) -> T): T? =
+    pinnedMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.preCheckoutQueryUpdateOrNull(): PreCheckoutQueryUpdate? = this as? PreCheckoutQueryUpdate
+public inline fun ChatEvent.proximityAlertTriggeredOrNull(): ProximityAlertTriggered? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
 
-@PreviewFeature
-inline fun Update.preCheckoutQueryUpdateOrThrow(): PreCheckoutQueryUpdate = this as PreCheckoutQueryUpdate
+public inline fun ChatEvent.proximityAlertTriggeredOrThrow(): ProximityAlertTriggered = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.ProximityAlertTriggered
 
-@PreviewFeature
-inline fun <T> Update.ifShippingQueryUpdate(block: (ShippingQueryUpdate) -> T) = shippingQueryUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifProximityAlertTriggered(block: (ProximityAlertTriggered) -> T): T?
+    = proximityAlertTriggeredOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.shippingQueryUpdateOrNull(): ShippingQueryUpdate? = this as? ShippingQueryUpdate
+public inline fun ChatEvent.supergroupChatCreatedOrNull(): SupergroupChatCreated? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.SupergroupChatCreated
 
-@PreviewFeature
-inline fun Update.shippingQueryUpdateOrThrow(): ShippingQueryUpdate = this as ShippingQueryUpdate
+public inline fun ChatEvent.supergroupChatCreatedOrThrow(): SupergroupChatCreated = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.SupergroupChatCreated
 
-@PreviewFeature
-inline fun <T> Update.ifBaseEditMessageUpdate(block: (BaseEditMessageUpdate) -> T) = baseEditMessageUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifSupergroupChatCreated(block: (SupergroupChatCreated) -> T): T? =
+    supergroupChatCreatedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.baseEditMessageUpdateOrNull(): BaseEditMessageUpdate? = this as? BaseEditMessageUpdate
+public inline fun ChatEvent.userLoggedInOrNull(): UserLoggedIn? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.UserLoggedIn
 
-@PreviewFeature
-inline fun Update.baseEditMessageUpdateOrThrow(): BaseEditMessageUpdate = this as BaseEditMessageUpdate
+public inline fun ChatEvent.userLoggedInOrThrow(): UserLoggedIn = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.UserLoggedIn
 
-@PreviewFeature
-inline fun <T> Update.ifBaseMessageUpdate(block: (BaseMessageUpdate) -> T) = baseMessageUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifUserLoggedIn(block: (UserLoggedIn) -> T): T? =
+    userLoggedInOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.baseMessageUpdateOrNull(): BaseMessageUpdate? = this as? BaseMessageUpdate
+public inline fun ChatEvent.webAppDataOrNull(): WebAppData? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.WebAppData
 
-@PreviewFeature
-inline fun Update.baseMessageUpdateOrThrow(): BaseMessageUpdate = this as BaseMessageUpdate
+public inline fun ChatEvent.webAppDataOrThrow(): WebAppData = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.WebAppData
 
-@PreviewFeature
-inline fun <T> Update.ifBaseSentMessageUpdate(block: (BaseSentMessageUpdate) -> T) = baseSentMessageUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifWebAppData(block: (WebAppData) -> T): T? = webAppDataOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun Update.baseSentMessageUpdateOrNull(): BaseSentMessageUpdate? = this as? BaseSentMessageUpdate
+public inline fun ChatEvent.channelEventOrNull(): ChannelEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
 
-@PreviewFeature
-inline fun Update.baseSentMessageUpdateOrThrow(): BaseSentMessageUpdate = this as BaseSentMessageUpdate
+public inline fun ChatEvent.channelEventOrThrow(): ChannelEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
 
-@PreviewFeature
-inline fun <T> Update.ifUnknownUpdate(block: (UnknownUpdate) -> T) = unknownUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifChannelEvent(block: (ChannelEvent) -> T): T? =
+    channelEventOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.unknownUpdateOrNull(): UnknownUpdate? = this as? UnknownUpdate
+public inline fun ChatEvent.commonEventOrNull(): CommonEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
 
-@PreviewFeature
-inline fun Update.unknownUpdateOrThrow(): UnknownUpdate = this as UnknownUpdate
+public inline fun ChatEvent.commonEventOrThrow(): CommonEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
 
-@PreviewFeature
-inline fun <T> Update.ifCommonChatMemberUpdatedUpdate(block: (CommonChatMemberUpdatedUpdate) -> T) = commonChatMemberUpdatedUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifCommonEvent(block: (CommonEvent) -> T): T? = commonEventOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun Update.commonChatMemberUpdatedUpdateOrNull(): CommonChatMemberUpdatedUpdate? =
-    this as? CommonChatMemberUpdatedUpdate
+public inline fun ChatEvent.groupEventOrNull(): GroupEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 
-@PreviewFeature
-inline fun Update.commonChatMemberUpdatedUpdateOrThrow(): CommonChatMemberUpdatedUpdate =
-    this as CommonChatMemberUpdatedUpdate
+public inline fun ChatEvent.groupEventOrThrow(): GroupEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 
-@PreviewFeature
-inline fun <T> Update.ifMyChatMemberUpdatedUpdate(block: (MyChatMemberUpdatedUpdate) -> T) = myChatMemberUpdatedUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifGroupEvent(block: (GroupEvent) -> T): T? = groupEventOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun Update.myChatMemberUpdatedUpdateOrNull(): MyChatMemberUpdatedUpdate? = this as? MyChatMemberUpdatedUpdate
+public inline fun ChatEvent.privateEventOrNull(): PrivateEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
 
-@PreviewFeature
-inline fun Update.myChatMemberUpdatedUpdateOrThrow(): MyChatMemberUpdatedUpdate = this as MyChatMemberUpdatedUpdate
+public inline fun ChatEvent.privateEventOrThrow(): PrivateEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
 
-@PreviewFeature
-inline fun <T> Update.ifChatMemberUpdatedUpdate(block: (ChatMemberUpdatedUpdate) -> T) = chatMemberUpdatedUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifPrivateEvent(block: (PrivateEvent) -> T): T? =
+    privateEventOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.chatMemberUpdatedUpdateOrNull(): ChatMemberUpdatedUpdate? = this as? ChatMemberUpdatedUpdate
+public inline fun ChatEvent.publicChatEventOrNull(): PublicChatEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 
-@PreviewFeature
-inline fun Update.chatMemberUpdatedUpdateOrThrow(): ChatMemberUpdatedUpdate = this as ChatMemberUpdatedUpdate
+public inline fun ChatEvent.publicChatEventOrThrow(): PublicChatEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 
-@PreviewFeature
-inline fun <T> Update.ifChatJoinRequestUpdate(block: (ChatJoinRequestUpdate) -> T) = chatJoinRequestUpdateOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifPublicChatEvent(block: (PublicChatEvent) -> T): T? =
+    publicChatEventOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Update.chatJoinRequestUpdateOrNull(): ChatJoinRequestUpdate? = this as? ChatJoinRequestUpdate
+public inline fun ChatEvent.supergroupEventOrNull(): SupergroupEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 
-@PreviewFeature
-inline fun Update.chatJoinRequestUpdateOrThrow(): ChatJoinRequestUpdate = this as ChatJoinRequestUpdate
+public inline fun ChatEvent.supergroupEventOrThrow(): SupergroupEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifAnimationFile(block: (AnimationFile) -> T) = animationFileOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifSupergroupEvent(block: (SupergroupEvent) -> T): T? =
+    supergroupEventOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.animationFileOrNull(): AnimationFile? = this as? AnimationFile
+public inline fun ChatEvent.videoChatEventOrNull(): VideoChatEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
 
-@PreviewFeature
-inline fun TelegramMediaFile.animationFileOrThrow(): AnimationFile = this as AnimationFile
+public inline fun ChatEvent.videoChatEventOrThrow(): VideoChatEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifAudioFile(block: (AudioFile) -> T) = audioFileOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifVideoChatEvent(block: (VideoChatEvent) -> T): T? =
+    videoChatEventOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.audioFileOrNull(): AudioFile? = this as? AudioFile
+public inline fun ChatEvent.videoChatEndedOrNull(): VideoChatEnded? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
 
-@PreviewFeature
-inline fun TelegramMediaFile.audioFileOrThrow(): AudioFile = this as AudioFile
+public inline fun ChatEvent.videoChatEndedOrThrow(): VideoChatEnded = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifDocumentFile(block: (DocumentFile) -> T) = documentFileOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifVideoChatEnded(block: (VideoChatEnded) -> T): T? =
+    videoChatEndedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.documentFileOrNull(): DocumentFile? = this as? DocumentFile
+public inline fun ChatEvent.videoChatParticipantsInvitedOrNull(): VideoChatParticipantsInvited? =
+    this as? dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
 
-@PreviewFeature
-inline fun TelegramMediaFile.documentFileOrThrow(): DocumentFile = this as DocumentFile
+public inline fun ChatEvent.videoChatParticipantsInvitedOrThrow(): VideoChatParticipantsInvited =
+    this as dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifFile(block: (File) -> T) = fileOrNull() ?.let(block)
+public inline fun <T>
+    ChatEvent.ifVideoChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T): T? =
+    videoChatParticipantsInvitedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.fileOrNull(): File? = this as? File
+public inline fun ChatEvent.videoChatScheduledOrNull(): VideoChatScheduled? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
 
-@PreviewFeature
-inline fun TelegramMediaFile.fileOrThrow(): File = this as File
+public inline fun ChatEvent.videoChatScheduledOrThrow(): VideoChatScheduled = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifPathedFile(block: (PathedFile) -> T) = pathedFileOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifVideoChatScheduled(block: (VideoChatScheduled) -> T): T? =
+    videoChatScheduledOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.pathedFileOrNull(): PathedFile? = this as? PathedFile
+public inline fun ChatEvent.videoChatStartedOrNull(): VideoChatStarted? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
 
-@PreviewFeature
-inline fun TelegramMediaFile.pathedFileOrThrow(): PathedFile = this as PathedFile
+public inline fun ChatEvent.videoChatStartedOrThrow(): VideoChatStarted = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifPhotoSize(block: (PhotoSize) -> T) = photoSizeOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifVideoChatStarted(block: (VideoChatStarted) -> T): T? =
+    videoChatStartedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.photoSizeOrNull(): PhotoSize? = this as? PhotoSize
+public inline fun ChatEvent.successfulPaymentEventOrNull(): SuccessfulPaymentEvent? = this as?
+    dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 
-@PreviewFeature
-inline fun TelegramMediaFile.photoSizeOrThrow(): PhotoSize = this as PhotoSize
+public inline fun ChatEvent.successfulPaymentEventOrThrow(): SuccessfulPaymentEvent = this as
+    dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifSticker(block: (Sticker) -> T) = stickerOrNull() ?.let(block)
+public inline fun <T> ChatEvent.ifSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T): T? =
+    successfulPaymentEventOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.stickerOrNull(): Sticker? = this as? Sticker
+public inline fun ForwardInfo.byAnonymousOrNull(): ForwardInfo.ByAnonymous? = this as?
+    dev.inmo.tgbotapi.types.message.ForwardInfo.ByAnonymous
 
-@PreviewFeature
-inline fun TelegramMediaFile.stickerOrThrow(): Sticker = this as Sticker
+public inline fun ForwardInfo.byAnonymousOrThrow(): ForwardInfo.ByAnonymous = this as
+    dev.inmo.tgbotapi.types.message.ForwardInfo.ByAnonymous
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifSimpleSticker(block: (SimpleSticker) -> T) = simpleStickerOrNull() ?.let(block)
+public inline fun <T> ForwardInfo.ifByAnonymous(block: (ForwardInfo.ByAnonymous) -> T): T? =
+    byAnonymousOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.simpleStickerOrNull(): SimpleSticker? = this as? SimpleSticker
+public inline fun ForwardInfo.byUserOrNull(): ForwardInfo.ByUser? = this as?
+    dev.inmo.tgbotapi.types.message.ForwardInfo.ByUser
 
-@PreviewFeature
-inline fun TelegramMediaFile.simpleStickerOrThrow(): SimpleSticker = this as SimpleSticker
+public inline fun ForwardInfo.byUserOrThrow(): ForwardInfo.ByUser = this as
+    dev.inmo.tgbotapi.types.message.ForwardInfo.ByUser
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifAnimatedSticker(block: (AnimatedSticker) -> T) = animatedStickerOrNull() ?.let(block)
+public inline fun <T> ForwardInfo.ifByUser(block: (ForwardInfo.ByUser) -> T): T? = byUserOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.animatedStickerOrNull(): AnimatedSticker? = this as? AnimatedSticker
+public inline fun ForwardInfo.publicChatOrNull(): ForwardInfo.PublicChat? = this as?
+    dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat
 
-@PreviewFeature
-inline fun TelegramMediaFile.animatedStickerOrThrow(): AnimatedSticker = this as AnimatedSticker
+public inline fun ForwardInfo.publicChatOrThrow(): ForwardInfo.PublicChat = this as
+    dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifVideoSticker(block: (VideoSticker) -> T) = videoStickerOrNull() ?.let(block)
+public inline fun <T> ForwardInfo.ifPublicChat(block: (ForwardInfo.PublicChat) -> T): T? =
+    publicChatOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.videoStickerOrNull(): VideoSticker? = this as? VideoSticker
+public inline fun ForwardInfo.fromChannelOrNull(): ForwardInfo.PublicChat.FromChannel? = this as?
+    dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.FromChannel
 
-@PreviewFeature
-inline fun TelegramMediaFile.videoStickerOrThrow(): VideoSticker = this as VideoSticker
+public inline fun ForwardInfo.fromChannelOrThrow(): ForwardInfo.PublicChat.FromChannel = this as
+    dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.FromChannel
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifVideoFile(block: (VideoFile) -> T) = videoFileOrNull() ?.let(block)
+public inline fun <T> ForwardInfo.ifFromChannel(block: (ForwardInfo.PublicChat.FromChannel) -> T):
+    T? = fromChannelOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.videoFileOrNull(): VideoFile? = this as? VideoFile
+public inline fun ForwardInfo.fromSupergroupOrNull(): ForwardInfo.PublicChat.FromSupergroup? = this
+    as? dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.FromSupergroup
 
-@PreviewFeature
-inline fun TelegramMediaFile.videoFileOrThrow(): VideoFile = this as VideoFile
+public inline fun ForwardInfo.fromSupergroupOrThrow(): ForwardInfo.PublicChat.FromSupergroup = this
+    as dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.FromSupergroup
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifVideoNoteFile(block: (VideoNoteFile) -> T) = videoNoteFileOrNull() ?.let(block)
+public inline fun <T>
+    ForwardInfo.ifFromSupergroup(block: (ForwardInfo.PublicChat.FromSupergroup) -> T): T? =
+    fromSupergroupOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.videoNoteFileOrNull(): VideoNoteFile? = this as? VideoNoteFile
+public inline fun ForwardInfo.sentByChannelOrNull(): ForwardInfo.PublicChat.SentByChannel? = this
+    as? dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.SentByChannel
 
-@PreviewFeature
-inline fun TelegramMediaFile.videoNoteFileOrThrow(): VideoNoteFile = this as VideoNoteFile
+public inline fun ForwardInfo.sentByChannelOrThrow(): ForwardInfo.PublicChat.SentByChannel = this as
+    dev.inmo.tgbotapi.types.message.ForwardInfo.PublicChat.SentByChannel
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifVoiceFile(block: (VoiceFile) -> T) = voiceFileOrNull() ?.let(block)
+public inline fun <T>
+    ForwardInfo.ifSentByChannel(block: (ForwardInfo.PublicChat.SentByChannel) -> T): T? =
+    sentByChannelOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.voiceFileOrNull(): VoiceFile? = this as? VoiceFile
+public inline fun Message.channelContentMessageImplOrNull():
+    ChannelContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun TelegramMediaFile.voiceFileOrThrow(): VoiceFile = this as VoiceFile
+public inline fun Message.channelContentMessageImplOrThrow():
+    ChannelContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifMimedMediaFile(block: (MimedMediaFile) -> T) = mimedMediaFileOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifChannelContentMessageImpl(block: (ChannelContentMessageImpl<MessageContent>) -> T): T?
+    = channelContentMessageImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.mimedMediaFileOrNull(): MimedMediaFile? = this as? MimedMediaFile
+public inline fun Message.channelEventMessageOrNull(): ChannelEventMessage<ChannelEvent>? = this as?
+    dev.inmo.tgbotapi.types.message.ChannelEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent>
 
-@PreviewFeature
-inline fun TelegramMediaFile.mimedMediaFileOrThrow(): MimedMediaFile = this as MimedMediaFile
+public inline fun Message.channelEventMessageOrThrow(): ChannelEventMessage<ChannelEvent> = this as
+    dev.inmo.tgbotapi.types.message.ChannelEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent>
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifPlayableMediaFile(block: (PlayableMediaFile) -> T) = playableMediaFileOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifChannelEventMessage(block: (ChannelEventMessage<ChannelEvent>) -> T): T? =
+    channelEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.playableMediaFileOrNull(): PlayableMediaFile? = this as? PlayableMediaFile
+public inline fun Message.channelMediaGroupMessageOrNull():
+    ChannelMediaGroupMessage<MediaGroupContent>? = this as?
+    dev.inmo.tgbotapi.types.message.ChannelMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
 
-@PreviewFeature
-inline fun TelegramMediaFile.playableMediaFileOrThrow(): PlayableMediaFile = this as PlayableMediaFile
+public inline fun Message.channelMediaGroupMessageOrThrow():
+    ChannelMediaGroupMessage<MediaGroupContent> = this as
+    dev.inmo.tgbotapi.types.message.ChannelMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifSizedMediaFile(block: (SizedMediaFile) -> T) = sizedMediaFileOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifChannelMediaGroupMessage(block: (ChannelMediaGroupMessage<MediaGroupContent>) -> T):
+    T? = channelMediaGroupMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.sizedMediaFileOrNull(): SizedMediaFile? = this as? SizedMediaFile
+public inline fun Message.commonGroupEventMessageOrNull(): CommonGroupEventMessage<GroupEvent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.CommonGroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-@PreviewFeature
-inline fun TelegramMediaFile.sizedMediaFileOrThrow(): SizedMediaFile = this as SizedMediaFile
+public inline fun Message.commonGroupEventMessageOrThrow(): CommonGroupEventMessage<GroupEvent> =
+    this as
+    dev.inmo.tgbotapi.types.message.CommonGroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-@PreviewFeature
-inline fun <T> TelegramMediaFile.ifThumbedMediaFile(block: (ThumbedMediaFile) -> T) = thumbedMediaFileOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T): T? =
+    commonGroupEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TelegramMediaFile.thumbedMediaFileOrNull(): ThumbedMediaFile? = this as? ThumbedMediaFile
+public inline fun Message.commonMediaGroupMessageOrNull():
+    CommonMediaGroupMessage<MediaGroupContent>? = this as?
+    dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
 
-@PreviewFeature
-inline fun TelegramMediaFile.thumbedMediaFileOrThrow(): ThumbedMediaFile = this as ThumbedMediaFile
+public inline fun Message.commonMediaGroupMessageOrThrow():
+    CommonMediaGroupMessage<MediaGroupContent> = this as
+    dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
 
-@PreviewFeature
-inline fun <T> KeyboardMarkup.ifForceReply(block: (ReplyForce) -> T) = forceReplyOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupContent>) -> T): T?
+    = commonMediaGroupMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun KeyboardMarkup.forceReplyOrNull(): ReplyForce? = this as? ReplyForce
+public inline fun Message.commonSupergroupEventMessageOrNull():
+    CommonSupergroupEventMessage<SupergroupEvent>? = this as?
+    dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-@PreviewFeature
-inline fun KeyboardMarkup.forceReplyOrThrow(): ReplyForce = this as ReplyForce
+public inline fun Message.commonSupergroupEventMessageOrThrow():
+    CommonSupergroupEventMessage<SupergroupEvent> = this as
+    dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-@PreviewFeature
-inline fun <T> KeyboardMarkup.ifInlineKeyboardMarkup(block: (InlineKeyboardMarkup) -> T) = inlineKeyboardMarkupOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T):
+    T? = commonSupergroupEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun KeyboardMarkup.inlineKeyboardMarkupOrNull(): InlineKeyboardMarkup? = this as? InlineKeyboardMarkup
+public inline fun Message.connectedFromChannelGroupContentMessageImplOrNull():
+    ConnectedFromChannelGroupContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun KeyboardMarkup.inlineKeyboardMarkupOrThrow(): InlineKeyboardMarkup = this as InlineKeyboardMarkup
+public inline fun Message.connectedFromChannelGroupContentMessageImplOrThrow():
+    ConnectedFromChannelGroupContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> KeyboardMarkup.ifReplyKeyboardMarkup(block: (ReplyKeyboardMarkup) -> T) = replyKeyboardMarkupOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifConnectedFromChannelGroupContentMessageImpl(block: (ConnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T):
+    T? = connectedFromChannelGroupContentMessageImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun KeyboardMarkup.replyKeyboardMarkupOrNull(): ReplyKeyboardMarkup? = this as? ReplyKeyboardMarkup
+public inline fun Message.unconnectedFromChannelGroupContentMessageImplOrNull():
+    UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.UnconnectedFromChannelGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun KeyboardMarkup.replyKeyboardMarkupOrThrow(): ReplyKeyboardMarkup = this as ReplyKeyboardMarkup
+public inline fun Message.unconnectedFromChannelGroupContentMessageImplOrThrow():
+    UnconnectedFromChannelGroupContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.UnconnectedFromChannelGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> KeyboardMarkup.ifReplyKeyboardRemove(block: (ReplyKeyboardRemove) -> T) = replyKeyboardRemoveOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifUnconnectedFromChannelGroupContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T):
+    T? = unconnectedFromChannelGroupContentMessageImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun KeyboardMarkup.replyKeyboardRemoveOrNull(): ReplyKeyboardRemove? = this as? ReplyKeyboardRemove
+public inline fun Message.anonymousGroupContentMessageImplOrNull():
+    AnonymousGroupContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun KeyboardMarkup.replyKeyboardRemoveOrThrow(): ReplyKeyboardRemove = this as ReplyKeyboardRemove
+public inline fun Message.anonymousGroupContentMessageImplOrThrow():
+    AnonymousGroupContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifCallbackDataInlineKeyboardButton(block: (CallbackDataInlineKeyboardButton) -> T) = callbackDataInlineKeyboardButtonOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T):
+    T? = anonymousGroupContentMessageImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.callbackDataInlineKeyboardButtonOrNull(): CallbackDataInlineKeyboardButton? =
-    this as? CallbackDataInlineKeyboardButton
+public inline fun Message.commonGroupContentMessageImplOrNull():
+    CommonGroupContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun InlineKeyboardButton.callbackDataInlineKeyboardButtonOrThrow(): CallbackDataInlineKeyboardButton =
-    this as CallbackDataInlineKeyboardButton
+public inline fun Message.commonGroupContentMessageImplOrThrow():
+    CommonGroupContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifCallbackGameInlineKeyboardButton(block: (CallbackGameInlineKeyboardButton) -> T) = callbackGameInlineKeyboardButtonOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifCommonGroupContentMessageImpl(block: (CommonGroupContentMessageImpl<MessageContent>) -> T):
+    T? = commonGroupContentMessageImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.callbackGameInlineKeyboardButtonOrNull(): CallbackGameInlineKeyboardButton? =
-    this as? CallbackGameInlineKeyboardButton
+public inline fun Message.passportMessageOrNull(): PassportMessage? = this as?
+    dev.inmo.tgbotapi.types.message.PassportMessage
 
-@PreviewFeature
-inline fun InlineKeyboardButton.callbackGameInlineKeyboardButtonOrThrow(): CallbackGameInlineKeyboardButton =
-    this as CallbackGameInlineKeyboardButton
+public inline fun Message.passportMessageOrThrow(): PassportMessage = this as
+    dev.inmo.tgbotapi.types.message.PassportMessage
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifLoginURLInlineKeyboardButton(block: (LoginURLInlineKeyboardButton) -> T) = loginURLInlineKeyboardButtonOrNull() ?.let(block)
+public inline fun <T> Message.ifPassportMessage(block: (PassportMessage) -> T): T? =
+    passportMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.loginURLInlineKeyboardButtonOrNull(): LoginURLInlineKeyboardButton? =
-    this as? LoginURLInlineKeyboardButton
+public inline fun Message.privateContentMessageImplOrNull():
+    PrivateContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun InlineKeyboardButton.loginURLInlineKeyboardButtonOrThrow(): LoginURLInlineKeyboardButton =
-    this as LoginURLInlineKeyboardButton
+public inline fun Message.privateContentMessageImplOrThrow():
+    PrivateContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifPayInlineKeyboardButton(block: (PayInlineKeyboardButton) -> T) = payInlineKeyboardButtonOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T): T?
+    = privateContentMessageImplOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.payInlineKeyboardButtonOrNull(): PayInlineKeyboardButton? = this as? PayInlineKeyboardButton
+public inline fun Message.privateEventMessageOrNull(): PrivateEventMessage<PrivateEvent>? = this as?
+    dev.inmo.tgbotapi.types.message.PrivateEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent>
 
-@PreviewFeature
-inline fun InlineKeyboardButton.payInlineKeyboardButtonOrThrow(): PayInlineKeyboardButton =
-    this as PayInlineKeyboardButton
+public inline fun Message.privateEventMessageOrThrow(): PrivateEventMessage<PrivateEvent> = this as
+    dev.inmo.tgbotapi.types.message.PrivateEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent>
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifSwitchInlineQueryCurrentChatInlineKeyboardButton(block: (SwitchInlineQueryCurrentChatInlineKeyboardButton) -> T) = switchInlineQueryCurrentChatInlineKeyboardButtonOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T): T? =
+    privateEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.switchInlineQueryCurrentChatInlineKeyboardButtonOrNull(): SwitchInlineQueryCurrentChatInlineKeyboardButton? =
-    this as? SwitchInlineQueryCurrentChatInlineKeyboardButton
+public inline fun Message.channelContentMessageOrNull(): ChannelContentMessage<MessageContent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun InlineKeyboardButton.switchInlineQueryCurrentChatInlineKeyboardButtonOrThrow(): SwitchInlineQueryCurrentChatInlineKeyboardButton =
-    this as SwitchInlineQueryCurrentChatInlineKeyboardButton
+public inline fun Message.channelContentMessageOrThrow(): ChannelContentMessage<MessageContent> =
+    this as
+    dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifSwitchInlineQueryInlineKeyboardButton(block: (SwitchInlineQueryInlineKeyboardButton) -> T) = switchInlineQueryInlineKeyboardButtonOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T): T? =
+    channelContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.switchInlineQueryInlineKeyboardButtonOrNull(): SwitchInlineQueryInlineKeyboardButton? =
-    this as? SwitchInlineQueryInlineKeyboardButton
+public inline fun Message.chatEventMessageOrNull(): ChatEventMessage<ChatEvent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent>
 
-@PreviewFeature
-inline fun InlineKeyboardButton.switchInlineQueryInlineKeyboardButtonOrThrow(): SwitchInlineQueryInlineKeyboardButton =
-    this as SwitchInlineQueryInlineKeyboardButton
+public inline fun Message.chatEventMessageOrThrow(): ChatEventMessage<ChatEvent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent>
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifURLInlineKeyboardButton(block: (URLInlineKeyboardButton) -> T) = uRLInlineKeyboardButtonOrNull() ?.let(block)
+public inline fun <T> Message.ifChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T): T? =
+    chatEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.uRLInlineKeyboardButtonOrNull(): URLInlineKeyboardButton? = this as? URLInlineKeyboardButton
+public inline fun Message.commonMessageOrNull(): CommonMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.CommonMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun InlineKeyboardButton.uRLInlineKeyboardButtonOrThrow(): URLInlineKeyboardButton =
-    this as URLInlineKeyboardButton
+public inline fun Message.commonMessageOrThrow(): CommonMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.CommonMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifWebAppKeyboardButton(block: (WebAppKeyboardButton) -> T) = webAppKeyboardButtonOrNull() ?.let(block)
+public inline fun <T> Message.ifCommonMessage(block: (CommonMessage<MessageContent>) -> T): T? =
+    commonMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.webAppKeyboardButtonOrNull(): WebAppKeyboardButton? = this as? WebAppKeyboardButton
+public inline fun Message.contentMessageOrNull(): ContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.ContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun InlineKeyboardButton.webAppKeyboardButtonOrThrow(): WebAppKeyboardButton =
-    this as WebAppKeyboardButton
+public inline fun Message.contentMessageOrThrow(): ContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.ContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> InlineKeyboardButton.ifUnknownInlineKeyboardButton(block: (UnknownInlineKeyboardButton) -> T) = unknownInlineKeyboardButtonOrNull() ?.let(block)
+public inline fun <T> Message.ifContentMessage(block: (ContentMessage<MessageContent>) -> T): T? =
+    contentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull(): UnknownInlineKeyboardButton? =
-    this as? UnknownInlineKeyboardButton
+public inline fun Message.fromUserMessageOrNull(): FromUserMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
-@PreviewFeature
-inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrThrow(): UnknownInlineKeyboardButton =
-    this as UnknownInlineKeyboardButton
+public inline fun Message.fromUserMessageOrThrow(): FromUserMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 
-@PreviewFeature
-inline fun <T> Poll.ifMultipleAnswersPoll(block: (MultipleAnswersPoll) -> T) = multipleAnswersPollOrNull() ?.let(block)
+public inline fun <T> Message.ifFromUserMessage(block: (FromUserMessage) -> T): T? =
+    fromUserMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Poll.multipleAnswersPollOrNull(): MultipleAnswersPoll? = this as? MultipleAnswersPoll
+public inline fun Message.groupEventMessageOrNull(): GroupEventMessage<GroupEvent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-@PreviewFeature
-inline fun Poll.multipleAnswersPollOrThrow(): MultipleAnswersPoll = this as MultipleAnswersPoll
+public inline fun Message.groupEventMessageOrThrow(): GroupEventMessage<GroupEvent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
 
-@PreviewFeature
-inline fun <T> Poll.ifQuizPoll(block: (QuizPoll) -> T) = quizPollOrNull() ?.let(block)
+public inline fun <T> Message.ifGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T): T? =
+    groupEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Poll.quizPollOrNull(): QuizPoll? = this as? QuizPoll
+public inline fun Message.groupContentMessageOrNull(): GroupContentMessage<MessageContent>? = this
+    as?
+    dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun Poll.quizPollOrThrow(): QuizPoll = this as QuizPoll
+public inline fun Message.groupContentMessageOrThrow(): GroupContentMessage<MessageContent> = this
+    as
+    dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> Poll.ifRegularPoll(block: (RegularPoll) -> T) = regularPollOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T): T? =
+    groupContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Poll.regularPollOrNull(): RegularPoll? = this as? RegularPoll
+public inline fun Message.fromChannelGroupContentMessageOrNull():
+    FromChannelGroupContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun Poll.regularPollOrThrow(): RegularPoll = this as RegularPoll
+public inline fun Message.fromChannelGroupContentMessageOrThrow():
+    FromChannelGroupContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> Poll.ifUnknownPollType(block: (UnknownPollType) -> T) = unknownPollTypeOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifFromChannelGroupContentMessage(block: (FromChannelGroupContentMessage<MessageContent>) -> T):
+    T? = fromChannelGroupContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Poll.unknownPollTypeOrNull(): UnknownPollType? = this as? UnknownPollType
+public inline fun Message.connectedFromChannelGroupContentMessageOrNull():
+    ConnectedFromChannelGroupContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.ConnectedFromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun Poll.unknownPollTypeOrThrow(): UnknownPollType = this as UnknownPollType
+public inline fun Message.connectedFromChannelGroupContentMessageOrThrow():
+    ConnectedFromChannelGroupContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.ConnectedFromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifContactContent(block: (ContactContent) -> T) = contactContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T):
+    T? = connectedFromChannelGroupContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.contactContentOrNull(): ContactContent? = this as? ContactContent
+public inline fun Message.unconnectedFromChannelGroupContentMessageOrNull():
+    UnconnectedFromChannelGroupContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.UnconnectedFromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun ResendableContent.contactContentOrThrow(): ContactContent = this as ContactContent
+public inline fun Message.unconnectedFromChannelGroupContentMessageOrThrow():
+    UnconnectedFromChannelGroupContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.UnconnectedFromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifDiceContent(block: (DiceContent) -> T) = diceContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifUnconnectedFromChannelGroupContentMessage(block: (UnconnectedFromChannelGroupContentMessage<MessageContent>) -> T):
+    T? = unconnectedFromChannelGroupContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.diceContentOrNull(): DiceContent? = this as? DiceContent
+public inline fun Message.anonymousGroupContentMessageOrNull():
+    AnonymousGroupContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun ResendableContent.diceContentOrThrow(): DiceContent = this as DiceContent
+public inline fun Message.anonymousGroupContentMessageOrThrow():
+    AnonymousGroupContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifGameContent(block: (GameContent) -> T) = gameContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifAnonymousGroupContentMessage(block: (AnonymousGroupContentMessage<MessageContent>) -> T):
+    T? = anonymousGroupContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.gameContentOrNull(): GameContent? = this as? GameContent
+public inline fun Message.commonGroupContentMessageOrNull():
+    CommonGroupContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun ResendableContent.gameContentOrThrow(): GameContent = this as GameContent
+public inline fun Message.commonGroupContentMessageOrThrow():
+    CommonGroupContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifLocationContent(block: (LocationContent) -> T) = locationContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T): T?
+    = commonGroupContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.locationContentOrNull(): LocationContent? = this as? LocationContent
+public inline fun Message.mediaGroupMessageOrNull(): MediaGroupMessage<MediaGroupContent>? = this
+    as?
+    dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
 
-@PreviewFeature
-inline fun ResendableContent.locationContentOrThrow(): LocationContent = this as LocationContent
+public inline fun Message.mediaGroupMessageOrThrow(): MediaGroupMessage<MediaGroupContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifLiveLocationContent(block: (LiveLocationContent) -> T) = liveLocationContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifMediaGroupMessage(block: (MediaGroupMessage<MediaGroupContent>) -> T): T? =
+    mediaGroupMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.liveLocationContentOrNull(): LiveLocationContent? = this as? LiveLocationContent
+public inline fun Message.unknownMessageTypeOrNull(): UnknownMessageType? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
 
-@PreviewFeature
-inline fun ResendableContent.liveLocationContentOrThrow(): LiveLocationContent = this as LiveLocationContent
+public inline fun Message.unknownMessageTypeOrThrow(): UnknownMessageType = this as
+    dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifStaticLocationContent(block: (StaticLocationContent) -> T) = staticLocationContentOrNull() ?.let(block)
+public inline fun <T> Message.ifUnknownMessageType(block: (UnknownMessageType) -> T): T? =
+    unknownMessageTypeOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.staticLocationContentOrNull(): StaticLocationContent? = this as? StaticLocationContent
+public inline fun Message.possiblyEditedMessageOrNull(): PossiblyEditedMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 
-@PreviewFeature
-inline fun ResendableContent.staticLocationContentOrThrow(): StaticLocationContent = this as StaticLocationContent
+public inline fun Message.possiblyEditedMessageOrThrow(): PossiblyEditedMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifPollContent(block: (PollContent) -> T) = pollContentOrNull() ?.let(block)
+public inline fun <T> Message.ifPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T): T? =
+    possiblyEditedMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.pollContentOrNull(): PollContent? = this as? PollContent
+public inline fun Message.possiblyForwardedMessageOrNull(): PossiblyForwardedMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 
-@PreviewFeature
-inline fun ResendableContent.pollContentOrThrow(): PollContent = this as PollContent
+public inline fun Message.possiblyForwardedMessageOrThrow(): PossiblyForwardedMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifTextContent(block: (TextContent) -> T) = textContentOrNull() ?.let(block)
+public inline fun <T> Message.ifPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T): T?
+    = possiblyForwardedMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.textContentOrNull(): TextContent? = this as? TextContent
+public inline fun Message.possiblyPaymentMessageOrNull(): PossiblyPaymentMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 
-@PreviewFeature
-inline fun ResendableContent.textContentOrThrow(): TextContent = this as TextContent
+public inline fun Message.possiblyPaymentMessageOrThrow(): PossiblyPaymentMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifVenueContent(block: (VenueContent) -> T) = venueContentOrNull() ?.let(block)
+public inline fun <T> Message.ifPossiblyPaymentMessage(block: (PossiblyPaymentMessage) -> T): T? =
+    possiblyPaymentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.venueContentOrNull(): VenueContent? = this as? VenueContent
+public inline fun Message.possiblySentViaBotCommonMessageOrNull():
+    PossiblySentViaBotCommonMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun ResendableContent.venueContentOrThrow(): VenueContent = this as VenueContent
+public inline fun Message.possiblySentViaBotCommonMessageOrThrow():
+    PossiblySentViaBotCommonMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifAudioMediaGroupContent(block: (AudioMediaGroupContent) -> T) = audioMediaGroupContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T):
+    T? = possiblySentViaBotCommonMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.audioMediaGroupContentOrNull(): AudioMediaGroupContent? = this as? AudioMediaGroupContent
+public inline fun Message.privateContentMessageOrNull(): PrivateContentMessage<MessageContent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun ResendableContent.audioMediaGroupContentOrThrow(): AudioMediaGroupContent = this as AudioMediaGroupContent
+public inline fun Message.privateContentMessageOrThrow(): PrivateContentMessage<MessageContent> =
+    this as
+    dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifDocumentMediaGroupContent(block: (DocumentMediaGroupContent) -> T) = documentMediaGroupContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T): T? =
+    privateContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.documentMediaGroupContentOrNull(): DocumentMediaGroupContent? =
-    this as? DocumentMediaGroupContent
+public inline fun Message.publicContentMessageOrNull(): PublicContentMessage<MessageContent>? = this
+    as?
+    dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun ResendableContent.documentMediaGroupContentOrThrow(): DocumentMediaGroupContent =
-    this as DocumentMediaGroupContent
+public inline fun Message.publicContentMessageOrThrow(): PublicContentMessage<MessageContent> = this
+    as
+    dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifMediaCollectionContent(block: (MediaCollectionContent<TelegramMediaFile>) -> T) = mediaCollectionContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifPublicContentMessage(block: (PublicContentMessage<MessageContent>) -> T): T? =
+    publicContentMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.mediaCollectionContentOrNull(): MediaCollectionContent<TelegramMediaFile>? =
-    this as? MediaCollectionContent<TelegramMediaFile>
+public inline fun Message.signedMessageOrNull(): SignedMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
 
-@PreviewFeature
-inline fun ResendableContent.mediaCollectionContentOrThrow(): MediaCollectionContent<TelegramMediaFile> =
-    this as MediaCollectionContent<TelegramMediaFile>
+public inline fun Message.signedMessageOrThrow(): SignedMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifTextedMediaContent(block: (TextedMediaContent) -> T) = textedMediaContentOrNull() ?.let(block)
+public inline fun <T> Message.ifSignedMessage(block: (SignedMessage) -> T): T? =
+    signedMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.textedMediaContentOrNull(): TextedMediaContent? =
-    this as? TextedMediaContent
+public inline fun Message.supergroupEventMessageOrNull(): SupergroupEventMessage<SupergroupEvent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-@PreviewFeature
-inline fun ResendableContent.textedMediaContentOrThrow(): TextedMediaContent =
-    this as TextedMediaContent
+public inline fun Message.supergroupEventMessageOrThrow(): SupergroupEventMessage<SupergroupEvent> =
+    this as
+    dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifMediaContent(block: (MediaContent) -> T) = mediaContentOrNull() ?.let(block)
+public inline fun <T>
+    Message.ifSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T): T? =
+    supergroupEventMessageOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.mediaContentOrNull(): MediaContent? = this as? MediaContent
+public inline fun ResendableContent.messageContentOrNull(): MessageContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.MessageContent
 
-@PreviewFeature
-inline fun ResendableContent.mediaContentOrThrow(): MediaContent = this as MediaContent
+public inline fun ResendableContent.messageContentOrThrow(): MessageContent = this as
+    dev.inmo.tgbotapi.types.message.content.MessageContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifMediaGroupContent(block: (MediaGroupContent) -> T) = mediaGroupContentOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifMessageContent(block: (MessageContent) -> T): T? =
+    messageContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.mediaGroupContentOrNull(): MediaGroupContent? = this as? MediaGroupContent
+public inline fun ResendableContent.mediaCollectionContentOrNull():
+    MediaCollectionContent<TelegramMediaFile>? = this as?
+    dev.inmo.tgbotapi.types.message.content.MediaCollectionContent<dev.inmo.tgbotapi.types.files.TelegramMediaFile>
 
-@PreviewFeature
-inline fun ResendableContent.mediaGroupContentOrThrow(): MediaGroupContent = this as MediaGroupContent
+public inline fun ResendableContent.mediaCollectionContentOrThrow():
+    MediaCollectionContent<TelegramMediaFile> = this as
+    dev.inmo.tgbotapi.types.message.content.MediaCollectionContent<dev.inmo.tgbotapi.types.files.TelegramMediaFile>
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifMessageContent(block: (MessageContent) -> T) = messageContentOrNull() ?.let(block)
+public inline fun <T>
+    ResendableContent.ifMediaCollectionContent(block: (MediaCollectionContent<TelegramMediaFile>) -> T):
+    T? = mediaCollectionContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.messageContentOrNull(): MessageContent? = this as? MessageContent
+public inline fun ResendableContent.mediaContentOrNull(): MediaContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.MediaContent
 
-@PreviewFeature
-inline fun ResendableContent.messageContentOrThrow(): MessageContent = this as MessageContent
+public inline fun ResendableContent.mediaContentOrThrow(): MediaContent = this as
+    dev.inmo.tgbotapi.types.message.content.MediaContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifVisualMediaGroupContent(block: (VisualMediaGroupContent) -> T) = visualMediaGroupContentOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifMediaContent(block: (MediaContent) -> T): T? =
+    mediaContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.visualMediaGroupContentOrNull(): VisualMediaGroupContent? = this as? VisualMediaGroupContent
+public inline fun ResendableContent.audioMediaGroupContentOrNull(): AudioMediaGroupContent? = this
+    as? dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
 
-@PreviewFeature
-inline fun ResendableContent.visualMediaGroupContentOrThrow(): VisualMediaGroupContent = this as VisualMediaGroupContent
+public inline fun ResendableContent.audioMediaGroupContentOrThrow(): AudioMediaGroupContent = this
+    as dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifAnimationContent(block: (AnimationContent) -> T) = animationContentOrNull() ?.let(block)
+public inline fun <T>
+    ResendableContent.ifAudioMediaGroupContent(block: (AudioMediaGroupContent) -> T): T? =
+    audioMediaGroupContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.animationContentOrNull(): AnimationContent? = this as? AnimationContent
+public inline fun ResendableContent.documentMediaGroupContentOrNull(): DocumentMediaGroupContent? =
+    this as? dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
 
-@PreviewFeature
-inline fun ResendableContent.animationContentOrThrow(): AnimationContent = this as AnimationContent
+public inline fun ResendableContent.documentMediaGroupContentOrThrow(): DocumentMediaGroupContent =
+    this as dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifAudioContent(block: (AudioContent) -> T) = audioContentOrNull() ?.let(block)
+public inline fun <T>
+    ResendableContent.ifDocumentMediaGroupContent(block: (DocumentMediaGroupContent) -> T): T? =
+    documentMediaGroupContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.audioContentOrNull(): AudioContent? = this as? AudioContent
+public inline fun ResendableContent.mediaGroupContentOrNull(): MediaGroupContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 
-@PreviewFeature
-inline fun ResendableContent.audioContentOrThrow(): AudioContent = this as AudioContent
+public inline fun ResendableContent.mediaGroupContentOrThrow(): MediaGroupContent = this as
+    dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifDocumentContent(block: (DocumentContent) -> T) = documentContentOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifMediaGroupContent(block: (MediaGroupContent) -> T): T? =
+    mediaGroupContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.documentContentOrNull(): DocumentContent? = this as? DocumentContent
+public inline fun ResendableContent.textedMediaContentOrNull(): TextedMediaContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.TextedMediaContent
 
-@PreviewFeature
-inline fun ResendableContent.documentContentOrThrow(): DocumentContent = this as DocumentContent
+public inline fun ResendableContent.textedMediaContentOrThrow(): TextedMediaContent = this as
+    dev.inmo.tgbotapi.types.message.content.TextedMediaContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifPhotoContent(block: (PhotoContent) -> T) = photoContentOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifTextedMediaContent(block: (TextedMediaContent) -> T): T? =
+    textedMediaContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.photoContentOrNull(): PhotoContent? = this as? PhotoContent
+public inline fun ResendableContent.visualMediaGroupContentOrNull(): VisualMediaGroupContent? = this
+    as? dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
 
-@PreviewFeature
-inline fun ResendableContent.photoContentOrThrow(): PhotoContent = this as PhotoContent
+public inline fun ResendableContent.visualMediaGroupContentOrThrow(): VisualMediaGroupContent = this
+    as dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifStickerContent(block: (StickerContent) -> T) = stickerContentOrNull() ?.let(block)
+public inline fun <T>
+    ResendableContent.ifVisualMediaGroupContent(block: (VisualMediaGroupContent) -> T): T? =
+    visualMediaGroupContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.stickerContentOrNull(): StickerContent? = this as? StickerContent
+public inline fun ResendableContent.animationContentOrNull(): AnimationContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.AnimationContent
 
-@PreviewFeature
-inline fun ResendableContent.stickerContentOrThrow(): StickerContent = this as StickerContent
+public inline fun ResendableContent.animationContentOrThrow(): AnimationContent = this as
+    dev.inmo.tgbotapi.types.message.content.AnimationContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifVideoContent(block: (VideoContent) -> T) = videoContentOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifAnimationContent(block: (AnimationContent) -> T): T? =
+    animationContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.videoContentOrNull(): VideoContent? = this as? VideoContent
+public inline fun ResendableContent.audioContentOrNull(): AudioContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.AudioContent
 
-@PreviewFeature
-inline fun ResendableContent.videoContentOrThrow(): VideoContent = this as VideoContent
+public inline fun ResendableContent.audioContentOrThrow(): AudioContent = this as
+    dev.inmo.tgbotapi.types.message.content.AudioContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifVideoNoteContent(block: (VideoNoteContent) -> T) = videoNoteContentOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifAudioContent(block: (AudioContent) -> T): T? =
+    audioContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.videoNoteContentOrNull(): VideoNoteContent? = this as? VideoNoteContent
+public inline fun ResendableContent.contactContentOrNull(): ContactContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.ContactContent
 
-@PreviewFeature
-inline fun ResendableContent.videoNoteContentOrThrow(): VideoNoteContent = this as VideoNoteContent
+public inline fun ResendableContent.contactContentOrThrow(): ContactContent = this as
+    dev.inmo.tgbotapi.types.message.content.ContactContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifVoiceContent(block: (VoiceContent) -> T) = voiceContentOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifContactContent(block: (ContactContent) -> T): T? =
+    contactContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.voiceContentOrNull(): VoiceContent? = this as? VoiceContent
+public inline fun ResendableContent.diceContentOrNull(): DiceContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.DiceContent
 
-@PreviewFeature
-inline fun ResendableContent.voiceContentOrThrow(): VoiceContent = this as VoiceContent
+public inline fun ResendableContent.diceContentOrThrow(): DiceContent = this as
+    dev.inmo.tgbotapi.types.message.content.DiceContent
 
-@PreviewFeature
-inline fun <T> ResendableContent.ifInvoiceContent(block: (InvoiceContent) -> T) = invoiceContentOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifDiceContent(block: (DiceContent) -> T): T? =
+    diceContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ResendableContent.invoiceContentOrNull(): InvoiceContent? = this as? InvoiceContent
+public inline fun ResendableContent.documentContentOrNull(): DocumentContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.DocumentContent
 
-@PreviewFeature
-inline fun ResendableContent.invoiceContentOrThrow(): InvoiceContent = this as InvoiceContent
+public inline fun ResendableContent.documentContentOrThrow(): DocumentContent = this as
+    dev.inmo.tgbotapi.types.message.content.DocumentContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifMultilevelTextSource(block: (MultilevelTextSource) -> T) = multilevelTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifDocumentContent(block: (DocumentContent) -> T): T? =
+    documentContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.multilevelTextSourceOrNull(): MultilevelTextSource? = this as? MultilevelTextSource
+public inline fun ResendableContent.gameContentOrNull(): GameContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.GameContent
 
-@PreviewFeature
-inline fun TextSource.multilevelTextSourceOrThrow(): MultilevelTextSource = this as MultilevelTextSource
+public inline fun ResendableContent.gameContentOrThrow(): GameContent = this as
+    dev.inmo.tgbotapi.types.message.content.GameContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifBoldTextSource(block: (BoldTextSource) -> T) = boldTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifGameContent(block: (GameContent) -> T): T? =
+    gameContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.boldTextSourceOrNull(): BoldTextSource? = this as? BoldTextSource
+public inline fun ResendableContent.invoiceContentOrNull(): InvoiceContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.InvoiceContent
 
-@PreviewFeature
-inline fun TextSource.boldTextSourceOrThrow(): BoldTextSource = this as BoldTextSource
+public inline fun ResendableContent.invoiceContentOrThrow(): InvoiceContent = this as
+    dev.inmo.tgbotapi.types.message.content.InvoiceContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifBotCommandTextSource(block: (BotCommandTextSource) -> T) = botCommandTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifInvoiceContent(block: (InvoiceContent) -> T): T? =
+    invoiceContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.botCommandTextSourceOrNull(): BotCommandTextSource? = this as? BotCommandTextSource
+public inline fun ResendableContent.locationContentOrNull(): LocationContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.LocationContent
 
-@PreviewFeature
-inline fun TextSource.botCommandTextSourceOrThrow(): BotCommandTextSource = this as BotCommandTextSource
+public inline fun ResendableContent.locationContentOrThrow(): LocationContent = this as
+    dev.inmo.tgbotapi.types.message.content.LocationContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifCashTagTextSource(block: (CashTagTextSource) -> T) = cashTagTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifLocationContent(block: (LocationContent) -> T): T? =
+    locationContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.cashTagTextSourceOrNull(): CashTagTextSource? = this as? CashTagTextSource
+public inline fun ResendableContent.liveLocationContentOrNull(): LiveLocationContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.LiveLocationContent
 
-@PreviewFeature
-inline fun TextSource.cashTagTextSourceOrThrow(): CashTagTextSource = this as CashTagTextSource
+public inline fun ResendableContent.liveLocationContentOrThrow(): LiveLocationContent = this as
+    dev.inmo.tgbotapi.types.message.content.LiveLocationContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifCodeTextSource(block: (CodeTextSource) -> T) = codeTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifLiveLocationContent(block: (LiveLocationContent) -> T): T?
+    = liveLocationContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.codeTextSourceOrNull(): CodeTextSource? = this as? CodeTextSource
+public inline fun ResendableContent.staticLocationContentOrNull(): StaticLocationContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 
-@PreviewFeature
-inline fun TextSource.codeTextSourceOrThrow(): CodeTextSource = this as CodeTextSource
+public inline fun ResendableContent.staticLocationContentOrThrow(): StaticLocationContent = this as
+    dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifEMailTextSource(block: (EMailTextSource) -> T) = eMailTextSourceOrNull() ?.let(block)
+public inline fun <T>
+    ResendableContent.ifStaticLocationContent(block: (StaticLocationContent) -> T): T? =
+    staticLocationContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.eMailTextSourceOrNull(): EMailTextSource? = this as? EMailTextSource
+public inline fun ResendableContent.photoContentOrNull(): PhotoContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.PhotoContent
 
-@PreviewFeature
-inline fun TextSource.eMailTextSourceOrThrow(): EMailTextSource = this as EMailTextSource
+public inline fun ResendableContent.photoContentOrThrow(): PhotoContent = this as
+    dev.inmo.tgbotapi.types.message.content.PhotoContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifHashTagTextSource(block: (HashTagTextSource) -> T) = hashTagTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifPhotoContent(block: (PhotoContent) -> T): T? =
+    photoContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.hashTagTextSourceOrNull(): HashTagTextSource? = this as? HashTagTextSource
+public inline fun ResendableContent.pollContentOrNull(): PollContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.PollContent
 
-@PreviewFeature
-inline fun TextSource.hashTagTextSourceOrThrow(): HashTagTextSource = this as HashTagTextSource
+public inline fun ResendableContent.pollContentOrThrow(): PollContent = this as
+    dev.inmo.tgbotapi.types.message.content.PollContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifItalicTextSource(block: (ItalicTextSource) -> T) = italicTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifPollContent(block: (PollContent) -> T): T? =
+    pollContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.italicTextSourceOrNull(): ItalicTextSource? = this as? ItalicTextSource
+public inline fun ResendableContent.stickerContentOrNull(): StickerContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.StickerContent
 
-@PreviewFeature
-inline fun TextSource.italicTextSourceOrThrow(): ItalicTextSource = this as ItalicTextSource
+public inline fun ResendableContent.stickerContentOrThrow(): StickerContent = this as
+    dev.inmo.tgbotapi.types.message.content.StickerContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifMentionTextSource(block: (MentionTextSource) -> T) = mentionTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifStickerContent(block: (StickerContent) -> T): T? =
+    stickerContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.mentionTextSourceOrNull(): MentionTextSource? = this as? MentionTextSource
+public inline fun ResendableContent.textContentOrNull(): TextContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.TextContent
 
-@PreviewFeature
-inline fun TextSource.mentionTextSourceOrThrow(): MentionTextSource = this as MentionTextSource
+public inline fun ResendableContent.textContentOrThrow(): TextContent = this as
+    dev.inmo.tgbotapi.types.message.content.TextContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifPhoneNumberTextSource(block: (PhoneNumberTextSource) -> T) = phoneNumberTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifTextContent(block: (TextContent) -> T): T? =
+    textContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.phoneNumberTextSourceOrNull(): PhoneNumberTextSource? = this as? PhoneNumberTextSource
+public inline fun ResendableContent.venueContentOrNull(): VenueContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.VenueContent
 
-@PreviewFeature
-inline fun TextSource.phoneNumberTextSourceOrThrow(): PhoneNumberTextSource = this as PhoneNumberTextSource
+public inline fun ResendableContent.venueContentOrThrow(): VenueContent = this as
+    dev.inmo.tgbotapi.types.message.content.VenueContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifPreTextSource(block: (PreTextSource) -> T) = preTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifVenueContent(block: (VenueContent) -> T): T? =
+    venueContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.preTextSourceOrNull(): PreTextSource? = this as? PreTextSource
+public inline fun ResendableContent.videoContentOrNull(): VideoContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.VideoContent
 
-@PreviewFeature
-inline fun TextSource.preTextSourceOrThrow(): PreTextSource = this as PreTextSource
+public inline fun ResendableContent.videoContentOrThrow(): VideoContent = this as
+    dev.inmo.tgbotapi.types.message.content.VideoContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifRegularTextSource(block: (RegularTextSource) -> T) = regularTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifVideoContent(block: (VideoContent) -> T): T? =
+    videoContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.regularTextSourceOrNull(): RegularTextSource? = this as? RegularTextSource
+public inline fun ResendableContent.videoNoteContentOrNull(): VideoNoteContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 
-@PreviewFeature
-inline fun TextSource.regularTextSourceOrThrow(): RegularTextSource = this as RegularTextSource
+public inline fun ResendableContent.videoNoteContentOrThrow(): VideoNoteContent = this as
+    dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifStrikethroughTextSource(block: (StrikethroughTextSource) -> T) = strikethroughTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifVideoNoteContent(block: (VideoNoteContent) -> T): T? =
+    videoNoteContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.strikethroughTextSourceOrNull(): StrikethroughTextSource? = this as? StrikethroughTextSource
+public inline fun ResendableContent.voiceContentOrNull(): VoiceContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.VoiceContent
 
-@PreviewFeature
-inline fun TextSource.strikethroughTextSourceOrThrow(): StrikethroughTextSource = this as StrikethroughTextSource
+public inline fun ResendableContent.voiceContentOrThrow(): VoiceContent = this as
+    dev.inmo.tgbotapi.types.message.content.VoiceContent
 
-@PreviewFeature
-inline fun <T> TextSource.ifTextLinkTextSource(block: (TextLinkTextSource) -> T) = textLinkTextSourceOrNull() ?.let(block)
+public inline fun <T> ResendableContent.ifVoiceContent(block: (VoiceContent) -> T): T? =
+    voiceContentOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.textLinkTextSourceOrNull(): TextLinkTextSource? = this as? TextLinkTextSource
+public inline fun TextSource.boldTextSourceOrNull(): BoldTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
 
-@PreviewFeature
-inline fun TextSource.textLinkTextSourceOrThrow(): TextLinkTextSource = this as TextLinkTextSource
+public inline fun TextSource.boldTextSourceOrThrow(): BoldTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
 
-@PreviewFeature
-inline fun <T> TextSource.ifTextMentionTextSource(block: (TextMentionTextSource) -> T) = textMentionTextSourceOrNull() ?.let(block)
+public inline fun <T> TextSource.ifBoldTextSource(block: (BoldTextSource) -> T): T? =
+    boldTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.textMentionTextSourceOrNull(): TextMentionTextSource? = this as? TextMentionTextSource
+public inline fun TextSource.botCommandTextSourceOrNull(): BotCommandTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 
-@PreviewFeature
-inline fun TextSource.textMentionTextSourceOrThrow(): TextMentionTextSource = this as TextMentionTextSource
+public inline fun TextSource.botCommandTextSourceOrThrow(): BotCommandTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 
-@PreviewFeature
-inline fun <T> TextSource.ifURLTextSource(block: (URLTextSource) -> T) = uRLTextSourceOrNull() ?.let(block)
+public inline fun <T> TextSource.ifBotCommandTextSource(block: (BotCommandTextSource) -> T): T? =
+    botCommandTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.uRLTextSourceOrNull(): URLTextSource? = this as? URLTextSource
+public inline fun TextSource.cashTagTextSourceOrNull(): CashTagTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.CashTagTextSource
 
-@PreviewFeature
-inline fun TextSource.uRLTextSourceOrThrow(): URLTextSource = this as URLTextSource
+public inline fun TextSource.cashTagTextSourceOrThrow(): CashTagTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.CashTagTextSource
 
-@PreviewFeature
-inline fun <T> TextSource.ifUnderlineTextSource(block: (UnderlineTextSource) -> T) = underlineTextSourceOrNull() ?.let(block)
+public inline fun <T> TextSource.ifCashTagTextSource(block: (CashTagTextSource) -> T): T? =
+    cashTagTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun TextSource.underlineTextSourceOrNull(): UnderlineTextSource? = this as? UnderlineTextSource
+public inline fun TextSource.codeTextSourceOrNull(): CodeTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.CodeTextSource
 
-@PreviewFeature
-inline fun TextSource.underlineTextSourceOrThrow(): UnderlineTextSource = this as UnderlineTextSource
+public inline fun TextSource.codeTextSourceOrThrow(): CodeTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.CodeTextSource
 
-@PreviewFeature
-inline fun <T> DiceAnimationType.ifBasketballDiceAnimationType(block: (BasketballDiceAnimationType) -> T) = basketballDiceAnimationTypeOrNull() ?.let(block)
+public inline fun <T> TextSource.ifCodeTextSource(block: (CodeTextSource) -> T): T? =
+    codeTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun DiceAnimationType.basketballDiceAnimationTypeOrNull(): BasketballDiceAnimationType? =
-    this as? BasketballDiceAnimationType
+public inline fun TextSource.eMailTextSourceOrNull(): EMailTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.EMailTextSource
 
-@PreviewFeature
-inline fun DiceAnimationType.basketballDiceAnimationTypeOrThrow(): BasketballDiceAnimationType =
-    this as BasketballDiceAnimationType
+public inline fun TextSource.eMailTextSourceOrThrow(): EMailTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.EMailTextSource
 
-@PreviewFeature
-inline fun <T> DiceAnimationType.ifBowlingDiceAnimationType(block: (BowlingDiceAnimationType) -> T) = bowlingDiceAnimationTypeOrNull() ?.let(block)
+public inline fun <T> TextSource.ifEMailTextSource(block: (EMailTextSource) -> T): T? =
+    eMailTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun DiceAnimationType.bowlingDiceAnimationTypeOrNull(): BowlingDiceAnimationType? = this as? BowlingDiceAnimationType
+public inline fun TextSource.hashTagTextSourceOrNull(): HashTagTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.HashTagTextSource
 
-@PreviewFeature
-inline fun DiceAnimationType.bowlingDiceAnimationTypeOrThrow(): BowlingDiceAnimationType =
-    this as BowlingDiceAnimationType
+public inline fun TextSource.hashTagTextSourceOrThrow(): HashTagTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.HashTagTextSource
 
-@PreviewFeature
-inline fun <T> DiceAnimationType.ifCubeDiceAnimationType(block: (CubeDiceAnimationType) -> T) = cubeDiceAnimationTypeOrNull() ?.let(block)
+public inline fun <T> TextSource.ifHashTagTextSource(block: (HashTagTextSource) -> T): T? =
+    hashTagTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun DiceAnimationType.cubeDiceAnimationTypeOrNull(): CubeDiceAnimationType? = this as? CubeDiceAnimationType
+public inline fun TextSource.italicTextSourceOrNull(): ItalicTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
 
-@PreviewFeature
-inline fun DiceAnimationType.cubeDiceAnimationTypeOrThrow(): CubeDiceAnimationType = this as CubeDiceAnimationType
+public inline fun TextSource.italicTextSourceOrThrow(): ItalicTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
 
-@PreviewFeature
-inline fun <T> DiceAnimationType.ifCustomDiceAnimationType(block: (CustomDiceAnimationType) -> T) = customDiceAnimationTypeOrNull() ?.let(block)
+public inline fun <T> TextSource.ifItalicTextSource(block: (ItalicTextSource) -> T): T? =
+    italicTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun DiceAnimationType.customDiceAnimationTypeOrNull(): CustomDiceAnimationType? = this as? CustomDiceAnimationType
+public inline fun TextSource.mentionTextSourceOrNull(): MentionTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.MentionTextSource
 
-@PreviewFeature
-inline fun DiceAnimationType.customDiceAnimationTypeOrThrow(): CustomDiceAnimationType = this as CustomDiceAnimationType
+public inline fun TextSource.mentionTextSourceOrThrow(): MentionTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.MentionTextSource
 
-@PreviewFeature
-inline fun <T> DiceAnimationType.ifDartsDiceAnimationType(block: (DartsDiceAnimationType) -> T) = dartsDiceAnimationTypeOrNull() ?.let(block)
+public inline fun <T> TextSource.ifMentionTextSource(block: (MentionTextSource) -> T): T? =
+    mentionTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun DiceAnimationType.dartsDiceAnimationTypeOrNull(): DartsDiceAnimationType? = this as? DartsDiceAnimationType
+public inline fun TextSource.phoneNumberTextSourceOrNull(): PhoneNumberTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.PhoneNumberTextSource
 
-@PreviewFeature
-inline fun DiceAnimationType.dartsDiceAnimationTypeOrThrow(): DartsDiceAnimationType = this as DartsDiceAnimationType
+public inline fun TextSource.phoneNumberTextSourceOrThrow(): PhoneNumberTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.PhoneNumberTextSource
 
-@PreviewFeature
-inline fun <T> DiceAnimationType.ifFootballDiceAnimationType(block: (FootballDiceAnimationType) -> T) = footballDiceAnimationTypeOrNull() ?.let(block)
+public inline fun <T> TextSource.ifPhoneNumberTextSource(block: (PhoneNumberTextSource) -> T): T? =
+    phoneNumberTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun DiceAnimationType.footballDiceAnimationTypeOrNull(): FootballDiceAnimationType? =
-    this as? FootballDiceAnimationType
+public inline fun TextSource.preTextSourceOrNull(): PreTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.PreTextSource
 
-@PreviewFeature
-inline fun DiceAnimationType.footballDiceAnimationTypeOrThrow(): FootballDiceAnimationType =
-    this as FootballDiceAnimationType
+public inline fun TextSource.preTextSourceOrThrow(): PreTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.PreTextSource
 
-@PreviewFeature
-inline fun <T> DiceAnimationType.ifSlotMachineDiceAnimationType(block: (SlotMachineDiceAnimationType) -> T) = slotMachineDiceAnimationTypeOrNull() ?.let(block)
+public inline fun <T> TextSource.ifPreTextSource(block: (PreTextSource) -> T): T? =
+    preTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun DiceAnimationType.slotMachineDiceAnimationTypeOrNull(): SlotMachineDiceAnimationType? =
-    this as? SlotMachineDiceAnimationType
+public inline fun TextSource.regularTextSourceOrNull(): RegularTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 
-@PreviewFeature
-inline fun DiceAnimationType.slotMachineDiceAnimationTypeOrThrow(): SlotMachineDiceAnimationType =
-    this as SlotMachineDiceAnimationType
+public inline fun TextSource.regularTextSourceOrThrow(): RegularTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifChannelChatCreated(block: (ChannelChatCreated) -> T) = channelChatCreatedOrNull() ?.let(block)
+public inline fun <T> TextSource.ifRegularTextSource(block: (RegularTextSource) -> T): T? =
+    regularTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.channelChatCreatedOrNull(): ChannelChatCreated? = this as? ChannelChatCreated
+public inline fun TextSource.spoilerTextSourceOrNull(): SpoilerTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.SpoilerTextSource
 
-@PreviewFeature
-inline fun ChatEvent.channelChatCreatedOrThrow(): ChannelChatCreated = this as ChannelChatCreated
+public inline fun TextSource.spoilerTextSourceOrThrow(): SpoilerTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.SpoilerTextSource
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifDeleteChatPhoto(block: (DeleteChatPhoto) -> T) = deleteChatPhotoOrNull() ?.let(block)
+public inline fun <T> TextSource.ifSpoilerTextSource(block: (SpoilerTextSource) -> T): T? =
+    spoilerTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.deleteChatPhotoOrNull(): DeleteChatPhoto? = this as? DeleteChatPhoto
+public inline fun TextSource.strikethroughTextSourceOrNull(): StrikethroughTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.StrikethroughTextSource
 
-@PreviewFeature
-inline fun ChatEvent.deleteChatPhotoOrThrow(): DeleteChatPhoto = this as DeleteChatPhoto
+public inline fun TextSource.strikethroughTextSourceOrThrow(): StrikethroughTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.StrikethroughTextSource
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifGroupChatCreated(block: (GroupChatCreated) -> T) = groupChatCreatedOrNull() ?.let(block)
+public inline fun <T> TextSource.ifStrikethroughTextSource(block: (StrikethroughTextSource) -> T):
+    T? = strikethroughTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.groupChatCreatedOrNull(): GroupChatCreated? = this as? GroupChatCreated
+public inline fun TextSource.textLinkTextSourceOrNull(): TextLinkTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.TextLinkTextSource
 
-@PreviewFeature
-inline fun ChatEvent.groupChatCreatedOrThrow(): GroupChatCreated = this as GroupChatCreated
+public inline fun TextSource.textLinkTextSourceOrThrow(): TextLinkTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.TextLinkTextSource
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifLeftChatMember(block: (LeftChatMember) -> T) = leftChatMemberOrNull() ?.let(block)
+public inline fun <T> TextSource.ifTextLinkTextSource(block: (TextLinkTextSource) -> T): T? =
+    textLinkTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.leftChatMemberOrNull(): LeftChatMember? = this as? LeftChatMember
+public inline fun TextSource.textMentionTextSourceOrNull(): TextMentionTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
 
-@PreviewFeature
-inline fun ChatEvent.leftChatMemberOrThrow(): LeftChatMember = this as LeftChatMember
+public inline fun TextSource.textMentionTextSourceOrThrow(): TextMentionTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.TextMentionTextSource
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifMessageAutoDeleteTimerChanged(block: (MessageAutoDeleteTimerChanged) -> T) = messageAutoDeleteTimerChangedOrNull() ?.let(block)
+public inline fun <T> TextSource.ifTextMentionTextSource(block: (TextMentionTextSource) -> T): T? =
+    textMentionTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.messageAutoDeleteTimerChangedOrNull(): MessageAutoDeleteTimerChanged? =
-    this as? MessageAutoDeleteTimerChanged
+public inline fun TextSource.multilevelTextSourceOrNull(): MultilevelTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.MultilevelTextSource
 
-@PreviewFeature
-inline fun ChatEvent.messageAutoDeleteTimerChangedOrThrow(): MessageAutoDeleteTimerChanged =
-    this as MessageAutoDeleteTimerChanged
+public inline fun TextSource.multilevelTextSourceOrThrow(): MultilevelTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.MultilevelTextSource
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifNewChatMembers(block: (NewChatMembers) -> T) = newChatMembersOrNull() ?.let(block)
+public inline fun <T> TextSource.ifMultilevelTextSource(block: (MultilevelTextSource) -> T): T? =
+    multilevelTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.newChatMembersOrNull(): NewChatMembers? = this as? NewChatMembers
+public inline fun TextSource.uRLTextSourceOrNull(): URLTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.URLTextSource
 
-@PreviewFeature
-inline fun ChatEvent.newChatMembersOrThrow(): NewChatMembers = this as NewChatMembers
+public inline fun TextSource.uRLTextSourceOrThrow(): URLTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.URLTextSource
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifNewChatPhoto(block: (NewChatPhoto) -> T) = newChatPhotoOrNull() ?.let(block)
+public inline fun <T> TextSource.ifURLTextSource(block: (URLTextSource) -> T): T? =
+    uRLTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.newChatPhotoOrNull(): NewChatPhoto? = this as? NewChatPhoto
+public inline fun TextSource.underlineTextSourceOrNull(): UnderlineTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.UnderlineTextSource
 
-@PreviewFeature
-inline fun ChatEvent.newChatPhotoOrThrow(): NewChatPhoto = this as NewChatPhoto
+public inline fun TextSource.underlineTextSourceOrThrow(): UnderlineTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.UnderlineTextSource
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifNewChatTitle(block: (NewChatTitle) -> T) = newChatTitleOrNull() ?.let(block)
+public inline fun <T> TextSource.ifUnderlineTextSource(block: (UnderlineTextSource) -> T): T? =
+    underlineTextSourceOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.newChatTitleOrNull(): NewChatTitle? = this as? NewChatTitle
+public inline fun PassportElementError.unknownPassportElementErrorOrNull():
+    UnknownPassportElementError? = this as?
+    dev.inmo.tgbotapi.types.passport.UnknownPassportElementError
 
-@PreviewFeature
-inline fun ChatEvent.newChatTitleOrThrow(): NewChatTitle = this as NewChatTitle
+public inline fun PassportElementError.unknownPassportElementErrorOrThrow():
+    UnknownPassportElementError = this as
+    dev.inmo.tgbotapi.types.passport.UnknownPassportElementError
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifPinnedMessage(block: (PinnedMessage) -> T) = pinnedMessageOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifUnknownPassportElementError(block: (UnknownPassportElementError) -> T):
+    T? = unknownPassportElementErrorOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.pinnedMessageOrNull(): PinnedMessage? = this as? PinnedMessage
+public inline fun PassportElementError.passportSingleElementErrorOrNull():
+    PassportSingleElementError? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportSingleElementError
 
-@PreviewFeature
-inline fun ChatEvent.pinnedMessageOrThrow(): PinnedMessage = this as PinnedMessage
+public inline fun PassportElementError.passportSingleElementErrorOrThrow():
+    PassportSingleElementError = this as dev.inmo.tgbotapi.types.passport.PassportSingleElementError
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T) = successfulPaymentEventOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportSingleElementError(block: (PassportSingleElementError) -> T): T?
+    = passportSingleElementErrorOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.successfulPaymentEventOrNull(): SuccessfulPaymentEvent? = this as? SuccessfulPaymentEvent
+public inline fun PassportElementError.passportMultipleElementsErrorOrNull():
+    PassportMultipleElementsError? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportMultipleElementsError
 
-@PreviewFeature
-inline fun ChatEvent.successfulPaymentEventOrThrow(): SuccessfulPaymentEvent = this as SuccessfulPaymentEvent
+public inline fun PassportElementError.passportMultipleElementsErrorOrThrow():
+    PassportMultipleElementsError = this as
+    dev.inmo.tgbotapi.types.passport.PassportMultipleElementsError
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifProximityAlertTriggered(block: (ProximityAlertTriggered) -> T) = proximityAlertTriggeredOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportMultipleElementsError(block: (PassportMultipleElementsError) -> T):
+    T? = passportMultipleElementsErrorOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.proximityAlertTriggeredOrNull(): ProximityAlertTriggered? = this as? ProximityAlertTriggered
+public inline fun PassportElementError.passportElementFileErrorOrNull(): PassportElementFileError? =
+    this as? dev.inmo.tgbotapi.types.passport.PassportElementFileError
 
-@PreviewFeature
-inline fun ChatEvent.proximityAlertTriggeredOrThrow(): ProximityAlertTriggered = this as ProximityAlertTriggered
+public inline fun PassportElementError.passportElementFileErrorOrThrow(): PassportElementFileError =
+    this as dev.inmo.tgbotapi.types.passport.PassportElementFileError
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifSupergroupChatCreated(block: (SupergroupChatCreated) -> T) = supergroupChatCreatedOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementFileError(block: (PassportElementFileError) -> T): T? =
+    passportElementFileErrorOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.supergroupChatCreatedOrNull(): SupergroupChatCreated? = this as? SupergroupChatCreated
+public inline fun PassportElementError.passportElementFilesErrorOrNull(): PassportElementFilesError?
+    = this as? dev.inmo.tgbotapi.types.passport.PassportElementFilesError
 
-@PreviewFeature
-inline fun ChatEvent.supergroupChatCreatedOrThrow(): SupergroupChatCreated = this as SupergroupChatCreated
+public inline fun PassportElementError.passportElementFilesErrorOrThrow(): PassportElementFilesError
+    = this as dev.inmo.tgbotapi.types.passport.PassportElementFilesError
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifMigratedToSupergroup(block: (MigratedToSupergroup) -> T) = migratedToSupergroupOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementFilesError(block: (PassportElementFilesError) -> T): T? =
+    passportElementFilesErrorOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.migratedToSupergroupOrNull(): MigratedToSupergroup? = this as? MigratedToSupergroup
+public inline fun PassportElementError.passportElementErrorDataFieldOrNull():
+    PassportElementErrorDataField? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorDataField
 
-@PreviewFeature
-inline fun ChatEvent.migratedToSupergroupOrThrow(): MigratedToSupergroup = this as MigratedToSupergroup
+public inline fun PassportElementError.passportElementErrorDataFieldOrThrow():
+    PassportElementErrorDataField = this as
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorDataField
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifChannelEvent(block: (ChannelEvent) -> T) = channelEventOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorDataField(block: (PassportElementErrorDataField) -> T):
+    T? = passportElementErrorDataFieldOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.channelEventOrNull(): ChannelEvent? = this as? ChannelEvent
+public inline fun PassportElementError.passportElementErrorFrontSideOrNull():
+    PassportElementErrorFrontSide? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorFrontSide
 
-@PreviewFeature
-inline fun ChatEvent.channelEventOrThrow(): ChannelEvent = this as ChannelEvent
+public inline fun PassportElementError.passportElementErrorFrontSideOrThrow():
+    PassportElementErrorFrontSide = this as
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorFrontSide
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifPublicChatEvent(block: (PublicChatEvent) -> T) = publicChatEventOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorFrontSide(block: (PassportElementErrorFrontSide) -> T):
+    T? = passportElementErrorFrontSideOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.publicChatEventOrNull(): PublicChatEvent? = this as? PublicChatEvent
+public inline fun PassportElementError.passportElementErrorReverseSideOrNull():
+    PassportElementErrorReverseSide? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorReverseSide
 
-@PreviewFeature
-inline fun ChatEvent.publicChatEventOrThrow(): PublicChatEvent = this as PublicChatEvent
+public inline fun PassportElementError.passportElementErrorReverseSideOrThrow():
+    PassportElementErrorReverseSide = this as
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorReverseSide
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifCommonEvent(block: (CommonEvent) -> T) = commonEventOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorReverseSide(block: (PassportElementErrorReverseSide) -> T):
+    T? = passportElementErrorReverseSideOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.commonEventOrNull(): CommonEvent? = this as? CommonEvent
+public inline fun PassportElementError.passportElementErrorSelfieOrNull():
+    PassportElementErrorSelfie? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorSelfie
 
-@PreviewFeature
-inline fun ChatEvent.commonEventOrThrow(): CommonEvent = this as CommonEvent
+public inline fun PassportElementError.passportElementErrorSelfieOrThrow():
+    PassportElementErrorSelfie = this as dev.inmo.tgbotapi.types.passport.PassportElementErrorSelfie
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifGroupEvent(block: (GroupEvent) -> T) = groupEventOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorSelfie(block: (PassportElementErrorSelfie) -> T): T?
+    = passportElementErrorSelfieOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.groupEventOrNull(): GroupEvent? = this as? GroupEvent
+public inline fun PassportElementError.passportElementErrorFileOrNull(): PassportElementErrorFile? =
+    this as? dev.inmo.tgbotapi.types.passport.PassportElementErrorFile
 
-@PreviewFeature
-inline fun ChatEvent.groupEventOrThrow(): GroupEvent = this as GroupEvent
+public inline fun PassportElementError.passportElementErrorFileOrThrow(): PassportElementErrorFile =
+    this as dev.inmo.tgbotapi.types.passport.PassportElementErrorFile
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifSupergroupEvent(block: (SupergroupEvent) -> T) = supergroupEventOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorFile(block: (PassportElementErrorFile) -> T): T? =
+    passportElementErrorFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.supergroupEventOrNull(): SupergroupEvent? = this as? SupergroupEvent
+public inline fun PassportElementError.passportElementErrorFilesOrNull(): PassportElementErrorFiles?
+    = this as? dev.inmo.tgbotapi.types.passport.PassportElementErrorFiles
 
-@PreviewFeature
-inline fun ChatEvent.supergroupEventOrThrow(): SupergroupEvent = this as SupergroupEvent
+public inline fun PassportElementError.passportElementErrorFilesOrThrow(): PassportElementErrorFiles
+    = this as dev.inmo.tgbotapi.types.passport.PassportElementErrorFiles
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifVideoChatEvent(block: (VideoChatEvent) -> T) = videoChatEventOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorFiles(block: (PassportElementErrorFiles) -> T): T? =
+    passportElementErrorFilesOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.videoChatEventOrNull(): VideoChatEvent? = this as? VideoChatEvent
+public inline fun PassportElementError.passportElementErrorTranslationFileOrNull():
+    PassportElementErrorTranslationFile? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorTranslationFile
 
-@PreviewFeature
-inline fun ChatEvent.videoChatEventOrThrow(): VideoChatEvent = this as VideoChatEvent
+public inline fun PassportElementError.passportElementErrorTranslationFileOrThrow():
+    PassportElementErrorTranslationFile = this as
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorTranslationFile
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifVideoChatEnded(block: (VideoChatEnded) -> T) = videoChatEndedOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorTranslationFile(block: (PassportElementErrorTranslationFile) -> T):
+    T? = passportElementErrorTranslationFileOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.videoChatEndedOrNull(): VideoChatEnded? = this as? VideoChatEnded
+public inline fun PassportElementError.passportElementErrorTranslationFilesOrNull():
+    PassportElementErrorTranslationFiles? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorTranslationFiles
 
-@PreviewFeature
-inline fun ChatEvent.videoChatEndedOrThrow(): VideoChatEnded = this as VideoChatEnded
+public inline fun PassportElementError.passportElementErrorTranslationFilesOrThrow():
+    PassportElementErrorTranslationFiles = this as
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorTranslationFiles
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifVideoChatParticipantsInvited(block: (VideoChatParticipantsInvited) -> T) = videoChatParticipantsInvitedOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorTranslationFiles(block: (PassportElementErrorTranslationFiles) -> T):
+    T? = passportElementErrorTranslationFilesOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.videoChatParticipantsInvitedOrNull(): VideoChatParticipantsInvited? =
-    this as? VideoChatParticipantsInvited
+public inline fun PassportElementError.passportElementErrorUnspecifiedOrNull():
+    PassportElementErrorUnspecified? = this as?
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorUnspecified
 
-@PreviewFeature
-inline fun ChatEvent.videoChatParticipantsInvitedOrThrow(): VideoChatParticipantsInvited =
-    this as VideoChatParticipantsInvited
+public inline fun PassportElementError.passportElementErrorUnspecifiedOrThrow():
+    PassportElementErrorUnspecified = this as
+    dev.inmo.tgbotapi.types.passport.PassportElementErrorUnspecified
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifVideoChatStarted(block: (VideoChatStarted) -> T) = videoChatStartedOrNull() ?.let(block)
+public inline fun <T>
+    PassportElementError.ifPassportElementErrorUnspecified(block: (PassportElementErrorUnspecified) -> T):
+    T? = passportElementErrorUnspecifiedOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.videoChatStartedOrNull(): VideoChatStarted? = this as? VideoChatStarted
+public inline fun SecureValue.addressSecureValueOrNull(): AddressSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.AddressSecureValue
 
-@PreviewFeature
-inline fun ChatEvent.videoChatStartedOrThrow(): VideoChatStarted = this as VideoChatStarted
+public inline fun SecureValue.addressSecureValueOrThrow(): AddressSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.AddressSecureValue
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifVideoChatScheduled(block: (VideoChatScheduled) -> T) = videoChatScheduledOrNull() ?.let(block)
+public inline fun <T> SecureValue.ifAddressSecureValue(block: (AddressSecureValue) -> T): T? =
+    addressSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.videoChatScheduledOrNull(): VideoChatScheduled? = this as? VideoChatScheduled
+public inline fun SecureValue.identityWithReverseSideSecureValueOrNull():
+    IdentityWithReverseSideSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.IdentityWithReverseSideSecureValue
 
-@PreviewFeature
-inline fun ChatEvent.videoChatScheduledOrThrow(): VideoChatScheduled = this as VideoChatScheduled
+public inline fun SecureValue.identityWithReverseSideSecureValueOrThrow():
+    IdentityWithReverseSideSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.IdentityWithReverseSideSecureValue
 
-@PreviewFeature
-inline fun <T> ChatEvent.ifUserLoggedIn(block: (UserLoggedIn) -> T) = userLoggedInOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifIdentityWithReverseSideSecureValue(block: (IdentityWithReverseSideSecureValue) -> T):
+    T? = identityWithReverseSideSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatEvent.userLoggedInOrNull(): UserLoggedIn? = this as? UserLoggedIn
+public inline fun SecureValue.driverLicenseSecureValueOrNull(): DriverLicenseSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.DriverLicenseSecureValue
 
-@PreviewFeature
-inline fun ChatEvent.userLoggedInOrThrow(): UserLoggedIn = this as UserLoggedIn
+public inline fun SecureValue.driverLicenseSecureValueOrThrow(): DriverLicenseSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.DriverLicenseSecureValue
 
-@PreviewFeature
-inline fun <T> CommonSendInvoiceData.ifSendInvoice(block: (SendInvoice) -> T) = sendInvoiceOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifDriverLicenseSecureValue(block: (DriverLicenseSecureValue) -> T): T? =
+    driverLicenseSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CommonSendInvoiceData.sendInvoiceOrNull(): SendInvoice? = this as? SendInvoice
+public inline fun SecureValue.identityCardSecureValueOrNull(): IdentityCardSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.IdentityCardSecureValue
 
-@PreviewFeature
-inline fun CommonSendInvoiceData.sendInvoiceOrThrow(): SendInvoice = this as SendInvoice
+public inline fun SecureValue.identityCardSecureValueOrThrow(): IdentityCardSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.IdentityCardSecureValue
 
-@PreviewFeature
-inline fun <T> CommonSendInvoiceData.ifCreateInvoiceLink(block: (CreateInvoiceLink) -> T) = createInvoiceLinkOrNull() ?.let(block)
+public inline fun <T> SecureValue.ifIdentityCardSecureValue(block: (IdentityCardSecureValue) -> T):
+    T? = identityCardSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CommonSendInvoiceData.createInvoiceLinkOrNull(): CreateInvoiceLink? = this as? CreateInvoiceLink
+public inline fun SecureValue.otherDocumentsSecureValueOrNull(): OtherDocumentsSecureValue? = this
+    as? dev.inmo.tgbotapi.types.passport.decrypted.OtherDocumentsSecureValue
 
-@PreviewFeature
-inline fun CommonSendInvoiceData.createInvoiceLinkOrThrow(): CreateInvoiceLink = this as CreateInvoiceLink
+public inline fun SecureValue.otherDocumentsSecureValueOrThrow(): OtherDocumentsSecureValue = this
+    as dev.inmo.tgbotapi.types.passport.decrypted.OtherDocumentsSecureValue
 
-@PreviewFeature
-inline fun <T> CommonSendInvoiceData.ifInputInvoiceMessageContent(block: (InputInvoiceMessageContent) -> T) = inputInvoiceMessageContentOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifOtherDocumentsSecureValue(block: (OtherDocumentsSecureValue) -> T): T? =
+    otherDocumentsSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun CommonSendInvoiceData.inputInvoiceMessageContentOrNull(): InputInvoiceMessageContent? =
-    this as? InputInvoiceMessageContent
+public inline fun SecureValue.utilityBillSecureValueOrNull(): UtilityBillSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.UtilityBillSecureValue
 
-@PreviewFeature
-inline fun CommonSendInvoiceData.inputInvoiceMessageContentOrThrow(): InputInvoiceMessageContent =
-    this as InputInvoiceMessageContent
+public inline fun SecureValue.utilityBillSecureValueOrThrow(): UtilityBillSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.UtilityBillSecureValue
 
-@PreviewFeature
-inline fun <T> Any.ifFromUser(block: (FromUser) -> T) = fromUserOrNull() ?.let(block)
+public inline fun <T> SecureValue.ifUtilityBillSecureValue(block: (UtilityBillSecureValue) -> T): T?
+    = utilityBillSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Any.fromUserOrNull(): FromUser? = this as? FromUser
+public inline fun SecureValue.bankStatementSecureValueOrNull(): BankStatementSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.BankStatementSecureValue
 
-@PreviewFeature
-inline fun Any.fromUserOrThrow(): FromUser = this as FromUser
+public inline fun SecureValue.bankStatementSecureValueOrThrow(): BankStatementSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.BankStatementSecureValue
 
-@PreviewFeature
-inline fun <T> Any.ifWithUser(block: (WithUser) -> T) = withUserOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifBankStatementSecureValue(block: (BankStatementSecureValue) -> T): T? =
+    bankStatementSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Any.withUserOrNull(): WithUser? = this as? WithUser
+public inline fun SecureValue.rentalAgreementSecureValueOrNull(): RentalAgreementSecureValue? = this
+    as? dev.inmo.tgbotapi.types.passport.decrypted.RentalAgreementSecureValue
 
-@PreviewFeature
-inline fun Any.withUserOrThrow(): WithUser = this as WithUser
+public inline fun SecureValue.rentalAgreementSecureValueOrThrow(): RentalAgreementSecureValue = this
+    as dev.inmo.tgbotapi.types.passport.decrypted.RentalAgreementSecureValue
 
-@PreviewFeature
-inline fun <T> Any.ifWithOptionalLanguageCode(block: (WithOptionalLanguageCode) -> T) = withOptionalLanguageCodeOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifRentalAgreementSecureValue(block: (RentalAgreementSecureValue) -> T): T? =
+    rentalAgreementSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Any.withOptionalLanguageCodeOrNull(): WithOptionalLanguageCode? = this as? WithOptionalLanguageCode
+public inline fun SecureValue.passportRegistrationSecureValueOrNull():
+    PassportRegistrationSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.PassportRegistrationSecureValue
 
-@PreviewFeature
-inline fun Any.withOptionalLanguageCodeOrThrow(): WithOptionalLanguageCode = this as WithOptionalLanguageCode
+public inline fun SecureValue.passportRegistrationSecureValueOrThrow():
+    PassportRegistrationSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.PassportRegistrationSecureValue
 
-@PreviewFeature
-inline fun <T> Location.ifStaticLocation(block: (StaticLocation) -> T) = staticLocationOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifPassportRegistrationSecureValue(block: (PassportRegistrationSecureValue) -> T): T?
+    = passportRegistrationSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Location.staticLocationOrNull(): StaticLocation? = this as? StaticLocation
+public inline fun SecureValue.temporalRegistrationSecureValueOrNull():
+    TemporalRegistrationSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.TemporalRegistrationSecureValue
 
-@PreviewFeature
-inline fun Location.staticLocationOrThrow(): StaticLocation = this as StaticLocation
+public inline fun SecureValue.temporalRegistrationSecureValueOrThrow():
+    TemporalRegistrationSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.TemporalRegistrationSecureValue
 
-@PreviewFeature
-inline fun <T> Location.ifLiveLocation(block: (LiveLocation) -> T) = liveLocationOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifTemporalRegistrationSecureValue(block: (TemporalRegistrationSecureValue) -> T): T?
+    = temporalRegistrationSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun Location.liveLocationOrNull(): LiveLocation? = this as? LiveLocation
+public inline fun SecureValue.passportSecureValueOrNull(): PassportSecureValue? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.PassportSecureValue
 
-@PreviewFeature
-inline fun Location.liveLocationOrThrow(): LiveLocation = this as LiveLocation
+public inline fun SecureValue.passportSecureValueOrThrow(): PassportSecureValue = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.PassportSecureValue
 
-@PreviewFeature
-inline fun <T> ChatInviteLink.ifPrimaryInviteLink(block: (PrimaryInviteLink) -> T) = primaryInviteLinkOrNull() ?.let(block)
+public inline fun <T> SecureValue.ifPassportSecureValue(block: (PassportSecureValue) -> T): T? =
+    passportSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatInviteLink.primaryInviteLinkOrNull(): PrimaryInviteLink? = this as? PrimaryInviteLink
+public inline fun SecureValue.commonPassportSecureValueOrNull(): CommonPassportSecureValue? = this
+    as? dev.inmo.tgbotapi.types.passport.decrypted.CommonPassportSecureValue
 
-@PreviewFeature
-inline fun ChatInviteLink.primaryInviteLinkOrThrow(): PrimaryInviteLink = this as PrimaryInviteLink
+public inline fun SecureValue.commonPassportSecureValueOrThrow(): CommonPassportSecureValue = this
+    as dev.inmo.tgbotapi.types.passport.decrypted.CommonPassportSecureValue
 
-@PreviewFeature
-inline fun <T> ChatInviteLink.ifSecondaryChatInviteLink(block: (SecondaryChatInviteLink) -> T) = secondaryChatInviteLinkOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifCommonPassportSecureValue(block: (CommonPassportSecureValue) -> T): T? =
+    commonPassportSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatInviteLink.secondaryChatInviteLinkOrNull(): SecondaryChatInviteLink? = this as? SecondaryChatInviteLink
+public inline fun SecureValue.internalPassportSecureValueOrNull(): InternalPassportSecureValue? =
+    this as? dev.inmo.tgbotapi.types.passport.decrypted.InternalPassportSecureValue
 
-@PreviewFeature
-inline fun ChatInviteLink.secondaryChatInviteLinkOrThrow(): SecondaryChatInviteLink = this as SecondaryChatInviteLink
+public inline fun SecureValue.internalPassportSecureValueOrThrow(): InternalPassportSecureValue =
+    this as dev.inmo.tgbotapi.types.passport.decrypted.InternalPassportSecureValue
 
-@PreviewFeature
-inline fun <T> ChatInviteLink.ifChatInviteLinkWithJoinRequest(block: (ChatInviteLinkWithJoinRequest) -> T) = chatInviteLinkWithJoinRequestOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifInternalPassportSecureValue(block: (InternalPassportSecureValue) -> T): T? =
+    internalPassportSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatInviteLink.chatInviteLinkWithJoinRequestOrNull(): ChatInviteLinkWithJoinRequest? = this as? ChatInviteLinkWithJoinRequest
+public inline fun SecureValue.personalDetailsSecureValueOrNull(): PersonalDetailsSecureValue? = this
+    as? dev.inmo.tgbotapi.types.passport.decrypted.PersonalDetailsSecureValue
 
-@PreviewFeature
-inline fun ChatInviteLink.chatInviteLinkWithJoinRequestOrThrow(): ChatInviteLinkWithJoinRequest = this as ChatInviteLinkWithJoinRequest
+public inline fun SecureValue.personalDetailsSecureValueOrThrow(): PersonalDetailsSecureValue = this
+    as dev.inmo.tgbotapi.types.passport.decrypted.PersonalDetailsSecureValue
 
-@PreviewFeature
-inline fun <T> ChatInviteLink.ifChatInviteLinkWithLimitedMembers(block: (ChatInviteLinkWithLimitedMembers) -> T) = chatInviteLinkWithLimitedMembersOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifPersonalDetailsSecureValue(block: (PersonalDetailsSecureValue) -> T): T? =
+    personalDetailsSecureValueOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatInviteLink.chatInviteLinkWithLimitedMembersOrNull(): ChatInviteLinkWithLimitedMembers? = this as? ChatInviteLinkWithLimitedMembers
+public inline fun SecureValue.secureValueIdentityOrNull(): SecureValueIdentity? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueIdentity
 
-@PreviewFeature
-inline fun ChatInviteLink.chatInviteLinkWithLimitedMembersOrThrow(): ChatInviteLinkWithLimitedMembers = this as ChatInviteLinkWithLimitedMembers
+public inline fun SecureValue.secureValueIdentityOrThrow(): SecureValueIdentity = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueIdentity
 
-@PreviewFeature
-inline fun <T> ChatInviteLink.ifChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T) = chatInviteLinkUnlimitedOrNull() ?.let(block)
+public inline fun <T> SecureValue.ifSecureValueIdentity(block: (SecureValueIdentity) -> T): T? =
+    secureValueIdentityOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChatInviteLink.chatInviteLinkUnlimitedOrNull(): ChatInviteLinkUnlimited? = this as? ChatInviteLinkUnlimited
+public inline fun SecureValue.secureValueWithDataOrNull(): SecureValueWithData? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithData
 
-@PreviewFeature
-inline fun ChatInviteLink.chatInviteLinkUnlimitedOrThrow(): ChatInviteLinkUnlimited = this as ChatInviteLinkUnlimited
+public inline fun SecureValue.secureValueWithDataOrThrow(): SecureValueWithData = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithData
 
-@PreviewFeature
-inline fun <T> ForwardInfo.ifAnonymousForwardInfo(block: (AnonymousForwardInfo) -> T) = anonymousForwardInfoOrNull() ?.let(block)
+public inline fun <T> SecureValue.ifSecureValueWithData(block: (SecureValueWithData) -> T): T? =
+    secureValueWithDataOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ForwardInfo.anonymousForwardInfoOrNull(): AnonymousForwardInfo? = this as? AnonymousForwardInfo
+public inline fun SecureValue.secureValueWithFilesOrNull(): SecureValueWithFiles? = this as?
+    dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithFiles
 
-@PreviewFeature
-inline fun ForwardInfo.anonymousForwardInfoOrThrow(): AnonymousForwardInfo = this as AnonymousForwardInfo
+public inline fun SecureValue.secureValueWithFilesOrThrow(): SecureValueWithFiles = this as
+    dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithFiles
 
-@PreviewFeature
-inline fun <T> ForwardInfo.ifUserForwardInfo(block: (UserForwardInfo) -> T) = userForwardInfoOrNull() ?.let(block)
+public inline fun <T> SecureValue.ifSecureValueWithFiles(block: (SecureValueWithFiles) -> T): T? =
+    secureValueWithFilesOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ForwardInfo.userForwardInfoOrNull(): UserForwardInfo? = this as? UserForwardInfo
+public inline fun SecureValue.secureValueWithReverseSideOrNull(): SecureValueWithReverseSide? = this
+    as? dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithReverseSide
 
-@PreviewFeature
-inline fun ForwardInfo.userForwardInfoOrThrow(): UserForwardInfo = this as UserForwardInfo
+public inline fun SecureValue.secureValueWithReverseSideOrThrow(): SecureValueWithReverseSide = this
+    as dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithReverseSide
 
-@PreviewFeature
-inline fun <T> ForwardInfo.ifForwardFromPublicChatInfo(block: (ForwardFromPublicChatInfo) -> T) = forwardFromPublicChatInfoOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifSecureValueWithReverseSide(block: (SecureValueWithReverseSide) -> T): T? =
+    secureValueWithReverseSideOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ForwardInfo.forwardFromPublicChatInfoOrNull(): ForwardFromPublicChatInfo? = this as? ForwardFromPublicChatInfo
+public inline fun SecureValue.secureValueWithTranslationsOrNull(): SecureValueWithTranslations? =
+    this as? dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithTranslations
 
-@PreviewFeature
-inline fun ForwardInfo.forwardFromPublicChatInfoOrThrow(): ForwardFromPublicChatInfo = this as ForwardFromPublicChatInfo
+public inline fun SecureValue.secureValueWithTranslationsOrThrow(): SecureValueWithTranslations =
+    this as dev.inmo.tgbotapi.types.passport.decrypted.abstracts.SecureValueWithTranslations
 
-@PreviewFeature
-inline fun <T> ForwardInfo.ifForwardFromChannelInfo(block: (ForwardFromChannelInfo) -> T) = forwardFromChannelInfoOrNull() ?.let(block)
+public inline fun <T>
+    SecureValue.ifSecureValueWithTranslations(block: (SecureValueWithTranslations) -> T): T? =
+    secureValueWithTranslationsOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ForwardInfo.forwardFromChannelInfoOrNull(): ForwardFromChannelInfo? = this as? ForwardFromChannelInfo
+public inline fun EncryptedPassportElement.emailOrNull(): Email? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.Email
 
-@PreviewFeature
-inline fun ForwardInfo.forwardFromChannelInfoOrThrow(): ForwardFromChannelInfo = this as ForwardFromChannelInfo
+public inline fun EncryptedPassportElement.emailOrThrow(): Email = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.Email
 
-@PreviewFeature
-inline fun <T> ForwardInfo.ifForwardFromSupergroupInfo(block: (ForwardFromSupergroupInfo) -> T) = forwardFromSupergroupInfoOrNull() ?.let(block)
+public inline fun <T> EncryptedPassportElement.ifEmail(block: (Email) -> T): T? = emailOrNull()
+    ?.let(block)
 
-@PreviewFeature
-inline fun ForwardInfo.forwardFromSupergroupInfoOrNull(): ForwardFromSupergroupInfo? = this as? ForwardFromSupergroupInfo
+public inline fun EncryptedPassportElement.encryptedAddressOrNull(): EncryptedAddress? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.EncryptedAddress
 
-@PreviewFeature
-inline fun ForwardInfo.forwardFromSupergroupInfoOrThrow(): ForwardFromSupergroupInfo = this as ForwardFromSupergroupInfo
+public inline fun EncryptedPassportElement.encryptedAddressOrThrow(): EncryptedAddress = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.EncryptedAddress
 
-@PreviewFeature
-inline fun <T> MessageContent.ifTextedInput(block: (TextedInput) -> T) = textedInputOrNull() ?.let(block)
+public inline fun <T> EncryptedPassportElement.ifEncryptedAddress(block: (EncryptedAddress) -> T):
+    T? = encryptedAddressOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun MessageContent.textedInputOrNull(): TextedInput? = this as? TextedInput
+public inline
+    fun EncryptedPassportElement.encryptedPassportElementWithTranslatableFilesCollectionOrNull():
+    EncryptedPassportElementWithTranslatableFilesCollection? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPassportElementWithTranslatableFilesCollection
 
-@PreviewFeature
-inline fun MessageContent.textedInputOrThrow(): TextedInput = this as TextedInput
+public inline
+    fun EncryptedPassportElement.encryptedPassportElementWithTranslatableFilesCollectionOrThrow():
+    EncryptedPassportElementWithTranslatableFilesCollection = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPassportElementWithTranslatableFilesCollection
 
-@PreviewFeature
-inline fun <T> ScheduledCloseInfo.ifExactScheduledCloseInfo(block: (ExactScheduledCloseInfo) -> T) = exactScheduledCloseInfoOrNull() ?.let(block)
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithTranslatableFilesCollection(block: (EncryptedPassportElementWithTranslatableFilesCollection) -> T):
+    T? = encryptedPassportElementWithTranslatableFilesCollectionOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ScheduledCloseInfo.exactScheduledCloseInfoOrNull(): ExactScheduledCloseInfo? = this as? ExactScheduledCloseInfo
+public inline fun EncryptedPassportElement.utilityBillOrNull(): UtilityBill? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.UtilityBill
 
-@PreviewFeature
-inline fun ScheduledCloseInfo.exactScheduledCloseInfoOrThrow(): ExactScheduledCloseInfo = this as ExactScheduledCloseInfo
+public inline fun EncryptedPassportElement.utilityBillOrThrow(): UtilityBill = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.UtilityBill
 
-@PreviewFeature
-inline fun <T> ScheduledCloseInfo.ifApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T) = approximateScheduledCloseInfoOrNull() ?.let(block)
+public inline fun <T> EncryptedPassportElement.ifUtilityBill(block: (UtilityBill) -> T): T? =
+    utilityBillOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ScheduledCloseInfo.approximateScheduledCloseInfoOrNull(): ApproximateScheduledCloseInfo? = this as? ApproximateScheduledCloseInfo
+public inline fun EncryptedPassportElement.bankStatementOrNull(): BankStatement? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.BankStatement
 
-@PreviewFeature
-inline fun ScheduledCloseInfo.approximateScheduledCloseInfoOrThrow(): ApproximateScheduledCloseInfo = this as ApproximateScheduledCloseInfo
+public inline fun EncryptedPassportElement.bankStatementOrThrow(): BankStatement = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.BankStatement
 
-@PreviewFeature
-inline fun <T> ChosenInlineResult.ifLocationChosenInlineResult(block: (LocationChosenInlineResult) -> T) = locationChosenInlineResultOrNull() ?.let(block)
+public inline fun <T> EncryptedPassportElement.ifBankStatement(block: (BankStatement) -> T): T? =
+    bankStatementOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChosenInlineResult.locationChosenInlineResultOrNull(): LocationChosenInlineResult? = this as? LocationChosenInlineResult
+public inline fun EncryptedPassportElement.rentalAgreementOrNull(): RentalAgreement? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.RentalAgreement
 
-@PreviewFeature
-inline fun ChosenInlineResult.locationChosenInlineResultOrThrow(): LocationChosenInlineResult = this as LocationChosenInlineResult
+public inline fun EncryptedPassportElement.rentalAgreementOrThrow(): RentalAgreement = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.RentalAgreement
 
-@PreviewFeature
-inline fun <T> ChosenInlineResult.ifBaseChosenInlineResult(block: (BaseChosenInlineResult) -> T) = baseChosenInlineResultOrNull() ?.let(block)
+public inline fun <T> EncryptedPassportElement.ifRentalAgreement(block: (RentalAgreement) -> T): T?
+    = rentalAgreementOrNull() ?.let(block)
 
-@PreviewFeature
-inline fun ChosenInlineResult.baseChosenInlineResultOrNull(): BaseChosenInlineResult? = this as? BaseChosenInlineResult
+public inline fun EncryptedPassportElement.passportRegistrationOrNull(): PassportRegistration? =
+    this as? dev.inmo.tgbotapi.types.passport.encrypted.PassportRegistration
 
-@PreviewFeature
-inline fun ChosenInlineResult.baseChosenInlineResultOrThrow(): BaseChosenInlineResult = this as BaseChosenInlineResult
+public inline fun EncryptedPassportElement.passportRegistrationOrThrow(): PassportRegistration =
+    this as dev.inmo.tgbotapi.types.passport.encrypted.PassportRegistration
+
+public inline fun <T>
+    EncryptedPassportElement.ifPassportRegistration(block: (PassportRegistration) -> T): T? =
+    passportRegistrationOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.temporaryRegistrationOrNull(): TemporaryRegistration? =
+    this as? dev.inmo.tgbotapi.types.passport.encrypted.TemporaryRegistration
+
+public inline fun EncryptedPassportElement.temporaryRegistrationOrThrow(): TemporaryRegistration =
+    this as dev.inmo.tgbotapi.types.passport.encrypted.TemporaryRegistration
+
+public inline fun <T>
+    EncryptedPassportElement.ifTemporaryRegistration(block: (TemporaryRegistration) -> T): T? =
+    temporaryRegistrationOrNull() ?.let(block)
+
+public inline
+    fun EncryptedPassportElement.encryptedPassportElementWithTranslatableIDDocumentOrNull():
+    EncryptedPassportElementWithTranslatableIDDocument? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPassportElementWithTranslatableIDDocument
+
+public inline
+    fun EncryptedPassportElement.encryptedPassportElementWithTranslatableIDDocumentOrThrow():
+    EncryptedPassportElementWithTranslatableIDDocument = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPassportElementWithTranslatableIDDocument
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithTranslatableIDDocument(block: (EncryptedPassportElementWithTranslatableIDDocument) -> T):
+    T? = encryptedPassportElementWithTranslatableIDDocumentOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.driverLicenseOrNull(): DriverLicense? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.DriverLicense
+
+public inline fun EncryptedPassportElement.driverLicenseOrThrow(): DriverLicense = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.DriverLicense
+
+public inline fun <T> EncryptedPassportElement.ifDriverLicense(block: (DriverLicense) -> T): T? =
+    driverLicenseOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.identityCardOrNull(): IdentityCard? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.IdentityCard
+
+public inline fun EncryptedPassportElement.identityCardOrThrow(): IdentityCard = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.IdentityCard
+
+public inline fun <T> EncryptedPassportElement.ifIdentityCard(block: (IdentityCard) -> T): T? =
+    identityCardOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPersonalDetailsOrNull():
+    EncryptedPersonalDetails? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPersonalDetails
+
+public inline fun EncryptedPassportElement.encryptedPersonalDetailsOrThrow():
+    EncryptedPersonalDetails = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.EncryptedPersonalDetails
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPersonalDetails(block: (EncryptedPersonalDetails) -> T): T?
+    = encryptedPersonalDetailsOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.passportOrNull(): Passport? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.Passport
+
+public inline fun EncryptedPassportElement.passportOrThrow(): Passport = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.Passport
+
+public inline fun <T> EncryptedPassportElement.ifPassport(block: (Passport) -> T): T? =
+    passportOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.commonPassportOrNull(): CommonPassport? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.CommonPassport
+
+public inline fun EncryptedPassportElement.commonPassportOrThrow(): CommonPassport = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.CommonPassport
+
+public inline fun <T> EncryptedPassportElement.ifCommonPassport(block: (CommonPassport) -> T): T? =
+    commonPassportOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.internalPassportOrNull(): InternalPassport? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.InternalPassport
+
+public inline fun EncryptedPassportElement.internalPassportOrThrow(): InternalPassport = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.InternalPassport
+
+public inline fun <T> EncryptedPassportElement.ifInternalPassport(block: (InternalPassport) -> T):
+    T? = internalPassportOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.phoneNumberOrNull(): PhoneNumber? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.PhoneNumber
+
+public inline fun EncryptedPassportElement.phoneNumberOrThrow(): PhoneNumber = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.PhoneNumber
+
+public inline fun <T> EncryptedPassportElement.ifPhoneNumber(block: (PhoneNumber) -> T): T? =
+    phoneNumberOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.unknownEncryptedPassportElementOrNull():
+    UnknownEncryptedPassportElement? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.UnknownEncryptedPassportElement
+
+public inline fun EncryptedPassportElement.unknownEncryptedPassportElementOrThrow():
+    UnknownEncryptedPassportElement = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.UnknownEncryptedPassportElement
+
+public inline fun <T>
+    EncryptedPassportElement.ifUnknownEncryptedPassportElement(block: (UnknownEncryptedPassportElement) -> T):
+    T? = unknownEncryptedPassportElementOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPassportElementTranslatableOrNull():
+    EncryptedPassportElementTranslatable? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementTranslatable
+
+public inline fun EncryptedPassportElement.encryptedPassportElementTranslatableOrThrow():
+    EncryptedPassportElementTranslatable = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementTranslatable
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementTranslatable(block: (EncryptedPassportElementTranslatable) -> T):
+    T? = encryptedPassportElementTranslatableOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithDataOrNull():
+    EncryptedPassportElementWithData? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithData
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithDataOrThrow():
+    EncryptedPassportElementWithData = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithData
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithData(block: (EncryptedPassportElementWithData) -> T):
+    T? = encryptedPassportElementWithDataOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithEmailOrNull():
+    EncryptedPassportElementWithEmail? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithEmail
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithEmailOrThrow():
+    EncryptedPassportElementWithEmail = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithEmail
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithEmail(block: (EncryptedPassportElementWithEmail) -> T):
+    T? = encryptedPassportElementWithEmailOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithFilesCollectionOrNull():
+    EncryptedPassportElementWithFilesCollection? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithFilesCollection
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithFilesCollectionOrThrow():
+    EncryptedPassportElementWithFilesCollection = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithFilesCollection
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithFilesCollection(block: (EncryptedPassportElementWithFilesCollection) -> T):
+    T? = encryptedPassportElementWithFilesCollectionOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithFrontSideOrNull():
+    EncryptedPassportElementWithFrontSide? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithFrontSide
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithFrontSideOrThrow():
+    EncryptedPassportElementWithFrontSide = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithFrontSide
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithFrontSide(block: (EncryptedPassportElementWithFrontSide) -> T):
+    T? = encryptedPassportElementWithFrontSideOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithPhoneNumberOrNull():
+    EncryptedPassportElementWithPhoneNumber? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithPhoneNumber
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithPhoneNumberOrThrow():
+    EncryptedPassportElementWithPhoneNumber = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithPhoneNumber
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithPhoneNumber(block: (EncryptedPassportElementWithPhoneNumber) -> T):
+    T? = encryptedPassportElementWithPhoneNumberOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithReverseSideOrNull():
+    EncryptedPassportElementWithReverseSide? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithReverseSide
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithReverseSideOrThrow():
+    EncryptedPassportElementWithReverseSide = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithReverseSide
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithReverseSide(block: (EncryptedPassportElementWithReverseSide) -> T):
+    T? = encryptedPassportElementWithReverseSideOrNull() ?.let(block)
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithSelfieOrNull():
+    EncryptedPassportElementWithSelfie? = this as?
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithSelfie
+
+public inline fun EncryptedPassportElement.encryptedPassportElementWithSelfieOrThrow():
+    EncryptedPassportElementWithSelfie = this as
+    dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElementWithSelfie
+
+public inline fun <T>
+    EncryptedPassportElement.ifEncryptedPassportElementWithSelfie(block: (EncryptedPassportElementWithSelfie) -> T):
+    T? = encryptedPassportElementWithSelfieOrNull() ?.let(block)
+
+public inline fun ScheduledCloseInfo.exactScheduledCloseInfoOrNull(): ExactScheduledCloseInfo? =
+    this as? dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
+
+public inline fun ScheduledCloseInfo.exactScheduledCloseInfoOrThrow(): ExactScheduledCloseInfo =
+    this as dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
+
+public inline fun <T>
+    ScheduledCloseInfo.ifExactScheduledCloseInfo(block: (ExactScheduledCloseInfo) -> T): T? =
+    exactScheduledCloseInfoOrNull() ?.let(block)
+
+public inline fun ScheduledCloseInfo.approximateScheduledCloseInfoOrNull():
+    ApproximateScheduledCloseInfo? = this as?
+    dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
+
+public inline fun ScheduledCloseInfo.approximateScheduledCloseInfoOrThrow():
+    ApproximateScheduledCloseInfo = this as
+    dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
+
+public inline fun <T>
+    ScheduledCloseInfo.ifApproximateScheduledCloseInfo(block: (ApproximateScheduledCloseInfo) -> T):
+    T? = approximateScheduledCloseInfoOrNull() ?.let(block)
+
+public inline fun Poll.multipleAnswersPollOrNull(): MultipleAnswersPoll? = this as?
+    dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
+
+public inline fun Poll.multipleAnswersPollOrThrow(): MultipleAnswersPoll = this as
+    dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
+
+public inline fun <T> Poll.ifMultipleAnswersPoll(block: (MultipleAnswersPoll) -> T): T? =
+    multipleAnswersPollOrNull() ?.let(block)
+
+public inline fun Poll.unknownPollTypeOrNull(): UnknownPollType? = this as?
+    dev.inmo.tgbotapi.types.polls.UnknownPollType
+
+public inline fun Poll.unknownPollTypeOrThrow(): UnknownPollType = this as
+    dev.inmo.tgbotapi.types.polls.UnknownPollType
+
+public inline fun <T> Poll.ifUnknownPollType(block: (UnknownPollType) -> T): T? =
+    unknownPollTypeOrNull() ?.let(block)
+
+public inline fun Poll.regularPollOrNull(): RegularPoll? = this as?
+    dev.inmo.tgbotapi.types.polls.RegularPoll
+
+public inline fun Poll.regularPollOrThrow(): RegularPoll = this as
+    dev.inmo.tgbotapi.types.polls.RegularPoll
+
+public inline fun <T> Poll.ifRegularPoll(block: (RegularPoll) -> T): T? = regularPollOrNull()
+    ?.let(block)
+
+public inline fun Poll.quizPollOrNull(): QuizPoll? = this as? dev.inmo.tgbotapi.types.polls.QuizPoll
+
+public inline fun Poll.quizPollOrThrow(): QuizPoll = this as dev.inmo.tgbotapi.types.polls.QuizPoll
+
+public inline fun <T> Poll.ifQuizPoll(block: (QuizPoll) -> T): T? = quizPollOrNull() ?.let(block)
+
+public inline fun Update.callbackQueryUpdateOrNull(): CallbackQueryUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
+
+public inline fun Update.callbackQueryUpdateOrThrow(): CallbackQueryUpdate = this as
+    dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
+
+public inline fun <T> Update.ifCallbackQueryUpdate(block: (CallbackQueryUpdate) -> T): T? =
+    callbackQueryUpdateOrNull() ?.let(block)
+
+public inline fun Update.channelPostUpdateOrNull(): ChannelPostUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.ChannelPostUpdate
+
+public inline fun Update.channelPostUpdateOrThrow(): ChannelPostUpdate = this as
+    dev.inmo.tgbotapi.types.update.ChannelPostUpdate
+
+public inline fun <T> Update.ifChannelPostUpdate(block: (ChannelPostUpdate) -> T): T? =
+    channelPostUpdateOrNull() ?.let(block)
+
+public inline fun Update.chatJoinRequestUpdateOrNull(): ChatJoinRequestUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
+
+public inline fun Update.chatJoinRequestUpdateOrThrow(): ChatJoinRequestUpdate = this as
+    dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
+
+public inline fun <T> Update.ifChatJoinRequestUpdate(block: (ChatJoinRequestUpdate) -> T): T? =
+    chatJoinRequestUpdateOrNull() ?.let(block)
+
+public inline fun Update.chosenInlineResultUpdateOrNull(): ChosenInlineResultUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
+
+public inline fun Update.chosenInlineResultUpdateOrThrow(): ChosenInlineResultUpdate = this as
+    dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
+
+public inline fun <T> Update.ifChosenInlineResultUpdate(block: (ChosenInlineResultUpdate) -> T): T?
+    = chosenInlineResultUpdateOrNull() ?.let(block)
+
+public inline fun Update.commonChatMemberUpdatedUpdateOrNull(): CommonChatMemberUpdatedUpdate? =
+    this as? dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
+
+public inline fun Update.commonChatMemberUpdatedUpdateOrThrow(): CommonChatMemberUpdatedUpdate =
+    this as dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
+
+public inline fun <T>
+    Update.ifCommonChatMemberUpdatedUpdate(block: (CommonChatMemberUpdatedUpdate) -> T): T? =
+    commonChatMemberUpdatedUpdateOrNull() ?.let(block)
+
+public inline fun Update.editChannelPostUpdateOrNull(): EditChannelPostUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
+
+public inline fun Update.editChannelPostUpdateOrThrow(): EditChannelPostUpdate = this as
+    dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
+
+public inline fun <T> Update.ifEditChannelPostUpdate(block: (EditChannelPostUpdate) -> T): T? =
+    editChannelPostUpdateOrNull() ?.let(block)
+
+public inline fun Update.editMessageUpdateOrNull(): EditMessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.EditMessageUpdate
+
+public inline fun Update.editMessageUpdateOrThrow(): EditMessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.EditMessageUpdate
+
+public inline fun <T> Update.ifEditMessageUpdate(block: (EditMessageUpdate) -> T): T? =
+    editMessageUpdateOrNull() ?.let(block)
+
+public inline fun Update.inlineQueryUpdateOrNull(): InlineQueryUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.InlineQueryUpdate
+
+public inline fun Update.inlineQueryUpdateOrThrow(): InlineQueryUpdate = this as
+    dev.inmo.tgbotapi.types.update.InlineQueryUpdate
+
+public inline fun <T> Update.ifInlineQueryUpdate(block: (InlineQueryUpdate) -> T): T? =
+    inlineQueryUpdateOrNull() ?.let(block)
+
+public inline fun Update.messageUpdateOrNull(): MessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.MessageUpdate
+
+public inline fun Update.messageUpdateOrThrow(): MessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.MessageUpdate
+
+public inline fun <T> Update.ifMessageUpdate(block: (MessageUpdate) -> T): T? =
+    messageUpdateOrNull() ?.let(block)
+
+public inline fun Update.myChatMemberUpdatedUpdateOrNull(): MyChatMemberUpdatedUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
+
+public inline fun Update.myChatMemberUpdatedUpdateOrThrow(): MyChatMemberUpdatedUpdate = this as
+    dev.inmo.tgbotapi.types.update.MyChatMemberUpdatedUpdate
+
+public inline fun <T> Update.ifMyChatMemberUpdatedUpdate(block: (MyChatMemberUpdatedUpdate) -> T):
+    T? = myChatMemberUpdatedUpdateOrNull() ?.let(block)
+
+public inline fun Update.pollAnswerUpdateOrNull(): PollAnswerUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.PollAnswerUpdate
+
+public inline fun Update.pollAnswerUpdateOrThrow(): PollAnswerUpdate = this as
+    dev.inmo.tgbotapi.types.update.PollAnswerUpdate
+
+public inline fun <T> Update.ifPollAnswerUpdate(block: (PollAnswerUpdate) -> T): T? =
+    pollAnswerUpdateOrNull() ?.let(block)
+
+public inline fun Update.pollUpdateOrNull(): PollUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.PollUpdate
+
+public inline fun Update.pollUpdateOrThrow(): PollUpdate = this as
+    dev.inmo.tgbotapi.types.update.PollUpdate
+
+public inline fun <T> Update.ifPollUpdate(block: (PollUpdate) -> T): T? = pollUpdateOrNull()
+    ?.let(block)
+
+public inline fun Update.preCheckoutQueryUpdateOrNull(): PreCheckoutQueryUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.PreCheckoutQueryUpdate
+
+public inline fun Update.preCheckoutQueryUpdateOrThrow(): PreCheckoutQueryUpdate = this as
+    dev.inmo.tgbotapi.types.update.PreCheckoutQueryUpdate
+
+public inline fun <T> Update.ifPreCheckoutQueryUpdate(block: (PreCheckoutQueryUpdate) -> T): T? =
+    preCheckoutQueryUpdateOrNull() ?.let(block)
+
+public inline fun Update.shippingQueryUpdateOrNull(): ShippingQueryUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.ShippingQueryUpdate
+
+public inline fun Update.shippingQueryUpdateOrThrow(): ShippingQueryUpdate = this as
+    dev.inmo.tgbotapi.types.update.ShippingQueryUpdate
+
+public inline fun <T> Update.ifShippingQueryUpdate(block: (ShippingQueryUpdate) -> T): T? =
+    shippingQueryUpdateOrNull() ?.let(block)
+
+public inline fun Update.baseEditMessageUpdateOrNull(): BaseEditMessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
+
+public inline fun Update.baseEditMessageUpdateOrThrow(): BaseEditMessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.abstracts.BaseEditMessageUpdate
+
+public inline fun <T> Update.ifBaseEditMessageUpdate(block: (BaseEditMessageUpdate) -> T): T? =
+    baseEditMessageUpdateOrNull() ?.let(block)
+
+public inline fun Update.baseMessageUpdateOrNull(): BaseMessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
+
+public inline fun Update.baseMessageUpdateOrThrow(): BaseMessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
+
+public inline fun <T> Update.ifBaseMessageUpdate(block: (BaseMessageUpdate) -> T): T? =
+    baseMessageUpdateOrNull() ?.let(block)
+
+public inline fun Update.baseSentMessageUpdateOrNull(): BaseSentMessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
+
+public inline fun Update.baseSentMessageUpdateOrThrow(): BaseSentMessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
+
+public inline fun <T> Update.ifBaseSentMessageUpdate(block: (BaseSentMessageUpdate) -> T): T? =
+    baseSentMessageUpdateOrNull() ?.let(block)
+
+public inline fun Update.chatMemberUpdatedUpdateOrNull(): ChatMemberUpdatedUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
+
+public inline fun Update.chatMemberUpdatedUpdateOrThrow(): ChatMemberUpdatedUpdate = this as
+    dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
+
+public inline fun <T> Update.ifChatMemberUpdatedUpdate(block: (ChatMemberUpdatedUpdate) -> T): T? =
+    chatMemberUpdatedUpdateOrNull() ?.let(block)
+
+public inline fun Update.unknownUpdateOrNull(): UnknownUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
+
+public inline fun Update.unknownUpdateOrThrow(): UnknownUpdate = this as
+    dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
+
+public inline fun <T> Update.ifUnknownUpdate(block: (UnknownUpdate) -> T): T? =
+    unknownUpdateOrNull() ?.let(block)
+
+public inline fun Update.channelPostMediaGroupUpdateOrNull(): ChannelPostMediaGroupUpdate? = this
+    as? dev.inmo.tgbotapi.types.update.media_group.ChannelPostMediaGroupUpdate
+
+public inline fun Update.channelPostMediaGroupUpdateOrThrow(): ChannelPostMediaGroupUpdate = this as
+    dev.inmo.tgbotapi.types.update.media_group.ChannelPostMediaGroupUpdate
+
+public inline fun <T>
+    Update.ifChannelPostMediaGroupUpdate(block: (ChannelPostMediaGroupUpdate) -> T): T? =
+    channelPostMediaGroupUpdateOrNull() ?.let(block)
+
+public inline fun Update.editChannelPostMediaGroupUpdateOrNull(): EditChannelPostMediaGroupUpdate? =
+    this as? dev.inmo.tgbotapi.types.update.media_group.EditChannelPostMediaGroupUpdate
+
+public inline fun Update.editChannelPostMediaGroupUpdateOrThrow(): EditChannelPostMediaGroupUpdate =
+    this as dev.inmo.tgbotapi.types.update.media_group.EditChannelPostMediaGroupUpdate
+
+public inline fun <T>
+    Update.ifEditChannelPostMediaGroupUpdate(block: (EditChannelPostMediaGroupUpdate) -> T): T? =
+    editChannelPostMediaGroupUpdateOrNull() ?.let(block)
+
+public inline fun Update.editMessageMediaGroupUpdateOrNull(): EditMessageMediaGroupUpdate? = this
+    as? dev.inmo.tgbotapi.types.update.media_group.EditMessageMediaGroupUpdate
+
+public inline fun Update.editMessageMediaGroupUpdateOrThrow(): EditMessageMediaGroupUpdate = this as
+    dev.inmo.tgbotapi.types.update.media_group.EditMessageMediaGroupUpdate
+
+public inline fun <T>
+    Update.ifEditMessageMediaGroupUpdate(block: (EditMessageMediaGroupUpdate) -> T): T? =
+    editMessageMediaGroupUpdateOrNull() ?.let(block)
+
+public inline fun Update.mediaGroupUpdateOrNull(): MediaGroupUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate
+
+public inline fun Update.mediaGroupUpdateOrThrow(): MediaGroupUpdate = this as
+    dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate
+
+public inline fun <T> Update.ifMediaGroupUpdate(block: (MediaGroupUpdate) -> T): T? =
+    mediaGroupUpdateOrNull() ?.let(block)
+
+public inline fun Update.sentMediaGroupUpdateOrNull(): SentMediaGroupUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
+
+public inline fun Update.sentMediaGroupUpdateOrThrow(): SentMediaGroupUpdate = this as
+    dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
+
+public inline fun <T> Update.ifSentMediaGroupUpdate(block: (SentMediaGroupUpdate) -> T): T? =
+    sentMediaGroupUpdateOrNull() ?.let(block)
+
+public inline fun Update.editMediaGroupUpdateOrNull(): EditMediaGroupUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.media_group.EditMediaGroupUpdate
+
+public inline fun Update.editMediaGroupUpdateOrThrow(): EditMediaGroupUpdate = this as
+    dev.inmo.tgbotapi.types.update.media_group.EditMediaGroupUpdate
+
+public inline fun <T> Update.ifEditMediaGroupUpdate(block: (EditMediaGroupUpdate) -> T): T? =
+    editMediaGroupUpdateOrNull() ?.let(block)
+
+public inline fun Update.messageMediaGroupUpdateOrNull(): MessageMediaGroupUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.media_group.MessageMediaGroupUpdate
+
+public inline fun Update.messageMediaGroupUpdateOrThrow(): MessageMediaGroupUpdate = this as
+    dev.inmo.tgbotapi.types.update.media_group.MessageMediaGroupUpdate
+
+public inline fun <T> Update.ifMessageMediaGroupUpdate(block: (MessageMediaGroupUpdate) -> T): T? =
+    messageMediaGroupUpdateOrNull() ?.let(block)

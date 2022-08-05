@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message.textsources
 
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.captionLength
 import dev.inmo.tgbotapi.types.textLength
 import kotlinx.serialization.Serializable
@@ -10,6 +11,7 @@ typealias TextSourcesList = List<TextSource>
 typealias MutableTextSourcesList = MutableList<TextSource>
 
 @Serializable(TextSourceSerializer::class)
+@ClassCastsIncluded
 sealed interface TextSource {
     val markdown: String
     val markdownV2: String

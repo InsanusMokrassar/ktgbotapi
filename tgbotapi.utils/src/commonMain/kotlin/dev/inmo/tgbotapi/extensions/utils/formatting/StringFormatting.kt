@@ -109,9 +109,9 @@ private inline fun String.hashTag(adapt: String.() -> String): String = if (star
 }
 
 
-fun String.textMentionMarkdown(userId: UserId): String = linkMarkdown(userId.link)
-fun String.textMentionMarkdownV2(userId: UserId): String = linkMarkdownV2(userId.link)
-fun String.textMentionHTML(userId: UserId): String = linkHTML(userId.link)
+fun String.textMentionMarkdown(userId: UserId): String = linkMarkdown(userId.userLink)
+fun String.textMentionMarkdownV2(userId: UserId): String = linkMarkdownV2(userId.userLink)
+fun String.textMentionHTML(userId: UserId): String = linkHTML(userId.userLink)
 
 
 fun String.mentionMarkdown(): String = mention(String::toMarkdown)

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageIdentifier
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 
 /**
@@ -40,7 +41,7 @@ suspend fun TelegramBot.sendLocation(
  */
 suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
-    location: StaticLocation,
+    location: Location,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -87,7 +88,7 @@ suspend fun TelegramBot.sendLocation(
  */
 suspend fun TelegramBot.sendLocation(
     chat: Chat,
-    location: StaticLocation,
+    location: Location,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -125,7 +126,7 @@ suspend fun TelegramBot.sendStaticLocation(
  */
 suspend fun TelegramBot.sendStaticLocation(
     chatId: ChatIdentifier,
-    location: StaticLocation,
+    location: Location,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -154,7 +155,7 @@ suspend fun TelegramBot.sendStaticLocation(
  */
 suspend fun TelegramBot.sendStaticLocation(
     chat: Chat,
-    location: StaticLocation,
+    location: Location,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,

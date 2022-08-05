@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.send.games
 
-import dev.inmo.tgbotapi.abstracts.types.ReplyMarkup
+import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -29,7 +29,7 @@ data class SendGame (
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<GameContent>>,
-    ReplyMarkup {
+    WithReplyMarkup {
     override fun method(): String = "sendGame"
     override val resultDeserializer: DeserializationStrategy<ContentMessage<GameContent>>
         get() = commonResultDeserializer

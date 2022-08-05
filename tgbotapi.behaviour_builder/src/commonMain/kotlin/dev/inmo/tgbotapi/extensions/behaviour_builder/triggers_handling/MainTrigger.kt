@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
-import dev.inmo.micro_utils.coroutines.*
+import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter

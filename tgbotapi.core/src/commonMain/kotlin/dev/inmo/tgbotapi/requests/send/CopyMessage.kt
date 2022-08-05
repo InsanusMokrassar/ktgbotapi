@@ -20,10 +20,9 @@ import kotlinx.serialization.*
 
 const val OrderChangingDeprecationWarn = "The order of parameters in this factory will be changed soon. To avoid unexpected behaviour, swap message id and target chat id parameters"
 
-@Deprecated(OrderChangingDeprecationWarn)
 fun CopyMessage(
-    fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
+    fromChatId: ChatIdentifier,
     messageId: MessageIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -46,10 +45,9 @@ fun CopyMessage(
     replyMarkup
 )
 
-@Deprecated(OrderChangingDeprecationWarn)
 fun CopyMessage(
-    fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
+    fromChatId: ChatIdentifier,
     messageId: MessageIdentifier,
     entities: List<TextSource>,
     disableNotification: Boolean = false,

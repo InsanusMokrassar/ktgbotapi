@@ -12,12 +12,9 @@ import dev.inmo.tgbotapi.extensions.utils.whenCommonMessage
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
-import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.InvoiceContent
-import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 
 typealias CommonMessageFilter<T> = SimpleFilter<CommonMessage<T>>
 

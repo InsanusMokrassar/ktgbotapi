@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.message.textsources.link
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.textsources.link
 
 fun makeUsernameLink(username: String) = "$internalLinkBeginning/$username"
 fun makeUsernameDeepLinkPrefix(username: String) = "${makeUsernameLink(username)}?start="
@@ -77,7 +77,7 @@ val Chat.link: String?
             inviteLink ?.let { return it }
         }
         if (this is PrivateChat) {
-            return id.link
+            return id.userLink
         }
         return null
     }

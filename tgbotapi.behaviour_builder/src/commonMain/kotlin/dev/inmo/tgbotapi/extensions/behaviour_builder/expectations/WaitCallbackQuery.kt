@@ -3,14 +3,12 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
+import dev.inmo.tgbotapi.extensions.utils.callbackQueryUpdateOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.queries.callback.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.toList
 
 typealias CallbackQueryMapper<T> = suspend T.() -> T?
 
@@ -22,7 +20,7 @@ suspend inline fun <reified O> BehaviourContext.waitCallbackQueries(
     initRequest,
     errorFactory
 ) {
-    (it.asCallbackQueryUpdate() ?.data as O).let(::listOfNotNull)
+    (it.callbackQueryUpdateOrNull() ?.data as O).let(::listOfNotNull)
 }
 
 

@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.games.CallbackGame
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
@@ -11,6 +12,7 @@ import kotlinx.serialization.json.*
  * https://core.telegram.org/bots/api#inlinekeyboardbutton for more info
  */
 @Serializable(InlineKeyboardButtonSerializer::class)
+@ClassCastsIncluded
 sealed interface InlineKeyboardButton {
     val text: String
 }

@@ -7,8 +7,8 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByCha
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asBaseSentMessageUpdate
-import dev.inmo.tgbotapi.extensions.utils.asChatEventMessage
+import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
+import dev.inmo.tgbotapi.extensions.utils.chatEventMessageOrNull
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
@@ -24,7 +24,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChatEvent> BC.on
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<T>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     @Suppress("UNCHECKED_CAST")
-    (it.asBaseSentMessageUpdate() ?.data ?.asChatEventMessage() ?.takeIf { it.chatEvent is T } as? ChatEventMessage<T>) ?.let(::listOfNotNull)
+    (it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.takeIf { it.chatEvent is T } as? ChatEventMessage<T>) ?.let(::listOfNotNull)
 }
 
 /**

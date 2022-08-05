@@ -39,19 +39,6 @@ val UserId.userLink: String
 val User.link: String
     get() = id.userLink
 
-/**
- * https://core.telegram.org/bots/api#formatting-options
- */
-@Deprecated("Renamed", ReplaceWith("userLink", "dev.inmo.tgbotapi.types.userLink"))
-val Identifier.link: String
-    get() = "tg://user?id=$this"
-/**
- * https://core.telegram.org/bots/api#formatting-options
- */
-@Deprecated("Renamed", ReplaceWith("userLink", "dev.inmo.tgbotapi.types.userLink"))
-val ChatId.link: String
-    get() = chatId.link
-
 typealias UserId = ChatId
 
 fun Identifier.toChatId(): ChatId = ChatId(this)

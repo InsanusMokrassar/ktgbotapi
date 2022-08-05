@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests
 
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
-import dev.inmo.tgbotapi.abstracts.types.ReplyMarkup
+import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -17,7 +17,7 @@ data class StopPoll(
     override val messageId: MessageIdentifier,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : MessageAction, SimpleRequest<Poll>, ReplyMarkup {
+) : MessageAction, SimpleRequest<Poll>, WithReplyMarkup {
     override fun method(): String = "stopPoll"
     override val resultDeserializer: DeserializationStrategy<Poll>
         get() = PollSerializer

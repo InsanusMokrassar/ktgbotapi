@@ -1,8 +1,7 @@
 package dev.inmo.tgbotapi.utils.internal
 
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.MultilevelTextSource
-import dev.inmo.tgbotapi.types.UserId
-import dev.inmo.tgbotapi.types.link
 import dev.inmo.tgbotapi.utils.extensions.*
 
 internal fun MultilevelTextSource.markdownV2Default(
@@ -61,8 +60,8 @@ internal fun MultilevelTextSource.underlineMarkdownV2(): String = markdownV2Defa
 internal fun MultilevelTextSource.underlineHTML(): String = htmlDefault(htmlUnderlineControl)
 
 
-internal fun MultilevelTextSource.textMentionMarkdownV2(userId: UserId): String = linkMarkdownV2(userId.link)
-internal fun MultilevelTextSource.textMentionHTML(userId: UserId): String = linkHTML(userId.link)
+internal fun MultilevelTextSource.textMentionMarkdownV2(userId: UserId): String = linkMarkdownV2(userId.userLink)
+internal fun MultilevelTextSource.textMentionHTML(userId: UserId): String = linkHTML(userId.userLink)
 
 internal fun MultilevelTextSource.mentionMarkdownV2(): String = optionalPrefix("@") + subsources.makeMarkdownV2String()
 internal fun MultilevelTextSource.mentionHTML(): String = optionalPrefix("@") + subsources.makeHtmlString()

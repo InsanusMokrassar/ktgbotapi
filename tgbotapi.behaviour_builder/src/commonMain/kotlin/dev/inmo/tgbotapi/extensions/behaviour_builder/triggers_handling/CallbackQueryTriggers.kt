@@ -6,10 +6,11 @@ import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.CallbackQueryFilterByUser
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.*
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserCallbackQueryMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asCallbackQueryUpdate
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
+import dev.inmo.tgbotapi.extensions.utils.callbackQueryUpdateOrNull
 import dev.inmo.tgbotapi.types.queries.callback.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.Job
@@ -20,7 +21,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : CallbackQuery> B
     markerFactory: MarkerFactory<in T, Any> = ByUserCallbackQueryMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asCallbackQueryUpdate() ?.data as? T) ?.let(::listOfNotNull)
+    (it.callbackQueryUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
 }
 
 /**

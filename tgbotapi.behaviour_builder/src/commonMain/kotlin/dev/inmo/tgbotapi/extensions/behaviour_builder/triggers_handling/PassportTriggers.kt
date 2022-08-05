@@ -5,8 +5,8 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessageFilterByCha
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
-import dev.inmo.tgbotapi.extensions.utils.asPassportMessage
+import dev.inmo.tgbotapi.extensions.utils.messageUpdateOrNull
+import dev.inmo.tgbotapi.extensions.utils.passportMessageOrNull
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportElement
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -17,7 +17,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : EncryptedPasspor
     markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asMessageUpdate() ?.data ?.asPassportMessage() ?.takeIf { it.passportData.data.any { it is T } }) ?.let(::listOfNotNull)
+    (it.messageUpdateOrNull() ?.data ?.passportMessageOrNull() ?.takeIf { it.passportData.data.any { it is T } }) ?.let(::listOfNotNull)
 }
 
 

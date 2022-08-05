@@ -4,8 +4,8 @@ import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.extensions.utils.asUser
 import dev.inmo.tgbotapi.extensions.utils.shortcuts.chat
-import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update

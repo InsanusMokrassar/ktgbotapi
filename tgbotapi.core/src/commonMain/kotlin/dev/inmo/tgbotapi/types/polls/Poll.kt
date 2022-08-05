@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.polls
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
 import dev.inmo.tgbotapi.abstracts.TextedInput
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
@@ -16,6 +17,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
+@ClassCastsIncluded
 sealed interface ScheduledCloseInfo {
     val closeDateTime: DateTime
 }
@@ -45,6 +47,7 @@ val LongSeconds.asExactScheduledCloseInfo
     )
 
 @Serializable(PollSerializer::class)
+@ClassCastsIncluded
 sealed interface Poll {
     val id: PollIdentifier
     val question: String

@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.PreCheckoutQueryFi
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserPreCheckoutQueryMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.asPreCheckoutQueryUpdate
+import dev.inmo.tgbotapi.extensions.utils.preCheckoutQueryUpdateOrNull
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -31,5 +31,5 @@ suspend fun <BC : BehaviourContext> BC.onPreCheckoutQuery(
     markerFactory: MarkerFactory<in PreCheckoutQuery, Any> = ByUserPreCheckoutQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PreCheckoutQuery>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.asPreCheckoutQueryUpdate() ?.data) ?.let(::listOfNotNull)
+    (it.preCheckoutQueryUpdateOrNull() ?.data) ?.let(::listOfNotNull)
 }

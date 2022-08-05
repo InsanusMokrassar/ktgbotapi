@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message.content
 
+import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageIdentifier
@@ -108,6 +109,7 @@ sealed interface MediaContent: MessageContent {
     fun asTelegramMedia(): TelegramMedia
 }
 
+@ClassCastsIncluded
 sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,

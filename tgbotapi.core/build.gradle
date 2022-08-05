@@ -1,6 +1,7 @@
 plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
+    id "com.google.devtools.ksp"
 }
 
 project.description = "Core part of tgbotapi with all (and only) required functionality for working with Telegram Bot API"
@@ -28,6 +29,8 @@ kotlin {
                 api libs.microutils.languageCodes
 
                 api libs.ktor.client.core
+
+                api project(":tgbotapi.ksp:lib")
             }
         }
         commonTest {
@@ -46,12 +49,15 @@ kotlin {
             }
         }
     }
+}
 
-//    targets.all {
-//        compilations.all {
-//            kotlinOptions {
-//                freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi", "-Xopt-in=kotlin.RequiresOptIn"]
-//            }
-//        }
-//    }
+dependencies {
+    add("kspCommonMainMetadata", project(":tgbotapi.ksp:processor"))
+    add("kspJvm", project(":tgbotapi.ksp:processor"))
+}
+
+ksp {
+    arg("cctargetPackage", "dev.inmo.tgbotapi.extensions.utils")
+    arg("ccoutputFileName", "ClassCastsNew")
+    arg("ccoutputFolder", project(":tgbotapi.utils").file("src/commonMain/kotlin").absolutePath)
 }
