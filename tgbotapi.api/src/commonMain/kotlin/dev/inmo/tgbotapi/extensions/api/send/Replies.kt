@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
+import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.*
 import dev.inmo.tgbotapi.extensions.api.send.games.sendGame
 import dev.inmo.tgbotapi.extensions.api.send.media.*
 import dev.inmo.tgbotapi.extensions.api.send.payments.sendInvoice
@@ -29,6 +31,10 @@ import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.venue.Venue
 import dev.inmo.tgbotapi.utils.RiskFeature
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlin.js.JsName
+import kotlin.jvm.JvmName
 
 
 // Contact
@@ -1003,6 +1009,80 @@ suspend fun TelegramBot.reply(
             allowSendingWithoutReply,
             replyMarkup
         )
+    )
+}
+
+/**
+ * Will use [handleLiveLocation] with replying to [message] each time new message will be sent by live location update
+ *
+ * @see handleLiveLocation
+ */
+suspend fun TelegramBot.reply(
+    message: Message,
+    locationsFlow: Flow<EditLiveLocationInfo>,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null
+) = handleLiveLocation(
+    message.chat.id,
+    locationsFlow,
+    liveTimeMillis,
+    disableNotification,
+    protectContent,
+    message.messageId,
+    allowSendingWithoutReply
+)
+
+/**
+ * Will use [handleLiveLocation] with replying to [message] each time new message will be sent by live location update
+ *
+ * @see handleLiveLocation
+ */
+@JvmName("replyLiveLocationWithLocation")
+@JsName("replyLiveLocationWithLocation")
+suspend fun TelegramBot.reply(
+    message: Message,
+    locationsFlow: Flow<Location>,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null
+) {
+    handleLiveLocation(
+        message.chat.id,
+        locationsFlow,
+        liveTimeMillis,
+        disableNotification,
+        protectContent,
+        message.messageId,
+        allowSendingWithoutReply
+    )
+}
+
+/**
+ * Will use [handleLiveLocation] with replying to [message] each time new message will be sent by live location update
+ *
+ * @see handleLiveLocation
+ */
+@JvmName("replyLiveLocationWithLatLong")
+@JsName("replyLiveLocationWithLatLong")
+suspend fun TelegramBot.reply(
+    message: Message,
+    locationsFlow: Flow<Pair<Double, Double>>,
+    liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null
+) {
+    handleLiveLocation(
+        message.chat.id,
+        locationsFlow,
+        liveTimeMillis,
+        disableNotification,
+        protectContent,
+        message.messageId,
+        allowSendingWithoutReply
     )
 }
 

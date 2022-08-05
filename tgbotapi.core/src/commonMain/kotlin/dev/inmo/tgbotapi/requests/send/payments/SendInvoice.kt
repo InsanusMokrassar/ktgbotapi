@@ -72,7 +72,7 @@ data class SendInvoice(
     ChatRequest,
     DisableNotification,
     ReplyMessageId,
-    ReplyMarkup,
+    WithReplyMarkup,
     SendMessageRequest<ContentMessage<InvoiceContent>> {
     override fun method(): String = "sendInvoice"
     override val resultDeserializer: DeserializationStrategy<ContentMessage<InvoiceContent>>

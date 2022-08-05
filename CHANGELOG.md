@@ -4,6 +4,10 @@
 
 ## 2.2.2
 
+* `Core`:
+  * Interface `ReplyMakrup` has been renamed to `WithReplyMarkup` to correspond its purpose
+* `API`:
+  * New API (`handleLiveLocation`) for live location streaming using `Flow`
 * `Utils`:
   * `buildEntities` now is inline
 * `Behaviour Builder`:
