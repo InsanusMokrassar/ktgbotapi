@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.actions
 
 import dev.inmo.micro_utils.common.Warning
-import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable

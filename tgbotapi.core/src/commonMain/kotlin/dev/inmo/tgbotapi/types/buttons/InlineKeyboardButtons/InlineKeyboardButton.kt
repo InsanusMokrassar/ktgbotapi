@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
-import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.games.CallbackGame
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo

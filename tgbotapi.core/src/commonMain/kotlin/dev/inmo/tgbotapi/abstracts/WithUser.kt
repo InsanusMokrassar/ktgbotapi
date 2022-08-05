@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.abstracts
 
-import dev.inmo.tgbotapi.ksp.lib.ClassCastsIncluded
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.chat.User
 
 /**

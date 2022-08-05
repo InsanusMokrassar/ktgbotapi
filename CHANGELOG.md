@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 3.0.1
+## 3.0.2
 
 **ALL OLD DEPRECATIONS HAVE BEEN REMOVED**
 
@@ -27,6 +27,8 @@
     * Add `sendLocation` for sending live locations
 * `Utils`:
   * **BREAKING CHANGES** Now all new classcasts (like `Chat.ifPrivateChat` etc.) have been rewritten to be generated with `ksp` and `kotlin poet`
+
+*Note: Versions 3.0.0 and 3.0.1 have been published with errors and didn't recommend to use*
 
 ## 2.2.2
 
