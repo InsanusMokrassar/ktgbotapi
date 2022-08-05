@@ -2,13 +2,13 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.filters
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
-import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
+import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
-import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
+import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 /**
