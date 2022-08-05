@@ -30,12 +30,13 @@ kotlin {
 
 private List<SourceDirectorySet> findSourcesWithName(String... approximateNames) {
     return parent.subprojects
-        .findAll { it != project }
-        .collectMany { it.kotlin.sourceSets }
-        .findAll { sourceSet -> approximateNames.any {
-            nameToFilter -> sourceSet.name.contains(nameToFilter)
-            }
-        }.collect { it.kotlin }
+            .findAll { it != project && it.hasProperty("kotlin") }
+            .collectMany { it.kotlin.sourceSets }
+            .findAll { sourceSet ->
+                approximateNames.any { nameToFilter ->
+                    sourceSet.name.contains(nameToFilter)
+                }
+            }.collect { it.kotlin }
 }
 
 Object callback = {
