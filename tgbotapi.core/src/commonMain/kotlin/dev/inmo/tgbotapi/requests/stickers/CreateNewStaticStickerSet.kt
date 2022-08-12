@@ -50,6 +50,7 @@ data class CreateNewStaticStickerSet internal constructor(
     @SerialName(pngStickerField)
     val sticker: FileId? = null,
     @SerialName(containsMasksField)
+    @Deprecated("Will be removed soon due to its redundancy")
     val containsMasks: Boolean? = null,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition? = null
