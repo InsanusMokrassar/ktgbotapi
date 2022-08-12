@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.micro_utils.common.joinTo
+import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -510,3 +511,39 @@ inline fun EntitiesBuilder.underline(text: String) = add(dev.inmo.tgbotapi.types
  * Version of [EntitiesBuilder.underline] with new line at the end
  */
 inline fun EntitiesBuilder.underlineln(text: String) = underline(text) + newLine
+
+
+/**
+ * Add customEmoji using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.customEmoji]
+ */
+inline fun EntitiesBuilder.customEmoji(customEmojiId: CustomEmojiId, parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.message.textsources.customEmoji(customEmojiId, parts))
+/**
+ * Version of [EntitiesBuilder.customEmoji] with new line at the end
+ */
+inline fun EntitiesBuilder.customEmojiln(customEmojiId: CustomEmojiId, parts: TextSourcesList) = customEmoji(customEmojiId, parts) + newLine
+/**
+ * Add customEmoji using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.customEmoji].
+ * Will reuse separator config from [buildEntities]
+ */
+inline fun EntitiesBuilder.customEmoji(customEmojiId: CustomEmojiId, noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.message.textsources.customEmoji(customEmojiId, buildEntities(separator, init)))
+/**
+ * Version of [EntitiesBuilder.customEmoji] with new line at the end.
+ * Will reuse separator config from [buildEntities]
+ */
+inline fun EntitiesBuilder.customEmojiln(customEmojiId: CustomEmojiId, noinline init: EntitiesBuilderBody) = customEmoji(customEmojiId, init) + newLine
+/**
+ * Add customEmoji using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.customEmoji]
+ */
+inline fun EntitiesBuilder.customEmoji(customEmojiId: CustomEmojiId, vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.customEmoji(customEmojiId, *parts))
+/**
+ * Version of [EntitiesBuilder.customEmoji] with new line at the end
+ */
+inline fun EntitiesBuilder.customEmojiln(customEmojiId: CustomEmojiId, vararg parts: TextSource) = customEmoji(customEmojiId, *parts) + newLine
+/**
+ * Add customEmoji using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.customEmoji]
+ */
+inline fun EntitiesBuilder.customEmoji(customEmojiId: CustomEmojiId, text: String) = add(dev.inmo.tgbotapi.types.message.textsources.customEmoji(customEmojiId, text))
+/**
+ * Version of [EntitiesBuilder.customEmoji] with new line at the end
+ */
+inline fun EntitiesBuilder.customEmojiln(customEmojiId: CustomEmojiId, text: String) = customEmoji(customEmojiId, text) + newLine

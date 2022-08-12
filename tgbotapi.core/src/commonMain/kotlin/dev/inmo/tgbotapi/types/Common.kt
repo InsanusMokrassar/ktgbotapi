@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
+import kotlinx.serialization.Serializable
+import kotlin.jvm.JvmInline
 
 typealias Identifier = Long
 typealias MessageIdentifier = Long
@@ -28,6 +30,11 @@ typealias GooglePlaceId = String
 typealias GooglePlaceType = String
 typealias MembersLimit = Int
 typealias WebAppQueryId = String
+@Serializable
+@JvmInline
+value class CustomEmojiId(
+    val string: String
+)
 
 typealias Seconds = Int
 typealias MilliSeconds = Long

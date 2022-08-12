@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message
 
+import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
 import kotlinx.serialization.Serializable
@@ -11,7 +12,8 @@ internal data class RawMessageEntity(
     val length: Int,
     val url: String? = null,
     val user: User? = null,
-    val language: String? = null
+    val language: String? = null,
+    val custom_emoji_id: CustomEmojiId? = null
 ) {
     internal val range by lazy {
         offset until (offset + length)
@@ -50,6 +52,7 @@ internal fun RawMessageEntity.asTextSource(
         "underline" -> UnderlineTextSource(sourceSubstring, subPartsWithRegulars)
         "strikethrough" -> StrikethroughTextSource(sourceSubstring, subPartsWithRegulars)
         "spoiler" -> SpoilerTextSource(sourceSubstring, subPartsWithRegulars)
+        "custom_emoji" -> CustomEmojiTextSource(sourceSubstring, custom_emoji_id ?: error("For custom emoji custom_emoji_id should exists"), subPartsWithRegulars)
         else -> RegularTextSource(sourceSubstring)
     }
 }
@@ -158,7 +161,8 @@ internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEn
             is UnderlineTextSource -> RawMessageEntity("underline", offset, length)
             is StrikethroughTextSource -> RawMessageEntity("strikethrough", offset, length)
             is SpoilerTextSource -> RawMessageEntity("spoiler", offset, length)
-            else -> null
+            is CustomEmojiTextSource -> RawMessageEntity("custom_emoji", offset, length)
+            is RegularTextSource -> null
         }
     ) + if (this is MultilevelTextSource) {
         subsources.toRawMessageEntities(offset)

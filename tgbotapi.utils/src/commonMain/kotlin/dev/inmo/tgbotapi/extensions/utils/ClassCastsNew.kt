@@ -295,6 +295,7 @@ import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CashTagTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CodeTextSource
+import dev.inmo.tgbotapi.types.message.textsources.CustomEmojiTextSource
 import dev.inmo.tgbotapi.types.message.textsources.EMailTextSource
 import dev.inmo.tgbotapi.types.message.textsources.HashTagTextSource
 import dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
@@ -3426,6 +3427,15 @@ public inline fun TextSource.codeTextSourceOrThrow(): CodeTextSource = this as
 
 public inline fun <T> TextSource.ifCodeTextSource(block: (CodeTextSource) -> T): T? =
     codeTextSourceOrNull() ?.let(block)
+
+public inline fun TextSource.customEmojiTextSourceOrNull(): CustomEmojiTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.CustomEmojiTextSource
+
+public inline fun TextSource.customEmojiTextSourceOrThrow(): CustomEmojiTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.CustomEmojiTextSource
+
+public inline fun <T> TextSource.ifCustomEmojiTextSource(block: (CustomEmojiTextSource) -> T): T? =
+    customEmojiTextSourceOrNull() ?.let(block)
 
 public inline fun TextSource.eMailTextSourceOrNull(): EMailTextSource? = this as?
     dev.inmo.tgbotapi.types.message.textsources.EMailTextSource

@@ -2,6 +2,9 @@
 
 ## 3.1.0
 
+* `Core`:
+  * Add support of `custom emoji`s
+
 ## 3.0.2
 
 **ALL OLD DEPRECATIONS HAVE BEEN REMOVED**
