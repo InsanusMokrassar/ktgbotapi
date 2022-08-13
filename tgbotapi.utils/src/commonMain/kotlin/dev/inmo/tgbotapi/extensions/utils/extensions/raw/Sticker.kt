@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions.raw
 
+import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.FileId
-import dev.inmo.tgbotapi.types.FileUniqueId
-import dev.inmo.tgbotapi.types.StickerSetName
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 
@@ -17,8 +17,10 @@ inline val Sticker.is_video: Boolean
 inline val Sticker.set_name: StickerSetName?
     get() = stickerSetName
 inline val Sticker.mask_position: MaskPosition?
-    get() = maskPosition
+    get() = maskStickerOrNull() ?.maskPosition
 inline val Sticker.file_size: Long?
     get() = fileSize
 inline val Sticker.premium_animation: File?
-    get() = premiumAnimationFile
+    get() = regularStickerOrNull() ?.premiumAnimationFile
+inline val Sticker.custom_emoji_id: CustomEmojiId?
+    get() = customEmojiStickerOrNull() ?.customEmojiId

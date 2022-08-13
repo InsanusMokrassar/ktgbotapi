@@ -21,6 +21,7 @@ private val baseSerializers: Map<String, KSerializer<out TextSource>> = mapOf(
     "hashtag" to HashTagTextSource.serializer(),
     "cashtag" to CashTagTextSource.serializer(),
     "spoiler" to SpoilerTextSource.serializer(),
+    "custom_emoji" to CustomEmojiTextSource.serializer(),
 )
 
 object TextSourceSerializer : TypedSerializer<TextSource>(TextSource::class, baseSerializers) {

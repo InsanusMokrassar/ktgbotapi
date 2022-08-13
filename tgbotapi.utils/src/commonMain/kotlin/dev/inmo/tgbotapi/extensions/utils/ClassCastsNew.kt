@@ -167,18 +167,30 @@ import dev.inmo.tgbotapi.types.dice.SlotMachineDiceAnimationType
 import dev.inmo.tgbotapi.types.files.AnimatedSticker
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.AudioFile
+import dev.inmo.tgbotapi.types.files.CustomEmojiAnimatedSticker
+import dev.inmo.tgbotapi.types.files.CustomEmojiSimpleSticker
+import dev.inmo.tgbotapi.types.files.CustomEmojiSticker
+import dev.inmo.tgbotapi.types.files.CustomEmojiVideoSticker
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.File
+import dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
+import dev.inmo.tgbotapi.types.files.MaskSimpleSticker
+import dev.inmo.tgbotapi.types.files.MaskSticker
+import dev.inmo.tgbotapi.types.files.MaskVideoSticker
 import dev.inmo.tgbotapi.types.files.MimedMediaFile
 import dev.inmo.tgbotapi.types.files.PassportFile
 import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.types.files.PhotoSize
 import dev.inmo.tgbotapi.types.files.PlayableMediaFile
-import dev.inmo.tgbotapi.types.files.SimpleSticker
+import dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
+import dev.inmo.tgbotapi.types.files.RegularSimpleSticker
+import dev.inmo.tgbotapi.types.files.RegularSticker
+import dev.inmo.tgbotapi.types.files.RegularVideoSticker
 import dev.inmo.tgbotapi.types.files.SizedMediaFile
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.ThumbedMediaFile
+import dev.inmo.tgbotapi.types.files.UnknownSticker
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.files.VideoSticker
@@ -295,6 +307,7 @@ import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CashTagTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CodeTextSource
+import dev.inmo.tgbotapi.types.message.textsources.CustomEmojiTextSource
 import dev.inmo.tgbotapi.types.message.textsources.EMailTextSource
 import dev.inmo.tgbotapi.types.message.textsources.HashTagTextSource
 import dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
@@ -2266,14 +2279,14 @@ public inline fun TelegramMediaFile.stickerOrThrow(): Sticker = this as
 public inline fun <T> TelegramMediaFile.ifSticker(block: (Sticker) -> T): T? = stickerOrNull()
     ?.let(block)
 
-public inline fun TelegramMediaFile.simpleStickerOrNull(): SimpleSticker? = this as?
-    dev.inmo.tgbotapi.types.files.SimpleSticker
+public inline fun TelegramMediaFile.videoStickerOrNull(): VideoSticker? = this as?
+    dev.inmo.tgbotapi.types.files.VideoSticker
 
-public inline fun TelegramMediaFile.simpleStickerOrThrow(): SimpleSticker = this as
-    dev.inmo.tgbotapi.types.files.SimpleSticker
+public inline fun TelegramMediaFile.videoStickerOrThrow(): VideoSticker = this as
+    dev.inmo.tgbotapi.types.files.VideoSticker
 
-public inline fun <T> TelegramMediaFile.ifSimpleSticker(block: (SimpleSticker) -> T): T? =
-    simpleStickerOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifVideoSticker(block: (VideoSticker) -> T): T? =
+    videoStickerOrNull() ?.let(block)
 
 public inline fun TelegramMediaFile.animatedStickerOrNull(): AnimatedSticker? = this as?
     dev.inmo.tgbotapi.types.files.AnimatedSticker
@@ -2284,14 +2297,126 @@ public inline fun TelegramMediaFile.animatedStickerOrThrow(): AnimatedSticker = 
 public inline fun <T> TelegramMediaFile.ifAnimatedSticker(block: (AnimatedSticker) -> T): T? =
     animatedStickerOrNull() ?.let(block)
 
-public inline fun TelegramMediaFile.videoStickerOrNull(): VideoSticker? = this as?
-    dev.inmo.tgbotapi.types.files.VideoSticker
+public inline fun TelegramMediaFile.regularStickerOrNull(): RegularSticker? = this as?
+    dev.inmo.tgbotapi.types.files.RegularSticker
 
-public inline fun TelegramMediaFile.videoStickerOrThrow(): VideoSticker = this as
-    dev.inmo.tgbotapi.types.files.VideoSticker
+public inline fun TelegramMediaFile.regularStickerOrThrow(): RegularSticker = this as
+    dev.inmo.tgbotapi.types.files.RegularSticker
 
-public inline fun <T> TelegramMediaFile.ifVideoSticker(block: (VideoSticker) -> T): T? =
-    videoStickerOrNull() ?.let(block)
+public inline fun <T> TelegramMediaFile.ifRegularSticker(block: (RegularSticker) -> T): T? =
+    regularStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.regularSimpleStickerOrNull(): RegularSimpleSticker? = this as?
+    dev.inmo.tgbotapi.types.files.RegularSimpleSticker
+
+public inline fun TelegramMediaFile.regularSimpleStickerOrThrow(): RegularSimpleSticker = this as
+    dev.inmo.tgbotapi.types.files.RegularSimpleSticker
+
+public inline fun <T> TelegramMediaFile.ifRegularSimpleSticker(block: (RegularSimpleSticker) -> T):
+    T? = regularSimpleStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.regularAnimatedStickerOrNull(): RegularAnimatedSticker? = this
+    as? dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
+
+public inline fun TelegramMediaFile.regularAnimatedStickerOrThrow(): RegularAnimatedSticker = this
+    as dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
+
+public inline fun <T>
+    TelegramMediaFile.ifRegularAnimatedSticker(block: (RegularAnimatedSticker) -> T): T? =
+    regularAnimatedStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.regularVideoStickerOrNull(): RegularVideoSticker? = this as?
+    dev.inmo.tgbotapi.types.files.RegularVideoSticker
+
+public inline fun TelegramMediaFile.regularVideoStickerOrThrow(): RegularVideoSticker = this as
+    dev.inmo.tgbotapi.types.files.RegularVideoSticker
+
+public inline fun <T> TelegramMediaFile.ifRegularVideoSticker(block: (RegularVideoSticker) -> T): T?
+    = regularVideoStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.maskStickerOrNull(): MaskSticker? = this as?
+    dev.inmo.tgbotapi.types.files.MaskSticker
+
+public inline fun TelegramMediaFile.maskStickerOrThrow(): MaskSticker = this as
+    dev.inmo.tgbotapi.types.files.MaskSticker
+
+public inline fun <T> TelegramMediaFile.ifMaskSticker(block: (MaskSticker) -> T): T? =
+    maskStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.maskSimpleStickerOrNull(): MaskSimpleSticker? = this as?
+    dev.inmo.tgbotapi.types.files.MaskSimpleSticker
+
+public inline fun TelegramMediaFile.maskSimpleStickerOrThrow(): MaskSimpleSticker = this as
+    dev.inmo.tgbotapi.types.files.MaskSimpleSticker
+
+public inline fun <T> TelegramMediaFile.ifMaskSimpleSticker(block: (MaskSimpleSticker) -> T): T? =
+    maskSimpleStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.maskAnimatedStickerOrNull(): MaskAnimatedSticker? = this as?
+    dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
+
+public inline fun TelegramMediaFile.maskAnimatedStickerOrThrow(): MaskAnimatedSticker = this as
+    dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
+
+public inline fun <T> TelegramMediaFile.ifMaskAnimatedSticker(block: (MaskAnimatedSticker) -> T): T?
+    = maskAnimatedStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.maskVideoStickerOrNull(): MaskVideoSticker? = this as?
+    dev.inmo.tgbotapi.types.files.MaskVideoSticker
+
+public inline fun TelegramMediaFile.maskVideoStickerOrThrow(): MaskVideoSticker = this as
+    dev.inmo.tgbotapi.types.files.MaskVideoSticker
+
+public inline fun <T> TelegramMediaFile.ifMaskVideoSticker(block: (MaskVideoSticker) -> T): T? =
+    maskVideoStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.customEmojiStickerOrNull(): CustomEmojiSticker? = this as?
+    dev.inmo.tgbotapi.types.files.CustomEmojiSticker
+
+public inline fun TelegramMediaFile.customEmojiStickerOrThrow(): CustomEmojiSticker = this as
+    dev.inmo.tgbotapi.types.files.CustomEmojiSticker
+
+public inline fun <T> TelegramMediaFile.ifCustomEmojiSticker(block: (CustomEmojiSticker) -> T): T? =
+    customEmojiStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.customEmojiSimpleStickerOrNull(): CustomEmojiSimpleSticker? =
+    this as? dev.inmo.tgbotapi.types.files.CustomEmojiSimpleSticker
+
+public inline fun TelegramMediaFile.customEmojiSimpleStickerOrThrow(): CustomEmojiSimpleSticker =
+    this as dev.inmo.tgbotapi.types.files.CustomEmojiSimpleSticker
+
+public inline fun <T>
+    TelegramMediaFile.ifCustomEmojiSimpleSticker(block: (CustomEmojiSimpleSticker) -> T): T? =
+    customEmojiSimpleStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.customEmojiAnimatedStickerOrNull(): CustomEmojiAnimatedSticker?
+    = this as? dev.inmo.tgbotapi.types.files.CustomEmojiAnimatedSticker
+
+public inline fun TelegramMediaFile.customEmojiAnimatedStickerOrThrow(): CustomEmojiAnimatedSticker
+    = this as dev.inmo.tgbotapi.types.files.CustomEmojiAnimatedSticker
+
+public inline fun <T>
+    TelegramMediaFile.ifCustomEmojiAnimatedSticker(block: (CustomEmojiAnimatedSticker) -> T): T? =
+    customEmojiAnimatedStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.customEmojiVideoStickerOrNull(): CustomEmojiVideoSticker? = this
+    as? dev.inmo.tgbotapi.types.files.CustomEmojiVideoSticker
+
+public inline fun TelegramMediaFile.customEmojiVideoStickerOrThrow(): CustomEmojiVideoSticker = this
+    as dev.inmo.tgbotapi.types.files.CustomEmojiVideoSticker
+
+public inline fun <T>
+    TelegramMediaFile.ifCustomEmojiVideoSticker(block: (CustomEmojiVideoSticker) -> T): T? =
+    customEmojiVideoStickerOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.unknownStickerOrNull(): UnknownSticker? = this as?
+    dev.inmo.tgbotapi.types.files.UnknownSticker
+
+public inline fun TelegramMediaFile.unknownStickerOrThrow(): UnknownSticker = this as
+    dev.inmo.tgbotapi.types.files.UnknownSticker
+
+public inline fun <T> TelegramMediaFile.ifUnknownSticker(block: (UnknownSticker) -> T): T? =
+    unknownStickerOrNull() ?.let(block)
 
 public inline fun TelegramMediaFile.thumbedMediaFileOrNull(): ThumbedMediaFile? = this as?
     dev.inmo.tgbotapi.types.files.ThumbedMediaFile
@@ -3426,6 +3551,15 @@ public inline fun TextSource.codeTextSourceOrThrow(): CodeTextSource = this as
 
 public inline fun <T> TextSource.ifCodeTextSource(block: (CodeTextSource) -> T): T? =
     codeTextSourceOrNull() ?.let(block)
+
+public inline fun TextSource.customEmojiTextSourceOrNull(): CustomEmojiTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.CustomEmojiTextSource
+
+public inline fun TextSource.customEmojiTextSourceOrThrow(): CustomEmojiTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.CustomEmojiTextSource
+
+public inline fun <T> TextSource.ifCustomEmojiTextSource(block: (CustomEmojiTextSource) -> T): T? =
+    customEmojiTextSourceOrNull() ?.let(block)
 
 public inline fun TextSource.eMailTextSourceOrNull(): EMailTextSource? = this as?
     dev.inmo.tgbotapi.types.message.textsources.EMailTextSource

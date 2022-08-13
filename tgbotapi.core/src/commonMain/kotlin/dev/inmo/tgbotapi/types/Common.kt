@@ -1,6 +1,13 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlin.jvm.JvmInline
 
 typealias Identifier = Long
 typealias MessageIdentifier = Long
@@ -28,6 +35,11 @@ typealias GooglePlaceId = String
 typealias GooglePlaceType = String
 typealias MembersLimit = Int
 typealias WebAppQueryId = String
+@Serializable
+@JvmInline
+value class CustomEmojiId(
+    val string: String
+)
 
 typealias Seconds = Int
 typealias MilliSeconds = Long
@@ -36,6 +48,38 @@ typealias UnixTimeStamp = LongSeconds
 
 typealias Meters = Float
 typealias Degrees = Int
+
+@Serializable(StickerType.Serializer::class)
+sealed interface StickerType {
+    val type: String
+
+    @Serializable
+    object Regular : StickerType { override val type: String = "regular" }
+    @Serializable
+    object Mask : StickerType { override val type: String = "mask" }
+    @Serializable
+    object CustomEmoji : StickerType { override val type: String = "custom_emoji" }
+    @Serializable
+    data class Unknown(override val type: String = "custom_emoji") : StickerType
+
+    object Serializer : KSerializer<StickerType> {
+        override val descriptor: SerialDescriptor = String.serializer().descriptor
+
+        override fun deserialize(decoder: Decoder): StickerType {
+            return when (val type = decoder.decodeString()) {
+                Regular.type -> Regular
+                Mask.type -> Mask
+                CustomEmoji.type -> CustomEmoji
+                else -> Unknown(type)
+            }
+        }
+
+        override fun serialize(encoder: Encoder, value: StickerType) {
+            encoder.encodeString(value.type)
+        }
+
+    }
+}
 
 val degreesLimit = 1 .. 360
 val horizontalAccuracyLimit = 0F .. 1500F
@@ -126,6 +170,8 @@ const val supportInlineQueriesField = "supports_inline_queries"
 const val textEntitiesField = "text_entities"
 const val entitiesField = "entities"
 const val stickerSetNameField = "set_name"
+const val customEmojiIdField = "custom_emoji_id"
+const val customEmojiIdsField = "custom_emoji_ids"
 const val premiumAnimationField = "premium_animation"
 const val stickerSetNameFullField = "sticker_set_name"
 const val slowModeDelayField = "slow_mode_delay"
@@ -290,6 +336,7 @@ const val tgsStickerField = "tgs_sticker"
 const val webmStickerField = "webm_sticker"
 const val oldChatMemberField = "old_chat_member"
 const val newChatMemberField = "new_chat_member"
+const val stickerTypeField = "sticker_type"
 
 const val okField = "ok"
 const val captionField = "caption"

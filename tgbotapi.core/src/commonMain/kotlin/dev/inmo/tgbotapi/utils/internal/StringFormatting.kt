@@ -119,6 +119,10 @@ internal fun String.commandMarkdown(): String = command(String::toMarkdown)
 internal fun String.commandMarkdownV2(): String = command(String::escapeMarkdownV2Common)
 internal fun String.commandHTML(): String = command(String::toHtml)
 
+internal fun String.customEmojiMarkdown(): String = toMarkdown()
+internal fun String.customEmojiMarkdownV2(): String = escapeMarkdownV2Common()
+internal fun String.customEmojiHTML(): String = toHtml()
+
 internal fun String.regularMarkdown(): String = toMarkdown()
 internal fun String.regularMarkdownV2(): String = escapeMarkdownV2Common()
 internal fun String.regularHtml(): String = toHtml()
