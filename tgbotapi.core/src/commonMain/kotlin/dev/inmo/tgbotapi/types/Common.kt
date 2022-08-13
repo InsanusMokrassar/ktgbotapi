@@ -59,6 +59,8 @@ sealed interface StickerType {
     object Mask : StickerType { override val type: String = "mask" }
     @Serializable
     object CustomEmoji : StickerType { override val type: String = "custom_emoji" }
+    @Serializable
+    data class Unknown(override val type: String = "custom_emoji") : StickerType
 
     object Serializer : KSerializer<StickerType> {
         override val descriptor: SerialDescriptor = String.serializer().descriptor
@@ -68,7 +70,7 @@ sealed interface StickerType {
                 Regular.type -> Regular
                 Mask.type -> Regular
                 CustomEmoji.type -> Regular
-                else -> error("Unknown type of emoji $type")
+                else -> Unknown(type)
             }
         }
 
