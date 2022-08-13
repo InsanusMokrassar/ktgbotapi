@@ -1,4 +1,4 @@
-# TelegramBotAPI [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi) [![Supported version](https://img.shields.io/badge/Telegram%20Bot%20API-6.1-blue)](https://core.telegram.org/bots/api-changelog#june-20-2022)
+# TelegramBotAPI [![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/dev.inmo/tgbotapi) [![Supported version](https://img.shields.io/badge/Telegram%20Bot%20API-6.2-blue)](https://core.telegram.org/bots/api-changelog#august-12-2022)
 
 | Docs | [![KDocs](https://img.shields.io/static/v1?label=Dokka&message=KDocs&color=blue&logo=kotlin)](https://tgbotapi.inmo.dev/index.html) [![Mini tutorial](https://img.shields.io/static/v1?label=Bookstack&message=Tutorial&color=blue&logo=bookstack)](https://bookstack.inmo.dev/books/telegrambotapi/chapter/introduction-tutorial) |
 |:---:|:---:|

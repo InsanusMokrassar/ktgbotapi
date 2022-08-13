@@ -2,8 +2,11 @@
 
 ## 3.1.0
 
+**This update contains including of Bot API 6.2**
+
 * `Core`:
   * Add support of `custom emoji`s
+  * Add support of `sticker_type`
 
 ## 3.0.2
 
