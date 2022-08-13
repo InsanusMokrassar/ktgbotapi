@@ -8,26 +8,8 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import kotlinx.serialization.*
 
-fun CreateNewAnimatedStickerSet(
-    userId: UserId,
-    name: String,
-    title: String,
-    sticker: InputFile,
-    emojis: String,
-    containsMasks: Boolean? = null,
-    maskPosition: MaskPosition? = null
-): Request<Boolean> {
-    val data = CreateNewAnimatedStickerSet(userId, name, title, emojis, sticker as? FileId, containsMasks, maskPosition)
-    return when (sticker) {
-        is MultipartFile -> CommonMultipartFileRequest(
-            data,
-            mapOf(tgsStickerField to sticker)
-        )
-        is FileId -> data
-    }
-}
-
 @Serializable
+@Deprecated("Use CreateNewStickerSet class instead")
 data class CreateNewAnimatedStickerSet internal constructor(
     @SerialName(userIdField)
     override val userId: UserId,
