@@ -68,8 +68,8 @@ sealed interface StickerType {
         override fun deserialize(decoder: Decoder): StickerType {
             return when (val type = decoder.decodeString()) {
                 Regular.type -> Regular
-                Mask.type -> Regular
-                CustomEmoji.type -> Regular
+                Mask.type -> Mask
+                CustomEmoji.type -> CustomEmoji
                 else -> Unknown(type)
             }
         }

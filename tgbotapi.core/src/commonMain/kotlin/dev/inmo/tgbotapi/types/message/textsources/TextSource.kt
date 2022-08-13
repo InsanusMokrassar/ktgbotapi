@@ -36,7 +36,7 @@ sealed interface MultilevelTextSource : TextSource {
     val subsources: List<TextSource>
 }
 
-fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {
+fun List<TextSource>.splitForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> {
     if (isEmpty()) {
         return emptyList()
     }
@@ -70,13 +70,27 @@ fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = n
  * This method will prepare [TextSource]s list for messages. Remember, that first part will be separated with
  * [captionLength] and all others with
  */
-fun List<TextSource>.separateForCaption(): List<List<TextSource>> {
-    val captionPart = separateForMessage(captionLength, 1).first()
-    return listOf(captionPart) + minus(captionPart).separateForMessage(textLength)
+fun List<TextSource>.splitForCaption(): List<List<TextSource>> {
+    val captionPart = splitForMessage(captionLength, 1).first()
+    return listOf(captionPart) + minus(captionPart).splitForMessage(textLength)
 }
 
 /**
  * This method will prepare [TextSource]s list for messages with [textLength]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun List<TextSource>.separateForText(): List<List<TextSource>> = separateForMessage(textLength)
+inline fun List<TextSource>.splitForText(): List<List<TextSource>> = splitForMessage(textLength)
+
+fun List<TextSource>.separateForMessage(limit: IntRange, numberOfParts: Int? = null): List<List<TextSource>> = splitForMessage(limit, numberOfParts)
+
+/**
+ * This method will prepare [TextSource]s list for messages. Remember, that first part will be separated with
+ * [captionLength] and all others with
+ */
+fun List<TextSource>.separateForCaption(): List<List<TextSource>> = splitForCaption()
+
+/**
+ * This method will prepare [TextSource]s list for messages with [textLength]
+ */
+@Suppress("NOTHING_TO_INLINE")
+inline fun List<TextSource>.separateForText(): List<List<TextSource>> = splitForText()

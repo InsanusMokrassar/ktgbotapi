@@ -161,7 +161,7 @@ internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEn
             is UnderlineTextSource -> RawMessageEntity("underline", offset, length)
             is StrikethroughTextSource -> RawMessageEntity("strikethrough", offset, length)
             is SpoilerTextSource -> RawMessageEntity("spoiler", offset, length)
-            is CustomEmojiTextSource -> RawMessageEntity("custom_emoji", offset, length)
+            is CustomEmojiTextSource -> RawMessageEntity("custom_emoji", offset, length, custom_emoji_id = customEmojiId)
             is RegularTextSource -> null
         }
     ) + if (this is MultilevelTextSource) {
