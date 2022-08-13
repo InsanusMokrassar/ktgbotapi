@@ -5,16 +5,23 @@ import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.textsources.link
 
+
 fun makeUsernameLink(username: String) = "$internalLinkBeginning/$username"
 fun makeUsernameDeepLinkPrefix(username: String) = "${makeUsernameLink(username)}?start="
+fun makeUsernameStartattachPrefix(username: String) = "$internalLinkBeginning/$username?startattach"
+fun makeUsernameStartattachLink(username: String, data: String? = null) = "${makeUsernameStartattachPrefix(username)}${data?.let { "=$it" } ?: ""}"
 inline val Username.link
     get() = makeUsernameLink(usernameWithoutAt)
 inline val Username.deepLinkPrefix
     get() = makeUsernameDeepLinkPrefix(usernameWithoutAt)
+inline val Username.startattachPrefix
+    get() = makeUsernameStartattachPrefix(usernameWithoutAt)
 inline fun makeLink(username: Username) = username.link
 inline fun makeTelegramDeepLink(username: String, startParameter: String) = "${makeUsernameDeepLinkPrefix(username)}$startParameter"
+inline fun makeTelegramStartattach(username: String, data: String? = null) = makeUsernameStartattachLink(username, data)
 inline fun makeDeepLink(username: Username, startParameter: String) = "${username.deepLinkPrefix}$startParameter"
 inline fun makeTelegramDeepLink(username: Username, startParameter: String) = makeDeepLink(username, startParameter)
+inline fun makeTelegramStartattach(username: Username, data: String? = null) = makeTelegramStartattach(username.username, data)
 
 fun makeLinkToMessage(
     username: String,
