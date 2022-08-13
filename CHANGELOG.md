@@ -4,6 +4,9 @@
 
 **This update contains including of Bot API 6.2**
 
+* `Versions`:
+    * `Ktor`: `2.0.3` -> `2.1.0`
+    * `MicroUtils`: `0.12.0` -> `0.12.1`
 * `Core`:
   * Add support of `custom emoji`s
   * Add support of `sticker_type`
