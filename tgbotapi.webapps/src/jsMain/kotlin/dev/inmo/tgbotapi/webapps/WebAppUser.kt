@@ -17,9 +17,13 @@ external interface WebAppUser {
     val username: String?
     @JsName(languageCodeField)
     val languageCode: String?
+    val is_premium: Boolean?
     @JsName(photoUrlField)
     val photoUrl: String?
 }
+
+val WebAppUser.isPremium
+    get() = is_premium == true
 
 fun WebAppUser.asUser() = if (isBot == true) {
     CommonBot(
@@ -34,6 +38,7 @@ fun WebAppUser.asUser() = if (isBot == true) {
         firstName,
         lastName ?: "",
         username ?.let(::Username),
-        languageCode ?.let(::IetfLanguageCode)
+        languageCode ?.let(::IetfLanguageCode),
+        isPremium = isPremium
     )
 }

@@ -7,4 +7,5 @@ sealed class EventType(val typeName: String) {
     object BackButtonClicked : EventType("backButtonClicked")
     object SettingsButtonClicked : EventType("settingsButtonClicked")
     object InvoiceClosed : EventType("invoiceClosed")
+    object PopupClosed : EventType("popupClosed")
 }

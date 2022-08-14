@@ -19,6 +19,7 @@ sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
 sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChat {
     val bio: String
     val hasPrivateForwards: Boolean
+    val hasRestrictedVoiceAndVideoMessages: Boolean
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards

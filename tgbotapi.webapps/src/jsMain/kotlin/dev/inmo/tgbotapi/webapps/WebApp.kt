@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.webapps
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
+import dev.inmo.tgbotapi.webapps.popup.*
 
 external class WebApp {
     val version: String
@@ -24,6 +25,15 @@ external class WebApp {
     val viewportHeight: Float
     val viewportStableHeight: Float
 
+
+    val isClosingConfirmationEnabled: Boolean
+    fun enableClosingConfirmation()
+    fun disableClosingConfirmation()
+
+    fun showPopup(params: PopupParams, callback: ClosePopupCallback? = definedExternally)
+    fun showAlert(message: String, callback: AlertCallback? = definedExternally)
+    fun showConfirm(message: String, callback: ConfirmCallback? = definedExternally)
+
     @JsName("MainButton")
     val mainButton: MainButton
 
@@ -38,6 +48,8 @@ external class WebApp {
     internal fun onEventWithViewportChangedData(type: String, callback: (ViewportChangedData) -> Unit)
     @JsName("onEvent")
     internal fun onEventWithInvoiceClosedInfo(type: String, callback: (InvoiceClosedInfo) -> Unit)
+    @JsName("onEvent")
+    internal fun onEventWithPopupClosedInfo(type: String, callback: (String?) -> Unit)
 
     fun offEvent(type: String, callback: () -> Unit)
     @JsName("offEvent")
@@ -103,6 +115,18 @@ fun WebApp.onEvent(type: EventType.InvoiceClosed, eventHandler: InvoiceClosedEve
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
+fun WebApp.onEvent(type: EventType.PopupClosed, eventHandler: PopupClosedEventHandler) = { it: String? ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it)
+}.also {
+    onEventWithPopupClosedInfo(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
 fun WebApp.onThemeChanged(eventHandler: EventHandler) = onEvent(EventType.ThemeChanged, eventHandler)
 /**
  * @return The callback which should be used in case you want to turn off events handling
@@ -124,8 +148,55 @@ fun WebApp.onSettingsButtonClicked(eventHandler: EventHandler) = onEvent(EventTy
  * @return The callback which should be used in case you want to turn off events handling
  */
 fun WebApp.onInvoiceClosed(eventHandler: InvoiceClosedEventHandler) = onEvent(EventType.InvoiceClosed, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onPopupClosed(eventHandler: PopupClosedEventHandler) = onEvent(EventType.PopupClosed, eventHandler)
 
 fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
     initData,
     initDataUnsafe.hash
 )
+
+fun WebApp.showPopup(
+    message: String,
+    title: String?,
+    buttons: Array<PopupButton>,
+    callback: ClosePopupCallback? = null
+) = showPopup(
+    PopupParams(
+        message,
+        title,
+        buttons
+    ),
+    callback
+)
+
+fun WebApp.showPopup(
+    message: String,
+    title: String?,
+    firstButton: PopupButton,
+    vararg otherButtons: PopupButton,
+    callback: ClosePopupCallback? = null
+) = showPopup(
+    PopupParams(
+        message,
+        title,
+        arrayOf(firstButton, *otherButtons)
+    ),
+    callback
+)
+
+var WebApp.requireClosingConfirmation
+    get() = isClosingConfirmationEnabled
+    set(value) {
+        if (value) {
+            enableClosingConfirmation()
+        } else {
+            disableClosingConfirmation()
+        }
+    }
+
+fun WebApp.toggleClosingConfirmation() {
+    requireClosingConfirmation = !requireClosingConfirmation
+}
