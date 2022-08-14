@@ -64,7 +64,7 @@ data class ExtendedPrivateChatImpl(
     @SerialName(hasPrivateForwardsField)
     override val hasPrivateForwards: Boolean = false,
     @SerialName(hasRestrictedVoiceAndVideoMessagesField)
-    override val hasRestrictedVoiceAndVideoMessages: Boolean
+    override val hasRestrictedVoiceAndVideoMessages: Boolean = false
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
