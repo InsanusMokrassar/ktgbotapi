@@ -38,6 +38,7 @@ fun WebAppUser.asUser() = if (isBot == true) {
         firstName,
         lastName ?: "",
         username ?.let(::Username),
-        languageCode ?.let(::IetfLanguageCode)
+        languageCode ?.let(::IetfLanguageCode),
+        isPremium = isPremium
     )
 }
