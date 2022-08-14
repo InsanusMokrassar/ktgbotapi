@@ -2,6 +2,9 @@
 
 ## 3.1.1
 
+* `Common`:
+    * Complete Bot API 6.2 implementation
+
 ## 3.1.0
 
 **This update contains including of Bot API 6.2**
