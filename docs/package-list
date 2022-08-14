@@ -6638,12 +6638,14 @@ $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChat///PointingToDec
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChat/allowCreateUserIdLink/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat/allow-create-user-id-link.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChat/bio/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat/bio.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChat/hasPrivateForwards/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat/has-private-forwards.html
+$dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChat/hasRestrictedVoiceAndVideoMessages/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat/has-restricted-voice-and-video-messages.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/index.html
-$dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/ExtendedPrivateChatImpl/#dev.inmo.tgbotapi.types.ChatId#dev.inmo.tgbotapi.types.ChatPhoto?#dev.inmo.tgbotapi.types.Username?#kotlin.String#kotlin.String#kotlin.String#kotlin.Boolean/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/-extended-private-chat-impl.html
+$dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/ExtendedPrivateChatImpl/#dev.inmo.tgbotapi.types.ChatId#dev.inmo.tgbotapi.types.ChatPhoto?#dev.inmo.tgbotapi.types.Username?#kotlin.String#kotlin.String#kotlin.String#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/-extended-private-chat-impl.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/bio/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/bio.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/chatPhoto/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/chat-photo.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/firstName/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/first-name.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/hasPrivateForwards/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/has-private-forwards.html
+$dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/hasRestrictedVoiceAndVideoMessages/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/has-restricted-voice-and-video-messages.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/id/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/id.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/lastName/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/last-name.html
 $dokka.location:dev.inmo.tgbotapi.types.chat/ExtendedPrivateChatImpl/username/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.chat/-extended-private-chat-impl/username.html
@@ -8709,6 +8711,7 @@ $dokka.location:dev.inmo.tgbotapi.types//googlePlaceIdField/#/PointingToDeclarat
 $dokka.location:dev.inmo.tgbotapi.types//googlePlaceTypeField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/google-place-type-field.html
 $dokka.location:dev.inmo.tgbotapi.types//hasCustomCertificateField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/has-custom-certificate-field.html
 $dokka.location:dev.inmo.tgbotapi.types//hasPrivateForwardsField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/has-private-forwards-field.html
+$dokka.location:dev.inmo.tgbotapi.types//hasRestrictedVoiceAndVideoMessagesField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/has-restricted-voice-and-video-messages-field.html
 $dokka.location:dev.inmo.tgbotapi.types//hashField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/hash-field.html
 $dokka.location:dev.inmo.tgbotapi.types//headingField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/heading-field.html
 $dokka.location:dev.inmo.tgbotapi.types//heightField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/height-field.html
@@ -9345,6 +9348,33 @@ $dokka.location:dev.inmo.tgbotapi.webapps.invoice/InvoiceStatus.Unknown/Unknown/
 $dokka.location:dev.inmo.tgbotapi.webapps.invoice/InvoiceStatus.Unknown/name/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.invoice/-invoice-status/-unknown/name.html
 $dokka.location:dev.inmo.tgbotapi.webapps.invoice/InvoiceStatus///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.invoice/-invoice-status/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps.invoice/InvoiceStatus/name/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.invoice/-invoice-status/name.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup////PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/index.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//CancelPopupButton/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-cancel-popup-button.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//ClosePopupButton/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-close-popup-button.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//DefaultPopupButton/#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-default-popup-button.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//DestructivePopupButton/#kotlin.String#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-destructive-popup-button.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//OkPopupButton/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-ok-popup-button.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//PopupButton/#kotlin.String#dev.inmo.tgbotapi.webapps.popup.PopupButtonType#kotlin.String?/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//PopupParams/#kotlin.String#dev.inmo.tgbotapi.webapps.popup.PopupButton#kotlin.Array[dev.inmo.tgbotapi.webapps.popup.PopupButton]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-params.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//PopupParams/#kotlin.String#kotlin.String#dev.inmo.tgbotapi.webapps.popup.PopupButton#kotlin.Array[dev.inmo.tgbotapi.webapps.popup.PopupButton]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-params.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup//PopupParams/#kotlin.String#kotlin.String?#kotlin.Array[dev.inmo.tgbotapi.webapps.popup.PopupButton]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-params.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButton///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button/index.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButton/id/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button/id.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButton/text/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button/text.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButton/type/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button/type.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType.Companion///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/-companion/index.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType.Companion/Cancel/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/-companion/-cancel.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType.Companion/Close/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/-companion/-close.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType.Companion/Default/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/-companion/-default.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType.Companion/Destructive/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/-companion/-destructive.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType.Companion/Ok/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/-companion/-ok.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/index.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType/PopupButtonType/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/-popup-button-type.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupButtonType/typeName/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-button-type/type-name.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupParams///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-params/index.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupParams/buttons/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-params/buttons.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupParams/message/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-params/message.html
+$dokka.location:dev.inmo.tgbotapi.webapps.popup/PopupParams/title/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps.popup/-popup-params/title.html
 $dokka.location:dev.inmo.tgbotapi.webapps////PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps//Telegram/org.w3c.dom.Window#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-telegram.html
 $dokka.location:dev.inmo.tgbotapi.webapps//answerWebAppQuery/dev.inmo.tgbotapi.bot.RequestsExecutor#dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/answer-web-app-query.html
@@ -9352,19 +9382,26 @@ $dokka.location:dev.inmo.tgbotapi.webapps//asUser/dev.inmo.tgbotapi.webapps.WebA
 $dokka.location:dev.inmo.tgbotapi.webapps//colorScheme/dev.inmo.tgbotapi.webapps.WebApp#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/color-scheme.html
 $dokka.location:dev.inmo.tgbotapi.webapps//handleResult/#kotlin.Function0[kotlin.String?]#kotlin.Function1[kotlin.String,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/handle-result.html
 $dokka.location:dev.inmo.tgbotapi.webapps//isInitDataSafe/dev.inmo.tgbotapi.webapps.WebApp#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/is-init-data-safe.html
+$dokka.location:dev.inmo.tgbotapi.webapps//isPremium/dev.inmo.tgbotapi.webapps.WebAppUser#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/is-premium.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onBackButtonClicked/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-back-button-clicked.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onClick/dev.inmo.tgbotapi.webapps.MainButton#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-click.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onEvent/dev.inmo.tgbotapi.webapps.WebApp#dev.inmo.tgbotapi.webapps.EventType#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-event.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onEvent/dev.inmo.tgbotapi.webapps.WebApp#dev.inmo.tgbotapi.webapps.EventType.InvoiceClosed#kotlin.Function2[dev.inmo.tgbotapi.webapps.WebApp,dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-event.html
+$dokka.location:dev.inmo.tgbotapi.webapps//onEvent/dev.inmo.tgbotapi.webapps.WebApp#dev.inmo.tgbotapi.webapps.EventType.PopupClosed#kotlin.Function2[dev.inmo.tgbotapi.webapps.WebApp,kotlin.String?,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-event.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onEvent/dev.inmo.tgbotapi.webapps.WebApp#dev.inmo.tgbotapi.webapps.EventType.ViewportChanged#kotlin.Function2[dev.inmo.tgbotapi.webapps.WebApp,dev.inmo.tgbotapi.webapps.ViewportChangedData,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-event.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onInvoiceClosed/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function2[dev.inmo.tgbotapi.webapps.WebApp,dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-invoice-closed.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onMainButtonClicked/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-main-button-clicked.html
+$dokka.location:dev.inmo.tgbotapi.webapps//onPopupClosed/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function2[dev.inmo.tgbotapi.webapps.WebApp,kotlin.String?,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-popup-closed.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onSettingsButtonClicked/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-settings-button-clicked.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onThemeChanged/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function1[dev.inmo.tgbotapi.webapps.WebApp,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-theme-changed.html
 $dokka.location:dev.inmo.tgbotapi.webapps//onViewportChanged/dev.inmo.tgbotapi.webapps.WebApp#kotlin.Function2[dev.inmo.tgbotapi.webapps.WebApp,dev.inmo.tgbotapi.webapps.ViewportChangedData,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/on-viewport-changed.html
+$dokka.location:dev.inmo.tgbotapi.webapps//requireClosingConfirmation/dev.inmo.tgbotapi.webapps.WebApp#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/require-closing-confirmation.html
 $dokka.location:dev.inmo.tgbotapi.webapps//sendDataOrWorkWithQueryId/#kotlin.Function0[kotlin.String?]#kotlin.Function1[kotlin.String,kotlin.Unit]/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/send-data-or-work-with-query-id.html
 $dokka.location:dev.inmo.tgbotapi.webapps//setParams/dev.inmo.tgbotapi.webapps.MainButton#dev.inmo.tgbotapi.webapps.MainButtonParams/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/set-params.html
+$dokka.location:dev.inmo.tgbotapi.webapps//showPopup/dev.inmo.tgbotapi.webapps.WebApp#kotlin.String#kotlin.String?#dev.inmo.tgbotapi.webapps.popup.PopupButton#kotlin.Array[dev.inmo.tgbotapi.webapps.popup.PopupButton]#kotlin.Function1[kotlin.String,kotlin.Unit]?/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/show-popup.html
+$dokka.location:dev.inmo.tgbotapi.webapps//showPopup/dev.inmo.tgbotapi.webapps.WebApp#kotlin.String#kotlin.String?#kotlin.Array[dev.inmo.tgbotapi.webapps.popup.PopupButton]#kotlin.Function1[kotlin.String,kotlin.Unit]?/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/show-popup.html
 $dokka.location:dev.inmo.tgbotapi.webapps//telegram/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/telegram.html
+$dokka.location:dev.inmo.tgbotapi.webapps//toggleClosingConfirmation/dev.inmo.tgbotapi.webapps.WebApp#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/toggle-closing-confirmation.html
 $dokka.location:dev.inmo.tgbotapi.webapps//webApp/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/web-app.html
 $dokka.location:dev.inmo.tgbotapi.webapps/BackButton///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-back-button/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps/BackButton/hide/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-back-button/hide.html
@@ -9390,6 +9427,7 @@ $dokka.location:dev.inmo.tgbotapi.webapps/ColorScheme///PointingToDeclaration/d
 $dokka.location:dev.inmo.tgbotapi.webapps/EventType.BackButtonClicked///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-event-type/-back-button-clicked/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps/EventType.InvoiceClosed///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-event-type/-invoice-closed/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps/EventType.MainButtonClicked///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-event-type/-main-button-clicked/index.html
+$dokka.location:dev.inmo.tgbotapi.webapps/EventType.PopupClosed///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-event-type/-popup-closed/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps/EventType.SettingsButtonClicked///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-event-type/-settings-button-clicked/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps/EventType.ThemeChanged///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-event-type/-theme-changed/index.html
 $dokka.location:dev.inmo.tgbotapi.webapps/EventType.ViewportChanged///PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-event-type/-viewport-changed/index.html
@@ -9442,11 +9480,14 @@ $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/backButton/#/PointingToDeclarat
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/backgroundColor/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/background-color.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/close/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/close.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/colorSchemeRaw/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/color-scheme-raw.html
+$dokka.location:dev.inmo.tgbotapi.webapps/WebApp/disableClosingConfirmation/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/disable-closing-confirmation.html
+$dokka.location:dev.inmo.tgbotapi.webapps/WebApp/enableClosingConfirmation/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/enable-closing-confirmation.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/expand/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/expand.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/hapticFeedback/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/haptic-feedback.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/headerColor/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/header-color.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/initData/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/init-data.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/initDataUnsafe/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/init-data-unsafe.html
+$dokka.location:dev.inmo.tgbotapi.webapps/WebApp/isClosingConfirmationEnabled/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/is-closing-confirmation-enabled.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/isExpanded/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/is-expanded.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/isVersionAtLeast/#kotlin.String/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/is-version-at-least.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/mainButton/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/main-button.html
@@ -9461,6 +9502,9 @@ $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/sendData/#kotlin.String/Pointin
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/setBackgroundColor/#dev.inmo.tgbotapi.webapps.Color.BackgroundColor/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/set-background-color.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/setBackgroundColor/#dev.inmo.tgbotapi.webapps.Color.Hex/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/set-background-color.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/setHeaderColor/#dev.inmo.tgbotapi.webapps.Color.BackgroundColor/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/set-header-color.html
+$dokka.location:dev.inmo.tgbotapi.webapps/WebApp/showAlert/#kotlin.String#kotlin.Function0[kotlin.Unit]?/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/show-alert.html
+$dokka.location:dev.inmo.tgbotapi.webapps/WebApp/showConfirm/#kotlin.String#kotlin.Function1[kotlin.Boolean,kotlin.Unit]?/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/show-confirm.html
+$dokka.location:dev.inmo.tgbotapi.webapps/WebApp/showPopup/#dev.inmo.tgbotapi.webapps.popup.PopupParams#kotlin.Function1[kotlin.String,kotlin.Unit]?/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/show-popup.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/themeParams/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/theme-params.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/version/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/version.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebApp/viewportHeight/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app/viewport-height.html
@@ -9484,6 +9528,7 @@ $dokka.location:dev.inmo.tgbotapi.webapps/WebAppUser///PointingToDeclaration/do
 $dokka.location:dev.inmo.tgbotapi.webapps/WebAppUser/firstName/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app-user/first-name.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebAppUser/id/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app-user/id.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebAppUser/isBot/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app-user/is-bot.html
+$dokka.location:dev.inmo.tgbotapi.webapps/WebAppUser/is_premium/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app-user/is_premium.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebAppUser/languageCode/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app-user/language-code.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebAppUser/lastName/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app-user/last-name.html
 $dokka.location:dev.inmo.tgbotapi.webapps/WebAppUser/photoUrl/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.webapps/-web-app-user/photo-url.html
@@ -9638,4 +9683,5 @@ dev.inmo.tgbotapi.utils.passport
 dev.inmo.tgbotapi.webapps
 dev.inmo.tgbotapi.webapps.haptic
 dev.inmo.tgbotapi.webapps.invoice
+dev.inmo.tgbotapi.webapps.popup
 
