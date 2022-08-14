@@ -186,3 +186,17 @@ fun WebApp.showPopup(
     ),
     callback
 )
+
+var WebApp.requireClosingConfirmation
+    get() = isClosingConfirmationEnabled
+    set(value) {
+        if (value) {
+            enableClosingConfirmation()
+        } else {
+            disableClosingConfirmation()
+        }
+    }
+
+fun WebApp.toggleClosingConfirmation() {
+    requireClosingConfirmation = !requireClosingConfirmation
+}
