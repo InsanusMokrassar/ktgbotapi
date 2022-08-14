@@ -1,14 +1,24 @@
 package dev.inmo.tgbotapi.webapps.popup
 
-external class PopupButton(
-    id: String,
-    type: String,
-    text: String? = definedExternally
-) {
+import kotlin.js.json
+
+external interface PopupButton {
     val id: String
-    val type: String
+    val type: PopupButtonType
     val text: String?
 }
+
+fun PopupButton(
+    id: String,
+    type: PopupButtonType,
+    text: String? = null
+) = json(
+    *listOfNotNull(
+        "id" to id,
+        "type" to type.typeName,
+        ("text" to text).takeIf { text != null }
+    ).toTypedArray()
+).unsafeCast<PopupButton>()
 
 value class PopupButtonType(
     val typeName: String
@@ -25,21 +35,21 @@ value class PopupButtonType(
 fun DefaultPopupButton(
     id: String,
     text: String
-) = PopupButton(id, PopupButtonType.Default.typeName, text)
+) = PopupButton(id, PopupButtonType.Default, text)
 
 fun OkPopupButton(
     id: String
-) = PopupButton(id, PopupButtonType.Ok.typeName)
+) = PopupButton(id, PopupButtonType.Ok)
 
 fun ClosePopupButton(
     id: String
-) = PopupButton(id, PopupButtonType.Close.typeName)
+) = PopupButton(id, PopupButtonType.Close)
 
 fun CancelPopupButton(
     id: String
-) = PopupButton(id, PopupButtonType.Cancel.typeName)
+) = PopupButton(id, PopupButtonType.Cancel)
 
 fun DestructivePopupButton(
     id: String,
     text: String
-) = PopupButton(id, PopupButtonType.Destructive.typeName, text)
+) = PopupButton(id, PopupButtonType.Destructive, text)

@@ -3,8 +3,7 @@ package dev.inmo.tgbotapi.webapps
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
-import dev.inmo.tgbotapi.webapps.popup.ClosePopupCallback
-import dev.inmo.tgbotapi.webapps.popup.PopupParams
+import dev.inmo.tgbotapi.webapps.popup.*
 
 external class WebApp {
     val version: String
@@ -157,4 +156,33 @@ fun WebApp.onPopupClosed(eventHandler: PopupClosedEventHandler) = onEvent(EventT
 fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
     initData,
     initDataUnsafe.hash
+)
+
+fun WebApp.showPopup(
+    message: String,
+    title: String?,
+    buttons: Array<PopupButton>,
+    callback: ClosePopupCallback? = null
+) = showPopup(
+    PopupParams(
+        message,
+        title,
+        buttons
+    ),
+    callback
+)
+
+fun WebApp.showPopup(
+    message: String,
+    title: String?,
+    firstButton: PopupButton,
+    vararg otherButtons: PopupButton,
+    callback: ClosePopupCallback? = null
+) = showPopup(
+    PopupParams(
+        message,
+        title,
+        arrayOf(firstButton, *otherButtons)
+    ),
+    callback
 )
