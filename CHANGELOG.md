@@ -2,6 +2,10 @@
 
 ## 3.1.2
 
+* `Versions`:
+    * `Serialization`: `1.4.0-RC` -> `1.4.0`
+    * `MicroUtils`: `0.12.1` -> `0.12.3`
+
 ## 3.1.1
 
 * `Common`:
