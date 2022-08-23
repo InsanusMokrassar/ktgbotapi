@@ -4,7 +4,7 @@
 
 * `Versions`:
     * `Serialization`: `1.4.0-RC` -> `1.4.0`
-    * `MicroUtils`: `0.12.1` -> `0.12.3`
+    * `MicroUtils`: `0.12.1` -> `0.12.4`
 * `Core`:
   * `SetWebhook#allowedUpdates` now is `ALL_UPDATES_LIST` by default instead of `null`
 * `API`:
