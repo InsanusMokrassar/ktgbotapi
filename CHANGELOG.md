@@ -5,6 +5,12 @@
 * `Versions`:
     * `Serialization`: `1.4.0-RC` -> `1.4.0`
     * `MicroUtils`: `0.12.1` -> `0.12.3`
+* `Core`:
+  * `SetWebhook#allowedUpdates` now is `ALL_UPDATES_LIST` by default instead of `null`
+* `API`:
+  * Extension `TelegramBot#setWebhook` parameter `allowedUpdates` now is `ALL_UPDATES_LIST` by default instead of `null`
+* `Utils`:
+  * All related to long polling extensions parameters `allowedUpdates` now are `ALL_UPDATES_LIST` by default instead of `null`
 
 ## 3.1.1
 

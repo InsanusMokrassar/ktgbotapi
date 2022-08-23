@@ -19,7 +19,7 @@ class MultipartSetWebhookRequest(
     certificate: MultipartFile,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
 ) : SetWebhookRequest(), MultipartRequest<Boolean> by MultipartRequestImpl(
@@ -40,7 +40,7 @@ fun SetWebhook(
     certificate: MultipartFile,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
 ): MultipartSetWebhookRequest = MultipartSetWebhookRequest(
@@ -58,7 +58,7 @@ fun SetWebhook(
     certificate: FileId,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
 ): SetWebhook = SetWebhook(
@@ -84,7 +84,7 @@ fun SetWebhook(
     certificate: InputFile,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
 ) = when (certificate) {
@@ -104,7 +104,7 @@ fun SetWebhook(
     url: String,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
 ) = SetWebhook(
@@ -135,7 +135,7 @@ data class SetWebhook internal constructor(
     @SerialName(maxAllowedConnectionsField)
     val maxAllowedConnections: Int? = null,
     @SerialName(allowedUpdatesField)
-    val allowedUpdates: List<String>? = null,
+    val allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     @SerialName(dropPendingUpdatesField)
     val dropPendingUpdates: Boolean? = null,
     @SerialName(secretTokenField)

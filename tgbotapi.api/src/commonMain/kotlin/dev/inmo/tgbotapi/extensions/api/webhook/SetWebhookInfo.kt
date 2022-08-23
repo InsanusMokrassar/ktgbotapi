@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.requests.webhook.SetWebhook
+import dev.inmo.tgbotapi.types.ALL_UPDATES_LIST
 
 /**
  * Use this method to send information about webhook (like [url])
@@ -12,7 +13,7 @@ suspend fun TelegramBot.setWebhookInfo(
     url: String,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
 ) = execute(
@@ -29,7 +30,7 @@ suspend fun TelegramBot.setWebhookInfo(
     certificate: FileId,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
 ) = execute(
@@ -46,7 +47,7 @@ suspend fun TelegramBot.setWebhookInfo(
     certificate: MultipartFile,
     ipAddress: String? = null,
     maxAllowedConnections: Int? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     dropPendingUpdates: Boolean? = null,
     secretToken: String? = null
 ) = execute(
