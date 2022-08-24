@@ -61,7 +61,7 @@ fun Flow<CommonMessage<TextContent>>.requireSingleCommand() = filter {
         }
     }
 
-    true
+    count == 1
 }
 
 /**
