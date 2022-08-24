@@ -33,6 +33,12 @@ suspend fun BehaviourContext.waitCommandMessage(
     }
 }
 
+suspend fun BehaviourContext.waitCommandMessage(
+    command: String,
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitCommandMessage(Regex(command), initRequest, errorFactory)
+
 fun Flow<CommonMessage<TextContent>>.requireCommandAtStart() = filter {
     (it.content.textSources.firstOrNull() as? BotCommandTextSource) != null
 }
