@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.message.textsources
 
 import dev.inmo.tgbotapi.types.usernameRegex
+import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
@@ -17,8 +18,8 @@ data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
     val command: String by lazy {
         commandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
     }
-    val username: String? by lazy {
-        usernameRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol "@"
+    val username: Username? by lazy {
+        Username(usernameRegex.find(source) ?.value ?: return@lazy null)
     }
 
     override val markdown: String by lazy { source.commandMarkdown() }
