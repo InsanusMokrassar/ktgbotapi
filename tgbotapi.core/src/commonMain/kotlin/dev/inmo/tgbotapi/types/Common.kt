@@ -81,6 +81,8 @@ sealed interface StickerType {
     }
 }
 
+val usernameRegex = Regex("@[\\w\\d_]+")
+
 val degreesLimit = 1 .. 360
 val horizontalAccuracyLimit = 0F .. 1500F
 
