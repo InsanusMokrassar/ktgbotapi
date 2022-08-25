@@ -7,6 +7,7 @@
     * `MicroUtils`: `0.12.1` -> `0.12.4`
 * `Core`:
   * `SetWebhook#allowedUpdates` now is `ALL_UPDATES_LIST` by default instead of `null`
+  * `KtorRequestsExecutor#execute` now will __always__ throw `BotException` if something went wrong inside
 * `API`:
   * Extension `TelegramBot#setWebhook` parameter `allowedUpdates` now is `ALL_UPDATES_LIST` by default instead of `null`
 * `Utils`:
