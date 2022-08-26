@@ -19,5 +19,5 @@ suspend fun BehaviourContext.waitDeepLinks(
     .requireSingleCommand()
     .requireCommandAtStart()
     .flattenCommandsWithParams().mapNotNull {
-        it.first to (it.second.second.singleOrNull() ?.regularTextSourceOrNull() ?.source ?: return@mapNotNull null)
+        it.first to (it.second.second.singleOrNull() ?.regularTextSourceOrNull() ?.source ?.removePrefix(" ") ?: return@mapNotNull null)
     }

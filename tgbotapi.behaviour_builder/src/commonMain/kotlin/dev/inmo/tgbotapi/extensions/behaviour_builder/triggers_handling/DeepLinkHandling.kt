@@ -17,9 +17,11 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.message.textsources.RegularTextSource
 import dev.inmo.tgbotapi.types.update.abstracts.Update
+import io.ktor.http.decodeURLQueryComponent
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.filter
 
+private val startRegex = Regex("start")
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update> = { (message, _), update -> MessageFilterByChat(this, message, update) },
@@ -36,6 +38,11 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
     scenarioReceiver,
 ) {
     (it.messageUpdateOrNull()) ?.data ?.commonMessageOrNull() ?.withContentOrNull<TextContent>() ?.let { message ->
-        message to message.content.textSources[1].source
+        message to message.content.textSources[1].source.removePrefix(" ").decodeURLQueryComponent()
     } ?.let(::listOfNotNull)
+}.also {
+    triggersHolder.handleableCommandsHolder.registerHandleable(startRegex)
+    it.invokeOnCompletion {
+        this@onDeepLink.launchSafelyWithoutExceptions { triggersHolder.handleableCommandsHolder.unregisterHandleable(startRegex) }
+    }
 }
