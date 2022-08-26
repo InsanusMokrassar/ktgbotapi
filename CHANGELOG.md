@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 3.1.2
+## 3.2.0
 
 * `Versions`:
     * `Serialization`: `1.4.0-RC` -> `1.4.0`
