@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.*
 fun TelegramBot.longPollingFlow(
     timeoutSeconds: Seconds = 30,
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
 ): Flow<Update> = channelFlow {
     var lastUpdateIdentifier: UpdateIdentifier? = null
 
@@ -81,7 +81,7 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     updatesReceiver: UpdateReceiver<Update>
 ): Job = longPollingFlow(timeoutSeconds, exceptionsHandler, allowedUpdates).subscribeSafely(
     scope,
@@ -97,7 +97,7 @@ fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
     avoidInlineQueries: Boolean = false,
     avoidCallbackQueries: Boolean = false,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
-    allowedUpdates: List<String>? = null
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST
 ): Flow<Update> = longPollingFlow(
     timeoutSeconds = 0,
     exceptionsHandler = {
@@ -117,7 +117,7 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     avoidCallbackQueries: Boolean = false,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     updatesReceiver: UpdateReceiver<Update>
 ): Job = createAccumulatedUpdatesRetrieverFlow(
     avoidInlineQueries,
@@ -149,7 +149,7 @@ suspend fun TelegramBot.flushAccumulatedUpdates(
     avoidInlineQueries: Boolean = false,
     avoidCallbackQueries: Boolean = false,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
-    allowedUpdates: List<String>? = null,
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
     updatesReceiver: UpdateReceiver<Update> = {}
 ) = retrieveAccumulatedUpdates(

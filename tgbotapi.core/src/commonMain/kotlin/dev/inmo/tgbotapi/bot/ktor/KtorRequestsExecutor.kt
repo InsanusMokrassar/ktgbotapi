@@ -1,9 +1,10 @@
 package dev.inmo.tgbotapi.bot.ktor
 
+import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.micro_utils.coroutines.safely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.bot.exceptions.newRequestException
+import dev.inmo.tgbotapi.bot.exceptions.*
 import dev.inmo.tgbotapi.bot.ktor.base.*
 import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
 import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
@@ -48,12 +49,36 @@ class KtorRequestsExecutor(
     }
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
-        return runCatching {
-            safely(
-                { e ->
-                    pipelineStepsHolder.onRequestException(request, e) ?.let { return@safely it }
+        return runCatchingSafely {
+            pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
+            requestsLimiter.limit {
+                var result: T? = null
+                lateinit var factoryHandledRequest: KtorCallFactory
+                for (potentialFactory in callsFactories) {
+                    pipelineStepsHolder.onBeforeCallFactoryMakeCall(request, potentialFactory)
+                    result = potentialFactory.makeCall(
+                        client,
+                        telegramAPIUrlsKeeper,
+                        request,
+                        jsonFormatter
+                    )
+                    result = pipelineStepsHolder.onAfterCallFactoryMakeCall(result, request, potentialFactory)
+                    if (result != null) {
+                        factoryHandledRequest = potentialFactory
+                        break
+                    }
+                }
 
-                    throw if (e is ClientRequestException) {
+                result ?.let {
+                    pipelineStepsHolder.onRequestResultPresented(it, request, factoryHandledRequest, callsFactories)
+                } ?: pipelineStepsHolder.onRequestResultAbsent(request, callsFactories) ?: error("Can't execute request: $request")
+            }
+        }.let {
+            val result = it.exceptionOrNull() ?.let { e ->
+                pipelineStepsHolder.onRequestException(request, e) ?.let { return@let it }
+
+                if (e is ClientRequestException) {
+                    val exceptionResult = runCatchingSafely {
                         val content = e.response.bodyAsText()
                         val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
                         newRequestException(
@@ -61,38 +86,15 @@ class KtorRequestsExecutor(
                             content,
                             "Can't get result object from $content"
                         )
-                    } else {
-                        e
                     }
-
+                    exceptionResult.exceptionOrNull() ?.let {
+                        CommonBotException(cause = e)
+                    } ?: exceptionResult.getOrThrow()
+                } else {
+                    CommonBotException(cause = e)
                 }
-            ) {
-                pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
-                requestsLimiter.limit {
-                    var result: T? = null
-                    lateinit var factoryHandledRequest: KtorCallFactory
-                    for (potentialFactory in callsFactories) {
-                        pipelineStepsHolder.onBeforeCallFactoryMakeCall(request, potentialFactory)
-                        result = potentialFactory.makeCall(
-                            client,
-                            telegramAPIUrlsKeeper,
-                            request,
-                            jsonFormatter
-                        )
-                        result = pipelineStepsHolder.onAfterCallFactoryMakeCall(result, request, potentialFactory)
-                        if (result != null) {
-                            factoryHandledRequest = potentialFactory
-                            break
-                        }
-                    }
-
-                    result ?.let {
-                        pipelineStepsHolder.onRequestResultPresented(it, request, factoryHandledRequest, callsFactories)
-                    } ?: pipelineStepsHolder.onRequestResultAbsent(request, callsFactories) ?: error("Can't execute request: $request")
-                }
-            }
-        }.let {
-            pipelineStepsHolder.onRequestReturnResult(it, request, callsFactories)
+            } ?.let { Result.failure(it) } ?: it
+            pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories)
         }
     }
 

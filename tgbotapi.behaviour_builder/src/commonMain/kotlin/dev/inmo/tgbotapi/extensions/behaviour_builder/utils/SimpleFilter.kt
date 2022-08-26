@@ -4,6 +4,7 @@ fun interface SimpleFilter<in T> {
     suspend operator fun invoke(o: T): Boolean
 }
 val TrueSimpleFilter = SimpleFilter<Any?> { true }
+val FalseSimpleFilter = SimpleFilter<Any?> { false }
 
 /**
  * @return [SimpleFilter] which will return true in case when all the items in incoming data passed [this] filter
@@ -28,21 +29,29 @@ fun <T> SimpleFilter<T>.listNone() = SimpleFilter<Iterable<T>> {
 
 /**
  * Makes an AND (&&) operation between [this] and [other]
+ *
+ * * When both arguments are null, [TrueSimpleFilter] will be returned
  */
-operator fun <T> SimpleFilter<T>?.times(other: SimpleFilter<T>): SimpleFilter<T> = this ?.let {
-    SimpleFilter {
-        this(it) && other(it)
-    }
-} ?: other
+infix operator fun <T> SimpleFilter<T>?.times(other: SimpleFilter<T>?): SimpleFilter<T> = this ?.let {
+    other ?.let {
+        SimpleFilter {
+            this(it) && other(it)
+        }
+    } ?: it
+} ?: other ?: TrueSimpleFilter
 
 /**
  * Makes an OR (||) operation between [this] and [other]
+ *
+ * * When both arguments are null, [TrueSimpleFilter] will be returned
  */
-operator fun <T> SimpleFilter<T>?.plus(other: SimpleFilter<T>): SimpleFilter<T> = this ?.let {
-    SimpleFilter {
-        this(it) || other(it)
-    }
-} ?: other
+infix operator fun <T> SimpleFilter<T>?.plus(other: SimpleFilter<T>?): SimpleFilter<T> = this ?.let {
+    other ?.let {
+        SimpleFilter {
+            this(it) || other(it)
+        }
+    } ?: it
+} ?: other ?: TrueSimpleFilter
 
 /**
  * Reverse results of [this]

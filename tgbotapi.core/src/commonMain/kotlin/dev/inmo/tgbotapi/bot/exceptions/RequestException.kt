@@ -35,13 +35,18 @@ fun newRequestException(
     }
 } ?: CommonRequestException(response, plainAnswer, message, cause)
 
+sealed class BotException(message: String = "Something went wrong", cause: Throwable? = null) : IOException(message, cause)
+
+class CommonBotException(message: String = "Something went wrong", cause: Throwable? = null) : BotException(message, cause)
+
 sealed class RequestException constructor(
     val response: Response,
     val plainAnswer: String,
     message: String? = null,
-    override val cause: Throwable? = null
-) : IOException(
-    message ?: "Something went wrong"
+    cause: Throwable? = null
+) : BotException(
+    message ?: "Something went wrong",
+    cause
 )
 
 class CommonRequestException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
