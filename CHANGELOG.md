@@ -2,6 +2,10 @@
 
 ## 3.2.1
 
+* `Versions`:
+    * `Ktor`: `2.1.0` -> `2.1.1`
+    * `MicroUtils`: `0.12.4` -> `0.12.8`
+
 ## 3.2.0
 
 **Since this update, `RequestsExecutor#execute` may throw only `BotException`. In case you wish to handle some exceptions from `execute` you must catch `BotException` and handle its `cause`**
