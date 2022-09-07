@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 3.2.1
+
 ## 3.2.0
 
 **Since this update, `RequestsExecutor#execute` may throw only `BotException`. In case you wish to handle some exceptions from `execute` you must catch `BotException` and handle its `cause`**
