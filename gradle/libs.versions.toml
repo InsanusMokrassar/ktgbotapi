@@ -6,14 +6,14 @@ kotlin-coroutines = "1.6.4"
 
 javax-activation = "1.1.1"
 
-korlibs = "3.0.0"
+korlibs = "3.1.0"
 uuid = "0.5.0"
 ktor = "2.1.1"
 
 ksp = "1.7.10-1.0.6"
 kotlin-poet = "1.12.0"
 
-microutils = "0.12.8"
+microutils = "0.12.10"
 
 github-release-plugin = "2.4.1"
 
