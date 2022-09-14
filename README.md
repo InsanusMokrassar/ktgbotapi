@@ -116,5 +116,5 @@ suspend fun main() {
 ### More examples
 
 You may find examples in [this project](https://github.com/InsanusMokrassar/TelegramBotAPI-examples). Besides, you are
-always welcome in our [wiki](https://github.com/InsanusMokrassar/TelegramBotAPI/wiki/About-this-project) and
+always welcome in our [bookstack](https://bookstack.inmo.dev/books/telegrambotapi) and
 [chat](https://t.me/InMoTelegramBotAPIChat).
