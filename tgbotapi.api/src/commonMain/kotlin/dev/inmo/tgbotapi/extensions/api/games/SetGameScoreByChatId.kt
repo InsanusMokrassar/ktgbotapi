@@ -12,7 +12,7 @@ suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     chatId: ChatId,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
 ) = execute(
@@ -23,7 +23,7 @@ suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     chatId: ChatId,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
 ) = setGameScore(
@@ -34,7 +34,7 @@ suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
 ) = setGameScore(
@@ -45,7 +45,7 @@ suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
 ) = setGameScore(

@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.CopyMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -16,13 +16,13 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
  */
 suspend inline fun TelegramBot.copyMessage(
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChatId: ChatIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -46,13 +46,13 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     fromChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChatId: ChatIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(fromChat.id, messageId, toChatId, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -63,13 +63,13 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChat: Chat,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(fromChatId, messageId, toChat.id, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -80,13 +80,13 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     fromChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChat: Chat,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(fromChat.id, messageId, toChat.id, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -98,12 +98,12 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChatId: ChatIdentifier,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -126,12 +126,12 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     fromChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChatId: ChatIdentifier,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(fromChat.id, messageId, toChatId, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -142,12 +142,12 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChat: Chat,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(fromChatId, messageId, toChat.id, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -158,12 +158,12 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     fromChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChat: Chat,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(fromChat.id, messageId, toChat.id, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -179,7 +179,7 @@ suspend inline fun TelegramBot.copyMessage(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(message.chat, message.messageId, toChatId, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -195,7 +195,7 @@ suspend inline fun TelegramBot.copyMessage(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(message.chat, message.messageId, toChat, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -210,7 +210,7 @@ suspend inline fun TelegramBot.copyMessage(
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(message.chat, message.messageId, toChatId, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -225,7 +225,7 @@ suspend inline fun TelegramBot.copyMessage(
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(message.chat, message.messageId, toChat, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -237,12 +237,12 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -267,12 +267,12 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
     fromChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(
@@ -295,12 +295,12 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(
@@ -323,12 +323,12 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
     fromChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(
@@ -352,11 +352,11 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -380,11 +380,11 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
     fromChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(
@@ -406,11 +406,11 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(
@@ -432,11 +432,11 @@ suspend inline fun TelegramBot.copyMessage(
 suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
     fromChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = copyMessage(

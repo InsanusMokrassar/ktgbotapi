@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.content.GameContent
 suspend fun TelegramBot.getGameScore(
     userId: UserId,
     chatId: ChatId,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ) = execute(
     GetGameHighScoresByChat(userId, chatId, messageId)
 )
@@ -19,7 +19,7 @@ suspend fun TelegramBot.getGameScore(
 suspend fun TelegramBot.getGameScore(
     user: CommonUser,
     chatId: ChatId,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ) = getGameScore(
     user.id, chatId, messageId
 )
@@ -27,7 +27,7 @@ suspend fun TelegramBot.getGameScore(
 suspend fun TelegramBot.getGameScore(
     userId: UserId,
     chat: Chat,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ) = getGameScore(
     userId, chat.id, messageId
 )
@@ -35,7 +35,7 @@ suspend fun TelegramBot.getGameScore(
 suspend fun TelegramBot.getGameScore(
     user: CommonUser,
     chat: Chat,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ) = getGameScore(
     user.id, chat.id, messageId
 )

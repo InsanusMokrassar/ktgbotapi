@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 data class ChannelContentMessageImpl<T: MessageContent>(
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     override val chat: ChannelChat,
     override val content: T,
     override val date: DateTime,

@@ -2,6 +2,11 @@
 
 ## 3.2.2
 
+* `Core`:
+  * `MessageIdentifier` has been renamed to `MessageId`
+* `API`:
+  * New `reply`'es with chats and message ids
+
 ## 3.2.1
 
 * `Versions`:

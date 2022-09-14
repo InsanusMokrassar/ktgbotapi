@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.message.abstracts
 
 import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.RawMessage
 import kotlinx.serialization.*
@@ -12,13 +12,13 @@ import kotlinx.serialization.encoding.Encoder
 
 @ClassCastsIncluded
 interface Message {
-    val messageId: MessageIdentifier
+    val messageId: MessageId
     val chat: Chat
     val date: DateTime
 }
 
 data class UnknownMessageType(
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     override val chat: Chat,
     override val date: DateTime,
     val insideException: Exception

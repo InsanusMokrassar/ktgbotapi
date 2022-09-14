@@ -12,7 +12,7 @@ data class GetGameHighScoresByChat (
     @SerialName(chatIdField)
     override val chatId: ChatId,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier
+    override val messageId: MessageId
 ) : GetGameHighScores, MessageAction {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

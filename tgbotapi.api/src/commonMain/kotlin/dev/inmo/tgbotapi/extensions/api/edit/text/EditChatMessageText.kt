@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.text.EditChatMessageText
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -19,7 +19,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
  */
 suspend fun TelegramBot.editMessageText(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
@@ -34,7 +34,7 @@ suspend fun TelegramBot.editMessageText(
  */
 suspend fun TelegramBot.editMessageText(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
@@ -59,7 +59,7 @@ suspend fun TelegramBot.editMessageText(
  */
 suspend fun TelegramBot.editMessageText(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -73,7 +73,7 @@ suspend fun TelegramBot.editMessageText(
  */
 suspend fun TelegramBot.editMessageText(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null

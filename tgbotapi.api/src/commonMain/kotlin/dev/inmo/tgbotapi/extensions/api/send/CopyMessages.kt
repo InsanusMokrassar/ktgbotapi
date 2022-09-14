@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.extensions.api.send.media.sendMediaGroup
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
@@ -23,7 +23,7 @@ suspend inline fun TelegramBot.copyMessages(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ): List<MediaGroupMessage<MediaGroupContent>> {
     val first = messages.first().content.toMediaGroupMemberTelegramMedia().let {
@@ -62,7 +62,7 @@ suspend inline fun TelegramBot.copyMessages(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = copyMessages(toChat.id, messages, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
@@ -77,7 +77,7 @@ suspend inline fun TelegramBot.copyMessages(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = copyMessages(toChat, update.data, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
@@ -92,7 +92,7 @@ suspend inline fun TelegramBot.copyMessages(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = copyMessages(toChat.id, update, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
@@ -106,7 +106,7 @@ suspend inline fun TelegramBot.copyMessages(
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ): List<MediaGroupMessage<MediaGroupContent>> {
     val first = messages.first().content.toMediaGroupMemberTelegramMedia().let {
@@ -140,7 +140,7 @@ suspend inline fun TelegramBot.copyMessages(
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = copyMessages(toChat.id, messages, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
@@ -154,7 +154,7 @@ suspend inline fun TelegramBot.copyMessages(
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = copyMessages(toChat, update.data, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
@@ -168,6 +168,6 @@ suspend inline fun TelegramBot.copyMessages(
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = copyMessages(toChat.id, update, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)

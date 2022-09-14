@@ -11,7 +11,7 @@ data class UnpinChatMessage(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
-    val messageId: MessageIdentifier? = null
+    val messageId: MessageId? = null
 ): ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "unpinChatMessage"
     override val resultDeserializer: DeserializationStrategy<Boolean>

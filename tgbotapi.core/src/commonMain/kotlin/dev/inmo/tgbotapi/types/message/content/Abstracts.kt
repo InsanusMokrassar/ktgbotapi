@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
@@ -115,7 +115,7 @@ sealed interface ResendableContent {
         chatId: ChatIdentifier,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
-        replyToMessageId: MessageIdentifier? = null,
+        replyToMessageId: MessageId? = null,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<out Message>

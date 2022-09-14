@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
  */
 suspend fun TelegramBot.stopPoll(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
     StopPoll(chatId, messageId, replyMarkup)
@@ -25,7 +25,7 @@ suspend fun TelegramBot.stopPoll(
  */
 suspend fun TelegramBot.stopPoll(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = stopPoll(chat.id, messageId, replyMarkup)
 

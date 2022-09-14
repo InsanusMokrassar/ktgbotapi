@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.requests.edit.caption.EditChatMessageCaption
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -21,7 +21,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
  */
 suspend fun TelegramBot.editMessageCaption(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -35,7 +35,7 @@ suspend fun TelegramBot.editMessageCaption(
  */
 suspend fun TelegramBot.editMessageCaption(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -61,7 +61,7 @@ suspend fun <T> TelegramBot.editMessageCaption(
  */
 suspend fun TelegramBot.editMessageCaption(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
@@ -74,7 +74,7 @@ suspend fun TelegramBot.editMessageCaption(
  */
 suspend fun TelegramBot.editMessageCaption(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: List<TextSource>,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageCaption(chat.id, messageId, entities, replyMarkup)

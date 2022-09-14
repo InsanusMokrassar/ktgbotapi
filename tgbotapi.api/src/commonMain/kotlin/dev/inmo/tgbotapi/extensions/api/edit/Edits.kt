@@ -50,7 +50,7 @@ suspend fun <T> TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     latitude: Double,
     longitude: Double,
     horizontalAccuracy: Meters? = null,
@@ -65,7 +65,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     latitude: Double,
     longitude: Double,
     horizontalAccuracy: Meters? = null,
@@ -94,7 +94,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     location: LiveLocation,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(
@@ -107,7 +107,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     location: LiveLocation,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(chat, messageId, location, replyMarkup)
@@ -128,7 +128,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     media: TelegramMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chatId, messageId, media, replyMarkup)
@@ -139,7 +139,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     media: TelegramMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chat, messageId, media, replyMarkup)
@@ -160,7 +160,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageReplyMarkup(chatId, messageId, replyMarkup)
 
@@ -170,7 +170,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageReplyMarkup(chat, messageId, replyMarkup)
 

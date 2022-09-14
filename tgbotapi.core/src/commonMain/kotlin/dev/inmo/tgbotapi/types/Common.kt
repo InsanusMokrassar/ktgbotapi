@@ -10,7 +10,8 @@ import kotlinx.serialization.encoding.Encoder
 import kotlin.jvm.JvmInline
 
 typealias Identifier = Long
-typealias MessageIdentifier = Long
+typealias MessageId = Long
+typealias MessageIdentifier = MessageId
 typealias InlineQueryIdentifier = String
 typealias UpdateIdentifier = Long
 typealias MediaGroupIdentifier = String

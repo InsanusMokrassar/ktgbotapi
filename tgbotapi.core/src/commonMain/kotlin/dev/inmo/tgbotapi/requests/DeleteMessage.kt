@@ -11,7 +11,7 @@ data class DeleteMessage(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier
+    override val messageId: MessageId
 ) : SimpleRequest<Boolean>, MessageAction {
     override fun method(): String = "deleteMessage"
 

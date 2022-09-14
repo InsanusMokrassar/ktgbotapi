@@ -40,7 +40,7 @@ sealed interface ForwardInfo {
          */
         data class FromChannel(
             override val dateOfOriginal: TelegramDate,
-            val messageId: MessageIdentifier,
+            val messageId: MessageId,
             val channelChat: ChannelChat,
             val signature: String? = null
         ) : PublicChat {

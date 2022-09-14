@@ -1,8 +1,8 @@
 package dev.inmo.tgbotapi.abstracts.types
 
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 
 interface ReplyMessageId {
-    val replyToMessageId: MessageIdentifier?
+    val replyToMessageId: MessageId?
     val allowSendingWithoutReply: Boolean?
 }

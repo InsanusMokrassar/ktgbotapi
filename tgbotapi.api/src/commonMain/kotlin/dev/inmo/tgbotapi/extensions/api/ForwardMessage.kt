@@ -3,14 +3,14 @@ package dev.inmo.tgbotapi.extensions.api
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.ForwardMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.forwardMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = execute(
@@ -20,7 +20,7 @@ suspend fun TelegramBot.forwardMessage(
 suspend fun TelegramBot.forwardMessage(
     fromChat: Chat,
     toChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = forwardMessage(fromChat.id, toChatId, messageId, disableNotification, protectContent)
@@ -28,7 +28,7 @@ suspend fun TelegramBot.forwardMessage(
 suspend fun TelegramBot.forwardMessage(
     fromChatId: ChatIdentifier,
     toChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = forwardMessage(fromChatId, toChat.id, messageId, disableNotification, protectContent)
@@ -36,7 +36,7 @@ suspend fun TelegramBot.forwardMessage(
 suspend fun TelegramBot.forwardMessage(
     fromChat: Chat,
     toChat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = forwardMessage(fromChat.id, toChat.id, messageId, disableNotification, protectContent)

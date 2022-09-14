@@ -19,7 +19,7 @@ data class EditChatMessageMedia(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @SerialName(mediaField)
     override val media: TelegramMedia,
     @SerialName(replyMarkupField)
