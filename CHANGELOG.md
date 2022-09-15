@@ -2,6 +2,9 @@
 
 ## 3.2.3
 
+* `Core`:
+  * Fixes in `DeleteMyCommands`
+
 ## 3.2.2
 
 * `Versions`:

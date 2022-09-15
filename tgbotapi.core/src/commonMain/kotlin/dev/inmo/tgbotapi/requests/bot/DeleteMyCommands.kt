@@ -18,7 +18,8 @@ data class DeleteMyCommands(
     override val ietfLanguageCode: IetfLanguageCode? = null
 ) : MyCommandsRequest<Boolean> {
     override fun method(): String  = "deleteMyCommands"
-    override val requestSerializer: SerializationStrategy<DeleteMyCommands> = serializer()
+    override val requestSerializer: SerializationStrategy<DeleteMyCommands>
+        get() = serializer()
     override val resultDeserializer: DeserializationStrategy<Boolean> = Boolean.serializer()
 
     constructor(
