@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.requests.send.polls.SendQuizPoll
 import dev.inmo.tgbotapi.requests.send.polls.SendRegularPoll
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -25,7 +25,7 @@ suspend fun TelegramBot.sendRegularPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -48,7 +48,7 @@ suspend fun TelegramBot.sendRegularPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendRegularPoll(chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -67,7 +67,7 @@ suspend fun TelegramBot.sendRegularPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendRegularPoll(
@@ -89,7 +89,7 @@ suspend fun TelegramBot.sendRegularPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendRegularPoll(
@@ -113,7 +113,7 @@ suspend fun TelegramBot.sendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -138,7 +138,7 @@ suspend fun TelegramBot.sendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
@@ -162,7 +162,7 @@ suspend fun TelegramBot.sendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
@@ -186,7 +186,7 @@ suspend fun TelegramBot.sendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
@@ -209,7 +209,7 @@ suspend inline fun TelegramBot.sendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -233,7 +233,7 @@ suspend inline fun TelegramBot.sendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
@@ -256,7 +256,7 @@ suspend inline fun TelegramBot.sendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
@@ -279,7 +279,7 @@ suspend inline fun TelegramBot.sendQuizPoll(
     closeInfo: ScheduledCloseInfo? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(

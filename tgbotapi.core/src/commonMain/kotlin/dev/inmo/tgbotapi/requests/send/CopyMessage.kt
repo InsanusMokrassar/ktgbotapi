@@ -23,12 +23,12 @@ const val OrderChangingDeprecationWarn = "The order of parameters in this factor
 fun CopyMessage(
     toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -48,11 +48,11 @@ fun CopyMessage(
 fun CopyMessage(
     toChatId: ChatIdentifier,
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: List<TextSource>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -71,13 +71,13 @@ fun CopyMessage(
 
 fun CopyMessage(
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChatId: ChatIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -96,12 +96,12 @@ fun CopyMessage(
 
 fun CopyMessage(
     fromChatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     toChatId: ChatIdentifier,
     entities: List<TextSource>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
@@ -125,7 +125,7 @@ data class CopyMessage internal constructor(
     @SerialName(fromChatIdField)
     val fromChatId: ChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -137,13 +137,13 @@ data class CopyMessage internal constructor(
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageIdentifier? = null,
+    override val replyToMessageId: MessageId? = null,
     @SerialName(allowSendingWithoutReplyField)
     override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-): SimpleRequest<MessageIdentifier>,
-    ReplyingMarkupSendMessageRequest<MessageIdentifier>,
+): SimpleRequest<MessageId>,
+    ReplyingMarkupSendMessageRequest<MessageId>,
     MessageAction,
     TextedOutput,
     ProtectContent {
@@ -155,7 +155,7 @@ data class CopyMessage internal constructor(
 
     override fun method(): String = "copyMessage"
 
-    override val resultDeserializer: DeserializationStrategy<MessageIdentifier>
+    override val resultDeserializer: DeserializationStrategy<MessageId>
         get() = MessageIdSerializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

@@ -24,7 +24,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceType: GooglePlaceType? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -62,7 +62,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceType: GooglePlaceType? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
@@ -97,7 +97,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceType: GooglePlaceType? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
@@ -132,7 +132,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceType: GooglePlaceType? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
@@ -161,7 +161,7 @@ suspend fun TelegramBot.sendVenue(
     venue: Venue,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -185,7 +185,7 @@ suspend fun TelegramBot.sendVenue(
     venue: Venue,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(

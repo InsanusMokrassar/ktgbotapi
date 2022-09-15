@@ -14,7 +14,7 @@ data class SetGameScoreByChatId (
     @SerialName(chatIdField)
     override val chatId: ChatId,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @SerialName(forceField)
     override val force: Boolean = false,
     @SerialName(disableEditMessageField)

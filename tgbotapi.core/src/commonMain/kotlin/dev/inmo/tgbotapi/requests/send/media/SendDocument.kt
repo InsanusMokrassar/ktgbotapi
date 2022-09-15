@@ -36,7 +36,7 @@ fun SendDocument(
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
@@ -87,7 +87,7 @@ fun SendDocument(
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
@@ -153,7 +153,7 @@ data class SendDocumentData internal constructor(
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageIdentifier? = null,
+    override val replyToMessageId: MessageId? = null,
     @SerialName(allowSendingWithoutReplyField)
     override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)

@@ -92,7 +92,7 @@ suspend fun TelegramBot.startLiveLocation(
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider {
@@ -137,7 +137,7 @@ suspend fun TelegramBot.startLiveLocation(
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -170,7 +170,7 @@ suspend fun TelegramBot.startLiveLocation(
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -203,7 +203,7 @@ suspend fun TelegramBot.startLiveLocation(
     initProximityAlertRadius: Meters? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(

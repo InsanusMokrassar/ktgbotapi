@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.media.EditChatMessageMedia
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.TelegramMedia
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -16,7 +16,7 @@ import dev.inmo.tgbotapi.types.message.content.MediaContent
  */
 suspend fun TelegramBot.editMessageMedia(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     media: TelegramMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
@@ -29,7 +29,7 @@ suspend fun TelegramBot.editMessageMedia(
  */
 suspend fun TelegramBot.editMessageMedia(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     media: TelegramMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chat.id, messageId, media, replyMarkup)

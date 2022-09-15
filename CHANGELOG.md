@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 3.2.2
+
+* `Versions`:
+  * `MicroUtils`: `0.12.10` -> `0.12.13`
+* `Core`:
+  * `MessageIdentifier` has been renamed to `MessageId`
+* `API`:
+  * New `reply`'es with chats and message ids
+
 ## 3.2.1
 
 * `Versions`:

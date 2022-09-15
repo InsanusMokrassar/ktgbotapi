@@ -19,7 +19,7 @@ fun SendVideoNote(
     size: Int? = null, // in documentation - length (size of video side)
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VideoNoteContent>> {
@@ -71,7 +71,7 @@ data class SendVideoNoteData internal constructor(
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageIdentifier? = null,
+    override val replyToMessageId: MessageId? = null,
     @SerialName(allowSendingWithoutReplyField)
     override val allowSendingWithoutReply: Boolean? = null,
     @SerialName(replyMarkupField)

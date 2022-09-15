@@ -17,7 +17,7 @@ data class EditChatMessageLiveLocation(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @SerialName(latitudeField)
     override val latitude: Double,
     @SerialName(longitudeField)

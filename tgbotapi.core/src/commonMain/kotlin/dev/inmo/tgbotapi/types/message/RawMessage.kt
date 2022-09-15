@@ -31,14 +31,14 @@ import kotlin.reflect.KClass
 @Serializable
 internal data class RawMessage(
     @SerialName(messageIdField)
-    val messageId: MessageIdentifier,
+    val messageId: MessageId,
     val date: TelegramDate,
     private val chat: Chat,
     private val from: User? = null,
     private val sender_chat: PublicChat? = null,
     private val forward_from: User? = null,
     private val forward_from_chat: Chat? = null,
-    private val forward_from_message_id: MessageIdentifier? = null,
+    private val forward_from_message_id: MessageId? = null,
     private val forward_signature: ForwardSignature? = null,
     private val forward_sender_name: ForwardSenderName? = null,
     private val forward_date: TelegramDate? = null,

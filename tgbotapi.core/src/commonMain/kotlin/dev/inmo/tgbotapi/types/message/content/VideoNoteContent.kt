@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendVideoNote
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -18,7 +18,7 @@ data class VideoNoteContent(
         chatId: ChatIdentifier,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageIdentifier?,
+        replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VideoNoteContent>> = SendVideoNote(

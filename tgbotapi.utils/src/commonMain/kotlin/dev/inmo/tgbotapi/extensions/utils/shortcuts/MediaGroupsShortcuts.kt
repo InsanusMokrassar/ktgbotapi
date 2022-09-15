@@ -30,7 +30,7 @@ fun List<CommonMessage<MediaGroupContent>>.createResend(
     chatId: ChatId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyTo: MessageIdentifier? = null
+    replyTo: MessageId? = null
 ) = SendMediaGroup<MediaGroupContent>(
     chatId,
     map { it.content.toMediaGroupMemberTelegramMedia() },
@@ -43,7 +43,7 @@ fun List<CommonMessage<MediaGroupContent>>.createResend(
     chat: Chat,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyTo: MessageIdentifier? = null
+    replyTo: MessageId? = null
 ) = createResend(
     chat.id,
     disableNotification,
@@ -54,7 +54,7 @@ fun List<CommonMessage<MediaGroupContent>>.createResend(
 fun SentMediaGroupUpdate.createResend(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyTo: MessageIdentifier? = null
+    replyTo: MessageId? = null
 ) = data.createResend(
     chat,
     disableNotification,

@@ -19,7 +19,7 @@ const val editMessageCaptionMethod = "editMessageCaption"
 
 fun EditChatMessageCaption(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -34,7 +34,7 @@ fun EditChatMessageCaption(
 
 fun EditChatMessageCaption(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageCaption(
@@ -51,7 +51,7 @@ data class EditChatMessageCaption internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @SerialName(captionField)
     override val text: String,
     @SerialName(parseModeField)

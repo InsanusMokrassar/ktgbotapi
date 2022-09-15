@@ -41,7 +41,7 @@ suspend fun TelegramBot.handleLiveLocation(
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) {
     var currentLiveLocationMessage: ContentMessage<LocationContent>? = null
@@ -96,7 +96,7 @@ suspend fun TelegramBot.handleLiveLocation(
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) {
     handleLiveLocation(
@@ -131,7 +131,7 @@ suspend fun TelegramBot.handleLiveLocation(
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) {
     handleLiveLocation(

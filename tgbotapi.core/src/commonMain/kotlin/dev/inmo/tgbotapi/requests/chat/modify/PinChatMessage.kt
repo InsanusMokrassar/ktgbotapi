@@ -16,7 +16,7 @@ data class PinChatMessage (
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false
 ): ChatRequest, SimpleRequest<Boolean>, MessageAction, DisableNotification {

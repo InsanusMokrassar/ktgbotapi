@@ -34,7 +34,7 @@ inline val Message.forward_from: User?
 inline val Message.forward_from_chat: Chat?
     get() = asPossiblyForwardedMessage() ?.forwardInfo ?.asForwardFromPublicChatInfo() ?.chat
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.forward_from_message_id: MessageIdentifier?
+inline val Message.forward_from_message_id: MessageId?
     get() = asPossiblyForwardedMessage() ?.forwardInfo ?.asForwardFromChannelInfo() ?.messageId
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.forward_signature: ForwardSignature?

@@ -4,7 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendVideoNote
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
@@ -21,7 +21,7 @@ suspend fun TelegramBot.sendVideoNote(
     size: Int? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -48,7 +48,7 @@ suspend fun TelegramBot.sendVideoNote(
     videoNote: VideoNoteFile,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVideoNote(
@@ -67,7 +67,7 @@ suspend fun TelegramBot.sendVideoNote(
     size: Int? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVideoNote(chat.id, videoNote, thumb, duration, size, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
@@ -81,7 +81,7 @@ suspend fun TelegramBot.sendVideoNote(
     videoNote: VideoNoteFile,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVideoNote(chat.id, videoNote, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)

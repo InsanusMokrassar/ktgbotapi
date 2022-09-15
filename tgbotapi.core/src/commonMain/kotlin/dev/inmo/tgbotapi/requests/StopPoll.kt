@@ -14,7 +14,7 @@ data class StopPoll(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : MessageAction, SimpleRequest<Poll>, WithReplyMarkup {

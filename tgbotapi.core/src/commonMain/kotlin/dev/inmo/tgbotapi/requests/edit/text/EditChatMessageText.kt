@@ -19,7 +19,7 @@ const val editMessageTextMethod = "editMessageText"
 
 fun EditChatMessageText(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
@@ -36,7 +36,7 @@ fun EditChatMessageText(
 
 fun EditChatMessageText(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -55,7 +55,7 @@ data class EditChatMessageText internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @SerialName(textField)
     override val text: String,
     @SerialName(parseModeField)

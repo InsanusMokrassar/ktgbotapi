@@ -15,7 +15,7 @@ import dev.inmo.tgbotapi.types.message.content.LocationContent
  */
 suspend fun TelegramBot.editLiveLocation(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     latitude: Double,
     longitude: Double,
     horizontalAccuracy: Meters? = null,
@@ -34,7 +34,7 @@ suspend fun TelegramBot.editLiveLocation(
  */
 suspend fun TelegramBot.editLiveLocation(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     latitude: Double,
     longitude: Double,
     horizontalAccuracy: Meters? = null,
@@ -63,7 +63,7 @@ suspend fun TelegramBot.editLiveLocation(
  */
 suspend fun TelegramBot.editLiveLocation(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     location: LiveLocation,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
@@ -78,7 +78,7 @@ suspend fun TelegramBot.editLiveLocation(
  */
 suspend fun TelegramBot.editLiveLocation(
     chat: Chat,
-    messageId: MessageIdentifier,
+    messageId: MessageId,
     location: LiveLocation,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(chat.id, messageId, location.latitude, location.longitude, location.horizontalAccuracy, location.heading, location.proximityAlertRadius, replyMarkup)

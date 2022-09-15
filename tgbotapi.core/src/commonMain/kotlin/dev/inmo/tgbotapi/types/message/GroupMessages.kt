@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
     override val channel: ChannelChat,
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
@@ -27,7 +27,7 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
 data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
     override val chat: GroupChat,
     override val channel: ChannelChat,
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
@@ -41,7 +41,7 @@ data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
 
 data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
     override val editDate: DateTime?,
@@ -55,7 +55,7 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
 
 data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val chat: GroupChat,
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     override val from: User,
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,

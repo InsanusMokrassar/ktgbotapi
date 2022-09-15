@@ -26,7 +26,7 @@ fun <T : MediaGroupContent> SendMediaGroup(
     media: List<MediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ): Request<List<MediaGroupMessage<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
@@ -74,7 +74,7 @@ inline fun SendPlaylist(
     media: List<AudioMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = SendMediaGroup<AudioContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
@@ -89,7 +89,7 @@ inline fun SendDocumentsGroup(
     media: List<DocumentMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = SendMediaGroup<DocumentContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
@@ -105,7 +105,7 @@ inline fun SendVisualMediaGroup(
     media: List<VisualMediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageIdentifier? = null,
+    replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
 ) = SendMediaGroup<VisualMediaGroupContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
@@ -122,7 +122,7 @@ data class SendMediaGroupData internal constructor(
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
     @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageIdentifier? = null,
+    override val replyToMessageId: MessageId? = null,
     @SerialName(allowSendingWithoutReplyField)
     override val allowSendingWithoutReply: Boolean? = null
 ) : DataRequest<List<MediaGroupMessage<MediaGroupContent>>>, SendMessageRequest<List<MediaGroupMessage<MediaGroupContent>>> {

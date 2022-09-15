@@ -26,15 +26,15 @@ inline fun makeTelegramStartattach(username: Username, data: String? = null) = m
 
 fun makeLinkToMessage(
     username: String,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ): String = "$internalLinkBeginning/$username/$messageId"
 fun makeLinkToMessage(
     username: Username,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ): String = makeLinkToMessage(username.username, messageId)
 fun makeLinkToMessage(
     chat: UsernameChat,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ): String? = chat.username ?.let { makeLinkToMessage(it, messageId) }
 
 private val linkIdRedundantPartRegex = Regex("^-100")
@@ -46,7 +46,7 @@ private val usernameBeginSymbolRegex = Regex("^@")
  */
 fun makeLinkToMessage(
     chat: Chat,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ): String? {
     return when {
         chat is UsernameChat && chat.username != null -> {

@@ -3,20 +3,20 @@ package dev.inmo.tgbotapi.extensions.api
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.DeleteMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageIdentifier
+import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.deleteMessage(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ) = execute(
     DeleteMessage(chatId, messageId)
 )
 
 suspend fun TelegramBot.deleteMessage(
     chat: Chat,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ) = deleteMessage(chat.id, messageId)
 
 suspend fun TelegramBot.deleteMessage(
@@ -25,12 +25,12 @@ suspend fun TelegramBot.deleteMessage(
 
 suspend fun TelegramBot.delete(
     chatId: ChatIdentifier,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ) = deleteMessage(chatId, messageId)
 
 suspend fun TelegramBot.delete(
     chat: Chat,
-    messageId: MessageIdentifier
+    messageId: MessageId
 ) = deleteMessage(chat, messageId)
 
 suspend fun TelegramBot.delete(
