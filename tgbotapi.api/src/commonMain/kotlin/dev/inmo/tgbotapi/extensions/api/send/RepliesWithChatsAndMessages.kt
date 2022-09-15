@@ -1100,8 +1100,8 @@ suspend fun TelegramBot.reply(
  *
  * @see handleLiveLocation
  */
-@JvmName("replyLiveLocationWithLocation")
-@JsName("replyLiveLocationWithLocation")
+@JvmName("replyLiveLocationWithLocationChatIdAndMessageId")
+@JsName("replyLiveLocationWithLocationChatIdAndMessageId")
 suspend fun TelegramBot.reply(
     toChatId: ChatId,
     toMessageId: MessageId,
@@ -1127,8 +1127,8 @@ suspend fun TelegramBot.reply(
  *
  * @see handleLiveLocation
  */
-@JvmName("replyLiveLocationWithLatLong")
-@JsName("replyLiveLocationWithLatLong")
+@JvmName("replyLiveLocationWithLatLongChatIdAndMessageId")
+@JsName("replyLiveLocationWithLatLongChatIdAndMessageId")
 suspend fun TelegramBot.reply(
     toChatId: ChatId,
     toMessageId: MessageId,

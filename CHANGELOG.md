@@ -2,6 +2,8 @@
 
 ## 3.2.2
 
+* `Versions`:
+  * `MicroUtils`: `0.12.10` -> `0.12.13`
 * `Core`:
   * `MessageIdentifier` has been renamed to `MessageId`
 * `API`:
