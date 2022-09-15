@@ -20,7 +20,8 @@ data class DeleteMyCommands(
     override fun method(): String  = "deleteMyCommands"
     override val requestSerializer: SerializationStrategy<DeleteMyCommands>
         get() = serializer()
-    override val resultDeserializer: DeserializationStrategy<Boolean> = Boolean.serializer()
+    override val resultDeserializer: DeserializationStrategy<Boolean>
+        get() = Boolean.serializer()
 
     constructor(
         scope: BotCommandScope = BotCommandScopeDefault,
