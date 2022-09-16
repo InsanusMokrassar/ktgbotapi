@@ -1,5 +1,10 @@
 # TelegramBotAPI changelog
 
+## 3.2.4
+
+* `API`:
+    * New `edit`'s with chats and message ids
+
 ## 3.2.3
 
 * `Core`:
