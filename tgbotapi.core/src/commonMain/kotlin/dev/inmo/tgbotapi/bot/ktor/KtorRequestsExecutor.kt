@@ -77,21 +77,23 @@ class KtorRequestsExecutor(
             val result = it.exceptionOrNull() ?.let { e ->
                 pipelineStepsHolder.onRequestException(request, e) ?.let { return@let it }
 
-                if (e is ClientRequestException) {
-                    val exceptionResult = runCatchingSafely {
-                        val content = e.response.bodyAsText()
-                        val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
-                        newRequestException(
-                            responseObject,
-                            content,
-                            "Can't get result object from $content"
-                        )
+                when (e) {
+                    is ClientRequestException -> {
+                        val exceptionResult = runCatchingSafely {
+                            val content = e.response.bodyAsText()
+                            val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
+                            newRequestException(
+                                responseObject,
+                                content,
+                                "Can't get result object from $content"
+                            )
+                        }
+                        exceptionResult.exceptionOrNull() ?.let {
+                            CommonBotException(cause = e)
+                        } ?: exceptionResult.getOrThrow()
                     }
-                    exceptionResult.exceptionOrNull() ?.let {
-                        CommonBotException(cause = e)
-                    } ?: exceptionResult.getOrThrow()
-                } else {
-                    CommonBotException(cause = e)
+                    is BotException -> e
+                    else -> CommonBotException(cause = e)
                 }
             } ?.let { Result.failure(it) } ?: it
             pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories)
