@@ -2,6 +2,9 @@
 
 ## 3.2.6
 
+* `Core`:
+    * Fixes in `ChatMemberSerializer#serialize` method
+
 ## 3.2.5
 
 * `Common`:
