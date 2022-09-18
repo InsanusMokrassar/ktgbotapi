@@ -4,6 +4,7 @@ import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.types.RetryAfterError
 import io.ktor.utils.io.errors.IOException
+import kotlinx.coroutines.CopyableThrowable
 
 fun newRequestException(
     response: Response,
@@ -35,9 +36,11 @@ fun newRequestException(
     }
 } ?: CommonRequestException(response, plainAnswer, message, cause)
 
-sealed class BotException(message: String = "Something went wrong", cause: Throwable? = null) : IOException(message, cause)
+sealed class BotException(message: String = "Something went wrong", cause: Throwable? = null) : IOException(message, cause), CopyableThrowable<BotException>
 
-class CommonBotException(message: String = "Something went wrong", cause: Throwable? = null) : BotException(message, cause)
+class CommonBotException(message: String = "Something went wrong", cause: Throwable? = null) : BotException(message, cause) {
+    override fun createCopy(): BotException = CommonBotException(message!!, cause)
+}
 
 sealed class RequestException constructor(
     val response: Response,
@@ -50,28 +53,46 @@ sealed class RequestException constructor(
 )
 
 class CommonRequestException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = CommonRequestException(response, plainAnswer, message, cause)
+}
 
 class UnauthorizedException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = UnauthorizedException(response, plainAnswer, message, cause)
+}
 
 class ReplyMessageNotFoundException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = ReplyMessageNotFoundException(response, plainAnswer, message, cause)
+}
 
 class MessageIsNotModifiedException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = MessageIsNotModifiedException(response, plainAnswer, message, cause)
+}
 
 class MessageToEditNotFoundException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = MessageToEditNotFoundException(response, plainAnswer, message, cause)
+}
 
 class InvalidPhotoDimensionsException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = InvalidPhotoDimensionsException(response, plainAnswer, message, cause)
+}
 
 class WrongFileIdentifierException(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = WrongFileIdentifierException(response, plainAnswer, message, cause)
+}
 
 class TooMuchRequestsException(val retryAfter: RetryAfterError, response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = TooMuchRequestsException(retryAfter, response, plainAnswer, message, cause)
+}
 
 class GetUpdatesConflict(response: Response, plainAnswer: String, message: String?, cause: Throwable?) :
-    RequestException(response, plainAnswer, message, cause)
+    RequestException(response, plainAnswer, message, cause) {
+    override fun createCopy(): BotException = GetUpdatesConflict(response, plainAnswer, message, cause)
+}

@@ -3,8 +3,7 @@ package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.RequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
-import dev.inmo.tgbotapi.bot.exceptions.RequestException
+import dev.inmo.tgbotapi.bot.exceptions.*
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.extensions.utils.updates.lastUpdateIdentifier
 import dev.inmo.tgbotapi.requests.GetUpdates
@@ -101,10 +100,10 @@ fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
 ): Flow<Update> = longPollingFlow(
     timeoutSeconds = 0,
     exceptionsHandler = {
-        if (it is HttpRequestTimeoutException) {
-            throw CancellationException("Cancel due to absence of new updates")
-        } else {
-            exceptionsHandler ?.invoke(it)
+        when {
+            it is HttpRequestTimeoutException ||
+            (it is CommonBotException && it.cause is HttpRequestTimeoutException) -> throw CancellationException("Cancel due to absence of new updates")
+            else -> exceptionsHandler ?.invoke(it)
         }
     },
     allowedUpdates = allowedUpdates

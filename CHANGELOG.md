@@ -2,6 +2,9 @@
 
 ## 3.2.5
 
+* `Common`:
+  * Improve support of new exceptions recovering mechanism
+
 ## 3.2.4
 
 * `API`:
