@@ -6,20 +6,21 @@ import dev.inmo.micro_utils.common.joinTo
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
+import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 private const val ReplacedInCoreModuleReason = "Replaced in core module"
 private const val CoreModulePackage = "dev.inmo.tgbotapi.utils"
 
 @Deprecated(ReplacedInCoreModuleReason, ReplaceWith("EntitiesBuilderBody", "$CoreModulePackage.EntitiesBuilderBody"))
-typealias EntitiesBuilderBody = EntitiesBuilder.() -> Unit
+typealias EntitiesBuilderBody = EntitiesBuilderBody
 @Deprecated(ReplacedInCoreModuleReason, ReplaceWith("newLine", "$CoreModulePackage.newLine"))
-val newLine = regular("\n")
+val newLine = dev.inmo.tgbotapi.utils.newLine
 
 @Deprecated(ReplacedInCoreModuleReason, ReplaceWith("buildEntities(separator, init)", "$CoreModulePackage.buildEntities"))
-inline fun buildEntities(separator: TextSource? = null, init: EntitiesBuilderBody): TextSourcesList = EntitiesBuilder(separator).apply(init).build()
+inline fun buildEntities(separator: TextSource? = null, init: EntitiesBuilderBody): TextSourcesList = dev.inmo.tgbotapi.utils.buildEntities(separator, init)
 @Deprecated(ReplacedInCoreModuleReason, ReplaceWith("buildEntities(separator, init)", "$CoreModulePackage.buildEntities"))
-inline fun buildEntities(separator: String, init: EntitiesBuilderBody) = buildEntities(regular(separator), init)
+inline fun buildEntities(separator: String, init: EntitiesBuilderBody) = dev.inmo.tgbotapi.utils.buildEntities(regular(separator), init)
 
 /**
  * This builder can be used to provide building of [TextSource]s [List]
