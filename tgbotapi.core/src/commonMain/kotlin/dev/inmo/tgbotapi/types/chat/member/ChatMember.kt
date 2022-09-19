@@ -34,12 +34,12 @@ object ChatMemberSerializer : KSerializer<ChatMember> {
 
     override fun serialize(encoder: Encoder, value: ChatMember) {
         when (value) {
-            is OwnerChatMember -> OwnerChatMember.serializer()
-            is AdministratorChatMemberImpl -> AdministratorChatMemberImpl.serializer()
-            is MemberChatMember -> MemberChatMemberImpl.serializer()
-            is RestrictedChatMember -> RestrictedChatMember.serializer()
-            is LeftChatMember -> LeftChatMemberImpl.serializer()
-            is KickedChatMember -> KickedChatMember.serializer()
+            is OwnerChatMember -> OwnerChatMember.serializer().serialize(encoder, value)
+            is AdministratorChatMemberImpl -> AdministratorChatMemberImpl.serializer().serialize(encoder, value)
+            is MemberChatMemberImpl -> MemberChatMemberImpl.serializer().serialize(encoder, value)
+            is RestrictedChatMember -> RestrictedChatMember.serializer().serialize(encoder, value)
+            is LeftChatMemberImpl -> LeftChatMemberImpl.serializer().serialize(encoder, value)
+            is KickedChatMember -> KickedChatMember.serializer().serialize(encoder, value)
         }
     }
 }

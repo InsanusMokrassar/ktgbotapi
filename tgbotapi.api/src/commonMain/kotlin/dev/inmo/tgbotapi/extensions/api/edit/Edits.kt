@@ -18,6 +18,8 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
+import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
+import dev.inmo.tgbotapi.utils.buildEntities
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -213,6 +215,32 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
+    chatId: ChatIdentifier,
+    messageId: MessageId,
+    separator: TextSource? = null,
+    disableWebPagePreview: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = edit(chatId, messageId, buildEntities(separator, builderBody), disableWebPagePreview, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.edit(
+    chatId: ChatIdentifier,
+    messageId: MessageId,
+    separator: String,
+    disableWebPagePreview: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = edit(chatId, messageId, buildEntities(separator, builderBody), disableWebPagePreview, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.edit(
     message: ContentMessage<TextContent>,
     text: String,
     parseMode: ParseMode? = null,
@@ -230,3 +258,51 @@ suspend fun TelegramBot.edit(
     disableWebPagePreview: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = edit(message.chat.id, message.messageId, entities, disableWebPagePreview, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.edit(
+    message: ContentMessage<TextContent>,
+    separator: TextSource? = null,
+    disableWebPagePreview: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = edit(message, buildEntities(separator, builderBody), disableWebPagePreview, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.edit(
+    message: ContentMessage<TextContent>,
+    separator: String,
+    disableWebPagePreview: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = edit(message, buildEntities(separator, builderBody), disableWebPagePreview, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.editMessageText(
+    message: ContentMessage<TextContent>,
+    separator: TextSource? = null,
+    disableWebPagePreview: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = edit(message, buildEntities(separator, builderBody), disableWebPagePreview, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.editMessageText(
+    message: ContentMessage<TextContent>,
+    separator: String,
+    disableWebPagePreview: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = edit(message, buildEntities(separator, builderBody), disableWebPagePreview, replyMarkup)

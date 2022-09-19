@@ -11,7 +11,6 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.rawSendingMediaGroupsWarning
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.*
-import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -25,11 +24,12 @@ import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.venue.Venue
-import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.*
 import kotlinx.coroutines.flow.Flow
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
@@ -209,6 +209,36 @@ suspend inline fun TelegramBot.reply(
     allowSendingWithoutReply,
     replyMarkup
 )
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.reply(
+    to: Message,
+    separator: TextSource? = null,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = reply(to, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.reply(
+    to: Message,
+    separator: String,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = reply(to, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
 
 
 // Venue
@@ -1245,7 +1275,7 @@ suspend fun TelegramBot.reply(
 suspend fun TelegramBot.reply(
     to: Message,
     content: TextedMediaContent,
-    entities: List<TextSource>,
+    entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
