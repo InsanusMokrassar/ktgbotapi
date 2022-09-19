@@ -20,12 +20,13 @@ import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.venue.Venue
-import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.*
 import kotlin.jvm.JvmName
 
 /**
@@ -561,6 +562,40 @@ suspend fun TelegramBot.send(
 ) = sendTextMessage(chatId, entities, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    separator: TextSource? = null,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = send(chatId, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    separator: String,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = send(chatId, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+
+
+/**
  * Will execute [sendTextMessage] request
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
@@ -575,6 +610,39 @@ suspend fun TelegramBot.send(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendTextMessage(chat, entities, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    separator: TextSource? = null,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = send(chat, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    separator: String,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = send(chat, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request

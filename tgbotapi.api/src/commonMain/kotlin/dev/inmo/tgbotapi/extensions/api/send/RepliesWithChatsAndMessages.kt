@@ -29,7 +29,7 @@ import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.venue.Venue
-import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.*
 import kotlinx.coroutines.flow.Flow
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
@@ -217,6 +217,38 @@ suspend inline fun TelegramBot.reply(
     allowSendingWithoutReply,
     replyMarkup
 )
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.reply(
+    toChatId: ChatId,
+    toMessageId: MessageId,
+    separator: TextSource? = null,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = reply(toChatId, toMessageId, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
+
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend fun TelegramBot.reply(
+    toChatId: ChatId,
+    toMessageId: MessageId,
+    separator: String,
+    disableWebPagePreview: Boolean? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null,
+    builderBody: EntitiesBuilderBody
+) = reply(toChatId, toMessageId, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
 
 
 // Venue

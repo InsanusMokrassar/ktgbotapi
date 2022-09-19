@@ -5,6 +5,8 @@
 * `Core`:
     * Fixes in `ChatMemberSerializer#serialize` method
     * Migration of `EntitiesBuilder` from `Utils` to `Core`
+* `API`:
+    * All the extensions related to text messages (replies, sending, editing) got their duplicates with `buildEntities` lambda and separator
 * `Utils`:
     * Migration of `EntitiesBuilder` from `Utils` to `Core`
 
