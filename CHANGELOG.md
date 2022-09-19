@@ -4,6 +4,9 @@
 
 * `Core`:
     * Fixes in `ChatMemberSerializer#serialize` method
+    * Migration of `EntitiesBuilder` from `Utils` to `Core`
+* `Utils`:
+    * Migration of `EntitiesBuilder` from `Utils` to `Core`
 
 ## 3.2.5
 
