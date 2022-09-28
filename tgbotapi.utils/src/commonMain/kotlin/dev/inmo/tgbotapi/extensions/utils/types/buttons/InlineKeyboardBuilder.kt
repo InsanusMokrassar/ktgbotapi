@@ -4,8 +4,7 @@ import dev.inmo.tgbotapi.types.LoginURL
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
-import dev.inmo.tgbotapi.utils.MatrixBuilder
-import dev.inmo.tgbotapi.utils.RowBuilder
+import dev.inmo.tgbotapi.utils.*
 
 /**
  * Core DSL part of Inline Keyboard DSL. Can accept only [InlineKeyboardButton] and returns ready to use
@@ -48,7 +47,7 @@ inline fun inlineKeyboard(
  */
 inline fun flatInlineKeyboard(
     block: InlineKeyboardRowBuilder.() -> Unit
-) = inlineKeyboard { row(block) }
+) = inlineKeyboard { row<InlineKeyboardButton>(block) }
 
 /**
  * Creates an [InlineKeyboardRowBuilder] and [apply] [block] with this builder
@@ -61,6 +60,7 @@ inline fun flatInlineKeyboard(
  * @see inlineQueryButton
  * @see urlButton
  */
+@Deprecated("Redundant", ReplaceWith("this.row(block)", "dev.inmo.tgbotapi.utils.row"))
 inline fun InlineKeyboardBuilder.row(
     block: InlineKeyboardRowBuilder.() -> Unit
 ) = add(InlineKeyboardRowBuilder().apply(block).row)

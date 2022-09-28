@@ -2,8 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
-import dev.inmo.tgbotapi.utils.MatrixBuilder
-import dev.inmo.tgbotapi.utils.RowBuilder
+import dev.inmo.tgbotapi.utils.*
 
 /**
  * Core DSL part of Keyboard DSL. Can accept only [KeyboardButton] and returns ready to use
@@ -58,7 +57,7 @@ inline fun flatReplyKeyboard(
     selective: Boolean? = null,
     block: ReplyKeyboardRowBuilder.() -> Unit
 ) = replyKeyboard(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective) {
-    row(block)
+    row<KeyboardButton>(block)
 }
 
 /**
@@ -69,6 +68,7 @@ inline fun flatReplyKeyboard(
  * @see requestLocationButton
  * @see requestPollButton
  */
+@Deprecated("Redundant", ReplaceWith("this.row(block)", "dev.inmo.tgbotapi.utils.row"))
 inline fun ReplyKeyboardBuilder.row(
     block: ReplyKeyboardRowBuilder.() -> Unit
 ) = add(ReplyKeyboardRowBuilder().apply(block).row)
