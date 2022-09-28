@@ -15,12 +15,12 @@ import dev.inmo.tgbotapi.utils.RowBuilder
  * @see InlineKeyboardBuilder.row
  * @see InlineKeyboardRowBuilder
  */
-class InlineKeyboardBuilder : MatrixBuilder<InlineKeyboardButton>() {
-    /**
-     * Creates [InlineKeyboardMarkup] using internal [matrix]
-     */
-    fun build() = InlineKeyboardMarkup(matrix)
-}
+typealias InlineKeyboardBuilder = MatrixBuilder<InlineKeyboardButton>
+
+/**
+ * Creates [InlineKeyboardMarkup] using internal [matrix]
+ */
+fun InlineKeyboardBuilder.build() = InlineKeyboardMarkup(matrix)
 
 /**
  * Row builder of [InlineKeyboardBuilder]
@@ -28,7 +28,7 @@ class InlineKeyboardBuilder : MatrixBuilder<InlineKeyboardButton>() {
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-class InlineKeyboardRowBuilder : RowBuilder<InlineKeyboardButton>()
+typealias InlineKeyboardRowBuilder = RowBuilder<InlineKeyboardButton>
 
 /**
  * Factory-function for [InlineKeyboardBuilder]. It will [apply] [block] to internally created [InlineKeyboardMarkup]

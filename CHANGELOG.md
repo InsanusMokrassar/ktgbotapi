@@ -2,6 +2,13 @@
 
 ## 3.2.7
 
+* `Utils`:
+  * Next classes become typealiases instead of classes:
+    * `ReplyKeyboardBuilder`
+    * `ReplyKeyboardRowBuilder`
+    * `InlineKeyboardBuilder`
+    * `InlineKeyboardRowBuilder`
+
 ## 3.2.6
 
 * `Core`:

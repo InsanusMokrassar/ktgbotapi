@@ -13,17 +13,17 @@ import dev.inmo.tgbotapi.utils.RowBuilder
  * @see ReplyKeyboardBuilder.row
  * @see ReplyKeyboardRowBuilder
  */
-class ReplyKeyboardBuilder : MatrixBuilder<KeyboardButton>() {
-    /**
-     * Creates [InlineKeyboardMarkup] using internal [matrix]
-     */
-    fun build(
-        resizeKeyboard: Boolean? = null,
-        oneTimeKeyboard: Boolean? = null,
-        inputFieldPlaceholder: String? = null,
-        selective: Boolean? = null,
-    ) = ReplyKeyboardMarkup(matrix, resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective)
-}
+typealias ReplyKeyboardBuilder = MatrixBuilder<KeyboardButton>
+
+/**
+ * Creates [InlineKeyboardMarkup] using internal [matrix]
+ */
+fun ReplyKeyboardBuilder.build(
+    resizeKeyboard: Boolean? = null,
+    oneTimeKeyboard: Boolean? = null,
+    inputFieldPlaceholder: String? = null,
+    selective: Boolean? = null,
+) = ReplyKeyboardMarkup(matrix, resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective)
 
 /**
  * Row builder of [KeyboardButton]
@@ -31,7 +31,7 @@ class ReplyKeyboardBuilder : MatrixBuilder<KeyboardButton>() {
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-class ReplyKeyboardRowBuilder : RowBuilder<KeyboardButton>()
+typealias ReplyKeyboardRowBuilder = RowBuilder<KeyboardButton>
 
 /**
  * Factory-function for [ReplyKeyboardBuilder]. It will [apply] [block] to internally created [ReplyKeyboardMarkup]
