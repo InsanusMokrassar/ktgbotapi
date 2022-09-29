@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.7.10"
+kotlin = "1.7.20"
 kotlin-serialization = "1.4.0"
 kotlin-coroutines = "1.6.4"
 
