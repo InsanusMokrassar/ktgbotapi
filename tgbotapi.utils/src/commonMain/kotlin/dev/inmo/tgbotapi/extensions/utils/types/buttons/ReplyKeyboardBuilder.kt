@@ -2,8 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.types.buttons
 
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
-import dev.inmo.tgbotapi.utils.MatrixBuilder
-import dev.inmo.tgbotapi.utils.RowBuilder
+import dev.inmo.tgbotapi.utils.*
 
 /**
  * Core DSL part of Keyboard DSL. Can accept only [KeyboardButton] and returns ready to use
@@ -13,17 +12,17 @@ import dev.inmo.tgbotapi.utils.RowBuilder
  * @see ReplyKeyboardBuilder.row
  * @see ReplyKeyboardRowBuilder
  */
-class ReplyKeyboardBuilder : MatrixBuilder<KeyboardButton>() {
-    /**
-     * Creates [InlineKeyboardMarkup] using internal [matrix]
-     */
-    fun build(
-        resizeKeyboard: Boolean? = null,
-        oneTimeKeyboard: Boolean? = null,
-        inputFieldPlaceholder: String? = null,
-        selective: Boolean? = null,
-    ) = ReplyKeyboardMarkup(matrix, resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective)
-}
+typealias ReplyKeyboardBuilder = MatrixBuilder<KeyboardButton>
+
+/**
+ * Creates [InlineKeyboardMarkup] using internal [matrix]
+ */
+fun ReplyKeyboardBuilder.build(
+    resizeKeyboard: Boolean? = null,
+    oneTimeKeyboard: Boolean? = null,
+    inputFieldPlaceholder: String? = null,
+    selective: Boolean? = null,
+) = ReplyKeyboardMarkup(matrix, resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective)
 
 /**
  * Row builder of [KeyboardButton]
@@ -31,7 +30,7 @@ class ReplyKeyboardBuilder : MatrixBuilder<KeyboardButton>() {
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
  */
-class ReplyKeyboardRowBuilder : RowBuilder<KeyboardButton>()
+typealias ReplyKeyboardRowBuilder = RowBuilder<KeyboardButton>
 
 /**
  * Factory-function for [ReplyKeyboardBuilder]. It will [apply] [block] to internally created [ReplyKeyboardMarkup]
@@ -58,7 +57,7 @@ inline fun flatReplyKeyboard(
     selective: Boolean? = null,
     block: ReplyKeyboardRowBuilder.() -> Unit
 ) = replyKeyboard(resizeKeyboard, oneTimeKeyboard, inputFieldPlaceholder, selective) {
-    row(block)
+    row<KeyboardButton>(block)
 }
 
 /**
@@ -69,6 +68,7 @@ inline fun flatReplyKeyboard(
  * @see requestLocationButton
  * @see requestPollButton
  */
+@Deprecated("Redundant", ReplaceWith("this.row(block)", "dev.inmo.tgbotapi.utils.row"))
 inline fun ReplyKeyboardBuilder.row(
     block: ReplyKeyboardRowBuilder.() -> Unit
 ) = add(ReplyKeyboardRowBuilder().apply(block).row)

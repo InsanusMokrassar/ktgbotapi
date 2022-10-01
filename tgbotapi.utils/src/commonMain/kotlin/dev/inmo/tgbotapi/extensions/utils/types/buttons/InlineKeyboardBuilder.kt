@@ -4,8 +4,7 @@ import dev.inmo.tgbotapi.types.LoginURL
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
-import dev.inmo.tgbotapi.utils.MatrixBuilder
-import dev.inmo.tgbotapi.utils.RowBuilder
+import dev.inmo.tgbotapi.utils.*
 
 /**
  * Core DSL part of Inline Keyboard DSL. Can accept only [InlineKeyboardButton] and returns ready to use
@@ -15,12 +14,12 @@ import dev.inmo.tgbotapi.utils.RowBuilder
  * @see InlineKeyboardBuilder.row
  * @see InlineKeyboardRowBuilder
  */
-class InlineKeyboardBuilder : MatrixBuilder<InlineKeyboardButton>() {
-    /**
-     * Creates [InlineKeyboardMarkup] using internal [matrix]
-     */
-    fun build() = InlineKeyboardMarkup(matrix)
-}
+typealias InlineKeyboardBuilder = MatrixBuilder<InlineKeyboardButton>
+
+/**
+ * Creates [InlineKeyboardMarkup] using internal [matrix]
+ */
+fun InlineKeyboardBuilder.build() = InlineKeyboardMarkup(matrix)
 
 /**
  * Row builder of [InlineKeyboardBuilder]
@@ -28,7 +27,7 @@ class InlineKeyboardBuilder : MatrixBuilder<InlineKeyboardButton>() {
  * @see inlineKeyboard
  * @see InlineKeyboardBuilder.row
  */
-class InlineKeyboardRowBuilder : RowBuilder<InlineKeyboardButton>()
+typealias InlineKeyboardRowBuilder = RowBuilder<InlineKeyboardButton>
 
 /**
  * Factory-function for [InlineKeyboardBuilder]. It will [apply] [block] to internally created [InlineKeyboardMarkup]
@@ -48,7 +47,7 @@ inline fun inlineKeyboard(
  */
 inline fun flatInlineKeyboard(
     block: InlineKeyboardRowBuilder.() -> Unit
-) = inlineKeyboard { row(block) }
+) = inlineKeyboard { row<InlineKeyboardButton>(block) }
 
 /**
  * Creates an [InlineKeyboardRowBuilder] and [apply] [block] with this builder
@@ -61,6 +60,7 @@ inline fun flatInlineKeyboard(
  * @see inlineQueryButton
  * @see urlButton
  */
+@Deprecated("Redundant", ReplaceWith("this.row(block)", "dev.inmo.tgbotapi.utils.row"))
 inline fun InlineKeyboardBuilder.row(
     block: InlineKeyboardRowBuilder.() -> Unit
 ) = add(InlineKeyboardRowBuilder().apply(block).row)
