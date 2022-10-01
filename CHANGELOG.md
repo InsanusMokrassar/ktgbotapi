@@ -2,6 +2,9 @@
 
 ## 3.2.7
 
+* `Versions`:
+    * `MicroUtils`: `0.12.13` -> `0.12.17`
+    * `Ktor`: `2.1.1` -> `2.1.2`
 * `Utils`:
   * Next classes become typealiases instead of classes:
     * `ReplyKeyboardBuilder`
