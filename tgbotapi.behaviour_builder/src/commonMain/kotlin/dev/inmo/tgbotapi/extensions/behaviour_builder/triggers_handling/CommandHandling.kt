@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.Mar
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
 import dev.inmo.tgbotapi.extensions.utils.botCommandTextSourceOrNull
 import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithParams
+import dev.inmo.tgbotapi.types.BotCommand
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -82,6 +83,15 @@ suspend fun <BC : BehaviourContext> BC.command(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ) = command(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+suspend fun <BC : BehaviourContext> BC.command(
+    botCommand: BotCommand,
+    requireOnlyCommandInMessage: Boolean = true,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
+) = command(botCommand.command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
 suspend fun <BC : BehaviourContext> BC.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
@@ -99,6 +109,15 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
     markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+suspend fun <BC : BehaviourContext> BC.onCommand(
+    botCommand: BotCommand,
+    requireOnlyCommandInMessage: Boolean = true,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
+): Job = onCommand(botCommand.command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     commandRegex: Regex,
@@ -134,6 +153,20 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+suspend fun <BC : BehaviourContext> BC.commandWithArgs(
+    botCommand: BotCommand,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
+) = commandWithArgs(
+    botCommand.command.toRegex(),
+    initialFilter = initialFilter,
+    subcontextUpdatesFilter = subcontextUpdatesFilter,
+    markerFactory = markerFactory,
+    scenarioReceiver = scenarioReceiver
+)
+
 suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -149,3 +182,11 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
 ): Job = onCommandWithArgs(command.toRegex(), initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
+    botCommand: BotCommand,
+    initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, TextMessage, Update> = MessageFilterByChat,
+    markerFactory: MarkerFactory<in TextMessage, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTwoTypesReceiver<BC, Unit, TextMessage, Array<String>>
+): Job = onCommandWithArgs(botCommand.command.toRegex(), initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
