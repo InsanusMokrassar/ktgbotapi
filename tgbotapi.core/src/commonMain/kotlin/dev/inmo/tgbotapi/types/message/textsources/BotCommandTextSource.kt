@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.types.message.textsources
 
-import dev.inmo.tgbotapi.types.usernameRegex
+import dev.inmo.tgbotapi.types.BotCommand
 import dev.inmo.tgbotapi.types.Username
+import dev.inmo.tgbotapi.types.usernameRegex
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.internal.*
 import kotlinx.serialization.Serializable
@@ -32,3 +33,6 @@ data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstru
  */
 @Suppress("NOTHING_TO_INLINE")
 inline fun botCommand(command: String) = BotCommandTextSource("/$command")
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun botCommand(botCommand: BotCommand) = botCommand(botCommand.command)

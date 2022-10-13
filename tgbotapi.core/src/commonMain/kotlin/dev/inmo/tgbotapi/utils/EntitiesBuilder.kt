@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.utils
 
 import dev.inmo.micro_utils.common.joinTo
+import dev.inmo.tgbotapi.types.BotCommand
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
@@ -148,6 +149,15 @@ inline fun EntitiesBuilder.botCommand(command: String) = add(dev.inmo.tgbotapi.t
  * Version of [EntitiesBuilder.botCommand] with new line at the end
  */
 inline fun EntitiesBuilder.botCommandln(command: String) = botCommand(command) + newLine
+/**
+ * Add botCommand using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.botCommand]
+ */
+inline fun EntitiesBuilder.botCommand(botCommand: BotCommand) = add(dev.inmo.tgbotapi.types.message.textsources.botCommand(botCommand))
+/**
+ * Version of [EntitiesBuilder.botCommand] with new line at the end
+ */
+inline fun EntitiesBuilder.botCommandln(botCommand: BotCommand) = botCommand(botCommand) + newLine
+
 
 
 /**
