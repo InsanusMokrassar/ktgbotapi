@@ -152,11 +152,11 @@ inline fun EntitiesBuilder.botCommandln(command: String) = botCommand(command) +
 /**
  * Add botCommand using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.botCommand]
  */
-inline fun EntitiesBuilder.botCommand(botCommand: BotCommand) = add(dev.inmo.tgbotapi.types.message.textsources.botCommand(botCommand.command))
+inline fun EntitiesBuilder.botCommand(botCommand: BotCommand) = add(dev.inmo.tgbotapi.types.message.textsources.botCommand(botCommand))
 /**
  * Version of [EntitiesBuilder.botCommand] with new line at the end
  */
-inline fun EntitiesBuilder.botCommandln(botCommand: BotCommand) = botCommand(botCommand.command) + newLine
+inline fun EntitiesBuilder.botCommandln(botCommand: BotCommand) = botCommand(botCommand) + newLine
 
 
 
