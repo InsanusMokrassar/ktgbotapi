@@ -13,14 +13,14 @@ private val commandRegex = Regex("[/!][^@\\s]*")
  * @see botCommand
  */
 @Serializable
-data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor(
+data class BotCommandTextSource @RiskFeature(DirectInvocationOfTextSourceConstructor) constructor (
     override val source: String
 ) : TextSource {
     val command: String by lazy {
-        commandRegex.find(source)?.value?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
+        commandRegex.find(source) ?.value ?.substring(1) ?: source.substring(1)// skip first symbol like "/" or "!"
     }
     val username: Username? by lazy {
-        Username(usernameRegex.find(source)?.value ?: return@lazy null)
+        Username(usernameRegex.find(source) ?.value ?: return@lazy null)
     }
 
     override val markdown: String by lazy { source.commandMarkdown() }
