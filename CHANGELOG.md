@@ -3,7 +3,12 @@
 ## 3.3.0
 
 * `Versions`:
-    * `MicroUtils`: `0.12.17` -> `0.13.0`
+    * `MicroUtils`: `0.12.17` -> `0.13.1`
+* `Core`:
+    * Add opportunity to create command text source and add command in entities builder
+      via `BotCommamd` (thanks to [d1shin](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/664))
+* `Behaviour Builder`:
+    * Add opportunity to use triggers with `BotCommand` (thanks to [d1shin](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/664))
 
 ## 3.2.7
 
