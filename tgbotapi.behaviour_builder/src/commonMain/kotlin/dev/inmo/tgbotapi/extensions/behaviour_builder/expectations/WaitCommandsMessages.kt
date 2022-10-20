@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.doWithRegistration
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.types.BotCommand
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
@@ -38,6 +39,12 @@ suspend fun BehaviourContext.waitCommandMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitCommandMessage(Regex(command), initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitCommandMessage(
+    botCommand: BotCommand,
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitCommandMessage(botCommand.command, initRequest, errorFactory)
 
 fun Flow<CommonMessage<TextContent>>.requireCommandAtStart() = filter {
     it.content.textSources.firstOrNull() is BotCommandTextSource
