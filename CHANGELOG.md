@@ -2,6 +2,8 @@
 
 ## 3.3.0
 
+**THIS VERSION CONTAINS UPGRADE KOTLIN (AND ALL RELATED LIBRARIES) UP TO 1.7.20**
+
 * `Versions`:
     * `Kotlin`: `1.7.10` -> `1.7.20`
     * `Kotlin Serialization`: `1.4.0` -> `1.4.1`
