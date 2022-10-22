@@ -3,12 +3,15 @@
 ## 3.3.0
 
 * `Versions`:
+    * `Kotlin`: `1.7.10` -> `1.7.20`
+    * `Kotlin Serialization`: `1.4.0` -> `1.4.1`
+    * `Korlibs`: `3.1.0` -> `3.2.0`
     * `MicroUtils`: `0.12.17` -> `0.13.1`
 * `Core`:
     * Add opportunity to create command text source and add command in entities builder
       via `BotCommamd` (thanks to [d1shin](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/664))
 * `Behaviour Builder`:
-    * Add opportunity to use triggers with `BotCommand` (thanks to [d1shin](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/664))
+    * Add opportunity to use triggers and waiters with `BotCommand` (thanks to [d1shin](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/664))
 
 ## 3.2.7
 
