@@ -6,10 +6,18 @@
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../../";</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -21,6 +29,7 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
@@ -31,7 +40,7 @@ if(savedDarkMode === true){
             </a>
     </div>
     <div>
-3.2.7    </div>
+3.3.0    </div>
     <div class="pull-right d-flex">
         <div class="filter-section" id="filter-section">
                 <button class="platform-tag platform-selector js-like" data-active="" data-filter=":docs:dokkaHtml/jsMain">js</button>
@@ -46,12 +55,12 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageIds="docs::dev.inmo.tgbotapi.webapps/ThemeParams///PointingToDeclaration//-1203563889">
-  <div class="breadcrumbs"><a href="../../../index.html">docs</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.webapps</a><span class="delimiter">/</span><a href="index.html">ThemeParams</a></div>
+  <div class="breadcrumbs"><a href="../../../index.html">docs</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.webapps</a><span class="delimiter">/</span><span class="current">ThemeParams</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Theme</span><wbr></wbr><span><span>Params</span></span></h1>
     <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">interface </span><a href="index.html">ThemeParams</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>    </div>
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">interface </span><a href="index.html">ThemeParams</a></div></div>    </div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Properties">Properties</button></div>
@@ -68,8 +77,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-240308021%2FProperties%2F-1203563889" anchor-label="backgroundColor" id="-240308021%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="background-color.html">backgroundColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-240308021%2FProperties%2F-1203563889" anchor-label="backgroundColor" id="-240308021%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="background-color.html">backgroundColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -85,8 +94,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-1146750636%2FProperties%2F-1203563889" anchor-label="backgroundColorHex" id="-1146750636%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="background-color-hex.html">backgroundColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-1146750636%2FProperties%2F-1203563889" anchor-label="backgroundColorHex" id="-1146750636%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="background-color-hex.html">backgroundColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -102,8 +111,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-4965041%2FProperties%2F-1203563889" anchor-label="buttonColor" id="-4965041%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="button-color.html">buttonColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-4965041%2FProperties%2F-1203563889" anchor-label="buttonColor" id="-4965041%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="button-color.html">buttonColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -119,8 +128,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="569339472%2FProperties%2F-1203563889" anchor-label="buttonColorHex" id="569339472%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="button-color-hex.html">buttonColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="569339472%2FProperties%2F-1203563889" anchor-label="buttonColorHex" id="569339472%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="button-color-hex.html">buttonColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -136,8 +145,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="609464156%2FProperties%2F-1203563889" anchor-label="buttonTextColor" id="609464156%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="button-text-color.html">buttonTextColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="609464156%2FProperties%2F-1203563889" anchor-label="buttonTextColor" id="609464156%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="button-text-color.html">buttonTextColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -153,8 +162,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-121068253%2FProperties%2F-1203563889" anchor-label="buttonTextColorHex" id="-121068253%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="button-text-color-hex.html">buttonTextColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-121068253%2FProperties%2F-1203563889" anchor-label="buttonTextColorHex" id="-121068253%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="button-text-color-hex.html">buttonTextColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -170,8 +179,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-857520476%2FProperties%2F-1203563889" anchor-label="hintColor" id="-857520476%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="hint-color.html">hintColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-857520476%2FProperties%2F-1203563889" anchor-label="hintColor" id="-857520476%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="hint-color.html">hintColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -187,8 +196,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-1768003365%2FProperties%2F-1203563889" anchor-label="hintColorHex" id="-1768003365%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="hint-color-hex.html">hintColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-1768003365%2FProperties%2F-1203563889" anchor-label="hintColorHex" id="-1768003365%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="hint-color-hex.html">hintColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -204,8 +213,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="87248087%2FProperties%2F-1203563889" anchor-label="linkColor" id="87248087%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="link-color.html">linkColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="87248087%2FProperties%2F-1203563889" anchor-label="linkColor" id="87248087%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="link-color.html">linkColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -221,8 +230,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-1088433720%2FProperties%2F-1203563889" anchor-label="linkColorHex" id="-1088433720%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="link-color-hex.html">linkColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-1088433720%2FProperties%2F-1203563889" anchor-label="linkColorHex" id="-1088433720%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="link-color-hex.html">linkColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -238,8 +247,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="693283129%2FProperties%2F-1203563889" anchor-label="secondaryBackgroundColor" id="693283129%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="secondary-background-color.html">secondaryBackgroundColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="693283129%2FProperties%2F-1203563889" anchor-label="secondaryBackgroundColor" id="693283129%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="secondary-background-color.html">secondaryBackgroundColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -255,8 +264,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="1553957414%2FProperties%2F-1203563889" anchor-label="secondaryBackgroundColorHex" id="1553957414%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="secondary-background-color-hex.html">secondaryBackgroundColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="1553957414%2FProperties%2F-1203563889" anchor-label="secondaryBackgroundColorHex" id="1553957414%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="secondary-background-color-hex.html">secondaryBackgroundColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -272,8 +281,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="82052810%2FProperties%2F-1203563889" anchor-label="textColor" id="82052810%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="text-color.html">textColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="82052810%2FProperties%2F-1203563889" anchor-label="textColor" id="82052810%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="text-color.html">textColor</a><span class="token operator">: </span><a href="../index.html#-370008538%2FClasslikes%2F-1203563889">HEXColor</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
@@ -289,8 +298,8 @@ if(savedDarkMode === true){
             <div>
               <div class="title">
                 <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
-                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark js-like" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-1242108171%2FProperties%2F-1203563889" anchor-label="textColorHex" id="-1242108171%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="text-color-hex.html">textColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":docs:dokkaHtml/jsMain" data-filterable-set=":docs:dokkaHtml/jsMain" data-active="" data-toggle=":docs:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":docs:dokkaHtml/jsMain"><a data-name="-1242108171%2FProperties%2F-1203563889" anchor-label="textColorHex" id="-1242108171%2FProperties%2F-1203563889" data-filterable-set=":docs:dokkaHtml/jsMain"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="text-color-hex.html">textColorHex</a><span class="token operator">: </span><a href="../-color/-hex/index.html">Color.Hex</a><span class="token operator">?</span></div></div>                </div>
               </div>
             </div>
           </div>
