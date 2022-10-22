@@ -10,6 +10,9 @@
 * `Core`:
     * Add opportunity to create command text source and add command in entities builder
       via `BotCommamd` (thanks to [d1shin](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/664))
+* `API`:
+    * New extensions `TelegramBot#getStickerSetOrNull` and `TelegramBot#getStickerSetOrThrow`
+        * Old `TelegramBot#getStickerSet` has been deprecated
 * `Behaviour Builder`:
     * Add opportunity to use triggers and waiters with `BotCommand` (thanks to [d1shin](https://github.com/InsanusMokrassar/TelegramBotAPI/pull/664))
 
