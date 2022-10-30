@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 3.4.0
+## 3.3.1
 
 * `Utils`:
     * New extensions on `CommonMessage`: `hasCommands` and `hasNoCommands`. Useful for the `initialFilter` parameter in behaviour builder triggers.
