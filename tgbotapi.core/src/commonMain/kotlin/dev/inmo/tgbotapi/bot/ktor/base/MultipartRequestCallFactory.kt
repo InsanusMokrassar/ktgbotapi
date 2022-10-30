@@ -17,7 +17,7 @@ class MultipartRequestCallFactory : AbstractRequestCallFactory() {
     ): Any? = (request as? MultipartRequest) ?.let { castedRequest ->
         MultiPartFormDataContent(
             formData {
-                val params = castedRequest.paramsJson.mapWithCommonValues()
+                val params = castedRequest.paramsJson.mapWithCommonValues() - castedRequest.mediaMap.keys
                 for ((key, value) in castedRequest.mediaMap + params) {
                     when (value) {
                         is MultipartFile -> appendInput(
