@@ -1,8 +1,9 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
-import dev.inmo.tgbotapi.extensions.utils.botCommandTextSourceOrNull
+import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 
 /**
  * A predicate to test whether a message contains any commands in its body.
@@ -20,8 +21,9 @@ import dev.inmo.tgbotapi.types.message.content.TextContent
  * @return true if this [CommonMessage] contains any commands. False otherwise.
  * @see hasNoCommands
  */
-fun CommonMessage<*>.hasCommands(): Boolean =
-    (this.content as? TextContent)?.textSources?.any { it.botCommandTextSourceOrNull() != null } ?: false
+fun CommonMessage<*>.hasCommands(): Boolean = withContentOrNull<TextContent>() ?.content ?.textSources ?.any {
+    it is BotCommandTextSource
+} ?: false
 
 /**
  * A predicate to test whether a message contains any commands in its body.
