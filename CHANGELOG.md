@@ -2,6 +2,10 @@
 
 ## 3.3.1
 
+* `Versions`:
+    * `Ktor`: `2.1.2` -> `2.1.3`
+    * `Klock`: `3.2.0` -> `3.3.0`
+    * `MicroUtils`: `0.13.1` -> `0.13.2`
 * `Utils`:
     * New extensions on `CommonMessage`: `hasCommands` and `hasNoCommands`. Useful for the `initialFilter` parameter in behaviour builder triggers.
 
