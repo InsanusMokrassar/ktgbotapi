@@ -2,4 +2,4 @@ package dev.inmo.tgbotapi.types.message.abstracts
 
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
-interface PossiblySentViaBotCommonMessage<T: MessageContent> : CommonMessage<T>, PossiblySentViaBot
+sealed interface PossiblySentViaBotCommonMessage<T: MessageContent> : CommonMessage<T>, PossiblySentViaBot

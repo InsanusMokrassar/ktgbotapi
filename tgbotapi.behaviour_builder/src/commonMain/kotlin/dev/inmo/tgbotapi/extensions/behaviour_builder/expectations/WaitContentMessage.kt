@@ -103,12 +103,12 @@ suspend fun BehaviourContext.waitAudioMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean = true
-) = waitContentMessage<AudioMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitContentMessage<AudioMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitDocumentMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean = true
-) = waitContentMessage<DocumentMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitContentMessage<DocumentMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitMediaMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -118,12 +118,12 @@ suspend fun BehaviourContext.waitAnyMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean = true
-) = waitContentMessage<MediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitContentMessage<MediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitVisualMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean = true
-) = waitContentMessage<VisualMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitContentMessage<VisualMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitTextedMediaContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },

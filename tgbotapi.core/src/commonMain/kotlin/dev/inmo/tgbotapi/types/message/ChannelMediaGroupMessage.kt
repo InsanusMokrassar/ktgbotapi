@@ -7,9 +7,9 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 
-data class ChannelMediaGroupMessage<T : MediaGroupContent>(
+data class ChannelMediaGroupMessage<T : MediaGroupPartContent>(
     override val messageId: MessageId,
     override val chat: Chat,
     override val date: DateTime,

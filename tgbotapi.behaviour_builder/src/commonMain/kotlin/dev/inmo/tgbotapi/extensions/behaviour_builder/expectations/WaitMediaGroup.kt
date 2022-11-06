@@ -14,7 +14,7 @@ typealias MediaGroupFilter<T> = SimpleFilter<List<MediaGroupMessage<T>>>
 
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified O : MediaGroupContent> BehaviourContext.buildMediaGroupWaiter(
+suspend inline fun <reified O : MediaGroupPartContent> BehaviourContext.buildMediaGroupWaiter(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<List<O>> = buildMediaGroupMessagesWaiter<O>(initRequest, errorFactory).map { it.map { it.content } }
@@ -22,19 +22,19 @@ suspend inline fun <reified O : MediaGroupContent> BehaviourContext.buildMediaGr
 suspend fun BehaviourContext.waitMediaGroup(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = buildMediaGroupWaiter<MediaGroupContent>(initRequest, errorFactory)
+) = buildMediaGroupWaiter<MediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitPlaylist(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = buildMediaGroupWaiter<AudioMediaGroupContent>(initRequest, errorFactory)
+) = buildMediaGroupWaiter<AudioMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitDocumentsGroup(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = buildMediaGroupWaiter<DocumentMediaGroupContent>(initRequest, errorFactory)
+) = buildMediaGroupWaiter<DocumentMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitVisualGallery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = buildMediaGroupWaiter<VisualMediaGroupContent>(initRequest, errorFactory)
+) = buildMediaGroupWaiter<VisualMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitPhotoGallery(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

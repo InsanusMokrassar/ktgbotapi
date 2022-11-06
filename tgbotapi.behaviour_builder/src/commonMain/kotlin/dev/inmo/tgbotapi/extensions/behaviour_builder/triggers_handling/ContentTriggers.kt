@@ -287,7 +287,7 @@ suspend fun <BC : BehaviourContext> BC.onVenue(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onAudioMediaGroup(
-    initialFilter: CommonMessageFilter<AudioMediaGroupContent>? = null,
+    initialFilter: CommonMessageFilter<AudioMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, AudioMediaGroupMessage, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in AudioMediaGroupMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, AudioMediaGroupMessage>
@@ -311,7 +311,7 @@ suspend fun <BC : BehaviourContext> BC.onAudioMediaGroup(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onDocumentMediaGroupContent(
-    initialFilter: CommonMessageFilter<DocumentMediaGroupContent>? = null,
+    initialFilter: CommonMessageFilter<DocumentMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DocumentMediaGroupMessage, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in DocumentMediaGroupMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DocumentMediaGroupMessage>

@@ -1027,18 +1027,16 @@ suspend fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) {
-    execute(
-        content.createResend(
-            to.chat.id,
-            disableNotification,
-            protectContent,
-            to.messageId,
-            allowSendingWithoutReply,
-            replyMarkup
-        )
+) = execute(
+    content.createResend(
+        to.chat.id,
+        disableNotification,
+        protectContent,
+        to.messageId,
+        allowSendingWithoutReply,
+        replyMarkup
     )
-}
+)
 
 /**
  * Will use [handleLiveLocation] with replying to [message] each time new message will be sent by live location update
@@ -1219,7 +1217,7 @@ suspend fun TelegramBot.reply(
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
         )
-        is AudioMediaGroupContent -> reply(
+        is AudioMediaGroupPartContent -> reply(
             to = to,
             audio = content.media,
             text = text,
@@ -1291,7 +1289,7 @@ suspend fun TelegramBot.reply(
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
         )
-        is AudioMediaGroupContent -> reply(
+        is AudioMediaGroupPartContent -> reply(
             to = to,
             audio = content.media,
             entities = entities,

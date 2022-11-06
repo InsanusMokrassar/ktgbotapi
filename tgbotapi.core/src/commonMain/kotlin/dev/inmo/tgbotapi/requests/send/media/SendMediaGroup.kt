@@ -7,21 +7,27 @@ import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
-import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.AudioContent
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.extensions.asMediaGroupContent
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.buildJsonArray
 
 const val rawSendingMediaGroupsWarning = "Media groups contains restrictions related to combinations of media" +
     " types. Currently it is possible to combine photo + video OR audio OR documents"
 
 @RiskFeature(rawSendingMediaGroupsWarning)
-fun <T : MediaGroupContent> SendMediaGroup(
+fun <T : MediaGroupPartContent> SendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberTelegramMedia>,
     disableNotification: Boolean = false,
@@ -107,10 +113,22 @@ inline fun SendVisualMediaGroup(
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<VisualMediaGroupContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<VisualMediaGroupPartContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
-private val messagesListSerializer: KSerializer<List<MediaGroupMessage<MediaGroupContent>>>
-    = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
+private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent>> {
+    private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
+    override val descriptor: SerialDescriptor = serializer.descriptor
+
+    override fun deserialize(decoder: Decoder): PossiblySentViaBotCommonMessage<MediaGroupContent> {
+        val messages = serializer.deserialize(decoder)
+        return messages.asMediaGroupContent()
+    }
+
+    override fun serialize(encoder: Encoder, value: PossiblySentViaBotCommonMessage<MediaGroupContent>) {
+        serializer.serialize(encoder, value.content.group.map { it.sourceMessage })
+    }
+
+}
 
 @Serializable
 data class SendMediaGroupData internal constructor(
@@ -125,7 +143,7 @@ data class SendMediaGroupData internal constructor(
     override val replyToMessageId: MessageId? = null,
     @SerialName(allowSendingWithoutReplyField)
     override val allowSendingWithoutReply: Boolean? = null
-) : DataRequest<List<MediaGroupMessage<MediaGroupContent>>>, SendMessageRequest<List<MediaGroupMessage<MediaGroupContent>>> {
+) : DataRequest<List<MediaGroupMessage<MediaGroupPartContent>>>, SendMessageRequest<List<MediaGroupMessage<MediaGroupPartContent>>> {
     @SerialName(mediaField)
     private val convertedMedia: String
         get() = buildJsonArray {
@@ -138,7 +156,7 @@ data class SendMediaGroupData internal constructor(
     override fun method(): String = "sendMediaGroup"
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-    override val resultDeserializer: DeserializationStrategy<List<MediaGroupMessage<MediaGroupContent>>>
+    override val resultDeserializer: DeserializationStrategy<List<MediaGroupMessage<MediaGroupPartContent>>>
         get() = messagesListSerializer
 }
 

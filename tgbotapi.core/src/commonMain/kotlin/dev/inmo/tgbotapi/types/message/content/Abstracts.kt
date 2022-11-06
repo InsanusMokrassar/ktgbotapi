@@ -15,10 +15,10 @@ sealed interface MessageContent: ResendableContent {
     companion object {
         @RiskFeature("This serialization module can be changed in near releases")
         fun serializationModule(
-            visualMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<VisualMediaGroupContent>.() -> Unit = {},
-            documentMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<DocumentMediaGroupContent>.() -> Unit = {},
-            audioMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<AudioMediaGroupContent>.() -> Unit = {},
-            mediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<MediaGroupContent>.() -> Unit = {},
+            visualMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<VisualMediaGroupPartContent>.() -> Unit = {},
+            documentMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<DocumentMediaGroupPartContent>.() -> Unit = {},
+            audioMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<AudioMediaGroupPartContent>.() -> Unit = {},
+            mediaGroupPartContentAdditionalBuilder: PolymorphicModuleBuilder<MediaGroupPartContent>.() -> Unit = {},
             textedMediaContentAdditionalBuilder: PolymorphicModuleBuilder<TextedMediaContent>.() -> Unit = {},
             mediaContentAdditionalBuilder: PolymorphicModuleBuilder<MediaContent>.() -> Unit = {},
             mediaCollectionContentAdditionalBuilder: PolymorphicModuleBuilder<MediaCollectionContent<*>>.() -> Unit = {},
@@ -73,24 +73,24 @@ sealed interface MessageContent: ResendableContent {
 
                 textedMediaContentAdditionalBuilder()
             }
-            polymorphic(MediaGroupContent::class) {
+            polymorphic(MediaGroupPartContent::class) {
                 subclass(PhotoContent::class)
                 subclass(AudioContent::class)
                 subclass(DocumentContent::class)
 
-                mediaGroupContentAdditionalBuilder()
+                mediaGroupPartContentAdditionalBuilder()
             }
-            polymorphic(AudioMediaGroupContent::class) {
+            polymorphic(AudioMediaGroupPartContent::class) {
                 subclass(AudioContent::class)
 
                 audioMediaGroupContentAdditionalBuilder()
             }
-            polymorphic(DocumentMediaGroupContent::class) {
+            polymorphic(DocumentMediaGroupPartContent::class) {
                 subclass(DocumentContent::class)
 
                 documentMediaGroupContentAdditionalBuilder()
             }
-            polymorphic(VisualMediaGroupContent::class) {
+            polymorphic(VisualMediaGroupPartContent::class) {
                 subclass(PhotoContent::class)
                 subclass(VideoContent::class)
 

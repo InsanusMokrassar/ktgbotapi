@@ -1038,16 +1038,16 @@ inline fun Message.requireChannelEventMessage(): ChannelEventMessage<ChannelEven
     this as ChannelEventMessage<ChannelEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelMediaGroupMessage(block: (ChannelMediaGroupMessage<MediaGroupContent>) -> T) =
+inline fun <T> Message.whenChannelMediaGroupMessage(block: (ChannelMediaGroupMessage<MediaGroupPartContent>) -> T) =
     asChannelMediaGroupMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent>? =
-    this as? ChannelMediaGroupMessage<MediaGroupContent>
+inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupPartContent>? =
+    this as? ChannelMediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
-inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupContent> =
-    this as ChannelMediaGroupMessage<MediaGroupContent>
+inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupPartContent> =
+    this as ChannelMediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
 inline fun <T> Message.whenCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) =
@@ -1062,16 +1062,16 @@ inline fun Message.requireCommonGroupEventMessage(): CommonGroupEventMessage<Gro
     this as CommonGroupEventMessage<GroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupContent>) -> T) =
+inline fun <T> Message.whenCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupPartContent>) -> T) =
     asCommonMediaGroupMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent>? =
-    this as? CommonMediaGroupMessage<MediaGroupContent>
+inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupPartContent>? =
+    this as? CommonMediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
-inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupContent> =
-    this as CommonMediaGroupMessage<MediaGroupContent>
+inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupPartContent> =
+    this as CommonMediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
 inline fun <T> Message.whenCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) =
@@ -1220,16 +1220,16 @@ inline fun Message.requireGroupContentMessage(): GroupContentMessage<MessageCont
     this as GroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage<MediaGroupContent>) -> T) =
+inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage<MediaGroupPartContent>) -> T) =
     asMediaGroupMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupContent>? =
-    this as? MediaGroupMessage<MediaGroupContent>
+inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent>? =
+    this as? MediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
-inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupContent> =
-    this as MediaGroupMessage<MediaGroupContent>
+inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent> =
+    this as MediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
 inline fun <T> Message.whenPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T) =
@@ -2836,26 +2836,26 @@ inline fun ResendableContent.asVenueContent(): VenueContent? = this as? VenueCon
 inline fun ResendableContent.requireVenueContent(): VenueContent = this as VenueContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenAudioMediaGroupContent(block: (AudioMediaGroupContent) -> T) =
+inline fun <T> ResendableContent.whenAudioMediaGroupContent(block: (AudioMediaGroupPartContent) -> T) =
     asAudioMediaGroupContent()?.let(block)
 
 @PreviewFeature
-inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupContent? = this as? AudioMediaGroupContent
+inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupPartContent? = this as? AudioMediaGroupPartContent
 
 @PreviewFeature
-inline fun ResendableContent.requireAudioMediaGroupContent(): AudioMediaGroupContent = this as AudioMediaGroupContent
+inline fun ResendableContent.requireAudioMediaGroupContent(): AudioMediaGroupPartContent = this as AudioMediaGroupPartContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenDocumentMediaGroupContent(block: (DocumentMediaGroupContent) -> T) =
+inline fun <T> ResendableContent.whenDocumentMediaGroupContent(block: (DocumentMediaGroupPartContent) -> T) =
     asDocumentMediaGroupContent()?.let(block)
 
 @PreviewFeature
-inline fun ResendableContent.asDocumentMediaGroupContent(): DocumentMediaGroupContent? =
-    this as? DocumentMediaGroupContent
+inline fun ResendableContent.asDocumentMediaGroupContent(): DocumentMediaGroupPartContent? =
+    this as? DocumentMediaGroupPartContent
 
 @PreviewFeature
-inline fun ResendableContent.requireDocumentMediaGroupContent(): DocumentMediaGroupContent =
-    this as DocumentMediaGroupContent
+inline fun ResendableContent.requireDocumentMediaGroupContent(): DocumentMediaGroupPartContent =
+    this as DocumentMediaGroupPartContent
 
 @PreviewFeature
 inline fun <T> ResendableContent.whenMediaCollectionContent(block: (MediaCollectionContent<TelegramMediaFile>) -> T) =
@@ -2891,14 +2891,14 @@ inline fun ResendableContent.asMediaContent(): MediaContent? = this as? MediaCon
 inline fun ResendableContent.requireMediaContent(): MediaContent = this as MediaContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenMediaGroupContent(block: (MediaGroupContent) -> T) =
+inline fun <T> ResendableContent.whenMediaGroupContent(block: (MediaGroupPartContent) -> T) =
     asMediaGroupContent()?.let(block)
 
 @PreviewFeature
-inline fun ResendableContent.asMediaGroupContent(): MediaGroupContent? = this as? MediaGroupContent
+inline fun ResendableContent.asMediaGroupContent(): MediaGroupPartContent? = this as? MediaGroupPartContent
 
 @PreviewFeature
-inline fun ResendableContent.requireMediaGroupContent(): MediaGroupContent = this as MediaGroupContent
+inline fun ResendableContent.requireMediaGroupContent(): MediaGroupPartContent = this as MediaGroupPartContent
 
 @PreviewFeature
 inline fun <T> ResendableContent.whenMessageContent(block: (MessageContent) -> T) = asMessageContent()?.let(block)
@@ -2910,14 +2910,14 @@ inline fun ResendableContent.asMessageContent(): MessageContent? = this as? Mess
 inline fun ResendableContent.requireMessageContent(): MessageContent = this as MessageContent
 
 @PreviewFeature
-inline fun <T> ResendableContent.whenVisualMediaGroupContent(block: (VisualMediaGroupContent) -> T) =
+inline fun <T> ResendableContent.whenVisualMediaGroupContent(block: (VisualMediaGroupPartContent) -> T) =
     asVisualMediaGroupContent()?.let(block)
 
 @PreviewFeature
-inline fun ResendableContent.asVisualMediaGroupContent(): VisualMediaGroupContent? = this as? VisualMediaGroupContent
+inline fun ResendableContent.asVisualMediaGroupContent(): VisualMediaGroupPartContent? = this as? VisualMediaGroupPartContent
 
 @PreviewFeature
-inline fun ResendableContent.requireVisualMediaGroupContent(): VisualMediaGroupContent = this as VisualMediaGroupContent
+inline fun ResendableContent.requireVisualMediaGroupContent(): VisualMediaGroupPartContent = this as VisualMediaGroupPartContent
 
 @PreviewFeature
 inline fun <T> ResendableContent.whenAnimationContent(block: (AnimationContent) -> T) = asAnimationContent()?.let(block)

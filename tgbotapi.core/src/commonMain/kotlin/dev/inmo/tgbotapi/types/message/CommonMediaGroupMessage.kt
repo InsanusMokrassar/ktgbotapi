@@ -6,9 +6,9 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 
-data class CommonMediaGroupMessage<T : MediaGroupContent>(
+data class CommonMediaGroupMessage<T : MediaGroupPartContent>(
     override val messageId: MessageId,
     override val from: User,
     override val chat: Chat,

@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 
 /**
@@ -18,14 +18,14 @@ import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
  */
 suspend inline fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
-    messages: List<MediaGroupMessage<MediaGroupContent>>,
+    messages: List<MediaGroupMessage<MediaGroupPartContent>>,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-): List<MediaGroupMessage<MediaGroupContent>> {
+): List<MediaGroupMessage<MediaGroupPartContent>> {
     val first = messages.first().content.toMediaGroupMemberTelegramMedia().let {
         if (text != null) {
             when (it) {
@@ -57,7 +57,7 @@ suspend inline fun TelegramBot.copyMessages(
  */
 suspend inline fun TelegramBot.copyMessages(
     toChat: Chat,
-    messages: List<MediaGroupMessage<MediaGroupContent>>,
+    messages: List<MediaGroupMessage<MediaGroupPartContent>>,
     text: String? = null,
     parseMode: ParseMode? = null,
     disableNotification: Boolean = false,
@@ -102,13 +102,13 @@ suspend inline fun TelegramBot.copyMessages(
  */
 suspend inline fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
-    messages: List<MediaGroupMessage<MediaGroupContent>>,
+    messages: List<MediaGroupMessage<MediaGroupPartContent>>,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-): List<MediaGroupMessage<MediaGroupContent>> {
+): List<MediaGroupMessage<MediaGroupPartContent>> {
     val first = messages.first().content.toMediaGroupMemberTelegramMedia().let {
         when (it) {
             is TelegramMediaAudio -> TelegramMediaAudio(it.file, entities, it.duration, it.performer, it.title, it.thumb)
@@ -136,7 +136,7 @@ suspend inline fun TelegramBot.copyMessages(
  */
 suspend inline fun TelegramBot.copyMessages(
     toChat: Chat,
-    messages: List<MediaGroupMessage<MediaGroupContent>>,
+    messages: List<MediaGroupMessage<MediaGroupPartContent>>,
     entities: TextSourcesList,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,

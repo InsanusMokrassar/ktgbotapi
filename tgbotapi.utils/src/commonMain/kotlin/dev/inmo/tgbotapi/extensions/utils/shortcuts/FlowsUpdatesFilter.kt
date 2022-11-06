@@ -31,7 +31,7 @@ inline fun <reified T: MessageContent> Flow<BaseSentMessageUpdate>.filterContent
 ): Flow<ContentMessage<T>> = asContentMessagesFlow().mapNotNull(filterForContentMessage())
 
 @RiskFeature("This method is low-level")
-inline fun <reified T : MediaGroupContent> Flow<SentMediaGroupUpdate>.filterMediaGroupMessages(
+inline fun <reified T : MediaGroupPartContent> Flow<SentMediaGroupUpdate>.filterMediaGroupMessages(
 ): Flow<List<CommonMessage<T>>> = map {
     it.data.mapNotNull { message ->
         if (message.content is T) {
@@ -69,7 +69,7 @@ inline fun <reified T: MessageContent> FlowsUpdatesFilter.filterContentMessages(
  */
 @Suppress("UNCHECKED_CAST")
 @RiskFeature(lowLevelRiskFeatureMessage)
-inline fun <reified T: MediaGroupContent> FlowsUpdatesFilter.filterMediaGroupMessages(
+inline fun <reified T: MediaGroupPartContent> FlowsUpdatesFilter.filterMediaGroupMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ): Flow<List<CommonMessage<T>>> {
     return (scopeToIncludeChannels ?.let { scope ->
@@ -212,10 +212,10 @@ fun FlowsUpdatesFilter.voiceMessages(
 ) = filterContentMessages<VoiceContent>(scopeToIncludeChannels)
 
 
-fun Flow<SentMediaGroupUpdate>.mediaGroupMessages() = filterMediaGroupMessages<MediaGroupContent>()
+fun Flow<SentMediaGroupUpdate>.mediaGroupMessages() = filterMediaGroupMessages<MediaGroupPartContent>()
 fun FlowsUpdatesFilter.mediaGroupMessages(
     scopeToIncludeChannels: CoroutineScope? = null
-) = filterMediaGroupMessages<MediaGroupContent>(scopeToIncludeChannels)
+) = filterMediaGroupMessages<MediaGroupPartContent>(scopeToIncludeChannels)
 
 fun Flow<SentMediaGroupUpdate>.mediaGroupPhotosMessages() = filterMediaGroupMessages<PhotoContent>()
 fun FlowsUpdatesFilter.mediaGroupPhotosMessages(
@@ -227,10 +227,10 @@ fun FlowsUpdatesFilter.mediaGroupVideosMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = filterMediaGroupMessages<VideoContent>(scopeToIncludeChannels)
 
-fun Flow<SentMediaGroupUpdate>.mediaGroupVisualMessages() = filterMediaGroupMessages<VisualMediaGroupContent>()
+fun Flow<SentMediaGroupUpdate>.mediaGroupVisualMessages() = filterMediaGroupMessages<VisualMediaGroupPartContent>()
 fun FlowsUpdatesFilter.mediaGroupVisualMessages(
     scopeToIncludeChannels: CoroutineScope? = null
-) = filterMediaGroupMessages<VisualMediaGroupContent>(scopeToIncludeChannels)
+) = filterMediaGroupMessages<VisualMediaGroupPartContent>(scopeToIncludeChannels)
 
 fun Flow<SentMediaGroupUpdate>.mediaGroupAudioMessages() = filterMediaGroupMessages<AudioContent>()
 fun FlowsUpdatesFilter.mediaGroupAudioMessages(

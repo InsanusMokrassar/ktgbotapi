@@ -1379,7 +1379,7 @@ suspend fun TelegramBot.send(
 @JvmName("sendMedaGroupByContent")
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
-    media: List<MediaGroupContent>,
+    media: List<MediaGroupPartContent>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -1393,7 +1393,7 @@ suspend fun TelegramBot.send(
 @JvmName("sendMedaGroupByContent")
 suspend fun TelegramBot.send(
     chat: Chat,
-    media: List<MediaGroupContent>,
+    media: List<MediaGroupPartContent>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -1536,7 +1536,7 @@ suspend fun TelegramBot.send(
 @JvmName("sendVisualMediaGroupByContent")
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
-    media: List<VisualMediaGroupContent>,
+    media: List<VisualMediaGroupPartContent>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -1549,7 +1549,7 @@ suspend fun TelegramBot.send(
 @JvmName("sendVisualMediaGroupByContent")
 suspend fun TelegramBot.send(
     chat: Chat,
-    media: List<VisualMediaGroupContent>,
+    media: List<VisualMediaGroupPartContent>,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,

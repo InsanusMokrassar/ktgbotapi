@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
 @RiskFeature(lowLevelRiskFeatureMessage)
-suspend inline fun <reified T : MediaGroupContent> BehaviourContext.buildMediaGroupMessagesWaiter(
+suspend inline fun <reified T : MediaGroupPartContent> BehaviourContext.buildMediaGroupMessagesWaiter(
     initRequest: Request<*>? = null,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<List<MediaGroupMessage<T>>> = flowsUpdatesFilter.expectFlow(bot, initRequest, errorFactory) { update ->
@@ -26,19 +26,19 @@ suspend inline fun <reified T : MediaGroupContent> BehaviourContext.buildMediaGr
 suspend fun BehaviourContext.waitMediaGroupMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = buildMediaGroupMessagesWaiter<MediaGroupContent>(initRequest, errorFactory)
+) = buildMediaGroupMessagesWaiter<MediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitPlaylistMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = buildMediaGroupMessagesWaiter<AudioMediaGroupContent>(initRequest, errorFactory)
+) = buildMediaGroupMessagesWaiter<AudioMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitDocumentsGroupMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = buildMediaGroupMessagesWaiter<DocumentMediaGroupContent>(initRequest, errorFactory)
+) = buildMediaGroupMessagesWaiter<DocumentMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitVisualGalleryMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = buildMediaGroupMessagesWaiter<VisualMediaGroupContent>(initRequest, errorFactory)
+) = buildMediaGroupMessagesWaiter<VisualMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitPhotoGalleryMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
