@@ -3,8 +3,12 @@ package dev.inmo.tgbotapi.extensions.api.chat.invite_links
 import com.soywiz.klock.DateTime
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.invite_links.EditChatInviteLink
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.ChatInviteLink
+import dev.inmo.tgbotapi.types.MembersLimit
+import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.chat.PublicChat
+import dev.inmo.tgbotapi.types.toTelegramDate
 
 suspend fun TelegramBot.editChatInviteLinkUnlimited(
     chatId: ChatIdentifier,

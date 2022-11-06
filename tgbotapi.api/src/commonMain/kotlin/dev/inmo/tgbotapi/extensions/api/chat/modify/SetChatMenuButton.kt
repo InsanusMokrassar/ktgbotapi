@@ -1,8 +1,9 @@
 package dev.inmo.tgbotapi.extensions.api.chat.modify
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.requests.chat.modify.*
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.requests.chat.modify.SetChatMenuButton
+import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.MenuButton
 import dev.inmo.tgbotapi.types.chat.PrivateChat
 
 suspend fun TelegramBot.setChatMenuButton(
