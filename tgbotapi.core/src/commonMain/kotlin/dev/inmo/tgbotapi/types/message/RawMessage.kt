@@ -12,6 +12,9 @@ import dev.inmo.tgbotapi.types.games.RawGame
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.*
@@ -90,6 +93,11 @@ internal data class RawMessage(
     private val video_chat_started: VideoChatStarted? = null,
     private val video_chat_ended: VideoChatEnded? = null,
     private val video_chat_participants_invited: VideoChatParticipantsInvited? = null,
+
+    // Forum
+    private val forum_topic_created: ForumTopicCreated? = null,
+    private val forum_topic_closed: ForumTopicClosed? = null,
+    private val forum_topic_reopened: ForumTopicReopened? = null,
 
     // AutoDelete Message time changed
     private val message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged? = null,
@@ -204,6 +212,9 @@ internal data class RawMessage(
             video_chat_started != null -> video_chat_started
             video_chat_scheduled != null -> video_chat_scheduled
             message_auto_delete_timer_changed != null -> message_auto_delete_timer_changed
+            forum_topic_created != null -> forum_topic_created
+            forum_topic_closed != null -> forum_topic_closed
+            forum_topic_reopened != null -> forum_topic_reopened
             video_chat_ended != null -> video_chat_ended
             video_chat_participants_invited != null -> video_chat_participants_invited
             delete_chat_photo -> DeleteChatPhoto()
