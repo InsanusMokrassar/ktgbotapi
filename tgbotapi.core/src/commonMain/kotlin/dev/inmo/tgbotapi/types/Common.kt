@@ -11,6 +11,7 @@ import kotlin.jvm.JvmInline
 
 typealias Identifier = Long
 typealias MessageId = Long
+typealias MessageThreadId = Long
 typealias MessageIdentifier = MessageId
 typealias InlineQueryIdentifier = String
 typealias UpdateIdentifier = Long
@@ -148,6 +149,7 @@ const val tgWebAppStartParamField = "tgWebAppStartParam"
 const val chatIdField = "chat_id"
 const val senderChatIdField = "sender_chat_id"
 const val messageIdField = "message_id"
+const val messageThreadIdField = "message_thread_id"
 const val updateIdField = "update_id"
 const val fromChatIdField = "from_chat_id"
 const val disableWebPagePreviewField = "disable_web_page_preview"
@@ -313,6 +315,7 @@ const val botCommandsField = "commands"
 const val scopeField = "scope"
 
 const val isMemberField = "is_member"
+const val isForumField = "is_forum"
 const val canSendMessagesField = "can_send_messages"
 const val canSendMediaMessagesField = "can_send_media_messages"
 const val canSendOtherMessagesField = "can_send_other_messages"

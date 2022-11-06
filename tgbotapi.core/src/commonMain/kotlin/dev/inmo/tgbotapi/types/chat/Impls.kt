@@ -38,6 +38,16 @@ data class SupergroupChatImpl(
 ) : SupergroupChat
 
 @Serializable
+data class ForumChatImpl(
+    @SerialName(idField)
+    override val id: ChatId,
+    @SerialName(titleField)
+    override val title: String,
+    @SerialName(usernameField)
+    override val username: Username? = null
+) : ForumChat
+
+@Serializable
 data class ChannelChatImpl(
     @SerialName(idField)
     override val id: ChatId,

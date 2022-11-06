@@ -5,10 +5,9 @@ import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.Serializable
 
 @Serializable(PreviewChatSerializer::class)
-sealed interface ChannelChat : SuperPublicChat
-
-@Serializable(PreviewChatSerializer::class)
-sealed interface GroupChat : PublicChat
+sealed interface UsernameChat : Chat {
+    val username: Username?
+}
 
 @Serializable(PreviewChatSerializer::class)
 sealed interface PrivateChat : Chat, UsernameChat {
@@ -23,15 +22,19 @@ sealed interface PublicChat : Chat {
 }
 
 @Serializable(PreviewChatSerializer::class)
-sealed interface SupergroupChat : GroupChat, SuperPublicChat
-
-@Serializable(PreviewChatSerializer::class)
 sealed interface SuperPublicChat : PublicChat, UsernameChat
 
 @Serializable(PreviewChatSerializer::class)
-sealed interface UsernameChat : Chat {
-    val username: Username?
-}
+sealed interface ChannelChat : SuperPublicChat
+
+@Serializable(PreviewChatSerializer::class)
+sealed interface GroupChat : PublicChat
+
+@Serializable(PreviewChatSerializer::class)
+sealed interface SupergroupChat : GroupChat, SuperPublicChat
+
+@Serializable(PreviewChatSerializer::class)
+sealed interface ForumChat : SupergroupChat
 
 @Serializable(PreviewChatSerializer::class)
 sealed interface PossiblyPremiumChat : Chat {

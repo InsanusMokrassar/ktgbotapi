@@ -52,6 +52,9 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat {
 }
 
 @Serializable(ExtendedChatSerializer::class)
+sealed interface ExtendedForumChat : ExtendedSupergroupChat
+
+@Serializable(ExtendedChatSerializer::class)
 sealed interface ExtendedChat : Chat {
     val chatPhoto: ChatPhoto?
 }

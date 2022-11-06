@@ -34,6 +34,8 @@ internal data class RawMessage(
     val messageId: MessageId,
     val date: TelegramDate,
     private val chat: Chat,
+    @SerialName(messageThreadIdField)
+    private val messageThreadId: MessageThreadId? = null,
     private val from: User? = null,
     private val sender_chat: PublicChat? = null,
     private val forward_from: User? = null,
@@ -307,6 +309,113 @@ internal data class RawMessage(
                             via_bot,
                             author_signature
                         )
+                        is ForumChat -> if (messageThreadId != null) {
+                            when (sender_chat) {
+                                is ChannelChat -> FromChannelForumContentMessageImpl(
+                                    chat,
+                                    sender_chat,
+                                    messageId,
+                                    messageThreadId,
+                                    date.asDate,
+                                    forwarded,
+                                    edit_date ?.asDate,
+                                    has_protected_content == true,
+                                    reply_to_message ?.asMessage,
+                                    reply_markup,
+                                    content,
+                                    via_bot,
+                                    author_signature
+                                )
+                                is GroupChat -> AnonymousForumContentMessageImpl(
+                                    chat,
+                                    messageId,
+                                    messageThreadId,
+                                    date.asDate,
+                                    forwarded,
+                                    edit_date ?.asDate,
+                                    has_protected_content == true,
+                                    reply_to_message ?.asMessage,
+                                    reply_markup,
+                                    content,
+                                    via_bot,
+                                    author_signature
+                                )
+                                null -> CommonForumContentMessageImpl(
+                                    chat,
+                                    messageId,
+                                    messageThreadId,
+                                    from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
+                                    date.asDate,
+                                    forwarded,
+                                    edit_date ?.asDate,
+                                    has_protected_content == true,
+                                    reply_to_message ?.asMessage,
+                                    reply_markup,
+                                    content,
+                                    via_bot
+                                )
+                            }
+                        } else {
+                            when (sender_chat) {
+                                is ChannelChat -> if (is_automatic_forward == true) {
+                                    ConnectedFromChannelGroupContentMessageImpl(
+                                        chat,
+                                        sender_chat,
+                                        messageId,
+                                        date.asDate,
+                                        forwarded,
+                                        edit_date ?.asDate,
+                                        has_protected_content == true,
+                                        reply_to_message ?.asMessage,
+                                        reply_markup,
+                                        content,
+                                        via_bot,
+                                        author_signature
+                                    )
+                                } else {
+                                    UnconnectedFromChannelGroupContentMessageImpl(
+                                        chat,
+                                        sender_chat,
+                                        messageId,
+                                        date.asDate,
+                                        forwarded,
+                                        edit_date ?.asDate,
+                                        has_protected_content == true,
+                                        reply_to_message ?.asMessage,
+                                        reply_markup,
+                                        content,
+                                        via_bot,
+                                        author_signature
+                                    )
+                                }
+                                is GroupChat -> AnonymousGroupContentMessageImpl(
+                                    chat,
+                                    messageId,
+                                    date.asDate,
+                                    forwarded,
+                                    edit_date ?.asDate,
+                                    has_protected_content == true,
+                                    reply_to_message ?.asMessage,
+                                    reply_markup,
+                                    content,
+                                    via_bot,
+                                    author_signature
+                                )
+                                null -> CommonGroupContentMessageImpl(
+                                    chat,
+                                    messageId,
+                                    from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
+                                    date.asDate,
+                                    forwarded,
+                                    edit_date ?.asDate,
+                                    has_protected_content == true,
+                                    reply_to_message ?.asMessage,
+                                    reply_markup,
+                                    content,
+                                    via_bot
+                                )
+                            }
+                        }
                         is GroupChat -> when (sender_chat) {
                             is ChannelChat -> if (is_automatic_forward == true) {
                                 ConnectedFromChannelGroupContentMessageImpl(
@@ -365,9 +474,7 @@ internal data class RawMessage(
                                 content,
                                 via_bot
                             )
-                            else -> error("Currently in groups supported only fields \"sender_chat\" with channel, group or null, but was $sender_chat")
                         }
-                        else -> error("Unknown type of public chat: $chat")
                     }
                     is PrivateChat -> PrivateContentMessageImpl(
                         messageId,

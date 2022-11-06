@@ -66,3 +66,49 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val content: T,
     override val senderBot: CommonBot?
 ) : CommonGroupContentMessage<T>
+
+data class FromChannelForumContentMessageImpl<T: MessageContent>(
+    override val chat: ForumChat,
+    override val channel: ChannelChat,
+    override val messageId: MessageId,
+    override val threadId: MessageThreadId,
+    override val date: DateTime,
+    override val forwardInfo: ForwardInfo?,
+    override val editDate: DateTime?,
+    override val hasProtectedContent: Boolean,
+    override val replyTo: Message?,
+    override val replyMarkup: InlineKeyboardMarkup?,
+    override val content: T,
+    override val senderBot: CommonBot?,
+    override val authorSignature: AuthorSignature?
+) : FromChannelForumContentMessage<T>
+
+data class AnonymousForumContentMessageImpl<T : MessageContent>(
+    override val chat: ForumChat,
+    override val messageId: MessageId,
+    override val threadId: MessageThreadId,
+    override val date: DateTime,
+    override val forwardInfo: ForwardInfo?,
+    override val editDate: DateTime?,
+    override val hasProtectedContent: Boolean,
+    override val replyTo: Message?,
+    override val replyMarkup: InlineKeyboardMarkup?,
+    override val content: T,
+    override val senderBot: CommonBot?,
+    override val authorSignature: AuthorSignature?
+) : AnonymousForumContentMessage<T>
+
+data class CommonForumContentMessageImpl<T : MessageContent>(
+    override val chat: ForumChat,
+    override val messageId: MessageId,
+    override val threadId: MessageThreadId,
+    override val from: User,
+    override val date: DateTime,
+    override val forwardInfo: ForwardInfo?,
+    override val editDate: DateTime?,
+    override val hasProtectedContent: Boolean,
+    override val replyTo: Message?,
+    override val replyMarkup: InlineKeyboardMarkup?,
+    override val content: T,
+    override val senderBot: CommonBot?
+) : CommonForumContentMessage<T>
