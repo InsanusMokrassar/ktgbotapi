@@ -20,6 +20,7 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChat {
     val bio: String
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
+    val statusEmojiId: CustomEmojiId?
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards
