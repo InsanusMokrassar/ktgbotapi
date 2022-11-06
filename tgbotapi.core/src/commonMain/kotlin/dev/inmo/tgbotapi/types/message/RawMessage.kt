@@ -270,6 +270,7 @@ internal data class RawMessage(
                     when (from) {
                         null -> ChannelMediaGroupMessage(
                             messageId,
+                            messageThreadId,
                             chat,
                             date.asDate,
                             it,
@@ -282,6 +283,7 @@ internal data class RawMessage(
                         )
                         else -> CommonMediaGroupMessage(
                             messageId,
+                            messageThreadId,
                             from,
                             chat,
                             date.asDate,
