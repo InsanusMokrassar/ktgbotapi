@@ -35,7 +35,9 @@ data class PromoteChatMember(
     @SerialName(canManageVideoChatsField)
     private val canManageVideoChats: Boolean? = null,
     @SerialName(canManageChatField)
-    private val canManageChat: Boolean? = null
+    private val canManageChat: Boolean? = null,
+    @SerialName(canManageTopicsField)
+    private val canManageTopics: Boolean? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "promoteChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>

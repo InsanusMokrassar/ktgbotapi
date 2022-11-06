@@ -27,5 +27,7 @@ data class ChatAdministratorRightsImpl(
     @SerialName(canManageChatField)
     override val canManageChat: Boolean = false,
     @SerialName(isAnonymousField)
-    override val isAnonymous: Boolean = false
+    override val isAnonymous: Boolean = false,
+    @SerialName(canManageTopicsField)
+    override val canManageTopics: Boolean = false
 ) : ChatAdministratorRights
