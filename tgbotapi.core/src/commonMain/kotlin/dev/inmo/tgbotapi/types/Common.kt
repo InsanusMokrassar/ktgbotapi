@@ -94,6 +94,7 @@ val captionLength = 0 .. 1024
 val textLength = 1 .. 4096
 val userProfilePhotosRequestLimit = 0 .. 100
 val chatTitleLength = 1 until 255
+val threadNameLength = 1 until 128
 val chatDescriptionLength = 0 until 256
 val inlineResultQueryIdLingth = 1 until 64
 val allowedConnectionsLength = 1 .. 100
