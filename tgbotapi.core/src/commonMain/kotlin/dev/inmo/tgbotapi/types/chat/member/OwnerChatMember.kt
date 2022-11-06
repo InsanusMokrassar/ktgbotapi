@@ -33,7 +33,7 @@ data class OwnerChatMember(
     @Transient
     override val canManageVideoChats: Boolean = true
     @Transient
-    override val canManageChat: Boolean = true,
+    override val canManageChat: Boolean = true
     @Transient
     override val canManageTopics: Boolean = true
     @SerialName(statusField)

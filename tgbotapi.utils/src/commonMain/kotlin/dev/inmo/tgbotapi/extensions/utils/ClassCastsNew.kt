@@ -124,6 +124,7 @@ import dev.inmo.tgbotapi.types.chat.ExtendedBot
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedChat
+import dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
 import dev.inmo.tgbotapi.types.chat.ExtendedForumChat
 import dev.inmo.tgbotapi.types.chat.ExtendedForumChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
@@ -2097,6 +2098,15 @@ public inline fun Chat.extendedChatOrThrow(): ExtendedChat = this as
 
 public inline fun <T> Chat.ifExtendedChat(block: (ExtendedChat) -> T): T? = extendedChatOrNull()
     ?.let(block)
+
+public inline fun Chat.extendedChatWithUsernameOrNull(): ExtendedChatWithUsername? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
+
+public inline fun Chat.extendedChatWithUsernameOrThrow(): ExtendedChatWithUsername = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
+
+public inline fun <T> Chat.ifExtendedChatWithUsername(block: (ExtendedChatWithUsername) -> T): T? =
+    extendedChatWithUsernameOrNull() ?.let(block)
 
 public inline fun Chat.groupChatImplOrNull(): GroupChatImpl? = this as?
     dev.inmo.tgbotapi.types.chat.GroupChatImpl
