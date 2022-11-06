@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializ
 import kotlinx.serialization.Serializable
 
 @Serializable(ExtendedChatSerializer::class)
-sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat {
+sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat, ExtendedChatWithUsername {
     val linkedGroupChatId: ChatId?
 }
 
@@ -16,7 +16,7 @@ sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
 }
 
 @Serializable(ExtendedChatSerializer::class)
-sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChat {
+sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername {
     val bio: String
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
@@ -34,7 +34,7 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat {
 }
 
 @Serializable(ExtendedChatSerializer::class)
-sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat {
+sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, ExtendedChatWithUsername {
     val slowModeDelay: Long?
     val stickerSetName: StickerSetName?
     val canSetStickerSet: Boolean
@@ -58,4 +58,9 @@ sealed interface ExtendedForumChat : ExtendedSupergroupChat
 @Serializable(ExtendedChatSerializer::class)
 sealed interface ExtendedChat : Chat {
     val chatPhoto: ChatPhoto?
+}
+
+@Serializable(ExtendedChatSerializer::class)
+sealed interface ExtendedChatWithUsername : UsernameChat, ExtendedChat {
+    val activeUsernames: List<Username>
 }

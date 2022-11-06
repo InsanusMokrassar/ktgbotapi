@@ -15,6 +15,8 @@ data class ExtendedChannelChatImpl(
     override val title: String,
     @SerialName(usernameField)
     override val username: Username? = null,
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(descriptionField)
@@ -55,6 +57,8 @@ data class ExtendedPrivateChatImpl(
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(usernameField)
     override val username: Username? = null,
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
     @SerialName(firstNameField)
     override val firstName: String = "",
     @SerialName(lastNameField)
@@ -79,6 +83,8 @@ data class ExtendedSupergroupChatImpl(
     override val title: String,
     @SerialName(usernameField)
     override val username: Username? = null,
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(permissionsField)
@@ -114,6 +120,8 @@ data class ExtendedForumChatImpl(
     override val title: String,
     @SerialName(usernameField)
     override val username: Username? = null,
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(permissionsField)
