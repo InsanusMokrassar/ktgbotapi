@@ -10,9 +10,9 @@ sealed interface GroupContentMessage<T : MessageContent> : PublicContentMessage<
     override val chat: GroupChat
 }
 
-sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T> {
+sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T>, PossiblyTopicMessage {
     override val chat: ForumChat
-    val threadId: MessageThreadId
+    override val threadId: MessageThreadId
 }
 
 
