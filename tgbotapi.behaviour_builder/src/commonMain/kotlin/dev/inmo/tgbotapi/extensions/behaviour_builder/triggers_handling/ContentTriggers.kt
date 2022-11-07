@@ -14,7 +14,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 
 typealias CommonMessageFilter<T> = SimpleFilter<CommonMessage<T>>
 
@@ -26,7 +25,6 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> 
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     when (it) {
         is BaseSentMessageUpdate -> it.data.whenCommonMessage(::listOfNotNull)
-        is SentMediaGroupUpdate -> it.data
         else -> null
     } ?.mapNotNull { message ->
         if (message.content is T) message as CommonMessage<T> else null

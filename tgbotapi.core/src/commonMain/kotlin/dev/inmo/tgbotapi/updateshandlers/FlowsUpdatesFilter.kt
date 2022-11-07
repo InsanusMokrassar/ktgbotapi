@@ -2,10 +2,11 @@ package dev.inmo.tgbotapi.updateshandlers
 
 import dev.inmo.micro_utils.coroutines.plus
 import dev.inmo.tgbotapi.types.ALL_UPDATES_LIST
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.update.*
+import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.types.update.media_group.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.flow.*
 
@@ -13,16 +14,22 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     override val allowedUpdates: List<String>
         get() = ALL_UPDATES_LIST
     val allUpdatesFlow: Flow<Update>
+    @Deprecated("Since 4.0.0 is not actual", ReplaceWith("allUpdatesFlow"))
     val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update>
+        get() = allUpdatesFlow
 
     val messagesFlow: Flow<MessageUpdate>
-    val messageMediaGroupsFlow: Flow<MessageMediaGroupUpdate>
+    val messageMediaGroupsFlow: Flow<MessageUpdate>
+        get() = messagesFlow.filter { (it.data as? PossiblySentViaBotCommonMessage<*>) ?.mediaGroupId != null }
     val editedMessagesFlow: Flow<EditMessageUpdate>
-    val editedMessageMediaGroupsFlow: Flow<EditMessageMediaGroupUpdate>
+    val editedMessageMediaGroupsFlow: Flow<EditMessageUpdate>
+        get() = editedMessagesFlow.filter { (it.data as? PossiblySentViaBotCommonMessage<*>) ?.mediaGroupId != null }
     val channelPostsFlow: Flow<ChannelPostUpdate>
-    val channelPostMediaGroupsFlow: Flow<ChannelPostMediaGroupUpdate>
+    val channelPostMediaGroupsFlow: Flow<ChannelPostUpdate>
+        get() = channelPostsFlow.filter { (it.data as? PossiblySentViaBotCommonMessage<*>) ?.mediaGroupId != null }
     val editedChannelPostsFlow: Flow<EditChannelPostUpdate>
-    val editedChannelPostMediaGroupsFlow: Flow<EditChannelPostMediaGroupUpdate>
+    val editedChannelPostMediaGroupsFlow: Flow<EditChannelPostUpdate>
+        get() = editedChannelPostsFlow.filter { (it.data as? PossiblySentViaBotCommonMessage<*>) ?.mediaGroupId != null }
     val chosenInlineResultsFlow: Flow<ChosenInlineResultUpdate>
     val inlineQueriesFlow: Flow<InlineQueryUpdate>
     val callbackQueriesFlow: Flow<CallbackQueryUpdate>
@@ -37,23 +44,10 @@ interface FlowsUpdatesFilter : UpdatesFilter {
 }
 
 abstract class AbstractFlowsUpdatesFilter : FlowsUpdatesFilter {
-    override val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update>
-        get() = allUpdatesFlow.flatMapConcat {
-            when (it) {
-                is SentMediaGroupUpdate -> it.origins.asFlow()
-                is EditMediaGroupUpdate -> flowOf(it.origin)
-                else -> flowOf(it)
-            }
-        }
-
     override val messagesFlow: Flow<MessageUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
-    override val messageMediaGroupsFlow: Flow<MessageMediaGroupUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val editedMessagesFlow: Flow<EditMessageUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
-    override val editedMessageMediaGroupsFlow: Flow<EditMessageMediaGroupUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val channelPostsFlow: Flow<ChannelPostUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
-    override val channelPostMediaGroupsFlow: Flow<ChannelPostMediaGroupUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val editedChannelPostsFlow: Flow<EditChannelPostUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
-    override val editedChannelPostMediaGroupsFlow: Flow<EditChannelPostMediaGroupUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chosenInlineResultsFlow: Flow<ChosenInlineResultUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val inlineQueriesFlow: Flow<InlineQueryUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val callbackQueriesFlow: Flow<CallbackQueryUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
@@ -90,14 +84,6 @@ class DefaultFlowsUpdatesFilter(
             (it + upstreamUpdatesFlow).distinctUntilChanged { old, new -> old.updateId == new.updateId }
         } else {
             it
-        }
-    }
-    @Suppress("MemberVisibilityCanBePrivate")
-    override val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update> = allUpdatesFlow.flatMapConcat {
-        when (it) {
-            is SentMediaGroupUpdate -> it.origins.asFlow()
-            is EditMediaGroupUpdate -> flowOf(it.origin)
-            else -> flowOf(it)
         }
     }
 

@@ -46,7 +46,6 @@ import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.queries.callback.*
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.abstracts.*
-import dev.inmo.tgbotapi.types.update.media_group.*
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
@@ -1037,18 +1036,6 @@ inline fun Message.requireChannelEventMessage(): ChannelEventMessage<ChannelEven
     this as ChannelEventMessage<ChannelEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelMediaGroupMessage(block: (ChannelMediaGroupMessage<MediaGroupPartContent>) -> T) =
-    asChannelMediaGroupMessage()?.let(block)
-
-@PreviewFeature
-inline fun Message.asChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupPartContent>? =
-    this as? ChannelMediaGroupMessage<MediaGroupPartContent>
-
-@PreviewFeature
-inline fun Message.requireChannelMediaGroupMessage(): ChannelMediaGroupMessage<MediaGroupPartContent> =
-    this as ChannelMediaGroupMessage<MediaGroupPartContent>
-
-@PreviewFeature
 inline fun <T> Message.whenCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) =
     asCommonGroupEventMessage()?.let(block)
 
@@ -1059,18 +1046,6 @@ inline fun Message.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEve
 @PreviewFeature
 inline fun Message.requireCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent> =
     this as CommonGroupEventMessage<GroupEvent>
-
-@PreviewFeature
-inline fun <T> Message.whenCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupPartContent>) -> T) =
-    asCommonMediaGroupMessage()?.let(block)
-
-@PreviewFeature
-inline fun Message.asCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupPartContent>? =
-    this as? CommonMediaGroupMessage<MediaGroupPartContent>
-
-@PreviewFeature
-inline fun Message.requireCommonMediaGroupMessage(): CommonMediaGroupMessage<MediaGroupPartContent> =
-    this as CommonMediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
 inline fun <T> Message.whenCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) =
@@ -1219,16 +1194,16 @@ inline fun Message.requireGroupContentMessage(): GroupContentMessage<MessageCont
     this as GroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage<MediaGroupPartContent>) -> T) =
+inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage) -> T) =
     asMediaGroupMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent>? =
-    this as? MediaGroupMessage<MediaGroupPartContent>
+inline fun Message.asMediaGroupMessage(): MediaGroupMessage? =
+    this as? MediaGroupMessage
 
 @PreviewFeature
-inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent> =
-    this as MediaGroupMessage<MediaGroupPartContent>
+inline fun Message.requireMediaGroupMessage(): MediaGroupMessage =
+    this as MediaGroupMessage
 
 @PreviewFeature
 inline fun <T> Message.whenPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T) =
@@ -2217,79 +2192,6 @@ inline fun Update.asInlineQueryUpdate(): InlineQueryUpdate? = this as? InlineQue
 
 @PreviewFeature
 inline fun Update.requireInlineQueryUpdate(): InlineQueryUpdate = this as InlineQueryUpdate
-
-@PreviewFeature
-inline fun <T> Update.whenChannelPostMediaGroupUpdate(block: (ChannelPostMediaGroupUpdate) -> T) =
-    asChannelPostMediaGroupUpdate()?.let(block)
-
-@PreviewFeature
-inline fun Update.asChannelPostMediaGroupUpdate(): ChannelPostMediaGroupUpdate? = this as? ChannelPostMediaGroupUpdate
-
-@PreviewFeature
-inline fun Update.requireChannelPostMediaGroupUpdate(): ChannelPostMediaGroupUpdate =
-    this as ChannelPostMediaGroupUpdate
-
-@PreviewFeature
-inline fun <T> Update.whenEditChannelPostMediaGroupUpdate(block: (EditChannelPostMediaGroupUpdate) -> T) =
-    asEditChannelPostMediaGroupUpdate()?.let(block)
-
-@PreviewFeature
-inline fun Update.asEditChannelPostMediaGroupUpdate(): EditChannelPostMediaGroupUpdate? =
-    this as? EditChannelPostMediaGroupUpdate
-
-@PreviewFeature
-inline fun Update.requireEditChannelPostMediaGroupUpdate(): EditChannelPostMediaGroupUpdate =
-    this as EditChannelPostMediaGroupUpdate
-
-@PreviewFeature
-inline fun <T> Update.whenEditMediaGroupUpdate(block: (EditMediaGroupUpdate) -> T) =
-    asEditMediaGroupUpdate()?.let(block)
-
-@PreviewFeature
-inline fun Update.asEditMediaGroupUpdate(): EditMediaGroupUpdate? = this as? EditMediaGroupUpdate
-
-@PreviewFeature
-inline fun Update.requireEditMediaGroupUpdate(): EditMediaGroupUpdate = this as EditMediaGroupUpdate
-
-@PreviewFeature
-inline fun <T> Update.whenEditMessageMediaGroupUpdate(block: (EditMessageMediaGroupUpdate) -> T) =
-    asEditMessageMediaGroupUpdate()?.let(block)
-
-@PreviewFeature
-inline fun Update.asEditMessageMediaGroupUpdate(): EditMessageMediaGroupUpdate? = this as? EditMessageMediaGroupUpdate
-
-@PreviewFeature
-inline fun Update.requireEditMessageMediaGroupUpdate(): EditMessageMediaGroupUpdate =
-    this as EditMessageMediaGroupUpdate
-
-@PreviewFeature
-inline fun <T> Update.whenMediaGroupUpdate(block: (MediaGroupUpdate) -> T) = asMediaGroupUpdate()?.let(block)
-
-@PreviewFeature
-inline fun Update.asMediaGroupUpdate(): MediaGroupUpdate? = this as? MediaGroupUpdate
-
-@PreviewFeature
-inline fun Update.requireMediaGroupUpdate(): MediaGroupUpdate = this as MediaGroupUpdate
-
-@PreviewFeature
-inline fun <T> Update.whenMessageMediaGroupUpdate(block: (MessageMediaGroupUpdate) -> T) =
-    asMessageMediaGroupUpdate()?.let(block)
-
-@PreviewFeature
-inline fun Update.asMessageMediaGroupUpdate(): MessageMediaGroupUpdate? = this as? MessageMediaGroupUpdate
-
-@PreviewFeature
-inline fun Update.requireMessageMediaGroupUpdate(): MessageMediaGroupUpdate = this as MessageMediaGroupUpdate
-
-@PreviewFeature
-inline fun <T> Update.whenSentMediaGroupUpdate(block: (SentMediaGroupUpdate) -> T) =
-    asSentMediaGroupUpdate()?.let(block)
-
-@PreviewFeature
-inline fun Update.asSentMediaGroupUpdate(): SentMediaGroupUpdate? = this as? SentMediaGroupUpdate
-
-@PreviewFeature
-inline fun Update.requireSentMediaGroupUpdate(): SentMediaGroupUpdate = this as SentMediaGroupUpdate
 
 @PreviewFeature
 inline fun <T> Update.whenMessageUpdate(block: (MessageUpdate) -> T) = asMessageUpdate()?.let(block)

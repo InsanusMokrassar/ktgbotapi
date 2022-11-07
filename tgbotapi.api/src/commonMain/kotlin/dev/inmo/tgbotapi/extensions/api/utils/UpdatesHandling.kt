@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api.utils
 
 import dev.inmo.tgbotapi.extensions.api.InternalUtils.convertWithMediaGroupUpdates
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.UpdateReceiver
@@ -29,10 +30,21 @@ fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
     launch {
         launch {
             for (update in updatesChannel) {
-                when (val data = update.data) {
-                    is MediaGroupMessage<*> -> mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
-                    else -> output(update)
+                val dataAsPossiblySentViaBotCommonMessage = update.data as? PossiblySentViaBotCommonMessage<*>
+
+                if (dataAsPossiblySentViaBotCommonMessage == null) {
+                    output(update)
+                    continue
                 }
+
+                val mediaGroupId = dataAsPossiblySentViaBotCommonMessage.mediaGroupId
+
+                if (mediaGroupId == null) {
+                    output(update)
+                    continue
+                }
+
+                mediaGroupChannel.send("${mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
             }
         }
         launch {

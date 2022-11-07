@@ -3,6 +3,7 @@
 package dev.inmo.tgbotapi.extensions.utils
 
 import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.message.content.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
@@ -36,6 +37,3 @@ inline fun <reified T : MessageContent> AnonymousGroupContentMessage<*>.requireW
 
 inline fun <reified T : MessageContent> CommonGroupContentMessage<*>.withContent() = if (content is T) { this as CommonGroupContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> CommonGroupContentMessage<*>.requireWithContent() = withContent<T>()!!
-
-inline fun <reified T : MediaGroupPartContent> MediaGroupMessage<*>.withContent() = if (content is T) { this as MediaGroupMessage<T> } else { null }
-inline fun <reified T : MediaGroupPartContent> MediaGroupMessage<*>.requireWithContent() = withContent<T>()!!

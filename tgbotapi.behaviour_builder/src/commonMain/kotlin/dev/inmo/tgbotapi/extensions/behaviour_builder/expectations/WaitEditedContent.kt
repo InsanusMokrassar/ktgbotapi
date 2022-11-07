@@ -15,7 +15,7 @@ suspend inline fun <reified O : MessageContent> BehaviourContext.waitEditedConte
     initRequest: Request<*>? = null,
     includeMediaGroups: Boolean = true,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
-): Flow<O> = waitEditedContentMessage<O>(initRequest, includeMediaGroups, errorFactory).map { it.content }
+): Flow<O> = waitEditedContentMessage<O>(initRequest, errorFactory).map { it.content }
 
 suspend fun BehaviourContext.waitEditedMessageContent(
     initRequest: Request<*>? = null,
