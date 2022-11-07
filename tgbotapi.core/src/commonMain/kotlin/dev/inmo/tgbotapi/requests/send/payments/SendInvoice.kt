@@ -36,6 +36,8 @@ data class SendInvoice(
     @Serializable(LabeledPricesSerializer::class)
     @SerialName(pricesField)
     override val prices: List<LabeledPrice>,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(maxTipAmountField)
     override val maxTipAmount: Int? = null,
     @SerialName(suggestedTipAmountsField)

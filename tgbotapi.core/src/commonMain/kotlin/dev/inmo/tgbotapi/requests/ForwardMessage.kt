@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -16,13 +17,15 @@ data class ForwardMessage(
     val fromChatId: ChatIdentifier,
     @SerialName(chatIdField)
     val toChatId: ChatIdentifier,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(messageIdField)
     override val messageId: MessageId,
     @SerialName(disableNotificationField)
     val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false
-): SimpleRequest<PossiblyForwardedMessage>, MessageAction, ProtectContent {
+): SimpleRequest<PossiblyForwardedMessage>, MessageAction, ProtectContent, OptionallyMessageThreadRequest {
     override val chatId: ChatIdentifier
         get() = fromChatId
 

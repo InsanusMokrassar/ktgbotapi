@@ -32,6 +32,8 @@ data class SendVenue(
     val googlePlaceId: GooglePlaceId? = null,
     @SerialName(googlePlaceTypeField)
     val googlePlaceType: GooglePlaceType? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

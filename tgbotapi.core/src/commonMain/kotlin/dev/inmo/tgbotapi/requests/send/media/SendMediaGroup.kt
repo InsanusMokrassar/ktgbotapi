@@ -24,6 +24,7 @@ const val rawSendingMediaGroupsWarning = "Media groups contains restrictions rel
 fun <T : MediaGroupContent> SendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -47,6 +48,7 @@ fun <T : MediaGroupContent> SendMediaGroup(
     val data = SendMediaGroupData(
         chatId,
         media,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -72,11 +74,12 @@ fun <T : MediaGroupContent> SendMediaGroup(
 inline fun SendPlaylist(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<AudioContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<AudioContent>(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending documents media group
@@ -87,11 +90,12 @@ inline fun SendPlaylist(
 inline fun SendDocumentsGroup(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<DocumentContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<DocumentContent>(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending visual media group
@@ -103,11 +107,12 @@ inline fun SendDocumentsGroup(
 inline fun SendVisualMediaGroup(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<VisualMediaGroupContent>(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<VisualMediaGroupContent>(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 private val messagesListSerializer: KSerializer<List<MediaGroupMessage<MediaGroupContent>>>
     = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass())
@@ -117,6 +122,8 @@ data class SendMediaGroupData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     val media: List<MediaGroupMemberTelegramMedia> = emptyList(),
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

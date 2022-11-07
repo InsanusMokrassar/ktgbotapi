@@ -24,6 +24,7 @@ fun SendTextMessage(
     chatId: ChatIdentifier,
     text: String,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -35,6 +36,7 @@ fun SendTextMessage(
     text,
     parseMode,
     null,
+    threadId,
     disableWebPagePreview,
     disableNotification,
     protectContent,
@@ -46,6 +48,7 @@ fun SendTextMessage(
 fun SendTextMessage(
     chatId: ChatIdentifier,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableWebPagePreview: Boolean? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -57,6 +60,7 @@ fun SendTextMessage(
     entities.makeString(),
     null,
     entities.toRawMessageEntities(),
+    threadId,
     disableWebPagePreview,
     disableNotification,
     protectContent,
@@ -75,6 +79,8 @@ data class SendTextMessage internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(entitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableWebPagePreviewField)
     override val disableWebPagePreview: Boolean? = null,
     @SerialName(disableNotificationField)

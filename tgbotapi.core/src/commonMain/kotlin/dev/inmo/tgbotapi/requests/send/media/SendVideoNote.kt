@@ -14,6 +14,7 @@ import kotlinx.serialization.*
 fun SendVideoNote(
     chatId: ChatIdentifier,
     videoNote: InputFile,
+    threadId: MessageThreadId? = null,
     thumb: InputFile? = null,
     duration: Long? = null,
     size: Int? = null, // in documentation - length (size of video side)
@@ -31,6 +32,7 @@ fun SendVideoNote(
     val data = SendVideoNoteData(
         chatId,
         videoNoteAsFileId,
+        threadId,
         thumbAsFileId,
         duration,
         size,
@@ -60,6 +62,8 @@ data class SendVideoNoteData internal constructor(
     override val chatId: ChatIdentifier,
     @SerialName(videoNoteField)
     val videoNote: String? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(thumbField)
     override val thumb: String? = null,
     @SerialName(durationField)

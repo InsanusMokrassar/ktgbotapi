@@ -26,6 +26,7 @@ fun SendAudio(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
@@ -47,6 +48,7 @@ fun SendAudio(
         text,
         parseMode,
         null,
+        threadId,
         duration,
         performer,
         title,
@@ -72,6 +74,7 @@ fun SendAudio(
     audio: InputFile,
     thumb: InputFile? = null,
     entities: List<TextSource>,
+    threadId: MessageThreadId? = null,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
@@ -93,6 +96,7 @@ fun SendAudio(
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
+        threadId,
         duration,
         performer,
         title,
@@ -130,6 +134,8 @@ data class SendAudioData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(performerField)

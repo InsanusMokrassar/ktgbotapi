@@ -46,6 +46,7 @@ fun SendPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<String>,
+    threadId: MessageThreadId? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     disableNotification: Boolean = false,
@@ -57,6 +58,7 @@ fun SendPoll(
     chatId,
     question,
     options,
+    threadId,
     isAnonymous,
     isClosed,
     allowSendingWithoutReply = allowSendingWithoutReply,
@@ -71,6 +73,7 @@ fun SendPoll(
  */
 fun Poll.createRequest(
     chatId: ChatIdentifier,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -81,6 +84,7 @@ fun Poll.createRequest(
         chatId,
         question,
         options.map { it.text },
+        threadId,
         isAnonymous,
         isClosed,
         allowMultipleAnswers,
@@ -97,6 +101,7 @@ fun Poll.createRequest(
             question,
             options.map { it.text },
             correctOptionId,
+            threadId,
             isAnonymous,
             isClosed,
             textSources,
@@ -111,6 +116,7 @@ fun Poll.createRequest(
         chatId,
         question,
         options.map { it.text },
+        threadId,
         isAnonymous,
         isClosed,
         false,
@@ -125,6 +131,7 @@ fun Poll.createRequest(
         chatId,
         question,
         options.map { it.text },
+        threadId,
         isAnonymous,
         isClosed,
         false,
@@ -183,6 +190,8 @@ data class SendRegularPoll(
     override val question: String,
     @SerialName(optionsField)
     override val options: List<String>,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = true,
     @SerialName(isClosedField)
@@ -218,6 +227,7 @@ fun SendRegularPoll(
     chatId: ChatIdentifier,
     question: String,
     options: List<String>,
+    threadId: MessageThreadId? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
@@ -231,6 +241,7 @@ fun SendRegularPoll(
     chatId,
     question,
     options,
+    threadId,
     isAnonymous,
     isClosed,
     allowMultipleAnswers,
@@ -248,6 +259,7 @@ fun SendQuizPoll(
     question: String,
     options: List<String>,
     correctOptionId: Int,
+    threadId: MessageThreadId? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     explanation: String? = null,
@@ -263,6 +275,7 @@ fun SendQuizPoll(
     question,
     options,
     correctOptionId,
+    threadId,
     isAnonymous,
     isClosed,
     explanation,
@@ -281,6 +294,7 @@ fun SendQuizPoll(
     question: String,
     options: List<String>,
     correctOptionId: Int,
+    threadId: MessageThreadId? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     entities: List<TextSource>,
@@ -295,6 +309,7 @@ fun SendQuizPoll(
     question,
     options,
     correctOptionId,
+    threadId,
     isAnonymous,
     isClosed,
     entities.makeString(),
@@ -313,6 +328,7 @@ internal fun SendQuizPoll(
     question: String,
     options: List<String>,
     correctOptionId: Int,
+    threadId: MessageThreadId? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     explanation: String? = null,
@@ -329,6 +345,7 @@ internal fun SendQuizPoll(
     question,
     options,
     correctOptionId,
+    threadId,
     isAnonymous,
     isClosed,
     explanation,
@@ -353,6 +370,8 @@ data class SendQuizPoll internal constructor(
     override val options: List<String>,
     @SerialName(correctOptionIdField)
     val correctOptionId: Int,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = true,
     @SerialName(isClosedField)

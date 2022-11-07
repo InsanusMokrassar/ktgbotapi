@@ -24,6 +24,7 @@ fun SendVoice(
     voice: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     duration: Long? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -40,6 +41,7 @@ fun SendVoice(
         text,
         parseMode,
         null,
+        threadId,
         duration,
         disableNotification,
         protectContent,
@@ -62,6 +64,7 @@ fun SendVoice(
     chatId: ChatIdentifier,
     voice: InputFile,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     duration: Long? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -78,6 +81,7 @@ fun SendVoice(
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
+        threadId,
         duration,
         disableNotification,
         protectContent,
@@ -111,6 +115,8 @@ data class SendVoiceData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(disableNotificationField)
