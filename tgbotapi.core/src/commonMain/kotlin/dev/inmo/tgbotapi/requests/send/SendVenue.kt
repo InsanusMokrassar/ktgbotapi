@@ -52,6 +52,7 @@ data class SendVenue(
     constructor(
         chatId: ChatIdentifier,
         venue: Venue,
+        threadId: MessageThreadId? = null,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyToMessageId: MessageId? = null,
@@ -67,6 +68,7 @@ data class SendVenue(
         foursquareType = venue.foursquareType,
         googlePlaceId = venue.googlePlaceId,
         googlePlaceType = venue.googlePlaceType,
+        threadId = threadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         replyToMessageId = replyToMessageId,
@@ -83,6 +85,7 @@ data class SendVenue(
 
 fun Venue.toRequest(
     chatId: ChatIdentifier,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -91,6 +94,7 @@ fun Venue.toRequest(
 ): SendVenue = SendVenue(
     chatId,
     this,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,

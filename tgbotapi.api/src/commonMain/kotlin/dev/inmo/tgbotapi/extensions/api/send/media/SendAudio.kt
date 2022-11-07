@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.media.SendAudio
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -24,6 +25,7 @@ suspend fun TelegramBot.sendAudio(
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -39,6 +41,7 @@ suspend fun TelegramBot.sendAudio(
         duration,
         performer,
         title,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -60,12 +63,13 @@ suspend fun TelegramBot.sendAudio(
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat.id, audio, thumb, text, parseMode, duration, performer, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chat.id, audio, thumb, text, parseMode, duration, performer, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -77,12 +81,13 @@ suspend fun TelegramBot.sendAudio(
     text: String? = null,
     parseMode: ParseMode? = null,
     title: String? = audio.title,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chatId, audio.fileId, audio.thumb ?.fileId, text, parseMode, audio.duration, audio.performer, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chatId, audio.fileId, audio.thumb ?.fileId, text, parseMode, audio.duration, audio.performer, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -94,12 +99,13 @@ suspend fun TelegramBot.sendAudio(
     text: String? = null,
     parseMode: ParseMode? = null,
     title: String? = audio.title,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat.id, audio, text, parseMode, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chat.id, audio, text, parseMode, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -114,6 +120,7 @@ suspend inline fun TelegramBot.sendAudio(
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -128,6 +135,7 @@ suspend inline fun TelegramBot.sendAudio(
         duration,
         performer,
         title,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -148,12 +156,13 @@ suspend inline fun TelegramBot.sendAudio(
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat.id, audio, thumb, entities, duration, performer, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chat.id, audio, thumb, entities, duration, performer, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -164,12 +173,13 @@ suspend inline fun TelegramBot.sendAudio(
     audio: AudioFile,
     entities: TextSourcesList,
     title: String? = audio.title,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chatId, audio.fileId, audio.thumb ?.fileId, entities, audio.duration, audio.performer, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chatId, audio.fileId, audio.thumb ?.fileId, entities, audio.duration, audio.performer, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -180,9 +190,10 @@ suspend inline fun TelegramBot.sendAudio(
     audio: AudioFile,
     entities: TextSourcesList,
     title: String? = audio.title,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat.id, audio, entities, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chat.id, audio, entities, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)

@@ -36,8 +36,6 @@ data class SendInvoice(
     @Serializable(LabeledPricesSerializer::class)
     @SerialName(pricesField)
     override val prices: List<LabeledPrice>,
-    @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
     @SerialName(maxTipAmountField)
     override val maxTipAmount: Int? = null,
     @SerialName(suggestedTipAmountsField)
@@ -60,6 +58,8 @@ data class SendInvoice(
     override val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
     override val priceDependOnShipAddress: Boolean = false,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

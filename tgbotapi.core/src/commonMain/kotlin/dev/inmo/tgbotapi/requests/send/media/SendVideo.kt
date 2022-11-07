@@ -25,11 +25,11 @@ fun SendVideo(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = null,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
     supportStreaming: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -48,11 +48,11 @@ fun SendVideo(
         text,
         parseMode,
         null,
-        threadId,
         duration,
         width,
         height,
         supportStreaming,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -75,11 +75,11 @@ fun SendVideo(
     video: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = null,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
     supportStreaming: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -98,11 +98,11 @@ fun SendVideo(
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
-        threadId,
         duration,
         width,
         height,
         supportStreaming,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -137,8 +137,6 @@ data class SendVideoData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
-    @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(widthField)
@@ -147,6 +145,8 @@ data class SendVideoData internal constructor(
     override val height: Int? = null,
     @SerialName(supportStreamingField)
     val supportStreaming: Boolean? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

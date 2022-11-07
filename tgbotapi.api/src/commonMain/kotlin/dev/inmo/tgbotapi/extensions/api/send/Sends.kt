@@ -58,12 +58,13 @@ suspend fun TelegramBot.send(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chatId, animation, text, parseMode, duration, width, height, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(chatId, animation, text, parseMode, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendAnimation] request
@@ -78,12 +79,13 @@ suspend fun TelegramBot.send(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat, animation, text, parseMode, duration, width, height, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(chat, animation, text, parseMode, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendAnimation] request
@@ -97,12 +99,13 @@ suspend fun TelegramBot.send(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chatId, animation, entities, duration, width, height, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(chatId, animation, entities, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendAnimation] request
@@ -116,12 +119,13 @@ suspend fun TelegramBot.send(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat, animation, entities, duration, width, height, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(chat, animation, entities, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendAudio] request
@@ -134,12 +138,13 @@ suspend fun TelegramBot.send(
     text: String? = null,
     parseMode: ParseMode? = null,
     title: String? = audio.title,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chatId, audio, text, parseMode, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chatId, audio, text, parseMode, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendAudio] request
@@ -152,12 +157,13 @@ suspend fun TelegramBot.send(
     text: String? = null,
     parseMode: ParseMode? = null,
     title: String? = audio.title,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat, audio, text, parseMode, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chat, audio, text, parseMode, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendAudio] request
@@ -169,12 +175,13 @@ suspend inline fun TelegramBot.send(
     audio: AudioFile,
     entities: TextSourcesList,
     title: String? = audio.title,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chatId, audio, entities, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chatId, audio, entities, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendAudio] request
@@ -186,12 +193,13 @@ suspend inline fun TelegramBot.send(
     audio: AudioFile,
     entities: TextSourcesList,
     title: String? = audio.title,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat, audio, entities, title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(chat, audio, entities, title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendContact] request
@@ -203,12 +211,13 @@ suspend fun TelegramBot.send(
     phoneNumber: String,
     firstName: String,
     lastName: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendContact(chatId, phoneNumber, firstName, lastName, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendContact(chatId, phoneNumber, firstName, lastName, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendContact] request
@@ -218,12 +227,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     contact: Contact,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendContact(chatId, contact, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendContact(chatId, contact, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendContact] request
@@ -235,12 +245,13 @@ suspend fun TelegramBot.send(
     phoneNumber: String,
     firstName: String,
     lastName: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendContact(chat, phoneNumber, firstName, lastName, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendContact(chat, phoneNumber, firstName, lastName, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendContact] request
@@ -250,12 +261,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     contact: Contact,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendContact(chat, contact, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendContact(chat, contact, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendDice] request
@@ -265,12 +277,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     animationType: DiceAnimationType,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendDice(chatId, animationType, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendDice(chatId, animationType, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendDice] request
@@ -280,12 +293,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     animationType: DiceAnimationType,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendDice(chat, animationType, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendDice(chat, animationType, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendDocument] request
@@ -297,13 +311,14 @@ suspend fun TelegramBot.send(
     document: DocumentFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(chatId, document, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = sendDocument(chatId, document, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
 /**
  * Will execute [sendDocument] request
@@ -315,13 +330,14 @@ suspend fun TelegramBot.send(
     document: DocumentFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(chat, document, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = sendDocument(chat, document, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
 /**
  * Will execute [sendDocument] request
@@ -332,13 +348,14 @@ suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     document: DocumentFile,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(chatId, document, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = sendDocument(chatId, document, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
 /**
  * Will execute [sendDocument] request
@@ -349,13 +366,14 @@ suspend inline fun TelegramBot.send(
     chat: Chat,
     document: DocumentFile,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(chat, document, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = sendDocument(chat, document, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
 /**
  * Will execute [sendGame] request
@@ -365,12 +383,13 @@ suspend inline fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     game: Game,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendGame(chatId, game, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendGame(chatId, game, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendGame] request
@@ -380,12 +399,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     game: Game,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendGame(chat, game, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendGame(chat, game, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendInvoice] request
@@ -411,12 +431,13 @@ suspend fun TelegramBot.send(
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(chatId, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendInvoice(chatId, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendInvoice] request
@@ -442,12 +463,13 @@ suspend fun TelegramBot.send(
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(user, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendInvoice(user, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendStaticLocation] request
@@ -458,12 +480,13 @@ suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyToMessageId: MessageId? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendStaticLocation(chatId, latitude, longitude, disableNotification, protectContent, allowSendingWithoutReply, replyToMessageId, replyMarkup)
+) = sendStaticLocation(chatId, latitude, longitude, threadId, disableNotification, protectContent, allowSendingWithoutReply, replyToMessageId, replyMarkup)
 
 /**
  * Will execute [sendStaticLocation] request
@@ -473,12 +496,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     location: StaticLocation,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyToMessageId: MessageId? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendStaticLocation(chatId, location, disableNotification, protectContent, allowSendingWithoutReply, replyToMessageId, replyMarkup)
+) = sendStaticLocation(chatId, location, threadId, disableNotification, protectContent, allowSendingWithoutReply, replyToMessageId, replyMarkup)
 
 /**
  * Will execute [sendStaticLocation] request
@@ -489,12 +513,13 @@ suspend fun TelegramBot.send(
     chat: Chat,
     latitude: Double,
     longitude: Double,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyToMessageId: MessageId? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendStaticLocation(chat, latitude, longitude, disableNotification, protectContent, allowSendingWithoutReply, replyToMessageId, replyMarkup)
+) = sendStaticLocation(chat, latitude, longitude, threadId, disableNotification, protectContent, allowSendingWithoutReply, replyToMessageId, replyMarkup)
 
 /**
  * Will execute [sendStaticLocation] request
@@ -504,12 +529,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     location: StaticLocation,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyToMessageId: MessageId? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendStaticLocation(chat, location, disableNotification, protectContent, allowSendingWithoutReply, replyToMessageId, replyMarkup)
+) = sendStaticLocation(chat, location, threadId, disableNotification, protectContent, allowSendingWithoutReply, replyToMessageId, replyMarkup)
 
 /**
  * Will execute [sendTextMessage] request
@@ -521,12 +547,13 @@ suspend fun TelegramBot.send(
     text: String,
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(chatId, text, parseMode, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendTextMessage(chatId, text, parseMode, disableWebPagePreview, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendTextMessage] request
@@ -538,12 +565,13 @@ suspend fun TelegramBot.send(
     text: String,
     parseMode: ParseMode? = null,
     disableWebPagePreview: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(chat, text, parseMode, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendTextMessage(chat, text, parseMode, disableWebPagePreview, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendTextMessage] request
@@ -554,12 +582,13 @@ suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(chatId, entities, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendTextMessage(chatId, entities, disableWebPagePreview, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -569,13 +598,14 @@ suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     separator: TextSource? = null,
     disableWebPagePreview: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = send(chatId, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = send(chatId, buildEntities(separator, builderBody), disableWebPagePreview, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -586,13 +616,14 @@ suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     separator: String,
     disableWebPagePreview: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = send(chatId, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = send(chatId, buildEntities(separator, builderBody), disableWebPagePreview, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -604,12 +635,13 @@ suspend fun TelegramBot.send(
     chat: Chat,
     entities: TextSourcesList,
     disableWebPagePreview: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(chat, entities, disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendTextMessage(chat, entities, disableWebPagePreview, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -619,13 +651,14 @@ suspend fun TelegramBot.send(
     chat: Chat,
     separator: TextSource? = null,
     disableWebPagePreview: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = send(chat, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = send(chat, buildEntities(separator, builderBody), disableWebPagePreview, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -636,13 +669,14 @@ suspend fun TelegramBot.send(
     chat: Chat,
     separator: String,
     disableWebPagePreview: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = send(chat, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = send(chat, buildEntities(separator, builderBody), disableWebPagePreview, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request
@@ -654,12 +688,13 @@ suspend fun TelegramBot.send(
     photo: Photo,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photo, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chatId, photo, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request
@@ -671,12 +706,13 @@ suspend fun TelegramBot.send(
     photo: Photo,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat, photo, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chat, photo, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request
@@ -688,12 +724,13 @@ suspend fun TelegramBot.send(
     photoSize: PhotoSize,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photoSize, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chatId, photoSize, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request
@@ -705,12 +742,13 @@ suspend fun TelegramBot.send(
     photoSize: PhotoSize,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat, photoSize, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chat, photoSize, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request
@@ -721,12 +759,13 @@ suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     photo: Photo,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photo, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chatId, photo, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request
@@ -737,12 +776,13 @@ suspend inline fun TelegramBot.send(
     chat: Chat,
     photo: Photo,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat, photo, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chat, photo, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request
@@ -753,12 +793,13 @@ suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     photoSize: PhotoSize,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photoSize, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chatId, photoSize, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendPhoto] request
@@ -769,12 +810,13 @@ suspend inline fun TelegramBot.send(
     chat: Chat,
     photoSize: PhotoSize,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat, photoSize, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(chat, photoSize, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendRegularPoll] request
@@ -789,12 +831,13 @@ suspend fun TelegramBot.send(
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendRegularPoll(chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendRegularPoll] request
@@ -810,12 +853,13 @@ suspend fun TelegramBot.send(
     isAnonymous: Boolean = poll.isAnonymous,
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chatId, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendRegularPoll(chatId, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendRegularPoll] request
@@ -830,12 +874,13 @@ suspend fun TelegramBot.send(
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chat, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendRegularPoll(chat, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendRegularPoll] request
@@ -851,12 +896,13 @@ suspend fun TelegramBot.send(
     isAnonymous: Boolean = poll.isAnonymous,
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chat, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendRegularPoll(chat, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -873,12 +919,13 @@ suspend fun TelegramBot.send(
     explanation: String? = null,
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -895,12 +942,13 @@ suspend fun TelegramBot.send(
     explanation: String? = null,
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chat, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(chat, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -918,13 +966,14 @@ suspend fun TelegramBot.send(
     explanation: String? = null,
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -943,12 +992,13 @@ suspend fun TelegramBot.send(
     explanation: String? = null,
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, explanation, parseMode, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, explanation, parseMode, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -964,12 +1014,13 @@ suspend inline fun TelegramBot.send(
     isClosed: Boolean = false,
     entities: TextSourcesList,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chatId, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(chatId, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -985,12 +1036,13 @@ suspend inline fun TelegramBot.send(
     isClosed: Boolean = false,
     entities: TextSourcesList,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chat, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(chat, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -1007,12 +1059,13 @@ suspend inline fun TelegramBot.send(
     isAnonymous: Boolean = quizPoll.isAnonymous,
     entities: TextSourcesList,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chatId, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(chatId, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -1029,12 +1082,13 @@ suspend inline fun TelegramBot.send(
     isAnonymous: Boolean = quizPoll.isAnonymous,
     entities: TextSourcesList,
     closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendSticker] request
@@ -1044,12 +1098,13 @@ suspend inline fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     sticker: Sticker,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chatId, sticker, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chatId, sticker, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendSticker] request
@@ -1059,12 +1114,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     sticker: Sticker,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat, sticker, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chat, sticker, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVenue] request
@@ -1081,12 +1137,13 @@ suspend fun TelegramBot.send(
     foursquareType: FoursquareType? = null,
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVenue(chatId, latitude, longitude, title, address, foursquareId, foursquareType, googlePlaceId, googlePlaceType, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVenue(chatId, latitude, longitude, title, address, foursquareId, foursquareType, googlePlaceId, googlePlaceType, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVenue] request
@@ -1103,12 +1160,13 @@ suspend fun TelegramBot.send(
     foursquareType: FoursquareType? = null,
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVenue(chat, latitude, longitude, title, address, foursquareId, foursquareType, googlePlaceId, googlePlaceType, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVenue(chat, latitude, longitude, title, address, foursquareId, foursquareType, googlePlaceId, googlePlaceType, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVenue] request
@@ -1124,12 +1182,13 @@ suspend fun TelegramBot.send(
     foursquareType: FoursquareType? = null,
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVenue(chatId, location, title, address, foursquareId, foursquareType, googlePlaceId, googlePlaceType, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVenue(chatId, location, title, address, foursquareId, foursquareType, googlePlaceId, googlePlaceType, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVenue] request
@@ -1145,12 +1204,13 @@ suspend fun TelegramBot.send(
     foursquareType: FoursquareType? = null,
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVenue(chat, location, title, address, foursquareId, foursquareType, googlePlaceId, googlePlaceType, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVenue(chat, location, title, address, foursquareId, foursquareType, googlePlaceId, googlePlaceType, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVenue] request
@@ -1160,12 +1220,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     venue: Venue,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVenue(chatId, venue, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVenue(chatId, venue, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVenue] request
@@ -1175,12 +1236,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     venue: Venue,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVenue(chat, venue, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVenue(chat, venue, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVideo] request
@@ -1192,12 +1254,13 @@ suspend fun TelegramBot.send(
     video: VideoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chatId, video, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(chatId, video, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVideo] request
@@ -1209,12 +1272,13 @@ suspend fun TelegramBot.send(
     video: VideoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chat, video, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(chat, video, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVideo] request
@@ -1225,12 +1289,13 @@ suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     video: VideoFile,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chatId, video, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(chatId, video, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVideo] request
@@ -1241,12 +1306,13 @@ suspend inline fun TelegramBot.send(
     chat: Chat,
     video: VideoFile,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chat, video, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(chat, video, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVideoNote] request
@@ -1256,12 +1322,13 @@ suspend inline fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     videoNote: VideoNoteFile,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(chatId, videoNote, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideoNote(chatId, videoNote, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVideoNote] request
@@ -1271,12 +1338,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     videoNote: VideoNoteFile,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(chat, videoNote, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideoNote(chat, videoNote, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVoice] request
@@ -1288,12 +1356,13 @@ suspend fun TelegramBot.send(
     voice: VoiceFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chatId, voice, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(chatId, voice, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVoice] request
@@ -1305,12 +1374,13 @@ suspend fun TelegramBot.send(
     voice: VoiceFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat, voice, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(chat, voice, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVoice] request
@@ -1321,12 +1391,13 @@ suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
     voice: VoiceFile,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chatId, voice, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(chatId, voice, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendVoice] request
@@ -1337,12 +1408,13 @@ suspend inline fun TelegramBot.send(
     chat: Chat,
     voice: VoiceFile,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat, voice, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(chat, voice, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @see SendMediaGroup
@@ -1352,11 +1424,12 @@ suspend inline fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendMediaGroup(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendMediaGroup(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendMediaGroup
@@ -1366,11 +1439,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     media: List<MediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendMediaGroup(chat, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendMediaGroup(chat, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendMediaGroup
@@ -1380,11 +1454,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<MediaGroupContent>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendMediaGroup(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendMediaGroup(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendMediaGroup
@@ -1394,11 +1469,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     media: List<MediaGroupContent>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendMediaGroup(chat, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendMediaGroup(chat, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendPlaylist
@@ -1407,11 +1483,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendPlaylist(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendPlaylist(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendPlaylist
@@ -1420,11 +1497,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     media: List<AudioMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendPlaylist(chat, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendPlaylist(chat, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendPlaylist
@@ -1433,11 +1511,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<AudioContent>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendPlaylist(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendPlaylist(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendPlaylist
@@ -1446,11 +1525,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     media: List<AudioContent>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendPlaylist(chat, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendPlaylist(chat, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendDocumentsGroup
@@ -1459,11 +1539,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendDocumentsGroup(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendDocumentsGroup(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendDocumentsGroup
@@ -1472,11 +1553,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendDocumentsGroup(chat, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendDocumentsGroup(chat, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendDocumentsGroup
@@ -1485,11 +1567,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<DocumentContent>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendDocumentsGroup(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendDocumentsGroup(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendDocumentsGroup
@@ -1498,11 +1581,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     media: List<DocumentContent>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendDocumentsGroup(chat, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendDocumentsGroup(chat, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendVisualMediaGroup
@@ -1511,11 +1595,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendVisualMediaGroup(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendVisualMediaGroup(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendVisualMediaGroup
@@ -1524,11 +1609,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     media: List<VisualMediaGroupMemberTelegramMedia>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendVisualMediaGroup(chat, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendVisualMediaGroup(chat, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendVisualMediaGroup
@@ -1537,11 +1623,12 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupContent>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendVisualMediaGroup(chatId, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendVisualMediaGroup(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * @see SendVisualMediaGroup
@@ -1550,8 +1637,9 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     media: List<VisualMediaGroupContent>,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = sendVisualMediaGroup(chat, media, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = sendVisualMediaGroup(chat, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)

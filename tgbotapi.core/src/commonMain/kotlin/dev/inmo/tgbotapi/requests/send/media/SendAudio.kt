@@ -26,10 +26,10 @@ fun SendAudio(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = null,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -48,10 +48,10 @@ fun SendAudio(
         text,
         parseMode,
         null,
-        threadId,
         duration,
         performer,
         title,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -74,10 +74,10 @@ fun SendAudio(
     audio: InputFile,
     thumb: InputFile? = null,
     entities: List<TextSource>,
-    threadId: MessageThreadId? = null,
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -96,10 +96,10 @@ fun SendAudio(
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
-        threadId,
         duration,
         performer,
         title,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -134,14 +134,14 @@ data class SendAudioData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
-    @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(performerField)
     override val performer: String? = null,
     @SerialName(titleField)
     override val title: String? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
