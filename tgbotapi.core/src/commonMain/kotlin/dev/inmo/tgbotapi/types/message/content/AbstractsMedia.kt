@@ -24,14 +24,14 @@ sealed interface DocumentMediaGroupPartContent : MediaGroupPartContent {
 
 sealed interface TextedMediaContent : MediaContent, TextedInput
 
-sealed interface MediaGroupCollectionContent : TextedMediaContent {
+sealed interface MediaGroupCollectionContent<T : MediaGroupPartContent> : TextedMediaContent {
     @Serializable
-    data class PartWrapper(
+    data class PartWrapper<T : MediaGroupPartContent>(
         val messageId: MessageId,
-        val content: MediaGroupPartContent,
-        val sourceMessage: PossiblySentViaBotCommonMessage<MediaGroupPartContent>
+        val content: T,
+        val sourceMessage: PossiblySentViaBotCommonMessage<T>
     )
-    val group: List<PartWrapper>
+    val group: List<PartWrapper<T>>
     val mediaGroupId: MediaGroupIdentifier
 }
 

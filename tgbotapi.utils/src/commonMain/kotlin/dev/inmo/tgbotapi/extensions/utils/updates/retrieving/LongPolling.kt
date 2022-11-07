@@ -60,7 +60,7 @@ fun TelegramBot.longPollingFlow(
                  */
                 if (
                     originalUpdates.size == getUpdatesLimit.last
-                    && ((converted.last() as? BaseSentMessageUpdate) ?.data as? CommonMessage<*>) ?.content is MediaGroupContent
+                    && ((converted.last() as? BaseSentMessageUpdate) ?.data as? CommonMessage<*>) ?.content is MediaGroupContent<*>
                 ) {
                     converted - converted.last()
                 } else {

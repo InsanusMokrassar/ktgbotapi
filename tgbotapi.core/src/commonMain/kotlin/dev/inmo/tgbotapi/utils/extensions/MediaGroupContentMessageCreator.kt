@@ -27,7 +27,7 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 
 @RiskFeature("This API is experimental and can be changed without any notice, use with caution")
-fun List<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>.asMediaGroupMessage(): PossiblySentViaBotCommonMessage<MediaGroupContent> {
+fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMediaGroupMessage(): PossiblySentViaBotCommonMessage<MediaGroupContent<T>> {
     val sourceMessage = first()
     val content = MediaGroupContent(
         map { MediaGroupCollectionContent.PartWrapper(it.messageId, it.content, it) },

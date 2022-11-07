@@ -122,16 +122,16 @@ inline fun SendVisualMediaGroup(
     allowSendingWithoutReply: Boolean? = null
 ) = SendMediaGroup<VisualMediaGroupPartContent>(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
-private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent>> {
+private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
     private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
     override val descriptor: SerialDescriptor = serializer.descriptor
 
-    override fun deserialize(decoder: Decoder): PossiblySentViaBotCommonMessage<MediaGroupContent> {
+    override fun deserialize(decoder: Decoder): PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>> {
         val messages = serializer.deserialize(decoder)
         return messages.asMediaGroupMessage()
     }
 
-    override fun serialize(encoder: Encoder, value: PossiblySentViaBotCommonMessage<MediaGroupContent>) {
+    override fun serialize(encoder: Encoder, value: PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>) {
         serializer.serialize(encoder, value.content.group.map { it.sourceMessage })
     }
 
@@ -152,8 +152,8 @@ data class SendMediaGroupData internal constructor(
     override val replyToMessageId: MessageId? = null,
     @SerialName(allowSendingWithoutReplyField)
     override val allowSendingWithoutReply: Boolean? = null
-) : DataRequest<PossiblySentViaBotCommonMessage<MediaGroupContent>>,
-    SendMessageRequest<PossiblySentViaBotCommonMessage<MediaGroupContent>> {
+) : DataRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
+    SendMessageRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
     @SerialName(mediaField)
     private val convertedMedia: String
         get() = buildJsonArray {
@@ -166,7 +166,7 @@ data class SendMediaGroupData internal constructor(
     override fun method(): String = "sendMediaGroup"
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-    override val resultDeserializer: DeserializationStrategy<PossiblySentViaBotCommonMessage<MediaGroupContent>>
+    override val resultDeserializer: DeserializationStrategy<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>
         get() = MessagesListSerializer
 }
 

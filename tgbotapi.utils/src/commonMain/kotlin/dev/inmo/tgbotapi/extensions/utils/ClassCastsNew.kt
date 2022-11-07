@@ -3509,16 +3509,16 @@ public inline fun <T> ResendableContent.ifTextedMediaContent(block: (TextedMedia
     textedMediaContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.mediaGroupCollectionContentOrNull():
-    MediaGroupCollectionContent? = this as?
-    dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
+    MediaGroupCollectionContent<MediaGroupPartContent>? = this as?
+    dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent<dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent>
 
 public inline fun ResendableContent.mediaGroupCollectionContentOrThrow():
-    MediaGroupCollectionContent = this as
-    dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
+    MediaGroupCollectionContent<MediaGroupPartContent> = this as
+    dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent<dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent>
 
 public inline fun <T>
-    ResendableContent.ifMediaGroupCollectionContent(block: (MediaGroupCollectionContent) -> T): T? =
-    mediaGroupCollectionContentOrNull() ?.let(block)
+    ResendableContent.ifMediaGroupCollectionContent(block: (MediaGroupCollectionContent<MediaGroupPartContent>) -> T):
+    T? = mediaGroupCollectionContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.mediaGroupPartContentOrNull(): MediaGroupPartContent? = this as?
     dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
@@ -3633,14 +3633,17 @@ public inline fun <T>
     ResendableContent.ifStaticLocationContent(block: (StaticLocationContent) -> T): T? =
     staticLocationContentOrNull() ?.let(block)
 
-public inline fun ResendableContent.mediaGroupContentOrNull(): MediaGroupContent? = this as?
-    dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+public inline fun ResendableContent.mediaGroupContentOrNull():
+    MediaGroupContent<MediaGroupPartContent>? = this as?
+    dev.inmo.tgbotapi.types.message.content.MediaGroupContent<dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent>
 
-public inline fun ResendableContent.mediaGroupContentOrThrow(): MediaGroupContent = this as
-    dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+public inline fun ResendableContent.mediaGroupContentOrThrow():
+    MediaGroupContent<MediaGroupPartContent> = this as
+    dev.inmo.tgbotapi.types.message.content.MediaGroupContent<dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent>
 
-public inline fun <T> ResendableContent.ifMediaGroupContent(block: (MediaGroupContent) -> T): T? =
-    mediaGroupContentOrNull() ?.let(block)
+public inline fun <T>
+    ResendableContent.ifMediaGroupContent(block: (MediaGroupContent<MediaGroupPartContent>) -> T):
+    T? = mediaGroupContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.photoContentOrNull(): PhotoContent? = this as?
     dev.inmo.tgbotapi.types.message.content.PhotoContent

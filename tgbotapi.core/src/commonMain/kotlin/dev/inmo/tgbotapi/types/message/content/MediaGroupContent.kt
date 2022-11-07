@@ -14,10 +14,10 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MediaGroupContent(
-    override val group: List<MediaGroupCollectionContent.PartWrapper>,
+data class MediaGroupContent<T : MediaGroupPartContent>(
+    override val group: List<MediaGroupCollectionContent.PartWrapper<T>>,
     override val mediaGroupId: MediaGroupIdentifier
-) : MediaGroupCollectionContent {
+) : MediaGroupCollectionContent<T> {
     val mainContent: MediaGroupPartContent
         get() = group.first().content
     override val media: TelegramMediaFile

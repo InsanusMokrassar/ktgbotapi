@@ -11,5 +11,5 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * Allow only messages which are not [MediaGroupMessage]
  */
 val CommonMessageFilterExcludeMediaGroups = SimpleFilter<Message> {
-    it !is CommonMessage<*> || it.content !is MediaGroupContent
+    it !is CommonMessage<*> || it.content !is MediaGroupContent<*>
 }

@@ -1194,16 +1194,16 @@ inline fun Message.requireGroupContentMessage(): GroupContentMessage<MessageCont
     this as GroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage) -> T) =
+inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage<MediaGroupPartContent>) -> T) =
     asMediaGroupMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asMediaGroupMessage(): MediaGroupMessage? =
-    this as? MediaGroupMessage
+inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent>? =
+    this as? MediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
-inline fun Message.requireMediaGroupMessage(): MediaGroupMessage =
-    this as MediaGroupMessage
+inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent> =
+    this as MediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
 inline fun <T> Message.whenPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T) =
