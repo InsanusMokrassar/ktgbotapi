@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
@@ -113,6 +114,7 @@ sealed interface MediaContent: MessageContent {
 sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId? = null,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyToMessageId: MessageId? = null,

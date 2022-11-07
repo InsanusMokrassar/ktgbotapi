@@ -20,6 +20,8 @@ data class SendDice(
     override val chatId: ChatIdentifier,
     @SerialName(emojiField)
     val animationType: DiceAnimationType? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId?,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
@@ -21,6 +22,7 @@ suspend inline fun TelegramBot.copyMessages(
     messages: List<MediaGroupMessage<MediaGroupPartContent>>,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -44,6 +46,7 @@ suspend inline fun TelegramBot.copyMessages(
         listOf(first) + messages.drop(1).map {
             it.content.toMediaGroupMemberTelegramMedia()
         },
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -60,11 +63,12 @@ suspend inline fun TelegramBot.copyMessages(
     messages: List<MediaGroupMessage<MediaGroupPartContent>>,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = copyMessages(toChat.id, messages, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = copyMessages(toChat.id, messages, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
@@ -75,11 +79,12 @@ suspend inline fun TelegramBot.copyMessages(
     update: SentMediaGroupUpdate,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = copyMessages(toChat, update.data, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = copyMessages(toChat, update.data, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
@@ -90,11 +95,12 @@ suspend inline fun TelegramBot.copyMessages(
     update: SentMediaGroupUpdate,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = copyMessages(toChat.id, update, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = copyMessages(toChat.id, update, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
@@ -104,6 +110,7 @@ suspend inline fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
     messages: List<MediaGroupMessage<MediaGroupPartContent>>,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -123,6 +130,7 @@ suspend inline fun TelegramBot.copyMessages(
         listOf(first) + messages.drop(1).map {
             it.content.toMediaGroupMemberTelegramMedia()
         },
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -138,11 +146,12 @@ suspend inline fun TelegramBot.copyMessages(
     toChat: Chat,
     messages: List<MediaGroupMessage<MediaGroupPartContent>>,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = copyMessages(toChat.id, messages, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = copyMessages(toChat.id, messages, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
@@ -152,11 +161,12 @@ suspend inline fun TelegramBot.copyMessages(
     toChat: ChatIdentifier,
     update: SentMediaGroupUpdate,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = copyMessages(toChat, update.data, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = copyMessages(toChat, update.data, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
 
 /**
  * Send media group via [sendMediaGroup] extension with edited [entities] of first [messages] element. Other elements
@@ -166,8 +176,9 @@ suspend inline fun TelegramBot.copyMessages(
     toChat: Chat,
     update: SentMediaGroupUpdate,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-) = copyMessages(toChat.id, update, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = copyMessages(toChat.id, update, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)

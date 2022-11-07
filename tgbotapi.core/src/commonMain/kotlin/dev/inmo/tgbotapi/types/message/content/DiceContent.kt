@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.SendDice
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -15,6 +16,7 @@ data class DiceContent(
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyToMessageId: MessageId?,
@@ -23,6 +25,7 @@ data class DiceContent(
     ): Request<ContentMessage<DiceContent>> = SendDice(
         chatId,
         dice.animationType,
+        messageThreadId,
         disableNotification,
         protectContent,
         replyToMessageId,

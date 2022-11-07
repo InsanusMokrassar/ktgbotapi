@@ -22,6 +22,8 @@ data class SendContact(
     val firstName: String,
     @SerialName(lastNameField)
     val lastName: String? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -38,6 +40,7 @@ data class SendContact(
     constructor(
         chatId: ChatIdentifier,
         contact: Contact,
+        threadId: MessageThreadId? = null,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyToMessageId: MessageId? = null,
@@ -48,6 +51,7 @@ data class SendContact(
         contact.phoneNumber,
         contact.firstName,
         contact.lastName,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -64,6 +68,7 @@ data class SendContact(
 
 fun Contact.toRequest(
     chatId: ChatIdentifier,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -72,6 +77,7 @@ fun Contact.toRequest(
 ): SendContact = SendContact(
     chatId,
     this,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,

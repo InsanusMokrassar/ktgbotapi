@@ -2,7 +2,10 @@ package dev.inmo.tgbotapi.extensions.api.chat.members
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.members.PromoteChatMember
-import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.TelegramDate
+import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
 
@@ -20,7 +23,8 @@ suspend fun TelegramBot.promoteChatMember(
     canPinMessages: Boolean? = null,
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
-    canManageChat: Boolean?
+    canManageChat: Boolean? = null,
+    canManageTopics: Boolean? = null
 ) = execute(
     PromoteChatMember(
         chatId,
@@ -36,7 +40,8 @@ suspend fun TelegramBot.promoteChatMember(
         canPinMessages,
         canPromoteMembers,
         canManageVideoChats,
-        canManageChat
+        canManageChat,
+        canManageTopics
     )
 )
 
@@ -54,7 +59,8 @@ suspend fun TelegramBot.promoteChatMember(
     canPinMessages: Boolean? = null,
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
-    canManageChat: Boolean? = null
+    canManageChat: Boolean? = null,
+    canManageTopics: Boolean? = null
 ) = promoteChatMember(
     chat.id,
     userId,
@@ -69,7 +75,8 @@ suspend fun TelegramBot.promoteChatMember(
     canPinMessages,
     canPromoteMembers,
     canManageVideoChats,
-    canManageChat
+    canManageChat,
+    canManageTopics
 )
 
 suspend fun TelegramBot.promoteChatMember(
@@ -86,7 +93,8 @@ suspend fun TelegramBot.promoteChatMember(
     canPinMessages: Boolean? = null,
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
-    canManageChat: Boolean? = null
+    canManageChat: Boolean? = null,
+    canManageTopics: Boolean? = null
 ) = promoteChatMember(
     chatId,
     user.id,
@@ -101,7 +109,8 @@ suspend fun TelegramBot.promoteChatMember(
     canPinMessages,
     canPromoteMembers,
     canManageVideoChats,
-    canManageChat
+    canManageChat,
+    canManageTopics
 )
 
 suspend fun TelegramBot.promoteChatMember(
@@ -118,7 +127,8 @@ suspend fun TelegramBot.promoteChatMember(
     canPinMessages: Boolean? = null,
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
-    canManageChat: Boolean? = null
+    canManageChat: Boolean? = null,
+    canManageTopics: Boolean? = null
 ) = promoteChatMember(
     chat.id,
     user.id,
@@ -133,5 +143,6 @@ suspend fun TelegramBot.promoteChatMember(
     canPinMessages,
     canPromoteMembers,
     canManageVideoChats,
-    canManageChat
+    canManageChat,
+    canManageTopics
 )

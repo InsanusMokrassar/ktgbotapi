@@ -28,12 +28,14 @@ val SentMediaGroupUpdate.mediaGroupId: MediaGroupIdentifier
 
 fun List<CommonMessage<MediaGroupPartContent>>.createResend(
     chatId: ChatId,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyTo: MessageId? = null
 ) = SendMediaGroup<MediaGroupPartContent>(
     chatId,
     map { it.content.toMediaGroupMemberTelegramMedia() },
+    threadId,
     disableNotification,
     protectContent,
     replyTo
@@ -41,22 +43,26 @@ fun List<CommonMessage<MediaGroupPartContent>>.createResend(
 
 fun List<CommonMessage<MediaGroupPartContent>>.createResend(
     chat: Chat,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyTo: MessageId? = null
 ) = createResend(
     chat.id,
+    threadId,
     disableNotification,
     protectContent,
     replyTo
 )
 
 fun SentMediaGroupUpdate.createResend(
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyTo: MessageId? = null
 ) = data.createResend(
     chat,
+    threadId,
     disableNotification,
     protectContent,
     replyTo

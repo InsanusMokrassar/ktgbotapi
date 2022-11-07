@@ -18,6 +18,8 @@ data class SendGame (
     override val chatId: ChatIdentifier,
     @SerialName(gameShortNameField)
     val gameShortName: String,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

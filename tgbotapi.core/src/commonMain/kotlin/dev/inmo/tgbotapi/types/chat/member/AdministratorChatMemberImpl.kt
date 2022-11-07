@@ -33,7 +33,9 @@ data class AdministratorChatMemberImpl(
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
     @SerialName(customTitleField)
-    override val customTitle: String? = null
+    override val customTitle: String? = null,
+    @SerialName(canManageTopicsField)
+    override val canManageTopics: Boolean = false
 ) : AdministratorChatMember {
     @SerialName(statusField)
     @Required

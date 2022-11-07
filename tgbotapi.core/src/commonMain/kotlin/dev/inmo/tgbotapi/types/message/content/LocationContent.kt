@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.SendStaticLocation
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -99,6 +100,7 @@ data class LiveLocationContent(
 ) : LocationContent {
     override fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyToMessageId: MessageId?,
@@ -112,6 +114,7 @@ data class LiveLocationContent(
         location.horizontalAccuracy,
         location.heading,
         location.proximityAlertRadius,
+        messageThreadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -130,6 +133,7 @@ data class StaticLocationContent(
 ) : LocationContent {
     override fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyToMessageId: MessageId?,
@@ -139,6 +143,7 @@ data class StaticLocationContent(
         chatId,
         location.latitude,
         location.longitude,
+        messageThreadId,
         disableNotification,
         protectContent,
         replyToMessageId,

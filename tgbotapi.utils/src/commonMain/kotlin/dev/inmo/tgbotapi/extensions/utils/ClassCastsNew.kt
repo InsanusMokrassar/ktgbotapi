@@ -124,6 +124,7 @@ import dev.inmo.tgbotapi.types.chat.ExtendedBot
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedChat
+import dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
 import dev.inmo.tgbotapi.types.chat.ExtendedForumChat
 import dev.inmo.tgbotapi.types.chat.ExtendedForumChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
@@ -238,11 +239,15 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.WebAppData
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
@@ -2098,6 +2103,15 @@ public inline fun Chat.extendedChatOrThrow(): ExtendedChat = this as
 public inline fun <T> Chat.ifExtendedChat(block: (ExtendedChat) -> T): T? = extendedChatOrNull()
     ?.let(block)
 
+public inline fun Chat.extendedChatWithUsernameOrNull(): ExtendedChatWithUsername? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
+
+public inline fun Chat.extendedChatWithUsernameOrThrow(): ExtendedChatWithUsername = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
+
+public inline fun <T> Chat.ifExtendedChatWithUsername(block: (ExtendedChatWithUsername) -> T): T? =
+    extendedChatWithUsernameOrNull() ?.let(block)
+
 public inline fun Chat.groupChatImplOrNull(): GroupChatImpl? = this as?
     dev.inmo.tgbotapi.types.chat.GroupChatImpl
 
@@ -2816,6 +2830,15 @@ public inline fun ChatEvent.commonEventOrThrow(): CommonEvent = this as
 public inline fun <T> ChatEvent.ifCommonEvent(block: (CommonEvent) -> T): T? = commonEventOrNull()
     ?.let(block)
 
+public inline fun ChatEvent.forumEventOrNull(): ForumEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
+
+public inline fun ChatEvent.forumEventOrThrow(): ForumEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
+
+public inline fun <T> ChatEvent.ifForumEvent(block: (ForumEvent) -> T): T? = forumEventOrNull()
+    ?.let(block)
+
 public inline fun ChatEvent.groupEventOrNull(): GroupEvent? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 
@@ -2860,6 +2883,33 @@ public inline fun ChatEvent.videoChatEventOrThrow(): VideoChatEvent = this as
 
 public inline fun <T> ChatEvent.ifVideoChatEvent(block: (VideoChatEvent) -> T): T? =
     videoChatEventOrNull() ?.let(block)
+
+public inline fun ChatEvent.forumTopicClosedOrNull(): ForumTopicClosed? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+
+public inline fun ChatEvent.forumTopicClosedOrThrow(): ForumTopicClosed = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+
+public inline fun <T> ChatEvent.ifForumTopicClosed(block: (ForumTopicClosed) -> T): T? =
+    forumTopicClosedOrNull() ?.let(block)
+
+public inline fun ChatEvent.forumTopicCreatedOrNull(): ForumTopicCreated? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+
+public inline fun ChatEvent.forumTopicCreatedOrThrow(): ForumTopicCreated = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+
+public inline fun <T> ChatEvent.ifForumTopicCreated(block: (ForumTopicCreated) -> T): T? =
+    forumTopicCreatedOrNull() ?.let(block)
+
+public inline fun ChatEvent.forumTopicReopenedOrNull(): ForumTopicReopened? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
+
+public inline fun ChatEvent.forumTopicReopenedOrThrow(): ForumTopicReopened = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
+
+public inline fun <T> ChatEvent.ifForumTopicReopened(block: (ForumTopicReopened) -> T): T? =
+    forumTopicReopenedOrNull() ?.let(block)
 
 public inline fun ChatEvent.videoChatEndedOrNull(): VideoChatEnded? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded

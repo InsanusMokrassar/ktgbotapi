@@ -27,7 +27,9 @@ data class RestrictedChatMember(
     @SerialName(canInviteUsersField)
     override val canInviteUsers: Boolean = false,
     @SerialName(canPinMessagesField)
-    override val canPinMessages: Boolean = false
+    override val canPinMessages: Boolean = false,
+    @SerialName(canManageTopicsField)
+    override val canManageTopics: Boolean = false
 ) : BannedChatMember, SpecialRightsChatMember {
     @SerialName(statusField)
     @Required

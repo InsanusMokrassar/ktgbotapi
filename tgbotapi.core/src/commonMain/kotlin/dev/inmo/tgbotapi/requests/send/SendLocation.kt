@@ -18,6 +18,7 @@ fun SendLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -31,6 +32,7 @@ fun SendLocation(
     null,
     null,
     null,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,
@@ -42,12 +44,13 @@ fun SendStaticLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = SendLocation(chatId, latitude, longitude, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = SendLocation(chatId, latitude, longitude, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 fun SendLiveLocation(
     chatId: ChatIdentifier,
@@ -57,6 +60,7 @@ fun SendLiveLocation(
     horizontalAccuracy: Meters? = null,
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -70,6 +74,7 @@ fun SendLiveLocation(
     horizontalAccuracy,
     heading,
     proximityAlertRadius,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,
@@ -93,6 +98,8 @@ data class SendLocation internal constructor(
     override val heading: Degrees? = null,
     @SerialName(proximityAlertRadiusField)
     override val proximityAlertRadius: Meters? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

@@ -4,6 +4,7 @@ sealed interface SpecialChatAdministratorRights {
     val canChangeInfo: Boolean
     val canInviteUsers: Boolean
     val canPinMessages: Boolean
+    val canManageTopics: Boolean
 }
 
 sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {

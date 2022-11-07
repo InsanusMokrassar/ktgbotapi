@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.media.SendVideoNote
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -16,6 +17,7 @@ data class VideoNoteContent(
 ) : MediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyToMessageId: MessageId?,
@@ -27,6 +29,7 @@ data class VideoNoteContent(
         media.thumb ?.fileId,
         media.duration,
         media.width,
+        messageThreadId,
         disableNotification,
         protectContent,
         replyToMessageId,

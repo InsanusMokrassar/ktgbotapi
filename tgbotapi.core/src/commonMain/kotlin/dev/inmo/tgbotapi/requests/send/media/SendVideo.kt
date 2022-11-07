@@ -29,6 +29,7 @@ fun SendVideo(
     width: Int? = null,
     height: Int? = null,
     supportStreaming: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -51,6 +52,7 @@ fun SendVideo(
         width,
         height,
         supportStreaming,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -77,6 +79,7 @@ fun SendVideo(
     width: Int? = null,
     height: Int? = null,
     supportStreaming: Boolean? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -99,6 +102,7 @@ fun SendVideo(
         width,
         height,
         supportStreaming,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -141,6 +145,8 @@ data class SendVideoData internal constructor(
     override val height: Int? = null,
     @SerialName(supportStreamingField)
     val supportStreaming: Boolean? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
