@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMediaGroupMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.sentMediaGroupUpdateOrNull
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature

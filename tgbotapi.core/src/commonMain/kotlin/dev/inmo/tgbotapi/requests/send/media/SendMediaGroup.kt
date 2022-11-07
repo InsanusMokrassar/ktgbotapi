@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.*
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
@@ -15,13 +14,16 @@ import dev.inmo.tgbotapi.types.message.content.AudioContent
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 import dev.inmo.tgbotapi.utils.*
-import dev.inmo.tgbotapi.utils.extensions.asMediaGroupContent
+import dev.inmo.tgbotapi.utils.extensions.asMediaGroupMessage
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonArray
+import kotlinx.serialization.json.jsonPrimitive
 
 const val rawSendingMediaGroupsWarning = "Media groups contains restrictions related to combinations of media" +
     " types. Currently it is possible to combine photo + video OR audio OR documents"
@@ -35,7 +37,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-): Request<List<MediaGroupMessage<T>>> {
+): Request<PossiblySentViaBotCommonMessage<T>> {
     if (media.size !in mediaCountInMediaGroup) {
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
     }
@@ -68,7 +70,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
             data,
             SendMediaGroupFiles(files)
         )
-    }) as Request<List<MediaGroupMessage<T>>>
+    }) as Request<PossiblySentViaBotCommonMessage<T>>
 }
 
 /**
@@ -126,7 +128,7 @@ private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessa
 
     override fun deserialize(decoder: Decoder): PossiblySentViaBotCommonMessage<MediaGroupContent> {
         val messages = serializer.deserialize(decoder)
-        return messages.asMediaGroupContent()
+        return messages.asMediaGroupMessage()
     }
 
     override fun serialize(encoder: Encoder, value: PossiblySentViaBotCommonMessage<MediaGroupContent>) {

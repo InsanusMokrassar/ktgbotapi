@@ -4,7 +4,6 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.sentMediaGroupUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage

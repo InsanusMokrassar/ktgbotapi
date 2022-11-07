@@ -36,6 +36,3 @@ inline fun <reified T : MessageContent> AnonymousGroupContentMessage<*>.withCont
 
 inline fun <reified T : MessageContent> CommonGroupContentMessage<*>.withContentOrNull() = if (content is T) { this as CommonGroupContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> CommonGroupContentMessage<*>.withContentOrThrow() = withContentOrNull<T>()!!
-
-inline fun <reified T : MediaGroupPartContent> MediaGroupMessage<*>.withContentOrNull() = if (content is T) { this as MediaGroupMessage<T> } else { null }
-inline fun <reified T : MediaGroupPartContent> MediaGroupMessage<*>.withContentOrThrow() = withContentOrNull<T>()!!

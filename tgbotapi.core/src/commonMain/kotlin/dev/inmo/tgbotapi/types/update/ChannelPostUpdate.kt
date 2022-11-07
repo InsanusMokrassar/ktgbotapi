@@ -7,4 +7,6 @@ import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 data class ChannelPostUpdate(
     override val updateId: UpdateIdentifier,
     override val data: Message
-) : BaseSentMessageUpdate
+) : BaseSentMessageUpdate {
+    override fun copy(newData: Message): BaseSentMessageUpdate = copy(updateId, newData)
+}

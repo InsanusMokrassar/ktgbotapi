@@ -9,7 +9,6 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 

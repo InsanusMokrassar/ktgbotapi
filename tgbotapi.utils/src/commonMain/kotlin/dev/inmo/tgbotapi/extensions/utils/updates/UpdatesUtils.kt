@@ -1,21 +1,20 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
+import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
 import dev.inmo.tgbotapi.types.MediaGroupIdentifier
 import dev.inmo.tgbotapi.types.UpdateIdentifier
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
+import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.update.*
 import dev.inmo.tgbotapi.types.update.abstracts.*
-import dev.inmo.tgbotapi.types.update.media_group.*
+import dev.inmo.tgbotapi.utils.extensions.asMediaGroupMessage
 
 /**
  * @return If [this] is [SentMediaGroupUpdate] - [Update.updateId] of [last] element, or its own [Update.updateId]
  */
+@Deprecated("Redundant", ReplaceWith("updateId"))
 fun Update.lastUpdateIdentifier(): UpdateIdentifier {
-    return if (this is SentMediaGroupUpdate) {
-        origins.last().updateId
-    } else {
-        updateId
-    }
+    return updateId
 }
 
 /**
@@ -24,7 +23,7 @@ fun Update.lastUpdateIdentifier(): UpdateIdentifier {
  * @see [Update.lastUpdateIdentifier]
  */
 fun List<Update>.lastUpdateIdentifier(): UpdateIdentifier? {
-    return maxByOrNull { it.updateId } ?.lastUpdateIdentifier()
+    return maxByOrNull { it.updateId } ?.updateId
 }
 
 /**
@@ -32,50 +31,34 @@ fun List<Update>.lastUpdateIdentifier(): UpdateIdentifier? {
  */
 fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
-    val mediaGroups = mutableMapOf<MediaGroupIdentifier, MutableList<BaseSentMessageUpdate>>()
+    val mediaGroups = mutableMapOf<MediaGroupIdentifier, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
+
     for (update in this) {
-        val data = (update.data as? MediaGroupMessage<*>)
-        if (data == null) {
+        val message = (update.data as? PossiblySentViaBotCommonMessage<*>) ?.withContentOrNull<MediaGroupPartContent>()
+        val mediaGroupId = message ?.mediaGroupId
+        if (message == null || mediaGroupId == null) {
             resultUpdates.add(update)
             continue
         }
         when (update) {
-            is BaseEditMessageUpdate -> resultUpdates.add(
-                update.toEditMediaGroupUpdate()
-            )
             is BaseSentMessageUpdate -> {
-                mediaGroups.getOrPut(data.mediaGroupId) {
+                mediaGroups.getOrPut(mediaGroupId) {
                     mutableListOf()
-                }.add(update)
+                }.add(update to message)
             }
             else -> resultUpdates.add(update)
         }
     }
-    mediaGroups.values.map {
-        it.toSentMediaGroupUpdate() ?.let { mediaGroupUpdate ->
-            resultUpdates.add(mediaGroupUpdate)
-        }
+
+    mediaGroups.map { (_, updatesWithMessages) ->
+        val update = updatesWithMessages.maxBy { it.first.updateId }.first
+        resultUpdates.add(
+            update.copy(updatesWithMessages.map { it.second }.asMediaGroupMessage())
+        )
     }
+
     resultUpdates.sortBy { it.updateId }
     return resultUpdates
-}
-
-/**
- * @receiver List of [BaseSentMessageUpdate] where [BaseSentMessageUpdate.data] is [MediaGroupMessage] and all messages
- * have the same [MediaGroupMessage.mediaGroupId]
- * @return [MessageMediaGroupUpdate] in case if [first] object of [this] is [MessageUpdate]. When [first] object is
- * [ChannelPostUpdate] instance - will return [ChannelPostMediaGroupUpdate]. Otherwise will be returned null
- */
-fun List<BaseSentMessageUpdate>.toSentMediaGroupUpdate(): SentMediaGroupUpdate? = (this as? SentMediaGroupUpdate) ?: let {
-    if (isEmpty()) {
-        return@let null
-    }
-    val resultList = sortedBy { it.updateId }
-    when (first()) {
-        is MessageUpdate -> MessageMediaGroupUpdate(resultList)
-        is ChannelPostUpdate -> ChannelPostMediaGroupUpdate(resultList)
-        else -> null
-    }
 }
 
 /**
@@ -84,10 +67,4 @@ fun List<BaseSentMessageUpdate>.toSentMediaGroupUpdate(): SentMediaGroupUpdate? 
  *
  * @throws IllegalStateException
  */
-fun BaseEditMessageUpdate.toEditMediaGroupUpdate(): EditMediaGroupUpdate = (this as? EditMediaGroupUpdate) ?: let {
-    when (this) {
-        is EditMessageUpdate -> EditMessageMediaGroupUpdate(this)
-        is EditChannelPostUpdate -> EditChannelPostMediaGroupUpdate(this)
-        else -> error("Unsupported type of ${BaseEditMessageUpdate::class.simpleName}")
-    }
-}
+fun BaseEditMessageUpdate.toEditMediaGroupUpdate() = this

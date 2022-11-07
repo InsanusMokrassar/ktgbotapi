@@ -221,7 +221,6 @@ import dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl
 import dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
-import dev.inmo.tgbotapi.types.message.ChannelMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
@@ -255,7 +254,6 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
 import dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl
 import dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.CommonGroupEventMessage
-import dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ForwardInfo
@@ -279,7 +277,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
