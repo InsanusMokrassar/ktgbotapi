@@ -14,7 +14,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 
 typealias CommonMessageFilter<T> = SimpleFilter<CommonMessage<T>>
 
@@ -26,7 +25,6 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MessageContent> 
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     when (it) {
         is BaseSentMessageUpdate -> it.data.whenCommonMessage(::listOfNotNull)
-        is SentMediaGroupUpdate -> it.data
         else -> null
     } ?.mapNotNull { message ->
         if (message.content is T) message as CommonMessage<T> else null
@@ -287,7 +285,7 @@ suspend fun <BC : BehaviourContext> BC.onVenue(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onAudioMediaGroup(
-    initialFilter: CommonMessageFilter<AudioMediaGroupContent>? = null,
+    initialFilter: CommonMessageFilter<AudioMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, AudioMediaGroupMessage, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in AudioMediaGroupMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, AudioMediaGroupMessage>
@@ -311,7 +309,7 @@ suspend fun <BC : BehaviourContext> BC.onAudioMediaGroup(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onDocumentMediaGroupContent(
-    initialFilter: CommonMessageFilter<DocumentMediaGroupContent>? = null,
+    initialFilter: CommonMessageFilter<DocumentMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DocumentMediaGroupMessage, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in DocumentMediaGroupMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DocumentMediaGroupMessage>

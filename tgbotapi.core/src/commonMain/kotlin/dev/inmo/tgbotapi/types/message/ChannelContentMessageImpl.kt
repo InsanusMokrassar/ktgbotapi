@@ -19,5 +19,6 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
-    override val authorSignature: AuthorSignature?
+    override val authorSignature: AuthorSignature?,
+    override val mediaGroupId: MediaGroupIdentifier?,
 ) : ChannelContentMessage<T>

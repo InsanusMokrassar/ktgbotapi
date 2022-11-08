@@ -222,7 +222,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedVenue(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onEditedAudioMediaGroup(
-    initialFilter: CommonMessageFilter<AudioMediaGroupContent>? = null,
+    initialFilter: CommonMessageFilter<AudioMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, AudioMediaGroupMessage, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in AudioMediaGroupMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, AudioMediaGroupMessage>
@@ -246,7 +246,7 @@ suspend fun <BC : BehaviourContext> BC.onEditedAudioMediaGroup(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onEditedDocumentMediaGroupContent(
-    initialFilter: CommonMessageFilter<DocumentMediaGroupContent>? = null,
+    initialFilter: CommonMessageFilter<DocumentMediaGroupPartContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DocumentMediaGroupMessage, Update> = MessageFilterByChat,
     markerFactory: MarkerFactory<in DocumentMediaGroupMessage, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DocumentMediaGroupMessage>

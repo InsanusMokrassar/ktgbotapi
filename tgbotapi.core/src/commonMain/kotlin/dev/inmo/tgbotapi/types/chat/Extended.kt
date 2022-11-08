@@ -15,6 +15,8 @@ data class ExtendedChannelChatImpl(
     override val title: String,
     @SerialName(usernameField)
     override val username: Username? = null,
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(descriptionField)
@@ -55,6 +57,8 @@ data class ExtendedPrivateChatImpl(
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(usernameField)
     override val username: Username? = null,
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
     @SerialName(firstNameField)
     override val firstName: String = "",
     @SerialName(lastNameField)
@@ -64,7 +68,9 @@ data class ExtendedPrivateChatImpl(
     @SerialName(hasPrivateForwardsField)
     override val hasPrivateForwards: Boolean = false,
     @SerialName(hasRestrictedVoiceAndVideoMessagesField)
-    override val hasRestrictedVoiceAndVideoMessages: Boolean = false
+    override val hasRestrictedVoiceAndVideoMessages: Boolean = false,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
@@ -77,6 +83,8 @@ data class ExtendedSupergroupChatImpl(
     override val title: String,
     @SerialName(usernameField)
     override val username: Username? = null,
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(permissionsField)
@@ -103,6 +111,43 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(joinByRequestField)
     override val requireAdminApproveToJoin: Boolean = false
 ) : ExtendedSupergroupChat
+
+@Serializable
+data class ExtendedForumChatImpl(
+    @SerialName(idField)
+    override val id: ChatId,
+    @SerialName(titleField)
+    override val title: String,
+    @SerialName(usernameField)
+    override val username: Username? = null,
+    @SerialName(activeUsernamesField)
+    override val activeUsernames: List<Username> = emptyList(),
+    @SerialName(photoField)
+    override val chatPhoto: ChatPhoto? = null,
+    @SerialName(permissionsField)
+    override val permissions: ChatPermissions,
+    @SerialName(descriptionField)
+    override val description: String = "",
+    @SerialName(inviteLinkField)
+    override val inviteLink: String? = null,
+    @SerialName(pinnedMessageField)
+    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
+    override val pinnedMessage: Message? = null,
+    @SerialName(stickerSetNameFullField)
+    override val stickerSetName: StickerSetName? = null,
+    @SerialName(slowModeDelayField)
+    override val slowModeDelay: Long? = null,
+    @SerialName(canSetStickerSetField)
+    override val canSetStickerSet: Boolean = false,
+    @SerialName(linkedChatIdField)
+    override val linkedChannelChatId: ChatId? = null,
+    @SerialName(locationField)
+    override val location: ChatLocation? = null,
+    @SerialName(joinToSendMessagesField)
+    override val requiresJoinForMessaging: Boolean = false,
+    @SerialName(joinByRequestField)
+    override val requireAdminApproveToJoin: Boolean = false
+) : ExtendedForumChat
 
 @Serializable
 data class ExtendedBot(

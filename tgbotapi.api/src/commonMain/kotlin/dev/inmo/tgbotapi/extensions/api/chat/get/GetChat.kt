@@ -3,7 +3,27 @@ package dev.inmo.tgbotapi.extensions.api.chat.get
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.get.GetChat
 import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.chat.*
+import dev.inmo.tgbotapi.types.chat.ChannelChat
+import dev.inmo.tgbotapi.types.chat.ChannelChatImpl
+import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.chat.CommonUser
+import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
+import dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
+import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
+import dev.inmo.tgbotapi.types.chat.ExtendedGroupChatImpl
+import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
+import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChatImpl
+import dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
+import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
+import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChatImpl
+import dev.inmo.tgbotapi.types.chat.ExtendedUser
+import dev.inmo.tgbotapi.types.chat.GroupChat
+import dev.inmo.tgbotapi.types.chat.GroupChatImpl
+import dev.inmo.tgbotapi.types.chat.PrivateChat
+import dev.inmo.tgbotapi.types.chat.PrivateChatImpl
+import dev.inmo.tgbotapi.types.chat.PublicChat
+import dev.inmo.tgbotapi.types.chat.SupergroupChat
+import dev.inmo.tgbotapi.types.chat.SupergroupChatImpl
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 suspend fun TelegramBot.getChat(

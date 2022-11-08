@@ -21,5 +21,6 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val forwardInfo: ForwardInfo?,
     override val replyTo: Message?,
     override val replyMarkup: InlineKeyboardMarkup?,
-    override val senderBot: CommonBot?
+    override val senderBot: CommonBot?,
+    override val mediaGroupId: MediaGroupIdentifier?,
 ) : PrivateContentMessage<T>

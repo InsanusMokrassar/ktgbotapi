@@ -7,6 +7,9 @@ import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
@@ -136,3 +139,15 @@ suspend fun BehaviourContext.waitWebAppDataEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<WebAppData>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitForumTopicClosed(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ForumTopicClosed>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitForumTopicCreated(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ForumTopicCreated>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitForumTopicReopened(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ForumTopicReopened>(initRequest, errorFactory)

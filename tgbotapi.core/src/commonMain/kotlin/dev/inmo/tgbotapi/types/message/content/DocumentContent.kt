@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.media.toTelegramMediaDocument
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.asDocumentFile
@@ -19,9 +20,10 @@ data class DocumentContent(
     override val media: DocumentFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList()
-) : DocumentMediaGroupContent {
+) : DocumentMediaGroupPartContent {
     override fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyToMessageId: MessageId?,
@@ -32,6 +34,7 @@ data class DocumentContent(
         media.fileId,
         media.thumb ?.fileId,
         textSources,
+        messageThreadId,
         disableNotification,
         protectContent,
         replyToMessageId,

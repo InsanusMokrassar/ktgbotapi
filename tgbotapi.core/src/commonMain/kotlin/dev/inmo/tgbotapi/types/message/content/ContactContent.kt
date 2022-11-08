@@ -13,12 +13,13 @@ data class ContactContent(
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<ContactContent>> = SendContact(
-        chatId, contact, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+        chatId, contact, messageThreadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
     )
 }

@@ -124,6 +124,9 @@ import dev.inmo.tgbotapi.types.chat.ExtendedBot
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedChat
+import dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
+import dev.inmo.tgbotapi.types.chat.ExtendedForumChat
+import dev.inmo.tgbotapi.types.chat.ExtendedForumChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
 import dev.inmo.tgbotapi.types.chat.ExtendedGroupChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
@@ -131,6 +134,8 @@ import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
 import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChatImpl
+import dev.inmo.tgbotapi.types.chat.ForumChat
+import dev.inmo.tgbotapi.types.chat.ForumChatImpl
 import dev.inmo.tgbotapi.types.chat.GroupChat
 import dev.inmo.tgbotapi.types.chat.GroupChatImpl
 import dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
@@ -212,10 +217,10 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl
 import dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
-import dev.inmo.tgbotapi.types.message.ChannelMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
@@ -233,42 +238,52 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.WebAppData
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.CommonEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
+import dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl
 import dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.CommonGroupEventMessage
-import dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ForwardInfo
+import dev.inmo.tgbotapi.types.message.FromChannelForumContentMessageImpl
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.UnconnectedFromChannelGroupContentMessageImpl
+import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ConnectedFromChannelGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.ForumContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.FromChannelForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
@@ -277,18 +292,20 @@ import dev.inmo.tgbotapi.types.message.abstracts.UnconnectedFromChannelGroupCont
 import dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
 import dev.inmo.tgbotapi.types.message.content.AnimationContent
 import dev.inmo.tgbotapi.types.message.content.AudioContent
-import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.AudioMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.ContactContent
 import dev.inmo.tgbotapi.types.message.content.DiceContent
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
-import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.GameContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import dev.inmo.tgbotapi.types.message.content.MediaCollectionContent
 import dev.inmo.tgbotapi.types.message.content.MediaContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
 import dev.inmo.tgbotapi.types.message.content.PollContent
@@ -300,7 +317,7 @@ import dev.inmo.tgbotapi.types.message.content.TextedMediaContent
 import dev.inmo.tgbotapi.types.message.content.VenueContent
 import dev.inmo.tgbotapi.types.message.content.VideoContent
 import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
-import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
@@ -425,13 +442,6 @@ import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.ChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.types.update.media_group.ChannelPostMediaGroupUpdate
-import dev.inmo.tgbotapi.types.update.media_group.EditChannelPostMediaGroupUpdate
-import dev.inmo.tgbotapi.types.update.media_group.EditMediaGroupUpdate
-import dev.inmo.tgbotapi.types.update.media_group.EditMessageMediaGroupUpdate
-import dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate
-import dev.inmo.tgbotapi.types.update.media_group.MessageMediaGroupUpdate
-import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import kotlin.Suppress
 
 public inline fun CommonSendInvoiceData.createInvoiceLinkOrNull(): CreateInvoiceLink? = this as?
@@ -725,18 +735,6 @@ public inline fun <T>
     WithUser.ifCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T): T? =
     commonGroupEventMessageOrNull() ?.let(block)
 
-public inline fun WithUser.commonMediaGroupMessageOrNull():
-    CommonMediaGroupMessage<MediaGroupContent>? = this as?
-    dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
-
-public inline fun WithUser.commonMediaGroupMessageOrThrow():
-    CommonMediaGroupMessage<MediaGroupContent> = this as
-    dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
-
-public inline fun <T>
-    WithUser.ifCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupContent>) -> T): T?
-    = commonMediaGroupMessageOrNull() ?.let(block)
-
 public inline fun WithUser.commonSupergroupEventMessageOrNull():
     CommonSupergroupEventMessage<SupergroupEvent>? = this as?
     dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent>
@@ -760,6 +758,18 @@ public inline fun WithUser.commonGroupContentMessageImplOrThrow():
 public inline fun <T>
     WithUser.ifCommonGroupContentMessageImpl(block: (CommonGroupContentMessageImpl<MessageContent>) -> T):
     T? = commonGroupContentMessageImplOrNull() ?.let(block)
+
+public inline fun WithUser.commonForumContentMessageImplOrNull():
+    CommonForumContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun WithUser.commonForumContentMessageImplOrThrow():
+    CommonForumContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    WithUser.ifCommonForumContentMessageImpl(block: (CommonForumContentMessageImpl<MessageContent>) -> T):
+    T? = commonForumContentMessageImplOrNull() ?.let(block)
 
 public inline fun WithUser.passportMessageOrNull(): PassportMessage? = this as?
     dev.inmo.tgbotapi.types.message.PassportMessage
@@ -811,6 +821,18 @@ public inline fun WithUser.commonGroupContentMessageOrThrow():
 public inline fun <T>
     WithUser.ifCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T):
     T? = commonGroupContentMessageOrNull() ?.let(block)
+
+public inline fun WithUser.commonForumContentMessageOrNull():
+    CommonForumContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun WithUser.commonForumContentMessageOrThrow():
+    CommonForumContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    WithUser.ifCommonForumContentMessage(block: (CommonForumContentMessage<MessageContent>) -> T):
+    T? = commonForumContentMessageOrNull() ?.let(block)
 
 public inline fun WithUser.privateContentMessageOrNull(): PrivateContentMessage<MessageContent>? =
     this as?
@@ -1848,22 +1870,14 @@ public inline fun KeyboardMarkup.replyKeyboardRemoveOrThrow(): ReplyKeyboardRemo
 public inline fun <T> KeyboardMarkup.ifReplyKeyboardRemove(block: (ReplyKeyboardRemove) -> T): T? =
     replyKeyboardRemoveOrNull() ?.let(block)
 
-public inline fun Chat.channelChatOrNull(): ChannelChat? = this as?
-    dev.inmo.tgbotapi.types.chat.ChannelChat
+public inline fun Chat.usernameChatOrNull(): UsernameChat? = this as?
+    dev.inmo.tgbotapi.types.chat.UsernameChat
 
-public inline fun Chat.channelChatOrThrow(): ChannelChat = this as
-    dev.inmo.tgbotapi.types.chat.ChannelChat
+public inline fun Chat.usernameChatOrThrow(): UsernameChat = this as
+    dev.inmo.tgbotapi.types.chat.UsernameChat
 
-public inline fun <T> Chat.ifChannelChat(block: (ChannelChat) -> T): T? = channelChatOrNull()
+public inline fun <T> Chat.ifUsernameChat(block: (UsernameChat) -> T): T? = usernameChatOrNull()
     ?.let(block)
-
-public inline fun Chat.groupChatOrNull(): GroupChat? = this as?
-    dev.inmo.tgbotapi.types.chat.GroupChat
-
-public inline fun Chat.groupChatOrThrow(): GroupChat = this as
-    dev.inmo.tgbotapi.types.chat.GroupChat
-
-public inline fun <T> Chat.ifGroupChat(block: (GroupChat) -> T): T? = groupChatOrNull() ?.let(block)
 
 public inline fun Chat.privateChatOrNull(): PrivateChat? = this as?
     dev.inmo.tgbotapi.types.chat.PrivateChat
@@ -1883,15 +1897,6 @@ public inline fun Chat.publicChatOrThrow(): PublicChat = this as
 public inline fun <T> Chat.ifPublicChat(block: (PublicChat) -> T): T? = publicChatOrNull()
     ?.let(block)
 
-public inline fun Chat.supergroupChatOrNull(): SupergroupChat? = this as?
-    dev.inmo.tgbotapi.types.chat.SupergroupChat
-
-public inline fun Chat.supergroupChatOrThrow(): SupergroupChat = this as
-    dev.inmo.tgbotapi.types.chat.SupergroupChat
-
-public inline fun <T> Chat.ifSupergroupChat(block: (SupergroupChat) -> T): T? =
-    supergroupChatOrNull() ?.let(block)
-
 public inline fun Chat.superPublicChatOrNull(): SuperPublicChat? = this as?
     dev.inmo.tgbotapi.types.chat.SuperPublicChat
 
@@ -1901,14 +1906,39 @@ public inline fun Chat.superPublicChatOrThrow(): SuperPublicChat = this as
 public inline fun <T> Chat.ifSuperPublicChat(block: (SuperPublicChat) -> T): T? =
     superPublicChatOrNull() ?.let(block)
 
-public inline fun Chat.usernameChatOrNull(): UsernameChat? = this as?
-    dev.inmo.tgbotapi.types.chat.UsernameChat
+public inline fun Chat.channelChatOrNull(): ChannelChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ChannelChat
 
-public inline fun Chat.usernameChatOrThrow(): UsernameChat = this as
-    dev.inmo.tgbotapi.types.chat.UsernameChat
+public inline fun Chat.channelChatOrThrow(): ChannelChat = this as
+    dev.inmo.tgbotapi.types.chat.ChannelChat
 
-public inline fun <T> Chat.ifUsernameChat(block: (UsernameChat) -> T): T? = usernameChatOrNull()
+public inline fun <T> Chat.ifChannelChat(block: (ChannelChat) -> T): T? = channelChatOrNull()
     ?.let(block)
+
+public inline fun Chat.groupChatOrNull(): GroupChat? = this as?
+    dev.inmo.tgbotapi.types.chat.GroupChat
+
+public inline fun Chat.groupChatOrThrow(): GroupChat = this as
+    dev.inmo.tgbotapi.types.chat.GroupChat
+
+public inline fun <T> Chat.ifGroupChat(block: (GroupChat) -> T): T? = groupChatOrNull() ?.let(block)
+
+public inline fun Chat.supergroupChatOrNull(): SupergroupChat? = this as?
+    dev.inmo.tgbotapi.types.chat.SupergroupChat
+
+public inline fun Chat.supergroupChatOrThrow(): SupergroupChat = this as
+    dev.inmo.tgbotapi.types.chat.SupergroupChat
+
+public inline fun <T> Chat.ifSupergroupChat(block: (SupergroupChat) -> T): T? =
+    supergroupChatOrNull() ?.let(block)
+
+public inline fun Chat.forumChatOrNull(): ForumChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ForumChat
+
+public inline fun Chat.forumChatOrThrow(): ForumChat = this as
+    dev.inmo.tgbotapi.types.chat.ForumChat
+
+public inline fun <T> Chat.ifForumChat(block: (ForumChat) -> T): T? = forumChatOrNull() ?.let(block)
 
 public inline fun Chat.possiblyPremiumChatOrNull(): PossiblyPremiumChat? = this as?
     dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
@@ -1964,6 +1994,15 @@ public inline fun Chat.extendedSupergroupChatImplOrThrow(): ExtendedSupergroupCh
 
 public inline fun <T> Chat.ifExtendedSupergroupChatImpl(block: (ExtendedSupergroupChatImpl) -> T):
     T? = extendedSupergroupChatImplOrNull() ?.let(block)
+
+public inline fun Chat.extendedForumChatImplOrNull(): ExtendedForumChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedForumChatImpl
+
+public inline fun Chat.extendedForumChatImplOrThrow(): ExtendedForumChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedForumChatImpl
+
+public inline fun <T> Chat.ifExtendedForumChatImpl(block: (ExtendedForumChatImpl) -> T): T? =
+    extendedForumChatImplOrNull() ?.let(block)
 
 public inline fun Chat.extendedBotOrNull(): ExtendedBot? = this as?
     dev.inmo.tgbotapi.types.chat.ExtendedBot
@@ -2028,6 +2067,15 @@ public inline fun Chat.extendedSupergroupChatOrThrow(): ExtendedSupergroupChat =
 public inline fun <T> Chat.ifExtendedSupergroupChat(block: (ExtendedSupergroupChat) -> T): T? =
     extendedSupergroupChatOrNull() ?.let(block)
 
+public inline fun Chat.extendedForumChatOrNull(): ExtendedForumChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedForumChat
+
+public inline fun Chat.extendedForumChatOrThrow(): ExtendedForumChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedForumChat
+
+public inline fun <T> Chat.ifExtendedForumChat(block: (ExtendedForumChat) -> T): T? =
+    extendedForumChatOrNull() ?.let(block)
+
 public inline fun Chat.extendedChatOrNull(): ExtendedChat? = this as?
     dev.inmo.tgbotapi.types.chat.ExtendedChat
 
@@ -2036,6 +2084,15 @@ public inline fun Chat.extendedChatOrThrow(): ExtendedChat = this as
 
 public inline fun <T> Chat.ifExtendedChat(block: (ExtendedChat) -> T): T? = extendedChatOrNull()
     ?.let(block)
+
+public inline fun Chat.extendedChatWithUsernameOrNull(): ExtendedChatWithUsername? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
+
+public inline fun Chat.extendedChatWithUsernameOrThrow(): ExtendedChatWithUsername = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
+
+public inline fun <T> Chat.ifExtendedChatWithUsername(block: (ExtendedChatWithUsername) -> T): T? =
+    extendedChatWithUsernameOrNull() ?.let(block)
 
 public inline fun Chat.groupChatImplOrNull(): GroupChatImpl? = this as?
     dev.inmo.tgbotapi.types.chat.GroupChatImpl
@@ -2063,6 +2120,15 @@ public inline fun Chat.supergroupChatImplOrThrow(): SupergroupChatImpl = this as
 
 public inline fun <T> Chat.ifSupergroupChatImpl(block: (SupergroupChatImpl) -> T): T? =
     supergroupChatImplOrNull() ?.let(block)
+
+public inline fun Chat.forumChatImplOrNull(): ForumChatImpl? = this as?
+    dev.inmo.tgbotapi.types.chat.ForumChatImpl
+
+public inline fun Chat.forumChatImplOrThrow(): ForumChatImpl = this as
+    dev.inmo.tgbotapi.types.chat.ForumChatImpl
+
+public inline fun <T> Chat.ifForumChatImpl(block: (ForumChatImpl) -> T): T? = forumChatImplOrNull()
+    ?.let(block)
 
 public inline fun Chat.channelChatImplOrNull(): ChannelChatImpl? = this as?
     dev.inmo.tgbotapi.types.chat.ChannelChatImpl
@@ -2746,6 +2812,15 @@ public inline fun ChatEvent.commonEventOrThrow(): CommonEvent = this as
 public inline fun <T> ChatEvent.ifCommonEvent(block: (CommonEvent) -> T): T? = commonEventOrNull()
     ?.let(block)
 
+public inline fun ChatEvent.forumEventOrNull(): ForumEvent? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
+
+public inline fun ChatEvent.forumEventOrThrow(): ForumEvent = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
+
+public inline fun <T> ChatEvent.ifForumEvent(block: (ForumEvent) -> T): T? = forumEventOrNull()
+    ?.let(block)
+
 public inline fun ChatEvent.groupEventOrNull(): GroupEvent? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent
 
@@ -2790,6 +2865,33 @@ public inline fun ChatEvent.videoChatEventOrThrow(): VideoChatEvent = this as
 
 public inline fun <T> ChatEvent.ifVideoChatEvent(block: (VideoChatEvent) -> T): T? =
     videoChatEventOrNull() ?.let(block)
+
+public inline fun ChatEvent.forumTopicClosedOrNull(): ForumTopicClosed? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+
+public inline fun ChatEvent.forumTopicClosedOrThrow(): ForumTopicClosed = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+
+public inline fun <T> ChatEvent.ifForumTopicClosed(block: (ForumTopicClosed) -> T): T? =
+    forumTopicClosedOrNull() ?.let(block)
+
+public inline fun ChatEvent.forumTopicCreatedOrNull(): ForumTopicCreated? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+
+public inline fun ChatEvent.forumTopicCreatedOrThrow(): ForumTopicCreated = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+
+public inline fun <T> ChatEvent.ifForumTopicCreated(block: (ForumTopicCreated) -> T): T? =
+    forumTopicCreatedOrNull() ?.let(block)
+
+public inline fun ChatEvent.forumTopicReopenedOrNull(): ForumTopicReopened? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
+
+public inline fun ChatEvent.forumTopicReopenedOrThrow(): ForumTopicReopened = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
+
+public inline fun <T> ChatEvent.ifForumTopicReopened(block: (ForumTopicReopened) -> T): T? =
+    forumTopicReopenedOrNull() ?.let(block)
 
 public inline fun ChatEvent.videoChatEndedOrNull(): VideoChatEnded? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
@@ -2915,18 +3017,6 @@ public inline fun <T>
     Message.ifChannelEventMessage(block: (ChannelEventMessage<ChannelEvent>) -> T): T? =
     channelEventMessageOrNull() ?.let(block)
 
-public inline fun Message.channelMediaGroupMessageOrNull():
-    ChannelMediaGroupMessage<MediaGroupContent>? = this as?
-    dev.inmo.tgbotapi.types.message.ChannelMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
-
-public inline fun Message.channelMediaGroupMessageOrThrow():
-    ChannelMediaGroupMessage<MediaGroupContent> = this as
-    dev.inmo.tgbotapi.types.message.ChannelMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
-
-public inline fun <T>
-    Message.ifChannelMediaGroupMessage(block: (ChannelMediaGroupMessage<MediaGroupContent>) -> T):
-    T? = channelMediaGroupMessageOrNull() ?.let(block)
-
 public inline fun Message.commonGroupEventMessageOrNull(): CommonGroupEventMessage<GroupEvent>? =
     this as?
     dev.inmo.tgbotapi.types.message.CommonGroupEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.GroupEvent>
@@ -2938,18 +3028,6 @@ public inline fun Message.commonGroupEventMessageOrThrow(): CommonGroupEventMess
 public inline fun <T>
     Message.ifCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T): T? =
     commonGroupEventMessageOrNull() ?.let(block)
-
-public inline fun Message.commonMediaGroupMessageOrNull():
-    CommonMediaGroupMessage<MediaGroupContent>? = this as?
-    dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
-
-public inline fun Message.commonMediaGroupMessageOrThrow():
-    CommonMediaGroupMessage<MediaGroupContent> = this as
-    dev.inmo.tgbotapi.types.message.CommonMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
-
-public inline fun <T>
-    Message.ifCommonMediaGroupMessage(block: (CommonMediaGroupMessage<MediaGroupContent>) -> T): T?
-    = commonMediaGroupMessageOrNull() ?.let(block)
 
 public inline fun Message.commonSupergroupEventMessageOrNull():
     CommonSupergroupEventMessage<SupergroupEvent>? = this as?
@@ -3010,6 +3088,42 @@ public inline fun Message.commonGroupContentMessageImplOrThrow():
 public inline fun <T>
     Message.ifCommonGroupContentMessageImpl(block: (CommonGroupContentMessageImpl<MessageContent>) -> T):
     T? = commonGroupContentMessageImplOrNull() ?.let(block)
+
+public inline fun Message.fromChannelForumContentMessageImplOrNull():
+    FromChannelForumContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.FromChannelForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.fromChannelForumContentMessageImplOrThrow():
+    FromChannelForumContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.FromChannelForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifFromChannelForumContentMessageImpl(block: (FromChannelForumContentMessageImpl<MessageContent>) -> T):
+    T? = fromChannelForumContentMessageImplOrNull() ?.let(block)
+
+public inline fun Message.anonymousForumContentMessageImplOrNull():
+    AnonymousForumContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.anonymousForumContentMessageImplOrThrow():
+    AnonymousForumContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifAnonymousForumContentMessageImpl(block: (AnonymousForumContentMessageImpl<MessageContent>) -> T):
+    T? = anonymousForumContentMessageImplOrNull() ?.let(block)
+
+public inline fun Message.commonForumContentMessageImplOrNull():
+    CommonForumContentMessageImpl<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.commonForumContentMessageImplOrThrow():
+    CommonForumContentMessageImpl<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifCommonForumContentMessageImpl(block: (CommonForumContentMessageImpl<MessageContent>) -> T):
+    T? = commonForumContentMessageImplOrNull() ?.let(block)
 
 public inline fun Message.passportMessageOrNull(): PassportMessage? = this as?
     dev.inmo.tgbotapi.types.message.PassportMessage
@@ -3111,6 +3225,18 @@ public inline fun <T>
     Message.ifGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T): T? =
     groupContentMessageOrNull() ?.let(block)
 
+public inline fun Message.forumContentMessageOrNull(): ForumContentMessage<MessageContent>? = this
+    as?
+    dev.inmo.tgbotapi.types.message.abstracts.ForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.forumContentMessageOrThrow(): ForumContentMessage<MessageContent> = this
+    as
+    dev.inmo.tgbotapi.types.message.abstracts.ForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifForumContentMessage(block: (ForumContentMessage<MessageContent>) -> T): T? =
+    forumContentMessageOrNull() ?.let(block)
+
 public inline fun Message.fromChannelGroupContentMessageOrNull():
     FromChannelGroupContentMessage<MessageContent>? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
@@ -3171,16 +3297,41 @@ public inline fun <T>
     Message.ifCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T): T?
     = commonGroupContentMessageOrNull() ?.let(block)
 
-public inline fun Message.mediaGroupMessageOrNull(): MediaGroupMessage<MediaGroupContent>? = this
-    as?
-    dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
+public inline fun Message.fromChannelForumContentMessageOrNull():
+    FromChannelForumContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.FromChannelForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
-public inline fun Message.mediaGroupMessageOrThrow(): MediaGroupMessage<MediaGroupContent> = this as
-    dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MediaGroupContent>
+public inline fun Message.fromChannelForumContentMessageOrThrow():
+    FromChannelForumContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.FromChannelForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
 
 public inline fun <T>
-    Message.ifMediaGroupMessage(block: (MediaGroupMessage<MediaGroupContent>) -> T): T? =
-    mediaGroupMessageOrNull() ?.let(block)
+    Message.ifFromChannelForumContentMessage(block: (FromChannelForumContentMessage<MessageContent>) -> T):
+    T? = fromChannelForumContentMessageOrNull() ?.let(block)
+
+public inline fun Message.anonymousForumContentMessageOrNull():
+    AnonymousForumContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.anonymousForumContentMessageOrThrow():
+    AnonymousForumContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifAnonymousForumContentMessage(block: (AnonymousForumContentMessage<MessageContent>) -> T):
+    T? = anonymousForumContentMessageOrNull() ?.let(block)
+
+public inline fun Message.commonForumContentMessageOrNull():
+    CommonForumContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.commonForumContentMessageOrThrow():
+    CommonForumContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifCommonForumContentMessage(block: (CommonForumContentMessage<MessageContent>) -> T): T?
+    = commonForumContentMessageOrNull() ?.let(block)
 
 public inline fun Message.unknownMessageTypeOrNull(): UnknownMessageType? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType
@@ -3209,6 +3360,18 @@ public inline fun Message.possiblyForwardedMessageOrThrow(): PossiblyForwardedMe
 public inline fun <T> Message.ifPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T): T?
     = possiblyForwardedMessageOrNull() ?.let(block)
 
+public inline fun Message.possiblyMediaGroupMessageOrNull():
+    PossiblyMediaGroupMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.possiblyMediaGroupMessageOrThrow():
+    PossiblyMediaGroupMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifPossiblyMediaGroupMessage(block: (PossiblyMediaGroupMessage<MessageContent>) -> T): T?
+    = possiblyMediaGroupMessageOrNull() ?.let(block)
+
 public inline fun Message.possiblyPaymentMessageOrNull(): PossiblyPaymentMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 
@@ -3229,6 +3392,15 @@ public inline fun Message.possiblySentViaBotCommonMessageOrThrow():
 public inline fun <T>
     Message.ifPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T):
     T? = possiblySentViaBotCommonMessageOrNull() ?.let(block)
+
+public inline fun Message.possiblyTopicMessageOrNull(): PossiblyTopicMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
+
+public inline fun Message.possiblyTopicMessageOrThrow(): PossiblyTopicMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
+
+public inline fun <T> Message.ifPossiblyTopicMessage(block: (PossiblyTopicMessage) -> T): T? =
+    possiblyTopicMessageOrNull() ?.let(block)
 
 public inline fun Message.privateContentMessageOrNull(): PrivateContentMessage<MessageContent>? =
     this as?
@@ -3305,34 +3477,27 @@ public inline fun ResendableContent.mediaContentOrThrow(): MediaContent = this a
 public inline fun <T> ResendableContent.ifMediaContent(block: (MediaContent) -> T): T? =
     mediaContentOrNull() ?.let(block)
 
-public inline fun ResendableContent.audioMediaGroupContentOrNull(): AudioMediaGroupContent? = this
-    as? dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
+public inline fun ResendableContent.audioMediaGroupPartContentOrNull(): AudioMediaGroupPartContent?
+    = this as? dev.inmo.tgbotapi.types.message.content.AudioMediaGroupPartContent
 
-public inline fun ResendableContent.audioMediaGroupContentOrThrow(): AudioMediaGroupContent = this
-    as dev.inmo.tgbotapi.types.message.content.AudioMediaGroupContent
-
-public inline fun <T>
-    ResendableContent.ifAudioMediaGroupContent(block: (AudioMediaGroupContent) -> T): T? =
-    audioMediaGroupContentOrNull() ?.let(block)
-
-public inline fun ResendableContent.documentMediaGroupContentOrNull(): DocumentMediaGroupContent? =
-    this as? dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
-
-public inline fun ResendableContent.documentMediaGroupContentOrThrow(): DocumentMediaGroupContent =
-    this as dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupContent
+public inline fun ResendableContent.audioMediaGroupPartContentOrThrow(): AudioMediaGroupPartContent
+    = this as dev.inmo.tgbotapi.types.message.content.AudioMediaGroupPartContent
 
 public inline fun <T>
-    ResendableContent.ifDocumentMediaGroupContent(block: (DocumentMediaGroupContent) -> T): T? =
-    documentMediaGroupContentOrNull() ?.let(block)
+    ResendableContent.ifAudioMediaGroupPartContent(block: (AudioMediaGroupPartContent) -> T): T? =
+    audioMediaGroupPartContentOrNull() ?.let(block)
 
-public inline fun ResendableContent.mediaGroupContentOrNull(): MediaGroupContent? = this as?
-    dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+public inline fun ResendableContent.documentMediaGroupPartContentOrNull():
+    DocumentMediaGroupPartContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupPartContent
 
-public inline fun ResendableContent.mediaGroupContentOrThrow(): MediaGroupContent = this as
-    dev.inmo.tgbotapi.types.message.content.MediaGroupContent
+public inline fun ResendableContent.documentMediaGroupPartContentOrThrow():
+    DocumentMediaGroupPartContent = this as
+    dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupPartContent
 
-public inline fun <T> ResendableContent.ifMediaGroupContent(block: (MediaGroupContent) -> T): T? =
-    mediaGroupContentOrNull() ?.let(block)
+public inline fun <T>
+    ResendableContent.ifDocumentMediaGroupPartContent(block: (DocumentMediaGroupPartContent) -> T):
+    T? = documentMediaGroupPartContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.textedMediaContentOrNull(): TextedMediaContent? = this as?
     dev.inmo.tgbotapi.types.message.content.TextedMediaContent
@@ -3343,15 +3508,39 @@ public inline fun ResendableContent.textedMediaContentOrThrow(): TextedMediaCont
 public inline fun <T> ResendableContent.ifTextedMediaContent(block: (TextedMediaContent) -> T): T? =
     textedMediaContentOrNull() ?.let(block)
 
-public inline fun ResendableContent.visualMediaGroupContentOrNull(): VisualMediaGroupContent? = this
-    as? dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+public inline fun ResendableContent.mediaGroupCollectionContentOrNull():
+    MediaGroupCollectionContent<MediaGroupPartContent>? = this as?
+    dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent<dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent>
 
-public inline fun ResendableContent.visualMediaGroupContentOrThrow(): VisualMediaGroupContent = this
-    as dev.inmo.tgbotapi.types.message.content.VisualMediaGroupContent
+public inline fun ResendableContent.mediaGroupCollectionContentOrThrow():
+    MediaGroupCollectionContent<MediaGroupPartContent> = this as
+    dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent<dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent>
 
 public inline fun <T>
-    ResendableContent.ifVisualMediaGroupContent(block: (VisualMediaGroupContent) -> T): T? =
-    visualMediaGroupContentOrNull() ?.let(block)
+    ResendableContent.ifMediaGroupCollectionContent(block: (MediaGroupCollectionContent<MediaGroupPartContent>) -> T):
+    T? = mediaGroupCollectionContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.mediaGroupPartContentOrNull(): MediaGroupPartContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
+
+public inline fun ResendableContent.mediaGroupPartContentOrThrow(): MediaGroupPartContent = this as
+    dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
+
+public inline fun <T>
+    ResendableContent.ifMediaGroupPartContent(block: (MediaGroupPartContent) -> T): T? =
+    mediaGroupPartContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.visualMediaGroupPartContentOrNull():
+    VisualMediaGroupPartContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
+
+public inline fun ResendableContent.visualMediaGroupPartContentOrThrow():
+    VisualMediaGroupPartContent = this as
+    dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
+
+public inline fun <T>
+    ResendableContent.ifVisualMediaGroupPartContent(block: (VisualMediaGroupPartContent) -> T): T? =
+    visualMediaGroupPartContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.animationContentOrNull(): AnimationContent? = this as?
     dev.inmo.tgbotapi.types.message.content.AnimationContent
@@ -3443,6 +3632,18 @@ public inline fun ResendableContent.staticLocationContentOrThrow(): StaticLocati
 public inline fun <T>
     ResendableContent.ifStaticLocationContent(block: (StaticLocationContent) -> T): T? =
     staticLocationContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.mediaGroupContentOrNull():
+    MediaGroupContent<MediaGroupPartContent>? = this as?
+    dev.inmo.tgbotapi.types.message.content.MediaGroupContent<dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent>
+
+public inline fun ResendableContent.mediaGroupContentOrThrow():
+    MediaGroupContent<MediaGroupPartContent> = this as
+    dev.inmo.tgbotapi.types.message.content.MediaGroupContent<dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent>
+
+public inline fun <T>
+    ResendableContent.ifMediaGroupContent(block: (MediaGroupContent<MediaGroupPartContent>) -> T):
+    T? = mediaGroupContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.photoContentOrNull(): PhotoContent? = this as?
     dev.inmo.tgbotapi.types.message.content.PhotoContent
@@ -4527,69 +4728,3 @@ public inline fun Update.unknownUpdateOrThrow(): UnknownUpdate = this as
 
 public inline fun <T> Update.ifUnknownUpdate(block: (UnknownUpdate) -> T): T? =
     unknownUpdateOrNull() ?.let(block)
-
-public inline fun Update.channelPostMediaGroupUpdateOrNull(): ChannelPostMediaGroupUpdate? = this
-    as? dev.inmo.tgbotapi.types.update.media_group.ChannelPostMediaGroupUpdate
-
-public inline fun Update.channelPostMediaGroupUpdateOrThrow(): ChannelPostMediaGroupUpdate = this as
-    dev.inmo.tgbotapi.types.update.media_group.ChannelPostMediaGroupUpdate
-
-public inline fun <T>
-    Update.ifChannelPostMediaGroupUpdate(block: (ChannelPostMediaGroupUpdate) -> T): T? =
-    channelPostMediaGroupUpdateOrNull() ?.let(block)
-
-public inline fun Update.editChannelPostMediaGroupUpdateOrNull(): EditChannelPostMediaGroupUpdate? =
-    this as? dev.inmo.tgbotapi.types.update.media_group.EditChannelPostMediaGroupUpdate
-
-public inline fun Update.editChannelPostMediaGroupUpdateOrThrow(): EditChannelPostMediaGroupUpdate =
-    this as dev.inmo.tgbotapi.types.update.media_group.EditChannelPostMediaGroupUpdate
-
-public inline fun <T>
-    Update.ifEditChannelPostMediaGroupUpdate(block: (EditChannelPostMediaGroupUpdate) -> T): T? =
-    editChannelPostMediaGroupUpdateOrNull() ?.let(block)
-
-public inline fun Update.editMessageMediaGroupUpdateOrNull(): EditMessageMediaGroupUpdate? = this
-    as? dev.inmo.tgbotapi.types.update.media_group.EditMessageMediaGroupUpdate
-
-public inline fun Update.editMessageMediaGroupUpdateOrThrow(): EditMessageMediaGroupUpdate = this as
-    dev.inmo.tgbotapi.types.update.media_group.EditMessageMediaGroupUpdate
-
-public inline fun <T>
-    Update.ifEditMessageMediaGroupUpdate(block: (EditMessageMediaGroupUpdate) -> T): T? =
-    editMessageMediaGroupUpdateOrNull() ?.let(block)
-
-public inline fun Update.mediaGroupUpdateOrNull(): MediaGroupUpdate? = this as?
-    dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate
-
-public inline fun Update.mediaGroupUpdateOrThrow(): MediaGroupUpdate = this as
-    dev.inmo.tgbotapi.types.update.media_group.MediaGroupUpdate
-
-public inline fun <T> Update.ifMediaGroupUpdate(block: (MediaGroupUpdate) -> T): T? =
-    mediaGroupUpdateOrNull() ?.let(block)
-
-public inline fun Update.sentMediaGroupUpdateOrNull(): SentMediaGroupUpdate? = this as?
-    dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
-
-public inline fun Update.sentMediaGroupUpdateOrThrow(): SentMediaGroupUpdate = this as
-    dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
-
-public inline fun <T> Update.ifSentMediaGroupUpdate(block: (SentMediaGroupUpdate) -> T): T? =
-    sentMediaGroupUpdateOrNull() ?.let(block)
-
-public inline fun Update.editMediaGroupUpdateOrNull(): EditMediaGroupUpdate? = this as?
-    dev.inmo.tgbotapi.types.update.media_group.EditMediaGroupUpdate
-
-public inline fun Update.editMediaGroupUpdateOrThrow(): EditMediaGroupUpdate = this as
-    dev.inmo.tgbotapi.types.update.media_group.EditMediaGroupUpdate
-
-public inline fun <T> Update.ifEditMediaGroupUpdate(block: (EditMediaGroupUpdate) -> T): T? =
-    editMediaGroupUpdateOrNull() ?.let(block)
-
-public inline fun Update.messageMediaGroupUpdateOrNull(): MessageMediaGroupUpdate? = this as?
-    dev.inmo.tgbotapi.types.update.media_group.MessageMediaGroupUpdate
-
-public inline fun Update.messageMediaGroupUpdateOrThrow(): MessageMediaGroupUpdate = this as
-    dev.inmo.tgbotapi.types.update.media_group.MessageMediaGroupUpdate
-
-public inline fun <T> Update.ifMessageMediaGroupUpdate(block: (MessageMediaGroupUpdate) -> T): T? =
-    messageMediaGroupUpdateOrNull() ?.let(block)

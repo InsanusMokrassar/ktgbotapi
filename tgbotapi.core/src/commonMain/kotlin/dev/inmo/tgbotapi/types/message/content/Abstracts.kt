@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
@@ -15,10 +16,10 @@ sealed interface MessageContent: ResendableContent {
     companion object {
         @RiskFeature("This serialization module can be changed in near releases")
         fun serializationModule(
-            visualMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<VisualMediaGroupContent>.() -> Unit = {},
-            documentMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<DocumentMediaGroupContent>.() -> Unit = {},
-            audioMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<AudioMediaGroupContent>.() -> Unit = {},
-            mediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<MediaGroupContent>.() -> Unit = {},
+            visualMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<VisualMediaGroupPartContent>.() -> Unit = {},
+            documentMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<DocumentMediaGroupPartContent>.() -> Unit = {},
+            audioMediaGroupContentAdditionalBuilder: PolymorphicModuleBuilder<AudioMediaGroupPartContent>.() -> Unit = {},
+            mediaGroupPartContentAdditionalBuilder: PolymorphicModuleBuilder<MediaGroupPartContent>.() -> Unit = {},
             textedMediaContentAdditionalBuilder: PolymorphicModuleBuilder<TextedMediaContent>.() -> Unit = {},
             mediaContentAdditionalBuilder: PolymorphicModuleBuilder<MediaContent>.() -> Unit = {},
             mediaCollectionContentAdditionalBuilder: PolymorphicModuleBuilder<MediaCollectionContent<*>>.() -> Unit = {},
@@ -73,24 +74,24 @@ sealed interface MessageContent: ResendableContent {
 
                 textedMediaContentAdditionalBuilder()
             }
-            polymorphic(MediaGroupContent::class) {
+            polymorphic(MediaGroupPartContent::class) {
                 subclass(PhotoContent::class)
                 subclass(AudioContent::class)
                 subclass(DocumentContent::class)
 
-                mediaGroupContentAdditionalBuilder()
+                mediaGroupPartContentAdditionalBuilder()
             }
-            polymorphic(AudioMediaGroupContent::class) {
+            polymorphic(AudioMediaGroupPartContent::class) {
                 subclass(AudioContent::class)
 
                 audioMediaGroupContentAdditionalBuilder()
             }
-            polymorphic(DocumentMediaGroupContent::class) {
+            polymorphic(DocumentMediaGroupPartContent::class) {
                 subclass(DocumentContent::class)
 
                 documentMediaGroupContentAdditionalBuilder()
             }
-            polymorphic(VisualMediaGroupContent::class) {
+            polymorphic(VisualMediaGroupPartContent::class) {
                 subclass(PhotoContent::class)
                 subclass(VideoContent::class)
 
@@ -113,6 +114,7 @@ sealed interface MediaContent: MessageContent {
 sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId? = null,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyToMessageId: MessageId? = null,

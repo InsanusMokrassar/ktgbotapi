@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.CopyMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -20,6 +21,7 @@ suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -32,6 +34,7 @@ suspend inline fun TelegramBot.copyMessage(
         toChatId,
         text,
         parseMode,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -50,12 +53,13 @@ suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(fromChat.id, messageId, toChatId, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(fromChat.id, messageId, toChatId, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -67,12 +71,13 @@ suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(fromChatId, messageId, toChat.id, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(fromChatId, messageId, toChat.id, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -84,12 +89,13 @@ suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(fromChat.id, messageId, toChat.id, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(fromChat.id, messageId, toChat.id, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -101,6 +107,7 @@ suspend inline fun TelegramBot.copyMessage(
     messageId: MessageId,
     toChatId: ChatIdentifier,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -112,6 +119,7 @@ suspend inline fun TelegramBot.copyMessage(
         messageId,
         toChatId,
         entities,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -129,12 +137,13 @@ suspend inline fun TelegramBot.copyMessage(
     messageId: MessageId,
     toChatId: ChatIdentifier,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(fromChat.id, messageId, toChatId, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(fromChat.id, messageId, toChatId, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -145,12 +154,13 @@ suspend inline fun TelegramBot.copyMessage(
     messageId: MessageId,
     toChat: Chat,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(fromChatId, messageId, toChat.id, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(fromChatId, messageId, toChat.id, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -161,12 +171,13 @@ suspend inline fun TelegramBot.copyMessage(
     messageId: MessageId,
     toChat: Chat,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(fromChat.id, messageId, toChat.id, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(fromChat.id, messageId, toChat.id, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -177,12 +188,13 @@ suspend inline fun TelegramBot.copyMessage(
     message: Message,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(message.chat, message.messageId, toChatId, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(message.chat, message.messageId, toChatId, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -193,12 +205,13 @@ suspend inline fun TelegramBot.copyMessage(
     message: Message,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(message.chat, message.messageId, toChat, text, parseMode, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(message.chat, message.messageId, toChat, text, parseMode, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -208,12 +221,13 @@ suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
     message: Message,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(message.chat, message.messageId, toChatId, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(message.chat, message.messageId, toChatId, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -223,12 +237,13 @@ suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
     message: Message,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = copyMessage(message.chat, message.messageId, toChat, entities, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = copyMessage(message.chat, message.messageId, toChat, entities, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -240,6 +255,7 @@ suspend inline fun TelegramBot.copyMessage(
     messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -252,6 +268,7 @@ suspend inline fun TelegramBot.copyMessage(
         toChatId,
         text,
         parseMode,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -270,6 +287,7 @@ suspend inline fun TelegramBot.copyMessage(
     messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -281,6 +299,7 @@ suspend inline fun TelegramBot.copyMessage(
     messageId,
     text,
     parseMode,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,
@@ -298,6 +317,7 @@ suspend inline fun TelegramBot.copyMessage(
     messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -309,6 +329,7 @@ suspend inline fun TelegramBot.copyMessage(
     messageId,
     text,
     parseMode,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,
@@ -326,6 +347,7 @@ suspend inline fun TelegramBot.copyMessage(
     messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -337,6 +359,7 @@ suspend inline fun TelegramBot.copyMessage(
     messageId,
     text,
     parseMode,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,
@@ -354,6 +377,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChatId: ChatIdentifier,
     messageId: MessageId,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -365,6 +389,7 @@ suspend inline fun TelegramBot.copyMessage(
         messageId,
         toChatId,
         entities,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -382,6 +407,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChat: Chat,
     messageId: MessageId,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -392,6 +418,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChat.id,
     messageId,
     entities,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,
@@ -408,6 +435,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChatId: ChatIdentifier,
     messageId: MessageId,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -418,6 +446,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChatId,
     messageId,
     entities,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,
@@ -434,6 +463,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChat: Chat,
     messageId: MessageId,
     entities: TextSourcesList,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -444,6 +474,7 @@ suspend inline fun TelegramBot.copyMessage(
     fromChat.id,
     messageId,
     entities,
+    threadId,
     disableNotification,
     protectContent,
     replyToMessageId,

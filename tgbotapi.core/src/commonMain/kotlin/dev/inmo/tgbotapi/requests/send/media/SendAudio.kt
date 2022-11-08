@@ -29,6 +29,7 @@ fun SendAudio(
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -50,6 +51,7 @@ fun SendAudio(
         duration,
         performer,
         title,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -75,6 +77,7 @@ fun SendAudio(
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -96,6 +99,7 @@ fun SendAudio(
         duration,
         performer,
         title,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -136,6 +140,8 @@ data class SendAudioData internal constructor(
     override val performer: String? = null,
     @SerialName(titleField)
     override val title: String? = null,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

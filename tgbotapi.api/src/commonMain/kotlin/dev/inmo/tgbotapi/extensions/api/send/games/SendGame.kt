@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.games.SendGame
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.games.Game
@@ -15,6 +16,7 @@ import dev.inmo.tgbotapi.types.games.Game
 suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     gameShortName: String,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -22,7 +24,7 @@ suspend fun TelegramBot.sendGame(
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendGame(
-        chatId, gameShortName, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+        chatId, gameShortName, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
     )
 )
 
@@ -33,13 +35,14 @@ suspend fun TelegramBot.sendGame(
 suspend fun TelegramBot.sendGame(
     chat: Chat,
     gameShortName: String,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chat.id, gameShortName, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chat.id, gameShortName, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -49,13 +52,14 @@ suspend fun TelegramBot.sendGame(
 suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     game: Game,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chatId, game.title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, game.title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -65,11 +69,12 @@ suspend fun TelegramBot.sendGame(
 suspend fun TelegramBot.sendGame(
     chat: Chat,
     game: Game,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chat.id, game.title, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chat.id, game.title, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )

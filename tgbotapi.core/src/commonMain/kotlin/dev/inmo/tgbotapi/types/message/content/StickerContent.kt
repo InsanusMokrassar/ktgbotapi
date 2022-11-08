@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.media.SendSticker
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -16,6 +17,7 @@ data class StickerContent(
 ) : MediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyToMessageId: MessageId?,
@@ -24,6 +26,7 @@ data class StickerContent(
     ): Request<ContentMessage<StickerContent>> = SendSticker(
         chatId,
         media.fileId,
+        messageThreadId,
         disableNotification,
         protectContent,
         replyToMessageId,

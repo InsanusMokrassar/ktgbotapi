@@ -5,7 +5,9 @@ import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.edit.edit
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.editLiveLocation
+import dev.inmo.tgbotapi.extensions.api.send.send
 import dev.inmo.tgbotapi.extensions.api.send.sendLiveLocation
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -39,6 +41,7 @@ suspend fun TelegramBot.handleLiveLocation(
     chatId: ChatIdentifier,
     locationsFlow: Flow<EditLiveLocationInfo>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -56,7 +59,7 @@ suspend fun TelegramBot.handleLiveLocation(
         val capturedLiveLocationMessage = currentLiveLocationMessage
         if (capturedLiveLocationMessage == null) {
             updateMessageJob.start()
-            currentLiveLocationMessage = sendLiveLocation(
+            currentLiveLocationMessage = send(
                 chatId,
                 it.latitude,
                 it.longitude,
@@ -64,6 +67,7 @@ suspend fun TelegramBot.handleLiveLocation(
                 it.horizontalAccuracy,
                 it.heading,
                 it.proximityAlertRadius,
+                threadId,
                 disableNotification,
                 protectContent,
                 replyToMessageId,
@@ -71,7 +75,7 @@ suspend fun TelegramBot.handleLiveLocation(
                 it.replyMarkup
             )
         } else {
-            editLiveLocation(
+            edit(
                 capturedLiveLocationMessage,
                 it.latitude,
                 it.longitude,
@@ -94,6 +98,7 @@ suspend fun TelegramBot.handleLiveLocation(
     chatId: ChatIdentifier,
     locationsFlow: Flow<Location>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -112,6 +117,7 @@ suspend fun TelegramBot.handleLiveLocation(
             )
         },
         liveTimeMillis,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -129,6 +135,7 @@ suspend fun TelegramBot.handleLiveLocation(
     chatId: ChatIdentifier,
     locationsFlow: Flow<Pair<Double, Double>>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
+    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -143,6 +150,7 @@ suspend fun TelegramBot.handleLiveLocation(
             )
         },
         liveTimeMillis,
+        threadId,
         disableNotification,
         protectContent,
         replyToMessageId,

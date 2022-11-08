@@ -3,28 +3,31 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
-import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.MessagesFilterByChat
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMediaGroupMarkerFactory
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.AnyMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
-import dev.inmo.tgbotapi.extensions.utils.sentMediaGroupUpdateOrNull
-import dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage
+import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
+import dev.inmo.tgbotapi.extensions.utils.commonMessageOrNull
+import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
+import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
-internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupContent> BC.buildMediaGroupTrigger(
-    initialFilter: SimpleFilter<List<MediaGroupMessage<T>>>? = null,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<T>>, Update>? = MessagesFilterByChat,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<T>>, Any> = ByChatMediaGroupMarkerFactory,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<T>>>
+internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupPartContent> BC.buildMediaGroupTrigger(
+    initialFilter: SimpleFilter<MediaGroupContent<T>>? = null,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<T>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupContent<T>, Any> = AnyMarkerFactory(),
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<T>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
-    (it.sentMediaGroupUpdateOrNull() ?.data ?.takeIf { messages ->
-        messages.all { message ->
-            message.content is T
+    it.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let {
+        if (it.content.group.all { it.content is T }) {
+            listOf(it.content as MediaGroupContent<T>)
+        } else {
+            null
         }
-    } as? List<MediaGroupMessage<T>>) ?.let(::listOfNotNull)
+    } ?: emptyList()
 }
 
 /**
@@ -40,10 +43,10 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupConten
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onMediaGroup(
-    initialFilter: SimpleFilter<List<MediaGroupMessage<MediaGroupContent>>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<MediaGroupContent>>, Update>? = MessagesFilterByChat,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<MediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<MediaGroupContent>>>
+    initialFilter: SimpleFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<MediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupContent<MediaGroupPartContent>, Any> = AnyMarkerFactory(),
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<MediaGroupPartContent>>
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -59,10 +62,10 @@ suspend fun <BC : BehaviourContext> BC.onMediaGroup(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onPlaylist(
-    initialFilter: SimpleFilter<List<MediaGroupMessage<AudioMediaGroupContent>>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<AudioMediaGroupContent>>, Update>? = MessagesFilterByChat,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<AudioMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<AudioMediaGroupContent>>>
+    initialFilter: SimpleFilter<MediaGroupContent<AudioMediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<AudioMediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupContent<AudioMediaGroupPartContent>, Any> = AnyMarkerFactory(),
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<AudioMediaGroupPartContent>>
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -78,10 +81,10 @@ suspend fun <BC : BehaviourContext> BC.onPlaylist(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onDocumentsGroup(
-    initialFilter: SimpleFilter<List<MediaGroupMessage<DocumentMediaGroupContent>>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<DocumentMediaGroupContent>>, Update>? = MessagesFilterByChat,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<DocumentMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<DocumentMediaGroupContent>>>
+    initialFilter: SimpleFilter<MediaGroupContent<DocumentMediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<DocumentMediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupContent<DocumentMediaGroupPartContent>, Any> = AnyMarkerFactory(),
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<DocumentMediaGroupPartContent>>
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -97,10 +100,10 @@ suspend fun <BC : BehaviourContext> BC.onDocumentsGroup(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onVisualGallery(
-    initialFilter: SimpleFilter<List<MediaGroupMessage<VisualMediaGroupContent>>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<VisualMediaGroupContent>>, Update>? = MessagesFilterByChat,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<VisualMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<VisualMediaGroupContent>>>
+    initialFilter: SimpleFilter<MediaGroupContent<VisualMediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupContent<VisualMediaGroupPartContent>, Any> = AnyMarkerFactory(),
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<VisualMediaGroupPartContent>>
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -116,10 +119,10 @@ suspend fun <BC : BehaviourContext> BC.onVisualGallery(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onVisualMediaGroup(
-    initialFilter: SimpleFilter<List<MediaGroupMessage<VisualMediaGroupContent>>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<VisualMediaGroupContent>>, Update>? = MessagesFilterByChat,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<VisualMediaGroupContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<VisualMediaGroupContent>>>
+    initialFilter: SimpleFilter<MediaGroupContent<VisualMediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupContent<VisualMediaGroupPartContent>, Any> = AnyMarkerFactory(),
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<VisualMediaGroupPartContent>>
 ) = onVisualGallery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -135,10 +138,10 @@ suspend fun <BC : BehaviourContext> BC.onVisualMediaGroup(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onPhotoGallery(
-    initialFilter: SimpleFilter<List<MediaGroupMessage<PhotoContent>>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<PhotoContent>>, Update>? = MessagesFilterByChat,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<PhotoContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<PhotoContent>>>
+    initialFilter: SimpleFilter<MediaGroupContent<PhotoContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<PhotoContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupContent<PhotoContent>, Any> = AnyMarkerFactory(),
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<PhotoContent>>
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
@@ -154,8 +157,8 @@ suspend fun <BC : BehaviourContext> BC.onPhotoGallery(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onVideoGallery(
-    initialFilter: SimpleFilter<List<MediaGroupMessage<VideoContent>>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, List<MediaGroupMessage<VideoContent>>, Update>? = MessagesFilterByChat,
-    markerFactory: MarkerFactory<in List<MediaGroupMessage<VideoContent>>, Any> = ByChatMediaGroupMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, List<MediaGroupMessage<VideoContent>>>
+    initialFilter: SimpleFilter<MediaGroupContent<VideoContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VideoContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupContent<VideoContent>, Any> = AnyMarkerFactory(),
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<VideoContent>>
 ) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

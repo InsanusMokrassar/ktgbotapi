@@ -58,6 +58,8 @@ data class SendInvoice(
     override val shouldSendEmailToProvider: Boolean = false,
     @SerialName(priceDependOnShipAddressField)
     override val priceDependOnShipAddress: Boolean = false,
+    @SerialName(messageThreadIdField)
+    override val threadId: MessageThreadId? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
