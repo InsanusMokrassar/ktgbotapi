@@ -18,6 +18,11 @@ suspend fun TelegramBot.deleteForumTopic(
 )
 
 suspend fun TelegramBot.deleteForumTopic(
+    chatId: ChatIdentifier,
+    forumTopic: ForumTopic
+) = deleteForumTopic(chatId, forumTopic.messageThreadId)
+
+suspend fun TelegramBot.deleteForumTopic(
     chat: Chat,
     messageThreadId: MessageThreadId
 ) = deleteForumTopic(chat.id, messageThreadId)
