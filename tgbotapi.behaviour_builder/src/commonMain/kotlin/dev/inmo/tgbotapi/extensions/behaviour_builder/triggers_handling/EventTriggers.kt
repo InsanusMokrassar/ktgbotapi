@@ -11,9 +11,13 @@ import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.chatEventMessageOrNull
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
@@ -25,6 +29,16 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChatEvent> BC.on
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     @Suppress("UNCHECKED_CAST")
     (it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.takeIf { it.chatEvent is T } as? ChatEventMessage<T>) ?.let(::listOfNotNull)
+}
+
+internal suspend inline fun <BC : BehaviourContext, reified T : ChatEvent, reified CEM : ChatEventMessage<T>> BC.onEventWithCustomChatEventMessage(
+    initialFilter: SimpleFilter<CEM>? = null,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, CEM, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in CEM, Any> = ByChatMessageMarkerFactory,
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CEM>
+) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
+    @Suppress("UNCHECKED_CAST")
+    (it.baseSentMessageUpdateOrNull() ?.data ?.chatEventMessageOrNull() ?.takeIf { it.chatEvent is T } as? CEM) ?.let(::listOfNotNull)
 }
 
 /**
@@ -503,12 +517,61 @@ suspend fun <BC : BehaviourContext> BC.onWebAppData(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PrivateEventMessage<WebAppData>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<WebAppData>, Any> = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PrivateEventMessage<WebAppData>>
-) = onEvent(
-    initialFilter ?.let { { it is PrivateEventMessage<WebAppData> && initialFilter(it) } },
-    subcontextUpdatesFilter ?.let { { message: ChatEventMessage<WebAppData>, update: Update -> message is PrivateEventMessage<WebAppData> && subcontextUpdatesFilter(message, update) } },
-    markerFactory
-) {
-    if (it is PrivateEventMessage<WebAppData>) {
-        scenarioReceiver(it)
-    }
-}
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onForumTopicClosed(
+    initialFilter: SimpleFilter<SupergroupEventMessage<ForumTopicClosed>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, SupergroupEventMessage<ForumTopicClosed>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<ForumTopicClosed>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, SupergroupEventMessage<ForumTopicClosed>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onForumTopicCreated(
+    initialFilter: SimpleFilter<SupergroupEventMessage<ForumTopicCreated>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, SupergroupEventMessage<ForumTopicCreated>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<ForumTopicCreated>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, SupergroupEventMessage<ForumTopicCreated>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onForumTopicReopened(
+    initialFilter: SimpleFilter<SupergroupEventMessage<ForumTopicReopened>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, SupergroupEventMessage<ForumTopicReopened>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<ForumTopicReopened>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, SupergroupEventMessage<ForumTopicReopened>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

@@ -2,6 +2,19 @@
 
 ## 4.0.0
 
+**!!! THIS UPDATE CONTAINS FULL REWORK OF MEDIA GROUPS FUNCTIONALITY !!!**
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Common`:
+  * All the media groups have been rewritten. Since this update, there are no separated messages types for media groups,
+    but new type of content (`MediaGroupContent`) has been introduced
+  * [Bot API 6.3](https://core.telegram.org/bots/api-changelog#november-5-2022) support
+* `Versions`:
+  * `MicroUtils`: `0.13.2` -> `0.14.0`
+* `Core`:
+  * New requests
+
 ## 3.3.1
 
 * `Versions`:
