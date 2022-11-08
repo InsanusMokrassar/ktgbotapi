@@ -31,6 +31,7 @@ import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.venue.Venue
 import dev.inmo.tgbotapi.utils.*
+import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 import kotlinx.coroutines.flow.Flow
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
@@ -56,7 +57,7 @@ suspend inline fun TelegramBot.reply(
     phoneNumber,
     firstName,
     lastName,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     to.messageId,
@@ -78,7 +79,7 @@ suspend inline fun TelegramBot.reply(
 ) = sendContact(
     to.chat,
     contact,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     to.messageId,
@@ -100,7 +101,7 @@ suspend inline fun TelegramBot.replyWithDice(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendDice(to.chat, animationType, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendDice(to.chat, animationType, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -134,7 +135,7 @@ suspend inline fun TelegramBot.reply(
     to.chat,
     latitude,
     longitude,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     allowSendingWithoutReply,
@@ -156,7 +157,7 @@ suspend inline fun TelegramBot.reply(
 ) = sendLocation(
     to.chat,
     location,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     allowSendingWithoutReply,
@@ -185,7 +186,7 @@ suspend inline fun TelegramBot.reply(
     text,
     parseMode,
     disableWebPagePreview,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     to.messageId,
@@ -209,7 +210,7 @@ suspend inline fun TelegramBot.reply(
     to.chat,
     entities,
     disableWebPagePreview,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     to.messageId,
@@ -278,7 +279,7 @@ suspend inline fun TelegramBot.reply(
     foursquareType = foursquareType,
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
-    threadId = (to as? PossiblyTopicMessage) ?.threadId,
+    threadId = to.threadIdOrNull,
     disableNotification = disableNotification,
     protectContent = protectContent,
     replyToMessageId = to.messageId,
@@ -309,7 +310,7 @@ suspend inline fun TelegramBot.reply(
     foursquareType = foursquareType,
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
-    threadId = (to as? PossiblyTopicMessage) ?.threadId,
+    threadId = to.threadIdOrNull,
     disableNotification = disableNotification,
     protectContent = protectContent,
     replyToMessageId = to.messageId,
@@ -327,7 +328,7 @@ suspend inline fun TelegramBot.reply(
 ) = sendVenue(
     chat = to.chat,
     venue = venue,
-    threadId = (to as? PossiblyTopicMessage) ?.threadId,
+    threadId = to.threadIdOrNull,
     disableNotification = disableNotification,
     protectContent = protectContent,
     replyToMessageId = to.messageId,
@@ -346,7 +347,7 @@ suspend inline fun TelegramBot.replyWithGame(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    to.chat, gameShortName, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup
+    to.chat, gameShortName, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup
 )
 
 suspend inline fun TelegramBot.replyWithGame(
@@ -357,7 +358,7 @@ suspend inline fun TelegramBot.replyWithGame(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    to.chat, game.title, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup
+    to.chat, game.title, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup
 )
 
 suspend inline fun TelegramBot.reply(
@@ -394,7 +395,7 @@ suspend inline fun TelegramBot.replyWithAnimation(
     duration,
     width,
     height,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     to.messageId,
@@ -414,7 +415,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(to.chat, animation, text, parseMode, duration, width, height, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(to.chat, animation, text, parseMode, duration, width, height, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithAnimation(
     to: Message,
@@ -436,7 +437,7 @@ suspend inline fun TelegramBot.replyWithAnimation(
     duration,
     width,
     height,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     to.messageId,
@@ -455,7 +456,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(to.chat, animation, entities, duration, width, height, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(to.chat, animation, entities, duration, width, height, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Audio
@@ -473,7 +474,7 @@ suspend inline fun TelegramBot.replyWithAudio(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(to.chat, audio, thumb, text, parseMode, duration, performer, title, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(to.chat, audio, thumb, text, parseMode, duration, performer, title, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -485,7 +486,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(to.chat, audio, text, parseMode, title, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(to.chat, audio, text, parseMode, title, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithAudio(
     to: Message,
@@ -499,7 +500,7 @@ suspend inline fun TelegramBot.replyWithAudio(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(to.chat, audio, thumb, entities, duration, performer, title, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(to.chat, audio, thumb, entities, duration, performer, title, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -510,7 +511,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(to.chat, audio, entities, title, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendAudio(to.chat, audio, entities, title, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Documents
@@ -526,7 +527,7 @@ suspend inline fun TelegramBot.replyWithDocument(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(to.chat, document, thumb, text, parseMode, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = sendDocument(to.chat, document, thumb, text, parseMode, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -538,7 +539,7 @@ suspend inline fun TelegramBot.reply(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(to.chat, document, text, parseMode, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = sendDocument(to.chat, document, text, parseMode, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
 suspend inline fun TelegramBot.replyWithDocument(
     to: Message,
@@ -550,7 +551,7 @@ suspend inline fun TelegramBot.replyWithDocument(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(to.chat, document, thumb, entities, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = sendDocument(to.chat, document, thumb, entities, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -561,7 +562,7 @@ suspend inline fun TelegramBot.reply(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
-) = sendDocument(to.chat, document, entities, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
+) = sendDocument(to.chat, document, entities, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup, disableContentTypeDetection)
 
 
 // Media Group
@@ -573,7 +574,7 @@ suspend inline fun TelegramBot.replyWithMediaGroup(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendMediaGroup(to.chat, media, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
+) = sendMediaGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
 
 suspend inline fun TelegramBot.replyWithPlaylist(
     to: Message,
@@ -581,7 +582,7 @@ suspend inline fun TelegramBot.replyWithPlaylist(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendPlaylist(to.chat, media, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
+) = sendPlaylist(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
 
 suspend inline fun TelegramBot.replyWithDocuments(
     to: Message,
@@ -589,7 +590,7 @@ suspend inline fun TelegramBot.replyWithDocuments(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendDocumentsGroup(to.chat, media, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
+) = sendDocumentsGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
 
 suspend inline fun TelegramBot.replyWithGallery(
     to: Message,
@@ -597,7 +598,7 @@ suspend inline fun TelegramBot.replyWithGallery(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendVisualMediaGroup(to.chat, media, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
+) = sendVisualMediaGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
 
 
 // Photo
@@ -611,7 +612,7 @@ suspend inline fun TelegramBot.replyWithPhoto(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, fileId, text, parseMode, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(to.chat, fileId, text, parseMode, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -622,7 +623,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, photo, text, parseMode, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(to.chat, photo, text, parseMode, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -633,7 +634,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, photoSize, text, parseMode, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(to.chat, photoSize, text, parseMode, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 suspend inline fun TelegramBot.replyWithPhoto(
@@ -644,7 +645,7 @@ suspend inline fun TelegramBot.replyWithPhoto(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, fileId, entities, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(to.chat, fileId, entities, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -654,7 +655,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, photo, entities, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(to.chat, photo, entities, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -664,7 +665,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(to.chat, photoSize, entities, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendPhoto(to.chat, photoSize, entities, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Sticker
@@ -676,7 +677,7 @@ suspend inline fun TelegramBot.replyWithSticker(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(to.chat, sticker, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(to.chat, sticker, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -685,7 +686,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(to.chat, sticker, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(to.chat, sticker, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Videos
@@ -703,7 +704,7 @@ suspend inline fun TelegramBot.replyWithVideo(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(to.chat, video, thumb, text, parseMode, duration, width, height, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(to.chat, video, thumb, text, parseMode, duration, width, height, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -714,7 +715,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(to.chat, video, text, parseMode, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(to.chat, video, text, parseMode, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.replyWithVideo(
     to: Message,
@@ -728,7 +729,7 @@ suspend inline fun TelegramBot.replyWithVideo(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(to.chat, video, thumb, entities, duration, width, height, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(to.chat, video, thumb, entities, duration, width, height, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -738,7 +739,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(to.chat, video, entities, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(to.chat, video, entities, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // VideoNotes
@@ -753,7 +754,7 @@ suspend inline fun TelegramBot.replyWithVideoNote(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(to.chat, videoNote, thumb, duration, size, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideoNote(to.chat, videoNote, thumb, duration, size, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -762,7 +763,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(to.chat, videoNote, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideoNote(to.chat, videoNote, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Voice
@@ -777,7 +778,7 @@ suspend inline fun TelegramBot.replyWithVoice(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(to.chat, voice, text, parseMode, duration, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(to.chat, voice, text, parseMode, duration, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -788,7 +789,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(to.chat, voice, text, parseMode, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(to.chat, voice, text, parseMode, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 suspend inline fun TelegramBot.replyWithVoice(
@@ -800,7 +801,7 @@ suspend inline fun TelegramBot.replyWithVoice(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(to.chat, voice, entities, duration, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(to.chat, voice, entities, duration, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -810,7 +811,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(to.chat, voice, entities, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendVoice(to.chat, voice, entities, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Invoice
@@ -842,7 +843,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(to.chat.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendInvoice(to.chat.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Polls
@@ -859,7 +860,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(to.chat, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendRegularPoll(to.chat, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -874,7 +875,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(to.chat, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendRegularPoll(to.chat, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -890,7 +891,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(to.chat, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(to.chat, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -907,7 +908,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(to.chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, explanation, parseMode, closeInfo, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(to.chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, explanation, parseMode, closeInfo, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -922,7 +923,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(to.chat, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(to.chat, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
@@ -938,7 +939,7 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(to.chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, (to as? PossiblyTopicMessage) ?.threadId, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendQuizPoll(to.chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 suspend inline fun TelegramBot.reply(
@@ -1002,7 +1003,7 @@ suspend inline fun TelegramBot.reply(
     messageId,
     text,
     parseMode,
-    (to as? PossiblyTopicMessage) ?.threadId,
+    to.threadIdOrNull,
     disableNotification,
     protectContent,
     to.messageId,
@@ -1043,7 +1044,7 @@ suspend fun TelegramBot.reply(
 ): Message = execute(
     content.createResend(
         to.chat.id,
-        (to as? PossiblyTopicMessage) ?.threadId,
+        to.threadIdOrNull,
         disableNotification,
         protectContent,
         to.messageId,
@@ -1068,7 +1069,7 @@ suspend fun TelegramBot.reply(
     message.chat.id,
     locationsFlow,
     liveTimeMillis,
-    (message as? PossiblyTopicMessage) ?.threadId,
+    message.threadIdOrNull,
     disableNotification,
     protectContent,
     message.messageId,
@@ -1094,7 +1095,7 @@ suspend fun TelegramBot.reply(
         message.chat.id,
         locationsFlow,
         liveTimeMillis,
-        (message as? PossiblyTopicMessage) ?.threadId,
+        message.threadIdOrNull,
         disableNotification,
         protectContent,
         message.messageId,
@@ -1121,7 +1122,7 @@ suspend fun TelegramBot.reply(
         message.chat.id,
         locationsFlow,
         liveTimeMillis,
-        (message as? PossiblyTopicMessage) ?.threadId,
+        message.threadIdOrNull,
         disableNotification,
         protectContent,
         message.messageId,
