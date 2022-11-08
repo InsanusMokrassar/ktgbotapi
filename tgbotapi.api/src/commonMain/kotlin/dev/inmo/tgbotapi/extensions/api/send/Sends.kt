@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.dice.DiceAnimationType
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.Game
+import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.ParseMode
@@ -1121,6 +1122,109 @@ suspend fun TelegramBot.send(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendSticker(chat, sticker, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+
+
+/**
+ * Will execute [sendLiveLocation] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    latitude: Double,
+    longitude: Double,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendLiveLocation(
+    chatId = chatId,
+    latitude = latitude,
+    longitude = longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    replyToMessageId = replyToMessageId,
+    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyMarkup = replyMarkup
+)
+
+/**
+ * Will execute [sendLiveLocation] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendLiveLocation(
+    chatId, location, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+)
+
+/**
+ * Will execute [sendLiveLocation] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    latitude: Double,
+    longitude: Double,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendLiveLocation(
+    chat, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+)
+
+/**
+ * Will execute [sendLiveLocation] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    location: Location,
+    livePeriod: Seconds,
+    horizontalAccuracy: Meters? = null,
+    heading: Degrees? = null,
+    proximityAlertRadius: Meters? = null,
+    threadId: MessageThreadId? = null,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyToMessageId: MessageId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendLiveLocation(
+    chat, location, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+)
 
 /**
  * Will execute [sendVenue] request
