@@ -11,7 +11,6 @@
     but new type of content (`MediaGroupContent`) has been introduced
   * [Bot API 6.3](https://core.telegram.org/bots/api-changelog#november-5-2022) support
 * `Versions`:
-  * `Kotlin`: `1.7.20` -> `1.7.21`
   * `MicroUtils`: `0.13.2` -> `0.14.0`
 * `Core`:
   * New requests
