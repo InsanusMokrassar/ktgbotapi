@@ -9,7 +9,6 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
-import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
@@ -25,20 +24,7 @@ suspend inline fun <reified O : MessageContent> BehaviourContext.waitContentMess
     initRequest,
     errorFactory
 ) {
-    val messages = when (it) {
-        is SentMediaGroupUpdate -> {
-            if (includeMediaGroups) {
-                it.data
-            } else {
-                emptyList()
-            }
-        }
-        is BaseSentMessageUpdate -> listOf(it.data)
-        else -> return@expectFlow emptyList()
-    }
-    messages.mapNotNull { message ->
-        (message as? CommonMessage<*>) ?.withContent<O>()
-    }
+    listOfNotNull((it.data as? CommonMessage<*>) ?.withContent<O>())
 }
 
 internal inline fun <reified T : MessageContent> contentMessageConverter(
@@ -103,12 +89,12 @@ suspend fun BehaviourContext.waitAudioMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean = true
-) = waitContentMessage<AudioMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitContentMessage<AudioMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitDocumentMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean = true
-) = waitContentMessage<DocumentMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitContentMessage<DocumentMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitMediaMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -118,12 +104,12 @@ suspend fun BehaviourContext.waitAnyMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean = true
-) = waitContentMessage<MediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitContentMessage<MediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitVisualMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean = true
-) = waitContentMessage<VisualMediaGroupContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitContentMessage<VisualMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
 suspend fun BehaviourContext.waitTextedMediaContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },

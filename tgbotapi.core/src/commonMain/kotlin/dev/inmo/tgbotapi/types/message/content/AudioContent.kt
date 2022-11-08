@@ -18,7 +18,7 @@ data class AudioContent(
     override val media: AudioFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList()
-) : AudioMediaGroupContent {
+) : AudioMediaGroupPartContent {
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,

@@ -20,7 +20,7 @@ data class DocumentContent(
     override val media: DocumentFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList()
-) : DocumentMediaGroupContent {
+) : DocumentMediaGroupPartContent {
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,

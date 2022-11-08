@@ -8,9 +8,11 @@ import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.extensions.utils.updates.lastUpdateIdentifier
 import dev.inmo.tgbotapi.requests.GetUpdates
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
+import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 import dev.inmo.tgbotapi.types.update.*
+import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
-import dev.inmo.tgbotapi.types.update.media_group.SentMediaGroupUpdate
 import dev.inmo.tgbotapi.updateshandlers.*
 import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.utils.io.CancellationException
@@ -56,7 +58,10 @@ fun TelegramBot.longPollingFlow(
                  * We are throw out the last media group and will reretrieve it again in the next get updates
                  * and it will guarantee that it is full
                  */
-                if (originalUpdates.size == getUpdatesLimit.last && converted.last() is SentMediaGroupUpdate) {
+                if (
+                    originalUpdates.size == getUpdatesLimit.last
+                    && ((converted.last() as? BaseSentMessageUpdate) ?.data as? CommonMessage<*>) ?.content is MediaGroupContent<*>
+                ) {
                     converted - converted.last()
                 } else {
                     converted
@@ -67,7 +72,7 @@ fun TelegramBot.longPollingFlow(
                 for (update in updates) {
                     send(update)
 
-                    lastUpdateIdentifier = update.lastUpdateIdentifier()
+                    lastUpdateIdentifier = update.updateId
                 }
             }.onFailure {
                 cancel(it as? CancellationException ?: return@onFailure)

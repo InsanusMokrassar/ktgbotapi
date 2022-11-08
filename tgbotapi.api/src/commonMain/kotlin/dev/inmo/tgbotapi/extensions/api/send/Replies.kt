@@ -1235,7 +1235,7 @@ suspend fun TelegramBot.reply(
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
         )
-        is AudioMediaGroupContent -> reply(
+        is AudioMediaGroupPartContent -> reply(
             to = to,
             audio = content.media,
             text = text,
@@ -1307,7 +1307,7 @@ suspend fun TelegramBot.reply(
             allowSendingWithoutReply = allowSendingWithoutReply,
             replyMarkup = replyMarkup
         )
-        is AudioMediaGroupContent -> reply(
+        is AudioMediaGroupPartContent -> reply(
             to = to,
             audio = content.media,
             entities = entities,

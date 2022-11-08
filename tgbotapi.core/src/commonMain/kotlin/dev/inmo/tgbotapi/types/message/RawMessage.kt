@@ -269,45 +269,7 @@ internal data class RawMessage(
                     )
                     else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
                 }
-            } ?: content?.let { content ->
-                media_group_id?.let {
-                    val checkedContent = when (content) {
-                        is PhotoContent -> content
-                        is VideoContent -> content
-                        is AudioContent -> content
-                        is DocumentContent -> content
-                        else -> error("Unsupported content for media group")
-                    }
-                    when (from) {
-                        null -> ChannelMediaGroupMessage(
-                            messageId,
-                            messageThreadId,
-                            chat,
-                            date.asDate,
-                            it,
-                            checkedContent,
-                            edit_date?.asDate,
-                            has_protected_content == true,
-                            forwarded,
-                            reply_to_message?.asMessage,
-                            reply_markup
-                        )
-                        else -> CommonMediaGroupMessage(
-                            messageId,
-                            messageThreadId,
-                            from,
-                            chat,
-                            date.asDate,
-                            it,
-                            checkedContent,
-                            edit_date?.asDate,
-                            has_protected_content == true,
-                            forwarded,
-                            reply_to_message?.asMessage,
-                            reply_markup
-                        )
-                    }
-                } ?: when (chat) {
+            } ?: content?.let { content -> when (chat) {
                     is PublicChat -> when (chat) {
                         is ChannelChat -> ChannelContentMessageImpl(
                             messageId,
@@ -320,7 +282,8 @@ internal data class RawMessage(
                             reply_to_message?.asMessage,
                             reply_markup,
                             via_bot,
-                            author_signature
+                            author_signature,
+                            media_group_id
                         )
                         is ForumChat -> if (messageThreadId != null) {
                             when (sender_chat) {
@@ -337,7 +300,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    author_signature
+                                    author_signature,
+                                    media_group_id
                                 )
                                 is GroupChat -> AnonymousForumContentMessageImpl(
                                     chat,
@@ -351,7 +315,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    author_signature
+                                    author_signature,
+                                    media_group_id
                                 )
                                 null -> CommonForumContentMessageImpl(
                                     chat,
@@ -365,7 +330,8 @@ internal data class RawMessage(
                                     reply_to_message ?.asMessage,
                                     reply_markup,
                                     content,
-                                    via_bot
+                                    via_bot,
+                                    media_group_id
                                 )
                             }
                         } else {
@@ -383,7 +349,8 @@ internal data class RawMessage(
                                         reply_markup,
                                         content,
                                         via_bot,
-                                        author_signature
+                                        author_signature,
+                                        media_group_id
                                     )
                                 } else {
                                     UnconnectedFromChannelGroupContentMessageImpl(
@@ -398,7 +365,8 @@ internal data class RawMessage(
                                         reply_markup,
                                         content,
                                         via_bot,
-                                        author_signature
+                                        author_signature,
+                                        media_group_id
                                     )
                                 }
                                 is GroupChat -> AnonymousGroupContentMessageImpl(
@@ -412,7 +380,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    author_signature
+                                    author_signature,
+                                    media_group_id
                                 )
                                 null -> CommonGroupContentMessageImpl(
                                     chat,
@@ -425,7 +394,8 @@ internal data class RawMessage(
                                     reply_to_message ?.asMessage,
                                     reply_markup,
                                     content,
-                                    via_bot
+                                    via_bot,
+                                    media_group_id
                                 )
                             }
                         }
@@ -443,7 +413,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    author_signature
+                                    author_signature,
+                                    media_group_id
                                 )
                             } else {
                                 UnconnectedFromChannelGroupContentMessageImpl(
@@ -458,7 +429,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    author_signature
+                                    author_signature,
+                                    media_group_id
                                 )
                             }
                             is GroupChat -> AnonymousGroupContentMessageImpl(
@@ -472,7 +444,8 @@ internal data class RawMessage(
                                 reply_markup,
                                 content,
                                 via_bot,
-                                author_signature
+                                author_signature,
+                                media_group_id
                             )
                             null -> CommonGroupContentMessageImpl(
                                 chat,
@@ -485,7 +458,8 @@ internal data class RawMessage(
                                 reply_to_message ?.asMessage,
                                 reply_markup,
                                 content,
-                                via_bot
+                                via_bot,
+                                media_group_id
                             )
                         }
                     }
@@ -500,7 +474,8 @@ internal data class RawMessage(
                         forwarded,
                         reply_to_message?.asMessage,
                         reply_markup,
-                        via_bot
+                        via_bot,
+                        media_group_id
                     )
                     else -> error("Unknown type of chat: $chat")
                 }

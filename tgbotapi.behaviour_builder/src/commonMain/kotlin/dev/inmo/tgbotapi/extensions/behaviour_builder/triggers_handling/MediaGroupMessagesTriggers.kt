@@ -4,7 +4,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.AnyMarkerFactory
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatMessageMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.baseSentMessageUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.commonMessageOrNull
@@ -15,15 +15,15 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.utils.PreviewFeature
 
 @PreviewFeature
-internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupPartContent> BC.buildMediaGroupTrigger(
-    initialFilter: SimpleFilter<MediaGroupContent<T>>? = null,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<T>, Update>? = null,
-    markerFactory: MarkerFactory<in MediaGroupContent<T>, Any> = AnyMarkerFactory(),
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<T>>
+internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupPartContent> BC.buildMediaGroupMessagesTrigger(
+    initialFilter: SimpleFilter<MediaGroupMessage<T>>? = null,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<T>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupMessage<T>, Any> = ByChatMessageMarkerFactory,
+    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<T>>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     it.baseSentMessageUpdateOrNull() ?.data ?.commonMessageOrNull() ?.withContentOrNull<MediaGroupContent<*>>() ?.let {
         if (it.content.group.all { it.content is T }) {
-            listOf(it.content as MediaGroupContent<T>)
+            listOf(it as MediaGroupMessage<T>)
         } else {
             null
         }
@@ -42,12 +42,12 @@ internal suspend inline fun <BC : BehaviourContext, reified T : MediaGroupPartCo
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onMediaGroup(
-    initialFilter: SimpleFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<MediaGroupPartContent>, Update>? = null,
-    markerFactory: MarkerFactory<in MediaGroupContent<MediaGroupPartContent>, Any> = AnyMarkerFactory(),
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<MediaGroupPartContent>>
-) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+suspend fun <BC : BehaviourContext> BC.onMediaGroupMessages(
+    initialFilter: SimpleFilter<MediaGroupMessage<MediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<MediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupMessage<MediaGroupPartContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<MediaGroupPartContent>>
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -61,12 +61,12 @@ suspend fun <BC : BehaviourContext> BC.onMediaGroup(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPlaylist(
-    initialFilter: SimpleFilter<MediaGroupContent<AudioMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<AudioMediaGroupPartContent>, Update>? = null,
-    markerFactory: MarkerFactory<in MediaGroupContent<AudioMediaGroupPartContent>, Any> = AnyMarkerFactory(),
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<AudioMediaGroupPartContent>>
-) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+suspend fun <BC : BehaviourContext> BC.onPlaylistMessages(
+    initialFilter: SimpleFilter<MediaGroupMessage<AudioMediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<AudioMediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupMessage<AudioMediaGroupPartContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<AudioMediaGroupPartContent>>
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -80,12 +80,12 @@ suspend fun <BC : BehaviourContext> BC.onPlaylist(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onDocumentsGroup(
-    initialFilter: SimpleFilter<MediaGroupContent<DocumentMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<DocumentMediaGroupPartContent>, Update>? = null,
-    markerFactory: MarkerFactory<in MediaGroupContent<DocumentMediaGroupPartContent>, Any> = AnyMarkerFactory(),
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<DocumentMediaGroupPartContent>>
-) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+suspend fun <BC : BehaviourContext> BC.onDocumentsGroupMessages(
+    initialFilter: SimpleFilter<MediaGroupMessage<DocumentMediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<DocumentMediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupMessage<DocumentMediaGroupPartContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<DocumentMediaGroupPartContent>>
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -99,12 +99,12 @@ suspend fun <BC : BehaviourContext> BC.onDocumentsGroup(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onVisualGallery(
-    initialFilter: SimpleFilter<MediaGroupContent<VisualMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? = null,
-    markerFactory: MarkerFactory<in MediaGroupContent<VisualMediaGroupPartContent>, Any> = AnyMarkerFactory(),
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<VisualMediaGroupPartContent>>
-) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+suspend fun <BC : BehaviourContext> BC.onVisualGalleryMessages(
+    initialFilter: SimpleFilter<MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VisualMediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupMessage<VisualMediaGroupPartContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<VisualMediaGroupPartContent>>
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -118,12 +118,12 @@ suspend fun <BC : BehaviourContext> BC.onVisualGallery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onVisualMediaGroup(
-    initialFilter: SimpleFilter<MediaGroupContent<VisualMediaGroupPartContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VisualMediaGroupPartContent>, Update>? = null,
-    markerFactory: MarkerFactory<in MediaGroupContent<VisualMediaGroupPartContent>, Any> = AnyMarkerFactory(),
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<VisualMediaGroupPartContent>>
-) = onVisualGallery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+suspend fun <BC : BehaviourContext> BC.onVisualMediaGroupMessages(
+    initialFilter: SimpleFilter<MediaGroupMessage<VisualMediaGroupPartContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VisualMediaGroupPartContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupMessage<VisualMediaGroupPartContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<VisualMediaGroupPartContent>>
+) = onVisualGalleryMessages(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -137,12 +137,12 @@ suspend fun <BC : BehaviourContext> BC.onVisualMediaGroup(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onPhotoGallery(
-    initialFilter: SimpleFilter<MediaGroupContent<PhotoContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<PhotoContent>, Update>? = null,
-    markerFactory: MarkerFactory<in MediaGroupContent<PhotoContent>, Any> = AnyMarkerFactory(),
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<PhotoContent>>
-) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+suspend fun <BC : BehaviourContext> BC.onPhotoGalleryMessages(
+    initialFilter: SimpleFilter<MediaGroupMessage<PhotoContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<PhotoContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupMessage<PhotoContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<PhotoContent>>
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
@@ -156,9 +156,9 @@ suspend fun <BC : BehaviourContext> BC.onPhotoGallery(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onVideoGallery(
-    initialFilter: SimpleFilter<MediaGroupContent<VideoContent>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupContent<VideoContent>, Update>? = null,
-    markerFactory: MarkerFactory<in MediaGroupContent<VideoContent>, Any> = AnyMarkerFactory(),
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupContent<VideoContent>>
-) = buildMediaGroupTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+suspend fun <BC : BehaviourContext> BC.onVideoGalleryMessages(
+    initialFilter: SimpleFilter<MediaGroupMessage<VideoContent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MediaGroupMessage<VideoContent>, Update>? = null,
+    markerFactory: MarkerFactory<in MediaGroupMessage<VideoContent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MediaGroupMessage<VideoContent>>
+) = buildMediaGroupMessagesTrigger(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
