@@ -1,5 +1,11 @@
 package dev.inmo.tgbotapi.utils.extensions
 
+import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageThreadId
+import kotlinx.serialization.Serializable
+import kotlin.Pair
+import dev.inmo.tgbotapi.types.message.abstract.Message
+
 sealed interface ChatIdWithThreadId {
     val chatId: ChatIdentifier
     val threadId: MessageThreadId?
