@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.chat.members
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.members.RestrictChatMember
-import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.UserId
@@ -25,7 +25,7 @@ suspend fun TelegramBot.restrictChatMember(
 ) = restrictChatMember(chat.id, userId, untilDate, permissions)
 
 suspend fun TelegramBot.restrictChatMember(
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
     permissions: ChatPermissions = ChatPermissions()

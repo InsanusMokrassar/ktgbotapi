@@ -20,7 +20,7 @@ data class ForwardMessage(
     @SerialName(messageIdField)
     override val messageId: MessageId,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = toChatId.threadId,
     @SerialName(disableNotificationField)
     val disableNotification: Boolean = false,
     @SerialName(protectContentField)

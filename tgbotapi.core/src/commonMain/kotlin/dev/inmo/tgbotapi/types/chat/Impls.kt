@@ -18,7 +18,7 @@ data class GroupChatImpl(
 @Serializable
 data class PrivateChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(firstNameField)
@@ -40,7 +40,7 @@ data class SupergroupChatImpl(
 @Serializable
 data class ForumChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)

@@ -28,7 +28,7 @@ fun SendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -76,7 +76,7 @@ fun SendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -140,7 +140,7 @@ data class SendAnimationData internal constructor(
     @SerialName(heightField)
     override val height: Int? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

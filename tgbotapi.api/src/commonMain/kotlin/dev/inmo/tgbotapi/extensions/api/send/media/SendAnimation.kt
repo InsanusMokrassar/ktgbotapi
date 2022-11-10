@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.AnimationFile
+import dev.inmo.tgbotapi.types.threadId
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -25,7 +26,7 @@ suspend fun TelegramBot.sendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -62,7 +63,7 @@ suspend fun TelegramBot.sendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -85,7 +86,7 @@ suspend fun TelegramBot.sendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -105,7 +106,7 @@ suspend fun TelegramBot.sendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -126,7 +127,7 @@ suspend fun TelegramBot.sendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -161,7 +162,7 @@ suspend fun TelegramBot.sendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -183,7 +184,7 @@ suspend fun TelegramBot.sendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -202,7 +203,7 @@ suspend fun TelegramBot.sendAnimation(
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,

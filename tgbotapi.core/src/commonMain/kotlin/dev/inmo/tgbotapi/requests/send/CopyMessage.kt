@@ -27,7 +27,7 @@ fun CopyMessage(
     messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -53,7 +53,7 @@ fun CopyMessage(
     fromChatId: ChatIdentifier,
     messageId: MessageId,
     entities: List<TextSource>,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -80,7 +80,7 @@ fun CopyMessage(
     toChatId: ChatIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -106,7 +106,7 @@ fun CopyMessage(
     messageId: MessageId,
     toChatId: ChatIdentifier,
     entities: List<TextSource>,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -142,7 +142,7 @@ data class CopyMessage internal constructor(
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = toChatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

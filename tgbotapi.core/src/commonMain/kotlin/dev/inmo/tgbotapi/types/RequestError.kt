@@ -14,7 +14,7 @@ data class RetryAfterError(
 }
 
 data class MigrateChatId(
-    val newChatId: ChatId
+    val newChatId: IdChatIdentifier
 ) : RequestError()
 
 

@@ -81,8 +81,8 @@ internal data class RawMessage(
     private val group_chat_created: Boolean = false,
     private val supergroup_chat_created: Boolean = false,
     private val channel_chat_created: Boolean = false,
-    private val migrate_to_chat_id: ChatId? = null,
-    private val migrate_from_chat_id: ChatId? = null,
+    private val migrate_to_chat_id: IdChatIdentifier? = null,
+    private val migrate_from_chat_id: IdChatIdentifier? = null,
     private val pinned_message: RawMessage? = null,
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
@@ -286,9 +286,17 @@ internal data class RawMessage(
                             media_group_id
                         )
                         is ForumChat -> if (messageThreadId != null) {
+                            val chatId = ChatIdWithThreadId(
+                                chat.id.chatId,
+                                messageThreadId
+                            )
+                            val actualForumChat = when (chat) {
+                                is ExtendedForumChatImpl -> chat.copy(id = chatId)
+                                is ForumChatImpl -> chat.copy(id = chatId)
+                            }
                             when (sender_chat) {
                                 is ChannelChat -> FromChannelForumContentMessageImpl(
-                                    chat,
+                                    actualForumChat,
                                     sender_chat,
                                     messageId,
                                     messageThreadId,
@@ -304,7 +312,7 @@ internal data class RawMessage(
                                     media_group_id
                                 )
                                 is GroupChat -> AnonymousForumContentMessageImpl(
-                                    chat,
+                                    actualForumChat,
                                     messageId,
                                     messageThreadId,
                                     date.asDate,
@@ -319,7 +327,7 @@ internal data class RawMessage(
                                     media_group_id
                                 )
                                 null -> CommonForumContentMessageImpl(
-                                    chat,
+                                    actualForumChat,
                                     messageId,
                                     messageThreadId,
                                     from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),

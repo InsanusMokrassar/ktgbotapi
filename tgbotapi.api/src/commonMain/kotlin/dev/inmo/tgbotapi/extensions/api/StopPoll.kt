@@ -34,7 +34,7 @@ suspend fun TelegramBot.stopPoll(
  * as a builder for that
  */
 suspend fun TelegramBot.stopPoll(
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     message: Message,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = stopPoll(chatId, message.messageId, replyMarkup)

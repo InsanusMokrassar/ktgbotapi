@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.content.GameContent
 suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
@@ -22,7 +22,7 @@ suspend fun TelegramBot.setGameScore(
 suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false

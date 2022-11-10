@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.VoiceFile
+import dev.inmo.tgbotapi.types.threadId
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -22,7 +23,7 @@ suspend fun TelegramBot.sendVoice(
     text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -54,7 +55,7 @@ suspend fun TelegramBot.sendVoice(
     text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -71,7 +72,7 @@ suspend fun TelegramBot.sendVoice(
     voice: VoiceFile,
     text: String? = null,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -90,7 +91,7 @@ suspend fun TelegramBot.sendVoice(
     voice: VoiceFile,
     text: String? = null,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -108,7 +109,7 @@ suspend inline fun TelegramBot.sendVoice(
     voice: InputFile,
     entities: TextSourcesList,
     duration: Long? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -138,7 +139,7 @@ suspend inline fun TelegramBot.sendVoice(
     voice: InputFile,
     entities: TextSourcesList,
     duration: Long? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -154,7 +155,7 @@ suspend inline fun TelegramBot.sendVoice(
     chatId: ChatIdentifier,
     voice: VoiceFile,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -171,7 +172,7 @@ suspend inline fun TelegramBot.sendVoice(
     chat: Chat,
     voice: VoiceFile,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,

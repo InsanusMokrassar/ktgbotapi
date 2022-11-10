@@ -17,7 +17,7 @@ fun SendVideoNote(
     thumb: InputFile? = null,
     duration: Long? = null,
     size: Int? = null, // in documentation - length (size of video side)
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -69,7 +69,7 @@ data class SendVideoNoteData internal constructor(
     @SerialName(lengthField)
     override val width: Int? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.abstracts.*
+import dev.inmo.tgbotapi.types.threadId
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.modules.*
 
@@ -114,7 +115,7 @@ sealed interface MediaContent: MessageContent {
 sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
-        messageThreadId: MessageThreadId? = null,
+        messageThreadId: MessageThreadId? = chatId.threadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyToMessageId: MessageId? = null,

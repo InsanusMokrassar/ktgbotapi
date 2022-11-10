@@ -15,7 +15,7 @@ import kotlinx.serialization.json.JsonObject
 fun SendSticker(
     chatId: ChatIdentifier,
     sticker: InputFile,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -47,7 +47,7 @@ data class SendStickerByFileId internal constructor(
     @SerialName(stickerField)
     val sticker: FileId? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

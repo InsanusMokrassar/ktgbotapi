@@ -32,7 +32,7 @@ const val rawSendingMediaGroupsWarning = "Media groups contains restrictions rel
 fun <T : MediaGroupPartContent> SendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberTelegramMedia>,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -82,7 +82,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
 inline fun SendPlaylist(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberTelegramMedia>,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -98,7 +98,7 @@ inline fun SendPlaylist(
 inline fun SendDocumentsGroup(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -115,7 +115,7 @@ inline fun SendDocumentsGroup(
 inline fun SendVisualMediaGroup(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberTelegramMedia>,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -143,7 +143,7 @@ data class SendMediaGroupData internal constructor(
     override val chatId: ChatIdentifier,
     val media: List<MediaGroupMemberTelegramMedia> = emptyList(),
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

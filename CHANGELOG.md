@@ -1,5 +1,20 @@
 # TelegramBotAPI changelog
 
+## 4.1.0
+
+* `Versions`:
+    * `Kotlin`: `1.7.20` -> `1.7.21`
+    * `MicroUtils`: `0.14.0` -> `0.14.1`
+    * `Korlibs`: `3.3.1` -> `3.4.0`
+    * `UUID`: `0.5.0` -> `0.6.0`
+* `Core`:
+  * All the chats identifiers has been rewritten as value classes
+  * New chat identifier: `ChatIdWithThreadId`
+  * `RawMessage` will create `ChatIdWithThreadId` chat id under the hood by default
+  * All the methods which potentially using `threadId` will try to take it from `chatId`
+* `API`:
+  * All default `threadId` null values has been replaced with auto-calculated threadId from chats/chat ids
+
 ## 4.0.0
 
 **!!! THIS UPDATE CONTAINS FULL REWORK OF MEDIA GROUPS FUNCTIONALITY !!!**

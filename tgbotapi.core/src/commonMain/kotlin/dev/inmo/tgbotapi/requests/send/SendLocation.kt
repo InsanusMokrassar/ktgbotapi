@@ -18,7 +18,7 @@ fun SendLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -44,7 +44,7 @@ fun SendStaticLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -60,7 +60,7 @@ fun SendLiveLocation(
     horizontalAccuracy: Meters? = null,
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -99,7 +99,7 @@ data class SendLocation internal constructor(
     @SerialName(proximityAlertRadiusField)
     override val proximityAlertRadius: Meters? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

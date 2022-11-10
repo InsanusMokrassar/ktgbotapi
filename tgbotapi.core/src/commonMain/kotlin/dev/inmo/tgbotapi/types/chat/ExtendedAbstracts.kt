@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable(ExtendedChatSerializer::class)
 sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat, ExtendedChatWithUsername {
-    val linkedGroupChatId: ChatId?
+    val linkedGroupChatId: IdChatIdentifier?
 }
 
 @Serializable(ExtendedChatSerializer::class)
@@ -38,7 +38,7 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
     val slowModeDelay: Long?
     val stickerSetName: StickerSetName?
     val canSetStickerSet: Boolean
-    val linkedChannelChatId: ChatId?
+    val linkedChannelChatId: IdChatIdentifier?
     val location: ChatLocation?
 
     /**
@@ -53,7 +53,7 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
 }
 
 @Serializable(ExtendedChatSerializer::class)
-sealed interface ExtendedForumChat : ExtendedSupergroupChat
+sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
 
 @Serializable(ExtendedChatSerializer::class)
 sealed interface ExtendedChat : Chat {

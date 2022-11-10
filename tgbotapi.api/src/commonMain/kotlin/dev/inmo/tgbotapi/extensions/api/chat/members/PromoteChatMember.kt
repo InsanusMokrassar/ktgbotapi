@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.chat.members
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.members.PromoteChatMember
-import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.UserId
@@ -80,7 +80,7 @@ suspend fun TelegramBot.promoteChatMember(
 )
 
 suspend fun TelegramBot.promoteChatMember(
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
     isAnonymous: Boolean? = null,

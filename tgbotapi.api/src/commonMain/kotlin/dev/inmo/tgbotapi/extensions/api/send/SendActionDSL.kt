@@ -9,7 +9,6 @@ import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.chat.Chat
 import kotlinx.coroutines.*
 import kotlin.contracts.*
-import kotlin.coroutines.coroutineContext
 
 private const val refreshTime: MilliSeconds = (botActionActualityTime - 1) * 1000L
 typealias TelegramBotActionCallback<T> = suspend TelegramBot.() -> T
@@ -37,7 +36,7 @@ suspend fun <T> TelegramBot.withAction(
 
 @OptIn(ExperimentalContracts::class)
 suspend fun <T> TelegramBot.withAction(
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     action: BotAction,
     block: TelegramBotActionCallback<T>
 ): T {
@@ -67,77 +66,77 @@ suspend fun <T> TelegramBot.withAction(
 }
 
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withTypingAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withTypingAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, TypingAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withUploadPhotoAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withUploadPhotoAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, UploadPhotoAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withRecordVideoAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withRecordVideoAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, RecordVideoAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withUploadVideoAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withUploadVideoAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, UploadVideoAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withRecordVoiceAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withRecordVoiceAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, RecordVoiceAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withUploadVoiceAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withUploadVoiceAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, UploadVoiceAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withUploadDocumentAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withUploadDocumentAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, UploadDocumentAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withFindLocationAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withFindLocationAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, FindLocationAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withRecordVideoNoteAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withRecordVideoNoteAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, RecordVideoNoteAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withUploadVideoNoteAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withUploadVideoNoteAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     return withAction(chatId, UploadVideoNoteAction, block)
 }
 @OptIn(ExperimentalContracts::class)
-suspend fun <T> TelegramBot.withChooseStickerAction(chatId: ChatId, block: TelegramBotActionCallback<T>) : T {
+suspend fun <T> TelegramBot.withChooseStickerAction(chatId: IdChatIdentifier, block: TelegramBotActionCallback<T>) : T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }

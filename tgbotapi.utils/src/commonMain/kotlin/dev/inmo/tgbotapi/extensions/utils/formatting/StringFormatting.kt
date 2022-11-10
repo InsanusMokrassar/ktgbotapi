@@ -200,7 +200,7 @@ infix fun String.mention(parseMode: ParseMode): String = when (parseMode) {
     is MarkdownV2 -> mentionMarkdownV2()
 }
 
-infix fun Pair<String, ChatId>.mention(parseMode: ParseMode): String = when (parseMode) {
+infix fun Pair<String, IdChatIdentifier>.mention(parseMode: ParseMode): String = when (parseMode) {
     is HTML -> first.textMentionHTML(second)
     is Markdown -> first.textMentionMarkdown(second)
     is MarkdownV2 -> first.textMentionMarkdownV2(second)

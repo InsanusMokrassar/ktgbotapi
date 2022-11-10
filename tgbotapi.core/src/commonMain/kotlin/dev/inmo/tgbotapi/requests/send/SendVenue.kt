@@ -33,7 +33,7 @@ data class SendVenue(
     @SerialName(googlePlaceTypeField)
     val googlePlaceType: GooglePlaceType? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -52,7 +52,7 @@ data class SendVenue(
     constructor(
         chatId: ChatIdentifier,
         venue: Venue,
-        threadId: MessageThreadId? = null,
+        threadId: MessageThreadId? = chatId.threadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyToMessageId: MessageId? = null,
@@ -85,7 +85,7 @@ data class SendVenue(
 
 fun Venue.toRequest(
     chatId: ChatIdentifier,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,

@@ -3,13 +3,11 @@ package dev.inmo.tgbotapi.types.message.ChatEvents
 import dev.inmo.tgbotapi.TestsJsonFormat
 import dev.inmo.tgbotapi.extensions.utils.asMessageUpdate
 import dev.inmo.tgbotapi.extensions.utils.asMigratedToSupergroup
-import dev.inmo.tgbotapi.extensions.utils.asSupergroupChatCreated
 import dev.inmo.tgbotapi.extensions.utils.asSupergroupEventMessage
-import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateDeserializationStrategy
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertIs
 import kotlin.test.fail
 
 
@@ -47,6 +45,6 @@ class MigratedToSupergroupTest {
         val data = message.data.asSupergroupEventMessage() ?: fail("message should be of SupergroupEventMessage subtype")
         val event = data.chatEvent.asMigratedToSupergroup() ?: fail("event should be of SupergroupChatCreated subtype")
 
-        assertEquals(ChatId(57005), event.migratedFrom)
+        assertEquals(IdChatIdentifier(57005), event.migratedFrom)
     }
 }

@@ -15,6 +15,7 @@ import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.LocationContent
+import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 import io.ktor.utils.io.core.Closeable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -90,7 +91,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHorizontalAccuracy: Meters? = null,
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -137,7 +138,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHorizontalAccuracy: Meters? = null,
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -166,13 +167,13 @@ suspend fun TelegramBot.startLiveLocation(
  */
 suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     initHorizontalAccuracy: Meters? = null,
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -207,7 +208,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHorizontalAccuracy: Meters? = null,
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -243,7 +244,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHorizontalAccuracy: Meters? = null,
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = to.threadIdOrNull,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -277,7 +278,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHorizontalAccuracy: Meters? = null,
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = to.threadIdOrNull,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
