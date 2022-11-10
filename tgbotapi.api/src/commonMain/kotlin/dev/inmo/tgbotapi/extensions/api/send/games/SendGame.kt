@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.games.Game
+import dev.inmo.tgbotapi.types.threadId
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -16,7 +17,7 @@ import dev.inmo.tgbotapi.types.games.Game
 suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     gameShortName: String,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -35,7 +36,7 @@ suspend fun TelegramBot.sendGame(
 suspend fun TelegramBot.sendGame(
     chat: Chat,
     gameShortName: String,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -52,7 +53,7 @@ suspend fun TelegramBot.sendGame(
 suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     game: Game,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -69,7 +70,7 @@ suspend fun TelegramBot.sendGame(
 suspend fun TelegramBot.sendGame(
     chat: Chat,
     game: Game,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,

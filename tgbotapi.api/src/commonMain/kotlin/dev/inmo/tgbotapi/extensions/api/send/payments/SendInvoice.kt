@@ -64,10 +64,9 @@ suspend fun TelegramBot.sendInvoice(
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
-    threadId: MessageThreadId? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = sendInvoice(user.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendInvoice(user.id, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, null, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)

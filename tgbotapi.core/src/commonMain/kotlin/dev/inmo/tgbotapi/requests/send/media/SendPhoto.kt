@@ -23,7 +23,7 @@ fun SendPhoto(
     photo: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -55,7 +55,7 @@ fun SendPhoto(
     chatId: ChatIdentifier,
     photo: InputFile,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -99,7 +99,7 @@ data class SendPhotoData internal constructor(
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

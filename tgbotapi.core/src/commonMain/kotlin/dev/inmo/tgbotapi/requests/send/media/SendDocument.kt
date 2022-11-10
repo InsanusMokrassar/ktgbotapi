@@ -34,7 +34,7 @@ fun SendDocument(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -87,7 +87,7 @@ fun SendDocument(
     document: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -153,7 +153,7 @@ data class SendDocumentData internal constructor(
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 4.1.0
+
+* `Core`:
+  * All the chats identifiers has been rewritten as value classes
+  * New chat identifier: `ChatIdWithThreadId`
+  * `RawMessage` will create `ChatIdWithThreadId` chat id under the hood by default
+  * All the methods which potentially using `threadId` will try to take it from `chatId`
+
 ## 4.0.0
 
 **!!! THIS UPDATE CONTAINS FULL REWORK OF MEDIA GROUPS FUNCTIONALITY !!!**

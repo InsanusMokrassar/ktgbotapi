@@ -7,12 +7,13 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.threadId
 
 suspend fun TelegramBot.forwardMessage(
     fromChatId: ChatIdentifier,
     toChatId: ChatIdentifier,
     messageId: MessageId,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = execute(
@@ -23,7 +24,7 @@ suspend fun TelegramBot.forwardMessage(
     fromChat: Chat,
     toChatId: ChatIdentifier,
     messageId: MessageId,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = forwardMessage(fromChat.id, toChatId, messageId, threadId, disableNotification, protectContent)
@@ -32,7 +33,7 @@ suspend fun TelegramBot.forwardMessage(
     fromChatId: ChatIdentifier,
     toChat: Chat,
     messageId: MessageId,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = forwardMessage(fromChatId, toChat.id, messageId, threadId, disableNotification, protectContent)
@@ -41,7 +42,7 @@ suspend fun TelegramBot.forwardMessage(
     fromChat: Chat,
     toChat: Chat,
     messageId: MessageId,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = forwardMessage(fromChat.id, toChat.id, messageId, threadId, disableNotification, protectContent)
@@ -49,7 +50,7 @@ suspend fun TelegramBot.forwardMessage(
 suspend fun TelegramBot.forwardMessage(
     toChatId: ChatIdentifier,
     message: Message,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = forwardMessage(message.chat, toChatId, message.messageId, threadId, disableNotification, protectContent)
@@ -57,7 +58,7 @@ suspend fun TelegramBot.forwardMessage(
 suspend fun TelegramBot.forwardMessage(
     toChat: Chat,
     message: Message,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = toChat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false
 ) = forwardMessage(message.chat, toChat, message.messageId, threadId, disableNotification, protectContent)

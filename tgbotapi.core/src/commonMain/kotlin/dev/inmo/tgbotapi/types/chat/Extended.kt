@@ -10,7 +10,7 @@ import kotlinx.serialization.json.JsonObject
 @Serializable
 data class ExtendedChannelChatImpl(
     @SerialName(idField)
-    override val id: IdChatIdentifier,
+    override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
@@ -33,7 +33,7 @@ data class ExtendedChannelChatImpl(
 @Serializable
 data class ExtendedGroupChatImpl(
     @SerialName(idField)
-    override val id: IdChatIdentifier,
+    override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
     @SerialName(photoField)
@@ -78,7 +78,7 @@ typealias ExtendedUser = ExtendedPrivateChatImpl
 @Serializable
 data class ExtendedSupergroupChatImpl(
     @SerialName(idField)
-    override val id: IdChatIdentifier,
+    override val id: ChatId,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)

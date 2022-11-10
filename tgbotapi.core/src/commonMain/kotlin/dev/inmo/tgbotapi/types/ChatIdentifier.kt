@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types
 import dev.inmo.micro_utils.common.Warning
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -15,6 +16,7 @@ import kotlin.jvm.JvmInline
 const val internalLinkBeginning = "https://t.me"
 
 @Serializable(ChatIdentifierSerializer::class)
+@ClassCastsIncluded
 sealed interface ChatIdentifier
 
 /**

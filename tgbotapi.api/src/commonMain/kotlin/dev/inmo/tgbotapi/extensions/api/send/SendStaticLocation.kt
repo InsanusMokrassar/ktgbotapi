@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.Location
+import dev.inmo.tgbotapi.types.threadId
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -17,7 +18,7 @@ suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -44,7 +45,7 @@ suspend fun TelegramBot.sendLocation(
 suspend fun TelegramBot.sendLocation(
     chatId: ChatIdentifier,
     location: Location,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -70,7 +71,7 @@ suspend fun TelegramBot.sendLocation(
     chat: Chat,
     latitude: Double,
     longitude: Double,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -95,7 +96,7 @@ suspend fun TelegramBot.sendLocation(
 suspend fun TelegramBot.sendLocation(
     chat: Chat,
     location: Location,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -121,7 +122,7 @@ suspend fun TelegramBot.sendStaticLocation(
     chatId: ChatIdentifier,
     latitude: Double,
     longitude: Double,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -136,7 +137,7 @@ suspend fun TelegramBot.sendStaticLocation(
 suspend fun TelegramBot.sendStaticLocation(
     chatId: ChatIdentifier,
     location: Location,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -152,7 +153,7 @@ suspend fun TelegramBot.sendStaticLocation(
     chat: Chat,
     latitude: Double,
     longitude: Double,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -167,7 +168,7 @@ suspend fun TelegramBot.sendStaticLocation(
 suspend fun TelegramBot.sendStaticLocation(
     chat: Chat,
     location: Location,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,

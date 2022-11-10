@@ -29,7 +29,7 @@ fun SendAudio(
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -77,7 +77,7 @@ fun SendAudio(
     duration: Long? = null,
     performer: String? = null,
     title: String? = null,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -141,7 +141,7 @@ data class SendAudioData internal constructor(
     @SerialName(titleField)
     override val title: String? = null,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

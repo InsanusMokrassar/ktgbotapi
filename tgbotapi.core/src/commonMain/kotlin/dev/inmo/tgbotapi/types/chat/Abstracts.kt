@@ -25,7 +25,9 @@ sealed interface PublicChat : Chat {
 sealed interface SuperPublicChat : PublicChat, UsernameChat
 
 @Serializable(PreviewChatSerializer::class)
-sealed interface ChannelChat : SuperPublicChat
+sealed interface ChannelChat : SuperPublicChat {
+    override val id: ChatId
+}
 
 @Serializable(PreviewChatSerializer::class)
 sealed interface GroupChat : PublicChat

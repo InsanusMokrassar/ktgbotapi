@@ -14,10 +14,14 @@ import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
+import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.ChatIdWithThreadId
+import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.ChatInviteLink
 import dev.inmo.tgbotapi.types.ChatInviteLinkUnlimited
 import dev.inmo.tgbotapi.types.ChatInviteLinkWithJoinRequest
 import dev.inmo.tgbotapi.types.ChatInviteLinkWithLimitedMembers
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
@@ -84,6 +88,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.PrimaryInviteLink
 import dev.inmo.tgbotapi.types.SecondaryChatInviteLink
+import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.types.actions.BotAction
 import dev.inmo.tgbotapi.types.actions.ChooseStickerAction
 import dev.inmo.tgbotapi.types.actions.CustomBotAction
@@ -985,6 +990,40 @@ public inline fun WithUser.messageGameShortNameCallbackQueryOrThrow():
 public inline fun <T>
     WithUser.ifMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T):
     T? = messageGameShortNameCallbackQueryOrNull() ?.let(block)
+
+public inline fun ChatIdentifier.idChatIdentifierOrNull(): IdChatIdentifier? = this as?
+    dev.inmo.tgbotapi.types.IdChatIdentifier
+
+public inline fun ChatIdentifier.idChatIdentifierOrThrow(): IdChatIdentifier = this as
+    dev.inmo.tgbotapi.types.IdChatIdentifier
+
+public inline fun <T> ChatIdentifier.ifIdChatIdentifier(block: (IdChatIdentifier) -> T): T? =
+    idChatIdentifierOrNull() ?.let(block)
+
+public inline fun ChatIdentifier.chatIdOrNull(): ChatId? = this as? dev.inmo.tgbotapi.types.ChatId
+
+public inline fun ChatIdentifier.chatIdOrThrow(): ChatId = this as dev.inmo.tgbotapi.types.ChatId
+
+public inline fun <T> ChatIdentifier.ifChatId(block: (ChatId) -> T): T? = chatIdOrNull()
+    ?.let(block)
+
+public inline fun ChatIdentifier.chatIdWithThreadIdOrNull(): ChatIdWithThreadId? = this as?
+    dev.inmo.tgbotapi.types.ChatIdWithThreadId
+
+public inline fun ChatIdentifier.chatIdWithThreadIdOrThrow(): ChatIdWithThreadId = this as
+    dev.inmo.tgbotapi.types.ChatIdWithThreadId
+
+public inline fun <T> ChatIdentifier.ifChatIdWithThreadId(block: (ChatIdWithThreadId) -> T): T? =
+    chatIdWithThreadIdOrNull() ?.let(block)
+
+public inline fun ChatIdentifier.usernameOrNull(): Username? = this as?
+    dev.inmo.tgbotapi.types.Username
+
+public inline fun ChatIdentifier.usernameOrThrow(): Username = this as
+    dev.inmo.tgbotapi.types.Username
+
+public inline fun <T> ChatIdentifier.ifUsername(block: (Username) -> T): T? = usernameOrNull()
+    ?.let(block)
 
 public inline fun InlineQueryResult.inlineQueryResultArticleOrNull(): InlineQueryResultArticle? =
     this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultArticle
