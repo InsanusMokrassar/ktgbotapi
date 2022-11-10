@@ -7,6 +7,8 @@
   * New chat identifier: `ChatIdWithThreadId`
   * `RawMessage` will create `ChatIdWithThreadId` chat id under the hood by default
   * All the methods which potentially using `threadId` will try to take it from `chatId`
+* `API`:
+  * All default `threadId` null values has been replaced with auto-calculated threadId from chats/chat ids
 
 ## 4.0.0
 
