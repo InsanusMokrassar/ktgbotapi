@@ -414,7 +414,7 @@ suspend fun TelegramBot.send(
  * as a builder for that
  */
 suspend fun TelegramBot.send(
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     title: String,
     description: String,
     payload: String,

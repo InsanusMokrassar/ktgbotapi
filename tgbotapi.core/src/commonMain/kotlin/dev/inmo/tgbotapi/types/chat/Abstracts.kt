@@ -49,5 +49,5 @@ sealed interface AbleToAddInAttachmentMenuChat : Chat {
 @Serializable(PreviewChatSerializer::class)
 @ClassCastsIncluded
 sealed interface Chat {
-    val id: ChatId
+    val id: IdChatIdentifier
 }

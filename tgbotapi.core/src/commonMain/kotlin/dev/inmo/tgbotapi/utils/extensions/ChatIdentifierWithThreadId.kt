@@ -1,19 +1,18 @@
 package dev.inmo.tgbotapi.utils.extensions
 
-import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.message.abstracts.Message
-import dev.inmo.tgbotapi.utils.extensions.ChatIdWithThreadId.ByPair
 import kotlinx.serialization.Serializable
 import kotlin.Pair
 import kotlin.jvm.JvmInline
 
 /**
- * Union to keep both [ChatId] and optionally [MessageThreadId] as an identifier of target for messages sending and
+ * Union to keep both [IdChatIdentifier] and optionally [MessageThreadId] as an identifier of target for messages sending and
  * other information
  */
 sealed interface ChatIdWithThreadId {
-    val chatId: ChatId
+    val chatId: IdChatIdentifier
     val threadId: MessageThreadId?
 
     /**
@@ -23,14 +22,14 @@ sealed interface ChatIdWithThreadId {
     value class ByMessage(
         val sourceMessage: Message
     ) : ChatIdWithThreadId {
-        override val chatId: ChatId
+        override val chatId: IdChatIdentifier
             get() = sourceMessage.chat.id
         override val threadId: MessageThreadId?
             get() = sourceMessage.threadIdOrNull
     }
 
     /**
-     * [Serializable] variant of [ChatIdWithThreadId] based on [Pair] of target [ChatId] and [MessageThreadId]
+     * [Serializable] variant of [ChatIdWithThreadId] based on [Pair] of target [IdChatIdentifier] and [MessageThreadId]
      *
      * @see invoke
      * @see serializable
@@ -38,9 +37,9 @@ sealed interface ChatIdWithThreadId {
     @Serializable
     @JvmInline
     value class ByPair(
-        val pair: Pair<ChatId, MessageThreadId?>
+        val pair: Pair<IdChatIdentifier, MessageThreadId?>
     ) : ChatIdWithThreadId {
-        override val chatId: ChatId
+        override val chatId: IdChatIdentifier
             get() = pair.first
         override val threadId: MessageThreadId?
             get() = pair.second
@@ -61,7 +60,7 @@ sealed interface ChatIdWithThreadId {
         /**
          * Creates [ByPair] variant of [ChatIdWithThreadId] using incoming [pair]
          */
-        inline fun serializable(pair: Pair<ChatId, MessageThreadId?>) = ByPair(pair)
+        inline fun serializable(pair: Pair<IdChatIdentifier, MessageThreadId?>) = ByPair(pair)
     }
 }
 /**

@@ -166,7 +166,7 @@ suspend fun TelegramBot.startLiveLocation(
  */
 suspend fun TelegramBot.startLiveLocation(
     scope: CoroutineScope,
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     initHorizontalAccuracy: Meters? = null,

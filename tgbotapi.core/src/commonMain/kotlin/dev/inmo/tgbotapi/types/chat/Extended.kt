@@ -10,7 +10,7 @@ import kotlinx.serialization.json.JsonObject
 @Serializable
 data class ExtendedChannelChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
@@ -27,13 +27,13 @@ data class ExtendedChannelChatImpl(
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     override val pinnedMessage: Message? = null,
     @SerialName(linkedChatIdField)
-    override val linkedGroupChatId: ChatId? = null
+    override val linkedGroupChatId: IdChatIdentifier? = null
 ) : ExtendedChannelChat
 
 @Serializable
 data class ExtendedGroupChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(photoField)
@@ -52,7 +52,7 @@ data class ExtendedGroupChatImpl(
 @Serializable
 data class ExtendedPrivateChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(usernameField)
@@ -78,7 +78,7 @@ typealias ExtendedUser = ExtendedPrivateChatImpl
 @Serializable
 data class ExtendedSupergroupChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
@@ -103,7 +103,7 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(canSetStickerSetField)
     override val canSetStickerSet: Boolean = false,
     @SerialName(linkedChatIdField)
-    override val linkedChannelChatId: ChatId? = null,
+    override val linkedChannelChatId: IdChatIdentifier? = null,
     @SerialName(locationField)
     override val location: ChatLocation? = null,
     @SerialName(joinToSendMessagesField)
@@ -115,7 +115,7 @@ data class ExtendedSupergroupChatImpl(
 @Serializable
 data class ExtendedForumChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
@@ -140,7 +140,7 @@ data class ExtendedForumChatImpl(
     @SerialName(canSetStickerSetField)
     override val canSetStickerSet: Boolean = false,
     @SerialName(linkedChatIdField)
-    override val linkedChannelChatId: ChatId? = null,
+    override val linkedChannelChatId: IdChatIdentifier? = null,
     @SerialName(locationField)
     override val location: ChatLocation? = null,
     @SerialName(joinToSendMessagesField)
@@ -170,7 +170,7 @@ data class ExtendedBot(
 }
 
 data class UnknownExtendedChat(
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     val raw: String,
     val rawJson: JsonObject
 ) : ExtendedChat {

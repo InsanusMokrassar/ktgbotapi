@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.chat.members
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.members.BanChatMember
-import dev.inmo.tgbotapi.types.ChatId
+import dev.inmo.tgbotapi.types.IdChatIdentifier
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.types.UserId
@@ -24,7 +24,7 @@ suspend fun TelegramBot.banChatMember(
 ) = banChatMember(chat.id, userId, untilDate, revokeMessages)
 
 suspend fun TelegramBot.banChatMember(
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
     revokeMessages: Boolean? = null

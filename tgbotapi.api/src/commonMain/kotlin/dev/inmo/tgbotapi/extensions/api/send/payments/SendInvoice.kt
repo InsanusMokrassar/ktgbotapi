@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.payments.abstracts.Currency
  * as a builder for that
  */
 suspend fun TelegramBot.sendInvoice(
-    chatId: ChatId,
+    chatId: IdChatIdentifier,
     title: String,
     description: String,
     payload: String,
@@ -31,7 +31,7 @@ suspend fun TelegramBot.sendInvoice(
     shouldSendPhoneNumberToProvider: Boolean = false,
     shouldSendEmailToProvider: Boolean = false,
     priceDependOnShipAddress: Boolean = false,
-    threadId: MessageThreadId? = null,
+    threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,

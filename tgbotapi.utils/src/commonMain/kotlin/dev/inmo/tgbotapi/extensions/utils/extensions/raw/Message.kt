@@ -160,10 +160,10 @@ inline val Message.supergroup_chat_created: Boolean
 inline val Message.channel_chat_created: Boolean
     get() = asChatEventMessage() ?.chatEvent is ChannelChatCreated
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.migrate_to_chat_id: ChatId?
+inline val Message.migrate_to_chat_id: IdChatIdentifier?
     get() = asChatEventMessage() ?.chatEvent ?.asGroupChatCreated() ?.migratedTo
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.migrate_from_chat_id: ChatId?
+inline val Message.migrate_from_chat_id: IdChatIdentifier?
     get() = asChatEventMessage() ?.chatEvent ?.let {
          it ?.asSupergroupChatCreated() ?.migratedFrom ?: it ?.asMigratedToSupergroup() ?.migratedFrom
     }

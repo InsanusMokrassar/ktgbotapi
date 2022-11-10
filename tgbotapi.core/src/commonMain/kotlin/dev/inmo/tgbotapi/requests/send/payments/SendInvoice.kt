@@ -22,7 +22,7 @@ private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<Inv
 @Serializable
 data class SendInvoice(
     @SerialName(chatIdField)
-    override val chatId: ChatId,
+    override val chatId: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(descriptionField)
@@ -59,7 +59,7 @@ data class SendInvoice(
     @SerialName(priceDependOnShipAddressField)
     override val priceDependOnShipAddress: Boolean = false,
     @SerialName(messageThreadIdField)
-    override val threadId: MessageThreadId? = null,
+    override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

@@ -93,9 +93,9 @@ object PreviewChatSerializer : KSerializer<Chat> {
 }
 
 @RiskFeature
-object ExtendedChatSerializer : KSerializer<ExtendedChat> {
+sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
     @OptIn(InternalSerializationApi::class)
-    override val descriptor: SerialDescriptor = buildSerialDescriptor("PreviewChatSerializer", PolymorphicKind.OPEN)
+    override val descriptor: SerialDescriptor = buildSerialDescriptor("ExtendedChatSerializer", PolymorphicKind.OPEN)
 
     override fun deserialize(decoder: Decoder): ExtendedChat {
         val decodedJson = JsonObject.serializer().deserialize(decoder)
@@ -131,6 +131,22 @@ object ExtendedChatSerializer : KSerializer<ExtendedChat> {
             is UnknownExtendedChat -> JsonObject.serializer().serialize(encoder, value.rawJson)
         }
     }
+
+    class BasedOnForumThread(private val threadId: MessageThreadId) : ExtendedChatSerializer() {
+        override fun deserialize(decoder: Decoder): ExtendedChat {
+            return super.deserialize(decoder).let {
+                if (it is ExtendedForumChatImpl) {
+                    it.copy(
+                        id = (it.id as? ChatIdWithThreadId) ?: ChatIdWithThreadId(it.id.chatId, threadId)
+                    )
+                } else {
+                    it
+                }
+            }
+        }
+    }
+
+    companion object : ExtendedChatSerializer()
 }
 
 @RiskFeature

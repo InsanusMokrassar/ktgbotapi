@@ -13,7 +13,7 @@ data class BanChatSenderChat(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(senderChatIdField)
-    override val senderChatId: ChatId
+    override val senderChatId: IdChatIdentifier
 ) : ChatSenderRequest {
     override fun method(): String = "banChatSenderChat"
     override val resultDeserializer: DeserializationStrategy<Boolean>

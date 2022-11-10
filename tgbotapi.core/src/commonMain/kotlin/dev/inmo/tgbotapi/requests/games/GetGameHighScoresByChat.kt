@@ -10,7 +10,7 @@ data class GetGameHighScoresByChat (
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(chatIdField)
-    override val chatId: ChatId,
+    override val chatId: IdChatIdentifier,
     @SerialName(messageIdField)
     override val messageId: MessageId
 ) : GetGameHighScores, MessageAction {

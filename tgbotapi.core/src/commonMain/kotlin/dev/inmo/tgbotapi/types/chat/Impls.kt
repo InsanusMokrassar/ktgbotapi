@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GroupChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String
 ) : GroupChat
@@ -18,7 +18,7 @@ data class GroupChatImpl(
 @Serializable
 data class PrivateChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(firstNameField)
@@ -30,7 +30,7 @@ data class PrivateChatImpl(
 @Serializable
 data class SupergroupChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
@@ -40,7 +40,7 @@ data class SupergroupChatImpl(
 @Serializable
 data class ForumChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)
@@ -50,7 +50,7 @@ data class ForumChatImpl(
 @Serializable
 data class ChannelChatImpl(
     @SerialName(idField)
-    override val id: ChatId,
+    override val id: IdChatIdentifier,
     @SerialName(titleField)
     override val title: String,
     @SerialName(usernameField)

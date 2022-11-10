@@ -10,19 +10,44 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.longOrNull
+import kotlin.jvm.JvmInline
 
 const val internalLinkBeginning = "https://t.me"
 
 @Serializable(ChatIdentifierSerializer::class)
-sealed class ChatIdentifier
+sealed interface ChatIdentifier
 
 /**
  * Also used as User Identifier
  */
 @Serializable(ChatIdentifierSerializer::class)
-data class ChatId(
-    val chatId: Identifier
-) : ChatIdentifier()
+sealed interface IdChatIdentifier : ChatIdentifier {
+    abstract val chatId: Identifier
+    val threadId: MessageThreadId?
+        get() = null
+
+    companion object {
+        operator fun invoke(chatId: Identifier) = ChatId(chatId)
+    }
+}
+
+@Serializable(ChatIdentifierSerializer::class)
+@JvmInline
+value class ChatId(override val chatId: Identifier) : IdChatIdentifier
+
+@Serializable(ChatIdentifierSerializer::class)
+@JvmInline
+value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<Identifier, MessageThreadId>) : IdChatIdentifier {
+    override val chatId: Identifier
+        get() = chatIdWithThreadId.first
+    override val threadId: MessageThreadId
+        get() = chatIdWithThreadId.second
+
+    constructor(chatId: Identifier, threadId: MessageThreadId): this(chatId to threadId)
+}
+
+val ChatIdentifier.threadId: MessageThreadId?
+    get() = (this as? IdChatIdentifier) ?.threadId
 
 /**
  * https://core.telegram.org/bots/api#formatting-options
@@ -39,16 +64,16 @@ val UserId.userLink: String
 val User.link: String
     get() = id.userLink
 
-typealias UserId = ChatId
+typealias UserId = IdChatIdentifier
 
-fun Identifier.toChatId(): ChatId = ChatId(this)
-fun Int.toChatId(): ChatId = toLong().toChatId()
-fun Byte.toChatId(): ChatId = toLong().toChatId()
+fun Identifier.toChatId(): IdChatIdentifier = ChatId(this)
+fun Int.toChatId(): IdChatIdentifier = toLong().toChatId()
+fun Byte.toChatId(): IdChatIdentifier = toLong().toChatId()
 
 @Serializable(ChatIdentifierSerializer::class)
 data class Username(
     val username: String
-) : ChatIdentifier() {
+) : ChatIdentifier {
     val usernameWithoutAt
         get() = username.dropWhile { it == '@' }
 
@@ -80,7 +105,7 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
 
     override fun serialize(encoder: Encoder, value: ChatIdentifier) {
         when (value) {
-            is ChatId -> encoder.encodeLong(value.chatId)
+            is IdChatIdentifier -> encoder.encodeLong(value.chatId)
             is Username -> encoder.encodeString(value.username)
         }
     }
