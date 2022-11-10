@@ -2,6 +2,11 @@
 
 ## 4.1.0
 
+* `Versions`:
+    * `Kotlin`: `1.7.20` -> `1.7.21`
+    * `MicroUtils`: `0.14.0` -> `0.14.1`
+    * `Korlibs`: `3.3.1` -> `3.4.0`
+    * `UUID`: `0.5.0` -> `0.6.0`
 * `Core`:
   * All the chats identifiers has been rewritten as value classes
   * New chat identifier: `ChatIdWithThreadId`
