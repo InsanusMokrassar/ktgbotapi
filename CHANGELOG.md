@@ -2,6 +2,9 @@
 
 ## 4.1.1
 
+* `Core`:
+  * Add opportunity to create `IdChatIdentifier` with optional `threadId`
+
 ## 4.1.0
 
 * `Versions`:

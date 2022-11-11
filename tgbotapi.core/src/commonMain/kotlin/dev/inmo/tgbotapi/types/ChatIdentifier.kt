@@ -30,6 +30,9 @@ sealed interface IdChatIdentifier : ChatIdentifier {
 
     companion object {
         operator fun invoke(chatId: Identifier) = ChatId(chatId)
+        operator fun invoke(chatId: Identifier, threadId: MessageThreadId?) = threadId ?.let {
+            ChatIdWithThreadId(chatId, threadId)
+        } ?: ChatId(chatId)
     }
 }
 
