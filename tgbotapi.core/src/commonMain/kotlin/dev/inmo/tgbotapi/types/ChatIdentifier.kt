@@ -30,6 +30,9 @@ sealed interface IdChatIdentifier : ChatIdentifier {
 
     companion object {
         operator fun invoke(chatId: Identifier) = ChatId(chatId)
+        operator fun invoke(chatId: Identifier, threadId: MessageThreadId?) = threadId ?.let {
+            ChatIdWithThreadId(chatId, threadId)
+        } ?: ChatId(chatId)
     }
 }
 
@@ -94,6 +97,7 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     override val descriptor: SerialDescriptor = internalSerializer.descriptor
     override fun deserialize(decoder: Decoder): ChatIdentifier {
         val id = internalSerializer.deserialize(decoder)
+
         return id.longOrNull ?.let {
             ChatId(it)
         } ?: id.content.let {
@@ -108,6 +112,44 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     override fun serialize(encoder: Encoder, value: ChatIdentifier) {
         when (value) {
             is IdChatIdentifier -> encoder.encodeLong(value.chatId)
+            is Username -> encoder.encodeString(value.username)
+        }
+    }
+}
+
+@RiskFeature
+object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
+    private val internalSerializer = JsonPrimitive.serializer()
+    override val descriptor: SerialDescriptor = internalSerializer.descriptor
+    override fun deserialize(decoder: Decoder): ChatIdentifier {
+        val id = internalSerializer.deserialize(decoder)
+
+        return id.longOrNull ?.let {
+            ChatId(it)
+        } ?:let {
+            val splitted = id.content.split("/")
+            if (splitted.size == 2) {
+                val (chatId, threadId) = splitted
+                ChatIdWithThreadId(
+                    chatId.toLongOrNull() ?: return@let null,
+                    threadId.toLongOrNull() ?: return@let null
+                )
+            } else {
+                null
+            }
+        } ?: id.content.let {
+            if (!it.startsWith("@")) {
+                Username("@$it")
+            } else {
+                Username(it)
+            }
+        }
+    }
+
+    override fun serialize(encoder: Encoder, value: ChatIdentifier) {
+        when (value) {
+            is ChatId -> encoder.encodeLong(value.chatId)
+            is ChatIdWithThreadId -> encoder.encodeString("${value.chatId}/${value.threadId}")
             is Username -> encoder.encodeString(value.username)
         }
     }

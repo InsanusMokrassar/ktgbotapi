@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 4.1.1
+
+* `Core`:
+  * Add opportunity to create `IdChatIdentifier` with optional `threadId`
+  * New serializer `FullChatIdentifierSerializer` with serialization of `ChatIdWithThreadId`
+
 ## 4.1.0
 
 * `Versions`:
