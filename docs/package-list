@@ -9228,7 +9228,12 @@ $dokka.location:dev.inmo.tgbotapi.types/ForumTopic/color/#/PointingToDeclaration
 $dokka.location:dev.inmo.tgbotapi.types/ForumTopic/iconEmojiId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-forum-topic/icon-emoji-id.html
 $dokka.location:dev.inmo.tgbotapi.types/ForumTopic/messageThreadId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-forum-topic/message-thread-id.html
 $dokka.location:dev.inmo.tgbotapi.types/ForumTopic/name/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-forum-topic/name.html
+$dokka.location:dev.inmo.tgbotapi.types/FullChatIdentifierSerializer///PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-full-chat-identifier-serializer/index.html
+$dokka.location:dev.inmo.tgbotapi.types/FullChatIdentifierSerializer/descriptor/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-full-chat-identifier-serializer/descriptor.html
+$dokka.location:dev.inmo.tgbotapi.types/FullChatIdentifierSerializer/deserialize/#kotlinx.serialization.encoding.Decoder/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-full-chat-identifier-serializer/deserialize.html
+$dokka.location:dev.inmo.tgbotapi.types/FullChatIdentifierSerializer/serialize/#kotlinx.serialization.encoding.Encoder#dev.inmo.tgbotapi.types.ChatIdentifier/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-full-chat-identifier-serializer/serialize.html
 $dokka.location:dev.inmo.tgbotapi.types/IdChatIdentifier.Companion///PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-id-chat-identifier/-companion/index.html
+$dokka.location:dev.inmo.tgbotapi.types/IdChatIdentifier.Companion/invoke/#kotlin.Long#kotlin.Long?/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-id-chat-identifier/-companion/invoke.html
 $dokka.location:dev.inmo.tgbotapi.types/IdChatIdentifier.Companion/invoke/#kotlin.Long/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-id-chat-identifier/-companion/invoke.html
 $dokka.location:dev.inmo.tgbotapi.types/IdChatIdentifier///PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-id-chat-identifier/index.html
 $dokka.location:dev.inmo.tgbotapi.types/IdChatIdentifier/chatId/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/-id-chat-identifier/chat-id.html
