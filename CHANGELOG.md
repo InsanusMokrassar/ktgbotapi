@@ -2,6 +2,9 @@
 
 ## 4.1.2
 
+* `BehaviourBuilder`:
+    * Fixes in `CallbackQuery` waiters
+
 ## 4.1.1
 
 * `Core`:
