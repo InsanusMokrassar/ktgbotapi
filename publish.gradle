@@ -42,20 +42,40 @@ publishing {
                 maven {
                     name = "GithubPackages"
                     url = uri("https://maven.pkg.github.com/InsanusMokrassar/TelegramBotAPI")
+            
                     credentials {
                         username = project.hasProperty('GITHUBPACKAGES_USER') ? project.property('GITHUBPACKAGES_USER') : System.getenv('GITHUBPACKAGES_USER')
                         password = project.hasProperty('GITHUBPACKAGES_PASSWORD') ? project.property('GITHUBPACKAGES_PASSWORD') : System.getenv('GITHUBPACKAGES_PASSWORD')
                     }
+            
+                }
+            }
+            if (project.hasProperty('GITEA_TOKEN') || System.getenv('GITEA_TOKEN') != null) {
+                maven {
+                    name = "Gitea"
+                    url = uri("https://git.inmo.dev/api/packages/InsanusMokrassar/maven")
+            
+                    credentials(HttpHeaderCredentials) {
+                        name = "Authorization"
+                        value = project.hasProperty('GITEA_TOKEN') ? project.property('GITEA_TOKEN') : System.getenv('GITEA_TOKEN')
+                    }
+            
+                    authentication {
+                        header(HttpHeaderAuthentication)
+                    }
+            
                 }
             }
             if ((project.hasProperty('SONATYPE_USER') || System.getenv('SONATYPE_USER') != null) && (project.hasProperty('SONATYPE_PASSWORD') || System.getenv('SONATYPE_PASSWORD') != null)) {
                 maven {
                     name = "sonatype"
                     url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            
                     credentials {
                         username = project.hasProperty('SONATYPE_USER') ? project.property('SONATYPE_USER') : System.getenv('SONATYPE_USER')
                         password = project.hasProperty('SONATYPE_PASSWORD') ? project.property('SONATYPE_PASSWORD') : System.getenv('SONATYPE_PASSWORD')
                     }
+            
                 }
             }
         }
