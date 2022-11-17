@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 4.1.2
+
+* `Versions`:
+    * `MicroUtils`: `0.14.1` -> `0.14.2`
+* `BehaviourBuilder`:
+    * Fixes in `CallbackQuery` waiters
+
 ## 4.1.1
 
 * `Core`:

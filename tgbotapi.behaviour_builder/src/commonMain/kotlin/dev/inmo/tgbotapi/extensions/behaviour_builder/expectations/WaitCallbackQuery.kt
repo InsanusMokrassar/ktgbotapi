@@ -20,7 +20,7 @@ suspend inline fun <reified O> BehaviourContext.waitCallbackQueries(
     initRequest,
     errorFactory
 ) {
-    (it.callbackQueryUpdateOrNull() ?.data as O).let(::listOfNotNull)
+    (it.callbackQueryUpdateOrNull() ?.data as? O).let(::listOfNotNull)
 }
 
 
