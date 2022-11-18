@@ -22,3 +22,8 @@ jobs:
         env:
           GITHUBPACKAGES_USER: ${{ github.actor }}
           GITHUBPACKAGES_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish
+        continue-on-error: true
+        run: ./gradlew publishAllPublicationsToGiteaPackagesRepository
+        env:
+          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
