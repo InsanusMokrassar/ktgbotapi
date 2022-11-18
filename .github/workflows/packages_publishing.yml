@@ -16,14 +16,14 @@ jobs:
           mv gradle.properties.tmp gradle.properties
       - name: Build
         run: ./gradlew build
-      - name: Publish
+      - name: Publish to Gitea
+        continue-on-error: true
+        run: ./gradlew publishAllPublicationsToGiteaPackagesRepository
+        env:
+          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
+      - name: Publish to GithubPackages
         continue-on-error: true
         run: ./gradlew publishAllPublicationsToGithubPackagesRepository --no-parallel
         env:
           GITHUBPACKAGES_USER: ${{ github.actor }}
           GITHUBPACKAGES_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish
-        continue-on-error: true
-        run: ./gradlew publishAllPublicationsToGiteaPackagesRepository
-        env:
-          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
