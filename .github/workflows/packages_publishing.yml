@@ -18,7 +18,7 @@ jobs:
         run: ./gradlew build
       - name: Publish to Gitea
         continue-on-error: true
-        run: ./gradlew publishAllPublicationsToGiteaPackagesRepository
+        run: ./gradlew publishAllPublicationsToGiteaRepository
         env:
           GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
       - name: Publish to GithubPackages
