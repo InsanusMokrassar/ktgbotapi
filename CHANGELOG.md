@@ -2,6 +2,10 @@
 
 ## 4.1.3
 
+* `Core`:
+    * `ContentMessage`, `CommonMessage`, `PossiblyMediaGroupMessage` and `PossiblySentViaBotCommonMessage` got `out`
+      variance
+
 ## 4.1.2
 
 * `Versions`:
