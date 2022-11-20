@@ -71,7 +71,7 @@ val User.link: String
 
 typealias UserId = ChatId
 
-fun Identifier.toChatId(): IdChatIdentifier = ChatId(this)
+fun Identifier.toChatId(): ChatId = ChatId(this)
 fun Int.toChatId(): IdChatIdentifier = toLong().toChatId()
 fun Byte.toChatId(): IdChatIdentifier = toLong().toChatId()
 

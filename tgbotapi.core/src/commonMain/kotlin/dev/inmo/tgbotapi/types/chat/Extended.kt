@@ -52,7 +52,7 @@ data class ExtendedGroupChatImpl(
 @Serializable
 data class ExtendedPrivateChatImpl(
     @SerialName(idField)
-    override val id: IdChatIdentifier,
+    override val id: UserId,
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(usernameField)
