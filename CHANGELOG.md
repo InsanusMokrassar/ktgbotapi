@@ -5,6 +5,7 @@
 * `Core`:
     * `ContentMessage`, `CommonMessage`, `PossiblyMediaGroupMessage` and `PossiblySentViaBotCommonMessage` got `out`
       variance
+    * `UserId` now is `ChatId` instead of `IdChatIdentififer`
 
 ## 4.1.2
 
