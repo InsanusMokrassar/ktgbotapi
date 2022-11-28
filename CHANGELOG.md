@@ -3,6 +3,7 @@
 ## 4.1.3
 
 * `Versions`:
+    * `Kotlin`: `1.7.21` -> `1.7.22`
     * `MicroUtils`: `0.14.2` -> `0.14.4`
 * `Core`:
     * `ContentMessage`, `CommonMessage`, `PossiblyMediaGroupMessage` and `PossiblySentViaBotCommonMessage` got `out`
