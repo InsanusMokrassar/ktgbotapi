@@ -18,7 +18,7 @@ data class GroupChatImpl(
 @Serializable
 data class PrivateChatImpl(
     @SerialName(idField)
-    override val id: IdChatIdentifier,
+    override val id: UserId,
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(firstNameField)

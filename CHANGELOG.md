@@ -1,5 +1,14 @@
 # TelegramBotAPI changelog
 
+## 4.1.3
+
+* `Versions`:
+    * `MicroUtils`: `0.14.2` -> `0.14.4`
+* `Core`:
+    * `ContentMessage`, `CommonMessage`, `PossiblyMediaGroupMessage` and `PossiblySentViaBotCommonMessage` got `out`
+      variance
+    * `UserId` now is `ChatId` instead of `IdChatIdentififer`
+
 ## 4.1.2
 
 * `Versions`:

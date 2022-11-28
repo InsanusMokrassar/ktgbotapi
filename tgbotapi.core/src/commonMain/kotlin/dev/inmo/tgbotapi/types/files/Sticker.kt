@@ -42,6 +42,7 @@ sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile {
         get() = false
 }
 
+@OptIn(RiskFeature::class)
 object StickerSerializer : KSerializer<Sticker> {
     override val descriptor: SerialDescriptor = StickerSurrogate.serializer().descriptor
 
