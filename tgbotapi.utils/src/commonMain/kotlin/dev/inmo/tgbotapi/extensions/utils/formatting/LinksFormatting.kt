@@ -7,17 +7,27 @@ import dev.inmo.tgbotapi.types.message.textsources.link
 import io.ktor.http.encodeURLQueryComponent
 
 
-fun makeUsernameLink(username: String) = "$internalLinkBeginning/$username"
+fun makeUsernameLink(username: String, threadId: MessageThreadId? = null) = "$internalLinkBeginning/$username${threadId ?.let { "/$it" } ?: ""}"
+fun makeChatLink(identifier: Identifier, threadId: MessageThreadId? = null) = identifier.toString().replace(
+    linkIdRedundantPartRegex,
+    ""
+).let { bareId ->
+    "$internalLinkBeginning/c/$bareId${threadId ?.let { "/$it" } ?: ""}"
+}
 fun makeUsernameDeepLinkPrefix(username: String) = "${makeUsernameLink(username)}?start="
 fun makeUsernameStartattachPrefix(username: String) = "$internalLinkBeginning/$username?startattach"
 fun makeUsernameStartattachLink(username: String, data: String? = null) = "${makeUsernameStartattachPrefix(username)}${data?.let { "=$it" } ?: ""}"
 inline val Username.link
     get() = makeUsernameLink(usernameWithoutAt)
+val IdChatIdentifier.link: String
+    get() = makeChatLink(chatId, threadId)
+fun ChatId.link(threadId: MessageThreadId?) = makeChatLink(chatId, threadId)
+inline fun Username.link(threadId: MessageThreadId?) = makeUsernameLink(usernameWithoutAt, threadId)
 inline val Username.deepLinkPrefix
     get() = makeUsernameDeepLinkPrefix(usernameWithoutAt)
 inline val Username.startattachPrefix
     get() = makeUsernameStartattachPrefix(usernameWithoutAt)
-inline fun makeLink(username: Username) = username.link
+inline fun makeLink(username: Username, threadId: MessageThreadId? = null) = username.link(threadId)
 inline fun makeTelegramDeepLink(username: String, startParameter: String) = "${makeUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
 inline fun makeTelegramStartattach(username: String, data: String? = null) = makeUsernameStartattachLink(username, data)
 inline fun makeDeepLink(username: Username, startParameter: String) = makeTelegramDeepLink(username.usernameWithoutAt, startParameter)
@@ -31,7 +41,7 @@ fun makeLinkToMessage(
     username: String,
     messageId: MessageId,
     threadId: MessageThreadId? = null
-): String = "$internalLinkBeginning/${username.replace(usernameBeginSymbolRegex, "")}/${threadId ?.let { "$it/" } ?: ""}$messageId"
+): String = "${makeUsernameLink(username, threadId)}/$messageId"
 fun makeLinkToMessage(
     username: Username,
     messageId: MessageId,
@@ -45,7 +55,7 @@ fun makeLinkToMessage(
     linkIdRedundantPartRegex,
     ""
 ).let { bareId ->
-    "$internalLinkBeginning/c/$bareId//${threadId ?.let { "$it/" } ?: ""}$messageId"
+    "$internalLinkBeginning/c/$bareId/${threadId ?.let { "$it/" } ?: ""}$messageId"
 }
 fun makeLinkToMessage(
     chatId: IdChatIdentifier,
@@ -85,7 +95,7 @@ val Message.link: String?
 val Chat.link: String?
     get() {
         if (this is UsernameChat) {
-            username ?.link
+            username ?.link ?: id.link
         }
         if (this is ExtendedPublicChat) {
             inviteLink ?.let { return it }
