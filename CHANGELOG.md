@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 4.2.1
+
+* `Versions`:
+    * `MicroUtils`: `0.15.0` -> `0.16.0`
+    * `Ktor`: `2.1.3` -> `2.2.1`
+* `Utils`:
+    * Improve support of `makeLinkToMessage` extensions
+
 ## 4.2.0
 
 * `Versions`:
