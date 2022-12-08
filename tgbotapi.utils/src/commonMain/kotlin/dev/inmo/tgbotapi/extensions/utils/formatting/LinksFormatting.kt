@@ -24,21 +24,33 @@ inline fun makeDeepLink(username: Username, startParameter: String) = makeTelegr
 inline fun makeTelegramDeepLink(username: Username, startParameter: String) = makeDeepLink(username, startParameter)
 inline fun makeTelegramStartattach(username: Username, data: String? = null) = makeTelegramStartattach(username.usernameWithoutAt, data)
 
-fun makeLinkToMessage(
-    username: String,
-    messageId: MessageId
-): String = "$internalLinkBeginning/$username/$messageId"
-fun makeLinkToMessage(
-    username: Username,
-    messageId: MessageId
-): String = makeLinkToMessage(username.username, messageId)
-fun makeLinkToMessage(
-    chat: UsernameChat,
-    messageId: MessageId
-): String? = chat.username ?.let { makeLinkToMessage(it, messageId) }
-
 private val linkIdRedundantPartRegex = Regex("^-100")
 private val usernameBeginSymbolRegex = Regex("^@")
+
+fun makeLinkToMessage(
+    username: String,
+    messageId: MessageId,
+    threadId: MessageThreadId? = null
+): String = "$internalLinkBeginning/${username.replace(usernameBeginSymbolRegex, "")}/${threadId ?.let { "$it/" } ?: ""}$messageId"
+fun makeLinkToMessage(
+    username: Username,
+    messageId: MessageId,
+    threadId: MessageThreadId? = null
+): String = makeLinkToMessage(username.username, messageId, threadId)
+fun makeLinkToMessage(
+    chatId: Identifier,
+    messageId: MessageId,
+    threadId: MessageThreadId? = null
+): String = chatId.toString().replace(
+    linkIdRedundantPartRegex,
+    ""
+).let { bareId ->
+    "$internalLinkBeginning/c/$bareId//${threadId ?.let { "$it/" } ?: ""}$messageId"
+}
+fun makeLinkToMessage(
+    chatId: IdChatIdentifier,
+    messageId: MessageId,
+): String = makeLinkToMessage(chatId.chatId, messageId, chatId.threadId)
 
 /**
  * Link which can be used as by any user to get access to [Message]. Returns null in case when there are no
@@ -49,16 +61,10 @@ fun makeLinkToMessage(
     messageId: MessageId
 ): String? {
     return when {
-        chat is UsernameChat && chat.username != null -> {
-            "$internalLinkBeginning/${chat.username ?.username ?.replace(
-                usernameBeginSymbolRegex, "")}/$messageId"
-        }
-        chat !is PrivateChat -> chat.id.chatId.toString().replace(
-            linkIdRedundantPartRegex,
-            ""
-        ).let { bareId ->
-            "$internalLinkBeginning/c/$bareId/$messageId"
-        }
+        chat is UsernameChat && chat.username != null -> chat.username ?.let {
+            makeLinkToMessage(it, messageId, chat.id.threadId)
+        } ?: makeLinkToMessage(chat.id, messageId)
+        chat !is PrivateChat -> makeLinkToMessage(chat.id, messageId)
         else -> return null
     }
 }

@@ -2,6 +2,9 @@
 
 ## 4.2.1
 
+* `Utils`:
+    * Improve support of `makeLinkToMessage` extensions
+
 ## 4.2.0
 
 * `Versions`:
