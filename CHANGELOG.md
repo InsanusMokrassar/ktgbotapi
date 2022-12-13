@@ -2,6 +2,9 @@
 
 ## 4.2.2
 
+* `Versions`:
+  * `MicroUtils`: `0.16.0` -> `0.16.1`
+
 ## 4.2.1
 
 * `Versions`:
