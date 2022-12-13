@@ -54,6 +54,13 @@ value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<Identifier, MessageT
 val ChatIdentifier.threadId: MessageThreadId?
     get() = (this as? IdChatIdentifier) ?.threadId
 
+fun IdChatIdentifier.toChatId() = when (this) {
+    is ChatId -> this
+    is ChatIdWithThreadId -> ChatId(chatId)
+}
+
+fun IdChatIdentifier.toChatWithThreadId(threadId: MessageThreadId) = IdChatIdentifier(chatId, threadId)
+
 /**
  * https://core.telegram.org/bots/api#formatting-options
  */
