@@ -3,7 +3,7 @@
 ## 4.2.2
 
 * `Versions`:
-    * `MicroUtils`: `0.16.0` -> `0.16.1`
+    * `MicroUtils`: `0.16.0` -> `0.16.2`
 * `Core`:
     * Fix of [#694](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/694): add opportunity to create `ChatId` and `ChatIdWithThreadId` from `IdChatIdentifier`
 
