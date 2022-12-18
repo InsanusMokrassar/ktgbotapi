@@ -9103,9 +9103,11 @@ $dokka.location:dev.inmo.tgbotapi.types//thumbMimeTypeField/#/PointingToDeclarat
 $dokka.location:dev.inmo.tgbotapi.types//thumbUrlField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/thumb-url-field.html
 $dokka.location:dev.inmo.tgbotapi.types//thumbWidthField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/thumb-width-field.html
 $dokka.location:dev.inmo.tgbotapi.types//titleField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/title-field.html
+$dokka.location:dev.inmo.tgbotapi.types//toChatId/dev.inmo.tgbotapi.types.IdChatIdentifier#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/to-chat-id.html
 $dokka.location:dev.inmo.tgbotapi.types//toChatId/kotlin.Byte#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/to-chat-id.html
 $dokka.location:dev.inmo.tgbotapi.types//toChatId/kotlin.Int#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/to-chat-id.html
 $dokka.location:dev.inmo.tgbotapi.types//toChatId/kotlin.Long#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/to-chat-id.html
+$dokka.location:dev.inmo.tgbotapi.types//toChatWithThreadId/dev.inmo.tgbotapi.types.IdChatIdentifier#kotlin.Long/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/to-chat-with-thread-id.html
 $dokka.location:dev.inmo.tgbotapi.types//toTelegramDate/com.soywiz.klock.DateTime#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/to-telegram-date.html
 $dokka.location:dev.inmo.tgbotapi.types//toUsername/kotlin.String#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/to-username.html
 $dokka.location:dev.inmo.tgbotapi.types//totalAmountField/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types/total-amount-field.html
