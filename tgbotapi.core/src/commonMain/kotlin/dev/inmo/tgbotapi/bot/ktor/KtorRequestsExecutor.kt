@@ -51,7 +51,7 @@ class KtorRequestsExecutor(
     override suspend fun <T : Any> execute(request: Request<T>): T {
         return runCatchingSafely {
             pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
-            requestsLimiter.limit {
+            requestsLimiter.limit(request) {
                 var result: T? = null
                 lateinit var factoryHandledRequest: KtorCallFactory
                 for (potentialFactory in callsFactories) {
