@@ -36,7 +36,9 @@ class ExceptionsOnlyLimiter(
 
     override suspend fun <T> limit(block: suspend () -> T): T {
         while (true) {
-            lockState.first { !it }
+            if (lockState.value) {
+                lockState.first { it == false }
+            }
             var throwable: Throwable? = null
             val result = safely({
                 throwable = when (it) {
