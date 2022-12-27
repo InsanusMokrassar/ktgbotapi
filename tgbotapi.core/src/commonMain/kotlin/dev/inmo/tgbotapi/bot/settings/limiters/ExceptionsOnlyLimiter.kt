@@ -14,24 +14,11 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 /**
- * This limiter will limit requests only after getting a [RetryAfterError] or [ClientRequestException] with
- * [HttpStatusCode.TooManyRequests] status code. When block throws [TooMuchRequestsException] or [RetryAfterError],
- * in the limiter will be created special [Mutex] for the key, defined in [requestKeyFactory], and this mutex will be
- * locked for some time based on type of error. See [limit] for more info
- *
- * @param defaultTooManyRequestsDelay This parameter will be used in case of getting [ClientRequestException] with
- * [HttpStatusCode.TooManyRequests] as a parameter for delay like it would be [TooMuchRequestsException]. The reason of
- * it is that in [ClientRequestException] there is no information about required delay between requests
- * @param requestKeyFactory This parameter define how to determine request key in limiter
+ * Simple limiter which will lock any request when TooMuchRequestsExceptions is thrown and rerun request after lock time
  */
-class ExceptionsOnlyLimiter(
-    private val defaultTooManyRequestsDelay: MilliSeconds = 1000L,
-) : RequestLimiter {
-    /**
-     * Just call [block]
-     */
+object ExceptionsOnlyLimiter : RequestLimiter {
     override suspend fun <T> limit(block: suspend () -> T): T {
-        try {
+        return try {
             block()
         } catch (e: TooMuchRequestsException) {
             delay(e.retryAfter.leftToRetry)
