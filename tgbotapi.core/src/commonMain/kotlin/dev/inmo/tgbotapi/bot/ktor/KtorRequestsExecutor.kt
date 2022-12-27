@@ -30,7 +30,7 @@ class KtorRequestsExecutor(
     client: HttpClient = HttpClient(),
     callsFactories: List<KtorCallFactory> = emptyList(),
     excludeDefaultFactories: Boolean = false,
-    private val requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter(),
+    private val requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter,
     private val jsonFormatter: Json = nonstrictJsonFormat,
     private val pipelineStepsHolder: KtorPipelineStepsHolder = KtorPipelineStepsHolder
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
@@ -111,7 +111,7 @@ class KtorRequestsExecutorBuilder(
     var client: HttpClient = HttpClient()
     var callsFactories: List<KtorCallFactory> = emptyList()
     var excludeDefaultFactories: Boolean = false
-    var requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter()
+    var requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter
     var jsonFormatter: Json = nonstrictJsonFormat
 
     fun build() = KtorRequestsExecutor(telegramAPIUrlsKeeper, client, callsFactories, excludeDefaultFactories, requestsLimiter, jsonFormatter)
