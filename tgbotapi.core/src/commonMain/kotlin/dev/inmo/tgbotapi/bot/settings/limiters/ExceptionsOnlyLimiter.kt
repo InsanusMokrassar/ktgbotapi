@@ -28,34 +28,6 @@ class ExceptionsOnlyLimiter(
     private val defaultTooManyRequestsDelay: MilliSeconds = 1000L,
 ) : RequestLimiter {
     /**
-     * Should be used for all [mutexesMap] changes
-     */
-    private val lockMutex = Mutex()
-
-    /**
-     * Contains [Mutex]es for [Any] keys. If [Mutex] is presented it means that [lock] function has been called and
-     * that mutex should be locked for some time
-     */
-    private val mutexesMap = mutableMapOf<Any, Mutex>()
-    private suspend fun lock(
-        key: Any,
-        timeMillis: MilliSeconds
-    ) {
-        val mutex = Mutex()
-        mutex.withLock {
-            safely {
-                lockMutex.withLock {
-                    mutexesMap[key] = mutex
-                }
-                delay(timeMillis)
-                lockMutex.withLock {
-                    mutexesMap.remove(key)
-                }
-            }
-        }
-    }
-
-    /**
      * Just call [block]
      */
     override suspend fun <T> limit(block: suspend () -> T): T {
