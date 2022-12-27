@@ -26,7 +26,6 @@ import kotlinx.coroutines.sync.withLock
  */
 class ExceptionsOnlyLimiter(
     private val defaultTooManyRequestsDelay: MilliSeconds = 1000L,
-    private val requestKeyFactory: suspend (Request<*>) -> Any = { it::class }
 ) : RequestLimiter {
     /**
      * Should be used for all [mutexesMap] changes
@@ -59,42 +58,12 @@ class ExceptionsOnlyLimiter(
     /**
      * Just call [block]
      */
-    override suspend fun <T> limit(block: suspend () -> T): T = block()
-
-    /**
-     * Will take a key for [request] using [requestKeyFactory] and try to retrieve [Mutex] by that key. In case if [Mutex]
-     * presented it will wait while [Mutex] is locked. After that operations completed, method will call
-     * [limit] with [block] inside of [safely] and in case of exception will call internal [lock] method
-     */
-    override suspend fun <T : Any> limit(request: Request<T>, block: suspend () -> T): T {
-        val key = requestKeyFactory(request)
-        while (true) {
-            // do nothing, just wait for unlock in case when mutex is presented in mutexesMap
-            lockMutex.withLock { mutexesMap[key] } ?.takeIf { it.isLocked } ?.withLock {  }
-            var throwable: Throwable? = null
-            val result = safely({
-                throwable = when (it) {
-                    is TooMuchRequestsException -> {
-                        lock(key, it.retryAfter.leftToRetry)
-                        it
-                    }
-                    is ClientRequestException -> {
-                        if (it.response.status == HttpStatusCode.TooManyRequests) {
-                            lock(key, defaultTooManyRequestsDelay)
-                        } else {
-                            throw it
-                        }
-                        it
-                    }
-                    else -> throw it
-                }
-                null
-            }) {
-                limit(block)
-            }
-            if (throwable == null) {
-                return result!!
-            }
+    override suspend fun <T> limit(block: suspend () -> T): T {
+        try {
+            block()
+        } catch (e: TooMuchRequestsException) {
+            delay(e.retryAfter.leftToRetry)
+            limit(block)
         }
     }
 }
