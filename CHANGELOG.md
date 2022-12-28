@@ -2,6 +2,9 @@
 
 ## 4.2.4
 
+* `BehaviourBuilderWithFSM`:
+    * Fixes in `DefaultBehaviourContextWithFSM`
+
 ## 4.2.3
 
 * `Versions`:

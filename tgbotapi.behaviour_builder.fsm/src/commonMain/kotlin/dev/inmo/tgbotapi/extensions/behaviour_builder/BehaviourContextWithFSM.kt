@@ -10,6 +10,8 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.T
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.reflect.KClass
 
 /**
@@ -133,6 +135,9 @@ class DefaultBehaviourContextWithFSM<T : State>(
     private val additionalHandlers = mutableListOf<BehaviourWithFSMStateHandlerHolder<*, T>>()
     private var actualHandlersList = additionalHandlers + handlers
 
+    protected val statesJobs = mutableMapOf<T, Job>()
+    protected val statesJobsMutex = Mutex()
+
     override suspend fun launchStateHandling(state: T, handlers: List<CheckableHandlerHolder<in T, T>>): T? {
         return launchStateHandling(state, handlers, onStateHandlingErrorHandler)
     }
@@ -165,16 +170,27 @@ class DefaultBehaviourContextWithFSM<T : State>(
             }
         }
         statesManager.onStartChain.subscribeSafelyWithoutExceptions(this) {
-            launch { statePerformer(it) }
+            statesJobsMutex.withLock {
+                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+
+                statesJobs[it] = launch { statePerformer(it) }
+            }
+        }
+        statesManager.onEndChain.subscribeSafelyWithoutExceptions(this) {
+            statesJobsMutex.withLock {
+                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+            }
+            updatesFlows.remove(it.context)
         }
         statesManager.onChainStateUpdated.subscribeSafelyWithoutExceptions(this) { (old, new) ->
+            statesJobsMutex.withLock {
+                runCatchingSafely { statesJobs.remove(old) ?.cancel() }
+                runCatchingSafely { statesJobs.remove(new) ?.cancel() }
+                statesJobs[new] = launch { statePerformer(new) }
+            }
             if (old.context != new.context) {
                 updatesFlows.remove(old.context)
             }
-            launch { statePerformer(new) }
-        }
-        statesManager.onEndChain.subscribeSafelyWithoutExceptions(this) {
-            updatesFlows.remove(it.context)
         }
 
         statesManager.getActiveStates().forEach {
