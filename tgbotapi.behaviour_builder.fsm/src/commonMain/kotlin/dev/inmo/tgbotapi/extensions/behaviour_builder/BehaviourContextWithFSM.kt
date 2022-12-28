@@ -169,11 +169,22 @@ class DefaultBehaviourContextWithFSM<T : State>(
                 statesManager.endChain(state)
             }
         }
+
+        fun Job.enableRemoveOnCompletion(state: T) {
+            invokeOnCompletion {
+                launchSafelyWithoutExceptions {
+                    if (this@enableRemoveOnCompletion === statesJobs[state]) {
+                        statesJobs.remove(state)
+                    }
+                }
+            }
+        }
+
         statesManager.onStartChain.subscribeSafelyWithoutExceptions(this) {
             statesJobsMutex.withLock {
                 runCatchingSafely { statesJobs.remove(it) ?.cancel() }
 
-                statesJobs[it] = launch { statePerformer(it) }
+                statesJobs[it] = launch { statePerformer(it) }.apply { enableRemoveOnCompletion(it) }
             }
         }
         statesManager.onEndChain.subscribeSafelyWithoutExceptions(this) {
@@ -186,7 +197,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
             statesJobsMutex.withLock {
                 runCatchingSafely { statesJobs.remove(old) ?.cancel() }
                 runCatchingSafely { statesJobs.remove(new) ?.cancel() }
-                statesJobs[new] = launch { statePerformer(new) }
+                statesJobs[new] = launch { statePerformer(new) }.apply { enableRemoveOnCompletion(it) }
             }
             if (old.context != new.context) {
                 updatesFlows.remove(old.context)
@@ -194,7 +205,11 @@ class DefaultBehaviourContextWithFSM<T : State>(
         }
 
         statesManager.getActiveStates().forEach {
-            launch { statePerformer(it) }
+            statesJobsMutex.withLock {
+                runCatchingSafely { statesJobs.remove(it) ?.cancel() }
+
+                statesJobs[it] = launch { statePerformer(it) }.apply { enableRemoveOnCompletion(it) }
+            }
         }
     }
     /**
