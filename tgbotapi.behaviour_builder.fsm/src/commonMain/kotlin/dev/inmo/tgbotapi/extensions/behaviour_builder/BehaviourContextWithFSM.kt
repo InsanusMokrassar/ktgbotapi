@@ -197,7 +197,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
             statesJobsMutex.withLock {
                 runCatchingSafely { statesJobs.remove(old) ?.cancel() }
                 runCatchingSafely { statesJobs.remove(new) ?.cancel() }
-                statesJobs[new] = launch { statePerformer(new) }.apply { enableRemoveOnCompletion(it) }
+                statesJobs[new] = launch { statePerformer(new) }.apply { enableRemoveOnCompletion(new) }
             }
             if (old.context != new.context) {
                 updatesFlows.remove(old.context)
