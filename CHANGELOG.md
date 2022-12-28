@@ -2,6 +2,11 @@
 
 ## 4.2.3
 
+* `Versions`:
+  * `MicroUtils`: `0.16.2` -> `0.16.4`
+* `Core`:
+    * Simplify default `RequestsLimiter` (`ExceptionsOnlyLimiter`)
+
 ## 4.2.2
 
 * `Versions`:
