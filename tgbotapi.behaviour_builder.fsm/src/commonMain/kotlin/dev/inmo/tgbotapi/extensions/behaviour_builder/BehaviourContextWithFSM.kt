@@ -173,8 +173,10 @@ class DefaultBehaviourContextWithFSM<T : State>(
         fun Job.enableRemoveOnCompletion(state: T) {
             invokeOnCompletion {
                 launchSafelyWithoutExceptions {
-                    if (this@enableRemoveOnCompletion === statesJobs[state]) {
-                        statesJobs.remove(state)
+                    statesJobsMutex.withLock {
+                        if (this@enableRemoveOnCompletion === statesJobs[state]) {
+                            statesJobs.remove(state)
+                        }
                     }
                 }
             }
