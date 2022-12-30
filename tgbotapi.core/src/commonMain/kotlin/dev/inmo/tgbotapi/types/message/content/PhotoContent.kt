@@ -34,6 +34,7 @@ data class PhotoContent(
         chatId,
         media.fileId,
         textSources,
+        spoilered,
         messageThreadId,
         disableNotification,
         protectContent,
@@ -44,5 +45,5 @@ data class PhotoContent(
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaPhoto = asTelegramMedia()
 
-    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources)
+    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources, spoilered)
 }

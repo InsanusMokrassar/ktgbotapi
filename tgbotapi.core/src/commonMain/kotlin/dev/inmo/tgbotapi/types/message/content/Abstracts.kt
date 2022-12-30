@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message.content
 
+import dev.inmo.tgbotapi.abstracts.SpoilerableData
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -119,9 +120,7 @@ sealed interface MediaContent: MessageContent {
     fun asTelegramMedia(): TelegramMedia
 }
 
-sealed interface SpoilerableMediaContent : MediaContent {
-    val spoilered: Boolean
-}
+sealed interface SpoilerableMediaContent : MediaContent, SpoilerableData
 
 @ClassCastsIncluded
 sealed interface ResendableContent {

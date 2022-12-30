@@ -34,6 +34,7 @@ data class AnimationContent(
         media.fileId,
         media.thumb ?.fileId,
         textSources,
+        spoilered,
         media.duration,
         media.width,
         media.height,
@@ -48,6 +49,7 @@ data class AnimationContent(
     override fun asTelegramMedia(): TelegramMediaAnimation = TelegramMediaAnimation(
         media.fileId,
         textSources,
+        spoilered,
         media.width,
         media.height,
         media.duration,

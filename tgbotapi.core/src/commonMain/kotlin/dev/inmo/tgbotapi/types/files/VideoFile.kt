@@ -34,11 +34,13 @@ data class VideoFile(
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toTelegramMediaVideo(
     text: String? = null,
-    parseMode: ParseMode? = null
+    parseMode: ParseMode? = null,
+    spoilered: Boolean = false
 ) = TelegramMediaVideo(
     fileId,
     text,
     parseMode,
+    spoilered,
     width,
     height,
     duration,
@@ -47,10 +49,12 @@ inline fun VideoFile.toTelegramMediaVideo(
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toTelegramMediaVideo(
-    textSources: TextSourcesList
+    textSources: TextSourcesList,
+    spoilered: Boolean = false
 ) = TelegramMediaVideo(
     fileId,
     textSources,
+    spoilered,
     width,
     height,
     duration,

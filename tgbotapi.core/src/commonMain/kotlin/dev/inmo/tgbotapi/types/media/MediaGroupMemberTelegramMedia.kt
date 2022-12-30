@@ -20,4 +20,4 @@ sealed interface AudioMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramMed
 sealed interface DocumentMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramMedia
 
 @Serializable(MediaGroupMemberTelegramMediaSerializer::class)
-sealed interface VisualMediaGroupMemberTelegramMedia : MediaGroupMemberTelegramMedia
+sealed interface VisualMediaGroupMemberTelegramMedia : MediaGroupMemberTelegramMedia, SpoilerableTelegramMedia
