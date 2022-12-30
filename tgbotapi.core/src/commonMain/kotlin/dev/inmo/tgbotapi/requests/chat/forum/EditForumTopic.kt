@@ -1,11 +1,7 @@
 package dev.inmo.tgbotapi.requests.chat.forum
 
-import dev.inmo.tgbotapi.abstracts.types.ChatRequest
-import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.utils.RGBColor
 import kotlinx.serialization.*
-import kotlinx.serialization.builtins.serializer
 
 @Serializable
 data class EditForumTopic (
@@ -14,9 +10,9 @@ data class EditForumTopic (
     @SerialName(messageThreadIdField)
     val messageThreadId: MessageThreadId,
     @SerialName(nameField)
-    val name: String,
+    val name: String? = null,
     @SerialName(iconCustomEmojiIdField)
-    val iconEmojiId: CustomEmojiId,
+    val iconEmojiId: CustomEmojiId? = null,
 ): ModifyForumRequest {
     init {
         if (name.length !in threadNameLength) {
