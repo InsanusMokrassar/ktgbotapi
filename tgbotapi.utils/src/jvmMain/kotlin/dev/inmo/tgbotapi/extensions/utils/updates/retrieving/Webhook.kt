@@ -41,10 +41,9 @@ fun Route.includeWebhookHandlingInRoute(
     post {
         try {
             runCatchingSafely {
-                val asJson = nonstrictJsonFormat.parseToJsonElement(call.receiveText())
-                val update = nonstrictJsonFormat.decodeFromJsonElement(
+                val update = nonstrictJsonFormat.decodeFromString(
                     UpdateDeserializationStrategy,
-                    asJson
+                    call.receiveText()
                 )
                 transformer(update)
             }.onSuccess {
