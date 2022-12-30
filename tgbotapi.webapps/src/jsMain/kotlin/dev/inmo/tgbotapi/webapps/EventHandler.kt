@@ -6,3 +6,5 @@ typealias EventHandler = WebApp.() -> Unit
 typealias ViewportChangedEventHandler = WebApp.(ViewportChangedData) -> Unit
 typealias InvoiceClosedEventHandler = WebApp.(InvoiceClosedInfo) -> Unit
 typealias PopupClosedEventHandler = WebApp.(String?) -> Unit
+typealias QRTextReceivedEventHandler = WebApp.(String) -> Boolean
+typealias TextReceivedEventHandler = WebApp.(String) -> Unit
