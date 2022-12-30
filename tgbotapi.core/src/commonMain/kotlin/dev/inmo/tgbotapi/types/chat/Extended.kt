@@ -114,6 +114,8 @@ data class ExtendedSupergroupChatImpl(
     override val requiresJoinForMessaging: Boolean = false,
     @SerialName(joinByRequestField)
     override val requireAdminApproveToJoin: Boolean = false,
+    @SerialName(hasAggressiveAntiSpamEnabledField)
+    override val isAggressiveAntiSpamEnabled: Boolean = false,
     @SerialName(hasHiddenMembersField)
     override val membersHidden: Boolean = false
 ) : ExtendedSupergroupChat
@@ -153,6 +155,8 @@ data class ExtendedForumChatImpl(
     override val requiresJoinForMessaging: Boolean = false,
     @SerialName(joinByRequestField)
     override val requireAdminApproveToJoin: Boolean = false,
+    @SerialName(hasAggressiveAntiSpamEnabledField)
+    override val isAggressiveAntiSpamEnabled: Boolean = false,
     @SerialName(hasHiddenMembersField)
     override val membersHidden: Boolean = false
 ) : ExtendedForumChat

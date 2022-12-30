@@ -51,6 +51,11 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
      * This field represents field "join_by_request" from API
      */
     val requireAdminApproveToJoin: Boolean
+
+    /**
+     * This field represents field "has_aggressive_anti_spam_enabled" from API
+     */
+    val isAggressiveAntiSpamEnabled: Boolean
 }
 
 @Serializable(ExtendedChatSerializer::class)
