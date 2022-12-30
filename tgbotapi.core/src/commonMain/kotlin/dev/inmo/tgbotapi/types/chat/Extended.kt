@@ -27,7 +27,9 @@ data class ExtendedChannelChatImpl(
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     override val pinnedMessage: Message? = null,
     @SerialName(linkedChatIdField)
-    override val linkedGroupChatId: IdChatIdentifier? = null
+    override val linkedGroupChatId: IdChatIdentifier? = null,
+    @SerialName(hasHiddenMembersField)
+    override val membersHidden: Boolean = false
 ) : ExtendedChannelChat
 
 @Serializable
@@ -46,7 +48,9 @@ data class ExtendedGroupChatImpl(
     override val inviteLink: String? = null,
     @SerialName(pinnedMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    override val pinnedMessage: Message? = null
+    override val pinnedMessage: Message? = null,
+    @SerialName(hasHiddenMembersField)
+    override val membersHidden: Boolean = false
 ) : ExtendedGroupChat
 
 @Serializable
@@ -109,7 +113,9 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(joinToSendMessagesField)
     override val requiresJoinForMessaging: Boolean = false,
     @SerialName(joinByRequestField)
-    override val requireAdminApproveToJoin: Boolean = false
+    override val requireAdminApproveToJoin: Boolean = false,
+    @SerialName(hasHiddenMembersField)
+    override val membersHidden: Boolean = false
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -146,7 +152,9 @@ data class ExtendedForumChatImpl(
     @SerialName(joinToSendMessagesField)
     override val requiresJoinForMessaging: Boolean = false,
     @SerialName(joinByRequestField)
-    override val requireAdminApproveToJoin: Boolean = false
+    override val requireAdminApproveToJoin: Boolean = false,
+    @SerialName(hasHiddenMembersField)
+    override val membersHidden: Boolean = false
 ) : ExtendedForumChat
 
 @Serializable

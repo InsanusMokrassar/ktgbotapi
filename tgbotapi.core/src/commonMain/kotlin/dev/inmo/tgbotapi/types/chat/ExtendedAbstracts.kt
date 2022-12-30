@@ -31,6 +31,7 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat {
     val inviteLink: String?
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val pinnedMessage: Message?
+    val membersHidden: Boolean
 }
 
 @Serializable(ExtendedChatSerializer::class)
