@@ -461,6 +461,7 @@ const val shouldSendEmailToProviderField = "send_email_to_provider"
 const val resizeKeyboardField = "resize_keyboard"
 const val oneTimeKeyboardField = "one_time_keyboard"
 const val inputFieldPlaceholderField = "input_field_placeholder"
+const val isPersistentField = "is_persistent"
 
 const val priceDependOnShipAddressField = "is_flexible"
 

@@ -13,7 +13,9 @@ data class ReplyKeyboardMarkup(
     val oneTimeKeyboard: Boolean? = null,
     @SerialName(inputFieldPlaceholderField)
     val inputFieldPlaceholder: String? = null,
-    val selective: Boolean? = null
+    val selective: Boolean? = null,
+    @SerialName(isPersistentField)
+    val persistent: Boolean? = null
 ) : KeyboardMarkup {
     init {
         if (inputFieldPlaceholder != null && inputFieldPlaceholder.length !in inputFieldPlaceholderLimit) {
