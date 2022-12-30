@@ -33,6 +33,7 @@ data class VideoContent(
         media.fileId,
         media.thumb ?.fileId,
         textSources,
+        spoilered,
         media.duration,
         media.width,
         media.height,
