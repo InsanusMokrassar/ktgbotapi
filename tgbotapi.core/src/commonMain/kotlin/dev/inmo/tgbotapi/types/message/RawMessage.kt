@@ -58,6 +58,7 @@ internal data class RawMessage(
     private val entities: RawMessageEntities? = null,
     private val caption: String? = null,
     private val caption_entities: RawMessageEntities? = null,
+    private val has_media_spoiler: Boolean? = null,
     private val audio: AudioFile? = null,
     private val document: DocumentFile? = null,
     private val animation: AnimationFile? = null,
@@ -129,13 +130,15 @@ internal data class RawMessage(
             video != null -> VideoContent(
                 video,
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                has_media_spoiler ?: false
             )
             animation != null -> AnimationContent(
                 animation,
                 document,
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                has_media_spoiler ?: false
             )
             document != null -> DocumentContent(
                 document,
@@ -150,7 +153,8 @@ internal data class RawMessage(
             photo != null -> PhotoContent(
                 photo.toList(),
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                has_media_spoiler ?: false
             )
             sticker != null -> StickerContent(sticker)
             dice != null -> DiceContent(dice)

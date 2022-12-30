@@ -23,6 +23,7 @@ fun SendPhoto(
     photo: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -36,6 +37,7 @@ fun SendPhoto(
         text,
         parseMode,
         null,
+        spoilered,
         threadId,
         disableNotification,
         protectContent,
@@ -55,6 +57,7 @@ fun SendPhoto(
     chatId: ChatIdentifier,
     photo: InputFile,
     entities: TextSourcesList,
+    spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -68,6 +71,7 @@ fun SendPhoto(
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
+        spoilered,
         threadId,
         disableNotification,
         protectContent,
@@ -98,6 +102,8 @@ data class SendPhotoData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(hasSpoilerField)
+    override val spoilered: Boolean = false,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
@@ -113,7 +119,8 @@ data class SendPhotoData internal constructor(
 ) : DataRequest<ContentMessage<PhotoContent>>,
     SendMessageRequest<ContentMessage<PhotoContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
-    TextableSendMessageRequest<ContentMessage<PhotoContent>>
+    TextableSendMessageRequest<ContentMessage<PhotoContent>>,
+    OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

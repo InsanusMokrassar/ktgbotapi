@@ -17,7 +17,8 @@ import kotlinx.serialization.Serializable
 data class VideoContent(
     override val media: VideoFile,
     override val text: String? = null,
-    override val textSources: TextSourcesList = emptyList()
+    override val textSources: TextSourcesList = emptyList(),
+    override val spoilered: Boolean = false
 ) : VisualMediaGroupPartContent {
     override fun createResend(
         chatId: ChatIdentifier,

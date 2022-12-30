@@ -23,6 +23,7 @@ sealed interface MessageContent: ResendableContent {
             mediaGroupPartContentAdditionalBuilder: PolymorphicModuleBuilder<MediaGroupPartContent>.() -> Unit = {},
             textedMediaContentAdditionalBuilder: PolymorphicModuleBuilder<TextedMediaContent>.() -> Unit = {},
             mediaContentAdditionalBuilder: PolymorphicModuleBuilder<MediaContent>.() -> Unit = {},
+            spoilerableMediaContentAdditionalBuilder: PolymorphicModuleBuilder<SpoilerableMediaContent>.() -> Unit = {},
             mediaCollectionContentAdditionalBuilder: PolymorphicModuleBuilder<MediaCollectionContent<*>>.() -> Unit = {},
             additionalBuilder: PolymorphicModuleBuilder<MessageContent>.() -> Unit = {}
         ) = SerializersModule {
@@ -65,6 +66,13 @@ sealed interface MessageContent: ResendableContent {
                 subclass(DocumentContent::class)
 
                 mediaContentAdditionalBuilder()
+            }
+            polymorphic(SpoilerableMediaContent::class) {
+                subclass(VideoContent::class)
+                subclass(PhotoContent::class)
+                subclass(AnimationContent::class)
+
+                spoilerableMediaContentAdditionalBuilder()
             }
             polymorphic(TextedMediaContent::class) {
                 subclass(PhotoContent::class)
@@ -109,6 +117,10 @@ sealed interface MediaCollectionContent<T: TelegramMediaFile>: MessageContent, M
 sealed interface MediaContent: MessageContent {
     val media: TelegramMediaFile
     fun asTelegramMedia(): TelegramMedia
+}
+
+sealed interface SpoilerableMediaContent : MediaContent {
+    val spoilered: Boolean
 }
 
 @ClassCastsIncluded
