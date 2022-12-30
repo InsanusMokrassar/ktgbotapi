@@ -9,7 +9,11 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
@@ -151,3 +155,19 @@ suspend fun BehaviourContext.waitForumTopicReopened(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<ForumTopicReopened>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitForumTopicEdited(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ForumTopicEdited>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitGeneralForumTopicHidden(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<GeneralForumTopicHidden>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitGeneralForumTopicUnhidden(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<GeneralForumTopicUnhidden>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitWriteAccessAllowed(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<WriteAccessAllowed>(initRequest, errorFactory)
