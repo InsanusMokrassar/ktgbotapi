@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
+import dev.inmo.micro_utils.coroutines.launchSafely
+import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
@@ -29,15 +31,18 @@ fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
     )
 
     launch {
-        launch {
+        launchSafelyWithoutExceptions {
             for (update in updatesChannel) {
-                when (val data = update.data) {
-                    is PossiblyMediaGroupMessage<*> -> mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
+                val data = update.data
+                when {
+                    data is PossiblyMediaGroupMessage<*> && data.mediaGroupId != null -> {
+                        mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
+                    }
                     else -> output(update)
                 }
             }
         }
-        launch {
+        launchSafelyWithoutExceptions {
             for ((_, mediaGroup) in mediaGroupAccumulatedChannel) {
                 mediaGroup.convertWithMediaGroupUpdates().forEach {
                     output(it)
