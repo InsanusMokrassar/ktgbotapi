@@ -2,6 +2,8 @@
 
 ## 4.2.4
 
+* `Core`:
+    * Fixes in webhook parts adapter
 * `BehaviourBuilderWithFSM`:
     * Fixes in `DefaultBehaviourContextWithFSM`
 
