@@ -25,6 +25,7 @@ fun SendAnimation(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -47,6 +48,7 @@ fun SendAnimation(
         text,
         parseMode,
         null,
+        spoilered,
         duration,
         width,
         height,
@@ -73,6 +75,7 @@ fun SendAnimation(
     animation: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -95,6 +98,7 @@ fun SendAnimation(
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
+        spoilered,
         duration,
         width,
         height,
@@ -133,6 +137,8 @@ data class SendAnimationData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(hasSpoilerField)
+    override val spoilered: Boolean = false,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(widthField)
@@ -157,7 +163,8 @@ data class SendAnimationData internal constructor(
     TextableSendMessageRequest<ContentMessage<AnimationContent>>,
     ThumbedSendMessageRequest<ContentMessage<AnimationContent>>,
     DuratedSendMessageRequest<ContentMessage<AnimationContent>>,
-    SizedSendMessageRequest<ContentMessage<AnimationContent>>
+    SizedSendMessageRequest<ContentMessage<AnimationContent>>,
+    OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

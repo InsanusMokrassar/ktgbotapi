@@ -23,6 +23,7 @@ suspend fun TelegramBot.sendAnimation(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -39,6 +40,7 @@ suspend fun TelegramBot.sendAnimation(
         thumb,
         text,
         parseMode,
+        spoilered,
         duration,
         width,
         height,
@@ -60,6 +62,7 @@ suspend fun TelegramBot.sendAnimation(
     animation: AnimationFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -70,7 +73,7 @@ suspend fun TelegramBot.sendAnimation(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
-    chatId, animation.fileId, animation.thumb ?.fileId, text, parseMode, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, animation.fileId, animation.thumb ?.fileId, text, parseMode, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -83,6 +86,7 @@ suspend fun TelegramBot.sendAnimation(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -92,7 +96,7 @@ suspend fun TelegramBot.sendAnimation(
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, thumb, text, parseMode, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(chat.id, animation, thumb, text, parseMode, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -103,6 +107,7 @@ suspend fun TelegramBot.sendAnimation(
     animation: AnimationFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -112,7 +117,7 @@ suspend fun TelegramBot.sendAnimation(
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, text, parseMode, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(chat.id, animation, text, parseMode, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**
@@ -124,6 +129,7 @@ suspend fun TelegramBot.sendAnimation(
     animation: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -139,6 +145,7 @@ suspend fun TelegramBot.sendAnimation(
         animation,
         thumb,
         entities,
+        spoilered,
         duration,
         width,
         height,
@@ -159,6 +166,7 @@ suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: AnimationFile,
     entities: TextSourcesList,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -169,7 +177,7 @@ suspend fun TelegramBot.sendAnimation(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
-    chatId, animation.fileId, animation.thumb ?.fileId, entities, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, animation.fileId, animation.thumb ?.fileId, entities, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -181,6 +189,7 @@ suspend fun TelegramBot.sendAnimation(
     animation: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -190,7 +199,7 @@ suspend fun TelegramBot.sendAnimation(
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, thumb, entities, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(chat.id, animation, thumb, entities, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -200,6 +209,7 @@ suspend fun TelegramBot.sendAnimation(
     chat: Chat,
     animation: AnimationFile,
     entities: TextSourcesList,
+    spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
     height: Int? = null,
@@ -209,4 +219,4 @@ suspend fun TelegramBot.sendAnimation(
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, entities, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendAnimation(chat.id, animation, entities, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)

@@ -18,13 +18,15 @@ internal const val photoTelegramMediaType = "photo"
 fun TelegramMediaPhoto(
     file: InputFile,
     text: String? = null,
-    parseMode: ParseMode? = null
-) = TelegramMediaPhoto(file, text, parseMode, null)
+    parseMode: ParseMode? = null,
+    spoilered: Boolean = false
+) = TelegramMediaPhoto(file, text, parseMode, null, spoilered)
 
 fun TelegramMediaPhoto(
     file: InputFile,
-    entities: TextSourcesList
-) = TelegramMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities())
+    entities: TextSourcesList,
+    spoilered: Boolean = false
+) = TelegramMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities(), spoilered)
 
 @Serializable
 data class TelegramMediaPhoto internal constructor(
@@ -34,7 +36,9 @@ data class TelegramMediaPhoto internal constructor(
     @SerialName(parseModeField)
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
-    private val rawEntities: List<RawMessageEntity>? = null
+    private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(hasSpoilerField)
+    override val spoilered: Boolean = false,
 ) : TelegramMedia, VisualMediaGroupMemberTelegramMedia {
     override val type: String = photoTelegramMediaType
     override val textSources: TextSourcesList? by lazy {
@@ -50,16 +54,20 @@ data class TelegramMediaPhoto internal constructor(
 
 fun PhotoSize.toTelegramMediaPhoto(
     text: String? = null,
-    parseMode: ParseMode? = null
+    parseMode: ParseMode? = null,
+    spoilered: Boolean = false
 ): TelegramMediaPhoto = TelegramMediaPhoto(
     fileId,
     text,
-    parseMode
+    parseMode,
+    spoilered
 )
 
 fun PhotoSize.toTelegramMediaPhoto(
-    textSources: TextSourcesList = emptyList()
+    textSources: TextSourcesList = emptyList(),
+    spoilered: Boolean = false
 ): TelegramMediaPhoto = TelegramMediaPhoto(
     fileId,
-    textSources
+    textSources,
+    spoilered
 )

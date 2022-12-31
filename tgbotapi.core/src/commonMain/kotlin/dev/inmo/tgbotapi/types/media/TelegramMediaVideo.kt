@@ -18,20 +18,22 @@ fun TelegramMediaVideo(
     file: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    spoilered: Boolean = false,
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
     thumb: InputFile? = null
-) = TelegramMediaVideo(file, text, parseMode, null, width, height, duration, thumb)
+) = TelegramMediaVideo(file, text, parseMode, null, spoilered, width, height, duration, thumb)
 
 fun TelegramMediaVideo(
     file: InputFile,
     entities: TextSourcesList,
+    spoilered: Boolean = false,
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
     thumb: InputFile? = null
-) = TelegramMediaVideo(file, entities.makeString(), null, entities.toRawMessageEntities(), width, height, duration, thumb)
+) = TelegramMediaVideo(file, entities.makeString(), null, entities.toRawMessageEntities(), spoilered, width, height, duration, thumb)
 
 @Serializable
 data class TelegramMediaVideo internal constructor (
@@ -42,6 +44,8 @@ data class TelegramMediaVideo internal constructor (
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(hasSpoilerField)
+    override val spoilered: Boolean = false,
     override val width: Int? = null,
     override val height: Int? = null,
     override val duration: Long? = null,

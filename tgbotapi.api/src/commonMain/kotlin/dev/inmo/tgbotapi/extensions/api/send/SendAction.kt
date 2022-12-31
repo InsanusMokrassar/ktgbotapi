@@ -3,104 +3,129 @@ package dev.inmo.tgbotapi.extensions.api.send
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendAction
 import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.actions.*
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.threadId
 
 suspend fun TelegramBot.sendBotAction(
     chatId: ChatIdentifier,
-    action: BotAction
+    action: BotAction,
+    threadId: MessageThreadId? = chatId.threadId
 ) = execute(
-    SendAction(chatId, action)
+    SendAction(chatId, action, threadId)
 )
 
 suspend fun TelegramBot.sendBotAction(
     chat: Chat,
-    action: BotAction
-) = sendBotAction(chat.id, action)
+    action: BotAction,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat.id, action, threadId)
 
 
 suspend fun TelegramBot.sendActionTyping(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, TypingAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, TypingAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadPhoto(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, UploadPhotoAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, UploadPhotoAction, threadId)
 
 suspend fun TelegramBot.sendActionRecordVideo(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, RecordVideoAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, RecordVideoAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadVideo(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, UploadVideoAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, UploadVideoAction, threadId)
 
 suspend fun TelegramBot.sendActionRecordVoice(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, RecordVoiceAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, RecordVoiceAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadVoice(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, UploadVoiceAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, UploadVoiceAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadDocument(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, UploadDocumentAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, UploadDocumentAction, threadId)
 
 suspend fun TelegramBot.sendActionFindLocation(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, FindLocationAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, FindLocationAction, threadId)
 
 suspend fun TelegramBot.sendActionRecordVideoNote(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, RecordVideoNoteAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, RecordVideoNoteAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadVideoNote(
-    chatId: ChatIdentifier
-) = sendBotAction(chatId, UploadVideoNoteAction)
+    chatId: ChatIdentifier,
+    threadId: MessageThreadId? = chatId.threadId
+) = sendBotAction(chatId, UploadVideoNoteAction, threadId)
 
 
 suspend fun TelegramBot.sendActionTyping(
-    chat: Chat
-) = sendBotAction(chat, TypingAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, TypingAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadPhoto(
-    chat: Chat
-) = sendBotAction(chat, UploadPhotoAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, UploadPhotoAction, threadId)
 
 suspend fun TelegramBot.sendActionRecordVideo(
-    chat: Chat
-) = sendBotAction(chat, RecordVideoAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, RecordVideoAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadVideo(
-    chat: Chat
-) = sendBotAction(chat, UploadVideoAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, UploadVideoAction, threadId)
 
 suspend fun TelegramBot.sendActionRecordVoice(
-    chat: Chat
-) = sendBotAction(chat, RecordVoiceAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, RecordVoiceAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadVoice(
-    chat: Chat
-) = sendBotAction(chat, UploadVoiceAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, UploadVoiceAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadDocument(
-    chat: Chat
-) = sendBotAction(chat, UploadDocumentAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, UploadDocumentAction, threadId)
 
 suspend fun TelegramBot.sendActionFindLocation(
-    chat: Chat
-) = sendBotAction(chat, FindLocationAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, FindLocationAction, threadId)
 
 suspend fun TelegramBot.sendActionRecordVideoNote(
-    chat: Chat
-) = sendBotAction(chat, RecordVideoNoteAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, RecordVideoNoteAction, threadId)
 
 suspend fun TelegramBot.sendActionUploadVideoNote(
-    chat: Chat
-) = sendBotAction(chat, UploadVideoNoteAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, UploadVideoNoteAction, threadId)
 
 suspend fun TelegramBot.sendActionChooseStickerAction(
-    chat: Chat
-) = sendBotAction(chat, ChooseStickerAction)
+    chat: Chat,
+    threadId: MessageThreadId? = chat.id.threadId
+) = sendBotAction(chat, ChooseStickerAction, threadId)
 

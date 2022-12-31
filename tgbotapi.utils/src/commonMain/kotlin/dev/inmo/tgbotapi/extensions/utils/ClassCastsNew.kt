@@ -213,6 +213,7 @@ import dev.inmo.tgbotapi.types.media.DocumentMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.SizedTelegramMedia
+import dev.inmo.tgbotapi.types.media.SpoilerableTelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
@@ -251,7 +252,11 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.SupergroupEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
@@ -315,6 +320,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.content.ResendableContent
+import dev.inmo.tgbotapi.types.message.content.SpoilerableMediaContent
 import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 import dev.inmo.tgbotapi.types.message.content.StickerContent
 import dev.inmo.tgbotapi.types.message.content.TextContent
@@ -2643,6 +2649,16 @@ public inline fun TelegramMedia.sizedTelegramMediaOrThrow(): SizedTelegramMedia 
 public inline fun <T> TelegramMedia.ifSizedTelegramMedia(block: (SizedTelegramMedia) -> T): T? =
     sizedTelegramMediaOrNull() ?.let(block)
 
+public inline fun TelegramMedia.spoilerableTelegramMediaOrNull(): SpoilerableTelegramMedia? = this
+    as? dev.inmo.tgbotapi.types.media.SpoilerableTelegramMedia
+
+public inline fun TelegramMedia.spoilerableTelegramMediaOrThrow(): SpoilerableTelegramMedia = this
+    as dev.inmo.tgbotapi.types.media.SpoilerableTelegramMedia
+
+public inline fun <T>
+    TelegramMedia.ifSpoilerableTelegramMedia(block: (SpoilerableTelegramMedia) -> T): T? =
+    spoilerableTelegramMediaOrNull() ?.let(block)
+
 public inline fun TelegramMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as?
     dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
@@ -2923,6 +2939,15 @@ public inline fun ChatEvent.forumTopicCreatedOrThrow(): ForumTopicCreated = this
 public inline fun <T> ChatEvent.ifForumTopicCreated(block: (ForumTopicCreated) -> T): T? =
     forumTopicCreatedOrNull() ?.let(block)
 
+public inline fun ChatEvent.forumTopicEditedOrNull(): ForumTopicEdited? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
+
+public inline fun ChatEvent.forumTopicEditedOrThrow(): ForumTopicEdited = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
+
+public inline fun <T> ChatEvent.ifForumTopicEdited(block: (ForumTopicEdited) -> T): T? =
+    forumTopicEditedOrNull() ?.let(block)
+
 public inline fun ChatEvent.forumTopicReopenedOrNull(): ForumTopicReopened? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
 
@@ -2931,6 +2956,34 @@ public inline fun ChatEvent.forumTopicReopenedOrThrow(): ForumTopicReopened = th
 
 public inline fun <T> ChatEvent.ifForumTopicReopened(block: (ForumTopicReopened) -> T): T? =
     forumTopicReopenedOrNull() ?.let(block)
+
+public inline fun ChatEvent.generalForumTopicHiddenOrNull(): GeneralForumTopicHidden? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
+
+public inline fun ChatEvent.generalForumTopicHiddenOrThrow(): GeneralForumTopicHidden = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
+
+public inline fun <T> ChatEvent.ifGeneralForumTopicHidden(block: (GeneralForumTopicHidden) -> T): T?
+    = generalForumTopicHiddenOrNull() ?.let(block)
+
+public inline fun ChatEvent.generalForumTopicUnhiddenOrNull(): GeneralForumTopicUnhidden? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
+
+public inline fun ChatEvent.generalForumTopicUnhiddenOrThrow(): GeneralForumTopicUnhidden = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
+
+public inline fun <T>
+    ChatEvent.ifGeneralForumTopicUnhidden(block: (GeneralForumTopicUnhidden) -> T): T? =
+    generalForumTopicUnhiddenOrNull() ?.let(block)
+
+public inline fun ChatEvent.writeAccessAllowedOrNull(): WriteAccessAllowed? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
+
+public inline fun ChatEvent.writeAccessAllowedOrThrow(): WriteAccessAllowed = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
+
+public inline fun <T> ChatEvent.ifWriteAccessAllowed(block: (WriteAccessAllowed) -> T): T? =
+    writeAccessAllowedOrNull() ?.let(block)
 
 public inline fun ChatEvent.videoChatEndedOrNull(): VideoChatEnded? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
@@ -3515,6 +3568,16 @@ public inline fun ResendableContent.mediaContentOrThrow(): MediaContent = this a
 
 public inline fun <T> ResendableContent.ifMediaContent(block: (MediaContent) -> T): T? =
     mediaContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.spoilerableMediaContentOrNull(): SpoilerableMediaContent? = this
+    as? dev.inmo.tgbotapi.types.message.content.SpoilerableMediaContent
+
+public inline fun ResendableContent.spoilerableMediaContentOrThrow(): SpoilerableMediaContent = this
+    as dev.inmo.tgbotapi.types.message.content.SpoilerableMediaContent
+
+public inline fun <T>
+    ResendableContent.ifSpoilerableMediaContent(block: (SpoilerableMediaContent) -> T): T? =
+    spoilerableMediaContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.audioMediaGroupPartContentOrNull(): AudioMediaGroupPartContent?
     = this as? dev.inmo.tgbotapi.types.message.content.AudioMediaGroupPartContent

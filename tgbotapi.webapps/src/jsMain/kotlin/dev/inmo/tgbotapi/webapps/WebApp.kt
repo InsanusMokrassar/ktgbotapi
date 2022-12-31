@@ -8,6 +8,8 @@ import dev.inmo.tgbotapi.webapps.popup.*
 external class WebApp {
     val version: String
 
+    val platform: String
+
     val initData: String
     val initDataUnsafe: WebAppInitData
 
@@ -33,6 +35,9 @@ external class WebApp {
     fun showPopup(params: PopupParams, callback: ClosePopupCallback? = definedExternally)
     fun showAlert(message: String, callback: AlertCallback? = definedExternally)
     fun showConfirm(message: String, callback: ConfirmCallback? = definedExternally)
+    fun showScanQrPopup(params: ScanQrPopupParams, callback: QRTextReceivedCallback? = definedExternally)
+    fun closeScanQrPopup()
+    fun readTextFromClipboard(callback: TextReceivedCallback? = definedExternally)
 
     @JsName("MainButton")
     val mainButton: MainButton
@@ -50,6 +55,10 @@ external class WebApp {
     internal fun onEventWithInvoiceClosedInfo(type: String, callback: (InvoiceClosedInfo) -> Unit)
     @JsName("onEvent")
     internal fun onEventWithPopupClosedInfo(type: String, callback: (String?) -> Unit)
+    @JsName("onEvent")
+    internal fun onEventWithQRTextInfo(type: String, callback: (String) -> Boolean)
+    @JsName("onEvent")
+    internal fun onEventWithTextInfo(type: String, callback: (String) -> Unit)
 
     fun offEvent(type: String, callback: () -> Unit)
     @JsName("offEvent")
@@ -127,6 +136,30 @@ fun WebApp.onEvent(type: EventType.PopupClosed, eventHandler: PopupClosedEventHa
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
+fun WebApp.onEvent(type: EventType.QRTextReceived, eventHandler: QRTextReceivedEventHandler) = { it: String ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it)
+}.also {
+    onEventWithQRTextInfo(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onEvent(type: EventType.ClipboardTextReceived, eventHandler: TextReceivedEventHandler) = { it: String ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it)
+}.also {
+    onEventWithTextInfo(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
 fun WebApp.onThemeChanged(eventHandler: EventHandler) = onEvent(EventType.ThemeChanged, eventHandler)
 /**
  * @return The callback which should be used in case you want to turn off events handling
@@ -152,6 +185,14 @@ fun WebApp.onInvoiceClosed(eventHandler: InvoiceClosedEventHandler) = onEvent(Ev
  * @return The callback which should be used in case you want to turn off events handling
  */
 fun WebApp.onPopupClosed(eventHandler: PopupClosedEventHandler) = onEvent(EventType.PopupClosed, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onQRTextReceived(eventHandler: QRTextReceivedEventHandler) = onEvent(EventType.QRTextReceived, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onClipboardTextReceived(eventHandler: TextReceivedEventHandler) = onEvent(EventType.ClipboardTextReceived, eventHandler)
 
 fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
     initData,

@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.bot.exceptions.*
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.extensions.utils.updates.lastUpdateIdentifier
 import dev.inmo.tgbotapi.requests.GetUpdates
+import dev.inmo.tgbotapi.requests.webhook.DeleteWebhook
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
@@ -23,7 +24,14 @@ fun TelegramBot.longPollingFlow(
     timeoutSeconds: Seconds = 30,
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
+    autoDisableWebhooks: Boolean = true
 ): Flow<Update> = channelFlow {
+    if (autoDisableWebhooks) {
+        runCatchingSafely {
+            execute(DeleteWebhook())
+        }
+    }
+
     var lastUpdateIdentifier: UpdateIdentifier? = null
 
     while (isActive) {
@@ -86,8 +94,9 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
+    autoDisableWebhooks: Boolean = true,
     updatesReceiver: UpdateReceiver<Update>
-): Job = longPollingFlow(timeoutSeconds, exceptionsHandler, allowedUpdates).subscribeSafely(
+): Job = longPollingFlow(timeoutSeconds, exceptionsHandler, allowedUpdates, autoDisableWebhooks).subscribeSafely(
     scope,
     exceptionsHandler ?: defaultSafelyExceptionHandler,
     updatesReceiver
@@ -101,7 +110,8 @@ fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
     avoidInlineQueries: Boolean = false,
     avoidCallbackQueries: Boolean = false,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
-    allowedUpdates: List<String>? = ALL_UPDATES_LIST
+    allowedUpdates: List<String>? = ALL_UPDATES_LIST,
+    autoDisableWebhooks: Boolean = true,
 ): Flow<Update> = longPollingFlow(
     timeoutSeconds = 0,
     exceptionsHandler = {
@@ -111,7 +121,8 @@ fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
             else -> exceptionsHandler ?.invoke(it)
         }
     },
-    allowedUpdates = allowedUpdates
+    allowedUpdates = allowedUpdates,
+    autoDisableWebhooks = autoDisableWebhooks
 ).filter {
     !(it is InlineQueryUpdate && avoidInlineQueries || it is CallbackQueryUpdate && avoidCallbackQueries)
 }
@@ -122,12 +133,14 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: (ExceptionHandler<Unit>)? = null,
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
+    autoDisableWebhooks: Boolean = true,
     updatesReceiver: UpdateReceiver<Update>
 ): Job = createAccumulatedUpdatesRetrieverFlow(
     avoidInlineQueries,
     avoidCallbackQueries,
     exceptionsHandler,
-    allowedUpdates
+    allowedUpdates,
+    autoDisableWebhooks
 ).subscribeSafelyWithoutExceptions(
     scope.LinkedSupervisorScope()
 ) {
@@ -139,6 +152,7 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     avoidInlineQueries: Boolean = false,
     avoidCallbackQueries: Boolean = false,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    autoDisableWebhooks: Boolean = true,
     exceptionsHandler: ExceptionHandler<Unit>? = null
 ) = retrieveAccumulatedUpdates(
     avoidInlineQueries,
@@ -146,6 +160,7 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     scope,
     exceptionsHandler,
     flowsUpdatesFilter.allowedUpdates,
+    autoDisableWebhooks,
     flowsUpdatesFilter.asUpdateReceiver
 )
 
@@ -155,6 +170,7 @@ suspend fun TelegramBot.flushAccumulatedUpdates(
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     allowedUpdates: List<String>? = ALL_UPDATES_LIST,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
+    autoDisableWebhooks: Boolean = true,
     updatesReceiver: UpdateReceiver<Update> = {}
 ) = retrieveAccumulatedUpdates(
     avoidInlineQueries,
@@ -162,6 +178,7 @@ suspend fun TelegramBot.flushAccumulatedUpdates(
     scope,
     exceptionsHandler,
     allowedUpdates,
+    autoDisableWebhooks,
     updatesReceiver
 ).join()
 
@@ -173,9 +190,10 @@ fun TelegramBot.longPolling(
     updatesFilter: UpdatesFilter,
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    autoDisableWebhooks: Boolean = true,
     exceptionsHandler: ExceptionHandler<Unit>? = null
 ): Job = updatesFilter.run {
-    startGettingOfUpdatesByLongPolling(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, asUpdateReceiver)
+    startGettingOfUpdatesByLongPolling(timeoutSeconds, scope, exceptionsHandler, allowedUpdates, autoDisableWebhooks, asUpdateReceiver)
 }
 
 /**
@@ -189,18 +207,21 @@ fun TelegramBot.longPolling(
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
     exceptionsHandler: ExceptionHandler<Unit>? = null,
     flowsUpdatesFilterUpdatesKeeperCount: Int = 100,
+    autoDisableWebhooks: Boolean = true,
     flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit
-): Job = longPolling(FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply(flowUpdatesPreset), timeoutSeconds, scope, exceptionsHandler)
+): Job = longPolling(FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply(flowUpdatesPreset), timeoutSeconds, scope, autoDisableWebhooks, exceptionsHandler)
 
 fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     updatesFilter: UpdatesFilter,
     timeoutSeconds: Seconds = 30,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
-    scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
+    scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
+    autoDisableWebhooks: Boolean = true,
 ): Job = startGettingOfUpdatesByLongPolling(
     timeoutSeconds,
     scope,
     exceptionsHandler,
     updatesFilter.allowedUpdates,
+    autoDisableWebhooks,
     updatesFilter.asUpdateReceiver
 )

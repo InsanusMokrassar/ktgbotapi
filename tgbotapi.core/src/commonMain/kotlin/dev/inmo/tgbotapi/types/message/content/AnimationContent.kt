@@ -18,8 +18,9 @@ data class AnimationContent(
     override val media: AnimationFile,
     val includedDocument: DocumentFile?,
     override val text: String?,
-    override val textSources: TextSourcesList = emptyList()
-) : TextedMediaContent {
+    override val textSources: TextSourcesList = emptyList(),
+    override val spoilered: Boolean = false
+) : TextedMediaContent, SpoilerableMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
@@ -33,6 +34,7 @@ data class AnimationContent(
         media.fileId,
         media.thumb ?.fileId,
         textSources,
+        spoilered,
         media.duration,
         media.width,
         media.height,
@@ -47,6 +49,7 @@ data class AnimationContent(
     override fun asTelegramMedia(): TelegramMediaAnimation = TelegramMediaAnimation(
         media.fileId,
         textSources,
+        spoilered,
         media.width,
         media.height,
         media.duration,

@@ -18,15 +18,17 @@ fun TelegramMediaAnimation(
     file: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    spoilered: Boolean = false,
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
     thumb: InputFile? = null
-) = TelegramMediaAnimation(file, text, parseMode, null, width, height, duration, thumb)
+) = TelegramMediaAnimation(file, text, parseMode, null, spoilered, width, height, duration, thumb)
 
 fun TelegramMediaAnimation(
     file: InputFile,
     entities: TextSourcesList,
+    spoilered: Boolean = false,
     width: Int? = null,
     height: Int? = null,
     duration: Long? = null,
@@ -36,6 +38,7 @@ fun TelegramMediaAnimation(
     entities.makeString(),
     null,
     entities.toRawMessageEntities(),
+    spoilered,
     width,
     height,
     duration,
@@ -51,11 +54,13 @@ data class TelegramMediaAnimation internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(hasSpoilerField)
+    override val spoilered: Boolean = false,
     override val width: Int? = null,
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : TelegramMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TextedOutput {
+) : TelegramMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, TextedOutput, SpoilerableTelegramMedia {
     override val type: String = "animation"
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

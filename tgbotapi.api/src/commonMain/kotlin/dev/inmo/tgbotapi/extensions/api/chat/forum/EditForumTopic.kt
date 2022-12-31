@@ -11,8 +11,8 @@ import dev.inmo.tgbotapi.types.chat.Chat
 suspend fun TelegramBot.editForumTopic(
     chatId: ChatIdentifier,
     messageThreadId: MessageThreadId,
-    name: String,
-    iconEmojiId: CustomEmojiId
+    name: String? = null,
+    iconEmojiId: CustomEmojiId? = null
 ) = execute(
     EditForumTopic(
         chatId,
@@ -25,12 +25,12 @@ suspend fun TelegramBot.editForumTopic(
 suspend fun TelegramBot.editForumTopic(
     chat: Chat,
     messageThreadId: MessageThreadId,
-    name: String,
-    iconEmojiId: CustomEmojiId
+    name: String? = null,
+    iconEmojiId: CustomEmojiId? = null
 ) = editForumTopic(chat.id, messageThreadId, name, iconEmojiId)
 
 suspend fun TelegramBot.editForumTopic(
     chatIdentifier: ChatIdentifier,
     forumTopic: ForumTopic,
-    iconEmojiId: CustomEmojiId = forumTopic.iconEmojiId ?: error("Icon emoji id in forum topic should be presented when edit forum topic basing on other forum topic object")
+    iconEmojiId: CustomEmojiId? = forumTopic.iconEmojiId
 ) = editForumTopic(chatIdentifier, forumTopic.messageThreadId, forumTopic.name, iconEmojiId)

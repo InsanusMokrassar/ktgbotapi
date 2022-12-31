@@ -17,7 +17,8 @@ import kotlinx.serialization.Serializable
 data class PhotoContent(
     override val mediaCollection: Photo,
     override val text: String? = null,
-    override val textSources: TextSourcesList = emptyList()
+    override val textSources: TextSourcesList = emptyList(),
+    override val spoilered: Boolean = false
 ) : MediaCollectionContent<PhotoSize>, VisualMediaGroupPartContent {
     override val media: PhotoSize = mediaCollection.biggest() ?: throw IllegalStateException("Can't locate any photo size for this content")
 
@@ -33,6 +34,7 @@ data class PhotoContent(
         chatId,
         media.fileId,
         textSources,
+        spoilered,
         messageThreadId,
         disableNotification,
         protectContent,
@@ -43,5 +45,5 @@ data class PhotoContent(
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaPhoto = asTelegramMedia()
 
-    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources)
+    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources, spoilered)
 }

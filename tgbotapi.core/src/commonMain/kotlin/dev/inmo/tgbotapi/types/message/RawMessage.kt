@@ -14,7 +14,11 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.*
@@ -58,6 +62,7 @@ internal data class RawMessage(
     private val entities: RawMessageEntities? = null,
     private val caption: String? = null,
     private val caption_entities: RawMessageEntities? = null,
+    private val has_media_spoiler: Boolean? = null,
     private val audio: AudioFile? = null,
     private val document: DocumentFile? = null,
     private val animation: AnimationFile? = null,
@@ -96,8 +101,12 @@ internal data class RawMessage(
 
     // Forum
     private val forum_topic_created: ForumTopicCreated? = null,
+    private val forum_topic_edited: ForumTopicEdited? = null,
     private val forum_topic_closed: ForumTopicClosed? = null,
     private val forum_topic_reopened: ForumTopicReopened? = null,
+    private val general_forum_topic_hidden: GeneralForumTopicHidden? = null,
+    private val general_forum_topic_unhidden: GeneralForumTopicUnhidden? = null,
+    private val write_access_allowed: WriteAccessAllowed? = null,
 
     // AutoDelete Message time changed
     private val message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged? = null,
@@ -129,13 +138,15 @@ internal data class RawMessage(
             video != null -> VideoContent(
                 video,
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                has_media_spoiler ?: false
             )
             animation != null -> AnimationContent(
                 animation,
                 document,
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                has_media_spoiler ?: false
             )
             document != null -> DocumentContent(
                 document,
@@ -150,7 +161,8 @@ internal data class RawMessage(
             photo != null -> PhotoContent(
                 photo.toList(),
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                has_media_spoiler ?: false
             )
             sticker != null -> StickerContent(sticker)
             dice != null -> DiceContent(dice)
@@ -213,6 +225,10 @@ internal data class RawMessage(
             video_chat_scheduled != null -> video_chat_scheduled
             message_auto_delete_timer_changed != null -> message_auto_delete_timer_changed
             forum_topic_created != null -> forum_topic_created
+            forum_topic_edited != null -> forum_topic_edited
+            general_forum_topic_hidden != null -> general_forum_topic_hidden
+            general_forum_topic_unhidden != null -> general_forum_topic_unhidden
+            write_access_allowed != null -> write_access_allowed
             forum_topic_closed != null -> forum_topic_closed
             forum_topic_reopened != null -> forum_topic_reopened
             video_chat_ended != null -> video_chat_ended
