@@ -2,6 +2,10 @@
 
 ## 5.0.0
 
+[Bot API 6.5](https://core.telegram.org/bots/api-changelog#december-30-2022) support!
+
+* Long-polling improvements
+
 ## 4.2.4
 
 * `Core`:
