@@ -18,7 +18,7 @@ data class SetChatAdministratorCustomTitle(
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
     override val requestSerializer: SerializationStrategy<*>
-        get() = RestrictChatMember.serializer()
+        get() = serializer()
 
     init {
         if (customTitle.length !in customTitleLength) {
