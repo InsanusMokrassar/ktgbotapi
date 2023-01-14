@@ -8,12 +8,12 @@ javax-activation = "1.1.1"
 
 korlibs = "3.4.0"
 uuid = "0.6.0"
-ktor = "2.2.1"
+ktor = "2.2.2"
 
 ksp = "1.7.22-1.0.8"
 kotlin-poet = "1.12.0"
 
-microutils = "0.16.4"
+microutils = "0.16.5"
 
 github-release-plugin = "2.4.1"
 dokka = "1.7.20"
