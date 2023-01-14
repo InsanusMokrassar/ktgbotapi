@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 5.0.1
+
+* `Core`:
+    * Fixes in `SendMediaGroup` request
+    * Fixes in `SetChatAdministratorCustomTitle` request (thanks to [@madhead](https://github.com/madhead))
+
 ## 5.0.0
 
 [Bot API 6.4](https://core.telegram.org/bots/api-changelog#december-30-2022) support!

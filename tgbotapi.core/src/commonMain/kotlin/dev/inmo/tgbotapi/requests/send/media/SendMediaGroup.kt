@@ -37,7 +37,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-): Request<PossiblySentViaBotCommonMessage<T>> {
+): Request<PossiblySentViaBotCommonMessage<MediaGroupContent<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
     }
@@ -70,7 +70,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
             data,
             SendMediaGroupFiles(files)
         )
-    }) as Request<PossiblySentViaBotCommonMessage<T>>
+    }) as Request<PossiblySentViaBotCommonMessage<MediaGroupContent<T>>>
 }
 
 /**
