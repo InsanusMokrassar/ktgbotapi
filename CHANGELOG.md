@@ -2,6 +2,9 @@
 
 ## 5.0.1
 
+* `Versions`:
+  * `MicroUtils`: `0.16.4` -> `0.16.6`
+  * `Ktor`: `2.2.1` -> `2.2.2`
 * `Core`:
     * Fixes in `SendMediaGroup` request
     * Fixes in `SetChatAdministratorCustomTitle` request (thanks to [@madhead](https://github.com/madhead))
