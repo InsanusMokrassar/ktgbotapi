@@ -2,6 +2,9 @@
 
 ## 5.0.2
 
+* `Versions`:
+    * `MicroUtils`: `0.16.6` -> `0.16.8`
+    * `Ktor`: `2.2.2` -> `2.2.3`
 * `BehaviourBuilder`:
     * Fixes in `BehaviourContext.onEditedContentMessage` - now it will trigger callback on channel post edits too
 
