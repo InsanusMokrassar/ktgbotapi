@@ -14,27 +14,31 @@ suspend fun TelegramBot.restrictChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
     untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
+    permissions: ChatPermissions = ChatPermissions(),
+    useIndependentChatPermissions: Boolean? = null,
 ) = execute(RestrictChatMember(chatId, userId, untilDate, permissions))
 
 suspend fun TelegramBot.restrictChatMember(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
+    permissions: ChatPermissions = ChatPermissions(),
+    useIndependentChatPermissions: Boolean? = null,
 ) = restrictChatMember(chat.id, userId, untilDate, permissions)
 
 suspend fun TelegramBot.restrictChatMember(
     chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
+    permissions: ChatPermissions = ChatPermissions(),
+    useIndependentChatPermissions: Boolean? = null,
 ) = restrictChatMember(chatId, user.id, untilDate, permissions)
 
 suspend fun TelegramBot.restrictChatMember(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
+    permissions: ChatPermissions = ChatPermissions(),
+    useIndependentChatPermissions: Boolean? = null,
 ) = restrictChatMember(chat.id, user.id, untilDate, permissions)
 

@@ -2,6 +2,11 @@
 
 ## 5.1.0
 
+* `API`:
+  * [Bot API 6.5](https://core.telegram.org/bots/api#february-3-2023) support
+    * Added the parameter `use_independent_chat_permissions` to the methods `restrictChatMember` and `setChatPermissions`.
+  * `setDefaultChatMembersPermissions` renamed to `setChatMembersPermissions` to correspond to the [Bot API](https://core.telegram.org/bots/api#setchatpermissions).
+
 ## 5.0.1
 
 * `Versions`:
