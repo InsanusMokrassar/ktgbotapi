@@ -29,6 +29,8 @@ import dev.inmo.tgbotapi.types.passport.PassportData
 import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
+import dev.inmo.tgbotapi.types.shared.ChatShared
+import dev.inmo.tgbotapi.types.shared.UserShared
 import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -92,6 +94,8 @@ internal data class RawMessage(
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
+    private val user_shared: UserShared? = null,
+    private val chat_shared: ChatShared? = null,
 
     // Voice Chat Service Messages
     private val video_chat_scheduled: VideoChatScheduled? = null,
