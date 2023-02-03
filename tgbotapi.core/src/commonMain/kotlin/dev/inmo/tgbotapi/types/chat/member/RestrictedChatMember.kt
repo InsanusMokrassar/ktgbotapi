@@ -14,8 +14,18 @@ data class RestrictedChatMember(
     val isMember: Boolean = false,
     @SerialName(canSendMessagesField)
     val canSendMessages: Boolean = false,
-    @SerialName(canSendMediaMessagesField)
-    val canSendMediaMessages: Boolean = false,
+    @SerialName(canSendAudiosField)
+    val canSendAudios: Boolean = false,
+    @SerialName(canSendDocumentsField)
+    val canSendDocuments: Boolean = false,
+    @SerialName(canSendPhotosField)
+    val canSendPhotos: Boolean = false,
+    @SerialName(canSendVideosField)
+    val canSendVideos: Boolean = false,
+    @SerialName(canSendVideoNotesField)
+    val canSendVideoNotes: Boolean = false,
+    @SerialName(canSendVoiceNotesField)
+    val canSendVoiceNotes: Boolean = false,
     @SerialName(canSendPollsField)
     val canSendPolls: Boolean = false,
     @SerialName(canSendOtherMessagesField)

@@ -2,6 +2,10 @@
 
 ## 5.1.0
 
+* `Core`:
+  * [Bot API 6.5](https://core.telegram.org/bots/api#february-3-2023) support
+    * Replaced the fields `can_send_media_messages` in the classes `ChatMemberRestricted` and `ChatPermissions` with separate fields `can_send_audios`, `can_send_documents`, `can_send_photos`, `can_send_videos`, `can_send_video_notes`, and `can_send_voice_notes` for different media types.
+
 ## 5.0.1
 
 * `Versions`:

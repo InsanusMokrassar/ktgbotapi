@@ -8,8 +8,18 @@ import kotlinx.serialization.Serializable
 data class ChatPermissions(
     @SerialName(canSendMessagesField)
     val canSendMessages: Boolean = false,
-    @SerialName(canSendMediaMessagesField)
-    val canSendMediaMessages: Boolean = false,
+    @SerialName(canSendAudiosField)
+    val canSendAudios: Boolean = false,
+    @SerialName(canSendDocumentsField)
+    val canSendDocuments: Boolean = false,
+    @SerialName(canSendPhotosField)
+    val canSendPhotos: Boolean = false,
+    @SerialName(canSendVideosField)
+    val canSendVideos: Boolean = false,
+    @SerialName(canSendVideoNotesField)
+    val canSendVideoNotes: Boolean = false,
+    @SerialName(canSendVoiceNotesField)
+    val canSendVoiceNotes: Boolean = false,
     @SerialName(canSendPollsField)
     val canSendPolls: Boolean = false,
     @SerialName(canSendOtherMessagesField)
@@ -26,7 +36,12 @@ data class ChatPermissions(
 
 val LeftRestrictionsChatPermissions = ChatPermissions(
     canSendMessages = true,
-    canSendMediaMessages = true,
+    canSendAudios = true,
+    canSendDocuments = true,
+    canSendPhotos = true,
+    canSendVideos = true,
+    canSendVideoNotes = true,
+    canSendVoiceNotes = true,
     canSendPolls = true,
     canSendOtherMessages = true,
     canAddWebPagePreviews = true,
@@ -37,7 +52,12 @@ val LeftRestrictionsChatPermissions = ChatPermissions(
 
 val RestrictionsChatPermissions = ChatPermissions(
     canSendMessages = false,
-    canSendMediaMessages = false,
+    canSendAudios = false,
+    canSendDocuments = false,
+    canSendPhotos = false,
+    canSendVideos = false,
+    canSendVideoNotes = false,
+    canSendVoiceNotes = false,
     canSendPolls = false,
     canSendOtherMessages = false,
     canAddWebPagePreviews = false,
