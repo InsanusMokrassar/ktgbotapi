@@ -107,8 +107,6 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineK
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.LoginURLInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestChatInlineKeyboardButton
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestUserInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryCurrentChatInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.URLInlineKeyboardButton
@@ -1883,30 +1881,6 @@ public inline fun InlineKeyboardButton.webAppInlineKeyboardButtonOrThrow():
 public inline fun <T>
     InlineKeyboardButton.ifWebAppInlineKeyboardButton(block: (WebAppInlineKeyboardButton) -> T): T?
     = webAppInlineKeyboardButtonOrNull() ?.let(block)
-
-public inline fun InlineKeyboardButton.requestUserInlineKeyboardButtonOrNull():
-    RequestUserInlineKeyboardButton? = this as?
-    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestUserInlineKeyboardButton
-
-public inline fun InlineKeyboardButton.requestUserInlineKeyboardButtonOrThrow():
-    RequestUserInlineKeyboardButton = this as
-    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestUserInlineKeyboardButton
-
-public inline fun <T>
-    InlineKeyboardButton.ifRequestUserInlineKeyboardButton(block: (RequestUserInlineKeyboardButton) -> T):
-    T? = requestUserInlineKeyboardButtonOrNull() ?.let(block)
-
-public inline fun InlineKeyboardButton.requestChatInlineKeyboardButtonOrNull():
-    RequestChatInlineKeyboardButton? = this as?
-    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestChatInlineKeyboardButton
-
-public inline fun InlineKeyboardButton.requestChatInlineKeyboardButtonOrThrow():
-    RequestChatInlineKeyboardButton = this as
-    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestChatInlineKeyboardButton
-
-public inline fun <T>
-    InlineKeyboardButton.ifRequestChatInlineKeyboardButton(block: (RequestChatInlineKeyboardButton) -> T):
-    T? = requestChatInlineKeyboardButtonOrNull() ?.let(block)
 
 public inline fun KeyboardMarkup.inlineKeyboardMarkupOrNull(): InlineKeyboardMarkup? = this as?
     dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup

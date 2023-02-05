@@ -7,9 +7,9 @@ import kotlin.random.Random
 @Serializable
 @JvmInline
 value class RequestId(
-    val float: Float
+    val float: Int
 ) {
     companion object {
-        fun random() = RequestId(Random.nextFloat())
+        fun random() = RequestId(Random.nextInt())
     }
 }
