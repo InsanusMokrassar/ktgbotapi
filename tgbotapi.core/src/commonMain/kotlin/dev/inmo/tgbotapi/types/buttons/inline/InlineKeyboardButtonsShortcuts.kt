@@ -2,6 +2,10 @@ package dev.inmo.tgbotapi.types.buttons.inline
 
 import dev.inmo.tgbotapi.types.LoginURL
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
+import dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestChat
+import dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser
+import dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRights
+import dev.inmo.tgbotapi.types.request.RequestId
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 
 /**
@@ -100,3 +104,100 @@ inline fun webAppInlineButton(
     text: String,
     url: String
 ) = webAppInlineButton(text, WebAppInfo(url))
+
+
+/**
+ * Creates and put [RequestUserKeyboardButton]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun requestUserInlineButton(
+    text: String,
+    requestUser: KeyboardButtonRequestUser
+) = RequestUserInlineKeyboardButton(
+    text,
+    requestUser
+)
+
+/**
+ * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Bot]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun requestBotInlineButton(
+    text: String,
+    requestId: RequestId
+) = requestUserInlineButton(
+    text,
+    KeyboardButtonRequestUser.Bot(requestId)
+)
+
+/**
+ * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Common]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun requestUserInlineButton(
+    text: String,
+    requestId: RequestId,
+    premiumUser: Boolean? = null
+) = requestUserInlineButton(
+    text,
+    KeyboardButtonRequestUser.Common(requestId, premiumUser)
+)
+
+/**
+ * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Any]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun requestUserOrBotInlineButton(
+    text: String,
+    requestId: RequestId
+) = requestUserInlineButton(
+    text,
+    KeyboardButtonRequestUser.Any(requestId)
+)
+
+
+/**
+ * Creates and put [RequestChatKeyboardButton]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun requestChatInlineButton(
+    text: String,
+    requestChat: KeyboardButtonRequestChat
+) = RequestChatInlineKeyboardButton(
+    text,
+    requestChat
+)
+
+/**
+ * Creates and put [RequestChatKeyboardButton] with [KeyboardButtonRequestChat]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun requestChatInlineButton(
+    text: String,
+    requestId: RequestId,
+    isChannel: Boolean? = null,
+    isForum: Boolean? = null,
+    withUsername: Boolean? = null,
+    ownedBy: Boolean? = null,
+    userRightsInChat: ChatAdministratorRights? = null,
+    botRightsInChat: ChatAdministratorRights? = null,
+    botIsMember: Boolean = false
+) = requestChatInlineButton(
+    text,
+    KeyboardButtonRequestChat(
+        requestId, isChannel, isForum, withUsername, ownedBy, userRightsInChat, botRightsInChat, botIsMember
+    )
+)
+

@@ -94,42 +94,6 @@ data class RequestPollKeyboardButton(
     val requestPoll: KeyboardButtonPollType
 ) : KeyboardButton
 
-/**
- * Private chats only. When user will tap on this button, he will be asked for the chat with [requestChat] options. You
- * will be able to catch this [ChatId] in updates and data using
- * [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onUserShared] in case you are using Behaviour
- * Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
- * and [kotlinx.coroutines.flow.filterIsInstance].
- *
- * In case you will use [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onUserShared] it is
- * recommended to use [kotlinx.coroutines.flow.Flow] [kotlinx.coroutines.flow.filter] with checking of incoming
- * [dev.inmo.tgbotapi.types.request.UserShared.requestId]
- */
-@Serializable
-data class RequestUserKeyboardButton(
-    override val text: String,
-    @SerialName(requestUserField)
-    val requestUser: KeyboardButtonRequestUser
-) : KeyboardButton
-
-/**
- * Private chats only. When user will tap on this button, he will be asked for the chat with [requestChat] options. You
- * will be able to catch this [ChatId] in updates and data using
- * [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onChatShared] in case you are using Behaviour
- * Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
- * and [kotlinx.coroutines.flow.filterIsInstance].
- *
- * In case you will use [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onChatShared] it is
- * recommended to use [kotlinx.coroutines.flow.Flow] [kotlinx.coroutines.flow.filter] with checking of incoming
- * [dev.inmo.tgbotapi.types.request.ChatShared.requestId]
- */
-@Serializable
-data class RequestChatKeyboardButton(
-    override val text: String,
-    @SerialName(requestChatField)
-    val requestChat: KeyboardButtonRequestChat
-) : KeyboardButton
-
 @RiskFeature
 object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
     private val internalSerializer = JsonElement.serializer()
@@ -160,20 +124,6 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
                     asJson[requestPollField] ?.jsonObject ?: buildJsonObject {  }
                 )
             )
-            asJson is JsonObject && asJson[requestUserField] != null -> RequestUserKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content,
-                nonstrictJsonFormat.decodeFromJsonElement(
-                    KeyboardButtonRequestUser.serializer(),
-                    asJson[requestUserField] ?.jsonObject ?: buildJsonObject {  }
-                )
-            )
-            asJson is JsonObject && asJson[requestChatField] != null -> RequestChatKeyboardButton(
-                asJson[textField]!!.jsonPrimitive.content,
-                nonstrictJsonFormat.decodeFromJsonElement(
-                    KeyboardButtonRequestChat.serializer(),
-                    asJson[requestChatField] ?.jsonObject ?: buildJsonObject {  }
-                )
-            )
             else -> UnknownKeyboardButton(
                 when (asJson) {
                     is JsonObject -> asJson[textField]!!.jsonPrimitive.content
@@ -192,8 +142,6 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
             is WebAppKeyboardButton -> WebAppKeyboardButton.serializer().serialize(encoder, value)
             is RequestPollKeyboardButton -> RequestPollKeyboardButton.serializer().serialize(encoder, value)
             is SimpleKeyboardButton -> encoder.encodeString(value.text)
-            is RequestUserKeyboardButton -> RequestUserKeyboardButton.serializer().serialize(encoder, value)
-            is RequestChatKeyboardButton -> RequestChatKeyboardButton.serializer().serialize(encoder, value)
             is UnknownKeyboardButton -> JsonElement.serializer().serialize(encoder, nonstrictJsonFormat.parseToJsonElement(value.raw))
         }
     }
