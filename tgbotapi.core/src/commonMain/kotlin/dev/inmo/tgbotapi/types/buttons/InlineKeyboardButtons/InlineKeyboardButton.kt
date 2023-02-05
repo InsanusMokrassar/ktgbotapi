@@ -2,9 +2,6 @@ package dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.buttons.KeyboardButton
-import dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestChat
-import dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser
 import dev.inmo.tgbotapi.types.games.CallbackGame
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 import kotlinx.serialization.*
@@ -136,40 +133,4 @@ data class WebAppInlineKeyboardButton(
     override val text: String,
     @SerialName(webAppField)
     val webApp: WebAppInfo
-) : InlineKeyboardButton
-
-/**
- * Private chats only. When user will tap on this button, he will be asked for the chat with [requestChat] options. You
- * will be able to catch this [ChatId] in updates and data using
- * [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onUserShared] in case you are using Behaviour
- * Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
- * and [kotlinx.coroutines.flow.filterIsInstance].
- *
- * In case you will use [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onUserShared] it is
- * recommended to use [kotlinx.coroutines.flow.Flow] [kotlinx.coroutines.flow.filter] with checking of incoming
- * [dev.inmo.tgbotapi.types.request.UserShared.requestId]
- */
-@Serializable
-data class RequestUserInlineKeyboardButton(
-    override val text: String,
-    @SerialName(requestUserField)
-    val requestUser: KeyboardButtonRequestUser
-) : InlineKeyboardButton
-
-/**
- * Private chats only. When user will tap on this button, he will be asked for the chat with [requestChat] options. You
- * will be able to catch this [ChatId] in updates and data using
- * [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onChatShared] in case you are using Behaviour
- * Builder OR with [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.messagesFlow]
- * and [kotlinx.coroutines.flow.filterIsInstance].
- *
- * In case you will use [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onChatShared] it is
- * recommended to use [kotlinx.coroutines.flow.Flow] [kotlinx.coroutines.flow.filter] with checking of incoming
- * [dev.inmo.tgbotapi.types.request.ChatShared.requestId]
- */
-@Serializable
-data class RequestChatInlineKeyboardButton(
-    override val text: String,
-    @SerialName(requestChatField)
-    val requestChat: KeyboardButtonRequestChat
 ) : InlineKeyboardButton
