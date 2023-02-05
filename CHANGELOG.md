@@ -6,11 +6,19 @@
   * [Bot API 6.5](https://core.telegram.org/bots/api#february-3-2023) support
     * Added the field `user_chat_id` to the class `ChatJoinRequest`.
 
+## 5.0.2
+
+* `Versions`:
+    * `MicroUtils`: `0.16.6` -> `0.16.8`
+    * `Ktor`: `2.2.2` -> `2.2.3`
+* `BehaviourBuilder`:
+    * Fixes in `BehaviourContext.onEditedContentMessage` - now it will trigger callback on channel post edits too
+
 ## 5.0.1
 
 * `Versions`:
-  * `MicroUtils`: `0.16.4` -> `0.16.6`
-  * `Ktor`: `2.2.1` -> `2.2.2`
+    * `MicroUtils`: `0.16.4` -> `0.16.6`
+    * `Ktor`: `2.2.1` -> `2.2.2`
 * `Core`:
     * Fixes in `SendMediaGroup` request
     * Fixes in `SetChatAdministratorCustomTitle` request (thanks to [@madhead](https://github.com/madhead))
