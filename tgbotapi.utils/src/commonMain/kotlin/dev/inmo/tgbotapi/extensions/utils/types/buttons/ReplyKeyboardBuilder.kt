@@ -231,14 +231,21 @@ inline fun ReplyKeyboardRowBuilder.requestChatButton(
     requestId: RequestId,
     isChannel: Boolean? = null,
     isForum: Boolean? = null,
-    withUsername: Boolean? = null,
-    ownedBy: Boolean? = null,
+    isPublic: Boolean? = null,
+    isOwnedBy: Boolean? = null,
     userRightsInChat: ChatAdministratorRights? = null,
     botRightsInChat: ChatAdministratorRights? = null,
     botIsMember: Boolean? = null
 ) = requestChatButton(
     text,
     KeyboardButtonRequestChat(
-        requestId, isChannel, isForum, withUsername, ownedBy, userRightsInChat, botRightsInChat, botIsMember
+        requestId = requestId,
+        isChannel = isChannel,
+        isForum = isForum,
+        isPublic = isPublic,
+        isOwnedBy = isOwnedBy,
+        userRightsInChat = userRightsInChat,
+        botRightsInChat = botRightsInChat,
+        botIsMember = botIsMember
     )
 )

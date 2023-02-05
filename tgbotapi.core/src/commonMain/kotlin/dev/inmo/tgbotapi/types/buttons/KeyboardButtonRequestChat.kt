@@ -10,11 +10,8 @@ import dev.inmo.tgbotapi.types.chatIsForumField
 import dev.inmo.tgbotapi.types.request.RequestId
 import dev.inmo.tgbotapi.types.requestIdField
 import dev.inmo.tgbotapi.types.userAdministratorRightsField
-import kotlinx.serialization.EncodeDefault
-import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
 
 @Serializable
 data class KeyboardButtonRequestChat(
@@ -25,9 +22,9 @@ data class KeyboardButtonRequestChat(
     @SerialName(chatIsForumField)
     val isForum: Boolean? = null,
     @SerialName(chatHasUsernameField)
-    val withUsername: Boolean? = null,
+    val isPublic: Boolean? = null,
     @SerialName(chatIsCreatedField)
-    val ownedBy: Boolean? = null,
+    val isOwnedBy: Boolean? = null,
     @SerialName(userAdministratorRightsField)
     val userRightsInChat: ChatAdministratorRights? = null,
     @SerialName(botAdministratorRightsField)
