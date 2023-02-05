@@ -33,6 +33,6 @@ data class KeyboardButtonRequestChat(
     @SerialName(botAdministratorRightsField)
     val botRightsInChat: ChatAdministratorRights? = null,
     @SerialName(botIsMemberField)
-    val botIsMember: Boolean = false
+    val botIsMember: Boolean? = null
 )
 

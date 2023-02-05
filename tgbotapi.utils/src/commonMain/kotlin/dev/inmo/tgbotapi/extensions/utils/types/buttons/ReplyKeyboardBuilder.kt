@@ -235,7 +235,7 @@ inline fun ReplyKeyboardRowBuilder.requestChatButton(
     ownedBy: Boolean? = null,
     userRightsInChat: ChatAdministratorRights? = null,
     botRightsInChat: ChatAdministratorRights? = null,
-    botIsMember: Boolean = false
+    botIsMember: Boolean? = null
 ) = requestChatButton(
     text,
     KeyboardButtonRequestChat(
