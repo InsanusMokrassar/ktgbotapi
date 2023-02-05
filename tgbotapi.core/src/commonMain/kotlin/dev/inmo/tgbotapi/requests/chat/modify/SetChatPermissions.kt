@@ -12,7 +12,9 @@ data class SetChatPermissions (
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(permissionsField)
-    val permissions: ChatPermissions
+    val permissions: ChatPermissions,
+    @SerialName(useIndependentChatPermissionsField)
+    val useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
 ): ChatRequest, SimpleRequest<Boolean> {
     override fun method(): String = "setChatPermissions"
     override val resultDeserializer: DeserializationStrategy<Boolean>

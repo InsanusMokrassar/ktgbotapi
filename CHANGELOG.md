@@ -2,9 +2,10 @@
 
 ## 5.1.0
 
+[Bot API 6.5](https://core.telegram.org/bots/api-changelog#february-3-2023) support
+
 * `Core`:
   * [Bot API 6.5](https://core.telegram.org/bots/api#february-3-2023) support
-    * Added the field `user_chat_id` to the class `ChatJoinRequest`.
 
 ## 5.0.2
 
