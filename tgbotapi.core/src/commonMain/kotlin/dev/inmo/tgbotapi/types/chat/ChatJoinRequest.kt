@@ -16,7 +16,7 @@ data class ChatJoinRequest(
     @SerialName(fromField)
     override val from: User,
     @SerialName(userChatIdField)
-    val userChatId: Identifier,
+    val userChatId: UserId,
     @SerialName(dateField)
     val date: TelegramDate,
     @SerialName(inviteLinkField)
