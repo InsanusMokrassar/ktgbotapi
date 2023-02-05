@@ -107,6 +107,8 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineK
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.LoginURLInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestChatInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestUserInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryCurrentChatInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.URLInlineKeyboardButton
@@ -433,6 +435,9 @@ import dev.inmo.tgbotapi.types.queries.callback.MessageCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
+import dev.inmo.tgbotapi.types.request.ChatShared
+import dev.inmo.tgbotapi.types.request.ChatSharedRequest
+import dev.inmo.tgbotapi.types.request.UserShared
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
@@ -1879,6 +1884,30 @@ public inline fun <T>
     InlineKeyboardButton.ifWebAppInlineKeyboardButton(block: (WebAppInlineKeyboardButton) -> T): T?
     = webAppInlineKeyboardButtonOrNull() ?.let(block)
 
+public inline fun InlineKeyboardButton.requestUserInlineKeyboardButtonOrNull():
+    RequestUserInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestUserInlineKeyboardButton
+
+public inline fun InlineKeyboardButton.requestUserInlineKeyboardButtonOrThrow():
+    RequestUserInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestUserInlineKeyboardButton
+
+public inline fun <T>
+    InlineKeyboardButton.ifRequestUserInlineKeyboardButton(block: (RequestUserInlineKeyboardButton) -> T):
+    T? = requestUserInlineKeyboardButtonOrNull() ?.let(block)
+
+public inline fun InlineKeyboardButton.requestChatInlineKeyboardButtonOrNull():
+    RequestChatInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestChatInlineKeyboardButton
+
+public inline fun InlineKeyboardButton.requestChatInlineKeyboardButtonOrThrow():
+    RequestChatInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.RequestChatInlineKeyboardButton
+
+public inline fun <T>
+    InlineKeyboardButton.ifRequestChatInlineKeyboardButton(block: (RequestChatInlineKeyboardButton) -> T):
+    T? = requestChatInlineKeyboardButtonOrNull() ?.let(block)
+
 public inline fun KeyboardMarkup.inlineKeyboardMarkupOrNull(): InlineKeyboardMarkup? = this as?
     dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
@@ -3030,6 +3059,33 @@ public inline fun ChatEvent.successfulPaymentEventOrThrow(): SuccessfulPaymentEv
 
 public inline fun <T> ChatEvent.ifSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T): T? =
     successfulPaymentEventOrNull() ?.let(block)
+
+public inline fun ChatEvent.chatSharedOrNull(): ChatShared? = this as?
+    dev.inmo.tgbotapi.types.request.ChatShared
+
+public inline fun ChatEvent.chatSharedOrThrow(): ChatShared = this as
+    dev.inmo.tgbotapi.types.request.ChatShared
+
+public inline fun <T> ChatEvent.ifChatShared(block: (ChatShared) -> T): T? = chatSharedOrNull()
+    ?.let(block)
+
+public inline fun ChatEvent.chatSharedRequestOrNull(): ChatSharedRequest? = this as?
+    dev.inmo.tgbotapi.types.request.ChatSharedRequest
+
+public inline fun ChatEvent.chatSharedRequestOrThrow(): ChatSharedRequest = this as
+    dev.inmo.tgbotapi.types.request.ChatSharedRequest
+
+public inline fun <T> ChatEvent.ifChatSharedRequest(block: (ChatSharedRequest) -> T): T? =
+    chatSharedRequestOrNull() ?.let(block)
+
+public inline fun ChatEvent.userSharedOrNull(): UserShared? = this as?
+    dev.inmo.tgbotapi.types.request.UserShared
+
+public inline fun ChatEvent.userSharedOrThrow(): UserShared = this as
+    dev.inmo.tgbotapi.types.request.UserShared
+
+public inline fun <T> ChatEvent.ifUserShared(block: (UserShared) -> T): T? = userSharedOrNull()
+    ?.let(block)
 
 public inline fun ForwardInfo.byAnonymousOrNull(): ForwardInfo.ByAnonymous? = this as?
     dev.inmo.tgbotapi.types.message.ForwardInfo.ByAnonymous
