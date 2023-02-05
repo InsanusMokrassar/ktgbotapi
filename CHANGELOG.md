@@ -2,15 +2,24 @@
 
 ## 5.1.0
 
+[Bot API 6.5](https://core.telegram.org/bots/api-changelog#february-3-2023) support
+
 * `Core`:
   * [Bot API 6.5](https://core.telegram.org/bots/api#february-3-2023) support
-    * Replaced the fields `can_send_media_messages` in the classes `ChatMemberRestricted` and `ChatPermissions` with separate fields `can_send_audios`, `can_send_documents`, `can_send_photos`, `can_send_videos`, `can_send_video_notes`, and `can_send_voice_notes` for different media types.
+
+## 5.0.2
+
+* `Versions`:
+    * `MicroUtils`: `0.16.6` -> `0.16.8`
+    * `Ktor`: `2.2.2` -> `2.2.3`
+* `BehaviourBuilder`:
+    * Fixes in `BehaviourContext.onEditedContentMessage` - now it will trigger callback on channel post edits too
 
 ## 5.0.1
 
 * `Versions`:
-  * `MicroUtils`: `0.16.4` -> `0.16.6`
-  * `Ktor`: `2.2.1` -> `2.2.2`
+    * `MicroUtils`: `0.16.4` -> `0.16.6`
+    * `Ktor`: `2.2.1` -> `2.2.2`
 * `Core`:
     * Fixes in `SendMediaGroup` request
     * Fixes in `SetChatAdministratorCustomTitle` request (thanks to [@madhead](https://github.com/madhead))

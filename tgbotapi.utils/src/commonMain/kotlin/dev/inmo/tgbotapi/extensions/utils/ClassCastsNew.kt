@@ -433,6 +433,9 @@ import dev.inmo.tgbotapi.types.queries.callback.MessageCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
+import dev.inmo.tgbotapi.types.request.ChatShared
+import dev.inmo.tgbotapi.types.request.ChatSharedRequest
+import dev.inmo.tgbotapi.types.request.UserShared
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
@@ -3030,6 +3033,33 @@ public inline fun ChatEvent.successfulPaymentEventOrThrow(): SuccessfulPaymentEv
 
 public inline fun <T> ChatEvent.ifSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T): T? =
     successfulPaymentEventOrNull() ?.let(block)
+
+public inline fun ChatEvent.chatSharedOrNull(): ChatShared? = this as?
+    dev.inmo.tgbotapi.types.request.ChatShared
+
+public inline fun ChatEvent.chatSharedOrThrow(): ChatShared = this as
+    dev.inmo.tgbotapi.types.request.ChatShared
+
+public inline fun <T> ChatEvent.ifChatShared(block: (ChatShared) -> T): T? = chatSharedOrNull()
+    ?.let(block)
+
+public inline fun ChatEvent.chatSharedRequestOrNull(): ChatSharedRequest? = this as?
+    dev.inmo.tgbotapi.types.request.ChatSharedRequest
+
+public inline fun ChatEvent.chatSharedRequestOrThrow(): ChatSharedRequest = this as
+    dev.inmo.tgbotapi.types.request.ChatSharedRequest
+
+public inline fun <T> ChatEvent.ifChatSharedRequest(block: (ChatSharedRequest) -> T): T? =
+    chatSharedRequestOrNull() ?.let(block)
+
+public inline fun ChatEvent.userSharedOrNull(): UserShared? = this as?
+    dev.inmo.tgbotapi.types.request.UserShared
+
+public inline fun ChatEvent.userSharedOrThrow(): UserShared = this as
+    dev.inmo.tgbotapi.types.request.UserShared
+
+public inline fun <T> ChatEvent.ifUserShared(block: (UserShared) -> T): T? = userSharedOrNull()
+    ?.let(block)
 
 public inline fun ForwardInfo.byAnonymousOrNull(): ForwardInfo.ByAnonymous? = this as?
     dev.inmo.tgbotapi.types.message.ForwardInfo.ByAnonymous
