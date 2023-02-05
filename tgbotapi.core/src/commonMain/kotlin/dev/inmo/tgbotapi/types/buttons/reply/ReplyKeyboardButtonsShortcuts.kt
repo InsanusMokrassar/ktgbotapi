@@ -172,3 +172,58 @@ inline fun requestChatReplyButton(
         botIsMember = botIsMember
     )
 )
+
+/**
+ * Creates and put [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Channel]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun requestChannelReplyButton(
+    text: String,
+    requestId: RequestId,
+    isPublic: Boolean? = null,
+    isOwnedBy: Boolean? = null,
+    userRightsInChat: ChatAdministratorRights? = null,
+    botRightsInChat: ChatAdministratorRights? = null,
+    botIsMember: Boolean = false
+) = requestChatReplyButton(
+    text,
+    KeyboardButtonRequestChat.Channel(
+        requestId = requestId,
+        isPublic = isPublic,
+        isOwnedBy = isOwnedBy,
+        userRightsInChat = userRightsInChat,
+        botRightsInChat = botRightsInChat,
+        botIsMember = botIsMember
+    )
+)
+
+
+/**
+ * Creates and put [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Group]
+ *
+ * @see replyKeyboard
+ * @see ReplyKeyboardBuilder.row
+ */
+inline fun requestChannelReplyButton(
+    text: String,
+    requestId: RequestId,
+    isForum: Boolean? = null,
+    isPublic: Boolean? = null,
+    isOwnedBy: Boolean? = null,
+    userRightsInChat: ChatAdministratorRights? = null,
+    botRightsInChat: ChatAdministratorRights? = null,
+    botIsMember: Boolean? = null
+) = requestChatReplyButton(
+    text,
+    KeyboardButtonRequestChat.Group(
+        requestId = requestId,
+        isForum = isForum,
+        isPublic = isPublic,
+        isOwnedBy = isOwnedBy,
+        userRightsInChat = userRightsInChat,
+        botRightsInChat = botRightsInChat,
+        botIsMember = botIsMember
+    )
+)

@@ -13,6 +13,10 @@ import dev.inmo.tgbotapi.types.userAdministratorRightsField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * @see Channel
+ * @see Group
+ */
 @Serializable
 data class KeyboardButtonRequestChat(
     @SerialName(requestIdField)
@@ -31,5 +35,44 @@ data class KeyboardButtonRequestChat(
     val botRightsInChat: ChatAdministratorRights? = null,
     @SerialName(botIsMemberField)
     val botIsMember: Boolean? = null
-)
+) {
+    companion object {
+        fun Channel(
+            requestId: RequestId,
+            isPublic: Boolean? = null,
+            isOwnedBy: Boolean? = null,
+            userRightsInChat: ChatAdministratorRights? = null,
+            botRightsInChat: ChatAdministratorRights? = null,
+            botIsMember: Boolean? = null
+        ) = KeyboardButtonRequestChat(
+            requestId = requestId,
+            isChannel = true,
+            isForum = null,
+            isPublic = isPublic,
+            isOwnedBy = isOwnedBy,
+            userRightsInChat = userRightsInChat,
+            botRightsInChat = botRightsInChat,
+            botIsMember = botIsMember
+        )
+
+        fun Group(
+            requestId: RequestId,
+            isForum: Boolean? = null,
+            isPublic: Boolean? = null,
+            isOwnedBy: Boolean? = null,
+            userRightsInChat: ChatAdministratorRights? = null,
+            botRightsInChat: ChatAdministratorRights? = null,
+            botIsMember: Boolean? = null
+        ) = KeyboardButtonRequestChat(
+            requestId = requestId,
+            isChannel = false,
+            isForum = isForum,
+            isPublic = isPublic,
+            isOwnedBy = isOwnedBy,
+            userRightsInChat = userRightsInChat,
+            botRightsInChat = botRightsInChat,
+            botIsMember = botIsMember
+        )
+    }
+}
 
