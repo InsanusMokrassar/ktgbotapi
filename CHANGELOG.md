@@ -5,7 +5,9 @@
 [Bot API 6.5](https://core.telegram.org/bots/api-changelog#february-3-2023) support
 
 * `Core`:
-  * [Bot API 6.5](https://core.telegram.org/bots/api#february-3-2023) support
+    * `ChatPermissions` now is interface and have two main realizations: `ChatPermissions.Granular` and
+      `ChatPermissions.Common`
+    * `RestrictedChatMember` now implements `ChatPermissions` too
 
 ## 5.0.2
 

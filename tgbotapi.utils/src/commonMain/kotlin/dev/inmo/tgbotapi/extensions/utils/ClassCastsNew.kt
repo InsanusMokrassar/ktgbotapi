@@ -436,6 +436,7 @@ import dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuer
 import dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
+import dev.inmo.tgbotapi.types.request.RequestResponse
 import dev.inmo.tgbotapi.types.request.UserShared
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
@@ -4717,6 +4718,33 @@ public inline fun Poll.quizPollOrNull(): QuizPoll? = this as? dev.inmo.tgbotapi.
 public inline fun Poll.quizPollOrThrow(): QuizPoll = this as dev.inmo.tgbotapi.types.polls.QuizPoll
 
 public inline fun <T> Poll.ifQuizPoll(block: (QuizPoll) -> T): T? = quizPollOrNull() ?.let(block)
+
+public inline fun RequestResponse.chatSharedOrNull(): ChatShared? = this as?
+    dev.inmo.tgbotapi.types.request.ChatShared
+
+public inline fun RequestResponse.chatSharedOrThrow(): ChatShared = this as
+    dev.inmo.tgbotapi.types.request.ChatShared
+
+public inline fun <T> RequestResponse.ifChatShared(block: (ChatShared) -> T): T? =
+    chatSharedOrNull() ?.let(block)
+
+public inline fun RequestResponse.chatSharedRequestOrNull(): ChatSharedRequest? = this as?
+    dev.inmo.tgbotapi.types.request.ChatSharedRequest
+
+public inline fun RequestResponse.chatSharedRequestOrThrow(): ChatSharedRequest = this as
+    dev.inmo.tgbotapi.types.request.ChatSharedRequest
+
+public inline fun <T> RequestResponse.ifChatSharedRequest(block: (ChatSharedRequest) -> T): T? =
+    chatSharedRequestOrNull() ?.let(block)
+
+public inline fun RequestResponse.userSharedOrNull(): UserShared? = this as?
+    dev.inmo.tgbotapi.types.request.UserShared
+
+public inline fun RequestResponse.userSharedOrThrow(): UserShared = this as
+    dev.inmo.tgbotapi.types.request.UserShared
+
+public inline fun <T> RequestResponse.ifUserShared(block: (UserShared) -> T): T? =
+    userSharedOrNull() ?.let(block)
 
 public inline fun Update.callbackQueryUpdateOrNull(): CallbackQueryUpdate? = this as?
     dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
