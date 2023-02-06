@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.KSerializer
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -124,6 +123,37 @@ interface ChatPermissions {
             canPinMessages = canPinMessages
         )
 
+        fun from(
+            chatPermissions: ChatPermissions,
+            canSendMessages: Boolean? = chatPermissions.canSendMessages,
+            canSendAudios: Boolean? = chatPermissions.canSendAudios,
+            canSendDocuments: Boolean? = chatPermissions.canSendDocuments,
+            canSendPhotos: Boolean? = chatPermissions.canSendPhotos,
+            canSendVideos: Boolean? = chatPermissions.canSendVideos,
+            canSendVideoNotes: Boolean? = chatPermissions.canSendVideoNotes,
+            canSendVoiceNotes: Boolean? = chatPermissions.canSendVoiceNotes,
+            canSendPolls: Boolean? = chatPermissions.canSendPolls,
+            canSendOtherMessages: Boolean? = chatPermissions.canSendOtherMessages,
+            canAddWebPagePreviews: Boolean? = chatPermissions.canAddWebPagePreviews,
+            canChangeInfo: Boolean? = chatPermissions.canChangeInfo,
+            canInviteUsers: Boolean? = chatPermissions.canInviteUsers,
+            canPinMessages: Boolean? = chatPermissions.canPinMessages
+        ) = ChatPermissions(
+            canSendMessages = canSendMessages,
+            canSendAudios = canSendAudios,
+            canSendDocuments = canSendDocuments,
+            canSendPhotos = canSendPhotos,
+            canSendVideos = canSendVideos,
+            canSendVideoNotes = canSendVideoNotes,
+            canSendVoiceNotes = canSendVoiceNotes,
+            canSendPolls = canSendPolls,
+            canSendOtherMessages = canSendOtherMessages,
+            canAddWebPagePreviews = canAddWebPagePreviews,
+            canChangeInfo = canChangeInfo,
+            canInviteUsers = canInviteUsers,
+            canPinMessages = canPinMessages
+        )
+
         private val realSerializer = ChatPermissionsImpl.serializer()
         override val descriptor: SerialDescriptor
             get() = realSerializer.descriptor
@@ -155,6 +185,40 @@ interface ChatPermissions {
             )
         }
     }
+
+    /**
+     * Copying current instance as [ChatPermissions], but realizations of this interface may differently override this
+     * method
+     */
+    fun defaultCopy(
+        canSendMessages: Boolean? = this.canSendMessages,
+        canSendAudios: Boolean? = this.canSendAudios,
+        canSendDocuments: Boolean? = this.canSendDocuments,
+        canSendPhotos: Boolean? = this.canSendPhotos,
+        canSendVideos: Boolean? = this.canSendVideos,
+        canSendVideoNotes: Boolean? = this.canSendVideoNotes,
+        canSendVoiceNotes: Boolean? = this.canSendVoiceNotes,
+        canSendPolls: Boolean? = this.canSendPolls,
+        canSendOtherMessages: Boolean? = this.canSendOtherMessages,
+        canAddWebPagePreviews: Boolean? = this.canAddWebPagePreviews,
+        canChangeInfo: Boolean? = this.canChangeInfo,
+        canInviteUsers: Boolean? = this.canInviteUsers,
+        canPinMessages: Boolean? = this.canPinMessages
+    ): ChatPermissions = ChatPermissions(
+        canSendMessages = canSendPolls,
+        canSendAudios = null,
+        canSendDocuments = null,
+        canSendPhotos = null,
+        canSendVideos = null,
+        canSendVideoNotes = null,
+        canSendVoiceNotes = null,
+        canSendPolls = canSendPolls,
+        canSendOtherMessages = canSendOtherMessages,
+        canAddWebPagePreviews = canAddWebPagePreviews,
+        canChangeInfo = canChangeInfo,
+        canInviteUsers = canInviteUsers,
+        canPinMessages = canPinMessages
+    )
 }
 
 val LeftRestrictionsChatPermissions = ChatPermissions(

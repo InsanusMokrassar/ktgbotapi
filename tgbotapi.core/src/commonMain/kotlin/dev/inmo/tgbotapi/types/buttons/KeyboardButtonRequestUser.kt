@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.types.request.RequestId
 import dev.inmo.tgbotapi.types.requestIdField
 import dev.inmo.tgbotapi.types.userIsBotField
 import dev.inmo.tgbotapi.types.userIsPremiumField
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -14,6 +15,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(KeyboardButtonRequestUser.Companion::class)
+@ClassCastsIncluded
 sealed interface KeyboardButtonRequestUser {
     val requestId: RequestId
     val isBot: Boolean?
