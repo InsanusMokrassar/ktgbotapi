@@ -113,6 +113,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.URLInlineKeyboardBu
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.UnknownInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.WebAppInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.ReplyForce
 import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardMarkup
@@ -1881,6 +1882,34 @@ public inline fun InlineKeyboardButton.webAppInlineKeyboardButtonOrThrow():
 public inline fun <T>
     InlineKeyboardButton.ifWebAppInlineKeyboardButton(block: (WebAppInlineKeyboardButton) -> T): T?
     = webAppInlineKeyboardButtonOrNull() ?.let(block)
+
+public inline fun KeyboardButtonRequestUser.anyOrNull(): KeyboardButtonRequestUser.Any? = this as?
+    dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser.Any
+
+public inline fun KeyboardButtonRequestUser.anyOrThrow(): KeyboardButtonRequestUser.Any = this as
+    dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser.Any
+
+public inline fun <T> KeyboardButtonRequestUser.ifAny(block: (KeyboardButtonRequestUser.Any) -> T):
+    T? = anyOrNull() ?.let(block)
+
+public inline fun KeyboardButtonRequestUser.botOrNull(): KeyboardButtonRequestUser.Bot? = this as?
+    dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser.Bot
+
+public inline fun KeyboardButtonRequestUser.botOrThrow(): KeyboardButtonRequestUser.Bot = this as
+    dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser.Bot
+
+public inline fun <T> KeyboardButtonRequestUser.ifBot(block: (KeyboardButtonRequestUser.Bot) -> T):
+    T? = botOrNull() ?.let(block)
+
+public inline fun KeyboardButtonRequestUser.commonOrNull(): KeyboardButtonRequestUser.Common? = this
+    as? dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser.Common
+
+public inline fun KeyboardButtonRequestUser.commonOrThrow(): KeyboardButtonRequestUser.Common = this
+    as dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUser.Common
+
+public inline fun <T>
+    KeyboardButtonRequestUser.ifCommon(block: (KeyboardButtonRequestUser.Common) -> T): T? =
+    commonOrNull() ?.let(block)
 
 public inline fun KeyboardMarkup.inlineKeyboardMarkupOrNull(): InlineKeyboardMarkup? = this as?
     dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup

@@ -190,7 +190,7 @@ interface ChatPermissions {
      * Copying current instance as [ChatPermissions], but realizations of this interface may differently override this
      * method
      */
-    fun defaultCopy(
+    fun copyDefault(
         canSendMessages: Boolean? = this.canSendMessages,
         canSendAudios: Boolean? = this.canSendAudios,
         canSendDocuments: Boolean? = this.canSendDocuments,
@@ -205,13 +205,13 @@ interface ChatPermissions {
         canInviteUsers: Boolean? = this.canInviteUsers,
         canPinMessages: Boolean? = this.canPinMessages
     ): ChatPermissions = ChatPermissions(
-        canSendMessages = canSendPolls,
-        canSendAudios = null,
-        canSendDocuments = null,
-        canSendPhotos = null,
-        canSendVideos = null,
-        canSendVideoNotes = null,
-        canSendVoiceNotes = null,
+        canSendMessages = canSendMessages,
+        canSendAudios = canSendAudios,
+        canSendDocuments = canSendDocuments,
+        canSendPhotos = canSendPhotos,
+        canSendVideos = canSendVideos,
+        canSendVideoNotes = canSendVideoNotes,
+        canSendVoiceNotes = canSendVoiceNotes,
         canSendPolls = canSendPolls,
         canSendOtherMessages = canSendOtherMessages,
         canAddWebPagePreviews = canAddWebPagePreviews,
