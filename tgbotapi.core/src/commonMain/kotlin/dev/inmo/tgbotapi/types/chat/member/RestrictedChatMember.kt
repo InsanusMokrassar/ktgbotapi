@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.ChatPermissions
 import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
@@ -13,15 +14,25 @@ data class RestrictedChatMember(
     @SerialName(isMemberField)
     val isMember: Boolean = false,
     @SerialName(canSendMessagesField)
-    val canSendMessages: Boolean = false,
-    @SerialName(canSendMediaMessagesField)
-    val canSendMediaMessages: Boolean = false,
+    override val canSendMessages: Boolean = false,
+    @SerialName(canSendAudiosField)
+    override val canSendAudios: Boolean = false,
+    @SerialName(canSendDocumentsField)
+    override val canSendDocuments: Boolean = false,
+    @SerialName(canSendPhotosField)
+    override val canSendPhotos: Boolean = false,
+    @SerialName(canSendVideosField)
+    override val canSendVideos: Boolean = false,
+    @SerialName(canSendVideoNotesField)
+    override val canSendVideoNotes: Boolean = false,
+    @SerialName(canSendVoiceNotesField)
+    override val canSendVoiceNotes: Boolean = false,
     @SerialName(canSendPollsField)
-    val canSendPolls: Boolean = false,
+    override val canSendPolls: Boolean = false,
     @SerialName(canSendOtherMessagesField)
-    val canSendOtherMessages: Boolean = false,
+    override val canSendOtherMessages: Boolean = false,
     @SerialName(canAddWebPagePreviewsField)
-    val canAddWebpagePreviews: Boolean = false,
+    override val canAddWebPagePreviews: Boolean = false,
     @SerialName(canChangeInfoField)
     override val canChangeInfo: Boolean = false,
     @SerialName(canInviteUsersField)
@@ -30,7 +41,7 @@ data class RestrictedChatMember(
     override val canPinMessages: Boolean = false,
     @SerialName(canManageTopicsField)
     override val canManageTopics: Boolean = false
-) : BannedChatMember, SpecialRightsChatMember {
+) : BannedChatMember, SpecialRightsChatMember, ChatPermissions {
     @SerialName(statusField)
     @Required
     private val type: String = "restricted"

@@ -11,6 +11,7 @@ import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
+import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.CoroutineScope
@@ -42,6 +43,9 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     testServer: Boolean = false,
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
+    timeoutSeconds: Seconds = 30,
+    autoDisableWebhooks: Boolean = true,
+    autoSkipTimeoutExceptions: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -56,6 +60,9 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
         statesManager,
         presetHandlers,
         onStateHandlingErrorHandler,
+        timeoutSeconds,
+        autoDisableWebhooks,
+        autoSkipTimeoutExceptions,
         block
     )
 }
@@ -81,6 +88,9 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     testServer: Boolean = false,
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
+    timeoutSeconds: Seconds = 30,
+    autoDisableWebhooks: Boolean = true,
+    autoSkipTimeoutExceptions: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -95,6 +105,9 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
             statesManager,
             presetHandlers,
             onStateHandlingErrorHandler,
+            timeoutSeconds,
+            autoDisableWebhooks,
+            autoSkipTimeoutExceptions,
             block
         )
     }

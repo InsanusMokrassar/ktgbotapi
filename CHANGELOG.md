@@ -1,5 +1,18 @@
 # TelegramBotAPI changelog
 
+## 5.1.0
+
+[Bot API 6.5](https://core.telegram.org/bots/api-changelog#february-3-2023) support
+
+* `Core`:
+    * `ChatPermissions` now is interface and have two main realizations: `ChatPermissions.Granular` and
+      `ChatPermissions.Common`
+    * `RestrictedChatMember` now implements `ChatPermissions` too
+* `API`:
+    * Now it is possible to pass all long polling parameters in all places used it
+* `Issues`:
+    * Fix of [#697](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/697)
+
 ## 5.0.2
 
 * `Versions`:

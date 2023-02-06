@@ -8,6 +8,7 @@ import dev.inmo.micro_utils.fsm.common.utils.StateHandlingErrorHandler
 import dev.inmo.micro_utils.fsm.common.utils.defaultStateHandlingErrorHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
+import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.*
@@ -54,6 +55,9 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
+    timeoutSeconds: Seconds = 30,
+    autoDisableWebhooks: Boolean = true,
+    autoSkipTimeoutExceptions: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<DefaultBehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
     upstreamUpdatesFlow,
@@ -66,7 +70,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
 ).run {
     this to scope.launch {
         start()
-        longPolling(flowsUpdatesFilter, scope = scope)
+        longPolling(flowsUpdatesFilter, timeoutSeconds, scope, autoDisableWebhooks, autoSkipTimeoutExceptions, defaultExceptionsHandler)
     }
 }
 
@@ -124,6 +128,9 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
+    timeoutSeconds: Seconds = 30,
+    autoDisableWebhooks: Boolean = true,
+    autoSkipTimeoutExceptions: Boolean = true,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
@@ -138,7 +145,11 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
         start()
         longPolling(
             flowsUpdatesFilter,
-            scope = scope
+            timeoutSeconds,
+            scope,
+            autoDisableWebhooks,
+            autoSkipTimeoutExceptions,
+            defaultExceptionsHandler
         )
     }
 }

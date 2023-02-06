@@ -14,27 +14,31 @@ suspend fun TelegramBot.restrictChatMember(
     chatId: ChatIdentifier,
     userId: UserId,
     untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = execute(RestrictChatMember(chatId, userId, untilDate, permissions))
+    permissions: ChatPermissions = ChatPermissions(),
+    useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
+) = execute(RestrictChatMember(chatId, userId, untilDate, permissions, useIndependentChatPermissions))
 
 suspend fun TelegramBot.restrictChatMember(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chat.id, userId, untilDate, permissions)
+    permissions: ChatPermissions = ChatPermissions(),
+    useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
+) = restrictChatMember(chat.id, userId, untilDate, permissions, useIndependentChatPermissions)
 
 suspend fun TelegramBot.restrictChatMember(
     chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chatId, user.id, untilDate, permissions)
+    permissions: ChatPermissions = ChatPermissions(),
+    useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
+) = restrictChatMember(chatId, user.id, untilDate, permissions, useIndependentChatPermissions)
 
 suspend fun TelegramBot.restrictChatMember(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
-    permissions: ChatPermissions = ChatPermissions()
-) = restrictChatMember(chat.id, user.id, untilDate, permissions)
+    permissions: ChatPermissions = ChatPermissions(),
+    useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
+) = restrictChatMember(chat.id, user.id, untilDate, permissions, useIndependentChatPermissions)
 

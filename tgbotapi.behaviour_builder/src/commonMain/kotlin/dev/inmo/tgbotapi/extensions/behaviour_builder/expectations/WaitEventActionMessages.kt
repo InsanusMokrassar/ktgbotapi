@@ -9,10 +9,17 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicEdited
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicReopened
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicHidden
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidden
+import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
+import dev.inmo.tgbotapi.types.request.ChatShared
+import dev.inmo.tgbotapi.types.request.ChatSharedRequest
+import dev.inmo.tgbotapi.types.request.UserShared
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
@@ -148,3 +155,34 @@ suspend fun BehaviourContext.waitForumTopicReopenedEventsMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEventsMessages<ForumTopicReopened>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitForumTopicEditedEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<ForumTopicEdited>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitGeneralForumTopicHiddenEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<GeneralForumTopicHidden>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitGeneralForumTopicUnhiddenEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<GeneralForumTopicUnhidden>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitWriteAccessAllowedEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<WriteAccessAllowed>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitChatSharedRequestEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<ChatSharedRequest>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitUserSharedEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<UserShared>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitChatSharedEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<ChatShared>(initRequest, errorFactory)

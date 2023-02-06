@@ -16,7 +16,9 @@ data class RestrictChatMember(
     @SerialName(untilDateField)
     override val untilDate: TelegramDate? = null,
     @SerialName(permissionsField)
-    val permissions: ChatPermissions = ChatPermissions()
+    val permissions: ChatPermissions = ChatPermissions(),
+    @SerialName(useIndependentChatPermissionsField)
+    val useIndependentChatPermissions: Boolean? = permissions.isGranular.takeIf { it }
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "restrictChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>
