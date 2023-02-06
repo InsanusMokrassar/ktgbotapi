@@ -5,36 +5,32 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
-@Serializable
-data class ChatPermissions(
-    @SerialName(canSendMessagesField)
-    val canSendMessages: Boolean? = null,
-    @SerialName(canSendAudiosField)
-    val canSendAudios: Boolean? = null,
-    @SerialName(canSendDocumentsField)
-    val canSendDocuments: Boolean? = null,
-    @SerialName(canSendPhotosField)
-    val canSendPhotos: Boolean? = null,
-    @SerialName(canSendVideosField)
-    val canSendVideos: Boolean? = null,
-    @SerialName(canSendVideoNotesField)
-    val canSendVideoNotes: Boolean? = null,
-    @SerialName(canSendVoiceNotesField)
-    val canSendVoiceNotes: Boolean? = null,
-    @SerialName(canSendPollsField)
-    val canSendPolls: Boolean? = null,
-    @SerialName(canSendOtherMessagesField)
-    val canSendOtherMessages: Boolean? = null,
-    @SerialName(canAddWebPagePreviewsField)
-    val canAddWebPagePreviews: Boolean? = null,
-    @SerialName(canChangeInfoField)
-    val canChangeInfo: Boolean? = null,
-    @SerialName(canInviteUsersField)
-    val canInviteUsers: Boolean? = null,
-    @SerialName(canPinMessagesField)
-    val canPinMessages: Boolean? = null
-) {
+/**
+ * Represents any type with common permissions list
+ *
+ * !!WARNING!! Default serializer of this interface is using [ChatPermissionsImpl] as surrogate and in fact serialized
+ * and deserialized as [ChatPermissionsImpl]. In case you wish some custom behaviour you must implement your own
+ * [KSerializer] or pass another serializer
+ */
+@Serializable(ChatPermissions.Companion::class)
+interface ChatPermissions {
+    val canSendMessages: Boolean?
+    val canSendAudios: Boolean?
+    val canSendDocuments: Boolean?
+    val canSendPhotos: Boolean?
+    val canSendVideos: Boolean?
+    val canSendVideoNotes: Boolean?
+    val canSendVoiceNotes: Boolean?
+    val canSendPolls: Boolean?
+    val canSendOtherMessages: Boolean?
+    val canAddWebPagePreviews: Boolean?
+    val canChangeInfo: Boolean?
+    val canInviteUsers: Boolean?
+    val canPinMessages: Boolean?
     @Transient
     val isGranular
         get() = canSendAudios != null ||
@@ -44,7 +40,37 @@ data class ChatPermissions(
             canSendVideos != null ||
             canSendVoiceNotes != null
 
-    companion object {
+    companion object : KSerializer<ChatPermissions> {
+        operator fun invoke(
+            canSendMessages: Boolean? = null,
+            canSendAudios: Boolean? = null,
+            canSendDocuments: Boolean? = null,
+            canSendPhotos: Boolean? = null,
+            canSendVideos: Boolean? = null,
+            canSendVideoNotes: Boolean? = null,
+            canSendVoiceNotes: Boolean? = null,
+            canSendPolls: Boolean? = null,
+            canSendOtherMessages: Boolean? = null,
+            canAddWebPagePreviews: Boolean? = null,
+            canChangeInfo: Boolean? = null,
+            canInviteUsers: Boolean? = null,
+            canPinMessages: Boolean? = null
+        ) = ChatPermissionsImpl(
+            canSendMessages = canSendMessages,
+            canSendAudios = canSendAudios,
+            canSendDocuments = canSendDocuments,
+            canSendPhotos = canSendPhotos,
+            canSendVideos = canSendVideos,
+            canSendVideoNotes = canSendVideoNotes,
+            canSendVoiceNotes = canSendVoiceNotes,
+            canSendPolls = canSendPolls,
+            canSendOtherMessages = canSendOtherMessages,
+            canAddWebPagePreviews = canAddWebPagePreviews,
+            canChangeInfo = canChangeInfo,
+            canInviteUsers = canInviteUsers,
+            canPinMessages = canPinMessages
+        )
+
         fun Granular(
             canSendMessages: Boolean? = null,
             canSendAudios: Boolean? = null,
@@ -97,6 +123,37 @@ data class ChatPermissions(
             canInviteUsers = canInviteUsers,
             canPinMessages = canPinMessages
         )
+
+        private val realSerializer = ChatPermissionsImpl.serializer()
+        override val descriptor: SerialDescriptor
+            get() = realSerializer.descriptor
+
+        override fun deserialize(decoder: Decoder): ChatPermissions {
+            return realSerializer.deserialize(decoder)
+        }
+
+        override fun serialize(encoder: Encoder, value: ChatPermissions) {
+            realSerializer.serialize(
+                encoder,
+                (value as? ChatPermissionsImpl) ?: value.run {
+                    ChatPermissionsImpl(
+                        canSendMessages = canSendMessages,
+                        canSendAudios = canSendAudios,
+                        canSendDocuments = canSendDocuments,
+                        canSendPhotos = canSendPhotos,
+                        canSendVideos = canSendVideos,
+                        canSendVideoNotes = canSendVideoNotes,
+                        canSendVoiceNotes = canSendVoiceNotes,
+                        canSendPolls = canSendPolls,
+                        canSendOtherMessages = canSendOtherMessages,
+                        canAddWebPagePreviews = canAddWebPagePreviews,
+                        canChangeInfo = canChangeInfo,
+                        canInviteUsers = canInviteUsers,
+                        canPinMessages = canPinMessages
+                    )
+                }
+            )
+        }
     }
 }
 

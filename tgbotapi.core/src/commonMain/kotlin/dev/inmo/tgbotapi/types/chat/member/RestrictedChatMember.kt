@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.ChatPermissions
 import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
@@ -13,25 +14,25 @@ data class RestrictedChatMember(
     @SerialName(isMemberField)
     val isMember: Boolean = false,
     @SerialName(canSendMessagesField)
-    val canSendMessages: Boolean = false,
+    override val canSendMessages: Boolean = false,
     @SerialName(canSendAudiosField)
-    val canSendAudios: Boolean = false,
+    override val canSendAudios: Boolean = false,
     @SerialName(canSendDocumentsField)
-    val canSendDocuments: Boolean = false,
+    override val canSendDocuments: Boolean = false,
     @SerialName(canSendPhotosField)
-    val canSendPhotos: Boolean = false,
+    override val canSendPhotos: Boolean = false,
     @SerialName(canSendVideosField)
-    val canSendVideos: Boolean = false,
+    override val canSendVideos: Boolean = false,
     @SerialName(canSendVideoNotesField)
-    val canSendVideoNotes: Boolean = false,
+    override val canSendVideoNotes: Boolean = false,
     @SerialName(canSendVoiceNotesField)
-    val canSendVoiceNotes: Boolean = false,
+    override val canSendVoiceNotes: Boolean = false,
     @SerialName(canSendPollsField)
-    val canSendPolls: Boolean = false,
+    override val canSendPolls: Boolean = false,
     @SerialName(canSendOtherMessagesField)
-    val canSendOtherMessages: Boolean = false,
+    override val canSendOtherMessages: Boolean = false,
     @SerialName(canAddWebPagePreviewsField)
-    val canAddWebpagePreviews: Boolean = false,
+    override val canAddWebPagePreviews: Boolean = false,
     @SerialName(canChangeInfoField)
     override val canChangeInfo: Boolean = false,
     @SerialName(canInviteUsersField)
@@ -40,7 +41,7 @@ data class RestrictedChatMember(
     override val canPinMessages: Boolean = false,
     @SerialName(canManageTopicsField)
     override val canManageTopics: Boolean = false
-) : BannedChatMember, SpecialRightsChatMember {
+) : BannedChatMember, SpecialRightsChatMember, ChatPermissions {
     @SerialName(statusField)
     @Required
     private val type: String = "restricted"
