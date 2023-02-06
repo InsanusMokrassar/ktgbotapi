@@ -190,7 +190,7 @@ interface ChatPermissions {
      * Copying current instance as [ChatPermissions], but realizations of this interface may differently override this
      * method
      */
-    fun copyDefault(
+    fun copyGranular(
         canSendMessages: Boolean? = this.canSendMessages,
         canSendAudios: Boolean? = this.canSendAudios,
         canSendDocuments: Boolean? = this.canSendDocuments,
@@ -212,6 +212,33 @@ interface ChatPermissions {
         canSendVideos = canSendVideos,
         canSendVideoNotes = canSendVideoNotes,
         canSendVoiceNotes = canSendVoiceNotes,
+        canSendPolls = canSendPolls,
+        canSendOtherMessages = canSendOtherMessages,
+        canAddWebPagePreviews = canAddWebPagePreviews,
+        canChangeInfo = canChangeInfo,
+        canInviteUsers = canInviteUsers,
+        canPinMessages = canPinMessages
+    )
+
+    /**
+     * Copying current instance as [ChatPermissions], but realizations of this interface may differently override this
+     * method
+     */
+    fun copyCommon(
+        canSendPolls: Boolean? = this.canSendPolls,
+        canSendOtherMessages: Boolean? = this.canSendOtherMessages,
+        canAddWebPagePreviews: Boolean? = this.canAddWebPagePreviews,
+        canChangeInfo: Boolean? = this.canChangeInfo,
+        canInviteUsers: Boolean? = this.canInviteUsers,
+        canPinMessages: Boolean? = this.canPinMessages
+    ): ChatPermissions = ChatPermissions(
+        canSendMessages = null,
+        canSendAudios = null,
+        canSendDocuments = null,
+        canSendPhotos = null,
+        canSendVideos = null,
+        canSendVideoNotes = null,
+        canSendVoiceNotes = null,
         canSendPolls = canSendPolls,
         canSendOtherMessages = canSendOtherMessages,
         canAddWebPagePreviews = canAddWebPagePreviews,
