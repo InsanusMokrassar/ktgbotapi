@@ -5,6 +5,7 @@ import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
+import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import kotlinx.coroutines.*
 
@@ -53,6 +54,9 @@ suspend fun TelegramBot.buildBehaviour(
 suspend fun TelegramBot.buildBehaviourWithLongPolling(
     scope: CoroutineScope = defaultCoroutineScopeProvider(),
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
+    timeoutSeconds: Seconds = 30,
+    autoDisableWebhooks: Boolean = true,
+    autoSkipTimeoutExceptions: Boolean = true,
     block: BehaviourContextReceiver<Unit>
 ): Job {
     val behaviourContext = buildBehaviour(
@@ -62,6 +66,9 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
     )
     return longPolling(
         behaviourContext,
-        scope = behaviourContext
+        scope = behaviourContext,
+        timeoutSeconds = timeoutSeconds,
+        autoDisableWebhooks = autoDisableWebhooks,
+        autoSkipTimeoutExceptions = autoSkipTimeoutExceptions
     )
 }

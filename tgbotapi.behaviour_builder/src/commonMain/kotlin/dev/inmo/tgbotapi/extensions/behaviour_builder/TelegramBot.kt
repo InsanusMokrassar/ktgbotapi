@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
+import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
 import kotlinx.coroutines.*
@@ -66,6 +67,9 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
     builder: KtorRequestsExecutorBuilder.() -> Unit = {},
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     testServer: Boolean = false,
+    timeoutSeconds: Seconds = 30,
+    autoDisableWebhooks: Boolean = true,
+    autoSkipTimeoutExceptions: Boolean = true,
     block: BehaviourContextReceiver<Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -77,6 +81,9 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
         it to it.buildBehaviourWithLongPolling(
             scope ?: CoroutineScope(coroutineContext),
             defaultExceptionsHandler,
+            timeoutSeconds,
+            autoDisableWebhooks,
+            autoSkipTimeoutExceptions,
             block
         )
     }
