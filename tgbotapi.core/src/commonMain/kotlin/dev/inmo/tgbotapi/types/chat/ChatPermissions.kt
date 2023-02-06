@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -11,8 +12,8 @@ import kotlinx.serialization.encoding.Encoder
 /**
  * Represents any type with common permissions list
  *
- * !!WARNING!! Default serializer of this interface is using [ChatPermissionsImpl] as surrogate and in fact serialized
- * and deserialized as [ChatPermissionsImpl]. In case you wish some custom behaviour you must implement your own
+ * !!WARNING!! Default serializer of this interface is using [Granular] as surrogate and in fact serialized
+ * and deserialized as [Granular]. In case you wish some custom behaviour you must implement your own
  * [KSerializer] or pass another serializer
  */
 @Serializable(ChatPermissions.Companion::class)
@@ -38,6 +39,86 @@ interface ChatPermissions {
             canSendPhotos != null ||
             canSendVideos != null ||
             canSendVoiceNotes != null
+    val canSendStickers: Boolean?
+        get() = canSendOtherMessages
+    val canSendGifs: Boolean?
+        get() = canSendStickers
+
+    @Serializable
+    data class Granular(
+        @SerialName(canSendMessagesField)
+        override val canSendMessages: Boolean? = null,
+        @SerialName(canSendAudiosField)
+        override val canSendAudios: Boolean? = null,
+        @SerialName(canSendDocumentsField)
+        override val canSendDocuments: Boolean? = null,
+        @SerialName(canSendPhotosField)
+        override val canSendPhotos: Boolean? = null,
+        @SerialName(canSendVideosField)
+        override val canSendVideos: Boolean? = null,
+        @SerialName(canSendVideoNotesField)
+        override val canSendVideoNotes: Boolean? = null,
+        @SerialName(canSendVoiceNotesField)
+        override val canSendVoiceNotes: Boolean? = null,
+        @SerialName(canSendPollsField)
+        override val canSendPolls: Boolean? = null,
+        @SerialName(canSendOtherMessagesField)
+        override val canSendOtherMessages: Boolean? = null,
+        @SerialName(canAddWebPagePreviewsField)
+        override val canAddWebPagePreviews: Boolean? = null,
+        @SerialName(canChangeInfoField)
+        override val canChangeInfo: Boolean? = null,
+        @SerialName(canInviteUsersField)
+        override val canInviteUsers: Boolean? = null,
+        @SerialName(canPinMessagesField)
+        override val canPinMessages: Boolean? = null
+    ) : ChatPermissions {
+        @Transient
+        override val isGranular: Boolean
+            get() = true
+    }
+
+    @Serializable
+    data class Common(
+        @SerialName(canSendPollsField)
+        override val canSendPolls: Boolean? = null,
+        @SerialName(canSendOtherMessagesField)
+        override val canSendOtherMessages: Boolean? = null,
+        @SerialName(canAddWebPagePreviewsField)
+        override val canAddWebPagePreviews: Boolean? = null,
+        @SerialName(canChangeInfoField)
+        override val canChangeInfo: Boolean? = null,
+        @SerialName(canInviteUsersField)
+        override val canInviteUsers: Boolean? = null,
+        @SerialName(canPinMessagesField)
+        override val canPinMessages: Boolean? = null
+    ) : ChatPermissions {
+        @Transient
+        override val isGranular: Boolean
+            get() = false
+        @Transient
+        override val canSendMessages: Boolean? = canSendOtherMessages ?.let {
+            it && (canAddWebPagePreviews ?: return@let null)
+        }
+        @Transient
+        override val canSendAudios: Boolean?
+            get() = canSendMessages
+        @Transient
+        override val canSendDocuments: Boolean?
+            get() = canSendMessages
+        @Transient
+        override val canSendPhotos: Boolean?
+            get() = canSendMessages
+        @Transient
+        override val canSendVideos: Boolean?
+            get() = canSendMessages
+        @Transient
+        override val canSendVideoNotes: Boolean?
+            get() = canSendMessages
+        @Transient
+        override val canSendVoiceNotes: Boolean?
+            get() = canSendMessages
+    }
 
     companion object : KSerializer<ChatPermissions> {
         operator fun invoke(
@@ -54,7 +135,7 @@ interface ChatPermissions {
             canChangeInfo: Boolean? = null,
             canInviteUsers: Boolean? = null,
             canPinMessages: Boolean? = null
-        ) = ChatPermissionsImpl(
+        ) = Granular(
             canSendMessages = canSendMessages,
             canSendAudios = canSendAudios,
             canSendDocuments = canSendDocuments,
@@ -70,91 +151,8 @@ interface ChatPermissions {
             canPinMessages = canPinMessages
         )
 
-        fun Granular(
-            canSendMessages: Boolean? = null,
-            canSendAudios: Boolean? = null,
-            canSendDocuments: Boolean? = null,
-            canSendPhotos: Boolean? = null,
-            canSendVideos: Boolean? = null,
-            canSendVideoNotes: Boolean? = null,
-            canSendVoiceNotes: Boolean? = null,
-            canSendPolls: Boolean? = null,
-            canSendOtherMessages: Boolean? = null,
-            canAddWebPagePreviews: Boolean? = null,
-            canChangeInfo: Boolean? = null,
-            canInviteUsers: Boolean? = null,
-            canPinMessages: Boolean? = null
-        ) = ChatPermissions(
-            canSendMessages = canSendMessages,
-            canSendAudios = canSendAudios,
-            canSendDocuments = canSendDocuments,
-            canSendPhotos = canSendPhotos,
-            canSendVideos = canSendVideos,
-            canSendVideoNotes = canSendVideoNotes,
-            canSendVoiceNotes = canSendVoiceNotes,
-            canSendPolls = canSendPolls,
-            canSendOtherMessages = canSendOtherMessages,
-            canAddWebPagePreviews = canAddWebPagePreviews,
-            canChangeInfo = canChangeInfo,
-            canInviteUsers = canInviteUsers,
-            canPinMessages = canPinMessages
-        )
-
-        fun Commonized(
-            canSendPolls: Boolean? = null,
-            canSendOtherMessages: Boolean? = null,
-            canAddWebPagePreviews: Boolean? = null,
-            canChangeInfo: Boolean? = null,
-            canInviteUsers: Boolean? = null,
-            canPinMessages: Boolean? = null
-        ) = ChatPermissions(
-            canSendMessages = canSendPolls,
-            canSendAudios = null,
-            canSendDocuments = null,
-            canSendPhotos = null,
-            canSendVideos = null,
-            canSendVideoNotes = null,
-            canSendVoiceNotes = null,
-            canSendPolls = canSendPolls,
-            canSendOtherMessages = canSendOtherMessages,
-            canAddWebPagePreviews = canAddWebPagePreviews,
-            canChangeInfo = canChangeInfo,
-            canInviteUsers = canInviteUsers,
-            canPinMessages = canPinMessages
-        )
-
-        fun from(
-            chatPermissions: ChatPermissions,
-            canSendMessages: Boolean? = chatPermissions.canSendMessages,
-            canSendAudios: Boolean? = chatPermissions.canSendAudios,
-            canSendDocuments: Boolean? = chatPermissions.canSendDocuments,
-            canSendPhotos: Boolean? = chatPermissions.canSendPhotos,
-            canSendVideos: Boolean? = chatPermissions.canSendVideos,
-            canSendVideoNotes: Boolean? = chatPermissions.canSendVideoNotes,
-            canSendVoiceNotes: Boolean? = chatPermissions.canSendVoiceNotes,
-            canSendPolls: Boolean? = chatPermissions.canSendPolls,
-            canSendOtherMessages: Boolean? = chatPermissions.canSendOtherMessages,
-            canAddWebPagePreviews: Boolean? = chatPermissions.canAddWebPagePreviews,
-            canChangeInfo: Boolean? = chatPermissions.canChangeInfo,
-            canInviteUsers: Boolean? = chatPermissions.canInviteUsers,
-            canPinMessages: Boolean? = chatPermissions.canPinMessages
-        ) = ChatPermissions(
-            canSendMessages = canSendMessages,
-            canSendAudios = canSendAudios,
-            canSendDocuments = canSendDocuments,
-            canSendPhotos = canSendPhotos,
-            canSendVideos = canSendVideos,
-            canSendVideoNotes = canSendVideoNotes,
-            canSendVoiceNotes = canSendVoiceNotes,
-            canSendPolls = canSendPolls,
-            canSendOtherMessages = canSendOtherMessages,
-            canAddWebPagePreviews = canAddWebPagePreviews,
-            canChangeInfo = canChangeInfo,
-            canInviteUsers = canInviteUsers,
-            canPinMessages = canPinMessages
-        )
-
-        private val realSerializer = ChatPermissionsImpl.serializer()
+        private val realSerializer = Granular.serializer()
+        private val commonSerializer = Common.serializer()
         override val descriptor: SerialDescriptor
             get() = realSerializer.descriptor
 
@@ -165,8 +163,8 @@ interface ChatPermissions {
         override fun serialize(encoder: Encoder, value: ChatPermissions) {
             realSerializer.serialize(
                 encoder,
-                (value as? ChatPermissionsImpl) ?: value.run {
-                    ChatPermissionsImpl(
+                (value as? Granular) ?: value.run {
+                    Granular(
                         canSendMessages = canSendMessages,
                         canSendAudios = canSendAudios,
                         canSendDocuments = canSendDocuments,
