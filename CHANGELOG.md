@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 5.1.1
+
 ## 5.1.0
 
 [Bot API 6.5](https://core.telegram.org/bots/api-changelog#february-3-2023) support
