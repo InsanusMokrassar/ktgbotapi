@@ -4,6 +4,8 @@
 
 * `Core`:
     * Add opportunity to get user link with `makeUserLink`
+* `BehaviourBuilder`:
+    * Fixes in content waiting expectators
 
 ## 5.1.0
 
