@@ -8,6 +8,7 @@ import io.ktor.http.encodeURLQueryComponent
 
 
 fun makeUsernameLink(username: String, threadId: MessageThreadId? = null) = "$internalLinkBeginning/$username${threadId ?.let { "/$it" } ?: ""}"
+fun makeUserLink(userId: UserId) = userId.userLink
 fun makeChatLink(identifier: Identifier, threadId: MessageThreadId? = null) = identifier.toString().replace(
     linkIdRedundantPartRegex,
     ""

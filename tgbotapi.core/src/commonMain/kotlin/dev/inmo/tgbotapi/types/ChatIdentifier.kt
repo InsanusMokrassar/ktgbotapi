@@ -14,6 +14,7 @@ import kotlinx.serialization.json.longOrNull
 import kotlin.jvm.JvmInline
 
 const val internalLinkBeginning = "https://t.me"
+const val internalUserLinkBeginning = "tg://user?id="
 
 @Serializable(ChatIdentifierSerializer::class)
 @ClassCastsIncluded
@@ -66,7 +67,7 @@ fun IdChatIdentifier.toChatWithThreadId(threadId: MessageThreadId) = IdChatIdent
  */
 @Warning("This API have restrictions in Telegram System")
 val Identifier.userLink: String
-    get() = "tg://user?id=$this"
+    get() = "$internalUserLinkBeginning$this"
 /**
  * https://core.telegram.org/bots/api#formatting-options
  */
