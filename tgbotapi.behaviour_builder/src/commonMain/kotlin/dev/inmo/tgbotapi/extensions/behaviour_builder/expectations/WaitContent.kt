@@ -26,7 +26,7 @@ suspend fun BehaviourContext.waitContent(
     errorFactory: NullableRequestBuilder<*> = { null },
     includeMediaGroups: Boolean
 ) = waitContent<MessageContent>(initRequest, errorFactory)
-suspend fun BehaviourContext.waitContent(
+suspend fun BehaviourContext.waitAnyContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContent<MessageContent>(initRequest, errorFactory)
