@@ -13,6 +13,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
 
+const val includeMediaGroupsDeprecationMessage = "includeMediaGroups is deprecated and its usage will not lead to any changes"
 typealias CommonMessageToCommonMessageMapper<T> = suspend CommonMessage<T>.() -> CommonMessage<T>?
 
 @RiskFeature(lowLevelRiskFeatureMessage)
@@ -46,7 +47,10 @@ internal inline fun <reified T : MessageContent> contentMessageConverter(
     if (content is T) this as CommonMessage<T> else null
 }
 
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(
+    includeMediaGroupsDeprecationMessage,
+    ReplaceWith("waitAnyContentMessage(initRequest, errorFactory)", "dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitAnyContentMessage")
+)
 suspend fun BehaviourContext.waitContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -92,7 +96,7 @@ suspend fun BehaviourContext.waitVenueMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<VenueContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitAudioMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -102,7 +106,7 @@ suspend fun BehaviourContext.waitAudioMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<AudioMediaGroupPartContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitDocumentMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -112,7 +116,7 @@ suspend fun BehaviourContext.waitDocumentMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<DocumentMediaGroupPartContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitMediaMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -122,7 +126,7 @@ suspend fun BehaviourContext.waitMediaMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<MediaContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitAnyMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -132,7 +136,7 @@ suspend fun BehaviourContext.waitAnyMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<MediaGroupPartContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitVisualMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -142,7 +146,7 @@ suspend fun BehaviourContext.waitVisualMediaGroupContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<VisualMediaGroupPartContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitTextedMediaContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -156,7 +160,7 @@ suspend fun BehaviourContext.waitAnimationMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<AnimationContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitAudioMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -166,7 +170,7 @@ suspend fun BehaviourContext.waitAudioMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<AudioContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitDocumentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -176,7 +180,7 @@ suspend fun BehaviourContext.waitDocumentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<DocumentContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitPhotoMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
@@ -190,7 +194,7 @@ suspend fun BehaviourContext.waitStickerMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<StickerContent>(initRequest, errorFactory)
-@Deprecated("includeMediaGroups is deprecated and its usage will not lead to any changes")
+@Deprecated(includeMediaGroupsDeprecationMessage)
 suspend fun BehaviourContext.waitVideoMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
