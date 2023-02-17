@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.api.edit.edit
-import dev.inmo.tgbotapi.extensions.api.edit.location.live.editLiveLocation
 import dev.inmo.tgbotapi.extensions.api.send.send
 import dev.inmo.tgbotapi.extensions.api.send.sendLiveLocation
 import dev.inmo.tgbotapi.types.*
@@ -17,6 +16,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.Serializable
 import kotlin.js.JsName
@@ -46,7 +46,7 @@ suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
-    sentMessageDeferred: CompletableDeferred<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     var currentLiveLocationMessage: ContentMessage<LocationContent>? = null
     val updateMessageJob = CoroutineScope(currentCoroutineContext().LinkedSupervisorJob()).launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
@@ -75,7 +75,7 @@ suspend fun TelegramBot.handleLiveLocation(
                 allowSendingWithoutReply,
                 it.replyMarkup
             ).also {
-                sentMessageDeferred ?.complete(it)
+                sentMessageFlow ?.emit(it)
             }
         } else {
             edit(
@@ -106,7 +106,7 @@ suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
-    sentMessageDeferred: CompletableDeferred<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     handleLiveLocation(
         chatId,
@@ -126,7 +126,7 @@ suspend fun TelegramBot.handleLiveLocation(
         protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
-        sentMessageDeferred
+        sentMessageFlow
     )
 }
 
@@ -145,7 +145,7 @@ suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
-    sentMessageDeferred: CompletableDeferred<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     handleLiveLocation(
         chatId,
@@ -161,6 +161,6 @@ suspend fun TelegramBot.handleLiveLocation(
         protectContent,
         replyToMessageId,
         allowSendingWithoutReply,
-        sentMessageDeferred
+        sentMessageFlow
     )
 }
