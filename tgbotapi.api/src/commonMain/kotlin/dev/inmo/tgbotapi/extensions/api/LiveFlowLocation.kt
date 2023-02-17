@@ -45,7 +45,8 @@ suspend fun TelegramBot.handleLiveLocation(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    sentMessageDeferred: CompletableDeferred<ContentMessage<LocationContent>>? = null
 ) {
     var currentLiveLocationMessage: ContentMessage<LocationContent>? = null
     val updateMessageJob = CoroutineScope(currentCoroutineContext().LinkedSupervisorJob()).launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
@@ -73,7 +74,9 @@ suspend fun TelegramBot.handleLiveLocation(
                 replyToMessageId,
                 allowSendingWithoutReply,
                 it.replyMarkup
-            )
+            ).also {
+                sentMessageDeferred ?.complete(it)
+            }
         } else {
             edit(
                 capturedLiveLocationMessage,
@@ -102,7 +105,8 @@ suspend fun TelegramBot.handleLiveLocation(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    sentMessageDeferred: CompletableDeferred<ContentMessage<LocationContent>>? = null
 ) {
     handleLiveLocation(
         chatId,
@@ -121,7 +125,8 @@ suspend fun TelegramBot.handleLiveLocation(
         disableNotification,
         protectContent,
         replyToMessageId,
-        allowSendingWithoutReply
+        allowSendingWithoutReply,
+        sentMessageDeferred
     )
 }
 
@@ -139,7 +144,8 @@ suspend fun TelegramBot.handleLiveLocation(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null
+    allowSendingWithoutReply: Boolean? = null,
+    sentMessageDeferred: CompletableDeferred<ContentMessage<LocationContent>>? = null
 ) {
     handleLiveLocation(
         chatId,
@@ -154,6 +160,7 @@ suspend fun TelegramBot.handleLiveLocation(
         disableNotification,
         protectContent,
         replyToMessageId,
-        allowSendingWithoutReply
+        allowSendingWithoutReply,
+        sentMessageDeferred
     )
 }

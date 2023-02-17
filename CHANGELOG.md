@@ -1,5 +1,10 @@
 # TelegramBotAPI changelog
 
+## 5.2.0
+
+* `Versions`:
+  * `MicroUtils`: `0.16.8` -> `0.16.10`
+
 ## 5.1.1
 
 * `Core`:
