@@ -2,15 +2,22 @@ package dev.inmo.tgbotapi.extensions.api
 
 import com.soywiz.klock.DateTime
 import com.soywiz.klock.TimeSpan
+import dev.inmo.micro_utils.coroutines.LinkedSupervisorJob
+import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
+import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.edit.edit
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.editLiveLocation
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.stopLiveLocation
+import dev.inmo.tgbotapi.extensions.api.send.send
+import dev.inmo.tgbotapi.extensions.api.send.sendLiveLocation
 import dev.inmo.tgbotapi.requests.send.SendLiveLocation
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.LiveLocation
+import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -18,7 +25,15 @@ import dev.inmo.tgbotapi.types.message.content.LocationContent
 import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 import io.ktor.utils.io.core.Closeable
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlin.js.JsName
+import kotlin.jvm.JvmName
 import kotlin.math.ceil
 
 val defaultLivePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
@@ -45,7 +60,8 @@ class LiveLocationProvider internal constructor(
         private set
         get() = field || leftUntilCloseMillis.millisecondsLong < 0L
 
-    private var message: ContentMessage<LocationContent> = initMessage
+    var message: ContentMessage<LocationContent> = initMessage
+        private set
     val lastLocation: LiveLocation
         get() = message.content.location as LiveLocation
 
