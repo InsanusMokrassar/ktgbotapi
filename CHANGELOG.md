@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 5.1.1
+
+* `Core`:
+    * Add opportunity to get user link with `makeUserLink`
+* `BehaviourBuilder`:
+    * Fixes in content waiting expectators
+
 ## 5.1.0
 
 [Bot API 6.5](https://core.telegram.org/bots/api-changelog#february-3-2023) support
