@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.queries.callback
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
@@ -13,7 +14,7 @@ internal data class RawCallbackQuery(
     @SerialName(idField)
     val id: CallbackQueryIdentifier,
     @SerialName(fromField)
-    val from: User,
+    val from: CommonUser,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val message: ContentMessage<MessageContent>? = null,
     @SerialName(inlineMessageIdField)

@@ -1,9 +1,17 @@
 # TelegramBotAPI changelog
 
+## 5.2.1
+
+* `Core`:
+    * All the `CallbackQuery`es now will receive `CommonUser` instead of `User` due inability of bots to trigger any
+      inline interaction with others bots
+* `API`:
+    * Now `sentMessageFlow` will take each sent message in `handleLiveLocation`
+
 ## 5.2.0
 
 * `Versions`:
-  * `MicroUtils`: `0.16.8` -> `0.16.10`
+    * `MicroUtils`: `0.16.8` -> `0.16.10`
 
 ## 5.1.1
 
