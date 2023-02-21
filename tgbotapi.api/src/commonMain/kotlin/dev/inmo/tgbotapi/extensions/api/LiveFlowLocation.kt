@@ -86,7 +86,9 @@ suspend fun TelegramBot.handleLiveLocation(
                 it.heading,
                 it.proximityAlertRadius,
                 it.replyMarkup
-            )
+            ).also {
+                sentMessageFlow ?.emit(it)
+            }
         }
     }
 }
