@@ -5,10 +5,10 @@
 | Useful repos | [![Create bot](https://img.shields.io/static/v1?label=Github&message=Template&color=blue&logo=github)](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate) [![Examples](https://img.shields.io/static/v1?label=Github&message=Examples&color=blue&logo=github)](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/) |
 | Misc | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Small survey](https://img.shields.io/static/v1?label=Google&message=Survey&color=blue&logo=google-sheets)](https://docs.google.com/forms/d/e/1FAIpQLSctdJHT_aEniyYT0-IUAEfo1hsIlezX2owlkEAYX4KPl2V2_A/viewform?usp=sf_link) |
 
-<!--- [![Telegram Channel](./resources/tg_channel_qr.jpg)](https://t.me/InMoTelegramBotAPI) --->
+<!--- [![Telegram Channel](./resources/tg_channel_qr.jpg)](https://t.me/ktgbotapi) --->
 
 <p align="center">
-  <a href="https://t.me/InMoTelegramBotAPI">
+  <a href="https://t.me/ktgbotapi">
     <img src="./resources/tg_channel_qr.jpg">
   </a>
 </p>
