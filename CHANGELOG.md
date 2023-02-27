@@ -2,6 +2,9 @@
 
 ## 6.0.0
 
+* `BehaviourBuilder`:
+    * Add triggers and waiters for `VisualMediaGroupPartContent`
+
 ## 5.2.1
 
 * `Core`:
