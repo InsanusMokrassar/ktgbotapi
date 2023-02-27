@@ -2,10 +2,14 @@
 
 ## 6.0.0
 
+* `Core`:
+  * `*.link` extensions have been deprecated with renaming to avoid collisions with `link` methods
 * `API`:
     * Add `TelegramBot.resend` methods
 * `BehaviourBuilder`:
     * Add triggers and waiters for `VisualMediaGroupPartContent`
+* `Utils`:
+    * `*.link` extensions have been deprecated with renaming to avoid collisions with `link` methods
 
 ## 5.2.1
 
