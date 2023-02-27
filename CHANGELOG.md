@@ -2,6 +2,8 @@
 
 ## 6.0.0
 
+* `API`:
+    * Add `TelegramBot.resend` methods
 * `BehaviourBuilder`:
     * Add triggers and waiters for `VisualMediaGroupPartContent`
 
