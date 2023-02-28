@@ -1,5 +1,21 @@
 # TelegramBotAPI changelog
 
+## 6.0.0
+
+* `Versions`:
+    * `Kotlin`: `1.7.22` -> `1.8.10`
+    * `MicroUtils`: `0.16.10` -> `0.17.0`
+    * `Serialization`: `1.4.1` -> `1.5.0`
+    * `uuid`: `0.6.0` -> `0.7.0`
+* `Core`:
+    * `*.link` extensions have been deprecated with renaming to avoid collisions with `link` methods
+* `API`:
+    * Add `TelegramBot.resend` methods
+* `BehaviourBuilder`:
+    * Add triggers and waiters for `VisualMediaGroupPartContent`
+* `Utils`:
+    * `*.link` extensions have been deprecated with renaming to avoid collisions with `link` methods
+
 ## 5.2.1
 
 * `Core`:

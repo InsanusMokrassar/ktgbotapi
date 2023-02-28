@@ -74,8 +74,11 @@ val Identifier.userLink: String
 @Warning("This API have restrictions in Telegram System")
 val UserId.userLink: String
     get() = chatId.userLink
-val User.link: String
+val User.userLink: String
     get() = id.userLink
+@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.userLink", "dev.inmo.tgbotapi.types.userLink"))
+val User.link: String
+    get() = userLink
 
 typealias UserId = ChatId
 

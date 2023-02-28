@@ -189,3 +189,7 @@ suspend fun BehaviourContext.waitInvoice(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContent<InvoiceContent>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitVisualContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContent<VisualMediaGroupPartContent>(initRequest, errorFactory)

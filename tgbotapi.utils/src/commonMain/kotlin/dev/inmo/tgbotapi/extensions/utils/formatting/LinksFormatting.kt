@@ -18,10 +18,16 @@ fun makeChatLink(identifier: Identifier, threadId: MessageThreadId? = null) = id
 fun makeUsernameDeepLinkPrefix(username: String) = "${makeUsernameLink(username)}?start="
 fun makeUsernameStartattachPrefix(username: String) = "$internalLinkBeginning/$username?startattach"
 fun makeUsernameStartattachLink(username: String, data: String? = null) = "${makeUsernameStartattachPrefix(username)}${data?.let { "=$it" } ?: ""}"
-inline val Username.link
+inline val Username.usernameLink
     get() = makeUsernameLink(usernameWithoutAt)
-val IdChatIdentifier.link: String
+@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.usernameLink", "dev.inmo.tgbotapi.extensions.utils.formatting.usernameLink"))
+inline val Username.link
+    get() = usernameLink
+val IdChatIdentifier.chatLink: String
     get() = makeChatLink(chatId, threadId)
+@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.chatLink", "dev.inmo.tgbotapi.extensions.utils.formatting.chatLink"))
+val IdChatIdentifier.link: String
+    get() = chatLink
 fun ChatId.link(threadId: MessageThreadId?) = makeChatLink(chatId, threadId)
 inline fun Username.link(threadId: MessageThreadId?) = makeUsernameLink(usernameWithoutAt, threadId)
 inline val Username.deepLinkPrefix
@@ -83,20 +89,27 @@ fun makeLinkToMessage(
 /**
  * @see makeLinkToMessage
  */
-val Message.link: String?
+val Message.messageLink: String?
     get() = makeLinkToMessage(
         chat,
         messageId
     )
 
 /**
+ * @see makeLinkToMessage
+ */
+@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.messageLink", "dev.inmo.tgbotapi.extensions.utils.formatting.messageLink"))
+val Message.link: String?
+    get() = messageLink
+
+/**
  * Link which can be used as by any user to get access to [Chat]. Returns null in case when there are no
  * known way to build link
  */
-val Chat.link: String?
+val Chat.chatLink: String?
     get() {
         if (this is UsernameChat) {
-            username ?.link ?: id.link
+            username ?.usernameLink ?: id.chatLink
         }
         if (this is ExtendedPublicChat) {
             inviteLink ?.let { return it }
@@ -106,6 +119,14 @@ val Chat.link: String?
         }
         return null
     }
+
+/**
+ * Link which can be used as by any user to get access to [Chat]. Returns null in case when there are no
+ * known way to build link
+ */
+@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.chatLink", "dev.inmo.tgbotapi.extensions.utils.formatting.chatLink"))
+val Chat.link: String?
+    get() = chatLink
 
 private const val stickerSetAddingLinkPrefix = "$internalLinkBeginning/addstickers"
 
