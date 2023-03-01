@@ -57,6 +57,7 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
     timeoutSeconds: Seconds = 30,
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
+    mediaGroupsDebounceTimeMillis: Long? = 1000L,
     block: BehaviourContextReceiver<Unit>
 ): Job {
     val behaviourContext = buildBehaviour(
@@ -69,6 +70,7 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
         scope = behaviourContext,
         timeoutSeconds = timeoutSeconds,
         autoDisableWebhooks = autoDisableWebhooks,
-        autoSkipTimeoutExceptions = autoSkipTimeoutExceptions
+        autoSkipTimeoutExceptions = autoSkipTimeoutExceptions,
+        mediaGroupsDebounceTimeMillis = mediaGroupsDebounceTimeMillis
     )
 }

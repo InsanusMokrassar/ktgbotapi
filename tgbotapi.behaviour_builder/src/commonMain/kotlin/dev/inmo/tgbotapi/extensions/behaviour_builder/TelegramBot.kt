@@ -70,6 +70,7 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
     timeoutSeconds: Seconds = 30,
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
+    mediaGroupsDebounceTimeMillis: Long? = 1000L,
     block: BehaviourContextReceiver<Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -84,6 +85,7 @@ suspend fun telegramBotWithBehaviourAndLongPolling(
             timeoutSeconds,
             autoDisableWebhooks,
             autoSkipTimeoutExceptions,
+            mediaGroupsDebounceTimeMillis,
             block
         )
     }

@@ -46,6 +46,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
     timeoutSeconds: Seconds = 30,
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
+    mediaGroupsDebounceTimeMillis: Long? = 1000L,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): TelegramBot = telegramBot(
     token,
@@ -63,6 +64,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSM(
         timeoutSeconds,
         autoDisableWebhooks,
         autoSkipTimeoutExceptions,
+        mediaGroupsDebounceTimeMillis,
         block
     )
 }
@@ -91,6 +93,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
     timeoutSeconds: Seconds = 30,
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
+    mediaGroupsDebounceTimeMillis: Long? = 1000L,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<TelegramBot, Job> {
     return telegramBot(
@@ -108,6 +111,7 @@ suspend fun <T : State> telegramBotWithBehaviourAndFSMAndStartLongPolling(
             timeoutSeconds,
             autoDisableWebhooks,
             autoSkipTimeoutExceptions,
+            mediaGroupsDebounceTimeMillis,
             block
         )
     }
