@@ -55,12 +55,17 @@ fun TelegramBot.longPollingFlow(
     val updatesHandler: (suspend (List<Update>) -> Unit) = if (mediaGroupsDebounceTimeMillis != null) {
         val scope = CoroutineScope(contextToWork)
         val updatesReceiver = scope.updateHandlerWithMediaGroupsAdaptation(
-            ::send,
+            {
+                withContext(contextToWork) {
+                    send(it)
+                }
+            },
             mediaGroupsDebounceTimeMillis
         );
         { originalUpdates: List<Update> ->
             originalUpdates.forEach {
                 updatesReceiver(it)
+                lastUpdateIdentifier = maxOf(lastUpdateIdentifier ?: it.updateId, it.updateId)
             }
         }
     } else {
