@@ -27,7 +27,8 @@ fun List<Update>.lastUpdateIdentifier(): UpdateIdentifier? {
 }
 
 /**
- * Will convert incoming list of updates to list with [MediaGroupUpdate]s
+ * Will convert incoming list of [Update]s to list with [Update]s, which include [dev.inmo.tgbotapi.types.message.abstracts.ContentMessage]s
+ * with [dev.inmo.tgbotapi.types.message.content.MediaGroupContent]
  */
 fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
@@ -67,4 +68,5 @@ fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
  *
  * @throws IllegalStateException
  */
+@Deprecated("Redundant", ReplaceWith("this"))
 fun BaseEditMessageUpdate.toEditMediaGroupUpdate() = this

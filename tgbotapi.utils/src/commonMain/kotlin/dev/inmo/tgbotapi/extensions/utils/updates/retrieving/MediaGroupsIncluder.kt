@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 
-import dev.inmo.micro_utils.coroutines.launchSafely
 import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
@@ -11,7 +10,6 @@ import dev.inmo.tgbotapi.utils.extensions.accumulateByKey
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
-
 
 /**
  * Create [UpdateReceiver] object which will correctly accumulate updates and send into output updates which INCLUDE

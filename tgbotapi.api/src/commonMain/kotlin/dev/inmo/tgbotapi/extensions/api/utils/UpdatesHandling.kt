@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.extensions.api.utils
 
+import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.api.InternalUtils.convertWithMediaGroupUpdates
-import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.update.abstracts.BaseMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.UpdateReceiver
@@ -28,26 +29,18 @@ fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
     )
 
     launch {
-        launch {
+        launchSafelyWithoutExceptions {
             for (update in updatesChannel) {
-                val dataAsPossiblySentViaBotCommonMessage = update.data as? PossiblySentViaBotCommonMessage<*>
-
-                if (dataAsPossiblySentViaBotCommonMessage == null) {
-                    output(update)
-                    continue
+                val data = update.data
+                when {
+                    data is PossiblyMediaGroupMessage<*> && data.mediaGroupId != null -> {
+                        mediaGroupChannel.send("${data.mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
+                    }
+                    else -> output(update)
                 }
-
-                val mediaGroupId = dataAsPossiblySentViaBotCommonMessage.mediaGroupId
-
-                if (mediaGroupId == null) {
-                    output(update)
-                    continue
-                }
-
-                mediaGroupChannel.send("${mediaGroupId}${update::class.simpleName}" to update as BaseMessageUpdate)
             }
         }
-        launch {
+        launchSafelyWithoutExceptions {
             for ((_, mediaGroup) in mediaGroupAccumulatedChannel) {
                 mediaGroup.convertWithMediaGroupUpdates().forEach {
                     output(it)

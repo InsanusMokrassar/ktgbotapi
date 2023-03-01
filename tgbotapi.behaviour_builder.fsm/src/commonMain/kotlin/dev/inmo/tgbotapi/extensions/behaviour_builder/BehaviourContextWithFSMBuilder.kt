@@ -8,6 +8,7 @@ import dev.inmo.micro_utils.fsm.common.utils.StateHandlingErrorHandler
 import dev.inmo.micro_utils.fsm.common.utils.defaultStateHandlingErrorHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
+import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
@@ -47,6 +48,10 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
  * Use [buildBehaviourWithFSM] to create [BehaviourContextWithFSM] and launch getting of updates
  * using [longPolling]. For [longPolling] will be used result [BehaviourContextWithFSM] for both parameters
  * flowsUpdatesFilter and scope
+ *
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
  */
 suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     upstreamUpdatesFlow: Flow<Update>? = null,
@@ -58,6 +63,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     timeoutSeconds: Seconds = 30,
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
+    mediaGroupsDebounceTimeMillis: Long? = 1000L,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): Pair<DefaultBehaviourContextWithFSM<T>, Job> = buildBehaviourWithFSM(
     upstreamUpdatesFlow,
@@ -70,7 +76,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
 ).run {
     this to scope.launch {
         start()
-        longPolling(flowsUpdatesFilter, timeoutSeconds, scope, autoDisableWebhooks, autoSkipTimeoutExceptions, defaultExceptionsHandler)
+        longPolling(flowsUpdatesFilter, timeoutSeconds, scope, autoDisableWebhooks, autoSkipTimeoutExceptions, mediaGroupsDebounceTimeMillis, defaultExceptionsHandler)
     }
 }
 
@@ -116,6 +122,10 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
  * using [longPolling]. For [longPolling] will be used result [BehaviourContextWithFSM] for both parameters
  * flowsUpdatesFilter and scope
  *
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
+ *
  * @see buildBehaviourWithFSMAndStartLongPolling
  * @see BehaviourContext
  * @see longPolling
@@ -131,6 +141,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     timeoutSeconds: Seconds = 30,
     autoDisableWebhooks: Boolean = true,
     autoSkipTimeoutExceptions: Boolean = true,
+    mediaGroupsDebounceTimeMillis: Long? = 1000L,
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ) = FlowsUpdatesFilter().let {
     buildBehaviourWithFSM(
@@ -149,6 +160,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
             scope,
             autoDisableWebhooks,
             autoSkipTimeoutExceptions,
+            mediaGroupsDebounceTimeMillis,
             defaultExceptionsHandler
         )
     }

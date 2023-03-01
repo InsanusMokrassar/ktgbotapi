@@ -26,6 +26,9 @@ import java.util.concurrent.Executors
  * @param [scope] Will be used for mapping of media groups
  * @param [exceptionsHandler] Pass this parameter to set custom exception handler for getting updates
  * @param [block] Some receiver block like [dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter]
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
  *
  * @see dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter
@@ -57,6 +60,11 @@ fun Route.includeWebhookHandlingInRoute(
     }
 }
 
+/**
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
+ */
 fun Route.includeWebhookHandlingInRouteWithFlows(
     scope: CoroutineScope,
     exceptionsHandler: ExceptionHandler<Unit>? = null,
@@ -76,6 +84,9 @@ fun Route.includeWebhookHandlingInRouteWithFlows(
  * @param listenRoute address to listen by bot. If null - will be set up in root of host
  * @param scope Scope which will be used for
  * @param privateKeyConfig If configured - server will be created with [sslConnector]. [connector] will be used otherwise
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
  *
  * @see dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter
@@ -132,6 +143,9 @@ fun startListenWebhooks(
  * @param listenPort port which will be listen by bot
  * @param listenRoute address to listen by bot
  * @param scope Scope which will be used for
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
  *
  * @see dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
  * @see UpdatesFilter
