@@ -2,6 +2,9 @@
 
 ## 6.0.2
 
+* `Core`:
+    * Long polling now uses media groups debounce as in webhooks
+
 ## 6.0.1
 
 * `Versions`:
