@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutorBuilder
 import dev.inmo.tgbotapi.bot.ktor.telegramBot
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
+import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
 import dev.inmo.tgbotapi.utils.telegramBotAPIDefaultUrl
@@ -52,6 +53,10 @@ suspend fun telegramBotWithBehaviour(
  * Use this method in case you wish to make some additional actions with [flowsUpdatesFilter].
  *
  * **WARNING** This method WILL launch updates listening inside of calling [buildBehaviourWithLongPolling]
+ *
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
  *
  * @return Pair of [TelegramBot] and [Job]. This [Job] can be used to stop listening updates in your [block] you passed
  * here

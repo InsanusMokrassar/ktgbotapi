@@ -21,7 +21,8 @@ import kotlinx.coroutines.flow.*
 
 /**
  * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
- * in case you wish to enable classic way of updates handling
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
  */
 fun TelegramBot.longPollingFlow(
     timeoutSeconds: Seconds = 30,
@@ -129,6 +130,11 @@ fun TelegramBot.longPollingFlow(
     }
 }
 
+/**
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
+ */
 fun TelegramBot.startGettingOfUpdatesByLongPolling(
     timeoutSeconds: Seconds = 30,
     scope: CoroutineScope = CoroutineScope(Dispatchers.Default),
@@ -152,6 +158,10 @@ fun TelegramBot.startGettingOfUpdatesByLongPolling(
 )
 
 /**
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
+ *
  * @return [kotlinx.coroutines.flow.Flow] which will emit updates to the collector while they will be accumulated. Works
  * the same as [longPollingFlow], but it will cancel the flow after the first one [HttpRequestTimeoutException]
  */
@@ -179,6 +189,11 @@ fun TelegramBot.createAccumulatedUpdatesRetrieverFlow(
     !(it is InlineQueryUpdate && avoidInlineQueries || it is CallbackQueryUpdate && avoidCallbackQueries)
 }
 
+/**
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
+ */
 fun TelegramBot.retrieveAccumulatedUpdates(
     avoidInlineQueries: Boolean = false,
     avoidCallbackQueries: Boolean = false,
@@ -201,6 +216,11 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     updatesReceiver(it)
 }
 
+/**
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
+ */
 fun TelegramBot.retrieveAccumulatedUpdates(
     flowsUpdatesFilter: FlowsUpdatesFilter,
     avoidInlineQueries: Boolean = false,
@@ -220,6 +240,11 @@ fun TelegramBot.retrieveAccumulatedUpdates(
     flowsUpdatesFilter.asUpdateReceiver
 )
 
+/**
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
+ */
 suspend fun TelegramBot.flushAccumulatedUpdates(
     avoidInlineQueries: Boolean = false,
     avoidCallbackQueries: Boolean = false,
@@ -241,8 +266,12 @@ suspend fun TelegramBot.flushAccumulatedUpdates(
 ).join()
 
 /**
- * Will [startGettingOfUpdatesByLongPolling] using incoming [flowsUpdatesFilter]. It is assumed that you ALREADY CONFIGURE
+ * Will [startGettingOfUpdatesByLongPolling] using incoming [updatesFilter]. It is assumed that you ALREADY CONFIGURE
  * all updates receivers, because this method will trigger getting of updates and.
+ *
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
  */
 fun TelegramBot.longPolling(
     updatesFilter: UpdatesFilter,
@@ -269,6 +298,10 @@ fun TelegramBot.longPolling(
  * Will enable [longPolling] by creating [FlowsUpdatesFilter] with [flowsUpdatesFilterUpdatesKeeperCount] as an argument
  * and applied [flowUpdatesPreset]. It is assumed that you WILL CONFIGURE all updates receivers in [flowUpdatesPreset],
  * because of after [flowUpdatesPreset] method calling will be triggered getting of updates.
+ *
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
  */
 @Suppress("unused")
 fun TelegramBot.longPolling(
@@ -282,6 +315,11 @@ fun TelegramBot.longPolling(
     flowUpdatesPreset: FlowsUpdatesFilter.() -> Unit
 ): Job = longPolling(FlowsUpdatesFilter(flowsUpdatesFilterUpdatesKeeperCount).apply(flowUpdatesPreset), timeoutSeconds, scope, autoDisableWebhooks, autoSkipTimeoutExceptions, mediaGroupsDebounceTimeMillis, exceptionsHandler)
 
+/**
+ * @param mediaGroupsDebounceTimeMillis Will be used for calling of [updateHandlerWithMediaGroupsAdaptation]. Pass null
+ * in case you wish to enable classic way of updates handling, but in that mode some media group messages can be
+ * retrieved in different updates
+ */
 fun RequestsExecutor.startGettingOfUpdatesByLongPolling(
     updatesFilter: UpdatesFilter,
     timeoutSeconds: Seconds = 30,
