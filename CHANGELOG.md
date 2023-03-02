@@ -2,6 +2,9 @@
 
 ## 6.0.3
 
+* `BehaviourBuilder`:
+    * Fixes in `DeepLink` triggers and waiters
+
 ## 6.0.2
 
 * `Core`:
