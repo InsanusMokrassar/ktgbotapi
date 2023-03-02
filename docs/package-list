@@ -6448,7 +6448,7 @@ $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent/InputV
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent/InputVenueMessageContent/title/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent/-input-venue-message-content/title.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query////PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/index.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/BaseInlineQuery///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/index.html
-$dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/BaseInlineQuery/BaseInlineQuery/#kotlin.String#dev.inmo.tgbotapi.types.chat.User#kotlin.String#kotlin.String#dev.inmo.tgbotapi.types.chat.ChatType?/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/-base-inline-query.html
+$dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/BaseInlineQuery/BaseInlineQuery/#kotlin.String#dev.inmo.tgbotapi.types.chat.CommonUser#kotlin.String#kotlin.String#dev.inmo.tgbotapi.types.chat.ChatType?/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/-base-inline-query.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/BaseInlineQuery/chatType/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/chat-type.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/BaseInlineQuery/from/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/from.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/BaseInlineQuery/id/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/id.html
@@ -6456,11 +6456,13 @@ $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/BaseInlineQuery/offs
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/BaseInlineQuery/query/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/query.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/InlineQuery///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/index.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/InlineQuery/chatType/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/chat-type.html
+$dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/InlineQuery/from/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/from.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/InlineQuery/id/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/id.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/InlineQuery/offset/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/offset.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/InlineQuery/query/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/query.html
+$dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/InlineQuery/user/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/user.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/LocationInlineQuery///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-location-inline-query/index.html
-$dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/LocationInlineQuery/LocationInlineQuery/#kotlin.String#dev.inmo.tgbotapi.types.chat.User#kotlin.String#kotlin.String#dev.inmo.tgbotapi.types.chat.ChatType?#dev.inmo.tgbotapi.types.location.Location/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-location-inline-query/-location-inline-query.html
+$dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/LocationInlineQuery/LocationInlineQuery/#kotlin.String#dev.inmo.tgbotapi.types.chat.CommonUser#kotlin.String#kotlin.String#dev.inmo.tgbotapi.types.chat.ChatType?#dev.inmo.tgbotapi.types.location.Location/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-location-inline-query/-location-inline-query.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/LocationInlineQuery/chatType/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-location-inline-query/chat-type.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/LocationInlineQuery/from/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-location-inline-query/from.html
 $dokka.location:dev.inmo.tgbotapi.types.InlineQueries.query/LocationInlineQuery/id/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.InlineQueries.query/-location-inline-query/id.html
@@ -8756,6 +8758,7 @@ $dokka.location:dev.inmo.tgbotapi.types.queries.callback/CallbackQuery///Pointin
 $dokka.location:dev.inmo.tgbotapi.types.queries.callback/CallbackQuery/chatInstance/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.queries.callback/-callback-query/chat-instance.html
 $dokka.location:dev.inmo.tgbotapi.types.queries.callback/CallbackQuery/from/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.queries.callback/-callback-query/from.html
 $dokka.location:dev.inmo.tgbotapi.types.queries.callback/CallbackQuery/id/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.queries.callback/-callback-query/id.html
+$dokka.location:dev.inmo.tgbotapi.types.queries.callback/CallbackQuery/user/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.queries.callback/-callback-query/user.html
 $dokka.location:dev.inmo.tgbotapi.types.queries.callback/DataCallbackQuery///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.queries.callback/-data-callback-query/index.html
 $dokka.location:dev.inmo.tgbotapi.types.queries.callback/DataCallbackQuery/data/#/PointingToDeclaration/docs/dev.inmo.tgbotapi.types.queries.callback/-data-callback-query/data.html
 $dokka.location:dev.inmo.tgbotapi.types.queries.callback/GameShortNameCallbackQuery///PointingToDeclaration/docs/dev.inmo.tgbotapi.types.queries.callback/-game-short-name-callback-query/index.html
