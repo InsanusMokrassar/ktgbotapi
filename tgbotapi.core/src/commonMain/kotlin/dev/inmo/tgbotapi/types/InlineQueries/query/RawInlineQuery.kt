@@ -12,7 +12,7 @@ internal data class RawInlineQuery(
     @SerialName(idField)
     val id: InlineQueryIdentifier,
     @SerialName(fromField)
-    val from: User,
+    val from: CommonUser,
     @SerialName(queryField)
     val query: String,
     @SerialName(offsetField)
