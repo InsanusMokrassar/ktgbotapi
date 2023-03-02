@@ -9,6 +9,8 @@ sealed interface CallbackQuery : FromUser {
     val id: CallbackQueryIdentifier
     val chatInstance: String
     override val from: CommonUser
+    override val user: CommonUser
+        get() = from
 }
 
 data class UnknownCallbackQueryType(

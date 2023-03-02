@@ -1,5 +1,15 @@
 # TelegramBotAPI changelog
 
+## 6.0.3
+
+* `Versions`:
+    * `MicroUtils`: `0.17.1` -> `0.17.2`
+* `Core`:
+    * `User` in `CallbackQuery` now is `CommonUser` as well as in `from`
+    * `User` in `InlineQuery` now is `CommonUser` as well as in `from`
+* `BehaviourBuilder`:
+    * Fixes in `DeepLink` triggers and waiters
+
 ## 6.0.2
 
 * `Core`:
