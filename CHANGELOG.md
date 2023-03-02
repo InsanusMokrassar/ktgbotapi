@@ -3,7 +3,8 @@
 ## 6.0.3
 
 * `Core`:
-    * `User` in `CallbackQuery` now is `CommonUser` as well as `from`
+    * `User` in `CallbackQuery` now is `CommonUser` as well as in `from`
+    * `User` in `InlineQuery` now is `CommonUser` as well as in `from`
 * `BehaviourBuilder`:
     * Fixes in `DeepLink` triggers and waiters
 
