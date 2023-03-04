@@ -2,6 +2,7 @@ plugins {
     id "org.jetbrains.kotlin.multiplatform"
     id "org.jetbrains.kotlin.plugin.serialization"
     id "com.google.devtools.ksp"
+    id "org.jetbrains.dokka"
 }
 
 project.description = "Core part of tgbotapi with all (and only) required functionality for working with Telegram Bot API"

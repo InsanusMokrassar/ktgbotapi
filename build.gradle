@@ -14,6 +14,10 @@ buildscript {
     }
 }
 
+plugins {
+    alias(libs.plugins.kotlin.dokka)
+}
+
 // temporal crutch until legacy tests will be stabled or legacy target will be removed
 allprojects {
     repositories {
