@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>setWebhookInfoAndStartListenWebhooks</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+<a href="../../index.html">
+<span>TelegramBotAPI</span>            </a>    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":tgbotapi.utils:dokkaHtmlPartial/jvmMain">jvm</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageids="tgbotapi.utils::dev.inmo.tgbotapi.extensions.utils.updates.retrieving//setWebhookInfoAndStartListenWebhooks/dev.inmo.tgbotapi.bot.RequestsExecutor#kotlin.Int#io.ktor.server.engine.ApplicationEngineFactory[*,*]#dev.inmo.tgbotapi.requests.webhook.SetWebhookRequest#kotlin.coroutines.SuspendFunction1[kotlin.Throwable,kotlin.Unit]#kotlin.String#kotlin.String#dev.inmo.tgbotapi.updateshandlers.webhook.WebhookPrivateKeyConfig?#kotlinx.coroutines.CoroutineScope#kotlin.Long#kotlin.Function1[io.ktor.server.engine.ApplicationEngineEnvironmentBuilder,kotlin.Unit]#kotlin.coroutines.SuspendFunction1[dev.inmo.tgbotapi.types.update.abstracts.Update,kotlin.Unit]/PointingToDeclaration//1692707308">
+  <div class="breadcrumbs"><a href="../index.html">tgbotapi.utils</a><span class="delimiter">/</span><a href="index.html">dev.inmo.tgbotapi.extensions.utils.updates.retrieving</a><span class="delimiter">/</span><span class="current">setWebhookInfoAndStartListenWebhooks</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>set</span><wbr><span>Webhook</span><wbr><span>Info</span><wbr><span>And</span><wbr><span>Start</span><wbr><span>Listen</span><wbr><span><span>Webhooks</span></span></h1>
+  </div>
+  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-filterable-set=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":tgbotapi.utils:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.utils:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.bot/-requests-executor/index.html">RequestsExecutor</a><span class="token punctuation">.</span><a href="set-webhook-info-and-start-listen-webhooks.html"><span class="token function">setWebhookInfoAndStartListenWebhooks</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listenPort<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">engineFactory<span class="token operator">: </span><span data-unresolved-link="io.ktor.server.engine/ApplicationEngineFactory///PointingToDeclaration/">ApplicationEngineFactory</span><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">setWebhookRequest<span class="token operator">: </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.requests.webhook/-set-webhook-request/index.html">SetWebhookRequest</a><span class="token punctuation">, </span></span><span class="parameter ">exceptionsHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.coroutines/ExceptionHandler///PointingToDeclaration/">ExceptionHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span><span class="token operator"> = </span>{}<span class="token punctuation">, </span></span><span class="parameter ">listenHost<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"0.0.0.0"</span><span class="token punctuation">, </span></span><span class="parameter ">listenRoute<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"/"</span><span class="token punctuation">, </span></span><span class="parameter ">privateKeyConfig<span class="token operator">: </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers.webhook/-webhook-private-key-config/index.html">WebhookPrivateKeyConfig</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token operator"> = </span>CoroutineScope(Executors.newFixedThreadPool(4).asCoroutineDispatcher())<span class="token punctuation">, </span></span><span class="parameter ">mediaGroupsDebounceTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span><span class="token constant">1000</span><span class="token punctuation">, </span></span><span class="parameter ">additionalApplicationEngineEnvironmentConfigurator<span class="token operator">: </span><span class="token keyword"></span><span data-unresolved-link="io.ktor.server.engine/ApplicationEngineEnvironmentBuilder///PointingToDeclaration/">ApplicationEngineEnvironmentBuilder</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}<span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-update-receiver/index.html">UpdateReceiver</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.ktor.server.engine/ApplicationEngine///PointingToDeclaration/">ApplicationEngine</span></div><p class="paragraph">Setting up ktor server, set webhook info via <a href="../../tgbotapi.core/dev.inmo.tgbotapi.requests.webhook/-set-webhook-request/index.html">SetWebhookRequest</a> request.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-filterable-set=":tgbotapi.utils:dokkaHtmlPartial/jvmMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>listen</span><wbr><span><span>Port</span></span></u></div></span></div><div><div class="title"><p class="paragraph">port which will be listen by bot</p></div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-filterable-set=":tgbotapi.utils:dokkaHtmlPartial/jvmMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>listen</span><wbr><span><span>Route</span></span></u></div></span></div><div><div class="title"><p class="paragraph">address to listen by bot</p></div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-filterable-set=":tgbotapi.utils:dokkaHtmlPartial/jvmMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>scope</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Scope which will be used for</p></div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-filterable-set=":tgbotapi.utils:dokkaHtmlPartial/jvmMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>media</span><wbr><span>Groups</span><wbr><span>Debounce</span><wbr><span>Time</span><wbr><span><span>Millis</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Will be used for calling of <a href="../../tgbotapi.utils/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/index.html">updateHandlerWithMediaGroupsAdaptation</a>. Pass null in case you wish to enable classic way of updates handling, but in that mode some media group messages can be retrieved in different updates</p></div></div></div></div></div><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-filterable-set=":tgbotapi.utils:dokkaHtmlPartial/jvmMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/index.html"><span>Flows</span><wbr><span>Updates</span><wbr><span><span>Filter</span></span></a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-filterable-set=":tgbotapi.utils:dokkaHtmlPartial/jvmMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-updates-filter/index.html"><span>Updates</span><wbr><span><span>Filter</span></span></a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.utils:dokkaHtmlPartial/jvmMain" data-filterable-set=":tgbotapi.utils:dokkaHtmlPartial/jvmMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-updates-filter/as-update-receiver.html"><span>Updates</span><wbr><span>Filter.</span><wbr><span>as</span><wbr><span>Update</span><wbr><span><span>Receiver</span></span></a></div></span></div><div></div></div></div></div></div>  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
+

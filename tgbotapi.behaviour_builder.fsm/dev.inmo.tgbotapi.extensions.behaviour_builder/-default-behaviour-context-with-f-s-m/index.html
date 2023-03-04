@@ -1,0 +1,743 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>DefaultBehaviourContextWithFSM</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+<a href="../../../index.html">
+<span>TelegramBotAPI</span>            </a>    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="tgbotapi.behaviour_builder.fsm::dev.inmo.tgbotapi.extensions.behaviour_builder/DefaultBehaviourContextWithFSM///PointingToDeclaration//983072464">
+  <div class="breadcrumbs"><a href="../../index.html">tgbotapi.behaviour_builder.fsm</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.extensions.behaviour_builder</a><span class="delimiter">/</span><span class="current">DefaultBehaviourContextWithFSM</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Default</span><wbr><span>Behaviour</span><wbr><span>Context</span><wbr><span>With</span><wbr><span><span>FSM</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator"> : </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">behaviourContext<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-behaviour-context/index.html">BehaviourContext</a><span class="token punctuation">, </span></span><span class="parameter ">statesManager<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/StatesManager///PointingToDeclaration/">StatesManager</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">handlers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-with-f-s-m-state-handler-holder/index.html">BehaviourWithFSMStateHandlerHolder</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common.utils/StateHandlingErrorHandler///PointingToDeclaration/">StateHandlingErrorHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>defaultStateHandlingErrorHandler()</span></span><span class="token punctuation">)</span> : <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-behaviour-context/index.html">BehaviourContext</a>, <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt; </span></div><p class="paragraph">Default realization of <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a>. It uses <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context-with-f-s-m/behaviour-context.html">behaviourContext</a> as a base for this object as <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-behaviour-context/index.html">BehaviourContext</a>, but managing substates contexts updates for avoiding of updates lost between states</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>on</span><wbr><span>State</span><wbr><span>Handling</span><wbr><span>Error</span><wbr><span><span>Handler</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Will be used in case if state handling has not been successfully completed in <a href="launch-state-handling.html">launchStateHandling</a></p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-243102649%2FConstructors%2F983072464" anchor-label="DefaultBehaviourContextWithFSM" id="-243102649%2FConstructors%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-default-behaviour-context-with-f-s-m.html"><span>Default</span><wbr><span>Behaviour</span><wbr><span>Context</span><wbr><span>With</span><wbr><span><span>FSM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-243102649%2FConstructors%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">behaviourContext<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-behaviour-context/index.html">BehaviourContext</a><span class="token punctuation">, </span></span><span class="parameter ">statesManager<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/StatesManager///PointingToDeclaration/">StatesManager</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">handlers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-with-f-s-m-state-handler-holder/index.html">BehaviourWithFSMStateHandlerHolder</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common.utils/StateHandlingErrorHandler///PointingToDeclaration/">StateHandlingErrorHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>defaultStateHandlingErrorHandler()</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-741709699%2FFunctions%2F983072464" anchor-label="add" id="-741709699%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add.html"><span><span>add</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-741709699%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="add.html">I</a><span class="token operator"> : </span><a href="index.html">T</a><span class="token operator">&gt; </span><a href="add.html"><span class="token function">add</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">kClass<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="add.html">I</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">strict<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">handler<span class="token operator">: </span><a href="../-behaviour-with-f-s-m-state-handler/index.html">BehaviourWithFSMStateHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="add.html">I</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add NON STRICT <a href="add.html">handler</a> to list of available in future <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a>. Non strict means that for input <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> will be used <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/is-instance.html">KClass.isInstance</a> and any inheritor of <a href="add.html">kClass</a> will pass this requirement</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="592095945%2FFunctions%2F983072464" anchor-label="addStrict" id="592095945%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-behaviour-context-with-f-s-m/add-strict.html"><span>add</span><wbr><span><span>Strict</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="592095945%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-context-with-f-s-m/add-strict.html">I</a><span class="token operator"> : </span><a href="index.html">T</a><span class="token operator">&gt; </span><a href="../-behaviour-context-with-f-s-m/add-strict.html"><span class="token function">addStrict</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">kClass<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-context-with-f-s-m/add-strict.html">I</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">handler<span class="token operator">: </span><a href="../-behaviour-with-f-s-m-state-handler/index.html">BehaviourWithFSMStateHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-context-with-f-s-m/add-strict.html">I</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add STRICT <a href="../-behaviour-context-with-f-s-m/add-strict.html">handler</a> to list of available in future <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a>. Strict means that for input <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> will be used <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span>::class == <a href="../-behaviour-context-with-f-s-m/add-strict.html">kClass</a> and any <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> with exactly the same type will pass requirements</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1113907897%2FFunctions%2F983072464" anchor-label="buildBehaviourWithFSM" id="1113907897%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../build-behaviour-with-f-s-m.html"><span>build</span><wbr><span>Behaviour</span><wbr><span>With</span><wbr><span><span>FSM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1113907897%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator"> : </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span><span class="token operator">&gt; </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="../build-behaviour-with-f-s-m.html"><span class="token function">buildBehaviourWithFSM</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">flowUpdatesFilter<span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/index.html">FlowsUpdatesFilter</a><span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token operator"> = </span>defaultCoroutineScopeProvider()<span class="token punctuation">, </span></span><span class="parameter ">defaultExceptionsHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.coroutines/ExceptionHandler///PointingToDeclaration/">ExceptionHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">statesManager<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/StatesManager///PointingToDeclaration/">StatesManager</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>DefaultStatesManager(InMemoryDefaultStatesManagerRepo())<span class="token punctuation">, </span></span><span class="parameter ">presetHandlers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-with-f-s-m-state-handler-holder/index.html">BehaviourWithFSMStateHandlerHolder</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>listOf()<span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common.utils/StateHandlingErrorHandler///PointingToDeclaration/">StateHandlingErrorHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>defaultStateHandlingErrorHandler()<span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-custom-behaviour-context-receiver/index.html">CustomBehaviourContextReceiver</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a> via creating of <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context/index.html">DefaultBehaviourContext</a> with <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/index.html">this</a> as <a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a>, <a href="../build-behaviour-with-f-s-m.html">scope</a> as target scope for that <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context/index.html">DefaultBehaviourContext</a> and <a href="index.html#-2078180918%2FProperties%2F983072464">FlowsUpdatesFilter.allUpdatesFlow</a> of <a href="../build-behaviour-with-f-s-m.html">flowUpdatesFilter</a> as <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context/upstream-updates-flow.html">DefaultBehaviourContext.upstreamUpdatesFlow</a>. Pass <a href="../build-behaviour-with-f-s-m.html">statesManager</a> to customize some internal logic of states changes. Pass <a href="../build-behaviour-with-f-s-m.html">presetHandlers</a> in case you have some list of <a href="../-behaviour-with-f-s-m-state-handler-holder/index.html">BehaviourWithFSMStateHandlerHolder</a> with presets. Use this method in case you wish to make some additional actions with <a href="../build-behaviour-with-f-s-m.html">flowUpdatesFilter</a>.</p></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator"> : </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span><span class="token operator">&gt; </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="../build-behaviour-with-f-s-m.html"><span class="token function">buildBehaviourWithFSM</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">upstreamUpdatesFlow<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token operator"> = </span>defaultCoroutineScopeProvider()<span class="token punctuation">, </span></span><span class="parameter ">defaultExceptionsHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.coroutines/ExceptionHandler///PointingToDeclaration/">ExceptionHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">statesManager<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/StatesManager///PointingToDeclaration/">StatesManager</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>DefaultStatesManager(InMemoryDefaultStatesManagerRepo())<span class="token punctuation">, </span></span><span class="parameter ">presetHandlers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-with-f-s-m-state-handler-holder/index.html">BehaviourWithFSMStateHandlerHolder</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>listOf()<span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common.utils/StateHandlingErrorHandler///PointingToDeclaration/">StateHandlingErrorHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>defaultStateHandlingErrorHandler()<span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-custom-behaviour-context-receiver/index.html">CustomBehaviourContextReceiver</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a> via creating of <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context/index.html">DefaultBehaviourContext</a> with <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/index.html">this</a> as <a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a>, <a href="../build-behaviour-with-f-s-m.html">scope</a> as target scope for that <a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context/index.html">DefaultBehaviourContext</a> and <a href="../build-behaviour-with-f-s-m.html">upstreamUpdatesFlow</a>. Pass <a href="../build-behaviour-with-f-s-m.html">statesManager</a> to customize some internal logic of states changes. Pass <a href="../build-behaviour-with-f-s-m.html">presetHandlers</a> in case you have some list of <a href="../-behaviour-with-f-s-m-state-handler-holder/index.html">BehaviourWithFSMStateHandlerHolder</a> with presets.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1326754126%2FFunctions%2F983072464" anchor-label="buildBehaviourWithFSMAndStartLongPolling" id="1326754126%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html"><span>build</span><wbr><span>Behaviour</span><wbr><span>With</span><wbr><span>FSMAnd</span><wbr><span>Start</span><wbr><span>Long</span><wbr><span><span>Polling</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1326754126%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator"> : </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span><span class="token operator">&gt; </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html"><span class="token function">buildBehaviourWithFSMAndStartLongPolling</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token operator"> = </span>defaultCoroutineScopeProvider()<span class="token punctuation">, </span></span><span class="parameter ">defaultExceptionsHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.coroutines/ExceptionHandler///PointingToDeclaration/">ExceptionHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">statesManager<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/StatesManager///PointingToDeclaration/">StatesManager</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>DefaultStatesManager(InMemoryDefaultStatesManagerRepo())<span class="token punctuation">, </span></span><span class="parameter ">presetHandlers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-with-f-s-m-state-handler-holder/index.html">BehaviourWithFSMStateHandlerHolder</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>listOf()<span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common.utils/StateHandlingErrorHandler///PointingToDeclaration/">StateHandlingErrorHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>defaultStateHandlingErrorHandler()<span class="token punctuation">, </span></span><span class="parameter ">timeoutSeconds<span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types/-seconds/index.html">Seconds</a><span class="token operator"> = </span><span class="token constant">30</span><span class="token punctuation">, </span></span><span class="parameter ">autoDisableWebhooks<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">autoSkipTimeoutExceptions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">mediaGroupsDebounceTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token constant">1000</span><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-custom-behaviour-context-receiver/index.html">CustomBehaviourContextReceiver</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator"> : </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span><span class="token operator">&gt; </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">.</span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html"><span class="token function">buildBehaviourWithFSMAndStartLongPolling</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">upstreamUpdatesFlow<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token operator"> = </span>defaultCoroutineScopeProvider()<span class="token punctuation">, </span></span><span class="parameter ">defaultExceptionsHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.coroutines/ExceptionHandler///PointingToDeclaration/">ExceptionHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">statesManager<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/StatesManager///PointingToDeclaration/">StatesManager</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>DefaultStatesManager(InMemoryDefaultStatesManagerRepo())<span class="token punctuation">, </span></span><span class="parameter ">presetHandlers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-behaviour-with-f-s-m-state-handler-holder/index.html">BehaviourWithFSMStateHandlerHolder</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>listOf()<span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common.utils/StateHandlingErrorHandler///PointingToDeclaration/">StateHandlingErrorHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>defaultStateHandlingErrorHandler()<span class="token punctuation">, </span></span><span class="parameter ">timeoutSeconds<span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types/-seconds/index.html">Seconds</a><span class="token operator"> = </span><span class="token constant">30</span><span class="token punctuation">, </span></span><span class="parameter ">autoDisableWebhooks<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">autoSkipTimeoutExceptions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">mediaGroupsDebounceTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token constant">1000</span><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-custom-behaviour-context-receiver/index.html">CustomBehaviourContextReceiver</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../build-behaviour-with-f-s-m-and-start-long-polling.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span><span class="token keyword"></span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Use <a href="../build-behaviour-with-f-s-m.html">buildBehaviourWithFSM</a> to create <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a> and launch getting of updates using <a href="../../../tgbotapi.utils/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/index.html">longPolling</a>. For <a href="../../../tgbotapi.utils/dev.inmo.tgbotapi.extensions.utils.updates.retrieving/index.html">longPolling</a> will be used result <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a> for both parameters flowsUpdatesFilter and scope</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="539526881%2FFunctions%2F983072464" anchor-label="close" id="539526881%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#539526881%2FFunctions%2F983072464"><span><span>close</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="539526881%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#539526881%2FFunctions%2F983072464"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="476634687%2FFunctions%2F983072464" anchor-label="copy" id="476634687%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-behaviour-context-with-f-s-m/copy.html"><span><span>copy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="476634687%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-behaviour-context-with-f-s-m/copy.html"><span class="token function">copy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bot<span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token operator"> = </span>this.bot<span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token operator"> = </span>this.scope<span class="token punctuation">, </span></span><span class="parameter ">broadcastChannelsSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">100</span><span class="token punctuation">, </span></span><span class="parameter ">onBufferOverflow<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.channels/BufferOverflow///PointingToDeclaration/">BufferOverflow</span><span class="token operator"> = </span>BufferOverflow.SUSPEND<span class="token punctuation">, </span></span><span class="parameter ">upstreamUpdatesFlow<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">triggersHolder<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar/-triggers-holder/index.html">TriggersHolder</a><span class="token operator"> = </span>this.triggersHolder<span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common.utils/StateHandlingErrorHandler///PointingToDeclaration/">StateHandlingErrorHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>defaultStateHandlingErrorHandler()<span class="token punctuation">, </span></span><span class="parameter ">updatesFilter<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-behaviour-context-and-type-receiver/index.html">BehaviourContextAndTypeReceiver</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="copy.html"><span class="token function">copy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bot<span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token punctuation">, </span></span><span class="parameter ">broadcastChannelsSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">onBufferOverflow<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.channels/BufferOverflow///PointingToDeclaration/">BufferOverflow</span><span class="token punctuation">, </span></span><span class="parameter ">upstreamUpdatesFlow<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">triggersHolder<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar/-triggers-holder/index.html">TriggersHolder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="copy.html"><span class="token function">copy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bot<span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a><span class="token punctuation">, </span></span><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token punctuation">, </span></span><span class="parameter ">broadcastChannelsSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">onBufferOverflow<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.channels/BufferOverflow///PointingToDeclaration/">BufferOverflow</span><span class="token punctuation">, </span></span><span class="parameter ">upstreamUpdatesFlow<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">triggersHolder<span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar/-triggers-holder/index.html">TriggersHolder</a><span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common.utils/StateHandlingErrorHandler///PointingToDeclaration/">StateHandlingErrorHandler</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">DefaultBehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2115112755%2FFunctions%2F983072464" anchor-label="execute" id="-2115112755%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2115112755%2FFunctions%2F983072464"><span><span>execute</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2115112755%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context-with-f-s-m/execute.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-2115112755%2FFunctions%2F983072464"><span class="token function">execute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.requests.abstracts/-request/index.html">Request</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context-with-f-s-m/execute.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder/-default-behaviour-context-with-f-s-m/execute.html">T</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1077367194%2FFunctions%2F983072464" anchor-label="handleState" id="1077367194%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="handle-state.html"><span>handle</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1077367194%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/StatesMachine///PointingToDeclaration/">StatesMachine</span><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="handle-state.html"><span class="token function">handleState</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">state<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1025139575%2FFunctions%2F983072464" anchor-label="launchStateHandling" id="1025139575%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-931033069%2FFunctions%2F983072464"><span>launch</span><wbr><span>State</span><wbr><span><span>Handling</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1025139575%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html#-931033069%2FFunctions%2F983072464"><span class="token function">launchStateHandling</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">state<span class="token operator">: </span><a href="index.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">handlers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/CheckableHandlerHolder///PointingToDeclaration/">CheckableHandlerHolder</span><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">onStateHandlingErrorHandler<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a><span class="token operator">?</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="launch-state-handling.html"><span class="token function">launchStateHandling</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">state<span class="token operator">: </span><a href="index.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">handlers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/CheckableHandlerHolder///PointingToDeclaration/">CheckableHandlerHolder</span><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="index.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="701741120%2FFunctions%2F983072464" anchor-label="onStateOrSubstate" id="701741120%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-state-or-substate.html"><span>on</span><wbr><span>State</span><wbr><span>Or</span><wbr><span><span>Substate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="701741120%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="on-state-or-substate.html">I</a><span class="token operator"> : </span><a href="index.html">T</a><span class="token operator">&gt; </span><a href="on-state-or-substate.html"><span class="token function">onStateOrSubstate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">handler<span class="token operator">: </span><a href="../-behaviour-with-f-s-m-state-handler/index.html">BehaviourWithFSMStateHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="on-state-or-substate.html">I</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add NON STRICT <a href="on-state-or-substate.html">handler</a> to list of available in future <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a>. Non strict means that for input <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> will be used <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/is-instance.html">KClass.isInstance</a> and any inheritor of kClass will pass this requirement</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-962940286%2FFunctions%2F983072464" anchor-label="onStateOrSubstate" id="-962940286%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../on-state-or-substate.html"><span>on</span><wbr><span>State</span><wbr><span>Or</span><wbr><span><span>Substate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-962940286%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../on-state-or-substate.html">I</a><span class="token operator"> : </span><a href="../on-state-or-substate.html">O</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../on-state-or-substate.html">O</a><span class="token operator"> : </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span><span class="token operator">&gt; </span><a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../on-state-or-substate.html">O</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../on-state-or-substate.html"><span class="token function">onStateOrSubstate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">handler<span class="token operator">: </span><a href="../-behaviour-with-f-s-m-state-handler/index.html">BehaviourWithFSMStateHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../on-state-or-substate.html">I</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../on-state-or-substate.html">O</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add NON STRICT <a href="../on-state-or-substate.html">handler</a> to list of available in future <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a>. Non strict means that for input <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> will be used <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/is-instance.html">KClass.isInstance</a> and any inheritor of kClass will pass this requirement</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1126656049%2FFunctions%2F983072464" anchor-label="start" id="1126656049%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-behaviour-context-with-f-s-m/start.html"><span><span>start</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1126656049%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="../-behaviour-context-with-f-s-m/start.html"><span class="token function">start</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="start.html"><span class="token function">start</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/Job///PointingToDeclaration/">Job</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="311466256%2FFunctions%2F983072464" anchor-label="startChain" id="311466256%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="start-chain.html"><span>start</span><wbr><span><span>Chain</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="311466256%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="start-chain.html"><span class="token function">startChain</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">state<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1108750285%2FFunctions%2F983072464" anchor-label="strictlyOn" id="1108750285%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="strictly-on.html"><span>strictly</span><wbr><span><span>On</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1108750285%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="strictly-on.html">I</a><span class="token operator"> : </span><a href="index.html">T</a><span class="token operator">&gt; </span><a href="strictly-on.html"><span class="token function">strictlyOn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">handler<span class="token operator">: </span><a href="../-behaviour-with-f-s-m-state-handler/index.html">BehaviourWithFSMStateHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="strictly-on.html">I</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add STRICT <a href="strictly-on.html">handler</a> to list of available in future <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a>. Strict means that for input <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> will be used <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span>::class == kClass and any <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> with exactly the same type will pass requirements</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2139316995%2FFunctions%2F983072464" anchor-label="strictlyOn" id="2139316995%2FFunctions%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../strictly-on.html"><span>strictly</span><wbr><span><span>On</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2139316995%2FFunctions%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../strictly-on.html">I</a><span class="token operator"> : </span><a href="../strictly-on.html">O</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../strictly-on.html">O</a><span class="token operator"> : </span><span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span><span class="token operator">&gt; </span><a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../strictly-on.html">O</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../strictly-on.html"><span class="token function">strictlyOn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">handler<span class="token operator">: </span><a href="../-behaviour-with-f-s-m-state-handler/index.html">BehaviourWithFSMStateHandler</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../strictly-on.html">I</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../strictly-on.html">O</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add STRICT <a href="../strictly-on.html">handler</a> to list of available in future <a href="../-behaviour-context-with-f-s-m/index.html">BehaviourContextWithFSM</a>. Strict means that for input <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> will be used <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span>::class == kClass and any <span data-unresolved-link="dev.inmo.micro_utils.fsm.common/State///PointingToDeclaration/">State</span> with exactly the same type will pass requirements</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-728655137%2FProperties%2F983072464" anchor-label="allowedUpdates" id="-728655137%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-728655137%2FProperties%2F983072464"><span>allowed</span><wbr><span><span>Updates</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-728655137%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-728655137%2FProperties%2F983072464">allowedUpdates</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2078180918%2FProperties%2F983072464" anchor-label="allUpdatesFlow" id="-2078180918%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2078180918%2FProperties%2F983072464"><span>all</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2078180918%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-2078180918%2FProperties%2F983072464">allUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-834794313%2FProperties%2F983072464" anchor-label="allUpdatesWithoutMediaGroupsGroupingFlow" id="-834794313%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-834794313%2FProperties%2F983072464"><span>all</span><wbr><span>Updates</span><wbr><span>Without</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span>Grouping</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-834794313%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-834794313%2FProperties%2F983072464"><strike>allUpdatesWithoutMediaGroupsGroupingFlow</strike></a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1206020112%2FProperties%2F983072464" anchor-label="asUpdateReceiver" id="1206020112%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1206020112%2FProperties%2F983072464"><span>as</span><wbr><span>Update</span><wbr><span><span>Receiver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1206020112%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#1206020112%2FProperties%2F983072464">asUpdateReceiver</a><span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1802326973%2FProperties%2F983072464" anchor-label="bot" id="1802326973%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1802326973%2FProperties%2F983072464"><span><span>bot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1802326973%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#1802326973%2FProperties%2F983072464">bot</a><span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="451245578%2FProperties%2F983072464" anchor-label="callbackQueriesFlow" id="451245578%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#451245578%2FProperties%2F983072464"><span>callback</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="451245578%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#451245578%2FProperties%2F983072464">callbackQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-callback-query-update/index.html">CallbackQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-956329826%2FProperties%2F983072464" anchor-label="channelPostMediaGroupsFlow" id="-956329826%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-956329826%2FProperties%2F983072464"><span>channel</span><wbr><span>Post</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-956329826%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-956329826%2FProperties%2F983072464">channelPostMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-channel-post-update/index.html">ChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1140499843%2FProperties%2F983072464" anchor-label="channelPostsFlow" id="1140499843%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1140499843%2FProperties%2F983072464"><span>channel</span><wbr><span>Posts</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1140499843%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#1140499843%2FProperties%2F983072464">channelPostsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-channel-post-update/index.html">ChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1991764523%2FProperties%2F983072464" anchor-label="chatJoinRequestUpdateFlow" id="-1991764523%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1991764523%2FProperties%2F983072464"><span>chat</span><wbr><span>Join</span><wbr><span>Request</span><wbr><span>Update</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1991764523%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-1991764523%2FProperties%2F983072464">chatJoinRequestUpdateFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-chat-join-request-update/index.html">ChatJoinRequestUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-105872013%2FProperties%2F983072464" anchor-label="chatMemberUpdatesFlow" id="-105872013%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-105872013%2FProperties%2F983072464"><span>chat</span><wbr><span>Member</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-105872013%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-105872013%2FProperties%2F983072464">chatMemberUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-common-chat-member-updated-update/index.html">CommonChatMemberUpdatedUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1456060704%2FProperties%2F983072464" anchor-label="chosenInlineResultsFlow" id="-1456060704%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1456060704%2FProperties%2F983072464"><span>chosen</span><wbr><span>Inline</span><wbr><span>Results</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1456060704%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-1456060704%2FProperties%2F983072464">chosenInlineResultsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-chosen-inline-result-update/index.html">ChosenInlineResultUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1654120400%2FProperties%2F983072464" anchor-label="coroutineContext" id="-1654120400%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1654120400%2FProperties%2F983072464"><span>coroutine</span><wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1654120400%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-1654120400%2FProperties%2F983072464">coroutineContext</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="59651765%2FProperties%2F983072464" anchor-label="editedChannelPostMediaGroupsFlow" id="59651765%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#59651765%2FProperties%2F983072464"><span>edited</span><wbr><span>Channel</span><wbr><span>Post</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="59651765%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#59651765%2FProperties%2F983072464">editedChannelPostMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-channel-post-update/index.html">EditChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-951669670%2FProperties%2F983072464" anchor-label="editedChannelPostsFlow" id="-951669670%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-951669670%2FProperties%2F983072464"><span>edited</span><wbr><span>Channel</span><wbr><span>Posts</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-951669670%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-951669670%2FProperties%2F983072464">editedChannelPostsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-channel-post-update/index.html">EditChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1080330233%2FProperties%2F983072464" anchor-label="editedMessageMediaGroupsFlow" id="1080330233%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1080330233%2FProperties%2F983072464"><span>edited</span><wbr><span>Message</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1080330233%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#1080330233%2FProperties%2F983072464">editedMessageMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-message-update/index.html">EditMessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1204880030%2FProperties%2F983072464" anchor-label="editedMessagesFlow" id="1204880030%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1204880030%2FProperties%2F983072464"><span>edited</span><wbr><span>Messages</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1204880030%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#1204880030%2FProperties%2F983072464">editedMessagesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-message-update/index.html">EditMessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-104941639%2FProperties%2F983072464" anchor-label="flowsUpdatesFilter" id="-104941639%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-104941639%2FProperties%2F983072464"><span>flows</span><wbr><span>Updates</span><wbr><span><span>Filter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-104941639%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-104941639%2FProperties%2F983072464">flowsUpdatesFilter</a><span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/index.html">FlowsUpdatesFilter</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="63411550%2FProperties%2F983072464" anchor-label="inlineQueriesFlow" id="63411550%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#63411550%2FProperties%2F983072464"><span>inline</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="63411550%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#63411550%2FProperties%2F983072464">inlineQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-inline-query-update/index.html">InlineQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1822867870%2FProperties%2F983072464" anchor-label="messageMediaGroupsFlow" id="-1822867870%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1822867870%2FProperties%2F983072464"><span>message</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1822867870%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-1822867870%2FProperties%2F983072464">messageMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-message-update/index.html">MessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-222693305%2FProperties%2F983072464" anchor-label="messagesFlow" id="-222693305%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-222693305%2FProperties%2F983072464"><span>messages</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-222693305%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-222693305%2FProperties%2F983072464">messagesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-message-update/index.html">MessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2072175809%2FProperties%2F983072464" anchor-label="myChatMemberUpdatesFlow" id="-2072175809%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2072175809%2FProperties%2F983072464"><span>my</span><wbr><span>Chat</span><wbr><span>Member</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2072175809%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-2072175809%2FProperties%2F983072464">myChatMemberUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-my-chat-member-updated-update/index.html">MyChatMemberUpdatedUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1541354453%2FProperties%2F983072464" anchor-label="pollAnswersFlow" id="1541354453%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1541354453%2FProperties%2F983072464"><span>poll</span><wbr><span>Answers</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1541354453%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#1541354453%2FProperties%2F983072464">pollAnswersFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-poll-answer-update/index.html">PollAnswerUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1274798263%2FProperties%2F983072464" anchor-label="pollsFlow" id="1274798263%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1274798263%2FProperties%2F983072464"><span>polls</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1274798263%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#1274798263%2FProperties%2F983072464">pollsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-poll-update/index.html">PollUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="643741718%2FProperties%2F983072464" anchor-label="preCheckoutQueriesFlow" id="643741718%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#643741718%2FProperties%2F983072464"><span>pre</span><wbr><span>Checkout</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="643741718%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#643741718%2FProperties%2F983072464">preCheckoutQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-pre-checkout-query-update/index.html">PreCheckoutQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1835401712%2FProperties%2F983072464" anchor-label="scope" id="-1835401712%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1835401712%2FProperties%2F983072464"><span><span>scope</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1835401712%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-1835401712%2FProperties%2F983072464">scope</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1772129549%2FProperties%2F983072464" anchor-label="shippingQueriesFlow" id="-1772129549%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1772129549%2FProperties%2F983072464"><span>shipping</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1772129549%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-1772129549%2FProperties%2F983072464">shippingQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-shipping-query-update/index.html">ShippingQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="537352207%2FProperties%2F983072464" anchor-label="triggersHolder" id="537352207%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#537352207%2FProperties%2F983072464"><span>triggers</span><wbr><span><span>Holder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="537352207%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#537352207%2FProperties%2F983072464">triggersHolder</a><span class="token operator">: </span><a href="../../../tgbotapi.behaviour_builder/dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar/-triggers-holder/index.html">TriggersHolder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1833908723%2FProperties%2F983072464" anchor-label="unknownUpdatesFlow" id="1833908723%2FProperties%2F983072464" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1833908723%2FProperties%2F983072464"><span>unknown</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1833908723%2FProperties%2F983072464"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder.fsm:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#1833908723%2FProperties%2F983072464">unknownUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-unknown-update/index.html">UnknownUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
+

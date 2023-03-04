@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+<a href="../../index.html">
+<span>TelegramBotAPI</span>            </a>    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":tgbotapi.core:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="tgbotapi.core::dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons////PointingToDeclaration//789214110">
+  <div class="breadcrumbs"><a href="../index.html">tgbotapi.core</a><span class="delimiter">/</span><span class="current">dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="797024102%2FClasslikes%2F789214110" anchor-label="CallbackDataInlineKeyboardButton" id="797024102%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-callback-data-inline-keyboard-button/index.html"><span>Callback</span><wbr><span>Data</span><wbr><span>Inline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="797024102%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-callback-data-inline-keyboard-button/index.html">CallbackDataInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>callbackData<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">Simple button with <a href="-callback-data-inline-keyboard-button/callback-data.html">callbackData</a> which you are able to catch this type of updates and data using dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onDataCallbackQuery in case you are using Behaviour Builder OR <a href="../dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/callback-queries-flow.html">dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter.callbackQueriesFlow</a> with <span data-unresolved-link="kotlinx.coroutines.flow//filterIsInstance/kotlinx.coroutines.flow.Flow[*]#/PointingToDeclaration/">kotlinx.coroutines.flow.filterIsInstance</span> and filtering by type <a href="../dev.inmo.tgbotapi.types.queries.callback/-data-callback-query/index.html">dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-576350178%2FClasslikes%2F789214110" anchor-label="CallbackGameInlineKeyboardButton" id="-576350178%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-callback-game-inline-keyboard-button/index.html"><span>Callback</span><wbr><span>Game</span><wbr><span>Inline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-576350178%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-callback-game-inline-keyboard-button/index.html">CallbackGameInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">Button with <a href="../../tgbotapi.core/dev.inmo.tgbotapi.types.buttons.-inline-keyboard-buttons/-callback-game-inline-keyboard-button/callback-game.html">callbackGame</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1310544459%2FClasslikes%2F789214110" anchor-label="InlineKeyboardButton" id="-1310544459%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-inline-keyboard-button/index.html"><span>Inline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1310544459%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span><span class="token punctuation">(</span><span>with<span class="token operator"> = </span><a href="-inline-keyboard-button-serializer/index.html">InlineKeyboardButtonSerializer::class</a></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">interface </span><a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">Some button of <a href="../dev.inmo.tgbotapi.types.buttons/-inline-keyboard-markup/index.html">dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup</a>. See inheritors and visit https://core.telegram.org/bots/api#inlinekeyboardbutton for more info</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1349104451%2FClasslikes%2F789214110" anchor-label="InlineKeyboardButtonSerializer" id="1349104451%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-inline-keyboard-button-serializer/index.html"><span>Inline</span><wbr><span>Keyboard</span><wbr><span>Button</span><wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1349104451%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-inline-keyboard-button-serializer/index.html">InlineKeyboardButtonSerializer</a> : <span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1208740879%2FClasslikes%2F789214110" anchor-label="LoginURLInlineKeyboardButton" id="1208740879%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-login-u-r-l-inline-keyboard-button/index.html"><span>Login</span><wbr><span>URLInline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1208740879%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-login-u-r-l-inline-keyboard-button/index.html">LoginURLInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>loginUrl<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types/-login-u-r-l/index.html">LoginURL</a></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">You may use this button to automatically authorize your user on <a href="-login-u-r-l-inline-keyboard-button/login-url.html">loginUrl</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1757759937%2FClasslikes%2F789214110" anchor-label="PayInlineKeyboardButton" id="1757759937%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-pay-inline-keyboard-button/index.html"><span>Pay</span><wbr><span>Inline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1757759937%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-pay-inline-keyboard-button/index.html">PayInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">This type of button must always be the first button in the first row. Visit https://core.telegram.org/bots/api#payments for mor info</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1866100927%2FClasslikes%2F789214110" anchor-label="SwitchInlineQueryCurrentChatInlineKeyboardButton" id="1866100927%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-switch-inline-query-current-chat-inline-keyboard-button/index.html"><span>Switch</span><wbr><span>Inline</span><wbr><span>Query</span><wbr><span>Current</span><wbr><span>Chat</span><wbr><span>Inline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1866100927%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-switch-inline-query-current-chat-inline-keyboard-button/index.html">SwitchInlineQueryCurrentChatInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>switchInlineQueryCurrentChat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">Complex button with <a href="-switch-inline-query-current-chat-inline-keyboard-button/switch-inline-query-current-chat.html">switchInlineQueryCurrentChat</a> which will be sent to you in an <a href="../dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/index.html">dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery</a> which you may catch in dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onBaseInlineQuery and get from <a href="../dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/query.html">dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery.query</a> (or changed by user query in case he will be the fastest hand in the wild west). Can be forwarded in any chat with message in case if it is the only one button in message, but will be converted to a <a href="-switch-inline-query-inline-keyboard-button/index.html">SwitchInlineQueryInlineKeyboardButton</a>. Remember that clicking on this button will automatically insert username of this bot in current chat, paste <a href="-switch-inline-query-current-chat-inline-keyboard-button/switch-inline-query-current-chat.html">switchInlineQueryCurrentChat</a> as a query and create and inline request to your bot Visit https://core.telegram.org/bots/api#inlinekeyboardbutton for more info</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1363612142%2FClasslikes%2F789214110" anchor-label="SwitchInlineQueryInlineKeyboardButton" id="1363612142%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-switch-inline-query-inline-keyboard-button/index.html"><span>Switch</span><wbr><span>Inline</span><wbr><span>Query</span><wbr><span>Inline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1363612142%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-switch-inline-query-inline-keyboard-button/index.html">SwitchInlineQueryInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>switchInlineQuery<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">Complex button with <a href="-switch-inline-query-inline-keyboard-button/switch-inline-query.html">switchInlineQuery</a> which will be sent to you in an <a href="../dev.inmo.tgbotapi.types.InlineQueries.query/-inline-query/index.html">dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery</a> which you may catch in dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onBaseInlineQuery and get from <a href="../dev.inmo.tgbotapi.types.InlineQueries.query/-base-inline-query/query.html">dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery.query</a> (or changed by user query in case he will be the fastest hand in the wild west). Can be forwarded in any chat with message in case if it is the only one button in message. Remember that clicking on this button will automatically insert username of this bot in the chosen by user chat, paste <a href="-switch-inline-query-inline-keyboard-button/switch-inline-query.html">switchInlineQuery</a> as a query and create and inline request to your bot. Visit https://core.telegram.org/bots/api#inlinekeyboardbutton for more info</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1883486303%2FClasslikes%2F789214110" anchor-label="UnknownInlineKeyboardButton" id="1883486303%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-unknown-inline-keyboard-button/index.html"><span>Unknown</span><wbr><span>Inline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1883486303%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-unknown-inline-keyboard-button/index.html">UnknownInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>rawData<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonElement///PointingToDeclaration/">JsonElement</span></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="227430490%2FClasslikes%2F789214110" anchor-label="URLInlineKeyboardButton" id="227430490%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-u-r-l-inline-keyboard-button/index.html"><span>URLInline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="227430490%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-u-r-l-inline-keyboard-button/index.html">URLInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>url<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">Simple <a href="-u-r-l-inline-keyboard-button/url.html">url</a> button. Can be forwarded in any chat with message in case if it is the only one button in message</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1715536888%2FClasslikes%2F789214110" anchor-label="WebAppInlineKeyboardButton" id="-1715536888%2FClasslikes%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-web-app-inline-keyboard-button/index.html"><span>Web</span><wbr><span>App</span><wbr><span>Inline</span><wbr><span>Keyboard</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1715536888%2FClasslikes%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-web-app-inline-keyboard-button/index.html">WebAppInlineKeyboardButton</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>webApp<span class="token operator">: </span><a href="../dev.inmo.tgbotapi.types.webapps/-web-app-info/index.html">WebAppInfo</a></span></span><span class="token punctuation">)</span> : <a href="-inline-keyboard-button/index.html">InlineKeyboardButton</a></div><div class="brief "><p class="paragraph">Button with <a href="../dev.inmo.tgbotapi.types.webapps/-web-app-info/index.html">WebAppInfo</a>. Web App will be launched when the button is pressed. The Web App will be able to send a <code class="lang-kotlin">web_app_data</code> service message. <strong>Available in private chats only</strong>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
+
