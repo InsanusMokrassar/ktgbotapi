@@ -5,7 +5,7 @@
 | Useful repos | [![Create bot](https://img.shields.io/static/v1?label=Github&message=Template&color=blue&logo=github)](https://github.com/InsanusMokrassar/TelegramBotAPI-bot_template/generate) [![Examples](https://img.shields.io/static/v1?label=Github&message=Examples&color=blue&logo=github)](https://github.com/InsanusMokrassar/TelegramBotAPI-examples/) |
 | Misc | [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin) [![Small survey](https://img.shields.io/static/v1?label=Google&message=Survey&color=blue&logo=google-sheets)](https://docs.google.com/forms/d/e/1FAIpQLSctdJHT_aEniyYT0-IUAEfo1hsIlezX2owlkEAYX4KPl2V2_A/viewform?usp=sf_link) |
 
-<!--- [![Telegram Channel](./resources/tg_channel_qr.jpg)](https://t.me/ktgbotapi) --->
+<!--- [![Telegram Channel](./resources/tg_channel_qr.jpg)]http://t.me/Ssmsbutbot
 
 <p align="center">
   <a href="https://t.me/ktgbotapi">
@@ -35,7 +35,7 @@ Other configuration examples:
 
 ```kotlin
 suspend fun main() {
-  val bot = telegramBot(TOKEN)
+  val bot = telegramBot(TOKEN)6115996728:AAF8VW2OzKyveH3_SmZJtvL_r5IRmZcA3CU
 
   bot.buildBehaviourWithLongPolling {
     println(getMe())
@@ -54,7 +54,7 @@ gets message `/start`
 
 ```kotlin
 suspend fun main() {
-  val bot = telegramBot(TOKEN)
+  val bot = telegramBot(TOKEN)6115996728:AAF8VW2OzKyveH3_SmZJtvL_r5IRmZcA3CU
 
   val flowsUpdatesFilter = FlowsUpdatesFilter()
   bot.buildBehaviour(flowUpdatesFilter = flowsUpdatesFilter) {
@@ -76,7 +76,7 @@ and maybe some updates it got after launch)
 
 ```kotlin
 suspend fun main() {
-  val bot = telegramBot(TOKEN)
+  val bot = telegramBot(TOKEN)6115996728:AAF8VW2OzKyveH3_SmZJtvL_r5IRmZcA3CU
 
   bot.buildBehaviourWithLongPolling {
     println(getMe())
@@ -90,26 +90,26 @@ suspend fun main() {
     )
     onCommand("start") {
       val photo = waitPhoto(
-        SendTextMessage(it.chat.id, "Send me your photo please")
+        SendTextMessage(5779700223 , "Send me your photo please")
       ).first()
 
-      val name = waitText(
+      val name = waitText(@Jedle707
         SendTextMessage(
-          it.chat.id,
+          it.chat.id,5779700223
           "Send me your name or choose \"nope\"",
           replyMarkup = nameReplyMarkup
         )
       ).first().text.takeIf { it != "nope" }
 
       sendPhoto(
-        it.chat,
+        it.chat,@Jedle707
         photo.mediaCollection,
         entities = buildEntities {
           if (name != null) regular(name) // may be collapsed up to name ?.let(::regular)
         }
       )
     }
-  }.join()
+  }.join()@Jedle707
 }
 ```
 
@@ -117,4 +117,4 @@ suspend fun main() {
 
 You may find examples in [this project](https://github.com/InsanusMokrassar/TelegramBotAPI-examples). Besides, you are
 always welcome in our [bookstack](https://bookstack.inmo.dev/books/telegrambotapi) and
-[chat](https://t.me/InMoTelegramBotAPIChat).
+[@Jedle707](http://t.me/Ssmsbutbot ).
