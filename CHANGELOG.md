@@ -2,6 +2,9 @@
 
 ## 6.1.0
 
+* `API`:
+    * Fix of [#732](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/732)
+
 ## 6.0.3
 
 * `Versions`:
