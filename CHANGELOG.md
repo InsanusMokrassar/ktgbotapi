@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 6.1.0
+
+* `Versions`:
+  * `MicroUtils`: `0.17.2` -> `0.17.3`
+* `API`:
+    * Fix of [#732](https://github.com/InsanusMokrassar/TelegramBotAPI/issues/732)
+
 ## 6.0.3
 
 * `Versions`:
