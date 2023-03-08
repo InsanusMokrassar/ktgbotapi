@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 
 suspend fun TelegramBot.deleteMessage(
@@ -24,7 +25,7 @@ suspend fun TelegramBot.deleteMessage(
 suspend fun TelegramBot.deleteMessage(
     message: Message
 ): Boolean {
-    val mediaGroupContent = ((message as? ContentMessage<*>) ?.content as? MediaGroupContent<*>)
+    val mediaGroupContent = ((message as? ContentMessage<*>) ?.content as? MediaGroupCollectionContent<*>)
     if (mediaGroupContent == null) {
         return deleteMessage(message.chat, message.messageId)
     } else {
