@@ -136,6 +136,10 @@ val inputFieldPlaceholderLimit = 1 .. 64
 
 val emojisInStickerLimit = 1 .. 20
 
+val keywordsInStickerLimit = 0 .. 20
+
+val stickerKeywordLengthLimit = 0 .. 64
+
 const val botActionActualityTime: Seconds = 5
 
 // Made as lazy for correct work in K/JS
@@ -412,6 +416,7 @@ const val offsetField = "offset"
 const val limitField = "limit"
 const val stickersField = "stickers"
 const val stickerField = "sticker"
+const val keywordsField = "keywords"
 const val urlField = "url"
 const val addressField = "address"
 const val actionField = "action"
