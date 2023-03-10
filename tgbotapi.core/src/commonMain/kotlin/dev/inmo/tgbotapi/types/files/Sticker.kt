@@ -27,7 +27,8 @@ data class StickerSurrogate(
     val premium_animation: File? = null,
     val mask_position: MaskPosition? = null,
     val custom_emoji_id: CustomEmojiId? = null,
-    val file_size: Long? = null
+    val file_size: Long? = null,
+    val needs_repainting: Boolean = false
 )
 
 // TODO:: Serializer
@@ -132,7 +133,8 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
-                    surrogate.file_size
+                    surrogate.file_size,
+                    surrogate.needs_repainting
                 )
                 surrogate.is_video == true -> CustomEmojiVideoSticker(
                     surrogate.file_id,
@@ -143,7 +145,8 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
-                    surrogate.file_size
+                    surrogate.file_size,
+                    surrogate.needs_repainting
                 )
                 else -> CustomEmojiSimpleSticker(
                     surrogate.file_id,
@@ -154,7 +157,8 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
-                    surrogate.file_size
+                    surrogate.file_size,
+                    surrogate.needs_repainting
                 )
             }
             is StickerType.Unknown -> UnknownSticker(
