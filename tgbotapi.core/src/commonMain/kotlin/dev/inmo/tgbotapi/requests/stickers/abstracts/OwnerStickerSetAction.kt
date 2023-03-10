@@ -6,9 +6,6 @@ import dev.inmo.tgbotapi.types.UserId
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.serializer
 
-interface StickerSetAction : SimpleRequest<Boolean> {
-    val name: StickerSetName
-
-    override val resultDeserializer: KSerializer<Boolean>
-        get() = Boolean.serializer()
+interface OwnerStickerSetAction : StickerSetAction {
+    val userId: UserId
 }
