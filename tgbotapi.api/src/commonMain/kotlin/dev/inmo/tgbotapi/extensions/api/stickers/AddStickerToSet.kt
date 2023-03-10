@@ -33,7 +33,10 @@ suspend fun TelegramBot.addStickerToSet(
             emojis,
             keywords
         )
-        StickerType.Mask -> error("Unable to create Mask sticker to the set without maskPosition parameter")
+        StickerType.Mask -> InputSticker.Mask(
+            sticker,
+            emojis
+        )
         StickerType.Regular -> InputSticker.WithKeywords.Regular(
             sticker,
             emojis,
@@ -48,7 +51,7 @@ suspend fun TelegramBot.addStickerToSet(
     stickerSet: StickerSet,
     sticker: InputFile,
     emojis: List<String>,
-    maskPosition: MaskPosition
+    maskPosition: MaskPosition? = null
 ) = addStickerToSet(
     userId,
     stickerSet.name,
@@ -87,7 +90,7 @@ suspend fun TelegramBot.addStickerToSet(
     stickerSet: StickerSet,
     sticker: InputFile,
     emojis: List<String>,
-    maskPosition: MaskPosition
+    maskPosition: MaskPosition? = null
 ) = addStickerToSet(
     user.id, stickerSet, sticker, emojis, maskPosition
 )

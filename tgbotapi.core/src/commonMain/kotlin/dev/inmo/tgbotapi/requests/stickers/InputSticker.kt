@@ -23,7 +23,7 @@ sealed interface InputSticker {
         @SerialName(emojiListField)
         override val emojisList: List<String>,
         @SerialName(maskPositionField)
-        val maskPosition: MaskPosition
+        val maskPosition: MaskPosition? = null
     ) : InputSticker
 
     @Serializable

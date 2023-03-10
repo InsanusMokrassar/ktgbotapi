@@ -93,7 +93,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.mask_position ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.mask_position,
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -104,7 +104,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.mask_position ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.mask_position,
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -115,7 +115,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.mask_position ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.mask_position,
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -128,7 +128,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -139,7 +139,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -150,7 +150,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -276,7 +276,7 @@ data class RegularVideoSticker(
 
 @Serializable
 sealed interface MaskSticker : Sticker {
-    val maskPosition: MaskPosition
+    val maskPosition: MaskPosition?
 }
 @Serializable
 data class MaskSimpleSticker(
@@ -289,7 +289,7 @@ data class MaskSimpleSticker(
     @SerialName(heightField)
     override val height: Int,
     @SerialName(maskPositionField)
-    override val maskPosition: MaskPosition,
+    override val maskPosition: MaskPosition? = null,
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
@@ -314,7 +314,7 @@ data class MaskAnimatedSticker(
     @SerialName(heightField)
     override val height: Int,
     @SerialName(maskPositionField)
-    override val maskPosition: MaskPosition,
+    override val maskPosition: MaskPosition? = null,
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
@@ -335,7 +335,7 @@ data class MaskVideoSticker(
     @SerialName(heightField)
     override val height: Int,
     @SerialName(maskPositionField)
-    override val maskPosition: MaskPosition,
+    override val maskPosition: MaskPosition? = null,
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
