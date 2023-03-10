@@ -133,8 +133,8 @@ data class SendVideoData internal constructor(
     override val chatId: ChatIdentifier,
     @SerialName(videoField)
     val video: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -193,8 +193,8 @@ data class SendVideoData internal constructor(
 
 data class SendVideoFiles internal constructor(
     val video: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     videoField to video,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

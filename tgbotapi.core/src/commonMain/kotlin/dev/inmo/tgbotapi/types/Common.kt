@@ -387,6 +387,8 @@ const val explanationField = "explanation"
 const val idField = "id"
 const val pollIdField = "poll_id"
 const val textField = "text"
+const val thumbnailField = "thumbnail"
+@Deprecated("Renamed (in telegram bot api)", ReplaceWith("thumbnailField", "dev.inmo.tgbotapi.types.thumbnailField"))
 const val thumbField = "thumb"
 const val emojiField = "emoji"
 const val emojisField = "emojis"

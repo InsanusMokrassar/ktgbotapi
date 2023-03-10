@@ -3,18 +3,17 @@ package dev.inmo.tgbotapi.requests.stickers
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.stickers.abstracts.OwnerStickerSetAction
-import dev.inmo.tgbotapi.requests.stickers.abstracts.StickerSetAction
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.*
 
 fun SetStickerSetThumb(
     userId: UserId,
     stickerSetName: String,
-    thumb: MultipartFile
+    thumbnail: MultipartFile
 ): Request<Boolean> {
     return CommonMultipartFileRequest(
         SetStickerSetThumb(userId, stickerSetName),
-        mapOf(thumbField to thumb)
+        mapOf(thumbnailField to thumbnail)
     )
 }
 
@@ -24,7 +23,7 @@ data class SetStickerSetThumb (
     override val userId: UserId,
     @SerialName(nameField)
     override val name: StickerSetName,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     val thumb: FileId? = null
 ) : OwnerStickerSetAction {
     override val requestSerializer: SerializationStrategy<*>

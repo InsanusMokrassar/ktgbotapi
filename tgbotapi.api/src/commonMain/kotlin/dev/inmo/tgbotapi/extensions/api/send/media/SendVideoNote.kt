@@ -57,7 +57,7 @@ suspend fun TelegramBot.sendVideoNote(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVideoNote(
-    chatId, videoNote.fileId, videoNote.thumb ?.fileId, videoNote.duration, videoNote.width, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, videoNote.fileId, videoNote.thumbnail ?.fileId, videoNote.duration, videoNote.width, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**

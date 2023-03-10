@@ -26,7 +26,7 @@ data class VideoNoteContent(
     ): Request<ContentMessage<VideoNoteContent>> = SendVideoNote(
         chatId,
         media.fileId,
-        media.thumb ?.fileId,
+        media.thumbnail ?.fileId,
         media.duration,
         media.width,
         messageThreadId,
@@ -42,6 +42,6 @@ data class VideoNoteContent(
         width = media.width,
         height = media.height,
         duration = media.duration,
-        thumb = media.thumb ?.fileId
+        thumb = media.thumbnail ?.fileId
     )
 }

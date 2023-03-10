@@ -156,8 +156,8 @@ data class SendVoiceData internal constructor(
 
 data class SendVoiceFiles internal constructor(
     val voice: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     voiceField to voice,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

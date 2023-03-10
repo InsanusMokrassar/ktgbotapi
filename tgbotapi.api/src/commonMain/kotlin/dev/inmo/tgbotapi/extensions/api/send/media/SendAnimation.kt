@@ -73,7 +73,7 @@ suspend fun TelegramBot.sendAnimation(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
-    chatId, animation.fileId, animation.thumb ?.fileId, text, parseMode, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, animation.fileId, animation.thumbnail ?.fileId, text, parseMode, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**
@@ -177,7 +177,7 @@ suspend fun TelegramBot.sendAnimation(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
-    chatId, animation.fileId, animation.thumb ?.fileId, entities, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chatId, animation.fileId, animation.thumbnail ?.fileId, entities, spoilered, duration, width, height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
 )
 
 /**

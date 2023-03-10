@@ -202,8 +202,8 @@ data class RegularSimpleSticker(
     override val width: Int,
     @SerialName(heightField)
     override val height: Int,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -225,8 +225,8 @@ data class RegularAnimatedSticker(
     override val width: Int,
     @SerialName(heightField)
     override val height: Int,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -246,8 +246,8 @@ data class RegularVideoSticker(
     override val width: Int,
     @SerialName(heightField)
     override val height: Int,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -275,8 +275,8 @@ data class MaskSimpleSticker(
     override val height: Int,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -296,8 +296,8 @@ data class MaskAnimatedSticker(
     override val height: Int,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -317,8 +317,8 @@ data class MaskVideoSticker(
     override val height: Int,
     @SerialName(maskPositionField)
     override val maskPosition: MaskPosition,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -344,8 +344,8 @@ data class CustomEmojiSimpleSticker(
     override val height: Int,
     @SerialName(customEmojiIdField)
     override val customEmojiId: CustomEmojiId,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -365,8 +365,8 @@ data class CustomEmojiAnimatedSticker(
     override val height: Int,
     @SerialName(customEmojiIdField)
     override val customEmojiId: CustomEmojiId,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -386,8 +386,8 @@ data class CustomEmojiVideoSticker(
     override val height: Int,
     @SerialName(customEmojiIdField)
     override val customEmojiId: CustomEmojiId,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -406,8 +406,8 @@ data class UnknownSticker(
     override val width: Int,
     @SerialName(heightField)
     override val height: Int,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)

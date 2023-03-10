@@ -129,8 +129,8 @@ data class SendAnimationData internal constructor(
     override val chatId: ChatIdentifier,
     @SerialName(animationField)
     val animation: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -187,8 +187,8 @@ data class SendAnimationData internal constructor(
 
 data class SendAnimationFiles internal constructor(
     val animation: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     animationField to animation,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

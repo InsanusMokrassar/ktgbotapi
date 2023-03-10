@@ -7,7 +7,6 @@ import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 
 @Serializable
@@ -146,7 +145,7 @@ data class RegularSimpleStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<RegularSimpleSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : RegularStickerSet {
     @SerialName(stickerTypeField)
@@ -162,7 +161,7 @@ data class RegularAnimatedStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<RegularAnimatedSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : RegularStickerSet, AnimatedStickerSet {
     @SerialName(stickerTypeField)
@@ -178,7 +177,7 @@ data class RegularVideoStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<RegularVideoSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : RegularStickerSet, VideoStickerSet {
     @SerialName(stickerTypeField)
@@ -194,7 +193,7 @@ data class MaskSimpleStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<MaskSimpleSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : MaskStickerSet {
     @SerialName(stickerTypeField)
@@ -210,7 +209,7 @@ data class MaskAnimatedStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<MaskAnimatedSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : MaskStickerSet, AnimatedStickerSet {
     @SerialName(stickerTypeField)
@@ -226,7 +225,7 @@ data class MaskVideoStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<MaskVideoSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : MaskStickerSet, VideoStickerSet {
     @SerialName(stickerTypeField)
@@ -242,7 +241,7 @@ data class CustomEmojiSimpleStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<CustomEmojiSimpleSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : CustomEmojiStickerSet {
     @SerialName(stickerTypeField)
@@ -258,7 +257,7 @@ data class CustomEmojiAnimatedStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<CustomEmojiAnimatedSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : CustomEmojiStickerSet, AnimatedStickerSet {
     @SerialName(stickerTypeField)
@@ -274,7 +273,7 @@ data class CustomEmojiVideoStickerSet(
     override val title: String,
     @SerialName(stickersField)
     override val stickers: List<CustomEmojiVideoSticker>,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null
 ) : CustomEmojiStickerSet, VideoStickerSet {
     @SerialName(stickerTypeField)
@@ -292,7 +291,7 @@ data class UnknownStickerSet(
     override val stickers: List<Sticker>,
     @SerialName(stickerTypeField)
     override val stickerType: StickerType,
-    @SerialName(thumbField)
+    @SerialName(thumbnailField)
     override val thumb: PhotoSize? = null,
     val raw: JsonElement
 ) : CustomEmojiStickerSet, VideoStickerSet

@@ -16,7 +16,7 @@ data class AnimationFile(
     override val width: Int,
     override val height: Int,
     override val duration: Long? = null,
-    override val thumb: PhotoSize? = null,
+    override val thumbnail: PhotoSize? = null,
     @SerialName(fileNameField)
     override val fileName: String? = null,
     @SerialName(mimeTypeField)

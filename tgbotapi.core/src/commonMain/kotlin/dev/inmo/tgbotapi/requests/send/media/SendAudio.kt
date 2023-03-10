@@ -126,8 +126,8 @@ data class SendAudioData internal constructor(
     override val chatId: ChatIdentifier,
     @SerialName(audioField)
     val audio: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -182,8 +182,8 @@ data class SendAudioData internal constructor(
 
 data class SendAudioFiles internal constructor(
     val audio: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     audioField to audio,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

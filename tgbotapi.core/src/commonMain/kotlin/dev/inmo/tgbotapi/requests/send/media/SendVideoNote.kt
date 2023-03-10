@@ -62,8 +62,8 @@ data class SendVideoNoteData internal constructor(
     override val chatId: ChatIdentifier,
     @SerialName(videoNoteField)
     val videoNote: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(lengthField)
@@ -99,8 +99,8 @@ data class SendVideoNoteData internal constructor(
 
 data class SendVideoNoteFiles internal constructor(
     val videoNote: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     videoNoteField to videoNote,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

@@ -144,8 +144,8 @@ data class SendDocumentData internal constructor(
     override val chatId: ChatIdentifier,
     @SerialName(documentField)
     val document: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -193,8 +193,8 @@ data class SendDocumentData internal constructor(
 
 data class SendDocumentFiles internal constructor(
     val document: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     documentField to document,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

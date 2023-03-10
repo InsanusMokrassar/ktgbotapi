@@ -1,8 +1,9 @@
 package dev.inmo.tgbotapi.types.files
 
-import dev.inmo.tgbotapi.types.files.PhotoSize
-import dev.inmo.tgbotapi.types.files.TelegramMediaFile
-
 sealed interface ThumbedMediaFile : TelegramMediaFile {
+    val thumbnail: PhotoSize?
+
+    @Deprecated("Renamed (in telegram bot api)", ReplaceWith("thumbnail"))
     val thumb: PhotoSize?
+        get() = thumbnail
 }

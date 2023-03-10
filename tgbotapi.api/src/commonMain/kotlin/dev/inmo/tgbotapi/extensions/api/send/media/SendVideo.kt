@@ -70,7 +70,7 @@ suspend fun TelegramBot.sendVideo(
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chatId, video.fileId, video.thumb ?.fileId, text, parseMode, spoilered, video.duration, video.width, video.height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(chatId, video.fileId, video.thumbnail ?.fileId, text, parseMode, spoilered, video.duration, video.width, video.height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -167,7 +167,7 @@ suspend inline fun TelegramBot.sendVideo(
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chatId, video.fileId, video.thumb ?.fileId, entities, spoilered, video.duration, video.width, video.height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendVideo(chatId, video.fileId, video.thumbnail ?.fileId, entities, spoilered, video.duration, video.width, video.height, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or

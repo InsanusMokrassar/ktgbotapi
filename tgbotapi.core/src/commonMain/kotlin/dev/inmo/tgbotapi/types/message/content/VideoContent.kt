@@ -31,7 +31,7 @@ data class VideoContent(
     ): Request<ContentMessage<VideoContent>> = SendVideo(
         chatId,
         media.fileId,
-        media.thumb ?.fileId,
+        media.thumbnail ?.fileId,
         textSources,
         spoilered,
         media.duration,
