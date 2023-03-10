@@ -25,6 +25,7 @@ sealed interface StickerSet {
     val name: String
     val title: String
     val stickerType: StickerType
+    val stickerFormat: StickerFormat
     val stickers: List<Sticker>
     val isAnimated: Boolean
         get() = false
@@ -124,11 +125,19 @@ sealed interface StickerSet {
 sealed interface AnimatedStickerSet : StickerSet {
     override val isAnimated: Boolean
         get() = true
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat
+        get() = StickerFormat.Animated
 }
 @Serializable
 sealed interface VideoStickerSet : StickerSet {
     override val isVideo: Boolean
         get() = true
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat
+        get() = StickerFormat.Video
 }
 @Serializable
 sealed interface RegularStickerSet : StickerSet
@@ -151,6 +160,9 @@ data class RegularSimpleStickerSet(
     @SerialName(stickerTypeField)
     @EncodeDefault
     override val stickerType: StickerType = StickerType.Regular
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
 }
 
 @Serializable
@@ -199,6 +211,10 @@ data class MaskSimpleStickerSet(
     @SerialName(stickerTypeField)
     @EncodeDefault
     override val stickerType: StickerType = StickerType.Mask
+
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
 }
 
 @Serializable
@@ -247,6 +263,10 @@ data class CustomEmojiSimpleStickerSet(
     @SerialName(stickerTypeField)
     @EncodeDefault
     override val stickerType: StickerType = StickerType.CustomEmoji
+
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
 }
 
 @Serializable
