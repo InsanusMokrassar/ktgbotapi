@@ -7,36 +7,30 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import kotlinx.serialization.*
 
-internal fun CreateNewStickerSet(
+/**
+ * Will create one of [CreateNewStickerSet] types based on the first element of [stickers]
+ *
+ * @param needsRepainting Will be used only if you are creating custom emojis sticker pack (by passing [stickers] with
+ * type [InputSticker.WithKeywords.CustomEmoji])
+ */
+fun CreateNewStickerSet(
     userId: UserId,
     name: String,
     title: String,
-    emojis: String,
-    stickerType: StickerType = StickerType.Regular,
-    pngSticker: InputFile? = null,
-    tgsSticker: InputFile? = null,
-    webmSticker: InputFile? = null,
-    maskPosition: MaskPosition? = null
+    stickersFormat: StickerFormat,
+    stickers: List<InputSticker>,
+    needsRepainting: Boolean? = null
 ): Request<Boolean> {
-    val data = CreateNewStickerSet(
-        userId,
-        name,
-        title,
-        emojis,
-        stickerType,
-        pngSticker as? FileId,
-        tgsSticker as? FileId,
-        webmSticker as? FileId,
-        maskPosition
-    )
-    return if (pngSticker is MultipartFile || tgsSticker is MultipartFile || webmSticker is MultipartFile) {
+    val data  = when(stickers.first()) {
+        is InputSticker.Mask -> CreateNewStickerSet.Mask(userId, name, title, stickersFormat, stickers.filterIsInstance<InputSticker.Mask>())
+        is InputSticker.WithKeywords.CustomEmoji -> CreateNewStickerSet.CustomEmoji(userId, name, title, stickersFormat, stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(), needsRepainting)
+        is InputSticker.WithKeywords.Regular -> CreateNewStickerSet.Regular(userId, name, title, stickersFormat, stickers.filterIsInstance<InputSticker.WithKeywords.Regular>())
+    }
+    val multipartParts = stickers.mapNotNull { (it.sticker as? MultipartFile) }
+    return if (multipartParts.isNotEmpty()) {
         CommonMultipartFileRequest(
             data,
-            listOfNotNull(
-                (pngSticker as? MultipartFile) ?.let { pngStickerField to it },
-                (tgsSticker as? MultipartFile) ?.let { tgsStickerField to it },
-                (webmSticker as? MultipartFile) ?.let { webmStickerField to it },
-            ).toMap()
+            multipartParts.associateBy { it.fileId }
         )
     } else {
         data
@@ -44,34 +38,67 @@ internal fun CreateNewStickerSet(
 }
 
 @Serializable
-data class CreateNewStickerSet internal constructor(
-    @SerialName(userIdField)
-    override val userId: UserId,
-    @SerialName(nameField)
-    override val name: String,
-    @SerialName(titleField)
-    override val title: String,
-    @SerialName(emojisField)
-    override val emojis: String,
-    @SerialName(stickerTypeField)
-    val stickerType: StickerType = StickerType.Regular,
-    @SerialName(pngStickerField)
-    val pngSticker: FileId? = null,
-    @SerialName(tgsStickerField)
-    val tgsSticker: FileId? = null,
-    @SerialName(webmStickerField)
-    val webmSticker: FileId? = null,
-    @SerialName(maskPositionField)
-    override val maskPosition: MaskPosition? = null
-) : CreateStickerSetAction {
-    init {
-        if(emojis.isEmpty()) {
-            throw IllegalArgumentException("Emojis must not be empty")
-        }
-    }
+sealed interface CreateNewStickerSet : CreateStickerSetAction {
+    val stickerType: StickerType
+    val stickers: List<InputSticker>
+    val stickersFormat: StickerFormat
 
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
     override fun method(): String = "createNewStickerSet"
+
+    @Serializable
+    data class Regular(
+        @SerialName(userIdField)
+        override val userId: UserId,
+        @SerialName(nameField)
+        override val name: String,
+        @SerialName(titleField)
+        override val title: String,
+        @SerialName(stickerFormatField)
+        override val stickersFormat: StickerFormat,
+        @SerialName(stickersField)
+        override val stickers: List<InputSticker.WithKeywords.Regular>
+    ) : CreateNewStickerSet {
+        @SerialName(stickerTypeField)
+        override val stickerType: StickerType
+            get() = StickerType.Regular
+    }
+    @Serializable
+    data class Mask(
+        @SerialName(userIdField)
+        override val userId: UserId,
+        @SerialName(nameField)
+        override val name: String,
+        @SerialName(titleField)
+        override val title: String,
+        @SerialName(stickerFormatField)
+        override val stickersFormat: StickerFormat,
+        @SerialName(stickersField)
+        override val stickers: List<InputSticker.Mask>
+    ) : CreateNewStickerSet {
+        @SerialName(stickerTypeField)
+        override val stickerType: StickerType
+            get() = StickerType.Mask
+    }
+    @Serializable
+    data class CustomEmoji(
+        @SerialName(userIdField)
+        override val userId: UserId,
+        @SerialName(nameField)
+        override val name: String,
+        @SerialName(titleField)
+        override val title: String,
+        @SerialName(stickerFormatField)
+        override val stickersFormat: StickerFormat,
+        @SerialName(stickersField)
+        override val stickers: List<InputSticker.WithKeywords.CustomEmoji>,
+        @SerialName(needsRepaintingField)
+        val needsRepainting: Boolean? = null
+    ) : CreateNewStickerSet {
+        @SerialName(stickerTypeField)
+        override val stickerType: StickerType
+            get() = StickerType.CustomEmoji
+    }
 }

@@ -330,6 +330,7 @@ data class MaskVideoSticker(
 @Serializable
 sealed interface CustomEmojiSticker : Sticker {
     val customEmojiId: CustomEmojiId
+    val needsRepainting: Boolean
 }
 
 @Serializable
@@ -352,6 +353,8 @@ data class CustomEmojiSimpleSticker(
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
+    @SerialName(needsRepaintingField)
+    override val needsRepainting: Boolean = false
 ) : CustomEmojiSticker
 @Serializable
 data class CustomEmojiAnimatedSticker(
@@ -373,6 +376,8 @@ data class CustomEmojiAnimatedSticker(
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
+    @SerialName(needsRepaintingField)
+    override val needsRepainting: Boolean = false,
 ) : CustomEmojiSticker, AnimatedSticker
 @Serializable
 data class CustomEmojiVideoSticker(
@@ -394,6 +399,8 @@ data class CustomEmojiVideoSticker(
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
+    @SerialName(needsRepaintingField)
+    override val needsRepainting: Boolean = false,
 ) : CustomEmojiSticker, VideoSticker
 
 @Serializable

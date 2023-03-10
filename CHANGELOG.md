@@ -2,6 +2,10 @@
 
 ## 7.0.0
 
+**THIS VERSION CONTAINS BREAKING CHANGES**:
+
+* Fully reworked mechanism of stickers creating
+
 ## 6.1.0
 
 * `Versions`:
