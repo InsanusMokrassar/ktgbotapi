@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.stickers
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
+import dev.inmo.tgbotapi.requests.stickers.abstracts.StickerAction
 import dev.inmo.tgbotapi.types.positionField
 import dev.inmo.tgbotapi.types.stickerField
 import kotlinx.serialization.*
@@ -10,10 +11,10 @@ import kotlinx.serialization.builtins.serializer
 @Serializable
 data class SetStickerPositionInSet(
     @SerialName(stickerField)
-    val sticker: FileId,
+    override val sticker: FileId,
     @SerialName(positionField)
     val position: Int
-) : SimpleRequest<Boolean> {
+) : StickerAction<Boolean> {
     init {
         if (position < 0) {
             throw IllegalArgumentException("Position must be positive or 0")

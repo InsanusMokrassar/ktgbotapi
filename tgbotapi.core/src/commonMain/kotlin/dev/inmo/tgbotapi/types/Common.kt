@@ -134,6 +134,8 @@ val suggestedTipAmountsLimit = 1 .. 4
 
 val inputFieldPlaceholderLimit = 1 .. 64
 
+val emojisInStickerLimit = 1 .. 20
+
 const val botActionActualityTime: Seconds = 5
 
 // Made as lazy for correct work in K/JS
@@ -257,6 +259,7 @@ const val createsJoinRequestField = "creates_join_request"
 const val pendingJoinRequestCountField = "pending_join_request_count"
 const val memberLimitField = "member_limit"
 const val iconColorField = "icon_color"
+const val emojiListField = "emoji_list"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
