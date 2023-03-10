@@ -35,6 +35,7 @@ data class StickerSurrogate(
 sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile {
     val emoji: String?
     val stickerSetName: StickerSetName?
+    val stickerFormat: StickerFormat
 
     val isAnimated
         get() = false
@@ -165,6 +166,11 @@ object StickerSerializer : KSerializer<Sticker> {
                 surrogate.emoji,
                 surrogate.set_name,
                 surrogate.file_size,
+                when {
+                    surrogate.is_animated == true -> StickerFormat.Animated
+                    surrogate.is_video == true -> StickerFormat.Video
+                    else -> StickerFormat.Static
+                },
                 json
             )
         }
@@ -180,11 +186,17 @@ object StickerSerializer : KSerializer<Sticker> {
 sealed interface VideoSticker : Sticker {
     override val isVideo: Boolean
         get() = true
+
+    override val stickerFormat: StickerFormat
+        get() = StickerFormat.Video
 }
 @Serializable
 sealed interface AnimatedSticker : Sticker {
     override val isAnimated: Boolean
         get() = true
+
+    override val stickerFormat: StickerFormat
+        get() = StickerFormat.Animated
 }
 
 @Serializable
@@ -209,10 +221,14 @@ data class RegularSimpleSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(premiumAnimationField)
-    override val premiumAnimationFile: File?,
+    override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
-) : RegularSticker
+) : RegularSticker {
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
+}
 
 @Serializable
 data class RegularAnimatedSticker(
@@ -231,7 +247,7 @@ data class RegularAnimatedSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(premiumAnimationField)
-    override val premiumAnimationFile: File?,
+    override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
 ) : RegularSticker, AnimatedSticker
@@ -252,7 +268,7 @@ data class RegularVideoSticker(
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(premiumAnimationField)
-    override val premiumAnimationFile: File?,
+    override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
 ) : RegularSticker, VideoSticker
@@ -282,7 +298,11 @@ data class MaskSimpleSticker(
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
-) : MaskSticker
+) : MaskSticker {
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
+}
 @Serializable
 data class MaskAnimatedSticker(
     @SerialName(fileIdField)
@@ -354,7 +374,11 @@ data class CustomEmojiSimpleSticker(
     override val fileSize: Long? = null,
     @SerialName(needsRepaintingField)
     override val needsRepainting: Boolean = false
-) : CustomEmojiSticker
+) : CustomEmojiSticker {
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
+}
 @Serializable
 data class CustomEmojiAnimatedSticker(
     @SerialName(fileIdField)
@@ -420,5 +444,7 @@ data class UnknownSticker(
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
+    @SerialName(stickerFormatField)
+    override val stickerFormat: StickerFormat = StickerFormat.Static,
     val raw: JsonElement
 ) : Sticker
