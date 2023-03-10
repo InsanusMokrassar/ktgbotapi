@@ -26,12 +26,12 @@ data class InlineQueryResultLocation(
     override val heading: Degrees? = null,
     @SerialName(proximityAlertRadiusField)
     override val proximityAlertRadius: Meters? = null,
-    @SerialName(thumbUrlField)
-    override val thumbUrl: String? = null,
-    @SerialName(thumbWidthField)
-    override val thumbWidth: Int? = null,
-    @SerialName(thumbHeightField)
-    override val thumbHeight: Int? = null,
+    @SerialName(thumbnailUrlField)
+    override val thumbnailUrl: String? = null,
+    @SerialName(thumbnailWidthField)
+    override val thumbnailWidth: Int? = null,
+    @SerialName(thumbnailHeightField)
+    override val thumbnailHeight: Int? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)

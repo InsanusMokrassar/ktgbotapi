@@ -18,7 +18,7 @@ import kotlinx.serialization.Serializable
 fun InlineQueryResultPhotoImpl(
     id: InlineQueryIdentifier,
     url: String,
-    thumbUrl: String,
+    thumbnailUrl: String,
     width: Int? = null,
     height: Int? = null,
     title: String? = null,
@@ -27,12 +27,12 @@ fun InlineQueryResultPhotoImpl(
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultPhotoImpl(id, url, thumbUrl, width, height, title, description, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultPhotoImpl(id, url, thumbnailUrl, width, height, title, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultPhotoImpl(
     id: InlineQueryIdentifier,
     url: String,
-    thumbUrl: String,
+    thumbnailUrl: String,
     width: Int? = null,
     height: Int? = null,
     title: String? = null,
@@ -43,7 +43,7 @@ fun InlineQueryResultPhotoImpl(
 ) = InlineQueryResultPhotoImpl(
     id,
     url,
-    thumbUrl,
+    thumbnailUrl,
     width,
     height,
     title,
@@ -61,8 +61,8 @@ data class InlineQueryResultPhotoImpl internal constructor(
     override val id: InlineQueryIdentifier,
     @SerialName(photoUrlField)
     override val url: String,
-    @SerialName(thumbUrlField)
-    override val thumbUrl: String,
+    @SerialName(thumbnailUrlField)
+    override val thumbnailUrl: String,
     @SerialName(photoWidthField)
     override val width: Int? = null,
     @SerialName(photoHeightField)

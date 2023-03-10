@@ -19,8 +19,8 @@ import kotlinx.serialization.Serializable
 fun InlineQueryResultMpeg4GifImpl(
     id: InlineQueryIdentifier,
     url: String,
-    thumbUrl: String,
-    thumbMimeType: MimeType? = null,
+    thumbnailUrl: String,
+    thumbnailMimeType: MimeType? = null,
     width: Int? = null,
     height: Int? = null,
     duration: Int? = null,
@@ -29,13 +29,13 @@ fun InlineQueryResultMpeg4GifImpl(
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultMpeg4GifImpl(id, url, thumbUrl, thumbMimeType, width, height, duration, title, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultMpeg4GifImpl(id, url, thumbnailUrl, thumbnailMimeType, width, height, duration, title, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultMpeg4GifImpl(
     id: InlineQueryIdentifier,
     url: String,
-    thumbUrl: String,
-    thumbMimeType: MimeType? = null,
+    thumbnailUrl: String,
+    thumbnailMimeType: MimeType? = null,
     width: Int? = null,
     height: Int? = null,
     duration: Int? = null,
@@ -46,8 +46,8 @@ fun InlineQueryResultMpeg4GifImpl(
 ) = InlineQueryResultMpeg4GifImpl(
     id,
     url,
-    thumbUrl,
-    thumbMimeType,
+    thumbnailUrl,
+    thumbnailMimeType,
     width,
     height,
     duration,
@@ -65,10 +65,10 @@ data class InlineQueryResultMpeg4GifImpl internal constructor(
     override val id: InlineQueryIdentifier,
     @SerialName(mpeg4GifUrlField)
     override val url: String,
-    @SerialName(thumbUrlField)
-    override val thumbUrl: String,
-    @SerialName(thumbMimeTypeField)
-    override val thumbMimeType: MimeType? = null,
+    @SerialName(thumbnailUrlField)
+    override val thumbnailUrl: String,
+    @SerialName(thumbnailMimeTypeField)
+    override val thumbnailMimeType: MimeType? = null,
     @SerialName(mpeg4GifWidthField)
     override val width: Int? = null,
     @SerialName(mpeg4GifHeightField)
@@ -94,8 +94,8 @@ data class InlineQueryResultMpeg4GifImpl internal constructor(
     }
 
     init {
-        if (thumbMimeType != null && thumbMimeType !in telegramInlineModeGifPermittedMimeTypes) {
-            error("Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes")
+        if (thumbnailMimeType != null && thumbnailMimeType !in telegramInlineModeGifPermittedMimeTypes) {
+            error("Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbnailMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes")
         }
     }
 }

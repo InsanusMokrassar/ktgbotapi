@@ -332,9 +332,17 @@ const val stickerFileIdField = "sticker_file_id"
 
 const val gameShortNameField = "game_short_name"
 
+const val thumbnailUrlField = "thumbnail_url"
+@Deprecated("Renamed in telegram bot api", ReplaceWith("thumbnailUrlField", "dev.inmo.tgbotapi.types.thumbnailUrlField"))
 const val thumbUrlField = "thumb_url"
+const val thumbnailMimeTypeField = "thumbnail_mime_type"
+@Deprecated("Renamed in telegram bot api", ReplaceWith("thumbnailMimeTypeField", "dev.inmo.tgbotapi.types.thumbnailMimeTypeField"))
 const val thumbMimeTypeField = "thumb_mime_type"
+const val thumbnailWidthField = "thumbnail_width"
+@Deprecated("Renamed in telegram bot api", ReplaceWith("thumbnailWidthField", "dev.inmo.tgbotapi.types.thumbnailWidthField"))
 const val thumbWidthField = "thumb_width"
+const val thumbnailHeightField = "thumbnail_height"
+@Deprecated("Renamed in telegram bot api", ReplaceWith("thumbnailHeightField", "dev.inmo.tgbotapi.types.thumbnailHeightField"))
 const val thumbHeightField = "thumb_height"
 
 const val inputMessageContentField = "input_message_content"

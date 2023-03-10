@@ -20,8 +20,8 @@ import kotlinx.serialization.Serializable
 fun InlineQueryResultGifImpl(
     id: InlineQueryIdentifier,
     url: String,
-    thumbUrl: String,
-    thumbMimeType: MimeType? = null,
+    thumbnailUrl: String,
+    thumbnailMimeType: MimeType? = null,
     width: Int? = null,
     height: Int? = null,
     duration: Int? = null,
@@ -30,13 +30,13 @@ fun InlineQueryResultGifImpl(
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultGifImpl(id, url, thumbUrl, thumbMimeType, width, height, duration, title, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultGifImpl(id, url, thumbnailUrl, thumbnailMimeType, width, height, duration, title, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultGifImpl(
     id: InlineQueryIdentifier,
     url: String,
-    thumbUrl: String,
-    thumbMimeType: MimeType? = null,
+    thumbnailUrl: String,
+    thumbnailMimeType: MimeType? = null,
     width: Int? = null,
     height: Int? = null,
     duration: Int? = null,
@@ -47,8 +47,8 @@ fun InlineQueryResultGifImpl(
 ) = InlineQueryResultGifImpl(
     id,
     url,
-    thumbUrl,
-    thumbMimeType,
+    thumbnailUrl,
+    thumbnailMimeType,
     width,
     height,
     duration,
@@ -63,8 +63,8 @@ fun InlineQueryResultGifImpl(
 fun InlineQueryResultGifImpl(
     id: InlineQueryIdentifier,
     gifFile: FileId,
-    thumbUrl: String,
-    thumbMimeType: MimeType? = null,
+    thumbnailUrl: String,
+    thumbnailMimeType: MimeType? = null,
     width: Int? = null,
     height: Int? = null,
     duration: Int? = null,
@@ -73,13 +73,13 @@ fun InlineQueryResultGifImpl(
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultGifImpl(id, gifFile.fileId, thumbUrl, thumbMimeType, width, height, duration, title, text, parseMode, replyMarkup, inputMessageContent)
+) = InlineQueryResultGifImpl(id, gifFile.fileId, thumbnailUrl, thumbnailMimeType, width, height, duration, title, text, parseMode, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultGifImpl(
     id: InlineQueryIdentifier,
     gifFile: FileId,
-    thumbUrl: String,
-    thumbMimeType: MimeType? = null,
+    thumbnailUrl: String,
+    thumbnailMimeType: MimeType? = null,
     width: Int? = null,
     height: Int? = null,
     duration: Int? = null,
@@ -88,7 +88,7 @@ fun InlineQueryResultGifImpl(
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultGifImpl(
-    id, gifFile.fileId, thumbUrl, thumbMimeType, width, height, duration, title, entities, replyMarkup, inputMessageContent
+    id, gifFile.fileId, thumbnailUrl, thumbnailMimeType, width, height, duration, title, entities, replyMarkup, inputMessageContent
 )
 
 @Serializable
@@ -97,10 +97,10 @@ data class InlineQueryResultGifImpl internal constructor(
     override val id: InlineQueryIdentifier,
     @SerialName(gifUrlField)
     override val url: String,
-    @SerialName(thumbUrlField)
-    override val thumbUrl: String,
-    @SerialName(thumbMimeTypeField)
-    override val thumbMimeType: MimeType? = null,
+    @SerialName(thumbnailUrlField)
+    override val thumbnailUrl: String,
+    @SerialName(thumbnailMimeTypeField)
+    override val thumbnailMimeType: MimeType? = null,
     @SerialName(gifWidthField)
     override val width: Int? = null,
     @SerialName(gifHeightField)
@@ -126,8 +126,8 @@ data class InlineQueryResultGifImpl internal constructor(
     }
 
     init {
-        if (thumbMimeType != null && thumbMimeType !in telegramInlineModeGifPermittedMimeTypes) {
-            error("Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes")
+        if (thumbnailMimeType != null && thumbnailMimeType !in telegramInlineModeGifPermittedMimeTypes) {
+            error("Passed thumb mime type is not permitted in Telegram Bot API. Passed $thumbnailMimeType, but permitted $telegramInlineModeGifPermittedMimeTypes")
         }
     }
 }
