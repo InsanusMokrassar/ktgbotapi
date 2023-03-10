@@ -14,6 +14,7 @@ import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
+import dev.inmo.tgbotapi.requests.stickers.InputSticker
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.ChatIdWithThreadId
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -1001,6 +1002,43 @@ public inline fun WithUser.messageGameShortNameCallbackQueryOrThrow():
 public inline fun <T>
     WithUser.ifMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T):
     T? = messageGameShortNameCallbackQueryOrNull() ?.let(block)
+
+public inline fun InputSticker.maskOrNull(): InputSticker.Mask? = this as?
+    dev.inmo.tgbotapi.requests.stickers.InputSticker.Mask
+
+public inline fun InputSticker.maskOrThrow(): InputSticker.Mask = this as
+    dev.inmo.tgbotapi.requests.stickers.InputSticker.Mask
+
+public inline fun <T> InputSticker.ifMask(block: (InputSticker.Mask) -> T): T? = maskOrNull()
+    ?.let(block)
+
+public inline fun InputSticker.withKeywordsOrNull(): InputSticker.WithKeywords? = this as?
+    dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords
+
+public inline fun InputSticker.withKeywordsOrThrow(): InputSticker.WithKeywords = this as
+    dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords
+
+public inline fun <T> InputSticker.ifWithKeywords(block: (InputSticker.WithKeywords) -> T): T? =
+    withKeywordsOrNull() ?.let(block)
+
+public inline fun InputSticker.customEmojiOrNull(): InputSticker.WithKeywords.CustomEmoji? = this
+    as? dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.CustomEmoji
+
+public inline fun InputSticker.customEmojiOrThrow(): InputSticker.WithKeywords.CustomEmoji = this as
+    dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.CustomEmoji
+
+public inline fun <T>
+    InputSticker.ifCustomEmoji(block: (InputSticker.WithKeywords.CustomEmoji) -> T): T? =
+    customEmojiOrNull() ?.let(block)
+
+public inline fun InputSticker.regularOrNull(): InputSticker.WithKeywords.Regular? = this as?
+    dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.Regular
+
+public inline fun InputSticker.regularOrThrow(): InputSticker.WithKeywords.Regular = this as
+    dev.inmo.tgbotapi.requests.stickers.InputSticker.WithKeywords.Regular
+
+public inline fun <T> InputSticker.ifRegular(block: (InputSticker.WithKeywords.Regular) -> T): T? =
+    regularOrNull() ?.let(block)
 
 public inline fun ChatIdentifier.idChatIdentifierOrNull(): IdChatIdentifier? = this as?
     dev.inmo.tgbotapi.types.IdChatIdentifier

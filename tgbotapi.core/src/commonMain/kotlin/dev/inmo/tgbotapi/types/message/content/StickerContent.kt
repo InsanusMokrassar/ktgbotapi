@@ -27,6 +27,7 @@ data class StickerContent(
         chatId,
         media.fileId,
         messageThreadId,
+        media.emoji,
         disableNotification,
         protectContent,
         replyToMessageId,

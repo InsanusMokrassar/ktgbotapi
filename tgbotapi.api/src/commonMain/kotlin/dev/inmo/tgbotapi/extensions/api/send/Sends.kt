@@ -1111,12 +1111,13 @@ suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     sticker: Sticker,
     threadId: MessageThreadId? = chatId.threadId,
+    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chatId, sticker, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chatId, sticker, threadId, emoji, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 /**
  * Will execute [sendSticker] request
@@ -1127,12 +1128,13 @@ suspend fun TelegramBot.send(
     chat: Chat,
     sticker: Sticker,
     threadId: MessageThreadId? = chat.id.threadId,
+    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat, sticker, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chat, sticker, threadId, emoji, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 /**

@@ -761,22 +761,24 @@ suspend inline fun TelegramBot.replyWithSticker(
     toMessageId: MessageId,
     sticker: InputFile,
     threadId: MessageThreadId? = toChatId.threadId,
+    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(toChatId, sticker, threadId, disableNotification, protectContent, toMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(toChatId, sticker, threadId, emoji, disableNotification, protectContent, toMessageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     sticker: Sticker,
     threadId: MessageThreadId? = toChatId.threadId,
+    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(toChatId, sticker, threadId, disableNotification, protectContent, toMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(toChatId, sticker, threadId, emoji, disableNotification, protectContent, toMessageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Videos

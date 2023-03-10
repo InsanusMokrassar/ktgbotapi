@@ -685,20 +685,22 @@ suspend inline fun TelegramBot.reply(
 suspend inline fun TelegramBot.replyWithSticker(
     to: Message,
     sticker: InputFile,
+    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(to.chat, sticker, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(to.chat, sticker, to.threadIdOrNull, emoji, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     to: Message,
     sticker: Sticker,
+    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(to.chat, sticker, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(to.chat, sticker, to.threadIdOrNull, emoji, disableNotification, protectContent, to.messageId, allowSendingWithoutReply, replyMarkup)
 
 
 // Videos
