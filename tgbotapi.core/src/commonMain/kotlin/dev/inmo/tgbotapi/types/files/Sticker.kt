@@ -213,8 +213,7 @@ data class RegularSimpleSticker(
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
 ) : RegularSticker
-@Deprecated("Renamed", ReplaceWith("SimpleRegularSticker", "dev.inmo.tgbotapi.types.files.SimpleRegularSticker"))
-typealias SimpleSticker = RegularSimpleSticker
+
 @Serializable
 data class RegularAnimatedSticker(
     @SerialName(fileIdField)

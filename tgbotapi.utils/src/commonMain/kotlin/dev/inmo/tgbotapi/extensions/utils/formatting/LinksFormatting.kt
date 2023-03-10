@@ -20,14 +20,8 @@ fun makeUsernameStartattachPrefix(username: String) = "$internalLinkBeginning/$u
 fun makeUsernameStartattachLink(username: String, data: String? = null) = "${makeUsernameStartattachPrefix(username)}${data?.let { "=$it" } ?: ""}"
 inline val Username.usernameLink
     get() = makeUsernameLink(usernameWithoutAt)
-@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.usernameLink", "dev.inmo.tgbotapi.extensions.utils.formatting.usernameLink"))
-inline val Username.link
-    get() = usernameLink
 val IdChatIdentifier.chatLink: String
     get() = makeChatLink(chatId, threadId)
-@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.chatLink", "dev.inmo.tgbotapi.extensions.utils.formatting.chatLink"))
-val IdChatIdentifier.link: String
-    get() = chatLink
 fun ChatId.link(threadId: MessageThreadId?) = makeChatLink(chatId, threadId)
 inline fun Username.link(threadId: MessageThreadId?) = makeUsernameLink(usernameWithoutAt, threadId)
 inline val Username.deepLinkPrefix
@@ -96,13 +90,6 @@ val Message.messageLink: String?
     )
 
 /**
- * @see makeLinkToMessage
- */
-@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.messageLink", "dev.inmo.tgbotapi.extensions.utils.formatting.messageLink"))
-val Message.link: String?
-    get() = messageLink
-
-/**
  * Link which can be used as by any user to get access to [Chat]. Returns null in case when there are no
  * known way to build link
  */
@@ -119,14 +106,6 @@ val Chat.chatLink: String?
         }
         return null
     }
-
-/**
- * Link which can be used as by any user to get access to [Chat]. Returns null in case when there are no
- * known way to build link
- */
-@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.chatLink", "dev.inmo.tgbotapi.extensions.utils.formatting.chatLink"))
-val Chat.link: String?
-    get() = chatLink
 
 private const val stickerSetAddingLinkPrefix = "$internalLinkBeginning/addstickers"
 

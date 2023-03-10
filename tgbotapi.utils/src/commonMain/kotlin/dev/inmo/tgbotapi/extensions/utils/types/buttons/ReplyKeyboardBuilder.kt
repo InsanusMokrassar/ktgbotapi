@@ -68,19 +68,6 @@ inline fun flatReplyKeyboard(
 }
 
 /**
- * Creates an [ReplyKeyboardRowBuilder] and [apply] [block] with this builder
- *
- * @see simpleButton
- * @see requestContactButton
- * @see requestLocationButton
- * @see requestPollButton
- */
-@Deprecated("Redundant", ReplaceWith("this.row(block)", "dev.inmo.tgbotapi.utils.row"))
-inline fun ReplyKeyboardBuilder.row(
-    block: ReplyKeyboardRowBuilder.() -> Unit
-) = add(ReplyKeyboardRowBuilder().apply(block).row)
-
-/**
  * Creates and put [SimpleKeyboardButton]
  *
  * @see replyKeyboard

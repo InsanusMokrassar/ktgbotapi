@@ -346,10 +346,10 @@ suspend fun <BC : BehaviourContext> BC.onGroupChatCreated(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onLeftChatMember(
-    initialFilter: SimpleFilter<ChatEventMessage<LeftChatMember>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<LeftChatMember>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<LeftChatMember>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<LeftChatMember>>
+    initialFilter: SimpleFilter<ChatEventMessage<LeftChatMemberEvent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<LeftChatMemberEvent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<LeftChatMemberEvent>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<LeftChatMemberEvent>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**

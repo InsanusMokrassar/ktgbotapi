@@ -14,9 +14,6 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     override val allowedUpdates: List<String>
         get() = ALL_UPDATES_LIST
     val allUpdatesFlow: Flow<Update>
-    @Deprecated("Since 4.0.0 is not actual", ReplaceWith("allUpdatesFlow"))
-    val allUpdatesWithoutMediaGroupsGroupingFlow: Flow<Update>
-        get() = allUpdatesFlow
 
     val messagesFlow: Flow<MessageUpdate>
     val messageMediaGroupsFlow: Flow<MessageUpdate>

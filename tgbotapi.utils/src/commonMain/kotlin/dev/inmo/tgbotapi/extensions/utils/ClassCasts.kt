@@ -30,7 +30,6 @@ import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
-import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMember
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
@@ -1943,13 +1942,13 @@ inline fun ChatMember.asKickedChatMember(): KickedChatMember? = this as? KickedC
 inline fun ChatMember.requireKickedChatMember(): KickedChatMember = this as KickedChatMember
 
 @PreviewFeature
-inline fun <T> ChatMember.whenLeftChatMember(block: (LeftChatMember) -> T) = asLeftChatMember()?.let(block)
+inline fun <T> ChatMember.whenLeftChatMember(block: (LeftChatMemberEvent) -> T) = asLeftChatMember()?.let(block)
 
 @PreviewFeature
-inline fun ChatMember.asLeftChatMember(): LeftChatMember? = this as? LeftChatMember
+inline fun ChatMember.asLeftChatMember(): LeftChatMemberEvent? = this as? LeftChatMemberEvent
 
 @PreviewFeature
-inline fun ChatMember.requireLeftChatMember(): LeftChatMember = this as LeftChatMember
+inline fun ChatMember.requireLeftChatMember(): LeftChatMemberEvent = this as LeftChatMemberEvent
 
 @PreviewFeature
 inline fun <T> ChatMember.whenMemberChatMember(block: (MemberChatMember) -> T) = asMemberChatMember()?.let(block)
@@ -2383,15 +2382,6 @@ inline fun TelegramMediaFile.asSticker(): Sticker? = this as? Sticker
 inline fun TelegramMediaFile.requireSticker(): Sticker = this as Sticker
 
 @PreviewFeature
-inline fun <T> TelegramMediaFile.whenSimpleSticker(block: (SimpleSticker) -> T) = asSimpleSticker()?.let(block)
-
-@PreviewFeature
-inline fun TelegramMediaFile.asSimpleSticker(): SimpleSticker? = this as? SimpleSticker
-
-@PreviewFeature
-inline fun TelegramMediaFile.requireSimpleSticker(): SimpleSticker = this as SimpleSticker
-
-@PreviewFeature
 inline fun <T> TelegramMediaFile.whenAnimatedSticker(block: (AnimatedSticker) -> T) = asAnimatedSticker()?.let(block)
 
 @PreviewFeature
@@ -2741,10 +2731,12 @@ inline fun <T> ResendableContent.whenAudioMediaGroupContent(block: (AudioMediaGr
     asAudioMediaGroupContent()?.let(block)
 
 @PreviewFeature
-inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupPartContent? = this as? AudioMediaGroupPartContent
+inline fun ResendableContent.asAudioMediaGroupContent(): AudioMediaGroupPartContent? =
+    this as? AudioMediaGroupPartContent
 
 @PreviewFeature
-inline fun ResendableContent.requireAudioMediaGroupContent(): AudioMediaGroupPartContent = this as AudioMediaGroupPartContent
+inline fun ResendableContent.requireAudioMediaGroupContent(): AudioMediaGroupPartContent =
+    this as AudioMediaGroupPartContent
 
 @PreviewFeature
 inline fun <T> ResendableContent.whenDocumentMediaGroupContent(block: (DocumentMediaGroupPartContent) -> T) =
@@ -2815,10 +2807,12 @@ inline fun <T> ResendableContent.whenVisualMediaGroupContent(block: (VisualMedia
     asVisualMediaGroupContent()?.let(block)
 
 @PreviewFeature
-inline fun ResendableContent.asVisualMediaGroupContent(): VisualMediaGroupPartContent? = this as? VisualMediaGroupPartContent
+inline fun ResendableContent.asVisualMediaGroupContent(): VisualMediaGroupPartContent? =
+    this as? VisualMediaGroupPartContent
 
 @PreviewFeature
-inline fun ResendableContent.requireVisualMediaGroupContent(): VisualMediaGroupPartContent = this as VisualMediaGroupPartContent
+inline fun ResendableContent.requireVisualMediaGroupContent(): VisualMediaGroupPartContent =
+    this as VisualMediaGroupPartContent
 
 @PreviewFeature
 inline fun <T> ResendableContent.whenAnimationContent(block: (AnimationContent) -> T) = asAnimationContent()?.let(block)
@@ -3165,13 +3159,13 @@ inline fun ChatEvent.asGroupChatCreated(): GroupChatCreated? = this as? GroupCha
 inline fun ChatEvent.requireGroupChatCreated(): GroupChatCreated = this as GroupChatCreated
 
 @PreviewFeature
-inline fun <T> ChatEvent.whenLeftChatMember(block: (LeftChatMember) -> T) = asLeftChatMember()?.let(block)
+inline fun <T> ChatEvent.whenLeftChatMember(block: (LeftChatMemberEvent) -> T) = asLeftChatMember()?.let(block)
 
 @PreviewFeature
-inline fun ChatEvent.asLeftChatMember(): LeftChatMember? = this as? LeftChatMember
+inline fun ChatEvent.asLeftChatMember(): LeftChatMemberEvent? = this as? LeftChatMemberEvent
 
 @PreviewFeature
-inline fun ChatEvent.requireLeftChatMember(): LeftChatMember = this as LeftChatMember
+inline fun ChatEvent.requireLeftChatMember(): LeftChatMemberEvent = this as LeftChatMemberEvent
 
 @PreviewFeature
 inline fun <T> ChatEvent.whenMessageAutoDeleteTimerChanged(block: (MessageAutoDeleteTimerChanged) -> T) =
@@ -3521,26 +3515,6 @@ inline fun ForwardInfo.asForwardFromPublicChatInfo(): ForwardInfo.PublicChat? = 
 
 @PreviewFeature
 inline fun ForwardInfo.requireForwardFromPublicChatInfo(): ForwardInfo.PublicChat = this as ForwardInfo.PublicChat
-
-@PreviewFeature
-inline fun <T> ForwardInfo.whenForwardFromChannelInfo(block: (ForwardFromChannelInfo) -> T) =
-    asForwardFromChannelInfo()?.let(block)
-
-@PreviewFeature
-inline fun ForwardInfo.asForwardFromChannelInfo(): ForwardFromChannelInfo? = this as? ForwardFromChannelInfo
-
-@PreviewFeature
-inline fun ForwardInfo.requireForwardFromChannelInfo(): ForwardFromChannelInfo = this as ForwardFromChannelInfo
-
-@PreviewFeature
-inline fun <T> ForwardInfo.whenForwardFromSupergroupInfo(block: (ForwardFromSupergroupInfo) -> T) =
-    asForwardFromSupergroupInfo()?.let(block)
-
-@PreviewFeature
-inline fun ForwardInfo.asForwardFromSupergroupInfo(): ForwardFromSupergroupInfo? = this as? ForwardFromSupergroupInfo
-
-@PreviewFeature
-inline fun ForwardInfo.requireForwardFromSupergroupInfo(): ForwardFromSupergroupInfo = this as ForwardFromSupergroupInfo
 
 @PreviewFeature
 inline fun <T> MessageContent.whenTextedInput(block: (TextedInput) -> T) = asTextedInput()?.let(block)

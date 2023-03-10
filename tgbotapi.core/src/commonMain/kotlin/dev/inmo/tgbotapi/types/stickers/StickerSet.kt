@@ -34,9 +34,6 @@ sealed interface StickerSet {
     @Deprecated("Renamed in telegram bot api")
     val thumb: PhotoSize?
         get() = thumbnail
-    @Deprecated("Will be removed soon due to its redundancy")
-    val containsMasks: Boolean
-        get() = this is MaskStickerSet
 
     object Serializer : KSerializer<StickerSet> {
         override val descriptor: SerialDescriptor = JsonElement.serializer().descriptor

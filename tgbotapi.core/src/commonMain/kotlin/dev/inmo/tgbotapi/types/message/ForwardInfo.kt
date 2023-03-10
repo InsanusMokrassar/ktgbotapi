@@ -57,18 +57,3 @@ sealed interface ForwardInfo {
         }
     }
 }
-
-@Deprecated("Replaced", ReplaceWith("ForwardInfo.ByAnonymous", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
-typealias AnonymousForwardInfo = ForwardInfo.ByAnonymous
-
-@Deprecated("Replaced", ReplaceWith("ForwardInfo.ByUser", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
-typealias UserForwardInfo = ForwardInfo.ByUser
-
-@Deprecated("Replaced", ReplaceWith("ForwardInfo.PublicChat", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
-typealias ForwardFromPublicChatInfo = ForwardInfo.PublicChat
-
-@Deprecated("Replaced", ReplaceWith("ForwardInfo.PublicChat.FromChannel", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
-typealias ForwardFromChannelInfo = ForwardInfo.PublicChat.FromChannel
-
-@Deprecated("Replaced", ReplaceWith("ForwardInfo.PublicChat.FromSupergroup", "dev.inmo.tgbotapi.types.message.ForwardInfo"))
-typealias ForwardFromSupergroupInfo = ForwardInfo.PublicChat.FromSupergroup
