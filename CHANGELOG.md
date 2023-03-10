@@ -4,7 +4,7 @@
 
 **THIS VERSION CONTAINS BREAKING CHANGES**:
 
-* Fully reworked mechanism of stickers creating
+* Fully reworked mechanism of stickers creating and adding
 
 ## 6.1.0
 

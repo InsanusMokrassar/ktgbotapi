@@ -4,45 +4,32 @@ import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.stickers.abstracts.StandardStickerSetAction
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import kotlinx.serialization.*
 
-fun AddAnimatedStickerToSet(
+fun AddStickerToSet(
     userId: UserId,
     stickerSetName: String,
-    sticker: InputFile,
-    emojis: String,
-    maskPosition: MaskPosition? = null
+    inputSticker: InputSticker
 ): Request<Boolean> {
-    val data = AddAnimatedStickerToSet(userId, stickerSetName, emojis, sticker as? FileId, maskPosition)
-    return when (sticker) {
+    val data = AddStickerToSetData(userId, stickerSetName, inputSticker)
+    return when (val sticker = inputSticker.sticker) {
         is MultipartFile -> CommonMultipartFileRequest(
             data,
-            mapOf(tgsStickerField to sticker)
+            mapOf(sticker.fileId to sticker)
         )
         is FileId -> data
     }
 }
 
 @Serializable
-data class AddAnimatedStickerToSet internal constructor(
+data class AddStickerToSetData internal constructor(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)
     override val name: String,
-    @SerialName(emojisField)
-    override val emojis: String,
-    @SerialName(tgsStickerField)
-    val sticker: FileId? = null,
-    @SerialName(maskPositionField)
-    override val maskPosition: MaskPosition? = null
+    @SerialName(stickerField)
+    override val inputSticker: InputSticker
 ) : StandardStickerSetAction {
-    init {
-        if(emojis.isEmpty()) {
-            throw IllegalArgumentException("Emojis must not be empty")
-        }
-    }
-
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 
