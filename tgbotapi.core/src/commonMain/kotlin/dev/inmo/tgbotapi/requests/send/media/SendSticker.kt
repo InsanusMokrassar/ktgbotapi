@@ -8,14 +8,19 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.StickerContent
+import dev.inmo.tgbotapi.utils.mapOfNotNull
 import dev.inmo.tgbotapi.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 
 fun SendSticker(
     chatId: ChatIdentifier,
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
+    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
@@ -32,7 +37,7 @@ fun SendSticker(
     replyMarkup
 ).let {
     when (sticker) {
-        is MultipartFile -> SendStickerByFile(it, sticker)
+        is MultipartFile -> SendStickerByFile(it, sticker, emoji)
         is FileId -> it
     }
 }
@@ -69,8 +74,16 @@ data class SendStickerByFileId internal constructor(
 data class SendStickerByFile internal constructor(
     @Transient
     private val sendStickerByFileId: SendStickerByFileId,
-    val sticker: MultipartFile
+    val sticker: MultipartFile,
+    val emoji: String?
 ) : MultipartRequest<ContentMessage<StickerContent>>, Request<ContentMessage<StickerContent>> by sendStickerByFileId {
     override val mediaMap: Map<String, MultipartFile> = mapOf(stickerField to sticker)
-    override val paramsJson: JsonObject = sendStickerByFileId.toJsonWithoutNulls(SendStickerByFileId.serializer())
+    override val paramsJson: JsonObject
+        get() {
+            return JsonObject(
+                mapOfNotNull(
+                    emojiField to emoji ?.let { JsonPrimitive(it) }
+                ) + sendStickerByFileId.toJsonWithoutNulls(SendStickerByFileId.serializer())
+            )
+        }
 }
