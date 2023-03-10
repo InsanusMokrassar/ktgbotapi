@@ -17,13 +17,6 @@ fun SetStickerSetThumbnail(
     )
 }
 
-@Deprecated("Renamed", ReplaceWith("SetStickerSetThumbnail(userId, stickerSetName, thumbnail)", "dev.inmo.tgbotapi.requests.stickers.SetStickerSetThumbnail"))
-fun SetStickerSetThumb(
-    userId: UserId,
-    stickerSetName: String,
-    thumbnail: MultipartFile
-): Request<Boolean> = SetStickerSetThumbnail(userId, stickerSetName, thumbnail)
-
 @Serializable
 data class SetStickerSetThumbnail (
     @SerialName(userIdField)
@@ -38,10 +31,3 @@ data class SetStickerSetThumbnail (
 
     override fun method(): String = "setStickerSetThumbnail"
 }
-
-@Deprecated("Renamed", ReplaceWith("SetStickerSetThumbnail(userId, name, thumbnail)", "dev.inmo.tgbotapi.requests.stickers.SetStickerSetThumbnail"))
-fun SetStickerSetThumb(
-    userId: UserId,
-    name: StickerSetName,
-    thumbnail: FileId? = null
-) = SetStickerSetThumbnail(userId, name, thumbnail)
