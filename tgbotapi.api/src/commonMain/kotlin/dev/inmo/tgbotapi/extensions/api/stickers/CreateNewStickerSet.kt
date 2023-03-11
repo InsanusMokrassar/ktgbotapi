@@ -1,14 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api.stickers
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.requests.abstracts.FileId
-import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.requests.stickers.CreateNewStickerSet
 import dev.inmo.tgbotapi.requests.stickers.InputSticker
 import dev.inmo.tgbotapi.types.StickerFormat
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.UserId
-import dev.inmo.tgbotapi.types.stickers.MaskPosition
 
 suspend fun TelegramBot.createNewStickerSet(
     userId: UserId,
@@ -16,8 +13,9 @@ suspend fun TelegramBot.createNewStickerSet(
     title: String,
     stickersFormat: StickerFormat,
     stickers: List<InputSticker>,
+    needsRepainting: Boolean = false
 ) = execute(
-    CreateNewStickerSet(userId, name, title, stickersFormat, stickers)
+    CreateNewStickerSet(userId, name, title, stickersFormat, stickers, needsRepainting)
 )
 
 
@@ -27,6 +25,7 @@ suspend fun TelegramBot.createNewStickerSet(
     title: String,
     stickersFormat: StickerFormat,
     stickers: List<InputSticker>,
+    needsRepainting: Boolean = false,
 ) = createNewStickerSet(
-    user.id, name, title, stickersFormat, stickers
+    user.id, name, title, stickersFormat, stickers, needsRepainting
 )

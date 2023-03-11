@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
+import dev.inmo.tgbotapi.requests.stickers.InputSticker
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -42,6 +43,8 @@ sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile {
         get() = false
     val isVideo
         get() = false
+
+    fun asInputSticker(emojis: List<String> = emoji ?.let { listOf(it) } ?: error("Unable to create input sticker without emojis")): InputSticker
 }
 
 @OptIn(RiskFeature::class)
@@ -206,6 +209,12 @@ sealed interface AnimatedSticker : Sticker {
 @Serializable
 sealed interface RegularSticker : Sticker {
     val premiumAnimationFile: File?
+
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
+        fileId,
+        emojis,
+        emptyList()
+    )
 }
 
 @Serializable
@@ -281,6 +290,12 @@ data class RegularVideoSticker(
 @Serializable
 sealed interface MaskSticker : Sticker {
     val maskPosition: MaskPosition?
+
+    override fun asInputSticker(emojis: List<String>) = InputSticker.Mask(
+        fileId,
+        emojis,
+        maskPosition
+    )
 }
 @Serializable
 data class MaskSimpleSticker(
@@ -354,6 +369,12 @@ data class MaskVideoSticker(
 sealed interface CustomEmojiSticker : Sticker {
     val customEmojiId: CustomEmojiId
     val needsRepainting: Boolean
+
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.CustomEmoji(
+        fileId,
+        emojis,
+        emptyList()
+    )
 }
 
 @Serializable
@@ -451,4 +472,10 @@ data class UnknownSticker(
     @SerialName(stickerFormatField)
     override val stickerFormat: StickerFormat = StickerFormat.Static,
     val raw: JsonElement
-) : Sticker
+) : Sticker {
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
+        fileId,
+        emojis,
+        emptyList()
+    )
+}
