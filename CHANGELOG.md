@@ -1,5 +1,22 @@
 # TelegramBotAPI changelog
 
+## 7.0.0
+
+This update contains support of [Telegram Bot API 6.6](https://core.telegram.org/bots/api-changelog#march-9-2023)
+
+**THIS VERSION CONTAINS BREAKING CHANGES**:
+
+* All previous deprecations have been removed
+* Fully reworked mechanism of stickers creating and adding
+    * All separations of stickers types like `Animeted` have been replaces with type `StickerFormat`
+    * New `InputSticker` type (and all subtypes) as replacements for old raw fields in methods
+* Reworked mechanism of files uploading
+
+Other changes
+
+* `Versions`:
+  * `MicroUtils`: `0.17.3` -> `0.17.5`
+
 ## 6.1.0
 
 * `Versions`:

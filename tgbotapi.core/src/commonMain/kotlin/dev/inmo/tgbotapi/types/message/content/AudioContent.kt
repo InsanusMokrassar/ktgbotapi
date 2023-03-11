@@ -30,7 +30,7 @@ data class AudioContent(
     ): Request<ContentMessage<AudioContent>> = SendAudio(
         chatId,
         media.fileId,
-        media.thumb ?.fileId,
+        media.thumbnail ?.fileId,
         textSources,
         media.duration,
         media.performer,

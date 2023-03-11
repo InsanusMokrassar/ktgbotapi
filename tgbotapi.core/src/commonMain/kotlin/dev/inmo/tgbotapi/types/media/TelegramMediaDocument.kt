@@ -78,7 +78,7 @@ fun DocumentFile.toTelegramMediaDocument(
     fileId,
     text,
     parseMode,
-    thumb ?.fileId
+    thumbnail ?.fileId
 )
 
 fun DocumentFile.toTelegramMediaDocument(
@@ -86,5 +86,5 @@ fun DocumentFile.toTelegramMediaDocument(
 ) = TelegramMediaDocument(
     fileId,
     textSources,
-    thumb ?.fileId
+    thumbnail ?.fileId
 )

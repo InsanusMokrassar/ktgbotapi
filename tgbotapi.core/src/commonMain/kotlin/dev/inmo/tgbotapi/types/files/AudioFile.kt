@@ -25,8 +25,8 @@ data class AudioFile(
     override val mimeType: MimeType? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null
 ) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, TitledMediaFile,
     Performerable
 

@@ -21,8 +21,8 @@ data class VideoFile(
     override val height: Int,
     @SerialName(durationField)
     override val duration: Long? = null,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(fileNameField)
     override val fileName: String? = null,
     @SerialName(mimeTypeField)
@@ -44,7 +44,7 @@ inline fun VideoFile.toTelegramMediaVideo(
     width,
     height,
     duration,
-    thumb ?.fileId
+    thumbnail ?.fileId
 )
 
 @Suppress("NOTHING_TO_INLINE")
@@ -58,5 +58,5 @@ inline fun VideoFile.toTelegramMediaVideo(
     width,
     height,
     duration,
-    thumb ?.fileId
+    thumbnail ?.fileId
 )

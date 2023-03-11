@@ -10,14 +10,6 @@ import dev.inmo.tgbotapi.types.update.abstracts.*
 import dev.inmo.tgbotapi.utils.extensions.asMediaGroupMessage
 
 /**
- * @return If [this] is [SentMediaGroupUpdate] - [Update.updateId] of [last] element, or its own [Update.updateId]
- */
-@Deprecated("Redundant", ReplaceWith("updateId"))
-fun Update.lastUpdateIdentifier(): UpdateIdentifier {
-    return updateId
-}
-
-/**
  * @return The biggest [UpdateIdentifier] OR null
  *
  * @see [Update.lastUpdateIdentifier]
@@ -61,12 +53,3 @@ fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     resultUpdates.sortBy { it.updateId }
     return resultUpdates
 }
-
-/**
- * @return [EditMessageMediaGroupUpdate] in case if [this] is [EditMessageUpdate]. When [this] object is
- * [EditChannelPostUpdate] instance - will return [EditChannelPostMediaGroupUpdate]
- *
- * @throws IllegalStateException
- */
-@Deprecated("Redundant", ReplaceWith("this"))
-fun BaseEditMessageUpdate.toEditMediaGroupUpdate() = this

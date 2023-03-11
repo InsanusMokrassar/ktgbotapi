@@ -83,6 +83,38 @@ sealed interface StickerType {
     }
 }
 
+@Serializable(StickerFormat.Serializer::class)
+sealed interface StickerFormat {
+    val type: String
+
+    @Serializable
+    object Static : StickerFormat { override val type: String = "static" }
+    @Serializable
+    object Animated : StickerFormat { override val type: String = "animated" }
+    @Serializable
+    object Video : StickerFormat { override val type: String = "video" }
+    @Serializable
+    data class Unknown(override val type: String = "custom_emoji") : StickerFormat
+
+    object Serializer : KSerializer<StickerFormat> {
+        override val descriptor: SerialDescriptor = String.serializer().descriptor
+
+        override fun deserialize(decoder: Decoder): StickerFormat {
+            return when (val type = decoder.decodeString()) {
+                Static.type -> Static
+                Animated.type -> Animated
+                Video.type -> Video
+                else -> Unknown(type)
+            }
+        }
+
+        override fun serialize(encoder: Encoder, value: StickerFormat) {
+            encoder.encodeString(value.type)
+        }
+
+    }
+}
+
 val usernameRegex = Regex("@[\\w\\d_]+")
 
 val degreesLimit = 1 .. 360
@@ -133,6 +165,12 @@ val membersLimit = 1 .. 99999
 val suggestedTipAmountsLimit = 1 .. 4
 
 val inputFieldPlaceholderLimit = 1 .. 64
+
+val emojisInStickerLimit = 1 .. 20
+
+val keywordsInStickerLimit = 0 .. 20
+
+val stickerKeywordLengthLimit = 0 .. 64
 
 const val botActionActualityTime: Seconds = 5
 
@@ -257,6 +295,7 @@ const val createsJoinRequestField = "creates_join_request"
 const val pendingJoinRequestCountField = "pending_join_request_count"
 const val memberLimitField = "member_limit"
 const val iconColorField = "icon_color"
+const val emojiListField = "emoji_list"
 
 const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
@@ -325,9 +364,17 @@ const val stickerFileIdField = "sticker_file_id"
 
 const val gameShortNameField = "game_short_name"
 
+const val thumbnailUrlField = "thumbnail_url"
+@Deprecated("Renamed in telegram bot api", ReplaceWith("thumbnailUrlField", "dev.inmo.tgbotapi.types.thumbnailUrlField"))
 const val thumbUrlField = "thumb_url"
+const val thumbnailMimeTypeField = "thumbnail_mime_type"
+@Deprecated("Renamed in telegram bot api", ReplaceWith("thumbnailMimeTypeField", "dev.inmo.tgbotapi.types.thumbnailMimeTypeField"))
 const val thumbMimeTypeField = "thumb_mime_type"
+const val thumbnailWidthField = "thumbnail_width"
+@Deprecated("Renamed in telegram bot api", ReplaceWith("thumbnailWidthField", "dev.inmo.tgbotapi.types.thumbnailWidthField"))
 const val thumbWidthField = "thumb_width"
+const val thumbnailHeightField = "thumbnail_height"
+@Deprecated("Renamed in telegram bot api", ReplaceWith("thumbnailHeightField", "dev.inmo.tgbotapi.types.thumbnailHeightField"))
 const val thumbHeightField = "thumb_height"
 
 const val inputMessageContentField = "input_message_content"
@@ -373,6 +420,8 @@ const val webmStickerField = "webm_sticker"
 const val oldChatMemberField = "old_chat_member"
 const val newChatMemberField = "new_chat_member"
 const val stickerTypeField = "sticker_type"
+const val stickerFormatField = "sticker_format"
+const val needsRepaintingField = "needs_repainting"
 
 const val okField = "ok"
 const val captionField = "caption"
@@ -380,11 +429,14 @@ const val explanationField = "explanation"
 const val idField = "id"
 const val pollIdField = "poll_id"
 const val textField = "text"
+const val thumbnailField = "thumbnail"
+@Deprecated("Renamed (in telegram bot api)", ReplaceWith("thumbnailField", "dev.inmo.tgbotapi.types.thumbnailField"))
 const val thumbField = "thumb"
 const val emojiField = "emoji"
 const val emojisField = "emojis"
 const val titleField = "title"
 const val descriptionField = "description"
+const val shortDescriptionField = "short_description"
 const val performerField = "performer"
 const val durationField = "duration"
 const val widthField = "width"
@@ -408,6 +460,7 @@ const val offsetField = "offset"
 const val limitField = "limit"
 const val stickersField = "stickers"
 const val stickerField = "sticker"
+const val keywordsField = "keywords"
 const val urlField = "url"
 const val addressField = "address"
 const val actionField = "action"

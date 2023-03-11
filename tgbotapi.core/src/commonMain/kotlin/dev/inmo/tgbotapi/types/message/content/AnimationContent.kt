@@ -32,7 +32,7 @@ data class AnimationContent(
     ): Request<ContentMessage<AnimationContent>> = SendAnimation(
         chatId,
         media.fileId,
-        media.thumb ?.fileId,
+        media.thumbnail ?.fileId,
         textSources,
         spoilered,
         media.duration,
@@ -53,6 +53,6 @@ data class AnimationContent(
         media.width,
         media.height,
         media.duration,
-        media.thumb ?.fileId
+        media.thumbnail ?.fileId
     )
 }

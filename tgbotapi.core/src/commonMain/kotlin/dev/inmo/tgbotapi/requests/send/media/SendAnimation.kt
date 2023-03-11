@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -22,7 +23,7 @@ import kotlinx.serialization.*
 fun SendAnimation(
     chatId: ChatIdentifier,
     animation: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
     spoilered: Boolean = false,
@@ -36,15 +37,13 @@ fun SendAnimation(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AnimationContent>> {
-    val animationAsFileId = (animation as? FileId) ?.fileId
     val animationAsFile = animation as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendAnimationData(
         chatId,
-        animationAsFileId,
-        thumbAsFileId,
+        animation,
+        thumbnail ?.fileId,
         text,
         parseMode,
         null,
@@ -63,9 +62,9 @@ fun SendAnimation(
     return if (animationAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendAnimationFiles(animationAsFile, thumbAsFile)
+            listOfNotNull(animationAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -73,7 +72,7 @@ fun SendAnimation(
 fun SendAnimation(
     chatId: ChatIdentifier,
     animation: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     entities: TextSourcesList,
     spoilered: Boolean = false,
     duration: Long? = null,
@@ -86,15 +85,13 @@ fun SendAnimation(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AnimationContent>> {
-    val animationAsFileId = (animation as? FileId) ?.fileId
     val animationAsFile = animation as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendAnimationData(
         chatId,
-        animationAsFileId,
-        thumbAsFileId,
+        animation,
+        thumbnail ?.fileId,
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
@@ -113,9 +110,9 @@ fun SendAnimation(
     return if (animationAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendAnimationFiles(animationAsFile, thumbAsFile)
+            listOfNotNull(animationAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -128,9 +125,9 @@ data class SendAnimationData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(animationField)
-    val animation: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    val animation: InputFile,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -187,8 +184,8 @@ data class SendAnimationData internal constructor(
 
 data class SendAnimationFiles internal constructor(
     val animation: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     animationField to animation,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

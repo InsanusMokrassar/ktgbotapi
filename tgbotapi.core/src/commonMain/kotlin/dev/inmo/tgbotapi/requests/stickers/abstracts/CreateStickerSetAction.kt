@@ -1,5 +1,5 @@
 package dev.inmo.tgbotapi.requests.stickers.abstracts
 
-interface CreateStickerSetAction : StandardStickerSetAction {
+interface CreateStickerSetAction : OwnerStickerSetAction {
     val title: String
 }

@@ -109,7 +109,7 @@ suspend fun BehaviourContext.waitGroupChatCreatedEvents(
 suspend fun BehaviourContext.waitLeftChatMemberEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<LeftChatMember>(initRequest, errorFactory)
+) = waitEvents<LeftChatMemberEvent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitNewChatPhotoEvents(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

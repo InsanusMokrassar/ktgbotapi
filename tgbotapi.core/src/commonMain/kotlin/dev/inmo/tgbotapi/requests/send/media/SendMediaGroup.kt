@@ -2,10 +2,12 @@ package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.*
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializerClass
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
@@ -37,7 +39,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     protectContent: Boolean = false,
     replyToMessageId: MessageId? = null,
     allowSendingWithoutReply: Boolean? = null
-): Request<PossiblySentViaBotCommonMessage<MediaGroupContent<T>>> {
+): Request<ContentMessage<MediaGroupContent<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
     }
@@ -66,11 +68,11 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     return (if (files.isEmpty()) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendMediaGroupFiles(files)
+            files.associateBy { it.fileId }
         )
-    }) as Request<PossiblySentViaBotCommonMessage<MediaGroupContent<T>>>
+    }) as Request<ContentMessage<MediaGroupContent<T>>>
 }
 
 /**

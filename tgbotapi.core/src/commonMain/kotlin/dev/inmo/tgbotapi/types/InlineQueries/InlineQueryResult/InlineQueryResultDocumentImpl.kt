@@ -21,24 +21,24 @@ fun InlineQueryResultDocumentImpl(
     url: String,
     title: String,
     mimeType: MimeType,
-    thumbUrl: String? = null,
-    thumbWidth: Int? = null,
-    thumbHeight: Int? = null,
+    thumbnailUrl: String? = null,
+    thumbnailWidth: Int? = null,
+    thumbnailHeight: Int? = null,
     description: String? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultDocumentImpl(id, url, title, mimeType, thumbUrl, thumbWidth, thumbHeight, description, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultDocumentImpl(id, url, title, mimeType, thumbnailUrl, thumbnailWidth, thumbnailHeight, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultDocumentImpl(
     id: InlineQueryIdentifier,
     url: String,
     title: String,
     mimeType: MimeType,
-    thumbUrl: String? = null,
-    thumbWidth: Int? = null,
-    thumbHeight: Int? = null,
+    thumbnailUrl: String? = null,
+    thumbnailWidth: Int? = null,
+    thumbnailHeight: Int? = null,
     description: String? = null,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null,
@@ -48,9 +48,9 @@ fun InlineQueryResultDocumentImpl(
     url,
     title,
     mimeType,
-    thumbUrl,
-    thumbWidth,
-    thumbHeight,
+    thumbnailUrl,
+    thumbnailWidth,
+    thumbnailHeight,
     description,
     entities.makeString(),
     null,
@@ -69,12 +69,12 @@ data class InlineQueryResultDocumentImpl internal constructor(
     override val title: String,
     @SerialName(mimeTypeField)
     override val mimeType: MimeType,
-    @SerialName(thumbUrlField)
-    override val thumbUrl: String? = null,
-    @SerialName(thumbWidthField)
-    override val thumbWidth: Int? = null,
-    @SerialName(thumbHeightField)
-    override val thumbHeight: Int? = null,
+    @SerialName(thumbnailUrlField)
+    override val thumbnailUrl: String? = null,
+    @SerialName(thumbnailWidthField)
+    override val thumbnailWidth: Int? = null,
+    @SerialName(thumbnailHeightField)
+    override val thumbnailHeight: Int? = null,
     @SerialName(descriptionField)
     override val description: String? = null,
     @SerialName(captionField)

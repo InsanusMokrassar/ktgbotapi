@@ -10,13 +10,6 @@ suspend fun TelegramBot.getStickerSet(
     GetStickerSet(name)
 )
 
-@Deprecated("Renamed", ReplaceWith("getStickerSetOrThrow(sticker)", "dev.inmo.tgbotapi.extensions.api.get.getStickerSetOrThrow"))
-suspend fun TelegramBot.getStickerSet(
-    sticker: Sticker
-) = getStickerSet(
-    sticker.stickerSetName ?: error("Sticker must contains stickerSetName to be correctly used in getStickerSet method")
-)
-
 suspend fun TelegramBot.getStickerSetOrNull(
     sticker: Sticker
 ) = sticker.stickerSetName ?.let {

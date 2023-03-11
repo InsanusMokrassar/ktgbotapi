@@ -77,7 +77,7 @@ fun AudioFile.toTelegramMediaAudio(
     duration,
     performer,
     title,
-    thumb ?.fileId
+    thumbnail ?.fileId
 )
 
 fun AudioFile.toTelegramMediaAudio(
@@ -89,5 +89,5 @@ fun AudioFile.toTelegramMediaAudio(
     duration,
     performer,
     title,
-    thumb ?.fileId
+    thumbnail ?.fileId
 )

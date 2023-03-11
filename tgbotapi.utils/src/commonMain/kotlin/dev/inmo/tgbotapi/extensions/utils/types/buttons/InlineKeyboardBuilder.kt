@@ -49,21 +49,6 @@ inline fun flatInlineKeyboard(
     block: InlineKeyboardRowBuilder.() -> Unit
 ) = inlineKeyboard { row<InlineKeyboardButton>(block) }
 
-/**
- * Creates an [InlineKeyboardRowBuilder] and [apply] [block] with this builder
- *
- * @see payButton
- * @see dataButton
- * @see gameButton
- * @see loginButton
- * @see inlineQueryInCurrentChatButton
- * @see inlineQueryButton
- * @see urlButton
- */
-@Deprecated("Redundant", ReplaceWith("this.row(block)", "dev.inmo.tgbotapi.utils.row"))
-inline fun InlineKeyboardBuilder.row(
-    block: InlineKeyboardRowBuilder.() -> Unit
-) = add(InlineKeyboardRowBuilder().apply(block).row)
 
 /**
  * Creates and put [PayInlineKeyboardButton]

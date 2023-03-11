@@ -13,7 +13,7 @@ ktor = "2.2.4"
 ksp = "1.8.10-1.0.9"
 kotlin-poet = "1.12.0"
 
-microutils = "0.17.3"
+microutils = "0.17.5"
 
 github-release-plugin = "2.4.1"
 dokka = "1.8.10"
@@ -45,6 +45,7 @@ microutils-coroutines = { module = "dev.inmo:micro_utils.coroutines", version.re
 microutils-serialization-base64 = { module = "dev.inmo:micro_utils.serialization.base64", version.ref = "microutils" }
 microutils-serialization-encapsulator = { module = "dev.inmo:micro_utils.serialization.encapsulator", version.ref = "microutils" }
 microutils-serialization-typedSerializer = { module = "dev.inmo:micro_utils.serialization.typed_serializer", version.ref = "microutils" }
+microutils-serialization-mapper = { module = "dev.inmo:micro_utils.serialization.mapper", version.ref = "microutils" }
 microutils-languageCodes = { module = "dev.inmo:micro_utils.language_codes", version.ref = "microutils" }
 microutils-ktor-common = { module = "dev.inmo:micro_utils.ktor.common", version.ref = "microutils" }
 microutils-fsm-common = { module = "dev.inmo:micro_utils.fsm.common", version.ref = "microutils" }

@@ -7,6 +7,3 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PublicChatEvent
 data class LeftChatMemberEvent(
     override val user: User
 ) : PublicChatEvent, WithUser
-
-@Deprecated("Renamed", ReplaceWith("dev.inmo.tgbotapi.types.message.ChatEvents", "LeftChatMemberEvent"))
-typealias LeftChatMember = LeftChatMemberEvent

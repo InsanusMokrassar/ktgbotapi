@@ -35,10 +35,10 @@ inline val Message.forward_from_chat: Chat?
     get() = asPossiblyForwardedMessage() ?.forwardInfo ?.asForwardFromPublicChatInfo() ?.chat
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.forward_from_message_id: MessageId?
-    get() = asPossiblyForwardedMessage() ?.forwardInfo ?.asForwardFromChannelInfo() ?.messageId
+    get() = asPossiblyForwardedMessage() ?.forwardInfo ?.fromChannelOrNull() ?.messageId
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.forward_signature: ForwardSignature?
-    get() = asPossiblyForwardedMessage() ?.forwardInfo ?.asForwardFromChannelInfo() ?.signature
+    get() = asPossiblyForwardedMessage() ?.forwardInfo ?.fromChannelOrNull() ?.signature
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.forward_sender_name: ForwardSenderName?
     get() = asPossiblyForwardedMessage() ?.forwardInfo ?.asAnonymousForwardInfo() ?.senderName

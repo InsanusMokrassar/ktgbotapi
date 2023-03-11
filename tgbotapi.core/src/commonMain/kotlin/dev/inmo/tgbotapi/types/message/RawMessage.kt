@@ -223,7 +223,7 @@ internal data class RawMessage(
     private val chatEvent: ChatEvent? by lazy {
         when {
             new_chat_members != null -> NewChatMembers(new_chat_members.toList())
-            left_chat_member != null -> LeftChatMember(left_chat_member)
+            left_chat_member != null -> LeftChatMemberEvent(left_chat_member)
             new_chat_title != null -> NewChatTitle(new_chat_title)
             new_chat_photo != null -> NewChatPhoto(new_chat_photo.toList())
             video_chat_started != null -> video_chat_started
@@ -242,12 +242,15 @@ internal data class RawMessage(
             group_chat_created -> GroupChatCreated(
                 migrate_to_chat_id
             )
+
             supergroup_chat_created -> SupergroupChatCreated(
                 migrate_from_chat_id
             )
+
             migrate_from_chat_id != null -> MigratedToSupergroup(
                 migrate_from_chat_id
             )
+
             channel_chat_created -> ChannelChatCreated()
             pinned_message != null -> PinnedMessage(pinned_message.asMessage)
             proximity_alert_triggered != null -> proximity_alert_triggered

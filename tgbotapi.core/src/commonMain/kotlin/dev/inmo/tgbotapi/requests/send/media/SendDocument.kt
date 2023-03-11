@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -31,7 +32,7 @@ import kotlinx.serialization.*
 fun SendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
@@ -42,15 +43,13 @@ fun SendDocument(
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): Request<ContentMessage<DocumentContent>> {
-    val documentAsFileId = (document as? FileId) ?.fileId
     val documentAsFile = document as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendDocumentData(
         chatId,
-        documentAsFileId,
-        thumbAsFileId,
+        document,
+        thumbnail ?.fileId,
         text,
         parseMode,
         null,
@@ -66,9 +65,9 @@ fun SendDocument(
     return if (documentAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendDocumentFiles(documentAsFile, thumbAsFile)
+            listOfNotNull(documentAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -85,7 +84,7 @@ fun SendDocument(
 fun SendDocument(
     chatId: ChatIdentifier,
     document: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
@@ -95,15 +94,13 @@ fun SendDocument(
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): Request<ContentMessage<DocumentContent>> {
-    val documentAsFileId = (document as? FileId) ?.fileId
     val documentAsFile = document as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendDocumentData(
         chatId,
-        documentAsFileId,
-        thumbAsFileId,
+        document,
+        thumbnail ?.fileId,
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
@@ -119,9 +116,9 @@ fun SendDocument(
     return if (documentAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendDocumentFiles(documentAsFile, thumbAsFile)
+            listOfNotNull(documentAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -143,9 +140,9 @@ data class SendDocumentData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(documentField)
-    val document: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    val document: InputFile,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -193,8 +190,8 @@ data class SendDocumentData internal constructor(
 
 data class SendDocumentFiles internal constructor(
     val document: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     documentField to document,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

@@ -19,7 +19,7 @@ import kotlinx.serialization.Serializable
 fun InlineQueryResultVideoImpl(
     id: InlineQueryIdentifier,
     url: String,
-    thumbUrl: String,
+    thumbnailUrl: String,
     mimeType: MimeType,
     title: String,
     width: Int? = null,
@@ -30,12 +30,12 @@ fun InlineQueryResultVideoImpl(
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultVideoImpl(id, url, thumbUrl, mimeType, title, width, height, duration, description, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultVideoImpl(id, url, thumbnailUrl, mimeType, title, width, height, duration, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultVideoImpl(
     id: InlineQueryIdentifier,
     url: String,
-    thumbUrl: String,
+    thumbnailUrl: String,
     mimeType: MimeType,
     title: String,
     width: Int? = null,
@@ -48,7 +48,7 @@ fun InlineQueryResultVideoImpl(
 ) = InlineQueryResultVideoImpl(
     id,
     url,
-    thumbUrl,
+    thumbnailUrl,
     mimeType,
     title,
     width,
@@ -68,8 +68,8 @@ data class InlineQueryResultVideoImpl internal constructor(
     override val id: InlineQueryIdentifier,
     @SerialName(videoUrlField)
     override val url: String,
-    @SerialName(thumbUrlField)
-    override val thumbUrl: String,
+    @SerialName(thumbnailUrlField)
+    override val thumbnailUrl: String,
     @SerialName(mimeTypeField)
     override val mimeType: MimeType,
     @SerialName(titleField)

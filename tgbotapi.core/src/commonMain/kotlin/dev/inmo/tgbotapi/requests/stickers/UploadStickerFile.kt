@@ -13,7 +13,9 @@ data class UploadStickerFile(
     @SerialName(userIdField)
     val userId: UserId,
     @Transient
-    val sticker: MultipartFile = throw IllegalStateException("Detected autocreating try: this class can't be deserialized")
+    val sticker: MultipartFile = throw IllegalStateException("Detected autocreating try: this class can't be deserialized"),
+    @SerialName(stickerFormatField)
+    val stickerFormat: StickerFormat
 ): MultipartRequest<File> {
     init {
         // TODO:: add check of width/height of image and type of file - it must be png with max side length is 512px
@@ -21,7 +23,7 @@ data class UploadStickerFile(
 
     override fun method(): String = "uploadStickerFile"
     @Transient
-    override val mediaMap: Map<String, MultipartFile> = mapOf(pngStickerField to sticker)
+    override val mediaMap: Map<String, MultipartFile> = mapOf(stickerField to sticker)
     @Transient
     override val paramsJson: JsonObject = toJsonWithoutNulls(serializer())
     override val resultDeserializer: DeserializationStrategy<File>

@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -33,7 +34,7 @@ fun SendPhoto(
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
         chatId,
-        (photo as? FileId) ?.fileId,
+        photo,
         text,
         parseMode,
         null,
@@ -45,12 +46,14 @@ fun SendPhoto(
         allowSendingWithoutReply,
         replyMarkup
     )
-    return data.photo ?.let {
+    return if (photo is MultipartFile) {
+        CommonMultipartFileRequest(
+            data,
+            listOf(photo).associateBy { it.fileId }
+        )
+    } else {
         data
-    } ?:  MultipartRequestImpl(
-        data,
-        SendPhotoFiles(photo as MultipartFile)
-    )
+    }
 }
 
 fun SendPhoto(
@@ -67,7 +70,7 @@ fun SendPhoto(
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
         chatId,
-        (photo as? FileId)?.fileId,
+        photo,
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
@@ -79,12 +82,15 @@ fun SendPhoto(
         allowSendingWithoutReply,
         replyMarkup
     )
-    return data.photo ?.let {
+
+    return if (photo is MultipartFile) {
+        CommonMultipartFileRequest(
+            data,
+            listOf(photo).associateBy { it.fileId }
+        )
+    } else {
         data
-    } ?:  MultipartRequestImpl(
-        data,
-        SendPhotoFiles(photo as MultipartFile)
-    )
+    }
 }
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PhotoContent>>
@@ -95,7 +101,7 @@ data class SendPhotoData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(photoField)
-    val photo: String? = null,
+    val photo: InputFile,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)

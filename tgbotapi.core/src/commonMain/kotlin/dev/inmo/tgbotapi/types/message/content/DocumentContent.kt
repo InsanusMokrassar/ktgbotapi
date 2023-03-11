@@ -32,7 +32,7 @@ data class DocumentContent(
     ): Request<ContentMessage<DocumentContent>> = SendDocument(
         chatId,
         media.fileId,
-        media.thumb ?.fileId,
+        media.thumbnail ?.fileId,
         textSources,
         messageThreadId,
         disableNotification,

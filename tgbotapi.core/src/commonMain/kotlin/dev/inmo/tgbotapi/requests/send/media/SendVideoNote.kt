@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -14,7 +15,7 @@ import kotlinx.serialization.*
 fun SendVideoNote(
     chatId: ChatIdentifier,
     videoNote: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     duration: Long? = null,
     size: Int? = null, // in documentation - length (size of video side)
     threadId: MessageThreadId? = chatId.threadId,
@@ -24,15 +25,13 @@ fun SendVideoNote(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VideoNoteContent>> {
-    val videoNoteAsFileId = (videoNote as? FileId) ?.fileId
     val videoNoteAsFile = videoNote as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendVideoNoteData(
         chatId,
-        videoNoteAsFileId,
-        thumbAsFileId,
+        videoNote,
+        thumbnail ?.fileId,
         duration,
         size,
         threadId,
@@ -46,9 +45,9 @@ fun SendVideoNote(
     return if (videoNoteAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendVideoNoteFiles(videoNoteAsFile, thumbAsFile)
+            listOfNotNull(videoNoteAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -61,9 +60,9 @@ data class SendVideoNoteData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(videoNoteField)
-    val videoNote: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    val videoNote: InputFile,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(lengthField)
@@ -99,8 +98,8 @@ data class SendVideoNoteData internal constructor(
 
 data class SendVideoNoteFiles internal constructor(
     val videoNote: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     videoNoteField to videoNote,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

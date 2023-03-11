@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
+import dev.inmo.tgbotapi.requests.stickers.InputSticker
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -27,7 +28,8 @@ data class StickerSurrogate(
     val premium_animation: File? = null,
     val mask_position: MaskPosition? = null,
     val custom_emoji_id: CustomEmojiId? = null,
-    val file_size: Long? = null
+    val file_size: Long? = null,
+    val needs_repainting: Boolean = false
 )
 
 // TODO:: Serializer
@@ -35,11 +37,14 @@ data class StickerSurrogate(
 sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile {
     val emoji: String?
     val stickerSetName: StickerSetName?
+    val stickerFormat: StickerFormat
 
     val isAnimated
         get() = false
     val isVideo
         get() = false
+
+    fun asInputSticker(emojis: List<String> = emoji ?.let { listOf(it) } ?: error("Unable to create input sticker without emojis")): InputSticker
 }
 
 @OptIn(RiskFeature::class)
@@ -92,7 +97,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.mask_position ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.mask_position,
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -103,7 +108,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.mask_position ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.mask_position,
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -114,7 +119,7 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.mask_position ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.mask_position,
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
@@ -127,33 +132,36 @@ object StickerSerializer : KSerializer<Sticker> {
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
-                    surrogate.file_size
+                    surrogate.file_size,
+                    surrogate.needs_repainting
                 )
                 surrogate.is_video == true -> CustomEmojiVideoSticker(
                     surrogate.file_id,
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
-                    surrogate.file_size
+                    surrogate.file_size,
+                    surrogate.needs_repainting
                 )
                 else -> CustomEmojiSimpleSticker(
                     surrogate.file_id,
                     surrogate.file_unique_id,
                     surrogate.width,
                     surrogate.height,
-                    surrogate.custom_emoji_id ?: error("For mask stickers field mask_position should be presented"),
+                    surrogate.custom_emoji_id ?: error("For custom emoji stickers field custom_emoji_id should be presented"),
                     surrogate.thumb,
                     surrogate.emoji,
                     surrogate.set_name,
-                    surrogate.file_size
+                    surrogate.file_size,
+                    surrogate.needs_repainting
                 )
             }
             is StickerType.Unknown -> UnknownSticker(
@@ -165,6 +173,11 @@ object StickerSerializer : KSerializer<Sticker> {
                 surrogate.emoji,
                 surrogate.set_name,
                 surrogate.file_size,
+                when {
+                    surrogate.is_animated == true -> StickerFormat.Animated
+                    surrogate.is_video == true -> StickerFormat.Video
+                    else -> StickerFormat.Static
+                },
                 json
             )
         }
@@ -180,16 +193,28 @@ object StickerSerializer : KSerializer<Sticker> {
 sealed interface VideoSticker : Sticker {
     override val isVideo: Boolean
         get() = true
+
+    override val stickerFormat: StickerFormat
+        get() = StickerFormat.Video
 }
 @Serializable
 sealed interface AnimatedSticker : Sticker {
     override val isAnimated: Boolean
         get() = true
+
+    override val stickerFormat: StickerFormat
+        get() = StickerFormat.Animated
 }
 
 @Serializable
 sealed interface RegularSticker : Sticker {
     val premiumAnimationFile: File?
+
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
+        fileId,
+        emojis,
+        emptyList()
+    )
 }
 
 @Serializable
@@ -202,19 +227,22 @@ data class RegularSimpleSticker(
     override val width: Int,
     @SerialName(heightField)
     override val height: Int,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(premiumAnimationField)
-    override val premiumAnimationFile: File?,
+    override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
-) : RegularSticker
-@Deprecated("Renamed", ReplaceWith("SimpleRegularSticker", "dev.inmo.tgbotapi.types.files.SimpleRegularSticker"))
-typealias SimpleSticker = RegularSimpleSticker
+) : RegularSticker {
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
+}
+
 @Serializable
 data class RegularAnimatedSticker(
     @SerialName(fileIdField)
@@ -225,14 +253,14 @@ data class RegularAnimatedSticker(
     override val width: Int,
     @SerialName(heightField)
     override val height: Int,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(premiumAnimationField)
-    override val premiumAnimationFile: File?,
+    override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
 ) : RegularSticker, AnimatedSticker
@@ -246,14 +274,14 @@ data class RegularVideoSticker(
     override val width: Int,
     @SerialName(heightField)
     override val height: Int,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(premiumAnimationField)
-    override val premiumAnimationFile: File?,
+    override val premiumAnimationFile: File? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
 ) : RegularSticker, VideoSticker
@@ -261,7 +289,13 @@ data class RegularVideoSticker(
 
 @Serializable
 sealed interface MaskSticker : Sticker {
-    val maskPosition: MaskPosition
+    val maskPosition: MaskPosition?
+
+    override fun asInputSticker(emojis: List<String>) = InputSticker.Mask(
+        fileId,
+        emojis,
+        maskPosition
+    )
 }
 @Serializable
 data class MaskSimpleSticker(
@@ -274,16 +308,20 @@ data class MaskSimpleSticker(
     @SerialName(heightField)
     override val height: Int,
     @SerialName(maskPositionField)
-    override val maskPosition: MaskPosition,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    override val maskPosition: MaskPosition? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
-) : MaskSticker
+) : MaskSticker {
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
+}
 @Serializable
 data class MaskAnimatedSticker(
     @SerialName(fileIdField)
@@ -295,9 +333,9 @@ data class MaskAnimatedSticker(
     @SerialName(heightField)
     override val height: Int,
     @SerialName(maskPositionField)
-    override val maskPosition: MaskPosition,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    override val maskPosition: MaskPosition? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -316,9 +354,9 @@ data class MaskVideoSticker(
     @SerialName(heightField)
     override val height: Int,
     @SerialName(maskPositionField)
-    override val maskPosition: MaskPosition,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    override val maskPosition: MaskPosition? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
@@ -330,6 +368,13 @@ data class MaskVideoSticker(
 @Serializable
 sealed interface CustomEmojiSticker : Sticker {
     val customEmojiId: CustomEmojiId
+    val needsRepainting: Boolean
+
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.CustomEmoji(
+        fileId,
+        emojis,
+        emptyList()
+    )
 }
 
 @Serializable
@@ -344,15 +389,21 @@ data class CustomEmojiSimpleSticker(
     override val height: Int,
     @SerialName(customEmojiIdField)
     override val customEmojiId: CustomEmojiId,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
-) : CustomEmojiSticker
+    @SerialName(needsRepaintingField)
+    override val needsRepainting: Boolean = false
+) : CustomEmojiSticker {
+    @SerialName(stickerFormatField)
+    @EncodeDefault
+    override val stickerFormat: StickerFormat = StickerFormat.Static
+}
 @Serializable
 data class CustomEmojiAnimatedSticker(
     @SerialName(fileIdField)
@@ -365,14 +416,16 @@ data class CustomEmojiAnimatedSticker(
     override val height: Int,
     @SerialName(customEmojiIdField)
     override val customEmojiId: CustomEmojiId,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
+    @SerialName(needsRepaintingField)
+    override val needsRepainting: Boolean = false,
 ) : CustomEmojiSticker, AnimatedSticker
 @Serializable
 data class CustomEmojiVideoSticker(
@@ -386,14 +439,16 @@ data class CustomEmojiVideoSticker(
     override val height: Int,
     @SerialName(customEmojiIdField)
     override val customEmojiId: CustomEmojiId,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
+    @SerialName(needsRepaintingField)
+    override val needsRepainting: Boolean = false,
 ) : CustomEmojiSticker, VideoSticker
 
 @Serializable
@@ -406,13 +461,21 @@ data class UnknownSticker(
     override val width: Int,
     @SerialName(heightField)
     override val height: Int,
-    @SerialName(thumbField)
-    override val thumb: PhotoSize? = null,
+    @SerialName(thumbnailField)
+    override val thumbnail: PhotoSize? = null,
     @SerialName(emojiField)
     override val emoji: String? = null,
     @SerialName(stickerSetNameField)
     override val stickerSetName: StickerSetName? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
+    @SerialName(stickerFormatField)
+    override val stickerFormat: StickerFormat = StickerFormat.Static,
     val raw: JsonElement
-) : Sticker
+) : Sticker {
+    override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
+        fileId,
+        emojis,
+        emptyList()
+    )
+}

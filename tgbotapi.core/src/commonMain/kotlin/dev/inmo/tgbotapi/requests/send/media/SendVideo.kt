@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -22,7 +23,7 @@ import kotlinx.serialization.*
 fun SendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
     spoilered: Boolean = false,
@@ -37,15 +38,13 @@ fun SendVideo(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VideoContent>> {
-    val videoAsFileId = (video as? FileId) ?.fileId
     val videoAsFile = video as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendVideoData(
         chatId,
-        videoAsFileId,
-        thumbAsFileId,
+        video,
+        thumbnail ?.fileId,
         text,
         parseMode,
         null,
@@ -65,9 +64,9 @@ fun SendVideo(
     return if (videoAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendVideoFiles(videoAsFile, thumbAsFile)
+            listOfNotNull(videoAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -75,7 +74,7 @@ fun SendVideo(
 fun SendVideo(
     chatId: ChatIdentifier,
     video: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     entities: TextSourcesList,
     spoilered: Boolean = false,
     duration: Long? = null,
@@ -89,15 +88,13 @@ fun SendVideo(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VideoContent>> {
-    val videoAsFileId = (video as? FileId) ?.fileId
     val videoAsFile = video as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendVideoData(
         chatId,
-        videoAsFileId,
-        thumbAsFileId,
+        video,
+        thumbnail ?.fileId,
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
@@ -117,9 +114,9 @@ fun SendVideo(
     return if (videoAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendVideoFiles(videoAsFile, thumbAsFile)
+            listOfNotNull(videoAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -132,9 +129,9 @@ data class SendVideoData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(videoField)
-    val video: String? = null,
-    @SerialName(thumbField)
-    override val thumb: String? = null,
+    val video: InputFile,
+    @SerialName(thumbnailField)
+    override val thumbnail: String? = null,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)
@@ -193,8 +190,8 @@ data class SendVideoData internal constructor(
 
 data class SendVideoFiles internal constructor(
     val video: MultipartFile? = null,
-    val thumb: MultipartFile? = null
+    val thumbnail: MultipartFile? = null
 ) : Files by mapOfNotNull(
     videoField to video,
-    thumbField to thumb
+    thumbnailField to thumbnail
 )

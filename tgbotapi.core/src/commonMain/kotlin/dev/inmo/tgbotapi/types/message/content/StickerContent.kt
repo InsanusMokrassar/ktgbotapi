@@ -27,6 +27,7 @@ data class StickerContent(
         chatId,
         media.fileId,
         messageThreadId,
+        media.emoji,
         disableNotification,
         protectContent,
         replyToMessageId,
@@ -37,6 +38,6 @@ data class StickerContent(
     override fun asTelegramMedia(): TelegramMediaDocument = TelegramMediaDocument(
         media.fileId,
         null,
-        thumb = media.thumb ?.fileId
+        thumb = media.thumbnail ?.fileId
     )
 }

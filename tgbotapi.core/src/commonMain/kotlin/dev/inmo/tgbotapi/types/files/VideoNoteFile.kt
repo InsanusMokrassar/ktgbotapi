@@ -15,7 +15,7 @@ data class VideoNoteFile(
     @SerialName("length")
     override val width: Int,
     override val duration: Long? = null,
-    override val thumb: PhotoSize? = null,
+    override val thumbnail: PhotoSize? = null,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null
 ) : TelegramMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile {

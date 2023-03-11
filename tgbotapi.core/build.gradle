@@ -26,6 +26,7 @@ kotlin {
                 api libs.microutils.serialization.base64
                 api libs.microutils.serialization.encapsulator
                 api libs.microutils.serialization.typedSerializer
+                api libs.microutils.serialization.mapper
                 api libs.microutils.ktor.common
                 api libs.microutils.languageCodes
 
