@@ -30,11 +30,17 @@ suspend fun TelegramBot.downloadFileToTemp(
 
 suspend fun TelegramBot.downloadFileToTemp(
     pathedFile: PathedFile
-) = downloadFileToTemp(
+): File = downloadFileToTemp(
     pathedFile.filePath
-).apply {
-    runCatching {
-        renameTo(File(parentFile, "$nameWithoutExtension.${pathedFile.fileName.fileExtension}"))
+).run {
+    val newFile = File(parentFile, "$nameWithoutExtension.${pathedFile.fileName.fileExtension}")
+    val success = runCatching {
+        renameTo(newFile)
+    }.getOrElse { false }
+    if (success) {
+        newFile
+    } else {
+        this@run
     }
 }
 

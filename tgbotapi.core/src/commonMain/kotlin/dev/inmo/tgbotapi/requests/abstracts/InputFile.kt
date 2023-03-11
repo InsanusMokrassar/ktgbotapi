@@ -36,8 +36,10 @@ sealed class InputFile {
     }
 }
 
+internal const val attachPrefix = "attach://"
+
 internal inline val InputFile.attachFileId
-    get() = "attach://$fileId"
+    get() = "$attachPrefix$fileId"
 internal inline val InputFile.fileIdToSend
     get() = when (this) {
         is FileId -> fileId
@@ -60,8 +62,8 @@ fun String.toInputFile() = FileId(this)
 @RiskFeature
 object InputFileSerializer : KSerializer<InputFile> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(FileId::class.toString(), PrimitiveKind.STRING)
-    override fun serialize(encoder: Encoder, value: InputFile) = encoder.encodeString(value.fileId)
-    override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString())
+    override fun serialize(encoder: Encoder, value: InputFile) = encoder.encodeString(value.fileIdToSend)
+    override fun deserialize(decoder: Decoder): FileId = FileId(decoder.decodeString().removePrefix(attachPrefix))
 }
 
 // TODO:: add checks for files size

@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.content.MediaContent
 import io.ktor.util.cio.use
 import io.ktor.util.cio.writeChannel
+import io.ktor.utils.io.copyAndClose
 import io.ktor.utils.io.copyTo
 import kotlinx.coroutines.job
 import java.io.File
@@ -25,7 +26,7 @@ suspend fun TelegramBot.downloadFile(
     doOutsideOfCoroutine { destFile.createNewFile() }
 
     destFile.writeChannel(coroutineContext.job).use {
-        readChannel.copyTo(this)
+        readChannel.copyAndClose(this)
     }
 
     return destFile

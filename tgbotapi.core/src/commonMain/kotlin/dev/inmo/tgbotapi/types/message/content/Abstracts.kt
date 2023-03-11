@@ -118,6 +118,18 @@ sealed interface MediaCollectionContent<T: TelegramMediaFile>: MessageContent, M
 sealed interface MediaContent: MessageContent {
     val media: TelegramMediaFile
     fun asTelegramMedia(): TelegramMedia
+
+    override fun createResend(
+        chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId?,
+        disableNotification: Boolean,
+        protectContent: Boolean,
+        replyToMessageId: MessageId?,
+        allowSendingWithoutReply: Boolean?,
+        replyMarkup: KeyboardMarkup?
+    ): Request<out ContentMessage<MediaContent>> {
+        TODO("Not yet implemented")
+    }
 }
 
 sealed interface SpoilerableMediaContent : MediaContent, SpoilerableData

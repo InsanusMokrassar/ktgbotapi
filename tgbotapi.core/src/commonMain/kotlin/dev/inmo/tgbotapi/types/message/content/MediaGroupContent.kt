@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
+import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import kotlinx.serialization.Serializable
@@ -38,7 +39,7 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
-    ): Request<out Message> = SendMediaGroup<MediaGroupPartContent>(
+    ): Request<ContentMessage<MediaGroupContent<MediaGroupPartContent>>> = SendMediaGroup<MediaGroupPartContent>(
         chatId,
         group.map { it.content.toMediaGroupMemberTelegramMedia() },
         threadId,

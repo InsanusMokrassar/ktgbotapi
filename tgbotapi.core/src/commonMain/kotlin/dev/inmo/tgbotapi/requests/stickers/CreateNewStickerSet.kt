@@ -1,11 +1,15 @@
 package dev.inmo.tgbotapi.requests.stickers
 
+import dev.inmo.micro_utils.serialization.mapper.MapperSerializer
 import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.stickers.abstracts.CreateStickerSetAction
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import kotlinx.serialization.*
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 /**
  * Will create one of [CreateNewStickerSet] types based on the first element of [stickers]
@@ -26,18 +30,30 @@ fun CreateNewStickerSet(
         is InputSticker.WithKeywords.CustomEmoji -> CreateNewStickerSet.CustomEmoji(userId, name, title, stickersFormat, stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(), needsRepainting)
         is InputSticker.WithKeywords.Regular -> CreateNewStickerSet.Regular(userId, name, title, stickersFormat, stickers.filterIsInstance<InputSticker.WithKeywords.Regular>())
     }
-    val multipartParts = stickers.mapNotNull { (it.sticker as? MultipartFile) }
+    val multipartParts = stickers.mapNotNull {
+        (it.sticker as? MultipartFile)
+    }
     return if (multipartParts.isNotEmpty()) {
-        CommonMultipartFileRequest(
-            data,
-            multipartParts.associateBy { it.fileId }
-        )
+        when (data) { // cratch for exact determining of common multipart data type
+            is CreateNewStickerSet.CustomEmoji -> CommonMultipartFileRequest(
+                data,
+                multipartParts.associateBy { it.fileId }
+            )
+            is CreateNewStickerSet.Mask -> CommonMultipartFileRequest(
+                data,
+                multipartParts.associateBy { it.fileId }
+            )
+            is CreateNewStickerSet.Regular -> CommonMultipartFileRequest(
+                data,
+                multipartParts.associateBy { it.fileId }
+            )
+        }
     } else {
         data
     }
 }
 
-@Serializable
+@Serializable(CreateNewStickerSetSerializer::class)
 sealed interface CreateNewStickerSet : CreateStickerSetAction {
     val stickerType: StickerType
     val stickers: List<InputSticker>
@@ -101,4 +117,70 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         override val stickerType: StickerType
             get() = StickerType.CustomEmoji
     }
+
+    @Serializable
+    data class SurrogateCreateNewSticker internal constructor(
+        @SerialName(userIdField)
+        override val userId: UserId,
+        @SerialName(nameField)
+        override val name: String,
+        @SerialName(titleField)
+        override val title: String,
+        @SerialName(stickerFormatField)
+        val stickersFormat: StickerFormat,
+        @SerialName(stickersField)
+        val stickers: List<InputSticker>,
+        @SerialName(stickerTypeField)
+        val stickerType: StickerType,
+        @SerialName(needsRepaintingField)
+        val needsRepainting: Boolean? = null
+    ) : CreateStickerSetAction {
+        override val requestSerializer: SerializationStrategy<*>
+            get() = CreateNewStickerSet.serializer()
+
+        override fun method(): String = "createNewStickerSet"
+    }
 }
+
+object CreateNewStickerSetSerializer : KSerializer<CreateNewStickerSet>,
+    MapperSerializer<CreateNewStickerSet.SurrogateCreateNewSticker, CreateNewStickerSet>(
+    CreateNewStickerSet.SurrogateCreateNewSticker.serializer(),
+        {
+            CreateNewStickerSet.SurrogateCreateNewSticker(
+                it.userId,
+                it.name,
+                it.title,
+                it.stickersFormat,
+                it.stickers,
+                it.stickerType,
+                (it as? CreateNewStickerSet.CustomEmoji)?.needsRepainting
+            )
+        },
+        {
+            when (it.stickerType) {
+                StickerType.CustomEmoji -> CreateNewStickerSet.CustomEmoji(
+                    it.userId,
+                    it.name,
+                    it.title,
+                    it.stickersFormat,
+                    it.stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(),
+                    it.needsRepainting
+                )
+                StickerType.Mask -> CreateNewStickerSet.Mask(
+                    it.userId,
+                    it.name,
+                    it.title,
+                    it.stickersFormat,
+                    it.stickers.filterIsInstance<InputSticker.Mask>(),
+                )
+                StickerType.Regular -> CreateNewStickerSet.Regular(
+                    it.userId,
+                    it.name,
+                    it.title,
+                    it.stickersFormat,
+                    it.stickers.filterIsInstance<InputSticker.WithKeywords.Regular>(),
+                )
+                is StickerType.Unknown -> error("Unable to create new sticker set due to error in type format: ${it.stickerType}")
+            }
+        }
+    )

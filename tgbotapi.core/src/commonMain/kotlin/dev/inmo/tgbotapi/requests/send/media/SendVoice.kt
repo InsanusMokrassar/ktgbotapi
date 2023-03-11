@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -32,12 +33,11 @@ fun SendVoice(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
-    val voiceAsFileId = (voice as? FileId) ?.fileId
     val voiceAsFile = voice as? MultipartFile
 
     val data = SendVoiceData(
         chatId,
-        voiceAsFileId,
+        voice,
         text,
         parseMode,
         null,
@@ -53,9 +53,9 @@ fun SendVoice(
     return if (voiceAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendVoiceFiles(voiceAsFile)
+            listOfNotNull(voiceAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -72,12 +72,11 @@ fun SendVoice(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
-    val voiceAsFileId = (voice as? FileId) ?.fileId
     val voiceAsFile = voice as? MultipartFile
 
     val data = SendVoiceData(
         chatId,
-        voiceAsFileId,
+        voice,
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
@@ -93,9 +92,9 @@ fun SendVoice(
     return if (voiceAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendVoiceFiles(voiceAsFile)
+            listOfNotNull(voiceAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -108,7 +107,7 @@ data class SendVoiceData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(voiceField)
-    val voice: String? = null,
+    val voice: InputFile,
     @SerialName(captionField)
     override val text: String? = null,
     @SerialName(parseModeField)

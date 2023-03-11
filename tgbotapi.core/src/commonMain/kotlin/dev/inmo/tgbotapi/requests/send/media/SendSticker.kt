@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
@@ -28,7 +29,7 @@ fun SendSticker(
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<StickerContent>> = SendStickerByFileId(
     chatId,
-    sticker as? FileId,
+    sticker,
     threadId,
     disableNotification,
     protectContent,
@@ -37,7 +38,10 @@ fun SendSticker(
     replyMarkup
 ).let {
     when (sticker) {
-        is MultipartFile -> SendStickerByFile(it, sticker, emoji)
+        is MultipartFile -> CommonMultipartFileRequest(
+            it,
+            listOf(sticker).associateBy { it.fileId }
+        )
         is FileId -> it
     }
 }
@@ -50,7 +54,7 @@ data class SendStickerByFileId internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(stickerField)
-    val sticker: FileId? = null,
+    val sticker: InputFile,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(disableNotificationField)
@@ -69,21 +73,4 @@ data class SendStickerByFileId internal constructor(
         get() = commonResultDeserializer
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
-}
-
-data class SendStickerByFile internal constructor(
-    @Transient
-    private val sendStickerByFileId: SendStickerByFileId,
-    val sticker: MultipartFile,
-    val emoji: String?
-) : MultipartRequest<ContentMessage<StickerContent>>, Request<ContentMessage<StickerContent>> by sendStickerByFileId {
-    override val mediaMap: Map<String, MultipartFile> = mapOf(stickerField to sticker)
-    override val paramsJson: JsonObject
-        get() {
-            return JsonObject(
-                mapOfNotNull(
-                    emojiField to emoji ?.let { JsonPrimitive(it) }
-                ) + sendStickerByFileId.toJsonWithoutNulls(SendStickerByFileId.serializer())
-            )
-        }
 }

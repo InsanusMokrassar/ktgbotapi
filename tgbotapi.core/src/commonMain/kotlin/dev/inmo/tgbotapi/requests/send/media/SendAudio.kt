@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.send.media
 
 import dev.inmo.tgbotapi.abstracts.Performerable
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
@@ -23,7 +24,7 @@ import kotlinx.serialization.*
 fun SendAudio(
     chatId: ChatIdentifier,
     audio: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
     duration: Long? = null,
@@ -36,15 +37,13 @@ fun SendAudio(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AudioContent>> {
-    val audioAsFileId = (audio as? FileId) ?.fileId
     val audioAsFile = audio as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendAudioData(
         chatId,
-        audioAsFileId,
-        thumbAsFileId,
+        audio,
+        thumbnail ?.fileId,
         text,
         parseMode,
         null,
@@ -62,9 +61,9 @@ fun SendAudio(
     return if (audioAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendAudioFiles(audioAsFile, thumbAsFile)
+            listOfNotNull(audioAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -72,7 +71,7 @@ fun SendAudio(
 fun SendAudio(
     chatId: ChatIdentifier,
     audio: InputFile,
-    thumb: InputFile? = null,
+    thumbnail: InputFile? = null,
     entities: List<TextSource>,
     duration: Long? = null,
     performer: String? = null,
@@ -84,15 +83,13 @@ fun SendAudio(
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AudioContent>> {
-    val audioAsFileId = (audio as? FileId) ?.fileId
     val audioAsFile = audio as? MultipartFile
-    val thumbAsFileId = (thumb as? FileId) ?.fileId
-    val thumbAsFile = thumb as? MultipartFile
+    val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendAudioData(
         chatId,
-        audioAsFileId,
-        thumbAsFileId,
+        audio,
+        thumbnail ?.fileId,
         entities.makeString(),
         null,
         entities.toRawMessageEntities(),
@@ -110,9 +107,9 @@ fun SendAudio(
     return if (audioAsFile == null && thumbAsFile == null) {
         data
     } else {
-        MultipartRequestImpl(
+        CommonMultipartFileRequest(
             data,
-            SendAudioFiles(audioAsFile, thumbAsFile)
+            listOfNotNull(audioAsFile, thumbAsFile).associateBy { it.fileId }
         )
     }
 }
@@ -125,7 +122,7 @@ data class SendAudioData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
     @SerialName(audioField)
-    val audio: String? = null,
+    val audio: InputFile,
     @SerialName(thumbnailField)
     override val thumbnail: String? = null,
     @SerialName(captionField)
