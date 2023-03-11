@@ -21,12 +21,22 @@ suspend fun TelegramBot.addStickerToSet(
 suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
     stickerSet: StickerSet,
+    sticker: InputSticker
+) = addStickerToSet(
+    userId,
+    stickerSet.name,
+    sticker
+)
+
+suspend fun TelegramBot.addStickerToSet(
+    userId: UserId,
+    stickerSet: StickerSet,
     sticker: InputFile,
     emojis: List<String>,
     keywords: List<String> = emptyList()
 ) = addStickerToSet(
     userId,
-    stickerSet.name,
+    stickerSet,
     when (stickerSet.stickerType) {
         StickerType.CustomEmoji -> InputSticker.WithKeywords.CustomEmoji(
             sticker,
@@ -73,6 +83,16 @@ suspend fun TelegramBot.addStickerToSet(
         )
         is StickerType.Unknown -> error("Unable to create sticker to the set with type ${stickerSet.stickerType}")
     }
+)
+
+suspend fun TelegramBot.addStickerToSet(
+    user: CommonUser,
+    stickerSet: StickerSet,
+    sticker: InputSticker
+) = addStickerToSet(
+    user.id,
+    stickerSet.name,
+    sticker
 )
 
 suspend fun TelegramBot.addStickerToSet(
