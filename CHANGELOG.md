@@ -2,6 +2,9 @@
 
 ## 7.0.1
 
+* `Utils`:
+    * Improvements in `same`-notations
+
 ## 7.0.0
 
 This update contains support of [Telegram Bot API 6.6](https://core.telegram.org/bots/api-changelog#march-9-2023)
