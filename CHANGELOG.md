@@ -2,6 +2,10 @@
 
 ## 7.0.1
 
+* `Core`:
+    * New interface `WithChat` which contains `chat` field
+        * `Message` now inherits `WithChat`
+        * `ChatMemberUpdated` now inherits `WithChat`
 * `Utils`:
     * Improvements in `same`-notations
 

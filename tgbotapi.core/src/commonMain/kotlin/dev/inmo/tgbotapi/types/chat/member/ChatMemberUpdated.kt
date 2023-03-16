@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.types.chat.member
 
+import dev.inmo.tgbotapi.abstracts.WithChat
+import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.User
@@ -9,9 +11,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ChatMemberUpdated(
     @SerialName(chatField)
-    val chat: Chat,
+    override val chat: Chat,
     @SerialName(fromField)
-    val user: User,
+    override val user: User,
     @SerialName(dateField)
     val date: TelegramDate,
     @SerialName(oldChatMemberField)
@@ -20,4 +22,4 @@ data class ChatMemberUpdated(
     val newChatMemberState: ChatMember,
     @SerialName(inviteLinkField)
     val inviteLink: ChatInviteLink? = null
-)
+) : WithChat, WithUser
