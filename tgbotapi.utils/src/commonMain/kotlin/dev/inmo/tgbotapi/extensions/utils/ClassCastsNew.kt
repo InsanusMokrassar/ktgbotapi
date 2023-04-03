@@ -160,6 +160,7 @@ import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
 import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberImpl
 import dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 import dev.inmo.tgbotapi.types.chat.member.ChatMember
+import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.chat.member.KickedChatMember
 import dev.inmo.tgbotapi.types.chat.member.LeftChatMember
 import dev.inmo.tgbotapi.types.chat.member.LeftChatMemberImpl
@@ -658,6 +659,15 @@ public inline fun WithUser.chatMemberOrThrow(): ChatMember = this as
 
 public inline fun <T> WithUser.ifChatMember(block: (ChatMember) -> T): T? = chatMemberOrNull()
     ?.let(block)
+
+public inline fun WithUser.chatMemberUpdatedOrNull(): ChatMemberUpdated? = this as?
+    dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
+
+public inline fun WithUser.chatMemberUpdatedOrThrow(): ChatMemberUpdated = this as
+    dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
+
+public inline fun <T> WithUser.ifChatMemberUpdated(block: (ChatMemberUpdated) -> T): T? =
+    chatMemberUpdatedOrNull() ?.let(block)
 
 public inline fun WithUser.kickedChatMemberOrNull(): KickedChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.KickedChatMember
