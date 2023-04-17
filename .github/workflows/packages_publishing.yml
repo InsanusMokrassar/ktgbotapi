@@ -14,6 +14,8 @@ jobs:
           cat gradle.properties | sed -e "s/^library_version=\([0-9\.]*\)/library_version=\1-branch_$branch-build${{ github.run_number }}/" > gradle.properties.tmp
           rm gradle.properties
           mv gradle.properties.tmp gradle.properties
+      - name: KotlinSymbolProcessing execution
+        run: ./gradlew ksp
       - name: Build
         run: ./gradlew build
       - name: Publish to Gitea

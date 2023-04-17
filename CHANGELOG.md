@@ -2,9 +2,17 @@
 
 ## 7.0.2
 
+_This update brings experimental support of `linuxX64` and `mingwX64` platforms_
+
 * `Versions`:
-  * `Kotlin`: `1.8.10` -> `1.8.20`
-  * `MicroUtils`: `0.17.5` -> `0.17.6`
+    * `Kotlin`: `1.8.10` -> `1.8.20`
+    * `MicroUtils`: `0.17.5` -> `0.17.6`
+* `Core`:
+    * New `RequestsExecutor` - `MultipleClientKtorRequestsExecutor`
+    * Old `KtorRequestsExecutor` has been renamed to `DefaultKtorRequestsExecutor`
+    * `KtorRequestsExecutor` now is `expect class`
+        * On `JS` and `JVM` platforms it is `DefaultKtorRequestsExecutor`
+        * On `LinuxX64` and `MinGWX64` platforms it is `MultipleClientKtorRequestsExecutor`
 
 ## 7.0.1
 

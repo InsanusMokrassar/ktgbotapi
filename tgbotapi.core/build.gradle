@@ -48,11 +48,23 @@ kotlin {
                 api libs.javax.activation
             }
         }
+
+        linuxX64Main {
+            dependencies {
+                api libs.ktor.client.curl
+            }
+        }
+
+        mingwX64Main {
+            dependencies {
+                api libs.ktor.client.winhttp
+            }
+        }
     }
 }
 
 dependencies {
-    add("kspJvm", project(":tgbotapi.ksp"))
+    add("kspCommonMainMetadata", project(":tgbotapi.ksp"))
 }
 
 ksp {

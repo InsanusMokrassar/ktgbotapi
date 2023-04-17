@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
-import dev.inmo.micro_utils.coroutines.safelyWithResult
+import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.requests.GetUpdates
@@ -56,7 +56,7 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
             val content = response.bodyAsText()
             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
 
-            return safelyWithResult {
+            return runCatchingSafely {
                 (responseObject.result?.let {
                     jsonFormatter.decodeFromJsonElement(request.resultDeserializer, it)
                 } ?: response.let {
