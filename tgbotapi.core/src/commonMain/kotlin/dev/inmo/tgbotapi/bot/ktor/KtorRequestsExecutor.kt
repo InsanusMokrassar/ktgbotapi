@@ -11,8 +11,8 @@ import kotlinx.serialization.json.Json
 /**
  * Represents default [BaseRequestsExecutor] working on [Ktor](https://ktor.io) [HttpClient]
  *
- * * On JS and JVM platforms it is [dev.inmo.tgbotapi.bot.ktor.base.DefaultKtorRequestsExecutor]
- * * On LinuxX64 and MingwX64 it is [dev.inmo.tgbotapi.bot.ktor.base.MultipleClientKtorRequestsExecutor]
+ * * On JS, JVM and MingwX64 platforms it is [dev.inmo.tgbotapi.bot.ktor.base.DefaultKtorRequestsExecutor]
+ * * On LinuxX64 it is [dev.inmo.tgbotapi.bot.ktor.base.MultipleClientKtorRequestsExecutor]
  */
 expect class KtorRequestsExecutor (
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,

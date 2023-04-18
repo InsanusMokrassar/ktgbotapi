@@ -5,20 +5,10 @@ import io.ktor.client.engine.winhttp.*
 
 /**
  * This function is used in default constructor of [MultipleClientKtorRequestsExecutor] and on all non-native
- * platforms should return [client]
+ * platforms and MingwX64 should return [client]
  *
  * On LinuxX64 it will create copy with Curl engine or throw an exception if engine is different with Curl
- * On MingwX64 it will create copy with WinHttp engine or throw an exception if engine is different with WinHttp
  *
- * @throws IllegalArgumentException When pass non Curl-based [HttpClient] on LinuxX64 or non WinHttp-based [HttpClient]
- * on MingwX64
+ * @throws IllegalArgumentException When pass non Curl-based [HttpClient] on LinuxX64
  */
-internal actual inline fun platformClientCopy(client: HttpClient): HttpClient = (client.engineConfig as? WinHttpClientEngineConfig) ?.let { engineConfig ->
-    lateinit var config: HttpClientConfig<out WinHttpClientEngineConfig>
-    client.config {
-        config = this as HttpClientConfig<out WinHttpClientEngineConfig>
-    }.close()
-    HttpClient(WinHttp) {
-        this.plusAssign(config)
-    }
-} ?: throw IllegalArgumentException("On LinuxX64 TelegramBotAPI currently support only Curl Ktor HttpClient engine")
+internal actual inline fun platformClientCopy(client: HttpClient): HttpClient = client.config {  }

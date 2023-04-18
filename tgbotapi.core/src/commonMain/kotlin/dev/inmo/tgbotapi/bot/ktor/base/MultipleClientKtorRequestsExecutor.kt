@@ -17,13 +17,11 @@ import kotlinx.serialization.json.Json
 
 /**
  * This function is used in default constructor of [MultipleClientKtorRequestsExecutor] and on all non-native
- * platforms should return [HttpClient.config] call
+ * platforms and MingwX64 should return [client]
  *
  * On LinuxX64 it will create copy with Curl engine or throw an exception if engine is different with Curl
- * On MingwX64 it will create copy with WinHttp engine or throw an exception if engine is different with WinHttp
  *
- * @throws IllegalArgumentException When pass non Curl-based [HttpClient] on LinuxX64 or non WinHttp-based [HttpClient]
- * on MingwX64
+ * @throws IllegalArgumentException When pass non Curl-based [HttpClient] on LinuxX64
  */
 internal expect inline fun platformClientCopy(client: HttpClient): HttpClient
 
@@ -31,7 +29,7 @@ internal expect inline fun platformClientCopy(client: HttpClient): HttpClient
  * Will use its parameters of constructor to create several [DefaultKtorRequestsExecutor] and use them in [execute]
  * and [close] operations
  *
- * This [BaseRequestsExecutor] has been created for native targets due to their inability of requests paralleling
+ * This [BaseRequestsExecutor] has been created for LinuxX64 target due to its inability of requests paralleling
  *
  * Under the hood on each [execute] it will take [DefaultKtorRequestsExecutor] and mark it as busy, execute
  * [Request], free up taken [DefaultKtorRequestsExecutor] and return (or throw) the result of execution

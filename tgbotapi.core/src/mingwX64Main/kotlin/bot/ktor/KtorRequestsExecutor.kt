@@ -1,5 +1,5 @@
 package dev.inmo.tgbotapi.bot.ktor
 
-import dev.inmo.tgbotapi.bot.ktor.base.MultipleClientKtorRequestsExecutor
+import dev.inmo.tgbotapi.bot.ktor.base.DefaultKtorRequestsExecutor
 
-actual typealias KtorRequestsExecutor = MultipleClientKtorRequestsExecutor
+actual typealias KtorRequestsExecutor = DefaultKtorRequestsExecutor
