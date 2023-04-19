@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.8.10"
+kotlin = "1.8.20"
 kotlin-serialization = "1.5.0"
 kotlin-coroutines = "1.6.4"
 
@@ -8,12 +8,12 @@ javax-activation = "1.1.1"
 
 korlibs = "3.4.0"
 uuid = "0.7.0"
-ktor = "2.2.4"
+ktor = "2.3.0"
 
-ksp = "1.8.10-1.0.9"
-kotlin-poet = "1.12.0"
+ksp = "1.8.20-1.0.11"
+kotlin-poet = "1.13.0"
 
-microutils = "0.17.5"
+microutils = "0.17.8"
 
 github-release-plugin = "2.4.1"
 dokka = "1.8.10"
@@ -31,6 +31,8 @@ kotlin-test-js = { module = "org.jetbrains.kotlin:kotlin-test-js", version.ref =
 
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-curl = { module = "io.ktor:ktor-client-curl", version.ref = "ktor" }
+ktor-client-winhttp = { module = "io.ktor:ktor-client-winhttp", version.ref = "ktor" }
 ktor-server = { module = "io.ktor:ktor-server", version.ref = "ktor" }
 ktor-server-host-common = { module = "io.ktor:ktor-server-host-common", version.ref = "ktor" }
 

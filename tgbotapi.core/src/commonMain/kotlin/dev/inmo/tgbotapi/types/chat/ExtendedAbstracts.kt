@@ -5,17 +5,17 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import kotlinx.serialization.Serializable
 
-@Serializable(ExtendedChatSerializer::class)
+@Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat, ExtendedChatWithUsername {
     val linkedGroupChatId: IdChatIdentifier?
 }
 
-@Serializable(ExtendedChatSerializer::class)
+@Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
     val permissions: ChatPermissions
 }
 
-@Serializable(ExtendedChatSerializer::class)
+@Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername {
     val bio: String
     val hasPrivateForwards: Boolean
@@ -34,7 +34,7 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat {
     val membersHidden: Boolean
 }
 
-@Serializable(ExtendedChatSerializer::class)
+@Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, ExtendedChatWithUsername {
     val slowModeDelay: Long?
     val stickerSetName: StickerSetName?
@@ -58,15 +58,15 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
     val isAggressiveAntiSpamEnabled: Boolean
 }
 
-@Serializable(ExtendedChatSerializer::class)
+@Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
 
-@Serializable(ExtendedChatSerializer::class)
+@Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChat : Chat {
     val chatPhoto: ChatPhoto?
 }
 
-@Serializable(ExtendedChatSerializer::class)
+@Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChatWithUsername : UsernameChat, ExtendedChat {
     val activeUsernames: List<Username>
 }

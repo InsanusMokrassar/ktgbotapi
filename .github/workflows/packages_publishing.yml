@@ -8,12 +8,16 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: Setup LibCurl
+        run: sudo apt install -y libcurl4-openssl-dev
       - name: Rewrite version
         run: |
           branch="`echo "${{ github.ref }}" | grep -o "[^/]*$"`"
           cat gradle.properties | sed -e "s/^library_version=\([0-9\.]*\)/library_version=\1-branch_$branch-build${{ github.run_number }}/" > gradle.properties.tmp
           rm gradle.properties
           mv gradle.properties.tmp gradle.properties
+      - name: KotlinSymbolProcessing execution
+        run: ./gradlew ksp
       - name: Build
         run: ./gradlew build
       - name: Publish to Gitea

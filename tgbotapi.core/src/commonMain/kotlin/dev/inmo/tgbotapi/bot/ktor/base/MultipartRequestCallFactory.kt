@@ -4,8 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.*
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.mapWithCommonValues
 import io.ktor.client.HttpClient
-import io.ktor.client.request.forms.MultiPartFormDataContent
-import io.ktor.client.request.forms.formData
+import io.ktor.client.request.forms.*
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 

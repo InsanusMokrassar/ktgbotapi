@@ -93,8 +93,9 @@ interface BehaviourContextWithFSM<T : State> : BehaviourContext, StatesMachine<T
             behaviourContext: BehaviourContext,
             handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
             statesManager: StatesManager<T>,
+            fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
             onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler()
-        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers, onStateHandlingErrorHandler)
+        ) = DefaultBehaviourContextWithFSM<T>(behaviourContext, statesManager, handlers, fallbackHandler, onStateHandlingErrorHandler)
     }
 }
 
@@ -129,11 +130,12 @@ class DefaultBehaviourContextWithFSM<T : State>(
     private val behaviourContext: BehaviourContext,
     private val statesManager: StatesManager<T>,
     private val handlers: List<BehaviourWithFSMStateHandlerHolder<*, T>>,
+    private val fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
     private val onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler()
 ) : BehaviourContext by behaviourContext, BehaviourContextWithFSM<T> {
     private val updatesFlows = mutableMapOf<Any, DefaultBehaviourContextWithFSM<T>>()
     private val additionalHandlers = mutableListOf<BehaviourWithFSMStateHandlerHolder<*, T>>()
-    private var actualHandlersList = additionalHandlers + handlers
+    private var actualHandlersList = additionalHandlers + handlers + listOfNotNull(fallbackHandler)
 
     protected val statesJobs = mutableMapOf<T, Job>()
     protected val statesJobsMutex = Mutex()
@@ -250,6 +252,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
         behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder),
         handlers,
         statesManager,
+        fallbackHandler,
         onStateHandlingErrorHandler
     )
 
@@ -265,6 +268,7 @@ class DefaultBehaviourContextWithFSM<T : State>(
         behaviourContext.copy(bot, scope, broadcastChannelsSize, onBufferOverflow, upstreamUpdatesFlow, triggersHolder),
         handlers,
         statesManager,
+        fallbackHandler,
         onStateHandlingErrorHandler
     )
 }

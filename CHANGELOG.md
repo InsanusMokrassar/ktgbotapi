@@ -1,5 +1,20 @@
 # TelegramBotAPI changelog
 
+## 7.0.2
+
+_This update brings experimental support of `linuxX64` and `mingwX64` platforms_
+
+* `Versions`:
+    * `Kotlin`: `1.8.10` -> `1.8.20`
+    * `MicroUtils`: `0.17.5` -> `0.17.8`
+    * `Ktor`: `2.2.4` -> `2.3.0`
+* `Core`:
+    * New `RequestsExecutor` - `MultipleClientKtorRequestsExecutor`
+    * Old `KtorRequestsExecutor` has been renamed to `DefaultKtorRequestsExecutor`
+    * `KtorRequestsExecutor` now is `expect class`
+        * On `JS`, `JVM` and `MinGWX64` platforms it is `DefaultKtorRequestsExecutor`
+        * On `LinuxX64` platform it is `MultipleClientKtorRequestsExecutor`
+
 ## 7.0.1
 
 * `Core`:

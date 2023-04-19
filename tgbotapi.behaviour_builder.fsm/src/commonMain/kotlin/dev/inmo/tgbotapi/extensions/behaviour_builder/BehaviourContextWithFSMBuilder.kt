@@ -31,6 +31,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
@@ -41,6 +42,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     ),
     presetHandlers,
     statesManager,
+    fallbackHandler,
     onStateHandlingErrorHandler
 ).apply { block() }
 
@@ -59,6 +61,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     timeoutSeconds: Seconds = 30,
     autoDisableWebhooks: Boolean = true,
@@ -71,6 +74,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler,
     statesManager,
     presetHandlers,
+    fallbackHandler,
     onStateHandlingErrorHandler,
     block
 ).run {
@@ -104,6 +108,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     block: CustomBehaviourContextReceiver<DefaultBehaviourContextWithFSM<T>, Unit>
 ): DefaultBehaviourContextWithFSM<T> = BehaviourContextWithFSM(
@@ -114,6 +119,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSM(
     ),
     presetHandlers,
     statesManager,
+    fallbackHandler,
     onStateHandlingErrorHandler
 ).apply { block() }
 
@@ -137,6 +143,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
     defaultExceptionsHandler: ExceptionHandler<Unit>? = null,
     statesManager: StatesManager<T> = DefaultStatesManager(InMemoryDefaultStatesManagerRepo()),
     presetHandlers: List<BehaviourWithFSMStateHandlerHolder<*, T>> = listOf(),
+    fallbackHandler: BehaviourWithFSMStateHandlerHolder<T, T>? = null,
     onStateHandlingErrorHandler: StateHandlingErrorHandler<T> = defaultStateHandlingErrorHandler(),
     timeoutSeconds: Seconds = 30,
     autoDisableWebhooks: Boolean = true,
@@ -150,6 +157,7 @@ suspend fun <T : State> TelegramBot.buildBehaviourWithFSMAndStartLongPolling(
         defaultExceptionsHandler,
         statesManager,
         presetHandlers,
+        fallbackHandler,
         onStateHandlingErrorHandler,
         block
     ).run {
