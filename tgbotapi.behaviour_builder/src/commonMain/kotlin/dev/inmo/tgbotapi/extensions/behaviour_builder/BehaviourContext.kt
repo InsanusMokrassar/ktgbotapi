@@ -76,9 +76,12 @@ class DefaultBehaviourContext(
             (it + upstreamUpdatesFlow).filter {
                 val passed = handledUpdates.add(it.updateId)
                 (passed).also { passed ->
-                    handledUpdates.removeAll(
-                        handledUpdates.take(handledUpdates.size - broadcastChannelsSize).ifEmpty { return@also }
-                    )
+                    val needToDropCount = handledUpdates.size - broadcastChannelsSize
+                    if (needToDropCount > 0) {
+                        handledUpdates.removeAll(
+                            handledUpdates.take(needToDropCount).ifEmpty { return@also }
+                        )
+                    }
                 }
             }
         } else {
