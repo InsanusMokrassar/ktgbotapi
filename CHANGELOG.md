@@ -2,6 +2,9 @@
 
 ## 7.1.0
 
+* `BehaviourBuilder`:
+    * `BehaviourContext` extensions `onDeepLink` and `waitDeepLinks` now can be used with `Regex` or `String` as first parameters
+
 ## 7.0.2
 
 _This update brings experimental support of `linuxX64` and `mingwX64` platforms_

@@ -21,3 +21,17 @@ suspend fun BehaviourContext.waitDeepLinks(
     .flattenCommandsWithParams().mapNotNull {
         it.first to (it.second.second.singleOrNull() ?.regularTextSourceOrNull() ?.source ?.removePrefix(" ") ?: return@mapNotNull null)
     }
+
+suspend fun BehaviourContext.waitDeepLinks(
+    regex: Regex,
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(initRequest, errorFactory).filter {
+    regex.matches(it.second)
+}
+
+suspend fun BehaviourContext.waitDeepLinks(
+    deepLink: String,
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null },
+): Flow<Pair<CommonMessage<TextContent>, String>> = waitDeepLinks(Regex("^$deepLink$"), initRequest, errorFactory)
