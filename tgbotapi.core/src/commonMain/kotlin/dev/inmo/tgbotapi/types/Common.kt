@@ -41,7 +41,10 @@ typealias WebAppQueryId = String
 @JvmInline
 value class CustomEmojiId(
     val string: String
-)
+) {
+    val appLink
+        get() = "${internalTgLinksBeginning}emoji?id=$this"
+}
 
 typealias Seconds = Int
 typealias MilliSeconds = Long
