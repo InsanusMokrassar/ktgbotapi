@@ -23,11 +23,30 @@ data class AnswerInlineQuery(
     val isPersonal: Boolean? = null,
     @SerialName(nextOffsetField)
     val nextOffset: String? = null,
-    @SerialName(switchPmTextField)
-    val switchPmText: String? = null,
-    @SerialName(switchPmParameterField)
-    val switchPmParameter: String? = null
+    @SerialName(buttonField)
+    val button: InlineQueryResultsButton? = null,
 ) : SimpleRequest<Boolean> {
+    constructor(
+        inlineQueryID: InlineQueryIdentifier,
+        results: List<InlineQueryResult> = emptyList(),
+        cachedTime: Int? = null,
+        isPersonal: Boolean? = null,
+        nextOffset: String? = null,
+        switchPmText: String?,
+        switchPmParameter: String?
+    ) : this(
+        inlineQueryID,
+        results,
+        cachedTime,
+        isPersonal,
+        nextOffset,
+        switchPmText ?.let {
+            switchPmParameter ?.let {
+                InlineQueryResultsButton.Start(switchPmText, switchPmParameter)
+            }
+        }
+    )
+
     override fun method(): String = "answerInlineQuery"
     override val resultDeserializer: DeserializationStrategy<Boolean>
         get() = Boolean.serializer()
@@ -40,8 +59,23 @@ fun InlineQuery.createAnswer(
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,
     nextOffset: String? = null,
-    switchPmText: String? = null,
-    switchPmParameter: String? = null
+    button: InlineQueryResultsButton? = null,
+) = AnswerInlineQuery(
+    id,
+    results,
+    cachedTime,
+    isPersonal,
+    nextOffset,
+    button
+)
+
+fun InlineQuery.createAnswer(
+    results: List<InlineQueryResult> = emptyList(),
+    cachedTime: Int? = null,
+    isPersonal: Boolean? = null,
+    nextOffset: String? = null,
+    switchPmText: String?,
+    switchPmParameter: String?
 ) = AnswerInlineQuery(
     id,
     results,
