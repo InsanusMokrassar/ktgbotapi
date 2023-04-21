@@ -123,10 +123,10 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
 inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
     text: String,
     query: String? = null,
-    allowUsers: Boolean? = null,
-    allowBots: Boolean? = null,
-    allowGroups: Boolean? = null,
-    allowChannels: Boolean? = null,
+    allowUsers: Boolean = false,
+    allowBots: Boolean = false,
+    allowGroups: Boolean = false,
+    allowChannels: Boolean = false,
 ) = inlineQueryInChosenChatButton(
     text,
     SwitchInlineQueryChosenChat(
@@ -137,6 +137,10 @@ inline fun InlineKeyboardRowBuilder.inlineQueryInChosenChatButton(
         allowChannels = allowChannels
     )
 )
+inline fun InlineKeyboardRowBuilder.inlineQueryInAnyChosenChatButton(
+    text: String,
+    query: String? = null,
+) = inlineQueryInChosenChatButton(text, query, allowUsers = true, allowBots = true, allowGroups = true, allowChannels = true)
 
 /**
  * Creates and put [SwitchInlineQueryInlineKeyboardButton]
