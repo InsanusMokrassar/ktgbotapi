@@ -2,6 +2,9 @@
 
 ## 7.1.0
 
+* `API`:
+    * Rename `editMessageCaption` to `editMessageMedia` due to wrong old naming
+    * Add `edit` extensions for `InlineMessageIdentifier`s
 * `BehaviourBuilder`:
     * `BehaviourContext` extensions `onDeepLink` and `waitDeepLinks` now can be used with `Regex` or `String` as first parameters
 
