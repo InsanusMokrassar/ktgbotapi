@@ -11,9 +11,15 @@ const val UPDATE_SHIPPING_QUERY = "shipping_query"
 const val UPDATE_PRE_CHECKOUT_QUERY = "pre_checkout_query"
 const val UPDATE_POLL = "poll"
 const val UPDATE_POLL_ANSWER = "poll_answer"
-const val MY_CHAT_MEMBER = "my_chat_member"
-const val CHAT_MEMBER = "chat_member"
-const val CHAT_JOIN_REQUEST = "chat_join_request"
+const val UPDATE_MY_CHAT_MEMBER = "my_chat_member"
+const val UPDATE_CHAT_MEMBER = "chat_member"
+const val UPDATE_CHAT_JOIN_REQUEST = "chat_join_request"
+@Deprecated("Renamed", ReplaceWith("UPDATE_MY_CHAT_MEMBER")
+const val MY_CHAT_MEMBER = UPDATE_MY_CHAT_MEMBER
+@Deprecated("Renamed", ReplaceWith("UPDATE_CHAT_MEMBER")
+const val CHAT_MEMBER = UPDATE_CHAT_MEMBER
+@Deprecated("Renamed", ReplaceWith("UPDATE_CHAT_JOIN_REQUEST")
+const val CHAT_JOIN_REQUEST = UPDATE_CHAT_JOIN_REQUEST
 
 val ALL_UPDATES_LIST = listOf(
     UPDATE_MESSAGE,
@@ -27,7 +33,7 @@ val ALL_UPDATES_LIST = listOf(
     UPDATE_PRE_CHECKOUT_QUERY,
     UPDATE_POLL,
     UPDATE_POLL_ANSWER,
-    MY_CHAT_MEMBER,
-    CHAT_MEMBER,
-    CHAT_JOIN_REQUEST
+    UPDATE_MY_CHAT_MEMBER,
+    UPDATE_CHAT_MEMBER,
+    UPDATE_CHAT_JOIN_REQUEST
 )
