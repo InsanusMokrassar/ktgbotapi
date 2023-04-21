@@ -13,9 +13,9 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.longOrNull
 import kotlin.jvm.JvmInline
 
-const val internalTgLinksBeginning = "tg://"
+const val internalTgAppLinksBeginning = "tg://"
 const val internalLinkBeginning = "https://t.me"
-const val internalUserLinkBeginning = "${internalTgLinksBeginning}user?id="
+const val internalUserLinkBeginning = "${internalTgAppLinksBeginning}user?id="
 
 @Serializable(ChatIdentifierSerializer::class)
 @ClassCastsIncluded

@@ -43,7 +43,7 @@ value class CustomEmojiId(
     val string: String
 ) {
     val appLink
-        get() = "${internalTgLinksBeginning}emoji?id=$this"
+        get() = "${internalTgAppLinksBeginning}emoji?id=$this"
 }
 
 typealias Seconds = Int
@@ -278,6 +278,7 @@ const val switchInlineQueryField = "switch_inline_query"
 const val isAnimatedField = "is_animated"
 const val isVideoField = "is_video"
 const val inviteLinkField = "invite_link"
+const val viaChatFolderInviteLinkField = "via_chat_folder_invite_link"
 const val pinnedMessageField = "pinned_message"
 const val activeUsernamesField = "active_usernames"
 const val customTitleField = "custom_title"
