@@ -12,9 +12,12 @@ package dev.inmo.tgbotapi.extensions.utils
 import dev.inmo.tgbotapi.abstracts.CommonSendInvoiceData
 import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.abstracts.WithUser
+import dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.requests.stickers.InputSticker
+import dev.inmo.tgbotapi.types.ChatFolderInviteLink
+import dev.inmo.tgbotapi.types.ChatFolderInviteLinkUnlimited
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.ChatIdWithThreadId
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -108,6 +111,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineK
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.LoginURLInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.PayInlineKeyboardButton
+import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryChosenChatInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryCurrentChatInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.URLInlineKeyboardButton
@@ -558,6 +562,25 @@ public inline fun WithUser.chatInviteLinkUnlimitedOrThrow(): ChatInviteLinkUnlim
 
 public inline fun <T> WithUser.ifChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T): T?
     = chatInviteLinkUnlimitedOrNull() ?.let(block)
+
+public inline fun WithUser.chatFolderInviteLinkOrNull(): ChatFolderInviteLink? = this as?
+    dev.inmo.tgbotapi.types.ChatFolderInviteLink
+
+public inline fun WithUser.chatFolderInviteLinkOrThrow(): ChatFolderInviteLink = this as
+    dev.inmo.tgbotapi.types.ChatFolderInviteLink
+
+public inline fun <T> WithUser.ifChatFolderInviteLink(block: (ChatFolderInviteLink) -> T): T? =
+    chatFolderInviteLinkOrNull() ?.let(block)
+
+public inline fun WithUser.chatFolderInviteLinkUnlimitedOrNull(): ChatFolderInviteLinkUnlimited? =
+    this as? dev.inmo.tgbotapi.types.ChatFolderInviteLinkUnlimited
+
+public inline fun WithUser.chatFolderInviteLinkUnlimitedOrThrow(): ChatFolderInviteLinkUnlimited =
+    this as dev.inmo.tgbotapi.types.ChatFolderInviteLinkUnlimited
+
+public inline fun <T>
+    WithUser.ifChatFolderInviteLinkUnlimited(block: (ChatFolderInviteLinkUnlimited) -> T): T? =
+    chatFolderInviteLinkUnlimitedOrNull() ?.let(block)
 
 public inline fun WithUser.baseChosenInlineResultOrNull(): BaseChosenInlineResult? = this as?
     dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
@@ -1012,6 +1035,36 @@ public inline fun WithUser.messageGameShortNameCallbackQueryOrThrow():
 public inline fun <T>
     WithUser.ifMessageGameShortNameCallbackQuery(block: (MessageGameShortNameCallbackQuery) -> T):
     T? = messageGameShortNameCallbackQueryOrNull() ?.let(block)
+
+public inline fun InlineQueryResultsButton.startOrNull(): InlineQueryResultsButton.Start? = this as?
+    dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.Start
+
+public inline fun InlineQueryResultsButton.startOrThrow(): InlineQueryResultsButton.Start = this as
+    dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.Start
+
+public inline fun <T>
+    InlineQueryResultsButton.ifStart(block: (InlineQueryResultsButton.Start) -> T): T? =
+    startOrNull() ?.let(block)
+
+public inline fun InlineQueryResultsButton.unknownOrNull(): InlineQueryResultsButton.Unknown? = this
+    as? dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.Unknown
+
+public inline fun InlineQueryResultsButton.unknownOrThrow(): InlineQueryResultsButton.Unknown = this
+    as dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.Unknown
+
+public inline fun <T>
+    InlineQueryResultsButton.ifUnknown(block: (InlineQueryResultsButton.Unknown) -> T): T? =
+    unknownOrNull() ?.let(block)
+
+public inline fun InlineQueryResultsButton.webAppOrNull(): InlineQueryResultsButton.WebApp? = this
+    as? dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.WebApp
+
+public inline fun InlineQueryResultsButton.webAppOrThrow(): InlineQueryResultsButton.WebApp = this
+    as dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton.WebApp
+
+public inline fun <T>
+    InlineQueryResultsButton.ifWebApp(block: (InlineQueryResultsButton.WebApp) -> T): T? =
+    webAppOrNull() ?.let(block)
 
 public inline fun InputSticker.maskOrNull(): InputSticker.Mask? = this as?
     dev.inmo.tgbotapi.requests.stickers.InputSticker.Mask
@@ -1897,6 +1950,18 @@ public inline fun InlineKeyboardButton.switchInlineQueryCurrentChatInlineKeyboar
 public inline fun <T>
     InlineKeyboardButton.ifSwitchInlineQueryCurrentChatInlineKeyboardButton(block: (SwitchInlineQueryCurrentChatInlineKeyboardButton) -> T):
     T? = switchInlineQueryCurrentChatInlineKeyboardButtonOrNull() ?.let(block)
+
+public inline fun InlineKeyboardButton.switchInlineQueryChosenChatInlineKeyboardButtonOrNull():
+    SwitchInlineQueryChosenChatInlineKeyboardButton? = this as?
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryChosenChatInlineKeyboardButton
+
+public inline fun InlineKeyboardButton.switchInlineQueryChosenChatInlineKeyboardButtonOrThrow():
+    SwitchInlineQueryChosenChatInlineKeyboardButton = this as
+    dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.SwitchInlineQueryChosenChatInlineKeyboardButton
+
+public inline fun <T>
+    InlineKeyboardButton.ifSwitchInlineQueryChosenChatInlineKeyboardButton(block: (SwitchInlineQueryChosenChatInlineKeyboardButton) -> T):
+    T? = switchInlineQueryChosenChatInlineKeyboardButtonOrNull() ?.let(block)
 
 public inline fun InlineKeyboardButton.switchInlineQueryInlineKeyboardButtonOrNull():
     SwitchInlineQueryInlineKeyboardButton? = this as?

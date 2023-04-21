@@ -2,6 +2,8 @@
 
 ## 7.1.0
 
+**This update contains changes according to the [Telegram Bot API 6.7](https://core.telegram.org/bots/api-changelog#april-21-2023)**
+
 * `API`:
     * Rename `editMessageCaption` to `editMessageMedia` due to wrong old naming
     * Add `edit` extensions for `InlineMessageIdentifier`s
