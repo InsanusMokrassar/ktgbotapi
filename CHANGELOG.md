@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 7.1.0
+
 ## 7.0.2
 
 _This update brings experimental support of `linuxX64` and `mingwX64` platforms_
