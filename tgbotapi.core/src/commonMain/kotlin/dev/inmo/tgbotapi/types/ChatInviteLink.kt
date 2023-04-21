@@ -157,40 +157,6 @@ data class ChatInviteLinkUnlimited(
         get() = expireDate ?.asDate
 }
 
-/**
- * Base interface for all [ChatInviteLink]s which are NOT [PrimaryInviteLink]
- */
-@Serializable(ChatInviteLinkSerializer::class)
-sealed interface ChatFolderInviteLink : ChatInviteLink {
-    override val isPrimary: Boolean
-        get() = false
-
-    companion object {
-        const val addListLinkPart = "addlist"
-    }
-}
-
-/**
- * Represent [SecondaryChatInviteLink] which have no any restrictions like [ChatInviteLinkWithJoinRequest] or
- * [ChatInviteLinkWithLimitedMembers]
- */
-@Serializable
-data class ChatFolderInviteLinkUnlimited(
-    @SerialName(inviteLinkField)
-    override val inviteLink: String,
-    @SerialName(creatorField)
-    override val creator: User,
-    @SerialName(nameField)
-    override val name: String? = null,
-    @SerialName(isRevokedField)
-    override val isRevoked: Boolean = false,
-    @SerialName(expireDateField)
-    private val expireDate: TelegramDate? = null,
-) : ChatFolderInviteLink {
-    override val expirationDateTime: DateTime?
-        get() = expireDate ?.asDate
-}
-
 @RiskFeature
 object ChatInviteLinkSerializer : KSerializer<ChatInviteLink> {
     override val descriptor: SerialDescriptor
@@ -213,9 +179,6 @@ object ChatInviteLinkSerializer : KSerializer<ChatInviteLink> {
                         inviteLink, creator, name, membersLimit, isRevoked, expirationDateTime
                     )
                 }
-                inviteLink.contains(ChatFolderInviteLink.addListLinkPart) -> ChatFolderInviteLinkUnlimited(
-                    inviteLink, creator, name, isRevoked, expirationDateTime
-                )
                 else -> ChatInviteLinkUnlimited(
                     inviteLink, creator, name, isRevoked, expirationDateTime
                 )
