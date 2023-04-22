@@ -41,7 +41,10 @@ typealias WebAppQueryId = String
 @JvmInline
 value class CustomEmojiId(
     val string: String
-)
+) {
+    val appLink
+        get() = "${internalTgAppLinksBeginning}emoji?id=$this"
+}
 
 typealias Seconds = Int
 typealias MilliSeconds = Long
@@ -247,10 +250,15 @@ const val errorMessageField = "error_message"
 const val messageTextField = "message_text"
 const val isPersonalField = "is_personal"
 const val nextOffsetField = "next_offset"
+const val buttonField = "button"
 const val switchPmTextField = "switch_pm_text"
 const val switchPmParameterField = "switch_pm_parameter"
 const val maxAllowedConnectionsField = "max_connections"
 const val allowedUpdatesField = "allowed_updates"
+const val allowUserChatsField = "allow_user_chats"
+const val allowBotChatsField = "allow_bot_chats"
+const val allowGroupChatsField = "allow_group_chats"
+const val allowChannelChatsField = "allow_channel_chats"
 const val dropPendingUpdatesField = "drop_pending_updates"
 const val secretTokenField = "secret_token"
 const val hasCustomCertificateField = "has_custom_certificate"
@@ -271,10 +279,12 @@ const val loginUrlField = "login_url"
 const val forwardTextField = "forward_text"
 const val botUsernameField = "bot_username"
 const val switchInlineQueryCurrentChatField = "switch_inline_query_current_chat"
+const val switchInlineQueryChosenChatField = "switch_inline_query_chosen_chat"
 const val switchInlineQueryField = "switch_inline_query"
 const val isAnimatedField = "is_animated"
 const val isVideoField = "is_video"
 const val inviteLinkField = "invite_link"
+const val viaChatFolderInviteLinkField = "via_chat_folder_invite_link"
 const val pinnedMessageField = "pinned_message"
 const val activeUsernamesField = "active_usernames"
 const val customTitleField = "custom_title"
@@ -596,4 +606,5 @@ const val temporaryRegistrationField = "temporary_registration"
 
 const val buttonTextField = "button_text"
 const val webAppField = "web_app"
+const val webAppNameField = "web_app_name"
 const val menuButtonField = "menu_button"

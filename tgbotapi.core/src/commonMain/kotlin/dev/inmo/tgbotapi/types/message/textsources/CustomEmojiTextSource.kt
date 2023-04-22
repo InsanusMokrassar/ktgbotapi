@@ -16,8 +16,8 @@ data class CustomEmojiTextSource @RiskFeature(DirectInvocationOfTextSourceConstr
     override val subsources: TextSourcesList
 ) : MultilevelTextSource {
     override val markdown: String by lazy { source.customEmojiMarkdown() }
-    override val markdownV2: String by lazy { source.customEmojiMarkdownV2() }
-    override val html: String by lazy { source.customEmojiHTML() }
+    override val markdownV2: String by lazy { source.customEmojiMarkdownV2(customEmojiId) }
+    override val html: String by lazy { source.customEmojiHTML(customEmojiId) }
 }
 
 @Suppress("NOTHING_TO_INLINE", "EXPERIMENTAL_API_USAGE")

@@ -99,6 +99,23 @@ data class SwitchInlineQueryCurrentChatInlineKeyboardButton(
 ) : InlineKeyboardButton
 
 /**
+ * Complex button with [switchInlineQueryCurrentChat] which will be sent to you in an [dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery]
+ * which you may catch in [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onBaseInlineQuery] and get
+ * from [dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery.query] (or changed by user query in case he will be
+ * the fastest hand in the wild west). Can be forwarded in any chat with message in case if it is the only one button in
+ * message, but will be converted to a [SwitchInlineQueryInlineKeyboardButton].
+ * Remember that clicking on this button will automatically insert username of this bot in current chat, paste
+ * [switchInlineQueryCurrentChat] as a query and create and inline request to your bot
+ * Visit https://core.telegram.org/bots/api#inlinekeyboardbutton for more info
+ */
+@Serializable
+data class SwitchInlineQueryChosenChatInlineKeyboardButton(
+    override val text: String,
+    @SerialName(switchInlineQueryChosenChatField)
+    val parameters: SwitchInlineQueryChosenChat
+) : InlineKeyboardButton
+
+/**
  * Complex button with [switchInlineQuery] which will be sent to you in an [dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery]
  * which you may catch in [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onBaseInlineQuery] and get
  * from [dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery.query] (or changed by user query in case he will be

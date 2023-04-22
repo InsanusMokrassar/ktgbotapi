@@ -1,5 +1,15 @@
 # TelegramBotAPI changelog
 
+## 7.1.0
+
+**This update contains changes according to the [Telegram Bot API 6.7](https://core.telegram.org/bots/api-changelog#april-21-2023)**
+
+* `API`:
+    * Rename `editMessageCaption` to `editMessageMedia` due to wrong old naming
+    * Add `edit` extensions for `InlineMessageIdentifier`s
+* `BehaviourBuilder`:
+    * `BehaviourContext` extensions `onDeepLink` and `waitDeepLinks` now can be used with `Regex` or `String` as first parameters
+
 ## 7.0.2
 
 _This update brings experimental support of `linuxX64` and `mingwX64` platforms_

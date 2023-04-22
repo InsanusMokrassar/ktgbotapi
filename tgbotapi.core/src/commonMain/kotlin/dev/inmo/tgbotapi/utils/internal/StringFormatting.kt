@@ -24,6 +24,7 @@ const val htmlCodeControl = "code"
 const val htmlPreControl = "pre"
 const val htmlUnderlineControl = "u"
 const val htmlStrikethroughControl = "s"
+const val htmlCustomEmojiControl = "tg-emoji"
 
 private fun String.markdownDefault(
     openControlSymbol: String,
@@ -120,8 +121,8 @@ internal fun String.commandMarkdownV2(): String = command(String::escapeMarkdown
 internal fun String.commandHTML(): String = command(String::toHtml)
 
 internal fun String.customEmojiMarkdown(): String = toMarkdown()
-internal fun String.customEmojiMarkdownV2(): String = escapeMarkdownV2Common()
-internal fun String.customEmojiHTML(): String = toHtml()
+internal fun String.customEmojiMarkdownV2(customEmojiId: CustomEmojiId): String = "!${linkMarkdownV2(customEmojiId.appLink)}"
+internal fun String.customEmojiHTML(customEmojiId: CustomEmojiId): String = "<$htmlCustomEmojiControl $htmlCustomEmojiControl=\"${customEmojiId.string}\">$this</$htmlCustomEmojiControl>"
 
 internal fun String.regularMarkdown(): String = toMarkdown()
 internal fun String.regularMarkdownV2(): String = escapeMarkdownV2Common()
