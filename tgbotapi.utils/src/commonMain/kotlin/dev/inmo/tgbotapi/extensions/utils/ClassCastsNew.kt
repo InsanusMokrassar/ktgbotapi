@@ -16,8 +16,6 @@ import dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.requests.stickers.InputSticker
-import dev.inmo.tgbotapi.types.ChatFolderInviteLink
-import dev.inmo.tgbotapi.types.ChatFolderInviteLinkUnlimited
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.ChatIdWithThreadId
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -562,25 +560,6 @@ public inline fun WithUser.chatInviteLinkUnlimitedOrThrow(): ChatInviteLinkUnlim
 
 public inline fun <T> WithUser.ifChatInviteLinkUnlimited(block: (ChatInviteLinkUnlimited) -> T): T?
     = chatInviteLinkUnlimitedOrNull() ?.let(block)
-
-public inline fun WithUser.chatFolderInviteLinkOrNull(): ChatFolderInviteLink? = this as?
-    dev.inmo.tgbotapi.types.ChatFolderInviteLink
-
-public inline fun WithUser.chatFolderInviteLinkOrThrow(): ChatFolderInviteLink = this as
-    dev.inmo.tgbotapi.types.ChatFolderInviteLink
-
-public inline fun <T> WithUser.ifChatFolderInviteLink(block: (ChatFolderInviteLink) -> T): T? =
-    chatFolderInviteLinkOrNull() ?.let(block)
-
-public inline fun WithUser.chatFolderInviteLinkUnlimitedOrNull(): ChatFolderInviteLinkUnlimited? =
-    this as? dev.inmo.tgbotapi.types.ChatFolderInviteLinkUnlimited
-
-public inline fun WithUser.chatFolderInviteLinkUnlimitedOrThrow(): ChatFolderInviteLinkUnlimited =
-    this as dev.inmo.tgbotapi.types.ChatFolderInviteLinkUnlimited
-
-public inline fun <T>
-    WithUser.ifChatFolderInviteLinkUnlimited(block: (ChatFolderInviteLinkUnlimited) -> T): T? =
-    chatFolderInviteLinkUnlimitedOrNull() ?.let(block)
 
 public inline fun WithUser.baseChosenInlineResultOrNull(): BaseChosenInlineResult? = this as?
     dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInlineResult
