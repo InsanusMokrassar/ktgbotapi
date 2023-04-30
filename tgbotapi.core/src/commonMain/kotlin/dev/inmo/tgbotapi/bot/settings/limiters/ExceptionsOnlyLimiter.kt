@@ -14,7 +14,6 @@ object ExceptionsOnlyLimiter : RequestLimiter {
             result = runCatchingSafely {
                 block()
             }.onFailure {
-                it.printStackTrace()
                 if (it is TooMuchRequestsException) {
                     delay(it.retryAfter.leftToRetry)
                 } else {
