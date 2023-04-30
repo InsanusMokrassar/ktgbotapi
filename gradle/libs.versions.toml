@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.8.20"
+kotlin = "1.8.21"
 kotlin-serialization = "1.5.0"
 kotlin-coroutines = "1.6.4"
 
@@ -13,7 +13,7 @@ ktor = "2.3.0"
 ksp = "1.8.21-1.0.11"
 kotlin-poet = "1.13.0"
 
-microutils = "0.17.8"
+microutils = "0.18.0"
 
 github-release-plugin = "2.4.1"
 dokka = "1.8.10"
