@@ -47,7 +47,7 @@ fun makeLinkToMessage(
     username: Username,
     messageId: MessageId,
     threadId: MessageThreadId? = null
-): String = makeLinkToMessage(username.username, messageId, threadId)
+): String = makeLinkToMessage(username.usernameWithoutAt, messageId, threadId)
 fun makeLinkToMessage(
     chatId: Identifier,
     messageId: MessageId,

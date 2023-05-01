@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 7.1.1
+
+* `Versions`:
+  * `Kotlin`: `1.8.20` -> `1.8.21`
+  * `MicroUtils`: `0.17.8` -> `0.18.0`
+* `Utils`:
+    * Fixes in `makeLinkToMessage`
+
 ## 7.1.0
 
 **This update contains changes according to the [Telegram Bot API 6.7](https://core.telegram.org/bots/api-changelog#april-21-2023)**
