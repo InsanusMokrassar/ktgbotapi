@@ -2,6 +2,9 @@
 
 ## 7.1.2
 
+* `Core`:
+    * Noe it is possible to serialize `Sticker`s
+
 ## 7.1.1
 
 * `Versions`:
