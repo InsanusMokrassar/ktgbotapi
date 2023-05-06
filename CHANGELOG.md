@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 7.1.2
+
+* `Versions`:
+  * `MicroUtils`: `0.18.0` -> `0.18.1`
+* `Core`:
+    * Now it is possible to serialize `Sticker`s
+
 ## 7.1.1
 
 * `Versions`:
