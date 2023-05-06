@@ -2,8 +2,11 @@
 
 ## 7.1.2
 
+* `Versions`:
+  * `Coroutines`: `1.6.4` -> `1.7.0`
+  * `MicroUtils`: `0.18.0` -> `0.18.2`
 * `Core`:
-    * Noe it is possible to serialize `Sticker`s
+    * Now it is possible to serialize `Sticker`s
 
 ## 7.1.1
 
