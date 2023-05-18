@@ -2,6 +2,10 @@
 
 ## 7.1.3
 
+* `Versions`:
+  * `Serialization`: `1.5.0` -> `1.5.1`
+  * `MicroUtils`: `0.18.1` -> `0.18.4`
+
 ## 7.1.2
 
 * `Versions`:
