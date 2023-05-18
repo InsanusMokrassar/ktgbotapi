@@ -151,3 +151,8 @@ suspend fun BehaviourContext.waitVisualContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage<VisualMediaGroupPartContent>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitMediaContentMessage(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage<MediaContent>(initRequest, errorFactory)
