@@ -2,6 +2,8 @@ package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 
+typealias TextedMessage = CommonMessage<TextedContent>
+
 typealias InvoiceMessage = CommonMessage<InvoiceContent>
 typealias VenueMessage = CommonMessage<VenueContent>
 typealias GameMessage = CommonMessage<GameContent>

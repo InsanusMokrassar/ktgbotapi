@@ -7,6 +7,8 @@
     * `MicroUtils`: `0.18.1` -> `0.18.4`
 * `BehaviourBuilder`:
     * Now it is possible to use `waitMediaContent`/`waitMediaContentMessage`/`onMediaContent`
+    * Add `onMention`/`waitMention` functionality
+    * Add opportunity to map content with extensions to `Flow`
 
 ## 7.1.2
 
