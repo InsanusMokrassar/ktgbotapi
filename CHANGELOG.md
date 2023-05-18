@@ -5,6 +5,8 @@
 * `Versions`:
     * `Serialization`: `1.5.0` -> `1.5.1`
     * `MicroUtils`: `0.18.1` -> `0.18.4`
+* `Core`:
+    * Actualize kdocs in `InputFile`
 * `BehaviourBuilder`:
     * Now it is possible to use `waitMediaContent`/`waitMediaContentMessage`/`onMediaContent`
     * Add `onMention`/`waitMention` functionality
