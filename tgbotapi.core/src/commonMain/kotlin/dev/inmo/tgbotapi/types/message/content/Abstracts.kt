@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.abstracts.SpoilerableData
+import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -51,6 +52,18 @@ sealed interface MessageContent: ResendableContent {
 
                 additionalBuilder()
             }
+
+            polymorphic(TextedContent::class) {
+                subclass(TextContent::class)
+                subclass(VoiceContent::class)
+                subclass(MediaGroupContent::class)
+                subclass(AudioContent::class)
+                subclass(DocumentContent::class)
+                subclass(VideoContent::class)
+                subclass(PhotoContent::class)
+                subclass(AnimationContent::class)
+            }
+
             polymorphic(MediaCollectionContent::class) {
                 subclass(PhotoContent::class)
 
@@ -114,6 +127,11 @@ sealed interface MessageContent: ResendableContent {
 sealed interface MediaCollectionContent<T: TelegramMediaFile>: MessageContent, MediaContent {
     val mediaCollection: List<T>
 }
+
+/**
+ * All the subtypes of this content will have [text] and [textSources] fields
+ */
+sealed interface TextedContent : MessageContent, TextedInput
 
 sealed interface MediaContent: MessageContent {
     val media: TelegramMediaFile

@@ -22,7 +22,7 @@ sealed interface DocumentMediaGroupPartContent : MediaGroupPartContent {
     override fun toMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia
 }
 
-sealed interface TextedMediaContent : MediaContent, TextedInput
+sealed interface TextedMediaContent : TextedContent, MediaContent
 
 sealed interface MediaGroupCollectionContent<T : MediaGroupPartContent> : TextedMediaContent {
     @Serializable

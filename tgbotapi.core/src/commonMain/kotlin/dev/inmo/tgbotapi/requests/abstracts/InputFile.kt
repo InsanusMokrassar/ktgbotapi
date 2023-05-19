@@ -21,6 +21,11 @@ import kotlinx.serialization.encoding.Encoder
  * @see ByteArray.asMultipartFile
  * @see ByteReadChannel.asMultipartFile
  * @see ByteReadChannelAllocator.asMultipartFile
+ *
+ * @see fromInput
+ * @see fromFile
+ * @see fromId
+ * @see fromUrl
  */
 @Serializable(InputFileSerializer::class)
 sealed class InputFile {
@@ -29,9 +34,24 @@ sealed class InputFile {
     companion object {
         operator fun invoke(file: MPPFile) = file.asMultipartFile()
 
+        /**
+         * Creates [MultipartFile] based on incoming [filename] and [inputSource]
+         */
         fun fromInput(filename: String, inputSource: () -> Input) = MultipartFile(filename, inputSource)
+
+        /**
+         * Creates [MultipartFile] based on incoming [MPPFile] (common File in java, for example)
+         */
         fun fromFile(file: MPPFile) = invoke(file)
+
+        /**
+         * Creates [FileId] from the incomming [id] [String] with believe that it is [FileId]
+         */
         fun fromId(id: String) = FileId(id)
+
+        /**
+         * Creates [FileUrl] from the incomming [url] [String]
+         */
         fun fromUrl(url: String) = FileUrl(url)
     }
 }

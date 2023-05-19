@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 data class TextContent(
     override val text: String,
     override val textSources: TextSourcesList = emptyList(),
-) : MessageContent, TextedInput {
+) : TextedContent {
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
