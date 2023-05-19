@@ -329,6 +329,7 @@ import dev.inmo.tgbotapi.types.message.content.SpoilerableMediaContent
 import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 import dev.inmo.tgbotapi.types.message.content.StickerContent
 import dev.inmo.tgbotapi.types.message.content.TextContent
+import dev.inmo.tgbotapi.types.message.content.TextedContent
 import dev.inmo.tgbotapi.types.message.content.TextedMediaContent
 import dev.inmo.tgbotapi.types.message.content.VenueContent
 import dev.inmo.tgbotapi.types.message.content.VideoContent
@@ -3711,6 +3712,15 @@ public inline fun ResendableContent.mediaCollectionContentOrThrow():
 public inline fun <T>
     ResendableContent.ifMediaCollectionContent(block: (MediaCollectionContent<TelegramMediaFile>) -> T):
     T? = mediaCollectionContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.textedContentOrNull(): TextedContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.TextedContent
+
+public inline fun ResendableContent.textedContentOrThrow(): TextedContent = this as
+    dev.inmo.tgbotapi.types.message.content.TextedContent
+
+public inline fun <T> ResendableContent.ifTextedContent(block: (TextedContent) -> T): T? =
+    textedContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.mediaContentOrNull(): MediaContent? = this as?
     dev.inmo.tgbotapi.types.message.content.MediaContent
