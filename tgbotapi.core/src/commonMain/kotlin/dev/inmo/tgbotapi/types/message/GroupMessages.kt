@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*

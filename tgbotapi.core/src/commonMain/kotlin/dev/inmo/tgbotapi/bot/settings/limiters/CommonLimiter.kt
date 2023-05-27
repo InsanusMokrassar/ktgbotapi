@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.bot.settings.limiters
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.MilliSeconds
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Semaphore

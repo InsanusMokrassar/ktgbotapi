@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.TestsJsonFormat
 import kotlinx.serialization.Serializable
 import kotlin.test.Test

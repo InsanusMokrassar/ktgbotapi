@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 
 sealed class RequestError
 

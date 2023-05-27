@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.PrivateChat
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent

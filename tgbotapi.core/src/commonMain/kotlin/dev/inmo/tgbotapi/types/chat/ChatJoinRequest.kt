@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.chat
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.FromUser
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.SerialName

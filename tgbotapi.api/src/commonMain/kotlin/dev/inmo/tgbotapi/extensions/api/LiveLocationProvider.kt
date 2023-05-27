@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api
 
-import com.soywiz.klock.DateTime
-import com.soywiz.klock.TimeSpan
+import korlibs.time.DateTime
+import korlibs.time.TimeSpan
 import dev.inmo.micro_utils.coroutines.LinkedSupervisorJob
 import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
