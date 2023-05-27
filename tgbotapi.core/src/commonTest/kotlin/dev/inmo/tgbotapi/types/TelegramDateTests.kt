@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-private val dateTimeUnix = DateTime.nowUnixLong()
+private val dateTimeUnix = DateTime.nowUnixMillisLong()
 private val dateTimeMillis = dateTimeUnix * 1000
 private val dateTime = DateTime(dateTimeMillis)
 
