@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 8.0.0
+
 ## 7.1.3
 
 * `Versions`:
