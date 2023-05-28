@@ -77,9 +77,6 @@ val UserId.userLink: String
     get() = chatId.userLink
 val User.userLink: String
     get() = id.userLink
-@Deprecated("Deprecated due to the conflicts in name", ReplaceWith("this.userLink", "dev.inmo.tgbotapi.types.userLink"))
-val User.link: String
-    get() = userLink
 
 typealias UserId = ChatId
 
