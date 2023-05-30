@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.chat.abstracts
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.DeserializationStrategy

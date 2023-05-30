@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.serializer

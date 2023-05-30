@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.bot.exceptions
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.types.RetryAfterError
 import io.ktor.utils.io.errors.IOException

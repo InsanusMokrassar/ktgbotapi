@@ -1,5 +1,21 @@
 # TelegramBotAPI changelog
 
+## 8.0.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+**ALL PROJECT DEPRECATIONS HAVE BEEN REMOVED**
+
+**IN THIS UPDATE KORLIBS HAVE BEEN UPDATED TO VERSION `4.0.2`. SINCE THAT VERSION A LOT OF PACKAGES HAVE BEEN RENAMED.
+MIGRATIONS USED IN THIS LIB:**
+
+* `com.soywiz.klock` -> `korlibs.time`
+* `com.soywiz.krypto` -> `korlibs.crypto`
+
+* `Versions`:
+    * `Korlibs`: `3.4.0` -> `4.0.3`
+    * `MicroUtils`: `0.18.4` -> `0.19.1`
+
 ## 7.1.3
 
 * `Versions`:

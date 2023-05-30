@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.WithChat
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.MessageId

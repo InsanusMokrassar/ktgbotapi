@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.message.ChatEvents.voice
 
-import com.soywiz.klock.TimeSpan
-import com.soywiz.klock.seconds
+import korlibs.time.TimeSpan
+import korlibs.time.seconds
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.durationField
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent

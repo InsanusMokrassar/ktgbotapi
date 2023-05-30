@@ -14,12 +14,6 @@ const val UPDATE_POLL_ANSWER = "poll_answer"
 const val UPDATE_MY_CHAT_MEMBER = "my_chat_member"
 const val UPDATE_CHAT_MEMBER = "chat_member"
 const val UPDATE_CHAT_JOIN_REQUEST = "chat_join_request"
-@Deprecated("Renamed", ReplaceWith("UPDATE_MY_CHAT_MEMBER", "dev.inmo.tgbotapi.types.UPDATE_MY_CHAT_MEMBER"))
-const val MY_CHAT_MEMBER = UPDATE_MY_CHAT_MEMBER
-@Deprecated("Renamed", ReplaceWith("UPDATE_CHAT_MEMBER", "dev.inmo.tgbotapi.types.UPDATE_CHAT_MEMBER"))
-const val CHAT_MEMBER = UPDATE_CHAT_MEMBER
-@Deprecated("Renamed", ReplaceWith("UPDATE_CHAT_JOIN_REQUEST", "dev.inmo.tgbotapi.types.UPDATE_CHAT_JOIN_REQUEST"))
-const val CHAT_JOIN_REQUEST = UPDATE_CHAT_JOIN_REQUEST
 
 val ALL_UPDATES_LIST = listOf(
     UPDATE_MESSAGE,

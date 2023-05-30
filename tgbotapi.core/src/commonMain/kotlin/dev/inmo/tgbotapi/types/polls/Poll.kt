@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.polls
 
-import com.soywiz.klock.DateTime
-import com.soywiz.klock.TimeSpan
+import korlibs.time.DateTime
+import korlibs.time.TimeSpan
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*

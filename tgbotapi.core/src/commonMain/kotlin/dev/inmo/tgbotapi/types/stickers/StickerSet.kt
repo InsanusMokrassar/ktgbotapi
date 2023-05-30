@@ -32,9 +32,6 @@ sealed interface StickerSet {
     val isVideo: Boolean
         get() = false
     val thumbnail: PhotoSize?
-    @Deprecated("Renamed in telegram bot api")
-    val thumb: PhotoSize?
-        get() = thumbnail
 
     object Serializer : KSerializer<StickerSet> {
         override val descriptor: SerialDescriptor = JsonElement.serializer().descriptor

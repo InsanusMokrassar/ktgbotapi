@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.types
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.WithUser
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.utils.RiskFeature

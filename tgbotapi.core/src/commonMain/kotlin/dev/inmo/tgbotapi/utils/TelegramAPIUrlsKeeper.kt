@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.utils
 
-import com.soywiz.krypto.*
+import korlibs.crypto.*
 import io.ktor.http.decodeURLQueryComponent
 import io.ktor.utils.io.core.toByteArray
 

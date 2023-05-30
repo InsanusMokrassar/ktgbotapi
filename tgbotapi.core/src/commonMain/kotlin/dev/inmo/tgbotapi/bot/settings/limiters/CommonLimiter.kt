@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.bot.settings.limiters
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.types.MilliSeconds
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Semaphore
@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import kotlin.math.roundToLong
 
-private fun now(): Long = DateTime.nowUnixLong()
+private fun now(): Long = DateTime.nowUnixMillisLong()
 
 @Serializable
 class CommonLimiter(

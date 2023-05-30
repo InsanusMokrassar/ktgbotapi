@@ -1,12 +1,12 @@
 package dev.inmo.tgbotapi.types
 
-import com.soywiz.klock.DateTime
+import korlibs.time.DateTime
 import dev.inmo.tgbotapi.TestsJsonFormat
 import kotlinx.serialization.Serializable
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-private val dateTimeUnix = DateTime.nowUnixLong()
+private val dateTimeUnix = DateTime.nowUnixMillisLong()
 private val dateTimeMillis = dateTimeUnix * 1000
 private val dateTime = DateTime(dateTimeMillis)
 
