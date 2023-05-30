@@ -13,8 +13,8 @@ MIGRATIONS USED IN THIS LIB:**
 * `com.soywiz.krypto` -> `korlibs.crypto`
 
 * `Versions`:
-    * `Korlibs`: `3.4.0` -> `4.0.2`
-    * `MicroUtils`: `0.18.4` -> `0.19.0`
+    * `Korlibs`: `3.4.0` -> `4.0.3`
+    * `MicroUtils`: `0.18.4` -> `0.19.1`
 
 ## 7.1.3
 
