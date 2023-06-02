@@ -1,5 +1,11 @@
 # TelegramBotAPI changelog
 
+## 8.0.1
+
+* `Version`:
+    * `Ktor`: `2.3.0` -> `2.3.1`
+    * `MicroUtils`: `0.19.1` -> `0.19.2`
+
 ## 8.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
