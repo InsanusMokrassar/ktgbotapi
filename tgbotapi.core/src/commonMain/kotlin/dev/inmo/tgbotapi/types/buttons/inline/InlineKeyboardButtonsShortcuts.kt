@@ -5,20 +5,14 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 
 /**
- * Creates and put [PayInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [PayInlineKeyboardButton]
  */
 inline fun payInlineButton(
     text: String
 ) = PayInlineKeyboardButton(text)
 
 /**
- * Creates and put [CallbackDataInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [CallbackDataInlineKeyboardButton]
  */
 inline fun dataInlineButton(
     text: String,
@@ -26,20 +20,14 @@ inline fun dataInlineButton(
 ) = CallbackDataInlineKeyboardButton(text, data)
 
 /**
- * Creates and put [CallbackGameInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [CallbackGameInlineKeyboardButton]
  */
 inline fun gameInlineButton(
     text: String
 ) = CallbackGameInlineKeyboardButton(text)
 
 /**
- * Creates and put [LoginURLInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [LoginURLInlineKeyboardButton]
  */
 inline fun loginInlineButton(
     text: String,
@@ -47,10 +35,7 @@ inline fun loginInlineButton(
 ) = LoginURLInlineKeyboardButton(text, loginUrl)
 
 /**
- * Creates and put [SwitchInlineQueryCurrentChatInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [SwitchInlineQueryCurrentChatInlineKeyboardButton]
  */
 inline fun inlineQueryInCurrentChatInlineButton(
     text: String,
@@ -58,10 +43,7 @@ inline fun inlineQueryInCurrentChatInlineButton(
 ) = SwitchInlineQueryCurrentChatInlineKeyboardButton(text, data)
 
 /**
- * Creates and put [SwitchInlineQueryChosenChatInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [SwitchInlineQueryChosenChatInlineKeyboardButton]
  */
 inline fun inlineQueryInCurrentChatInlineButton(
     text: String,
@@ -69,10 +51,7 @@ inline fun inlineQueryInCurrentChatInlineButton(
 ) = SwitchInlineQueryChosenChatInlineKeyboardButton(text, parameters)
 
 /**
- * Creates and put [SwitchInlineQueryChosenChatInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [SwitchInlineQueryChosenChatInlineKeyboardButton]
  */
 inline fun inlineQueryInCurrentChatInlineButton(
     text: String,
@@ -93,10 +72,7 @@ inline fun inlineQueryInCurrentChatInlineButton(
 )
 
 /**
- * Creates and put [SwitchInlineQueryChosenChatInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [SwitchInlineQueryChosenChatInlineKeyboardButton]
  */
 inline fun inlineQueryInAnyCurrentChatInlineButton(
     text: String,
@@ -104,10 +80,7 @@ inline fun inlineQueryInAnyCurrentChatInlineButton(
 ) = inlineQueryInCurrentChatInlineButton(text, query, allowUsers = true, allowBots = true, allowGroups = true, allowChannels = true)
 
 /**
- * Creates and put [SwitchInlineQueryInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [SwitchInlineQueryInlineKeyboardButton]
  */
 inline fun inlineQueryInlineButton(
     text: String,
@@ -115,10 +88,7 @@ inline fun inlineQueryInlineButton(
 ) = SwitchInlineQueryInlineKeyboardButton(text, data)
 
 /**
- * Creates and put [URLInlineKeyboardButton]
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [URLInlineKeyboardButton]
  */
 inline fun urlInlineButton(
     text: String,
@@ -126,10 +96,7 @@ inline fun urlInlineButton(
 ) = URLInlineKeyboardButton(text, url)
 
 /**
- * Creates and put [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
  */
 inline fun webAppInlineButton(
     text: String,
@@ -137,10 +104,7 @@ inline fun webAppInlineButton(
 ) = WebAppInlineKeyboardButton(text, webApp)
 
 /**
- * Creates and put [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
- *
- * @see inlineKeyboard
- * @see InlineKeyboardBuilder.row
+ * Creates [WebAppInlineKeyboardButton]. Please, remember that this button is available in private chats only
  */
 inline fun webAppInlineButton(
     text: String,

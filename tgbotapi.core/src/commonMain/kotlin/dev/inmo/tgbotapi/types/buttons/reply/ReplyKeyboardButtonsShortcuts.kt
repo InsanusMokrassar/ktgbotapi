@@ -8,40 +8,28 @@ import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 
 
 /**
- * Creates and put [SimpleKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [SimpleKeyboardButton]
  */
 inline fun simpleReplyButton(
     text: String
 ) = SimpleKeyboardButton(text)
 
 /**
- * Creates and put [RequestContactKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestContactKeyboardButton]
  */
 inline fun requestContactReplyButton(
     text: String
 ) = RequestContactKeyboardButton(text)
 
 /**
- * Creates and put [RequestLocationKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestLocationKeyboardButton]
  */
 inline fun requestLocationReplyButton(
     text: String
 ) = RequestLocationKeyboardButton(text)
 
 /**
- * Creates and put [RequestPollKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestPollKeyboardButton]
  */
 inline fun requestPollReplyButton(
     text: String,
@@ -49,10 +37,7 @@ inline fun requestPollReplyButton(
 ) = RequestPollKeyboardButton(text, pollType)
 
 /**
- * Creates and put [WebAppKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [WebAppKeyboardButton]
  */
 inline fun webAppReplyButton(
     text: String,
@@ -60,10 +45,7 @@ inline fun webAppReplyButton(
 ) = WebAppKeyboardButton(text, webApp)
 
 /**
- * Creates and put [WebAppKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [WebAppKeyboardButton]
  */
 inline fun webAppReplyButton(
     text: String,
@@ -72,10 +54,7 @@ inline fun webAppReplyButton(
 
 
 /**
- * Creates and put [RequestUserKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestUserKeyboardButton]
  */
 inline fun requestUserReplyButton(
     text: String,
@@ -86,10 +65,7 @@ inline fun requestUserReplyButton(
 )
 
 /**
- * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Bot]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Bot]
  */
 inline fun requestBotReplyButton(
     text: String,
@@ -100,10 +76,7 @@ inline fun requestBotReplyButton(
 )
 
 /**
- * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Common]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Common]
  */
 inline fun requestUserReplyButton(
     text: String,
@@ -115,10 +88,7 @@ inline fun requestUserReplyButton(
 )
 
 /**
- * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Any]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Any]
  */
 inline fun requestUserOrBotReplyButton(
     text: String,
@@ -130,10 +100,7 @@ inline fun requestUserOrBotReplyButton(
 
 
 /**
- * Creates and put [RequestChatKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestChatKeyboardButton]
  */
 inline fun requestChatReplyButton(
     text: String,
@@ -144,10 +111,7 @@ inline fun requestChatReplyButton(
 )
 
 /**
- * Creates and put [RequestChatKeyboardButton] with [KeyboardButtonRequestChat]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestChatKeyboardButton] with [KeyboardButtonRequestChat]
  */
 inline fun requestChatReplyButton(
     text: String,
@@ -174,10 +138,7 @@ inline fun requestChatReplyButton(
 )
 
 /**
- * Creates and put [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Channel]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Channel]
  */
 inline fun requestChannelReplyButton(
     text: String,
@@ -201,10 +162,7 @@ inline fun requestChannelReplyButton(
 
 
 /**
- * Creates and put [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Group]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
+ * Creates [RequestChatKeyboardButton] with [KeyboardButtonRequestChat.Group]
  */
 inline fun requestChannelReplyButton(
     text: String,
