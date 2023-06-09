@@ -56,8 +56,417 @@
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">BehaviourContext</a> : <a href="../../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/index.html">FlowsUpdatesFilter</a>, <a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-requests-executor/index.html">RequestsExecutor</a>, <span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></div><p class="paragraph">This class contains all necessary tools for work with bots and especially <a href="../build-behaviour.html">buildBehaviour</a></p><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-default-behaviour-context/index.html"><span>Default</span><wbr><span>Behaviour</span><wbr><span><span>Context</span></span></a></div></span></div><div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-default-behaviour-context/index.html">DefaultBehaviourContext</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-728655137%2FProperties%2F148860642" anchor-label="allowedUpdates" id="-728655137%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-default-behaviour-context/index.html#-728655137%2FProperties%2F148860642"><span>allowed</span><wbr><span><span>Updates</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-728655137%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#-728655137%2FProperties%2F148860642">allowedUpdates</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2078180918%2FProperties%2F148860642" anchor-label="allUpdatesFlow" id="-2078180918%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2078180918%2FProperties%2F148860642"><span>all</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2078180918%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-2078180918%2FProperties%2F148860642">allUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1206020112%2FProperties%2F148860642" anchor-label="asUpdateReceiver" id="1206020112%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1206020112%2FProperties%2F148860642"><span>as</span><wbr><span>Update</span><wbr><span><span>Receiver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1206020112%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1206020112%2FProperties%2F148860642">asUpdateReceiver</a><span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1802326973%2FProperties%2F148860642" anchor-label="bot" id="1802326973%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bot.html"><span><span>bot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1802326973%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="bot.html">bot</a><span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="451245578%2FProperties%2F148860642" anchor-label="callbackQueriesFlow" id="451245578%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#451245578%2FProperties%2F148860642"><span>callback</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="451245578%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#451245578%2FProperties%2F148860642">callbackQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-callback-query-update/index.html">CallbackQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-956329826%2FProperties%2F148860642" anchor-label="channelPostMediaGroupsFlow" id="-956329826%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-default-behaviour-context/index.html#-956329826%2FProperties%2F148860642"><span>channel</span><wbr><span>Post</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-956329826%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#-956329826%2FProperties%2F148860642">channelPostMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-channel-post-update/index.html">ChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1140499843%2FProperties%2F148860642" anchor-label="channelPostsFlow" id="1140499843%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1140499843%2FProperties%2F148860642"><span>channel</span><wbr><span>Posts</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1140499843%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1140499843%2FProperties%2F148860642">channelPostsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-channel-post-update/index.html">ChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1991764523%2FProperties%2F148860642" anchor-label="chatJoinRequestUpdateFlow" id="-1991764523%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1991764523%2FProperties%2F148860642"><span>chat</span><wbr><span>Join</span><wbr><span>Request</span><wbr><span>Update</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1991764523%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1991764523%2FProperties%2F148860642">chatJoinRequestUpdateFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-chat-join-request-update/index.html">ChatJoinRequestUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-105872013%2FProperties%2F148860642" anchor-label="chatMemberUpdatesFlow" id="-105872013%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-105872013%2FProperties%2F148860642"><span>chat</span><wbr><span>Member</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-105872013%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-105872013%2FProperties%2F148860642">chatMemberUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-common-chat-member-updated-update/index.html">CommonChatMemberUpdatedUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1456060704%2FProperties%2F148860642" anchor-label="chosenInlineResultsFlow" id="-1456060704%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1456060704%2FProperties%2F148860642"><span>chosen</span><wbr><span>Inline</span><wbr><span>Results</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1456060704%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1456060704%2FProperties%2F148860642">chosenInlineResultsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-chosen-inline-result-update/index.html">ChosenInlineResultUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1654120400%2FProperties%2F148860642" anchor-label="coroutineContext" id="-1654120400%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-default-behaviour-context/index.html#-1654120400%2FProperties%2F148860642"><span>coroutine</span><wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1654120400%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#-1654120400%2FProperties%2F148860642">coroutineContext</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="59651765%2FProperties%2F148860642" anchor-label="editedChannelPostMediaGroupsFlow" id="59651765%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-default-behaviour-context/index.html#59651765%2FProperties%2F148860642"><span>edited</span><wbr><span>Channel</span><wbr><span>Post</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="59651765%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#59651765%2FProperties%2F148860642">editedChannelPostMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-channel-post-update/index.html">EditChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-951669670%2FProperties%2F148860642" anchor-label="editedChannelPostsFlow" id="-951669670%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-951669670%2FProperties%2F148860642"><span>edited</span><wbr><span>Channel</span><wbr><span>Posts</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-951669670%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-951669670%2FProperties%2F148860642">editedChannelPostsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-channel-post-update/index.html">EditChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1080330233%2FProperties%2F148860642" anchor-label="editedMessageMediaGroupsFlow" id="1080330233%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-default-behaviour-context/index.html#1080330233%2FProperties%2F148860642"><span>edited</span><wbr><span>Message</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1080330233%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#1080330233%2FProperties%2F148860642">editedMessageMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-message-update/index.html">EditMessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1204880030%2FProperties%2F148860642" anchor-label="editedMessagesFlow" id="1204880030%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1204880030%2FProperties%2F148860642"><span>edited</span><wbr><span>Messages</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1204880030%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1204880030%2FProperties%2F148860642">editedMessagesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-message-update/index.html">EditMessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-104941639%2FProperties%2F148860642" anchor-label="flowsUpdatesFilter" id="-104941639%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="flows-updates-filter.html"><span>flows</span><wbr><span>Updates</span><wbr><span><span>Filter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-104941639%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="flows-updates-filter.html">flowsUpdatesFilter</a><span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/index.html">FlowsUpdatesFilter</a></div><div class="brief "><p class="paragraph">This parameter will be used to subscribe on different types of update</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="63411550%2FProperties%2F148860642" anchor-label="inlineQueriesFlow" id="63411550%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#63411550%2FProperties%2F148860642"><span>inline</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="63411550%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#63411550%2FProperties%2F148860642">inlineQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-inline-query-update/index.html">InlineQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1822867870%2FProperties%2F148860642" anchor-label="messageMediaGroupsFlow" id="-1822867870%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-default-behaviour-context/index.html#-1822867870%2FProperties%2F148860642"><span>message</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1822867870%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#-1822867870%2FProperties%2F148860642">messageMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-message-update/index.html">MessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-222693305%2FProperties%2F148860642" anchor-label="messagesFlow" id="-222693305%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-222693305%2FProperties%2F148860642"><span>messages</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-222693305%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-222693305%2FProperties%2F148860642">messagesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-message-update/index.html">MessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2072175809%2FProperties%2F148860642" anchor-label="myChatMemberUpdatesFlow" id="-2072175809%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2072175809%2FProperties%2F148860642"><span>my</span><wbr><span>Chat</span><wbr><span>Member</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2072175809%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-2072175809%2FProperties%2F148860642">myChatMemberUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-my-chat-member-updated-update/index.html">MyChatMemberUpdatedUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1541354453%2FProperties%2F148860642" anchor-label="pollAnswersFlow" id="1541354453%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1541354453%2FProperties%2F148860642"><span>poll</span><wbr><span>Answers</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1541354453%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1541354453%2FProperties%2F148860642">pollAnswersFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-poll-answer-update/index.html">PollAnswerUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1274798263%2FProperties%2F148860642" anchor-label="pollsFlow" id="1274798263%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1274798263%2FProperties%2F148860642"><span>polls</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1274798263%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1274798263%2FProperties%2F148860642">pollsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-poll-update/index.html">PollUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="643741718%2FProperties%2F148860642" anchor-label="preCheckoutQueriesFlow" id="643741718%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#643741718%2FProperties%2F148860642"><span>pre</span><wbr><span>Checkout</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="643741718%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#643741718%2FProperties%2F148860642">preCheckoutQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-pre-checkout-query-update/index.html">PreCheckoutQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1835401712%2FProperties%2F148860642" anchor-label="scope" id="-1835401712%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scope.html"><span><span>scope</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1835401712%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="scope.html">scope</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></div><div class="brief "><p class="paragraph">Will be used for creating of some subscriptions inside of methods, updates listening and different other things in context of working with <span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span> and coroutines.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1772129549%2FProperties%2F148860642" anchor-label="shippingQueriesFlow" id="-1772129549%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1772129549%2FProperties%2F148860642"><span>shipping</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1772129549%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1772129549%2FProperties%2F148860642">shippingQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-shipping-query-update/index.html">ShippingQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="537352207%2FProperties%2F148860642" anchor-label="triggersHolder" id="537352207%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="triggers-holder.html"><span>triggers</span><wbr><span><span>Holder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="537352207%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="triggers-holder.html">triggersHolder</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar/-triggers-holder/index.html">TriggersHolder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1833908723%2FProperties%2F148860642" anchor-label="unknownUpdatesFlow" id="1833908723%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1833908723%2FProperties%2F148860642"><span>unknown</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1833908723%2FProperties%2F148860642"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1833908723%2FProperties%2F148860642">unknownUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-unknown-update/index.html">UnknownUpdate</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div data-togglable="FUNCTION">
         <h2 class="">Functions</h2>
         <div class="table"><a data-name="-1866313263%2FFunctions%2F148860642" anchor-label="buildBehaviour" id="-1866313263%2FFunctions%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
@@ -3731,415 +4140,6 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="index.html">BehaviourContext</a><span class="token punctuation">.</span><a href="../../dev.inmo.tgbotapi.extensions.behaviour_builder.expectations/wait-write-access-allowed-events-messages.html"><span class="token function">waitWriteAccessAllowedEventsMessages</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initRequest<span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.requests.abstracts/-request/index.html">Request</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">errorFactory<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.behaviour_builder.expectations/index.html#278660993%2FClasslikes%2F148860642">NullableRequestBuilder</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator"> = </span>{ null }</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.message.abstracts/-chat-event-message/index.html">ChatEventMessage</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.message.-chat-events.forum/-write-access-allowed/index.html">WriteAccessAllowed</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-728655137%2FProperties%2F148860642" anchor-label="allowedUpdates" id="-728655137%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-default-behaviour-context/index.html#-728655137%2FProperties%2F148860642"><span>allowed</span><wbr><span><span>Updates</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-728655137%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#-728655137%2FProperties%2F148860642">allowedUpdates</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-2078180918%2FProperties%2F148860642" anchor-label="allUpdatesFlow" id="-2078180918%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-2078180918%2FProperties%2F148860642"><span>all</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2078180918%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-2078180918%2FProperties%2F148860642">allUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1206020112%2FProperties%2F148860642" anchor-label="asUpdateReceiver" id="1206020112%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#1206020112%2FProperties%2F148860642"><span>as</span><wbr><span>Update</span><wbr><span><span>Receiver</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1206020112%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1206020112%2FProperties%2F148860642">asUpdateReceiver</a><span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-update/index.html">Update</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1802326973%2FProperties%2F148860642" anchor-label="bot" id="1802326973%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="bot.html"><span><span>bot</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1802326973%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="bot.html">bot</a><span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.bot/-telegram-bot/index.html">TelegramBot</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="451245578%2FProperties%2F148860642" anchor-label="callbackQueriesFlow" id="451245578%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#451245578%2FProperties%2F148860642"><span>callback</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="451245578%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#451245578%2FProperties%2F148860642">callbackQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-callback-query-update/index.html">CallbackQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-956329826%2FProperties%2F148860642" anchor-label="channelPostMediaGroupsFlow" id="-956329826%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-default-behaviour-context/index.html#-956329826%2FProperties%2F148860642"><span>channel</span><wbr><span>Post</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-956329826%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#-956329826%2FProperties%2F148860642">channelPostMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-channel-post-update/index.html">ChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1140499843%2FProperties%2F148860642" anchor-label="channelPostsFlow" id="1140499843%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#1140499843%2FProperties%2F148860642"><span>channel</span><wbr><span>Posts</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1140499843%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1140499843%2FProperties%2F148860642">channelPostsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-channel-post-update/index.html">ChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-1991764523%2FProperties%2F148860642" anchor-label="chatJoinRequestUpdateFlow" id="-1991764523%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-1991764523%2FProperties%2F148860642"><span>chat</span><wbr><span>Join</span><wbr><span>Request</span><wbr><span>Update</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1991764523%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1991764523%2FProperties%2F148860642">chatJoinRequestUpdateFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-chat-join-request-update/index.html">ChatJoinRequestUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-105872013%2FProperties%2F148860642" anchor-label="chatMemberUpdatesFlow" id="-105872013%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-105872013%2FProperties%2F148860642"><span>chat</span><wbr><span>Member</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-105872013%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-105872013%2FProperties%2F148860642">chatMemberUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-common-chat-member-updated-update/index.html">CommonChatMemberUpdatedUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-1456060704%2FProperties%2F148860642" anchor-label="chosenInlineResultsFlow" id="-1456060704%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-1456060704%2FProperties%2F148860642"><span>chosen</span><wbr><span>Inline</span><wbr><span>Results</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1456060704%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1456060704%2FProperties%2F148860642">chosenInlineResultsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-chosen-inline-result-update/index.html">ChosenInlineResultUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-1654120400%2FProperties%2F148860642" anchor-label="coroutineContext" id="-1654120400%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-default-behaviour-context/index.html#-1654120400%2FProperties%2F148860642"><span>coroutine</span><wbr><span><span>Context</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1654120400%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#-1654120400%2FProperties%2F148860642">coroutineContext</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-coroutine-context/index.html">CoroutineContext</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="59651765%2FProperties%2F148860642" anchor-label="editedChannelPostMediaGroupsFlow" id="59651765%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-default-behaviour-context/index.html#59651765%2FProperties%2F148860642"><span>edited</span><wbr><span>Channel</span><wbr><span>Post</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="59651765%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#59651765%2FProperties%2F148860642">editedChannelPostMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-channel-post-update/index.html">EditChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-951669670%2FProperties%2F148860642" anchor-label="editedChannelPostsFlow" id="-951669670%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-951669670%2FProperties%2F148860642"><span>edited</span><wbr><span>Channel</span><wbr><span>Posts</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-951669670%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-951669670%2FProperties%2F148860642">editedChannelPostsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-channel-post-update/index.html">EditChannelPostUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1080330233%2FProperties%2F148860642" anchor-label="editedMessageMediaGroupsFlow" id="1080330233%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-default-behaviour-context/index.html#1080330233%2FProperties%2F148860642"><span>edited</span><wbr><span>Message</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1080330233%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#1080330233%2FProperties%2F148860642">editedMessageMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-message-update/index.html">EditMessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1204880030%2FProperties%2F148860642" anchor-label="editedMessagesFlow" id="1204880030%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#1204880030%2FProperties%2F148860642"><span>edited</span><wbr><span>Messages</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1204880030%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1204880030%2FProperties%2F148860642">editedMessagesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-edit-message-update/index.html">EditMessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-104941639%2FProperties%2F148860642" anchor-label="flowsUpdatesFilter" id="-104941639%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="flows-updates-filter.html"><span>flows</span><wbr><span>Updates</span><wbr><span><span>Filter</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-104941639%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="flows-updates-filter.html">flowsUpdatesFilter</a><span class="token operator">: </span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.updateshandlers/-flows-updates-filter/index.html">FlowsUpdatesFilter</a></div><div class="brief "><p class="paragraph">This parameter will be used to subscribe on different types of update</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="63411550%2FProperties%2F148860642" anchor-label="inlineQueriesFlow" id="63411550%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#63411550%2FProperties%2F148860642"><span>inline</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="63411550%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#63411550%2FProperties%2F148860642">inlineQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-inline-query-update/index.html">InlineQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-1822867870%2FProperties%2F148860642" anchor-label="messageMediaGroupsFlow" id="-1822867870%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-default-behaviour-context/index.html#-1822867870%2FProperties%2F148860642"><span>message</span><wbr><span>Media</span><wbr><span>Groups</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1822867870%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-default-behaviour-context/index.html#-1822867870%2FProperties%2F148860642">messageMediaGroupsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-message-update/index.html">MessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-222693305%2FProperties%2F148860642" anchor-label="messagesFlow" id="-222693305%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-222693305%2FProperties%2F148860642"><span>messages</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-222693305%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-222693305%2FProperties%2F148860642">messagesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-message-update/index.html">MessageUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-2072175809%2FProperties%2F148860642" anchor-label="myChatMemberUpdatesFlow" id="-2072175809%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-2072175809%2FProperties%2F148860642"><span>my</span><wbr><span>Chat</span><wbr><span>Member</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2072175809%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-2072175809%2FProperties%2F148860642">myChatMemberUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-my-chat-member-updated-update/index.html">MyChatMemberUpdatedUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1541354453%2FProperties%2F148860642" anchor-label="pollAnswersFlow" id="1541354453%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#1541354453%2FProperties%2F148860642"><span>poll</span><wbr><span>Answers</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1541354453%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1541354453%2FProperties%2F148860642">pollAnswersFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-poll-answer-update/index.html">PollAnswerUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1274798263%2FProperties%2F148860642" anchor-label="pollsFlow" id="1274798263%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#1274798263%2FProperties%2F148860642"><span>polls</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1274798263%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1274798263%2FProperties%2F148860642">pollsFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-poll-update/index.html">PollUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="643741718%2FProperties%2F148860642" anchor-label="preCheckoutQueriesFlow" id="643741718%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#643741718%2FProperties%2F148860642"><span>pre</span><wbr><span>Checkout</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="643741718%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#643741718%2FProperties%2F148860642">preCheckoutQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-pre-checkout-query-update/index.html">PreCheckoutQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-1835401712%2FProperties%2F148860642" anchor-label="scope" id="-1835401712%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="scope.html"><span><span>scope</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1835401712%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="scope.html">scope</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></div><div class="brief "><p class="paragraph">Will be used for creating of some subscriptions inside of methods, updates listening and different other things in context of working with <span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span> and coroutines.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-1772129549%2FProperties%2F148860642" anchor-label="shippingQueriesFlow" id="-1772129549%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#-1772129549%2FProperties%2F148860642"><span>shipping</span><wbr><span>Queries</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1772129549%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#-1772129549%2FProperties%2F148860642">shippingQueriesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update/-shipping-query-update/index.html">ShippingQueryUpdate</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="537352207%2FProperties%2F148860642" anchor-label="triggersHolder" id="537352207%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="triggers-holder.html"><span>triggers</span><wbr><span><span>Holder</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="537352207%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="triggers-holder.html">triggersHolder</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar/-triggers-holder/index.html">TriggersHolder</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1833908723%2FProperties%2F148860642" anchor-label="unknownUpdatesFlow" id="1833908723%2FProperties%2F148860642" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="index.html#1833908723%2FProperties%2F148860642"><span>unknown</span><wbr><span>Updates</span><wbr><span><span>Flow</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1833908723%2FProperties%2F148860642"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.behaviour_builder:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="index.html#1833908723%2FProperties%2F148860642">unknownUpdatesFlow</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../tgbotapi.core/dev.inmo.tgbotapi.types.update.abstracts/-unknown-update/index.html">UnknownUpdate</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
