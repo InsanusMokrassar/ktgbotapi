@@ -1,11 +1,14 @@
 package dev.inmo.tgbotapi.ksp.processor
 
 import com.google.devtools.ksp.getAllSuperTypes
+import com.google.devtools.ksp.getAnnotationsByType
 import com.google.devtools.ksp.processing.*
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.squareup.kotlinpoet.AnnotationSpec
+import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.writeTo
 import java.io.File
 
@@ -15,17 +18,37 @@ class TelegramBotAPISymbolProcessor(
     private val outputFile: String = "Output",
     private val outputFolder: String? = null
 ) : SymbolProcessor {
+    private val classCastsIncludedClassName = ClassName("dev.inmo.tgbotapi.utils.internal", "ClassCastsIncluded")
     override fun process(resolver: Resolver): List<KSAnnotated> {
-        val classes = resolver.getSymbolsWithAnnotation("dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded").filterIsInstance<KSClassDeclaration>()
+        val classes = resolver.getSymbolsWithAnnotation(classCastsIncludedClassName.canonicalName).filterIsInstance<KSClassDeclaration>()
+        val classesRegexes: Map<KSClassDeclaration, Pair<Regex, Regex?>> = classes.mapNotNull {
+            it to (it.annotations.firstNotNullOfOrNull {
+                runCatching {
+                    if (it.annotationType.resolve().toClassName() == classCastsIncludedClassName) {
+                        val regex = it.arguments.first().value as? String ?: return@runCatching null
+                        val negativeRegex = (it.arguments.first().value as? String) ?.takeIf { it.isNotEmpty() }
+                        Regex(regex) to (negativeRegex ?.let(::Regex))
+                    } else {
+                        null
+                    }
+                }.getOrNull()
+            } ?: return@mapNotNull null)
+        }.toMap()
         val classesSubtypes = mutableMapOf<KSClassDeclaration, MutableSet<KSClassDeclaration>>()
 
         resolver.getAllFiles().forEach {
             it.declarations.forEach { potentialSubtype ->
                 if (potentialSubtype is KSClassDeclaration) {
                     val allSupertypes = potentialSubtype.getAllSuperTypes().map { it.declaration }
-                    classes.forEach {
-                        if (it in allSupertypes) {
-                            classesSubtypes.getOrPut(it) { mutableSetOf() }.add(potentialSubtype)
+
+                    for (currentClass in classes) {
+                        val regexes = classesRegexes[currentClass]
+                        when {
+                            currentClass in allSupertypes
+                                && regexes ?.first ?.matches(potentialSubtype.simpleName.toString()) != false
+                                && regexes ?.second ?.matches(potentialSubtype.simpleName.toString()) != true-> {
+                                classesSubtypes.getOrPut(currentClass) { mutableSetOf() }.add(potentialSubtype)
+                            }
                         }
                     }
                 }
