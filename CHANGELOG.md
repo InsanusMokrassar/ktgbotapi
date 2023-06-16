@@ -2,8 +2,11 @@
 
 ## 8.1.0
 
+**Exclude `.*Impl` classcasts from `ClassCastsNew`**
+
 * `Utils`:
     * Add deep links formatting for internal `tg://` prefix (thanks to [@klimatov](https://github.com/klimatov))
+    * Exclude `.*Impl` classcasts from `ClassCastsNew`
 
 ## 8.0.1
 
