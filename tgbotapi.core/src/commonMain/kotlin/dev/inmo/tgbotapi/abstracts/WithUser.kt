@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.chat.User
  *
  * @see FromUser
  */
-@ClassCastsIncluded
+@ClassCastsIncluded(excludeRegex = ".*Impl")
 interface WithUser {
     val user: User
 }

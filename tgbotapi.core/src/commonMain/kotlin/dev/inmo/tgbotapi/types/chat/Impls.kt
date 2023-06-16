@@ -5,11 +5,13 @@ import dev.inmo.micro_utils.language_codes.IetfLanguageCodeSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.utils.RiskFeature
+import dev.inmo.tgbotapi.utils.internal.ClassCastsExcluded
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use GroupChat due")
+@ClassCastsExcluded
 data class GroupChatImpl(
     @SerialName(idField)
     override val id: ChatId,
@@ -19,6 +21,7 @@ data class GroupChatImpl(
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
+@ClassCastsExcluded
 data class PrivateChatImpl(
     @SerialName(idField)
     override val id: UserId,
@@ -32,6 +35,7 @@ data class PrivateChatImpl(
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use SupergroupChat due")
+@ClassCastsExcluded
 data class SupergroupChatImpl(
     @SerialName(idField)
     override val id: ChatId,
@@ -43,6 +47,7 @@ data class SupergroupChatImpl(
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ForumChat due")
+@ClassCastsExcluded
 data class ForumChatImpl(
     @SerialName(idField)
     override val id: IdChatIdentifier,
@@ -54,6 +59,7 @@ data class ForumChatImpl(
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ChannelChat due")
+@ClassCastsExcluded
 data class ChannelChatImpl(
     @SerialName(idField)
     override val id: ChatId,

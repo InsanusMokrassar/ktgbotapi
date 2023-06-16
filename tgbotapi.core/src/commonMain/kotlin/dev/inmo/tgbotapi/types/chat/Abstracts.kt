@@ -49,7 +49,7 @@ sealed interface AbleToAddInAttachmentMenuChat : Chat {
 }
 
 @Serializable(PreviewChatSerializer::class)
-@ClassCastsIncluded(excludeRegex = ".*Impl.kt")
+@ClassCastsIncluded(excludeRegex = ".*Impl")
 sealed interface Chat {
     val id: IdChatIdentifier
 }

@@ -11,7 +11,7 @@ import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@ClassCastsIncluded
+@ClassCastsIncluded(excludeRegex = ".*Impl")
 interface Message : WithChat {
     val messageId: MessageId
     val date: DateTime

@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import kotlinx.serialization.Serializable
 
 @Serializable(InlineQueryResultSerializer::class)
-@ClassCastsIncluded
+@ClassCastsIncluded(excludeRegex = ".*Impl")
 interface InlineQueryResult {
     val type: String
     val id: InlineQueryIdentifier
