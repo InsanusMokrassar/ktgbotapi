@@ -2,6 +2,9 @@
 
 ## 8.1.0
 
+* `Utils`:
+    * Add deep links formatting for internal `tg://` prefix (thanks to [@klimatov](https://github.com/klimatov))
+
 ## 8.0.1
 
 * `Version`:
