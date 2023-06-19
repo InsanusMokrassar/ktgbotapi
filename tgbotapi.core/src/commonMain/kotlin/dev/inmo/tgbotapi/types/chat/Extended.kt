@@ -3,11 +3,13 @@ package dev.inmo.tgbotapi.types.chat
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
+import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
 @Serializable
+@RiskFeature("This class is a subject of changes. It is better to use ExtendedChannelChat due")
 data class ExtendedChannelChatImpl(
     @SerialName(idField)
     override val id: ChatId,
@@ -33,6 +35,7 @@ data class ExtendedChannelChatImpl(
 ) : ExtendedChannelChat
 
 @Serializable
+@RiskFeature("This class is a subject of changes. It is better to use ExtendedGroupChat due")
 data class ExtendedGroupChatImpl(
     @SerialName(idField)
     override val id: ChatId,
@@ -54,6 +57,7 @@ data class ExtendedGroupChatImpl(
 ) : ExtendedGroupChat
 
 @Serializable
+@RiskFeature("This class is a subject of changes. It is better to use ExtendedPrivateChat due")
 data class ExtendedPrivateChatImpl(
     @SerialName(idField)
     override val id: UserId,
@@ -80,6 +84,7 @@ data class ExtendedPrivateChatImpl(
 typealias ExtendedUser = ExtendedPrivateChatImpl
 
 @Serializable
+@RiskFeature("This class is a subject of changes. It is better to use ExtendedSupergroupChat due")
 data class ExtendedSupergroupChatImpl(
     @SerialName(idField)
     override val id: ChatId,
@@ -121,6 +126,7 @@ data class ExtendedSupergroupChatImpl(
 ) : ExtendedSupergroupChat
 
 @Serializable
+@RiskFeature("This class is a subject of changes. It is better to use ExtendedForumChat due")
 data class ExtendedForumChatImpl(
     @SerialName(idField)
     override val id: IdChatIdentifier,

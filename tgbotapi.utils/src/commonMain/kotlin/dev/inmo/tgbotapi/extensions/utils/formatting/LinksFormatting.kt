@@ -8,6 +8,7 @@ import io.ktor.http.encodeURLQueryComponent
 
 
 fun makeUsernameLink(username: String, threadId: MessageThreadId? = null) = "$internalLinkBeginning/$username${threadId ?.let { "/$it" } ?: ""}"
+fun makeInternalTgUsernameLink(username: String) = "${internalTgAppLinksBeginning}resolve?domain=$username"
 fun makeUserLink(userId: UserId) = userId.userLink
 fun makeChatLink(identifier: Identifier, threadId: MessageThreadId? = null) = identifier.toString().replace(
     linkIdRedundantPartRegex,
@@ -16,6 +17,7 @@ fun makeChatLink(identifier: Identifier, threadId: MessageThreadId? = null) = id
     "$internalLinkBeginning/c/$bareId${threadId ?.let { "/$it" } ?: ""}"
 }
 fun makeUsernameDeepLinkPrefix(username: String) = "${makeUsernameLink(username)}?start="
+fun makeInternalTgUsernameDeepLinkPrefix(username: String) = "${makeInternalTgUsernameLink(username)}&start="
 fun makeUsernameStartattachPrefix(username: String) = "$internalLinkBeginning/$username?startattach"
 fun makeUsernameStartattachLink(username: String, data: String? = null) = "${makeUsernameStartattachPrefix(username)}${data?.let { "=$it" } ?: ""}"
 inline val Username.usernameLink
@@ -30,6 +32,9 @@ inline val Username.startattachPrefix
     get() = makeUsernameStartattachPrefix(usernameWithoutAt)
 inline fun makeLink(username: Username, threadId: MessageThreadId? = null) = username.link(threadId)
 inline fun makeTelegramDeepLink(username: String, startParameter: String) = "${makeUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
+inline fun makeInternalTgDeepLink(username: String, startParameter: String) = "${makeInternalTgUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
+inline fun makeInternalTgDeepLink(username: Username, startParameter: String) =
+    makeInternalTgDeepLink(username.usernameWithoutAt, startParameter)
 inline fun makeTelegramStartattach(username: String, data: String? = null) = makeUsernameStartattachLink(username, data)
 inline fun makeDeepLink(username: Username, startParameter: String) = makeTelegramDeepLink(username.usernameWithoutAt, startParameter)
 inline fun makeTelegramDeepLink(username: Username, startParameter: String) = makeDeepLink(username, startParameter)

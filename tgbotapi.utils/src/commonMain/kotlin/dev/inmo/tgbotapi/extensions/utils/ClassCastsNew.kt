@@ -28,25 +28,11 @@ import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.BaseChosenInline
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.LocationChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultArticle
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioCachedImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioImpl
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultContact
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentCachedImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentImpl
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGame
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifCachedImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifImpl
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultLocation
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifCachedImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoCachedImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoImpl
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultStickerCached
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVenue
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoCachedImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceCachedImpl
-import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceImpl
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.DescribedInlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.FileInlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
@@ -124,50 +110,37 @@ import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardRemove
 import dev.inmo.tgbotapi.types.chat.AbleToAddInAttachmentMenuChat
 import dev.inmo.tgbotapi.types.chat.Bot
 import dev.inmo.tgbotapi.types.chat.ChannelChat
-import dev.inmo.tgbotapi.types.chat.ChannelChatImpl
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.chat.ExtendedBot
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
-import dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
 import dev.inmo.tgbotapi.types.chat.ExtendedForumChat
-import dev.inmo.tgbotapi.types.chat.ExtendedForumChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
-import dev.inmo.tgbotapi.types.chat.ExtendedGroupChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
-import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChatImpl
 import dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
-import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChatImpl
 import dev.inmo.tgbotapi.types.chat.ForumChat
-import dev.inmo.tgbotapi.types.chat.ForumChatImpl
 import dev.inmo.tgbotapi.types.chat.GroupChat
-import dev.inmo.tgbotapi.types.chat.GroupChatImpl
 import dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
 import dev.inmo.tgbotapi.types.chat.PrivateChat
-import dev.inmo.tgbotapi.types.chat.PrivateChatImpl
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.SuperPublicChat
 import dev.inmo.tgbotapi.types.chat.SupergroupChat
-import dev.inmo.tgbotapi.types.chat.SupergroupChatImpl
 import dev.inmo.tgbotapi.types.chat.UnknownChatType
 import dev.inmo.tgbotapi.types.chat.UnknownExtendedChat
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.chat.UsernameChat
 import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
-import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberImpl
 import dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 import dev.inmo.tgbotapi.types.chat.member.ChatMember
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.chat.member.KickedChatMember
 import dev.inmo.tgbotapi.types.chat.member.LeftChatMember
-import dev.inmo.tgbotapi.types.chat.member.LeftChatMemberImpl
 import dev.inmo.tgbotapi.types.chat.member.MemberChatMember
-import dev.inmo.tgbotapi.types.chat.member.MemberChatMemberImpl
 import dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
 import dev.inmo.tgbotapi.types.chat.member.RestrictedChatMember
 import dev.inmo.tgbotapi.types.chat.member.SpecialRightsChatMember
@@ -228,9 +201,6 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
-import dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl
-import dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl
-import dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
@@ -266,17 +236,11 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatEnded
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatParticipantsInvited
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatScheduled
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.VideoChatStarted
-import dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl
-import dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.CommonGroupEventMessage
 import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
-import dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ForwardInfo
-import dev.inmo.tgbotapi.types.message.FromChannelForumContentMessageImpl
 import dev.inmo.tgbotapi.types.message.PassportMessage
-import dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
-import dev.inmo.tgbotapi.types.message.UnconnectedFromChannelGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
@@ -635,16 +599,6 @@ public inline fun WithUser.administratorChatMemberOrThrow(): AdministratorChatMe
 public inline fun <T> WithUser.ifAdministratorChatMember(block: (AdministratorChatMember) -> T): T?
     = administratorChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.administratorChatMemberImplOrNull(): AdministratorChatMemberImpl? = this
-    as? dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberImpl
-
-public inline fun WithUser.administratorChatMemberImplOrThrow(): AdministratorChatMemberImpl = this
-    as dev.inmo.tgbotapi.types.chat.member.AdministratorChatMemberImpl
-
-public inline fun <T>
-    WithUser.ifAdministratorChatMemberImpl(block: (AdministratorChatMemberImpl) -> T): T? =
-    administratorChatMemberImplOrNull() ?.let(block)
-
 public inline fun WithUser.bannedChatMemberOrNull(): BannedChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.BannedChatMember
 
@@ -690,15 +644,6 @@ public inline fun WithUser.leftChatMemberOrThrow(): LeftChatMember = this as
 public inline fun <T> WithUser.ifLeftChatMember(block: (LeftChatMember) -> T): T? =
     leftChatMemberOrNull() ?.let(block)
 
-public inline fun WithUser.leftChatMemberImplOrNull(): LeftChatMemberImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.member.LeftChatMemberImpl
-
-public inline fun WithUser.leftChatMemberImplOrThrow(): LeftChatMemberImpl = this as
-    dev.inmo.tgbotapi.types.chat.member.LeftChatMemberImpl
-
-public inline fun <T> WithUser.ifLeftChatMemberImpl(block: (LeftChatMemberImpl) -> T): T? =
-    leftChatMemberImplOrNull() ?.let(block)
-
 public inline fun WithUser.memberChatMemberOrNull(): MemberChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.MemberChatMember
 
@@ -707,15 +652,6 @@ public inline fun WithUser.memberChatMemberOrThrow(): MemberChatMember = this as
 
 public inline fun <T> WithUser.ifMemberChatMember(block: (MemberChatMember) -> T): T? =
     memberChatMemberOrNull() ?.let(block)
-
-public inline fun WithUser.memberChatMemberImplOrNull(): MemberChatMemberImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.member.MemberChatMemberImpl
-
-public inline fun WithUser.memberChatMemberImplOrThrow(): MemberChatMemberImpl = this as
-    dev.inmo.tgbotapi.types.chat.member.MemberChatMemberImpl
-
-public inline fun <T> WithUser.ifMemberChatMemberImpl(block: (MemberChatMemberImpl) -> T): T? =
-    memberChatMemberImplOrNull() ?.let(block)
 
 public inline fun WithUser.ownerChatMemberOrNull(): OwnerChatMember? = this as?
     dev.inmo.tgbotapi.types.chat.member.OwnerChatMember
@@ -777,30 +713,6 @@ public inline fun <T>
     WithUser.ifCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T):
     T? = commonSupergroupEventMessageOrNull() ?.let(block)
 
-public inline fun WithUser.commonGroupContentMessageImplOrNull():
-    CommonGroupContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun WithUser.commonGroupContentMessageImplOrThrow():
-    CommonGroupContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    WithUser.ifCommonGroupContentMessageImpl(block: (CommonGroupContentMessageImpl<MessageContent>) -> T):
-    T? = commonGroupContentMessageImplOrNull() ?.let(block)
-
-public inline fun WithUser.commonForumContentMessageImplOrNull():
-    CommonForumContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun WithUser.commonForumContentMessageImplOrThrow():
-    CommonForumContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    WithUser.ifCommonForumContentMessageImpl(block: (CommonForumContentMessageImpl<MessageContent>) -> T):
-    T? = commonForumContentMessageImplOrNull() ?.let(block)
-
 public inline fun WithUser.passportMessageOrNull(): PassportMessage? = this as?
     dev.inmo.tgbotapi.types.message.PassportMessage
 
@@ -809,18 +721,6 @@ public inline fun WithUser.passportMessageOrThrow(): PassportMessage = this as
 
 public inline fun <T> WithUser.ifPassportMessage(block: (PassportMessage) -> T): T? =
     passportMessageOrNull() ?.let(block)
-
-public inline fun WithUser.privateContentMessageImplOrNull():
-    PrivateContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun WithUser.privateContentMessageImplOrThrow():
-    PrivateContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    WithUser.ifPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T):
-    T? = privateContentMessageImplOrNull() ?.let(block)
 
 public inline fun WithUser.fromUserMessageOrNull(): FromUserMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
@@ -1127,28 +1027,6 @@ public inline fun <T>
     InlineQueryResult.ifInlineQueryResultArticle(block: (InlineQueryResultArticle) -> T): T? =
     inlineQueryResultArticleOrNull() ?.let(block)
 
-public inline fun InlineQueryResult.inlineQueryResultAudioCachedImplOrNull():
-    InlineQueryResultAudioCachedImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioCachedImpl
-
-public inline fun InlineQueryResult.inlineQueryResultAudioCachedImplOrThrow():
-    InlineQueryResultAudioCachedImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioCachedImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultAudioCachedImpl(block: (InlineQueryResultAudioCachedImpl) -> T):
-    T? = inlineQueryResultAudioCachedImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultAudioImplOrNull(): InlineQueryResultAudioImpl?
-    = this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioImpl
-
-public inline fun InlineQueryResult.inlineQueryResultAudioImplOrThrow(): InlineQueryResultAudioImpl
-    = this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultAudioImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultAudioImpl(block: (InlineQueryResultAudioImpl) -> T): T? =
-    inlineQueryResultAudioImplOrNull() ?.let(block)
-
 public inline fun InlineQueryResult.inlineQueryResultContactOrNull(): InlineQueryResultContact? =
     this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultContact
 
@@ -1158,30 +1036,6 @@ public inline fun InlineQueryResult.inlineQueryResultContactOrThrow(): InlineQue
 public inline fun <T>
     InlineQueryResult.ifInlineQueryResultContact(block: (InlineQueryResultContact) -> T): T? =
     inlineQueryResultContactOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultDocumentCachedImplOrNull():
-    InlineQueryResultDocumentCachedImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentCachedImpl
-
-public inline fun InlineQueryResult.inlineQueryResultDocumentCachedImplOrThrow():
-    InlineQueryResultDocumentCachedImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentCachedImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultDocumentCachedImpl(block: (InlineQueryResultDocumentCachedImpl) -> T):
-    T? = inlineQueryResultDocumentCachedImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultDocumentImplOrNull():
-    InlineQueryResultDocumentImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentImpl
-
-public inline fun InlineQueryResult.inlineQueryResultDocumentImplOrThrow():
-    InlineQueryResultDocumentImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultDocumentImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultDocumentImpl(block: (InlineQueryResultDocumentImpl) -> T):
-    T? = inlineQueryResultDocumentImplOrNull() ?.let(block)
 
 public inline fun InlineQueryResult.inlineQueryResultGameOrNull(): InlineQueryResultGame? = this as?
     dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGame
@@ -1193,28 +1047,6 @@ public inline fun <T>
     InlineQueryResult.ifInlineQueryResultGame(block: (InlineQueryResultGame) -> T): T? =
     inlineQueryResultGameOrNull() ?.let(block)
 
-public inline fun InlineQueryResult.inlineQueryResultGifCachedImplOrNull():
-    InlineQueryResultGifCachedImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifCachedImpl
-
-public inline fun InlineQueryResult.inlineQueryResultGifCachedImplOrThrow():
-    InlineQueryResultGifCachedImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifCachedImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultGifCachedImpl(block: (InlineQueryResultGifCachedImpl) -> T):
-    T? = inlineQueryResultGifCachedImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultGifImplOrNull(): InlineQueryResultGifImpl? =
-    this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifImpl
-
-public inline fun InlineQueryResult.inlineQueryResultGifImplOrThrow(): InlineQueryResultGifImpl =
-    this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultGifImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultGifImpl(block: (InlineQueryResultGifImpl) -> T): T? =
-    inlineQueryResultGifImplOrNull() ?.let(block)
-
 public inline fun InlineQueryResult.inlineQueryResultLocationOrNull(): InlineQueryResultLocation? =
     this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultLocation
 
@@ -1224,52 +1056,6 @@ public inline fun InlineQueryResult.inlineQueryResultLocationOrThrow(): InlineQu
 public inline fun <T>
     InlineQueryResult.ifInlineQueryResultLocation(block: (InlineQueryResultLocation) -> T): T? =
     inlineQueryResultLocationOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultMpeg4GifCachedImplOrNull():
-    InlineQueryResultMpeg4GifCachedImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifCachedImpl
-
-public inline fun InlineQueryResult.inlineQueryResultMpeg4GifCachedImplOrThrow():
-    InlineQueryResultMpeg4GifCachedImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifCachedImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultMpeg4GifCachedImpl(block: (InlineQueryResultMpeg4GifCachedImpl) -> T):
-    T? = inlineQueryResultMpeg4GifCachedImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultMpeg4GifImplOrNull():
-    InlineQueryResultMpeg4GifImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifImpl
-
-public inline fun InlineQueryResult.inlineQueryResultMpeg4GifImplOrThrow():
-    InlineQueryResultMpeg4GifImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultMpeg4GifImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultMpeg4GifImpl(block: (InlineQueryResultMpeg4GifImpl) -> T):
-    T? = inlineQueryResultMpeg4GifImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultPhotoCachedImplOrNull():
-    InlineQueryResultPhotoCachedImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoCachedImpl
-
-public inline fun InlineQueryResult.inlineQueryResultPhotoCachedImplOrThrow():
-    InlineQueryResultPhotoCachedImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoCachedImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultPhotoCachedImpl(block: (InlineQueryResultPhotoCachedImpl) -> T):
-    T? = inlineQueryResultPhotoCachedImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultPhotoImplOrNull(): InlineQueryResultPhotoImpl?
-    = this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoImpl
-
-public inline fun InlineQueryResult.inlineQueryResultPhotoImplOrThrow(): InlineQueryResultPhotoImpl
-    = this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultPhotoImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultPhotoImpl(block: (InlineQueryResultPhotoImpl) -> T): T? =
-    inlineQueryResultPhotoImplOrNull() ?.let(block)
 
 public inline fun InlineQueryResult.inlineQueryResultStickerCachedOrNull():
     InlineQueryResultStickerCached? = this as?
@@ -1292,50 +1078,6 @@ public inline fun InlineQueryResult.inlineQueryResultVenueOrThrow(): InlineQuery
 public inline fun <T>
     InlineQueryResult.ifInlineQueryResultVenue(block: (InlineQueryResultVenue) -> T): T? =
     inlineQueryResultVenueOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultVideoCachedImplOrNull():
-    InlineQueryResultVideoCachedImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoCachedImpl
-
-public inline fun InlineQueryResult.inlineQueryResultVideoCachedImplOrThrow():
-    InlineQueryResultVideoCachedImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoCachedImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultVideoCachedImpl(block: (InlineQueryResultVideoCachedImpl) -> T):
-    T? = inlineQueryResultVideoCachedImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultVideoImplOrNull(): InlineQueryResultVideoImpl?
-    = this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoImpl
-
-public inline fun InlineQueryResult.inlineQueryResultVideoImplOrThrow(): InlineQueryResultVideoImpl
-    = this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVideoImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultVideoImpl(block: (InlineQueryResultVideoImpl) -> T): T? =
-    inlineQueryResultVideoImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultVoiceCachedImplOrNull():
-    InlineQueryResultVoiceCachedImpl? = this as?
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceCachedImpl
-
-public inline fun InlineQueryResult.inlineQueryResultVoiceCachedImplOrThrow():
-    InlineQueryResultVoiceCachedImpl = this as
-    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceCachedImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultVoiceCachedImpl(block: (InlineQueryResultVoiceCachedImpl) -> T):
-    T? = inlineQueryResultVoiceCachedImplOrNull() ?.let(block)
-
-public inline fun InlineQueryResult.inlineQueryResultVoiceImplOrNull(): InlineQueryResultVoiceImpl?
-    = this as? dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceImpl
-
-public inline fun InlineQueryResult.inlineQueryResultVoiceImplOrThrow(): InlineQueryResultVoiceImpl
-    = this as dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.InlineQueryResultVoiceImpl
-
-public inline fun <T>
-    InlineQueryResult.ifInlineQueryResultVoiceImpl(block: (InlineQueryResultVoiceImpl) -> T): T? =
-    inlineQueryResultVoiceImplOrNull() ?.let(block)
 
 public inline fun InlineQueryResult.describedInlineQueryResultOrNull(): DescribedInlineQueryResult?
     = this as?
@@ -2130,51 +1872,6 @@ public inline fun <T>
     Chat.ifAbleToAddInAttachmentMenuChat(block: (AbleToAddInAttachmentMenuChat) -> T): T? =
     ableToAddInAttachmentMenuChatOrNull() ?.let(block)
 
-public inline fun Chat.extendedChannelChatImplOrNull(): ExtendedChannelChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
-
-public inline fun Chat.extendedChannelChatImplOrThrow(): ExtendedChannelChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.ExtendedChannelChatImpl
-
-public inline fun <T> Chat.ifExtendedChannelChatImpl(block: (ExtendedChannelChatImpl) -> T): T? =
-    extendedChannelChatImplOrNull() ?.let(block)
-
-public inline fun Chat.extendedGroupChatImplOrNull(): ExtendedGroupChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.ExtendedGroupChatImpl
-
-public inline fun Chat.extendedGroupChatImplOrThrow(): ExtendedGroupChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.ExtendedGroupChatImpl
-
-public inline fun <T> Chat.ifExtendedGroupChatImpl(block: (ExtendedGroupChatImpl) -> T): T? =
-    extendedGroupChatImplOrNull() ?.let(block)
-
-public inline fun Chat.extendedPrivateChatImplOrNull(): ExtendedPrivateChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.ExtendedPrivateChatImpl
-
-public inline fun Chat.extendedPrivateChatImplOrThrow(): ExtendedPrivateChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.ExtendedPrivateChatImpl
-
-public inline fun <T> Chat.ifExtendedPrivateChatImpl(block: (ExtendedPrivateChatImpl) -> T): T? =
-    extendedPrivateChatImplOrNull() ?.let(block)
-
-public inline fun Chat.extendedSupergroupChatImplOrNull(): ExtendedSupergroupChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChatImpl
-
-public inline fun Chat.extendedSupergroupChatImplOrThrow(): ExtendedSupergroupChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChatImpl
-
-public inline fun <T> Chat.ifExtendedSupergroupChatImpl(block: (ExtendedSupergroupChatImpl) -> T):
-    T? = extendedSupergroupChatImplOrNull() ?.let(block)
-
-public inline fun Chat.extendedForumChatImplOrNull(): ExtendedForumChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.ExtendedForumChatImpl
-
-public inline fun Chat.extendedForumChatImplOrThrow(): ExtendedForumChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.ExtendedForumChatImpl
-
-public inline fun <T> Chat.ifExtendedForumChatImpl(block: (ExtendedForumChatImpl) -> T): T? =
-    extendedForumChatImplOrNull() ?.let(block)
-
 public inline fun Chat.extendedBotOrNull(): ExtendedBot? = this as?
     dev.inmo.tgbotapi.types.chat.ExtendedBot
 
@@ -2264,51 +1961,6 @@ public inline fun Chat.extendedChatWithUsernameOrThrow(): ExtendedChatWithUserna
 
 public inline fun <T> Chat.ifExtendedChatWithUsername(block: (ExtendedChatWithUsername) -> T): T? =
     extendedChatWithUsernameOrNull() ?.let(block)
-
-public inline fun Chat.groupChatImplOrNull(): GroupChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.GroupChatImpl
-
-public inline fun Chat.groupChatImplOrThrow(): GroupChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.GroupChatImpl
-
-public inline fun <T> Chat.ifGroupChatImpl(block: (GroupChatImpl) -> T): T? = groupChatImplOrNull()
-    ?.let(block)
-
-public inline fun Chat.privateChatImplOrNull(): PrivateChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.PrivateChatImpl
-
-public inline fun Chat.privateChatImplOrThrow(): PrivateChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.PrivateChatImpl
-
-public inline fun <T> Chat.ifPrivateChatImpl(block: (PrivateChatImpl) -> T): T? =
-    privateChatImplOrNull() ?.let(block)
-
-public inline fun Chat.supergroupChatImplOrNull(): SupergroupChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.SupergroupChatImpl
-
-public inline fun Chat.supergroupChatImplOrThrow(): SupergroupChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.SupergroupChatImpl
-
-public inline fun <T> Chat.ifSupergroupChatImpl(block: (SupergroupChatImpl) -> T): T? =
-    supergroupChatImplOrNull() ?.let(block)
-
-public inline fun Chat.forumChatImplOrNull(): ForumChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.ForumChatImpl
-
-public inline fun Chat.forumChatImplOrThrow(): ForumChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.ForumChatImpl
-
-public inline fun <T> Chat.ifForumChatImpl(block: (ForumChatImpl) -> T): T? = forumChatImplOrNull()
-    ?.let(block)
-
-public inline fun Chat.channelChatImplOrNull(): ChannelChatImpl? = this as?
-    dev.inmo.tgbotapi.types.chat.ChannelChatImpl
-
-public inline fun Chat.channelChatImplOrThrow(): ChannelChatImpl = this as
-    dev.inmo.tgbotapi.types.chat.ChannelChatImpl
-
-public inline fun <T> Chat.ifChannelChatImpl(block: (ChannelChatImpl) -> T): T? =
-    channelChatImplOrNull() ?.let(block)
 
 public inline fun Chat.userOrNull(): User? = this as? dev.inmo.tgbotapi.types.chat.User
 
@@ -3240,18 +2892,6 @@ public inline fun <T>
     ForwardInfo.ifSentByChannel(block: (ForwardInfo.PublicChat.SentByChannel) -> T): T? =
     sentByChannelOrNull() ?.let(block)
 
-public inline fun Message.channelContentMessageImplOrNull():
-    ChannelContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.channelContentMessageImplOrThrow():
-    ChannelContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifChannelContentMessageImpl(block: (ChannelContentMessageImpl<MessageContent>) -> T): T?
-    = channelContentMessageImplOrNull() ?.let(block)
-
 public inline fun Message.channelEventMessageOrNull(): ChannelEventMessage<ChannelEvent>? = this as?
     dev.inmo.tgbotapi.types.message.ChannelEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChannelEvent>
 
@@ -3286,90 +2926,6 @@ public inline fun <T>
     Message.ifCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T):
     T? = commonSupergroupEventMessageOrNull() ?.let(block)
 
-public inline fun Message.connectedFromChannelGroupContentMessageImplOrNull():
-    ConnectedFromChannelGroupContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.connectedFromChannelGroupContentMessageImplOrThrow():
-    ConnectedFromChannelGroupContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifConnectedFromChannelGroupContentMessageImpl(block: (ConnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T):
-    T? = connectedFromChannelGroupContentMessageImplOrNull() ?.let(block)
-
-public inline fun Message.unconnectedFromChannelGroupContentMessageImplOrNull():
-    UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.UnconnectedFromChannelGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.unconnectedFromChannelGroupContentMessageImplOrThrow():
-    UnconnectedFromChannelGroupContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.UnconnectedFromChannelGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifUnconnectedFromChannelGroupContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T):
-    T? = unconnectedFromChannelGroupContentMessageImplOrNull() ?.let(block)
-
-public inline fun Message.anonymousGroupContentMessageImplOrNull():
-    AnonymousGroupContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.anonymousGroupContentMessageImplOrThrow():
-    AnonymousGroupContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T):
-    T? = anonymousGroupContentMessageImplOrNull() ?.let(block)
-
-public inline fun Message.commonGroupContentMessageImplOrNull():
-    CommonGroupContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.commonGroupContentMessageImplOrThrow():
-    CommonGroupContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifCommonGroupContentMessageImpl(block: (CommonGroupContentMessageImpl<MessageContent>) -> T):
-    T? = commonGroupContentMessageImplOrNull() ?.let(block)
-
-public inline fun Message.fromChannelForumContentMessageImplOrNull():
-    FromChannelForumContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.FromChannelForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.fromChannelForumContentMessageImplOrThrow():
-    FromChannelForumContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.FromChannelForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifFromChannelForumContentMessageImpl(block: (FromChannelForumContentMessageImpl<MessageContent>) -> T):
-    T? = fromChannelForumContentMessageImplOrNull() ?.let(block)
-
-public inline fun Message.anonymousForumContentMessageImplOrNull():
-    AnonymousForumContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.anonymousForumContentMessageImplOrThrow():
-    AnonymousForumContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifAnonymousForumContentMessageImpl(block: (AnonymousForumContentMessageImpl<MessageContent>) -> T):
-    T? = anonymousForumContentMessageImplOrNull() ?.let(block)
-
-public inline fun Message.commonForumContentMessageImplOrNull():
-    CommonForumContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.commonForumContentMessageImplOrThrow():
-    CommonForumContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifCommonForumContentMessageImpl(block: (CommonForumContentMessageImpl<MessageContent>) -> T):
-    T? = commonForumContentMessageImplOrNull() ?.let(block)
-
 public inline fun Message.passportMessageOrNull(): PassportMessage? = this as?
     dev.inmo.tgbotapi.types.message.PassportMessage
 
@@ -3378,18 +2934,6 @@ public inline fun Message.passportMessageOrThrow(): PassportMessage = this as
 
 public inline fun <T> Message.ifPassportMessage(block: (PassportMessage) -> T): T? =
     passportMessageOrNull() ?.let(block)
-
-public inline fun Message.privateContentMessageImplOrNull():
-    PrivateContentMessageImpl<MessageContent>? = this as?
-    dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun Message.privateContentMessageImplOrThrow():
-    PrivateContentMessageImpl<MessageContent> = this as
-    dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl<dev.inmo.tgbotapi.types.message.content.MessageContent>
-
-public inline fun <T>
-    Message.ifPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T): T?
-    = privateContentMessageImplOrNull() ?.let(block)
 
 public inline fun Message.privateEventMessageOrNull(): PrivateEventMessage<PrivateEvent>? = this as?
     dev.inmo.tgbotapi.types.message.PrivateEventMessage<dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent>
