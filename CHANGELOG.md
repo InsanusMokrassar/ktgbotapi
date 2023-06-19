@@ -2,8 +2,10 @@
 
 ## 8.1.0
 
-**Exclude `.*Impl` classcasts from `ClassCastsNew`**
+**PARTIALLY BREAKING CHANGES: Exclude `.*Impl` classcasts from `ClassCastsNew`**
 
+* `Version`:
+  * `MicroUtils`: `0.19.2` -> `0.19.4`
 * `Utils`:
     * Add deep links formatting for internal `tg://` prefix (thanks to [@klimatov](https://github.com/klimatov))
     * Exclude `.*Impl` classcasts from `ClassCastsNew`
