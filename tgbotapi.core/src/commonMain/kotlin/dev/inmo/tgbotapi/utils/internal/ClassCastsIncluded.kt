@@ -10,4 +10,4 @@ annotation class ClassCastsIncluded(val typesRegex: String = "", val excludeRege
 @Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.SOURCE)
 @RiskFeature("It is internal API in tgbotapi.core and should not be used outside")
-annotation class ClassCastsExcluded()
+annotation class ClassCastsExcluded

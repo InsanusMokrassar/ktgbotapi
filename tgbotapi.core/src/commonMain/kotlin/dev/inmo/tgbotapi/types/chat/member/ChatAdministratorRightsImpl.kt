@@ -1,12 +1,10 @@
 package dev.inmo.tgbotapi.types.chat.member
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.utils.internal.ClassCastsExcluded
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-@ClassCastsExcluded
 data class ChatAdministratorRightsImpl(
     @SerialName(canChangeInfoField)
     override val canChangeInfo: Boolean = false,
