@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 8.1.1
+
 ## 8.1.0
 
 **PARTIALLY BREAKING CHANGES: Exclude `.*Impl` classcasts from `ClassCastsNew`**
