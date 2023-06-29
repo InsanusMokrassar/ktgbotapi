@@ -2,6 +2,9 @@
 
 ## 8.1.1
 
+* `Utils`:
+    * Improve extension `Update.sourceChat` to add opportunity to select some chats by logic different with the default
+
 ## 8.1.0
 
 **PARTIALLY BREAKING CHANGES: Exclude `.*Impl` classcasts from `ClassCastsNew`**
