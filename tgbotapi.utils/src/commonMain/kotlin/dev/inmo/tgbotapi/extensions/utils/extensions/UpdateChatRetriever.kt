@@ -25,11 +25,11 @@ fun CallbackQuery.sourceChat() = when (this) {
 }
 
 @PreviewFeature
-fun Update.sourceChat(
+fun Update.sourceChatWithConverters(
     baseMessageUpdateConverter: (BaseMessageUpdate) -> Chat? = { it.data.chat },
     chatJoinRequestUpdateConverter: (ChatJoinRequestUpdate) -> Chat? = { it.data.chat },
-    shippingQueryUpdateConverter: (ShippingQueryUpdate) -> Chat? = { it.data.from },
-    pollAnswerUpdateConverter: (PollAnswerUpdate) -> Chat? = { it.data.from },
+    shippingQueryUpdateConverter: (ShippingQueryUpdate) -> Chat? = { null },
+    pollAnswerUpdateConverter: (PollAnswerUpdate) -> Chat? = { null },
     preCheckoutQueryUpdateConverter: (PreCheckoutQueryUpdate) -> Chat? = { it.data.from },
     callbackQueryUpdateConverter: (CallbackQueryUpdate) -> Chat? = { it.data.sourceChat() },
     chosenInlineResultUpdateConverter: (ChosenInlineResultUpdate) -> Chat? = { null },
@@ -65,6 +65,9 @@ fun Update.sourceChat(
         }
     }
 }
+
+@PreviewFeature
+fun Update.sourceChat(): Chat? = sourceChatWithConverters()
 
 @PreviewFeature
 fun Update.sourceUser(): User? = when (val data = data) {
