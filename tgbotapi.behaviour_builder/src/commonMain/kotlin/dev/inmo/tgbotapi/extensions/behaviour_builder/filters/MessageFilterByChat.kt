@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.filters
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver
 import dev.inmo.tgbotapi.extensions.utils.extensions.sourceChat
+import dev.inmo.tgbotapi.extensions.utils.extensions.sourceUser
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
@@ -41,13 +42,13 @@ val ShippingQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, Ship
  * Allow only updates from the same user as base [ShippingQuery.user]
  */
 val PreCheckoutQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, PreCheckoutQuery, Update> = { query, update ->
-    update.sourceChat() ?.id == query.user.id
+    update.sourceUser() ?.id == query.user.id
 }
 /**
  * Allow only updates from the same user as base [InlineQuery.from]
  */
 val InlineQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, InlineQuery, Update> = { query, update ->
-    update.sourceChat() ?.id == query.from.id
+    update.sourceUser() ?.id == query.from.id
 }
 /**
  * Allow only events from the same chat as base [ChatMemberUpdated]
