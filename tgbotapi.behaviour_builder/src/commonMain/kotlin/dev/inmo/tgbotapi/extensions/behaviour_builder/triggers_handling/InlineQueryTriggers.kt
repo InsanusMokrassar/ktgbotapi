@@ -20,7 +20,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
- * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * @param subcontextUpdatesFilter **Default is [InlineQueryFilterByUser]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
  * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
@@ -40,7 +40,7 @@ suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
- * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * @param subcontextUpdatesFilter **Default is [InlineQueryFilterByUser]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
  * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
@@ -60,7 +60,7 @@ suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
- * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * @param subcontextUpdatesFilter **Default is [InlineQueryFilterByUser]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
  * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
