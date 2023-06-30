@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
-import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.InlineQueryFilterByUser
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserInlineQueryMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
@@ -11,7 +10,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.onInlineQuery(
     initialFilter: SimpleFilter<T>? = null,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = InlineQueryFilterByUser,
+    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     markerFactory: MarkerFactory<in T, Any> = ByUserInlineQueryMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
@@ -20,7 +19,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
- * @param subcontextUpdatesFilter **Default is [InlineQueryFilterByUser]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * @param subcontextUpdatesFilter **Default is [null]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
  * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
@@ -32,7 +31,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.
  */
 suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
     initialFilter: SimpleFilter<InlineQuery>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineQuery, Update>? = InlineQueryFilterByUser,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineQuery, Update>? = null,
     markerFactory: MarkerFactory<in InlineQuery, Any> = ByUserInlineQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
@@ -40,7 +39,7 @@ suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
- * @param subcontextUpdatesFilter **Default is [InlineQueryFilterByUser]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * @param subcontextUpdatesFilter **Default is [null]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
  * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
@@ -52,7 +51,7 @@ suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
  */
 suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
     initialFilter: SimpleFilter<BaseInlineQuery>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseInlineQuery, Update>? = InlineQueryFilterByUser,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseInlineQuery, Update>? = null,
     markerFactory: MarkerFactory<in BaseInlineQuery, Any> = ByUserInlineQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseInlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
@@ -60,7 +59,7 @@ suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
 
 /**
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
- * @param subcontextUpdatesFilter **Default is [InlineQueryFilterByUser]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * @param subcontextUpdatesFilter **Default is [null]]**. This filter will be applied to each update inside of [scenarioReceiver]. For example,
  * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
@@ -72,7 +71,7 @@ suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
  */
 suspend fun <BC : BehaviourContext> BC.onLocationInlineQuery(
     initialFilter: SimpleFilter<LocationInlineQuery>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationInlineQuery, Update>? = InlineQueryFilterByUser,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationInlineQuery, Update>? = null,
     markerFactory: MarkerFactory<in LocationInlineQuery, Any> = ByUserInlineQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationInlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

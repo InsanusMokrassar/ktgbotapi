@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.filter
 private val startRegex = Regex("start")
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update> = { (message, _), update -> MessageFilterByChat(this, message, update) },
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any> = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
 ): Job = on(
@@ -50,7 +50,7 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     regex: Regex,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update> = { (message, _), update -> MessageFilterByChat(this, message, update) },
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any> = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
 ): Job {
@@ -63,7 +63,7 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     deepLink: String,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update> = { (message, _), update -> MessageFilterByChat(this, message, update) },
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
     markerFactory: MarkerFactory<Pair<TextMessage, String>, Any> = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
 ): Job = onDeepLink(Regex("^$deepLink$"), initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

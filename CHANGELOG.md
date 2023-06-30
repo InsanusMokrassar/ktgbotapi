@@ -10,6 +10,8 @@
     * Now it is possible to get raw updates with `GetUpdatesRaw` request
 * `Utils`:
     * Improve extension `Update.sourceChat` to add opportunity to select some chats by logic different with the default
+* `BehaviourBuilder`:
+    * All query triggers got null default subcontext filter
 
 ## 8.1.0
 
