@@ -1,6 +1,8 @@
 # TelegramBotAPI changelog
 
-## 8.1.1
+## 9.0.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES: USERNAMES OF BOTS NOW BECAME NULLABLE**
 
 * `Utils`:
     * Improve extension `Update.sourceChat` to add opportunity to select some chats by logic different with the default
