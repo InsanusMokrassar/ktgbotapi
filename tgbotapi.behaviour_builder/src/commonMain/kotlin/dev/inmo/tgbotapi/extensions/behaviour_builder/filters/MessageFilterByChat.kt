@@ -16,7 +16,9 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * Allow only events from the same chat as base [Message]
  */
 val MessageFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, Message, Update> = { message, update ->
-    update.sourceChat() ?.id == message.chat.id
+    update.sourceChat() ?.let {
+        it.id == message.chat.id
+    } != false
 }
 /**
  * Allow only events from the same chat as base [List] of [Message]
@@ -30,31 +32,41 @@ val MessagesFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, List<Mess
  * Allow only updates from the same user as base [CallbackQuery.user]
  */
 val CallbackQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, CallbackQuery, Update> = { query, update ->
-    update.sourceChat() ?.id == query.user.id
+    update.sourceUser() ?.let {
+        it.id == query.user.id
+    } != false
 }
 /**
  * Allow only updates from the same user as base [ShippingQuery.user]
  */
 val ShippingQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, ShippingQuery, Update> = { query, update ->
-    update.sourceChat() ?.id == query.user.id
+    update.sourceUser() ?.let {
+        it.id == query.user.id
+    } != false
 }
 /**
  * Allow only updates from the same user as base [ShippingQuery.user]
  */
 val PreCheckoutQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, PreCheckoutQuery, Update> = { query, update ->
-    update.sourceUser() ?.id == query.user.id
+    update.sourceUser() ?.let {
+        it.id == query.user.id
+    } != false
 }
 /**
  * Allow only updates from the same user as base [InlineQuery.from]
  */
 val InlineQueryFilterByUser: BehaviourContextAndTwoTypesReceiver<Boolean, InlineQuery, Update> = { query, update ->
-    update.sourceUser() ?.id == query.from.id
+    update.sourceUser() ?.let {
+        it.id == query.user.id
+    } != false
 }
 /**
  * Allow only events from the same chat as base [ChatMemberUpdated]
  */
 val ChatMemberUpdatedFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, ChatMemberUpdated, Update> = { updated, update ->
-    update.sourceChat() ?.id == updated.chat.id
+    update.sourceChat() ?.let {
+        it.id == updated.chat.id
+    } != false
 }
 /**
  * Allow only events from the same chat as base [ChatMemberUpdated]
