@@ -67,20 +67,19 @@ internal data class RawUpdate constructor(
                 chat_join_request != null -> ChatJoinRequestUpdate(updateId, chat_join_request)
                 else -> UnknownUpdate(
                     updateId,
-                    raw.toString(),
                     raw
                 )
             }
-        } catch (e: Error) {
-            when (e) {
-                is SerializationException,
-                is NotImplementedError -> UnknownUpdate(
-                    updateId,
-                    raw.toString(),
-                    raw
-                )
-                else -> throw e
-            }
+        } catch (e: NotImplementedError) {
+            UnknownUpdate(
+                updateId,
+                raw
+            )
+        } catch (e: SerializationException) {
+            UnknownUpdate(
+                updateId,
+                raw
+            )
         }.also {
             initedUpdate = it
         }

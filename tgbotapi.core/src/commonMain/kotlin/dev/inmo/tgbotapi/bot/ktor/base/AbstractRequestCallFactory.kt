@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.bot.ktor.base
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
-import dev.inmo.tgbotapi.requests.GetUpdates
+import dev.inmo.tgbotapi.requests.GetUpdatesRequest
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.Response
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
@@ -35,7 +35,7 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
             )
             accept(ContentType.Application.Json)
 
-            if (request is GetUpdates) {
+            if (request is GetUpdatesRequest) {
                 request.timeout?.times(1000L) ?.let { customTimeoutMillis ->
                     if (customTimeoutMillis > 0) {
                         timeout {

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.exceptions.*
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.requests.GetUpdates
+import dev.inmo.tgbotapi.requests.GetUpdatesRaw
 import dev.inmo.tgbotapi.requests.webhook.DeleteWebhook
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
@@ -91,7 +92,9 @@ fun TelegramBot.longPollingFlow(
                 for (update in updates) {
                     send(update)
 
-                    lastUpdateIdentifier = update.updateId
+                    if (update.updateId > -1) {
+                        lastUpdateIdentifier = update.updateId
+                    }
                 }
             }.onFailure {
                 cancel(it as? CancellationException ?: return@onFailure)

@@ -22,13 +22,11 @@ private val updatesListSerializer = ListSerializer(
  */
 @Serializable
 data class GetUpdates(
-    val offset: UpdateIdentifier? = null,// set `last update id + 1` to receive next part of updates
-    val limit: Int = getUpdatesLimit.last,
-    val timeout: Seconds? = null,
-    val allowed_updates: List<String>? = ALL_UPDATES_LIST
-): SimpleRequest<List<Update>> {
-    override fun method(): String = "getUpdates"
-
+    override val offset: UpdateIdentifier? = null,// set `last update id + 1` to receive next part of updates
+    override val limit: Int = getUpdatesLimit.last,
+    override val timeout: Seconds? = null,
+    override val allowed_updates: List<String>? = ALL_UPDATES_LIST
+): GetUpdatesRequest<List<Update>> {
     override val resultDeserializer: DeserializationStrategy<List<Update>>
         get() = updatesListSerializer
 

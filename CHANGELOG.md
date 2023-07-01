@@ -1,5 +1,22 @@
 # TelegramBotAPI changelog
 
+## 9.0.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES: USERNAMES OF BOTS NOW BECAME NULLABLE**
+
+* `Version`:
+  * `Coroutines`: `1.6.4` -> `1.7.1`
+  * `Ktor`: `2.3.1` -> `2.3.2`
+  * `MicroUtils`: `0.19.4` -> `0.19.7`
+* `Core`:
+    * **All bots now have nullable usernames just like common users ([#772](https://github.com/InsanusMokrassar/ktgbotapi/issues/772))**
+    * Decrease possible errors in updates handling by additional handling of update deserialization wrapping ([#773](https://github.com/InsanusMokrassar/ktgbotapi/issues/773))
+    * New interface `GetUpdatesRequest`. You may implement it to show default telegram bot ktor executor that this
+      request is an updates request and should be handled in a different way
+        * Now it is possible to get raw updates with `GetUpdatesRaw` request
+* `Utils`:
+    * Improve extension `Update.sourceChat` to add opportunity to select some chats by logic different with the default
+
 ## 8.1.0
 
 **PARTIALLY BREAKING CHANGES: Exclude `.*Impl` classcasts from `ClassCastsNew`**

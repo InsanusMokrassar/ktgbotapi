@@ -170,12 +170,12 @@ data class ExtendedForumChatImpl(
 @Serializable
 data class ExtendedBot(
     override val id: UserId,
-    @SerialName(usernameField)
-    override val username: Username,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
     override val lastName: String = "",
+    @SerialName(usernameField)
+    override val username: Username? = null,
     @SerialName(canJoinGroupsField)
     val canJoinGroups: Boolean = false,
     @SerialName(canReadAllGroupMessagesField)

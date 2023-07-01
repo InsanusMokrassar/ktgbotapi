@@ -27,18 +27,18 @@ val WebAppUser.isPremium
 
 fun WebAppUser.asUser() = if (isBot == true) {
     CommonBot(
-        UserId(id),
-        username ?.let(::Username) ?: error("Username is absent for bot, but must exists"),
-        firstName,
-        lastName ?: ""
+        id = UserId(id),
+        firstName = firstName,
+        lastName = lastName ?: "",
+        username = username ?.let(::Username)
     )
 } else {
     CommonUser(
-        UserId(id),
-        firstName,
-        lastName ?: "",
-        username ?.let(::Username),
-        languageCode ?.let(::IetfLanguageCode),
+        id = UserId(id),
+        firstName = firstName,
+        lastName = lastName ?: "",
+        username = username ?.let(::Username),
+        ietfLanguageCode = languageCode ?.let(::IetfLanguageCode),
         isPremium = isPremium
     )
 }

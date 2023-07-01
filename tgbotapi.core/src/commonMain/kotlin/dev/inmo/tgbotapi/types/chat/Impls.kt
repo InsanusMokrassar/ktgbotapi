@@ -67,19 +67,17 @@ data class ChannelChatImpl(
 sealed class User : PrivateChat
 
 @Serializable(UserSerializer::class)
-sealed class Bot : User() {
-    abstract override val username: Username
-}
+sealed class Bot : User()
 
 @Serializable
 data class CommonBot(
     override val id: UserId,
-    @SerialName(usernameField)
-    override val username: Username,
     @SerialName(firstNameField)
     override val firstName: String,
     @SerialName(lastNameField)
-    override val lastName: String = ""
+    override val lastName: String = "",
+    @SerialName(usernameField)
+    override val username: Username? = null,
 ) : Bot() {
     @SerialName(isBotField)
     private val isBot = true
