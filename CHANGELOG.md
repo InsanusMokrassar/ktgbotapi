@@ -9,9 +9,11 @@
   * `Ktor`: `2.3.1` -> `2.3.2`
   * `MicroUtils`: `0.19.4` -> `0.19.7`
 * `Core`:
-    * All bots now have nullable usernames just like common users ([#772](https://github.com/InsanusMokrassar/ktgbotapi/issues/772))
+    * **All bots now have nullable usernames just like common users ([#772](https://github.com/InsanusMokrassar/ktgbotapi/issues/772))**
     * Decrease possible errors in updates handling by additional handling of update deserialization wrapping ([#773](https://github.com/InsanusMokrassar/ktgbotapi/issues/773))
-    * Now it is possible to get raw updates with `GetUpdatesRaw` request
+    * New interface `GetUpdatesRequest`. You may implement it to show default telegram bot ktor executor that this
+      request is an updates request and should be handled in a different way
+        * Now it is possible to get raw updates with `GetUpdatesRaw` request
 * `Utils`:
     * Improve extension `Update.sourceChat` to add opportunity to select some chats by logic different with the default
 
