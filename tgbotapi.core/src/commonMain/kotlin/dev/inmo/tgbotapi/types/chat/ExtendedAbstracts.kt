@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.chat
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
+import korlibs.time.DateTime
 import kotlinx.serialization.Serializable
 
 @Serializable(ExtendedChatSerializer.Companion::class)
@@ -21,6 +22,7 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername {
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
     val statusEmojiId: CustomEmojiId?
+    val statusEmojiExpiration: TelegramDate?
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards
