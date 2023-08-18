@@ -2,6 +2,11 @@
 
 ## 9.1.0
 
+* `Version`:
+  * `Coroutines`: `1.7.2` -> `1.7.3`
+  * `Ktor`: `2.3.2` -> `2.3.3`
+  * `MicroUtils`: `0.19.7` -> `0.19.9`
+
 ## 9.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES: USERNAMES OF BOTS NOW BECAME NULLABLE**
