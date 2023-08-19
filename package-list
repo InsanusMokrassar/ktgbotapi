@@ -137,6 +137,7 @@ dev.inmo.tgbotapi.types.polls
 dev.inmo.tgbotapi.types.queries.callback
 dev.inmo.tgbotapi.types.request
 dev.inmo.tgbotapi.types.stickers
+dev.inmo.tgbotapi.types.stories
 dev.inmo.tgbotapi.types.update
 dev.inmo.tgbotapi.types.update.abstracts
 dev.inmo.tgbotapi.types.venue
