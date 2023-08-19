@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class StoryContent(
-    private val from: Chat,
+    private val chat: Chat,
     private val messageId: MessageId,
     val story: Story
 ) : MessageContent {
@@ -27,7 +27,7 @@ data class StoryContent(
         replyMarkup: KeyboardMarkup?
     ): Request<out Message> {
         return ForwardMessage(
-            from.id,
+            chat.id,
             toChatId = chatId,
             messageId = messageId,
             threadId = messageThreadId,

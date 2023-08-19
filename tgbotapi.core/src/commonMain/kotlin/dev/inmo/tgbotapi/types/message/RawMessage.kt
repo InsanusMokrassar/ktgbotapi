@@ -137,7 +137,7 @@ internal data class RawMessage(
 
         when {
             story != null -> StoryContent(
-                from ?: error("For story content field 'from' is required and should contains User info"),
+                chat,
                 messageId,
                 story
             )
