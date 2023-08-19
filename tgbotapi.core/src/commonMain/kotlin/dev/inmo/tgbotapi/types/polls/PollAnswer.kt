@@ -10,7 +10,7 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializable
+@Serializable(PollAnswer.Companion::class)
 sealed interface PollAnswer: FromUser {
     val pollId: PollIdentifier
     override val user: User

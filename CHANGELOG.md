@@ -2,6 +2,8 @@
 
 ## 9.1.0
 
+**This update contains adding of [Telegram Bot API 6.8](https://core.telegram.org/bots/api-changelog#august-18-2023) support**
+
 * `Version`:
   * `Coroutines`: `1.7.2` -> `1.7.3`
   * `Ktor`: `2.3.2` -> `2.3.3`
