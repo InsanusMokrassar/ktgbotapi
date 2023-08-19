@@ -11,6 +11,7 @@ typealias DiceMessage = CommonMessage<DiceContent>
 typealias ContactMessage = CommonMessage<ContactContent>
 typealias PollMessage = CommonMessage<PollContent>
 typealias TextMessage = CommonMessage<TextContent>
+typealias StoryMessage = CommonMessage<StoryContent>
 
 typealias LocationMessage = CommonMessage<LocationContent>
 typealias LiveLocationMessage = CommonMessage<LiveLocationContent>

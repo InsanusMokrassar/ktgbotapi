@@ -120,6 +120,11 @@ fun FlowsUpdatesFilter.textMessages(
     scopeToIncludeChannels: CoroutineScope? = null
 ) = filterContentMessages<TextContent>(scopeToIncludeChannels)
 
+fun Flow<BaseSentMessageUpdate>.storyMessages() = filterContentMessages<StoryContent>()
+fun FlowsUpdatesFilter.storyMessages(
+    scopeToIncludeChannels: CoroutineScope? = null
+) = filterContentMessages<StoryContent>(scopeToIncludeChannels)
+
 fun Flow<BaseSentMessageUpdate>.venueMessages() = filterContentMessages<VenueContent>()
 fun FlowsUpdatesFilter.venueMessages(
     scopeToIncludeChannels: CoroutineScope? = null

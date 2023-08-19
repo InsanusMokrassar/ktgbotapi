@@ -292,6 +292,7 @@ import dev.inmo.tgbotapi.types.message.content.ResendableContent
 import dev.inmo.tgbotapi.types.message.content.SpoilerableMediaContent
 import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 import dev.inmo.tgbotapi.types.message.content.StickerContent
+import dev.inmo.tgbotapi.types.message.content.StoryContent
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextedContent
 import dev.inmo.tgbotapi.types.message.content.TextedMediaContent
@@ -3479,6 +3480,15 @@ public inline fun ResendableContent.stickerContentOrThrow(): StickerContent = th
 
 public inline fun <T> ResendableContent.ifStickerContent(block: (StickerContent) -> T): T? =
     stickerContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.storyContentOrNull(): StoryContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.StoryContent
+
+public inline fun ResendableContent.storyContentOrThrow(): StoryContent = this as
+    dev.inmo.tgbotapi.types.message.content.StoryContent
+
+public inline fun <T> ResendableContent.ifStoryContent(block: (StoryContent) -> T): T? =
+    storyContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.textContentOrNull(): TextContent? = this as?
     dev.inmo.tgbotapi.types.message.content.TextContent

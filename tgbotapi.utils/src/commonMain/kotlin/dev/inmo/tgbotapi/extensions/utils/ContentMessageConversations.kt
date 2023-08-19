@@ -21,6 +21,7 @@ fun Flow<ContentMessage<*>>.onlyPhotoContentMessages() = withContentType<PhotoCo
 fun Flow<ContentMessage<*>>.onlyPollContentMessages() = withContentType<PollContent>()
 fun Flow<ContentMessage<*>>.onlyStickerContentMessages() = withContentType<StickerContent>()
 fun Flow<ContentMessage<*>>.onlyTextContentMessages() = withContentType<TextContent>()
+fun Flow<ContentMessage<*>>.onlyStoryContentMessages() = withContentType<StoryContent>()
 fun Flow<ContentMessage<*>>.onlyVenueContentMessages() = withContentType<VenueContent>()
 fun Flow<ContentMessage<*>>.onlyVideoContentMessages() = withContentType<VideoContent>()
 fun Flow<ContentMessage<*>>.onlyVideoNoteContentMessages() = withContentType<VideoNoteContent>()
