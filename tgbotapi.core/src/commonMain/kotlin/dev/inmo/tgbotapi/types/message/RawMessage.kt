@@ -31,6 +31,7 @@ import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.UserShared
+import dev.inmo.tgbotapi.types.stories.Story
 import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -65,6 +66,7 @@ internal data class RawMessage(
     private val caption: String? = null,
     private val caption_entities: RawMessageEntities? = null,
     private val has_media_spoiler: Boolean? = null,
+    private val story: Story? = null,
     private val audio: AudioFile? = null,
     private val document: DocumentFile? = null,
     private val animation: AnimationFile? = null,
@@ -134,6 +136,11 @@ internal data class RawMessage(
         } ?: emptyList()
 
         when {
+            story != null -> StoryContent(
+                chat,
+                messageId,
+                story
+            )
             text != null -> TextContent(text, (entities ?: emptyList()).asTextSources(text))
             audio != null -> AudioContent(
                 audio,

@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.utils.RiskFeature
+import korlibs.time.DateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -78,7 +79,9 @@ data class ExtendedPrivateChatImpl(
     @SerialName(hasRestrictedVoiceAndVideoMessagesField)
     override val hasRestrictedVoiceAndVideoMessages: Boolean = false,
     @SerialName(emojiStatusCustomEmojiIdField)
-    override val statusEmojiId: CustomEmojiId? = null
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
