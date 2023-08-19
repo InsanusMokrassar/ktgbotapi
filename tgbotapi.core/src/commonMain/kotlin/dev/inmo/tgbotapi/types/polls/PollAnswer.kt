@@ -20,7 +20,7 @@ sealed interface PollAnswer: FromUser {
         get() = user
 
     @Serializable
-    data class Common(
+    data class Public(
         @SerialName(pollIdField)
         override val pollId: PollIdentifier,
         @SerialName(userField)
@@ -30,7 +30,7 @@ sealed interface PollAnswer: FromUser {
     ) : PollAnswer
 
     @Serializable
-    data class InChannel(
+    data class Anonymous(
         @SerialName(pollIdField)
         override val pollId: PollIdentifier,
         @SerialName(voterChatField)
@@ -67,7 +67,7 @@ sealed interface PollAnswer: FromUser {
             pollId: PollIdentifier,
             user: User,
             chosen: List<Int>,
-        ) = Common(pollId, user, chosen)
+        ) = Public(pollId, user, chosen)
 
         override val descriptor: SerialDescriptor
             get() = PollAnswerSurrogate.serializer().descriptor
@@ -75,9 +75,9 @@ sealed interface PollAnswer: FromUser {
         override fun deserialize(decoder: Decoder): PollAnswer {
             val surrogate = PollAnswerSurrogate.serializer().deserialize(decoder)
             return if (surrogate.voterChat != null) {
-                InChannel(surrogate.pollId, surrogate.voterChat, surrogate.chosen)
+                Anonymous(surrogate.pollId, surrogate.voterChat, surrogate.chosen)
             } else {
-                Common(surrogate.pollId, surrogate.user, surrogate.chosen)
+                Public(surrogate.pollId, surrogate.user, surrogate.chosen)
             }
         }
 
@@ -88,7 +88,7 @@ sealed interface PollAnswer: FromUser {
                     value.pollId,
                     value.user,
                     value.chosen,
-                    (value as? InChannel) ?.voterChat
+                    (value as? Anonymous) ?.voterChat
                 )
             )
         }
