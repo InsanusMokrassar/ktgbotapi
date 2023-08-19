@@ -56,12 +56,12 @@ sealed interface PollAnswer: FromUser {
         private data class PollAnswerSurrogate(
             @SerialName(pollIdField)
             val pollId: PollIdentifier,
-            @SerialName(userField)
-            val user: User,
             @SerialName(optionIdsField)
             val chosen: List<Int>,
+            @SerialName(userField)
+            val user: User = Anonymous.defaultUser,
             @SerialName(voterChatField)
-            val voterChat: ChannelChat?
+            val voterChat: ChannelChat? = null
         )
         operator fun invoke(
             pollId: PollIdentifier,
@@ -86,8 +86,8 @@ sealed interface PollAnswer: FromUser {
                 encoder,
                 PollAnswerSurrogate(
                     value.pollId,
-                    value.user,
                     value.chosen,
+                    value.user,
                     (value as? Anonymous) ?.voterChat
                 )
             )
