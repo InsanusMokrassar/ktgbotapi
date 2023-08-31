@@ -18,6 +18,29 @@ internal data class RawMessageEntity(
     internal val range by lazy {
         offset until (offset + length)
     }
+
+    val weight by lazy {
+        when (type) {
+            "mention" -> 2
+            "hashtag" -> 2
+            "cashtag" -> 2
+            "bot_command" -> 1
+            "url" -> 1
+            "email" -> 2
+            "phone_number" -> 2
+            "bold" -> 2
+            "italic" -> 2
+            "code" -> 1
+            "pre" -> 1
+            "text_link" -> 1
+            "text_mention" -> 2
+            "underline" -> 2
+            "strikethrough" -> 2
+            "spoiler" -> 2
+            "custom_emoji" -> 2
+            else -> 1
+        }
+    }
 }
 
 internal fun RawMessageEntity.asTextSource(
@@ -85,7 +108,10 @@ private fun createTextSources(
     originalFullString: String,
     entities: RawMessageEntities
 ): List<Pair<Int, TextSource>> {
-    val mutableEntities = entities.toMutableList().apply { sortBy { it.offset } }
+    val mutableEntities = entities.toMutableList().apply {
+        sortByDescending { it.weight }
+        sortBy { it.offset }
+    }
     val resultList = mutableListOf<Pair<Int, TextSource>>()
 
     while (mutableEntities.isNotEmpty()) {
