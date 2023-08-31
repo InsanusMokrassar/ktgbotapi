@@ -58,7 +58,6 @@ sealed interface LocationContent : MessageContent {
 /**
  * [KSerializer] for [LocationContent]
  */
-@Serializer(LocationContent::class)
 object LocationContentSerializer : KSerializer<LocationContent> {
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("LocationContent") {
         element(LocationContent::location.name, LocationSerializer.descriptor)
@@ -85,7 +84,6 @@ object LocationContentSerializer : KSerializer<LocationContent> {
             encodeSerializableElement(descriptor, 0, LocationSerializer, value.location)
         }.endStructure(descriptor)
     }
-
 }
 
 /**
@@ -94,7 +92,7 @@ object LocationContentSerializer : KSerializer<LocationContent> {
  *
  * @see dev.inmo.tgbotapi.extensions.behaviour_builder.utils.followLocation
  */
-@Serializable(LocationContentSerializer::class)
+@Serializable
 data class LiveLocationContent(
     override val location: LiveLocation
 ) : LocationContent {
@@ -127,7 +125,7 @@ data class LiveLocationContent(
  * Just a [LocationContent] with [StaticLocation] [location]. It could be [LiveLocationContent] in previous time in case
  * when somebody has sent [LiveLocation] in chat and then stop to broadcast location
  */
-@Serializable(LocationContentSerializer::class)
+@Serializable
 data class StaticLocationContent(
     override val location: StaticLocation
 ) : LocationContent {

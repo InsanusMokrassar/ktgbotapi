@@ -2,6 +2,9 @@
 
 ## 9.1.2
 
+* `Core`:
+  * Fix of `MessageContent` serialization
+
 ## 9.1.1
 
 * `Core`:
