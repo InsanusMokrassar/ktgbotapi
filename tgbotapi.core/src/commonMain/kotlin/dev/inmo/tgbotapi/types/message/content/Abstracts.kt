@@ -13,8 +13,10 @@ import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.threadId
 import dev.inmo.tgbotapi.utils.RiskFeature
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.modules.*
 
+@Serializable
 sealed interface MessageContent: ResendableContent {
     companion object {
         @RiskFeature("This serialization module can be changed in near releases")
@@ -49,6 +51,7 @@ sealed interface MessageContent: ResendableContent {
                 subclass(AnimationContent::class)
                 subclass(StickerContent::class)
                 subclass(InvoiceContent::class)
+                subclass(StoryContent::class)
 
                 additionalBuilder()
             }
