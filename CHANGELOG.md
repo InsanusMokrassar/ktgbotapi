@@ -1,5 +1,10 @@
 # TelegramBotAPI changelog
 
+## 9.1.1
+
+* `Core`:
+  * Potential fix of incorrect parsing in `RawMessageEntity`
+
 ## 9.1.0
 
 **This update contains adding of [Telegram Bot API 6.8](https://core.telegram.org/bots/api-changelog#august-18-2023) support**
