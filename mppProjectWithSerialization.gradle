@@ -40,6 +40,14 @@ kotlin {
                 implementation libs.kotlin.test.junit
             }
         }
+        all {
+            languageSettings {
+                optIn('dev.inmo.tgbotapi.utils.RiskFeature')
+                optIn('dev.inmo.tgbotapi.utils.PreviewFeature')
+                optIn('dev.inmo.micro_utils.common.Warning')
+                optIn('dev.inmo.micro_utils.common.PreviewFeature')
+            }
+        }
     }
 }
 

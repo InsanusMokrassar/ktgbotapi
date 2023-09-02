@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 //actual typealias MimeType = MimeType
 
+@OptIn(RiskFeature::class)
 @Serializable(MimeTypeSerializer::class)
 actual data class MimeType(
     actual val raw: String
