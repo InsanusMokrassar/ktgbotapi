@@ -54,7 +54,7 @@ Object callback = {
             skipDeprecated.set(true)
 
             sourceLink {
-                localDirectory.set(file("./"))
+                localDirectory.set(file("../"))
                 remoteUrl.set(new URL("https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/"))
                 remoteLineSuffix.set("#L")
             }
