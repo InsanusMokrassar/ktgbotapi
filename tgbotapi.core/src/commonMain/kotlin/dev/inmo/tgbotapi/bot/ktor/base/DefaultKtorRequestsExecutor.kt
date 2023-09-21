@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.bot.exceptions.CommonBotException
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.KtorPipelineStepsHolder
+import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutor
 import dev.inmo.tgbotapi.bot.ktor.createTelegramBotDefaultKtorCallRequestsFactories
 import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
 import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
@@ -19,14 +20,15 @@ import io.ktor.client.plugins.*
 import io.ktor.client.statement.*
 import kotlinx.serialization.json.Json
 
-class DefaultKtorRequestsExecutor(
+class DefaultKtorRequestsExecutor internal constructor(
     telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
-    client: HttpClient = HttpClient(),
-    callsFactories: List<KtorCallFactory> = emptyList(),
-    excludeDefaultFactories: Boolean = false,
-    private val requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter,
-    private val jsonFormatter: Json = nonstrictJsonFormat,
-    private val pipelineStepsHolder: KtorPipelineStepsHolder = KtorPipelineStepsHolder
+    client: HttpClient,
+    callsFactories: List<KtorCallFactory>,
+    excludeDefaultFactories: Boolean,
+    private val requestsLimiter: RequestLimiter,
+    private val jsonFormatter: Json,
+    private val pipelineStepsHolder: KtorPipelineStepsHolder,
+    diff: Unit
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
