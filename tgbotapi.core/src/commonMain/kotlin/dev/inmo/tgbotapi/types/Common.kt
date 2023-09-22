@@ -177,6 +177,11 @@ val stickerKeywordLengthLimit = 0 .. 64
 
 const val botActionActualityTime: Seconds = 5
 
+val cloudStorageKeyLimit = 1 .. 128
+val cloudStorageValueLimit = 0 .. 4096
+val cloudStorageKeyRegex = Regex("[A-Za-z0-9_-]{${cloudStorageKeyLimit.first},${cloudStorageKeyLimit.last}}")
+val cloudStorageValueRegex = Regex(".{${cloudStorageValueLimit.first},${cloudStorageValueLimit.last}}")
+
 // Made as lazy for correct work in K/JS
 val telegramInlineModeGifPermittedMimeTypes by lazy {
     listOf(

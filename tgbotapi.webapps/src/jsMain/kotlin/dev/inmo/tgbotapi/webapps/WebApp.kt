@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.webapps
 
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.webapps.cloud.CloudStorage
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
 import dev.inmo.tgbotapi.webapps.popup.*
@@ -48,6 +49,9 @@ external class WebApp {
 
     @JsName("HapticFeedback")
     val hapticFeedback: HapticFeedback
+
+    @JsName("CloudStorage")
+    val cloudStorage: CloudStorage
 
     internal fun onEvent(type: String, callback: () -> Unit)
     @JsName("onEvent")
