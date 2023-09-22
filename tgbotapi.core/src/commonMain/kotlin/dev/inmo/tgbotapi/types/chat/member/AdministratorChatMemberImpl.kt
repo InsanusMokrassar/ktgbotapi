@@ -35,7 +35,13 @@ data class AdministratorChatMemberImpl(
     @SerialName(customTitleField)
     override val customTitle: String? = null,
     @SerialName(canManageTopicsField)
-    override val canManageTopics: Boolean = false
+    override val canManageTopics: Boolean = false,
+    @SerialName(canPostStoriesField)
+    override val canPostStories: Boolean = false,
+    @SerialName(canEditStoriesField)
+    override val canEditStories: Boolean = false,
+    @SerialName(canDeleteStoriesField)
+    override val canDeleteStories: Boolean = false
 ) : AdministratorChatMember {
     @SerialName(statusField)
     @Required

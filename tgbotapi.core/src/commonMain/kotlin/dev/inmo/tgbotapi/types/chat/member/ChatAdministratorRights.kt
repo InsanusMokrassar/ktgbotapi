@@ -16,4 +16,7 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
     val canPromoteMembers: Boolean
     val canPostMessages: Boolean
     val canEditMessages: Boolean
+    val canPostStories: Boolean
+    val canEditStories: Boolean
+    val canDeleteStories: Boolean
 }
