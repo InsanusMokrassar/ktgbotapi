@@ -15,6 +15,7 @@ external class WebApp {
 
     val headerColor: HEXColor?
     fun setHeaderColor(color: Color.BackgroundColor)
+    fun setHeaderColor(color: Color.Hex)
     val backgroundColor: HEXColor?
     fun setBackgroundColor(color: Color.Hex)
     fun setBackgroundColor(color: Color.BackgroundColor)

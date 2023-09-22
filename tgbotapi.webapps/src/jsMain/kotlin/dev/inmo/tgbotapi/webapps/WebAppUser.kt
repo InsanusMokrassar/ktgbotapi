@@ -20,6 +20,10 @@ external interface WebAppUser {
     val is_premium: Boolean?
     @JsName(photoUrlField)
     val photoUrl: String?
+    @JsName(addedToAttachmentMenuField)
+    val addedToAttachmentMenu: Boolean?
+    @JsName(allowsWriteToPMField)
+    val allowsWriteToPM: Boolean?
 }
 
 val WebAppUser.isPremium
