@@ -655,10 +655,90 @@ suspend fun <BC : BehaviourContext> BC.onGeneralForumTopicUnhidden(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowed(
-    initialFilter: SimpleFilter<SupergroupEventMessage<WriteAccessAllowed>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, SupergroupEventMessage<WriteAccessAllowed>, Update>? = MessageFilterByChat,
+    initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, SupergroupEventMessage<WriteAccessAllowed>>
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromRequest(
+    initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed.FromRequest>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromRequest>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed.FromRequest>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed.FromRequest>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromAttachmentMenu(
+    initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed.FromAttachmentMenu>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedOther(
+    initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed.Other>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.Other>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed.Other>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed.Other>>
+) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+
+/**
+ * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
+ * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
+ * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
+ * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
+ * to combinate several filters
+ * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
+ * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
+ * data
+ */
+suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromWebAppLink(
+    initialFilter: SimpleFilter<ChatEventMessage<WriteAccessAllowed.FromWebAppLink>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<WriteAccessAllowed.FromWebAppLink>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<WriteAccessAllowed.FromWebAppLink>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<WriteAccessAllowed.FromWebAppLink>>
 ) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 

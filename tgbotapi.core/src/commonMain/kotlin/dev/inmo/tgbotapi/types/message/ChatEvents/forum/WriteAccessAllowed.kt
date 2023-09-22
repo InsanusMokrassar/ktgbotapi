@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.message.ChatEvents.forum
 
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ChatEvent
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.ForumEvent
+import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.PrivateEvent
 import dev.inmo.tgbotapi.types.webAppNameField
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -11,7 +12,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(WriteAccessAllowed.Companion::class)
-sealed interface WriteAccessAllowed : ChatEvent {
+sealed interface WriteAccessAllowed : PrivateEvent, ForumEvent {
     val webAppName: String?
         get() = null
     val fromRequest: Boolean
