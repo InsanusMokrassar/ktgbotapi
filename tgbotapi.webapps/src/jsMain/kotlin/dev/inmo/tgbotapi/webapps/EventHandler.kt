@@ -8,3 +8,5 @@ typealias InvoiceClosedEventHandler = WebApp.(InvoiceClosedInfo) -> Unit
 typealias PopupClosedEventHandler = WebApp.(String?) -> Unit
 typealias QRTextReceivedEventHandler = WebApp.(String) -> Boolean
 typealias TextReceivedEventHandler = WebApp.(String) -> Unit
+typealias WriteAccessRequestedHandler = WebApp.(Boolean) -> Unit
+typealias ContactRequestedHandler = WebApp.(Boolean) -> Unit

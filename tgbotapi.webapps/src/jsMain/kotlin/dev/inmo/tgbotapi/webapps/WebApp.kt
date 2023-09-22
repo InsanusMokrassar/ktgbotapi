@@ -64,6 +64,8 @@ external class WebApp {
     internal fun onEventWithQRTextInfo(type: String, callback: (String) -> Boolean)
     @JsName("onEvent")
     internal fun onEventWithTextInfo(type: String, callback: (String) -> Unit)
+    internal fun onEventWithWriteAccessRequested(type: String, callback: (Boolean) -> Unit)
+    internal fun onEventWithContactRequested(type: String, callback: (Boolean) -> Unit)
 
     fun offEvent(type: String, callback: () -> Unit)
     @JsName("offEvent")
@@ -81,6 +83,9 @@ external class WebApp {
     fun openLink(url: String)
     fun openTelegramLink(url: String)
     fun openInvoice(url: String, callback: (InvoiceClosedInfo) -> Unit = definedExternally)
+
+    fun requestWriteAccess(callback: ((Boolean) -> Unit)? = definedExternally)
+    fun requestContact(callback: ((Boolean) -> Unit)? = definedExternally)
 }
 
 val WebApp.colorScheme: ColorScheme
@@ -165,6 +170,30 @@ fun WebApp.onEvent(type: EventType.ClipboardTextReceived, eventHandler: TextRece
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
+fun WebApp.onEvent(type: EventType.WriteAccessRequested, eventHandler: WriteAccessRequestedHandler) = { it: Boolean ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it)
+}.also {
+    onEventWithWriteAccessRequested(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onEvent(type: EventType.ContactRequested, eventHandler: ContactRequestedHandler) = { it: Boolean ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it)
+}.also {
+    onEventWithContactRequested(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
 fun WebApp.onThemeChanged(eventHandler: EventHandler) = onEvent(EventType.ThemeChanged, eventHandler)
 /**
  * @return The callback which should be used in case you want to turn off events handling
@@ -198,6 +227,14 @@ fun WebApp.onQRTextReceived(eventHandler: QRTextReceivedEventHandler) = onEvent(
  * @return The callback which should be used in case you want to turn off events handling
  */
 fun WebApp.onClipboardTextReceived(eventHandler: TextReceivedEventHandler) = onEvent(EventType.ClipboardTextReceived, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onWriteAccessRequested(eventHandler: WriteAccessRequestedHandler) = onEvent(EventType.WriteAccessRequested, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onContactRequested(eventHandler: ContactRequestedHandler) = onEvent(EventType.ContactRequested, eventHandler)
 
 fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
     initData,
