@@ -45,5 +45,6 @@ data class AdministratorChatMemberImpl(
 ) : AdministratorChatMember {
     @SerialName(statusField)
     @Required
-    private val type: String = "administrator"
+    override val status: ChatMember.Status
+        get() = ChatMember.Status.Administrator
 }

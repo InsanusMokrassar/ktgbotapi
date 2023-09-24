@@ -8,5 +8,6 @@ import kotlinx.serialization.*
 data class LeftChatMemberImpl(@SerialName(userField) override val user: User) : LeftChatMember {
     @SerialName(statusField)
     @Required
-    private val type: String = "left"
+    override val status: ChatMember.Status
+        get() = ChatMember.Status.Left
 }

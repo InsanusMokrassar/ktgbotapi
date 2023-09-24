@@ -2,6 +2,8 @@
 
 ## 9.2.0
 
+* All the request chat keyboards has changed their parameters `ChatAdministratorRights` to `ChatAdministratorRightsImpl`
+
 ## 9.1.2
 
 * `Core`:

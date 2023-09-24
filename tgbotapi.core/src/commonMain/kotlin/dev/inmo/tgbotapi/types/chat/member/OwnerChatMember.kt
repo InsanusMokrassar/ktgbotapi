@@ -42,7 +42,9 @@ data class OwnerChatMember(
     override val canEditStories: Boolean = true
     @Transient
     override val canDeleteStories: Boolean = true
+
     @SerialName(statusField)
     @Required
-    private val type: String = "creator"
+    override val status: ChatMember.Status
+        get() = ChatMember.Status.Creator
 }
