@@ -5,7 +5,10 @@ import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
 @Serializable
-data class LeftChatMemberImpl(@SerialName(userField) override val user: User) : LeftChatMember {
+data class LeftChatMemberImpl(
+    @SerialName(userField)
+    override val user: User
+) : LeftChatMember {
     @SerialName(statusField)
     @Required
     override val status: ChatMember.Status
