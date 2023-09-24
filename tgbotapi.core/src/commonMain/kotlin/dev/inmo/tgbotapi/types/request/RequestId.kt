@@ -7,8 +7,9 @@ import kotlin.random.Random
 @Serializable
 @JvmInline
 value class RequestId(
-    val int: Int
+    val uShort: UShort
 ) {
+    constructor(int: Int) : this(int.toUShort())
     companion object {
         fun random() = RequestId(Random.nextInt())
     }
