@@ -2,7 +2,8 @@
 
 ## 9.2.0
 
-* All the request chat keyboards has changed their parameters `ChatAdministratorRights` to `ChatAdministratorRightsImpl`
+* Rename `ChatAdministratorRightsImpl` -> `ChatCommonAdministratorRights`
+* All the request chat keyboards has changed their parameters `ChatAdministratorRights` to `ChatCommonAdministratorRights`
 
 ## 9.1.2
 

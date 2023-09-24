@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.extensions.utils.types.buttons
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.reply.requestChatReplyButton
 import dev.inmo.tgbotapi.types.buttons.reply.requestUserReplyButton
-import dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRightsImpl
+import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.request.RequestId
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 import dev.inmo.tgbotapi.utils.*
@@ -220,8 +220,8 @@ inline fun ReplyKeyboardRowBuilder.requestChatButton(
     isForum: Boolean? = null,
     isPublic: Boolean? = null,
     isOwnedBy: Boolean? = null,
-    userRightsInChat: ChatAdministratorRightsImpl? = null,
-    botRightsInChat: ChatAdministratorRightsImpl? = null,
+    userRightsInChat: ChatCommonAdministratorRights? = null,
+    botRightsInChat: ChatCommonAdministratorRights? = null,
     botIsMember: Boolean? = null
 ) = requestChatButton(
     text,
@@ -248,8 +248,8 @@ inline fun ReplyKeyboardRowBuilder.requestChannelButton(
     requestId: RequestId,
     isPublic: Boolean? = null,
     isOwnedBy: Boolean? = null,
-    userRightsInChat: ChatAdministratorRightsImpl? = null,
-    botRightsInChat: ChatAdministratorRightsImpl? = null,
+    userRightsInChat: ChatCommonAdministratorRights? = null,
+    botRightsInChat: ChatCommonAdministratorRights? = null,
     botIsMember: Boolean? = null
 ) = requestChatButton(
     text,
@@ -275,8 +275,8 @@ inline fun ReplyKeyboardRowBuilder.requestGroupButton(
     isForum: Boolean? = null,
     isPublic: Boolean? = null,
     isOwnedBy: Boolean? = null,
-    userRightsInChat: ChatAdministratorRightsImpl? = null,
-    botRightsInChat: ChatAdministratorRightsImpl? = null,
+    userRightsInChat: ChatCommonAdministratorRights? = null,
+    botRightsInChat: ChatCommonAdministratorRights? = null,
     botIsMember: Boolean? = null
 ) = requestChatButton(
     text,

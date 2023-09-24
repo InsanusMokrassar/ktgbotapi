@@ -1,8 +1,5 @@
 package dev.inmo.tgbotapi.types.chat.member
 
-import dev.inmo.tgbotapi.types.*
-import kotlinx.serialization.SerialName
-
 sealed interface SpecialChatAdministratorRights {
     val canChangeInfo: Boolean
     val canInviteUsers: Boolean
@@ -40,7 +37,7 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
             canPostStories: Boolean = false,
             canEditStories: Boolean = false,
             canDeleteStories: Boolean = false
-        ) = ChatAdministratorRightsImpl(
+        ) = ChatCommonAdministratorRights(
             canChangeInfo = canChangeInfo,
             canPostMessages = canPostMessages,
             canEditMessages = canEditMessages,
