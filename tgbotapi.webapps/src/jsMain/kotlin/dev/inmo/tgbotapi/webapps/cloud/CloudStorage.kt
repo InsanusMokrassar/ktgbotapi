@@ -40,46 +40,96 @@ fun CloudStorage.set(
 ) = setItem(CloudStorageKey(key), CloudStorageValue(value)) { e, v -> callback(resultsToResult(e, v)) }
 
 fun CloudStorage.get(
+    key: CloudStorageKey,
+    callback: (result: Result<CloudStorageValue>) -> Unit
+) = getItem(key) { e, v -> callback(resultsToResult(e, v)) }
+
+fun CloudStorage.get(
     key: String,
     callback: (result: Result<CloudStorageValue>) -> Unit
-) = getItem(CloudStorageKey(key)) { e, v -> callback(resultsToResult(e, v)) }
+) = get(CloudStorageKey(key), callback)
+
+fun CloudStorage.get(
+    keys: Array<CloudStorageKey>,
+    callback: (result: Result<Array<CloudStorageValue>>) -> Unit
+) = getItems(
+    keys
+) { e, v -> callback(resultsToResult(e, v)) }
+
+fun CloudStorage.get(
+    keys: Array<String>,
+    callback: (result: Result<Array<CloudStorageValue>>) -> Unit
+) = get(
+    Array(keys.size) {
+        CloudStorageKey(keys[it])
+    },
+    callback
+)
 
 fun CloudStorage.get(
     key: String,
     key2: String,
     vararg otherKeys: String,
     callback: (result: Result<Array<CloudStorageValue>>) -> Unit
-) = getItems(
-    Array(2 + otherKeys.size) {
-        when (it) {
-            0 -> CloudStorageKey(key)
-            1 -> CloudStorageKey(key2)
-            else -> CloudStorageKey(otherKeys[it - 2])
-        }
-    }
-) { e, v -> callback(resultsToResult(e, v)) }
+) = get(
+    arrayOf(key, key2) + otherKeys,
+    callback
+)
+
+fun CloudStorage.remove(
+    key: CloudStorageKey,
+    callback: (result: Result<Boolean>) -> Unit
+) = removeItem(key) { e, v -> callback(resultsToResult(e, v)) }
 
 fun CloudStorage.remove(
     key: String,
     callback: (result: Result<Boolean>) -> Unit
-) = removeItem(CloudStorageKey(key)) { e, v -> callback(resultsToResult(e, v)) }
+) = remove(CloudStorageKey(key), callback)
+
+fun CloudStorage.remove(
+    keys: Array<CloudStorageKey>,
+    callback: (result: Result<Boolean>) -> Unit
+) = removeItems(
+    keys
+) { e, v -> callback(resultsToResult(e, v)) }
+
+fun CloudStorage.remove(
+    keys: Array<String>,
+    callback: (result: Result<Boolean>) -> Unit
+) = remove(
+    Array(keys.size) {
+        CloudStorageKey(keys[it])
+    },
+    callback
+)
 
 fun CloudStorage.remove(
     key: String,
     key2: String,
     vararg otherKeys: String,
     callback: (result: Result<Boolean>) -> Unit
-) = removeItems(
-    Array(2 + otherKeys.size) {
-        when (it) {
-            0 -> CloudStorageKey(key)
-            1 -> CloudStorageKey(key2)
-            else -> CloudStorageKey(otherKeys[it - 2])
-        }
-    }
-) { e, v -> callback(resultsToResult(e, v)) }
+) = remove(
+    arrayOf(key, key2) + otherKeys,
+    callback
+)
 
 fun CloudStorage.keys(
     callback: (result: Result<Array<CloudStorageKey>>) -> Unit
 ) = getKeys { e, v -> callback(resultsToResult(e, v)) }
 
+fun CloudStorage.getAll(callback: (result: Result<Map<CloudStorageKey, CloudStorageValue>>) -> Unit) = keys {
+    it.onSuccess { keys ->
+        get(keys) {
+            it.onSuccess { values ->
+                val resultMap = keys.withIndex().mapNotNull { (i, it) ->
+                    it to (values.getOrNull(i) ?: return@mapNotNull null)
+                }.toMap()
+                callback(Result.success(resultMap))
+            }.onFailure {
+                callback(Result.failure(it))
+            }
+        }
+    }.onFailure {
+        callback(Result.failure(it))
+    }
+}
