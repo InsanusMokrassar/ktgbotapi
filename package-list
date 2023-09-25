@@ -163,6 +163,7 @@ dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 dev.inmo.tgbotapi.types.files
 module:tgbotapi.webapps
 dev.inmo.tgbotapi.webapps
+dev.inmo.tgbotapi.webapps.cloud
 dev.inmo.tgbotapi.webapps.haptic
 dev.inmo.tgbotapi.webapps.invoice
 dev.inmo.tgbotapi.webapps.popup
