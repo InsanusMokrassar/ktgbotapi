@@ -15,37 +15,37 @@ data class PromoteChatMember(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(untilDateField)
-    override val untilDate: TelegramDate?,
+    override val untilDate: TelegramDate? = null,
     @SerialName(isAnonymousField)
-    private val isAnonymous: Boolean?,
+    private val isAnonymous: Boolean? = null,
     @SerialName(canChangeInfoField)
-    private val canChangeInfo: Boolean?,
+    private val canChangeInfo: Boolean? = null,
     @SerialName(canPostMessagesField)
-    private val canPostMessages: Boolean?,
+    private val canPostMessages: Boolean? = null,
     @SerialName(canEditMessagesField)
-    private val canEditMessages: Boolean?,
+    private val canEditMessages: Boolean? = null,
     @SerialName(canDeleteMessagesField)
-    private val canDeleteMessages: Boolean?,
+    private val canDeleteMessages: Boolean? = null,
     @SerialName(canInviteUsersField)
-    private val canInviteUsers: Boolean?,
+    private val canInviteUsers: Boolean? = null,
     @SerialName(canRestrictMembersField)
-    private val canRestrictMembers: Boolean?,
+    private val canRestrictMembers: Boolean? = null,
     @SerialName(canPinMessagesField)
-    private val canPinMessages: Boolean?,
+    private val canPinMessages: Boolean? = null,
     @SerialName(canPromoteMembersField)
-    private val canPromoteMembers: Boolean?,
+    private val canPromoteMembers: Boolean? = null,
     @SerialName(canManageVideoChatsField)
-    private val canManageVideoChats: Boolean?,
+    private val canManageVideoChats: Boolean? = null,
     @SerialName(canManageChatField)
-    private val canManageChat: Boolean?,
+    private val canManageChat: Boolean? = null,
     @SerialName(canManageTopicsField)
-    private val canManageTopics: Boolean?,
+    private val canManageTopics: Boolean? = null,
     @SerialName(canPostStoriesField)
-    private val canPostStories: Boolean?,
+    private val canPostStories: Boolean? = null,
     @SerialName(canEditStoriesField)
-    private val canEditStories: Boolean?,
+    private val canEditStories: Boolean? = null,
     @SerialName(canDeleteStoriesField)
-    private val canDeleteStories: Boolean?
+    private val canDeleteStories: Boolean? = null
 ) : ChatMemberRequest<Boolean>, UntilDate {
     override fun method(): String = "promoteChatMember"
     override val resultDeserializer: DeserializationStrategy<Boolean>
