@@ -1,34 +1,36 @@
 package dev.inmo.tgbotapi.webapps.cloud
 
+import kotlin.js.Json
+
 external interface CloudStorage {
     fun setItem(
         key: CloudStorageKey,
         value: CloudStorageValue,
-        callback: (e: Error?, success: Boolean?) -> Unit = definedExternally
+        callback: (e: Any?, success: Boolean?) -> Unit = definedExternally
     ): CloudStorage
     fun getItem(
         key: CloudStorageKey,
-        callback: (e: Error?, value: CloudStorageValue?) -> Unit
+        callback: (e: Any?, value: CloudStorageValue?) -> Unit
     ): CloudStorage
     fun getItems(
         key: Array<CloudStorageKey>,
-        callback: (e: Error?, values: Array<CloudStorageValue>?) -> Unit
+        callback: (e: Any?, values: Array<CloudStorageValue>?) -> Unit
     ): CloudStorage
     fun removeItem(
         key: CloudStorageKey,
-        callback: (e: Error?, success: Boolean?) -> Unit
+        callback: (e: Any?, success: Boolean?) -> Unit
     ): CloudStorage
     fun removeItems(
         key: Array<CloudStorageKey>,
-        callback: (e: Error?, success: Boolean?) -> Unit
+        callback: (e: Any?, success: Boolean?) -> Unit
     ): CloudStorage
     fun getKeys(
-        callback: (e: Error?, success: Array<CloudStorageKey>?) -> Unit
+        callback: (e: Any?, success: Array<CloudStorageKey>?) -> Unit
     ): CloudStorage
 }
 
-private fun <T> resultsToResult(e: Error?, v: T?): Result<T> = when {
-    e != null -> Result.failure(e)
+private fun <T> resultsToResult(e: Any?, v: T?): Result<T> = when {
+    e != null -> Result.failure(IllegalStateException(JSON.stringify(e)))
     v != null -> Result.success(v)
     else -> Result.failure(IllegalStateException("Both value and e"))
 }
@@ -119,8 +121,10 @@ fun CloudStorage.keys(
 
 fun CloudStorage.getAll(callback: (result: Result<Map<CloudStorageKey, CloudStorageValue>>) -> Unit) = keys {
     it.onSuccess { keys ->
+        console.log(keys)
         get(keys) {
             it.onSuccess { values ->
+                console.log(values)
                 val resultMap = keys.withIndex().mapNotNull { (i, it) ->
                     it to (values.getOrNull(i) ?: return@mapNotNull null)
                 }.toMap()

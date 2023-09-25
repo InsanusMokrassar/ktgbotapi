@@ -9,7 +9,7 @@ sealed interface Color {
 
     @Serializable
     value class Hex(override val value: String) : Color {
-        constructor(r: UByte, g: UByte, b: UByte) : this("#${r.toString(16)}${g.toString(16)}${b.toString(16)}")
+        constructor(r: UByte, g: UByte, b: UByte) : this("#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}")
     }
 
     companion object {
