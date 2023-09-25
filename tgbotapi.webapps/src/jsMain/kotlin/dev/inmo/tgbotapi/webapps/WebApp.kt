@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.webapps.cloud.CloudStorage
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
 import dev.inmo.tgbotapi.webapps.popup.*
+import kotlin.js.Json
 
 external class WebApp {
     val version: String
@@ -64,8 +65,10 @@ external class WebApp {
     internal fun onEventWithQRTextInfo(type: String, callback: (String) -> Boolean)
     @JsName("onEvent")
     internal fun onEventWithTextInfo(type: String, callback: (String) -> Unit)
-    internal fun onEventWithWriteAccessRequested(type: String, callback: (Boolean) -> Unit)
-    internal fun onEventWithContactRequested(type: String, callback: (Boolean) -> Unit)
+    @JsName("onEvent")
+    internal fun onEventWithWriteAccessRequested(type: String, callback: (RequestStatus) -> Unit)
+    @JsName("onEvent")
+    internal fun onEventWithContactRequested(type: String, callback: (RequestStatus) -> Unit)
 
     fun offEvent(type: String, callback: () -> Unit)
     @JsName("offEvent")
@@ -170,8 +173,8 @@ fun WebApp.onEvent(type: EventType.ClipboardTextReceived, eventHandler: TextRece
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.WriteAccessRequested, eventHandler: WriteAccessRequestedHandler) = { it: Boolean ->
-    eventHandler(js("this").unsafeCast<WebApp>(), it)
+fun WebApp.onEvent(type: EventType.WriteAccessRequested, eventHandler: WriteAccessRequestedHandler) = { it: RequestStatus ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it.isAllowed)
 }.also {
     onEventWithWriteAccessRequested(
         type.typeName,
@@ -182,8 +185,8 @@ fun WebApp.onEvent(type: EventType.WriteAccessRequested, eventHandler: WriteAcce
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onEvent(type: EventType.ContactRequested, eventHandler: ContactRequestedHandler) = { it: Boolean ->
-    eventHandler(js("this").unsafeCast<WebApp>(), it)
+fun WebApp.onEvent(type: EventType.ContactRequested, eventHandler: ContactRequestedHandler) = { it: RequestStatus ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it.isSent)
 }.also {
     onEventWithContactRequested(
         type.typeName,
