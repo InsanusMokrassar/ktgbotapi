@@ -16,4 +16,43 @@ sealed interface ChatAdministratorRights : SpecialChatAdministratorRights {
     val canPromoteMembers: Boolean
     val canPostMessages: Boolean
     val canEditMessages: Boolean
+    val canPostStories: Boolean
+    val canEditStories: Boolean
+    val canDeleteStories: Boolean
+
+    companion object {
+        operator fun invoke(
+            canChangeInfo: Boolean = false,
+            canPostMessages: Boolean = false,
+            canEditMessages: Boolean = false,
+            canRemoveMessages: Boolean = false,
+            canInviteUsers: Boolean = false,
+            canRestrictMembers: Boolean = false,
+            canPinMessages: Boolean = false,
+            canPromoteMembers: Boolean = false,
+            canManageVideoChats: Boolean = false,
+            canManageChat: Boolean = false,
+            isAnonymous: Boolean = false,
+            canManageTopics: Boolean = false,
+            canPostStories: Boolean = false,
+            canEditStories: Boolean = false,
+            canDeleteStories: Boolean = false
+        ) = ChatCommonAdministratorRights(
+            canChangeInfo = canChangeInfo,
+            canPostMessages = canPostMessages,
+            canEditMessages = canEditMessages,
+            canRemoveMessages = canRemoveMessages,
+            canInviteUsers = canInviteUsers,
+            canRestrictMembers = canRestrictMembers,
+            canPinMessages = canPinMessages,
+            canPromoteMembers = canPromoteMembers,
+            canManageVideoChats = canManageVideoChats,
+            canManageChat = canManageChat,
+            isAnonymous = isAnonymous,
+            canManageTopics = canManageTopics,
+            canPostStories = canPostStories,
+            canEditStories = canEditStories,
+            canDeleteStories = canDeleteStories
+        )
+    }
 }

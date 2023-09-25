@@ -10,4 +10,6 @@ sealed class EventType(val typeName: String) {
     object PopupClosed : EventType("popupClosed")
     object QRTextReceived : EventType("qrTextReceived")
     object ClipboardTextReceived : EventType("clipboardTextReceived")
+    object WriteAccessRequested : EventType("writeAccessRequested")
+    object ContactRequested : EventType("contactRequested")
 }

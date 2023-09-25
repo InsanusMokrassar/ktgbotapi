@@ -1,8 +1,7 @@
 package dev.inmo.tgbotapi.types.buttons.reply
 
 import dev.inmo.tgbotapi.types.buttons.*
-import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.*
-import dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRights
+import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.request.RequestId
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
 
@@ -120,8 +119,8 @@ inline fun requestChatReplyButton(
     isForum: Boolean? = null,
     isPublic: Boolean? = null,
     isOwnedBy: Boolean? = null,
-    userRightsInChat: ChatAdministratorRights? = null,
-    botRightsInChat: ChatAdministratorRights? = null,
+    userRightsInChat: ChatCommonAdministratorRights? = null,
+    botRightsInChat: ChatCommonAdministratorRights? = null,
     botIsMember: Boolean = false
 ) = requestChatReplyButton(
     text,
@@ -145,8 +144,8 @@ inline fun requestChannelReplyButton(
     requestId: RequestId,
     isPublic: Boolean? = null,
     isOwnedBy: Boolean? = null,
-    userRightsInChat: ChatAdministratorRights? = null,
-    botRightsInChat: ChatAdministratorRights? = null,
+    userRightsInChat: ChatCommonAdministratorRights? = null,
+    botRightsInChat: ChatCommonAdministratorRights? = null,
     botIsMember: Boolean = false
 ) = requestChatReplyButton(
     text,
@@ -170,8 +169,8 @@ inline fun requestChannelReplyButton(
     isForum: Boolean? = null,
     isPublic: Boolean? = null,
     isOwnedBy: Boolean? = null,
-    userRightsInChat: ChatAdministratorRights? = null,
-    botRightsInChat: ChatAdministratorRights? = null,
+    userRightsInChat: ChatCommonAdministratorRights? = null,
+    botRightsInChat: ChatCommonAdministratorRights? = null,
     botIsMember: Boolean? = null
 ) = requestChatReplyButton(
     text,

@@ -5,8 +5,12 @@ import dev.inmo.tgbotapi.types.chat.User
 import kotlinx.serialization.*
 
 @Serializable
-data class MemberChatMemberImpl(@SerialName(userField) override val user: User) : MemberChatMember {
+data class MemberChatMemberImpl(
+    @SerialName(userField)
+    override val user: User
+) : MemberChatMember {
     @SerialName(statusField)
     @Required
-    private val type: String = "member"
+    override val status: ChatMember.Status
+        get() = ChatMember.Status.Member
 }

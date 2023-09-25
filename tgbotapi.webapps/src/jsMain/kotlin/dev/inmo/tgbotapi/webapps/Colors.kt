@@ -8,7 +8,9 @@ sealed interface Color {
     value class BackgroundColor(override val value: String) : Color
 
     @Serializable
-    value class Hex(override val value: String) : Color
+    value class Hex(override val value: String) : Color {
+        constructor(r: UByte, g: UByte, b: UByte) : this("#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}")
+    }
 
     companion object {
         val BackgroundColor = BackgroundColor("bg_color")

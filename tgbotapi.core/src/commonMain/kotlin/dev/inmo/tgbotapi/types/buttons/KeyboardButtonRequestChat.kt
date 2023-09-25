@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.types.buttons
 
 import dev.inmo.tgbotapi.types.botAdministratorRightsField
 import dev.inmo.tgbotapi.types.botIsMemberField
-import dev.inmo.tgbotapi.types.chat.member.ChatAdministratorRights
+import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.chatHasUsernameField
 import dev.inmo.tgbotapi.types.chatIsChannelField
 import dev.inmo.tgbotapi.types.chatIsCreatedField
@@ -30,9 +30,9 @@ data class KeyboardButtonRequestChat(
     @SerialName(chatIsCreatedField)
     val isOwnedBy: Boolean? = null,
     @SerialName(userAdministratorRightsField)
-    val userRightsInChat: ChatAdministratorRights? = null,
+    val userRightsInChat: ChatCommonAdministratorRights? = null,
     @SerialName(botAdministratorRightsField)
-    val botRightsInChat: ChatAdministratorRights? = null,
+    val botRightsInChat: ChatCommonAdministratorRights? = null,
     @SerialName(botIsMemberField)
     val botIsMember: Boolean? = null
 ) {
@@ -41,8 +41,8 @@ data class KeyboardButtonRequestChat(
             requestId: RequestId,
             isPublic: Boolean? = null,
             isOwnedBy: Boolean? = null,
-            userRightsInChat: ChatAdministratorRights? = null,
-            botRightsInChat: ChatAdministratorRights? = null,
+            userRightsInChat: ChatCommonAdministratorRights? = null,
+            botRightsInChat: ChatCommonAdministratorRights? = null,
             botIsMember: Boolean? = null
         ) = KeyboardButtonRequestChat(
             requestId = requestId,
@@ -60,8 +60,8 @@ data class KeyboardButtonRequestChat(
             isForum: Boolean? = null,
             isPublic: Boolean? = null,
             isOwnedBy: Boolean? = null,
-            userRightsInChat: ChatAdministratorRights? = null,
-            botRightsInChat: ChatAdministratorRights? = null,
+            userRightsInChat: ChatCommonAdministratorRights? = null,
+            botRightsInChat: ChatCommonAdministratorRights? = null,
             botIsMember: Boolean? = null
         ) = KeyboardButtonRequestChat(
             requestId = requestId,

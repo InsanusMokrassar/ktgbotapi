@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ChatAdministratorRightsImpl(
+data class ChatCommonAdministratorRights(
     @SerialName(canChangeInfoField)
     override val canChangeInfo: Boolean = false,
     @SerialName(canPostMessagesField)
@@ -29,5 +29,20 @@ data class ChatAdministratorRightsImpl(
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
     @SerialName(canManageTopicsField)
-    override val canManageTopics: Boolean = false
+    override val canManageTopics: Boolean = false,
+    @SerialName(canPostStoriesField)
+    override val canPostStories: Boolean = false,
+    @SerialName(canEditStoriesField)
+    override val canEditStories: Boolean = false,
+    @SerialName(canDeleteStoriesField)
+    override val canDeleteStories: Boolean = false
 ) : ChatAdministratorRights
+
+@Deprecated(
+    "Renamed to ChatCommonAdministratorRights and will be removed soon",
+    ReplaceWith(
+        "ChatCommonAdministratorRights",
+        "dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights"
+    )
+)
+typealias ChatAdministratorRightsImpl = ChatCommonAdministratorRights

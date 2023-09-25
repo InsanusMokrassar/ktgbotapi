@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 9.2.0
+
+**Add support of [Telegram Bots API 6.9](https://core.telegram.org/bots/api-changelog#september-22-2023)**
+
+* Rename `ChatAdministratorRightsImpl` -> `ChatCommonAdministratorRights`
+* All the request chat keyboards has changed their parameters `ChatAdministratorRights` to `ChatCommonAdministratorRights`
+
 ## 9.1.2
 
 * `Core`:

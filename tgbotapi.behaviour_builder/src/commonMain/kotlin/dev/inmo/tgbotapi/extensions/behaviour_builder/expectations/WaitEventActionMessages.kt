@@ -171,6 +171,22 @@ suspend fun BehaviourContext.waitWriteAccessAllowedEventsMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEventsMessages<WriteAccessAllowed>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitWriteAccessAllowedFromRequestEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<WriteAccessAllowed.FromRequest>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitWriteAccessAllowedFromAttachmentMenuEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<WriteAccessAllowed.FromAttachmentMenu>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitWriteAccessAllowedFromWebAppLinkEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<WriteAccessAllowed.FromWebAppLink>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitWriteAccessAllowedOtherEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<WriteAccessAllowed.Other>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitChatSharedRequestEventsMessages(
     initRequest: Request<*>? = null,

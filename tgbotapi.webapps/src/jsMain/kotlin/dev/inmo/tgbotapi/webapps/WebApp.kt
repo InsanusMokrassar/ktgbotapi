@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.webapps
 
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.webapps.cloud.CloudStorage
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
 import dev.inmo.tgbotapi.webapps.popup.*
+import kotlin.js.Json
 
 external class WebApp {
     val version: String
@@ -15,6 +17,7 @@ external class WebApp {
 
     val headerColor: HEXColor?
     fun setHeaderColor(color: Color.BackgroundColor)
+    fun setHeaderColor(color: Color.Hex)
     val backgroundColor: HEXColor?
     fun setBackgroundColor(color: Color.Hex)
     fun setBackgroundColor(color: Color.BackgroundColor)
@@ -48,6 +51,9 @@ external class WebApp {
     @JsName("HapticFeedback")
     val hapticFeedback: HapticFeedback
 
+    @JsName("CloudStorage")
+    val cloudStorage: CloudStorage
+
     internal fun onEvent(type: String, callback: () -> Unit)
     @JsName("onEvent")
     internal fun onEventWithViewportChangedData(type: String, callback: (ViewportChangedData) -> Unit)
@@ -59,6 +65,10 @@ external class WebApp {
     internal fun onEventWithQRTextInfo(type: String, callback: (String) -> Boolean)
     @JsName("onEvent")
     internal fun onEventWithTextInfo(type: String, callback: (String) -> Unit)
+    @JsName("onEvent")
+    internal fun onEventWithWriteAccessRequested(type: String, callback: (RequestStatus) -> Unit)
+    @JsName("onEvent")
+    internal fun onEventWithContactRequested(type: String, callback: (RequestStatus) -> Unit)
 
     fun offEvent(type: String, callback: () -> Unit)
     @JsName("offEvent")
@@ -76,6 +86,9 @@ external class WebApp {
     fun openLink(url: String)
     fun openTelegramLink(url: String)
     fun openInvoice(url: String, callback: (InvoiceClosedInfo) -> Unit = definedExternally)
+
+    fun requestWriteAccess(callback: ((Boolean) -> Unit)? = definedExternally)
+    fun requestContact(callback: ((Boolean) -> Unit)? = definedExternally)
 }
 
 val WebApp.colorScheme: ColorScheme
@@ -160,6 +173,30 @@ fun WebApp.onEvent(type: EventType.ClipboardTextReceived, eventHandler: TextRece
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
+fun WebApp.onEvent(type: EventType.WriteAccessRequested, eventHandler: WriteAccessRequestedHandler) = { it: RequestStatus ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it.isAllowed)
+}.also {
+    onEventWithWriteAccessRequested(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onEvent(type: EventType.ContactRequested, eventHandler: ContactRequestedHandler) = { it: RequestStatus ->
+    eventHandler(js("this").unsafeCast<WebApp>(), it.isSent)
+}.also {
+    onEventWithContactRequested(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
 fun WebApp.onThemeChanged(eventHandler: EventHandler) = onEvent(EventType.ThemeChanged, eventHandler)
 /**
  * @return The callback which should be used in case you want to turn off events handling
@@ -193,6 +230,14 @@ fun WebApp.onQRTextReceived(eventHandler: QRTextReceivedEventHandler) = onEvent(
  * @return The callback which should be used in case you want to turn off events handling
  */
 fun WebApp.onClipboardTextReceived(eventHandler: TextReceivedEventHandler) = onEvent(EventType.ClipboardTextReceived, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onWriteAccessRequested(eventHandler: WriteAccessRequestedHandler) = onEvent(EventType.WriteAccessRequested, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onContactRequested(eventHandler: ContactRequestedHandler) = onEvent(EventType.ContactRequested, eventHandler)
 
 fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
     initData,

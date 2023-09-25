@@ -177,6 +177,11 @@ val stickerKeywordLengthLimit = 0 .. 64
 
 const val botActionActualityTime: Seconds = 5
 
+val cloudStorageKeyLimit = 1 .. 128
+val cloudStorageValueLimit = 0 .. 4096
+val cloudStorageKeyRegex = Regex("[A-Za-z0-9_-]{${cloudStorageKeyLimit.first},${cloudStorageKeyLimit.last}}")
+val cloudStorageValueRegex = Regex(".{${cloudStorageValueLimit.first},${cloudStorageValueLimit.last}}")
+
 // Made as lazy for correct work in K/JS
 val telegramInlineModeGifPermittedMimeTypes by lazy {
     listOf(
@@ -210,6 +215,7 @@ const val firstNameField = "first_name"
 const val lastNameField = "last_name"
 const val languageCodeField = "language_code"
 const val addedToAttachmentMenuField = "added_to_attachment_menu"
+const val allowsWriteToPMField = "allows_write_to_pm"
 const val isPremiumField = "is_premium"
 const val hasPrivateForwardsField = "has_private_forwards"
 const val hasRestrictedVoiceAndVideoMessagesField = "has_restricted_voice_and_video_messages"
@@ -274,6 +280,9 @@ const val correctOptionIdField = "correct_option_id"
 const val allowsMultipleAnswersField = "allows_multiple_answers"
 const val isAnonymousField = "is_anonymous"
 const val canManageTopicsField = "can_manage_topics"
+const val canPostStoriesField = "can_post_stories"
+const val canEditStoriesField = "can_edit_stories"
+const val canDeleteStoriesField = "can_delete_stories"
 const val captionEntitiesField = "caption_entities"
 const val hasSpoilerField = "has_spoiler"
 const val loginUrlField = "login_url"
