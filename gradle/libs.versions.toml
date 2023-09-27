@@ -13,7 +13,7 @@ ktor = "2.3.4"
 ksp = "1.9.20-Beta2-1.0.13"
 kotlin-poet = "1.14.2"
 
-microutils = "0.20.7-branch_9.3.0-build721"
+microutils = "0.20.7-branch_0.20.7-build721"
 
 github-release-plugin = "2.4.1"
 dokka = "1.9.0"
