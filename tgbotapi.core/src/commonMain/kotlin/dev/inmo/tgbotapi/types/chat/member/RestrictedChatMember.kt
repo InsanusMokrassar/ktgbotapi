@@ -44,6 +44,5 @@ data class RestrictedChatMember(
 ) : BannedChatMember, SpecialRightsChatMember, ChatPermissions {
     @SerialName(statusField)
     @Required
-    override val status: ChatMember.Status
-        get() = ChatMember.Status.Restricted
+    override val status: ChatMember.Status = ChatMember.Status.Restricted
 }
