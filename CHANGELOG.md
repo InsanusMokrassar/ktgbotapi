@@ -2,6 +2,8 @@
 
 ## 9.2.1
 
+* `Version`:
+  * `Ktor`: `2.3.3` -> `2.3.4`
 * `Core`:
   * All `ChatMember` inheritors have fixes `status` field
 

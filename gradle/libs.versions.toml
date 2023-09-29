@@ -8,7 +8,7 @@ javax-activation = "1.1.1"
 
 korlibs = "4.0.3"
 uuid = "0.7.1"
-ktor = "2.3.3"
+ktor = "2.3.4"
 
 ksp = "1.8.22-1.0.11"
 kotlin-poet = "1.14.2"
