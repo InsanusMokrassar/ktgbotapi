@@ -13,6 +13,5 @@ data class KickedChatMember(
 ) : BannedChatMember {
     @SerialName(statusField)
     @Required
-    override val status: ChatMember.Status
-        get() = ChatMember.Status.Kicked
+    override val status: ChatMember.Status = ChatMember.Status.Kicked
 }

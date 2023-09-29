@@ -45,6 +45,5 @@ data class AdministratorChatMemberImpl(
 ) : AdministratorChatMember {
     @SerialName(statusField)
     @Required
-    override val status: ChatMember.Status
-        get() = ChatMember.Status.Administrator
+    override val status: ChatMember.Status = ChatMember.Status.Administrator
 }

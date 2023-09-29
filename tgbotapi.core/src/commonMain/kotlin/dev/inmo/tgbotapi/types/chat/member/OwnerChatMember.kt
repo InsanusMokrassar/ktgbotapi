@@ -45,6 +45,5 @@ data class OwnerChatMember(
 
     @SerialName(statusField)
     @Required
-    override val status: ChatMember.Status
-        get() = ChatMember.Status.Creator
+    override val status: ChatMember.Status = ChatMember.Status.Creator
 }

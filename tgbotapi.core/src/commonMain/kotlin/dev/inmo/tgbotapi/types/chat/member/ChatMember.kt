@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -15,8 +16,11 @@ import kotlinx.serialization.json.jsonPrimitive
 
 @Serializable(ChatMemberSerializer::class)
 sealed interface ChatMember : WithUser {
-    @Serializable
-    enum class Status(val status: String, val deserializationStrategy: DeserializationStrategy<ChatMember>) {
+    @Serializable(StatusSerializer::class)
+    enum class Status(
+        val status: String,
+        val deserializationStrategy: DeserializationStrategy<ChatMember>
+    ) {
         Creator("creator", OwnerChatMember.serializer()),
         Administrator("administrator", AdministratorChatMemberImpl.serializer()),
         Member("member", MemberChatMemberImpl.serializer()),
@@ -24,6 +28,23 @@ sealed interface ChatMember : WithUser {
         Left("left", LeftChatMemberImpl.serializer()),
         Kicked("kicked", KickedChatMember.serializer())
     }
+
+    object StatusSerializer : KSerializer<Status> {
+        override val descriptor: SerialDescriptor
+            get() = String.serializer().descriptor
+
+        override fun deserialize(decoder: Decoder): Status {
+            val status = decoder.decodeString()
+            return Status.values().first {
+                it.status == status
+            }
+        }
+
+        override fun serialize(encoder: Encoder, value: Status) {
+            encoder.encodeString(value.status)
+        }
+    }
+
     val status: Status
 }
 

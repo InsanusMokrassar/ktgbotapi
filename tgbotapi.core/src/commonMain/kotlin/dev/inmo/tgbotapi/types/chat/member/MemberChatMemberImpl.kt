@@ -11,6 +11,5 @@ data class MemberChatMemberImpl(
 ) : MemberChatMember {
     @SerialName(statusField)
     @Required
-    override val status: ChatMember.Status
-        get() = ChatMember.Status.Member
+    override val status: ChatMember.Status = ChatMember.Status.Member
 }
