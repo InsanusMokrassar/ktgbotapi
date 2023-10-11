@@ -10,8 +10,8 @@ import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
-    override val chat: GroupChat,
-    override val channel: ChannelChat,
+    override val chat: PreviewGroupChat,
+    override val channel: PreviewChannelChat,
     override val messageId: MessageId,
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
@@ -26,8 +26,8 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
 ) : ConnectedFromChannelGroupContentMessage<T>
 
 data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
-    override val chat: GroupChat,
-    override val channel: ChannelChat,
+    override val chat: PreviewGroupChat,
+    override val channel: PreviewChannelChat,
     override val messageId: MessageId,
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
@@ -42,7 +42,7 @@ data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
 ) : UnconnectedFromChannelGroupContentMessage<T>
 
 data class AnonymousGroupContentMessageImpl<T : MessageContent>(
-    override val chat: GroupChat,
+    override val chat: PreviewGroupChat,
     override val messageId: MessageId,
     override val date: DateTime,
     override val forwardInfo: ForwardInfo?,
@@ -57,7 +57,7 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
 ) : AnonymousGroupContentMessage<T>
 
 data class CommonGroupContentMessageImpl<T : MessageContent>(
-    override val chat: GroupChat,
+    override val chat: PreviewGroupChat,
     override val messageId: MessageId,
     override val from: User,
     override val date: DateTime,
@@ -72,8 +72,8 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
 ) : CommonGroupContentMessage<T>
 
 data class FromChannelForumContentMessageImpl<T: MessageContent>(
-    override val chat: ForumChat,
-    override val channel: ChannelChat,
+    override val chat: PreviewForumChat,
+    override val channel: PreviewChannelChat,
     override val messageId: MessageId,
     override val threadId: MessageThreadId,
     override val date: DateTime,
@@ -89,7 +89,7 @@ data class FromChannelForumContentMessageImpl<T: MessageContent>(
 ) : FromChannelForumContentMessage<T>
 
 data class AnonymousForumContentMessageImpl<T : MessageContent>(
-    override val chat: ForumChat,
+    override val chat: PreviewForumChat,
     override val messageId: MessageId,
     override val threadId: MessageThreadId,
     override val date: DateTime,
@@ -105,7 +105,7 @@ data class AnonymousForumContentMessageImpl<T : MessageContent>(
 ) : AnonymousForumContentMessage<T>
 
 data class CommonForumContentMessageImpl<T : MessageContent>(
-    override val chat: ForumChat,
+    override val chat: PreviewForumChat,
     override val messageId: MessageId,
     override val threadId: MessageThreadId,
     override val from: User,

@@ -126,6 +126,17 @@ import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
 import dev.inmo.tgbotapi.types.chat.ForumChat
 import dev.inmo.tgbotapi.types.chat.GroupChat
 import dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
+import dev.inmo.tgbotapi.types.chat.PreviewBot
+import dev.inmo.tgbotapi.types.chat.PreviewChannelChat
+import dev.inmo.tgbotapi.types.chat.PreviewChat
+import dev.inmo.tgbotapi.types.chat.PreviewForumChat
+import dev.inmo.tgbotapi.types.chat.PreviewGroupChat
+import dev.inmo.tgbotapi.types.chat.PreviewPrivateChat
+import dev.inmo.tgbotapi.types.chat.PreviewPublicChat
+import dev.inmo.tgbotapi.types.chat.PreviewSuperPublicChat
+import dev.inmo.tgbotapi.types.chat.PreviewSupergroupChat
+import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.types.chat.PreviewUsernameChat
 import dev.inmo.tgbotapi.types.chat.PrivateChat
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.SuperPublicChat
@@ -1969,11 +1980,29 @@ public inline fun Chat.userOrThrow(): User = this as dev.inmo.tgbotapi.types.cha
 
 public inline fun <T> Chat.ifUser(block: (User) -> T): T? = userOrNull() ?.let(block)
 
+public inline fun Chat.previewUserOrNull(): PreviewUser? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewUser
+
+public inline fun Chat.previewUserOrThrow(): PreviewUser = this as
+    dev.inmo.tgbotapi.types.chat.PreviewUser
+
+public inline fun <T> Chat.ifPreviewUser(block: (PreviewUser) -> T): T? = previewUserOrNull()
+    ?.let(block)
+
 public inline fun Chat.botOrNull(): Bot? = this as? dev.inmo.tgbotapi.types.chat.Bot
 
 public inline fun Chat.botOrThrow(): Bot = this as dev.inmo.tgbotapi.types.chat.Bot
 
 public inline fun <T> Chat.ifBot(block: (Bot) -> T): T? = botOrNull() ?.let(block)
+
+public inline fun Chat.previewBotOrNull(): PreviewBot? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewBot
+
+public inline fun Chat.previewBotOrThrow(): PreviewBot = this as
+    dev.inmo.tgbotapi.types.chat.PreviewBot
+
+public inline fun <T> Chat.ifPreviewBot(block: (PreviewBot) -> T): T? = previewBotOrNull()
+    ?.let(block)
 
 public inline fun Chat.commonBotOrNull(): CommonBot? = this as?
     dev.inmo.tgbotapi.types.chat.CommonBot
@@ -1991,6 +2020,87 @@ public inline fun Chat.commonUserOrThrow(): CommonUser = this as
 
 public inline fun <T> Chat.ifCommonUser(block: (CommonUser) -> T): T? = commonUserOrNull()
     ?.let(block)
+
+public inline fun Chat.previewChatOrNull(): PreviewChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewChat
+
+public inline fun Chat.previewChatOrThrow(): PreviewChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewChat
+
+public inline fun <T> Chat.ifPreviewChat(block: (PreviewChat) -> T): T? = previewChatOrNull()
+    ?.let(block)
+
+public inline fun Chat.previewUsernameChatOrNull(): PreviewUsernameChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewUsernameChat
+
+public inline fun Chat.previewUsernameChatOrThrow(): PreviewUsernameChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewUsernameChat
+
+public inline fun <T> Chat.ifPreviewUsernameChat(block: (PreviewUsernameChat) -> T): T? =
+    previewUsernameChatOrNull() ?.let(block)
+
+public inline fun Chat.previewPrivateChatOrNull(): PreviewPrivateChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewPrivateChat
+
+public inline fun Chat.previewPrivateChatOrThrow(): PreviewPrivateChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewPrivateChat
+
+public inline fun <T> Chat.ifPreviewPrivateChat(block: (PreviewPrivateChat) -> T): T? =
+    previewPrivateChatOrNull() ?.let(block)
+
+public inline fun Chat.previewPublicChatOrNull(): PreviewPublicChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewPublicChat
+
+public inline fun Chat.previewPublicChatOrThrow(): PreviewPublicChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewPublicChat
+
+public inline fun <T> Chat.ifPreviewPublicChat(block: (PreviewPublicChat) -> T): T? =
+    previewPublicChatOrNull() ?.let(block)
+
+public inline fun Chat.previewSuperPublicChatOrNull(): PreviewSuperPublicChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewSuperPublicChat
+
+public inline fun Chat.previewSuperPublicChatOrThrow(): PreviewSuperPublicChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewSuperPublicChat
+
+public inline fun <T> Chat.ifPreviewSuperPublicChat(block: (PreviewSuperPublicChat) -> T): T? =
+    previewSuperPublicChatOrNull() ?.let(block)
+
+public inline fun Chat.previewChannelChatOrNull(): PreviewChannelChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewChannelChat
+
+public inline fun Chat.previewChannelChatOrThrow(): PreviewChannelChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewChannelChat
+
+public inline fun <T> Chat.ifPreviewChannelChat(block: (PreviewChannelChat) -> T): T? =
+    previewChannelChatOrNull() ?.let(block)
+
+public inline fun Chat.previewGroupChatOrNull(): PreviewGroupChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewGroupChat
+
+public inline fun Chat.previewGroupChatOrThrow(): PreviewGroupChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewGroupChat
+
+public inline fun <T> Chat.ifPreviewGroupChat(block: (PreviewGroupChat) -> T): T? =
+    previewGroupChatOrNull() ?.let(block)
+
+public inline fun Chat.previewSupergroupChatOrNull(): PreviewSupergroupChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewSupergroupChat
+
+public inline fun Chat.previewSupergroupChatOrThrow(): PreviewSupergroupChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewSupergroupChat
+
+public inline fun <T> Chat.ifPreviewSupergroupChat(block: (PreviewSupergroupChat) -> T): T? =
+    previewSupergroupChatOrNull() ?.let(block)
+
+public inline fun Chat.previewForumChatOrNull(): PreviewForumChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewForumChat
+
+public inline fun Chat.previewForumChatOrThrow(): PreviewForumChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewForumChat
+
+public inline fun <T> Chat.ifPreviewForumChat(block: (PreviewForumChat) -> T): T? =
+    previewForumChatOrNull() ?.let(block)
 
 public inline fun Chat.unknownChatTypeOrNull(): UnknownChatType? = this as?
     dev.inmo.tgbotapi.types.chat.UnknownChatType

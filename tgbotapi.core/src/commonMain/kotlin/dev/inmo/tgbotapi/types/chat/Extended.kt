@@ -184,8 +184,10 @@ data class ExtendedBot(
     @SerialName(canReadAllGroupMessagesField)
     val canReadAllGroupMessages: Boolean = false,
     @SerialName(supportInlineQueriesField)
-    val supportsInlineQueries: Boolean = false
-) : Bot() {
+    val supportsInlineQueries: Boolean = false,
+    @SerialName(photoField)
+    override val chatPhoto: ChatPhoto? = null
+) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
 }

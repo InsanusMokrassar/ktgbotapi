@@ -15,7 +15,7 @@ data class GroupChatImpl(
     override val id: ChatId,
     @SerialName(titleField)
     override val title: String
-) : GroupChat
+) : PreviewGroupChat
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
@@ -28,7 +28,7 @@ data class PrivateChatImpl(
     override val firstName: String = "",
     @SerialName(lastNameField)
     override val lastName: String = ""
-) : PrivateChat
+) : PreviewPrivateChat
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use SupergroupChat due")
@@ -39,7 +39,7 @@ data class SupergroupChatImpl(
     override val title: String,
     @SerialName(usernameField)
     override val username: Username? = null
-) : SupergroupChat
+) : PreviewSupergroupChat
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ForumChat due")
@@ -50,7 +50,7 @@ data class ForumChatImpl(
     override val title: String,
     @SerialName(usernameField)
     override val username: Username? = null
-) : ForumChat
+) : PreviewForumChat
 
 @Serializable
 @RiskFeature("This class is a subject of changes. It is better to use ChannelChat due")
@@ -61,13 +61,19 @@ data class ChannelChatImpl(
     override val title: String,
     @SerialName(usernameField)
     override val username: Username? = null
-) : ChannelChat
+) : PreviewChannelChat
 
 @Serializable(UserSerializer::class)
 sealed class User : PrivateChat
 
 @Serializable(UserSerializer::class)
+sealed class PreviewUser : PreviewPrivateChat, User()
+
+@Serializable(UserSerializer::class)
 sealed class Bot : User()
+
+@Serializable(UserSerializer::class)
+sealed class PreviewBot : PreviewUser()
 
 @Serializable
 data class CommonBot(
@@ -78,7 +84,7 @@ data class CommonBot(
     override val lastName: String = "",
     @SerialName(usernameField)
     override val username: Username? = null,
-) : Bot() {
+) : PreviewBot() {
     @SerialName(isBotField)
     private val isBot = true
 }
@@ -99,7 +105,7 @@ data class CommonUser(
     override val isPremium: Boolean = false,
     @SerialName(addedToAttachmentMenuField)
     override val addedToAttachmentMenu: Boolean = false
-) : User(), WithOptionalLanguageCode, PossiblyPremiumChat, AbleToAddInAttachmentMenuChat {
+) : PreviewUser(), WithOptionalLanguageCode, PossiblyPremiumChat, AbleToAddInAttachmentMenuChat {
     constructor(
         id: UserId,
         firstName: String,

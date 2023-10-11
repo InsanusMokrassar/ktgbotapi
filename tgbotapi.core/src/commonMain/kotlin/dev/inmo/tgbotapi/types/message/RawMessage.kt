@@ -43,11 +43,11 @@ internal data class RawMessage(
     @SerialName(messageIdField)
     val messageId: MessageId,
     val date: TelegramDate,
-    private val chat: Chat,
+    private val chat: PreviewChat,
     @SerialName(messageThreadIdField)
     private val messageThreadId: MessageThreadId? = null,
     private val from: User? = null,
-    private val sender_chat: PublicChat? = null,
+    private val sender_chat: PreviewPublicChat? = null,
     private val forward_from: User? = null,
     private val forward_from_chat: Chat? = null,
     private val forward_from_message_id: MessageId? = null,
@@ -274,27 +274,27 @@ internal data class RawMessage(
         try {
             chatEvent?.let { chatEvent ->
                 when (chat) {
-                    is SupergroupChat -> CommonSupergroupEventMessage(
+                    is PreviewSupergroupChat -> CommonSupergroupEventMessage(
                         messageId,
                         from ?: error("Supergroup events are expected to contain 'from' field"),
                         chat,
                         chatEvent as? SupergroupEvent ?: throwWrongChatEvent(SupergroupEvent::class, chatEvent),
                         date.asDate
                     )
-                    is GroupChat -> CommonGroupEventMessage(
+                    is PreviewGroupChat -> CommonGroupEventMessage(
                         messageId,
                         from ?: error("Supergroup events are expected to contain 'from' field"),
                         chat,
                         chatEvent as? GroupEvent ?: throwWrongChatEvent(GroupChat::class, chatEvent),
                         date.asDate
                     )
-                    is ChannelChat -> ChannelEventMessage(
+                    is PreviewChannelChat -> ChannelEventMessage(
                         messageId,
                         chat,
                         chatEvent as? ChannelEvent ?: throwWrongChatEvent(ChannelEvent::class, chatEvent),
                         date.asDate
                     )
-                    is PrivateChat -> PrivateEventMessage(
+                    is PreviewPrivateChat -> PrivateEventMessage(
                         messageId,
                         chat,
                         chatEvent as? PrivateEvent ?: throwWrongChatEvent(PrivateEvent::class, chatEvent),
@@ -303,8 +303,8 @@ internal data class RawMessage(
                     else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
                 }
             } ?: content?.let { content -> when (chat) {
-                    is PublicChat -> when (chat) {
-                        is ChannelChat -> ChannelContentMessageImpl(
+                    is PreviewPublicChat -> when (chat) {
+                        is PreviewChannelChat -> ChannelContentMessageImpl(
                             messageId,
                             chat,
                             content,
@@ -318,17 +318,16 @@ internal data class RawMessage(
                             author_signature,
                             media_group_id
                         )
-                        is ForumChat -> if (messageThreadId != null) {
+                        is PreviewForumChat -> if (messageThreadId != null) {
                             val chatId = ChatIdWithThreadId(
                                 chat.id.chatId,
                                 messageThreadId
                             )
                             val actualForumChat = when (chat) {
-                                is ExtendedForumChatImpl -> chat.copy(id = chatId)
                                 is ForumChatImpl -> chat.copy(id = chatId)
                             }
                             when (sender_chat) {
-                                is ChannelChat -> FromChannelForumContentMessageImpl(
+                                is PreviewChannelChat -> FromChannelForumContentMessageImpl(
                                     actualForumChat,
                                     sender_chat,
                                     messageId,
@@ -344,7 +343,7 @@ internal data class RawMessage(
                                     author_signature,
                                     media_group_id
                                 )
-                                is GroupChat -> AnonymousForumContentMessageImpl(
+                                is PreviewGroupChat -> AnonymousForumContentMessageImpl(
                                     actualForumChat,
                                     messageId,
                                     messageThreadId,
@@ -377,7 +376,7 @@ internal data class RawMessage(
                             }
                         } else {
                             when (sender_chat) {
-                                is ChannelChat -> if (is_automatic_forward == true) {
+                                is PreviewChannelChat -> if (is_automatic_forward == true) {
                                     ConnectedFromChannelGroupContentMessageImpl(
                                         chat,
                                         sender_chat,
@@ -440,8 +439,8 @@ internal data class RawMessage(
                                 )
                             }
                         }
-                        is GroupChat -> when (sender_chat) {
-                            is ChannelChat -> if (is_automatic_forward == true) {
+                        is PreviewGroupChat -> when (sender_chat) {
+                            is PreviewChannelChat -> if (is_automatic_forward == true) {
                                 ConnectedFromChannelGroupContentMessageImpl(
                                     chat,
                                     sender_chat,
@@ -474,7 +473,7 @@ internal data class RawMessage(
                                     media_group_id
                                 )
                             }
-                            is GroupChat -> AnonymousGroupContentMessageImpl(
+                            is PreviewGroupChat -> AnonymousGroupContentMessageImpl(
                                 chat,
                                 messageId,
                                 date.asDate,
@@ -504,7 +503,7 @@ internal data class RawMessage(
                             )
                         }
                     }
-                    is PrivateChat -> PrivateContentMessageImpl(
+                    is PreviewPrivateChat -> PrivateContentMessageImpl(
                         messageId,
                         from ?: error("Was detected common message, but owner (sender) of the message was not found"),
                         chat,
