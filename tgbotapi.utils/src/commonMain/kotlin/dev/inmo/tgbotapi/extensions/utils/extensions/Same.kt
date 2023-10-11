@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
-import dev.inmo.tgbotapi.abstracts.WithChat
+import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.extensions.utils.usernameChatOrNull
 import dev.inmo.tgbotapi.extensions.utils.whenUsernameChat
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -16,21 +16,23 @@ import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
  * @return true in case if [this] message is placed in the chat with id == [chatId]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun WithChat.sameChat(chatId: ChatIdentifier) = chat.id == chatId || (chatId is Username && chat.whenUsernameChat {
-    it.username == chatId
-} ?: false)
+inline fun WithPreviewChat.sameChat(chatId: ChatIdentifier) =
+    chat.id == chatId || (chatId is Username && chat.whenUsernameChat {
+        it.username == chatId
+    } ?: false)
 
 /**
  * @return true in case if [this] message is placed in the [chat]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun WithChat.sameChat(chat: Chat) = sameChat(chat.id) || chat.usernameChatOrNull() ?.username ?.let { sameChat(it) } ?: false
+inline fun WithPreviewChat.sameChat(chat: Chat) =
+    sameChat(chat.id) || chat.usernameChatOrNull()?.username?.let { sameChat(it) } ?: false
 
 /**
  * @return true in case if [this] message is placed in the same chat that [other]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun WithChat.sameChat(other: Message) = sameChat(other.chat)
+inline fun WithPreviewChat.sameChat(other: Message) = sameChat(other.chat)
 
 /**
  * @return true in case if [this] message is from the same chat (with id == [chatId]) and [this] [Message.messageId]

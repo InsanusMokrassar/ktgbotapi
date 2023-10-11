@@ -1,24 +1,22 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import dev.inmo.tgbotapi.types.MessageThreadId
-import dev.inmo.tgbotapi.types.chat.ChannelChat
-import dev.inmo.tgbotapi.types.chat.ForumChat
-import dev.inmo.tgbotapi.types.chat.GroupChat
+import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
 sealed interface GroupContentMessage<T : MessageContent> : PublicContentMessage<T> {
-    override val chat: GroupChat
+    override val chat: PreviewGroupChat
 }
 
 sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T>, PossiblyTopicMessage {
-    override val chat: ForumChat
+    override val chat: PreviewForumChat
     override val threadId: MessageThreadId
 }
 
 
 sealed interface FromChannelGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, SignedMessage, WithSenderChatMessage {
-    val channel: ChannelChat
-    override val senderChat: ChannelChat
+    val channel: PreviewChannelChat
+    override val senderChat: PreviewChannelChat
         get() = channel
 }
 
@@ -26,7 +24,7 @@ interface ConnectedFromChannelGroupContentMessage<T: MessageContent> : FromChann
 interface UnconnectedFromChannelGroupContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>
 
 interface AnonymousGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, SignedMessage, WithSenderChatMessage {
-    override val senderChat: GroupChat
+    override val senderChat: PreviewGroupChat
         get() = chat
 }
 
@@ -35,7 +33,7 @@ interface CommonGroupContentMessage<T : MessageContent> : GroupContentMessage<T>
 interface FromChannelForumContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>, ForumContentMessage<T>
 
 interface AnonymousForumContentMessage<T : MessageContent> : ForumContentMessage<T>, SignedMessage, WithSenderChatMessage {
-    override val senderChat: GroupChat
+    override val senderChat: PreviewGroupChat
         get() = chat
 }
 

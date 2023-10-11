@@ -2,6 +2,9 @@
 
 ## 9.2.2
 
+* `Core`:
+  * Fix of [#793](https://github.com/InsanusMokrassar/ktgbotapi/issues/793): Add `PreviewChat`
+
 ## 9.2.1
 
 * `Version`:
