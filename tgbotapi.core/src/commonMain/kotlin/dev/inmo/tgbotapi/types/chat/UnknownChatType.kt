@@ -7,4 +7,4 @@ data class UnknownChatType(
     override val id: IdChatIdentifier,
     val raw: String,
     val rawJson: JsonObject
-) : Chat
+) : Chat, PreviewChat

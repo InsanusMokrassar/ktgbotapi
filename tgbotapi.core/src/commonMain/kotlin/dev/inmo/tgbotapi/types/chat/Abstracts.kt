@@ -4,51 +4,51 @@ import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.Serializable
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface UsernameChat : Chat {
     val username: Username?
 }
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface PrivateChat : Chat, UsernameChat {
     override val id: UserId
     val firstName: String
     val lastName: String
 }
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface PublicChat : Chat {
     val title: String
 }
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface SuperPublicChat : PublicChat, UsernameChat
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface ChannelChat : SuperPublicChat {
     override val id: ChatId
 }
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface GroupChat : PublicChat
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface SupergroupChat : GroupChat, SuperPublicChat
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface ForumChat : SupergroupChat
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface PossiblyPremiumChat : Chat {
     val isPremium: Boolean
 }
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 sealed interface AbleToAddInAttachmentMenuChat : Chat {
     val addedToAttachmentMenu: Boolean
 }
 
-@Serializable(PreviewChatSerializer::class)
+@Serializable(ChatSerializer::class)
 @ClassCastsIncluded(excludeRegex = ".*Impl")
 sealed interface Chat {
     val id: IdChatIdentifier

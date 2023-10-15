@@ -4,6 +4,18 @@
 
 This release become possible thanks to [Anton Lakotka](https://youtrack.jetbrains.com/users/anton.lakotka)
 
+## 9.2.2
+
+* `Core`:
+  * Fix of [#793](https://github.com/InsanusMokrassar/ktgbotapi/issues/793): Add `PreviewChat`
+
+## 9.2.1
+
+* `Version`:
+  * `Ktor`: `2.3.3` -> `2.3.4`
+* `Core`:
+  * All `ChatMember` inheritors have fixes `status` field
+
 ## 9.2.0
 
 **Add support of [Telegram Bots API 6.9](https://core.telegram.org/bots/api-changelog#september-22-2023)**

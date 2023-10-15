@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.chat.PreviewChat
 
 interface WithSenderChatMessage {
-    val senderChat: Chat
+    val senderChat: PreviewChat
 }

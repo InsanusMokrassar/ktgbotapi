@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 data class PrivateContentMessageImpl<T: MessageContent>(
     override val messageId: MessageId,
     override val from: User,
-    override val chat: Chat,
+    override val chat: PreviewPrivateChat,
     override val content: T,
     override val date: DateTime,
     override val editDate: DateTime?,

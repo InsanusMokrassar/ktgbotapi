@@ -1,10 +1,11 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
 import korlibs.time.DateTime
-import dev.inmo.tgbotapi.abstracts.WithChat
+import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.message.RawMessage
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.*
@@ -12,14 +13,14 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @ClassCastsIncluded(excludeRegex = ".*Impl")
-interface Message : WithChat {
+interface Message : WithPreviewChat {
     val messageId: MessageId
     val date: DateTime
 }
 
 data class UnknownMessageType(
     override val messageId: MessageId,
-    override val chat: Chat,
+    override val chat: PreviewChat,
     override val date: DateTime,
     val insideException: Exception
 ) : Message
