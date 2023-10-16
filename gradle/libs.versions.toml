@@ -16,7 +16,7 @@ kotlin-poet = "1.14.2"
 microutils = "0.19.9"
 
 github-release-plugin = "2.4.1"
-dokka = "1.8.20"
+dokka = "1.9.10"
 
 [libraries]
 
