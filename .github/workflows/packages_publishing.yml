@@ -9,7 +9,7 @@ jobs:
         with:
           java-version: 11
       - name: Setup LibCurl
-        run: sudo apt install -y libcurl4-openssl-dev
+        run: sudo apt update && sudo apt install -y libcurl4-openssl-dev
       - name: Rewrite version
         run: |
           branch="`echo "${{ github.ref }}" | grep -o "[^/]*$"`"
