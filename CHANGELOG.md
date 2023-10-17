@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 9.3.0
+## 9.3.0-RC
 
 This release become possible thanks to [Anton Lakotka](https://youtrack.jetbrains.com/users/anton.lakotka)
 
