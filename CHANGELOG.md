@@ -2,6 +2,9 @@
 
 ## 9.2.3
 
+* `Core`:
+  * Fix in `VoiceContent#createResend`
+
 ## 9.2.2
 
 * `Core`:
