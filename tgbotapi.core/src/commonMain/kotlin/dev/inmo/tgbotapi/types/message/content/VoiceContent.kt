@@ -10,6 +10,7 @@ import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VoiceFile
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.threadId
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -27,16 +28,16 @@ data class VoiceContent(
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VoiceContent>> = SendVoice(
-        chatId,
-        media.fileId,
-        textSources,
-        media.duration,
-        messageThreadId,
-        disableNotification,
-        protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
-        replyMarkup
+        chatId = chatId,
+        voice = media.fileId,
+        entities = textSources,
+        threadId = messageThreadId,
+        duration = media.duration,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyToMessageId = replyToMessageId,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyMarkup = replyMarkup
     )
 
     override fun asTelegramMedia(): TelegramMediaAudio = TelegramMediaAudio(
