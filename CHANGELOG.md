@@ -16,6 +16,11 @@ This release become possible thanks to [Anton Lakotka](https://youtrack.jetbrain
   * `Ktor`: `2.3.4` -> `2.3.5`
   * `MicroUtils`: `0.19.9` -> `0.20.8`
 
+## 9.2.3
+
+* `Core`:
+  * Fix in `VoiceContent#createResend`
+
 ## 9.2.2
 
 * `Core`:
