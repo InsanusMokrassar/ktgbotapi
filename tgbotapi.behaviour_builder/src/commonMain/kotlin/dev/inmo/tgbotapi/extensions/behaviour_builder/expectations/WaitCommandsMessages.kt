@@ -3,6 +3,10 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.doWithRegistration
 import dev.inmo.tgbotapi.extensions.utils.*
+import dev.inmo.tgbotapi.extensions.utils.extensions.TelegramBotCommandsDefaults
+import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithArgs
+import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithArgsSources
+import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithNamedArgs
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.BotCommand
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
@@ -82,31 +86,50 @@ fun Flow<CommonMessage<TextContent>>.requireCommandsWithoutParams() = filter {
  * Map the commands with their arguments and source messages
  */
 fun Flow<CommonMessage<TextContent>>.commandsWithParams(): Flow<Pair<CommonMessage<TextContent>, List<Pair<BotCommandTextSource, Array<TextSource>>>>> = mapNotNull {
-    var currentCommandTextSource: BotCommandTextSource? = null
-    val currentArgs = mutableListOf<TextSource>()
-    val result = mutableListOf<Pair<BotCommandTextSource, Array<TextSource>>>()
-
-    fun addCurrentCommandToResult() {
-        currentCommandTextSource ?.let {
-            result.add(it to currentArgs.toTypedArray())
-            currentArgs.clear()
-        }
-    }
-
-    it.content.textSources.forEach {
-        it.ifBotCommandTextSource {
-            addCurrentCommandToResult()
-            currentCommandTextSource = it
-            return@forEach
-        }
-        currentArgs.add(it)
-    }
-    addCurrentCommandToResult()
-
-    result.toList().takeIf { it.isNotEmpty() } ?.let { result ->
-        it to result
-    }
+    it to it.content.textSources.parseCommandsWithArgsSources().toList()
 }
+
+/**
+ * Map the commands with their arguments and source messages
+ */
+fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
+    argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex
+): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, Array<String>>>>> = mapNotNull {
+    val commandsWithArgs = it.content.textSources.parseCommandsWithArgs(argsSeparator).toList().ifEmpty {
+        return@mapNotNull null
+    }
+
+    it to commandsWithArgs
+}
+
+/**
+ * Map the commands with their arguments and source messages
+ */
+fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
+    argsSeparator: String
+): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, Array<String>>>>> = commandsWithArgs(Regex(argsSeparator))
+
+/**
+ * Map the commands with their arguments and source messages
+ */
+fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
+    argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
+    nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
+): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, List<Pair<String, String>>>>>> = mapNotNull {
+    val commandsWithArgs = it.content.textSources.parseCommandsWithNamedArgs(argsSeparator, nameArgSeparator).toList().ifEmpty {
+        return@mapNotNull null
+    }
+
+    it to commandsWithArgs
+}
+
+/**
+ * Map the commands with their arguments and source messages
+ */
+fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
+    argsSeparator: String,
+    nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
+): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, List<Pair<String, String>>>>>> = commandsWithNamedArgs(Regex(argsSeparator), nameArgSeparator)
 
 /**
  * Flat [commandsWithParams]. Each [Pair] of [BotCommandTextSource] and its [Array] of arg text sources will
