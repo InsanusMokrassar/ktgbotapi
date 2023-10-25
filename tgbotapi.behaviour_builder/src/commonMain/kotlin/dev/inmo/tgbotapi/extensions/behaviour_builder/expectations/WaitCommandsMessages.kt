@@ -83,14 +83,14 @@ fun Flow<CommonMessage<TextContent>>.requireCommandsWithoutParams() = filter {
 }
 
 /**
- * Map the commands with their arguments and source messages
+ * Uses [parseCommandsWithArgsSources] on incoming text sources and map them with [CommonMessage]
  */
 fun Flow<CommonMessage<TextContent>>.commandsWithParams(): Flow<Pair<CommonMessage<TextContent>, List<Pair<BotCommandTextSource, Array<TextSource>>>>> = mapNotNull {
     it to it.content.textSources.parseCommandsWithArgsSources().toList()
 }
 
 /**
- * Map the commands with their arguments and source messages
+ * Uses [parseCommandsWithArgs] on incoming text sources and map them with [CommonMessage]
  */
 fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex
@@ -103,14 +103,14 @@ fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
 }
 
 /**
- * Map the commands with their arguments and source messages
+ * Uses [parseCommandsWithArgs] on incoming text sources and map them with [CommonMessage]
  */
 fun Flow<CommonMessage<TextContent>>.commandsWithArgs(
     argsSeparator: String
 ): Flow<Pair<CommonMessage<TextContent>, List<Pair<String, Array<String>>>>> = commandsWithArgs(Regex(argsSeparator))
 
 /**
- * Map the commands with their arguments and source messages
+ * Uses [parseCommandsWithNamedArgs] on incoming text sources and map them with [CommonMessage]
  */
 fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
     argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex,
@@ -124,7 +124,7 @@ fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
 }
 
 /**
- * Map the commands with their arguments and source messages
+ * Uses [parseCommandsWithNamedArgs] on incoming text sources and map them with [CommonMessage]
  */
 fun Flow<CommonMessage<TextContent>>.commandsWithNamedArgs(
     argsSeparator: String,
