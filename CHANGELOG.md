@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 9.2.4
+
+* `Utils`:
+  * New extensions `*.parseCommandsWithNamedArgs`
+* `BehaviourBuilder`:
+  * In expectaters and triggers of `commands` add `*WithNamedArgs` variants
+  * In expectaters and triggers of `commands` add opportunity to use custom separator
+
 ## 9.2.3
 
 * `Core`:
