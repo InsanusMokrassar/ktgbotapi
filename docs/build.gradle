@@ -55,7 +55,7 @@ Object callback = {
 
             sourceLink {
                 localDirectory.set(file("../"))
-                remoteUrl.set(new URL("https://github.com/InsanusMokrassar/TelegramBotAPI/blob/master/"))
+                remoteUrl.set(new URL("https://github.com/InsanusMokrassar/ktgbotapi/tree/master"))
                 remoteLineSuffix.set("#L")
             }
         }
