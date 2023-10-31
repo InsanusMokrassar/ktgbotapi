@@ -1,6 +1,6 @@
 # TelegramBotAPI changelog
 
-## 9.3.0-RC
+## 9.3.0
 
 This release become possible thanks to [Anton Lakotka](https://youtrack.jetbrains.com/users/anton.lakotka)
 
@@ -15,6 +15,14 @@ This release become possible thanks to [Anton Lakotka](https://youtrack.jetbrain
   * `UUID`: `0.7.1` -> `0.8.1`
   * `Ktor`: `2.3.4` -> `2.3.5`
   * `MicroUtils`: `0.19.9` -> `0.20.8`
+
+## 9.2.4
+
+* `Utils`:
+  * New extensions `*.parseCommandsWithNamedArgs`
+* `BehaviourBuilder`:
+  * In expectaters and triggers of `commands` add `*WithNamedArgs` variants
+  * In expectaters and triggers of `commands` add opportunity to use custom separator
 
 ## 9.2.3
 

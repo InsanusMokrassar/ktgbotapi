@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByC
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times
 import dev.inmo.tgbotapi.extensions.utils.botCommandTextSourceOrNull
-import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithParams
+import dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithArgs
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.content.TextMessage
 import dev.inmo.tgbotapi.types.update.abstracts.Update
@@ -65,7 +65,7 @@ suspend fun <BC : BehaviourContext> BC.unhandledCommandWithArgs(
     subcontextUpdatesFilter = subcontextUpdatesFilter,
     markerFactory = markerFactory
 ) {
-    val args = it.parseCommandsWithParams().let { commandsWithArgs ->
+    val args = it.parseCommandsWithArgs().let { commandsWithArgs ->
         commandsWithArgs
     }
     scenarioReceiver(it, args)
