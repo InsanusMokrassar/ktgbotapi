@@ -8,13 +8,15 @@ This release become possible thanks to [Anton Lakotka](https://youtrack.jetbrain
 
 **UPDATE MAY HAVE BREAKING CHANGES**
 
+**SINCE THIS UPDATE IT WILL BE REQUIRED TO USE JDK 17+ FOR DEVELOPMENT**
+
 * `Version`:
-  * `Kotlin`: `1.8.22` -> `1.9.20-RC`
+  * `Kotlin`: `1.8.22` -> `1.9.20`
   * `Serialization`: `1.5.1` -> `1.6.0`
   * `KorLibs`: `4.0.3` -> `4.0.10`
   * `UUID`: `0.7.1` -> `0.8.1`
   * `Ktor`: `2.3.4` -> `2.3.5`
-  * `MicroUtils`: `0.19.9` -> `0.20.8`
+  * `MicroUtils`: `0.19.9` -> `0.20.12`
 
 ## 9.2.4
 
