@@ -55,6 +55,12 @@ kotlin {
             }
         }
 
+        linuxArm64Main {
+            dependencies {
+                api libs.ktor.client.cio
+            }
+        }
+
         mingwX64Main {
             dependencies {
                 api libs.ktor.client.winhttp

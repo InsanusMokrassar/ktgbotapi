@@ -1,22 +1,22 @@
 [versions]
 
-kotlin = "1.8.22"
-kotlin-serialization = "1.5.1"
+kotlin = "1.9.20"
+kotlin-serialization = "1.6.0"
 kotlin-coroutines = "1.7.3"
 
 javax-activation = "1.1.1"
 
-korlibs = "4.0.3"
-uuid = "0.7.1"
-ktor = "2.3.4"
+korlibs = "4.0.10"
+uuid = "0.8.1"
+ktor = "2.3.5"
 
-ksp = "1.8.22-1.0.11"
+ksp = "1.9.20-1.0.14"
 kotlin-poet = "1.14.2"
 
-microutils = "0.19.9"
+microutils = "0.20.12"
 
 github-release-plugin = "2.4.1"
-dokka = "1.8.20"
+dokka = "1.9.10"
 
 [libraries]
 

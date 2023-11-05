@@ -4,9 +4,12 @@ import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.KtorPipelineStepsHolder
+import dev.inmo.tgbotapi.bot.ktor.KtorRequestsExecutor
+import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
 import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import io.ktor.client.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
@@ -55,7 +58,8 @@ class MultipleClientKtorRequestsExecutor (
             excludeDefaultFactories,
             requestsLimiter,
             jsonFormatter,
-            pipelineStepsHolder
+            pipelineStepsHolder,
+            Unit
         )
     }.toSet()
     private val freeClients = MutableStateFlow<Set<DefaultKtorRequestsExecutor>>(requestExecutors)
@@ -68,14 +72,15 @@ class MultipleClientKtorRequestsExecutor (
         }
     }
 
-    constructor(
+    internal constructor(
         telegramAPIUrlsKeeper: TelegramAPIUrlsKeeper,
         client: HttpClient,
         callsFactories: List<KtorCallFactory>,
         excludeDefaultFactories: Boolean,
         requestsLimiter: RequestLimiter,
         jsonFormatter: Json,
-        pipelineStepsHolder: KtorPipelineStepsHolder
+        pipelineStepsHolder: KtorPipelineStepsHolder,
+        diff: Unit
     ) : this(
         telegramAPIUrlsKeeper,
         callsFactories,

@@ -24,6 +24,7 @@ class TelegramBotAPISymbolProcessor(
     private val outputFile: String = "Output",
     private val outputFolder: String? = null
 ) : SymbolProcessor {
+    @OptIn(RiskFeature::class)
     private val classCastsIncludedClassName = ClassCastsIncluded::class.asClassName()
     @OptIn(KspExperimental::class, RiskFeature::class)
     override fun process(resolver: Resolver): List<KSAnnotated> {
