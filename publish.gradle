@@ -102,4 +102,19 @@ if (project.hasProperty("signing.gnupg.keyName")) {
         def signingTasks = project.getTasks().withType(Sign.class)
         mustRunAfter(signingTasks)
     }
+    // Workaround to make test tasks use sign
+    project.getTasks().withType(Sign.class).configureEach { signTask ->
+        def pubName = signTask.name.removePrefix("sign").removeSuffix("Publication")
+
+        // These tasks only exist for native targets, hence findByName() to avoid trying to find them for other targets
+
+        // Task ':linkDebugTest<platform>' uses this output of task ':sign<platform>Publication' without declaring an explicit or implicit dependency
+        tasks.findByName("linkDebugTest$pubName")?.let {
+            signTask.mustRunAfter(it)
+        }
+        // Task ':compileTestKotlin<platform>' uses this output of task ':sign<platform>Publication' without declaring an explicit or implicit dependency
+        tasks.findByName("compileTestKotlin$pubName")?.let {
+            signTask.mustRunAfter(it)
+        }
+    }
 }
