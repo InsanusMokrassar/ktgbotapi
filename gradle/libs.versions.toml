@@ -1,19 +1,21 @@
 [versions]
 
 kotlin = "1.9.20"
-kotlin-serialization = "1.6.0"
+kotlin-serialization = "1.6.1"
 kotlin-coroutines = "1.7.3"
 
 javax-activation = "1.1.1"
 
 korlibs = "4.0.10"
 uuid = "0.8.1"
-ktor = "2.3.5"
+ktor = "2.3.6"
 
 ksp = "1.9.20-1.0.14"
 kotlin-poet = "1.14.2"
 
-microutils = "0.20.12"
+microutils = "0.20.14"
+
+versions = "0.50.0"
 
 github-release-plugin = "2.4.1"
 dokka = "1.9.10"
@@ -71,3 +73,4 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

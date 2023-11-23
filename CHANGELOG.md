@@ -2,6 +2,11 @@
 
 ## 9.4.0
 
+* `Version`:
+  * `Serialization`: `1.6.0` -> `1.6.1`
+  * `Ktor`: `2.3.5` -> `2.3.6`
+  * `MicroUtils`: `0.20.12` -> `0.20.14`
+
 ## 9.3.0
 
 This release become possible thanks to [Anton Lakotka](https://youtrack.jetbrains.com/users/anton.lakotka)
