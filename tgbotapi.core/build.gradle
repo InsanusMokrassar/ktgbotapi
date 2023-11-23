@@ -31,6 +31,8 @@ kotlin {
                 api libs.microutils.languageCodes
 
                 api libs.ktor.client.core
+
+                api libs.kslog
             }
         }
         commonTest {

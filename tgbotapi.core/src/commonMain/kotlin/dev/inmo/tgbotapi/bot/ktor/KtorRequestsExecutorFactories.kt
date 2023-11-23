@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor
 
+import dev.inmo.kslog.common.KSLog
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.ktor.base.*
@@ -25,6 +26,8 @@ class KtorRequestsExecutorBuilder(
     var excludeDefaultFactories: Boolean = false
     var requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter
     var jsonFormatter: Json = nonstrictJsonFormat
+    var logger: KSLog = DefaultKTgBotAPIKSLog
+    var pipelineStepsHolder: KtorPipelineStepsHolder = KtorPipelineStepsHolder
 
     fun build() = KtorRequestsExecutor(
         telegramAPIUrlsKeeper,
@@ -32,7 +35,9 @@ class KtorRequestsExecutorBuilder(
         callsFactories,
         excludeDefaultFactories,
         requestsLimiter,
-        jsonFormatter
+        jsonFormatter,
+        pipelineStepsHolder,
+        logger
     )
 }
 

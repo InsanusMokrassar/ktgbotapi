@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
+import dev.inmo.kslog.common.KSLog
 import dev.inmo.tgbotapi.requests.abstracts.*
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.mapWithCommonValues
 import io.ktor.client.HttpClient
@@ -8,7 +10,7 @@ import io.ktor.client.request.forms.*
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 
-class MultipartRequestCallFactory : AbstractRequestCallFactory() {
+class MultipartRequestCallFactory(logger: KSLog? = null) : AbstractRequestCallFactory(logger ?: DefaultKTgBotAPIKSLog) {
     override fun <T : Any> prepareCallBody(
         client: HttpClient,
         urlsKeeper: TelegramAPIUrlsKeeper,

@@ -1,8 +1,10 @@
 package dev.inmo.tgbotapi.bot.ktor
 
+import dev.inmo.kslog.common.KSLog
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.settings.limiters.ExceptionsOnlyLimiter
 import dev.inmo.tgbotapi.bot.settings.limiters.RequestLimiter
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import io.ktor.client.*
@@ -22,6 +24,7 @@ expect class KtorRequestsExecutor internal constructor(
     requestsLimiter: RequestLimiter,
     jsonFormatter: Json,
     pipelineStepsHolder: KtorPipelineStepsHolder,
+    logger: KSLog,
     diff: Unit // just a diff property to know where constructor and where calling function with defaults
 ) : BaseRequestsExecutor
 
@@ -32,7 +35,8 @@ fun KtorRequestsExecutor(
     excludeDefaultFactories: Boolean = false,
     requestsLimiter: RequestLimiter = ExceptionsOnlyLimiter,
     jsonFormatter: Json = nonstrictJsonFormat,
-    pipelineStepsHolder: KtorPipelineStepsHolder = KtorPipelineStepsHolder
+    pipelineStepsHolder: KtorPipelineStepsHolder = KtorPipelineStepsHolder,
+    logger: KSLog = DefaultKTgBotAPIKSLog,
 ) = KtorRequestsExecutor(
     telegramAPIUrlsKeeper = telegramAPIUrlsKeeper,
     client = client,
@@ -41,5 +45,6 @@ fun KtorRequestsExecutor(
     requestsLimiter = requestsLimiter,
     jsonFormatter = jsonFormatter,
     pipelineStepsHolder = pipelineStepsHolder,
-    diff = kotlin.Unit
+    logger = logger,
+    diff = kotlin.Unit,
 )
