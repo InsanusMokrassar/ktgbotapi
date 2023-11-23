@@ -38,7 +38,7 @@ class DefaultKtorRequestsExecutor internal constructor(
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
             logger.v { "Installing default factories" }
-            this + createTelegramBotDefaultKtorCallRequestsFactories()
+            this + createTelegramBotDefaultKtorCallRequestsFactories(logger)
         } else {
             logger.v { "Default factories will not be installed" }
             this
