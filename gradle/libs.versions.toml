@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.9.20"
+kotlin = "1.9.21"
 kotlin-serialization = "1.6.1"
 kotlin-coroutines = "1.7.3"
 
@@ -11,10 +11,10 @@ uuid = "0.8.1"
 ktor = "2.3.6"
 
 ksp = "1.9.20-1.0.14"
-kotlin-poet = "1.14.2"
+kotlin-poet = "1.15.1"
 
-microutils = "0.20.14"
-kslog = "1.3.0"
+microutils = "0.20.15"
+kslog = "1.3.1"
 
 versions = "0.50.0"
 
