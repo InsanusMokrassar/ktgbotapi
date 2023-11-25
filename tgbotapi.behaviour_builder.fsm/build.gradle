@@ -13,6 +13,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                api project(":tgbotapi.core")
+                api project(":tgbotapi.utils")
                 api project(":tgbotapi.behaviour_builder")
                 api libs.microutils.fsm.common
             }
