@@ -81,7 +81,10 @@ data class ExtendedPrivateChatImpl(
     @SerialName(emojiStatusCustomEmojiIdField)
     override val statusEmojiId: CustomEmojiId? = null,
     @SerialName(emojiStatusExpirationDateField)
-    override val statusEmojiExpiration: TelegramDate? = null
+    override val statusEmojiExpiration: TelegramDate? = null,
+    @SerialName(pinnedMessageField)
+    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
+    override val pinnedMessage: Message? = null,
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
