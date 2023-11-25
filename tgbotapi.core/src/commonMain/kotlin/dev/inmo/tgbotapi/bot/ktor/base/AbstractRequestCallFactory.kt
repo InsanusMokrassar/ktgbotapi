@@ -1,23 +1,30 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
+import dev.inmo.kslog.common.KSLog
+import dev.inmo.kslog.common.v
+import dev.inmo.kslog.common.w
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.requests.GetUpdatesRequest
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.Response
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.timeout
 import io.ktor.client.request.*
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlin.collections.set
 
 var defaultUpdateTimeoutForZeroDelay = 1000L
 
-abstract class AbstractRequestCallFactory : KtorCallFactory {
+abstract class AbstractRequestCallFactory(
+    protected open val logger: KSLog = DefaultKTgBotAPIKSLog
+) : KtorCallFactory {
     private val methodsCache: MutableMap<String, String> = mutableMapOf()
     override suspend fun <T : Any> makeCall(
         client: HttpClient,
@@ -26,6 +33,7 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
         jsonFormatter: Json
     ): T? {
         val preparedBody = prepareCallBody(client, urlsKeeper, request) ?: return null
+        logger.v { "Prepared body for $request: $preparedBody" }
 
         client.post {
             url(
@@ -54,7 +62,9 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
             setBody(preparedBody)
         }.let { response ->
             val content = response.bodyAsText()
+            logger.v { "Raw answer for $request: $content" }
             val responseObject = jsonFormatter.decodeFromString(Response.serializer(), content)
+            logger.v { "Answer as json for $request: $responseObject" }
 
             return runCatchingSafely {
                 (responseObject.result?.let {
@@ -66,6 +76,8 @@ abstract class AbstractRequestCallFactory : KtorCallFactory {
                         "Can't get result object from $content"
                     )
                 })
+            }.onFailure {
+                logger.w { "Got exception answer for $request: $it" }
             }.getOrThrow()
         }
     }

@@ -13,7 +13,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api project(":tgbotapi.utils")
+                api project(path: ':tgbotapi.core')
+                api project(path: ':tgbotapi.utils')
             }
         }
     }

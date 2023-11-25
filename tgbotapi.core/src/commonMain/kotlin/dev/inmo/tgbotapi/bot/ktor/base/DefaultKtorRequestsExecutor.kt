@@ -1,5 +1,9 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
+import dev.inmo.kslog.common.KSLog
+import dev.inmo.kslog.common.e
+import dev.inmo.kslog.common.i
+import dev.inmo.kslog.common.v
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.exceptions.BotException
@@ -28,12 +32,15 @@ class DefaultKtorRequestsExecutor internal constructor(
     private val requestsLimiter: RequestLimiter,
     private val jsonFormatter: Json,
     private val pipelineStepsHolder: KtorPipelineStepsHolder,
+    private val logger: KSLog,
     diff: Unit
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val callsFactories: List<KtorCallFactory> = callsFactories.run {
         if (!excludeDefaultFactories) {
-            this + createTelegramBotDefaultKtorCallRequestsFactories()
+            logger.v { "Installing default factories" }
+            this + createTelegramBotDefaultKtorCallRequestsFactories(logger)
         } else {
+            logger.v { "Default factories will not be installed" }
             this
         }
     }
@@ -46,19 +53,23 @@ class DefaultKtorRequestsExecutor internal constructor(
 
     override suspend fun <T : Any> execute(request: Request<T>): T {
         return runCatchingSafely {
+            logger.v { "Start request $request" }
             pipelineStepsHolder.onBeforeSearchCallFactory(request, callsFactories)
             requestsLimiter.limit(request) {
                 var result: T? = null
                 lateinit var factoryHandledRequest: KtorCallFactory
                 for (potentialFactory in callsFactories) {
                     pipelineStepsHolder.onBeforeCallFactoryMakeCall(request, potentialFactory)
-                    result = potentialFactory.makeCall(
+                    logger.v { "Trying factory $potentialFactory for $request" }
+                    val resultFromFactory = potentialFactory.makeCall(
                         client,
                         telegramAPIUrlsKeeper,
                         request,
                         jsonFormatter
                     )
-                    result = pipelineStepsHolder.onAfterCallFactoryMakeCall(result, request, potentialFactory)
+                    logger.v { "Result of factory $potentialFactory handling $request: $resultFromFactory" }
+                    result = pipelineStepsHolder.onAfterCallFactoryMakeCall(resultFromFactory, request, potentialFactory)
+                    logger.v { "Result of pipeline $pipelineStepsHolder handling $resultFromFactory: $result" }
                     if (result != null) {
                         factoryHandledRequest = potentialFactory
                         break
@@ -71,6 +82,7 @@ class DefaultKtorRequestsExecutor internal constructor(
             }
         }.let {
             val result = it.exceptionOrNull() ?.let { e ->
+                logger.v(e) { "Got exception on handling of $request" }
                 pipelineStepsHolder.onRequestException(request, e) ?.let { return@let it }
 
                 when (e) {
@@ -90,9 +102,13 @@ class DefaultKtorRequestsExecutor internal constructor(
                     }
                     is BotException -> e
                     else -> CommonBotException(cause = e)
+                }.also {
+                    logger.v(e) { "Result exception on handling of $request: $it" }
                 }
             } ?.let { Result.failure(it) } ?: it
-            pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories)
+            pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories).also {
+                logger.v { "Result of handling $request: $it" }
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
+import dev.inmo.kslog.common.KSLog
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
@@ -48,6 +49,7 @@ class MultipleClientKtorRequestsExecutor (
     jsonFormatter: Json,
     pipelineStepsHolder: KtorPipelineStepsHolder,
     requestExecutorsCount: Int,
+    logger: KSLog,
     clientFactory: () -> HttpClient
 ) : BaseRequestsExecutor(telegramAPIUrlsKeeper) {
     private val requestExecutors = (0 until requestExecutorsCount).map {
@@ -59,6 +61,7 @@ class MultipleClientKtorRequestsExecutor (
             requestsLimiter,
             jsonFormatter,
             pipelineStepsHolder,
+            logger,
             Unit
         )
     }.toSet()
@@ -80,6 +83,7 @@ class MultipleClientKtorRequestsExecutor (
         requestsLimiter: RequestLimiter,
         jsonFormatter: Json,
         pipelineStepsHolder: KtorPipelineStepsHolder,
+        logger: KSLog,
         diff: Unit
     ) : this(
         telegramAPIUrlsKeeper,
@@ -89,6 +93,7 @@ class MultipleClientKtorRequestsExecutor (
         jsonFormatter,
         pipelineStepsHolder,
         client.engineConfig.threadsCount,
+        logger,
         { platformClientCopy(client) }
     )
 
