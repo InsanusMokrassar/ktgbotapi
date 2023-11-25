@@ -17,7 +17,7 @@ sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, ExtendedOtherPartiesChat {
+sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername {
     val bio: String
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
@@ -28,9 +28,11 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, Ex
         get() = hasPrivateForwards
 }
 
-sealed interface ExtendedPublicChat : ExtendedOtherPartiesChat, PublicChat {
+sealed interface ExtendedPublicChat : ExtendedChat, PublicChat {
     val description: String
     val inviteLink: String?
+    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
+    val pinnedMessage: Message?
     val membersHidden: Boolean
 }
 
@@ -64,13 +66,6 @@ sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChat : Chat {
     val chatPhoto: ChatPhoto?
-}
-
-
-@Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedOtherPartiesChat : ExtendedChat {
-    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    val pinnedMessage: Message?
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)

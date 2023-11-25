@@ -7,8 +7,6 @@
   * `Serialization`: `1.6.0` -> `1.6.1`
   * `Ktor`: `2.3.5` -> `2.3.6`
   * `MicroUtils`: `0.20.12` -> `0.20.15`
-* `Core`:
-  * New abstraction `ExtendedOtherPartiesChat` with `pinnedMessage`
 
 ## 9.3.0
 
