@@ -114,9 +114,6 @@ fun TelegramBot.longPollingFlow(
                     if (e is RequestException) {
                         delay(1000L)
                     }
-                    if (e is GetUpdatesConflict && (exceptionsHandler == null || exceptionsHandler == defaultSafelyExceptionHandler)) {
-                        println("Warning!!! Other bot with the same bot token requests updates with getUpdate in parallel")
-                    }
                 }
             ) {
                 execute(

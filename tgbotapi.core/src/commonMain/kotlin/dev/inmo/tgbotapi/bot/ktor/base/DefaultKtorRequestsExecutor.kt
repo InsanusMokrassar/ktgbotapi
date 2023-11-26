@@ -1,13 +1,12 @@
 package dev.inmo.tgbotapi.bot.ktor.base
 
-import dev.inmo.kslog.common.KSLog
-import dev.inmo.kslog.common.e
-import dev.inmo.kslog.common.i
-import dev.inmo.kslog.common.v
+import dev.inmo.kslog.common.*
+import dev.inmo.micro_utils.coroutines.defaultSafelyExceptionHandler
 import dev.inmo.micro_utils.coroutines.runCatchingSafely
 import dev.inmo.tgbotapi.bot.BaseRequestsExecutor
 import dev.inmo.tgbotapi.bot.exceptions.BotException
 import dev.inmo.tgbotapi.bot.exceptions.CommonBotException
+import dev.inmo.tgbotapi.bot.exceptions.GetUpdatesConflict
 import dev.inmo.tgbotapi.bot.exceptions.newRequestException
 import dev.inmo.tgbotapi.bot.ktor.KtorCallFactory
 import dev.inmo.tgbotapi.bot.ktor.KtorPipelineStepsHolder
@@ -102,8 +101,13 @@ class DefaultKtorRequestsExecutor internal constructor(
                     }
                     is BotException -> e
                     else -> CommonBotException(cause = e)
-                }.also {
-                    logger.v(e) { "Result exception on handling of $request: $it" }
+                }.also { newException ->
+                    logger.v(newException) { "Result exception on handling of $request is an exception" }
+                    if (newException is GetUpdatesConflict) {
+                        logger.w(newException) {
+                            "Warning!!! Other bot with the same bot token requests updates with getUpdate in parallel"
+                        }
+                    }
                 }
             } ?.let { Result.failure(it) } ?: it
             pipelineStepsHolder.onRequestReturnResult(result, request, callsFactories).also {
