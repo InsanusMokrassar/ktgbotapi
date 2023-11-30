@@ -1,7 +1,7 @@
 [versions]
 
 kotlin = "1.9.21"
-kotlin-serialization = "1.6.1"
+kotlin-serialization = "1.6.2"
 kotlin-coroutines = "1.7.3"
 
 javax-activation = "1.1.1"
