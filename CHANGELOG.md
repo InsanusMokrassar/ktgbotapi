@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 9.4.2
+
 ## 9.4.1
 
 * Replace warning about two bots from `LongPolling` to `DefaultKtorRequestsExecutor`
