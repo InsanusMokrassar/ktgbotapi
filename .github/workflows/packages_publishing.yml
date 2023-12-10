@@ -20,6 +20,12 @@ jobs:
         run: ./gradlew ksp
       - name: Build
         run: ./gradlew build
+      - name: Publish to Gitea
+        continue-on-error: true
+        run: ./gradlew publishAllPublicationsToInmoNexusRepository
+        env:
+          INMONEXUS_USER: ${{ secrets.INMONEXUS_USER }}
+          INMONEXUS_PASSWORD: ${{ secrets.INMONEXUS_PASSWORD }}
       - name: Publish to GithubPackages
         continue-on-error: true
         run: ./gradlew publishAllPublicationsToGithubPackagesRepository --no-parallel
