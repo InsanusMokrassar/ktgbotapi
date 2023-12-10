@@ -20,11 +20,6 @@ jobs:
         run: ./gradlew ksp
       - name: Build
         run: ./gradlew build
-      - name: Publish to Gitea
-        continue-on-error: true
-        run: ./gradlew publishAllPublicationsToGiteaRepository
-        env:
-          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
       - name: Publish to GithubPackages
         continue-on-error: true
         run: ./gradlew publishAllPublicationsToGithubPackagesRepository --no-parallel
