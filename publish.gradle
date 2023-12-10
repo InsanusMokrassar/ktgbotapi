@@ -50,18 +50,14 @@ publishing {
             
                 }
             }
-            if (project.hasProperty('GITEA_TOKEN') || System.getenv('GITEA_TOKEN') != null) {
+            if ((project.hasProperty('INMONEXUS_USER') || System.getenv('INMONEXUS_USER') != null) && (project.hasProperty('INMONEXUS_PASSWORD') || System.getenv('INMONEXUS_PASSWORD') != null)) {
                 maven {
-                    name = "Gitea"
-                    url = uri("https://git.inmo.dev/api/packages/InsanusMokrassar/maven")
+                    name = "InmoNexus"
+                    url = uri("https://nexus.inmo.dev/repository/maven-releases/")
             
-                    credentials(HttpHeaderCredentials) {
-                        name = "Authorization"
-                        value = project.hasProperty('GITEA_TOKEN') ? project.property('GITEA_TOKEN') : System.getenv('GITEA_TOKEN')
-                    }
-            
-                    authentication {
-                        header(HttpHeaderAuthentication)
+                    credentials {
+                        username = project.hasProperty('INMONEXUS_USER') ? project.property('INMONEXUS_USER') : System.getenv('INMONEXUS_USER')
+                        password = project.hasProperty('INMONEXUS_PASSWORD') ? project.property('INMONEXUS_PASSWORD') : System.getenv('INMONEXUS_PASSWORD')
                     }
             
                 }

@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 9.4.2
+
+* `Version`:
+  * `Serialization`: `1.6.1` -> `1.6.2`
+  * `Ktor`: `2.3.6` -> `2.3.7`
+  * `MicroUtils`: `0.20.15` -> `0.20.19`
+  * `UUID`: `0.8.1` -> `0.8.2`
+
 ## 9.4.1
 
 * Replace warning about two bots from `LongPolling` to `DefaultKtorRequestsExecutor`
