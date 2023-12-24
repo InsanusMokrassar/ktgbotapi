@@ -1,5 +1,13 @@
 # TelegramBotAPI changelog
 
+## 9.4.3
+
+**IetfLanguageCode has been renamed to IetfLang in MicroUtils**
+
+* `Version`:
+  * `Kotlin`: `1.9.21` -> `1.9.22`
+  * `MicroUtils`: `0.20.19` -> `0.20.23`
+
 ## 9.4.2
 
 * `Version`:

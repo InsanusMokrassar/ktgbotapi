@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.webapps
 
-import dev.inmo.micro_utils.language_codes.IetfLanguageCode
+import dev.inmo.micro_utils.language_codes.IetfLang
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.CommonUser
@@ -42,7 +42,7 @@ fun WebAppUser.asUser() = if (isBot == true) {
         firstName = firstName,
         lastName = lastName ?: "",
         username = username ?.let(::Username),
-        ietfLanguageCode = languageCode ?.let(::IetfLanguageCode),
+        ietfLanguageCode = languageCode ?.let(::IetfLang),
         isPremium = isPremium
     )
 }

@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.requests.bot
 
-import dev.inmo.micro_utils.language_codes.IetfLanguageCode
-import dev.inmo.micro_utils.language_codes.IetfLanguageCodeSerializer
+import dev.inmo.micro_utils.language_codes.IetfLang
+import dev.inmo.micro_utils.language_codes.IetfLangSerializer
+
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.commands.*
 import kotlinx.serialization.*
@@ -15,8 +16,8 @@ data class GetMyCommands(
     @Serializable(BotCommandScopeSerializer::class)
     override val scope: BotCommandScope = BotCommandScopeDefault,
     @SerialName(languageCodeField)
-    @Serializable(IetfLanguageCodeSerializer::class)
-    override val ietfLanguageCode: IetfLanguageCode? = null
+    @Serializable(IetfLangSerializer::class)
+    override val ietfLanguageCode: IetfLang? = null
 ) : MyCommandsRequest<List<BotCommand>> {
     override fun method(): String = "getMyCommands"
     override val resultDeserializer: DeserializationStrategy<List<BotCommand>>
@@ -29,7 +30,7 @@ data class GetMyCommands(
         languageCode: String?
     ) : this(
         scope,
-        languageCode ?.let(::IetfLanguageCode)
+        languageCode ?.let(::IetfLang)
     )
 
     companion object : MyCommandsRequest<List<BotCommand>> by GetMyCommands()

@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.chat
 
-import dev.inmo.micro_utils.language_codes.IetfLanguageCode
-import dev.inmo.micro_utils.language_codes.IetfLanguageCodeSerializer
+import dev.inmo.micro_utils.language_codes.IetfLang
+import dev.inmo.micro_utils.language_codes.IetfLangSerializer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -99,8 +99,8 @@ data class CommonUser(
     @SerialName(usernameField)
     override val username: Username? = null,
     @SerialName(languageCodeField)
-    @Serializable(IetfLanguageCodeSerializer::class)
-    override val ietfLanguageCode: IetfLanguageCode? = null,
+    @Serializable(IetfLangSerializer::class)
+    override val ietfLanguageCode: IetfLang? = null,
     @SerialName(isPremiumField)
     override val isPremium: Boolean = false,
     @SerialName(addedToAttachmentMenuField)
@@ -112,5 +112,5 @@ data class CommonUser(
         lastName: String = "",
         username: Username? = null,
         languageCode: String
-    ) : this(id, firstName, lastName, username, IetfLanguageCode(languageCode))
+    ) : this(id, firstName, lastName, username, IetfLang(languageCode))
 }

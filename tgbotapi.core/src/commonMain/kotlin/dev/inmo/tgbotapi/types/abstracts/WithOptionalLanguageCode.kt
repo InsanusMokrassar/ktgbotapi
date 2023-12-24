@@ -1,9 +1,9 @@
 package dev.inmo.tgbotapi.types.abstracts
 
-import dev.inmo.micro_utils.language_codes.IetfLanguageCode
+import dev.inmo.micro_utils.language_codes.IetfLang
 
 interface WithOptionalLanguageCode {
-    val ietfLanguageCode: IetfLanguageCode?
+    val ietfLanguageCode: IetfLang?
 
     val languageCode: String?
         get() = ietfLanguageCode ?.code
