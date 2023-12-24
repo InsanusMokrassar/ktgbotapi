@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.bot
 
-import dev.inmo.micro_utils.language_codes.IetfLanguageCode
-import dev.inmo.micro_utils.language_codes.IetfLanguageCodeSerializer
+import dev.inmo.micro_utils.language_codes.IetfLang
+import dev.inmo.micro_utils.language_codes.IetfLangSerializer
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalLanguageCode
@@ -14,8 +14,8 @@ class SetMyName(
     @SerialName(nameField)
     val name: String? = null,
     @SerialName(languageCodeField)
-    @Serializable(IetfLanguageCodeSerializer::class)
-    override val ietfLanguageCode: IetfLanguageCode? = null
+    @Serializable(IetfLangSerializer::class)
+    override val ietfLanguageCode: IetfLang? = null
 ) : SimpleRequest<Boolean>, WithOptionalLanguageCode {
     override fun method(): String = "setMyName"
     override val resultDeserializer: DeserializationStrategy<Boolean>

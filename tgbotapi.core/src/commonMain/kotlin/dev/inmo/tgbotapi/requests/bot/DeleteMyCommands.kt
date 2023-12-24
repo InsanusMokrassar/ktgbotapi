@@ -1,7 +1,8 @@
 package dev.inmo.tgbotapi.requests.bot
 
-import dev.inmo.micro_utils.language_codes.IetfLanguageCode
-import dev.inmo.micro_utils.language_codes.IetfLanguageCodeSerializer
+import dev.inmo.micro_utils.language_codes.IetfLang
+import dev.inmo.micro_utils.language_codes.IetfLangSerializer
+
 import dev.inmo.tgbotapi.types.commands.*
 import dev.inmo.tgbotapi.types.languageCodeField
 import dev.inmo.tgbotapi.types.scopeField
@@ -14,8 +15,8 @@ data class DeleteMyCommands(
     @Serializable(BotCommandScopeSerializer::class)
     override val scope: BotCommandScope = BotCommandScopeDefault,
     @SerialName(languageCodeField)
-    @Serializable(IetfLanguageCodeSerializer::class)
-    override val ietfLanguageCode: IetfLanguageCode? = null
+    @Serializable(IetfLangSerializer::class)
+    override val ietfLanguageCode: IetfLang? = null
 ) : MyCommandsRequest<Boolean> {
     override fun method(): String  = "deleteMyCommands"
     override val requestSerializer: SerializationStrategy<DeleteMyCommands>
@@ -28,7 +29,7 @@ data class DeleteMyCommands(
         languageCode: String?
     ) : this(
         scope,
-        languageCode ?.let(::IetfLanguageCode)
+        languageCode ?.let(::IetfLang)
     )
 
     companion object : MyCommandsRequest<Boolean> by DeleteMyCommands()
