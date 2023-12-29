@@ -415,6 +415,7 @@ import dev.inmo.tgbotapi.types.queries.callback.MessageCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.MessageDataCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.MessageGameShortNameCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.UnknownCallbackQueryType
+import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
 import dev.inmo.tgbotapi.types.request.RequestResponse
@@ -4484,6 +4485,33 @@ public inline fun Poll.quizPollOrNull(): QuizPoll? = this as? dev.inmo.tgbotapi.
 public inline fun Poll.quizPollOrThrow(): QuizPoll = this as dev.inmo.tgbotapi.types.polls.QuizPoll
 
 public inline fun <T> Poll.ifQuizPoll(block: (QuizPoll) -> T): T? = quizPollOrNull() ?.let(block)
+
+public inline fun Reaction.customEmojiOrNull(): Reaction.CustomEmoji? = this as?
+    dev.inmo.tgbotapi.types.reactions.Reaction.CustomEmoji
+
+public inline fun Reaction.customEmojiOrThrow(): Reaction.CustomEmoji = this as
+    dev.inmo.tgbotapi.types.reactions.Reaction.CustomEmoji
+
+public inline fun <T> Reaction.ifCustomEmoji(block: (Reaction.CustomEmoji) -> T): T? =
+    customEmojiOrNull() ?.let(block)
+
+public inline fun Reaction.emojiOrNull(): Reaction.Emoji? = this as?
+    dev.inmo.tgbotapi.types.reactions.Reaction.Emoji
+
+public inline fun Reaction.emojiOrThrow(): Reaction.Emoji = this as
+    dev.inmo.tgbotapi.types.reactions.Reaction.Emoji
+
+public inline fun <T> Reaction.ifEmoji(block: (Reaction.Emoji) -> T): T? = emojiOrNull()
+    ?.let(block)
+
+public inline fun Reaction.unknownOrNull(): Reaction.Unknown? = this as?
+    dev.inmo.tgbotapi.types.reactions.Reaction.Unknown
+
+public inline fun Reaction.unknownOrThrow(): Reaction.Unknown = this as
+    dev.inmo.tgbotapi.types.reactions.Reaction.Unknown
+
+public inline fun <T> Reaction.ifUnknown(block: (Reaction.Unknown) -> T): T? = unknownOrNull()
+    ?.let(block)
 
 public inline fun RequestResponse.chatSharedOrNull(): ChatShared? = this as?
     dev.inmo.tgbotapi.types.request.ChatShared
