@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 10.0.0
+
 ## 9.4.3
 
 **IetfLanguageCode has been renamed to IetfLang in MicroUtils**
