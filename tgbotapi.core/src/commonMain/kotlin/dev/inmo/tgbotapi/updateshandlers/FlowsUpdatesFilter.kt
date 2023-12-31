@@ -37,6 +37,8 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     val chatMemberUpdatesFlow: Flow<CommonChatMemberUpdatedUpdate>
     val myChatMemberUpdatesFlow: Flow<MyChatMemberUpdatedUpdate>
     val chatJoinRequestUpdateFlow: Flow<ChatJoinRequestUpdate>
+    val chatMessageReactionUpdatedUpdateFlow: Flow<ChatMessageReactionUpdatedUpdate>
+    val chatMessageReactionsCountUpdatedUpdateFlow: Flow<ChatMessageReactionsCountUpdatedUpdate>
     val unknownUpdatesFlow: Flow<UnknownUpdate>
 }
 
@@ -55,6 +57,8 @@ abstract class AbstractFlowsUpdatesFilter : FlowsUpdatesFilter {
     override val chatMemberUpdatesFlow: Flow<CommonChatMemberUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val myChatMemberUpdatesFlow: Flow<MyChatMemberUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chatJoinRequestUpdateFlow: Flow<ChatJoinRequestUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val chatMessageReactionUpdatedUpdateFlow: Flow<ChatMessageReactionUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val chatMessageReactionsCountUpdatedUpdateFlow: Flow<ChatMessageReactionsCountUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val unknownUpdatesFlow: Flow<UnknownUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
 }
 

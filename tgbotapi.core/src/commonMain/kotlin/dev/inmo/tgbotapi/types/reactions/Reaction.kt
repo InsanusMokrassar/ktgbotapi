@@ -13,7 +13,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.JsonElement
 
-@Serializable
+@Serializable(Reaction.Companion::class)
 @ClassCastsIncluded
 sealed interface Reaction {
     val type: String

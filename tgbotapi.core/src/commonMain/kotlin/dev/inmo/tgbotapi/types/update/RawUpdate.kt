@@ -5,6 +5,8 @@ import dev.inmo.tgbotapi.types.queries.callback.RawCallbackQuery
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.RawChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.query.RawInlineQuery
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
+import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
+import dev.inmo.tgbotapi.types.chat.ChatMessageReactionsCountUpdated
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
@@ -38,7 +40,9 @@ internal data class RawUpdate constructor(
     private val poll_answer: PollAnswer? = null,
     private val my_chat_member: ChatMemberUpdated? = null,
     private val chat_member: ChatMemberUpdated? = null,
-    private val chat_join_request: ChatJoinRequest? = null
+    private val chat_join_request: ChatJoinRequest? = null,
+    private val message_reaction: ChatMessageReactionUpdated? = null,
+    private val message_reaction_count: ChatMessageReactionsCountUpdated? = null
 ) {
     private var initedUpdate: Update? = null
     /**
@@ -65,6 +69,8 @@ internal data class RawUpdate constructor(
                 my_chat_member != null -> MyChatMemberUpdatedUpdate(updateId, my_chat_member)
                 chat_member != null -> CommonChatMemberUpdatedUpdate(updateId, chat_member)
                 chat_join_request != null -> ChatJoinRequestUpdate(updateId, chat_join_request)
+                message_reaction != null -> ChatMessageReactionUpdatedUpdate(updateId, message_reaction)
+                message_reaction_count != null -> ChatMessageReactionsCountUpdatedUpdate(updateId, message_reaction_count)
                 else -> UnknownUpdate(
                     updateId,
                     raw

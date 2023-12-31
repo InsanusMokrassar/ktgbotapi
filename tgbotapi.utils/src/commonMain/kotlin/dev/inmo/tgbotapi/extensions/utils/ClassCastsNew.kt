@@ -112,6 +112,7 @@ import dev.inmo.tgbotapi.types.chat.Bot
 import dev.inmo.tgbotapi.types.chat.ChannelChat
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
+import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.chat.ExtendedBot
@@ -423,6 +424,8 @@ import dev.inmo.tgbotapi.types.request.UserShared
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
+import dev.inmo.tgbotapi.types.update.ChatMessageReactionUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.ChatMessageReactionsCountUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
 import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
@@ -2111,6 +2114,36 @@ public inline fun Chat.unknownChatTypeOrThrow(): UnknownChatType = this as
 
 public inline fun <T> Chat.ifUnknownChatType(block: (UnknownChatType) -> T): T? =
     unknownChatTypeOrNull() ?.let(block)
+
+public inline fun ChatMessageReactionUpdated.byChatOrNull(): ChatMessageReactionUpdated.ByChat? =
+    this as? dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByChat
+
+public inline fun ChatMessageReactionUpdated.byChatOrThrow(): ChatMessageReactionUpdated.ByChat =
+    this as dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByChat
+
+public inline fun <T>
+    ChatMessageReactionUpdated.ifByChat(block: (ChatMessageReactionUpdated.ByChat) -> T): T? =
+    byChatOrNull() ?.let(block)
+
+public inline fun ChatMessageReactionUpdated.byUserOrNull(): ChatMessageReactionUpdated.ByUser? =
+    this as? dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByUser
+
+public inline fun ChatMessageReactionUpdated.byUserOrThrow(): ChatMessageReactionUpdated.ByUser =
+    this as dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.ByUser
+
+public inline fun <T>
+    ChatMessageReactionUpdated.ifByUser(block: (ChatMessageReactionUpdated.ByUser) -> T): T? =
+    byUserOrNull() ?.let(block)
+
+public inline fun ChatMessageReactionUpdated.unknownOrNull(): ChatMessageReactionUpdated.Unknown? =
+    this as? dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.Unknown
+
+public inline fun ChatMessageReactionUpdated.unknownOrThrow(): ChatMessageReactionUpdated.Unknown =
+    this as dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated.Unknown
+
+public inline fun <T>
+    ChatMessageReactionUpdated.ifUnknown(block: (ChatMessageReactionUpdated.Unknown) -> T): T? =
+    unknownOrNull() ?.let(block)
 
 public inline fun DiceAnimationType.cubeDiceAnimationTypeOrNull(): CubeDiceAnimationType? = this as?
     dev.inmo.tgbotapi.types.dice.CubeDiceAnimationType
@@ -4566,6 +4599,28 @@ public inline fun Update.chatJoinRequestUpdateOrThrow(): ChatJoinRequestUpdate =
 
 public inline fun <T> Update.ifChatJoinRequestUpdate(block: (ChatJoinRequestUpdate) -> T): T? =
     chatJoinRequestUpdateOrNull() ?.let(block)
+
+public inline fun Update.chatMessageReactionUpdatedUpdateOrNull(): ChatMessageReactionUpdatedUpdate?
+    = this as? dev.inmo.tgbotapi.types.update.ChatMessageReactionUpdatedUpdate
+
+public inline fun Update.chatMessageReactionUpdatedUpdateOrThrow(): ChatMessageReactionUpdatedUpdate
+    = this as dev.inmo.tgbotapi.types.update.ChatMessageReactionUpdatedUpdate
+
+public inline fun <T>
+    Update.ifChatMessageReactionUpdatedUpdate(block: (ChatMessageReactionUpdatedUpdate) -> T): T? =
+    chatMessageReactionUpdatedUpdateOrNull() ?.let(block)
+
+public inline fun Update.chatMessageReactionsCountUpdatedUpdateOrNull():
+    ChatMessageReactionsCountUpdatedUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.ChatMessageReactionsCountUpdatedUpdate
+
+public inline fun Update.chatMessageReactionsCountUpdatedUpdateOrThrow():
+    ChatMessageReactionsCountUpdatedUpdate = this as
+    dev.inmo.tgbotapi.types.update.ChatMessageReactionsCountUpdatedUpdate
+
+public inline fun <T>
+    Update.ifChatMessageReactionsCountUpdatedUpdate(block: (ChatMessageReactionsCountUpdatedUpdate) -> T):
+    T? = chatMessageReactionsCountUpdatedUpdateOrNull() ?.let(block)
 
 public inline fun Update.chosenInlineResultUpdateOrNull(): ChosenInlineResultUpdate? = this as?
     dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
