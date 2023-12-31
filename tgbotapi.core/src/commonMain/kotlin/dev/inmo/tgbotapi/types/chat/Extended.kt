@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.chat
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
+import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.utils.RiskFeature
 import korlibs.time.DateTime
 import kotlinx.serialization.SerialName
@@ -32,7 +33,9 @@ data class ExtendedChannelChatImpl(
     @SerialName(linkedChatIdField)
     override val linkedGroupChatId: IdChatIdentifier? = null,
     @SerialName(hasHiddenMembersField)
-    override val membersHidden: Boolean = false
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null
 ) : ExtendedChannelChat
 
 @Serializable
@@ -54,7 +57,9 @@ data class ExtendedGroupChatImpl(
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     override val pinnedMessage: Message? = null,
     @SerialName(hasHiddenMembersField)
-    override val membersHidden: Boolean = false
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null
 ) : ExtendedGroupChat
 
 @Serializable
@@ -125,7 +130,9 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(hasAggressiveAntiSpamEnabledField)
     override val isAggressiveAntiSpamEnabled: Boolean = false,
     @SerialName(hasHiddenMembersField)
-    override val membersHidden: Boolean = false
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -167,7 +174,9 @@ data class ExtendedForumChatImpl(
     @SerialName(hasAggressiveAntiSpamEnabledField)
     override val isAggressiveAntiSpamEnabled: Boolean = false,
     @SerialName(hasHiddenMembersField)
-    override val membersHidden: Boolean = false
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null
 ) : ExtendedForumChat
 
 @Serializable

@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.chat
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
+import dev.inmo.tgbotapi.types.reactions.Reaction
 import korlibs.time.DateTime
 import kotlinx.serialization.Serializable
 
@@ -34,6 +35,7 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat {
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     val pinnedMessage: Message?
     val membersHidden: Boolean
+    val availableReactions: List<Reaction>?
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)
