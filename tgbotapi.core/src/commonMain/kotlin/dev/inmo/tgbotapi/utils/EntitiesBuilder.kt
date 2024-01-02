@@ -104,6 +104,43 @@ inline fun EntitiesBuilder.bold(text: String) = add(dev.inmo.tgbotapi.types.mess
 inline fun EntitiesBuilder.boldln(text: String) = bold(text) + newLine
 
 /**
+ * Add blockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.blockquote]
+ */
+inline fun EntitiesBuilder.blockquote(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.message.textsources.blockquote(parts))
+/**
+ * Version of [EntitiesBuilder.blockquote] with new line at the end
+ */
+inline fun EntitiesBuilder.blockquoteln(parts: TextSourcesList) = blockquote(parts) + newLine
+/**
+ * Add blockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.blockquote].
+ * Will reuse separator config from [buildEntities]
+ */
+inline fun EntitiesBuilder.blockquote(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.message.textsources.blockquote(
+    buildEntities(separator, init)
+))
+/**
+ * Version of [EntitiesBuilder.blockquote] with new line at the end.
+ * Will reuse separator config from [buildEntities]
+ */
+inline fun EntitiesBuilder.blockquoteln(noinline init: EntitiesBuilderBody) = blockquote(init) + newLine
+/**
+ * Add blockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.blockquote]
+ */
+inline fun EntitiesBuilder.blockquote(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.blockquote(*parts))
+/**
+ * Version of [EntitiesBuilder.blockquote] with new line at the end
+ */
+inline fun EntitiesBuilder.blockquoteln(vararg parts: TextSource) = blockquote(*parts) + newLine
+/**
+ * Add blockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.blockquote]
+ */
+inline fun EntitiesBuilder.blockquote(text: String) = add(dev.inmo.tgbotapi.types.message.textsources.blockquote(text))
+/**
+ * Version of [EntitiesBuilder.blockquote] with new line at the end
+ */
+inline fun EntitiesBuilder.blockquoteln(text: String) = blockquote(text) + newLine
+
+/**
  * Add spoiler using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.spoiler]
  */
 inline fun EntitiesBuilder.spoiler(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.message.textsources.spoiler(parts))

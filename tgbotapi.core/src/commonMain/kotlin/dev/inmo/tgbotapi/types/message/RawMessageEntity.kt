@@ -22,24 +22,25 @@ internal data class RawMessageEntity(
     val priority by lazy {
         when (type) {
             // Types with potential subsources should have priority
-            "mention" -> 0
-            "hashtag" -> 0
-            "cashtag" -> 0
-            "email" -> 0
-            "phone_number" -> 0
-            "bold" -> 0
-            "italic" -> 0
-            "text_mention" -> 0
-            "strikethrough" -> 0
-            "underline" -> 0
-            "spoiler" -> 0
-            "custom_emoji" -> 0
-            "bot_command" -> 1
-            "url" -> 1
-            "code" -> 1
-            "pre" -> 1
-            "text_link" -> 1
-            else -> 1
+            "mention" -> 1
+            "hashtag" -> 1
+            "cashtag" -> 1
+            "email" -> 1
+            "phone_number" -> 1
+            "bold" -> 1
+            "blockquote" -> 0
+            "italic" -> 1
+            "text_mention" -> 1
+            "strikethrough" -> 1
+            "underline" -> 1
+            "spoiler" -> 1
+            "custom_emoji" -> 1
+            "bot_command" -> 2
+            "url" -> 2
+            "code" -> 2
+            "pre" -> 2
+            "text_link" -> 2
+            else -> 2
         }
     }
 }
@@ -61,6 +62,7 @@ internal fun RawMessageEntity.asTextSource(
         "email" -> EMailTextSource(sourceSubstring, subPartsWithRegulars)
         "phone_number" -> PhoneNumberTextSource(sourceSubstring, subPartsWithRegulars)
         "bold" -> BoldTextSource(sourceSubstring, subPartsWithRegulars)
+        "blockquote" -> BlockquoteTextSource(sourceSubstring, subPartsWithRegulars)
         "italic" -> ItalicTextSource(sourceSubstring, subPartsWithRegulars)
         "code" -> CodeTextSource(sourceSubstring)
         "pre" -> PreTextSource(sourceSubstring, language)
@@ -180,6 +182,7 @@ internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEn
             is EMailTextSource -> RawMessageEntity("email", offset, length)
             is PhoneNumberTextSource -> RawMessageEntity("phone_number", offset, length)
             is BoldTextSource -> RawMessageEntity("bold", offset, length)
+            is BlockquoteTextSource -> RawMessageEntity("blockquote", offset, length)
             is ItalicTextSource -> RawMessageEntity("italic", offset, length)
             is CodeTextSource -> RawMessageEntity("code", offset, length)
             is PreTextSource -> RawMessageEntity("pre", offset, length, language = language)
