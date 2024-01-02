@@ -128,6 +128,8 @@ internal data class RawMessage(
     private val passport_data: PassportData? = null,
     private val proximity_alert_triggered: ProximityAlertTriggered? = null,
 
+    private val link_preview_options: LinkPreviewOptions? = null,
+
     private val reply_markup: InlineKeyboardMarkup? = null
 ) {
     private val content: MessageContent? by lazy {
@@ -141,7 +143,7 @@ internal data class RawMessage(
                 messageId,
                 story
             )
-            text != null -> TextContent(text, (entities ?: emptyList()).asTextSources(text))
+            text != null -> TextContent(text, (entities ?: emptyList()).asTextSources(text), link_preview_options)
             audio != null -> AudioContent(
                 audio,
                 caption,

@@ -176,7 +176,7 @@ suspend inline fun TelegramBot.reply(
     to: Message,
     text: String,
     parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -185,7 +185,7 @@ suspend inline fun TelegramBot.reply(
     to.chat,
     text,
     parseMode,
-    disableWebPagePreview,
+    linkPreviewOptions,
     to.threadIdOrNull,
     disableNotification,
     protectContent,
@@ -201,7 +201,7 @@ suspend inline fun TelegramBot.reply(
 suspend inline fun TelegramBot.reply(
     to: Message,
     entities: TextSourcesList,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -209,7 +209,7 @@ suspend inline fun TelegramBot.reply(
 ) = sendTextMessage(
     to.chat,
     entities,
-    disableWebPagePreview,
+    linkPreviewOptions,
     to.threadIdOrNull,
     disableNotification,
     protectContent,
@@ -225,13 +225,13 @@ suspend inline fun TelegramBot.reply(
 suspend fun TelegramBot.reply(
     to: Message,
     separator: TextSource? = null,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = reply(to, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
+) = reply(to, buildEntities(separator, builderBody), linkPreviewOptions, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -240,13 +240,13 @@ suspend fun TelegramBot.reply(
 suspend fun TelegramBot.reply(
     to: Message,
     separator: String,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = reply(to, buildEntities(separator, builderBody), disableWebPagePreview, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
+) = reply(to, buildEntities(separator, builderBody), linkPreviewOptions, disableNotification, protectContent, allowSendingWithoutReply, replyMarkup)
 
 
 // Venue

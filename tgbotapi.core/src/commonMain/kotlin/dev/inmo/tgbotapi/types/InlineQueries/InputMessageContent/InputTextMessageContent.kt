@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 
 import dev.inmo.tgbotapi.abstracts.TextedOutput
-import dev.inmo.tgbotapi.abstracts.types.DisableWebPagePreview
+import dev.inmo.tgbotapi.abstracts.types.LinkPreviewOptionsContainer
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
@@ -19,16 +19,16 @@ import kotlinx.serialization.Serializable
 fun InputTextMessageContent(
     text: String,
     parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null
-) = InputTextMessageContent(text, parseMode, null, disableWebPagePreview)
+    linkPreviewOptions: LinkPreviewOptions? = null
+) = InputTextMessageContent(text, parseMode, null, linkPreviewOptions)
 
 /**
  * Represents the [InputMessageContent] of a text message to be sent as the result of an inline query.
  */
 fun InputTextMessageContent(
     entities: TextSourcesList,
-    disableWebPagePreview: Boolean? = null
-) = InputTextMessageContent(entities.makeString(), null, entities.toRawMessageEntities(), disableWebPagePreview)
+    linkPreviewOptions: LinkPreviewOptions? = null
+) = InputTextMessageContent(entities.makeString(), null, entities.toRawMessageEntities(), linkPreviewOptions)
 
 @Serializable
 data class InputTextMessageContent internal constructor(
@@ -38,9 +38,9 @@ data class InputTextMessageContent internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(entitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
-    @SerialName(disableWebPagePreviewField)
-    override val disableWebPagePreview: Boolean? = null
-) : TextedOutput, DisableWebPagePreview, InputMessageContent {
+    @SerialName(linkPreviewOptionsField)
+    override val linkPreviewOptions: LinkPreviewOptions? = null
+) : TextedOutput, LinkPreviewOptionsContainer, InputMessageContent {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }

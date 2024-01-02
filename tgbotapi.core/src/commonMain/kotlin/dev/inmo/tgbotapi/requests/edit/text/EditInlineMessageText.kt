@@ -16,28 +16,28 @@ fun EditInlineMessageText(
     inlineMessageId: InlineMessageIdentifier,
     text: String,
     parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditInlineMessageText(
     inlineMessageId,
     text,
     parseMode,
     null,
-    disableWebPagePreview,
+    linkPreviewOptions,
     replyMarkup
 )
 
 fun EditInlineMessageText(
     inlineMessageId: InlineMessageIdentifier,
     entities: TextSourcesList,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditInlineMessageText(
     inlineMessageId,
     entities.makeString(),
     null,
     entities.toRawMessageEntities(),
-    disableWebPagePreview,
+    linkPreviewOptions,
     replyMarkup
 )
 
@@ -51,11 +51,11 @@ data class EditInlineMessageText internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(entitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
-    @SerialName(disableWebPagePreviewField)
-    override val disableWebPagePreview: Boolean? = null,
+    @SerialName(linkPreviewOptionsField)
+    override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditInlineMessage, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
+) : EditInlineMessage, EditTextChatMessage, EditReplyMessage, EditLinkPreviewOptionsContainer {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }
