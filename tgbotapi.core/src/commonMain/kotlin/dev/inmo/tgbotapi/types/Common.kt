@@ -175,6 +175,10 @@ val keywordsInStickerLimit = 0 .. 20
 
 val stickerKeywordLengthLimit = 0 .. 64
 
+val forwardMessagesLimit = 1 .. 100
+val copyMessagesLimit = forwardMessagesLimit
+val deleteMessagesLimit = forwardMessagesLimit
+
 const val botActionActualityTime: Seconds = 5
 
 val cloudStorageKeyLimit = 1 .. 128
@@ -196,6 +200,7 @@ const val tgWebAppStartParamField = "tgWebAppStartParam"
 const val chatIdField = "chat_id"
 const val senderChatIdField = "sender_chat_id"
 const val messageIdField = "message_id"
+const val messageIdsField = "message_ids"
 const val actorChatField = "actor_chat"
 const val messageThreadIdField = "message_thread_id"
 const val mediaGroupIdField = "media_group_id"
@@ -205,6 +210,7 @@ const val disableWebPagePreviewField = "disable_web_page_preview"
 const val linkPreviewOptionsField = "link_preview_options"
 const val disableNotificationField = "disable_notification"
 const val protectContentField = "protect_content"
+const val removeCaptionField = "remove_caption"
 const val replyToMessageIdField = "reply_to_message_id"
 const val allowSendingWithoutReplyField = "allow_sending_without_reply"
 const val replyMarkupField = "reply_markup"
