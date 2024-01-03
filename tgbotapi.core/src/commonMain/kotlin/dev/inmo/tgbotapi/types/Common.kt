@@ -175,6 +175,8 @@ val keywordsInStickerLimit = 0 .. 20
 
 val stickerKeywordLengthLimit = 0 .. 64
 
+val keyboardButtonRequestUserLimit = 1 .. 10
+
 val forwardMessagesLimit = 1 .. 100
 val copyMessagesLimit = forwardMessagesLimit
 val deleteMessagesLimit = forwardMessagesLimit
@@ -245,6 +247,7 @@ const val slowModeDelayField = "slow_mode_delay"
 const val maskPositionField = "mask_position"
 const val phoneNumberField = "phone_number"
 const val userIdField = "user_id"
+const val userIdsField = "user_ids"
 const val onlyIfBannedField = "only_if_banned"
 const val containsMasksField = "contains_masks"
 const val resultIdField = "result_id"
@@ -331,8 +334,10 @@ const val requestContactField = "request_contact"
 const val requestLocationField = "request_location"
 const val requestPollField = "request_poll"
 const val requestUserField = "request_user"
+const val requestUsersField = "request_users"
 const val requestChatField = "request_chat"
 const val requestIdField = "request_id"
+const val maxQuantityField = "max_quantity"
 
 const val userIsBotField = "user_is_bot"
 const val userIsPremiumField = "user_is_premium"

@@ -25,7 +25,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
-import dev.inmo.tgbotapi.types.request.UserShared
+import dev.inmo.tgbotapi.types.request.UsersShared
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext, reified T : ChatEvent> BC.onEvent(
@@ -776,10 +776,10 @@ suspend fun <BC : BehaviourContext> BC.onChatSharedRequest(
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onUserShared(
-    initialFilter: SimpleFilter<PrivateEventMessage<UserShared>>? = null,
-    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PrivateEventMessage<UserShared>, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in ChatEventMessage<UserShared>, Any> = ByChatMessageMarkerFactory,
-    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PrivateEventMessage<UserShared>>
+    initialFilter: SimpleFilter<PrivateEventMessage<UsersShared>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PrivateEventMessage<UsersShared>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<UsersShared>, Any> = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PrivateEventMessage<UsersShared>>
 ) = onEventWithCustomChatEventMessage(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 

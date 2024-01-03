@@ -1,9 +1,7 @@
 package dev.inmo.tgbotapi.types.buttons
 
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.request.RequestId
-import dev.inmo.tgbotapi.types.requestIdField
-import dev.inmo.tgbotapi.types.userIsBotField
-import dev.inmo.tgbotapi.types.userIsPremiumField
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
@@ -14,17 +12,20 @@ import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializable(KeyboardButtonRequestUser.Companion::class)
+@Serializable(KeyboardButtonRequestUsers.Companion::class)
 @ClassCastsIncluded
-sealed interface KeyboardButtonRequestUser {
+sealed interface KeyboardButtonRequestUsers {
     val requestId: RequestId
     val isBot: Boolean?
+    val maxCount: Int
 
     @Serializable
     data class Any(
         @SerialName(requestIdField)
-        override val requestId: RequestId
-    ) : KeyboardButtonRequestUser {
+        override val requestId: RequestId,
+        @SerialName(maxQuantityField)
+        override val maxCount: Int = keyboardButtonRequestUserLimit.first
+    ) : KeyboardButtonRequestUsers {
         @SerialName(userIsBotField)
         @EncodeDefault
         override val isBot: Boolean? = null
@@ -35,8 +36,10 @@ sealed interface KeyboardButtonRequestUser {
         @SerialName(requestIdField)
         override val requestId: RequestId,
         @SerialName(userIsPremiumField)
-        val isPremium: Boolean? = null
-    ) : KeyboardButtonRequestUser {
+        val isPremium: Boolean? = null,
+        @SerialName(maxQuantityField)
+        override val maxCount: Int = keyboardButtonRequestUserLimit.first
+    ) : KeyboardButtonRequestUsers {
         @SerialName(userIsBotField)
         @EncodeDefault
         override val isBot: Boolean = false
@@ -45,15 +48,17 @@ sealed interface KeyboardButtonRequestUser {
     @Serializable
     data class Bot(
         @SerialName(requestIdField)
-        override val requestId: RequestId
-    ) : KeyboardButtonRequestUser {
+        override val requestId: RequestId,
+        @SerialName(maxQuantityField)
+        override val maxCount: Int = keyboardButtonRequestUserLimit.first
+    ) : KeyboardButtonRequestUsers {
         @SerialName(userIsBotField)
         @EncodeDefault
         override val isBot: Boolean = true
     }
 
-    @Serializer(KeyboardButtonRequestUser::class)
-    companion object : KSerializer<KeyboardButtonRequestUser> {
+    @Serializer(KeyboardButtonRequestUsers::class)
+    companion object : KSerializer<KeyboardButtonRequestUsers> {
         @Serializable
         private data class Surrogate(
             @SerialName(requestIdField)
@@ -61,31 +66,37 @@ sealed interface KeyboardButtonRequestUser {
             @SerialName(userIsBotField)
             val userIsBot: Boolean? = null,
             @SerialName(userIsPremiumField)
-            val userIsPremium: Boolean? = null
+            val userIsPremium: Boolean? = null,
+            @SerialName(maxQuantityField)
+            val maxCount: Int = keyboardButtonRequestUserLimit.first
         )
         private val realSerializer = Surrogate.serializer()
 
         override val descriptor: SerialDescriptor = realSerializer.descriptor
 
-        override fun deserialize(decoder: Decoder): KeyboardButtonRequestUser {
+        override fun deserialize(decoder: Decoder): KeyboardButtonRequestUsers {
             val surrogate = realSerializer.deserialize(decoder)
 
             return when (surrogate.userIsBot) {
-                true -> Bot(surrogate.requestId)
-                false -> Common(surrogate.requestId, surrogate.userIsPremium)
-                null -> Any(surrogate.requestId)
+                true -> Bot(surrogate.requestId, surrogate.maxCount)
+                false -> Common(surrogate.requestId, surrogate.userIsPremium, surrogate.maxCount)
+                null -> Any(surrogate.requestId, surrogate.maxCount)
             }
         }
 
-        override fun serialize(encoder: Encoder, value: KeyboardButtonRequestUser) {
+        override fun serialize(encoder: Encoder, value: KeyboardButtonRequestUsers) {
             realSerializer.serialize(
                 encoder,
                 Surrogate(
                     value.requestId,
                     value.isBot,
-                    (value as? Common) ?.isPremium
+                    (value as? Common) ?.isPremium,
+                    value.maxCount
                 )
             )
         }
     }
 }
+
+@Deprecated("Renamed", ReplaceWith("KeyboardButtonRequestUsers", "dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers"))
+typealias KeyboardButtonRequestUser = KeyboardButtonRequestUsers

@@ -30,7 +30,7 @@ import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.request.ChatShared
-import dev.inmo.tgbotapi.types.request.UserShared
+import dev.inmo.tgbotapi.types.request.UsersShared
 import dev.inmo.tgbotapi.types.stories.Story
 import dev.inmo.tgbotapi.types.venue.Venue
 import kotlinx.serialization.SerialName
@@ -97,7 +97,7 @@ internal data class RawMessage(
     private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
 
-    private val user_shared: UserShared? = null,
+    private val users_shared: UsersShared? = null,
     private val chat_shared: ChatShared? = null,
 
     // Voice Chat Service Messages
@@ -266,7 +266,7 @@ internal data class RawMessage(
             successful_payment != null -> SuccessfulPaymentEvent(successful_payment)
             connected_website != null -> UserLoggedIn(connected_website)
             web_app_data != null -> web_app_data
-            user_shared != null -> user_shared
+            users_shared != null -> users_shared
             chat_shared != null -> chat_shared
             else -> null
         }

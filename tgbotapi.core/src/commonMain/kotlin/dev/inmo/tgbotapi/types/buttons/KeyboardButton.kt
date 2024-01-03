@@ -103,13 +103,13 @@ data class RequestPollKeyboardButton(
  *
  * In case you will use [dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling.onUserShared] it is
  * recommended to use [kotlinx.coroutines.flow.Flow] [kotlinx.coroutines.flow.filter] with checking of incoming
- * [dev.inmo.tgbotapi.types.request.UserShared.requestId]
+ * [dev.inmo.tgbotapi.types.request.UsersShared.requestId]
  */
 @Serializable
 data class RequestUserKeyboardButton(
     override val text: String,
-    @SerialName(requestUserField)
-    val requestUser: KeyboardButtonRequestUser
+    @SerialName(requestUsersField)
+    val requestUsers: KeyboardButtonRequestUsers
 ) : KeyboardButton
 
 /**
@@ -160,11 +160,11 @@ object KeyboardButtonSerializer : KSerializer<KeyboardButton> {
                     asJson[requestPollField] ?.jsonObject ?: buildJsonObject {  }
                 )
             )
-            asJson is JsonObject && asJson[requestUserField] != null -> RequestUserKeyboardButton(
+            asJson is JsonObject && asJson[requestUsersField] != null -> RequestUserKeyboardButton(
                 asJson[textField]!!.jsonPrimitive.content,
                 nonstrictJsonFormat.decodeFromJsonElement(
-                    KeyboardButtonRequestUser.serializer(),
-                    asJson[requestUserField] ?.jsonObject ?: buildJsonObject {  }
+                    KeyboardButtonRequestUsers.serializer(),
+                    asJson[requestUsersField] ?.jsonObject ?: buildJsonObject {  }
                 )
             )
             asJson is JsonObject && asJson[requestChatField] != null -> RequestChatKeyboardButton(

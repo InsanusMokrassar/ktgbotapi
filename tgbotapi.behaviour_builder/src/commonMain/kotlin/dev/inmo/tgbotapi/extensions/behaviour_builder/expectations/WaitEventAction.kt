@@ -19,7 +19,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
-import dev.inmo.tgbotapi.types.request.UserShared
+import dev.inmo.tgbotapi.types.request.UsersShared
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
@@ -202,7 +202,7 @@ suspend fun BehaviourContext.waitChatSharedRequest(
 suspend fun BehaviourContext.waitUserShared(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEvents<UserShared>(initRequest, errorFactory)
+) = waitEvents<UsersShared>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitChatShared(
     initRequest: Request<*>? = null,

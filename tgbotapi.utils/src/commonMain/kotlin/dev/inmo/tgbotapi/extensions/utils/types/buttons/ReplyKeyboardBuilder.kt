@@ -139,7 +139,7 @@ inline fun ReplyKeyboardRowBuilder.webAppButton(
  */
 inline fun ReplyKeyboardRowBuilder.requestUserButton(
     text: String,
-    requestUser: KeyboardButtonRequestUser
+    requestUser: KeyboardButtonRequestUsers
 ) = add(
     requestUserReplyButton(
         text,
@@ -148,7 +148,7 @@ inline fun ReplyKeyboardRowBuilder.requestUserButton(
 )
 
 /**
- * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Bot]
+ * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Bot]
  *
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
@@ -158,11 +158,11 @@ inline fun ReplyKeyboardRowBuilder.requestBotButton(
     requestId: RequestId
 ) = requestUserButton(
     text,
-    KeyboardButtonRequestUser.Bot(requestId)
+    KeyboardButtonRequestUsers.Bot(requestId)
 )
 
 /**
- * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Common]
+ * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Common]
  *
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
@@ -173,11 +173,11 @@ inline fun ReplyKeyboardRowBuilder.requestUserButton(
     premiumUser: Boolean? = null
 ) = requestUserButton(
     text,
-    KeyboardButtonRequestUser.Common(requestId, premiumUser)
+    KeyboardButtonRequestUsers.Common(requestId, premiumUser)
 )
 
 /**
- * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Any]
+ * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Any]
  *
  * @see replyKeyboard
  * @see ReplyKeyboardBuilder.row
@@ -187,7 +187,7 @@ inline fun ReplyKeyboardRowBuilder.requestUserOrBotButton(
     requestId: RequestId
 ) = requestUserButton(
     text,
-    KeyboardButtonRequestUser.Any(requestId)
+    KeyboardButtonRequestUsers.Any(requestId)
 )
 
 

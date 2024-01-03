@@ -57,25 +57,25 @@ inline fun webAppReplyButton(
  */
 inline fun requestUserReplyButton(
     text: String,
-    requestUser: KeyboardButtonRequestUser
+    requestUser: KeyboardButtonRequestUsers
 ) = RequestUserKeyboardButton(
     text,
     requestUser
 )
 
 /**
- * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Bot]
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Bot]
  */
 inline fun requestBotReplyButton(
     text: String,
     requestId: RequestId
 ) = requestUserReplyButton(
     text,
-    KeyboardButtonRequestUser.Bot(requestId)
+    KeyboardButtonRequestUsers.Bot(requestId)
 )
 
 /**
- * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Common]
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Common]
  */
 inline fun requestUserReplyButton(
     text: String,
@@ -83,18 +83,18 @@ inline fun requestUserReplyButton(
     premiumUser: Boolean? = null
 ) = requestUserReplyButton(
     text,
-    KeyboardButtonRequestUser.Common(requestId, premiumUser)
+    KeyboardButtonRequestUsers.Common(requestId, premiumUser)
 )
 
 /**
- * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Any]
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Any]
  */
 inline fun requestUserOrBotReplyButton(
     text: String,
     requestId: RequestId
 ) = requestUserReplyButton(
     text,
-    KeyboardButtonRequestUser.Any(requestId)
+    KeyboardButtonRequestUsers.Any(requestId)
 )
 
 
