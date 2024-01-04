@@ -48,6 +48,7 @@ internal data class RawUpdate constructor(
     private val chat_boost: ChatBoostUpdated? = null,
     private val removed_chat_boost: ChatBoostRemoved? = null
 ) {
+    @Transient
     private var initedUpdate: Update? = null
     /**
      * @return One of children of [Update] interface or null in case of unknown type of update

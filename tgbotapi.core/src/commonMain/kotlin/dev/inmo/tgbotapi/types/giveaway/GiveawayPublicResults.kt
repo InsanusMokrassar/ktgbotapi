@@ -20,7 +20,7 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
     val publicWinners: Boolean
     val refunded: Boolean
 
-    @Serializable(GiveawayPublicResults.Companion::class)
+    @Serializable
     data class Refunded(
         @SerialName(chatsField)
         override val chat: PreviewChat,
@@ -50,7 +50,7 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
         override val premiumMonths: Int? = null
     }
 
-    @Serializable(GiveawayPublicResults.Companion::class)
+    @Serializable
     data class Winners (
         @SerialName(chatsField)
         override val chat: PreviewChat,
@@ -157,6 +157,5 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
 
             Surrogate.serializer().serialize(encoder, surrogate)
         }
-
     }
 }
