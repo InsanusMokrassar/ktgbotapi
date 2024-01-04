@@ -1,7 +1,9 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
+import dev.inmo.tgbotapi.abstracts.WithMessageId
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.WithPreviewChat
+import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -13,8 +15,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @ClassCastsIncluded(excludeRegex = ".*Impl")
-interface Message : WithPreviewChat {
-    val messageId: MessageId
+interface Message : WithPreviewChatAndMessageId {
     val date: DateTime
 }
 

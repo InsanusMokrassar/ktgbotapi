@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.types.chat
 
+import dev.inmo.tgbotapi.abstracts.WithPreviewChat
+import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
@@ -14,9 +16,7 @@ import kotlinx.serialization.json.JsonElement
 
 @Serializable(ChatMessageReactionUpdated.Companion::class)
 @ClassCastsIncluded
-sealed interface ChatMessageReactionUpdated {
-    val chat: PreviewChat
-    val messageId: MessageIdentifier
+sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
     val reactedUser: PreviewUser?
     val reactedChat: PreviewChat?
     val date: TelegramDate

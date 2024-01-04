@@ -90,6 +90,7 @@ import dev.inmo.tgbotapi.types.actions.UploadPhotoAction
 import dev.inmo.tgbotapi.types.actions.UploadVideoAction
 import dev.inmo.tgbotapi.types.actions.UploadVideoNoteAction
 import dev.inmo.tgbotapi.types.actions.UploadVoiceAction
+import dev.inmo.tgbotapi.types.boosts.ChatBoostSource
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackDataInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
@@ -424,6 +425,8 @@ import dev.inmo.tgbotapi.types.request.RequestResponse
 import dev.inmo.tgbotapi.types.request.UsersShared
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
+import dev.inmo.tgbotapi.types.update.ChatBoostRemovedUpdate
+import dev.inmo.tgbotapi.types.update.ChatBoostUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate
 import dev.inmo.tgbotapi.types.update.ChatMessageReactionUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.ChatMessageReactionsCountUpdatedUpdate
@@ -1619,6 +1622,69 @@ public inline fun BotAction.customBotActionOrThrow(): CustomBotAction = this as
 
 public inline fun <T> BotAction.ifCustomBotAction(block: (CustomBotAction) -> T): T? =
     customBotActionOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.byUserOrNull(): ChatBoostSource.ByUser? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.ByUser
+
+public inline fun ChatBoostSource.byUserOrThrow(): ChatBoostSource.ByUser = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.ByUser
+
+public inline fun <T> ChatBoostSource.ifByUser(block: (ChatBoostSource.ByUser) -> T): T? =
+    byUserOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.giftCodeOrNull(): ChatBoostSource.GiftCode? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.GiftCode
+
+public inline fun ChatBoostSource.giftCodeOrThrow(): ChatBoostSource.GiftCode = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.GiftCode
+
+public inline fun <T> ChatBoostSource.ifGiftCode(block: (ChatBoostSource.GiftCode) -> T): T? =
+    giftCodeOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.claimedOrNull(): ChatBoostSource.Giveaway.Claimed? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Claimed
+
+public inline fun ChatBoostSource.claimedOrThrow(): ChatBoostSource.Giveaway.Claimed = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Claimed
+
+public inline fun <T> ChatBoostSource.ifClaimed(block: (ChatBoostSource.Giveaway.Claimed) -> T): T?
+    = claimedOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.premiumOrNull(): ChatBoostSource.Premium? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Premium
+
+public inline fun ChatBoostSource.premiumOrThrow(): ChatBoostSource.Premium = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Premium
+
+public inline fun <T> ChatBoostSource.ifPremium(block: (ChatBoostSource.Premium) -> T): T? =
+    premiumOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.giveawayOrNull(): ChatBoostSource.Giveaway? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway
+
+public inline fun ChatBoostSource.giveawayOrThrow(): ChatBoostSource.Giveaway = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway
+
+public inline fun <T> ChatBoostSource.ifGiveaway(block: (ChatBoostSource.Giveaway) -> T): T? =
+    giveawayOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.unclaimedOrNull(): ChatBoostSource.Giveaway.Unclaimed? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Unclaimed
+
+public inline fun ChatBoostSource.unclaimedOrThrow(): ChatBoostSource.Giveaway.Unclaimed = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Giveaway.Unclaimed
+
+public inline fun <T> ChatBoostSource.ifUnclaimed(block: (ChatBoostSource.Giveaway.Unclaimed) -> T):
+    T? = unclaimedOrNull() ?.let(block)
+
+public inline fun ChatBoostSource.unknownOrNull(): ChatBoostSource.Unknown? = this as?
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Unknown
+
+public inline fun ChatBoostSource.unknownOrThrow(): ChatBoostSource.Unknown = this as
+    dev.inmo.tgbotapi.types.boosts.ChatBoostSource.Unknown
+
+public inline fun <T> ChatBoostSource.ifUnknown(block: (ChatBoostSource.Unknown) -> T): T? =
+    unknownOrNull() ?.let(block)
 
 public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull():
     UnknownInlineKeyboardButton? = this as?
@@ -4602,6 +4668,24 @@ public inline fun Update.channelPostUpdateOrThrow(): ChannelPostUpdate = this as
 
 public inline fun <T> Update.ifChannelPostUpdate(block: (ChannelPostUpdate) -> T): T? =
     channelPostUpdateOrNull() ?.let(block)
+
+public inline fun Update.chatBoostRemovedUpdateOrNull(): ChatBoostRemovedUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.ChatBoostRemovedUpdate
+
+public inline fun Update.chatBoostRemovedUpdateOrThrow(): ChatBoostRemovedUpdate = this as
+    dev.inmo.tgbotapi.types.update.ChatBoostRemovedUpdate
+
+public inline fun <T> Update.ifChatBoostRemovedUpdate(block: (ChatBoostRemovedUpdate) -> T): T? =
+    chatBoostRemovedUpdateOrNull() ?.let(block)
+
+public inline fun Update.chatBoostUpdatedUpdateOrNull(): ChatBoostUpdatedUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.ChatBoostUpdatedUpdate
+
+public inline fun Update.chatBoostUpdatedUpdateOrThrow(): ChatBoostUpdatedUpdate = this as
+    dev.inmo.tgbotapi.types.update.ChatBoostUpdatedUpdate
+
+public inline fun <T> Update.ifChatBoostUpdatedUpdate(block: (ChatBoostUpdatedUpdate) -> T): T? =
+    chatBoostUpdatedUpdateOrNull() ?.let(block)
 
 public inline fun Update.chatJoinRequestUpdateOrNull(): ChatJoinRequestUpdate? = this as?
     dev.inmo.tgbotapi.types.update.ChatJoinRequestUpdate

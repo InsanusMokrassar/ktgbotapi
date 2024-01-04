@@ -42,6 +42,8 @@ fun Update.sourceChatWithConverters(
     myChatMemberUpdatedUpdateConverter: (MyChatMemberUpdatedUpdate) -> Chat? = { it.data.chat },
     chatMessageReactionUpdatedUpdateConverter: (ChatMessageReactionUpdatedUpdate) -> Chat? = { it.data.chat },
     chatMessageReactionsCountUpdatedUpdateConverter: (ChatMessageReactionsCountUpdatedUpdate) -> Chat? = { it.data.chat },
+    chatBoostUpdatedUpdateFlow: (ChatBoostUpdatedUpdate) -> Chat? = { it.data.chat },
+    chatBoostRemovedUpdateFlow: (ChatBoostRemovedUpdate) -> Chat? = { it.data.chat },
     commonChatMemberUpdatedUpdateConverter: (CommonChatMemberUpdatedUpdate) -> Chat? = { it.data.chat }
 ): Chat? = when (this) {
     is BaseMessageUpdate -> baseMessageUpdateConverter(this)
@@ -61,6 +63,8 @@ fun Update.sourceChatWithConverters(
     is CommonChatMemberUpdatedUpdate -> commonChatMemberUpdatedUpdateConverter(this)
     is ChatMessageReactionUpdatedUpdate -> chatMessageReactionUpdatedUpdateConverter(this)
     is ChatMessageReactionsCountUpdatedUpdate -> chatMessageReactionsCountUpdatedUpdateConverter(this)
+    is ChatBoostUpdatedUpdate -> chatBoostUpdatedUpdateFlow(this)
+    is ChatBoostRemovedUpdate -> chatBoostRemovedUpdateFlow(this)
     else -> {
         when (val data = data) {
             is FromUser -> data.from
