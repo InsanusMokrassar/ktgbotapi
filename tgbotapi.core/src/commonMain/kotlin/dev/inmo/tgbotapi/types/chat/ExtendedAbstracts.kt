@@ -8,6 +8,17 @@ import korlibs.time.DateTime
 import kotlinx.serialization.Serializable
 
 @Serializable(ExtendedChatSerializer.Companion::class)
+sealed interface ExtendedChat : Chat {
+    val chatPhoto: ChatPhoto?
+}
+
+@Serializable(ExtendedChatSerializer.Companion::class)
+sealed interface ExtendedNonBotChat : ExtendedChat {
+    val statusEmojiId: CustomEmojiId?
+    val statusEmojiExpiration: TelegramDate?
+}
+
+@Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat, ExtendedChatWithUsername {
     val linkedGroupChatId: IdChatIdentifier?
 }
@@ -18,18 +29,16 @@ sealed interface ExtendedGroupChat : GroupChat, ExtendedPublicChat {
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername {
+sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, ExtendedNonBotChat {
     val bio: String
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
-    val statusEmojiId: CustomEmojiId?
-    val statusEmojiExpiration: TelegramDate?
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards
 }
 
-sealed interface ExtendedPublicChat : ExtendedChat, PublicChat {
+sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotChat {
     val description: String
     val inviteLink: String?
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
@@ -64,11 +73,6 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
 
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
-
-@Serializable(ExtendedChatSerializer.Companion::class)
-sealed interface ExtendedChat : Chat {
-    val chatPhoto: ChatPhoto?
-}
 
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChatWithUsername : UsernameChat, ExtendedChat {

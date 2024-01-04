@@ -35,7 +35,11 @@ data class ExtendedChannelChatImpl(
     @SerialName(hasHiddenMembersField)
     override val membersHidden: Boolean = false,
     @SerialName(availableReactionsField)
-    override val availableReactions: List<Reaction>? = null
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null
 ) : ExtendedChannelChat
 
 @Serializable
@@ -59,7 +63,11 @@ data class ExtendedGroupChatImpl(
     @SerialName(hasHiddenMembersField)
     override val membersHidden: Boolean = false,
     @SerialName(availableReactionsField)
-    override val availableReactions: List<Reaction>? = null
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null
 ) : ExtendedGroupChat
 
 @Serializable
@@ -132,7 +140,11 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(hasHiddenMembersField)
     override val membersHidden: Boolean = false,
     @SerialName(availableReactionsField)
-    override val availableReactions: List<Reaction>? = null
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -176,7 +188,11 @@ data class ExtendedForumChatImpl(
     @SerialName(hasHiddenMembersField)
     override val membersHidden: Boolean = false,
     @SerialName(availableReactionsField)
-    override val availableReactions: List<Reaction>? = null
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null
 ) : ExtendedForumChat
 
 @Serializable
