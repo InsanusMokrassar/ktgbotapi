@@ -30,4 +30,17 @@ external interface ThemeParams {
     val buttonColorHex: Color.Hex?
     @JsName("button_text_color")
     val buttonTextColorHex: Color.Hex?
+
+    @JsName("header_bg_color")
+    val headerBgColor: Color.Hex?
+    @JsName("accent_text_color")
+    val accentTextColor: Color.Hex?
+    @JsName("section_bg_color")
+    val sectionBgColor: Color.Hex?
+    @JsName("section_header_text_color")
+    val sectionHeaderTextColor: Color.Hex?
+    @JsName("subtitle_text_color")
+    val subtitleTextColor: Color.Hex?
+    @JsName("destructive_text_color")
+    val destructiveTextColor: Color.Hex?
 }
