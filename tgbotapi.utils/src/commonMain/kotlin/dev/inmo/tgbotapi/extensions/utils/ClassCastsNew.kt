@@ -196,6 +196,11 @@ import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.files.VideoSticker
 import dev.inmo.tgbotapi.types.files.VoiceFile
+import dev.inmo.tgbotapi.types.giveaway.Giveaway
+import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
+import dev.inmo.tgbotapi.types.giveaway.GiveawayResults
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
@@ -2713,6 +2718,51 @@ public inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedi
 
 public inline fun <T> TelegramMedia.ifTitledTelegramMedia(block: (TitledTelegramMedia) -> T): T? =
     titledTelegramMediaOrNull() ?.let(block)
+
+public inline fun ChatEvent.giveawayOrNull(): Giveaway? = this as?
+    dev.inmo.tgbotapi.types.giveaway.Giveaway
+
+public inline fun ChatEvent.giveawayOrThrow(): Giveaway = this as
+    dev.inmo.tgbotapi.types.giveaway.Giveaway
+
+public inline fun <T> ChatEvent.ifGiveaway(block: (Giveaway) -> T): T? = giveawayOrNull()
+    ?.let(block)
+
+public inline fun ChatEvent.giveawayCreatedOrNull(): GiveawayCreated? = this as?
+    dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
+
+public inline fun ChatEvent.giveawayCreatedOrThrow(): GiveawayCreated = this as
+    dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
+
+public inline fun <T> ChatEvent.ifGiveawayCreated(block: (GiveawayCreated) -> T): T? =
+    giveawayCreatedOrNull() ?.let(block)
+
+public inline fun ChatEvent.giveawayPrivateResultsOrNull(): GiveawayPrivateResults? = this as?
+    dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
+
+public inline fun ChatEvent.giveawayPrivateResultsOrThrow(): GiveawayPrivateResults = this as
+    dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
+
+public inline fun <T> ChatEvent.ifGiveawayPrivateResults(block: (GiveawayPrivateResults) -> T): T? =
+    giveawayPrivateResultsOrNull() ?.let(block)
+
+public inline fun ChatEvent.giveawayPublicResultsOrNull(): GiveawayPublicResults? = this as?
+    dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
+
+public inline fun ChatEvent.giveawayPublicResultsOrThrow(): GiveawayPublicResults = this as
+    dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
+
+public inline fun <T> ChatEvent.ifGiveawayPublicResults(block: (GiveawayPublicResults) -> T): T? =
+    giveawayPublicResultsOrNull() ?.let(block)
+
+public inline fun ChatEvent.giveawayResultsOrNull(): GiveawayResults? = this as?
+    dev.inmo.tgbotapi.types.giveaway.GiveawayResults
+
+public inline fun ChatEvent.giveawayResultsOrThrow(): GiveawayResults = this as
+    dev.inmo.tgbotapi.types.giveaway.GiveawayResults
+
+public inline fun <T> ChatEvent.ifGiveawayResults(block: (GiveawayResults) -> T): T? =
+    giveawayResultsOrNull() ?.let(block)
 
 public inline fun ChatEvent.channelChatCreatedOrNull(): ChannelChatCreated? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated

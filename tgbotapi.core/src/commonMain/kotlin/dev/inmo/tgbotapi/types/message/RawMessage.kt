@@ -9,6 +9,10 @@ import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.RawGame
+import dev.inmo.tgbotapi.types.giveaway.Giveaway
+import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
+import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
+import dev.inmo.tgbotapi.types.giveaway.GiveawayResults
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
@@ -130,7 +134,13 @@ internal data class RawMessage(
 
     private val link_preview_options: LinkPreviewOptions? = null,
 
-    private val reply_markup: InlineKeyboardMarkup? = null
+    private val reply_markup: InlineKeyboardMarkup? = null,
+
+    // Giveaways
+    private val giveaway_created: GiveawayCreated? = null,
+    private val giveaway: Giveaway? = null,
+    private val giveaway_winners: GiveawayResults? = null,
+    private val giveaway_completed: GiveawayPrivateResults? = null,
 ) {
     private val content: MessageContent? by lazy {
         val adaptedCaptionEntities = caption ?.let {
@@ -268,6 +278,10 @@ internal data class RawMessage(
             web_app_data != null -> web_app_data
             users_shared != null -> users_shared
             chat_shared != null -> chat_shared
+            giveaway_created != null -> giveaway_created
+            giveaway != null -> giveaway
+            giveaway_winners != null -> giveaway_winners
+            giveaway_completed != null -> giveaway_completed
             else -> null
         }
     }
