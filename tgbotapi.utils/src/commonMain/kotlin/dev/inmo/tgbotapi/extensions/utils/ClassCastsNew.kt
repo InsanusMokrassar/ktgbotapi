@@ -314,6 +314,7 @@ import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
+import dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CashTagTextSource
@@ -1741,8 +1742,9 @@ public inline fun KeyboardButtonRequestUsers.anyOrNull(): KeyboardButtonRequestU
 public inline fun KeyboardButtonRequestUsers.anyOrThrow(): KeyboardButtonRequestUsers.Any = this as
     dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Any
 
-public inline fun <T> KeyboardButtonRequestUsers.ifAny(block: (KeyboardButtonRequestUsers.Any) -> T):
-    T? = anyOrNull() ?.let(block)
+public inline fun <T>
+    KeyboardButtonRequestUsers.ifAny(block: (KeyboardButtonRequestUsers.Any) -> T): T? = anyOrNull()
+    ?.let(block)
 
 public inline fun KeyboardButtonRequestUsers.botOrNull(): KeyboardButtonRequestUsers.Bot? = this as?
     dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Bot
@@ -1750,14 +1752,15 @@ public inline fun KeyboardButtonRequestUsers.botOrNull(): KeyboardButtonRequestU
 public inline fun KeyboardButtonRequestUsers.botOrThrow(): KeyboardButtonRequestUsers.Bot = this as
     dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Bot
 
-public inline fun <T> KeyboardButtonRequestUsers.ifBot(block: (KeyboardButtonRequestUsers.Bot) -> T):
-    T? = botOrNull() ?.let(block)
+public inline fun <T>
+    KeyboardButtonRequestUsers.ifBot(block: (KeyboardButtonRequestUsers.Bot) -> T): T? = botOrNull()
+    ?.let(block)
 
-public inline fun KeyboardButtonRequestUsers.commonOrNull(): KeyboardButtonRequestUsers.Common? = this
-    as? dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Common
+public inline fun KeyboardButtonRequestUsers.commonOrNull(): KeyboardButtonRequestUsers.Common? =
+    this as? dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Common
 
-public inline fun KeyboardButtonRequestUsers.commonOrThrow(): KeyboardButtonRequestUsers.Common = this
-    as dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Common
+public inline fun KeyboardButtonRequestUsers.commonOrThrow(): KeyboardButtonRequestUsers.Common =
+    this as dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers.Common
 
 public inline fun <T>
     KeyboardButtonRequestUsers.ifCommon(block: (KeyboardButtonRequestUsers.Common) -> T): T? =
@@ -2972,13 +2975,13 @@ public inline fun ChatEvent.chatSharedRequestOrThrow(): ChatSharedRequest = this
 public inline fun <T> ChatEvent.ifChatSharedRequest(block: (ChatSharedRequest) -> T): T? =
     chatSharedRequestOrNull() ?.let(block)
 
-public inline fun ChatEvent.userSharedOrNull(): UsersShared? = this as?
+public inline fun ChatEvent.usersSharedOrNull(): UsersShared? = this as?
     dev.inmo.tgbotapi.types.request.UsersShared
 
-public inline fun ChatEvent.userSharedOrThrow(): UsersShared = this as
+public inline fun ChatEvent.usersSharedOrThrow(): UsersShared = this as
     dev.inmo.tgbotapi.types.request.UsersShared
 
-public inline fun <T> ChatEvent.ifUserShared(block: (UsersShared) -> T): T? = userSharedOrNull()
+public inline fun <T> ChatEvent.ifUsersShared(block: (UsersShared) -> T): T? = usersSharedOrNull()
     ?.let(block)
 
 public inline fun ForwardInfo.byAnonymousOrNull(): ForwardInfo.ByAnonymous? = this as?
@@ -3678,6 +3681,15 @@ public inline fun ResendableContent.voiceContentOrThrow(): VoiceContent = this a
 
 public inline fun <T> ResendableContent.ifVoiceContent(block: (VoiceContent) -> T): T? =
     voiceContentOrNull() ?.let(block)
+
+public inline fun TextSource.blockquoteTextSourceOrNull(): BlockquoteTextSource? = this as?
+    dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
+
+public inline fun TextSource.blockquoteTextSourceOrThrow(): BlockquoteTextSource = this as
+    dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
+
+public inline fun <T> TextSource.ifBlockquoteTextSource(block: (BlockquoteTextSource) -> T): T? =
+    blockquoteTextSourceOrNull() ?.let(block)
 
 public inline fun TextSource.boldTextSourceOrNull(): BoldTextSource? = this as?
     dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
@@ -4564,14 +4576,14 @@ public inline fun RequestResponse.chatSharedRequestOrThrow(): ChatSharedRequest 
 public inline fun <T> RequestResponse.ifChatSharedRequest(block: (ChatSharedRequest) -> T): T? =
     chatSharedRequestOrNull() ?.let(block)
 
-public inline fun RequestResponse.userSharedOrNull(): UsersShared? = this as?
+public inline fun RequestResponse.usersSharedOrNull(): UsersShared? = this as?
     dev.inmo.tgbotapi.types.request.UsersShared
 
-public inline fun RequestResponse.userSharedOrThrow(): UsersShared = this as
+public inline fun RequestResponse.usersSharedOrThrow(): UsersShared = this as
     dev.inmo.tgbotapi.types.request.UsersShared
 
-public inline fun <T> RequestResponse.ifUserShared(block: (UsersShared) -> T): T? =
-    userSharedOrNull() ?.let(block)
+public inline fun <T> RequestResponse.ifUsersShared(block: (UsersShared) -> T): T? =
+    usersSharedOrNull() ?.let(block)
 
 public inline fun Update.callbackQueryUpdateOrNull(): CallbackQueryUpdate? = this as?
     dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
