@@ -145,7 +145,7 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
 object CreateNewStickerSetSerializer : KSerializer<CreateNewStickerSet>,
     MapperSerializer<CreateNewStickerSet.SurrogateCreateNewSticker, CreateNewStickerSet>(
     CreateNewStickerSet.SurrogateCreateNewSticker.serializer(),
-        {
+        { it ->
             CreateNewStickerSet.SurrogateCreateNewSticker(
                 it.userId,
                 it.name,
@@ -156,7 +156,7 @@ object CreateNewStickerSetSerializer : KSerializer<CreateNewStickerSet>,
                 (it as? CreateNewStickerSet.CustomEmoji)?.needsRepainting
             )
         },
-        {
+        { it ->
             when (it.stickerType) {
                 StickerType.CustomEmoji -> CreateNewStickerSet.CustomEmoji(
                     it.userId,

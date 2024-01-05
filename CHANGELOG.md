@@ -2,6 +2,10 @@
 
 ## 10.0.0
 
+**IN THIS UPDATE KLOCK DEPENDENCY CHANGED TO `com.soywiz.korge:korlibs-time` UP TO 5.3.0 VERSION**
+
+**IN THIS UPDATE KRYPTO DEPENDENCY CHANGED TO `com.soywiz.korge:korlibs-crypto` UP TO 5.3.0 VERSION**
+
 ## 9.4.3
 
 **IetfLanguageCode has been renamed to IetfLang in MicroUtils**

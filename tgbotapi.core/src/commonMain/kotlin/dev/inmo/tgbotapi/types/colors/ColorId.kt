@@ -11,7 +11,7 @@ value class ColorId(
 ) {
     companion object {
         val defaultAccentColors = mapOf(
-            ColorId(0) to HEXAColor(0xff0000ffu),
+            ColorId(0) to setOf(HEXAColor(0xff0000ffu)),
         )
     }
 }

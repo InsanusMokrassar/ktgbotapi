@@ -122,6 +122,7 @@ import dev.inmo.tgbotapi.types.chat.ExtendedChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
 import dev.inmo.tgbotapi.types.chat.ExtendedForumChat
 import dev.inmo.tgbotapi.types.chat.ExtendedGroupChat
+import dev.inmo.tgbotapi.types.chat.ExtendedNonBotChat
 import dev.inmo.tgbotapi.types.chat.ExtendedPrivateChat
 import dev.inmo.tgbotapi.types.chat.ExtendedPublicChat
 import dev.inmo.tgbotapi.types.chat.ExtendedSupergroupChat
@@ -1980,6 +1981,24 @@ public inline fun Chat.unknownExtendedChatOrThrow(): UnknownExtendedChat = this 
 public inline fun <T> Chat.ifUnknownExtendedChat(block: (UnknownExtendedChat) -> T): T? =
     unknownExtendedChatOrNull() ?.let(block)
 
+public inline fun Chat.extendedChatOrNull(): ExtendedChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedChat
+
+public inline fun Chat.extendedChatOrThrow(): ExtendedChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedChat
+
+public inline fun <T> Chat.ifExtendedChat(block: (ExtendedChat) -> T): T? = extendedChatOrNull()
+    ?.let(block)
+
+public inline fun Chat.extendedNonBotChatOrNull(): ExtendedNonBotChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedNonBotChat
+
+public inline fun Chat.extendedNonBotChatOrThrow(): ExtendedNonBotChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedNonBotChat
+
+public inline fun <T> Chat.ifExtendedNonBotChat(block: (ExtendedNonBotChat) -> T): T? =
+    extendedNonBotChatOrNull() ?.let(block)
+
 public inline fun Chat.extendedChannelChatOrNull(): ExtendedChannelChat? = this as?
     dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
 
@@ -2033,15 +2052,6 @@ public inline fun Chat.extendedForumChatOrThrow(): ExtendedForumChat = this as
 
 public inline fun <T> Chat.ifExtendedForumChat(block: (ExtendedForumChat) -> T): T? =
     extendedForumChatOrNull() ?.let(block)
-
-public inline fun Chat.extendedChatOrNull(): ExtendedChat? = this as?
-    dev.inmo.tgbotapi.types.chat.ExtendedChat
-
-public inline fun Chat.extendedChatOrThrow(): ExtendedChat = this as
-    dev.inmo.tgbotapi.types.chat.ExtendedChat
-
-public inline fun <T> Chat.ifExtendedChat(block: (ExtendedChat) -> T): T? = extendedChatOrNull()
-    ?.let(block)
 
 public inline fun Chat.extendedChatWithUsernameOrNull(): ExtendedChatWithUsername? = this as?
     dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername

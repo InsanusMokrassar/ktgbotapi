@@ -16,6 +16,8 @@ import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.utils.extensions.makeString
+import korlibs.time.millisecondsLong
+import korlibs.time.seconds
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()

@@ -24,6 +24,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 import io.ktor.utils.io.core.Closeable
+import korlibs.time.millisecondsLong
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.currentCoroutineContext
