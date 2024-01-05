@@ -22,6 +22,7 @@ kotlin {
                 api libs.korlibs.krypto
                 api libs.uuid
 
+                api libs.microutils.colors.common
                 api libs.microutils.coroutines
                 api libs.microutils.serialization.base64
                 api libs.microutils.serialization.encapsulator
