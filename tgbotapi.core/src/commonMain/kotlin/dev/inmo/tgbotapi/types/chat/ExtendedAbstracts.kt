@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.colors.ColorId
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
 import dev.inmo.tgbotapi.types.reactions.Reaction
@@ -10,6 +11,10 @@ import kotlinx.serialization.Serializable
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChat : Chat {
     val chatPhoto: ChatPhoto?
+    val accentColorId: ColorId
+    val profileAccentColorId: ColorId?
+    val backgroundCustomEmojiId: CustomEmojiId?
+    val profileBackgroundCustomEmojiId: CustomEmojiId?
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)

@@ -8,10 +8,4 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class ColorId(
     val int: Int
-) {
-    companion object {
-        val defaultAccentColors = mapOf(
-            ColorId(0) to setOf(HEXAColor(0xff0000ffu)),
-        )
-    }
-}
+)
