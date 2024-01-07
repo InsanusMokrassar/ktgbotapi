@@ -2,12 +2,9 @@ package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendAnimation
-import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
-import dev.inmo.tgbotapi.types.TextQuote
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
@@ -28,8 +25,7 @@ data class AnimationContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<AnimationContent>> = SendAnimation(
         chatId,
@@ -43,8 +39,7 @@ data class AnimationContent(
         messageThreadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 

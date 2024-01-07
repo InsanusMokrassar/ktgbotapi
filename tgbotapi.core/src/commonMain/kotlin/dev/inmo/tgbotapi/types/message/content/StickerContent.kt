@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.ReplyParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -20,8 +21,7 @@ data class StickerContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<StickerContent>> = SendSticker(
         chatId,
@@ -30,8 +30,7 @@ data class StickerContent(
         media.emoji,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 

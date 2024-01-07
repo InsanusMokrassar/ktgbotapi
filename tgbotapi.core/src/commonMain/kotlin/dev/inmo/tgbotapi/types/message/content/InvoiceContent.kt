@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.ReplyParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.payments.Invoice
@@ -18,8 +19,7 @@ data class InvoiceContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<InvoiceContent>> {
         error("Unfortunately, currently InvoiceOfPayment can not be resend due to requirement of additional parameters," +

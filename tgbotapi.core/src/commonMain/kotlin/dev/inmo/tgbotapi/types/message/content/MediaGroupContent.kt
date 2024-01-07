@@ -35,8 +35,7 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         threadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<MediaGroupContent<MediaGroupPartContent>>> = SendMediaGroup<MediaGroupPartContent>(
         chatId,
@@ -44,7 +43,6 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply
+        replyParameters,
     )
 }

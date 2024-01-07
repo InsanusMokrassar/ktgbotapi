@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.abstracts.types.DisableNotification
-import dev.inmo.tgbotapi.abstracts.types.ReplyMessageId
+import dev.inmo.tgbotapi.abstracts.types.WithReplyParameters
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -26,13 +26,11 @@ data class SendDice(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : ReplyingMarkupSendMessageRequest<ContentMessage<DiceContent>>, ReplyMessageId, DisableNotification {
+) : ReplyingMarkupSendMessageRequest<ContentMessage<DiceContent>>, WithReplyParameters, DisableNotification {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
 

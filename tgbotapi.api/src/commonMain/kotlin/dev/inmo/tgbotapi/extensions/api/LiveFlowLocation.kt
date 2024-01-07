@@ -44,8 +44,7 @@ suspend fun TelegramBot.handleLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     var currentLiveLocationMessage: ContentMessage<LocationContent>? = null
@@ -71,8 +70,7 @@ suspend fun TelegramBot.handleLiveLocation(
                 threadId,
                 disableNotification,
                 protectContent,
-                replyToMessageId,
-                allowSendingWithoutReply,
+                replyParameters,
                 it.replyMarkup
             ).also {
                 sentMessageFlow ?.emit(it)
@@ -106,8 +104,7 @@ suspend fun TelegramBot.handleLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     handleLiveLocation(
@@ -126,8 +123,7 @@ suspend fun TelegramBot.handleLiveLocation(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         sentMessageFlow
     )
 }
@@ -145,8 +141,7 @@ suspend fun TelegramBot.handleLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     handleLiveLocation(
@@ -161,8 +156,7 @@ suspend fun TelegramBot.handleLiveLocation(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         sentMessageFlow
     )
 }

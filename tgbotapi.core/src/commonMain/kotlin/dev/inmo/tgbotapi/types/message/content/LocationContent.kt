@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.ReplyParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -101,8 +102,7 @@ data class LiveLocationContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<LiveLocationContent>> = SendLiveLocation(
         chatId,
@@ -115,8 +115,7 @@ data class LiveLocationContent(
         messageThreadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     ) as SendMessageRequest<ContentMessage<LiveLocationContent>>
 }
@@ -134,8 +133,7 @@ data class StaticLocationContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<StaticLocationContent>> = SendStaticLocation(
         chatId,
@@ -144,8 +142,7 @@ data class StaticLocationContent(
         messageThreadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     ) as SendMessageRequest<ContentMessage<StaticLocationContent>>
 }

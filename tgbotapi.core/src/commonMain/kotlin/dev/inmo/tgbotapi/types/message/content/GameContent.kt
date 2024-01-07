@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.games.SendGame
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.ReplyParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -19,8 +20,7 @@ data class GameContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<GameContent>> = SendGame(
         chatId,
@@ -28,8 +28,7 @@ data class GameContent(
         messageThreadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 }

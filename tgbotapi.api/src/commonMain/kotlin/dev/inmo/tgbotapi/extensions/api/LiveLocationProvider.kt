@@ -96,8 +96,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider {
     val liveTimeAsDouble = liveTimeMillis.toDouble()
@@ -113,8 +112,7 @@ suspend fun TelegramBot.startLiveLocation(
             threadId,
             disableNotification,
             protectContent,
-            replyToMessageId,
-            allowSendingWithoutReply,
+            replyParameters,
             replyMarkup
         )
     )
@@ -143,8 +141,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
     scope,
@@ -158,8 +155,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -178,8 +174,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
     scope,
@@ -193,8 +188,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -213,8 +207,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
     scope,
@@ -228,8 +221,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -263,8 +255,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    to.messageId,
-    allowSendingWithoutReply,
+    ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true),
     replyMarkup
 )
 
@@ -296,7 +287,6 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    to.messageId,
-    allowSendingWithoutReply,
+    ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true),
     replyMarkup
 )

@@ -25,8 +25,7 @@ suspend fun TelegramBot.sendVenue(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendVenue(
@@ -42,8 +41,7 @@ suspend fun TelegramBot.sendVenue(
         threadId = threadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
-        replyToMessageId = replyToMessageId,
-        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
 )
@@ -65,8 +63,7 @@ suspend fun TelegramBot.sendVenue(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
     chatId = chat.id,
@@ -81,8 +78,7 @@ suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    replyToMessageId = replyToMessageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
 
@@ -102,8 +98,7 @@ suspend fun TelegramBot.sendVenue(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
     chatId = chatId,
@@ -118,8 +113,7 @@ suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    replyToMessageId = replyToMessageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
 
@@ -139,8 +133,7 @@ suspend fun TelegramBot.sendVenue(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
     chatId = chat.id,
@@ -155,8 +148,7 @@ suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    replyToMessageId = replyToMessageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
 
@@ -170,8 +162,7 @@ suspend fun TelegramBot.sendVenue(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendVenue(
@@ -180,8 +171,7 @@ suspend fun TelegramBot.sendVenue(
         threadId = threadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
-        replyToMessageId = replyToMessageId,
-        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
 )
@@ -196,8 +186,7 @@ suspend fun TelegramBot.sendVenue(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
     chatId = chat.id,
@@ -205,7 +194,6 @@ suspend fun TelegramBot.sendVenue(
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    replyToMessageId = replyToMessageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

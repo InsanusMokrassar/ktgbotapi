@@ -1,7 +1,6 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.abstracts.TextedInput
-import dev.inmo.tgbotapi.abstracts.TextedWithTextSources
 import dev.inmo.tgbotapi.abstracts.WithMessageId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
@@ -65,6 +64,17 @@ data class ReplyParameters internal constructor(
         quotePosition
     )
     constructor(
+        message: Message,
+        entities: TextSourcesList,
+        allowSendingWithoutReply: Boolean = false,
+        quotePosition: Int? = null
+    ) : this(
+        message.metaInfo,
+        entities,
+        allowSendingWithoutReply,
+        quotePosition
+    )
+    constructor(
         chatIdentifier: ChatIdentifier,
         messageId: MessageId,
         quote: String,
@@ -95,6 +105,19 @@ data class ReplyParameters internal constructor(
         quotePosition
     )
     constructor(
+        message: Message,
+        quote: String,
+        quoteParseMode: ParseMode,
+        allowSendingWithoutReply: Boolean = false,
+        quotePosition: Int? = null
+    ) : this(
+        message.metaInfo,
+        quote,
+        quoteParseMode,
+        allowSendingWithoutReply,
+        quotePosition
+    )
+    constructor(
         chatIdentifier: ChatIdentifier,
         messageId: MessageId,
         allowSendingWithoutReply: Boolean = false,
@@ -115,6 +138,15 @@ data class ReplyParameters internal constructor(
     ) : this(
         metaInfo.chatId,
         metaInfo.messageId,
+        allowSendingWithoutReply,
+        quotePosition
+    )
+    constructor(
+        message: Message,
+        allowSendingWithoutReply: Boolean = false,
+        quotePosition: Int? = null
+    ) : this(
+        message.metaInfo,
         allowSendingWithoutReply,
         quotePosition
     )

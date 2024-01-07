@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.SendDice
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.ReplyParameters
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -19,8 +20,7 @@ data class DiceContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<DiceContent>> = SendDice(
         chatId,
@@ -28,8 +28,7 @@ data class DiceContent(
         messageThreadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 }

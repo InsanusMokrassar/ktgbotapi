@@ -38,8 +38,7 @@ fun SendDocument(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): Request<ContentMessage<DocumentContent>> {
@@ -56,8 +55,7 @@ fun SendDocument(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup,
         disableContentTypeDetection
     )
@@ -89,8 +87,7 @@ fun SendDocument(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
 ): Request<ContentMessage<DocumentContent>> {
@@ -107,8 +104,7 @@ fun SendDocument(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup,
         disableContentTypeDetection
     )
@@ -155,10 +151,8 @@ data class SendDocumentData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null,
     @SerialName(disableContentTypeDetectionField)

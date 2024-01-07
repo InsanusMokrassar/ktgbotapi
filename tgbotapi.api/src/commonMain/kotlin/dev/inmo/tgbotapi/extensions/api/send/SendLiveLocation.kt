@@ -22,8 +22,7 @@ suspend fun TelegramBot.sendLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendLiveLocation(
@@ -37,8 +36,7 @@ suspend fun TelegramBot.sendLocation(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 )
@@ -57,8 +55,7 @@ suspend fun TelegramBot.sendLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
     chatId,
@@ -71,8 +68,7 @@ suspend fun TelegramBot.sendLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -91,8 +87,7 @@ suspend fun TelegramBot.sendLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
     chat.id,
@@ -105,8 +100,7 @@ suspend fun TelegramBot.sendLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -124,8 +118,7 @@ suspend fun TelegramBot.sendLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
     chat.id,
@@ -138,8 +131,7 @@ suspend fun TelegramBot.sendLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -158,10 +150,9 @@ suspend fun TelegramBot.sendLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chatId, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendLocation(chatId, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -177,10 +168,9 @@ suspend fun TelegramBot.sendLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chatId, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendLocation(chatId, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -197,10 +187,9 @@ suspend fun TelegramBot.sendLiveLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chat.id, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendLocation(chat.id, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -216,7 +205,6 @@ suspend fun TelegramBot.sendLiveLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chat.id, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendLocation(chat.id, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, disableNotification, protectContent, replyParameters, replyMarkup)

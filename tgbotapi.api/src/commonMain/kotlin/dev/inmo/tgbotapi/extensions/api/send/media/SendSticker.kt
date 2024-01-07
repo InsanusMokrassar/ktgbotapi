@@ -3,13 +3,10 @@ package dev.inmo.tgbotapi.extensions.api.send.media
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendSticker
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.files.Sticker
-import dev.inmo.tgbotapi.types.threadId
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -22,11 +19,10 @@ suspend fun TelegramBot.sendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendSticker(chatId, sticker, threadId, emoji, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+    SendSticker(chatId, sticker, threadId, emoji, disableNotification, protectContent, replyParameters, replyMarkup)
 )
 
 /**
@@ -40,10 +36,9 @@ suspend fun TelegramBot.sendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat.id, sticker, threadId, emoji, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chat.id, sticker, threadId, emoji, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -56,10 +51,9 @@ suspend fun TelegramBot.sendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chatId, sticker.fileId, threadId, emoji, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chatId, sticker.fileId, threadId, emoji, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -72,7 +66,6 @@ suspend fun TelegramBot.sendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat, sticker.fileId, threadId, emoji, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup)
+) = sendSticker(chat, sticker.fileId, threadId, emoji, disableNotification, protectContent, replyParameters, replyMarkup)

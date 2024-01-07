@@ -9,13 +9,7 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.StickerContent
-import dev.inmo.tgbotapi.utils.mapOfNotNull
-import dev.inmo.tgbotapi.utils.toJsonWithoutNulls
 import kotlinx.serialization.*
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
 
 fun SendSticker(
     chatId: ChatIdentifier,
@@ -24,8 +18,7 @@ fun SendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<StickerContent>> = SendStickerByFileId(
     chatId,
@@ -33,8 +26,7 @@ fun SendSticker(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 ).let {
     when (sticker) {
@@ -61,10 +53,8 @@ data class SendStickerByFileId internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<StickerContent>>, ReplyingMarkupSendMessageRequest<ContentMessage<StickerContent>> {

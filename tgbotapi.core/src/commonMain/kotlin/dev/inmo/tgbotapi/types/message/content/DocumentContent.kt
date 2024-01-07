@@ -3,13 +3,10 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendDocument
-import dev.inmo.tgbotapi.types.ChatIdentifier
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.media.toTelegramMediaDocument
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
-import dev.inmo.tgbotapi.types.TextQuote
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
@@ -29,8 +26,7 @@ data class DocumentContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<DocumentContent>> = SendDocument(
         chatId,
@@ -40,8 +36,7 @@ data class DocumentContent(
         messageThreadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 

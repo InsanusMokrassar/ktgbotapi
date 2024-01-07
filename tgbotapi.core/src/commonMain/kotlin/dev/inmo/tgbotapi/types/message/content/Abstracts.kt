@@ -4,14 +4,11 @@ import dev.inmo.tgbotapi.abstracts.SpoilerableData
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.threadId
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.modules.*
@@ -152,8 +149,30 @@ sealed interface ResendableContent {
         messageThreadId: MessageThreadId? = chatId.threadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
-        replyToMessageId: MessageId? = null,
-        allowSendingWithoutReply: Boolean? = null,
+        replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<out AccessibleMessage>
+
+    fun createResend(
+        chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId? = chatId.threadId,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        replyToMessageId: MessageId?,
+        allowSendingWithoutReply: Boolean? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ): Request<out AccessibleMessage> = createResend(
+        chatId = chatId,
+        messageThreadId = messageThreadId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyToMessageId ?.let {
+            ReplyParameters(
+                chatId,
+                replyToMessageId,
+                allowSendingWithoutReply = allowSendingWithoutReply == true
+            )
+        },
+        replyMarkup = replyMarkup
+    )
 }

@@ -28,8 +28,7 @@ fun SendPhoto(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
@@ -42,8 +41,7 @@ fun SendPhoto(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
     return if (photo is MultipartFile) {
@@ -64,8 +62,7 @@ fun SendPhoto(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
@@ -78,8 +75,7 @@ fun SendPhoto(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 
@@ -116,10 +112,8 @@ data class SendPhotoData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<PhotoContent>>,

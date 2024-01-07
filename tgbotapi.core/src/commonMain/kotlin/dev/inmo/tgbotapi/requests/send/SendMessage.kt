@@ -28,8 +28,7 @@ fun SendTextMessage(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
     chatId,
@@ -40,8 +39,7 @@ fun SendTextMessage(
     linkPreviewOptions,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -52,8 +50,7 @@ fun SendTextMessage(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
     chatId,
@@ -64,8 +61,7 @@ fun SendTextMessage(
     linkPreviewOptions,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -87,10 +83,8 @@ data class SendTextMessage internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<TextContent>>,

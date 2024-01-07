@@ -18,12 +18,11 @@ suspend fun TelegramBot.sendContact(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendContact(
-        chatId, phoneNumber, firstName, lastName, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+        chatId, phoneNumber, firstName, lastName, threadId, disableNotification, protectContent, replyParameters, replyMarkup
     )
 )
 
@@ -37,12 +36,11 @@ suspend fun TelegramBot.sendContact(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendContact(
-        chatId, contact, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+        chatId, contact, threadId, disableNotification, protectContent, replyParameters, replyMarkup
     )
 )
 
@@ -58,11 +56,10 @@ suspend fun TelegramBot.sendContact(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendContact(
-    chat.id, phoneNumber, firstName, lastName, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chat.id, phoneNumber, firstName, lastName, threadId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -75,9 +72,8 @@ suspend fun TelegramBot.sendContact(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendContact(
-    chat.id, contact, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+    chat.id, contact, threadId, disableNotification, protectContent, replyParameters, replyMarkup
 )
