@@ -87,12 +87,16 @@ fun Byte.toChatId(): IdChatIdentifier = toLong().toChatId()
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
 value class Username(
+    @Deprecated("Renamed", ReplaceWith("full"))
     val username: String
 ) : ChatIdentifier {
-    val usernameWithoutAt
-        get() = username.dropWhile { it == '@' }
     val full: String
         get() = username
+    val withoutAt
+        get() = full.dropWhile { it == '@' }
+    @Deprecated("Renamed", ReplaceWith("withoutAt"))
+    val usernameWithoutAt
+        get() = withoutAt
 
     init {
         if (!username.startsWith("@")) {

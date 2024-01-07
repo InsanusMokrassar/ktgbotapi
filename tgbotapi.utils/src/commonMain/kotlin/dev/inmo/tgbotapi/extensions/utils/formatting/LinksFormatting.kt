@@ -21,24 +21,24 @@ fun makeInternalTgUsernameDeepLinkPrefix(username: String) = "${makeInternalTgUs
 fun makeUsernameStartattachPrefix(username: String) = "$internalLinkBeginning/$username?startattach"
 fun makeUsernameStartattachLink(username: String, data: String? = null) = "${makeUsernameStartattachPrefix(username)}${data?.let { "=$it" } ?: ""}"
 inline val Username.usernameLink
-    get() = makeUsernameLink(usernameWithoutAt)
+    get() = makeUsernameLink(withoutAt)
 val IdChatIdentifier.chatLink: String
     get() = makeChatLink(chatId, threadId)
 fun ChatId.link(threadId: MessageThreadId?) = makeChatLink(chatId, threadId)
-inline fun Username.link(threadId: MessageThreadId?) = makeUsernameLink(usernameWithoutAt, threadId)
+inline fun Username.link(threadId: MessageThreadId?) = makeUsernameLink(withoutAt, threadId)
 inline val Username.deepLinkPrefix
-    get() = makeUsernameDeepLinkPrefix(usernameWithoutAt)
+    get() = makeUsernameDeepLinkPrefix(withoutAt)
 inline val Username.startattachPrefix
-    get() = makeUsernameStartattachPrefix(usernameWithoutAt)
+    get() = makeUsernameStartattachPrefix(withoutAt)
 inline fun makeLink(username: Username, threadId: MessageThreadId? = null) = username.link(threadId)
 inline fun makeTelegramDeepLink(username: String, startParameter: String) = "${makeUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
 inline fun makeInternalTgDeepLink(username: String, startParameter: String) = "${makeInternalTgUsernameDeepLinkPrefix(username)}$startParameter".encodeURLQueryComponent()
 inline fun makeInternalTgDeepLink(username: Username, startParameter: String) =
-    makeInternalTgDeepLink(username.usernameWithoutAt, startParameter)
+    makeInternalTgDeepLink(username.withoutAt, startParameter)
 inline fun makeTelegramStartattach(username: String, data: String? = null) = makeUsernameStartattachLink(username, data)
-inline fun makeDeepLink(username: Username, startParameter: String) = makeTelegramDeepLink(username.usernameWithoutAt, startParameter)
+inline fun makeDeepLink(username: Username, startParameter: String) = makeTelegramDeepLink(username.withoutAt, startParameter)
 inline fun makeTelegramDeepLink(username: Username, startParameter: String) = makeDeepLink(username, startParameter)
-inline fun makeTelegramStartattach(username: Username, data: String? = null) = makeTelegramStartattach(username.usernameWithoutAt, data)
+inline fun makeTelegramStartattach(username: Username, data: String? = null) = makeTelegramStartattach(username.withoutAt, data)
 
 private val linkIdRedundantPartRegex = Regex("^-100")
 private val usernameBeginSymbolRegex = Regex("^@")
@@ -52,7 +52,7 @@ fun makeLinkToMessage(
     username: Username,
     messageId: MessageId,
     threadId: MessageThreadId? = null
-): String = makeLinkToMessage(username.usernameWithoutAt, messageId, threadId)
+): String = makeLinkToMessage(username.withoutAt, messageId, threadId)
 fun makeLinkToMessage(
     chatId: Identifier,
     messageId: MessageId,
