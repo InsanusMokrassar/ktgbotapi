@@ -19,7 +19,7 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
     override val forwardOrigin: MessageOrigin?,
-    override val replyTo: AccessibleMessage?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupIdentifier?,

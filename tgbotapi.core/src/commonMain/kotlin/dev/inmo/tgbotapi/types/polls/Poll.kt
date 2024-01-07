@@ -49,7 +49,7 @@ val LongSeconds.asExactScheduledCloseInfo
 
 @Serializable(PollSerializer::class)
 @ClassCastsIncluded
-sealed interface Poll : ExternalReplyInfo.ContentVariant {
+sealed interface Poll : ReplyInfo.External.ContentVariant {
     val id: PollIdentifier
     val question: String
     val options: List<PollOption>

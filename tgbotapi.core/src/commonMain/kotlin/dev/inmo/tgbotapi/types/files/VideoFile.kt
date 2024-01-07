@@ -30,7 +30,7 @@ data class VideoFile(
     @SerialName(fileSizeField)
     override val fileSize: Long? = null
 ) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile,
-    ExternalReplyInfo.ContentVariant
+    ReplyInfo.External.ContentVariant
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toTelegramMediaVideo(

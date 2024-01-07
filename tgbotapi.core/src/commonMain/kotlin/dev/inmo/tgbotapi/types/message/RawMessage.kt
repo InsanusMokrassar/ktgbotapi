@@ -54,6 +54,7 @@ internal data class RawMessage(
     private val is_topic_message: Boolean? = null,
     private val is_automatic_forward: Boolean? = null,
     private val reply_to_message: RawMessage? = null,
+    private val external_reply: ReplyInfo.External? = null,
     private val via_bot: CommonBot? = null,
     private val edit_date: TelegramDate? = null,
     private val has_protected_content: Boolean? = null,
@@ -282,7 +283,15 @@ internal data class RawMessage(
                     )
                     else -> error("Expected one of the public chats, but was $chat (in extracting of chat event message)")
                 }
-            } ?: content?.let { content -> when (chat) {
+            } ?: content?.let { content ->
+                val replyInfo: ReplyInfo? = when {
+                    reply_to_message != null -> ReplyInfo.Internal(
+                        reply_to_message.asMessage
+                    )
+                    external_reply != null -> external_reply
+                    else -> null
+                }
+                when (chat) {
                     is PreviewPublicChat -> when (chat) {
                         is PreviewChannelChat -> ChannelContentMessageImpl(
                             messageId,
@@ -292,7 +301,7 @@ internal data class RawMessage(
                             edit_date?.asDate,
                             has_protected_content == true,
                             forward_origin,
-                            reply_to_message?.asMessage,
+                            replyInfo,
                             reply_markup,
                             via_bot,
                             author_signature,
@@ -316,7 +325,7 @@ internal data class RawMessage(
                                     forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
-                                    reply_to_message ?.asMessage,
+                                    replyInfo,
                                     reply_markup,
                                     content,
                                     via_bot,
@@ -331,7 +340,7 @@ internal data class RawMessage(
                                     forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
-                                    reply_to_message ?.asMessage,
+                                    replyInfo,
                                     reply_markup,
                                     content,
                                     via_bot,
@@ -347,7 +356,7 @@ internal data class RawMessage(
                                     forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
-                                    reply_to_message ?.asMessage,
+                                    replyInfo,
                                     reply_markup,
                                     content,
                                     via_bot,
@@ -365,7 +374,7 @@ internal data class RawMessage(
                                         forward_origin,
                                         edit_date ?.asDate,
                                         has_protected_content == true,
-                                        reply_to_message ?.asMessage,
+                                        replyInfo,
                                         reply_markup,
                                         content,
                                         via_bot,
@@ -381,7 +390,7 @@ internal data class RawMessage(
                                         forward_origin,
                                         edit_date ?.asDate,
                                         has_protected_content == true,
-                                        reply_to_message ?.asMessage,
+                                        replyInfo,
                                         reply_markup,
                                         content,
                                         via_bot,
@@ -396,7 +405,7 @@ internal data class RawMessage(
                                     forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
-                                    reply_to_message ?.asMessage,
+                                    replyInfo,
                                     reply_markup,
                                     content,
                                     via_bot,
@@ -411,7 +420,7 @@ internal data class RawMessage(
                                     forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
-                                    reply_to_message ?.asMessage,
+                                    replyInfo,
                                     reply_markup,
                                     content,
                                     via_bot,
@@ -429,7 +438,7 @@ internal data class RawMessage(
                                     forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
-                                    reply_to_message ?.asMessage,
+                                    replyInfo,
                                     reply_markup,
                                     content,
                                     via_bot,
@@ -445,7 +454,7 @@ internal data class RawMessage(
                                     forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
-                                    reply_to_message ?.asMessage,
+                                    replyInfo,
                                     reply_markup,
                                     content,
                                     via_bot,
@@ -460,7 +469,7 @@ internal data class RawMessage(
                                 forward_origin,
                                 edit_date ?.asDate,
                                 has_protected_content == true,
-                                reply_to_message ?.asMessage,
+                                replyInfo,
                                 reply_markup,
                                 content,
                                 via_bot,
@@ -475,7 +484,7 @@ internal data class RawMessage(
                                 forward_origin,
                                 edit_date ?.asDate,
                                 has_protected_content == true,
-                                reply_to_message ?.asMessage,
+                                replyInfo,
                                 reply_markup,
                                 content,
                                 via_bot,
@@ -492,7 +501,7 @@ internal data class RawMessage(
                         edit_date?.asDate,
                         has_protected_content == true,
                         forward_origin,
-                        reply_to_message?.asMessage,
+                        replyInfo,
                         reply_markup,
                         via_bot,
                         media_group_id

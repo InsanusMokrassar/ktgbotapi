@@ -14,7 +14,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @Serializable(GiveawayPublicResults.Companion::class)
 sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPreviewChatAndMessageId,
-    ExternalReplyInfo.ContentVariant {
+    ReplyInfo.External.ContentVariant {
     val count: Int
     val winners: List<PreviewUser>
     val additionalChats: Int

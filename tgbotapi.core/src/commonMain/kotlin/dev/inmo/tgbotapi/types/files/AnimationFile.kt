@@ -24,4 +24,4 @@ data class AnimationFile(
     @SerialName(fileSizeField)
     override val fileSize: Long? = null
 ) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, CustomNamedMediaFile, SizedMediaFile,
-    ExternalReplyInfo.ContentVariant
+    ReplyInfo.External.ContentVariant

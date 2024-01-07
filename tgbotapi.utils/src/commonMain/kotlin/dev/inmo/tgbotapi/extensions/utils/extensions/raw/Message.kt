@@ -51,7 +51,7 @@ inline val AccessibleMessage.is_automatic_forward: Boolean?
     get() = this is ConnectedFromChannelGroupContentMessage<*>
 @RiskFeature(RawFieldsUsageWarning)
 inline val AccessibleMessage.reply_to_message: AccessibleMessage?
-    get() = asPossiblyReplyMessage() ?.replyTo
+    get() = asPossiblyReplyMessage() ?.replyInfo
 @RiskFeature(RawFieldsUsageWarning)
 inline val AccessibleMessage.via_bot: CommonBot?
     get() = asPossiblySentViaBotCommonMessage() ?.senderBot

@@ -12,7 +12,7 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class Photo(
     val photos: List<PhotoSize>
-) : List<PhotoSize> by photos, ExternalReplyInfo.ContentVariant
+) : List<PhotoSize> by photos, ReplyInfo.External.ContentVariant
 
 fun Photo.biggest(): PhotoSize? = maxByOrNull {
     it.resolution
