@@ -15,10 +15,27 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val date: DateTime,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val replyTo: AccessibleMessage?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : ChannelContentMessage<T>
+) : ChannelContentMessage<T> {
+    constructor(
+        messageId: MessageId,
+        chat: PreviewChannelChat,
+        content: T,
+        date: DateTime,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        forwardInfo: ForwardInfo,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        messageId, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo, replyMarkup, senderBot, authorSignature, mediaGroupId
+    )
+}

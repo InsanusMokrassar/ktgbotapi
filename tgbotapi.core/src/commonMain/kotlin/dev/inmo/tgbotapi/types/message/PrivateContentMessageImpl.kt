@@ -18,9 +18,26 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val date: DateTime,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val replyTo: AccessibleMessage?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : PrivateContentMessage<T>
+) : PrivateContentMessage<T> {
+    constructor(
+        messageId: MessageId,
+        from: User,
+        chat: PreviewPrivateChat,
+        content: T,
+        date: DateTime,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        forwardInfo: ForwardInfo,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        senderBot: CommonBot?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo, replyMarkup, senderBot, mediaGroupId
+    )
+}

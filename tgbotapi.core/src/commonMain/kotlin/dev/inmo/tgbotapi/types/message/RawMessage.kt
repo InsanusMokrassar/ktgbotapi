@@ -52,12 +52,8 @@ internal data class RawMessage(
     private val messageThreadId: MessageThreadId? = null,
     private val from: User? = null,
     private val sender_chat: PreviewPublicChat? = null,
-    private val forward_from: User? = null,
-    private val forward_from_chat: Chat? = null,
-    private val forward_from_message_id: MessageId? = null,
-    private val forward_signature: ForwardSignature? = null,
-    private val forward_sender_name: ForwardSenderName? = null,
-    private val forward_date: TelegramDate? = null,
+    private val forward_origin: MessageOrigin? = null,
+    private val is_topic_message: Boolean? = null,
     private val is_automatic_forward: Boolean? = null,
     private val reply_to_message: RawMessage? = null,
     private val via_bot: CommonBot? = null,
@@ -201,44 +197,6 @@ internal data class RawMessage(
         }
     }
 
-    private val forwarded: ForwardInfo? by lazy {
-        forward_date
-            ?: return@lazy null // According to the documentation, now any forwarded message contains this field
-        when {
-            forward_sender_name != null -> ForwardInfo.ByAnonymous(
-                forward_date,
-                forward_sender_name
-            )
-
-            forward_from_chat is ChannelChat -> if (forward_from_message_id == null) {
-                ForwardInfo.PublicChat.SentByChannel(
-                    forward_date,
-                    forward_from_chat,
-                    forward_signature
-                )
-            } else {
-                ForwardInfo.PublicChat.FromChannel(
-                    forward_date,
-                    forward_from_message_id,
-                    forward_from_chat,
-                    forward_signature
-                )
-            }
-
-            forward_from_chat is SupergroupChat -> ForwardInfo.PublicChat.FromSupergroup(
-                forward_date,
-                forward_from_chat
-            )
-
-            forward_from != null -> ForwardInfo.ByUser(
-                forward_date,
-                forward_from
-            )
-
-            else -> null
-        }
-    }
-
     private val chatEvent: ChatEvent? by lazy {
         when {
             new_chat_members != null -> NewChatMembers(new_chat_members.toList())
@@ -334,7 +292,7 @@ internal data class RawMessage(
                             date.asDate,
                             edit_date?.asDate,
                             has_protected_content == true,
-                            forwarded,
+                            forward_origin,
                             reply_to_message?.asMessage,
                             reply_markup,
                             via_bot,
@@ -356,7 +314,7 @@ internal data class RawMessage(
                                     messageId,
                                     messageThreadId,
                                     date.asDate,
-                                    forwarded,
+                                    forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
                                     reply_to_message ?.asMessage,
@@ -371,7 +329,7 @@ internal data class RawMessage(
                                     messageId,
                                     messageThreadId,
                                     date.asDate,
-                                    forwarded,
+                                    forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
                                     reply_to_message ?.asMessage,
@@ -387,7 +345,7 @@ internal data class RawMessage(
                                     messageThreadId,
                                     from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
                                     date.asDate,
-                                    forwarded,
+                                    forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
                                     reply_to_message ?.asMessage,
@@ -405,7 +363,7 @@ internal data class RawMessage(
                                         sender_chat,
                                         messageId,
                                         date.asDate,
-                                        forwarded,
+                                        forward_origin,
                                         edit_date ?.asDate,
                                         has_protected_content == true,
                                         reply_to_message ?.asMessage,
@@ -421,7 +379,7 @@ internal data class RawMessage(
                                         sender_chat,
                                         messageId,
                                         date.asDate,
-                                        forwarded,
+                                        forward_origin,
                                         edit_date ?.asDate,
                                         has_protected_content == true,
                                         reply_to_message ?.asMessage,
@@ -436,7 +394,7 @@ internal data class RawMessage(
                                     chat,
                                     messageId,
                                     date.asDate,
-                                    forwarded,
+                                    forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
                                     reply_to_message ?.asMessage,
@@ -451,7 +409,7 @@ internal data class RawMessage(
                                     messageId,
                                     from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
                                     date.asDate,
-                                    forwarded,
+                                    forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
                                     reply_to_message ?.asMessage,
@@ -469,7 +427,7 @@ internal data class RawMessage(
                                     sender_chat,
                                     messageId,
                                     date.asDate,
-                                    forwarded,
+                                    forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
                                     reply_to_message ?.asMessage,
@@ -485,7 +443,7 @@ internal data class RawMessage(
                                     sender_chat,
                                     messageId,
                                     date.asDate,
-                                    forwarded,
+                                    forward_origin,
                                     edit_date ?.asDate,
                                     has_protected_content == true,
                                     reply_to_message ?.asMessage,
@@ -500,7 +458,7 @@ internal data class RawMessage(
                                 chat,
                                 messageId,
                                 date.asDate,
-                                forwarded,
+                                forward_origin,
                                 edit_date ?.asDate,
                                 has_protected_content == true,
                                 reply_to_message ?.asMessage,
@@ -515,7 +473,7 @@ internal data class RawMessage(
                                 messageId,
                                 from ?: error("It is expected that in messages from non anonymous users and channels user must be specified"),
                                 date.asDate,
-                                forwarded,
+                                forward_origin,
                                 edit_date ?.asDate,
                                 has_protected_content == true,
                                 reply_to_message ?.asMessage,
@@ -534,7 +492,7 @@ internal data class RawMessage(
                         date.asDate,
                         edit_date?.asDate,
                         has_protected_content == true,
-                        forwarded,
+                        forward_origin,
                         reply_to_message?.asMessage,
                         reply_markup,
                         via_bot,
