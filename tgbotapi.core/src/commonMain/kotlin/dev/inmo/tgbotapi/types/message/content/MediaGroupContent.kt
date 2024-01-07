@@ -2,10 +2,8 @@ package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendMediaGroup
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MediaGroupIdentifier
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
@@ -16,10 +14,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MediaGroupContent<T : MediaGroupPartContent>(
     override val group: List<MediaGroupCollectionContent.PartWrapper<T>>,
-    override val mediaGroupId: MediaGroupIdentifier
-) : MediaGroupCollectionContent<T> {
+    override val mediaGroupId: MediaGroupIdentifier,
+) : MediaGroupCollectionContent<T>, WithOptionalQuoteInfo {
     val mainContent: MediaGroupPartContent
         get() = group.first().content
+    override val quote: TextQuote?
+        get() = mainContent.quote
     override val media: TelegramMediaFile
         get() = mainContent.media
 

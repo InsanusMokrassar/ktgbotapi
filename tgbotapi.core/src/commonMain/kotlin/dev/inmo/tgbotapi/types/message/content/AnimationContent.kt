@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.TextQuote
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.AnimationFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
@@ -19,7 +20,8 @@ data class AnimationContent(
     val includedDocument: DocumentFile?,
     override val text: String?,
     override val textSources: TextSourcesList = emptyList(),
-    override val spoilered: Boolean = false
+    override val spoilered: Boolean = false,
+    override val quote: TextQuote? = null
 ) : TextedMediaContent, SpoilerableMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,

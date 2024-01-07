@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.TextQuote
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.toTelegramMediaVideo
@@ -18,7 +19,8 @@ data class VideoContent(
     override val media: VideoFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList(),
-    override val spoilered: Boolean = false
+    override val spoilered: Boolean = false,
+    override val quote: TextQuote? = null
 ) : VisualMediaGroupPartContent {
     override fun createResend(
         chatId: ChatIdentifier,

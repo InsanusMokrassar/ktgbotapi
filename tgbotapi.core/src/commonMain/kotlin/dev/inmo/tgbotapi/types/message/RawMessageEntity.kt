@@ -1,9 +1,12 @@
 package dev.inmo.tgbotapi.types.message
 
+import dev.inmo.micro_utils.serialization.mapper.MapperSerializer
 import dev.inmo.tgbotapi.types.CustomEmojiId
 import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.message.textsources.*
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.ListSerializer
 
 @Serializable
 internal data class RawMessageEntity(

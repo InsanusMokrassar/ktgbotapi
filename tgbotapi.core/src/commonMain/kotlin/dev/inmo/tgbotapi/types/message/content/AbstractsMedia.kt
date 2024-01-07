@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.types.MediaGroupIdentifier
 import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.media.*
@@ -22,7 +23,7 @@ sealed interface DocumentMediaGroupPartContent : MediaGroupPartContent {
     override fun toMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia
 }
 
-sealed interface TextedMediaContent : TextedContent, MediaContent
+sealed interface TextedMediaContent : TextedContent, MediaContent, WithOptionalQuoteInfo
 
 sealed interface MediaGroupCollectionContent<T : MediaGroupPartContent> : TextedMediaContent {
     @Serializable

@@ -9,6 +9,8 @@ import dev.inmo.tgbotapi.types.media.toTelegramMediaDocument
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.TextQuote
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.asDocumentFile
@@ -19,7 +21,8 @@ import kotlinx.serialization.Serializable
 data class DocumentContent(
     override val media: DocumentFile,
     override val text: String? = null,
-    override val textSources: TextSourcesList = emptyList()
+    override val textSources: TextSourcesList = emptyList(),
+    override val quote: TextQuote? = null
 ) : DocumentMediaGroupPartContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -52,7 +55,8 @@ inline fun MediaContent.asDocumentContent() = when (this) {
     is TextedInput -> DocumentContent(
         media.asDocumentFile(),
         text,
-        textSources
+        textSources,
+        (this as? WithOptionalQuoteInfo) ?.quote
     )
     else -> DocumentContent(
         media.asDocumentFile()

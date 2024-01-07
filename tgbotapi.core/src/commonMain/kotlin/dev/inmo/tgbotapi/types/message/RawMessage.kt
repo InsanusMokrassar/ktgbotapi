@@ -55,6 +55,7 @@ internal data class RawMessage(
     private val is_automatic_forward: Boolean? = null,
     private val reply_to_message: RawMessage? = null,
     private val external_reply: ReplyInfo.External? = null,
+    private val quote: TextQuote? = null,
     private val via_bot: CommonBot? = null,
     private val edit_date: TelegramDate? = null,
     private val has_protected_content: Boolean? = null,
@@ -148,40 +149,46 @@ internal data class RawMessage(
                 messageId,
                 story
             )
-            text != null -> TextContent(text, (entities ?: emptyList()).asTextSources(text), link_preview_options)
+            text != null -> TextContent(text, (entities ?: emptyList()).asTextSources(text), link_preview_options, quote)
             audio != null -> AudioContent(
                 audio,
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                quote
             )
             video != null -> VideoContent(
                 video,
                 caption,
                 adaptedCaptionEntities,
-                has_media_spoiler ?: false
+                has_media_spoiler ?: false,
+                quote
             )
             animation != null -> AnimationContent(
                 animation,
                 document,
                 caption,
                 adaptedCaptionEntities,
-                has_media_spoiler ?: false
+                has_media_spoiler ?: false,
+                quote
             )
             document != null -> DocumentContent(
                 document,
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                quote
             )
             voice != null -> VoiceContent(
                 voice,
                 caption,
-                adaptedCaptionEntities
+                adaptedCaptionEntities,
+                quote
             )
             photo != null -> PhotoContent(
                 photo,
                 caption,
                 adaptedCaptionEntities,
-                has_media_spoiler ?: false
+                has_media_spoiler ?: false,
+                quote
             )
             sticker != null -> StickerContent(sticker)
             dice != null -> DiceContent(dice)
