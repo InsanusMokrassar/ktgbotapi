@@ -23,4 +23,4 @@ data class Venue(
     override val googlePlaceId: GooglePlaceId? = null,
     @SerialName(googlePlaceTypeField)
     override val googlePlaceType: GooglePlaceType? = null
-) : CommonVenueData, Locationed by location
+) : CommonVenueData, Locationed by location, ExternalReplyInfo.ContentVariant

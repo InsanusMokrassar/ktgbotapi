@@ -52,6 +52,8 @@ sealed interface MessageContent: ResendableContent {
                 subclass(StickerContent::class)
                 subclass(InvoiceContent::class)
                 subclass(StoryContent::class)
+                subclass(GiveawayPublicResultsContent::class)
+                subclass(ScheduledGiveawayContent::class)
 
                 additionalBuilder()
             }
@@ -139,18 +141,6 @@ sealed interface TextedContent : MessageContent, TextedInput
 sealed interface MediaContent: MessageContent {
     val media: TelegramMediaFile
     fun asTelegramMedia(): TelegramMedia
-
-    override fun createResend(
-        chatId: ChatIdentifier,
-        messageThreadId: MessageThreadId?,
-        disableNotification: Boolean,
-        protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
-        replyMarkup: KeyboardMarkup?
-    ): Request<out ContentMessage<MediaContent>> {
-        TODO("Not yet implemented")
-    }
 }
 
 sealed interface SpoilerableMediaContent : MediaContent, SpoilerableData

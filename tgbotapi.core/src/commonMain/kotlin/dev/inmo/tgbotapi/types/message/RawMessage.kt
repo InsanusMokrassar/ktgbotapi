@@ -94,6 +94,8 @@ internal data class RawMessage(
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
+    private val giveaway: ScheduledGiveaway? = null,
+    private val giveaway_winners: GiveawayResults? = null,
 
     private val users_shared: UsersShared? = null,
     private val chat_shared: ChatShared? = null,
@@ -132,8 +134,6 @@ internal data class RawMessage(
 
     // Giveaways
     private val giveaway_created: GiveawayCreated? = null,
-    private val giveaway: ScheduledGiveaway? = null,
-    private val giveaway_winners: GiveawayResults? = null,
     private val giveaway_completed: GiveawayPrivateResults? = null,
 ) {
     private val content: MessageContent? by lazy {
@@ -177,7 +177,7 @@ internal data class RawMessage(
                 adaptedCaptionEntities
             )
             photo != null -> PhotoContent(
-                photo.toList(),
+                photo,
                 caption,
                 adaptedCaptionEntities,
                 has_media_spoiler ?: false
@@ -191,7 +191,7 @@ internal data class RawMessage(
             venue != null -> VenueContent(venue)
             poll != null -> PollContent(poll)
             invoice != null -> InvoiceContent(invoice)
-            giveaway != null -> ScheduledGiveawayContent(giveaway)
+            giveaway != null -> ScheduledGiveawayContent(chat, messageId, giveaway)
             giveaway_winners is GiveawayPublicResults -> GiveawayPublicResultsContent(giveaway_winners)
             else -> null
         }
@@ -202,7 +202,7 @@ internal data class RawMessage(
             new_chat_members != null -> NewChatMembers(new_chat_members.toList())
             left_chat_member != null -> LeftChatMemberEvent(left_chat_member)
             new_chat_title != null -> NewChatTitle(new_chat_title)
-            new_chat_photo != null -> NewChatPhoto(new_chat_photo.toList())
+            new_chat_photo != null -> NewChatPhoto(new_chat_photo)
             video_chat_started != null -> video_chat_started
             video_chat_scheduled != null -> video_chat_scheduled
             message_auto_delete_timer_changed != null -> message_auto_delete_timer_changed

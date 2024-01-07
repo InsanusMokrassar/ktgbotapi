@@ -20,7 +20,7 @@ data class DocumentFile(
     override val mimeType: MimeType? = null,
     @SerialName(fileNameField)
     override val fileName: String? = null
-) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, CustomNamedMediaFile
+) : TelegramMediaFile, MimedMediaFile, ThumbedMediaFile, CustomNamedMediaFile, ExternalReplyInfo.ContentVariant
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun TelegramMediaFile.asDocumentFile() = if (this is DocumentFile) {

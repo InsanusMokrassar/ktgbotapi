@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.message.content
 
+import dev.inmo.tgbotapi.requests.ForwardMessage
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -20,6 +21,13 @@ data class GiveawayPublicResultsContent(
         allowSendingWithoutReply: Boolean?,
         replyMarkup: KeyboardMarkup?
     ): Request<out AccessibleMessage> {
-        TODO("Not yet implemented")
+        return ForwardMessage(
+            giveaway.chat.id,
+            toChatId = chatId,
+            messageId = giveaway.messageId,
+            threadId = messageThreadId,
+            disableNotification = disableNotification,
+            protectContent = protectContent
+        )
     }
 }

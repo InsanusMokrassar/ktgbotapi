@@ -6,17 +6,20 @@ import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
+import kotlin.jvm.JvmInline
 
-typealias Photo = List<PhotoSize>
+@Serializable
+@JvmInline
+value class Photo(
+    val photos: List<PhotoSize>
+) : List<PhotoSize> by photos, ExternalReplyInfo.ContentVariant
 
 fun Photo.biggest(): PhotoSize? = maxByOrNull {
     it.resolution
 }
 
 @RiskFeature
-object PhotoSerializer : KSerializer<Photo> by ListSerializer(
-    PhotoSize.serializer()
-)
+object PhotoSerializer : KSerializer<Photo> by Photo.serializer()
 
 @Serializable
 data class PhotoSize(

@@ -30,4 +30,4 @@ data class ScheduledGiveaway(
     val countries: List<IetfLang>? = null,
     @SerialName(premiumSubscriptionMonthCountField)
     override val premiumMonths: Int? = null
-) : GiveawayInfo
+) : GiveawayInfo, ExternalReplyInfo.ContentVariant

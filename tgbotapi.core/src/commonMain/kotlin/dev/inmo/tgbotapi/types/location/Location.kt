@@ -20,7 +20,7 @@ import kotlinx.serialization.json.JsonObject
  */
 @Serializable(LocationSerializer::class)
 @ClassCastsIncluded
-sealed interface Location : Locationed, HorizontallyAccured
+sealed interface Location : Locationed, HorizontallyAccured, ExternalReplyInfo.ContentVariant
 
 @Serializable
 data class StaticLocation(
