@@ -63,13 +63,13 @@ sealed interface ReplyInfo {
             ) : Content
 
             @Serializable
-            data class Media<T>(
+            data class Media(
                 override val origin: MessageOrigin,
                 override val chat: SuperPublicChat?,
                 override val messageMeta: Message.MetaInfo?,
                 override val spoilered: Boolean,
-                override val content: T
-            ) : Content, SpoilerableData where T: ContentVariant, T : TelegramMediaFile
+                override val content: MediaContentVariant
+            ) : Content, SpoilerableData
         }
 
         @Serializable
@@ -133,7 +133,7 @@ sealed interface ReplyInfo {
 
                     return content ?.let {
                         when (it) {
-                            is TelegramMediaFile -> {
+                            is MediaContentVariant -> {
                                 Content.Media(
                                     origin,
                                     chat,

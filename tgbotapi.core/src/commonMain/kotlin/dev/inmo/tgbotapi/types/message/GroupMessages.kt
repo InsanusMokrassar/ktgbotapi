@@ -40,7 +40,7 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
     )
 }
 
@@ -74,7 +74,7 @@ data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
     )
 }
 
@@ -106,7 +106,7 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        chat, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
     )
 }
 
@@ -138,7 +138,7 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        chat, messageId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo, replyMarkup, content, senderBot, mediaGroupId
+        chat, messageId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId
     )
 }
 
@@ -174,7 +174,7 @@ data class FromChannelForumContentMessageImpl<T: MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        chat, channel, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, channel, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
     )
 }
 
@@ -208,7 +208,7 @@ data class AnonymousForumContentMessageImpl<T : MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        chat, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
     )
 }
 
@@ -242,6 +242,6 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        chat, messageId, threadId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo, replyMarkup, content, senderBot, mediaGroupId
+        chat, messageId, threadId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId
     )
 }

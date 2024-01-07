@@ -12,7 +12,22 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class Photo(
     val photos: List<PhotoSize>
-) : List<PhotoSize> by photos, ReplyInfo.External.ContentVariant
+) : List<PhotoSize> by photos, MediaContentVariant {
+    val biggest: PhotoSize
+        get() = biggest()!!
+    override val fileId: FileId
+        get() = biggest.fileId
+    override val fileUniqueId: FileUniqueId
+        get() = biggest.fileUniqueId
+    override val fileSize: Long?
+        get() = biggest.fileSize
+
+    init {
+        require(photos.isNotEmpty()) {
+            "Photos collection must not be empty"
+        }
+    }
+}
 
 fun Photo.biggest(): PhotoSize? = maxByOrNull {
     it.resolution

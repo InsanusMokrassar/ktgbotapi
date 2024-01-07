@@ -741,7 +741,7 @@ suspend fun <BC : BehaviourContext> BC.onScheduledGiveawayContent(
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
-suspend fun <BC : BehaviourContext> BC.onScheduledGiveawayContent(
+suspend fun <BC : BehaviourContext> BC.onGiveawayPublicResultsContent(
     initialFilter: CommonMessageFilter<GiveawayPublicResultsContent>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, GiveawayPublicResultsContentMessage, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in GiveawayPublicResultsContentMessage, Any> = ByChatMessageMarkerFactory,

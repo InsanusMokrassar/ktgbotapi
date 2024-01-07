@@ -38,6 +38,6 @@ data class PrivateContentMessageImpl<T: MessageContent>(
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo, replyMarkup, senderBot, mediaGroupId
+        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, mediaGroupId
     )
 }

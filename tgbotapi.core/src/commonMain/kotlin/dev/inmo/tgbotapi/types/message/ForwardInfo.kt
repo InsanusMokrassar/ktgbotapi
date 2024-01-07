@@ -83,6 +83,7 @@ fun MessageOrigin.forwardInfo() = when(this) {
         date,
         user
     )
+    is MessageOrigin.Unknown -> null
 }
 
 fun ForwardInfo.messageOrigin() = when (this) {

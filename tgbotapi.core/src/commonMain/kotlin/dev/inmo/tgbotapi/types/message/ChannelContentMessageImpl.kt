@@ -36,6 +36,6 @@ data class ChannelContentMessageImpl<T: MessageContent>(
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupIdentifier?,
     ) : this(
-        messageId, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo, replyMarkup, senderBot, authorSignature, mediaGroupId
+        messageId, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, authorSignature, mediaGroupId
     )
 }

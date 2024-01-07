@@ -21,7 +21,7 @@ sealed interface MessageOrigin {
     @Serializable
     data class User(
         @SerialName(senderUserField)
-        val user: PreviewUser,
+        val user: dev.inmo.tgbotapi.types.chat.User,
         @SerialName(dateField)
         override val date: TelegramDate
     ) : MessageOrigin {

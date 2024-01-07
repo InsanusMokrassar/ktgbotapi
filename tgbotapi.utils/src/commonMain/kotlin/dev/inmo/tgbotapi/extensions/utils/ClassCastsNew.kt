@@ -75,6 +75,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.query.BaseInlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.InlineQueries.query.LocationInlineQuery
 import dev.inmo.tgbotapi.types.PrimaryInviteLink
+import dev.inmo.tgbotapi.types.ReplyInfo
 import dev.inmo.tgbotapi.types.SecondaryChatInviteLink
 import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.types.actions.BotAction
@@ -179,9 +180,11 @@ import dev.inmo.tgbotapi.types.files.MaskAnimatedSticker
 import dev.inmo.tgbotapi.types.files.MaskSimpleSticker
 import dev.inmo.tgbotapi.types.files.MaskSticker
 import dev.inmo.tgbotapi.types.files.MaskVideoSticker
+import dev.inmo.tgbotapi.types.files.MediaContentVariant
 import dev.inmo.tgbotapi.types.files.MimedMediaFile
 import dev.inmo.tgbotapi.types.files.PassportFile
 import dev.inmo.tgbotapi.types.files.PathedFile
+import dev.inmo.tgbotapi.types.files.Photo
 import dev.inmo.tgbotapi.types.files.PhotoSize
 import dev.inmo.tgbotapi.types.files.PlayableMediaFile
 import dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
@@ -1572,6 +1575,60 @@ public inline fun <T>
     InputMessageContent.ifInputVenueMessageContent(block: (InputVenueMessageContent) -> T): T? =
     inputVenueMessageContentOrNull() ?.let(block)
 
+public inline fun ReplyInfo.externalOrNull(): ReplyInfo.External? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.External
+
+public inline fun ReplyInfo.externalOrThrow(): ReplyInfo.External = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.External
+
+public inline fun <T> ReplyInfo.ifExternal(block: (ReplyInfo.External) -> T): T? = externalOrNull()
+    ?.let(block)
+
+public inline fun ReplyInfo.contentOrNull(): ReplyInfo.External.Content? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Content
+
+public inline fun ReplyInfo.contentOrThrow(): ReplyInfo.External.Content = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Content
+
+public inline fun <T> ReplyInfo.ifContent(block: (ReplyInfo.External.Content) -> T): T? =
+    contentOrNull() ?.let(block)
+
+public inline fun ReplyInfo.mediaOrNull(): ReplyInfo.External.Content.Media? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Media
+
+public inline fun ReplyInfo.mediaOrThrow(): ReplyInfo.External.Content.Media = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Media
+
+public inline fun <T> ReplyInfo.ifMedia(block: (ReplyInfo.External.Content.Media) -> T): T? =
+    mediaOrNull() ?.let(block)
+
+public inline fun ReplyInfo.simpleOrNull(): ReplyInfo.External.Content.Simple? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Simple
+
+public inline fun ReplyInfo.simpleOrThrow(): ReplyInfo.External.Content.Simple = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Content.Simple
+
+public inline fun <T> ReplyInfo.ifSimple(block: (ReplyInfo.External.Content.Simple) -> T): T? =
+    simpleOrNull() ?.let(block)
+
+public inline fun ReplyInfo.textOrNull(): ReplyInfo.External.Text? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Text
+
+public inline fun ReplyInfo.textOrThrow(): ReplyInfo.External.Text = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.External.Text
+
+public inline fun <T> ReplyInfo.ifText(block: (ReplyInfo.External.Text) -> T): T? = textOrNull()
+    ?.let(block)
+
+public inline fun ReplyInfo.internalOrNull(): ReplyInfo.Internal? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.Internal
+
+public inline fun ReplyInfo.internalOrThrow(): ReplyInfo.Internal = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.Internal
+
+public inline fun <T> ReplyInfo.ifInternal(block: (ReplyInfo.Internal) -> T): T? = internalOrNull()
+    ?.let(block)
+
 public inline fun BotAction.typingActionOrNull(): TypingAction? = this as?
     dev.inmo.tgbotapi.types.actions.TypingAction
 
@@ -2385,6 +2442,15 @@ public inline fun TelegramMediaFile.fileOrThrow(): File = this as dev.inmo.tgbot
 
 public inline fun <T> TelegramMediaFile.ifFile(block: (File) -> T): T? = fileOrNull() ?.let(block)
 
+public inline fun TelegramMediaFile.mediaContentVariantOrNull(): MediaContentVariant? = this as?
+    dev.inmo.tgbotapi.types.files.MediaContentVariant
+
+public inline fun TelegramMediaFile.mediaContentVariantOrThrow(): MediaContentVariant = this as
+    dev.inmo.tgbotapi.types.files.MediaContentVariant
+
+public inline fun <T> TelegramMediaFile.ifMediaContentVariant(block: (MediaContentVariant) -> T): T?
+    = mediaContentVariantOrNull() ?.let(block)
+
 public inline fun TelegramMediaFile.mimedMediaFileOrNull(): MimedMediaFile? = this as?
     dev.inmo.tgbotapi.types.files.MimedMediaFile
 
@@ -2411,6 +2477,15 @@ public inline fun TelegramMediaFile.pathedFileOrThrow(): PathedFile = this as
 
 public inline fun <T> TelegramMediaFile.ifPathedFile(block: (PathedFile) -> T): T? =
     pathedFileOrNull() ?.let(block)
+
+public inline fun TelegramMediaFile.photoOrNull(): Photo? = this as?
+    dev.inmo.tgbotapi.types.files.Photo
+
+public inline fun TelegramMediaFile.photoOrThrow(): Photo = this as
+    dev.inmo.tgbotapi.types.files.Photo
+
+public inline fun <T> TelegramMediaFile.ifPhoto(block: (Photo) -> T): T? = photoOrNull()
+    ?.let(block)
 
 public inline fun TelegramMediaFile.photoSizeOrNull(): PhotoSize? = this as?
     dev.inmo.tgbotapi.types.files.PhotoSize
