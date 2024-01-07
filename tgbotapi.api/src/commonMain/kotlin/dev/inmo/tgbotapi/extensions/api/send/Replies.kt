@@ -135,8 +135,7 @@ suspend inline fun TelegramBot.reply(
     to.threadIdOrNull,
     disableNotification,
     protectContent,
-    allowSendingWithoutReply,
-    to.messageId,
+    replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true),
     replyMarkup
 )
 
@@ -157,8 +156,7 @@ suspend inline fun TelegramBot.reply(
     to.threadIdOrNull,
     disableNotification,
     protectContent,
-    allowSendingWithoutReply,
-    to.messageId,
+    replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true),
     replyMarkup
 )
 
@@ -570,7 +568,7 @@ suspend inline fun TelegramBot.replyWithMediaGroup(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendMediaGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
+) = sendMediaGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true))
 
 suspend inline fun TelegramBot.replyWithPlaylist(
     to: AccessibleMessage,
@@ -578,7 +576,7 @@ suspend inline fun TelegramBot.replyWithPlaylist(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendPlaylist(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
+) = sendPlaylist(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true))
 
 suspend inline fun TelegramBot.replyWithDocuments(
     to: AccessibleMessage,
@@ -586,7 +584,7 @@ suspend inline fun TelegramBot.replyWithDocuments(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendDocumentsGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
+) = sendDocumentsGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true))
 
 suspend inline fun TelegramBot.replyWithGallery(
     to: AccessibleMessage,
@@ -594,7 +592,7 @@ suspend inline fun TelegramBot.replyWithGallery(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null
-) = sendVisualMediaGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, to.messageId, allowSendingWithoutReply)
+) = sendVisualMediaGroup(to.chat, media, to.threadIdOrNull, disableNotification, protectContent, replyParameters = ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true))
 
 
 // Photo
