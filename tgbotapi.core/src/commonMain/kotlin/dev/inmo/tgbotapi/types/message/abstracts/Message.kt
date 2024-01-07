@@ -19,6 +19,15 @@ interface Message : WithPreviewChatAndMessageId {
     val date: DateTime
 }
 
+@Serializable
+data class InaccessibleMessage(
+    override val chat: PreviewChat,
+    override val messageId: MessageId,
+) : Message {
+    override val date: DateTime
+        get() = DateTime.invoke(0L)
+}
+
 data class UnknownMessageType(
     override val messageId: MessageId,
     override val chat: PreviewChat,

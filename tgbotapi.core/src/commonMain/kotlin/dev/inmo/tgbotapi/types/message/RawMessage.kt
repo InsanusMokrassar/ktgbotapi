@@ -287,6 +287,13 @@ internal data class RawMessage(
     }
 
     val asMessage: Message by lazy {
+        if (date.date == 0L) {
+            return@lazy InaccessibleMessage(
+                chat,
+                messageId
+            )
+        }
+
         try {
             chatEvent?.let { chatEvent ->
                 when (chat) {
