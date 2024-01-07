@@ -28,11 +28,11 @@ internal data class RawUpdate constructor(
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_message: CommonMessage<*>? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val message: Message? = null,
+    private val message: AccessibleMessage? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_channel_post: CommonMessage<*>? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val channel_post: Message? = null,
+    private val channel_post: AccessibleMessage? = null,
     private val inline_query: RawInlineQuery? = null,
     private val chosen_inline_result: RawChosenInlineResult? = null,
     private val callback_query: RawCallbackQuery? = null,

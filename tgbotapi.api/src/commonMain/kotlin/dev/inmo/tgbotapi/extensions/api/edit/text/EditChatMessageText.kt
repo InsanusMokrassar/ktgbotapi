@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.utils.*
@@ -174,7 +174,7 @@ suspend fun TelegramBot.editMessageText(
  */
 @RiskFeature("This method is unsafe due to absence of any guaranties about the type of message. In case if message is not text message this method will throw an exception")
 suspend fun TelegramBot.editMessageText(
-    message: Message,
+    message: AccessibleMessage,
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -186,7 +186,7 @@ suspend fun TelegramBot.editMessageText(
  */
 @RiskFeature("This method is unsafe due to absence of any guaranties about the type of message. In case if message is not text message this method will throw an exception")
 suspend fun TelegramBot.editMessageText(
-    message: Message,
+    message: AccessibleMessage,
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
@@ -199,7 +199,7 @@ suspend fun TelegramBot.editMessageText(
  */
 @RiskFeature("This method is unsafe due to absence of any guaranties about the type of message. In case if message is not text message this method will throw an exception")
 suspend fun TelegramBot.editMessageText(
-    message: Message,
+    message: AccessibleMessage,
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,

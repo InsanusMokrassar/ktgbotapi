@@ -18,9 +18,8 @@ import dev.inmo.tgbotapi.utils.PreviewFeature
 
 fun CallbackQuery.sourceChat() = when (this) {
     is InlineMessageIdDataCallbackQuery -> null
-    is MessageDataCallbackQuery -> message.chat
+    is AbstractMessageCallbackQuery -> message.chat
     is InlineMessageIdGameShortNameCallbackQuery -> null
-    is MessageGameShortNameCallbackQuery -> message.chat
     is UnknownCallbackQueryType -> null
 }
 

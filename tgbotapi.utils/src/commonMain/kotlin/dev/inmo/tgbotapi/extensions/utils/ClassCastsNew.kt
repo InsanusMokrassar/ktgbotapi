@@ -260,6 +260,7 @@ import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.ForwardInfo
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
@@ -275,6 +276,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.FromChannelGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.GroupEventMessage
+import dev.inmo.tgbotapi.types.message.abstracts.InaccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
@@ -414,9 +416,13 @@ import dev.inmo.tgbotapi.types.polls.QuizPoll
 import dev.inmo.tgbotapi.types.polls.RegularPoll
 import dev.inmo.tgbotapi.types.polls.ScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.UnknownPollType
+import dev.inmo.tgbotapi.types.queries.callback.AbstractMessageCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.DataCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.GameShortNameCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageDataCallbackQuery
+import dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageGameShortNameCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdDataCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdGameShortNameCallbackQuery
@@ -841,6 +847,16 @@ public inline fun WithUser.pollAnswerOrThrow(): PollAnswer = this as
 public inline fun <T> WithUser.ifPollAnswer(block: (PollAnswer) -> T): T? = pollAnswerOrNull()
     ?.let(block)
 
+public inline fun WithUser.abstractMessageCallbackQueryOrNull(): AbstractMessageCallbackQuery? =
+    this as? dev.inmo.tgbotapi.types.queries.callback.AbstractMessageCallbackQuery
+
+public inline fun WithUser.abstractMessageCallbackQueryOrThrow(): AbstractMessageCallbackQuery =
+    this as dev.inmo.tgbotapi.types.queries.callback.AbstractMessageCallbackQuery
+
+public inline fun <T>
+    WithUser.ifAbstractMessageCallbackQuery(block: (AbstractMessageCallbackQuery) -> T): T? =
+    abstractMessageCallbackQueryOrNull() ?.let(block)
+
 public inline fun WithUser.callbackQueryOrNull(): CallbackQuery? = this as?
     dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 
@@ -877,6 +893,42 @@ public inline fun WithUser.gameShortNameCallbackQueryOrThrow(): GameShortNameCal
 public inline fun <T>
     WithUser.ifGameShortNameCallbackQuery(block: (GameShortNameCallbackQuery) -> T): T? =
     gameShortNameCallbackQueryOrNull() ?.let(block)
+
+public inline fun WithUser.inaccessibleMessageCallbackQueryOrNull():
+    InaccessibleMessageCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageCallbackQuery
+
+public inline fun WithUser.inaccessibleMessageCallbackQueryOrThrow():
+    InaccessibleMessageCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageCallbackQuery
+
+public inline fun <T>
+    WithUser.ifInaccessibleMessageCallbackQuery(block: (InaccessibleMessageCallbackQuery) -> T): T?
+    = inaccessibleMessageCallbackQueryOrNull() ?.let(block)
+
+public inline fun WithUser.inaccessibleMessageDataCallbackQueryOrNull():
+    InaccessibleMessageDataCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageDataCallbackQuery
+
+public inline fun WithUser.inaccessibleMessageDataCallbackQueryOrThrow():
+    InaccessibleMessageDataCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageDataCallbackQuery
+
+public inline fun <T>
+    WithUser.ifInaccessibleMessageDataCallbackQuery(block: (InaccessibleMessageDataCallbackQuery) -> T):
+    T? = inaccessibleMessageDataCallbackQueryOrNull() ?.let(block)
+
+public inline fun WithUser.inaccessibleMessageGameShortNameCallbackQueryOrNull():
+    InaccessibleMessageGameShortNameCallbackQuery? = this as?
+    dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageGameShortNameCallbackQuery
+
+public inline fun WithUser.inaccessibleMessageGameShortNameCallbackQueryOrThrow():
+    InaccessibleMessageGameShortNameCallbackQuery = this as
+    dev.inmo.tgbotapi.types.queries.callback.InaccessibleMessageGameShortNameCallbackQuery
+
+public inline fun <T>
+    WithUser.ifInaccessibleMessageGameShortNameCallbackQuery(block: (InaccessibleMessageGameShortNameCallbackQuery) -> T):
+    T? = inaccessibleMessageGameShortNameCallbackQueryOrNull() ?.let(block)
 
 public inline fun WithUser.inlineMessageIdCallbackQueryOrNull(): InlineMessageIdCallbackQuery? =
     this as? dev.inmo.tgbotapi.types.queries.callback.InlineMessageIdCallbackQuery
@@ -3395,6 +3447,24 @@ public inline fun Message.commonForumContentMessageOrThrow():
 public inline fun <T>
     Message.ifCommonForumContentMessage(block: (CommonForumContentMessage<MessageContent>) -> T): T?
     = commonForumContentMessageOrNull() ?.let(block)
+
+public inline fun Message.accessibleMessageOrNull(): AccessibleMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+
+public inline fun Message.accessibleMessageOrThrow(): AccessibleMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+
+public inline fun <T> Message.ifAccessibleMessage(block: (AccessibleMessage) -> T): T? =
+    accessibleMessageOrNull() ?.let(block)
+
+public inline fun Message.inaccessibleMessageOrNull(): InaccessibleMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.InaccessibleMessage
+
+public inline fun Message.inaccessibleMessageOrThrow(): InaccessibleMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.InaccessibleMessage
+
+public inline fun <T> Message.ifInaccessibleMessage(block: (InaccessibleMessage) -> T): T? =
+    inaccessibleMessageOrNull() ?.let(block)
 
 public inline fun Message.unknownMessageTypeOrNull(): UnknownMessageType? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.UnknownMessageType

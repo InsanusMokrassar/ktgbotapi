@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.updates
 
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.TextContent
 import dev.inmo.tgbotapi.types.message.textsources.BotCommandTextSource
 import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
@@ -58,10 +58,10 @@ fun CommonMessage<*>.hasNoCommands(): Boolean = !this.hasCommands()
  * }
  * ```
  *
- * @return true if this [Message] is from forum ([threadIdOrNull] is not null). False otherwise.
+ * @return true if this [AccessibleMessage] is from forum ([threadIdOrNull] is not null). False otherwise.
  * @see notForumMessage
  */
-fun Message.forumMessage(): Boolean = threadIdOrNull != null
+fun AccessibleMessage.forumMessage(): Boolean = threadIdOrNull != null
 
 /**
  * A predicate to test that message has not been sent in the forum.
@@ -76,7 +76,7 @@ fun Message.forumMessage(): Boolean = threadIdOrNull != null
  * }
  * ```
  *
- * @return true if this [Message] is not from forum ([threadIdOrNull] is not null). False otherwise.
+ * @return true if this [AccessibleMessage] is not from forum ([threadIdOrNull] is not null). False otherwise.
  * @see forumMessage
  */
-fun Message.notForumMessage(): Boolean = !forumMessage()
+fun AccessibleMessage.notForumMessage(): Boolean = !forumMessage()

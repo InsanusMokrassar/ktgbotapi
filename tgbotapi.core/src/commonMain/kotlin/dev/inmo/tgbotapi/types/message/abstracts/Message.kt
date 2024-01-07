@@ -1,12 +1,9 @@
 package dev.inmo.tgbotapi.types.message.abstracts
 
-import dev.inmo.tgbotapi.abstracts.WithMessageId
 import korlibs.time.DateTime
-import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.message.RawMessage
 import kotlinx.serialization.*
@@ -19,11 +16,13 @@ interface Message : WithPreviewChatAndMessageId {
     val date: DateTime
 }
 
+interface AccessibleMessage : Message
+
 @Serializable
 data class InaccessibleMessage(
     override val chat: PreviewChat,
     override val messageId: MessageId,
-) : Message {
+) : AccessibleMessage {
     override val date: DateTime
         get() = DateTime.invoke(0L)
 }
@@ -33,7 +32,7 @@ data class UnknownMessageType(
     override val chat: PreviewChat,
     override val date: DateTime,
     val insideException: Exception
-) : Message
+) : AccessibleMessage
 
 internal class TelegramBotAPIMessageDeserializationStrategyClass<T> : DeserializationStrategy<T> {
     @OptIn(InternalSerializationApi::class)

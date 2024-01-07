@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.extensions.api
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.ForwardMessages
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 
 suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
@@ -66,7 +66,7 @@ suspend fun TelegramBot.forwardMessages(
 
 suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
-    messages: List<Message>,
+    messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -141,7 +141,7 @@ suspend fun TelegramBot.forward(
 
 suspend fun TelegramBot.forward(
     toChatId: ChatIdentifier,
-    messages: List<Message>,
+    messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,

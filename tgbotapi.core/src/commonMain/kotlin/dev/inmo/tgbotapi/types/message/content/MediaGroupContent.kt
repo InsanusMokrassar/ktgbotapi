@@ -10,7 +10,6 @@ import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import kotlinx.serialization.Serializable
 

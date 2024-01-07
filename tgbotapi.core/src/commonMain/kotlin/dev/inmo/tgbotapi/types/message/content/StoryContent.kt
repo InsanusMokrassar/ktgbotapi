@@ -7,8 +7,6 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 import dev.inmo.tgbotapi.types.stories.Story
 import kotlinx.serialization.Serializable

@@ -23,7 +23,7 @@ import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
@@ -1166,7 +1166,7 @@ suspend inline fun TelegramBot.reply(
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
-    copy: Message,
+    copy: AccessibleMessage,
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = toChatId.threadId,

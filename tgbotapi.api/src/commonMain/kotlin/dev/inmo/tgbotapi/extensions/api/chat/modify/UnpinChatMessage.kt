@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.requests.chat.modify.UnpinChatMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 
 suspend fun TelegramBot.unpinChatMessage(
     chatId: ChatIdentifier,
@@ -18,5 +18,5 @@ suspend fun TelegramBot.unpinChatMessage(
 ) = unpinChatMessage(chat.id, messageId)
 
 suspend fun TelegramBot.unpinChatMessage(
-    message: Message
+    message: AccessibleMessage
 ) = unpinChatMessage(message.chat.id, message.messageId)

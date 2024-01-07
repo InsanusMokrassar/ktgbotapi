@@ -978,346 +978,346 @@ inline fun SecureValue.requireSecureValueWithTranslations(): SecureValueWithTran
     this as SecureValueWithTranslations
 
 @PreviewFeature
-inline fun <T> Message.whenAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenAnonymousGroupContentMessageImpl(block: (AnonymousGroupContentMessageImpl<MessageContent>) -> T) =
     asAnonymousGroupContentMessageImpl()?.let(block)
 
 @PreviewFeature
-inline fun Message.asAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent>? =
+inline fun AccessibleMessage.asAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent>? =
     this as? AnonymousGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent> =
+inline fun AccessibleMessage.requireAnonymousGroupContentMessageImpl(): AnonymousGroupContentMessageImpl<MessageContent> =
     this as AnonymousGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenChannelContentMessageImpl(block: (UnconnectedFromChannelGroupContentMessageImpl<MessageContent>) -> T) =
     asChannelContentMessageImpl()?.let(block)
 
 @PreviewFeature
-inline fun Message.asChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? =
+inline fun AccessibleMessage.asChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent>? =
     this as? UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent> =
+inline fun AccessibleMessage.requireChannelContentMessageImpl(): UnconnectedFromChannelGroupContentMessageImpl<MessageContent> =
     this as UnconnectedFromChannelGroupContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenPassportMessage(block: (PassportMessage) -> T) = asPassportMessage()?.let(block)
+inline fun <T> AccessibleMessage.whenPassportMessage(block: (PassportMessage) -> T) = asPassportMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPassportMessage(): PassportMessage? = this as? PassportMessage
+inline fun AccessibleMessage.asPassportMessage(): PassportMessage? = this as? PassportMessage
 
 @PreviewFeature
-inline fun Message.requirePassportMessage(): PassportMessage = this as PassportMessage
+inline fun AccessibleMessage.requirePassportMessage(): PassportMessage = this as PassportMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenPrivateContentMessageImpl(block: (PrivateContentMessageImpl<MessageContent>) -> T) =
     asPrivateContentMessageImpl()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent>? =
+inline fun AccessibleMessage.asPrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent>? =
     this as? PrivateContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun Message.requirePrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent> =
+inline fun AccessibleMessage.requirePrivateContentMessageImpl(): PrivateContentMessageImpl<MessageContent> =
     this as PrivateContentMessageImpl<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelEventMessage(block: (ChannelEventMessage<ChannelEvent>) -> T) =
+inline fun <T> AccessibleMessage.whenChannelEventMessage(block: (ChannelEventMessage<ChannelEvent>) -> T) =
     asChannelEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? =
+inline fun AccessibleMessage.asChannelEventMessage(): ChannelEventMessage<ChannelEvent>? =
     this as? ChannelEventMessage<ChannelEvent>
 
 @PreviewFeature
-inline fun Message.requireChannelEventMessage(): ChannelEventMessage<ChannelEvent> =
+inline fun AccessibleMessage.requireChannelEventMessage(): ChannelEventMessage<ChannelEvent> =
     this as ChannelEventMessage<ChannelEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) =
+inline fun <T> AccessibleMessage.whenCommonGroupEventMessage(block: (CommonGroupEventMessage<GroupEvent>) -> T) =
     asCommonGroupEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent>? =
+inline fun AccessibleMessage.asCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent>? =
     this as? CommonGroupEventMessage<GroupEvent>
 
 @PreviewFeature
-inline fun Message.requireCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent> =
+inline fun AccessibleMessage.requireCommonGroupEventMessage(): CommonGroupEventMessage<GroupEvent> =
     this as CommonGroupEventMessage<GroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) =
+inline fun <T> AccessibleMessage.whenCommonSupergroupEventMessage(block: (CommonSupergroupEventMessage<SupergroupEvent>) -> T) =
     asCommonSupergroupEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent>? =
+inline fun AccessibleMessage.asCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent>? =
     this as? CommonSupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun Message.requireCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent> =
+inline fun AccessibleMessage.requireCommonSupergroupEventMessage(): CommonSupergroupEventMessage<SupergroupEvent> =
     this as CommonSupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenAnonymousGroupContentMessage(block: (AnonymousGroupContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenAnonymousGroupContentMessage(block: (AnonymousGroupContentMessage<MessageContent>) -> T) =
     asAnonymousGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent>? =
     this as? AnonymousGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent> =
+inline fun AccessibleMessage.requireAnonymousGroupContentMessage(): AnonymousGroupContentMessage<MessageContent> =
     this as AnonymousGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenChannelContentMessage(block: (ChannelContentMessage<MessageContent>) -> T) =
     asChannelContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asChannelContentMessage(): ChannelContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asChannelContentMessage(): ChannelContentMessage<MessageContent>? =
     this as? ChannelContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireChannelContentMessage(): ChannelContentMessage<MessageContent> =
+inline fun AccessibleMessage.requireChannelContentMessage(): ChannelContentMessage<MessageContent> =
     this as ChannelContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenConnectedFromChannelGroupContentMessage(block: (ConnectedFromChannelGroupContentMessage<MessageContent>) -> T) =
     asConnectedFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent>? =
     this as? ConnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent> =
+inline fun AccessibleMessage.requireConnectedFromChannelGroupContentMessage(): ConnectedFromChannelGroupContentMessage<MessageContent> =
     this as ConnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenUnconnectedFromChannelGroupContentMessage(block: (UnconnectedFromChannelGroupContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenUnconnectedFromChannelGroupContentMessage(block: (UnconnectedFromChannelGroupContentMessage<MessageContent>) -> T) =
     asUnconnectedFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent>? =
     this as? UnconnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent> =
+inline fun AccessibleMessage.requireUnconnectedFromChannelGroupContentMessage(): UnconnectedFromChannelGroupContentMessage<MessageContent> =
     this as UnconnectedFromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T) =
+inline fun <T> AccessibleMessage.whenChatEventMessage(block: (ChatEventMessage<ChatEvent>) -> T) =
     asChatEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asChatEventMessage(): ChatEventMessage<ChatEvent>? = this as? ChatEventMessage<ChatEvent>
+inline fun AccessibleMessage.asChatEventMessage(): ChatEventMessage<ChatEvent>? = this as? ChatEventMessage<ChatEvent>
 
 @PreviewFeature
-inline fun Message.requireChatEventMessage(): ChatEventMessage<ChatEvent> = this as ChatEventMessage<ChatEvent>
+inline fun AccessibleMessage.requireChatEventMessage(): ChatEventMessage<ChatEvent> = this as ChatEventMessage<ChatEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenCommonGroupContentMessage(block: (CommonGroupContentMessage<MessageContent>) -> T) =
     asCommonGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent>? =
     this as? CommonGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent> =
+inline fun AccessibleMessage.requireCommonGroupContentMessage(): CommonGroupContentMessage<MessageContent> =
     this as CommonGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenCommonMessage(block: (CommonMessage<MessageContent>) -> T) = asCommonMessage()?.let(block)
+inline fun <T> AccessibleMessage.whenCommonMessage(block: (CommonMessage<MessageContent>) -> T) = asCommonMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asCommonMessage(): CommonMessage<MessageContent>? = this as? CommonMessage<MessageContent>
+inline fun AccessibleMessage.asCommonMessage(): CommonMessage<MessageContent>? = this as? CommonMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireCommonMessage(): CommonMessage<MessageContent> = this as CommonMessage<MessageContent>
+inline fun AccessibleMessage.requireCommonMessage(): CommonMessage<MessageContent> = this as CommonMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenContentMessage(block: (ContentMessage<MessageContent>) -> T) = asContentMessage()?.let(block)
+inline fun <T> AccessibleMessage.whenContentMessage(block: (ContentMessage<MessageContent>) -> T) = asContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asContentMessage(): ContentMessage<MessageContent>? = this as? ContentMessage<MessageContent>
+inline fun AccessibleMessage.asContentMessage(): ContentMessage<MessageContent>? = this as? ContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireContentMessage(): ContentMessage<MessageContent> = this as ContentMessage<MessageContent>
+inline fun AccessibleMessage.requireContentMessage(): ContentMessage<MessageContent> = this as ContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenFromChannelGroupContentMessage(block: (FromChannelGroupContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenFromChannelGroupContentMessage(block: (FromChannelGroupContentMessage<MessageContent>) -> T) =
     asFromChannelGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent>? =
     this as? FromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent> =
+inline fun AccessibleMessage.requireFromChannelGroupContentMessage(): FromChannelGroupContentMessage<MessageContent> =
     this as FromChannelGroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T) =
+inline fun <T> AccessibleMessage.whenGroupEventMessage(block: (GroupEventMessage<GroupEvent>) -> T) =
     asGroupEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asGroupEventMessage(): GroupEventMessage<GroupEvent>? = this as? GroupEventMessage<GroupEvent>
+inline fun AccessibleMessage.asGroupEventMessage(): GroupEventMessage<GroupEvent>? = this as? GroupEventMessage<GroupEvent>
 
 @PreviewFeature
-inline fun Message.requireGroupEventMessage(): GroupEventMessage<GroupEvent> = this as GroupEventMessage<GroupEvent>
+inline fun AccessibleMessage.requireGroupEventMessage(): GroupEventMessage<GroupEvent> = this as GroupEventMessage<GroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T) =
+inline fun <T> AccessibleMessage.whenPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T) =
     asPrivateEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPrivateEventMessage(): PrivateEventMessage<PrivateEvent>? =
+inline fun AccessibleMessage.asPrivateEventMessage(): PrivateEventMessage<PrivateEvent>? =
     this as? PrivateEventMessage<PrivateEvent>
 
 @PreviewFeature
-inline fun Message.requirePrivateEventMessage(): PrivateEventMessage<PrivateEvent> =
+inline fun AccessibleMessage.requirePrivateEventMessage(): PrivateEventMessage<PrivateEvent> =
     this as PrivateEventMessage<PrivateEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T) =
     asGroupContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asGroupContentMessage(): GroupContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asGroupContentMessage(): GroupContentMessage<MessageContent>? =
     this as? GroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requireGroupContentMessage(): GroupContentMessage<MessageContent> =
+inline fun AccessibleMessage.requireGroupContentMessage(): GroupContentMessage<MessageContent> =
     this as GroupContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenMediaGroupMessage(block: (MediaGroupMessage<MediaGroupPartContent>) -> T) =
+inline fun <T> AccessibleMessage.whenMediaGroupMessage(block: (MediaGroupMessage<MediaGroupPartContent>) -> T) =
     asMediaGroupMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent>? =
+inline fun AccessibleMessage.asMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent>? =
     this as? MediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
-inline fun Message.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent> =
+inline fun AccessibleMessage.requireMediaGroupMessage(): MediaGroupMessage<MediaGroupPartContent> =
     this as MediaGroupMessage<MediaGroupPartContent>
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T) =
+inline fun <T> AccessibleMessage.whenPossiblyEditedMessage(block: (PossiblyEditedMessage) -> T) =
     asPossiblyEditedMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPossiblyEditedMessage(): PossiblyEditedMessage? = this as? PossiblyEditedMessage
+inline fun AccessibleMessage.asPossiblyEditedMessage(): PossiblyEditedMessage? = this as? PossiblyEditedMessage
 
 @PreviewFeature
-inline fun Message.requirePossiblyEditedMessage(): PossiblyEditedMessage = this as PossiblyEditedMessage
+inline fun AccessibleMessage.requirePossiblyEditedMessage(): PossiblyEditedMessage = this as PossiblyEditedMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblyReplyMessage(block: (PossiblyReplyMessage) -> T) =
+inline fun <T> AccessibleMessage.whenPossiblyReplyMessage(block: (PossiblyReplyMessage) -> T) =
     asPossiblyReplyMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPossiblyReplyMessage(): PossiblyReplyMessage? = this as? PossiblyReplyMessage
+inline fun AccessibleMessage.asPossiblyReplyMessage(): PossiblyReplyMessage? = this as? PossiblyReplyMessage
 
 @PreviewFeature
-inline fun Message.requirePossiblyReplyMessage(): PossiblyReplyMessage = this as PossiblyReplyMessage
+inline fun AccessibleMessage.requirePossiblyReplyMessage(): PossiblyReplyMessage = this as PossiblyReplyMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T) =
+inline fun <T> AccessibleMessage.whenPossiblyForwardedMessage(block: (PossiblyForwardedMessage) -> T) =
     asPossiblyForwardedMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPossiblyForwardedMessage(): PossiblyForwardedMessage? = this as? PossiblyForwardedMessage
+inline fun AccessibleMessage.asPossiblyForwardedMessage(): PossiblyForwardedMessage? = this as? PossiblyForwardedMessage
 
 @PreviewFeature
-inline fun Message.requirePossiblyForwardedMessage(): PossiblyForwardedMessage = this as PossiblyForwardedMessage
+inline fun AccessibleMessage.requirePossiblyForwardedMessage(): PossiblyForwardedMessage = this as PossiblyForwardedMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblyPaymentMessage(block: (PossiblyPaymentMessage) -> T) =
+inline fun <T> AccessibleMessage.whenPossiblyPaymentMessage(block: (PossiblyPaymentMessage) -> T) =
     asPossiblyPaymentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPossiblyPaymentMessage(): PossiblyPaymentMessage? = this as? PossiblyPaymentMessage
+inline fun AccessibleMessage.asPossiblyPaymentMessage(): PossiblyPaymentMessage? = this as? PossiblyPaymentMessage
 
 @PreviewFeature
-inline fun Message.requirePossiblyPaymentMessage(): PossiblyPaymentMessage = this as PossiblyPaymentMessage
+inline fun AccessibleMessage.requirePossiblyPaymentMessage(): PossiblyPaymentMessage = this as PossiblyPaymentMessage
 
 @PreviewFeature
-inline fun <T> Message.whenPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenPrivateContentMessage(block: (PrivateContentMessage<MessageContent>) -> T) =
     asPrivateContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPrivateContentMessage(): PrivateContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asPrivateContentMessage(): PrivateContentMessage<MessageContent>? =
     this as? PrivateContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requirePrivateContentMessage(): PrivateContentMessage<MessageContent> =
+inline fun AccessibleMessage.requirePrivateContentMessage(): PrivateContentMessage<MessageContent> =
     this as PrivateContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenPublicContentMessage(block: (PublicContentMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenPublicContentMessage(block: (PublicContentMessage<MessageContent>) -> T) =
     asPublicContentMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPublicContentMessage(): PublicContentMessage<MessageContent>? =
+inline fun AccessibleMessage.asPublicContentMessage(): PublicContentMessage<MessageContent>? =
     this as? PublicContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requirePublicContentMessage(): PublicContentMessage<MessageContent> =
+inline fun AccessibleMessage.requirePublicContentMessage(): PublicContentMessage<MessageContent> =
     this as PublicContentMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenSignedMessage(block: (SignedMessage) -> T) = asSignedMessage()?.let(block)
+inline fun <T> AccessibleMessage.whenSignedMessage(block: (SignedMessage) -> T) = asSignedMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asSignedMessage(): SignedMessage? = this as? SignedMessage
+inline fun AccessibleMessage.asSignedMessage(): SignedMessage? = this as? SignedMessage
 
 @PreviewFeature
-inline fun Message.requireSignedMessage(): SignedMessage = this as SignedMessage
+inline fun AccessibleMessage.requireSignedMessage(): SignedMessage = this as SignedMessage
 
 @PreviewFeature
-inline fun <T> Message.whenSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T) =
+inline fun <T> AccessibleMessage.whenSupergroupEventMessage(block: (SupergroupEventMessage<SupergroupEvent>) -> T) =
     asSupergroupEventMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asSupergroupEventMessage(): SupergroupEventMessage<SupergroupEvent>? =
+inline fun AccessibleMessage.asSupergroupEventMessage(): SupergroupEventMessage<SupergroupEvent>? =
     this as? SupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun Message.requireSupergroupEventMessage(): SupergroupEventMessage<SupergroupEvent> =
+inline fun AccessibleMessage.requireSupergroupEventMessage(): SupergroupEventMessage<SupergroupEvent> =
     this as SupergroupEventMessage<SupergroupEvent>
 
 @PreviewFeature
-inline fun <T> Message.whenUnknownMessageType(block: (UnknownMessageType) -> T) = asUnknownMessageType()?.let(block)
+inline fun <T> AccessibleMessage.whenUnknownMessageType(block: (UnknownMessageType) -> T) = asUnknownMessageType()?.let(block)
 
 @PreviewFeature
-inline fun Message.asUnknownMessageType(): UnknownMessageType? = this as? UnknownMessageType
+inline fun AccessibleMessage.asUnknownMessageType(): UnknownMessageType? = this as? UnknownMessageType
 
 @PreviewFeature
-inline fun Message.requireUnknownMessageType(): UnknownMessageType = this as UnknownMessageType
+inline fun AccessibleMessage.requireUnknownMessageType(): UnknownMessageType = this as UnknownMessageType
 
 @PreviewFeature
-inline fun <T> Message.whenPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T) =
+inline fun <T> AccessibleMessage.whenPossiblySentViaBotCommonMessage(block: (PossiblySentViaBotCommonMessage<MessageContent>) -> T) =
     asPossiblySentViaBotCommonMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asPossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent>? =
+inline fun AccessibleMessage.asPossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent>? =
     this as? PossiblySentViaBotCommonMessage<MessageContent>
 
 @PreviewFeature
-inline fun Message.requirePossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent> =
+inline fun AccessibleMessage.requirePossiblySentViaBotCommonMessage(): PossiblySentViaBotCommonMessage<MessageContent> =
     this as PossiblySentViaBotCommonMessage<MessageContent>
 
 @PreviewFeature
-inline fun <T> Message.whenFromUserMessage(block: (FromUserMessage) -> T) = asFromUserMessage()?.let(block)
+inline fun <T> AccessibleMessage.whenFromUserMessage(block: (FromUserMessage) -> T) = asFromUserMessage()?.let(block)
 
 @PreviewFeature
-inline fun Message.asFromUserMessage(): FromUserMessage? = this as? FromUserMessage
+inline fun AccessibleMessage.asFromUserMessage(): FromUserMessage? = this as? FromUserMessage
 
 @PreviewFeature
-inline fun Message.requireFromUserMessage(): FromUserMessage = this as FromUserMessage
+inline fun AccessibleMessage.requireFromUserMessage(): FromUserMessage = this as FromUserMessage
 
 @PreviewFeature
 inline fun <T> BotAction.whenFindLocationAction(block: (FindLocationAction) -> T) = asFindLocationAction()?.let(block)

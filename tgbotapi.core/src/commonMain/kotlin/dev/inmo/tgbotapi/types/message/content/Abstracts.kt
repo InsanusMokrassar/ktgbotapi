@@ -165,5 +165,5 @@ sealed interface ResendableContent {
         replyToMessageId: MessageId? = null,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): Request<out Message>
+    ): Request<out AccessibleMessage>
 }

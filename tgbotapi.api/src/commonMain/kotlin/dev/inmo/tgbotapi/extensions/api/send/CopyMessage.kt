@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.threadId
 
 /**
@@ -186,7 +186,7 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
-    message: Message,
+    message: AccessibleMessage,
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = toChatId.threadId,
@@ -203,7 +203,7 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
-    message: Message,
+    message: AccessibleMessage,
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = toChat.id.threadId,
@@ -220,7 +220,7 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     toChatId: ChatIdentifier,
-    message: Message,
+    message: AccessibleMessage,
     entities: TextSourcesList,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
@@ -236,7 +236,7 @@ suspend inline fun TelegramBot.copyMessage(
  */
 suspend inline fun TelegramBot.copyMessage(
     toChat: Chat,
-    message: Message,
+    message: AccessibleMessage,
     entities: TextSourcesList,
     threadId: MessageThreadId? = toChat.id.threadId,
     disableNotification: Boolean = false,

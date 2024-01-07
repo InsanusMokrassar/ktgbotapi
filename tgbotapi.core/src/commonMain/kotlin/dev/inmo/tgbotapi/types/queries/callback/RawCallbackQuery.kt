@@ -16,7 +16,7 @@ internal data class RawCallbackQuery(
     @SerialName(fromField)
     val from: CommonUser,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    val message: ContentMessage<MessageContent>? = null,
+    val message: Message? = null,
     @SerialName(inlineMessageIdField)
     val inlineMessageId: InlineMessageIdentifier? = null,
     @SerialName("chat_instance")
@@ -28,8 +28,26 @@ internal data class RawCallbackQuery(
     private var inited: CallbackQuery? = null
     fun asCallbackQuery(raw: String): CallbackQuery {
         return inited ?: when {
-            message != null && data != null -> MessageDataCallbackQuery(id, from, chatInstance, message, data)
-            message != null && gameShortName != null -> MessageGameShortNameCallbackQuery(id, from, chatInstance, message, gameShortName)
+            message != null && data != null -> when {
+                message is ContentMessage<*> -> MessageDataCallbackQuery(id, from, chatInstance, message, data)
+                message is InaccessibleMessage -> InaccessibleMessageDataCallbackQuery(id, from, chatInstance, message, data)
+                else -> UnknownCallbackQueryType(
+                    id,
+                    from,
+                    chatInstance,
+                    raw
+                )
+            }
+            message != null && gameShortName != null -> when {
+                message is ContentMessage<*> -> MessageGameShortNameCallbackQuery(id, from, chatInstance, message, gameShortName)
+                message is InaccessibleMessage -> InaccessibleMessageGameShortNameCallbackQuery(id, from, chatInstance, message, gameShortName)
+                else -> UnknownCallbackQueryType(
+                    id,
+                    from,
+                    chatInstance,
+                    raw
+                )
+            }
             inlineMessageId != null && data != null -> InlineMessageIdDataCallbackQuery(id, from, chatInstance, inlineMessageId, data)
             inlineMessageId != null && gameShortName != null -> InlineMessageIdGameShortNameCallbackQuery(id, from, chatInstance, inlineMessageId, gameShortName)
             else -> UnknownCallbackQueryType(

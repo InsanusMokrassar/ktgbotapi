@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -35,7 +35,7 @@ suspend fun TelegramBot.editMessageReplyMarkup(
  * as a builder for that
  */
 suspend fun TelegramBot.editMessageReplyMarkup(
-    message: Message,
+    message: AccessibleMessage,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageReplyMarkup(message.chat.id, message.messageId, replyMarkup)
 

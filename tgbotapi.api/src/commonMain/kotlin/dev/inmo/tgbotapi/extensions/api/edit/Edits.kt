@@ -14,7 +14,7 @@ import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -181,7 +181,7 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    message: Message,
+    message: AccessibleMessage,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageReplyMarkup(message, replyMarkup)
 

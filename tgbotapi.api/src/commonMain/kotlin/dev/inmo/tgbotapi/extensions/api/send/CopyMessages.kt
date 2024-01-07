@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.extensions.api.send
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.CopyMessages
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 
 suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
@@ -66,7 +66,7 @@ suspend fun TelegramBot.copyMessages(
 
 suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
-    messages: List<Message>,
+    messages: List<AccessibleMessage>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,

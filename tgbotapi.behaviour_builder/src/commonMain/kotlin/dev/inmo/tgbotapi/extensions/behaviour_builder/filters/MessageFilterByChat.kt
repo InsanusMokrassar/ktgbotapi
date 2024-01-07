@@ -6,24 +6,24 @@ import dev.inmo.tgbotapi.extensions.utils.extensions.sourceUser
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
 import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 /**
- * Allow only events from the same chat as base [Message]
+ * Allow only events from the same chat as base [AccessibleMessage]
  */
-val MessageFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, Message, Update> = { message, update ->
+val MessageFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, AccessibleMessage, Update> = { message, update ->
     update.sourceChat() ?.let {
         it.id == message.chat.id
     } != false
 }
 /**
- * Allow only events from the same chat as base [List] of [Message]
+ * Allow only events from the same chat as base [List] of [AccessibleMessage]
  */
-val MessagesFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, List<Message>, Update> = { messages, update ->
+val MessagesFilterByChat: BehaviourContextAndTwoTypesReceiver<Boolean, List<AccessibleMessage>, Update> = { messages, update ->
     val sourceChatId = update.sourceChat() ?.id
     sourceChatId != null && messages.all { sourceChatId == it.chat.id }
 }
