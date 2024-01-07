@@ -152,3 +152,13 @@ suspend fun BehaviourContext.waitMediaContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage(initRequest, errorFactory).mapWithContent<MediaContent>()
+
+suspend fun BehaviourContext.waitScheduledGiveawayContentMessage(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage(initRequest, errorFactory).mapWithContent<ScheduledGiveawayContent>()
+
+suspend fun BehaviourContext.waitGiveawayPublicResultsContentMessage(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContentMessage(initRequest, errorFactory).mapWithContent<GiveawayPublicResultsContent>()

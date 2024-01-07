@@ -197,11 +197,8 @@ import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.files.VideoSticker
 import dev.inmo.tgbotapi.types.files.VoiceFile
-import dev.inmo.tgbotapi.types.giveaway.Giveaway
 import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
-import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
-import dev.inmo.tgbotapi.types.giveaway.GiveawayResults
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
@@ -298,6 +295,7 @@ import dev.inmo.tgbotapi.types.message.content.DiceContent
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.GameContent
+import dev.inmo.tgbotapi.types.message.content.GiveawayPublicResultsContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
 import dev.inmo.tgbotapi.types.message.content.LocationContent
@@ -310,6 +308,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.content.ResendableContent
+import dev.inmo.tgbotapi.types.message.content.ScheduledGiveawayContent
 import dev.inmo.tgbotapi.types.message.content.SpoilerableMediaContent
 import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 import dev.inmo.tgbotapi.types.message.content.StickerContent
@@ -2781,15 +2780,6 @@ public inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedi
 public inline fun <T> TelegramMedia.ifTitledTelegramMedia(block: (TitledTelegramMedia) -> T): T? =
     titledTelegramMediaOrNull() ?.let(block)
 
-public inline fun ChatEvent.giveawayOrNull(): Giveaway? = this as?
-    dev.inmo.tgbotapi.types.giveaway.Giveaway
-
-public inline fun ChatEvent.giveawayOrThrow(): Giveaway = this as
-    dev.inmo.tgbotapi.types.giveaway.Giveaway
-
-public inline fun <T> ChatEvent.ifGiveaway(block: (Giveaway) -> T): T? = giveawayOrNull()
-    ?.let(block)
-
 public inline fun ChatEvent.giveawayCreatedOrNull(): GiveawayCreated? = this as?
     dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
 
@@ -2807,24 +2797,6 @@ public inline fun ChatEvent.giveawayPrivateResultsOrThrow(): GiveawayPrivateResu
 
 public inline fun <T> ChatEvent.ifGiveawayPrivateResults(block: (GiveawayPrivateResults) -> T): T? =
     giveawayPrivateResultsOrNull() ?.let(block)
-
-public inline fun ChatEvent.giveawayPublicResultsOrNull(): GiveawayPublicResults? = this as?
-    dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
-
-public inline fun ChatEvent.giveawayPublicResultsOrThrow(): GiveawayPublicResults = this as
-    dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
-
-public inline fun <T> ChatEvent.ifGiveawayPublicResults(block: (GiveawayPublicResults) -> T): T? =
-    giveawayPublicResultsOrNull() ?.let(block)
-
-public inline fun ChatEvent.giveawayResultsOrNull(): GiveawayResults? = this as?
-    dev.inmo.tgbotapi.types.giveaway.GiveawayResults
-
-public inline fun ChatEvent.giveawayResultsOrThrow(): GiveawayResults = this as
-    dev.inmo.tgbotapi.types.giveaway.GiveawayResults
-
-public inline fun <T> ChatEvent.ifGiveawayResults(block: (GiveawayResults) -> T): T? =
-    giveawayResultsOrNull() ?.let(block)
 
 public inline fun ChatEvent.channelChatCreatedOrNull(): ChannelChatCreated? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
@@ -3748,6 +3720,18 @@ public inline fun ResendableContent.gameContentOrThrow(): GameContent = this as
 public inline fun <T> ResendableContent.ifGameContent(block: (GameContent) -> T): T? =
     gameContentOrNull() ?.let(block)
 
+public inline fun ResendableContent.giveawayPublicResultsContentOrNull():
+    GiveawayPublicResultsContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.GiveawayPublicResultsContent
+
+public inline fun ResendableContent.giveawayPublicResultsContentOrThrow():
+    GiveawayPublicResultsContent = this as
+    dev.inmo.tgbotapi.types.message.content.GiveawayPublicResultsContent
+
+public inline fun <T>
+    ResendableContent.ifGiveawayPublicResultsContent(block: (GiveawayPublicResultsContent) -> T): T?
+    = giveawayPublicResultsContentOrNull() ?.let(block)
+
 public inline fun ResendableContent.invoiceContentOrNull(): InvoiceContent? = this as?
     dev.inmo.tgbotapi.types.message.content.InvoiceContent
 
@@ -3814,6 +3798,16 @@ public inline fun ResendableContent.pollContentOrThrow(): PollContent = this as
 
 public inline fun <T> ResendableContent.ifPollContent(block: (PollContent) -> T): T? =
     pollContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.scheduledGiveawayContentOrNull(): ScheduledGiveawayContent? =
+    this as? dev.inmo.tgbotapi.types.message.content.ScheduledGiveawayContent
+
+public inline fun ResendableContent.scheduledGiveawayContentOrThrow(): ScheduledGiveawayContent =
+    this as dev.inmo.tgbotapi.types.message.content.ScheduledGiveawayContent
+
+public inline fun <T>
+    ResendableContent.ifScheduledGiveawayContent(block: (ScheduledGiveawayContent) -> T): T? =
+    scheduledGiveawayContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.stickerContentOrNull(): StickerContent? = this as?
     dev.inmo.tgbotapi.types.message.content.StickerContent

@@ -9,10 +9,8 @@ import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.RawGame
-import dev.inmo.tgbotapi.types.giveaway.Giveaway
-import dev.inmo.tgbotapi.types.giveaway.GiveawayCreated
-import dev.inmo.tgbotapi.types.giveaway.GiveawayPrivateResults
-import dev.inmo.tgbotapi.types.giveaway.GiveawayResults
+import dev.inmo.tgbotapi.types.giveaway.*
+import dev.inmo.tgbotapi.types.message.content.ScheduledGiveawayContent
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
@@ -134,7 +132,7 @@ internal data class RawMessage(
 
     // Giveaways
     private val giveaway_created: GiveawayCreated? = null,
-    private val giveaway: Giveaway? = null,
+    private val giveaway: ScheduledGiveaway? = null,
     private val giveaway_winners: GiveawayResults? = null,
     private val giveaway_completed: GiveawayPrivateResults? = null,
 ) {
@@ -193,6 +191,8 @@ internal data class RawMessage(
             venue != null -> VenueContent(venue)
             poll != null -> PollContent(poll)
             invoice != null -> InvoiceContent(invoice)
+            giveaway != null -> ScheduledGiveawayContent(giveaway)
+            giveaway_winners is GiveawayPublicResults -> GiveawayPublicResultsContent(giveaway_winners)
             else -> null
         }
     }
@@ -237,8 +237,7 @@ internal data class RawMessage(
             users_shared != null -> users_shared
             chat_shared != null -> chat_shared
             giveaway_created != null -> giveaway_created
-            giveaway != null -> giveaway
-            giveaway_winners != null -> giveaway_winners
+            giveaway_winners is GiveawayPrivateResults -> giveaway_winners
             giveaway_completed != null -> giveaway_completed
             else -> null
         }

@@ -130,3 +130,14 @@ suspend fun BehaviourContext.waitEditedInvoice(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEditedContent<InvoiceContent>(initRequest, false, errorFactory)
+
+suspend fun BehaviourContext.waitEditedScheduledGiveawayContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<ScheduledGiveawayContent>(initRequest, false, errorFactory)
+
+suspend fun BehaviourContext.waitEditedGiveawayPublicResultsContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEditedContent<GiveawayPublicResultsContent>(initRequest, false, errorFactory)
+
