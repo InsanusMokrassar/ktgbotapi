@@ -85,16 +85,23 @@ fun Int.toChatId(): IdChatIdentifier = toLong().toChatId()
 fun Byte.toChatId(): IdChatIdentifier = toLong().toChatId()
 
 @Serializable(ChatIdentifierSerializer::class)
-data class Username(
+@JvmInline
+value class Username(
     val username: String
 ) : ChatIdentifier {
     val usernameWithoutAt
         get() = username.dropWhile { it == '@' }
+    val full: String
+        get() = username
 
     init {
         if (!username.startsWith("@")) {
             throw IllegalArgumentException("Username must starts with `@`")
         }
+    }
+
+    override fun toString(): String {
+        return full
     }
 }
 
