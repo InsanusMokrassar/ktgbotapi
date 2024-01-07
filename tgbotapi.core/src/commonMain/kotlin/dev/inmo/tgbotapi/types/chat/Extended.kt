@@ -49,6 +49,8 @@ data class ExtendedChannelChatImpl(
     override val backgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false
 ) : ExtendedChannelChat
 
 @Serializable
@@ -85,6 +87,8 @@ data class ExtendedGroupChatImpl(
     override val backgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false,
 ) : ExtendedGroupChat
 
 @Serializable
@@ -178,6 +182,8 @@ data class ExtendedSupergroupChatImpl(
     override val backgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false,
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -234,6 +240,8 @@ data class ExtendedForumChatImpl(
     override val backgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false,
 ) : ExtendedForumChat
 
 @Serializable
@@ -279,5 +287,5 @@ data class UnknownExtendedChat(
     @SerialName(backgroundCustomEmojiIdField)
     override val backgroundCustomEmojiId: CustomEmojiId? = null
     @SerialName(profileBackgroundCustomEmojiIdField)
-    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,\
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null
 }

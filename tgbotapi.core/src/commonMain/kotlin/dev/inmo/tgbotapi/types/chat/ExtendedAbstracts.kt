@@ -50,6 +50,7 @@ sealed interface ExtendedPublicChat : ExtendedChat, PublicChat, ExtendedNonBotCh
     val pinnedMessage: Message?
     val membersHidden: Boolean
     val availableReactions: List<Reaction>?
+    val newMembersSeeHistory: Boolean
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)
