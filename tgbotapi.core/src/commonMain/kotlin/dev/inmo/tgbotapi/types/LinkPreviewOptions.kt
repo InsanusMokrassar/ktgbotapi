@@ -83,7 +83,6 @@ sealed interface LinkPreviewOptions {
 
     @Serializable
     private data class Surrogate(
-        @Required
         @SerialName(isDisabledField)
         val isDisabled: Boolean = true,
         @SerialName(urlField)
