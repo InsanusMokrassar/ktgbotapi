@@ -170,7 +170,7 @@ sealed interface ResendableContent {
             ReplyParameters(
                 chatId,
                 replyToMessageId,
-                allowSendingWithoutReply = allowSendingWithoutReply == true
+                allowSendingWithoutReply = allowSendingWithoutReply
             )
         },
         replyMarkup = replyMarkup

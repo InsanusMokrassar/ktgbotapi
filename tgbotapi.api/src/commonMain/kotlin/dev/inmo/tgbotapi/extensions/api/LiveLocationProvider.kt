@@ -255,7 +255,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true),
+    ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup
 )
 
@@ -287,6 +287,6 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply == true),
+    ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup
 )

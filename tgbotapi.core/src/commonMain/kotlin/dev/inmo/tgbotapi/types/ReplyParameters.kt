@@ -20,7 +20,7 @@ data class ReplyParameters internal constructor(
     @SerialName(messageIdField)
     override val messageId: MessageId,
     @SerialName(allowSendingWithoutReplyField)
-    val allowSendingWithoutReply: Boolean = false,
+    val allowSendingWithoutReply: Boolean? = null,
     @SerialName(quoteField)
     val quote: String? = null,
     @SerialName(quoteParseModeField)
@@ -40,7 +40,7 @@ data class ReplyParameters internal constructor(
         chatIdentifier: ChatIdentifier,
         messageId: MessageId,
         entities: TextSourcesList,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         chatIdentifier,
@@ -54,7 +54,7 @@ data class ReplyParameters internal constructor(
     constructor(
         metaInfo: Message.MetaInfo,
         entities: TextSourcesList,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         metaInfo.chatId,
@@ -66,7 +66,7 @@ data class ReplyParameters internal constructor(
     constructor(
         message: Message,
         entities: TextSourcesList,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         message.metaInfo,
@@ -79,7 +79,7 @@ data class ReplyParameters internal constructor(
         messageId: MessageId,
         quote: String,
         quoteParseMode: ParseMode,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         chatIdentifier,
@@ -94,7 +94,7 @@ data class ReplyParameters internal constructor(
         metaInfo: Message.MetaInfo,
         quote: String,
         quoteParseMode: ParseMode,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         metaInfo.chatId,
@@ -108,7 +108,7 @@ data class ReplyParameters internal constructor(
         message: Message,
         quote: String,
         quoteParseMode: ParseMode,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         message.metaInfo,
@@ -120,7 +120,7 @@ data class ReplyParameters internal constructor(
     constructor(
         chatIdentifier: ChatIdentifier,
         messageId: MessageId,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         chatIdentifier,
@@ -133,7 +133,7 @@ data class ReplyParameters internal constructor(
     )
     constructor(
         metaInfo: Message.MetaInfo,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         metaInfo.chatId,
@@ -143,7 +143,7 @@ data class ReplyParameters internal constructor(
     )
     constructor(
         message: Message,
-        allowSendingWithoutReply: Boolean = false,
+        allowSendingWithoutReply: Boolean? = null,
         quotePosition: Int? = null
     ) : this(
         message.metaInfo,
