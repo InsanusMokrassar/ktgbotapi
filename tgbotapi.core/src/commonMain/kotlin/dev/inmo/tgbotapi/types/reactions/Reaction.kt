@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.reactions
 
 import dev.inmo.tgbotapi.types.CustomEmojiId
-import dev.inmo.tgbotapi.types.customEmojiField
+import dev.inmo.tgbotapi.types.customEmojiIdField
 import dev.inmo.tgbotapi.types.emojiField
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
@@ -12,6 +12,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.JsonElement
+import kotlin.jvm.JvmInline
 
 @Serializable(Reaction.Companion::class)
 @ClassCastsIncluded
@@ -19,7 +20,8 @@ sealed interface Reaction {
     val type: String
 
     @Serializable(Reaction.Companion::class)
-    data class Emoji(
+    @JvmInline
+    value class Emoji(
         val emoji: String
     ) : Reaction {
         override val type: String
@@ -30,8 +32,9 @@ sealed interface Reaction {
     }
 
     @Serializable(Reaction.Companion::class)
-    data class CustomEmoji(
-        val customEmoji: CustomEmojiId
+    @JvmInline
+    value class CustomEmoji(
+        val customEmojiId: CustomEmojiId
     ) : Reaction {
         override val type: String
             get() = Companion.type
@@ -51,8 +54,8 @@ sealed interface Reaction {
         val type: String,
         @SerialName(emojiField)
         val emoji: String? = null,
-        @SerialName(customEmojiField)
-        val customEmoji: CustomEmojiId? = null
+        @SerialName(customEmojiIdField)
+        val customEmojiId: CustomEmojiId? = null
     )
 
     companion object : KSerializer<Reaction> {
@@ -69,7 +72,7 @@ sealed interface Reaction {
 
             return when {
                 surrogate.emoji != null -> Emoji(surrogate.emoji)
-                surrogate.customEmoji != null -> CustomEmoji(surrogate.customEmoji)
+                surrogate.customEmojiId != null -> CustomEmoji(surrogate.customEmojiId)
                 else -> Unknown(surrogate.type, json)
             }
         }
@@ -83,7 +86,7 @@ sealed interface Reaction {
                     Surrogate(
                         type = value.type,
                         emoji = (value as? Emoji) ?.emoji,
-                        customEmoji = (value as? CustomEmoji) ?.customEmoji,
+                        customEmojiId = (value as? CustomEmoji) ?.customEmojiId,
                     )
                 )
             }
