@@ -21,7 +21,7 @@ data class TextQuote private constructor(
     val isManual: Boolean = false
 ) : TextedInput {
     override val textSources: List<TextSource> by lazy {
-        entities ?.asTextSources(text) ?: emptyList()
+        (entities ?: emptyList()).asTextSources(text)
     }
 
     companion object {
