@@ -14,7 +14,7 @@ import kotlin.jvm.JvmName
 suspend fun TelegramBot.setMessageReactions(
     chatId: ChatIdentifier,
     messageId: MessageId,
-    reactions: List<Reaction>,
+    reactions: List<Reaction> = emptyList(),
     big: Boolean = false
 ) = execute(
     SetMessageReactions(chatId, messageId, reactions, big)
@@ -23,45 +23,45 @@ suspend fun TelegramBot.setMessageReactions(
 suspend fun TelegramBot.setMessageReaction(
     chatId: ChatIdentifier,
     messageId: MessageId,
-    reaction: Reaction?,
+    reaction: Reaction? = null,
     big: Boolean = false
 ) = setMessageReactions(chatId, messageId, listOfNotNull(reaction), big)
 
 suspend fun TelegramBot.setMessageReactions(
     chat: Chat,
     messageId: MessageId,
-    reactions: List<Reaction>,
+    reactions: List<Reaction> = emptyList(),
     big: Boolean = false
 ) = setMessageReactions(chat.id, messageId, reactions, big)
 
 suspend fun TelegramBot.setMessageReaction(
     chat: Chat,
     messageId: MessageId,
-    reaction: Reaction?,
+    reaction: Reaction? = null,
     big: Boolean = false
 ) = setMessageReaction(chat.id, messageId, reaction, big)
 
 suspend fun TelegramBot.setMessageReactions(
     meta: Message.MetaInfo,
-    reactions: List<Reaction>,
+    reactions: List<Reaction> = emptyList(),
     big: Boolean = false
 ) = setMessageReactions(meta.chatId, meta.messageId, reactions, big)
 
 suspend fun TelegramBot.setMessageReaction(
     meta: Message.MetaInfo,
-    reaction: Reaction?,
+    reaction: Reaction? = null,
     big: Boolean = false
 ) = setMessageReaction(meta.chatId, meta.messageId, reaction, big)
 
 suspend fun TelegramBot.setMessageReactions(
     message: AccessibleMessage,
-    reactions: List<Reaction>,
+    reactions: List<Reaction> = emptyList(),
     big: Boolean = false
 ) = setMessageReactions(message.metaInfo, reactions, big)
 
 suspend fun TelegramBot.setMessageReaction(
     message: AccessibleMessage,
-    reaction: Reaction?,
+    reaction: Reaction? = null,
     big: Boolean = false
 ) = setMessageReaction(message.metaInfo, reaction, big)
 
@@ -69,54 +69,54 @@ suspend fun TelegramBot.setMessageReaction(
 suspend fun TelegramBot.setMessageReactions(
     chatId: ChatIdentifier,
     messageId: MessageId,
-    reactions: List<String>,
+    emojis: List<String>,
     big: Boolean = false
-) = setMessageReactions(chatId, messageId, reactions.map { Reaction.Emoji(it) }, big)
+) = setMessageReactions(chatId, messageId, emojis.map { Reaction.Emoji(it) }, big)
 
 suspend fun TelegramBot.setMessageReaction(
     chatId: ChatIdentifier,
     messageId: MessageId,
-    reaction: String?,
+    emoji: String?,
     big: Boolean = false
-) = setMessageReaction(chatId, messageId, reaction ?.let { Reaction.Emoji(it) }, big)
+) = setMessageReaction(chatId, messageId, emoji ?.let { Reaction.Emoji(it) }, big)
 
 @JvmName("setMessageReactionsStrings")
 suspend fun TelegramBot.setMessageReactions(
     chat: Chat,
     messageId: MessageId,
-    reactions: List<String>,
+    emojis: List<String>,
     big: Boolean = false
-) = setMessageReactions(chat, messageId, reactions.map { Reaction.Emoji(it) }, big)
+) = setMessageReactions(chat, messageId, emojis.map { Reaction.Emoji(it) }, big)
 
 suspend fun TelegramBot.setMessageReaction(
     chat: Chat,
     messageId: MessageId,
-    reaction: String?,
+    emoji: String?,
     big: Boolean = false
-) = setMessageReaction(chat, messageId, reaction ?.let { Reaction.Emoji(it) }, big)
+) = setMessageReaction(chat, messageId, emoji ?.let { Reaction.Emoji(it) }, big)
 
 @JvmName("setMessageReactionsStrings")
 suspend fun TelegramBot.setMessageReactions(
     meta: Message.MetaInfo,
-    reactions: List<String>,
+    emojis: List<String>,
     big: Boolean = false
-) = setMessageReactions(meta, reactions.map { Reaction.Emoji(it) }, big)
+) = setMessageReactions(meta, emojis.map { Reaction.Emoji(it) }, big)
 
 suspend fun TelegramBot.setMessageReaction(
     meta: Message.MetaInfo,
-    reaction: String?,
+    emoji: String?,
     big: Boolean = false
-) = setMessageReaction(meta, reaction ?.let { Reaction.Emoji(it) }, big)
+) = setMessageReaction(meta, emoji ?.let { Reaction.Emoji(it) }, big)
 
 @JvmName("setMessageReactionsStrings")
 suspend fun TelegramBot.setMessageReactions(
     message: AccessibleMessage,
-    reactions: List<String>,
+    emojis: List<String>,
     big: Boolean = false
-) = setMessageReactions(message, reactions.map { Reaction.Emoji(it) }, big)
+) = setMessageReactions(message, emojis.map { Reaction.Emoji(it) }, big)
 
 suspend fun TelegramBot.setMessageReaction(
     message: AccessibleMessage,
-    reaction: String?,
+    emoji: String?,
     big: Boolean = false
-) = setMessageReaction(message, reaction ?.let { Reaction.Emoji(it) }, big)
+) = setMessageReaction(message, emoji ?.let { Reaction.Emoji(it) }, big)
