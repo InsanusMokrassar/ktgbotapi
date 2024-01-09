@@ -2,9 +2,7 @@
 
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
-import dev.inmo.micro_utils.coroutines.safelyWithoutExceptions
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
@@ -13,7 +11,6 @@ import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.mapNotNull
 
 typealias CommonMessageToCommonMessageMapper<T> = suspend CommonMessage<T>.() -> CommonMessage<T>?
@@ -153,10 +150,10 @@ suspend fun BehaviourContext.waitMediaContentMessage(
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContentMessage(initRequest, errorFactory).mapWithContent<MediaContent>()
 
-suspend fun BehaviourContext.waitScheduledGiveawayContentMessage(
+suspend fun BehaviourContext.waitGiveawayContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitContentMessage(initRequest, errorFactory).mapWithContent<ScheduledGiveawayContent>()
+) = waitContentMessage(initRequest, errorFactory).mapWithContent<GiveawayContent>()
 
 suspend fun BehaviourContext.waitGiveawayPublicResultsContentMessage(
     initRequest: Request<*>? = null,

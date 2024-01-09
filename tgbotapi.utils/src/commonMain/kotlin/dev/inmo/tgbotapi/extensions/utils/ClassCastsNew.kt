@@ -298,6 +298,7 @@ import dev.inmo.tgbotapi.types.message.content.DiceContent
 import dev.inmo.tgbotapi.types.message.content.DocumentContent
 import dev.inmo.tgbotapi.types.message.content.DocumentMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.GameContent
+import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.message.content.GiveawayPublicResultsContent
 import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
@@ -311,7 +312,6 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.content.ResendableContent
-import dev.inmo.tgbotapi.types.message.content.ScheduledGiveawayContent
 import dev.inmo.tgbotapi.types.message.content.SpoilerableMediaContent
 import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 import dev.inmo.tgbotapi.types.message.content.StickerContent
@@ -3795,6 +3795,15 @@ public inline fun ResendableContent.gameContentOrThrow(): GameContent = this as
 public inline fun <T> ResendableContent.ifGameContent(block: (GameContent) -> T): T? =
     gameContentOrNull() ?.let(block)
 
+public inline fun ResendableContent.giveawayContentOrNull(): GiveawayContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.GiveawayContent
+
+public inline fun ResendableContent.giveawayContentOrThrow(): GiveawayContent = this as
+    dev.inmo.tgbotapi.types.message.content.GiveawayContent
+
+public inline fun <T> ResendableContent.ifGiveawayContent(block: (GiveawayContent) -> T): T? =
+    giveawayContentOrNull() ?.let(block)
+
 public inline fun ResendableContent.giveawayPublicResultsContentOrNull():
     GiveawayPublicResultsContent? = this as?
     dev.inmo.tgbotapi.types.message.content.GiveawayPublicResultsContent
@@ -3873,16 +3882,6 @@ public inline fun ResendableContent.pollContentOrThrow(): PollContent = this as
 
 public inline fun <T> ResendableContent.ifPollContent(block: (PollContent) -> T): T? =
     pollContentOrNull() ?.let(block)
-
-public inline fun ResendableContent.scheduledGiveawayContentOrNull(): ScheduledGiveawayContent? =
-    this as? dev.inmo.tgbotapi.types.message.content.ScheduledGiveawayContent
-
-public inline fun ResendableContent.scheduledGiveawayContentOrThrow(): ScheduledGiveawayContent =
-    this as dev.inmo.tgbotapi.types.message.content.ScheduledGiveawayContent
-
-public inline fun <T>
-    ResendableContent.ifScheduledGiveawayContent(block: (ScheduledGiveawayContent) -> T): T? =
-    scheduledGiveawayContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.stickerContentOrNull(): StickerContent? = this as?
     dev.inmo.tgbotapi.types.message.content.StickerContent

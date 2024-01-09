@@ -3,7 +3,6 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
-import dev.inmo.tgbotapi.extensions.utils.baseEditMessageUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.commonMessageOrNull
 import dev.inmo.tgbotapi.extensions.utils.withContent
 import dev.inmo.tgbotapi.requests.abstracts.Request
@@ -137,10 +136,10 @@ suspend fun BehaviourContext.waitEditedInvoiceMessage(
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEditedContentMessage<InvoiceContent>(initRequest, errorFactory)
 
-suspend fun BehaviourContext.waitEditedScheduledGiveawayContentMessage(
+suspend fun BehaviourContext.waitEditedGiveawayContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContentMessage<ScheduledGiveawayContent>(initRequest, errorFactory)
+) = waitEditedContentMessage<GiveawayContent>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitEditedGiveawayPublicResultsContentMessage(
     initRequest: Request<*>? = null,

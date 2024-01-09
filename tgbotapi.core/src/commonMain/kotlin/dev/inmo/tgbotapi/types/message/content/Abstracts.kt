@@ -50,7 +50,7 @@ sealed interface MessageContent: ResendableContent {
                 subclass(InvoiceContent::class)
                 subclass(StoryContent::class)
                 subclass(GiveawayPublicResultsContent::class)
-                subclass(ScheduledGiveawayContent::class)
+                subclass(GiveawayContent::class)
 
                 additionalBuilder()
             }

@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.dice.Dice
 import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.games.RawGame
 import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
-import dev.inmo.tgbotapi.types.giveaway.ScheduledGiveaway
+import dev.inmo.tgbotapi.types.giveaway.Giveaway
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.MessageOrigin
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
@@ -96,7 +96,7 @@ sealed interface ReplyInfo {
             private val poll: Poll? = null,
             private val invoice: Invoice? = null,
             private val dice: Dice? = null,
-            private val giveaway: ScheduledGiveaway? = null,
+            private val giveaway: Giveaway? = null,
             private val giveaway_winners: GiveawayPublicResults? = null,
         ) {
             val asExternalReplyInfo: External

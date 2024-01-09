@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.games.RawGame
 import dev.inmo.tgbotapi.types.giveaway.*
-import dev.inmo.tgbotapi.types.message.content.ScheduledGiveawayContent
+import dev.inmo.tgbotapi.types.message.content.GiveawayContent
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
@@ -96,7 +96,7 @@ internal data class RawMessage(
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
-    private val giveaway: ScheduledGiveaway? = null,
+    private val giveaway: Giveaway? = null,
     private val giveaway_winners: GiveawayResults? = null,
 
     private val users_shared: UsersShared? = null,
@@ -199,7 +199,7 @@ internal data class RawMessage(
             venue != null -> VenueContent(venue)
             poll != null -> PollContent(poll)
             invoice != null -> InvoiceContent(invoice)
-            giveaway != null -> ScheduledGiveawayContent(chat, messageId, giveaway)
+            giveaway != null -> GiveawayContent(chat, messageId, giveaway)
             giveaway_winners is GiveawayPublicResults -> GiveawayPublicResultsContent(giveaway_winners)
             else -> null
         }

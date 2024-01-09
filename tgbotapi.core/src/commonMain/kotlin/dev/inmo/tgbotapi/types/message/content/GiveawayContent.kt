@@ -1,23 +1,19 @@
 package dev.inmo.tgbotapi.types.message.content
 
-import dev.inmo.micro_utils.language_codes.IetfLang
 import dev.inmo.tgbotapi.requests.ForwardMessage
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.chat.PreviewChat
-import dev.inmo.tgbotapi.types.giveaway.GiveawayInfo
-import dev.inmo.tgbotapi.types.giveaway.ScheduledGiveaway
+import dev.inmo.tgbotapi.types.giveaway.Giveaway
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ScheduledGiveawayContent(
+data class GiveawayContent(
     private val chat: Chat,
     private val messageId: MessageId,
-    val giveaway: ScheduledGiveaway
+    val giveaway: Giveaway
 ) : MessageContent {
     override fun createResend(
         chatId: ChatIdentifier,
