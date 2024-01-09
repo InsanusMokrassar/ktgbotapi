@@ -8,5 +8,6 @@ data class ReplyKeyboardRemove(
 ) : KeyboardMarkup {
     @SerialName("remove_keyboard")
     @Required
+    @EncodeDefault
     val removeKeyboard: Boolean = true
 }

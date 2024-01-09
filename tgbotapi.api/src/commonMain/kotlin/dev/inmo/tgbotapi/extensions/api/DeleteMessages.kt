@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.DeleteMessages
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import kotlin.jvm.JvmName
 
 suspend fun TelegramBot.deleteMessages(
     chatId: ChatIdentifier,
@@ -44,6 +45,7 @@ suspend fun TelegramBot.deleteMessages(
     )
 }.all { it }
 
+@JvmName("deleteMessagesWithMessages")
 suspend fun TelegramBot.deleteMessages(
     messages: List<AccessibleMessage>
 ) = deleteMessages(messages.map { it.metaInfo })
@@ -70,6 +72,7 @@ suspend fun TelegramBot.delete(
     messagesMetas: List<Message.MetaInfo>
 ) = deleteMessages(messagesMetas)
 
+@JvmName("deleteWithMessages")
 suspend fun TelegramBot.delete(
     messages: List<AccessibleMessage>
 ) = deleteMessages(messages)

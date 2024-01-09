@@ -98,6 +98,7 @@ data class MultipartFile (
     private val inputSource: () -> Input
 ) : InputFile() {
     @Required
+    @EncodeDefault
     override val fileId: String = "${uuid4()}.${filename.fileExtension}"
     val input: Input
         get() = inputSource()

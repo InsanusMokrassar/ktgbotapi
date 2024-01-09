@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.send.CopyMessages
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import kotlin.jvm.JvmName
 
 suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
@@ -84,6 +85,7 @@ suspend fun TelegramBot.copyMessages(
     )
 }
 
+@JvmName("copyMessagesWithMessages")
 suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,
@@ -172,6 +174,7 @@ suspend fun TelegramBot.copy(
     removeCaption = removeCaption
 )
 
+@JvmName("copyWithMessages")
 suspend fun TelegramBot.copy(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,

@@ -4,10 +4,7 @@ import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Required
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -32,6 +29,7 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
     ) : GiveawayPublicResults {
         @SerialName(wasRefundedField)
         @Required
+        @EncodeDefault
         override val refunded: Boolean = true
         @SerialName(winnersCountField)
         override val count: Int = 0
@@ -78,6 +76,7 @@ sealed interface GiveawayPublicResults: GiveawayInfo, GiveawayResults, WithPrevi
     ) : GiveawayPublicResults {
         @SerialName(wasRefundedField)
         @Required
+        @EncodeDefault
         override val refunded: Boolean = false
     }
 

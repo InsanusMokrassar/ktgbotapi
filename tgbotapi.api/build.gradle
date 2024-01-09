@@ -16,6 +16,9 @@ kotlin {
                 api project(":tgbotapi.core")
             }
         }
+        configureEach {
+            languageSettings.optIn("kotlinx.serialization.ExperimentalSerializationApi")
+        }
     }
 }
 

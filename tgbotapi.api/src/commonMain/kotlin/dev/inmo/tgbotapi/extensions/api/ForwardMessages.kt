@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.ForwardMessages
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
+import kotlin.jvm.JvmName
 
 suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
@@ -85,6 +86,7 @@ suspend fun TelegramBot.forwardMessages(
     )
 }
 
+@JvmName("forwardMessagesWithMessages")
 suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,
@@ -173,6 +175,7 @@ suspend fun TelegramBot.forward(
     removeCaption = removeCaption
 )
 
+@JvmName("forwardWithMessages")
 suspend fun TelegramBot.forward(
     toChatId: ChatIdentifier,
     messages: List<AccessibleMessage>,

@@ -44,5 +44,6 @@ data class RestrictedChatMember(
 ) : BannedChatMember, SpecialRightsChatMember, ChatPermissions {
     @SerialName(statusField)
     @Required
+    @EncodeDefault
     override val status: ChatMember.Status = ChatMember.Status.Restricted
 }

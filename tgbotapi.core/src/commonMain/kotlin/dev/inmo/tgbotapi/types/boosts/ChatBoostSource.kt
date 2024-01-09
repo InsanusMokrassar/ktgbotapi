@@ -4,10 +4,7 @@ import dev.inmo.tgbotapi.abstracts.WithMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Required
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -31,6 +28,7 @@ sealed interface ChatBoostSource {
         override val user: PreviewUser
     ) : ByUser {
         @Required
+        @EncodeDefault
         @SerialName(sourceField)
         override val sourceName: String = sourceCode
 
@@ -45,6 +43,7 @@ sealed interface ChatBoostSource {
         override val user: PreviewUser
     ) : ByUser {
         @Required
+        @EncodeDefault
         @SerialName(sourceField)
         override val sourceName: String = sourceCode
 
@@ -67,9 +66,11 @@ sealed interface ChatBoostSource {
             override val user: PreviewUser
         ) : Giveaway, ByUser {
             @Required
+            @EncodeDefault
             @SerialName(sourceField)
             override val sourceName: String = Giveaway.sourceCode
             @Required
+            @EncodeDefault
             @SerialName(isUnclaimedField)
             override val unclaimed: Boolean = false
         }
@@ -80,9 +81,11 @@ sealed interface ChatBoostSource {
             override val messageId: MessageId
         ) : Giveaway {
             @Required
+            @EncodeDefault
             @SerialName(sourceField)
             override val sourceName: String = Giveaway.sourceCode
             @Required
+            @EncodeDefault
             @SerialName(isUnclaimedField)
             override val unclaimed: Boolean = true
             @SerialName(userField)
@@ -104,6 +107,7 @@ sealed interface ChatBoostSource {
     @Serializable
     private data class Surrogate(
         @Required
+        @EncodeDefault
         @SerialName(sourceField)
         val sourceName: String,
         @SerialName(userField)

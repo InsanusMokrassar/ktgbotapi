@@ -65,6 +65,7 @@ data class RequestLocationKeyboardButton(
 ) : KeyboardButton {
     @SerialName(requestLocationField)
     @Required
+    @EncodeDefault
     val requestLocation: Boolean = true
 }
 

@@ -2,10 +2,7 @@ package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.*
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Required
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -27,6 +24,7 @@ sealed interface MessageOrigin {
     ) : MessageOrigin {
         @SerialName(typeField)
         @Required
+        @EncodeDefault
         override val type: String = Companion.type
 
         companion object {
@@ -43,6 +41,7 @@ sealed interface MessageOrigin {
     ) : MessageOrigin {
         @SerialName(typeField)
         @Required
+        @EncodeDefault
         override val type: String = Companion.type
 
         companion object {
@@ -66,6 +65,7 @@ sealed interface MessageOrigin {
         ) : Public {
             @SerialName(typeField)
             @Required
+            @EncodeDefault
             override val type: String = Companion.type
 
             companion object {
@@ -86,6 +86,7 @@ sealed interface MessageOrigin {
         ) : Public {
             @SerialName(typeField)
             @Required
+            @EncodeDefault
             override val type: String = Companion.type
 
             companion object {
@@ -105,6 +106,7 @@ sealed interface MessageOrigin {
     private data class Surrogate(
         @SerialName(typeField)
         @Required
+        @EncodeDefault
         val type: String,
         @SerialName(senderChatField)
         val senderChat: PreviewChat? = null,

@@ -112,6 +112,7 @@ data class CreateChatInviteLinkWithJoinRequest(
     override val expirationUnixTimeStamp: TelegramDate? = null,
 ) : CreateChatInviteLink<ChatInviteLinkWithJoinRequest>, WithJoinRequestChatInviteLinkRequest {
     @Required
+    @EncodeDefault
     @SerialName(createsJoinRequestField)
     private val createsJoinRequest: Boolean = true
 
