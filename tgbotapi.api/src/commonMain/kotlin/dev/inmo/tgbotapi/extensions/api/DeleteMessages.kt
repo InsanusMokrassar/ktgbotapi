@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.DeleteMessages
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.deleteMessages(
     chatId: ChatIdentifier,
@@ -35,13 +36,17 @@ suspend fun TelegramBot.deleteMessages(
 )
 
 suspend fun TelegramBot.deleteMessages(
-    messages: List<AccessibleMessage>
-) = messages.groupBy { it.chat }.map { (chat, messages) ->
+    messagesMetas: List<Message.MetaInfo>
+) = messagesMetas.groupBy { it.chatId }.map { (chatId, messages) ->
     deleteMessages(
-        chatId = chat.id,
+        chatId = chatId,
         messageIds = messages.map { it.messageId }
     )
 }.all { it }
+
+suspend fun TelegramBot.deleteMessages(
+    messages: List<AccessibleMessage>
+) = deleteMessages(messages.map { it.metaInfo })
 
 suspend fun TelegramBot.delete(
     chatId: ChatIdentifier,
@@ -59,6 +64,11 @@ suspend fun TelegramBot.delete(
     secondMessageId: MessageId,
     vararg messageIds: MessageId
 ) = deleteMessages(chatId = chatId, messageIds = (listOf(firstMessageId, secondMessageId) + messageIds.toList()))
+
+
+suspend fun TelegramBot.delete(
+    messagesMetas: List<Message.MetaInfo>
+) = deleteMessages(messagesMetas)
 
 suspend fun TelegramBot.delete(
     messages: List<AccessibleMessage>

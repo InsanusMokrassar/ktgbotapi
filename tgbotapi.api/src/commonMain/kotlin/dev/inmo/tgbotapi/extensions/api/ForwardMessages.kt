@@ -1,9 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api
 
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.api.send.copyMessages
 import dev.inmo.tgbotapi.requests.ForwardMessages
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 
 suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
@@ -66,15 +68,15 @@ suspend fun TelegramBot.forwardMessages(
 
 suspend fun TelegramBot.forwardMessages(
     toChatId: ChatIdentifier,
-    messages: List<AccessibleMessage>,
+    messagesMetas: List<Message.MetaInfo>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
-) = messages.groupBy { it.chat }.flatMap { (chat, messages) ->
+) = messagesMetas.groupBy { it.chatId }.flatMap { (chatId, messages) ->
     forwardMessages(
         toChatId = toChatId,
-        fromChatId = chat.id,
+        fromChatId = chatId,
         messageIds = messages.map { it.messageId },
         threadId = threadId,
         disableNotification = disableNotification,
@@ -82,6 +84,22 @@ suspend fun TelegramBot.forwardMessages(
         removeCaption = removeCaption
     )
 }
+
+suspend fun TelegramBot.forwardMessages(
+    toChatId: ChatIdentifier,
+    messages: List<AccessibleMessage>,
+    threadId: MessageThreadId? = toChatId.threadId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    removeCaption: Boolean = false
+) = forwardMessages(
+    toChatId = toChatId,
+    messagesMetas = messages.map { it.metaInfo },
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    removeCaption = removeCaption
+)
 
 suspend fun TelegramBot.forward(
     toChatId: ChatIdentifier,
@@ -133,6 +151,22 @@ suspend fun TelegramBot.forward(
     fromChatId = fromChatId,
     firstMessageId = firstMessageId,
     messageIds = *messageIds,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    removeCaption = removeCaption
+)
+
+suspend fun TelegramBot.forward(
+    toChatId: ChatIdentifier,
+    messagesMetas: List<Message.MetaInfo>,
+    threadId: MessageThreadId? = toChatId.threadId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    removeCaption: Boolean = false
+) = forwardMessages(
+    toChatId = toChatId,
+    messagesMetas = messagesMetas,
     threadId = threadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
