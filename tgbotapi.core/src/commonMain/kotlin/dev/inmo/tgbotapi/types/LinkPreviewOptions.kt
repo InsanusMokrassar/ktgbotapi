@@ -66,7 +66,7 @@ sealed interface LinkPreviewOptions {
     }
 
     @Serializable
-    data class Medium(
+    data class Default(
         @SerialName(urlField)
         override val url: String?,
         @SerialName(showAboveTextField)
@@ -108,7 +108,7 @@ sealed interface LinkPreviewOptions {
                 surrogate.isDisabled -> Disabled
                 surrogate.preferLargeMedia -> Large(surrogate.url, surrogate.showAboveText)
                 surrogate.preferSmallMedia -> Small(surrogate.url, surrogate.showAboveText)
-                else -> Medium(surrogate.url, surrogate.showAboveText)
+                else -> Default(surrogate.url, surrogate.showAboveText)
             }
         }
 
@@ -116,7 +116,7 @@ sealed interface LinkPreviewOptions {
             when (value) {
                 is Disabled -> Disabled.serializer().serialize(encoder, value)
                 is Large -> Large.serializer().serialize(encoder, value)
-                is Medium -> Medium.serializer().serialize(encoder, value)
+                is Default -> Default.serializer().serialize(encoder, value)
                 is Small -> Small.serializer().serialize(encoder, value)
             }
         }
