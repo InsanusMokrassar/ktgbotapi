@@ -23,6 +23,7 @@ import dev.inmo.tgbotapi.types.request.UsersShared
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.lowLevelRiskFeatureMessage
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
 
 typealias EventMessageToEventMapper<T> = suspend ChatEventMessage<T>.() -> T?
 
@@ -199,10 +200,15 @@ suspend fun BehaviourContext.waitChatSharedRequest(
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<ChatSharedRequest>(initRequest, errorFactory)
 
-suspend fun BehaviourContext.waitUserShared(
+suspend fun BehaviourContext.waitUsersShared(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<UsersShared>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitUserShared(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitUsersShared(initRequest, errorFactory).filter { it.userIds.size == 1 }
 
 suspend fun BehaviourContext.waitChatShared(
     initRequest: Request<*>? = null,
