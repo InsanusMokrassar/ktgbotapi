@@ -33,10 +33,10 @@ class ChatIdentifierTests {
 
     @Test
     fun `Cast_from_String_to_Username_is_working_correctly`() {
-        assertEquals(testUsername, testUsername.toUsername().username)
+        assertEquals(testUsername, testUsername.toUsername().full)
 
         assertFails("Username creating must fail when trying to create from string which is not starting from @ symbol") {
-            testUsername.replace("@", "").toUsername().username
+            testUsername.replace("@", "").toUsername().full
         }
     }
 

@@ -99,7 +99,7 @@ value class Username(
         get() = withoutAt
 
     init {
-        if (!username.startsWith("@")) {
+        if (!full.startsWith("@")) {
             throw IllegalArgumentException("Username must starts with `@`")
         }
     }
@@ -132,7 +132,7 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     override fun serialize(encoder: Encoder, value: ChatIdentifier) {
         when (value) {
             is IdChatIdentifier -> encoder.encodeLong(value.chatId)
-            is Username -> encoder.encodeString(value.username)
+            is Username -> encoder.encodeString(value.full)
         }
     }
 }
@@ -170,7 +170,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
         when (value) {
             is ChatId -> encoder.encodeLong(value.chatId)
             is ChatIdWithThreadId -> encoder.encodeString("${value.chatId}/${value.threadId}")
-            is Username -> encoder.encodeString(value.username)
+            is Username -> encoder.encodeString(value.full)
         }
     }
 }
