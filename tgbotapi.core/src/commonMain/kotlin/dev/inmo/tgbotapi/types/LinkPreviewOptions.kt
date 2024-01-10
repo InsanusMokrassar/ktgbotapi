@@ -1,9 +1,6 @@
 package dev.inmo.tgbotapi.types
 
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Required
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -19,6 +16,7 @@ sealed interface LinkPreviewOptions {
     @Serializable
     data object Disabled : LinkPreviewOptions {
         @Required
+        @EncodeDefault
         @SerialName(isDisabledField)
         override val isDisabled: Boolean = true
         override val url: String?
@@ -39,9 +37,11 @@ sealed interface LinkPreviewOptions {
         override val showAboveText: Boolean
     ) : LinkPreviewOptions {
         @Required
+        @EncodeDefault
         @SerialName(isDisabledField)
         override val isDisabled: Boolean = false
         @Required
+        @EncodeDefault
         @SerialName(preferLargeMediaField)
         override val preferLargeMedia: Boolean = true
         override val preferSmallMedia: Boolean
@@ -56,9 +56,11 @@ sealed interface LinkPreviewOptions {
         override val showAboveText: Boolean
     ) : LinkPreviewOptions {
         @Required
+        @EncodeDefault
         @SerialName(isDisabledField)
         override val isDisabled: Boolean = false
         @Required
+        @EncodeDefault
         @SerialName(preferSmallMediaField)
         override val preferSmallMedia: Boolean = true
         override val preferLargeMedia: Boolean
@@ -73,6 +75,7 @@ sealed interface LinkPreviewOptions {
         override val showAboveText: Boolean
     ) : LinkPreviewOptions {
         @Required
+        @EncodeDefault
         @SerialName(isDisabledField)
         override val isDisabled: Boolean = false
         override val preferSmallMedia: Boolean
