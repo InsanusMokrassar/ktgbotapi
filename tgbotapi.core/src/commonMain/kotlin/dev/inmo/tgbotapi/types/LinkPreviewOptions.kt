@@ -13,7 +13,7 @@ sealed interface LinkPreviewOptions {
     val preferLargeMedia: Boolean
     val showAboveText: Boolean
 
-    @Serializable
+    @Serializable(LinkPreviewOptions.Companion::class)
     data object Disabled : LinkPreviewOptions {
         @Required
         @EncodeDefault
@@ -29,7 +29,7 @@ sealed interface LinkPreviewOptions {
             get() = false
     }
 
-    @Serializable
+    @Serializable(LinkPreviewOptions.Companion::class)
     data class Large(
         @SerialName(urlField)
         override val url: String?,
@@ -48,7 +48,7 @@ sealed interface LinkPreviewOptions {
             get() = false
     }
 
-    @Serializable
+    @Serializable(LinkPreviewOptions.Companion::class)
     data class Small(
         @SerialName(urlField)
         override val url: String?,
@@ -67,7 +67,7 @@ sealed interface LinkPreviewOptions {
             get() = false
     }
 
-    @Serializable
+    @Serializable(LinkPreviewOptions.Companion::class)
     data class Default(
         @SerialName(urlField)
         override val url: String?,
@@ -96,9 +96,7 @@ sealed interface LinkPreviewOptions {
         val preferLargeMedia: Boolean = false,
         @SerialName(showAboveTextField)
         val showAboveText: Boolean = false,
-    ) {
-
-    }
+    )
 
     companion object : KSerializer<LinkPreviewOptions> {
         override val descriptor: SerialDescriptor
@@ -116,13 +114,16 @@ sealed interface LinkPreviewOptions {
         }
 
         override fun serialize(encoder: Encoder, value: LinkPreviewOptions) {
-            when (value) {
-                is Disabled -> Disabled.serializer().serialize(encoder, value)
-                is Large -> Large.serializer().serialize(encoder, value)
-                is Default -> Default.serializer().serialize(encoder, value)
-                is Small -> Small.serializer().serialize(encoder, value)
-            }
+            Surrogate.serializer().serialize(
+                encoder,
+                Surrogate(
+                    isDisabled = value.isDisabled,
+                    url = value.url,
+                    preferSmallMedia = value.preferSmallMedia,
+                    preferLargeMedia = value.preferLargeMedia,
+                    showAboveText = value.showAboveText
+                )
+            )
         }
-
     }
 }
