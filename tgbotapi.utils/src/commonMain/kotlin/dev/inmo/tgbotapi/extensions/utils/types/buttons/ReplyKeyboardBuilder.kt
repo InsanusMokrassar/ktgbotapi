@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.utils.types.buttons
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.buttons.reply.requestChatReplyButton
 import dev.inmo.tgbotapi.types.buttons.reply.requestUserReplyButton
+import dev.inmo.tgbotapi.types.buttons.reply.requestUsersReplyButton
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.keyboardButtonRequestUserLimit
 import dev.inmo.tgbotapi.types.request.RequestId
@@ -142,7 +143,7 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
     text: String,
     requestUser: KeyboardButtonRequestUsers
 ) = add(
-    requestUserReplyButton(
+    requestUsersReplyButton(
         text,
         requestUser
     )
@@ -169,7 +170,7 @@ inline fun ReplyKeyboardRowBuilder.requestUserButton(
 inline fun ReplyKeyboardRowBuilder.requestBotsButton(
     text: String,
     requestId: RequestId,
-    maxCount: Int
+    maxCount: Int = keyboardButtonRequestUserLimit.first
 ) = requestUsersButton(
     text,
     KeyboardButtonRequestUsers.Bot(requestId, maxCount)
@@ -200,7 +201,7 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
-    maxCount: Int
+    maxCount: Int = keyboardButtonRequestUserLimit.first
 ) = requestUsersButton(
     text,
     KeyboardButtonRequestUsers.Common(requestId, premiumUser, maxCount)
@@ -227,10 +228,11 @@ inline fun ReplyKeyboardRowBuilder.requestUserButton(
 inline fun ReplyKeyboardRowBuilder.requestUsersOrBotsButton(
     text: String,
     requestId: RequestId,
-    maxCount: Int
+    premiumUser: Boolean? = null,
+    maxCount: Int = keyboardButtonRequestUserLimit.first
 ) = requestUsersButton(
     text,
-    KeyboardButtonRequestUsers.Any(requestId, maxCount)
+    KeyboardButtonRequestUsers.Any(requestId, premiumUser, maxCount)
 )
 
 /**

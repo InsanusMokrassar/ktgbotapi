@@ -17,12 +17,15 @@ import kotlinx.serialization.encoding.Encoder
 sealed interface KeyboardButtonRequestUsers {
     val requestId: RequestId
     val isBot: Boolean?
+    val isPremium: Boolean?
     val maxCount: Int
 
     @Serializable
     data class Any(
         @SerialName(requestIdField)
         override val requestId: RequestId,
+        @SerialName(userIsPremiumField)
+        override val isPremium: Boolean? = null,
         @SerialName(maxQuantityField)
         override val maxCount: Int = keyboardButtonRequestUserLimit.first
     ) : KeyboardButtonRequestUsers {
@@ -36,7 +39,7 @@ sealed interface KeyboardButtonRequestUsers {
         @SerialName(requestIdField)
         override val requestId: RequestId,
         @SerialName(userIsPremiumField)
-        val isPremium: Boolean? = null,
+        override val isPremium: Boolean? = null,
         @SerialName(maxQuantityField)
         override val maxCount: Int = keyboardButtonRequestUserLimit.first
     ) : KeyboardButtonRequestUsers {
@@ -55,6 +58,8 @@ sealed interface KeyboardButtonRequestUsers {
         @SerialName(userIsBotField)
         @EncodeDefault
         override val isBot: Boolean = true
+        override val isPremium: Boolean?
+            get() = null
     }
 
     @Serializer(KeyboardButtonRequestUsers::class)
@@ -80,7 +85,7 @@ sealed interface KeyboardButtonRequestUsers {
             return when (surrogate.userIsBot) {
                 true -> Bot(surrogate.requestId, surrogate.maxCount)
                 false -> Common(surrogate.requestId, surrogate.userIsPremium, surrogate.maxCount)
-                null -> Any(surrogate.requestId, surrogate.maxCount)
+                null -> Any(surrogate.requestId, surrogate.userIsPremium, surrogate.maxCount)
             }
         }
 
