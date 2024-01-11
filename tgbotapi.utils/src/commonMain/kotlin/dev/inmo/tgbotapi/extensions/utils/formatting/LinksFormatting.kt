@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.utils.formatting
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.*
-import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.textsources.link
 import io.ktor.http.encodeURLQueryComponent
 
@@ -69,7 +69,7 @@ fun makeLinkToMessage(
 ): String = makeLinkToMessage(chatId.chatId, messageId, chatId.threadId)
 
 /**
- * Link which can be used as by any user to get access to [AccessibleMessage]. Returns null in case when there are no
+ * Link which can be used as by any user to get access to [Message]. Returns null in case when there are no
  * known way to build link (for [PrivateChat]s, for example)
  */
 fun makeLinkToMessage(
@@ -88,7 +88,7 @@ fun makeLinkToMessage(
 /**
  * @see makeLinkToMessage
  */
-val AccessibleMessage.messageLink: String?
+val Message.messageLink: String?
     get() = makeLinkToMessage(
         chat,
         messageId
