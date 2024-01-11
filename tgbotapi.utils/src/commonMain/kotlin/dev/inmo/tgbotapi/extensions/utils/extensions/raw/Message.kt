@@ -50,7 +50,7 @@ inline val AccessibleMessage.forward_date: TelegramDate?
 inline val AccessibleMessage.is_automatic_forward: Boolean?
     get() = this is ConnectedFromChannelGroupContentMessage<*>
 @RiskFeature(RawFieldsUsageWarning)
-inline val AccessibleMessage.reply_to_message: AccessibleMessage?
+inline val AccessibleMessage.reply_to_message: Message?
     get() = asPossiblyReplyMessage() ?.replyTo
 @RiskFeature(RawFieldsUsageWarning)
 inline val AccessibleMessage.via_bot: CommonBot?

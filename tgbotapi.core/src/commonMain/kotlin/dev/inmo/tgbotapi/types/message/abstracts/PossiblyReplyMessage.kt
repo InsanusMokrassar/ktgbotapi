@@ -4,6 +4,6 @@ import dev.inmo.tgbotapi.types.ReplyInfo
 
 interface PossiblyReplyMessage {
     val replyInfo: ReplyInfo?
-    val replyTo: AccessibleMessage?
+    val replyTo: Message?
         get() = (replyInfo as? ReplyInfo.Internal) ?.message
 }
