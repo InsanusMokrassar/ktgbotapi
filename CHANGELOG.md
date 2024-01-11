@@ -2,6 +2,8 @@
 
 ## 10.0.0
 
+**Add support of [Telegram Bots API 7.0](https://core.telegram.org/bots/api-changelog#december-29-2023)**
+
 **IN THIS UPDATE KLOCK DEPENDENCY CHANGED TO `com.soywiz.korge:korlibs-time` UP TO 5.3.0 VERSION**
 
 **IN THIS UPDATE KRYPTO DEPENDENCY CHANGED TO `com.soywiz.korge:korlibs-crypto` UP TO 5.3.0 VERSION**
