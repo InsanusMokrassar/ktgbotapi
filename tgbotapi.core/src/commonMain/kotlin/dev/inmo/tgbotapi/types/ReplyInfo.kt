@@ -28,7 +28,7 @@ sealed interface ReplyInfo {
     val messageMeta: Message.MetaInfo?
 
     data class Internal(
-        val message: AccessibleMessage
+        val message: Message
     ): ReplyInfo {
         override val messageMeta: Message.MetaInfo
             get() = message.metaInfo

@@ -49,7 +49,7 @@ interface AccessibleMessage : Message
 data class InaccessibleMessage(
     override val chat: PreviewChat,
     override val messageId: MessageId,
-) : AccessibleMessage {
+) : Message {
     override val date: DateTime
         get() = DateTime.invoke(0L)
 }
