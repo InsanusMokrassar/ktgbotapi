@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.Username
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.threadId
 import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 
@@ -32,43 +32,43 @@ inline fun WithPreviewChat.sameChat(chat: Chat) =
  * @return true in case if [this] message is placed in the same chat that [other]
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun WithPreviewChat.sameChat(other: AccessibleMessage) = sameChat(other.chat)
+inline fun WithPreviewChat.sameChat(other: Message) = sameChat(other.chat)
 
 /**
- * @return true in case if [this] message is from the same chat (with id == [chatId]) and [this] [AccessibleMessage.messageId]
+ * @return true in case if [this] message is from the same chat (with id == [chatId]) and [this] [Message.messageId]
  * equal [messageId] identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameMessage(
+inline fun Message.sameMessage(
     chatId: ChatIdentifier,
     messageId: MessageId
 ) = sameChat(chatId) && this.messageId == messageId
 
 /**
- * @return true in case if [this] message is from the same [chat] and [this] [AccessibleMessage.messageId] equal [messageId]
+ * @return true in case if [this] message is from the same [chat] and [this] [Message.messageId] equal [messageId]
  * identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameMessage(
+inline fun Message.sameMessage(
     chat: Chat,
     messageId: MessageId
 ) = sameChat(chat) && this.messageId == messageId
 
 /**
  * @return true in case if [this] message is the same as [other]. The same here means that these messages from one chat
- * and have equal [AccessibleMessage.messageId] identifier
+ * and have equal [Message.messageId] identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameMessage(other: AccessibleMessage) = sameMessage(other.chat, other.messageId)
+inline fun Message.sameMessage(other: Message) = sameMessage(other.chat, other.messageId)
 
 /**
  * Thread is the same thing that topic
  *
  * @return true in case if [this] message is in the chat [chatId] and topic [threadId]. The same here means that these
- * messages from one chat and have equal [AccessibleMessage.threadIdOrNull] identifier
+ * messages from one chat and have equal [Message.threadIdOrNull] identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameTopic(
+inline fun Message.sameTopic(
     chatId: ChatIdentifier,
     threadId: MessageThreadId? = chatId.threadId
 ) = sameChat(chatId) && threadIdOrNull == threadId
@@ -77,10 +77,10 @@ inline fun AccessibleMessage.sameTopic(
  * Thread is the same thing that topic
  *
  * @return true in case if [this] message is in the chat [chatId] and topic [threadId]. The same here means that these
- * messages from one chat and have equal [AccessibleMessage.threadIdOrNull] identifier
+ * messages from one chat and have equal [Message.threadIdOrNull] identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameThread(
+inline fun Message.sameThread(
     chatId: ChatIdentifier,
     threadId: MessageThreadId? = chatId.threadId
 ) = sameTopic(chatId, threadId)
@@ -89,10 +89,10 @@ inline fun AccessibleMessage.sameThread(
  * Thread is the same thing that topic
  *
  * @return true in case if [this] message is from the [chat] and topic [threadId]. The same here means that these
- * messages from one chat and have equal [AccessibleMessage.threadIdOrNull] identifier
+ * messages from one chat and have equal [Message.threadIdOrNull] identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameTopic(
+inline fun Message.sameTopic(
     chat: Chat,
     threadId: MessageThreadId? = chat.id.threadId
 ) = sameTopic(chat.id, threadId)
@@ -101,10 +101,10 @@ inline fun AccessibleMessage.sameTopic(
  * Thread is the same thing that topic
  *
  * @return true in case if [this] message is from the [chat] and topic [threadId]. The same here means that these
- * messages from one chat and have equal [AccessibleMessage.threadIdOrNull] identifier
+ * messages from one chat and have equal [Message.threadIdOrNull] identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameThread(
+inline fun Message.sameThread(
     chat: Chat,
     threadId: MessageThreadId? = chat.id.threadId
 ) = sameThread(chat.id, threadId)
@@ -113,16 +113,16 @@ inline fun AccessibleMessage.sameThread(
  * Thread is the same thing that topic
  *
  * @return true in case if [this] message is from the same chat and topic as [other]. The same here means that these
- * messages from one chat and have equal [AccessibleMessage.threadIdOrNull] identifier
+ * messages from one chat and have equal [Message.threadIdOrNull] identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameTopic(other: AccessibleMessage) = sameTopic(other.chat, other.threadIdOrNull)
+inline fun Message.sameTopic(other: Message) = sameTopic(other.chat, other.threadIdOrNull)
 
 /**
  * Thread is the same thing that topic
  *
  * @return true in case if [this] message is in the same topic as the [other]. The same here means that these messages
- * from one chat and have equal [AccessibleMessage.threadIdOrNull] identifier
+ * from one chat and have equal [Message.threadIdOrNull] identifier
  */
 @Suppress("NOTHING_TO_INLINE")
-inline fun AccessibleMessage.sameThread(other: AccessibleMessage) = sameTopic(other)
+inline fun Message.sameThread(other: Message) = sameTopic(other)

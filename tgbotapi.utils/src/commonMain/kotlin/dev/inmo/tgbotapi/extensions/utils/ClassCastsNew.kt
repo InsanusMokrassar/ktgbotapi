@@ -260,7 +260,7 @@ import dev.inmo.tgbotapi.types.message.CommonSupergroupEventMessage
 import dev.inmo.tgbotapi.types.message.ForwardInfo
 import dev.inmo.tgbotapi.types.message.PassportMessage
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
-import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
@@ -3495,13 +3495,13 @@ public inline fun <T>
     Message.ifCommonForumContentMessage(block: (CommonForumContentMessage<MessageContent>) -> T): T?
     = commonForumContentMessageOrNull() ?.let(block)
 
-public inline fun Message.accessibleMessageOrNull(): AccessibleMessage? = this as?
-    dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+public inline fun Message.accessibleMessageOrNull(): Message? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.Message
 
-public inline fun Message.accessibleMessageOrThrow(): AccessibleMessage = this as
-    dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
+public inline fun Message.accessibleMessageOrThrow(): Message = this as
+    dev.inmo.tgbotapi.types.message.abstracts.Message
 
-public inline fun <T> Message.ifAccessibleMessage(block: (AccessibleMessage) -> T): T? =
+public inline fun <T> Message.ifMessage(block: (Message) -> T): T? =
     accessibleMessageOrNull() ?.let(block)
 
 public inline fun Message.inaccessibleMessageOrNull(): InaccessibleMessage? = this as?
