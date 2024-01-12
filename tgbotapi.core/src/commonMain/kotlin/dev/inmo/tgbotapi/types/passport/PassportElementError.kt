@@ -100,6 +100,7 @@ data class PassportElementErrorDataField(
 ) : PassportSingleElementError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = dataField
 }
 fun EncryptedPassportElementWithData.createDataError(field: String, message: String) = PassportElementErrorDataField(
@@ -121,6 +122,7 @@ data class PassportElementErrorFrontSide(
 ) : PassportElementFileError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = frontSideField
 }
 fun EncryptedPassportElementWithFrontSide.createFrontSideError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorFrontSide(
@@ -141,6 +143,7 @@ data class PassportElementErrorReverseSide(
 ) : PassportElementFileError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = reverseSideField
 }
 fun EncryptedPassportElementWithReverseSide.createReverseSideError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorReverseSide(
@@ -160,6 +163,7 @@ data class PassportElementErrorSelfie(
 ) : PassportElementFileError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = selfieField
 }
 fun EncryptedPassportElementWithSelfie.createSelfieError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorSelfie(
@@ -181,6 +185,7 @@ data class PassportElementErrorFile(
 ) : PassportElementFileError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = fileField
 }
 fun EncryptedPassportElementWithFilesCollection.createFileError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorFile(
@@ -200,6 +205,7 @@ data class PassportElementErrorFiles(
 ) : PassportElementFilesError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = filesField
 }
 fun EncryptedPassportElementWithFilesCollection.createFilesError(message: String, unencryptedFileHashes: List<PassportElementHash>) = PassportElementErrorFiles(
@@ -221,6 +227,7 @@ data class PassportElementErrorTranslationFile(
 ) : PassportElementFileError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = translationFileField
 }
 fun EncryptedPassportElementTranslatable.createFileError(message: String, unencryptedFileHash: PassportElementHash) = PassportElementErrorTranslationFile(
@@ -239,6 +246,7 @@ data class PassportElementErrorTranslationFiles(
 ) : PassportElementFilesError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = translationFilesField
 }
 fun EncryptedPassportElementTranslatable.createFilesError(message: String, unencryptedFileHashes: List<PassportElementHash>) = PassportElementErrorTranslationFiles(
@@ -259,6 +267,7 @@ data class PassportElementErrorUnspecified(
 ) : PassportElementFileError() {
     @SerialName(sourceField)
     @Required
+    @EncodeDefault
     override val source: String = unspecifiedField
 }
 fun EncryptedPassportElement.createUnspecifiedError(message: String, elementHash: PassportElementHash) = PassportElementErrorUnspecified(

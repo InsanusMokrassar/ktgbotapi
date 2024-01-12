@@ -28,10 +28,8 @@ data class SendContact(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<ContactContent>>,
@@ -43,8 +41,7 @@ data class SendContact(
         threadId: MessageThreadId? = chatId.threadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
-        replyToMessageId: MessageId? = null,
-        allowSendingWithoutReply: Boolean? = null,
+        replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ): this(
         chatId,
@@ -54,8 +51,7 @@ data class SendContact(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 
@@ -71,8 +67,7 @@ fun Contact.toRequest(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): SendContact = SendContact(
     chatId,
@@ -80,7 +75,6 @@ fun Contact.toRequest(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )

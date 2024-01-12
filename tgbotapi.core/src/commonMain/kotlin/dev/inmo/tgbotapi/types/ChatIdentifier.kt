@@ -85,16 +85,27 @@ fun Int.toChatId(): IdChatIdentifier = toLong().toChatId()
 fun Byte.toChatId(): IdChatIdentifier = toLong().toChatId()
 
 @Serializable(ChatIdentifierSerializer::class)
-data class Username(
+@JvmInline
+value class Username(
+    @Deprecated("Renamed", ReplaceWith("full"))
     val username: String
 ) : ChatIdentifier {
+    val full: String
+        get() = username
+    val withoutAt
+        get() = full.dropWhile { it == '@' }
+    @Deprecated("Renamed", ReplaceWith("withoutAt"))
     val usernameWithoutAt
-        get() = username.dropWhile { it == '@' }
+        get() = withoutAt
 
     init {
-        if (!username.startsWith("@")) {
+        if (!full.startsWith("@")) {
             throw IllegalArgumentException("Username must starts with `@`")
         }
+    }
+
+    override fun toString(): String {
+        return full
     }
 }
 
@@ -121,7 +132,7 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
     override fun serialize(encoder: Encoder, value: ChatIdentifier) {
         when (value) {
             is IdChatIdentifier -> encoder.encodeLong(value.chatId)
-            is Username -> encoder.encodeString(value.username)
+            is Username -> encoder.encodeString(value.full)
         }
     }
 }
@@ -159,7 +170,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
         when (value) {
             is ChatId -> encoder.encodeLong(value.chatId)
             is ChatIdWithThreadId -> encoder.encodeString("${value.chatId}/${value.threadId}")
-            is Username -> encoder.encodeString(value.username)
+            is Username -> encoder.encodeString(value.full)
         }
     }
 }

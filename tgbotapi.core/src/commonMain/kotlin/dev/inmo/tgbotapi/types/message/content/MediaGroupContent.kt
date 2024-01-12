@@ -2,25 +2,24 @@ package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendMediaGroup
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MediaGroupIdentifier
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class MediaGroupContent<T : MediaGroupPartContent>(
     override val group: List<MediaGroupCollectionContent.PartWrapper<T>>,
-    override val mediaGroupId: MediaGroupIdentifier
-) : MediaGroupCollectionContent<T> {
+    override val mediaGroupId: MediaGroupIdentifier,
+) : MediaGroupCollectionContent<T>, WithOptionalQuoteInfo {
     val mainContent: MediaGroupPartContent
         get() = group.first().content
+    override val quote: TextQuote?
+        get() = mainContent.quote
     override val media: TelegramMediaFile
         get() = mainContent.media
 
@@ -36,8 +35,7 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         threadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<MediaGroupContent<MediaGroupPartContent>>> = SendMediaGroup<MediaGroupPartContent>(
         chatId,
@@ -45,7 +43,6 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply
+        replyParameters,
     )
 }

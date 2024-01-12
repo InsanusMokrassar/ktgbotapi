@@ -55,7 +55,7 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQue
     markerFactory: MarkerFactory<in InlineMessageIdDataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineMessageIdDataCallbackQuery>
 ) = onCallbackQuery (
-    initialFilter * !SimpleFilter<MessageDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
+    initialFilter * !SimpleFilter<InlineMessageIdDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
     subcontextUpdatesFilter,
     markerFactory,
     scenarioReceiver

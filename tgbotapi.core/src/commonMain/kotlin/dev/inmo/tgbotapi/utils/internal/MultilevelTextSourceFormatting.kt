@@ -6,8 +6,9 @@ import dev.inmo.tgbotapi.utils.extensions.*
 
 internal fun MultilevelTextSource.markdownV2Default(
     openControlSymbol: String,
-    closeControlSymbol: String = openControlSymbol
-) = "$openControlSymbol${subsources.makeMarkdownV2String()}$closeControlSymbol"
+    closeControlSymbol: String = openControlSymbol,
+    eachLineSeparator: String? = null
+) = "$openControlSymbol${subsources.makeMarkdownV2String(eachLineSeparator)}$closeControlSymbol"
 internal fun MultilevelTextSource.htmlDefault(
     openControlSymbol: String,
     closeControlSymbol: String = openControlSymbol
@@ -38,6 +39,10 @@ internal fun MultilevelTextSource.emailHTML(address: String): String = linkHTML(
 
 internal fun MultilevelTextSource.boldMarkdownV2(): String = markdownV2Default(markdownBoldControl)
 internal fun MultilevelTextSource.boldHTML(): String = htmlDefault(htmlBoldControl)
+
+
+internal fun MultilevelTextSource.blockquoteMarkdownV2(): String = markdownV2Default("", eachLineSeparator = markdownBlockquoteControl)
+internal fun MultilevelTextSource.blockquoteHTML(): String = htmlDefault(htmlBlockquoteControl)
 
 
 internal fun MultilevelTextSource.cashTagMarkdownV2(): String = subsources.makeMarkdownV2String()

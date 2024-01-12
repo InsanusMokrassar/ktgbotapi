@@ -1,14 +1,11 @@
 package dev.inmo.tgbotapi.extensions.api.send
 
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
-import dev.inmo.tgbotapi.types.threadId
 
 /**
  * This method will send [content] to the [chatId] as is
@@ -19,8 +16,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     content.createResend(
@@ -28,8 +24,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
         messageThreadId = messageThreadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
-        replyToMessageId = replyToMessageId,
-        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
 ) as ContentMessage<T>
@@ -43,8 +38,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = resend(
     chatId = chat.id,
@@ -52,8 +46,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId = messageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    replyToMessageId = replyToMessageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
 
@@ -68,8 +61,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = resend(
     chatId = chatId,
@@ -77,8 +69,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId = messageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    replyToMessageId = replyToMessageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
 
@@ -93,8 +84,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = resend(
     chatId = chat.id,
@@ -102,7 +92,6 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId = messageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
-    replyToMessageId = replyToMessageId,
-    allowSendingWithoutReply = allowSendingWithoutReply,
+    replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

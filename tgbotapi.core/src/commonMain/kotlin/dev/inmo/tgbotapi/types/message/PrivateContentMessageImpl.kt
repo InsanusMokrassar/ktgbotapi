@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.User
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.content.MessageContent
 
@@ -18,9 +18,26 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val date: DateTime,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val forwardInfo: ForwardInfo?,
-    override val replyTo: Message?,
+    override val forwardOrigin: MessageOrigin?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : PrivateContentMessage<T>
+) : PrivateContentMessage<T> {
+    constructor(
+        messageId: MessageId,
+        from: User,
+        chat: PreviewPrivateChat,
+        content: T,
+        date: DateTime,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        forwardInfo: ForwardInfo,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        senderBot: CommonBot?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, mediaGroupId
+    )
+}

@@ -48,7 +48,13 @@ class StringFormattingTests {
                 " with " +
                 hashtag("tag") +
                 " and " +
-                mention("mention")
+                mention("mention") +
+                ". Start of blockquote: " +
+                blockquote(
+                    "Block quotation started\n" +
+                        "Block quotation continued\n" +
+                        "The last line of the block quotation"
+                )
         sources.testTextSources()
 
         assertEquals(formattedV2Text, sources.toMarkdownV2Texts().first())

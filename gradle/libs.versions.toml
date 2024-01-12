@@ -6,14 +6,14 @@ kotlin-coroutines = "1.7.3"
 
 javax-activation = "1.1.1"
 
-korlibs = "4.0.10"
+korlibs = "5.3.0"
 uuid = "0.8.2"
 ktor = "2.3.7"
 
-ksp = "1.9.21-1.0.16"
+ksp = "1.9.22-1.0.16"
 kotlin-poet = "1.15.3"
 
-microutils = "0.20.23"
+microutils = "0.20.26"
 kslog = "1.3.1"
 
 versions = "0.50.0"
@@ -41,11 +41,12 @@ ktor-server-host-common = { module = "io.ktor:ktor-server-host-common", version.
 
 javax-activation = { module = "javax.activation:activation", version.ref = "javax-activation" }
 
-korlibs-klock =  { module = "com.soywiz.korlibs.klock:klock", version.ref = "korlibs" }
-korlibs-krypto =  { module = "com.soywiz.korlibs.krypto:krypto", version.ref = "korlibs" }
+korlibs-klock =  { module = "com.soywiz.korge:korlibs-time", version.ref = "korlibs" }
+korlibs-krypto =  { module = "com.soywiz.korge:korlibs-crypto", version.ref = "korlibs" }
 
 uuid = { module = "com.benasher44:uuid", version.ref = "uuid" }
 
+microutils-colors-common = { module = "dev.inmo:micro_utils.colors.common", version.ref = "microutils" }
 microutils-coroutines = { module = "dev.inmo:micro_utils.coroutines", version.ref = "microutils" }
 microutils-serialization-base64 = { module = "dev.inmo:micro_utils.serialization.base64", version.ref = "microutils" }
 microutils-serialization-encapsulator = { module = "dev.inmo:micro_utils.serialization.encapsulator", version.ref = "microutils" }

@@ -1,7 +1,5 @@
 package dev.inmo.tgbotapi.abstracts.types
 
-import dev.inmo.tgbotapi.types.MessageId
+import dev.inmo.tgbotapi.abstracts.WithMessageId
 
-interface MessageAction: ChatRequest {
-    val messageId: MessageId
-}
+interface MessageAction : ChatRequest, WithMessageId

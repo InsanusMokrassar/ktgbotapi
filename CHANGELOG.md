@@ -1,5 +1,24 @@
 # TelegramBotAPI changelog
 
+## 10.0.0
+
+**Add support of [Telegram Bots API 7.0](https://core.telegram.org/bots/api-changelog#december-29-2023)**
+
+**IN THIS UPDATE KLOCK DEPENDENCY CHANGED TO `com.soywiz.korge:korlibs-time` UP TO 5.3.0 VERSION**
+
+**IN THIS UPDATE KRYPTO DEPENDENCY CHANGED TO `com.soywiz.korge:korlibs-crypto` UP TO 5.3.0 VERSION**
+
+* `Version`:
+  * `MicroUtils`: `0.20.23` -> `0.20.26`
+  * `Korlibs`: `4.0.10` -> `5.3.0`
+* `Core`:
+  * `Message` now inherited by two variants: `AccessibleMessage` and `InaccessibleMessage`
+* `Common`:
+  * In most places `disableWebPagePreview` has been replaced by new `LinkPreviewOptions`
+  * In most places arguments `replyToMessageId` and `allowSendingWithoutReply` has been replaced with
+    `ReplyParameters`
+    * In `reply` extension two parameters have been added: `replyInChatId` and `replyInThreadId`
+
 ## 9.4.3
 
 **IetfLanguageCode has been renamed to IetfLang in MicroUtils**

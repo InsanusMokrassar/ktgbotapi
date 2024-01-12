@@ -14,62 +14,133 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     override val channel: PreviewChannelChat,
     override val messageId: MessageId,
     override val date: DateTime,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val replyTo: Message?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : ConnectedFromChannelGroupContentMessage<T>
+) : ConnectedFromChannelGroupContentMessage<T> {
+
+    constructor(
+        chat: PreviewGroupChat,
+        channel: PreviewChannelChat,
+        messageId: MessageId,
+        date: DateTime,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+    )
+}
 
 data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
     override val chat: PreviewGroupChat,
     override val channel: PreviewChannelChat,
     override val messageId: MessageId,
     override val date: DateTime,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val replyTo: Message?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : UnconnectedFromChannelGroupContentMessage<T>
+) : UnconnectedFromChannelGroupContentMessage<T> {
+    constructor(
+        chat: PreviewGroupChat,
+        channel: PreviewChannelChat,
+        messageId: MessageId,
+        date: DateTime,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+    )
+}
 
 data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val chat: PreviewGroupChat,
     override val messageId: MessageId,
     override val date: DateTime,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val replyTo: Message?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : AnonymousGroupContentMessage<T>
+) : AnonymousGroupContentMessage<T> {
+    constructor(
+        chat: PreviewGroupChat,
+        messageId: MessageId,
+        date: DateTime,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        chat, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+    )
+}
 
 data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val chat: PreviewGroupChat,
     override val messageId: MessageId,
     override val from: User,
     override val date: DateTime,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val replyTo: Message?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : CommonGroupContentMessage<T>
+) : CommonGroupContentMessage<T> {
+    constructor(
+        chat: PreviewGroupChat,
+        messageId: MessageId,
+        from: User,
+        date: DateTime,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        chat, messageId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId
+    )
+}
 
 data class FromChannelForumContentMessageImpl<T: MessageContent>(
     override val chat: PreviewForumChat,
@@ -77,32 +148,69 @@ data class FromChannelForumContentMessageImpl<T: MessageContent>(
     override val messageId: MessageId,
     override val threadId: MessageThreadId,
     override val date: DateTime,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val replyTo: Message?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : FromChannelForumContentMessage<T>
+) : FromChannelForumContentMessage<T> {
+    constructor(
+        chat: PreviewForumChat,
+        channel: PreviewChannelChat,
+        messageId: MessageId,
+        threadId: MessageThreadId,
+        date: DateTime,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        chat, channel, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+    )
+}
 
 data class AnonymousForumContentMessageImpl<T : MessageContent>(
     override val chat: PreviewForumChat,
     override val messageId: MessageId,
     override val threadId: MessageThreadId,
     override val date: DateTime,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val replyTo: Message?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : AnonymousForumContentMessage<T>
+) : AnonymousForumContentMessage<T> {
+    constructor(
+        chat: PreviewForumChat,
+        messageId: MessageId,
+        threadId: MessageThreadId,
+        date: DateTime,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        authorSignature: AuthorSignature?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        chat, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+    )
+}
 
 data class CommonForumContentMessageImpl<T : MessageContent>(
     override val chat: PreviewForumChat,
@@ -110,12 +218,30 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
     override val threadId: MessageThreadId,
     override val from: User,
     override val date: DateTime,
-    override val forwardInfo: ForwardInfo?,
+    override val forwardOrigin: MessageOrigin?,
     override val editDate: DateTime?,
     override val hasProtectedContent: Boolean,
-    override val replyTo: Message?,
+    override val replyInfo: ReplyInfo?,
     override val replyMarkup: InlineKeyboardMarkup?,
     override val content: T,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupIdentifier?,
-) : CommonForumContentMessage<T>
+) : CommonForumContentMessage<T> {
+    constructor(
+        chat: PreviewForumChat,
+        messageId: MessageId,
+        threadId: MessageThreadId,
+        from: User,
+        date: DateTime,
+        forwardInfo: ForwardInfo,
+        editDate: DateTime?,
+        hasProtectedContent: Boolean,
+        replyTo: AccessibleMessage?,
+        replyMarkup: InlineKeyboardMarkup?,
+        content: T,
+        senderBot: CommonBot?,
+        mediaGroupId: MediaGroupIdentifier?,
+    ) : this(
+        chat, messageId, threadId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId
+    )
+}

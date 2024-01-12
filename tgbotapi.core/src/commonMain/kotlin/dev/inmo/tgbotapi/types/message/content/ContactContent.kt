@@ -16,10 +16,9 @@ data class ContactContent(
         messageThreadId: MessageThreadId?,
         disableNotification: Boolean,
         protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
+        replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<ContactContent>> = SendContact(
-        chatId, contact, messageThreadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply, replyMarkup
+        chatId, contact, messageThreadId, disableNotification, protectContent, replyParameters, replyMarkup
     )
 }

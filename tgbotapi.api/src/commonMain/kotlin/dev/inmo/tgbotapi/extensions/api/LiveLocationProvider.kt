@@ -2,38 +2,24 @@ package dev.inmo.tgbotapi.extensions.api
 
 import korlibs.time.DateTime
 import korlibs.time.TimeSpan
-import dev.inmo.micro_utils.coroutines.LinkedSupervisorJob
-import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
-import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.edit.edit
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.editLiveLocation
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.stopLiveLocation
-import dev.inmo.tgbotapi.extensions.api.send.send
-import dev.inmo.tgbotapi.extensions.api.send.sendLiveLocation
 import dev.inmo.tgbotapi.requests.send.SendLiveLocation
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.LiveLocation
-import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.location.StaticLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 import io.ktor.utils.io.core.Closeable
+import korlibs.time.millisecondsLong
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlin.js.JsName
-import kotlin.jvm.JvmName
 import kotlin.math.ceil
 
 val defaultLivePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
@@ -110,8 +96,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider {
     val liveTimeAsDouble = liveTimeMillis.toDouble()
@@ -127,8 +112,7 @@ suspend fun TelegramBot.startLiveLocation(
             threadId,
             disableNotification,
             protectContent,
-            replyToMessageId,
-            allowSendingWithoutReply,
+            replyParameters,
             replyMarkup
         )
     )
@@ -157,8 +141,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
     scope,
@@ -172,8 +155,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -192,8 +174,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
     scope,
@@ -207,8 +188,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -227,8 +207,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
     scope,
@@ -242,8 +221,7 @@ suspend fun TelegramBot.startLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -252,7 +230,7 @@ suspend fun TelegramBot.startLiveLocation(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 suspend inline fun TelegramBot.replyWithLiveLocation(
-    to: Message,
+    to: AccessibleMessage,
     scope: CoroutineScope,
     latitude: Double,
     longitude: Double,
@@ -277,8 +255,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    to.messageId,
-    allowSendingWithoutReply,
+    ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup
 )
 
@@ -287,7 +264,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
 suspend inline fun TelegramBot.replyWithLiveLocation(
-    to: Message,
+    to: AccessibleMessage,
     scope: CoroutineScope,
     location: StaticLocation,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
@@ -310,7 +287,6 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     threadId,
     disableNotification,
     protectContent,
-    to.messageId,
-    allowSendingWithoutReply,
+    ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup
 )

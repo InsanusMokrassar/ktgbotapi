@@ -11,5 +11,6 @@ data class LeftChatMemberImpl(
 ) : LeftChatMember {
     @SerialName(statusField)
     @Required
+    @EncodeDefault
     override val status: ChatMember.Status = ChatMember.Status.Left
 }

@@ -4,14 +4,11 @@ import dev.inmo.tgbotapi.abstracts.SpoilerableData
 import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.abstracts.*
-import dev.inmo.tgbotapi.types.threadId
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.modules.*
@@ -52,6 +49,8 @@ sealed interface MessageContent: ResendableContent {
                 subclass(StickerContent::class)
                 subclass(InvoiceContent::class)
                 subclass(StoryContent::class)
+                subclass(GiveawayPublicResultsContent::class)
+                subclass(GiveawayContent::class)
 
                 additionalBuilder()
             }
@@ -139,18 +138,6 @@ sealed interface TextedContent : MessageContent, TextedInput
 sealed interface MediaContent: MessageContent {
     val media: TelegramMediaFile
     fun asTelegramMedia(): TelegramMedia
-
-    override fun createResend(
-        chatId: ChatIdentifier,
-        messageThreadId: MessageThreadId?,
-        disableNotification: Boolean,
-        protectContent: Boolean,
-        replyToMessageId: MessageId?,
-        allowSendingWithoutReply: Boolean?,
-        replyMarkup: KeyboardMarkup?
-    ): Request<out ContentMessage<MediaContent>> {
-        TODO("Not yet implemented")
-    }
 }
 
 sealed interface SpoilerableMediaContent : MediaContent, SpoilerableData
@@ -162,8 +149,30 @@ sealed interface ResendableContent {
         messageThreadId: MessageThreadId? = chatId.threadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
-        replyToMessageId: MessageId? = null,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: KeyboardMarkup? = null
+    ): Request<out AccessibleMessage>
+
+    fun createResend(
+        chatId: ChatIdentifier,
+        messageThreadId: MessageThreadId? = chatId.threadId,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
-    ): Request<out Message>
+    ): Request<out AccessibleMessage> = createResend(
+        chatId = chatId,
+        messageThreadId = messageThreadId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyToMessageId ?.let {
+            ReplyParameters(
+                chatId,
+                replyToMessageId,
+                allowSendingWithoutReply = allowSendingWithoutReply
+            )
+        },
+        replyMarkup = replyMarkup
+    )
 }

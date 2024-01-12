@@ -22,10 +22,7 @@ import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonArray
-import kotlinx.serialization.json.jsonPrimitive
 
 const val rawSendingMediaGroupsWarning = "Media groups contains restrictions related to combinations of media" +
     " types. Currently it is possible to combine photo + video OR audio OR documents"
@@ -37,7 +34,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
+    replyParameters: ReplyParameters? = null,
     allowSendingWithoutReply: Boolean? = null
 ): Request<ContentMessage<MediaGroupContent<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
@@ -61,8 +58,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply
+        replyParameters
     )
 
     return (if (files.isEmpty()) {
@@ -87,9 +83,9 @@ inline fun SendPlaylist(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
+    replyParameters: ReplyParameters? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<AudioContent>(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<AudioContent>(chatId, media, threadId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending documents media group
@@ -103,9 +99,9 @@ inline fun SendDocumentsGroup(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
+    replyParameters: ReplyParameters? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<DocumentContent>(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<DocumentContent>(chatId, media, threadId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending visual media group
@@ -120,9 +116,9 @@ inline fun SendVisualMediaGroup(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
+    replyParameters: ReplyParameters? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<VisualMediaGroupPartContent>(chatId, media, threadId, disableNotification, protectContent, replyToMessageId, allowSendingWithoutReply)
+) = SendMediaGroup<VisualMediaGroupPartContent>(chatId, media, threadId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
 
 private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
     private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
@@ -150,10 +146,8 @@ data class SendMediaGroupData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
 ) : DataRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>,
     SendMessageRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
     @SerialName(mediaField)

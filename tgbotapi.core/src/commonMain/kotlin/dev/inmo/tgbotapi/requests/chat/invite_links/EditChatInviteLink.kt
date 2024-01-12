@@ -126,6 +126,7 @@ data class EditChatInviteLinkWithJoinRequest(
 ) : EditChatInviteLink<ChatInviteLinkWithJoinRequest>,
     WithJoinRequestChatInviteLinkRequest {
     @Required
+    @EncodeDefault
     @SerialName(createsJoinRequestField)
     private val createsJoinRequest: Boolean = true
 

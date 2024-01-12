@@ -9,13 +9,15 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
 @Serializable(MenuButtonSerializer::class)
+@OptIn(ExperimentalSerializationApi::class)
 sealed interface MenuButton {
-    @Required
+    @EncodeDefault
     val type: String
 
     @Serializable
     object Commands : MenuButton {
         @Required
+        @EncodeDefault
         override val type: String
             get() = "commands"
     }
@@ -27,6 +29,7 @@ sealed interface MenuButton {
         val webApp: WebAppInfo
     ) : MenuButton {
         @Required
+        @EncodeDefault
         override val type: String
             get() = Companion.type
 
@@ -39,6 +42,7 @@ sealed interface MenuButton {
     @Serializable
     object Default : MenuButton {
         @Required
+        @EncodeDefault
         override val type: String
             get() = "default"
     }

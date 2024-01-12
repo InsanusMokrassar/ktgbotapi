@@ -5,6 +5,7 @@ import korlibs.time.seconds
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.types.durationField
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.VideoChatEvent
+import korlibs.time.milliseconds
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

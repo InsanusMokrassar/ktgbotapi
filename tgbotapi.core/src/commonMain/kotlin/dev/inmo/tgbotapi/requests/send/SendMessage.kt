@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.requests.send
 
-import dev.inmo.tgbotapi.abstracts.types.DisableWebPagePreview
+import dev.inmo.tgbotapi.abstracts.types.LinkPreviewOptionsContainer
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -24,12 +24,11 @@ fun SendTextMessage(
     chatId: ChatIdentifier,
     text: String,
     parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
     chatId,
@@ -37,23 +36,21 @@ fun SendTextMessage(
     parseMode,
     null,
     threadId,
-    disableWebPagePreview,
+    linkPreviewOptions,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
 fun SendTextMessage(
     chatId: ChatIdentifier,
     entities: TextSourcesList,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
     chatId,
@@ -61,11 +58,10 @@ fun SendTextMessage(
     null,
     entities.toRawMessageEntities(),
     threadId,
-    disableWebPagePreview,
+    linkPreviewOptions,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -81,22 +77,20 @@ data class SendTextMessage internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
-    @SerialName(disableWebPagePreviewField)
-    override val disableWebPagePreview: Boolean? = null,
+    @SerialName(linkPreviewOptionsField)
+    override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<TextContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<TextContent>>,
     TextableSendMessageRequest<ContentMessage<TextContent>>,
-    DisableWebPagePreview
+    LinkPreviewOptionsContainer
 {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)

@@ -11,6 +11,7 @@ data class ReplyForce(
 ) : KeyboardMarkup {
     @SerialName(forceReplyField)
     @Required
+    @EncodeDefault
     val forceReply: Boolean = true
 
     companion object {

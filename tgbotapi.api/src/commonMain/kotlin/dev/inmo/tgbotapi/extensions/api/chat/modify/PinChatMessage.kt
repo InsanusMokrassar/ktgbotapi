@@ -5,7 +5,7 @@ import dev.inmo.tgbotapi.requests.chat.modify.PinChatMessage
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 
 suspend fun TelegramBot.pinChatMessage(
     chatId: ChatIdentifier,
@@ -20,6 +20,6 @@ suspend fun TelegramBot.pinChatMessage(
 ) = pinChatMessage(chat.id, messageId, disableNotification)
 
 suspend fun TelegramBot.pinChatMessage(
-    message: Message,
+    message: AccessibleMessage,
     disableNotification: Boolean = false
 ) = pinChatMessage(message.chat.id, message.messageId, disableNotification)

@@ -1,8 +1,10 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.colors.ColorId
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
+import dev.inmo.tgbotapi.types.reactions.Reaction
 import dev.inmo.tgbotapi.utils.RiskFeature
 import korlibs.time.DateTime
 import kotlinx.serialization.SerialName
@@ -32,7 +34,23 @@ data class ExtendedChannelChatImpl(
     @SerialName(linkedChatIdField)
     override val linkedGroupChatId: IdChatIdentifier? = null,
     @SerialName(hasHiddenMembersField)
-    override val membersHidden: Boolean = false
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null,
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0),
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null,
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false
 ) : ExtendedChannelChat
 
 @Serializable
@@ -54,7 +72,23 @@ data class ExtendedGroupChatImpl(
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     override val pinnedMessage: Message? = null,
     @SerialName(hasHiddenMembersField)
-    override val membersHidden: Boolean = false
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null,
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0),
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null,
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false,
 ) : ExtendedGroupChat
 
 @Serializable
@@ -81,7 +115,15 @@ data class ExtendedPrivateChatImpl(
     @SerialName(emojiStatusCustomEmojiIdField)
     override val statusEmojiId: CustomEmojiId? = null,
     @SerialName(emojiStatusExpirationDateField)
-    override val statusEmojiExpiration: TelegramDate? = null
+    override val statusEmojiExpiration: TelegramDate? = null,
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0),
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null,
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
@@ -125,7 +167,23 @@ data class ExtendedSupergroupChatImpl(
     @SerialName(hasAggressiveAntiSpamEnabledField)
     override val isAggressiveAntiSpamEnabled: Boolean = false,
     @SerialName(hasHiddenMembersField)
-    override val membersHidden: Boolean = false
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null,
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0),
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null,
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false,
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -167,7 +225,23 @@ data class ExtendedForumChatImpl(
     @SerialName(hasAggressiveAntiSpamEnabledField)
     override val isAggressiveAntiSpamEnabled: Boolean = false,
     @SerialName(hasHiddenMembersField)
-    override val membersHidden: Boolean = false
+    override val membersHidden: Boolean = false,
+    @SerialName(availableReactionsField)
+    override val availableReactions: List<Reaction>? = null,
+    @SerialName(emojiStatusCustomEmojiIdField)
+    override val statusEmojiId: CustomEmojiId? = null,
+    @SerialName(emojiStatusExpirationDateField)
+    override val statusEmojiExpiration: TelegramDate? = null,
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0),
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null,
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(hasVisibleHistoryField)
+    override val newMembersSeeHistory: Boolean = false,
 ) : ExtendedForumChat
 
 @Serializable
@@ -186,7 +260,15 @@ data class ExtendedBot(
     @SerialName(supportInlineQueriesField)
     val supportsInlineQueries: Boolean = false,
     @SerialName(photoField)
-    override val chatPhoto: ChatPhoto? = null
+    override val chatPhoto: ChatPhoto? = null,
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0),
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null,
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
@@ -198,4 +280,12 @@ data class UnknownExtendedChat(
     val rawJson: JsonObject
 ) : ExtendedChat {
     override val chatPhoto: ChatPhoto? = null
+    @SerialName(accentColorIdField)
+    override val accentColorId: ColorId = ColorId(0)
+    @SerialName(profileAccentColorIdField)
+    override val profileAccentColorId: ColorId? = null
+    @SerialName(backgroundCustomEmojiIdField)
+    override val backgroundCustomEmojiId: CustomEmojiId? = null
+    @SerialName(profileBackgroundCustomEmojiIdField)
+    override val profileBackgroundCustomEmojiId: CustomEmojiId? = null
 }

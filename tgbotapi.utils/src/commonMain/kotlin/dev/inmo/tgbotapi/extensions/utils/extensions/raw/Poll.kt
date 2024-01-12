@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.utils.RiskFeature
+import korlibs.time.seconds
 import kotlinx.serialization.json.jsonPrimitive
 
 @RiskFeature(RawFieldsUsageWarning)

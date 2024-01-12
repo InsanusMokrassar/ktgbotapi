@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.MediaContent
 import dev.inmo.tgbotapi.utils.RiskFeature
 
@@ -98,7 +98,7 @@ suspend fun <T> TelegramBot.editMessageCaption(
  */
 @RiskFeature("This method is unsafe due to absence of any guaranties about the type of message. In case if message is not media message this method will throw an exception")
 suspend fun <T> TelegramBot.editMessageCaption(
-    message: Message,
+    message: AccessibleMessage,
     entities: List<TextSource>,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<MediaContent> where T : TextedWithTextSources, T : MediaContent {

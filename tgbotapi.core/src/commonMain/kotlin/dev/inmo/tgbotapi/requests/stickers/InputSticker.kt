@@ -57,7 +57,7 @@ sealed interface InputSticker {
 
 object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<InputStickerSerializer.SurrogateInputSticker, InputSticker>(
     SurrogateInputSticker.serializer(),
-    {
+    { it ->
         when (it) {
             is InputSticker.Mask -> SurrogateInputSticker(
                 it.sticker,
@@ -82,7 +82,7 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
             )
         }
     },
-    {
+    { it ->
         when (it.internalType) {
             StickerType.CustomEmoji -> InputSticker.WithKeywords.CustomEmoji(
                 it.sticker,

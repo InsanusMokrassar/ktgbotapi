@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.utils.extensions.*
 
 const val markdownBoldControl = "*"
+const val markdownBlockquoteControl = ">"
 const val markdownItalicControl = "_"
 const val markdownSpoilerControl = "||"
 const val markdownCodeControl = "`"
@@ -17,6 +18,7 @@ const val markdownV2UnderlineEndControl = "$markdownV2UnderlineControl$markdownV
 const val markdownV2ItalicEndControl = "$markdownItalicControl$markdownV2ItalicUnderlineDelimiter"
 
 const val htmlBoldControl = "b"
+const val htmlBlockquoteControl = "blockquote"
 const val htmlItalicControl = "i"
 const val htmlSpoilerControl = "span class=\"tg-spoiler\""
 const val htmlSpoilerClosingControl = "span"
@@ -46,6 +48,8 @@ internal fun String.linkMarkdownV2(link: String): String = "[${escapeMarkdownV2C
 internal fun String.linkHTML(link: String): String = "<a href=\"$link\">${toHtml()}</a>"
 
 internal fun String.boldMarkdown(): String = markdownDefault(markdownBoldControl)
+
+internal fun String.blockquoteMarkdown(): String = regularMarkdown()
 
 internal fun String.italicMarkdown(): String = markdownDefault(markdownItalicControl)
 

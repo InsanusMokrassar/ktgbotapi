@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.utils.extensions
 
-import dev.inmo.tgbotapi.types.MediaGroupIdentifier
 import dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl
 import dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl
 import dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl
@@ -15,7 +14,6 @@ import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ConnectedFromChannelGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.FromChannelForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
@@ -41,8 +39,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.date,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.forwardInfo,
-            sourceMessage.replyTo,
+            sourceMessage.forwardOrigin,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             sourceMessage.senderBot,
             sourceMessage.authorSignature,
@@ -56,8 +54,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.date,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.forwardInfo,
-            sourceMessage.replyTo,
+            sourceMessage.forwardOrigin,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             sourceMessage.senderBot,
             sourceMessage.mediaGroupId
@@ -66,10 +64,10 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.chat,
             sourceMessage.messageId,
             sourceMessage.date,
-            sourceMessage.forwardInfo,
+            sourceMessage.forwardOrigin,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.replyTo,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,
@@ -81,10 +79,10 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.messageId,
             sourceMessage.user,
             sourceMessage.date,
-            sourceMessage.forwardInfo,
+            sourceMessage.forwardOrigin,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.replyTo,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,
@@ -95,10 +93,10 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.channel,
             sourceMessage.messageId,
             sourceMessage.date,
-            sourceMessage.forwardInfo,
+            sourceMessage.forwardOrigin,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.replyTo,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,
@@ -110,10 +108,10 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.channel,
             sourceMessage.messageId,
             sourceMessage.date,
-            sourceMessage.forwardInfo,
+            sourceMessage.forwardOrigin,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.replyTo,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,
@@ -125,10 +123,10 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.messageId,
             sourceMessage.threadId,
             sourceMessage.date,
-            sourceMessage.forwardInfo,
+            sourceMessage.forwardOrigin,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.replyTo,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,
@@ -141,10 +139,10 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.threadId,
             sourceMessage.user,
             sourceMessage.date,
-            sourceMessage.forwardInfo,
+            sourceMessage.forwardOrigin,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.replyTo,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,
@@ -156,10 +154,10 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.messageId,
             sourceMessage.threadId,
             sourceMessage.date,
-            sourceMessage.forwardInfo,
+            sourceMessage.forwardOrigin,
             sourceMessage.editDate,
             sourceMessage.hasProtectedContent,
-            sourceMessage.replyTo,
+            sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,

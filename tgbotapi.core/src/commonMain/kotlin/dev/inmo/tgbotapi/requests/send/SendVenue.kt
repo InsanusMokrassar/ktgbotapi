@@ -38,10 +38,8 @@ data class SendVenue(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendMessageRequest<ContentMessage<VenueContent>>,
@@ -55,8 +53,7 @@ data class SendVenue(
         threadId: MessageThreadId? = chatId.threadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
-        replyToMessageId: MessageId? = null,
-        allowSendingWithoutReply: Boolean? = null,
+        replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ): this(
         chatId = chatId,
@@ -71,8 +68,7 @@ data class SendVenue(
         threadId = threadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
-        replyToMessageId = replyToMessageId,
-        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
 
@@ -88,8 +84,7 @@ fun Venue.toRequest(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): SendVenue = SendVenue(
     chatId,
@@ -97,7 +92,6 @@ fun Venue.toRequest(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )

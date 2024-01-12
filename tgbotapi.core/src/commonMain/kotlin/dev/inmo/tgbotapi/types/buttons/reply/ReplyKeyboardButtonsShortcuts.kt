@@ -2,8 +2,10 @@ package dev.inmo.tgbotapi.types.buttons.reply
 
 import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
+import dev.inmo.tgbotapi.types.keyboardButtonRequestUserLimit
 import dev.inmo.tgbotapi.types.request.RequestId
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
+import kotlin.math.max
 
 
 /**
@@ -55,46 +57,98 @@ inline fun webAppReplyButton(
 /**
  * Creates [RequestUserKeyboardButton]
  */
-inline fun requestUserReplyButton(
+inline fun requestUsersReplyButton(
     text: String,
-    requestUser: KeyboardButtonRequestUser
+    requestUser: KeyboardButtonRequestUsers
 ) = RequestUserKeyboardButton(
     text,
     requestUser
 )
 
+
 /**
- * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Bot]
+ * Creates [RequestUserKeyboardButton]
  */
-inline fun requestBotReplyButton(
+@Deprecated("Renamed", ReplaceWith("requestUsersReplyButton(text, requestUser)", "dev.inmo.tgbotapi.types.buttons.reply.requestUsersReplyButton"))
+inline fun requestUserReplyButton(
     text: String,
-    requestId: RequestId
-) = requestUserReplyButton(
+    requestUser: KeyboardButtonRequestUsers
+) = requestUsersReplyButton(text, requestUser)
+
+/**
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Bot]
+ */
+inline fun requestBotsReplyButton(
+    text: String,
+    requestId: RequestId,
+    maxCount: Int = keyboardButtonRequestUserLimit.first
+) = requestUsersReplyButton(
     text,
-    KeyboardButtonRequestUser.Bot(requestId)
+    KeyboardButtonRequestUsers.Bot(requestId, maxCount)
 )
 
 /**
- * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Common]
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Bot]
+ */
+@Deprecated("Renamed", ReplaceWith("requestBotsReplyButton(text, requestId)", "dev.inmo.tgbotapi.types.buttons.reply.requestBotsReplyButton"))
+inline fun requestBotReplyButton(
+    text: String,
+    requestId: RequestId,
+) = requestBotsReplyButton(
+    text,
+    requestId,
+)
+
+/**
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Common]
+ */
+inline fun requestUsersReplyButton(
+    text: String,
+    requestId: RequestId,
+    premiumUser: Boolean? = null,
+    maxCount: Int = keyboardButtonRequestUserLimit.first
+) = requestUsersReplyButton(
+    text,
+    KeyboardButtonRequestUsers.Common(requestId, premiumUser, maxCount)
+)
+
+/**
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Common]
  */
 inline fun requestUserReplyButton(
     text: String,
     requestId: RequestId,
-    premiumUser: Boolean? = null
-) = requestUserReplyButton(
+    premiumUser: Boolean? = null,
+    maxCount: Int = keyboardButtonRequestUserLimit.first
+) = requestUsersReplyButton(
     text,
-    KeyboardButtonRequestUser.Common(requestId, premiumUser)
+    requestId,
+    premiumUser,
+    maxCount
 )
 
 /**
- * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUser.Any]
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Any]
+ */
+inline fun requestUsersOrBotsReplyButton(
+    text: String,
+    requestId: RequestId,
+    premiumUser: Boolean? = null,
+    maxCount: Int = keyboardButtonRequestUserLimit.first
+) = requestUsersReplyButton(
+    text,
+    KeyboardButtonRequestUsers.Any(requestId, premiumUser, maxCount)
+)
+
+/**
+ * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Any]
  */
 inline fun requestUserOrBotReplyButton(
     text: String,
     requestId: RequestId
 ) = requestUserReplyButton(
     text,
-    KeyboardButtonRequestUser.Any(requestId)
+    KeyboardButtonRequestUsers.Any(requestId)
 )
 
 

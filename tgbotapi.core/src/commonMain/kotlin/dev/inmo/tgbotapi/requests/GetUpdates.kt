@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.requests
 
-import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.types.update.abstracts.UpdateSerializerWithoutSerialization
@@ -15,7 +14,7 @@ private val updatesListSerializer = ListSerializer(
  * Request updates from Telegram Bot API system. It is important, that the result updates WILL NOT include
  * [dev.inmo.tgbotapi.types.update.MediaGroupUpdates.MediaGroupUpdate] objects due to the fact,
  * that it is internal abstraction and in fact any [dev.inmo.tgbotapi.types.message.abstracts.MediaGroupMessage]
- * is just a common [dev.inmo.tgbotapi.types.message.abstracts.Message]
+ * is just a common [dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage]
  *
  * @see dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
  * @see dev.inmo.tgbotapi.utils.convertWithMediaGroupUpdates

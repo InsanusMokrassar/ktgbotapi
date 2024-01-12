@@ -6,9 +6,8 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
+import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
-import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 
 suspend fun TelegramBot.deleteMessage(
     chatId: ChatIdentifier,
@@ -23,7 +22,7 @@ suspend fun TelegramBot.deleteMessage(
 ) = deleteMessage(chat.id, messageId)
 
 suspend fun TelegramBot.deleteMessage(
-    message: Message
+    message: AccessibleMessage
 ): Boolean {
     val mediaGroupContent = ((message as? ContentMessage<*>) ?.content as? MediaGroupCollectionContent<*>)
     if (mediaGroupContent == null) {
@@ -46,9 +45,9 @@ suspend fun TelegramBot.delete(
 ) = deleteMessage(chat, messageId)
 
 suspend fun TelegramBot.delete(
-    message: Message
+    message: AccessibleMessage
 ) = deleteMessage(message)
 
-suspend fun Message.delete(
+suspend fun AccessibleMessage.delete(
     requestsExecutor: TelegramBot
 ) = requestsExecutor.deleteMessage(this)

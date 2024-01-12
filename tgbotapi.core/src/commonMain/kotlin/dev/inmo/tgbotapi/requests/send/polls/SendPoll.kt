@@ -16,6 +16,8 @@ import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.utils.extensions.makeString
+import korlibs.time.millisecondsLong
+import korlibs.time.seconds
 import kotlinx.serialization.*
 
 private val commonResultDeserializer: DeserializationStrategy<ContentMessage<PollContent>> = TelegramBotAPIMessageDeserializationStrategyClass()
@@ -51,8 +53,7 @@ fun SendPoll(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
     chatId,
@@ -62,9 +63,8 @@ fun SendPoll(
     isClosed,
     threadId = threadId,
     protectContent = protectContent,
-    allowSendingWithoutReply = allowSendingWithoutReply,
     disableNotification = disableNotification,
-    replyToMessageId = replyToMessageId,
+    replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
 
@@ -77,8 +77,7 @@ fun Poll.createRequest(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = when (this) {
     is RegularPoll -> SendRegularPoll(
@@ -92,8 +91,7 @@ fun Poll.createRequest(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
     is QuizPoll -> correctOptionId ?.let { correctOptionId ->
@@ -109,8 +107,7 @@ fun Poll.createRequest(
             threadId,
             disableNotification,
             protectContent,
-            replyToMessageId,
-            allowSendingWithoutReply,
+            replyParameters,
             replyMarkup
         )
     } ?: SendRegularPoll(
@@ -124,8 +121,7 @@ fun Poll.createRequest(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
     is UnknownPollType -> SendRegularPoll(
@@ -139,8 +135,7 @@ fun Poll.createRequest(
         threadId,
         disableNotification,
         protectContent,
-        replyToMessageId,
-        allowSendingWithoutReply,
+        replyParameters,
         replyMarkup
     )
 }
@@ -207,10 +202,8 @@ data class SendRegularPoll(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendPoll() {
@@ -235,8 +228,7 @@ fun SendRegularPoll(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
     chatId,
@@ -250,8 +242,7 @@ fun SendRegularPoll(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -268,8 +259,7 @@ fun SendQuizPoll(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
     chatId,
@@ -285,8 +275,7 @@ fun SendQuizPoll(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -302,8 +291,7 @@ fun SendQuizPoll(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
     chatId,
@@ -319,8 +307,7 @@ fun SendQuizPoll(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -338,8 +325,7 @@ internal fun SendQuizPoll(
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyToMessageId: MessageId? = null,
-    allowSendingWithoutReply: Boolean? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendQuizPoll(
     chatId,
@@ -356,8 +342,7 @@ internal fun SendQuizPoll(
     threadId,
     disableNotification,
     protectContent,
-    replyToMessageId,
-    allowSendingWithoutReply,
+    replyParameters,
     replyMarkup
 )
 
@@ -391,10 +376,8 @@ data class SendQuizPoll internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
-    @SerialName(replyToMessageIdField)
-    override val replyToMessageId: MessageId? = null,
-    @SerialName(allowSendingWithoutReplyField)
-    override val allowSendingWithoutReply: Boolean? = null,
+    @SerialName(replyParametersField)
+    override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : SendPoll(), TextedOutput {

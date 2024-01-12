@@ -74,9 +74,9 @@ suspend fun TelegramBot.edit(
     messageId: InlineMessageIdentifier,
     text: String,
     parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageText(messageId, text, parseMode, disableWebPagePreview, replyMarkup)
+) = editMessageText(messageId, text, parseMode, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -85,9 +85,9 @@ suspend fun TelegramBot.edit(
 suspend fun TelegramBot.edit(
     messageId: InlineMessageIdentifier,
     entities: TextSourcesList,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageText(messageId, entities, disableWebPagePreview, replyMarkup)
+) = editMessageText(messageId, entities, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -96,10 +96,10 @@ suspend fun TelegramBot.edit(
 suspend fun TelegramBot.edit(
     messageId: InlineMessageIdentifier,
     separator: TextSource? = null,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = edit(messageId, buildEntities(separator, builderBody), disableWebPagePreview, replyMarkup)
+) = edit(messageId, buildEntities(separator, builderBody), linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -108,7 +108,7 @@ suspend fun TelegramBot.edit(
 suspend fun TelegramBot.edit(
     messageId: InlineMessageIdentifier,
     separator: String,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = edit(messageId, buildEntities(separator, builderBody), disableWebPagePreview, replyMarkup)
+) = edit(messageId, buildEntities(separator, builderBody), linkPreviewOptions, replyMarkup)

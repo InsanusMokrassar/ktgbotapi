@@ -1,19 +1,22 @@
 package dev.inmo.tgbotapi.types.request
 
-import dev.inmo.tgbotapi.types.ChatId
-import dev.inmo.tgbotapi.types.UserId
-import dev.inmo.tgbotapi.types.requestIdField
-import dev.inmo.tgbotapi.types.userIdField
+import dev.inmo.tgbotapi.types.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserShared(
+data class UsersShared(
     @SerialName(requestIdField)
     override val requestId: RequestId,
-    @SerialName(userIdField)
-    val userId: UserId
+    @SerialName(userIdsField)
+    val userIds: List<UserId>
 ) : ChatSharedRequest {
+    val userId: UserId
+        get() = userIds.first()
+    constructor(
+        requestId: RequestId,
+        userId: UserId
+    ) : this(requestId, listOf(userId))
     override val chatId: ChatId
         get() = userId
 }

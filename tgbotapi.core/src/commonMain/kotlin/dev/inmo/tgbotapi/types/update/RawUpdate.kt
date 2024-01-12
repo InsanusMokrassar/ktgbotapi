@@ -4,7 +4,11 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.queries.callback.RawCallbackQuery
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.RawChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueries.query.RawInlineQuery
+import dev.inmo.tgbotapi.types.boosts.ChatBoostRemoved
+import dev.inmo.tgbotapi.types.boosts.ChatBoostUpdated
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
+import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
+import dev.inmo.tgbotapi.types.chat.ChatMessageReactionsCountUpdated
 import dev.inmo.tgbotapi.types.chat.member.ChatMemberUpdated
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
@@ -24,11 +28,11 @@ internal data class RawUpdate constructor(
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_message: CommonMessage<*>? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val message: Message? = null,
+    private val message: AccessibleMessage? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_channel_post: CommonMessage<*>? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
-    private val channel_post: Message? = null,
+    private val channel_post: AccessibleMessage? = null,
     private val inline_query: RawInlineQuery? = null,
     private val chosen_inline_result: RawChosenInlineResult? = null,
     private val callback_query: RawCallbackQuery? = null,
@@ -38,8 +42,13 @@ internal data class RawUpdate constructor(
     private val poll_answer: PollAnswer? = null,
     private val my_chat_member: ChatMemberUpdated? = null,
     private val chat_member: ChatMemberUpdated? = null,
-    private val chat_join_request: ChatJoinRequest? = null
+    private val chat_join_request: ChatJoinRequest? = null,
+    private val message_reaction: ChatMessageReactionUpdated? = null,
+    private val message_reaction_count: ChatMessageReactionsCountUpdated? = null,
+    private val chat_boost: ChatBoostUpdated? = null,
+    private val removed_chat_boost: ChatBoostRemoved? = null
 ) {
+    @Transient
     private var initedUpdate: Update? = null
     /**
      * @return One of children of [Update] interface or null in case of unknown type of update
@@ -65,6 +74,10 @@ internal data class RawUpdate constructor(
                 my_chat_member != null -> MyChatMemberUpdatedUpdate(updateId, my_chat_member)
                 chat_member != null -> CommonChatMemberUpdatedUpdate(updateId, chat_member)
                 chat_join_request != null -> ChatJoinRequestUpdate(updateId, chat_join_request)
+                message_reaction != null -> ChatMessageReactionUpdatedUpdate(updateId, message_reaction)
+                message_reaction_count != null -> ChatMessageReactionsCountUpdatedUpdate(updateId, message_reaction_count)
+                chat_boost != null -> ChatBoostUpdatedUpdate(updateId, chat_boost)
+                removed_chat_boost != null -> ChatBoostRemovedUpdate(updateId, removed_chat_boost)
                 else -> UnknownUpdate(
                     updateId,
                     raw

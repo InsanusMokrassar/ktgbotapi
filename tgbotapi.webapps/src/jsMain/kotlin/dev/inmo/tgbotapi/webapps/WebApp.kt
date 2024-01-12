@@ -54,6 +54,9 @@ external class WebApp {
     @JsName("CloudStorage")
     val cloudStorage: CloudStorage
 
+    @JsName("SettingsButton")
+    val settingsButton: SettingsButton
+
     internal fun onEvent(type: String, callback: () -> Unit)
     @JsName("onEvent")
     internal fun onEventWithViewportChangedData(type: String, callback: (ViewportChangedData) -> Unit)
@@ -69,6 +72,8 @@ external class WebApp {
     internal fun onEventWithWriteAccessRequested(type: String, callback: (RequestStatus) -> Unit)
     @JsName("onEvent")
     internal fun onEventWithContactRequested(type: String, callback: (RequestStatus) -> Unit)
+    @JsName("onEvent")
+    internal fun onEventWithSettingsButtonClicked(type: String, callback: () -> Unit)
 
     fun offEvent(type: String, callback: () -> Unit)
     @JsName("offEvent")
@@ -189,6 +194,18 @@ fun WebApp.onEvent(type: EventType.ContactRequested, eventHandler: ContactReques
     eventHandler(js("this").unsafeCast<WebApp>(), it.isSent)
 }.also {
     onEventWithContactRequested(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onEvent(type: EventType.SettingsButtonClicked, eventHandler: EventHandler) = {
+    eventHandler(js("this").unsafeCast<WebApp>())
+}.also {
+    onEventWithSettingsButtonClicked(
         type.typeName,
         callback = it
     )

@@ -45,5 +45,6 @@ data class OwnerChatMember(
 
     @SerialName(statusField)
     @Required
+    @EncodeDefault
     override val status: ChatMember.Status = ChatMember.Status.Creator
 }

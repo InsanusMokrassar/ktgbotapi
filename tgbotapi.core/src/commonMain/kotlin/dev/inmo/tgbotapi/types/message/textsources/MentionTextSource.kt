@@ -45,5 +45,5 @@ inline fun mention(vararg parts: TextSource) = mention(parts.toList())
 inline fun mention(whoToMention: String) = mention(regular(whoToMention))
 
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(whoToMention: Username) = mention(whoToMention.username.dropWhile { it == '@' })
+inline fun mention(whoToMention: Username) = mention(whoToMention.full.dropWhile { it == '@' })
 

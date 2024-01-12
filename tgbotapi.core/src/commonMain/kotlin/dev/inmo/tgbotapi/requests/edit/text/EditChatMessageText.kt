@@ -22,7 +22,7 @@ fun EditChatMessageText(
     messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageText(
     chatId,
@@ -30,7 +30,7 @@ fun EditChatMessageText(
     text,
     parseMode,
     null,
-    disableWebPagePreview,
+    linkPreviewOptions,
     replyMarkup
 )
 
@@ -38,7 +38,7 @@ fun EditChatMessageText(
     chatId: ChatIdentifier,
     messageId: MessageId,
     entities: TextSourcesList,
-    disableWebPagePreview: Boolean? = null,
+    linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageText(
     chatId,
@@ -46,7 +46,7 @@ fun EditChatMessageText(
     entities.makeString(),
     null,
     entities.toRawMessageEntities(),
-    disableWebPagePreview,
+    linkPreviewOptions,
     replyMarkup
 )
 
@@ -62,11 +62,11 @@ data class EditChatMessageText internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(entitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
-    @SerialName(disableWebPagePreviewField)
-    override val disableWebPagePreview: Boolean? = null,
+    @SerialName(linkPreviewOptionsField)
+    override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditChatMessage<TextContent>, EditTextChatMessage, EditReplyMessage, EditDisableWebPagePreviewMessage {
+) : EditChatMessage<TextContent>, EditTextChatMessage, EditReplyMessage, EditLinkPreviewOptionsContainer {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }

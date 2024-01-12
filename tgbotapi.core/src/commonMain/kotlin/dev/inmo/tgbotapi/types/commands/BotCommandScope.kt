@@ -71,24 +71,28 @@ data class UnknownBotCommandScope internal constructor(
 @Serializable
 object BotCommandScopeDefault : BotCommandScope {
     @Required
+    @EncodeDefault
     override val type: String = "default"
 }
 
 @Serializable
 object BotCommandScopeAllPrivateChats : BotCommandScope {
     @Required
+    @EncodeDefault
     override val type: String = "all_private_chats"
 }
 
 @Serializable
 object BotCommandScopeAllGroupChats : BotCommandScope {
     @Required
+    @EncodeDefault
     override val type: String = "all_group_chats"
 }
 
 @Serializable
 object BotCommandScopeAllChatAdministrators : BotCommandScope {
     @Required
+    @EncodeDefault
     override val type: String = "all_chat_administrators"
 }
 
@@ -102,6 +106,7 @@ data class BotCommandScopeChatAdministrators(
     override val chatId: ChatIdentifier
 ) : ChatBotCommandScope {
     @Required
+    @EncodeDefault
     override val type: String = BotCommandScopeChatAdministrators.type
     companion object {
         const val type = "chat_administrators"
@@ -113,6 +118,7 @@ data class BotCommandScopeChat(
     override val chatId: ChatIdentifier
 ) : ChatBotCommandScope {
     @Required
+    @EncodeDefault
     override val type: String = BotCommandScopeChat.type
     companion object {
         const val type = "chat"
@@ -125,6 +131,7 @@ data class BotCommandScopeChatMember(
     val userId: UserId
 ) : ChatBotCommandScope {
     @Required
+    @EncodeDefault
     override val type: String = BotCommandScopeChatMember.type
     companion object {
         const val type = "chat_member"

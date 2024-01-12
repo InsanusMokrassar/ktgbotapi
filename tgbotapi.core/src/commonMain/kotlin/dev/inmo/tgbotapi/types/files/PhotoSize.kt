@@ -6,17 +6,35 @@ import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
 import kotlinx.serialization.builtins.ListSerializer
+import kotlin.jvm.JvmInline
 
-typealias Photo = List<PhotoSize>
+@Serializable
+@JvmInline
+value class Photo(
+    val photos: List<PhotoSize>
+) : List<PhotoSize> by photos, MediaContentVariant {
+    val biggest: PhotoSize
+        get() = biggest()!!
+    override val fileId: FileId
+        get() = biggest.fileId
+    override val fileUniqueId: FileUniqueId
+        get() = biggest.fileUniqueId
+    override val fileSize: Long?
+        get() = biggest.fileSize
+
+    init {
+        require(photos.isNotEmpty()) {
+            "Photos collection must not be empty"
+        }
+    }
+}
 
 fun Photo.biggest(): PhotoSize? = maxByOrNull {
     it.resolution
 }
 
 @RiskFeature
-object PhotoSerializer : KSerializer<Photo> by ListSerializer(
-    PhotoSize.serializer()
-)
+object PhotoSerializer : KSerializer<Photo> by Photo.serializer()
 
 @Serializable
 data class PhotoSize(

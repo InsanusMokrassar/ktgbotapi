@@ -34,7 +34,7 @@ data class StickerSurrogate(
 
 // TODO:: Serializer
 @Serializable(StickerSerializer::class)
-sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile {
+sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile, MediaContentVariant {
     val emoji: String?
     val stickerSetName: StickerSetName?
     val stickerFormat: StickerFormat
