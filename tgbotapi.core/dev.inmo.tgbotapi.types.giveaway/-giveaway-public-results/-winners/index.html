@@ -1,0 +1,284 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Winners</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../../index.html">
+                            ktgbotapi
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":tgbotapi.core:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="tgbotapi.core::dev.inmo.tgbotapi.types.giveaway/GiveawayPublicResults.Winners///PointingToDeclaration//789214110">
+  <div class="breadcrumbs"><a href="../../../index.html">tgbotapi.core</a><span class="delimiter">/</span><a href="../../index.html">dev.inmo.tgbotapi.types.giveaway</a><span class="delimiter">/</span><a href="../index.html">GiveawayPublicResults</a><span class="delimiter">/</span><span class="current">Winners</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Winners</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">Winners</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>chat<span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types.chat/-preview-chat/index.html">PreviewChat</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>messageId<span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>selectionDate<span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types/-telegram-date/index.html">TelegramDate</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>count<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>winners<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../dev.inmo.tgbotapi.types.chat/-preview-user/index.html">PreviewUser</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>additionalChats<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>unclaimedCount<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>onlyNewMembers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>publicWinners<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>additionalPrizeDescription<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>premiumMonths<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../index.html">GiveawayPublicResults</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="535055033%2FConstructors%2F789214110" anchor-label="Winners" id="535055033%2FConstructors%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-winners.html"><span><span>Winners</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="535055033%2FConstructors%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">chat<span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types.chat/-preview-chat/index.html">PreviewChat</a><span class="token punctuation">, </span></span><span class="parameter ">messageId<span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a><span class="token punctuation">, </span></span><span class="parameter ">selectionDate<span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types/-telegram-date/index.html">TelegramDate</a><span class="token punctuation">, </span></span><span class="parameter ">count<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">winners<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../dev.inmo.tgbotapi.types.chat/-preview-user/index.html">PreviewUser</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">additionalChats<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">unclaimedCount<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">onlyNewMembers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">publicWinners<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">additionalPrizeDescription<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">premiumMonths<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-885262331%2FProperties%2F789214110" anchor-label="additionalChats" id="-885262331%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="additional-chats.html"><span>additional</span><wbr><span><span>Chats</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-885262331%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"additional_chat_count"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="additional-chats.html">additionalChats</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1438686576%2FProperties%2F789214110" anchor-label="additionalPrizeDescription" id="-1438686576%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="additional-prize-description.html"><span>additional</span><wbr><span>Prize</span><wbr><span><span>Description</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1438686576%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"prize_description"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="additional-prize-description.html">additionalPrizeDescription</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1820919529%2FProperties%2F789214110" anchor-label="chat" id="1820919529%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="chat.html"><span><span>chat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1820919529%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"chats"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="chat.html">chat</a><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types.chat/-preview-chat/index.html">PreviewChat</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="493469322%2FProperties%2F789214110" anchor-label="count" id="493469322%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="count.html"><span><span>count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="493469322%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"winner_count"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="count.html">count</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-186669705%2FProperties%2F789214110" anchor-label="messageId" id="-186669705%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="message-id.html"><span>message</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-186669705%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"giveaway_message_id"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="message-id.html">messageId</a><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types/-message-id/index.html">MessageId</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-39379524%2FProperties%2F789214110" anchor-label="onlyNewMembers" id="-39379524%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="only-new-members.html"><span>only</span><wbr><span>New</span><wbr><span><span>Members</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-39379524%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"only_new_members"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="only-new-members.html">onlyNewMembers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="203279567%2FProperties%2F789214110" anchor-label="premiumMonths" id="203279567%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="premium-months.html"><span>premium</span><wbr><span><span>Months</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="203279567%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"premium_subscription_month_count"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="premium-months.html">premiumMonths</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1608687022%2FProperties%2F789214110" anchor-label="publicWinners" id="1608687022%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="public-winners.html"><span>public</span><wbr><span><span>Winners</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1608687022%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"has_public_winners"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="public-winners.html">publicWinners</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2041745162%2FProperties%2F789214110" anchor-label="refunded" id="2041745162%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="refunded.html"><span><span>refunded</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2041745162%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"was_refunded"</span></span></span><wbr><span class="token punctuation">)</span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Required///PointingToDeclaration/"><span class="token annotation builtin">Required</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/EncodeDefault///PointingToDeclaration/"><span class="token annotation builtin">EncodeDefault</span></span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="refunded.html">refunded</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-810140001%2FProperties%2F789214110" anchor-label="selectionDate" id="-810140001%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="selection-date.html"><span>selection</span><wbr><span><span>Date</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-810140001%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"winners_selection_date"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="selection-date.html">selectionDate</a><span class="token operator">: </span><a href="../../../dev.inmo.tgbotapi.types/-telegram-date/index.html">TelegramDate</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1649033772%2FProperties%2F789214110" anchor-label="unclaimedCount" id="-1649033772%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="unclaimed-count.html"><span>unclaimed</span><wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1649033772%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"unclaimed_prize_count"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="unclaimed-count.html">unclaimedCount</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-513787867%2FProperties%2F789214110" anchor-label="winners" id="-513787867%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="winners.html"><span><span>winners</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-513787867%2FProperties%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"winners"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="winners.html">winners</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../dev.inmo.tgbotapi.types.chat/-preview-user/index.html">PreviewUser</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

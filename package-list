@@ -103,16 +103,19 @@ dev.inmo.tgbotapi.types.InlineQueries.InputMessageContent
 dev.inmo.tgbotapi.types.InlineQueries.query
 dev.inmo.tgbotapi.types.abstracts
 dev.inmo.tgbotapi.types.actions
+dev.inmo.tgbotapi.types.boosts
 dev.inmo.tgbotapi.types.buttons
 dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 dev.inmo.tgbotapi.types.buttons.inline
 dev.inmo.tgbotapi.types.buttons.reply
 dev.inmo.tgbotapi.types.chat
 dev.inmo.tgbotapi.types.chat.member
+dev.inmo.tgbotapi.types.colors
 dev.inmo.tgbotapi.types.commands
 dev.inmo.tgbotapi.types.dice
 dev.inmo.tgbotapi.types.files
 dev.inmo.tgbotapi.types.games
+dev.inmo.tgbotapi.types.giveaway
 dev.inmo.tgbotapi.types.location
 dev.inmo.tgbotapi.types.media
 dev.inmo.tgbotapi.types.message
@@ -135,6 +138,7 @@ dev.inmo.tgbotapi.types.payments
 dev.inmo.tgbotapi.types.payments.abstracts
 dev.inmo.tgbotapi.types.polls
 dev.inmo.tgbotapi.types.queries.callback
+dev.inmo.tgbotapi.types.reactions
 dev.inmo.tgbotapi.types.request
 dev.inmo.tgbotapi.types.stickers
 dev.inmo.tgbotapi.types.stories
