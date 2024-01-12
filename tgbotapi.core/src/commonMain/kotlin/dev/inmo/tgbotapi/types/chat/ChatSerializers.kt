@@ -17,23 +17,41 @@ private val formatter
 sealed class ChatType {
     abstract val stringified: String
     @Serializable(ChatTypeSerializer::class)
-    object PrivateChatType : ChatType() { override val stringified = "private" }
+    object Sender : ChatType() { override val stringified = "sender" }
     @Serializable(ChatTypeSerializer::class)
-    object GroupChatType : ChatType() { override val stringified = "group" }
+    object Private : ChatType() { override val stringified = "private" }
     @Serializable(ChatTypeSerializer::class)
-    object SupergroupChatType : ChatType() { override val stringified = "supergroup" }
+    object Group : ChatType() { override val stringified = "group" }
     @Serializable(ChatTypeSerializer::class)
-    object ChannelChatType : ChatType() { override val stringified = "channel" }
+    object Supergroup : ChatType() { override val stringified = "supergroup" }
     @Serializable(ChatTypeSerializer::class)
-    class UnknownChatType(override val stringified: String) : ChatType()
+    object Channel : ChatType() { override val stringified = "channel" }
+    @Serializable(ChatTypeSerializer::class)
+    class Unknown(override val stringified: String) : ChatType()
+
+    companion object {
+        @Deprecated("Renamed", ReplaceWith("Private", "dev.inmo.tgbotapi.types.chat.ChatType.Private"))
+        val PrivateChatType = Private
+        @Deprecated("Renamed", ReplaceWith("Group", "dev.inmo.tgbotapi.types.chat.ChatType.Group"))
+        val GroupChatType = Group
+        @Deprecated("Renamed", ReplaceWith("Supergroup", "dev.inmo.tgbotapi.types.chat.ChatType.Supergroup"))
+        val SupergroupChatType = Supergroup
+        @Deprecated("Renamed", ReplaceWith("Channel", "dev.inmo.tgbotapi.types.chat.ChatType.Channel"))
+        val ChannelChatType = Channel
+        @Deprecated("Renamed", ReplaceWith("Unknown", "dev.inmo.tgbotapi.types.chat.ChatType.Unknown"))
+        val UnknownChatType = Unknown
+        @Deprecated("Renamed", ReplaceWith("Unknown(stringified)", "dev.inmo.tgbotapi.types.chat.ChatType.Unknown"))
+        fun UnknownChatType(stringified: String) = Unknown(stringified)
+    }
 }
 val String.asChatType
     get() = when (this) {
-        ChatType.PrivateChatType.stringified -> ChatType.PrivateChatType
-        ChatType.GroupChatType.stringified -> ChatType.GroupChatType
-        ChatType.SupergroupChatType.stringified -> ChatType.SupergroupChatType
-        ChatType.ChannelChatType.stringified -> ChatType.ChannelChatType
-        else -> ChatType.UnknownChatType(this)
+        ChatType.Sender.stringified -> ChatType.Sender
+        ChatType.Private.stringified -> ChatType.Private
+        ChatType.Group.stringified -> ChatType.Group
+        ChatType.Supergroup.stringified -> ChatType.Supergroup
+        ChatType.Channel.stringified -> ChatType.Channel
+        else -> ChatType.Unknown(this)
     }
 
 @RiskFeature
@@ -63,15 +81,16 @@ object ChatSerializer : KSerializer<Chat> {
             val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
 
             when (type) {
-                ChatType.PrivateChatType -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
-                ChatType.GroupChatType -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
-                ChatType.SupergroupChatType -> if (isForum) {
+                ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+                ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+                ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
+                ChatType.Supergroup -> if (isForum) {
                     formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
                 } else {
                     formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
                 }
-                ChatType.ChannelChatType -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
-                is ChatType.UnknownChatType -> UnknownChatType(
+                ChatType.Channel -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
+                is ChatType.Unknown -> UnknownChatType(
                     formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
                     decodedJson.toString(),
                     decodedJson
@@ -101,15 +120,16 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
         val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
 
         return when (type) {
-            ChatType.PrivateChatType -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
-            ChatType.GroupChatType -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
-            ChatType.SupergroupChatType -> if (isForum) {
+            ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+            ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+            ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
+            ChatType.Supergroup -> if (isForum) {
                 formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
             } else {
                 formatter.decodeFromJsonElement(SupergroupChatImpl.serializer(), decodedJson)
             }
-            ChatType.ChannelChatType -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
-            is ChatType.UnknownChatType -> UnknownChatType(
+            ChatType.Channel -> formatter.decodeFromJsonElement(ChannelChatImpl.serializer(), decodedJson)
+            is ChatType.Unknown -> UnknownChatType(
                 formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
                 decodedJson.toString(),
                 decodedJson
@@ -143,16 +163,16 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
         val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
 
         return when (type) {
-//            else -> throw IllegalArgumentException("Unknown type of chat")
-            ChatType.PrivateChatType -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
-            ChatType.GroupChatType -> formatter.decodeFromJsonElement(ExtendedGroupChatImpl.serializer(), decodedJson)
-            ChatType.SupergroupChatType -> if (isForum) {
+            ChatType.Sender -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
+            ChatType.Private -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
+            ChatType.Group -> formatter.decodeFromJsonElement(ExtendedGroupChatImpl.serializer(), decodedJson)
+            ChatType.Supergroup -> if (isForum) {
                 formatter.decodeFromJsonElement(ExtendedForumChatImpl.serializer(), decodedJson)
             } else {
                 formatter.decodeFromJsonElement(ExtendedSupergroupChatImpl.serializer(), decodedJson)
             }
-            ChatType.ChannelChatType -> formatter.decodeFromJsonElement(ExtendedChannelChatImpl.serializer(), decodedJson)
-            is ChatType.UnknownChatType -> UnknownExtendedChat(
+            ChatType.Channel -> formatter.decodeFromJsonElement(ExtendedChannelChatImpl.serializer(), decodedJson)
+            is ChatType.Unknown -> UnknownExtendedChat(
                 formatter.decodeFromJsonElement(Long.serializer(), decodedJson[chatIdField] ?: JsonPrimitive(-1)).toChatId(),
                 decodedJson.toString(),
                 decodedJson
