@@ -6,7 +6,7 @@ kotlin-coroutines = "1.7.3"
 
 javax-activation = "1.1.1"
 
-korlibs = "5.3.0"
+korlibs = "5.3.1"
 uuid = "0.8.2"
 ktor = "2.3.7"
 
