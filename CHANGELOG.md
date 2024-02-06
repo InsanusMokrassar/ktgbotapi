@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 10.0.1
+
 ## 10.0.0
 
 **Add support of [Telegram Bots API 7.0](https://core.telegram.org/bots/api-changelog#december-29-2023)**
