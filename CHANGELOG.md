@@ -2,6 +2,12 @@
 
 ## 10.0.1
 
+* `Version`:
+  * `Ktor`: `2.3.7` -> `2.3.8`
+  * `MicroUtils`: `0.20.26` -> `0.20.32`
+  * `Korlibs`: `5.3.0` -> `5.3.1`
+  * `KSLog`: `1.3.1` -> `1.3.2`
+
 ## 10.0.0
 
 **Add support of [Telegram Bots API 7.0](https://core.telegram.org/bots/api-changelog#december-29-2023)**

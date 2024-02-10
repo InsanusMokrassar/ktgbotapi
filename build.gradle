@@ -54,13 +54,13 @@ if (new File(projectDir, "secret.gradle").exists()) {
     githubRelease {
         token "${project.property('GITHUB_RELEASE_TOKEN')}"
 
-        owner "InsanusMokrassar"
-        repo "TelegramBotAPI"
+        owner = "InsanusMokrassar"
+        repo = "TelegramBotAPI"
 
-        tagName "v$library_version"
-        releaseName "$library_version"
-        targetCommitish "$library_version"
+        tagName = "v$library_version"
+        releaseName = "$library_version"
+        targetCommitish = "$library_version"
 
-        body getCurrentVersionChangelog()
+        body = getCurrentVersionChangelog()
     }
 }
