@@ -8,6 +8,10 @@ sealed interface GroupContentMessage<T : MessageContent> : PublicContentMessage<
     override val chat: PreviewGroupChat
 }
 
+sealed interface PotentiallyFromUserGroupContentMessage<T : MessageContent> : GroupContentMessage<T> {
+    val senderBoostsCount: Int?
+}
+
 sealed interface ForumContentMessage<T : MessageContent> : GroupContentMessage<T>, PossiblyTopicMessage {
     override val chat: PreviewForumChat
     override val threadId: MessageThreadId
@@ -28,7 +32,7 @@ interface AnonymousGroupContentMessage<T : MessageContent> : GroupContentMessage
         get() = chat
 }
 
-interface CommonGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, FromUserMessage
+interface CommonGroupContentMessage<T : MessageContent> : GroupContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage
 
 interface FromChannelForumContentMessage<T: MessageContent> : FromChannelGroupContentMessage<T>, ForumContentMessage<T>
 
@@ -37,4 +41,4 @@ interface AnonymousForumContentMessage<T : MessageContent> : ForumContentMessage
         get() = chat
 }
 
-interface CommonForumContentMessage<T : MessageContent> : ForumContentMessage<T>, FromUserMessage
+interface CommonForumContentMessage<T : MessageContent> : ForumContentMessage<T>, PotentiallyFromUserGroupContentMessage<T>, FromUserMessage

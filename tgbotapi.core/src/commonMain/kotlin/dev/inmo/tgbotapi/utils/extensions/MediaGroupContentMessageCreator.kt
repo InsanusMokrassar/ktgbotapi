@@ -86,7 +86,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,
-            sourceMessage.mediaGroupId
+            sourceMessage.mediaGroupId,
+            sourceMessage.senderBoostsCount
         )
         is ConnectedFromChannelGroupContentMessage -> ConnectedFromChannelGroupContentMessageImpl(
             sourceMessage.chat,
@@ -146,7 +147,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.replyMarkup,
             content,
             sourceMessage.senderBot,
-            sourceMessage.mediaGroupId
+            sourceMessage.mediaGroupId,
+            sourceMessage.senderBoostsCount
         )
         is FromChannelForumContentMessage -> FromChannelForumContentMessageImpl(
             sourceMessage.chat,

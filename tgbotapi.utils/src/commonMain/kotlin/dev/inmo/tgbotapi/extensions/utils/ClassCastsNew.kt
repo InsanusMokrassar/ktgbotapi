@@ -285,6 +285,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
@@ -3396,6 +3397,18 @@ public inline fun Message.groupContentMessageOrThrow(): GroupContentMessage<Mess
 public inline fun <T>
     Message.ifGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T): T? =
     groupContentMessageOrNull() ?.let(block)
+
+public inline fun Message.potentiallyFromUserGroupContentMessageOrNull():
+    PotentiallyFromUserGroupContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.potentiallyFromUserGroupContentMessageOrThrow():
+    PotentiallyFromUserGroupContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifPotentiallyFromUserGroupContentMessage(block: (PotentiallyFromUserGroupContentMessage<MessageContent>) -> T):
+    T? = potentiallyFromUserGroupContentMessageOrNull() ?.let(block)
 
 public inline fun Message.forumContentMessageOrNull(): ForumContentMessage<MessageContent>? = this
     as?

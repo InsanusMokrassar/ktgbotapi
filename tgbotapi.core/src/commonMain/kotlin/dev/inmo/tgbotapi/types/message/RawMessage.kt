@@ -98,6 +98,7 @@ internal data class RawMessage(
     private val successful_payment: SuccessfulPayment? = null,
     private val giveaway: Giveaway? = null,
     private val giveaway_winners: GiveawayResults? = null,
+    private val sender_boost_count: Int? = null,
 
     private val users_shared: UsersShared? = null,
     private val chat_shared: ChatShared? = null,
@@ -371,7 +372,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    media_group_id
+                                    media_group_id,
+                                    sender_boost_count
                                 )
                             }
                         } else {
@@ -435,7 +437,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    media_group_id
+                                    media_group_id,
+                                    sender_boost_count
                                 )
                             }
                         }
@@ -499,7 +502,8 @@ internal data class RawMessage(
                                 reply_markup,
                                 content,
                                 via_bot,
-                                media_group_id
+                                media_group_id,
+                                sender_boost_count
                             )
                         }
                     }

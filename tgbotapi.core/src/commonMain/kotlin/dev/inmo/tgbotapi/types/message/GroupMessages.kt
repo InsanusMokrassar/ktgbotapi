@@ -123,6 +123,7 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val content: T,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupIdentifier?,
+    override val senderBoostsCount: Int?
 ) : CommonGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -137,8 +138,9 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
         content: T,
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupIdentifier?,
+        senderBoostsCount: Int?,
     ) : this(
-        chat, messageId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId
+        chat, messageId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId, senderBoostsCount
     )
 }
 
@@ -226,6 +228,7 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
     override val content: T,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupIdentifier?,
+    override val senderBoostsCount: Int?,
 ) : CommonForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -241,7 +244,8 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
         content: T,
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupIdentifier?,
+        senderBoostsCount: Int?,
     ) : this(
-        chat, messageId, threadId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId
+        chat, messageId, threadId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId, senderBoostsCount
     )
 }
