@@ -45,6 +45,11 @@ value class CustomEmojiId(
     val appLink
         get() = "${internalTgAppLinksBeginning}emoji?id=$this"
 }
+@Serializable
+@JvmInline
+value class StoryId(
+    val long: Long
+)
 
 typealias Seconds = Int
 typealias MilliSeconds = Long

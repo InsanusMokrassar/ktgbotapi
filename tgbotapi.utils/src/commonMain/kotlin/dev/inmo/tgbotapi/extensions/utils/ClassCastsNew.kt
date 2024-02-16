@@ -1631,6 +1631,15 @@ public inline fun ReplyInfo.internalOrThrow(): ReplyInfo.Internal = this as
 public inline fun <T> ReplyInfo.ifInternal(block: (ReplyInfo.Internal) -> T): T? = internalOrNull()
     ?.let(block)
 
+public inline fun ReplyInfo.toStoryOrNull(): ReplyInfo.ToStory? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.ToStory
+
+public inline fun ReplyInfo.toStoryOrThrow(): ReplyInfo.ToStory = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.ToStory
+
+public inline fun <T> ReplyInfo.ifToStory(block: (ReplyInfo.ToStory) -> T): T? = toStoryOrNull()
+    ?.let(block)
+
 public inline fun BotAction.typingActionOrNull(): TypingAction? = this as?
     dev.inmo.tgbotapi.types.actions.TypingAction
 

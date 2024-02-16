@@ -9,7 +9,6 @@ import dev.inmo.tgbotapi.types.giveaway.GiveawayPublicResults
 import dev.inmo.tgbotapi.types.giveaway.Giveaway
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.MessageOrigin
-import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.payments.Invoice
 import dev.inmo.tgbotapi.types.polls.Poll
@@ -32,6 +31,14 @@ sealed interface ReplyInfo {
     ): ReplyInfo {
         override val messageMeta: Message.MetaInfo
             get() = message.metaInfo
+    }
+
+    @Serializable
+    data class ToStory(
+        val story: Story
+    ): ReplyInfo {
+        override val messageMeta: Message.MetaInfo?
+            get() = null
     }
 
     @Serializable(External.Companion::class)

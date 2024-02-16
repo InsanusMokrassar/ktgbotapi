@@ -54,6 +54,7 @@ internal data class RawMessage(
     private val is_topic_message: Boolean? = null,
     private val is_automatic_forward: Boolean? = null,
     private val reply_to_message: RawMessage? = null,
+    private val reply_to_story: Story? = null,
     private val external_reply: ReplyInfo.External? = null,
     private val quote: TextQuote? = null,
     private val via_bot: CommonBot? = null,
@@ -300,6 +301,7 @@ internal data class RawMessage(
                     reply_to_message != null -> ReplyInfo.Internal(
                         reply_to_message.asMessage
                     )
+                    reply_to_story != null -> ReplyInfo.ToStory(reply_to_story)
                     external_reply != null -> external_reply
                     else -> null
                 }
