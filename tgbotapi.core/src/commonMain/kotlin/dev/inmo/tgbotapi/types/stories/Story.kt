@@ -9,7 +9,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Story(
+data class Story(
     @SerialName(idField)
     val id: StoryId,
     @SerialName(chatField)
