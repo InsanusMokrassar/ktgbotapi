@@ -61,6 +61,7 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
     val linkedChannelChatId: IdChatIdentifier?
     val unrestrictBoostsCount: Int?
     val location: ChatLocation?
+    val customEmojiStickerSetName: StickerSetName?
 
     /**
      * This field represents field "join_to_send_messages" from API
