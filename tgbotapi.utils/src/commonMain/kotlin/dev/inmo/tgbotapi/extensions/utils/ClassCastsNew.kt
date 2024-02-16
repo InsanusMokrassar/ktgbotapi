@@ -222,6 +222,7 @@ import dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
 import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
@@ -284,6 +285,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SignedMessage
@@ -1629,6 +1631,15 @@ public inline fun ReplyInfo.internalOrThrow(): ReplyInfo.Internal = this as
 public inline fun <T> ReplyInfo.ifInternal(block: (ReplyInfo.Internal) -> T): T? = internalOrNull()
     ?.let(block)
 
+public inline fun ReplyInfo.toStoryOrNull(): ReplyInfo.ToStory? = this as?
+    dev.inmo.tgbotapi.types.ReplyInfo.ToStory
+
+public inline fun ReplyInfo.toStoryOrThrow(): ReplyInfo.ToStory = this as
+    dev.inmo.tgbotapi.types.ReplyInfo.ToStory
+
+public inline fun <T> ReplyInfo.ifToStory(block: (ReplyInfo.ToStory) -> T): T? = toStoryOrNull()
+    ?.let(block)
+
 public inline fun BotAction.typingActionOrNull(): TypingAction? = this as?
     dev.inmo.tgbotapi.types.actions.TypingAction
 
@@ -2882,6 +2893,15 @@ public inline fun ChatEvent.channelChatCreatedOrThrow(): ChannelChatCreated = th
 public inline fun <T> ChatEvent.ifChannelChatCreated(block: (ChannelChatCreated) -> T): T? =
     channelChatCreatedOrNull() ?.let(block)
 
+public inline fun ChatEvent.chatBoostAddedOrNull(): ChatBoostAdded? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
+
+public inline fun ChatEvent.chatBoostAddedOrThrow(): ChatBoostAdded = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
+
+public inline fun <T> ChatEvent.ifChatBoostAdded(block: (ChatBoostAdded) -> T): T? =
+    chatBoostAddedOrNull() ?.let(block)
+
 public inline fun ChatEvent.deleteChatPhotoOrNull(): DeleteChatPhoto? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 
@@ -3386,6 +3406,18 @@ public inline fun Message.groupContentMessageOrThrow(): GroupContentMessage<Mess
 public inline fun <T>
     Message.ifGroupContentMessage(block: (GroupContentMessage<MessageContent>) -> T): T? =
     groupContentMessageOrNull() ?.let(block)
+
+public inline fun Message.potentiallyFromUserGroupContentMessageOrNull():
+    PotentiallyFromUserGroupContentMessage<MessageContent>? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.potentiallyFromUserGroupContentMessageOrThrow():
+    PotentiallyFromUserGroupContentMessage<MessageContent> = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifPotentiallyFromUserGroupContentMessage(block: (PotentiallyFromUserGroupContentMessage<MessageContent>) -> T):
+    T? = potentiallyFromUserGroupContentMessageOrNull() ?.let(block)
 
 public inline fun Message.forumContentMessageOrNull(): ForumContentMessage<MessageContent>? = this
     as?

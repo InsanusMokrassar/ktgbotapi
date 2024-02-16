@@ -45,6 +45,11 @@ value class CustomEmojiId(
     val appLink
         get() = "${internalTgAppLinksBeginning}emoji?id=$this"
 }
+@Serializable
+@JvmInline
+value class StoryId(
+    val long: Long
+)
 
 typealias Seconds = Int
 typealias MilliSeconds = Long
@@ -246,6 +251,8 @@ const val profileAccentColorIdField = "profile_accent_color_id"
 const val backgroundCustomEmojiIdField = "background_custom_emoji_id"
 const val profileBackgroundCustomEmojiIdField = "profile_background_custom_emoji_id"
 const val hasVisibleHistoryField = "has_visible_history"
+const val unrestrictBoostsCountField = "unrestrict_boost_count"
+const val customEmojiStickerSetNameField = "custom_emoji_sticker_set_name"
 const val iconCustomEmojiIdField = "icon_custom_emoji_id"
 const val canJoinGroupsField = "can_join_groups"
 const val canReadAllGroupMessagesField = "can_read_all_group_messages"
@@ -656,6 +663,7 @@ const val menuButtonField = "menu_button"
 
 const val boostIdField = "boost_id"
 const val boostField = "boost"
+const val boostCountField = "boost_count"
 const val addDateField = "add_date"
 const val expirationDateField = "expiration_date"
 const val removeDateField = "remove_date"

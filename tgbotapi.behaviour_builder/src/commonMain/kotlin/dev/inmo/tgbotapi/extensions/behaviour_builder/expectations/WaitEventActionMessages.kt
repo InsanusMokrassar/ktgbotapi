@@ -208,3 +208,8 @@ suspend fun BehaviourContext.waitChatSharedEventsMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEventsMessages<ChatShared>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitChatBoostAddedEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<ChatBoostAdded>(initRequest, errorFactory)

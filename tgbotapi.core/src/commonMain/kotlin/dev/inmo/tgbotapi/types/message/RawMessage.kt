@@ -54,6 +54,7 @@ internal data class RawMessage(
     private val is_topic_message: Boolean? = null,
     private val is_automatic_forward: Boolean? = null,
     private val reply_to_message: RawMessage? = null,
+    private val reply_to_story: Story? = null,
     private val external_reply: ReplyInfo.External? = null,
     private val quote: TextQuote? = null,
     private val via_bot: CommonBot? = null,
@@ -98,6 +99,7 @@ internal data class RawMessage(
     private val successful_payment: SuccessfulPayment? = null,
     private val giveaway: Giveaway? = null,
     private val giveaway_winners: GiveawayResults? = null,
+    private val sender_boost_count: Int? = null,
 
     private val users_shared: UsersShared? = null,
     private val chat_shared: ChatShared? = null,
@@ -116,6 +118,9 @@ internal data class RawMessage(
     private val general_forum_topic_hidden: GeneralForumTopicHidden? = null,
     private val general_forum_topic_unhidden: GeneralForumTopicUnhidden? = null,
     private val write_access_allowed: WriteAccessAllowed? = null,
+
+    // Boost added to groups
+    private val boost_added: ChatBoostAdded? = null,
 
     // AutoDelete Message time changed
     private val message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged? = null,
@@ -247,6 +252,7 @@ internal data class RawMessage(
             giveaway_created != null -> giveaway_created
             giveaway_winners is GiveawayPrivateResults -> giveaway_winners
             giveaway_completed != null -> giveaway_completed
+            boost_added != null -> boost_added
             else -> null
         }
     }
@@ -295,6 +301,7 @@ internal data class RawMessage(
                     reply_to_message != null -> ReplyInfo.Internal(
                         reply_to_message.asMessage
                     )
+                    reply_to_story != null -> ReplyInfo.ToStory(reply_to_story)
                     external_reply != null -> external_reply
                     else -> null
                 }
@@ -367,7 +374,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    media_group_id
+                                    media_group_id,
+                                    sender_boost_count
                                 )
                             }
                         } else {
@@ -431,7 +439,8 @@ internal data class RawMessage(
                                     reply_markup,
                                     content,
                                     via_bot,
-                                    media_group_id
+                                    media_group_id,
+                                    sender_boost_count
                                 )
                             }
                         }
@@ -495,7 +504,8 @@ internal data class RawMessage(
                                 reply_markup,
                                 content,
                                 via_bot,
-                                media_group_id
+                                media_group_id,
+                                sender_boost_count
                             )
                         }
                     }
