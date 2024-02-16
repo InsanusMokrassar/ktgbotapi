@@ -184,6 +184,8 @@ data class ExtendedSupergroupChatImpl(
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(hasVisibleHistoryField)
     override val newMembersSeeHistory: Boolean = false,
+    @SerialName(unrestrictBoostsCountField)
+    override val unrestrictBoostsCount: Int? = null
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -242,6 +244,8 @@ data class ExtendedForumChatImpl(
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(hasVisibleHistoryField)
     override val newMembersSeeHistory: Boolean = false,
+    @SerialName(unrestrictBoostsCountField)
+    override val unrestrictBoostsCount: Int? = null,
 ) : ExtendedForumChat
 
 @Serializable

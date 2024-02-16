@@ -59,6 +59,7 @@ sealed interface ExtendedSupergroupChat : SupergroupChat, ExtendedGroupChat, Ext
     val stickerSetName: StickerSetName?
     val canSetStickerSet: Boolean
     val linkedChannelChatId: IdChatIdentifier?
+    val unrestrictBoostsCount: Int?
     val location: ChatLocation?
 
     /**
