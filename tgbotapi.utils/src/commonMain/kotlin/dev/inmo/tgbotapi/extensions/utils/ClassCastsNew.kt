@@ -222,6 +222,7 @@ import dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
+import dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
 import dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto
 import dev.inmo.tgbotapi.types.message.ChatEvents.GroupChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.LeftChatMemberEvent
@@ -2881,6 +2882,15 @@ public inline fun ChatEvent.channelChatCreatedOrThrow(): ChannelChatCreated = th
 
 public inline fun <T> ChatEvent.ifChannelChatCreated(block: (ChannelChatCreated) -> T): T? =
     channelChatCreatedOrNull() ?.let(block)
+
+public inline fun ChatEvent.chatBoostAddedOrNull(): ChatBoostAdded? = this as?
+    dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
+
+public inline fun ChatEvent.chatBoostAddedOrThrow(): ChatBoostAdded = this as
+    dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
+
+public inline fun <T> ChatEvent.ifChatBoostAdded(block: (ChatBoostAdded) -> T): T? =
+    chatBoostAddedOrNull() ?.let(block)
 
 public inline fun ChatEvent.deleteChatPhotoOrNull(): DeleteChatPhoto? = this as?
     dev.inmo.tgbotapi.types.message.ChatEvents.DeleteChatPhoto

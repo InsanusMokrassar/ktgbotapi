@@ -117,6 +117,9 @@ internal data class RawMessage(
     private val general_forum_topic_unhidden: GeneralForumTopicUnhidden? = null,
     private val write_access_allowed: WriteAccessAllowed? = null,
 
+    // Boost added to groups
+    private val boost_added: ChatBoostAdded? = null,
+
     // AutoDelete Message time changed
     private val message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged? = null,
 
@@ -247,6 +250,7 @@ internal data class RawMessage(
             giveaway_created != null -> giveaway_created
             giveaway_winners is GiveawayPrivateResults -> giveaway_winners
             giveaway_completed != null -> giveaway_completed
+            boost_added != null -> boost_added
             else -> null
         }
     }

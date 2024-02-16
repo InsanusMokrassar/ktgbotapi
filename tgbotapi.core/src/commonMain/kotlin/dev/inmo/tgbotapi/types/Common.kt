@@ -656,6 +656,7 @@ const val menuButtonField = "menu_button"
 
 const val boostIdField = "boost_id"
 const val boostField = "boost"
+const val boostCountField = "boost_count"
 const val addDateField = "add_date"
 const val expirationDateField = "expiration_date"
 const val removeDateField = "remove_date"
