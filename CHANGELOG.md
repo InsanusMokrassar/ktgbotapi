@@ -2,6 +2,10 @@
 
 ## 10.1.1
 
+* `Version`:
+  * `Serialization`: `1.6.2` -> `1.6.3`
+  * `MicroUtils`: `0.20.34` -> `0.20.37`
+
 ## 10.1.0
 
 **Add support of [Telegram Bots API 7.1](https://core.telegram.org/bots/api-changelog#february-16-2024)**
