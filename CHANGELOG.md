@@ -7,6 +7,7 @@
 * `Core`:
   * `MessageId` now is `value class`
   * `MessageThreadId` now is `value class`
+  * `InlineQueryIdentifier` now is `value class`
 
 ## 10.1.2
 
