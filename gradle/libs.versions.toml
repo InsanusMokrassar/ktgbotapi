@@ -21,6 +21,8 @@ versions = "0.51.0"
 github-release-plugin = "2.5.2"
 dokka = "1.9.20"
 
+validator = "0.14.0"
+
 [libraries]
 
 kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -78,3 +80,4 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "validator" }
