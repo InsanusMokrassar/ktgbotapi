@@ -148,7 +148,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
                 val (chatId, threadId) = splitted
                 ChatIdWithThreadId(
                     chatId.toLongOrNull() ?: return@let null,
-                    threadId.toLongOrNull() ?: return@let null
+                    threadId.toLongOrNull() ?.let(::MessageThreadId) ?: return@let null
                 )
             } else {
                 null

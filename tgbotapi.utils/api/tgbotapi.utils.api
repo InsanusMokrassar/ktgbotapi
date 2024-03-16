@@ -2600,16 +2600,16 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/SameKt {
 	public static final fun sameMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
 	public static final fun sameMessage-EQziP_A (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;J)Z
 	public static final fun sameMessage-EQziP_A (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;J)Z
-	public static final fun sameThread (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/Long;)Z
-	public static final fun sameThread (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/Long;)Z
 	public static final fun sameThread (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
-	public static synthetic fun sameThread$default (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/Long;ILjava/lang/Object;)Z
-	public static synthetic fun sameThread$default (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/Long;ILjava/lang/Object;)Z
-	public static final fun sameTopic (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/Long;)Z
-	public static final fun sameTopic (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/Long;)Z
+	public static final fun sameThread-ozQpjvA (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;)Z
+	public static final fun sameThread-ozQpjvA (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/MessageThreadId;)Z
+	public static synthetic fun sameThread-ozQpjvA$default (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Z
+	public static synthetic fun sameThread-ozQpjvA$default (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Z
 	public static final fun sameTopic (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
-	public static synthetic fun sameTopic$default (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/Long;ILjava/lang/Object;)Z
-	public static synthetic fun sameTopic$default (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/Long;ILjava/lang/Object;)Z
+	public static final fun sameTopic-ozQpjvA (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;)Z
+	public static final fun sameTopic-ozQpjvA (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/MessageThreadId;)Z
+	public static synthetic fun sameTopic-ozQpjvA$default (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Z
+	public static synthetic fun sameTopic-ozQpjvA$default (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Z
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/TelegramBotCommandsDefaults {
@@ -2834,25 +2834,25 @@ public final class dev/inmo/tgbotapi/extensions/utils/formatting/LinksFormatting
 	public static final fun getStartattachPrefix-hkcqQtM (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun getStickerSetLink (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextLinkTextSource;
 	public static final fun getUsernameLink-hkcqQtM (Ljava/lang/String;)Ljava/lang/String;
-	public static final fun link-26ZnLnw (Ljava/lang/String;Ljava/lang/Long;)Ljava/lang/String;
-	public static final fun link-zv9neSE (JLjava/lang/Long;)Ljava/lang/String;
-	public static final fun makeChatLink (JLjava/lang/Long;)Ljava/lang/String;
-	public static synthetic fun makeChatLink$default (JLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun link-752ER_0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
+	public static final fun link-kXE59pw (JLdev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
+	public static final fun makeChatLink-zFai7VQ (JLdev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
+	public static synthetic fun makeChatLink-zFai7VQ$default (JLdev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeDeepLink-26ZnLnw (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeInternalTgDeepLink (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeInternalTgDeepLink-26ZnLnw (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeInternalTgUsernameDeepLinkPrefix (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeInternalTgUsernameLink (Ljava/lang/String;)Ljava/lang/String;
-	public static final fun makeLink-26ZnLnw (Ljava/lang/String;Ljava/lang/Long;)Ljava/lang/String;
-	public static synthetic fun makeLink-26ZnLnw$default (Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
-	public static final fun makeLinkToMessage-HkzWJnM (JJLjava/lang/Long;)Ljava/lang/String;
-	public static final fun makeLinkToMessage-HkzWJnM (Ljava/lang/String;JLjava/lang/Long;)Ljava/lang/String;
-	public static synthetic fun makeLinkToMessage-HkzWJnM$default (JJLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
-	public static synthetic fun makeLinkToMessage-HkzWJnM$default (Ljava/lang/String;JLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun makeLink-752ER_0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
+	public static synthetic fun makeLink-752ER_0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun makeLinkToMessage-QEgSB0w (JJLdev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
+	public static final fun makeLinkToMessage-QEgSB0w (Ljava/lang/String;JLdev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
+	public static synthetic fun makeLinkToMessage-QEgSB0w$default (JJLdev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun makeLinkToMessage-QEgSB0w$default (Ljava/lang/String;JLdev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeLinkToMessage-e-HACGs (Ldev/inmo/tgbotapi/types/IdChatIdentifier;J)Ljava/lang/String;
 	public static final fun makeLinkToMessage-e-HACGs (Ldev/inmo/tgbotapi/types/chat/Chat;J)Ljava/lang/String;
-	public static final fun makeLinkToMessage-xGvoJ4w (Ljava/lang/String;JLjava/lang/Long;)Ljava/lang/String;
-	public static synthetic fun makeLinkToMessage-xGvoJ4w$default (Ljava/lang/String;JLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun makeLinkToMessage-jfrm6zs (Ljava/lang/String;JLdev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
+	public static synthetic fun makeLinkToMessage-jfrm6zs$default (Ljava/lang/String;JLdev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeTelegramDeepLink (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeTelegramDeepLink-26ZnLnw (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeTelegramStartattach (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -2861,8 +2861,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/formatting/LinksFormatting
 	public static synthetic fun makeTelegramStartattach-26ZnLnw$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeUserLink-HZVsHAI (J)Ljava/lang/String;
 	public static final fun makeUsernameDeepLinkPrefix (Ljava/lang/String;)Ljava/lang/String;
-	public static final fun makeUsernameLink (Ljava/lang/String;Ljava/lang/Long;)Ljava/lang/String;
-	public static synthetic fun makeUsernameLink$default (Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun makeUsernameLink-zFai7VQ (Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
+	public static synthetic fun makeUsernameLink-zFai7VQ$default (Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeUsernameStartattachLink (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static synthetic fun makeUsernameStartattachLink$default (Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeUsernameStartattachPrefix (Ljava/lang/String;)Ljava/lang/String;
