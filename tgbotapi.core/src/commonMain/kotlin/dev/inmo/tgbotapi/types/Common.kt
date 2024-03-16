@@ -14,7 +14,6 @@ typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature
 typealias PaymentQueryIdentifier = String
 typealias InvoicePayload = String
-typealias ShippingOptionIdentifier = String
 typealias StartParameter = String
 typealias PollIdentifier = String
 typealias StickerSetName = String

@@ -10473,6 +10473,36 @@ public final class dev/inmo/tgbotapi/types/SecondaryChatInviteLink$DefaultImpls 
 	public static fun isPrimary (Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;)Z
 }
 
+public final class dev/inmo/tgbotapi/types/ShippingOptionId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/ShippingOptionId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ShippingOptionId;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/ShippingOptionId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ShippingOptionId$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-_4cU8P0 (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-IjckslA (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/ShippingOptionId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/ShippingQueryId {
 	public static final field Companion Ldev/inmo/tgbotapi/types/ShippingQueryId$Companion;
 	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ShippingQueryId;
@@ -21649,10 +21679,10 @@ public final class dev/inmo/tgbotapi/types/payments/PreCheckoutQuery : dev/inmo/
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()J
 	public final fun component5 ()Ljava/lang/String;
-	public final fun component6 ()Ljava/lang/String;
+	public final fun component6-GnnktA4 ()Ljava/lang/String;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/payments/OrderInfo;
-	public final fun copy-KzUIE5U (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;)Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
-	public static synthetic fun copy-KzUIE5U$default (Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
+	public final fun copy-caBx8O4 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;)Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
+	public static synthetic fun copy-caBx8O4$default (Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAdaptedMajorityTotalAmount ()D
 	public fun getAmount ()J
@@ -21661,7 +21691,7 @@ public final class dev/inmo/tgbotapi/types/payments/PreCheckoutQuery : dev/inmo/
 	public final fun getId-vkd00ps ()Ljava/lang/String;
 	public final fun getInvoicePayload ()Ljava/lang/String;
 	public final fun getOrderInfo ()Ldev/inmo/tgbotapi/types/payments/OrderInfo;
-	public final fun getShippingOptionId ()Ljava/lang/String;
+	public final fun getShippingOptionId-GnnktA4 ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -21722,14 +21752,14 @@ public final class dev/inmo/tgbotapi/types/payments/ShippingAddress$Companion {
 
 public final class dev/inmo/tgbotapi/types/payments/ShippingOption : dev/inmo/tgbotapi/types/payments/abstracts/Priced {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/ShippingOption$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-HilhuNU ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/payments/ShippingOption;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/ShippingOption;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/ShippingOption;
+	public final fun copy-8iYHifA (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/payments/ShippingOption;
+	public static synthetic fun copy-8iYHifA$default (Ldev/inmo/tgbotapi/types/payments/ShippingOption;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/ShippingOption;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getId ()Ljava/lang/String;
+	public final fun getId-HilhuNU ()Ljava/lang/String;
 	public fun getPrices ()Ljava/util/List;
 	public final fun getTitle ()Ljava/lang/String;
 	public fun hashCode ()I
