@@ -2,12 +2,19 @@ package dev.inmo.tgbotapi.extensions.api.get
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.get.GetStickerSet
+import dev.inmo.tgbotapi.types.StickerSetName
 import dev.inmo.tgbotapi.types.files.Sticker
 
 suspend fun TelegramBot.getStickerSet(
-    name: String
+    name: StickerSetName
 ) = execute(
     GetStickerSet(name)
+)
+
+suspend fun TelegramBot.getStickerSet(
+    name: String
+) = getStickerSet(
+    StickerSetName(name)
 )
 
 suspend fun TelegramBot.getStickerSetOrNull(

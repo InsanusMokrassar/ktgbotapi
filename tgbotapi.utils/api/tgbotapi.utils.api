@@ -2832,7 +2832,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/formatting/LinksFormatting
 	public static final fun getDeepLinkPrefix-hkcqQtM (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun getMessageLink (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ljava/lang/String;
 	public static final fun getStartattachPrefix-hkcqQtM (Ljava/lang/String;)Ljava/lang/String;
-	public static final fun getStickerSetLink (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextLinkTextSource;
+	public static final fun getStickerSetLink-bSWEcq8 (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextLinkTextSource;
 	public static final fun getUsernameLink-hkcqQtM (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun link-752ER_0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;
 	public static final fun link-kXE59pw (JLdev/inmo/tgbotapi/types/MessageThreadId;)Ljava/lang/String;

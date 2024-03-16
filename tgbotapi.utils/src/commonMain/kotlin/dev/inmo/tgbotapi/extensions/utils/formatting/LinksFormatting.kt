@@ -115,4 +115,4 @@ val Chat.chatLink: String?
 private const val stickerSetAddingLinkPrefix = "$internalLinkBeginning/addstickers"
 
 val StickerSetName.stickerSetLink
-    get() = link(this, "$stickerSetAddingLinkPrefix/$this")
+    get() = link(string, "$stickerSetAddingLinkPrefix/$this")

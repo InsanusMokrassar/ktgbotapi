@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.stickers.AddStickerToSet
 import dev.inmo.tgbotapi.requests.stickers.InputSticker
+import dev.inmo.tgbotapi.types.StickerSetName
 import dev.inmo.tgbotapi.types.StickerType
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.UserId
@@ -12,11 +13,17 @@ import dev.inmo.tgbotapi.types.stickers.StickerSet
 
 suspend fun TelegramBot.addStickerToSet(
     userId: UserId,
-    stickerSetName: String,
+    stickerSetName: StickerSetName,
     inputSticker: InputSticker
 ) = execute(
     AddStickerToSet(userId, stickerSetName, inputSticker)
 )
+
+suspend fun TelegramBot.addStickerToSet(
+    userId: UserId,
+    stickerSetName: String,
+    inputSticker: InputSticker
+) = addStickerToSet(userId, StickerSetName(stickerSetName), inputSticker)
 
 suspend fun TelegramBot.addStickerToSet(
     userId: UserId,

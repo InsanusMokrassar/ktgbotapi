@@ -724,8 +724,8 @@ public final class dev/inmo/tgbotapi/extensions/api/chat/stickers/DeleteChatStic
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/chat/stickers/SetChatStickerSetKt {
-	public static final fun setChatStickerSet (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun setChatStickerSet (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/SupergroupChat;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setChatStickerSet-5E11-Tk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setChatStickerSet-5E11-Tk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/SupergroupChat;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/EditsKt {
@@ -1023,6 +1023,7 @@ public final class dev/inmo/tgbotapi/extensions/api/get/GetFileKt {
 
 public final class dev/inmo/tgbotapi/extensions/api/get/GetStickerSetKt {
 	public static final fun getStickerSet (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun getStickerSet-ES61iX4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getStickerSetOrNull (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/files/Sticker;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun getStickerSetOrThrow (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/files/Sticker;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
@@ -2066,6 +2067,7 @@ public final class dev/inmo/tgbotapi/extensions/api/stickers/AddStickerToSetKt {
 	public static synthetic fun addStickerToSet$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ldev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun addStickerToSet-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun addStickerToSet-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun addStickerToSet-It0iktY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun addStickerToSet-VjR9mJc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun addStickerToSet-VjR9mJc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun addStickerToSet-VjR9mJc$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -2087,7 +2089,7 @@ public final class dev/inmo/tgbotapi/extensions/api/stickers/DeleteStickerFromSe
 public final class dev/inmo/tgbotapi/extensions/api/stickers/DeleteStickerSetKt {
 	public static final fun deleteStickerSet (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/files/Sticker;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun deleteStickerSet (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/stickers/StickerSet;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun deleteStickerSet (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun deleteStickerSet-ES61iX4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/stickers/SetStickerEmojiListKt {
@@ -2112,7 +2114,7 @@ public final class dev/inmo/tgbotapi/extensions/api/stickers/SetStickerPositionI
 public final class dev/inmo/tgbotapi/extensions/api/stickers/SetStickerSetTitleKt {
 	public static final fun setStickerSetTitle (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/files/Sticker;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setStickerSetTitle (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/stickers/StickerSet;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun setStickerSetTitle (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setStickerSetTitle-lAFa-4c (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/stickers/UploadStickerFileKt {
@@ -2122,18 +2124,18 @@ public final class dev/inmo/tgbotapi/extensions/api/stickers/UploadStickerFileKt
 
 public final class dev/inmo/tgbotapi/extensions/api/thumbs/SetCustomEmojiStickerSetThumbKt {
 	public static final fun setCustomEmojiStickerSetThumbnail-FMh0B1w (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/stickers/StickerSet;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun setCustomEmojiStickerSetThumbnail-FMh0B1w (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setCustomEmojiStickerSetThumbnail-KofBPHw (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/thumbs/SetStickerSetThumbKt {
 	public static final fun setStickerSetThumbnail (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ldev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setStickerSetThumbnail (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ldev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun setStickerSetThumbnail (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun setStickerSetThumbnail (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setStickerSetThumbnail-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun setStickerSetThumbnail-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLdev/inmo/tgbotapi/types/stickers/StickerSet;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun setStickerSetThumbnail-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun setStickerSetThumbnail-4iNBclM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setStickerSetThumbnail-DXF-zCU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setStickerSetThumbnail-DXF-zCU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setStickerSetThumbnail-It0iktY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun setStickerSetThumbnail-It0iktY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/utils/UpdatesHandlingKt {
