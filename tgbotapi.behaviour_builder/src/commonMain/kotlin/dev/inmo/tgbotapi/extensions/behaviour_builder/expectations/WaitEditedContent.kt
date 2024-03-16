@@ -13,131 +13,118 @@ import kotlinx.coroutines.flow.map
 @RiskFeature(lowLevelRiskFeatureMessage)
 suspend inline fun <reified O : MessageContent> BehaviourContext.waitEditedContent(
     initRequest: Request<*>? = null,
-    includeMediaGroups: Boolean = true,
     noinline errorFactory: NullableRequestBuilder<*> = { null }
 ): Flow<O> = waitEditedContentMessage<O>(initRequest, errorFactory).map { it.content }
 
 suspend fun BehaviourContext.waitEditedMessageContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = true
-) = waitEditedContent<MessageContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<MessageContent>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitEditedContentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = true
-) = waitEditedContent<MessageContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<MessageContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedContact(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<ContactContent>(initRequest, false, errorFactory)
+) = waitEditedContent<ContactContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedDice(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<DiceContent>(initRequest, false, errorFactory)
+) = waitEditedContent<DiceContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedGame(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<GameContent>(initRequest, false, errorFactory)
+) = waitEditedContent<GameContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedLocation(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<LocationContent>(initRequest, false, errorFactory)
+) = waitEditedContent<LocationContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedLiveLocation(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<LiveLocationContent>(initRequest, false, errorFactory)
+) = waitEditedContent<LiveLocationContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedStaticLocation(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<StaticLocationContent>(initRequest, false, errorFactory)
+) = waitEditedContent<StaticLocationContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedText(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<TextContent>(initRequest, false, errorFactory)
+) = waitEditedContent<TextContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedVenue(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<VenueContent>(initRequest, false, errorFactory)
+) = waitEditedContent<VenueContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedAudioMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = true
-) = waitEditedContent<AudioMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<AudioMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedDocumentMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = true
-) = waitEditedContent<DocumentMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<DocumentMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedMedia(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
-) = waitEditedContent<MediaContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<MediaContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedAnyMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = true
-) = waitEditedContent<MediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<MediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedVisualMediaGroupContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = true
-) = waitEditedContent<VisualMediaGroupPartContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<VisualMediaGroupPartContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedTextedMediaContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = true
-) = waitEditedContent<TextedMediaContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<TextedMediaContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedAnimation(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<AnimationContent>(initRequest, false, errorFactory)
+) = waitEditedContent<AnimationContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedAudio(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
-) = waitEditedContent<AudioContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<AudioContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedDocument(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
-) = waitEditedContent<DocumentContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<DocumentContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedPhoto(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
-) = waitEditedContent<PhotoContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<PhotoContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedSticker(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<StickerContent>(initRequest, false, errorFactory)
+) = waitEditedContent<StickerContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedVideo(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
-) = waitEditedContent<VideoContent>(initRequest, includeMediaGroups, errorFactory)
+) = waitEditedContent<VideoContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedVideoNote(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<VideoNoteContent>(initRequest, false, errorFactory)
+) = waitEditedContent<VideoNoteContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedVoice(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<VoiceContent>(initRequest, false, errorFactory)
+) = waitEditedContent<VoiceContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedInvoice(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<InvoiceContent>(initRequest, false, errorFactory)
+) = waitEditedContent<InvoiceContent>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitEditedGiveawayContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<GiveawayContent>(initRequest, false, errorFactory)
+) = waitEditedContent<GiveawayContent>(initRequest, errorFactory)
 
 suspend fun BehaviourContext.waitEditedGiveawayPublicResultsContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
-) = waitEditedContent<GiveawayPublicResultsContent>(initRequest, false, errorFactory)
+) = waitEditedContent<GiveawayPublicResultsContent>(initRequest, errorFactory)
 
