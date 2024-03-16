@@ -1166,14 +1166,14 @@ public final class dev/inmo/tgbotapi/requests/answers/InlineQueryResultsButtonSe
 
 public final class dev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryError : dev/inmo/tgbotapi/requests/answers/payments/abstracts/AnswerPreCheckoutQuery {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryError$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-vkd00ps ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryError;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryError;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryError;
+	public final fun copy-jwi7eYw (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryError;
+	public static synthetic fun copy-jwi7eYw$default (Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryError;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryError;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getErrorMessage ()Ljava/lang/String;
-	public fun getPreCheckoutQueryId ()Ljava/lang/String;
+	public fun getPreCheckoutQueryId-vkd00ps ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public synthetic fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
@@ -1205,12 +1205,12 @@ public final class dev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckout
 
 public final class dev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryOk : dev/inmo/tgbotapi/requests/answers/payments/abstracts/AnswerPreCheckoutQuery {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryOk$Companion;
-	public fun <init> (Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryOk;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryOk;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryOk;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-vkd00ps ()Ljava/lang/String;
+	public final fun copy-HEJB8UQ (Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryOk;
+	public static synthetic fun copy-HEJB8UQ$default (Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryOk;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckoutQueryOk;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getPreCheckoutQueryId ()Ljava/lang/String;
+	public fun getPreCheckoutQueryId-vkd00ps ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public synthetic fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
@@ -1316,7 +1316,7 @@ public final class dev/inmo/tgbotapi/requests/answers/payments/ShippingOptionsSe
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/answers/payments/abstracts/AnswerPreCheckoutQuery : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
-	public abstract fun getPreCheckoutQueryId ()Ljava/lang/String;
+	public abstract fun getPreCheckoutQueryId-vkd00ps ()Ljava/lang/String;
 	public abstract fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
 	public abstract fun isOk ()Z
 	public abstract fun method ()Ljava/lang/String;
@@ -10015,6 +10015,36 @@ public final class dev/inmo/tgbotapi/types/MigrateChatId : dev/inmo/tgbotapi/typ
 	public final fun getNewChatId ()Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/PreCheckoutQueryId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/PreCheckoutQueryId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/PreCheckoutQueryId;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/PreCheckoutQueryId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/PreCheckoutQueryId$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-byvhhWo (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-9K7YT4I (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/PreCheckoutQueryId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/PrimaryInviteLink : dev/inmo/tgbotapi/types/ChatInviteLink {
@@ -21455,23 +21485,23 @@ public final class dev/inmo/tgbotapi/types/payments/OrderInfo$Companion {
 
 public final class dev/inmo/tgbotapi/types/payments/PreCheckoutQuery : dev/inmo/tgbotapi/abstracts/FromUser, dev/inmo/tgbotapi/types/payments/abstracts/Amounted, dev/inmo/tgbotapi/types/payments/abstracts/Currencied {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;)V
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-vkd00ps ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/User;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()J
 	public final fun component5 ()Ljava/lang/String;
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/payments/OrderInfo;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;)Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
+	public final fun copy-KzUIE5U (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;)Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
+	public static synthetic fun copy-KzUIE5U$default (Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/OrderInfo;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAdaptedMajorityTotalAmount ()D
 	public fun getAmount ()J
 	public fun getCurrency ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public final fun getId ()Ljava/lang/String;
+	public final fun getId-vkd00ps ()Ljava/lang/String;
 	public final fun getInvoicePayload ()Ljava/lang/String;
 	public final fun getOrderInfo ()Ldev/inmo/tgbotapi/types/payments/OrderInfo;
 	public final fun getShippingOptionId ()Ljava/lang/String;

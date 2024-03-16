@@ -16,7 +16,6 @@ typealias ForwardSignature = String
 typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature
 typealias PaymentQueryIdentifier = String
-typealias PreCheckoutQueryId = String
 typealias ShippingQueryIdentifier = String
 typealias InvoicePayload = String
 typealias ShippingOptionIdentifier = String

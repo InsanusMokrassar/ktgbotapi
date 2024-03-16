@@ -232,9 +232,9 @@ public final class dev/inmo/tgbotapi/extensions/api/answers/AnswerWebAppQueryKt 
 
 public final class dev/inmo/tgbotapi/extensions/api/answers/payments/AnswerPreCheckoutQueryKt {
 	public static final fun answerPreCheckoutQueryError (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun answerPreCheckoutQueryError (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun answerPreCheckoutQueryError-oW8609E (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun answerPreCheckoutQueryOk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun answerPreCheckoutQueryOk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun answerPreCheckoutQueryOk-5NatbtI (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/answers/payments/AnswerShippingQueryKt {
