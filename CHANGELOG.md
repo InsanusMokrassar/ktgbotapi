@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 10.1.2
+
 ## 10.1.1
 
 * `Version`:
