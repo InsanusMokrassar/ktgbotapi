@@ -1032,16 +1032,16 @@ public final class dev/inmo/tgbotapi/requests/answers/AnswerInlineQueryKt {
 
 public final class dev/inmo/tgbotapi/requests/answers/AnswerWebAppQuery : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/answers/AnswerWebAppQuery$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-lfaSAiU ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/requests/answers/AnswerWebAppQuery;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/answers/AnswerWebAppQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/AnswerWebAppQuery;
+	public final fun copy-2kp9O0w (Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/requests/answers/AnswerWebAppQuery;
+	public static synthetic fun copy-2kp9O0w$default (Ldev/inmo/tgbotapi/requests/answers/AnswerWebAppQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/AnswerWebAppQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public final fun getResult ()Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
-	public final fun getWebAppQueryId ()Ljava/lang/String;
+	public final fun getWebAppQueryId-lfaSAiU ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun method ()Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
@@ -10688,6 +10688,36 @@ public final class dev/inmo/tgbotapi/types/Username : dev/inmo/tgbotapi/types/Ch
 }
 
 public final class dev/inmo/tgbotapi/types/Username$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/WebAppQueryId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/WebAppQueryId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/WebAppQueryId;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/WebAppQueryId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/WebAppQueryId$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-CHupnvQ (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-eEisY-M (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/WebAppQueryId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

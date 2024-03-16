@@ -31,7 +31,7 @@ typealias FoursquareType = String
 typealias GooglePlaceId = String
 typealias GooglePlaceType = String
 typealias MembersLimit = Int
-typealias WebAppQueryId = String
+
 @Serializable
 @JvmInline
 value class CustomEmojiId(
