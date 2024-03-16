@@ -1327,14 +1327,14 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_f
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdPollAnswerMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdPollAnswerMarkerFactory;
-	public fun invoke (Ldev/inmo/tgbotapi/types/polls/PollAnswer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun invoke-ErVIubg (Ldev/inmo/tgbotapi/types/polls/PollAnswer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdPollMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdPollMarkerFactory;
-	public fun invoke (Ldev/inmo/tgbotapi/types/polls/Poll;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun invoke-ErVIubg (Ldev/inmo/tgbotapi/types/polls/Poll;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserCallbackQueryMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {

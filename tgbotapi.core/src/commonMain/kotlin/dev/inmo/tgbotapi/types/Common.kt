@@ -15,7 +15,6 @@ typealias AuthorSignature = ForwardSignature
 typealias PaymentQueryIdentifier = String
 typealias InvoicePayload = String
 typealias StartParameter = String
-typealias PollIdentifier = String
 typealias StickerSetName = String
 typealias DiceResult = Int
 typealias FoursquareId = String
