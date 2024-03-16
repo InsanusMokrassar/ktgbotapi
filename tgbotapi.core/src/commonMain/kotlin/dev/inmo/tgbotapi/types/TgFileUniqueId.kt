@@ -7,7 +7,11 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class TgFileUniqueId(
     val string: String
-)
+) {
+    override fun toString(): String {
+        return string
+    }
+}
 @Deprecated(
     "Renamed",
     ReplaceWith("TgFileUniqueId", "dev.inmo.tgbotapi.types.TgFileUniqueId")

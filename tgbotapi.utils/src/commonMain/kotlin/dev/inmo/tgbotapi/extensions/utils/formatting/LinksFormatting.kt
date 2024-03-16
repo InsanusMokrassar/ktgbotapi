@@ -10,7 +10,7 @@ import io.ktor.http.encodeURLQueryComponent
 fun makeUsernameLink(username: String, threadId: MessageThreadId? = null) = "$internalLinkBeginning/$username${threadId ?.let { "/$it" } ?: ""}"
 fun makeInternalTgUsernameLink(username: String) = "${internalTgAppLinksBeginning}resolve?domain=$username"
 fun makeUserLink(userId: UserId) = userId.userLink
-fun makeChatLink(identifier: Identifier, threadId: MessageThreadId? = null) = identifier.toString().replace(
+fun makeChatLink(identifier: RawChatId, threadId: MessageThreadId? = null) = identifier.toString().replace(
     linkIdRedundantPartRegex,
     ""
 ).let { bareId ->
@@ -54,7 +54,7 @@ fun makeLinkToMessage(
     threadId: MessageThreadId? = null
 ): String = makeLinkToMessage(username.withoutAt, messageId, threadId)
 fun makeLinkToMessage(
-    chatId: Identifier,
+    chatId: RawChatId,
     messageId: MessageId,
     threadId: MessageThreadId? = null
 ): String = chatId.toString().replace(

@@ -29,7 +29,11 @@ object MessageIdSerializer : KSerializer<MessageId> {
 @JvmInline
 value class MessageId(
     val long: Long
-)
+) {
+    override fun toString(): String {
+        return long.toString()
+    }
+}
 
 fun Long.asTelegramMessageId() = MessageId(this)
 

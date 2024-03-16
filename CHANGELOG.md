@@ -16,6 +16,7 @@
   * `UpdateIdentifier` has been renamed to `UpdateId` and now is `value class`
   * `InlineMessageIdentifier` has been renamed to `InlineMessageId` and now is `value class`
   * `ShippingQueryIdentifier` has been renamed to `ShippingQueryId` and now is `value class`
+  * `Identifier` has been renamed to `RawChatId` and now is `value class`
 
 ## 10.1.2
 

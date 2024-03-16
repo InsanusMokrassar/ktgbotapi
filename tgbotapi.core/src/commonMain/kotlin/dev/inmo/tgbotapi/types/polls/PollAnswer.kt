@@ -43,7 +43,7 @@ sealed interface PollAnswer: FromUser {
 
         companion object {
             val defaultUser = CommonBot(
-                UserId(136817688L),
+                UserId(RawChatId.DefaultUserId),
                 "",
                 "",
                 Username("@Channel_Bot")

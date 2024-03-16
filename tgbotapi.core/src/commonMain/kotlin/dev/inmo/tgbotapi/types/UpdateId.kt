@@ -14,6 +14,10 @@ value class UpdateId(
     override fun compareTo(other: UpdateId): Int {
         return long.compareTo(other.long)
     }
+
+    override fun toString(): String {
+        return long.toString()
+    }
 }
 
 @Deprecated("Renamed", ReplaceWith("UpdateId", "dev.inmo.tgbotapi.types.UpdateId"))

@@ -7,7 +7,11 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class InlineQueryId(
     val string: String
-)
+) {
+    override fun toString(): String {
+        return string
+    }
+}
 
 @Deprecated("Renamed", ReplaceWith("InlineQueryId", "dev.inmo.tgbotapi.types.InlineQueryId"))
 typealias InlineQueryIdentifier = InlineQueryId

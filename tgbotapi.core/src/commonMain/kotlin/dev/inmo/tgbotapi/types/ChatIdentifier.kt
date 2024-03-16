@@ -26,13 +26,13 @@ sealed interface ChatIdentifier
  */
 @Serializable(ChatIdentifierSerializer::class)
 sealed interface IdChatIdentifier : ChatIdentifier {
-    abstract val chatId: Identifier
+    abstract val chatId: RawChatId
     val threadId: MessageThreadId?
         get() = null
 
     companion object {
-        operator fun invoke(chatId: Identifier) = ChatId(chatId)
-        operator fun invoke(chatId: Identifier, threadId: MessageThreadId?) = threadId ?.let {
+        operator fun invoke(chatId: RawChatId) = ChatId(chatId)
+        operator fun invoke(chatId: RawChatId, threadId: MessageThreadId?) = threadId ?.let {
             ChatIdWithThreadId(chatId, threadId)
         } ?: ChatId(chatId)
     }
@@ -40,17 +40,17 @@ sealed interface IdChatIdentifier : ChatIdentifier {
 
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
-value class ChatId(override val chatId: Identifier) : IdChatIdentifier
+value class ChatId(override val chatId: RawChatId) : IdChatIdentifier
 
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
-value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<Identifier, MessageThreadId>) : IdChatIdentifier {
-    override val chatId: Identifier
+value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<RawChatId, MessageThreadId>) : IdChatIdentifier {
+    override val chatId: RawChatId
         get() = chatIdWithThreadId.first
     override val threadId: MessageThreadId
         get() = chatIdWithThreadId.second
 
-    constructor(chatId: Identifier, threadId: MessageThreadId): this(chatId to threadId)
+    constructor(chatId: RawChatId, threadId: MessageThreadId): this(chatId to threadId)
 }
 
 val ChatIdentifier.threadId: MessageThreadId?
@@ -67,7 +67,7 @@ fun IdChatIdentifier.toChatWithThreadId(threadId: MessageThreadId) = IdChatIdent
  * https://core.telegram.org/bots/api#formatting-options
  */
 @Warning("This API have restrictions in Telegram System")
-val Identifier.userLink: String
+val RawChatId.userLink: String
     get() = "$internalUserLinkBeginning$this"
 /**
  * https://core.telegram.org/bots/api#formatting-options
@@ -80,9 +80,10 @@ val User.userLink: String
 
 typealias UserId = ChatId
 
-fun Identifier.toChatId(): ChatId = ChatId(this)
-fun Int.toChatId(): IdChatIdentifier = toLong().toChatId()
-fun Byte.toChatId(): IdChatIdentifier = toLong().toChatId()
+fun RawChatId.toChatId(): ChatId = ChatId(this)
+fun Long.toChatId(): ChatId = ChatId(RawChatId(this))
+fun Int.toChatId(): IdChatIdentifier = RawChatId(toLong()).toChatId()
+fun Byte.toChatId(): IdChatIdentifier = RawChatId(toLong()).toChatId()
 
 @Serializable(ChatIdentifierSerializer::class)
 @JvmInline
@@ -115,7 +116,7 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
         val id = internalSerializer.deserialize(decoder)
 
         return id.longOrNull ?.let {
-            ChatId(it)
+            ChatId(RawChatId(it))
         } ?: id.content.let {
             if (!it.startsWith("@")) {
                 Username("@$it")
@@ -127,7 +128,7 @@ object ChatIdentifierSerializer : KSerializer<ChatIdentifier> {
 
     override fun serialize(encoder: Encoder, value: ChatIdentifier) {
         when (value) {
-            is IdChatIdentifier -> encoder.encodeLong(value.chatId)
+            is IdChatIdentifier -> encoder.encodeLong(value.chatId.long)
             is Username -> encoder.encodeString(value.full)
         }
     }
@@ -141,13 +142,13 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
         val id = internalSerializer.deserialize(decoder)
 
         return id.longOrNull ?.let {
-            ChatId(it)
+            ChatId(RawChatId(it))
         } ?:let {
             val splitted = id.content.split("/")
             if (splitted.size == 2) {
                 val (chatId, threadId) = splitted
                 ChatIdWithThreadId(
-                    chatId.toLongOrNull() ?: return@let null,
+                    chatId.toLongOrNull() ?.let(::RawChatId) ?: return@let null,
                     threadId.toLongOrNull() ?.let(::MessageThreadId) ?: return@let null
                 )
             } else {
@@ -164,7 +165,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
 
     override fun serialize(encoder: Encoder, value: ChatIdentifier) {
         when (value) {
-            is ChatId -> encoder.encodeLong(value.chatId)
+            is ChatId -> encoder.encodeLong(value.chatId.long)
             is ChatIdWithThreadId -> encoder.encodeString("${value.chatId}/${value.threadId}")
             is Username -> encoder.encodeString(value.full)
         }

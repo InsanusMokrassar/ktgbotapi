@@ -7,4 +7,8 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class WebAppQueryId(
     val string: String
-)
+) {
+    override fun toString(): String {
+        return string
+    }
+}

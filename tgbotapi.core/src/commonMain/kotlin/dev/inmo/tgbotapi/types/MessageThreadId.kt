@@ -7,4 +7,8 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class MessageThreadId(
     val long: Long
-)
+) {
+    override fun toString(): String {
+        return long.toString()
+    }
+}

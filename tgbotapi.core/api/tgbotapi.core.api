@@ -7165,7 +7165,7 @@ public final class dev/inmo/tgbotapi/types/ChatId : dev/inmo/tgbotapi/types/IdCh
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (JLjava/lang/Object;)Z
 	public static final fun equals-impl0 (JJ)Z
-	public fun getChatId ()J
+	public fun getChatId-iyD94Bc ()J
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public static fun getThreadId-S3HF-10 (J)Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun hashCode ()I
@@ -7187,8 +7187,8 @@ public final class dev/inmo/tgbotapi/types/ChatIdWithThreadId : dev/inmo/tgbotap
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (Lkotlin/Pair;Ljava/lang/Object;)Z
 	public static final fun equals-impl0 (Lkotlin/Pair;Lkotlin/Pair;)Z
-	public fun getChatId ()J
-	public static fun getChatId-impl (Lkotlin/Pair;)J
+	public fun getChatId-iyD94Bc ()J
+	public static fun getChatId-iyD94Bc (Lkotlin/Pair;)J
 	public final fun getChatIdWithThreadId ()Lkotlin/Pair;
 	public synthetic fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public fun getThreadId-hDmiKeI ()J
@@ -7217,13 +7217,14 @@ public final class dev/inmo/tgbotapi/types/ChatIdentifierKt {
 	public static final field internalTgAppLinksBeginning Ljava/lang/String;
 	public static final field internalUserLinkBeginning Ljava/lang/String;
 	public static final fun getThreadId (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Ldev/inmo/tgbotapi/types/MessageThreadId;
-	public static final fun getUserLink (J)Ljava/lang/String;
 	public static final fun getUserLink (Ldev/inmo/tgbotapi/types/chat/User;)Ljava/lang/String;
+	public static final fun getUserLink-0218hRU (J)Ljava/lang/String;
 	public static final fun getUserLink-HZVsHAI (J)Ljava/lang/String;
 	public static final fun toChatId (B)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public static final fun toChatId (I)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public static final fun toChatId (J)J
 	public static final fun toChatId (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)J
+	public static final fun toChatId-0218hRU (J)J
 	public static final fun toChatWithThreadId-krPZAoY (Ldev/inmo/tgbotapi/types/IdChatIdentifier;J)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public static final fun toUsername (Ljava/lang/String;)Ljava/lang/String;
 }
@@ -8047,13 +8048,13 @@ public final class dev/inmo/tgbotapi/types/FullChatIdentifierSerializer : kotlin
 
 public abstract interface class dev/inmo/tgbotapi/types/IdChatIdentifier : dev/inmo/tgbotapi/types/ChatIdentifier {
 	public static final field Companion Ldev/inmo/tgbotapi/types/IdChatIdentifier$Companion;
-	public abstract fun getChatId ()J
+	public abstract fun getChatId-iyD94Bc ()J
 	public abstract fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 }
 
 public final class dev/inmo/tgbotapi/types/IdChatIdentifier$Companion {
-	public final fun invoke-0UUUZLM (J)J
-	public final fun invoke-zFai7VQ (JLdev/inmo/tgbotapi/types/MessageThreadId;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
+	public final fun invoke-0PTMirw (J)J
+	public final fun invoke-FNqv5JM (JLdev/inmo/tgbotapi/types/MessageThreadId;)Ldev/inmo/tgbotapi/types/IdChatIdentifier;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -10110,6 +10111,37 @@ public final class dev/inmo/tgbotapi/types/PrimaryInviteLink$$serializer : kotli
 }
 
 public final class dev/inmo/tgbotapi/types/PrimaryInviteLink$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/RawChatId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/RawChatId$Companion;
+	public static final synthetic fun box-impl (J)Ldev/inmo/tgbotapi/types/RawChatId;
+	public static fun constructor-impl (J)J
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (JLjava/lang/Object;)Z
+	public static final fun equals-impl0 (JJ)Z
+	public final fun getLong ()J
+	public fun hashCode ()I
+	public static fun hashCode-impl (J)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (J)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()J
+}
+
+public final class dev/inmo/tgbotapi/types/RawChatId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/RawChatId$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-CjSOdp4 (Lkotlinx/serialization/encoding/Decoder;)J
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-tJfg6EE (Lkotlinx/serialization/encoding/Encoder;J)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/RawChatId$Companion {
+	public final fun getDefaultUserId-iyD94Bc ()J
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -19795,17 +19827,17 @@ public final class dev/inmo/tgbotapi/types/message/textsources/TextMentionTextSo
 }
 
 public final class dev/inmo/tgbotapi/types/message/textsources/TextMentionTextSourceKt {
-	public static final fun mention (JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention (JLjava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention (Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention (Ldev/inmo/tgbotapi/types/chat/User;Ljava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention (Ldev/inmo/tgbotapi/types/chat/User;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention (Ljava/lang/String;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
-	public static final fun mention (Ljava/util/List;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention (Ljava/util/List;Ldev/inmo/tgbotapi/types/chat/User;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention-WiG6Fm4 (Ljava/lang/String;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention-WiG6Fm4 (Ljava/util/List;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mention-tJfg6EE (Ljava/lang/String;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mention-tJfg6EE (Ljava/util/List;J)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mention-tafjJLY (JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
+	public static final fun mention-tafjJLY (JLjava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention-zv9neSE (JLjava/lang/String;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 	public static final fun mention-zv9neSE (JLjava/util/List;)Ldev/inmo/tgbotapi/types/message/textsources/TextMentionTextSource;
 }

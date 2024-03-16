@@ -31,9 +31,9 @@ inline fun mention(parts: TextSourcesList, userId: UserId) = mention(parts, Comm
 @Suppress("NOTHING_TO_INLINE")
 inline fun UserId.mention(parts: TextSourcesList) = mention(parts, this)
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(parts: TextSourcesList, id: Identifier) = mention(parts, UserId(id))
+inline fun mention(parts: TextSourcesList, id: RawChatId) = mention(parts, UserId(id))
 @Suppress("NOTHING_TO_INLINE")
-inline fun Identifier.mention(parts: TextSourcesList) = mention(parts, this)
+inline fun RawChatId.mention(parts: TextSourcesList) = mention(parts, this)
 @Suppress("NOTHING_TO_INLINE")
 inline fun mention(user: User, vararg parts: TextSource) = mention(
     textSourcesOrElseTextSource(parts.toList()) {
@@ -50,6 +50,6 @@ inline fun mention(text: String, userId: UserId) = mention(text, CommonUser(user
 @Suppress("NOTHING_TO_INLINE")
 inline fun UserId.mention(text: String) = mention(text, this)
 @Suppress("NOTHING_TO_INLINE")
-inline fun mention(text: String, id: Identifier) = mention(text, UserId(id))
+inline fun mention(text: String, id: RawChatId) = mention(text, UserId(id))
 @Suppress("NOTHING_TO_INLINE")
-inline fun Identifier.mention(text: String) = mention(text, this)
+inline fun RawChatId.mention(text: String) = mention(text, this)

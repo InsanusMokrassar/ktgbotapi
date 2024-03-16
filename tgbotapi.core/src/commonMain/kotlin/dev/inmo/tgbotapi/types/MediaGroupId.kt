@@ -7,7 +7,11 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class MediaGroupId(
     val string: String
-)
+) {
+    override fun toString(): String {
+        return string
+    }
+}
 
 @Deprecated("Renamed", ReplaceWith("MediaGroupId", "dev.inmo.tgbotapi.types.MediaGroupId"))
 typealias MediaGroupIdentifier = MediaGroupId
