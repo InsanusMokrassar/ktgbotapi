@@ -938,16 +938,16 @@ public final class dev/inmo/tgbotapi/requests/answers/AnswerCallbackQuery : dev/
 	public static final field Companion Ldev/inmo/tgbotapi/requests/answers/AnswerCallbackQuery$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-W_Rpwvk ()Ljava/lang/String;
+	public final fun component1-WfrJ78I ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/Boolean;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/Integer;
-	public final fun copy-DSWifT0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/requests/answers/AnswerCallbackQuery;
-	public static synthetic fun copy-DSWifT0$default (Ldev/inmo/tgbotapi/requests/answers/AnswerCallbackQuery;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/AnswerCallbackQuery;
+	public final fun copy-yuX4cWQ (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/requests/answers/AnswerCallbackQuery;
+	public static synthetic fun copy-yuX4cWQ$default (Ldev/inmo/tgbotapi/requests/answers/AnswerCallbackQuery;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/AnswerCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCachedTimeSeconds ()Ljava/lang/Integer;
-	public final fun getCallbackQueryId-W_Rpwvk ()Ljava/lang/String;
+	public final fun getCallbackQueryId-WfrJ78I ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public final fun getShowAlert ()Ljava/lang/Boolean;
@@ -7128,9 +7128,9 @@ public final class dev/inmo/tgbotapi/types/BotShortDescription$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/CallbackQueryIdentifier {
-	public static final field Companion Ldev/inmo/tgbotapi/types/CallbackQueryIdentifier$Companion;
-	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/CallbackQueryIdentifier;
+public final class dev/inmo/tgbotapi/types/CallbackQueryId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/CallbackQueryId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/CallbackQueryId;
 	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
@@ -7143,18 +7143,18 @@ public final class dev/inmo/tgbotapi/types/CallbackQueryIdentifier {
 	public final synthetic fun unbox-impl ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/types/CallbackQueryIdentifier$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/CallbackQueryIdentifier$$serializer;
+public final class dev/inmo/tgbotapi/types/CallbackQueryId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/CallbackQueryId$$serializer;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize-bLVZuG0 (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun deserialize-hBO2T7k (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize-hp_ZFtE (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun serialize-qx7fctY (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/CallbackQueryIdentifier$Companion {
+public final class dev/inmo/tgbotapi/types/CallbackQueryId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9843,9 +9843,9 @@ public final class dev/inmo/tgbotapi/types/LoginURL$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/MediaGroupIdentifier {
-	public static final field Companion Ldev/inmo/tgbotapi/types/MediaGroupIdentifier$Companion;
-	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/MediaGroupIdentifier;
+public final class dev/inmo/tgbotapi/types/MediaGroupId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/MediaGroupId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/MediaGroupId;
 	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
@@ -9858,18 +9858,18 @@ public final class dev/inmo/tgbotapi/types/MediaGroupIdentifier {
 	public final synthetic fun unbox-impl ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/types/MediaGroupIdentifier$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/MediaGroupIdentifier$$serializer;
+public final class dev/inmo/tgbotapi/types/MediaGroupId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/MediaGroupId$$serializer;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize-aJNhvPs (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun deserialize-2TVM87E (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize-L3vfk7A (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun serialize-AblidI4 (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/MediaGroupIdentifier$Companion {
+public final class dev/inmo/tgbotapi/types/MediaGroupId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -16522,7 +16522,7 @@ public final class dev/inmo/tgbotapi/types/message/AnonymousForumContentMessageI
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
 	public final fun component12 ()Ljava/lang/String;
-	public final fun component13-6ceS_JY ()Ljava/lang/String;
+	public final fun component13-CsYhHCU ()Ljava/lang/String;
 	public final fun component2-APLFQys ()J
 	public final fun component3-hDmiKeI ()J
 	public final fun component4-Wg0KzQs ()D
@@ -16531,8 +16531,8 @@ public final class dev/inmo/tgbotapi/types/message/AnonymousForumContentMessageI
 	public final fun component7 ()Z
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-hpNURtQ (Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/AnonymousForumContentMessageImpl;
-	public static synthetic fun copy-hpNURtQ$default (Ldev/inmo/tgbotapi/types/message/AnonymousForumContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/AnonymousForumContentMessageImpl;
+	public final fun copy-xJSvflQ (Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/AnonymousForumContentMessageImpl;
+	public static synthetic fun copy-xJSvflQ$default (Ldev/inmo/tgbotapi/types/message/AnonymousForumContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/AnonymousForumContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAuthorSignature ()Ljava/lang/String;
 	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
@@ -16546,7 +16546,7 @@ public final class dev/inmo/tgbotapi/types/message/AnonymousForumContentMessageI
 	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public fun getForwardable ()Z
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -16567,7 +16567,7 @@ public final class dev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageI
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
 	public final fun component11 ()Ljava/lang/String;
-	public final fun component12-6ceS_JY ()Ljava/lang/String;
+	public final fun component12-CsYhHCU ()Ljava/lang/String;
 	public final fun component2-APLFQys ()J
 	public final fun component3-Wg0KzQs ()D
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
@@ -16576,8 +16576,8 @@ public final class dev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageI
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
-	public final fun copy-YFjfKao (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageImpl;
-	public static synthetic fun copy-YFjfKao$default (Ldev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageImpl;
+	public final fun copy-SFnDJMY (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageImpl;
+	public static synthetic fun copy-SFnDJMY$default (Ldev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAuthorSignature ()Ljava/lang/String;
 	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
@@ -16590,7 +16590,7 @@ public final class dev/inmo/tgbotapi/types/message/AnonymousGroupContentMessageI
 	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public fun getForwardable ()Z
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -16609,7 +16609,7 @@ public final class dev/inmo/tgbotapi/types/message/ChannelContentMessageImpl : d
 	public final fun component1-APLFQys ()J
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
 	public final fun component11 ()Ljava/lang/String;
-	public final fun component12-6ceS_JY ()Ljava/lang/String;
+	public final fun component12-CsYhHCU ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public final fun component4-Wg0KzQs ()D
@@ -16618,8 +16618,8 @@ public final class dev/inmo/tgbotapi/types/message/ChannelContentMessageImpl : d
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-JaiU5GA (JLdev/inmo/tgbotapi/types/chat/PreviewChannelChat;Ldev/inmo/tgbotapi/types/message/content/MessageContent;DLkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/ChannelContentMessageImpl;
-	public static synthetic fun copy-JaiU5GA$default (Ldev/inmo/tgbotapi/types/message/ChannelContentMessageImpl;JLdev/inmo/tgbotapi/types/chat/PreviewChannelChat;Ldev/inmo/tgbotapi/types/message/content/MessageContent;DLkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChannelContentMessageImpl;
+	public final fun copy-AHAidlk (JLdev/inmo/tgbotapi/types/chat/PreviewChannelChat;Ldev/inmo/tgbotapi/types/message/content/MessageContent;DLkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/ChannelContentMessageImpl;
+	public static synthetic fun copy-AHAidlk$default (Ldev/inmo/tgbotapi/types/message/ChannelContentMessageImpl;JLdev/inmo/tgbotapi/types/chat/PreviewChannelChat;Ldev/inmo/tgbotapi/types/message/content/MessageContent;DLkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ChannelContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAuthorSignature ()Ljava/lang/String;
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
@@ -16631,7 +16631,7 @@ public final class dev/inmo/tgbotapi/types/message/ChannelContentMessageImpl : d
 	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public fun getForwardable ()Z
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -17160,7 +17160,7 @@ public final class dev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public final fun component12 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
-	public final fun component13-6ceS_JY ()Ljava/lang/String;
+	public final fun component13-CsYhHCU ()Ljava/lang/String;
 	public final fun component14 ()Ljava/lang/Integer;
 	public final fun component2-APLFQys ()J
 	public final fun component3-hDmiKeI ()J
@@ -17170,8 +17170,8 @@ public final class dev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl
 	public final fun component7-Ivn3T5g ()Lkorlibs/time/DateTime;
 	public final fun component8 ()Z
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
-	public final fun copy-gAL7e_I (Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl;
-	public static synthetic fun copy-gAL7e_I$default (Ldev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl;
+	public final fun copy-iWWotx0 (Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl;
+	public static synthetic fun copy-iWWotx0$default (Ldev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;JJLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;
@@ -17185,7 +17185,7 @@ public final class dev/inmo/tgbotapi/types/message/CommonForumContentMessageImpl
 	public fun getForwardable ()Z
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -17206,7 +17206,7 @@ public final class dev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
-	public final fun component12-6ceS_JY ()Ljava/lang/String;
+	public final fun component12-CsYhHCU ()Ljava/lang/String;
 	public final fun component13 ()Ljava/lang/Integer;
 	public final fun component2-APLFQys ()J
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/chat/User;
@@ -17216,8 +17216,8 @@ public final class dev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl
 	public final fun component7 ()Z
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-d7gi0iU (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl;
-	public static synthetic fun copy-d7gi0iU$default (Ldev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl;
+	public final fun copy-sqH0VUE (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;)Ldev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl;
+	public static synthetic fun copy-sqH0VUE$default (Ldev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;JLdev/inmo/tgbotapi/types/chat/User;DLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;
@@ -17230,7 +17230,7 @@ public final class dev/inmo/tgbotapi/types/message/CommonGroupContentMessageImpl
 	public fun getForwardable ()Z
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -17297,7 +17297,7 @@ public final class dev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupCont
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
 	public final fun component12 ()Ljava/lang/String;
-	public final fun component13-6ceS_JY ()Ljava/lang/String;
+	public final fun component13-CsYhHCU ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 	public final fun component3-APLFQys ()J
 	public final fun component4-Wg0KzQs ()D
@@ -17306,8 +17306,8 @@ public final class dev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupCont
 	public final fun component7 ()Z
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-uz9LK_Q (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupContentMessageImpl;
-	public static synthetic fun copy-uz9LK_Q$default (Ldev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupContentMessageImpl;
+	public final fun copy-cjOPbrw (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupContentMessageImpl;
+	public static synthetic fun copy-cjOPbrw$default (Ldev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAuthorSignature ()Ljava/lang/String;
 	public fun getChannel ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
@@ -17321,7 +17321,7 @@ public final class dev/inmo/tgbotapi/types/message/ConnectedFromChannelGroupCont
 	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public fun getForwardable ()Z
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -17432,7 +17432,7 @@ public final class dev/inmo/tgbotapi/types/message/FromChannelForumContentMessag
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public final fun component12 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
 	public final fun component13 ()Ljava/lang/String;
-	public final fun component14-6ceS_JY ()Ljava/lang/String;
+	public final fun component14-CsYhHCU ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 	public final fun component3-APLFQys ()J
 	public final fun component4-hDmiKeI ()J
@@ -17441,8 +17441,8 @@ public final class dev/inmo/tgbotapi/types/message/FromChannelForumContentMessag
 	public final fun component7-Ivn3T5g ()Lkorlibs/time/DateTime;
 	public final fun component8 ()Z
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
-	public final fun copy-xXw-7js (Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/FromChannelForumContentMessageImpl;
-	public static synthetic fun copy-xXw-7js$default (Ldev/inmo/tgbotapi/types/message/FromChannelForumContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/FromChannelForumContentMessageImpl;
+	public final fun copy-9syGhek (Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/FromChannelForumContentMessageImpl;
+	public static synthetic fun copy-9syGhek$default (Ldev/inmo/tgbotapi/types/message/FromChannelForumContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewForumChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JJDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/FromChannelForumContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAuthorSignature ()Ljava/lang/String;
 	public fun getChannel ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
@@ -17457,7 +17457,7 @@ public final class dev/inmo/tgbotapi/types/message/FromChannelForumContentMessag
 	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public fun getForwardable ()Z
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -17729,7 +17729,7 @@ public final class dev/inmo/tgbotapi/types/message/PrivateContentMessageImpl : d
 	public final fun component1-APLFQys ()J
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
-	public final fun component12-6ceS_JY ()Ljava/lang/String;
+	public final fun component12-CsYhHCU ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/User;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
@@ -17738,8 +17738,8 @@ public final class dev/inmo/tgbotapi/types/message/PrivateContentMessageImpl : d
 	public final fun component7 ()Z
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
-	public final fun copy-8Vv6OpE (JLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;Ldev/inmo/tgbotapi/types/message/content/MessageContent;DLkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/PrivateContentMessageImpl;
-	public static synthetic fun copy-8Vv6OpE$default (Ldev/inmo/tgbotapi/types/message/PrivateContentMessageImpl;JLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;Ldev/inmo/tgbotapi/types/message/content/MessageContent;DLkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/PrivateContentMessageImpl;
+	public final fun copy-w1GsA2Q (JLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;Ldev/inmo/tgbotapi/types/message/content/MessageContent;DLkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/PrivateContentMessageImpl;
+	public static synthetic fun copy-w1GsA2Q$default (Ldev/inmo/tgbotapi/types/message/PrivateContentMessageImpl;JLdev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;Ldev/inmo/tgbotapi/types/message/content/MessageContent;DLkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/message/MessageOrigin;Ldev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/PrivateContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewPrivateChat;
@@ -17751,7 +17751,7 @@ public final class dev/inmo/tgbotapi/types/message/PrivateContentMessageImpl : d
 	public fun getForwardable ()Z
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -17790,7 +17790,7 @@ public final class dev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupCo
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/content/MessageContent;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
 	public final fun component12 ()Ljava/lang/String;
-	public final fun component13-6ceS_JY ()Ljava/lang/String;
+	public final fun component13-CsYhHCU ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 	public final fun component3-APLFQys ()J
 	public final fun component4-Wg0KzQs ()D
@@ -17799,8 +17799,8 @@ public final class dev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupCo
 	public final fun component7 ()Z
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/ReplyInfo;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-uz9LK_Q (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupContentMessageImpl;
-	public static synthetic fun copy-uz9LK_Q$default (Ldev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupContentMessageImpl;
+	public final fun copy-cjOPbrw (Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupContentMessageImpl;
+	public static synthetic fun copy-cjOPbrw$default (Ldev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupContentMessageImpl;Ldev/inmo/tgbotapi/types/chat/PreviewGroupChat;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;JDLdev/inmo/tgbotapi/types/message/MessageOrigin;Lkorlibs/time/DateTime;ZLdev/inmo/tgbotapi/types/ReplyInfo;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/message/content/MessageContent;Ldev/inmo/tgbotapi/types/chat/CommonBot;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupContentMessageImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAuthorSignature ()Ljava/lang/String;
 	public fun getChannel ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
@@ -17814,7 +17814,7 @@ public final class dev/inmo/tgbotapi/types/message/UnconnectedFromChannelGroupCo
 	public fun getForwardOrigin ()Ldev/inmo/tgbotapi/types/message/MessageOrigin;
 	public fun getForwardable ()Z
 	public fun getHasProtectedContent ()Z
-	public fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 	public fun getMessageId-APLFQys ()J
 	public fun getMetaInfo-fV8YnZ8 ()Lkotlin/Triple;
 	public fun getReplyInfo ()Ldev/inmo/tgbotapi/types/ReplyInfo;
@@ -18100,7 +18100,7 @@ public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/Possib
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/PossiblyMediaGroupMessage : dev/inmo/tgbotapi/types/message/abstracts/ContentMessage {
-	public abstract fun getMediaGroupId-6ceS_JY ()Ljava/lang/String;
+	public abstract fun getMediaGroupId-CsYhHCU ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/PossiblyMediaGroupMessage$DefaultImpls {
@@ -18630,7 +18630,7 @@ public final class dev/inmo/tgbotapi/types/message/content/MediaContent$DefaultI
 
 public abstract interface class dev/inmo/tgbotapi/types/message/content/MediaGroupCollectionContent : dev/inmo/tgbotapi/types/message/content/TextedMediaContent {
 	public abstract fun getGroup ()Ljava/util/List;
-	public abstract fun getMediaGroupId-jxpJLXU ()Ljava/lang/String;
+	public abstract fun getMediaGroupId-Aktaoms ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/message/content/MediaGroupCollectionContent$DefaultImpls {
@@ -18673,16 +18673,16 @@ public final class dev/inmo/tgbotapi/types/message/content/MediaGroupContent : d
 	public synthetic fun <init> (Ljava/util/List;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun asTelegramMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
 	public final fun component1 ()Ljava/util/List;
-	public final fun component2-jxpJLXU ()Ljava/lang/String;
-	public final fun copy-L3vfk7A (Ljava/util/List;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/content/MediaGroupContent;
-	public static synthetic fun copy-L3vfk7A$default (Ldev/inmo/tgbotapi/types/message/content/MediaGroupContent;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/content/MediaGroupContent;
+	public final fun component2-Aktaoms ()Ljava/lang/String;
+	public final fun copy-AblidI4 (Ljava/util/List;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/message/content/MediaGroupContent;
+	public static synthetic fun copy-AblidI4$default (Ldev/inmo/tgbotapi/types/message/content/MediaGroupContent;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/message/content/MediaGroupContent;
 	public fun createResend-FuL-Z8w (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;ZZLdev/inmo/tgbotapi/types/MessageId;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 	public fun createResend-S8nSyAg (Ldev/inmo/tgbotapi/types/ChatIdentifier;Ldev/inmo/tgbotapi/types/MessageThreadId;ZZLdev/inmo/tgbotapi/types/ReplyParameters;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getGroup ()Ljava/util/List;
 	public final fun getMainContent ()Ldev/inmo/tgbotapi/types/message/content/MediaGroupPartContent;
 	public fun getMedia ()Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;
-	public fun getMediaGroupId-jxpJLXU ()Ljava/lang/String;
+	public fun getMediaGroupId-Aktaoms ()Ljava/lang/String;
 	public fun getQuote ()Ldev/inmo/tgbotapi/types/TextQuote;
 	public fun getText ()Ljava/lang/String;
 	public fun getTextSources ()Ljava/util/List;
@@ -22135,7 +22135,7 @@ public final class dev/inmo/tgbotapi/types/queries/callback/AbstractMessageCallb
 public abstract interface class dev/inmo/tgbotapi/types/queries/callback/CallbackQuery : dev/inmo/tgbotapi/abstracts/FromUser {
 	public abstract fun getChatInstance ()Ljava/lang/String;
 	public abstract fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
-	public abstract fun getId-W_Rpwvk ()Ljava/lang/String;
+	public abstract fun getId-WfrJ78I ()Ljava/lang/String;
 	public abstract fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 }
 
@@ -22169,19 +22169,19 @@ public final class dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageC
 
 public final class dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageDataCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/DataCallbackQuery, dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageCallbackQuery {
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-W_Rpwvk ()Ljava/lang/String;
+	public final fun component1-WfrJ78I ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-DSWifT0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageDataCallbackQuery;
-	public static synthetic fun copy-DSWifT0$default (Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageDataCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageDataCallbackQuery;
+	public final fun copy-yuX4cWQ (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageDataCallbackQuery;
+	public static synthetic fun copy-yuX4cWQ$default (Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageDataCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageDataCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getData ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public fun getId-W_Rpwvk ()Ljava/lang/String;
+	public fun getId-WfrJ78I ()Ljava/lang/String;
 	public fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;
 	public synthetic fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
@@ -22192,19 +22192,19 @@ public final class dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageD
 
 public final class dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageGameShortNameCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/GameShortNameCallbackQuery, dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageCallbackQuery {
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-W_Rpwvk ()Ljava/lang/String;
+	public final fun component1-WfrJ78I ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-DSWifT0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageGameShortNameCallbackQuery;
-	public static synthetic fun copy-DSWifT0$default (Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageGameShortNameCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageGameShortNameCallbackQuery;
+	public final fun copy-yuX4cWQ (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageGameShortNameCallbackQuery;
+	public static synthetic fun copy-yuX4cWQ$default (Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageGameShortNameCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageGameShortNameCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getGameShortName ()Ljava/lang/String;
-	public fun getId-W_Rpwvk ()Ljava/lang/String;
+	public fun getId-WfrJ78I ()Ljava/lang/String;
 	public fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/InaccessibleMessage;
 	public synthetic fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
@@ -22224,19 +22224,19 @@ public final class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdCallb
 public final class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/DataCallbackQuery, dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdCallbackQuery {
 	public static final field Companion Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-W_Rpwvk ()Ljava/lang/String;
+	public final fun component1-WfrJ78I ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4-u1p_GH0 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-d3gupTw (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;
-	public static synthetic fun copy-d3gupTw$default (Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;
+	public final fun copy-gwLMerU (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;
+	public static synthetic fun copy-gwLMerU$default (Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getData ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public fun getId-W_Rpwvk ()Ljava/lang/String;
+	public fun getId-WfrJ78I ()Ljava/lang/String;
 	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
@@ -22261,19 +22261,19 @@ public final class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataC
 
 public final class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/GameShortNameCallbackQuery, dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdCallbackQuery {
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-W_Rpwvk ()Ljava/lang/String;
+	public final fun component1-WfrJ78I ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4-u1p_GH0 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-d3gupTw (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;
-	public static synthetic fun copy-d3gupTw$default (Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;
+	public final fun copy-gwLMerU (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;
+	public static synthetic fun copy-gwLMerU$default (Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getGameShortName ()Ljava/lang/String;
-	public fun getId-W_Rpwvk ()Ljava/lang/String;
+	public fun getId-WfrJ78I ()Ljava/lang/String;
 	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
@@ -22291,19 +22291,19 @@ public final class dev/inmo/tgbotapi/types/queries/callback/MessageCallbackQuery
 
 public final class dev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/DataCallbackQuery, dev/inmo/tgbotapi/types/queries/callback/MessageCallbackQuery {
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-W_Rpwvk ()Ljava/lang/String;
+	public final fun component1-WfrJ78I ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-DSWifT0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
-	public static synthetic fun copy-DSWifT0$default (Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
+	public final fun copy-yuX4cWQ (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
+	public static synthetic fun copy-yuX4cWQ$default (Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getData ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public fun getId-W_Rpwvk ()Ljava/lang/String;
+	public fun getId-WfrJ78I ()Ljava/lang/String;
 	public fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
 	public synthetic fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
@@ -22314,19 +22314,19 @@ public final class dev/inmo/tgbotapi/types/queries/callback/MessageDataCallbackQ
 
 public final class dev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/GameShortNameCallbackQuery, dev/inmo/tgbotapi/types/queries/callback/MessageCallbackQuery {
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-W_Rpwvk ()Ljava/lang/String;
+	public final fun component1-WfrJ78I ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-DSWifT0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
-	public static synthetic fun copy-DSWifT0$default (Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
+	public final fun copy-yuX4cWQ (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
+	public static synthetic fun copy-yuX4cWQ$default (Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/MessageGameShortNameCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getGameShortName ()Ljava/lang/String;
-	public fun getId-W_Rpwvk ()Ljava/lang/String;
+	public fun getId-WfrJ78I ()Ljava/lang/String;
 	public fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;
 	public synthetic fun getMessage ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
@@ -22337,17 +22337,17 @@ public final class dev/inmo/tgbotapi/types/queries/callback/MessageGameShortName
 
 public final class dev/inmo/tgbotapi/types/queries/callback/UnknownCallbackQueryType : dev/inmo/tgbotapi/types/queries/callback/CallbackQuery {
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-W_Rpwvk ()Ljava/lang/String;
+	public final fun component1-WfrJ78I ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
-	public final fun copy-JlBCv9g (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/UnknownCallbackQueryType;
-	public static synthetic fun copy-JlBCv9g$default (Ldev/inmo/tgbotapi/types/queries/callback/UnknownCallbackQueryType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/UnknownCallbackQueryType;
+	public final fun copy-Ii_Ke28 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/UnknownCallbackQueryType;
+	public static synthetic fun copy-Ii_Ke28$default (Ldev/inmo/tgbotapi/types/queries/callback/UnknownCallbackQueryType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/UnknownCallbackQueryType;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public fun getId-W_Rpwvk ()Ljava/lang/String;
+	public fun getId-WfrJ78I ()Ljava/lang/String;
 	public final fun getRaw ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;

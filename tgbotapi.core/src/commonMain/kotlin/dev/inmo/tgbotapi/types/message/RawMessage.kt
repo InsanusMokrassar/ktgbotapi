@@ -60,7 +60,7 @@ internal data class RawMessage(
     private val via_bot: CommonBot? = null,
     private val edit_date: TelegramDate? = null,
     private val has_protected_content: Boolean? = null,
-    private val media_group_id: MediaGroupIdentifier? = null,
+    private val media_group_id: MediaGroupId? = null,
     private val author_signature: AuthorSignature? = null,
     private val text: String? = null,
     private val entities: RawMessageEntities? = null,

@@ -3,10 +3,10 @@ package dev.inmo.tgbotapi.extensions.api.answers
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.answers.AnswerCallbackQuery
 import dev.inmo.tgbotapi.types.queries.callback.CallbackQuery
-import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
+import dev.inmo.tgbotapi.types.CallbackQueryId
 
 suspend fun TelegramBot.answerCallbackQuery(
-    callbackQueryId: CallbackQueryIdentifier,
+    callbackQueryId: CallbackQueryId,
     text: String? = null,
     showAlert: Boolean? = null,
     url: String? = null,

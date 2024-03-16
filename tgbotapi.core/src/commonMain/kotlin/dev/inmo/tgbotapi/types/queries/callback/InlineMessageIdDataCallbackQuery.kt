@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class InlineMessageIdDataCallbackQuery(
-    override val id: CallbackQueryIdentifier,
+    override val id: CallbackQueryId,
     override val from: CommonUser,
     override val chatInstance: String,
     override val inlineMessageId: InlineMessageId,

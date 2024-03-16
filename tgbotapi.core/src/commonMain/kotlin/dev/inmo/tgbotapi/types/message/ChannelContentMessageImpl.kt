@@ -20,7 +20,7 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
-    override val mediaGroupId: MediaGroupIdentifier?,
+    override val mediaGroupId: MediaGroupId?,
 ) : ChannelContentMessage<T> {
     constructor(
         messageId: MessageId,
@@ -34,7 +34,7 @@ data class ChannelContentMessageImpl<T: MessageContent>(
         replyMarkup: InlineKeyboardMarkup?,
         senderBot: CommonBot?,
         authorSignature: AuthorSignature?,
-        mediaGroupId: MediaGroupIdentifier?,
+        mediaGroupId: MediaGroupId?,
     ) : this(
         messageId, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, authorSignature, mediaGroupId
     )

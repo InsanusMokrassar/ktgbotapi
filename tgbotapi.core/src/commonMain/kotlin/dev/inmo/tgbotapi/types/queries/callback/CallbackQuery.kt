@@ -1,12 +1,11 @@
 package dev.inmo.tgbotapi.types.queries.callback
 
 import dev.inmo.tgbotapi.abstracts.FromUser
-import dev.inmo.tgbotapi.types.CallbackQueryIdentifier
+import dev.inmo.tgbotapi.types.CallbackQueryId
 import dev.inmo.tgbotapi.types.chat.CommonUser
-import dev.inmo.tgbotapi.types.chat.User
 
 sealed interface CallbackQuery : FromUser {
-    val id: CallbackQueryIdentifier
+    val id: CallbackQueryId
     val chatInstance: String
     override val from: CommonUser
     override val user: CommonUser
@@ -14,7 +13,7 @@ sealed interface CallbackQuery : FromUser {
 }
 
 data class UnknownCallbackQueryType(
-    override val id: CallbackQueryIdentifier,
+    override val id: CallbackQueryId,
     override val from: CommonUser,
     override val chatInstance: String,
     val raw: String

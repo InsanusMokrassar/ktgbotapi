@@ -1304,7 +1304,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_f
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdCallbackQueryMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdCallbackQueryMarkerFactory;
 	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun invoke-8RLmks4 (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun invoke-gcdXFtE (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdChatBoostRemovedMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {

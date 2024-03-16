@@ -9,7 +9,7 @@ import kotlinx.serialization.builtins.serializer
 @Serializable
 data class AnswerCallbackQuery(
     @SerialName(callbackQueryIdField)
-    val callbackQueryId: CallbackQueryIdentifier,
+    val callbackQueryId: CallbackQueryId,
     @SerialName(textField)
     val text: String? = null,
     @SerialName(showAlertField)

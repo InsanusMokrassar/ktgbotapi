@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class RawCallbackQuery(
     @SerialName(idField)
-    val id: CallbackQueryIdentifier,
+    val id: CallbackQueryId,
     @SerialName(fromField)
     val from: CommonUser,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)

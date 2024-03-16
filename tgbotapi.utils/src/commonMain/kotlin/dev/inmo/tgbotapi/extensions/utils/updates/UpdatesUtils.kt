@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.updates
 
 import dev.inmo.tgbotapi.extensions.utils.withContentOrNull
-import dev.inmo.tgbotapi.types.MediaGroupIdentifier
+import dev.inmo.tgbotapi.types.MediaGroupId
 import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
@@ -26,7 +26,7 @@ fun List<Update>.lastUpdateIdentifier(): UpdateId? {
 @OptIn(RiskFeature::class)
 fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
-    val mediaGroups = mutableMapOf<MediaGroupIdentifier, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
+    val mediaGroups = mutableMapOf<MediaGroupId, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
 
     for (update in this) {
         val message = (update.data as? PossiblySentViaBotCommonMessage<*>) ?.withContentOrNull<MediaGroupPartContent>()

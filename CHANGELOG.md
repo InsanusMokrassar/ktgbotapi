@@ -8,8 +8,8 @@
   * `MessageId` now is `value class`. `MessageIdentifier` become deprecated
   * `MessageThreadId` now is `value class`
   * `InlineQueryIdentifier` now is `value class`
-  * `MediaGroupIdentifier` now is `value class`
-  * `CallbackQueryIdentifier` now is `value class`
+  * `MediaGroupIdentifier` has been renamed to `MediaGroupId` and now is `value class`
+  * `CallbackQueryIdentifier` has been renamed to `CallbackQueryId` and now is `value class`
   * `WebAppQueryId` now is `value class`
   * `PreCheckoutQueryId` now is `value class`
   * `FileUniqueId` has been renamed to `TgFileUniqueId` and now is `value class`

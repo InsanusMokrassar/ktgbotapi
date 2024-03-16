@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MediaGroupContent<T : MediaGroupPartContent>(
     override val group: List<MediaGroupCollectionContent.PartWrapper<T>>,
-    override val mediaGroupId: MediaGroupIdentifier,
+    override val mediaGroupId: MediaGroupId,
 ) : MediaGroupCollectionContent<T>, WithOptionalQuoteInfo {
     val mainContent: MediaGroupPartContent
         get() = group.first().content

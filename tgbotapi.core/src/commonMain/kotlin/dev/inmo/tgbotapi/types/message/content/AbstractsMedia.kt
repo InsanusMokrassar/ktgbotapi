@@ -1,13 +1,11 @@
 package dev.inmo.tgbotapi.types.message.content
 
-import dev.inmo.tgbotapi.abstracts.TextedInput
-import dev.inmo.tgbotapi.types.MediaGroupIdentifier
+import dev.inmo.tgbotapi.types.MediaGroupId
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.files.AudioFile
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.media.*
-import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import kotlinx.serialization.Serializable
 
@@ -33,7 +31,7 @@ sealed interface MediaGroupCollectionContent<T : MediaGroupPartContent> : Texted
         val sourceMessage: PossiblySentViaBotCommonMessage<T>
     )
     val group: List<PartWrapper<T>>
-    val mediaGroupId: MediaGroupIdentifier
+    val mediaGroupId: MediaGroupId
 }
 
 sealed interface MediaGroupPartContent : TextedMediaContent {
