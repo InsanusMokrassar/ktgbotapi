@@ -24,7 +24,7 @@ import kotlinx.serialization.json.jsonObject
 @Serializable
 internal data class RawUpdate constructor(
     @SerialName(updateIdField)
-    val updateId: UpdateIdentifier,
+    val updateId: UpdateId,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val edited_message: CommonMessage<*>? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)

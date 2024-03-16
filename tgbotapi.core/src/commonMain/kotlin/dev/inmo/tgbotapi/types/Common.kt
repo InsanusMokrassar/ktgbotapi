@@ -11,7 +11,6 @@ import kotlin.jvm.JvmInline
 
 typealias Identifier = Long
 typealias MessageIdentifier = MessageId
-typealias UpdateIdentifier = Long
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature

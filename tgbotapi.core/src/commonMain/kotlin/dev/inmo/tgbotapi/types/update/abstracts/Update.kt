@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.update.abstracts
 
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
-import dev.inmo.tgbotapi.types.UpdateIdentifier
+import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.update.RawUpdate
 import dev.inmo.tgbotapi.types.updateIdField
 import dev.inmo.tgbotapi.utils.RiskFeature
@@ -17,12 +17,12 @@ import kotlinx.serialization.json.longOrNull
 
 @ClassCastsIncluded
 interface Update {
-    val updateId: UpdateIdentifier
+    val updateId: UpdateId
     val data: Any
 }
 
 data class UnknownUpdate(
-    override val updateId: UpdateIdentifier,
+    override val updateId: UpdateId,
     override val data: JsonElement,
     val throwable: Throwable? = null
 ) : Update {
@@ -60,7 +60,7 @@ object UpdateDeserializationStrategy : DeserializationStrategy<Update> {
             )
         }.getOrElse {
             UnknownUpdate(
-                (asJson as? JsonObject) ?.get(updateIdField) ?.jsonPrimitive ?.longOrNull ?: -1L,
+                UpdateId((asJson as? JsonObject) ?.get(updateIdField) ?.jsonPrimitive ?.longOrNull ?: -1L),
                 asJson,
                 it
             )

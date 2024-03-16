@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 suspend fun TelegramBot.getUpdates(
-    offset: UpdateIdentifier? = null,
+    offset: UpdateId? = null,
     limit: Int = getUpdatesLimit.last,
     timeout: Seconds? = null,
     allowed_updates: List<String>? = ALL_UPDATES_LIST

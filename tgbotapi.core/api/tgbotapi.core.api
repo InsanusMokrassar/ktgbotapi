@@ -699,19 +699,18 @@ public final class dev/inmo/tgbotapi/requests/ForwardMessagesKt {
 
 public final class dev/inmo/tgbotapi/requests/GetUpdates : dev/inmo/tgbotapi/requests/GetUpdatesRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/GetUpdates$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/lang/Long;ILjava/lang/Integer;Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/lang/Long;ILjava/lang/Integer;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/Long;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-FG9WeOs ()Ldev/inmo/tgbotapi/types/UpdateId;
 	public final fun component2 ()I
 	public final fun component3 ()Ljava/lang/Integer;
 	public final fun component4 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/Long;ILjava/lang/Integer;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/GetUpdates;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/GetUpdates;Ljava/lang/Long;ILjava/lang/Integer;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/GetUpdates;
+	public final fun copy-2y9cPAk (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/GetUpdates;
+	public static synthetic fun copy-2y9cPAk$default (Ldev/inmo/tgbotapi/requests/GetUpdates;Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/GetUpdates;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowed_updates ()Ljava/util/List;
 	public fun getLimit ()I
-	public fun getOffset ()Ljava/lang/Long;
+	public fun getOffset-FG9WeOs ()Ldev/inmo/tgbotapi/types/UpdateId;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun getTimeout ()Ljava/lang/Integer;
@@ -737,19 +736,18 @@ public final class dev/inmo/tgbotapi/requests/GetUpdates$Companion {
 
 public final class dev/inmo/tgbotapi/requests/GetUpdatesRaw : dev/inmo/tgbotapi/requests/GetUpdatesRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/GetUpdatesRaw$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/lang/Long;ILjava/lang/Integer;Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/lang/Long;ILjava/lang/Integer;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/Long;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-FG9WeOs ()Ldev/inmo/tgbotapi/types/UpdateId;
 	public final fun component2 ()I
 	public final fun component3 ()Ljava/lang/Integer;
 	public final fun component4 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/Long;ILjava/lang/Integer;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/GetUpdatesRaw;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/GetUpdatesRaw;Ljava/lang/Long;ILjava/lang/Integer;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/GetUpdatesRaw;
+	public final fun copy-2y9cPAk (Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/GetUpdatesRaw;
+	public static synthetic fun copy-2y9cPAk$default (Ldev/inmo/tgbotapi/requests/GetUpdatesRaw;Ldev/inmo/tgbotapi/types/UpdateId;ILjava/lang/Integer;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/GetUpdatesRaw;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAllowed_updates ()Ljava/util/List;
 	public fun getLimit ()I
-	public fun getOffset ()Ljava/lang/Long;
+	public fun getOffset-FG9WeOs ()Ldev/inmo/tgbotapi/types/UpdateId;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun getTimeout ()Ljava/lang/Integer;
@@ -776,7 +774,7 @@ public final class dev/inmo/tgbotapi/requests/GetUpdatesRaw$Companion {
 public abstract interface class dev/inmo/tgbotapi/requests/GetUpdatesRequest : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public abstract fun getAllowed_updates ()Ljava/util/List;
 	public abstract fun getLimit ()I
-	public abstract fun getOffset ()Ljava/lang/Long;
+	public abstract fun getOffset-FG9WeOs ()Ldev/inmo/tgbotapi/types/UpdateId;
 	public abstract fun getTimeout ()Ljava/lang/Integer;
 	public abstract fun method ()Ljava/lang/String;
 }
@@ -10661,6 +10659,41 @@ public final class dev/inmo/tgbotapi/types/TgFileUniqueId$$serializer : kotlinx/
 }
 
 public final class dev/inmo/tgbotapi/types/TgFileUniqueId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/UpdateId : java/lang/Comparable {
+	public static final field Companion Ldev/inmo/tgbotapi/types/UpdateId$Companion;
+	public static final synthetic fun box-impl (J)Ldev/inmo/tgbotapi/types/UpdateId;
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public fun compareTo-SlbwuWs (J)I
+	public static fun compareTo-SlbwuWs (JJ)I
+	public static fun constructor-impl (J)J
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (JLjava/lang/Object;)Z
+	public static final fun equals-impl0 (JJ)Z
+	public final fun getLong ()J
+	public fun hashCode ()I
+	public static fun hashCode-impl (J)I
+	public static final fun minus-ixa4S5U (JJ)J
+	public static final fun plus-ixa4S5U (JJ)J
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (J)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()J
+}
+
+public final class dev/inmo/tgbotapi/types/UpdateId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/UpdateId$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-ixa4S5U (Lkotlinx/serialization/encoding/Decoder;)J
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-bcZmaVM (Lkotlinx/serialization/encoding/Encoder;J)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/UpdateId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -23055,45 +23088,45 @@ public final class dev/inmo/tgbotapi/types/stories/Story$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/update/CallbackQueryUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLdev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/queries/callback/CallbackQuery;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;
-	public final fun copy (JLdev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/update/CallbackQueryUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/CallbackQueryUpdate;JLdev/inmo/tgbotapi/types/queries/callback/CallbackQuery;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/CallbackQueryUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/update/CallbackQueryUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/CallbackQueryUpdate;JLdev/inmo/tgbotapi/types/queries/callback/CallbackQuery;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/CallbackQueryUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/ChannelPostUpdate : dev/inmo/tgbotapi/types/update/abstracts/BaseSentMessageUpdate {
-	public fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
-	public final fun copy (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)Ldev/inmo/tgbotapi/types/update/ChannelPostUpdate;
 	public fun copy (Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)Ldev/inmo/tgbotapi/types/update/abstracts/BaseSentMessageUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/ChannelPostUpdate;JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChannelPostUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)Ldev/inmo/tgbotapi/types/update/ChannelPostUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ChannelPostUpdate;JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChannelPostUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
 	public static final field Companion Ldev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate$Companion;
-	public fun <init> (JLdev/inmo/tgbotapi/types/boosts/ChatBoostRemoved;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/boosts/ChatBoostRemoved;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/boosts/ChatBoostRemoved;
-	public final fun copy (JLdev/inmo/tgbotapi/types/boosts/ChatBoostRemoved;)Ldev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate;JLdev/inmo/tgbotapi/types/boosts/ChatBoostRemoved;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/boosts/ChatBoostRemoved;)Ldev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate;JLdev/inmo/tgbotapi/types/boosts/ChatBoostRemoved;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/boosts/ChatBoostRemoved;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -23115,15 +23148,15 @@ public final class dev/inmo/tgbotapi/types/update/ChatBoostRemovedUpdate$Compani
 
 public final class dev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
 	public static final field Companion Ldev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate$Companion;
-	public fun <init> (JLdev/inmo/tgbotapi/types/boosts/ChatBoostUpdated;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/boosts/ChatBoostUpdated;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/boosts/ChatBoostUpdated;
-	public final fun copy (JLdev/inmo/tgbotapi/types/boosts/ChatBoostUpdated;)Ldev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate;JLdev/inmo/tgbotapi/types/boosts/ChatBoostUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/boosts/ChatBoostUpdated;)Ldev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate;JLdev/inmo/tgbotapi/types/boosts/ChatBoostUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/boosts/ChatBoostUpdated;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -23144,30 +23177,30 @@ public final class dev/inmo/tgbotapi/types/update/ChatBoostUpdatedUpdate$Compani
 }
 
 public final class dev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLdev/inmo/tgbotapi/types/chat/ChatJoinRequest;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/ChatJoinRequest;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/ChatJoinRequest;
-	public final fun copy (JLdev/inmo/tgbotapi/types/chat/ChatJoinRequest;)Ldev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate;JLdev/inmo/tgbotapi/types/chat/ChatJoinRequest;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/chat/ChatJoinRequest;)Ldev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate;JLdev/inmo/tgbotapi/types/chat/ChatJoinRequest;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatJoinRequestUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/chat/ChatJoinRequest;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
 	public static final field Companion Ldev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpdate$Companion;
-	public fun <init> (JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;
-	public final fun copy (JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpdate;JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpdate;JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -23189,15 +23222,15 @@ public final class dev/inmo/tgbotapi/types/update/ChatMessageReactionUpdatedUpda
 
 public final class dev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
 	public static final field Companion Ldev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate$Companion;
-	public fun <init> (JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionsCountUpdated;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionsCountUpdated;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionsCountUpdated;
-	public final fun copy (JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionsCountUpdated;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate;JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionsCountUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionsCountUpdated;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate;JLdev/inmo/tgbotapi/types/chat/ChatMessageReactionsCountUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdatedUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionsCountUpdated;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -23218,159 +23251,159 @@ public final class dev/inmo/tgbotapi/types/update/ChatMessageReactionsCountUpdat
 }
 
 public final class dev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLdev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;
-	public final fun copy (JLdev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;)Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;JLdev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;)Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;JLdev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ChosenInlineResultUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/CommonChatMemberUpdatedUpdate : dev/inmo/tgbotapi/types/update/abstracts/ChatMemberUpdatedUpdate {
-	public fun <init> (JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;
-	public final fun copy (JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Ldev/inmo/tgbotapi/types/update/CommonChatMemberUpdatedUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/CommonChatMemberUpdatedUpdate;JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/CommonChatMemberUpdatedUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Ldev/inmo/tgbotapi/types/update/CommonChatMemberUpdatedUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/CommonChatMemberUpdatedUpdate;JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/CommonChatMemberUpdatedUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/EditChannelPostUpdate : dev/inmo/tgbotapi/types/update/abstracts/BaseEditMessageUpdate {
-	public fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/CommonMessage;
-	public final fun copy (JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;)Ldev/inmo/tgbotapi/types/update/EditChannelPostUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/EditChannelPostUpdate;JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/EditChannelPostUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;)Ldev/inmo/tgbotapi/types/update/EditChannelPostUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/EditChannelPostUpdate;JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/EditChannelPostUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
 	public fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/CommonMessage;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/EditMessageUpdate : dev/inmo/tgbotapi/types/update/abstracts/BaseEditMessageUpdate {
-	public fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/CommonMessage;
-	public final fun copy (JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;)Ldev/inmo/tgbotapi/types/update/EditMessageUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/EditMessageUpdate;JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/EditMessageUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;)Ldev/inmo/tgbotapi/types/update/EditMessageUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/EditMessageUpdate;JLdev/inmo/tgbotapi/types/message/abstracts/CommonMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/EditMessageUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
 	public fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/CommonMessage;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/InlineQueryUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLdev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;
-	public final fun copy (JLdev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;)Ldev/inmo/tgbotapi/types/update/InlineQueryUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/InlineQueryUpdate;JLdev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/InlineQueryUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;)Ldev/inmo/tgbotapi/types/update/InlineQueryUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/InlineQueryUpdate;JLdev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/InlineQueryUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/MessageUpdate : dev/inmo/tgbotapi/types/update/abstracts/BaseSentMessageUpdate {
-	public fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
-	public final fun copy (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
 	public fun copy (Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
 	public synthetic fun copy (Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)Ldev/inmo/tgbotapi/types/update/abstracts/BaseSentMessageUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/MessageUpdate;JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/MessageUpdate;JLdev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/MessageUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate : dev/inmo/tgbotapi/types/update/abstracts/ChatMemberUpdatedUpdate {
-	public fun <init> (JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;
-	public final fun copy (JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;)Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;JLdev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/MyChatMemberUpdatedUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/chat/member/ChatMemberUpdated;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/PollAnswerUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLdev/inmo/tgbotapi/types/polls/PollAnswer;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/polls/PollAnswer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/polls/PollAnswer;
-	public final fun copy (JLdev/inmo/tgbotapi/types/polls/PollAnswer;)Ldev/inmo/tgbotapi/types/update/PollAnswerUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/PollAnswerUpdate;JLdev/inmo/tgbotapi/types/polls/PollAnswer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/PollAnswerUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/polls/PollAnswer;)Ldev/inmo/tgbotapi/types/update/PollAnswerUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/PollAnswerUpdate;JLdev/inmo/tgbotapi/types/polls/PollAnswer;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/PollAnswerUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/polls/PollAnswer;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/PollUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLdev/inmo/tgbotapi/types/polls/Poll;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/polls/Poll;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/polls/Poll;
-	public final fun copy (JLdev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/update/PollUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/PollUpdate;JLdev/inmo/tgbotapi/types/polls/Poll;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/PollUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/polls/Poll;)Ldev/inmo/tgbotapi/types/update/PollUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/PollUpdate;JLdev/inmo/tgbotapi/types/polls/Poll;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/PollUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/polls/Poll;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/PreCheckoutQueryUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLdev/inmo/tgbotapi/types/payments/PreCheckoutQuery;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/payments/PreCheckoutQuery;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
-	public final fun copy (JLdev/inmo/tgbotapi/types/payments/PreCheckoutQuery;)Ldev/inmo/tgbotapi/types/update/PreCheckoutQueryUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/PreCheckoutQueryUpdate;JLdev/inmo/tgbotapi/types/payments/PreCheckoutQuery;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/PreCheckoutQueryUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/payments/PreCheckoutQuery;)Ldev/inmo/tgbotapi/types/update/PreCheckoutQueryUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/PreCheckoutQueryUpdate;JLdev/inmo/tgbotapi/types/payments/PreCheckoutQuery;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/PreCheckoutQueryUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/payments/PreCheckoutQuery;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/update/ShippingQueryUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLdev/inmo/tgbotapi/types/payments/ShippingQuery;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/payments/ShippingQuery;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/payments/ShippingQuery;
-	public final fun copy (JLdev/inmo/tgbotapi/types/payments/ShippingQuery;)Ldev/inmo/tgbotapi/types/update/ShippingQueryUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/ShippingQueryUpdate;JLdev/inmo/tgbotapi/types/payments/ShippingQuery;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ShippingQueryUpdate;
+	public final fun copy-VElHuNg (JLdev/inmo/tgbotapi/types/payments/ShippingQuery;)Ldev/inmo/tgbotapi/types/update/ShippingQueryUpdate;
+	public static synthetic fun copy-VElHuNg$default (Ldev/inmo/tgbotapi/types/update/ShippingQueryUpdate;JLdev/inmo/tgbotapi/types/payments/ShippingQuery;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/ShippingQueryUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getData ()Ldev/inmo/tgbotapi/types/payments/ShippingQuery;
 	public synthetic fun getData ()Ljava/lang/Object;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -23392,26 +23425,26 @@ public abstract interface class dev/inmo/tgbotapi/types/update/abstracts/ChatMem
 }
 
 public final class dev/inmo/tgbotapi/types/update/abstracts/UnknownUpdate : dev/inmo/tgbotapi/types/update/abstracts/Update {
-	public fun <init> (JLkotlinx/serialization/json/JsonElement;Ljava/lang/Throwable;)V
 	public synthetic fun <init> (JLkotlinx/serialization/json/JsonElement;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()J
+	public synthetic fun <init> (JLkotlinx/serialization/json/JsonElement;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-4k5XoGU ()J
 	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
 	public final fun component3 ()Ljava/lang/Throwable;
-	public final fun copy (JLkotlinx/serialization/json/JsonElement;Ljava/lang/Throwable;)Ldev/inmo/tgbotapi/types/update/abstracts/UnknownUpdate;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/update/abstracts/UnknownUpdate;JLkotlinx/serialization/json/JsonElement;Ljava/lang/Throwable;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/abstracts/UnknownUpdate;
+	public final fun copy-OljFBRw (JLkotlinx/serialization/json/JsonElement;Ljava/lang/Throwable;)Ldev/inmo/tgbotapi/types/update/abstracts/UnknownUpdate;
+	public static synthetic fun copy-OljFBRw$default (Ldev/inmo/tgbotapi/types/update/abstracts/UnknownUpdate;JLkotlinx/serialization/json/JsonElement;Ljava/lang/Throwable;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/update/abstracts/UnknownUpdate;
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getData ()Ljava/lang/Object;
 	public fun getData ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getRawJson ()Lkotlinx/serialization/json/JsonElement;
 	public final fun getThrowable ()Ljava/lang/Throwable;
-	public fun getUpdateId ()J
+	public fun getUpdateId-4k5XoGU ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/update/abstracts/Update {
 	public abstract fun getData ()Ljava/lang/Object;
-	public abstract fun getUpdateId ()J
+	public abstract fun getUpdateId-4k5XoGU ()J
 }
 
 public final class dev/inmo/tgbotapi/types/update/abstracts/UpdateDeserializationStrategy : kotlinx/serialization/DeserializationStrategy {

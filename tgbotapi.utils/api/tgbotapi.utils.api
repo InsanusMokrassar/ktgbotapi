@@ -3255,7 +3255,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/updates/UpdatesChatFilters
 
 public final class dev/inmo/tgbotapi/extensions/utils/updates/UpdatesUtilsKt {
 	public static final fun convertWithMediaGroupUpdates (Ljava/util/List;)Ljava/util/List;
-	public static final fun lastUpdateIdentifier (Ljava/util/List;)Ljava/lang/Long;
+	public static final fun lastUpdateIdentifier (Ljava/util/List;)Ldev/inmo/tgbotapi/types/UpdateId;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/updates/retrieving/LongPollingKt {

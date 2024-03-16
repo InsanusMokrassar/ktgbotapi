@@ -1,9 +1,8 @@
 package dev.inmo.tgbotapi.requests
 
-import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.types.ALL_UPDATES_LIST
 import dev.inmo.tgbotapi.types.Seconds
-import dev.inmo.tgbotapi.types.UpdateIdentifier
+import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.getUpdatesLimit
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.Serializable
@@ -16,7 +15,7 @@ import kotlinx.serialization.json.JsonArray
  */
 @Serializable
 data class GetUpdatesRaw(
-    override val offset: UpdateIdentifier? = null,// set `last update id + 1` to receive next part of updates
+    override val offset: UpdateId? = null,// set `last update id + 1` to receive next part of updates
     override val limit: Int = getUpdatesLimit.last,
     override val timeout: Seconds? = null,
     override val allowed_updates: List<String>? = ALL_UPDATES_LIST

@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.bot.exceptions.*
 import dev.inmo.tgbotapi.extensions.utils.updates.convertWithMediaGroupUpdates
 import dev.inmo.tgbotapi.requests.GetUpdates
-import dev.inmo.tgbotapi.requests.GetUpdatesRaw
 import dev.inmo.tgbotapi.requests.webhook.DeleteWebhook
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.abstracts.CommonMessage
@@ -52,7 +51,7 @@ fun TelegramBot.longPollingFlow(
         }
     }
 
-    var lastUpdateIdentifier: UpdateIdentifier? = null
+    var lastUpdateIdentifier: UpdateId? = null
 
     val updatesHandler: (suspend (List<Update>) -> Unit) = if (mediaGroupsDebounceTimeMillis != null) {
         val scope = CoroutineScope(contextToWork)
@@ -92,7 +91,7 @@ fun TelegramBot.longPollingFlow(
                 for (update in updates) {
                     send(update)
 
-                    if (update.updateId > -1) {
+                    if (update.updateId.long > -1) {
                         lastUpdateIdentifier = update.updateId
                     }
                 }
