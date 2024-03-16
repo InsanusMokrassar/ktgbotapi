@@ -9,6 +9,7 @@
   * `MessageThreadId` now is `value class`
   * `InlineQueryIdentifier` now is `value class`
   * `MediaGroupIdentifier` now is `value class`
+  * `CallbackQueryIdentifier` now is `value class`
 
 ## 10.1.2
 

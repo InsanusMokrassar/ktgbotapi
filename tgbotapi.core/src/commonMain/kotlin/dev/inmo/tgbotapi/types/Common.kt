@@ -15,7 +15,6 @@ typealias UpdateIdentifier = Long
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
 typealias AuthorSignature = ForwardSignature
-typealias CallbackQueryIdentifier = String
 typealias PaymentQueryIdentifier = String
 typealias PreCheckoutQueryId = String
 typealias ShippingQueryIdentifier = String
