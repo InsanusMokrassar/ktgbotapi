@@ -1,21 +1,15 @@
 package dev.inmo.tgbotapi.extensions.api.edit
 
-import dev.inmo.tgbotapi.abstracts.TextedWithTextSources
 import dev.inmo.tgbotapi.bot.TelegramBot
-import dev.inmo.tgbotapi.extensions.api.edit.caption.editMessageCaption
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.editLiveLocation
 import dev.inmo.tgbotapi.extensions.api.edit.media.editMessageMedia
 import dev.inmo.tgbotapi.extensions.api.edit.reply_markup.editMessageReplyMarkup
 import dev.inmo.tgbotapi.extensions.api.edit.text.editMessageText
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
-import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.Message
-import dev.inmo.tgbotapi.types.message.content.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.utils.EntitiesBuilderBody
@@ -26,7 +20,7 @@ import dev.inmo.tgbotapi.utils.buildEntities
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    messageId: InlineMessageIdentifier,
+    messageId: InlineMessageId,
     latitude: Double,
     longitude: Double,
     horizontalAccuracy: Meters? = null,
@@ -40,7 +34,7 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    messageId: InlineMessageIdentifier,
+    messageId: InlineMessageId,
     location: LiveLocation,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editLiveLocation(
@@ -52,7 +46,7 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    messageId: InlineMessageIdentifier,
+    messageId: InlineMessageId,
     media: TelegramMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(messageId, media, replyMarkup)
@@ -62,7 +56,7 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    messageId: InlineMessageIdentifier,
+    messageId: InlineMessageId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageReplyMarkup(messageId, replyMarkup)
 
@@ -71,7 +65,7 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    messageId: InlineMessageIdentifier,
+    messageId: InlineMessageId,
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -83,7 +77,7 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    messageId: InlineMessageIdentifier,
+    messageId: InlineMessageId,
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -94,7 +88,7 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    messageId: InlineMessageIdentifier,
+    messageId: InlineMessageId,
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
@@ -106,7 +100,7 @@ suspend fun TelegramBot.edit(
  * as a builder for that
  */
 suspend fun TelegramBot.edit(
-    messageId: InlineMessageIdentifier,
+    messageId: InlineMessageId,
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,

@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions.raw
 
 import dev.inmo.tgbotapi.extensions.utils.asLocationChosenInlineResult
-import dev.inmo.tgbotapi.types.InlineMessageIdentifier
+import dev.inmo.tgbotapi.types.InlineMessageId
 import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.ChosenInlineResult
 import dev.inmo.tgbotapi.types.InlineQueryIdentifier
 import dev.inmo.tgbotapi.types.location.Location
@@ -16,5 +16,5 @@ val ChosenInlineResult.result_id: InlineQueryIdentifier
     get() = resultId
 
 @RiskFeature(RawFieldsUsageWarning)
-val ChosenInlineResult.inline_message_id: InlineMessageIdentifier?
+val ChosenInlineResult.inline_message_id: InlineMessageId?
     get() = inlineMessageId

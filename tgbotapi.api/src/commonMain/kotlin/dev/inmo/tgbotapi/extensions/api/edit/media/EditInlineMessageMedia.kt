@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.edit.media
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.media.EditInlineMessageMedia
-import dev.inmo.tgbotapi.types.InlineMessageIdentifier
+import dev.inmo.tgbotapi.types.InlineMessageId
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
@@ -11,7 +11,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
  * as a builder for that
  */
 suspend fun TelegramBot.editMessageMedia(
-    inlineMessageId: InlineMessageIdentifier,
+    inlineMessageId: InlineMessageId,
     media: TelegramMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(EditInlineMessageMedia(inlineMessageId, media, replyMarkup))

@@ -141,7 +141,7 @@ public abstract interface class dev/inmo/tgbotapi/abstracts/types/DisableNotific
 }
 
 public abstract interface class dev/inmo/tgbotapi/abstracts/types/InlineMessageAction {
-	public abstract fun getInlineMessageId ()Ljava/lang/String;
+	public abstract fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 }
 
 public abstract interface class dev/inmo/tgbotapi/abstracts/types/LinkPreviewOptionsContainer {
@@ -3414,7 +3414,7 @@ public abstract interface class dev/inmo/tgbotapi/requests/edit/abstracts/EditCh
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/edit/abstracts/EditInlineMessage : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
-	public abstract fun getInlineMessageId ()Ljava/lang/String;
+	public abstract fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public abstract fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 }
 
@@ -3499,15 +3499,16 @@ public final class dev/inmo/tgbotapi/requests/edit/caption/EditChatMessageCaptio
 
 public final class dev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption : dev/inmo/tgbotapi/requests/edit/abstracts/EditInlineMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditTextChatMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption$Companion;
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-u1p_GH0 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
+	public final fun copy-qSk9tD0 (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
+	public static synthetic fun copy-qSk9tD0$default (Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
@@ -3536,10 +3537,10 @@ public final class dev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCapt
 }
 
 public final class dev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaptionKt {
-	public static final fun EditInlineMessageCaption (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
-	public static final fun EditInlineMessageCaption (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
-	public static synthetic fun EditInlineMessageCaption$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
-	public static synthetic fun EditInlineMessageCaption$default (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
+	public static final fun EditInlineMessageCaption--Abc6jc (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
+	public static synthetic fun EditInlineMessageCaption--Abc6jc$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
+	public static final fun EditInlineMessageCaption-3bQJ72M (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
+	public static synthetic fun EditInlineMessageCaption-3bQJ72M$default (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/caption/EditInlineMessageCaption;
 }
 
 public final class dev/inmo/tgbotapi/requests/edit/location/live/EditChatMessageLiveLocation : dev/inmo/tgbotapi/requests/edit/abstracts/EditChatMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditLocationMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
@@ -3594,21 +3595,21 @@ public final class dev/inmo/tgbotapi/requests/edit/location/live/EditChatMessage
 
 public final class dev/inmo/tgbotapi/requests/edit/location/live/EditInlineMessageLiveLocation : dev/inmo/tgbotapi/requests/edit/abstracts/EditInlineMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditLocationMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/location/live/EditInlineMessageLiveLocation$Companion;
-	public fun <init> (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)V
 	public synthetic fun <init> (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-u1p_GH0 ()Ljava/lang/String;
 	public final fun component2 ()D
 	public final fun component3 ()D
 	public final fun component4 ()Ljava/lang/Float;
 	public final fun component5 ()Ljava/lang/Integer;
 	public final fun component6 ()Ljava/lang/Float;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/location/live/EditInlineMessageLiveLocation;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/edit/location/live/EditInlineMessageLiveLocation;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/location/live/EditInlineMessageLiveLocation;
+	public final fun copy-bH2Jftc (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/location/live/EditInlineMessageLiveLocation;
+	public static synthetic fun copy-bH2Jftc$default (Ldev/inmo/tgbotapi/requests/edit/location/live/EditInlineMessageLiveLocation;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/location/live/EditInlineMessageLiveLocation;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHeading ()Ljava/lang/Integer;
 	public fun getHorizontalAccuracy ()Ljava/lang/Float;
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getLatitude ()D
 	public fun getLongitude ()D
 	public fun getProximityAlertRadius ()Ljava/lang/Float;
@@ -3678,14 +3679,14 @@ public final class dev/inmo/tgbotapi/requests/edit/location/live/StopChatMessage
 
 public final class dev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessageLiveLocation : dev/inmo/tgbotapi/requests/edit/abstracts/EditInlineMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessageLiveLocation$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)V
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-u1p_GH0 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessageLiveLocation;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessageLiveLocation;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessageLiveLocation;
+	public final fun copy-wlX54Ks (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessageLiveLocation;
+	public static synthetic fun copy-wlX54Ks$default (Ldev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessageLiveLocation;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/location/live/StopInlineMessageLiveLocation;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
@@ -3754,15 +3755,15 @@ public final class dev/inmo/tgbotapi/requests/edit/media/EditChatMessageMediaKt 
 
 public final class dev/inmo/tgbotapi/requests/edit/media/EditInlineMessageMedia : dev/inmo/tgbotapi/requests/edit/abstracts/EditInlineMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditMediaMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/media/EditInlineMessageMedia$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)V
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-u1p_GH0 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/media/EditInlineMessageMedia;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/edit/media/EditInlineMessageMedia;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/media/EditInlineMessageMedia;
+	public final fun copy-3bQJ72M (Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/media/EditInlineMessageMedia;
+	public static synthetic fun copy-3bQJ72M$default (Ldev/inmo/tgbotapi/requests/edit/media/EditInlineMessageMedia;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/media/EditInlineMessageMedia;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getMedia ()Ldev/inmo/tgbotapi/types/media/TelegramMedia;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
@@ -3830,14 +3831,14 @@ public final class dev/inmo/tgbotapi/requests/edit/reply_markup/EditChatMessageR
 
 public final class dev/inmo/tgbotapi/requests/edit/reply_markup/EditInlineMessageReplyMarkup : dev/inmo/tgbotapi/requests/edit/abstracts/EditInlineMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/reply_markup/EditInlineMessageReplyMarkup$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)V
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-u1p_GH0 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/reply_markup/EditInlineMessageReplyMarkup;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/edit/reply_markup/EditInlineMessageReplyMarkup;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/reply_markup/EditInlineMessageReplyMarkup;
+	public final fun copy-wlX54Ks (Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/reply_markup/EditInlineMessageReplyMarkup;
+	public static synthetic fun copy-wlX54Ks$default (Ldev/inmo/tgbotapi/requests/edit/reply_markup/EditInlineMessageReplyMarkup;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/reply_markup/EditInlineMessageReplyMarkup;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public synthetic fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
@@ -3916,17 +3917,18 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditChatMessageTextKt {
 
 public final class dev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText : dev/inmo/tgbotapi/requests/edit/abstracts/EditInlineMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditLinkPreviewOptionsContainer, dev/inmo/tgbotapi/requests/edit/abstracts/EditReplyMessage, dev/inmo/tgbotapi/requests/edit/abstracts/EditTextChatMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText$Companion;
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-u1p_GH0 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
+	public final fun copy-atocSCk (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
+	public static synthetic fun copy-atocSCk$default (Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDisableWebPagePreview ()Ljava/lang/Boolean;
 	public fun getEntities ()Ljava/util/List;
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getLinkPreviewOptions ()Ldev/inmo/tgbotapi/types/LinkPreviewOptions;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -3956,10 +3958,10 @@ public final class dev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText$Co
 }
 
 public final class dev/inmo/tgbotapi/requests/edit/text/EditInlineMessageTextKt {
-	public static final fun EditInlineMessageText (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
-	public static final fun EditInlineMessageText (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
-	public static synthetic fun EditInlineMessageText$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
-	public static synthetic fun EditInlineMessageText$default (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
+	public static final fun EditInlineMessageText--Abc6jc (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
+	public static synthetic fun EditInlineMessageText--Abc6jc$default (Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
+	public static final fun EditInlineMessageText-qSk9tD0 (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
+	public static synthetic fun EditInlineMessageText-qSk9tD0$default (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/edit/text/EditInlineMessageText;
 }
 
 public final class dev/inmo/tgbotapi/requests/games/GetGameHighScoresByChat : dev/inmo/tgbotapi/abstracts/types/MessageAction, dev/inmo/tgbotapi/requests/games/abstracts/GetGameHighScores {
@@ -4001,11 +4003,11 @@ public final class dev/inmo/tgbotapi/requests/games/GetGameHighScoresByInlineMes
 	public static final field Companion Ldev/inmo/tgbotapi/requests/games/GetGameHighScoresByInlineMessageId$Companion;
 	public synthetic fun <init> (JLjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
-	public final fun component2 ()Ljava/lang/String;
-	public final fun copy-zv9neSE (JLjava/lang/String;)Ldev/inmo/tgbotapi/requests/games/GetGameHighScoresByInlineMessageId;
-	public static synthetic fun copy-zv9neSE$default (Ldev/inmo/tgbotapi/requests/games/GetGameHighScoresByInlineMessageId;JLjava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/games/GetGameHighScoresByInlineMessageId;
+	public final fun component2-u1p_GH0 ()Ljava/lang/String;
+	public final fun copy-YWyAf7U (JLjava/lang/String;)Ldev/inmo/tgbotapi/requests/games/GetGameHighScoresByInlineMessageId;
+	public static synthetic fun copy-YWyAf7U$default (Ldev/inmo/tgbotapi/requests/games/GetGameHighScoresByInlineMessageId;JLjava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/games/GetGameHighScoresByInlineMessageId;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun getUserId-tHkBKVM ()J
@@ -4077,15 +4079,15 @@ public final class dev/inmo/tgbotapi/requests/games/SetGameScoreByInlineMessageI
 	public synthetic fun <init> (JJLjava/lang/String;ZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component2 ()J
-	public final fun component3 ()Ljava/lang/String;
+	public final fun component3-u1p_GH0 ()Ljava/lang/String;
 	public final fun component4 ()Z
 	public final fun component5 ()Z
-	public final fun copy-5pON0JU (JJLjava/lang/String;ZZ)Ldev/inmo/tgbotapi/requests/games/SetGameScoreByInlineMessageId;
-	public static synthetic fun copy-5pON0JU$default (Ldev/inmo/tgbotapi/requests/games/SetGameScoreByInlineMessageId;JJLjava/lang/String;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/games/SetGameScoreByInlineMessageId;
+	public final fun copy-qt7rbfM (JJLjava/lang/String;ZZ)Ldev/inmo/tgbotapi/requests/games/SetGameScoreByInlineMessageId;
+	public static synthetic fun copy-qt7rbfM$default (Ldev/inmo/tgbotapi/requests/games/SetGameScoreByInlineMessageId;JJLjava/lang/String;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/games/SetGameScoreByInlineMessageId;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDisableEditMessage ()Z
 	public fun getForce ()Z
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun getScore ()J
@@ -8059,18 +8061,48 @@ public final class dev/inmo/tgbotapi/types/IdChatIdentifier$DefaultImpls {
 	public static fun getThreadId-S3HF-10 (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ldev/inmo/tgbotapi/types/MessageThreadId;
 }
 
+public final class dev/inmo/tgbotapi/types/InlineMessageId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/InlineMessageId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineMessageId;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/InlineMessageId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/InlineMessageId$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-Ep7rX1U (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-7EbhTmU (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/InlineMessageId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult : dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-t5wT6HY ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/User;
-	public final fun component3 ()Ljava/lang/String;
+	public final fun component3-FuCAEeA ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
-	public final fun copy-4o0WGn4 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
-	public static synthetic fun copy-4o0WGn4$default (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
+	public final fun copy-hIxOPOM (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
+	public static synthetic fun copy-hIxOPOM$default (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-FuCAEeA ()Ljava/lang/String;
 	public fun getQuery ()Ljava/lang/String;
 	public fun getResultId-t5wT6HY ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
@@ -8094,7 +8126,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/Base
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult : dev/inmo/tgbotapi/abstracts/FromUser {
-	public abstract fun getInlineMessageId ()Ljava/lang/String;
+	public abstract fun getInlineMessageId-FuCAEeA ()Ljava/lang/String;
 	public abstract fun getQuery ()Ljava/lang/String;
 	public abstract fun getResultId-t5wT6HY ()Ljava/lang/String;
 }
@@ -8109,13 +8141,13 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/Loca
 	public final fun component1-t5wT6HY ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/User;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/location/StaticLocation;
-	public final fun component4 ()Ljava/lang/String;
+	public final fun component4-FuCAEeA ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-eHGpV3M (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;
-	public static synthetic fun copy-eHGpV3M$default (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;
+	public final fun copy-ubtx-F8 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;
+	public static synthetic fun copy-ubtx-F8$default (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-FuCAEeA ()Ljava/lang/String;
 	public final fun getLocation ()Ldev/inmo/tgbotapi/types/location/StaticLocation;
 	public fun getQuery ()Ljava/lang/String;
 	public fun getResultId-t5wT6HY ()Ljava/lang/String;
@@ -22152,7 +22184,7 @@ public final class dev/inmo/tgbotapi/types/queries/callback/InaccessibleMessageG
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdCallbackQuery : dev/inmo/tgbotapi/types/queries/callback/CallbackQuery {
-	public abstract fun getInlineMessageId ()Ljava/lang/String;
+	public abstract fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdCallbackQuery$DefaultImpls {
@@ -22165,17 +22197,17 @@ public final class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataC
 	public final fun component1-W_Rpwvk ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
+	public final fun component4-u1p_GH0 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-DSWifT0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;
-	public static synthetic fun copy-DSWifT0$default (Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;
+	public final fun copy-d3gupTw (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;
+	public static synthetic fun copy-d3gupTw$default (Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdDataCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getData ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getId-W_Rpwvk ()Ljava/lang/String;
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun hashCode ()I
@@ -22202,17 +22234,17 @@ public final class dev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameS
 	public final fun component1-W_Rpwvk ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ljava/lang/String;
+	public final fun component4-u1p_GH0 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-DSWifT0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;
-	public static synthetic fun copy-DSWifT0$default (Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;
+	public final fun copy-d3gupTw (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;
+	public static synthetic fun copy-d3gupTw$default (Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/queries/callback/InlineMessageIdGameShortNameCallbackQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatInstance ()Ljava/lang/String;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getGameShortName ()Ljava/lang/String;
 	public fun getId-W_Rpwvk ()Ljava/lang/String;
-	public fun getInlineMessageId ()Ljava/lang/String;
+	public fun getInlineMessageId-u1p_GH0 ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun hashCode ()I
@@ -23534,14 +23566,13 @@ public final class dev/inmo/tgbotapi/types/webapps/WebAppInfo$Companion {
 
 public final class dev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage {
 	public static final field Companion Ldev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/lang/String;)V
 	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-FuCAEeA ()Ljava/lang/String;
+	public final fun copy-eJHBQgQ (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage;
+	public static synthetic fun copy-eJHBQgQ$default (Ldev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/webapps/query/SentWebAppMessage;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getInlineMessageId ()Ljava/lang/String;
+	public final fun getInlineMessageId-FuCAEeA ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }

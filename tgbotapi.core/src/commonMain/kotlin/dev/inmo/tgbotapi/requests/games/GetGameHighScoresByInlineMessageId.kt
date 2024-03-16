@@ -10,7 +10,7 @@ data class GetGameHighScoresByInlineMessageId (
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(inlineMessageIdField)
-    override val inlineMessageId: InlineMessageIdentifier
+    override val inlineMessageId: InlineMessageId
 ) : GetGameHighScores, InlineMessageAction {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

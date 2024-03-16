@@ -780,22 +780,22 @@ public final class dev/inmo/tgbotapi/extensions/api/edit/EditsKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/InlineEditsKt {
-	public static final fun edit (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun edit (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun edit (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/location/LiveLocation;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun edit (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun edit (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun edit (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun edit (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun edit (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun edit$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun edit$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun edit$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/location/LiveLocation;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun edit$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun edit$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun edit$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun edit$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun edit$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun edit-8-9HZFY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun edit-8-9HZFY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun edit-8-9HZFY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun edit-8-9HZFY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun edit-8-9HZFY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun edit-8-9HZFY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun edit-FrLM24I (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/location/LiveLocation;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun edit-FrLM24I (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun edit-FrLM24I$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/location/LiveLocation;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun edit-FrLM24I$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun edit-KUlcsOA (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun edit-KUlcsOA$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun edit-QHra4TU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun edit-QHra4TU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun edit-vJR7F_U (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun edit-vJR7F_U$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/caption/EditChatMessageCaptionKt {
@@ -816,10 +816,10 @@ public final class dev/inmo/tgbotapi/extensions/api/edit/caption/EditChatMessage
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/caption/EditInlineMessageCaptionKt {
-	public static final fun editMessageCaption (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun editMessageCaption (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun editMessageCaption$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun editMessageCaption$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editMessageCaption-FrLM24I (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editMessageCaption-FrLM24I$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editMessageCaption-KUlcsOA (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editMessageCaption-KUlcsOA$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/location/live/EditChatMessageLiveLocationKt {
@@ -838,10 +838,10 @@ public final class dev/inmo/tgbotapi/extensions/api/edit/location/live/EditChatM
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/location/live/EditInlineMessageLiveLocationKt {
-	public static final fun editLiveLocation (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun editLiveLocation (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/location/LiveLocation;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun editLiveLocation$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun editLiveLocation$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/location/LiveLocation;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editLiveLocation-FrLM24I (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/location/LiveLocation;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editLiveLocation-FrLM24I$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/location/LiveLocation;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editLiveLocation-QHra4TU (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editLiveLocation-QHra4TU$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/location/live/StopChatMessageLiveLocationKt {
@@ -854,8 +854,8 @@ public final class dev/inmo/tgbotapi/extensions/api/edit/location/live/StopChatM
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/location/live/StopInlineMessageLiveLocationKt {
-	public static final fun stopLiveLocation (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun stopLiveLocation$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun stopLiveLocation-vJR7F_U (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun stopLiveLocation-vJR7F_U$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/media/EditChatMessageMediaKt {
@@ -868,8 +868,8 @@ public final class dev/inmo/tgbotapi/extensions/api/edit/media/EditChatMessageMe
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/media/EditInlineMessageMediaKt {
-	public static final fun editMessageMedia (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun editMessageMedia$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editMessageMedia-FrLM24I (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editMessageMedia-FrLM24I$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/media/TelegramMedia;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/reply_markup/EditChatMessageReplyMarkupKt {
@@ -882,8 +882,8 @@ public final class dev/inmo/tgbotapi/extensions/api/edit/reply_markup/EditChatMe
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/reply_markup/EditInlineMessageReplyMarkupKt {
-	public static final fun editMessageReplyMarkup (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun editMessageReplyMarkup$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editMessageReplyMarkup-vJR7F_U (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editMessageReplyMarkup-vJR7F_U$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/text/EditChatMessageTextKt {
@@ -920,14 +920,14 @@ public final class dev/inmo/tgbotapi/extensions/api/edit/text/EditChatMessageTex
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/edit/text/EditInlineMessageTextKt {
-	public static final fun editMessageText (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun editMessageText (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun editMessageText (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun editMessageText (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun editMessageText$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun editMessageText$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun editMessageText$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun editMessageText$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editMessageText-8-9HZFY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun editMessageText-8-9HZFY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun editMessageText-8-9HZFY (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editMessageText-8-9HZFY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun editMessageText-8-9HZFY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun editMessageText-8-9HZFY$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun editMessageText-KUlcsOA (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun editMessageText-KUlcsOA$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/LinkPreviewOptions;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/files/DownloadFileKt {
@@ -980,8 +980,8 @@ public final class dev/inmo/tgbotapi/extensions/api/games/GetGameHighScoresByCha
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/games/GetGameHighScoresByInlineMessageIdKt {
-	public static final fun getGameScore (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun getGameScore-nc95W0g (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun getGameScore-GfoqsF4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun getGameScore-ujMAGLQ (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/games/SetGameScoreByChatIdKt {
@@ -1000,10 +1000,10 @@ public final class dev/inmo/tgbotapi/extensions/api/games/SetGameScoreByChatIdKt
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/games/SetGameScoreByInlineMessageIdKt {
-	public static final fun setGameScore (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;JLjava/lang/String;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun setGameScore$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;JLjava/lang/String;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static final fun setGameScore-VjR9mJc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JJLjava/lang/String;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun setGameScore-VjR9mJc$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JJLjava/lang/String;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun setGameScore-rJjffU4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JJLjava/lang/String;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setGameScore-rJjffU4$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;JJLjava/lang/String;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun setGameScore-zwYr1CI (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;JLjava/lang/String;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setGameScore-zwYr1CI$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/chat/CommonUser;JLjava/lang/String;ZZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/get/GetCustomEmojiStickersKt {

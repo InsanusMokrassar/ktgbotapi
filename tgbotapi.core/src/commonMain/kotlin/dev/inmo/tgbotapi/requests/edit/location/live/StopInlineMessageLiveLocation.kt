@@ -9,7 +9,7 @@ import kotlinx.serialization.*
 @Serializable
 data class StopInlineMessageLiveLocation(
     @SerialName(inlineMessageIdField)
-    override val inlineMessageId: InlineMessageIdentifier,
+    override val inlineMessageId: InlineMessageId,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditInlineMessage, EditReplyMessage {

@@ -14,6 +14,7 @@
   * `PreCheckoutQueryId` now is `value class`
   * `FileUniqueId` has been renamed to `TgFileUniqueId` and now is `value class`
   * `UpdateIdentifier` has been renamed to `UpdateId` and now is `value class`
+  * `InlineMessageIdentifier` has been renamed to `InlineMessageId` and now is `value class`
 
 ## 10.1.2
 

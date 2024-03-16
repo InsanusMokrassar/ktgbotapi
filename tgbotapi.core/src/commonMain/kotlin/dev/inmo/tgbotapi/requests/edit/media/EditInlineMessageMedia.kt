@@ -10,7 +10,7 @@ import kotlinx.serialization.*
 @Serializable
 data class EditInlineMessageMedia(
     @SerialName(inlineMessageIdField)
-    override val inlineMessageId: InlineMessageIdentifier,
+    override val inlineMessageId: InlineMessageId,
     @SerialName(mediaField)
     override val media: TelegramMedia,
     @SerialName(replyMarkupField)

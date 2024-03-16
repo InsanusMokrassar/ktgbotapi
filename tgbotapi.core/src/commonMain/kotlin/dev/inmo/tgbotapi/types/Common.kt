@@ -19,7 +19,6 @@ typealias ShippingQueryIdentifier = String
 typealias InvoicePayload = String
 typealias ShippingOptionIdentifier = String
 typealias StartParameter = String
-typealias InlineMessageIdentifier = String
 typealias PollIdentifier = String
 typealias StickerSetName = String
 typealias DiceResult = Int

@@ -12,6 +12,6 @@ data class LocationChosenInlineResult(
     @SerialName(fromField)
     override val from: User,
     val location: StaticLocation,
-    override val inlineMessageId: InlineMessageIdentifier?,
+    override val inlineMessageId: InlineMessageId?,
     override val query: String
 ) : ChosenInlineResult

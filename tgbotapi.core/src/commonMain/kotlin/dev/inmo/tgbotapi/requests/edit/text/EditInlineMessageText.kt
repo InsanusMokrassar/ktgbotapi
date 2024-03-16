@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.utils.extensions.makeString
 import kotlinx.serialization.*
 
 fun EditInlineMessageText(
-    inlineMessageId: InlineMessageIdentifier,
+    inlineMessageId: InlineMessageId,
     text: String,
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
@@ -28,7 +28,7 @@ fun EditInlineMessageText(
 )
 
 fun EditInlineMessageText(
-    inlineMessageId: InlineMessageIdentifier,
+    inlineMessageId: InlineMessageId,
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -44,7 +44,7 @@ fun EditInlineMessageText(
 @Serializable
 data class EditInlineMessageText internal constructor(
     @SerialName(inlineMessageIdField)
-    override val inlineMessageId: InlineMessageIdentifier,
+    override val inlineMessageId: InlineMessageId,
     @SerialName(textField)
     override val text: String,
     @SerialName(parseModeField)

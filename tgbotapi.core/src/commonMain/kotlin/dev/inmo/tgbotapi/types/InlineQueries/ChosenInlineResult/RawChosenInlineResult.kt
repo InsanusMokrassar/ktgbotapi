@@ -17,7 +17,7 @@ internal data class RawChosenInlineResult(
     @SerialName(locationField)
     val location: StaticLocation? = null,
     @SerialName(inlineMessageIdField)
-    val inlineMessageId: InlineMessageIdentifier? = null
+    val inlineMessageId: InlineMessageId? = null
 ) {
     val asChosenInlineResult: ChosenInlineResult by lazy {
         location ?.let {
