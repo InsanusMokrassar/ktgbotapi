@@ -124,7 +124,7 @@ inline fun requestUsersOrBotsReplyButton(
 inline fun requestUserOrBotReplyButton(
     text: String,
     requestId: RequestId
-) = requestUserReplyButton(
+) = requestUsersReplyButton(
     text,
     KeyboardButtonRequestUsers.Any(requestId)
 )

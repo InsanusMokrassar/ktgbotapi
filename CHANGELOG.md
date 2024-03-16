@@ -4,6 +4,9 @@
 
 **THIS UPDATE CONTAINS REMOVES OF DEPRECATED THINGS**
 
+* `Core`:
+  * `MessageId` now is `value class`
+
 ## 10.1.2
 
 * `Version`:

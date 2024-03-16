@@ -2550,7 +2550,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/SlotMachineUtilsKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/BotCommandsArgsParserKt {
-	public static final fun getDefaultArgsSeparator ()Lkotlin/text/Regex;
 	public static final fun parseCommandsWithArgs (Ldev/inmo/tgbotapi/abstracts/TextedWithTextSources;Ljava/lang/String;)Ljava/util/Map;
 	public static final fun parseCommandsWithArgs (Ldev/inmo/tgbotapi/abstracts/TextedWithTextSources;Lkotlin/text/Regex;)Ljava/util/Map;
 	public static final fun parseCommandsWithArgs (Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Ljava/lang/String;)Ljava/util/Map;
@@ -2572,12 +2571,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/BotCommandsArgs
 	public static synthetic fun parseCommandsWithNamedArgs$default (Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Lkotlin/text/Regex;Lkotlin/text/Regex;ILjava/lang/Object;)Ljava/util/Map;
 	public static synthetic fun parseCommandsWithNamedArgs$default (Ljava/util/List;Ljava/lang/String;Lkotlin/text/Regex;ILjava/lang/Object;)Ljava/util/Map;
 	public static synthetic fun parseCommandsWithNamedArgs$default (Ljava/util/List;Lkotlin/text/Regex;Lkotlin/text/Regex;ILjava/lang/Object;)Ljava/util/Map;
-	public static final fun parseCommandsWithParams (Ldev/inmo/tgbotapi/abstracts/TextedWithTextSources;Lkotlin/text/Regex;)Ljava/util/Map;
-	public static final fun parseCommandsWithParams (Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Lkotlin/text/Regex;)Ljava/util/Map;
-	public static final fun parseCommandsWithParams (Ljava/util/List;Lkotlin/text/Regex;)Ljava/util/Map;
-	public static synthetic fun parseCommandsWithParams$default (Ldev/inmo/tgbotapi/abstracts/TextedWithTextSources;Lkotlin/text/Regex;ILjava/lang/Object;)Ljava/util/Map;
-	public static synthetic fun parseCommandsWithParams$default (Ldev/inmo/tgbotapi/types/message/abstracts/ContentMessage;Lkotlin/text/Regex;ILjava/lang/Object;)Ljava/util/Map;
-	public static synthetic fun parseCommandsWithParams$default (Ljava/util/List;Lkotlin/text/Regex;ILjava/lang/Object;)Ljava/util/Map;
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/BotCommandsArgsSourcesParserKt {
@@ -2604,9 +2597,9 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/SameKt {
 	public static final fun sameChat (Ldev/inmo/tgbotapi/abstracts/WithPreviewChat;Ldev/inmo/tgbotapi/types/ChatIdentifier;)Z
 	public static final fun sameChat (Ldev/inmo/tgbotapi/abstracts/WithPreviewChat;Ldev/inmo/tgbotapi/types/chat/Chat;)Z
 	public static final fun sameChat (Ldev/inmo/tgbotapi/abstracts/WithPreviewChat;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
-	public static final fun sameMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;J)Z
-	public static final fun sameMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;J)Z
 	public static final fun sameMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
+	public static final fun sameMessage-EQziP_A (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;J)Z
+	public static final fun sameMessage-EQziP_A (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;J)Z
 	public static final fun sameThread (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/ChatIdentifier;Ljava/lang/Long;)Z
 	public static final fun sameThread (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/chat/Chat;Ljava/lang/Long;)Z
 	public static final fun sameThread (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
@@ -2680,7 +2673,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/raw/MessageKt {
 	public static final fun getForward_date (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/TelegramDate;
 	public static final fun getForward_from (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/chat/User;
 	public static final fun getForward_from_chat (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/chat/Chat;
-	public static final fun getForward_from_message_id (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ljava/lang/Long;
+	public static final fun getForward_from_message_id (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/MessageId;
 	public static final fun getForward_sender_name (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ljava/lang/String;
 	public static final fun getForward_signature (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ljava/lang/String;
 	public static final fun getFrom (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/chat/User;
@@ -2852,14 +2845,14 @@ public final class dev/inmo/tgbotapi/extensions/utils/formatting/LinksFormatting
 	public static final fun makeInternalTgUsernameLink (Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeLink-26ZnLnw (Ljava/lang/String;Ljava/lang/Long;)Ljava/lang/String;
 	public static synthetic fun makeLink-26ZnLnw$default (Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
-	public static final fun makeLinkToMessage (JJLjava/lang/Long;)Ljava/lang/String;
-	public static final fun makeLinkToMessage (Ldev/inmo/tgbotapi/types/IdChatIdentifier;J)Ljava/lang/String;
-	public static final fun makeLinkToMessage (Ldev/inmo/tgbotapi/types/chat/Chat;J)Ljava/lang/String;
-	public static final fun makeLinkToMessage (Ljava/lang/String;JLjava/lang/Long;)Ljava/lang/String;
-	public static synthetic fun makeLinkToMessage$default (JJLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
-	public static synthetic fun makeLinkToMessage$default (Ljava/lang/String;JLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
-	public static final fun makeLinkToMessage-hj--HSE (Ljava/lang/String;JLjava/lang/Long;)Ljava/lang/String;
-	public static synthetic fun makeLinkToMessage-hj--HSE$default (Ljava/lang/String;JLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun makeLinkToMessage-HkzWJnM (JJLjava/lang/Long;)Ljava/lang/String;
+	public static final fun makeLinkToMessage-HkzWJnM (Ljava/lang/String;JLjava/lang/Long;)Ljava/lang/String;
+	public static synthetic fun makeLinkToMessage-HkzWJnM$default (JJLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun makeLinkToMessage-HkzWJnM$default (Ljava/lang/String;JLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
+	public static final fun makeLinkToMessage-e-HACGs (Ldev/inmo/tgbotapi/types/IdChatIdentifier;J)Ljava/lang/String;
+	public static final fun makeLinkToMessage-e-HACGs (Ldev/inmo/tgbotapi/types/chat/Chat;J)Ljava/lang/String;
+	public static final fun makeLinkToMessage-xGvoJ4w (Ljava/lang/String;JLjava/lang/Long;)Ljava/lang/String;
+	public static synthetic fun makeLinkToMessage-xGvoJ4w$default (Ljava/lang/String;JLjava/lang/Long;ILjava/lang/Object;)Ljava/lang/String;
 	public static final fun makeTelegramDeepLink (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeTelegramDeepLink-26ZnLnw (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun makeTelegramStartattach (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -3170,7 +3163,6 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboar
 	public static synthetic fun requestGroupButton-GP8XSDU$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;ILjava/lang/Object;)Z
 	public static final fun requestLocationButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;)Z
 	public static final fun requestPollButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;)Z
-	public static final fun requestUserButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;)Z
 	public static final fun requestUserButton-t22p7TQ (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;)Z
 	public static synthetic fun requestUserButton-t22p7TQ$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Object;)Z
 	public static final fun requestUserOrBotButton-k9yqfdo (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;S)Z

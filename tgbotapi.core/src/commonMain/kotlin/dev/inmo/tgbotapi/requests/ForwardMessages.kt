@@ -27,25 +27,6 @@ fun ForwardMessages(
     removeCaption = removeCaption
 )
 
-fun ForwardMessages(
-    toChatId: ChatIdentifier,
-    fromChatId: ChatIdentifier,
-    messageId: MessageId,
-    vararg messageIds: MessageId,
-    threadId: MessageThreadId? = toChatId.threadId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    removeCaption: Boolean = false
-) = ForwardMessages(
-    toChatId = toChatId,
-    fromChatId = fromChatId,
-    messageIds = (listOf(messageId) + messageIds.toList()),
-    threadId = threadId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    removeCaption = removeCaption
-)
-
 @Serializable
 data class ForwardMessages (
     @SerialName(chatIdField)

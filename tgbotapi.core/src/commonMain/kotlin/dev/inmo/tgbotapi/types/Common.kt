@@ -10,7 +10,6 @@ import kotlinx.serialization.encoding.Encoder
 import kotlin.jvm.JvmInline
 
 typealias Identifier = Long
-typealias MessageId = Long
 typealias MessageThreadId = Long
 typealias MessageIdentifier = MessageId
 typealias InlineQueryIdentifier = String
