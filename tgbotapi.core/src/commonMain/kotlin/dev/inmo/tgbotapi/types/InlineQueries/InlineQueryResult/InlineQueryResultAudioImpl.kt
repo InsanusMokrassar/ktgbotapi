@@ -16,7 +16,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultAudioImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     title: String,
     performer: String? = null,
@@ -28,7 +28,7 @@ fun InlineQueryResultAudioImpl(
 ) = InlineQueryResultAudioImpl(id, url, title, performer, duration, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultAudioImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     title: String,
     performer: String? = null,
@@ -52,7 +52,7 @@ fun InlineQueryResultAudioImpl(
 @Serializable
 data class InlineQueryResultAudioImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(audioUrlField)
     override val url: String,
     @SerialName(titleField)

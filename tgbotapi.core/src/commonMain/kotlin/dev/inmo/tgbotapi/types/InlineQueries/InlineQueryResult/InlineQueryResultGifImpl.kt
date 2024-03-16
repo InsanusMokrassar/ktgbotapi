@@ -18,7 +18,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultGifImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     thumbnailUrl: String,
     thumbnailMimeType: MimeType? = null,
@@ -33,7 +33,7 @@ fun InlineQueryResultGifImpl(
 ) = InlineQueryResultGifImpl(id, url, thumbnailUrl, thumbnailMimeType, width, height, duration, title, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultGifImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     thumbnailUrl: String,
     thumbnailMimeType: MimeType? = null,
@@ -61,7 +61,7 @@ fun InlineQueryResultGifImpl(
 )
 
 fun InlineQueryResultGifImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     gifFile: FileId,
     thumbnailUrl: String,
     thumbnailMimeType: MimeType? = null,
@@ -76,7 +76,7 @@ fun InlineQueryResultGifImpl(
 ) = InlineQueryResultGifImpl(id, gifFile.fileId, thumbnailUrl, thumbnailMimeType, width, height, duration, title, text, parseMode, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultGifImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     gifFile: FileId,
     thumbnailUrl: String,
     thumbnailMimeType: MimeType? = null,
@@ -94,7 +94,7 @@ fun InlineQueryResultGifImpl(
 @Serializable
 data class InlineQueryResultGifImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(gifUrlField)
     override val url: String,
     @SerialName(thumbnailUrlField)

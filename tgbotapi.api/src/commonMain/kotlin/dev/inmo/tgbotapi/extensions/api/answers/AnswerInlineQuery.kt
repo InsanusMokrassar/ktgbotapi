@@ -5,10 +5,10 @@ import dev.inmo.tgbotapi.requests.answers.AnswerInlineQuery
 import dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.InlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.query.InlineQuery
-import dev.inmo.tgbotapi.types.InlineQueryIdentifier
+import dev.inmo.tgbotapi.types.InlineQueryId
 
 suspend fun TelegramBot.answerInlineQuery(
-    inlineQueryID: InlineQueryIdentifier,
+    inlineQueryID: InlineQueryId,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,
@@ -37,7 +37,7 @@ suspend fun TelegramBot.answer(
 ) = answerInlineQuery(inlineQuery.id, results, cachedTime, isPersonal, nextOffset, button)
 
 suspend fun TelegramBot.answerInlineQuery(
-    inlineQueryID: InlineQueryIdentifier,
+    inlineQueryID: InlineQueryId,
     results: List<InlineQueryResult> = emptyList(),
     cachedTime: Int? = null,
     isPersonal: Boolean? = null,

@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class RawChosenInlineResult(
     @SerialName(resultIdField)
-    val resultId: InlineQueryIdentifier, //chosen temporary, can be changed
+    val resultId: InlineQueryId, //chosen temporary, can be changed
     @SerialName(fromField)
     val user: User,
     @SerialName(queryField)

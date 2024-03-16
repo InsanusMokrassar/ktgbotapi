@@ -17,7 +17,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultDocumentImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     title: String,
     mimeType: MimeType,
@@ -32,7 +32,7 @@ fun InlineQueryResultDocumentImpl(
 ) = InlineQueryResultDocumentImpl(id, url, title, mimeType, thumbnailUrl, thumbnailWidth, thumbnailHeight, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultDocumentImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     title: String,
     mimeType: MimeType,
@@ -62,7 +62,7 @@ fun InlineQueryResultDocumentImpl(
 @Serializable
 data class InlineQueryResultDocumentImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(documentUrlField)
     override val url: String,
     @SerialName(titleField)

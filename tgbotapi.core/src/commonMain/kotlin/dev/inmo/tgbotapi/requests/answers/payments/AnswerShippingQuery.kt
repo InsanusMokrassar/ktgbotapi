@@ -11,7 +11,7 @@ import kotlinx.serialization.builtins.ListSerializer
 @Serializable
 data class AnswerShippingQueryOk(
     @SerialName(shippingQueryIdField)
-    override val shippingQueryId: ShippingQueryIdentifier,
+    override val shippingQueryId: ShippingQueryId,
     @Serializable(ShippingOptionsSerializer::class)
     @SerialName(shippingOptionsField)
     val shippingOptions: List<ShippingOption>
@@ -30,7 +30,7 @@ object ShippingOptionsSerializer : KSerializer<List<ShippingOption>> by ListSeri
 @Serializable
 data class AnswerShippingQueryError(
     @SerialName(shippingQueryIdField)
-    override val shippingQueryId: ShippingQueryIdentifier,
+    override val shippingQueryId: ShippingQueryId,
     @SerialName(errorMessageField)
     val error: String
 ) : AnswerShippingQuery {

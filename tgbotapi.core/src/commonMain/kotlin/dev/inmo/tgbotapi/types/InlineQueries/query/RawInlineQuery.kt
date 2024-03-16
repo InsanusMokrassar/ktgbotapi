@@ -2,7 +2,6 @@ package dev.inmo.tgbotapi.types.InlineQueries.query
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.*
-import dev.inmo.tgbotapi.types.chat.User
 import dev.inmo.tgbotapi.types.location.Location
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -10,7 +9,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class RawInlineQuery(
     @SerialName(idField)
-    val id: InlineQueryIdentifier,
+    val id: InlineQueryId,
     @SerialName(fromField)
     val from: CommonUser,
     @SerialName(queryField)

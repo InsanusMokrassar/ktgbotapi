@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultVenue(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(latitudeField)
     override val latitude: Double,
     @SerialName(longitudeField)

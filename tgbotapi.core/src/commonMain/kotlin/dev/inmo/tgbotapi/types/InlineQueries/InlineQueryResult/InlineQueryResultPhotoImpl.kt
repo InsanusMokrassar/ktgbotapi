@@ -16,7 +16,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultPhotoImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     thumbnailUrl: String,
     width: Int? = null,
@@ -30,7 +30,7 @@ fun InlineQueryResultPhotoImpl(
 ) = InlineQueryResultPhotoImpl(id, url, thumbnailUrl, width, height, title, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultPhotoImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     thumbnailUrl: String,
     width: Int? = null,
@@ -58,7 +58,7 @@ fun InlineQueryResultPhotoImpl(
 @Serializable
 data class InlineQueryResultPhotoImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(photoUrlField)
     override val url: String,
     @SerialName(thumbnailUrlField)

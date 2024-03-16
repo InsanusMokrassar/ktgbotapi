@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ShippingQuery(
     @SerialName(idField)
-    val id: ShippingQueryIdentifier,
+    val id: ShippingQueryId,
     @SerialName(fromField)
     override val from: User,
     @SerialName(invoicePayloadField)

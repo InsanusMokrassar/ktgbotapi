@@ -16,7 +16,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultVoiceImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     title: String,
     duration: Int? = null,
@@ -37,7 +37,7 @@ fun InlineQueryResultVoiceImpl(
 )
 
 fun InlineQueryResultVoiceImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     title: String,
     duration: Int? = null,
@@ -59,7 +59,7 @@ fun InlineQueryResultVoiceImpl(
 @Serializable
 data class InlineQueryResultVoiceImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(voiceUrlField)
     override val url: String,
     @SerialName(titleField)

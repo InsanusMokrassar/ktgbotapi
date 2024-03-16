@@ -17,7 +17,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultVoiceCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     title: String,
     text: String? = null,
@@ -27,7 +27,7 @@ fun InlineQueryResultVoiceCachedImpl(
 ) = InlineQueryResultVoiceCachedImpl(id, fileId, title, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultVoiceCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     title: String,
     entities: TextSourcesList,
@@ -47,7 +47,7 @@ fun InlineQueryResultVoiceCachedImpl(
 @Serializable
 data class InlineQueryResultVoiceCachedImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(voiceFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)

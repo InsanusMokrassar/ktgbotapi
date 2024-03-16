@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 class InlineQueryResultArticle(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(titleField)
     override val title: String,
     @SerialName(inputMessageContentField)

@@ -984,18 +984,18 @@ public final class dev/inmo/tgbotapi/requests/answers/AnswerInlineQuery : dev/in
 	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/util/List;
 	public final fun component3 ()Ljava/lang/Integer;
 	public final fun component4 ()Ljava/lang/Boolean;
 	public final fun component5 ()Ljava/lang/String;
 	public final fun component6 ()Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;
-	public final fun copy-I8_nu4A (Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;)Ldev/inmo/tgbotapi/requests/answers/AnswerInlineQuery;
-	public static synthetic fun copy-I8_nu4A$default (Ldev/inmo/tgbotapi/requests/answers/AnswerInlineQuery;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/AnswerInlineQuery;
+	public final fun copy-K6QbRE8 (Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;)Ldev/inmo/tgbotapi/requests/answers/AnswerInlineQuery;
+	public static synthetic fun copy-K6QbRE8$default (Ldev/inmo/tgbotapi/requests/answers/AnswerInlineQuery;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/AnswerInlineQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getButton ()Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;
 	public final fun getCachedTime ()Ljava/lang/Integer;
-	public final fun getInlineQueryID-t5wT6HY ()Ljava/lang/String;
+	public final fun getInlineQueryID-5UnZwr4 ()Ljava/lang/String;
 	public final fun getNextOffset ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
@@ -1235,16 +1235,16 @@ public final class dev/inmo/tgbotapi/requests/answers/payments/AnswerPreCheckout
 
 public final class dev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryError : dev/inmo/tgbotapi/requests/answers/payments/abstracts/AnswerShippingQuery {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryError$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-JHH8mc4 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryError;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryError;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryError;
+	public final fun copy-PeWj_bw (Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryError;
+	public static synthetic fun copy-PeWj_bw$default (Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryError;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryError;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getError ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
-	public fun getShippingQueryId ()Ljava/lang/String;
+	public fun getShippingQueryId-JHH8mc4 ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun isOk ()Z
 	public fun method ()Ljava/lang/String;
@@ -1273,16 +1273,16 @@ public final class dev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQue
 
 public final class dev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryOk : dev/inmo/tgbotapi/requests/answers/payments/abstracts/AnswerShippingQuery {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryOk$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-JHH8mc4 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/util/List;
-	public final fun copy (Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryOk;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryOk;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryOk;
+	public final fun copy-PeWj_bw (Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryOk;
+	public static synthetic fun copy-PeWj_bw$default (Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryOk;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/answers/payments/AnswerShippingQueryOk;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public final fun getShippingOptions ()Ljava/util/List;
-	public fun getShippingQueryId ()Ljava/lang/String;
+	public fun getShippingQueryId-JHH8mc4 ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun isOk ()Z
 	public fun method ()Ljava/lang/String;
@@ -1327,7 +1327,7 @@ public final class dev/inmo/tgbotapi/requests/answers/payments/abstracts/AnswerP
 
 public abstract interface class dev/inmo/tgbotapi/requests/answers/payments/abstracts/AnswerShippingQuery : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public abstract fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
-	public abstract fun getShippingQueryId ()Ljava/lang/String;
+	public abstract fun getShippingQueryId-JHH8mc4 ()Ljava/lang/String;
 	public abstract fun isOk ()Z
 	public abstract fun method ()Ljava/lang/String;
 }
@@ -8094,17 +8094,17 @@ public final class dev/inmo/tgbotapi/types/InlineMessageId$Companion {
 public final class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult : dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/User;
 	public final fun component3-FuCAEeA ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
-	public final fun copy-hIxOPOM (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
-	public static synthetic fun copy-hIxOPOM$default (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
+	public final fun copy-zy2iCXo (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
+	public static synthetic fun copy-zy2iCXo$default (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/BaseChosenInlineResult;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getInlineMessageId-FuCAEeA ()Ljava/lang/String;
 	public fun getQuery ()Ljava/lang/String;
-	public fun getResultId-t5wT6HY ()Ljava/lang/String;
+	public fun getResultId-5UnZwr4 ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -8128,7 +8128,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/Base
 public abstract interface class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult : dev/inmo/tgbotapi/abstracts/FromUser {
 	public abstract fun getInlineMessageId-FuCAEeA ()Ljava/lang/String;
 	public abstract fun getQuery ()Ljava/lang/String;
-	public abstract fun getResultId-t5wT6HY ()Ljava/lang/String;
+	public abstract fun getResultId-5UnZwr4 ()Ljava/lang/String;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult$DefaultImpls {
@@ -8138,19 +8138,19 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/Chos
 public final class dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult : dev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/ChosenInlineResult {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/User;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/location/StaticLocation;
 	public final fun component4-FuCAEeA ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun copy-ubtx-F8 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;
-	public static synthetic fun copy-ubtx-F8$default (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;
+	public final fun copy-6kj-O-A (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;
+	public static synthetic fun copy-6kj-O-A$default (Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ldev/inmo/tgbotapi/types/location/StaticLocation;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/ChosenInlineResult/LocationChosenInlineResult;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun getInlineMessageId-FuCAEeA ()Ljava/lang/String;
 	public final fun getLocation ()Ldev/inmo/tgbotapi/types/location/StaticLocation;
 	public fun getQuery ()Ljava/lang/String;
-	public fun getResultId-t5wT6HY ()Ljava/lang/String;
+	public fun getResultId-5UnZwr4 ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -8177,7 +8177,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun getDescription ()Ljava/lang/String;
 	public final fun getHideUrl ()Ljava/lang/Boolean;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public fun getThumbnailHeight ()Ljava/lang/Integer;
@@ -8206,18 +8206,18 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/audio/InlineQueryResultAudioCached {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-M_6xfr0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
-	public static synthetic fun copy-M_6xfr0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
+	public final fun copy-bK9-QN0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
+	public static synthetic fun copy-bK9-QN0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8244,16 +8244,16 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImplKt {
-	public static final fun InlineQueryResultAudioCachedImpl-I8_nu4A (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
-	public static synthetic fun InlineQueryResultAudioCachedImpl-I8_nu4A$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
-	public static final fun InlineQueryResultAudioCachedImpl-eHGpV3M (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
-	public static synthetic fun InlineQueryResultAudioCachedImpl-eHGpV3M$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
+	public static final fun InlineQueryResultAudioCachedImpl-K6QbRE8 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
+	public static synthetic fun InlineQueryResultAudioCachedImpl-K6QbRE8$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
+	public static final fun InlineQueryResultAudioCachedImpl-lHKz6_U (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
+	public static synthetic fun InlineQueryResultAudioCachedImpl-lHKz6_U$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioCachedImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/audio/InlineQueryResultAudio {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
@@ -8262,12 +8262,12 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-hAEpP3M (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
-	public static synthetic fun copy-hAEpP3M$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
+	public final fun copy-mRbB0zs (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
+	public static synthetic fun copy-mRbB0zs$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getPerformer ()Ljava/lang/String;
@@ -8297,17 +8297,17 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImplKt {
-	public static final fun InlineQueryResultAudioImpl-0SQLwQE (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
-	public static synthetic fun InlineQueryResultAudioImpl-0SQLwQE$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
-	public static final fun InlineQueryResultAudioImpl-Ai4JcFw (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
-	public static synthetic fun InlineQueryResultAudioImpl-Ai4JcFw$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
+	public static final fun InlineQueryResultAudioImpl-3XIVVSw (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
+	public static synthetic fun InlineQueryResultAudioImpl-3XIVVSw$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
+	public static final fun InlineQueryResultAudioImpl-L6b5ui0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
+	public static synthetic fun InlineQueryResultAudioImpl-L6b5ui0$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultAudioImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultContact : dev/inmo/tgbotapi/abstracts/CommonContactData, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/ThumbSizedInlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/ThumbedInlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithInputMessageContentInlineQueryResult {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultContact$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
@@ -8317,11 +8317,11 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/Integer;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
-	public final fun copy-hAEpP3M (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultContact;
-	public static synthetic fun copy-hAEpP3M$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultContact;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultContact;
+	public final fun copy-mRbB0zs (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultContact;
+	public static synthetic fun copy-mRbB0zs$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultContact;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultContact;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFirstName ()Ljava/lang/String;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getLastName ()Ljava/lang/String;
 	public fun getPhoneNumber ()Ljava/lang/String;
@@ -8353,7 +8353,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/document/InlineQueryResultDocumentCached {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -8361,13 +8361,13 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-0SQLwQE (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
-	public static synthetic fun copy-0SQLwQE$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
+	public final fun copy-L6b5ui0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
+	public static synthetic fun copy-L6b5ui0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8395,16 +8395,16 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImplKt {
-	public static final fun InlineQueryResultDocumentCachedImpl-Ai4JcFw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
-	public static synthetic fun InlineQueryResultDocumentCachedImpl-Ai4JcFw$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
-	public static final fun InlineQueryResultDocumentCachedImpl-M_6xfr0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
-	public static synthetic fun InlineQueryResultDocumentCachedImpl-M_6xfr0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
+	public static final fun InlineQueryResultDocumentCachedImpl-3XIVVSw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
+	public static synthetic fun InlineQueryResultDocumentCachedImpl-3XIVVSw$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
+	public static final fun InlineQueryResultDocumentCachedImpl-bK9-QN0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
+	public static synthetic fun InlineQueryResultDocumentCachedImpl-bK9-QN0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentCachedImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/document/InlineQueryResultDocument {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component12 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component13 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
@@ -8416,12 +8416,12 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-nHMW5yg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
-	public static synthetic fun copy-nHMW5yg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
+	public final fun copy-BXzB6xg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
+	public static synthetic fun copy-BXzB6xg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getMimeType ()Ldev/inmo/tgbotapi/utils/MimeType;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -8454,10 +8454,10 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImplKt {
-	public static final fun InlineQueryResultDocumentImpl-MetDa5Y (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
-	public static synthetic fun InlineQueryResultDocumentImpl-MetDa5Y$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
-	public static final fun InlineQueryResultDocumentImpl-qLTsCr0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
-	public static synthetic fun InlineQueryResultDocumentImpl-qLTsCr0$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
+	public static final fun InlineQueryResultDocumentImpl-dArWovk (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
+	public static synthetic fun InlineQueryResultDocumentImpl-dArWovk$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
+	public static final fun InlineQueryResultDocumentImpl-hb5fBIA (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
+	public static synthetic fun InlineQueryResultDocumentImpl-hb5fBIA$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultDocumentImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGame : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult {
@@ -8465,7 +8465,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun getGameShortName ()Ljava/lang/String;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public fun getType ()Ljava/lang/String;
 }
@@ -8488,19 +8488,19 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/gif/InlineQueryResultGifCached {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-Ai4JcFw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
-	public static synthetic fun copy-Ai4JcFw$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
+	public final fun copy-3XIVVSw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
+	public static synthetic fun copy-3XIVVSw$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8528,16 +8528,16 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImplKt {
-	public static final fun InlineQueryResultGifCachedImpl-I8_nu4A (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
-	public static synthetic fun InlineQueryResultGifCachedImpl-I8_nu4A$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
-	public static final fun InlineQueryResultGifCachedImpl-M_6xfr0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
-	public static synthetic fun InlineQueryResultGifCachedImpl-M_6xfr0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
+	public static final fun InlineQueryResultGifCachedImpl-K6QbRE8 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
+	public static synthetic fun InlineQueryResultGifCachedImpl-K6QbRE8$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
+	public static final fun InlineQueryResultGifCachedImpl-bK9-QN0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
+	public static synthetic fun InlineQueryResultGifCachedImpl-bK9-QN0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifCachedImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/gif/InlineQueryResultGif {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component12 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component13 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
@@ -8549,13 +8549,13 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-nHMW5yg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static synthetic fun copy-nHMW5yg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public final fun copy-BXzB6xg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static synthetic fun copy-BXzB6xg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
 	public fun getHeight ()Ljava/lang/Integer;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8587,21 +8587,21 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImplKt {
-	public static final fun InlineQueryResultGifImpl-MetDa5Y (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static final fun InlineQueryResultGifImpl-MetDa5Y (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static synthetic fun InlineQueryResultGifImpl-MetDa5Y$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static synthetic fun InlineQueryResultGifImpl-MetDa5Y$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static final fun InlineQueryResultGifImpl-qLTsCr0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static final fun InlineQueryResultGifImpl-qLTsCr0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static synthetic fun InlineQueryResultGifImpl-qLTsCr0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
-	public static synthetic fun InlineQueryResultGifImpl-qLTsCr0$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static final fun InlineQueryResultGifImpl-dArWovk (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static final fun InlineQueryResultGifImpl-dArWovk (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static synthetic fun InlineQueryResultGifImpl-dArWovk$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static synthetic fun InlineQueryResultGifImpl-dArWovk$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static final fun InlineQueryResultGifImpl-hb5fBIA (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static final fun InlineQueryResultGifImpl-hb5fBIA (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static synthetic fun InlineQueryResultGifImpl-hb5fBIA$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
+	public static synthetic fun InlineQueryResultGifImpl-hb5fBIA$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultGifImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultLocation : dev/inmo/tgbotapi/abstracts/Headed, dev/inmo/tgbotapi/abstracts/HorizontallyAccured, dev/inmo/tgbotapi/abstracts/Livable, dev/inmo/tgbotapi/abstracts/Locationed, dev/inmo/tgbotapi/abstracts/ProximityAlertable, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/ThumbSizedInlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/ThumbedInlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/TitledInlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithInputMessageContentInlineQueryResult {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultLocation$Companion;
 	public synthetic fun <init> (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component10 ()Ljava/lang/Integer;
 	public final fun component11 ()Ljava/lang/Integer;
 	public final fun component12 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8614,12 +8614,12 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/Float;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-nHMW5yg (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultLocation;
-	public static synthetic fun copy-nHMW5yg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultLocation;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultLocation;
+	public final fun copy-BXzB6xg (Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultLocation;
+	public static synthetic fun copy-BXzB6xg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultLocation;Ljava/lang/String;DDLjava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultLocation;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getHeading ()Ljava/lang/Integer;
 	public fun getHorizontalAccuracy ()Ljava/lang/Float;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getLatitude ()D
 	public fun getLivePeriod ()Ljava/lang/Integer;
@@ -8653,19 +8653,19 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/mpeg4gif/InlineQueryResultMpeg4GifCached {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-Ai4JcFw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
-	public static synthetic fun copy-Ai4JcFw$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
+	public final fun copy-3XIVVSw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
+	public static synthetic fun copy-3XIVVSw$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8693,16 +8693,16 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImplKt {
-	public static final fun InlineQueryResultMpeg4GifCachedImpl-I8_nu4A (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
-	public static synthetic fun InlineQueryResultMpeg4GifCachedImpl-I8_nu4A$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
-	public static final fun InlineQueryResultMpeg4GifCachedImpl-M_6xfr0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
-	public static synthetic fun InlineQueryResultMpeg4GifCachedImpl-M_6xfr0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
+	public static final fun InlineQueryResultMpeg4GifCachedImpl-K6QbRE8 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
+	public static synthetic fun InlineQueryResultMpeg4GifCachedImpl-K6QbRE8$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
+	public static final fun InlineQueryResultMpeg4GifCachedImpl-bK9-QN0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
+	public static synthetic fun InlineQueryResultMpeg4GifCachedImpl-bK9-QN0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifCachedImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/mpeg4gif/InlineQueryResultMpeg4Gif {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component10 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component12 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component13 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
@@ -8714,13 +8714,13 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-nHMW5yg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
-	public static synthetic fun copy-nHMW5yg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
+	public final fun copy-BXzB6xg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
+	public static synthetic fun copy-BXzB6xg$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
 	public fun getHeight ()Ljava/lang/Integer;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8752,16 +8752,16 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImplKt {
-	public static final fun InlineQueryResultMpeg4GifImpl-MetDa5Y (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
-	public static synthetic fun InlineQueryResultMpeg4GifImpl-MetDa5Y$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
-	public static final fun InlineQueryResultMpeg4GifImpl-qLTsCr0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
-	public static synthetic fun InlineQueryResultMpeg4GifImpl-qLTsCr0$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
+	public static final fun InlineQueryResultMpeg4GifImpl-dArWovk (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
+	public static synthetic fun InlineQueryResultMpeg4GifImpl-dArWovk$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
+	public static final fun InlineQueryResultMpeg4GifImpl-hb5fBIA (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
+	public static synthetic fun InlineQueryResultMpeg4GifImpl-hb5fBIA$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultMpeg4GifImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/photo/InlineQueryResultPhotoCached {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -8769,13 +8769,13 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-0SQLwQE (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
-	public static synthetic fun copy-0SQLwQE$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
+	public final fun copy-L6b5ui0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
+	public static synthetic fun copy-L6b5ui0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8803,16 +8803,16 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImplKt {
-	public static final fun InlineQueryResultPhotoCachedImpl-Ai4JcFw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
-	public static synthetic fun InlineQueryResultPhotoCachedImpl-Ai4JcFw$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
-	public static final fun InlineQueryResultPhotoCachedImpl-M_6xfr0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
-	public static synthetic fun InlineQueryResultPhotoCachedImpl-M_6xfr0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
+	public static final fun InlineQueryResultPhotoCachedImpl-3XIVVSw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
+	public static synthetic fun InlineQueryResultPhotoCachedImpl-3XIVVSw$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
+	public static final fun InlineQueryResultPhotoCachedImpl-bK9-QN0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
+	public static synthetic fun InlineQueryResultPhotoCachedImpl-bK9-QN0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoCachedImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/photo/InlineQueryResultPhoto {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component12 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public final fun component2 ()Ljava/lang/String;
@@ -8823,13 +8823,13 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
-	public final fun copy-MetDa5Y (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
-	public static synthetic fun copy-MetDa5Y$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
+	public final fun copy-dArWovk (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
+	public static synthetic fun copy-dArWovk$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
 	public fun getHeight ()Ljava/lang/Integer;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -8860,25 +8860,25 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImplKt {
-	public static final fun InlineQueryResultPhotoImpl-hAEpP3M (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
-	public static synthetic fun InlineQueryResultPhotoImpl-hAEpP3M$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
-	public static final fun InlineQueryResultPhotoImpl-qLTsCr0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
-	public static synthetic fun InlineQueryResultPhotoImpl-qLTsCr0$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
+	public static final fun InlineQueryResultPhotoImpl-hb5fBIA (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
+	public static synthetic fun InlineQueryResultPhotoImpl-hb5fBIA$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
+	public static final fun InlineQueryResultPhotoImpl-mRbB0zs (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
+	public static synthetic fun InlineQueryResultPhotoImpl-mRbB0zs$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultPhotoImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultStickerCached : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithFileIdInlineQueryResult, dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/WithInputMessageContentInlineQueryResult {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultStickerCached$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component3 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-4o0WGn4 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultStickerCached;
-	public static synthetic fun copy-4o0WGn4$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultStickerCached;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultStickerCached;
+	public final fun copy-xKg774Q (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultStickerCached;
+	public static synthetic fun copy-xKg774Q$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultStickerCached;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultStickerCached;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public fun getType ()Ljava/lang/String;
@@ -8905,7 +8905,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVenue$Companion;
 	public synthetic fun <init> (Ljava/lang/String;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component10 ()Ljava/lang/String;
 	public final fun component11 ()Ljava/lang/Integer;
 	public final fun component12 ()Ljava/lang/Integer;
@@ -8919,15 +8919,15 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/String;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-Ffjo-0w (Ljava/lang/String;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVenue;
-	public static synthetic fun copy-Ffjo-0w$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVenue;Ljava/lang/String;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVenue;
+	public final fun copy-Vi6B_GQ (Ljava/lang/String;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVenue;
+	public static synthetic fun copy-Vi6B_GQ$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVenue;Ljava/lang/String;DDLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVenue;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAddress ()Ljava/lang/String;
 	public fun getFoursquareId ()Ljava/lang/String;
 	public fun getFoursquareType ()Ljava/lang/String;
 	public fun getGooglePlaceId ()Ljava/lang/String;
 	public fun getGooglePlaceType ()Ljava/lang/String;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getLatitude ()D
 	public fun getLongitude ()D
@@ -8959,7 +8959,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/video/InlineQueryResultVideoCached {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -8967,13 +8967,13 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-0SQLwQE (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
-	public static synthetic fun copy-0SQLwQE$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
+	public final fun copy-L6b5ui0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
+	public static synthetic fun copy-L6b5ui0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -9001,16 +9001,16 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImplKt {
-	public static final fun InlineQueryResultVideoCachedImpl-Ai4JcFw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
-	public static synthetic fun InlineQueryResultVideoCachedImpl-Ai4JcFw$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
-	public static final fun InlineQueryResultVideoCachedImpl-M_6xfr0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
-	public static synthetic fun InlineQueryResultVideoCachedImpl-M_6xfr0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
+	public static final fun InlineQueryResultVideoCachedImpl-3XIVVSw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
+	public static synthetic fun InlineQueryResultVideoCachedImpl-3XIVVSw$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
+	public static final fun InlineQueryResultVideoCachedImpl-bK9-QN0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
+	public static synthetic fun InlineQueryResultVideoCachedImpl-bK9-QN0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoCachedImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/video/InlineQueryResultVideo {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component10 ()Ljava/lang/String;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component13 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -9023,14 +9023,14 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/Integer;
 	public final fun component9 ()Ljava/lang/String;
-	public final fun copy-Ffjo-0w (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
-	public static synthetic fun copy-Ffjo-0w$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
+	public final fun copy-Vi6B_GQ (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
+	public static synthetic fun copy-Vi6B_GQ$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDescription ()Ljava/lang/String;
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
 	public fun getHeight ()Ljava/lang/Integer;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getMimeType ()Ldev/inmo/tgbotapi/utils/MimeType;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
@@ -9062,28 +9062,28 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImplKt {
-	public static final fun InlineQueryResultVideoImpl-MetDa5Y (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
-	public static synthetic fun InlineQueryResultVideoImpl-MetDa5Y$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
-	public static final fun InlineQueryResultVideoImpl-nHMW5yg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
-	public static synthetic fun InlineQueryResultVideoImpl-nHMW5yg$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
+	public static final fun InlineQueryResultVideoImpl-BXzB6xg (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
+	public static synthetic fun InlineQueryResultVideoImpl-BXzB6xg$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
+	public static final fun InlineQueryResultVideoImpl-dArWovk (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
+	public static synthetic fun InlineQueryResultVideoImpl-dArWovk$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/utils/MimeType;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVideoImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/voice/InlineQueryResultVoiceCached {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-Ai4JcFw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
-	public static synthetic fun copy-Ai4JcFw$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
+	public final fun copy-3XIVVSw (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
+	public static synthetic fun copy-3XIVVSw$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEntities ()Ljava/util/List;
 	public fun getFileId ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -9111,16 +9111,16 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImplKt {
-	public static final fun InlineQueryResultVoiceCachedImpl-I8_nu4A (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
-	public static synthetic fun InlineQueryResultVoiceCachedImpl-I8_nu4A$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
-	public static final fun InlineQueryResultVoiceCachedImpl-M_6xfr0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
-	public static synthetic fun InlineQueryResultVoiceCachedImpl-M_6xfr0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
+	public static final fun InlineQueryResultVoiceCachedImpl-K6QbRE8 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
+	public static synthetic fun InlineQueryResultVoiceCachedImpl-K6QbRE8$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
+	public static final fun InlineQueryResultVoiceCachedImpl-bK9-QN0 (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
+	public static synthetic fun InlineQueryResultVoiceCachedImpl-bK9-QN0$default (Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceCachedImpl;
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/results/voice/InlineQueryResultVoice {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/Integer;
@@ -9128,12 +9128,12 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public final fun component8 ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public final fun component9 ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
-	public final fun copy-0SQLwQE (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
-	public static synthetic fun copy-0SQLwQE$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
+	public final fun copy-L6b5ui0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
+	public static synthetic fun copy-L6b5ui0$default (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getDuration ()Ljava/lang/Integer;
 	public fun getEntities ()Ljava/util/List;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getInputMessageContent ()Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;
 	public fun getParseMode ()Ldev/inmo/tgbotapi/types/message/ParseMode;
 	public fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
@@ -9162,10 +9162,10 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/Inlin
 }
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImplKt {
-	public static final fun InlineQueryResultVoiceImpl-Ai4JcFw (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
-	public static synthetic fun InlineQueryResultVoiceImpl-Ai4JcFw$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
-	public static final fun InlineQueryResultVoiceImpl-M_6xfr0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
-	public static synthetic fun InlineQueryResultVoiceImpl-M_6xfr0$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
+	public static final fun InlineQueryResultVoiceImpl-3XIVVSw (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
+	public static synthetic fun InlineQueryResultVoiceImpl-3XIVVSw$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ldev/inmo/tgbotapi/types/message/ParseMode;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
+	public static final fun InlineQueryResultVoiceImpl-bK9-QN0 (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
+	public static synthetic fun InlineQueryResultVoiceImpl-bK9-QN0$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/util/List;Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;Ldev/inmo/tgbotapi/types/InlineQueries/InputMessageContent/InputMessageContent;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/InlineQueryResultVoiceImpl;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/DescribedInlineQueryResult : dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult {
@@ -9182,7 +9182,7 @@ public abstract interface class dev/inmo/tgbotapi/types/InlineQueries/InlineQuer
 
 public abstract interface class dev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult {
 	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult$Companion;
-	public abstract fun getId-t5wT6HY ()Ljava/lang/String;
+	public abstract fun getId-5UnZwr4 ()Ljava/lang/String;
 	public abstract fun getReplyMarkup ()Ldev/inmo/tgbotapi/types/buttons/InlineKeyboardMarkup;
 	public abstract fun getType ()Ljava/lang/String;
 }
@@ -9628,18 +9628,18 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/InputMessageContentSeri
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery : dev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery {
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/chat/ChatType;
-	public final fun copy-eHGpV3M (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;)Ldev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery;
-	public static synthetic fun copy-eHGpV3M$default (Ldev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery;
+	public final fun copy-lHKz6_U (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;)Ldev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery;
+	public static synthetic fun copy-lHKz6_U$default (Ldev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatType ()Ldev/inmo/tgbotapi/types/chat/ChatType;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public fun getOffset ()Ljava/lang/String;
 	public fun getQuery ()Ljava/lang/String;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
@@ -9651,7 +9651,7 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/query/BaseInlineQuery :
 public abstract interface class dev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery : dev/inmo/tgbotapi/abstracts/FromUser {
 	public abstract fun getChatType ()Ldev/inmo/tgbotapi/types/chat/ChatType;
 	public abstract fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
-	public abstract fun getId-t5wT6HY ()Ljava/lang/String;
+	public abstract fun getId-5UnZwr4 ()Ljava/lang/String;
 	public abstract fun getOffset ()Ljava/lang/String;
 	public abstract fun getQuery ()Ljava/lang/String;
 	public abstract fun getUser ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
@@ -9663,19 +9663,19 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery$Defau
 
 public final class dev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery : dev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery {
 	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;Ldev/inmo/tgbotapi/types/location/Location;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-t5wT6HY ()Ljava/lang/String;
+	public final fun component1-5UnZwr4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
 	public final fun component5 ()Ldev/inmo/tgbotapi/types/chat/ChatType;
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/location/Location;
-	public final fun copy-I8_nu4A (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;Ldev/inmo/tgbotapi/types/location/Location;)Ldev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery;
-	public static synthetic fun copy-I8_nu4A$default (Ldev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;Ldev/inmo/tgbotapi/types/location/Location;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery;
+	public final fun copy-K6QbRE8 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;Ldev/inmo/tgbotapi/types/location/Location;)Ldev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery;
+	public static synthetic fun copy-K6QbRE8$default (Ldev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/CommonUser;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/ChatType;Ldev/inmo/tgbotapi/types/location/Location;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getChatType ()Ldev/inmo/tgbotapi/types/chat/ChatType;
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/CommonUser;
 	public synthetic fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public fun getId-t5wT6HY ()Ljava/lang/String;
+	public fun getId-5UnZwr4 ()Ljava/lang/String;
 	public final fun getLocation ()Ldev/inmo/tgbotapi/types/location/Location;
 	public fun getOffset ()Ljava/lang/String;
 	public fun getQuery ()Ljava/lang/String;
@@ -9685,9 +9685,9 @@ public final class dev/inmo/tgbotapi/types/InlineQueries/query/LocationInlineQue
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/types/InlineQueryIdentifier {
-	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueryIdentifier$Companion;
-	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueryIdentifier;
+public final class dev/inmo/tgbotapi/types/InlineQueryId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/InlineQueryId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/InlineQueryId;
 	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
@@ -9700,18 +9700,18 @@ public final class dev/inmo/tgbotapi/types/InlineQueryIdentifier {
 	public final synthetic fun unbox-impl ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/types/InlineQueryIdentifier$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/InlineQueryIdentifier$$serializer;
+public final class dev/inmo/tgbotapi/types/InlineQueryId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/InlineQueryId$$serializer;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize-BK2_Pfw (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun deserialize-mMimAjY (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize-X9pJREk (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun serialize-CTCceQw (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/InlineQueryIdentifier$Companion {
+public final class dev/inmo/tgbotapi/types/InlineQueryId$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -10439,6 +10439,36 @@ public final class dev/inmo/tgbotapi/types/SecondaryChatInviteLink$Companion {
 public final class dev/inmo/tgbotapi/types/SecondaryChatInviteLink$DefaultImpls {
 	public static fun getUser (Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;)Ldev/inmo/tgbotapi/types/chat/User;
 	public static fun isPrimary (Ldev/inmo/tgbotapi/types/SecondaryChatInviteLink;)Z
+}
+
+public final class dev/inmo/tgbotapi/types/ShippingQueryId {
+	public static final field Companion Ldev/inmo/tgbotapi/types/ShippingQueryId$Companion;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/ShippingQueryId;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getString ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/ShippingQueryId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/ShippingQueryId$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-0iKyaUk (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/String;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-HuIqfiI (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/String;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/ShippingQueryId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public abstract interface class dev/inmo/tgbotapi/types/StickerFormat {
@@ -21691,16 +21721,16 @@ public final class dev/inmo/tgbotapi/types/payments/ShippingOption$Companion {
 
 public final class dev/inmo/tgbotapi/types/payments/ShippingQuery : dev/inmo/tgbotapi/abstracts/FromUser {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/ShippingQuery$Companion;
-	public fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/ShippingAddress;)V
-	public final fun component1 ()Ljava/lang/String;
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/ShippingAddress;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-JHH8mc4 ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/User;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/payments/ShippingAddress;
-	public final fun copy (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/ShippingAddress;)Ldev/inmo/tgbotapi/types/payments/ShippingQuery;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/ShippingQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/ShippingAddress;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/ShippingQuery;
+	public final fun copy-fzboMqs (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/ShippingAddress;)Ldev/inmo/tgbotapi/types/payments/ShippingQuery;
+	public static synthetic fun copy-fzboMqs$default (Ldev/inmo/tgbotapi/types/payments/ShippingQuery;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/User;Ljava/lang/String;Ldev/inmo/tgbotapi/types/payments/ShippingAddress;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/ShippingQuery;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getFrom ()Ldev/inmo/tgbotapi/types/chat/User;
-	public final fun getId ()Ljava/lang/String;
+	public final fun getId-JHH8mc4 ()Ljava/lang/String;
 	public final fun getInvoicePayload ()Ljava/lang/String;
 	public final fun getShippingAddress ()Ldev/inmo/tgbotapi/types/payments/ShippingAddress;
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;

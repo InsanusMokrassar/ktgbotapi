@@ -219,10 +219,10 @@ public final class dev/inmo/tgbotapi/extensions/api/answers/AnswerInlineQueryKt 
 	public static final fun answerInlineQuery (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun answerInlineQuery$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun answerInlineQuery$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static final fun answerInlineQuery-8XTM45Q (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun answerInlineQuery-8XTM45Q$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static final fun answerInlineQuery-vUPAXZ0 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun answerInlineQuery-vUPAXZ0$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun answerInlineQuery-3tbhYOM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun answerInlineQuery-3tbhYOM$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/answers/InlineQueryResultsButton;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun answerInlineQuery-3ujPtqM (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun answerInlineQuery-3ujPtqM$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/answers/AnswerWebAppQueryKt {
@@ -239,9 +239,9 @@ public final class dev/inmo/tgbotapi/extensions/api/answers/payments/AnswerPreCh
 
 public final class dev/inmo/tgbotapi/extensions/api/answers/payments/AnswerShippingQueryKt {
 	public static final fun answerShippingQueryError (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/payments/ShippingQuery;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun answerShippingQueryError (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun answerShippingQueryError-TgyrXs4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun answerShippingQueryOk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/payments/ShippingQuery;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun answerShippingQueryOk (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun answerShippingQueryOk-TgyrXs4 (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/bot/ClearMyDefaultAdministratorRightsKt {

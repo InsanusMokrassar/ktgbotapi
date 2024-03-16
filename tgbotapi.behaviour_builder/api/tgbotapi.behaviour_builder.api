@@ -1322,7 +1322,7 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_f
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdInlineQueryMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdInlineQueryMarkerFactory;
 	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun invoke-u_sy23g (Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun invoke-nHD9vJQ (Ldev/inmo/tgbotapi/types/InlineQueries/query/InlineQuery;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdPollAnswerMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
