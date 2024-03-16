@@ -20,6 +20,8 @@ jobs:
         run: ./gradlew ksp
       - name: Build
         run: ./gradlew build
+      - name: API compatibility check
+        run: ./gradlew apiCheck
       - name: Publish to Gitea
         continue-on-error: true
         run: ./gradlew publishAllPublicationsToInmoNexusRepository
