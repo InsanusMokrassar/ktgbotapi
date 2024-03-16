@@ -7,6 +7,3 @@ interface LinkPreviewOptionsContainer {
     val disableWebPagePreview: Boolean?
         get() = linkPreviewOptions ?.isDisabled != true
 }
-
-@Deprecated("Renamed", ReplaceWith("LinkPreviewOptionsContainer", "dev.inmo.tgbotapi.abstracts.types.LinkPreviewOptionsContainer"))
-typealias DisableWebPagePreview = LinkPreviewOptionsContainer

@@ -2,6 +2,8 @@
 
 ## 11.0.0
 
+**THIS UPDATE CONTAINS REMOVES OF DEPRECATED THINGS**
+
 ## 10.1.2
 
 * `Version`:

@@ -37,12 +37,3 @@ data class ChatCommonAdministratorRights(
     @SerialName(canDeleteStoriesField)
     override val canDeleteStories: Boolean = false
 ) : ChatAdministratorRights
-
-@Deprecated(
-    "Renamed to ChatCommonAdministratorRights and will be removed soon",
-    ReplaceWith(
-        "ChatCommonAdministratorRights",
-        "dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights"
-    )
-)
-typealias ChatAdministratorRightsImpl = ChatCommonAdministratorRights
