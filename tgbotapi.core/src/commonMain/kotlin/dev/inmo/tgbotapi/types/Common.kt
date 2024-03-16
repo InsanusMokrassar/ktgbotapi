@@ -1,13 +1,6 @@
 package dev.inmo.tgbotapi.types
 
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.builtins.serializer
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
-import kotlin.jvm.JvmInline
 
 typealias ForwardSignature = String
 typealias ForwardSenderName = String
@@ -22,20 +15,6 @@ typealias GooglePlaceId = String
 typealias GooglePlaceType = String
 typealias MembersLimit = Int
 
-@Serializable
-@JvmInline
-value class CustomEmojiId(
-    val string: String
-) {
-    val appLink
-        get() = "${internalTgAppLinksBeginning}emoji?id=$this"
-}
-@Serializable
-@JvmInline
-value class StoryId(
-    val long: Long
-)
-
 typealias Seconds = Int
 typealias MilliSeconds = Long
 typealias LongSeconds = Long
@@ -43,70 +22,6 @@ typealias UnixTimeStamp = LongSeconds
 
 typealias Meters = Float
 typealias Degrees = Int
-
-@Serializable(StickerType.Serializer::class)
-sealed interface StickerType {
-    val type: String
-
-    @Serializable
-    object Regular : StickerType { override val type: String = "regular" }
-    @Serializable
-    object Mask : StickerType { override val type: String = "mask" }
-    @Serializable
-    object CustomEmoji : StickerType { override val type: String = "custom_emoji" }
-    @Serializable
-    data class Unknown(override val type: String = "custom_emoji") : StickerType
-
-    object Serializer : KSerializer<StickerType> {
-        override val descriptor: SerialDescriptor = String.serializer().descriptor
-
-        override fun deserialize(decoder: Decoder): StickerType {
-            return when (val type = decoder.decodeString()) {
-                Regular.type -> Regular
-                Mask.type -> Mask
-                CustomEmoji.type -> CustomEmoji
-                else -> Unknown(type)
-            }
-        }
-
-        override fun serialize(encoder: Encoder, value: StickerType) {
-            encoder.encodeString(value.type)
-        }
-
-    }
-}
-
-@Serializable(StickerFormat.Serializer::class)
-sealed interface StickerFormat {
-    val type: String
-
-    @Serializable
-    object Static : StickerFormat { override val type: String = "static" }
-    @Serializable
-    object Animated : StickerFormat { override val type: String = "animated" }
-    @Serializable
-    object Video : StickerFormat { override val type: String = "video" }
-    @Serializable
-    data class Unknown(override val type: String = "custom_emoji") : StickerFormat
-
-    object Serializer : KSerializer<StickerFormat> {
-        override val descriptor: SerialDescriptor = String.serializer().descriptor
-
-        override fun deserialize(decoder: Decoder): StickerFormat {
-            return when (val type = decoder.decodeString()) {
-                Static.type -> Static
-                Animated.type -> Animated
-                Video.type -> Video
-                else -> Unknown(type)
-            }
-        }
-
-        override fun serialize(encoder: Encoder, value: StickerFormat) {
-            encoder.encodeString(value.type)
-        }
-
-    }
-}
 
 val usernameRegex = Regex("@[\\w\\d_]+")
 
