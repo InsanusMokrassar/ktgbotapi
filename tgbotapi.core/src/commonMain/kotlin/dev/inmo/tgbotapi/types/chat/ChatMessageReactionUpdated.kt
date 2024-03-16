@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.chat
 
-import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.reactions.Reaction
@@ -28,7 +27,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         @SerialName(chatField)
         override val chat: PreviewChat,
         @SerialName(messageIdField)
-        override val messageId: MessageIdentifier,
+        override val messageId: MessageId,
         @SerialName(userField)
         override val reactedUser: PreviewUser,
         @Serializable(TelegramDateSerializer::class)
@@ -48,7 +47,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         @SerialName(chatField)
         override val chat: PreviewChat,
         @SerialName(messageIdField)
-        override val messageId: MessageIdentifier,
+        override val messageId: MessageId,
         @SerialName(actorChatField)
         override val reactedChat: PreviewChat,
         @Serializable(TelegramDateSerializer::class)
@@ -68,7 +67,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         @SerialName(chatField)
         override val chat: PreviewChat,
         @SerialName(messageIdField)
-        override val messageId: MessageIdentifier,
+        override val messageId: MessageId,
         @SerialName(actorChatField)
         override val reactedChat: PreviewChat?,
         @SerialName(userField)
@@ -88,7 +87,7 @@ sealed interface ChatMessageReactionUpdated : WithPreviewChatAndMessageId {
         @SerialName(chatField)
         val chat: PreviewChat,
         @SerialName(messageIdField)
-        val messageId: MessageIdentifier,
+        val messageId: MessageId,
         @SerialName(userField)
         val reactedUser: PreviewUser? = null,
         @SerialName(actorChatField)

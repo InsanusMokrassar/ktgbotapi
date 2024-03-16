@@ -1,6 +1,5 @@
 package dev.inmo.tgbotapi.types.chat
 
-import dev.inmo.tgbotapi.abstracts.WithPreviewChat
 import dev.inmo.tgbotapi.abstracts.WithPreviewChatAndMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.reactions.ReactionsCount
@@ -12,7 +11,7 @@ data class ChatMessageReactionsCountUpdated(
     @SerialName(chatField)
     override val chat: PreviewChat,
     @SerialName(messageIdField)
-    override val messageId: MessageIdentifier,
+    override val messageId: MessageId,
     @Serializable(TelegramDateSerializer::class)
     @SerialName(dateField)
     val date: TelegramDate,

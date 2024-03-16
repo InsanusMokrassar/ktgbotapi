@@ -5,7 +5,7 @@
 **THIS UPDATE CONTAINS REMOVES OF DEPRECATED THINGS**
 
 * `Core`:
-  * `MessageId` now is `value class`
+  * `MessageId` now is `value class`. `MessageIdentifier` become deprecated
   * `MessageThreadId` now is `value class`
   * `InlineQueryIdentifier` now is `value class`
   * `MediaGroupIdentifier` now is `value class`

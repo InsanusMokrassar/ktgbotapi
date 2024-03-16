@@ -32,3 +32,6 @@ value class MessageId(
 )
 
 fun Long.asTelegramMessageId() = MessageId(this)
+
+@Deprecated("Renamed", ReplaceWith("MessageId", "dev.inmo.tgbotapi.types.MessageId"))
+typealias MessageIdentifier = MessageId
