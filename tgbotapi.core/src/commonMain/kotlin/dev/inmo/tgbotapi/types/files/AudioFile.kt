@@ -12,7 +12,7 @@ data class AudioFile(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(durationField)
     override val duration: Long? = null,
     @SerialName(performerField)

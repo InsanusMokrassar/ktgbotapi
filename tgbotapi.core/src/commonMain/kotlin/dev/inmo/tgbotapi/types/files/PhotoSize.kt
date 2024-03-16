@@ -2,10 +2,8 @@ package dev.inmo.tgbotapi.types.files
 
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.files.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import kotlinx.serialization.*
-import kotlinx.serialization.builtins.ListSerializer
 import kotlin.jvm.JvmInline
 
 @Serializable
@@ -17,7 +15,7 @@ value class Photo(
         get() = biggest()!!
     override val fileId: FileId
         get() = biggest.fileId
-    override val fileUniqueId: FileUniqueId
+    override val fileUniqueId: TgFileUniqueId
         get() = biggest.fileUniqueId
     override val fileSize: Long?
         get() = biggest.fileSize
@@ -41,7 +39,7 @@ data class PhotoSize(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(fileSizeField)
     override val fileSize: Long? = null,
     override val width: Int,

@@ -23,7 +23,6 @@ typealias StartParameter = String
 typealias InlineMessageIdentifier = String
 typealias PollIdentifier = String
 typealias StickerSetName = String
-typealias FileUniqueId = String
 typealias DiceResult = Int
 typealias FoursquareId = String
 typealias FoursquareType = String

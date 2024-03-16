@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.stickers.MaskPosition
 
 inline val Sticker.file_id: FileId
     get() = fileId
-inline val Sticker.file_unique_id: FileUniqueId
+inline val Sticker.file_unique_id: TgFileUniqueId
     get() = fileUniqueId
 inline val Sticker.is_animated: Boolean
     get() = this is AnimatedSticker

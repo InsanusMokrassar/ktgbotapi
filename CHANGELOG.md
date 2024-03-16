@@ -12,6 +12,7 @@
   * `CallbackQueryIdentifier` now is `value class`
   * `WebAppQueryId` now is `value class`
   * `PreCheckoutQueryId` now is `value class`
+  * `FileUniqueId` has been renamed to `TgFileUniqueId` and now is `value class`
 
 ## 10.1.2
 
