@@ -4,6 +4,8 @@
 
 **THIS UPDATE CONTAINS REMOVES OF DEPRECATED THINGS**
 
+**THIS UPDATE CONTAINS A LOT OF BREAKING CHANGES**
+
 * `Core`:
   * `MessageId` now is `value class`. `MessageIdentifier` become deprecated
   * `MessageThreadId` now is `value class`
