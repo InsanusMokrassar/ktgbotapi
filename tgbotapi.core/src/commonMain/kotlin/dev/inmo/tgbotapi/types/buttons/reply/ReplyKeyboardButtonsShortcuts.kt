@@ -65,16 +65,6 @@ inline fun requestUsersReplyButton(
     requestUser
 )
 
-
-/**
- * Creates [RequestUserKeyboardButton]
- */
-@Deprecated("Renamed", ReplaceWith("requestUsersReplyButton(text, requestUser)", "dev.inmo.tgbotapi.types.buttons.reply.requestUsersReplyButton"))
-inline fun requestUserReplyButton(
-    text: String,
-    requestUser: KeyboardButtonRequestUsers
-) = requestUsersReplyButton(text, requestUser)
-
 /**
  * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Bot]
  */
@@ -85,18 +75,6 @@ inline fun requestBotsReplyButton(
 ) = requestUsersReplyButton(
     text,
     KeyboardButtonRequestUsers.Bot(requestId, maxCount)
-)
-
-/**
- * Creates [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Bot]
- */
-@Deprecated("Renamed", ReplaceWith("requestBotsReplyButton(text, requestId)", "dev.inmo.tgbotapi.types.buttons.reply.requestBotsReplyButton"))
-inline fun requestBotReplyButton(
-    text: String,
-    requestId: RequestId,
-) = requestBotsReplyButton(
-    text,
-    requestId,
 )
 
 /**
@@ -146,7 +124,7 @@ inline fun requestUsersOrBotsReplyButton(
 inline fun requestUserOrBotReplyButton(
     text: String,
     requestId: RequestId
-) = requestUserReplyButton(
+) = requestUsersReplyButton(
     text,
     KeyboardButtonRequestUsers.Any(requestId)
 )

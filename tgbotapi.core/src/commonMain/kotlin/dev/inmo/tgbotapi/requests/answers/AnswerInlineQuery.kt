@@ -13,7 +13,7 @@ import kotlinx.serialization.builtins.serializer
 @Serializable
 data class AnswerInlineQuery(
     @SerialName(inlineQueryIdField)
-    val inlineQueryID: InlineQueryIdentifier,
+    val inlineQueryID: InlineQueryId,
     @Serializable(InlineQueryAnswersResultsSerializer::class)
     @SerialName(resultsField)
     val results: List<InlineQueryResult> = emptyList(),
@@ -27,7 +27,7 @@ data class AnswerInlineQuery(
     val button: InlineQueryResultsButton? = null,
 ) : SimpleRequest<Boolean> {
     constructor(
-        inlineQueryID: InlineQueryIdentifier,
+        inlineQueryID: InlineQueryId,
         results: List<InlineQueryResult> = emptyList(),
         cachedTime: Int? = null,
         isPersonal: Boolean? = null,

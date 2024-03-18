@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.edit.caption
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.caption.EditInlineMessageCaption
-import dev.inmo.tgbotapi.types.InlineMessageIdentifier
+import dev.inmo.tgbotapi.types.InlineMessageId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
  * as a builder for that
  */
 suspend fun TelegramBot.editMessageCaption(
-    inlineMessageId: InlineMessageIdentifier,
+    inlineMessageId: InlineMessageId,
     text: String,
     parseMode: ParseMode? = null,
     replyMarkup: InlineKeyboardMarkup? = null
@@ -23,7 +23,7 @@ suspend fun TelegramBot.editMessageCaption(
  * as a builder for that
  */
 suspend fun TelegramBot.editMessageCaption(
-    inlineMessageId: InlineMessageIdentifier,
+    inlineMessageId: InlineMessageId,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(EditInlineMessageCaption(inlineMessageId, entities, replyMarkup))

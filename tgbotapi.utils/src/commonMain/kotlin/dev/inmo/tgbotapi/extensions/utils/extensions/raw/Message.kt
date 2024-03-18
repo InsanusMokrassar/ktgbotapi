@@ -61,7 +61,7 @@ inline val Message.edit_date: TelegramDate?
 inline val Message.has_protected_content: Boolean?
     get() = asContentMessage() ?.hasProtectedContent
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.media_group_id: MediaGroupIdentifier?
+inline val Message.media_group_id: MediaGroupId?
     get() = asMediaGroupMessage() ?.mediaGroupId
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.author_signature: AuthorSignature?

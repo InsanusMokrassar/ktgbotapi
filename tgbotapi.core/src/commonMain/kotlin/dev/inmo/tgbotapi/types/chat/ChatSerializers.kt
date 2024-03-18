@@ -28,21 +28,6 @@ sealed class ChatType {
     object Channel : ChatType() { override val stringified = "channel" }
     @Serializable(ChatTypeSerializer::class)
     class Unknown(override val stringified: String) : ChatType()
-
-    companion object {
-        @Deprecated("Renamed", ReplaceWith("Private", "dev.inmo.tgbotapi.types.chat.ChatType.Private"))
-        val PrivateChatType = Private
-        @Deprecated("Renamed", ReplaceWith("Group", "dev.inmo.tgbotapi.types.chat.ChatType.Group"))
-        val GroupChatType = Group
-        @Deprecated("Renamed", ReplaceWith("Supergroup", "dev.inmo.tgbotapi.types.chat.ChatType.Supergroup"))
-        val SupergroupChatType = Supergroup
-        @Deprecated("Renamed", ReplaceWith("Channel", "dev.inmo.tgbotapi.types.chat.ChatType.Channel"))
-        val ChannelChatType = Channel
-        @Deprecated("Renamed", ReplaceWith("Unknown", "dev.inmo.tgbotapi.types.chat.ChatType.Unknown"))
-        val UnknownChatType = Unknown
-        @Deprecated("Renamed", ReplaceWith("Unknown(stringified)", "dev.inmo.tgbotapi.types.chat.ChatType.Unknown"))
-        fun UnknownChatType(stringified: String) = Unknown(stringified)
-    }
 }
 val String.asChatType
     get() = when (this) {

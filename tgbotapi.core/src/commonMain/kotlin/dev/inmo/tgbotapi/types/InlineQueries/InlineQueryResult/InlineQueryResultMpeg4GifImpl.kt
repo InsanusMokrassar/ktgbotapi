@@ -17,7 +17,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultMpeg4GifImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     thumbnailUrl: String,
     thumbnailMimeType: MimeType? = null,
@@ -32,7 +32,7 @@ fun InlineQueryResultMpeg4GifImpl(
 ) = InlineQueryResultMpeg4GifImpl(id, url, thumbnailUrl, thumbnailMimeType, width, height, duration, title, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultMpeg4GifImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     thumbnailUrl: String,
     thumbnailMimeType: MimeType? = null,
@@ -62,7 +62,7 @@ fun InlineQueryResultMpeg4GifImpl(
 @Serializable
 data class InlineQueryResultMpeg4GifImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(mpeg4GifUrlField)
     override val url: String,
     @SerialName(thumbnailUrlField)

@@ -5,7 +5,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder
 import dev.inmo.micro_utils.coroutines.*
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar.TriggersHolder
-import dev.inmo.tgbotapi.types.UpdateIdentifier
+import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import dev.inmo.tgbotapi.updateshandlers.*
 import kotlinx.coroutines.*
@@ -72,7 +72,7 @@ class DefaultBehaviourContext(
     private val additionalUpdatesSharedFlow = MutableSharedFlow<Update>(0, broadcastChannelsSize, onBufferOverflow)
     override val allUpdatesFlow: Flow<Update> = (additionalUpdatesSharedFlow.asSharedFlow()).let {
         if (upstreamUpdatesFlow != null) {
-            val handledUpdates = mutableSetOf<UpdateIdentifier>()
+            val handledUpdates = mutableSetOf<UpdateId>()
             (it + upstreamUpdatesFlow).filter {
                 val passed = handledUpdates.add(it.updateId)
                 (passed).also { passed ->

@@ -28,15 +28,6 @@ suspend fun TelegramBot.deleteMessages(
 )
 
 suspend fun TelegramBot.deleteMessages(
-    chatId: ChatIdentifier,
-    firstMessageId: MessageId,
-    vararg messageIds: MessageId
-) = deleteMessages(
-    chatId = chatId,
-    messageIds = (listOf(firstMessageId) + messageIds.toList())
-)
-
-suspend fun TelegramBot.deleteMessages(
     messagesMetas: List<Message.MetaInfo>
 ) = messagesMetas.groupBy { it.chatId }.map { (chatId, messages) ->
     deleteMessages(
@@ -59,14 +50,6 @@ suspend fun TelegramBot.delete(
     chatId: ChatIdentifier,
     messageIds: Array<MessageId>
 ) = deleteMessages(chatId = chatId, messageIds = messageIds)
-
-suspend fun TelegramBot.delete(
-    chatId: ChatIdentifier,
-    firstMessageId: MessageId,
-    secondMessageId: MessageId,
-    vararg messageIds: MessageId
-) = deleteMessages(chatId = chatId, messageIds = (listOf(firstMessageId, secondMessageId) + messageIds.toList()))
-
 
 suspend fun TelegramBot.delete(
     messagesMetas: List<Message.MetaInfo>

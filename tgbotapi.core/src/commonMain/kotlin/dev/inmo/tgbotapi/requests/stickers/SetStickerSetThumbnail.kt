@@ -8,7 +8,7 @@ import kotlinx.serialization.*
 
 fun SetStickerSetThumbnail(
     userId: UserId,
-    stickerSetName: String,
+    stickerSetName: StickerSetName,
     thumbnail: MultipartFile
 ): Request<Boolean> {
     return CommonMultipartFileRequest(
@@ -16,6 +16,16 @@ fun SetStickerSetThumbnail(
         mapOf(thumbnailField to thumbnail)
     )
 }
+
+fun SetStickerSetThumbnail(
+    userId: UserId,
+    stickerSetName: String,
+    thumbnail: MultipartFile
+): Request<Boolean> = SetStickerSetThumbnail(
+    userId = userId,
+    stickerSetName = StickerSetName(stickerSetName),
+    thumbnail = thumbnail
+)
 
 @Serializable
 data class SetStickerSetThumbnail (

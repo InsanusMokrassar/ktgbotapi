@@ -1,6 +1,6 @@
 package dev.inmo.tgbotapi.extensions.api.InternalUtils
 
-import dev.inmo.tgbotapi.types.MediaGroupIdentifier
+import dev.inmo.tgbotapi.types.MediaGroupId
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.update.*
@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.utils.extensions.asMediaGroupMessage
  */
 internal fun List<Update>.convertWithMediaGroupUpdates(): List<Update> {
     val resultUpdates = mutableListOf<Update>()
-    val mediaGroups = mutableMapOf<MediaGroupIdentifier, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
+    val mediaGroups = mutableMapOf<MediaGroupId, MutableList<Pair<BaseSentMessageUpdate, PossiblySentViaBotCommonMessage<MediaGroupPartContent>>>>()
 
     for (update in this) {
         val message = (update.data as? PossiblySentViaBotCommonMessage<*>) ?.let {

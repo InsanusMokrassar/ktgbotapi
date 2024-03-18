@@ -9,7 +9,7 @@ import kotlinx.serialization.*
 @Serializable
 data class EditInlineMessageLiveLocation(
     @SerialName(inlineMessageIdField)
-    override val inlineMessageId: InlineMessageIdentifier,
+    override val inlineMessageId: InlineMessageId,
     @SerialName(latitudeField)
     override val latitude: Double,
     @SerialName(longitudeField)

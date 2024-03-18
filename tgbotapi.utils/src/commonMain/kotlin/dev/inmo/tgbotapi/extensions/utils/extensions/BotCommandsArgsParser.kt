@@ -13,9 +13,6 @@ object TelegramBotCommandsDefaults {
     val defaultNamesArgsSeparatorRegex = Regex(defaultNamesArgsSeparator)
 }
 
-@Deprecated(message = "Replaced", replaceWith = ReplaceWith("TelegramBotCommandsDefaults.defaultArgsSeparatorRegex", "dev.inmo.tgbotapi.extensions.utils.extensions.TelegramBotCommandsDefaults"))
-val defaultArgsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex
-
 /**
  * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
  */
@@ -218,30 +215,3 @@ fun ContentMessage<TextContent>.parseCommandsWithNamedArgs(
     argsSeparator: String,
     nameArgSeparator: Regex = TelegramBotCommandsDefaults.defaultNamesArgsSeparatorRegex,
 ) = parseCommandsWithNamedArgs(argsSeparator = Regex(pattern = argsSeparator), nameArgSeparator = nameArgSeparator)
-
-
-// Deprecations
-
-/**
- * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
- */
-@Deprecated("Renamed", ReplaceWith("parseCommandsWithArgs(argsSeparator)", "dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithArgs"))
-fun List<TextSource>.parseCommandsWithParams(
-    argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex
-): MutableMap<String, Array<String>> = parseCommandsWithArgs(argsSeparator)
-
-/**
- * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
- */
-@Deprecated("Renamed", ReplaceWith("parseCommandsWithArgs(argsSeparator)", "dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithArgs"))
-fun TextedWithTextSources.parseCommandsWithParams(
-    argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex
-) = parseCommandsWithArgs(argsSeparator)
-
-/**
- * Parse commands and their args. Logic will find command, get all subsequent data as args until new command
- */
-@Deprecated("Renamed", ReplaceWith("parseCommandsWithArgs(argsSeparator)", "dev.inmo.tgbotapi.extensions.utils.extensions.parseCommandsWithArgs"))
-fun ContentMessage<TextContent>.parseCommandsWithParams(
-    argsSeparator: Regex = TelegramBotCommandsDefaults.defaultArgsSeparatorRegex
-) = parseCommandsWithArgs(argsSeparator)

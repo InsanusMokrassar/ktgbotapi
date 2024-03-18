@@ -19,7 +19,7 @@ import kotlinx.serialization.encoding.Encoder
  */
 fun CreateNewStickerSet(
     userId: UserId,
-    name: String,
+    name: StickerSetName,
     title: String,
     stickersFormat: StickerFormat,
     stickers: List<InputSticker>,
@@ -53,6 +53,28 @@ fun CreateNewStickerSet(
     }
 }
 
+/**
+ * Will create one of [CreateNewStickerSet] types based on the first element of [stickers]
+ *
+ * @param needsRepainting Will be used only if you are creating custom emojis sticker pack (by passing [stickers] with
+ * type [InputSticker.WithKeywords.CustomEmoji])
+ */
+fun CreateNewStickerSet(
+    userId: UserId,
+    name: String,
+    title: String,
+    stickersFormat: StickerFormat,
+    stickers: List<InputSticker>,
+    needsRepainting: Boolean? = null
+) = CreateNewStickerSet(
+    userId = userId,
+    name = StickerSetName(name),
+    title = title,
+    stickersFormat = stickersFormat,
+    stickers = stickers,
+    needsRepainting = needsRepainting
+)
+
 @Serializable(CreateNewStickerSetSerializer::class)
 sealed interface CreateNewStickerSet : CreateStickerSetAction {
     val stickerType: StickerType
@@ -69,7 +91,7 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         @SerialName(userIdField)
         override val userId: UserId,
         @SerialName(nameField)
-        override val name: String,
+        override val name: StickerSetName,
         @SerialName(titleField)
         override val title: String,
         @SerialName(stickerFormatField)
@@ -86,7 +108,7 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         @SerialName(userIdField)
         override val userId: UserId,
         @SerialName(nameField)
-        override val name: String,
+        override val name: StickerSetName,
         @SerialName(titleField)
         override val title: String,
         @SerialName(stickerFormatField)
@@ -103,7 +125,7 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         @SerialName(userIdField)
         override val userId: UserId,
         @SerialName(nameField)
-        override val name: String,
+        override val name: StickerSetName,
         @SerialName(titleField)
         override val title: String,
         @SerialName(stickerFormatField)
@@ -123,7 +145,7 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         @SerialName(userIdField)
         override val userId: UserId,
         @SerialName(nameField)
-        override val name: String,
+        override val name: StickerSetName,
         @SerialName(titleField)
         override val title: String,
         @SerialName(stickerFormatField)

@@ -4,19 +4,19 @@ import dev.inmo.tgbotapi.TestsJsonFormat
 import kotlinx.serialization.Serializable
 import kotlin.test.*
 
-private const val chatIdentifierChatId: Identifier = 123L
-private const val chatIdentifierLink = "tg://user?id=$chatIdentifierChatId"
+private val chatIdentifierChatId: RawChatId = RawChatId(123L)
+private val chatIdentifierLink = "tg://user?id=$chatIdentifierChatId"
 private const val testUsername = "@Example"
 
 class ChatIdentifierTests {
     @Test
     fun `Cast_from_Int_to_ChatId_is_working_correctly`() {
-        val chatId = chatIdentifierChatId.toInt().toChatId()
+        val chatId = chatIdentifierChatId.long.toInt().toChatId()
         assertEquals(chatIdentifierChatId, chatId.chatId)
     }
     @Test
     fun `Cast_from_Byte_to_ChatId_is_working_correctly`() {
-        val chatId = chatIdentifierChatId.toByte().toChatId()
+        val chatId = chatIdentifierChatId.long.toByte().toChatId()
         assertEquals(chatIdentifierChatId, chatId.chatId)
     }
     @Test

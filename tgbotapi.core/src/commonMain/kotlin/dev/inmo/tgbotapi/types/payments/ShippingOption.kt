@@ -9,7 +9,7 @@ import kotlinx.serialization.builtins.ListSerializer
 @Serializable
 data class ShippingOption(
     @SerialName(idField)
-    val id: ShippingOptionIdentifier,
+    val id: ShippingOptionId,
     @SerialName(titleField)
     val title: String,
     @Serializable(LabeledPricesSerializer::class)

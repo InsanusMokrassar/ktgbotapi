@@ -1,5 +1,26 @@
 # TelegramBotAPI changelog
 
+## 11.0.0
+
+**THIS UPDATE CONTAINS REMOVES OF DEPRECATED THINGS**
+
+* `Core`:
+  * `MessageId` now is `value class`. `MessageIdentifier` become deprecated
+  * `MessageThreadId` now is `value class`
+  * `InlineQueryIdentifier` now is `value class`
+  * `MediaGroupIdentifier` has been renamed to `MediaGroupId` and now is `value class`
+  * `CallbackQueryIdentifier` has been renamed to `CallbackQueryId` and now is `value class`
+  * `WebAppQueryId` now is `value class`
+  * `PreCheckoutQueryId` now is `value class`
+  * `FileUniqueId` has been renamed to `TgFileUniqueId` and now is `value class`
+  * `UpdateIdentifier` has been renamed to `UpdateId` and now is `value class`
+  * `InlineMessageIdentifier` has been renamed to `InlineMessageId` and now is `value class`
+  * `ShippingQueryIdentifier` has been renamed to `ShippingQueryId` and now is `value class`
+  * `Identifier` has been renamed to `RawChatId` and now is `value class`
+  * `ShippingOptionIdentifier` has been renamed to `ShippingOptionId` and now is `value class`
+  * `PollIdentifier` has been renamed to `PollId` and now is `value class`
+  * `StickerSetName` now is `value class`
+
 ## 10.1.2
 
 * `Version`:

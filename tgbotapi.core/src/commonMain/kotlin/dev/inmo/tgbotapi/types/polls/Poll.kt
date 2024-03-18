@@ -50,7 +50,7 @@ val LongSeconds.asExactScheduledCloseInfo
 @Serializable(PollSerializer::class)
 @ClassCastsIncluded
 sealed interface Poll : ReplyInfo.External.ContentVariant {
-    val id: PollIdentifier
+    val id: PollId
     val question: String
     val options: List<PollOption>
     val votesCount: Int
@@ -67,7 +67,7 @@ sealed interface MultipleAnswersPoll : Poll {
 @Serializable
 private class RawPoll(
     @SerialName(idField)
-    val id: PollIdentifier,
+    val id: PollId,
     @SerialName(questionField)
     val question: String,
     @SerialName(optionsField)
@@ -101,7 +101,7 @@ private class RawPoll(
 @Serializable
 data class UnknownPollType internal constructor(
     @SerialName(idField)
-    override val id: PollIdentifier,
+    override val id: PollId,
     @SerialName(questionField)
     override val question: String,
     @SerialName(optionsField)
@@ -124,7 +124,7 @@ data class UnknownPollType internal constructor(
 
 @Serializable(PollSerializer::class)
 data class RegularPoll(
-    override val id: PollIdentifier,
+    override val id: PollId,
     override val question: String,
     override val options: List<PollOption>,
     override val votesCount: Int,
@@ -136,7 +136,7 @@ data class RegularPoll(
 
 @Serializable(PollSerializer::class)
 data class QuizPoll(
-    override val id: PollIdentifier,
+    override val id: PollId,
     override val question: String,
     override val options: List<PollOption>,
     override val votesCount: Int,

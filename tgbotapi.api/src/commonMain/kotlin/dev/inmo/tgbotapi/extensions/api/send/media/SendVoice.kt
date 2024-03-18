@@ -108,15 +108,15 @@ suspend inline fun TelegramBot.sendVoice(
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendVoice(
-        chatId,
-        voice,
-        entities,
-        duration,
-        threadId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        voice = voice,
+        entities = entities,
+        threadId = threadId,
+        duration = duration,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 

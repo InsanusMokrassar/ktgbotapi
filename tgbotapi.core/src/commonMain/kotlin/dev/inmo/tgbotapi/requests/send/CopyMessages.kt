@@ -33,25 +33,6 @@ fun CopyMessages(
     removeCaption = removeCaption
 )
 
-fun CopyMessages(
-    toChatId: ChatIdentifier,
-    fromChatId: ChatIdentifier,
-    messageId: MessageId,
-    vararg messageIds: MessageId,
-    threadId: MessageThreadId? = toChatId.threadId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    removeCaption: Boolean = false
-) = CopyMessages(
-    toChatId = toChatId,
-    fromChatId = fromChatId,
-    messageIds = (listOf(messageId) + messageIds.toList()),
-    threadId = threadId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    removeCaption = removeCaption
-)
-
 @Serializable
 data class CopyMessages (
     @SerialName(chatIdField)

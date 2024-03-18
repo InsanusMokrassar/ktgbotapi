@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InlineQueryResultContact(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(phoneNumberField)
     override val phoneNumber: String,
     @SerialName(firstNameField)

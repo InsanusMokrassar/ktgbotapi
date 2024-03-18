@@ -16,7 +16,7 @@ import kotlinx.serialization.json.JsonElement
 @RiskFeature("This class is used for serialization/deserialization of Sticker interface")
 data class StickerSurrogate(
     val file_id: FileId,
-    val file_unique_id: FileUniqueId,
+    val file_unique_id: TgFileUniqueId,
     val type: StickerType,
     val width: Int,
     val height: Int,
@@ -248,7 +248,7 @@ data class RegularSimpleSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -279,7 +279,7 @@ data class RegularAnimatedSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -306,7 +306,7 @@ data class RegularVideoSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -348,7 +348,7 @@ data class MaskSimpleSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -379,7 +379,7 @@ data class MaskAnimatedSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -406,7 +406,7 @@ data class MaskVideoSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -449,7 +449,7 @@ data class CustomEmojiSimpleSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -482,7 +482,7 @@ data class CustomEmojiAnimatedSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -511,7 +511,7 @@ data class CustomEmojiVideoSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)
@@ -541,7 +541,7 @@ data class UnknownSticker(
     @SerialName(fileIdField)
     override val fileId: FileId,
     @SerialName(fileUniqueIdField)
-    override val fileUniqueId: FileUniqueId,
+    override val fileUniqueId: TgFileUniqueId,
     @SerialName(widthField)
     override val width: Int,
     @SerialName(heightField)

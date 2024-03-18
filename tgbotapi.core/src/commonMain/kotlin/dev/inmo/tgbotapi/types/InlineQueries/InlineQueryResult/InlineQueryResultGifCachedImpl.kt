@@ -17,7 +17,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultGifCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     title: String? = null,
     text: String? = null,
@@ -27,7 +27,7 @@ fun InlineQueryResultGifCachedImpl(
 ) = InlineQueryResultGifCachedImpl(id, fileId, title, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultGifCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     title: String? = null,
     entities: TextSourcesList,
@@ -47,7 +47,7 @@ fun InlineQueryResultGifCachedImpl(
 @Serializable
 data class InlineQueryResultGifCachedImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(gifFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)

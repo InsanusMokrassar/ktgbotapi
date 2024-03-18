@@ -150,18 +150,6 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
 )
 
 /**
- * Creates and put [RequestUserKeyboardButton]
- *
- * @see replyKeyboard
- * @see ReplyKeyboardBuilder.row
- */
-@Deprecated("Renamed", ReplaceWith("requestUsersButton(text, requestUser)", "dev.inmo.tgbotapi.extensions.utils.types.buttons"))
-inline fun ReplyKeyboardRowBuilder.requestUserButton(
-    text: String,
-    requestUser: KeyboardButtonRequestUsers
-) = requestUsersButton(text, requestUser)
-
-/**
  * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Bot]
  *
  * @see replyKeyboard

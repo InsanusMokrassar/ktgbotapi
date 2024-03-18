@@ -102,6 +102,3 @@ sealed interface KeyboardButtonRequestUsers {
         }
     }
 }
-
-@Deprecated("Renamed", ReplaceWith("KeyboardButtonRequestUsers", "dev.inmo.tgbotapi.types.buttons.KeyboardButtonRequestUsers"))
-typealias KeyboardButtonRequestUser = KeyboardButtonRequestUsers

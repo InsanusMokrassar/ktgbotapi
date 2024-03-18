@@ -49,25 +49,6 @@ suspend fun TelegramBot.copyMessages(
 
 suspend fun TelegramBot.copyMessages(
     toChatId: ChatIdentifier,
-    fromChatId: ChatIdentifier,
-    firstMessageId: MessageId,
-    vararg messageIds: MessageId,
-    threadId: MessageThreadId? = toChatId.threadId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    removeCaption: Boolean = false
-) = copyMessages(
-    toChatId = toChatId,
-    fromChatId = fromChatId,
-    messageIds = (listOf(firstMessageId) + messageIds.toList()),
-    threadId = threadId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    removeCaption = removeCaption
-)
-
-suspend fun TelegramBot.copyMessages(
-    toChatId: ChatIdentifier,
     messagesMetas: List<Message.MetaInfo>,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
@@ -131,26 +112,6 @@ suspend fun TelegramBot.copy(
 ) = copyMessages(
     toChatId = toChatId,
     fromChatId = fromChatId,
-    messageIds = messageIds,
-    threadId = threadId,
-    disableNotification = disableNotification,
-    protectContent = protectContent,
-    removeCaption = removeCaption
-)
-
-suspend fun TelegramBot.copy(
-    toChatId: ChatIdentifier,
-    fromChatId: ChatIdentifier,
-    firstMessageId: MessageId,
-    vararg messageIds: MessageId,
-    threadId: MessageThreadId? = toChatId.threadId,
-    disableNotification: Boolean = false,
-    protectContent: Boolean = false,
-    removeCaption: Boolean = false
-) = copyMessages(
-    toChatId = toChatId,
-    fromChatId = fromChatId,
-    firstMessageId = firstMessageId,
     messageIds = messageIds,
     threadId = threadId,
     disableNotification = disableNotification,

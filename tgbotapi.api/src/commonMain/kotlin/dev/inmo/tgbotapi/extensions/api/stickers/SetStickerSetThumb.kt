@@ -62,7 +62,7 @@ suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSet: StickerSet,
     thumbnail: FileId
 ) = setStickerSetThumbnail(
-    user.id, stickerSet.name, thumbnail
+    user.id, stickerSet, thumbnail
 )
 
 suspend fun TelegramBot.setStickerSetThumbnail(
@@ -70,5 +70,5 @@ suspend fun TelegramBot.setStickerSetThumbnail(
     stickerSet: StickerSet,
     thumbnail: MultipartFile
 ) = setStickerSetThumbnail(
-    user.id, stickerSet.name, thumbnail
+    user.id, stickerSet, thumbnail
 )

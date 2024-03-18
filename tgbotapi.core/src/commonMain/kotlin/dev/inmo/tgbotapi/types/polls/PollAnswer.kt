@@ -12,7 +12,7 @@ import kotlinx.serialization.encoding.Encoder
 
 @Serializable(PollAnswer.Companion::class)
 sealed interface PollAnswer: FromUser {
-    val pollId: PollIdentifier
+    val pollId: PollId
     override val user: User
     val chosen: List<Int>
     @Transient
@@ -22,7 +22,7 @@ sealed interface PollAnswer: FromUser {
     @Serializable
     data class Public(
         @SerialName(pollIdField)
-        override val pollId: PollIdentifier,
+        override val pollId: PollId,
         @SerialName(userField)
         override val user: User,
         @SerialName(optionIdsField)
@@ -32,7 +32,7 @@ sealed interface PollAnswer: FromUser {
     @Serializable
     data class Anonymous(
         @SerialName(pollIdField)
-        override val pollId: PollIdentifier,
+        override val pollId: PollId,
         @SerialName(voterChatField)
         val voterChat: ChannelChat,
         @SerialName(optionIdsField)
@@ -43,7 +43,7 @@ sealed interface PollAnswer: FromUser {
 
         companion object {
             val defaultUser = CommonBot(
-                UserId(136817688L),
+                UserId(RawChatId.DefaultUserId),
                 "",
                 "",
                 Username("@Channel_Bot")
@@ -55,7 +55,7 @@ sealed interface PollAnswer: FromUser {
         @Serializable
         private data class PollAnswerSurrogate(
             @SerialName(pollIdField)
-            val pollId: PollIdentifier,
+            val pollId: PollId,
             @SerialName(optionIdsField)
             val chosen: List<Int>,
             @SerialName(userField)
@@ -64,7 +64,7 @@ sealed interface PollAnswer: FromUser {
             val voterChat: ChannelChat? = null
         )
         operator fun invoke(
-            pollId: PollIdentifier,
+            pollId: PollId,
             user: User,
             chosen: List<Int>,
         ) = Public(pollId, user, chosen)

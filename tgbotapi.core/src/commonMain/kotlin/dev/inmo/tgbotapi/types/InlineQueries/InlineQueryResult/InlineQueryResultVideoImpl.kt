@@ -17,7 +17,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultVideoImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     thumbnailUrl: String,
     mimeType: MimeType,
@@ -33,7 +33,7 @@ fun InlineQueryResultVideoImpl(
 ) = InlineQueryResultVideoImpl(id, url, thumbnailUrl, mimeType, title, width, height, duration, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultVideoImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     url: String,
     thumbnailUrl: String,
     mimeType: MimeType,
@@ -65,7 +65,7 @@ fun InlineQueryResultVideoImpl(
 @Serializable
 data class InlineQueryResultVideoImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(videoUrlField)
     override val url: String,
     @SerialName(thumbnailUrlField)

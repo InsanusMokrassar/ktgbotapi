@@ -17,7 +17,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultVideoCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     title: String,
     description: String? = null,
@@ -28,7 +28,7 @@ fun InlineQueryResultVideoCachedImpl(
 ) = InlineQueryResultVideoCachedImpl(id, fileId, title, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultVideoCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     title: String,
     description: String? = null,
@@ -50,7 +50,7 @@ fun InlineQueryResultVideoCachedImpl(
 @Serializable
 data class InlineQueryResultVideoCachedImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(videoFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)

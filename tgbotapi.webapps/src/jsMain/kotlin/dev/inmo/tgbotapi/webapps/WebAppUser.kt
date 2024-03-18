@@ -6,7 +6,7 @@ import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.CommonUser
 
 external interface WebAppUser {
-    val id: Identifier
+    val id: RawChatId
     @JsName(isBotField)
     val isBot: Boolean?
     @JsName(firstNameField)

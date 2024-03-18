@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonElement
 
 @Serializable
 data class SurrogateStickerSet(
-    val name: String,
+    val name: StickerSetName,
     val title: String,
     val sticker_type: StickerType,
     val is_animated: Boolean? = false,
@@ -22,7 +22,7 @@ data class SurrogateStickerSet(
 
 @Serializable(StickerSet.Serializer::class)
 sealed interface StickerSet {
-    val name: String
+    val name: StickerSetName
     val title: String
     val stickerType: StickerType
     val stickerFormat: StickerFormat
@@ -146,7 +146,7 @@ sealed interface CustomEmojiStickerSet : StickerSet
 @Serializable
 data class RegularSimpleStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -165,7 +165,7 @@ data class RegularSimpleStickerSet(
 @Serializable
 data class RegularAnimatedStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -181,7 +181,7 @@ data class RegularAnimatedStickerSet(
 @Serializable
 data class RegularVideoStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -197,7 +197,7 @@ data class RegularVideoStickerSet(
 @Serializable
 data class MaskSimpleStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -217,7 +217,7 @@ data class MaskSimpleStickerSet(
 @Serializable
 data class MaskAnimatedStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -233,7 +233,7 @@ data class MaskAnimatedStickerSet(
 @Serializable
 data class MaskVideoStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -249,7 +249,7 @@ data class MaskVideoStickerSet(
 @Serializable
 data class CustomEmojiSimpleStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -269,7 +269,7 @@ data class CustomEmojiSimpleStickerSet(
 @Serializable
 data class CustomEmojiAnimatedStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -285,7 +285,7 @@ data class CustomEmojiAnimatedStickerSet(
 @Serializable
 data class CustomEmojiVideoStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
@@ -301,7 +301,7 @@ data class CustomEmojiVideoStickerSet(
 @Serializable
 data class UnknownStickerSet(
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)

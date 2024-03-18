@@ -81,7 +81,6 @@ suspend fun BehaviourContext.waitEditedDocumentMediaGroupContentMessage(
 suspend fun BehaviourContext.waitEditedMediaMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
 ) = waitEditedContentMessage<MediaContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedAnyMediaGroupContentMessage(
     initRequest: Request<*>? = null,
@@ -102,17 +101,14 @@ suspend fun BehaviourContext.waitEditedAnimationMessage(
 suspend fun BehaviourContext.waitEditedAudioMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
 ) = waitEditedContentMessage<AudioContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedDocumentMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
 ) = waitEditedContentMessage<DocumentContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedPhotoMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
 ) = waitEditedContentMessage<PhotoContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedStickerMessage(
     initRequest: Request<*>? = null,
@@ -121,7 +117,6 @@ suspend fun BehaviourContext.waitEditedStickerMessage(
 suspend fun BehaviourContext.waitEditedVideoMessage(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null },
-    includeMediaGroups: Boolean = false
 ) = waitEditedContentMessage<VideoContent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitEditedVideoNoteMessage(
     initRequest: Request<*>? = null,

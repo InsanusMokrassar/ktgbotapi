@@ -17,7 +17,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultAudioCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     text: String? = null,
     parseMode: ParseMode? = null,
@@ -26,7 +26,7 @@ fun InlineQueryResultAudioCachedImpl(
 ) = InlineQueryResultAudioCachedImpl(id, fileId, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultAudioCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     entities: TextSourcesList,
     replyMarkup: InlineKeyboardMarkup? = null,
@@ -44,7 +44,7 @@ fun InlineQueryResultAudioCachedImpl(
 @Serializable
 data class InlineQueryResultAudioCachedImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(audioFileIdField)
     override val fileId: FileId,
     @SerialName(captionField)

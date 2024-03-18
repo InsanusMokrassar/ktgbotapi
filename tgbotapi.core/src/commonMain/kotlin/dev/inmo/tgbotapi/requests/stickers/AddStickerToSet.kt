@@ -8,7 +8,7 @@ import kotlinx.serialization.*
 
 fun AddStickerToSet(
     userId: UserId,
-    stickerSetName: String,
+    stickerSetName: StickerSetName,
     inputSticker: InputSticker
 ): Request<Boolean> {
     val data = AddStickerToSetData(userId, stickerSetName, inputSticker)
@@ -21,12 +21,22 @@ fun AddStickerToSet(
     }
 }
 
+fun AddStickerToSet(
+    userId: UserId,
+    stickerSetName: String,
+    inputSticker: InputSticker
+): Request<Boolean> = AddStickerToSet(
+    userId = userId,
+    stickerSetName = StickerSetName(stickerSetName),
+    inputSticker = inputSticker
+)
+
 @Serializable
 data class AddStickerToSetData internal constructor(
     @SerialName(userIdField)
     override val userId: UserId,
     @SerialName(nameField)
-    override val name: String,
+    override val name: StickerSetName,
     @SerialName(stickerField)
     override val inputSticker: InputSticker
 ) : StandardStickerSetAction {

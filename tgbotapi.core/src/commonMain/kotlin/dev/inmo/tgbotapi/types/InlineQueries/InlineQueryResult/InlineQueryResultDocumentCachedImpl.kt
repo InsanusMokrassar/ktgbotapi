@@ -17,7 +17,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 fun InlineQueryResultDocumentCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     title: String,
     description: String? = null,
@@ -28,7 +28,7 @@ fun InlineQueryResultDocumentCachedImpl(
 ) = InlineQueryResultDocumentCachedImpl(id, fileId, title, description, text, parseMode, null, replyMarkup, inputMessageContent)
 
 fun InlineQueryResultDocumentCachedImpl(
-    id: InlineQueryIdentifier,
+    id: InlineQueryId,
     fileId: FileId,
     title: String,
     description: String? = null,
@@ -50,7 +50,7 @@ fun InlineQueryResultDocumentCachedImpl(
 @Serializable
 data class InlineQueryResultDocumentCachedImpl internal constructor(
     @SerialName(idField)
-    override val id: InlineQueryIdentifier,
+    override val id: InlineQueryId,
     @SerialName(documentFileIdField)
     override val fileId: FileId,
     @SerialName(titleField)

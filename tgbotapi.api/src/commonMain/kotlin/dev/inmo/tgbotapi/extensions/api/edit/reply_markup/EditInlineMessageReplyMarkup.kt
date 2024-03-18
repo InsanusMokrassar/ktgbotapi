@@ -2,7 +2,7 @@ package dev.inmo.tgbotapi.extensions.api.edit.reply_markup
 
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.edit.reply_markup.EditInlineMessageReplyMarkup
-import dev.inmo.tgbotapi.types.InlineMessageIdentifier
+import dev.inmo.tgbotapi.types.InlineMessageId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 
 /**
@@ -10,6 +10,6 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
  * as a builder for that
  */
 suspend fun TelegramBot.editMessageReplyMarkup(
-    inlineMessageId: InlineMessageIdentifier,
+    inlineMessageId: InlineMessageId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(EditInlineMessageReplyMarkup(inlineMessageId, replyMarkup))
