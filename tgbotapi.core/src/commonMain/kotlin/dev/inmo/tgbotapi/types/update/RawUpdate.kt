@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.RawChosenInlineR
 import dev.inmo.tgbotapi.types.InlineQueries.query.RawInlineQuery
 import dev.inmo.tgbotapi.types.boosts.ChatBoostRemoved
 import dev.inmo.tgbotapi.types.boosts.ChatBoostUpdated
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionsCountUpdated
@@ -46,7 +47,8 @@ internal data class RawUpdate constructor(
     private val message_reaction: ChatMessageReactionUpdated? = null,
     private val message_reaction_count: ChatMessageReactionsCountUpdated? = null,
     private val chat_boost: ChatBoostUpdated? = null,
-    private val removed_chat_boost: ChatBoostRemoved? = null
+    private val removed_chat_boost: ChatBoostRemoved? = null,
+    private val business_connection: BusinessConnection? = null
 ) {
     @Transient
     private var initedUpdate: Update? = null
@@ -78,6 +80,7 @@ internal data class RawUpdate constructor(
                 message_reaction_count != null -> ChatMessageReactionsCountUpdatedUpdate(updateId, message_reaction_count)
                 chat_boost != null -> ChatBoostUpdatedUpdate(updateId, chat_boost)
                 removed_chat_boost != null -> ChatBoostRemovedUpdate(updateId, removed_chat_boost)
+                business_connection != null -> BusinessConnectionUpdate(updateId, removed_chat_boost)
                 else -> UnknownUpdate(
                     updateId,
                     raw

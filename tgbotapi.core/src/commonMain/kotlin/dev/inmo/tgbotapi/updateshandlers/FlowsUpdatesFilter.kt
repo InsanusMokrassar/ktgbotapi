@@ -30,6 +30,7 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     val chosenInlineResultsFlow: Flow<ChosenInlineResultUpdate>
     val inlineQueriesFlow: Flow<InlineQueryUpdate>
     val callbackQueriesFlow: Flow<CallbackQueryUpdate>
+    val businessConnectionsFlow: Flow<BusinessConnectionUpdate>
     val shippingQueriesFlow: Flow<ShippingQueryUpdate>
     val preCheckoutQueriesFlow: Flow<PreCheckoutQueryUpdate>
     val pollsFlow: Flow<PollUpdate>
