@@ -80,7 +80,7 @@ internal data class RawUpdate constructor(
                 message_reaction_count != null -> ChatMessageReactionsCountUpdatedUpdate(updateId, message_reaction_count)
                 chat_boost != null -> ChatBoostUpdatedUpdate(updateId, chat_boost)
                 removed_chat_boost != null -> ChatBoostRemovedUpdate(updateId, removed_chat_boost)
-                business_connection != null -> BusinessConnectionUpdate(updateId, removed_chat_boost)
+                business_connection != null -> BusinessConnectionUpdate(updateId, business_connection)
                 else -> UnknownUpdate(
                     updateId,
                     raw

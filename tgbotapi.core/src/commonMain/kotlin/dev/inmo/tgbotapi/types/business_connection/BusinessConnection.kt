@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.business_connection
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -11,6 +12,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable
+@ClassCastsIncluded
 sealed interface BusinessConnection {
     val id: BusinessConnectionId
     val user: PreviewUser

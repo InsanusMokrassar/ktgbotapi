@@ -92,6 +92,7 @@ import dev.inmo.tgbotapi.types.actions.UploadVideoAction
 import dev.inmo.tgbotapi.types.actions.UploadVideoNoteAction
 import dev.inmo.tgbotapi.types.actions.UploadVoiceAction
 import dev.inmo.tgbotapi.types.boosts.ChatBoostSource
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackDataInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
@@ -439,6 +440,7 @@ import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
 import dev.inmo.tgbotapi.types.request.RequestResponse
 import dev.inmo.tgbotapi.types.request.UsersShared
+import dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.ChatBoostRemovedUpdate
@@ -1810,6 +1812,24 @@ public inline fun ChatBoostSource.unknownOrThrow(): ChatBoostSource.Unknown = th
 
 public inline fun <T> ChatBoostSource.ifUnknown(block: (ChatBoostSource.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
+
+public inline fun BusinessConnection.disabledOrNull(): BusinessConnection.Disabled? = this as?
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
+
+public inline fun BusinessConnection.disabledOrThrow(): BusinessConnection.Disabled = this as
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
+
+public inline fun <T> BusinessConnection.ifDisabled(block: (BusinessConnection.Disabled) -> T): T? =
+    disabledOrNull() ?.let(block)
+
+public inline fun BusinessConnection.enabledOrNull(): BusinessConnection.Enabled? = this as?
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Enabled
+
+public inline fun BusinessConnection.enabledOrThrow(): BusinessConnection.Enabled = this as
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Enabled
+
+public inline fun <T> BusinessConnection.ifEnabled(block: (BusinessConnection.Enabled) -> T): T? =
+    enabledOrNull() ?.let(block)
 
 public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull():
     UnknownInlineKeyboardButton? = this as?
@@ -4880,6 +4900,15 @@ public inline fun RequestResponse.usersSharedOrThrow(): UsersShared = this as
 
 public inline fun <T> RequestResponse.ifUsersShared(block: (UsersShared) -> T): T? =
     usersSharedOrNull() ?.let(block)
+
+public inline fun Update.businessConnectionUpdateOrNull(): BusinessConnectionUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
+
+public inline fun Update.businessConnectionUpdateOrThrow(): BusinessConnectionUpdate = this as
+    dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
+
+public inline fun <T> Update.ifBusinessConnectionUpdate(block: (BusinessConnectionUpdate) -> T): T?
+    = businessConnectionUpdateOrNull() ?.let(block)
 
 public inline fun Update.callbackQueryUpdateOrNull(): CallbackQueryUpdate? = this as?
     dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
