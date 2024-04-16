@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -34,6 +35,8 @@ data class SendVenue(
     val googlePlaceType: GooglePlaceType? = null,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -51,6 +54,7 @@ data class SendVenue(
         chatId: ChatIdentifier,
         venue: Venue,
         threadId: MessageThreadId? = chatId.threadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyParameters: ReplyParameters? = null,
@@ -82,6 +86,7 @@ data class SendVenue(
 fun Venue.toRequest(
     chatId: ChatIdentifier,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -90,6 +95,7 @@ fun Venue.toRequest(
     chatId,
     this,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,

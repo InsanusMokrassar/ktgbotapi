@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.send
 import dev.inmo.tgbotapi.abstracts.types.LinkPreviewOptionsContainer
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
@@ -26,6 +27,7 @@ fun SendTextMessage(
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -36,6 +38,7 @@ fun SendTextMessage(
     parseMode,
     null,
     threadId,
+    businessConnectionId,
     linkPreviewOptions,
     disableNotification,
     protectContent,
@@ -48,6 +51,7 @@ fun SendTextMessage(
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -58,6 +62,7 @@ fun SendTextMessage(
     null,
     entities.toRawMessageEntities(),
     threadId,
+    businessConnectionId,
     linkPreviewOptions,
     disableNotification,
     protectContent,
@@ -77,6 +82,8 @@ data class SendTextMessage internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(linkPreviewOptionsField)
     override val linkPreviewOptions: LinkPreviewOptions? = null,
     @SerialName(disableNotificationField)

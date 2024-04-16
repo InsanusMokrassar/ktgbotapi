@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -51,6 +52,7 @@ fun SendPoll(
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -75,6 +77,7 @@ fun SendPoll(
 fun Poll.createRequest(
     chatId: ChatIdentifier,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -89,6 +92,7 @@ fun Poll.createRequest(
         allowMultipleAnswers,
         scheduledCloseInfo,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -119,6 +123,7 @@ fun Poll.createRequest(
         false,
         scheduledCloseInfo,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -133,6 +138,7 @@ fun Poll.createRequest(
         false,
         scheduledCloseInfo,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -198,6 +204,8 @@ data class SendRegularPoll(
     override val closeDate: LongSeconds?,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -226,6 +234,7 @@ fun SendRegularPoll(
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -240,6 +249,7 @@ fun SendRegularPoll(
     (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
     (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -257,6 +267,7 @@ fun SendQuizPoll(
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -273,6 +284,7 @@ fun SendQuizPoll(
     null,
     closeInfo,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -289,6 +301,7 @@ fun SendQuizPoll(
     entities: List<TextSource>,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -305,6 +318,7 @@ fun SendQuizPoll(
     entities.toRawMessageEntities(),
     closeInfo,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -323,6 +337,7 @@ internal fun SendQuizPoll(
     rawEntities: List<RawMessageEntity>? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -340,6 +355,7 @@ internal fun SendQuizPoll(
     (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
     (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -372,6 +388,8 @@ data class SendQuizPoll internal constructor(
     override val closeDate: LongSeconds? = null,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

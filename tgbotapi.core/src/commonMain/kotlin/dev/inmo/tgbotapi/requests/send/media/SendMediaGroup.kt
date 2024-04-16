@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.media.*
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
@@ -32,6 +33,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     chatId: ChatIdentifier,
     media: List<MediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -56,6 +58,7 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
         chatId,
         media,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters
@@ -81,11 +84,12 @@ inline fun SendPlaylist(
     chatId: ChatIdentifier,
     media: List<AudioMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<AudioContent>(chatId, media, threadId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
+) = SendMediaGroup<AudioContent>(chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending documents media group
@@ -97,11 +101,12 @@ inline fun SendDocumentsGroup(
     chatId: ChatIdentifier,
     media: List<DocumentMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<DocumentContent>(chatId, media, threadId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
+) = SendMediaGroup<DocumentContent>(chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
 
 /**
  * Use this method to be sure that you are correctly sending visual media group
@@ -114,11 +119,12 @@ inline fun SendVisualMediaGroup(
     chatId: ChatIdentifier,
     media: List<VisualMediaGroupMemberTelegramMedia>,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<VisualMediaGroupPartContent>(chatId, media, threadId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
+) = SendMediaGroup<VisualMediaGroupPartContent>(chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
 
 private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
     private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
@@ -142,6 +148,8 @@ data class SendMediaGroupData internal constructor(
     val media: List<MediaGroupMemberTelegramMedia> = emptyList(),
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

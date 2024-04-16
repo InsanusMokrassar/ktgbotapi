@@ -2,10 +2,12 @@ package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.abstracts.types.DisableNotification
 import dev.inmo.tgbotapi.abstracts.types.MessagesAction
+import dev.inmo.tgbotapi.abstracts.types.OptionallyBusinessConnectionRequest
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -20,6 +22,7 @@ fun CopyMessages(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
+    businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -43,6 +46,8 @@ data class CopyMessages (
     override val messageIds: List<MessageId>,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = toChatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -53,6 +58,7 @@ data class CopyMessages (
     MessagesAction,
     ProtectContent,
     OptionallyMessageThreadRequest,
+    OptionallyBusinessConnectionRequest,
     DisableNotification {
     override val chatId: ChatIdentifier
         get() = fromChatId
