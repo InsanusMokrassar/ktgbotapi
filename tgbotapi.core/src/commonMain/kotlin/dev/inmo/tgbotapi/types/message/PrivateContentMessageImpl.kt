@@ -23,6 +23,7 @@ data class PrivateContentMessageImpl<T: MessageContent>(
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
 ) : PrivateContentMessage<T> {
     constructor(
         messageId: MessageId,
@@ -37,7 +38,8 @@ data class PrivateContentMessageImpl<T: MessageContent>(
         replyMarkup: InlineKeyboardMarkup?,
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
     ) : this(
-        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, mediaGroupId
+        messageId, from, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, mediaGroupId, fromOffline
     )
 }

@@ -133,6 +133,9 @@ data class ExtendedPrivateChatImpl(
     override val businessLocation: BusinessLocation? = null,
     @SerialName(businessOpeningHoursField)
     override val businessOpeningHours: BusinessOpeningHours? = null,
+    @SerialName(personalChatField)
+    @Serializable(PreviewChatSerializer::class)
+    override val personalChat: PreviewChannelChat? = null
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
@@ -277,6 +280,8 @@ data class ExtendedBot(
     val canReadAllGroupMessages: Boolean = false,
     @SerialName(supportInlineQueriesField)
     val supportsInlineQueries: Boolean = false,
+    @SerialName(canConnectToBusinessField)
+    val canConnectToBusiness: Boolean = false,
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(accentColorIdField)

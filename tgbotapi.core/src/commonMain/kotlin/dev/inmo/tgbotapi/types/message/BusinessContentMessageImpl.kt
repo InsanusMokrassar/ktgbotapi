@@ -26,7 +26,8 @@ data class BusinessContentMessageImpl<T: MessageContent>(
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupId?,
-    override val senderBusinessBot: PreviewBot? = null
+    override val senderBusinessBot: PreviewBot?,
+    override val fromOffline: Boolean,
 ) : BusinessContentMessage<T> {
     constructor(
         messageId: MessageId,
@@ -42,7 +43,8 @@ data class BusinessContentMessageImpl<T: MessageContent>(
         replyMarkup: InlineKeyboardMarkup?,
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupId?,
-        senderBusinessBot: PreviewBot? = null,
+        senderBusinessBot: PreviewBot?,
+        fromOffline: Boolean,
     ) : this(
         messageId = messageId,
         from = from,
@@ -57,6 +59,7 @@ data class BusinessContentMessageImpl<T: MessageContent>(
         replyMarkup = replyMarkup,
         senderBot = senderBot,
         mediaGroupId = mediaGroupId,
-        senderBusinessBot = senderBusinessBot
+        senderBusinessBot = senderBusinessBot,
+        fromOffline = fromOffline
     )
 }

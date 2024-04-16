@@ -46,6 +46,8 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, Ex
     val businessLocation: BusinessLocation?
     val businessOpeningHours: BusinessOpeningHours?
 
+    val personalChat: PreviewChannelChat?
+
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards
 }

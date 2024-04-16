@@ -21,6 +21,7 @@ data class ChannelContentMessageImpl<T: MessageContent>(
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
 ) : ChannelContentMessage<T> {
     constructor(
         messageId: MessageId,
@@ -35,7 +36,8 @@ data class ChannelContentMessageImpl<T: MessageContent>(
         senderBot: CommonBot?,
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
     ) : this(
-        messageId, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, authorSignature, mediaGroupId
+        messageId, chat, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, authorSignature, mediaGroupId, fromOffline
     )
 }
