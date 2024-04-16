@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.business_connection
 
+import dev.inmo.tgbotapi.abstracts.types.WithBusinessConnectionId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
@@ -13,13 +14,16 @@ import kotlinx.serialization.encoding.Encoder
 
 @Serializable
 @ClassCastsIncluded
-sealed interface BusinessConnection {
+sealed interface BusinessConnection : WithBusinessConnectionId {
     val id: BusinessConnectionId
     val user: PreviewUser
     val userChatId: ChatId
     val date: TelegramDate
     val canReply: Boolean
     val isEnabled: Boolean
+
+    override val businessConnectionId: BusinessConnectionId
+        get() = id
 
     @Serializable
     data class Enabled(

@@ -23,6 +23,9 @@ inline fun <reified T : MessageContent> ChannelContentMessage<*>.requireWithCont
 inline fun <reified T : MessageContent> PrivateContentMessage<*>.withContent() = if (content is T) { this as PrivateContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> PrivateContentMessage<*>.requireWithContent() = withContent<T>()!!
 
+inline fun <reified T : MessageContent> BusinessContentMessage<*>.withContent() = if (content is T) { this as BusinessContentMessage<T> } else { null }
+inline fun <reified T : MessageContent> BusinessContentMessage<*>.requireWithContent() = withContent<T>()!!
+
 inline fun <reified T : MessageContent> PublicContentMessage<*>.withContent() = if (content is T) { this as PublicContentMessage<T> } else { null }
 inline fun <reified T : MessageContent> PublicContentMessage<*>.requireWithContent() = withContent<T>()!!
 

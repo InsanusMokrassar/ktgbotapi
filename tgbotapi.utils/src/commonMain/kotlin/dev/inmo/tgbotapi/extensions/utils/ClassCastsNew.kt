@@ -265,6 +265,7 @@ import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage
@@ -441,6 +442,7 @@ import dev.inmo.tgbotapi.types.request.ChatSharedRequest
 import dev.inmo.tgbotapi.types.request.RequestResponse
 import dev.inmo.tgbotapi.types.request.UsersShared
 import dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
+import dev.inmo.tgbotapi.types.update.BusinessMessageUpdate
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.ChatBoostRemovedUpdate
@@ -450,6 +452,8 @@ import dev.inmo.tgbotapi.types.update.ChatMessageReactionUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.ChatMessageReactionsCountUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
 import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.DeletedBusinessMessageUpdate
+import dev.inmo.tgbotapi.types.update.EditBusinessMessageUpdate
 import dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.EditMessageUpdate
 import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
@@ -759,6 +763,18 @@ public inline fun WithUser.passportMessageOrThrow(): PassportMessage = this as
 
 public inline fun <T> WithUser.ifPassportMessage(block: (PassportMessage) -> T): T? =
     passportMessageOrNull() ?.let(block)
+
+public inline fun WithUser.businessContentMessageOrNull(): BusinessContentMessage<MessageContent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun WithUser.businessContentMessageOrThrow(): BusinessContentMessage<MessageContent> =
+    this as
+    dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    WithUser.ifBusinessContentMessage(block: (BusinessContentMessage<MessageContent>) -> T): T? =
+    businessContentMessageOrNull() ?.let(block)
 
 public inline fun WithUser.fromUserMessageOrNull(): FromUserMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
@@ -3358,6 +3374,18 @@ public inline fun <T>
     Message.ifPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T): T? =
     privateEventMessageOrNull() ?.let(block)
 
+public inline fun Message.businessContentMessageOrNull(): BusinessContentMessage<MessageContent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.businessContentMessageOrThrow(): BusinessContentMessage<MessageContent> =
+    this as
+    dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifBusinessContentMessage(block: (BusinessContentMessage<MessageContent>) -> T): T? =
+    businessContentMessageOrNull() ?.let(block)
+
 public inline fun Message.channelContentMessageOrNull(): ChannelContentMessage<MessageContent>? =
     this as?
     dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
@@ -4910,6 +4938,15 @@ public inline fun Update.businessConnectionUpdateOrThrow(): BusinessConnectionUp
 public inline fun <T> Update.ifBusinessConnectionUpdate(block: (BusinessConnectionUpdate) -> T): T?
     = businessConnectionUpdateOrNull() ?.let(block)
 
+public inline fun Update.businessMessageUpdateOrNull(): BusinessMessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.BusinessMessageUpdate
+
+public inline fun Update.businessMessageUpdateOrThrow(): BusinessMessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.BusinessMessageUpdate
+
+public inline fun <T> Update.ifBusinessMessageUpdate(block: (BusinessMessageUpdate) -> T): T? =
+    businessMessageUpdateOrNull() ?.let(block)
+
 public inline fun Update.callbackQueryUpdateOrNull(): CallbackQueryUpdate? = this as?
     dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 
@@ -4995,6 +5032,25 @@ public inline fun Update.commonChatMemberUpdatedUpdateOrThrow(): CommonChatMembe
 public inline fun <T>
     Update.ifCommonChatMemberUpdatedUpdate(block: (CommonChatMemberUpdatedUpdate) -> T): T? =
     commonChatMemberUpdatedUpdateOrNull() ?.let(block)
+
+public inline fun Update.deletedBusinessMessageUpdateOrNull(): DeletedBusinessMessageUpdate? = this
+    as? dev.inmo.tgbotapi.types.update.DeletedBusinessMessageUpdate
+
+public inline fun Update.deletedBusinessMessageUpdateOrThrow(): DeletedBusinessMessageUpdate = this
+    as dev.inmo.tgbotapi.types.update.DeletedBusinessMessageUpdate
+
+public inline fun <T>
+    Update.ifDeletedBusinessMessageUpdate(block: (DeletedBusinessMessageUpdate) -> T): T? =
+    deletedBusinessMessageUpdateOrNull() ?.let(block)
+
+public inline fun Update.editBusinessMessageUpdateOrNull(): EditBusinessMessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.EditBusinessMessageUpdate
+
+public inline fun Update.editBusinessMessageUpdateOrThrow(): EditBusinessMessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.EditBusinessMessageUpdate
+
+public inline fun <T> Update.ifEditBusinessMessageUpdate(block: (EditBusinessMessageUpdate) -> T):
+    T? = editBusinessMessageUpdateOrNull() ?.let(block)
 
 public inline fun Update.editChannelPostUpdateOrNull(): EditChannelPostUpdate? = this as?
     dev.inmo.tgbotapi.types.update.EditChannelPostUpdate

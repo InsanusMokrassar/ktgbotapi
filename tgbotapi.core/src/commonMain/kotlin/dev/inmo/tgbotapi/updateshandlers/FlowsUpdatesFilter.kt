@@ -41,6 +41,9 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     val chatBoostUpdatedUpdateFlow: Flow<ChatBoostUpdatedUpdate>
     val chatBoostRemovedUpdateFlow: Flow<ChatBoostRemovedUpdate>
     val businessConnectionUpdatesFlow: Flow<BusinessConnectionUpdate>
+    val businessMessageUpdatesFlow: Flow<BusinessMessageUpdate>
+    val editBusinessMessageUpdatesFlow: Flow<EditBusinessMessageUpdate>
+    val deleteBusinessMessageUpdatesFlow: Flow<DeletedBusinessMessageUpdate>
     val unknownUpdatesFlow: Flow<UnknownUpdate>
 }
 
@@ -65,6 +68,9 @@ abstract class AbstractFlowsUpdatesFilter : FlowsUpdatesFilter {
     override val chatBoostUpdatedUpdateFlow: Flow<ChatBoostUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chatBoostRemovedUpdateFlow: Flow<ChatBoostRemovedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val businessConnectionUpdatesFlow: Flow<BusinessConnectionUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val businessMessageUpdatesFlow: Flow<BusinessMessageUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val editBusinessMessageUpdatesFlow: Flow<EditBusinessMessageUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val deleteBusinessMessageUpdatesFlow: Flow<DeletedBusinessMessageUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
 }
 
 /**

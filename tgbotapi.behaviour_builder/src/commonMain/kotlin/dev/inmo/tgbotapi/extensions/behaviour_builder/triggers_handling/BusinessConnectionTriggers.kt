@@ -3,18 +3,13 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTwoTypesReceiver
 import dev.inmo.tgbotapi.extensions.behaviour_builder.CustomBehaviourContextAndTypeReceiver
-import dev.inmo.tgbotapi.extensions.behaviour_builder.filters.ChatMemberUpdatedFilterByChat
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
-import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByChatChatJoinRequestMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.ByUserBusinessConnectionUpdatedMarkerFactory
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.extensions.utils.businessConnectionUpdateOrNull
-import dev.inmo.tgbotapi.extensions.utils.chatJoinRequestUpdateOrNull
 import dev.inmo.tgbotapi.extensions.utils.disabledOrNull
 import dev.inmo.tgbotapi.extensions.utils.enabledOrNull
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
-import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
-import dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 /**
