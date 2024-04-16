@@ -1,6 +1,9 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
+import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
+import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
@@ -124,6 +127,12 @@ data class ExtendedPrivateChatImpl(
     override val backgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(businessIntroField)
+    override val businessIntro: BusinessIntro? = null,
+    @SerialName(businessLocationField)
+    override val businessLocation: BusinessLocation? = null,
+    @SerialName(businessOpeningHoursField)
+    override val businessOpeningHours: BusinessOpeningHours? = null,
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl

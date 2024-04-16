@@ -587,3 +587,6 @@ const val wasRefundedField = "was_refunded"
 const val isManualField = "is_manual"
 
 const val businessConnectionIdField = "business_connection_id"
+const val businessIntroField = "business_intro"
+const val businessLocationField = "business_location"
+const val businessOpeningHoursField = "business_opening_hours"

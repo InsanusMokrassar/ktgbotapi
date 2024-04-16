@@ -1,6 +1,9 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
+import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
+import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
@@ -38,6 +41,10 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, Ex
     val bio: String
     val hasPrivateForwards: Boolean
     val hasRestrictedVoiceAndVideoMessages: Boolean
+
+    val businessIntro: BusinessIntro?
+    val businessLocation: BusinessLocation?
+    val businessOpeningHours: BusinessOpeningHours?
 
     val allowCreateUserIdLink: Boolean
         get() = hasPrivateForwards
