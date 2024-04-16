@@ -533,7 +533,10 @@ internal data class RawMessage(
                         BusinessContentMessageImpl(
                             messageId,
                             from ?: error("Was detected common message, but owner (sender) of the message was not found"),
-                            chat,
+                            BusinessChatImpl(
+                                chat.id.toBusinessChatId(business_connection_id),
+                                chat
+                            ),
                             business_connection_id,
                             content,
                             date.asDate,

@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.requests.stickers.InputSticker
+import dev.inmo.tgbotapi.types.BusinessChatId
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.ChatIdWithThreadId
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -112,6 +113,7 @@ import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardRemove
 import dev.inmo.tgbotapi.types.chat.AbleToAddInAttachmentMenuChat
 import dev.inmo.tgbotapi.types.chat.Bot
+import dev.inmo.tgbotapi.types.chat.BusinessChat
 import dev.inmo.tgbotapi.types.chat.ChannelChat
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
@@ -119,6 +121,7 @@ import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.chat.ExtendedBot
+import dev.inmo.tgbotapi.types.chat.ExtendedBusinessChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
@@ -132,6 +135,7 @@ import dev.inmo.tgbotapi.types.chat.ForumChat
 import dev.inmo.tgbotapi.types.chat.GroupChat
 import dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
 import dev.inmo.tgbotapi.types.chat.PreviewBot
+import dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
 import dev.inmo.tgbotapi.types.chat.PreviewChannelChat
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewForumChat
@@ -1108,6 +1112,15 @@ public inline fun ChatIdentifier.chatIdWithThreadIdOrThrow(): ChatIdWithThreadId
 public inline fun <T> ChatIdentifier.ifChatIdWithThreadId(block: (ChatIdWithThreadId) -> T): T? =
     chatIdWithThreadIdOrNull() ?.let(block)
 
+public inline fun ChatIdentifier.businessChatIdOrNull(): BusinessChatId? = this as?
+    dev.inmo.tgbotapi.types.BusinessChatId
+
+public inline fun ChatIdentifier.businessChatIdOrThrow(): BusinessChatId = this as
+    dev.inmo.tgbotapi.types.BusinessChatId
+
+public inline fun <T> ChatIdentifier.ifBusinessChatId(block: (BusinessChatId) -> T): T? =
+    businessChatIdOrNull() ?.let(block)
+
 public inline fun ChatIdentifier.usernameOrNull(): Username? = this as?
     dev.inmo.tgbotapi.types.Username
 
@@ -2047,6 +2060,15 @@ public inline fun Chat.privateChatOrThrow(): PrivateChat = this as
 public inline fun <T> Chat.ifPrivateChat(block: (PrivateChat) -> T): T? = privateChatOrNull()
     ?.let(block)
 
+public inline fun Chat.businessChatOrNull(): BusinessChat? = this as?
+    dev.inmo.tgbotapi.types.chat.BusinessChat
+
+public inline fun Chat.businessChatOrThrow(): BusinessChat = this as
+    dev.inmo.tgbotapi.types.chat.BusinessChat
+
+public inline fun <T> Chat.ifBusinessChat(block: (BusinessChat) -> T): T? = businessChatOrNull()
+    ?.let(block)
+
 public inline fun Chat.publicChatOrNull(): PublicChat? = this as?
     dev.inmo.tgbotapi.types.chat.PublicChat
 
@@ -2217,6 +2239,15 @@ public inline fun Chat.extendedChatWithUsernameOrThrow(): ExtendedChatWithUserna
 public inline fun <T> Chat.ifExtendedChatWithUsername(block: (ExtendedChatWithUsername) -> T): T? =
     extendedChatWithUsernameOrNull() ?.let(block)
 
+public inline fun Chat.extendedBusinessChatOrNull(): ExtendedBusinessChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedBusinessChat
+
+public inline fun Chat.extendedBusinessChatOrThrow(): ExtendedBusinessChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedBusinessChat
+
+public inline fun <T> Chat.ifExtendedBusinessChat(block: (ExtendedBusinessChat) -> T): T? =
+    extendedBusinessChatOrNull() ?.let(block)
+
 public inline fun Chat.userOrNull(): User? = this as? dev.inmo.tgbotapi.types.chat.User
 
 public inline fun Chat.userOrThrow(): User = this as dev.inmo.tgbotapi.types.chat.User
@@ -2290,6 +2321,15 @@ public inline fun Chat.previewPrivateChatOrThrow(): PreviewPrivateChat = this as
 
 public inline fun <T> Chat.ifPreviewPrivateChat(block: (PreviewPrivateChat) -> T): T? =
     previewPrivateChatOrNull() ?.let(block)
+
+public inline fun Chat.previewBusinessChatOrNull(): PreviewBusinessChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
+
+public inline fun Chat.previewBusinessChatOrThrow(): PreviewBusinessChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
+
+public inline fun <T> Chat.ifPreviewBusinessChat(block: (PreviewBusinessChat) -> T): T? =
+    previewBusinessChatOrNull() ?.let(block)
 
 public inline fun Chat.previewPublicChatOrNull(): PreviewPublicChat? = this as?
     dev.inmo.tgbotapi.types.chat.PreviewPublicChat

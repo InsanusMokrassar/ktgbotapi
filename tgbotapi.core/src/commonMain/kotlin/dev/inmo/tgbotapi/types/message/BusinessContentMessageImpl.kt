@@ -15,7 +15,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 data class BusinessContentMessageImpl<T: MessageContent>(
     override val messageId: MessageId,
     override val from: User,
-    override val chat: PreviewPrivateChat,
+    override val chat: PreviewBusinessChat,
     override val businessConnectionId: BusinessConnectionId,
     override val content: T,
     override val date: DateTime,
@@ -31,7 +31,7 @@ data class BusinessContentMessageImpl<T: MessageContent>(
     constructor(
         messageId: MessageId,
         from: User,
-        chat: PreviewPrivateChat,
+        chat: PreviewBusinessChat,
         businessConnectionId: BusinessConnectionId,
         content: T,
         date: DateTime,

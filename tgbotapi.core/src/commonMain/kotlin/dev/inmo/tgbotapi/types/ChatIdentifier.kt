@@ -34,13 +34,13 @@ sealed interface IdChatIdentifier : ChatIdentifier {
         get() = null
 
     companion object {
-        operator fun invoke(chatId: RawChatId) = ChatId(chatId)
-        operator fun invoke(chatId: RawChatId, threadId: MessageThreadId?) = threadId ?.let {
+        operator fun invoke(chatId: RawChatId, threadId: MessageThreadId? = null, businessConnectionId: BusinessConnectionId? = null) = threadId ?.let {
             ChatIdWithThreadId(chatId, threadId)
-        } ?: ChatId(chatId)
-        operator fun invoke(chatId: RawChatId, businessConnectionId: BusinessConnectionId?) = businessConnectionId ?.let {
+        } ?: businessConnectionId ?.let {
             BusinessChatId(chatId, businessConnectionId)
         } ?: ChatId(chatId)
+        operator fun invoke(chatId: RawChatId, threadId: MessageThreadId) = ChatIdWithThreadId(chatId, threadId)
+        operator fun invoke(chatId: RawChatId, businessConnectionId: BusinessConnectionId) = BusinessChatId(chatId, businessConnectionId)
     }
 }
 

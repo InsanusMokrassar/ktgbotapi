@@ -35,7 +35,7 @@ data class PrivateChatImpl(
 data class BusinessChatImpl(
     @SerialName(idField)
     override val id: BusinessChatId,
-    @SerialName(firstNameField)
+    @SerialName(originField)
     override val original: PreviewPrivateChat
 ) : PreviewBusinessChat
 

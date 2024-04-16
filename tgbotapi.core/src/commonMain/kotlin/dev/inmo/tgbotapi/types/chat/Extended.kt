@@ -263,6 +263,7 @@ data class ExtendedForumChatImpl(
 
 @Serializable
 data class ExtendedBot(
+    @SerialName(idField)
     override val id: UserId,
     @SerialName(firstNameField)
     override val firstName: String,
@@ -290,6 +291,14 @@ data class ExtendedBot(
     @SerialName(isBotField)
     private val isBot = true
 }
+
+@Serializable
+data class ExtendedBusinessChatImpl(
+    @SerialName(idField)
+    override val id: BusinessChatId,
+    @SerialName(originField)
+    override val original: ExtendedPrivateChat
+) : ExtendedBusinessChat, ExtendedChat by original
 
 data class UnknownExtendedChat(
     override val id: IdChatIdentifier,
