@@ -142,6 +142,7 @@ internal data class RawMessage(
 
     // Business
     private val business_connection_id: BusinessConnectionId? = null,
+    private val sender_business_bot: PreviewBot? = null,
 
     // Giveaways
     private val giveaway_created: GiveawayCreated? = null,
@@ -542,7 +543,8 @@ internal data class RawMessage(
                             replyInfo,
                             reply_markup,
                             via_bot,
-                            media_group_id
+                            media_group_id,
+                            sender_business_bot
                         )
                     }
                     else -> error("Unknown type of chat: $chat")

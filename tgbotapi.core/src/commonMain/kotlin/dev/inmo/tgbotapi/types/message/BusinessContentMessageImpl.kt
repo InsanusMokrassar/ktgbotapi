@@ -26,6 +26,7 @@ data class BusinessContentMessageImpl<T: MessageContent>(
     override val replyMarkup: InlineKeyboardMarkup?,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupId?,
+    override val senderBusinessBot: PreviewBot? = null
 ) : BusinessContentMessage<T> {
     constructor(
         messageId: MessageId,
@@ -41,7 +42,21 @@ data class BusinessContentMessageImpl<T: MessageContent>(
         replyMarkup: InlineKeyboardMarkup?,
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupId?,
+        senderBusinessBot: PreviewBot? = null,
     ) : this(
-        messageId, from, chat, businessConnectionId, content, date, editDate, hasProtectedContent, forwardInfo.messageOrigin(), replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, senderBot, mediaGroupId
+        messageId = messageId,
+        from = from,
+        chat = chat,
+        businessConnectionId = businessConnectionId,
+        content = content,
+        date = date,
+        editDate = editDate,
+        hasProtectedContent = hasProtectedContent,
+        forwardOrigin = forwardInfo.messageOrigin(),
+        replyInfo = replyTo ?.let { ReplyInfo.Internal(it) },
+        replyMarkup = replyMarkup,
+        senderBot = senderBot,
+        mediaGroupId = mediaGroupId,
+        senderBusinessBot = senderBusinessBot
     )
 }

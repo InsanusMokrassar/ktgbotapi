@@ -42,7 +42,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.replyInfo,
             sourceMessage.replyMarkup,
             sourceMessage.senderBot,
-            sourceMessage.mediaGroupId
+            sourceMessage.mediaGroupId,
+            sourceMessage.senderBusinessBot
         )
         is PrivateContentMessage -> PrivateContentMessageImpl(
             sourceMessage.messageId,
