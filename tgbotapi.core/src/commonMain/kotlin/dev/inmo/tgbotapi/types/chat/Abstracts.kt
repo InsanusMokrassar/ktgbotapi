@@ -17,6 +17,12 @@ sealed interface PrivateChat : Chat, UsernameChat {
 }
 
 @Serializable(ChatSerializer::class)
+sealed interface BusinessChat : Chat {
+    override val id: BusinessChatId
+    val original: PrivateChat
+}
+
+@Serializable(ChatSerializer::class)
 sealed interface PublicChat : Chat {
     val title: String
 }

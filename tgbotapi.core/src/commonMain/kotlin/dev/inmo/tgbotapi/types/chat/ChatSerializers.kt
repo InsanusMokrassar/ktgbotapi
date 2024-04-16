@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
@@ -103,10 +104,17 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
 
         val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType ?: error("Field $typeField must be presented, but absent in $decodedJson")
         val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
+        val isBusiness = decodedJson[chatIdField] ?.jsonPrimitive ?.contentOrNull ?.contains("//") == true
 
         return when (type) {
             ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
-            ChatType.Private -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+            ChatType.Private -> {
+                if (isBusiness) {
+                    formatter.decodeFromJsonElement(BusinessChatImpl.serializer(), decodedJson)
+                } else {
+                    formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
+                }
+            }
             ChatType.Group -> formatter.decodeFromJsonElement(GroupChatImpl.serializer(), decodedJson)
             ChatType.Supergroup -> if (isForum) {
                 formatter.decodeFromJsonElement(ForumChatImpl.serializer(), decodedJson)
@@ -125,6 +133,7 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
     override fun serialize(encoder: Encoder, value: PreviewChat) {
         when (value) {
             is PrivateChatImpl -> PrivateChatImpl.serializer().serialize(encoder, value)
+            is BusinessChatImpl -> BusinessChatImpl.serializer().serialize(encoder, value)
             is GroupChatImpl -> GroupChatImpl.serializer().serialize(encoder, value)
             is SupergroupChatImpl -> SupergroupChatImpl.serializer().serialize(encoder, value)
             is ForumChatImpl -> ForumChatImpl.serializer().serialize(encoder, value)
@@ -183,6 +192,19 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
                 if (it is ExtendedForumChatImpl) {
                     it.copy(
                         id = (it.id as? ChatIdWithThreadId) ?: ChatIdWithThreadId(it.id.chatId, threadId)
+                    )
+                } else {
+                    it
+                }
+            }
+        }
+    }
+    class BasedOnBusinessConnection(private val businessConnectionId: BusinessConnectionId) : ExtendedChatSerializer() {
+        override fun deserialize(decoder: Decoder): ExtendedChat {
+            return super.deserialize(decoder).let {
+                if (it is ExtendedPrivateChatImpl) {
+                    it.copy(
+                        id = (it.id as? BusinessChatId) ?: BusinessChatId(it.id.chatId, businessConnectionId)
                     )
                 } else {
                     it

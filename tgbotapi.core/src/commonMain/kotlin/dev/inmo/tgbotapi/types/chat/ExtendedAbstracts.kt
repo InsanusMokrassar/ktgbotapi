@@ -93,3 +93,8 @@ sealed interface ExtendedForumChat : ExtendedSupergroupChat, ForumChat
 sealed interface ExtendedChatWithUsername : UsernameChat, ExtendedChat {
     val activeUsernames: List<Username>
 }
+
+@Serializable(ExtendedChatSerializer.Companion::class)
+sealed interface ExtendedBusinessChat : BusinessChat, ExtendedChat {
+    override val original: ExtendedPrivateChat
+}

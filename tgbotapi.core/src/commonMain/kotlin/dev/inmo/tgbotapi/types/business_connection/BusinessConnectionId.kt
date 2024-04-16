@@ -7,4 +7,8 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class BusinessConnectionId(
     val string: String
-)
+) {
+    override fun toString(): String {
+        return string
+    }
+}
