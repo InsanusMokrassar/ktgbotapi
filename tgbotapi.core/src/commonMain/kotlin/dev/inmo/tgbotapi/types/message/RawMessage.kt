@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.message
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.*
 import dev.inmo.tgbotapi.types.chat.CommonBot
@@ -138,6 +139,9 @@ internal data class RawMessage(
     private val link_preview_options: LinkPreviewOptions? = null,
 
     private val reply_markup: InlineKeyboardMarkup? = null,
+
+    // Business
+    private val business_connection_id: BusinessConnectionId? = null,
 
     // Giveaways
     private val giveaway_created: GiveawayCreated? = null,
@@ -509,20 +513,38 @@ internal data class RawMessage(
                             )
                         }
                     }
-                    is PreviewPrivateChat -> PrivateContentMessageImpl(
-                        messageId,
-                        from ?: error("Was detected common message, but owner (sender) of the message was not found"),
-                        chat,
-                        content,
-                        date.asDate,
-                        edit_date?.asDate,
-                        has_protected_content == true,
-                        forward_origin,
-                        replyInfo,
-                        reply_markup,
-                        via_bot,
-                        media_group_id
-                    )
+                    is PreviewPrivateChat -> if (business_connection_id == null) {
+                        PrivateContentMessageImpl(
+                            messageId,
+                            from ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                            chat,
+                            content,
+                            date.asDate,
+                            edit_date?.asDate,
+                            has_protected_content == true,
+                            forward_origin,
+                            replyInfo,
+                            reply_markup,
+                            via_bot,
+                            media_group_id
+                        )
+                    } else {
+                        BusinessContentMessageImpl(
+                            messageId,
+                            from ?: error("Was detected common message, but owner (sender) of the message was not found"),
+                            chat,
+                            business_connection_id,
+                            content,
+                            date.asDate,
+                            edit_date?.asDate,
+                            has_protected_content == true,
+                            forward_origin,
+                            replyInfo,
+                            reply_markup,
+                            via_bot,
+                            media_group_id
+                        )
+                    }
                     else -> error("Unknown type of chat: $chat")
                 }
             } ?: passport_data ?.let{

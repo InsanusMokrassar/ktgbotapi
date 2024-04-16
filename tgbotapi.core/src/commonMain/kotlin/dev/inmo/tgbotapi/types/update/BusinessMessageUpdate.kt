@@ -2,12 +2,12 @@ package dev.inmo.tgbotapi.types.update
 
 import dev.inmo.tgbotapi.types.UpdateId
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
-import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
 import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 
-data class MessageUpdate(
+data class BusinessMessageUpdate(
     override val updateId: UpdateId,
-    override val data: AccessibleMessage
+    override val data: BusinessContentMessage<*>
 ) : BaseSentMessageUpdate {
-    override fun copy(newData: ContentMessage<*>) = copy(updateId, newData)
+    override fun copy(newData: BusinessContentMessage<*>) = copy(updateId, newData)
 }

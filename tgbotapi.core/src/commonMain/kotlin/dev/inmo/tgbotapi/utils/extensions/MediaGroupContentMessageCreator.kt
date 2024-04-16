@@ -1,24 +1,7 @@
 package dev.inmo.tgbotapi.utils.extensions
 
-import dev.inmo.tgbotapi.types.message.AnonymousForumContentMessageImpl
-import dev.inmo.tgbotapi.types.message.AnonymousGroupContentMessageImpl
-import dev.inmo.tgbotapi.types.message.ChannelContentMessageImpl
-import dev.inmo.tgbotapi.types.message.CommonForumContentMessageImpl
-import dev.inmo.tgbotapi.types.message.CommonGroupContentMessageImpl
-import dev.inmo.tgbotapi.types.message.ConnectedFromChannelGroupContentMessageImpl
-import dev.inmo.tgbotapi.types.message.FromChannelForumContentMessageImpl
-import dev.inmo.tgbotapi.types.message.PrivateContentMessageImpl
-import dev.inmo.tgbotapi.types.message.UnconnectedFromChannelGroupContentMessageImpl
-import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.CommonGroupContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.ConnectedFromChannelGroupContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.FromChannelForumContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
-import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
-import dev.inmo.tgbotapi.types.message.abstracts.UnconnectedFromChannelGroupContentMessage
+import dev.inmo.tgbotapi.types.message.*
+import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
@@ -44,6 +27,21 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.replyMarkup,
             sourceMessage.senderBot,
             sourceMessage.authorSignature,
+            sourceMessage.mediaGroupId
+        )
+        is BusinessContentMessage -> BusinessContentMessageImpl(
+            sourceMessage.messageId,
+            sourceMessage.user,
+            sourceMessage.chat,
+            sourceMessage.businessConnectionId,
+            content,
+            sourceMessage.date,
+            sourceMessage.editDate,
+            sourceMessage.hasProtectedContent,
+            sourceMessage.forwardOrigin,
+            sourceMessage.replyInfo,
+            sourceMessage.replyMarkup,
+            sourceMessage.senderBot,
             sourceMessage.mediaGroupId
         )
         is PrivateContentMessage -> PrivateContentMessageImpl(
