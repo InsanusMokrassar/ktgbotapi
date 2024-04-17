@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.send.polls
 import korlibs.time.DateTime
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
@@ -156,7 +157,7 @@ private fun ScheduledCloseInfo.checkSendData() {
     }
 }
 
-sealed class SendPoll : SendMessageRequest<ContentMessage<PollContent>>,
+sealed class SendPoll : SendContentMessageRequest<ContentMessage<PollContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<PollContent>> {
     abstract val question: String
     abstract val options: List<String>

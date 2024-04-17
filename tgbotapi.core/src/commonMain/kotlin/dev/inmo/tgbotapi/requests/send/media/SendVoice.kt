@@ -130,7 +130,7 @@ data class SendVoiceData internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<VoiceContent>>,
-    SendMessageRequest<ContentMessage<VoiceContent>>,
+    SendContentMessageRequest<ContentMessage<VoiceContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<VoiceContent>>,
     TextableSendMessageRequest<ContentMessage<VoiceContent>>,
     DuratedSendMessageRequest<ContentMessage<VoiceContent>>

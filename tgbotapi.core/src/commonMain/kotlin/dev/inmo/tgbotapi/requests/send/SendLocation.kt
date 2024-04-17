@@ -111,7 +111,7 @@ data class SendLocation internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<ContentMessage<LocationContent>>,
+) : SendContentMessageRequest<ContentMessage<LocationContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<LocationContent>>,
     PositionedSendMessageRequest<ContentMessage<LocationContent>>,
     HorizontallyAccured,

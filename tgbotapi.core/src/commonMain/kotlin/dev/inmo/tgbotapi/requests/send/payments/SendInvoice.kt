@@ -61,8 +61,6 @@ data class SendInvoice(
     override val priceDependOnShipAddress: Boolean = false,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
-    @SerialName(businessConnectionIdField)
-    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

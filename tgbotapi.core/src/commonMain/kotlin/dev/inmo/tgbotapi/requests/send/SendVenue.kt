@@ -45,7 +45,7 @@ data class SendVenue(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<ContentMessage<VenueContent>>,
+) : SendContentMessageRequest<ContentMessage<VenueContent>>,
     PositionedSendMessageRequest<ContentMessage<VenueContent>>,
     TitledSendMessageRequest<ContentMessage<VenueContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<VenueContent>>

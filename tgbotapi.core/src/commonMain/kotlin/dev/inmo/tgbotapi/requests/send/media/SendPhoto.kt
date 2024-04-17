@@ -124,7 +124,7 @@ data class SendPhotoData internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<PhotoContent>>,
-    SendMessageRequest<ContentMessage<PhotoContent>>,
+    SendContentMessageRequest<ContentMessage<PhotoContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
     TextableSendMessageRequest<ContentMessage<PhotoContent>>,
     OptionallyWithSpoilerRequest

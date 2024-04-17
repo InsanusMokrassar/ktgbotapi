@@ -22,7 +22,6 @@ fun CopyMessages(
     fromChatId: ChatIdentifier,
     messageIds: Array<MessageId>,
     threadId: MessageThreadId? = toChatId.threadId,
-    businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     removeCaption: Boolean = false
@@ -46,8 +45,6 @@ data class CopyMessages (
     override val messageIds: List<MessageId>,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = toChatId.threadId,
-    @SerialName(businessConnectionIdField)
-    override val businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -58,7 +55,6 @@ data class CopyMessages (
     MessagesAction,
     ProtectContent,
     OptionallyMessageThreadRequest,
-    OptionallyBusinessConnectionRequest,
     DisableNotification {
     override val chatId: ChatIdentifier
         get() = fromChatId

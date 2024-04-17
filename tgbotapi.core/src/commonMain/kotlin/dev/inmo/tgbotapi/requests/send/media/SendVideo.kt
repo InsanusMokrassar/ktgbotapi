@@ -162,7 +162,7 @@ data class SendVideoData internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<VideoContent>>,
-    SendMessageRequest<ContentMessage<VideoContent>>,
+    SendContentMessageRequest<ContentMessage<VideoContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<VideoContent>>,
     TextableSendMessageRequest<ContentMessage<VideoContent>>,
     ThumbedSendMessageRequest<ContentMessage<VideoContent>>,

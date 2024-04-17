@@ -94,7 +94,7 @@ data class SendTextMessage internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<ContentMessage<TextContent>>,
+) : SendContentMessageRequest<ContentMessage<TextContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<TextContent>>,
     TextableSendMessageRequest<ContentMessage<TextContent>>,
     LinkPreviewOptionsContainer

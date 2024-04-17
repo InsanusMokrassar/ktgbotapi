@@ -165,7 +165,7 @@ data class SendDocumentData internal constructor(
     @SerialName(disableContentTypeDetectionField)
     val disableContentTypeDetection: Boolean? = null
 ) : DataRequest<ContentMessage<DocumentContent>>,
-    SendMessageRequest<ContentMessage<DocumentContent>>,
+    SendContentMessageRequest<ContentMessage<DocumentContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<DocumentContent>>,
     TextableSendMessageRequest<ContentMessage<DocumentContent>>,
     ThumbedSendMessageRequest<ContentMessage<DocumentContent>>

@@ -151,7 +151,7 @@ data class SendAudioData internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<AudioContent>>,
-    SendMessageRequest<ContentMessage<AudioContent>>,
+    SendContentMessageRequest<ContentMessage<AudioContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<AudioContent>>,
     TextableSendMessageRequest<ContentMessage<AudioContent>>,
     ThumbedSendMessageRequest<ContentMessage<AudioContent>>,

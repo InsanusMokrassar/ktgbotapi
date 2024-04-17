@@ -156,7 +156,7 @@ data class SendAnimationData internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<AnimationContent>>,
-    SendMessageRequest<ContentMessage<AnimationContent>>,
+    SendContentMessageRequest<ContentMessage<AnimationContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<AnimationContent>>,
     TextableSendMessageRequest<ContentMessage<AnimationContent>>,
     ThumbedSendMessageRequest<ContentMessage<AnimationContent>>,
