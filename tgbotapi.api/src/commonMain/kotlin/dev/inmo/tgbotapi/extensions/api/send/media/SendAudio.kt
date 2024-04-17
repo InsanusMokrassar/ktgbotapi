@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendAudio
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -24,6 +25,7 @@ suspend fun TelegramBot.sendAudio(
     performer: String? = null,
     title: String? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -39,6 +41,7 @@ suspend fun TelegramBot.sendAudio(
         performer,
         title,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -60,11 +63,12 @@ suspend fun TelegramBot.sendAudio(
     performer: String? = null,
     title: String? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat.id, audio, thumb, text, parseMode, duration, performer, title, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAudio(chat.id, audio, thumb, text, parseMode, duration, performer, title, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -77,11 +81,12 @@ suspend fun TelegramBot.sendAudio(
     parseMode: ParseMode? = null,
     title: String? = audio.title,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chatId, audio.fileId, audio.thumbnail ?.fileId, text, parseMode, audio.duration, audio.performer, title, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAudio(chatId, audio.fileId, audio.thumbnail ?.fileId, text, parseMode, audio.duration, audio.performer, title, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -94,11 +99,12 @@ suspend fun TelegramBot.sendAudio(
     parseMode: ParseMode? = null,
     title: String? = audio.title,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat.id, audio, text, parseMode, title, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAudio(chat.id, audio, text, parseMode, title, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 
 /**
@@ -114,6 +120,7 @@ suspend inline fun TelegramBot.sendAudio(
     performer: String? = null,
     title: String? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -128,6 +135,7 @@ suspend inline fun TelegramBot.sendAudio(
         performer,
         title,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -148,11 +156,12 @@ suspend inline fun TelegramBot.sendAudio(
     performer: String? = null,
     title: String? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat.id, audio, thumb, entities, duration, performer, title, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAudio(chat.id, audio, thumb, entities, duration, performer, title, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -164,11 +173,12 @@ suspend inline fun TelegramBot.sendAudio(
     entities: TextSourcesList,
     title: String? = audio.title,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chatId, audio.fileId, audio.thumbnail ?.fileId, entities, audio.duration, audio.performer, title, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAudio(chatId, audio.fileId, audio.thumbnail ?.fileId, entities, audio.duration, audio.performer, title, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -180,8 +190,9 @@ suspend inline fun TelegramBot.sendAudio(
     entities: TextSourcesList,
     title: String? = audio.title,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAudio(chat.id, audio, entities, title, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAudio(chat.id, audio, entities, title, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)

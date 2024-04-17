@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.requests.ForwardMessage
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.giveaway.Giveaway
@@ -18,6 +19,7 @@ data class GiveawayContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,

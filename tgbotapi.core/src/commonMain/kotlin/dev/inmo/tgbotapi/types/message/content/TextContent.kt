@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.requests.send.SendTextMessage
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import kotlinx.serialization.Serializable
@@ -20,6 +21,7 @@ data class TextContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,
@@ -29,6 +31,7 @@ data class TextContent(
         textSources,
         linkPreviewOptions,
         messageThreadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,

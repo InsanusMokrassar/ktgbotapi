@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.abstracts.TextedInput
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
@@ -147,6 +148,7 @@ sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId? = chatId.threadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyParameters: ReplyParameters? = null,
@@ -156,6 +158,7 @@ sealed interface ResendableContent {
     fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId? = chatId.threadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyToMessageId: MessageId?,
@@ -164,6 +167,7 @@ sealed interface ResendableContent {
     ): Request<out AccessibleMessage> = createResend(
         chatId = chatId,
         messageThreadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         replyParameters = replyToMessageId ?.let {

@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.polls.SendQuizPoll
 import dev.inmo.tgbotapi.requests.send.polls.SendRegularPoll
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -23,13 +24,14 @@ suspend fun TelegramBot.sendRegularPoll(
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendRegularPoll(
-        chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+        chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
     )
 )
 /**
@@ -46,11 +48,12 @@ suspend fun TelegramBot.sendRegularPoll(
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendRegularPoll(chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -65,12 +68,13 @@ suspend fun TelegramBot.sendRegularPoll(
     allowMultipleAnswers: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendRegularPoll(
-    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -87,12 +91,13 @@ suspend fun TelegramBot.sendRegularPoll(
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendRegularPoll(
-    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 
@@ -111,13 +116,14 @@ suspend fun TelegramBot.sendQuizPoll(
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendQuizPoll(
-        chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+        chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
     )
 )
 
@@ -136,12 +142,13 @@ suspend fun TelegramBot.sendQuizPoll(
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chat.id, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -160,12 +167,13 @@ suspend fun TelegramBot.sendQuizPoll(
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -184,12 +192,13 @@ suspend fun TelegramBot.sendQuizPoll(
     parseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chat.id, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 
@@ -207,13 +216,14 @@ suspend inline fun TelegramBot.sendQuizPoll(
     entities: TextSourcesList,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendQuizPoll(
-        chatId, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+        chatId, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
     )
 )
 
@@ -231,12 +241,13 @@ suspend inline fun TelegramBot.sendQuizPoll(
     entities: TextSourcesList,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chat.id, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -254,12 +265,13 @@ suspend inline fun TelegramBot.sendQuizPoll(
     entities: TextSourcesList,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chatId, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -277,10 +289,11 @@ suspend inline fun TelegramBot.sendQuizPoll(
     entities: TextSourcesList,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chat.id, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )

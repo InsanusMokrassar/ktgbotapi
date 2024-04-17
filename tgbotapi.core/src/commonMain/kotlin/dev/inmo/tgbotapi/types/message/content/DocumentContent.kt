@@ -8,6 +8,7 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.media.toTelegramMediaDocument
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.types.files.asDocumentFile
@@ -24,6 +25,7 @@ data class DocumentContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,
@@ -34,6 +36,7 @@ data class DocumentContent(
         media.thumbnail ?.fileId,
         textSources,
         messageThreadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,

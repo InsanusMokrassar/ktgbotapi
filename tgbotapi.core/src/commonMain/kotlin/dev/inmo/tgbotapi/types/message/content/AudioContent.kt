@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendAudio
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 import dev.inmo.tgbotapi.types.media.toTelegramMediaAudio
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -21,6 +22,7 @@ data class AudioContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,
@@ -34,6 +36,7 @@ data class AudioContent(
         media.performer,
         media.title,
         messageThreadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,

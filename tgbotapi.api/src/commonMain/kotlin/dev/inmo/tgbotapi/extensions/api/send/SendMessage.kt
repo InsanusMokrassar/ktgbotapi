@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.api.send
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendTextMessage
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -21,6 +22,7 @@ suspend fun TelegramBot.sendMessage(
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -32,6 +34,7 @@ suspend fun TelegramBot.sendMessage(
         parseMode,
         linkPreviewOptions,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -49,12 +52,13 @@ suspend fun TelegramBot.sendTextMessage(
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendMessage(
-    chatId, text, parseMode, linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, text, parseMode, linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -67,11 +71,12 @@ suspend fun TelegramBot.sendTextMessage(
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(chat.id, text, parseMode, linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendTextMessage(chat.id, text, parseMode, linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 
 /**
@@ -84,11 +89,12 @@ suspend fun TelegramBot.sendMessage(
     parseMode: ParseMode? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendMessage(chat.id, text, parseMode, linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendMessage(chat.id, text, parseMode, linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -99,12 +105,13 @@ suspend fun TelegramBot.sendMessage(
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendTextMessage(chatId, entities, linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+    SendTextMessage(chatId, entities, linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 )
 
 /**
@@ -116,12 +123,13 @@ suspend fun TelegramBot.sendMessage(
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = sendMessage(chatId, buildEntities(separator, builderBody), linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendMessage(chatId, buildEntities(separator, builderBody), linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 
 /**
@@ -133,12 +141,13 @@ suspend fun TelegramBot.sendMessage(
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = sendMessage(chatId, buildEntities(separator, builderBody), linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendMessage(chatId, buildEntities(separator, builderBody), linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -149,12 +158,13 @@ suspend fun TelegramBot.sendTextMessage(
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendMessage(
-    chatId, entities, linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, entities, linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -166,12 +176,13 @@ suspend fun TelegramBot.sendTextMessage(
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = sendTextMessage(chatId, buildEntities(separator, builderBody), linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendTextMessage(chatId, buildEntities(separator, builderBody), linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 
 /**
@@ -183,12 +194,13 @@ suspend fun TelegramBot.sendTextMessage(
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = sendTextMessage(chatId, buildEntities(separator, builderBody), linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendTextMessage(chatId, buildEntities(separator, builderBody), linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -199,11 +211,12 @@ suspend fun TelegramBot.sendMessage(
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendMessage(chat.id, entities, linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendMessage(chat.id, entities, linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -214,12 +227,13 @@ suspend fun TelegramBot.sendMessage(
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = sendMessage(chat, buildEntities(separator, builderBody), linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendMessage(chat, buildEntities(separator, builderBody), linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 
 /**
@@ -231,12 +245,13 @@ suspend fun TelegramBot.sendMessage(
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = sendMessage(chat, buildEntities(separator, builderBody), linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendMessage(chat, buildEntities(separator, builderBody), linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 
 /**
@@ -248,11 +263,12 @@ suspend fun TelegramBot.sendTextMessage(
     entities: TextSourcesList,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendTextMessage(chat.id, entities, linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendTextMessage(chat.id, entities, linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -263,12 +279,13 @@ suspend fun TelegramBot.sendTextMessage(
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = sendTextMessage(chat, buildEntities(separator, builderBody), linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendTextMessage(chat, buildEntities(separator, builderBody), linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 
 /**
@@ -280,9 +297,10 @@ suspend fun TelegramBot.sendTextMessage(
     separator: String,
     linkPreviewOptions: LinkPreviewOptions? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = sendTextMessage(chat, buildEntities(separator, builderBody), linkPreviewOptions, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendTextMessage(chat, buildEntities(separator, builderBody), linkPreviewOptions, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)

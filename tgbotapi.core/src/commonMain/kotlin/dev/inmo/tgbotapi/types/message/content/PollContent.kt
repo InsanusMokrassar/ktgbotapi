@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.ReplyParameters
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.polls.Poll
@@ -18,6 +19,7 @@ data class PollContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,
@@ -25,6 +27,7 @@ data class PollContent(
     ): Request<ContentMessage<PollContent>> = poll.createRequest(
         chatId,
         messageThreadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,

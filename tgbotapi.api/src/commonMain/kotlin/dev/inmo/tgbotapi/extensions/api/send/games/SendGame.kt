@@ -15,13 +15,14 @@ suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     gameShortName: String,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendGame(
-        chatId, gameShortName, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+        chatId, gameShortName, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
     )
 )
 
@@ -33,12 +34,13 @@ suspend fun TelegramBot.sendGame(
     chat: Chat,
     gameShortName: String,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chat.id, gameShortName, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, gameShortName, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -49,12 +51,13 @@ suspend fun TelegramBot.sendGame(
     chatId: ChatIdentifier,
     game: Game,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chatId, game.title, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, game.title, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -65,10 +68,11 @@ suspend fun TelegramBot.sendGame(
     chat: Chat,
     game: Game,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendGame(
-    chat.id, game.title, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, game.title, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
