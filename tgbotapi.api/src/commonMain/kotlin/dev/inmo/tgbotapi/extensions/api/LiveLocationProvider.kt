@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.extensions.api.edit.location.live.editLiveLocation
 import dev.inmo.tgbotapi.extensions.api.edit.location.live.stopLiveLocation
 import dev.inmo.tgbotapi.requests.send.SendLiveLocation
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
@@ -94,6 +95,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -110,6 +112,7 @@ suspend fun TelegramBot.startLiveLocation(
             initHeading,
             initProximityAlertRadius,
             threadId,
+            businessConnectionId,
             disableNotification,
             protectContent,
             replyParameters,
@@ -139,6 +142,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -153,6 +157,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading,
     initProximityAlertRadius,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -172,6 +177,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -186,6 +192,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading,
     initProximityAlertRadius,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -205,6 +212,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -219,6 +227,7 @@ suspend fun TelegramBot.startLiveLocation(
     initHeading,
     initProximityAlertRadius,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -239,6 +248,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = to.threadIdOrNull,
+    businessConnectionId: BusinessConnectionId? = to.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -253,6 +263,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading,
     initProximityAlertRadius,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
@@ -272,6 +283,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading: Degrees? = null,
     initProximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = to.threadIdOrNull,
+    businessConnectionId: BusinessConnectionId? = to.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
@@ -285,6 +297,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     initHeading,
     initProximityAlertRadius,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),

@@ -288,6 +288,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
@@ -3671,6 +3672,15 @@ public inline fun Message.possiblyMediaGroupMessageOrThrow():
 public inline fun <T>
     Message.ifPossiblyMediaGroupMessage(block: (PossiblyMediaGroupMessage<MessageContent>) -> T): T?
     = possiblyMediaGroupMessageOrNull() ?.let(block)
+
+public inline fun Message.possiblyOfflineMessageOrNull(): PossiblyOfflineMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
+
+public inline fun Message.possiblyOfflineMessageOrThrow(): PossiblyOfflineMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
+
+public inline fun <T> Message.ifPossiblyOfflineMessage(block: (PossiblyOfflineMessage) -> T): T? =
+    possiblyOfflineMessageOrNull() ?.let(block)
 
 public inline fun Message.possiblyPaymentMessageOrNull(): PossiblyPaymentMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
