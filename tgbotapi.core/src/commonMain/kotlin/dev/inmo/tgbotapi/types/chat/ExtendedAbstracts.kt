@@ -46,6 +46,7 @@ sealed interface ExtendedPrivateChat : PrivateChat, ExtendedChatWithUsername, Ex
     val businessLocation: BusinessLocation?
     val businessOpeningHours: BusinessOpeningHours?
 
+    val birthdate: Birthdate?
     val personalChat: PreviewChannelChat?
 
     val allowCreateUserIdLink: Boolean

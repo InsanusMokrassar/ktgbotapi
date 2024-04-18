@@ -133,6 +133,8 @@ data class ExtendedPrivateChatImpl(
     override val businessLocation: BusinessLocation? = null,
     @SerialName(businessOpeningHoursField)
     override val businessOpeningHours: BusinessOpeningHours? = null,
+    @SerialName(birthdateField)
+    override val birthdate: Birthdate? = null,
     @SerialName(personalChatField)
     @Serializable(PreviewChatSerializer::class)
     override val personalChat: PreviewChannelChat? = null
