@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.webapps
 
 import dev.inmo.tgbotapi.utils.TelegramAPIUrlsKeeper
+import dev.inmo.tgbotapi.webapps.biometric.BiometricManager
 import dev.inmo.tgbotapi.webapps.cloud.CloudStorage
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
@@ -53,6 +54,9 @@ external class WebApp {
 
     @JsName("CloudStorage")
     val cloudStorage: CloudStorage
+
+    @JsName("BiometricManager")
+    val biometricManager: BiometricManager
 
     @JsName("SettingsButton")
     val settingsButton: SettingsButton
