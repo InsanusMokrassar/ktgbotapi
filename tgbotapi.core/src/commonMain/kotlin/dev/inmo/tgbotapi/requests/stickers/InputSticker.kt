@@ -2,11 +2,7 @@ package dev.inmo.tgbotapi.requests.stickers
 
 import dev.inmo.micro_utils.serialization.mapper.MapperSerializer
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
-import dev.inmo.tgbotapi.types.StickerType
-import dev.inmo.tgbotapi.types.emojiListField
-import dev.inmo.tgbotapi.types.keywordsField
-import dev.inmo.tgbotapi.types.maskPositionField
-import dev.inmo.tgbotapi.types.stickerField
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.stickers.MaskPosition
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
@@ -17,12 +13,15 @@ import kotlinx.serialization.Serializable
 @Serializable(InputStickerSerializer::class)
 sealed interface InputSticker {
     val sticker: InputFile
+    val format: StickerFormat
     val emojisList: List<String>
 
     @Serializable
     data class Mask(
         @SerialName(stickerField)
         override val sticker: InputFile,
+        @SerialName(formatField)
+        override val format: StickerFormat,
         @SerialName(emojiListField)
         override val emojisList: List<String>,
         @SerialName(maskPositionField)
@@ -37,6 +36,8 @@ sealed interface InputSticker {
         data class Regular(
             @SerialName(stickerField)
             override val sticker: InputFile,
+            @SerialName(formatField)
+            override val format: StickerFormat,
             @SerialName(emojiListField)
             override val emojisList: List<String>,
             @SerialName(keywordsField)
@@ -47,6 +48,8 @@ sealed interface InputSticker {
         data class CustomEmoji(
             @SerialName(stickerField)
             override val sticker: InputFile,
+            @SerialName(formatField)
+            override val format: StickerFormat,
             @SerialName(emojiListField)
             override val emojisList: List<String>,
             @SerialName(keywordsField)
@@ -61,6 +64,7 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
         when (it) {
             is InputSticker.Mask -> SurrogateInputSticker(
                 it.sticker,
+                it.format,
                 it.emojisList,
                 emptyList(),
                 it.maskPosition,
@@ -68,6 +72,7 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
             )
             is InputSticker.WithKeywords.CustomEmoji -> SurrogateInputSticker(
                 it.sticker,
+                it.format,
                 it.emojisList,
                 it.keywords,
                 null,
@@ -75,6 +80,7 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
             )
             is InputSticker.WithKeywords.Regular -> SurrogateInputSticker(
                 it.sticker,
+                it.format,
                 it.emojisList,
                 it.keywords,
                 null,
@@ -86,21 +92,25 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
         when (it.internalType) {
             StickerType.CustomEmoji -> InputSticker.WithKeywords.CustomEmoji(
                 it.sticker,
+                it.format,
                 it.emojisList,
                 it.keywords
             )
             StickerType.Mask -> InputSticker.Mask(
                 it.sticker,
+                it.format,
                 it.emojisList,
                 it.maskPosition
             )
             StickerType.Regular -> InputSticker.WithKeywords.Regular(
                 it.sticker,
+                it.format,
                 it.emojisList,
                 it.keywords
             )
             is StickerType.Unknown -> InputSticker.WithKeywords.Regular(
                 it.sticker,
+                it.format,
                 it.emojisList,
                 it.keywords
             )
@@ -111,6 +121,8 @@ object InputStickerSerializer : KSerializer<InputSticker>, MapperSerializer<Inpu
     data class SurrogateInputSticker internal constructor(
         @SerialName(stickerField)
         val sticker: InputFile,
+        @SerialName(formatField)
+        val format: StickerFormat,
         @SerialName(emojiListField)
         val emojisList: List<String>,
         @SerialName(keywordsField)

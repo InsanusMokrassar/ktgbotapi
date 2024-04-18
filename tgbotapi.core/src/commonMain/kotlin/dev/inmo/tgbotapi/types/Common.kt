@@ -379,6 +379,7 @@ const val oldChatMemberField = "old_chat_member"
 const val newChatMemberField = "new_chat_member"
 const val stickerTypeField = "sticker_type"
 const val stickerFormatField = "sticker_format"
+const val formatField = "format"
 const val needsRepaintingField = "needs_repainting"
 
 const val okField = "ok"

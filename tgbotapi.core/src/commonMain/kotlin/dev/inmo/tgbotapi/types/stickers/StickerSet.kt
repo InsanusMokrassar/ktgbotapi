@@ -25,12 +25,7 @@ sealed interface StickerSet {
     val name: StickerSetName
     val title: String
     val stickerType: StickerType
-    val stickerFormat: StickerFormat
     val stickers: List<Sticker>
-    val isAnimated: Boolean
-        get() = false
-    val isVideo: Boolean
-        get() = false
     val thumbnail: PhotoSize?
 
     object Serializer : KSerializer<StickerSet> {
@@ -42,69 +37,33 @@ sealed interface StickerSet {
 
             return when (surrogate.sticker_type) {
                 StickerType.CustomEmoji -> when {
-                    surrogate.is_animated == true -> CustomEmojiAnimatedStickerSet(
+                    else -> CustomEmojiStickerSet(
                         surrogate.name,
                         surrogate.title,
-                        surrogate.stickers.filterIsInstance<CustomEmojiAnimatedSticker>(),
-                        surrogate.thumb
-                    )
-                    surrogate.is_video == true -> CustomEmojiVideoStickerSet(
-                        surrogate.name,
-                        surrogate.title,
-                        surrogate.stickers.filterIsInstance<CustomEmojiVideoSticker>(),
-                        surrogate.thumb
-                    )
-                    else -> CustomEmojiSimpleStickerSet(
-                        surrogate.name,
-                        surrogate.title,
-                        surrogate.stickers.filterIsInstance<CustomEmojiSimpleSticker>(),
+                        surrogate.stickers.filterIsInstance<CustomEmojiSticker>(),
                         surrogate.thumb
                     )
                 }
                 StickerType.Mask -> when {
-                    surrogate.is_animated == true -> MaskAnimatedStickerSet(
+                    else -> MaskStickerSet(
                         surrogate.name,
                         surrogate.title,
-                        surrogate.stickers.filterIsInstance<MaskAnimatedSticker>(),
-                        surrogate.thumb
-                    )
-                    surrogate.is_video == true -> MaskVideoStickerSet(
-                        surrogate.name,
-                        surrogate.title,
-                        surrogate.stickers.filterIsInstance<MaskVideoSticker>(),
-                        surrogate.thumb
-                    )
-                    else -> MaskSimpleStickerSet(
-                        surrogate.name,
-                        surrogate.title,
-                        surrogate.stickers.filterIsInstance<MaskSimpleSticker>(),
+                        surrogate.stickers.filterIsInstance<MaskSticker>(),
                         surrogate.thumb
                     )
                 }
                 StickerType.Regular -> when {
-                    surrogate.is_animated == true -> RegularAnimatedStickerSet(
+                    else -> RegularStickerSet(
                         surrogate.name,
                         surrogate.title,
-                        surrogate.stickers.filterIsInstance<RegularAnimatedSticker>(),
-                        surrogate.thumb
-                    )
-                    surrogate.is_video == true -> RegularVideoStickerSet(
-                        surrogate.name,
-                        surrogate.title,
-                        surrogate.stickers.filterIsInstance<RegularVideoSticker>(),
-                        surrogate.thumb
-                    )
-                    else -> RegularSimpleStickerSet(
-                        surrogate.name,
-                        surrogate.title,
-                        surrogate.stickers.filterIsInstance<RegularSimpleSticker>(),
+                        surrogate.stickers.filterIsInstance<RegularSticker>(),
                         surrogate.thumb
                     )
                 }
                 is StickerType.Unknown -> UnknownStickerSet(
                     surrogate.name,
                     surrogate.title,
-                    surrogate.stickers.filterIsInstance<RegularSimpleSticker>(),
+                    surrogate.stickers.filterIsInstance<RegularSticker>(),
                     surrogate.sticker_type,
                     surrogate.thumb,
                     json
@@ -119,180 +78,48 @@ sealed interface StickerSet {
 }
 
 @Serializable
-sealed interface AnimatedStickerSet : StickerSet {
-    override val isAnimated: Boolean
-        get() = true
-    @SerialName(stickerFormatField)
-    @EncodeDefault
-    override val stickerFormat: StickerFormat
-        get() = StickerFormat.Animated
-}
-@Serializable
-sealed interface VideoStickerSet : StickerSet {
-    override val isVideo: Boolean
-        get() = true
-    @SerialName(stickerFormatField)
-    @EncodeDefault
-    override val stickerFormat: StickerFormat
-        get() = StickerFormat.Video
-}
-@Serializable
-sealed interface RegularStickerSet : StickerSet
-@Serializable
-sealed interface MaskStickerSet : StickerSet
-@Serializable
-sealed interface CustomEmojiStickerSet : StickerSet
-
-@Serializable
-data class RegularSimpleStickerSet(
+data class RegularStickerSet(
     @SerialName(nameField)
     override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
-    override val stickers: List<RegularSimpleSticker>,
+    override val stickers: List<RegularSticker>,
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null
-) : RegularStickerSet {
-    @SerialName(stickerTypeField)
-    @EncodeDefault
-    override val stickerType: StickerType = StickerType.Regular
-    @SerialName(stickerFormatField)
-    @EncodeDefault
-    override val stickerFormat: StickerFormat = StickerFormat.Static
-}
-
-@Serializable
-data class RegularAnimatedStickerSet(
-    @SerialName(nameField)
-    override val name: StickerSetName,
-    @SerialName(titleField)
-    override val title: String,
-    @SerialName(stickersField)
-    override val stickers: List<RegularAnimatedSticker>,
-    @SerialName(thumbnailField)
-    override val thumbnail: PhotoSize? = null
-) : RegularStickerSet, AnimatedStickerSet {
+) : StickerSet {
     @SerialName(stickerTypeField)
     @EncodeDefault
     override val stickerType: StickerType = StickerType.Regular
 }
 
 @Serializable
-data class RegularVideoStickerSet(
+data class MaskStickerSet(
     @SerialName(nameField)
     override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
-    override val stickers: List<RegularVideoSticker>,
+    override val stickers: List<MaskSticker>,
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null
-) : RegularStickerSet, VideoStickerSet {
-    @SerialName(stickerTypeField)
-    @EncodeDefault
-    override val stickerType: StickerType = StickerType.Regular
-}
-
-@Serializable
-data class MaskSimpleStickerSet(
-    @SerialName(nameField)
-    override val name: StickerSetName,
-    @SerialName(titleField)
-    override val title: String,
-    @SerialName(stickersField)
-    override val stickers: List<MaskSimpleSticker>,
-    @SerialName(thumbnailField)
-    override val thumbnail: PhotoSize? = null
-) : MaskStickerSet {
-    @SerialName(stickerTypeField)
-    @EncodeDefault
-    override val stickerType: StickerType = StickerType.Mask
-
-    @SerialName(stickerFormatField)
-    @EncodeDefault
-    override val stickerFormat: StickerFormat = StickerFormat.Static
-}
-
-@Serializable
-data class MaskAnimatedStickerSet(
-    @SerialName(nameField)
-    override val name: StickerSetName,
-    @SerialName(titleField)
-    override val title: String,
-    @SerialName(stickersField)
-    override val stickers: List<MaskAnimatedSticker>,
-    @SerialName(thumbnailField)
-    override val thumbnail: PhotoSize? = null
-) : MaskStickerSet, AnimatedStickerSet {
+) : StickerSet {
     @SerialName(stickerTypeField)
     @EncodeDefault
     override val stickerType: StickerType = StickerType.Mask
 }
 
 @Serializable
-data class MaskVideoStickerSet(
+data class CustomEmojiStickerSet(
     @SerialName(nameField)
     override val name: StickerSetName,
     @SerialName(titleField)
     override val title: String,
     @SerialName(stickersField)
-    override val stickers: List<MaskVideoSticker>,
+    override val stickers: List<CustomEmojiSticker>,
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null
-) : MaskStickerSet, VideoStickerSet {
-    @SerialName(stickerTypeField)
-    @EncodeDefault
-    override val stickerType: StickerType = StickerType.Mask
-}
-
-@Serializable
-data class CustomEmojiSimpleStickerSet(
-    @SerialName(nameField)
-    override val name: StickerSetName,
-    @SerialName(titleField)
-    override val title: String,
-    @SerialName(stickersField)
-    override val stickers: List<CustomEmojiSimpleSticker>,
-    @SerialName(thumbnailField)
-    override val thumbnail: PhotoSize? = null
-) : CustomEmojiStickerSet {
-    @SerialName(stickerTypeField)
-    @EncodeDefault
-    override val stickerType: StickerType = StickerType.CustomEmoji
-
-    @SerialName(stickerFormatField)
-    @EncodeDefault
-    override val stickerFormat: StickerFormat = StickerFormat.Static
-}
-
-@Serializable
-data class CustomEmojiAnimatedStickerSet(
-    @SerialName(nameField)
-    override val name: StickerSetName,
-    @SerialName(titleField)
-    override val title: String,
-    @SerialName(stickersField)
-    override val stickers: List<CustomEmojiAnimatedSticker>,
-    @SerialName(thumbnailField)
-    override val thumbnail: PhotoSize? = null
-) : CustomEmojiStickerSet, AnimatedStickerSet {
-    @SerialName(stickerTypeField)
-    @EncodeDefault
-    override val stickerType: StickerType = StickerType.CustomEmoji
-}
-
-@Serializable
-data class CustomEmojiVideoStickerSet(
-    @SerialName(nameField)
-    override val name: StickerSetName,
-    @SerialName(titleField)
-    override val title: String,
-    @SerialName(stickersField)
-    override val stickers: List<CustomEmojiVideoSticker>,
-    @SerialName(thumbnailField)
-    override val thumbnail: PhotoSize? = null
-) : CustomEmojiStickerSet, VideoStickerSet {
+) : StickerSet {
     @SerialName(stickerTypeField)
     @EncodeDefault
     override val stickerType: StickerType = StickerType.CustomEmoji
@@ -311,4 +138,4 @@ data class UnknownStickerSet(
     @SerialName(thumbnailField)
     override val thumbnail: PhotoSize? = null,
     val raw: JsonElement
-) : CustomEmojiStickerSet, VideoStickerSet
+) : StickerSet
