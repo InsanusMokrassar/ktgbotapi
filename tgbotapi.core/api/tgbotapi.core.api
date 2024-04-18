@@ -6248,8 +6248,8 @@ public final class dev/inmo/tgbotapi/requests/stickers/AddStickerToSetData : dev
 	public final fun copy-FKW6xZo (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/AddStickerToSetData;
 	public static synthetic fun copy-FKW6xZo$default (Ldev/inmo/tgbotapi/requests/stickers/AddStickerToSetData;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/AddStickerToSetData;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getInputSticker ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
 	public fun getName-KVV53SM ()Ljava/lang/String;
+	public fun getNewSticker ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public synthetic fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
@@ -6284,7 +6284,6 @@ public abstract interface class dev/inmo/tgbotapi/requests/stickers/CreateNewSti
 	public abstract fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public abstract fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
 	public abstract fun getStickers ()Ljava/util/List;
-	public abstract fun getStickersFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public abstract fun method ()Ljava/lang/String;
 }
 
@@ -6294,16 +6293,15 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Compa
 
 public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$CustomEmoji : dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$CustomEmoji$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component2-KVV53SM ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public final fun component5 ()Ljava/util/List;
-	public final fun component6 ()Ljava/lang/Boolean;
-	public final fun copy-zj6nCqY (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$CustomEmoji;
-	public static synthetic fun copy-zj6nCqY$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$CustomEmoji;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$CustomEmoji;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun copy-Gi-IyR8 (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$CustomEmoji;
+	public static synthetic fun copy-Gi-IyR8$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$CustomEmoji;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$CustomEmoji;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public final fun getNeedsRepainting ()Ljava/lang/Boolean;
@@ -6312,7 +6310,6 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Custo
 	public fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
 	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
 	public fun getStickers ()Ljava/util/List;
-	public fun getStickersFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getTitle ()Ljava/lang/String;
 	public fun getUserId-tHkBKVM ()J
 	public fun hashCode ()I
@@ -6343,14 +6340,13 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Defau
 
 public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask : dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component2-KVV53SM ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public final fun component5 ()Ljava/util/List;
-	public final fun copy-Gi-IyR8 (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask;
-	public static synthetic fun copy-Gi-IyR8$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy-ekB4Uzg (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask;
+	public static synthetic fun copy-ekB4Uzg$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
@@ -6358,7 +6354,6 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask 
 	public fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
 	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
 	public fun getStickers ()Ljava/util/List;
-	public fun getStickersFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getTitle ()Ljava/lang/String;
 	public fun getUserId-tHkBKVM ()J
 	public fun hashCode ()I
@@ -6383,14 +6378,13 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Mask$
 
 public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regular : dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regular$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component2-KVV53SM ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public final fun component5 ()Ljava/util/List;
-	public final fun copy-Gi-IyR8 (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regular;
-	public static synthetic fun copy-Gi-IyR8$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regular;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regular;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy-ekB4Uzg (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regular;
+	public static synthetic fun copy-ekB4Uzg$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regular;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regular;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
@@ -6398,7 +6392,6 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regul
 	public fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
 	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
 	public fun getStickers ()Ljava/util/List;
-	public fun getStickersFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getTitle ()Ljava/lang/String;
 	public fun getUserId-tHkBKVM ()J
 	public fun hashCode ()I
@@ -6423,16 +6416,15 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Regul
 
 public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker : dev/inmo/tgbotapi/requests/stickers/abstracts/CreateStickerSetAction {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component2-KVV53SM ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public final fun component5 ()Ljava/util/List;
-	public final fun component6 ()Ldev/inmo/tgbotapi/types/StickerType;
-	public final fun component7 ()Ljava/lang/Boolean;
-	public final fun copy-TMJGESM (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;
-	public static synthetic fun copy-TMJGESM$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/StickerType;
+	public final fun component6 ()Ljava/lang/Boolean;
+	public final fun copy-zj6nCqY (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;
+	public static synthetic fun copy-zj6nCqY$default (Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$SurrogateCreateNewSticker;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public final fun getNeedsRepainting ()Ljava/lang/Boolean;
@@ -6441,7 +6433,6 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Surro
 	public fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
 	public final fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
 	public final fun getStickers ()Ljava/util/List;
-	public final fun getStickersFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getTitle ()Ljava/lang/String;
 	public fun getUserId-tHkBKVM ()J
 	public fun hashCode ()I
@@ -6465,10 +6456,10 @@ public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSet$Surro
 }
 
 public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSetKt {
-	public static final fun CreateNewStickerSet-hWD7qso (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun CreateNewStickerSet-hWD7qso$default (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun CreateNewStickerSet-zj6nCqY (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static synthetic fun CreateNewStickerSet-zj6nCqY$default (JLjava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun CreateNewStickerSet-5pON0JU (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun CreateNewStickerSet-5pON0JU$default (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun CreateNewStickerSet-Gi-IyR8 (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static synthetic fun CreateNewStickerSet-Gi-IyR8$default (JLjava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/stickers/CreateNewStickerSetSerializer : dev/inmo/micro_utils/serialization/mapper/MapperSerializer, kotlinx/serialization/KSerializer {
@@ -6538,6 +6529,7 @@ public final class dev/inmo/tgbotapi/requests/stickers/DeleteStickerSet$Companio
 public abstract interface class dev/inmo/tgbotapi/requests/stickers/InputSticker {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Companion;
 	public abstract fun getEmojisList ()Ljava/util/List;
+	public abstract fun getFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public abstract fun getSticker ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 }
 
@@ -6547,15 +6539,17 @@ public final class dev/inmo/tgbotapi/requests/stickers/InputSticker$Companion {
 
 public final class dev/inmo/tgbotapi/requests/stickers/InputSticker$Mask : dev/inmo/tgbotapi/requests/stickers/InputSticker {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;)V
-	public synthetic fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
-	public final fun component2 ()Ljava/util/List;
-	public final fun component3 ()Ldev/inmo/tgbotapi/types/stickers/MaskPosition;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/StickerFormat;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/stickers/MaskPosition;
+	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$Mask;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEmojisList ()Ljava/util/List;
+	public fun getFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public final fun getMaskPosition ()Ldev/inmo/tgbotapi/types/stickers/MaskPosition;
 	public fun getSticker ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun hashCode ()I
@@ -6588,14 +6582,16 @@ public final class dev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords
 
 public final class dev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji : dev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;)V
+	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
-	public final fun component2 ()Ljava/util/List;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public final fun component3 ()Ljava/util/List;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$CustomEmoji;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEmojisList ()Ljava/util/List;
+	public fun getFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getKeywords ()Ljava/util/List;
 	public fun getSticker ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun hashCode ()I
@@ -6619,14 +6615,16 @@ public final class dev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords
 
 public final class dev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular : dev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;)V
+	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
-	public final fun component2 ()Ljava/util/List;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public final fun component3 ()Ljava/util/List;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputSticker$WithKeywords$Regular;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getEmojisList ()Ljava/util/List;
+	public fun getFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getKeywords ()Ljava/util/List;
 	public fun getSticker ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
 	public fun hashCode ()I
@@ -6655,13 +6653,15 @@ public final class dev/inmo/tgbotapi/requests/stickers/InputStickerSerializer : 
 public final class dev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker$Companion;
 	public final fun component1 ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
-	public final fun component2 ()Ljava/util/List;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/stickers/MaskPosition;
-	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;Ldev/inmo/tgbotapi/types/StickerType;)Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;Ldev/inmo/tgbotapi/types/StickerType;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ldev/inmo/tgbotapi/types/stickers/MaskPosition;
+	public final fun copy (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;Ldev/inmo/tgbotapi/types/StickerType;)Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/types/StickerFormat;Ljava/util/List;Ljava/util/List;Ldev/inmo/tgbotapi/types/stickers/MaskPosition;Ldev/inmo/tgbotapi/types/StickerType;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getEmojisList ()Ljava/util/List;
+	public final fun getFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public final fun getKeywords ()Ljava/util/List;
 	public final fun getMaskPosition ()Ldev/inmo/tgbotapi/types/stickers/MaskPosition;
 	public final fun getSticker ()Ldev/inmo/tgbotapi/requests/abstracts/InputFile;
@@ -6682,6 +6682,47 @@ public final class dev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$Su
 
 public final class dev/inmo/tgbotapi/requests/stickers/InputStickerSerializer$SurrogateInputSticker$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData : dev/inmo/tgbotapi/requests/stickers/abstracts/StandardStickerSetAction {
+	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData$Companion;
+	public final fun component1-tHkBKVM ()J
+	public final fun component2-KVV53SM ()Ljava/lang/String;
+	public final fun component3 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
+	public final fun component4 ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
+	public final fun copy-ekB4Uzg (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData;
+	public static synthetic fun copy-ekB4Uzg$default (Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName-KVV53SM ()Ljava/lang/String;
+	public fun getNewSticker ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
+	public final fun getOldSticker ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
+	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
+	public synthetic fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
+	public fun getResultDeserializer ()Lkotlinx/serialization/KSerializer;
+	public fun getUserId-tHkBKVM ()J
+	public fun hashCode ()I
+	public fun method ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetData$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/requests/stickers/ReplaceStickerInSetKt {
+	public static final fun ReplaceStickerInSet-OJAeTto (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun ReplaceStickerInSet-ekB4Uzg (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Ldev/inmo/tgbotapi/requests/stickers/InputSticker;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/stickers/SetCustomEmojiStickerSetThumbnail : dev/inmo/tgbotapi/requests/stickers/abstracts/StickerSetAction {
@@ -6849,14 +6890,16 @@ public final class dev/inmo/tgbotapi/requests/stickers/SetStickerPositionInSet$C
 
 public final class dev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail : dev/inmo/tgbotapi/requests/stickers/abstracts/OwnerStickerSetAction {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail$Companion;
-	public synthetic fun <init> (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ldev/inmo/tgbotapi/requests/abstracts/FileId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ldev/inmo/tgbotapi/requests/abstracts/FileId;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component2-KVV53SM ()Ljava/lang/String;
-	public final fun component3 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
-	public final fun copy-FKW6xZo (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;)Ldev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail;
-	public static synthetic fun copy-FKW6xZo$default (Ldev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail;JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/FileId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail;
+	public final fun component3 ()Ldev/inmo/tgbotapi/types/StickerFormat;
+	public final fun component4 ()Ldev/inmo/tgbotapi/requests/abstracts/FileId;
+	public final fun copy-ekB4Uzg (JLjava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ldev/inmo/tgbotapi/requests/abstracts/FileId;)Ldev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail;
+	public static synthetic fun copy-ekB4Uzg$default (Ldev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail;JLjava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ldev/inmo/tgbotapi/requests/abstracts/FileId;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public synthetic fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
@@ -6884,8 +6927,8 @@ public final class dev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnail$Co
 }
 
 public final class dev/inmo/tgbotapi/requests/stickers/SetStickerSetThumbnailKt {
-	public static final fun SetStickerSetThumbnail-FKW6xZo (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
-	public static final fun SetStickerSetThumbnail-pU7KfLc (JLjava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SetStickerSetThumbnail-OJAeTto (JLjava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
+	public static final fun SetStickerSetThumbnail-ekB4Uzg (JLjava/lang/String;Ldev/inmo/tgbotapi/types/StickerFormat;Ldev/inmo/tgbotapi/requests/abstracts/MultipartFile;)Ldev/inmo/tgbotapi/requests/abstracts/Request;
 }
 
 public final class dev/inmo/tgbotapi/requests/stickers/SetStickerSetTitle : dev/inmo/tgbotapi/requests/stickers/abstracts/StickerSetAction {
@@ -6974,7 +7017,7 @@ public final class dev/inmo/tgbotapi/requests/stickers/abstracts/OwnerStickerSet
 }
 
 public abstract interface class dev/inmo/tgbotapi/requests/stickers/abstracts/StandardStickerSetAction : dev/inmo/tgbotapi/requests/stickers/abstracts/OwnerStickerSetAction {
-	public abstract fun getInputSticker ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
+	public abstract fun getNewSticker ()Ldev/inmo/tgbotapi/requests/stickers/InputSticker;
 }
 
 public final class dev/inmo/tgbotapi/requests/stickers/abstracts/StandardStickerSetAction$DefaultImpls {
@@ -7102,6 +7145,38 @@ public final class dev/inmo/tgbotapi/requests/webhook/SetWebhookKt {
 }
 
 public abstract class dev/inmo/tgbotapi/requests/webhook/SetWebhookRequest : dev/inmo/tgbotapi/requests/abstracts/Request {
+}
+
+public final class dev/inmo/tgbotapi/types/Birthdate {
+	public static final field Companion Ldev/inmo/tgbotapi/types/Birthdate$Companion;
+	public fun <init> (III)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun copy (III)Ldev/inmo/tgbotapi/types/Birthdate;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/Birthdate;IIIILjava/lang/Object;)Ldev/inmo/tgbotapi/types/Birthdate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDate-1iQqF6g ()I
+	public final fun getDay ()I
+	public final fun getMonth ()I
+	public final fun getYear ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/Birthdate$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/Birthdate$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/Birthdate;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/Birthdate;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/Birthdate$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/BotCommand {
@@ -7597,6 +7672,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field bigFileIdField Ljava/lang/String;
 	public static final field bigFileUniqueIdField Ljava/lang/String;
 	public static final field bioField Ljava/lang/String;
+	public static final field birthdateField Ljava/lang/String;
 	public static final field boostCountField Ljava/lang/String;
 	public static final field boostField Ljava/lang/String;
 	public static final field boostIdField Ljava/lang/String;
@@ -7678,6 +7754,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field dataField Ljava/lang/String;
 	public static final field dataHashField Ljava/lang/String;
 	public static final field dateField Ljava/lang/String;
+	public static final field dayField Ljava/lang/String;
 	public static final field descriptionField Ljava/lang/String;
 	public static final field disableContentTypeDetectionField Ljava/lang/String;
 	public static final field disableEditMessageField Ljava/lang/String;
@@ -7719,6 +7796,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field forChannelsField Ljava/lang/String;
 	public static final field forceField Ljava/lang/String;
 	public static final field forceReplyField Ljava/lang/String;
+	public static final field formatField Ljava/lang/String;
 	public static final field forwardTextField Ljava/lang/String;
 	public static final field foursquareIdField Ljava/lang/String;
 	public static final field foursquareTypeField Ljava/lang/String;
@@ -7810,6 +7888,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field messageTextField Ljava/lang/String;
 	public static final field messageThreadIdField Ljava/lang/String;
 	public static final field mimeTypeField Ljava/lang/String;
+	public static final field monthField Ljava/lang/String;
 	public static final field mpeg4GifDurationField Ljava/lang/String;
 	public static final field mpeg4GifFileIdField Ljava/lang/String;
 	public static final field mpeg4GifHeightField Ljava/lang/String;
@@ -7825,6 +7904,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field okField Ljava/lang/String;
 	public static final field oldChatMemberField Ljava/lang/String;
 	public static final field oldReactionField Ljava/lang/String;
+	public static final field oldStickerField Ljava/lang/String;
 	public static final field oneTimeKeyboardField Ljava/lang/String;
 	public static final field onlyIfBannedField Ljava/lang/String;
 	public static final field onlyNewMembersField Ljava/lang/String;
@@ -7893,8 +7973,12 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field requestContactField Ljava/lang/String;
 	public static final field requestIdField Ljava/lang/String;
 	public static final field requestLocationField Ljava/lang/String;
+	public static final field requestNameField Ljava/lang/String;
+	public static final field requestPhotoField Ljava/lang/String;
 	public static final field requestPollField Ljava/lang/String;
+	public static final field requestTitleField Ljava/lang/String;
 	public static final field requestUserField Ljava/lang/String;
+	public static final field requestUsernameField Ljava/lang/String;
 	public static final field requestUsersField Ljava/lang/String;
 	public static final field requestWriteAccessField Ljava/lang/String;
 	public static final field requireEmailField Ljava/lang/String;
@@ -8016,6 +8100,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field winnersSelectionDateField Ljava/lang/String;
 	public static final field xShiftField Ljava/lang/String;
 	public static final field yShiftField Ljava/lang/String;
+	public static final field yearField Ljava/lang/String;
 	public static final fun getAllowedConnectionsLength ()Lkotlin/ranges/IntRange;
 	public static final fun getBasketballAndFootballDiceResultLimit ()Lkotlin/ranges/IntRange;
 	public static final fun getBotCommandDescriptionLimit ()Lkotlin/ranges/IntRange;
@@ -12347,9 +12432,11 @@ public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonPollTypeSeriali
 
 public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat$Companion;
-	public synthetic fun <init> (SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-2_3u2Cg ()S
+	public final fun component10 ()Ljava/lang/Boolean;
+	public final fun component11 ()Ljava/lang/Boolean;
 	public final fun component2 ()Ljava/lang/Boolean;
 	public final fun component3 ()Ljava/lang/Boolean;
 	public final fun component4 ()Ljava/lang/Boolean;
@@ -12357,12 +12444,16 @@ public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat {
 	public final fun component6 ()Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
 	public final fun component7 ()Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
 	public final fun component8 ()Ljava/lang/Boolean;
-	public final fun copy-2O5vf14 (SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;
-	public static synthetic fun copy-2O5vf14$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;
+	public final fun component9 ()Ljava/lang/Boolean;
+	public final fun copy-zw77kWY (SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;
+	public static synthetic fun copy-zw77kWY$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBotIsMember ()Ljava/lang/Boolean;
 	public final fun getBotRightsInChat ()Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
 	public final fun getRequestId-2_3u2Cg ()S
+	public final fun getRequestPhoto ()Ljava/lang/Boolean;
+	public final fun getRequestTitle ()Ljava/lang/Boolean;
+	public final fun getRequestUsername ()Ljava/lang/Boolean;
 	public final fun getUserRightsInChat ()Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;
 	public fun hashCode ()I
 	public final fun isChannel ()Ljava/lang/Boolean;
@@ -12395,22 +12486,31 @@ public abstract interface class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRe
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Companion;
 	public abstract fun getMaxCount ()I
 	public abstract fun getRequestId-2_3u2Cg ()S
+	public abstract fun getRequestName ()Ljava/lang/Boolean;
+	public abstract fun getRequestPhoto ()Ljava/lang/Boolean;
+	public abstract fun getRequestUsername ()Ljava/lang/Boolean;
 	public abstract fun isBot ()Ljava/lang/Boolean;
 	public abstract fun isPremium ()Ljava/lang/Boolean;
 }
 
 public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any : dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any$Companion;
-	public synthetic fun <init> (SLjava/lang/Boolean;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (SLjava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-2_3u2Cg ()S
 	public final fun component2 ()Ljava/lang/Boolean;
 	public final fun component3 ()I
-	public final fun copy-eMps0rA (SLjava/lang/Boolean;I)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any;
-	public static synthetic fun copy-eMps0rA$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any;SLjava/lang/Boolean;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any;
+	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun component6 ()Ljava/lang/Boolean;
+	public final fun copy-tzG5d64 (SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any;
+	public static synthetic fun copy-tzG5d64$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Any;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getMaxCount ()I
 	public fun getRequestId-2_3u2Cg ()S
+	public fun getRequestName ()Ljava/lang/Boolean;
+	public fun getRequestPhoto ()Ljava/lang/Boolean;
+	public fun getRequestUsername ()Ljava/lang/Boolean;
 	public fun hashCode ()I
 	public fun isBot ()Ljava/lang/Boolean;
 	public fun isPremium ()Ljava/lang/Boolean;
@@ -12434,15 +12534,21 @@ public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$An
 
 public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bot : dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bot$Companion;
-	public synthetic fun <init> (SIILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (SILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-2_3u2Cg ()S
 	public final fun component2 ()I
-	public final fun copy-_AeHyeE (SI)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bot;
-	public static synthetic fun copy-_AeHyeE$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bot;SIILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bot;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun copy-xbe5OHY (SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bot;
+	public static synthetic fun copy-xbe5OHY$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bot;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bot;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getMaxCount ()I
 	public fun getRequestId-2_3u2Cg ()S
+	public fun getRequestName ()Ljava/lang/Boolean;
+	public fun getRequestPhoto ()Ljava/lang/Boolean;
+	public fun getRequestUsername ()Ljava/lang/Boolean;
 	public fun hashCode ()I
 	public fun isBot ()Ljava/lang/Boolean;
 	public fun isPremium ()Ljava/lang/Boolean;
@@ -12466,16 +12572,22 @@ public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Bo
 
 public final class dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Common : dev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers {
 	public static final field Companion Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Common$Companion;
-	public synthetic fun <init> (SLjava/lang/Boolean;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (SLjava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-2_3u2Cg ()S
 	public final fun component2 ()Ljava/lang/Boolean;
 	public final fun component3 ()I
-	public final fun copy-eMps0rA (SLjava/lang/Boolean;I)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Common;
-	public static synthetic fun copy-eMps0rA$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Common;SLjava/lang/Boolean;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Common;
+	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun component5 ()Ljava/lang/Boolean;
+	public final fun component6 ()Ljava/lang/Boolean;
+	public final fun copy-tzG5d64 (SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Common;
+	public static synthetic fun copy-tzG5d64$default (Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Common;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers$Common;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getMaxCount ()I
 	public fun getRequestId-2_3u2Cg ()S
+	public fun getRequestName ()Ljava/lang/Boolean;
+	public fun getRequestPhoto ()Ljava/lang/Boolean;
+	public fun getRequestUsername ()Ljava/lang/Boolean;
 	public fun hashCode ()I
 	public fun isBot ()Ljava/lang/Boolean;
 	public fun isPremium ()Ljava/lang/Boolean;
@@ -13959,6 +14071,7 @@ public abstract interface class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChat$Companion;
 	public abstract fun getAllowCreateUserIdLink ()Z
 	public abstract fun getBio ()Ljava/lang/String;
+	public abstract fun getBirthdate ()Ldev/inmo/tgbotapi/types/Birthdate;
 	public abstract fun getBusinessIntro ()Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;
 	public abstract fun getBusinessLocation ()Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;
 	public abstract fun getBusinessOpeningHours ()Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;
@@ -13977,8 +14090,8 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat$DefaultImpls
 
 public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/inmo/tgbotapi/types/chat/ExtendedPrivateChat {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl$Companion;
-	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-tHkBKVM ()J
 	public final fun component10-GbmMWyQ ()Ljava/lang/String;
 	public final fun component11 ()Ldev/inmo/tgbotapi/types/TelegramDate;
@@ -13989,8 +14102,9 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/in
 	public final fun component16 ()Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;
 	public final fun component17 ()Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;
 	public final fun component18 ()Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;
-	public final fun component19 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
+	public final fun component19 ()Ldev/inmo/tgbotapi/types/Birthdate;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/ChatPhoto;
+	public final fun component20 ()Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 	public final fun component3-san03mo ()Ljava/lang/String;
 	public final fun component4 ()Ljava/util/List;
 	public final fun component5 ()Ljava/lang/String;
@@ -13998,14 +14112,15 @@ public final class dev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl : dev/in
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy-ijpSv1I (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;
-	public static synthetic fun copy-ijpSv1I$default (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;
+	public final fun copy-8kBFGis (JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;
+	public static synthetic fun copy-8kBFGis$default (Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;JLdev/inmo/tgbotapi/types/ChatPhoto;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ldev/inmo/tgbotapi/types/TelegramDate;ILdev/inmo/tgbotapi/types/colors/ColorId;Ljava/lang/String;Ljava/lang/String;Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;Ldev/inmo/tgbotapi/types/Birthdate;Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ExtendedPrivateChatImpl;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAccentColorId-f3WtEc0 ()I
 	public fun getActiveUsernames ()Ljava/util/List;
 	public fun getAllowCreateUserIdLink ()Z
 	public fun getBackgroundCustomEmojiId-GbmMWyQ ()Ljava/lang/String;
 	public fun getBio ()Ljava/lang/String;
+	public fun getBirthdate ()Ldev/inmo/tgbotapi/types/Birthdate;
 	public fun getBusinessIntro ()Ldev/inmo/tgbotapi/types/business_connection/BusinessIntro;
 	public fun getBusinessLocation ()Ldev/inmo/tgbotapi/types/business_connection/BusinessLocation;
 	public fun getBusinessOpeningHours ()Ldev/inmo/tgbotapi/types/business_connection/BusinessOpeningHours;
@@ -23334,15 +23449,22 @@ public final class dev/inmo/tgbotapi/types/reactions/ReactionsCount$Companion {
 
 public final class dev/inmo/tgbotapi/types/request/ChatShared : dev/inmo/tgbotapi/types/request/ChatSharedRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/types/request/ChatShared$Companion;
-	public synthetic fun <init> (SJLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SJLjava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SJLjava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-2_3u2Cg ()S
 	public final fun component2-tHkBKVM ()J
-	public final fun copy-R2qJWkU (SJ)Ldev/inmo/tgbotapi/types/request/ChatShared;
-	public static synthetic fun copy-R2qJWkU$default (Ldev/inmo/tgbotapi/types/request/ChatShared;SJILjava/lang/Object;)Ldev/inmo/tgbotapi/types/request/ChatShared;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4-san03mo ()Ljava/lang/String;
+	public final fun component5-qN01djY ()Ljava/util/List;
+	public final fun copy-X4Qs_4s (SJLjava/lang/String;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/request/ChatShared;
+	public static synthetic fun copy-X4Qs_4s$default (Ldev/inmo/tgbotapi/types/request/ChatShared;SJLjava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/request/ChatShared;
 	public fun equals (Ljava/lang/Object;)Z
 	public synthetic fun getChatId ()Ldev/inmo/tgbotapi/types/ChatIdentifier;
 	public fun getChatId-tHkBKVM ()J
+	public final fun getPhoto-qN01djY ()Ljava/util/List;
 	public fun getRequestId-2_3u2Cg ()S
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getUsername-san03mo ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -23402,9 +23524,45 @@ public abstract interface class dev/inmo/tgbotapi/types/request/RequestResponse 
 	public abstract fun getRequestId-2_3u2Cg ()S
 }
 
+public final class dev/inmo/tgbotapi/types/request/SharedUser {
+	public static final field Companion Ldev/inmo/tgbotapi/types/request/SharedUser$Companion;
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-tHkBKVM ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4-san03mo ()Ljava/lang/String;
+	public final fun component5-qN01djY ()Ljava/util/List;
+	public final fun copy-pGtpnOE (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Ldev/inmo/tgbotapi/types/request/SharedUser;
+	public static synthetic fun copy-pGtpnOE$default (Ldev/inmo/tgbotapi/types/request/SharedUser;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/request/SharedUser;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFirstName ()Ljava/lang/String;
+	public final fun getId-tHkBKVM ()J
+	public final fun getLastName ()Ljava/lang/String;
+	public final fun getPhoto-qN01djY ()Ljava/util/List;
+	public final fun getUsername-san03mo ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/request/SharedUser$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/request/SharedUser$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/request/SharedUser;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/request/SharedUser;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/request/SharedUser$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class dev/inmo/tgbotapi/types/request/UsersShared : dev/inmo/tgbotapi/types/request/ChatSharedRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/types/request/UsersShared$Companion;
-	public synthetic fun <init> (SJLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (SLdev/inmo/tgbotapi/types/request/SharedUser;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (SLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-2_3u2Cg ()S
 	public final fun component2 ()Ljava/util/List;
@@ -23416,6 +23574,7 @@ public final class dev/inmo/tgbotapi/types/request/UsersShared : dev/inmo/tgbota
 	public fun getRequestId-2_3u2Cg ()S
 	public final fun getUserId-tHkBKVM ()J
 	public final fun getUserIds ()Ljava/util/List;
+	public final fun getUsers ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -23432,187 +23591,43 @@ public final class dev/inmo/tgbotapi/types/request/UsersShared$$serializer : kot
 }
 
 public final class dev/inmo/tgbotapi/types/request/UsersShared$Companion {
+	public final fun invoke-R2qJWkU (SJ)Ldev/inmo/tgbotapi/types/request/UsersShared;
+	public final fun invoke-_AeHyeE (SLjava/util/List;)Ldev/inmo/tgbotapi/types/request/UsersShared;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public abstract interface class dev/inmo/tgbotapi/types/stickers/AnimatedStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/AnimatedStickerSet$Companion;
-	public abstract fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public abstract fun isAnimated ()Z
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/AnimatedStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/AnimatedStickerSet$DefaultImpls {
-	public static fun getStickerFormat (Ldev/inmo/tgbotapi/types/stickers/AnimatedStickerSet;)Ldev/inmo/tgbotapi/types/StickerFormat;
-	public static fun isAnimated (Ldev/inmo/tgbotapi/types/stickers/AnimatedStickerSet;)Z
-	public static fun isVideo (Ldev/inmo/tgbotapi/types/stickers/AnimatedStickerSet;)Z
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet : dev/inmo/tgbotapi/types/stickers/AnimatedStickerSet, dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-KVV53SM ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
-	public fun getStickers ()Ljava/util/List;
-	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public fun getTitle ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiAnimatedStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet : dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-KVV53SM ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
-	public fun getStickers ()Ljava/util/List;
-	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public fun getTitle ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiSimpleStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public abstract interface class dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
+public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
 	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-KVV53SM ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
+	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet;
+	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName-KVV53SM ()Ljava/lang/String;
+	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
+	public fun getStickers ()Ljava/util/List;
+	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
+	public fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet$DefaultImpls {
-	public static fun isAnimated (Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet;)Z
-	public static fun isVideo (Ldev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet;)Z
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet : dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet, dev/inmo/tgbotapi/types/stickers/VideoStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-KVV53SM ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
-	public fun getStickers ()Ljava/util/List;
-	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public fun getTitle ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/CustomEmojiVideoStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet : dev/inmo/tgbotapi/types/stickers/AnimatedStickerSet, dev/inmo/tgbotapi/types/stickers/MaskStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-KVV53SM ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
-	public fun getStickers ()Ljava/util/List;
-	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public fun getTitle ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/MaskAnimatedStickerSet$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -23649,241 +23664,87 @@ public final class dev/inmo/tgbotapi/types/stickers/MaskPosition$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet : dev/inmo/tgbotapi/types/stickers/MaskStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet$Companion;
+public final class dev/inmo/tgbotapi/types/stickers/MaskStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
+	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-KVV53SM ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet;
+	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet;
+	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
 	public fun getStickers ()Ljava/util/List;
 	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
 	public fun getTitle ()Ljava/lang/String;
 	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet$$serializer;
+public final class dev/inmo/tgbotapi/types/stickers/MaskStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet$$serializer;
 	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/MaskSimpleStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public abstract interface class dev/inmo/tgbotapi/types/stickers/MaskStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet$Companion;
 }
 
 public final class dev/inmo/tgbotapi/types/stickers/MaskStickerSet$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/stickers/MaskStickerSet$DefaultImpls {
-	public static fun isAnimated (Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet;)Z
-	public static fun isVideo (Ldev/inmo/tgbotapi/types/stickers/MaskStickerSet;)Z
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet : dev/inmo/tgbotapi/types/stickers/MaskStickerSet, dev/inmo/tgbotapi/types/stickers/VideoStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-KVV53SM ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
-	public fun getStickers ()Ljava/util/List;
-	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public fun getTitle ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/MaskVideoStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet : dev/inmo/tgbotapi/types/stickers/AnimatedStickerSet, dev/inmo/tgbotapi/types/stickers/RegularStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-KVV53SM ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
-	public fun getStickers ()Ljava/util/List;
-	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public fun getTitle ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularAnimatedStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet : dev/inmo/tgbotapi/types/stickers/RegularStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-KVV53SM ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
-	public fun getStickers ()Ljava/util/List;
-	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public fun getTitle ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularSimpleStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public abstract interface class dev/inmo/tgbotapi/types/stickers/RegularStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
+public final class dev/inmo/tgbotapi/types/stickers/RegularStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
 	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-KVV53SM ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
+	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet;
+	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getName-KVV53SM ()Ljava/lang/String;
+	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
+	public fun getStickers ()Ljava/util/List;
+	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
+	public fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/stickers/RegularStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class dev/inmo/tgbotapi/types/stickers/RegularStickerSet$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/stickers/RegularStickerSet$DefaultImpls {
-	public static fun isAnimated (Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet;)Z
-	public static fun isVideo (Ldev/inmo/tgbotapi/types/stickers/RegularStickerSet;)Z
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet : dev/inmo/tgbotapi/types/stickers/RegularStickerSet, dev/inmo/tgbotapi/types/stickers/VideoStickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-KVV53SM ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public final fun copy-wmBncWk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet;
-	public static synthetic fun copy-wmBncWk$default (Ldev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/files/PhotoSize;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getName-KVV53SM ()Ljava/lang/String;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
-	public fun getStickers ()Ljava/util/List;
-	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
-	public fun getTitle ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/RegularVideoStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
 public abstract interface class dev/inmo/tgbotapi/types/stickers/StickerSet {
 	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/StickerSet$Companion;
 	public abstract fun getName-KVV53SM ()Ljava/lang/String;
-	public abstract fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public abstract fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
 	public abstract fun getStickers ()Ljava/util/List;
 	public abstract fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
 	public abstract fun getTitle ()Ljava/lang/String;
-	public abstract fun isAnimated ()Z
-	public abstract fun isVideo ()Z
 }
 
 public final class dev/inmo/tgbotapi/types/stickers/StickerSet$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/StickerSet$DefaultImpls {
-	public static fun isAnimated (Ldev/inmo/tgbotapi/types/stickers/StickerSet;)Z
-	public static fun isVideo (Ldev/inmo/tgbotapi/types/stickers/StickerSet;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/stickers/StickerSet$Serializer : kotlinx/serialization/KSerializer {
@@ -23935,7 +23796,7 @@ public final class dev/inmo/tgbotapi/types/stickers/SurrogateStickerSet$Companio
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/stickers/UnknownStickerSet : dev/inmo/tgbotapi/types/stickers/CustomEmojiStickerSet, dev/inmo/tgbotapi/types/stickers/VideoStickerSet {
+public final class dev/inmo/tgbotapi/types/stickers/UnknownStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
 	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/UnknownStickerSet$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ldev/inmo/tgbotapi/types/StickerType;Ldev/inmo/tgbotapi/types/files/PhotoSize;Lkotlinx/serialization/json/JsonElement;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -23950,14 +23811,11 @@ public final class dev/inmo/tgbotapi/types/stickers/UnknownStickerSet : dev/inmo
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getName-KVV53SM ()Ljava/lang/String;
 	public final fun getRaw ()Lkotlinx/serialization/json/JsonElement;
-	public fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
 	public fun getStickerType ()Ldev/inmo/tgbotapi/types/StickerType;
 	public fun getStickers ()Ljava/util/List;
 	public fun getThumbnail ()Ldev/inmo/tgbotapi/types/files/PhotoSize;
 	public fun getTitle ()Ljava/lang/String;
 	public fun hashCode ()I
-	public fun isAnimated ()Z
-	public fun isVideo ()Z
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -23974,22 +23832,6 @@ public final class dev/inmo/tgbotapi/types/stickers/UnknownStickerSet$$serialize
 
 public final class dev/inmo/tgbotapi/types/stickers/UnknownStickerSet$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public abstract interface class dev/inmo/tgbotapi/types/stickers/VideoStickerSet : dev/inmo/tgbotapi/types/stickers/StickerSet {
-	public static final field Companion Ldev/inmo/tgbotapi/types/stickers/VideoStickerSet$Companion;
-	public abstract fun getStickerFormat ()Ldev/inmo/tgbotapi/types/StickerFormat;
-	public abstract fun isVideo ()Z
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/VideoStickerSet$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/stickers/VideoStickerSet$DefaultImpls {
-	public static fun getStickerFormat (Ldev/inmo/tgbotapi/types/stickers/VideoStickerSet;)Ldev/inmo/tgbotapi/types/StickerFormat;
-	public static fun isAnimated (Ldev/inmo/tgbotapi/types/stickers/VideoStickerSet;)Z
-	public static fun isVideo (Ldev/inmo/tgbotapi/types/stickers/VideoStickerSet;)Z
 }
 
 public final class dev/inmo/tgbotapi/types/stories/Story : dev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant {

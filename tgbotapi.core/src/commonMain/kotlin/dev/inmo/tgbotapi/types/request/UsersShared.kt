@@ -21,14 +21,18 @@ data class UsersShared(
         requestId: RequestId,
         user: SharedUser
     ) : this(requestId, listOf(user))
-    constructor(
-        requestId: RequestId,
-        userIds: List<UserId>
-    ) : this(requestId, userIds.map { SharedUser(it) })
-    constructor(
-        requestId: RequestId,
-        userId: UserId
-    ) : this(requestId, SharedUser(userId))
+
     override val chatId: ChatId
         get() = userId
+
+    companion object {
+        operator fun invoke(
+            requestId: RequestId,
+            userIds: List<UserId>
+        ) = UsersShared(requestId, userIds.map { SharedUser(it) })
+        operator fun invoke(
+            requestId: RequestId,
+            userId: UserId
+        ) = UsersShared(requestId, SharedUser(userId))
+    }
 }
