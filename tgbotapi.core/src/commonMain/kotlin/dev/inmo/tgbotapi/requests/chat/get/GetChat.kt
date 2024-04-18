@@ -19,7 +19,7 @@ data class GetChat(
     @Transient
     override val resultDeserializer: DeserializationStrategy<ExtendedChat> = when {
         chatId is ChatIdWithThreadId -> ExtendedChatSerializer.BasedOnForumThread(chatId.threadId)
-        chatId is BusinessChatId -> ExtendedChatSerializer.BasedOnBusinessConnection(chatId.businessId)
+        chatId is BusinessChatId -> ExtendedChatSerializer.BasedOnBusinessConnection(chatId.businessConnectionId)
         else -> ExtendedChatSerializer.Companion
     }
     override val requestSerializer: SerializationStrategy<*>

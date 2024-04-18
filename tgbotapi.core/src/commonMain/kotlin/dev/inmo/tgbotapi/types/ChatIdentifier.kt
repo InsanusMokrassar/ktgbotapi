@@ -30,7 +30,7 @@ sealed interface IdChatIdentifier : ChatIdentifier {
     abstract val chatId: RawChatId
     val threadId: MessageThreadId?
         get() = null
-    val businessId: BusinessConnectionId?
+    val businessConnectionId: BusinessConnectionId?
         get() = null
 
     companion object {
@@ -63,7 +63,7 @@ value class ChatIdWithThreadId(val chatIdWithThreadId: Pair<RawChatId, MessageTh
 value class BusinessChatId(val chatIdWithBusinessConnectionId: Pair<RawChatId, BusinessConnectionId>) : IdChatIdentifier {
     override val chatId: RawChatId
         get() = chatIdWithBusinessConnectionId.first
-    override val businessId: BusinessConnectionId
+    override val businessConnectionId: BusinessConnectionId
         get() = chatIdWithBusinessConnectionId.second
 
     constructor(chatId: RawChatId, businessConnectionId: BusinessConnectionId): this(chatId to businessConnectionId)
@@ -196,7 +196,7 @@ object FullChatIdentifierSerializer : KSerializer<ChatIdentifier> {
         when (value) {
             is ChatId -> encoder.encodeLong(value.chatId.long)
             is ChatIdWithThreadId -> encoder.encodeString("${value.chatId}/${value.threadId}")
-            is BusinessChatId -> encoder.encodeString("${value.chatId}//${value.businessId}")
+            is BusinessChatId -> encoder.encodeString("${value.chatId}//${value.businessConnectionId}")
             is Username -> encoder.encodeString(value.full)
         }
     }

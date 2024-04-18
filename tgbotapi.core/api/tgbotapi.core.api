@@ -7301,9 +7301,9 @@ public final class dev/inmo/tgbotapi/types/BusinessChatId : dev/inmo/tgbotapi/ty
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (Lkotlin/Pair;Ljava/lang/Object;)Z
 	public static final fun equals-impl0 (Lkotlin/Pair;Lkotlin/Pair;)Z
-	public fun getBusinessId-T-_HSQI ()Ljava/lang/String;
-	public static fun getBusinessId-T-_HSQI (Lkotlin/Pair;)Ljava/lang/String;
-	public synthetic fun getBusinessId-nXr5wdE ()Ljava/lang/String;
+	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
+	public static fun getBusinessConnectionId-T-_HSQI (Lkotlin/Pair;)Ljava/lang/String;
+	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getChatId-iyD94Bc ()J
 	public static fun getChatId-iyD94Bc (Lkotlin/Pair;)J
 	public final fun getChatIdWithBusinessConnectionId ()Lkotlin/Pair;
@@ -7357,8 +7357,8 @@ public final class dev/inmo/tgbotapi/types/ChatId : dev/inmo/tgbotapi/types/IdCh
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (JLjava/lang/Object;)Z
 	public static final fun equals-impl0 (JJ)Z
-	public fun getBusinessId-nXr5wdE ()Ljava/lang/String;
-	public static fun getBusinessId-nXr5wdE (J)Ljava/lang/String;
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public static fun getBusinessConnectionId-nXr5wdE (J)Ljava/lang/String;
 	public fun getChatId-iyD94Bc ()J
 	public fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 	public static fun getThreadId-S3HF-10 (J)Ldev/inmo/tgbotapi/types/MessageThreadId;
@@ -7381,8 +7381,8 @@ public final class dev/inmo/tgbotapi/types/ChatIdWithThreadId : dev/inmo/tgbotap
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (Lkotlin/Pair;Ljava/lang/Object;)Z
 	public static final fun equals-impl0 (Lkotlin/Pair;Lkotlin/Pair;)Z
-	public fun getBusinessId-nXr5wdE ()Ljava/lang/String;
-	public static fun getBusinessId-nXr5wdE (Lkotlin/Pair;)Ljava/lang/String;
+	public fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
+	public static fun getBusinessConnectionId-nXr5wdE (Lkotlin/Pair;)Ljava/lang/String;
 	public fun getChatId-iyD94Bc ()J
 	public static fun getChatId-iyD94Bc (Lkotlin/Pair;)J
 	public final fun getChatIdWithThreadId ()Lkotlin/Pair;
@@ -8268,7 +8268,7 @@ public final class dev/inmo/tgbotapi/types/FullChatIdentifierSerializer : kotlin
 
 public abstract interface class dev/inmo/tgbotapi/types/IdChatIdentifier : dev/inmo/tgbotapi/types/ChatIdentifier {
 	public static final field Companion Ldev/inmo/tgbotapi/types/IdChatIdentifier$Companion;
-	public abstract fun getBusinessId-nXr5wdE ()Ljava/lang/String;
+	public abstract fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public abstract fun getChatId-iyD94Bc ()J
 	public abstract fun getThreadId-S3HF-10 ()Ldev/inmo/tgbotapi/types/MessageThreadId;
 }
@@ -8282,7 +8282,7 @@ public final class dev/inmo/tgbotapi/types/IdChatIdentifier$Companion {
 }
 
 public final class dev/inmo/tgbotapi/types/IdChatIdentifier$DefaultImpls {
-	public static fun getBusinessId-nXr5wdE (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ljava/lang/String;
+	public static fun getBusinessConnectionId-nXr5wdE (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ljava/lang/String;
 	public static fun getThreadId-S3HF-10 (Ldev/inmo/tgbotapi/types/IdChatIdentifier;)Ldev/inmo/tgbotapi/types/MessageThreadId;
 }
 
@@ -11107,12 +11107,15 @@ public final class dev/inmo/tgbotapi/types/UpdateId$Companion {
 
 public final class dev/inmo/tgbotapi/types/UpdateTypesKt {
 	public static final field UPDATE_BUSINESS_CONNECTION Ljava/lang/String;
+	public static final field UPDATE_BUSINESS_MESSAGE Ljava/lang/String;
 	public static final field UPDATE_CALLBACK_QUERY Ljava/lang/String;
 	public static final field UPDATE_CHANNEL_POST Ljava/lang/String;
 	public static final field UPDATE_CHAT_BOOST Ljava/lang/String;
 	public static final field UPDATE_CHAT_JOIN_REQUEST Ljava/lang/String;
 	public static final field UPDATE_CHAT_MEMBER Ljava/lang/String;
 	public static final field UPDATE_CHOSEN_INLINE_RESULT Ljava/lang/String;
+	public static final field UPDATE_DELETED_BUSINESS_MESSAGES Ljava/lang/String;
+	public static final field UPDATE_EDITED_BUSINESS_MESSAGE Ljava/lang/String;
 	public static final field UPDATE_EDITED_CHANNEL_POST Ljava/lang/String;
 	public static final field UPDATE_EDITED_MESSAGE Ljava/lang/String;
 	public static final field UPDATE_INLINE_QUERY Ljava/lang/String;
@@ -17496,6 +17499,7 @@ public final class dev/inmo/tgbotapi/types/message/BusinessContentMessageImpl : 
 	public fun getReplyTo ()Ldev/inmo/tgbotapi/types/message/abstracts/Message;
 	public fun getSenderBot ()Ldev/inmo/tgbotapi/types/chat/CommonBot;
 	public fun getSenderBusinessBot ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public fun getSentByBusinessConnectionOwner ()Z
 	public fun getUser ()Ldev/inmo/tgbotapi/types/chat/User;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -18789,6 +18793,7 @@ public abstract interface class dev/inmo/tgbotapi/types/message/abstracts/Busine
 	public abstract fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
 	public abstract fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewBusinessChat;
 	public abstract fun getSenderBusinessBot ()Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public abstract fun getSentByBusinessConnectionOwner ()Z
 }
 
 public final class dev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage$DefaultImpls {
@@ -18796,6 +18801,7 @@ public final class dev/inmo/tgbotapi/types/message/abstracts/BusinessContentMess
 	public static fun getForwardable (Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;)Z
 	public static fun getMetaInfo-fV8YnZ8 (Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;)Lkotlin/Triple;
 	public static fun getReplyTo (Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;)Ldev/inmo/tgbotapi/types/message/abstracts/Message;
+	public static fun getSentByBusinessConnectionOwner (Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;)Z
 	public static fun getUser (Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;)Ldev/inmo/tgbotapi/types/chat/User;
 }
 
