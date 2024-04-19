@@ -12,7 +12,4 @@ data class BusinessOpeningHours(
     val timeZoneName: String,
     @SerialName(openingHoursField)
     val openingHours: List<BusinessOpeningHoursInterval>
-) {
-    val timezone: Timezone
-        get() = Timezone.valueOf(timeZoneName)
-}
+)
