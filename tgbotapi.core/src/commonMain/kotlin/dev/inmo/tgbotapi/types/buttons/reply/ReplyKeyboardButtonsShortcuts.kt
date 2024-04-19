@@ -4,7 +4,11 @@ import dev.inmo.tgbotapi.types.buttons.*
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
 import dev.inmo.tgbotapi.types.keyboardButtonRequestUserLimit
 import dev.inmo.tgbotapi.types.request.RequestId
+import dev.inmo.tgbotapi.types.requestNameField
+import dev.inmo.tgbotapi.types.requestPhotoField
+import dev.inmo.tgbotapi.types.requestUsernameField
 import dev.inmo.tgbotapi.types.webapps.WebAppInfo
+import kotlinx.serialization.SerialName
 import kotlin.math.max
 
 
@@ -71,10 +75,19 @@ inline fun requestUsersReplyButton(
 inline fun requestBotsReplyButton(
     text: String,
     requestId: RequestId,
-    maxCount: Int = keyboardButtonRequestUserLimit.first
+    maxCount: Int = keyboardButtonRequestUserLimit.first,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersReplyButton(
     text,
-    KeyboardButtonRequestUsers.Bot(requestId, maxCount)
+    KeyboardButtonRequestUsers.Bot(
+        requestId = requestId,
+        maxCount = maxCount,
+        requestName = requestName,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto
+    )
 )
 
 /**
@@ -84,10 +97,20 @@ inline fun requestUsersReplyButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
-    maxCount: Int = keyboardButtonRequestUserLimit.first
+    maxCount: Int = keyboardButtonRequestUserLimit.first,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersReplyButton(
     text,
-    KeyboardButtonRequestUsers.Common(requestId, premiumUser, maxCount)
+    KeyboardButtonRequestUsers.Common(
+        requestId = requestId,
+        isPremium = premiumUser,
+        maxCount = maxCount,
+        requestName = requestName,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto
+    )
 )
 
 /**
@@ -97,12 +120,18 @@ inline fun requestUserReplyButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
-    maxCount: Int = keyboardButtonRequestUserLimit.first
+    maxCount: Int = keyboardButtonRequestUserLimit.first,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersReplyButton(
     text,
     requestId,
     premiumUser,
-    maxCount
+    maxCount,
+    requestName = requestName,
+    requestUsername = requestUsername,
+    requestPhoto = requestPhoto
 )
 
 /**
@@ -112,10 +141,20 @@ inline fun requestUsersOrBotsReplyButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
-    maxCount: Int = keyboardButtonRequestUserLimit.first
+    maxCount: Int = keyboardButtonRequestUserLimit.first,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersReplyButton(
     text,
-    KeyboardButtonRequestUsers.Any(requestId, premiumUser, maxCount)
+    KeyboardButtonRequestUsers.Any(
+        requestId = requestId,
+        isPremium = premiumUser,
+        maxCount = maxCount,
+        requestName = requestName,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto
+    )
 )
 
 /**
@@ -123,10 +162,18 @@ inline fun requestUsersOrBotsReplyButton(
  */
 inline fun requestUserOrBotReplyButton(
     text: String,
-    requestId: RequestId
+    requestId: RequestId,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersReplyButton(
     text,
-    KeyboardButtonRequestUsers.Any(requestId)
+    KeyboardButtonRequestUsers.Any(
+        requestId = requestId,
+        requestName = requestName,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto
+    )
 )
 
 
@@ -153,7 +200,10 @@ inline fun requestChatReplyButton(
     isOwnedBy: Boolean? = null,
     userRightsInChat: ChatCommonAdministratorRights? = null,
     botRightsInChat: ChatCommonAdministratorRights? = null,
-    botIsMember: Boolean = false
+    botIsMember: Boolean = false,
+    requestTitle: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestChatReplyButton(
     text,
     KeyboardButtonRequestChat(
@@ -164,7 +214,10 @@ inline fun requestChatReplyButton(
         isOwnedBy = isOwnedBy,
         userRightsInChat = userRightsInChat,
         botRightsInChat = botRightsInChat,
-        botIsMember = botIsMember
+        botIsMember = botIsMember,
+        requestTitle = requestTitle,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto,
     )
 )
 
@@ -178,7 +231,10 @@ inline fun requestChannelReplyButton(
     isOwnedBy: Boolean? = null,
     userRightsInChat: ChatCommonAdministratorRights? = null,
     botRightsInChat: ChatCommonAdministratorRights? = null,
-    botIsMember: Boolean = false
+    botIsMember: Boolean = false,
+    requestTitle: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestChatReplyButton(
     text,
     KeyboardButtonRequestChat.Channel(
@@ -187,7 +243,10 @@ inline fun requestChannelReplyButton(
         isOwnedBy = isOwnedBy,
         userRightsInChat = userRightsInChat,
         botRightsInChat = botRightsInChat,
-        botIsMember = botIsMember
+        botIsMember = botIsMember,
+        requestTitle = requestTitle,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto,
     )
 )
 
@@ -203,7 +262,10 @@ inline fun requestChannelReplyButton(
     isOwnedBy: Boolean? = null,
     userRightsInChat: ChatCommonAdministratorRights? = null,
     botRightsInChat: ChatCommonAdministratorRights? = null,
-    botIsMember: Boolean? = null
+    botIsMember: Boolean? = null,
+    requestTitle: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestChatReplyButton(
     text,
     KeyboardButtonRequestChat.Group(
@@ -213,6 +275,9 @@ inline fun requestChannelReplyButton(
         isOwnedBy = isOwnedBy,
         userRightsInChat = userRightsInChat,
         botRightsInChat = botRightsInChat,
-        botIsMember = botIsMember
+        botIsMember = botIsMember,
+        requestTitle = requestTitle,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto,
     )
 )

@@ -42,7 +42,10 @@ data class KeyboardButtonRequestChat(
             isOwnedBy: Boolean? = null,
             userRightsInChat: ChatCommonAdministratorRights? = null,
             botRightsInChat: ChatCommonAdministratorRights? = null,
-            botIsMember: Boolean? = null
+            botIsMember: Boolean? = null,
+            requestTitle: Boolean? = null,
+            requestUsername: Boolean? = null,
+            requestPhoto: Boolean? = null,
         ) = KeyboardButtonRequestChat(
             requestId = requestId,
             isChannel = true,
@@ -51,7 +54,10 @@ data class KeyboardButtonRequestChat(
             isOwnedBy = isOwnedBy,
             userRightsInChat = userRightsInChat,
             botRightsInChat = botRightsInChat,
-            botIsMember = botIsMember
+            botIsMember = botIsMember,
+            requestTitle = requestTitle,
+            requestUsername = requestUsername,
+            requestPhoto = requestPhoto,
         )
 
         fun Group(
@@ -61,7 +67,10 @@ data class KeyboardButtonRequestChat(
             isOwnedBy: Boolean? = null,
             userRightsInChat: ChatCommonAdministratorRights? = null,
             botRightsInChat: ChatCommonAdministratorRights? = null,
-            botIsMember: Boolean? = null
+            botIsMember: Boolean? = null,
+            requestTitle: Boolean? = null,
+            requestUsername: Boolean? = null,
+            requestPhoto: Boolean? = null,
         ) = KeyboardButtonRequestChat(
             requestId = requestId,
             isChannel = false,
@@ -70,7 +79,10 @@ data class KeyboardButtonRequestChat(
             isOwnedBy = isOwnedBy,
             userRightsInChat = userRightsInChat,
             botRightsInChat = botRightsInChat,
-            botIsMember = botIsMember
+            botIsMember = botIsMember,
+            requestTitle = requestTitle,
+            requestUsername = requestUsername,
+            requestPhoto = requestPhoto,
         )
     }
 }
