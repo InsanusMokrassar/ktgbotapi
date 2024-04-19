@@ -4158,14 +4158,15 @@ public final class dev/inmo/tgbotapi/requests/games/abstracts/SetGameScore$Defau
 	public static fun method (Ldev/inmo/tgbotapi/requests/games/abstracts/SetGameScore;)Ljava/lang/String;
 }
 
-public final class dev/inmo/tgbotapi/requests/get/GetBusinessConnection : dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
+public final class dev/inmo/tgbotapi/requests/get/GetBusinessConnection : dev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId, dev/inmo/tgbotapi/requests/abstracts/SimpleRequest {
 	public static final field Companion Ldev/inmo/tgbotapi/requests/get/GetBusinessConnection$Companion;
 	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-T-_HSQI ()Ljava/lang/String;
 	public final fun copy-SYn5crI (Ljava/lang/String;)Ldev/inmo/tgbotapi/requests/get/GetBusinessConnection;
 	public static synthetic fun copy-SYn5crI$default (Ldev/inmo/tgbotapi/requests/get/GetBusinessConnection;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/requests/get/GetBusinessConnection;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getId-T-_HSQI ()Ljava/lang/String;
+	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
+	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public fun getRequestSerializer ()Lkotlinx/serialization/SerializationStrategy;
 	public fun getResultDeserializer ()Lkotlinx/serialization/DeserializationStrategy;
 	public fun hashCode ()I
@@ -11879,17 +11880,17 @@ public final class dev/inmo/tgbotapi/types/business_connection/BusinessLocation$
 
 public final class dev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted : dev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId {
 	public static final field Companion Ldev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChat;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-T-_HSQI ()Ljava/lang/String;
 	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
-	public final fun component3-APLFQys ()J
-	public final fun copy-BHBJ6J4 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChat;J)Ldev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted;
-	public static synthetic fun copy-BHBJ6J4$default (Ldev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChat;JILjava/lang/Object;)Ldev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy-LpiUw8E (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ljava/util/List;)Ldev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted;
+	public static synthetic fun copy-LpiUw8E$default (Ldev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewChat;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBusinessConnectionId-T-_HSQI ()Ljava/lang/String;
 	public synthetic fun getBusinessConnectionId-nXr5wdE ()Ljava/lang/String;
 	public final fun getChat ()Ldev/inmo/tgbotapi/types/chat/PreviewChat;
-	public final fun getMessageId-APLFQys ()J
+	public final fun getMessageIds ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -11997,45 +11998,6 @@ public final class dev/inmo/tgbotapi/types/business_connection/MinutesInterval$$
 }
 
 public final class dev/inmo/tgbotapi/types/business_connection/MinutesInterval$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/business_connection/RawBusinessConnection {
-	public static final field Companion Ldev/inmo/tgbotapi/types/business_connection/RawBusinessConnection$Companion;
-	public fun <init> (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)V
-	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;JLdev/inmo/tgbotapi/types/TelegramDate;ZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1-T-_HSQI ()Ljava/lang/String;
-	public final fun component2 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
-	public final fun component3-tHkBKVM ()J
-	public final fun component4 ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun component5 ()Z
-	public final fun component6 ()Z
-	public final fun copy-FubJ-Q0 (Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;JLdev/inmo/tgbotapi/types/TelegramDate;ZZ)Ldev/inmo/tgbotapi/types/business_connection/RawBusinessConnection;
-	public static synthetic fun copy-FubJ-Q0$default (Ldev/inmo/tgbotapi/types/business_connection/RawBusinessConnection;Ljava/lang/String;Ldev/inmo/tgbotapi/types/chat/PreviewUser;JLdev/inmo/tgbotapi/types/TelegramDate;ZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/business_connection/RawBusinessConnection;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAsBusinessConnection ()Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;
-	public final fun getCanReply ()Z
-	public final fun getDate ()Ldev/inmo/tgbotapi/types/TelegramDate;
-	public final fun getId-T-_HSQI ()Ljava/lang/String;
-	public final fun getUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
-	public final fun getUserChatId-tHkBKVM ()J
-	public fun hashCode ()I
-	public final fun isEnabled ()Z
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class dev/inmo/tgbotapi/types/business_connection/RawBusinessConnection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Ldev/inmo/tgbotapi/types/business_connection/RawBusinessConnection$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/business_connection/RawBusinessConnection;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/business_connection/RawBusinessConnection;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class dev/inmo/tgbotapi/types/business_connection/RawBusinessConnection$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

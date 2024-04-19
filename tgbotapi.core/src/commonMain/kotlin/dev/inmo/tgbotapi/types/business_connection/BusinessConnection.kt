@@ -4,15 +4,12 @@ import dev.inmo.tgbotapi.abstracts.types.WithBusinessConnectionId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
-import kotlinx.serialization.EncodeDefault
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-@Serializable
+@Serializable(BusinessConnection.Companion::class)
 @ClassCastsIncluded
 sealed interface BusinessConnection : WithBusinessConnectionId {
     val id: BusinessConnectionId
@@ -59,6 +56,7 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
         override val isEnabled: Boolean = false
     }
 
+    @Serializer(BusinessConnection::class)
     companion object : KSerializer<BusinessConnection> {
         override val descriptor: SerialDescriptor
             get() = RawBusinessConnection.serializer().descriptor
@@ -69,8 +67,7 @@ sealed interface BusinessConnection : WithBusinessConnectionId {
         }
 
         override fun serialize(encoder: Encoder, value: BusinessConnection) {
-
+            RawBusinessConnection.serializer().serialize(encoder, RawBusinessConnection(value))
         }
-
     }
 }

@@ -49,6 +49,7 @@ internal data class RawUpdate constructor(
     private val message_reaction_count: ChatMessageReactionsCountUpdated? = null,
     private val chat_boost: ChatBoostUpdated? = null,
     private val removed_chat_boost: ChatBoostRemoved? = null,
+    @Serializable(BusinessConnection.Companion::class)
     private val business_connection: BusinessConnection? = null,
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     private val business_message: BusinessContentMessage<*>? = null,

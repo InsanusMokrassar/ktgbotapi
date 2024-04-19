@@ -7,7 +7,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 
 suspend fun TelegramBot.getBusinessConnection(
     id: BusinessConnectionId
-) = execute(GetBusinessConnection(id = id))
+) = execute(GetBusinessConnection(businessConnectionId = id))
 
 @Warning("This method may lead to error due to raw String type usage")
 suspend fun TelegramBot.getBusinessConnection(

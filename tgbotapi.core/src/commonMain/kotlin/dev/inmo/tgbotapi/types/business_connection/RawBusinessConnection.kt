@@ -6,7 +6,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RawBusinessConnection(
+internal data class RawBusinessConnection(
     @SerialName(idField)
     val id: BusinessConnectionId,
     @SerialName(userField)
