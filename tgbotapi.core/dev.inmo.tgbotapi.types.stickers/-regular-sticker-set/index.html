@@ -62,129 +62,103 @@
   <div class="breadcrumbs"><a href="../../index.html">tgbotapi.core</a><span class="delimiter">/</span><a href="../index.html">dev.inmo.tgbotapi.types.stickers</a><span class="delimiter">/</span><span class="current">RegularStickerSet</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Regular</span><wbr><span>Sticker</span><wbr><span><span>Set</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="index.html">RegularStickerSet</a> : <a href="../-sticker-set/index.html">StickerSet</a></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-regular-simple-sticker-set/index.html">RegularSimpleStickerSet</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-regular-animated-sticker-set/index.html">RegularAnimatedStickerSet</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-regular-video-sticker-set/index.html">RegularVideoStickerSet</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">RegularStickerSet</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>name<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>stickers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.files/-regular-sticker/index.html">RegularSticker</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>thumbnail<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.files/-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-sticker-set/index.html">StickerSet</a></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-2057789297%2FConstructors%2F789214110" anchor-label="RegularStickerSet" id="-2057789297%2FConstructors%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-regular-sticker-set.html"><span>Regular</span><wbr><span>Sticker</span><wbr><span><span>Set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2057789297%2FConstructors%2F789214110"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a><span class="token punctuation">, </span></span><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">stickers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.files/-regular-sticker/index.html">RegularSticker</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">thumbnail<span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.files/-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div data-togglable="PROPERTY">
         <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-1253509264%2FProperties%2F789214110" anchor-label="isAnimated" id="-1253509264%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+        <div class="table"><a data-name="268899002%2FProperties%2F789214110" anchor-label="name" id="268899002%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
           <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-sticker-set/is-animated.html"><span>is</span><wbr><span><span>Animated</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1253509264%2FProperties%2F789214110"></span>
+                  <div><a href="name.html"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="268899002%2FProperties%2F789214110"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-sticker-set/is-animated.html">isAnimated</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"name"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="name.html">name</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="952009580%2FProperties%2F789214110" anchor-label="isVideo" id="952009580%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+<a data-name="1509061839%2FProperties%2F789214110" anchor-label="stickers" id="1509061839%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
           <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-sticker-set/is-video.html"><span>is</span><wbr><span><span>Video</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="952009580%2FProperties%2F789214110"></span>
+                  <div><a href="stickers.html"><span><span>stickers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1509061839%2FProperties%2F789214110"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">val </span><a href="../-sticker-set/is-video.html">isVideo</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"stickers"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="stickers.html">stickers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.files/-regular-sticker/index.html">RegularSticker</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1252834194%2FProperties%2F789214110" anchor-label="name" id="1252834194%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+<a data-name="987517278%2FProperties%2F789214110" anchor-label="stickerType" id="987517278%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
           <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-sticker-set/name.html"><span><span>name</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1252834194%2FProperties%2F789214110"></span>
+                  <div><a href="sticker-type.html"><span>sticker</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="987517278%2FProperties%2F789214110"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-sticker-set/name.html">name</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-sticker-set-name/index.html">StickerSetName</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"sticker_type"</span></span></span><wbr><span class="token punctuation">)</span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/EncodeDefault///PointingToDeclaration/"><span class="token annotation builtin">EncodeDefault</span></span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="sticker-type.html">stickerType</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-sticker-type/index.html">StickerType</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2022336855%2FProperties%2F789214110" anchor-label="stickerFormat" id="-2022336855%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+<a data-name="-237722071%2FProperties%2F789214110" anchor-label="thumbnail" id="-237722071%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
           <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-sticker-set/sticker-format.html"><span>sticker</span><wbr><span><span>Format</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2022336855%2FProperties%2F789214110"></span>
+                  <div><a href="thumbnail.html"><span><span>thumbnail</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-237722071%2FProperties%2F789214110"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-sticker-set/sticker-format.html">stickerFormat</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-sticker-format/index.html">StickerFormat</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"thumbnail"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="thumbnail.html">thumbnail</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.files/-photo-size/index.html">PhotoSize</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="90698151%2FProperties%2F789214110" anchor-label="stickers" id="90698151%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
+<a data-name="-1446137283%2FProperties%2F789214110" anchor-label="title" id="-1446137283%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
           <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../-sticker-set/stickers.html"><span><span>stickers</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="90698151%2FProperties%2F789214110"></span>
+                  <div><a href="title.html"><span><span>title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1446137283%2FProperties%2F789214110"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-sticker-set/stickers.html">stickers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../dev.inmo.tgbotapi.types.files/-sticker/index.html">Sticker</a><span class="token operator">&gt;</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="403146118%2FProperties%2F789214110" anchor-label="stickerType" id="403146118%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-sticker-set/sticker-type.html"><span>sticker</span><wbr><span><span>Type</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="403146118%2FProperties%2F789214110"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-sticker-set/sticker-type.html">stickerType</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types/-sticker-type/index.html">StickerType</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-1257323439%2FProperties%2F789214110" anchor-label="thumbnail" id="-1257323439%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-sticker-set/thumbnail.html"><span><span>thumbnail</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1257323439%2FProperties%2F789214110"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-sticker-set/thumbnail.html">thumbnail</a><span class="token operator">: </span><a href="../../dev.inmo.tgbotapi.types.files/-photo-size/index.html">PhotoSize</a><span class="token operator">?</span></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="-1008917403%2FProperties%2F789214110" anchor-label="title" id="-1008917403%2FProperties%2F789214110" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":tgbotapi.core:dokkaHtmlPartial/commonMain" data-filterable-set=":tgbotapi.core:dokkaHtmlPartial/commonMain">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="../-sticker-set/title.html"><span><span>title</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1008917403%2FProperties%2F789214110"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="../-sticker-set/title.html">title</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":tgbotapi.core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/SerialName///PointingToDeclaration/"><span class="token annotation builtin">SerialName</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"title"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="title.html">title</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>

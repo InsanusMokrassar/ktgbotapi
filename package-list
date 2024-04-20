@@ -104,6 +104,7 @@ dev.inmo.tgbotapi.types.InlineQueries.query
 dev.inmo.tgbotapi.types.abstracts
 dev.inmo.tgbotapi.types.actions
 dev.inmo.tgbotapi.types.boosts
+dev.inmo.tgbotapi.types.business_connection
 dev.inmo.tgbotapi.types.buttons
 dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons
 dev.inmo.tgbotapi.types.buttons.inline
@@ -167,6 +168,7 @@ dev.inmo.tgbotapi.extensions.utils.updates.retrieving
 dev.inmo.tgbotapi.types.files
 module:tgbotapi.webapps
 dev.inmo.tgbotapi.webapps
+dev.inmo.tgbotapi.webapps.biometric
 dev.inmo.tgbotapi.webapps.cloud
 dev.inmo.tgbotapi.webapps.haptic
 dev.inmo.tgbotapi.webapps.invoice
