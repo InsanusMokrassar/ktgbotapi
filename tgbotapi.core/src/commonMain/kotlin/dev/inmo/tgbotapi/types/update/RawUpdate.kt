@@ -6,6 +6,8 @@ import dev.inmo.tgbotapi.types.InlineQueries.ChosenInlineResult.RawChosenInlineR
 import dev.inmo.tgbotapi.types.InlineQueries.query.RawInlineQuery
 import dev.inmo.tgbotapi.types.boosts.ChatBoostRemoved
 import dev.inmo.tgbotapi.types.boosts.ChatBoostUpdated
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
+import dev.inmo.tgbotapi.types.business_connection.BusinessMessagesDeleted
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionsCountUpdated
@@ -46,7 +48,14 @@ internal data class RawUpdate constructor(
     private val message_reaction: ChatMessageReactionUpdated? = null,
     private val message_reaction_count: ChatMessageReactionsCountUpdated? = null,
     private val chat_boost: ChatBoostUpdated? = null,
-    private val removed_chat_boost: ChatBoostRemoved? = null
+    private val removed_chat_boost: ChatBoostRemoved? = null,
+    @Serializable(BusinessConnection.Companion::class)
+    private val business_connection: BusinessConnection? = null,
+    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
+    private val business_message: BusinessContentMessage<*>? = null,
+    @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
+    private val edited_business_message: BusinessContentMessage<*>? = null,
+    private val deleted_business_messages: BusinessMessagesDeleted? = null,
 ) {
     @Transient
     private var initedUpdate: Update? = null
@@ -78,6 +87,10 @@ internal data class RawUpdate constructor(
                 message_reaction_count != null -> ChatMessageReactionsCountUpdatedUpdate(updateId, message_reaction_count)
                 chat_boost != null -> ChatBoostUpdatedUpdate(updateId, chat_boost)
                 removed_chat_boost != null -> ChatBoostRemovedUpdate(updateId, removed_chat_boost)
+                business_connection != null -> BusinessConnectionUpdate(updateId, business_connection)
+                business_message != null -> BusinessMessageUpdate(updateId, business_message)
+                edited_business_message != null -> EditBusinessMessageUpdate(updateId, edited_business_message)
+                deleted_business_messages != null -> DeletedBusinessMessageUpdate(updateId, deleted_business_messages)
                 else -> UnknownUpdate(
                     updateId,
                     raw

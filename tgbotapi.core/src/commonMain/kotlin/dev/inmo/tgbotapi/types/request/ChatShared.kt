@@ -1,10 +1,7 @@
 package dev.inmo.tgbotapi.types.request
 
-import dev.inmo.tgbotapi.types.ChatId
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.UserId
-import dev.inmo.tgbotapi.types.chatIdField
-import dev.inmo.tgbotapi.types.requestIdField
+import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.files.Photo
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -13,5 +10,11 @@ data class ChatShared(
     @SerialName(requestIdField)
     override val requestId: RequestId,
     @SerialName(chatIdField)
-    override val chatId: ChatId
+    override val chatId: ChatId,
+    @SerialName(titleField)
+    val title: String? = null,
+    @SerialName(usernameField)
+    val username: Username? = null,
+    @SerialName(photoField)
+    val photo: Photo? = null
 ) : ChatSharedRequest

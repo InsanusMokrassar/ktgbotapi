@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.send
 import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -19,6 +20,7 @@ fun SendLocation(
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -32,6 +34,7 @@ fun SendLocation(
     null,
     null,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -43,11 +46,12 @@ fun SendStaticLocation(
     latitude: Double,
     longitude: Double,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = SendLocation(chatId, latitude, longitude, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = SendLocation(chatId, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 fun SendLiveLocation(
     chatId: ChatIdentifier,
@@ -58,6 +62,7 @@ fun SendLiveLocation(
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -71,6 +76,7 @@ fun SendLiveLocation(
     heading,
     proximityAlertRadius,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,
@@ -95,6 +101,8 @@ data class SendLocation internal constructor(
     override val proximityAlertRadius: Meters? = null,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -103,7 +111,7 @@ data class SendLocation internal constructor(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<ContentMessage<LocationContent>>,
+) : SendContentMessageRequest<ContentMessage<LocationContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<LocationContent>>,
     PositionedSendMessageRequest<ContentMessage<LocationContent>>,
     HorizontallyAccured,

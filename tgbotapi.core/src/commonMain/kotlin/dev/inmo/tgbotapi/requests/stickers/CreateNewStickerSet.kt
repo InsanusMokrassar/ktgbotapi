@@ -21,14 +21,13 @@ fun CreateNewStickerSet(
     userId: UserId,
     name: StickerSetName,
     title: String,
-    stickersFormat: StickerFormat,
     stickers: List<InputSticker>,
     needsRepainting: Boolean? = null
 ): Request<Boolean> {
     val data  = when(stickers.first()) {
-        is InputSticker.Mask -> CreateNewStickerSet.Mask(userId, name, title, stickersFormat, stickers.filterIsInstance<InputSticker.Mask>())
-        is InputSticker.WithKeywords.CustomEmoji -> CreateNewStickerSet.CustomEmoji(userId, name, title, stickersFormat, stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(), needsRepainting)
-        is InputSticker.WithKeywords.Regular -> CreateNewStickerSet.Regular(userId, name, title, stickersFormat, stickers.filterIsInstance<InputSticker.WithKeywords.Regular>())
+        is InputSticker.Mask -> CreateNewStickerSet.Mask(userId, name, title, stickers.filterIsInstance<InputSticker.Mask>())
+        is InputSticker.WithKeywords.CustomEmoji -> CreateNewStickerSet.CustomEmoji(userId, name, title, stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(), needsRepainting)
+        is InputSticker.WithKeywords.Regular -> CreateNewStickerSet.Regular(userId, name, title, stickers.filterIsInstance<InputSticker.WithKeywords.Regular>())
     }
     val multipartParts = stickers.mapNotNull {
         (it.sticker as? MultipartFile)
@@ -63,14 +62,12 @@ fun CreateNewStickerSet(
     userId: UserId,
     name: String,
     title: String,
-    stickersFormat: StickerFormat,
     stickers: List<InputSticker>,
     needsRepainting: Boolean? = null
 ) = CreateNewStickerSet(
     userId = userId,
     name = StickerSetName(name),
     title = title,
-    stickersFormat = stickersFormat,
     stickers = stickers,
     needsRepainting = needsRepainting
 )
@@ -79,7 +76,6 @@ fun CreateNewStickerSet(
 sealed interface CreateNewStickerSet : CreateStickerSetAction {
     val stickerType: StickerType
     val stickers: List<InputSticker>
-    val stickersFormat: StickerFormat
 
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()
@@ -94,8 +90,6 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         override val name: StickerSetName,
         @SerialName(titleField)
         override val title: String,
-        @SerialName(stickerFormatField)
-        override val stickersFormat: StickerFormat,
         @SerialName(stickersField)
         override val stickers: List<InputSticker.WithKeywords.Regular>
     ) : CreateNewStickerSet {
@@ -111,8 +105,6 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         override val name: StickerSetName,
         @SerialName(titleField)
         override val title: String,
-        @SerialName(stickerFormatField)
-        override val stickersFormat: StickerFormat,
         @SerialName(stickersField)
         override val stickers: List<InputSticker.Mask>
     ) : CreateNewStickerSet {
@@ -128,8 +120,6 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         override val name: StickerSetName,
         @SerialName(titleField)
         override val title: String,
-        @SerialName(stickerFormatField)
-        override val stickersFormat: StickerFormat,
         @SerialName(stickersField)
         override val stickers: List<InputSticker.WithKeywords.CustomEmoji>,
         @SerialName(needsRepaintingField)
@@ -148,8 +138,6 @@ sealed interface CreateNewStickerSet : CreateStickerSetAction {
         override val name: StickerSetName,
         @SerialName(titleField)
         override val title: String,
-        @SerialName(stickerFormatField)
-        val stickersFormat: StickerFormat,
         @SerialName(stickersField)
         val stickers: List<InputSticker>,
         @SerialName(stickerTypeField)
@@ -172,7 +160,6 @@ object CreateNewStickerSetSerializer : KSerializer<CreateNewStickerSet>,
                 it.userId,
                 it.name,
                 it.title,
-                it.stickersFormat,
                 it.stickers,
                 it.stickerType,
                 (it as? CreateNewStickerSet.CustomEmoji)?.needsRepainting
@@ -184,7 +171,6 @@ object CreateNewStickerSetSerializer : KSerializer<CreateNewStickerSet>,
                     it.userId,
                     it.name,
                     it.title,
-                    it.stickersFormat,
                     it.stickers.filterIsInstance<InputSticker.WithKeywords.CustomEmoji>(),
                     it.needsRepainting
                 )
@@ -192,14 +178,12 @@ object CreateNewStickerSetSerializer : KSerializer<CreateNewStickerSet>,
                     it.userId,
                     it.name,
                     it.title,
-                    it.stickersFormat,
                     it.stickers.filterIsInstance<InputSticker.Mask>(),
                 )
                 StickerType.Regular -> CreateNewStickerSet.Regular(
                     it.userId,
                     it.name,
                     it.title,
-                    it.stickersFormat,
                     it.stickers.filterIsInstance<InputSticker.WithKeywords.Regular>(),
                 )
                 is StickerType.Unknown -> error("Unable to create new sticker set due to error in type format: ${it.stickerType}")

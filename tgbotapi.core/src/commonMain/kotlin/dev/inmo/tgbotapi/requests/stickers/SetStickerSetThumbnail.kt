@@ -9,10 +9,11 @@ import kotlinx.serialization.*
 fun SetStickerSetThumbnail(
     userId: UserId,
     stickerSetName: StickerSetName,
+    format: StickerFormat,
     thumbnail: MultipartFile
 ): Request<Boolean> {
     return CommonMultipartFileRequest(
-        SetStickerSetThumbnail(userId, stickerSetName),
+        SetStickerSetThumbnail(userId, stickerSetName, format),
         mapOf(thumbnailField to thumbnail)
     )
 }
@@ -20,10 +21,12 @@ fun SetStickerSetThumbnail(
 fun SetStickerSetThumbnail(
     userId: UserId,
     stickerSetName: String,
+    format: StickerFormat,
     thumbnail: MultipartFile
 ): Request<Boolean> = SetStickerSetThumbnail(
     userId = userId,
-    stickerSetName = StickerSetName(stickerSetName),
+    stickerSetName = StickerSetName(stickerSetName, ),
+    format = format,
     thumbnail = thumbnail
 )
 
@@ -33,6 +36,8 @@ data class SetStickerSetThumbnail (
     override val userId: UserId,
     @SerialName(nameField)
     override val name: StickerSetName,
+    @SerialName(formatField)
+    val format: StickerFormat,
     @SerialName(thumbnailField)
     val thumbnail: FileId? = null
 ) : OwnerStickerSetAction {

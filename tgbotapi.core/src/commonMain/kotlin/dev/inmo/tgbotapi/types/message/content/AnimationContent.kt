@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.message.content
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendAnimation
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -23,6 +24,7 @@ data class AnimationContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,
@@ -37,6 +39,7 @@ data class AnimationContent(
         media.width,
         media.height,
         messageThreadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,

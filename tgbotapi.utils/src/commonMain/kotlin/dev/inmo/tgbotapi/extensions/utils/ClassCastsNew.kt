@@ -16,6 +16,7 @@ import dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.requests.stickers.InputSticker
+import dev.inmo.tgbotapi.types.BusinessChatId
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.ChatIdWithThreadId
 import dev.inmo.tgbotapi.types.ChatIdentifier
@@ -92,6 +93,7 @@ import dev.inmo.tgbotapi.types.actions.UploadVideoAction
 import dev.inmo.tgbotapi.types.actions.UploadVideoNoteAction
 import dev.inmo.tgbotapi.types.actions.UploadVoiceAction
 import dev.inmo.tgbotapi.types.boosts.ChatBoostSource
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnection
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackDataInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.CallbackGameInlineKeyboardButton
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.InlineKeyboardButton
@@ -111,6 +113,7 @@ import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardMarkup
 import dev.inmo.tgbotapi.types.buttons.ReplyKeyboardRemove
 import dev.inmo.tgbotapi.types.chat.AbleToAddInAttachmentMenuChat
 import dev.inmo.tgbotapi.types.chat.Bot
+import dev.inmo.tgbotapi.types.chat.BusinessChat
 import dev.inmo.tgbotapi.types.chat.ChannelChat
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
@@ -118,6 +121,7 @@ import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.CommonBot
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.chat.ExtendedBot
+import dev.inmo.tgbotapi.types.chat.ExtendedBusinessChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChannelChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChat
 import dev.inmo.tgbotapi.types.chat.ExtendedChatWithUsername
@@ -131,6 +135,7 @@ import dev.inmo.tgbotapi.types.chat.ForumChat
 import dev.inmo.tgbotapi.types.chat.GroupChat
 import dev.inmo.tgbotapi.types.chat.PossiblyPremiumChat
 import dev.inmo.tgbotapi.types.chat.PreviewBot
+import dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
 import dev.inmo.tgbotapi.types.chat.PreviewChannelChat
 import dev.inmo.tgbotapi.types.chat.PreviewChat
 import dev.inmo.tgbotapi.types.chat.PreviewForumChat
@@ -264,6 +269,7 @@ import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousForumContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AnonymousGroupContentMessage
+import dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.CommonForumContentMessage
@@ -282,6 +288,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyEditedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyMediaGroupMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
@@ -439,6 +446,8 @@ import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
 import dev.inmo.tgbotapi.types.request.RequestResponse
 import dev.inmo.tgbotapi.types.request.UsersShared
+import dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
+import dev.inmo.tgbotapi.types.update.BusinessMessageUpdate
 import dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 import dev.inmo.tgbotapi.types.update.ChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.ChatBoostRemovedUpdate
@@ -448,6 +457,8 @@ import dev.inmo.tgbotapi.types.update.ChatMessageReactionUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.ChatMessageReactionsCountUpdatedUpdate
 import dev.inmo.tgbotapi.types.update.ChosenInlineResultUpdate
 import dev.inmo.tgbotapi.types.update.CommonChatMemberUpdatedUpdate
+import dev.inmo.tgbotapi.types.update.DeletedBusinessMessageUpdate
+import dev.inmo.tgbotapi.types.update.EditBusinessMessageUpdate
 import dev.inmo.tgbotapi.types.update.EditChannelPostUpdate
 import dev.inmo.tgbotapi.types.update.EditMessageUpdate
 import dev.inmo.tgbotapi.types.update.InlineQueryUpdate
@@ -757,6 +768,18 @@ public inline fun WithUser.passportMessageOrThrow(): PassportMessage = this as
 
 public inline fun <T> WithUser.ifPassportMessage(block: (PassportMessage) -> T): T? =
     passportMessageOrNull() ?.let(block)
+
+public inline fun WithUser.businessContentMessageOrNull(): BusinessContentMessage<MessageContent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun WithUser.businessContentMessageOrThrow(): BusinessContentMessage<MessageContent> =
+    this as
+    dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    WithUser.ifBusinessContentMessage(block: (BusinessContentMessage<MessageContent>) -> T): T? =
+    businessContentMessageOrNull() ?.let(block)
 
 public inline fun WithUser.fromUserMessageOrNull(): FromUserMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.FromUserMessage
@@ -1089,6 +1112,15 @@ public inline fun ChatIdentifier.chatIdWithThreadIdOrThrow(): ChatIdWithThreadId
 
 public inline fun <T> ChatIdentifier.ifChatIdWithThreadId(block: (ChatIdWithThreadId) -> T): T? =
     chatIdWithThreadIdOrNull() ?.let(block)
+
+public inline fun ChatIdentifier.businessChatIdOrNull(): BusinessChatId? = this as?
+    dev.inmo.tgbotapi.types.BusinessChatId
+
+public inline fun ChatIdentifier.businessChatIdOrThrow(): BusinessChatId = this as
+    dev.inmo.tgbotapi.types.BusinessChatId
+
+public inline fun <T> ChatIdentifier.ifBusinessChatId(block: (BusinessChatId) -> T): T? =
+    businessChatIdOrNull() ?.let(block)
 
 public inline fun ChatIdentifier.usernameOrNull(): Username? = this as?
     dev.inmo.tgbotapi.types.Username
@@ -1811,6 +1843,24 @@ public inline fun ChatBoostSource.unknownOrThrow(): ChatBoostSource.Unknown = th
 public inline fun <T> ChatBoostSource.ifUnknown(block: (ChatBoostSource.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
 
+public inline fun BusinessConnection.disabledOrNull(): BusinessConnection.Disabled? = this as?
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
+
+public inline fun BusinessConnection.disabledOrThrow(): BusinessConnection.Disabled = this as
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Disabled
+
+public inline fun <T> BusinessConnection.ifDisabled(block: (BusinessConnection.Disabled) -> T): T? =
+    disabledOrNull() ?.let(block)
+
+public inline fun BusinessConnection.enabledOrNull(): BusinessConnection.Enabled? = this as?
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Enabled
+
+public inline fun BusinessConnection.enabledOrThrow(): BusinessConnection.Enabled = this as
+    dev.inmo.tgbotapi.types.business_connection.BusinessConnection.Enabled
+
+public inline fun <T> BusinessConnection.ifEnabled(block: (BusinessConnection.Enabled) -> T): T? =
+    enabledOrNull() ?.let(block)
+
 public inline fun InlineKeyboardButton.unknownInlineKeyboardButtonOrNull():
     UnknownInlineKeyboardButton? = this as?
     dev.inmo.tgbotapi.types.buttons.InlineKeyboardButtons.UnknownInlineKeyboardButton
@@ -2011,6 +2061,15 @@ public inline fun Chat.privateChatOrThrow(): PrivateChat = this as
 public inline fun <T> Chat.ifPrivateChat(block: (PrivateChat) -> T): T? = privateChatOrNull()
     ?.let(block)
 
+public inline fun Chat.businessChatOrNull(): BusinessChat? = this as?
+    dev.inmo.tgbotapi.types.chat.BusinessChat
+
+public inline fun Chat.businessChatOrThrow(): BusinessChat = this as
+    dev.inmo.tgbotapi.types.chat.BusinessChat
+
+public inline fun <T> Chat.ifBusinessChat(block: (BusinessChat) -> T): T? = businessChatOrNull()
+    ?.let(block)
+
 public inline fun Chat.publicChatOrNull(): PublicChat? = this as?
     dev.inmo.tgbotapi.types.chat.PublicChat
 
@@ -2181,6 +2240,15 @@ public inline fun Chat.extendedChatWithUsernameOrThrow(): ExtendedChatWithUserna
 public inline fun <T> Chat.ifExtendedChatWithUsername(block: (ExtendedChatWithUsername) -> T): T? =
     extendedChatWithUsernameOrNull() ?.let(block)
 
+public inline fun Chat.extendedBusinessChatOrNull(): ExtendedBusinessChat? = this as?
+    dev.inmo.tgbotapi.types.chat.ExtendedBusinessChat
+
+public inline fun Chat.extendedBusinessChatOrThrow(): ExtendedBusinessChat = this as
+    dev.inmo.tgbotapi.types.chat.ExtendedBusinessChat
+
+public inline fun <T> Chat.ifExtendedBusinessChat(block: (ExtendedBusinessChat) -> T): T? =
+    extendedBusinessChatOrNull() ?.let(block)
+
 public inline fun Chat.userOrNull(): User? = this as? dev.inmo.tgbotapi.types.chat.User
 
 public inline fun Chat.userOrThrow(): User = this as dev.inmo.tgbotapi.types.chat.User
@@ -2254,6 +2322,15 @@ public inline fun Chat.previewPrivateChatOrThrow(): PreviewPrivateChat = this as
 
 public inline fun <T> Chat.ifPreviewPrivateChat(block: (PreviewPrivateChat) -> T): T? =
     previewPrivateChatOrNull() ?.let(block)
+
+public inline fun Chat.previewBusinessChatOrNull(): PreviewBusinessChat? = this as?
+    dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
+
+public inline fun Chat.previewBusinessChatOrThrow(): PreviewBusinessChat = this as
+    dev.inmo.tgbotapi.types.chat.PreviewBusinessChat
+
+public inline fun <T> Chat.ifPreviewBusinessChat(block: (PreviewBusinessChat) -> T): T? =
+    previewBusinessChatOrNull() ?.let(block)
 
 public inline fun Chat.previewPublicChatOrNull(): PreviewPublicChat? = this as?
     dev.inmo.tgbotapi.types.chat.PreviewPublicChat
@@ -3338,6 +3415,18 @@ public inline fun <T>
     Message.ifPrivateEventMessage(block: (PrivateEventMessage<PrivateEvent>) -> T): T? =
     privateEventMessageOrNull() ?.let(block)
 
+public inline fun Message.businessContentMessageOrNull(): BusinessContentMessage<MessageContent>? =
+    this as?
+    dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun Message.businessContentMessageOrThrow(): BusinessContentMessage<MessageContent> =
+    this as
+    dev.inmo.tgbotapi.types.message.abstracts.BusinessContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
+
+public inline fun <T>
+    Message.ifBusinessContentMessage(block: (BusinessContentMessage<MessageContent>) -> T): T? =
+    businessContentMessageOrNull() ?.let(block)
+
 public inline fun Message.channelContentMessageOrNull(): ChannelContentMessage<MessageContent>? =
     this as?
     dev.inmo.tgbotapi.types.message.abstracts.ChannelContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
@@ -3583,6 +3672,15 @@ public inline fun Message.possiblyMediaGroupMessageOrThrow():
 public inline fun <T>
     Message.ifPossiblyMediaGroupMessage(block: (PossiblyMediaGroupMessage<MessageContent>) -> T): T?
     = possiblyMediaGroupMessageOrNull() ?.let(block)
+
+public inline fun Message.possiblyOfflineMessageOrNull(): PossiblyOfflineMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
+
+public inline fun Message.possiblyOfflineMessageOrThrow(): PossiblyOfflineMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
+
+public inline fun <T> Message.ifPossiblyOfflineMessage(block: (PossiblyOfflineMessage) -> T): T? =
+    possiblyOfflineMessageOrNull() ?.let(block)
 
 public inline fun Message.possiblyPaymentMessageOrNull(): PossiblyPaymentMessage? = this as?
     dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
@@ -4881,6 +4979,24 @@ public inline fun RequestResponse.usersSharedOrThrow(): UsersShared = this as
 public inline fun <T> RequestResponse.ifUsersShared(block: (UsersShared) -> T): T? =
     usersSharedOrNull() ?.let(block)
 
+public inline fun Update.businessConnectionUpdateOrNull(): BusinessConnectionUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
+
+public inline fun Update.businessConnectionUpdateOrThrow(): BusinessConnectionUpdate = this as
+    dev.inmo.tgbotapi.types.update.BusinessConnectionUpdate
+
+public inline fun <T> Update.ifBusinessConnectionUpdate(block: (BusinessConnectionUpdate) -> T): T?
+    = businessConnectionUpdateOrNull() ?.let(block)
+
+public inline fun Update.businessMessageUpdateOrNull(): BusinessMessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.BusinessMessageUpdate
+
+public inline fun Update.businessMessageUpdateOrThrow(): BusinessMessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.BusinessMessageUpdate
+
+public inline fun <T> Update.ifBusinessMessageUpdate(block: (BusinessMessageUpdate) -> T): T? =
+    businessMessageUpdateOrNull() ?.let(block)
+
 public inline fun Update.callbackQueryUpdateOrNull(): CallbackQueryUpdate? = this as?
     dev.inmo.tgbotapi.types.update.CallbackQueryUpdate
 
@@ -4966,6 +5082,25 @@ public inline fun Update.commonChatMemberUpdatedUpdateOrThrow(): CommonChatMembe
 public inline fun <T>
     Update.ifCommonChatMemberUpdatedUpdate(block: (CommonChatMemberUpdatedUpdate) -> T): T? =
     commonChatMemberUpdatedUpdateOrNull() ?.let(block)
+
+public inline fun Update.deletedBusinessMessageUpdateOrNull(): DeletedBusinessMessageUpdate? = this
+    as? dev.inmo.tgbotapi.types.update.DeletedBusinessMessageUpdate
+
+public inline fun Update.deletedBusinessMessageUpdateOrThrow(): DeletedBusinessMessageUpdate = this
+    as dev.inmo.tgbotapi.types.update.DeletedBusinessMessageUpdate
+
+public inline fun <T>
+    Update.ifDeletedBusinessMessageUpdate(block: (DeletedBusinessMessageUpdate) -> T): T? =
+    deletedBusinessMessageUpdateOrNull() ?.let(block)
+
+public inline fun Update.editBusinessMessageUpdateOrNull(): EditBusinessMessageUpdate? = this as?
+    dev.inmo.tgbotapi.types.update.EditBusinessMessageUpdate
+
+public inline fun Update.editBusinessMessageUpdateOrThrow(): EditBusinessMessageUpdate = this as
+    dev.inmo.tgbotapi.types.update.EditBusinessMessageUpdate
+
+public inline fun <T> Update.ifEditBusinessMessageUpdate(block: (EditBusinessMessageUpdate) -> T):
+    T? = editBusinessMessageUpdateOrNull() ?.let(block)
 
 public inline fun Update.editChannelPostUpdateOrNull(): EditChannelPostUpdate? = this as?
     dev.inmo.tgbotapi.types.update.EditChannelPostUpdate

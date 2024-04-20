@@ -1107,6 +1107,18 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun botOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/Bot;
 	public static final fun bowlingDiceAnimationTypeOrNull (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;)Ldev/inmo/tgbotapi/types/dice/BowlingDiceAnimationType;
 	public static final fun bowlingDiceAnimationTypeOrThrow (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;)Ldev/inmo/tgbotapi/types/dice/BowlingDiceAnimationType;
+	public static final fun businessChatIdOrNull (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Lkotlin/Pair;
+	public static final fun businessChatIdOrThrow (Ldev/inmo/tgbotapi/types/ChatIdentifier;)Lkotlin/Pair;
+	public static final fun businessChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/BusinessChat;
+	public static final fun businessChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/BusinessChat;
+	public static final fun businessConnectionUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/BusinessConnectionUpdate;
+	public static final fun businessConnectionUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/BusinessConnectionUpdate;
+	public static final fun businessContentMessageOrNull (Ldev/inmo/tgbotapi/abstracts/WithUser;)Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;
+	public static final fun businessContentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;
+	public static final fun businessContentMessageOrThrow (Ldev/inmo/tgbotapi/abstracts/WithUser;)Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;
+	public static final fun businessContentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/BusinessContentMessage;
+	public static final fun businessMessageUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/BusinessMessageUpdate;
+	public static final fun businessMessageUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/BusinessMessageUpdate;
 	public static final fun byAnonymousOrNull (Ldev/inmo/tgbotapi/types/message/ForwardInfo;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$ByAnonymous;
 	public static final fun byAnonymousOrThrow (Ldev/inmo/tgbotapi/types/message/ForwardInfo;)Ldev/inmo/tgbotapi/types/message/ForwardInfo$ByAnonymous;
 	public static final fun byChatOrNull (Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;)Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated$ByChat;
@@ -1259,10 +1271,14 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun dataCallbackQueryOrThrow (Ldev/inmo/tgbotapi/abstracts/WithUser;)Ldev/inmo/tgbotapi/types/queries/callback/DataCallbackQuery;
 	public static final fun deleteChatPhotoOrNull (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/DeleteChatPhoto;
 	public static final fun deleteChatPhotoOrThrow (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;)Ldev/inmo/tgbotapi/types/message/ChatEvents/DeleteChatPhoto;
+	public static final fun deletedBusinessMessageUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/DeletedBusinessMessageUpdate;
+	public static final fun deletedBusinessMessageUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/DeletedBusinessMessageUpdate;
 	public static final fun describedInlineQueryResultOrNull (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/DescribedInlineQueryResult;
 	public static final fun describedInlineQueryResultOrThrow (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;)Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/DescribedInlineQueryResult;
 	public static final fun diceContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DiceContent;
 	public static final fun diceContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DiceContent;
+	public static final fun disabledOrNull (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Disabled;
+	public static final fun disabledOrThrow (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Disabled;
 	public static final fun documentContentOrNull (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DocumentContent;
 	public static final fun documentContentOrThrow (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;)Ldev/inmo/tgbotapi/types/message/content/DocumentContent;
 	public static final fun documentFileOrNull (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;)Ldev/inmo/tgbotapi/types/files/DocumentFile;
@@ -1279,6 +1295,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun duratedTelegramMediaOrThrow (Ldev/inmo/tgbotapi/types/media/TelegramMedia;)Ldev/inmo/tgbotapi/types/media/DuratedTelegramMedia;
 	public static final fun eMailTextSourceOrNull (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/EMailTextSource;
 	public static final fun eMailTextSourceOrThrow (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/types/message/textsources/EMailTextSource;
+	public static final fun editBusinessMessageUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/EditBusinessMessageUpdate;
+	public static final fun editBusinessMessageUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/EditBusinessMessageUpdate;
 	public static final fun editChannelPostUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/EditChannelPostUpdate;
 	public static final fun editChannelPostUpdateOrThrow (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/EditChannelPostUpdate;
 	public static final fun editMessageUpdateOrNull (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/update/EditMessageUpdate;
@@ -1287,6 +1305,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun emailOrThrow (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/Email;
 	public static final fun emojiOrNull (Ldev/inmo/tgbotapi/types/reactions/Reaction;)Ljava/lang/String;
 	public static final fun emojiOrThrow (Ldev/inmo/tgbotapi/types/reactions/Reaction;)Ljava/lang/String;
+	public static final fun enabledOrNull (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Enabled;
+	public static final fun enabledOrThrow (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;)Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection$Enabled;
 	public static final fun encryptedAddressOrNull (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/EncryptedAddress;
 	public static final fun encryptedAddressOrThrow (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/EncryptedAddress;
 	public static final fun encryptedPassportElementTranslatableOrNull (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;)Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElementTranslatable;
@@ -1315,6 +1335,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun exactScheduledCloseInfoOrThrow (Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;)Ldev/inmo/tgbotapi/types/polls/ExactScheduledCloseInfo;
 	public static final fun extendedBotOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
 	public static final fun extendedBotOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedBot;
+	public static final fun extendedBusinessChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedBusinessChat;
+	public static final fun extendedBusinessChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedBusinessChat;
 	public static final fun extendedChannelChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChat;
 	public static final fun extendedChannelChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedChannelChat;
 	public static final fun extendedChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/ExtendedChat;
@@ -1444,6 +1466,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifBot (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifBotCommandTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifBowlingDiceAnimationType (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifBusinessChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifBusinessChatId (Ldev/inmo/tgbotapi/types/ChatIdentifier;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifBusinessConnectionUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifBusinessContentMessage (Ldev/inmo/tgbotapi/abstracts/WithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifBusinessContentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifBusinessMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifByAnonymous (Ldev/inmo/tgbotapi/types/message/ForwardInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifByChat (Ldev/inmo/tgbotapi/types/chat/ChatMessageReactionUpdated;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifByUser (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1520,8 +1548,10 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifDartsDiceAnimationType (Ldev/inmo/tgbotapi/types/dice/DiceAnimationType;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDataCallbackQuery (Ldev/inmo/tgbotapi/abstracts/WithUser;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDeleteChatPhoto (Ldev/inmo/tgbotapi/types/message/ChatEvents/abstracts/ChatEvent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifDeletedBusinessMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDescribedInlineQueryResult (Ldev/inmo/tgbotapi/types/InlineQueries/InlineQueryResult/abstracts/InlineQueryResult;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDiceContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifDisabled (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentContent (Ldev/inmo/tgbotapi/types/message/content/ResendableContent;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentFile (Ldev/inmo/tgbotapi/types/files/TelegramMediaFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDocumentMediaGroupMemberTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1530,10 +1560,12 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifDriverLicenseSecureValue (Ldev/inmo/tgbotapi/types/passport/decrypted/abstracts/SecureValue;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifDuratedTelegramMedia (Ldev/inmo/tgbotapi/types/media/TelegramMedia;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEMailTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifEditBusinessMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEditChannelPostUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEditMessageUpdate (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEmail (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEmoji (Ldev/inmo/tgbotapi/types/reactions/Reaction;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifEnabled (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEncryptedAddress (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEncryptedPassportElementTranslatable (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifEncryptedPassportElementWithData (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1548,6 +1580,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifEncryptedPersonalDetails (Ldev/inmo/tgbotapi/types/passport/encrypted/abstracts/EncryptedPassportElement;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExactScheduledCloseInfo (Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExtendedBot (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifExtendedBusinessChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExtendedChannelChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExtendedChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifExtendedChatWithUsername (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1724,6 +1757,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifPossiblyEditedMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblyForwardedMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblyMediaGroupMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPossiblyOfflineMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblyPaymentMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblyPremiumChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPossiblySentViaBotCommonMessage (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -1734,6 +1768,7 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun ifPreTextSource (Ldev/inmo/tgbotapi/types/message/textsources/TextSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPremium (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPreviewBot (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun ifPreviewBusinessChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPreviewChannelChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPreviewChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public static final fun ifPreviewForumChat (Ldev/inmo/tgbotapi/types/chat/Chat;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
@@ -2139,6 +2174,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun possiblyForwardedMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyForwardedMessage;
 	public static final fun possiblyMediaGroupMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyMediaGroupMessage;
 	public static final fun possiblyMediaGroupMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyMediaGroupMessage;
+	public static final fun possiblyOfflineMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyOfflineMessage;
+	public static final fun possiblyOfflineMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyOfflineMessage;
 	public static final fun possiblyPaymentMessageOrNull (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyPaymentMessage;
 	public static final fun possiblyPaymentMessageOrThrow (Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Ldev/inmo/tgbotapi/types/message/abstracts/PossiblyPaymentMessage;
 	public static final fun possiblyPremiumChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PossiblyPremiumChat;
@@ -2159,6 +2196,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/ClassCastsNewKt {
 	public static final fun premiumOrThrow (Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource;)Ldev/inmo/tgbotapi/types/boosts/ChatBoostSource$Premium;
 	public static final fun previewBotOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PreviewBot;
 	public static final fun previewBotOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PreviewBot;
+	public static final fun previewBusinessChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PreviewBusinessChat;
+	public static final fun previewBusinessChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PreviewBusinessChat;
 	public static final fun previewChannelChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 	public static final fun previewChannelChatOrThrow (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PreviewChannelChat;
 	public static final fun previewChatOrNull (Ldev/inmo/tgbotapi/types/chat/Chat;)Ldev/inmo/tgbotapi/types/chat/PreviewChat;
@@ -2594,6 +2633,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/FlowsSameKt {
 }
 
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/SameKt {
+	public static final fun sameBusinessConnection (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ldev/inmo/tgbotapi/abstracts/types/WithBusinessConnectionId;)Z
+	public static final fun sameBusinessConnection-X6RVWW0 (Ldev/inmo/tgbotapi/types/message/abstracts/Message;Ljava/lang/String;)Z
 	public static final fun sameChat (Ldev/inmo/tgbotapi/abstracts/WithPreviewChat;Ldev/inmo/tgbotapi/types/ChatIdentifier;)Z
 	public static final fun sameChat (Ldev/inmo/tgbotapi/abstracts/WithPreviewChat;Ldev/inmo/tgbotapi/types/chat/Chat;)Z
 	public static final fun sameChat (Ldev/inmo/tgbotapi/abstracts/WithPreviewChat;Ldev/inmo/tgbotapi/types/message/abstracts/Message;)Z
@@ -2623,8 +2664,8 @@ public final class dev/inmo/tgbotapi/extensions/utils/extensions/TelegramBotComm
 public final class dev/inmo/tgbotapi/extensions/utils/extensions/UpdateChatRetrieverKt {
 	public static final fun sourceChat (Ldev/inmo/tgbotapi/types/queries/callback/CallbackQuery;)Ldev/inmo/tgbotapi/types/chat/PreviewChat;
 	public static final fun sourceChat (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/chat/Chat;
-	public static final fun sourceChatWithConverters (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/chat/Chat;
-	public static synthetic fun sourceChatWithConverters$default (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/Chat;
+	public static final fun sourceChatWithConverters (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/chat/Chat;
+	public static synthetic fun sourceChatWithConverters$default (Ldev/inmo/tgbotapi/types/update/abstracts/Update;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/Chat;
 	public static final fun sourceUser (Ldev/inmo/tgbotapi/types/update/abstracts/Update;)Ldev/inmo/tgbotapi/types/chat/User;
 }
 
@@ -2975,6 +3016,11 @@ public final class dev/inmo/tgbotapi/extensions/utils/formatting/StringFormattin
 	public static final fun underlineMarkdownV2 (Ljava/lang/String;)Ljava/lang/String;
 }
 
+public final class dev/inmo/tgbotapi/extensions/utils/shortcuts/BusinessMessagesMappersKt {
+	public static final fun allBusinessMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun businessMessages (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class dev/inmo/tgbotapi/extensions/utils/shortcuts/CommandsShortcutsKt {
 	public static final fun filterCommandsInsideTextMessages (Lkotlinx/coroutines/flow/Flow;Lkotlin/text/Regex;)Lkotlinx/coroutines/flow/Flow;
 	public static final fun filterCommandsWithArgs (Lkotlinx/coroutines/flow/Flow;Lkotlin/text/Regex;)Lkotlinx/coroutines/flow/Flow;
@@ -3150,27 +3196,29 @@ public final class dev/inmo/tgbotapi/extensions/utils/types/buttons/ReplyKeyboar
 	public static synthetic fun flatReplyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static final fun replyKeyboard (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
 	public static synthetic fun replyKeyboard$default (Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/buttons/ReplyKeyboardMarkup;
-	public static final fun requestBotButton-k9yqfdo (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;S)Z
-	public static final fun requestBotsButton-t22p7TQ (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SI)Z
-	public static synthetic fun requestBotsButton-t22p7TQ$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SIILjava/lang/Object;)Z
-	public static final fun requestChannelButton-XjXd-ic (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;)Z
-	public static synthetic fun requestChannelButton-XjXd-ic$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;ILjava/lang/Object;)Z
+	public static final fun requestBotButton-6J3sOes (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestBotButton-6J3sOes$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
+	public static final fun requestBotsButton-6xNxnbw (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestBotsButton-6xNxnbw$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
+	public static final fun requestChannelButton-cvDvKfo (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestChannelButton-cvDvKfo$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
 	public static final fun requestChatButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestChat;)Z
-	public static final fun requestChatButton-Lj92p0I (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;)Z
-	public static synthetic fun requestChatButton-Lj92p0I$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;ILjava/lang/Object;)Z
+	public static final fun requestChatButton-n4yCVdQ (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestChatButton-n4yCVdQ$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
 	public static final fun requestContactButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;)Z
-	public static final fun requestGroupButton-GP8XSDU (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;)Z
-	public static synthetic fun requestGroupButton-GP8XSDU$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;ILjava/lang/Object;)Z
+	public static final fun requestGroupButton-dh25vGQ (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestGroupButton-dh25vGQ$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ldev/inmo/tgbotapi/types/chat/member/ChatCommonAdministratorRights;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
 	public static final fun requestLocationButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;)Z
 	public static final fun requestPollButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonPollType;)Z
-	public static final fun requestUserButton-t22p7TQ (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;)Z
-	public static synthetic fun requestUserButton-t22p7TQ$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Object;)Z
-	public static final fun requestUserOrBotButton-k9yqfdo (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;S)Z
+	public static final fun requestUserButton-6xNxnbw (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestUserButton-6xNxnbw$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
+	public static final fun requestUserOrBotButton-6J3sOes (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestUserOrBotButton-6J3sOes$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
 	public static final fun requestUsersButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/buttons/KeyboardButtonRequestUsers;)Z
-	public static final fun requestUsersButton-0GQog4c (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;I)Z
-	public static synthetic fun requestUsersButton-0GQog4c$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;IILjava/lang/Object;)Z
-	public static final fun requestUsersOrBotsButton-0GQog4c (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;I)Z
-	public static synthetic fun requestUsersOrBotsButton-0GQog4c$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;IILjava/lang/Object;)Z
+	public static final fun requestUsersButton-XjXd-ic (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestUsersButton-XjXd-ic$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
+	public static final fun requestUsersOrBotsButton-XjXd-ic (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;)Z
+	public static synthetic fun requestUsersOrBotsButton-XjXd-ic$default (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;SLjava/lang/Boolean;ILjava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;ILjava/lang/Object;)Z
 	public static final fun simpleButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;)Z
 	public static final fun webAppButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ldev/inmo/tgbotapi/types/webapps/WebAppInfo;)Z
 	public static final fun webAppButton (Ldev/inmo/tgbotapi/utils/RowBuilder;Ljava/lang/String;Ljava/lang/String;)Z

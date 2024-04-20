@@ -29,7 +29,7 @@ data class StickerSurrogate(
     val mask_position: MaskPosition? = null,
     val custom_emoji_id: CustomEmojiId? = null,
     val file_size: Long? = null,
-    val needs_repainting: Boolean = false
+    val needs_repainting: Boolean = false,
 )
 
 // TODO:: Serializer
@@ -40,9 +40,9 @@ sealed interface Sticker : TelegramMediaFile, SizedMediaFile, ThumbedMediaFile, 
     val stickerFormat: StickerFormat
 
     val isAnimated
-        get() = false
+        get() = stickerFormat is StickerFormat.Animated
     val isVideo
-        get() = false
+        get() = stickerFormat is StickerFormat.Video
     val type: StickerType
 
     fun asInputSticker(emojis: List<String> = emoji ?.let { listOf(it) } ?: error("Unable to create input sticker without emojis")): InputSticker
@@ -238,6 +238,7 @@ sealed interface RegularSticker : Sticker {
 
     override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
         fileId,
+        stickerFormat,
         emojis,
         emptyList()
     )
@@ -339,6 +340,7 @@ sealed interface MaskSticker : Sticker {
 
     override fun asInputSticker(emojis: List<String>) = InputSticker.Mask(
         fileId,
+        stickerFormat,
         emojis,
         maskPosition
     )
@@ -439,6 +441,7 @@ sealed interface CustomEmojiSticker : Sticker {
 
     override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.CustomEmoji(
         fileId,
+        stickerFormat,
         emojis,
         emptyList()
     )
@@ -563,6 +566,7 @@ data class UnknownSticker(
 ) : Sticker {
     override fun asInputSticker(emojis: List<String>) = InputSticker.WithKeywords.Regular(
         fileId,
+        stickerFormat,
         emojis,
         emptyList()
     )

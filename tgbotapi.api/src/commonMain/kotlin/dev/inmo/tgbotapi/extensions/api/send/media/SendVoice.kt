@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.send.media.SendVoice
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -21,6 +22,7 @@ suspend fun TelegramBot.sendVoice(
     parseMode: ParseMode? = null,
     duration: Long? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -33,6 +35,7 @@ suspend fun TelegramBot.sendVoice(
         parseMode,
         duration,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -51,11 +54,12 @@ suspend fun TelegramBot.sendVoice(
     parseMode: ParseMode? = null,
     duration: Long? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, text, parseMode, duration, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVoice(chat.id, voice, text, parseMode, duration, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -67,12 +71,13 @@ suspend fun TelegramBot.sendVoice(
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVoice(
-    chatId, voice.fileId, text, parseMode, voice.duration, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, voice.fileId, text, parseMode, voice.duration, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -85,11 +90,12 @@ suspend fun TelegramBot.sendVoice(
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, text, parseMode, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVoice(chat.id, voice, text, parseMode, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 
 /**
@@ -102,6 +108,7 @@ suspend inline fun TelegramBot.sendVoice(
     entities: TextSourcesList,
     duration: Long? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -112,6 +119,7 @@ suspend inline fun TelegramBot.sendVoice(
         voice = voice,
         entities = entities,
         threadId = threadId,
+        businessConnectionId = businessConnectionId,
         duration = duration,
         disableNotification = disableNotification,
         protectContent = protectContent,
@@ -130,11 +138,12 @@ suspend inline fun TelegramBot.sendVoice(
     entities: TextSourcesList,
     duration: Long? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, entities, duration, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVoice(chat.id, voice, entities, duration, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -145,12 +154,13 @@ suspend inline fun TelegramBot.sendVoice(
     voice: VoiceFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVoice(
-    chatId, voice.fileId, entities, voice.duration, threadId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, voice.fileId, entities, voice.duration, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -161,8 +171,9 @@ suspend inline fun TelegramBot.sendVoice(
     voice: VoiceFile,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVoice(chat.id, voice, entities, threadId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVoice(chat.id, voice, entities, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)

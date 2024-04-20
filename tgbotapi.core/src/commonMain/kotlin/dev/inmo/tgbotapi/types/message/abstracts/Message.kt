@@ -17,7 +17,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlin.jvm.JvmInline
 
 @ClassCastsIncluded(excludeRegex = ".*Impl")
-interface Message : WithPreviewChatAndMessageId {
+interface Message : WithPreviewChatAndMessageId, PossiblyBusinessMessage {
     val date: DateTime
     val metaInfo: MetaInfo
         get() = MetaInfo(chat.id, messageId)

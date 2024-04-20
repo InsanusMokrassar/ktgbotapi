@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.media.SendMediaGroup
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.media.TelegramMedia
@@ -32,7 +33,8 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
 
     override fun createResend(
         chatId: ChatIdentifier,
-        threadId: MessageThreadId?,
+        messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,
@@ -40,7 +42,8 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
     ): Request<ContentMessage<MediaGroupContent<MediaGroupPartContent>>> = SendMediaGroup<MediaGroupPartContent>(
         chatId,
         group.map { it.content.toMediaGroupMemberTelegramMedia() },
-        threadId,
+        messageThreadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,

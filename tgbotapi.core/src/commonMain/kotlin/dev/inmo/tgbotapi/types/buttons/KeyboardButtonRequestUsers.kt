@@ -19,6 +19,9 @@ sealed interface KeyboardButtonRequestUsers {
     val isBot: Boolean?
     val isPremium: Boolean?
     val maxCount: Int
+    val requestName: Boolean?
+    val requestUsername: Boolean?
+    val requestPhoto: Boolean?
 
     @Serializable
     data class Any(
@@ -27,7 +30,13 @@ sealed interface KeyboardButtonRequestUsers {
         @SerialName(userIsPremiumField)
         override val isPremium: Boolean? = null,
         @SerialName(maxQuantityField)
-        override val maxCount: Int = keyboardButtonRequestUserLimit.first
+        override val maxCount: Int = keyboardButtonRequestUserLimit.first,
+        @SerialName(requestNameField)
+        override val requestName: Boolean? = null,
+        @SerialName(requestUsernameField)
+        override val requestUsername: Boolean? = null,
+        @SerialName(requestPhotoField)
+        override val requestPhoto: Boolean? = null,
     ) : KeyboardButtonRequestUsers {
         @SerialName(userIsBotField)
         @EncodeDefault
@@ -41,7 +50,13 @@ sealed interface KeyboardButtonRequestUsers {
         @SerialName(userIsPremiumField)
         override val isPremium: Boolean? = null,
         @SerialName(maxQuantityField)
-        override val maxCount: Int = keyboardButtonRequestUserLimit.first
+        override val maxCount: Int = keyboardButtonRequestUserLimit.first,
+        @SerialName(requestNameField)
+        override val requestName: Boolean? = null,
+        @SerialName(requestUsernameField)
+        override val requestUsername: Boolean? = null,
+        @SerialName(requestPhotoField)
+        override val requestPhoto: Boolean? = null,
     ) : KeyboardButtonRequestUsers {
         @SerialName(userIsBotField)
         @EncodeDefault
@@ -53,7 +68,13 @@ sealed interface KeyboardButtonRequestUsers {
         @SerialName(requestIdField)
         override val requestId: RequestId,
         @SerialName(maxQuantityField)
-        override val maxCount: Int = keyboardButtonRequestUserLimit.first
+        override val maxCount: Int = keyboardButtonRequestUserLimit.first,
+        @SerialName(requestNameField)
+        override val requestName: Boolean? = null,
+        @SerialName(requestUsernameField)
+        override val requestUsername: Boolean? = null,
+        @SerialName(requestPhotoField)
+        override val requestPhoto: Boolean? = null,
     ) : KeyboardButtonRequestUsers {
         @SerialName(userIsBotField)
         @EncodeDefault
@@ -73,7 +94,13 @@ sealed interface KeyboardButtonRequestUsers {
             @SerialName(userIsPremiumField)
             val userIsPremium: Boolean? = null,
             @SerialName(maxQuantityField)
-            val maxCount: Int = keyboardButtonRequestUserLimit.first
+            val maxCount: Int = keyboardButtonRequestUserLimit.first,
+            @SerialName(requestNameField)
+            val requestName: Boolean? = null,
+            @SerialName(requestUsernameField)
+            val requestUsername: Boolean? = null,
+            @SerialName(requestPhotoField)
+            val requestPhoto: Boolean? = null,
         )
         private val realSerializer = Surrogate.serializer()
 
@@ -83,9 +110,29 @@ sealed interface KeyboardButtonRequestUsers {
             val surrogate = realSerializer.deserialize(decoder)
 
             return when (surrogate.userIsBot) {
-                true -> Bot(surrogate.requestId, surrogate.maxCount)
-                false -> Common(surrogate.requestId, surrogate.userIsPremium, surrogate.maxCount)
-                null -> Any(surrogate.requestId, surrogate.userIsPremium, surrogate.maxCount)
+                true -> Bot(
+                    requestId = surrogate.requestId,
+                    maxCount = surrogate.maxCount,
+                    requestName = surrogate.requestName,
+                    requestUsername = surrogate.requestUsername,
+                    requestPhoto = surrogate.requestPhoto
+                )
+                false -> Common(
+                    requestId = surrogate.requestId,
+                    isPremium = surrogate.userIsPremium,
+                    maxCount = surrogate.maxCount,
+                    requestName = surrogate.requestName,
+                    requestUsername = surrogate.requestUsername,
+                    requestPhoto = surrogate.requestPhoto
+                )
+                null -> Any(
+                    requestId = surrogate.requestId,
+                    isPremium = surrogate.userIsPremium,
+                    maxCount = surrogate.maxCount,
+                    requestName = surrogate.requestName,
+                    requestUsername = surrogate.requestUsername,
+                    requestPhoto = surrogate.requestPhoto
+                )
             }
         }
 
@@ -93,10 +140,13 @@ sealed interface KeyboardButtonRequestUsers {
             realSerializer.serialize(
                 encoder,
                 Surrogate(
-                    value.requestId,
-                    value.isBot,
-                    (value as? Common) ?.isPremium,
-                    value.maxCount
+                    requestId = value.requestId,
+                    userIsBot = value.isBot,
+                    userIsPremium = (value as? Common) ?.isPremium,
+                    maxCount = value.maxCount,
+                    requestName = value.requestName,
+                    requestUsername = value.requestUsername,
+                    requestPhoto = value.requestPhoto
                 )
             )
         }

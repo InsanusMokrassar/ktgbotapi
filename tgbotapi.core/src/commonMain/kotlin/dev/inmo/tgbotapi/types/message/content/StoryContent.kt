@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.ReplyParameters
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyForwardedMessage
@@ -21,6 +22,7 @@ data class StoryContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,

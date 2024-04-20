@@ -23,6 +23,7 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
 ) : ConnectedFromChannelGroupContentMessage<T> {
 
     constructor(
@@ -39,8 +40,9 @@ data class ConnectedFromChannelGroupContentMessageImpl<T : MessageContent>(
         senderBot: CommonBot?,
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
     ) : this(
-        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
     )
 }
 
@@ -58,6 +60,7 @@ data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
 ) : UnconnectedFromChannelGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -73,8 +76,9 @@ data class UnconnectedFromChannelGroupContentMessageImpl<T: MessageContent>(
         senderBot: CommonBot?,
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
     ) : this(
-        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, channel, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
     )
 }
 
@@ -91,6 +95,7 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
 ) : AnonymousGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -105,8 +110,9 @@ data class AnonymousGroupContentMessageImpl<T : MessageContent>(
         senderBot: CommonBot?,
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
     ) : this(
-        chat, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, messageId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
     )
 }
 
@@ -123,7 +129,8 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
     override val content: T,
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupId?,
-    override val senderBoostsCount: Int?
+    override val senderBoostsCount: Int?,
+    override val fromOffline: Boolean,
 ) : CommonGroupContentMessage<T> {
     constructor(
         chat: PreviewGroupChat,
@@ -139,8 +146,9 @@ data class CommonGroupContentMessageImpl<T : MessageContent>(
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupId?,
         senderBoostsCount: Int?,
+        fromOffline: Boolean,
     ) : this(
-        chat, messageId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId, senderBoostsCount
+        chat, messageId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId, senderBoostsCount, fromOffline
     )
 }
 
@@ -159,6 +167,7 @@ data class FromChannelForumContentMessageImpl<T: MessageContent>(
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
 ) : FromChannelForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -175,8 +184,9 @@ data class FromChannelForumContentMessageImpl<T: MessageContent>(
         senderBot: CommonBot?,
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
     ) : this(
-        chat, channel, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, channel, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
     )
 }
 
@@ -194,6 +204,7 @@ data class AnonymousForumContentMessageImpl<T : MessageContent>(
     override val senderBot: CommonBot?,
     override val authorSignature: AuthorSignature?,
     override val mediaGroupId: MediaGroupId?,
+    override val fromOffline: Boolean,
 ) : AnonymousForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -209,8 +220,9 @@ data class AnonymousForumContentMessageImpl<T : MessageContent>(
         senderBot: CommonBot?,
         authorSignature: AuthorSignature?,
         mediaGroupId: MediaGroupId?,
+        fromOffline: Boolean,
     ) : this(
-        chat, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId
+        chat, messageId, threadId, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, authorSignature, mediaGroupId, fromOffline
     )
 }
 
@@ -229,6 +241,7 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
     override val senderBot: CommonBot?,
     override val mediaGroupId: MediaGroupId?,
     override val senderBoostsCount: Int?,
+    override val fromOffline: Boolean,
 ) : CommonForumContentMessage<T> {
     constructor(
         chat: PreviewForumChat,
@@ -245,7 +258,8 @@ data class CommonForumContentMessageImpl<T : MessageContent>(
         senderBot: CommonBot?,
         mediaGroupId: MediaGroupId?,
         senderBoostsCount: Int?,
+        fromOffline: Boolean,
     ) : this(
-        chat, messageId, threadId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId, senderBoostsCount
+        chat, messageId, threadId, from, date, forwardInfo.messageOrigin(), editDate, hasProtectedContent, replyTo ?.let { ReplyInfo.Internal(it) }, replyMarkup, content, senderBot, mediaGroupId, senderBoostsCount, fromOffline
     )
 }

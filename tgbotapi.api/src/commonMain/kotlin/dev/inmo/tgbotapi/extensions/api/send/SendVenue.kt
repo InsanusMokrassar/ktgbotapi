@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.extensions.api.send
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.send.SendVenue
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.StaticLocation
@@ -23,6 +24,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -39,6 +41,7 @@ suspend fun TelegramBot.sendVenue(
         googlePlaceId = googlePlaceId,
         googlePlaceType = googlePlaceType,
         threadId = threadId,
+        businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         replyParameters = replyParameters,
@@ -61,6 +64,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -76,6 +80,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     threadId = threadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     replyParameters = replyParameters,
@@ -96,6 +101,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -111,6 +117,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     threadId = threadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     replyParameters = replyParameters,
@@ -131,6 +138,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId: GooglePlaceId? = null,
     googlePlaceType: GooglePlaceType? = null,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -146,6 +154,7 @@ suspend fun TelegramBot.sendVenue(
     googlePlaceId = googlePlaceId,
     googlePlaceType = googlePlaceType,
     threadId = threadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     replyParameters = replyParameters,
@@ -160,6 +169,7 @@ suspend fun TelegramBot.sendVenue(
     chatId: ChatIdentifier,
     venue: Venue,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -169,6 +179,7 @@ suspend fun TelegramBot.sendVenue(
         chatId = chatId,
         venue = venue,
         threadId = threadId,
+        businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         replyParameters = replyParameters,
@@ -184,6 +195,7 @@ suspend fun TelegramBot.sendVenue(
     chat: Chat,
     venue: Venue,
     threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -192,6 +204,7 @@ suspend fun TelegramBot.sendVenue(
     chatId = chat.id,
     venue = venue,
     threadId = threadId,
+    businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
     replyParameters = replyParameters,

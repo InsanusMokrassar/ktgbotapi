@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.extensions.api.edit.edit
 import dev.inmo.tgbotapi.extensions.api.send.send
 import dev.inmo.tgbotapi.extensions.api.send.sendLiveLocation
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
@@ -42,6 +43,7 @@ suspend fun TelegramBot.handleLiveLocation(
     locationsFlow: Flow<EditLiveLocationInfo>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -68,6 +70,7 @@ suspend fun TelegramBot.handleLiveLocation(
                 it.heading,
                 it.proximityAlertRadius,
                 threadId,
+                businessConnectionId,
                 disableNotification,
                 protectContent,
                 replyParameters,
@@ -102,6 +105,7 @@ suspend fun TelegramBot.handleLiveLocation(
     locationsFlow: Flow<Location>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -121,6 +125,7 @@ suspend fun TelegramBot.handleLiveLocation(
         },
         liveTimeMillis,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -139,6 +144,7 @@ suspend fun TelegramBot.handleLiveLocation(
     locationsFlow: Flow<Pair<Double, Double>>,
     liveTimeMillis: Long = defaultLivePeriodDelayMillis,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -154,6 +160,7 @@ suspend fun TelegramBot.handleLiveLocation(
         },
         liveTimeMillis,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,

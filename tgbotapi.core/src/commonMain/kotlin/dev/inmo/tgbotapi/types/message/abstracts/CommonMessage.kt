@@ -7,5 +7,7 @@ sealed interface CommonMessage<out T: MessageContent> : AccessibleMessage,
     PossiblyEditedMessage,
     PossiblyReplyMessage,
     PossiblyMarkedUp,
+    PossiblyBusinessMessage,
+    PossiblyOfflineMessage,
     PossiblyMediaGroupMessage<T>,
     ContentMessage<T>

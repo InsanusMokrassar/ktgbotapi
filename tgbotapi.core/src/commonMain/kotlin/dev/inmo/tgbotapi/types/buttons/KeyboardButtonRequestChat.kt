@@ -1,15 +1,8 @@
 package dev.inmo.tgbotapi.types.buttons
 
-import dev.inmo.tgbotapi.types.botAdministratorRightsField
-import dev.inmo.tgbotapi.types.botIsMemberField
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.member.ChatCommonAdministratorRights
-import dev.inmo.tgbotapi.types.chatHasUsernameField
-import dev.inmo.tgbotapi.types.chatIsChannelField
-import dev.inmo.tgbotapi.types.chatIsCreatedField
-import dev.inmo.tgbotapi.types.chatIsForumField
 import dev.inmo.tgbotapi.types.request.RequestId
-import dev.inmo.tgbotapi.types.requestIdField
-import dev.inmo.tgbotapi.types.userAdministratorRightsField
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -34,7 +27,13 @@ data class KeyboardButtonRequestChat(
     @SerialName(botAdministratorRightsField)
     val botRightsInChat: ChatCommonAdministratorRights? = null,
     @SerialName(botIsMemberField)
-    val botIsMember: Boolean? = null
+    val botIsMember: Boolean? = null,
+    @SerialName(requestTitleField)
+    val requestTitle: Boolean? = null,
+    @SerialName(requestUsernameField)
+    val requestUsername: Boolean? = null,
+    @SerialName(requestPhotoField)
+    val requestPhoto: Boolean? = null
 ) {
     companion object {
         fun Channel(
@@ -43,7 +42,10 @@ data class KeyboardButtonRequestChat(
             isOwnedBy: Boolean? = null,
             userRightsInChat: ChatCommonAdministratorRights? = null,
             botRightsInChat: ChatCommonAdministratorRights? = null,
-            botIsMember: Boolean? = null
+            botIsMember: Boolean? = null,
+            requestTitle: Boolean? = null,
+            requestUsername: Boolean? = null,
+            requestPhoto: Boolean? = null,
         ) = KeyboardButtonRequestChat(
             requestId = requestId,
             isChannel = true,
@@ -52,7 +54,10 @@ data class KeyboardButtonRequestChat(
             isOwnedBy = isOwnedBy,
             userRightsInChat = userRightsInChat,
             botRightsInChat = botRightsInChat,
-            botIsMember = botIsMember
+            botIsMember = botIsMember,
+            requestTitle = requestTitle,
+            requestUsername = requestUsername,
+            requestPhoto = requestPhoto,
         )
 
         fun Group(
@@ -62,7 +67,10 @@ data class KeyboardButtonRequestChat(
             isOwnedBy: Boolean? = null,
             userRightsInChat: ChatCommonAdministratorRights? = null,
             botRightsInChat: ChatCommonAdministratorRights? = null,
-            botIsMember: Boolean? = null
+            botIsMember: Boolean? = null,
+            requestTitle: Boolean? = null,
+            requestUsername: Boolean? = null,
+            requestPhoto: Boolean? = null,
         ) = KeyboardButtonRequestChat(
             requestId = requestId,
             isChannel = false,
@@ -71,7 +79,10 @@ data class KeyboardButtonRequestChat(
             isOwnedBy = isOwnedBy,
             userRightsInChat = userRightsInChat,
             botRightsInChat = botRightsInChat,
-            botIsMember = botIsMember
+            botIsMember = botIsMember,
+            requestTitle = requestTitle,
+            requestUsername = requestUsername,
+            requestPhoto = requestPhoto,
         )
     }
 }

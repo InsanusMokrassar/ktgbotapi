@@ -4,7 +4,6 @@ import dev.inmo.micro_utils.coroutines.plus
 import dev.inmo.tgbotapi.types.ALL_UPDATES_LIST
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.update.*
-import dev.inmo.tgbotapi.types.update.abstracts.BaseSentMessageUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.UnknownUpdate
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 import kotlinx.coroutines.channels.*
@@ -41,6 +40,10 @@ interface FlowsUpdatesFilter : UpdatesFilter {
     val chatMessageReactionsCountUpdatedUpdateFlow: Flow<ChatMessageReactionsCountUpdatedUpdate>
     val chatBoostUpdatedUpdateFlow: Flow<ChatBoostUpdatedUpdate>
     val chatBoostRemovedUpdateFlow: Flow<ChatBoostRemovedUpdate>
+    val businessConnectionUpdatesFlow: Flow<BusinessConnectionUpdate>
+    val businessMessageUpdatesFlow: Flow<BusinessMessageUpdate>
+    val editBusinessMessageUpdatesFlow: Flow<EditBusinessMessageUpdate>
+    val deleteBusinessMessageUpdatesFlow: Flow<DeletedBusinessMessageUpdate>
     val unknownUpdatesFlow: Flow<UnknownUpdate>
 }
 
@@ -64,6 +67,10 @@ abstract class AbstractFlowsUpdatesFilter : FlowsUpdatesFilter {
     override val unknownUpdatesFlow: Flow<UnknownUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chatBoostUpdatedUpdateFlow: Flow<ChatBoostUpdatedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
     override val chatBoostRemovedUpdateFlow: Flow<ChatBoostRemovedUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val businessConnectionUpdatesFlow: Flow<BusinessConnectionUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val businessMessageUpdatesFlow: Flow<BusinessMessageUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val editBusinessMessageUpdatesFlow: Flow<EditBusinessMessageUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
+    override val deleteBusinessMessageUpdatesFlow: Flow<DeletedBusinessMessageUpdate> by lazy { allUpdatesFlow.filterIsInstance() }
 }
 
 /**

@@ -1,8 +1,10 @@
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.SendContentMessageRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
@@ -24,6 +26,8 @@ data class SendContact(
     val lastName: String? = null,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -32,13 +36,14 @@ data class SendContact(
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
-) : SendMessageRequest<ContentMessage<ContactContent>>,
+) : SendContentMessageRequest<ContentMessage<ContactContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<ContactContent>>
 {
     constructor(
         chatId: ChatIdentifier,
         contact: Contact,
         threadId: MessageThreadId? = chatId.threadId,
+        businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
         replyParameters: ReplyParameters? = null,
@@ -49,6 +54,7 @@ data class SendContact(
         contact.firstName,
         contact.lastName,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -65,6 +71,7 @@ data class SendContact(
 fun Contact.toRequest(
     chatId: ChatIdentifier,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -73,6 +80,7 @@ fun Contact.toRequest(
     chatId,
     this,
     threadId,
+    businessConnectionId,
     disableNotification,
     protectContent,
     replyParameters,

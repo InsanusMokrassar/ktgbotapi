@@ -1,12 +1,15 @@
 package dev.inmo.tgbotapi.extensions.utils.extensions
 
 import dev.inmo.tgbotapi.abstracts.WithPreviewChat
+import dev.inmo.tgbotapi.abstracts.types.WithBusinessConnectionId
+import dev.inmo.tgbotapi.abstracts.types.WithOptionalBusinessConnectionId
 import dev.inmo.tgbotapi.extensions.utils.usernameChatOrNull
 import dev.inmo.tgbotapi.extensions.utils.whenUsernameChat
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.Username
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.threadId
@@ -126,3 +129,17 @@ inline fun Message.sameTopic(other: Message) = sameTopic(other.chat, other.threa
  */
 @Suppress("NOTHING_TO_INLINE")
 inline fun Message.sameThread(other: Message) = sameTopic(other)
+
+/**
+ * @return true in case if [this] message is from the same business connection (with businessConnectionId == [id])
+ */
+@Suppress("NOTHING_TO_INLINE")
+inline fun Message.sameBusinessConnection(
+    id: BusinessConnectionId
+) = businessConnectionId == id
+
+/**
+ * @return true in case if [this] message is from the same business connection (with businessConnectionId == [other.businessConnectionId])
+ */
+@Suppress("NOTHING_TO_INLINE")
+inline fun Message.sameBusinessConnection(other: WithBusinessConnectionId) = sameBusinessConnection(other.businessConnectionId)

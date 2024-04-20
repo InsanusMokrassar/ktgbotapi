@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
@@ -31,6 +32,7 @@ fun SendAnimation(
     width: Int? = null,
     height: Int? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -51,6 +53,7 @@ fun SendAnimation(
         width,
         height,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -77,6 +80,7 @@ fun SendAnimation(
     width: Int? = null,
     height: Int? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -97,6 +101,7 @@ fun SendAnimation(
         width,
         height,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -140,6 +145,8 @@ data class SendAnimationData internal constructor(
     override val height: Int? = null,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -149,7 +156,7 @@ data class SendAnimationData internal constructor(
     @SerialName(replyMarkupField)
     override val replyMarkup: KeyboardMarkup? = null
 ) : DataRequest<ContentMessage<AnimationContent>>,
-    SendMessageRequest<ContentMessage<AnimationContent>>,
+    SendContentMessageRequest<ContentMessage<AnimationContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<AnimationContent>>,
     TextableSendMessageRequest<ContentMessage<AnimationContent>>,
     ThumbedSendMessageRequest<ContentMessage<AnimationContent>>,

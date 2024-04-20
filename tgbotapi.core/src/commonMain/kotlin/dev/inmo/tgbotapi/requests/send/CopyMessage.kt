@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField

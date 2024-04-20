@@ -7,6 +7,7 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.ReplyParameters
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -19,6 +20,7 @@ data class StickerContent(
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
+        businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
         replyParameters: ReplyParameters?,
@@ -27,6 +29,7 @@ data class StickerContent(
         chatId,
         media.fileId,
         messageThreadId,
+        businessConnectionId,
         media.emoji,
         disableNotification,
         protectContent,

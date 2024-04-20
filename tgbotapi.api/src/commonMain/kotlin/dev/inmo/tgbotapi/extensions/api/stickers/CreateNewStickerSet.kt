@@ -11,11 +11,10 @@ suspend fun TelegramBot.createNewStickerSet(
     userId: UserId,
     name: String,
     title: String,
-    stickersFormat: StickerFormat,
     stickers: List<InputSticker>,
     needsRepainting: Boolean = false
 ) = execute(
-    CreateNewStickerSet(userId, name, title, stickersFormat, stickers, needsRepainting)
+    CreateNewStickerSet(userId, name, title, stickers, needsRepainting)
 )
 
 
@@ -23,9 +22,8 @@ suspend fun TelegramBot.createNewStickerSet(
     user: CommonUser,
     name: String,
     title: String,
-    stickersFormat: StickerFormat,
     stickers: List<InputSticker>,
     needsRepainting: Boolean = false,
 ) = createNewStickerSet(
-    user.id, name, title, stickersFormat, stickers, needsRepainting
+    user.id, name, title, stickers, needsRepainting
 )

@@ -38,7 +38,7 @@ data class AddStickerToSetData internal constructor(
     @SerialName(nameField)
     override val name: StickerSetName,
     @SerialName(stickerField)
-    override val inputSticker: InputSticker
+    override val newSticker: InputSticker
 ) : StandardStickerSetAction {
     override val requestSerializer: SerializationStrategy<*>
         get() = serializer()

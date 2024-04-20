@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.requests.common.CommonMultipartFileRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.*
 import dev.inmo.tgbotapi.requests.send.media.base.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
@@ -36,6 +37,7 @@ fun SendDocument(
     text: String? = null,
     parseMode: ParseMode? = null,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -53,6 +55,7 @@ fun SendDocument(
         parseMode,
         null,
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -85,6 +88,7 @@ fun SendDocument(
     thumbnail: InputFile? = null,
     entities: TextSourcesList,
     threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
@@ -102,6 +106,7 @@ fun SendDocument(
         null,
         entities.toRawMessageEntities(),
         threadId,
+        businessConnectionId,
         disableNotification,
         protectContent,
         replyParameters,
@@ -147,6 +152,8 @@ data class SendDocumentData internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
@@ -158,7 +165,7 @@ data class SendDocumentData internal constructor(
     @SerialName(disableContentTypeDetectionField)
     val disableContentTypeDetection: Boolean? = null
 ) : DataRequest<ContentMessage<DocumentContent>>,
-    SendMessageRequest<ContentMessage<DocumentContent>>,
+    SendContentMessageRequest<ContentMessage<DocumentContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<DocumentContent>>,
     TextableSendMessageRequest<ContentMessage<DocumentContent>>,
     ThumbedSendMessageRequest<ContentMessage<DocumentContent>>

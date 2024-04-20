@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.utils.RiskFeature
 import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
 import kotlinx.serialization.*
@@ -62,8 +63,9 @@ object ChatSerializer : KSerializer<Chat> {
         return try {
             formatter.decodeFromJsonElement(ExtendedChatSerializer, decodedJson)
         } catch (e: SerializationException) {
-            val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType ?: error("Field $typeField must be presented, but absent in $decodedJson")
+            val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType
             val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
+            val original = decodedJson[originField]
 
             when (type) {
                 ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
@@ -80,6 +82,12 @@ object ChatSerializer : KSerializer<Chat> {
                     decodedJson.toString(),
                     decodedJson
                 )
+                null -> {
+                    when {
+                        original != null -> formatter.decodeFromJsonElement(BusinessChatImpl.serializer(), decodedJson)
+                        else -> error("Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson")
+                    }
+                }
             }
         }
     }
@@ -101,8 +109,9 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
     override fun deserialize(decoder: Decoder): PreviewChat {
         val decodedJson = JsonObject.serializer().deserialize(decoder)
 
-        val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType ?: error("Field $typeField must be presented, but absent in $decodedJson")
+        val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType
         val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
+        val original = decodedJson[originField]
 
         return when (type) {
             ChatType.Sender -> formatter.decodeFromJsonElement(PrivateChatImpl.serializer(), decodedJson)
@@ -119,12 +128,19 @@ object PreviewChatSerializer : KSerializer<PreviewChat> {
                 decodedJson.toString(),
                 decodedJson
             )
+            null -> {
+                when {
+                    original != null -> formatter.decodeFromJsonElement(PreviewBusinessChat.serializer(), decodedJson)
+                    else -> error("Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson")
+                }
+            }
         }
     }
 
     override fun serialize(encoder: Encoder, value: PreviewChat) {
         when (value) {
             is PrivateChatImpl -> PrivateChatImpl.serializer().serialize(encoder, value)
+            is BusinessChatImpl -> BusinessChatImpl.serializer().serialize(encoder, value)
             is GroupChatImpl -> GroupChatImpl.serializer().serialize(encoder, value)
             is SupergroupChatImpl -> SupergroupChatImpl.serializer().serialize(encoder, value)
             is ForumChatImpl -> ForumChatImpl.serializer().serialize(encoder, value)
@@ -144,8 +160,9 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
     override fun deserialize(decoder: Decoder): ExtendedChat {
         val decodedJson = JsonObject.serializer().deserialize(decoder)
 
-        val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType ?: error("Field $typeField must be presented, but absent in $decodedJson")
+        val type = decodedJson[typeField] ?.jsonPrimitive ?.content ?.asChatType
         val isForum = decodedJson[isForumField] ?.jsonPrimitive ?.booleanOrNull == true
+        val original = decodedJson[originField]
 
         return when (type) {
             ChatType.Sender -> formatter.decodeFromJsonElement(ExtendedPrivateChatImpl.serializer(), decodedJson)
@@ -162,11 +179,18 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
                 decodedJson.toString(),
                 decodedJson
             )
+            null -> {
+                when {
+                    original != null -> formatter.decodeFromJsonElement(ExtendedBusinessChatImpl.serializer(), decodedJson)
+                    else -> error("Field $typeField must be presented for common types (excluding Business chats), but absent in $decodedJson")
+                }
+            }
         }
     }
 
     override fun serialize(encoder: Encoder, value: ExtendedChat) {
         when (value) {
+            is ExtendedBusinessChatImpl -> ExtendedBusinessChatImpl.serializer().serialize(encoder, value)
             is ExtendedPrivateChatImpl -> ExtendedPrivateChatImpl.serializer().serialize(encoder, value)
             is ExtendedGroupChatImpl -> ExtendedGroupChatImpl.serializer().serialize(encoder, value)
             is ExtendedSupergroupChatImpl -> ExtendedSupergroupChatImpl.serializer().serialize(encoder, value)
@@ -183,6 +207,20 @@ sealed class ExtendedChatSerializer : KSerializer<ExtendedChat> {
                 if (it is ExtendedForumChatImpl) {
                     it.copy(
                         id = (it.id as? ChatIdWithThreadId) ?: ChatIdWithThreadId(it.id.chatId, threadId)
+                    )
+                } else {
+                    it
+                }
+            }
+        }
+    }
+    class BasedOnBusinessConnection(private val businessConnectionId: BusinessConnectionId) : ExtendedChatSerializer() {
+        override fun deserialize(decoder: Decoder): ExtendedChat {
+            return super.deserialize(decoder).let {
+                if (it is ExtendedPrivateChatImpl) {
+                    ExtendedBusinessChatImpl(
+                        BusinessChatId(it.id.chatId, businessConnectionId),
+                        it
                     )
                 } else {
                     it

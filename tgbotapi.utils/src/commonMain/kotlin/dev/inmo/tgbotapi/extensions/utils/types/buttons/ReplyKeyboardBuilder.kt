@@ -158,10 +158,19 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
 inline fun ReplyKeyboardRowBuilder.requestBotsButton(
     text: String,
     requestId: RequestId,
-    maxCount: Int = keyboardButtonRequestUserLimit.first
+    maxCount: Int = keyboardButtonRequestUserLimit.first,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersButton(
     text,
-    KeyboardButtonRequestUsers.Bot(requestId, maxCount)
+    KeyboardButtonRequestUsers.Bot(
+        requestId = requestId,
+        maxCount = maxCount,
+        requestName = requestName,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto
+    )
 )
 
 /**
@@ -172,11 +181,17 @@ inline fun ReplyKeyboardRowBuilder.requestBotsButton(
  */
 inline fun ReplyKeyboardRowBuilder.requestBotButton(
     text: String,
-    requestId: RequestId
+    requestId: RequestId,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestBotsButton(
     text,
     requestId,
-    maxCount = keyboardButtonRequestUserLimit.first
+    maxCount = keyboardButtonRequestUserLimit.first,
+    requestName = requestName,
+    requestUsername = requestUsername,
+    requestPhoto = requestPhoto
 )
 
 /**
@@ -189,10 +204,20 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
-    maxCount: Int = keyboardButtonRequestUserLimit.first
+    maxCount: Int = keyboardButtonRequestUserLimit.first,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersButton(
     text,
-    KeyboardButtonRequestUsers.Common(requestId, premiumUser, maxCount)
+    KeyboardButtonRequestUsers.Common(
+        requestId = requestId,
+        isPremium = premiumUser,
+        maxCount = maxCount,
+        requestName = requestName,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto
+    )
 )
 
 /**
@@ -204,8 +229,19 @@ inline fun ReplyKeyboardRowBuilder.requestUsersButton(
 inline fun ReplyKeyboardRowBuilder.requestUserButton(
     text: String,
     requestId: RequestId,
-    premiumUser: Boolean? = null
-) = requestUsersButton(text, requestId, premiumUser, maxCount = keyboardButtonRequestUserLimit.first)
+    premiumUser: Boolean? = null,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
+) = requestUsersButton(
+    text = text,
+    requestId = requestId,
+    premiumUser = premiumUser,
+    maxCount = keyboardButtonRequestUserLimit.first,
+    requestName = requestName,
+    requestUsername = requestUsername,
+    requestPhoto = requestPhoto
+)
 
 /**
  * Creates and put [RequestUserKeyboardButton] with [KeyboardButtonRequestUsers.Any]
@@ -217,10 +253,20 @@ inline fun ReplyKeyboardRowBuilder.requestUsersOrBotsButton(
     text: String,
     requestId: RequestId,
     premiumUser: Boolean? = null,
-    maxCount: Int = keyboardButtonRequestUserLimit.first
+    maxCount: Int = keyboardButtonRequestUserLimit.first,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersButton(
     text,
-    KeyboardButtonRequestUsers.Any(requestId, premiumUser, maxCount)
+    KeyboardButtonRequestUsers.Any(
+        requestId = requestId,
+        isPremium = premiumUser,
+        maxCount = maxCount,
+        requestName = requestName,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto
+    )
 )
 
 /**
@@ -231,11 +277,17 @@ inline fun ReplyKeyboardRowBuilder.requestUsersOrBotsButton(
  */
 inline fun ReplyKeyboardRowBuilder.requestUserOrBotButton(
     text: String,
-    requestId: RequestId
+    requestId: RequestId,
+    requestName: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestUsersOrBotsButton(
-    text,
-    requestId,
-    maxCount = keyboardButtonRequestUserLimit.first
+    text = text,
+    requestId = requestId,
+    maxCount = keyboardButtonRequestUserLimit.first,
+    requestName = requestName,
+    requestUsername = requestUsername,
+    requestPhoto = requestPhoto,
 )
 
 
@@ -270,7 +322,10 @@ inline fun ReplyKeyboardRowBuilder.requestChatButton(
     isOwnedBy: Boolean? = null,
     userRightsInChat: ChatCommonAdministratorRights? = null,
     botRightsInChat: ChatCommonAdministratorRights? = null,
-    botIsMember: Boolean? = null
+    botIsMember: Boolean? = null,
+    requestTitle: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestChatButton(
     text,
     KeyboardButtonRequestChat(
@@ -281,7 +336,10 @@ inline fun ReplyKeyboardRowBuilder.requestChatButton(
         isOwnedBy = isOwnedBy,
         userRightsInChat = userRightsInChat,
         botRightsInChat = botRightsInChat,
-        botIsMember = botIsMember
+        botIsMember = botIsMember,
+        requestTitle = requestTitle,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto,
     )
 )
 
@@ -298,7 +356,10 @@ inline fun ReplyKeyboardRowBuilder.requestChannelButton(
     isOwnedBy: Boolean? = null,
     userRightsInChat: ChatCommonAdministratorRights? = null,
     botRightsInChat: ChatCommonAdministratorRights? = null,
-    botIsMember: Boolean? = null
+    botIsMember: Boolean? = null,
+    requestTitle: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestChatButton(
     text,
     KeyboardButtonRequestChat.Channel(
@@ -307,7 +368,10 @@ inline fun ReplyKeyboardRowBuilder.requestChannelButton(
         isOwnedBy = isOwnedBy,
         userRightsInChat = userRightsInChat,
         botRightsInChat = botRightsInChat,
-        botIsMember = botIsMember
+        botIsMember = botIsMember,
+        requestTitle = requestTitle,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto,
     )
 )
 
@@ -325,7 +389,10 @@ inline fun ReplyKeyboardRowBuilder.requestGroupButton(
     isOwnedBy: Boolean? = null,
     userRightsInChat: ChatCommonAdministratorRights? = null,
     botRightsInChat: ChatCommonAdministratorRights? = null,
-    botIsMember: Boolean? = null
+    botIsMember: Boolean? = null,
+    requestTitle: Boolean? = null,
+    requestUsername: Boolean? = null,
+    requestPhoto: Boolean? = null,
 ) = requestChatButton(
     text,
     KeyboardButtonRequestChat.Group(
@@ -335,6 +402,9 @@ inline fun ReplyKeyboardRowBuilder.requestGroupButton(
         isOwnedBy = isOwnedBy,
         userRightsInChat = userRightsInChat,
         botRightsInChat = botRightsInChat,
-        botIsMember = botIsMember
+        botIsMember = botIsMember,
+        requestTitle = requestTitle,
+        requestUsername = requestUsername,
+        requestPhoto = requestPhoto,
     )
 )

@@ -92,6 +92,15 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/B
 	public static synthetic fun expectOne$default (Ldev/inmo/tgbotapi/updateshandlers/FlowsUpdatesFilter;Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitBusinessConnectionKt {
+	public static final fun waitBusinessConnection (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun waitBusinessConnection$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun waitBusinessConnectionDisabled (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun waitBusinessConnectionDisabled$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun waitBusinessConnectionEnabled (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun waitBusinessConnectionEnabled$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitCallbackQueryKt {
 	public static final fun waitDataCallbackQuery (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun waitDataCallbackQuery$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -321,6 +330,11 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/W
 	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun waitDeepLinks$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitDeletedBusinessMessagesKt {
+	public static final fun waitDeletedBusinessMessages (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun waitDeletedBusinessMessages$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/requests/abstracts/Request;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/expectations/WaitEditedContentKt {
@@ -722,6 +736,15 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/filters/Messag
 	public static final fun getMessageFilterForums ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/BusinessConnectionTriggersKt {
+	public static final fun onBusinessConnection (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun onBusinessConnection$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun onBusinessConnectionDisabled (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun onBusinessConnectionDisabled$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun onBusinessConnectionEnabled (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun onBusinessConnectionEnabled$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/CallbackQueryTriggersKt {
 	public static final fun onDataCallbackQuery (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun onDataCallbackQuery (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -931,6 +954,11 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handl
 	public static synthetic fun onDeepLink$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun onDeepLink$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ljava/lang/String;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun onDeepLink$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Lkotlin/text/Regex;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/DeletedBusinessMessagesTriggersKt {
+	public static final fun onBusinessMessagesDeleted (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun onBusinessMessagesDeleted$default (Ldev/inmo/tgbotapi/extensions/behaviour_builder/BehaviourContext;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/SimpleFilter;Lkotlin/jvm/functions/Function4;Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/triggers_handling/EditedContentTriggersKt {
@@ -1265,6 +1293,12 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_f
 	public static final fun AnyMarkerFactory ()Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory;
 }
 
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByBusinessConnectionIdBusinessMessagesDeletedMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByBusinessConnectionIdBusinessMessagesDeletedMarkerFactory;
+	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun invoke-__cXnbI (Ldev/inmo/tgbotapi/types/business_connection/BusinessMessagesDeleted;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByChatChatJoinRequestMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByChatChatJoinRequestMarkerFactory;
 	public fun invoke (Ldev/inmo/tgbotapi/types/chat/ChatJoinRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -1335,6 +1369,12 @@ public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_f
 	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByIdPollMarkerFactory;
 	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun invoke-ErVIubg (Ldev/inmo/tgbotapi/types/polls/Poll;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserBusinessConnectionUpdatedMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserBusinessConnectionUpdatedMarkerFactory;
+	public fun invoke (Ldev/inmo/tgbotapi/types/business_connection/BusinessConnection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public synthetic fun invoke (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/ByUserCallbackQueryMarkerFactory : dev/inmo/tgbotapi/extensions/behaviour_builder/utils/marker_factories/MarkerFactory {

@@ -31,6 +31,15 @@ data class PrivateChatImpl(
 ) : PreviewPrivateChat
 
 @Serializable
+@RiskFeature("This class is a subject of changes. It is better to use PrivateChat due")
+data class BusinessChatImpl(
+    @SerialName(idField)
+    override val id: BusinessChatId,
+    @SerialName(originField)
+    override val original: PreviewPrivateChat
+) : PreviewBusinessChat
+
+@Serializable
 @RiskFeature("This class is a subject of changes. It is better to use SupergroupChat due")
 data class SupergroupChatImpl(
     @SerialName(idField)

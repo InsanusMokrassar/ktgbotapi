@@ -12,6 +12,9 @@ sealed interface PreviewUsernameChat : PreviewChat, UsernameChat
 sealed interface PreviewPrivateChat : PreviewUsernameChat, PrivateChat
 
 @Serializable(PreviewChatSerializer::class)
+sealed interface PreviewBusinessChat : BusinessChat, PreviewChat
+
+@Serializable(PreviewChatSerializer::class)
 sealed interface PreviewPublicChat : PreviewChat, PublicChat
 
 @Serializable(PreviewChatSerializer::class)

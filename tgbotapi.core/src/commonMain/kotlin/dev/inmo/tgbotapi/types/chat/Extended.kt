@@ -1,6 +1,9 @@
 package dev.inmo.tgbotapi.types.chat
 
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessIntro
+import dev.inmo.tgbotapi.types.business_connection.BusinessLocation
+import dev.inmo.tgbotapi.types.business_connection.BusinessOpeningHours
 import dev.inmo.tgbotapi.types.colors.ColorId
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializeOnlySerializer
@@ -124,6 +127,17 @@ data class ExtendedPrivateChatImpl(
     override val backgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(businessIntroField)
+    override val businessIntro: BusinessIntro? = null,
+    @SerialName(businessLocationField)
+    override val businessLocation: BusinessLocation? = null,
+    @SerialName(businessOpeningHoursField)
+    override val businessOpeningHours: BusinessOpeningHours? = null,
+    @SerialName(birthdateField)
+    override val birthdate: Birthdate? = null,
+    @SerialName(personalChatField)
+    @Serializable(PreviewChatSerializer::class)
+    override val personalChat: PreviewChannelChat? = null
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
@@ -254,6 +268,7 @@ data class ExtendedForumChatImpl(
 
 @Serializable
 data class ExtendedBot(
+    @SerialName(idField)
     override val id: UserId,
     @SerialName(firstNameField)
     override val firstName: String,
@@ -267,6 +282,8 @@ data class ExtendedBot(
     val canReadAllGroupMessages: Boolean = false,
     @SerialName(supportInlineQueriesField)
     val supportsInlineQueries: Boolean = false,
+    @SerialName(canConnectToBusinessField)
+    val canConnectToBusiness: Boolean = false,
     @SerialName(photoField)
     override val chatPhoto: ChatPhoto? = null,
     @SerialName(accentColorIdField)
@@ -281,6 +298,14 @@ data class ExtendedBot(
     @SerialName(isBotField)
     private val isBot = true
 }
+
+@Serializable
+data class ExtendedBusinessChatImpl(
+    @SerialName(idField)
+    override val id: BusinessChatId,
+    @SerialName(originField)
+    override val original: ExtendedPrivateChat
+) : ExtendedBusinessChat, ExtendedChat by original
 
 data class UnknownExtendedChat(
     override val id: IdChatIdentifier,
