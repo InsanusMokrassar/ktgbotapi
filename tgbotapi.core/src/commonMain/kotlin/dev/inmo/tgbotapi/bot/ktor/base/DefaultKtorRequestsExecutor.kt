@@ -102,7 +102,7 @@ class DefaultKtorRequestsExecutor internal constructor(
                     is BotException -> e
                     else -> CommonBotException(cause = e)
                 }.also { newException ->
-                    logger.v(newException) { "Result exception on handling of $request is an exception" }
+                    logger.v(newException) { "Result exception on handling of $request is an exception: ${newException.stackTraceToString()}" }
                     if (newException is GetUpdatesConflict) {
                         logger.w(newException) {
                             "Warning!!! Other bot with the same bot token requests updates with getUpdate in parallel"
