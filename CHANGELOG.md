@@ -4,6 +4,8 @@
 
 **Add support of [Telegram Bots API 7.2](https://core.telegram.org/bots/api-changelog#march-31-2024)**
 
+**THIS UPDATE CONTAINS A LOT OF BREAKING CHANGES**
+
 ## 11.0.0
 
 **THIS UPDATE CONTAINS REMOVES OF DEPRECATED THINGS**
