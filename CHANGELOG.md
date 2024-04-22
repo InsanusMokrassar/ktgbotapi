@@ -1,5 +1,12 @@
 # TelegramBotAPI changelog
 
+## 12.0.1
+
+* `Version`:
+  * `Ktor`: `2.3.9` -> `2.3.10`
+  * `MicroUtils`: `0.20.39` -> `0.20.45`
+  * `UUID`: `0.8.2` -> `0.8.4`
+
 ## 12.0.0
 
 **Add support of [Telegram Bots API 7.2](https://core.telegram.org/bots/api-changelog#march-31-2024)**
