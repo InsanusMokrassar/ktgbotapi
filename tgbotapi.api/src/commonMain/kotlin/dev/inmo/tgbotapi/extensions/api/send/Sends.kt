@@ -837,7 +837,8 @@ suspend inline fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     question: String,
-    options: List<String>,
+    options: List<InputPollOption>,
+    questionParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
@@ -848,7 +849,7 @@ suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendRegularPoll(chatId, question, options, closeInfo, questionParseMode, isAnonymous, isClosed, allowMultipleAnswers, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendRegularPoll] request
@@ -860,7 +861,7 @@ suspend fun TelegramBot.send(
     poll: RegularPoll,
     isClosed: Boolean = false,
     question: String = poll.question,
-    options: List<String> = poll.options.map { it.text },
+    options: List<InputPollOption> = poll.options.map { it.asInput() },
     isAnonymous: Boolean = poll.isAnonymous,
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,

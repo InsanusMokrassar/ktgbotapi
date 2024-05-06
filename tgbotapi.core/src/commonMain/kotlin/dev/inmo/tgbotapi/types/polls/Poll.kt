@@ -49,9 +49,11 @@ val LongSeconds.asExactScheduledCloseInfo
 
 @Serializable(PollSerializer::class)
 @ClassCastsIncluded
-sealed interface Poll : ReplyInfo.External.ContentVariant {
+sealed interface Poll : ReplyInfo.External.ContentVariant, TextedInput {
     val id: PollId
     val question: String
+    override val text: String
+        get() = question
     val options: List<PollOption>
     val votesCount: Int
     val isClosed: Boolean
@@ -70,6 +72,8 @@ private class RawPoll(
     val id: PollId,
     @SerialName(questionField)
     val question: String,
+    @SerialName(questionEntitiesField)
+    val questionEntities: List<RawMessageEntity>,
     @SerialName(optionsField)
     val options: List<PollOption>,
     @SerialName(totalVoterCountField)
@@ -104,6 +108,8 @@ data class UnknownPollType internal constructor(
     override val id: PollId,
     @SerialName(questionField)
     override val question: String,
+    @SerialName(questionEntitiesField)
+    override val textSources: List<TextSource> = emptyList(),
     @SerialName(optionsField)
     override val options: List<PollOption>,
     @SerialName(totalVoterCountField)
@@ -126,6 +132,7 @@ data class UnknownPollType internal constructor(
 data class RegularPoll(
     override val id: PollId,
     override val question: String,
+    override val textSources: List<TextSource>,
     override val options: List<PollOption>,
     override val votesCount: Int,
     override val isClosed: Boolean = false,
@@ -138,18 +145,19 @@ data class RegularPoll(
 data class QuizPoll(
     override val id: PollId,
     override val question: String,
+    override val textSources: List<TextSource> = emptyList(),
     override val options: List<PollOption>,
     override val votesCount: Int,
     /**
      * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
      */
     val correctOptionId: Int? = null,
-    override val text: String? = null,
-    override val textSources: List<TextSource> = emptyList(),
+    val explanation: String?,
+    val explanationTextSources: List<TextSource> = emptyList(),
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
-) : Poll, TextedInput
+) : Poll
 
 @RiskFeature
 object PollSerializer : KSerializer<Poll> {
@@ -164,6 +172,7 @@ object PollSerializer : KSerializer<Poll> {
             quizPollType -> QuizPoll(
                 rawPoll.id,
                 rawPoll.question,
+                rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.options,
                 rawPoll.votesCount,
                 rawPoll.correctOptionId,
@@ -176,6 +185,7 @@ object PollSerializer : KSerializer<Poll> {
             regularPollType -> RegularPoll(
                 rawPoll.id,
                 rawPoll.question,
+                rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.options,
                 rawPoll.votesCount,
                 rawPoll.isClosed,
@@ -186,6 +196,7 @@ object PollSerializer : KSerializer<Poll> {
             else -> UnknownPollType(
                 rawPoll.id,
                 rawPoll.question,
+                rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.options,
                 rawPoll.votesCount,
                 rawPoll.isClosed,
@@ -201,6 +212,7 @@ object PollSerializer : KSerializer<Poll> {
             is RegularPoll -> RawPoll(
                 value.id,
                 value.question,
+                value.textSources.toRawMessageEntities(),
                 value.options,
                 value.votesCount,
                 value.isClosed,
@@ -213,6 +225,7 @@ object PollSerializer : KSerializer<Poll> {
             is QuizPoll -> RawPoll(
                 value.id,
                 value.question,
+                value.textSources.toRawMessageEntities(),
                 value.options,
                 value.votesCount,
                 value.isClosed,

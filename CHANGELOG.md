@@ -2,6 +2,12 @@
 
 ## 13.0.0
 
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Core`:
+  * For polls, `textSources` now means `question` text sources. For `QuizPoll` there are `hint` and `hintTextSources`
+  for hinting
+
 ## 12.0.1
 
 * `Version`:
