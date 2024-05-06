@@ -53,7 +53,9 @@ data class ExtendedChannelChatImpl(
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(hasVisibleHistoryField)
-    override val newMembersSeeHistory: Boolean = false
+    override val newMembersSeeHistory: Boolean = false,
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3,
 ) : ExtendedChannelChat
 
 @Serializable
@@ -92,6 +94,8 @@ data class ExtendedGroupChatImpl(
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(hasVisibleHistoryField)
     override val newMembersSeeHistory: Boolean = false,
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3,
 ) : ExtendedGroupChat
 
 @Serializable
@@ -137,7 +141,9 @@ data class ExtendedPrivateChatImpl(
     override val birthdate: Birthdate? = null,
     @SerialName(personalChatField)
     @Serializable(PreviewChatSerializer::class)
-    override val personalChat: PreviewChannelChat? = null
+    override val personalChat: PreviewChannelChat? = null,
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3,
 ) : ExtendedPrivateChat
 
 typealias ExtendedUser = ExtendedPrivateChatImpl
@@ -202,6 +208,8 @@ data class ExtendedSupergroupChatImpl(
     override val unrestrictBoostsCount: Int? = null,
     @SerialName(customEmojiStickerSetNameField)
     override val customEmojiStickerSetName: StickerSetName? = null,
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3,
 ) : ExtendedSupergroupChat
 
 @Serializable
@@ -264,6 +272,8 @@ data class ExtendedForumChatImpl(
     override val unrestrictBoostsCount: Int? = null,
     @SerialName(customEmojiStickerSetNameField)
     override val customEmojiStickerSetName: StickerSetName? = null,
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3,
 ) : ExtendedForumChat
 
 @Serializable
@@ -294,6 +304,8 @@ data class ExtendedBot(
     override val backgroundCustomEmojiId: CustomEmojiId? = null,
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null,
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3,
 ) : Bot(), ExtendedChat {
     @SerialName(isBotField)
     private val isBot = true
@@ -321,4 +333,6 @@ data class UnknownExtendedChat(
     override val backgroundCustomEmojiId: CustomEmojiId? = null
     @SerialName(profileBackgroundCustomEmojiIdField)
     override val profileBackgroundCustomEmojiId: CustomEmojiId? = null
+    @SerialName(maxReactionCountField)
+    override val maxReactionsCount: Int = 3
 }
