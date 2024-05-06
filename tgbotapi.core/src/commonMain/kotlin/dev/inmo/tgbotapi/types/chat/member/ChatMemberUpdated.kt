@@ -24,5 +24,7 @@ data class ChatMemberUpdated(
     @SerialName(inviteLinkField)
     val inviteLink: ChatInviteLink? = null,
     @SerialName(viaChatFolderInviteLinkField)
-    val viaChatFolderInviteLink: Boolean? = false
+    val viaChatFolderInviteLink: Boolean? = false,
+    @SerialName(viaJoinRequestField)
+    val viaJoinRequest: Boolean? = false
 ) : WithPreviewChat, WithUser
