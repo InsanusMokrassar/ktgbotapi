@@ -55,6 +55,7 @@ suspend fun TelegramBot.edit(
     messageId: MessageId,
     latitude: Double,
     longitude: Double,
+    livePeriod: Seconds? = null,
     horizontalAccuracy: Meters? = null,
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
@@ -70,6 +71,7 @@ suspend fun TelegramBot.edit(
     messageId: MessageId,
     latitude: Double,
     longitude: Double,
+    livePeriod: Seconds? = null,
     horizontalAccuracy: Meters? = null,
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
@@ -84,11 +86,12 @@ suspend fun TelegramBot.edit(
     message: ContentMessage<LocationContent>,
     latitude: Double,
     longitude: Double,
+    livePeriod: Seconds? = null,
     horizontalAccuracy: Meters? = null,
     heading: Degrees? = null,
     proximityAlertRadius: Meters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editLiveLocation(message, latitude, longitude, horizontalAccuracy, heading, proximityAlertRadius, replyMarkup)
+) = editLiveLocation(message, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
