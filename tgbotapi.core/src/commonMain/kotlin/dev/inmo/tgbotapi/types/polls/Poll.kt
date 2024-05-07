@@ -54,6 +54,8 @@ sealed interface Poll : ReplyInfo.External.ContentVariant, TextedInput {
     val question: String
     override val text: String
         get() = question
+    val questionTextSources: List<TextSource>
+        get() = textSources
     val options: List<PollOption>
     val votesCount: Int
     val isClosed: Boolean

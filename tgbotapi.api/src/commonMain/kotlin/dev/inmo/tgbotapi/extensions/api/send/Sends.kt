@@ -858,9 +858,31 @@ suspend fun TelegramBot.send(
  */
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
-    poll: RegularPoll,
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption>,
+    isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    question: String = poll.question,
+    allowMultipleAnswers: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendRegularPoll(chatId, questionTextSources, options, closeInfo, isAnonymous, isClosed, allowMultipleAnswers, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendRegularPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    poll: RegularPoll,
+    question: String,
+    questionParseMode: ParseMode? = null,
+    isClosed: Boolean = false,
     options: List<InputPollOption> = poll.options.map { it.asInput() },
     isAnonymous: Boolean = poll.isAnonymous,
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
@@ -871,7 +893,29 @@ suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chatId, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendRegularPoll(chatId, question, options, closeInfo, questionParseMode, isAnonymous, isClosed, allowMultipleAnswers, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendRegularPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    poll: RegularPoll,
+    questionTextSources: List<TextSource> = poll.questionTextSources,
+    isClosed: Boolean = false,
+    options: List<InputPollOption> = poll.options.map { it.asInput() },
+    isAnonymous: Boolean = poll.isAnonymous,
+    allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendRegularPoll(chatId, questionTextSources, options, closeInfo, isAnonymous, isClosed, allowMultipleAnswers, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendRegularPoll] request
@@ -881,7 +925,8 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     question: String,
-    options: List<String>,
+    options: List<InputPollOption>,
+    questionParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
@@ -892,7 +937,7 @@ suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chat, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendRegularPoll(chat.id, question, options, closeInfo, questionParseMode, isAnonymous, isClosed, allowMultipleAnswers, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendRegularPoll] request
@@ -902,9 +947,10 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     poll: RegularPoll,
+    question: String,
+    questionParseMode: ParseMode? = null,
     isClosed: Boolean = false,
-    question: String = poll.question,
-    options: List<String> = poll.options.map { it.text },
+    options: List<InputPollOption> = poll.options.map { it.asInput() },
     isAnonymous: Boolean = poll.isAnonymous,
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
@@ -914,7 +960,29 @@ suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(chat, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendRegularPoll(chat.id, question, options, closeInfo, questionParseMode, isAnonymous, isClosed, allowMultipleAnswers, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendRegularPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    poll: RegularPoll,
+    questionTextSources: List<TextSource> = poll.questionTextSources,
+    isClosed: Boolean = false,
+    options: List<InputPollOption> = poll.options.map { it.asInput() },
+    isAnonymous: Boolean = poll.isAnonymous,
+    allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendRegularPoll(chat.id, questionTextSources, options, closeInfo, isAnonymous, isClosed, allowMultipleAnswers, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -924,12 +992,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     question: String,
-    options: List<String>,
+    options: List<InputPollOption>,
     correctOptionId: Int,
+    questionParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     explanation: String? = null,
-    parseMode: ParseMode? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -937,7 +1006,7 @@ suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendQuizPoll(chatId, question, options, correctOptionId, closeInfo, questionParseMode, explanation, explanationParseMode, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -947,12 +1016,13 @@ suspend fun TelegramBot.send(
 suspend fun TelegramBot.send(
     chat: Chat,
     question: String,
-    options: List<String>,
+    options: List<InputPollOption>,
     correctOptionId: Int,
+    questionParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     explanation: String? = null,
-    parseMode: ParseMode? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
@@ -960,7 +1030,7 @@ suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chat, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendQuizPoll(chat.id, question, options, correctOptionId, closeInfo, questionParseMode, explanation, explanationParseMode, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
@@ -971,12 +1041,13 @@ suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     isClosed: Boolean = false,
     quizPoll: QuizPoll,
-    question: String = quizPoll.question,
-    options: List<String> = quizPoll.options.map { it.text },
+    question: String,
+    questionParseMode: ParseMode? = null,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
     explanation: String? = null,
-    parseMode: ParseMode? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -985,7 +1056,7 @@ suspend fun TelegramBot.send(
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendQuizPoll(
-    chatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, question, options, correctOptionId, closeInfo, questionParseMode, explanation, explanationParseMode, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
 )
 
 /**
@@ -997,12 +1068,13 @@ suspend fun TelegramBot.send(
     chat: Chat,
     isClosed: Boolean = false,
     quizPoll: QuizPoll,
-    question: String = quizPoll.question,
-    options: List<String> = quizPoll.options.map { it.text },
+    question: String,
+    questionParseMode: ParseMode? = null,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
     explanation: String? = null,
-    parseMode: ParseMode? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
@@ -1010,21 +1082,22 @@ suspend fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, explanation, parseMode, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendQuizPoll(chat.id, question, options, correctOptionId, closeInfo, questionParseMode, explanation, explanationParseMode, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.send(
+suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
-    question: String,
-    options: List<String>,
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption>,
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    entities: TextSourcesList,
+    explanation: String? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -1032,21 +1105,22 @@ suspend inline fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chatId, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendQuizPoll(chatId, questionTextSources, options, correctOptionId, closeInfo, explanation, explanationParseMode, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.send(
+suspend fun TelegramBot.send(
     chat: Chat,
-    question: String,
-    options: List<String>,
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption>,
     correctOptionId: Int,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    entities: TextSourcesList,
+    explanation: String? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
@@ -1054,22 +1128,23 @@ suspend inline fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chat, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendQuizPoll(chat.id, questionTextSources, options, correctOptionId, closeInfo, explanation, explanationParseMode, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendQuizPoll] request
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.send(
+suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
     isClosed: Boolean = false,
     quizPoll: QuizPoll,
-    question: String = quizPoll.question,
-    options: List<String> = quizPoll.options.map { it.text },
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
-    entities: TextSourcesList,
+    explanation: String? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
@@ -1077,22 +1152,25 @@ suspend inline fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chatId, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendQuizPoll(
+    chatId, questionTextSources, options, correctOptionId, closeInfo, explanation, explanationParseMode, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+)
 
 /**
  * Will execute [sendQuizPoll] request
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
  * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
  */
-suspend inline fun TelegramBot.send(
+suspend fun TelegramBot.send(
     chat: Chat,
     isClosed: Boolean = false,
     quizPoll: QuizPoll,
-    question: String = quizPoll.question,
-    options: List<String> = quizPoll.options.map { it.text },
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
     correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
-    entities: TextSourcesList,
+    explanation: String? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
@@ -1100,7 +1178,195 @@ suspend inline fun TelegramBot.send(
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(chat, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendQuizPoll(chat.id, questionTextSources, options, correctOptionId, closeInfo, explanation, explanationParseMode, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendQuizPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    question: String,
+    options: List<InputPollOption>,
+    correctOptionId: Int,
+    explanationTextSources: List<TextSource>? = null,
+    questionParseMode: ParseMode? = null,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(chatId, question, options, correctOptionId, closeInfo, questionParseMode, explanationTextSources, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendQuizPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    question: String,
+    options: List<InputPollOption>,
+    correctOptionId: Int,
+    explanationTextSources: List<TextSource>? = null,
+    questionParseMode: ParseMode? = null,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(chat.id, question, options, correctOptionId, closeInfo, questionParseMode, explanationTextSources, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendQuizPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    isClosed: Boolean = false,
+    quizPoll: QuizPoll,
+    question: String,
+    explanationTextSources: List<TextSource>? = null,
+    questionParseMode: ParseMode? = null,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
+    correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    isAnonymous: Boolean = quizPoll.isAnonymous,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(
+    chatId, question, options, correctOptionId, closeInfo, questionParseMode, explanationTextSources, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+)
+
+/**
+ * Will execute [sendQuizPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    isClosed: Boolean = false,
+    quizPoll: QuizPoll,
+    question: String,
+    questionParseMode: ParseMode? = null,
+    explanationTextSources: List<TextSource>? = null,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
+    correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    isAnonymous: Boolean = quizPoll.isAnonymous,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(chat.id, question, options, correctOptionId, closeInfo, questionParseMode, explanationTextSources, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendQuizPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption>,
+    correctOptionId: Int,
+    explanationTextSources: List<TextSource>? = null,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(chatId, questionTextSources, options, correctOptionId, closeInfo, explanationTextSources, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendQuizPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption>,
+    correctOptionId: Int,
+    explanationTextSources: List<TextSource>? = null,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(chat.id, questionTextSources, options, correctOptionId, closeInfo, explanationTextSources, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+
+/**
+ * Will execute [sendQuizPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chatId: ChatIdentifier,
+    isClosed: Boolean = false,
+    quizPoll: QuizPoll,
+    questionTextSources: List<TextSource> = quizPoll.questionTextSources,
+    explanationTextSources: List<TextSource>? = quizPoll.explanationTextSources.takeIf { it.isNotEmpty() },
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
+    correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    isAnonymous: Boolean = quizPoll.isAnonymous,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chatId.threadId,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(
+    chatId, questionTextSources, options, correctOptionId, closeInfo, explanationTextSources, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+)
+
+/**
+ * Will execute [sendQuizPoll] request
+ * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
+ * [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard] as a builders for that param
+ */
+suspend fun TelegramBot.send(
+    chat: Chat,
+    isClosed: Boolean = false,
+    quizPoll: QuizPoll,
+    questionTextSources: List<TextSource> = quizPoll.questionTextSources,
+    explanationTextSources: List<TextSource>? = quizPoll.explanationTextSources.takeIf { it.isNotEmpty() },
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
+    correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    isAnonymous: Boolean = quizPoll.isAnonymous,
+    closeInfo: ScheduledCloseInfo? = null,
+    threadId: MessageThreadId? = chat.id.threadId,
+    businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    replyParameters: ReplyParameters? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(chat.id, questionTextSources, options, correctOptionId, closeInfo, explanationTextSources, isAnonymous, isClosed, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendSticker] request

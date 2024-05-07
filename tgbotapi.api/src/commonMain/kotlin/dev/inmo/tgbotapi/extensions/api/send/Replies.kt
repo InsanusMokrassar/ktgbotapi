@@ -31,7 +31,6 @@ import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.types.venue.Venue
 import dev.inmo.tgbotapi.utils.*
-import dev.inmo.tgbotapi.utils.extensions.threadIdOrNull
 import kotlinx.coroutines.flow.Flow
 import kotlin.js.JsName
 import kotlin.jvm.JvmName
