@@ -80,13 +80,14 @@ suspend fun TelegramBot.handleLiveLocation(
             }
         } else {
             edit(
-                capturedLiveLocationMessage,
-                it.latitude,
-                it.longitude,
-                it.horizontalAccuracy,
-                it.heading,
-                it.proximityAlertRadius,
-                it.replyMarkup
+                message = capturedLiveLocationMessage,
+                latitude = it.latitude,
+                longitude = it.longitude,
+                livePeriod = null,
+                horizontalAccuracy = it.horizontalAccuracy,
+                heading = it.heading,
+                proximityAlertRadius = it.proximityAlertRadius,
+                replyMarkup = it.replyMarkup
             ).also {
                 sentMessageFlow ?.emit(it)
             }

@@ -5,8 +5,10 @@
 **THIS UPDATE CONTAINS BREAKING CHANGES**
 
 * `Core`:
-  * For polls, `textSources` now means `question` text sources. For `QuizPoll` there are `hint` and `hintTextSources`
+  * For polls, `textSources` now means `question` text sources. For `QuizPoll` there are `explanation` and `explanationTextSources`
   for hinting
+* `API`:
+  * A lot of API related to `Poll`s has been changed to include opportunity to pass `ParseMode` and `TextSource`s list
 
 ## 12.0.1
 
