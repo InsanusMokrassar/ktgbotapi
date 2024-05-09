@@ -125,6 +125,9 @@ internal data class RawMessage(
     // Boost added to groups
     private val boost_added: ChatBoostAdded? = null,
 
+    // Chat background has been changed
+    private val chat_background_set: ChatBackground? = null,
+
     // AutoDelete Message time changed
     private val message_auto_delete_timer_changed: MessageAutoDeleteTimerChanged? = null,
 
@@ -260,6 +263,7 @@ internal data class RawMessage(
             giveaway_winners is GiveawayPrivateResults -> giveaway_winners
             giveaway_completed != null -> giveaway_completed
             boost_added != null -> boost_added
+            chat_background_set != null -> chat_background_set
             else -> null
         }
     }

@@ -5,6 +5,7 @@ package dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 import dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContext
 import dev.inmo.tgbotapi.extensions.utils.*
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.message.ChatEvents.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.ForumTopicClosed
@@ -219,3 +220,8 @@ suspend fun BehaviourContext.waitChatBoostAdded(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEvents<ChatBoostAdded>(initRequest, errorFactory)
+
+suspend fun BehaviourContext.waitChatBackgroundSet(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEvents<ChatBackground>(initRequest, errorFactory)
