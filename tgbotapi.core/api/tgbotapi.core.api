@@ -7145,6 +7145,406 @@ public final class dev/inmo/tgbotapi/requests/webhook/SetWebhookKt {
 public abstract class dev/inmo/tgbotapi/requests/webhook/SetWebhookRequest : dev/inmo/tgbotapi/requests/abstracts/Request {
 }
 
+public abstract interface class dev/inmo/tgbotapi/types/BackgroundFill {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundFill$Companion;
+	public abstract fun getColors ()Ljava/util/List;
+	public abstract fun getType ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundFill;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundFill;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Companion$RawBackgroundFill {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundFill$Companion$RawBackgroundFill$Companion;
+	public final fun getBottomColor-EK5xmqU ()Ldev/inmo/micro_utils/colors/common/HEXAColor;
+	public final fun getColor-EK5xmqU ()Ldev/inmo/micro_utils/colors/common/HEXAColor;
+	public final fun getColors ()Ljava/util/List;
+	public final fun getRotationAngle ()Ljava/lang/Short;
+	public final fun getTopColor-EK5xmqU ()Ldev/inmo/micro_utils/colors/common/HEXAColor;
+	public final fun getType ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Companion$RawBackgroundFill$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundFill$Companion$RawBackgroundFill$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundFill$Companion$RawBackgroundFill;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundFill$Companion$RawBackgroundFill;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Companion$RawBackgroundFill$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient : dev/inmo/tgbotapi/types/BackgroundFill {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient$Companion;
+	public static final field type Ljava/lang/String;
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Ldev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient;Ljava/util/List;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getColors ()Ljava/util/List;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$FreeformGradient$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Gradient : dev/inmo/tgbotapi/types/BackgroundFill {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient$Companion;
+	public static final field type Ljava/lang/String;
+	public synthetic fun <init> (IISLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-Tlb_HZc ()I
+	public final fun component2-Tlb_HZc ()I
+	public final fun component3 ()S
+	public final fun copy-heyR_r0 (IIS)Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;
+	public static synthetic fun copy-heyR_r0$default (Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;IISILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBottomColor-Tlb_HZc ()I
+	public fun getColors ()Ljava/util/List;
+	public final fun getRotationAngle ()S
+	public final fun getTopColor-Tlb_HZc ()I
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Gradient$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundFill$Gradient;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Gradient$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Solid : dev/inmo/tgbotapi/types/BackgroundFill {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundFill$Solid$Companion;
+	public static final field type Ljava/lang/String;
+	public synthetic fun <init> (ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1-Tlb_HZc ()I
+	public final fun copy-FpigOVk (I)Ldev/inmo/tgbotapi/types/BackgroundFill$Solid;
+	public static synthetic fun copy-FpigOVk$default (Ldev/inmo/tgbotapi/types/BackgroundFill$Solid;IILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundFill$Solid;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColor-Tlb_HZc ()I
+	public fun getColors ()Ljava/util/List;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Solid$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundFill$Solid$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundFill$Solid;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundFill$Solid;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Solid$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Unknown : dev/inmo/tgbotapi/types/BackgroundFill {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundFill$Unknown$Companion;
+	public fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/BackgroundFill$Unknown;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/BackgroundFill$Unknown;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundFill$Unknown;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getColors ()Ljava/util/List;
+	public final fun getRaw ()Lkotlinx/serialization/json/JsonElement;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundFill$Unknown$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundFill$Unknown;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundFill$Unknown;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundFill$Unknown$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/BackgroundType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundType$Companion;
+	public abstract fun getType ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$ChatTheme : dev/inmo/tgbotapi/types/BackgroundType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundType$ChatTheme$Companion;
+	public static final field type Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/inmo/tgbotapi/types/BackgroundType$ChatTheme;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/BackgroundType$ChatTheme;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$ChatTheme;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getThemeName ()Ljava/lang/String;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$ChatTheme$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundType$ChatTheme$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundType$ChatTheme;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundType$ChatTheme;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$ChatTheme$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Companion : kotlinx/serialization/KSerializer {
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundType;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundType;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Progress;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Progress;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Progress;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Progress;ZLjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/BackgroundFill;
+	public final fun component3-0NqaBMg ()Ldev/inmo/micro_utils/common/Progress;
+	public final fun component4 ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun component7-0NqaBMg ()Ldev/inmo/micro_utils/common/Progress;
+	public final fun component8 ()Z
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy-2M0JUcM (Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Progress;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Progress;ZLjava/lang/String;)Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;
+	public static synthetic fun copy-2M0JUcM$default (Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;Ljava/lang/String;Ldev/inmo/tgbotapi/types/BackgroundFill;Ldev/inmo/micro_utils/common/Progress;Ldev/inmo/tgbotapi/types/files/DocumentFile;ZZLdev/inmo/micro_utils/common/Progress;ZLjava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDarkThemeDimming-0NqaBMg ()Ldev/inmo/micro_utils/common/Progress;
+	public final fun getDocument ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public final fun getFill ()Ldev/inmo/tgbotapi/types/BackgroundFill;
+	public final fun getIntensity-0NqaBMg ()Ldev/inmo/micro_utils/common/Progress;
+	public final fun getThemeName ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isBlurred ()Z
+	public final fun isInverted ()Z
+	public final fun isMoving ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Companion$RawBackgroundType$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/BackgroundType$Dimmable : dev/inmo/tgbotapi/types/BackgroundType {
+	public abstract fun getDarkThemeDimming-3szG9qg ()D
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Fill : dev/inmo/tgbotapi/types/BackgroundType$Dimmable, dev/inmo/tgbotapi/types/BackgroundType$Fillable {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundType$Fill$Companion;
+	public static final field type Ljava/lang/String;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/BackgroundFill;DLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/BackgroundFill;
+	public final fun component2-3szG9qg ()D
+	public final fun copy-Ki7qfkc (Ldev/inmo/tgbotapi/types/BackgroundFill;D)Ldev/inmo/tgbotapi/types/BackgroundType$Fill;
+	public static synthetic fun copy-Ki7qfkc$default (Ldev/inmo/tgbotapi/types/BackgroundType$Fill;Ldev/inmo/tgbotapi/types/BackgroundFill;DILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Fill;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDarkThemeDimming-3szG9qg ()D
+	public fun getFill ()Ldev/inmo/tgbotapi/types/BackgroundFill;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Fill$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundType$Fill$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundType$Fill;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundType$Fill;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Fill$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/BackgroundType$Fillable : dev/inmo/tgbotapi/types/BackgroundType {
+	public abstract fun getFill ()Ldev/inmo/tgbotapi/types/BackgroundFill;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/BackgroundType$Movable : dev/inmo/tgbotapi/types/BackgroundType {
+	public abstract fun isMoving ()Z
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Pattern : dev/inmo/tgbotapi/types/BackgroundType$Fillable, dev/inmo/tgbotapi/types/BackgroundType$Movable, dev/inmo/tgbotapi/types/BackgroundType$WithDocument {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundType$Pattern$Companion;
+	public static final field type Ljava/lang/String;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public final fun component2 ()Ldev/inmo/tgbotapi/types/BackgroundFill;
+	public final fun component3-3szG9qg ()D
+	public final fun component4 ()Z
+	public final fun component5 ()Z
+	public final fun copy-b_JbxZk (Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZ)Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;
+	public static synthetic fun copy-b_JbxZk$default (Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;Ldev/inmo/tgbotapi/types/files/DocumentFile;Ldev/inmo/tgbotapi/types/BackgroundFill;DZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDocument ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public fun getFill ()Ldev/inmo/tgbotapi/types/BackgroundFill;
+	public final fun getIntensity-3szG9qg ()D
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isInverted ()Z
+	public fun isMoving ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Pattern$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundType$Pattern$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundType$Pattern;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Pattern$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Unknown : dev/inmo/tgbotapi/types/BackgroundType {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundType$Unknown$Companion;
+	public fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/BackgroundType$Unknown;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/BackgroundType$Unknown;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Unknown;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRaw ()Lkotlinx/serialization/json/JsonElement;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Unknown$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundType$Unknown$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundType$Unknown;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundType$Unknown;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Unknown$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Wallpaper : dev/inmo/tgbotapi/types/BackgroundType$Dimmable, dev/inmo/tgbotapi/types/BackgroundType$Movable, dev/inmo/tgbotapi/types/BackgroundType$WithDocument {
+	public static final field Companion Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper$Companion;
+	public static final field type Ljava/lang/String;
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public final fun component2-3szG9qg ()D
+	public final fun component3 ()Z
+	public final fun component4 ()Z
+	public final fun copy-VAT9Qd8 (Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZ)Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;
+	public static synthetic fun copy-VAT9Qd8$default (Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;Ldev/inmo/tgbotapi/types/files/DocumentFile;DZZILjava/lang/Object;)Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDarkThemeDimming-3szG9qg ()D
+	public fun getDocument ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+	public fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isBlurred ()Z
+	public fun isMoving ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Wallpaper$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/BackgroundType$Wallpaper;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/BackgroundType$Wallpaper$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/inmo/tgbotapi/types/BackgroundType$WithDocument : dev/inmo/tgbotapi/types/BackgroundType {
+	public abstract fun getDocument ()Ldev/inmo/tgbotapi/types/files/DocumentFile;
+}
+
 public final class dev/inmo/tgbotapi/types/Birthdate {
 	public static final field Companion Ldev/inmo/tgbotapi/types/Birthdate$Companion;
 	public fun <init> (III)V
@@ -7681,6 +8081,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field botCommandsField Ljava/lang/String;
 	public static final field botIsMemberField Ljava/lang/String;
 	public static final field botUsernameField Ljava/lang/String;
+	public static final field bottomColorField Ljava/lang/String;
 	public static final field businessConnectionIdField Ljava/lang/String;
 	public static final field businessIntroField Ljava/lang/String;
 	public static final field businessLocationField Ljava/lang/String;
@@ -7736,6 +8137,8 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field cityField Ljava/lang/String;
 	public static final field closeDateField Ljava/lang/String;
 	public static final field closingMinuteField Ljava/lang/String;
+	public static final field colorField Ljava/lang/String;
+	public static final field colorsField Ljava/lang/String;
 	public static final field containsMasksField Ljava/lang/String;
 	public static final field correctOptionIdField Ljava/lang/String;
 	public static final field countryCodeField Ljava/lang/String;
@@ -7749,6 +8152,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field customEmojiIdsField Ljava/lang/String;
 	public static final field customEmojiStickerSetNameField Ljava/lang/String;
 	public static final field customTitleField Ljava/lang/String;
+	public static final field darkThemeDimmingField Ljava/lang/String;
 	public static final field dataField Ljava/lang/String;
 	public static final field dataHashField Ljava/lang/String;
 	public static final field dateField Ljava/lang/String;
@@ -7789,6 +8193,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field fileSizeField Ljava/lang/String;
 	public static final field fileUniqueIdField Ljava/lang/String;
 	public static final field filesField Ljava/lang/String;
+	public static final field fillField Ljava/lang/String;
 	public static final field firstNameField Ljava/lang/String;
 	public static final field firstStreetLineField Ljava/lang/String;
 	public static final field forChannelsField Ljava/lang/String;
@@ -7832,6 +8237,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field inlineQueryIdField Ljava/lang/String;
 	public static final field inputFieldPlaceholderField Ljava/lang/String;
 	public static final field inputMessageContentField Ljava/lang/String;
+	public static final field intensityField Ljava/lang/String;
 	public static final field internalPassportField Ljava/lang/String;
 	public static final field inviteLinkField Ljava/lang/String;
 	public static final field invoicePayloadField Ljava/lang/String;
@@ -7839,13 +8245,16 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field isAnimatedField Ljava/lang/String;
 	public static final field isAnonymousField Ljava/lang/String;
 	public static final field isBigField Ljava/lang/String;
+	public static final field isBlurredField Ljava/lang/String;
 	public static final field isBotField Ljava/lang/String;
 	public static final field isClosedField Ljava/lang/String;
 	public static final field isDisabledField Ljava/lang/String;
 	public static final field isEnabledField Ljava/lang/String;
 	public static final field isForumField Ljava/lang/String;
+	public static final field isInvertedField Ljava/lang/String;
 	public static final field isManualField Ljava/lang/String;
 	public static final field isMemberField Ljava/lang/String;
+	public static final field isMovingField Ljava/lang/String;
 	public static final field isPersistentField Ljava/lang/String;
 	public static final field isPersonalField Ljava/lang/String;
 	public static final field isPremiumField Ljava/lang/String;
@@ -7993,6 +8402,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field reverseSideField Ljava/lang/String;
 	public static final field revokeMessagesField Ljava/lang/String;
 	public static final field rightsField Ljava/lang/String;
+	public static final field rotationAngleField Ljava/lang/String;
 	public static final field scaleField Ljava/lang/String;
 	public static final field scopeField Ljava/lang/String;
 	public static final field scoreField Ljava/lang/String;
@@ -8043,6 +8453,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field textField Ljava/lang/String;
 	public static final field tgWebAppStartParamField Ljava/lang/String;
 	public static final field tgsStickerField Ljava/lang/String;
+	public static final field themeNameField Ljava/lang/String;
 	public static final field thumbnailField Ljava/lang/String;
 	public static final field thumbnailHeightField Ljava/lang/String;
 	public static final field thumbnailMimeTypeField Ljava/lang/String;
@@ -8050,6 +8461,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field thumbnailWidthField Ljava/lang/String;
 	public static final field timeZoneNameField Ljava/lang/String;
 	public static final field titleField Ljava/lang/String;
+	public static final field topColorField Ljava/lang/String;
 	public static final field totalAmountField Ljava/lang/String;
 	public static final field totalCountField Ljava/lang/String;
 	public static final field totalVoterCountField Ljava/lang/String;
@@ -13125,6 +13537,33 @@ public abstract interface class dev/inmo/tgbotapi/types/chat/Chat {
 }
 
 public final class dev/inmo/tgbotapi/types/chat/Chat$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ChatBackground : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent {
+	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ChatBackground$Companion;
+	public fun <init> (Ldev/inmo/tgbotapi/types/BackgroundType;)V
+	public final fun component1 ()Ldev/inmo/tgbotapi/types/BackgroundType;
+	public final fun copy (Ldev/inmo/tgbotapi/types/BackgroundType;)Ldev/inmo/tgbotapi/types/chat/ChatBackground;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/chat/ChatBackground;Ldev/inmo/tgbotapi/types/BackgroundType;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/chat/ChatBackground;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getType ()Ldev/inmo/tgbotapi/types/BackgroundType;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ChatBackground$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/types/chat/ChatBackground$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/inmo/tgbotapi/types/chat/ChatBackground;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/inmo/tgbotapi/types/chat/ChatBackground;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/inmo/tgbotapi/types/chat/ChatBackground$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -24759,6 +25198,28 @@ public final class dev/inmo/tgbotapi/utils/EntitiesBuilderKt {
 	public static final fun underlineln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Ljava/util/List;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun underlineln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;Lkotlin/jvm/functions/Function1;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
 	public static final fun underlineln (Ldev/inmo/tgbotapi/utils/EntitiesBuilder;[Ldev/inmo/tgbotapi/types/message/textsources/TextSource;)Ldev/inmo/tgbotapi/utils/EntitiesBuilder;
+}
+
+public final class dev/inmo/tgbotapi/utils/ExtractDataAndJsonFromDecoderKt {
+	public static final fun extractDataAndJson (Lkotlinx/serialization/encoding/Decoder;Lkotlinx/serialization/DeserializationStrategy;)Lkotlin/Pair;
+}
+
+public final class dev/inmo/tgbotapi/utils/IntProgress100Serializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/utils/IntProgress100Serializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-PBVPzMA (Lkotlinx/serialization/encoding/Decoder;)D
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-Ki7qfkc (Lkotlinx/serialization/encoding/Encoder;D)V
+}
+
+public final class dev/inmo/tgbotapi/utils/IntRGB24HEXAColorSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Ldev/inmo/tgbotapi/utils/IntRGB24HEXAColorSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize-o_k0-HU (Lkotlinx/serialization/encoding/Decoder;)I
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize-Em2Gv2Q (Lkotlinx/serialization/encoding/Encoder;I)V
 }
 
 public final class dev/inmo/tgbotapi/utils/JSONKt {
