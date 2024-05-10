@@ -2,15 +2,13 @@ package dev.inmo.tgbotapi.types
 
 import dev.inmo.micro_utils.colors.common.HEXAColor
 import dev.inmo.tgbotapi.utils.IntRGB24HEXAColorSerializer
-import dev.inmo.tgbotapi.utils.extractDataAndJson
+import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.decodeFromJsonElement
 
 @ClassCastsIncluded
 @Serializable(BackgroundFill.Companion::class)
@@ -100,7 +98,7 @@ sealed interface BackgroundFill {
             get() = serializer.descriptor
 
         override fun deserialize(decoder: Decoder): BackgroundFill {
-            val (raw, json) = decoder.extractDataAndJson(serializer)
+            val (raw, json) = decoder.decodeDataAndJson(serializer)
             return when (raw.type) {
                 Solid.type -> Solid(color = raw.color ?: return Unknown(raw.type, json))
                 Gradient.type -> Gradient(

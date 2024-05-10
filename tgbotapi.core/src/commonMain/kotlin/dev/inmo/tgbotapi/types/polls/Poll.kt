@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
+import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import korlibs.time.seconds
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -74,12 +74,12 @@ private class RawPoll(
     val id: PollId,
     @SerialName(questionField)
     val question: String,
-    @SerialName(questionEntitiesField)
-    val questionEntities: List<RawMessageEntity>,
     @SerialName(optionsField)
     val options: List<PollOption>,
     @SerialName(totalVoterCountField)
     val votesCount: Int,
+    @SerialName(questionEntitiesField)
+    val questionEntities: List<RawMessageEntity> = emptyList(),
     @SerialName(isClosedField)
     val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
@@ -110,24 +110,26 @@ data class UnknownPollType internal constructor(
     override val id: PollId,
     @SerialName(questionField)
     override val question: String,
-    @SerialName(questionEntitiesField)
-    override val textSources: List<TextSource> = emptyList(),
     @SerialName(optionsField)
     override val options: List<PollOption>,
     @SerialName(totalVoterCountField)
     override val votesCount: Int,
+    @SerialName(questionEntitiesField)
+    override val textSources: List<TextSource> = emptyList(),
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
     @Serializable
-    val raw: JsonObject
+    val raw: JsonElement? = null
 ) : Poll {
     @Transient
-    override val scheduledCloseInfo: ScheduledCloseInfo? = (raw[closeDateField] ?: raw[openPeriodField])
-        ?.jsonPrimitive
-        ?.longOrNull
-        ?.asApproximateScheduledCloseInfo
+    override val scheduledCloseInfo: ScheduledCloseInfo? = raw ?.jsonObject ?.let {
+        (it[closeDateField] ?: it[openPeriodField])
+            ?.jsonPrimitive
+            ?.longOrNull
+            ?.asApproximateScheduledCloseInfo
+    }
 }
 
 @Serializable(PollSerializer::class)
@@ -167,8 +169,7 @@ object PollSerializer : KSerializer<Poll> {
         get() = RawPoll.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): Poll {
-        val asJson = JsonObject.serializer().deserialize(decoder)
-        val rawPoll = nonstrictJsonFormat.decodeFromJsonElement(RawPoll.serializer(), asJson)
+        val (rawPoll, asJson) = decoder.decodeDataAndJson(RawPoll.serializer())
 
         return when (rawPoll.type) {
             quizPollType -> QuizPoll(
@@ -198,9 +199,9 @@ object PollSerializer : KSerializer<Poll> {
             else -> UnknownPollType(
                 rawPoll.id,
                 rawPoll.question,
-                rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.options,
                 rawPoll.votesCount,
+                rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.isClosed,
                 rawPoll.isAnonymous,
                 asJson
@@ -214,9 +215,9 @@ object PollSerializer : KSerializer<Poll> {
             is RegularPoll -> RawPoll(
                 value.id,
                 value.question,
-                value.textSources.toRawMessageEntities(),
                 value.options,
                 value.votesCount,
+                value.textSources.toRawMessageEntities(),
                 value.isClosed,
                 value.isAnonymous,
                 regularPollType,
@@ -227,9 +228,9 @@ object PollSerializer : KSerializer<Poll> {
             is QuizPoll -> RawPoll(
                 value.id,
                 value.question,
-                value.textSources.toRawMessageEntities(),
                 value.options,
                 value.votesCount,
+                value.textSources.toRawMessageEntities(),
                 value.isClosed,
                 value.isAnonymous,
                 regularPollType,
@@ -240,7 +241,11 @@ object PollSerializer : KSerializer<Poll> {
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )
             is UnknownPollType -> {
-                JsonObject.serializer().serialize(encoder, value.raw)
+                if (value.raw == null) {
+                    UnknownPollType.serializer().serialize(encoder, value)
+                } else {
+                    JsonElement.serializer().serialize(encoder, value.raw)
+                }
                 return
             }
         }

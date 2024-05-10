@@ -48,7 +48,7 @@ data class SimplePollOption (
     @SerialName(textField)
     override val text: String,
     @SerialName(textEntitiesField)
-    override val textSources: List<TextSource>,
+    override val textSources: List<TextSource> = emptyList(),
     @SerialName(votesCountField)
     override val votes: Int = 0
 ) : PollOption() {
@@ -62,7 +62,7 @@ object PollOptionSerializer : KSerializer<PollOption> {
         @SerialName(textField)
         val text: String,
         @SerialName(textEntitiesField)
-        val textSources: List<RawMessageEntity>,
+        val textSources: List<RawMessageEntity> = emptyList(),
         @SerialName(votesCountField)
         val votes: Int = 0
     )

@@ -6,6 +6,7 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.polls.*
 import dev.inmo.tgbotapi.utils.RiskFeature
 import korlibs.time.seconds
+import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 @RiskFeature(RawFieldsUsageWarning)
@@ -15,7 +16,7 @@ val Poll.total_voter_count: Int
 val Poll.type: String
     get() = when (this) {
         is RegularPoll -> "regular"
-        is UnknownPollType -> raw["type"]!!.jsonPrimitive.content
+        is UnknownPollType -> raw!!.jsonObject["type"]!!.jsonPrimitive.content
         is QuizPoll -> "quiz"
     }
 @RiskFeature(RawFieldsUsageWarning)

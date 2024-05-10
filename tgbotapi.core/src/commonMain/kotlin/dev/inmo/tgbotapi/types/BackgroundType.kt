@@ -3,7 +3,7 @@ package dev.inmo.tgbotapi.types
 import dev.inmo.micro_utils.common.Progress
 import dev.inmo.tgbotapi.types.files.DocumentFile
 import dev.inmo.tgbotapi.utils.IntProgress100Serializer
-import dev.inmo.tgbotapi.utils.extractDataAndJson
+import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
@@ -138,7 +138,7 @@ sealed interface BackgroundType {
             get() = RawBackgroundType.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): BackgroundType {
-            val (raw, json) = decoder.extractDataAndJson(RawBackgroundType.serializer())
+            val (raw, json) = decoder.decodeDataAndJson(RawBackgroundType.serializer())
             val unknown by lazy { Unknown(raw.type, json) }
             return when (raw.type) {
                 Fill.type -> Fill(

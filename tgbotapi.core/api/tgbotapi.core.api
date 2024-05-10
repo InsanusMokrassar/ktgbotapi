@@ -8451,6 +8451,7 @@ public final class dev/inmo/tgbotapi/types/CommonKt {
 	public static final field temporaryRegistrationField Ljava/lang/String;
 	public static final field textEntitiesField Ljava/lang/String;
 	public static final field textField Ljava/lang/String;
+	public static final field textParseModeField Ljava/lang/String;
 	public static final field tgWebAppStartParamField Ljava/lang/String;
 	public static final field tgsStickerField Ljava/lang/String;
 	public static final field themeNameField Ljava/lang/String;
@@ -23544,23 +23545,23 @@ public final class dev/inmo/tgbotapi/types/polls/SimplePollOption$Companion {
 
 public final class dev/inmo/tgbotapi/types/polls/UnknownPollType : dev/inmo/tgbotapi/types/polls/Poll {
 	public static final field Companion Ldev/inmo/tgbotapi/types/polls/UnknownPollType$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZLkotlinx/serialization/json/JsonObject;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/util/List;ZZLkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-S5FO_mE ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/List;
-	public final fun component4 ()Ljava/util/List;
-	public final fun component5 ()I
+	public final fun component4 ()I
+	public final fun component5 ()Ljava/util/List;
 	public final fun component6 ()Z
 	public final fun component7 ()Z
-	public final fun component8 ()Lkotlinx/serialization/json/JsonObject;
-	public final fun copy-KILYFNk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZLkotlinx/serialization/json/JsonObject;)Ldev/inmo/tgbotapi/types/polls/UnknownPollType;
-	public static synthetic fun copy-KILYFNk$default (Ldev/inmo/tgbotapi/types/polls/UnknownPollType;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;IZZLkotlinx/serialization/json/JsonObject;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/UnknownPollType;
+	public final fun component8 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy-KILYFNk (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/util/List;ZZLkotlinx/serialization/json/JsonElement;)Ldev/inmo/tgbotapi/types/polls/UnknownPollType;
+	public static synthetic fun copy-KILYFNk$default (Ldev/inmo/tgbotapi/types/polls/UnknownPollType;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/util/List;ZZLkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/polls/UnknownPollType;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getId-S5FO_mE ()Ljava/lang/String;
 	public fun getOptions ()Ljava/util/List;
 	public fun getQuestion ()Ljava/lang/String;
 	public fun getQuestionTextSources ()Ljava/util/List;
-	public final fun getRaw ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getRaw ()Lkotlinx/serialization/json/JsonElement;
 	public fun getScheduledCloseInfo ()Ldev/inmo/tgbotapi/types/polls/ScheduledCloseInfo;
 	public fun getText ()Ljava/lang/String;
 	public fun getTextSources ()Ljava/util/List;
@@ -25201,7 +25202,7 @@ public final class dev/inmo/tgbotapi/utils/EntitiesBuilderKt {
 }
 
 public final class dev/inmo/tgbotapi/utils/ExtractDataAndJsonFromDecoderKt {
-	public static final fun extractDataAndJson (Lkotlinx/serialization/encoding/Decoder;Lkotlinx/serialization/DeserializationStrategy;)Lkotlin/Pair;
+	public static final fun decodeDataAndJson (Lkotlinx/serialization/encoding/Decoder;Lkotlinx/serialization/DeserializationStrategy;)Lkotlin/Pair;
 }
 
 public final class dev/inmo/tgbotapi/utils/IntProgress100Serializer : kotlinx/serialization/KSerializer {
