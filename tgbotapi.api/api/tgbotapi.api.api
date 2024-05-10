@@ -171,7 +171,8 @@ public final class dev/inmo/tgbotapi/extensions/api/LiveLocationProvider : java/
 }
 
 public final class dev/inmo/tgbotapi/extensions/api/LiveLocationProviderKt {
-	public static final fun getDefaultLivePeriodDelayMillis ()J
+	public static final field defaultLivePeriodDelayMillis J
+	public static final field indefiniteLivePeriodDelayMillis J
 	public static final fun replyWithLiveLocation-036Eddc (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlinx/coroutines/CoroutineScope;DDJLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZLjava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun replyWithLiveLocation-036Eddc$default (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlinx/coroutines/CoroutineScope;DDJLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZLjava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static final fun replyWithLiveLocation-bUFzSfA (Ldev/inmo/tgbotapi/bot/RequestsExecutor;Ldev/inmo/tgbotapi/types/message/abstracts/AccessibleMessage;Lkotlinx/coroutines/CoroutineScope;Ldev/inmo/tgbotapi/types/location/StaticLocation;JLjava/lang/Float;Ljava/lang/Integer;Ljava/lang/Float;Ldev/inmo/tgbotapi/types/MessageThreadId;Ljava/lang/String;ZZLjava/lang/Boolean;Ldev/inmo/tgbotapi/types/buttons/KeyboardMarkup;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
