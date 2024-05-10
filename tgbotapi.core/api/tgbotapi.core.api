@@ -13541,7 +13541,7 @@ public final class dev/inmo/tgbotapi/types/chat/Chat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class dev/inmo/tgbotapi/types/chat/ChatBackground : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent {
+public final class dev/inmo/tgbotapi/types/chat/ChatBackground : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/PublicChatEvent {
 	public static final field Companion Ldev/inmo/tgbotapi/types/chat/ChatBackground$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/types/BackgroundType;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/BackgroundType;
