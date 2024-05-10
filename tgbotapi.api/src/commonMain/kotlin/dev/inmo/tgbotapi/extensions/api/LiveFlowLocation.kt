@@ -50,22 +50,30 @@ suspend fun TelegramBot.handleLiveLocation(
     sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     var currentLiveLocationMessage: ContentMessage<LocationContent>? = null
-    val updateMessageJob = CoroutineScope(currentCoroutineContext().LinkedSupervisorJob()).launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
-        while (isActive) {
-            delay(liveTimeMillis)
-            // Remove previous location message info to resend live location message
-            currentLiveLocationMessage = null
+    val updateMessageJob = if (liveTimeMillis == indefiniteLivePeriodDelayMillis) { // do not launch refreshing of message for indefinite live locations
+        null
+    } else {
+        CoroutineScope(currentCoroutineContext().LinkedSupervisorJob()).launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
+            while (isActive) {
+                delay(liveTimeMillis)
+                // Remove previous location message info to resend live location message
+                currentLiveLocationMessage = null
+            }
         }
     }
     locationsFlow.collect {
         val capturedLiveLocationMessage = currentLiveLocationMessage
         if (capturedLiveLocationMessage == null) {
-            updateMessageJob.start()
+            updateMessageJob ?.start()
             currentLiveLocationMessage = send(
                 chatId,
                 it.latitude,
                 it.longitude,
-                ceil(liveTimeMillis.toDouble() / 1000).toInt(),
+                if (liveTimeMillis == indefiniteLivePeriodDelayMillis) {
+                    LiveLocation.INDEFINITE_LIVE_PERIOD
+                } else {
+                    ceil(liveTimeMillis.toDouble() / 1000).toInt()
+                },
                 it.horizontalAccuracy,
                 it.heading,
                 it.proximityAlertRadius,
@@ -83,7 +91,6 @@ suspend fun TelegramBot.handleLiveLocation(
                 message = capturedLiveLocationMessage,
                 latitude = it.latitude,
                 longitude = it.longitude,
-                livePeriod = null,
                 horizontalAccuracy = it.horizontalAccuracy,
                 heading = it.heading,
                 proximityAlertRadius = it.proximityAlertRadius,

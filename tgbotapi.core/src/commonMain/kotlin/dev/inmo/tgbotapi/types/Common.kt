@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
 
 typealias ForwardSignature = String
@@ -47,7 +48,7 @@ val pollOptionTextLength = 1 .. 100
 val pollQuestionTextLength = 1 .. 300
 val pollOptionsLimit = 2 .. 10
 
-val livePeriodLimit = 60 .. 86400
+val livePeriodLimit = 60 .. LiveLocation.INDEFINITE_LIVE_PERIOD
 
 val inlineQueryAnswerResultsLimit = 0 .. 50
 

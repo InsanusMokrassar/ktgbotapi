@@ -23,7 +23,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
-val defaultLivePeriodDelayMillis = (livePeriodLimit.last - 60L) * 1000L
+const val indefiniteLivePeriodDelayMillis = LiveLocation.INDEFINITE_LIVE_PERIOD * 1000L
+const val defaultLivePeriodDelayMillis = indefiniteLivePeriodDelayMillis
 
 /**
  * @see startLiveLocation
