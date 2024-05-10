@@ -10,7 +10,7 @@ import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.toRawMessageEntities
 import dev.inmo.tgbotapi.utils.RiskFeature
-import dev.inmo.tgbotapi.utils.nonstrictJsonFormat
+import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import korlibs.time.seconds
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -49,9 +49,13 @@ val LongSeconds.asExactScheduledCloseInfo
 
 @Serializable(PollSerializer::class)
 @ClassCastsIncluded
-sealed interface Poll : ReplyInfo.External.ContentVariant {
+sealed interface Poll : ReplyInfo.External.ContentVariant, TextedInput {
     val id: PollId
     val question: String
+    override val text: String
+        get() = question
+    val questionTextSources: List<TextSource>
+        get() = textSources
     val options: List<PollOption>
     val votesCount: Int
     val isClosed: Boolean
@@ -74,6 +78,8 @@ private class RawPoll(
     val options: List<PollOption>,
     @SerialName(totalVoterCountField)
     val votesCount: Int,
+    @SerialName(questionEntitiesField)
+    val questionEntities: List<RawMessageEntity> = emptyList(),
     @SerialName(isClosedField)
     val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
@@ -108,24 +114,29 @@ data class UnknownPollType internal constructor(
     override val options: List<PollOption>,
     @SerialName(totalVoterCountField)
     override val votesCount: Int,
+    @SerialName(questionEntitiesField)
+    override val textSources: List<TextSource> = emptyList(),
     @SerialName(isClosedField)
     override val isClosed: Boolean = false,
     @SerialName(isAnonymousField)
     override val isAnonymous: Boolean = false,
     @Serializable
-    val raw: JsonObject
+    val raw: JsonElement? = null
 ) : Poll {
     @Transient
-    override val scheduledCloseInfo: ScheduledCloseInfo? = (raw[closeDateField] ?: raw[openPeriodField])
-        ?.jsonPrimitive
-        ?.longOrNull
-        ?.asApproximateScheduledCloseInfo
+    override val scheduledCloseInfo: ScheduledCloseInfo? = raw ?.jsonObject ?.let {
+        (it[closeDateField] ?: it[openPeriodField])
+            ?.jsonPrimitive
+            ?.longOrNull
+            ?.asApproximateScheduledCloseInfo
+    }
 }
 
 @Serializable(PollSerializer::class)
 data class RegularPoll(
     override val id: PollId,
     override val question: String,
+    override val textSources: List<TextSource>,
     override val options: List<PollOption>,
     override val votesCount: Int,
     override val isClosed: Boolean = false,
@@ -138,18 +149,19 @@ data class RegularPoll(
 data class QuizPoll(
     override val id: PollId,
     override val question: String,
+    override val textSources: List<TextSource> = emptyList(),
     override val options: List<PollOption>,
     override val votesCount: Int,
     /**
      * Nullable due to documentation (https://core.telegram.org/bots/api#poll)
      */
     val correctOptionId: Int? = null,
-    override val text: String? = null,
-    override val textSources: List<TextSource> = emptyList(),
+    val explanation: String?,
+    val explanationTextSources: List<TextSource> = emptyList(),
     override val isClosed: Boolean = false,
     override val isAnonymous: Boolean = false,
     override val scheduledCloseInfo: ScheduledCloseInfo? = null
-) : Poll, TextedInput
+) : Poll
 
 @RiskFeature
 object PollSerializer : KSerializer<Poll> {
@@ -157,13 +169,13 @@ object PollSerializer : KSerializer<Poll> {
         get() = RawPoll.serializer().descriptor
 
     override fun deserialize(decoder: Decoder): Poll {
-        val asJson = JsonObject.serializer().deserialize(decoder)
-        val rawPoll = nonstrictJsonFormat.decodeFromJsonElement(RawPoll.serializer(), asJson)
+        val (rawPoll, asJson) = decoder.decodeDataAndJson(RawPoll.serializer())
 
         return when (rawPoll.type) {
             quizPollType -> QuizPoll(
                 rawPoll.id,
                 rawPoll.question,
+                rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.options,
                 rawPoll.votesCount,
                 rawPoll.correctOptionId,
@@ -176,6 +188,7 @@ object PollSerializer : KSerializer<Poll> {
             regularPollType -> RegularPoll(
                 rawPoll.id,
                 rawPoll.question,
+                rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.options,
                 rawPoll.votesCount,
                 rawPoll.isClosed,
@@ -188,6 +201,7 @@ object PollSerializer : KSerializer<Poll> {
                 rawPoll.question,
                 rawPoll.options,
                 rawPoll.votesCount,
+                rawPoll.questionEntities.asTextSources(rawPoll.question),
                 rawPoll.isClosed,
                 rawPoll.isAnonymous,
                 asJson
@@ -203,6 +217,7 @@ object PollSerializer : KSerializer<Poll> {
                 value.question,
                 value.options,
                 value.votesCount,
+                value.textSources.toRawMessageEntities(),
                 value.isClosed,
                 value.isAnonymous,
                 regularPollType,
@@ -215,6 +230,7 @@ object PollSerializer : KSerializer<Poll> {
                 value.question,
                 value.options,
                 value.votesCount,
+                value.textSources.toRawMessageEntities(),
                 value.isClosed,
                 value.isAnonymous,
                 regularPollType,
@@ -225,7 +241,11 @@ object PollSerializer : KSerializer<Poll> {
                 closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDateTime ?.unixMillisLong ?.div(1000L)
             )
             is UnknownPollType -> {
-                JsonObject.serializer().serialize(encoder, value.raw)
+                if (value.raw == null) {
+                    UnknownPollType.serializer().serialize(encoder, value)
+                } else {
+                    JsonElement.serializer().serialize(encoder, value.raw)
+                }
                 return
             }
         }

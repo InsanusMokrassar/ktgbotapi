@@ -1072,7 +1072,8 @@ suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     question: String,
-    options: List<String>,
+    options: List<InputPollOption>,
+    questionParseMode: ParseMode? = null,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = false,
@@ -1084,16 +1085,17 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(replyInChatId, question, options, isAnonymous, isClosed, allowMultipleAnswers, closeInfo, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+) = sendRegularPoll(replyInChatId, question, options, closeInfo, questionParseMode, isAnonymous, isClosed, allowMultipleAnswers, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     poll: RegularPoll,
-    isClosed: Boolean = false,
-    question: String = poll.question,
-    options: List<String> = poll.options.map { it.text },
+    question: String,
+    questionParseMode: ParseMode? = null,
+    options: List<InputPollOption> = poll.options.map { it.asInput() },
     isAnonymous: Boolean = poll.isAnonymous,
+    isClosed: Boolean = false,
     allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
     closeInfo: ScheduledCloseInfo? = null,
     replyInChatId: IdChatIdentifier = toChatId,
@@ -1103,18 +1105,57 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendRegularPoll(replyInChatId, poll, isClosed, question, options, isAnonymous, allowMultipleAnswers, closeInfo, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+) = sendRegularPoll(replyInChatId, question, options, closeInfo, questionParseMode, isAnonymous, allowMultipleAnswers, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+
+
+suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption>,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    allowMultipleAnswers: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendRegularPoll(replyInChatId, questionTextSources, options, closeInfo, isAnonymous, isClosed, allowMultipleAnswers, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    poll: RegularPoll,
+    questionTextSources: List<TextSource> = poll.questionTextSources,
+    options: List<InputPollOption> = poll.options.map { it.asInput() },
+    isAnonymous: Boolean = poll.isAnonymous,
+    isClosed: Boolean = false,
+    allowMultipleAnswers: Boolean = poll.allowMultipleAnswers,
+    closeInfo: ScheduledCloseInfo? = null,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendRegularPoll(replyInChatId, questionTextSources, options, closeInfo, isAnonymous, allowMultipleAnswers, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     question: String,
-    options: List<String>,
+    options: List<InputPollOption>,
     correctOptionId: Int,
+    explanation: String?,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
-    explanation: String? = null,
-    parseMode: ParseMode? = null,
+    questionParseMode: ParseMode? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     replyInChatId: IdChatIdentifier = toChatId,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -1123,19 +1164,21 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(replyInChatId, question, options, correctOptionId, isAnonymous, isClosed, explanation, parseMode, closeInfo, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+) = sendQuizPoll(replyInChatId, question, options, correctOptionId, closeInfo, questionParseMode, explanation, explanationParseMode, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     quizPoll: QuizPoll,
-    isClosed: Boolean = false,
-    question: String = quizPoll.question,
-    options: List<String> = quizPoll.options.map { it.text },
-    correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    question: String,
+    explanation: String?,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
+    correctOptionId: Int = quizPoll.correctOptionId
+        ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
-    explanation: String? = null,
-    parseMode: ParseMode? = null,
+    isClosed: Boolean = false,
+    questionParseMode: ParseMode? = null,
+    explanationParseMode: ParseMode? = null,
     closeInfo: ScheduledCloseInfo? = null,
     replyInChatId: IdChatIdentifier = toChatId,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -1144,17 +1187,60 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(replyInChatId, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, explanation, parseMode, closeInfo, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+) = sendQuizPoll(replyInChatId, question, options, correctOptionId, closeInfo, questionParseMode, explanation, explanationParseMode, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption>,
+    correctOptionId: Int,
+    explanation: String?,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    explanationParseMode: ParseMode? = null,
+    closeInfo: ScheduledCloseInfo? = null,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(replyInChatId, questionTextSources, options, correctOptionId, closeInfo, explanation, explanationParseMode, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    quizPoll: QuizPoll,
+    explanation: String?,
+    questionTextSources: List<TextSource> = quizPoll.questionTextSources,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
+    correctOptionId: Int = quizPoll.correctOptionId
+        ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    isAnonymous: Boolean = quizPoll.isAnonymous,
+    isClosed: Boolean = false,
+    explanationParseMode: ParseMode? = null,
+    closeInfo: ScheduledCloseInfo? = null,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(replyInChatId, questionTextSources, options, correctOptionId, closeInfo, explanation, explanationParseMode, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     question: String,
-    options: List<String>,
+    options: List<InputPollOption>,
     correctOptionId: Int,
-    entities: TextSourcesList,
     isAnonymous: Boolean = true,
     isClosed: Boolean = false,
+    questionParseMode: ParseMode? = null,
+    explanationTextSources: List<TextSource>? = null,
     closeInfo: ScheduledCloseInfo? = null,
     replyInChatId: IdChatIdentifier = toChatId,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -1163,18 +1249,20 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(replyInChatId, question, options, correctOptionId, isAnonymous, isClosed, entities, closeInfo, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+) = sendQuizPoll(replyInChatId, question, options, correctOptionId, closeInfo, questionParseMode, explanationTextSources, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
 
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     quizPoll: QuizPoll,
-    entities: TextSourcesList,
-    isClosed: Boolean = false,
-    question: String = quizPoll.question,
-    options: List<String> = quizPoll.options.map { it.text },
-    correctOptionId: Int = quizPoll.correctOptionId ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    question: String,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
+    correctOptionId: Int = quizPoll.correctOptionId
+        ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
     isAnonymous: Boolean = quizPoll.isAnonymous,
+    isClosed: Boolean = false,
+    questionParseMode: ParseMode? = null,
+    explanationTextSources: List<TextSource>? = null,
     closeInfo: ScheduledCloseInfo? = null,
     replyInChatId: IdChatIdentifier = toChatId,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -1183,17 +1271,57 @@ suspend inline fun TelegramBot.reply(
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendQuizPoll(replyInChatId, isClosed, quizPoll, question, options, correctOptionId, isAnonymous, entities, closeInfo, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+) = sendQuizPoll(replyInChatId, question, options, correctOptionId, closeInfo, questionParseMode, explanationTextSources, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    questionTextSources: List<TextSource>,
+    options: List<InputPollOption>,
+    correctOptionId: Int,
+    isAnonymous: Boolean = true,
+    isClosed: Boolean = false,
+    explanationTextSources: List<TextSource>? = null,
+    closeInfo: ScheduledCloseInfo? = null,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(replyInChatId, questionTextSources, options, correctOptionId, closeInfo, explanationTextSources, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
+
+suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    quizPoll: QuizPoll,
+    questionTextSources: List<TextSource> = quizPoll.questionTextSources,
+    options: List<InputPollOption> = quizPoll.options.map { it.asInput() },
+    correctOptionId: Int = quizPoll.correctOptionId
+        ?: error("Correct option ID must be provided by income QuizPoll or by developer"),
+    isAnonymous: Boolean = quizPoll.isAnonymous,
+    isClosed: Boolean = false,
+    explanationTextSources: List<TextSource>? = quizPoll.explanationTextSources,
+    closeInfo: ScheduledCloseInfo? = null,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = sendQuizPoll(replyInChatId, questionTextSources, options, correctOptionId, closeInfo, explanationTextSources, isAnonymous, isClosed, replyInThreadId, replyInBusinessConnectionId, disableNotification, protectContent, ReplyParameters(toChatId, toMessageId, allowSendingWithoutReply = allowSendingWithoutReply), replyMarkup)
 
 
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     poll: Poll,
-    isClosed: Boolean = false,
-    question: String = poll.question,
-    options: List<String> = poll.options.map { it.text },
+    question: String,
+    options: List<InputPollOption> = poll.options.map { it.asInput() },
     isAnonymous: Boolean = poll.isAnonymous,
+    isClosed: Boolean = false,
     closeInfo: ScheduledCloseInfo? = null,
     replyInChatId: IdChatIdentifier = toChatId,
     replyInThreadId: MessageThreadId? = replyInChatId.threadId,
@@ -1226,11 +1354,66 @@ suspend inline fun TelegramBot.reply(
         toChatId = toChatId,
         toMessageId = toMessageId,
         quizPoll = poll,
-        entities = poll.textSources,
-        isClosed = isClosed,
+        explanationTextSources = poll.explanationTextSources,
         question = question,
         options = options,
+        isClosed = isClosed,
         isAnonymous = isAnonymous,
+        closeInfo = closeInfo,
+        replyInChatId = replyInChatId,
+        replyInThreadId = replyInThreadId,
+        replyInBusinessConnectionId = replyInBusinessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyMarkup = replyMarkup
+    )
+}
+suspend inline fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    poll: Poll,
+    questionTextSources: List<TextSource> = poll.questionTextSources,
+    options: List<InputPollOption> = poll.options.map { it.asInput() },
+    isAnonymous: Boolean = poll.isAnonymous,
+    isClosed: Boolean = false,
+    closeInfo: ScheduledCloseInfo? = null,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) = when (poll) {
+    is RegularPoll -> reply(
+        toChatId = toChatId,
+        toMessageId = toMessageId,
+        poll = poll,
+        questionTextSources = questionTextSources,
+        options = options,
+        isAnonymous = isAnonymous,
+        isClosed = isClosed,
+        allowMultipleAnswers = isAnonymous,
+        closeInfo = closeInfo,
+        replyInChatId = replyInChatId,
+        replyInThreadId = replyInThreadId,
+        replyInBusinessConnectionId = replyInBusinessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        allowSendingWithoutReply = allowSendingWithoutReply,
+        replyMarkup = replyMarkup
+    )
+    is UnknownPollType -> error("Unable to send poll with unknown type ($poll)")
+    is QuizPoll -> reply(
+        toChatId = toChatId,
+        toMessageId = toMessageId,
+        quizPoll = poll,
+        questionTextSources = questionTextSources,
+        explanationTextSources = poll.explanationTextSources,
+        options = options,
+        isAnonymous = isAnonymous,
+        isClosed = isClosed,
         closeInfo = closeInfo,
         replyInChatId = replyInChatId,
         replyInThreadId = replyInThreadId,

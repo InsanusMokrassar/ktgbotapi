@@ -41,12 +41,16 @@ data class LiveLocation(
     @SerialName(horizontalAccuracyField)
     override val horizontalAccuracy: Meters? = null,
     @SerialName(livePeriodField)
-    override val livePeriod: Seconds,
+    override val livePeriod: Seconds = INDEFINITE_LIVE_PERIOD,
     @SerialName(headingField)
     override val heading: Degrees? = null,
     @SerialName(proximityAlertRadiusField)
     override val proximityAlertRadius: Meters? = null
-) : Location, Livable, ProximityAlertable, Headed
+) : Location, Livable, ProximityAlertable, Headed {
+    companion object {
+        const val INDEFINITE_LIVE_PERIOD: Seconds = 0x7FFFFFFF
+    }
+}
 
 object LocationSerializer : KSerializer<Location> {
     private val internalSerializer = JsonObject.serializer()

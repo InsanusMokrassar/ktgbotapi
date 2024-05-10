@@ -16,6 +16,8 @@ import dev.inmo.tgbotapi.requests.answers.InlineQueryResultsButton
 import dev.inmo.tgbotapi.requests.send.payments.CreateInvoiceLink
 import dev.inmo.tgbotapi.requests.send.payments.SendInvoice
 import dev.inmo.tgbotapi.requests.stickers.InputSticker
+import dev.inmo.tgbotapi.types.BackgroundFill
+import dev.inmo.tgbotapi.types.BackgroundType
 import dev.inmo.tgbotapi.types.BusinessChatId
 import dev.inmo.tgbotapi.types.ChatId
 import dev.inmo.tgbotapi.types.ChatIdWithThreadId
@@ -116,6 +118,7 @@ import dev.inmo.tgbotapi.types.chat.Bot
 import dev.inmo.tgbotapi.types.chat.BusinessChat
 import dev.inmo.tgbotapi.types.chat.ChannelChat
 import dev.inmo.tgbotapi.types.chat.Chat
+import dev.inmo.tgbotapi.types.chat.ChatBackground
 import dev.inmo.tgbotapi.types.chat.ChatJoinRequest
 import dev.inmo.tgbotapi.types.chat.ChatMessageReactionUpdated
 import dev.inmo.tgbotapi.types.chat.CommonBot
@@ -1087,6 +1090,124 @@ public inline fun InputSticker.regularOrThrow(): InputSticker.WithKeywords.Regul
 
 public inline fun <T> InputSticker.ifRegular(block: (InputSticker.WithKeywords.Regular) -> T): T? =
     regularOrNull() ?.let(block)
+
+public inline fun BackgroundFill.freeformGradientOrNull(): BackgroundFill.FreeformGradient? = this
+    as? dev.inmo.tgbotapi.types.BackgroundFill.FreeformGradient
+
+public inline fun BackgroundFill.freeformGradientOrThrow(): BackgroundFill.FreeformGradient = this
+    as dev.inmo.tgbotapi.types.BackgroundFill.FreeformGradient
+
+public inline fun <T>
+    BackgroundFill.ifFreeformGradient(block: (BackgroundFill.FreeformGradient) -> T): T? =
+    freeformGradientOrNull() ?.let(block)
+
+public inline fun BackgroundFill.gradientOrNull(): BackgroundFill.Gradient? = this as?
+    dev.inmo.tgbotapi.types.BackgroundFill.Gradient
+
+public inline fun BackgroundFill.gradientOrThrow(): BackgroundFill.Gradient = this as
+    dev.inmo.tgbotapi.types.BackgroundFill.Gradient
+
+public inline fun <T> BackgroundFill.ifGradient(block: (BackgroundFill.Gradient) -> T): T? =
+    gradientOrNull() ?.let(block)
+
+public inline fun BackgroundFill.solidOrNull(): BackgroundFill.Solid? = this as?
+    dev.inmo.tgbotapi.types.BackgroundFill.Solid
+
+public inline fun BackgroundFill.solidOrThrow(): BackgroundFill.Solid = this as
+    dev.inmo.tgbotapi.types.BackgroundFill.Solid
+
+public inline fun <T> BackgroundFill.ifSolid(block: (BackgroundFill.Solid) -> T): T? = solidOrNull()
+    ?.let(block)
+
+public inline fun BackgroundFill.unknownOrNull(): BackgroundFill.Unknown? = this as?
+    dev.inmo.tgbotapi.types.BackgroundFill.Unknown
+
+public inline fun BackgroundFill.unknownOrThrow(): BackgroundFill.Unknown = this as
+    dev.inmo.tgbotapi.types.BackgroundFill.Unknown
+
+public inline fun <T> BackgroundFill.ifUnknown(block: (BackgroundFill.Unknown) -> T): T? =
+    unknownOrNull() ?.let(block)
+
+public inline fun BackgroundType.chatThemeOrNull(): BackgroundType.ChatTheme? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.ChatTheme
+
+public inline fun BackgroundType.chatThemeOrThrow(): BackgroundType.ChatTheme = this as
+    dev.inmo.tgbotapi.types.BackgroundType.ChatTheme
+
+public inline fun <T> BackgroundType.ifChatTheme(block: (BackgroundType.ChatTheme) -> T): T? =
+    chatThemeOrNull() ?.let(block)
+
+public inline fun BackgroundType.dimmableOrNull(): BackgroundType.Dimmable? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Dimmable
+
+public inline fun BackgroundType.dimmableOrThrow(): BackgroundType.Dimmable = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Dimmable
+
+public inline fun <T> BackgroundType.ifDimmable(block: (BackgroundType.Dimmable) -> T): T? =
+    dimmableOrNull() ?.let(block)
+
+public inline fun BackgroundType.fillOrNull(): BackgroundType.Fill? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Fill
+
+public inline fun BackgroundType.fillOrThrow(): BackgroundType.Fill = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Fill
+
+public inline fun <T> BackgroundType.ifFill(block: (BackgroundType.Fill) -> T): T? = fillOrNull()
+    ?.let(block)
+
+public inline fun BackgroundType.wallpaperOrNull(): BackgroundType.Wallpaper? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Wallpaper
+
+public inline fun BackgroundType.wallpaperOrThrow(): BackgroundType.Wallpaper = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Wallpaper
+
+public inline fun <T> BackgroundType.ifWallpaper(block: (BackgroundType.Wallpaper) -> T): T? =
+    wallpaperOrNull() ?.let(block)
+
+public inline fun BackgroundType.fillableOrNull(): BackgroundType.Fillable? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Fillable
+
+public inline fun BackgroundType.fillableOrThrow(): BackgroundType.Fillable = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Fillable
+
+public inline fun <T> BackgroundType.ifFillable(block: (BackgroundType.Fillable) -> T): T? =
+    fillableOrNull() ?.let(block)
+
+public inline fun BackgroundType.patternOrNull(): BackgroundType.Pattern? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Pattern
+
+public inline fun BackgroundType.patternOrThrow(): BackgroundType.Pattern = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Pattern
+
+public inline fun <T> BackgroundType.ifPattern(block: (BackgroundType.Pattern) -> T): T? =
+    patternOrNull() ?.let(block)
+
+public inline fun BackgroundType.movableOrNull(): BackgroundType.Movable? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Movable
+
+public inline fun BackgroundType.movableOrThrow(): BackgroundType.Movable = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Movable
+
+public inline fun <T> BackgroundType.ifMovable(block: (BackgroundType.Movable) -> T): T? =
+    movableOrNull() ?.let(block)
+
+public inline fun BackgroundType.unknownOrNull(): BackgroundType.Unknown? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.Unknown
+
+public inline fun BackgroundType.unknownOrThrow(): BackgroundType.Unknown = this as
+    dev.inmo.tgbotapi.types.BackgroundType.Unknown
+
+public inline fun <T> BackgroundType.ifUnknown(block: (BackgroundType.Unknown) -> T): T? =
+    unknownOrNull() ?.let(block)
+
+public inline fun BackgroundType.withDocumentOrNull(): BackgroundType.WithDocument? = this as?
+    dev.inmo.tgbotapi.types.BackgroundType.WithDocument
+
+public inline fun BackgroundType.withDocumentOrThrow(): BackgroundType.WithDocument = this as
+    dev.inmo.tgbotapi.types.BackgroundType.WithDocument
+
+public inline fun <T> BackgroundType.ifWithDocument(block: (BackgroundType.WithDocument) -> T): T? =
+    withDocumentOrNull() ?.let(block)
 
 public inline fun ChatIdentifier.idChatIdentifierOrNull(): IdChatIdentifier? = this as?
     dev.inmo.tgbotapi.types.IdChatIdentifier
@@ -2942,6 +3063,15 @@ public inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedi
 
 public inline fun <T> TelegramMedia.ifTitledTelegramMedia(block: (TitledTelegramMedia) -> T): T? =
     titledTelegramMediaOrNull() ?.let(block)
+
+public inline fun ChatEvent.chatBackgroundOrNull(): ChatBackground? = this as?
+    dev.inmo.tgbotapi.types.chat.ChatBackground
+
+public inline fun ChatEvent.chatBackgroundOrThrow(): ChatBackground = this as
+    dev.inmo.tgbotapi.types.chat.ChatBackground
+
+public inline fun <T> ChatEvent.ifChatBackground(block: (ChatBackground) -> T): T? =
+    chatBackgroundOrNull() ?.let(block)
 
 public inline fun ChatEvent.giveawayCreatedOrNull(): GiveawayCreated? = this as?
     dev.inmo.tgbotapi.types.giveaway.GiveawayCreated

@@ -18,6 +18,7 @@ sealed interface ExtendedChat : Chat {
     val profileAccentColorId: ColorId?
     val backgroundCustomEmojiId: CustomEmojiId?
     val profileBackgroundCustomEmojiId: CustomEmojiId?
+    val maxReactionsCount: Int
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)

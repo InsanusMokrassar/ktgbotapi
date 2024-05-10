@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types
 
+import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.utils.BuiltinMimeTypes
 
 typealias ForwardSignature = String
@@ -47,7 +48,7 @@ val pollOptionTextLength = 1 .. 100
 val pollQuestionTextLength = 1 .. 300
 val pollOptionsLimit = 2 .. 10
 
-val livePeriodLimit = 60 .. 86400
+val livePeriodLimit = 60 .. LiveLocation.INDEFINITE_LIVE_PERIOD
 
 val inlineQueryAnswerResultsLimit = 0 .. 50
 
@@ -150,6 +151,7 @@ const val accentColorIdField = "accent_color_id"
 const val profileAccentColorIdField = "profile_accent_color_id"
 const val backgroundCustomEmojiIdField = "background_custom_emoji_id"
 const val profileBackgroundCustomEmojiIdField = "profile_background_custom_emoji_id"
+const val maxReactionCountField = "max_reaction_count"
 const val personalChatField = "personal_chat"
 const val birthdateField = "birthdate"
 const val hasVisibleHistoryField = "has_visible_history"
@@ -162,6 +164,7 @@ const val canReplyField = "can_reply"
 const val supportInlineQueriesField = "supports_inline_queries"
 const val canConnectToBusinessField = "can_connect_to_business"
 const val textEntitiesField = "text_entities"
+const val textParseModeField = "text_parse_mode"
 const val entitiesField = "entities"
 const val stickerSetNameField = "set_name"
 const val customEmojiIdField = "custom_emoji_id"
@@ -234,6 +237,7 @@ const val isAnimatedField = "is_animated"
 const val isVideoField = "is_video"
 const val inviteLinkField = "invite_link"
 const val viaChatFolderInviteLinkField = "via_chat_folder_invite_link"
+const val viaJoinRequestField = "via_join_request"
 const val pinnedMessageField = "pinned_message"
 const val activeUsernamesField = "active_usernames"
 const val customTitleField = "custom_title"
@@ -440,6 +444,8 @@ const val resultsField = "results"
 const val resultField = "result"
 const val certificateField = "certificate"
 const val questionField = "question"
+const val questionEntitiesField = "question_entities"
+const val questionParseModeField = "question_parse_mode"
 const val optionsField = "options"
 const val payField = "pay"
 const val permissionsField = "permissions"
@@ -599,6 +605,20 @@ const val businessConnectionIdField = "business_connection_id"
 const val businessIntroField = "business_intro"
 const val businessLocationField = "business_location"
 const val businessOpeningHoursField = "business_opening_hours"
+
+const val colorField = "color"
+const val colorsField = "colors"
+const val topColorField = "top_color"
+const val bottomColorField = "bottom_color"
+const val rotationAngleField = "rotation_angle"
+
+const val fillField = "fill"
+const val darkThemeDimmingField = "dark_theme_dimming"
+const val isBlurredField = "is_blurred"
+const val isInvertedField = "is_inverted"
+const val isMovingField = "is_moving"
+const val intensityField = "intensity"
+const val themeNameField = "theme_name"
 
 const val dayField = "day"
 const val monthField = "month"

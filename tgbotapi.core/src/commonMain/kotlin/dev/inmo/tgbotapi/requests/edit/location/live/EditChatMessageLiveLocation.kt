@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.edit.location.live
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
+import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.TelegramBotAPIMessageDeserializationStrategyClass
 import dev.inmo.tgbotapi.types.message.content.LocationContent
@@ -22,6 +23,8 @@ data class EditChatMessageLiveLocation(
     override val latitude: Double,
     @SerialName(longitudeField)
     override val longitude: Double,
+    @SerialName(livePeriodField)
+    val livePeriod: Seconds? = null,
     @SerialName(horizontalAccuracyField)
     override val horizontalAccuracy: Meters? = null,
     @SerialName(headingField)
