@@ -2,6 +2,9 @@
 
 ## 14.0.0
 
+* `Core`:
+    * `TelegramPaymentChargeId` has been added as value class and replaced raw strings in `SuccessfulPayment` type of `telegramPaymentChargeId`
+
 ## 13.0.0
 
 **Add support of [Telegram Bots API 7.3](https://core.telegram.org/bots/api-changelog#may-6-2024)**
