@@ -33,16 +33,17 @@ data class PhotoContent(
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<PhotoContent>> = SendPhoto(
-        chatId,
-        media.fileId,
-        textSources,
-        spoilered,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        photo = media.fileId,
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaPhoto = asTelegramMedia()

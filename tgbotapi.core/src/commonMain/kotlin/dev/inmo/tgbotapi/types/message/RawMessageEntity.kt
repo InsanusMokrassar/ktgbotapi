@@ -32,6 +32,7 @@ internal data class RawMessageEntity(
             "phone_number" -> 1
             "bold" -> 1
             "blockquote" -> 0
+            "expandable_blockquote" -> 0
             "italic" -> 1
             "text_mention" -> 1
             "strikethrough" -> 1
@@ -66,6 +67,7 @@ internal fun RawMessageEntity.asTextSource(
         "phone_number" -> PhoneNumberTextSource(sourceSubstring, subPartsWithRegulars)
         "bold" -> BoldTextSource(sourceSubstring, subPartsWithRegulars)
         "blockquote" -> BlockquoteTextSource(sourceSubstring, subPartsWithRegulars)
+        "expandable_blockquote" -> ExpandableBlockquoteTextSource(sourceSubstring, subPartsWithRegulars)
         "italic" -> ItalicTextSource(sourceSubstring, subPartsWithRegulars)
         "code" -> CodeTextSource(sourceSubstring)
         "pre" -> PreTextSource(sourceSubstring, language)
@@ -186,6 +188,7 @@ internal fun TextSource.toRawMessageEntities(offset: Int = 0): List<RawMessageEn
             is PhoneNumberTextSource -> RawMessageEntity("phone_number", offset, length)
             is BoldTextSource -> RawMessageEntity("bold", offset, length)
             is BlockquoteTextSource -> RawMessageEntity("blockquote", offset, length)
+            is ExpandableBlockquoteTextSource -> RawMessageEntity("expandable_blockquote", offset, length)
             is ItalicTextSource -> RawMessageEntity("italic", offset, length)
             is CodeTextSource -> RawMessageEntity("code", offset, length)
             is PreTextSource -> RawMessageEntity("pre", offset, length, language = language)

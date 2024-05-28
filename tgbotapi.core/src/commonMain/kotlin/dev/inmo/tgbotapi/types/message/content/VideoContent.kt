@@ -30,21 +30,22 @@ data class VideoContent(
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VideoContent>> = SendVideo(
-        chatId,
-        media.fileId,
-        media.thumbnail ?.fileId,
-        textSources,
-        spoilered,
-        media.duration,
-        media.width,
-        media.height,
-        null,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        video = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = media.duration,
+        width = media.width,
+        height = media.height,
+        supportStreaming = null,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaVideo = asTelegramMedia()

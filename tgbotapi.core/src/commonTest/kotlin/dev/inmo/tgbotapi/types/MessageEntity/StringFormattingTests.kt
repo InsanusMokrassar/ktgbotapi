@@ -54,6 +54,12 @@ class StringFormattingTests {
                     "Block quotation started\n" +
                         "Block quotation continued\n" +
                         "The last line of the block quotation"
+                ) +
+                "\n. Start of expandable blockquote: " +
+                expandableBlockquote(
+                    "Block quotation started\n" +
+                        "Block quotation continued\n" +
+                        "The last line of the block quotation"
                 )
         sources.testTextSources()
 

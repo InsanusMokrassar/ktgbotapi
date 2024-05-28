@@ -31,20 +31,21 @@ data class AnimationContent(
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<AnimationContent>> = SendAnimation(
-        chatId,
-        media.fileId,
-        media.thumbnail ?.fileId,
-        textSources,
-        spoilered,
-        media.duration,
-        media.width,
-        media.height,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        animation = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = media.duration,
+        width = media.width,
+        height = media.height,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     override fun asTelegramMedia(): TelegramMediaAnimation = TelegramMediaAnimation(
