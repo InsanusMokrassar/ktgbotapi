@@ -143,6 +143,8 @@ internal data class RawMessage(
 
     private val link_preview_options: LinkPreviewOptions? = null,
 
+    private val effect_id: EffectId? = null,
+
     private val reply_markup: InlineKeyboardMarkup? = null,
 
     // Business
