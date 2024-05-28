@@ -9,4 +9,5 @@ interface InlineQueryResultVideoCommon : InlineQueryResult,
     TitledInlineQueryResult,
     DescribedInlineQueryResult,
     TextedOutput,
-    WithInputMessageContentInlineQueryResult
+    WithInputMessageContentInlineQueryResult,
+    WithCustomizableCaptionInlineQueryResult

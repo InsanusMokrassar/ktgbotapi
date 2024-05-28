@@ -145,6 +145,8 @@ internal data class RawMessage(
 
     private val effect_id: EffectId? = null,
 
+    private val show_caption_above_media: Boolean = false,
+
     private val reply_markup: InlineKeyboardMarkup? = null,
 
     // Business
@@ -178,7 +180,8 @@ internal data class RawMessage(
                 caption,
                 adaptedCaptionEntities,
                 has_media_spoiler ?: false,
-                quote
+                quote,
+                show_caption_above_media
             )
             animation != null -> AnimationContent(
                 animation,
@@ -186,7 +189,8 @@ internal data class RawMessage(
                 caption,
                 adaptedCaptionEntities,
                 has_media_spoiler ?: false,
-                quote
+                quote,
+                show_caption_above_media
             )
             document != null -> DocumentContent(
                 document,
@@ -205,7 +209,8 @@ internal data class RawMessage(
                 caption,
                 adaptedCaptionEntities,
                 has_media_spoiler ?: false,
-                quote
+                quote,
+                show_caption_above_media
             )
             sticker != null -> StickerContent(sticker)
             dice != null -> DiceContent(dice)

@@ -22,26 +22,39 @@ fun InlineQueryResultGifCachedImpl(
     title: String? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultGifCachedImpl(id, fileId, title, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultGifCachedImpl(
+    id = id,
+    fileId = fileId,
+    title = title,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
+)
 
 fun InlineQueryResultGifCachedImpl(
     id: InlineQueryId,
     fileId: FileId,
     title: String? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultGifCachedImpl(
-    id,
-    fileId,
-    title,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    replyMarkup,
-    inputMessageContent
+    id = id,
+    fileId = fileId,
+    title = title,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
 )
 
 @Serializable
@@ -58,6 +71,8 @@ data class InlineQueryResultGifCachedImpl internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)

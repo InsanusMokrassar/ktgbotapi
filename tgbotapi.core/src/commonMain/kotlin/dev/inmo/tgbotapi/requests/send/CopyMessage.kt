@@ -1,11 +1,13 @@
 package dev.inmo.tgbotapi.requests.send
 
 import dev.inmo.tgbotapi.abstracts.TextedOutput
+import dev.inmo.tgbotapi.abstracts.WithCustomizableCaption
 import dev.inmo.tgbotapi.abstracts.types.MessageAction
 import dev.inmo.tgbotapi.abstracts.types.ProtectContent
 import dev.inmo.tgbotapi.requests.abstracts.SimpleRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyMessageThreadRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.ReplyingMarkupSendMessageRequest
+import dev.inmo.tgbotapi.requests.send.abstracts.WithCustomizableCaptionRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
@@ -28,23 +30,25 @@ fun CopyMessage(
     messageId: MessageId,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
-    toChatId,
-    fromChatId,
-    messageId,
-    text,
-    parseMode,
-    null,
-    threadId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    toChatId = toChatId,
+    fromChatId = fromChatId,
+    messageId = messageId,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 fun CopyMessage(
@@ -52,23 +56,25 @@ fun CopyMessage(
     fromChatId: ChatIdentifier,
     messageId: MessageId,
     entities: List<TextSource>,
+    showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
-    toChatId,
-    fromChatId,
-    messageId,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    threadId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    toChatId = toChatId,
+    fromChatId = fromChatId,
+    messageId = messageId,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 fun CopyMessage(
@@ -77,23 +83,25 @@ fun CopyMessage(
     toChatId: ChatIdentifier,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
-    toChatId,
-    fromChatId,
-    messageId,
-    text,
-    parseMode,
-    null,
-    threadId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    toChatId = toChatId,
+    fromChatId = fromChatId,
+    messageId = messageId,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 fun CopyMessage(
@@ -101,23 +109,25 @@ fun CopyMessage(
     messageId: MessageId,
     toChatId: ChatIdentifier,
     entities: List<TextSource>,
+    showCaptionAboveMedia: Boolean = false,
     threadId: MessageThreadId? = toChatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = CopyMessage(
-    toChatId,
-    fromChatId,
-    messageId,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    threadId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    toChatId = toChatId,
+    fromChatId = fromChatId,
+    messageId = messageId,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    threadId = threadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 @Serializable
@@ -134,6 +144,8 @@ data class CopyMessage internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = toChatId.threadId,
     @SerialName(disableNotificationField)
@@ -146,6 +158,7 @@ data class CopyMessage internal constructor(
     override val replyMarkup: KeyboardMarkup? = null
 ): SimpleRequest<MessageId>,
     ReplyingMarkupSendMessageRequest<MessageId>,
+    WithCustomizableCaptionRequest<MessageId>,
     MessageAction,
     TextedOutput,
     ProtectContent,

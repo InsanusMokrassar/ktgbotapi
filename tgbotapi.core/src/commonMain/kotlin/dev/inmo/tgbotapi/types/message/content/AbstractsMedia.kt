@@ -38,6 +38,6 @@ sealed interface MediaGroupPartContent : TextedMediaContent {
     fun toMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia
 }
 
-sealed interface VisualMediaGroupPartContent : MediaGroupPartContent, SpoilerableMediaContent {
+sealed interface VisualMediaGroupPartContent : MediaGroupPartContent, SpoilerableMediaContent, WithCustomizedCaptionMediaContent {
     override fun toMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia
 }

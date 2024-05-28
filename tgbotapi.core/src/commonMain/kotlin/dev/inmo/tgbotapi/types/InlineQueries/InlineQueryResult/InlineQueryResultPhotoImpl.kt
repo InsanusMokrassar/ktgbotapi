@@ -25,9 +25,24 @@ fun InlineQueryResultPhotoImpl(
     description: String? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultPhotoImpl(id, url, thumbnailUrl, width, height, title, description, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultPhotoImpl(
+    id = id,
+    url = url,
+    thumbnailUrl = thumbnailUrl,
+    width = width,
+    height = height,
+    title = title,
+    description = description,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
+)
 
 fun InlineQueryResultPhotoImpl(
     id: InlineQueryId,
@@ -38,21 +53,23 @@ fun InlineQueryResultPhotoImpl(
     title: String? = null,
     description: String? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultPhotoImpl(
-    id,
-    url,
-    thumbnailUrl,
-    width,
-    height,
-    title,
-    description,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    replyMarkup,
-    inputMessageContent
+    id = id,
+    url = url,
+    thumbnailUrl = thumbnailUrl,
+    width = width,
+    height = height,
+    title = title,
+    description = description,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
 )
 
 @Serializable
@@ -77,6 +94,8 @@ data class InlineQueryResultPhotoImpl internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)

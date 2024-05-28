@@ -8,4 +8,5 @@ const val inlineQueryResultGifType = "gif"
 interface InlineQueryResultGifCommon : InlineQueryResult,
     OptionallyTitledInlineQueryResult,
     TextedOutput,
-    WithInputMessageContentInlineQueryResult
+    WithInputMessageContentInlineQueryResult,
+    WithCustomizableCaptionInlineQueryResult

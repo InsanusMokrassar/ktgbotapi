@@ -27,6 +27,7 @@ fun SendVideo(
     thumbnail: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -43,23 +44,24 @@ fun SendVideo(
     val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendVideoData(
-        chatId,
-        video,
-        thumbnail ?.fileId,
-        text,
-        parseMode,
-        null,
-        spoilered,
-        duration,
-        width,
-        height,
-        supportStreaming,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        video = video,
+        thumbnail = thumbnail ?.fileId,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportStreaming = supportStreaming,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     return if (videoAsFile == null && thumbAsFile == null) {
@@ -77,6 +79,7 @@ fun SendVideo(
     video: InputFile,
     thumbnail: InputFile? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -93,23 +96,24 @@ fun SendVideo(
     val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendVideoData(
-        chatId,
-        video,
-        thumbnail ?.fileId,
-        entities.makeString(),
-        null,
-        entities.toRawMessageEntities(),
-        spoilered,
-        duration,
-        width,
-        height,
-        supportStreaming,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        video = video,
+        thumbnail = thumbnail ?.fileId,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportStreaming = supportStreaming,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     return if (videoAsFile == null && thumbAsFile == null) {
@@ -139,6 +143,8 @@ data class SendVideoData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(hasSpoilerField)
     override val spoilered: Boolean = false,
     @SerialName(durationField)
@@ -168,6 +174,7 @@ data class SendVideoData internal constructor(
     ThumbedSendMessageRequest<ContentMessage<VideoContent>>,
     DuratedSendMessageRequest<ContentMessage<VideoContent>>,
     SizedSendMessageRequest<ContentMessage<VideoContent>>,
+    WithCustomizableCaptionRequest<ContentMessage<VideoContent>>,
     OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {

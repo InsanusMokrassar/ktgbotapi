@@ -23,9 +23,21 @@ fun InlineQueryResultVideoCachedImpl(
     description: String? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultVideoCachedImpl(id, fileId, title, description, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultVideoCachedImpl(
+    id = id,
+    fileId = fileId,
+    title = title,
+    description = description,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
+)
 
 fun InlineQueryResultVideoCachedImpl(
     id: InlineQueryId,
@@ -33,18 +45,20 @@ fun InlineQueryResultVideoCachedImpl(
     title: String,
     description: String? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultVideoCachedImpl(
-    id,
-    fileId,
-    title,
-    description,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    replyMarkup,
-    inputMessageContent
+    id = id,
+    fileId = fileId,
+    title = title,
+    description = description,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
 )
 
 @Serializable
@@ -63,6 +77,8 @@ data class InlineQueryResultVideoCachedImpl internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)

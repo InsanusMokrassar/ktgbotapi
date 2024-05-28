@@ -9,4 +9,5 @@ interface InlineQueryResultPhotoCommon : InlineQueryResult,
     OptionallyTitledInlineQueryResult,
     DescribedInlineQueryResult,
     TextedOutput,
-    WithInputMessageContentInlineQueryResult
+    WithInputMessageContentInlineQueryResult,
+    WithCustomizableCaptionInlineQueryResult

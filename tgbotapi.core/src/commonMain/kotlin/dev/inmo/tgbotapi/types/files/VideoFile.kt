@@ -36,28 +36,32 @@ data class VideoFile(
 inline fun VideoFile.toTelegramMediaVideo(
     text: String? = null,
     parseMode: ParseMode? = null,
-    spoilered: Boolean = false
+    spoilered: Boolean = false,
+    showCaptionAboveMedia: Boolean = false
 ) = TelegramMediaVideo(
-    fileId,
-    text,
-    parseMode,
-    spoilered,
-    width,
-    height,
-    duration,
-    thumbnail ?.fileId
+    file = fileId,
+    text = text,
+    parseMode = parseMode,
+    spoilered = spoilered,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    width = width,
+    height = height,
+    duration = duration,
+    thumb = thumbnail ?.fileId
 )
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toTelegramMediaVideo(
     textSources: TextSourcesList,
-    spoilered: Boolean = false
+    spoilered: Boolean = false,
+    showCaptionAboveMedia: Boolean = false
 ) = TelegramMediaVideo(
-    fileId,
-    textSources,
-    spoilered,
-    width,
-    height,
-    duration,
-    thumbnail ?.fileId
+    file = fileId,
+    entities = textSources,
+    spoilered = spoilered,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    width = width,
+    height = height,
+    duration = duration,
+    thumb = thumbnail ?.fileId
 )

@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.message.content
 
 import dev.inmo.tgbotapi.abstracts.SpoilerableData
 import dev.inmo.tgbotapi.abstracts.TextedInput
+import dev.inmo.tgbotapi.abstracts.WithCustomizableCaption
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.types.*
@@ -142,6 +143,7 @@ sealed interface MediaContent: MessageContent {
 }
 
 sealed interface SpoilerableMediaContent : MediaContent, SpoilerableData
+sealed interface WithCustomizedCaptionMediaContent : MediaContent, TextedContent, WithCustomizableCaption
 
 @ClassCastsIncluded
 sealed interface ResendableContent {

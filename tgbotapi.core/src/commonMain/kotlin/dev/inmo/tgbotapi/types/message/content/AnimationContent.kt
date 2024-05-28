@@ -19,8 +19,9 @@ data class AnimationContent(
     override val text: String?,
     override val textSources: TextSourcesList = emptyList(),
     override val spoilered: Boolean = false,
-    override val quote: TextQuote? = null
-) : TextedMediaContent, SpoilerableMediaContent {
+    override val quote: TextQuote? = null,
+    override val showCaptionAboveMedia: Boolean = false
+) : TextedMediaContent, SpoilerableMediaContent, WithCustomizedCaptionMediaContent {
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
@@ -47,12 +48,13 @@ data class AnimationContent(
     )
 
     override fun asTelegramMedia(): TelegramMediaAnimation = TelegramMediaAnimation(
-        media.fileId,
-        textSources,
-        spoilered,
-        media.width,
-        media.height,
-        media.duration,
-        media.thumbnail ?.fileId
+        file = media.fileId,
+        entities = textSources,
+        spoilered = spoilered,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        width = media.width,
+        height = media.height,
+        duration = media.duration,
+        thumb = media.thumbnail ?.fileId
     )
 }

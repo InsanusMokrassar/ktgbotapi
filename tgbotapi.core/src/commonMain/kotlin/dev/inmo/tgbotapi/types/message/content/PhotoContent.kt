@@ -19,7 +19,8 @@ data class PhotoContent(
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList(),
     override val spoilered: Boolean = false,
-    override val quote: TextQuote? = null
+    override val quote: TextQuote? = null,
+    override val showCaptionAboveMedia: Boolean = false
 ) : MediaCollectionContent<PhotoSize>, VisualMediaGroupPartContent, WithOptionalQuoteInfo {
     override val media: PhotoSize = mediaCollection.biggest() ?: throw IllegalStateException("Can't locate any photo size for this content")
 
@@ -46,5 +47,5 @@ data class PhotoContent(
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaPhoto = asTelegramMedia()
 
-    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources, spoilered)
+    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources, spoilered, showCaptionAboveMedia)
 }
