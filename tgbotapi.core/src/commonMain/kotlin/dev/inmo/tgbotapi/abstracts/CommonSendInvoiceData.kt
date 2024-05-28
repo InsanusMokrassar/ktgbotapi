@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.types.payments.abstracts.Priced
 interface CommonSendInvoiceData : Titled, Currencied, Priced {
     val description: String
     val payload: String
-    val providerToken: String
+    val providerToken: String?
     val maxTipAmount: Int?
     val suggestedTipAmounts: List<Int>?
     val providerData: String?

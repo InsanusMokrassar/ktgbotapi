@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.types.message.content.InvoiceContent
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
+import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 import kotlinx.serialization.*
 
 private val invoiceMessageSerializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
@@ -31,7 +32,7 @@ data class SendInvoice(
     @SerialName(payloadField)
     override val payload: String,
     @SerialName(providerTokenField)
-    override val providerToken: String,
+    override val providerToken: String?,
     @SerialName(currencyField)
     override val currency: Currency,
     @Serializable(LabeledPricesSerializer::class)
@@ -94,6 +95,52 @@ data class SendInvoice(
     @SerialName(photoHeightField)
     override var photoHeight: Int? = null
         private set
+
+    constructor(
+        chatId: IdChatIdentifier,
+        title: String,
+        description: String,
+        payload: String,
+        prices: List<LabeledPrice>,
+        maxTipAmount: Int? = null,
+        suggestedTipAmounts: List<Int>? = null,
+        providerData: String? = null,
+        requireName: Boolean = false,
+        requirePhoneNumber: Boolean = false,
+        requireEmail: Boolean = false,
+        requireShippingAddress: Boolean = false,
+        shouldSendPhoneNumberToProvider: Boolean = false,
+        shouldSendEmailToProvider: Boolean = false,
+        priceDependOnShipAddress: Boolean = false,
+        threadId: MessageThreadId? = chatId.threadId,
+        disableNotification: Boolean = false,
+        protectContent: Boolean = false,
+        replyParameters: ReplyParameters? = null,
+        replyMarkup: InlineKeyboardMarkup? = null
+    ) : this(
+        chatId = chatId,
+        title = title,
+        description = description,
+        payload = payload,
+        providerToken = null,
+        currency = Currency.XTR,
+        prices = prices,
+        maxTipAmount = maxTipAmount,
+        suggestedTipAmounts = suggestedTipAmounts,
+        providerData = providerData,
+        requireName = requireName,
+        requirePhoneNumber = requirePhoneNumber,
+        requireEmail = requireEmail,
+        requireShippingAddress = requireShippingAddress,
+        shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+        shouldSendEmailToProvider = shouldSendEmailToProvider,
+        priceDependOnShipAddress = priceDependOnShipAddress,
+        threadId = threadId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
+    )
 
     init {
         suggestedTipAmounts ?.let { _ ->
