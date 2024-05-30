@@ -28,19 +28,21 @@ data class DocumentContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<DocumentContent>> = SendDocument(
-        chatId,
-        media.fileId,
-        media.thumbnail ?.fileId,
-        textSources,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        document = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        entities = textSources,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaDocument = asTelegramMedia()

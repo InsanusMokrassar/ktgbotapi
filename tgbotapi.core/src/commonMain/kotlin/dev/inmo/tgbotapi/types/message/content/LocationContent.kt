@@ -4,10 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.Request
 import dev.inmo.tgbotapi.requests.send.SendLiveLocation
 import dev.inmo.tgbotapi.requests.send.SendStaticLocation
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
-import dev.inmo.tgbotapi.types.ChatIdentifier
-import dev.inmo.tgbotapi.types.MessageId
-import dev.inmo.tgbotapi.types.MessageThreadId
-import dev.inmo.tgbotapi.types.ReplyParameters
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.location.*
@@ -104,22 +101,24 @@ data class LiveLocationContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<LiveLocationContent>> = SendLiveLocation(
-        chatId,
-        location.latitude,
-        location.longitude,
-        location.livePeriod,
-        location.horizontalAccuracy,
-        location.heading,
-        location.proximityAlertRadius,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        latitude = location.latitude,
+        longitude = location.longitude,
+        livePeriod = location.livePeriod,
+        horizontalAccuracy = location.horizontalAccuracy,
+        heading = location.heading,
+        proximityAlertRadius = location.proximityAlertRadius,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     ) as SendMessageRequest<ContentMessage<LiveLocationContent>>
 }
 
@@ -137,17 +136,19 @@ data class StaticLocationContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<StaticLocationContent>> = SendStaticLocation(
-        chatId,
-        location.latitude,
-        location.longitude,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        latitude = location.latitude,
+        longitude = location.longitude,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     ) as SendMessageRequest<ContentMessage<StaticLocationContent>>
 }

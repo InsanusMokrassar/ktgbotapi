@@ -5,7 +5,6 @@ import dev.inmo.tgbotapi.requests.send.media.SendVoice
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
-import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.VoiceFile
@@ -25,6 +24,7 @@ data class VoiceContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VoiceContent>> = SendVoice(
@@ -36,6 +36,7 @@ data class VoiceContent(
         duration = media.duration,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

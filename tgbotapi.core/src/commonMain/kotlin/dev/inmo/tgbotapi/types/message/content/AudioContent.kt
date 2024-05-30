@@ -25,22 +25,24 @@ data class AudioContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<AudioContent>> = SendAudio(
-        chatId,
-        media.fileId,
-        media.thumbnail ?.fileId,
-        textSources,
-        media.duration,
-        media.performer,
-        media.title,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        audio = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        entities = textSources,
+        duration = media.duration,
+        performer = media.performer,
+        title = media.title,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaAudio = asTelegramMedia()

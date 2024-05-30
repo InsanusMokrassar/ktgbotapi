@@ -153,6 +153,7 @@ sealed interface ResendableContent {
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        effectId: EffectId?,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ): Request<out AccessibleMessage>
@@ -163,6 +164,7 @@ sealed interface ResendableContent {
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        effectId: EffectId?,
         replyToMessageId: MessageId?,
         allowSendingWithoutReply: Boolean? = null,
         replyMarkup: KeyboardMarkup? = null
@@ -172,6 +174,7 @@ sealed interface ResendableContent {
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyToMessageId ?.let {
             ReplyParameters(
                 chatId,

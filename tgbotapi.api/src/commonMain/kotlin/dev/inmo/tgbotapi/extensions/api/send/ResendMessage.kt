@@ -23,7 +23,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
         chatId = chatId,
         messageThreadId = messageThreadId,
         disableNotification = disableNotification,
-        protectContent = protectContent,
+        protectContent = protectContent,,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

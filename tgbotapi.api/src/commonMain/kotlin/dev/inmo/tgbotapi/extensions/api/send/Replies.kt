@@ -1430,7 +1430,7 @@ suspend fun TelegramBot.reply(
         replyInThreadId,
         replyInBusinessConnectionId,
         disableNotification,
-        protectContent,
+        protectContent,,
         ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true),
         replyMarkup
     )
