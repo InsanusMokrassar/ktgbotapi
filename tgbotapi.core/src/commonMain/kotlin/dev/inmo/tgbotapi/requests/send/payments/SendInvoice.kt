@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.send.payments
 
 import dev.inmo.tgbotapi.abstracts.CommonSendInvoiceData
 import dev.inmo.tgbotapi.abstracts.types.*
+import dev.inmo.tgbotapi.requests.send.abstracts.OptionallyWithEffectRequest
 import dev.inmo.tgbotapi.requests.send.abstracts.SendMessageRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
@@ -66,6 +67,8 @@ data class SendInvoice(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -75,7 +78,8 @@ data class SendInvoice(
     DisableNotification,
     WithReplyParameters,
     WithReplyMarkup,
-    SendMessageRequest<ContentMessage<InvoiceContent>> {
+    SendMessageRequest<ContentMessage<InvoiceContent>>,
+    OptionallyWithEffectRequest<ContentMessage<InvoiceContent>> {
     override fun method(): String = "sendInvoice"
     override val resultDeserializer: DeserializationStrategy<ContentMessage<InvoiceContent>>
         get() = invoiceMessageSerializer
@@ -115,6 +119,7 @@ data class SendInvoice(
         threadId: MessageThreadId? = chatId.threadId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: InlineKeyboardMarkup? = null
     ) : this(
@@ -138,6 +143,7 @@ data class SendInvoice(
         threadId = threadId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

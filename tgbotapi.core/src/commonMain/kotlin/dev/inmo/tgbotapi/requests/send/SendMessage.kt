@@ -30,6 +30,7 @@ fun SendTextMessage(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
@@ -42,6 +43,7 @@ fun SendTextMessage(
     linkPreviewOptions,
     disableNotification,
     protectContent,
+    effectId,
     replyParameters,
     replyMarkup
 )
@@ -54,6 +56,7 @@ fun SendTextMessage(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendTextMessage(
@@ -66,6 +69,7 @@ fun SendTextMessage(
     linkPreviewOptions,
     disableNotification,
     protectContent,
+    effectId,
     replyParameters,
     replyMarkup
 )
@@ -90,6 +94,8 @@ data class SendTextMessage internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

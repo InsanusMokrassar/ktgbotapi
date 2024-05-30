@@ -60,7 +60,8 @@ fun <T : MediaGroupPartContent> List<PossiblySentViaBotCommonMessage<T>>.asMedia
             sourceMessage.replyMarkup,
             sourceMessage.senderBot,
             sourceMessage.mediaGroupId,
-            sourceMessage.fromOffline
+            sourceMessage.fromOffline,
+            sourceMessage.effectId
         )
         is AnonymousGroupContentMessage -> AnonymousGroupContentMessageImpl(
             sourceMessage.chat,

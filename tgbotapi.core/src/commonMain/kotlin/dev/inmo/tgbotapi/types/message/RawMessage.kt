@@ -553,7 +553,8 @@ internal data class RawMessage(
                             replyMarkup = reply_markup,
                             senderBot = via_bot,
                             mediaGroupId = media_group_id,
-                            fromOffline = is_from_offline
+                            fromOffline = is_from_offline,
+                            effectId = effect_id
                         )
                     } else {
                         BusinessContentMessageImpl(

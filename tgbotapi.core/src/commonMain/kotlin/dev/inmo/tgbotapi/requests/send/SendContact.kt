@@ -32,6 +32,8 @@ data class SendContact(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -46,6 +48,7 @@ data class SendContact(
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ): this(
@@ -57,6 +60,7 @@ data class SendContact(
         businessConnectionId,
         disableNotification,
         protectContent,
+        effectId,
         replyParameters,
         replyMarkup
     )
@@ -74,15 +78,17 @@ fun Contact.toRequest(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): SendContact = SendContact(
-    chatId,
-    this,
-    threadId,
-    businessConnectionId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    chatId = chatId,
+    contact = this,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )

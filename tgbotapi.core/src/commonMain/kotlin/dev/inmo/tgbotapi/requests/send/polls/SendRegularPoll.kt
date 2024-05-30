@@ -49,6 +49,8 @@ class SendRegularPoll private constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -70,6 +72,7 @@ class SendRegularPoll private constructor(
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -87,6 +90,7 @@ class SendRegularPoll private constructor(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -105,6 +109,7 @@ class SendRegularPoll private constructor(
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ) : this(
@@ -122,6 +127,7 @@ class SendRegularPoll private constructor(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -149,24 +155,26 @@ fun SendRegularPoll(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
-    chatId,
-    question,
-    options,
-    questionParseMode,
-    isAnonymous,
-    isClosed,
-    allowMultipleAnswers,
-    (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
-    (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
-    threadId,
-    businessConnectionId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    chatId = chatId,
+    question = question,
+    options = options,
+    questionParseMode = questionParseMode,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    allowMultipleAnswers = allowMultipleAnswers,
+    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
+    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 fun SendRegularPoll(
@@ -181,23 +189,25 @@ fun SendRegularPoll(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = SendRegularPoll(
-    chatId,
-    questionTextSources,
-    options,
-    isAnonymous,
-    isClosed,
-    allowMultipleAnswers,
-    (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
-    (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
-    threadId,
-    businessConnectionId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    chatId = chatId,
+    questionEntities = questionTextSources,
+    options = options,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    allowMultipleAnswers = allowMultipleAnswers,
+    openPeriod = (closeInfo as? ApproximateScheduledCloseInfo) ?.openPeriod,
+    closeDate = (closeInfo as? ExactScheduledCloseInfo) ?.closeDate,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 fun SendRegularPoll(
@@ -211,21 +221,23 @@ fun SendRegularPoll(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     builder: EntitiesBuilderBody
 ) = SendRegularPoll(
-    chatId,
-    EntitiesBuilder().apply(builder).build(),
-    options,
-    closeInfo,
-    isAnonymous,
-    isClosed,
-    allowMultipleAnswers,
-    threadId,
-    businessConnectionId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    chatId = chatId,
+    questionTextSources = EntitiesBuilder().apply(builder).build(),
+    options = options,
+    closeInfo = closeInfo,
+    isAnonymous = isAnonymous,
+    isClosed = isClosed,
+    allowMultipleAnswers = allowMultipleAnswers,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )

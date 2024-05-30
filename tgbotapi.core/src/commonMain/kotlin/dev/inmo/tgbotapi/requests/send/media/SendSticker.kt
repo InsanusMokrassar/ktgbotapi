@@ -18,20 +18,21 @@ fun SendSticker(
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
-    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<StickerContent>> = SendStickerByFileId(
-    chatId,
-    sticker,
-    threadId,
-    businessConnectionId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    chatId = chatId,
+    sticker = sticker,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 ).let {
     when (sticker) {
         is MultipartFile -> CommonMultipartFileRequest(
@@ -59,6 +60,8 @@ data class SendStickerByFileId internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
