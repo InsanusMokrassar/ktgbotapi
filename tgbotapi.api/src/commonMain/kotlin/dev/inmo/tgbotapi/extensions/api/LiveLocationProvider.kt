@@ -99,6 +99,7 @@ suspend fun TelegramBot.startLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider {
@@ -116,6 +117,7 @@ suspend fun TelegramBot.startLiveLocation(
             businessConnectionId,
             disableNotification,
             protectContent,
+            effectId,
             replyParameters,
             replyMarkup
         )
@@ -146,6 +148,7 @@ suspend fun TelegramBot.startLiveLocation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -161,6 +164,7 @@ suspend fun TelegramBot.startLiveLocation(
     businessConnectionId,
     disableNotification,
     protectContent,
+    effectId,
     replyParameters,
     replyMarkup
 )
@@ -181,6 +185,7 @@ suspend fun TelegramBot.startLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -196,6 +201,7 @@ suspend fun TelegramBot.startLiveLocation(
     businessConnectionId,
     disableNotification,
     protectContent,
+    effectId,
     replyParameters,
     replyMarkup
 )
@@ -216,6 +222,7 @@ suspend fun TelegramBot.startLiveLocation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): LiveLocationProvider = startLiveLocation(
@@ -231,6 +238,7 @@ suspend fun TelegramBot.startLiveLocation(
     businessConnectionId,
     disableNotification,
     protectContent,
+    effectId,
     replyParameters,
     replyMarkup
 )
@@ -252,6 +260,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     businessConnectionId: BusinessConnectionId? = to.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = startLiveLocation(
@@ -267,6 +276,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     businessConnectionId,
     disableNotification,
     protectContent,
+    effectId,
     ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup
 )
@@ -287,6 +297,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     businessConnectionId: BusinessConnectionId? = to.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = startLiveLocation(
@@ -301,6 +312,7 @@ suspend inline fun TelegramBot.replyWithLiveLocation(
     businessConnectionId,
     disableNotification,
     protectContent,
+    effectId,
     ReplyParameters(to.metaInfo, allowSendingWithoutReply = allowSendingWithoutReply),
     replyMarkup
 )

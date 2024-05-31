@@ -29,9 +29,10 @@ suspend fun <T> TelegramBot.edit(
     message: ContentMessage<T>,
     text: String,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<T> where T : TextedWithTextSources, T : MediaContent {
-    return editMessageCaption(message, text, parseMode, replyMarkup)
+    return editMessageCaption(message, text, parseMode, showCaptionAboveMedia, replyMarkup)
 }
 
 /**
@@ -41,9 +42,10 @@ suspend fun <T> TelegramBot.edit(
 suspend fun <T> TelegramBot.edit(
     message: ContentMessage<T>,
     entities: List<TextSource>,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<T> where T : TextedWithTextSources, T : MediaContent {
-    return editMessageCaption(message, entities, replyMarkup)
+    return editMessageCaption(message, entities, showCaptionAboveMedia, replyMarkup)
 }
 
 /**

@@ -46,6 +46,7 @@ suspend fun TelegramBot.handleLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
@@ -81,6 +82,7 @@ suspend fun TelegramBot.handleLiveLocation(
                 businessConnectionId,
                 disableNotification,
                 protectContent,
+                effectId,
                 replyParameters,
                 it.replyMarkup
             ).also {
@@ -116,12 +118,13 @@ suspend fun TelegramBot.handleLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     handleLiveLocation(
-        chatId,
-        locationsFlow.map {
+        chatId = chatId,
+        locationsFlow = locationsFlow.map {
             EditLiveLocationInfo(
                 it.latitude,
                 it.longitude,
@@ -131,13 +134,14 @@ suspend fun TelegramBot.handleLiveLocation(
                 (it as? WithReplyMarkup) ?.replyMarkup as? InlineKeyboardMarkup
             )
         },
-        liveTimeMillis,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        sentMessageFlow
+        liveTimeMillis = liveTimeMillis,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        sentMessageFlow = sentMessageFlow
     )
 }
 
@@ -155,23 +159,25 @@ suspend fun TelegramBot.handleLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
 ) {
     handleLiveLocation(
-        chatId,
-        locationsFlow.map { (lat, long) ->
+        chatId = chatId,
+        locationsFlow = locationsFlow.map { (lat, long) ->
             EditLiveLocationInfo(
                 lat,
                 long
             )
         },
-        liveTimeMillis,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        sentMessageFlow
+        liveTimeMillis = liveTimeMillis,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        sentMessageFlow = sentMessageFlow
     )
 }

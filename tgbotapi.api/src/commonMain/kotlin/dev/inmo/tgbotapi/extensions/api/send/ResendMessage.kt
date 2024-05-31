@@ -16,6 +16,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -23,7 +24,8 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
         chatId = chatId,
         messageThreadId = messageThreadId,
         disableNotification = disableNotification,
-        protectContent = protectContent,,
+        protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -38,6 +40,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = resend(
@@ -46,6 +49,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId = messageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -61,6 +65,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = resend(
@@ -69,6 +74,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId = messageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -84,6 +90,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId: MessageThreadId? = chat.id.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = resend(
@@ -92,6 +99,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
     messageThreadId = messageThreadId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

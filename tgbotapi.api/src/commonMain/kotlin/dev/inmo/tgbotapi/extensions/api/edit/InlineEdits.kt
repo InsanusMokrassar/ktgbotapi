@@ -68,9 +68,10 @@ suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     text: String,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageText(messageId, text, parseMode, linkPreviewOptions, replyMarkup)
+) = editMessageText(messageId, text, parseMode, showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -79,9 +80,10 @@ suspend fun TelegramBot.edit(
 suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageText(messageId, entities, linkPreviewOptions, replyMarkup)
+) = editMessageText(messageId, entities, showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -89,11 +91,12 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
+    showCaptionAboveMedia: Boolean = false,
     separator: TextSource? = null,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = edit(messageId, buildEntities(separator, builderBody), linkPreviewOptions, replyMarkup)
+) = edit(messageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -102,7 +105,8 @@ suspend fun TelegramBot.edit(
 suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
     separator: String,
+    showCaptionAboveMedia: Boolean = false,
     linkPreviewOptions: LinkPreviewOptions? = null,
     replyMarkup: InlineKeyboardMarkup? = null,
     builderBody: EntitiesBuilderBody
-) = edit(messageId, buildEntities(separator, builderBody), linkPreviewOptions, replyMarkup)
+) = edit(messageId, buildEntities(separator, builderBody), showCaptionAboveMedia, linkPreviewOptions, replyMarkup)
