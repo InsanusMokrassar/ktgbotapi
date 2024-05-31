@@ -18,6 +18,7 @@ fun SendSticker(
     sticker: InputFile,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     effectId: EffectId? = null,
@@ -28,6 +29,7 @@ fun SendSticker(
     sticker = sticker,
     threadId = threadId,
     businessConnectionId = businessConnectionId,
+    emoji = emoji,
     disableNotification = disableNotification,
     protectContent = protectContent,
     effectId = effectId,
@@ -56,6 +58,8 @@ data class SendStickerByFileId internal constructor(
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)
     override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
+    @SerialName(emojiField)
+    val emoji: String? = null,
     @SerialName(disableNotificationField)
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)

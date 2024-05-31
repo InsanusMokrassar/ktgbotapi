@@ -23,6 +23,7 @@ suspend fun TelegramBot.sendVideoNote(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -36,6 +37,7 @@ suspend fun TelegramBot.sendVideoNote(
         businessConnectionId,
         disableNotification,
         protectContent,
+        effectId,
         replyParameters,
         replyMarkup
     )
@@ -52,10 +54,11 @@ suspend fun TelegramBot.sendVideoNote(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVideoNote(
-    chatId, videoNote.fileId, videoNote.thumbnail ?.fileId, videoNote.duration, videoNote.width, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId, videoNote.fileId, videoNote.thumbnail ?.fileId, videoNote.duration, videoNote.width, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
 /**
@@ -72,9 +75,10 @@ suspend fun TelegramBot.sendVideoNote(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(chat.id, videoNote, thumb, duration, size, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVideoNote(chat.id, videoNote, thumb, duration, size, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -87,6 +91,7 @@ suspend fun TelegramBot.sendVideoNote(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideoNote(chat.id, videoNote, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVideoNote(chat.id, videoNote, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)

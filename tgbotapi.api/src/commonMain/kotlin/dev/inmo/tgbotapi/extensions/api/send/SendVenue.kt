@@ -27,6 +27,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -67,6 +68,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
@@ -83,6 +85,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -104,6 +107,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
@@ -120,6 +124,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -141,6 +146,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
@@ -157,6 +163,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -172,6 +179,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -198,6 +206,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendVenue(
@@ -207,6 +216,7 @@ suspend fun TelegramBot.sendVenue(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )

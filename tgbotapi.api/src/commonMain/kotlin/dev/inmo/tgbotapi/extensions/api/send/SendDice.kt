@@ -19,10 +19,11 @@ suspend fun TelegramBot.sendDice(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendDice(chatId, animationType, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+    SendDice(chatId, animationType, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 )
 
 /**
@@ -36,6 +37,7 @@ suspend fun TelegramBot.sendDice(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendDice(chat.id, animationType, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendDice(chat.id, animationType, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)

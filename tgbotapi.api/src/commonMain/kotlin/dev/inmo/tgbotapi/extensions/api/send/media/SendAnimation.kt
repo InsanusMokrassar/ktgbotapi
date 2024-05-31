@@ -30,6 +30,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -71,6 +72,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
@@ -88,6 +90,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -111,6 +114,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
@@ -128,6 +132,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -150,6 +155,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
@@ -166,6 +172,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -189,6 +196,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -228,6 +236,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
@@ -244,6 +253,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -266,6 +276,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
@@ -282,6 +293,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
@@ -303,6 +315,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
@@ -318,6 +331,7 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId = businessConnectionId,
     disableNotification = disableNotification,
     protectContent = protectContent,
+    effectId = effectId,
     replyParameters = replyParameters,
     replyMarkup = replyMarkup
 )
