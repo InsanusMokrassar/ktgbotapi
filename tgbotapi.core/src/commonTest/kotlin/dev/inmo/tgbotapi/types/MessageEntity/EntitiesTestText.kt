@@ -59,8 +59,8 @@ internal val testTextEntities = listOf(
     ),
     RawMessageEntity(
         "expandable_blockquote",
-        120,
-        204
+        197,
+        86
     )
 )
 
@@ -75,6 +75,8 @@ fun TextSourcesList.testTextSources() {
     assertTrue (get(7) is MentionTextSource)
     assertTrue (get(8) is RegularTextSource)
     assertTrue (get(9) is BlockquoteTextSource)
+    assertTrue (get(10) is RegularTextSource)
+    assertTrue (get(11) is ExpandableBlockquoteTextSource)
 
     val boldSource = get(1) as BoldTextSource
     assertTrue (boldSource.subsources.first() is ItalicTextSource)
@@ -84,6 +86,9 @@ fun TextSourcesList.testTextSources() {
 
     val blockquoteSource = get(9) as BlockquoteTextSource
     assertTrue (blockquoteSource.subsources.first() is RegularTextSource)
+
+    val expandableBlockquoteSource = get(11) as ExpandableBlockquoteTextSource
+    assertTrue (expandableBlockquoteSource.subsources.first() is RegularTextSource)
 
     assertEquals(this, toRawMessageEntities().asTextSources(makeSourceString()))
 }
