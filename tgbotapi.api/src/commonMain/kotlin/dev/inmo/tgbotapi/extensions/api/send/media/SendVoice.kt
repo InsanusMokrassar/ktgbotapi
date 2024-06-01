@@ -129,6 +129,7 @@ suspend inline fun TelegramBot.sendVoice(
         duration = duration,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )

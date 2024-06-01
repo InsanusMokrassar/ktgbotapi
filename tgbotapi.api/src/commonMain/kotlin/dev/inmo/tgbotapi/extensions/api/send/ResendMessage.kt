@@ -32,7 +32,7 @@ suspend inline fun <T : MessageContent> TelegramBot.resend(
 ) as ContentMessage<T>
 
 /**
- * This method will send [content] to the [chatId] as is
+ * This method will send [content] to the [chat] as is
  */
 suspend inline fun <T : MessageContent> TelegramBot.resend(
     chat: Chat,

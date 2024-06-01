@@ -8,7 +8,6 @@ import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.abstracts.Message
 import dev.inmo.tgbotapi.types.reactions.Reaction
-import kotlin.js.JsName
 import kotlin.jvm.JvmName
 
 suspend fun TelegramBot.setMessageReactions(
