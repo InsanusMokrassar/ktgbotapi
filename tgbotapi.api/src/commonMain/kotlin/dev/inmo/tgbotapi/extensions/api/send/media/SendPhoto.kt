@@ -20,26 +20,30 @@ suspend fun TelegramBot.sendPhoto(
     fileId: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendPhoto(
-        chatId,
-        fileId,
-        text,
-        parseMode,
-        spoilered,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        photo = fileId,
+        text = text,
+        parseMode = parseMode,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -52,14 +56,30 @@ suspend fun TelegramBot.sendPhoto(
     fileId: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat.id, fileId, text, parseMode, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chat.id,
+    fileId = fileId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -70,14 +90,30 @@ suspend fun TelegramBot.sendPhoto(
     photo: Photo,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photo.biggest() ?.fileId ?: error("Photo content must not be empty"), text, parseMode, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chatId,
+    fileId = photo.biggest() ?.fileId ?: error("Photo content must not be empty"),
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -88,14 +124,30 @@ suspend fun TelegramBot.sendPhoto(
     photo: Photo,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat.id, photo, text, parseMode, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chat.id,
+    photo = photo,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -106,14 +158,30 @@ suspend fun TelegramBot.sendPhoto(
     photoSize: PhotoSize,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photoSize.fileId, text, parseMode, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chatId,
+    fileId = photoSize.fileId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -124,14 +192,30 @@ suspend fun TelegramBot.sendPhoto(
     photoSize: PhotoSize,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat.id, photoSize, text, parseMode, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chat.id,
+    photoSize = photoSize,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 
 /**
@@ -142,25 +226,29 @@ suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     fileId: InputFile,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendPhoto(
-        chatId,
-        fileId,
-        entities,
-        spoilered,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        photo = fileId,
+        entities = entities,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -172,14 +260,29 @@ suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     fileId: InputFile,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat.id, fileId, entities, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chat.id,
+    fileId = fileId,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -189,14 +292,29 @@ suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photo: Photo,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photo.biggest() ?.fileId ?: error("Photo content must not be empty"), entities, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chatId,
+    fileId = photo.biggest() ?.fileId ?: error("Photo content must not be empty"),
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -206,14 +324,29 @@ suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     photo: Photo,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat.id, photo, entities, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chat.id,
+    photo = photo,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -223,14 +356,29 @@ suspend inline fun TelegramBot.sendPhoto(
     chatId: ChatIdentifier,
     photoSize: PhotoSize,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chatId, photoSize.fileId, entities, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chatId,
+    fileId = photoSize.fileId,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -240,11 +388,26 @@ suspend inline fun TelegramBot.sendPhoto(
     chat: Chat,
     photoSize: PhotoSize,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendPhoto(chat.id, photoSize, entities, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendPhoto(
+    chatId = chat.id,
+    photoSize = photoSize,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)

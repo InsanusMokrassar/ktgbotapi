@@ -46,6 +46,7 @@ import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.Thumbed
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.ThumbedWithMimeTypeInlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.TitledInlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.UrlInlineQueryResult
+import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithCustomizableCaptionInlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithInputMessageContentInlineQueryResult
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudio
 import dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.results.audio.InlineQueryResultAudioCached
@@ -228,6 +229,7 @@ import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.WithCustomizableCaptionTelegramMedia
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChatBoostAdded
@@ -295,6 +297,7 @@ import dev.inmo.tgbotapi.types.message.abstracts.PossiblyOfflineMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyPaymentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblySentViaBotCommonMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PossiblyTopicMessage
+import dev.inmo.tgbotapi.types.message.abstracts.PossiblyWithEffectMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PotentiallyFromUserGroupContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.PublicContentMessage
@@ -336,6 +339,7 @@ import dev.inmo.tgbotapi.types.message.content.VideoContent
 import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
+import dev.inmo.tgbotapi.types.message.content.WithCustomizedCaptionMediaContent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
@@ -344,6 +348,7 @@ import dev.inmo.tgbotapi.types.message.textsources.CashTagTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CodeTextSource
 import dev.inmo.tgbotapi.types.message.textsources.CustomEmojiTextSource
 import dev.inmo.tgbotapi.types.message.textsources.EMailTextSource
+import dev.inmo.tgbotapi.types.message.textsources.ExpandableBlockquoteTextSource
 import dev.inmo.tgbotapi.types.message.textsources.HashTagTextSource
 import dev.inmo.tgbotapi.types.message.textsources.ItalicTextSource
 import dev.inmo.tgbotapi.types.message.textsources.MentionTextSource
@@ -1412,6 +1417,18 @@ public inline fun InlineQueryResult.urlInlineQueryResultOrThrow(): UrlInlineQuer
 
 public inline fun <T> InlineQueryResult.ifUrlInlineQueryResult(block: (UrlInlineQueryResult) -> T):
     T? = urlInlineQueryResultOrNull() ?.let(block)
+
+public inline fun InlineQueryResult.withCustomizableCaptionInlineQueryResultOrNull():
+    WithCustomizableCaptionInlineQueryResult? = this as?
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithCustomizableCaptionInlineQueryResult
+
+public inline fun InlineQueryResult.withCustomizableCaptionInlineQueryResultOrThrow():
+    WithCustomizableCaptionInlineQueryResult = this as
+    dev.inmo.tgbotapi.types.InlineQueries.InlineQueryResult.abstracts.WithCustomizableCaptionInlineQueryResult
+
+public inline fun <T>
+    InlineQueryResult.ifWithCustomizableCaptionInlineQueryResult(block: (WithCustomizableCaptionInlineQueryResult) -> T):
+    T? = withCustomizableCaptionInlineQueryResultOrNull() ?.let(block)
 
 public inline fun InlineQueryResult.withInputMessageContentInlineQueryResultOrNull():
     WithInputMessageContentInlineQueryResult? = this as?
@@ -3064,6 +3081,18 @@ public inline fun TelegramMedia.titledTelegramMediaOrThrow(): TitledTelegramMedi
 public inline fun <T> TelegramMedia.ifTitledTelegramMedia(block: (TitledTelegramMedia) -> T): T? =
     titledTelegramMediaOrNull() ?.let(block)
 
+public inline fun TelegramMedia.withCustomizableCaptionTelegramMediaOrNull():
+    WithCustomizableCaptionTelegramMedia? = this as?
+    dev.inmo.tgbotapi.types.media.WithCustomizableCaptionTelegramMedia
+
+public inline fun TelegramMedia.withCustomizableCaptionTelegramMediaOrThrow():
+    WithCustomizableCaptionTelegramMedia = this as
+    dev.inmo.tgbotapi.types.media.WithCustomizableCaptionTelegramMedia
+
+public inline fun <T>
+    TelegramMedia.ifWithCustomizableCaptionTelegramMedia(block: (WithCustomizableCaptionTelegramMedia) -> T):
+    T? = withCustomizableCaptionTelegramMediaOrNull() ?.let(block)
+
 public inline fun ChatEvent.chatBackgroundOrNull(): ChatBackground? = this as?
     dev.inmo.tgbotapi.types.chat.ChatBackground
 
@@ -3842,6 +3871,15 @@ public inline fun Message.possiblyTopicMessageOrThrow(): PossiblyTopicMessage = 
 public inline fun <T> Message.ifPossiblyTopicMessage(block: (PossiblyTopicMessage) -> T): T? =
     possiblyTopicMessageOrNull() ?.let(block)
 
+public inline fun Message.possiblyWithEffectMessageOrNull(): PossiblyWithEffectMessage? = this as?
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyWithEffectMessage
+
+public inline fun Message.possiblyWithEffectMessageOrThrow(): PossiblyWithEffectMessage = this as
+    dev.inmo.tgbotapi.types.message.abstracts.PossiblyWithEffectMessage
+
+public inline fun <T> Message.ifPossiblyWithEffectMessage(block: (PossiblyWithEffectMessage) -> T):
+    T? = possiblyWithEffectMessageOrNull() ?.let(block)
+
 public inline fun Message.privateContentMessageOrNull(): PrivateContentMessage<MessageContent>? =
     this as?
     dev.inmo.tgbotapi.types.message.abstracts.PrivateContentMessage<dev.inmo.tgbotapi.types.message.content.MessageContent>
@@ -3935,6 +3973,18 @@ public inline fun ResendableContent.spoilerableMediaContentOrThrow(): Spoilerabl
 public inline fun <T>
     ResendableContent.ifSpoilerableMediaContent(block: (SpoilerableMediaContent) -> T): T? =
     spoilerableMediaContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.withCustomizedCaptionMediaContentOrNull():
+    WithCustomizedCaptionMediaContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.WithCustomizedCaptionMediaContent
+
+public inline fun ResendableContent.withCustomizedCaptionMediaContentOrThrow():
+    WithCustomizedCaptionMediaContent = this as
+    dev.inmo.tgbotapi.types.message.content.WithCustomizedCaptionMediaContent
+
+public inline fun <T>
+    ResendableContent.ifWithCustomizedCaptionMediaContent(block: (WithCustomizedCaptionMediaContent) -> T):
+    T? = withCustomizedCaptionMediaContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.audioMediaGroupPartContentOrNull(): AudioMediaGroupPartContent?
     = this as? dev.inmo.tgbotapi.types.message.content.AudioMediaGroupPartContent
@@ -4268,6 +4318,16 @@ public inline fun TextSource.eMailTextSourceOrThrow(): EMailTextSource = this as
 
 public inline fun <T> TextSource.ifEMailTextSource(block: (EMailTextSource) -> T): T? =
     eMailTextSourceOrNull() ?.let(block)
+
+public inline fun TextSource.expandableBlockquoteTextSourceOrNull(): ExpandableBlockquoteTextSource?
+    = this as? dev.inmo.tgbotapi.types.message.textsources.ExpandableBlockquoteTextSource
+
+public inline fun TextSource.expandableBlockquoteTextSourceOrThrow(): ExpandableBlockquoteTextSource
+    = this as dev.inmo.tgbotapi.types.message.textsources.ExpandableBlockquoteTextSource
+
+public inline fun <T>
+    TextSource.ifExpandableBlockquoteTextSource(block: (ExpandableBlockquoteTextSource) -> T): T? =
+    expandableBlockquoteTextSourceOrNull() ?.let(block)
 
 public inline fun TextSource.hashTagTextSourceOrNull(): HashTagTextSource? = this as?
     dev.inmo.tgbotapi.types.message.textsources.HashTagTextSource

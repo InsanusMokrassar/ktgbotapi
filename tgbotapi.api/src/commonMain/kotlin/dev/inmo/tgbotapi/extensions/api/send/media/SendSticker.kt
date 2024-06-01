@@ -21,10 +21,11 @@ suspend fun TelegramBot.sendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
-    SendSticker(chatId, sticker, threadId, businessConnectionId, emoji, disableNotification, protectContent, replyParameters, replyMarkup)
+    SendSticker(chatId, sticker, threadId, businessConnectionId, emoji, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 )
 
 /**
@@ -39,9 +40,10 @@ suspend fun TelegramBot.sendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat.id, sticker, threadId, businessConnectionId, emoji, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendSticker(chat.id, sticker, threadId, businessConnectionId, emoji, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -55,9 +57,10 @@ suspend fun TelegramBot.sendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chatId, sticker.fileId, threadId, businessConnectionId, emoji, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendSticker(chatId, sticker.fileId, threadId, businessConnectionId, emoji, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -71,6 +74,7 @@ suspend fun TelegramBot.sendSticker(
     emoji: String? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendSticker(chat, sticker.fileId, threadId, businessConnectionId, emoji, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendSticker(chat, sticker.fileId, threadId, businessConnectionId, emoji, disableNotification, protectContent, effectId, replyParameters, replyMarkup)

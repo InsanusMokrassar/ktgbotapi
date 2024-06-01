@@ -24,6 +24,7 @@ suspend fun TelegramBot.sendLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
@@ -39,6 +40,7 @@ suspend fun TelegramBot.sendLocation(
         businessConnectionId,
         disableNotification,
         protectContent,
+        effectId,
         replyParameters,
         replyMarkup
     )
@@ -59,6 +61,7 @@ suspend fun TelegramBot.sendLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
@@ -73,6 +76,7 @@ suspend fun TelegramBot.sendLocation(
     businessConnectionId,
     disableNotification,
     protectContent,
+    effectId,
     replyParameters,
     replyMarkup
 )
@@ -93,6 +97,7 @@ suspend fun TelegramBot.sendLocation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
@@ -107,6 +112,7 @@ suspend fun TelegramBot.sendLocation(
     businessConnectionId,
     disableNotification,
     protectContent,
+    effectId,
     replyParameters,
     replyMarkup
 )
@@ -126,22 +132,24 @@ suspend fun TelegramBot.sendLocation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendLocation(
-    chat.id,
-    location.latitude,
-    location.longitude,
-    livePeriod,
-    horizontalAccuracy,
-    heading,
-    proximityAlertRadius,
-    threadId,
-    businessConnectionId,
-    disableNotification,
-    protectContent,
-    replyParameters,
-    replyMarkup
+    chatId = chat.id,
+    latitude = location.latitude,
+    longitude = location.longitude,
+    livePeriod = livePeriod,
+    horizontalAccuracy = horizontalAccuracy,
+    heading = heading,
+    proximityAlertRadius = proximityAlertRadius,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -160,9 +168,10 @@ suspend fun TelegramBot.sendLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chatId, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendLocation(chatId, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -179,9 +188,10 @@ suspend fun TelegramBot.sendLiveLocation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chatId, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendLocation(chatId, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -199,9 +209,10 @@ suspend fun TelegramBot.sendLiveLocation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chat.id, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendLocation(chat.id, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -218,6 +229,7 @@ suspend fun TelegramBot.sendLiveLocation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendLocation(chat.id, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendLocation(chat.id, location.latitude, location.longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)

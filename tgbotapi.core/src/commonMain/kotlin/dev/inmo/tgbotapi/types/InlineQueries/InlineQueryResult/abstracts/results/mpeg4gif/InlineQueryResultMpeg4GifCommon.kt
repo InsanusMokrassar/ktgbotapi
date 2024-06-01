@@ -8,4 +8,5 @@ const val inlineQueryResultMpeg4GifType = "mpeg4_gif"
 interface InlineQueryResultMpeg4GifCommon : InlineQueryResult,
     OptionallyTitledInlineQueryResult,
     TextedOutput,
-    WithInputMessageContentInlineQueryResult
+    WithInputMessageContentInlineQueryResult,
+    WithCustomizableCaptionInlineQueryResult

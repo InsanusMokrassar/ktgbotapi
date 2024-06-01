@@ -37,8 +37,8 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyParameters: ReplyParameters? = null,
-    allowSendingWithoutReply: Boolean? = null
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null
 ): Request<ContentMessage<MediaGroupContent<T>>> {
     if (media.size !in mediaCountInMediaGroup) {
         throwRangeError("Count of members in media group", mediaCountInMediaGroup, media.size)
@@ -56,13 +56,14 @@ fun <T : MediaGroupPartContent> SendMediaGroup(
     }
 
     val data = SendMediaGroupData(
-        chatId,
-        media,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters
+        chatId = chatId,
+        media = media,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters
     )
 
     return (if (files.isEmpty()) {
@@ -88,9 +89,18 @@ inline fun SendPlaylist(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyParameters: ReplyParameters? = null,
-    allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<AudioContent>(chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null
+) = SendMediaGroup<AudioContent>(
+    chatId = chatId,
+    media = media,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters
+)
 
 /**
  * Use this method to be sure that you are correctly sending documents media group
@@ -105,9 +115,18 @@ inline fun SendDocumentsGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
-    replyParameters: ReplyParameters? = null,
-    allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<DocumentContent>(chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
+    effectId: EffectId? = null,
+    replyParameters: ReplyParameters? = null
+) = SendMediaGroup<DocumentContent>(
+    chatId = chatId,
+    media = media,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters
+)
 
 /**
  * Use this method to be sure that you are correctly sending visual media group
@@ -123,9 +142,18 @@ inline fun SendVisualMediaGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    allowSendingWithoutReply: Boolean? = null
-) = SendMediaGroup<VisualMediaGroupPartContent>(chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, allowSendingWithoutReply)
+) = SendMediaGroup<VisualMediaGroupPartContent>(
+    chatId = chatId,
+    media = media,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters
+)
 
 private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>> {
     private val serializer = ListSerializer(TelegramBotAPIMessageDeserializeOnlySerializerClass<PossiblySentViaBotCommonMessage<MediaGroupPartContent>>())
@@ -155,6 +183,8 @@ data class SendMediaGroupData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
 ) : DataRequest<PossiblySentViaBotCommonMessage<MediaGroupContent<MediaGroupPartContent>>>,

@@ -18,7 +18,8 @@ data class VideoContent(
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList(),
     override val spoilered: Boolean = false,
-    override val quote: TextQuote? = null
+    override val quote: TextQuote? = null,
+    override val showCaptionAboveMedia: Boolean = false
 ) : VisualMediaGroupPartContent {
     override fun createResend(
         chatId: ChatIdentifier,
@@ -26,27 +27,34 @@ data class VideoContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<VideoContent>> = SendVideo(
-        chatId,
-        media.fileId,
-        media.thumbnail ?.fileId,
-        textSources,
-        spoilered,
-        media.duration,
-        media.width,
-        media.height,
-        null,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        video = media.fileId,
+        thumbnail = media.thumbnail ?.fileId,
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = media.duration,
+        width = media.width,
+        height = media.height,
+        supportStreaming = null,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaVideo = asTelegramMedia()
 
-    override fun asTelegramMedia(): TelegramMediaVideo = media.toTelegramMediaVideo(textSources)
+    override fun asTelegramMedia(): TelegramMediaVideo = media.toTelegramMediaVideo(
+        textSources = textSources,
+        spoilered = spoilered,
+        showCaptionAboveMedia = showCaptionAboveMedia
+    )
 }

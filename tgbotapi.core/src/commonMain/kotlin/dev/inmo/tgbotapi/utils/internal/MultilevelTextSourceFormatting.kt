@@ -45,6 +45,17 @@ internal fun MultilevelTextSource.blockquoteMarkdownV2(): String = markdownV2Def
 internal fun MultilevelTextSource.blockquoteHTML(): String = htmlDefault(htmlBlockquoteControl)
 
 
+internal fun MultilevelTextSource.expandableBlockquoteMarkdownV2(): String = markdownV2Default(
+    openControlSymbol = markdownV2ExpandableBlockquoteOpenControl,
+    closeControlSymbol = markdownV2ExpandableBlockquoteCloseControl,
+    eachLineSeparator = markdownBlockquoteControl
+)
+internal fun MultilevelTextSource.expandableBlockquoteHTML(): String = htmlDefault(
+    openControlSymbol = htmlBlockquoteOpenControl,
+    closeControlSymbol = htmlBlockquoteControl
+)
+
+
 internal fun MultilevelTextSource.cashTagMarkdownV2(): String = subsources.makeMarkdownV2String()
 internal fun MultilevelTextSource.cashTagHTML(): String = subsources.makeHtmlString()
 

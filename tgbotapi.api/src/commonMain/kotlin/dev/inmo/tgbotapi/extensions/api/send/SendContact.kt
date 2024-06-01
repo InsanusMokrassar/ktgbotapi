@@ -20,11 +20,12 @@ suspend fun TelegramBot.sendContact(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendContact(
-        chatId, phoneNumber, firstName, lastName, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+        chatId, phoneNumber, firstName, lastName, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
     )
 )
 
@@ -39,11 +40,12 @@ suspend fun TelegramBot.sendContact(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendContact(
-        chatId, contact, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+        chatId, contact, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
     )
 )
 
@@ -60,10 +62,11 @@ suspend fun TelegramBot.sendContact(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendContact(
-    chat.id, phoneNumber, firstName, lastName, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, phoneNumber, firstName, lastName, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
 /**
@@ -77,8 +80,9 @@ suspend fun TelegramBot.sendContact(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendContact(
-    chat.id, contact, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+    chat.id, contact, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )

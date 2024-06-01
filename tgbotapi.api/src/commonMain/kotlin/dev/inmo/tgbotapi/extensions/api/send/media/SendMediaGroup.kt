@@ -24,10 +24,11 @@ suspend fun TelegramBot.sendMediaGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = execute(
     SendMediaGroup<MediaGroupPartContent>(
-        chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+        chatId, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
     )
 )
 
@@ -42,9 +43,10 @@ suspend fun TelegramBot.sendMediaGroup(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendMediaGroup(
-    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -59,9 +61,10 @@ suspend fun TelegramBot.sendMediaGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendMediaGroup(
-    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -76,9 +79,10 @@ suspend fun TelegramBot.sendMediaGroup(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendMediaGroup(
-    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -91,10 +95,11 @@ suspend fun TelegramBot.sendPlaylist(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = execute(
     SendPlaylist(
-        chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+        chatId, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
     )
 )
 
@@ -108,9 +113,10 @@ suspend fun TelegramBot.sendPlaylist(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendPlaylist(
-    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -124,9 +130,10 @@ suspend fun TelegramBot.sendPlaylist(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendPlaylist(
-    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -140,9 +147,10 @@ suspend fun TelegramBot.sendPlaylist(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendPlaylist(
-    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -155,10 +163,11 @@ suspend fun TelegramBot.sendDocumentsGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = execute(
     SendDocumentsGroup(
-        chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+        chatId, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
     )
 )
 
@@ -172,9 +181,10 @@ suspend fun TelegramBot.sendDocumentsGroup(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendDocumentsGroup(
-    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -188,9 +198,10 @@ suspend fun TelegramBot.sendDocumentsGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendDocumentsGroup(
-    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -204,9 +215,10 @@ suspend fun TelegramBot.sendDocumentsGroup(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendDocumentsGroup(
-    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -219,10 +231,11 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = execute(
     SendVisualMediaGroup(
-        chatId, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+        chatId, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
     )
 )
 
@@ -236,9 +249,10 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendVisualMediaGroup(
-    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -252,9 +266,10 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendVisualMediaGroup(
-    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chatId, media.map { it.toMediaGroupMemberTelegramMedia() }, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )
 
 /**
@@ -268,7 +283,8 @@ suspend fun TelegramBot.sendVisualMediaGroup(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null
 ) = sendVisualMediaGroup(
-    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, replyParameters
+    chat.id, media, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters
 )

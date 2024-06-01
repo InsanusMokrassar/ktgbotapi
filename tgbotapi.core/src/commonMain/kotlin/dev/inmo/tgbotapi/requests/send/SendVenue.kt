@@ -41,6 +41,8 @@ data class SendVenue(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -57,6 +59,7 @@ data class SendVenue(
         businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         disableNotification: Boolean = false,
         protectContent: Boolean = false,
+        effectId: EffectId? = null,
         replyParameters: ReplyParameters? = null,
         replyMarkup: KeyboardMarkup? = null
     ): this(
@@ -70,8 +73,10 @@ data class SendVenue(
         googlePlaceId = venue.googlePlaceId,
         googlePlaceType = venue.googlePlaceType,
         threadId = threadId,
+        businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -89,6 +94,7 @@ fun Venue.toRequest(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): SendVenue = SendVenue(
@@ -98,6 +104,7 @@ fun Venue.toRequest(
     businessConnectionId,
     disableNotification,
     protectContent,
+    effectId,
     replyParameters,
     replyMarkup
 )

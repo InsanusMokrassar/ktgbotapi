@@ -28,9 +28,26 @@ fun InlineQueryResultVideoImpl(
     description: String? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultVideoImpl(id, url, thumbnailUrl, mimeType, title, width, height, duration, description, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultVideoImpl(
+    id = id,
+    url = url,
+    thumbnailUrl = thumbnailUrl,
+    mimeType = mimeType,
+    title = title,
+    width = width,
+    height = height,
+    duration = duration,
+    description = description,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
+)
 
 fun InlineQueryResultVideoImpl(
     id: InlineQueryId,
@@ -43,23 +60,25 @@ fun InlineQueryResultVideoImpl(
     duration: Int? = null,
     description: String? = null,
     entities: List<TextSource>,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultVideoImpl(
-    id,
-    url,
-    thumbnailUrl,
-    mimeType,
-    title,
-    width,
-    height,
-    duration,
-    description,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    replyMarkup,
-    inputMessageContent
+    id = id,
+    url = url,
+    thumbnailUrl = thumbnailUrl,
+    mimeType = mimeType,
+    title = title,
+    width = width,
+    height = height,
+    duration = duration,
+    description = description,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
 )
 
 @Serializable
@@ -88,6 +107,8 @@ data class InlineQueryResultVideoImpl internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)

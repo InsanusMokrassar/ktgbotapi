@@ -16,9 +16,12 @@ const val markdownV2StrikethroughControl = "~"
 const val markdownV2UnderlineControl = "__"
 const val markdownV2UnderlineEndControl = "$markdownV2UnderlineControl$markdownV2ItalicUnderlineDelimiter"
 const val markdownV2ItalicEndControl = "$markdownItalicControl$markdownV2ItalicUnderlineDelimiter"
+const val markdownV2ExpandableBlockquoteOpenControl = "**"
+const val markdownV2ExpandableBlockquoteCloseControl = "||"
 
 const val htmlBoldControl = "b"
 const val htmlBlockquoteControl = "blockquote"
+const val htmlBlockquoteOpenControl = "blockquote expandable"
 const val htmlItalicControl = "i"
 const val htmlSpoilerControl = "span class=\"tg-spoiler\""
 const val htmlSpoilerClosingControl = "span"
@@ -50,6 +53,8 @@ internal fun String.linkHTML(link: String): String = "<a href=\"$link\">${toHtml
 internal fun String.boldMarkdown(): String = markdownDefault(markdownBoldControl)
 
 internal fun String.blockquoteMarkdown(): String = regularMarkdown()
+
+internal fun String.expandableBlockquoteMarkdown(): String = regularMarkdown()
 
 internal fun String.italicMarkdown(): String = markdownDefault(markdownItalicControl)
 

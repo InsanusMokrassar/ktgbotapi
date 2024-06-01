@@ -22,14 +22,37 @@ sealed interface TextSource {
         get() = source
 }
 
-@Suppress("NOTHING_TO_INLINE")
-inline operator fun TextSource.plus(other: TextSource) = listOf(this, other)
-@Suppress("NOTHING_TO_INLINE")
-inline operator fun TextSource.plus(other: List<TextSource>) = listOf(this) + other
-@Suppress("NOTHING_TO_INLINE")
-inline operator fun TextSource.plus(text: String) = listOf(this, regular(text))
-@Suppress("NOTHING_TO_INLINE")
-inline operator fun List<TextSource>.plus(text: String) = this + regular(text)
+operator fun TextSource.plus(other: TextSource) = when {
+    this is RegularTextSource && other is RegularTextSource -> listOf(RegularTextSource(source + other.source))
+    else -> listOf(this, other)
+}
+operator fun TextSource.plus(text: String) = this + regular(text)
+operator fun List<TextSource>.plus(text: String): List<TextSource> {
+    val newList = mutableListOf<TextSource>()
+
+    for (i in 0 until size - 1) {
+        newList.add(get(i))
+    }
+
+    val sublist = lastOrNull() ?.let {
+        it + text
+    } ?: listOf(regular(text))
+
+    newList.addAll(sublist)
+
+    return newList
+}
+operator fun TextSource.plus(other: List<TextSource>) = other.fold(listOf(this)) { acc, textSource ->
+    val newList = mutableListOf<TextSource>()
+
+    for (i in 0 until acc.size - 1) {
+        newList.add(acc.get(i))
+    }
+
+    newList.addAll(acc.last() + textSource)
+
+    newList
+}
 
 @Serializable(TextSourceSerializer::class)
 sealed interface MultilevelTextSource : TextSource {

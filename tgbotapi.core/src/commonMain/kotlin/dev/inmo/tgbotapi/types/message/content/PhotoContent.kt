@@ -19,7 +19,8 @@ data class PhotoContent(
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList(),
     override val spoilered: Boolean = false,
-    override val quote: TextQuote? = null
+    override val quote: TextQuote? = null,
+    override val showCaptionAboveMedia: Boolean = false
 ) : MediaCollectionContent<PhotoSize>, VisualMediaGroupPartContent, WithOptionalQuoteInfo {
     override val media: PhotoSize = mediaCollection.biggest() ?: throw IllegalStateException("Can't locate any photo size for this content")
 
@@ -29,22 +30,25 @@ data class PhotoContent(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<PhotoContent>> = SendPhoto(
-        chatId,
-        media.fileId,
-        textSources,
-        spoilered,
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        photo = media.fileId,
+        entities = textSources,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     override fun toMediaGroupMemberTelegramMedia(): TelegramMediaPhoto = asTelegramMedia()
 
-    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources, spoilered)
+    override fun asTelegramMedia(): TelegramMediaPhoto = media.toTelegramMediaPhoto(textSources, spoilered, showCaptionAboveMedia)
 }

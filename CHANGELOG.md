@@ -1,5 +1,16 @@
 # TelegramBotAPI changelog
 
+## 14.0.0
+
+**Add support of [Telegram Bots API 7.4](https://core.telegram.org/bots/api-changelog#may-28-2024)**
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+* `Core`:
+    * `TelegramPaymentChargeId` has been added as value class and replaced raw strings in `SuccessfulPayment` type of `telegramPaymentChargeId`
+* All the methods/classes related to sending of messages got `effectId` parameter
+* All the methods/classes related to sending of photos/animations/videos got `showCaptionAboveMedia` parameter
+
 ## 13.0.0
 
 **Add support of [Telegram Bots API 7.3](https://core.telegram.org/bots/api-changelog#may-6-2024)**

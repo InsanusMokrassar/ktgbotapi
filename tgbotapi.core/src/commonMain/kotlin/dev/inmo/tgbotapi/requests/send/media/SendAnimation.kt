@@ -27,6 +27,7 @@ fun SendAnimation(
     thumbnail: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -35,6 +36,7 @@ fun SendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AnimationContent>> {
@@ -42,22 +44,24 @@ fun SendAnimation(
     val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendAnimationData(
-        chatId,
-        animation,
-        thumbnail ?.fileId,
-        text,
-        parseMode,
-        null,
-        spoilered,
-        duration,
-        width,
-        height,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        animation = animation,
+        thumbnail = thumbnail ?.fileId,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     return if (animationAsFile == null && thumbAsFile == null) {
@@ -75,6 +79,7 @@ fun SendAnimation(
     animation: InputFile,
     thumbnail: InputFile? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -83,6 +88,7 @@ fun SendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<AnimationContent>> {
@@ -90,22 +96,24 @@ fun SendAnimation(
     val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendAnimationData(
-        chatId,
-        animation,
-        thumbnail ?.fileId,
-        entities.makeString(),
-        null,
-        entities.toRawMessageEntities(),
-        spoilered,
-        duration,
-        width,
-        height,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        animation = animation,
+        thumbnail = thumbnail ?.fileId,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     return if (animationAsFile == null && thumbAsFile == null) {
@@ -135,6 +143,8 @@ data class SendAnimationData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(hasSpoilerField)
     override val spoilered: Boolean = false,
     @SerialName(durationField)
@@ -151,6 +161,8 @@ data class SendAnimationData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -162,6 +174,7 @@ data class SendAnimationData internal constructor(
     ThumbedSendMessageRequest<ContentMessage<AnimationContent>>,
     DuratedSendMessageRequest<ContentMessage<AnimationContent>>,
     SizedSendMessageRequest<ContentMessage<AnimationContent>>,
+    WithCustomizableCaptionRequest<ContentMessage<AnimationContent>>,
     OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {

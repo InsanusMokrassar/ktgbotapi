@@ -21,6 +21,7 @@ suspend fun TelegramBot.sendAnimation(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -29,25 +30,28 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendAnimation(
-        chatId,
-        animation,
-        thumb,
-        text,
-        parseMode,
-        spoilered,
-        duration,
-        width,
-        height,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        animation = animation,
+        thumbnail = thumb,
+        text = text,
+        parseMode = parseMode,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -60,6 +64,7 @@ suspend fun TelegramBot.sendAnimation(
     animation: AnimationFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -68,10 +73,27 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
-    chatId, animation.fileId, animation.thumbnail ?.fileId, text, parseMode, spoilered, duration, width, height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId = chatId,
+    animation = animation.fileId,
+    thumb = animation.thumbnail ?.fileId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -84,6 +106,7 @@ suspend fun TelegramBot.sendAnimation(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -92,9 +115,28 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, thumb, text, parseMode, spoilered, duration, width, height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAnimation(
+    chatId = chat.id,
+    animation = animation,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -105,6 +147,7 @@ suspend fun TelegramBot.sendAnimation(
     animation: AnimationFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -113,9 +156,27 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, text, parseMode, spoilered, duration, width, height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAnimation(
+    chatId = chat.id,
+    animation = animation,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 
 /**
@@ -127,6 +188,7 @@ suspend fun TelegramBot.sendAnimation(
     animation: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -135,24 +197,27 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendAnimation(
-        chatId,
-        animation,
-        thumb,
-        entities,
-        spoilered,
-        duration,
-        width,
-        height,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        animation = animation,
+        thumbnail = thumb,
+        entities = entities,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -164,6 +229,7 @@ suspend fun TelegramBot.sendAnimation(
     chatId: ChatIdentifier,
     animation: AnimationFile,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -172,10 +238,26 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = sendAnimation(
-    chatId, animation.fileId, animation.thumbnail ?.fileId, entities, spoilered, duration, width, height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+    chatId = chatId,
+    animation = animation.fileId,
+    thumb = animation.thumbnail ?.fileId,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
 )
 
 /**
@@ -187,6 +269,7 @@ suspend fun TelegramBot.sendAnimation(
     animation: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -195,9 +278,27 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, thumb, entities, spoilered, duration, width, height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAnimation(
+    chatId = chat.id,
+    animation = animation,
+    thumb = thumb,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -207,6 +308,7 @@ suspend fun TelegramBot.sendAnimation(
     chat: Chat,
     animation: AnimationFile,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -215,6 +317,23 @@ suspend fun TelegramBot.sendAnimation(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendAnimation(chat.id, animation, entities, spoilered, duration, width, height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendAnimation(
+    chatId = chat.id,
+    animation = animation,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)

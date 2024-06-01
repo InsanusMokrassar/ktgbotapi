@@ -24,9 +24,10 @@ suspend fun TelegramBot.editMessageCaption(
     messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
-    EditChatMessageCaption(chatId, messageId, text, parseMode, replyMarkup)
+    EditChatMessageCaption(chatId, messageId, text, parseMode, showCaptionAboveMedia, replyMarkup)
 )
 
 /**
@@ -38,8 +39,9 @@ suspend fun TelegramBot.editMessageCaption(
     messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageCaption(chat.id, messageId, text, parseMode, replyMarkup)
+) = editMessageCaption(chat.id, messageId, text, parseMode, showCaptionAboveMedia, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -49,10 +51,11 @@ suspend fun <T> TelegramBot.editMessageCaption(
     message: ContentMessage<T>,
     text: String,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<T> where T : TextedWithTextSources, T : MediaContent {
     @Suppress("UNCHECKED_CAST")
-    return editMessageCaption(message.chat.id, message.messageId, text, parseMode, replyMarkup) as ContentMessage<T>
+    return editMessageCaption(message.chat.id, message.messageId, text, parseMode, showCaptionAboveMedia, replyMarkup) as ContentMessage<T>
 }
 
 /**
@@ -63,9 +66,10 @@ suspend fun TelegramBot.editMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageId,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
-    EditChatMessageCaption(chatId, messageId, entities, replyMarkup)
+    EditChatMessageCaption(chatId, messageId, entities, showCaptionAboveMedia, replyMarkup)
 )
 
 /**
@@ -76,8 +80,9 @@ suspend fun TelegramBot.editMessageCaption(
     chat: Chat,
     messageId: MessageId,
     entities: List<TextSource>,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageCaption(chat.id, messageId, entities, replyMarkup)
+) = editMessageCaption(chat.id, messageId, entities, showCaptionAboveMedia, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
@@ -86,10 +91,11 @@ suspend fun TelegramBot.editMessageCaption(
 suspend fun <T> TelegramBot.editMessageCaption(
     message: ContentMessage<T>,
     entities: List<TextSource>,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<T> where T : TextedWithTextSources, T : MediaContent {
     @Suppress("UNCHECKED_CAST")
-    return editMessageCaption(message.chat.id, message.messageId, entities, replyMarkup) as ContentMessage<T>
+    return editMessageCaption(message.chat.id, message.messageId, entities, showCaptionAboveMedia, replyMarkup) as ContentMessage<T>
 }
 
 /**
@@ -100,7 +106,8 @@ suspend fun <T> TelegramBot.editMessageCaption(
 suspend fun <T> TelegramBot.editMessageCaption(
     message: AccessibleMessage,
     entities: List<TextSource>,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ): ContentMessage<MediaContent> where T : TextedWithTextSources, T : MediaContent {
-    return editMessageCaption(message.chat.id, message.messageId, entities, replyMarkup)
+    return editMessageCaption(message.chat.id, message.messageId, entities, showCaptionAboveMedia, replyMarkup)
 }

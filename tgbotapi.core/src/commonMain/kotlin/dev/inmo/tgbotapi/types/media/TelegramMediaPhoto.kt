@@ -19,14 +19,16 @@ fun TelegramMediaPhoto(
     file: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
-    spoilered: Boolean = false
-) = TelegramMediaPhoto(file, text, parseMode, null, spoilered)
+    spoilered: Boolean = false,
+    showCaptionAboveMedia: Boolean = false
+) = TelegramMediaPhoto(file, text, parseMode, null, spoilered, showCaptionAboveMedia)
 
 fun TelegramMediaPhoto(
     file: InputFile,
     entities: TextSourcesList,
-    spoilered: Boolean = false
-) = TelegramMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities(), spoilered)
+    spoilered: Boolean = false,
+    showCaptionAboveMedia: Boolean = false
+) = TelegramMediaPhoto(file, entities.makeString(), null, entities.toRawMessageEntities(), spoilered, showCaptionAboveMedia)
 
 @Serializable
 data class TelegramMediaPhoto internal constructor(
@@ -39,6 +41,8 @@ data class TelegramMediaPhoto internal constructor(
     private val rawEntities: List<RawMessageEntity>? = null,
     @SerialName(hasSpoilerField)
     override val spoilered: Boolean = false,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
 ) : TelegramMedia, VisualMediaGroupMemberTelegramMedia {
     override val type: String = photoTelegramMediaType
     override val textSources: TextSourcesList? by lazy {
@@ -55,19 +59,23 @@ data class TelegramMediaPhoto internal constructor(
 fun PhotoSize.toTelegramMediaPhoto(
     text: String? = null,
     parseMode: ParseMode? = null,
-    spoilered: Boolean = false
+    spoilered: Boolean = false,
+    showCaptionAboveMedia: Boolean = false
 ): TelegramMediaPhoto = TelegramMediaPhoto(
-    fileId,
-    text,
-    parseMode,
-    spoilered
+    file = fileId,
+    text = text,
+    parseMode = parseMode,
+    spoilered = spoilered,
+    showCaptionAboveMedia = showCaptionAboveMedia
 )
 
 fun PhotoSize.toTelegramMediaPhoto(
     textSources: TextSourcesList = emptyList(),
-    spoilered: Boolean = false
+    spoilered: Boolean = false,
+    showCaptionAboveMedia: Boolean = false
 ): TelegramMediaPhoto = TelegramMediaPhoto(
-    fileId,
-    textSources,
-    spoilered
+    file = fileId,
+    entities = textSources,
+    spoilered = spoilered,
+    showCaptionAboveMedia = showCaptionAboveMedia
 )

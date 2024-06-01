@@ -21,6 +21,7 @@ suspend fun TelegramBot.sendVideo(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -29,26 +30,29 @@ suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendVideo(
-        chatId,
-        video,
-        thumb,
-        text,
-        parseMode,
-        spoilered,
-        duration,
-        width,
-        height,
-        null,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        video = video,
+        thumbnail = thumb,
+        text = text,
+        parseMode = parseMode,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportStreaming = null,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -61,14 +65,34 @@ suspend fun TelegramBot.sendVideo(
     video: VideoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chatId, video.fileId, video.thumbnail ?.fileId, text, parseMode, spoilered, video.duration, video.width, video.height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVideo(
+    chatId = chatId,
+    video = video.fileId,
+    thumb = video.thumbnail ?.fileId,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = video.duration,
+    width = video.width,
+    height = video.height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -80,6 +104,7 @@ suspend fun TelegramBot.sendVideo(
     thumb: InputFile? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -88,9 +113,28 @@ suspend fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chat.id, video, thumb, text, parseMode, spoilered, duration, width, height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVideo(
+    chatId = chat.id,
+    video = video,
+    thumb = thumb,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 
 /**
@@ -102,14 +146,30 @@ suspend fun TelegramBot.sendVideo(
     video: VideoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chat.id, video, text, parseMode, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVideo(
+    chatId = chat.id,
+    video = video,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -120,6 +180,7 @@ suspend inline fun TelegramBot.sendVideo(
     video: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -128,25 +189,28 @@ suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = execute(
     SendVideo(
-        chatId,
-        video,
-        thumb,
-        entities,
-        spoilered,
-        duration,
-        width,
-        height,
-        null,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        video = video,
+        thumbnail = thumb,
+        entities = entities,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        duration = duration,
+        width = width,
+        height = height,
+        supportStreaming = null,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 )
 
@@ -158,14 +222,33 @@ suspend inline fun TelegramBot.sendVideo(
     chatId: ChatIdentifier,
     video: VideoFile,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chatId, video.fileId, video.thumbnail ?.fileId, entities, spoilered, video.duration, video.width, video.height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVideo(
+    chatId = chatId,
+    video = video.fileId,
+    thumb = video.thumbnail ?.fileId,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = video.duration,
+    width = video.width,
+    height = video.height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -176,6 +259,7 @@ suspend inline fun TelegramBot.sendVideo(
     video: InputFile,
     thumb: InputFile? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     duration: Long? = null,
     width: Int? = null,
@@ -184,9 +268,27 @@ suspend inline fun TelegramBot.sendVideo(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chat.id, video, thumb, entities, spoilered, duration, width, height, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVideo(
+    chatId = chat.id,
+    video = video,
+    thumb = thumb,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    duration = duration,
+    width = width,
+    height = height,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)
 
 
 /**
@@ -197,11 +299,26 @@ suspend inline fun TelegramBot.sendVideo(
     chat: Chat,
     video: VideoFile,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chat.id.threadId,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-) = sendVideo(chat.id, video, entities, spoilered, threadId, businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup)
+) = sendVideo(
+    chatId = chat.id,
+    video = video,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    spoilered = spoilered,
+    threadId = threadId,
+    businessConnectionId = businessConnectionId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = replyParameters,
+    replyMarkup = replyMarkup
+)

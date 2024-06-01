@@ -140,6 +140,44 @@ inline fun EntitiesBuilder.blockquote(text: String) = add(dev.inmo.tgbotapi.type
  */
 inline fun EntitiesBuilder.blockquoteln(text: String) = blockquote(text) + newLine
 
+
+/**
+ * Add blockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.blockquote]
+ */
+inline fun EntitiesBuilder.expandableBlockquote(parts: TextSourcesList) = add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquote(parts))
+/**
+ * Version of [EntitiesBuilder.expandableBlockquote] with new line at the end
+ */
+inline fun EntitiesBuilder.expandableBlockquoteln(parts: TextSourcesList) = expandableBlockquote(parts) + newLine
+/**
+ * Add expandableBlockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.expandableBlockquote].
+ * Will reuse separator config from [buildEntities]
+ */
+inline fun EntitiesBuilder.expandableBlockquote(noinline init: EntitiesBuilderBody) = add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquote(
+    buildEntities(separator, init)
+))
+/**
+ * Version of [EntitiesBuilder.expandableBlockquote] with new line at the end.
+ * Will reuse separator config from [buildEntities]
+ */
+inline fun EntitiesBuilder.expandableBlockquoteln(noinline init: EntitiesBuilderBody) = expandableBlockquote(init) + newLine
+/**
+ * Add expandableBlockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.expandableBlockquote]
+ */
+inline fun EntitiesBuilder.expandableBlockquote(vararg parts: TextSource) = add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquote(*parts))
+/**
+ * Version of [EntitiesBuilder.expandableBlockquote] with new line at the end
+ */
+inline fun EntitiesBuilder.expandableBlockquoteln(vararg parts: TextSource) = expandableBlockquote(*parts) + newLine
+/**
+ * Add expandableBlockquote using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.expandableBlockquote]
+ */
+inline fun EntitiesBuilder.expandableBlockquote(text: String) = add(dev.inmo.tgbotapi.types.message.textsources.expandableBlockquote(text))
+/**
+ * Version of [EntitiesBuilder.expandableBlockquote] with new line at the end
+ */
+inline fun EntitiesBuilder.expandableBlockquoteln(text: String) = expandableBlockquote(text) + newLine
+
 /**
  * Add spoiler using [EntitiesBuilder.add] with [dev.inmo.tgbotapi.types.message.textsources.spoiler]
  */

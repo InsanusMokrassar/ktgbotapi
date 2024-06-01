@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.edit.caption
 
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.requests.edit.media.MediaContentMessageResultDeserializer
+import dev.inmo.tgbotapi.requests.send.abstracts.WithCustomizableCaptionRequest
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
@@ -22,28 +23,32 @@ fun EditChatMessageCaption(
     messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageCaption(
-    chatId,
-    messageId,
-    text,
-    parseMode,
-    null,
-    replyMarkup
+    chatId = chatId,
+    messageId = messageId,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup
 )
 
 fun EditChatMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageId,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageCaption(
-    chatId,
-    messageId,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    replyMarkup
+    chatId = chatId,
+    messageId = messageId,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup
 )
 
 @Serializable
@@ -58,9 +63,11 @@ data class EditChatMessageCaption internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
-) : EditChatMessage<MediaContent>, EditTextChatMessage, EditReplyMessage {
+) : EditChatMessage<MediaContent>, WithCustomizableCaptionRequest<ContentMessage<MediaContent>>, EditTextChatMessage, EditReplyMessage {
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text)
     }

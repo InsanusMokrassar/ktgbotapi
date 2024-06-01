@@ -14,7 +14,7 @@ data class SuccessfulPayment(
     @SerialName(invoicePayloadField)
     val invoicePayload: String,
     @SerialName(telegramPaymentChargeIdField)
-    val telegramPaymentChargeId: String,
+    val telegramPaymentChargeId: TelegramPaymentChargeId,
     @SerialName(providerPaymentChargeIdField)
     val providerPaymentChargeId: String,
     @SerialName(shippingOptionIdField)

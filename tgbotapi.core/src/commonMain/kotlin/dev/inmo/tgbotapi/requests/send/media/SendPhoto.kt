@@ -25,27 +25,31 @@ fun SendPhoto(
     photo: InputFile,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
-        chatId,
-        photo,
-        text,
-        parseMode,
-        null,
-        spoilered,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        photo = photo,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
     return if (photo is MultipartFile) {
         CommonMultipartFileRequest(
@@ -61,27 +65,31 @@ fun SendPhoto(
     chatId: ChatIdentifier,
     photo: InputFile,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<PhotoContent>> {
     val data = SendPhotoData(
-        chatId,
-        photo,
-        entities.makeString(),
-        null,
-        entities.toRawMessageEntities(),
-        spoilered,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        photo = photo,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        spoilered = spoilered,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     return if (photo is MultipartFile) {
@@ -109,6 +117,8 @@ data class SendPhotoData internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(hasSpoilerField)
     override val spoilered: Boolean = false,
     @SerialName(messageThreadIdField)
@@ -119,6 +129,8 @@ data class SendPhotoData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)
@@ -127,6 +139,7 @@ data class SendPhotoData internal constructor(
     SendContentMessageRequest<ContentMessage<PhotoContent>>,
     ReplyingMarkupSendMessageRequest<ContentMessage<PhotoContent>>,
     TextableSendMessageRequest<ContentMessage<PhotoContent>>,
+    WithCustomizableCaptionRequest<ContentMessage<PhotoContent>>,
     OptionallyWithSpoilerRequest
 {
     override val textSources: TextSourcesList? by lazy {

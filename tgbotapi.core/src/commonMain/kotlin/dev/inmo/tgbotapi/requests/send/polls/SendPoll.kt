@@ -105,6 +105,7 @@ fun Poll.createRequest(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ) = when (this) {
@@ -120,6 +121,7 @@ fun Poll.createRequest(
         businessConnectionId,
         disableNotification,
         protectContent,
+        effectId = effectId,
         replyParameters,
         replyMarkup
     )
@@ -137,6 +139,7 @@ fun Poll.createRequest(
             businessConnectionId,
             disableNotification,
             protectContent,
+            effectId = effectId,
             replyParameters,
             replyMarkup
         )
@@ -152,6 +155,7 @@ fun Poll.createRequest(
         businessConnectionId,
         disableNotification,
         protectContent,
+        effectId = effectId,
         replyParameters,
         replyMarkup
     )
@@ -167,6 +171,7 @@ fun Poll.createRequest(
         businessConnectionId,
         disableNotification,
         protectContent,
+        effectId = effectId,
         replyParameters,
         replyMarkup
     )

@@ -40,6 +40,7 @@ fun SendDocument(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
@@ -48,19 +49,20 @@ fun SendDocument(
     val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendDocumentData(
-        chatId,
-        document,
-        thumbnail ?.fileId,
-        text,
-        parseMode,
-        null,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup,
-        disableContentTypeDetection
+        chatId = chatId,
+        document = document,
+        thumbnail = thumbnail ?.fileId,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+        disableContentTypeDetection = disableContentTypeDetection
     )
 
     return if (documentAsFile == null && thumbAsFile == null) {
@@ -91,6 +93,7 @@ fun SendDocument(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null,
     disableContentTypeDetection: Boolean? = null
@@ -99,19 +102,20 @@ fun SendDocument(
     val thumbAsFile = thumbnail as? MultipartFile
 
     val data = SendDocumentData(
-        chatId,
-        document,
-        thumbnail ?.fileId,
-        entities.makeString(),
-        null,
-        entities.toRawMessageEntities(),
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup,
-        disableContentTypeDetection
+        chatId = chatId,
+        document = document,
+        thumbnail = thumbnail ?.fileId,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup,
+        disableContentTypeDetection = disableContentTypeDetection
     )
 
     return if (documentAsFile == null && thumbAsFile == null) {
@@ -158,6 +162,8 @@ data class SendDocumentData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

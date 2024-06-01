@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.LabeledPricesSerializer
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
+import dev.inmo.tgbotapi.types.payments.abstracts.XTR
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -17,7 +18,7 @@ class InputInvoiceMessageContent(
     @SerialName(payloadField)
     override val payload: String,
     @SerialName(providerTokenField)
-    override val providerToken: String,
+    override val providerToken: String?,
     @SerialName(currencyField)
     override val currency: Currency,
     @Serializable(LabeledPricesSerializer::class)
@@ -57,6 +58,40 @@ class InputInvoiceMessageContent(
     @SerialName(photoHeightField)
     override var photoHeight: Int? = null
         private set
+
+    constructor(
+        title: String,
+        description: String,
+        payload: String,
+        prices: List<LabeledPrice>,
+        maxTipAmount: Int? = null,
+        suggestedTipAmounts: List<Int>? = null,
+        providerData: String? = null,
+        requireName: Boolean = false,
+        requirePhoneNumber: Boolean = false,
+        requireEmail: Boolean = false,
+        requireShippingAddress: Boolean = false,
+        shouldSendPhoneNumberToProvider: Boolean = false,
+        shouldSendEmailToProvider: Boolean = false,
+        priceDependOnShipAddress: Boolean = false
+    ) : this(
+        title = title,
+        description = description,
+        payload = payload,
+        providerToken = null,
+        currency = Currency.XTR,
+        prices = prices,
+        maxTipAmount = maxTipAmount,
+        suggestedTipAmounts = suggestedTipAmounts,
+        providerData = providerData,
+        requireName = requireName,
+        requirePhoneNumber = requirePhoneNumber,
+        requireEmail = requireEmail,
+        requireShippingAddress = requireShippingAddress,
+        shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
+        shouldSendEmailToProvider = shouldSendEmailToProvider,
+        priceDependOnShipAddress = priceDependOnShipAddress
+    )
 
     override fun setPhoto(
         photoUrl: String,

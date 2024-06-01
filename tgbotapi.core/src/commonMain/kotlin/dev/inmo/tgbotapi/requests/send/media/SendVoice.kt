@@ -31,24 +31,26 @@ fun SendVoice(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFile = voice as? MultipartFile
 
     val data = SendVoiceData(
-        chatId,
-        voice,
-        text,
-        parseMode,
-        null,
-        duration,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        voice = voice,
+        text = text,
+        parseMode = parseMode,
+        rawEntities = null,
+        duration = duration,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     return if (voiceAsFile == null) {
@@ -70,24 +72,26 @@ fun SendVoice(
     duration: Long? = null,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
+    effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
 ): Request<ContentMessage<VoiceContent>> {
     val voiceAsFile = voice as? MultipartFile
 
     val data = SendVoiceData(
-        chatId,
-        voice,
-        entities.makeString(),
-        null,
-        entities.toRawMessageEntities(),
-        duration,
-        threadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
-        replyMarkup
+        chatId = chatId,
+        voice = voice,
+        text = entities.makeString(),
+        parseMode = null,
+        rawEntities = entities.toRawMessageEntities(),
+        duration = duration,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
+        replyMarkup = replyMarkup
     )
 
     return if (voiceAsFile == null) {
@@ -125,6 +129,8 @@ data class SendVoiceData internal constructor(
     override val disableNotification: Boolean = false,
     @SerialName(protectContentField)
     override val protectContent: Boolean = false,
+    @SerialName(messageEffectIdField)
+    override val effectId: EffectId? = null,
     @SerialName(replyParametersField)
     override val replyParameters: ReplyParameters? = null,
     @SerialName(replyMarkupField)

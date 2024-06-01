@@ -28,9 +28,25 @@ fun InlineQueryResultGifImpl(
     title: String? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultGifImpl(id, url, thumbnailUrl, thumbnailMimeType, width, height, duration, title, text, parseMode, null, replyMarkup, inputMessageContent)
+) = InlineQueryResultGifImpl(
+    id = id,
+    url = url,
+    thumbnailUrl = thumbnailUrl,
+    thumbnailMimeType = thumbnailMimeType,
+    width = width,
+    height = height,
+    duration = duration,
+    title = title,
+    text = text,
+    parseMode = parseMode,
+    rawEntities = null,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
+)
 
 fun InlineQueryResultGifImpl(
     id: InlineQueryId,
@@ -42,22 +58,24 @@ fun InlineQueryResultGifImpl(
     duration: Int? = null,
     title: String? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultGifImpl(
-    id,
-    url,
-    thumbnailUrl,
-    thumbnailMimeType,
-    width,
-    height,
-    duration,
-    title,
-    entities.makeString(),
-    null,
-    entities.toRawMessageEntities(),
-    replyMarkup,
-    inputMessageContent
+    id = id,
+    url = url,
+    thumbnailUrl = thumbnailUrl,
+    thumbnailMimeType = thumbnailMimeType,
+    width = width,
+    height = height,
+    duration = duration,
+    title = title,
+    text = entities.makeString(),
+    parseMode = null,
+    rawEntities = entities.toRawMessageEntities(),
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
 )
 
 fun InlineQueryResultGifImpl(
@@ -71,9 +89,24 @@ fun InlineQueryResultGifImpl(
     title: String? = null,
     text: String? = null,
     parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
-) = InlineQueryResultGifImpl(id, gifFile.fileId, thumbnailUrl, thumbnailMimeType, width, height, duration, title, text, parseMode, replyMarkup, inputMessageContent)
+) = InlineQueryResultGifImpl(
+    id = id,
+    url = gifFile.fileId,
+    thumbnailUrl = thumbnailUrl,
+    thumbnailMimeType = thumbnailMimeType,
+    width = width,
+    height = height,
+    duration = duration,
+    title = title,
+    text = text,
+    parseMode = parseMode,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
+)
 
 fun InlineQueryResultGifImpl(
     id: InlineQueryId,
@@ -85,10 +118,22 @@ fun InlineQueryResultGifImpl(
     duration: Int? = null,
     title: String? = null,
     entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null,
     inputMessageContent: InputMessageContent? = null
 ) = InlineQueryResultGifImpl(
-    id, gifFile.fileId, thumbnailUrl, thumbnailMimeType, width, height, duration, title, entities, replyMarkup, inputMessageContent
+    id = id,
+    url = gifFile.fileId,
+    thumbnailUrl = thumbnailUrl,
+    thumbnailMimeType = thumbnailMimeType,
+    width = width,
+    height = height,
+    duration = duration,
+    title = title,
+    entities = entities,
+    showCaptionAboveMedia = showCaptionAboveMedia,
+    replyMarkup = replyMarkup,
+    inputMessageContent = inputMessageContent
 )
 
 @Serializable
@@ -115,6 +160,8 @@ data class InlineQueryResultGifImpl internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(showCaptionAboveMediaField)
+    override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null,
     @SerialName(inputMessageContentField)

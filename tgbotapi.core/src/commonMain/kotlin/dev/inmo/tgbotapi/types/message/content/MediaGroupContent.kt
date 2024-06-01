@@ -37,15 +37,17 @@ data class MediaGroupContent<T : MediaGroupPartContent>(
         businessConnectionId: BusinessConnectionId?,
         disableNotification: Boolean,
         protectContent: Boolean,
+        effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
     ): Request<ContentMessage<MediaGroupContent<MediaGroupPartContent>>> = SendMediaGroup<MediaGroupPartContent>(
-        chatId,
-        group.map { it.content.toMediaGroupMemberTelegramMedia() },
-        messageThreadId,
-        businessConnectionId,
-        disableNotification,
-        protectContent,
-        replyParameters,
+        chatId = chatId,
+        media = group.map { it.content.toMediaGroupMemberTelegramMedia() },
+        threadId = messageThreadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        effectId = effectId,
+        replyParameters = replyParameters,
     )
 }
