@@ -41,6 +41,7 @@ suspend fun TelegramBot.sendPhoto(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
@@ -245,6 +246,7 @@ suspend inline fun TelegramBot.sendPhoto(
         businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
+        effectId = effectId,
         replyParameters = replyParameters,
         replyMarkup = replyMarkup
     )
