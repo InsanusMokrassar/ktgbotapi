@@ -85,13 +85,6 @@ suspend fun TelegramBot.sendInvoice(
     price: LabeledPrice,
     startParameter: StartParameter? = null,
     providerData: String? = null,
-    requireName: Boolean = false,
-    requirePhoneNumber: Boolean = false,
-    requireEmail: Boolean = false,
-    requireShippingAddress: Boolean = false,
-    shouldSendPhoneNumberToProvider: Boolean = false,
-    shouldSendEmailToProvider: Boolean = false,
-    priceDependOnShipAddress: Boolean = false,
     threadId: MessageThreadId? = chatId.threadId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
@@ -99,7 +92,7 @@ suspend fun TelegramBot.sendInvoice(
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
-    SendInvoice(chatId, title, description, payload, price, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, threadId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+    SendInvoice(chatId, title, description, payload, price, startParameter, providerData, threadId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 )
 
 /**
@@ -114,13 +107,6 @@ suspend fun TelegramBot.sendInvoice(
     price: LabeledPrice,
     startParameter: StartParameter? = null,
     providerData: String? = null,
-    requireName: Boolean = false,
-    requirePhoneNumber: Boolean = false,
-    requireEmail: Boolean = false,
-    requireShippingAddress: Boolean = false,
-    shouldSendPhoneNumberToProvider: Boolean = false,
-    shouldSendEmailToProvider: Boolean = false,
-    priceDependOnShipAddress: Boolean = false,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     effectId: EffectId? = null,
@@ -134,13 +120,6 @@ suspend fun TelegramBot.sendInvoice(
     price = price,
     startParameter = startParameter,
     providerData = providerData,
-    requireName = requireName,
-    requirePhoneNumber = requirePhoneNumber,
-    requireEmail = requireEmail,
-    requireShippingAddress = requireShippingAddress,
-    shouldSendPhoneNumberToProvider = shouldSendPhoneNumberToProvider,
-    shouldSendEmailToProvider = shouldSendEmailToProvider,
-    priceDependOnShipAddress = priceDependOnShipAddress,
     threadId = null,
     disableNotification = disableNotification,
     protectContent = protectContent,
