@@ -83,8 +83,6 @@ suspend fun TelegramBot.sendInvoice(
     description: String,
     payload: String,
     price: LabeledPrice,
-    maxTipAmount: Int? = null,
-    suggestedTipAmounts: List<Int>? = null,
     startParameter: StartParameter? = null,
     providerData: String? = null,
     requireName: Boolean = false,
@@ -101,7 +99,7 @@ suspend fun TelegramBot.sendInvoice(
     replyParameters: ReplyParameters? = null,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = execute(
-    SendInvoice(chatId, title, description, payload, price, maxTipAmount, suggestedTipAmounts ?.sorted(), startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, threadId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+    SendInvoice(chatId, title, description, payload, price, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, threadId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 )
 
 /**
@@ -114,8 +112,6 @@ suspend fun TelegramBot.sendInvoice(
     description: String,
     payload: String,
     price: LabeledPrice,
-    maxTipAmount: Int? = null,
-    suggestedTipAmounts: List<Int>? = null,
     startParameter: StartParameter? = null,
     providerData: String? = null,
     requireName: Boolean = false,
@@ -136,8 +132,6 @@ suspend fun TelegramBot.sendInvoice(
     description = description,
     payload = payload,
     price = price,
-    maxTipAmount = maxTipAmount,
-    suggestedTipAmounts = suggestedTipAmounts,
     startParameter = startParameter,
     providerData = providerData,
     requireName = requireName,
