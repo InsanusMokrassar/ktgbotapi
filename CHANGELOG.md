@@ -2,6 +2,8 @@
 
 ## 14.0.1
 
+* In `core` and `api` modules related to invoices changed their APIs to suite current API
+
 ## 14.0.0
 
 **Add support of [Telegram Bots API 7.4](https://core.telegram.org/bots/api-changelog#may-28-2024)**
