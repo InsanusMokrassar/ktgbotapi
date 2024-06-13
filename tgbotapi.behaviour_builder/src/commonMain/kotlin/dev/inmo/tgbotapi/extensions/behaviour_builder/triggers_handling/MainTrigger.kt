@@ -30,9 +30,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
     scope,
     { markerFactory(it.second) }
 ) { (update, triggerData) ->
-    createSubContextAndDoWithUpdatesFilter(
-        stopOnCompletion = false
-    ) {
+    createSubContextAndDoWithUpdatesFilter {
         if (subcontextUpdatesFilter ?.invoke(this, triggerData, update) != false) {
             scenarioReceiver(triggerData)
         }
