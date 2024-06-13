@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.onInlineQuery(
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = InlineQueryFilterByUser,
-    markerFactory: MarkerFactory<in T, Any> = ByUserInlineQueryMarkerFactory,
+    markerFactory: MarkerFactory<in T, Any>? = ByUserInlineQueryMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.inlineQueryUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
@@ -33,7 +33,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : InlineQuery> BC.
 suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
     initialFilter: SimpleFilter<InlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineQuery, Update>? = InlineQueryFilterByUser,
-    markerFactory: MarkerFactory<in InlineQuery, Any> = ByUserInlineQueryMarkerFactory,
+    markerFactory: MarkerFactory<in InlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
@@ -53,7 +53,7 @@ suspend fun <BC : BehaviourContext> BC.onAnyInlineQuery(
 suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
     initialFilter: SimpleFilter<BaseInlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BaseInlineQuery, Update>? = InlineQueryFilterByUser,
-    markerFactory: MarkerFactory<in BaseInlineQuery, Any> = ByUserInlineQueryMarkerFactory,
+    markerFactory: MarkerFactory<in BaseInlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BaseInlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
@@ -73,6 +73,6 @@ suspend fun <BC : BehaviourContext> BC.onBaseInlineQuery(
 suspend fun <BC : BehaviourContext> BC.onLocationInlineQuery(
     initialFilter: SimpleFilter<LocationInlineQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, LocationInlineQuery, Update>? = InlineQueryFilterByUser,
-    markerFactory: MarkerFactory<in LocationInlineQuery, Any> = ByUserInlineQueryMarkerFactory,
+    markerFactory: MarkerFactory<in LocationInlineQuery, Any>? = ByUserInlineQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, LocationInlineQuery>
 ) = onInlineQuery(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

@@ -31,7 +31,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 suspend fun <BC : BehaviourContext> BC.onChatMessageReactionsCountUpdated(
     initialFilter: SimpleFilter<ChatMessageReactionsCountUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMessageReactionsCountUpdated, Update>? = null,
-    markerFactory: MarkerFactory<ChatMessageReactionsCountUpdated, Any> = ByChatIdChatMessageReactionsCountUpdatedMarkerFactory,
+    markerFactory: MarkerFactory<ChatMessageReactionsCountUpdated, Any>? = ByChatIdChatMessageReactionsCountUpdatedMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMessageReactionsCountUpdated>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.chatMessageReactionsCountUpdatedUpdateOrNull() ?.data) ?.let(::listOfNotNull)

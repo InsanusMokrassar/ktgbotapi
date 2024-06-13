@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
+import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
@@ -8,7 +10,7 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.Mar
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
 internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
-    markerFactory: MarkerFactory<in T, Any>,
+    markerFactory: MarkerFactory<in T, Any>?,
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
@@ -26,13 +28,23 @@ internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
             it to data
         } ?: emptyList()
     }
-).subscribeSafelyWithoutExceptionsAsync(
-    scope,
-    { markerFactory(it.second) }
-) { (update, triggerData) ->
-    createSubContextAndDoWithUpdatesFilter {
-        if (subcontextUpdatesFilter ?.invoke(this, triggerData, update) != false) {
-            scenarioReceiver(triggerData)
+).run {
+    val handler: suspend (Pair<Update, T>) -> Unit = { (update, triggerData) ->
+        createSubContextAndDoWithUpdatesFilter {
+            if (subcontextUpdatesFilter ?.invoke(this, triggerData, update) != false) {
+                scenarioReceiver(triggerData)
+            }
+        }
+    }
+    markerFactory ?.let {
+        subscribeSafelyWithoutExceptionsAsync(
+            scope,
+            { markerFactory(it.second) },
+            block = handler
+        )
+    } ?: subscribeSafelyWithoutExceptions(scope) {
+        scope.launchSafelyWithoutExceptions {
+            handler(it)
         }
     }
 }

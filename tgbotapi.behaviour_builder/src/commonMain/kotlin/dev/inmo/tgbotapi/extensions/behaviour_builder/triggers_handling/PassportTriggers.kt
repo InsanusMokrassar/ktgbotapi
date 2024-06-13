@@ -14,7 +14,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 internal suspend inline fun <BC : BehaviourContext, reified T : EncryptedPassportElement> BC.onPassportMessageWith(
     initialFilter: SimpleFilter<PassportMessage>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
+    markerFactory: MarkerFactory<in PassportMessage, Any>? = ByChatMessageMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.messageUpdateOrNull() ?.data ?.passportMessageOrNull() ?.takeIf { it.passportData.data.any { it is T } }) ?.let(::listOfNotNull)
@@ -36,7 +36,7 @@ internal suspend inline fun <BC : BehaviourContext, reified T : EncryptedPasspor
 suspend fun <BC : BehaviourContext> BC.onPassportMessage(
     initialFilter: SimpleFilter<PassportMessage>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PassportMessage, Update>? = MessageFilterByChat,
-    markerFactory: MarkerFactory<in PassportMessage, Any> = ByChatMessageMarkerFactory,
+    markerFactory: MarkerFactory<in PassportMessage, Any>? = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PassportMessage>
 ) = onPassportMessageWith<BC, EncryptedPassportElement>(
     initialFilter,

@@ -28,7 +28,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 suspend fun <BC : BehaviourContext> BC.onShippingQuery(
     initialFilter: SimpleFilter<ShippingQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ShippingQuery, Update>? = ShippingQueryFilterByUser,
-    markerFactory: MarkerFactory<in ShippingQuery, Any> = ByUserShippingQueryMarkerFactory,
+    markerFactory: MarkerFactory<in ShippingQuery, Any>? = ByUserShippingQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ShippingQuery>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.shippingQueryUpdateOrNull() ?.data) ?.let(::listOfNotNull)

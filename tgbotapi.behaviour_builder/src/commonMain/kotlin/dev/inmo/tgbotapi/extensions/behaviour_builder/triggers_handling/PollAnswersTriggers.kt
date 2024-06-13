@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 internal suspend inline fun <BC : BehaviourContext> BC.onPollAnswered(
     initialFilter: SimpleFilter<PollAnswer>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
-    markerFactory: MarkerFactory<in PollAnswer, Any> = ByIdPollAnswerMarkerFactory,
+    markerFactory: MarkerFactory<in PollAnswer, Any>? = ByIdPollAnswerMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.pollAnswerUpdateOrNull() ?.data) ?.let(::listOfNotNull)
@@ -34,7 +34,7 @@ internal suspend inline fun <BC : BehaviourContext> BC.onPollAnswered(
 suspend fun <BC : BehaviourContext> BC.onPollAnswer(
     initialFilter: SimpleFilter<PollAnswer>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PollAnswer, Update>? = null,
-    markerFactory: MarkerFactory<in PollAnswer, Any> = ByIdPollAnswerMarkerFactory,
+    markerFactory: MarkerFactory<in PollAnswer, Any>? = ByIdPollAnswerMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PollAnswer>
 ) = onPollAnswered(
     initialFilter,

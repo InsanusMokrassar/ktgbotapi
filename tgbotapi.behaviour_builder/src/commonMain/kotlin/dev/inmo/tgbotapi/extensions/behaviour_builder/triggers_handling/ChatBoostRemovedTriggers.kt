@@ -27,7 +27,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 suspend fun <BC : BehaviourContext> BC.onChatBoostRemoved(
     initialFilter: SimpleFilter<ChatBoostRemoved>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatBoostRemoved, Update>? = null,
-    markerFactory: MarkerFactory<ChatBoostRemoved, Any> = ByIdChatBoostRemovedMarkerFactory,
+    markerFactory: MarkerFactory<ChatBoostRemoved, Any>? = ByIdChatBoostRemovedMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatBoostRemoved>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.chatBoostRemovedUpdateOrNull() ?.data) ?.let(::listOfNotNull)

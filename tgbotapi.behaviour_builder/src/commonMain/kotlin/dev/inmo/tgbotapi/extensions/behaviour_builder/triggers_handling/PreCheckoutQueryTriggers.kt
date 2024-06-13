@@ -28,7 +28,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 suspend fun <BC : BehaviourContext> BC.onPreCheckoutQuery(
     initialFilter: SimpleFilter<PreCheckoutQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, PreCheckoutQuery, Update>? = PreCheckoutQueryFilterByUser,
-    markerFactory: MarkerFactory<in PreCheckoutQuery, Any> = ByUserPreCheckoutQueryMarkerFactory,
+    markerFactory: MarkerFactory<in PreCheckoutQuery, Any>? = ByUserPreCheckoutQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, PreCheckoutQuery>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.preCheckoutQueryUpdateOrNull() ?.data) ?.let(::listOfNotNull)

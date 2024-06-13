@@ -30,7 +30,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 suspend fun <BC : BehaviourContext> BC.onBusinessMessagesDeleted(
     initialFilter: SimpleFilter<BusinessMessagesDeleted>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, BusinessMessagesDeleted, Update>? = null,
-    markerFactory: MarkerFactory<in BusinessMessagesDeleted, Any> = ByBusinessConnectionIdBusinessMessagesDeletedMarkerFactory,
+    markerFactory: MarkerFactory<in BusinessMessagesDeleted, Any>? = ByBusinessConnectionIdBusinessMessagesDeletedMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, BusinessMessagesDeleted>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.deletedBusinessMessageUpdateOrNull() ?.data) ?.let(::listOfNotNull)
