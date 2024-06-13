@@ -1,5 +1,7 @@
 # TelegramBotAPI changelog
 
+## 14.0.2
+
 ## 14.0.1
 
 * In `core` and `api` modules related to invoices changed their APIs to suite current API
