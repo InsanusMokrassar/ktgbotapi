@@ -132,6 +132,8 @@ fun <BC : BehaviourContext> BC.createSubContext(
 
 /**
  * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
+ *
+ * [this] [BehaviourContext] will **NOT** be closed automatically
  */
 suspend fun <T, BC : BehaviourContext> BC.doInContext(
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
@@ -152,12 +154,10 @@ suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter
 ): T {
     return supervisorScope {
         createSubContext(
-            scope = this,
+            scope = this@supervisorScope,
             triggersHolder = triggersHolder,
             updatesUpstreamFlow = updatesUpstreamFlow
-        ).doInContext(
-            behaviourContextReceiver = behaviourContextReceiver
-        )
+        ).behaviourContextReceiver()
     }
 }
 
