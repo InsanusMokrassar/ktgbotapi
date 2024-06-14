@@ -2,6 +2,12 @@
 
 ## 14.0.2
 
+* `Version`:
+  * `Coroutines`: `1.8.0` -> `1.8.1`
+  * `Ktor`: `2.3.10` -> `2.3.11`
+  * `MicroUtils`: `0.20.45` -> `0.20.52`
+  * `KSLog`: `1.3.3` -> `1.3.4`
+
 ## 14.0.1
 
 * In `core` and `api` modules related to invoices changed their APIs to suite current API
