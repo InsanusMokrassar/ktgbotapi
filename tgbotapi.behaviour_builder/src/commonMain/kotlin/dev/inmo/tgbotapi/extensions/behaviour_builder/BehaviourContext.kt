@@ -87,7 +87,7 @@ class DefaultBehaviourContext(
         } else {
             it
         }
-    }.accumulatorFlow(scope)
+    }.accumulatorFlow(WeakScope(scope))
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
 
     override fun copy(
