@@ -38,7 +38,9 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
     filter: suspend (Update) -> List<T>
 ): Flow<T> {
     val flow = allUpdatesFlow.map {
-        val result = safelyWithResult { filter(it) }
+        val result = runCatching {
+            filter(it)
+        }
         if (result.isFailure || result.getOrThrow().isEmpty()) {
             if (cancelTrigger(it)) {
                 cancelRequestFactory(it) ?.also {
@@ -47,14 +49,20 @@ suspend fun <T> FlowsUpdatesFilter.expectFlow(
                 }
             }
             errorFactory(it) ?.also { errorRequest ->
-                safelyWithoutExceptions { bot.execute(errorRequest) }
+                runCatching {
+                    bot.execute(errorRequest)
+                }
             }
             emptyList()
         } else {
             result.getOrThrow()
         }
     }.flatten()
-    initRequest ?.also { safelyWithoutExceptions { bot.execute(initRequest) } }
+    initRequest ?.also {
+        runCatching {
+            bot.execute(initRequest)
+        }
+    }
     return flow
 }
 
