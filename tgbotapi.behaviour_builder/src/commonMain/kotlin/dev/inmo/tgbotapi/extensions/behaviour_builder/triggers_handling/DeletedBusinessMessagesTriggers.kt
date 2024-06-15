@@ -22,8 +22,9 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */

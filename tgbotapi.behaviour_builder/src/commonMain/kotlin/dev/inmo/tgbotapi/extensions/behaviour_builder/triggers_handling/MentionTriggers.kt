@@ -71,6 +71,11 @@ internal suspend inline fun <BC : BehaviourContext, reified T : TextedContent> B
 )
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
     username: Username,
     initialFilter: CommonMessageFilter<TextedContent>? = null,
@@ -79,6 +84,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithAnyContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<TextedContent>? = null,
@@ -87,6 +97,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithAnyContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextedContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
     user: User,
     initialFilter: CommonMessageFilter<TextedContent>? = null,
@@ -97,6 +112,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnyContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
     username: Username,
     initialFilter: CommonMessageFilter<VoiceContent>? = null,
@@ -105,6 +125,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithVoiceContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<VoiceContent>? = null,
@@ -113,6 +138,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithVoiceContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VoiceContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
     user: User,
     initialFilter: CommonMessageFilter<VoiceContent>? = null,
@@ -123,6 +153,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVoiceContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     username: Username,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
@@ -131,6 +166,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
@@ -139,6 +179,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupContent<MediaGroupPartContent>>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
     user: User,
     initialFilter: CommonMessageFilter<MediaGroupContent<MediaGroupPartContent>>? = null,
@@ -149,6 +194,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupPartContent(
     username: Username,
     initialFilter: CommonMessageFilter<MediaGroupPartContent>? = null,
@@ -157,6 +207,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupPartContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupPartContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupPartContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<MediaGroupPartContent>? = null,
@@ -165,6 +220,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithMediaGroupPartContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<MediaGroupPartContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupPartContent(
     user: User,
     initialFilter: CommonMessageFilter<MediaGroupPartContent>? = null,
@@ -175,6 +235,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithMediaGroupPartContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithAudioContent(
     username: Username,
     initialFilter: CommonMessageFilter<AudioContent>? = null,
@@ -183,6 +248,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAudioContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithAudioContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<AudioContent>? = null,
@@ -191,6 +261,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithAudioContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AudioContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithAudioContent(
     user: User,
     initialFilter: CommonMessageFilter<AudioContent>? = null,
@@ -201,6 +276,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAudioContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithDocumentContent(
     username: Username,
     initialFilter: CommonMessageFilter<DocumentContent>? = null,
@@ -209,6 +289,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithDocumentContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithDocumentContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<DocumentContent>? = null,
@@ -217,6 +302,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithDocumentContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<DocumentContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithDocumentContent(
     user: User,
     initialFilter: CommonMessageFilter<DocumentContent>? = null,
@@ -227,6 +317,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithDocumentContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithVisualMediaGroupPartContent(
     username: Username,
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
@@ -235,6 +330,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVisualMediaGroupPartContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithVisualMediaGroupPartContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
@@ -243,6 +343,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithVisualMediaGroupPartCont
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VisualMediaGroupPartContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithVisualMediaGroupPartContent(
     user: User,
     initialFilter: CommonMessageFilter<VisualMediaGroupPartContent>? = null,
@@ -253,6 +358,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVisualMediaGroupPartContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
     username: Username,
     initialFilter: CommonMessageFilter<VideoContent>? = null,
@@ -261,6 +371,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithVideoContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<VideoContent>? = null,
@@ -269,6 +384,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithVideoContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<VideoContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
     user: User,
     initialFilter: CommonMessageFilter<VideoContent>? = null,
@@ -279,6 +399,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithVideoContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithPhotoContent(
     username: Username,
     initialFilter: CommonMessageFilter<PhotoContent>? = null,
@@ -287,6 +412,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithPhotoContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithPhotoContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<PhotoContent>? = null,
@@ -295,6 +425,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithPhotoContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<PhotoContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithPhotoContent(
     user: User,
     initialFilter: CommonMessageFilter<PhotoContent>? = null,
@@ -305,6 +440,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithPhotoContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithAnimationContent(
     username: Username,
     initialFilter: CommonMessageFilter<AnimationContent>? = null,
@@ -313,6 +453,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnimationContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithAnimationContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<AnimationContent>? = null,
@@ -321,6 +466,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithAnimationContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<AnimationContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithAnimationContent(
     user: User,
     initialFilter: CommonMessageFilter<AnimationContent>? = null,
@@ -331,6 +481,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithAnimationContent(
 
 
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithTextContent(
     username: Username,
     initialFilter: CommonMessageFilter<TextContent>? = null,
@@ -339,6 +494,11 @@ suspend fun <BC : BehaviourContext> BC.onMentionWithTextContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
 ) = onMention(username, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onTextMentionWithTextContent(
     userId: UserId,
     initialFilter: CommonMessageFilter<TextContent>? = null,
@@ -347,6 +507,11 @@ suspend fun <BC : BehaviourContext> BC.onTextMentionWithTextContent(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, CommonMessage<TextContent>>
 ) = onTextMention(userId, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onMentionWithTextContent(
     user: User,
     initialFilter: CommonMessageFilter<TextContent>? = null,

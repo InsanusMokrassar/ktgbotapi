@@ -43,6 +43,11 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
     }
 }
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     regex: Regex,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
@@ -56,6 +61,11 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
     return onDeepLink(initialFilter ?.let { internalFilter * it } ?: internalFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 }
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     deepLink: String,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,

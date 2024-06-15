@@ -57,8 +57,9 @@ internal suspend inline fun <BC : BehaviourContext, reified T : ChatEvent, reifi
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -76,8 +77,9 @@ suspend fun <BC : BehaviourContext> BC.onChannelEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -95,8 +97,9 @@ suspend fun <BC : BehaviourContext> BC.onPrivateEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -114,8 +117,9 @@ suspend fun <BC : BehaviourContext> BC.onChatEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -133,8 +137,9 @@ suspend fun <BC : BehaviourContext> BC.onVideoChatEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -152,8 +157,9 @@ suspend fun <BC : BehaviourContext> BC.onVideoChatStartedEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -171,8 +177,9 @@ suspend fun <BC : BehaviourContext> BC.onVideoChatEndedEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -190,8 +197,9 @@ suspend fun <BC : BehaviourContext> BC.onVideoChatParticipantsInvitedEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -209,8 +217,9 @@ suspend fun <BC : BehaviourContext> BC.onMessageAutoDeleteTimerChangedEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -228,8 +237,9 @@ suspend fun <BC : BehaviourContext> BC.onPublicChatEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -247,8 +257,9 @@ suspend fun <BC : BehaviourContext> BC.onCommonEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -266,8 +277,9 @@ suspend fun <BC : BehaviourContext> BC.onGroupEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -285,8 +297,9 @@ suspend fun <BC : BehaviourContext> BC.onSupergroupEvent(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -304,8 +317,9 @@ suspend fun <BC : BehaviourContext> BC.onChannelChatCreated(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -323,8 +337,9 @@ suspend fun <BC : BehaviourContext> BC.onDeleteChatPhoto(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -342,8 +357,9 @@ suspend fun <BC : BehaviourContext> BC.onGroupChatCreated(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -361,8 +377,9 @@ suspend fun <BC : BehaviourContext> BC.onLeftChatMember(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -380,8 +397,9 @@ suspend fun <BC : BehaviourContext> BC.onNewChatMembers(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -399,8 +417,9 @@ suspend fun <BC : BehaviourContext> BC.onNewChatPhoto(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -418,8 +437,9 @@ suspend fun <BC : BehaviourContext> BC.onNewChatTitle(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -437,8 +457,9 @@ suspend fun <BC : BehaviourContext> BC.onPinnedMessage(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -456,8 +477,9 @@ suspend fun <BC : BehaviourContext> BC.onProximityAlertTriggered(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -478,8 +500,9 @@ suspend fun <BC : BehaviourContext> BC.onSupergroupChatCreated(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -497,8 +520,9 @@ suspend fun <BC : BehaviourContext> BC.onSuccessfulPayment(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -516,8 +540,9 @@ suspend fun <BC : BehaviourContext> BC.onUserLoggedIn(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -535,8 +560,9 @@ suspend fun <BC : BehaviourContext> BC.onWebAppData(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -554,8 +580,9 @@ suspend fun <BC : BehaviourContext> BC.onForumTopicClosed(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -573,8 +600,9 @@ suspend fun <BC : BehaviourContext> BC.onForumTopicCreated(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -593,8 +621,9 @@ suspend fun <BC : BehaviourContext> BC.onForumTopicReopened(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -612,8 +641,9 @@ suspend fun <BC : BehaviourContext> BC.onForumTopicEdited(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -631,8 +661,9 @@ suspend fun <BC : BehaviourContext> BC.onGeneralForumTopicHidden(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -651,8 +682,9 @@ suspend fun <BC : BehaviourContext> BC.onGeneralForumTopicUnhidden(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -671,8 +703,9 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowed(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -691,8 +724,9 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromRequest(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -711,8 +745,9 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromAttachmentMenu(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -731,8 +766,9 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedOther(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -752,8 +788,9 @@ suspend fun <BC : BehaviourContext> BC.onWriteAccessAllowedFromWebAppLink(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -772,8 +809,9 @@ suspend fun <BC : BehaviourContext> BC.onChatSharedRequest(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -792,8 +830,9 @@ suspend fun <BC : BehaviourContext> BC.onUsersShared(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -813,8 +852,9 @@ suspend fun <BC : BehaviourContext> BC.onUserShared(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -834,8 +874,9 @@ suspend fun <BC : BehaviourContext> BC.onChatShared(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -854,8 +895,9 @@ suspend fun <BC : BehaviourContext> BC.onChatBoostAdded(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param markerFactory Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */

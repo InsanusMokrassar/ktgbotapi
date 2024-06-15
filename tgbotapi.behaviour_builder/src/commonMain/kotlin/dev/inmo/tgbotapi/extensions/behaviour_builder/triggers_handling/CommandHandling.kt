@@ -76,6 +76,11 @@ suspend fun <BC : BehaviourContext> BC.command(
     }
 }.getOrThrow()
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.command(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
@@ -85,6 +90,11 @@ suspend fun <BC : BehaviourContext> BC.command(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ) = command(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.command(
     botCommand: BotCommand,
     requireOnlyCommandInMessage: Boolean = true,
@@ -94,6 +104,11 @@ suspend fun <BC : BehaviourContext> BC.command(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ) = command(botCommand.command, requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommand(
     commandRegex: Regex,
     requireOnlyCommandInMessage: Boolean = true,
@@ -103,6 +118,11 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ): Job = command(commandRegex, requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommand(
     command: String,
     requireOnlyCommandInMessage: Boolean = true,
@@ -112,6 +132,11 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ): Job = onCommand(command.toRegex(), requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommand(
     botCommand: BotCommand,
     requireOnlyCommandInMessage: Boolean = true,
@@ -121,6 +146,11 @@ suspend fun <BC : BehaviourContext> BC.onCommand(
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, TextMessage>
 ): Job = onCommand(botCommand.command, requireOnlyCommandInMessage, initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -142,6 +172,11 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     scenarioReceiver(it, args)
 }
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -158,6 +193,11 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     botCommand: BotCommand,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -174,6 +214,11 @@ suspend fun <BC : BehaviourContext> BC.commandWithArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -196,6 +241,11 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     scenarioReceiver(it, args)
 }
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -214,6 +264,11 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     botCommand: BotCommand,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -232,6 +287,11 @@ suspend fun <BC : BehaviourContext> BC.commandWithNamedArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -248,6 +308,11 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -264,6 +329,11 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     botCommand: BotCommand,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -280,6 +350,11 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     commandRegex: Regex,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -298,6 +373,11 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     scenarioReceiver = scenarioReceiver,
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     command: String,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
@@ -316,6 +396,11 @@ suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     scenarioReceiver = scenarioReceiver
 )
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onCommandWithNamedArgs(
     botCommand: BotCommand,
     initialFilter: CommonMessageFilter<TextContent>? = CommonMessageFilterExcludeMediaGroups,
