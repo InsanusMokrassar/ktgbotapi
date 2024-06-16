@@ -1,6 +1,7 @@
 package dev.inmo.tgbotapi.extensions.api
 
 import dev.inmo.micro_utils.coroutines.LinkedSupervisorJob
+import dev.inmo.micro_utils.coroutines.LinkedSupervisorScope
 import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
 import dev.inmo.tgbotapi.abstracts.*
 import dev.inmo.tgbotapi.abstracts.types.WithReplyMarkup
@@ -54,8 +55,9 @@ suspend fun TelegramBot.handleLiveLocation(
     val updateMessageJob = if (liveTimeMillis == indefiniteLivePeriodDelayMillis) { // do not launch refreshing of message for indefinite live locations
         null
     } else {
-        CoroutineScope(currentCoroutineContext().LinkedSupervisorJob()).launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
-            while (isActive) {
+        val scope = currentCoroutineContext().LinkedSupervisorScope()
+        scope.launchSafelyWithoutExceptions(start = CoroutineStart.LAZY) {
+            while (scope.isActive) {
                 delay(liveTimeMillis)
                 // Remove previous location message info to resend live location message
                 currentLiveLocationMessage = null
