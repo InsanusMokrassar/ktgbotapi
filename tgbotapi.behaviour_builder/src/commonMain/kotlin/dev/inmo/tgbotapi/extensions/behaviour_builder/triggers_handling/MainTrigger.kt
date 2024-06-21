@@ -1,5 +1,7 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 
+import dev.inmo.micro_utils.coroutines.launchSafelyWithoutExceptions
+import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptions
 import dev.inmo.micro_utils.coroutines.subscribeSafelyWithoutExceptionsAsync
 import dev.inmo.tgbotapi.extensions.behaviour_builder.*
 import dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.expectFlow
@@ -7,12 +9,12 @@ import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.SimpleFilter
 import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories.MarkerFactory
 import dev.inmo.tgbotapi.types.update.abstracts.Update
 
-internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
-    markerFactory: MarkerFactory<in T, Any>,
+internal suspend fun <BC : BehaviourContext, T> BC.on(
+    markerFactory: MarkerFactory<in T, Any>?,
     initialFilter: SimpleFilter<T>? = null,
-    noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
-    noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
-    noinline updateToData: (Update) -> List<T>?
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>,
+    updateToData: (Update) -> List<T>?
 ) = flowsUpdatesFilter.expectFlow(
     bot,
     filter = initialFilter ?.let {
@@ -22,19 +24,31 @@ internal suspend inline fun <BC : BehaviourContext, reified T> BC.on(
             } ?: emptyList()
         }
     } ?: {
-        updateToData(it) ?.mapNotNull { data ->
+        updateToData(it) ?.map { data ->
             it to data
         } ?: emptyList()
     }
-).subscribeSafelyWithoutExceptionsAsync(
-    scope,
-    { markerFactory(it.second) }
-) { (update, triggerData) ->
-    createSubContextAndDoWithUpdatesFilter(
-        stopOnCompletion = false
-    ) {
-        if (subcontextUpdatesFilter ?.invoke(this, triggerData, update) != false) {
-            scenarioReceiver(triggerData)
+).run {
+    val handler: suspend (Pair<Update, T>) -> Unit = subcontextUpdatesFilter ?.let {
+        { (update, triggerData) ->
+            createSubContextAndDoWithUpdatesFilter {
+                if (subcontextUpdatesFilter(this, triggerData, update)) {
+                    scenarioReceiver(triggerData)
+                }
+            }
+        }
+    } ?: { (_, triggerData) ->
+        createSubContextAndDoWithUpdatesFilter(behaviourContextReceiver = { scenarioReceiver(triggerData) })
+    }
+    markerFactory ?.let {
+        subscribeSafelyWithoutExceptionsAsync(
+            scope,
+            { markerFactory(it.second) },
+            block = handler
+        )
+    } ?: subscribeSafelyWithoutExceptions(scope) {
+        scope.launchSafelyWithoutExceptions {
+            handler(it)
         }
     }
 }

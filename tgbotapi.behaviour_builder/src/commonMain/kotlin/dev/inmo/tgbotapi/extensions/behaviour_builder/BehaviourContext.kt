@@ -87,7 +87,7 @@ class DefaultBehaviourContext(
         } else {
             it
         }
-    }.accumulatorFlow(scope)
+    }.accumulatorFlow(WeakScope(scope))
     override val asUpdateReceiver: UpdateReceiver<Update> = additionalUpdatesSharedFlow::emit
 
     override fun copy(
@@ -133,38 +133,32 @@ fun <BC : BehaviourContext> BC.createSubContext(
 /**
  * Launch [behaviourContextReceiver] in context of [this] as [BehaviourContext] and as [kotlin.coroutines.CoroutineContext]
  *
- * @param stopOnCompletion ___FALSE BY DEFAULT___. Will stop [this] in case if passed true
+ * [this] [BehaviourContext] will **NOT** be closed automatically
  */
 suspend fun <T, BC : BehaviourContext> BC.doInContext(
-    stopOnCompletion: Boolean = false,
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
 ): T {
     return withContext(coroutineContext) {
-        behaviourContextReceiver().also { if (stopOnCompletion) stop() }
+        behaviourContextReceiver()
     }
 }
 
 /**
  * Creates new one [BehaviourContext] using [createSubContext] and launches [behaviourContextReceiver] in a new context
  * using [doInContext]
- *
- * @param stopOnCompletion ___TRUE BY DEFAULT___
  */
 suspend fun <T, BC : BehaviourContext> BC.createSubContextAndDoWithUpdatesFilter(
-    scope: CoroutineScope = LinkedSupervisorScope(),
     triggersHolder: TriggersHolder = this.triggersHolder,
     updatesUpstreamFlow: Flow<Update> = allUpdatesFlow,
-    stopOnCompletion: Boolean = true,
     behaviourContextReceiver: CustomBehaviourContextReceiver<BC, T>
 ): T {
-    return createSubContext(
-        scope,
-        triggersHolder,
-        updatesUpstreamFlow
-    ).doInContext(
-        stopOnCompletion,
-        behaviourContextReceiver
-    )
+    return supervisorScope {
+        createSubContext(
+            scope = this@supervisorScope,
+            triggersHolder = triggersHolder,
+            updatesUpstreamFlow = updatesUpstreamFlow
+        ).behaviourContextReceiver()
+    }
 }
 
 /**

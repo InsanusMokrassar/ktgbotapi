@@ -13,7 +13,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 internal suspend inline fun <BC : BehaviourContext, reified T : Poll> BC.onPollUpdatedBase(
     initialFilter: SimpleFilter<T>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, T, Update>? = null,
-    markerFactory: MarkerFactory<in T, Any> = ByIdPollMarkerFactory,
+    markerFactory: MarkerFactory<in T, Any>? = ByIdPollMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, T>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     (it.pollUpdateOrNull() ?.data as? T) ?.let(::listOfNotNull)
@@ -26,15 +26,16 @@ internal suspend inline fun <BC : BehaviourContext, reified T : Poll> BC.onPollU
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onPollUpdates(
     initialFilter: SimpleFilter<Poll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Poll, Update>? = null,
-    markerFactory: MarkerFactory<in Poll, Any> = ByIdPollMarkerFactory,
+    markerFactory: MarkerFactory<in Poll, Any>? = ByIdPollMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Poll>
 ) = onPollUpdatedBase(
     initialFilter,
@@ -50,15 +51,16 @@ suspend fun <BC : BehaviourContext> BC.onPollUpdates(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onRegularPollUpdates(
     initialFilter: SimpleFilter<RegularPoll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, RegularPoll, Update>? = null,
-    markerFactory: MarkerFactory<in RegularPoll, Any> = ByIdPollMarkerFactory,
+    markerFactory: MarkerFactory<in RegularPoll, Any>? = ByIdPollMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, RegularPoll>
 ) = onPollUpdatedBase(
     initialFilter,
@@ -74,15 +76,16 @@ suspend fun <BC : BehaviourContext> BC.onRegularPollUpdates(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onQuizPollUpdates(
     initialFilter: SimpleFilter<QuizPoll>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, QuizPoll, Update>? = null,
-    markerFactory: MarkerFactory<in QuizPoll, Any> = ByIdPollMarkerFactory,
+    markerFactory: MarkerFactory<in QuizPoll, Any>? = ByIdPollMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, QuizPoll>
 ) = onPollUpdatedBase(
     initialFilter,

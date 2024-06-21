@@ -18,8 +18,9 @@ import dev.inmo.tgbotapi.utils.PreviewFeature
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -27,7 +28,7 @@ import dev.inmo.tgbotapi.utils.PreviewFeature
 suspend fun <BC : BehaviourContext> BC.onUnhandledDataCallbackQuery(
     initialFilter: SimpleFilter<DataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, DataCallbackQuery, Update>? = CallbackQueryFilterByUser,
-    markerFactory: MarkerFactory<in DataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
+    markerFactory: MarkerFactory<in DataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, DataCallbackQuery>
 ) = onCallbackQuery (
     initialFilter * !SimpleFilter<MessageDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
@@ -43,8 +44,9 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledDataCallbackQuery(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -52,7 +54,7 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledDataCallbackQuery(
 suspend fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQuery(
     initialFilter: SimpleFilter<InlineMessageIdDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, InlineMessageIdDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
-    markerFactory: MarkerFactory<in InlineMessageIdDataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
+    markerFactory: MarkerFactory<in InlineMessageIdDataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, InlineMessageIdDataCallbackQuery>
 ) = onCallbackQuery (
     initialFilter * !SimpleFilter<InlineMessageIdDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },
@@ -68,8 +70,9 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQue
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
@@ -77,7 +80,7 @@ suspend fun <BC : BehaviourContext> BC.onUnhandledInlineMessageIdDataCallbackQue
 suspend fun <BC : BehaviourContext> BC.onUnhandledMessageDataCallbackQuery(
     initialFilter: SimpleFilter<MessageDataCallbackQuery>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, MessageDataCallbackQuery, Update>? = CallbackQueryFilterByUser,
-    markerFactory: MarkerFactory<in MessageDataCallbackQuery, Any> = ByUserCallbackQueryMarkerFactory,
+    markerFactory: MarkerFactory<in MessageDataCallbackQuery, Any>? = ByUserCallbackQueryMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, MessageDataCallbackQuery>
 ) = onCallbackQuery(
     initialFilter * !SimpleFilter<MessageDataCallbackQuery> { triggersHolder.handleableCallbackQueriesDataHolder.isHandled(it) },

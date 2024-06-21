@@ -21,7 +21,7 @@ private val startRegex = Regex("start")
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
-    markerFactory: MarkerFactory<Pair<TextMessage, String>, Any> = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
+    markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
 ): Job = on(
     markerFactory,
@@ -43,11 +43,16 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
     }
 }
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     regex: Regex,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
-    markerFactory: MarkerFactory<Pair<TextMessage, String>, Any> = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
+    markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
 ): Job {
     val internalFilter = SimpleFilter<Pair<TextMessage, String>> {
@@ -56,10 +61,15 @@ suspend fun <BC : BehaviourContext> BC.onDeepLink(
     return onDeepLink(initialFilter ?.let { internalFilter * it } ?: internalFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 }
 
+/**
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
+ */
 suspend fun <BC : BehaviourContext> BC.onDeepLink(
     deepLink: String,
     initialFilter: SimpleFilter<Pair<TextMessage, String>>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, Pair<TextMessage, String>, Update>? = { (message, _), update -> MessageFilterByChat(this, message, update) },
-    markerFactory: MarkerFactory<Pair<TextMessage, String>, Any> = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
+    markerFactory: MarkerFactory<Pair<TextMessage, String>, Any>? = MarkerFactory { (message, _) -> ByChatMessageMarkerFactory(message) },
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, Pair<TextMessage, String>>
 ): Job = onDeepLink(Regex("^$deepLink$"), initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)

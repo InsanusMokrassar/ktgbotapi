@@ -17,7 +17,7 @@ import dev.inmo.tgbotapi.types.update.abstracts.Update
 internal suspend inline fun <BC : BehaviourContext, reified U : ChatMemberUpdatedUpdate> BC.onChatMemberUpdatedInternal(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     noinline subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
-    markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
+    markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     noinline scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
 ) = on(markerFactory, initialFilter, subcontextUpdatesFilter, scenarioReceiver) {
     ((it as? U) ?.data) ?.let(::listOfNotNull)
@@ -31,15 +31,16 @@ internal suspend inline fun <BC : BehaviourContext, reified U : ChatMemberUpdate
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
-    markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
+    markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
 ) = onChatMemberUpdatedInternal<BC, ChatMemberUpdatedUpdate>(
     initialFilter,
@@ -55,15 +56,16 @@ suspend fun <BC : BehaviourContext> BC.onChatMemberUpdated(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
-    markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
+    markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
 ) = onChatMemberUpdatedInternal<BC, CommonChatMemberUpdatedUpdate>(
     initialFilter,
@@ -79,15 +81,16 @@ suspend fun <BC : BehaviourContext> BC.onCommonChatMemberUpdated(
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.BehaviourContextAndTwoTypesReceiver] function to create your own.
  * Use [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.plus] or [dev.inmo.tgbotapi.extensions.behaviour_builder.utils.times]
  * to combinate several filters
- * @param [markerFactory] Will be used to identify different "stream". [scenarioReceiver] will be called synchronously
- * in one "stream". Output of [markerFactory] will be used as a key for "stream"
+ * @param [markerFactory] **Pass null to handle requests fully parallel**. Will be used to identify different "stream".
+ * [scenarioReceiver] will be called synchronously in one "stream". Output of [markerFactory] will be used as a key for
+ * "stream"
  * @param scenarioReceiver Main callback which will be used to handle incoming data if [initialFilter] will pass that
  * data
  */
 suspend fun <BC : BehaviourContext> BC.onMyChatMemberUpdated(
     initialFilter: SimpleFilter<ChatMemberUpdated>? = null,
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatMemberUpdated, Update>? = ChatMemberUpdatedFilterByChat,
-    markerFactory: MarkerFactory<ChatMemberUpdated, Any> = ByChatChatMemberUpdatedMarkerFactory,
+    markerFactory: MarkerFactory<ChatMemberUpdated, Any>? = ByChatChatMemberUpdatedMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatMemberUpdated>
 ) = onChatMemberUpdatedInternal<BC, MyChatMemberUpdatedUpdate>(
     initialFilter,

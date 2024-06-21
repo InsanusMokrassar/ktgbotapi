@@ -1,5 +1,19 @@
 # TelegramBotAPI changelog
 
+## 14.1.0
+
+* `Version`:
+    * `Coroutines`: `1.8.0` -> `1.8.1`
+    * `Ktor`: `2.3.10` -> `2.3.11`
+    * `MicroUtils`: `0.20.45` -> `0.21.0`
+    * `KSLog`: `1.3.3` -> `1.3.4`
+* `BehaviourBuilder`:
+    * `BehaviourContext` updates listening job will be weakly subscribed. It means that `BehaviourContext` scope will
+    not be prevented from cancelling by this job anymore
+    * `BehaviourContext.doInContext` will not stop automatically current `BehaviourContext` job anymore
+    * `BehaviourContext.createSubContextAndDoWithUpdatesFilter` will use `supervisorScope` instead of
+    `LinkedSupervisorScope`. That will prevent scope leaking in runtime
+
 ## 14.0.1
 
 * In `core` and `api` modules related to invoices changed their APIs to suite current API
