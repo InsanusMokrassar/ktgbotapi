@@ -1,11 +1,11 @@
 # TelegramBotAPI changelog
 
-## 14.0.2
+## 14.1.0
 
 * `Version`:
     * `Coroutines`: `1.8.0` -> `1.8.1`
     * `Ktor`: `2.3.10` -> `2.3.11`
-    * `MicroUtils`: `0.20.45` -> `0.20.52`
+    * `MicroUtils`: `0.20.45` -> `0.21.0`
     * `KSLog`: `1.3.3` -> `1.3.4`
 * `BehaviourBuilder`:
     * `BehaviourContext` updates listening job will be weakly subscribed. It means that `BehaviourContext` scope will
