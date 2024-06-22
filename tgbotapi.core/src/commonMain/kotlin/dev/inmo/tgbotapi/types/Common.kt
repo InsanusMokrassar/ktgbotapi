@@ -509,6 +509,7 @@ const val showAboveTextField = "show_above_text"
 const val isDisabledField = "is_disabled"
 const val preferSmallMediaField = "prefer_small_media"
 const val preferLargeMediaField = "prefer_large_media"
+const val withdrawalStateField = "withdrawal_state"
 
 const val requireNameField = "need_name"
 const val requirePhoneNumberField = "need_phone_number"
