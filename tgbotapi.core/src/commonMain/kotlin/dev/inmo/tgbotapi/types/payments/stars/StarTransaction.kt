@@ -1,14 +1,13 @@
 package dev.inmo.tgbotapi.types.payments.stars
 
-import dev.inmo.tgbotapi.types.TelegramDate
-import dev.inmo.tgbotapi.types.UserId
+import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.PreviewUser
-import dev.inmo.tgbotapi.types.userField
-import dev.inmo.tgbotapi.types.withdrawalStateField
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -16,7 +15,9 @@ import kotlinx.serialization.json.JsonElement
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(StarTransaction.Companion::class)
+@ClassCastsIncluded
 sealed interface StarTransaction {
+    val id: StarTransactionId
     val amount: Int
     val date: TelegramDate
     val partner: TransactionPartner
@@ -25,44 +26,58 @@ sealed interface StarTransaction {
 
     @Serializable(StarTransaction.Companion::class)
     data class Incoming(
-
+        @SerialName(idField)
+        override val id: StarTransactionId,
+        @SerialName(amountField)
+        override val amount: Int,
+        @SerialName(dateField)
+        override val date: TelegramDate,
+        @SerialName(sourceField)
+        override val partner: TransactionPartner
     ) : StarTransaction {
-        override val type: String
-            get() = Companion.type
-
-        companion object {
-            const val type: String = "fragment"
-        }
+        @Transient
+        override val source: TransactionPartner
+            get() = partner
+        override val receiver: TransactionPartner?
+            get() = null
     }
 
     @Serializable(StarTransaction.Companion::class)
-    data class User(
-        @SerialName(userField)
-        val user: PreviewUser
+    data class Outgoing(
+        @SerialName(idField)
+        override val id: StarTransactionId,
+        @SerialName(amountField)
+        override val amount: Int,
+        @SerialName(dateField)
+        override val date: TelegramDate,
+        @SerialName(receiverField)
+        override val partner: TransactionPartner
     ) : StarTransaction {
-        override val type: String
-            get() = Companion.type
-
-        companion object {
-            const val type: String = "user"
-        }
-    }
-
-    @Serializable(StarTransaction.Companion::class)
-    data object Other : StarTransaction {
-        override val type: String = "other"
+        @Transient
+        override val source: TransactionPartner?
+            get() = null
+        override val receiver: TransactionPartner
+            get() = partner
     }
 
     @Serializable(StarTransaction.Companion::class)
     data class Unknown(
-        override val type: String,
+        @SerialName(idField)
+        override val id: StarTransactionId,
+        override val amount: Int,
+        override val date: TelegramDate,
+        override val source: TransactionPartner?,
+        override val receiver: TransactionPartner?,
         val raw: JsonElement?
-    ) : StarTransaction
+    ) : StarTransaction {
+        override val partner: TransactionPartner
+            get() = source ?: receiver ?: error("Unable to take partner from source or receiver. Raw value: $raw")
+    }
 
     companion object : KSerializer<StarTransaction> {
         @Serializable
         private data class Surrogate(
-            val type: String,
+            val id: StarTransactionId,
             val amount: Int,
             val date: TelegramDate,
             val source: TransactionPartner?,
@@ -76,32 +91,45 @@ sealed interface StarTransaction {
             val (data, json) = decoder.decodeDataAndJson(Surrogate.serializer())
 
             val unknown by lazy {
-                Unknown(data.type, json)
-            }
-            return when (data.type) {
-                Other.type -> Other
-                User.type -> User(
-                    data.user ?: return unknown,
+                Unknown(
+                    id = data.id,
+                    amount = data.amount,
+                    date = data.date,
+                    source = data.source,
+                    receiver = data.receiver,
+                    raw = json
                 )
-                Fragment.type -> Fragment(
-                    data.withdrawal_state ?: return unknown,
+            }
+            return when {
+                data.source != null -> Incoming(
+                    id = data.id,
+                    amount = data.amount,
+                    date = data.date,
+                    partner = data.source
+                )
+                data.receiver != null -> Outgoing(
+                    id = data.id,
+                    amount = data.amount,
+                    date = data.date,
+                    partner = data.receiver
                 )
                 else -> unknown
             }
         }
 
         override fun serialize(encoder: Encoder, value: StarTransaction) {
-            val surrogate = when (value) {
-                Other -> Surrogate(value.type)
-                is User -> Surrogate(value.type, user = value.user)
-                is Fragment -> Surrogate(
-                    value.type,
-                    value.withdrawalState
-                )
-                is Unknown -> value.raw ?.let {
-                    return JsonElement.serializer().serialize(encoder, it)
-                } ?: Surrogate(value.type)
+            if (value is Unknown && value.raw != null) {
+                JsonElement.serializer().serialize(encoder, value.raw)
+                return
             }
+
+            val surrogate = Surrogate(
+                id = value.id,
+                amount = value.amount,
+                date = value.date,
+                source = value.source,
+                receiver = value.receiver,
+            )
 
             Surrogate.serializer().serialize(encoder, surrogate)
         }

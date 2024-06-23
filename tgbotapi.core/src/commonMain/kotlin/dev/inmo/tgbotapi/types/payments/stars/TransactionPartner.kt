@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.types.chat.PreviewUser
 import dev.inmo.tgbotapi.types.userField
 import dev.inmo.tgbotapi.types.withdrawalStateField
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -14,6 +15,7 @@ import kotlinx.serialization.json.JsonElement
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(TransactionPartner.Companion::class)
+@ClassCastsIncluded
 sealed interface TransactionPartner {
     val type: String
 

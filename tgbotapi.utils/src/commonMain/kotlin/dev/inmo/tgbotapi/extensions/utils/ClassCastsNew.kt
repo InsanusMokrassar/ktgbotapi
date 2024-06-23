@@ -426,6 +426,9 @@ import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.EncryptedPassportEle
 import dev.inmo.tgbotapi.types.passport.encrypted.abstracts.UnknownEncryptedPassportElement
 import dev.inmo.tgbotapi.types.payments.PreCheckoutQuery
 import dev.inmo.tgbotapi.types.payments.ShippingQuery
+import dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState
+import dev.inmo.tgbotapi.types.payments.stars.StarTransaction
+import dev.inmo.tgbotapi.types.payments.stars.TransactionPartner
 import dev.inmo.tgbotapi.types.polls.ApproximateScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo
 import dev.inmo.tgbotapi.types.polls.MultipleAnswersPoll
@@ -5059,6 +5062,108 @@ public inline fun EncryptedPassportElement.encryptedPassportElementWithSelfieOrT
 public inline fun <T>
     EncryptedPassportElement.ifEncryptedPassportElementWithSelfie(block: (EncryptedPassportElementWithSelfie) -> T):
     T? = encryptedPassportElementWithSelfieOrNull() ?.let(block)
+
+public inline fun RevenueWithdrawalState.failedOrNull(): RevenueWithdrawalState.Failed? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Failed
+
+public inline fun RevenueWithdrawalState.failedOrThrow(): RevenueWithdrawalState.Failed = this as
+    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Failed
+
+public inline fun <T> RevenueWithdrawalState.ifFailed(block: (RevenueWithdrawalState.Failed) -> T):
+    T? = failedOrNull() ?.let(block)
+
+public inline fun RevenueWithdrawalState.pendingOrNull(): RevenueWithdrawalState.Pending? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Pending
+
+public inline fun RevenueWithdrawalState.pendingOrThrow(): RevenueWithdrawalState.Pending = this as
+    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Pending
+
+public inline fun <T>
+    RevenueWithdrawalState.ifPending(block: (RevenueWithdrawalState.Pending) -> T): T? =
+    pendingOrNull() ?.let(block)
+
+public inline fun RevenueWithdrawalState.succeededOrNull(): RevenueWithdrawalState.Succeeded? = this
+    as? dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Succeeded
+
+public inline fun RevenueWithdrawalState.succeededOrThrow(): RevenueWithdrawalState.Succeeded = this
+    as dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Succeeded
+
+public inline fun <T>
+    RevenueWithdrawalState.ifSucceeded(block: (RevenueWithdrawalState.Succeeded) -> T): T? =
+    succeededOrNull() ?.let(block)
+
+public inline fun RevenueWithdrawalState.unknownOrNull(): RevenueWithdrawalState.Unknown? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Unknown
+
+public inline fun RevenueWithdrawalState.unknownOrThrow(): RevenueWithdrawalState.Unknown = this as
+    dev.inmo.tgbotapi.types.payments.stars.RevenueWithdrawalState.Unknown
+
+public inline fun <T>
+    RevenueWithdrawalState.ifUnknown(block: (RevenueWithdrawalState.Unknown) -> T): T? =
+    unknownOrNull() ?.let(block)
+
+public inline fun StarTransaction.incomingOrNull(): StarTransaction.Incoming? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.StarTransaction.Incoming
+
+public inline fun StarTransaction.incomingOrThrow(): StarTransaction.Incoming = this as
+    dev.inmo.tgbotapi.types.payments.stars.StarTransaction.Incoming
+
+public inline fun <T> StarTransaction.ifIncoming(block: (StarTransaction.Incoming) -> T): T? =
+    incomingOrNull() ?.let(block)
+
+public inline fun StarTransaction.outgoingOrNull(): StarTransaction.Outgoing? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.StarTransaction.Outgoing
+
+public inline fun StarTransaction.outgoingOrThrow(): StarTransaction.Outgoing = this as
+    dev.inmo.tgbotapi.types.payments.stars.StarTransaction.Outgoing
+
+public inline fun <T> StarTransaction.ifOutgoing(block: (StarTransaction.Outgoing) -> T): T? =
+    outgoingOrNull() ?.let(block)
+
+public inline fun StarTransaction.unknownOrNull(): StarTransaction.Unknown? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.StarTransaction.Unknown
+
+public inline fun StarTransaction.unknownOrThrow(): StarTransaction.Unknown = this as
+    dev.inmo.tgbotapi.types.payments.stars.StarTransaction.Unknown
+
+public inline fun <T> StarTransaction.ifUnknown(block: (StarTransaction.Unknown) -> T): T? =
+    unknownOrNull() ?.let(block)
+
+public inline fun TransactionPartner.fragmentOrNull(): TransactionPartner.Fragment? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Fragment
+
+public inline fun TransactionPartner.fragmentOrThrow(): TransactionPartner.Fragment = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Fragment
+
+public inline fun <T> TransactionPartner.ifFragment(block: (TransactionPartner.Fragment) -> T): T? =
+    fragmentOrNull() ?.let(block)
+
+public inline fun TransactionPartner.otherOrNull(): TransactionPartner.Other? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Other
+
+public inline fun TransactionPartner.otherOrThrow(): TransactionPartner.Other = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Other
+
+public inline fun <T> TransactionPartner.ifOther(block: (TransactionPartner.Other) -> T): T? =
+    otherOrNull() ?.let(block)
+
+public inline fun TransactionPartner.unknownOrNull(): TransactionPartner.Unknown? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Unknown
+
+public inline fun TransactionPartner.unknownOrThrow(): TransactionPartner.Unknown = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Unknown
+
+public inline fun <T> TransactionPartner.ifUnknown(block: (TransactionPartner.Unknown) -> T): T? =
+    unknownOrNull() ?.let(block)
+
+public inline fun TransactionPartner.userOrNull(): TransactionPartner.User? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.User
+
+public inline fun TransactionPartner.userOrThrow(): TransactionPartner.User = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.User
+
+public inline fun <T> TransactionPartner.ifUser(block: (TransactionPartner.User) -> T): T? =
+    userOrNull() ?.let(block)
 
 public inline fun ScheduledCloseInfo.exactScheduledCloseInfoOrNull(): ExactScheduledCloseInfo? =
     this as? dev.inmo.tgbotapi.types.polls.ExactScheduledCloseInfo

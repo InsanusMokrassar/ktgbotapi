@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.payments.stars
 
 import dev.inmo.tgbotapi.types.TelegramDate
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
+import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -11,6 +12,7 @@ import kotlinx.serialization.json.JsonElement
 
 @Suppress("SERIALIZER_TYPE_INCOMPATIBLE")
 @Serializable(RevenueWithdrawalState.Companion::class)
+@ClassCastsIncluded
 sealed interface RevenueWithdrawalState {
     val type: String
 
