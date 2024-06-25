@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.requests.edit.location.live
 
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -31,6 +32,8 @@ data class EditChatMessageLiveLocation(
     override val heading: Degrees? = null,
     @SerialName(proximityAlertRadiusField)
     override val proximityAlertRadius: Meters? = null,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<LocationContent>, EditReplyMessage, EditLocationMessage {

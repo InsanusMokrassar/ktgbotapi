@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.requests.edit.media.MediaContentMessageResultDeserializer
 import dev.inmo.tgbotapi.requests.send.abstracts.WithCustomizableCaptionRequest
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
@@ -23,6 +24,7 @@ fun EditChatMessageCaption(
     messageId: MessageId,
     text: String,
     parseMode: ParseMode? = null,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageCaption(
@@ -31,6 +33,7 @@ fun EditChatMessageCaption(
     text = text,
     parseMode = parseMode,
     rawEntities = null,
+    businessConnectionId = businessConnectionId,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup
 )
@@ -39,6 +42,7 @@ fun EditChatMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageId,
     entities: TextSourcesList,
+    businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = EditChatMessageCaption(
@@ -47,6 +51,7 @@ fun EditChatMessageCaption(
     text = entities.makeString(),
     parseMode = null,
     rawEntities = entities.toRawMessageEntities(),
+    businessConnectionId = businessConnectionId,
     showCaptionAboveMedia = showCaptionAboveMedia,
     replyMarkup = replyMarkup
 )
@@ -63,6 +68,8 @@ data class EditChatMessageCaption internal constructor(
     override val parseMode: ParseMode? = null,
     @SerialName(captionEntitiesField)
     private val rawEntities: List<RawMessageEntity>? = null,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(showCaptionAboveMediaField)
     override val showCaptionAboveMedia: Boolean = false,
     @SerialName(replyMarkupField)

@@ -1328,6 +1328,42 @@ suspend inline fun TelegramBot.reply(
 ) = sendInvoice(replyInChatId, title, description, payload, providerToken, currency, prices, maxTipAmount, suggestedTipAmounts, startParameter, providerData, requireName, requirePhoneNumber, requireEmail, requireShippingAddress, shouldSendPhoneNumberToProvider, shouldSendEmailToProvider, priceDependOnShipAddress, replyInThreadId, disableNotification, protectContent, effectId, ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true), replyMarkup)
 
 
+/**
+ * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
+ * as a builder for that
+ */
+suspend inline fun TelegramBot.reply(
+    to: AccessibleMessage,
+    title: String,
+    description: String,
+    payload: String,
+    price: LabeledPrice,
+    startParameter: StartParameter? = null,
+    providerData: String? = null,
+    replyInChatId: IdChatIdentifier = to.chat.id,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    effectId: EffectId? = null,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: InlineKeyboardMarkup? = null
+) = sendInvoice(
+    chatId = replyInChatId,
+    title = title,
+    description = description,
+    payload = payload,
+    price = price,
+    startParameter = startParameter,
+    providerData = providerData,
+    threadId = replyInThreadId,
+    disableNotification = disableNotification,
+    protectContent = protectContent,
+    effectId = effectId,
+    replyParameters = ReplyParameters(to, allowSendingWithoutReply = allowSendingWithoutReply == true),
+    replyMarkup = replyMarkup
+)
+
+
 // Polls
 
 

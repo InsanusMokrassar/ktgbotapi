@@ -65,7 +65,7 @@ class LiveLocationProvider internal constructor(
             message = requestsExecutor.editLiveLocation(
                 message,
                 location,
-                replyMarkup
+                replyMarkup = replyMarkup
             )
             return lastLocation
         } else {

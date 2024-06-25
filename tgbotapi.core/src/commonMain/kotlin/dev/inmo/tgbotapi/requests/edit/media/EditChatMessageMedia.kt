@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.requests.edit.media
 import dev.inmo.tgbotapi.requests.abstracts.MultipartFile
 import dev.inmo.tgbotapi.requests.edit.abstracts.*
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -22,6 +23,8 @@ data class EditChatMessageMedia(
     override val messageId: MessageId,
     @SerialName(mediaField)
     override val media: TelegramMedia,
+    @SerialName(businessConnectionIdField)
+    override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     @SerialName(replyMarkupField)
     override val replyMarkup: InlineKeyboardMarkup? = null
 ) : EditChatMessage<MediaContent>, EditReplyMessage, EditMediaMessage {

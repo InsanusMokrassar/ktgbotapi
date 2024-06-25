@@ -1,5 +1,15 @@
 # TelegramBotAPI changelog
 
+## 15.0.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+**THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.5**
+
+* `Version`:
+    * `MicroUtils`: `0.21.0` -> `0.21.1`
+* A lot of `edit` methods and classes has been changed to support business connection id
+
 ## 14.1.0
 
 * `Version`:
