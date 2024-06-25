@@ -137,6 +137,7 @@ dev.inmo.tgbotapi.types.passport.encrypted
 dev.inmo.tgbotapi.types.passport.encrypted.abstracts
 dev.inmo.tgbotapi.types.payments
 dev.inmo.tgbotapi.types.payments.abstracts
+dev.inmo.tgbotapi.types.payments.stars
 dev.inmo.tgbotapi.types.polls
 dev.inmo.tgbotapi.types.queries.callback
 dev.inmo.tgbotapi.types.reactions
