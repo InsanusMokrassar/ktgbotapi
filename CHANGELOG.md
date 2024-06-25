@@ -8,6 +8,7 @@
 
 * `Version`:
     * `MicroUtils`: `0.21.0` -> `0.21.1`
+* A lot of `edit` methods and classes has been changed to support business connection id
 
 ## 14.1.0
 
