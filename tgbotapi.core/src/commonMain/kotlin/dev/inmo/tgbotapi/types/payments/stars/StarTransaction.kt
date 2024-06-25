@@ -80,8 +80,8 @@ sealed interface StarTransaction {
             val id: StarTransactionId,
             val amount: Int,
             val date: TelegramDate,
-            val source: TransactionPartner?,
-            val receiver: TransactionPartner?,
+            val source: TransactionPartner? = null,
+            val receiver: TransactionPartner? = null,
         )
 
         override val descriptor: SerialDescriptor
