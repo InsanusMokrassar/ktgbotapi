@@ -24,9 +24,9 @@ plugins {
 allprojects {
     repositories {
         mavenLocal()
+        maven { url "https://nexus.inmo.dev/repository/maven-releases/" }
         mavenCentral()
         google()
-        maven { url "https://nexus.inmo.dev/repository/maven-releases/" }
     }
     if (it != rootProject.findProject("docs")) {
         tasks.whenTaskAdded { task ->
