@@ -2,6 +2,9 @@
 
 ## 15.1.0
 
+* `Version`:
+  * `MicroUtils`: `0.21.1` -> `0.21.2`
+
 ## 15.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**
