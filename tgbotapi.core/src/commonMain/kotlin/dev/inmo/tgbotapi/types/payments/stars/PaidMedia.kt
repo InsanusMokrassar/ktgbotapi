@@ -2,6 +2,7 @@ package dev.inmo.tgbotapi.types.payments.stars
 
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.files.PhotoSize
+import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
@@ -9,7 +10,9 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.JsonElement
 
+@Serializable(PaidMedia.Companion::class)
 sealed interface PaidMedia {
     val type: String
 
@@ -59,19 +62,12 @@ sealed interface PaidMedia {
         }
     }
 
-    @Serializable
-    data class Video(
-        @SerialName(videoField)
-        val video: Video
-    ) : PaidMedia {
-        @EncodeDefault
+    @Serializable(PaidMedia.Companion::class)
+    data class Unknown(
         @SerialName(typeField)
-        override val type: String = Companion.type
-
-        companion object {
-            val type: String = "video"
-        }
-    }
+        override val type: String,
+        val raw: JsonElement?
+    ) : PaidMedia
 
     companion object : KSerializer<PaidMedia> {
         @Serializable
@@ -91,14 +87,43 @@ sealed interface PaidMedia {
         )
 
         override val descriptor: SerialDescriptor
-            get() = TODO("Not yet implemented")
+            get() = Surrogate.serializer().descriptor
 
         override fun deserialize(decoder: Decoder): PaidMedia {
-            TODO("Not yet implemented")
+            val (data, json) = decoder.decodeDataAndJson(Surrogate.serializer())
+            val unknown by lazy {
+                Unknown(data.type, json)
+            }
+            return when (data.type) {
+                Preview.type -> Preview(
+                    data.width,
+                    data.height,
+                    data.duration
+                )
+                Photo.type -> Photo(
+                    data.photo ?: return unknown
+                )
+                Video.type -> Video(
+                    data.video ?: return unknown
+                )
+                else -> unknown
+            }
         }
 
         override fun serialize(encoder: Encoder, value: PaidMedia) {
-            TODO("Not yet implemented")
+            if (value is Unknown && value.raw != null) {
+                JsonElement.serializer().serialize(encoder, value.raw)
+            } else {
+                val surrogate = Surrogate(
+                    value.type,
+                    (value as? Preview) ?.width,
+                    (value as? Preview) ?.height,
+                    (value as? Preview) ?.duration,
+                    (value as? Photo) ?.photo,
+                    (value as? Video) ?.video,
+                )
+                Surrogate.serializer().serialize(encoder, surrogate)
+            }
         }
 
     }
