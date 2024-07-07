@@ -17,6 +17,7 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.forum.GeneralForumTopicUnhidde
 import dev.inmo.tgbotapi.types.message.ChatEvents.forum.WriteAccessAllowed
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
+import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
@@ -137,6 +138,10 @@ suspend fun BehaviourContext.waitSuccessfulPaymentEventsMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitEventsMessages<SuccessfulPaymentEvent>(initRequest, errorFactory)
+suspend fun BehaviourContext.waitRefundedPaymentEventsMessages(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitEventsMessages<RefundedPaymentEvent>(initRequest, errorFactory)
 suspend fun BehaviourContext.waitUserLoggedInEventsMessages(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }

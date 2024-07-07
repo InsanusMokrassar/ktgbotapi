@@ -34,6 +34,7 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.abstracts.*
 import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.message.textsources.*
 import dev.inmo.tgbotapi.types.passport.*
@@ -3224,6 +3225,16 @@ inline fun ChatEvent.asSuccessfulPaymentEvent(): SuccessfulPaymentEvent? = this 
 
 @PreviewFeature
 inline fun ChatEvent.requireSuccessfulPaymentEvent(): SuccessfulPaymentEvent = this as SuccessfulPaymentEvent
+
+@PreviewFeature
+inline fun <T> ChatEvent.whenRefundedPaymentEvent(block: (RefundedPaymentEvent) -> T) =
+    asRefundedPaymentEvent()?.let(block)
+
+@PreviewFeature
+inline fun ChatEvent.asRefundedPaymentEvent(): RefundedPaymentEvent? = this as? RefundedPaymentEvent
+
+@PreviewFeature
+inline fun ChatEvent.requireRefundedPaymentEvent(): RefundedPaymentEvent = this as RefundedPaymentEvent
 
 @PreviewFeature
 inline fun <T> ChatEvent.whenProximityAlertTriggered(block: (ProximityAlertTriggered) -> T) =

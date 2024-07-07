@@ -340,6 +340,7 @@ import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.message.content.WithCustomizedCaptionMediaContent
+import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
@@ -3440,6 +3441,15 @@ public inline fun ChatEvent.successfulPaymentEventOrThrow(): SuccessfulPaymentEv
 
 public inline fun <T> ChatEvent.ifSuccessfulPaymentEvent(block: (SuccessfulPaymentEvent) -> T): T? =
     successfulPaymentEventOrNull() ?.let(block)
+
+public inline fun ChatEvent.refundedPaymentEventOrNull(): RefundedPaymentEvent? = this as?
+    dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
+
+public inline fun ChatEvent.refundedPaymentEventOrThrow(): RefundedPaymentEvent = this as
+    dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
+
+public inline fun <T> ChatEvent.ifRefundedPaymentEvent(block: (RefundedPaymentEvent) -> T): T? =
+    refundedPaymentEventOrNull() ?.let(block)
 
 public inline fun ChatEvent.chatSharedOrNull(): ChatShared? = this as?
     dev.inmo.tgbotapi.types.request.ChatShared

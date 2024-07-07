@@ -24,6 +24,7 @@ import dev.inmo.tgbotapi.types.message.ChatEvents.voice.*
 import dev.inmo.tgbotapi.types.message.PrivateEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.ChatEventMessage
 import dev.inmo.tgbotapi.types.message.abstracts.SupergroupEventMessage
+import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.request.ChatShared
 import dev.inmo.tgbotapi.types.request.ChatSharedRequest
@@ -511,6 +512,14 @@ suspend fun <BC : BehaviourContext> BC.onSuccessfulPayment(
     subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<SuccessfulPaymentEvent>, Update>? = MessageFilterByChat,
     markerFactory: MarkerFactory<in ChatEventMessage<SuccessfulPaymentEvent>, Any>? = ByChatMessageMarkerFactory,
     scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<SuccessfulPaymentEvent>>
+) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
+
+// TODO: add documentation
+suspend fun <BC : BehaviourContext> BC.onRefundedPayment(
+    initialFilter: SimpleFilter<ChatEventMessage<RefundedPaymentEvent>>? = null,
+    subcontextUpdatesFilter: CustomBehaviourContextAndTwoTypesReceiver<BC, Boolean, ChatEventMessage<RefundedPaymentEvent>, Update>? = MessageFilterByChat,
+    markerFactory: MarkerFactory<in ChatEventMessage<RefundedPaymentEvent>, Any>? = ByChatMessageMarkerFactory,
+    scenarioReceiver: CustomBehaviourContextAndTypeReceiver<BC, Unit, ChatEventMessage<RefundedPaymentEvent>>
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
