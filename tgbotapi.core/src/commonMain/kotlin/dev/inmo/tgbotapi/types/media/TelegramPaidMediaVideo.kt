@@ -4,6 +4,7 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import dev.inmo.tgbotapi.requests.abstracts.fileIdToSend
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.files.VideoFile
+import dev.inmo.tgbotapi.types.message.payments.PaidMedia
 import kotlinx.serialization.*
 
 internal const val videoTelegramPaidMediaType = "video"

@@ -103,7 +103,7 @@ inline val Message.animation: AnimationFile?
 inline val Message.game: Game?
     get() = asContentMessage() ?.content ?.asGameContent() ?.game
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.photo: Photo?
+inline val Message.photo: PhotoFile?
     get() = asContentMessage() ?.content ?.asPhotoContent() ?.mediaCollection
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.sticker: Sticker?
@@ -145,7 +145,7 @@ inline val Message.left_chat_member: User?
 inline val Message.new_chat_title: String?
     get() = asChatEventMessage() ?.chatEvent ?.asNewChatTitle() ?.title
 @RiskFeature(RawFieldsUsageWarning)
-inline val Message.new_chat_photo: Photo?
+inline val Message.new_chat_photo: PhotoFile?
     get() = asChatEventMessage() ?.chatEvent ?.asNewChatPhoto() ?.photo
 @RiskFeature(RawFieldsUsageWarning)
 inline val Message.delete_chat_photo: Boolean

@@ -606,6 +606,8 @@ const val additionalChatCountField = "additional_chat_count"
 const val unclaimedPrizeCountField = "unclaimed_prize_count"
 const val wasRefundedField = "was_refunded"
 const val isManualField = "is_manual"
+const val starCountField = "star_count"
+const val paidMediaField = "paid_media"
 
 const val businessConnectionIdField = "business_connection_id"
 const val businessIntroField = "business_intro"

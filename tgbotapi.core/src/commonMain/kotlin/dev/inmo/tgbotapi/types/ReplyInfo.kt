@@ -92,7 +92,7 @@ sealed interface ReplyInfo {
             private val animation: AnimationFile? = null,
             private val game: RawGame? = null,
             @Serializable(PhotoSerializer::class)
-            private val photo: Photo? = null,
+            private val photo: PhotoFile? = null,
             private val sticker: Sticker? = null,
             private val video: VideoFile? = null,
             private val voice: VoiceFile? = null,

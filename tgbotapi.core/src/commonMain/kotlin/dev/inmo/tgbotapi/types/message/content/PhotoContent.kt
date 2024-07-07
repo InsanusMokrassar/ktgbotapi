@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PhotoContent(
-    override val mediaCollection: Photo,
+    override val mediaCollection: PhotoFile,
     override val text: String? = null,
     override val textSources: TextSourcesList = emptyList(),
     override val spoilered: Boolean = false,

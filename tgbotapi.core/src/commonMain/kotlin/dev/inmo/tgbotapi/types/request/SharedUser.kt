@@ -1,7 +1,7 @@
 package dev.inmo.tgbotapi.types.request
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.files.Photo
+import dev.inmo.tgbotapi.types.files.PhotoFile
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -16,5 +16,5 @@ data class SharedUser(
     @SerialName(usernameField)
     val username: Username? = null,
     @SerialName(photoField)
-    val photo: Photo? = null,
+    val photo: PhotoFile? = null,
 )

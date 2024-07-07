@@ -726,7 +726,7 @@ suspend fun TelegramBot.send(
  */
 suspend fun TelegramBot.send(
     chatId: ChatIdentifier,
-    photo: Photo,
+    photo: PhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
@@ -747,7 +747,7 @@ suspend fun TelegramBot.send(
  */
 suspend fun TelegramBot.send(
     chat: Chat,
-    photo: Photo,
+    photo: PhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
@@ -810,7 +810,7 @@ suspend fun TelegramBot.send(
  */
 suspend inline fun TelegramBot.send(
     chatId: ChatIdentifier,
-    photo: Photo,
+    photo: PhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
@@ -830,7 +830,7 @@ suspend inline fun TelegramBot.send(
  */
 suspend inline fun TelegramBot.send(
     chat: Chat,
-    photo: Photo,
+    photo: PhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,

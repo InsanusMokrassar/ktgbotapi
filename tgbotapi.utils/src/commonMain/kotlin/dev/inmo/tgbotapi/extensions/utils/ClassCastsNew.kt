@@ -193,7 +193,7 @@ import dev.inmo.tgbotapi.types.files.MediaContentVariant
 import dev.inmo.tgbotapi.types.files.MimedMediaFile
 import dev.inmo.tgbotapi.types.files.PassportFile
 import dev.inmo.tgbotapi.types.files.PathedFile
-import dev.inmo.tgbotapi.types.files.Photo
+import dev.inmo.tgbotapi.types.files.PhotoFile
 import dev.inmo.tgbotapi.types.files.PhotoSize
 import dev.inmo.tgbotapi.types.files.PlayableMediaFile
 import dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
@@ -2707,13 +2707,13 @@ public inline fun TelegramMediaFile.pathedFileOrThrow(): PathedFile = this as
 public inline fun <T> TelegramMediaFile.ifPathedFile(block: (PathedFile) -> T): T? =
     pathedFileOrNull() ?.let(block)
 
-public inline fun TelegramMediaFile.photoOrNull(): Photo? = this as?
-    dev.inmo.tgbotapi.types.files.Photo
+public inline fun TelegramMediaFile.photoOrNull(): PhotoFile? = this as?
+    dev.inmo.tgbotapi.types.files.PhotoFile
 
-public inline fun TelegramMediaFile.photoOrThrow(): Photo = this as
-    dev.inmo.tgbotapi.types.files.Photo
+public inline fun TelegramMediaFile.photoOrThrow(): PhotoFile = this as
+    dev.inmo.tgbotapi.types.files.PhotoFile
 
-public inline fun <T> TelegramMediaFile.ifPhoto(block: (Photo) -> T): T? = photoOrNull()
+public inline fun <T> TelegramMediaFile.ifPhoto(block: (PhotoFile) -> T): T? = photoOrNull()
     ?.let(block)
 
 public inline fun TelegramMediaFile.photoSizeOrNull(): PhotoSize? = this as?

@@ -806,7 +806,7 @@ suspend inline fun TelegramBot.replyWithPhoto(
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
-    photo: Photo,
+    photo: PhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
@@ -860,7 +860,7 @@ suspend inline fun TelegramBot.replyWithPhoto(
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
-    photo: Photo,
+    photo: PhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,

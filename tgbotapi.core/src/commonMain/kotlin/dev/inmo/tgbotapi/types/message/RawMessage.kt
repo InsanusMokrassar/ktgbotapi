@@ -71,10 +71,11 @@ internal data class RawMessage(
     private val story: Story? = null,
     private val audio: AudioFile? = null,
     private val document: DocumentFile? = null,
+    private val paid_media: PaidMediaInfoContent? = null,
     private val animation: AnimationFile? = null,
     private val game: RawGame? = null,
     @Serializable(PhotoSerializer::class)
-    private val photo: Photo? = null,
+    private val photo: PhotoFile? = null,
     private val sticker: Sticker? = null,
     private val video: VideoFile? = null,
     private val voice: VoiceFile? = null,
@@ -87,7 +88,7 @@ internal data class RawMessage(
     private val left_chat_member: User? = null,
     private val new_chat_title: String? = null,
     @Serializable(PhotoSerializer::class)
-    private val new_chat_photo: Photo? = null,
+    private val new_chat_photo: PhotoFile? = null,
     private val delete_chat_photo: Boolean = false,
     private val group_chat_created: Boolean = false,
     private val supergroup_chat_created: Boolean = false,
@@ -193,6 +194,12 @@ internal data class RawMessage(
                 show_caption_above_media
             )
             document != null -> DocumentContent(
+                document,
+                caption,
+                adaptedCaptionEntities,
+                quote
+            )
+            paid_media != null -> PaidMediaInfoContent(
                 document,
                 caption,
                 adaptedCaptionEntities,

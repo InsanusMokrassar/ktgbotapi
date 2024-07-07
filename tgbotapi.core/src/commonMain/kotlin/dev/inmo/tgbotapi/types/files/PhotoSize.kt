@@ -8,7 +8,7 @@ import kotlin.jvm.JvmInline
 
 @Serializable
 @JvmInline
-value class Photo(
+value class PhotoFile(
     val photos: List<PhotoSize>
 ) : List<PhotoSize> by photos, MediaContentVariant, UsefulAsPaidMediaFile {
     val biggest: PhotoSize
@@ -27,12 +27,14 @@ value class Photo(
     }
 }
 
-fun Photo.biggest(): PhotoSize? = maxByOrNull {
+typealias Photo = PhotoFile
+
+fun PhotoFile.biggest(): PhotoSize? = maxByOrNull {
     it.resolution
 }
 
 @RiskFeature
-object PhotoSerializer : KSerializer<Photo> by Photo.serializer()
+object PhotoSerializer : KSerializer<PhotoFile> by PhotoFile.serializer()
 
 @Serializable
 data class PhotoSize(
