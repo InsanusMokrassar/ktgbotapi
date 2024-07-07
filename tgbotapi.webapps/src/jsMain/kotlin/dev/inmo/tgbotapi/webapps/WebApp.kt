@@ -30,6 +30,10 @@ external class WebApp {
     val viewportHeight: Float
     val viewportStableHeight: Float
 
+    val isVerticalSwipesEnabled: Boolean
+    fun enableVerticalSwipes()
+    fun disableVerticalSwipes()
+
 
     val isClosingConfirmationEnabled: Boolean
     fun enableClosingConfirmation()
