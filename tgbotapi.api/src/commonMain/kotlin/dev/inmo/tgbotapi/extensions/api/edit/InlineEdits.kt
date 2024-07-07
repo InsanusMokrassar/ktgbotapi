@@ -8,7 +8,7 @@ import dev.inmo.tgbotapi.extensions.api.edit.text.editMessageText
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.location.LiveLocation
-import dev.inmo.tgbotapi.types.media.TelegramMedia
+import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.textsources.TextSource
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
@@ -47,7 +47,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     messageId: InlineMessageId,
-    media: TelegramMedia,
+    media: TelegramFreeMedia,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(messageId, media, replyMarkup)
 

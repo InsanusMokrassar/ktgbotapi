@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
+import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.message.abstracts.*
 import dev.inmo.tgbotapi.utils.RiskFeature

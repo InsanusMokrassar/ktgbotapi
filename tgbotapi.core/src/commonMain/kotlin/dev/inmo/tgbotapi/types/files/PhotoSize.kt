@@ -10,7 +10,7 @@ import kotlin.jvm.JvmInline
 @JvmInline
 value class Photo(
     val photos: List<PhotoSize>
-) : List<PhotoSize> by photos, MediaContentVariant {
+) : List<PhotoSize> by photos, MediaContentVariant, UsefulAsPaidMediaFile {
     val biggest: PhotoSize
         get() = biggest()!!
     override val fileId: FileId

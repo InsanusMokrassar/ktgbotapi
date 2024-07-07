@@ -1999,141 +1999,141 @@ inline fun ChatMember.asSpecialRightsChatMember(): SpecialRightsChatMember? = th
 inline fun ChatMember.requireSpecialRightsChatMember(): SpecialRightsChatMember = this as SpecialRightsChatMember
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) =
+inline fun <T> TelegramFreeMedia.whenAudioMediaGroupMemberTelegramMedia(block: (AudioMediaGroupMemberTelegramMedia) -> T) =
     asAudioMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia? =
+inline fun TelegramFreeMedia.asAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia? =
     this as? AudioMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun TelegramMedia.requireAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia =
+inline fun TelegramFreeMedia.requireAudioMediaGroupMemberTelegramMedia(): AudioMediaGroupMemberTelegramMedia =
     this as AudioMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) =
+inline fun <T> TelegramFreeMedia.whenDocumentMediaGroupMemberTelegramMedia(block: (DocumentMediaGroupMemberTelegramMedia) -> T) =
     asDocumentMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia? =
+inline fun TelegramFreeMedia.asDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia? =
     this as? DocumentMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun TelegramMedia.requireDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia =
+inline fun TelegramFreeMedia.requireDocumentMediaGroupMemberTelegramMedia(): DocumentMediaGroupMemberTelegramMedia =
     this as DocumentMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T) =
+inline fun <T> TelegramFreeMedia.whenDuratedTelegramMedia(block: (DuratedTelegramMedia) -> T) =
     asDuratedTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asDuratedTelegramMedia(): DuratedTelegramMedia? = this as? DuratedTelegramMedia
+inline fun TelegramFreeMedia.asDuratedTelegramMedia(): DuratedTelegramMedia? = this as? DuratedTelegramMedia
 
 @PreviewFeature
-inline fun TelegramMedia.requireDuratedTelegramMedia(): DuratedTelegramMedia = this as DuratedTelegramMedia
+inline fun TelegramFreeMedia.requireDuratedTelegramMedia(): DuratedTelegramMedia = this as DuratedTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T) =
+inline fun <T> TelegramFreeMedia.whenTelegramMediaAnimation(block: (TelegramMediaAnimation) -> T) =
     asTelegramMediaAnimation()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asTelegramMediaAnimation(): TelegramMediaAnimation? = this as? TelegramMediaAnimation
+inline fun TelegramFreeMedia.asTelegramMediaAnimation(): TelegramMediaAnimation? = this as? TelegramMediaAnimation
 
 @PreviewFeature
-inline fun TelegramMedia.requireTelegramMediaAnimation(): TelegramMediaAnimation = this as TelegramMediaAnimation
+inline fun TelegramFreeMedia.requireTelegramMediaAnimation(): TelegramMediaAnimation = this as TelegramMediaAnimation
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaAudio(block: (TelegramMediaAudio) -> T) =
+inline fun <T> TelegramFreeMedia.whenTelegramMediaAudio(block: (TelegramMediaAudio) -> T) =
     asTelegramMediaAudio()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asTelegramMediaAudio(): TelegramMediaAudio? = this as? TelegramMediaAudio
+inline fun TelegramFreeMedia.asTelegramMediaAudio(): TelegramMediaAudio? = this as? TelegramMediaAudio
 
 @PreviewFeature
-inline fun TelegramMedia.requireTelegramMediaAudio(): TelegramMediaAudio = this as TelegramMediaAudio
+inline fun TelegramFreeMedia.requireTelegramMediaAudio(): TelegramMediaAudio = this as TelegramMediaAudio
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaDocument(block: (TelegramMediaDocument) -> T) =
+inline fun <T> TelegramFreeMedia.whenTelegramMediaDocument(block: (TelegramMediaDocument) -> T) =
     asTelegramMediaDocument()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asTelegramMediaDocument(): TelegramMediaDocument? = this as? TelegramMediaDocument
+inline fun TelegramFreeMedia.asTelegramMediaDocument(): TelegramMediaDocument? = this as? TelegramMediaDocument
 
 @PreviewFeature
-inline fun TelegramMedia.requireTelegramMediaDocument(): TelegramMediaDocument = this as TelegramMediaDocument
+inline fun TelegramFreeMedia.requireTelegramMediaDocument(): TelegramMediaDocument = this as TelegramMediaDocument
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T) =
+inline fun <T> TelegramFreeMedia.whenTelegramMediaPhoto(block: (TelegramMediaPhoto) -> T) =
     asTelegramMediaPhoto()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asTelegramMediaPhoto(): TelegramMediaPhoto? = this as? TelegramMediaPhoto
+inline fun TelegramFreeMedia.asTelegramMediaPhoto(): TelegramMediaPhoto? = this as? TelegramMediaPhoto
 
 @PreviewFeature
-inline fun TelegramMedia.requireTelegramMediaPhoto(): TelegramMediaPhoto = this as TelegramMediaPhoto
+inline fun TelegramFreeMedia.requireTelegramMediaPhoto(): TelegramMediaPhoto = this as TelegramMediaPhoto
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTelegramMediaVideo(block: (TelegramMediaVideo) -> T) =
+inline fun <T> TelegramFreeMedia.whenTelegramMediaVideo(block: (TelegramMediaVideo) -> T) =
     asTelegramMediaVideo()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asTelegramMediaVideo(): TelegramMediaVideo? = this as? TelegramMediaVideo
+inline fun TelegramFreeMedia.asTelegramMediaVideo(): TelegramMediaVideo? = this as? TelegramMediaVideo
 
 @PreviewFeature
-inline fun TelegramMedia.requireTelegramMediaVideo(): TelegramMediaVideo = this as TelegramMediaVideo
+inline fun TelegramFreeMedia.requireTelegramMediaVideo(): TelegramMediaVideo = this as TelegramMediaVideo
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T) =
+inline fun <T> TelegramFreeMedia.whenMediaGroupMemberTelegramMedia(block: (MediaGroupMemberTelegramMedia) -> T) =
     asMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia? =
+inline fun TelegramFreeMedia.asMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia? =
     this as? MediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun TelegramMedia.requireMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia =
+inline fun TelegramFreeMedia.requireMediaGroupMemberTelegramMedia(): MediaGroupMemberTelegramMedia =
     this as MediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenSizedTelegramMedia(block: (SizedTelegramMedia) -> T) =
+inline fun <T> TelegramFreeMedia.whenSizedTelegramMedia(block: (SizedTelegramMedia) -> T) =
     asSizedTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asSizedTelegramMedia(): SizedTelegramMedia? = this as? SizedTelegramMedia
+inline fun TelegramFreeMedia.asSizedTelegramMedia(): SizedTelegramMedia? = this as? SizedTelegramMedia
 
 @PreviewFeature
-inline fun TelegramMedia.requireSizedTelegramMedia(): SizedTelegramMedia = this as SizedTelegramMedia
+inline fun TelegramFreeMedia.requireSizedTelegramMedia(): SizedTelegramMedia = this as SizedTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T) =
+inline fun <T> TelegramFreeMedia.whenThumbedTelegramMedia(block: (ThumbedTelegramMedia) -> T) =
     asThumbedTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asThumbedTelegramMedia(): ThumbedTelegramMedia? = this as? ThumbedTelegramMedia
+inline fun TelegramFreeMedia.asThumbedTelegramMedia(): ThumbedTelegramMedia? = this as? ThumbedTelegramMedia
 
 @PreviewFeature
-inline fun TelegramMedia.requireThumbedTelegramMedia(): ThumbedTelegramMedia = this as ThumbedTelegramMedia
+inline fun TelegramFreeMedia.requireThumbedTelegramMedia(): ThumbedTelegramMedia = this as ThumbedTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenTitledTelegramMedia(block: (TitledTelegramMedia) -> T) =
+inline fun <T> TelegramFreeMedia.whenTitledTelegramMedia(block: (TitledTelegramMedia) -> T) =
     asTitledTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asTitledTelegramMedia(): TitledTelegramMedia? = this as? TitledTelegramMedia
+inline fun TelegramFreeMedia.asTitledTelegramMedia(): TitledTelegramMedia? = this as? TitledTelegramMedia
 
 @PreviewFeature
-inline fun TelegramMedia.requireTitledTelegramMedia(): TitledTelegramMedia = this as TitledTelegramMedia
+inline fun TelegramFreeMedia.requireTitledTelegramMedia(): TitledTelegramMedia = this as TitledTelegramMedia
 
 @PreviewFeature
-inline fun <T> TelegramMedia.whenVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) =
+inline fun <T> TelegramFreeMedia.whenVisualMediaGroupMemberTelegramMedia(block: (VisualMediaGroupMemberTelegramMedia) -> T) =
     asVisualMediaGroupMemberTelegramMedia()?.let(block)
 
 @PreviewFeature
-inline fun TelegramMedia.asVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia? =
+inline fun TelegramFreeMedia.asVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia? =
     this as? VisualMediaGroupMemberTelegramMedia
 
 @PreviewFeature
-inline fun TelegramMedia.requireVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia =
+inline fun TelegramFreeMedia.requireVisualMediaGroupMemberTelegramMedia(): VisualMediaGroupMemberTelegramMedia =
     this as VisualMediaGroupMemberTelegramMedia
 
 @PreviewFeature

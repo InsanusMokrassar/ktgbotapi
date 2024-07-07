@@ -173,7 +173,7 @@ private object MessagesListSerializer: KSerializer<PossiblySentViaBotCommonMessa
 data class SendMediaGroupData internal constructor(
     @SerialName(chatIdField)
     override val chatId: ChatIdentifier,
-    val media: List<MediaGroupMemberTelegramMedia> = emptyList(),
+    val media: List<MediaGroupMemberTelegramPaidMedia> = emptyList(),
     @SerialName(messageThreadIdField)
     override val threadId: MessageThreadId? = chatId.threadId,
     @SerialName(businessConnectionIdField)

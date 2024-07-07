@@ -3,21 +3,25 @@ package dev.inmo.tgbotapi.types.media
 import dev.inmo.tgbotapi.abstracts.TextedOutput
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.StringFormat
-import kotlinx.serialization.json.Json
 
-internal val argumentsFormatter by lazy {
-    Json {
-        encodeDefaults = true
-    }
-}
-
-@Serializable(MediaGroupMemberTelegramMediaSerializer::class)
-sealed interface MediaGroupMemberTelegramMedia : TelegramMedia, TextedOutput {
+@Serializable(MediaGroupMemberTelegramFreeMediaSerializer::class)
+sealed interface MediaGroupMemberTelegramMedia : TelegramMedia {
     fun serialize(format: StringFormat): String
 }
 
-sealed interface AudioMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramMedia
-sealed interface DocumentMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramMedia
+@Serializable(MediaGroupMemberTelegramFreeMediaSerializer::class)
+sealed interface MediaGroupMemberTelegramFreeMedia : MediaGroupMemberTelegramMedia, TextedOutput
+@Serializable(MediaGroupMemberTelegramFreeMediaSerializer::class)
+sealed interface MediaGroupMemberTelegramPaidMedia : MediaGroupMemberTelegramMedia
 
-@Serializable(MediaGroupMemberTelegramMediaSerializer::class)
-sealed interface VisualMediaGroupMemberTelegramMedia : MediaGroupMemberTelegramMedia, SpoilerableTelegramMedia, WithCustomizableCaptionTelegramMedia
+sealed interface AudioMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramFreeMedia
+sealed interface DocumentMediaGroupMemberTelegramMedia: MediaGroupMemberTelegramFreeMedia
+
+@Serializable(MediaGroupMemberTelegramFreeMediaSerializer::class)
+sealed interface VisualMediaGroupMemberTelegramMedia : MediaGroupMemberTelegramMedia
+
+@Serializable(MediaGroupMemberTelegramFreeMediaSerializer::class)
+sealed interface VisualMediaGroupMemberTelegramFreeMedia : MediaGroupMemberTelegramFreeMedia, VisualMediaGroupMemberTelegramMedia, SpoilerableTelegramMedia, WithCustomizableCaptionTelegramMedia
+
+@Serializable(MediaGroupMemberTelegramPaidMediaSerializer::class)
+sealed interface VisualMediaGroupMemberTelegramPaidMedia : MediaGroupMemberTelegramPaidMedia, VisualMediaGroupMemberTelegramMedia

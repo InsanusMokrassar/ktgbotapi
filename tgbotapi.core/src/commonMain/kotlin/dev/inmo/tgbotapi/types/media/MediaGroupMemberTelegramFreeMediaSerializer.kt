@@ -11,10 +11,10 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
 
 @RiskFeature
-object MediaGroupMemberTelegramMediaSerializer : KSerializer<MediaGroupMemberTelegramMedia> {
+object MediaGroupMemberTelegramFreeMediaSerializer : KSerializer<MediaGroupMemberTelegramFreeMedia> {
     @OptIn(InternalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildSerialDescriptor(MediaGroupMemberTelegramMedia::class.toString(), PolymorphicKind.OPEN)
-    override fun serialize(encoder: Encoder, value: MediaGroupMemberTelegramMedia) {
+    override fun serialize(encoder: Encoder, value: MediaGroupMemberTelegramFreeMedia) {
         when (value) {
             is TelegramMediaPhoto -> TelegramMediaPhoto.serializer().serialize(encoder, value)
             is TelegramMediaVideo -> TelegramMediaVideo.serializer().serialize(encoder, value)
@@ -23,7 +23,7 @@ object MediaGroupMemberTelegramMediaSerializer : KSerializer<MediaGroupMemberTel
         }
     }
 
-    override fun deserialize(decoder: Decoder): MediaGroupMemberTelegramMedia {
+    override fun deserialize(decoder: Decoder): MediaGroupMemberTelegramFreeMedia {
         val json = JsonObject.serializer().deserialize(decoder)
 
         return when (json[typeField] ?.jsonPrimitive ?.contentOrNull) {
@@ -35,3 +35,5 @@ object MediaGroupMemberTelegramMediaSerializer : KSerializer<MediaGroupMemberTel
         }
     }
 }
+
+typealias MediaGroupMemberTelegramMediaSerializer = MediaGroupMemberTelegramFreeMediaSerializer

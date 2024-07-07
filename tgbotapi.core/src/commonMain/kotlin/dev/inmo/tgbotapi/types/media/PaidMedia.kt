@@ -1,7 +1,7 @@
-package dev.inmo.tgbotapi.types.payments.stars
+package dev.inmo.tgbotapi.types.media
 
 import dev.inmo.tgbotapi.types.*
-import dev.inmo.tgbotapi.types.files.PhotoSize
+import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
@@ -13,9 +13,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonElement
 
 @Serializable(PaidMedia.Companion::class)
-sealed interface PaidMedia {
-    val type: String
-
+sealed interface PaidMedia : TelegramMedia {
     @Serializable
     data class Preview(
         @SerialName(widthField)
@@ -51,7 +49,7 @@ sealed interface PaidMedia {
     @Serializable
     data class Video(
         @SerialName(videoField)
-        val video: Video
+        val video: VideoFile
     ) : PaidMedia {
         @EncodeDefault
         @SerialName(typeField)
@@ -62,7 +60,7 @@ sealed interface PaidMedia {
         }
     }
 
-    @Serializable(PaidMedia.Companion::class)
+    @Serializable(Companion::class)
     data class Unknown(
         @SerialName(typeField)
         override val type: String,

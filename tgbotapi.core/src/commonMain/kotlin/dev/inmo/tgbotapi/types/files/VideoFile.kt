@@ -3,6 +3,7 @@ package dev.inmo.tgbotapi.types.files
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+import dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.utils.MimeType
@@ -30,7 +31,7 @@ data class VideoFile(
     @SerialName(fileSizeField)
     override val fileSize: Long? = null
 ) : TelegramMediaFile, CustomNamedMediaFile, MimedMediaFile, ThumbedMediaFile, PlayableMediaFile, SizedMediaFile,
-    MediaContentVariant
+    MediaContentVariant, UsefulAsPaidMediaFile
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun VideoFile.toTelegramMediaVideo(
@@ -60,6 +61,14 @@ inline fun VideoFile.toTelegramMediaVideo(
     entities = textSources,
     spoilered = spoilered,
     showCaptionAboveMedia = showCaptionAboveMedia,
+    width = width,
+    height = height,
+    duration = duration,
+    thumb = thumbnail ?.fileId
+)
+@Suppress("NOTHING_TO_INLINE")
+inline fun VideoFile.toTelegramPaidMediaVideo() = TelegramPaidMediaVideo(
+    file = fileId,
     width = width,
     height = height,
     duration = duration,
