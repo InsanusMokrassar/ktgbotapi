@@ -30,6 +30,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.payments.*
 import dev.inmo.tgbotapi.types.passport.PassportData
 import dev.inmo.tgbotapi.types.payments.Invoice
+import dev.inmo.tgbotapi.types.payments.RefundedPayment
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.request.ChatShared
@@ -98,6 +99,7 @@ internal data class RawMessage(
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
+    private val refunded_payment: RefundedPayment? = null,
     private val giveaway: Giveaway? = null,
     private val giveaway_winners: GiveawayResults? = null,
     private val sender_boost_count: Int? = null,
