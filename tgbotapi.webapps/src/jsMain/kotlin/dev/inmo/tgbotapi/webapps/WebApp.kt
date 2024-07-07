@@ -275,7 +275,7 @@ fun WebApp.onContactRequested(eventHandler: ContactRequestedHandler) = onEvent(E
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
-fun WebApp.onScanQRPopupClosed(eventHandler: EventHandler) = onEvent(EventType.ScanQRPopupClosed, eventHandler)
+fun WebApp.onScanQRPopupClosed(eventHandler: onScanQRPopupClosedHandler) = onEvent(EventType.ScanQRPopupClosed, eventHandler)
 
 fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
     initData,
