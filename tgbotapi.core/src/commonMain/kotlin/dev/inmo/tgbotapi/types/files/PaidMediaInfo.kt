@@ -1,5 +1,6 @@
 package dev.inmo.tgbotapi.types.files
 
+import dev.inmo.tgbotapi.types.ReplyInfo
 import dev.inmo.tgbotapi.types.message.payments.PaidMedia
 import dev.inmo.tgbotapi.types.paidMediaField
 import dev.inmo.tgbotapi.types.starCountField
@@ -12,4 +13,4 @@ data class PaidMediaInfo(
     val stars: Int,
     @SerialName(paidMediaField)
     val media: List<PaidMedia>
-)
+) : ReplyInfo.External.ContentVariant

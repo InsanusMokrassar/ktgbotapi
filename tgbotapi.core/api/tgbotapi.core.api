@@ -16738,7 +16738,7 @@ public abstract interface class dev/inmo/tgbotapi/types/files/MediaContentVarian
 public abstract interface class dev/inmo/tgbotapi/types/files/MimedMediaFile : dev/inmo/tgbotapi/abstracts/MimeTyped, dev/inmo/tgbotapi/types/files/TelegramMediaFile {
 }
 
-public final class dev/inmo/tgbotapi/types/files/PaidMediaInfo {
+public final class dev/inmo/tgbotapi/types/files/PaidMediaInfo : dev/inmo/tgbotapi/types/ReplyInfo$External$ContentVariant {
 	public static final field Companion Ldev/inmo/tgbotapi/types/files/PaidMediaInfo$Companion;
 	public fun <init> (ILjava/util/List;)V
 	public final fun component1 ()I
