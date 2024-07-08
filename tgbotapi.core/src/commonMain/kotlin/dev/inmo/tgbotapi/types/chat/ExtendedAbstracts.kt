@@ -30,6 +30,7 @@ sealed interface ExtendedNonBotChat : ExtendedChat {
 @Serializable(ExtendedChatSerializer.Companion::class)
 sealed interface ExtendedChannelChat : ChannelChat, ExtendedPublicChat, ExtendedChatWithUsername {
     val linkedGroupChatId: IdChatIdentifier?
+    val canSendPaidMedia: Boolean
 }
 
 @Serializable(ExtendedChatSerializer.Companion::class)

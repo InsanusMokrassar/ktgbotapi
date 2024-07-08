@@ -5,5 +5,7 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import kotlinx.serialization.Serializable
 
 @Serializable(TelegramMediaSerializer::class)
-@ClassCastsIncluded
 sealed interface TelegramPaidMedia : TelegramMedia
+
+@Serializable(TelegramMediaSerializer::class)
+sealed interface VisualTelegramPaidMedia : TelegramPaidMedia

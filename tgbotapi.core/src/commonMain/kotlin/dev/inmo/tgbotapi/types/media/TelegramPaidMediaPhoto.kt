@@ -18,10 +18,8 @@ internal const val photoTelegramPaidMediaType = "photo"
 @Serializable
 data class TelegramPaidMediaPhoto internal constructor(
     override val file: InputFile,
-) : TelegramPaidMedia, VisualMediaGroupMemberTelegramPaidMedia {
+) : VisualTelegramPaidMedia {
     override val type: String = photoTelegramPaidMediaType
-
-    override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
     override val media: String

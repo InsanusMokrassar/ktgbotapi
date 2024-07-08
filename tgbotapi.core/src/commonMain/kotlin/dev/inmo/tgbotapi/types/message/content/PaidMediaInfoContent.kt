@@ -1,7 +1,10 @@
 package dev.inmo.tgbotapi.types.message.content
 
+import dev.inmo.tgbotapi.abstracts.WithCustomizableCaption
 import dev.inmo.tgbotapi.requests.abstracts.Request
+import dev.inmo.tgbotapi.requests.send.media.SendPaidMedia
 import dev.inmo.tgbotapi.types.*
+import dev.inmo.tgbotapi.types.abstracts.WithOptionalQuoteInfo
 import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
@@ -19,16 +22,7 @@ data class PaidMediaInfoContent(
     override val textSources: TextSourcesList = emptyList(),
     override val quote: TextQuote? = null,
     override val showCaptionAboveMedia: Boolean = false
-) : TextedMediaContent, WithCustomizedCaptionMediaContent {
-    override val media: TelegramMediaFile
-        get() = paidMediaInfo.media.fir
-    override fun asTelegramMedia(): TelegramMediaFile = when (val media = media) {
-        is PaidMedia.Photo -> media.photo.biggest.toTelegramPaidMediaPhoto()
-        is PaidMedia.Preview,
-        is PaidMedia.Unknown -> error("Unable to create telegram media out of $media")
-        is PaidMedia.Video -> media.video.toTelegramPaidMediaVideo()
-    }
-
+) : MessageContent, TextedContent, WithCustomizableCaption, WithOptionalQuoteInfo {
     override fun createResend(
         chatId: ChatIdentifier,
         messageThreadId: MessageThreadId?,
@@ -38,5 +32,22 @@ data class PaidMediaInfoContent(
         effectId: EffectId?,
         replyParameters: ReplyParameters?,
         replyMarkup: KeyboardMarkup?
-    ): Request<ContentMessage<PaidMediaInfoContent>> = TODO()
+    ): Request<ContentMessage<PaidMediaInfoContent>> = SendPaidMedia(
+        chatId,
+        paidMediaInfo.stars,
+        paidMediaInfo.media.mapNotNull {
+            when (it) {
+                is PaidMedia.Photo -> it.photo.biggest.toTelegramPaidMediaPhoto()
+                is PaidMedia.Preview -> null
+                is PaidMedia.Unknown -> null
+                is PaidMedia.Video -> it.video.toTelegramPaidMediaVideo()
+            }
+        }.ifEmpty {
+            error("Unable to create resend for paid media content without any revealed content")
+        },
+        textSources,
+        showCaptionAboveMedia,
+        messageThreadId,
+        businessConnectionId, disableNotification, protectContent, replyParameters, replyMarkup
+    )
 }

@@ -43,7 +43,7 @@ data class TelegramMediaPhoto internal constructor(
     override val spoilered: Boolean = false,
     @SerialName(showCaptionAboveMediaField)
     override val showCaptionAboveMedia: Boolean = false,
-) : TelegramFreeMedia, VisualMediaGroupMemberTelegramFreeMedia {
+) : TelegramFreeMedia, VisualMediaGroupMemberTelegramMedia {
     override val type: String = photoTelegramMediaType
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

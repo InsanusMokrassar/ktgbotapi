@@ -34,6 +34,8 @@ data class ExtendedChannelChatImpl(
     @SerialName(pinnedMessageField)
     @Serializable(TelegramBotAPIMessageDeserializeOnlySerializer::class)
     override val pinnedMessage: Message? = null,
+    @SerialName(canSendPaidMediaField)
+    override val canSendPaidMedia: Boolean = false,
     @SerialName(linkedChatIdField)
     override val linkedGroupChatId: IdChatIdentifier? = null,
     @SerialName(hasHiddenMembersField)

@@ -5,5 +5,4 @@ import dev.inmo.tgbotapi.requests.abstracts.InputFile
 import kotlinx.serialization.Serializable
 
 @Serializable(TelegramMediaSerializer::class)
-@ClassCastsIncluded
 sealed interface TelegramFreeMedia : TelegramMedia

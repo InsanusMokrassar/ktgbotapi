@@ -192,7 +192,7 @@ data class SendMediaGroupData internal constructor(
     private val convertedMedia: String
         get() = buildJsonArray {
             media.forEach {
-                add(it.toJsonWithoutNulls(MediaGroupMemberTelegramFreeMediaSerializer))
+                add(it.toJsonWithoutNulls(MediaGroupMemberTelegramMediaSerializer))
             }
         }.toString()
 
