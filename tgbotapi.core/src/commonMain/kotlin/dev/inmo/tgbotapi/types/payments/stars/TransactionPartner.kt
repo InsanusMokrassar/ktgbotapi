@@ -1,6 +1,8 @@
 package dev.inmo.tgbotapi.types.payments.stars
 
+import dev.inmo.tgbotapi.types.InvoicePayload
 import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.types.invoicePayloadField
 import dev.inmo.tgbotapi.types.userField
 import dev.inmo.tgbotapi.types.withdrawalStateField
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
@@ -35,7 +37,9 @@ sealed interface TransactionPartner {
     @Serializable(TransactionPartner.Companion::class)
     data class User(
         @SerialName(userField)
-        val user: PreviewUser
+        val user: PreviewUser,
+        @SerialName(invoicePayloadField)
+        val invoicePayload: InvoicePayload? = null
     ) : TransactionPartner {
         override val type: String
             get() = Companion.type
@@ -61,7 +65,9 @@ sealed interface TransactionPartner {
         private data class Surrogate(
             val type: String,
             val withdrawal_state: RevenueWithdrawalState? = null,
-            val user: PreviewUser? = null
+            val user: PreviewUser? = null,
+            @SerialName(invoicePayloadField)
+            val invoicePayload: InvoicePayload? = null
         )
 
         override val descriptor: SerialDescriptor
