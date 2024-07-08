@@ -6,7 +6,6 @@ import dev.inmo.tgbotapi.webapps.cloud.CloudStorage
 import dev.inmo.tgbotapi.webapps.haptic.HapticFeedback
 import dev.inmo.tgbotapi.webapps.invoice.InvoiceClosedInfo
 import dev.inmo.tgbotapi.webapps.popup.*
-import kotlin.js.Json
 
 external class WebApp {
     val version: String
@@ -30,6 +29,10 @@ external class WebApp {
     val isExpanded: Boolean
     val viewportHeight: Float
     val viewportStableHeight: Float
+
+    val isVerticalSwipesEnabled: Boolean
+    fun enableVerticalSwipes()
+    fun disableVerticalSwipes()
 
 
     val isClosingConfirmationEnabled: Boolean
@@ -78,6 +81,8 @@ external class WebApp {
     internal fun onEventWithContactRequested(type: String, callback: (RequestStatus) -> Unit)
     @JsName("onEvent")
     internal fun onEventWithSettingsButtonClicked(type: String, callback: () -> Unit)
+    @JsName("onEvent")
+    internal fun onEventWithScanQRPopupClosed(type: String, callback: () -> Unit)
 
     fun offEvent(type: String, callback: () -> Unit)
     @JsName("offEvent")
@@ -218,6 +223,18 @@ fun WebApp.onEvent(type: EventType.SettingsButtonClicked, eventHandler: EventHan
 /**
  * @return The callback which should be used in case you want to turn off events handling
  */
+fun WebApp.onEvent(type: EventType.ScanQRPopupClosed, eventHandler: EventHandler) = {
+    eventHandler(js("this").unsafeCast<WebApp>())
+}.also {
+    onEventWithScanQRPopupClosed(
+        type.typeName,
+        callback = it
+    )
+}
+
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
 fun WebApp.onThemeChanged(eventHandler: EventHandler) = onEvent(EventType.ThemeChanged, eventHandler)
 /**
  * @return The callback which should be used in case you want to turn off events handling
@@ -259,6 +276,10 @@ fun WebApp.onWriteAccessRequested(eventHandler: WriteAccessRequestedHandler) = o
  * @return The callback which should be used in case you want to turn off events handling
  */
 fun WebApp.onContactRequested(eventHandler: ContactRequestedHandler) = onEvent(EventType.ContactRequested, eventHandler)
+/**
+ * @return The callback which should be used in case you want to turn off events handling
+ */
+fun WebApp.onScanQRPopupClosed(eventHandler: onScanQRPopupClosedHandler) = onEvent(EventType.ScanQRPopupClosed, eventHandler)
 
 fun WebApp.isInitDataSafe(botToken: String) = TelegramAPIUrlsKeeper(botToken).checkWebAppData(
     initData,

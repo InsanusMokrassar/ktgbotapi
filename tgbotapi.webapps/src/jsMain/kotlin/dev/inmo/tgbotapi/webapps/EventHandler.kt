@@ -10,3 +10,4 @@ typealias QRTextReceivedEventHandler = WebApp.(String) -> Boolean
 typealias TextReceivedEventHandler = WebApp.(String) -> Unit
 typealias WriteAccessRequestedHandler = WebApp.(Boolean) -> Unit
 typealias ContactRequestedHandler = WebApp.(Boolean) -> Unit
+typealias onScanQRPopupClosedHandler = WebApp.() -> Unit
