@@ -43,4 +43,6 @@ external interface ThemeParams {
     val subtitleTextColor: Color.Hex?
     @JsName("destructive_text_color")
     val destructiveTextColor: Color.Hex?
+    @JsName("section_separator_color")
+    val sectionSeparatorColor: Color.Hex?
 }
