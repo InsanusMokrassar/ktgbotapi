@@ -515,9 +515,6 @@ suspend fun <BC : BehaviourContext> BC.onSuccessfulPayment(
 ) = onEvent(initialFilter, subcontextUpdatesFilter, markerFactory, scenarioReceiver)
 
 /**
- * Please, remember that [RefundedPaymentEvent] will be retrieved only in case you will correctly handle
- * [dev.inmo.tgbotapi.types.payments.PreCheckoutQuery] (via [onPreCheckoutQuery], for example)
- *
  * @param initialFilter This filter will be called to remove unnecessary data BEFORE [scenarioReceiver] call
  * @param subcontextUpdatesFilter This filter will be applied to each update inside of [scenarioReceiver]. For example,
  * this filter will be used if you will call [dev.inmo.tgbotapi.extensions.behaviour_builder.expectations.waitContentMessage].
