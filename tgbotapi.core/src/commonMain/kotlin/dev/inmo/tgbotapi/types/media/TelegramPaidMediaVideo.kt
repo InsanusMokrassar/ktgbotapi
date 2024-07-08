@@ -18,10 +18,8 @@ data class TelegramPaidMediaVideo (
     override val duration: Long? = null,
     @SerialName(supportsStreamingField)
     val supportsStreaming: Boolean = false,
-) : TelegramPaidMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, VisualMediaGroupMemberTelegramPaidMedia {
+) : TelegramPaidMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, VisualTelegramPaidMedia {
     override val type: String = videoTelegramPaidMediaType
-
-    override fun serialize(format: StringFormat): String = format.encodeToString(serializer(), this)
 
     @SerialName(mediaField)
     override val media: String

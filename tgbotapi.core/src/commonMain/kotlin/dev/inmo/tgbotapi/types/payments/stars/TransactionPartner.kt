@@ -5,6 +5,7 @@ import dev.inmo.tgbotapi.types.userField
 import dev.inmo.tgbotapi.types.withdrawalStateField
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,6 +25,7 @@ sealed interface TransactionPartner {
         @SerialName(withdrawalStateField)
         val withdrawalState: RevenueWithdrawalState
     ) : TransactionPartner {
+        @EncodeDefault
         override val type: String
             get() = Companion.type
 
@@ -46,7 +48,14 @@ sealed interface TransactionPartner {
     }
 
     @Serializable(TransactionPartner.Companion::class)
+    data object Ads : TransactionPartner {
+        @EncodeDefault
+        override val type: String = "telegram_ads"
+    }
+
+    @Serializable(TransactionPartner.Companion::class)
     data object Other : TransactionPartner {
+        @EncodeDefault
         override val type: String = "other"
     }
 
@@ -78,6 +87,7 @@ sealed interface TransactionPartner {
                 User.type -> User(
                     data.user ?: return unknown,
                 )
+                Ads.type -> Ads
                 Fragment.type -> Fragment(
                     data.withdrawal_state ?: return unknown,
                 )
@@ -88,6 +98,7 @@ sealed interface TransactionPartner {
         override fun serialize(encoder: Encoder, value: TransactionPartner) {
             val surrogate = when (value) {
                 Other -> Surrogate(value.type)
+                Ads -> Surrogate(value.type)
                 is User -> Surrogate(value.type, user = value.user)
                 is Fragment -> Surrogate(
                     value.type,

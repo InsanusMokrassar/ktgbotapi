@@ -72,7 +72,7 @@ internal data class RawMessage(
     private val story: Story? = null,
     private val audio: AudioFile? = null,
     private val document: DocumentFile? = null,
-    private val paid_media: PaidMediaInfoContent? = null,
+    private val paid_media: PaidMediaInfo? = null,
     private val animation: AnimationFile? = null,
     private val game: RawGame? = null,
     @Serializable(PhotoSerializer::class)
@@ -202,7 +202,7 @@ internal data class RawMessage(
                 quote
             )
             paid_media != null -> PaidMediaInfoContent(
-                document,
+                paid_media,
                 caption,
                 adaptedCaptionEntities,
                 quote

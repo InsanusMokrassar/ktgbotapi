@@ -140,7 +140,7 @@ sealed interface TextedContent : MessageContent, TextedInput
 
 sealed interface MediaContent: MessageContent {
     val media: TelegramMediaFile
-    fun asTelegramMedia(): TelegramMedia
+    fun asTelegramMedia(): TelegramFreeMedia
 }
 
 sealed interface SpoilerableMediaContent : MediaContent, SpoilerableData
