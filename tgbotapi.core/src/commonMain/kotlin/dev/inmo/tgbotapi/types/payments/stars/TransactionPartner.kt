@@ -38,8 +38,10 @@ sealed interface TransactionPartner {
 
     @Serializable(TransactionPartner.Companion::class)
     data class User(
+        @SerialName(userField)
         val user: PreviewUser,
-        val invoice_payload: InvoicePayload? = null
+        @SerialName(invoicePayloadField)
+        val invoicePayload: InvoicePayload? = null
     ) : TransactionPartner {
         override val type: String
             get() = Companion.type
@@ -73,8 +75,7 @@ sealed interface TransactionPartner {
             val type: String,
             val withdrawal_state: RevenueWithdrawalState? = null,
             val user: PreviewUser? = null,
-            @SerialName(invoicePayloadField)
-            val invoicePayload: InvoicePayload? = null
+            val invoice_payload: InvoicePayload? = null
         )
 
         override val descriptor: SerialDescriptor
