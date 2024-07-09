@@ -24287,11 +24287,14 @@ public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$Unk
 public final class dev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User : dev/inmo/tgbotapi/types/payments/stars/TransactionPartner {
 	public static final field Companion Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User$Companion;
 	public static final field type Ljava/lang/String;
-	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;)V
+	public fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;)V
+	public synthetic fun <init> (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
-	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewUser;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
-	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;Ldev/inmo/tgbotapi/types/chat/PreviewUser;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
+	public static synthetic fun copy$default (Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;Ldev/inmo/tgbotapi/types/chat/PreviewUser;Ljava/lang/String;ILjava/lang/Object;)Ldev/inmo/tgbotapi/types/payments/stars/TransactionPartner$User;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInvoicePayload ()Ljava/lang/String;
 	public fun getType ()Ljava/lang/String;
 	public final fun getUser ()Ldev/inmo/tgbotapi/types/chat/PreviewUser;
 	public fun hashCode ()I
@@ -26134,7 +26137,9 @@ public final class dev/inmo/tgbotapi/utils/ByteReadChannelAllocatorDeserializati
 
 public final class dev/inmo/tgbotapi/utils/DefaultKSLogKt {
 	public static final fun getDefaultKTgBotAPIKSLog ()Ldev/inmo/kslog/common/KSLog;
+	public static final fun getDefaultKTgBotAPIKSLogSystemTag ()Ljava/lang/String;
 	public static final fun setDefaultKTgBotAPIKSLog (Ldev/inmo/kslog/common/KSLog;)V
+	public static final fun setDefaultKTgBotAPIKSLogSystemTag (Ljava/lang/String;)V
 }
 
 public final class dev/inmo/tgbotapi/utils/EntitiesBuilder {
