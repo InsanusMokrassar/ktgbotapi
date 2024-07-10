@@ -16,7 +16,7 @@ import kotlinx.serialization.*
 internal const val photoTelegramPaidMediaType = "photo"
 
 @Serializable
-data class TelegramPaidMediaPhoto internal constructor(
+data class TelegramPaidMediaPhoto (
     override val file: InputFile,
 ) : VisualTelegramPaidMedia {
     override val type: String = photoTelegramPaidMediaType
