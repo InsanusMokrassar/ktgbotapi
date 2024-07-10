@@ -2050,6 +2050,45 @@ suspend fun TelegramBot.reply(
 }
 
 suspend fun TelegramBot.reply(
+    to: AccessibleMessage,
+    content: PaidMediaInfoContent,
+    replyInChatId: IdChatIdentifier = to.chat.id,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    parseMode: ParseMode? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    val media = content.paidMediaInfo.media.mapNotNull {
+        when (it) {
+            is PaidMedia.Video -> it.toTelegramPaidMediaVideo()
+            is PaidMedia.Photo -> it.toTelegramMediaPhoto()
+            is PaidMedia.Preview, is PaidMedia.Unknown -> null
+        }
+    }
+    sendPaidMedia(
+        chatId = replyInChatId,
+        starCount = content.paidMediaInfo.stars,
+        media = media,
+        text = content.text,
+        parseMode = parseMode,
+        showCaptionAboveMedia = content.showCaptionAboveMedia,
+        threadId = replyInThreadId,
+        businessConnectionId = replyInBusinessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyMarkup = replyMarkup,
+        replyParameters = ReplyParameters(
+            messageId = to.messageId,
+            chatIdentifier = to.chat.id,
+            allowSendingWithoutReply = allowSendingWithoutReply
+        )
+    )
+}
+
+suspend fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
     content: PaidMediaInfoContent,
@@ -2088,3 +2127,4 @@ suspend fun TelegramBot.reply(
         )
     )
 }
+
