@@ -21208,6 +21208,12 @@ public final class dev/inmo/tgbotapi/types/message/payments/PaidMedia$Video$Comp
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class dev/inmo/tgbotapi/types/message/payments/PaidMediaToTelegramPaidMediaKt {
+	public static final fun toTelegramMediaPhoto (Ldev/inmo/tgbotapi/types/message/payments/PaidMedia$Photo;)Ldev/inmo/tgbotapi/types/media/TelegramPaidMediaPhoto;
+	public static final fun toTelegramPaidMediaOrNull (Ldev/inmo/tgbotapi/types/message/payments/PaidMedia;)Ldev/inmo/tgbotapi/types/media/TelegramPaidMedia;
+	public static final fun toTelegramPaidMediaVideo (Ldev/inmo/tgbotapi/types/message/payments/PaidMedia$Video;)Ldev/inmo/tgbotapi/types/media/TelegramPaidMediaVideo;
+}
+
 public final class dev/inmo/tgbotapi/types/message/payments/RefundedPaymentEvent : dev/inmo/tgbotapi/types/message/ChatEvents/abstracts/CommonEvent, dev/inmo/tgbotapi/types/message/payments/abstracts/PaymentInfo {
 	public fun <init> (Ldev/inmo/tgbotapi/types/payments/RefundedPayment;)V
 	public final fun component1 ()Ldev/inmo/tgbotapi/types/payments/RefundedPayment;
