@@ -148,3 +148,8 @@ suspend fun BehaviourContext.waitGiveawayPublicResultsContent(
     initRequest: Request<*>? = null,
     errorFactory: NullableRequestBuilder<*> = { null }
 ) = waitContent(initRequest, errorFactory).mapContent<GiveawayPublicResultsContent>()
+
+suspend fun BehaviourContext.waitPaidMediaInfoContent(
+    initRequest: Request<*>? = null,
+    errorFactory: NullableRequestBuilder<*> = { null }
+) = waitContent(initRequest, errorFactory).mapContent<PaidMediaInfoContent>()
