@@ -1,11 +1,10 @@
 package dev.inmo.tgbotapi.types.message.payments
 
-import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
 
-fun PaidMedia.toTelegramPaidMedia(): TelegramPaidMedia? = when (this) {
+fun PaidMedia.toTelegramPaidMediaOrNull(): TelegramPaidMedia? = when (this) {
     is PaidMedia.Photo -> TelegramPaidMediaPhoto(
         file = this.photo.biggest.fileId
     )
