@@ -16,7 +16,10 @@ fun PaidMedia.toTelegramPaidMediaOrNull(): TelegramPaidMedia? = when (this) {
 
 fun PaidMedia.Video.toTelegramPaidMediaVideo(): TelegramPaidMediaVideo = TelegramPaidMediaVideo(
         file = this.video.fileId,
-        duration = this.video.duration
+        duration = this.video.duration,
+        width = this.video.width,
+        height = this.video.height,
+        thumb = this.video.thumbnail?.fileId
     )
 
 fun PaidMedia.Photo.toTelegramMediaPhoto(): TelegramPaidMediaPhoto = TelegramPaidMediaPhoto(
