@@ -2081,3 +2081,38 @@ suspend fun TelegramBot.reply(
         )
     )
 }
+
+suspend fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    starCount: Int,
+    media: List<TelegramPaidMedia>,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    threadId: MessageThreadId? = toChatId.threadId,
+    businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    sendPaidMedia(
+        chatId = toChatId,
+        starCount = starCount,
+        media = media,
+        text = text,
+        parseMode = parseMode,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyMarkup = replyMarkup,
+        replyParameters = ReplyParameters(
+            messageId = toMessageId,
+            chatIdentifier = toChatId,
+            allowSendingWithoutReply = allowSendingWithoutReply
+        )
+    )
+}
