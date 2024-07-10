@@ -2052,32 +2052,25 @@ suspend fun TelegramBot.reply(
 suspend fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
-    content: PaidMediaInfoContent,
-    replyInChatId: IdChatIdentifier = toChatId,
-    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
-    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    starCount: Int,
+    media: List<TelegramPaidMedia>,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    threadId: MessageThreadId? = toChatId.threadId,
+    businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     allowSendingWithoutReply: Boolean? = null,
-    parseMode: ParseMode? = null,
     replyMarkup: KeyboardMarkup? = null
 ) {
-    val media = content.paidMediaInfo.media.mapNotNull {
-        when (it) {
-            is PaidMedia.Video -> it.toTelegramPaidMediaVideo()
-            is PaidMedia.Photo -> it.toTelegramMediaPhoto()
-            is PaidMedia.Preview, is PaidMedia.Unknown -> null
-        }
-    }
     sendPaidMedia(
-        chatId = replyInChatId,
-        starCount = content.paidMediaInfo.stars,
+        chatId = toChatId,
+        starCount = starCount,
         media = media,
-        text = content.text,
-        parseMode = parseMode,
-        showCaptionAboveMedia = content.showCaptionAboveMedia,
-        threadId = replyInThreadId,
-        businessConnectionId = replyInBusinessConnectionId,
+        entities = entities,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
         disableNotification = disableNotification,
         protectContent = protectContent,
         replyMarkup = replyMarkup,
@@ -2088,4 +2081,3 @@ suspend fun TelegramBot.reply(
         )
     )
 }
-
