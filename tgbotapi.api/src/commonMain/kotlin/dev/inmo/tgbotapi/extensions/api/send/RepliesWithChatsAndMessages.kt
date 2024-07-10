@@ -26,6 +26,9 @@ import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.payments.PaidMedia
+import dev.inmo.tgbotapi.types.message.payments.toTelegramMediaPhoto
+import dev.inmo.tgbotapi.types.message.payments.toTelegramPaidMediaVideo
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
@@ -2044,4 +2047,44 @@ suspend fun TelegramBot.reply(
             replyMarkup = replyMarkup
         )
     }
+}
+
+suspend fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    content: PaidMediaInfoContent,
+    replyInChatId: IdChatIdentifier = toChatId,
+    replyInThreadId: MessageThreadId? = replyInChatId.threadId,
+    replyInBusinessConnectionId: BusinessConnectionId? = replyInChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    parseMode: ParseMode? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    val media = content.paidMediaInfo.media.mapNotNull {
+        when (it) {
+            is PaidMedia.Video -> it.toTelegramPaidMediaVideo()
+            is PaidMedia.Photo -> it.toTelegramMediaPhoto()
+            is PaidMedia.Preview, is PaidMedia.Unknown -> null
+        }
+    }
+    sendPaidMedia(
+        chatId = replyInChatId,
+        starCount = content.paidMediaInfo.stars,
+        media = media,
+        text = content.text,
+        parseMode = parseMode,
+        showCaptionAboveMedia = content.showCaptionAboveMedia,
+        threadId = replyInThreadId,
+        businessConnectionId = replyInBusinessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyMarkup = replyMarkup,
+        replyParameters = ReplyParameters(
+            messageId = toMessageId,
+            chatIdentifier = toChatId,
+            allowSendingWithoutReply = allowSendingWithoutReply
+        )
+    )
 }
