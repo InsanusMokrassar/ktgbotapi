@@ -12,6 +12,7 @@ import dev.inmo.tgbotapi.types.message.textsources.TextSourcesList
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.parseModeField
 import dev.inmo.tgbotapi.types.buttons.KeyboardMarkup
+import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.message.*
 import dev.inmo.tgbotapi.types.message.RawMessageEntity
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
@@ -51,10 +52,21 @@ fun SendPaidMedia(
         replyMarkup = replyMarkup
     )
 
-    return if (media.any { it.file is MultipartFile }) {
+    val files: List<MultipartFile> = media.flatMap {
+        listOfNotNull(
+            it.file as? MultipartFile,
+            if (it is ThumbedTelegramMedia) {
+                it.thumb as? MultipartFile
+            } else {
+                null
+            }
+        )
+    }
+
+    return if (files.isNotEmpty()) {
         CommonMultipartFileRequest(
             data,
-            media.mapNotNull { it.media to (it.file as? MultipartFile ?: return@mapNotNull null) }.toMap()
+            files.associateBy { it.fileId }
         )
     } else {
         data
@@ -90,10 +102,21 @@ fun SendPaidMedia(
         replyMarkup = replyMarkup
     )
 
-    return if (media.any { it.file is MultipartFile }) {
+    val files: List<MultipartFile> = media.flatMap {
+        listOfNotNull(
+            it.file as? MultipartFile,
+            if (it is ThumbedTelegramMedia) {
+                it.thumb as? MultipartFile
+            } else {
+                null
+            }
+        )
+    }
+
+    return if (files.isNotEmpty()) {
         CommonMultipartFileRequest(
             data,
-            media.mapNotNull { it.media to (it.file as? MultipartFile ?: return@mapNotNull null) }.toMap()
+            files.associateBy { it.fileId }
         )
     } else {
         data

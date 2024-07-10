@@ -18203,7 +18203,7 @@ public final class dev/inmo/tgbotapi/types/media/TelegramPaidMediaPhotoKt {
 	public static final fun toTelegramPaidMediaPhoto (Ldev/inmo/tgbotapi/types/files/PhotoSize;)Ldev/inmo/tgbotapi/types/media/TelegramPaidMediaPhoto;
 }
 
-public final class dev/inmo/tgbotapi/types/media/TelegramPaidMediaVideo : dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/SizedTelegramMedia, dev/inmo/tgbotapi/types/media/TelegramPaidMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia, dev/inmo/tgbotapi/types/media/VisualTelegramPaidMedia {
+public final class dev/inmo/tgbotapi/types/media/TelegramPaidMediaVideo : dev/inmo/tgbotapi/types/media/DuratedTelegramMedia, dev/inmo/tgbotapi/types/media/SizedTelegramMedia, dev/inmo/tgbotapi/types/media/ThumbedTelegramMedia, dev/inmo/tgbotapi/types/media/VisualTelegramPaidMedia {
 	public static final field Companion Ldev/inmo/tgbotapi/types/media/TelegramPaidMediaVideo$Companion;
 	public fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;Z)V
 	public synthetic fun <init> (Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ldev/inmo/tgbotapi/requests/abstracts/InputFile;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V

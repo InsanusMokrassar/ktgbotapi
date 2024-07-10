@@ -18,7 +18,7 @@ data class TelegramPaidMediaVideo (
     override val duration: Long? = null,
     @SerialName(supportsStreamingField)
     val supportsStreaming: Boolean = false,
-) : TelegramPaidMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, VisualTelegramPaidMedia {
+) : VisualTelegramPaidMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia {
     override val type: String = videoTelegramPaidMediaType
 
     @SerialName(mediaField)
