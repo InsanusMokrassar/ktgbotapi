@@ -1,3 +1,5 @@
+@file:Suppress("OPT_IN_USAGE")
+
 package dev.inmo.tgbotapi.types.payments.stars
 
 import dev.inmo.tgbotapi.types.InvoicePayload
@@ -43,8 +45,8 @@ sealed interface TransactionPartner {
         @SerialName(invoicePayloadField)
         val invoicePayload: InvoicePayload? = null
     ) : TransactionPartner {
-        override val type: String
-            get() = Companion.type
+        @EncodeDefault
+        override val type: String = Companion.type
 
         companion object {
             const val type: String = "user"
