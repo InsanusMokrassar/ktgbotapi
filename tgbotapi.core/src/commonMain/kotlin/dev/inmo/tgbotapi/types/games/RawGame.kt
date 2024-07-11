@@ -14,7 +14,7 @@ internal data class RawGame(
     private val description: String,
     @Serializable(PhotoSerializer::class)
     @SerialName(photoField)
-    private val photo: Photo,
+    private val photo: PhotoFile,
     @SerialName(textField)
     private val text: String? = null,
     @SerialName(textEntitiesField)

@@ -89,10 +89,11 @@ sealed interface ReplyInfo {
             private val story: Story? = null,
             private val audio: AudioFile? = null,
             private val document: DocumentFile? = null,
+            private val paid_media: PaidMediaInfo? = null,
             private val animation: AnimationFile? = null,
             private val game: RawGame? = null,
             @Serializable(PhotoSerializer::class)
-            private val photo: Photo? = null,
+            private val photo: PhotoFile? = null,
             private val sticker: Sticker? = null,
             private val video: VideoFile? = null,
             private val voice: VoiceFile? = null,
@@ -123,6 +124,7 @@ sealed interface ReplyInfo {
                         video_note != null -> video_note
                         animation != null -> animation
                         document != null -> document
+                        paid_media != null -> paid_media
                         voice != null -> voice
                         photo != null -> photo
                         sticker != null -> sticker

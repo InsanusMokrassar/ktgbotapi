@@ -1,10 +1,15 @@
+@file:Suppress("OPT_IN_USAGE")
+
 package dev.inmo.tgbotapi.types.payments.stars
 
+import dev.inmo.tgbotapi.types.InvoicePayload
 import dev.inmo.tgbotapi.types.chat.PreviewUser
+import dev.inmo.tgbotapi.types.invoicePayloadField
 import dev.inmo.tgbotapi.types.userField
 import dev.inmo.tgbotapi.types.withdrawalStateField
 import dev.inmo.tgbotapi.utils.decodeDataAndJson
 import dev.inmo.tgbotapi.utils.internal.ClassCastsIncluded
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,6 +29,7 @@ sealed interface TransactionPartner {
         @SerialName(withdrawalStateField)
         val withdrawalState: RevenueWithdrawalState
     ) : TransactionPartner {
+        @EncodeDefault
         override val type: String
             get() = Companion.type
 
@@ -35,10 +41,12 @@ sealed interface TransactionPartner {
     @Serializable(TransactionPartner.Companion::class)
     data class User(
         @SerialName(userField)
-        val user: PreviewUser
+        val user: PreviewUser,
+        @SerialName(invoicePayloadField)
+        val invoicePayload: InvoicePayload? = null
     ) : TransactionPartner {
-        override val type: String
-            get() = Companion.type
+        @EncodeDefault
+        override val type: String = Companion.type
 
         companion object {
             const val type: String = "user"
@@ -46,7 +54,14 @@ sealed interface TransactionPartner {
     }
 
     @Serializable(TransactionPartner.Companion::class)
+    data object Ads : TransactionPartner {
+        @EncodeDefault
+        override val type: String = "telegram_ads"
+    }
+
+    @Serializable(TransactionPartner.Companion::class)
     data object Other : TransactionPartner {
+        @EncodeDefault
         override val type: String = "other"
     }
 
@@ -61,7 +76,8 @@ sealed interface TransactionPartner {
         private data class Surrogate(
             val type: String,
             val withdrawal_state: RevenueWithdrawalState? = null,
-            val user: PreviewUser? = null
+            val user: PreviewUser? = null,
+            val invoice_payload: InvoicePayload? = null
         )
 
         override val descriptor: SerialDescriptor
@@ -78,6 +94,7 @@ sealed interface TransactionPartner {
                 User.type -> User(
                     data.user ?: return unknown,
                 )
+                Ads.type -> Ads
                 Fragment.type -> Fragment(
                     data.withdrawal_state ?: return unknown,
                 )
@@ -88,6 +105,7 @@ sealed interface TransactionPartner {
         override fun serialize(encoder: Encoder, value: TransactionPartner) {
             val surrogate = when (value) {
                 Other -> Surrogate(value.type)
+                Ads -> Surrogate(value.type)
                 is User -> Surrogate(value.type, user = value.user)
                 is Fragment -> Surrogate(
                     value.type,

@@ -58,7 +58,7 @@ data class TelegramMediaDocument internal constructor(
     override val thumb: InputFile? = null,
     @SerialName(disableContentTypeDetectionField)
     val disableContentTypeDetection: Boolean? = null
-) : TelegramMedia, DocumentMediaGroupMemberTelegramMedia, ThumbedTelegramMedia {
+) : TelegramFreeMedia, DocumentMediaGroupMemberTelegramMedia, ThumbedTelegramMedia {
     override val type: String = documentTelegramMediaType
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

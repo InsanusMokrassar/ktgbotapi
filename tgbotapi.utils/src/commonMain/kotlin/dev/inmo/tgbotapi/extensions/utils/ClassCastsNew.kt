@@ -193,7 +193,7 @@ import dev.inmo.tgbotapi.types.files.MediaContentVariant
 import dev.inmo.tgbotapi.types.files.MimedMediaFile
 import dev.inmo.tgbotapi.types.files.PassportFile
 import dev.inmo.tgbotapi.types.files.PathedFile
-import dev.inmo.tgbotapi.types.files.Photo
+import dev.inmo.tgbotapi.types.files.PhotoFile
 import dev.inmo.tgbotapi.types.files.PhotoSize
 import dev.inmo.tgbotapi.types.files.PlayableMediaFile
 import dev.inmo.tgbotapi.types.files.RegularAnimatedSticker
@@ -205,6 +205,7 @@ import dev.inmo.tgbotapi.types.files.Sticker
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.files.ThumbedMediaFile
 import dev.inmo.tgbotapi.types.files.UnknownSticker
+import dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
 import dev.inmo.tgbotapi.types.files.VideoFile
 import dev.inmo.tgbotapi.types.files.VideoNoteFile
 import dev.inmo.tgbotapi.types.files.VideoSticker
@@ -220,15 +221,20 @@ import dev.inmo.tgbotapi.types.media.DuratedTelegramMedia
 import dev.inmo.tgbotapi.types.media.MediaGroupMemberTelegramMedia
 import dev.inmo.tgbotapi.types.media.SizedTelegramMedia
 import dev.inmo.tgbotapi.types.media.SpoilerableTelegramMedia
+import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.media.TelegramMedia
 import dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 import dev.inmo.tgbotapi.types.media.TelegramMediaAudio
 import dev.inmo.tgbotapi.types.media.TelegramMediaDocument
 import dev.inmo.tgbotapi.types.media.TelegramMediaPhoto
 import dev.inmo.tgbotapi.types.media.TelegramMediaVideo
+import dev.inmo.tgbotapi.types.media.TelegramPaidMedia
+import dev.inmo.tgbotapi.types.media.TelegramPaidMediaPhoto
+import dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
 import dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
 import dev.inmo.tgbotapi.types.media.TitledTelegramMedia
 import dev.inmo.tgbotapi.types.media.VisualMediaGroupMemberTelegramMedia
+import dev.inmo.tgbotapi.types.media.VisualTelegramPaidMedia
 import dev.inmo.tgbotapi.types.media.WithCustomizableCaptionTelegramMedia
 import dev.inmo.tgbotapi.types.message.ChannelEventMessage
 import dev.inmo.tgbotapi.types.message.ChatEvents.ChannelChatCreated
@@ -324,6 +330,7 @@ import dev.inmo.tgbotapi.types.message.content.MediaGroupCollectionContent
 import dev.inmo.tgbotapi.types.message.content.MediaGroupContent
 import dev.inmo.tgbotapi.types.message.content.MediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.MessageContent
+import dev.inmo.tgbotapi.types.message.content.PaidMediaInfoContent
 import dev.inmo.tgbotapi.types.message.content.PhotoContent
 import dev.inmo.tgbotapi.types.message.content.PollContent
 import dev.inmo.tgbotapi.types.message.content.ResendableContent
@@ -340,6 +347,7 @@ import dev.inmo.tgbotapi.types.message.content.VideoNoteContent
 import dev.inmo.tgbotapi.types.message.content.VisualMediaGroupPartContent
 import dev.inmo.tgbotapi.types.message.content.VoiceContent
 import dev.inmo.tgbotapi.types.message.content.WithCustomizedCaptionMediaContent
+import dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
 import dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
 import dev.inmo.tgbotapi.types.message.textsources.BlockquoteTextSource
 import dev.inmo.tgbotapi.types.message.textsources.BoldTextSource
@@ -2707,13 +2715,13 @@ public inline fun TelegramMediaFile.pathedFileOrThrow(): PathedFile = this as
 public inline fun <T> TelegramMediaFile.ifPathedFile(block: (PathedFile) -> T): T? =
     pathedFileOrNull() ?.let(block)
 
-public inline fun TelegramMediaFile.photoOrNull(): Photo? = this as?
-    dev.inmo.tgbotapi.types.files.Photo
+public inline fun TelegramMediaFile.photoFileOrNull(): PhotoFile? = this as?
+    dev.inmo.tgbotapi.types.files.PhotoFile
 
-public inline fun TelegramMediaFile.photoOrThrow(): Photo = this as
-    dev.inmo.tgbotapi.types.files.Photo
+public inline fun TelegramMediaFile.photoFileOrThrow(): PhotoFile = this as
+    dev.inmo.tgbotapi.types.files.PhotoFile
 
-public inline fun <T> TelegramMediaFile.ifPhoto(block: (Photo) -> T): T? = photoOrNull()
+public inline fun <T> TelegramMediaFile.ifPhotoFile(block: (PhotoFile) -> T): T? = photoFileOrNull()
     ?.let(block)
 
 public inline fun TelegramMediaFile.photoSizeOrNull(): PhotoSize? = this as?
@@ -2900,6 +2908,16 @@ public inline fun TelegramMediaFile.thumbedMediaFileOrThrow(): ThumbedMediaFile 
 public inline fun <T> TelegramMediaFile.ifThumbedMediaFile(block: (ThumbedMediaFile) -> T): T? =
     thumbedMediaFileOrNull() ?.let(block)
 
+public inline fun TelegramMediaFile.usefulAsPaidMediaFileOrNull(): UsefulAsPaidMediaFile? = this as?
+    dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
+
+public inline fun TelegramMediaFile.usefulAsPaidMediaFileOrThrow(): UsefulAsPaidMediaFile = this as
+    dev.inmo.tgbotapi.types.files.UsefulAsPaidMediaFile
+
+public inline fun <T>
+    TelegramMediaFile.ifUsefulAsPaidMediaFile(block: (UsefulAsPaidMediaFile) -> T): T? =
+    usefulAsPaidMediaFileOrNull() ?.let(block)
+
 public inline fun TelegramMediaFile.videoFileOrNull(): VideoFile? = this as?
     dev.inmo.tgbotapi.types.files.VideoFile
 
@@ -3021,6 +3039,15 @@ public inline fun <T>
     TelegramMedia.ifSpoilerableTelegramMedia(block: (SpoilerableTelegramMedia) -> T): T? =
     spoilerableTelegramMediaOrNull() ?.let(block)
 
+public inline fun TelegramMedia.telegramFreeMediaOrNull(): TelegramFreeMedia? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramFreeMedia
+
+public inline fun TelegramMedia.telegramFreeMediaOrThrow(): TelegramFreeMedia = this as
+    dev.inmo.tgbotapi.types.media.TelegramFreeMedia
+
+public inline fun <T> TelegramMedia.ifTelegramFreeMedia(block: (TelegramFreeMedia) -> T): T? =
+    telegramFreeMediaOrNull() ?.let(block)
+
 public inline fun TelegramMedia.telegramMediaAnimationOrNull(): TelegramMediaAnimation? = this as?
     dev.inmo.tgbotapi.types.media.TelegramMediaAnimation
 
@@ -3065,6 +3092,43 @@ public inline fun TelegramMedia.telegramMediaVideoOrThrow(): TelegramMediaVideo 
 
 public inline fun <T> TelegramMedia.ifTelegramMediaVideo(block: (TelegramMediaVideo) -> T): T? =
     telegramMediaVideoOrNull() ?.let(block)
+
+public inline fun TelegramMedia.telegramPaidMediaOrNull(): TelegramPaidMedia? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramPaidMedia
+
+public inline fun TelegramMedia.telegramPaidMediaOrThrow(): TelegramPaidMedia = this as
+    dev.inmo.tgbotapi.types.media.TelegramPaidMedia
+
+public inline fun <T> TelegramMedia.ifTelegramPaidMedia(block: (TelegramPaidMedia) -> T): T? =
+    telegramPaidMediaOrNull() ?.let(block)
+
+public inline fun TelegramMedia.visualTelegramPaidMediaOrNull(): VisualTelegramPaidMedia? = this as?
+    dev.inmo.tgbotapi.types.media.VisualTelegramPaidMedia
+
+public inline fun TelegramMedia.visualTelegramPaidMediaOrThrow(): VisualTelegramPaidMedia = this as
+    dev.inmo.tgbotapi.types.media.VisualTelegramPaidMedia
+
+public inline fun <T>
+    TelegramMedia.ifVisualTelegramPaidMedia(block: (VisualTelegramPaidMedia) -> T): T? =
+    visualTelegramPaidMediaOrNull() ?.let(block)
+
+public inline fun TelegramMedia.telegramPaidMediaPhotoOrNull(): TelegramPaidMediaPhoto? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramPaidMediaPhoto
+
+public inline fun TelegramMedia.telegramPaidMediaPhotoOrThrow(): TelegramPaidMediaPhoto = this as
+    dev.inmo.tgbotapi.types.media.TelegramPaidMediaPhoto
+
+public inline fun <T> TelegramMedia.ifTelegramPaidMediaPhoto(block: (TelegramPaidMediaPhoto) -> T):
+    T? = telegramPaidMediaPhotoOrNull() ?.let(block)
+
+public inline fun TelegramMedia.telegramPaidMediaVideoOrNull(): TelegramPaidMediaVideo? = this as?
+    dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
+
+public inline fun TelegramMedia.telegramPaidMediaVideoOrThrow(): TelegramPaidMediaVideo = this as
+    dev.inmo.tgbotapi.types.media.TelegramPaidMediaVideo
+
+public inline fun <T> TelegramMedia.ifTelegramPaidMediaVideo(block: (TelegramPaidMediaVideo) -> T):
+    T? = telegramPaidMediaVideoOrNull() ?.let(block)
 
 public inline fun TelegramMedia.thumbedTelegramMediaOrNull(): ThumbedTelegramMedia? = this as?
     dev.inmo.tgbotapi.types.media.ThumbedTelegramMedia
@@ -3431,6 +3495,15 @@ public inline fun ChatEvent.videoChatStartedOrThrow(): VideoChatStarted = this a
 
 public inline fun <T> ChatEvent.ifVideoChatStarted(block: (VideoChatStarted) -> T): T? =
     videoChatStartedOrNull() ?.let(block)
+
+public inline fun ChatEvent.refundedPaymentEventOrNull(): RefundedPaymentEvent? = this as?
+    dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
+
+public inline fun ChatEvent.refundedPaymentEventOrThrow(): RefundedPaymentEvent = this as
+    dev.inmo.tgbotapi.types.message.payments.RefundedPaymentEvent
+
+public inline fun <T> ChatEvent.ifRefundedPaymentEvent(block: (RefundedPaymentEvent) -> T): T? =
+    refundedPaymentEventOrNull() ?.let(block)
 
 public inline fun ChatEvent.successfulPaymentEventOrNull(): SuccessfulPaymentEvent? = this as?
     dev.inmo.tgbotapi.types.message.payments.SuccessfulPaymentEvent
@@ -4177,6 +4250,15 @@ public inline fun ResendableContent.mediaGroupContentOrThrow():
 public inline fun <T>
     ResendableContent.ifMediaGroupContent(block: (MediaGroupContent<MediaGroupPartContent>) -> T):
     T? = mediaGroupContentOrNull() ?.let(block)
+
+public inline fun ResendableContent.paidMediaInfoContentOrNull(): PaidMediaInfoContent? = this as?
+    dev.inmo.tgbotapi.types.message.content.PaidMediaInfoContent
+
+public inline fun ResendableContent.paidMediaInfoContentOrThrow(): PaidMediaInfoContent = this as
+    dev.inmo.tgbotapi.types.message.content.PaidMediaInfoContent
+
+public inline fun <T> ResendableContent.ifPaidMediaInfoContent(block: (PaidMediaInfoContent) -> T):
+    T? = paidMediaInfoContentOrNull() ?.let(block)
 
 public inline fun ResendableContent.photoContentOrNull(): PhotoContent? = this as?
     dev.inmo.tgbotapi.types.message.content.PhotoContent
@@ -5128,6 +5210,15 @@ public inline fun StarTransaction.unknownOrThrow(): StarTransaction.Unknown = th
 
 public inline fun <T> StarTransaction.ifUnknown(block: (StarTransaction.Unknown) -> T): T? =
     unknownOrNull() ?.let(block)
+
+public inline fun TransactionPartner.adsOrNull(): TransactionPartner.Ads? = this as?
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Ads
+
+public inline fun TransactionPartner.adsOrThrow(): TransactionPartner.Ads = this as
+    dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Ads
+
+public inline fun <T> TransactionPartner.ifAds(block: (TransactionPartner.Ads) -> T): T? =
+    adsOrNull() ?.let(block)
 
 public inline fun TransactionPartner.fragmentOrNull(): TransactionPartner.Fragment? = this as?
     dev.inmo.tgbotapi.types.payments.stars.TransactionPartner.Fragment

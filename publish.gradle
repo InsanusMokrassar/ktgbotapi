@@ -38,14 +38,14 @@ publishing {
             }
         }
         repositories {
-            if ((project.hasProperty('GITHUBPACKAGES_USER') || System.getenv('GITHUBPACKAGES_USER') != null) && (project.hasProperty('GITHUBPACKAGES_PASSWORD') || System.getenv('GITHUBPACKAGES_PASSWORD') != null)) {
+            if ((project.hasProperty('GITHUB_USER') || System.getenv('GITHUB_USER') != null) && (project.hasProperty('GITHUB_TOKEN') || System.getenv('GITHUB_TOKEN') != null)) {
                 maven {
                     name = "GithubPackages"
-                    url = uri("https://maven.pkg.github.com/InsanusMokrassar/TelegramBotAPI")
+                    url = uri("https://maven.pkg.github.com/InsanusMokrassar/ktgbotapi")
             
                     credentials {
-                        username = project.hasProperty('GITHUBPACKAGES_USER') ? project.property('GITHUBPACKAGES_USER') : System.getenv('GITHUBPACKAGES_USER')
-                        password = project.hasProperty('GITHUBPACKAGES_PASSWORD') ? project.property('GITHUBPACKAGES_PASSWORD') : System.getenv('GITHUBPACKAGES_PASSWORD')
+                        username = project.hasProperty('GITHUB_USER') ? project.property('GITHUB_USER') : System.getenv('GITHUB_USER')
+                        password = project.hasProperty('GITHUB_TOKEN') ? project.property('GITHUB_TOKEN') : System.getenv('GITHUB_TOKEN')
                     }
             
                 }

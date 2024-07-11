@@ -1,13 +1,16 @@
 package dev.inmo.tgbotapi.extensions.behaviour_builder
 
+import dev.inmo.kslog.common.e
 import dev.inmo.micro_utils.coroutines.ContextSafelyExceptionHandler
 import dev.inmo.micro_utils.coroutines.ExceptionHandler
 import dev.inmo.tgbotapi.bot.TelegramBot
+import dev.inmo.tgbotapi.extensions.behaviour_builder.utils.extensions.DefaultKTgBotAPIPrivacyCommand
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.longPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.startGettingOfUpdatesByLongPolling
 import dev.inmo.tgbotapi.extensions.utils.updates.retrieving.updateHandlerWithMediaGroupsAdaptation
 import dev.inmo.tgbotapi.types.Seconds
 import dev.inmo.tgbotapi.updateshandlers.FlowsUpdatesFilter
+import dev.inmo.tgbotapi.utils.DefaultKTgBotAPIKSLog
 import kotlinx.coroutines.*
 
 /**
@@ -70,6 +73,9 @@ suspend fun TelegramBot.buildBehaviourWithLongPolling(
         defaultExceptionsHandler = defaultExceptionsHandler,
         block = block
     )
+    if (!behaviourContext.triggersHolder.handleableCommandsHolder.isHandled(DefaultKTgBotAPIPrivacyCommand)) {
+        DefaultKTgBotAPIKSLog.e { "Currently, there are no any handling of \"$DefaultKTgBotAPIPrivacyCommand\" command. According to https://telegram.org/tos/bot-developers#4-privacy it may lead to bot deactivation or removing" }
+    }
     return longPolling(
         behaviourContext,
         scope = behaviourContext,

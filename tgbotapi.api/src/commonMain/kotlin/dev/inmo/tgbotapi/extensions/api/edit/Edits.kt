@@ -12,7 +12,7 @@ import dev.inmo.tgbotapi.types.business_connection.BusinessConnectionId
 import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.LiveLocation
-import dev.inmo.tgbotapi.types.media.TelegramMedia
+import dev.inmo.tgbotapi.types.media.TelegramFreeMedia
 import dev.inmo.tgbotapi.types.message.ParseMode
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
@@ -145,7 +145,7 @@ suspend fun TelegramBot.edit(
 suspend fun TelegramBot.edit(
     chatId: ChatIdentifier,
     messageId: MessageId,
-    media: TelegramMedia,
+    media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chatId, messageId, media, businessConnectionId, replyMarkup)
@@ -157,7 +157,7 @@ suspend fun TelegramBot.edit(
 suspend fun TelegramBot.edit(
     chat: Chat,
     messageId: MessageId,
-    media: TelegramMedia,
+    media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(chat, messageId, media, businessConnectionId, replyMarkup)
@@ -168,7 +168,7 @@ suspend fun TelegramBot.edit(
  */
 suspend fun TelegramBot.edit(
     message: ContentMessage<MediaContent>,
-    media: TelegramMedia,
+    media: TelegramFreeMedia,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
     replyMarkup: InlineKeyboardMarkup? = null
 ) = editMessageMedia(message, media, businessConnectionId, replyMarkup)

@@ -76,7 +76,7 @@ data class TelegramMediaVideo internal constructor (
     override val height: Int? = null,
     override val duration: Long? = null,
     override val thumb: InputFile? = null
-) : TelegramMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, VisualMediaGroupMemberTelegramMedia {
+) : TelegramFreeMedia, SizedTelegramMedia, DuratedTelegramMedia, ThumbedTelegramMedia, VisualMediaGroupMemberTelegramMedia {
     override val type: String = videoTelegramMediaType
     override val textSources: TextSourcesList? by lazy {
         rawEntities ?.asTextSources(text ?: return@lazy null)

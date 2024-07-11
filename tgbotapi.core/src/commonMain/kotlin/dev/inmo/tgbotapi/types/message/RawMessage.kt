@@ -30,6 +30,7 @@ import dev.inmo.tgbotapi.types.message.content.MessageContent
 import dev.inmo.tgbotapi.types.message.payments.*
 import dev.inmo.tgbotapi.types.passport.PassportData
 import dev.inmo.tgbotapi.types.payments.Invoice
+import dev.inmo.tgbotapi.types.payments.RefundedPayment
 import dev.inmo.tgbotapi.types.payments.SuccessfulPayment
 import dev.inmo.tgbotapi.types.polls.Poll
 import dev.inmo.tgbotapi.types.request.ChatShared
@@ -71,10 +72,11 @@ internal data class RawMessage(
     private val story: Story? = null,
     private val audio: AudioFile? = null,
     private val document: DocumentFile? = null,
+    private val paid_media: PaidMediaInfo? = null,
     private val animation: AnimationFile? = null,
     private val game: RawGame? = null,
     @Serializable(PhotoSerializer::class)
-    private val photo: Photo? = null,
+    private val photo: PhotoFile? = null,
     private val sticker: Sticker? = null,
     private val video: VideoFile? = null,
     private val voice: VoiceFile? = null,
@@ -87,7 +89,7 @@ internal data class RawMessage(
     private val left_chat_member: User? = null,
     private val new_chat_title: String? = null,
     @Serializable(PhotoSerializer::class)
-    private val new_chat_photo: Photo? = null,
+    private val new_chat_photo: PhotoFile? = null,
     private val delete_chat_photo: Boolean = false,
     private val group_chat_created: Boolean = false,
     private val supergroup_chat_created: Boolean = false,
@@ -98,6 +100,7 @@ internal data class RawMessage(
     private val invoice: Invoice? = null,
     private val dice: Dice? = null,
     private val successful_payment: SuccessfulPayment? = null,
+    private val refunded_payment: RefundedPayment? = null,
     private val giveaway: Giveaway? = null,
     private val giveaway_winners: GiveawayResults? = null,
     private val sender_boost_count: Int? = null,
@@ -198,6 +201,12 @@ internal data class RawMessage(
                 adaptedCaptionEntities,
                 quote
             )
+            paid_media != null -> PaidMediaInfoContent(
+                paid_media,
+                caption,
+                adaptedCaptionEntities,
+                quote
+            )
             voice != null -> VoiceContent(
                 voice,
                 caption,
@@ -262,6 +271,7 @@ internal data class RawMessage(
             pinned_message != null -> PinnedMessage(pinned_message.asMessage)
             proximity_alert_triggered != null -> proximity_alert_triggered
             successful_payment != null -> SuccessfulPaymentEvent(successful_payment)
+            refunded_payment != null -> RefundedPaymentEvent(refunded_payment)
             connected_website != null -> UserLoggedIn(connected_website)
             web_app_data != null -> web_app_data
             users_shared != null -> users_shared

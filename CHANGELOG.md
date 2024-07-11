@@ -1,5 +1,25 @@
 # TelegramBotAPI changelog
 
+## 15.1.0
+
+**THIS UPDATE CONTAINS BREAKING CHANGES**
+
+**THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.7** (thanks to [bpavuk](https://threads.net/b_pavuchok))
+
+**THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.6** (with participation and help of [bpavuk](https://threads.net/b_pavuchok))
+
+* Add support of paid media
+* Update web apps
+* `Version`:
+  * `MicroUtils`: `0.21.1` -> `0.21.2`
+* `Core`:
+  * `TelegramMedia` has been separated onto two interfaces: `TelegramFreeMedia` and `TelegramPaidMedia`
+    * `TelegramFreeMedia` has replaced `TelegramMedia` on all old places where it have been used
+  * `Photo` has been renamed to `PhotoFile`
+* `BehaviourBuilder`:
+  * Add notification when handling of `/privacy` command is absence
+  * Add several extensions to simplify setting up `/privacy` reaction
+
 ## 15.0.0
 
 **THIS UPDATE CONTAINS BREAKING CHANGES**

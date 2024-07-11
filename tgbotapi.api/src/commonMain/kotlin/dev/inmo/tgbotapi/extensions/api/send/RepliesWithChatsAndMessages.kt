@@ -26,6 +26,9 @@ import dev.inmo.tgbotapi.types.games.Game
 import dev.inmo.tgbotapi.types.location.*
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 import dev.inmo.tgbotapi.types.message.content.*
+import dev.inmo.tgbotapi.types.message.payments.PaidMedia
+import dev.inmo.tgbotapi.types.message.payments.toTelegramMediaPhoto
+import dev.inmo.tgbotapi.types.message.payments.toTelegramPaidMediaVideo
 import dev.inmo.tgbotapi.types.payments.LabeledPrice
 import dev.inmo.tgbotapi.types.payments.abstracts.Currency
 import dev.inmo.tgbotapi.types.polls.*
@@ -806,7 +809,7 @@ suspend inline fun TelegramBot.replyWithPhoto(
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
-    photo: Photo,
+    photo: PhotoFile,
     text: String? = null,
     parseMode: ParseMode? = null,
     showCaptionAboveMedia: Boolean = false,
@@ -860,7 +863,7 @@ suspend inline fun TelegramBot.replyWithPhoto(
 suspend inline fun TelegramBot.reply(
     toChatId: IdChatIdentifier,
     toMessageId: MessageId,
-    photo: Photo,
+    photo: PhotoFile,
     entities: TextSourcesList,
     showCaptionAboveMedia: Boolean = false,
     spoilered: Boolean = false,
@@ -2044,4 +2047,72 @@ suspend fun TelegramBot.reply(
             replyMarkup = replyMarkup
         )
     }
+}
+
+suspend fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    starCount: Int,
+    media: List<TelegramPaidMedia>,
+    entities: TextSourcesList,
+    showCaptionAboveMedia: Boolean = false,
+    threadId: MessageThreadId? = toChatId.threadId,
+    businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    sendPaidMedia(
+        chatId = toChatId,
+        starCount = starCount,
+        media = media,
+        entities = entities,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyMarkup = replyMarkup,
+        replyParameters = ReplyParameters(
+            messageId = toMessageId,
+            chatIdentifier = toChatId,
+            allowSendingWithoutReply = allowSendingWithoutReply
+        )
+    )
+}
+
+suspend fun TelegramBot.reply(
+    toChatId: IdChatIdentifier,
+    toMessageId: MessageId,
+    starCount: Int,
+    media: List<TelegramPaidMedia>,
+    text: String? = null,
+    parseMode: ParseMode? = null,
+    showCaptionAboveMedia: Boolean = false,
+    threadId: MessageThreadId? = toChatId.threadId,
+    businessConnectionId: BusinessConnectionId? = toChatId.businessConnectionId,
+    disableNotification: Boolean = false,
+    protectContent: Boolean = false,
+    allowSendingWithoutReply: Boolean? = null,
+    replyMarkup: KeyboardMarkup? = null
+) {
+    sendPaidMedia(
+        chatId = toChatId,
+        starCount = starCount,
+        media = media,
+        text = text,
+        parseMode = parseMode,
+        showCaptionAboveMedia = showCaptionAboveMedia,
+        threadId = threadId,
+        businessConnectionId = businessConnectionId,
+        disableNotification = disableNotification,
+        protectContent = protectContent,
+        replyMarkup = replyMarkup,
+        replyParameters = ReplyParameters(
+            messageId = toMessageId,
+            chatIdentifier = toChatId,
+            allowSendingWithoutReply = allowSendingWithoutReply
+        )
+    )
 }
