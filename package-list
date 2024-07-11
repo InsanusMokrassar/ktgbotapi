@@ -38,6 +38,7 @@ dev.inmo.tgbotapi.extensions.behaviour_builder.expectations
 dev.inmo.tgbotapi.extensions.behaviour_builder.filters
 dev.inmo.tgbotapi.extensions.behaviour_builder.triggers_handling
 dev.inmo.tgbotapi.extensions.behaviour_builder.utils
+dev.inmo.tgbotapi.extensions.behaviour_builder.utils.extensions
 dev.inmo.tgbotapi.extensions.behaviour_builder.utils.handlers_registrar
 dev.inmo.tgbotapi.extensions.behaviour_builder.utils.marker_factories
 module:tgbotapi.behaviour_builder.fsm
