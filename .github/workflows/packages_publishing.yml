@@ -22,12 +22,6 @@ jobs:
         run: ./gradlew build
       - name: API compatibility check
         run: ./gradlew apiCheck
-      - name: Publish to GitHub Packages
-        continue-on-error: true
-        run: ./gradlew publishAllPublicationsToGithubPackagesRepository
-        env:
-          GITHUBPACKAGES_USER: ${{ secrets.GITHUBPACKAGES_USER }}
-          GITHUBPACKAGES_PASSWORD: ${{ secrets.GITHUBPACKAGES_PASSWORD }}
       - name: Publish to GithubPackages
         continue-on-error: true
         run: ./gradlew publishAllPublicationsToGithubPackagesRepository --no-parallel
