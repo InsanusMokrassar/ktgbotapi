@@ -26,8 +26,8 @@ jobs:
         continue-on-error: true
         run: ./gradlew publishAllPublicationsToGithubPackagesRepository --no-parallel
         env:
-          GITHUBPACKAGES_USER: ${{ github.actor }}
-          GITHUBPACKAGES_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USER: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to Gitea
         continue-on-error: true
         run: ./gradlew publishAllPublicationsToInmoNexusRepository
