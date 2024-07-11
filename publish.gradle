@@ -41,7 +41,7 @@ publishing {
             if ((project.hasProperty('GITHUBPACKAGES_USER') || System.getenv('GITHUBPACKAGES_USER') != null) && (project.hasProperty('GITHUBPACKAGES_PASSWORD') || System.getenv('GITHUBPACKAGES_PASSWORD') != null)) {
                 maven {
                     name = "GithubPackages"
-                    url = uri("https://maven.pkg.github.com/InsanusMokrassar/TelegramBotAPI")
+                    url = uri("https://maven.pkg.github.com/InsanusMokrassar/ktgbotapi")
             
                     credentials {
                         username = project.hasProperty('GITHUBPACKAGES_USER') ? project.property('GITHUBPACKAGES_USER') : System.getenv('GITHUBPACKAGES_USER')
