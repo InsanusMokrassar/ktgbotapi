@@ -22,15 +22,21 @@ jobs:
         run: ./gradlew build
       - name: API compatibility check
         run: ./gradlew apiCheck
-      - name: Publish to Gitea
+      - name: Publish to GitHub Packages
         continue-on-error: true
-        run: ./gradlew publishAllPublicationsToInmoNexusRepository
+        run: ./gradlew publishAllPublicationsToGithubPackagesRepository
         env:
-          INMONEXUS_USER: ${{ secrets.INMONEXUS_USER }}
-          INMONEXUS_PASSWORD: ${{ secrets.INMONEXUS_PASSWORD }}
+          GITHUBPACKAGES_USER: ${{ secrets.GITHUBPACKAGES_USER }}
+          GITHUBPACKAGES_PASSWORD: ${{ secrets.GITHUBPACKAGES_PASSWORD }}
       - name: Publish to GithubPackages
         continue-on-error: true
         run: ./gradlew publishAllPublicationsToGithubPackagesRepository --no-parallel
         env:
           GITHUBPACKAGES_USER: ${{ github.actor }}
           GITHUBPACKAGES_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to Gitea
+        continue-on-error: true
+        run: ./gradlew publishAllPublicationsToInmoNexusRepository
+        env:
+          INMONEXUS_USER: ${{ secrets.INMONEXUS_USER }}
+          INMONEXUS_PASSWORD: ${{ secrets.INMONEXUS_PASSWORD }}
