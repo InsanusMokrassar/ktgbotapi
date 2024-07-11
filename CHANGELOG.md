@@ -6,7 +6,7 @@
 
 **THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.7** (thanks to [bpavuk](https://threads.net/b_pavuchok))
 
-**THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.6** (with participant and help of [bpavuk](https://threads.net/b_pavuchok))
+**THIS UPDATE CONTAINS ADDING OF SUPPORT FOR BOTS API 7.6** (with participation and help of [bpavuk](https://threads.net/b_pavuchok))
 
 * Add support of paid media
 * Update web apps
