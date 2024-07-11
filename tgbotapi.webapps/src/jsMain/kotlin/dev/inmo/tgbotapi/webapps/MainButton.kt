@@ -36,6 +36,7 @@ data class MainButtonParams(
     val isVisible: Boolean? = null
 )
 
+@Deprecated(message="Use onClick without EventHandler")
 fun MainButton.onClick(eventHandler: EventHandler) = onClick {
     val that = js("this").unsafeCast<WebApp>()
     that.eventHandler()
