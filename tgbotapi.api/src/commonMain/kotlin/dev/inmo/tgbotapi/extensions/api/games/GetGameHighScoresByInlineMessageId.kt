@@ -4,17 +4,18 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.games.GetGameHighScoresByInlineMessageId
 import dev.inmo.tgbotapi.types.*
 import dev.inmo.tgbotapi.types.chat.CommonUser
+import dev.inmo.tgbotapi.types.games.GameHighScore
 
-suspend fun TelegramBot.getGameScore(
+public suspend fun TelegramBot.getGameScore(
     userId: UserId,
     inlineMessageId: InlineMessageId
-) = execute(
+): List<GameHighScore> = execute(
     GetGameHighScoresByInlineMessageId(
         userId, inlineMessageId
     )
 )
 
-suspend fun TelegramBot.getGameScore(
+public suspend fun TelegramBot.getGameScore(
     user: CommonUser,
     inlineMessageId: InlineMessageId
-) = getGameScore(user.id, inlineMessageId)
+): List<GameHighScore> = getGameScore(user.id, inlineMessageId)

@@ -8,66 +8,66 @@ import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.GameContent
 
-suspend fun TelegramBot.setGameScore(
+public suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     chatId: IdChatIdentifier,
     messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
-) = execute(
+): Boolean = execute(
     SetGameScoreByChatId(userId, score, chatId, messageId, force, disableEditMessage)
 )
 
-suspend fun TelegramBot.setGameScore(
+public suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     chatId: IdChatIdentifier,
     messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
-) = setGameScore(
+): Boolean = setGameScore(
     user.id, score, chatId, messageId, force, disableEditMessage
 )
 
-suspend fun TelegramBot.setGameScore(
+public suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     chat: Chat,
     messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
-) = setGameScore(
+): Boolean = setGameScore(
     userId, score, chat.id, messageId, force, disableEditMessage
 )
 
-suspend fun TelegramBot.setGameScore(
+public suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     chat: Chat,
     messageId: MessageId,
     force: Boolean = false,
     disableEditMessage: Boolean = false
-) = setGameScore(
+): Boolean = setGameScore(
     user.id, score, chat.id, messageId, force, disableEditMessage
 )
 
-suspend fun TelegramBot.setGameScore(
+public suspend fun TelegramBot.setGameScore(
     userId: UserId,
     score: Long,
     message: ContentMessage<GameContent>,
     force: Boolean = false,
     disableEditMessage: Boolean = false
-) = setGameScore(
+): Boolean = setGameScore(
     userId, score, message.chat.id, message.messageId, force, disableEditMessage
 )
 
-suspend fun TelegramBot.setGameScore(
+public suspend fun TelegramBot.setGameScore(
     user: CommonUser,
     score: Long,
     message: ContentMessage<GameContent>,
     force: Boolean = false,
     disableEditMessage: Boolean = false
-) = setGameScore(
+): Boolean = setGameScore(
     user.id, score, message.chat.id, message.messageId, force, disableEditMessage
 )
