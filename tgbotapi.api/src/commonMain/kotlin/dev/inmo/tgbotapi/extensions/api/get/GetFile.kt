@@ -3,19 +3,20 @@ package dev.inmo.tgbotapi.extensions.api.get
 import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.get.GetFile
+import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.content.MediaContent
 
-suspend fun TelegramBot.getFileAdditionalInfo(
+public suspend fun TelegramBot.getFileAdditionalInfo(
     fileId: FileId
-) = execute(
+): PathedFile = execute(
     GetFile(fileId)
 )
 
-suspend fun TelegramBot.getFileAdditionalInfo(
+public suspend fun TelegramBot.getFileAdditionalInfo(
     file: TelegramMediaFile
-) = getFileAdditionalInfo(file.fileId)
+): PathedFile = getFileAdditionalInfo(file.fileId)
 
-suspend fun TelegramBot.getFileAdditionalInfo(
+public suspend fun TelegramBot.getFileAdditionalInfo(
     content: MediaContent
-) = getFileAdditionalInfo(content.media)
+): PathedFile = getFileAdditionalInfo(content.media)

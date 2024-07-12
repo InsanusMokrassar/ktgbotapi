@@ -4,27 +4,28 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.get.GetStickerSet
 import dev.inmo.tgbotapi.types.StickerSetName
 import dev.inmo.tgbotapi.types.files.Sticker
+import dev.inmo.tgbotapi.types.stickers.StickerSet
 
-suspend fun TelegramBot.getStickerSet(
+public suspend fun TelegramBot.getStickerSet(
     name: StickerSetName
-) = execute(
+): StickerSet = execute(
     GetStickerSet(name)
 )
 
-suspend fun TelegramBot.getStickerSet(
+public suspend fun TelegramBot.getStickerSet(
     name: String
-) = getStickerSet(
+): StickerSet = getStickerSet(
     StickerSetName(name)
 )
 
-suspend fun TelegramBot.getStickerSetOrNull(
+public suspend fun TelegramBot.getStickerSetOrNull(
     sticker: Sticker
-) = sticker.stickerSetName ?.let {
+): StickerSet? = sticker.stickerSetName ?.let {
     getStickerSet(it)
 }
 
-suspend fun TelegramBot.getStickerSetOrThrow(
+public suspend fun TelegramBot.getStickerSetOrThrow(
     sticker: Sticker
-) = getStickerSet(
+): StickerSet = getStickerSet(
     sticker.stickerSetName ?: error("Sticker must contains stickerSetName to be correctly used in getStickerSet method")
 )
