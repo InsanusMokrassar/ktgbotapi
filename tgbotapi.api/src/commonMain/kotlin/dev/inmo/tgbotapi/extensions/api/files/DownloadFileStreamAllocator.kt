@@ -7,23 +7,24 @@ import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.types.files.PathedFile
 import dev.inmo.tgbotapi.types.files.TelegramMediaFile
 import dev.inmo.tgbotapi.types.message.content.MediaContent
+import dev.inmo.tgbotapi.utils.ByteReadChannelAllocator
 
-suspend fun TelegramBot.downloadFileStreamAllocator(
+public suspend fun TelegramBot.downloadFileStreamAllocator(
     filePath: String
-) = execute(DownloadFileStream(filePath))
+): ByteReadChannelAllocator = execute(DownloadFileStream(filePath))
 
-suspend fun TelegramBot.downloadFileStreamAllocator(
+public suspend fun TelegramBot.downloadFileStreamAllocator(
     pathedFile: PathedFile
-) = downloadFileStreamAllocator(pathedFile.filePath)
+): ByteReadChannelAllocator = downloadFileStreamAllocator(pathedFile.filePath)
 
-suspend fun TelegramBot.downloadFileStreamAllocator(
+public suspend fun TelegramBot.downloadFileStreamAllocator(
     fileId: FileId
-) = downloadFileStreamAllocator(getFileAdditionalInfo(fileId))
+): ByteReadChannelAllocator = downloadFileStreamAllocator(getFileAdditionalInfo(fileId))
 
-suspend fun TelegramBot.downloadFileStreamAllocator(
+public suspend fun TelegramBot.downloadFileStreamAllocator(
     file: TelegramMediaFile
-) = downloadFileStreamAllocator(getFileAdditionalInfo(file))
+): ByteReadChannelAllocator = downloadFileStreamAllocator(getFileAdditionalInfo(file))
 
-suspend fun TelegramBot.downloadFileStreamAllocator(
+public suspend fun TelegramBot.downloadFileStreamAllocator(
     file: MediaContent
-) = downloadFileStreamAllocator(getFileAdditionalInfo(file.media))
+): ByteReadChannelAllocator = downloadFileStreamAllocator(getFileAdditionalInfo(file.media))
