@@ -4,11 +4,12 @@ import dev.inmo.tgbotapi.bot.TelegramBot
 import dev.inmo.tgbotapi.requests.chat.get.GetChatAdministrators
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.PublicChat
+import dev.inmo.tgbotapi.types.chat.member.AdministratorChatMember
 
-suspend fun TelegramBot.getChatAdministrators(
+public suspend fun TelegramBot.getChatAdministrators(
     chatId: ChatIdentifier
-) = execute(GetChatAdministrators(chatId))
+): List<AdministratorChatMember> = execute(GetChatAdministrators(chatId))
 
-suspend fun TelegramBot.getChatAdministrators(
+public suspend fun TelegramBot.getChatAdministrators(
     chat: PublicChat
-) = getChatAdministrators(chat.id)
+): List<AdministratorChatMember> = getChatAdministrators(chat.id)

@@ -8,14 +8,14 @@ import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.unpinAllGeneralForumTopicMessages(
+public suspend fun TelegramBot.unpinAllGeneralForumTopicMessages(
     chatId: ChatIdentifier
-) = execute(
+): Boolean = execute(
     UnpinAllGeneralForumTopicMessages(
         chatId
     )
 )
 
-suspend fun TelegramBot.unpinAllGeneralForumTopicMessages(
+public suspend fun TelegramBot.unpinAllGeneralForumTopicMessages(
     chat: Chat
-) = unpinAllGeneralForumTopicMessages(chat.id)
+): Boolean = unpinAllGeneralForumTopicMessages(chat.id)

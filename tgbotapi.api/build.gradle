@@ -20,5 +20,5 @@ kotlin {
             languageSettings.optIn("kotlinx.serialization.ExperimentalSerializationApi")
         }
     }
+    explicitApi()
 }
-

@@ -10,12 +10,12 @@ import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.unhideGeneralForumTopic(
+public suspend fun TelegramBot.unhideGeneralForumTopic(
     chatId: ChatIdentifier
-) = execute(
+): Boolean = execute(
     UnhideGeneralForumTopic(chatId)
 )
 
-suspend fun TelegramBot.unhideGeneralForumTopic(
+public suspend fun TelegramBot.unhideGeneralForumTopic(
     chat: Chat
-) = unhideGeneralForumTopic(chat.id)
+): Boolean = unhideGeneralForumTopic(chat.id)

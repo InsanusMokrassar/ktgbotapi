@@ -7,19 +7,19 @@ import dev.inmo.tgbotapi.types.MessageId
 import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.message.abstracts.AccessibleMessage
 
-suspend fun TelegramBot.pinChatMessage(
+public suspend fun TelegramBot.pinChatMessage(
     chatId: ChatIdentifier,
     messageId: MessageId,
     disableNotification: Boolean = false
-) = execute(PinChatMessage(chatId, messageId, disableNotification))
+): Boolean = execute(PinChatMessage(chatId, messageId, disableNotification))
 
-suspend fun TelegramBot.pinChatMessage(
+public suspend fun TelegramBot.pinChatMessage(
     chat: Chat,
     messageId: MessageId,
     disableNotification: Boolean = false
-) = pinChatMessage(chat.id, messageId, disableNotification)
+): Boolean = pinChatMessage(chat.id, messageId, disableNotification)
 
-suspend fun TelegramBot.pinChatMessage(
+public suspend fun TelegramBot.pinChatMessage(
     message: AccessibleMessage,
     disableNotification: Boolean = false
-) = pinChatMessage(message.chat.id, message.messageId, disableNotification)
+): Boolean = pinChatMessage(message.chat.id, message.messageId, disableNotification)

@@ -5,10 +5,10 @@ import dev.inmo.tgbotapi.requests.chat.LeaveChat
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.PublicChat
 
-suspend fun TelegramBot.leaveChat(
+public suspend fun TelegramBot.leaveChat(
     chatId: ChatIdentifier
-) = execute(LeaveChat(chatId))
+): Boolean = execute(LeaveChat(chatId))
 
-suspend fun TelegramBot.leaveChat(
+public suspend fun TelegramBot.leaveChat(
     chat: PublicChat
-) = leaveChat(chat.id)
+): Boolean = leaveChat(chat.id)

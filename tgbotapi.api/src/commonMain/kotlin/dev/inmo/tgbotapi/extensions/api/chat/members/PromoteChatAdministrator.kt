@@ -9,7 +9,7 @@ import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.chat.PublicChat
 import dev.inmo.tgbotapi.types.chat.User
 
-suspend fun TelegramBot.promoteChatAdministrator(
+public suspend fun TelegramBot.promoteChatAdministrator(
     chatId: ChatIdentifier,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -21,7 +21,7 @@ suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
-) = execute(
+): Boolean = execute(
     PromoteChatMember(
         chatId,
         userId,
@@ -37,7 +37,7 @@ suspend fun TelegramBot.promoteChatAdministrator(
     )
 )
 
-suspend fun TelegramBot.promoteChatAdministrator(
+public suspend fun TelegramBot.promoteChatAdministrator(
     chat: PublicChat,
     userId: UserId,
     untilDate: TelegramDate? = null,
@@ -49,7 +49,7 @@ suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
-) = promoteChatAdministrator(
+): Boolean = promoteChatAdministrator(
     chat.id,
     userId,
     untilDate,
@@ -63,7 +63,7 @@ suspend fun TelegramBot.promoteChatAdministrator(
     canManageChat
 )
 
-suspend fun TelegramBot.promoteChatAdministrator(
+public suspend fun TelegramBot.promoteChatAdministrator(
     chatId: IdChatIdentifier,
     user: User,
     untilDate: TelegramDate? = null,
@@ -75,7 +75,7 @@ suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
-) = promoteChatAdministrator(
+): Boolean = promoteChatAdministrator(
     chatId,
     user.id,
     untilDate,
@@ -89,7 +89,7 @@ suspend fun TelegramBot.promoteChatAdministrator(
     canManageChat
 )
 
-suspend fun TelegramBot.promoteChatAdministrator(
+public suspend fun TelegramBot.promoteChatAdministrator(
     chat: PublicChat,
     user: User,
     untilDate: TelegramDate? = null,
@@ -101,7 +101,7 @@ suspend fun TelegramBot.promoteChatAdministrator(
     canPromoteMembers: Boolean? = null,
     canManageVideoChats: Boolean? = null,
     canManageChat: Boolean? = null,
-) = promoteChatAdministrator(
+): Boolean = promoteChatAdministrator(
     chat.id,
     user.id,
     untilDate,

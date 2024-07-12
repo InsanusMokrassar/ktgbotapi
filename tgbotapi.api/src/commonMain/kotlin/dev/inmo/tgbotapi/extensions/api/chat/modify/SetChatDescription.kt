@@ -5,12 +5,12 @@ import dev.inmo.tgbotapi.requests.chat.modify.SetChatDescription
 import dev.inmo.tgbotapi.types.ChatIdentifier
 import dev.inmo.tgbotapi.types.chat.PublicChat
 
-suspend fun TelegramBot.setChatDescription(
+public suspend fun TelegramBot.setChatDescription(
     chatId: ChatIdentifier,
     description: String
-) = execute(SetChatDescription(chatId, description))
+): Boolean = execute(SetChatDescription(chatId, description))
 
-suspend fun TelegramBot.setChatDescription(
+public suspend fun TelegramBot.setChatDescription(
     chat: PublicChat,
     description: String
-) = setChatDescription(chat.id, description)
+): Boolean = setChatDescription(chat.id, description)

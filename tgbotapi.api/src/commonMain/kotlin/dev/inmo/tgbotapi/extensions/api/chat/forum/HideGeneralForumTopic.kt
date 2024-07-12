@@ -9,12 +9,12 @@ import dev.inmo.tgbotapi.types.ForumTopic
 import dev.inmo.tgbotapi.types.MessageThreadId
 import dev.inmo.tgbotapi.types.chat.Chat
 
-suspend fun TelegramBot.hideGeneralForumTopic(
+public suspend fun TelegramBot.hideGeneralForumTopic(
     chatId: ChatIdentifier
-) = execute(
+): Boolean = execute(
     HideGeneralForumTopic(chatId)
 )
 
-suspend fun TelegramBot.hideGeneralForumTopic(
+public suspend fun TelegramBot.hideGeneralForumTopic(
     chat: Chat
-) = hideGeneralForumTopic(chat.id)
+): Boolean = hideGeneralForumTopic(chat.id)

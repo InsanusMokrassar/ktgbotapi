@@ -21,7 +21,7 @@ import dev.inmo.tgbotapi.utils.RiskFeature
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageCaption(
+public suspend fun TelegramBot.editMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageId,
     text: String,
@@ -29,7 +29,7 @@ suspend fun TelegramBot.editMessageCaption(
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
+): ContentMessage<MediaContent> = execute(
     EditChatMessageCaption(chatId, messageId, text, parseMode, businessConnectionId, showCaptionAboveMedia, replyMarkup)
 )
 
@@ -37,7 +37,7 @@ suspend fun TelegramBot.editMessageCaption(
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageCaption(
+public suspend fun TelegramBot.editMessageCaption(
     chat: Chat,
     messageId: MessageId,
     text: String,
@@ -45,13 +45,13 @@ suspend fun TelegramBot.editMessageCaption(
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageCaption(chat.id, messageId, text, parseMode, businessConnectionId, showCaptionAboveMedia, replyMarkup)
+): ContentMessage<MediaContent> = editMessageCaption(chat.id, messageId, text, parseMode, businessConnectionId, showCaptionAboveMedia, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun <T> TelegramBot.editMessageCaption(
+public suspend fun <T> TelegramBot.editMessageCaption(
     message: ContentMessage<T>,
     text: String,
     parseMode: ParseMode? = null,
@@ -67,14 +67,14 @@ suspend fun <T> TelegramBot.editMessageCaption(
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageCaption(
+public suspend fun TelegramBot.editMessageCaption(
     chatId: ChatIdentifier,
     messageId: MessageId,
     entities: TextSourcesList,
     businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
-) = execute(
+): ContentMessage<MediaContent> = execute(
     EditChatMessageCaption(chatId, messageId, entities, businessConnectionId, showCaptionAboveMedia, replyMarkup)
 )
 
@@ -82,20 +82,20 @@ suspend fun TelegramBot.editMessageCaption(
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun TelegramBot.editMessageCaption(
+public suspend fun TelegramBot.editMessageCaption(
     chat: Chat,
     messageId: MessageId,
     entities: TextSourcesList,
     businessConnectionId: BusinessConnectionId? = chat.id.businessConnectionId,
     showCaptionAboveMedia: Boolean = false,
     replyMarkup: InlineKeyboardMarkup? = null
-) = editMessageCaption(chat.id, messageId, entities, businessConnectionId, showCaptionAboveMedia, replyMarkup)
+): ContentMessage<MediaContent> = editMessageCaption(chat.id, messageId, entities, businessConnectionId, showCaptionAboveMedia, replyMarkup)
 
 /**
  * @param replyMarkup Some [InlineKeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.inlineKeyboard]
  * as a builder for that
  */
-suspend fun <T> TelegramBot.editMessageCaption(
+public suspend fun <T> TelegramBot.editMessageCaption(
     message: ContentMessage<T>,
     entities: TextSourcesList,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,
@@ -111,7 +111,7 @@ suspend fun <T> TelegramBot.editMessageCaption(
  * as a builder for that
  */
 @RiskFeature("This method is unsafe due to absence of any guaranties about the type of message. In case if message is not media message this method will throw an exception")
-suspend fun <T> TelegramBot.editMessageCaption(
+public suspend fun <T> TelegramBot.editMessageCaption(
     message: AccessibleMessage,
     entities: TextSourcesList,
     businessConnectionId: BusinessConnectionId? = message.chat.id.businessConnectionId,

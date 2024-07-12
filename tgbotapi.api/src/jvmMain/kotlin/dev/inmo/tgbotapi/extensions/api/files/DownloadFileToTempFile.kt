@@ -17,7 +17,7 @@ import kotlinx.coroutines.job
 import java.io.File
 import kotlin.coroutines.coroutineContext
 
-suspend fun TelegramBot.downloadFileToTemp(
+public suspend fun TelegramBot.downloadFileToTemp(
     filePath: String
 ): File {
     return downloadFile(
@@ -28,7 +28,7 @@ suspend fun TelegramBot.downloadFileToTemp(
     )
 }
 
-suspend fun TelegramBot.downloadFileToTemp(
+public suspend fun TelegramBot.downloadFileToTemp(
     pathedFile: PathedFile
 ): File = downloadFileToTemp(
     pathedFile.filePath
@@ -44,20 +44,20 @@ suspend fun TelegramBot.downloadFileToTemp(
     }
 }
 
-suspend fun TelegramBot.downloadFileToTemp(
+public suspend fun TelegramBot.downloadFileToTemp(
     fileId: FileId
-) = downloadFileToTemp(
+): File = downloadFileToTemp(
     getFileAdditionalInfo(fileId)
 )
 
-suspend fun TelegramBot.downloadFileToTemp(
+public suspend fun TelegramBot.downloadFileToTemp(
     file: TelegramMediaFile
 ): File = downloadFileToTemp(
     getFileAdditionalInfo(file)
 )
 
-suspend fun TelegramBot.downloadFileToTemp(
+public suspend fun TelegramBot.downloadFileToTemp(
     file: MediaContent
-) = downloadFileToTemp(
+): File = downloadFileToTemp(
     getFileAdditionalInfo(file.media)
 )
