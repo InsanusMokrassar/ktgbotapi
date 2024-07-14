@@ -113,7 +113,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
     override fun method(): String = "sendLocation"
 
     @Serializable
-    data class Live internal constructor(
+    data class Live (
         @SerialName(chatIdField)
         override val chatId: ChatIdentifier,
         @SerialName(latitudeField)
@@ -121,6 +121,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(longitudeField)
         override val longitude: Double,
         @SerialName(livePeriodField)
+        @EncodeDefault
         override val livePeriod: Seconds = LiveLocation.INDEFINITE_LIVE_PERIOD,
         @SerialName(horizontalAccuracyField)
         override val horizontalAccuracy: Meters? = null,
@@ -129,8 +130,10 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(proximityAlertRadiusField)
         override val proximityAlertRadius: Meters? = null,
         @SerialName(messageThreadIdField)
+        @EncodeDefault
         override val threadId: MessageThreadId? = chatId.threadId,
         @SerialName(businessConnectionIdField)
+        @EncodeDefault
         override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         @SerialName(disableNotificationField)
         override val disableNotification: Boolean = false,
@@ -159,7 +162,7 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
     }
 
     @Serializable
-    data class Static internal constructor(
+    data class Static (
         @SerialName(chatIdField)
         override val chatId: ChatIdentifier,
         @SerialName(latitudeField)
@@ -167,8 +170,10 @@ sealed interface SendLocation<T : LocationContent> : SendContentMessageRequest<C
         @SerialName(longitudeField)
         override val longitude: Double,
         @SerialName(messageThreadIdField)
+        @EncodeDefault
         override val threadId: MessageThreadId? = chatId.threadId,
         @SerialName(businessConnectionIdField)
+        @EncodeDefault
         override val businessConnectionId: BusinessConnectionId? = chatId.businessConnectionId,
         @SerialName(disableNotificationField)
         override val disableNotification: Boolean = false,
