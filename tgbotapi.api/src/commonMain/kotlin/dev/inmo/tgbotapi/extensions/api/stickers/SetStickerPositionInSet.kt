@@ -5,20 +5,20 @@ import dev.inmo.tgbotapi.requests.abstracts.FileId
 import dev.inmo.tgbotapi.requests.stickers.SetStickerPositionInSet
 import dev.inmo.tgbotapi.types.files.Sticker
 
-suspend fun TelegramBot.setStickerPositionInSet(
+public suspend fun TelegramBot.setStickerPositionInSet(
     sticker: FileId,
     position: Int
-) = execute(
+): Boolean = execute(
     SetStickerPositionInSet(
         sticker,
         position
     )
 )
 
-suspend fun TelegramBot.setStickerPositionInSet(
+public suspend fun TelegramBot.setStickerPositionInSet(
     sticker: Sticker,
     position: Int
-) = setStickerPositionInSet(
+): Boolean = setStickerPositionInSet(
     sticker.fileId,
     position
 )

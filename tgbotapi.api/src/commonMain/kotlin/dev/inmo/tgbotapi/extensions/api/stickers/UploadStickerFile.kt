@@ -6,19 +6,20 @@ import dev.inmo.tgbotapi.requests.stickers.UploadStickerFile
 import dev.inmo.tgbotapi.types.StickerFormat
 import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.UserId
+import dev.inmo.tgbotapi.types.files.File
 
-suspend fun TelegramBot.uploadStickerFile(
+public suspend fun TelegramBot.uploadStickerFile(
     userId: UserId,
     sticker: MultipartFile,
     stickerFormat: StickerFormat
-) = execute(
+): File = execute(
     UploadStickerFile(userId, sticker, stickerFormat)
 )
 
-suspend fun TelegramBot.uploadStickerFile(
+public suspend fun TelegramBot.uploadStickerFile(
     user: CommonUser,
     sticker: MultipartFile,
     stickerFormat: StickerFormat
-) = execute(
+): File = execute(
     UploadStickerFile(user.id, sticker, stickerFormat)
 )

@@ -12,7 +12,7 @@ import io.ktor.client.engine.*
  * @param ktorClientEngine Engine like [io.ktor.client.engine.cio.CIO]
  * @param ktorClientConfig Config block for preconfiguring of bot [HttpClient]
  */
-data class BotBuilder internal constructor(
+public data class BotBuilder internal constructor(
     var proxy: ProxyConfig? = null,
     var ktorClientEngineFactory: HttpClientEngineFactory<HttpClientEngineConfig>? = null,
     var ktorClientConfig: (HttpClientConfig<*>.() -> Unit) ? = null
@@ -37,12 +37,12 @@ data class BotBuilder internal constructor(
  * @return Created by [telegramBotWithCustomClientConfig] function [TelegramBot]. This executor will be preconfigured using [token] and
  * [block]
  */
-fun buildBot(
+public fun buildBot(
     token: String,
     apiUrl: String = telegramBotAPIDefaultUrl,
     testServer: Boolean = false,
     block: BotBuilder.() -> Unit
-) = telegramBot(
+): TelegramBot = telegramBot(
     TelegramAPIUrlsKeeper(token, testServer, apiUrl),
     BotBuilder().apply(block).createHttpClient()
 )

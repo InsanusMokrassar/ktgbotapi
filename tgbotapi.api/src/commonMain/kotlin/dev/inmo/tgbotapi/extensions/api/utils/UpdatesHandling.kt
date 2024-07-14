@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
  *
  * @see UpdateReceiver
  */
-fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
+public fun CoroutineScope.updateHandlerWithMediaGroupsAdaptation(
     output: UpdateReceiver<Update>,
     mediaGroupsDebounceMillis: Long = 1000L
 ): UpdateReceiver<Update> {

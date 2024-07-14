@@ -10,74 +10,74 @@ import dev.inmo.tgbotapi.types.chat.CommonUser
 import dev.inmo.tgbotapi.types.UserId
 import dev.inmo.tgbotapi.types.stickers.StickerSet
 
-suspend fun TelegramBot.setStickerSetThumbnail(
+public suspend fun TelegramBot.setStickerSetThumbnail(
     userId: UserId,
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: FileId
-) = execute(
+): Boolean = execute(
     SetStickerSetThumbnail(userId, stickerSetName, format, thumbnail)
 )
 
-suspend fun TelegramBot.setStickerSetThumbnail(
+public suspend fun TelegramBot.setStickerSetThumbnail(
     userId: UserId,
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: MultipartFile
-) = execute(
+): Boolean = execute(
     SetStickerSetThumbnail(userId, stickerSetName, format, thumbnail)
 )
 
-suspend fun TelegramBot.setStickerSetThumbnail(
+public suspend fun TelegramBot.setStickerSetThumbnail(
     user: CommonUser,
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: FileId
-) = setStickerSetThumbnail(
+): Boolean = setStickerSetThumbnail(
     user.id, stickerSetName, format, thumbnail
 )
 
-suspend fun TelegramBot.setStickerSetThumbnail(
+public suspend fun TelegramBot.setStickerSetThumbnail(
     user: CommonUser,
     stickerSetName: StickerSetName,
     format: StickerFormat,
     thumbnail: MultipartFile
-) = setStickerSetThumbnail(
+): Boolean = setStickerSetThumbnail(
     user.id, stickerSetName, format, thumbnail
 )
 
-suspend fun TelegramBot.setStickerSetThumbnail(
+public suspend fun TelegramBot.setStickerSetThumbnail(
     userId: UserId,
     stickerSet: StickerSet,
     format: StickerFormat,
     thumbnail: FileId
-) = setStickerSetThumbnail(
+): Boolean = setStickerSetThumbnail(
     userId, stickerSet.name, format, thumbnail
 )
 
-suspend fun TelegramBot.setStickerSetThumbnail(
+public suspend fun TelegramBot.setStickerSetThumbnail(
     userId: UserId,
     stickerSet: StickerSet,
     format: StickerFormat,
     thumbnail: MultipartFile
-) = setStickerSetThumbnail(
+): Boolean = setStickerSetThumbnail(
     userId, stickerSet.name, format, thumbnail
 )
 
-suspend fun TelegramBot.setStickerSetThumbnail(
+public suspend fun TelegramBot.setStickerSetThumbnail(
     user: CommonUser,
     stickerSet: StickerSet,
     format: StickerFormat,
     thumbnail: FileId
-) = setStickerSetThumbnail(
+): Boolean = setStickerSetThumbnail(
     user.id, stickerSet, format, thumbnail
 )
 
-suspend fun TelegramBot.setStickerSetThumbnail(
+public suspend fun TelegramBot.setStickerSetThumbnail(
     user: CommonUser,
     stickerSet: StickerSet,
     format: StickerFormat,
     thumbnail: MultipartFile
-) = setStickerSetThumbnail(
+): Boolean = setStickerSetThumbnail(
     user.id, stickerSet, format, thumbnail
 )
