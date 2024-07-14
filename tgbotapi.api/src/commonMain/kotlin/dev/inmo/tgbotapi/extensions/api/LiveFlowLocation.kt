@@ -17,6 +17,7 @@ import dev.inmo.tgbotapi.types.buttons.InlineKeyboardMarkup
 import dev.inmo.tgbotapi.types.location.LiveLocation
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
+import dev.inmo.tgbotapi.types.message.content.LiveLocationContent
 import dev.inmo.tgbotapi.types.message.content.LocationContent
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.currentCoroutineContext
@@ -54,9 +55,9 @@ public suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
-    var currentLiveLocationMessage: ContentMessage<LocationContent>? = null
+    var currentLiveLocationMessage: ContentMessage<LiveLocationContent>? = null
     val updateMessageJob = if (liveTimeMillis == indefiniteLivePeriodDelayMillis) { // do not launch refreshing of message for indefinite live locations
         null
     } else {
@@ -127,7 +128,7 @@ public suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
     handleLiveLocation(
         chatId = chatId,
@@ -168,7 +169,7 @@ public suspend fun TelegramBot.handleLiveLocation(
     protectContent: Boolean = false,
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
-    sentMessageFlow: FlowCollector<ContentMessage<LocationContent>>? = null
+    sentMessageFlow: FlowCollector<ContentMessage<LiveLocationContent>>? = null
 ) {
     handleLiveLocation(
         chatId = chatId,

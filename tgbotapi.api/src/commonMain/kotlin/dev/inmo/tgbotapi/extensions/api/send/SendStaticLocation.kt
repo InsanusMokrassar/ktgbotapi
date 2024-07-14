@@ -9,6 +9,7 @@ import dev.inmo.tgbotapi.types.chat.Chat
 import dev.inmo.tgbotapi.types.location.Location
 import dev.inmo.tgbotapi.types.message.abstracts.ContentMessage
 import dev.inmo.tgbotapi.types.message.content.LocationContent
+import dev.inmo.tgbotapi.types.message.content.StaticLocationContent
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -25,7 +26,7 @@ public suspend fun TelegramBot.sendLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = execute(
+): ContentMessage<StaticLocationContent> = execute(
     SendStaticLocation(
         chatId,
         latitude,
@@ -54,7 +55,7 @@ public suspend fun TelegramBot.sendLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(
+): ContentMessage<StaticLocationContent> = sendLocation(
     chatId,
     location.latitude,
     location.longitude,
@@ -82,7 +83,7 @@ public suspend fun TelegramBot.sendLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(
+): ContentMessage<StaticLocationContent> = sendLocation(
     chat.id,
     latitude,
     longitude,
@@ -109,7 +110,7 @@ public suspend fun TelegramBot.sendLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(
+): ContentMessage<StaticLocationContent> = sendLocation(
     chat.id,
     location.latitude,
     location.longitude,
@@ -137,7 +138,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(chatId, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<StaticLocationContent> = sendLocation(chatId, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -153,7 +154,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(chatId, location.latitude, location.longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<StaticLocationContent> = sendLocation(chatId, location.latitude, location.longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -170,7 +171,7 @@ public suspend fun TelegramBot.sendStaticLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(chat.id, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<StaticLocationContent> = sendLocation(chat.id, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * @param replyMarkup Some of [KeyboardMarkup]. See [dev.inmo.tgbotapi.extensions.utils.types.buttons.replyKeyboard] or
@@ -186,4 +187,4 @@ public suspend fun TelegramBot.sendStaticLocation(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(chat.id, location.latitude, location.longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<StaticLocationContent> = sendLocation(chat.id, location.latitude, location.longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)

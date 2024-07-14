@@ -153,7 +153,7 @@ public suspend inline fun TelegramBot.reply(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(
+): ContentMessage<StaticLocationContent> = sendLocation(
     replyInChatId,
     latitude,
     longitude,
@@ -181,7 +181,7 @@ public suspend inline fun TelegramBot.reply(
     effectId: EffectId? = null,
     allowSendingWithoutReply: Boolean? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLocation(
+): ContentMessage<StaticLocationContent> = sendLocation(
     replyInChatId,
     location,
     replyInThreadId,

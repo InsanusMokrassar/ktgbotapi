@@ -517,7 +517,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendStaticLocation(chatId, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<StaticLocationContent> = sendStaticLocation(chatId, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendStaticLocation] request
@@ -534,7 +534,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendStaticLocation(chatId, location, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<StaticLocationContent> = sendStaticLocation(chatId, location, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendStaticLocation] request
@@ -552,7 +552,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendStaticLocation(chat, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<StaticLocationContent> = sendStaticLocation(chat, latitude, longitude, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendStaticLocation] request
@@ -569,7 +569,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendStaticLocation(chat, location, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
+): ContentMessage<StaticLocationContent> = sendStaticLocation(chat, location, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup)
 
 /**
  * Will execute [sendTextMessage] request
@@ -1581,7 +1581,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLiveLocation(
+): ContentMessage<LiveLocationContent> = sendLiveLocation(
     chatId = chatId,
     latitude = latitude,
     longitude = longitude,
@@ -1617,7 +1617,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLiveLocation(
+): ContentMessage<LiveLocationContent> = sendLiveLocation(
     chatId, location, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
@@ -1641,7 +1641,7 @@ public suspend fun TelegramBot.send(
     effectId: EffectId? = null,
     replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLiveLocation(
+): ContentMessage<LiveLocationContent> = sendLiveLocation(
     chat, latitude, longitude, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
@@ -1662,9 +1662,9 @@ public suspend fun TelegramBot.send(
     disableNotification: Boolean = false,
     protectContent: Boolean = false,
     effectId: EffectId? = null,
-        replyParameters: ReplyParameters? = null,
+    replyParameters: ReplyParameters? = null,
     replyMarkup: KeyboardMarkup? = null
-): ContentMessage<LocationContent> = sendLiveLocation(
+): ContentMessage<LiveLocationContent> = sendLiveLocation(
     chat, location, livePeriod, horizontalAccuracy, heading, proximityAlertRadius, threadId, businessConnectionId, disableNotification, protectContent, effectId, replyParameters, replyMarkup
 )
 
